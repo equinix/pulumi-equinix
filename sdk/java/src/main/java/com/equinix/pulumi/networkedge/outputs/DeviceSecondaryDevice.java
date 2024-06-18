@@ -155,7 +155,7 @@ public final class DeviceSecondaryDevice {
     /**
      * @return Key/Value pairs of vendor specific configuration parameters
      * for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`,
-     * `systemIpAddress`.
+     * `systemIpAddress`, `private_address`, `private_cidr_mask`, `private_gateway`, `license_key`, `license_id`.
      * 
      */
     private @Nullable Map<String,String> vendorConfiguration;
@@ -360,7 +360,7 @@ public final class DeviceSecondaryDevice {
     /**
      * @return Key/Value pairs of vendor specific configuration parameters
      * for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`,
-     * `systemIpAddress`.
+     * `systemIpAddress`, `private_address`, `private_cidr_mask`, `private_gateway`, `license_key`, `license_id`.
      * 
      */
     public Map<String,String> vendorConfiguration() {

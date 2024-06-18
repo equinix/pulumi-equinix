@@ -9,8 +9,11 @@ from ._enums import *
 from .cloud_router import *
 from .connection import *
 from .get_cloud_router import *
+from .get_cloud_routers import *
 from .get_connection import *
+from .get_connections import *
 from .get_network import *
+from .get_networks import *
 from .get_port import *
 from .get_ports import *
 from .get_routing_protocol import *

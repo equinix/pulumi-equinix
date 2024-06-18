@@ -14,6 +14,10 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Fabric V4 API compatible data resource that allow user to fetch Service Profile by UUID filter criteria
         /// 
+        /// Additional documentation:
+        /// * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm&gt;
+        /// * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles&gt;
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -51,6 +55,10 @@ namespace Pulumi.Equinix.Fabric
 
         /// <summary>
         /// Fabric V4 API compatible data resource that allow user to fetch Service Profile by UUID filter criteria
+        /// 
+        /// Additional documentation:
+        /// * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm&gt;
+        /// * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles&gt;
         /// 
         /// ## Example Usage
         /// 

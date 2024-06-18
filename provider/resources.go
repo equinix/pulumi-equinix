@@ -1301,6 +1301,57 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
+			"equinix_fabric_connections": {
+				Tok: makeEquinixDataSource(fabricMod, "Connections"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"data": {
+						Fields: map[string]*tfbridge.SchemaInfo{
+							"uuid": {
+								MaxItemsOne: tfbridge.True(),
+							},
+						},
+					},
+					"filter": {
+						Fields: map[string]*tfbridge.SchemaInfo{
+							"property": {
+								MaxItemsOne: tfbridge.True(),
+							},
+							"operator": {
+								MaxItemsOne: tfbridge.True(),
+							},
+							"values": {
+								MaxItemsOne: tfbridge.True(),
+							},
+							"group": {
+								MaxItemsOne: tfbridge.True(),
+							},
+						},
+					},
+					"outer_operator": {
+						MaxItemsOne: tfbridge.True(),
+					},
+					"pagination": {
+						Fields: map[string]*tfbridge.SchemaInfo{
+							"offset": {
+								MaxItemsOne: tfbridge.True(),
+							},
+							"limit": {
+								MaxItemsOne: tfbridge.True(),
+							},
+						},
+					},
+					"sort": {
+						Fields: map[string]*tfbridge.SchemaInfo{
+							"direction": {
+								MaxItemsOne: tfbridge.True(),
+							},
+							"property": {
+								MaxItemsOne: tfbridge.True(),
+							},
+						},
+					},
+				},
+			},
 			"equinix_fabric_port": {
 				Tok: makeEquinixDataSource(fabricMod, "Port"),
 				Fields: map[string]*tfbridge.SchemaInfo{
@@ -1469,6 +1520,56 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 			"equinix_fabric_cloud_router": {Tok: makeEquinixDataSource(fabricMod, "CloudRouter")},
+			"equinix_fabric_cloud_routers": {
+				Tok: makeEquinixDataSource(fabricMod, "CloudRouters"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"data": {
+						Fields: map[string]*tfbridge.SchemaInfo{
+							"uuid": {
+								MaxItemsOne: tfbridge.True(),
+							},
+						},
+					},
+					"filter": {
+						Fields: map[string]*tfbridge.SchemaInfo{
+							"property": {
+								MaxItemsOne: tfbridge.True(),
+							},
+							"operator": {
+								MaxItemsOne: tfbridge.True(),
+							},
+							"values": {
+								MaxItemsOne: tfbridge.True(),
+							},
+							"or": {
+								MaxItemsOne: tfbridge.True(),
+							},
+						},
+					},
+					"pagination": {
+						MaxItemsOne: tfbridge.True(),
+						Fields: map[string]*tfbridge.SchemaInfo{
+							"offset": {
+								MaxItemsOne: tfbridge.True(),
+							},
+							"limit": {
+								MaxItemsOne: tfbridge.True(),
+							},
+						},
+					},
+					"sort": {
+						MaxItemsOne: tfbridge.True(),
+						Fields: map[string]*tfbridge.SchemaInfo{
+							"direction": {
+								MaxItemsOne: tfbridge.True(),
+							},
+							"property": {
+								MaxItemsOne: tfbridge.True(),
+							},
+						},
+					},
+				},
+			},
 			"equinix_fabric_routing_protocol": {
 				Tok: makeEquinixDataSource(fabricMod, "RoutingProtocol"),
 				Fields: map[string]*tfbridge.SchemaInfo{
@@ -1503,6 +1604,57 @@ func Provider() tfbridge.ProviderInfo {
 					},
 					"change_log": {
 						MaxItemsOne: tfbridge.True(),
+					},
+				},
+			},
+			"equinix_fabric_networks": {
+				Tok: makeEquinixDataSource(fabricMod, "Networks"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"data": {
+						Fields: map[string]*tfbridge.SchemaInfo{
+							"uuid": {
+								MaxItemsOne: tfbridge.True(),
+							},
+						},
+					},
+					"filter": {
+						Fields: map[string]*tfbridge.SchemaInfo{
+							"property": {
+								MaxItemsOne: tfbridge.True(),
+							},
+							"operator": {
+								MaxItemsOne: tfbridge.True(),
+							},
+							"values": {
+								MaxItemsOne: tfbridge.True(),
+							},
+							"group": {
+								MaxItemsOne: tfbridge.True(),
+							},
+						},
+					},
+					"outer_operator": {
+						MaxItemsOne: tfbridge.True(),
+					},
+					"pagination": {
+						Fields: map[string]*tfbridge.SchemaInfo{
+							"offset": {
+								MaxItemsOne: tfbridge.True(),
+							},
+							"limit": {
+								MaxItemsOne: tfbridge.True(),
+							},
+						},
+					},
+					"sort": {
+						Fields: map[string]*tfbridge.SchemaInfo{
+							"direction": {
+								MaxItemsOne: tfbridge.True(),
+							},
+							"property": {
+								MaxItemsOne: tfbridge.True(),
+							},
+						},
 					},
 				},
 			},

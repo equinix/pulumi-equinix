@@ -662,6 +662,10 @@ class ServiceProfile(pulumi.CustomResource):
         """
         Fabric V4 API compatible resource allows creation and management of Equinix Fabric Service Profile
 
+        Additional documentation:
+        * Getting Started: <https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm>
+        * API: <https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles>
+
         ## Example Usage
         ```python
         import pulumi
@@ -740,6 +744,10 @@ class ServiceProfile(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Fabric V4 API compatible resource allows creation and management of Equinix Fabric Service Profile
+
+        Additional documentation:
+        * Getting Started: <https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm>
+        * API: <https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles>
 
         ## Example Usage
         ```python

@@ -765,6 +765,16 @@ type DeviceClusterDetailsNode0VendorConfiguration struct {
 	ControllerFqdn *string `pulumi:"controllerFqdn"`
 	// Hostname. This is necessary for Palo Alto, Juniper, and Fortinet clusters.
 	Hostname *string `pulumi:"hostname"`
+	// License id. This field is relevant only for the BlueCat DNS and DHCP Server
+	LicenseId *string `pulumi:"licenseId"`
+	// License key. This field is relevant only for the BlueCat DNS and DHCP Server
+	LicenseKey *string `pulumi:"licenseKey"`
+	// Private address. This field is relevant only for the BlueCat DNS and DHCP Server
+	PrivateAddress *string `pulumi:"privateAddress"`
+	// Private CIDR Mask. This field is relevant only for the BlueCat DNS and DHCP Server
+	PrivateCidrMask *string `pulumi:"privateCidrMask"`
+	// Private gateway. This field is relevant only for the BlueCat DNS and DHCP Server
+	PrivateGateway *string `pulumi:"privateGateway"`
 	// The CLI password of the device. This field is relevant only for the
 	// Velocloud SDWAN cluster.
 	RootPassword *string `pulumi:"rootPassword"`
@@ -793,6 +803,16 @@ type DeviceClusterDetailsNode0VendorConfigurationArgs struct {
 	ControllerFqdn pulumi.StringPtrInput `pulumi:"controllerFqdn"`
 	// Hostname. This is necessary for Palo Alto, Juniper, and Fortinet clusters.
 	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
+	// License id. This field is relevant only for the BlueCat DNS and DHCP Server
+	LicenseId pulumi.StringPtrInput `pulumi:"licenseId"`
+	// License key. This field is relevant only for the BlueCat DNS and DHCP Server
+	LicenseKey pulumi.StringPtrInput `pulumi:"licenseKey"`
+	// Private address. This field is relevant only for the BlueCat DNS and DHCP Server
+	PrivateAddress pulumi.StringPtrInput `pulumi:"privateAddress"`
+	// Private CIDR Mask. This field is relevant only for the BlueCat DNS and DHCP Server
+	PrivateCidrMask pulumi.StringPtrInput `pulumi:"privateCidrMask"`
+	// Private gateway. This field is relevant only for the BlueCat DNS and DHCP Server
+	PrivateGateway pulumi.StringPtrInput `pulumi:"privateGateway"`
 	// The CLI password of the device. This field is relevant only for the
 	// Velocloud SDWAN cluster.
 	RootPassword pulumi.StringPtrInput `pulumi:"rootPassword"`
@@ -901,6 +921,31 @@ func (o DeviceClusterDetailsNode0VendorConfigurationOutput) Hostname() pulumi.St
 	return o.ApplyT(func(v DeviceClusterDetailsNode0VendorConfiguration) *string { return v.Hostname }).(pulumi.StringPtrOutput)
 }
 
+// License id. This field is relevant only for the BlueCat DNS and DHCP Server
+func (o DeviceClusterDetailsNode0VendorConfigurationOutput) LicenseId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceClusterDetailsNode0VendorConfiguration) *string { return v.LicenseId }).(pulumi.StringPtrOutput)
+}
+
+// License key. This field is relevant only for the BlueCat DNS and DHCP Server
+func (o DeviceClusterDetailsNode0VendorConfigurationOutput) LicenseKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceClusterDetailsNode0VendorConfiguration) *string { return v.LicenseKey }).(pulumi.StringPtrOutput)
+}
+
+// Private address. This field is relevant only for the BlueCat DNS and DHCP Server
+func (o DeviceClusterDetailsNode0VendorConfigurationOutput) PrivateAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceClusterDetailsNode0VendorConfiguration) *string { return v.PrivateAddress }).(pulumi.StringPtrOutput)
+}
+
+// Private CIDR Mask. This field is relevant only for the BlueCat DNS and DHCP Server
+func (o DeviceClusterDetailsNode0VendorConfigurationOutput) PrivateCidrMask() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceClusterDetailsNode0VendorConfiguration) *string { return v.PrivateCidrMask }).(pulumi.StringPtrOutput)
+}
+
+// Private gateway. This field is relevant only for the BlueCat DNS and DHCP Server
+func (o DeviceClusterDetailsNode0VendorConfigurationOutput) PrivateGateway() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceClusterDetailsNode0VendorConfiguration) *string { return v.PrivateGateway }).(pulumi.StringPtrOutput)
+}
+
 // The CLI password of the device. This field is relevant only for the
 // Velocloud SDWAN cluster.
 func (o DeviceClusterDetailsNode0VendorConfigurationOutput) RootPassword() pulumi.StringPtrOutput {
@@ -979,6 +1024,56 @@ func (o DeviceClusterDetailsNode0VendorConfigurationPtrOutput) Hostname() pulumi
 			return nil
 		}
 		return v.Hostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// License id. This field is relevant only for the BlueCat DNS and DHCP Server
+func (o DeviceClusterDetailsNode0VendorConfigurationPtrOutput) LicenseId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceClusterDetailsNode0VendorConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LicenseId
+	}).(pulumi.StringPtrOutput)
+}
+
+// License key. This field is relevant only for the BlueCat DNS and DHCP Server
+func (o DeviceClusterDetailsNode0VendorConfigurationPtrOutput) LicenseKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceClusterDetailsNode0VendorConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LicenseKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Private address. This field is relevant only for the BlueCat DNS and DHCP Server
+func (o DeviceClusterDetailsNode0VendorConfigurationPtrOutput) PrivateAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceClusterDetailsNode0VendorConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// Private CIDR Mask. This field is relevant only for the BlueCat DNS and DHCP Server
+func (o DeviceClusterDetailsNode0VendorConfigurationPtrOutput) PrivateCidrMask() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceClusterDetailsNode0VendorConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateCidrMask
+	}).(pulumi.StringPtrOutput)
+}
+
+// Private gateway. This field is relevant only for the BlueCat DNS and DHCP Server
+func (o DeviceClusterDetailsNode0VendorConfigurationPtrOutput) PrivateGateway() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceClusterDetailsNode0VendorConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateGateway
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1228,6 +1323,16 @@ type DeviceClusterDetailsNode1VendorConfiguration struct {
 	ControllerFqdn *string `pulumi:"controllerFqdn"`
 	// Hostname. This is necessary for Palo Alto, Juniper, and Fortinet clusters.
 	Hostname *string `pulumi:"hostname"`
+	// License id. This field is relevant only for the BlueCat DNS and DHCP Server
+	LicenseId *string `pulumi:"licenseId"`
+	// License key. This field is relevant only for the BlueCat DNS and DHCP Server
+	LicenseKey *string `pulumi:"licenseKey"`
+	// Private address. This field is relevant only for the BlueCat DNS and DHCP Server
+	PrivateAddress *string `pulumi:"privateAddress"`
+	// Private CIDR Mask. This field is relevant only for the BlueCat DNS and DHCP Server
+	PrivateCidrMask *string `pulumi:"privateCidrMask"`
+	// Private gateway. This field is relevant only for the BlueCat DNS and DHCP Server
+	PrivateGateway *string `pulumi:"privateGateway"`
 	// The CLI password of the device. This field is relevant only for the
 	// Velocloud SDWAN cluster.
 	RootPassword *string `pulumi:"rootPassword"`
@@ -1256,6 +1361,16 @@ type DeviceClusterDetailsNode1VendorConfigurationArgs struct {
 	ControllerFqdn pulumi.StringPtrInput `pulumi:"controllerFqdn"`
 	// Hostname. This is necessary for Palo Alto, Juniper, and Fortinet clusters.
 	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
+	// License id. This field is relevant only for the BlueCat DNS and DHCP Server
+	LicenseId pulumi.StringPtrInput `pulumi:"licenseId"`
+	// License key. This field is relevant only for the BlueCat DNS and DHCP Server
+	LicenseKey pulumi.StringPtrInput `pulumi:"licenseKey"`
+	// Private address. This field is relevant only for the BlueCat DNS and DHCP Server
+	PrivateAddress pulumi.StringPtrInput `pulumi:"privateAddress"`
+	// Private CIDR Mask. This field is relevant only for the BlueCat DNS and DHCP Server
+	PrivateCidrMask pulumi.StringPtrInput `pulumi:"privateCidrMask"`
+	// Private gateway. This field is relevant only for the BlueCat DNS and DHCP Server
+	PrivateGateway pulumi.StringPtrInput `pulumi:"privateGateway"`
 	// The CLI password of the device. This field is relevant only for the
 	// Velocloud SDWAN cluster.
 	RootPassword pulumi.StringPtrInput `pulumi:"rootPassword"`
@@ -1364,6 +1479,31 @@ func (o DeviceClusterDetailsNode1VendorConfigurationOutput) Hostname() pulumi.St
 	return o.ApplyT(func(v DeviceClusterDetailsNode1VendorConfiguration) *string { return v.Hostname }).(pulumi.StringPtrOutput)
 }
 
+// License id. This field is relevant only for the BlueCat DNS and DHCP Server
+func (o DeviceClusterDetailsNode1VendorConfigurationOutput) LicenseId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceClusterDetailsNode1VendorConfiguration) *string { return v.LicenseId }).(pulumi.StringPtrOutput)
+}
+
+// License key. This field is relevant only for the BlueCat DNS and DHCP Server
+func (o DeviceClusterDetailsNode1VendorConfigurationOutput) LicenseKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceClusterDetailsNode1VendorConfiguration) *string { return v.LicenseKey }).(pulumi.StringPtrOutput)
+}
+
+// Private address. This field is relevant only for the BlueCat DNS and DHCP Server
+func (o DeviceClusterDetailsNode1VendorConfigurationOutput) PrivateAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceClusterDetailsNode1VendorConfiguration) *string { return v.PrivateAddress }).(pulumi.StringPtrOutput)
+}
+
+// Private CIDR Mask. This field is relevant only for the BlueCat DNS and DHCP Server
+func (o DeviceClusterDetailsNode1VendorConfigurationOutput) PrivateCidrMask() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceClusterDetailsNode1VendorConfiguration) *string { return v.PrivateCidrMask }).(pulumi.StringPtrOutput)
+}
+
+// Private gateway. This field is relevant only for the BlueCat DNS and DHCP Server
+func (o DeviceClusterDetailsNode1VendorConfigurationOutput) PrivateGateway() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceClusterDetailsNode1VendorConfiguration) *string { return v.PrivateGateway }).(pulumi.StringPtrOutput)
+}
+
 // The CLI password of the device. This field is relevant only for the
 // Velocloud SDWAN cluster.
 func (o DeviceClusterDetailsNode1VendorConfigurationOutput) RootPassword() pulumi.StringPtrOutput {
@@ -1442,6 +1582,56 @@ func (o DeviceClusterDetailsNode1VendorConfigurationPtrOutput) Hostname() pulumi
 			return nil
 		}
 		return v.Hostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// License id. This field is relevant only for the BlueCat DNS and DHCP Server
+func (o DeviceClusterDetailsNode1VendorConfigurationPtrOutput) LicenseId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceClusterDetailsNode1VendorConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LicenseId
+	}).(pulumi.StringPtrOutput)
+}
+
+// License key. This field is relevant only for the BlueCat DNS and DHCP Server
+func (o DeviceClusterDetailsNode1VendorConfigurationPtrOutput) LicenseKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceClusterDetailsNode1VendorConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LicenseKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Private address. This field is relevant only for the BlueCat DNS and DHCP Server
+func (o DeviceClusterDetailsNode1VendorConfigurationPtrOutput) PrivateAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceClusterDetailsNode1VendorConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// Private CIDR Mask. This field is relevant only for the BlueCat DNS and DHCP Server
+func (o DeviceClusterDetailsNode1VendorConfigurationPtrOutput) PrivateCidrMask() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceClusterDetailsNode1VendorConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateCidrMask
+	}).(pulumi.StringPtrOutput)
+}
+
+// Private gateway. This field is relevant only for the BlueCat DNS and DHCP Server
+func (o DeviceClusterDetailsNode1VendorConfigurationPtrOutput) PrivateGateway() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceClusterDetailsNode1VendorConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateGateway
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2112,7 +2302,7 @@ type DeviceSecondaryDevice struct {
 	Uuid *string `pulumi:"uuid"`
 	// Key/Value pairs of vendor specific configuration parameters
 	// for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`,
-	// `systemIpAddress`.
+	// `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`.
 	VendorConfiguration map[string]string `pulumi:"vendorConfiguration"`
 	// device interface id picked for WAN
 	WanInterfaceId *string `pulumi:"wanInterfaceId"`
@@ -2195,7 +2385,7 @@ type DeviceSecondaryDeviceArgs struct {
 	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
 	// Key/Value pairs of vendor specific configuration parameters
 	// for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`,
-	// `systemIpAddress`.
+	// `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`.
 	VendorConfiguration pulumi.StringMapInput `pulumi:"vendorConfiguration"`
 	// device interface id picked for WAN
 	WanInterfaceId pulumi.StringPtrInput `pulumi:"wanInterfaceId"`
@@ -2418,7 +2608,7 @@ func (o DeviceSecondaryDeviceOutput) Uuid() pulumi.StringPtrOutput {
 
 // Key/Value pairs of vendor specific configuration parameters
 // for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`,
-// `systemIpAddress`.
+// `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`.
 func (o DeviceSecondaryDeviceOutput) VendorConfiguration() pulumi.StringMapOutput {
 	return o.ApplyT(func(v DeviceSecondaryDevice) map[string]string { return v.VendorConfiguration }).(pulumi.StringMapOutput)
 }
@@ -2720,7 +2910,7 @@ func (o DeviceSecondaryDevicePtrOutput) Uuid() pulumi.StringPtrOutput {
 
 // Key/Value pairs of vendor specific configuration parameters
 // for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`,
-// `systemIpAddress`.
+// `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`.
 func (o DeviceSecondaryDevicePtrOutput) VendorConfiguration() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *DeviceSecondaryDevice) map[string]string {
 		if v == nil {
@@ -3501,6 +3691,16 @@ type GetDeviceClusterDetailNode0VendorConfiguration struct {
 	ControllerFqdn string `pulumi:"controllerFqdn"`
 	// Hostname. This is necessary for Palo Alto, Juniper, and Fortinet clusters
 	Hostname string `pulumi:"hostname"`
+	// License id. This field is relevant only for the BlueCat DNS and DHCP Server
+	LicenseId string `pulumi:"licenseId"`
+	// License key. This field is relevant only for the BlueCat DNS and DHCP Server
+	LicenseKey string `pulumi:"licenseKey"`
+	// Private address. This field is relevant only for the BlueCat DNS and DHCP Server
+	PrivateAddress string `pulumi:"privateAddress"`
+	// Private CIDR Mask. This field is relevant only for the BlueCat DNS and DHCP Server
+	PrivateCidrMask string `pulumi:"privateCidrMask"`
+	// Private gateway. This field is relevant only for the BlueCat DNS and DHCP Server
+	PrivateGateway string `pulumi:"privateGateway"`
 	// The CLI password of the device. This field is relevant only for the Velocloud SDWAN cluster
 	RootPassword string `pulumi:"rootPassword"`
 }
@@ -3527,6 +3727,16 @@ type GetDeviceClusterDetailNode0VendorConfigurationArgs struct {
 	ControllerFqdn pulumi.StringInput `pulumi:"controllerFqdn"`
 	// Hostname. This is necessary for Palo Alto, Juniper, and Fortinet clusters
 	Hostname pulumi.StringInput `pulumi:"hostname"`
+	// License id. This field is relevant only for the BlueCat DNS and DHCP Server
+	LicenseId pulumi.StringInput `pulumi:"licenseId"`
+	// License key. This field is relevant only for the BlueCat DNS and DHCP Server
+	LicenseKey pulumi.StringInput `pulumi:"licenseKey"`
+	// Private address. This field is relevant only for the BlueCat DNS and DHCP Server
+	PrivateAddress pulumi.StringInput `pulumi:"privateAddress"`
+	// Private CIDR Mask. This field is relevant only for the BlueCat DNS and DHCP Server
+	PrivateCidrMask pulumi.StringInput `pulumi:"privateCidrMask"`
+	// Private gateway. This field is relevant only for the BlueCat DNS and DHCP Server
+	PrivateGateway pulumi.StringInput `pulumi:"privateGateway"`
 	// The CLI password of the device. This field is relevant only for the Velocloud SDWAN cluster
 	RootPassword pulumi.StringInput `pulumi:"rootPassword"`
 }
@@ -3605,6 +3815,31 @@ func (o GetDeviceClusterDetailNode0VendorConfigurationOutput) ControllerFqdn() p
 // Hostname. This is necessary for Palo Alto, Juniper, and Fortinet clusters
 func (o GetDeviceClusterDetailNode0VendorConfigurationOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDeviceClusterDetailNode0VendorConfiguration) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// License id. This field is relevant only for the BlueCat DNS and DHCP Server
+func (o GetDeviceClusterDetailNode0VendorConfigurationOutput) LicenseId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDeviceClusterDetailNode0VendorConfiguration) string { return v.LicenseId }).(pulumi.StringOutput)
+}
+
+// License key. This field is relevant only for the BlueCat DNS and DHCP Server
+func (o GetDeviceClusterDetailNode0VendorConfigurationOutput) LicenseKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDeviceClusterDetailNode0VendorConfiguration) string { return v.LicenseKey }).(pulumi.StringOutput)
+}
+
+// Private address. This field is relevant only for the BlueCat DNS and DHCP Server
+func (o GetDeviceClusterDetailNode0VendorConfigurationOutput) PrivateAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDeviceClusterDetailNode0VendorConfiguration) string { return v.PrivateAddress }).(pulumi.StringOutput)
+}
+
+// Private CIDR Mask. This field is relevant only for the BlueCat DNS and DHCP Server
+func (o GetDeviceClusterDetailNode0VendorConfigurationOutput) PrivateCidrMask() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDeviceClusterDetailNode0VendorConfiguration) string { return v.PrivateCidrMask }).(pulumi.StringOutput)
+}
+
+// Private gateway. This field is relevant only for the BlueCat DNS and DHCP Server
+func (o GetDeviceClusterDetailNode0VendorConfigurationOutput) PrivateGateway() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDeviceClusterDetailNode0VendorConfiguration) string { return v.PrivateGateway }).(pulumi.StringOutput)
 }
 
 // The CLI password of the device. This field is relevant only for the Velocloud SDWAN cluster
@@ -3778,6 +4013,16 @@ type GetDeviceClusterDetailNode1VendorConfiguration struct {
 	ControllerFqdn string `pulumi:"controllerFqdn"`
 	// Hostname. This is necessary for Palo Alto, Juniper, and Fortinet clusters
 	Hostname string `pulumi:"hostname"`
+	// License id. This field is relevant only for the BlueCat DNS and DHCP Server
+	LicenseId string `pulumi:"licenseId"`
+	// License key. This field is relevant only for the BlueCat DNS and DHCP Server
+	LicenseKey string `pulumi:"licenseKey"`
+	// Private address. This field is relevant only for the BlueCat DNS and DHCP Server
+	PrivateAddress string `pulumi:"privateAddress"`
+	// Private CIDR Mask. This field is relevant only for the BlueCat DNS and DHCP Server
+	PrivateCidrMask string `pulumi:"privateCidrMask"`
+	// Private gateway. This field is relevant only for the BlueCat DNS and DHCP Server
+	PrivateGateway string `pulumi:"privateGateway"`
 	// The CLI password of the device. This field is relevant only for the Velocloud SDWAN cluster
 	RootPassword string `pulumi:"rootPassword"`
 }
@@ -3804,6 +4049,16 @@ type GetDeviceClusterDetailNode1VendorConfigurationArgs struct {
 	ControllerFqdn pulumi.StringInput `pulumi:"controllerFqdn"`
 	// Hostname. This is necessary for Palo Alto, Juniper, and Fortinet clusters
 	Hostname pulumi.StringInput `pulumi:"hostname"`
+	// License id. This field is relevant only for the BlueCat DNS and DHCP Server
+	LicenseId pulumi.StringInput `pulumi:"licenseId"`
+	// License key. This field is relevant only for the BlueCat DNS and DHCP Server
+	LicenseKey pulumi.StringInput `pulumi:"licenseKey"`
+	// Private address. This field is relevant only for the BlueCat DNS and DHCP Server
+	PrivateAddress pulumi.StringInput `pulumi:"privateAddress"`
+	// Private CIDR Mask. This field is relevant only for the BlueCat DNS and DHCP Server
+	PrivateCidrMask pulumi.StringInput `pulumi:"privateCidrMask"`
+	// Private gateway. This field is relevant only for the BlueCat DNS and DHCP Server
+	PrivateGateway pulumi.StringInput `pulumi:"privateGateway"`
 	// The CLI password of the device. This field is relevant only for the Velocloud SDWAN cluster
 	RootPassword pulumi.StringInput `pulumi:"rootPassword"`
 }
@@ -3882,6 +4137,31 @@ func (o GetDeviceClusterDetailNode1VendorConfigurationOutput) ControllerFqdn() p
 // Hostname. This is necessary for Palo Alto, Juniper, and Fortinet clusters
 func (o GetDeviceClusterDetailNode1VendorConfigurationOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDeviceClusterDetailNode1VendorConfiguration) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// License id. This field is relevant only for the BlueCat DNS and DHCP Server
+func (o GetDeviceClusterDetailNode1VendorConfigurationOutput) LicenseId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDeviceClusterDetailNode1VendorConfiguration) string { return v.LicenseId }).(pulumi.StringOutput)
+}
+
+// License key. This field is relevant only for the BlueCat DNS and DHCP Server
+func (o GetDeviceClusterDetailNode1VendorConfigurationOutput) LicenseKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDeviceClusterDetailNode1VendorConfiguration) string { return v.LicenseKey }).(pulumi.StringOutput)
+}
+
+// Private address. This field is relevant only for the BlueCat DNS and DHCP Server
+func (o GetDeviceClusterDetailNode1VendorConfigurationOutput) PrivateAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDeviceClusterDetailNode1VendorConfiguration) string { return v.PrivateAddress }).(pulumi.StringOutput)
+}
+
+// Private CIDR Mask. This field is relevant only for the BlueCat DNS and DHCP Server
+func (o GetDeviceClusterDetailNode1VendorConfigurationOutput) PrivateCidrMask() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDeviceClusterDetailNode1VendorConfiguration) string { return v.PrivateCidrMask }).(pulumi.StringOutput)
+}
+
+// Private gateway. This field is relevant only for the BlueCat DNS and DHCP Server
+func (o GetDeviceClusterDetailNode1VendorConfigurationOutput) PrivateGateway() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDeviceClusterDetailNode1VendorConfiguration) string { return v.PrivateGateway }).(pulumi.StringOutput)
 }
 
 // The CLI password of the device. This field is relevant only for the Velocloud SDWAN cluster

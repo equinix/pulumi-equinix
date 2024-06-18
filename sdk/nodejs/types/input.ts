@@ -975,6 +975,252 @@ export namespace fabric {
         uuid?: pulumi.Input<string>;
     }
 
+    export interface GetCloudRoutersFilter {
+        /**
+         * Possible operators to use on the filter property. Can be one of the following: [= - equal, != - not equal, > - greater than, >= - greater than or equal to, < - less than, <= - less than or equal to, [NOT] BETWEEN - (not) between, [NOT] LIKE - (not) like, [NOT] IN - (not) in
+         */
+        operator: string;
+        /**
+         * Boolean flag indicating whether this filter is included in the OR group. There can only be one OR group and it can have a maximum of 3 filters. The OR group only counts as 1 of the 8 possible filters
+         */
+        or?: boolean;
+        /**
+         * The API response property which you want to filter your request on. Can be one of the following: "/project/projectId", "/name", "/uuid", "/state", "/location/metroCode", "/location/metroName", "/package/code", "/*"
+         */
+        property: string;
+        /**
+         * The values that you want to apply the property+operator combination to in order to filter your data search
+         */
+        values: string[];
+    }
+
+    export interface GetCloudRoutersFilterArgs {
+        /**
+         * Possible operators to use on the filter property. Can be one of the following: [= - equal, != - not equal, > - greater than, >= - greater than or equal to, < - less than, <= - less than or equal to, [NOT] BETWEEN - (not) between, [NOT] LIKE - (not) like, [NOT] IN - (not) in
+         */
+        operator: pulumi.Input<string>;
+        /**
+         * Boolean flag indicating whether this filter is included in the OR group. There can only be one OR group and it can have a maximum of 3 filters. The OR group only counts as 1 of the 8 possible filters
+         */
+        or?: pulumi.Input<boolean>;
+        /**
+         * The API response property which you want to filter your request on. Can be one of the following: "/project/projectId", "/name", "/uuid", "/state", "/location/metroCode", "/location/metroName", "/package/code", "/*"
+         */
+        property: pulumi.Input<string>;
+        /**
+         * The values that you want to apply the property+operator combination to in order to filter your data search
+         */
+        values: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface GetCloudRoutersPagination {
+        /**
+         * Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+         */
+        limit?: number;
+        /**
+         * The page offset for the pagination request. Index of the first element. Default is 0.
+         */
+        offset?: number;
+    }
+
+    export interface GetCloudRoutersPaginationArgs {
+        /**
+         * Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+         */
+        limit?: pulumi.Input<number>;
+        /**
+         * The page offset for the pagination request. Index of the first element. Default is 0.
+         */
+        offset?: pulumi.Input<number>;
+    }
+
+    export interface GetCloudRoutersSort {
+        /**
+         * The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+         */
+        direction?: string;
+        /**
+         * The property name to use in sorting. Can be one of the following: [/name, /uuid, /state, /location/metroCode, /location/metroName, /package/code, /changeLog/createdDateTime, /changeLog/updatedDateTime], Defaults to /changeLog/updatedDateTime
+         */
+        property?: string;
+    }
+
+    export interface GetCloudRoutersSortArgs {
+        /**
+         * The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+         */
+        direction?: pulumi.Input<string>;
+        /**
+         * The property name to use in sorting. Can be one of the following: [/name, /uuid, /state, /location/metroCode, /location/metroName, /package/code, /changeLog/createdDateTime, /changeLog/updatedDateTime], Defaults to /changeLog/updatedDateTime
+         */
+        property?: pulumi.Input<string>;
+    }
+
+    export interface GetConnectionsFilter {
+        /**
+         * Optional custom id parameter to assign this filter to an inner AND or OR group. Group id must be prefixed with AND_ or OR_. Ensure intended grouped elements have the same given id. Ungrouped filters will be placed in the filter list group by themselves.
+         */
+        group?: string;
+        /**
+         * Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, IN, NOT IN, IS NOT NULL, IS NULL]
+         */
+        operator: string;
+        /**
+         * Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /change/status /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid *]
+         */
+        property: string;
+        /**
+         * The values that you want to apply the property+operator combination to in order to filter your data search
+         */
+        values: string[];
+    }
+
+    export interface GetConnectionsFilterArgs {
+        /**
+         * Optional custom id parameter to assign this filter to an inner AND or OR group. Group id must be prefixed with AND_ or OR_. Ensure intended grouped elements have the same given id. Ungrouped filters will be placed in the filter list group by themselves.
+         */
+        group?: pulumi.Input<string>;
+        /**
+         * Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, IN, NOT IN, IS NOT NULL, IS NULL]
+         */
+        operator: pulumi.Input<string>;
+        /**
+         * Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /change/status /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid *]
+         */
+        property: pulumi.Input<string>;
+        /**
+         * The values that you want to apply the property+operator combination to in order to filter your data search
+         */
+        values: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface GetConnectionsPagination {
+        /**
+         * Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+         */
+        limit?: number;
+        /**
+         * The page offset for the pagination request. Index of the first element. Default is 0.
+         */
+        offset?: number;
+    }
+
+    export interface GetConnectionsPaginationArgs {
+        /**
+         * Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+         */
+        limit?: pulumi.Input<number>;
+        /**
+         * The page offset for the pagination request. Index of the first element. Default is 0.
+         */
+        offset?: pulumi.Input<number>;
+    }
+
+    export interface GetConnectionsSort {
+        /**
+         * The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+         */
+        direction?: string;
+        /**
+         * The property name to use in sorting. One of [/name /direction /aSide/accessPoint/name /aSide/accessPoint/type /aSide/accessPoint/account/accountName /aSide/accessPoint/location/metroName /aSide/accessPoint/location/metroCode /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/name /zSide/accessPoint/type /zSide/accessPoint/account/accountName /zSide/accessPoint/location/metroName /zSide/accessPoint/location/metroCode /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/authenticationKey /bandwidth /geoScope /uuid /changeLog/createdDateTime /changeLog/updatedDateTime /operation/equinixStatus /operation/providerStatus /redundancy/priority]. Defaults to /changeLog/updatedDateTime
+         */
+        property?: string;
+    }
+
+    export interface GetConnectionsSortArgs {
+        /**
+         * The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+         */
+        direction?: pulumi.Input<string>;
+        /**
+         * The property name to use in sorting. One of [/name /direction /aSide/accessPoint/name /aSide/accessPoint/type /aSide/accessPoint/account/accountName /aSide/accessPoint/location/metroName /aSide/accessPoint/location/metroCode /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/name /zSide/accessPoint/type /zSide/accessPoint/account/accountName /zSide/accessPoint/location/metroName /zSide/accessPoint/location/metroCode /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/authenticationKey /bandwidth /geoScope /uuid /changeLog/createdDateTime /changeLog/updatedDateTime /operation/equinixStatus /operation/providerStatus /redundancy/priority]. Defaults to /changeLog/updatedDateTime
+         */
+        property?: pulumi.Input<string>;
+    }
+
+    export interface GetNetworksFilter {
+        /**
+         * Optional custom id parameter to assign this filter to an inner AND or OR group. Group id must be prefixed with AND_ or OR_. Ensure intended grouped elements have the same given id. Ungrouped filters will be placed in the filter list group by themselves.
+         */
+        group?: string;
+        /**
+         * Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, ILIKE, NOT ILIKE, IN, NOT IN]
+         */
+        operator: string;
+        /**
+         * Possible field names to use on filters. One of [/name /uuid /scope /type /operation/equinixStatus /location/region /project/projectId /account/globalCustId /account/orgId /deletedDate /_*]
+         */
+        property: string;
+        /**
+         * The values that you want to apply the property+operator combination to in order to filter your data search
+         */
+        values: string[];
+    }
+
+    export interface GetNetworksFilterArgs {
+        /**
+         * Optional custom id parameter to assign this filter to an inner AND or OR group. Group id must be prefixed with AND_ or OR_. Ensure intended grouped elements have the same given id. Ungrouped filters will be placed in the filter list group by themselves.
+         */
+        group?: pulumi.Input<string>;
+        /**
+         * Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, ILIKE, NOT ILIKE, IN, NOT IN]
+         */
+        operator: pulumi.Input<string>;
+        /**
+         * Possible field names to use on filters. One of [/name /uuid /scope /type /operation/equinixStatus /location/region /project/projectId /account/globalCustId /account/orgId /deletedDate /_*]
+         */
+        property: pulumi.Input<string>;
+        /**
+         * The values that you want to apply the property+operator combination to in order to filter your data search
+         */
+        values: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface GetNetworksPagination {
+        /**
+         * Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+         */
+        limit?: number;
+        /**
+         * The page offset for the pagination request. Index of the first element. Default is 0.
+         */
+        offset?: number;
+    }
+
+    export interface GetNetworksPaginationArgs {
+        /**
+         * Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+         */
+        limit?: pulumi.Input<number>;
+        /**
+         * The page offset for the pagination request. Index of the first element. Default is 0.
+         */
+        offset?: pulumi.Input<number>;
+    }
+
+    export interface GetNetworksSort {
+        /**
+         * The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+         */
+        direction?: string;
+        /**
+         * The property name to use in sorting. One of [/name /uuid /scope /operation/equinixStatus /location/region /changeLog/createdDateTime /changeLog/updatedDateTime]. Defaults to /changeLog/updatedDateTime
+         */
+        property?: string;
+    }
+
+    export interface GetNetworksSortArgs {
+        /**
+         * The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+         */
+        direction?: pulumi.Input<string>;
+        /**
+         * The property name to use in sorting. One of [/name /uuid /scope /operation/equinixStatus /location/region /changeLog/createdDateTime /changeLog/updatedDateTime]. Defaults to /changeLog/updatedDateTime
+         */
+        property?: pulumi.Input<string>;
+    }
+
     export interface GetPortsFilter {
         /**
          * Query Parameter to Get Ports By Name
@@ -2235,6 +2481,26 @@ export namespace networkedge {
          */
         hostname?: pulumi.Input<string>;
         /**
+         * License id. This field is relevant only for the BlueCat DNS and DHCP Server
+         */
+        licenseId?: pulumi.Input<string>;
+        /**
+         * License key. This field is relevant only for the BlueCat DNS and DHCP Server
+         */
+        licenseKey?: pulumi.Input<string>;
+        /**
+         * Private address. This field is relevant only for the BlueCat DNS and DHCP Server
+         */
+        privateAddress?: pulumi.Input<string>;
+        /**
+         * Private CIDR Mask. This field is relevant only for the BlueCat DNS and DHCP Server
+         */
+        privateCidrMask?: pulumi.Input<string>;
+        /**
+         * Private gateway. This field is relevant only for the BlueCat DNS and DHCP Server
+         */
+        privateGateway?: pulumi.Input<string>;
+        /**
          * The CLI password of the device. This field is relevant only for the
          * Velocloud SDWAN cluster.
          */
@@ -2288,6 +2554,26 @@ export namespace networkedge {
          * Hostname. This is necessary for Palo Alto, Juniper, and Fortinet clusters.
          */
         hostname?: pulumi.Input<string>;
+        /**
+         * License id. This field is relevant only for the BlueCat DNS and DHCP Server
+         */
+        licenseId?: pulumi.Input<string>;
+        /**
+         * License key. This field is relevant only for the BlueCat DNS and DHCP Server
+         */
+        licenseKey?: pulumi.Input<string>;
+        /**
+         * Private address. This field is relevant only for the BlueCat DNS and DHCP Server
+         */
+        privateAddress?: pulumi.Input<string>;
+        /**
+         * Private CIDR Mask. This field is relevant only for the BlueCat DNS and DHCP Server
+         */
+        privateCidrMask?: pulumi.Input<string>;
+        /**
+         * Private gateway. This field is relevant only for the BlueCat DNS and DHCP Server
+         */
+        privateGateway?: pulumi.Input<string>;
         /**
          * The CLI password of the device. This field is relevant only for the
          * Velocloud SDWAN cluster.
@@ -2526,7 +2812,7 @@ export namespace networkedge {
         /**
          * Key/Value pairs of vendor specific configuration parameters
          * for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`,
-         * `systemIpAddress`.
+         * `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`.
          */
         vendorConfiguration?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**

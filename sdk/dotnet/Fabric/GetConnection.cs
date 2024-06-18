@@ -14,6 +14,10 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID
         /// 
+        /// Additional documentation:
+        /// * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm&gt;
+        /// * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections&gt;
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -55,6 +59,10 @@ namespace Pulumi.Equinix.Fabric
 
         /// <summary>
         /// Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID
+        /// 
+        /// Additional documentation:
+        /// * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm&gt;
+        /// * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections&gt;
         /// 
         /// ## Example Usage
         /// 

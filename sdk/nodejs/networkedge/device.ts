@@ -297,7 +297,7 @@ export class Device extends pulumi.CustomResource {
     public /*out*/ readonly uuid!: pulumi.Output<string>;
     /**
      * Map of vendor specific configuration parameters for a device
-     * (controller1, activationKey, managementType, siteId, systemIpAddress)
+     * (controller1, activationKey, managementType, siteId, systemIpAddress, private_address, private_cidr_mask, private_gateway, license_key, license_id)
      * * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
      * on a device (max one key).  See SSH Key below for more details.
      */
@@ -638,7 +638,7 @@ export interface DeviceState {
     uuid?: pulumi.Input<string>;
     /**
      * Map of vendor specific configuration parameters for a device
-     * (controller1, activationKey, managementType, siteId, systemIpAddress)
+     * (controller1, activationKey, managementType, siteId, systemIpAddress, private_address, private_cidr_mask, private_gateway, license_key, license_id)
      * * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
      * on a device (max one key).  See SSH Key below for more details.
      */
@@ -793,7 +793,7 @@ export interface DeviceArgs {
     typeCode: pulumi.Input<string>;
     /**
      * Map of vendor specific configuration parameters for a device
-     * (controller1, activationKey, managementType, siteId, systemIpAddress)
+     * (controller1, activationKey, managementType, siteId, systemIpAddress, private_address, private_cidr_mask, private_gateway, license_key, license_id)
      * * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
      * on a device (max one key).  See SSH Key below for more details.
      */

@@ -35,6 +35,26 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
         /// </summary>
         public readonly string? Hostname;
         /// <summary>
+        /// License id. This field is relevant only for the BlueCat DNS and DHCP Server
+        /// </summary>
+        public readonly string? LicenseId;
+        /// <summary>
+        /// License key. This field is relevant only for the BlueCat DNS and DHCP Server
+        /// </summary>
+        public readonly string? LicenseKey;
+        /// <summary>
+        /// Private address. This field is relevant only for the BlueCat DNS and DHCP Server
+        /// </summary>
+        public readonly string? PrivateAddress;
+        /// <summary>
+        /// Private CIDR Mask. This field is relevant only for the BlueCat DNS and DHCP Server
+        /// </summary>
+        public readonly string? PrivateCidrMask;
+        /// <summary>
+        /// Private gateway. This field is relevant only for the BlueCat DNS and DHCP Server
+        /// </summary>
+        public readonly string? PrivateGateway;
+        /// <summary>
         /// The CLI password of the device. This field is relevant only for the
         /// Velocloud SDWAN cluster.
         /// </summary>
@@ -52,6 +72,16 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
 
             string? hostname,
 
+            string? licenseId,
+
+            string? licenseKey,
+
+            string? privateAddress,
+
+            string? privateCidrMask,
+
+            string? privateGateway,
+
             string? rootPassword)
         {
             ActivationKey = activationKey;
@@ -59,6 +89,11 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
             Controller1 = controller1;
             ControllerFqdn = controllerFqdn;
             Hostname = hostname;
+            LicenseId = licenseId;
+            LicenseKey = licenseKey;
+            PrivateAddress = privateAddress;
+            PrivateCidrMask = privateCidrMask;
+            PrivateGateway = privateGateway;
             RootPassword = rootPassword;
         }
     }

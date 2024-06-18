@@ -36,8 +36,11 @@
         },
         "functions": {
             "equinix:fabric/getCloudRouter:getCloudRouter": 0,
+            "equinix:fabric/getCloudRouters:getCloudRouters": 0,
             "equinix:fabric/getConnection:getConnection": 0,
+            "equinix:fabric/getConnections:getConnections": 0,
             "equinix:fabric/getNetwork:getNetwork": 0,
+            "equinix:fabric/getNetworks:getNetworks": 0,
             "equinix:fabric/getPort:getPort": 0,
             "equinix:fabric/getPorts:getPorts": 0,
             "equinix:fabric/getRoutingProtocol:getRoutingProtocol": 0,

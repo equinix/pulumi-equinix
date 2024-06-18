@@ -1,0 +1,7 @@
+I0613 12:23:04.230342    8504 api.go:314] Making Pulumi API call: https://api.pulumi.com/api/user
+W0613 12:23:04.257065    8504 pulumi.go:499] A new version of Pulumi is available. To upgrade from version '3.113.0' to '3.120.0', run 
+   $ brew update && brew upgrade pulumi
+or visit https://pulumi.com/docs/install/ for manual instructions and release notes.
+I0613 12:23:04.699092    8504 api.go:328] Pulumi API call response code (https://api.pulumi.com/api/user): 200 OK
+I0613 12:23:04.704407    8504 sink.go:178] defaultSink::Error([38;5;1merror: [0m[0mno Pulumi.yaml project file found (searching upwards from /Users/srpatel/work/pulumi-equinix). If you have not created a project yet, use `pulumi new` to do so: no project file found[0m)
+[38;5;1merror: [0m[0mno Pulumi.yaml project file found (searching upwards from /Users/srpatel/work/pulumi-equinix). If you have not created a project yet, use `pulumi new` to do so: no project file found[0m

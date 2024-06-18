@@ -24,6 +24,10 @@ import javax.annotation.Nullable;
 /**
  * Fabric V4 API compatible resource allows creation and management of Equinix Fabric Network
  * 
+ * Additional documentation:
+ * * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-networks-implement.htm&gt;
+ * * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-networks&gt;
+ * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -50,7 +54,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var newNetwork = new Network(&#34;newNetwork&#34;, NetworkArgs.builder()        
+ *         var newNetwork = new Network(&#34;newNetwork&#34;, NetworkArgs.builder()
  *             .notifications(NetworkNotificationArgs.builder()
  *                 .emails(                
  *                     &#34;example@equinix.com&#34;,

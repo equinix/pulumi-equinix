@@ -15323,6 +15323,1560 @@ func (o GetCloudRouterProjectArrayOutput) Index(i pulumi.IntInput) GetCloudRoute
 	}).(GetCloudRouterProjectOutput)
 }
 
+type GetCloudRoutersData struct {
+	// Customer account information that is associated with this Fabric Cloud Router
+	Accounts []GetCloudRoutersDataAccount `pulumi:"accounts"`
+	// Number of IPv4 BGP routes in use (including non-distinct prefixes)
+	BgpIpv4RoutesCount int `pulumi:"bgpIpv4RoutesCount"`
+	// Number of IPv6 BGP routes in use (including non-distinct prefixes)
+	BgpIpv6RoutesCount int `pulumi:"bgpIpv6RoutesCount"`
+	// Captures Fabric Cloud Router lifecycle change information
+	ChangeLogs []GetCloudRoutersDataChangeLog `pulumi:"changeLogs"`
+	// Number of connections associated with this Fabric Cloud Router instance
+	ConnectionsCount int `pulumi:"connectionsCount"`
+	// Customer-provided Fabric Cloud Router description
+	Description string `pulumi:"description"`
+	// Number of distinct IPv4 routes
+	DistinctIpv4PrefixesCount int `pulumi:"distinctIpv4PrefixesCount"`
+	// Number of distinct IPv6 routes
+	DistinctIpv6PrefixesCount int `pulumi:"distinctIpv6PrefixesCount"`
+	// Equinix ASN
+	EquinixAsn int `pulumi:"equinixAsn"`
+	// Fabric Cloud Router URI information
+	Href string `pulumi:"href"`
+	// Fabric Cloud Router location
+	Locations []GetCloudRoutersDataLocation `pulumi:"locations"`
+	// Fabric Cloud Router name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+	Name string `pulumi:"name"`
+	// Preferences for notifications on Fabric Cloud Router configuration or status changes
+	Notifications []GetCloudRoutersDataNotification `pulumi:"notifications"`
+	// Order information related to this Fabric Cloud Router
+	Orders []GetCloudRoutersDataOrder `pulumi:"orders"`
+	// Fabric Cloud Router Package Type
+	Packages []GetCloudRoutersDataPackage `pulumi:"packages"`
+	// Customer resource hierarchy project information. Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
+	Projects []GetCloudRoutersDataProject `pulumi:"projects"`
+	// Fabric Cloud Router overall state
+	State string `pulumi:"state"`
+	// Defines the FCR type like; XF_ROUTER
+	Type string `pulumi:"type"`
+	// Equinix-assigned Fabric Cloud Router identifier
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetCloudRoutersDataInput is an input type that accepts GetCloudRoutersDataArgs and GetCloudRoutersDataOutput values.
+// You can construct a concrete instance of `GetCloudRoutersDataInput` via:
+//
+//	GetCloudRoutersDataArgs{...}
+type GetCloudRoutersDataInput interface {
+	pulumi.Input
+
+	ToGetCloudRoutersDataOutput() GetCloudRoutersDataOutput
+	ToGetCloudRoutersDataOutputWithContext(context.Context) GetCloudRoutersDataOutput
+}
+
+type GetCloudRoutersDataArgs struct {
+	// Customer account information that is associated with this Fabric Cloud Router
+	Accounts GetCloudRoutersDataAccountArrayInput `pulumi:"accounts"`
+	// Number of IPv4 BGP routes in use (including non-distinct prefixes)
+	BgpIpv4RoutesCount pulumi.IntInput `pulumi:"bgpIpv4RoutesCount"`
+	// Number of IPv6 BGP routes in use (including non-distinct prefixes)
+	BgpIpv6RoutesCount pulumi.IntInput `pulumi:"bgpIpv6RoutesCount"`
+	// Captures Fabric Cloud Router lifecycle change information
+	ChangeLogs GetCloudRoutersDataChangeLogArrayInput `pulumi:"changeLogs"`
+	// Number of connections associated with this Fabric Cloud Router instance
+	ConnectionsCount pulumi.IntInput `pulumi:"connectionsCount"`
+	// Customer-provided Fabric Cloud Router description
+	Description pulumi.StringInput `pulumi:"description"`
+	// Number of distinct IPv4 routes
+	DistinctIpv4PrefixesCount pulumi.IntInput `pulumi:"distinctIpv4PrefixesCount"`
+	// Number of distinct IPv6 routes
+	DistinctIpv6PrefixesCount pulumi.IntInput `pulumi:"distinctIpv6PrefixesCount"`
+	// Equinix ASN
+	EquinixAsn pulumi.IntInput `pulumi:"equinixAsn"`
+	// Fabric Cloud Router URI information
+	Href pulumi.StringInput `pulumi:"href"`
+	// Fabric Cloud Router location
+	Locations GetCloudRoutersDataLocationArrayInput `pulumi:"locations"`
+	// Fabric Cloud Router name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+	Name pulumi.StringInput `pulumi:"name"`
+	// Preferences for notifications on Fabric Cloud Router configuration or status changes
+	Notifications GetCloudRoutersDataNotificationArrayInput `pulumi:"notifications"`
+	// Order information related to this Fabric Cloud Router
+	Orders GetCloudRoutersDataOrderArrayInput `pulumi:"orders"`
+	// Fabric Cloud Router Package Type
+	Packages GetCloudRoutersDataPackageArrayInput `pulumi:"packages"`
+	// Customer resource hierarchy project information. Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
+	Projects GetCloudRoutersDataProjectArrayInput `pulumi:"projects"`
+	// Fabric Cloud Router overall state
+	State pulumi.StringInput `pulumi:"state"`
+	// Defines the FCR type like; XF_ROUTER
+	Type pulumi.StringInput `pulumi:"type"`
+	// Equinix-assigned Fabric Cloud Router identifier
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetCloudRoutersDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudRoutersData)(nil)).Elem()
+}
+
+func (i GetCloudRoutersDataArgs) ToGetCloudRoutersDataOutput() GetCloudRoutersDataOutput {
+	return i.ToGetCloudRoutersDataOutputWithContext(context.Background())
+}
+
+func (i GetCloudRoutersDataArgs) ToGetCloudRoutersDataOutputWithContext(ctx context.Context) GetCloudRoutersDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudRoutersDataOutput)
+}
+
+// GetCloudRoutersDataArrayInput is an input type that accepts GetCloudRoutersDataArray and GetCloudRoutersDataArrayOutput values.
+// You can construct a concrete instance of `GetCloudRoutersDataArrayInput` via:
+//
+//	GetCloudRoutersDataArray{ GetCloudRoutersDataArgs{...} }
+type GetCloudRoutersDataArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudRoutersDataArrayOutput() GetCloudRoutersDataArrayOutput
+	ToGetCloudRoutersDataArrayOutputWithContext(context.Context) GetCloudRoutersDataArrayOutput
+}
+
+type GetCloudRoutersDataArray []GetCloudRoutersDataInput
+
+func (GetCloudRoutersDataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudRoutersData)(nil)).Elem()
+}
+
+func (i GetCloudRoutersDataArray) ToGetCloudRoutersDataArrayOutput() GetCloudRoutersDataArrayOutput {
+	return i.ToGetCloudRoutersDataArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudRoutersDataArray) ToGetCloudRoutersDataArrayOutputWithContext(ctx context.Context) GetCloudRoutersDataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudRoutersDataArrayOutput)
+}
+
+type GetCloudRoutersDataOutput struct{ *pulumi.OutputState }
+
+func (GetCloudRoutersDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudRoutersData)(nil)).Elem()
+}
+
+func (o GetCloudRoutersDataOutput) ToGetCloudRoutersDataOutput() GetCloudRoutersDataOutput {
+	return o
+}
+
+func (o GetCloudRoutersDataOutput) ToGetCloudRoutersDataOutputWithContext(ctx context.Context) GetCloudRoutersDataOutput {
+	return o
+}
+
+// Customer account information that is associated with this Fabric Cloud Router
+func (o GetCloudRoutersDataOutput) Accounts() GetCloudRoutersDataAccountArrayOutput {
+	return o.ApplyT(func(v GetCloudRoutersData) []GetCloudRoutersDataAccount { return v.Accounts }).(GetCloudRoutersDataAccountArrayOutput)
+}
+
+// Number of IPv4 BGP routes in use (including non-distinct prefixes)
+func (o GetCloudRoutersDataOutput) BgpIpv4RoutesCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudRoutersData) int { return v.BgpIpv4RoutesCount }).(pulumi.IntOutput)
+}
+
+// Number of IPv6 BGP routes in use (including non-distinct prefixes)
+func (o GetCloudRoutersDataOutput) BgpIpv6RoutesCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudRoutersData) int { return v.BgpIpv6RoutesCount }).(pulumi.IntOutput)
+}
+
+// Captures Fabric Cloud Router lifecycle change information
+func (o GetCloudRoutersDataOutput) ChangeLogs() GetCloudRoutersDataChangeLogArrayOutput {
+	return o.ApplyT(func(v GetCloudRoutersData) []GetCloudRoutersDataChangeLog { return v.ChangeLogs }).(GetCloudRoutersDataChangeLogArrayOutput)
+}
+
+// Number of connections associated with this Fabric Cloud Router instance
+func (o GetCloudRoutersDataOutput) ConnectionsCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudRoutersData) int { return v.ConnectionsCount }).(pulumi.IntOutput)
+}
+
+// Customer-provided Fabric Cloud Router description
+func (o GetCloudRoutersDataOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudRoutersData) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Number of distinct IPv4 routes
+func (o GetCloudRoutersDataOutput) DistinctIpv4PrefixesCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudRoutersData) int { return v.DistinctIpv4PrefixesCount }).(pulumi.IntOutput)
+}
+
+// Number of distinct IPv6 routes
+func (o GetCloudRoutersDataOutput) DistinctIpv6PrefixesCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudRoutersData) int { return v.DistinctIpv6PrefixesCount }).(pulumi.IntOutput)
+}
+
+// Equinix ASN
+func (o GetCloudRoutersDataOutput) EquinixAsn() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudRoutersData) int { return v.EquinixAsn }).(pulumi.IntOutput)
+}
+
+// Fabric Cloud Router URI information
+func (o GetCloudRoutersDataOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudRoutersData) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// Fabric Cloud Router location
+func (o GetCloudRoutersDataOutput) Locations() GetCloudRoutersDataLocationArrayOutput {
+	return o.ApplyT(func(v GetCloudRoutersData) []GetCloudRoutersDataLocation { return v.Locations }).(GetCloudRoutersDataLocationArrayOutput)
+}
+
+// Fabric Cloud Router name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+func (o GetCloudRoutersDataOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudRoutersData) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Preferences for notifications on Fabric Cloud Router configuration or status changes
+func (o GetCloudRoutersDataOutput) Notifications() GetCloudRoutersDataNotificationArrayOutput {
+	return o.ApplyT(func(v GetCloudRoutersData) []GetCloudRoutersDataNotification { return v.Notifications }).(GetCloudRoutersDataNotificationArrayOutput)
+}
+
+// Order information related to this Fabric Cloud Router
+func (o GetCloudRoutersDataOutput) Orders() GetCloudRoutersDataOrderArrayOutput {
+	return o.ApplyT(func(v GetCloudRoutersData) []GetCloudRoutersDataOrder { return v.Orders }).(GetCloudRoutersDataOrderArrayOutput)
+}
+
+// Fabric Cloud Router Package Type
+func (o GetCloudRoutersDataOutput) Packages() GetCloudRoutersDataPackageArrayOutput {
+	return o.ApplyT(func(v GetCloudRoutersData) []GetCloudRoutersDataPackage { return v.Packages }).(GetCloudRoutersDataPackageArrayOutput)
+}
+
+// Customer resource hierarchy project information. Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
+func (o GetCloudRoutersDataOutput) Projects() GetCloudRoutersDataProjectArrayOutput {
+	return o.ApplyT(func(v GetCloudRoutersData) []GetCloudRoutersDataProject { return v.Projects }).(GetCloudRoutersDataProjectArrayOutput)
+}
+
+// Fabric Cloud Router overall state
+func (o GetCloudRoutersDataOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudRoutersData) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Defines the FCR type like; XF_ROUTER
+func (o GetCloudRoutersDataOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudRoutersData) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Equinix-assigned Fabric Cloud Router identifier
+func (o GetCloudRoutersDataOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudRoutersData) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type GetCloudRoutersDataArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudRoutersDataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudRoutersData)(nil)).Elem()
+}
+
+func (o GetCloudRoutersDataArrayOutput) ToGetCloudRoutersDataArrayOutput() GetCloudRoutersDataArrayOutput {
+	return o
+}
+
+func (o GetCloudRoutersDataArrayOutput) ToGetCloudRoutersDataArrayOutputWithContext(ctx context.Context) GetCloudRoutersDataArrayOutput {
+	return o
+}
+
+func (o GetCloudRoutersDataArrayOutput) Index(i pulumi.IntInput) GetCloudRoutersDataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudRoutersData {
+		return vs[0].([]GetCloudRoutersData)[vs[1].(int)]
+	}).(GetCloudRoutersDataOutput)
+}
+
+type GetCloudRoutersDataAccount struct {
+	// Account Number
+	AccountNumber int `pulumi:"accountNumber"`
+}
+
+// GetCloudRoutersDataAccountInput is an input type that accepts GetCloudRoutersDataAccountArgs and GetCloudRoutersDataAccountOutput values.
+// You can construct a concrete instance of `GetCloudRoutersDataAccountInput` via:
+//
+//	GetCloudRoutersDataAccountArgs{...}
+type GetCloudRoutersDataAccountInput interface {
+	pulumi.Input
+
+	ToGetCloudRoutersDataAccountOutput() GetCloudRoutersDataAccountOutput
+	ToGetCloudRoutersDataAccountOutputWithContext(context.Context) GetCloudRoutersDataAccountOutput
+}
+
+type GetCloudRoutersDataAccountArgs struct {
+	// Account Number
+	AccountNumber pulumi.IntInput `pulumi:"accountNumber"`
+}
+
+func (GetCloudRoutersDataAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudRoutersDataAccount)(nil)).Elem()
+}
+
+func (i GetCloudRoutersDataAccountArgs) ToGetCloudRoutersDataAccountOutput() GetCloudRoutersDataAccountOutput {
+	return i.ToGetCloudRoutersDataAccountOutputWithContext(context.Background())
+}
+
+func (i GetCloudRoutersDataAccountArgs) ToGetCloudRoutersDataAccountOutputWithContext(ctx context.Context) GetCloudRoutersDataAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudRoutersDataAccountOutput)
+}
+
+// GetCloudRoutersDataAccountArrayInput is an input type that accepts GetCloudRoutersDataAccountArray and GetCloudRoutersDataAccountArrayOutput values.
+// You can construct a concrete instance of `GetCloudRoutersDataAccountArrayInput` via:
+//
+//	GetCloudRoutersDataAccountArray{ GetCloudRoutersDataAccountArgs{...} }
+type GetCloudRoutersDataAccountArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudRoutersDataAccountArrayOutput() GetCloudRoutersDataAccountArrayOutput
+	ToGetCloudRoutersDataAccountArrayOutputWithContext(context.Context) GetCloudRoutersDataAccountArrayOutput
+}
+
+type GetCloudRoutersDataAccountArray []GetCloudRoutersDataAccountInput
+
+func (GetCloudRoutersDataAccountArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudRoutersDataAccount)(nil)).Elem()
+}
+
+func (i GetCloudRoutersDataAccountArray) ToGetCloudRoutersDataAccountArrayOutput() GetCloudRoutersDataAccountArrayOutput {
+	return i.ToGetCloudRoutersDataAccountArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudRoutersDataAccountArray) ToGetCloudRoutersDataAccountArrayOutputWithContext(ctx context.Context) GetCloudRoutersDataAccountArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudRoutersDataAccountArrayOutput)
+}
+
+type GetCloudRoutersDataAccountOutput struct{ *pulumi.OutputState }
+
+func (GetCloudRoutersDataAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudRoutersDataAccount)(nil)).Elem()
+}
+
+func (o GetCloudRoutersDataAccountOutput) ToGetCloudRoutersDataAccountOutput() GetCloudRoutersDataAccountOutput {
+	return o
+}
+
+func (o GetCloudRoutersDataAccountOutput) ToGetCloudRoutersDataAccountOutputWithContext(ctx context.Context) GetCloudRoutersDataAccountOutput {
+	return o
+}
+
+// Account Number
+func (o GetCloudRoutersDataAccountOutput) AccountNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudRoutersDataAccount) int { return v.AccountNumber }).(pulumi.IntOutput)
+}
+
+type GetCloudRoutersDataAccountArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudRoutersDataAccountArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudRoutersDataAccount)(nil)).Elem()
+}
+
+func (o GetCloudRoutersDataAccountArrayOutput) ToGetCloudRoutersDataAccountArrayOutput() GetCloudRoutersDataAccountArrayOutput {
+	return o
+}
+
+func (o GetCloudRoutersDataAccountArrayOutput) ToGetCloudRoutersDataAccountArrayOutputWithContext(ctx context.Context) GetCloudRoutersDataAccountArrayOutput {
+	return o
+}
+
+func (o GetCloudRoutersDataAccountArrayOutput) Index(i pulumi.IntInput) GetCloudRoutersDataAccountOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudRoutersDataAccount {
+		return vs[0].([]GetCloudRoutersDataAccount)[vs[1].(int)]
+	}).(GetCloudRoutersDataAccountOutput)
+}
+
+type GetCloudRoutersDataChangeLog struct {
+	// Created by User Key
+	CreatedBy string `pulumi:"createdBy"`
+	// Created by User Email Address
+	CreatedByEmail string `pulumi:"createdByEmail"`
+	// Created by User Full Name
+	CreatedByFullName string `pulumi:"createdByFullName"`
+	// Created by Date and Time
+	CreatedDateTime string `pulumi:"createdDateTime"`
+	// Deleted by User Key
+	DeletedBy string `pulumi:"deletedBy"`
+	// Deleted by User Email Address
+	DeletedByEmail string `pulumi:"deletedByEmail"`
+	// Deleted by User Full Name
+	DeletedByFullName string `pulumi:"deletedByFullName"`
+	// Deleted by Date and Time
+	DeletedDateTime string `pulumi:"deletedDateTime"`
+	// Updated by User Key
+	UpdatedBy string `pulumi:"updatedBy"`
+	// Updated by User Email Address
+	UpdatedByEmail string `pulumi:"updatedByEmail"`
+	// Updated by User Full Name
+	UpdatedByFullName string `pulumi:"updatedByFullName"`
+	// Updated by Date and Time
+	UpdatedDateTime string `pulumi:"updatedDateTime"`
+}
+
+// GetCloudRoutersDataChangeLogInput is an input type that accepts GetCloudRoutersDataChangeLogArgs and GetCloudRoutersDataChangeLogOutput values.
+// You can construct a concrete instance of `GetCloudRoutersDataChangeLogInput` via:
+//
+//	GetCloudRoutersDataChangeLogArgs{...}
+type GetCloudRoutersDataChangeLogInput interface {
+	pulumi.Input
+
+	ToGetCloudRoutersDataChangeLogOutput() GetCloudRoutersDataChangeLogOutput
+	ToGetCloudRoutersDataChangeLogOutputWithContext(context.Context) GetCloudRoutersDataChangeLogOutput
+}
+
+type GetCloudRoutersDataChangeLogArgs struct {
+	// Created by User Key
+	CreatedBy pulumi.StringInput `pulumi:"createdBy"`
+	// Created by User Email Address
+	CreatedByEmail pulumi.StringInput `pulumi:"createdByEmail"`
+	// Created by User Full Name
+	CreatedByFullName pulumi.StringInput `pulumi:"createdByFullName"`
+	// Created by Date and Time
+	CreatedDateTime pulumi.StringInput `pulumi:"createdDateTime"`
+	// Deleted by User Key
+	DeletedBy pulumi.StringInput `pulumi:"deletedBy"`
+	// Deleted by User Email Address
+	DeletedByEmail pulumi.StringInput `pulumi:"deletedByEmail"`
+	// Deleted by User Full Name
+	DeletedByFullName pulumi.StringInput `pulumi:"deletedByFullName"`
+	// Deleted by Date and Time
+	DeletedDateTime pulumi.StringInput `pulumi:"deletedDateTime"`
+	// Updated by User Key
+	UpdatedBy pulumi.StringInput `pulumi:"updatedBy"`
+	// Updated by User Email Address
+	UpdatedByEmail pulumi.StringInput `pulumi:"updatedByEmail"`
+	// Updated by User Full Name
+	UpdatedByFullName pulumi.StringInput `pulumi:"updatedByFullName"`
+	// Updated by Date and Time
+	UpdatedDateTime pulumi.StringInput `pulumi:"updatedDateTime"`
+}
+
+func (GetCloudRoutersDataChangeLogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudRoutersDataChangeLog)(nil)).Elem()
+}
+
+func (i GetCloudRoutersDataChangeLogArgs) ToGetCloudRoutersDataChangeLogOutput() GetCloudRoutersDataChangeLogOutput {
+	return i.ToGetCloudRoutersDataChangeLogOutputWithContext(context.Background())
+}
+
+func (i GetCloudRoutersDataChangeLogArgs) ToGetCloudRoutersDataChangeLogOutputWithContext(ctx context.Context) GetCloudRoutersDataChangeLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudRoutersDataChangeLogOutput)
+}
+
+// GetCloudRoutersDataChangeLogArrayInput is an input type that accepts GetCloudRoutersDataChangeLogArray and GetCloudRoutersDataChangeLogArrayOutput values.
+// You can construct a concrete instance of `GetCloudRoutersDataChangeLogArrayInput` via:
+//
+//	GetCloudRoutersDataChangeLogArray{ GetCloudRoutersDataChangeLogArgs{...} }
+type GetCloudRoutersDataChangeLogArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudRoutersDataChangeLogArrayOutput() GetCloudRoutersDataChangeLogArrayOutput
+	ToGetCloudRoutersDataChangeLogArrayOutputWithContext(context.Context) GetCloudRoutersDataChangeLogArrayOutput
+}
+
+type GetCloudRoutersDataChangeLogArray []GetCloudRoutersDataChangeLogInput
+
+func (GetCloudRoutersDataChangeLogArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudRoutersDataChangeLog)(nil)).Elem()
+}
+
+func (i GetCloudRoutersDataChangeLogArray) ToGetCloudRoutersDataChangeLogArrayOutput() GetCloudRoutersDataChangeLogArrayOutput {
+	return i.ToGetCloudRoutersDataChangeLogArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudRoutersDataChangeLogArray) ToGetCloudRoutersDataChangeLogArrayOutputWithContext(ctx context.Context) GetCloudRoutersDataChangeLogArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudRoutersDataChangeLogArrayOutput)
+}
+
+type GetCloudRoutersDataChangeLogOutput struct{ *pulumi.OutputState }
+
+func (GetCloudRoutersDataChangeLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudRoutersDataChangeLog)(nil)).Elem()
+}
+
+func (o GetCloudRoutersDataChangeLogOutput) ToGetCloudRoutersDataChangeLogOutput() GetCloudRoutersDataChangeLogOutput {
+	return o
+}
+
+func (o GetCloudRoutersDataChangeLogOutput) ToGetCloudRoutersDataChangeLogOutputWithContext(ctx context.Context) GetCloudRoutersDataChangeLogOutput {
+	return o
+}
+
+// Created by User Key
+func (o GetCloudRoutersDataChangeLogOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudRoutersDataChangeLog) string { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// Created by User Email Address
+func (o GetCloudRoutersDataChangeLogOutput) CreatedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudRoutersDataChangeLog) string { return v.CreatedByEmail }).(pulumi.StringOutput)
+}
+
+// Created by User Full Name
+func (o GetCloudRoutersDataChangeLogOutput) CreatedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudRoutersDataChangeLog) string { return v.CreatedByFullName }).(pulumi.StringOutput)
+}
+
+// Created by Date and Time
+func (o GetCloudRoutersDataChangeLogOutput) CreatedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudRoutersDataChangeLog) string { return v.CreatedDateTime }).(pulumi.StringOutput)
+}
+
+// Deleted by User Key
+func (o GetCloudRoutersDataChangeLogOutput) DeletedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudRoutersDataChangeLog) string { return v.DeletedBy }).(pulumi.StringOutput)
+}
+
+// Deleted by User Email Address
+func (o GetCloudRoutersDataChangeLogOutput) DeletedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudRoutersDataChangeLog) string { return v.DeletedByEmail }).(pulumi.StringOutput)
+}
+
+// Deleted by User Full Name
+func (o GetCloudRoutersDataChangeLogOutput) DeletedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudRoutersDataChangeLog) string { return v.DeletedByFullName }).(pulumi.StringOutput)
+}
+
+// Deleted by Date and Time
+func (o GetCloudRoutersDataChangeLogOutput) DeletedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudRoutersDataChangeLog) string { return v.DeletedDateTime }).(pulumi.StringOutput)
+}
+
+// Updated by User Key
+func (o GetCloudRoutersDataChangeLogOutput) UpdatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudRoutersDataChangeLog) string { return v.UpdatedBy }).(pulumi.StringOutput)
+}
+
+// Updated by User Email Address
+func (o GetCloudRoutersDataChangeLogOutput) UpdatedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudRoutersDataChangeLog) string { return v.UpdatedByEmail }).(pulumi.StringOutput)
+}
+
+// Updated by User Full Name
+func (o GetCloudRoutersDataChangeLogOutput) UpdatedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudRoutersDataChangeLog) string { return v.UpdatedByFullName }).(pulumi.StringOutput)
+}
+
+// Updated by Date and Time
+func (o GetCloudRoutersDataChangeLogOutput) UpdatedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudRoutersDataChangeLog) string { return v.UpdatedDateTime }).(pulumi.StringOutput)
+}
+
+type GetCloudRoutersDataChangeLogArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudRoutersDataChangeLogArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudRoutersDataChangeLog)(nil)).Elem()
+}
+
+func (o GetCloudRoutersDataChangeLogArrayOutput) ToGetCloudRoutersDataChangeLogArrayOutput() GetCloudRoutersDataChangeLogArrayOutput {
+	return o
+}
+
+func (o GetCloudRoutersDataChangeLogArrayOutput) ToGetCloudRoutersDataChangeLogArrayOutputWithContext(ctx context.Context) GetCloudRoutersDataChangeLogArrayOutput {
+	return o
+}
+
+func (o GetCloudRoutersDataChangeLogArrayOutput) Index(i pulumi.IntInput) GetCloudRoutersDataChangeLogOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudRoutersDataChangeLog {
+		return vs[0].([]GetCloudRoutersDataChangeLog)[vs[1].(int)]
+	}).(GetCloudRoutersDataChangeLogOutput)
+}
+
+type GetCloudRoutersDataLocation struct {
+	// IBX Code
+	Ibx string `pulumi:"ibx"`
+	// Access point metro code
+	MetroCode string `pulumi:"metroCode"`
+	// Access point metro name
+	MetroName string `pulumi:"metroName"`
+	// Access point region
+	Region string `pulumi:"region"`
+}
+
+// GetCloudRoutersDataLocationInput is an input type that accepts GetCloudRoutersDataLocationArgs and GetCloudRoutersDataLocationOutput values.
+// You can construct a concrete instance of `GetCloudRoutersDataLocationInput` via:
+//
+//	GetCloudRoutersDataLocationArgs{...}
+type GetCloudRoutersDataLocationInput interface {
+	pulumi.Input
+
+	ToGetCloudRoutersDataLocationOutput() GetCloudRoutersDataLocationOutput
+	ToGetCloudRoutersDataLocationOutputWithContext(context.Context) GetCloudRoutersDataLocationOutput
+}
+
+type GetCloudRoutersDataLocationArgs struct {
+	// IBX Code
+	Ibx pulumi.StringInput `pulumi:"ibx"`
+	// Access point metro code
+	MetroCode pulumi.StringInput `pulumi:"metroCode"`
+	// Access point metro name
+	MetroName pulumi.StringInput `pulumi:"metroName"`
+	// Access point region
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (GetCloudRoutersDataLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudRoutersDataLocation)(nil)).Elem()
+}
+
+func (i GetCloudRoutersDataLocationArgs) ToGetCloudRoutersDataLocationOutput() GetCloudRoutersDataLocationOutput {
+	return i.ToGetCloudRoutersDataLocationOutputWithContext(context.Background())
+}
+
+func (i GetCloudRoutersDataLocationArgs) ToGetCloudRoutersDataLocationOutputWithContext(ctx context.Context) GetCloudRoutersDataLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudRoutersDataLocationOutput)
+}
+
+// GetCloudRoutersDataLocationArrayInput is an input type that accepts GetCloudRoutersDataLocationArray and GetCloudRoutersDataLocationArrayOutput values.
+// You can construct a concrete instance of `GetCloudRoutersDataLocationArrayInput` via:
+//
+//	GetCloudRoutersDataLocationArray{ GetCloudRoutersDataLocationArgs{...} }
+type GetCloudRoutersDataLocationArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudRoutersDataLocationArrayOutput() GetCloudRoutersDataLocationArrayOutput
+	ToGetCloudRoutersDataLocationArrayOutputWithContext(context.Context) GetCloudRoutersDataLocationArrayOutput
+}
+
+type GetCloudRoutersDataLocationArray []GetCloudRoutersDataLocationInput
+
+func (GetCloudRoutersDataLocationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudRoutersDataLocation)(nil)).Elem()
+}
+
+func (i GetCloudRoutersDataLocationArray) ToGetCloudRoutersDataLocationArrayOutput() GetCloudRoutersDataLocationArrayOutput {
+	return i.ToGetCloudRoutersDataLocationArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudRoutersDataLocationArray) ToGetCloudRoutersDataLocationArrayOutputWithContext(ctx context.Context) GetCloudRoutersDataLocationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudRoutersDataLocationArrayOutput)
+}
+
+type GetCloudRoutersDataLocationOutput struct{ *pulumi.OutputState }
+
+func (GetCloudRoutersDataLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudRoutersDataLocation)(nil)).Elem()
+}
+
+func (o GetCloudRoutersDataLocationOutput) ToGetCloudRoutersDataLocationOutput() GetCloudRoutersDataLocationOutput {
+	return o
+}
+
+func (o GetCloudRoutersDataLocationOutput) ToGetCloudRoutersDataLocationOutputWithContext(ctx context.Context) GetCloudRoutersDataLocationOutput {
+	return o
+}
+
+// IBX Code
+func (o GetCloudRoutersDataLocationOutput) Ibx() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudRoutersDataLocation) string { return v.Ibx }).(pulumi.StringOutput)
+}
+
+// Access point metro code
+func (o GetCloudRoutersDataLocationOutput) MetroCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudRoutersDataLocation) string { return v.MetroCode }).(pulumi.StringOutput)
+}
+
+// Access point metro name
+func (o GetCloudRoutersDataLocationOutput) MetroName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudRoutersDataLocation) string { return v.MetroName }).(pulumi.StringOutput)
+}
+
+// Access point region
+func (o GetCloudRoutersDataLocationOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudRoutersDataLocation) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type GetCloudRoutersDataLocationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudRoutersDataLocationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudRoutersDataLocation)(nil)).Elem()
+}
+
+func (o GetCloudRoutersDataLocationArrayOutput) ToGetCloudRoutersDataLocationArrayOutput() GetCloudRoutersDataLocationArrayOutput {
+	return o
+}
+
+func (o GetCloudRoutersDataLocationArrayOutput) ToGetCloudRoutersDataLocationArrayOutputWithContext(ctx context.Context) GetCloudRoutersDataLocationArrayOutput {
+	return o
+}
+
+func (o GetCloudRoutersDataLocationArrayOutput) Index(i pulumi.IntInput) GetCloudRoutersDataLocationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudRoutersDataLocation {
+		return vs[0].([]GetCloudRoutersDataLocation)[vs[1].(int)]
+	}).(GetCloudRoutersDataLocationOutput)
+}
+
+type GetCloudRoutersDataNotification struct {
+	// Array of contact emails
+	Emails []string `pulumi:"emails"`
+	// Send interval
+	SendInterval *string `pulumi:"sendInterval"`
+	// Notification Type - ALL,CONNECTION_APPROVAL,SALES_REP_NOTIFICATIONS, NOTIFICATIONS
+	Type string `pulumi:"type"`
+}
+
+// GetCloudRoutersDataNotificationInput is an input type that accepts GetCloudRoutersDataNotificationArgs and GetCloudRoutersDataNotificationOutput values.
+// You can construct a concrete instance of `GetCloudRoutersDataNotificationInput` via:
+//
+//	GetCloudRoutersDataNotificationArgs{...}
+type GetCloudRoutersDataNotificationInput interface {
+	pulumi.Input
+
+	ToGetCloudRoutersDataNotificationOutput() GetCloudRoutersDataNotificationOutput
+	ToGetCloudRoutersDataNotificationOutputWithContext(context.Context) GetCloudRoutersDataNotificationOutput
+}
+
+type GetCloudRoutersDataNotificationArgs struct {
+	// Array of contact emails
+	Emails pulumi.StringArrayInput `pulumi:"emails"`
+	// Send interval
+	SendInterval pulumi.StringPtrInput `pulumi:"sendInterval"`
+	// Notification Type - ALL,CONNECTION_APPROVAL,SALES_REP_NOTIFICATIONS, NOTIFICATIONS
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetCloudRoutersDataNotificationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudRoutersDataNotification)(nil)).Elem()
+}
+
+func (i GetCloudRoutersDataNotificationArgs) ToGetCloudRoutersDataNotificationOutput() GetCloudRoutersDataNotificationOutput {
+	return i.ToGetCloudRoutersDataNotificationOutputWithContext(context.Background())
+}
+
+func (i GetCloudRoutersDataNotificationArgs) ToGetCloudRoutersDataNotificationOutputWithContext(ctx context.Context) GetCloudRoutersDataNotificationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudRoutersDataNotificationOutput)
+}
+
+// GetCloudRoutersDataNotificationArrayInput is an input type that accepts GetCloudRoutersDataNotificationArray and GetCloudRoutersDataNotificationArrayOutput values.
+// You can construct a concrete instance of `GetCloudRoutersDataNotificationArrayInput` via:
+//
+//	GetCloudRoutersDataNotificationArray{ GetCloudRoutersDataNotificationArgs{...} }
+type GetCloudRoutersDataNotificationArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudRoutersDataNotificationArrayOutput() GetCloudRoutersDataNotificationArrayOutput
+	ToGetCloudRoutersDataNotificationArrayOutputWithContext(context.Context) GetCloudRoutersDataNotificationArrayOutput
+}
+
+type GetCloudRoutersDataNotificationArray []GetCloudRoutersDataNotificationInput
+
+func (GetCloudRoutersDataNotificationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudRoutersDataNotification)(nil)).Elem()
+}
+
+func (i GetCloudRoutersDataNotificationArray) ToGetCloudRoutersDataNotificationArrayOutput() GetCloudRoutersDataNotificationArrayOutput {
+	return i.ToGetCloudRoutersDataNotificationArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudRoutersDataNotificationArray) ToGetCloudRoutersDataNotificationArrayOutputWithContext(ctx context.Context) GetCloudRoutersDataNotificationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudRoutersDataNotificationArrayOutput)
+}
+
+type GetCloudRoutersDataNotificationOutput struct{ *pulumi.OutputState }
+
+func (GetCloudRoutersDataNotificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudRoutersDataNotification)(nil)).Elem()
+}
+
+func (o GetCloudRoutersDataNotificationOutput) ToGetCloudRoutersDataNotificationOutput() GetCloudRoutersDataNotificationOutput {
+	return o
+}
+
+func (o GetCloudRoutersDataNotificationOutput) ToGetCloudRoutersDataNotificationOutputWithContext(ctx context.Context) GetCloudRoutersDataNotificationOutput {
+	return o
+}
+
+// Array of contact emails
+func (o GetCloudRoutersDataNotificationOutput) Emails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCloudRoutersDataNotification) []string { return v.Emails }).(pulumi.StringArrayOutput)
+}
+
+// Send interval
+func (o GetCloudRoutersDataNotificationOutput) SendInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCloudRoutersDataNotification) *string { return v.SendInterval }).(pulumi.StringPtrOutput)
+}
+
+// Notification Type - ALL,CONNECTION_APPROVAL,SALES_REP_NOTIFICATIONS, NOTIFICATIONS
+func (o GetCloudRoutersDataNotificationOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudRoutersDataNotification) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetCloudRoutersDataNotificationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudRoutersDataNotificationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudRoutersDataNotification)(nil)).Elem()
+}
+
+func (o GetCloudRoutersDataNotificationArrayOutput) ToGetCloudRoutersDataNotificationArrayOutput() GetCloudRoutersDataNotificationArrayOutput {
+	return o
+}
+
+func (o GetCloudRoutersDataNotificationArrayOutput) ToGetCloudRoutersDataNotificationArrayOutputWithContext(ctx context.Context) GetCloudRoutersDataNotificationArrayOutput {
+	return o
+}
+
+func (o GetCloudRoutersDataNotificationArrayOutput) Index(i pulumi.IntInput) GetCloudRoutersDataNotificationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudRoutersDataNotification {
+		return vs[0].([]GetCloudRoutersDataNotification)[vs[1].(int)]
+	}).(GetCloudRoutersDataNotificationOutput)
+}
+
+type GetCloudRoutersDataOrder struct {
+	// Billing tier for connection bandwidth
+	BillingTier string `pulumi:"billingTier"`
+	// Order Identification
+	OrderId string `pulumi:"orderId"`
+	// Order Reference Number
+	OrderNumber string `pulumi:"orderNumber"`
+	// Purchase order number
+	PurchaseOrderNumber string `pulumi:"purchaseOrderNumber"`
+}
+
+// GetCloudRoutersDataOrderInput is an input type that accepts GetCloudRoutersDataOrderArgs and GetCloudRoutersDataOrderOutput values.
+// You can construct a concrete instance of `GetCloudRoutersDataOrderInput` via:
+//
+//	GetCloudRoutersDataOrderArgs{...}
+type GetCloudRoutersDataOrderInput interface {
+	pulumi.Input
+
+	ToGetCloudRoutersDataOrderOutput() GetCloudRoutersDataOrderOutput
+	ToGetCloudRoutersDataOrderOutputWithContext(context.Context) GetCloudRoutersDataOrderOutput
+}
+
+type GetCloudRoutersDataOrderArgs struct {
+	// Billing tier for connection bandwidth
+	BillingTier pulumi.StringInput `pulumi:"billingTier"`
+	// Order Identification
+	OrderId pulumi.StringInput `pulumi:"orderId"`
+	// Order Reference Number
+	OrderNumber pulumi.StringInput `pulumi:"orderNumber"`
+	// Purchase order number
+	PurchaseOrderNumber pulumi.StringInput `pulumi:"purchaseOrderNumber"`
+}
+
+func (GetCloudRoutersDataOrderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudRoutersDataOrder)(nil)).Elem()
+}
+
+func (i GetCloudRoutersDataOrderArgs) ToGetCloudRoutersDataOrderOutput() GetCloudRoutersDataOrderOutput {
+	return i.ToGetCloudRoutersDataOrderOutputWithContext(context.Background())
+}
+
+func (i GetCloudRoutersDataOrderArgs) ToGetCloudRoutersDataOrderOutputWithContext(ctx context.Context) GetCloudRoutersDataOrderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudRoutersDataOrderOutput)
+}
+
+// GetCloudRoutersDataOrderArrayInput is an input type that accepts GetCloudRoutersDataOrderArray and GetCloudRoutersDataOrderArrayOutput values.
+// You can construct a concrete instance of `GetCloudRoutersDataOrderArrayInput` via:
+//
+//	GetCloudRoutersDataOrderArray{ GetCloudRoutersDataOrderArgs{...} }
+type GetCloudRoutersDataOrderArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudRoutersDataOrderArrayOutput() GetCloudRoutersDataOrderArrayOutput
+	ToGetCloudRoutersDataOrderArrayOutputWithContext(context.Context) GetCloudRoutersDataOrderArrayOutput
+}
+
+type GetCloudRoutersDataOrderArray []GetCloudRoutersDataOrderInput
+
+func (GetCloudRoutersDataOrderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudRoutersDataOrder)(nil)).Elem()
+}
+
+func (i GetCloudRoutersDataOrderArray) ToGetCloudRoutersDataOrderArrayOutput() GetCloudRoutersDataOrderArrayOutput {
+	return i.ToGetCloudRoutersDataOrderArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudRoutersDataOrderArray) ToGetCloudRoutersDataOrderArrayOutputWithContext(ctx context.Context) GetCloudRoutersDataOrderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudRoutersDataOrderArrayOutput)
+}
+
+type GetCloudRoutersDataOrderOutput struct{ *pulumi.OutputState }
+
+func (GetCloudRoutersDataOrderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudRoutersDataOrder)(nil)).Elem()
+}
+
+func (o GetCloudRoutersDataOrderOutput) ToGetCloudRoutersDataOrderOutput() GetCloudRoutersDataOrderOutput {
+	return o
+}
+
+func (o GetCloudRoutersDataOrderOutput) ToGetCloudRoutersDataOrderOutputWithContext(ctx context.Context) GetCloudRoutersDataOrderOutput {
+	return o
+}
+
+// Billing tier for connection bandwidth
+func (o GetCloudRoutersDataOrderOutput) BillingTier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudRoutersDataOrder) string { return v.BillingTier }).(pulumi.StringOutput)
+}
+
+// Order Identification
+func (o GetCloudRoutersDataOrderOutput) OrderId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudRoutersDataOrder) string { return v.OrderId }).(pulumi.StringOutput)
+}
+
+// Order Reference Number
+func (o GetCloudRoutersDataOrderOutput) OrderNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudRoutersDataOrder) string { return v.OrderNumber }).(pulumi.StringOutput)
+}
+
+// Purchase order number
+func (o GetCloudRoutersDataOrderOutput) PurchaseOrderNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudRoutersDataOrder) string { return v.PurchaseOrderNumber }).(pulumi.StringOutput)
+}
+
+type GetCloudRoutersDataOrderArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudRoutersDataOrderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudRoutersDataOrder)(nil)).Elem()
+}
+
+func (o GetCloudRoutersDataOrderArrayOutput) ToGetCloudRoutersDataOrderArrayOutput() GetCloudRoutersDataOrderArrayOutput {
+	return o
+}
+
+func (o GetCloudRoutersDataOrderArrayOutput) ToGetCloudRoutersDataOrderArrayOutputWithContext(ctx context.Context) GetCloudRoutersDataOrderArrayOutput {
+	return o
+}
+
+func (o GetCloudRoutersDataOrderArrayOutput) Index(i pulumi.IntInput) GetCloudRoutersDataOrderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudRoutersDataOrder {
+		return vs[0].([]GetCloudRoutersDataOrder)[vs[1].(int)]
+	}).(GetCloudRoutersDataOrderOutput)
+}
+
+type GetCloudRoutersDataPackage struct {
+	// Fabric Cloud Router package code
+	Code string `pulumi:"code"`
+}
+
+// GetCloudRoutersDataPackageInput is an input type that accepts GetCloudRoutersDataPackageArgs and GetCloudRoutersDataPackageOutput values.
+// You can construct a concrete instance of `GetCloudRoutersDataPackageInput` via:
+//
+//	GetCloudRoutersDataPackageArgs{...}
+type GetCloudRoutersDataPackageInput interface {
+	pulumi.Input
+
+	ToGetCloudRoutersDataPackageOutput() GetCloudRoutersDataPackageOutput
+	ToGetCloudRoutersDataPackageOutputWithContext(context.Context) GetCloudRoutersDataPackageOutput
+}
+
+type GetCloudRoutersDataPackageArgs struct {
+	// Fabric Cloud Router package code
+	Code pulumi.StringInput `pulumi:"code"`
+}
+
+func (GetCloudRoutersDataPackageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudRoutersDataPackage)(nil)).Elem()
+}
+
+func (i GetCloudRoutersDataPackageArgs) ToGetCloudRoutersDataPackageOutput() GetCloudRoutersDataPackageOutput {
+	return i.ToGetCloudRoutersDataPackageOutputWithContext(context.Background())
+}
+
+func (i GetCloudRoutersDataPackageArgs) ToGetCloudRoutersDataPackageOutputWithContext(ctx context.Context) GetCloudRoutersDataPackageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudRoutersDataPackageOutput)
+}
+
+// GetCloudRoutersDataPackageArrayInput is an input type that accepts GetCloudRoutersDataPackageArray and GetCloudRoutersDataPackageArrayOutput values.
+// You can construct a concrete instance of `GetCloudRoutersDataPackageArrayInput` via:
+//
+//	GetCloudRoutersDataPackageArray{ GetCloudRoutersDataPackageArgs{...} }
+type GetCloudRoutersDataPackageArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudRoutersDataPackageArrayOutput() GetCloudRoutersDataPackageArrayOutput
+	ToGetCloudRoutersDataPackageArrayOutputWithContext(context.Context) GetCloudRoutersDataPackageArrayOutput
+}
+
+type GetCloudRoutersDataPackageArray []GetCloudRoutersDataPackageInput
+
+func (GetCloudRoutersDataPackageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudRoutersDataPackage)(nil)).Elem()
+}
+
+func (i GetCloudRoutersDataPackageArray) ToGetCloudRoutersDataPackageArrayOutput() GetCloudRoutersDataPackageArrayOutput {
+	return i.ToGetCloudRoutersDataPackageArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudRoutersDataPackageArray) ToGetCloudRoutersDataPackageArrayOutputWithContext(ctx context.Context) GetCloudRoutersDataPackageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudRoutersDataPackageArrayOutput)
+}
+
+type GetCloudRoutersDataPackageOutput struct{ *pulumi.OutputState }
+
+func (GetCloudRoutersDataPackageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudRoutersDataPackage)(nil)).Elem()
+}
+
+func (o GetCloudRoutersDataPackageOutput) ToGetCloudRoutersDataPackageOutput() GetCloudRoutersDataPackageOutput {
+	return o
+}
+
+func (o GetCloudRoutersDataPackageOutput) ToGetCloudRoutersDataPackageOutputWithContext(ctx context.Context) GetCloudRoutersDataPackageOutput {
+	return o
+}
+
+// Fabric Cloud Router package code
+func (o GetCloudRoutersDataPackageOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudRoutersDataPackage) string { return v.Code }).(pulumi.StringOutput)
+}
+
+type GetCloudRoutersDataPackageArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudRoutersDataPackageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudRoutersDataPackage)(nil)).Elem()
+}
+
+func (o GetCloudRoutersDataPackageArrayOutput) ToGetCloudRoutersDataPackageArrayOutput() GetCloudRoutersDataPackageArrayOutput {
+	return o
+}
+
+func (o GetCloudRoutersDataPackageArrayOutput) ToGetCloudRoutersDataPackageArrayOutputWithContext(ctx context.Context) GetCloudRoutersDataPackageArrayOutput {
+	return o
+}
+
+func (o GetCloudRoutersDataPackageArrayOutput) Index(i pulumi.IntInput) GetCloudRoutersDataPackageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudRoutersDataPackage {
+		return vs[0].([]GetCloudRoutersDataPackage)[vs[1].(int)]
+	}).(GetCloudRoutersDataPackageOutput)
+}
+
+type GetCloudRoutersDataProject struct {
+	// Unique Resource URL
+	Href string `pulumi:"href"`
+	// Project Id
+	ProjectId string `pulumi:"projectId"`
+}
+
+// GetCloudRoutersDataProjectInput is an input type that accepts GetCloudRoutersDataProjectArgs and GetCloudRoutersDataProjectOutput values.
+// You can construct a concrete instance of `GetCloudRoutersDataProjectInput` via:
+//
+//	GetCloudRoutersDataProjectArgs{...}
+type GetCloudRoutersDataProjectInput interface {
+	pulumi.Input
+
+	ToGetCloudRoutersDataProjectOutput() GetCloudRoutersDataProjectOutput
+	ToGetCloudRoutersDataProjectOutputWithContext(context.Context) GetCloudRoutersDataProjectOutput
+}
+
+type GetCloudRoutersDataProjectArgs struct {
+	// Unique Resource URL
+	Href pulumi.StringInput `pulumi:"href"`
+	// Project Id
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+}
+
+func (GetCloudRoutersDataProjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudRoutersDataProject)(nil)).Elem()
+}
+
+func (i GetCloudRoutersDataProjectArgs) ToGetCloudRoutersDataProjectOutput() GetCloudRoutersDataProjectOutput {
+	return i.ToGetCloudRoutersDataProjectOutputWithContext(context.Background())
+}
+
+func (i GetCloudRoutersDataProjectArgs) ToGetCloudRoutersDataProjectOutputWithContext(ctx context.Context) GetCloudRoutersDataProjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudRoutersDataProjectOutput)
+}
+
+// GetCloudRoutersDataProjectArrayInput is an input type that accepts GetCloudRoutersDataProjectArray and GetCloudRoutersDataProjectArrayOutput values.
+// You can construct a concrete instance of `GetCloudRoutersDataProjectArrayInput` via:
+//
+//	GetCloudRoutersDataProjectArray{ GetCloudRoutersDataProjectArgs{...} }
+type GetCloudRoutersDataProjectArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudRoutersDataProjectArrayOutput() GetCloudRoutersDataProjectArrayOutput
+	ToGetCloudRoutersDataProjectArrayOutputWithContext(context.Context) GetCloudRoutersDataProjectArrayOutput
+}
+
+type GetCloudRoutersDataProjectArray []GetCloudRoutersDataProjectInput
+
+func (GetCloudRoutersDataProjectArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudRoutersDataProject)(nil)).Elem()
+}
+
+func (i GetCloudRoutersDataProjectArray) ToGetCloudRoutersDataProjectArrayOutput() GetCloudRoutersDataProjectArrayOutput {
+	return i.ToGetCloudRoutersDataProjectArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudRoutersDataProjectArray) ToGetCloudRoutersDataProjectArrayOutputWithContext(ctx context.Context) GetCloudRoutersDataProjectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudRoutersDataProjectArrayOutput)
+}
+
+type GetCloudRoutersDataProjectOutput struct{ *pulumi.OutputState }
+
+func (GetCloudRoutersDataProjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudRoutersDataProject)(nil)).Elem()
+}
+
+func (o GetCloudRoutersDataProjectOutput) ToGetCloudRoutersDataProjectOutput() GetCloudRoutersDataProjectOutput {
+	return o
+}
+
+func (o GetCloudRoutersDataProjectOutput) ToGetCloudRoutersDataProjectOutputWithContext(ctx context.Context) GetCloudRoutersDataProjectOutput {
+	return o
+}
+
+// Unique Resource URL
+func (o GetCloudRoutersDataProjectOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudRoutersDataProject) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// Project Id
+func (o GetCloudRoutersDataProjectOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudRoutersDataProject) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+type GetCloudRoutersDataProjectArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudRoutersDataProjectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudRoutersDataProject)(nil)).Elem()
+}
+
+func (o GetCloudRoutersDataProjectArrayOutput) ToGetCloudRoutersDataProjectArrayOutput() GetCloudRoutersDataProjectArrayOutput {
+	return o
+}
+
+func (o GetCloudRoutersDataProjectArrayOutput) ToGetCloudRoutersDataProjectArrayOutputWithContext(ctx context.Context) GetCloudRoutersDataProjectArrayOutput {
+	return o
+}
+
+func (o GetCloudRoutersDataProjectArrayOutput) Index(i pulumi.IntInput) GetCloudRoutersDataProjectOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudRoutersDataProject {
+		return vs[0].([]GetCloudRoutersDataProject)[vs[1].(int)]
+	}).(GetCloudRoutersDataProjectOutput)
+}
+
+type GetCloudRoutersFilter struct {
+	// Possible operators to use on the filter property. Can be one of the following: [= - equal, != - not equal, > - greater than, >= - greater than or equal to, < - less than, <= - less than or equal to, [NOT] BETWEEN - (not) between, [NOT] LIKE - (not) like, [NOT] IN - (not) in
+	Operator string `pulumi:"operator"`
+	// Boolean flag indicating whether this filter is included in the OR group. There can only be one OR group and it can have a maximum of 3 filters. The OR group only counts as 1 of the 8 possible filters
+	Or *bool `pulumi:"or"`
+	// The API response property which you want to filter your request on. Can be one of the following: "/project/projectId", "/name", "/uuid", "/state", "/location/metroCode", "/location/metroName", "/package/code", "/*"
+	Property string `pulumi:"property"`
+	// The values that you want to apply the property+operator combination to in order to filter your data search
+	Values []string `pulumi:"values"`
+}
+
+// GetCloudRoutersFilterInput is an input type that accepts GetCloudRoutersFilterArgs and GetCloudRoutersFilterOutput values.
+// You can construct a concrete instance of `GetCloudRoutersFilterInput` via:
+//
+//	GetCloudRoutersFilterArgs{...}
+type GetCloudRoutersFilterInput interface {
+	pulumi.Input
+
+	ToGetCloudRoutersFilterOutput() GetCloudRoutersFilterOutput
+	ToGetCloudRoutersFilterOutputWithContext(context.Context) GetCloudRoutersFilterOutput
+}
+
+type GetCloudRoutersFilterArgs struct {
+	// Possible operators to use on the filter property. Can be one of the following: [= - equal, != - not equal, > - greater than, >= - greater than or equal to, < - less than, <= - less than or equal to, [NOT] BETWEEN - (not) between, [NOT] LIKE - (not) like, [NOT] IN - (not) in
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// Boolean flag indicating whether this filter is included in the OR group. There can only be one OR group and it can have a maximum of 3 filters. The OR group only counts as 1 of the 8 possible filters
+	Or pulumi.BoolPtrInput `pulumi:"or"`
+	// The API response property which you want to filter your request on. Can be one of the following: "/project/projectId", "/name", "/uuid", "/state", "/location/metroCode", "/location/metroName", "/package/code", "/*"
+	Property pulumi.StringInput `pulumi:"property"`
+	// The values that you want to apply the property+operator combination to in order to filter your data search
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetCloudRoutersFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudRoutersFilter)(nil)).Elem()
+}
+
+func (i GetCloudRoutersFilterArgs) ToGetCloudRoutersFilterOutput() GetCloudRoutersFilterOutput {
+	return i.ToGetCloudRoutersFilterOutputWithContext(context.Background())
+}
+
+func (i GetCloudRoutersFilterArgs) ToGetCloudRoutersFilterOutputWithContext(ctx context.Context) GetCloudRoutersFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudRoutersFilterOutput)
+}
+
+// GetCloudRoutersFilterArrayInput is an input type that accepts GetCloudRoutersFilterArray and GetCloudRoutersFilterArrayOutput values.
+// You can construct a concrete instance of `GetCloudRoutersFilterArrayInput` via:
+//
+//	GetCloudRoutersFilterArray{ GetCloudRoutersFilterArgs{...} }
+type GetCloudRoutersFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudRoutersFilterArrayOutput() GetCloudRoutersFilterArrayOutput
+	ToGetCloudRoutersFilterArrayOutputWithContext(context.Context) GetCloudRoutersFilterArrayOutput
+}
+
+type GetCloudRoutersFilterArray []GetCloudRoutersFilterInput
+
+func (GetCloudRoutersFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudRoutersFilter)(nil)).Elem()
+}
+
+func (i GetCloudRoutersFilterArray) ToGetCloudRoutersFilterArrayOutput() GetCloudRoutersFilterArrayOutput {
+	return i.ToGetCloudRoutersFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudRoutersFilterArray) ToGetCloudRoutersFilterArrayOutputWithContext(ctx context.Context) GetCloudRoutersFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudRoutersFilterArrayOutput)
+}
+
+type GetCloudRoutersFilterOutput struct{ *pulumi.OutputState }
+
+func (GetCloudRoutersFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudRoutersFilter)(nil)).Elem()
+}
+
+func (o GetCloudRoutersFilterOutput) ToGetCloudRoutersFilterOutput() GetCloudRoutersFilterOutput {
+	return o
+}
+
+func (o GetCloudRoutersFilterOutput) ToGetCloudRoutersFilterOutputWithContext(ctx context.Context) GetCloudRoutersFilterOutput {
+	return o
+}
+
+// Possible operators to use on the filter property. Can be one of the following: [= - equal, != - not equal, > - greater than, >= - greater than or equal to, < - less than, <= - less than or equal to, [NOT] BETWEEN - (not) between, [NOT] LIKE - (not) like, [NOT] IN - (not) in
+func (o GetCloudRoutersFilterOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudRoutersFilter) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// Boolean flag indicating whether this filter is included in the OR group. There can only be one OR group and it can have a maximum of 3 filters. The OR group only counts as 1 of the 8 possible filters
+func (o GetCloudRoutersFilterOutput) Or() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetCloudRoutersFilter) *bool { return v.Or }).(pulumi.BoolPtrOutput)
+}
+
+// The API response property which you want to filter your request on. Can be one of the following: "/project/projectId", "/name", "/uuid", "/state", "/location/metroCode", "/location/metroName", "/package/code", "/*"
+func (o GetCloudRoutersFilterOutput) Property() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudRoutersFilter) string { return v.Property }).(pulumi.StringOutput)
+}
+
+// The values that you want to apply the property+operator combination to in order to filter your data search
+func (o GetCloudRoutersFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCloudRoutersFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetCloudRoutersFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudRoutersFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudRoutersFilter)(nil)).Elem()
+}
+
+func (o GetCloudRoutersFilterArrayOutput) ToGetCloudRoutersFilterArrayOutput() GetCloudRoutersFilterArrayOutput {
+	return o
+}
+
+func (o GetCloudRoutersFilterArrayOutput) ToGetCloudRoutersFilterArrayOutputWithContext(ctx context.Context) GetCloudRoutersFilterArrayOutput {
+	return o
+}
+
+func (o GetCloudRoutersFilterArrayOutput) Index(i pulumi.IntInput) GetCloudRoutersFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudRoutersFilter {
+		return vs[0].([]GetCloudRoutersFilter)[vs[1].(int)]
+	}).(GetCloudRoutersFilterOutput)
+}
+
+type GetCloudRoutersPagination struct {
+	// Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+	Limit *int `pulumi:"limit"`
+	// The page offset for the pagination request. Index of the first element. Default is 0.
+	Offset *int `pulumi:"offset"`
+}
+
+// GetCloudRoutersPaginationInput is an input type that accepts GetCloudRoutersPaginationArgs and GetCloudRoutersPaginationOutput values.
+// You can construct a concrete instance of `GetCloudRoutersPaginationInput` via:
+//
+//	GetCloudRoutersPaginationArgs{...}
+type GetCloudRoutersPaginationInput interface {
+	pulumi.Input
+
+	ToGetCloudRoutersPaginationOutput() GetCloudRoutersPaginationOutput
+	ToGetCloudRoutersPaginationOutputWithContext(context.Context) GetCloudRoutersPaginationOutput
+}
+
+type GetCloudRoutersPaginationArgs struct {
+	// Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+	Limit pulumi.IntPtrInput `pulumi:"limit"`
+	// The page offset for the pagination request. Index of the first element. Default is 0.
+	Offset pulumi.IntPtrInput `pulumi:"offset"`
+}
+
+func (GetCloudRoutersPaginationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudRoutersPagination)(nil)).Elem()
+}
+
+func (i GetCloudRoutersPaginationArgs) ToGetCloudRoutersPaginationOutput() GetCloudRoutersPaginationOutput {
+	return i.ToGetCloudRoutersPaginationOutputWithContext(context.Background())
+}
+
+func (i GetCloudRoutersPaginationArgs) ToGetCloudRoutersPaginationOutputWithContext(ctx context.Context) GetCloudRoutersPaginationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudRoutersPaginationOutput)
+}
+
+func (i GetCloudRoutersPaginationArgs) ToGetCloudRoutersPaginationPtrOutput() GetCloudRoutersPaginationPtrOutput {
+	return i.ToGetCloudRoutersPaginationPtrOutputWithContext(context.Background())
+}
+
+func (i GetCloudRoutersPaginationArgs) ToGetCloudRoutersPaginationPtrOutputWithContext(ctx context.Context) GetCloudRoutersPaginationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudRoutersPaginationOutput).ToGetCloudRoutersPaginationPtrOutputWithContext(ctx)
+}
+
+// GetCloudRoutersPaginationPtrInput is an input type that accepts GetCloudRoutersPaginationArgs, GetCloudRoutersPaginationPtr and GetCloudRoutersPaginationPtrOutput values.
+// You can construct a concrete instance of `GetCloudRoutersPaginationPtrInput` via:
+//
+//	        GetCloudRoutersPaginationArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetCloudRoutersPaginationPtrInput interface {
+	pulumi.Input
+
+	ToGetCloudRoutersPaginationPtrOutput() GetCloudRoutersPaginationPtrOutput
+	ToGetCloudRoutersPaginationPtrOutputWithContext(context.Context) GetCloudRoutersPaginationPtrOutput
+}
+
+type getCloudRoutersPaginationPtrType GetCloudRoutersPaginationArgs
+
+func GetCloudRoutersPaginationPtr(v *GetCloudRoutersPaginationArgs) GetCloudRoutersPaginationPtrInput {
+	return (*getCloudRoutersPaginationPtrType)(v)
+}
+
+func (*getCloudRoutersPaginationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetCloudRoutersPagination)(nil)).Elem()
+}
+
+func (i *getCloudRoutersPaginationPtrType) ToGetCloudRoutersPaginationPtrOutput() GetCloudRoutersPaginationPtrOutput {
+	return i.ToGetCloudRoutersPaginationPtrOutputWithContext(context.Background())
+}
+
+func (i *getCloudRoutersPaginationPtrType) ToGetCloudRoutersPaginationPtrOutputWithContext(ctx context.Context) GetCloudRoutersPaginationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudRoutersPaginationPtrOutput)
+}
+
+type GetCloudRoutersPaginationOutput struct{ *pulumi.OutputState }
+
+func (GetCloudRoutersPaginationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudRoutersPagination)(nil)).Elem()
+}
+
+func (o GetCloudRoutersPaginationOutput) ToGetCloudRoutersPaginationOutput() GetCloudRoutersPaginationOutput {
+	return o
+}
+
+func (o GetCloudRoutersPaginationOutput) ToGetCloudRoutersPaginationOutputWithContext(ctx context.Context) GetCloudRoutersPaginationOutput {
+	return o
+}
+
+func (o GetCloudRoutersPaginationOutput) ToGetCloudRoutersPaginationPtrOutput() GetCloudRoutersPaginationPtrOutput {
+	return o.ToGetCloudRoutersPaginationPtrOutputWithContext(context.Background())
+}
+
+func (o GetCloudRoutersPaginationOutput) ToGetCloudRoutersPaginationPtrOutputWithContext(ctx context.Context) GetCloudRoutersPaginationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetCloudRoutersPagination) *GetCloudRoutersPagination {
+		return &v
+	}).(GetCloudRoutersPaginationPtrOutput)
+}
+
+// Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+func (o GetCloudRoutersPaginationOutput) Limit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetCloudRoutersPagination) *int { return v.Limit }).(pulumi.IntPtrOutput)
+}
+
+// The page offset for the pagination request. Index of the first element. Default is 0.
+func (o GetCloudRoutersPaginationOutput) Offset() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetCloudRoutersPagination) *int { return v.Offset }).(pulumi.IntPtrOutput)
+}
+
+type GetCloudRoutersPaginationPtrOutput struct{ *pulumi.OutputState }
+
+func (GetCloudRoutersPaginationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetCloudRoutersPagination)(nil)).Elem()
+}
+
+func (o GetCloudRoutersPaginationPtrOutput) ToGetCloudRoutersPaginationPtrOutput() GetCloudRoutersPaginationPtrOutput {
+	return o
+}
+
+func (o GetCloudRoutersPaginationPtrOutput) ToGetCloudRoutersPaginationPtrOutputWithContext(ctx context.Context) GetCloudRoutersPaginationPtrOutput {
+	return o
+}
+
+func (o GetCloudRoutersPaginationPtrOutput) Elem() GetCloudRoutersPaginationOutput {
+	return o.ApplyT(func(v *GetCloudRoutersPagination) GetCloudRoutersPagination {
+		if v != nil {
+			return *v
+		}
+		var ret GetCloudRoutersPagination
+		return ret
+	}).(GetCloudRoutersPaginationOutput)
+}
+
+// Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+func (o GetCloudRoutersPaginationPtrOutput) Limit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetCloudRoutersPagination) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Limit
+	}).(pulumi.IntPtrOutput)
+}
+
+// The page offset for the pagination request. Index of the first element. Default is 0.
+func (o GetCloudRoutersPaginationPtrOutput) Offset() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetCloudRoutersPagination) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Offset
+	}).(pulumi.IntPtrOutput)
+}
+
+type GetCloudRoutersSort struct {
+	// The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+	Direction *string `pulumi:"direction"`
+	// The property name to use in sorting. Can be one of the following: [/name, /uuid, /state, /location/metroCode, /location/metroName, /package/code, /changeLog/createdDateTime, /changeLog/updatedDateTime], Defaults to /changeLog/updatedDateTime
+	Property *string `pulumi:"property"`
+}
+
+// GetCloudRoutersSortInput is an input type that accepts GetCloudRoutersSortArgs and GetCloudRoutersSortOutput values.
+// You can construct a concrete instance of `GetCloudRoutersSortInput` via:
+//
+//	GetCloudRoutersSortArgs{...}
+type GetCloudRoutersSortInput interface {
+	pulumi.Input
+
+	ToGetCloudRoutersSortOutput() GetCloudRoutersSortOutput
+	ToGetCloudRoutersSortOutputWithContext(context.Context) GetCloudRoutersSortOutput
+}
+
+type GetCloudRoutersSortArgs struct {
+	// The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	// The property name to use in sorting. Can be one of the following: [/name, /uuid, /state, /location/metroCode, /location/metroName, /package/code, /changeLog/createdDateTime, /changeLog/updatedDateTime], Defaults to /changeLog/updatedDateTime
+	Property pulumi.StringPtrInput `pulumi:"property"`
+}
+
+func (GetCloudRoutersSortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudRoutersSort)(nil)).Elem()
+}
+
+func (i GetCloudRoutersSortArgs) ToGetCloudRoutersSortOutput() GetCloudRoutersSortOutput {
+	return i.ToGetCloudRoutersSortOutputWithContext(context.Background())
+}
+
+func (i GetCloudRoutersSortArgs) ToGetCloudRoutersSortOutputWithContext(ctx context.Context) GetCloudRoutersSortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudRoutersSortOutput)
+}
+
+func (i GetCloudRoutersSortArgs) ToGetCloudRoutersSortPtrOutput() GetCloudRoutersSortPtrOutput {
+	return i.ToGetCloudRoutersSortPtrOutputWithContext(context.Background())
+}
+
+func (i GetCloudRoutersSortArgs) ToGetCloudRoutersSortPtrOutputWithContext(ctx context.Context) GetCloudRoutersSortPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudRoutersSortOutput).ToGetCloudRoutersSortPtrOutputWithContext(ctx)
+}
+
+// GetCloudRoutersSortPtrInput is an input type that accepts GetCloudRoutersSortArgs, GetCloudRoutersSortPtr and GetCloudRoutersSortPtrOutput values.
+// You can construct a concrete instance of `GetCloudRoutersSortPtrInput` via:
+//
+//	        GetCloudRoutersSortArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetCloudRoutersSortPtrInput interface {
+	pulumi.Input
+
+	ToGetCloudRoutersSortPtrOutput() GetCloudRoutersSortPtrOutput
+	ToGetCloudRoutersSortPtrOutputWithContext(context.Context) GetCloudRoutersSortPtrOutput
+}
+
+type getCloudRoutersSortPtrType GetCloudRoutersSortArgs
+
+func GetCloudRoutersSortPtr(v *GetCloudRoutersSortArgs) GetCloudRoutersSortPtrInput {
+	return (*getCloudRoutersSortPtrType)(v)
+}
+
+func (*getCloudRoutersSortPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetCloudRoutersSort)(nil)).Elem()
+}
+
+func (i *getCloudRoutersSortPtrType) ToGetCloudRoutersSortPtrOutput() GetCloudRoutersSortPtrOutput {
+	return i.ToGetCloudRoutersSortPtrOutputWithContext(context.Background())
+}
+
+func (i *getCloudRoutersSortPtrType) ToGetCloudRoutersSortPtrOutputWithContext(ctx context.Context) GetCloudRoutersSortPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudRoutersSortPtrOutput)
+}
+
+type GetCloudRoutersSortOutput struct{ *pulumi.OutputState }
+
+func (GetCloudRoutersSortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudRoutersSort)(nil)).Elem()
+}
+
+func (o GetCloudRoutersSortOutput) ToGetCloudRoutersSortOutput() GetCloudRoutersSortOutput {
+	return o
+}
+
+func (o GetCloudRoutersSortOutput) ToGetCloudRoutersSortOutputWithContext(ctx context.Context) GetCloudRoutersSortOutput {
+	return o
+}
+
+func (o GetCloudRoutersSortOutput) ToGetCloudRoutersSortPtrOutput() GetCloudRoutersSortPtrOutput {
+	return o.ToGetCloudRoutersSortPtrOutputWithContext(context.Background())
+}
+
+func (o GetCloudRoutersSortOutput) ToGetCloudRoutersSortPtrOutputWithContext(ctx context.Context) GetCloudRoutersSortPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetCloudRoutersSort) *GetCloudRoutersSort {
+		return &v
+	}).(GetCloudRoutersSortPtrOutput)
+}
+
+// The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+func (o GetCloudRoutersSortOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCloudRoutersSort) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+// The property name to use in sorting. Can be one of the following: [/name, /uuid, /state, /location/metroCode, /location/metroName, /package/code, /changeLog/createdDateTime, /changeLog/updatedDateTime], Defaults to /changeLog/updatedDateTime
+func (o GetCloudRoutersSortOutput) Property() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCloudRoutersSort) *string { return v.Property }).(pulumi.StringPtrOutput)
+}
+
+type GetCloudRoutersSortPtrOutput struct{ *pulumi.OutputState }
+
+func (GetCloudRoutersSortPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetCloudRoutersSort)(nil)).Elem()
+}
+
+func (o GetCloudRoutersSortPtrOutput) ToGetCloudRoutersSortPtrOutput() GetCloudRoutersSortPtrOutput {
+	return o
+}
+
+func (o GetCloudRoutersSortPtrOutput) ToGetCloudRoutersSortPtrOutputWithContext(ctx context.Context) GetCloudRoutersSortPtrOutput {
+	return o
+}
+
+func (o GetCloudRoutersSortPtrOutput) Elem() GetCloudRoutersSortOutput {
+	return o.ApplyT(func(v *GetCloudRoutersSort) GetCloudRoutersSort {
+		if v != nil {
+			return *v
+		}
+		var ret GetCloudRoutersSort
+		return ret
+	}).(GetCloudRoutersSortOutput)
+}
+
+// The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+func (o GetCloudRoutersSortPtrOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetCloudRoutersSort) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Direction
+	}).(pulumi.StringPtrOutput)
+}
+
+// The property name to use in sorting. Can be one of the following: [/name, /uuid, /state, /location/metroCode, /location/metroName, /package/code, /changeLog/createdDateTime, /changeLog/updatedDateTime], Defaults to /changeLog/updatedDateTime
+func (o GetCloudRoutersSortPtrOutput) Property() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetCloudRoutersSort) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Property
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetConnectionASide struct {
 	// Point of access details
 	AccessPoint *GetConnectionASideAccessPoint `pulumi:"accessPoint"`
@@ -21867,6 +23421,7579 @@ func (o GetConnectionZSideServiceTokenPtrOutput) Uuid() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetConnectionsData struct {
+	// Requester or Customer side connection configuration object of the multi-segment connection
+	ASides []GetConnectionsDataASide `pulumi:"aSides"`
+	// Customer account information that is associated with this connection
+	Accounts []GetConnectionsDataAccount `pulumi:"accounts"`
+	// Connection additional information
+	AdditionalInfos []map[string]interface{} `pulumi:"additionalInfos"`
+	// Connection bandwidth in Mbps
+	Bandwidth int `pulumi:"bandwidth"`
+	// Captures connection lifecycle change information
+	ChangeLogs []GetConnectionsDataChangeLog `pulumi:"changeLogs"`
+	// Customer-provided connection description
+	Description string `pulumi:"description"`
+	// Connection directionality from the requester point of view
+	Direction string `pulumi:"direction"`
+	// Connection URI information
+	Href string `pulumi:"href"`
+	// Connection property derived from access point locations
+	IsRemote bool `pulumi:"isRemote"`
+	// Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+	Name string `pulumi:"name"`
+	// Preferences for notifications on connection configuration or status changes
+	Notifications []GetConnectionsDataNotification `pulumi:"notifications"`
+	// Connection type-specific operational data
+	Operations []GetConnectionsDataOperation `pulumi:"operations"`
+	// Order details
+	Orders []GetConnectionsDataOrder `pulumi:"orders"`
+	// Project information
+	Projects []GetConnectionsDataProject `pulumi:"projects"`
+	// Connection Redundancy Configuration
+	Redundancies []GetConnectionsDataRedundancy `pulumi:"redundancies"`
+	// Connection overall state
+	State string `pulumi:"state"`
+	// Defines the connection type like EVPL_VC, EPL_VC, IPWAN_VC, IP_VC, ACCESS_EPL_VC, EVPLAN_VC, EPLAN_VC, EIA_VC, IA_VC, EC_VC
+	Type string `pulumi:"type"`
+	// Equinix-assigned connection identifier
+	Uuid string `pulumi:"uuid"`
+	// Destination or Provider side connection configuration object of the multi-segment connection
+	ZSides []GetConnectionsDataZSide `pulumi:"zSides"`
+}
+
+// GetConnectionsDataInput is an input type that accepts GetConnectionsDataArgs and GetConnectionsDataOutput values.
+// You can construct a concrete instance of `GetConnectionsDataInput` via:
+//
+//	GetConnectionsDataArgs{...}
+type GetConnectionsDataInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataOutput() GetConnectionsDataOutput
+	ToGetConnectionsDataOutputWithContext(context.Context) GetConnectionsDataOutput
+}
+
+type GetConnectionsDataArgs struct {
+	// Requester or Customer side connection configuration object of the multi-segment connection
+	ASides GetConnectionsDataASideArrayInput `pulumi:"aSides"`
+	// Customer account information that is associated with this connection
+	Accounts GetConnectionsDataAccountArrayInput `pulumi:"accounts"`
+	// Connection additional information
+	AdditionalInfos pulumi.MapArrayInput `pulumi:"additionalInfos"`
+	// Connection bandwidth in Mbps
+	Bandwidth pulumi.IntInput `pulumi:"bandwidth"`
+	// Captures connection lifecycle change information
+	ChangeLogs GetConnectionsDataChangeLogArrayInput `pulumi:"changeLogs"`
+	// Customer-provided connection description
+	Description pulumi.StringInput `pulumi:"description"`
+	// Connection directionality from the requester point of view
+	Direction pulumi.StringInput `pulumi:"direction"`
+	// Connection URI information
+	Href pulumi.StringInput `pulumi:"href"`
+	// Connection property derived from access point locations
+	IsRemote pulumi.BoolInput `pulumi:"isRemote"`
+	// Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+	Name pulumi.StringInput `pulumi:"name"`
+	// Preferences for notifications on connection configuration or status changes
+	Notifications GetConnectionsDataNotificationArrayInput `pulumi:"notifications"`
+	// Connection type-specific operational data
+	Operations GetConnectionsDataOperationArrayInput `pulumi:"operations"`
+	// Order details
+	Orders GetConnectionsDataOrderArrayInput `pulumi:"orders"`
+	// Project information
+	Projects GetConnectionsDataProjectArrayInput `pulumi:"projects"`
+	// Connection Redundancy Configuration
+	Redundancies GetConnectionsDataRedundancyArrayInput `pulumi:"redundancies"`
+	// Connection overall state
+	State pulumi.StringInput `pulumi:"state"`
+	// Defines the connection type like EVPL_VC, EPL_VC, IPWAN_VC, IP_VC, ACCESS_EPL_VC, EVPLAN_VC, EPLAN_VC, EIA_VC, IA_VC, EC_VC
+	Type pulumi.StringInput `pulumi:"type"`
+	// Equinix-assigned connection identifier
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+	// Destination or Provider side connection configuration object of the multi-segment connection
+	ZSides GetConnectionsDataZSideArrayInput `pulumi:"zSides"`
+}
+
+func (GetConnectionsDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsData)(nil)).Elem()
+}
+
+func (i GetConnectionsDataArgs) ToGetConnectionsDataOutput() GetConnectionsDataOutput {
+	return i.ToGetConnectionsDataOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataArgs) ToGetConnectionsDataOutputWithContext(ctx context.Context) GetConnectionsDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataOutput)
+}
+
+// GetConnectionsDataArrayInput is an input type that accepts GetConnectionsDataArray and GetConnectionsDataArrayOutput values.
+// You can construct a concrete instance of `GetConnectionsDataArrayInput` via:
+//
+//	GetConnectionsDataArray{ GetConnectionsDataArgs{...} }
+type GetConnectionsDataArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataArrayOutput() GetConnectionsDataArrayOutput
+	ToGetConnectionsDataArrayOutputWithContext(context.Context) GetConnectionsDataArrayOutput
+}
+
+type GetConnectionsDataArray []GetConnectionsDataInput
+
+func (GetConnectionsDataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionsData)(nil)).Elem()
+}
+
+func (i GetConnectionsDataArray) ToGetConnectionsDataArrayOutput() GetConnectionsDataArrayOutput {
+	return i.ToGetConnectionsDataArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataArray) ToGetConnectionsDataArrayOutputWithContext(ctx context.Context) GetConnectionsDataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataArrayOutput)
+}
+
+type GetConnectionsDataOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsData)(nil)).Elem()
+}
+
+func (o GetConnectionsDataOutput) ToGetConnectionsDataOutput() GetConnectionsDataOutput {
+	return o
+}
+
+func (o GetConnectionsDataOutput) ToGetConnectionsDataOutputWithContext(ctx context.Context) GetConnectionsDataOutput {
+	return o
+}
+
+// Requester or Customer side connection configuration object of the multi-segment connection
+func (o GetConnectionsDataOutput) ASides() GetConnectionsDataASideArrayOutput {
+	return o.ApplyT(func(v GetConnectionsData) []GetConnectionsDataASide { return v.ASides }).(GetConnectionsDataASideArrayOutput)
+}
+
+// Customer account information that is associated with this connection
+func (o GetConnectionsDataOutput) Accounts() GetConnectionsDataAccountArrayOutput {
+	return o.ApplyT(func(v GetConnectionsData) []GetConnectionsDataAccount { return v.Accounts }).(GetConnectionsDataAccountArrayOutput)
+}
+
+// Connection additional information
+func (o GetConnectionsDataOutput) AdditionalInfos() pulumi.MapArrayOutput {
+	return o.ApplyT(func(v GetConnectionsData) []map[string]interface{} { return v.AdditionalInfos }).(pulumi.MapArrayOutput)
+}
+
+// Connection bandwidth in Mbps
+func (o GetConnectionsDataOutput) Bandwidth() pulumi.IntOutput {
+	return o.ApplyT(func(v GetConnectionsData) int { return v.Bandwidth }).(pulumi.IntOutput)
+}
+
+// Captures connection lifecycle change information
+func (o GetConnectionsDataOutput) ChangeLogs() GetConnectionsDataChangeLogArrayOutput {
+	return o.ApplyT(func(v GetConnectionsData) []GetConnectionsDataChangeLog { return v.ChangeLogs }).(GetConnectionsDataChangeLogArrayOutput)
+}
+
+// Customer-provided connection description
+func (o GetConnectionsDataOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsData) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Connection directionality from the requester point of view
+func (o GetConnectionsDataOutput) Direction() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsData) string { return v.Direction }).(pulumi.StringOutput)
+}
+
+// Connection URI information
+func (o GetConnectionsDataOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsData) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// Connection property derived from access point locations
+func (o GetConnectionsDataOutput) IsRemote() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionsData) bool { return v.IsRemote }).(pulumi.BoolOutput)
+}
+
+// Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+func (o GetConnectionsDataOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsData) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Preferences for notifications on connection configuration or status changes
+func (o GetConnectionsDataOutput) Notifications() GetConnectionsDataNotificationArrayOutput {
+	return o.ApplyT(func(v GetConnectionsData) []GetConnectionsDataNotification { return v.Notifications }).(GetConnectionsDataNotificationArrayOutput)
+}
+
+// Connection type-specific operational data
+func (o GetConnectionsDataOutput) Operations() GetConnectionsDataOperationArrayOutput {
+	return o.ApplyT(func(v GetConnectionsData) []GetConnectionsDataOperation { return v.Operations }).(GetConnectionsDataOperationArrayOutput)
+}
+
+// Order details
+func (o GetConnectionsDataOutput) Orders() GetConnectionsDataOrderArrayOutput {
+	return o.ApplyT(func(v GetConnectionsData) []GetConnectionsDataOrder { return v.Orders }).(GetConnectionsDataOrderArrayOutput)
+}
+
+// Project information
+func (o GetConnectionsDataOutput) Projects() GetConnectionsDataProjectArrayOutput {
+	return o.ApplyT(func(v GetConnectionsData) []GetConnectionsDataProject { return v.Projects }).(GetConnectionsDataProjectArrayOutput)
+}
+
+// Connection Redundancy Configuration
+func (o GetConnectionsDataOutput) Redundancies() GetConnectionsDataRedundancyArrayOutput {
+	return o.ApplyT(func(v GetConnectionsData) []GetConnectionsDataRedundancy { return v.Redundancies }).(GetConnectionsDataRedundancyArrayOutput)
+}
+
+// Connection overall state
+func (o GetConnectionsDataOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsData) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Defines the connection type like EVPL_VC, EPL_VC, IPWAN_VC, IP_VC, ACCESS_EPL_VC, EVPLAN_VC, EPLAN_VC, EIA_VC, IA_VC, EC_VC
+func (o GetConnectionsDataOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsData) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Equinix-assigned connection identifier
+func (o GetConnectionsDataOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsData) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+// Destination or Provider side connection configuration object of the multi-segment connection
+func (o GetConnectionsDataOutput) ZSides() GetConnectionsDataZSideArrayOutput {
+	return o.ApplyT(func(v GetConnectionsData) []GetConnectionsDataZSide { return v.ZSides }).(GetConnectionsDataZSideArrayOutput)
+}
+
+type GetConnectionsDataArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionsData)(nil)).Elem()
+}
+
+func (o GetConnectionsDataArrayOutput) ToGetConnectionsDataArrayOutput() GetConnectionsDataArrayOutput {
+	return o
+}
+
+func (o GetConnectionsDataArrayOutput) ToGetConnectionsDataArrayOutputWithContext(ctx context.Context) GetConnectionsDataArrayOutput {
+	return o
+}
+
+func (o GetConnectionsDataArrayOutput) Index(i pulumi.IntInput) GetConnectionsDataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionsData {
+		return vs[0].([]GetConnectionsData)[vs[1].(int)]
+	}).(GetConnectionsDataOutput)
+}
+
+type GetConnectionsDataASide struct {
+	// Point of access details
+	AccessPoint *GetConnectionsDataASideAccessPoint `pulumi:"accessPoint"`
+	// Connection side additional information
+	AdditionalInfos []GetConnectionsDataASideAdditionalInfo `pulumi:"additionalInfos"`
+	// For service token based connections, Service tokens authorize users to access protected resources and services. Resource owners can distribute the tokens to trusted partners and vendors, allowing selected third parties to work directly with Equinix network assets
+	ServiceToken *GetConnectionsDataASideServiceToken `pulumi:"serviceToken"`
+}
+
+// GetConnectionsDataASideInput is an input type that accepts GetConnectionsDataASideArgs and GetConnectionsDataASideOutput values.
+// You can construct a concrete instance of `GetConnectionsDataASideInput` via:
+//
+//	GetConnectionsDataASideArgs{...}
+type GetConnectionsDataASideInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataASideOutput() GetConnectionsDataASideOutput
+	ToGetConnectionsDataASideOutputWithContext(context.Context) GetConnectionsDataASideOutput
+}
+
+type GetConnectionsDataASideArgs struct {
+	// Point of access details
+	AccessPoint GetConnectionsDataASideAccessPointPtrInput `pulumi:"accessPoint"`
+	// Connection side additional information
+	AdditionalInfos GetConnectionsDataASideAdditionalInfoArrayInput `pulumi:"additionalInfos"`
+	// For service token based connections, Service tokens authorize users to access protected resources and services. Resource owners can distribute the tokens to trusted partners and vendors, allowing selected third parties to work directly with Equinix network assets
+	ServiceToken GetConnectionsDataASideServiceTokenPtrInput `pulumi:"serviceToken"`
+}
+
+func (GetConnectionsDataASideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataASide)(nil)).Elem()
+}
+
+func (i GetConnectionsDataASideArgs) ToGetConnectionsDataASideOutput() GetConnectionsDataASideOutput {
+	return i.ToGetConnectionsDataASideOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataASideArgs) ToGetConnectionsDataASideOutputWithContext(ctx context.Context) GetConnectionsDataASideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataASideOutput)
+}
+
+// GetConnectionsDataASideArrayInput is an input type that accepts GetConnectionsDataASideArray and GetConnectionsDataASideArrayOutput values.
+// You can construct a concrete instance of `GetConnectionsDataASideArrayInput` via:
+//
+//	GetConnectionsDataASideArray{ GetConnectionsDataASideArgs{...} }
+type GetConnectionsDataASideArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataASideArrayOutput() GetConnectionsDataASideArrayOutput
+	ToGetConnectionsDataASideArrayOutputWithContext(context.Context) GetConnectionsDataASideArrayOutput
+}
+
+type GetConnectionsDataASideArray []GetConnectionsDataASideInput
+
+func (GetConnectionsDataASideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionsDataASide)(nil)).Elem()
+}
+
+func (i GetConnectionsDataASideArray) ToGetConnectionsDataASideArrayOutput() GetConnectionsDataASideArrayOutput {
+	return i.ToGetConnectionsDataASideArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataASideArray) ToGetConnectionsDataASideArrayOutputWithContext(ctx context.Context) GetConnectionsDataASideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataASideArrayOutput)
+}
+
+type GetConnectionsDataASideOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataASideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataASide)(nil)).Elem()
+}
+
+func (o GetConnectionsDataASideOutput) ToGetConnectionsDataASideOutput() GetConnectionsDataASideOutput {
+	return o
+}
+
+func (o GetConnectionsDataASideOutput) ToGetConnectionsDataASideOutputWithContext(ctx context.Context) GetConnectionsDataASideOutput {
+	return o
+}
+
+// Point of access details
+func (o GetConnectionsDataASideOutput) AccessPoint() GetConnectionsDataASideAccessPointPtrOutput {
+	return o.ApplyT(func(v GetConnectionsDataASide) *GetConnectionsDataASideAccessPoint { return v.AccessPoint }).(GetConnectionsDataASideAccessPointPtrOutput)
+}
+
+// Connection side additional information
+func (o GetConnectionsDataASideOutput) AdditionalInfos() GetConnectionsDataASideAdditionalInfoArrayOutput {
+	return o.ApplyT(func(v GetConnectionsDataASide) []GetConnectionsDataASideAdditionalInfo { return v.AdditionalInfos }).(GetConnectionsDataASideAdditionalInfoArrayOutput)
+}
+
+// For service token based connections, Service tokens authorize users to access protected resources and services. Resource owners can distribute the tokens to trusted partners and vendors, allowing selected third parties to work directly with Equinix network assets
+func (o GetConnectionsDataASideOutput) ServiceToken() GetConnectionsDataASideServiceTokenPtrOutput {
+	return o.ApplyT(func(v GetConnectionsDataASide) *GetConnectionsDataASideServiceToken { return v.ServiceToken }).(GetConnectionsDataASideServiceTokenPtrOutput)
+}
+
+type GetConnectionsDataASideArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataASideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionsDataASide)(nil)).Elem()
+}
+
+func (o GetConnectionsDataASideArrayOutput) ToGetConnectionsDataASideArrayOutput() GetConnectionsDataASideArrayOutput {
+	return o
+}
+
+func (o GetConnectionsDataASideArrayOutput) ToGetConnectionsDataASideArrayOutputWithContext(ctx context.Context) GetConnectionsDataASideArrayOutput {
+	return o
+}
+
+func (o GetConnectionsDataASideArrayOutput) Index(i pulumi.IntInput) GetConnectionsDataASideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionsDataASide {
+		return vs[0].([]GetConnectionsDataASide)[vs[1].(int)]
+	}).(GetConnectionsDataASideOutput)
+}
+
+type GetConnectionsDataASideAccessPoint struct {
+	// Account
+	Accounts []GetConnectionsDataASideAccessPointAccount `pulumi:"accounts"`
+	// Authentication key for provider based connections
+	AuthenticationKey *string `pulumi:"authenticationKey"`
+	// **Deprecated** `gateway` Use `router` attribute instead
+	//
+	// Deprecated: use router attribute instead; gateway is no longer a part of the supported backend
+	Gateway *GetConnectionsDataASideAccessPointGateway `pulumi:"gateway"`
+	// Virtual device interface
+	Interface *GetConnectionsDataASideAccessPointInterface `pulumi:"interface"`
+	// Connection link protocol
+	LinkProtocol *GetConnectionsDataASideAccessPointLinkProtocol `pulumi:"linkProtocol"`
+	// Access point location
+	Location GetConnectionsDataASideAccessPointLocation `pulumi:"location"`
+	// network access point information
+	Network *GetConnectionsDataASideAccessPointNetwork `pulumi:"network"`
+	// Peering Type- PRIVATE,MICROSOFT,PUBLIC, MANUAL
+	PeeringType *string `pulumi:"peeringType"`
+	// Port access point information
+	Port *GetConnectionsDataASideAccessPointPort `pulumi:"port"`
+	// Service Profile
+	Profile *GetConnectionsDataASideAccessPointProfile `pulumi:"profile"`
+	// Provider assigned Connection Id
+	ProviderConnectionId string `pulumi:"providerConnectionId"`
+	// Cloud Router access point information that replaces `gateway`
+	Router *GetConnectionsDataASideAccessPointRouter `pulumi:"router"`
+	// Access point seller region
+	SellerRegion *string `pulumi:"sellerRegion"`
+	// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+	Type *string `pulumi:"type"`
+	// Virtual device
+	VirtualDevice *GetConnectionsDataASideAccessPointVirtualDevice `pulumi:"virtualDevice"`
+}
+
+// GetConnectionsDataASideAccessPointInput is an input type that accepts GetConnectionsDataASideAccessPointArgs and GetConnectionsDataASideAccessPointOutput values.
+// You can construct a concrete instance of `GetConnectionsDataASideAccessPointInput` via:
+//
+//	GetConnectionsDataASideAccessPointArgs{...}
+type GetConnectionsDataASideAccessPointInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataASideAccessPointOutput() GetConnectionsDataASideAccessPointOutput
+	ToGetConnectionsDataASideAccessPointOutputWithContext(context.Context) GetConnectionsDataASideAccessPointOutput
+}
+
+type GetConnectionsDataASideAccessPointArgs struct {
+	// Account
+	Accounts GetConnectionsDataASideAccessPointAccountArrayInput `pulumi:"accounts"`
+	// Authentication key for provider based connections
+	AuthenticationKey pulumi.StringPtrInput `pulumi:"authenticationKey"`
+	// **Deprecated** `gateway` Use `router` attribute instead
+	//
+	// Deprecated: use router attribute instead; gateway is no longer a part of the supported backend
+	Gateway GetConnectionsDataASideAccessPointGatewayPtrInput `pulumi:"gateway"`
+	// Virtual device interface
+	Interface GetConnectionsDataASideAccessPointInterfacePtrInput `pulumi:"interface"`
+	// Connection link protocol
+	LinkProtocol GetConnectionsDataASideAccessPointLinkProtocolPtrInput `pulumi:"linkProtocol"`
+	// Access point location
+	Location GetConnectionsDataASideAccessPointLocationInput `pulumi:"location"`
+	// network access point information
+	Network GetConnectionsDataASideAccessPointNetworkPtrInput `pulumi:"network"`
+	// Peering Type- PRIVATE,MICROSOFT,PUBLIC, MANUAL
+	PeeringType pulumi.StringPtrInput `pulumi:"peeringType"`
+	// Port access point information
+	Port GetConnectionsDataASideAccessPointPortPtrInput `pulumi:"port"`
+	// Service Profile
+	Profile GetConnectionsDataASideAccessPointProfilePtrInput `pulumi:"profile"`
+	// Provider assigned Connection Id
+	ProviderConnectionId pulumi.StringInput `pulumi:"providerConnectionId"`
+	// Cloud Router access point information that replaces `gateway`
+	Router GetConnectionsDataASideAccessPointRouterPtrInput `pulumi:"router"`
+	// Access point seller region
+	SellerRegion pulumi.StringPtrInput `pulumi:"sellerRegion"`
+	// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Virtual device
+	VirtualDevice GetConnectionsDataASideAccessPointVirtualDevicePtrInput `pulumi:"virtualDevice"`
+}
+
+func (GetConnectionsDataASideAccessPointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataASideAccessPoint)(nil)).Elem()
+}
+
+func (i GetConnectionsDataASideAccessPointArgs) ToGetConnectionsDataASideAccessPointOutput() GetConnectionsDataASideAccessPointOutput {
+	return i.ToGetConnectionsDataASideAccessPointOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataASideAccessPointArgs) ToGetConnectionsDataASideAccessPointOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataASideAccessPointOutput)
+}
+
+func (i GetConnectionsDataASideAccessPointArgs) ToGetConnectionsDataASideAccessPointPtrOutput() GetConnectionsDataASideAccessPointPtrOutput {
+	return i.ToGetConnectionsDataASideAccessPointPtrOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataASideAccessPointArgs) ToGetConnectionsDataASideAccessPointPtrOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataASideAccessPointOutput).ToGetConnectionsDataASideAccessPointPtrOutputWithContext(ctx)
+}
+
+// GetConnectionsDataASideAccessPointPtrInput is an input type that accepts GetConnectionsDataASideAccessPointArgs, GetConnectionsDataASideAccessPointPtr and GetConnectionsDataASideAccessPointPtrOutput values.
+// You can construct a concrete instance of `GetConnectionsDataASideAccessPointPtrInput` via:
+//
+//	        GetConnectionsDataASideAccessPointArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetConnectionsDataASideAccessPointPtrInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataASideAccessPointPtrOutput() GetConnectionsDataASideAccessPointPtrOutput
+	ToGetConnectionsDataASideAccessPointPtrOutputWithContext(context.Context) GetConnectionsDataASideAccessPointPtrOutput
+}
+
+type getConnectionsDataASideAccessPointPtrType GetConnectionsDataASideAccessPointArgs
+
+func GetConnectionsDataASideAccessPointPtr(v *GetConnectionsDataASideAccessPointArgs) GetConnectionsDataASideAccessPointPtrInput {
+	return (*getConnectionsDataASideAccessPointPtrType)(v)
+}
+
+func (*getConnectionsDataASideAccessPointPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetConnectionsDataASideAccessPoint)(nil)).Elem()
+}
+
+func (i *getConnectionsDataASideAccessPointPtrType) ToGetConnectionsDataASideAccessPointPtrOutput() GetConnectionsDataASideAccessPointPtrOutput {
+	return i.ToGetConnectionsDataASideAccessPointPtrOutputWithContext(context.Background())
+}
+
+func (i *getConnectionsDataASideAccessPointPtrType) ToGetConnectionsDataASideAccessPointPtrOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataASideAccessPointPtrOutput)
+}
+
+type GetConnectionsDataASideAccessPointOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataASideAccessPointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataASideAccessPoint)(nil)).Elem()
+}
+
+func (o GetConnectionsDataASideAccessPointOutput) ToGetConnectionsDataASideAccessPointOutput() GetConnectionsDataASideAccessPointOutput {
+	return o
+}
+
+func (o GetConnectionsDataASideAccessPointOutput) ToGetConnectionsDataASideAccessPointOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointOutput {
+	return o
+}
+
+func (o GetConnectionsDataASideAccessPointOutput) ToGetConnectionsDataASideAccessPointPtrOutput() GetConnectionsDataASideAccessPointPtrOutput {
+	return o.ToGetConnectionsDataASideAccessPointPtrOutputWithContext(context.Background())
+}
+
+func (o GetConnectionsDataASideAccessPointOutput) ToGetConnectionsDataASideAccessPointPtrOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetConnectionsDataASideAccessPoint) *GetConnectionsDataASideAccessPoint {
+		return &v
+	}).(GetConnectionsDataASideAccessPointPtrOutput)
+}
+
+// Account
+func (o GetConnectionsDataASideAccessPointOutput) Accounts() GetConnectionsDataASideAccessPointAccountArrayOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPoint) []GetConnectionsDataASideAccessPointAccount {
+		return v.Accounts
+	}).(GetConnectionsDataASideAccessPointAccountArrayOutput)
+}
+
+// Authentication key for provider based connections
+func (o GetConnectionsDataASideAccessPointOutput) AuthenticationKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPoint) *string { return v.AuthenticationKey }).(pulumi.StringPtrOutput)
+}
+
+// **Deprecated** `gateway` Use `router` attribute instead
+//
+// Deprecated: use router attribute instead; gateway is no longer a part of the supported backend
+func (o GetConnectionsDataASideAccessPointOutput) Gateway() GetConnectionsDataASideAccessPointGatewayPtrOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPoint) *GetConnectionsDataASideAccessPointGateway {
+		return v.Gateway
+	}).(GetConnectionsDataASideAccessPointGatewayPtrOutput)
+}
+
+// Virtual device interface
+func (o GetConnectionsDataASideAccessPointOutput) Interface() GetConnectionsDataASideAccessPointInterfacePtrOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPoint) *GetConnectionsDataASideAccessPointInterface {
+		return v.Interface
+	}).(GetConnectionsDataASideAccessPointInterfacePtrOutput)
+}
+
+// Connection link protocol
+func (o GetConnectionsDataASideAccessPointOutput) LinkProtocol() GetConnectionsDataASideAccessPointLinkProtocolPtrOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPoint) *GetConnectionsDataASideAccessPointLinkProtocol {
+		return v.LinkProtocol
+	}).(GetConnectionsDataASideAccessPointLinkProtocolPtrOutput)
+}
+
+// Access point location
+func (o GetConnectionsDataASideAccessPointOutput) Location() GetConnectionsDataASideAccessPointLocationOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPoint) GetConnectionsDataASideAccessPointLocation {
+		return v.Location
+	}).(GetConnectionsDataASideAccessPointLocationOutput)
+}
+
+// network access point information
+func (o GetConnectionsDataASideAccessPointOutput) Network() GetConnectionsDataASideAccessPointNetworkPtrOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPoint) *GetConnectionsDataASideAccessPointNetwork {
+		return v.Network
+	}).(GetConnectionsDataASideAccessPointNetworkPtrOutput)
+}
+
+// Peering Type- PRIVATE,MICROSOFT,PUBLIC, MANUAL
+func (o GetConnectionsDataASideAccessPointOutput) PeeringType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPoint) *string { return v.PeeringType }).(pulumi.StringPtrOutput)
+}
+
+// Port access point information
+func (o GetConnectionsDataASideAccessPointOutput) Port() GetConnectionsDataASideAccessPointPortPtrOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPoint) *GetConnectionsDataASideAccessPointPort { return v.Port }).(GetConnectionsDataASideAccessPointPortPtrOutput)
+}
+
+// Service Profile
+func (o GetConnectionsDataASideAccessPointOutput) Profile() GetConnectionsDataASideAccessPointProfilePtrOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPoint) *GetConnectionsDataASideAccessPointProfile {
+		return v.Profile
+	}).(GetConnectionsDataASideAccessPointProfilePtrOutput)
+}
+
+// Provider assigned Connection Id
+func (o GetConnectionsDataASideAccessPointOutput) ProviderConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPoint) string { return v.ProviderConnectionId }).(pulumi.StringOutput)
+}
+
+// Cloud Router access point information that replaces `gateway`
+func (o GetConnectionsDataASideAccessPointOutput) Router() GetConnectionsDataASideAccessPointRouterPtrOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPoint) *GetConnectionsDataASideAccessPointRouter { return v.Router }).(GetConnectionsDataASideAccessPointRouterPtrOutput)
+}
+
+// Access point seller region
+func (o GetConnectionsDataASideAccessPointOutput) SellerRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPoint) *string { return v.SellerRegion }).(pulumi.StringPtrOutput)
+}
+
+// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+func (o GetConnectionsDataASideAccessPointOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPoint) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// Virtual device
+func (o GetConnectionsDataASideAccessPointOutput) VirtualDevice() GetConnectionsDataASideAccessPointVirtualDevicePtrOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPoint) *GetConnectionsDataASideAccessPointVirtualDevice {
+		return v.VirtualDevice
+	}).(GetConnectionsDataASideAccessPointVirtualDevicePtrOutput)
+}
+
+type GetConnectionsDataASideAccessPointPtrOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataASideAccessPointPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetConnectionsDataASideAccessPoint)(nil)).Elem()
+}
+
+func (o GetConnectionsDataASideAccessPointPtrOutput) ToGetConnectionsDataASideAccessPointPtrOutput() GetConnectionsDataASideAccessPointPtrOutput {
+	return o
+}
+
+func (o GetConnectionsDataASideAccessPointPtrOutput) ToGetConnectionsDataASideAccessPointPtrOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointPtrOutput {
+	return o
+}
+
+func (o GetConnectionsDataASideAccessPointPtrOutput) Elem() GetConnectionsDataASideAccessPointOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideAccessPoint) GetConnectionsDataASideAccessPoint {
+		if v != nil {
+			return *v
+		}
+		var ret GetConnectionsDataASideAccessPoint
+		return ret
+	}).(GetConnectionsDataASideAccessPointOutput)
+}
+
+// Account
+func (o GetConnectionsDataASideAccessPointPtrOutput) Accounts() GetConnectionsDataASideAccessPointAccountArrayOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideAccessPoint) []GetConnectionsDataASideAccessPointAccount {
+		if v == nil {
+			return nil
+		}
+		return v.Accounts
+	}).(GetConnectionsDataASideAccessPointAccountArrayOutput)
+}
+
+// Authentication key for provider based connections
+func (o GetConnectionsDataASideAccessPointPtrOutput) AuthenticationKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideAccessPoint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthenticationKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// **Deprecated** `gateway` Use `router` attribute instead
+//
+// Deprecated: use router attribute instead; gateway is no longer a part of the supported backend
+func (o GetConnectionsDataASideAccessPointPtrOutput) Gateway() GetConnectionsDataASideAccessPointGatewayPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideAccessPoint) *GetConnectionsDataASideAccessPointGateway {
+		if v == nil {
+			return nil
+		}
+		return v.Gateway
+	}).(GetConnectionsDataASideAccessPointGatewayPtrOutput)
+}
+
+// Virtual device interface
+func (o GetConnectionsDataASideAccessPointPtrOutput) Interface() GetConnectionsDataASideAccessPointInterfacePtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideAccessPoint) *GetConnectionsDataASideAccessPointInterface {
+		if v == nil {
+			return nil
+		}
+		return v.Interface
+	}).(GetConnectionsDataASideAccessPointInterfacePtrOutput)
+}
+
+// Connection link protocol
+func (o GetConnectionsDataASideAccessPointPtrOutput) LinkProtocol() GetConnectionsDataASideAccessPointLinkProtocolPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideAccessPoint) *GetConnectionsDataASideAccessPointLinkProtocol {
+		if v == nil {
+			return nil
+		}
+		return v.LinkProtocol
+	}).(GetConnectionsDataASideAccessPointLinkProtocolPtrOutput)
+}
+
+// Access point location
+func (o GetConnectionsDataASideAccessPointPtrOutput) Location() GetConnectionsDataASideAccessPointLocationPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideAccessPoint) *GetConnectionsDataASideAccessPointLocation {
+		if v == nil {
+			return nil
+		}
+		return &v.Location
+	}).(GetConnectionsDataASideAccessPointLocationPtrOutput)
+}
+
+// network access point information
+func (o GetConnectionsDataASideAccessPointPtrOutput) Network() GetConnectionsDataASideAccessPointNetworkPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideAccessPoint) *GetConnectionsDataASideAccessPointNetwork {
+		if v == nil {
+			return nil
+		}
+		return v.Network
+	}).(GetConnectionsDataASideAccessPointNetworkPtrOutput)
+}
+
+// Peering Type- PRIVATE,MICROSOFT,PUBLIC, MANUAL
+func (o GetConnectionsDataASideAccessPointPtrOutput) PeeringType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideAccessPoint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PeeringType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Port access point information
+func (o GetConnectionsDataASideAccessPointPtrOutput) Port() GetConnectionsDataASideAccessPointPortPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideAccessPoint) *GetConnectionsDataASideAccessPointPort {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(GetConnectionsDataASideAccessPointPortPtrOutput)
+}
+
+// Service Profile
+func (o GetConnectionsDataASideAccessPointPtrOutput) Profile() GetConnectionsDataASideAccessPointProfilePtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideAccessPoint) *GetConnectionsDataASideAccessPointProfile {
+		if v == nil {
+			return nil
+		}
+		return v.Profile
+	}).(GetConnectionsDataASideAccessPointProfilePtrOutput)
+}
+
+// Provider assigned Connection Id
+func (o GetConnectionsDataASideAccessPointPtrOutput) ProviderConnectionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideAccessPoint) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProviderConnectionId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Cloud Router access point information that replaces `gateway`
+func (o GetConnectionsDataASideAccessPointPtrOutput) Router() GetConnectionsDataASideAccessPointRouterPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideAccessPoint) *GetConnectionsDataASideAccessPointRouter {
+		if v == nil {
+			return nil
+		}
+		return v.Router
+	}).(GetConnectionsDataASideAccessPointRouterPtrOutput)
+}
+
+// Access point seller region
+func (o GetConnectionsDataASideAccessPointPtrOutput) SellerRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideAccessPoint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SellerRegion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+func (o GetConnectionsDataASideAccessPointPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideAccessPoint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Virtual device
+func (o GetConnectionsDataASideAccessPointPtrOutput) VirtualDevice() GetConnectionsDataASideAccessPointVirtualDevicePtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideAccessPoint) *GetConnectionsDataASideAccessPointVirtualDevice {
+		if v == nil {
+			return nil
+		}
+		return v.VirtualDevice
+	}).(GetConnectionsDataASideAccessPointVirtualDevicePtrOutput)
+}
+
+type GetConnectionsDataASideAccessPointAccount struct {
+	// Legal name of the accountholder.
+	AccountName string `pulumi:"accountName"`
+	// Equinix-assigned account number.
+	AccountNumber int `pulumi:"accountNumber"`
+	// Equinix-assigned ID of the subscriber's parent organization.
+	GlobalCustId string `pulumi:"globalCustId"`
+	// Equinix-assigned ID of the subscriber's parent organization.
+	GlobalOrgId string `pulumi:"globalOrgId"`
+	// Equinix-assigned name of the subscriber's parent organization.
+	GlobalOrganizationName string `pulumi:"globalOrganizationName"`
+	// Equinix-assigned ID of the subscriber's organization.
+	OrgId int `pulumi:"orgId"`
+	// Equinix-assigned name of the subscriber's organization.
+	OrganizationName string `pulumi:"organizationName"`
+	// Enterprise datastore id
+	UcmId string `pulumi:"ucmId"`
+}
+
+// GetConnectionsDataASideAccessPointAccountInput is an input type that accepts GetConnectionsDataASideAccessPointAccountArgs and GetConnectionsDataASideAccessPointAccountOutput values.
+// You can construct a concrete instance of `GetConnectionsDataASideAccessPointAccountInput` via:
+//
+//	GetConnectionsDataASideAccessPointAccountArgs{...}
+type GetConnectionsDataASideAccessPointAccountInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataASideAccessPointAccountOutput() GetConnectionsDataASideAccessPointAccountOutput
+	ToGetConnectionsDataASideAccessPointAccountOutputWithContext(context.Context) GetConnectionsDataASideAccessPointAccountOutput
+}
+
+type GetConnectionsDataASideAccessPointAccountArgs struct {
+	// Legal name of the accountholder.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// Equinix-assigned account number.
+	AccountNumber pulumi.IntInput `pulumi:"accountNumber"`
+	// Equinix-assigned ID of the subscriber's parent organization.
+	GlobalCustId pulumi.StringInput `pulumi:"globalCustId"`
+	// Equinix-assigned ID of the subscriber's parent organization.
+	GlobalOrgId pulumi.StringInput `pulumi:"globalOrgId"`
+	// Equinix-assigned name of the subscriber's parent organization.
+	GlobalOrganizationName pulumi.StringInput `pulumi:"globalOrganizationName"`
+	// Equinix-assigned ID of the subscriber's organization.
+	OrgId pulumi.IntInput `pulumi:"orgId"`
+	// Equinix-assigned name of the subscriber's organization.
+	OrganizationName pulumi.StringInput `pulumi:"organizationName"`
+	// Enterprise datastore id
+	UcmId pulumi.StringInput `pulumi:"ucmId"`
+}
+
+func (GetConnectionsDataASideAccessPointAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataASideAccessPointAccount)(nil)).Elem()
+}
+
+func (i GetConnectionsDataASideAccessPointAccountArgs) ToGetConnectionsDataASideAccessPointAccountOutput() GetConnectionsDataASideAccessPointAccountOutput {
+	return i.ToGetConnectionsDataASideAccessPointAccountOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataASideAccessPointAccountArgs) ToGetConnectionsDataASideAccessPointAccountOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataASideAccessPointAccountOutput)
+}
+
+// GetConnectionsDataASideAccessPointAccountArrayInput is an input type that accepts GetConnectionsDataASideAccessPointAccountArray and GetConnectionsDataASideAccessPointAccountArrayOutput values.
+// You can construct a concrete instance of `GetConnectionsDataASideAccessPointAccountArrayInput` via:
+//
+//	GetConnectionsDataASideAccessPointAccountArray{ GetConnectionsDataASideAccessPointAccountArgs{...} }
+type GetConnectionsDataASideAccessPointAccountArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataASideAccessPointAccountArrayOutput() GetConnectionsDataASideAccessPointAccountArrayOutput
+	ToGetConnectionsDataASideAccessPointAccountArrayOutputWithContext(context.Context) GetConnectionsDataASideAccessPointAccountArrayOutput
+}
+
+type GetConnectionsDataASideAccessPointAccountArray []GetConnectionsDataASideAccessPointAccountInput
+
+func (GetConnectionsDataASideAccessPointAccountArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionsDataASideAccessPointAccount)(nil)).Elem()
+}
+
+func (i GetConnectionsDataASideAccessPointAccountArray) ToGetConnectionsDataASideAccessPointAccountArrayOutput() GetConnectionsDataASideAccessPointAccountArrayOutput {
+	return i.ToGetConnectionsDataASideAccessPointAccountArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataASideAccessPointAccountArray) ToGetConnectionsDataASideAccessPointAccountArrayOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointAccountArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataASideAccessPointAccountArrayOutput)
+}
+
+type GetConnectionsDataASideAccessPointAccountOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataASideAccessPointAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataASideAccessPointAccount)(nil)).Elem()
+}
+
+func (o GetConnectionsDataASideAccessPointAccountOutput) ToGetConnectionsDataASideAccessPointAccountOutput() GetConnectionsDataASideAccessPointAccountOutput {
+	return o
+}
+
+func (o GetConnectionsDataASideAccessPointAccountOutput) ToGetConnectionsDataASideAccessPointAccountOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointAccountOutput {
+	return o
+}
+
+// Legal name of the accountholder.
+func (o GetConnectionsDataASideAccessPointAccountOutput) AccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPointAccount) string { return v.AccountName }).(pulumi.StringOutput)
+}
+
+// Equinix-assigned account number.
+func (o GetConnectionsDataASideAccessPointAccountOutput) AccountNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPointAccount) int { return v.AccountNumber }).(pulumi.IntOutput)
+}
+
+// Equinix-assigned ID of the subscriber's parent organization.
+func (o GetConnectionsDataASideAccessPointAccountOutput) GlobalCustId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPointAccount) string { return v.GlobalCustId }).(pulumi.StringOutput)
+}
+
+// Equinix-assigned ID of the subscriber's parent organization.
+func (o GetConnectionsDataASideAccessPointAccountOutput) GlobalOrgId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPointAccount) string { return v.GlobalOrgId }).(pulumi.StringOutput)
+}
+
+// Equinix-assigned name of the subscriber's parent organization.
+func (o GetConnectionsDataASideAccessPointAccountOutput) GlobalOrganizationName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPointAccount) string { return v.GlobalOrganizationName }).(pulumi.StringOutput)
+}
+
+// Equinix-assigned ID of the subscriber's organization.
+func (o GetConnectionsDataASideAccessPointAccountOutput) OrgId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPointAccount) int { return v.OrgId }).(pulumi.IntOutput)
+}
+
+// Equinix-assigned name of the subscriber's organization.
+func (o GetConnectionsDataASideAccessPointAccountOutput) OrganizationName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPointAccount) string { return v.OrganizationName }).(pulumi.StringOutput)
+}
+
+// Enterprise datastore id
+func (o GetConnectionsDataASideAccessPointAccountOutput) UcmId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPointAccount) string { return v.UcmId }).(pulumi.StringOutput)
+}
+
+type GetConnectionsDataASideAccessPointAccountArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataASideAccessPointAccountArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionsDataASideAccessPointAccount)(nil)).Elem()
+}
+
+func (o GetConnectionsDataASideAccessPointAccountArrayOutput) ToGetConnectionsDataASideAccessPointAccountArrayOutput() GetConnectionsDataASideAccessPointAccountArrayOutput {
+	return o
+}
+
+func (o GetConnectionsDataASideAccessPointAccountArrayOutput) ToGetConnectionsDataASideAccessPointAccountArrayOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointAccountArrayOutput {
+	return o
+}
+
+func (o GetConnectionsDataASideAccessPointAccountArrayOutput) Index(i pulumi.IntInput) GetConnectionsDataASideAccessPointAccountOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionsDataASideAccessPointAccount {
+		return vs[0].([]GetConnectionsDataASideAccessPointAccount)[vs[1].(int)]
+	}).(GetConnectionsDataASideAccessPointAccountOutput)
+}
+
+type GetConnectionsDataASideAccessPointGateway struct {
+	// Unique Resource Identifier
+	Href string `pulumi:"href"`
+	// Equinix-assigned virtual gateway identifier
+	Uuid *string `pulumi:"uuid"`
+}
+
+// GetConnectionsDataASideAccessPointGatewayInput is an input type that accepts GetConnectionsDataASideAccessPointGatewayArgs and GetConnectionsDataASideAccessPointGatewayOutput values.
+// You can construct a concrete instance of `GetConnectionsDataASideAccessPointGatewayInput` via:
+//
+//	GetConnectionsDataASideAccessPointGatewayArgs{...}
+type GetConnectionsDataASideAccessPointGatewayInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataASideAccessPointGatewayOutput() GetConnectionsDataASideAccessPointGatewayOutput
+	ToGetConnectionsDataASideAccessPointGatewayOutputWithContext(context.Context) GetConnectionsDataASideAccessPointGatewayOutput
+}
+
+type GetConnectionsDataASideAccessPointGatewayArgs struct {
+	// Unique Resource Identifier
+	Href pulumi.StringInput `pulumi:"href"`
+	// Equinix-assigned virtual gateway identifier
+	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+}
+
+func (GetConnectionsDataASideAccessPointGatewayArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataASideAccessPointGateway)(nil)).Elem()
+}
+
+func (i GetConnectionsDataASideAccessPointGatewayArgs) ToGetConnectionsDataASideAccessPointGatewayOutput() GetConnectionsDataASideAccessPointGatewayOutput {
+	return i.ToGetConnectionsDataASideAccessPointGatewayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataASideAccessPointGatewayArgs) ToGetConnectionsDataASideAccessPointGatewayOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointGatewayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataASideAccessPointGatewayOutput)
+}
+
+func (i GetConnectionsDataASideAccessPointGatewayArgs) ToGetConnectionsDataASideAccessPointGatewayPtrOutput() GetConnectionsDataASideAccessPointGatewayPtrOutput {
+	return i.ToGetConnectionsDataASideAccessPointGatewayPtrOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataASideAccessPointGatewayArgs) ToGetConnectionsDataASideAccessPointGatewayPtrOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointGatewayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataASideAccessPointGatewayOutput).ToGetConnectionsDataASideAccessPointGatewayPtrOutputWithContext(ctx)
+}
+
+// GetConnectionsDataASideAccessPointGatewayPtrInput is an input type that accepts GetConnectionsDataASideAccessPointGatewayArgs, GetConnectionsDataASideAccessPointGatewayPtr and GetConnectionsDataASideAccessPointGatewayPtrOutput values.
+// You can construct a concrete instance of `GetConnectionsDataASideAccessPointGatewayPtrInput` via:
+//
+//	        GetConnectionsDataASideAccessPointGatewayArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetConnectionsDataASideAccessPointGatewayPtrInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataASideAccessPointGatewayPtrOutput() GetConnectionsDataASideAccessPointGatewayPtrOutput
+	ToGetConnectionsDataASideAccessPointGatewayPtrOutputWithContext(context.Context) GetConnectionsDataASideAccessPointGatewayPtrOutput
+}
+
+type getConnectionsDataASideAccessPointGatewayPtrType GetConnectionsDataASideAccessPointGatewayArgs
+
+func GetConnectionsDataASideAccessPointGatewayPtr(v *GetConnectionsDataASideAccessPointGatewayArgs) GetConnectionsDataASideAccessPointGatewayPtrInput {
+	return (*getConnectionsDataASideAccessPointGatewayPtrType)(v)
+}
+
+func (*getConnectionsDataASideAccessPointGatewayPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetConnectionsDataASideAccessPointGateway)(nil)).Elem()
+}
+
+func (i *getConnectionsDataASideAccessPointGatewayPtrType) ToGetConnectionsDataASideAccessPointGatewayPtrOutput() GetConnectionsDataASideAccessPointGatewayPtrOutput {
+	return i.ToGetConnectionsDataASideAccessPointGatewayPtrOutputWithContext(context.Background())
+}
+
+func (i *getConnectionsDataASideAccessPointGatewayPtrType) ToGetConnectionsDataASideAccessPointGatewayPtrOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointGatewayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataASideAccessPointGatewayPtrOutput)
+}
+
+type GetConnectionsDataASideAccessPointGatewayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataASideAccessPointGatewayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataASideAccessPointGateway)(nil)).Elem()
+}
+
+func (o GetConnectionsDataASideAccessPointGatewayOutput) ToGetConnectionsDataASideAccessPointGatewayOutput() GetConnectionsDataASideAccessPointGatewayOutput {
+	return o
+}
+
+func (o GetConnectionsDataASideAccessPointGatewayOutput) ToGetConnectionsDataASideAccessPointGatewayOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointGatewayOutput {
+	return o
+}
+
+func (o GetConnectionsDataASideAccessPointGatewayOutput) ToGetConnectionsDataASideAccessPointGatewayPtrOutput() GetConnectionsDataASideAccessPointGatewayPtrOutput {
+	return o.ToGetConnectionsDataASideAccessPointGatewayPtrOutputWithContext(context.Background())
+}
+
+func (o GetConnectionsDataASideAccessPointGatewayOutput) ToGetConnectionsDataASideAccessPointGatewayPtrOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointGatewayPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetConnectionsDataASideAccessPointGateway) *GetConnectionsDataASideAccessPointGateway {
+		return &v
+	}).(GetConnectionsDataASideAccessPointGatewayPtrOutput)
+}
+
+// Unique Resource Identifier
+func (o GetConnectionsDataASideAccessPointGatewayOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPointGateway) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// Equinix-assigned virtual gateway identifier
+func (o GetConnectionsDataASideAccessPointGatewayOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPointGateway) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+}
+
+type GetConnectionsDataASideAccessPointGatewayPtrOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataASideAccessPointGatewayPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetConnectionsDataASideAccessPointGateway)(nil)).Elem()
+}
+
+func (o GetConnectionsDataASideAccessPointGatewayPtrOutput) ToGetConnectionsDataASideAccessPointGatewayPtrOutput() GetConnectionsDataASideAccessPointGatewayPtrOutput {
+	return o
+}
+
+func (o GetConnectionsDataASideAccessPointGatewayPtrOutput) ToGetConnectionsDataASideAccessPointGatewayPtrOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointGatewayPtrOutput {
+	return o
+}
+
+func (o GetConnectionsDataASideAccessPointGatewayPtrOutput) Elem() GetConnectionsDataASideAccessPointGatewayOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideAccessPointGateway) GetConnectionsDataASideAccessPointGateway {
+		if v != nil {
+			return *v
+		}
+		var ret GetConnectionsDataASideAccessPointGateway
+		return ret
+	}).(GetConnectionsDataASideAccessPointGatewayOutput)
+}
+
+// Unique Resource Identifier
+func (o GetConnectionsDataASideAccessPointGatewayPtrOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideAccessPointGateway) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Href
+	}).(pulumi.StringPtrOutput)
+}
+
+// Equinix-assigned virtual gateway identifier
+func (o GetConnectionsDataASideAccessPointGatewayPtrOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideAccessPointGateway) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uuid
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetConnectionsDataASideAccessPointInterface struct {
+	// The ID of this resource.
+	Id int `pulumi:"id"`
+	// Interface type
+	Type *string `pulumi:"type"`
+	// Equinix-assigned interface identifier
+	Uuid *string `pulumi:"uuid"`
+}
+
+// GetConnectionsDataASideAccessPointInterfaceInput is an input type that accepts GetConnectionsDataASideAccessPointInterfaceArgs and GetConnectionsDataASideAccessPointInterfaceOutput values.
+// You can construct a concrete instance of `GetConnectionsDataASideAccessPointInterfaceInput` via:
+//
+//	GetConnectionsDataASideAccessPointInterfaceArgs{...}
+type GetConnectionsDataASideAccessPointInterfaceInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataASideAccessPointInterfaceOutput() GetConnectionsDataASideAccessPointInterfaceOutput
+	ToGetConnectionsDataASideAccessPointInterfaceOutputWithContext(context.Context) GetConnectionsDataASideAccessPointInterfaceOutput
+}
+
+type GetConnectionsDataASideAccessPointInterfaceArgs struct {
+	// The ID of this resource.
+	Id pulumi.IntInput `pulumi:"id"`
+	// Interface type
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Equinix-assigned interface identifier
+	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+}
+
+func (GetConnectionsDataASideAccessPointInterfaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataASideAccessPointInterface)(nil)).Elem()
+}
+
+func (i GetConnectionsDataASideAccessPointInterfaceArgs) ToGetConnectionsDataASideAccessPointInterfaceOutput() GetConnectionsDataASideAccessPointInterfaceOutput {
+	return i.ToGetConnectionsDataASideAccessPointInterfaceOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataASideAccessPointInterfaceArgs) ToGetConnectionsDataASideAccessPointInterfaceOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataASideAccessPointInterfaceOutput)
+}
+
+func (i GetConnectionsDataASideAccessPointInterfaceArgs) ToGetConnectionsDataASideAccessPointInterfacePtrOutput() GetConnectionsDataASideAccessPointInterfacePtrOutput {
+	return i.ToGetConnectionsDataASideAccessPointInterfacePtrOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataASideAccessPointInterfaceArgs) ToGetConnectionsDataASideAccessPointInterfacePtrOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointInterfacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataASideAccessPointInterfaceOutput).ToGetConnectionsDataASideAccessPointInterfacePtrOutputWithContext(ctx)
+}
+
+// GetConnectionsDataASideAccessPointInterfacePtrInput is an input type that accepts GetConnectionsDataASideAccessPointInterfaceArgs, GetConnectionsDataASideAccessPointInterfacePtr and GetConnectionsDataASideAccessPointInterfacePtrOutput values.
+// You can construct a concrete instance of `GetConnectionsDataASideAccessPointInterfacePtrInput` via:
+//
+//	        GetConnectionsDataASideAccessPointInterfaceArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetConnectionsDataASideAccessPointInterfacePtrInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataASideAccessPointInterfacePtrOutput() GetConnectionsDataASideAccessPointInterfacePtrOutput
+	ToGetConnectionsDataASideAccessPointInterfacePtrOutputWithContext(context.Context) GetConnectionsDataASideAccessPointInterfacePtrOutput
+}
+
+type getConnectionsDataASideAccessPointInterfacePtrType GetConnectionsDataASideAccessPointInterfaceArgs
+
+func GetConnectionsDataASideAccessPointInterfacePtr(v *GetConnectionsDataASideAccessPointInterfaceArgs) GetConnectionsDataASideAccessPointInterfacePtrInput {
+	return (*getConnectionsDataASideAccessPointInterfacePtrType)(v)
+}
+
+func (*getConnectionsDataASideAccessPointInterfacePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetConnectionsDataASideAccessPointInterface)(nil)).Elem()
+}
+
+func (i *getConnectionsDataASideAccessPointInterfacePtrType) ToGetConnectionsDataASideAccessPointInterfacePtrOutput() GetConnectionsDataASideAccessPointInterfacePtrOutput {
+	return i.ToGetConnectionsDataASideAccessPointInterfacePtrOutputWithContext(context.Background())
+}
+
+func (i *getConnectionsDataASideAccessPointInterfacePtrType) ToGetConnectionsDataASideAccessPointInterfacePtrOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointInterfacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataASideAccessPointInterfacePtrOutput)
+}
+
+type GetConnectionsDataASideAccessPointInterfaceOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataASideAccessPointInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataASideAccessPointInterface)(nil)).Elem()
+}
+
+func (o GetConnectionsDataASideAccessPointInterfaceOutput) ToGetConnectionsDataASideAccessPointInterfaceOutput() GetConnectionsDataASideAccessPointInterfaceOutput {
+	return o
+}
+
+func (o GetConnectionsDataASideAccessPointInterfaceOutput) ToGetConnectionsDataASideAccessPointInterfaceOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointInterfaceOutput {
+	return o
+}
+
+func (o GetConnectionsDataASideAccessPointInterfaceOutput) ToGetConnectionsDataASideAccessPointInterfacePtrOutput() GetConnectionsDataASideAccessPointInterfacePtrOutput {
+	return o.ToGetConnectionsDataASideAccessPointInterfacePtrOutputWithContext(context.Background())
+}
+
+func (o GetConnectionsDataASideAccessPointInterfaceOutput) ToGetConnectionsDataASideAccessPointInterfacePtrOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointInterfacePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetConnectionsDataASideAccessPointInterface) *GetConnectionsDataASideAccessPointInterface {
+		return &v
+	}).(GetConnectionsDataASideAccessPointInterfacePtrOutput)
+}
+
+// The ID of this resource.
+func (o GetConnectionsDataASideAccessPointInterfaceOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPointInterface) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// Interface type
+func (o GetConnectionsDataASideAccessPointInterfaceOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPointInterface) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// Equinix-assigned interface identifier
+func (o GetConnectionsDataASideAccessPointInterfaceOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPointInterface) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+}
+
+type GetConnectionsDataASideAccessPointInterfacePtrOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataASideAccessPointInterfacePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetConnectionsDataASideAccessPointInterface)(nil)).Elem()
+}
+
+func (o GetConnectionsDataASideAccessPointInterfacePtrOutput) ToGetConnectionsDataASideAccessPointInterfacePtrOutput() GetConnectionsDataASideAccessPointInterfacePtrOutput {
+	return o
+}
+
+func (o GetConnectionsDataASideAccessPointInterfacePtrOutput) ToGetConnectionsDataASideAccessPointInterfacePtrOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointInterfacePtrOutput {
+	return o
+}
+
+func (o GetConnectionsDataASideAccessPointInterfacePtrOutput) Elem() GetConnectionsDataASideAccessPointInterfaceOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideAccessPointInterface) GetConnectionsDataASideAccessPointInterface {
+		if v != nil {
+			return *v
+		}
+		var ret GetConnectionsDataASideAccessPointInterface
+		return ret
+	}).(GetConnectionsDataASideAccessPointInterfaceOutput)
+}
+
+// The ID of this resource.
+func (o GetConnectionsDataASideAccessPointInterfacePtrOutput) Id() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideAccessPointInterface) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.IntPtrOutput)
+}
+
+// Interface type
+func (o GetConnectionsDataASideAccessPointInterfacePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideAccessPointInterface) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Equinix-assigned interface identifier
+func (o GetConnectionsDataASideAccessPointInterfacePtrOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideAccessPointInterface) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uuid
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetConnectionsDataASideAccessPointLinkProtocol struct {
+	// Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
+	Type *string `pulumi:"type"`
+	// Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+	VlanCTag int `pulumi:"vlanCTag"`
+	// Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+	VlanSTag int `pulumi:"vlanSTag"`
+	// Vlan Tag information, vlanTag value specified for DOT1Q connections
+	VlanTag int `pulumi:"vlanTag"`
+}
+
+// GetConnectionsDataASideAccessPointLinkProtocolInput is an input type that accepts GetConnectionsDataASideAccessPointLinkProtocolArgs and GetConnectionsDataASideAccessPointLinkProtocolOutput values.
+// You can construct a concrete instance of `GetConnectionsDataASideAccessPointLinkProtocolInput` via:
+//
+//	GetConnectionsDataASideAccessPointLinkProtocolArgs{...}
+type GetConnectionsDataASideAccessPointLinkProtocolInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataASideAccessPointLinkProtocolOutput() GetConnectionsDataASideAccessPointLinkProtocolOutput
+	ToGetConnectionsDataASideAccessPointLinkProtocolOutputWithContext(context.Context) GetConnectionsDataASideAccessPointLinkProtocolOutput
+}
+
+type GetConnectionsDataASideAccessPointLinkProtocolArgs struct {
+	// Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+	VlanCTag pulumi.IntInput `pulumi:"vlanCTag"`
+	// Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+	VlanSTag pulumi.IntInput `pulumi:"vlanSTag"`
+	// Vlan Tag information, vlanTag value specified for DOT1Q connections
+	VlanTag pulumi.IntInput `pulumi:"vlanTag"`
+}
+
+func (GetConnectionsDataASideAccessPointLinkProtocolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataASideAccessPointLinkProtocol)(nil)).Elem()
+}
+
+func (i GetConnectionsDataASideAccessPointLinkProtocolArgs) ToGetConnectionsDataASideAccessPointLinkProtocolOutput() GetConnectionsDataASideAccessPointLinkProtocolOutput {
+	return i.ToGetConnectionsDataASideAccessPointLinkProtocolOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataASideAccessPointLinkProtocolArgs) ToGetConnectionsDataASideAccessPointLinkProtocolOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointLinkProtocolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataASideAccessPointLinkProtocolOutput)
+}
+
+func (i GetConnectionsDataASideAccessPointLinkProtocolArgs) ToGetConnectionsDataASideAccessPointLinkProtocolPtrOutput() GetConnectionsDataASideAccessPointLinkProtocolPtrOutput {
+	return i.ToGetConnectionsDataASideAccessPointLinkProtocolPtrOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataASideAccessPointLinkProtocolArgs) ToGetConnectionsDataASideAccessPointLinkProtocolPtrOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointLinkProtocolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataASideAccessPointLinkProtocolOutput).ToGetConnectionsDataASideAccessPointLinkProtocolPtrOutputWithContext(ctx)
+}
+
+// GetConnectionsDataASideAccessPointLinkProtocolPtrInput is an input type that accepts GetConnectionsDataASideAccessPointLinkProtocolArgs, GetConnectionsDataASideAccessPointLinkProtocolPtr and GetConnectionsDataASideAccessPointLinkProtocolPtrOutput values.
+// You can construct a concrete instance of `GetConnectionsDataASideAccessPointLinkProtocolPtrInput` via:
+//
+//	        GetConnectionsDataASideAccessPointLinkProtocolArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetConnectionsDataASideAccessPointLinkProtocolPtrInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataASideAccessPointLinkProtocolPtrOutput() GetConnectionsDataASideAccessPointLinkProtocolPtrOutput
+	ToGetConnectionsDataASideAccessPointLinkProtocolPtrOutputWithContext(context.Context) GetConnectionsDataASideAccessPointLinkProtocolPtrOutput
+}
+
+type getConnectionsDataASideAccessPointLinkProtocolPtrType GetConnectionsDataASideAccessPointLinkProtocolArgs
+
+func GetConnectionsDataASideAccessPointLinkProtocolPtr(v *GetConnectionsDataASideAccessPointLinkProtocolArgs) GetConnectionsDataASideAccessPointLinkProtocolPtrInput {
+	return (*getConnectionsDataASideAccessPointLinkProtocolPtrType)(v)
+}
+
+func (*getConnectionsDataASideAccessPointLinkProtocolPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetConnectionsDataASideAccessPointLinkProtocol)(nil)).Elem()
+}
+
+func (i *getConnectionsDataASideAccessPointLinkProtocolPtrType) ToGetConnectionsDataASideAccessPointLinkProtocolPtrOutput() GetConnectionsDataASideAccessPointLinkProtocolPtrOutput {
+	return i.ToGetConnectionsDataASideAccessPointLinkProtocolPtrOutputWithContext(context.Background())
+}
+
+func (i *getConnectionsDataASideAccessPointLinkProtocolPtrType) ToGetConnectionsDataASideAccessPointLinkProtocolPtrOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointLinkProtocolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataASideAccessPointLinkProtocolPtrOutput)
+}
+
+type GetConnectionsDataASideAccessPointLinkProtocolOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataASideAccessPointLinkProtocolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataASideAccessPointLinkProtocol)(nil)).Elem()
+}
+
+func (o GetConnectionsDataASideAccessPointLinkProtocolOutput) ToGetConnectionsDataASideAccessPointLinkProtocolOutput() GetConnectionsDataASideAccessPointLinkProtocolOutput {
+	return o
+}
+
+func (o GetConnectionsDataASideAccessPointLinkProtocolOutput) ToGetConnectionsDataASideAccessPointLinkProtocolOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointLinkProtocolOutput {
+	return o
+}
+
+func (o GetConnectionsDataASideAccessPointLinkProtocolOutput) ToGetConnectionsDataASideAccessPointLinkProtocolPtrOutput() GetConnectionsDataASideAccessPointLinkProtocolPtrOutput {
+	return o.ToGetConnectionsDataASideAccessPointLinkProtocolPtrOutputWithContext(context.Background())
+}
+
+func (o GetConnectionsDataASideAccessPointLinkProtocolOutput) ToGetConnectionsDataASideAccessPointLinkProtocolPtrOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointLinkProtocolPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetConnectionsDataASideAccessPointLinkProtocol) *GetConnectionsDataASideAccessPointLinkProtocol {
+		return &v
+	}).(GetConnectionsDataASideAccessPointLinkProtocolPtrOutput)
+}
+
+// Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
+func (o GetConnectionsDataASideAccessPointLinkProtocolOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPointLinkProtocol) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+func (o GetConnectionsDataASideAccessPointLinkProtocolOutput) VlanCTag() pulumi.IntOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPointLinkProtocol) int { return v.VlanCTag }).(pulumi.IntOutput)
+}
+
+// Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+func (o GetConnectionsDataASideAccessPointLinkProtocolOutput) VlanSTag() pulumi.IntOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPointLinkProtocol) int { return v.VlanSTag }).(pulumi.IntOutput)
+}
+
+// Vlan Tag information, vlanTag value specified for DOT1Q connections
+func (o GetConnectionsDataASideAccessPointLinkProtocolOutput) VlanTag() pulumi.IntOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPointLinkProtocol) int { return v.VlanTag }).(pulumi.IntOutput)
+}
+
+type GetConnectionsDataASideAccessPointLinkProtocolPtrOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataASideAccessPointLinkProtocolPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetConnectionsDataASideAccessPointLinkProtocol)(nil)).Elem()
+}
+
+func (o GetConnectionsDataASideAccessPointLinkProtocolPtrOutput) ToGetConnectionsDataASideAccessPointLinkProtocolPtrOutput() GetConnectionsDataASideAccessPointLinkProtocolPtrOutput {
+	return o
+}
+
+func (o GetConnectionsDataASideAccessPointLinkProtocolPtrOutput) ToGetConnectionsDataASideAccessPointLinkProtocolPtrOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointLinkProtocolPtrOutput {
+	return o
+}
+
+func (o GetConnectionsDataASideAccessPointLinkProtocolPtrOutput) Elem() GetConnectionsDataASideAccessPointLinkProtocolOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideAccessPointLinkProtocol) GetConnectionsDataASideAccessPointLinkProtocol {
+		if v != nil {
+			return *v
+		}
+		var ret GetConnectionsDataASideAccessPointLinkProtocol
+		return ret
+	}).(GetConnectionsDataASideAccessPointLinkProtocolOutput)
+}
+
+// Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
+func (o GetConnectionsDataASideAccessPointLinkProtocolPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideAccessPointLinkProtocol) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+func (o GetConnectionsDataASideAccessPointLinkProtocolPtrOutput) VlanCTag() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideAccessPointLinkProtocol) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.VlanCTag
+	}).(pulumi.IntPtrOutput)
+}
+
+// Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+func (o GetConnectionsDataASideAccessPointLinkProtocolPtrOutput) VlanSTag() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideAccessPointLinkProtocol) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.VlanSTag
+	}).(pulumi.IntPtrOutput)
+}
+
+// Vlan Tag information, vlanTag value specified for DOT1Q connections
+func (o GetConnectionsDataASideAccessPointLinkProtocolPtrOutput) VlanTag() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideAccessPointLinkProtocol) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.VlanTag
+	}).(pulumi.IntPtrOutput)
+}
+
+type GetConnectionsDataASideAccessPointLocation struct {
+	// IBX Code
+	Ibx string `pulumi:"ibx"`
+	// Access point metro code
+	MetroCode string `pulumi:"metroCode"`
+	// Access point metro name
+	MetroName string `pulumi:"metroName"`
+	// Access point region
+	Region string `pulumi:"region"`
+}
+
+// GetConnectionsDataASideAccessPointLocationInput is an input type that accepts GetConnectionsDataASideAccessPointLocationArgs and GetConnectionsDataASideAccessPointLocationOutput values.
+// You can construct a concrete instance of `GetConnectionsDataASideAccessPointLocationInput` via:
+//
+//	GetConnectionsDataASideAccessPointLocationArgs{...}
+type GetConnectionsDataASideAccessPointLocationInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataASideAccessPointLocationOutput() GetConnectionsDataASideAccessPointLocationOutput
+	ToGetConnectionsDataASideAccessPointLocationOutputWithContext(context.Context) GetConnectionsDataASideAccessPointLocationOutput
+}
+
+type GetConnectionsDataASideAccessPointLocationArgs struct {
+	// IBX Code
+	Ibx pulumi.StringInput `pulumi:"ibx"`
+	// Access point metro code
+	MetroCode pulumi.StringInput `pulumi:"metroCode"`
+	// Access point metro name
+	MetroName pulumi.StringInput `pulumi:"metroName"`
+	// Access point region
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (GetConnectionsDataASideAccessPointLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataASideAccessPointLocation)(nil)).Elem()
+}
+
+func (i GetConnectionsDataASideAccessPointLocationArgs) ToGetConnectionsDataASideAccessPointLocationOutput() GetConnectionsDataASideAccessPointLocationOutput {
+	return i.ToGetConnectionsDataASideAccessPointLocationOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataASideAccessPointLocationArgs) ToGetConnectionsDataASideAccessPointLocationOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataASideAccessPointLocationOutput)
+}
+
+func (i GetConnectionsDataASideAccessPointLocationArgs) ToGetConnectionsDataASideAccessPointLocationPtrOutput() GetConnectionsDataASideAccessPointLocationPtrOutput {
+	return i.ToGetConnectionsDataASideAccessPointLocationPtrOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataASideAccessPointLocationArgs) ToGetConnectionsDataASideAccessPointLocationPtrOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointLocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataASideAccessPointLocationOutput).ToGetConnectionsDataASideAccessPointLocationPtrOutputWithContext(ctx)
+}
+
+// GetConnectionsDataASideAccessPointLocationPtrInput is an input type that accepts GetConnectionsDataASideAccessPointLocationArgs, GetConnectionsDataASideAccessPointLocationPtr and GetConnectionsDataASideAccessPointLocationPtrOutput values.
+// You can construct a concrete instance of `GetConnectionsDataASideAccessPointLocationPtrInput` via:
+//
+//	        GetConnectionsDataASideAccessPointLocationArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetConnectionsDataASideAccessPointLocationPtrInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataASideAccessPointLocationPtrOutput() GetConnectionsDataASideAccessPointLocationPtrOutput
+	ToGetConnectionsDataASideAccessPointLocationPtrOutputWithContext(context.Context) GetConnectionsDataASideAccessPointLocationPtrOutput
+}
+
+type getConnectionsDataASideAccessPointLocationPtrType GetConnectionsDataASideAccessPointLocationArgs
+
+func GetConnectionsDataASideAccessPointLocationPtr(v *GetConnectionsDataASideAccessPointLocationArgs) GetConnectionsDataASideAccessPointLocationPtrInput {
+	return (*getConnectionsDataASideAccessPointLocationPtrType)(v)
+}
+
+func (*getConnectionsDataASideAccessPointLocationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetConnectionsDataASideAccessPointLocation)(nil)).Elem()
+}
+
+func (i *getConnectionsDataASideAccessPointLocationPtrType) ToGetConnectionsDataASideAccessPointLocationPtrOutput() GetConnectionsDataASideAccessPointLocationPtrOutput {
+	return i.ToGetConnectionsDataASideAccessPointLocationPtrOutputWithContext(context.Background())
+}
+
+func (i *getConnectionsDataASideAccessPointLocationPtrType) ToGetConnectionsDataASideAccessPointLocationPtrOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointLocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataASideAccessPointLocationPtrOutput)
+}
+
+type GetConnectionsDataASideAccessPointLocationOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataASideAccessPointLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataASideAccessPointLocation)(nil)).Elem()
+}
+
+func (o GetConnectionsDataASideAccessPointLocationOutput) ToGetConnectionsDataASideAccessPointLocationOutput() GetConnectionsDataASideAccessPointLocationOutput {
+	return o
+}
+
+func (o GetConnectionsDataASideAccessPointLocationOutput) ToGetConnectionsDataASideAccessPointLocationOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointLocationOutput {
+	return o
+}
+
+func (o GetConnectionsDataASideAccessPointLocationOutput) ToGetConnectionsDataASideAccessPointLocationPtrOutput() GetConnectionsDataASideAccessPointLocationPtrOutput {
+	return o.ToGetConnectionsDataASideAccessPointLocationPtrOutputWithContext(context.Background())
+}
+
+func (o GetConnectionsDataASideAccessPointLocationOutput) ToGetConnectionsDataASideAccessPointLocationPtrOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointLocationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetConnectionsDataASideAccessPointLocation) *GetConnectionsDataASideAccessPointLocation {
+		return &v
+	}).(GetConnectionsDataASideAccessPointLocationPtrOutput)
+}
+
+// IBX Code
+func (o GetConnectionsDataASideAccessPointLocationOutput) Ibx() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPointLocation) string { return v.Ibx }).(pulumi.StringOutput)
+}
+
+// Access point metro code
+func (o GetConnectionsDataASideAccessPointLocationOutput) MetroCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPointLocation) string { return v.MetroCode }).(pulumi.StringOutput)
+}
+
+// Access point metro name
+func (o GetConnectionsDataASideAccessPointLocationOutput) MetroName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPointLocation) string { return v.MetroName }).(pulumi.StringOutput)
+}
+
+// Access point region
+func (o GetConnectionsDataASideAccessPointLocationOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPointLocation) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type GetConnectionsDataASideAccessPointLocationPtrOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataASideAccessPointLocationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetConnectionsDataASideAccessPointLocation)(nil)).Elem()
+}
+
+func (o GetConnectionsDataASideAccessPointLocationPtrOutput) ToGetConnectionsDataASideAccessPointLocationPtrOutput() GetConnectionsDataASideAccessPointLocationPtrOutput {
+	return o
+}
+
+func (o GetConnectionsDataASideAccessPointLocationPtrOutput) ToGetConnectionsDataASideAccessPointLocationPtrOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointLocationPtrOutput {
+	return o
+}
+
+func (o GetConnectionsDataASideAccessPointLocationPtrOutput) Elem() GetConnectionsDataASideAccessPointLocationOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideAccessPointLocation) GetConnectionsDataASideAccessPointLocation {
+		if v != nil {
+			return *v
+		}
+		var ret GetConnectionsDataASideAccessPointLocation
+		return ret
+	}).(GetConnectionsDataASideAccessPointLocationOutput)
+}
+
+// IBX Code
+func (o GetConnectionsDataASideAccessPointLocationPtrOutput) Ibx() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideAccessPointLocation) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Ibx
+	}).(pulumi.StringPtrOutput)
+}
+
+// Access point metro code
+func (o GetConnectionsDataASideAccessPointLocationPtrOutput) MetroCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideAccessPointLocation) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MetroCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Access point metro name
+func (o GetConnectionsDataASideAccessPointLocationPtrOutput) MetroName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideAccessPointLocation) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MetroName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Access point region
+func (o GetConnectionsDataASideAccessPointLocationPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideAccessPointLocation) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetConnectionsDataASideAccessPointNetwork struct {
+	// Unique Resource Identifier
+	Href string `pulumi:"href"`
+	// Equinix-assigned Network identifier
+	Uuid *string `pulumi:"uuid"`
+}
+
+// GetConnectionsDataASideAccessPointNetworkInput is an input type that accepts GetConnectionsDataASideAccessPointNetworkArgs and GetConnectionsDataASideAccessPointNetworkOutput values.
+// You can construct a concrete instance of `GetConnectionsDataASideAccessPointNetworkInput` via:
+//
+//	GetConnectionsDataASideAccessPointNetworkArgs{...}
+type GetConnectionsDataASideAccessPointNetworkInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataASideAccessPointNetworkOutput() GetConnectionsDataASideAccessPointNetworkOutput
+	ToGetConnectionsDataASideAccessPointNetworkOutputWithContext(context.Context) GetConnectionsDataASideAccessPointNetworkOutput
+}
+
+type GetConnectionsDataASideAccessPointNetworkArgs struct {
+	// Unique Resource Identifier
+	Href pulumi.StringInput `pulumi:"href"`
+	// Equinix-assigned Network identifier
+	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+}
+
+func (GetConnectionsDataASideAccessPointNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataASideAccessPointNetwork)(nil)).Elem()
+}
+
+func (i GetConnectionsDataASideAccessPointNetworkArgs) ToGetConnectionsDataASideAccessPointNetworkOutput() GetConnectionsDataASideAccessPointNetworkOutput {
+	return i.ToGetConnectionsDataASideAccessPointNetworkOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataASideAccessPointNetworkArgs) ToGetConnectionsDataASideAccessPointNetworkOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataASideAccessPointNetworkOutput)
+}
+
+func (i GetConnectionsDataASideAccessPointNetworkArgs) ToGetConnectionsDataASideAccessPointNetworkPtrOutput() GetConnectionsDataASideAccessPointNetworkPtrOutput {
+	return i.ToGetConnectionsDataASideAccessPointNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataASideAccessPointNetworkArgs) ToGetConnectionsDataASideAccessPointNetworkPtrOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataASideAccessPointNetworkOutput).ToGetConnectionsDataASideAccessPointNetworkPtrOutputWithContext(ctx)
+}
+
+// GetConnectionsDataASideAccessPointNetworkPtrInput is an input type that accepts GetConnectionsDataASideAccessPointNetworkArgs, GetConnectionsDataASideAccessPointNetworkPtr and GetConnectionsDataASideAccessPointNetworkPtrOutput values.
+// You can construct a concrete instance of `GetConnectionsDataASideAccessPointNetworkPtrInput` via:
+//
+//	        GetConnectionsDataASideAccessPointNetworkArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetConnectionsDataASideAccessPointNetworkPtrInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataASideAccessPointNetworkPtrOutput() GetConnectionsDataASideAccessPointNetworkPtrOutput
+	ToGetConnectionsDataASideAccessPointNetworkPtrOutputWithContext(context.Context) GetConnectionsDataASideAccessPointNetworkPtrOutput
+}
+
+type getConnectionsDataASideAccessPointNetworkPtrType GetConnectionsDataASideAccessPointNetworkArgs
+
+func GetConnectionsDataASideAccessPointNetworkPtr(v *GetConnectionsDataASideAccessPointNetworkArgs) GetConnectionsDataASideAccessPointNetworkPtrInput {
+	return (*getConnectionsDataASideAccessPointNetworkPtrType)(v)
+}
+
+func (*getConnectionsDataASideAccessPointNetworkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetConnectionsDataASideAccessPointNetwork)(nil)).Elem()
+}
+
+func (i *getConnectionsDataASideAccessPointNetworkPtrType) ToGetConnectionsDataASideAccessPointNetworkPtrOutput() GetConnectionsDataASideAccessPointNetworkPtrOutput {
+	return i.ToGetConnectionsDataASideAccessPointNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i *getConnectionsDataASideAccessPointNetworkPtrType) ToGetConnectionsDataASideAccessPointNetworkPtrOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataASideAccessPointNetworkPtrOutput)
+}
+
+type GetConnectionsDataASideAccessPointNetworkOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataASideAccessPointNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataASideAccessPointNetwork)(nil)).Elem()
+}
+
+func (o GetConnectionsDataASideAccessPointNetworkOutput) ToGetConnectionsDataASideAccessPointNetworkOutput() GetConnectionsDataASideAccessPointNetworkOutput {
+	return o
+}
+
+func (o GetConnectionsDataASideAccessPointNetworkOutput) ToGetConnectionsDataASideAccessPointNetworkOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointNetworkOutput {
+	return o
+}
+
+func (o GetConnectionsDataASideAccessPointNetworkOutput) ToGetConnectionsDataASideAccessPointNetworkPtrOutput() GetConnectionsDataASideAccessPointNetworkPtrOutput {
+	return o.ToGetConnectionsDataASideAccessPointNetworkPtrOutputWithContext(context.Background())
+}
+
+func (o GetConnectionsDataASideAccessPointNetworkOutput) ToGetConnectionsDataASideAccessPointNetworkPtrOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointNetworkPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetConnectionsDataASideAccessPointNetwork) *GetConnectionsDataASideAccessPointNetwork {
+		return &v
+	}).(GetConnectionsDataASideAccessPointNetworkPtrOutput)
+}
+
+// Unique Resource Identifier
+func (o GetConnectionsDataASideAccessPointNetworkOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPointNetwork) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// Equinix-assigned Network identifier
+func (o GetConnectionsDataASideAccessPointNetworkOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPointNetwork) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+}
+
+type GetConnectionsDataASideAccessPointNetworkPtrOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataASideAccessPointNetworkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetConnectionsDataASideAccessPointNetwork)(nil)).Elem()
+}
+
+func (o GetConnectionsDataASideAccessPointNetworkPtrOutput) ToGetConnectionsDataASideAccessPointNetworkPtrOutput() GetConnectionsDataASideAccessPointNetworkPtrOutput {
+	return o
+}
+
+func (o GetConnectionsDataASideAccessPointNetworkPtrOutput) ToGetConnectionsDataASideAccessPointNetworkPtrOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointNetworkPtrOutput {
+	return o
+}
+
+func (o GetConnectionsDataASideAccessPointNetworkPtrOutput) Elem() GetConnectionsDataASideAccessPointNetworkOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideAccessPointNetwork) GetConnectionsDataASideAccessPointNetwork {
+		if v != nil {
+			return *v
+		}
+		var ret GetConnectionsDataASideAccessPointNetwork
+		return ret
+	}).(GetConnectionsDataASideAccessPointNetworkOutput)
+}
+
+// Unique Resource Identifier
+func (o GetConnectionsDataASideAccessPointNetworkPtrOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideAccessPointNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Href
+	}).(pulumi.StringPtrOutput)
+}
+
+// Equinix-assigned Network identifier
+func (o GetConnectionsDataASideAccessPointNetworkPtrOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideAccessPointNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uuid
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetConnectionsDataASideAccessPointPort struct {
+	// Unique Resource Identifier
+	Href string `pulumi:"href"`
+	// Port name
+	Name string `pulumi:"name"`
+	// Redundancy Information
+	Redundancies []GetConnectionsDataASideAccessPointPortRedundancy `pulumi:"redundancies"`
+	// Equinix-assigned Port identifier
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetConnectionsDataASideAccessPointPortInput is an input type that accepts GetConnectionsDataASideAccessPointPortArgs and GetConnectionsDataASideAccessPointPortOutput values.
+// You can construct a concrete instance of `GetConnectionsDataASideAccessPointPortInput` via:
+//
+//	GetConnectionsDataASideAccessPointPortArgs{...}
+type GetConnectionsDataASideAccessPointPortInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataASideAccessPointPortOutput() GetConnectionsDataASideAccessPointPortOutput
+	ToGetConnectionsDataASideAccessPointPortOutputWithContext(context.Context) GetConnectionsDataASideAccessPointPortOutput
+}
+
+type GetConnectionsDataASideAccessPointPortArgs struct {
+	// Unique Resource Identifier
+	Href pulumi.StringInput `pulumi:"href"`
+	// Port name
+	Name pulumi.StringInput `pulumi:"name"`
+	// Redundancy Information
+	Redundancies GetConnectionsDataASideAccessPointPortRedundancyArrayInput `pulumi:"redundancies"`
+	// Equinix-assigned Port identifier
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetConnectionsDataASideAccessPointPortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataASideAccessPointPort)(nil)).Elem()
+}
+
+func (i GetConnectionsDataASideAccessPointPortArgs) ToGetConnectionsDataASideAccessPointPortOutput() GetConnectionsDataASideAccessPointPortOutput {
+	return i.ToGetConnectionsDataASideAccessPointPortOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataASideAccessPointPortArgs) ToGetConnectionsDataASideAccessPointPortOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointPortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataASideAccessPointPortOutput)
+}
+
+func (i GetConnectionsDataASideAccessPointPortArgs) ToGetConnectionsDataASideAccessPointPortPtrOutput() GetConnectionsDataASideAccessPointPortPtrOutput {
+	return i.ToGetConnectionsDataASideAccessPointPortPtrOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataASideAccessPointPortArgs) ToGetConnectionsDataASideAccessPointPortPtrOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointPortPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataASideAccessPointPortOutput).ToGetConnectionsDataASideAccessPointPortPtrOutputWithContext(ctx)
+}
+
+// GetConnectionsDataASideAccessPointPortPtrInput is an input type that accepts GetConnectionsDataASideAccessPointPortArgs, GetConnectionsDataASideAccessPointPortPtr and GetConnectionsDataASideAccessPointPortPtrOutput values.
+// You can construct a concrete instance of `GetConnectionsDataASideAccessPointPortPtrInput` via:
+//
+//	        GetConnectionsDataASideAccessPointPortArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetConnectionsDataASideAccessPointPortPtrInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataASideAccessPointPortPtrOutput() GetConnectionsDataASideAccessPointPortPtrOutput
+	ToGetConnectionsDataASideAccessPointPortPtrOutputWithContext(context.Context) GetConnectionsDataASideAccessPointPortPtrOutput
+}
+
+type getConnectionsDataASideAccessPointPortPtrType GetConnectionsDataASideAccessPointPortArgs
+
+func GetConnectionsDataASideAccessPointPortPtr(v *GetConnectionsDataASideAccessPointPortArgs) GetConnectionsDataASideAccessPointPortPtrInput {
+	return (*getConnectionsDataASideAccessPointPortPtrType)(v)
+}
+
+func (*getConnectionsDataASideAccessPointPortPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetConnectionsDataASideAccessPointPort)(nil)).Elem()
+}
+
+func (i *getConnectionsDataASideAccessPointPortPtrType) ToGetConnectionsDataASideAccessPointPortPtrOutput() GetConnectionsDataASideAccessPointPortPtrOutput {
+	return i.ToGetConnectionsDataASideAccessPointPortPtrOutputWithContext(context.Background())
+}
+
+func (i *getConnectionsDataASideAccessPointPortPtrType) ToGetConnectionsDataASideAccessPointPortPtrOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointPortPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataASideAccessPointPortPtrOutput)
+}
+
+type GetConnectionsDataASideAccessPointPortOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataASideAccessPointPortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataASideAccessPointPort)(nil)).Elem()
+}
+
+func (o GetConnectionsDataASideAccessPointPortOutput) ToGetConnectionsDataASideAccessPointPortOutput() GetConnectionsDataASideAccessPointPortOutput {
+	return o
+}
+
+func (o GetConnectionsDataASideAccessPointPortOutput) ToGetConnectionsDataASideAccessPointPortOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointPortOutput {
+	return o
+}
+
+func (o GetConnectionsDataASideAccessPointPortOutput) ToGetConnectionsDataASideAccessPointPortPtrOutput() GetConnectionsDataASideAccessPointPortPtrOutput {
+	return o.ToGetConnectionsDataASideAccessPointPortPtrOutputWithContext(context.Background())
+}
+
+func (o GetConnectionsDataASideAccessPointPortOutput) ToGetConnectionsDataASideAccessPointPortPtrOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointPortPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetConnectionsDataASideAccessPointPort) *GetConnectionsDataASideAccessPointPort {
+		return &v
+	}).(GetConnectionsDataASideAccessPointPortPtrOutput)
+}
+
+// Unique Resource Identifier
+func (o GetConnectionsDataASideAccessPointPortOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPointPort) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// Port name
+func (o GetConnectionsDataASideAccessPointPortOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPointPort) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Redundancy Information
+func (o GetConnectionsDataASideAccessPointPortOutput) Redundancies() GetConnectionsDataASideAccessPointPortRedundancyArrayOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPointPort) []GetConnectionsDataASideAccessPointPortRedundancy {
+		return v.Redundancies
+	}).(GetConnectionsDataASideAccessPointPortRedundancyArrayOutput)
+}
+
+// Equinix-assigned Port identifier
+func (o GetConnectionsDataASideAccessPointPortOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPointPort) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type GetConnectionsDataASideAccessPointPortPtrOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataASideAccessPointPortPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetConnectionsDataASideAccessPointPort)(nil)).Elem()
+}
+
+func (o GetConnectionsDataASideAccessPointPortPtrOutput) ToGetConnectionsDataASideAccessPointPortPtrOutput() GetConnectionsDataASideAccessPointPortPtrOutput {
+	return o
+}
+
+func (o GetConnectionsDataASideAccessPointPortPtrOutput) ToGetConnectionsDataASideAccessPointPortPtrOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointPortPtrOutput {
+	return o
+}
+
+func (o GetConnectionsDataASideAccessPointPortPtrOutput) Elem() GetConnectionsDataASideAccessPointPortOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideAccessPointPort) GetConnectionsDataASideAccessPointPort {
+		if v != nil {
+			return *v
+		}
+		var ret GetConnectionsDataASideAccessPointPort
+		return ret
+	}).(GetConnectionsDataASideAccessPointPortOutput)
+}
+
+// Unique Resource Identifier
+func (o GetConnectionsDataASideAccessPointPortPtrOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideAccessPointPort) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Href
+	}).(pulumi.StringPtrOutput)
+}
+
+// Port name
+func (o GetConnectionsDataASideAccessPointPortPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideAccessPointPort) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Redundancy Information
+func (o GetConnectionsDataASideAccessPointPortPtrOutput) Redundancies() GetConnectionsDataASideAccessPointPortRedundancyArrayOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideAccessPointPort) []GetConnectionsDataASideAccessPointPortRedundancy {
+		if v == nil {
+			return nil
+		}
+		return v.Redundancies
+	}).(GetConnectionsDataASideAccessPointPortRedundancyArrayOutput)
+}
+
+// Equinix-assigned Port identifier
+func (o GetConnectionsDataASideAccessPointPortPtrOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideAccessPointPort) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uuid
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetConnectionsDataASideAccessPointPortRedundancy struct {
+	// Access point redundancy
+	Enabled bool `pulumi:"enabled"`
+	// Port redundancy group
+	Group string `pulumi:"group"`
+	// Priority type-Primary or Secondary
+	Priority string `pulumi:"priority"`
+}
+
+// GetConnectionsDataASideAccessPointPortRedundancyInput is an input type that accepts GetConnectionsDataASideAccessPointPortRedundancyArgs and GetConnectionsDataASideAccessPointPortRedundancyOutput values.
+// You can construct a concrete instance of `GetConnectionsDataASideAccessPointPortRedundancyInput` via:
+//
+//	GetConnectionsDataASideAccessPointPortRedundancyArgs{...}
+type GetConnectionsDataASideAccessPointPortRedundancyInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataASideAccessPointPortRedundancyOutput() GetConnectionsDataASideAccessPointPortRedundancyOutput
+	ToGetConnectionsDataASideAccessPointPortRedundancyOutputWithContext(context.Context) GetConnectionsDataASideAccessPointPortRedundancyOutput
+}
+
+type GetConnectionsDataASideAccessPointPortRedundancyArgs struct {
+	// Access point redundancy
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Port redundancy group
+	Group pulumi.StringInput `pulumi:"group"`
+	// Priority type-Primary or Secondary
+	Priority pulumi.StringInput `pulumi:"priority"`
+}
+
+func (GetConnectionsDataASideAccessPointPortRedundancyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataASideAccessPointPortRedundancy)(nil)).Elem()
+}
+
+func (i GetConnectionsDataASideAccessPointPortRedundancyArgs) ToGetConnectionsDataASideAccessPointPortRedundancyOutput() GetConnectionsDataASideAccessPointPortRedundancyOutput {
+	return i.ToGetConnectionsDataASideAccessPointPortRedundancyOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataASideAccessPointPortRedundancyArgs) ToGetConnectionsDataASideAccessPointPortRedundancyOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointPortRedundancyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataASideAccessPointPortRedundancyOutput)
+}
+
+// GetConnectionsDataASideAccessPointPortRedundancyArrayInput is an input type that accepts GetConnectionsDataASideAccessPointPortRedundancyArray and GetConnectionsDataASideAccessPointPortRedundancyArrayOutput values.
+// You can construct a concrete instance of `GetConnectionsDataASideAccessPointPortRedundancyArrayInput` via:
+//
+//	GetConnectionsDataASideAccessPointPortRedundancyArray{ GetConnectionsDataASideAccessPointPortRedundancyArgs{...} }
+type GetConnectionsDataASideAccessPointPortRedundancyArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataASideAccessPointPortRedundancyArrayOutput() GetConnectionsDataASideAccessPointPortRedundancyArrayOutput
+	ToGetConnectionsDataASideAccessPointPortRedundancyArrayOutputWithContext(context.Context) GetConnectionsDataASideAccessPointPortRedundancyArrayOutput
+}
+
+type GetConnectionsDataASideAccessPointPortRedundancyArray []GetConnectionsDataASideAccessPointPortRedundancyInput
+
+func (GetConnectionsDataASideAccessPointPortRedundancyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionsDataASideAccessPointPortRedundancy)(nil)).Elem()
+}
+
+func (i GetConnectionsDataASideAccessPointPortRedundancyArray) ToGetConnectionsDataASideAccessPointPortRedundancyArrayOutput() GetConnectionsDataASideAccessPointPortRedundancyArrayOutput {
+	return i.ToGetConnectionsDataASideAccessPointPortRedundancyArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataASideAccessPointPortRedundancyArray) ToGetConnectionsDataASideAccessPointPortRedundancyArrayOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointPortRedundancyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataASideAccessPointPortRedundancyArrayOutput)
+}
+
+type GetConnectionsDataASideAccessPointPortRedundancyOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataASideAccessPointPortRedundancyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataASideAccessPointPortRedundancy)(nil)).Elem()
+}
+
+func (o GetConnectionsDataASideAccessPointPortRedundancyOutput) ToGetConnectionsDataASideAccessPointPortRedundancyOutput() GetConnectionsDataASideAccessPointPortRedundancyOutput {
+	return o
+}
+
+func (o GetConnectionsDataASideAccessPointPortRedundancyOutput) ToGetConnectionsDataASideAccessPointPortRedundancyOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointPortRedundancyOutput {
+	return o
+}
+
+// Access point redundancy
+func (o GetConnectionsDataASideAccessPointPortRedundancyOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPointPortRedundancy) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Port redundancy group
+func (o GetConnectionsDataASideAccessPointPortRedundancyOutput) Group() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPointPortRedundancy) string { return v.Group }).(pulumi.StringOutput)
+}
+
+// Priority type-Primary or Secondary
+func (o GetConnectionsDataASideAccessPointPortRedundancyOutput) Priority() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPointPortRedundancy) string { return v.Priority }).(pulumi.StringOutput)
+}
+
+type GetConnectionsDataASideAccessPointPortRedundancyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataASideAccessPointPortRedundancyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionsDataASideAccessPointPortRedundancy)(nil)).Elem()
+}
+
+func (o GetConnectionsDataASideAccessPointPortRedundancyArrayOutput) ToGetConnectionsDataASideAccessPointPortRedundancyArrayOutput() GetConnectionsDataASideAccessPointPortRedundancyArrayOutput {
+	return o
+}
+
+func (o GetConnectionsDataASideAccessPointPortRedundancyArrayOutput) ToGetConnectionsDataASideAccessPointPortRedundancyArrayOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointPortRedundancyArrayOutput {
+	return o
+}
+
+func (o GetConnectionsDataASideAccessPointPortRedundancyArrayOutput) Index(i pulumi.IntInput) GetConnectionsDataASideAccessPointPortRedundancyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionsDataASideAccessPointPortRedundancy {
+		return vs[0].([]GetConnectionsDataASideAccessPointPortRedundancy)[vs[1].(int)]
+	}).(GetConnectionsDataASideAccessPointPortRedundancyOutput)
+}
+
+type GetConnectionsDataASideAccessPointProfile struct {
+	// Access point config information
+	AccessPointTypeConfigs []GetConnectionsDataASideAccessPointProfileAccessPointTypeConfig `pulumi:"accessPointTypeConfigs"`
+	// User-provided service description
+	Description string `pulumi:"description"`
+	// Service Profile URI response attribute
+	Href string `pulumi:"href"`
+	// Customer-assigned service profile name
+	Name string `pulumi:"name"`
+	// Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE, IA_PROFILE
+	Type string `pulumi:"type"`
+	// Equinix assigned service profile identifier
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetConnectionsDataASideAccessPointProfileInput is an input type that accepts GetConnectionsDataASideAccessPointProfileArgs and GetConnectionsDataASideAccessPointProfileOutput values.
+// You can construct a concrete instance of `GetConnectionsDataASideAccessPointProfileInput` via:
+//
+//	GetConnectionsDataASideAccessPointProfileArgs{...}
+type GetConnectionsDataASideAccessPointProfileInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataASideAccessPointProfileOutput() GetConnectionsDataASideAccessPointProfileOutput
+	ToGetConnectionsDataASideAccessPointProfileOutputWithContext(context.Context) GetConnectionsDataASideAccessPointProfileOutput
+}
+
+type GetConnectionsDataASideAccessPointProfileArgs struct {
+	// Access point config information
+	AccessPointTypeConfigs GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigArrayInput `pulumi:"accessPointTypeConfigs"`
+	// User-provided service description
+	Description pulumi.StringInput `pulumi:"description"`
+	// Service Profile URI response attribute
+	Href pulumi.StringInput `pulumi:"href"`
+	// Customer-assigned service profile name
+	Name pulumi.StringInput `pulumi:"name"`
+	// Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE, IA_PROFILE
+	Type pulumi.StringInput `pulumi:"type"`
+	// Equinix assigned service profile identifier
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetConnectionsDataASideAccessPointProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataASideAccessPointProfile)(nil)).Elem()
+}
+
+func (i GetConnectionsDataASideAccessPointProfileArgs) ToGetConnectionsDataASideAccessPointProfileOutput() GetConnectionsDataASideAccessPointProfileOutput {
+	return i.ToGetConnectionsDataASideAccessPointProfileOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataASideAccessPointProfileArgs) ToGetConnectionsDataASideAccessPointProfileOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataASideAccessPointProfileOutput)
+}
+
+func (i GetConnectionsDataASideAccessPointProfileArgs) ToGetConnectionsDataASideAccessPointProfilePtrOutput() GetConnectionsDataASideAccessPointProfilePtrOutput {
+	return i.ToGetConnectionsDataASideAccessPointProfilePtrOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataASideAccessPointProfileArgs) ToGetConnectionsDataASideAccessPointProfilePtrOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataASideAccessPointProfileOutput).ToGetConnectionsDataASideAccessPointProfilePtrOutputWithContext(ctx)
+}
+
+// GetConnectionsDataASideAccessPointProfilePtrInput is an input type that accepts GetConnectionsDataASideAccessPointProfileArgs, GetConnectionsDataASideAccessPointProfilePtr and GetConnectionsDataASideAccessPointProfilePtrOutput values.
+// You can construct a concrete instance of `GetConnectionsDataASideAccessPointProfilePtrInput` via:
+//
+//	        GetConnectionsDataASideAccessPointProfileArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetConnectionsDataASideAccessPointProfilePtrInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataASideAccessPointProfilePtrOutput() GetConnectionsDataASideAccessPointProfilePtrOutput
+	ToGetConnectionsDataASideAccessPointProfilePtrOutputWithContext(context.Context) GetConnectionsDataASideAccessPointProfilePtrOutput
+}
+
+type getConnectionsDataASideAccessPointProfilePtrType GetConnectionsDataASideAccessPointProfileArgs
+
+func GetConnectionsDataASideAccessPointProfilePtr(v *GetConnectionsDataASideAccessPointProfileArgs) GetConnectionsDataASideAccessPointProfilePtrInput {
+	return (*getConnectionsDataASideAccessPointProfilePtrType)(v)
+}
+
+func (*getConnectionsDataASideAccessPointProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetConnectionsDataASideAccessPointProfile)(nil)).Elem()
+}
+
+func (i *getConnectionsDataASideAccessPointProfilePtrType) ToGetConnectionsDataASideAccessPointProfilePtrOutput() GetConnectionsDataASideAccessPointProfilePtrOutput {
+	return i.ToGetConnectionsDataASideAccessPointProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *getConnectionsDataASideAccessPointProfilePtrType) ToGetConnectionsDataASideAccessPointProfilePtrOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataASideAccessPointProfilePtrOutput)
+}
+
+type GetConnectionsDataASideAccessPointProfileOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataASideAccessPointProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataASideAccessPointProfile)(nil)).Elem()
+}
+
+func (o GetConnectionsDataASideAccessPointProfileOutput) ToGetConnectionsDataASideAccessPointProfileOutput() GetConnectionsDataASideAccessPointProfileOutput {
+	return o
+}
+
+func (o GetConnectionsDataASideAccessPointProfileOutput) ToGetConnectionsDataASideAccessPointProfileOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointProfileOutput {
+	return o
+}
+
+func (o GetConnectionsDataASideAccessPointProfileOutput) ToGetConnectionsDataASideAccessPointProfilePtrOutput() GetConnectionsDataASideAccessPointProfilePtrOutput {
+	return o.ToGetConnectionsDataASideAccessPointProfilePtrOutputWithContext(context.Background())
+}
+
+func (o GetConnectionsDataASideAccessPointProfileOutput) ToGetConnectionsDataASideAccessPointProfilePtrOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetConnectionsDataASideAccessPointProfile) *GetConnectionsDataASideAccessPointProfile {
+		return &v
+	}).(GetConnectionsDataASideAccessPointProfilePtrOutput)
+}
+
+// Access point config information
+func (o GetConnectionsDataASideAccessPointProfileOutput) AccessPointTypeConfigs() GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigArrayOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPointProfile) []GetConnectionsDataASideAccessPointProfileAccessPointTypeConfig {
+		return v.AccessPointTypeConfigs
+	}).(GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigArrayOutput)
+}
+
+// User-provided service description
+func (o GetConnectionsDataASideAccessPointProfileOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPointProfile) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Service Profile URI response attribute
+func (o GetConnectionsDataASideAccessPointProfileOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPointProfile) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// Customer-assigned service profile name
+func (o GetConnectionsDataASideAccessPointProfileOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPointProfile) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE, IA_PROFILE
+func (o GetConnectionsDataASideAccessPointProfileOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPointProfile) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Equinix assigned service profile identifier
+func (o GetConnectionsDataASideAccessPointProfileOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPointProfile) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type GetConnectionsDataASideAccessPointProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataASideAccessPointProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetConnectionsDataASideAccessPointProfile)(nil)).Elem()
+}
+
+func (o GetConnectionsDataASideAccessPointProfilePtrOutput) ToGetConnectionsDataASideAccessPointProfilePtrOutput() GetConnectionsDataASideAccessPointProfilePtrOutput {
+	return o
+}
+
+func (o GetConnectionsDataASideAccessPointProfilePtrOutput) ToGetConnectionsDataASideAccessPointProfilePtrOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointProfilePtrOutput {
+	return o
+}
+
+func (o GetConnectionsDataASideAccessPointProfilePtrOutput) Elem() GetConnectionsDataASideAccessPointProfileOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideAccessPointProfile) GetConnectionsDataASideAccessPointProfile {
+		if v != nil {
+			return *v
+		}
+		var ret GetConnectionsDataASideAccessPointProfile
+		return ret
+	}).(GetConnectionsDataASideAccessPointProfileOutput)
+}
+
+// Access point config information
+func (o GetConnectionsDataASideAccessPointProfilePtrOutput) AccessPointTypeConfigs() GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigArrayOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideAccessPointProfile) []GetConnectionsDataASideAccessPointProfileAccessPointTypeConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AccessPointTypeConfigs
+	}).(GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigArrayOutput)
+}
+
+// User-provided service description
+func (o GetConnectionsDataASideAccessPointProfilePtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideAccessPointProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Service Profile URI response attribute
+func (o GetConnectionsDataASideAccessPointProfilePtrOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideAccessPointProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Href
+	}).(pulumi.StringPtrOutput)
+}
+
+// Customer-assigned service profile name
+func (o GetConnectionsDataASideAccessPointProfilePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideAccessPointProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE, IA_PROFILE
+func (o GetConnectionsDataASideAccessPointProfilePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideAccessPointProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Equinix assigned service profile identifier
+func (o GetConnectionsDataASideAccessPointProfilePtrOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideAccessPointProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uuid
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetConnectionsDataASideAccessPointProfileAccessPointTypeConfig struct {
+	// Type of access point type config - VD, COLO
+	Type string `pulumi:"type"`
+	// Equinix-assigned access point type config identifier
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigInput is an input type that accepts GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigArgs and GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigOutput values.
+// You can construct a concrete instance of `GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigInput` via:
+//
+//	GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigArgs{...}
+type GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataASideAccessPointProfileAccessPointTypeConfigOutput() GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigOutput
+	ToGetConnectionsDataASideAccessPointProfileAccessPointTypeConfigOutputWithContext(context.Context) GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigOutput
+}
+
+type GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigArgs struct {
+	// Type of access point type config - VD, COLO
+	Type pulumi.StringInput `pulumi:"type"`
+	// Equinix-assigned access point type config identifier
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataASideAccessPointProfileAccessPointTypeConfig)(nil)).Elem()
+}
+
+func (i GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigArgs) ToGetConnectionsDataASideAccessPointProfileAccessPointTypeConfigOutput() GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigOutput {
+	return i.ToGetConnectionsDataASideAccessPointProfileAccessPointTypeConfigOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigArgs) ToGetConnectionsDataASideAccessPointProfileAccessPointTypeConfigOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigOutput)
+}
+
+// GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigArrayInput is an input type that accepts GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigArray and GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigArrayOutput values.
+// You can construct a concrete instance of `GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigArrayInput` via:
+//
+//	GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigArray{ GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigArgs{...} }
+type GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataASideAccessPointProfileAccessPointTypeConfigArrayOutput() GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigArrayOutput
+	ToGetConnectionsDataASideAccessPointProfileAccessPointTypeConfigArrayOutputWithContext(context.Context) GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigArrayOutput
+}
+
+type GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigArray []GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigInput
+
+func (GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionsDataASideAccessPointProfileAccessPointTypeConfig)(nil)).Elem()
+}
+
+func (i GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigArray) ToGetConnectionsDataASideAccessPointProfileAccessPointTypeConfigArrayOutput() GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigArrayOutput {
+	return i.ToGetConnectionsDataASideAccessPointProfileAccessPointTypeConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigArray) ToGetConnectionsDataASideAccessPointProfileAccessPointTypeConfigArrayOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigArrayOutput)
+}
+
+type GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataASideAccessPointProfileAccessPointTypeConfig)(nil)).Elem()
+}
+
+func (o GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigOutput) ToGetConnectionsDataASideAccessPointProfileAccessPointTypeConfigOutput() GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigOutput {
+	return o
+}
+
+func (o GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigOutput) ToGetConnectionsDataASideAccessPointProfileAccessPointTypeConfigOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigOutput {
+	return o
+}
+
+// Type of access point type config - VD, COLO
+func (o GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPointProfileAccessPointTypeConfig) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Equinix-assigned access point type config identifier
+func (o GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPointProfileAccessPointTypeConfig) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionsDataASideAccessPointProfileAccessPointTypeConfig)(nil)).Elem()
+}
+
+func (o GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigArrayOutput) ToGetConnectionsDataASideAccessPointProfileAccessPointTypeConfigArrayOutput() GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigArrayOutput {
+	return o
+}
+
+func (o GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigArrayOutput) ToGetConnectionsDataASideAccessPointProfileAccessPointTypeConfigArrayOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigArrayOutput {
+	return o
+}
+
+func (o GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigArrayOutput) Index(i pulumi.IntInput) GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionsDataASideAccessPointProfileAccessPointTypeConfig {
+		return vs[0].([]GetConnectionsDataASideAccessPointProfileAccessPointTypeConfig)[vs[1].(int)]
+	}).(GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigOutput)
+}
+
+type GetConnectionsDataASideAccessPointRouter struct {
+	// Unique Resource Identifier
+	Href string `pulumi:"href"`
+	// Equinix-assigned virtual gateway identifier
+	Uuid *string `pulumi:"uuid"`
+}
+
+// GetConnectionsDataASideAccessPointRouterInput is an input type that accepts GetConnectionsDataASideAccessPointRouterArgs and GetConnectionsDataASideAccessPointRouterOutput values.
+// You can construct a concrete instance of `GetConnectionsDataASideAccessPointRouterInput` via:
+//
+//	GetConnectionsDataASideAccessPointRouterArgs{...}
+type GetConnectionsDataASideAccessPointRouterInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataASideAccessPointRouterOutput() GetConnectionsDataASideAccessPointRouterOutput
+	ToGetConnectionsDataASideAccessPointRouterOutputWithContext(context.Context) GetConnectionsDataASideAccessPointRouterOutput
+}
+
+type GetConnectionsDataASideAccessPointRouterArgs struct {
+	// Unique Resource Identifier
+	Href pulumi.StringInput `pulumi:"href"`
+	// Equinix-assigned virtual gateway identifier
+	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+}
+
+func (GetConnectionsDataASideAccessPointRouterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataASideAccessPointRouter)(nil)).Elem()
+}
+
+func (i GetConnectionsDataASideAccessPointRouterArgs) ToGetConnectionsDataASideAccessPointRouterOutput() GetConnectionsDataASideAccessPointRouterOutput {
+	return i.ToGetConnectionsDataASideAccessPointRouterOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataASideAccessPointRouterArgs) ToGetConnectionsDataASideAccessPointRouterOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointRouterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataASideAccessPointRouterOutput)
+}
+
+func (i GetConnectionsDataASideAccessPointRouterArgs) ToGetConnectionsDataASideAccessPointRouterPtrOutput() GetConnectionsDataASideAccessPointRouterPtrOutput {
+	return i.ToGetConnectionsDataASideAccessPointRouterPtrOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataASideAccessPointRouterArgs) ToGetConnectionsDataASideAccessPointRouterPtrOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointRouterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataASideAccessPointRouterOutput).ToGetConnectionsDataASideAccessPointRouterPtrOutputWithContext(ctx)
+}
+
+// GetConnectionsDataASideAccessPointRouterPtrInput is an input type that accepts GetConnectionsDataASideAccessPointRouterArgs, GetConnectionsDataASideAccessPointRouterPtr and GetConnectionsDataASideAccessPointRouterPtrOutput values.
+// You can construct a concrete instance of `GetConnectionsDataASideAccessPointRouterPtrInput` via:
+//
+//	        GetConnectionsDataASideAccessPointRouterArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetConnectionsDataASideAccessPointRouterPtrInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataASideAccessPointRouterPtrOutput() GetConnectionsDataASideAccessPointRouterPtrOutput
+	ToGetConnectionsDataASideAccessPointRouterPtrOutputWithContext(context.Context) GetConnectionsDataASideAccessPointRouterPtrOutput
+}
+
+type getConnectionsDataASideAccessPointRouterPtrType GetConnectionsDataASideAccessPointRouterArgs
+
+func GetConnectionsDataASideAccessPointRouterPtr(v *GetConnectionsDataASideAccessPointRouterArgs) GetConnectionsDataASideAccessPointRouterPtrInput {
+	return (*getConnectionsDataASideAccessPointRouterPtrType)(v)
+}
+
+func (*getConnectionsDataASideAccessPointRouterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetConnectionsDataASideAccessPointRouter)(nil)).Elem()
+}
+
+func (i *getConnectionsDataASideAccessPointRouterPtrType) ToGetConnectionsDataASideAccessPointRouterPtrOutput() GetConnectionsDataASideAccessPointRouterPtrOutput {
+	return i.ToGetConnectionsDataASideAccessPointRouterPtrOutputWithContext(context.Background())
+}
+
+func (i *getConnectionsDataASideAccessPointRouterPtrType) ToGetConnectionsDataASideAccessPointRouterPtrOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointRouterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataASideAccessPointRouterPtrOutput)
+}
+
+type GetConnectionsDataASideAccessPointRouterOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataASideAccessPointRouterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataASideAccessPointRouter)(nil)).Elem()
+}
+
+func (o GetConnectionsDataASideAccessPointRouterOutput) ToGetConnectionsDataASideAccessPointRouterOutput() GetConnectionsDataASideAccessPointRouterOutput {
+	return o
+}
+
+func (o GetConnectionsDataASideAccessPointRouterOutput) ToGetConnectionsDataASideAccessPointRouterOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointRouterOutput {
+	return o
+}
+
+func (o GetConnectionsDataASideAccessPointRouterOutput) ToGetConnectionsDataASideAccessPointRouterPtrOutput() GetConnectionsDataASideAccessPointRouterPtrOutput {
+	return o.ToGetConnectionsDataASideAccessPointRouterPtrOutputWithContext(context.Background())
+}
+
+func (o GetConnectionsDataASideAccessPointRouterOutput) ToGetConnectionsDataASideAccessPointRouterPtrOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointRouterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetConnectionsDataASideAccessPointRouter) *GetConnectionsDataASideAccessPointRouter {
+		return &v
+	}).(GetConnectionsDataASideAccessPointRouterPtrOutput)
+}
+
+// Unique Resource Identifier
+func (o GetConnectionsDataASideAccessPointRouterOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPointRouter) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// Equinix-assigned virtual gateway identifier
+func (o GetConnectionsDataASideAccessPointRouterOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPointRouter) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+}
+
+type GetConnectionsDataASideAccessPointRouterPtrOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataASideAccessPointRouterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetConnectionsDataASideAccessPointRouter)(nil)).Elem()
+}
+
+func (o GetConnectionsDataASideAccessPointRouterPtrOutput) ToGetConnectionsDataASideAccessPointRouterPtrOutput() GetConnectionsDataASideAccessPointRouterPtrOutput {
+	return o
+}
+
+func (o GetConnectionsDataASideAccessPointRouterPtrOutput) ToGetConnectionsDataASideAccessPointRouterPtrOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointRouterPtrOutput {
+	return o
+}
+
+func (o GetConnectionsDataASideAccessPointRouterPtrOutput) Elem() GetConnectionsDataASideAccessPointRouterOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideAccessPointRouter) GetConnectionsDataASideAccessPointRouter {
+		if v != nil {
+			return *v
+		}
+		var ret GetConnectionsDataASideAccessPointRouter
+		return ret
+	}).(GetConnectionsDataASideAccessPointRouterOutput)
+}
+
+// Unique Resource Identifier
+func (o GetConnectionsDataASideAccessPointRouterPtrOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideAccessPointRouter) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Href
+	}).(pulumi.StringPtrOutput)
+}
+
+// Equinix-assigned virtual gateway identifier
+func (o GetConnectionsDataASideAccessPointRouterPtrOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideAccessPointRouter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uuid
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetConnectionsDataASideAccessPointVirtualDevice struct {
+	// Unique Resource Identifier
+	Href string `pulumi:"href"`
+	// Customer-assigned Virtual Device Name
+	Name *string `pulumi:"name"`
+	// Virtual Device type
+	Type *string `pulumi:"type"`
+	// Equinix-assigned Virtual Device identifier
+	Uuid *string `pulumi:"uuid"`
+}
+
+// GetConnectionsDataASideAccessPointVirtualDeviceInput is an input type that accepts GetConnectionsDataASideAccessPointVirtualDeviceArgs and GetConnectionsDataASideAccessPointVirtualDeviceOutput values.
+// You can construct a concrete instance of `GetConnectionsDataASideAccessPointVirtualDeviceInput` via:
+//
+//	GetConnectionsDataASideAccessPointVirtualDeviceArgs{...}
+type GetConnectionsDataASideAccessPointVirtualDeviceInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataASideAccessPointVirtualDeviceOutput() GetConnectionsDataASideAccessPointVirtualDeviceOutput
+	ToGetConnectionsDataASideAccessPointVirtualDeviceOutputWithContext(context.Context) GetConnectionsDataASideAccessPointVirtualDeviceOutput
+}
+
+type GetConnectionsDataASideAccessPointVirtualDeviceArgs struct {
+	// Unique Resource Identifier
+	Href pulumi.StringInput `pulumi:"href"`
+	// Customer-assigned Virtual Device Name
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Virtual Device type
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Equinix-assigned Virtual Device identifier
+	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+}
+
+func (GetConnectionsDataASideAccessPointVirtualDeviceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataASideAccessPointVirtualDevice)(nil)).Elem()
+}
+
+func (i GetConnectionsDataASideAccessPointVirtualDeviceArgs) ToGetConnectionsDataASideAccessPointVirtualDeviceOutput() GetConnectionsDataASideAccessPointVirtualDeviceOutput {
+	return i.ToGetConnectionsDataASideAccessPointVirtualDeviceOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataASideAccessPointVirtualDeviceArgs) ToGetConnectionsDataASideAccessPointVirtualDeviceOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointVirtualDeviceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataASideAccessPointVirtualDeviceOutput)
+}
+
+func (i GetConnectionsDataASideAccessPointVirtualDeviceArgs) ToGetConnectionsDataASideAccessPointVirtualDevicePtrOutput() GetConnectionsDataASideAccessPointVirtualDevicePtrOutput {
+	return i.ToGetConnectionsDataASideAccessPointVirtualDevicePtrOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataASideAccessPointVirtualDeviceArgs) ToGetConnectionsDataASideAccessPointVirtualDevicePtrOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointVirtualDevicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataASideAccessPointVirtualDeviceOutput).ToGetConnectionsDataASideAccessPointVirtualDevicePtrOutputWithContext(ctx)
+}
+
+// GetConnectionsDataASideAccessPointVirtualDevicePtrInput is an input type that accepts GetConnectionsDataASideAccessPointVirtualDeviceArgs, GetConnectionsDataASideAccessPointVirtualDevicePtr and GetConnectionsDataASideAccessPointVirtualDevicePtrOutput values.
+// You can construct a concrete instance of `GetConnectionsDataASideAccessPointVirtualDevicePtrInput` via:
+//
+//	        GetConnectionsDataASideAccessPointVirtualDeviceArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetConnectionsDataASideAccessPointVirtualDevicePtrInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataASideAccessPointVirtualDevicePtrOutput() GetConnectionsDataASideAccessPointVirtualDevicePtrOutput
+	ToGetConnectionsDataASideAccessPointVirtualDevicePtrOutputWithContext(context.Context) GetConnectionsDataASideAccessPointVirtualDevicePtrOutput
+}
+
+type getConnectionsDataASideAccessPointVirtualDevicePtrType GetConnectionsDataASideAccessPointVirtualDeviceArgs
+
+func GetConnectionsDataASideAccessPointVirtualDevicePtr(v *GetConnectionsDataASideAccessPointVirtualDeviceArgs) GetConnectionsDataASideAccessPointVirtualDevicePtrInput {
+	return (*getConnectionsDataASideAccessPointVirtualDevicePtrType)(v)
+}
+
+func (*getConnectionsDataASideAccessPointVirtualDevicePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetConnectionsDataASideAccessPointVirtualDevice)(nil)).Elem()
+}
+
+func (i *getConnectionsDataASideAccessPointVirtualDevicePtrType) ToGetConnectionsDataASideAccessPointVirtualDevicePtrOutput() GetConnectionsDataASideAccessPointVirtualDevicePtrOutput {
+	return i.ToGetConnectionsDataASideAccessPointVirtualDevicePtrOutputWithContext(context.Background())
+}
+
+func (i *getConnectionsDataASideAccessPointVirtualDevicePtrType) ToGetConnectionsDataASideAccessPointVirtualDevicePtrOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointVirtualDevicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataASideAccessPointVirtualDevicePtrOutput)
+}
+
+type GetConnectionsDataASideAccessPointVirtualDeviceOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataASideAccessPointVirtualDeviceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataASideAccessPointVirtualDevice)(nil)).Elem()
+}
+
+func (o GetConnectionsDataASideAccessPointVirtualDeviceOutput) ToGetConnectionsDataASideAccessPointVirtualDeviceOutput() GetConnectionsDataASideAccessPointVirtualDeviceOutput {
+	return o
+}
+
+func (o GetConnectionsDataASideAccessPointVirtualDeviceOutput) ToGetConnectionsDataASideAccessPointVirtualDeviceOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointVirtualDeviceOutput {
+	return o
+}
+
+func (o GetConnectionsDataASideAccessPointVirtualDeviceOutput) ToGetConnectionsDataASideAccessPointVirtualDevicePtrOutput() GetConnectionsDataASideAccessPointVirtualDevicePtrOutput {
+	return o.ToGetConnectionsDataASideAccessPointVirtualDevicePtrOutputWithContext(context.Background())
+}
+
+func (o GetConnectionsDataASideAccessPointVirtualDeviceOutput) ToGetConnectionsDataASideAccessPointVirtualDevicePtrOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointVirtualDevicePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetConnectionsDataASideAccessPointVirtualDevice) *GetConnectionsDataASideAccessPointVirtualDevice {
+		return &v
+	}).(GetConnectionsDataASideAccessPointVirtualDevicePtrOutput)
+}
+
+// Unique Resource Identifier
+func (o GetConnectionsDataASideAccessPointVirtualDeviceOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPointVirtualDevice) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// Customer-assigned Virtual Device Name
+func (o GetConnectionsDataASideAccessPointVirtualDeviceOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPointVirtualDevice) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Virtual Device type
+func (o GetConnectionsDataASideAccessPointVirtualDeviceOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPointVirtualDevice) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// Equinix-assigned Virtual Device identifier
+func (o GetConnectionsDataASideAccessPointVirtualDeviceOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPointVirtualDevice) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+}
+
+type GetConnectionsDataASideAccessPointVirtualDevicePtrOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataASideAccessPointVirtualDevicePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetConnectionsDataASideAccessPointVirtualDevice)(nil)).Elem()
+}
+
+func (o GetConnectionsDataASideAccessPointVirtualDevicePtrOutput) ToGetConnectionsDataASideAccessPointVirtualDevicePtrOutput() GetConnectionsDataASideAccessPointVirtualDevicePtrOutput {
+	return o
+}
+
+func (o GetConnectionsDataASideAccessPointVirtualDevicePtrOutput) ToGetConnectionsDataASideAccessPointVirtualDevicePtrOutputWithContext(ctx context.Context) GetConnectionsDataASideAccessPointVirtualDevicePtrOutput {
+	return o
+}
+
+func (o GetConnectionsDataASideAccessPointVirtualDevicePtrOutput) Elem() GetConnectionsDataASideAccessPointVirtualDeviceOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideAccessPointVirtualDevice) GetConnectionsDataASideAccessPointVirtualDevice {
+		if v != nil {
+			return *v
+		}
+		var ret GetConnectionsDataASideAccessPointVirtualDevice
+		return ret
+	}).(GetConnectionsDataASideAccessPointVirtualDeviceOutput)
+}
+
+// Unique Resource Identifier
+func (o GetConnectionsDataASideAccessPointVirtualDevicePtrOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideAccessPointVirtualDevice) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Href
+	}).(pulumi.StringPtrOutput)
+}
+
+// Customer-assigned Virtual Device Name
+func (o GetConnectionsDataASideAccessPointVirtualDevicePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideAccessPointVirtualDevice) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Virtual Device type
+func (o GetConnectionsDataASideAccessPointVirtualDevicePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideAccessPointVirtualDevice) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Equinix-assigned Virtual Device identifier
+func (o GetConnectionsDataASideAccessPointVirtualDevicePtrOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideAccessPointVirtualDevice) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uuid
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetConnectionsDataASideAdditionalInfo struct {
+	// Additional information key
+	Key *string `pulumi:"key"`
+	// Additional information value
+	Value *string `pulumi:"value"`
+}
+
+// GetConnectionsDataASideAdditionalInfoInput is an input type that accepts GetConnectionsDataASideAdditionalInfoArgs and GetConnectionsDataASideAdditionalInfoOutput values.
+// You can construct a concrete instance of `GetConnectionsDataASideAdditionalInfoInput` via:
+//
+//	GetConnectionsDataASideAdditionalInfoArgs{...}
+type GetConnectionsDataASideAdditionalInfoInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataASideAdditionalInfoOutput() GetConnectionsDataASideAdditionalInfoOutput
+	ToGetConnectionsDataASideAdditionalInfoOutputWithContext(context.Context) GetConnectionsDataASideAdditionalInfoOutput
+}
+
+type GetConnectionsDataASideAdditionalInfoArgs struct {
+	// Additional information key
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Additional information value
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (GetConnectionsDataASideAdditionalInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataASideAdditionalInfo)(nil)).Elem()
+}
+
+func (i GetConnectionsDataASideAdditionalInfoArgs) ToGetConnectionsDataASideAdditionalInfoOutput() GetConnectionsDataASideAdditionalInfoOutput {
+	return i.ToGetConnectionsDataASideAdditionalInfoOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataASideAdditionalInfoArgs) ToGetConnectionsDataASideAdditionalInfoOutputWithContext(ctx context.Context) GetConnectionsDataASideAdditionalInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataASideAdditionalInfoOutput)
+}
+
+// GetConnectionsDataASideAdditionalInfoArrayInput is an input type that accepts GetConnectionsDataASideAdditionalInfoArray and GetConnectionsDataASideAdditionalInfoArrayOutput values.
+// You can construct a concrete instance of `GetConnectionsDataASideAdditionalInfoArrayInput` via:
+//
+//	GetConnectionsDataASideAdditionalInfoArray{ GetConnectionsDataASideAdditionalInfoArgs{...} }
+type GetConnectionsDataASideAdditionalInfoArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataASideAdditionalInfoArrayOutput() GetConnectionsDataASideAdditionalInfoArrayOutput
+	ToGetConnectionsDataASideAdditionalInfoArrayOutputWithContext(context.Context) GetConnectionsDataASideAdditionalInfoArrayOutput
+}
+
+type GetConnectionsDataASideAdditionalInfoArray []GetConnectionsDataASideAdditionalInfoInput
+
+func (GetConnectionsDataASideAdditionalInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionsDataASideAdditionalInfo)(nil)).Elem()
+}
+
+func (i GetConnectionsDataASideAdditionalInfoArray) ToGetConnectionsDataASideAdditionalInfoArrayOutput() GetConnectionsDataASideAdditionalInfoArrayOutput {
+	return i.ToGetConnectionsDataASideAdditionalInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataASideAdditionalInfoArray) ToGetConnectionsDataASideAdditionalInfoArrayOutputWithContext(ctx context.Context) GetConnectionsDataASideAdditionalInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataASideAdditionalInfoArrayOutput)
+}
+
+type GetConnectionsDataASideAdditionalInfoOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataASideAdditionalInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataASideAdditionalInfo)(nil)).Elem()
+}
+
+func (o GetConnectionsDataASideAdditionalInfoOutput) ToGetConnectionsDataASideAdditionalInfoOutput() GetConnectionsDataASideAdditionalInfoOutput {
+	return o
+}
+
+func (o GetConnectionsDataASideAdditionalInfoOutput) ToGetConnectionsDataASideAdditionalInfoOutputWithContext(ctx context.Context) GetConnectionsDataASideAdditionalInfoOutput {
+	return o
+}
+
+// Additional information key
+func (o GetConnectionsDataASideAdditionalInfoOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAdditionalInfo) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// Additional information value
+func (o GetConnectionsDataASideAdditionalInfoOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAdditionalInfo) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type GetConnectionsDataASideAdditionalInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataASideAdditionalInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionsDataASideAdditionalInfo)(nil)).Elem()
+}
+
+func (o GetConnectionsDataASideAdditionalInfoArrayOutput) ToGetConnectionsDataASideAdditionalInfoArrayOutput() GetConnectionsDataASideAdditionalInfoArrayOutput {
+	return o
+}
+
+func (o GetConnectionsDataASideAdditionalInfoArrayOutput) ToGetConnectionsDataASideAdditionalInfoArrayOutputWithContext(ctx context.Context) GetConnectionsDataASideAdditionalInfoArrayOutput {
+	return o
+}
+
+func (o GetConnectionsDataASideAdditionalInfoArrayOutput) Index(i pulumi.IntInput) GetConnectionsDataASideAdditionalInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionsDataASideAdditionalInfo {
+		return vs[0].([]GetConnectionsDataASideAdditionalInfo)[vs[1].(int)]
+	}).(GetConnectionsDataASideAdditionalInfoOutput)
+}
+
+type GetConnectionsDataASideServiceToken struct {
+	// Service token description
+	Description string `pulumi:"description"`
+	// An absolute URL that is the subject of the link's context
+	Href string `pulumi:"href"`
+	// Token type - VC_TOKEN
+	Type *string `pulumi:"type"`
+	// Equinix-assigned service token identifier
+	Uuid *string `pulumi:"uuid"`
+}
+
+// GetConnectionsDataASideServiceTokenInput is an input type that accepts GetConnectionsDataASideServiceTokenArgs and GetConnectionsDataASideServiceTokenOutput values.
+// You can construct a concrete instance of `GetConnectionsDataASideServiceTokenInput` via:
+//
+//	GetConnectionsDataASideServiceTokenArgs{...}
+type GetConnectionsDataASideServiceTokenInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataASideServiceTokenOutput() GetConnectionsDataASideServiceTokenOutput
+	ToGetConnectionsDataASideServiceTokenOutputWithContext(context.Context) GetConnectionsDataASideServiceTokenOutput
+}
+
+type GetConnectionsDataASideServiceTokenArgs struct {
+	// Service token description
+	Description pulumi.StringInput `pulumi:"description"`
+	// An absolute URL that is the subject of the link's context
+	Href pulumi.StringInput `pulumi:"href"`
+	// Token type - VC_TOKEN
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Equinix-assigned service token identifier
+	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+}
+
+func (GetConnectionsDataASideServiceTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataASideServiceToken)(nil)).Elem()
+}
+
+func (i GetConnectionsDataASideServiceTokenArgs) ToGetConnectionsDataASideServiceTokenOutput() GetConnectionsDataASideServiceTokenOutput {
+	return i.ToGetConnectionsDataASideServiceTokenOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataASideServiceTokenArgs) ToGetConnectionsDataASideServiceTokenOutputWithContext(ctx context.Context) GetConnectionsDataASideServiceTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataASideServiceTokenOutput)
+}
+
+func (i GetConnectionsDataASideServiceTokenArgs) ToGetConnectionsDataASideServiceTokenPtrOutput() GetConnectionsDataASideServiceTokenPtrOutput {
+	return i.ToGetConnectionsDataASideServiceTokenPtrOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataASideServiceTokenArgs) ToGetConnectionsDataASideServiceTokenPtrOutputWithContext(ctx context.Context) GetConnectionsDataASideServiceTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataASideServiceTokenOutput).ToGetConnectionsDataASideServiceTokenPtrOutputWithContext(ctx)
+}
+
+// GetConnectionsDataASideServiceTokenPtrInput is an input type that accepts GetConnectionsDataASideServiceTokenArgs, GetConnectionsDataASideServiceTokenPtr and GetConnectionsDataASideServiceTokenPtrOutput values.
+// You can construct a concrete instance of `GetConnectionsDataASideServiceTokenPtrInput` via:
+//
+//	        GetConnectionsDataASideServiceTokenArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetConnectionsDataASideServiceTokenPtrInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataASideServiceTokenPtrOutput() GetConnectionsDataASideServiceTokenPtrOutput
+	ToGetConnectionsDataASideServiceTokenPtrOutputWithContext(context.Context) GetConnectionsDataASideServiceTokenPtrOutput
+}
+
+type getConnectionsDataASideServiceTokenPtrType GetConnectionsDataASideServiceTokenArgs
+
+func GetConnectionsDataASideServiceTokenPtr(v *GetConnectionsDataASideServiceTokenArgs) GetConnectionsDataASideServiceTokenPtrInput {
+	return (*getConnectionsDataASideServiceTokenPtrType)(v)
+}
+
+func (*getConnectionsDataASideServiceTokenPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetConnectionsDataASideServiceToken)(nil)).Elem()
+}
+
+func (i *getConnectionsDataASideServiceTokenPtrType) ToGetConnectionsDataASideServiceTokenPtrOutput() GetConnectionsDataASideServiceTokenPtrOutput {
+	return i.ToGetConnectionsDataASideServiceTokenPtrOutputWithContext(context.Background())
+}
+
+func (i *getConnectionsDataASideServiceTokenPtrType) ToGetConnectionsDataASideServiceTokenPtrOutputWithContext(ctx context.Context) GetConnectionsDataASideServiceTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataASideServiceTokenPtrOutput)
+}
+
+type GetConnectionsDataASideServiceTokenOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataASideServiceTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataASideServiceToken)(nil)).Elem()
+}
+
+func (o GetConnectionsDataASideServiceTokenOutput) ToGetConnectionsDataASideServiceTokenOutput() GetConnectionsDataASideServiceTokenOutput {
+	return o
+}
+
+func (o GetConnectionsDataASideServiceTokenOutput) ToGetConnectionsDataASideServiceTokenOutputWithContext(ctx context.Context) GetConnectionsDataASideServiceTokenOutput {
+	return o
+}
+
+func (o GetConnectionsDataASideServiceTokenOutput) ToGetConnectionsDataASideServiceTokenPtrOutput() GetConnectionsDataASideServiceTokenPtrOutput {
+	return o.ToGetConnectionsDataASideServiceTokenPtrOutputWithContext(context.Background())
+}
+
+func (o GetConnectionsDataASideServiceTokenOutput) ToGetConnectionsDataASideServiceTokenPtrOutputWithContext(ctx context.Context) GetConnectionsDataASideServiceTokenPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetConnectionsDataASideServiceToken) *GetConnectionsDataASideServiceToken {
+		return &v
+	}).(GetConnectionsDataASideServiceTokenPtrOutput)
+}
+
+// Service token description
+func (o GetConnectionsDataASideServiceTokenOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideServiceToken) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// An absolute URL that is the subject of the link's context
+func (o GetConnectionsDataASideServiceTokenOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideServiceToken) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// Token type - VC_TOKEN
+func (o GetConnectionsDataASideServiceTokenOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideServiceToken) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// Equinix-assigned service token identifier
+func (o GetConnectionsDataASideServiceTokenOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideServiceToken) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+}
+
+type GetConnectionsDataASideServiceTokenPtrOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataASideServiceTokenPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetConnectionsDataASideServiceToken)(nil)).Elem()
+}
+
+func (o GetConnectionsDataASideServiceTokenPtrOutput) ToGetConnectionsDataASideServiceTokenPtrOutput() GetConnectionsDataASideServiceTokenPtrOutput {
+	return o
+}
+
+func (o GetConnectionsDataASideServiceTokenPtrOutput) ToGetConnectionsDataASideServiceTokenPtrOutputWithContext(ctx context.Context) GetConnectionsDataASideServiceTokenPtrOutput {
+	return o
+}
+
+func (o GetConnectionsDataASideServiceTokenPtrOutput) Elem() GetConnectionsDataASideServiceTokenOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideServiceToken) GetConnectionsDataASideServiceToken {
+		if v != nil {
+			return *v
+		}
+		var ret GetConnectionsDataASideServiceToken
+		return ret
+	}).(GetConnectionsDataASideServiceTokenOutput)
+}
+
+// Service token description
+func (o GetConnectionsDataASideServiceTokenPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideServiceToken) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// An absolute URL that is the subject of the link's context
+func (o GetConnectionsDataASideServiceTokenPtrOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideServiceToken) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Href
+	}).(pulumi.StringPtrOutput)
+}
+
+// Token type - VC_TOKEN
+func (o GetConnectionsDataASideServiceTokenPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideServiceToken) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Equinix-assigned service token identifier
+func (o GetConnectionsDataASideServiceTokenPtrOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideServiceToken) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uuid
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetConnectionsDataAccount struct {
+	// Legal name of the accountholder.
+	AccountName string `pulumi:"accountName"`
+	// Equinix-assigned account number.
+	AccountNumber int `pulumi:"accountNumber"`
+	// Equinix-assigned ID of the subscriber's parent organization.
+	GlobalCustId string `pulumi:"globalCustId"`
+	// Equinix-assigned ID of the subscriber's parent organization.
+	GlobalOrgId string `pulumi:"globalOrgId"`
+	// Equinix-assigned name of the subscriber's parent organization.
+	GlobalOrganizationName string `pulumi:"globalOrganizationName"`
+	// Equinix-assigned ID of the subscriber's organization.
+	OrgId int `pulumi:"orgId"`
+	// Equinix-assigned name of the subscriber's organization.
+	OrganizationName string `pulumi:"organizationName"`
+	// Enterprise datastore id
+	UcmId string `pulumi:"ucmId"`
+}
+
+// GetConnectionsDataAccountInput is an input type that accepts GetConnectionsDataAccountArgs and GetConnectionsDataAccountOutput values.
+// You can construct a concrete instance of `GetConnectionsDataAccountInput` via:
+//
+//	GetConnectionsDataAccountArgs{...}
+type GetConnectionsDataAccountInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataAccountOutput() GetConnectionsDataAccountOutput
+	ToGetConnectionsDataAccountOutputWithContext(context.Context) GetConnectionsDataAccountOutput
+}
+
+type GetConnectionsDataAccountArgs struct {
+	// Legal name of the accountholder.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// Equinix-assigned account number.
+	AccountNumber pulumi.IntInput `pulumi:"accountNumber"`
+	// Equinix-assigned ID of the subscriber's parent organization.
+	GlobalCustId pulumi.StringInput `pulumi:"globalCustId"`
+	// Equinix-assigned ID of the subscriber's parent organization.
+	GlobalOrgId pulumi.StringInput `pulumi:"globalOrgId"`
+	// Equinix-assigned name of the subscriber's parent organization.
+	GlobalOrganizationName pulumi.StringInput `pulumi:"globalOrganizationName"`
+	// Equinix-assigned ID of the subscriber's organization.
+	OrgId pulumi.IntInput `pulumi:"orgId"`
+	// Equinix-assigned name of the subscriber's organization.
+	OrganizationName pulumi.StringInput `pulumi:"organizationName"`
+	// Enterprise datastore id
+	UcmId pulumi.StringInput `pulumi:"ucmId"`
+}
+
+func (GetConnectionsDataAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataAccount)(nil)).Elem()
+}
+
+func (i GetConnectionsDataAccountArgs) ToGetConnectionsDataAccountOutput() GetConnectionsDataAccountOutput {
+	return i.ToGetConnectionsDataAccountOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataAccountArgs) ToGetConnectionsDataAccountOutputWithContext(ctx context.Context) GetConnectionsDataAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataAccountOutput)
+}
+
+// GetConnectionsDataAccountArrayInput is an input type that accepts GetConnectionsDataAccountArray and GetConnectionsDataAccountArrayOutput values.
+// You can construct a concrete instance of `GetConnectionsDataAccountArrayInput` via:
+//
+//	GetConnectionsDataAccountArray{ GetConnectionsDataAccountArgs{...} }
+type GetConnectionsDataAccountArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataAccountArrayOutput() GetConnectionsDataAccountArrayOutput
+	ToGetConnectionsDataAccountArrayOutputWithContext(context.Context) GetConnectionsDataAccountArrayOutput
+}
+
+type GetConnectionsDataAccountArray []GetConnectionsDataAccountInput
+
+func (GetConnectionsDataAccountArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionsDataAccount)(nil)).Elem()
+}
+
+func (i GetConnectionsDataAccountArray) ToGetConnectionsDataAccountArrayOutput() GetConnectionsDataAccountArrayOutput {
+	return i.ToGetConnectionsDataAccountArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataAccountArray) ToGetConnectionsDataAccountArrayOutputWithContext(ctx context.Context) GetConnectionsDataAccountArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataAccountArrayOutput)
+}
+
+type GetConnectionsDataAccountOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataAccount)(nil)).Elem()
+}
+
+func (o GetConnectionsDataAccountOutput) ToGetConnectionsDataAccountOutput() GetConnectionsDataAccountOutput {
+	return o
+}
+
+func (o GetConnectionsDataAccountOutput) ToGetConnectionsDataAccountOutputWithContext(ctx context.Context) GetConnectionsDataAccountOutput {
+	return o
+}
+
+// Legal name of the accountholder.
+func (o GetConnectionsDataAccountOutput) AccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataAccount) string { return v.AccountName }).(pulumi.StringOutput)
+}
+
+// Equinix-assigned account number.
+func (o GetConnectionsDataAccountOutput) AccountNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v GetConnectionsDataAccount) int { return v.AccountNumber }).(pulumi.IntOutput)
+}
+
+// Equinix-assigned ID of the subscriber's parent organization.
+func (o GetConnectionsDataAccountOutput) GlobalCustId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataAccount) string { return v.GlobalCustId }).(pulumi.StringOutput)
+}
+
+// Equinix-assigned ID of the subscriber's parent organization.
+func (o GetConnectionsDataAccountOutput) GlobalOrgId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataAccount) string { return v.GlobalOrgId }).(pulumi.StringOutput)
+}
+
+// Equinix-assigned name of the subscriber's parent organization.
+func (o GetConnectionsDataAccountOutput) GlobalOrganizationName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataAccount) string { return v.GlobalOrganizationName }).(pulumi.StringOutput)
+}
+
+// Equinix-assigned ID of the subscriber's organization.
+func (o GetConnectionsDataAccountOutput) OrgId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetConnectionsDataAccount) int { return v.OrgId }).(pulumi.IntOutput)
+}
+
+// Equinix-assigned name of the subscriber's organization.
+func (o GetConnectionsDataAccountOutput) OrganizationName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataAccount) string { return v.OrganizationName }).(pulumi.StringOutput)
+}
+
+// Enterprise datastore id
+func (o GetConnectionsDataAccountOutput) UcmId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataAccount) string { return v.UcmId }).(pulumi.StringOutput)
+}
+
+type GetConnectionsDataAccountArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataAccountArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionsDataAccount)(nil)).Elem()
+}
+
+func (o GetConnectionsDataAccountArrayOutput) ToGetConnectionsDataAccountArrayOutput() GetConnectionsDataAccountArrayOutput {
+	return o
+}
+
+func (o GetConnectionsDataAccountArrayOutput) ToGetConnectionsDataAccountArrayOutputWithContext(ctx context.Context) GetConnectionsDataAccountArrayOutput {
+	return o
+}
+
+func (o GetConnectionsDataAccountArrayOutput) Index(i pulumi.IntInput) GetConnectionsDataAccountOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionsDataAccount {
+		return vs[0].([]GetConnectionsDataAccount)[vs[1].(int)]
+	}).(GetConnectionsDataAccountOutput)
+}
+
+type GetConnectionsDataChangeLog struct {
+	// Created by User Key
+	CreatedBy string `pulumi:"createdBy"`
+	// Created by User Email Address
+	CreatedByEmail string `pulumi:"createdByEmail"`
+	// Created by User Full Name
+	CreatedByFullName string `pulumi:"createdByFullName"`
+	// Created by Date and Time
+	CreatedDateTime string `pulumi:"createdDateTime"`
+	// Deleted by User Key
+	DeletedBy string `pulumi:"deletedBy"`
+	// Deleted by User Email Address
+	DeletedByEmail string `pulumi:"deletedByEmail"`
+	// Deleted by User Full Name
+	DeletedByFullName string `pulumi:"deletedByFullName"`
+	// Deleted by Date and Time
+	DeletedDateTime string `pulumi:"deletedDateTime"`
+	// Updated by User Key
+	UpdatedBy string `pulumi:"updatedBy"`
+	// Updated by User Email Address
+	UpdatedByEmail string `pulumi:"updatedByEmail"`
+	// Updated by User Full Name
+	UpdatedByFullName string `pulumi:"updatedByFullName"`
+	// Updated by Date and Time
+	UpdatedDateTime string `pulumi:"updatedDateTime"`
+}
+
+// GetConnectionsDataChangeLogInput is an input type that accepts GetConnectionsDataChangeLogArgs and GetConnectionsDataChangeLogOutput values.
+// You can construct a concrete instance of `GetConnectionsDataChangeLogInput` via:
+//
+//	GetConnectionsDataChangeLogArgs{...}
+type GetConnectionsDataChangeLogInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataChangeLogOutput() GetConnectionsDataChangeLogOutput
+	ToGetConnectionsDataChangeLogOutputWithContext(context.Context) GetConnectionsDataChangeLogOutput
+}
+
+type GetConnectionsDataChangeLogArgs struct {
+	// Created by User Key
+	CreatedBy pulumi.StringInput `pulumi:"createdBy"`
+	// Created by User Email Address
+	CreatedByEmail pulumi.StringInput `pulumi:"createdByEmail"`
+	// Created by User Full Name
+	CreatedByFullName pulumi.StringInput `pulumi:"createdByFullName"`
+	// Created by Date and Time
+	CreatedDateTime pulumi.StringInput `pulumi:"createdDateTime"`
+	// Deleted by User Key
+	DeletedBy pulumi.StringInput `pulumi:"deletedBy"`
+	// Deleted by User Email Address
+	DeletedByEmail pulumi.StringInput `pulumi:"deletedByEmail"`
+	// Deleted by User Full Name
+	DeletedByFullName pulumi.StringInput `pulumi:"deletedByFullName"`
+	// Deleted by Date and Time
+	DeletedDateTime pulumi.StringInput `pulumi:"deletedDateTime"`
+	// Updated by User Key
+	UpdatedBy pulumi.StringInput `pulumi:"updatedBy"`
+	// Updated by User Email Address
+	UpdatedByEmail pulumi.StringInput `pulumi:"updatedByEmail"`
+	// Updated by User Full Name
+	UpdatedByFullName pulumi.StringInput `pulumi:"updatedByFullName"`
+	// Updated by Date and Time
+	UpdatedDateTime pulumi.StringInput `pulumi:"updatedDateTime"`
+}
+
+func (GetConnectionsDataChangeLogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataChangeLog)(nil)).Elem()
+}
+
+func (i GetConnectionsDataChangeLogArgs) ToGetConnectionsDataChangeLogOutput() GetConnectionsDataChangeLogOutput {
+	return i.ToGetConnectionsDataChangeLogOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataChangeLogArgs) ToGetConnectionsDataChangeLogOutputWithContext(ctx context.Context) GetConnectionsDataChangeLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataChangeLogOutput)
+}
+
+// GetConnectionsDataChangeLogArrayInput is an input type that accepts GetConnectionsDataChangeLogArray and GetConnectionsDataChangeLogArrayOutput values.
+// You can construct a concrete instance of `GetConnectionsDataChangeLogArrayInput` via:
+//
+//	GetConnectionsDataChangeLogArray{ GetConnectionsDataChangeLogArgs{...} }
+type GetConnectionsDataChangeLogArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataChangeLogArrayOutput() GetConnectionsDataChangeLogArrayOutput
+	ToGetConnectionsDataChangeLogArrayOutputWithContext(context.Context) GetConnectionsDataChangeLogArrayOutput
+}
+
+type GetConnectionsDataChangeLogArray []GetConnectionsDataChangeLogInput
+
+func (GetConnectionsDataChangeLogArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionsDataChangeLog)(nil)).Elem()
+}
+
+func (i GetConnectionsDataChangeLogArray) ToGetConnectionsDataChangeLogArrayOutput() GetConnectionsDataChangeLogArrayOutput {
+	return i.ToGetConnectionsDataChangeLogArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataChangeLogArray) ToGetConnectionsDataChangeLogArrayOutputWithContext(ctx context.Context) GetConnectionsDataChangeLogArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataChangeLogArrayOutput)
+}
+
+type GetConnectionsDataChangeLogOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataChangeLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataChangeLog)(nil)).Elem()
+}
+
+func (o GetConnectionsDataChangeLogOutput) ToGetConnectionsDataChangeLogOutput() GetConnectionsDataChangeLogOutput {
+	return o
+}
+
+func (o GetConnectionsDataChangeLogOutput) ToGetConnectionsDataChangeLogOutputWithContext(ctx context.Context) GetConnectionsDataChangeLogOutput {
+	return o
+}
+
+// Created by User Key
+func (o GetConnectionsDataChangeLogOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataChangeLog) string { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// Created by User Email Address
+func (o GetConnectionsDataChangeLogOutput) CreatedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataChangeLog) string { return v.CreatedByEmail }).(pulumi.StringOutput)
+}
+
+// Created by User Full Name
+func (o GetConnectionsDataChangeLogOutput) CreatedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataChangeLog) string { return v.CreatedByFullName }).(pulumi.StringOutput)
+}
+
+// Created by Date and Time
+func (o GetConnectionsDataChangeLogOutput) CreatedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataChangeLog) string { return v.CreatedDateTime }).(pulumi.StringOutput)
+}
+
+// Deleted by User Key
+func (o GetConnectionsDataChangeLogOutput) DeletedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataChangeLog) string { return v.DeletedBy }).(pulumi.StringOutput)
+}
+
+// Deleted by User Email Address
+func (o GetConnectionsDataChangeLogOutput) DeletedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataChangeLog) string { return v.DeletedByEmail }).(pulumi.StringOutput)
+}
+
+// Deleted by User Full Name
+func (o GetConnectionsDataChangeLogOutput) DeletedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataChangeLog) string { return v.DeletedByFullName }).(pulumi.StringOutput)
+}
+
+// Deleted by Date and Time
+func (o GetConnectionsDataChangeLogOutput) DeletedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataChangeLog) string { return v.DeletedDateTime }).(pulumi.StringOutput)
+}
+
+// Updated by User Key
+func (o GetConnectionsDataChangeLogOutput) UpdatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataChangeLog) string { return v.UpdatedBy }).(pulumi.StringOutput)
+}
+
+// Updated by User Email Address
+func (o GetConnectionsDataChangeLogOutput) UpdatedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataChangeLog) string { return v.UpdatedByEmail }).(pulumi.StringOutput)
+}
+
+// Updated by User Full Name
+func (o GetConnectionsDataChangeLogOutput) UpdatedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataChangeLog) string { return v.UpdatedByFullName }).(pulumi.StringOutput)
+}
+
+// Updated by Date and Time
+func (o GetConnectionsDataChangeLogOutput) UpdatedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataChangeLog) string { return v.UpdatedDateTime }).(pulumi.StringOutput)
+}
+
+type GetConnectionsDataChangeLogArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataChangeLogArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionsDataChangeLog)(nil)).Elem()
+}
+
+func (o GetConnectionsDataChangeLogArrayOutput) ToGetConnectionsDataChangeLogArrayOutput() GetConnectionsDataChangeLogArrayOutput {
+	return o
+}
+
+func (o GetConnectionsDataChangeLogArrayOutput) ToGetConnectionsDataChangeLogArrayOutputWithContext(ctx context.Context) GetConnectionsDataChangeLogArrayOutput {
+	return o
+}
+
+func (o GetConnectionsDataChangeLogArrayOutput) Index(i pulumi.IntInput) GetConnectionsDataChangeLogOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionsDataChangeLog {
+		return vs[0].([]GetConnectionsDataChangeLog)[vs[1].(int)]
+	}).(GetConnectionsDataChangeLogOutput)
+}
+
+type GetConnectionsDataNotification struct {
+	// Array of contact emails
+	Emails []string `pulumi:"emails"`
+	// Send interval
+	SendInterval *string `pulumi:"sendInterval"`
+	// Notification Type - ALL,CONNECTION_APPROVAL,SALES_REP_NOTIFICATIONS, NOTIFICATIONS
+	Type string `pulumi:"type"`
+}
+
+// GetConnectionsDataNotificationInput is an input type that accepts GetConnectionsDataNotificationArgs and GetConnectionsDataNotificationOutput values.
+// You can construct a concrete instance of `GetConnectionsDataNotificationInput` via:
+//
+//	GetConnectionsDataNotificationArgs{...}
+type GetConnectionsDataNotificationInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataNotificationOutput() GetConnectionsDataNotificationOutput
+	ToGetConnectionsDataNotificationOutputWithContext(context.Context) GetConnectionsDataNotificationOutput
+}
+
+type GetConnectionsDataNotificationArgs struct {
+	// Array of contact emails
+	Emails pulumi.StringArrayInput `pulumi:"emails"`
+	// Send interval
+	SendInterval pulumi.StringPtrInput `pulumi:"sendInterval"`
+	// Notification Type - ALL,CONNECTION_APPROVAL,SALES_REP_NOTIFICATIONS, NOTIFICATIONS
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetConnectionsDataNotificationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataNotification)(nil)).Elem()
+}
+
+func (i GetConnectionsDataNotificationArgs) ToGetConnectionsDataNotificationOutput() GetConnectionsDataNotificationOutput {
+	return i.ToGetConnectionsDataNotificationOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataNotificationArgs) ToGetConnectionsDataNotificationOutputWithContext(ctx context.Context) GetConnectionsDataNotificationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataNotificationOutput)
+}
+
+// GetConnectionsDataNotificationArrayInput is an input type that accepts GetConnectionsDataNotificationArray and GetConnectionsDataNotificationArrayOutput values.
+// You can construct a concrete instance of `GetConnectionsDataNotificationArrayInput` via:
+//
+//	GetConnectionsDataNotificationArray{ GetConnectionsDataNotificationArgs{...} }
+type GetConnectionsDataNotificationArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataNotificationArrayOutput() GetConnectionsDataNotificationArrayOutput
+	ToGetConnectionsDataNotificationArrayOutputWithContext(context.Context) GetConnectionsDataNotificationArrayOutput
+}
+
+type GetConnectionsDataNotificationArray []GetConnectionsDataNotificationInput
+
+func (GetConnectionsDataNotificationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionsDataNotification)(nil)).Elem()
+}
+
+func (i GetConnectionsDataNotificationArray) ToGetConnectionsDataNotificationArrayOutput() GetConnectionsDataNotificationArrayOutput {
+	return i.ToGetConnectionsDataNotificationArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataNotificationArray) ToGetConnectionsDataNotificationArrayOutputWithContext(ctx context.Context) GetConnectionsDataNotificationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataNotificationArrayOutput)
+}
+
+type GetConnectionsDataNotificationOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataNotificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataNotification)(nil)).Elem()
+}
+
+func (o GetConnectionsDataNotificationOutput) ToGetConnectionsDataNotificationOutput() GetConnectionsDataNotificationOutput {
+	return o
+}
+
+func (o GetConnectionsDataNotificationOutput) ToGetConnectionsDataNotificationOutputWithContext(ctx context.Context) GetConnectionsDataNotificationOutput {
+	return o
+}
+
+// Array of contact emails
+func (o GetConnectionsDataNotificationOutput) Emails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConnectionsDataNotification) []string { return v.Emails }).(pulumi.StringArrayOutput)
+}
+
+// Send interval
+func (o GetConnectionsDataNotificationOutput) SendInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConnectionsDataNotification) *string { return v.SendInterval }).(pulumi.StringPtrOutput)
+}
+
+// Notification Type - ALL,CONNECTION_APPROVAL,SALES_REP_NOTIFICATIONS, NOTIFICATIONS
+func (o GetConnectionsDataNotificationOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataNotification) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetConnectionsDataNotificationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataNotificationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionsDataNotification)(nil)).Elem()
+}
+
+func (o GetConnectionsDataNotificationArrayOutput) ToGetConnectionsDataNotificationArrayOutput() GetConnectionsDataNotificationArrayOutput {
+	return o
+}
+
+func (o GetConnectionsDataNotificationArrayOutput) ToGetConnectionsDataNotificationArrayOutputWithContext(ctx context.Context) GetConnectionsDataNotificationArrayOutput {
+	return o
+}
+
+func (o GetConnectionsDataNotificationArrayOutput) Index(i pulumi.IntInput) GetConnectionsDataNotificationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionsDataNotification {
+		return vs[0].([]GetConnectionsDataNotification)[vs[1].(int)]
+	}).(GetConnectionsDataNotificationOutput)
+}
+
+type GetConnectionsDataOperation struct {
+	// Connection status
+	EquinixStatus string `pulumi:"equinixStatus"`
+	// Errors occurred
+	Errors []GetConnectionsDataOperationError `pulumi:"errors"`
+	// Connection provider readiness status
+	ProviderStatus string `pulumi:"providerStatus"`
+}
+
+// GetConnectionsDataOperationInput is an input type that accepts GetConnectionsDataOperationArgs and GetConnectionsDataOperationOutput values.
+// You can construct a concrete instance of `GetConnectionsDataOperationInput` via:
+//
+//	GetConnectionsDataOperationArgs{...}
+type GetConnectionsDataOperationInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataOperationOutput() GetConnectionsDataOperationOutput
+	ToGetConnectionsDataOperationOutputWithContext(context.Context) GetConnectionsDataOperationOutput
+}
+
+type GetConnectionsDataOperationArgs struct {
+	// Connection status
+	EquinixStatus pulumi.StringInput `pulumi:"equinixStatus"`
+	// Errors occurred
+	Errors GetConnectionsDataOperationErrorArrayInput `pulumi:"errors"`
+	// Connection provider readiness status
+	ProviderStatus pulumi.StringInput `pulumi:"providerStatus"`
+}
+
+func (GetConnectionsDataOperationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataOperation)(nil)).Elem()
+}
+
+func (i GetConnectionsDataOperationArgs) ToGetConnectionsDataOperationOutput() GetConnectionsDataOperationOutput {
+	return i.ToGetConnectionsDataOperationOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataOperationArgs) ToGetConnectionsDataOperationOutputWithContext(ctx context.Context) GetConnectionsDataOperationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataOperationOutput)
+}
+
+// GetConnectionsDataOperationArrayInput is an input type that accepts GetConnectionsDataOperationArray and GetConnectionsDataOperationArrayOutput values.
+// You can construct a concrete instance of `GetConnectionsDataOperationArrayInput` via:
+//
+//	GetConnectionsDataOperationArray{ GetConnectionsDataOperationArgs{...} }
+type GetConnectionsDataOperationArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataOperationArrayOutput() GetConnectionsDataOperationArrayOutput
+	ToGetConnectionsDataOperationArrayOutputWithContext(context.Context) GetConnectionsDataOperationArrayOutput
+}
+
+type GetConnectionsDataOperationArray []GetConnectionsDataOperationInput
+
+func (GetConnectionsDataOperationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionsDataOperation)(nil)).Elem()
+}
+
+func (i GetConnectionsDataOperationArray) ToGetConnectionsDataOperationArrayOutput() GetConnectionsDataOperationArrayOutput {
+	return i.ToGetConnectionsDataOperationArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataOperationArray) ToGetConnectionsDataOperationArrayOutputWithContext(ctx context.Context) GetConnectionsDataOperationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataOperationArrayOutput)
+}
+
+type GetConnectionsDataOperationOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataOperationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataOperation)(nil)).Elem()
+}
+
+func (o GetConnectionsDataOperationOutput) ToGetConnectionsDataOperationOutput() GetConnectionsDataOperationOutput {
+	return o
+}
+
+func (o GetConnectionsDataOperationOutput) ToGetConnectionsDataOperationOutputWithContext(ctx context.Context) GetConnectionsDataOperationOutput {
+	return o
+}
+
+// Connection status
+func (o GetConnectionsDataOperationOutput) EquinixStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataOperation) string { return v.EquinixStatus }).(pulumi.StringOutput)
+}
+
+// Errors occurred
+func (o GetConnectionsDataOperationOutput) Errors() GetConnectionsDataOperationErrorArrayOutput {
+	return o.ApplyT(func(v GetConnectionsDataOperation) []GetConnectionsDataOperationError { return v.Errors }).(GetConnectionsDataOperationErrorArrayOutput)
+}
+
+// Connection provider readiness status
+func (o GetConnectionsDataOperationOutput) ProviderStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataOperation) string { return v.ProviderStatus }).(pulumi.StringOutput)
+}
+
+type GetConnectionsDataOperationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataOperationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionsDataOperation)(nil)).Elem()
+}
+
+func (o GetConnectionsDataOperationArrayOutput) ToGetConnectionsDataOperationArrayOutput() GetConnectionsDataOperationArrayOutput {
+	return o
+}
+
+func (o GetConnectionsDataOperationArrayOutput) ToGetConnectionsDataOperationArrayOutputWithContext(ctx context.Context) GetConnectionsDataOperationArrayOutput {
+	return o
+}
+
+func (o GetConnectionsDataOperationArrayOutput) Index(i pulumi.IntInput) GetConnectionsDataOperationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionsDataOperation {
+		return vs[0].([]GetConnectionsDataOperation)[vs[1].(int)]
+	}).(GetConnectionsDataOperationOutput)
+}
+
+type GetConnectionsDataOperationError struct {
+	// Pricing error additional Info
+	AdditionalInfos []GetConnectionsDataOperationErrorAdditionalInfo `pulumi:"additionalInfos"`
+	// CorrelationId
+	CorrelationId string `pulumi:"correlationId"`
+	// Details
+	Details string `pulumi:"details"`
+	// Error  code
+	ErrorCode string `pulumi:"errorCode"`
+	// Error Message
+	ErrorMessage string `pulumi:"errorMessage"`
+	// Help
+	Help string `pulumi:"help"`
+}
+
+// GetConnectionsDataOperationErrorInput is an input type that accepts GetConnectionsDataOperationErrorArgs and GetConnectionsDataOperationErrorOutput values.
+// You can construct a concrete instance of `GetConnectionsDataOperationErrorInput` via:
+//
+//	GetConnectionsDataOperationErrorArgs{...}
+type GetConnectionsDataOperationErrorInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataOperationErrorOutput() GetConnectionsDataOperationErrorOutput
+	ToGetConnectionsDataOperationErrorOutputWithContext(context.Context) GetConnectionsDataOperationErrorOutput
+}
+
+type GetConnectionsDataOperationErrorArgs struct {
+	// Pricing error additional Info
+	AdditionalInfos GetConnectionsDataOperationErrorAdditionalInfoArrayInput `pulumi:"additionalInfos"`
+	// CorrelationId
+	CorrelationId pulumi.StringInput `pulumi:"correlationId"`
+	// Details
+	Details pulumi.StringInput `pulumi:"details"`
+	// Error  code
+	ErrorCode pulumi.StringInput `pulumi:"errorCode"`
+	// Error Message
+	ErrorMessage pulumi.StringInput `pulumi:"errorMessage"`
+	// Help
+	Help pulumi.StringInput `pulumi:"help"`
+}
+
+func (GetConnectionsDataOperationErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataOperationError)(nil)).Elem()
+}
+
+func (i GetConnectionsDataOperationErrorArgs) ToGetConnectionsDataOperationErrorOutput() GetConnectionsDataOperationErrorOutput {
+	return i.ToGetConnectionsDataOperationErrorOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataOperationErrorArgs) ToGetConnectionsDataOperationErrorOutputWithContext(ctx context.Context) GetConnectionsDataOperationErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataOperationErrorOutput)
+}
+
+// GetConnectionsDataOperationErrorArrayInput is an input type that accepts GetConnectionsDataOperationErrorArray and GetConnectionsDataOperationErrorArrayOutput values.
+// You can construct a concrete instance of `GetConnectionsDataOperationErrorArrayInput` via:
+//
+//	GetConnectionsDataOperationErrorArray{ GetConnectionsDataOperationErrorArgs{...} }
+type GetConnectionsDataOperationErrorArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataOperationErrorArrayOutput() GetConnectionsDataOperationErrorArrayOutput
+	ToGetConnectionsDataOperationErrorArrayOutputWithContext(context.Context) GetConnectionsDataOperationErrorArrayOutput
+}
+
+type GetConnectionsDataOperationErrorArray []GetConnectionsDataOperationErrorInput
+
+func (GetConnectionsDataOperationErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionsDataOperationError)(nil)).Elem()
+}
+
+func (i GetConnectionsDataOperationErrorArray) ToGetConnectionsDataOperationErrorArrayOutput() GetConnectionsDataOperationErrorArrayOutput {
+	return i.ToGetConnectionsDataOperationErrorArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataOperationErrorArray) ToGetConnectionsDataOperationErrorArrayOutputWithContext(ctx context.Context) GetConnectionsDataOperationErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataOperationErrorArrayOutput)
+}
+
+type GetConnectionsDataOperationErrorOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataOperationErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataOperationError)(nil)).Elem()
+}
+
+func (o GetConnectionsDataOperationErrorOutput) ToGetConnectionsDataOperationErrorOutput() GetConnectionsDataOperationErrorOutput {
+	return o
+}
+
+func (o GetConnectionsDataOperationErrorOutput) ToGetConnectionsDataOperationErrorOutputWithContext(ctx context.Context) GetConnectionsDataOperationErrorOutput {
+	return o
+}
+
+// Pricing error additional Info
+func (o GetConnectionsDataOperationErrorOutput) AdditionalInfos() GetConnectionsDataOperationErrorAdditionalInfoArrayOutput {
+	return o.ApplyT(func(v GetConnectionsDataOperationError) []GetConnectionsDataOperationErrorAdditionalInfo {
+		return v.AdditionalInfos
+	}).(GetConnectionsDataOperationErrorAdditionalInfoArrayOutput)
+}
+
+// CorrelationId
+func (o GetConnectionsDataOperationErrorOutput) CorrelationId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataOperationError) string { return v.CorrelationId }).(pulumi.StringOutput)
+}
+
+// Details
+func (o GetConnectionsDataOperationErrorOutput) Details() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataOperationError) string { return v.Details }).(pulumi.StringOutput)
+}
+
+// Error  code
+func (o GetConnectionsDataOperationErrorOutput) ErrorCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataOperationError) string { return v.ErrorCode }).(pulumi.StringOutput)
+}
+
+// Error Message
+func (o GetConnectionsDataOperationErrorOutput) ErrorMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataOperationError) string { return v.ErrorMessage }).(pulumi.StringOutput)
+}
+
+// Help
+func (o GetConnectionsDataOperationErrorOutput) Help() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataOperationError) string { return v.Help }).(pulumi.StringOutput)
+}
+
+type GetConnectionsDataOperationErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataOperationErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionsDataOperationError)(nil)).Elem()
+}
+
+func (o GetConnectionsDataOperationErrorArrayOutput) ToGetConnectionsDataOperationErrorArrayOutput() GetConnectionsDataOperationErrorArrayOutput {
+	return o
+}
+
+func (o GetConnectionsDataOperationErrorArrayOutput) ToGetConnectionsDataOperationErrorArrayOutputWithContext(ctx context.Context) GetConnectionsDataOperationErrorArrayOutput {
+	return o
+}
+
+func (o GetConnectionsDataOperationErrorArrayOutput) Index(i pulumi.IntInput) GetConnectionsDataOperationErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionsDataOperationError {
+		return vs[0].([]GetConnectionsDataOperationError)[vs[1].(int)]
+	}).(GetConnectionsDataOperationErrorOutput)
+}
+
+type GetConnectionsDataOperationErrorAdditionalInfo struct {
+	// Property at which the error potentially occurred
+	Property string `pulumi:"property"`
+	// Reason for the error
+	Reason string `pulumi:"reason"`
+}
+
+// GetConnectionsDataOperationErrorAdditionalInfoInput is an input type that accepts GetConnectionsDataOperationErrorAdditionalInfoArgs and GetConnectionsDataOperationErrorAdditionalInfoOutput values.
+// You can construct a concrete instance of `GetConnectionsDataOperationErrorAdditionalInfoInput` via:
+//
+//	GetConnectionsDataOperationErrorAdditionalInfoArgs{...}
+type GetConnectionsDataOperationErrorAdditionalInfoInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataOperationErrorAdditionalInfoOutput() GetConnectionsDataOperationErrorAdditionalInfoOutput
+	ToGetConnectionsDataOperationErrorAdditionalInfoOutputWithContext(context.Context) GetConnectionsDataOperationErrorAdditionalInfoOutput
+}
+
+type GetConnectionsDataOperationErrorAdditionalInfoArgs struct {
+	// Property at which the error potentially occurred
+	Property pulumi.StringInput `pulumi:"property"`
+	// Reason for the error
+	Reason pulumi.StringInput `pulumi:"reason"`
+}
+
+func (GetConnectionsDataOperationErrorAdditionalInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataOperationErrorAdditionalInfo)(nil)).Elem()
+}
+
+func (i GetConnectionsDataOperationErrorAdditionalInfoArgs) ToGetConnectionsDataOperationErrorAdditionalInfoOutput() GetConnectionsDataOperationErrorAdditionalInfoOutput {
+	return i.ToGetConnectionsDataOperationErrorAdditionalInfoOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataOperationErrorAdditionalInfoArgs) ToGetConnectionsDataOperationErrorAdditionalInfoOutputWithContext(ctx context.Context) GetConnectionsDataOperationErrorAdditionalInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataOperationErrorAdditionalInfoOutput)
+}
+
+// GetConnectionsDataOperationErrorAdditionalInfoArrayInput is an input type that accepts GetConnectionsDataOperationErrorAdditionalInfoArray and GetConnectionsDataOperationErrorAdditionalInfoArrayOutput values.
+// You can construct a concrete instance of `GetConnectionsDataOperationErrorAdditionalInfoArrayInput` via:
+//
+//	GetConnectionsDataOperationErrorAdditionalInfoArray{ GetConnectionsDataOperationErrorAdditionalInfoArgs{...} }
+type GetConnectionsDataOperationErrorAdditionalInfoArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataOperationErrorAdditionalInfoArrayOutput() GetConnectionsDataOperationErrorAdditionalInfoArrayOutput
+	ToGetConnectionsDataOperationErrorAdditionalInfoArrayOutputWithContext(context.Context) GetConnectionsDataOperationErrorAdditionalInfoArrayOutput
+}
+
+type GetConnectionsDataOperationErrorAdditionalInfoArray []GetConnectionsDataOperationErrorAdditionalInfoInput
+
+func (GetConnectionsDataOperationErrorAdditionalInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionsDataOperationErrorAdditionalInfo)(nil)).Elem()
+}
+
+func (i GetConnectionsDataOperationErrorAdditionalInfoArray) ToGetConnectionsDataOperationErrorAdditionalInfoArrayOutput() GetConnectionsDataOperationErrorAdditionalInfoArrayOutput {
+	return i.ToGetConnectionsDataOperationErrorAdditionalInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataOperationErrorAdditionalInfoArray) ToGetConnectionsDataOperationErrorAdditionalInfoArrayOutputWithContext(ctx context.Context) GetConnectionsDataOperationErrorAdditionalInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataOperationErrorAdditionalInfoArrayOutput)
+}
+
+type GetConnectionsDataOperationErrorAdditionalInfoOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataOperationErrorAdditionalInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataOperationErrorAdditionalInfo)(nil)).Elem()
+}
+
+func (o GetConnectionsDataOperationErrorAdditionalInfoOutput) ToGetConnectionsDataOperationErrorAdditionalInfoOutput() GetConnectionsDataOperationErrorAdditionalInfoOutput {
+	return o
+}
+
+func (o GetConnectionsDataOperationErrorAdditionalInfoOutput) ToGetConnectionsDataOperationErrorAdditionalInfoOutputWithContext(ctx context.Context) GetConnectionsDataOperationErrorAdditionalInfoOutput {
+	return o
+}
+
+// Property at which the error potentially occurred
+func (o GetConnectionsDataOperationErrorAdditionalInfoOutput) Property() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataOperationErrorAdditionalInfo) string { return v.Property }).(pulumi.StringOutput)
+}
+
+// Reason for the error
+func (o GetConnectionsDataOperationErrorAdditionalInfoOutput) Reason() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataOperationErrorAdditionalInfo) string { return v.Reason }).(pulumi.StringOutput)
+}
+
+type GetConnectionsDataOperationErrorAdditionalInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataOperationErrorAdditionalInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionsDataOperationErrorAdditionalInfo)(nil)).Elem()
+}
+
+func (o GetConnectionsDataOperationErrorAdditionalInfoArrayOutput) ToGetConnectionsDataOperationErrorAdditionalInfoArrayOutput() GetConnectionsDataOperationErrorAdditionalInfoArrayOutput {
+	return o
+}
+
+func (o GetConnectionsDataOperationErrorAdditionalInfoArrayOutput) ToGetConnectionsDataOperationErrorAdditionalInfoArrayOutputWithContext(ctx context.Context) GetConnectionsDataOperationErrorAdditionalInfoArrayOutput {
+	return o
+}
+
+func (o GetConnectionsDataOperationErrorAdditionalInfoArrayOutput) Index(i pulumi.IntInput) GetConnectionsDataOperationErrorAdditionalInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionsDataOperationErrorAdditionalInfo {
+		return vs[0].([]GetConnectionsDataOperationErrorAdditionalInfo)[vs[1].(int)]
+	}).(GetConnectionsDataOperationErrorAdditionalInfoOutput)
+}
+
+type GetConnectionsDataOrder struct {
+	// Billing tier for connection bandwidth
+	BillingTier string `pulumi:"billingTier"`
+	// Order Identification
+	OrderId string `pulumi:"orderId"`
+	// Order Reference Number
+	OrderNumber string `pulumi:"orderNumber"`
+	// Purchase order number
+	PurchaseOrderNumber string `pulumi:"purchaseOrderNumber"`
+}
+
+// GetConnectionsDataOrderInput is an input type that accepts GetConnectionsDataOrderArgs and GetConnectionsDataOrderOutput values.
+// You can construct a concrete instance of `GetConnectionsDataOrderInput` via:
+//
+//	GetConnectionsDataOrderArgs{...}
+type GetConnectionsDataOrderInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataOrderOutput() GetConnectionsDataOrderOutput
+	ToGetConnectionsDataOrderOutputWithContext(context.Context) GetConnectionsDataOrderOutput
+}
+
+type GetConnectionsDataOrderArgs struct {
+	// Billing tier for connection bandwidth
+	BillingTier pulumi.StringInput `pulumi:"billingTier"`
+	// Order Identification
+	OrderId pulumi.StringInput `pulumi:"orderId"`
+	// Order Reference Number
+	OrderNumber pulumi.StringInput `pulumi:"orderNumber"`
+	// Purchase order number
+	PurchaseOrderNumber pulumi.StringInput `pulumi:"purchaseOrderNumber"`
+}
+
+func (GetConnectionsDataOrderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataOrder)(nil)).Elem()
+}
+
+func (i GetConnectionsDataOrderArgs) ToGetConnectionsDataOrderOutput() GetConnectionsDataOrderOutput {
+	return i.ToGetConnectionsDataOrderOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataOrderArgs) ToGetConnectionsDataOrderOutputWithContext(ctx context.Context) GetConnectionsDataOrderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataOrderOutput)
+}
+
+// GetConnectionsDataOrderArrayInput is an input type that accepts GetConnectionsDataOrderArray and GetConnectionsDataOrderArrayOutput values.
+// You can construct a concrete instance of `GetConnectionsDataOrderArrayInput` via:
+//
+//	GetConnectionsDataOrderArray{ GetConnectionsDataOrderArgs{...} }
+type GetConnectionsDataOrderArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataOrderArrayOutput() GetConnectionsDataOrderArrayOutput
+	ToGetConnectionsDataOrderArrayOutputWithContext(context.Context) GetConnectionsDataOrderArrayOutput
+}
+
+type GetConnectionsDataOrderArray []GetConnectionsDataOrderInput
+
+func (GetConnectionsDataOrderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionsDataOrder)(nil)).Elem()
+}
+
+func (i GetConnectionsDataOrderArray) ToGetConnectionsDataOrderArrayOutput() GetConnectionsDataOrderArrayOutput {
+	return i.ToGetConnectionsDataOrderArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataOrderArray) ToGetConnectionsDataOrderArrayOutputWithContext(ctx context.Context) GetConnectionsDataOrderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataOrderArrayOutput)
+}
+
+type GetConnectionsDataOrderOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataOrderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataOrder)(nil)).Elem()
+}
+
+func (o GetConnectionsDataOrderOutput) ToGetConnectionsDataOrderOutput() GetConnectionsDataOrderOutput {
+	return o
+}
+
+func (o GetConnectionsDataOrderOutput) ToGetConnectionsDataOrderOutputWithContext(ctx context.Context) GetConnectionsDataOrderOutput {
+	return o
+}
+
+// Billing tier for connection bandwidth
+func (o GetConnectionsDataOrderOutput) BillingTier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataOrder) string { return v.BillingTier }).(pulumi.StringOutput)
+}
+
+// Order Identification
+func (o GetConnectionsDataOrderOutput) OrderId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataOrder) string { return v.OrderId }).(pulumi.StringOutput)
+}
+
+// Order Reference Number
+func (o GetConnectionsDataOrderOutput) OrderNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataOrder) string { return v.OrderNumber }).(pulumi.StringOutput)
+}
+
+// Purchase order number
+func (o GetConnectionsDataOrderOutput) PurchaseOrderNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataOrder) string { return v.PurchaseOrderNumber }).(pulumi.StringOutput)
+}
+
+type GetConnectionsDataOrderArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataOrderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionsDataOrder)(nil)).Elem()
+}
+
+func (o GetConnectionsDataOrderArrayOutput) ToGetConnectionsDataOrderArrayOutput() GetConnectionsDataOrderArrayOutput {
+	return o
+}
+
+func (o GetConnectionsDataOrderArrayOutput) ToGetConnectionsDataOrderArrayOutputWithContext(ctx context.Context) GetConnectionsDataOrderArrayOutput {
+	return o
+}
+
+func (o GetConnectionsDataOrderArrayOutput) Index(i pulumi.IntInput) GetConnectionsDataOrderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionsDataOrder {
+		return vs[0].([]GetConnectionsDataOrder)[vs[1].(int)]
+	}).(GetConnectionsDataOrderOutput)
+}
+
+type GetConnectionsDataProject struct {
+	// Unique Resource URL
+	Href string `pulumi:"href"`
+	// Project Id
+	ProjectId string `pulumi:"projectId"`
+}
+
+// GetConnectionsDataProjectInput is an input type that accepts GetConnectionsDataProjectArgs and GetConnectionsDataProjectOutput values.
+// You can construct a concrete instance of `GetConnectionsDataProjectInput` via:
+//
+//	GetConnectionsDataProjectArgs{...}
+type GetConnectionsDataProjectInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataProjectOutput() GetConnectionsDataProjectOutput
+	ToGetConnectionsDataProjectOutputWithContext(context.Context) GetConnectionsDataProjectOutput
+}
+
+type GetConnectionsDataProjectArgs struct {
+	// Unique Resource URL
+	Href pulumi.StringInput `pulumi:"href"`
+	// Project Id
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+}
+
+func (GetConnectionsDataProjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataProject)(nil)).Elem()
+}
+
+func (i GetConnectionsDataProjectArgs) ToGetConnectionsDataProjectOutput() GetConnectionsDataProjectOutput {
+	return i.ToGetConnectionsDataProjectOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataProjectArgs) ToGetConnectionsDataProjectOutputWithContext(ctx context.Context) GetConnectionsDataProjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataProjectOutput)
+}
+
+// GetConnectionsDataProjectArrayInput is an input type that accepts GetConnectionsDataProjectArray and GetConnectionsDataProjectArrayOutput values.
+// You can construct a concrete instance of `GetConnectionsDataProjectArrayInput` via:
+//
+//	GetConnectionsDataProjectArray{ GetConnectionsDataProjectArgs{...} }
+type GetConnectionsDataProjectArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataProjectArrayOutput() GetConnectionsDataProjectArrayOutput
+	ToGetConnectionsDataProjectArrayOutputWithContext(context.Context) GetConnectionsDataProjectArrayOutput
+}
+
+type GetConnectionsDataProjectArray []GetConnectionsDataProjectInput
+
+func (GetConnectionsDataProjectArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionsDataProject)(nil)).Elem()
+}
+
+func (i GetConnectionsDataProjectArray) ToGetConnectionsDataProjectArrayOutput() GetConnectionsDataProjectArrayOutput {
+	return i.ToGetConnectionsDataProjectArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataProjectArray) ToGetConnectionsDataProjectArrayOutputWithContext(ctx context.Context) GetConnectionsDataProjectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataProjectArrayOutput)
+}
+
+type GetConnectionsDataProjectOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataProjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataProject)(nil)).Elem()
+}
+
+func (o GetConnectionsDataProjectOutput) ToGetConnectionsDataProjectOutput() GetConnectionsDataProjectOutput {
+	return o
+}
+
+func (o GetConnectionsDataProjectOutput) ToGetConnectionsDataProjectOutputWithContext(ctx context.Context) GetConnectionsDataProjectOutput {
+	return o
+}
+
+// Unique Resource URL
+func (o GetConnectionsDataProjectOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataProject) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// Project Id
+func (o GetConnectionsDataProjectOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataProject) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+type GetConnectionsDataProjectArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataProjectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionsDataProject)(nil)).Elem()
+}
+
+func (o GetConnectionsDataProjectArrayOutput) ToGetConnectionsDataProjectArrayOutput() GetConnectionsDataProjectArrayOutput {
+	return o
+}
+
+func (o GetConnectionsDataProjectArrayOutput) ToGetConnectionsDataProjectArrayOutputWithContext(ctx context.Context) GetConnectionsDataProjectArrayOutput {
+	return o
+}
+
+func (o GetConnectionsDataProjectArrayOutput) Index(i pulumi.IntInput) GetConnectionsDataProjectOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionsDataProject {
+		return vs[0].([]GetConnectionsDataProject)[vs[1].(int)]
+	}).(GetConnectionsDataProjectOutput)
+}
+
+type GetConnectionsDataRedundancy struct {
+	// Redundancy group identifier (Use the redundancy.0.group UUID of primary connection; e.g. one(equinix_fabric_connection.primary_port_connection.redundancy).group or equinix_fabric_connection.primary_port_connection.redundancy.0.group)
+	Group string `pulumi:"group"`
+	// Connection priority in redundancy group - PRIMARY, SECONDARY
+	Priority string `pulumi:"priority"`
+}
+
+// GetConnectionsDataRedundancyInput is an input type that accepts GetConnectionsDataRedundancyArgs and GetConnectionsDataRedundancyOutput values.
+// You can construct a concrete instance of `GetConnectionsDataRedundancyInput` via:
+//
+//	GetConnectionsDataRedundancyArgs{...}
+type GetConnectionsDataRedundancyInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataRedundancyOutput() GetConnectionsDataRedundancyOutput
+	ToGetConnectionsDataRedundancyOutputWithContext(context.Context) GetConnectionsDataRedundancyOutput
+}
+
+type GetConnectionsDataRedundancyArgs struct {
+	// Redundancy group identifier (Use the redundancy.0.group UUID of primary connection; e.g. one(equinix_fabric_connection.primary_port_connection.redundancy).group or equinix_fabric_connection.primary_port_connection.redundancy.0.group)
+	Group pulumi.StringInput `pulumi:"group"`
+	// Connection priority in redundancy group - PRIMARY, SECONDARY
+	Priority pulumi.StringInput `pulumi:"priority"`
+}
+
+func (GetConnectionsDataRedundancyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataRedundancy)(nil)).Elem()
+}
+
+func (i GetConnectionsDataRedundancyArgs) ToGetConnectionsDataRedundancyOutput() GetConnectionsDataRedundancyOutput {
+	return i.ToGetConnectionsDataRedundancyOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataRedundancyArgs) ToGetConnectionsDataRedundancyOutputWithContext(ctx context.Context) GetConnectionsDataRedundancyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataRedundancyOutput)
+}
+
+// GetConnectionsDataRedundancyArrayInput is an input type that accepts GetConnectionsDataRedundancyArray and GetConnectionsDataRedundancyArrayOutput values.
+// You can construct a concrete instance of `GetConnectionsDataRedundancyArrayInput` via:
+//
+//	GetConnectionsDataRedundancyArray{ GetConnectionsDataRedundancyArgs{...} }
+type GetConnectionsDataRedundancyArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataRedundancyArrayOutput() GetConnectionsDataRedundancyArrayOutput
+	ToGetConnectionsDataRedundancyArrayOutputWithContext(context.Context) GetConnectionsDataRedundancyArrayOutput
+}
+
+type GetConnectionsDataRedundancyArray []GetConnectionsDataRedundancyInput
+
+func (GetConnectionsDataRedundancyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionsDataRedundancy)(nil)).Elem()
+}
+
+func (i GetConnectionsDataRedundancyArray) ToGetConnectionsDataRedundancyArrayOutput() GetConnectionsDataRedundancyArrayOutput {
+	return i.ToGetConnectionsDataRedundancyArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataRedundancyArray) ToGetConnectionsDataRedundancyArrayOutputWithContext(ctx context.Context) GetConnectionsDataRedundancyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataRedundancyArrayOutput)
+}
+
+type GetConnectionsDataRedundancyOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataRedundancyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataRedundancy)(nil)).Elem()
+}
+
+func (o GetConnectionsDataRedundancyOutput) ToGetConnectionsDataRedundancyOutput() GetConnectionsDataRedundancyOutput {
+	return o
+}
+
+func (o GetConnectionsDataRedundancyOutput) ToGetConnectionsDataRedundancyOutputWithContext(ctx context.Context) GetConnectionsDataRedundancyOutput {
+	return o
+}
+
+// Redundancy group identifier (Use the redundancy.0.group UUID of primary connection; e.g. one(equinix_fabric_connection.primary_port_connection.redundancy).group or equinix_fabric_connection.primary_port_connection.redundancy.0.group)
+func (o GetConnectionsDataRedundancyOutput) Group() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataRedundancy) string { return v.Group }).(pulumi.StringOutput)
+}
+
+// Connection priority in redundancy group - PRIMARY, SECONDARY
+func (o GetConnectionsDataRedundancyOutput) Priority() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataRedundancy) string { return v.Priority }).(pulumi.StringOutput)
+}
+
+type GetConnectionsDataRedundancyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataRedundancyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionsDataRedundancy)(nil)).Elem()
+}
+
+func (o GetConnectionsDataRedundancyArrayOutput) ToGetConnectionsDataRedundancyArrayOutput() GetConnectionsDataRedundancyArrayOutput {
+	return o
+}
+
+func (o GetConnectionsDataRedundancyArrayOutput) ToGetConnectionsDataRedundancyArrayOutputWithContext(ctx context.Context) GetConnectionsDataRedundancyArrayOutput {
+	return o
+}
+
+func (o GetConnectionsDataRedundancyArrayOutput) Index(i pulumi.IntInput) GetConnectionsDataRedundancyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionsDataRedundancy {
+		return vs[0].([]GetConnectionsDataRedundancy)[vs[1].(int)]
+	}).(GetConnectionsDataRedundancyOutput)
+}
+
+type GetConnectionsDataZSide struct {
+	// Point of access details
+	AccessPoint *GetConnectionsDataZSideAccessPoint `pulumi:"accessPoint"`
+	// Connection side additional information
+	AdditionalInfos []GetConnectionsDataZSideAdditionalInfo `pulumi:"additionalInfos"`
+	// For service token based connections, Service tokens authorize users to access protected resources and services. Resource owners can distribute the tokens to trusted partners and vendors, allowing selected third parties to work directly with Equinix network assets
+	ServiceToken *GetConnectionsDataZSideServiceToken `pulumi:"serviceToken"`
+}
+
+// GetConnectionsDataZSideInput is an input type that accepts GetConnectionsDataZSideArgs and GetConnectionsDataZSideOutput values.
+// You can construct a concrete instance of `GetConnectionsDataZSideInput` via:
+//
+//	GetConnectionsDataZSideArgs{...}
+type GetConnectionsDataZSideInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataZSideOutput() GetConnectionsDataZSideOutput
+	ToGetConnectionsDataZSideOutputWithContext(context.Context) GetConnectionsDataZSideOutput
+}
+
+type GetConnectionsDataZSideArgs struct {
+	// Point of access details
+	AccessPoint GetConnectionsDataZSideAccessPointPtrInput `pulumi:"accessPoint"`
+	// Connection side additional information
+	AdditionalInfos GetConnectionsDataZSideAdditionalInfoArrayInput `pulumi:"additionalInfos"`
+	// For service token based connections, Service tokens authorize users to access protected resources and services. Resource owners can distribute the tokens to trusted partners and vendors, allowing selected third parties to work directly with Equinix network assets
+	ServiceToken GetConnectionsDataZSideServiceTokenPtrInput `pulumi:"serviceToken"`
+}
+
+func (GetConnectionsDataZSideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataZSide)(nil)).Elem()
+}
+
+func (i GetConnectionsDataZSideArgs) ToGetConnectionsDataZSideOutput() GetConnectionsDataZSideOutput {
+	return i.ToGetConnectionsDataZSideOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataZSideArgs) ToGetConnectionsDataZSideOutputWithContext(ctx context.Context) GetConnectionsDataZSideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataZSideOutput)
+}
+
+// GetConnectionsDataZSideArrayInput is an input type that accepts GetConnectionsDataZSideArray and GetConnectionsDataZSideArrayOutput values.
+// You can construct a concrete instance of `GetConnectionsDataZSideArrayInput` via:
+//
+//	GetConnectionsDataZSideArray{ GetConnectionsDataZSideArgs{...} }
+type GetConnectionsDataZSideArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataZSideArrayOutput() GetConnectionsDataZSideArrayOutput
+	ToGetConnectionsDataZSideArrayOutputWithContext(context.Context) GetConnectionsDataZSideArrayOutput
+}
+
+type GetConnectionsDataZSideArray []GetConnectionsDataZSideInput
+
+func (GetConnectionsDataZSideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionsDataZSide)(nil)).Elem()
+}
+
+func (i GetConnectionsDataZSideArray) ToGetConnectionsDataZSideArrayOutput() GetConnectionsDataZSideArrayOutput {
+	return i.ToGetConnectionsDataZSideArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataZSideArray) ToGetConnectionsDataZSideArrayOutputWithContext(ctx context.Context) GetConnectionsDataZSideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataZSideArrayOutput)
+}
+
+type GetConnectionsDataZSideOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataZSideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataZSide)(nil)).Elem()
+}
+
+func (o GetConnectionsDataZSideOutput) ToGetConnectionsDataZSideOutput() GetConnectionsDataZSideOutput {
+	return o
+}
+
+func (o GetConnectionsDataZSideOutput) ToGetConnectionsDataZSideOutputWithContext(ctx context.Context) GetConnectionsDataZSideOutput {
+	return o
+}
+
+// Point of access details
+func (o GetConnectionsDataZSideOutput) AccessPoint() GetConnectionsDataZSideAccessPointPtrOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSide) *GetConnectionsDataZSideAccessPoint { return v.AccessPoint }).(GetConnectionsDataZSideAccessPointPtrOutput)
+}
+
+// Connection side additional information
+func (o GetConnectionsDataZSideOutput) AdditionalInfos() GetConnectionsDataZSideAdditionalInfoArrayOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSide) []GetConnectionsDataZSideAdditionalInfo { return v.AdditionalInfos }).(GetConnectionsDataZSideAdditionalInfoArrayOutput)
+}
+
+// For service token based connections, Service tokens authorize users to access protected resources and services. Resource owners can distribute the tokens to trusted partners and vendors, allowing selected third parties to work directly with Equinix network assets
+func (o GetConnectionsDataZSideOutput) ServiceToken() GetConnectionsDataZSideServiceTokenPtrOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSide) *GetConnectionsDataZSideServiceToken { return v.ServiceToken }).(GetConnectionsDataZSideServiceTokenPtrOutput)
+}
+
+type GetConnectionsDataZSideArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataZSideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionsDataZSide)(nil)).Elem()
+}
+
+func (o GetConnectionsDataZSideArrayOutput) ToGetConnectionsDataZSideArrayOutput() GetConnectionsDataZSideArrayOutput {
+	return o
+}
+
+func (o GetConnectionsDataZSideArrayOutput) ToGetConnectionsDataZSideArrayOutputWithContext(ctx context.Context) GetConnectionsDataZSideArrayOutput {
+	return o
+}
+
+func (o GetConnectionsDataZSideArrayOutput) Index(i pulumi.IntInput) GetConnectionsDataZSideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionsDataZSide {
+		return vs[0].([]GetConnectionsDataZSide)[vs[1].(int)]
+	}).(GetConnectionsDataZSideOutput)
+}
+
+type GetConnectionsDataZSideAccessPoint struct {
+	// Account
+	Accounts []GetConnectionsDataZSideAccessPointAccount `pulumi:"accounts"`
+	// Authentication key for provider based connections
+	AuthenticationKey *string `pulumi:"authenticationKey"`
+	// **Deprecated** `gateway` Use `router` attribute instead
+	//
+	// Deprecated: use router attribute instead; gateway is no longer a part of the supported backend
+	Gateway *GetConnectionsDataZSideAccessPointGateway `pulumi:"gateway"`
+	// Virtual device interface
+	Interface *GetConnectionsDataZSideAccessPointInterface `pulumi:"interface"`
+	// Connection link protocol
+	LinkProtocol *GetConnectionsDataZSideAccessPointLinkProtocol `pulumi:"linkProtocol"`
+	// Access point location
+	Location GetConnectionsDataZSideAccessPointLocation `pulumi:"location"`
+	// network access point information
+	Network *GetConnectionsDataZSideAccessPointNetwork `pulumi:"network"`
+	// Peering Type- PRIVATE,MICROSOFT,PUBLIC, MANUAL
+	PeeringType *string `pulumi:"peeringType"`
+	// Port access point information
+	Port *GetConnectionsDataZSideAccessPointPort `pulumi:"port"`
+	// Service Profile
+	Profile *GetConnectionsDataZSideAccessPointProfile `pulumi:"profile"`
+	// Provider assigned Connection Id
+	ProviderConnectionId string `pulumi:"providerConnectionId"`
+	// Cloud Router access point information that replaces `gateway`
+	Router *GetConnectionsDataZSideAccessPointRouter `pulumi:"router"`
+	// Access point seller region
+	SellerRegion *string `pulumi:"sellerRegion"`
+	// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+	Type *string `pulumi:"type"`
+	// Virtual device
+	VirtualDevice *GetConnectionsDataZSideAccessPointVirtualDevice `pulumi:"virtualDevice"`
+}
+
+// GetConnectionsDataZSideAccessPointInput is an input type that accepts GetConnectionsDataZSideAccessPointArgs and GetConnectionsDataZSideAccessPointOutput values.
+// You can construct a concrete instance of `GetConnectionsDataZSideAccessPointInput` via:
+//
+//	GetConnectionsDataZSideAccessPointArgs{...}
+type GetConnectionsDataZSideAccessPointInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataZSideAccessPointOutput() GetConnectionsDataZSideAccessPointOutput
+	ToGetConnectionsDataZSideAccessPointOutputWithContext(context.Context) GetConnectionsDataZSideAccessPointOutput
+}
+
+type GetConnectionsDataZSideAccessPointArgs struct {
+	// Account
+	Accounts GetConnectionsDataZSideAccessPointAccountArrayInput `pulumi:"accounts"`
+	// Authentication key for provider based connections
+	AuthenticationKey pulumi.StringPtrInput `pulumi:"authenticationKey"`
+	// **Deprecated** `gateway` Use `router` attribute instead
+	//
+	// Deprecated: use router attribute instead; gateway is no longer a part of the supported backend
+	Gateway GetConnectionsDataZSideAccessPointGatewayPtrInput `pulumi:"gateway"`
+	// Virtual device interface
+	Interface GetConnectionsDataZSideAccessPointInterfacePtrInput `pulumi:"interface"`
+	// Connection link protocol
+	LinkProtocol GetConnectionsDataZSideAccessPointLinkProtocolPtrInput `pulumi:"linkProtocol"`
+	// Access point location
+	Location GetConnectionsDataZSideAccessPointLocationInput `pulumi:"location"`
+	// network access point information
+	Network GetConnectionsDataZSideAccessPointNetworkPtrInput `pulumi:"network"`
+	// Peering Type- PRIVATE,MICROSOFT,PUBLIC, MANUAL
+	PeeringType pulumi.StringPtrInput `pulumi:"peeringType"`
+	// Port access point information
+	Port GetConnectionsDataZSideAccessPointPortPtrInput `pulumi:"port"`
+	// Service Profile
+	Profile GetConnectionsDataZSideAccessPointProfilePtrInput `pulumi:"profile"`
+	// Provider assigned Connection Id
+	ProviderConnectionId pulumi.StringInput `pulumi:"providerConnectionId"`
+	// Cloud Router access point information that replaces `gateway`
+	Router GetConnectionsDataZSideAccessPointRouterPtrInput `pulumi:"router"`
+	// Access point seller region
+	SellerRegion pulumi.StringPtrInput `pulumi:"sellerRegion"`
+	// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Virtual device
+	VirtualDevice GetConnectionsDataZSideAccessPointVirtualDevicePtrInput `pulumi:"virtualDevice"`
+}
+
+func (GetConnectionsDataZSideAccessPointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataZSideAccessPoint)(nil)).Elem()
+}
+
+func (i GetConnectionsDataZSideAccessPointArgs) ToGetConnectionsDataZSideAccessPointOutput() GetConnectionsDataZSideAccessPointOutput {
+	return i.ToGetConnectionsDataZSideAccessPointOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataZSideAccessPointArgs) ToGetConnectionsDataZSideAccessPointOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataZSideAccessPointOutput)
+}
+
+func (i GetConnectionsDataZSideAccessPointArgs) ToGetConnectionsDataZSideAccessPointPtrOutput() GetConnectionsDataZSideAccessPointPtrOutput {
+	return i.ToGetConnectionsDataZSideAccessPointPtrOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataZSideAccessPointArgs) ToGetConnectionsDataZSideAccessPointPtrOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataZSideAccessPointOutput).ToGetConnectionsDataZSideAccessPointPtrOutputWithContext(ctx)
+}
+
+// GetConnectionsDataZSideAccessPointPtrInput is an input type that accepts GetConnectionsDataZSideAccessPointArgs, GetConnectionsDataZSideAccessPointPtr and GetConnectionsDataZSideAccessPointPtrOutput values.
+// You can construct a concrete instance of `GetConnectionsDataZSideAccessPointPtrInput` via:
+//
+//	        GetConnectionsDataZSideAccessPointArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetConnectionsDataZSideAccessPointPtrInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataZSideAccessPointPtrOutput() GetConnectionsDataZSideAccessPointPtrOutput
+	ToGetConnectionsDataZSideAccessPointPtrOutputWithContext(context.Context) GetConnectionsDataZSideAccessPointPtrOutput
+}
+
+type getConnectionsDataZSideAccessPointPtrType GetConnectionsDataZSideAccessPointArgs
+
+func GetConnectionsDataZSideAccessPointPtr(v *GetConnectionsDataZSideAccessPointArgs) GetConnectionsDataZSideAccessPointPtrInput {
+	return (*getConnectionsDataZSideAccessPointPtrType)(v)
+}
+
+func (*getConnectionsDataZSideAccessPointPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetConnectionsDataZSideAccessPoint)(nil)).Elem()
+}
+
+func (i *getConnectionsDataZSideAccessPointPtrType) ToGetConnectionsDataZSideAccessPointPtrOutput() GetConnectionsDataZSideAccessPointPtrOutput {
+	return i.ToGetConnectionsDataZSideAccessPointPtrOutputWithContext(context.Background())
+}
+
+func (i *getConnectionsDataZSideAccessPointPtrType) ToGetConnectionsDataZSideAccessPointPtrOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataZSideAccessPointPtrOutput)
+}
+
+type GetConnectionsDataZSideAccessPointOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataZSideAccessPointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataZSideAccessPoint)(nil)).Elem()
+}
+
+func (o GetConnectionsDataZSideAccessPointOutput) ToGetConnectionsDataZSideAccessPointOutput() GetConnectionsDataZSideAccessPointOutput {
+	return o
+}
+
+func (o GetConnectionsDataZSideAccessPointOutput) ToGetConnectionsDataZSideAccessPointOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointOutput {
+	return o
+}
+
+func (o GetConnectionsDataZSideAccessPointOutput) ToGetConnectionsDataZSideAccessPointPtrOutput() GetConnectionsDataZSideAccessPointPtrOutput {
+	return o.ToGetConnectionsDataZSideAccessPointPtrOutputWithContext(context.Background())
+}
+
+func (o GetConnectionsDataZSideAccessPointOutput) ToGetConnectionsDataZSideAccessPointPtrOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetConnectionsDataZSideAccessPoint) *GetConnectionsDataZSideAccessPoint {
+		return &v
+	}).(GetConnectionsDataZSideAccessPointPtrOutput)
+}
+
+// Account
+func (o GetConnectionsDataZSideAccessPointOutput) Accounts() GetConnectionsDataZSideAccessPointAccountArrayOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPoint) []GetConnectionsDataZSideAccessPointAccount {
+		return v.Accounts
+	}).(GetConnectionsDataZSideAccessPointAccountArrayOutput)
+}
+
+// Authentication key for provider based connections
+func (o GetConnectionsDataZSideAccessPointOutput) AuthenticationKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPoint) *string { return v.AuthenticationKey }).(pulumi.StringPtrOutput)
+}
+
+// **Deprecated** `gateway` Use `router` attribute instead
+//
+// Deprecated: use router attribute instead; gateway is no longer a part of the supported backend
+func (o GetConnectionsDataZSideAccessPointOutput) Gateway() GetConnectionsDataZSideAccessPointGatewayPtrOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPoint) *GetConnectionsDataZSideAccessPointGateway {
+		return v.Gateway
+	}).(GetConnectionsDataZSideAccessPointGatewayPtrOutput)
+}
+
+// Virtual device interface
+func (o GetConnectionsDataZSideAccessPointOutput) Interface() GetConnectionsDataZSideAccessPointInterfacePtrOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPoint) *GetConnectionsDataZSideAccessPointInterface {
+		return v.Interface
+	}).(GetConnectionsDataZSideAccessPointInterfacePtrOutput)
+}
+
+// Connection link protocol
+func (o GetConnectionsDataZSideAccessPointOutput) LinkProtocol() GetConnectionsDataZSideAccessPointLinkProtocolPtrOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPoint) *GetConnectionsDataZSideAccessPointLinkProtocol {
+		return v.LinkProtocol
+	}).(GetConnectionsDataZSideAccessPointLinkProtocolPtrOutput)
+}
+
+// Access point location
+func (o GetConnectionsDataZSideAccessPointOutput) Location() GetConnectionsDataZSideAccessPointLocationOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPoint) GetConnectionsDataZSideAccessPointLocation {
+		return v.Location
+	}).(GetConnectionsDataZSideAccessPointLocationOutput)
+}
+
+// network access point information
+func (o GetConnectionsDataZSideAccessPointOutput) Network() GetConnectionsDataZSideAccessPointNetworkPtrOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPoint) *GetConnectionsDataZSideAccessPointNetwork {
+		return v.Network
+	}).(GetConnectionsDataZSideAccessPointNetworkPtrOutput)
+}
+
+// Peering Type- PRIVATE,MICROSOFT,PUBLIC, MANUAL
+func (o GetConnectionsDataZSideAccessPointOutput) PeeringType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPoint) *string { return v.PeeringType }).(pulumi.StringPtrOutput)
+}
+
+// Port access point information
+func (o GetConnectionsDataZSideAccessPointOutput) Port() GetConnectionsDataZSideAccessPointPortPtrOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPoint) *GetConnectionsDataZSideAccessPointPort { return v.Port }).(GetConnectionsDataZSideAccessPointPortPtrOutput)
+}
+
+// Service Profile
+func (o GetConnectionsDataZSideAccessPointOutput) Profile() GetConnectionsDataZSideAccessPointProfilePtrOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPoint) *GetConnectionsDataZSideAccessPointProfile {
+		return v.Profile
+	}).(GetConnectionsDataZSideAccessPointProfilePtrOutput)
+}
+
+// Provider assigned Connection Id
+func (o GetConnectionsDataZSideAccessPointOutput) ProviderConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPoint) string { return v.ProviderConnectionId }).(pulumi.StringOutput)
+}
+
+// Cloud Router access point information that replaces `gateway`
+func (o GetConnectionsDataZSideAccessPointOutput) Router() GetConnectionsDataZSideAccessPointRouterPtrOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPoint) *GetConnectionsDataZSideAccessPointRouter { return v.Router }).(GetConnectionsDataZSideAccessPointRouterPtrOutput)
+}
+
+// Access point seller region
+func (o GetConnectionsDataZSideAccessPointOutput) SellerRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPoint) *string { return v.SellerRegion }).(pulumi.StringPtrOutput)
+}
+
+// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+func (o GetConnectionsDataZSideAccessPointOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPoint) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// Virtual device
+func (o GetConnectionsDataZSideAccessPointOutput) VirtualDevice() GetConnectionsDataZSideAccessPointVirtualDevicePtrOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPoint) *GetConnectionsDataZSideAccessPointVirtualDevice {
+		return v.VirtualDevice
+	}).(GetConnectionsDataZSideAccessPointVirtualDevicePtrOutput)
+}
+
+type GetConnectionsDataZSideAccessPointPtrOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataZSideAccessPointPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetConnectionsDataZSideAccessPoint)(nil)).Elem()
+}
+
+func (o GetConnectionsDataZSideAccessPointPtrOutput) ToGetConnectionsDataZSideAccessPointPtrOutput() GetConnectionsDataZSideAccessPointPtrOutput {
+	return o
+}
+
+func (o GetConnectionsDataZSideAccessPointPtrOutput) ToGetConnectionsDataZSideAccessPointPtrOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointPtrOutput {
+	return o
+}
+
+func (o GetConnectionsDataZSideAccessPointPtrOutput) Elem() GetConnectionsDataZSideAccessPointOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPoint) GetConnectionsDataZSideAccessPoint {
+		if v != nil {
+			return *v
+		}
+		var ret GetConnectionsDataZSideAccessPoint
+		return ret
+	}).(GetConnectionsDataZSideAccessPointOutput)
+}
+
+// Account
+func (o GetConnectionsDataZSideAccessPointPtrOutput) Accounts() GetConnectionsDataZSideAccessPointAccountArrayOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPoint) []GetConnectionsDataZSideAccessPointAccount {
+		if v == nil {
+			return nil
+		}
+		return v.Accounts
+	}).(GetConnectionsDataZSideAccessPointAccountArrayOutput)
+}
+
+// Authentication key for provider based connections
+func (o GetConnectionsDataZSideAccessPointPtrOutput) AuthenticationKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPoint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthenticationKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// **Deprecated** `gateway` Use `router` attribute instead
+//
+// Deprecated: use router attribute instead; gateway is no longer a part of the supported backend
+func (o GetConnectionsDataZSideAccessPointPtrOutput) Gateway() GetConnectionsDataZSideAccessPointGatewayPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPoint) *GetConnectionsDataZSideAccessPointGateway {
+		if v == nil {
+			return nil
+		}
+		return v.Gateway
+	}).(GetConnectionsDataZSideAccessPointGatewayPtrOutput)
+}
+
+// Virtual device interface
+func (o GetConnectionsDataZSideAccessPointPtrOutput) Interface() GetConnectionsDataZSideAccessPointInterfacePtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPoint) *GetConnectionsDataZSideAccessPointInterface {
+		if v == nil {
+			return nil
+		}
+		return v.Interface
+	}).(GetConnectionsDataZSideAccessPointInterfacePtrOutput)
+}
+
+// Connection link protocol
+func (o GetConnectionsDataZSideAccessPointPtrOutput) LinkProtocol() GetConnectionsDataZSideAccessPointLinkProtocolPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPoint) *GetConnectionsDataZSideAccessPointLinkProtocol {
+		if v == nil {
+			return nil
+		}
+		return v.LinkProtocol
+	}).(GetConnectionsDataZSideAccessPointLinkProtocolPtrOutput)
+}
+
+// Access point location
+func (o GetConnectionsDataZSideAccessPointPtrOutput) Location() GetConnectionsDataZSideAccessPointLocationPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPoint) *GetConnectionsDataZSideAccessPointLocation {
+		if v == nil {
+			return nil
+		}
+		return &v.Location
+	}).(GetConnectionsDataZSideAccessPointLocationPtrOutput)
+}
+
+// network access point information
+func (o GetConnectionsDataZSideAccessPointPtrOutput) Network() GetConnectionsDataZSideAccessPointNetworkPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPoint) *GetConnectionsDataZSideAccessPointNetwork {
+		if v == nil {
+			return nil
+		}
+		return v.Network
+	}).(GetConnectionsDataZSideAccessPointNetworkPtrOutput)
+}
+
+// Peering Type- PRIVATE,MICROSOFT,PUBLIC, MANUAL
+func (o GetConnectionsDataZSideAccessPointPtrOutput) PeeringType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPoint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PeeringType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Port access point information
+func (o GetConnectionsDataZSideAccessPointPtrOutput) Port() GetConnectionsDataZSideAccessPointPortPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPoint) *GetConnectionsDataZSideAccessPointPort {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(GetConnectionsDataZSideAccessPointPortPtrOutput)
+}
+
+// Service Profile
+func (o GetConnectionsDataZSideAccessPointPtrOutput) Profile() GetConnectionsDataZSideAccessPointProfilePtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPoint) *GetConnectionsDataZSideAccessPointProfile {
+		if v == nil {
+			return nil
+		}
+		return v.Profile
+	}).(GetConnectionsDataZSideAccessPointProfilePtrOutput)
+}
+
+// Provider assigned Connection Id
+func (o GetConnectionsDataZSideAccessPointPtrOutput) ProviderConnectionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPoint) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProviderConnectionId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Cloud Router access point information that replaces `gateway`
+func (o GetConnectionsDataZSideAccessPointPtrOutput) Router() GetConnectionsDataZSideAccessPointRouterPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPoint) *GetConnectionsDataZSideAccessPointRouter {
+		if v == nil {
+			return nil
+		}
+		return v.Router
+	}).(GetConnectionsDataZSideAccessPointRouterPtrOutput)
+}
+
+// Access point seller region
+func (o GetConnectionsDataZSideAccessPointPtrOutput) SellerRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPoint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SellerRegion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+func (o GetConnectionsDataZSideAccessPointPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPoint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Virtual device
+func (o GetConnectionsDataZSideAccessPointPtrOutput) VirtualDevice() GetConnectionsDataZSideAccessPointVirtualDevicePtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPoint) *GetConnectionsDataZSideAccessPointVirtualDevice {
+		if v == nil {
+			return nil
+		}
+		return v.VirtualDevice
+	}).(GetConnectionsDataZSideAccessPointVirtualDevicePtrOutput)
+}
+
+type GetConnectionsDataZSideAccessPointAccount struct {
+	// Legal name of the accountholder.
+	AccountName string `pulumi:"accountName"`
+	// Equinix-assigned account number.
+	AccountNumber int `pulumi:"accountNumber"`
+	// Equinix-assigned ID of the subscriber's parent organization.
+	GlobalCustId string `pulumi:"globalCustId"`
+	// Equinix-assigned ID of the subscriber's parent organization.
+	GlobalOrgId string `pulumi:"globalOrgId"`
+	// Equinix-assigned name of the subscriber's parent organization.
+	GlobalOrganizationName string `pulumi:"globalOrganizationName"`
+	// Equinix-assigned ID of the subscriber's organization.
+	OrgId int `pulumi:"orgId"`
+	// Equinix-assigned name of the subscriber's organization.
+	OrganizationName string `pulumi:"organizationName"`
+	// Enterprise datastore id
+	UcmId string `pulumi:"ucmId"`
+}
+
+// GetConnectionsDataZSideAccessPointAccountInput is an input type that accepts GetConnectionsDataZSideAccessPointAccountArgs and GetConnectionsDataZSideAccessPointAccountOutput values.
+// You can construct a concrete instance of `GetConnectionsDataZSideAccessPointAccountInput` via:
+//
+//	GetConnectionsDataZSideAccessPointAccountArgs{...}
+type GetConnectionsDataZSideAccessPointAccountInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataZSideAccessPointAccountOutput() GetConnectionsDataZSideAccessPointAccountOutput
+	ToGetConnectionsDataZSideAccessPointAccountOutputWithContext(context.Context) GetConnectionsDataZSideAccessPointAccountOutput
+}
+
+type GetConnectionsDataZSideAccessPointAccountArgs struct {
+	// Legal name of the accountholder.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// Equinix-assigned account number.
+	AccountNumber pulumi.IntInput `pulumi:"accountNumber"`
+	// Equinix-assigned ID of the subscriber's parent organization.
+	GlobalCustId pulumi.StringInput `pulumi:"globalCustId"`
+	// Equinix-assigned ID of the subscriber's parent organization.
+	GlobalOrgId pulumi.StringInput `pulumi:"globalOrgId"`
+	// Equinix-assigned name of the subscriber's parent organization.
+	GlobalOrganizationName pulumi.StringInput `pulumi:"globalOrganizationName"`
+	// Equinix-assigned ID of the subscriber's organization.
+	OrgId pulumi.IntInput `pulumi:"orgId"`
+	// Equinix-assigned name of the subscriber's organization.
+	OrganizationName pulumi.StringInput `pulumi:"organizationName"`
+	// Enterprise datastore id
+	UcmId pulumi.StringInput `pulumi:"ucmId"`
+}
+
+func (GetConnectionsDataZSideAccessPointAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataZSideAccessPointAccount)(nil)).Elem()
+}
+
+func (i GetConnectionsDataZSideAccessPointAccountArgs) ToGetConnectionsDataZSideAccessPointAccountOutput() GetConnectionsDataZSideAccessPointAccountOutput {
+	return i.ToGetConnectionsDataZSideAccessPointAccountOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataZSideAccessPointAccountArgs) ToGetConnectionsDataZSideAccessPointAccountOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataZSideAccessPointAccountOutput)
+}
+
+// GetConnectionsDataZSideAccessPointAccountArrayInput is an input type that accepts GetConnectionsDataZSideAccessPointAccountArray and GetConnectionsDataZSideAccessPointAccountArrayOutput values.
+// You can construct a concrete instance of `GetConnectionsDataZSideAccessPointAccountArrayInput` via:
+//
+//	GetConnectionsDataZSideAccessPointAccountArray{ GetConnectionsDataZSideAccessPointAccountArgs{...} }
+type GetConnectionsDataZSideAccessPointAccountArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataZSideAccessPointAccountArrayOutput() GetConnectionsDataZSideAccessPointAccountArrayOutput
+	ToGetConnectionsDataZSideAccessPointAccountArrayOutputWithContext(context.Context) GetConnectionsDataZSideAccessPointAccountArrayOutput
+}
+
+type GetConnectionsDataZSideAccessPointAccountArray []GetConnectionsDataZSideAccessPointAccountInput
+
+func (GetConnectionsDataZSideAccessPointAccountArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionsDataZSideAccessPointAccount)(nil)).Elem()
+}
+
+func (i GetConnectionsDataZSideAccessPointAccountArray) ToGetConnectionsDataZSideAccessPointAccountArrayOutput() GetConnectionsDataZSideAccessPointAccountArrayOutput {
+	return i.ToGetConnectionsDataZSideAccessPointAccountArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataZSideAccessPointAccountArray) ToGetConnectionsDataZSideAccessPointAccountArrayOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointAccountArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataZSideAccessPointAccountArrayOutput)
+}
+
+type GetConnectionsDataZSideAccessPointAccountOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataZSideAccessPointAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataZSideAccessPointAccount)(nil)).Elem()
+}
+
+func (o GetConnectionsDataZSideAccessPointAccountOutput) ToGetConnectionsDataZSideAccessPointAccountOutput() GetConnectionsDataZSideAccessPointAccountOutput {
+	return o
+}
+
+func (o GetConnectionsDataZSideAccessPointAccountOutput) ToGetConnectionsDataZSideAccessPointAccountOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointAccountOutput {
+	return o
+}
+
+// Legal name of the accountholder.
+func (o GetConnectionsDataZSideAccessPointAccountOutput) AccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPointAccount) string { return v.AccountName }).(pulumi.StringOutput)
+}
+
+// Equinix-assigned account number.
+func (o GetConnectionsDataZSideAccessPointAccountOutput) AccountNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPointAccount) int { return v.AccountNumber }).(pulumi.IntOutput)
+}
+
+// Equinix-assigned ID of the subscriber's parent organization.
+func (o GetConnectionsDataZSideAccessPointAccountOutput) GlobalCustId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPointAccount) string { return v.GlobalCustId }).(pulumi.StringOutput)
+}
+
+// Equinix-assigned ID of the subscriber's parent organization.
+func (o GetConnectionsDataZSideAccessPointAccountOutput) GlobalOrgId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPointAccount) string { return v.GlobalOrgId }).(pulumi.StringOutput)
+}
+
+// Equinix-assigned name of the subscriber's parent organization.
+func (o GetConnectionsDataZSideAccessPointAccountOutput) GlobalOrganizationName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPointAccount) string { return v.GlobalOrganizationName }).(pulumi.StringOutput)
+}
+
+// Equinix-assigned ID of the subscriber's organization.
+func (o GetConnectionsDataZSideAccessPointAccountOutput) OrgId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPointAccount) int { return v.OrgId }).(pulumi.IntOutput)
+}
+
+// Equinix-assigned name of the subscriber's organization.
+func (o GetConnectionsDataZSideAccessPointAccountOutput) OrganizationName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPointAccount) string { return v.OrganizationName }).(pulumi.StringOutput)
+}
+
+// Enterprise datastore id
+func (o GetConnectionsDataZSideAccessPointAccountOutput) UcmId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPointAccount) string { return v.UcmId }).(pulumi.StringOutput)
+}
+
+type GetConnectionsDataZSideAccessPointAccountArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataZSideAccessPointAccountArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionsDataZSideAccessPointAccount)(nil)).Elem()
+}
+
+func (o GetConnectionsDataZSideAccessPointAccountArrayOutput) ToGetConnectionsDataZSideAccessPointAccountArrayOutput() GetConnectionsDataZSideAccessPointAccountArrayOutput {
+	return o
+}
+
+func (o GetConnectionsDataZSideAccessPointAccountArrayOutput) ToGetConnectionsDataZSideAccessPointAccountArrayOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointAccountArrayOutput {
+	return o
+}
+
+func (o GetConnectionsDataZSideAccessPointAccountArrayOutput) Index(i pulumi.IntInput) GetConnectionsDataZSideAccessPointAccountOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionsDataZSideAccessPointAccount {
+		return vs[0].([]GetConnectionsDataZSideAccessPointAccount)[vs[1].(int)]
+	}).(GetConnectionsDataZSideAccessPointAccountOutput)
+}
+
+type GetConnectionsDataZSideAccessPointGateway struct {
+	// Unique Resource Identifier
+	Href string `pulumi:"href"`
+	// Equinix-assigned virtual gateway identifier
+	Uuid *string `pulumi:"uuid"`
+}
+
+// GetConnectionsDataZSideAccessPointGatewayInput is an input type that accepts GetConnectionsDataZSideAccessPointGatewayArgs and GetConnectionsDataZSideAccessPointGatewayOutput values.
+// You can construct a concrete instance of `GetConnectionsDataZSideAccessPointGatewayInput` via:
+//
+//	GetConnectionsDataZSideAccessPointGatewayArgs{...}
+type GetConnectionsDataZSideAccessPointGatewayInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataZSideAccessPointGatewayOutput() GetConnectionsDataZSideAccessPointGatewayOutput
+	ToGetConnectionsDataZSideAccessPointGatewayOutputWithContext(context.Context) GetConnectionsDataZSideAccessPointGatewayOutput
+}
+
+type GetConnectionsDataZSideAccessPointGatewayArgs struct {
+	// Unique Resource Identifier
+	Href pulumi.StringInput `pulumi:"href"`
+	// Equinix-assigned virtual gateway identifier
+	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+}
+
+func (GetConnectionsDataZSideAccessPointGatewayArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataZSideAccessPointGateway)(nil)).Elem()
+}
+
+func (i GetConnectionsDataZSideAccessPointGatewayArgs) ToGetConnectionsDataZSideAccessPointGatewayOutput() GetConnectionsDataZSideAccessPointGatewayOutput {
+	return i.ToGetConnectionsDataZSideAccessPointGatewayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataZSideAccessPointGatewayArgs) ToGetConnectionsDataZSideAccessPointGatewayOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointGatewayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataZSideAccessPointGatewayOutput)
+}
+
+func (i GetConnectionsDataZSideAccessPointGatewayArgs) ToGetConnectionsDataZSideAccessPointGatewayPtrOutput() GetConnectionsDataZSideAccessPointGatewayPtrOutput {
+	return i.ToGetConnectionsDataZSideAccessPointGatewayPtrOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataZSideAccessPointGatewayArgs) ToGetConnectionsDataZSideAccessPointGatewayPtrOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointGatewayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataZSideAccessPointGatewayOutput).ToGetConnectionsDataZSideAccessPointGatewayPtrOutputWithContext(ctx)
+}
+
+// GetConnectionsDataZSideAccessPointGatewayPtrInput is an input type that accepts GetConnectionsDataZSideAccessPointGatewayArgs, GetConnectionsDataZSideAccessPointGatewayPtr and GetConnectionsDataZSideAccessPointGatewayPtrOutput values.
+// You can construct a concrete instance of `GetConnectionsDataZSideAccessPointGatewayPtrInput` via:
+//
+//	        GetConnectionsDataZSideAccessPointGatewayArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetConnectionsDataZSideAccessPointGatewayPtrInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataZSideAccessPointGatewayPtrOutput() GetConnectionsDataZSideAccessPointGatewayPtrOutput
+	ToGetConnectionsDataZSideAccessPointGatewayPtrOutputWithContext(context.Context) GetConnectionsDataZSideAccessPointGatewayPtrOutput
+}
+
+type getConnectionsDataZSideAccessPointGatewayPtrType GetConnectionsDataZSideAccessPointGatewayArgs
+
+func GetConnectionsDataZSideAccessPointGatewayPtr(v *GetConnectionsDataZSideAccessPointGatewayArgs) GetConnectionsDataZSideAccessPointGatewayPtrInput {
+	return (*getConnectionsDataZSideAccessPointGatewayPtrType)(v)
+}
+
+func (*getConnectionsDataZSideAccessPointGatewayPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetConnectionsDataZSideAccessPointGateway)(nil)).Elem()
+}
+
+func (i *getConnectionsDataZSideAccessPointGatewayPtrType) ToGetConnectionsDataZSideAccessPointGatewayPtrOutput() GetConnectionsDataZSideAccessPointGatewayPtrOutput {
+	return i.ToGetConnectionsDataZSideAccessPointGatewayPtrOutputWithContext(context.Background())
+}
+
+func (i *getConnectionsDataZSideAccessPointGatewayPtrType) ToGetConnectionsDataZSideAccessPointGatewayPtrOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointGatewayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataZSideAccessPointGatewayPtrOutput)
+}
+
+type GetConnectionsDataZSideAccessPointGatewayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataZSideAccessPointGatewayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataZSideAccessPointGateway)(nil)).Elem()
+}
+
+func (o GetConnectionsDataZSideAccessPointGatewayOutput) ToGetConnectionsDataZSideAccessPointGatewayOutput() GetConnectionsDataZSideAccessPointGatewayOutput {
+	return o
+}
+
+func (o GetConnectionsDataZSideAccessPointGatewayOutput) ToGetConnectionsDataZSideAccessPointGatewayOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointGatewayOutput {
+	return o
+}
+
+func (o GetConnectionsDataZSideAccessPointGatewayOutput) ToGetConnectionsDataZSideAccessPointGatewayPtrOutput() GetConnectionsDataZSideAccessPointGatewayPtrOutput {
+	return o.ToGetConnectionsDataZSideAccessPointGatewayPtrOutputWithContext(context.Background())
+}
+
+func (o GetConnectionsDataZSideAccessPointGatewayOutput) ToGetConnectionsDataZSideAccessPointGatewayPtrOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointGatewayPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetConnectionsDataZSideAccessPointGateway) *GetConnectionsDataZSideAccessPointGateway {
+		return &v
+	}).(GetConnectionsDataZSideAccessPointGatewayPtrOutput)
+}
+
+// Unique Resource Identifier
+func (o GetConnectionsDataZSideAccessPointGatewayOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPointGateway) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// Equinix-assigned virtual gateway identifier
+func (o GetConnectionsDataZSideAccessPointGatewayOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPointGateway) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+}
+
+type GetConnectionsDataZSideAccessPointGatewayPtrOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataZSideAccessPointGatewayPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetConnectionsDataZSideAccessPointGateway)(nil)).Elem()
+}
+
+func (o GetConnectionsDataZSideAccessPointGatewayPtrOutput) ToGetConnectionsDataZSideAccessPointGatewayPtrOutput() GetConnectionsDataZSideAccessPointGatewayPtrOutput {
+	return o
+}
+
+func (o GetConnectionsDataZSideAccessPointGatewayPtrOutput) ToGetConnectionsDataZSideAccessPointGatewayPtrOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointGatewayPtrOutput {
+	return o
+}
+
+func (o GetConnectionsDataZSideAccessPointGatewayPtrOutput) Elem() GetConnectionsDataZSideAccessPointGatewayOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPointGateway) GetConnectionsDataZSideAccessPointGateway {
+		if v != nil {
+			return *v
+		}
+		var ret GetConnectionsDataZSideAccessPointGateway
+		return ret
+	}).(GetConnectionsDataZSideAccessPointGatewayOutput)
+}
+
+// Unique Resource Identifier
+func (o GetConnectionsDataZSideAccessPointGatewayPtrOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPointGateway) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Href
+	}).(pulumi.StringPtrOutput)
+}
+
+// Equinix-assigned virtual gateway identifier
+func (o GetConnectionsDataZSideAccessPointGatewayPtrOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPointGateway) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uuid
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetConnectionsDataZSideAccessPointInterface struct {
+	// The ID of this resource.
+	Id int `pulumi:"id"`
+	// Interface type
+	Type *string `pulumi:"type"`
+	// Equinix-assigned interface identifier
+	Uuid *string `pulumi:"uuid"`
+}
+
+// GetConnectionsDataZSideAccessPointInterfaceInput is an input type that accepts GetConnectionsDataZSideAccessPointInterfaceArgs and GetConnectionsDataZSideAccessPointInterfaceOutput values.
+// You can construct a concrete instance of `GetConnectionsDataZSideAccessPointInterfaceInput` via:
+//
+//	GetConnectionsDataZSideAccessPointInterfaceArgs{...}
+type GetConnectionsDataZSideAccessPointInterfaceInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataZSideAccessPointInterfaceOutput() GetConnectionsDataZSideAccessPointInterfaceOutput
+	ToGetConnectionsDataZSideAccessPointInterfaceOutputWithContext(context.Context) GetConnectionsDataZSideAccessPointInterfaceOutput
+}
+
+type GetConnectionsDataZSideAccessPointInterfaceArgs struct {
+	// The ID of this resource.
+	Id pulumi.IntInput `pulumi:"id"`
+	// Interface type
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Equinix-assigned interface identifier
+	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+}
+
+func (GetConnectionsDataZSideAccessPointInterfaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataZSideAccessPointInterface)(nil)).Elem()
+}
+
+func (i GetConnectionsDataZSideAccessPointInterfaceArgs) ToGetConnectionsDataZSideAccessPointInterfaceOutput() GetConnectionsDataZSideAccessPointInterfaceOutput {
+	return i.ToGetConnectionsDataZSideAccessPointInterfaceOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataZSideAccessPointInterfaceArgs) ToGetConnectionsDataZSideAccessPointInterfaceOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataZSideAccessPointInterfaceOutput)
+}
+
+func (i GetConnectionsDataZSideAccessPointInterfaceArgs) ToGetConnectionsDataZSideAccessPointInterfacePtrOutput() GetConnectionsDataZSideAccessPointInterfacePtrOutput {
+	return i.ToGetConnectionsDataZSideAccessPointInterfacePtrOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataZSideAccessPointInterfaceArgs) ToGetConnectionsDataZSideAccessPointInterfacePtrOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointInterfacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataZSideAccessPointInterfaceOutput).ToGetConnectionsDataZSideAccessPointInterfacePtrOutputWithContext(ctx)
+}
+
+// GetConnectionsDataZSideAccessPointInterfacePtrInput is an input type that accepts GetConnectionsDataZSideAccessPointInterfaceArgs, GetConnectionsDataZSideAccessPointInterfacePtr and GetConnectionsDataZSideAccessPointInterfacePtrOutput values.
+// You can construct a concrete instance of `GetConnectionsDataZSideAccessPointInterfacePtrInput` via:
+//
+//	        GetConnectionsDataZSideAccessPointInterfaceArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetConnectionsDataZSideAccessPointInterfacePtrInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataZSideAccessPointInterfacePtrOutput() GetConnectionsDataZSideAccessPointInterfacePtrOutput
+	ToGetConnectionsDataZSideAccessPointInterfacePtrOutputWithContext(context.Context) GetConnectionsDataZSideAccessPointInterfacePtrOutput
+}
+
+type getConnectionsDataZSideAccessPointInterfacePtrType GetConnectionsDataZSideAccessPointInterfaceArgs
+
+func GetConnectionsDataZSideAccessPointInterfacePtr(v *GetConnectionsDataZSideAccessPointInterfaceArgs) GetConnectionsDataZSideAccessPointInterfacePtrInput {
+	return (*getConnectionsDataZSideAccessPointInterfacePtrType)(v)
+}
+
+func (*getConnectionsDataZSideAccessPointInterfacePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetConnectionsDataZSideAccessPointInterface)(nil)).Elem()
+}
+
+func (i *getConnectionsDataZSideAccessPointInterfacePtrType) ToGetConnectionsDataZSideAccessPointInterfacePtrOutput() GetConnectionsDataZSideAccessPointInterfacePtrOutput {
+	return i.ToGetConnectionsDataZSideAccessPointInterfacePtrOutputWithContext(context.Background())
+}
+
+func (i *getConnectionsDataZSideAccessPointInterfacePtrType) ToGetConnectionsDataZSideAccessPointInterfacePtrOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointInterfacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataZSideAccessPointInterfacePtrOutput)
+}
+
+type GetConnectionsDataZSideAccessPointInterfaceOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataZSideAccessPointInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataZSideAccessPointInterface)(nil)).Elem()
+}
+
+func (o GetConnectionsDataZSideAccessPointInterfaceOutput) ToGetConnectionsDataZSideAccessPointInterfaceOutput() GetConnectionsDataZSideAccessPointInterfaceOutput {
+	return o
+}
+
+func (o GetConnectionsDataZSideAccessPointInterfaceOutput) ToGetConnectionsDataZSideAccessPointInterfaceOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointInterfaceOutput {
+	return o
+}
+
+func (o GetConnectionsDataZSideAccessPointInterfaceOutput) ToGetConnectionsDataZSideAccessPointInterfacePtrOutput() GetConnectionsDataZSideAccessPointInterfacePtrOutput {
+	return o.ToGetConnectionsDataZSideAccessPointInterfacePtrOutputWithContext(context.Background())
+}
+
+func (o GetConnectionsDataZSideAccessPointInterfaceOutput) ToGetConnectionsDataZSideAccessPointInterfacePtrOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointInterfacePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetConnectionsDataZSideAccessPointInterface) *GetConnectionsDataZSideAccessPointInterface {
+		return &v
+	}).(GetConnectionsDataZSideAccessPointInterfacePtrOutput)
+}
+
+// The ID of this resource.
+func (o GetConnectionsDataZSideAccessPointInterfaceOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPointInterface) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// Interface type
+func (o GetConnectionsDataZSideAccessPointInterfaceOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPointInterface) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// Equinix-assigned interface identifier
+func (o GetConnectionsDataZSideAccessPointInterfaceOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPointInterface) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+}
+
+type GetConnectionsDataZSideAccessPointInterfacePtrOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataZSideAccessPointInterfacePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetConnectionsDataZSideAccessPointInterface)(nil)).Elem()
+}
+
+func (o GetConnectionsDataZSideAccessPointInterfacePtrOutput) ToGetConnectionsDataZSideAccessPointInterfacePtrOutput() GetConnectionsDataZSideAccessPointInterfacePtrOutput {
+	return o
+}
+
+func (o GetConnectionsDataZSideAccessPointInterfacePtrOutput) ToGetConnectionsDataZSideAccessPointInterfacePtrOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointInterfacePtrOutput {
+	return o
+}
+
+func (o GetConnectionsDataZSideAccessPointInterfacePtrOutput) Elem() GetConnectionsDataZSideAccessPointInterfaceOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPointInterface) GetConnectionsDataZSideAccessPointInterface {
+		if v != nil {
+			return *v
+		}
+		var ret GetConnectionsDataZSideAccessPointInterface
+		return ret
+	}).(GetConnectionsDataZSideAccessPointInterfaceOutput)
+}
+
+// The ID of this resource.
+func (o GetConnectionsDataZSideAccessPointInterfacePtrOutput) Id() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPointInterface) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.IntPtrOutput)
+}
+
+// Interface type
+func (o GetConnectionsDataZSideAccessPointInterfacePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPointInterface) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Equinix-assigned interface identifier
+func (o GetConnectionsDataZSideAccessPointInterfacePtrOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPointInterface) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uuid
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetConnectionsDataZSideAccessPointLinkProtocol struct {
+	// Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
+	Type *string `pulumi:"type"`
+	// Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+	VlanCTag int `pulumi:"vlanCTag"`
+	// Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+	VlanSTag int `pulumi:"vlanSTag"`
+	// Vlan Tag information, vlanTag value specified for DOT1Q connections
+	VlanTag int `pulumi:"vlanTag"`
+}
+
+// GetConnectionsDataZSideAccessPointLinkProtocolInput is an input type that accepts GetConnectionsDataZSideAccessPointLinkProtocolArgs and GetConnectionsDataZSideAccessPointLinkProtocolOutput values.
+// You can construct a concrete instance of `GetConnectionsDataZSideAccessPointLinkProtocolInput` via:
+//
+//	GetConnectionsDataZSideAccessPointLinkProtocolArgs{...}
+type GetConnectionsDataZSideAccessPointLinkProtocolInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataZSideAccessPointLinkProtocolOutput() GetConnectionsDataZSideAccessPointLinkProtocolOutput
+	ToGetConnectionsDataZSideAccessPointLinkProtocolOutputWithContext(context.Context) GetConnectionsDataZSideAccessPointLinkProtocolOutput
+}
+
+type GetConnectionsDataZSideAccessPointLinkProtocolArgs struct {
+	// Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+	VlanCTag pulumi.IntInput `pulumi:"vlanCTag"`
+	// Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+	VlanSTag pulumi.IntInput `pulumi:"vlanSTag"`
+	// Vlan Tag information, vlanTag value specified for DOT1Q connections
+	VlanTag pulumi.IntInput `pulumi:"vlanTag"`
+}
+
+func (GetConnectionsDataZSideAccessPointLinkProtocolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataZSideAccessPointLinkProtocol)(nil)).Elem()
+}
+
+func (i GetConnectionsDataZSideAccessPointLinkProtocolArgs) ToGetConnectionsDataZSideAccessPointLinkProtocolOutput() GetConnectionsDataZSideAccessPointLinkProtocolOutput {
+	return i.ToGetConnectionsDataZSideAccessPointLinkProtocolOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataZSideAccessPointLinkProtocolArgs) ToGetConnectionsDataZSideAccessPointLinkProtocolOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointLinkProtocolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataZSideAccessPointLinkProtocolOutput)
+}
+
+func (i GetConnectionsDataZSideAccessPointLinkProtocolArgs) ToGetConnectionsDataZSideAccessPointLinkProtocolPtrOutput() GetConnectionsDataZSideAccessPointLinkProtocolPtrOutput {
+	return i.ToGetConnectionsDataZSideAccessPointLinkProtocolPtrOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataZSideAccessPointLinkProtocolArgs) ToGetConnectionsDataZSideAccessPointLinkProtocolPtrOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointLinkProtocolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataZSideAccessPointLinkProtocolOutput).ToGetConnectionsDataZSideAccessPointLinkProtocolPtrOutputWithContext(ctx)
+}
+
+// GetConnectionsDataZSideAccessPointLinkProtocolPtrInput is an input type that accepts GetConnectionsDataZSideAccessPointLinkProtocolArgs, GetConnectionsDataZSideAccessPointLinkProtocolPtr and GetConnectionsDataZSideAccessPointLinkProtocolPtrOutput values.
+// You can construct a concrete instance of `GetConnectionsDataZSideAccessPointLinkProtocolPtrInput` via:
+//
+//	        GetConnectionsDataZSideAccessPointLinkProtocolArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetConnectionsDataZSideAccessPointLinkProtocolPtrInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataZSideAccessPointLinkProtocolPtrOutput() GetConnectionsDataZSideAccessPointLinkProtocolPtrOutput
+	ToGetConnectionsDataZSideAccessPointLinkProtocolPtrOutputWithContext(context.Context) GetConnectionsDataZSideAccessPointLinkProtocolPtrOutput
+}
+
+type getConnectionsDataZSideAccessPointLinkProtocolPtrType GetConnectionsDataZSideAccessPointLinkProtocolArgs
+
+func GetConnectionsDataZSideAccessPointLinkProtocolPtr(v *GetConnectionsDataZSideAccessPointLinkProtocolArgs) GetConnectionsDataZSideAccessPointLinkProtocolPtrInput {
+	return (*getConnectionsDataZSideAccessPointLinkProtocolPtrType)(v)
+}
+
+func (*getConnectionsDataZSideAccessPointLinkProtocolPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetConnectionsDataZSideAccessPointLinkProtocol)(nil)).Elem()
+}
+
+func (i *getConnectionsDataZSideAccessPointLinkProtocolPtrType) ToGetConnectionsDataZSideAccessPointLinkProtocolPtrOutput() GetConnectionsDataZSideAccessPointLinkProtocolPtrOutput {
+	return i.ToGetConnectionsDataZSideAccessPointLinkProtocolPtrOutputWithContext(context.Background())
+}
+
+func (i *getConnectionsDataZSideAccessPointLinkProtocolPtrType) ToGetConnectionsDataZSideAccessPointLinkProtocolPtrOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointLinkProtocolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataZSideAccessPointLinkProtocolPtrOutput)
+}
+
+type GetConnectionsDataZSideAccessPointLinkProtocolOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataZSideAccessPointLinkProtocolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataZSideAccessPointLinkProtocol)(nil)).Elem()
+}
+
+func (o GetConnectionsDataZSideAccessPointLinkProtocolOutput) ToGetConnectionsDataZSideAccessPointLinkProtocolOutput() GetConnectionsDataZSideAccessPointLinkProtocolOutput {
+	return o
+}
+
+func (o GetConnectionsDataZSideAccessPointLinkProtocolOutput) ToGetConnectionsDataZSideAccessPointLinkProtocolOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointLinkProtocolOutput {
+	return o
+}
+
+func (o GetConnectionsDataZSideAccessPointLinkProtocolOutput) ToGetConnectionsDataZSideAccessPointLinkProtocolPtrOutput() GetConnectionsDataZSideAccessPointLinkProtocolPtrOutput {
+	return o.ToGetConnectionsDataZSideAccessPointLinkProtocolPtrOutputWithContext(context.Background())
+}
+
+func (o GetConnectionsDataZSideAccessPointLinkProtocolOutput) ToGetConnectionsDataZSideAccessPointLinkProtocolPtrOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointLinkProtocolPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetConnectionsDataZSideAccessPointLinkProtocol) *GetConnectionsDataZSideAccessPointLinkProtocol {
+		return &v
+	}).(GetConnectionsDataZSideAccessPointLinkProtocolPtrOutput)
+}
+
+// Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
+func (o GetConnectionsDataZSideAccessPointLinkProtocolOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPointLinkProtocol) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+func (o GetConnectionsDataZSideAccessPointLinkProtocolOutput) VlanCTag() pulumi.IntOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPointLinkProtocol) int { return v.VlanCTag }).(pulumi.IntOutput)
+}
+
+// Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+func (o GetConnectionsDataZSideAccessPointLinkProtocolOutput) VlanSTag() pulumi.IntOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPointLinkProtocol) int { return v.VlanSTag }).(pulumi.IntOutput)
+}
+
+// Vlan Tag information, vlanTag value specified for DOT1Q connections
+func (o GetConnectionsDataZSideAccessPointLinkProtocolOutput) VlanTag() pulumi.IntOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPointLinkProtocol) int { return v.VlanTag }).(pulumi.IntOutput)
+}
+
+type GetConnectionsDataZSideAccessPointLinkProtocolPtrOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataZSideAccessPointLinkProtocolPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetConnectionsDataZSideAccessPointLinkProtocol)(nil)).Elem()
+}
+
+func (o GetConnectionsDataZSideAccessPointLinkProtocolPtrOutput) ToGetConnectionsDataZSideAccessPointLinkProtocolPtrOutput() GetConnectionsDataZSideAccessPointLinkProtocolPtrOutput {
+	return o
+}
+
+func (o GetConnectionsDataZSideAccessPointLinkProtocolPtrOutput) ToGetConnectionsDataZSideAccessPointLinkProtocolPtrOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointLinkProtocolPtrOutput {
+	return o
+}
+
+func (o GetConnectionsDataZSideAccessPointLinkProtocolPtrOutput) Elem() GetConnectionsDataZSideAccessPointLinkProtocolOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPointLinkProtocol) GetConnectionsDataZSideAccessPointLinkProtocol {
+		if v != nil {
+			return *v
+		}
+		var ret GetConnectionsDataZSideAccessPointLinkProtocol
+		return ret
+	}).(GetConnectionsDataZSideAccessPointLinkProtocolOutput)
+}
+
+// Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
+func (o GetConnectionsDataZSideAccessPointLinkProtocolPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPointLinkProtocol) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+func (o GetConnectionsDataZSideAccessPointLinkProtocolPtrOutput) VlanCTag() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPointLinkProtocol) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.VlanCTag
+	}).(pulumi.IntPtrOutput)
+}
+
+// Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+func (o GetConnectionsDataZSideAccessPointLinkProtocolPtrOutput) VlanSTag() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPointLinkProtocol) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.VlanSTag
+	}).(pulumi.IntPtrOutput)
+}
+
+// Vlan Tag information, vlanTag value specified for DOT1Q connections
+func (o GetConnectionsDataZSideAccessPointLinkProtocolPtrOutput) VlanTag() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPointLinkProtocol) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.VlanTag
+	}).(pulumi.IntPtrOutput)
+}
+
+type GetConnectionsDataZSideAccessPointLocation struct {
+	// IBX Code
+	Ibx string `pulumi:"ibx"`
+	// Access point metro code
+	MetroCode string `pulumi:"metroCode"`
+	// Access point metro name
+	MetroName string `pulumi:"metroName"`
+	// Access point region
+	Region string `pulumi:"region"`
+}
+
+// GetConnectionsDataZSideAccessPointLocationInput is an input type that accepts GetConnectionsDataZSideAccessPointLocationArgs and GetConnectionsDataZSideAccessPointLocationOutput values.
+// You can construct a concrete instance of `GetConnectionsDataZSideAccessPointLocationInput` via:
+//
+//	GetConnectionsDataZSideAccessPointLocationArgs{...}
+type GetConnectionsDataZSideAccessPointLocationInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataZSideAccessPointLocationOutput() GetConnectionsDataZSideAccessPointLocationOutput
+	ToGetConnectionsDataZSideAccessPointLocationOutputWithContext(context.Context) GetConnectionsDataZSideAccessPointLocationOutput
+}
+
+type GetConnectionsDataZSideAccessPointLocationArgs struct {
+	// IBX Code
+	Ibx pulumi.StringInput `pulumi:"ibx"`
+	// Access point metro code
+	MetroCode pulumi.StringInput `pulumi:"metroCode"`
+	// Access point metro name
+	MetroName pulumi.StringInput `pulumi:"metroName"`
+	// Access point region
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (GetConnectionsDataZSideAccessPointLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataZSideAccessPointLocation)(nil)).Elem()
+}
+
+func (i GetConnectionsDataZSideAccessPointLocationArgs) ToGetConnectionsDataZSideAccessPointLocationOutput() GetConnectionsDataZSideAccessPointLocationOutput {
+	return i.ToGetConnectionsDataZSideAccessPointLocationOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataZSideAccessPointLocationArgs) ToGetConnectionsDataZSideAccessPointLocationOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataZSideAccessPointLocationOutput)
+}
+
+func (i GetConnectionsDataZSideAccessPointLocationArgs) ToGetConnectionsDataZSideAccessPointLocationPtrOutput() GetConnectionsDataZSideAccessPointLocationPtrOutput {
+	return i.ToGetConnectionsDataZSideAccessPointLocationPtrOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataZSideAccessPointLocationArgs) ToGetConnectionsDataZSideAccessPointLocationPtrOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointLocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataZSideAccessPointLocationOutput).ToGetConnectionsDataZSideAccessPointLocationPtrOutputWithContext(ctx)
+}
+
+// GetConnectionsDataZSideAccessPointLocationPtrInput is an input type that accepts GetConnectionsDataZSideAccessPointLocationArgs, GetConnectionsDataZSideAccessPointLocationPtr and GetConnectionsDataZSideAccessPointLocationPtrOutput values.
+// You can construct a concrete instance of `GetConnectionsDataZSideAccessPointLocationPtrInput` via:
+//
+//	        GetConnectionsDataZSideAccessPointLocationArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetConnectionsDataZSideAccessPointLocationPtrInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataZSideAccessPointLocationPtrOutput() GetConnectionsDataZSideAccessPointLocationPtrOutput
+	ToGetConnectionsDataZSideAccessPointLocationPtrOutputWithContext(context.Context) GetConnectionsDataZSideAccessPointLocationPtrOutput
+}
+
+type getConnectionsDataZSideAccessPointLocationPtrType GetConnectionsDataZSideAccessPointLocationArgs
+
+func GetConnectionsDataZSideAccessPointLocationPtr(v *GetConnectionsDataZSideAccessPointLocationArgs) GetConnectionsDataZSideAccessPointLocationPtrInput {
+	return (*getConnectionsDataZSideAccessPointLocationPtrType)(v)
+}
+
+func (*getConnectionsDataZSideAccessPointLocationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetConnectionsDataZSideAccessPointLocation)(nil)).Elem()
+}
+
+func (i *getConnectionsDataZSideAccessPointLocationPtrType) ToGetConnectionsDataZSideAccessPointLocationPtrOutput() GetConnectionsDataZSideAccessPointLocationPtrOutput {
+	return i.ToGetConnectionsDataZSideAccessPointLocationPtrOutputWithContext(context.Background())
+}
+
+func (i *getConnectionsDataZSideAccessPointLocationPtrType) ToGetConnectionsDataZSideAccessPointLocationPtrOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointLocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataZSideAccessPointLocationPtrOutput)
+}
+
+type GetConnectionsDataZSideAccessPointLocationOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataZSideAccessPointLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataZSideAccessPointLocation)(nil)).Elem()
+}
+
+func (o GetConnectionsDataZSideAccessPointLocationOutput) ToGetConnectionsDataZSideAccessPointLocationOutput() GetConnectionsDataZSideAccessPointLocationOutput {
+	return o
+}
+
+func (o GetConnectionsDataZSideAccessPointLocationOutput) ToGetConnectionsDataZSideAccessPointLocationOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointLocationOutput {
+	return o
+}
+
+func (o GetConnectionsDataZSideAccessPointLocationOutput) ToGetConnectionsDataZSideAccessPointLocationPtrOutput() GetConnectionsDataZSideAccessPointLocationPtrOutput {
+	return o.ToGetConnectionsDataZSideAccessPointLocationPtrOutputWithContext(context.Background())
+}
+
+func (o GetConnectionsDataZSideAccessPointLocationOutput) ToGetConnectionsDataZSideAccessPointLocationPtrOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointLocationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetConnectionsDataZSideAccessPointLocation) *GetConnectionsDataZSideAccessPointLocation {
+		return &v
+	}).(GetConnectionsDataZSideAccessPointLocationPtrOutput)
+}
+
+// IBX Code
+func (o GetConnectionsDataZSideAccessPointLocationOutput) Ibx() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPointLocation) string { return v.Ibx }).(pulumi.StringOutput)
+}
+
+// Access point metro code
+func (o GetConnectionsDataZSideAccessPointLocationOutput) MetroCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPointLocation) string { return v.MetroCode }).(pulumi.StringOutput)
+}
+
+// Access point metro name
+func (o GetConnectionsDataZSideAccessPointLocationOutput) MetroName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPointLocation) string { return v.MetroName }).(pulumi.StringOutput)
+}
+
+// Access point region
+func (o GetConnectionsDataZSideAccessPointLocationOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPointLocation) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type GetConnectionsDataZSideAccessPointLocationPtrOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataZSideAccessPointLocationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetConnectionsDataZSideAccessPointLocation)(nil)).Elem()
+}
+
+func (o GetConnectionsDataZSideAccessPointLocationPtrOutput) ToGetConnectionsDataZSideAccessPointLocationPtrOutput() GetConnectionsDataZSideAccessPointLocationPtrOutput {
+	return o
+}
+
+func (o GetConnectionsDataZSideAccessPointLocationPtrOutput) ToGetConnectionsDataZSideAccessPointLocationPtrOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointLocationPtrOutput {
+	return o
+}
+
+func (o GetConnectionsDataZSideAccessPointLocationPtrOutput) Elem() GetConnectionsDataZSideAccessPointLocationOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPointLocation) GetConnectionsDataZSideAccessPointLocation {
+		if v != nil {
+			return *v
+		}
+		var ret GetConnectionsDataZSideAccessPointLocation
+		return ret
+	}).(GetConnectionsDataZSideAccessPointLocationOutput)
+}
+
+// IBX Code
+func (o GetConnectionsDataZSideAccessPointLocationPtrOutput) Ibx() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPointLocation) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Ibx
+	}).(pulumi.StringPtrOutput)
+}
+
+// Access point metro code
+func (o GetConnectionsDataZSideAccessPointLocationPtrOutput) MetroCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPointLocation) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MetroCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Access point metro name
+func (o GetConnectionsDataZSideAccessPointLocationPtrOutput) MetroName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPointLocation) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MetroName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Access point region
+func (o GetConnectionsDataZSideAccessPointLocationPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPointLocation) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetConnectionsDataZSideAccessPointNetwork struct {
+	// Unique Resource Identifier
+	Href string `pulumi:"href"`
+	// Equinix-assigned Network identifier
+	Uuid *string `pulumi:"uuid"`
+}
+
+// GetConnectionsDataZSideAccessPointNetworkInput is an input type that accepts GetConnectionsDataZSideAccessPointNetworkArgs and GetConnectionsDataZSideAccessPointNetworkOutput values.
+// You can construct a concrete instance of `GetConnectionsDataZSideAccessPointNetworkInput` via:
+//
+//	GetConnectionsDataZSideAccessPointNetworkArgs{...}
+type GetConnectionsDataZSideAccessPointNetworkInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataZSideAccessPointNetworkOutput() GetConnectionsDataZSideAccessPointNetworkOutput
+	ToGetConnectionsDataZSideAccessPointNetworkOutputWithContext(context.Context) GetConnectionsDataZSideAccessPointNetworkOutput
+}
+
+type GetConnectionsDataZSideAccessPointNetworkArgs struct {
+	// Unique Resource Identifier
+	Href pulumi.StringInput `pulumi:"href"`
+	// Equinix-assigned Network identifier
+	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+}
+
+func (GetConnectionsDataZSideAccessPointNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataZSideAccessPointNetwork)(nil)).Elem()
+}
+
+func (i GetConnectionsDataZSideAccessPointNetworkArgs) ToGetConnectionsDataZSideAccessPointNetworkOutput() GetConnectionsDataZSideAccessPointNetworkOutput {
+	return i.ToGetConnectionsDataZSideAccessPointNetworkOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataZSideAccessPointNetworkArgs) ToGetConnectionsDataZSideAccessPointNetworkOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataZSideAccessPointNetworkOutput)
+}
+
+func (i GetConnectionsDataZSideAccessPointNetworkArgs) ToGetConnectionsDataZSideAccessPointNetworkPtrOutput() GetConnectionsDataZSideAccessPointNetworkPtrOutput {
+	return i.ToGetConnectionsDataZSideAccessPointNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataZSideAccessPointNetworkArgs) ToGetConnectionsDataZSideAccessPointNetworkPtrOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataZSideAccessPointNetworkOutput).ToGetConnectionsDataZSideAccessPointNetworkPtrOutputWithContext(ctx)
+}
+
+// GetConnectionsDataZSideAccessPointNetworkPtrInput is an input type that accepts GetConnectionsDataZSideAccessPointNetworkArgs, GetConnectionsDataZSideAccessPointNetworkPtr and GetConnectionsDataZSideAccessPointNetworkPtrOutput values.
+// You can construct a concrete instance of `GetConnectionsDataZSideAccessPointNetworkPtrInput` via:
+//
+//	        GetConnectionsDataZSideAccessPointNetworkArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetConnectionsDataZSideAccessPointNetworkPtrInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataZSideAccessPointNetworkPtrOutput() GetConnectionsDataZSideAccessPointNetworkPtrOutput
+	ToGetConnectionsDataZSideAccessPointNetworkPtrOutputWithContext(context.Context) GetConnectionsDataZSideAccessPointNetworkPtrOutput
+}
+
+type getConnectionsDataZSideAccessPointNetworkPtrType GetConnectionsDataZSideAccessPointNetworkArgs
+
+func GetConnectionsDataZSideAccessPointNetworkPtr(v *GetConnectionsDataZSideAccessPointNetworkArgs) GetConnectionsDataZSideAccessPointNetworkPtrInput {
+	return (*getConnectionsDataZSideAccessPointNetworkPtrType)(v)
+}
+
+func (*getConnectionsDataZSideAccessPointNetworkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetConnectionsDataZSideAccessPointNetwork)(nil)).Elem()
+}
+
+func (i *getConnectionsDataZSideAccessPointNetworkPtrType) ToGetConnectionsDataZSideAccessPointNetworkPtrOutput() GetConnectionsDataZSideAccessPointNetworkPtrOutput {
+	return i.ToGetConnectionsDataZSideAccessPointNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i *getConnectionsDataZSideAccessPointNetworkPtrType) ToGetConnectionsDataZSideAccessPointNetworkPtrOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataZSideAccessPointNetworkPtrOutput)
+}
+
+type GetConnectionsDataZSideAccessPointNetworkOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataZSideAccessPointNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataZSideAccessPointNetwork)(nil)).Elem()
+}
+
+func (o GetConnectionsDataZSideAccessPointNetworkOutput) ToGetConnectionsDataZSideAccessPointNetworkOutput() GetConnectionsDataZSideAccessPointNetworkOutput {
+	return o
+}
+
+func (o GetConnectionsDataZSideAccessPointNetworkOutput) ToGetConnectionsDataZSideAccessPointNetworkOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointNetworkOutput {
+	return o
+}
+
+func (o GetConnectionsDataZSideAccessPointNetworkOutput) ToGetConnectionsDataZSideAccessPointNetworkPtrOutput() GetConnectionsDataZSideAccessPointNetworkPtrOutput {
+	return o.ToGetConnectionsDataZSideAccessPointNetworkPtrOutputWithContext(context.Background())
+}
+
+func (o GetConnectionsDataZSideAccessPointNetworkOutput) ToGetConnectionsDataZSideAccessPointNetworkPtrOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointNetworkPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetConnectionsDataZSideAccessPointNetwork) *GetConnectionsDataZSideAccessPointNetwork {
+		return &v
+	}).(GetConnectionsDataZSideAccessPointNetworkPtrOutput)
+}
+
+// Unique Resource Identifier
+func (o GetConnectionsDataZSideAccessPointNetworkOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPointNetwork) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// Equinix-assigned Network identifier
+func (o GetConnectionsDataZSideAccessPointNetworkOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPointNetwork) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+}
+
+type GetConnectionsDataZSideAccessPointNetworkPtrOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataZSideAccessPointNetworkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetConnectionsDataZSideAccessPointNetwork)(nil)).Elem()
+}
+
+func (o GetConnectionsDataZSideAccessPointNetworkPtrOutput) ToGetConnectionsDataZSideAccessPointNetworkPtrOutput() GetConnectionsDataZSideAccessPointNetworkPtrOutput {
+	return o
+}
+
+func (o GetConnectionsDataZSideAccessPointNetworkPtrOutput) ToGetConnectionsDataZSideAccessPointNetworkPtrOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointNetworkPtrOutput {
+	return o
+}
+
+func (o GetConnectionsDataZSideAccessPointNetworkPtrOutput) Elem() GetConnectionsDataZSideAccessPointNetworkOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPointNetwork) GetConnectionsDataZSideAccessPointNetwork {
+		if v != nil {
+			return *v
+		}
+		var ret GetConnectionsDataZSideAccessPointNetwork
+		return ret
+	}).(GetConnectionsDataZSideAccessPointNetworkOutput)
+}
+
+// Unique Resource Identifier
+func (o GetConnectionsDataZSideAccessPointNetworkPtrOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPointNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Href
+	}).(pulumi.StringPtrOutput)
+}
+
+// Equinix-assigned Network identifier
+func (o GetConnectionsDataZSideAccessPointNetworkPtrOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPointNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uuid
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetConnectionsDataZSideAccessPointPort struct {
+	// Unique Resource Identifier
+	Href string `pulumi:"href"`
+	// Port name
+	Name string `pulumi:"name"`
+	// Redundancy Information
+	Redundancies []GetConnectionsDataZSideAccessPointPortRedundancy `pulumi:"redundancies"`
+	// Equinix-assigned Port identifier
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetConnectionsDataZSideAccessPointPortInput is an input type that accepts GetConnectionsDataZSideAccessPointPortArgs and GetConnectionsDataZSideAccessPointPortOutput values.
+// You can construct a concrete instance of `GetConnectionsDataZSideAccessPointPortInput` via:
+//
+//	GetConnectionsDataZSideAccessPointPortArgs{...}
+type GetConnectionsDataZSideAccessPointPortInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataZSideAccessPointPortOutput() GetConnectionsDataZSideAccessPointPortOutput
+	ToGetConnectionsDataZSideAccessPointPortOutputWithContext(context.Context) GetConnectionsDataZSideAccessPointPortOutput
+}
+
+type GetConnectionsDataZSideAccessPointPortArgs struct {
+	// Unique Resource Identifier
+	Href pulumi.StringInput `pulumi:"href"`
+	// Port name
+	Name pulumi.StringInput `pulumi:"name"`
+	// Redundancy Information
+	Redundancies GetConnectionsDataZSideAccessPointPortRedundancyArrayInput `pulumi:"redundancies"`
+	// Equinix-assigned Port identifier
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetConnectionsDataZSideAccessPointPortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataZSideAccessPointPort)(nil)).Elem()
+}
+
+func (i GetConnectionsDataZSideAccessPointPortArgs) ToGetConnectionsDataZSideAccessPointPortOutput() GetConnectionsDataZSideAccessPointPortOutput {
+	return i.ToGetConnectionsDataZSideAccessPointPortOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataZSideAccessPointPortArgs) ToGetConnectionsDataZSideAccessPointPortOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointPortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataZSideAccessPointPortOutput)
+}
+
+func (i GetConnectionsDataZSideAccessPointPortArgs) ToGetConnectionsDataZSideAccessPointPortPtrOutput() GetConnectionsDataZSideAccessPointPortPtrOutput {
+	return i.ToGetConnectionsDataZSideAccessPointPortPtrOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataZSideAccessPointPortArgs) ToGetConnectionsDataZSideAccessPointPortPtrOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointPortPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataZSideAccessPointPortOutput).ToGetConnectionsDataZSideAccessPointPortPtrOutputWithContext(ctx)
+}
+
+// GetConnectionsDataZSideAccessPointPortPtrInput is an input type that accepts GetConnectionsDataZSideAccessPointPortArgs, GetConnectionsDataZSideAccessPointPortPtr and GetConnectionsDataZSideAccessPointPortPtrOutput values.
+// You can construct a concrete instance of `GetConnectionsDataZSideAccessPointPortPtrInput` via:
+//
+//	        GetConnectionsDataZSideAccessPointPortArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetConnectionsDataZSideAccessPointPortPtrInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataZSideAccessPointPortPtrOutput() GetConnectionsDataZSideAccessPointPortPtrOutput
+	ToGetConnectionsDataZSideAccessPointPortPtrOutputWithContext(context.Context) GetConnectionsDataZSideAccessPointPortPtrOutput
+}
+
+type getConnectionsDataZSideAccessPointPortPtrType GetConnectionsDataZSideAccessPointPortArgs
+
+func GetConnectionsDataZSideAccessPointPortPtr(v *GetConnectionsDataZSideAccessPointPortArgs) GetConnectionsDataZSideAccessPointPortPtrInput {
+	return (*getConnectionsDataZSideAccessPointPortPtrType)(v)
+}
+
+func (*getConnectionsDataZSideAccessPointPortPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetConnectionsDataZSideAccessPointPort)(nil)).Elem()
+}
+
+func (i *getConnectionsDataZSideAccessPointPortPtrType) ToGetConnectionsDataZSideAccessPointPortPtrOutput() GetConnectionsDataZSideAccessPointPortPtrOutput {
+	return i.ToGetConnectionsDataZSideAccessPointPortPtrOutputWithContext(context.Background())
+}
+
+func (i *getConnectionsDataZSideAccessPointPortPtrType) ToGetConnectionsDataZSideAccessPointPortPtrOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointPortPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataZSideAccessPointPortPtrOutput)
+}
+
+type GetConnectionsDataZSideAccessPointPortOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataZSideAccessPointPortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataZSideAccessPointPort)(nil)).Elem()
+}
+
+func (o GetConnectionsDataZSideAccessPointPortOutput) ToGetConnectionsDataZSideAccessPointPortOutput() GetConnectionsDataZSideAccessPointPortOutput {
+	return o
+}
+
+func (o GetConnectionsDataZSideAccessPointPortOutput) ToGetConnectionsDataZSideAccessPointPortOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointPortOutput {
+	return o
+}
+
+func (o GetConnectionsDataZSideAccessPointPortOutput) ToGetConnectionsDataZSideAccessPointPortPtrOutput() GetConnectionsDataZSideAccessPointPortPtrOutput {
+	return o.ToGetConnectionsDataZSideAccessPointPortPtrOutputWithContext(context.Background())
+}
+
+func (o GetConnectionsDataZSideAccessPointPortOutput) ToGetConnectionsDataZSideAccessPointPortPtrOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointPortPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetConnectionsDataZSideAccessPointPort) *GetConnectionsDataZSideAccessPointPort {
+		return &v
+	}).(GetConnectionsDataZSideAccessPointPortPtrOutput)
+}
+
+// Unique Resource Identifier
+func (o GetConnectionsDataZSideAccessPointPortOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPointPort) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// Port name
+func (o GetConnectionsDataZSideAccessPointPortOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPointPort) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Redundancy Information
+func (o GetConnectionsDataZSideAccessPointPortOutput) Redundancies() GetConnectionsDataZSideAccessPointPortRedundancyArrayOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPointPort) []GetConnectionsDataZSideAccessPointPortRedundancy {
+		return v.Redundancies
+	}).(GetConnectionsDataZSideAccessPointPortRedundancyArrayOutput)
+}
+
+// Equinix-assigned Port identifier
+func (o GetConnectionsDataZSideAccessPointPortOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPointPort) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type GetConnectionsDataZSideAccessPointPortPtrOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataZSideAccessPointPortPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetConnectionsDataZSideAccessPointPort)(nil)).Elem()
+}
+
+func (o GetConnectionsDataZSideAccessPointPortPtrOutput) ToGetConnectionsDataZSideAccessPointPortPtrOutput() GetConnectionsDataZSideAccessPointPortPtrOutput {
+	return o
+}
+
+func (o GetConnectionsDataZSideAccessPointPortPtrOutput) ToGetConnectionsDataZSideAccessPointPortPtrOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointPortPtrOutput {
+	return o
+}
+
+func (o GetConnectionsDataZSideAccessPointPortPtrOutput) Elem() GetConnectionsDataZSideAccessPointPortOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPointPort) GetConnectionsDataZSideAccessPointPort {
+		if v != nil {
+			return *v
+		}
+		var ret GetConnectionsDataZSideAccessPointPort
+		return ret
+	}).(GetConnectionsDataZSideAccessPointPortOutput)
+}
+
+// Unique Resource Identifier
+func (o GetConnectionsDataZSideAccessPointPortPtrOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPointPort) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Href
+	}).(pulumi.StringPtrOutput)
+}
+
+// Port name
+func (o GetConnectionsDataZSideAccessPointPortPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPointPort) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Redundancy Information
+func (o GetConnectionsDataZSideAccessPointPortPtrOutput) Redundancies() GetConnectionsDataZSideAccessPointPortRedundancyArrayOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPointPort) []GetConnectionsDataZSideAccessPointPortRedundancy {
+		if v == nil {
+			return nil
+		}
+		return v.Redundancies
+	}).(GetConnectionsDataZSideAccessPointPortRedundancyArrayOutput)
+}
+
+// Equinix-assigned Port identifier
+func (o GetConnectionsDataZSideAccessPointPortPtrOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPointPort) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uuid
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetConnectionsDataZSideAccessPointPortRedundancy struct {
+	// Access point redundancy
+	Enabled bool `pulumi:"enabled"`
+	// Port redundancy group
+	Group string `pulumi:"group"`
+	// Priority type-Primary or Secondary
+	Priority string `pulumi:"priority"`
+}
+
+// GetConnectionsDataZSideAccessPointPortRedundancyInput is an input type that accepts GetConnectionsDataZSideAccessPointPortRedundancyArgs and GetConnectionsDataZSideAccessPointPortRedundancyOutput values.
+// You can construct a concrete instance of `GetConnectionsDataZSideAccessPointPortRedundancyInput` via:
+//
+//	GetConnectionsDataZSideAccessPointPortRedundancyArgs{...}
+type GetConnectionsDataZSideAccessPointPortRedundancyInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataZSideAccessPointPortRedundancyOutput() GetConnectionsDataZSideAccessPointPortRedundancyOutput
+	ToGetConnectionsDataZSideAccessPointPortRedundancyOutputWithContext(context.Context) GetConnectionsDataZSideAccessPointPortRedundancyOutput
+}
+
+type GetConnectionsDataZSideAccessPointPortRedundancyArgs struct {
+	// Access point redundancy
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Port redundancy group
+	Group pulumi.StringInput `pulumi:"group"`
+	// Priority type-Primary or Secondary
+	Priority pulumi.StringInput `pulumi:"priority"`
+}
+
+func (GetConnectionsDataZSideAccessPointPortRedundancyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataZSideAccessPointPortRedundancy)(nil)).Elem()
+}
+
+func (i GetConnectionsDataZSideAccessPointPortRedundancyArgs) ToGetConnectionsDataZSideAccessPointPortRedundancyOutput() GetConnectionsDataZSideAccessPointPortRedundancyOutput {
+	return i.ToGetConnectionsDataZSideAccessPointPortRedundancyOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataZSideAccessPointPortRedundancyArgs) ToGetConnectionsDataZSideAccessPointPortRedundancyOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointPortRedundancyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataZSideAccessPointPortRedundancyOutput)
+}
+
+// GetConnectionsDataZSideAccessPointPortRedundancyArrayInput is an input type that accepts GetConnectionsDataZSideAccessPointPortRedundancyArray and GetConnectionsDataZSideAccessPointPortRedundancyArrayOutput values.
+// You can construct a concrete instance of `GetConnectionsDataZSideAccessPointPortRedundancyArrayInput` via:
+//
+//	GetConnectionsDataZSideAccessPointPortRedundancyArray{ GetConnectionsDataZSideAccessPointPortRedundancyArgs{...} }
+type GetConnectionsDataZSideAccessPointPortRedundancyArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataZSideAccessPointPortRedundancyArrayOutput() GetConnectionsDataZSideAccessPointPortRedundancyArrayOutput
+	ToGetConnectionsDataZSideAccessPointPortRedundancyArrayOutputWithContext(context.Context) GetConnectionsDataZSideAccessPointPortRedundancyArrayOutput
+}
+
+type GetConnectionsDataZSideAccessPointPortRedundancyArray []GetConnectionsDataZSideAccessPointPortRedundancyInput
+
+func (GetConnectionsDataZSideAccessPointPortRedundancyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionsDataZSideAccessPointPortRedundancy)(nil)).Elem()
+}
+
+func (i GetConnectionsDataZSideAccessPointPortRedundancyArray) ToGetConnectionsDataZSideAccessPointPortRedundancyArrayOutput() GetConnectionsDataZSideAccessPointPortRedundancyArrayOutput {
+	return i.ToGetConnectionsDataZSideAccessPointPortRedundancyArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataZSideAccessPointPortRedundancyArray) ToGetConnectionsDataZSideAccessPointPortRedundancyArrayOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointPortRedundancyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataZSideAccessPointPortRedundancyArrayOutput)
+}
+
+type GetConnectionsDataZSideAccessPointPortRedundancyOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataZSideAccessPointPortRedundancyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataZSideAccessPointPortRedundancy)(nil)).Elem()
+}
+
+func (o GetConnectionsDataZSideAccessPointPortRedundancyOutput) ToGetConnectionsDataZSideAccessPointPortRedundancyOutput() GetConnectionsDataZSideAccessPointPortRedundancyOutput {
+	return o
+}
+
+func (o GetConnectionsDataZSideAccessPointPortRedundancyOutput) ToGetConnectionsDataZSideAccessPointPortRedundancyOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointPortRedundancyOutput {
+	return o
+}
+
+// Access point redundancy
+func (o GetConnectionsDataZSideAccessPointPortRedundancyOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPointPortRedundancy) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Port redundancy group
+func (o GetConnectionsDataZSideAccessPointPortRedundancyOutput) Group() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPointPortRedundancy) string { return v.Group }).(pulumi.StringOutput)
+}
+
+// Priority type-Primary or Secondary
+func (o GetConnectionsDataZSideAccessPointPortRedundancyOutput) Priority() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPointPortRedundancy) string { return v.Priority }).(pulumi.StringOutput)
+}
+
+type GetConnectionsDataZSideAccessPointPortRedundancyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataZSideAccessPointPortRedundancyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionsDataZSideAccessPointPortRedundancy)(nil)).Elem()
+}
+
+func (o GetConnectionsDataZSideAccessPointPortRedundancyArrayOutput) ToGetConnectionsDataZSideAccessPointPortRedundancyArrayOutput() GetConnectionsDataZSideAccessPointPortRedundancyArrayOutput {
+	return o
+}
+
+func (o GetConnectionsDataZSideAccessPointPortRedundancyArrayOutput) ToGetConnectionsDataZSideAccessPointPortRedundancyArrayOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointPortRedundancyArrayOutput {
+	return o
+}
+
+func (o GetConnectionsDataZSideAccessPointPortRedundancyArrayOutput) Index(i pulumi.IntInput) GetConnectionsDataZSideAccessPointPortRedundancyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionsDataZSideAccessPointPortRedundancy {
+		return vs[0].([]GetConnectionsDataZSideAccessPointPortRedundancy)[vs[1].(int)]
+	}).(GetConnectionsDataZSideAccessPointPortRedundancyOutput)
+}
+
+type GetConnectionsDataZSideAccessPointProfile struct {
+	// Access point config information
+	AccessPointTypeConfigs []GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfig `pulumi:"accessPointTypeConfigs"`
+	// User-provided service description
+	Description string `pulumi:"description"`
+	// Service Profile URI response attribute
+	Href string `pulumi:"href"`
+	// Customer-assigned service profile name
+	Name string `pulumi:"name"`
+	// Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE, IA_PROFILE
+	Type string `pulumi:"type"`
+	// Equinix assigned service profile identifier
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetConnectionsDataZSideAccessPointProfileInput is an input type that accepts GetConnectionsDataZSideAccessPointProfileArgs and GetConnectionsDataZSideAccessPointProfileOutput values.
+// You can construct a concrete instance of `GetConnectionsDataZSideAccessPointProfileInput` via:
+//
+//	GetConnectionsDataZSideAccessPointProfileArgs{...}
+type GetConnectionsDataZSideAccessPointProfileInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataZSideAccessPointProfileOutput() GetConnectionsDataZSideAccessPointProfileOutput
+	ToGetConnectionsDataZSideAccessPointProfileOutputWithContext(context.Context) GetConnectionsDataZSideAccessPointProfileOutput
+}
+
+type GetConnectionsDataZSideAccessPointProfileArgs struct {
+	// Access point config information
+	AccessPointTypeConfigs GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigArrayInput `pulumi:"accessPointTypeConfigs"`
+	// User-provided service description
+	Description pulumi.StringInput `pulumi:"description"`
+	// Service Profile URI response attribute
+	Href pulumi.StringInput `pulumi:"href"`
+	// Customer-assigned service profile name
+	Name pulumi.StringInput `pulumi:"name"`
+	// Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE, IA_PROFILE
+	Type pulumi.StringInput `pulumi:"type"`
+	// Equinix assigned service profile identifier
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetConnectionsDataZSideAccessPointProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataZSideAccessPointProfile)(nil)).Elem()
+}
+
+func (i GetConnectionsDataZSideAccessPointProfileArgs) ToGetConnectionsDataZSideAccessPointProfileOutput() GetConnectionsDataZSideAccessPointProfileOutput {
+	return i.ToGetConnectionsDataZSideAccessPointProfileOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataZSideAccessPointProfileArgs) ToGetConnectionsDataZSideAccessPointProfileOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataZSideAccessPointProfileOutput)
+}
+
+func (i GetConnectionsDataZSideAccessPointProfileArgs) ToGetConnectionsDataZSideAccessPointProfilePtrOutput() GetConnectionsDataZSideAccessPointProfilePtrOutput {
+	return i.ToGetConnectionsDataZSideAccessPointProfilePtrOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataZSideAccessPointProfileArgs) ToGetConnectionsDataZSideAccessPointProfilePtrOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataZSideAccessPointProfileOutput).ToGetConnectionsDataZSideAccessPointProfilePtrOutputWithContext(ctx)
+}
+
+// GetConnectionsDataZSideAccessPointProfilePtrInput is an input type that accepts GetConnectionsDataZSideAccessPointProfileArgs, GetConnectionsDataZSideAccessPointProfilePtr and GetConnectionsDataZSideAccessPointProfilePtrOutput values.
+// You can construct a concrete instance of `GetConnectionsDataZSideAccessPointProfilePtrInput` via:
+//
+//	        GetConnectionsDataZSideAccessPointProfileArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetConnectionsDataZSideAccessPointProfilePtrInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataZSideAccessPointProfilePtrOutput() GetConnectionsDataZSideAccessPointProfilePtrOutput
+	ToGetConnectionsDataZSideAccessPointProfilePtrOutputWithContext(context.Context) GetConnectionsDataZSideAccessPointProfilePtrOutput
+}
+
+type getConnectionsDataZSideAccessPointProfilePtrType GetConnectionsDataZSideAccessPointProfileArgs
+
+func GetConnectionsDataZSideAccessPointProfilePtr(v *GetConnectionsDataZSideAccessPointProfileArgs) GetConnectionsDataZSideAccessPointProfilePtrInput {
+	return (*getConnectionsDataZSideAccessPointProfilePtrType)(v)
+}
+
+func (*getConnectionsDataZSideAccessPointProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetConnectionsDataZSideAccessPointProfile)(nil)).Elem()
+}
+
+func (i *getConnectionsDataZSideAccessPointProfilePtrType) ToGetConnectionsDataZSideAccessPointProfilePtrOutput() GetConnectionsDataZSideAccessPointProfilePtrOutput {
+	return i.ToGetConnectionsDataZSideAccessPointProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *getConnectionsDataZSideAccessPointProfilePtrType) ToGetConnectionsDataZSideAccessPointProfilePtrOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataZSideAccessPointProfilePtrOutput)
+}
+
+type GetConnectionsDataZSideAccessPointProfileOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataZSideAccessPointProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataZSideAccessPointProfile)(nil)).Elem()
+}
+
+func (o GetConnectionsDataZSideAccessPointProfileOutput) ToGetConnectionsDataZSideAccessPointProfileOutput() GetConnectionsDataZSideAccessPointProfileOutput {
+	return o
+}
+
+func (o GetConnectionsDataZSideAccessPointProfileOutput) ToGetConnectionsDataZSideAccessPointProfileOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointProfileOutput {
+	return o
+}
+
+func (o GetConnectionsDataZSideAccessPointProfileOutput) ToGetConnectionsDataZSideAccessPointProfilePtrOutput() GetConnectionsDataZSideAccessPointProfilePtrOutput {
+	return o.ToGetConnectionsDataZSideAccessPointProfilePtrOutputWithContext(context.Background())
+}
+
+func (o GetConnectionsDataZSideAccessPointProfileOutput) ToGetConnectionsDataZSideAccessPointProfilePtrOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetConnectionsDataZSideAccessPointProfile) *GetConnectionsDataZSideAccessPointProfile {
+		return &v
+	}).(GetConnectionsDataZSideAccessPointProfilePtrOutput)
+}
+
+// Access point config information
+func (o GetConnectionsDataZSideAccessPointProfileOutput) AccessPointTypeConfigs() GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigArrayOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPointProfile) []GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfig {
+		return v.AccessPointTypeConfigs
+	}).(GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigArrayOutput)
+}
+
+// User-provided service description
+func (o GetConnectionsDataZSideAccessPointProfileOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPointProfile) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Service Profile URI response attribute
+func (o GetConnectionsDataZSideAccessPointProfileOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPointProfile) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// Customer-assigned service profile name
+func (o GetConnectionsDataZSideAccessPointProfileOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPointProfile) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE, IA_PROFILE
+func (o GetConnectionsDataZSideAccessPointProfileOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPointProfile) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Equinix assigned service profile identifier
+func (o GetConnectionsDataZSideAccessPointProfileOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPointProfile) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type GetConnectionsDataZSideAccessPointProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataZSideAccessPointProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetConnectionsDataZSideAccessPointProfile)(nil)).Elem()
+}
+
+func (o GetConnectionsDataZSideAccessPointProfilePtrOutput) ToGetConnectionsDataZSideAccessPointProfilePtrOutput() GetConnectionsDataZSideAccessPointProfilePtrOutput {
+	return o
+}
+
+func (o GetConnectionsDataZSideAccessPointProfilePtrOutput) ToGetConnectionsDataZSideAccessPointProfilePtrOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointProfilePtrOutput {
+	return o
+}
+
+func (o GetConnectionsDataZSideAccessPointProfilePtrOutput) Elem() GetConnectionsDataZSideAccessPointProfileOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPointProfile) GetConnectionsDataZSideAccessPointProfile {
+		if v != nil {
+			return *v
+		}
+		var ret GetConnectionsDataZSideAccessPointProfile
+		return ret
+	}).(GetConnectionsDataZSideAccessPointProfileOutput)
+}
+
+// Access point config information
+func (o GetConnectionsDataZSideAccessPointProfilePtrOutput) AccessPointTypeConfigs() GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigArrayOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPointProfile) []GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AccessPointTypeConfigs
+	}).(GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigArrayOutput)
+}
+
+// User-provided service description
+func (o GetConnectionsDataZSideAccessPointProfilePtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPointProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Service Profile URI response attribute
+func (o GetConnectionsDataZSideAccessPointProfilePtrOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPointProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Href
+	}).(pulumi.StringPtrOutput)
+}
+
+// Customer-assigned service profile name
+func (o GetConnectionsDataZSideAccessPointProfilePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPointProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE, IA_PROFILE
+func (o GetConnectionsDataZSideAccessPointProfilePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPointProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Equinix assigned service profile identifier
+func (o GetConnectionsDataZSideAccessPointProfilePtrOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPointProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uuid
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfig struct {
+	// Type of access point type config - VD, COLO
+	Type string `pulumi:"type"`
+	// Equinix-assigned access point type config identifier
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigInput is an input type that accepts GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigArgs and GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigOutput values.
+// You can construct a concrete instance of `GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigInput` via:
+//
+//	GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigArgs{...}
+type GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigOutput() GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigOutput
+	ToGetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigOutputWithContext(context.Context) GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigOutput
+}
+
+type GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigArgs struct {
+	// Type of access point type config - VD, COLO
+	Type pulumi.StringInput `pulumi:"type"`
+	// Equinix-assigned access point type config identifier
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfig)(nil)).Elem()
+}
+
+func (i GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigArgs) ToGetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigOutput() GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigOutput {
+	return i.ToGetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigArgs) ToGetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigOutput)
+}
+
+// GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigArrayInput is an input type that accepts GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigArray and GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigArrayOutput values.
+// You can construct a concrete instance of `GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigArrayInput` via:
+//
+//	GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigArray{ GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigArgs{...} }
+type GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigArrayOutput() GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigArrayOutput
+	ToGetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigArrayOutputWithContext(context.Context) GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigArrayOutput
+}
+
+type GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigArray []GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigInput
+
+func (GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfig)(nil)).Elem()
+}
+
+func (i GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigArray) ToGetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigArrayOutput() GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigArrayOutput {
+	return i.ToGetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigArray) ToGetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigArrayOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigArrayOutput)
+}
+
+type GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfig)(nil)).Elem()
+}
+
+func (o GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigOutput) ToGetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigOutput() GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigOutput {
+	return o
+}
+
+func (o GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigOutput) ToGetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigOutput {
+	return o
+}
+
+// Type of access point type config - VD, COLO
+func (o GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfig) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Equinix-assigned access point type config identifier
+func (o GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfig) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfig)(nil)).Elem()
+}
+
+func (o GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigArrayOutput) ToGetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigArrayOutput() GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigArrayOutput {
+	return o
+}
+
+func (o GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigArrayOutput) ToGetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigArrayOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigArrayOutput {
+	return o
+}
+
+func (o GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigArrayOutput) Index(i pulumi.IntInput) GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfig {
+		return vs[0].([]GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfig)[vs[1].(int)]
+	}).(GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigOutput)
+}
+
+type GetConnectionsDataZSideAccessPointRouter struct {
+	// Unique Resource Identifier
+	Href string `pulumi:"href"`
+	// Equinix-assigned virtual gateway identifier
+	Uuid *string `pulumi:"uuid"`
+}
+
+// GetConnectionsDataZSideAccessPointRouterInput is an input type that accepts GetConnectionsDataZSideAccessPointRouterArgs and GetConnectionsDataZSideAccessPointRouterOutput values.
+// You can construct a concrete instance of `GetConnectionsDataZSideAccessPointRouterInput` via:
+//
+//	GetConnectionsDataZSideAccessPointRouterArgs{...}
+type GetConnectionsDataZSideAccessPointRouterInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataZSideAccessPointRouterOutput() GetConnectionsDataZSideAccessPointRouterOutput
+	ToGetConnectionsDataZSideAccessPointRouterOutputWithContext(context.Context) GetConnectionsDataZSideAccessPointRouterOutput
+}
+
+type GetConnectionsDataZSideAccessPointRouterArgs struct {
+	// Unique Resource Identifier
+	Href pulumi.StringInput `pulumi:"href"`
+	// Equinix-assigned virtual gateway identifier
+	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+}
+
+func (GetConnectionsDataZSideAccessPointRouterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataZSideAccessPointRouter)(nil)).Elem()
+}
+
+func (i GetConnectionsDataZSideAccessPointRouterArgs) ToGetConnectionsDataZSideAccessPointRouterOutput() GetConnectionsDataZSideAccessPointRouterOutput {
+	return i.ToGetConnectionsDataZSideAccessPointRouterOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataZSideAccessPointRouterArgs) ToGetConnectionsDataZSideAccessPointRouterOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointRouterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataZSideAccessPointRouterOutput)
+}
+
+func (i GetConnectionsDataZSideAccessPointRouterArgs) ToGetConnectionsDataZSideAccessPointRouterPtrOutput() GetConnectionsDataZSideAccessPointRouterPtrOutput {
+	return i.ToGetConnectionsDataZSideAccessPointRouterPtrOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataZSideAccessPointRouterArgs) ToGetConnectionsDataZSideAccessPointRouterPtrOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointRouterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataZSideAccessPointRouterOutput).ToGetConnectionsDataZSideAccessPointRouterPtrOutputWithContext(ctx)
+}
+
+// GetConnectionsDataZSideAccessPointRouterPtrInput is an input type that accepts GetConnectionsDataZSideAccessPointRouterArgs, GetConnectionsDataZSideAccessPointRouterPtr and GetConnectionsDataZSideAccessPointRouterPtrOutput values.
+// You can construct a concrete instance of `GetConnectionsDataZSideAccessPointRouterPtrInput` via:
+//
+//	        GetConnectionsDataZSideAccessPointRouterArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetConnectionsDataZSideAccessPointRouterPtrInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataZSideAccessPointRouterPtrOutput() GetConnectionsDataZSideAccessPointRouterPtrOutput
+	ToGetConnectionsDataZSideAccessPointRouterPtrOutputWithContext(context.Context) GetConnectionsDataZSideAccessPointRouterPtrOutput
+}
+
+type getConnectionsDataZSideAccessPointRouterPtrType GetConnectionsDataZSideAccessPointRouterArgs
+
+func GetConnectionsDataZSideAccessPointRouterPtr(v *GetConnectionsDataZSideAccessPointRouterArgs) GetConnectionsDataZSideAccessPointRouterPtrInput {
+	return (*getConnectionsDataZSideAccessPointRouterPtrType)(v)
+}
+
+func (*getConnectionsDataZSideAccessPointRouterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetConnectionsDataZSideAccessPointRouter)(nil)).Elem()
+}
+
+func (i *getConnectionsDataZSideAccessPointRouterPtrType) ToGetConnectionsDataZSideAccessPointRouterPtrOutput() GetConnectionsDataZSideAccessPointRouterPtrOutput {
+	return i.ToGetConnectionsDataZSideAccessPointRouterPtrOutputWithContext(context.Background())
+}
+
+func (i *getConnectionsDataZSideAccessPointRouterPtrType) ToGetConnectionsDataZSideAccessPointRouterPtrOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointRouterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataZSideAccessPointRouterPtrOutput)
+}
+
+type GetConnectionsDataZSideAccessPointRouterOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataZSideAccessPointRouterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataZSideAccessPointRouter)(nil)).Elem()
+}
+
+func (o GetConnectionsDataZSideAccessPointRouterOutput) ToGetConnectionsDataZSideAccessPointRouterOutput() GetConnectionsDataZSideAccessPointRouterOutput {
+	return o
+}
+
+func (o GetConnectionsDataZSideAccessPointRouterOutput) ToGetConnectionsDataZSideAccessPointRouterOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointRouterOutput {
+	return o
+}
+
+func (o GetConnectionsDataZSideAccessPointRouterOutput) ToGetConnectionsDataZSideAccessPointRouterPtrOutput() GetConnectionsDataZSideAccessPointRouterPtrOutput {
+	return o.ToGetConnectionsDataZSideAccessPointRouterPtrOutputWithContext(context.Background())
+}
+
+func (o GetConnectionsDataZSideAccessPointRouterOutput) ToGetConnectionsDataZSideAccessPointRouterPtrOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointRouterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetConnectionsDataZSideAccessPointRouter) *GetConnectionsDataZSideAccessPointRouter {
+		return &v
+	}).(GetConnectionsDataZSideAccessPointRouterPtrOutput)
+}
+
+// Unique Resource Identifier
+func (o GetConnectionsDataZSideAccessPointRouterOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPointRouter) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// Equinix-assigned virtual gateway identifier
+func (o GetConnectionsDataZSideAccessPointRouterOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPointRouter) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+}
+
+type GetConnectionsDataZSideAccessPointRouterPtrOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataZSideAccessPointRouterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetConnectionsDataZSideAccessPointRouter)(nil)).Elem()
+}
+
+func (o GetConnectionsDataZSideAccessPointRouterPtrOutput) ToGetConnectionsDataZSideAccessPointRouterPtrOutput() GetConnectionsDataZSideAccessPointRouterPtrOutput {
+	return o
+}
+
+func (o GetConnectionsDataZSideAccessPointRouterPtrOutput) ToGetConnectionsDataZSideAccessPointRouterPtrOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointRouterPtrOutput {
+	return o
+}
+
+func (o GetConnectionsDataZSideAccessPointRouterPtrOutput) Elem() GetConnectionsDataZSideAccessPointRouterOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPointRouter) GetConnectionsDataZSideAccessPointRouter {
+		if v != nil {
+			return *v
+		}
+		var ret GetConnectionsDataZSideAccessPointRouter
+		return ret
+	}).(GetConnectionsDataZSideAccessPointRouterOutput)
+}
+
+// Unique Resource Identifier
+func (o GetConnectionsDataZSideAccessPointRouterPtrOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPointRouter) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Href
+	}).(pulumi.StringPtrOutput)
+}
+
+// Equinix-assigned virtual gateway identifier
+func (o GetConnectionsDataZSideAccessPointRouterPtrOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPointRouter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uuid
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetConnectionsDataZSideAccessPointVirtualDevice struct {
+	// Unique Resource Identifier
+	Href string `pulumi:"href"`
+	// Customer-assigned Virtual Device Name
+	Name *string `pulumi:"name"`
+	// Virtual Device type
+	Type *string `pulumi:"type"`
+	// Equinix-assigned Virtual Device identifier
+	Uuid *string `pulumi:"uuid"`
+}
+
+// GetConnectionsDataZSideAccessPointVirtualDeviceInput is an input type that accepts GetConnectionsDataZSideAccessPointVirtualDeviceArgs and GetConnectionsDataZSideAccessPointVirtualDeviceOutput values.
+// You can construct a concrete instance of `GetConnectionsDataZSideAccessPointVirtualDeviceInput` via:
+//
+//	GetConnectionsDataZSideAccessPointVirtualDeviceArgs{...}
+type GetConnectionsDataZSideAccessPointVirtualDeviceInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataZSideAccessPointVirtualDeviceOutput() GetConnectionsDataZSideAccessPointVirtualDeviceOutput
+	ToGetConnectionsDataZSideAccessPointVirtualDeviceOutputWithContext(context.Context) GetConnectionsDataZSideAccessPointVirtualDeviceOutput
+}
+
+type GetConnectionsDataZSideAccessPointVirtualDeviceArgs struct {
+	// Unique Resource Identifier
+	Href pulumi.StringInput `pulumi:"href"`
+	// Customer-assigned Virtual Device Name
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Virtual Device type
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Equinix-assigned Virtual Device identifier
+	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+}
+
+func (GetConnectionsDataZSideAccessPointVirtualDeviceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataZSideAccessPointVirtualDevice)(nil)).Elem()
+}
+
+func (i GetConnectionsDataZSideAccessPointVirtualDeviceArgs) ToGetConnectionsDataZSideAccessPointVirtualDeviceOutput() GetConnectionsDataZSideAccessPointVirtualDeviceOutput {
+	return i.ToGetConnectionsDataZSideAccessPointVirtualDeviceOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataZSideAccessPointVirtualDeviceArgs) ToGetConnectionsDataZSideAccessPointVirtualDeviceOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointVirtualDeviceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataZSideAccessPointVirtualDeviceOutput)
+}
+
+func (i GetConnectionsDataZSideAccessPointVirtualDeviceArgs) ToGetConnectionsDataZSideAccessPointVirtualDevicePtrOutput() GetConnectionsDataZSideAccessPointVirtualDevicePtrOutput {
+	return i.ToGetConnectionsDataZSideAccessPointVirtualDevicePtrOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataZSideAccessPointVirtualDeviceArgs) ToGetConnectionsDataZSideAccessPointVirtualDevicePtrOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointVirtualDevicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataZSideAccessPointVirtualDeviceOutput).ToGetConnectionsDataZSideAccessPointVirtualDevicePtrOutputWithContext(ctx)
+}
+
+// GetConnectionsDataZSideAccessPointVirtualDevicePtrInput is an input type that accepts GetConnectionsDataZSideAccessPointVirtualDeviceArgs, GetConnectionsDataZSideAccessPointVirtualDevicePtr and GetConnectionsDataZSideAccessPointVirtualDevicePtrOutput values.
+// You can construct a concrete instance of `GetConnectionsDataZSideAccessPointVirtualDevicePtrInput` via:
+//
+//	        GetConnectionsDataZSideAccessPointVirtualDeviceArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetConnectionsDataZSideAccessPointVirtualDevicePtrInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataZSideAccessPointVirtualDevicePtrOutput() GetConnectionsDataZSideAccessPointVirtualDevicePtrOutput
+	ToGetConnectionsDataZSideAccessPointVirtualDevicePtrOutputWithContext(context.Context) GetConnectionsDataZSideAccessPointVirtualDevicePtrOutput
+}
+
+type getConnectionsDataZSideAccessPointVirtualDevicePtrType GetConnectionsDataZSideAccessPointVirtualDeviceArgs
+
+func GetConnectionsDataZSideAccessPointVirtualDevicePtr(v *GetConnectionsDataZSideAccessPointVirtualDeviceArgs) GetConnectionsDataZSideAccessPointVirtualDevicePtrInput {
+	return (*getConnectionsDataZSideAccessPointVirtualDevicePtrType)(v)
+}
+
+func (*getConnectionsDataZSideAccessPointVirtualDevicePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetConnectionsDataZSideAccessPointVirtualDevice)(nil)).Elem()
+}
+
+func (i *getConnectionsDataZSideAccessPointVirtualDevicePtrType) ToGetConnectionsDataZSideAccessPointVirtualDevicePtrOutput() GetConnectionsDataZSideAccessPointVirtualDevicePtrOutput {
+	return i.ToGetConnectionsDataZSideAccessPointVirtualDevicePtrOutputWithContext(context.Background())
+}
+
+func (i *getConnectionsDataZSideAccessPointVirtualDevicePtrType) ToGetConnectionsDataZSideAccessPointVirtualDevicePtrOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointVirtualDevicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataZSideAccessPointVirtualDevicePtrOutput)
+}
+
+type GetConnectionsDataZSideAccessPointVirtualDeviceOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataZSideAccessPointVirtualDeviceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataZSideAccessPointVirtualDevice)(nil)).Elem()
+}
+
+func (o GetConnectionsDataZSideAccessPointVirtualDeviceOutput) ToGetConnectionsDataZSideAccessPointVirtualDeviceOutput() GetConnectionsDataZSideAccessPointVirtualDeviceOutput {
+	return o
+}
+
+func (o GetConnectionsDataZSideAccessPointVirtualDeviceOutput) ToGetConnectionsDataZSideAccessPointVirtualDeviceOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointVirtualDeviceOutput {
+	return o
+}
+
+func (o GetConnectionsDataZSideAccessPointVirtualDeviceOutput) ToGetConnectionsDataZSideAccessPointVirtualDevicePtrOutput() GetConnectionsDataZSideAccessPointVirtualDevicePtrOutput {
+	return o.ToGetConnectionsDataZSideAccessPointVirtualDevicePtrOutputWithContext(context.Background())
+}
+
+func (o GetConnectionsDataZSideAccessPointVirtualDeviceOutput) ToGetConnectionsDataZSideAccessPointVirtualDevicePtrOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointVirtualDevicePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetConnectionsDataZSideAccessPointVirtualDevice) *GetConnectionsDataZSideAccessPointVirtualDevice {
+		return &v
+	}).(GetConnectionsDataZSideAccessPointVirtualDevicePtrOutput)
+}
+
+// Unique Resource Identifier
+func (o GetConnectionsDataZSideAccessPointVirtualDeviceOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPointVirtualDevice) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// Customer-assigned Virtual Device Name
+func (o GetConnectionsDataZSideAccessPointVirtualDeviceOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPointVirtualDevice) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Virtual Device type
+func (o GetConnectionsDataZSideAccessPointVirtualDeviceOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPointVirtualDevice) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// Equinix-assigned Virtual Device identifier
+func (o GetConnectionsDataZSideAccessPointVirtualDeviceOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPointVirtualDevice) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+}
+
+type GetConnectionsDataZSideAccessPointVirtualDevicePtrOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataZSideAccessPointVirtualDevicePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetConnectionsDataZSideAccessPointVirtualDevice)(nil)).Elem()
+}
+
+func (o GetConnectionsDataZSideAccessPointVirtualDevicePtrOutput) ToGetConnectionsDataZSideAccessPointVirtualDevicePtrOutput() GetConnectionsDataZSideAccessPointVirtualDevicePtrOutput {
+	return o
+}
+
+func (o GetConnectionsDataZSideAccessPointVirtualDevicePtrOutput) ToGetConnectionsDataZSideAccessPointVirtualDevicePtrOutputWithContext(ctx context.Context) GetConnectionsDataZSideAccessPointVirtualDevicePtrOutput {
+	return o
+}
+
+func (o GetConnectionsDataZSideAccessPointVirtualDevicePtrOutput) Elem() GetConnectionsDataZSideAccessPointVirtualDeviceOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPointVirtualDevice) GetConnectionsDataZSideAccessPointVirtualDevice {
+		if v != nil {
+			return *v
+		}
+		var ret GetConnectionsDataZSideAccessPointVirtualDevice
+		return ret
+	}).(GetConnectionsDataZSideAccessPointVirtualDeviceOutput)
+}
+
+// Unique Resource Identifier
+func (o GetConnectionsDataZSideAccessPointVirtualDevicePtrOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPointVirtualDevice) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Href
+	}).(pulumi.StringPtrOutput)
+}
+
+// Customer-assigned Virtual Device Name
+func (o GetConnectionsDataZSideAccessPointVirtualDevicePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPointVirtualDevice) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Virtual Device type
+func (o GetConnectionsDataZSideAccessPointVirtualDevicePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPointVirtualDevice) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Equinix-assigned Virtual Device identifier
+func (o GetConnectionsDataZSideAccessPointVirtualDevicePtrOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPointVirtualDevice) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uuid
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetConnectionsDataZSideAdditionalInfo struct {
+	// Additional information key
+	Key *string `pulumi:"key"`
+	// Additional information value
+	Value *string `pulumi:"value"`
+}
+
+// GetConnectionsDataZSideAdditionalInfoInput is an input type that accepts GetConnectionsDataZSideAdditionalInfoArgs and GetConnectionsDataZSideAdditionalInfoOutput values.
+// You can construct a concrete instance of `GetConnectionsDataZSideAdditionalInfoInput` via:
+//
+//	GetConnectionsDataZSideAdditionalInfoArgs{...}
+type GetConnectionsDataZSideAdditionalInfoInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataZSideAdditionalInfoOutput() GetConnectionsDataZSideAdditionalInfoOutput
+	ToGetConnectionsDataZSideAdditionalInfoOutputWithContext(context.Context) GetConnectionsDataZSideAdditionalInfoOutput
+}
+
+type GetConnectionsDataZSideAdditionalInfoArgs struct {
+	// Additional information key
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Additional information value
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (GetConnectionsDataZSideAdditionalInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataZSideAdditionalInfo)(nil)).Elem()
+}
+
+func (i GetConnectionsDataZSideAdditionalInfoArgs) ToGetConnectionsDataZSideAdditionalInfoOutput() GetConnectionsDataZSideAdditionalInfoOutput {
+	return i.ToGetConnectionsDataZSideAdditionalInfoOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataZSideAdditionalInfoArgs) ToGetConnectionsDataZSideAdditionalInfoOutputWithContext(ctx context.Context) GetConnectionsDataZSideAdditionalInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataZSideAdditionalInfoOutput)
+}
+
+// GetConnectionsDataZSideAdditionalInfoArrayInput is an input type that accepts GetConnectionsDataZSideAdditionalInfoArray and GetConnectionsDataZSideAdditionalInfoArrayOutput values.
+// You can construct a concrete instance of `GetConnectionsDataZSideAdditionalInfoArrayInput` via:
+//
+//	GetConnectionsDataZSideAdditionalInfoArray{ GetConnectionsDataZSideAdditionalInfoArgs{...} }
+type GetConnectionsDataZSideAdditionalInfoArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataZSideAdditionalInfoArrayOutput() GetConnectionsDataZSideAdditionalInfoArrayOutput
+	ToGetConnectionsDataZSideAdditionalInfoArrayOutputWithContext(context.Context) GetConnectionsDataZSideAdditionalInfoArrayOutput
+}
+
+type GetConnectionsDataZSideAdditionalInfoArray []GetConnectionsDataZSideAdditionalInfoInput
+
+func (GetConnectionsDataZSideAdditionalInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionsDataZSideAdditionalInfo)(nil)).Elem()
+}
+
+func (i GetConnectionsDataZSideAdditionalInfoArray) ToGetConnectionsDataZSideAdditionalInfoArrayOutput() GetConnectionsDataZSideAdditionalInfoArrayOutput {
+	return i.ToGetConnectionsDataZSideAdditionalInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataZSideAdditionalInfoArray) ToGetConnectionsDataZSideAdditionalInfoArrayOutputWithContext(ctx context.Context) GetConnectionsDataZSideAdditionalInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataZSideAdditionalInfoArrayOutput)
+}
+
+type GetConnectionsDataZSideAdditionalInfoOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataZSideAdditionalInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataZSideAdditionalInfo)(nil)).Elem()
+}
+
+func (o GetConnectionsDataZSideAdditionalInfoOutput) ToGetConnectionsDataZSideAdditionalInfoOutput() GetConnectionsDataZSideAdditionalInfoOutput {
+	return o
+}
+
+func (o GetConnectionsDataZSideAdditionalInfoOutput) ToGetConnectionsDataZSideAdditionalInfoOutputWithContext(ctx context.Context) GetConnectionsDataZSideAdditionalInfoOutput {
+	return o
+}
+
+// Additional information key
+func (o GetConnectionsDataZSideAdditionalInfoOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAdditionalInfo) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// Additional information value
+func (o GetConnectionsDataZSideAdditionalInfoOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAdditionalInfo) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type GetConnectionsDataZSideAdditionalInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataZSideAdditionalInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionsDataZSideAdditionalInfo)(nil)).Elem()
+}
+
+func (o GetConnectionsDataZSideAdditionalInfoArrayOutput) ToGetConnectionsDataZSideAdditionalInfoArrayOutput() GetConnectionsDataZSideAdditionalInfoArrayOutput {
+	return o
+}
+
+func (o GetConnectionsDataZSideAdditionalInfoArrayOutput) ToGetConnectionsDataZSideAdditionalInfoArrayOutputWithContext(ctx context.Context) GetConnectionsDataZSideAdditionalInfoArrayOutput {
+	return o
+}
+
+func (o GetConnectionsDataZSideAdditionalInfoArrayOutput) Index(i pulumi.IntInput) GetConnectionsDataZSideAdditionalInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionsDataZSideAdditionalInfo {
+		return vs[0].([]GetConnectionsDataZSideAdditionalInfo)[vs[1].(int)]
+	}).(GetConnectionsDataZSideAdditionalInfoOutput)
+}
+
+type GetConnectionsDataZSideServiceToken struct {
+	// Service token description
+	Description string `pulumi:"description"`
+	// An absolute URL that is the subject of the link's context
+	Href string `pulumi:"href"`
+	// Token type - VC_TOKEN
+	Type *string `pulumi:"type"`
+	// Equinix-assigned service token identifier
+	Uuid *string `pulumi:"uuid"`
+}
+
+// GetConnectionsDataZSideServiceTokenInput is an input type that accepts GetConnectionsDataZSideServiceTokenArgs and GetConnectionsDataZSideServiceTokenOutput values.
+// You can construct a concrete instance of `GetConnectionsDataZSideServiceTokenInput` via:
+//
+//	GetConnectionsDataZSideServiceTokenArgs{...}
+type GetConnectionsDataZSideServiceTokenInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataZSideServiceTokenOutput() GetConnectionsDataZSideServiceTokenOutput
+	ToGetConnectionsDataZSideServiceTokenOutputWithContext(context.Context) GetConnectionsDataZSideServiceTokenOutput
+}
+
+type GetConnectionsDataZSideServiceTokenArgs struct {
+	// Service token description
+	Description pulumi.StringInput `pulumi:"description"`
+	// An absolute URL that is the subject of the link's context
+	Href pulumi.StringInput `pulumi:"href"`
+	// Token type - VC_TOKEN
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Equinix-assigned service token identifier
+	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+}
+
+func (GetConnectionsDataZSideServiceTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataZSideServiceToken)(nil)).Elem()
+}
+
+func (i GetConnectionsDataZSideServiceTokenArgs) ToGetConnectionsDataZSideServiceTokenOutput() GetConnectionsDataZSideServiceTokenOutput {
+	return i.ToGetConnectionsDataZSideServiceTokenOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataZSideServiceTokenArgs) ToGetConnectionsDataZSideServiceTokenOutputWithContext(ctx context.Context) GetConnectionsDataZSideServiceTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataZSideServiceTokenOutput)
+}
+
+func (i GetConnectionsDataZSideServiceTokenArgs) ToGetConnectionsDataZSideServiceTokenPtrOutput() GetConnectionsDataZSideServiceTokenPtrOutput {
+	return i.ToGetConnectionsDataZSideServiceTokenPtrOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsDataZSideServiceTokenArgs) ToGetConnectionsDataZSideServiceTokenPtrOutputWithContext(ctx context.Context) GetConnectionsDataZSideServiceTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataZSideServiceTokenOutput).ToGetConnectionsDataZSideServiceTokenPtrOutputWithContext(ctx)
+}
+
+// GetConnectionsDataZSideServiceTokenPtrInput is an input type that accepts GetConnectionsDataZSideServiceTokenArgs, GetConnectionsDataZSideServiceTokenPtr and GetConnectionsDataZSideServiceTokenPtrOutput values.
+// You can construct a concrete instance of `GetConnectionsDataZSideServiceTokenPtrInput` via:
+//
+//	        GetConnectionsDataZSideServiceTokenArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetConnectionsDataZSideServiceTokenPtrInput interface {
+	pulumi.Input
+
+	ToGetConnectionsDataZSideServiceTokenPtrOutput() GetConnectionsDataZSideServiceTokenPtrOutput
+	ToGetConnectionsDataZSideServiceTokenPtrOutputWithContext(context.Context) GetConnectionsDataZSideServiceTokenPtrOutput
+}
+
+type getConnectionsDataZSideServiceTokenPtrType GetConnectionsDataZSideServiceTokenArgs
+
+func GetConnectionsDataZSideServiceTokenPtr(v *GetConnectionsDataZSideServiceTokenArgs) GetConnectionsDataZSideServiceTokenPtrInput {
+	return (*getConnectionsDataZSideServiceTokenPtrType)(v)
+}
+
+func (*getConnectionsDataZSideServiceTokenPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetConnectionsDataZSideServiceToken)(nil)).Elem()
+}
+
+func (i *getConnectionsDataZSideServiceTokenPtrType) ToGetConnectionsDataZSideServiceTokenPtrOutput() GetConnectionsDataZSideServiceTokenPtrOutput {
+	return i.ToGetConnectionsDataZSideServiceTokenPtrOutputWithContext(context.Background())
+}
+
+func (i *getConnectionsDataZSideServiceTokenPtrType) ToGetConnectionsDataZSideServiceTokenPtrOutputWithContext(ctx context.Context) GetConnectionsDataZSideServiceTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsDataZSideServiceTokenPtrOutput)
+}
+
+type GetConnectionsDataZSideServiceTokenOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataZSideServiceTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsDataZSideServiceToken)(nil)).Elem()
+}
+
+func (o GetConnectionsDataZSideServiceTokenOutput) ToGetConnectionsDataZSideServiceTokenOutput() GetConnectionsDataZSideServiceTokenOutput {
+	return o
+}
+
+func (o GetConnectionsDataZSideServiceTokenOutput) ToGetConnectionsDataZSideServiceTokenOutputWithContext(ctx context.Context) GetConnectionsDataZSideServiceTokenOutput {
+	return o
+}
+
+func (o GetConnectionsDataZSideServiceTokenOutput) ToGetConnectionsDataZSideServiceTokenPtrOutput() GetConnectionsDataZSideServiceTokenPtrOutput {
+	return o.ToGetConnectionsDataZSideServiceTokenPtrOutputWithContext(context.Background())
+}
+
+func (o GetConnectionsDataZSideServiceTokenOutput) ToGetConnectionsDataZSideServiceTokenPtrOutputWithContext(ctx context.Context) GetConnectionsDataZSideServiceTokenPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetConnectionsDataZSideServiceToken) *GetConnectionsDataZSideServiceToken {
+		return &v
+	}).(GetConnectionsDataZSideServiceTokenPtrOutput)
+}
+
+// Service token description
+func (o GetConnectionsDataZSideServiceTokenOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideServiceToken) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// An absolute URL that is the subject of the link's context
+func (o GetConnectionsDataZSideServiceTokenOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideServiceToken) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// Token type - VC_TOKEN
+func (o GetConnectionsDataZSideServiceTokenOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideServiceToken) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// Equinix-assigned service token identifier
+func (o GetConnectionsDataZSideServiceTokenOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideServiceToken) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+}
+
+type GetConnectionsDataZSideServiceTokenPtrOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsDataZSideServiceTokenPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetConnectionsDataZSideServiceToken)(nil)).Elem()
+}
+
+func (o GetConnectionsDataZSideServiceTokenPtrOutput) ToGetConnectionsDataZSideServiceTokenPtrOutput() GetConnectionsDataZSideServiceTokenPtrOutput {
+	return o
+}
+
+func (o GetConnectionsDataZSideServiceTokenPtrOutput) ToGetConnectionsDataZSideServiceTokenPtrOutputWithContext(ctx context.Context) GetConnectionsDataZSideServiceTokenPtrOutput {
+	return o
+}
+
+func (o GetConnectionsDataZSideServiceTokenPtrOutput) Elem() GetConnectionsDataZSideServiceTokenOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideServiceToken) GetConnectionsDataZSideServiceToken {
+		if v != nil {
+			return *v
+		}
+		var ret GetConnectionsDataZSideServiceToken
+		return ret
+	}).(GetConnectionsDataZSideServiceTokenOutput)
+}
+
+// Service token description
+func (o GetConnectionsDataZSideServiceTokenPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideServiceToken) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// An absolute URL that is the subject of the link's context
+func (o GetConnectionsDataZSideServiceTokenPtrOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideServiceToken) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Href
+	}).(pulumi.StringPtrOutput)
+}
+
+// Token type - VC_TOKEN
+func (o GetConnectionsDataZSideServiceTokenPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideServiceToken) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Equinix-assigned service token identifier
+func (o GetConnectionsDataZSideServiceTokenPtrOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideServiceToken) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uuid
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetConnectionsFilter struct {
+	// Optional custom id parameter to assign this filter to an inner AND or OR group. Group id must be prefixed with AND_ or OR_. Ensure intended grouped elements have the same given id. Ungrouped filters will be placed in the filter list group by themselves.
+	Group *string `pulumi:"group"`
+	// Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, IN, NOT IN, IS NOT NULL, IS NULL]
+	Operator string `pulumi:"operator"`
+	// Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /change/status /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid *]
+	Property string `pulumi:"property"`
+	// The values that you want to apply the property+operator combination to in order to filter your data search
+	Values []string `pulumi:"values"`
+}
+
+// GetConnectionsFilterInput is an input type that accepts GetConnectionsFilterArgs and GetConnectionsFilterOutput values.
+// You can construct a concrete instance of `GetConnectionsFilterInput` via:
+//
+//	GetConnectionsFilterArgs{...}
+type GetConnectionsFilterInput interface {
+	pulumi.Input
+
+	ToGetConnectionsFilterOutput() GetConnectionsFilterOutput
+	ToGetConnectionsFilterOutputWithContext(context.Context) GetConnectionsFilterOutput
+}
+
+type GetConnectionsFilterArgs struct {
+	// Optional custom id parameter to assign this filter to an inner AND or OR group. Group id must be prefixed with AND_ or OR_. Ensure intended grouped elements have the same given id. Ungrouped filters will be placed in the filter list group by themselves.
+	Group pulumi.StringPtrInput `pulumi:"group"`
+	// Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, IN, NOT IN, IS NOT NULL, IS NULL]
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /change/status /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid *]
+	Property pulumi.StringInput `pulumi:"property"`
+	// The values that you want to apply the property+operator combination to in order to filter your data search
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetConnectionsFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsFilter)(nil)).Elem()
+}
+
+func (i GetConnectionsFilterArgs) ToGetConnectionsFilterOutput() GetConnectionsFilterOutput {
+	return i.ToGetConnectionsFilterOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsFilterArgs) ToGetConnectionsFilterOutputWithContext(ctx context.Context) GetConnectionsFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsFilterOutput)
+}
+
+// GetConnectionsFilterArrayInput is an input type that accepts GetConnectionsFilterArray and GetConnectionsFilterArrayOutput values.
+// You can construct a concrete instance of `GetConnectionsFilterArrayInput` via:
+//
+//	GetConnectionsFilterArray{ GetConnectionsFilterArgs{...} }
+type GetConnectionsFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionsFilterArrayOutput() GetConnectionsFilterArrayOutput
+	ToGetConnectionsFilterArrayOutputWithContext(context.Context) GetConnectionsFilterArrayOutput
+}
+
+type GetConnectionsFilterArray []GetConnectionsFilterInput
+
+func (GetConnectionsFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionsFilter)(nil)).Elem()
+}
+
+func (i GetConnectionsFilterArray) ToGetConnectionsFilterArrayOutput() GetConnectionsFilterArrayOutput {
+	return i.ToGetConnectionsFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsFilterArray) ToGetConnectionsFilterArrayOutputWithContext(ctx context.Context) GetConnectionsFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsFilterArrayOutput)
+}
+
+type GetConnectionsFilterOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsFilter)(nil)).Elem()
+}
+
+func (o GetConnectionsFilterOutput) ToGetConnectionsFilterOutput() GetConnectionsFilterOutput {
+	return o
+}
+
+func (o GetConnectionsFilterOutput) ToGetConnectionsFilterOutputWithContext(ctx context.Context) GetConnectionsFilterOutput {
+	return o
+}
+
+// Optional custom id parameter to assign this filter to an inner AND or OR group. Group id must be prefixed with AND_ or OR_. Ensure intended grouped elements have the same given id. Ungrouped filters will be placed in the filter list group by themselves.
+func (o GetConnectionsFilterOutput) Group() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConnectionsFilter) *string { return v.Group }).(pulumi.StringPtrOutput)
+}
+
+// Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, IN, NOT IN, IS NOT NULL, IS NULL]
+func (o GetConnectionsFilterOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsFilter) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /change/status /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid *]
+func (o GetConnectionsFilterOutput) Property() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsFilter) string { return v.Property }).(pulumi.StringOutput)
+}
+
+// The values that you want to apply the property+operator combination to in order to filter your data search
+func (o GetConnectionsFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConnectionsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetConnectionsFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionsFilter)(nil)).Elem()
+}
+
+func (o GetConnectionsFilterArrayOutput) ToGetConnectionsFilterArrayOutput() GetConnectionsFilterArrayOutput {
+	return o
+}
+
+func (o GetConnectionsFilterArrayOutput) ToGetConnectionsFilterArrayOutputWithContext(ctx context.Context) GetConnectionsFilterArrayOutput {
+	return o
+}
+
+func (o GetConnectionsFilterArrayOutput) Index(i pulumi.IntInput) GetConnectionsFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionsFilter {
+		return vs[0].([]GetConnectionsFilter)[vs[1].(int)]
+	}).(GetConnectionsFilterOutput)
+}
+
+type GetConnectionsPagination struct {
+	// Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+	Limit *int `pulumi:"limit"`
+	// The page offset for the pagination request. Index of the first element. Default is 0.
+	Offset *int `pulumi:"offset"`
+}
+
+// GetConnectionsPaginationInput is an input type that accepts GetConnectionsPaginationArgs and GetConnectionsPaginationOutput values.
+// You can construct a concrete instance of `GetConnectionsPaginationInput` via:
+//
+//	GetConnectionsPaginationArgs{...}
+type GetConnectionsPaginationInput interface {
+	pulumi.Input
+
+	ToGetConnectionsPaginationOutput() GetConnectionsPaginationOutput
+	ToGetConnectionsPaginationOutputWithContext(context.Context) GetConnectionsPaginationOutput
+}
+
+type GetConnectionsPaginationArgs struct {
+	// Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+	Limit pulumi.IntPtrInput `pulumi:"limit"`
+	// The page offset for the pagination request. Index of the first element. Default is 0.
+	Offset pulumi.IntPtrInput `pulumi:"offset"`
+}
+
+func (GetConnectionsPaginationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsPagination)(nil)).Elem()
+}
+
+func (i GetConnectionsPaginationArgs) ToGetConnectionsPaginationOutput() GetConnectionsPaginationOutput {
+	return i.ToGetConnectionsPaginationOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsPaginationArgs) ToGetConnectionsPaginationOutputWithContext(ctx context.Context) GetConnectionsPaginationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsPaginationOutput)
+}
+
+func (i GetConnectionsPaginationArgs) ToGetConnectionsPaginationPtrOutput() GetConnectionsPaginationPtrOutput {
+	return i.ToGetConnectionsPaginationPtrOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsPaginationArgs) ToGetConnectionsPaginationPtrOutputWithContext(ctx context.Context) GetConnectionsPaginationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsPaginationOutput).ToGetConnectionsPaginationPtrOutputWithContext(ctx)
+}
+
+// GetConnectionsPaginationPtrInput is an input type that accepts GetConnectionsPaginationArgs, GetConnectionsPaginationPtr and GetConnectionsPaginationPtrOutput values.
+// You can construct a concrete instance of `GetConnectionsPaginationPtrInput` via:
+//
+//	        GetConnectionsPaginationArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetConnectionsPaginationPtrInput interface {
+	pulumi.Input
+
+	ToGetConnectionsPaginationPtrOutput() GetConnectionsPaginationPtrOutput
+	ToGetConnectionsPaginationPtrOutputWithContext(context.Context) GetConnectionsPaginationPtrOutput
+}
+
+type getConnectionsPaginationPtrType GetConnectionsPaginationArgs
+
+func GetConnectionsPaginationPtr(v *GetConnectionsPaginationArgs) GetConnectionsPaginationPtrInput {
+	return (*getConnectionsPaginationPtrType)(v)
+}
+
+func (*getConnectionsPaginationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetConnectionsPagination)(nil)).Elem()
+}
+
+func (i *getConnectionsPaginationPtrType) ToGetConnectionsPaginationPtrOutput() GetConnectionsPaginationPtrOutput {
+	return i.ToGetConnectionsPaginationPtrOutputWithContext(context.Background())
+}
+
+func (i *getConnectionsPaginationPtrType) ToGetConnectionsPaginationPtrOutputWithContext(ctx context.Context) GetConnectionsPaginationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsPaginationPtrOutput)
+}
+
+type GetConnectionsPaginationOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsPaginationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsPagination)(nil)).Elem()
+}
+
+func (o GetConnectionsPaginationOutput) ToGetConnectionsPaginationOutput() GetConnectionsPaginationOutput {
+	return o
+}
+
+func (o GetConnectionsPaginationOutput) ToGetConnectionsPaginationOutputWithContext(ctx context.Context) GetConnectionsPaginationOutput {
+	return o
+}
+
+func (o GetConnectionsPaginationOutput) ToGetConnectionsPaginationPtrOutput() GetConnectionsPaginationPtrOutput {
+	return o.ToGetConnectionsPaginationPtrOutputWithContext(context.Background())
+}
+
+func (o GetConnectionsPaginationOutput) ToGetConnectionsPaginationPtrOutputWithContext(ctx context.Context) GetConnectionsPaginationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetConnectionsPagination) *GetConnectionsPagination {
+		return &v
+	}).(GetConnectionsPaginationPtrOutput)
+}
+
+// Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+func (o GetConnectionsPaginationOutput) Limit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetConnectionsPagination) *int { return v.Limit }).(pulumi.IntPtrOutput)
+}
+
+// The page offset for the pagination request. Index of the first element. Default is 0.
+func (o GetConnectionsPaginationOutput) Offset() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetConnectionsPagination) *int { return v.Offset }).(pulumi.IntPtrOutput)
+}
+
+type GetConnectionsPaginationPtrOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsPaginationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetConnectionsPagination)(nil)).Elem()
+}
+
+func (o GetConnectionsPaginationPtrOutput) ToGetConnectionsPaginationPtrOutput() GetConnectionsPaginationPtrOutput {
+	return o
+}
+
+func (o GetConnectionsPaginationPtrOutput) ToGetConnectionsPaginationPtrOutputWithContext(ctx context.Context) GetConnectionsPaginationPtrOutput {
+	return o
+}
+
+func (o GetConnectionsPaginationPtrOutput) Elem() GetConnectionsPaginationOutput {
+	return o.ApplyT(func(v *GetConnectionsPagination) GetConnectionsPagination {
+		if v != nil {
+			return *v
+		}
+		var ret GetConnectionsPagination
+		return ret
+	}).(GetConnectionsPaginationOutput)
+}
+
+// Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+func (o GetConnectionsPaginationPtrOutput) Limit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsPagination) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Limit
+	}).(pulumi.IntPtrOutput)
+}
+
+// The page offset for the pagination request. Index of the first element. Default is 0.
+func (o GetConnectionsPaginationPtrOutput) Offset() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsPagination) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Offset
+	}).(pulumi.IntPtrOutput)
+}
+
+type GetConnectionsSort struct {
+	// The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+	Direction *string `pulumi:"direction"`
+	// The property name to use in sorting. One of [/name /direction /aSide/accessPoint/name /aSide/accessPoint/type /aSide/accessPoint/account/accountName /aSide/accessPoint/location/metroName /aSide/accessPoint/location/metroCode /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/name /zSide/accessPoint/type /zSide/accessPoint/account/accountName /zSide/accessPoint/location/metroName /zSide/accessPoint/location/metroCode /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/authenticationKey /bandwidth /geoScope /uuid /changeLog/createdDateTime /changeLog/updatedDateTime /operation/equinixStatus /operation/providerStatus /redundancy/priority]. Defaults to /changeLog/updatedDateTime
+	Property *string `pulumi:"property"`
+}
+
+// GetConnectionsSortInput is an input type that accepts GetConnectionsSortArgs and GetConnectionsSortOutput values.
+// You can construct a concrete instance of `GetConnectionsSortInput` via:
+//
+//	GetConnectionsSortArgs{...}
+type GetConnectionsSortInput interface {
+	pulumi.Input
+
+	ToGetConnectionsSortOutput() GetConnectionsSortOutput
+	ToGetConnectionsSortOutputWithContext(context.Context) GetConnectionsSortOutput
+}
+
+type GetConnectionsSortArgs struct {
+	// The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	// The property name to use in sorting. One of [/name /direction /aSide/accessPoint/name /aSide/accessPoint/type /aSide/accessPoint/account/accountName /aSide/accessPoint/location/metroName /aSide/accessPoint/location/metroCode /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/name /zSide/accessPoint/type /zSide/accessPoint/account/accountName /zSide/accessPoint/location/metroName /zSide/accessPoint/location/metroCode /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/authenticationKey /bandwidth /geoScope /uuid /changeLog/createdDateTime /changeLog/updatedDateTime /operation/equinixStatus /operation/providerStatus /redundancy/priority]. Defaults to /changeLog/updatedDateTime
+	Property pulumi.StringPtrInput `pulumi:"property"`
+}
+
+func (GetConnectionsSortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsSort)(nil)).Elem()
+}
+
+func (i GetConnectionsSortArgs) ToGetConnectionsSortOutput() GetConnectionsSortOutput {
+	return i.ToGetConnectionsSortOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsSortArgs) ToGetConnectionsSortOutputWithContext(ctx context.Context) GetConnectionsSortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsSortOutput)
+}
+
+// GetConnectionsSortArrayInput is an input type that accepts GetConnectionsSortArray and GetConnectionsSortArrayOutput values.
+// You can construct a concrete instance of `GetConnectionsSortArrayInput` via:
+//
+//	GetConnectionsSortArray{ GetConnectionsSortArgs{...} }
+type GetConnectionsSortArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionsSortArrayOutput() GetConnectionsSortArrayOutput
+	ToGetConnectionsSortArrayOutputWithContext(context.Context) GetConnectionsSortArrayOutput
+}
+
+type GetConnectionsSortArray []GetConnectionsSortInput
+
+func (GetConnectionsSortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionsSort)(nil)).Elem()
+}
+
+func (i GetConnectionsSortArray) ToGetConnectionsSortArrayOutput() GetConnectionsSortArrayOutput {
+	return i.ToGetConnectionsSortArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsSortArray) ToGetConnectionsSortArrayOutputWithContext(ctx context.Context) GetConnectionsSortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsSortArrayOutput)
+}
+
+type GetConnectionsSortOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsSortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsSort)(nil)).Elem()
+}
+
+func (o GetConnectionsSortOutput) ToGetConnectionsSortOutput() GetConnectionsSortOutput {
+	return o
+}
+
+func (o GetConnectionsSortOutput) ToGetConnectionsSortOutputWithContext(ctx context.Context) GetConnectionsSortOutput {
+	return o
+}
+
+// The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+func (o GetConnectionsSortOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConnectionsSort) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+// The property name to use in sorting. One of [/name /direction /aSide/accessPoint/name /aSide/accessPoint/type /aSide/accessPoint/account/accountName /aSide/accessPoint/location/metroName /aSide/accessPoint/location/metroCode /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/name /zSide/accessPoint/type /zSide/accessPoint/account/accountName /zSide/accessPoint/location/metroName /zSide/accessPoint/location/metroCode /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/authenticationKey /bandwidth /geoScope /uuid /changeLog/createdDateTime /changeLog/updatedDateTime /operation/equinixStatus /operation/providerStatus /redundancy/priority]. Defaults to /changeLog/updatedDateTime
+func (o GetConnectionsSortOutput) Property() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConnectionsSort) *string { return v.Property }).(pulumi.StringPtrOutput)
+}
+
+type GetConnectionsSortArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsSortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionsSort)(nil)).Elem()
+}
+
+func (o GetConnectionsSortArrayOutput) ToGetConnectionsSortArrayOutput() GetConnectionsSortArrayOutput {
+	return o
+}
+
+func (o GetConnectionsSortArrayOutput) ToGetConnectionsSortArrayOutputWithContext(ctx context.Context) GetConnectionsSortArrayOutput {
+	return o
+}
+
+func (o GetConnectionsSortArrayOutput) Index(i pulumi.IntInput) GetConnectionsSortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionsSort {
+		return vs[0].([]GetConnectionsSort)[vs[1].(int)]
+	}).(GetConnectionsSortOutput)
+}
+
 type GetNetworkChange struct {
 	// Absolute URL that returns the details of the given change.
 	// Example: https://api.equinix.com/fabric/v4/networks/92dc376a-a932-43aa-a6a2-c806dedbd784
@@ -22432,6 +31559,1344 @@ func (o GetNetworkProjectOutput) ToGetNetworkProjectOutputWithContext(ctx contex
 // Customer project identifier
 func (o GetNetworkProjectOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkProject) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+type GetNetworksData struct {
+	// A permanent record of asset creation, modification, or deletion
+	ChangeLogs []GetNetworksDataChangeLog `pulumi:"changeLogs"`
+	// Information on asset change operation
+	Changes []GetNetworksDataChange `pulumi:"changes"`
+	// Number of connections associated with this network
+	ConnectionsCount int `pulumi:"connectionsCount"`
+	// Fabric Network URI information
+	Href string `pulumi:"href"`
+	// Fabric Network location
+	Locations []GetNetworksDataLocation `pulumi:"locations"`
+	// Fabric Network name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+	Name string `pulumi:"name"`
+	// Preferences for notifications on Fabric Network configuration or status changes
+	Notifications []GetNetworksDataNotification `pulumi:"notifications"`
+	// Network operation information that is associated with this Fabric Network
+	Operations []GetNetworksDataOperation `pulumi:"operations"`
+	// Fabric Network project
+	Projects []GetNetworksDataProject `pulumi:"projects"`
+	// Fabric Network scope
+	Scope string `pulumi:"scope"`
+	// Fabric Network overall state
+	State string `pulumi:"state"`
+	// Supported Network types - EVPLAN, EPLAN, IPWAN
+	Type string `pulumi:"type"`
+	// Equinix-assigned network identifier
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetNetworksDataInput is an input type that accepts GetNetworksDataArgs and GetNetworksDataOutput values.
+// You can construct a concrete instance of `GetNetworksDataInput` via:
+//
+//	GetNetworksDataArgs{...}
+type GetNetworksDataInput interface {
+	pulumi.Input
+
+	ToGetNetworksDataOutput() GetNetworksDataOutput
+	ToGetNetworksDataOutputWithContext(context.Context) GetNetworksDataOutput
+}
+
+type GetNetworksDataArgs struct {
+	// A permanent record of asset creation, modification, or deletion
+	ChangeLogs GetNetworksDataChangeLogArrayInput `pulumi:"changeLogs"`
+	// Information on asset change operation
+	Changes GetNetworksDataChangeArrayInput `pulumi:"changes"`
+	// Number of connections associated with this network
+	ConnectionsCount pulumi.IntInput `pulumi:"connectionsCount"`
+	// Fabric Network URI information
+	Href pulumi.StringInput `pulumi:"href"`
+	// Fabric Network location
+	Locations GetNetworksDataLocationArrayInput `pulumi:"locations"`
+	// Fabric Network name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+	Name pulumi.StringInput `pulumi:"name"`
+	// Preferences for notifications on Fabric Network configuration or status changes
+	Notifications GetNetworksDataNotificationArrayInput `pulumi:"notifications"`
+	// Network operation information that is associated with this Fabric Network
+	Operations GetNetworksDataOperationArrayInput `pulumi:"operations"`
+	// Fabric Network project
+	Projects GetNetworksDataProjectArrayInput `pulumi:"projects"`
+	// Fabric Network scope
+	Scope pulumi.StringInput `pulumi:"scope"`
+	// Fabric Network overall state
+	State pulumi.StringInput `pulumi:"state"`
+	// Supported Network types - EVPLAN, EPLAN, IPWAN
+	Type pulumi.StringInput `pulumi:"type"`
+	// Equinix-assigned network identifier
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetNetworksDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworksData)(nil)).Elem()
+}
+
+func (i GetNetworksDataArgs) ToGetNetworksDataOutput() GetNetworksDataOutput {
+	return i.ToGetNetworksDataOutputWithContext(context.Background())
+}
+
+func (i GetNetworksDataArgs) ToGetNetworksDataOutputWithContext(ctx context.Context) GetNetworksDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworksDataOutput)
+}
+
+// GetNetworksDataArrayInput is an input type that accepts GetNetworksDataArray and GetNetworksDataArrayOutput values.
+// You can construct a concrete instance of `GetNetworksDataArrayInput` via:
+//
+//	GetNetworksDataArray{ GetNetworksDataArgs{...} }
+type GetNetworksDataArrayInput interface {
+	pulumi.Input
+
+	ToGetNetworksDataArrayOutput() GetNetworksDataArrayOutput
+	ToGetNetworksDataArrayOutputWithContext(context.Context) GetNetworksDataArrayOutput
+}
+
+type GetNetworksDataArray []GetNetworksDataInput
+
+func (GetNetworksDataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworksData)(nil)).Elem()
+}
+
+func (i GetNetworksDataArray) ToGetNetworksDataArrayOutput() GetNetworksDataArrayOutput {
+	return i.ToGetNetworksDataArrayOutputWithContext(context.Background())
+}
+
+func (i GetNetworksDataArray) ToGetNetworksDataArrayOutputWithContext(ctx context.Context) GetNetworksDataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworksDataArrayOutput)
+}
+
+type GetNetworksDataOutput struct{ *pulumi.OutputState }
+
+func (GetNetworksDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworksData)(nil)).Elem()
+}
+
+func (o GetNetworksDataOutput) ToGetNetworksDataOutput() GetNetworksDataOutput {
+	return o
+}
+
+func (o GetNetworksDataOutput) ToGetNetworksDataOutputWithContext(ctx context.Context) GetNetworksDataOutput {
+	return o
+}
+
+// A permanent record of asset creation, modification, or deletion
+func (o GetNetworksDataOutput) ChangeLogs() GetNetworksDataChangeLogArrayOutput {
+	return o.ApplyT(func(v GetNetworksData) []GetNetworksDataChangeLog { return v.ChangeLogs }).(GetNetworksDataChangeLogArrayOutput)
+}
+
+// Information on asset change operation
+func (o GetNetworksDataOutput) Changes() GetNetworksDataChangeArrayOutput {
+	return o.ApplyT(func(v GetNetworksData) []GetNetworksDataChange { return v.Changes }).(GetNetworksDataChangeArrayOutput)
+}
+
+// Number of connections associated with this network
+func (o GetNetworksDataOutput) ConnectionsCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNetworksData) int { return v.ConnectionsCount }).(pulumi.IntOutput)
+}
+
+// Fabric Network URI information
+func (o GetNetworksDataOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworksData) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// Fabric Network location
+func (o GetNetworksDataOutput) Locations() GetNetworksDataLocationArrayOutput {
+	return o.ApplyT(func(v GetNetworksData) []GetNetworksDataLocation { return v.Locations }).(GetNetworksDataLocationArrayOutput)
+}
+
+// Fabric Network name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+func (o GetNetworksDataOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworksData) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Preferences for notifications on Fabric Network configuration or status changes
+func (o GetNetworksDataOutput) Notifications() GetNetworksDataNotificationArrayOutput {
+	return o.ApplyT(func(v GetNetworksData) []GetNetworksDataNotification { return v.Notifications }).(GetNetworksDataNotificationArrayOutput)
+}
+
+// Network operation information that is associated with this Fabric Network
+func (o GetNetworksDataOutput) Operations() GetNetworksDataOperationArrayOutput {
+	return o.ApplyT(func(v GetNetworksData) []GetNetworksDataOperation { return v.Operations }).(GetNetworksDataOperationArrayOutput)
+}
+
+// Fabric Network project
+func (o GetNetworksDataOutput) Projects() GetNetworksDataProjectArrayOutput {
+	return o.ApplyT(func(v GetNetworksData) []GetNetworksDataProject { return v.Projects }).(GetNetworksDataProjectArrayOutput)
+}
+
+// Fabric Network scope
+func (o GetNetworksDataOutput) Scope() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworksData) string { return v.Scope }).(pulumi.StringOutput)
+}
+
+// Fabric Network overall state
+func (o GetNetworksDataOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworksData) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Supported Network types - EVPLAN, EPLAN, IPWAN
+func (o GetNetworksDataOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworksData) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Equinix-assigned network identifier
+func (o GetNetworksDataOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworksData) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type GetNetworksDataArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNetworksDataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworksData)(nil)).Elem()
+}
+
+func (o GetNetworksDataArrayOutput) ToGetNetworksDataArrayOutput() GetNetworksDataArrayOutput {
+	return o
+}
+
+func (o GetNetworksDataArrayOutput) ToGetNetworksDataArrayOutputWithContext(ctx context.Context) GetNetworksDataArrayOutput {
+	return o
+}
+
+func (o GetNetworksDataArrayOutput) Index(i pulumi.IntInput) GetNetworksDataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworksData {
+		return vs[0].([]GetNetworksData)[vs[1].(int)]
+	}).(GetNetworksDataOutput)
+}
+
+type GetNetworksDataChange struct {
+	// Absolute URL that returns the details of the given change.
+	// Example: https://api.equinix.com/fabric/v4/networks/92dc376a-a932-43aa-a6a2-c806dedbd784
+	Href string `pulumi:"href"`
+	// Asset instance change request type.: NETWORK_CREATION, NETWORK_UPDATE, NETWORK_DELETION
+	Type string `pulumi:"type"`
+	// Asset change request identifier.
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetNetworksDataChangeInput is an input type that accepts GetNetworksDataChangeArgs and GetNetworksDataChangeOutput values.
+// You can construct a concrete instance of `GetNetworksDataChangeInput` via:
+//
+//	GetNetworksDataChangeArgs{...}
+type GetNetworksDataChangeInput interface {
+	pulumi.Input
+
+	ToGetNetworksDataChangeOutput() GetNetworksDataChangeOutput
+	ToGetNetworksDataChangeOutputWithContext(context.Context) GetNetworksDataChangeOutput
+}
+
+type GetNetworksDataChangeArgs struct {
+	// Absolute URL that returns the details of the given change.
+	// Example: https://api.equinix.com/fabric/v4/networks/92dc376a-a932-43aa-a6a2-c806dedbd784
+	Href pulumi.StringInput `pulumi:"href"`
+	// Asset instance change request type.: NETWORK_CREATION, NETWORK_UPDATE, NETWORK_DELETION
+	Type pulumi.StringInput `pulumi:"type"`
+	// Asset change request identifier.
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetNetworksDataChangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworksDataChange)(nil)).Elem()
+}
+
+func (i GetNetworksDataChangeArgs) ToGetNetworksDataChangeOutput() GetNetworksDataChangeOutput {
+	return i.ToGetNetworksDataChangeOutputWithContext(context.Background())
+}
+
+func (i GetNetworksDataChangeArgs) ToGetNetworksDataChangeOutputWithContext(ctx context.Context) GetNetworksDataChangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworksDataChangeOutput)
+}
+
+// GetNetworksDataChangeArrayInput is an input type that accepts GetNetworksDataChangeArray and GetNetworksDataChangeArrayOutput values.
+// You can construct a concrete instance of `GetNetworksDataChangeArrayInput` via:
+//
+//	GetNetworksDataChangeArray{ GetNetworksDataChangeArgs{...} }
+type GetNetworksDataChangeArrayInput interface {
+	pulumi.Input
+
+	ToGetNetworksDataChangeArrayOutput() GetNetworksDataChangeArrayOutput
+	ToGetNetworksDataChangeArrayOutputWithContext(context.Context) GetNetworksDataChangeArrayOutput
+}
+
+type GetNetworksDataChangeArray []GetNetworksDataChangeInput
+
+func (GetNetworksDataChangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworksDataChange)(nil)).Elem()
+}
+
+func (i GetNetworksDataChangeArray) ToGetNetworksDataChangeArrayOutput() GetNetworksDataChangeArrayOutput {
+	return i.ToGetNetworksDataChangeArrayOutputWithContext(context.Background())
+}
+
+func (i GetNetworksDataChangeArray) ToGetNetworksDataChangeArrayOutputWithContext(ctx context.Context) GetNetworksDataChangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworksDataChangeArrayOutput)
+}
+
+type GetNetworksDataChangeOutput struct{ *pulumi.OutputState }
+
+func (GetNetworksDataChangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworksDataChange)(nil)).Elem()
+}
+
+func (o GetNetworksDataChangeOutput) ToGetNetworksDataChangeOutput() GetNetworksDataChangeOutput {
+	return o
+}
+
+func (o GetNetworksDataChangeOutput) ToGetNetworksDataChangeOutputWithContext(ctx context.Context) GetNetworksDataChangeOutput {
+	return o
+}
+
+// Absolute URL that returns the details of the given change.
+// Example: https://api.equinix.com/fabric/v4/networks/92dc376a-a932-43aa-a6a2-c806dedbd784
+func (o GetNetworksDataChangeOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworksDataChange) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// Asset instance change request type.: NETWORK_CREATION, NETWORK_UPDATE, NETWORK_DELETION
+func (o GetNetworksDataChangeOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworksDataChange) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Asset change request identifier.
+func (o GetNetworksDataChangeOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworksDataChange) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type GetNetworksDataChangeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNetworksDataChangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworksDataChange)(nil)).Elem()
+}
+
+func (o GetNetworksDataChangeArrayOutput) ToGetNetworksDataChangeArrayOutput() GetNetworksDataChangeArrayOutput {
+	return o
+}
+
+func (o GetNetworksDataChangeArrayOutput) ToGetNetworksDataChangeArrayOutputWithContext(ctx context.Context) GetNetworksDataChangeArrayOutput {
+	return o
+}
+
+func (o GetNetworksDataChangeArrayOutput) Index(i pulumi.IntInput) GetNetworksDataChangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworksDataChange {
+		return vs[0].([]GetNetworksDataChange)[vs[1].(int)]
+	}).(GetNetworksDataChangeOutput)
+}
+
+type GetNetworksDataChangeLog struct {
+	// Created by User Key
+	CreatedBy string `pulumi:"createdBy"`
+	// Created by User Email Address
+	CreatedByEmail string `pulumi:"createdByEmail"`
+	// Created by User Full Name
+	CreatedByFullName string `pulumi:"createdByFullName"`
+	// Created by Date and Time
+	CreatedDateTime string `pulumi:"createdDateTime"`
+	// Deleted by User Key
+	DeletedBy string `pulumi:"deletedBy"`
+	// Deleted by User Email Address
+	DeletedByEmail string `pulumi:"deletedByEmail"`
+	// Deleted by User Full Name
+	DeletedByFullName string `pulumi:"deletedByFullName"`
+	// Deleted by Date and Time
+	DeletedDateTime string `pulumi:"deletedDateTime"`
+	// Updated by User Key
+	UpdatedBy string `pulumi:"updatedBy"`
+	// Updated by User Email Address
+	UpdatedByEmail string `pulumi:"updatedByEmail"`
+	// Updated by User Full Name
+	UpdatedByFullName string `pulumi:"updatedByFullName"`
+	// Updated by Date and Time
+	UpdatedDateTime string `pulumi:"updatedDateTime"`
+}
+
+// GetNetworksDataChangeLogInput is an input type that accepts GetNetworksDataChangeLogArgs and GetNetworksDataChangeLogOutput values.
+// You can construct a concrete instance of `GetNetworksDataChangeLogInput` via:
+//
+//	GetNetworksDataChangeLogArgs{...}
+type GetNetworksDataChangeLogInput interface {
+	pulumi.Input
+
+	ToGetNetworksDataChangeLogOutput() GetNetworksDataChangeLogOutput
+	ToGetNetworksDataChangeLogOutputWithContext(context.Context) GetNetworksDataChangeLogOutput
+}
+
+type GetNetworksDataChangeLogArgs struct {
+	// Created by User Key
+	CreatedBy pulumi.StringInput `pulumi:"createdBy"`
+	// Created by User Email Address
+	CreatedByEmail pulumi.StringInput `pulumi:"createdByEmail"`
+	// Created by User Full Name
+	CreatedByFullName pulumi.StringInput `pulumi:"createdByFullName"`
+	// Created by Date and Time
+	CreatedDateTime pulumi.StringInput `pulumi:"createdDateTime"`
+	// Deleted by User Key
+	DeletedBy pulumi.StringInput `pulumi:"deletedBy"`
+	// Deleted by User Email Address
+	DeletedByEmail pulumi.StringInput `pulumi:"deletedByEmail"`
+	// Deleted by User Full Name
+	DeletedByFullName pulumi.StringInput `pulumi:"deletedByFullName"`
+	// Deleted by Date and Time
+	DeletedDateTime pulumi.StringInput `pulumi:"deletedDateTime"`
+	// Updated by User Key
+	UpdatedBy pulumi.StringInput `pulumi:"updatedBy"`
+	// Updated by User Email Address
+	UpdatedByEmail pulumi.StringInput `pulumi:"updatedByEmail"`
+	// Updated by User Full Name
+	UpdatedByFullName pulumi.StringInput `pulumi:"updatedByFullName"`
+	// Updated by Date and Time
+	UpdatedDateTime pulumi.StringInput `pulumi:"updatedDateTime"`
+}
+
+func (GetNetworksDataChangeLogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworksDataChangeLog)(nil)).Elem()
+}
+
+func (i GetNetworksDataChangeLogArgs) ToGetNetworksDataChangeLogOutput() GetNetworksDataChangeLogOutput {
+	return i.ToGetNetworksDataChangeLogOutputWithContext(context.Background())
+}
+
+func (i GetNetworksDataChangeLogArgs) ToGetNetworksDataChangeLogOutputWithContext(ctx context.Context) GetNetworksDataChangeLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworksDataChangeLogOutput)
+}
+
+// GetNetworksDataChangeLogArrayInput is an input type that accepts GetNetworksDataChangeLogArray and GetNetworksDataChangeLogArrayOutput values.
+// You can construct a concrete instance of `GetNetworksDataChangeLogArrayInput` via:
+//
+//	GetNetworksDataChangeLogArray{ GetNetworksDataChangeLogArgs{...} }
+type GetNetworksDataChangeLogArrayInput interface {
+	pulumi.Input
+
+	ToGetNetworksDataChangeLogArrayOutput() GetNetworksDataChangeLogArrayOutput
+	ToGetNetworksDataChangeLogArrayOutputWithContext(context.Context) GetNetworksDataChangeLogArrayOutput
+}
+
+type GetNetworksDataChangeLogArray []GetNetworksDataChangeLogInput
+
+func (GetNetworksDataChangeLogArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworksDataChangeLog)(nil)).Elem()
+}
+
+func (i GetNetworksDataChangeLogArray) ToGetNetworksDataChangeLogArrayOutput() GetNetworksDataChangeLogArrayOutput {
+	return i.ToGetNetworksDataChangeLogArrayOutputWithContext(context.Background())
+}
+
+func (i GetNetworksDataChangeLogArray) ToGetNetworksDataChangeLogArrayOutputWithContext(ctx context.Context) GetNetworksDataChangeLogArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworksDataChangeLogArrayOutput)
+}
+
+type GetNetworksDataChangeLogOutput struct{ *pulumi.OutputState }
+
+func (GetNetworksDataChangeLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworksDataChangeLog)(nil)).Elem()
+}
+
+func (o GetNetworksDataChangeLogOutput) ToGetNetworksDataChangeLogOutput() GetNetworksDataChangeLogOutput {
+	return o
+}
+
+func (o GetNetworksDataChangeLogOutput) ToGetNetworksDataChangeLogOutputWithContext(ctx context.Context) GetNetworksDataChangeLogOutput {
+	return o
+}
+
+// Created by User Key
+func (o GetNetworksDataChangeLogOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworksDataChangeLog) string { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// Created by User Email Address
+func (o GetNetworksDataChangeLogOutput) CreatedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworksDataChangeLog) string { return v.CreatedByEmail }).(pulumi.StringOutput)
+}
+
+// Created by User Full Name
+func (o GetNetworksDataChangeLogOutput) CreatedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworksDataChangeLog) string { return v.CreatedByFullName }).(pulumi.StringOutput)
+}
+
+// Created by Date and Time
+func (o GetNetworksDataChangeLogOutput) CreatedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworksDataChangeLog) string { return v.CreatedDateTime }).(pulumi.StringOutput)
+}
+
+// Deleted by User Key
+func (o GetNetworksDataChangeLogOutput) DeletedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworksDataChangeLog) string { return v.DeletedBy }).(pulumi.StringOutput)
+}
+
+// Deleted by User Email Address
+func (o GetNetworksDataChangeLogOutput) DeletedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworksDataChangeLog) string { return v.DeletedByEmail }).(pulumi.StringOutput)
+}
+
+// Deleted by User Full Name
+func (o GetNetworksDataChangeLogOutput) DeletedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworksDataChangeLog) string { return v.DeletedByFullName }).(pulumi.StringOutput)
+}
+
+// Deleted by Date and Time
+func (o GetNetworksDataChangeLogOutput) DeletedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworksDataChangeLog) string { return v.DeletedDateTime }).(pulumi.StringOutput)
+}
+
+// Updated by User Key
+func (o GetNetworksDataChangeLogOutput) UpdatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworksDataChangeLog) string { return v.UpdatedBy }).(pulumi.StringOutput)
+}
+
+// Updated by User Email Address
+func (o GetNetworksDataChangeLogOutput) UpdatedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworksDataChangeLog) string { return v.UpdatedByEmail }).(pulumi.StringOutput)
+}
+
+// Updated by User Full Name
+func (o GetNetworksDataChangeLogOutput) UpdatedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworksDataChangeLog) string { return v.UpdatedByFullName }).(pulumi.StringOutput)
+}
+
+// Updated by Date and Time
+func (o GetNetworksDataChangeLogOutput) UpdatedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworksDataChangeLog) string { return v.UpdatedDateTime }).(pulumi.StringOutput)
+}
+
+type GetNetworksDataChangeLogArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNetworksDataChangeLogArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworksDataChangeLog)(nil)).Elem()
+}
+
+func (o GetNetworksDataChangeLogArrayOutput) ToGetNetworksDataChangeLogArrayOutput() GetNetworksDataChangeLogArrayOutput {
+	return o
+}
+
+func (o GetNetworksDataChangeLogArrayOutput) ToGetNetworksDataChangeLogArrayOutputWithContext(ctx context.Context) GetNetworksDataChangeLogArrayOutput {
+	return o
+}
+
+func (o GetNetworksDataChangeLogArrayOutput) Index(i pulumi.IntInput) GetNetworksDataChangeLogOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworksDataChangeLog {
+		return vs[0].([]GetNetworksDataChangeLog)[vs[1].(int)]
+	}).(GetNetworksDataChangeLogOutput)
+}
+
+type GetNetworksDataLocation struct {
+	// IBX Code
+	Ibx string `pulumi:"ibx"`
+	// Access point metro code
+	MetroCode string `pulumi:"metroCode"`
+	// Access point metro name
+	MetroName string `pulumi:"metroName"`
+	// Access point region
+	Region string `pulumi:"region"`
+}
+
+// GetNetworksDataLocationInput is an input type that accepts GetNetworksDataLocationArgs and GetNetworksDataLocationOutput values.
+// You can construct a concrete instance of `GetNetworksDataLocationInput` via:
+//
+//	GetNetworksDataLocationArgs{...}
+type GetNetworksDataLocationInput interface {
+	pulumi.Input
+
+	ToGetNetworksDataLocationOutput() GetNetworksDataLocationOutput
+	ToGetNetworksDataLocationOutputWithContext(context.Context) GetNetworksDataLocationOutput
+}
+
+type GetNetworksDataLocationArgs struct {
+	// IBX Code
+	Ibx pulumi.StringInput `pulumi:"ibx"`
+	// Access point metro code
+	MetroCode pulumi.StringInput `pulumi:"metroCode"`
+	// Access point metro name
+	MetroName pulumi.StringInput `pulumi:"metroName"`
+	// Access point region
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (GetNetworksDataLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworksDataLocation)(nil)).Elem()
+}
+
+func (i GetNetworksDataLocationArgs) ToGetNetworksDataLocationOutput() GetNetworksDataLocationOutput {
+	return i.ToGetNetworksDataLocationOutputWithContext(context.Background())
+}
+
+func (i GetNetworksDataLocationArgs) ToGetNetworksDataLocationOutputWithContext(ctx context.Context) GetNetworksDataLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworksDataLocationOutput)
+}
+
+// GetNetworksDataLocationArrayInput is an input type that accepts GetNetworksDataLocationArray and GetNetworksDataLocationArrayOutput values.
+// You can construct a concrete instance of `GetNetworksDataLocationArrayInput` via:
+//
+//	GetNetworksDataLocationArray{ GetNetworksDataLocationArgs{...} }
+type GetNetworksDataLocationArrayInput interface {
+	pulumi.Input
+
+	ToGetNetworksDataLocationArrayOutput() GetNetworksDataLocationArrayOutput
+	ToGetNetworksDataLocationArrayOutputWithContext(context.Context) GetNetworksDataLocationArrayOutput
+}
+
+type GetNetworksDataLocationArray []GetNetworksDataLocationInput
+
+func (GetNetworksDataLocationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworksDataLocation)(nil)).Elem()
+}
+
+func (i GetNetworksDataLocationArray) ToGetNetworksDataLocationArrayOutput() GetNetworksDataLocationArrayOutput {
+	return i.ToGetNetworksDataLocationArrayOutputWithContext(context.Background())
+}
+
+func (i GetNetworksDataLocationArray) ToGetNetworksDataLocationArrayOutputWithContext(ctx context.Context) GetNetworksDataLocationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworksDataLocationArrayOutput)
+}
+
+type GetNetworksDataLocationOutput struct{ *pulumi.OutputState }
+
+func (GetNetworksDataLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworksDataLocation)(nil)).Elem()
+}
+
+func (o GetNetworksDataLocationOutput) ToGetNetworksDataLocationOutput() GetNetworksDataLocationOutput {
+	return o
+}
+
+func (o GetNetworksDataLocationOutput) ToGetNetworksDataLocationOutputWithContext(ctx context.Context) GetNetworksDataLocationOutput {
+	return o
+}
+
+// IBX Code
+func (o GetNetworksDataLocationOutput) Ibx() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworksDataLocation) string { return v.Ibx }).(pulumi.StringOutput)
+}
+
+// Access point metro code
+func (o GetNetworksDataLocationOutput) MetroCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworksDataLocation) string { return v.MetroCode }).(pulumi.StringOutput)
+}
+
+// Access point metro name
+func (o GetNetworksDataLocationOutput) MetroName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworksDataLocation) string { return v.MetroName }).(pulumi.StringOutput)
+}
+
+// Access point region
+func (o GetNetworksDataLocationOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworksDataLocation) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type GetNetworksDataLocationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNetworksDataLocationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworksDataLocation)(nil)).Elem()
+}
+
+func (o GetNetworksDataLocationArrayOutput) ToGetNetworksDataLocationArrayOutput() GetNetworksDataLocationArrayOutput {
+	return o
+}
+
+func (o GetNetworksDataLocationArrayOutput) ToGetNetworksDataLocationArrayOutputWithContext(ctx context.Context) GetNetworksDataLocationArrayOutput {
+	return o
+}
+
+func (o GetNetworksDataLocationArrayOutput) Index(i pulumi.IntInput) GetNetworksDataLocationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworksDataLocation {
+		return vs[0].([]GetNetworksDataLocation)[vs[1].(int)]
+	}).(GetNetworksDataLocationOutput)
+}
+
+type GetNetworksDataNotification struct {
+	// Array of contact emails
+	Emails []string `pulumi:"emails"`
+	// Send interval
+	SendInterval *string `pulumi:"sendInterval"`
+	// Notification Type - ALL,CONNECTION_APPROVAL,SALES_REP_NOTIFICATIONS, NOTIFICATIONS
+	Type string `pulumi:"type"`
+}
+
+// GetNetworksDataNotificationInput is an input type that accepts GetNetworksDataNotificationArgs and GetNetworksDataNotificationOutput values.
+// You can construct a concrete instance of `GetNetworksDataNotificationInput` via:
+//
+//	GetNetworksDataNotificationArgs{...}
+type GetNetworksDataNotificationInput interface {
+	pulumi.Input
+
+	ToGetNetworksDataNotificationOutput() GetNetworksDataNotificationOutput
+	ToGetNetworksDataNotificationOutputWithContext(context.Context) GetNetworksDataNotificationOutput
+}
+
+type GetNetworksDataNotificationArgs struct {
+	// Array of contact emails
+	Emails pulumi.StringArrayInput `pulumi:"emails"`
+	// Send interval
+	SendInterval pulumi.StringPtrInput `pulumi:"sendInterval"`
+	// Notification Type - ALL,CONNECTION_APPROVAL,SALES_REP_NOTIFICATIONS, NOTIFICATIONS
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetNetworksDataNotificationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworksDataNotification)(nil)).Elem()
+}
+
+func (i GetNetworksDataNotificationArgs) ToGetNetworksDataNotificationOutput() GetNetworksDataNotificationOutput {
+	return i.ToGetNetworksDataNotificationOutputWithContext(context.Background())
+}
+
+func (i GetNetworksDataNotificationArgs) ToGetNetworksDataNotificationOutputWithContext(ctx context.Context) GetNetworksDataNotificationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworksDataNotificationOutput)
+}
+
+// GetNetworksDataNotificationArrayInput is an input type that accepts GetNetworksDataNotificationArray and GetNetworksDataNotificationArrayOutput values.
+// You can construct a concrete instance of `GetNetworksDataNotificationArrayInput` via:
+//
+//	GetNetworksDataNotificationArray{ GetNetworksDataNotificationArgs{...} }
+type GetNetworksDataNotificationArrayInput interface {
+	pulumi.Input
+
+	ToGetNetworksDataNotificationArrayOutput() GetNetworksDataNotificationArrayOutput
+	ToGetNetworksDataNotificationArrayOutputWithContext(context.Context) GetNetworksDataNotificationArrayOutput
+}
+
+type GetNetworksDataNotificationArray []GetNetworksDataNotificationInput
+
+func (GetNetworksDataNotificationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworksDataNotification)(nil)).Elem()
+}
+
+func (i GetNetworksDataNotificationArray) ToGetNetworksDataNotificationArrayOutput() GetNetworksDataNotificationArrayOutput {
+	return i.ToGetNetworksDataNotificationArrayOutputWithContext(context.Background())
+}
+
+func (i GetNetworksDataNotificationArray) ToGetNetworksDataNotificationArrayOutputWithContext(ctx context.Context) GetNetworksDataNotificationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworksDataNotificationArrayOutput)
+}
+
+type GetNetworksDataNotificationOutput struct{ *pulumi.OutputState }
+
+func (GetNetworksDataNotificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworksDataNotification)(nil)).Elem()
+}
+
+func (o GetNetworksDataNotificationOutput) ToGetNetworksDataNotificationOutput() GetNetworksDataNotificationOutput {
+	return o
+}
+
+func (o GetNetworksDataNotificationOutput) ToGetNetworksDataNotificationOutputWithContext(ctx context.Context) GetNetworksDataNotificationOutput {
+	return o
+}
+
+// Array of contact emails
+func (o GetNetworksDataNotificationOutput) Emails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworksDataNotification) []string { return v.Emails }).(pulumi.StringArrayOutput)
+}
+
+// Send interval
+func (o GetNetworksDataNotificationOutput) SendInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNetworksDataNotification) *string { return v.SendInterval }).(pulumi.StringPtrOutput)
+}
+
+// Notification Type - ALL,CONNECTION_APPROVAL,SALES_REP_NOTIFICATIONS, NOTIFICATIONS
+func (o GetNetworksDataNotificationOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworksDataNotification) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetNetworksDataNotificationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNetworksDataNotificationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworksDataNotification)(nil)).Elem()
+}
+
+func (o GetNetworksDataNotificationArrayOutput) ToGetNetworksDataNotificationArrayOutput() GetNetworksDataNotificationArrayOutput {
+	return o
+}
+
+func (o GetNetworksDataNotificationArrayOutput) ToGetNetworksDataNotificationArrayOutputWithContext(ctx context.Context) GetNetworksDataNotificationArrayOutput {
+	return o
+}
+
+func (o GetNetworksDataNotificationArrayOutput) Index(i pulumi.IntInput) GetNetworksDataNotificationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworksDataNotification {
+		return vs[0].([]GetNetworksDataNotification)[vs[1].(int)]
+	}).(GetNetworksDataNotificationOutput)
+}
+
+type GetNetworksDataOperation struct {
+	// Progress towards provisioning a given asset.
+	EquinixStatus string `pulumi:"equinixStatus"`
+}
+
+// GetNetworksDataOperationInput is an input type that accepts GetNetworksDataOperationArgs and GetNetworksDataOperationOutput values.
+// You can construct a concrete instance of `GetNetworksDataOperationInput` via:
+//
+//	GetNetworksDataOperationArgs{...}
+type GetNetworksDataOperationInput interface {
+	pulumi.Input
+
+	ToGetNetworksDataOperationOutput() GetNetworksDataOperationOutput
+	ToGetNetworksDataOperationOutputWithContext(context.Context) GetNetworksDataOperationOutput
+}
+
+type GetNetworksDataOperationArgs struct {
+	// Progress towards provisioning a given asset.
+	EquinixStatus pulumi.StringInput `pulumi:"equinixStatus"`
+}
+
+func (GetNetworksDataOperationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworksDataOperation)(nil)).Elem()
+}
+
+func (i GetNetworksDataOperationArgs) ToGetNetworksDataOperationOutput() GetNetworksDataOperationOutput {
+	return i.ToGetNetworksDataOperationOutputWithContext(context.Background())
+}
+
+func (i GetNetworksDataOperationArgs) ToGetNetworksDataOperationOutputWithContext(ctx context.Context) GetNetworksDataOperationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworksDataOperationOutput)
+}
+
+// GetNetworksDataOperationArrayInput is an input type that accepts GetNetworksDataOperationArray and GetNetworksDataOperationArrayOutput values.
+// You can construct a concrete instance of `GetNetworksDataOperationArrayInput` via:
+//
+//	GetNetworksDataOperationArray{ GetNetworksDataOperationArgs{...} }
+type GetNetworksDataOperationArrayInput interface {
+	pulumi.Input
+
+	ToGetNetworksDataOperationArrayOutput() GetNetworksDataOperationArrayOutput
+	ToGetNetworksDataOperationArrayOutputWithContext(context.Context) GetNetworksDataOperationArrayOutput
+}
+
+type GetNetworksDataOperationArray []GetNetworksDataOperationInput
+
+func (GetNetworksDataOperationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworksDataOperation)(nil)).Elem()
+}
+
+func (i GetNetworksDataOperationArray) ToGetNetworksDataOperationArrayOutput() GetNetworksDataOperationArrayOutput {
+	return i.ToGetNetworksDataOperationArrayOutputWithContext(context.Background())
+}
+
+func (i GetNetworksDataOperationArray) ToGetNetworksDataOperationArrayOutputWithContext(ctx context.Context) GetNetworksDataOperationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworksDataOperationArrayOutput)
+}
+
+type GetNetworksDataOperationOutput struct{ *pulumi.OutputState }
+
+func (GetNetworksDataOperationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworksDataOperation)(nil)).Elem()
+}
+
+func (o GetNetworksDataOperationOutput) ToGetNetworksDataOperationOutput() GetNetworksDataOperationOutput {
+	return o
+}
+
+func (o GetNetworksDataOperationOutput) ToGetNetworksDataOperationOutputWithContext(ctx context.Context) GetNetworksDataOperationOutput {
+	return o
+}
+
+// Progress towards provisioning a given asset.
+func (o GetNetworksDataOperationOutput) EquinixStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworksDataOperation) string { return v.EquinixStatus }).(pulumi.StringOutput)
+}
+
+type GetNetworksDataOperationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNetworksDataOperationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworksDataOperation)(nil)).Elem()
+}
+
+func (o GetNetworksDataOperationArrayOutput) ToGetNetworksDataOperationArrayOutput() GetNetworksDataOperationArrayOutput {
+	return o
+}
+
+func (o GetNetworksDataOperationArrayOutput) ToGetNetworksDataOperationArrayOutputWithContext(ctx context.Context) GetNetworksDataOperationArrayOutput {
+	return o
+}
+
+func (o GetNetworksDataOperationArrayOutput) Index(i pulumi.IntInput) GetNetworksDataOperationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworksDataOperation {
+		return vs[0].([]GetNetworksDataOperation)[vs[1].(int)]
+	}).(GetNetworksDataOperationOutput)
+}
+
+type GetNetworksDataProject struct {
+	// Customer project identifier
+	ProjectId string `pulumi:"projectId"`
+}
+
+// GetNetworksDataProjectInput is an input type that accepts GetNetworksDataProjectArgs and GetNetworksDataProjectOutput values.
+// You can construct a concrete instance of `GetNetworksDataProjectInput` via:
+//
+//	GetNetworksDataProjectArgs{...}
+type GetNetworksDataProjectInput interface {
+	pulumi.Input
+
+	ToGetNetworksDataProjectOutput() GetNetworksDataProjectOutput
+	ToGetNetworksDataProjectOutputWithContext(context.Context) GetNetworksDataProjectOutput
+}
+
+type GetNetworksDataProjectArgs struct {
+	// Customer project identifier
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+}
+
+func (GetNetworksDataProjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworksDataProject)(nil)).Elem()
+}
+
+func (i GetNetworksDataProjectArgs) ToGetNetworksDataProjectOutput() GetNetworksDataProjectOutput {
+	return i.ToGetNetworksDataProjectOutputWithContext(context.Background())
+}
+
+func (i GetNetworksDataProjectArgs) ToGetNetworksDataProjectOutputWithContext(ctx context.Context) GetNetworksDataProjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworksDataProjectOutput)
+}
+
+// GetNetworksDataProjectArrayInput is an input type that accepts GetNetworksDataProjectArray and GetNetworksDataProjectArrayOutput values.
+// You can construct a concrete instance of `GetNetworksDataProjectArrayInput` via:
+//
+//	GetNetworksDataProjectArray{ GetNetworksDataProjectArgs{...} }
+type GetNetworksDataProjectArrayInput interface {
+	pulumi.Input
+
+	ToGetNetworksDataProjectArrayOutput() GetNetworksDataProjectArrayOutput
+	ToGetNetworksDataProjectArrayOutputWithContext(context.Context) GetNetworksDataProjectArrayOutput
+}
+
+type GetNetworksDataProjectArray []GetNetworksDataProjectInput
+
+func (GetNetworksDataProjectArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworksDataProject)(nil)).Elem()
+}
+
+func (i GetNetworksDataProjectArray) ToGetNetworksDataProjectArrayOutput() GetNetworksDataProjectArrayOutput {
+	return i.ToGetNetworksDataProjectArrayOutputWithContext(context.Background())
+}
+
+func (i GetNetworksDataProjectArray) ToGetNetworksDataProjectArrayOutputWithContext(ctx context.Context) GetNetworksDataProjectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworksDataProjectArrayOutput)
+}
+
+type GetNetworksDataProjectOutput struct{ *pulumi.OutputState }
+
+func (GetNetworksDataProjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworksDataProject)(nil)).Elem()
+}
+
+func (o GetNetworksDataProjectOutput) ToGetNetworksDataProjectOutput() GetNetworksDataProjectOutput {
+	return o
+}
+
+func (o GetNetworksDataProjectOutput) ToGetNetworksDataProjectOutputWithContext(ctx context.Context) GetNetworksDataProjectOutput {
+	return o
+}
+
+// Customer project identifier
+func (o GetNetworksDataProjectOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworksDataProject) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+type GetNetworksDataProjectArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNetworksDataProjectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworksDataProject)(nil)).Elem()
+}
+
+func (o GetNetworksDataProjectArrayOutput) ToGetNetworksDataProjectArrayOutput() GetNetworksDataProjectArrayOutput {
+	return o
+}
+
+func (o GetNetworksDataProjectArrayOutput) ToGetNetworksDataProjectArrayOutputWithContext(ctx context.Context) GetNetworksDataProjectArrayOutput {
+	return o
+}
+
+func (o GetNetworksDataProjectArrayOutput) Index(i pulumi.IntInput) GetNetworksDataProjectOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworksDataProject {
+		return vs[0].([]GetNetworksDataProject)[vs[1].(int)]
+	}).(GetNetworksDataProjectOutput)
+}
+
+type GetNetworksFilter struct {
+	// Optional custom id parameter to assign this filter to an inner AND or OR group. Group id must be prefixed with AND_ or OR_. Ensure intended grouped elements have the same given id. Ungrouped filters will be placed in the filter list group by themselves.
+	Group *string `pulumi:"group"`
+	// Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, ILIKE, NOT ILIKE, IN, NOT IN]
+	Operator string `pulumi:"operator"`
+	// Possible field names to use on filters. One of [/name /uuid /scope /type /operation/equinixStatus /location/region /project/projectId /account/globalCustId /account/orgId /deletedDate /_*]
+	Property string `pulumi:"property"`
+	// The values that you want to apply the property+operator combination to in order to filter your data search
+	Values []string `pulumi:"values"`
+}
+
+// GetNetworksFilterInput is an input type that accepts GetNetworksFilterArgs and GetNetworksFilterOutput values.
+// You can construct a concrete instance of `GetNetworksFilterInput` via:
+//
+//	GetNetworksFilterArgs{...}
+type GetNetworksFilterInput interface {
+	pulumi.Input
+
+	ToGetNetworksFilterOutput() GetNetworksFilterOutput
+	ToGetNetworksFilterOutputWithContext(context.Context) GetNetworksFilterOutput
+}
+
+type GetNetworksFilterArgs struct {
+	// Optional custom id parameter to assign this filter to an inner AND or OR group. Group id must be prefixed with AND_ or OR_. Ensure intended grouped elements have the same given id. Ungrouped filters will be placed in the filter list group by themselves.
+	Group pulumi.StringPtrInput `pulumi:"group"`
+	// Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, ILIKE, NOT ILIKE, IN, NOT IN]
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// Possible field names to use on filters. One of [/name /uuid /scope /type /operation/equinixStatus /location/region /project/projectId /account/globalCustId /account/orgId /deletedDate /_*]
+	Property pulumi.StringInput `pulumi:"property"`
+	// The values that you want to apply the property+operator combination to in order to filter your data search
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetNetworksFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworksFilter)(nil)).Elem()
+}
+
+func (i GetNetworksFilterArgs) ToGetNetworksFilterOutput() GetNetworksFilterOutput {
+	return i.ToGetNetworksFilterOutputWithContext(context.Background())
+}
+
+func (i GetNetworksFilterArgs) ToGetNetworksFilterOutputWithContext(ctx context.Context) GetNetworksFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworksFilterOutput)
+}
+
+// GetNetworksFilterArrayInput is an input type that accepts GetNetworksFilterArray and GetNetworksFilterArrayOutput values.
+// You can construct a concrete instance of `GetNetworksFilterArrayInput` via:
+//
+//	GetNetworksFilterArray{ GetNetworksFilterArgs{...} }
+type GetNetworksFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetNetworksFilterArrayOutput() GetNetworksFilterArrayOutput
+	ToGetNetworksFilterArrayOutputWithContext(context.Context) GetNetworksFilterArrayOutput
+}
+
+type GetNetworksFilterArray []GetNetworksFilterInput
+
+func (GetNetworksFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworksFilter)(nil)).Elem()
+}
+
+func (i GetNetworksFilterArray) ToGetNetworksFilterArrayOutput() GetNetworksFilterArrayOutput {
+	return i.ToGetNetworksFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetNetworksFilterArray) ToGetNetworksFilterArrayOutputWithContext(ctx context.Context) GetNetworksFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworksFilterArrayOutput)
+}
+
+type GetNetworksFilterOutput struct{ *pulumi.OutputState }
+
+func (GetNetworksFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworksFilter)(nil)).Elem()
+}
+
+func (o GetNetworksFilterOutput) ToGetNetworksFilterOutput() GetNetworksFilterOutput {
+	return o
+}
+
+func (o GetNetworksFilterOutput) ToGetNetworksFilterOutputWithContext(ctx context.Context) GetNetworksFilterOutput {
+	return o
+}
+
+// Optional custom id parameter to assign this filter to an inner AND or OR group. Group id must be prefixed with AND_ or OR_. Ensure intended grouped elements have the same given id. Ungrouped filters will be placed in the filter list group by themselves.
+func (o GetNetworksFilterOutput) Group() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNetworksFilter) *string { return v.Group }).(pulumi.StringPtrOutput)
+}
+
+// Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, ILIKE, NOT ILIKE, IN, NOT IN]
+func (o GetNetworksFilterOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworksFilter) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// Possible field names to use on filters. One of [/name /uuid /scope /type /operation/equinixStatus /location/region /project/projectId /account/globalCustId /account/orgId /deletedDate /_*]
+func (o GetNetworksFilterOutput) Property() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworksFilter) string { return v.Property }).(pulumi.StringOutput)
+}
+
+// The values that you want to apply the property+operator combination to in order to filter your data search
+func (o GetNetworksFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworksFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetNetworksFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNetworksFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworksFilter)(nil)).Elem()
+}
+
+func (o GetNetworksFilterArrayOutput) ToGetNetworksFilterArrayOutput() GetNetworksFilterArrayOutput {
+	return o
+}
+
+func (o GetNetworksFilterArrayOutput) ToGetNetworksFilterArrayOutputWithContext(ctx context.Context) GetNetworksFilterArrayOutput {
+	return o
+}
+
+func (o GetNetworksFilterArrayOutput) Index(i pulumi.IntInput) GetNetworksFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworksFilter {
+		return vs[0].([]GetNetworksFilter)[vs[1].(int)]
+	}).(GetNetworksFilterOutput)
+}
+
+type GetNetworksPagination struct {
+	// Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+	Limit *int `pulumi:"limit"`
+	// The page offset for the pagination request. Index of the first element. Default is 0.
+	Offset *int `pulumi:"offset"`
+}
+
+// GetNetworksPaginationInput is an input type that accepts GetNetworksPaginationArgs and GetNetworksPaginationOutput values.
+// You can construct a concrete instance of `GetNetworksPaginationInput` via:
+//
+//	GetNetworksPaginationArgs{...}
+type GetNetworksPaginationInput interface {
+	pulumi.Input
+
+	ToGetNetworksPaginationOutput() GetNetworksPaginationOutput
+	ToGetNetworksPaginationOutputWithContext(context.Context) GetNetworksPaginationOutput
+}
+
+type GetNetworksPaginationArgs struct {
+	// Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+	Limit pulumi.IntPtrInput `pulumi:"limit"`
+	// The page offset for the pagination request. Index of the first element. Default is 0.
+	Offset pulumi.IntPtrInput `pulumi:"offset"`
+}
+
+func (GetNetworksPaginationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworksPagination)(nil)).Elem()
+}
+
+func (i GetNetworksPaginationArgs) ToGetNetworksPaginationOutput() GetNetworksPaginationOutput {
+	return i.ToGetNetworksPaginationOutputWithContext(context.Background())
+}
+
+func (i GetNetworksPaginationArgs) ToGetNetworksPaginationOutputWithContext(ctx context.Context) GetNetworksPaginationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworksPaginationOutput)
+}
+
+func (i GetNetworksPaginationArgs) ToGetNetworksPaginationPtrOutput() GetNetworksPaginationPtrOutput {
+	return i.ToGetNetworksPaginationPtrOutputWithContext(context.Background())
+}
+
+func (i GetNetworksPaginationArgs) ToGetNetworksPaginationPtrOutputWithContext(ctx context.Context) GetNetworksPaginationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworksPaginationOutput).ToGetNetworksPaginationPtrOutputWithContext(ctx)
+}
+
+// GetNetworksPaginationPtrInput is an input type that accepts GetNetworksPaginationArgs, GetNetworksPaginationPtr and GetNetworksPaginationPtrOutput values.
+// You can construct a concrete instance of `GetNetworksPaginationPtrInput` via:
+//
+//	        GetNetworksPaginationArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetNetworksPaginationPtrInput interface {
+	pulumi.Input
+
+	ToGetNetworksPaginationPtrOutput() GetNetworksPaginationPtrOutput
+	ToGetNetworksPaginationPtrOutputWithContext(context.Context) GetNetworksPaginationPtrOutput
+}
+
+type getNetworksPaginationPtrType GetNetworksPaginationArgs
+
+func GetNetworksPaginationPtr(v *GetNetworksPaginationArgs) GetNetworksPaginationPtrInput {
+	return (*getNetworksPaginationPtrType)(v)
+}
+
+func (*getNetworksPaginationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetNetworksPagination)(nil)).Elem()
+}
+
+func (i *getNetworksPaginationPtrType) ToGetNetworksPaginationPtrOutput() GetNetworksPaginationPtrOutput {
+	return i.ToGetNetworksPaginationPtrOutputWithContext(context.Background())
+}
+
+func (i *getNetworksPaginationPtrType) ToGetNetworksPaginationPtrOutputWithContext(ctx context.Context) GetNetworksPaginationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworksPaginationPtrOutput)
+}
+
+type GetNetworksPaginationOutput struct{ *pulumi.OutputState }
+
+func (GetNetworksPaginationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworksPagination)(nil)).Elem()
+}
+
+func (o GetNetworksPaginationOutput) ToGetNetworksPaginationOutput() GetNetworksPaginationOutput {
+	return o
+}
+
+func (o GetNetworksPaginationOutput) ToGetNetworksPaginationOutputWithContext(ctx context.Context) GetNetworksPaginationOutput {
+	return o
+}
+
+func (o GetNetworksPaginationOutput) ToGetNetworksPaginationPtrOutput() GetNetworksPaginationPtrOutput {
+	return o.ToGetNetworksPaginationPtrOutputWithContext(context.Background())
+}
+
+func (o GetNetworksPaginationOutput) ToGetNetworksPaginationPtrOutputWithContext(ctx context.Context) GetNetworksPaginationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetNetworksPagination) *GetNetworksPagination {
+		return &v
+	}).(GetNetworksPaginationPtrOutput)
+}
+
+// Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+func (o GetNetworksPaginationOutput) Limit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetNetworksPagination) *int { return v.Limit }).(pulumi.IntPtrOutput)
+}
+
+// The page offset for the pagination request. Index of the first element. Default is 0.
+func (o GetNetworksPaginationOutput) Offset() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetNetworksPagination) *int { return v.Offset }).(pulumi.IntPtrOutput)
+}
+
+type GetNetworksPaginationPtrOutput struct{ *pulumi.OutputState }
+
+func (GetNetworksPaginationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetNetworksPagination)(nil)).Elem()
+}
+
+func (o GetNetworksPaginationPtrOutput) ToGetNetworksPaginationPtrOutput() GetNetworksPaginationPtrOutput {
+	return o
+}
+
+func (o GetNetworksPaginationPtrOutput) ToGetNetworksPaginationPtrOutputWithContext(ctx context.Context) GetNetworksPaginationPtrOutput {
+	return o
+}
+
+func (o GetNetworksPaginationPtrOutput) Elem() GetNetworksPaginationOutput {
+	return o.ApplyT(func(v *GetNetworksPagination) GetNetworksPagination {
+		if v != nil {
+			return *v
+		}
+		var ret GetNetworksPagination
+		return ret
+	}).(GetNetworksPaginationOutput)
+}
+
+// Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+func (o GetNetworksPaginationPtrOutput) Limit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetNetworksPagination) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Limit
+	}).(pulumi.IntPtrOutput)
+}
+
+// The page offset for the pagination request. Index of the first element. Default is 0.
+func (o GetNetworksPaginationPtrOutput) Offset() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetNetworksPagination) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Offset
+	}).(pulumi.IntPtrOutput)
+}
+
+type GetNetworksSort struct {
+	// The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+	Direction *string `pulumi:"direction"`
+	// The property name to use in sorting. One of [/name /uuid /scope /operation/equinixStatus /location/region /changeLog/createdDateTime /changeLog/updatedDateTime]. Defaults to /changeLog/updatedDateTime
+	Property *string `pulumi:"property"`
+}
+
+// GetNetworksSortInput is an input type that accepts GetNetworksSortArgs and GetNetworksSortOutput values.
+// You can construct a concrete instance of `GetNetworksSortInput` via:
+//
+//	GetNetworksSortArgs{...}
+type GetNetworksSortInput interface {
+	pulumi.Input
+
+	ToGetNetworksSortOutput() GetNetworksSortOutput
+	ToGetNetworksSortOutputWithContext(context.Context) GetNetworksSortOutput
+}
+
+type GetNetworksSortArgs struct {
+	// The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	// The property name to use in sorting. One of [/name /uuid /scope /operation/equinixStatus /location/region /changeLog/createdDateTime /changeLog/updatedDateTime]. Defaults to /changeLog/updatedDateTime
+	Property pulumi.StringPtrInput `pulumi:"property"`
+}
+
+func (GetNetworksSortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworksSort)(nil)).Elem()
+}
+
+func (i GetNetworksSortArgs) ToGetNetworksSortOutput() GetNetworksSortOutput {
+	return i.ToGetNetworksSortOutputWithContext(context.Background())
+}
+
+func (i GetNetworksSortArgs) ToGetNetworksSortOutputWithContext(ctx context.Context) GetNetworksSortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworksSortOutput)
+}
+
+// GetNetworksSortArrayInput is an input type that accepts GetNetworksSortArray and GetNetworksSortArrayOutput values.
+// You can construct a concrete instance of `GetNetworksSortArrayInput` via:
+//
+//	GetNetworksSortArray{ GetNetworksSortArgs{...} }
+type GetNetworksSortArrayInput interface {
+	pulumi.Input
+
+	ToGetNetworksSortArrayOutput() GetNetworksSortArrayOutput
+	ToGetNetworksSortArrayOutputWithContext(context.Context) GetNetworksSortArrayOutput
+}
+
+type GetNetworksSortArray []GetNetworksSortInput
+
+func (GetNetworksSortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworksSort)(nil)).Elem()
+}
+
+func (i GetNetworksSortArray) ToGetNetworksSortArrayOutput() GetNetworksSortArrayOutput {
+	return i.ToGetNetworksSortArrayOutputWithContext(context.Background())
+}
+
+func (i GetNetworksSortArray) ToGetNetworksSortArrayOutputWithContext(ctx context.Context) GetNetworksSortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworksSortArrayOutput)
+}
+
+type GetNetworksSortOutput struct{ *pulumi.OutputState }
+
+func (GetNetworksSortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworksSort)(nil)).Elem()
+}
+
+func (o GetNetworksSortOutput) ToGetNetworksSortOutput() GetNetworksSortOutput {
+	return o
+}
+
+func (o GetNetworksSortOutput) ToGetNetworksSortOutputWithContext(ctx context.Context) GetNetworksSortOutput {
+	return o
+}
+
+// The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+func (o GetNetworksSortOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNetworksSort) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+// The property name to use in sorting. One of [/name /uuid /scope /operation/equinixStatus /location/region /changeLog/createdDateTime /changeLog/updatedDateTime]. Defaults to /changeLog/updatedDateTime
+func (o GetNetworksSortOutput) Property() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNetworksSort) *string { return v.Property }).(pulumi.StringPtrOutput)
+}
+
+type GetNetworksSortArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNetworksSortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworksSort)(nil)).Elem()
+}
+
+func (o GetNetworksSortArrayOutput) ToGetNetworksSortArrayOutput() GetNetworksSortArrayOutput {
+	return o
+}
+
+func (o GetNetworksSortArrayOutput) ToGetNetworksSortArrayOutputWithContext(ctx context.Context) GetNetworksSortArrayOutput {
+	return o
+}
+
+func (o GetNetworksSortArrayOutput) Index(i pulumi.IntInput) GetNetworksSortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworksSort {
+		return vs[0].([]GetNetworksSort)[vs[1].(int)]
+	}).(GetNetworksSortOutput)
 }
 
 type GetPortAccount struct {
@@ -31155,6 +41620,28 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudRouterPackageArrayInput)(nil)).Elem(), GetCloudRouterPackageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudRouterProjectInput)(nil)).Elem(), GetCloudRouterProjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudRouterProjectArrayInput)(nil)).Elem(), GetCloudRouterProjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudRoutersDataInput)(nil)).Elem(), GetCloudRoutersDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudRoutersDataArrayInput)(nil)).Elem(), GetCloudRoutersDataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudRoutersDataAccountInput)(nil)).Elem(), GetCloudRoutersDataAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudRoutersDataAccountArrayInput)(nil)).Elem(), GetCloudRoutersDataAccountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudRoutersDataChangeLogInput)(nil)).Elem(), GetCloudRoutersDataChangeLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudRoutersDataChangeLogArrayInput)(nil)).Elem(), GetCloudRoutersDataChangeLogArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudRoutersDataLocationInput)(nil)).Elem(), GetCloudRoutersDataLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudRoutersDataLocationArrayInput)(nil)).Elem(), GetCloudRoutersDataLocationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudRoutersDataNotificationInput)(nil)).Elem(), GetCloudRoutersDataNotificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudRoutersDataNotificationArrayInput)(nil)).Elem(), GetCloudRoutersDataNotificationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudRoutersDataOrderInput)(nil)).Elem(), GetCloudRoutersDataOrderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudRoutersDataOrderArrayInput)(nil)).Elem(), GetCloudRoutersDataOrderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudRoutersDataPackageInput)(nil)).Elem(), GetCloudRoutersDataPackageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudRoutersDataPackageArrayInput)(nil)).Elem(), GetCloudRoutersDataPackageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudRoutersDataProjectInput)(nil)).Elem(), GetCloudRoutersDataProjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudRoutersDataProjectArrayInput)(nil)).Elem(), GetCloudRoutersDataProjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudRoutersFilterInput)(nil)).Elem(), GetCloudRoutersFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudRoutersFilterArrayInput)(nil)).Elem(), GetCloudRoutersFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudRoutersPaginationInput)(nil)).Elem(), GetCloudRoutersPaginationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudRoutersPaginationPtrInput)(nil)).Elem(), GetCloudRoutersPaginationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudRoutersSortInput)(nil)).Elem(), GetCloudRoutersSortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudRoutersSortPtrInput)(nil)).Elem(), GetCloudRoutersSortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionASideInput)(nil)).Elem(), GetConnectionASideArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionASideAccessPointInput)(nil)).Elem(), GetConnectionASideAccessPointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionASideAccessPointPtrInput)(nil)).Elem(), GetConnectionASideAccessPointArgs{})
@@ -31229,6 +41716,96 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionZSideAdditionalInfoArrayInput)(nil)).Elem(), GetConnectionZSideAdditionalInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionZSideServiceTokenInput)(nil)).Elem(), GetConnectionZSideServiceTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionZSideServiceTokenPtrInput)(nil)).Elem(), GetConnectionZSideServiceTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataInput)(nil)).Elem(), GetConnectionsDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataArrayInput)(nil)).Elem(), GetConnectionsDataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataASideInput)(nil)).Elem(), GetConnectionsDataASideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataASideArrayInput)(nil)).Elem(), GetConnectionsDataASideArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataASideAccessPointInput)(nil)).Elem(), GetConnectionsDataASideAccessPointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataASideAccessPointPtrInput)(nil)).Elem(), GetConnectionsDataASideAccessPointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataASideAccessPointAccountInput)(nil)).Elem(), GetConnectionsDataASideAccessPointAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataASideAccessPointAccountArrayInput)(nil)).Elem(), GetConnectionsDataASideAccessPointAccountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataASideAccessPointGatewayInput)(nil)).Elem(), GetConnectionsDataASideAccessPointGatewayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataASideAccessPointGatewayPtrInput)(nil)).Elem(), GetConnectionsDataASideAccessPointGatewayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataASideAccessPointInterfaceInput)(nil)).Elem(), GetConnectionsDataASideAccessPointInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataASideAccessPointInterfacePtrInput)(nil)).Elem(), GetConnectionsDataASideAccessPointInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataASideAccessPointLinkProtocolInput)(nil)).Elem(), GetConnectionsDataASideAccessPointLinkProtocolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataASideAccessPointLinkProtocolPtrInput)(nil)).Elem(), GetConnectionsDataASideAccessPointLinkProtocolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataASideAccessPointLocationInput)(nil)).Elem(), GetConnectionsDataASideAccessPointLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataASideAccessPointLocationPtrInput)(nil)).Elem(), GetConnectionsDataASideAccessPointLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataASideAccessPointNetworkInput)(nil)).Elem(), GetConnectionsDataASideAccessPointNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataASideAccessPointNetworkPtrInput)(nil)).Elem(), GetConnectionsDataASideAccessPointNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataASideAccessPointPortInput)(nil)).Elem(), GetConnectionsDataASideAccessPointPortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataASideAccessPointPortPtrInput)(nil)).Elem(), GetConnectionsDataASideAccessPointPortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataASideAccessPointPortRedundancyInput)(nil)).Elem(), GetConnectionsDataASideAccessPointPortRedundancyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataASideAccessPointPortRedundancyArrayInput)(nil)).Elem(), GetConnectionsDataASideAccessPointPortRedundancyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataASideAccessPointProfileInput)(nil)).Elem(), GetConnectionsDataASideAccessPointProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataASideAccessPointProfilePtrInput)(nil)).Elem(), GetConnectionsDataASideAccessPointProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigInput)(nil)).Elem(), GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigArrayInput)(nil)).Elem(), GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataASideAccessPointRouterInput)(nil)).Elem(), GetConnectionsDataASideAccessPointRouterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataASideAccessPointRouterPtrInput)(nil)).Elem(), GetConnectionsDataASideAccessPointRouterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataASideAccessPointVirtualDeviceInput)(nil)).Elem(), GetConnectionsDataASideAccessPointVirtualDeviceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataASideAccessPointVirtualDevicePtrInput)(nil)).Elem(), GetConnectionsDataASideAccessPointVirtualDeviceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataASideAdditionalInfoInput)(nil)).Elem(), GetConnectionsDataASideAdditionalInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataASideAdditionalInfoArrayInput)(nil)).Elem(), GetConnectionsDataASideAdditionalInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataASideServiceTokenInput)(nil)).Elem(), GetConnectionsDataASideServiceTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataASideServiceTokenPtrInput)(nil)).Elem(), GetConnectionsDataASideServiceTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataAccountInput)(nil)).Elem(), GetConnectionsDataAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataAccountArrayInput)(nil)).Elem(), GetConnectionsDataAccountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataChangeLogInput)(nil)).Elem(), GetConnectionsDataChangeLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataChangeLogArrayInput)(nil)).Elem(), GetConnectionsDataChangeLogArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataNotificationInput)(nil)).Elem(), GetConnectionsDataNotificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataNotificationArrayInput)(nil)).Elem(), GetConnectionsDataNotificationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataOperationInput)(nil)).Elem(), GetConnectionsDataOperationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataOperationArrayInput)(nil)).Elem(), GetConnectionsDataOperationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataOperationErrorInput)(nil)).Elem(), GetConnectionsDataOperationErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataOperationErrorArrayInput)(nil)).Elem(), GetConnectionsDataOperationErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataOperationErrorAdditionalInfoInput)(nil)).Elem(), GetConnectionsDataOperationErrorAdditionalInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataOperationErrorAdditionalInfoArrayInput)(nil)).Elem(), GetConnectionsDataOperationErrorAdditionalInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataOrderInput)(nil)).Elem(), GetConnectionsDataOrderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataOrderArrayInput)(nil)).Elem(), GetConnectionsDataOrderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataProjectInput)(nil)).Elem(), GetConnectionsDataProjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataProjectArrayInput)(nil)).Elem(), GetConnectionsDataProjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataRedundancyInput)(nil)).Elem(), GetConnectionsDataRedundancyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataRedundancyArrayInput)(nil)).Elem(), GetConnectionsDataRedundancyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataZSideInput)(nil)).Elem(), GetConnectionsDataZSideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataZSideArrayInput)(nil)).Elem(), GetConnectionsDataZSideArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataZSideAccessPointInput)(nil)).Elem(), GetConnectionsDataZSideAccessPointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataZSideAccessPointPtrInput)(nil)).Elem(), GetConnectionsDataZSideAccessPointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataZSideAccessPointAccountInput)(nil)).Elem(), GetConnectionsDataZSideAccessPointAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataZSideAccessPointAccountArrayInput)(nil)).Elem(), GetConnectionsDataZSideAccessPointAccountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataZSideAccessPointGatewayInput)(nil)).Elem(), GetConnectionsDataZSideAccessPointGatewayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataZSideAccessPointGatewayPtrInput)(nil)).Elem(), GetConnectionsDataZSideAccessPointGatewayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataZSideAccessPointInterfaceInput)(nil)).Elem(), GetConnectionsDataZSideAccessPointInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataZSideAccessPointInterfacePtrInput)(nil)).Elem(), GetConnectionsDataZSideAccessPointInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataZSideAccessPointLinkProtocolInput)(nil)).Elem(), GetConnectionsDataZSideAccessPointLinkProtocolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataZSideAccessPointLinkProtocolPtrInput)(nil)).Elem(), GetConnectionsDataZSideAccessPointLinkProtocolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataZSideAccessPointLocationInput)(nil)).Elem(), GetConnectionsDataZSideAccessPointLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataZSideAccessPointLocationPtrInput)(nil)).Elem(), GetConnectionsDataZSideAccessPointLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataZSideAccessPointNetworkInput)(nil)).Elem(), GetConnectionsDataZSideAccessPointNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataZSideAccessPointNetworkPtrInput)(nil)).Elem(), GetConnectionsDataZSideAccessPointNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataZSideAccessPointPortInput)(nil)).Elem(), GetConnectionsDataZSideAccessPointPortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataZSideAccessPointPortPtrInput)(nil)).Elem(), GetConnectionsDataZSideAccessPointPortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataZSideAccessPointPortRedundancyInput)(nil)).Elem(), GetConnectionsDataZSideAccessPointPortRedundancyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataZSideAccessPointPortRedundancyArrayInput)(nil)).Elem(), GetConnectionsDataZSideAccessPointPortRedundancyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataZSideAccessPointProfileInput)(nil)).Elem(), GetConnectionsDataZSideAccessPointProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataZSideAccessPointProfilePtrInput)(nil)).Elem(), GetConnectionsDataZSideAccessPointProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigInput)(nil)).Elem(), GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigArrayInput)(nil)).Elem(), GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataZSideAccessPointRouterInput)(nil)).Elem(), GetConnectionsDataZSideAccessPointRouterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataZSideAccessPointRouterPtrInput)(nil)).Elem(), GetConnectionsDataZSideAccessPointRouterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataZSideAccessPointVirtualDeviceInput)(nil)).Elem(), GetConnectionsDataZSideAccessPointVirtualDeviceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataZSideAccessPointVirtualDevicePtrInput)(nil)).Elem(), GetConnectionsDataZSideAccessPointVirtualDeviceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataZSideAdditionalInfoInput)(nil)).Elem(), GetConnectionsDataZSideAdditionalInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataZSideAdditionalInfoArrayInput)(nil)).Elem(), GetConnectionsDataZSideAdditionalInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataZSideServiceTokenInput)(nil)).Elem(), GetConnectionsDataZSideServiceTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsDataZSideServiceTokenPtrInput)(nil)).Elem(), GetConnectionsDataZSideServiceTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsFilterInput)(nil)).Elem(), GetConnectionsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsFilterArrayInput)(nil)).Elem(), GetConnectionsFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsPaginationInput)(nil)).Elem(), GetConnectionsPaginationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsPaginationPtrInput)(nil)).Elem(), GetConnectionsPaginationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsSortInput)(nil)).Elem(), GetConnectionsSortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsSortArrayInput)(nil)).Elem(), GetConnectionsSortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkChangeInput)(nil)).Elem(), GetNetworkChangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkChangeLogInput)(nil)).Elem(), GetNetworkChangeLogArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkLocationInput)(nil)).Elem(), GetNetworkLocationArgs{})
@@ -31237,6 +41814,26 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkNotificationArrayInput)(nil)).Elem(), GetNetworkNotificationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkOperationInput)(nil)).Elem(), GetNetworkOperationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkProjectInput)(nil)).Elem(), GetNetworkProjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworksDataInput)(nil)).Elem(), GetNetworksDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworksDataArrayInput)(nil)).Elem(), GetNetworksDataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworksDataChangeInput)(nil)).Elem(), GetNetworksDataChangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworksDataChangeArrayInput)(nil)).Elem(), GetNetworksDataChangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworksDataChangeLogInput)(nil)).Elem(), GetNetworksDataChangeLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworksDataChangeLogArrayInput)(nil)).Elem(), GetNetworksDataChangeLogArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworksDataLocationInput)(nil)).Elem(), GetNetworksDataLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworksDataLocationArrayInput)(nil)).Elem(), GetNetworksDataLocationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworksDataNotificationInput)(nil)).Elem(), GetNetworksDataNotificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworksDataNotificationArrayInput)(nil)).Elem(), GetNetworksDataNotificationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworksDataOperationInput)(nil)).Elem(), GetNetworksDataOperationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworksDataOperationArrayInput)(nil)).Elem(), GetNetworksDataOperationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworksDataProjectInput)(nil)).Elem(), GetNetworksDataProjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworksDataProjectArrayInput)(nil)).Elem(), GetNetworksDataProjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworksFilterInput)(nil)).Elem(), GetNetworksFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworksFilterArrayInput)(nil)).Elem(), GetNetworksFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworksPaginationInput)(nil)).Elem(), GetNetworksPaginationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworksPaginationPtrInput)(nil)).Elem(), GetNetworksPaginationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworksSortInput)(nil)).Elem(), GetNetworksSortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworksSortArrayInput)(nil)).Elem(), GetNetworksSortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPortAccountInput)(nil)).Elem(), GetPortAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPortChangeLogInput)(nil)).Elem(), GetPortChangeLogArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPortDeviceInput)(nil)).Elem(), GetPortDeviceArgs{})
@@ -31520,6 +42117,28 @@ func init() {
 	pulumi.RegisterOutputType(GetCloudRouterPackageArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudRouterProjectOutput{})
 	pulumi.RegisterOutputType(GetCloudRouterProjectArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudRoutersDataOutput{})
+	pulumi.RegisterOutputType(GetCloudRoutersDataArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudRoutersDataAccountOutput{})
+	pulumi.RegisterOutputType(GetCloudRoutersDataAccountArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudRoutersDataChangeLogOutput{})
+	pulumi.RegisterOutputType(GetCloudRoutersDataChangeLogArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudRoutersDataLocationOutput{})
+	pulumi.RegisterOutputType(GetCloudRoutersDataLocationArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudRoutersDataNotificationOutput{})
+	pulumi.RegisterOutputType(GetCloudRoutersDataNotificationArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudRoutersDataOrderOutput{})
+	pulumi.RegisterOutputType(GetCloudRoutersDataOrderArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudRoutersDataPackageOutput{})
+	pulumi.RegisterOutputType(GetCloudRoutersDataPackageArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudRoutersDataProjectOutput{})
+	pulumi.RegisterOutputType(GetCloudRoutersDataProjectArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudRoutersFilterOutput{})
+	pulumi.RegisterOutputType(GetCloudRoutersFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudRoutersPaginationOutput{})
+	pulumi.RegisterOutputType(GetCloudRoutersPaginationPtrOutput{})
+	pulumi.RegisterOutputType(GetCloudRoutersSortOutput{})
+	pulumi.RegisterOutputType(GetCloudRoutersSortPtrOutput{})
 	pulumi.RegisterOutputType(GetConnectionASideOutput{})
 	pulumi.RegisterOutputType(GetConnectionASideAccessPointOutput{})
 	pulumi.RegisterOutputType(GetConnectionASideAccessPointPtrOutput{})
@@ -31594,6 +42213,96 @@ func init() {
 	pulumi.RegisterOutputType(GetConnectionZSideAdditionalInfoArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionZSideServiceTokenOutput{})
 	pulumi.RegisterOutputType(GetConnectionZSideServiceTokenPtrOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataASideOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataASideArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataASideAccessPointOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataASideAccessPointPtrOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataASideAccessPointAccountOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataASideAccessPointAccountArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataASideAccessPointGatewayOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataASideAccessPointGatewayPtrOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataASideAccessPointInterfaceOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataASideAccessPointInterfacePtrOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataASideAccessPointLinkProtocolOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataASideAccessPointLinkProtocolPtrOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataASideAccessPointLocationOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataASideAccessPointLocationPtrOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataASideAccessPointNetworkOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataASideAccessPointNetworkPtrOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataASideAccessPointPortOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataASideAccessPointPortPtrOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataASideAccessPointPortRedundancyOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataASideAccessPointPortRedundancyArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataASideAccessPointProfileOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataASideAccessPointProfilePtrOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataASideAccessPointProfileAccessPointTypeConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataASideAccessPointRouterOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataASideAccessPointRouterPtrOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataASideAccessPointVirtualDeviceOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataASideAccessPointVirtualDevicePtrOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataASideAdditionalInfoOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataASideAdditionalInfoArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataASideServiceTokenOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataASideServiceTokenPtrOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataAccountOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataAccountArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataChangeLogOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataChangeLogArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataNotificationOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataNotificationArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataOperationOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataOperationArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataOperationErrorOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataOperationErrorArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataOperationErrorAdditionalInfoOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataOperationErrorAdditionalInfoArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataOrderOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataOrderArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataProjectOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataProjectArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataRedundancyOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataRedundancyArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataZSideOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataZSideArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataZSideAccessPointOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataZSideAccessPointPtrOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataZSideAccessPointAccountOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataZSideAccessPointAccountArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataZSideAccessPointGatewayOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataZSideAccessPointGatewayPtrOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataZSideAccessPointInterfaceOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataZSideAccessPointInterfacePtrOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataZSideAccessPointLinkProtocolOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataZSideAccessPointLinkProtocolPtrOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataZSideAccessPointLocationOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataZSideAccessPointLocationPtrOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataZSideAccessPointNetworkOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataZSideAccessPointNetworkPtrOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataZSideAccessPointPortOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataZSideAccessPointPortPtrOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataZSideAccessPointPortRedundancyOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataZSideAccessPointPortRedundancyArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataZSideAccessPointProfileOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataZSideAccessPointProfilePtrOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataZSideAccessPointRouterOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataZSideAccessPointRouterPtrOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataZSideAccessPointVirtualDeviceOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataZSideAccessPointVirtualDevicePtrOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataZSideAdditionalInfoOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataZSideAdditionalInfoArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataZSideServiceTokenOutput{})
+	pulumi.RegisterOutputType(GetConnectionsDataZSideServiceTokenPtrOutput{})
+	pulumi.RegisterOutputType(GetConnectionsFilterOutput{})
+	pulumi.RegisterOutputType(GetConnectionsFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionsPaginationOutput{})
+	pulumi.RegisterOutputType(GetConnectionsPaginationPtrOutput{})
+	pulumi.RegisterOutputType(GetConnectionsSortOutput{})
+	pulumi.RegisterOutputType(GetConnectionsSortArrayOutput{})
 	pulumi.RegisterOutputType(GetNetworkChangeOutput{})
 	pulumi.RegisterOutputType(GetNetworkChangeLogOutput{})
 	pulumi.RegisterOutputType(GetNetworkLocationOutput{})
@@ -31602,6 +42311,26 @@ func init() {
 	pulumi.RegisterOutputType(GetNetworkNotificationArrayOutput{})
 	pulumi.RegisterOutputType(GetNetworkOperationOutput{})
 	pulumi.RegisterOutputType(GetNetworkProjectOutput{})
+	pulumi.RegisterOutputType(GetNetworksDataOutput{})
+	pulumi.RegisterOutputType(GetNetworksDataArrayOutput{})
+	pulumi.RegisterOutputType(GetNetworksDataChangeOutput{})
+	pulumi.RegisterOutputType(GetNetworksDataChangeArrayOutput{})
+	pulumi.RegisterOutputType(GetNetworksDataChangeLogOutput{})
+	pulumi.RegisterOutputType(GetNetworksDataChangeLogArrayOutput{})
+	pulumi.RegisterOutputType(GetNetworksDataLocationOutput{})
+	pulumi.RegisterOutputType(GetNetworksDataLocationArrayOutput{})
+	pulumi.RegisterOutputType(GetNetworksDataNotificationOutput{})
+	pulumi.RegisterOutputType(GetNetworksDataNotificationArrayOutput{})
+	pulumi.RegisterOutputType(GetNetworksDataOperationOutput{})
+	pulumi.RegisterOutputType(GetNetworksDataOperationArrayOutput{})
+	pulumi.RegisterOutputType(GetNetworksDataProjectOutput{})
+	pulumi.RegisterOutputType(GetNetworksDataProjectArrayOutput{})
+	pulumi.RegisterOutputType(GetNetworksFilterOutput{})
+	pulumi.RegisterOutputType(GetNetworksFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetNetworksPaginationOutput{})
+	pulumi.RegisterOutputType(GetNetworksPaginationPtrOutput{})
+	pulumi.RegisterOutputType(GetNetworksSortOutput{})
+	pulumi.RegisterOutputType(GetNetworksSortArrayOutput{})
 	pulumi.RegisterOutputType(GetPortAccountOutput{})
 	pulumi.RegisterOutputType(GetPortChangeLogOutput{})
 	pulumi.RegisterOutputType(GetPortDeviceOutput{})

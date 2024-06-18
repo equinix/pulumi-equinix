@@ -101,6 +101,10 @@ def get_service_profiles(filter: Optional[pulumi.InputType['GetServiceProfilesFi
     """
     Fabric V4 API compatible data resource that allow user to fetch Service Profile by name filter criteria
 
+    Additional documentation:
+    * Getting Started: <https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm>
+    * API: <https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles>
+
     ## Example Usage
 
     ```python
@@ -152,6 +156,10 @@ def get_service_profiles_output(filter: Optional[pulumi.Input[Optional[pulumi.In
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceProfilesResult]:
     """
     Fabric V4 API compatible data resource that allow user to fetch Service Profile by name filter criteria
+
+    Additional documentation:
+    * Getting Started: <https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm>
+    * API: <https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles>
 
     ## Example Usage
 
