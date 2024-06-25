@@ -1,3 +1,7 @@
+# Visit https://goreleaser.com for documentation on how to customize this
+# behavior.
+version: 2
+
 archives:
   - id: archive
     name_template: '{{ .Binary }}-{{ .Tag }}-{{ .Os }}-{{ .Arch }}'
@@ -28,7 +32,7 @@ builds:
       - -X github.com/equinix/terraform-provider-equinix/version.ProviderVersion|={{.Tag}}
     main: ./cmd/pulumi-resource-equinix/
 changelog:
-  skip: true
+  disable: true
 release:
   disable: false
   prerelease: auto
