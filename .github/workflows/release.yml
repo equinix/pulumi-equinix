@@ -78,7 +78,7 @@ jobs:
         uses: goreleaser/goreleaser-action@v6
         with:
           args: -p 3 release --clean --timeout 150m0s
-          version: latest
+          version: '~> v2'
     strategy:
       fail-fast: true
   publish_sdk:
