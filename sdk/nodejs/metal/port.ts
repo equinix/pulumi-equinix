@@ -6,14 +6,44 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
- *
+ * ### equinix metal port hybrid bonded
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
  *
  * const config = new pulumi.Config();
  * const portId = config.require("portId");
- * const org = new equinix.metal.Port("org", {
+ * const vlanId = config.require("vlanId");
+ * const port = new equinix.metal.Port("port", {
+ *     portId: portId,
+ *     bonded: true,
+ *     layer2: false,
+ *     vlanIds: [vlanId],
+ * });
+ * export const portType = port.type;
+ * export const portBondedNetworkType = port.networkType;
+ * ```
+ * ### equinix metal port hybrid unbonded
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const config = new pulumi.Config();
+ * const portId = config.require("portId");
+ * const port = new equinix.metal.Port("port", {
+ *     portId: portId,
+ *     bonded: false,
+ * });
+ * export const portType = port.type;
+ * ```
+ * ### equinix metal port layer2 bonded
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const config = new pulumi.Config();
+ * const portId = config.require("portId");
+ * const port = new equinix.metal.Port("port", {
  *     portId: portId,
  *     bonded: true,
  *     layer2: true,

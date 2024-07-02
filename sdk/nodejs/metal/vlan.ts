@@ -16,7 +16,6 @@ import * as utilities from "../utilities";
  * * https://metal.equinix.com/developers/docs/networking/layer2-configs/
  *
  * ## Example Usage
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";

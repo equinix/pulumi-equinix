@@ -56,7 +56,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var connectionId = config.get("connectionId");
+<<<<<<< HEAD
  *         var routingProtocol = new RoutingProtocol("routingProtocol", RoutingProtocolArgs.builder()        
+=======
+ *         var routingProtocol = new RoutingProtocol("routingProtocol", RoutingProtocolArgs.builder()
+>>>>>>> 667aad3 (add make command to build examples and examples in docs)
  *             .connectionUuid(connectionId)
  *             .name("My-Direct-route-1")
  *             .type("DIRECT")

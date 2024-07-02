@@ -8,7 +8,6 @@ import * as utilities from "../utilities";
  * Resource `equinix.networkedge.SshUser` allows creation and management of Equinix Network Edge SSH users.
  *
  * ## Example Usage
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";

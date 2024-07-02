@@ -37,8 +37,15 @@ import javax.annotation.Nullable;
  * 
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
- * import com.equinix.pulumi.metal.ReservedIpBlock;
- * import com.equinix.pulumi.metal.ReservedIpBlockArgs;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.metal.ReservedIpBlock;
+ * import com.pulumi.equinix.metal.ReservedIpBlockArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -47,11 +54,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
+<<<<<<< HEAD
  *         final var projectId = config.get("projectId").get();
  *         final var metro = config.get("metro").orElse("FR");
  *         final var type = config.get("type").orElse("public_ipv4");
  *         final var quantity = Integer.parseInt(config.get("quantity").orElse("1"));
  *         var ipBlock = new ReservedIpBlock("ipBlock", ReservedIpBlockArgs.builder()        
+=======
+ *         final var projectId = config.get("projectId");
+ *         final var metro = config.get("metro").orElse("FR");
+ *         final var type = config.get("type").orElse("public_ipv4");
+ *         final var quantity = config.get("quantity").orElse(1);
+ *         var ipBlock = new ReservedIpBlock("ipBlock", ReservedIpBlockArgs.builder()
+>>>>>>> 667aad3 (add make command to build examples and examples in docs)
  *             .projectId(projectId)
  *             .type(type)
  *             .quantity(quantity)

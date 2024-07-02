@@ -13,6 +13,7 @@ namespace Pulumi.Equinix.Fabric
     /// ## Example Usage
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Equinix = Pulumi.Equinix;
     /// 
@@ -20,7 +21,7 @@ namespace Pulumi.Equinix.Fabric
     /// {
     ///     var config = new Config();
     ///     var metro = config.Get("metro") ?? "FR";
-    ///     var speedInMbps = config.GetNumber("speedInMbps") ?? 50;
+    ///     var speedInMbps = config.GetInt32("speedInMbps") ?? 50;
     ///     var fabricPortName = config.Require("fabricPortName");
     ///     var awsRegion = config.Get("awsRegion") ?? "eu-central-1";
     ///     var awsAccountId = config.Require("awsAccountId");
@@ -48,12 +49,12 @@ namespace Pulumi.Equinix.Fabric
     ///     var colo2Aws = new Equinix.Fabric.Connection("colo2Aws", new()
     ///     {
     ///         Name = "Pulumi-colo2Aws",
-    ///         Type = "EVPL_VC",
+    ///         Type = Equinix.Fabric.ConnectionType.EVPL,
     ///         Notifications = new[]
     ///         {
     ///             new Equinix.Fabric.Inputs.ConnectionNotificationArgs
     ///             {
-    ///                 Type = "ALL",
+    ///                 Type = Equinix.Fabric.NotificationsType.All,
     ///                 Emails = new[]
     ///                 {
     ///                     "example@equinix.com",
@@ -69,14 +70,14 @@ namespace Pulumi.Equinix.Fabric
     ///         {
     ///             AccessPoint = new Equinix.Fabric.Inputs.ConnectionASideAccessPointArgs
     ///             {
-    ///                 Type = "COLO",
+    ///                 Type = Equinix.Fabric.AccessPointType.Colo,
     ///                 Port = new Equinix.Fabric.Inputs.ConnectionASideAccessPointPortArgs
     ///                 {
     ///                     Uuid = portId,
     ///                 },
     ///                 LinkProtocol = new Equinix.Fabric.Inputs.ConnectionASideAccessPointLinkProtocolArgs
     ///                 {
-    ///                     Type = "DOT1Q",
+    ///                     Type = Equinix.Fabric.AccessPointLinkProtocolType.Dot1q,
     ///                     VlanTag = 1234,
     ///                 },
     ///             },
@@ -85,12 +86,12 @@ namespace Pulumi.Equinix.Fabric
     ///         {
     ///             AccessPoint = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointArgs
     ///             {
-    ///                 Type = "SP",
+    ///                 Type = Equinix.Fabric.AccessPointType.SP,
     ///                 AuthenticationKey = awsAccountId,
     ///                 SellerRegion = awsRegion,
     ///                 Profile = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointProfileArgs
     ///                 {
-    ///                     Type = "L2_PROFILE",
+    ///                     Type = Equinix.Fabric.ProfileType.L2Profile,
     ///                     Uuid = serviceProfileId,
     ///                 },
     ///                 Location = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointLocationArgs

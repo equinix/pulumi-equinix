@@ -23,10 +23,13 @@ import javax.annotation.Nullable;
  * 
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
- * import com.equinix.pulumi.metal.ProjectSshKey;
- * import com.equinix.pulumi.metal.ProjectSshKeyArgs;
- * 
- * import java.io.IOException;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.metal.ProjectSshKey;
+ * import com.pulumi.equinix.metal.ProjectSshKeyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
@@ -37,6 +40,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
+<<<<<<< HEAD
  *         final var projectId = config.get("projectId").get();
  * 
  *         String content = null;
@@ -50,6 +54,13 @@ import javax.annotation.Nullable;
  *             .projectId(projectId)
  *             .name("johnKent")
  *             .publicKey(content)
+=======
+ *         final var projectId = config.get("projectId");
+ *         var sshKey = new ProjectSshKey("sshKey", ProjectSshKeyArgs.builder()
+ *             .projectId(projectId)
+ *             .name("johnKent")
+ *             .publicKey(Files.readString(Paths.get("/Users/John/.ssh/metal_rsa.pub")))
+>>>>>>> 667aad3 (add make command to build examples and examples in docs)
  *             .build());
  * 
  *         ctx.export("sshKeyId", sshKey.id());

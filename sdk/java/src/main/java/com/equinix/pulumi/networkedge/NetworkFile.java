@@ -26,12 +26,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.equinix.pulumi.networkedge.NetworkFile;
- * import com.equinix.pulumi.networkedge.NetworkFileArgs;
+ * import com.pulumi.equinix.networkedge.NetworkFile;
+ * import com.pulumi.equinix.networkedge.NetworkFileArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
- * import java.io.IOException;
  * import java.io.File;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
@@ -44,6 +43,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var metro = config.get("metro").orElse("SV");
+<<<<<<< HEAD
  * 
  *         String content = null;
  *         try {
@@ -55,6 +55,11 @@ import javax.annotation.Nullable;
  *         var networkFile = new NetworkFile("networkFile", NetworkFileArgs.builder()        
  *             .fileName("Aviatrix-ZTP-file")
  *             .content(content)
+=======
+ *         var networkFile = new NetworkFile("networkFile", NetworkFileArgs.builder()
+ *             .fileName("Aviatrix-ZTP-file")
+ *             .content(Files.readString(Paths.get("./../assets/aviatrix-cloud-init.txt")))
+>>>>>>> 667aad3 (add make command to build examples and examples in docs)
  *             .metroCode(metro)
  *             .deviceTypeCode("AVIATRIX_EDGE")
  *             .processType("CLOUD_INIT")

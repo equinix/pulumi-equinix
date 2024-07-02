@@ -19,6 +19,7 @@ namespace Pulumi.Equinix.Fabric
     /// ## Example Usage
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Equinix = Pulumi.Equinix;
     /// 
@@ -28,12 +29,12 @@ namespace Pulumi.Equinix.Fabric
     ///     {
     ///         Name = "Example Cloud Provider",
     ///         Description = "50 to 500 Mbps Hosted Connection to Example Cloud",
-    ///         Type = "L2_PROFILE",
+    ///         Type = Equinix.Fabric.ProfileType.L2Profile,
     ///         AccessPointTypeConfigs = new[]
     ///         {
     ///             new Equinix.Fabric.Inputs.ServiceProfileAccessPointTypeConfigArgs
     ///             {
-    ///                 Type = "COLO",
+    ///                 Type = Equinix.Fabric.ProfileAccessPointType.Colo,
     ///                 SupportedBandwidths = new[]
     ///                 {
     ///                     50,
@@ -66,13 +67,8 @@ namespace Pulumi.Equinix.Fabric
     ///                 },
     ///             },
     ///         },
-    ///         Account = new Equinix.Fabric.Inputs.ServiceProfileAccountArgs
-    ///         {
-    ///             OrganizationName = "Example Cloud",
-    ///             GlobalOrganizationName = "Example Global",
-    ///         },
     ///         Metros = null,
-    ///         Visibility = "PUBLIC",
+    ///         Visibility = Equinix.Fabric.ProfileVisibility.Public,
     ///         MarketingInfo = new Equinix.Fabric.Inputs.ServiceProfileMarketingInfoArgs
     ///         {
     ///             Promotion = true,

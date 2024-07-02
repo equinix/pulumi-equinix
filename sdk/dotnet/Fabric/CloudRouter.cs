@@ -55,10 +55,6 @@ namespace Pulumi.Equinix.Fabric
     ///         {
     ///             AccountNumber = 272010,
     ///         },
-    ///         Project = new Equinix.Fabric.Inputs.CloudRouterProjectArgs
-    ///         {
-    ///             ProjectId = "995072000433550",
-    ///         },
     ///     });
     /// 
     ///     return new Dictionary&lt;string, object?&gt;

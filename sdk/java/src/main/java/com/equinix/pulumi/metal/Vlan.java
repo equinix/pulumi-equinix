@@ -30,8 +30,15 @@ import javax.annotation.Nullable;
  * 
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
- * import com.equinix.pulumi.metal.Vlan;
- * import com.equinix.pulumi.metal.VlanArgs;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.metal.Vlan;
+ * import com.pulumi.equinix.metal.VlanArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -40,10 +47,17 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
+<<<<<<< HEAD
  *         final var projectId = config.get("projectId").get();
  *         final var metro = config.get("metro").orElse("DA");
  *         final var vxlan = Integer.parseInt(config.get("vxlan").get());
  *         var vlan = new Vlan("vlan", VlanArgs.builder()        
+=======
+ *         final var projectId = config.get("projectId");
+ *         final var metro = config.get("metro").orElse("DA");
+ *         final var vxlan = config.get("vxlan");
+ *         var vlan = new Vlan("vlan", VlanArgs.builder()
+>>>>>>> 667aad3 (add make command to build examples and examples in docs)
  *             .description("VLAN in Dallas")
  *             .projectId(projectId)
  *             .metro(metro)

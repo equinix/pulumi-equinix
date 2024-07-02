@@ -376,18 +376,47 @@ class Port(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+        ### equinix metal port hybrid bonded
         ```python
         import pulumi
         import pulumi_equinix as equinix
 
         config = pulumi.Config()
         port_id = config.require("portId")
-        org = equinix.metal.Port("org",
+        vlan_id = config.require("vlanId")
+        port = equinix.metal.Port("port",
+            port_id=port_id,
+            bonded=True,
+            layer2=False,
+            vlan_ids=[vlan_id])
+        pulumi.export("portType", port.type)
+        pulumi.export("portBondedNetworkType", port.network_type)
+        ```
+        ### equinix metal port hybrid unbonded
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        config = pulumi.Config()
+        port_id = config.require("portId")
+        port = equinix.metal.Port("port",
+            port_id=port_id,
+            bonded=False)
+        pulumi.export("portType", port.type)
+        ```
+        ### equinix metal port layer2 bonded
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        config = pulumi.Config()
+        port_id = config.require("portId")
+        port = equinix.metal.Port("port",
             port_id=port_id,
             bonded=True,
             layer2=True)
-        pulumi.export("portType", port["type"])
-        pulumi.export("portBondedNetworkType", port["networkType"])
+        pulumi.export("portType", port.type)
+        pulumi.export("portBondedNetworkType", port.network_type)
         ```
 
         :param str resource_name: The name of the resource.
@@ -408,18 +437,47 @@ class Port(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+        ### equinix metal port hybrid bonded
         ```python
         import pulumi
         import pulumi_equinix as equinix
 
         config = pulumi.Config()
         port_id = config.require("portId")
-        org = equinix.metal.Port("org",
+        vlan_id = config.require("vlanId")
+        port = equinix.metal.Port("port",
+            port_id=port_id,
+            bonded=True,
+            layer2=False,
+            vlan_ids=[vlan_id])
+        pulumi.export("portType", port.type)
+        pulumi.export("portBondedNetworkType", port.network_type)
+        ```
+        ### equinix metal port hybrid unbonded
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        config = pulumi.Config()
+        port_id = config.require("portId")
+        port = equinix.metal.Port("port",
+            port_id=port_id,
+            bonded=False)
+        pulumi.export("portType", port.type)
+        ```
+        ### equinix metal port layer2 bonded
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        config = pulumi.Config()
+        port_id = config.require("portId")
+        port = equinix.metal.Port("port",
             port_id=port_id,
             bonded=True,
             layer2=True)
-        pulumi.export("portType", port["type"])
-        pulumi.export("portBondedNetworkType", port["networkType"])
+        pulumi.export("portType", port.type)
+        pulumi.export("portBondedNetworkType", port.network_type)
         ```
 
         :param str resource_name: The name of the resource.

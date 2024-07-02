@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  * Device ACL templates give possibility to define set of rules will allowed inbound traffic. Templates can be assigned to the network devices.
  *
  * ## Example Usage
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -24,14 +23,14 @@ import * as utilities from "../utilities";
  *     inboundRules: [
  *         {
  *             subnet: "1.1.1.1/32",
- *             protocol: "IP",
+ *             protocol: equinix.networkedge.AclRuleProtocolType.IP,
  *             srcPort: "any",
  *             dstPort: "any",
  *             description: "inbound rule description",
  *         },
  *         {
  *             subnet: "2.2.2.2/28",
- *             protocol: "TCP",
+ *             protocol: equinix.networkedge.AclRuleProtocolType.TCP,
  *             srcPort: "any",
  *             dstPort: "any",
  *             description: "inbound rule description",

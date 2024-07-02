@@ -41,7 +41,7 @@ import (
 //			vc, err := metal.NewVirtualCircuit(ctx, "vc", &metal.VirtualCircuitArgs{
 //				ConnectionId: pulumi.String(connectionId),
 //				ProjectId:    pulumi.String(projectId),
-//				PortId:       *pulumi.String(portId),
+//				PortId:       pulumi.String(portId),
 //				VlanId:       pulumi.String(vlanId),
 //				NniVlan:      pulumi.Int(1056),
 //			})

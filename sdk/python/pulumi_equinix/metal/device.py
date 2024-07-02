@@ -1063,10 +1063,10 @@ class Device(pulumi.CustomResource):
         project_id = config.require("projectId")
         web = equinix.metal.Device("web",
             hostname="webserver1",
-            plan="c3.small.x86",
-            operating_system="ubuntu_20_04",
+            plan=equinix.metal.Plan.C3_SMALL_X86,
+            operating_system=equinix.metal.OperatingSystem.UBUNTU20_04,
             metro="sv",
-            billing_cycle="hourly",
+            billing_cycle=equinix.metal.BillingCycle.HOURLY,
             project_id=project_id)
         pulumi.export("webPublicIp", web.access_public_ipv4.apply(lambda access_public_ipv4: f"http://{access_public_ipv4}"))
         ```
@@ -1116,10 +1116,10 @@ class Device(pulumi.CustomResource):
         project_id = config.require("projectId")
         web = equinix.metal.Device("web",
             hostname="webserver1",
-            plan="c3.small.x86",
-            operating_system="ubuntu_20_04",
+            plan=equinix.metal.Plan.C3_SMALL_X86,
+            operating_system=equinix.metal.OperatingSystem.UBUNTU20_04,
             metro="sv",
-            billing_cycle="hourly",
+            billing_cycle=equinix.metal.BillingCycle.HOURLY,
             project_id=project_id)
         pulumi.export("webPublicIp", web.access_public_ipv4.apply(lambda access_public_ipv4: f"http://{access_public_ipv4}"))
         ```

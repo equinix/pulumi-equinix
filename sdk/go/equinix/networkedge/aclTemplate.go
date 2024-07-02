@@ -36,14 +36,14 @@ import (
 //				InboundRules: networkedge.AclTemplateInboundRuleArray{
 //					&networkedge.AclTemplateInboundRuleArgs{
 //						Subnet:      pulumi.String("1.1.1.1/32"),
-//						Protocol:    pulumi.String("IP"),
+//						Protocol:    pulumi.String(networkedge.AclRuleProtocolTypeIP),
 //						SrcPort:     pulumi.String("any"),
 //						DstPort:     pulumi.String("any"),
 //						Description: pulumi.String("inbound rule description"),
 //					},
 //					&networkedge.AclTemplateInboundRuleArgs{
 //						Subnet:      pulumi.String("2.2.2.2/28"),
-//						Protocol:    pulumi.String("TCP"),
+//						Protocol:    pulumi.String(networkedge.AclRuleProtocolTypeTCP),
 //						SrcPort:     pulumi.String("any"),
 //						DstPort:     pulumi.String("any"),
 //						Description: pulumi.String("inbound rule description"),

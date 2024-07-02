@@ -595,7 +595,7 @@ class VirtualCircuit(pulumi.CustomResource):
         project_id = config.require("projectId")
         connection_id = config.require("connectionId")
         vlan_id = config.require("vlanId")
-        port_id = equinix.metal.get_interconnection(connection_id=connection_id).ports[0].id
+        port_id = equinix.metal.get_interconnection_output(connection_id=connection_id).apply(lambda invoke: invoke.ports[0].id)
         vc = equinix.metal.VirtualCircuit("vc",
             connection_id=connection_id,
             project_id=project_id,
@@ -654,7 +654,7 @@ class VirtualCircuit(pulumi.CustomResource):
         project_id = config.require("projectId")
         connection_id = config.require("connectionId")
         vlan_id = config.require("vlanId")
-        port_id = equinix.metal.get_interconnection(connection_id=connection_id).ports[0].id
+        port_id = equinix.metal.get_interconnection_output(connection_id=connection_id).apply(lambda invoke: invoke.ports[0].id)
         vc = equinix.metal.VirtualCircuit("vc",
             connection_id=connection_id,
             project_id=project_id,

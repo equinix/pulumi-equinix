@@ -11,8 +11,10 @@ namespace Pulumi.Equinix.Metal
 {
     /// <summary>
     /// ## Example Usage
+    /// ### equinix metal port hybrid bonded
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Equinix = Pulumi.Equinix;
     /// 
@@ -20,7 +22,60 @@ namespace Pulumi.Equinix.Metal
     /// {
     ///     var config = new Config();
     ///     var portId = config.Require("portId");
-    ///     var org = new Equinix.Metal.Port("org", new()
+    ///     var vlanId = config.Require("vlanId");
+    ///     var port = new Equinix.Metal.Port("port", new()
+    ///     {
+    ///         PortId = portId,
+    ///         Bonded = true,
+    ///         Layer2 = false,
+    ///         VlanIds = new[]
+    ///         {
+    ///             vlanId,
+    ///         },
+    ///     });
+    /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["portType"] = port.Type,
+    ///         ["portBondedNetworkType"] = port.NetworkType,
+    ///     };
+    /// });
+    /// ```
+    /// ### equinix metal port hybrid unbonded
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Equinix = Pulumi.Equinix;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var portId = config.Require("portId");
+    ///     var port = new Equinix.Metal.Port("port", new()
+    ///     {
+    ///         PortId = portId,
+    ///         Bonded = false,
+    ///     });
+    /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["portType"] = port.Type,
+    ///     };
+    /// });
+    /// ```
+    /// ### equinix metal port layer2 bonded
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Equinix = Pulumi.Equinix;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var portId = config.Require("portId");
+    ///     var port = new Equinix.Metal.Port("port", new()
     ///     {
     ///         PortId = portId,
     ///         Bonded = true,

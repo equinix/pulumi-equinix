@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  * > **NOTE:** All arguments including the `rootPassword` and `userData` will be stored in the raw state as plain-text. Read more about sensitive data in state.
  *
  * ## Example Usage
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -22,10 +21,10 @@ import * as utilities from "../utilities";
  * const projectId = config.require("projectId");
  * const web = new equinix.metal.Device("web", {
  *     hostname: "webserver1",
- *     plan: "c3.small.x86",
- *     operatingSystem: "ubuntu_20_04",
+ *     plan: equinix.metal.Plan.C3SmallX86,
+ *     operatingSystem: equinix.metal.OperatingSystem.Ubuntu20_04,
  *     metro: "sv",
- *     billingCycle: "hourly",
+ *     billingCycle: equinix.metal.BillingCycle.Hourly,
  *     projectId: projectId,
  * });
  * export const webPublicIp = pulumi.interpolate`http://${web.accessPublicIpv4}`;

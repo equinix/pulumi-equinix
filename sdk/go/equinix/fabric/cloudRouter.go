@@ -59,9 +59,6 @@ import (
 //				Account: &fabric.CloudRouterAccountArgs{
 //					AccountNumber: pulumi.Int(272010),
 //				},
-//				Project: &fabric.CloudRouterProjectArgs{
-//					ProjectId: pulumi.String("995072000433550"),
-//	            },
 //			})
 //			if err != nil {
 //				return err

@@ -60,7 +60,11 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var metro = config.get("metro").orElse("FR");
  *         final var accountNum = config.get("accountNum");
+<<<<<<< HEAD
  *         var router = new CloudRouter("router", CloudRouterArgs.builder()        
+=======
+ *         var router = new CloudRouter("router", CloudRouterArgs.builder()
+>>>>>>> 667aad3 (add make command to build examples and examples in docs)
  *             .name("My-Fabric-Cloud-Router")
  *             .type("XF_ROUTER")
  *             .location(CloudRouterLocationArgs.builder()
@@ -76,9 +80,12 @@ import javax.annotation.Nullable;
  *             .account(CloudRouterAccountArgs.builder()
  *                 .accountNumber(272010)
  *                 .build())
+<<<<<<< HEAD
  *             .project(CloudRouterProjectArgs.builder()
  *                 .projectId("995072000433550")
  *                 .build())
+=======
+>>>>>>> 667aad3 (add make command to build examples and examples in docs)
  *             .build());
  * 
  *         ctx.export("routerId", router.id());

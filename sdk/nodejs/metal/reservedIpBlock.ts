@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
  *
  * ## Example Usage
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -33,7 +32,7 @@ import * as utilities from "../utilities";
  * const quantity = config.getNumber("quantity") || 1;
  * const ipBlock = new equinix.metal.ReservedIpBlock("ipBlock", {
  *     projectId: projectId,
- *     type: "public_ipv4",
+ *     type: type,
  *     quantity: quantity,
  *     metro: metro,
  * });

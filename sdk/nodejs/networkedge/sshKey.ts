@@ -8,7 +8,6 @@ import * as utilities from "../utilities";
  * Resource `equinix.networkedge.SshKey` allows creation and management of Equinix Network Edge SSH keys.
  *
  * ## Example Usage
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -16,7 +15,7 @@ import * as utilities from "../utilities";
  *
  * const sshKey = new equinix.networkedge.SshKey("sshKey", {
  *     name: "johnKent",
- *     publicKey: fs.readFileSync("/Users/John/.ssh/ne_rsa.pub"),
+ *     publicKey: fs.readFileSync("/Users/John/.ssh/ne_rsa.pub", "utf8"),
  * });
  * export const sshKeyId = sshKey.id;
  * ```

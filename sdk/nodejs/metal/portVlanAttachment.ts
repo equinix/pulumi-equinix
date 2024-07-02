@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  * * `portId` - UUID of device port.
  *
  * ## Example Usage
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";

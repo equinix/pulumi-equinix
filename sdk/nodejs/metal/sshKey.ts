@@ -10,7 +10,6 @@ import * as utilities from "../utilities";
  * The link between User SSH key and device is implicit. If you want to make sure that a key will be copied to a device, you must ensure that the device resource `dependsOn` the key resource.
  *
  * ## Example Usage
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -18,7 +17,7 @@ import * as utilities from "../utilities";
  *
  * const sshKey = new equinix.metal.SshKey("sshKey", {
  *     name: "johnKent",
- *     publicKey: fs.readFileSync("/Users/John/.ssh/metal_rsa.pub"),
+ *     publicKey: fs.readFileSync("/Users/John/.ssh/metal_rsa.pub", "utf8"),
  * });
  * export const sshKeyId = sshKey.id;
  * ```

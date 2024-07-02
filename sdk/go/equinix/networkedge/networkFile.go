@@ -49,7 +49,7 @@ import (
 //				Content:        readFileOrPanic("./../assets/aviatrix-cloud-init.txt"),
 //				MetroCode:      pulumi.String(metro),
 //				DeviceTypeCode: pulumi.String("AVIATRIX_EDGE"),
-//				ProcessType:    pulumi.String("CLOUD_INIT"),
+//				ProcessType:    pulumi.String(networkedge.FileTypeCloudInit),
 //				SelfManaged:    pulumi.Bool(true),
 //				Byol:           pulumi.Bool(true),
 //			})

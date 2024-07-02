@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  * Resource `equinix.networkedge.DeviceLink` allows creation and management of Equinix Network Edge virtual network device links.
  *
  * ## Example Usage
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -21,16 +20,16 @@ import * as utilities from "../utilities";
  * const accountMetro = config.require("accountMetro");
  * const device1Id = config.require("device1Id");
  * const device2Id = config.require("device2Id");
- * const accountfNum = equinix.networkedge.getAccount({
+ * const accountfNum = equinix.networkedge.getAccountOutput({
  *     name: accountName,
  *     metroCode: accountMetro,
- * }).then(invoke => invoke.number);
- * const device1Metro = equinix.networkedge.getDevice({
+ * }).apply(invoke => invoke.number);
+ * const device1Metro = equinix.networkedge.getDeviceOutput({
  *     uuid: device1Id,
- * }).then(invoke => invoke.metroCode);
- * const device2Metro = equinix.networkedge.getDevice({
+ * }).apply(invoke => invoke.metroCode);
+ * const device2Metro = equinix.networkedge.getDeviceOutput({
  *     uuid: device2Id,
- * }).then(invoke => invoke.metroCode);
+ * }).apply(invoke => invoke.metroCode);
  * const deviceLink = new equinix.networkedge.DeviceLink("deviceLink", {
  *     name: "test-link",
  *     subnet: "192.168.40.64/27",

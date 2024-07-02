@@ -30,9 +30,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.equinix.pulumi.networkedge.AclTemplate;
- * import com.equinix.pulumi.networkedge.AclTemplateArgs;
- * import com.equinix.pulumi.networkedge.inputs.AclTemplateInboundRuleArgs;
+ * import com.pulumi.equinix.networkedge.AclTemplate;
+ * import com.pulumi.equinix.networkedge.AclTemplateArgs;
+ * import com.pulumi.equinix.networkedge.inputs.AclTemplateInboundRuleArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -46,7 +46,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+<<<<<<< HEAD
  *         var aclTemplate = new AclTemplate("aclTemplate", AclTemplateArgs.builder()        
+=======
+ *         var aclTemplate = new AclTemplate("aclTemplate", AclTemplateArgs.builder()
+>>>>>>> 667aad3 (add make command to build examples and examples in docs)
  *             .name("test")
  *             .description("Test ACL template")
  *             .inboundRules(            

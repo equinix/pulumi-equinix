@@ -59,8 +59,6 @@ build_nodejs: upstream
         cp ../../README.md ../../LICENSE package.json yarn.lock ./bin/ && \
 		sed -i.bak -e "s/\$${VERSION}/$(VERSION)/g" ./bin/package.json
 
-
-
 build_python: PYPI_VERSION := $(shell pulumictl get version --language python)
 build_python: upstream
 	rm -rf sdk/python/
@@ -148,6 +146,12 @@ help:
 clean:
 	rm -rf sdk/{dotnet,nodejs,go,python,java}
 
+install_equinix_plugin:
+	.pulumi/bin/pulumi plugin install resource equinix $(shell pulumictl get version --language generic) --file $(WORKING_DIR)/bin/$(PROVIDER)
+
+uninstall_equinix_plugin: provider
+	.pulumi/bin/pulumi plugin rm resource equinix $(shell pulumictl get version --language generic)
+
 install_plugins: .pulumi/bin/pulumi
 	.pulumi/bin/pulumi plugin install resource tls 4.11.0
 	.pulumi/bin/pulumi plugin install resource random 4.14.0
@@ -190,9 +194,18 @@ upstream.rebase:
 .pulumi/bin/pulumi: .pulumi/version
 	curl -fsSL https://get.pulumi.com | HOME=$(WORKING_DIR) sh -s -- --version $(cat .pulumi/version)
 
+examples: install_equinix_plugin
+	scripts/generate_examples.sh
+
+examples_check: examples
+	if git status --porcelain | grep examples; then \
+		echo "Uncommitted changes detected. Run 'make examples' and commit changes."; \
+		exit 1; \
+	fi
+
 # Compute the version of Pulumi to use by inspecting the Go dependencies of the provider.
 .pulumi/version:
 	@mkdir -p .pulumi
 	@cd provider && go list -f "{{slice .Version 1}}" -m github.com/pulumi/pulumi/pkg/v3 | tee ../$@
 
-.PHONY: development build build_sdks install_go_sdk install_java_sdk install_python_sdk install_sdks only_build build_dotnet build_go build_java build_nodejs build_python clean cleanup help install_dotnet_sdk install_nodejs_sdk install_plugins lint_provider provider test tfgen upstream upstream.finalize upstream.rebase test_provider
+.PHONY: development build build_sdks install_go_sdk install_java_sdk install_python_sdk install_sdks only_build build_dotnet build_go build_java build_nodejs build_python clean cleanup help install_dotnet_sdk install_nodejs_sdk install_equinix_plugin uninstall_equinix_plugin install_plugins lint_provider provider test tfgen upstream upstream.finalize upstream.rebase test_provider examples examples_check

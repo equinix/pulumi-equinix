@@ -8,7 +8,6 @@ import * as utilities from "../utilities";
  * Manage the membership of existing and new invitees within an Equinix Metal organization and its projects.
  *
  * ## Example Usage
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";

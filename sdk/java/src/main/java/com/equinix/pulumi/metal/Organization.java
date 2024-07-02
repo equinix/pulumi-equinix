@@ -26,9 +26,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.equinix.pulumi.metal.Organization;
- * import com.equinix.pulumi.metal.OrganizationArgs;
- * import com.equinix.pulumi.metal.inputs.OrganizationAddressArgs;
+ * import com.pulumi.equinix.metal.Organization;
+ * import com.pulumi.equinix.metal.OrganizationArgs;
+ * import com.pulumi.equinix.metal.inputs.OrganizationAddressArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -42,7 +42,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+<<<<<<< HEAD
  *         var orgResource = new Organization("orgResource", OrganizationArgs.builder()        
+=======
+ *         var orgResource = new Organization("orgResource", OrganizationArgs.builder()
+>>>>>>> 667aad3 (add make command to build examples and examples in docs)
  *             .name("Foo Organization")
  *             .address(OrganizationAddressArgs.builder()
  *                 .address("org street")

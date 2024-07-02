@@ -553,9 +553,6 @@ class CloudRouter(pulumi.CustomResource):
             account=equinix.fabric.CloudRouterAccountArgs(
                 account_number=272010,
             ))
-            project=equinix.fabric.CloudRouterProjectArgs(
-                project_id=995072000433550,
-            ))
         pulumi.export("routerId", router.id)
         ```
 
@@ -611,9 +608,6 @@ class CloudRouter(pulumi.CustomResource):
             )],
             account=equinix.fabric.CloudRouterAccountArgs(
                 account_number=272010,
-            ))
-            project=equinix.fabric.CloudRouterProjectArgs(
-                project_id=995072000433550,
             ))
         pulumi.export("routerId", router.id)
         ```

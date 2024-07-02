@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * * **BYOL** - [bring your own license] Where customer brings his own, already procured device software license. There are no charges associated with such license. It is the only licensing mode for `self-configured` devices.
  *
  * ## Example Usage
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -38,10 +37,10 @@ import * as utilities from "../utilities";
  * const sizeInCores = config.getNumber("sizeInCores") || 2;
  * const termLength = config.getNumber("termLength") || 6;
  * const additionalBandwidth = config.getNumber("additionalBandwidth") || 5;
- * const accountNum = equinix.networkedge.getAccount({
+ * const accountNum = equinix.networkedge.getAccountOutput({
  *     name: accountName,
  *     metroCode: metro,
- * }).then(invoke => invoke.number);
+ * }).apply(invoke => invoke.number);
  * const c8KRouter = new equinix.networkedge.Device("c8kRouter", {
  *     name: "catalystRouter",
  *     metroCode: metro,

@@ -1,12 +1,14 @@
 #!/bin/bash
 
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
 # Examples directory
-EXAMPLES_DIR="."
+EXAMPLES_DIR="${SCRIPT_DIR}/../examples/"
 
 # Docs directory
-OUTPUT_DIR="../docs/resource"
+OUTPUT_DIR="${SCRIPT_DIR}/../docs/resource"
 
-VERSION=$(pulumi plugin ls | grep equinix | awk '{print $3}')
+VERSION=$(pulumictl get version --language generic)
 
 increment_patch() {
     local version="$1"

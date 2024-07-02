@@ -1338,8 +1338,8 @@ class Device(pulumi.CustomResource):
         additional_bandwidth = config.get_int("additionalBandwidth")
         if additional_bandwidth is None:
             additional_bandwidth = 5
-        account_num = equinix.networkedge.get_account(name=account_name,
-            metro_code=metro).number
+        account_num = equinix.networkedge.get_account_output(name=account_name,
+            metro_code=metro).apply(lambda invoke: invoke.number)
         c8_k_router = equinix.networkedge.Device("c8kRouter",
             name="catalystRouter",
             metro_code=metro,
@@ -1460,8 +1460,8 @@ class Device(pulumi.CustomResource):
         additional_bandwidth = config.get_int("additionalBandwidth")
         if additional_bandwidth is None:
             additional_bandwidth = 5
-        account_num = equinix.networkedge.get_account(name=account_name,
-            metro_code=metro).number
+        account_num = equinix.networkedge.get_account_output(name=account_name,
+            metro_code=metro).apply(lambda invoke: invoke.number)
         c8_k_router = equinix.networkedge.Device("c8kRouter",
             name="catalystRouter",
             metro_code=metro,

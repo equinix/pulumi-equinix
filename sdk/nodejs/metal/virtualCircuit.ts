@@ -10,7 +10,6 @@ import * as utilities from "../utilities";
  * See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
  *
  * ## Example Usage
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -19,9 +18,9 @@ import * as utilities from "../utilities";
  * const projectId = config.require("projectId");
  * const connectionId = config.require("connectionId");
  * const vlanId = config.require("vlanId");
- * const portId = equinix.metal.getInterconnection({
+ * const portId = equinix.metal.getInterconnectionOutput({
  *     connectionId: connectionId,
- * }).then(invoke => invoke.ports?.[0]?.id);
+ * }).apply(invoke => invoke.ports?.[0]?.id);
  * const vc = new equinix.metal.VirtualCircuit("vc", {
  *     connectionId: connectionId,
  *     projectId: projectId,

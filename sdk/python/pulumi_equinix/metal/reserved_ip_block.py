@@ -580,7 +580,7 @@ class ReservedIpBlock(pulumi.CustomResource):
             quantity = 1
         ip_block = equinix.metal.ReservedIpBlock("ipBlock",
             project_id=project_id,
-            type="public_ipv4",
+            type=type,
             quantity=quantity,
             metro=metro)
         pulumi.export("ipBlockId", ip_block.id)
@@ -646,7 +646,7 @@ class ReservedIpBlock(pulumi.CustomResource):
             quantity = 1
         ip_block = equinix.metal.ReservedIpBlock("ipBlock",
             project_id=project_id,
-            type="public_ipv4",
+            type=type,
             quantity=quantity,
             metro=metro)
         pulumi.export("ipBlockId", ip_block.id)

@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers
  *
  * ## Example Usage
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -39,9 +38,6 @@ import * as utilities from "../utilities";
  *     account: {
  *         accountNumber: 272010,
  *     },
- *     "project": {
- *         "projectId": "995072000433550"
- *     }
  * });
  * export const routerId = router.id;
  * ```

@@ -14,7 +14,6 @@ import * as utilities from "../utilities";
  * Device and reserved block must be in the same metro.
  *
  * ## Example Usage
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";

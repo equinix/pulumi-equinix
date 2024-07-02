@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  * Resource `equinix.networkedge.NetworkFile` allows creation and management of Equinix Network Edge files.
  *
  * ## Example Usage
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -21,10 +20,10 @@ import * as utilities from "../utilities";
  * const metro = config.get("metro") || "SV";
  * const networkFile = new equinix.networkedge.NetworkFile("networkFile", {
  *     fileName: "Aviatrix-ZTP-file",
- *     content: fs.readFileSync("./../assets/aviatrix-cloud-init.txt"),
+ *     content: fs.readFileSync("./../assets/aviatrix-cloud-init.txt", "utf8"),
  *     metroCode: metro,
  *     deviceTypeCode: "AVIATRIX_EDGE",
- *     processType: "CLOUD_INIT",
+ *     processType: equinix.networkedge.FileType.CloudInit,
  *     selfManaged: true,
  *     byol: true,
  * });
