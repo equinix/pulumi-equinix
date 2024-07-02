@@ -13,5 +13,5 @@ config:
     type: string
     default: FR
   speedInMbps:
-    type: string
+    type: integer
     default: 50

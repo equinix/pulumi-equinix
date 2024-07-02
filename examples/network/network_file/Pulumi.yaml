@@ -1,0 +1,22 @@
+name: equinix-network-file
+runtime: yaml
+description: An Equinix Network Edge File (LICENSE or CLOUD_INIT) resource
+config:
+  metro:
+    type: string
+    default: SV
+resources:
+  networkFile:
+    type: equinix:networkedge:NetworkFile
+    properties:
+      fileName: Aviatrix-ZTP-file
+      content:
+        fn::readFile: ./../assets/aviatrix-cloud-init.txt
+      metroCode: ${metro}
+      deviceTypeCode: AVIATRIX_EDGE
+      processType: CLOUD_INIT
+      selfManaged: true
+      byol: true
+outputs:
+  networkFileId: ${networkFile.id}
+  networkFileStatus: ${networkFile.status}

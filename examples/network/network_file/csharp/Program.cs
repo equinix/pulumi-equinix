@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Pulumi;
 using Equinix = Pulumi.Equinix;
 
@@ -13,7 +14,7 @@ return await Deployment.RunAsync(() =>
         Content = File.ReadAllText("./../assets/aviatrix-cloud-init.txt"),
         MetroCode = metro,
         DeviceTypeCode = "AVIATRIX_EDGE",
-        ProcessType = "CLOUD_INIT",
+        ProcessType = Equinix.NetworkEdge.FileType.CloudInit,
         SelfManaged = true,
         Byol = true,
     });

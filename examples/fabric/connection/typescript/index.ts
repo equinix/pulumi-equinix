@@ -1,5 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
+import * as equinix from "@pulumi/equinix";
 
 const config = new pulumi.Config();
 const metro = config.get("metro") || "FR";
@@ -7,23 +8,23 @@ const speedInMbps = config.getNumber("speedInMbps") || 50;
 const fabricPortName = config.require("fabricPortName");
 const awsRegion = config.get("awsRegion") || "eu-central-1";
 const awsAccountId = config.require("awsAccountId");
-const serviceProfileId = equinix.fabric.getServiceProfiles({
+const serviceProfileId = equinix.fabric.getServiceProfilesOutput({
     filter: {
         property: "/name",
         operator: "=",
         values: ["AWS Direct Connect"],
     },
-}).then(invoke => invoke.data?.[0]?.uuid!);
-const portId = equinix.fabric.getPorts({
+}).apply(invoke => invoke.data?.[0]?.uuid);
+const portId = equinix.fabric.getPortsOutput({
     filter: {
         name: fabricPortName,
     },
-}).then(invoke => invoke.data?.[0]?.uuid!);
+}).apply(invoke => invoke.data?.[0]?.uuid);
 const colo2Aws = new equinix.fabric.Connection("colo2Aws", {
     name: "Pulumi-colo2Aws",
-    type: "EVPL_VC",
+    type: equinix.fabric.ConnectionType.EVPL,
     notifications: [{
-        type: "ALL",
+        type: equinix.fabric.NotificationsType.All,
         emails: ["example@equinix.com"],
     }],
     bandwidth: speedInMbps,
@@ -32,23 +33,23 @@ const colo2Aws = new equinix.fabric.Connection("colo2Aws", {
     },
     aSide: {
         accessPoint: {
-            type: "COLO",
+            type: equinix.fabric.AccessPointType.Colo,
             port: {
                 uuid: portId,
             },
             linkProtocol: {
-                type: "DOT1Q",
+                type: equinix.fabric.AccessPointLinkProtocolType.Dot1q,
                 vlanTag: 1234,
             },
         },
     },
     zSide: {
         accessPoint: {
-            type: "SP",
+            type: equinix.fabric.AccessPointType.SP,
             authenticationKey: awsAccountId,
             sellerRegion: awsRegion,
             profile: {
-                type: "L2_PROFILE",
+                type: equinix.fabric.ProfileType.L2Profile,
                 uuid: serviceProfileId,
             },
             location: {

@@ -10,7 +10,7 @@ replace (
 )
 
 require (
-	github.com/equinix/terraform-provider-equinix v1.37.0
+	github.com/equinix/terraform-provider-equinix v0.0.0-00010101000000-000000000000
 	github.com/pulumi/pulumi-terraform-bridge/pf v0.37.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.84.0
 	github.com/pulumi/pulumi/pkg/v3 v3.118.0
@@ -78,7 +78,7 @@ require (
 	github.com/edsrzf/mmap-go v1.1.0 // indirect
 	github.com/emirpasic/gods v1.18.1 // indirect
 	github.com/equinix/ecx-go/v2 v2.3.1 // indirect
-	github.com/equinix/equinix-sdk-go v0.40.0 // indirect
+	github.com/equinix/equinix-sdk-go v0.39.1 // indirect
 	github.com/equinix/ne-go v1.17.0 // indirect
 	github.com/equinix/oauth2-go v1.0.0 // indirect
 	github.com/equinix/rest-go v1.3.0 // indirect
@@ -93,7 +93,7 @@ require (
 	github.com/go-jose/go-jose/v3 v3.0.3 // indirect
 	github.com/go-logr/logr v1.4.1 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
-	github.com/go-resty/resty/v2 v2.7.0 // indirect
+	github.com/go-resty/resty/v2 v2.3.0 // indirect
 	github.com/gofrs/uuid v4.2.0+incompatible // indirect
 	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/golang-jwt/jwt/v5 v5.2.1 // indirect

@@ -4,9 +4,9 @@ import * as equinix from "@equinix-labs/pulumi-equinix";
 const profile = new equinix.fabric.ServiceProfile("profile", {
     name: "Example Cloud Provider",
     description: "50 to 500 Mbps Hosted Connection to Example Cloud",
-    type: "L2_PROFILE",
+    type: equinix.fabric.ProfileType.L2Profile,
     accessPointTypeConfigs: [{
-        type: "COLO",
+        type: equinix.fabric.ProfileAccessPointType.Colo,
         supportedBandwidths: [
             50,
             100,
@@ -34,12 +34,8 @@ const profile = new equinix.fabric.ServiceProfile("profile", {
             label: "Example ACCOUNT ID",
         },
     }],
-    account: {
-        organizationName: "Example Cloud",
-        globalOrganizationName: "Example Global",
-    },
     metros: undefined,
-    visibility: "PUBLIC",
+    visibility: equinix.fabric.ProfileVisibility.Public,
     marketingInfo: {
         promotion: true,
     },

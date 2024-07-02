@@ -25,7 +25,7 @@ public class App {
         final var config = ctx.config();
         final var metro = config.get("metro").orElse("FR");
         final var accountNum = config.get("accountNum");
-        var router = new CloudRouter("router", CloudRouterArgs.builder()        
+        var router = new CloudRouter("router", CloudRouterArgs.builder()
             .name("My-Fabric-Cloud-Router")
             .type("XF_ROUTER")
             .location(CloudRouterLocationArgs.builder()

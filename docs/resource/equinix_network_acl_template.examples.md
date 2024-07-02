@@ -1,6 +1,5 @@
 ## Example Usage
 {{% example %}}
-
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -11,14 +10,14 @@ const aclTemplate = new equinix.networkedge.AclTemplate("aclTemplate", {
     inboundRules: [
         {
             subnet: "1.1.1.1/32",
-            protocol: "IP",
+            protocol: equinix.networkedge.AclRuleProtocolType.IP,
             srcPort: "any",
             dstPort: "any",
             description: "inbound rule description",
         },
         {
             subnet: "2.2.2.2/28",
-            protocol: "TCP",
+            protocol: equinix.networkedge.AclRuleProtocolType.TCP,
             srcPort: "any",
             dstPort: "any",
             description: "inbound rule description",
@@ -37,14 +36,14 @@ acl_template = equinix.networkedge.AclTemplate("aclTemplate",
     inbound_rules=[
         equinix.networkedge.AclTemplateInboundRuleArgs(
             subnet="1.1.1.1/32",
-            protocol="IP",
+            protocol=equinix.networkedge.AclRuleProtocolType.IP,
             src_port="any",
             dst_port="any",
             description="inbound rule description",
         ),
         equinix.networkedge.AclTemplateInboundRuleArgs(
             subnet="2.2.2.2/28",
-            protocol="TCP",
+            protocol=equinix.networkedge.AclRuleProtocolType.TCP,
             src_port="any",
             dst_port="any",
             description="inbound rule description",
@@ -68,14 +67,14 @@ func main() {
 			InboundRules: networkedge.AclTemplateInboundRuleArray{
 				&networkedge.AclTemplateInboundRuleArgs{
 					Subnet:      pulumi.String("1.1.1.1/32"),
-					Protocol:    pulumi.String("IP"),
+					Protocol:    pulumi.String(networkedge.AclRuleProtocolTypeIP),
 					SrcPort:     pulumi.String("any"),
 					DstPort:     pulumi.String("any"),
 					Description: pulumi.String("inbound rule description"),
 				},
 				&networkedge.AclTemplateInboundRuleArgs{
 					Subnet:      pulumi.String("2.2.2.2/28"),
-					Protocol:    pulumi.String("TCP"),
+					Protocol:    pulumi.String(networkedge.AclRuleProtocolTypeTCP),
 					SrcPort:     pulumi.String("any"),
 					DstPort:     pulumi.String("any"),
 					Description: pulumi.String("inbound rule description"),
@@ -92,6 +91,7 @@ func main() {
 ```
 ```csharp
 using System.Collections.Generic;
+using System.Linq;
 using Pulumi;
 using Equinix = Pulumi.Equinix;
 
@@ -106,7 +106,7 @@ return await Deployment.RunAsync(() =>
             new Equinix.NetworkEdge.Inputs.AclTemplateInboundRuleArgs
             {
                 Subnet = "1.1.1.1/32",
-                Protocol = "IP",
+                Protocol = Equinix.NetworkEdge.AclRuleProtocolType.IP,
                 SrcPort = "any",
                 DstPort = "any",
                 Description = "inbound rule description",
@@ -114,7 +114,7 @@ return await Deployment.RunAsync(() =>
             new Equinix.NetworkEdge.Inputs.AclTemplateInboundRuleArgs
             {
                 Subnet = "2.2.2.2/28",
-                Protocol = "TCP",
+                Protocol = Equinix.NetworkEdge.AclRuleProtocolType.TCP,
                 SrcPort = "any",
                 DstPort = "any",
                 Description = "inbound rule description",
@@ -134,9 +134,9 @@ package generated_program;
 import com.pulumi.Context;
 import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
-import com.equinix.pulumi.networkedge.AclTemplate;
-import com.equinix.pulumi.networkedge.AclTemplateArgs;
-import com.equinix.pulumi.networkedge.inputs.AclTemplateInboundRuleArgs;
+import com.pulumi.equinix.networkedge.AclTemplate;
+import com.pulumi.equinix.networkedge.AclTemplateArgs;
+import com.pulumi.equinix.networkedge.inputs.AclTemplateInboundRuleArgs;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
@@ -150,7 +150,7 @@ public class App {
     }
 
     public static void stack(Context ctx) {
-        var aclTemplate = new AclTemplate("aclTemplate", AclTemplateArgs.builder()        
+        var aclTemplate = new AclTemplate("aclTemplate", AclTemplateArgs.builder()
             .name("test")
             .description("Test ACL template")
             .inboundRules(            

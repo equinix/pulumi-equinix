@@ -1,4 +1,4 @@
-name: equinix-metal-interconnection-metal-billed-token
+name: equinix-metal-connection-metal-billed-token
 runtime: java
 description: An [Equinix Metal Interconnection](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/#fabric-virtual-connections-metal-billed) -Metal Billed- resource
 config:
@@ -8,5 +8,5 @@ config:
   projectId:
     type: string
   speedInMbps:
-    type: string
-    default: "1000"
+    type: integer
+    default: 1000

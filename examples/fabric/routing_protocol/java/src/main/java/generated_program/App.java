@@ -21,7 +21,7 @@ public class App {
     public static void stack(Context ctx) {
         final var config = ctx.config();
         final var connectionId = config.get("connectionId");
-        var routingProtocol = new RoutingProtocol("routingProtocol", RoutingProtocolArgs.builder()        
+        var routingProtocol = new RoutingProtocol("routingProtocol", RoutingProtocolArgs.builder()
             .connectionUuid(connectionId)
             .name("My-Direct-route-1")
             .type("DIRECT")

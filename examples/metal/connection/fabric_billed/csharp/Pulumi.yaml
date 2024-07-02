@@ -1,4 +1,4 @@
-name: equinix-metal-interconnection-fabric-billed-token
+name: equinix-metal-connection-fabric-billed-token
 runtime: dotnet
 description: An [Equinix Metal Interconnection](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/#fabric-virtual-connections-fabric-billed) -Fabric Billed- resource
 config:

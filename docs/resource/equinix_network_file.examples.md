@@ -1,6 +1,5 @@
 ## Example Usage
 {{% example %}}
-
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -10,10 +9,10 @@ const config = new pulumi.Config();
 const metro = config.get("metro") || "SV";
 const networkFile = new equinix.networkedge.NetworkFile("networkFile", {
     fileName: "Aviatrix-ZTP-file",
-    content: fs.readFileSync("./../assets/aviatrix-cloud-init.txt"),
+    content: fs.readFileSync("./../assets/aviatrix-cloud-init.txt", "utf8"),
     metroCode: metro,
     deviceTypeCode: "AVIATRIX_EDGE",
-    processType: "CLOUD_INIT",
+    processType: equinix.networkedge.FileType.CloudInit,
     selfManaged: true,
     byol: true,
 });
@@ -33,7 +32,7 @@ network_file = equinix.networkedge.NetworkFile("networkFile",
     content=(lambda path: open(path).read())("./../assets/aviatrix-cloud-init.txt"),
     metro_code=metro,
     device_type_code="AVIATRIX_EDGE",
-    process_type="CLOUD_INIT",
+    process_type=equinix.networkedge.FileType.CLOUD_INIT,
     self_managed=True,
     byol=True)
 pulumi.export("networkFileId", network_file.id)
@@ -70,7 +69,7 @@ func main() {
 			Content:        readFileOrPanic("./../assets/aviatrix-cloud-init.txt"),
 			MetroCode:      pulumi.String(metro),
 			DeviceTypeCode: pulumi.String("AVIATRIX_EDGE"),
-			ProcessType:    pulumi.String("CLOUD_INIT"),
+			ProcessType:    pulumi.String(networkedge.FileTypeCloudInit),
 			SelfManaged:    pulumi.Bool(true),
 			Byol:           pulumi.Bool(true),
 		})
@@ -86,6 +85,7 @@ func main() {
 ```csharp
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Pulumi;
 using Equinix = Pulumi.Equinix;
 
@@ -99,7 +99,7 @@ return await Deployment.RunAsync(() =>
         Content = File.ReadAllText("./../assets/aviatrix-cloud-init.txt"),
         MetroCode = metro,
         DeviceTypeCode = "AVIATRIX_EDGE",
-        ProcessType = "CLOUD_INIT",
+        ProcessType = Equinix.NetworkEdge.FileType.CloudInit,
         SelfManaged = true,
         Byol = true,
     });
@@ -117,12 +117,11 @@ package generated_program;
 import com.pulumi.Context;
 import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
-import com.equinix.pulumi.networkedge.NetworkFile;
-import com.equinix.pulumi.networkedge.NetworkFileArgs;
+import com.pulumi.equinix.networkedge.NetworkFile;
+import com.pulumi.equinix.networkedge.NetworkFileArgs;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
-import java.io.IOException;
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -135,17 +134,9 @@ public class App {
     public static void stack(Context ctx) {
         final var config = ctx.config();
         final var metro = config.get("metro").orElse("SV");
-
-        String content = null;
-        try {
-            content = Files.readString(Paths.get("./../assets/aviatrix-cloud-init.txt"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        var networkFile = new NetworkFile("networkFile", NetworkFileArgs.builder()        
+        var networkFile = new NetworkFile("networkFile", NetworkFileArgs.builder()
             .fileName("Aviatrix-ZTP-file")
-            .content(content)
+            .content(Files.readString(Paths.get("./../assets/aviatrix-cloud-init.txt")))
             .metroCode(metro)
             .deviceTypeCode("AVIATRIX_EDGE")
             .processType("CLOUD_INIT")

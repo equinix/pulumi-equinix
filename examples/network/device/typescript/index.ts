@@ -1,5 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
+import * as equinix from "@pulumi/equinix";
 
 const config = new pulumi.Config();
 const accountName = config.require("accountName");
@@ -13,10 +14,10 @@ const deviceVersion = config.get("deviceVersion") || "17.06.01a";
 const sizeInCores = config.getNumber("sizeInCores") || 2;
 const termLength = config.getNumber("termLength") || 6;
 const additionalBandwidth = config.getNumber("additionalBandwidth") || 5;
-const accountNum = equinix.networkedge.getAccount({
+const accountNum = equinix.networkedge.getAccountOutput({
     name: accountName,
     metroCode: metro,
-}).then(invoke => invoke.number);
+}).apply(invoke => invoke.number);
 const c8KRouter = new equinix.networkedge.Device("c8kRouter", {
     name: "catalystRouter",
     metroCode: metro,

@@ -1,6 +1,5 @@
 ## Example Usage
 {{% example %}}
-
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -59,6 +58,7 @@ func main() {
 ```
 ```csharp
 using System.Collections.Generic;
+using System.Linq;
 using Pulumi;
 using Equinix = Pulumi.Equinix;
 
@@ -84,8 +84,15 @@ package generated_program;
 
 import com.pulumi.Context;
 import com.pulumi.Pulumi;
-import com.equinix.pulumi.metal.DeviceNetworkType;
-import com.equinix.pulumi.metal.DeviceNetworkTypeArgs;
+import com.pulumi.core.Output;
+import com.pulumi.equinix.metal.DeviceNetworkType;
+import com.pulumi.equinix.metal.DeviceNetworkTypeArgs;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class App {
     public static void main(String[] args) {
@@ -94,9 +101,9 @@ public class App {
 
     public static void stack(Context ctx) {
         final var config = ctx.config();
-        final var deviceId = config.get("deviceId").get();
+        final var deviceId = config.get("deviceId");
         final var networkType = config.get("networkType").orElse("hybrid");
-        var deviceNetwork = new DeviceNetworkType("deviceNetwork", DeviceNetworkTypeArgs.builder()        
+        var deviceNetwork = new DeviceNetworkType("deviceNetwork", DeviceNetworkTypeArgs.builder()
             .deviceId(deviceId)
             .type(networkType)
             .build());

@@ -1,9 +1,9 @@
 ## Example Usage
 {{% example %}}
-
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
+import * as equinix from "@pulumi/equinix";
 
 const config = new pulumi.Config();
 const metro = config.get("metro") || "FR";
@@ -11,23 +11,23 @@ const speedInMbps = config.getNumber("speedInMbps") || 50;
 const fabricPortName = config.require("fabricPortName");
 const awsRegion = config.get("awsRegion") || "eu-central-1";
 const awsAccountId = config.require("awsAccountId");
-const serviceProfileId = equinix.fabric.getServiceProfiles({
+const serviceProfileId = equinix.fabric.getServiceProfilesOutput({
     filter: {
         property: "/name",
         operator: "=",
         values: ["AWS Direct Connect"],
     },
-}).then(invoke => invoke.data?.[0]?.uuid!);
-const portId = equinix.fabric.getPorts({
+}).apply(invoke => invoke.data?.[0]?.uuid);
+const portId = equinix.fabric.getPortsOutput({
     filter: {
         name: fabricPortName,
     },
-}).then(invoke => invoke.data?.[0]?.uuid!);
+}).apply(invoke => invoke.data?.[0]?.uuid);
 const colo2Aws = new equinix.fabric.Connection("colo2Aws", {
     name: "Pulumi-colo2Aws",
-    type: "EVPL_VC",
+    type: equinix.fabric.ConnectionType.EVPL,
     notifications: [{
-        type: "ALL",
+        type: equinix.fabric.NotificationsType.All,
         emails: ["example@equinix.com"],
     }],
     bandwidth: speedInMbps,
@@ -36,23 +36,23 @@ const colo2Aws = new equinix.fabric.Connection("colo2Aws", {
     },
     aSide: {
         accessPoint: {
-            type: "COLO",
+            type: equinix.fabric.AccessPointType.Colo,
             port: {
                 uuid: portId,
             },
             linkProtocol: {
-                type: "DOT1Q",
+                type: equinix.fabric.AccessPointLinkProtocolType.Dot1q,
                 vlanTag: 1234,
             },
         },
     },
     zSide: {
         accessPoint: {
-            type: "SP",
+            type: equinix.fabric.AccessPointType.SP,
             authenticationKey: awsAccountId,
             sellerRegion: awsRegion,
             profile: {
-                type: "L2_PROFILE",
+                type: equinix.fabric.ProfileType.L2Profile,
                 uuid: serviceProfileId,
             },
             location: {
@@ -82,19 +82,19 @@ aws_region = config.get("awsRegion")
 if aws_region is None:
     aws_region = "eu-central-1"
 aws_account_id = config.require("awsAccountId")
-service_profile_id = equinix.fabric.get_service_profiles(filter=equinix.fabric.GetServiceProfilesFilterArgs(
+service_profile_id = equinix.fabric.get_service_profiles_output(filter=equinix.fabric.GetServiceProfilesFilterArgs(
     property="/name",
     operator="=",
     values=["AWS Direct Connect"],
-)).data[0].uuid
-port_id = equinix.fabric.get_ports(filter=equinix.fabric.GetPortsFilterArgs(
+)).apply(lambda invoke: invoke.data[0].uuid)
+port_id = equinix.fabric.get_ports_output(filter=equinix.fabric.GetPortsFilterArgs(
     name=fabric_port_name,
-)).data[0].uuid
+)).apply(lambda invoke: invoke.data[0].uuid)
 colo2_aws = equinix.fabric.Connection("colo2Aws",
     name="Pulumi-colo2Aws",
-    type="EVPL_VC",
+    type=equinix.fabric.ConnectionType.EVPL,
     notifications=[equinix.fabric.ConnectionNotificationArgs(
-        type="ALL",
+        type=equinix.fabric.NotificationsType.ALL,
         emails=["example@equinix.com"],
     )],
     bandwidth=speed_in_mbps,
@@ -103,23 +103,23 @@ colo2_aws = equinix.fabric.Connection("colo2Aws",
     ),
     a_side=equinix.fabric.ConnectionASideArgs(
         access_point=equinix.fabric.ConnectionASideAccessPointArgs(
-            type="COLO",
+            type=equinix.fabric.AccessPointType.COLO,
             port=equinix.fabric.ConnectionASideAccessPointPortArgs(
                 uuid=port_id,
             ),
             link_protocol=equinix.fabric.ConnectionASideAccessPointLinkProtocolArgs(
-                type="DOT1Q",
+                type=equinix.fabric.AccessPointLinkProtocolType.DOT1Q,
                 vlan_tag=1234,
             ),
         ),
     ),
     z_side=equinix.fabric.ConnectionZSideArgs(
         access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
-            type="SP",
+            type=equinix.fabric.AccessPointType.SP,
             authentication_key=aws_account_id,
             seller_region=aws_region,
             profile=equinix.fabric.ConnectionZSideAccessPointProfileArgs(
-                type="L2_PROFILE",
+                type=equinix.fabric.ProfileType.L2_PROFILE,
                 uuid=service_profile_id,
             ),
             location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
@@ -169,15 +169,15 @@ func main() {
 		}, nil).Data[0].Uuid
 		portId := fabric.GetPorts(ctx, &fabric.GetPortsArgs{
 			Filter: fabric.GetPortsFilter{
-				Name: pulumi.StringRef(fabricPortName),
+				Name: fabricPortName,
 			},
 		}, nil).Data[0].Uuid
 		colo2Aws, err := fabric.NewConnection(ctx, "colo2Aws", &fabric.ConnectionArgs{
 			Name: pulumi.String("Pulumi-colo2Aws"),
-			Type: pulumi.String("EVPL_VC"),
+			Type: pulumi.String(fabric.ConnectionTypeEVPL),
 			Notifications: fabric.ConnectionNotificationArray{
 				&fabric.ConnectionNotificationArgs{
-					Type: pulumi.String("ALL"),
+					Type: pulumi.String(fabric.NotificationsTypeAll),
 					Emails: pulumi.StringArray{
 						pulumi.String("example@equinix.com"),
 					},
@@ -189,24 +189,24 @@ func main() {
 			},
 			ASide: &fabric.ConnectionASideArgs{
 				AccessPoint: &fabric.ConnectionASideAccessPointArgs{
-					Type: pulumi.String("COLO"),
+					Type: pulumi.String(fabric.AccessPointTypeColo),
 					Port: &fabric.ConnectionASideAccessPointPortArgs{
-						Uuid: *pulumi.String(portId),
+						Uuid: pulumi.String(portId),
 					},
 					LinkProtocol: &fabric.ConnectionASideAccessPointLinkProtocolArgs{
-						Type:    pulumi.String("DOT1Q"),
+						Type:    pulumi.String(fabric.AccessPointLinkProtocolTypeDot1q),
 						VlanTag: pulumi.Int(1234),
 					},
 				},
 			},
 			ZSide: &fabric.ConnectionZSideArgs{
 				AccessPoint: &fabric.ConnectionZSideAccessPointArgs{
-					Type:              pulumi.String("SP"),
+					Type:              pulumi.String(fabric.AccessPointTypeSP),
 					AuthenticationKey: pulumi.String(awsAccountId),
 					SellerRegion:      pulumi.String(awsRegion),
 					Profile: &fabric.ConnectionZSideAccessPointProfileArgs{
-						Type: pulumi.String("L2_PROFILE"),
-						Uuid: *pulumi.String(serviceProfileId),
+						Type: pulumi.String(fabric.ProfileTypeL2Profile),
+						Uuid: pulumi.String(serviceProfileId),
 					},
 					Location: &fabric.ConnectionZSideAccessPointLocationArgs{
 						MetroCode: pulumi.String(metro),
@@ -233,6 +233,7 @@ func main() {
 ```
 ```csharp
 using System.Collections.Generic;
+using System.Linq;
 using Pulumi;
 using Equinix = Pulumi.Equinix;
 
@@ -240,7 +241,7 @@ return await Deployment.RunAsync(() =>
 {
     var config = new Config();
     var metro = config.Get("metro") ?? "FR";
-    var speedInMbps = config.GetNumber("speedInMbps") ?? 50;
+    var speedInMbps = config.GetInt32("speedInMbps") ?? 50;
     var fabricPortName = config.Require("fabricPortName");
     var awsRegion = config.Get("awsRegion") ?? "eu-central-1";
     var awsAccountId = config.Require("awsAccountId");
@@ -268,12 +269,12 @@ return await Deployment.RunAsync(() =>
     var colo2Aws = new Equinix.Fabric.Connection("colo2Aws", new()
     {
         Name = "Pulumi-colo2Aws",
-        Type = "EVPL_VC",
+        Type = Equinix.Fabric.ConnectionType.EVPL,
         Notifications = new[]
         {
             new Equinix.Fabric.Inputs.ConnectionNotificationArgs
             {
-                Type = "ALL",
+                Type = Equinix.Fabric.NotificationsType.All,
                 Emails = new[]
                 {
                     "example@equinix.com",
@@ -289,14 +290,14 @@ return await Deployment.RunAsync(() =>
         {
             AccessPoint = new Equinix.Fabric.Inputs.ConnectionASideAccessPointArgs
             {
-                Type = "COLO",
+                Type = Equinix.Fabric.AccessPointType.Colo,
                 Port = new Equinix.Fabric.Inputs.ConnectionASideAccessPointPortArgs
                 {
                     Uuid = portId,
                 },
                 LinkProtocol = new Equinix.Fabric.Inputs.ConnectionASideAccessPointLinkProtocolArgs
                 {
-                    Type = "DOT1Q",
+                    Type = Equinix.Fabric.AccessPointLinkProtocolType.Dot1q,
                     VlanTag = 1234,
                 },
             },
@@ -305,12 +306,12 @@ return await Deployment.RunAsync(() =>
         {
             AccessPoint = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointArgs
             {
-                Type = "SP",
+                Type = Equinix.Fabric.AccessPointType.SP,
                 AuthenticationKey = awsAccountId,
                 SellerRegion = awsRegion,
                 Profile = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointProfileArgs
                 {
-                    Type = "L2_PROFILE",
+                    Type = Equinix.Fabric.ProfileType.L2Profile,
                     Uuid = serviceProfileId,
                 },
                 Location = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointLocationArgs
@@ -335,23 +336,25 @@ package generated_program;
 
 import com.pulumi.Context;
 import com.pulumi.Pulumi;
-import com.equinix.pulumi.fabric.Connection;
-import com.equinix.pulumi.fabric.ConnectionArgs;
-import com.equinix.pulumi.fabric.inputs.ConnectionNotificationArgs;
-import com.equinix.pulumi.fabric.inputs.ConnectionRedundancyArgs;
-import com.equinix.pulumi.fabric.inputs.ConnectionASideArgs;
-import com.equinix.pulumi.fabric.inputs.ConnectionASideAccessPointArgs;
-import com.equinix.pulumi.fabric.inputs.ConnectionASideAccessPointPortArgs;
-import com.equinix.pulumi.fabric.inputs.ConnectionASideAccessPointLinkProtocolArgs;
-import com.equinix.pulumi.fabric.inputs.ConnectionZSideArgs;
-import com.equinix.pulumi.fabric.inputs.ConnectionZSideAccessPointArgs;
-import com.equinix.pulumi.fabric.inputs.ConnectionZSideAccessPointProfileArgs;
-import com.equinix.pulumi.fabric.inputs.ConnectionZSideAccessPointLocationArgs;
-import com.equinix.pulumi.fabric.inputs.GetServiceProfilesArgs;
-import com.equinix.pulumi.fabric.inputs.GetServiceProfilesFilterArgs;
-import com.equinix.pulumi.fabric.inputs.GetPortsArgs;
-import com.equinix.pulumi.fabric.inputs.GetPortsFilterArgs;
-import com.equinix.pulumi.fabric.FabricFunctions;
+import com.pulumi.core.Output;
+import com.pulumi.equinix.fabric.Connection;
+import com.pulumi.equinix.fabric.ConnectionArgs;
+import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
+import com.pulumi.equinix.fabric.inputs.ConnectionRedundancyArgs;
+import com.pulumi.equinix.fabric.inputs.ConnectionASideArgs;
+import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointArgs;
+import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointPortArgs;
+import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointLinkProtocolArgs;
+import com.pulumi.equinix.fabric.inputs.ConnectionZSideArgs;
+import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointArgs;
+import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointProfileArgs;
+import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointLocationArgs;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class App {
     public static void main(String[] args) {
@@ -361,26 +364,25 @@ public class App {
     public static void stack(Context ctx) {
         final var config = ctx.config();
         final var metro = config.get("metro").orElse("FR");
-        final var speedInMbps = Integer.parseInt(config.get("speedInMbps").orElse("50"));
-        final var fabricPortName = config.get("fabricPortName").get().toString();
+        final var speedInMbps = config.get("speedInMbps").orElse(50);
+        final var fabricPortName = config.get("fabricPortName");
         final var awsRegion = config.get("awsRegion").orElse("eu-central-1");
-        final var awsAccountId = config.get("awsAccountId").get().toString();
-        System.out.println(System.getProperty("java.classpath"));
+        final var awsAccountId = config.get("awsAccountId");
         final var serviceProfileId = FabricFunctions.getServiceProfiles(GetServiceProfilesArgs.builder()
             .filter(GetServiceProfilesFilterArgs.builder()
                 .property("/name")
                 .operator("=")
                 .values("AWS Direct Connect")
                 .build())
-            .build()).applyValue(data -> data.data().get(0).uuid().get());
+            .build()).data()[0].uuid();
 
         final var portId = FabricFunctions.getPorts(GetPortsArgs.builder()
             .filter(GetPortsFilterArgs.builder()
                 .name(fabricPortName)
                 .build())
-            .build()).applyValue(data -> data.data().get(0).uuid().get());
+            .build()).data()[0].uuid();
 
-        var colo2Aws = new Connection("colo2Aws", ConnectionArgs.builder()        
+        var colo2Aws = new Connection("colo2Aws", ConnectionArgs.builder()
             .name("Pulumi-colo2Aws")
             .type("EVPL_VC")
             .notifications(ConnectionNotificationArgs.builder()
@@ -422,7 +424,7 @@ public class App {
         ctx.export("connectionId", colo2Aws.id());
         ctx.export("connectionStatus", colo2Aws.operation().applyValue(operation -> operation.equinixStatus()));
         ctx.export("connectionProviderStatus", colo2Aws.operation().applyValue(operation -> operation.providerStatus()));
-        ctx.export("awsDirectConnectId", colo2Aws.zSide().applyValue(zSide -> zSide.accessPoint().get().providerConnectionId()));
+        ctx.export("awsDirectConnectId", colo2Aws.zSide().applyValue(zSide -> zSide.accessPoint().providerConnectionId()));
     }
 }
 ```
@@ -497,4 +499,3 @@ outputs:
   awsDirectConnectId: ${colo2Aws.zSide.accessPoint.providerConnectionId}
 ```
 {{% /example %}}
-
