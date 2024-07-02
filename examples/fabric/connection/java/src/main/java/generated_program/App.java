@@ -48,7 +48,7 @@ public class App {
                 .build())
             .build()).data()[0].uuid();
 
-        var colo2Aws = new Connection("colo2Aws", ConnectionArgs.builder()        
+        var colo2Aws = new Connection("colo2Aws", ConnectionArgs.builder()
             .name("Pulumi-colo2Aws")
             .type("EVPL_VC")
             .notifications(ConnectionNotificationArgs.builder()

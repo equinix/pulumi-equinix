@@ -21,7 +21,7 @@ public class App {
         final var config = ctx.config();
         final var portId = config.get("portId");
         final var vlanId = config.get("vlanId");
-        var port = new Port("port", PortArgs.builder()        
+        var port = new Port("port", PortArgs.builder()
             .portId(portId)
             .bonded(true)
             .layer2(false)

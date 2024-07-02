@@ -10,7 +10,7 @@ network_file = equinix.networkedge.NetworkFile("networkFile",
     content=(lambda path: open(path).read())("./../assets/aviatrix-cloud-init.txt"),
     metro_code=metro,
     device_type_code="AVIATRIX_EDGE",
-    process_type="CLOUD_INIT",
+    process_type=equinix.networkedge.FileType.CLOUD_INIT,
     self_managed=True,
     byol=True)
 pulumi.export("networkFileId", network_file.id)

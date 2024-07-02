@@ -70,6 +70,8 @@ cloud.google.com/go/cloudtasks v1.12.6/go.mod h1:b7c7fe4+TJsFZfDyzO51F7cjq7HLUlR
 cloud.google.com/go/compute v1.23.4/go.mod h1:/EJMj55asU6kAFnuZET8zqgwgJ9FvXWXOkkfQZa4ioI=
 cloud.google.com/go/compute v1.24.0 h1:phWcR2eWzRJaL/kOiJwfFsPs4BaKq1j6vnpZrc1YlVg=
 cloud.google.com/go/compute v1.24.0/go.mod h1:kw1/T+h/+tK2LJK0wiPPx1intgdAM3j/g3hFDlscY40=
+cloud.google.com/go/compute v1.25.0 h1:H1/4SqSUhjPFE7L5ddzHOfY2bCAvjwNRZPNl6Ni5oYU=
+cloud.google.com/go/compute v1.25.0/go.mod h1:GR7F0ZPZH8EhChlMo9FkLd7eUTwEymjqQagxzilIxIE=
 cloud.google.com/go/contactcenterinsights v1.9.1 h1:hy4L0bc3fQNZZrhPjuoH62RiisD5B71/S1OZNunsTRk=
 cloud.google.com/go/contactcenterinsights v1.12.0/go.mod h1:HHX5wrz5LHVAwfI2smIotQG9x8Qd6gYilaHcLLLmNis=
 cloud.google.com/go/contactcenterinsights v1.12.1/go.mod h1:HHX5wrz5LHVAwfI2smIotQG9x8Qd6gYilaHcLLLmNis=

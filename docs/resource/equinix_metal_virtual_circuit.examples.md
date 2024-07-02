@@ -61,7 +61,7 @@ func main() {
 		vc, err := metal.NewVirtualCircuit(ctx, "vc", &metal.VirtualCircuitArgs{
 			ConnectionId: pulumi.String(connectionId),
 			ProjectId:    pulumi.String(projectId),
-			PortId:       *pulumi.String(portId),
+			PortId:       pulumi.String(portId),
 			VlanId:       pulumi.String(vlanId),
 			NniVlan:      pulumi.Int(1056),
 		})
@@ -136,7 +136,7 @@ public class App {
             .connectionId(connectionId)
             .build()).ports()[0].id();
 
-        var vc = new VirtualCircuit("vc", VirtualCircuitArgs.builder()        
+        var vc = new VirtualCircuit("vc", VirtualCircuitArgs.builder()
             .connectionId(connectionId)
             .projectId(projectId)
             .portId(portId)

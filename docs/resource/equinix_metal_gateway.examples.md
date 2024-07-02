@@ -102,7 +102,7 @@ public class App {
         final var config = ctx.config();
         final var projectId = config.get("projectId");
         final var vlanId = config.get("vlanId");
-        var gateway = new Gateway("gateway", GatewayArgs.builder()        
+        var gateway = new Gateway("gateway", GatewayArgs.builder()
             .projectId(projectId)
             .vlanId(vlanId)
             .privateIpv4SubnetSize(8)

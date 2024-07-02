@@ -20,7 +20,7 @@ public class App {
     public static void stack(Context ctx) {
         final var config = ctx.config();
         final var portId = config.get("portId");
-        var port = new Port("port", PortArgs.builder()        
+        var port = new Port("port", PortArgs.builder()
             .portId(portId)
             .bonded(true)
             .layer2(true)

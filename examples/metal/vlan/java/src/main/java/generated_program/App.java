@@ -22,7 +22,7 @@ public class App {
         final var projectId = config.get("projectId");
         final var metro = config.get("metro").orElse("DA");
         final var vxlan = config.get("vxlan");
-        var vlan = new Vlan("vlan", VlanArgs.builder()        
+        var vlan = new Vlan("vlan", VlanArgs.builder()
             .description("VLAN in Dallas")
             .projectId(projectId)
             .metro(metro)

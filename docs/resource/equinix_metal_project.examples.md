@@ -103,7 +103,7 @@ public class App {
         final var config = ctx.config();
         final var organizationId = config.get("organizationId");
         final var name = config.get("name").orElse("Default Project");
-        var projectResource = new Project("projectResource", ProjectArgs.builder()        
+        var projectResource = new Project("projectResource", ProjectArgs.builder()
             .name(name)
             .organizationId(organizationId)
             .build());

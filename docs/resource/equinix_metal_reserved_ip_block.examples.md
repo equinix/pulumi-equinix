@@ -135,7 +135,7 @@ public class App {
         final var metro = config.get("metro").orElse("FR");
         final var type = config.get("type").orElse("public_ipv4");
         final var quantity = config.get("quantity").orElse(1);
-        var ipBlock = new ReservedIpBlock("ipBlock", ReservedIpBlockArgs.builder()        
+        var ipBlock = new ReservedIpBlock("ipBlock", ReservedIpBlockArgs.builder()
             .projectId(projectId)
             .type(type)
             .quantity(quantity)

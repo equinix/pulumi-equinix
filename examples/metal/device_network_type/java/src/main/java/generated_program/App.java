@@ -21,7 +21,7 @@ public class App {
         final var config = ctx.config();
         final var deviceId = config.get("deviceId");
         final var networkType = config.get("networkType").orElse("hybrid");
-        var deviceNetwork = new DeviceNetworkType("deviceNetwork", DeviceNetworkTypeArgs.builder()        
+        var deviceNetwork = new DeviceNetworkType("deviceNetwork", DeviceNetworkTypeArgs.builder()
             .deviceId(deviceId)
             .type(networkType)
             .build());

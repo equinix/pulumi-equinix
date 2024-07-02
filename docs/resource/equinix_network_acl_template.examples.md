@@ -10,14 +10,14 @@ const aclTemplate = new equinix.networkedge.AclTemplate("aclTemplate", {
     inboundRules: [
         {
             subnet: "1.1.1.1/32",
-            protocol: "IP",
+            protocol: equinix.networkedge.AclRuleProtocolType.IP,
             srcPort: "any",
             dstPort: "any",
             description: "inbound rule description",
         },
         {
             subnet: "2.2.2.2/28",
-            protocol: "TCP",
+            protocol: equinix.networkedge.AclRuleProtocolType.TCP,
             srcPort: "any",
             dstPort: "any",
             description: "inbound rule description",
@@ -36,14 +36,14 @@ acl_template = equinix.networkedge.AclTemplate("aclTemplate",
     inbound_rules=[
         equinix.networkedge.AclTemplateInboundRuleArgs(
             subnet="1.1.1.1/32",
-            protocol="IP",
+            protocol=equinix.networkedge.AclRuleProtocolType.IP,
             src_port="any",
             dst_port="any",
             description="inbound rule description",
         ),
         equinix.networkedge.AclTemplateInboundRuleArgs(
             subnet="2.2.2.2/28",
-            protocol="TCP",
+            protocol=equinix.networkedge.AclRuleProtocolType.TCP,
             src_port="any",
             dst_port="any",
             description="inbound rule description",
@@ -67,14 +67,14 @@ func main() {
 			InboundRules: networkedge.AclTemplateInboundRuleArray{
 				&networkedge.AclTemplateInboundRuleArgs{
 					Subnet:      pulumi.String("1.1.1.1/32"),
-					Protocol:    pulumi.String("IP"),
+					Protocol:    pulumi.String(networkedge.AclRuleProtocolTypeIP),
 					SrcPort:     pulumi.String("any"),
 					DstPort:     pulumi.String("any"),
 					Description: pulumi.String("inbound rule description"),
 				},
 				&networkedge.AclTemplateInboundRuleArgs{
 					Subnet:      pulumi.String("2.2.2.2/28"),
-					Protocol:    pulumi.String("TCP"),
+					Protocol:    pulumi.String(networkedge.AclRuleProtocolTypeTCP),
 					SrcPort:     pulumi.String("any"),
 					DstPort:     pulumi.String("any"),
 					Description: pulumi.String("inbound rule description"),
@@ -106,7 +106,7 @@ return await Deployment.RunAsync(() =>
             new Equinix.NetworkEdge.Inputs.AclTemplateInboundRuleArgs
             {
                 Subnet = "1.1.1.1/32",
-                Protocol = "IP",
+                Protocol = Equinix.NetworkEdge.AclRuleProtocolType.IP,
                 SrcPort = "any",
                 DstPort = "any",
                 Description = "inbound rule description",
@@ -114,7 +114,7 @@ return await Deployment.RunAsync(() =>
             new Equinix.NetworkEdge.Inputs.AclTemplateInboundRuleArgs
             {
                 Subnet = "2.2.2.2/28",
-                Protocol = "TCP",
+                Protocol = Equinix.NetworkEdge.AclRuleProtocolType.TCP,
                 SrcPort = "any",
                 DstPort = "any",
                 Description = "inbound rule description",
@@ -150,7 +150,7 @@ public class App {
     }
 
     public static void stack(Context ctx) {
-        var aclTemplate = new AclTemplate("aclTemplate", AclTemplateArgs.builder()        
+        var aclTemplate = new AclTemplate("aclTemplate", AclTemplateArgs.builder()
             .name("test")
             .description("Test ACL template")
             .inboundRules(            

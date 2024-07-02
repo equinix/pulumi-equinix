@@ -109,7 +109,7 @@ public class App {
     public static void stack(Context ctx) {
         final var config = ctx.config();
         final var projectId = config.get("projectId");
-        var sshKey = new ProjectSshKey("sshKey", ProjectSshKeyArgs.builder()        
+        var sshKey = new ProjectSshKey("sshKey", ProjectSshKeyArgs.builder()
             .projectId(projectId)
             .name("johnKent")
             .publicKey(Files.readString(Paths.get("/Users/John/.ssh/metal_rsa.pub")))

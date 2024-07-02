@@ -111,7 +111,7 @@ public class App {
         final var config = ctx.config();
         final var device1Id = config.get("device1Id");
         final var device2Id = config.get("device2Id");
-        var sshUser = new SshUser("sshUser", SshUserArgs.builder()        
+        var sshUser = new SshUser("sshUser", SshUserArgs.builder()
             .username("johnKent")
             .deviceIds(            
                 device1Id,

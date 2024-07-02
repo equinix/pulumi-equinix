@@ -10,10 +10,10 @@ return await Deployment.RunAsync(() =>
     var web = new Equinix.Metal.Device("web", new()
     {
         Hostname = "webserver1",
-        Plan = "c3.small.x86",
-        OperatingSystem = "ubuntu_20_04",
+        Plan = Equinix.Metal.Plan.C3SmallX86,
+        OperatingSystem = Equinix.Metal.OperatingSystem.Ubuntu20_04,
         Metro = "sv",
-        BillingCycle = "hourly",
+        BillingCycle = Equinix.Metal.BillingCycle.Hourly,
         ProjectId = projectId,
     });
 

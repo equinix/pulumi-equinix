@@ -14,10 +14,10 @@ func main() {
 		projectId := cfg.Require("projectId")
 		web, err := metal.NewDevice(ctx, "web", &metal.DeviceArgs{
 			Hostname:        pulumi.String("webserver1"),
-			Plan:            pulumi.String("c3.small.x86"),
-			OperatingSystem: pulumi.String("ubuntu_20_04"),
+			Plan:            pulumi.String(metal.PlanC3SmallX86),
+			OperatingSystem: pulumi.String(metal.OperatingSystem_Ubuntu20_04),
 			Metro:           pulumi.String("sv"),
-			BillingCycle:    pulumi.String("hourly"),
+			BillingCycle:    pulumi.String(metal.BillingCycleHourly),
 			ProjectId:       pulumi.String(projectId),
 		})
 		if err != nil {

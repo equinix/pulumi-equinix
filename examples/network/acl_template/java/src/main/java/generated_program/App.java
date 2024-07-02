@@ -19,7 +19,7 @@ public class App {
     }
 
     public static void stack(Context ctx) {
-        var aclTemplate = new AclTemplate("aclTemplate", AclTemplateArgs.builder()        
+        var aclTemplate = new AclTemplate("aclTemplate", AclTemplateArgs.builder()
             .name("test")
             .description("Test ACL template")
             .inboundRules(            

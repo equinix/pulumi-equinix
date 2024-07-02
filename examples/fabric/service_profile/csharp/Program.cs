@@ -9,12 +9,12 @@ return await Deployment.RunAsync(() =>
     {
         Name = "Example Cloud Provider",
         Description = "50 to 500 Mbps Hosted Connection to Example Cloud",
-        Type = "L2_PROFILE",
+        Type = Equinix.Fabric.ProfileType.L2Profile,
         AccessPointTypeConfigs = new[]
         {
             new Equinix.Fabric.Inputs.ServiceProfileAccessPointTypeConfigArgs
             {
-                Type = "COLO",
+                Type = Equinix.Fabric.ProfileAccessPointType.Colo,
                 SupportedBandwidths = new[]
                 {
                     50,
@@ -48,7 +48,7 @@ return await Deployment.RunAsync(() =>
             },
         },
         Metros = null,
-        Visibility = "PUBLIC",
+        Visibility = Equinix.Fabric.ProfileVisibility.Public,
         MarketingInfo = new Equinix.Fabric.Inputs.ServiceProfileMarketingInfoArgs
         {
             Promotion = true,

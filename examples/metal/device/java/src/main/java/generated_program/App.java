@@ -20,7 +20,7 @@ public class App {
     public static void stack(Context ctx) {
         final var config = ctx.config();
         final var projectId = config.get("projectId");
-        var web = new Device("web", DeviceArgs.builder()        
+        var web = new Device("web", DeviceArgs.builder()
             .hostname("webserver1")
             .plan("c3.small.x86")
             .operatingSystem("ubuntu_20_04")

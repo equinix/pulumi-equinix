@@ -9,7 +9,7 @@ const networkFile = new equinix.networkedge.NetworkFile("networkFile", {
     content: fs.readFileSync("./../assets/aviatrix-cloud-init.txt", "utf8"),
     metroCode: metro,
     deviceTypeCode: "AVIATRIX_EDGE",
-    processType: "CLOUD_INIT",
+    processType: equinix.networkedge.FileType.CloudInit,
     selfManaged: true,
     byol: true,
 });

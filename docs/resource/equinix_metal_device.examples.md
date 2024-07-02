@@ -8,10 +8,10 @@ const config = new pulumi.Config();
 const projectId = config.require("projectId");
 const web = new equinix.metal.Device("web", {
     hostname: "webserver1",
-    plan: "c3.small.x86",
-    operatingSystem: "ubuntu_20_04",
+    plan: equinix.metal.Plan.C3SmallX86,
+    operatingSystem: equinix.metal.OperatingSystem.Ubuntu20_04,
     metro: "sv",
-    billingCycle: "hourly",
+    billingCycle: equinix.metal.BillingCycle.Hourly,
     projectId: projectId,
 });
 export const webPublicIp = pulumi.interpolate`http://${web.accessPublicIpv4}`;
@@ -24,10 +24,10 @@ config = pulumi.Config()
 project_id = config.require("projectId")
 web = equinix.metal.Device("web",
     hostname="webserver1",
-    plan="c3.small.x86",
-    operating_system="ubuntu_20_04",
+    plan=equinix.metal.Plan.C3_SMALL_X86,
+    operating_system=equinix.metal.OperatingSystem.UBUNTU20_04,
     metro="sv",
-    billing_cycle="hourly",
+    billing_cycle=equinix.metal.BillingCycle.HOURLY,
     project_id=project_id)
 pulumi.export("webPublicIp", web.access_public_ipv4.apply(lambda access_public_ipv4: f"http://{access_public_ipv4}"))
 ```
@@ -48,10 +48,10 @@ func main() {
 		projectId := cfg.Require("projectId")
 		web, err := metal.NewDevice(ctx, "web", &metal.DeviceArgs{
 			Hostname:        pulumi.String("webserver1"),
-			Plan:            pulumi.String("c3.small.x86"),
-			OperatingSystem: pulumi.String("ubuntu_20_04"),
+			Plan:            pulumi.String(metal.PlanC3SmallX86),
+			OperatingSystem: pulumi.String(metal.OperatingSystem_Ubuntu20_04),
 			Metro:           pulumi.String("sv"),
-			BillingCycle:    pulumi.String("hourly"),
+			BillingCycle:    pulumi.String(metal.BillingCycleHourly),
 			ProjectId:       pulumi.String(projectId),
 		})
 		if err != nil {
@@ -77,10 +77,10 @@ return await Deployment.RunAsync(() =>
     var web = new Equinix.Metal.Device("web", new()
     {
         Hostname = "webserver1",
-        Plan = "c3.small.x86",
-        OperatingSystem = "ubuntu_20_04",
+        Plan = Equinix.Metal.Plan.C3SmallX86,
+        OperatingSystem = Equinix.Metal.OperatingSystem.Ubuntu20_04,
         Metro = "sv",
-        BillingCycle = "hourly",
+        BillingCycle = Equinix.Metal.BillingCycle.Hourly,
         ProjectId = projectId,
     });
 
@@ -113,7 +113,7 @@ public class App {
     public static void stack(Context ctx) {
         final var config = ctx.config();
         final var projectId = config.get("projectId");
-        var web = new Device("web", DeviceArgs.builder()        
+        var web = new Device("web", DeviceArgs.builder()
             .hostname("webserver1")
             .plan("c3.small.x86")
             .operatingSystem("ubuntu_20_04")

@@ -21,7 +21,7 @@ public class App {
         final var config = ctx.config();
         final var projectId = config.get("projectId");
         final var readOnly = config.get("readOnly").orElse(false);
-        var apiKey = new ProjectApiKey("apiKey", ProjectApiKeyArgs.builder()        
+        var apiKey = new ProjectApiKey("apiKey", ProjectApiKeyArgs.builder()
             .projectId(projectId)
             .description("A project level API Key")
             .readOnly(readOnly)

@@ -20,7 +20,7 @@ public class App {
     public static void stack(Context ctx) {
         final var config = ctx.config();
         final var metro = config.get("metro").orElse("SV");
-        var networkFile = new NetworkFile("networkFile", NetworkFileArgs.builder()        
+        var networkFile = new NetworkFile("networkFile", NetworkFileArgs.builder()
             .fileName("Aviatrix-ZTP-file")
             .content(Files.readString(Paths.get("./../assets/aviatrix-cloud-init.txt")))
             .metroCode(metro)

@@ -108,7 +108,7 @@ public class App {
     }
 
     public static void stack(Context ctx) {
-        var orgResource = new Organization("orgResource", OrganizationArgs.builder()        
+        var orgResource = new Organization("orgResource", OrganizationArgs.builder()
             .name("Foo Organization")
             .address(OrganizationAddressArgs.builder()
                 .address("org street")

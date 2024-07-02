@@ -102,7 +102,7 @@ public class App {
     }
 
     public static void stack(Context ctx) {
-        var bgp = new Bgp("bgp", BgpArgs.builder()        
+        var bgp = new Bgp("bgp", BgpArgs.builder()
             .connectionId("54014acf-9730-4b55-a791-459283d05fb1")
             .localIpAddress("10.1.1.1/30")
             .localAsn(12345)
