@@ -201,8 +201,3 @@ jobs:
           - dotnet
           - go
           - java
-
-
-
--        var sshUser = new SshUser("sshUser", SshUserArgs.builder()        
-+        var sshUser = new SshUser("sshUser", SshUserArgs.builder()
