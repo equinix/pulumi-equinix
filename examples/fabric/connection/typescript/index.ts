@@ -22,9 +22,9 @@ const portId = equinix.fabric.getPortsOutput({
 }).apply(invoke => invoke.data?.[0]?.uuid);
 const colo2Aws = new equinix.fabric.Connection("colo2Aws", {
     name: "Pulumi-colo2Aws",
-    type: "EVPL_VC",
+    type: equinix.fabric.ConnectionType.EVPL,
     notifications: [{
-        type: "ALL",
+        type: equinix.fabric.NotificationsType.All,
         emails: ["example@equinix.com"],
     }],
     bandwidth: speedInMbps,
@@ -33,23 +33,23 @@ const colo2Aws = new equinix.fabric.Connection("colo2Aws", {
     },
     aSide: {
         accessPoint: {
-            type: "COLO",
+            type: equinix.fabric.AccessPointType.Colo,
             port: {
                 uuid: portId,
             },
             linkProtocol: {
-                type: "DOT1Q",
+                type: equinix.fabric.AccessPointLinkProtocolType.Dot1q,
                 vlanTag: 1234,
             },
         },
     },
     zSide: {
         accessPoint: {
-            type: "SP",
+            type: equinix.fabric.AccessPointType.SP,
             authenticationKey: awsAccountId,
             sellerRegion: awsRegion,
             profile: {
-                type: "L2_PROFILE",
+                type: equinix.fabric.ProfileType.L2Profile,
                 uuid: serviceProfileId,
             },
             location: {

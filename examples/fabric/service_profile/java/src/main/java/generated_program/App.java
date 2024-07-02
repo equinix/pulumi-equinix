@@ -23,7 +23,7 @@ public class App {
     }
 
     public static void stack(Context ctx) {
-        var profile = new ServiceProfile("profile", ServiceProfileArgs.builder()        
+        var profile = new ServiceProfile("profile", ServiceProfileArgs.builder()
             .name("Example Cloud Provider")
             .description("50 to 500 Mbps Hosted Connection to Example Cloud")
             .type("L2_PROFILE")

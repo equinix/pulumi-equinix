@@ -12,7 +12,7 @@ const networkFile = new equinix.networkedge.NetworkFile("networkFile", {
     content: fs.readFileSync("./../assets/aviatrix-cloud-init.txt", "utf8"),
     metroCode: metro,
     deviceTypeCode: "AVIATRIX_EDGE",
-    processType: "CLOUD_INIT",
+    processType: equinix.networkedge.FileType.CloudInit,
     selfManaged: true,
     byol: true,
 });
@@ -32,7 +32,7 @@ network_file = equinix.networkedge.NetworkFile("networkFile",
     content=(lambda path: open(path).read())("./../assets/aviatrix-cloud-init.txt"),
     metro_code=metro,
     device_type_code="AVIATRIX_EDGE",
-    process_type="CLOUD_INIT",
+    process_type=equinix.networkedge.FileType.CLOUD_INIT,
     self_managed=True,
     byol=True)
 pulumi.export("networkFileId", network_file.id)
@@ -69,7 +69,7 @@ func main() {
 			Content:        readFileOrPanic("./../assets/aviatrix-cloud-init.txt"),
 			MetroCode:      pulumi.String(metro),
 			DeviceTypeCode: pulumi.String("AVIATRIX_EDGE"),
-			ProcessType:    pulumi.String("CLOUD_INIT"),
+			ProcessType:    pulumi.String(networkedge.FileTypeCloudInit),
 			SelfManaged:    pulumi.Bool(true),
 			Byol:           pulumi.Bool(true),
 		})
@@ -99,7 +99,7 @@ return await Deployment.RunAsync(() =>
         Content = File.ReadAllText("./../assets/aviatrix-cloud-init.txt"),
         MetroCode = metro,
         DeviceTypeCode = "AVIATRIX_EDGE",
-        ProcessType = "CLOUD_INIT",
+        ProcessType = Equinix.NetworkEdge.FileType.CloudInit,
         SelfManaged = true,
         Byol = true,
     });
@@ -134,7 +134,7 @@ public class App {
     public static void stack(Context ctx) {
         final var config = ctx.config();
         final var metro = config.get("metro").orElse("SV");
-        var networkFile = new NetworkFile("networkFile", NetworkFileArgs.builder()        
+        var networkFile = new NetworkFile("networkFile", NetworkFileArgs.builder()
             .fileName("Aviatrix-ZTP-file")
             .content(Files.readString(Paths.get("./../assets/aviatrix-cloud-init.txt")))
             .metroCode(metro)

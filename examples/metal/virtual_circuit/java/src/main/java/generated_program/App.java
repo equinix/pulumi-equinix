@@ -26,7 +26,7 @@ public class App {
             .connectionId(connectionId)
             .build()).ports()[0].id();
 
-        var vc = new VirtualCircuit("vc", VirtualCircuitArgs.builder()        
+        var vc = new VirtualCircuit("vc", VirtualCircuitArgs.builder()
             .connectionId(connectionId)
             .projectId(projectId)
             .portId(portId)

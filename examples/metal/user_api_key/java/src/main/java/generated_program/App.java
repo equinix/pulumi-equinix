@@ -21,7 +21,7 @@ public class App {
         final var config = ctx.config();
         final var description = config.get("description").orElse("An user level API Key");
         final var readOnly = config.get("readOnly").orElse(false);
-        var apiKey = new UserApiKey("apiKey", UserApiKeyArgs.builder()        
+        var apiKey = new UserApiKey("apiKey", UserApiKeyArgs.builder()
             .description(description)
             .readOnly(readOnly)
             .build());

@@ -94,7 +94,7 @@ public class App {
     }
 
     public static void stack(Context ctx) {
-        var sshKey = new SshKey("sshKey", SshKeyArgs.builder()        
+        var sshKey = new SshKey("sshKey", SshKeyArgs.builder()
             .name("johnKent")
             .publicKey(Files.readString(Paths.get("/Users/John/.ssh/metal_rsa.pub")))
             .build());

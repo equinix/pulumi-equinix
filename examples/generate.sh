@@ -6,6 +6,19 @@ EXAMPLES_DIR="."
 # Docs directory
 OUTPUT_DIR="../docs/resource"
 
+VERSION=$(pulumi plugin ls | grep equinix | awk '{print $3}')
+
+increment_patch() {
+    local version="$1"
+    local major_minor=$(echo "$version" | sed -E 's/^([0-9]+\.[0-9]+)\.[0-9]+.*$/\1/')
+    local patch=$(echo "$version" | sed -E 's/^[0-9]+\.[0-9]+\.([0-9]+).*$/\1/')
+    local new_patch=$((patch + 1))
+    local new_version="$major_minor.$new_patch"
+    echo "$new_version"
+}
+
+GOLANG_MIN_NEXT_VERSION=$(increment_patch "$VERSION")
+
 # Find all Pulumi.yaml files within the examples directory structure
 find "$EXAMPLES_DIR" \( -name "go" -o -name "java" -o -name "python" -o -name "typescript" -o -name "csharp" \) -prune -o -name "Pulumi.yaml" -print0 | while IFS= read -r -d '' yaml_file; do
   NAME="$(head -n 1 "$yaml_file" | cut -d ' ' -f 2)"
@@ -25,8 +38,27 @@ find "$EXAMPLES_DIR" \( -name "go" -o -name "java" -o -name "python" -o -name "t
   pulumi convert --cwd "$PULUMI_DIR" --language python --out python --generate-only || true
   pulumi convert --cwd "$PULUMI_DIR" --language typescript --out typescript --generate-only || true
   pulumi convert --cwd "$PULUMI_DIR" --language java --out java --generate-only || true
-  pulumi convert --cwd "$PULUMI_DIR" --language go --out go --generate-only || true
+  pulumi convert --cwd "$PULUMI_DIR" --language go --out go || true
   pulumi convert --cwd "$PULUMI_DIR" --language csharp --out csharp --generate-only || true
+
+  # Fix version constraints
+  ## csharp
+  for file in "$PULUMI_DIR/csharp"/*.csproj; do
+    sed -i.bak "s|$VERSION|(, 1.0.0)|g" "$file"
+  done
+  rm $PULUMI_DIR/csharp/*.csproj.bak
+  ## java
+  sed -i.bak "s|$VERSION|(,1.0)|g" $PULUMI_DIR/java/pom.xml
+  rm $PULUMI_DIR/java/pom.xml.bak
+  ## python
+  sed -i.bak "s|$VERSION|<1.0.0|g" $PULUMI_DIR/python/requirements.txt
+  rm $PULUMI_DIR/python/requirements.txt.bak
+  ## typescript
+  sed -i.bak "s|$VERSION|<1.0.0|g" $PULUMI_DIR/typescript/package.json
+  rm $PULUMI_DIR/typescript/package.json.bak
+  ## go
+  sed -i.bak "s|github.com/equinix/pulumi-equinix/sdk [^ ]*|github.com/equinix/pulumi-equinix/sdk $GOLANG_MIN_NEXT_VERSION|g" "$PULUMI_DIR/go/go.mod"
+  rm $PULUMI_DIR/go/go.sum $PULUMI_DIR/go/go.mod.bak
 
   # Read each source file
   TS_SRC=$(cat "$PULUMI_DIR/typescript/index.ts")
@@ -96,5 +128,5 @@ merge_example_files() {
     echo "Merged file generated: $MERGED_FILE"
 }
 
-merge_example_files "equinix_metal_interconnection" "equinix_metal_interconnection_fabric_billed_token" "equinix_metal_interconnection_metal_billed_token"
+merge_example_files "equinix_metal_connection" "equinix_metal_connection_fabric_billed_token" "equinix_metal_connection_metal_billed_token"
 merge_example_files "equinix_metal_port" "equinix_metal_port_hybrid_bonded" "equinix_metal_port_hybrid_unbonded" "equinix_metal_port_layer2_bonded"

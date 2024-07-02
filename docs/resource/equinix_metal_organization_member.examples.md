@@ -125,7 +125,7 @@ public class App {
         final var organizationId = config.get("organizationId");
         final var projectId = config.get("projectId");
         final var userEmailAddress = config.get("userEmailAddress");
-        var member = new OrganizationMember("member", OrganizationMemberArgs.builder()        
+        var member = new OrganizationMember("member", OrganizationMemberArgs.builder()
             .invitee(userEmailAddress)
             .roles("limited_collaborator")
             .projectsIds(projectId)

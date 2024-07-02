@@ -121,7 +121,7 @@ public class App {
         final var deviceId = config.get("deviceId");
         final var portName = config.get("portName").orElse("eth1");
         final var vxlanId = config.get("vxlanId").orElse(1004);
-        var attach = new PortVlanAttachment("attach", PortVlanAttachmentArgs.builder()        
+        var attach = new PortVlanAttachment("attach", PortVlanAttachmentArgs.builder()
             .deviceId(deviceId)
             .portName(portName)
             .vlanVnid(vxlanId)

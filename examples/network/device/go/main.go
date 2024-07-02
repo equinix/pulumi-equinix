@@ -53,7 +53,7 @@ func main() {
 				pulumi.String("example@equinix.com"),
 			},
 			Hostname:            pulumi.String("C8KV"),
-			AccountNumber:       *pulumi.String(accountNum),
+			AccountNumber:       pulumi.String(accountNum),
 			Version:             pulumi.String(deviceVersion),
 			CoreCount:           pulumi.Int(sizeInCores),
 			TermLength:          pulumi.Int(termLength),

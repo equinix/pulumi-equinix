@@ -127,9 +127,9 @@ func main() {
 			},
 			Links: networkedge.DeviceLinkLinkArray{
 				&networkedge.DeviceLinkLinkArgs{
-					AccountNumber:  *pulumi.String(accountfNum),
-					SrcMetroCode:   *pulumi.String(device1Metro),
-					DstMetroCode:   *pulumi.String(device2Metro),
+					AccountNumber:  pulumi.String(accountfNum),
+					SrcMetroCode:   pulumi.String(device1Metro),
+					DstMetroCode:   pulumi.String(device2Metro),
 					Throughput:     pulumi.String("50"),
 					ThroughputUnit: pulumi.String("Mbps"),
 				},
@@ -253,7 +253,7 @@ public class App {
             .uuid(device2Id)
             .build()).metroCode();
 
-        var deviceLink = new DeviceLink("deviceLink", DeviceLinkArgs.builder()        
+        var deviceLink = new DeviceLink("deviceLink", DeviceLinkArgs.builder()
             .name("test-link")
             .subnet("192.168.40.64/27")
             .devices(            

@@ -20,7 +20,7 @@ public class App {
     public static void stack(Context ctx) {
         final var config = ctx.config();
         final var deviceId = config.get("deviceId");
-        var bgp = new BgpSession("bgp", BgpSessionArgs.builder()        
+        var bgp = new BgpSession("bgp", BgpSessionArgs.builder()
             .deviceId(deviceId)
             .addressFamily("ipv4")
             .build());

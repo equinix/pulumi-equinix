@@ -23,9 +23,9 @@ port_id = equinix.fabric.get_ports_output(filter=equinix.fabric.GetPortsFilterAr
 )).apply(lambda invoke: invoke.data[0].uuid)
 colo2_aws = equinix.fabric.Connection("colo2Aws",
     name="Pulumi-colo2Aws",
-    type="EVPL_VC",
+    type=equinix.fabric.ConnectionType.EVPL,
     notifications=[equinix.fabric.ConnectionNotificationArgs(
-        type="ALL",
+        type=equinix.fabric.NotificationsType.ALL,
         emails=["example@equinix.com"],
     )],
     bandwidth=speed_in_mbps,
@@ -34,23 +34,23 @@ colo2_aws = equinix.fabric.Connection("colo2Aws",
     ),
     a_side=equinix.fabric.ConnectionASideArgs(
         access_point=equinix.fabric.ConnectionASideAccessPointArgs(
-            type="COLO",
+            type=equinix.fabric.AccessPointType.COLO,
             port=equinix.fabric.ConnectionASideAccessPointPortArgs(
                 uuid=port_id,
             ),
             link_protocol=equinix.fabric.ConnectionASideAccessPointLinkProtocolArgs(
-                type="DOT1Q",
+                type=equinix.fabric.AccessPointLinkProtocolType.DOT1Q,
                 vlan_tag=1234,
             ),
         ),
     ),
     z_side=equinix.fabric.ConnectionZSideArgs(
         access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
-            type="SP",
+            type=equinix.fabric.AccessPointType.SP,
             authentication_key=aws_account_id,
             seller_region=aws_region,
             profile=equinix.fabric.ConnectionZSideAccessPointProfileArgs(
-                type="L2_PROFILE",
+                type=equinix.fabric.ProfileType.L2_PROFILE,
                 uuid=service_profile_id,
             ),
             location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(

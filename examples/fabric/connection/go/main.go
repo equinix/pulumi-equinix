@@ -39,10 +39,10 @@ func main() {
 		}, nil).Data[0].Uuid
 		colo2Aws, err := fabric.NewConnection(ctx, "colo2Aws", &fabric.ConnectionArgs{
 			Name: pulumi.String("Pulumi-colo2Aws"),
-			Type: pulumi.String("EVPL_VC"),
+			Type: pulumi.String(fabric.ConnectionTypeEVPL),
 			Notifications: fabric.ConnectionNotificationArray{
 				&fabric.ConnectionNotificationArgs{
-					Type: pulumi.String("ALL"),
+					Type: pulumi.String(fabric.NotificationsTypeAll),
 					Emails: pulumi.StringArray{
 						pulumi.String("example@equinix.com"),
 					},
@@ -54,24 +54,24 @@ func main() {
 			},
 			ASide: &fabric.ConnectionASideArgs{
 				AccessPoint: &fabric.ConnectionASideAccessPointArgs{
-					Type: pulumi.String("COLO"),
+					Type: pulumi.String(fabric.AccessPointTypeColo),
 					Port: &fabric.ConnectionASideAccessPointPortArgs{
-						Uuid: *pulumi.String(portId),
+						Uuid: pulumi.String(portId),
 					},
 					LinkProtocol: &fabric.ConnectionASideAccessPointLinkProtocolArgs{
-						Type:    pulumi.String("DOT1Q"),
+						Type:    pulumi.String(fabric.AccessPointLinkProtocolTypeDot1q),
 						VlanTag: pulumi.Int(1234),
 					},
 				},
 			},
 			ZSide: &fabric.ConnectionZSideArgs{
 				AccessPoint: &fabric.ConnectionZSideAccessPointArgs{
-					Type:              pulumi.String("SP"),
+					Type:              pulumi.String(fabric.AccessPointTypeSP),
 					AuthenticationKey: pulumi.String(awsAccountId),
 					SellerRegion:      pulumi.String(awsRegion),
 					Profile: &fabric.ConnectionZSideAccessPointProfileArgs{
-						Type: pulumi.String("L2_PROFILE"),
-						Uuid: *pulumi.String(serviceProfileId),
+						Type: pulumi.String(fabric.ProfileTypeL2Profile),
+						Uuid: pulumi.String(serviceProfileId),
 					},
 					Location: &fabric.ConnectionZSideAccessPointLocationArgs{
 						MetroCode: pulumi.String(metro),

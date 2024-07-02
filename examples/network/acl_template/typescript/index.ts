@@ -7,14 +7,14 @@ const aclTemplate = new equinix.networkedge.AclTemplate("aclTemplate", {
     inboundRules: [
         {
             subnet: "1.1.1.1/32",
-            protocol: "IP",
+            protocol: equinix.networkedge.AclRuleProtocolType.IP,
             srcPort: "any",
             dstPort: "any",
             description: "inbound rule description",
         },
         {
             subnet: "2.2.2.2/28",
-            protocol: "TCP",
+            protocol: equinix.networkedge.AclRuleProtocolType.TCP,
             srcPort: "any",
             dstPort: "any",
             description: "inbound rule description",

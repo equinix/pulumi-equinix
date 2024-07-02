@@ -21,7 +21,7 @@ public class App {
         final var config = ctx.config();
         final var projectId = config.get("projectId");
         final var metro = config.get("metro").orElse("DA");
-        var vrf = new Vrf("vrf", VrfArgs.builder()        
+        var vrf = new Vrf("vrf", VrfArgs.builder()
             .description("VRF with ASN 65000 and a pool of address space")
             .name("example-vrf")
             .metro(metro)

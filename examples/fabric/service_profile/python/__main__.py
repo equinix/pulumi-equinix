@@ -4,9 +4,9 @@ import pulumi_equinix as equinix
 profile = equinix.fabric.ServiceProfile("profile",
     name="Example Cloud Provider",
     description="50 to 500 Mbps Hosted Connection to Example Cloud",
-    type="L2_PROFILE",
+    type=equinix.fabric.ProfileType.L2_PROFILE,
     access_point_type_configs=[equinix.fabric.ServiceProfileAccessPointTypeConfigArgs(
-        type="COLO",
+        type=equinix.fabric.ProfileAccessPointType.COLO,
         supported_bandwidths=[
             50,
             100,
@@ -35,7 +35,7 @@ profile = equinix.fabric.ServiceProfile("profile",
         ),
     )],
     metros=None,
-    visibility="PUBLIC",
+    visibility=equinix.fabric.ProfileVisibility.PUBLIC,
     marketing_info=equinix.fabric.ServiceProfileMarketingInfoArgs(
         promotion=True,
     ))

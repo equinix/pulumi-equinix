@@ -10,10 +10,10 @@ func main() {
 		profile, err := fabric.NewServiceProfile(ctx, "profile", &fabric.ServiceProfileArgs{
 			Name:        pulumi.String("Example Cloud Provider"),
 			Description: pulumi.String("50 to 500 Mbps Hosted Connection to Example Cloud"),
-			Type:        pulumi.String("L2_PROFILE"),
+			Type:        pulumi.String(fabric.ProfileTypeL2Profile),
 			AccessPointTypeConfigs: fabric.ServiceProfileAccessPointTypeConfigArray{
 				&fabric.ServiceProfileAccessPointTypeConfigArgs{
-					Type: pulumi.String("COLO"),
+					Type: pulumi.String(fabric.ProfileAccessPointTypeColo),
 					SupportedBandwidths: pulumi.IntArray{
 						pulumi.Int(50),
 						pulumi.Int(100),
@@ -43,7 +43,7 @@ func main() {
 				},
 			},
 			Metros:     nil,
-			Visibility: pulumi.String("PUBLIC"),
+			Visibility: pulumi.String(fabric.ProfileVisibilityPublic),
 			MarketingInfo: &fabric.ServiceProfileMarketingInfoArgs{
 				Promotion: pulumi.Bool(true),
 			},

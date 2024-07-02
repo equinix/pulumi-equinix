@@ -36,7 +36,7 @@ public class App {
             .metroCode(metro)
             .build()).number();
 
-        var c8KRouter = new Device("c8KRouter", DeviceArgs.builder()        
+        var c8KRouter = new Device("c8KRouter", DeviceArgs.builder()
             .name("catalystRouter")
             .metroCode(metro)
             .typeCode("C8000V")

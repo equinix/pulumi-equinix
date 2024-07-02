@@ -141,7 +141,7 @@ public class App {
         final var config = ctx.config();
         final var projectId = config.get("projectId");
         final var metro = config.get("metro").orElse("FR");
-        var request = new SpotMarketRequest("request", SpotMarketRequestArgs.builder()        
+        var request = new SpotMarketRequest("request", SpotMarketRequestArgs.builder()
             .projectId(projectId)
             .metro(metro)
             .maxBidPrice(0.75)

@@ -107,7 +107,7 @@ public class App {
         final var config = ctx.config();
         final var deviceId = config.get("deviceId");
         final var subnetCidr = config.get("subnetCidr").orElse("147.229.10.152/31");
-        var ipAttachResource = new IpAttachment("ipAttachResource", IpAttachmentArgs.builder()        
+        var ipAttachResource = new IpAttachment("ipAttachResource", IpAttachmentArgs.builder()
             .deviceId(deviceId)
             .cidrNotation(subnetCidr)
             .build());

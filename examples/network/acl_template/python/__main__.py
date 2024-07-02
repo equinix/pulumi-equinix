@@ -7,14 +7,14 @@ acl_template = equinix.networkedge.AclTemplate("aclTemplate",
     inbound_rules=[
         equinix.networkedge.AclTemplateInboundRuleArgs(
             subnet="1.1.1.1/32",
-            protocol="IP",
+            protocol=equinix.networkedge.AclRuleProtocolType.IP,
             src_port="any",
             dst_port="any",
             description="inbound rule description",
         ),
         equinix.networkedge.AclTemplateInboundRuleArgs(
             subnet="2.2.2.2/28",
-            protocol="TCP",
+            protocol=equinix.networkedge.AclRuleProtocolType.TCP,
             src_port="any",
             dst_port="any",
             description="inbound rule description",

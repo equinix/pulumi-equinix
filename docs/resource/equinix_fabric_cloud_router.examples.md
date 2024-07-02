@@ -23,9 +23,6 @@ const router = new equinix.fabric.CloudRouter("router", {
     account: {
         accountNumber: 272010,
     },
-    "project": {
-        "projectId": "995072000433550"
-    }
 });
 export const routerId = router.id;
 ```
@@ -53,9 +50,6 @@ router = equinix.fabric.CloudRouter("router",
     )],
     account=equinix.fabric.CloudRouterAccountArgs(
         account_number=272010,
-    ))
-    project=equinix.fabric.CloudRouterProjectArgs(
-        project_id=995072000433550,
     ))
 pulumi.export("routerId", router.id)
 ```
@@ -96,9 +90,6 @@ func main() {
 			Account: &fabric.CloudRouterAccountArgs{
 				AccountNumber: pulumi.Int(272010),
 			},
-			Project: &fabric.CloudRouterProjectArgs{
-				ProjectId: pulumi.String("995072000433550"),
-            },
 		})
 		if err != nil {
 			return err
@@ -146,10 +137,6 @@ return await Deployment.RunAsync(() =>
         {
             AccountNumber = 272010,
         },
-        Project = new Equinix.Fabric.Inputs.CloudRouterProjectArgs
-        {
-            ProjectId = "995072000433550",
-        },
     });
 
     return new Dictionary<string, object?>
@@ -186,7 +173,7 @@ public class App {
         final var config = ctx.config();
         final var metro = config.get("metro").orElse("FR");
         final var accountNum = config.get("accountNum");
-        var router = new CloudRouter("router", CloudRouterArgs.builder()        
+        var router = new CloudRouter("router", CloudRouterArgs.builder()
             .name("My-Fabric-Cloud-Router")
             .type("XF_ROUTER")
             .location(CloudRouterLocationArgs.builder()
@@ -201,9 +188,6 @@ public class App {
                 .build())
             .account(CloudRouterAccountArgs.builder()
                 .accountNumber(272010)
-                .build())
-            .project(CloudRouterProjectArgs.builder()
-                .projectId("995072000433550")
                 .build())
             .build());
 
@@ -234,8 +218,6 @@ resources:
         - example@equinix.com
       account:
         accountNumber: 272010
-      project:
-        projectId: 995072000433550
 outputs:
   routerId: ${router.id}
 ```

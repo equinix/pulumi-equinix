@@ -38,7 +38,7 @@ public class App {
             .uuid(device2Id)
             .build()).metroCode();
 
-        var deviceLink = new DeviceLink("deviceLink", DeviceLinkArgs.builder()        
+        var deviceLink = new DeviceLink("deviceLink", DeviceLinkArgs.builder()
             .name("test-link")
             .subnet("192.168.40.64/27")
             .devices(            

@@ -14,7 +14,7 @@ return await Deployment.RunAsync(() =>
             new Equinix.NetworkEdge.Inputs.AclTemplateInboundRuleArgs
             {
                 Subnet = "1.1.1.1/32",
-                Protocol = "IP",
+                Protocol = Equinix.NetworkEdge.AclRuleProtocolType.IP,
                 SrcPort = "any",
                 DstPort = "any",
                 Description = "inbound rule description",
@@ -22,7 +22,7 @@ return await Deployment.RunAsync(() =>
             new Equinix.NetworkEdge.Inputs.AclTemplateInboundRuleArgs
             {
                 Subnet = "2.2.2.2/28",
-                Protocol = "TCP",
+                Protocol = Equinix.NetworkEdge.AclRuleProtocolType.TCP,
                 SrcPort = "any",
                 DstPort = "any",
                 Description = "inbound rule description",
