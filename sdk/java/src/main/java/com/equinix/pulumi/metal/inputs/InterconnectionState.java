@@ -67,7 +67,7 @@ public final class InterconnectionState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Facility where the connection will be created.   Use metro instead; read the facility to metro migration guide
+     * Facility where the connection will be created. Use metro instead; read the facility to metro migration guide
      * 
      * @deprecated
      * Use metro instead of facility. For more information, read the migration guide.
@@ -78,7 +78,7 @@ public final class InterconnectionState extends com.pulumi.resources.ResourceArg
     private @Nullable Output<String> facility;
 
     /**
-     * @return Facility where the connection will be created.   Use metro instead; read the facility to metro migration guide
+     * @return Facility where the connection will be created. Use metro instead; read the facility to metro migration guide
      * 
      * @deprecated
      * Use metro instead of facility. For more information, read the migration guide.
@@ -150,18 +150,14 @@ public final class InterconnectionState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`). Schema of
-     * port is described in documentation of the
-     * equinix.metal.Interconnection datasource.
+     * List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`). Schema of port is described in documentation of the equinix.metal.Interconnection datasource.
      * 
      */
     @Import(name="ports")
     private @Nullable Output<List<InterconnectionPortArgs>> ports;
 
     /**
-     * @return List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`). Schema of
-     * port is described in documentation of the
-     * equinix.metal.Interconnection datasource.
+     * @return List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`). Schema of port is described in documentation of the equinix.metal.Interconnection datasource.
      * 
      */
     public Optional<Output<List<InterconnectionPortArgs>>> ports() {
@@ -214,14 +210,14 @@ public final class InterconnectionState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the equinix_ecx_l2_connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). Scehma of service_token is described in documentation of the equinix.metal.Interconnection datasource.
+     * List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the equinix.fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard). Scehma of service_token is described in documentation of the equinix.metal.Interconnection datasource.
      * 
      */
     @Import(name="serviceTokens")
     private @Nullable Output<List<InterconnectionServiceTokenArgs>> serviceTokens;
 
     /**
-     * @return List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the equinix_ecx_l2_connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). Scehma of service_token is described in documentation of the equinix.metal.Interconnection datasource.
+     * @return List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the equinix.fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard). Scehma of service_token is described in documentation of the equinix.metal.Interconnection datasource.
      * 
      */
     public Optional<Output<List<InterconnectionServiceTokenArgs>>> serviceTokens() {
@@ -229,14 +225,14 @@ public final class InterconnectionState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Connection speed -  Values must be in the format &#39;&lt;number&gt;Mbps&#39; or &#39;&lt;number&gt;Gpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
+     * Connection speed - Values must be in the format &#39;&lt;number&gt;Mbps&#39; or &#39;&lt;number&gt;Gpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
      * 
      */
     @Import(name="speed")
     private @Nullable Output<String> speed;
 
     /**
-     * @return Connection speed -  Values must be in the format &#39;&lt;number&gt;Mbps&#39; or &#39;&lt;number&gt;Gpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
+     * @return Connection speed - Values must be in the format &#39;&lt;number&gt;Mbps&#39; or &#39;&lt;number&gt;Gpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
      * 
      */
     public Optional<Output<String>> speed() {
@@ -274,7 +270,7 @@ public final class InterconnectionState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the equinix_ecx_l2_connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `service_tokens` instead.
+     * (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the equinix.fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `service_tokens` instead.
      * 
      * @deprecated
      * If your organization already has connection service tokens enabled, use `service_tokens` instead
@@ -285,7 +281,7 @@ public final class InterconnectionState extends com.pulumi.resources.ResourceArg
     private @Nullable Output<String> token;
 
     /**
-     * @return (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the equinix_ecx_l2_connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `service_tokens` instead.
+     * @return (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the equinix.fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `service_tokens` instead.
      * 
      * @deprecated
      * If your organization already has connection service tokens enabled, use `service_tokens` instead
@@ -452,7 +448,7 @@ public final class InterconnectionState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param facility Facility where the connection will be created.   Use metro instead; read the facility to metro migration guide
+         * @param facility Facility where the connection will be created. Use metro instead; read the facility to metro migration guide
          * 
          * @return builder
          * 
@@ -467,7 +463,7 @@ public final class InterconnectionState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param facility Facility where the connection will be created.   Use metro instead; read the facility to metro migration guide
+         * @param facility Facility where the connection will be created. Use metro instead; read the facility to metro migration guide
          * 
          * @return builder
          * 
@@ -565,9 +561,7 @@ public final class InterconnectionState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param ports List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`). Schema of
-         * port is described in documentation of the
-         * equinix.metal.Interconnection datasource.
+         * @param ports List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`). Schema of port is described in documentation of the equinix.metal.Interconnection datasource.
          * 
          * @return builder
          * 
@@ -578,9 +572,7 @@ public final class InterconnectionState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param ports List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`). Schema of
-         * port is described in documentation of the
-         * equinix.metal.Interconnection datasource.
+         * @param ports List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`). Schema of port is described in documentation of the equinix.metal.Interconnection datasource.
          * 
          * @return builder
          * 
@@ -590,9 +582,7 @@ public final class InterconnectionState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param ports List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`). Schema of
-         * port is described in documentation of the
-         * equinix.metal.Interconnection datasource.
+         * @param ports List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`). Schema of port is described in documentation of the equinix.metal.Interconnection datasource.
          * 
          * @return builder
          * 
@@ -665,7 +655,7 @@ public final class InterconnectionState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param serviceTokens List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the equinix_ecx_l2_connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). Scehma of service_token is described in documentation of the equinix.metal.Interconnection datasource.
+         * @param serviceTokens List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the equinix.fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard). Scehma of service_token is described in documentation of the equinix.metal.Interconnection datasource.
          * 
          * @return builder
          * 
@@ -676,7 +666,7 @@ public final class InterconnectionState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param serviceTokens List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the equinix_ecx_l2_connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). Scehma of service_token is described in documentation of the equinix.metal.Interconnection datasource.
+         * @param serviceTokens List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the equinix.fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard). Scehma of service_token is described in documentation of the equinix.metal.Interconnection datasource.
          * 
          * @return builder
          * 
@@ -686,7 +676,7 @@ public final class InterconnectionState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param serviceTokens List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the equinix_ecx_l2_connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). Scehma of service_token is described in documentation of the equinix.metal.Interconnection datasource.
+         * @param serviceTokens List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the equinix.fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard). Scehma of service_token is described in documentation of the equinix.metal.Interconnection datasource.
          * 
          * @return builder
          * 
@@ -696,7 +686,7 @@ public final class InterconnectionState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param speed Connection speed -  Values must be in the format &#39;&lt;number&gt;Mbps&#39; or &#39;&lt;number&gt;Gpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
+         * @param speed Connection speed - Values must be in the format &#39;&lt;number&gt;Mbps&#39; or &#39;&lt;number&gt;Gpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
          * 
          * @return builder
          * 
@@ -707,7 +697,7 @@ public final class InterconnectionState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param speed Connection speed -  Values must be in the format &#39;&lt;number&gt;Mbps&#39; or &#39;&lt;number&gt;Gpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
+         * @param speed Connection speed - Values must be in the format &#39;&lt;number&gt;Mbps&#39; or &#39;&lt;number&gt;Gpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
          * 
          * @return builder
          * 
@@ -769,7 +759,7 @@ public final class InterconnectionState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param token (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the equinix_ecx_l2_connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `service_tokens` instead.
+         * @param token (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the equinix.fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `service_tokens` instead.
          * 
          * @return builder
          * 
@@ -784,7 +774,7 @@ public final class InterconnectionState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param token (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the equinix_ecx_l2_connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `service_tokens` instead.
+         * @param token (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the equinix.fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `service_tokens` instead.
          * 
          * @return builder
          * 

@@ -14,18 +14,15 @@ namespace Pulumi.Equinix.Metal.Outputs
     public sealed class DeviceReinstall
     {
         /// <summary>
-        /// Whether the OS disk should be filled with `00h` bytes before reinstall.
-        /// Defaults to `false`.
+        /// Whether the OS disk should be filled with `00h` bytes before reinstall
         /// </summary>
         public readonly bool? DeprovisionFast;
         /// <summary>
-        /// Whether the provider should favour reinstall over destroy and create. Defaults to
-        /// `false`.
+        /// Whether the device should be reinstalled instead of destroyed
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// Whether the non-OS disks should be kept or wiped during reinstall.
-        /// Defaults to `false`.
+        /// Whether the non-OS disks should be kept or wiped during reinstall
         /// </summary>
         public readonly bool? PreserveData;
 

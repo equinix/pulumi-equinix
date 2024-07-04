@@ -1237,52 +1237,74 @@ export namespace fabric {
 
     export interface GetServiceProfilesFilter {
         /**
-         * Possible operator to use on filters = - equal
+         * Operators to use on your filtered field with the values given. One of [=]
          */
-        operator?: string;
+        operator: string;
         /**
-         * Search Criteria for Service Profile - /name, /uuid, /state, /metros/code, /visibility, /type
+         * Property to apply operator and values to. One of [/name /uuid /state /metros/code /visibility /type /project/projectId]
          */
-        property?: string;
+        property: string;
         /**
-         * Values
+         * The values that you want to apply the property+operator combination to in order to filter your data search
          */
-        values?: string[];
+        values: string[];
     }
 
     export interface GetServiceProfilesFilterArgs {
         /**
-         * Possible operator to use on filters = - equal
+         * Operators to use on your filtered field with the values given. One of [=]
          */
-        operator?: pulumi.Input<string>;
+        operator: pulumi.Input<string>;
         /**
-         * Search Criteria for Service Profile - /name, /uuid, /state, /metros/code, /visibility, /type
+         * Property to apply operator and values to. One of [/name /uuid /state /metros/code /visibility /type /project/projectId]
          */
-        property?: pulumi.Input<string>;
+        property: pulumi.Input<string>;
         /**
-         * Values
+         * The values that you want to apply the property+operator combination to in order to filter your data search
          */
-        values?: pulumi.Input<pulumi.Input<string>[]>;
+        values: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface GetServiceProfilesPagination {
+        /**
+         * Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+         */
+        limit?: number;
+        /**
+         * The page offset for the pagination request. Index of the first element. Default is 0.
+         */
+        offset?: number;
+    }
+
+    export interface GetServiceProfilesPaginationArgs {
+        /**
+         * Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+         */
+        limit?: pulumi.Input<number>;
+        /**
+         * The page offset for the pagination request. Index of the first element. Default is 0.
+         */
+        offset?: pulumi.Input<number>;
     }
 
     export interface GetServiceProfilesSort {
         /**
-         * Priority type- DESC, ASC
+         * The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
          */
         direction?: string;
         /**
-         * Search operation sort criteria /name /state /changeLog/createdDateTime /changeLog/updatedDateTime
+         * The property name to use in sorting. One of [/name /uuid /state /location/metroCode /location/metroName /package/code /changeLog/createdDateTime /changeLog/updatedDateTime]. Defaults to /changeLog/updatedDateTime
          */
         property?: string;
     }
 
     export interface GetServiceProfilesSortArgs {
         /**
-         * Priority type- DESC, ASC
+         * The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
          */
         direction?: pulumi.Input<string>;
         /**
-         * Search operation sort criteria /name /state /changeLog/createdDateTime /changeLog/updatedDateTime
+         * The property name to use in sorting. One of [/name /uuid /state /location/metroCode /location/metroName /package/code /changeLog/createdDateTime /changeLog/updatedDateTime]. Defaults to /changeLog/updatedDateTime
          */
         property?: pulumi.Input<string>;
     }
@@ -1972,93 +1994,83 @@ export namespace fabric {
 export namespace metal {
     export interface DeviceBehavior {
         /**
-         * List of attributes that are allowed to change without recreating the instance. Supported attributes: `customData`, `userData`"
+         * List of attributes that are allowed to change without recreating the instance. Supported attributes: `customData`, `userData`
          */
         allowChanges?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface DeviceIpAddress {
         /**
-         * CIDR suffix for IP address block to be assigned, i.e. amount of addresses.
+         * CIDR suffix for IP block assigned to this device
          */
         cidr?: pulumi.Input<number>;
         /**
-         * List of UUIDs of IP block reservations
-         * from which the public IPv4 address should be taken.
-         *
-         * You can supply one `ipAddress` block per IP address type. If you use the `ipAddress` you must
-         * always pass a block for `privateIpv4`.
-         *
-         * To learn more about using the reserved IP addresses for new devices, see the examples in the
-         * equinix.metal.ReservedIpBlock documentation.
+         * IDs of reservations to pick the blocks from
          */
         reservationIds?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * One of `privateIpv4`, `publicIpv4`, `publicIpv6`.
+         * one of public*ipv4,private*ipv4,public_ipv6
          */
         type: pulumi.Input<string>;
     }
 
     export interface DeviceNetwork {
         /**
-         * IPv4 or IPv6 address string.
+         * IPv4 or IPv6 address string
          */
         address?: pulumi.Input<string>;
         /**
-         * Bit length of the network mask of the address.
+         * CIDR suffix for IP address block to be assigned, i.e. amount of addresses
          */
         cidr?: pulumi.Input<number>;
         /**
-         * IP version. One of `4`, `6`.
+         * IP version - "4" or "6"
          */
         family?: pulumi.Input<number>;
         /**
-         * Address of router.
+         * Address of router
          */
         gateway?: pulumi.Input<string>;
         /**
-         * Whether the address is routable from the Internet.
+         * Whether the address is routable from the Internet
          */
         public?: pulumi.Input<boolean>;
     }
 
     export interface DevicePort {
         /**
-         * Whether this port is part of a bond in bonded network setup.
+         * Whether this port is part of a bond in bonded network setup
          */
         bonded?: pulumi.Input<boolean>;
         /**
-         * ID of the port.
+         * The ID of the device
          */
         id?: pulumi.Input<string>;
         /**
-         * MAC address assigned to the port.
+         * MAC address assigned to the port
          */
         mac?: pulumi.Input<string>;
         /**
-         * Name of the port (e.g. `eth0`, or `bond0`).
+         * Name of the port (e.g. eth0, or bond0)
          */
         name?: pulumi.Input<string>;
         /**
-         * Type of the port (e.g. `NetworkPort` or `NetworkBondPort`).
+         * One of [private_ipv4, public_ipv4, publicIpv6]
          */
         type?: pulumi.Input<string>;
     }
 
     export interface DeviceReinstall {
         /**
-         * Whether the OS disk should be filled with `00h` bytes before reinstall.
-         * Defaults to `false`.
+         * Whether the OS disk should be filled with `00h` bytes before reinstall
          */
         deprovisionFast?: pulumi.Input<boolean>;
         /**
-         * Whether the provider should favour reinstall over destroy and create. Defaults to
-         * `false`.
+         * Whether the device should be reinstalled instead of destroyed
          */
         enabled?: pulumi.Input<boolean>;
         /**
-         * Whether the non-OS disks should be kept or wiped during reinstall.
-         * Defaults to `false`.
+         * Whether the non-OS disks should be kept or wiped during reinstall
          */
         preserveData?: pulumi.Input<boolean>;
     }
@@ -2140,8 +2152,7 @@ export namespace metal {
          */
         plan: string;
         /**
-         * Minimun number of devices that must be available in selected location.
-         * Default is `1`.
+         * Minimun number of devices that must be available in selected location. Default is `1`.
          */
         quantity?: number;
     }
@@ -2152,8 +2163,7 @@ export namespace metal {
          */
         plan: pulumi.Input<string>;
         /**
-         * Minimun number of devices that must be available in selected location.
-         * Default is `1`.
+         * Minimun number of devices that must be available in selected location. Default is `1`.
          */
         quantity?: pulumi.Input<number>;
     }
@@ -2164,8 +2174,7 @@ export namespace metal {
          */
         plan: string;
         /**
-         * Minimum number of devices that must be available in selected location.
-         * Default is `1`.
+         * Minimum number of devices that must be available in selected location. Default is `1`.
          */
         quantity?: number;
     }
@@ -2176,8 +2185,7 @@ export namespace metal {
          */
         plan: pulumi.Input<string>;
         /**
-         * Minimum number of devices that must be available in selected location.
-         * Default is `1`.
+         * Minimum number of devices that must be available in selected location. Default is `1`.
          */
         quantity?: pulumi.Input<number>;
     }
@@ -2255,14 +2263,14 @@ export namespace metal {
         name: pulumi.Input<string>;
         role: pulumi.Input<string>;
         /**
-         * Connection speed -  Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
+         * Connection speed - Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
          */
         speed: pulumi.Input<number>;
         /**
          * Status of the connection resource.
          */
         status: pulumi.Input<string>;
-        virtualCircuitIds: pulumi.Input<any[]>;
+        virtualCircuitIds: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface InterconnectionServiceToken {
@@ -2306,8 +2314,7 @@ export namespace metal {
          */
         asn: pulumi.Input<number>;
         /**
-         * `local` or `global`, the `local` is likely to be usable immediately, the
-         * `global` will need to be reviewed by Equinix Metal engineers.
+         * `local` or `global`, the `local` is likely to be usable immediately, the `global` will need to be reviewed by Equinix Metal engineers.
          */
         deploymentType: pulumi.Input<string>;
         /**
@@ -2353,8 +2360,7 @@ export namespace metal {
 export namespace networkedge {
     export interface AclTemplateDeviceDetail {
         /**
-         * Device ACL provisioning status where template was applied. One of `PROVISIONING`,
-         * `PROVISIONED`.
+         * Device ACL provisioning status where template was applied. One of `PROVISIONING`, `PROVISIONED`.
          */
         aclStatus?: pulumi.Input<string>;
         /**
@@ -2373,8 +2379,7 @@ export namespace networkedge {
          */
         description?: pulumi.Input<string>;
         /**
-         * Inbound traffic destination ports. Allowed values are a comma separated
-         * list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
+         * Inbound traffic destination ports. Allowed values are a comma separated list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
          */
         dstPort: pulumi.Input<string>;
         /**
@@ -2392,8 +2397,7 @@ export namespace networkedge {
          */
         sourceType?: pulumi.Input<string>;
         /**
-         * Inbound traffic source ports. Allowed values are a comma separated list
-         * of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
+         * Inbound traffic source ports. Allowed values are a comma separated list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
          */
         srcPort: pulumi.Input<string>;
         /**
@@ -2418,13 +2422,11 @@ export namespace networkedge {
          */
         clusterName: pulumi.Input<string>;
         /**
-         * An object that has `node0` configuration.
-         * See Cluster Details - Nodes below for more details.
+         * An object that has `node0` configuration. See Cluster Details - Nodes below for more details.
          */
         node0: pulumi.Input<inputs.networkedge.DeviceClusterDetailsNode0>;
         /**
-         * An object that has `node1` configuration.
-         * See Cluster Details - Nodes below for more details.
+         * An object that has `node1` configuration. See Cluster Details - Nodes below for more details.
          */
         node1: pulumi.Input<inputs.networkedge.DeviceClusterDetailsNode1>;
         /**
@@ -2451,9 +2453,7 @@ export namespace networkedge {
          */
         uuid?: pulumi.Input<string>;
         /**
-         * An object that has fields relevant to the vendor of the
-         * cluster device. See Cluster Details - Nodes - Vendor Configuration
-         * below for more details.
+         * An object that has fields relevant to the vendor of the cluster device. See Cluster Details - Nodes - Vendor Configuration below for more details.
          */
         vendorConfiguration?: pulumi.Input<inputs.networkedge.DeviceClusterDetailsNode0VendorConfiguration>;
     }
@@ -2464,8 +2464,7 @@ export namespace networkedge {
          */
         activationKey?: pulumi.Input<string>;
         /**
-         * The administrative password of the device. You can use it to log in
-         * to the console. This field is not available for all device types.
+         * The administrative password of the device. You can use it to log in to the console. This field is not available for all device types.
          */
         adminPassword?: pulumi.Input<string>;
         /**
@@ -2501,8 +2500,7 @@ export namespace networkedge {
          */
         privateGateway?: pulumi.Input<string>;
         /**
-         * The CLI password of the device. This field is relevant only for the
-         * Velocloud SDWAN cluster.
+         * The CLI password of the device. This field is relevant only for the Velocloud SDWAN cluster.
          */
         rootPassword?: pulumi.Input<string>;
     }
@@ -2525,9 +2523,7 @@ export namespace networkedge {
          */
         uuid?: pulumi.Input<string>;
         /**
-         * An object that has fields relevant to the vendor of the
-         * cluster device. See Cluster Details - Nodes - Vendor Configuration
-         * below for more details.
+         * An object that has fields relevant to the vendor of the cluster device. See Cluster Details - Nodes - Vendor Configuration below for more details.
          */
         vendorConfiguration?: pulumi.Input<inputs.networkedge.DeviceClusterDetailsNode1VendorConfiguration>;
     }
@@ -2538,8 +2534,7 @@ export namespace networkedge {
          */
         activationKey?: pulumi.Input<string>;
         /**
-         * The administrative password of the device. You can use it to log in
-         * to the console. This field is not available for all device types.
+         * The administrative password of the device. You can use it to log in to the console. This field is not available for all device types.
          */
         adminPassword?: pulumi.Input<string>;
         /**
@@ -2575,8 +2570,7 @@ export namespace networkedge {
          */
         privateGateway?: pulumi.Input<string>;
         /**
-         * The CLI password of the device. This field is relevant only for the
-         * Velocloud SDWAN cluster.
+         * The CLI password of the device. This field is relevant only for the Velocloud SDWAN cluster.
          */
         rootPassword?: pulumi.Input<string>;
     }
@@ -2626,8 +2620,7 @@ export namespace networkedge {
          */
         id: pulumi.Input<string>;
         /**
-         * Device network interface identifier to use for device link
-         * connection.
+         * Device network interface identifier to use for device link connection.
          */
         interfaceId?: pulumi.Input<number>;
         /**
@@ -2635,16 +2628,14 @@ export namespace networkedge {
          */
         ipAddress?: pulumi.Input<string>;
         /**
-         * device link provisioning status on a given device. One of `PROVISIONING`,
-         * `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
+         * device link provisioning status on a given device. One of `PROVISIONING`, `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
          */
         status?: pulumi.Input<string>;
     }
 
     export interface DeviceLinkLink {
         /**
-         * billing account number to be used for
-         * connection charges
+         * billing account number to be used for connection charges
          */
         accountNumber: pulumi.Input<string>;
         /**
@@ -2679,8 +2670,7 @@ export namespace networkedge {
 
     export interface DeviceLinkMetroLink {
         /**
-         * billing account number to be used for
-         * connection charges
+         * billing account number to be used for connection charges
          */
         accountNumber: pulumi.Input<string>;
         /**
@@ -2703,13 +2693,11 @@ export namespace networkedge {
          */
         accountNumber: pulumi.Input<string>;
         /**
-         * Identifier of a WAN interface ACL template that will be applied
-         * on a secondary device.
+         * Identifier of a WAN interface ACL template that will be applied on a secondary device.
          */
         aclTemplateId?: pulumi.Input<string>;
         /**
-         * Additional Internet bandwidth, in Mbps, for a secondary
-         * device.
+         * Additional Internet bandwidth, in Mbps, for a secondary device.
          */
         additionalBandwidth?: pulumi.Input<number>;
         /**
@@ -2729,13 +2717,11 @@ export namespace networkedge {
          */
         ibx?: pulumi.Input<string>;
         /**
-         * List of device interfaces. See Interface Attribute below
-         * for more details.
+         * List of device interfaces. See Interface Attribute below for more details.
          */
         interfaces?: pulumi.Input<pulumi.Input<inputs.networkedge.DeviceSecondaryDeviceInterface>[]>;
         /**
-         * Path to the license file that will be uploaded and applied on a
-         * secondary device. Applicable for some device types in BYOL licensing mode.
+         * Path to the license file that will be uploaded and applied on a secondary device. Applicable for some device types in BYOL licensing mode.
          */
         licenseFile?: pulumi.Input<string>;
         /**
@@ -2743,8 +2729,7 @@ export namespace networkedge {
          */
         licenseFileId?: pulumi.Input<string>;
         /**
-         * Device license registration status. Possible values are `APPLYING_LICENSE`,
-         * `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
+         * Device license registration status. Possible values are `APPLYING_LICENSE`, `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
          */
         licenseStatus?: pulumi.Input<string>;
         /**
@@ -2756,10 +2741,8 @@ export namespace networkedge {
          */
         metroCode: pulumi.Input<string>;
         /**
-         * Identifier of an MGMT interface ACL template that will be
-         * applied on a secondary device.
-         * * `ssh-key` - (Optional) Up to one definition of SSH key that will be provisioned on a secondary
-         * device.
+         * Identifier of an MGMT interface ACL template that will be applied on a secondary device.
+         * * `ssh-key` - (Optional) Up to one definition of SSH key that will be provisioned on a secondary device.
          */
         mgmtAclTemplateUuid?: pulumi.Input<string>;
         /**
@@ -2767,18 +2750,15 @@ export namespace networkedge {
          */
         name: pulumi.Input<string>;
         /**
-         * List of email addresses that will receive notifications about
-         * secondary device.
+         * List of email addresses that will receive notifications about secondary device.
          */
         notifications: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Unique Identifier for the project resource where the device is scoped to.If you
-         * leave it out, the device will be created under the default project id of your organization.
+         * Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
          */
         projectId?: pulumi.Input<string>;
         /**
-         * Device redundancy type applicable for HA devices, either
-         * primary or secondary.
+         * Device redundancy type applicable for HA devices, either primary or secondary.
          */
         redundancyType?: pulumi.Input<string>;
         /**
@@ -2810,9 +2790,7 @@ export namespace networkedge {
          */
         uuid?: pulumi.Input<string>;
         /**
-         * Key/Value pairs of vendor specific configuration parameters
-         * for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`,
-         * `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`.
+         * Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`.
          */
         vendorConfiguration?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**

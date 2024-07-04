@@ -7,8 +7,6 @@ import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetServiceProfilesFilter extends com.pulumi.resources.InvokeArgs {
@@ -16,48 +14,48 @@ public final class GetServiceProfilesFilter extends com.pulumi.resources.InvokeA
     public static final GetServiceProfilesFilter Empty = new GetServiceProfilesFilter();
 
     /**
-     * Possible operator to use on filters = - equal
+     * Operators to use on your filtered field with the values given. One of [=]
      * 
      */
-    @Import(name="operator")
-    private @Nullable String operator;
+    @Import(name="operator", required=true)
+    private String operator;
 
     /**
-     * @return Possible operator to use on filters = - equal
+     * @return Operators to use on your filtered field with the values given. One of [=]
      * 
      */
-    public Optional<String> operator() {
-        return Optional.ofNullable(this.operator);
+    public String operator() {
+        return this.operator;
     }
 
     /**
-     * Search Criteria for Service Profile - /name, /uuid, /state, /metros/code, /visibility, /type
+     * Property to apply operator and values to. One of [/name /uuid /state /metros/code /visibility /type /project/projectId]
      * 
      */
-    @Import(name="property")
-    private @Nullable String property;
+    @Import(name="property", required=true)
+    private String property;
 
     /**
-     * @return Search Criteria for Service Profile - /name, /uuid, /state, /metros/code, /visibility, /type
+     * @return Property to apply operator and values to. One of [/name /uuid /state /metros/code /visibility /type /project/projectId]
      * 
      */
-    public Optional<String> property() {
-        return Optional.ofNullable(this.property);
+    public String property() {
+        return this.property;
     }
 
     /**
-     * Values
+     * The values that you want to apply the property+operator combination to in order to filter your data search
      * 
      */
-    @Import(name="values")
-    private @Nullable List<String> values;
+    @Import(name="values", required=true)
+    private List<String> values;
 
     /**
-     * @return Values
+     * @return The values that you want to apply the property+operator combination to in order to filter your data search
      * 
      */
-    public Optional<List<String>> values() {
-        return Optional.ofNullable(this.values);
+    public List<String> values() {
+        return this.values;
     }
 
     private GetServiceProfilesFilter() {}
@@ -87,40 +85,40 @@ public final class GetServiceProfilesFilter extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param operator Possible operator to use on filters = - equal
+         * @param operator Operators to use on your filtered field with the values given. One of [=]
          * 
          * @return builder
          * 
          */
-        public Builder operator(@Nullable String operator) {
+        public Builder operator(String operator) {
             $.operator = operator;
             return this;
         }
 
         /**
-         * @param property Search Criteria for Service Profile - /name, /uuid, /state, /metros/code, /visibility, /type
+         * @param property Property to apply operator and values to. One of [/name /uuid /state /metros/code /visibility /type /project/projectId]
          * 
          * @return builder
          * 
          */
-        public Builder property(@Nullable String property) {
+        public Builder property(String property) {
             $.property = property;
             return this;
         }
 
         /**
-         * @param values Values
+         * @param values The values that you want to apply the property+operator combination to in order to filter your data search
          * 
          * @return builder
          * 
          */
-        public Builder values(@Nullable List<String> values) {
+        public Builder values(List<String> values) {
             $.values = values;
             return this;
         }
 
         /**
-         * @param values Values
+         * @param values The values that you want to apply the property+operator combination to in order to filter your data search
          * 
          * @return builder
          * 
@@ -130,6 +128,9 @@ public final class GetServiceProfilesFilter extends com.pulumi.resources.InvokeA
         }
 
         public GetServiceProfilesFilter build() {
+            $.operator = Objects.requireNonNull($.operator, "expected parameter 'operator' to be non-null");
+            $.property = Objects.requireNonNull($.property, "expected parameter 'property' to be non-null");
+            $.values = Objects.requireNonNull($.values, "expected parameter 'values' to be non-null");
             return $;
         }
     }

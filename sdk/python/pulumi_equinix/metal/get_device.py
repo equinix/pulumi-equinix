@@ -103,7 +103,7 @@ class GetDeviceResult:
     @pulumi.getter(name="accessPrivateIpv4")
     def access_private_ipv4(self) -> str:
         """
-        The ipv4 private IP assigned to the device.
+        The ipv4 private IP assigned to the device
         """
         return pulumi.get(self, "access_private_ipv4")
 
@@ -111,7 +111,7 @@ class GetDeviceResult:
     @pulumi.getter(name="accessPublicIpv4")
     def access_public_ipv4(self) -> str:
         """
-        The ipv4 management IP assigned to the device.
+        The ipv4 management IP assigned to the device
         """
         return pulumi.get(self, "access_public_ipv4")
 
@@ -119,7 +119,7 @@ class GetDeviceResult:
     @pulumi.getter(name="accessPublicIpv6")
     def access_public_ipv6(self) -> str:
         """
-        The ipv6 management IP assigned to the device.
+        The ipv6 management IP assigned to the device
         """
         return pulumi.get(self, "access_public_ipv6")
 
@@ -132,7 +132,7 @@ class GetDeviceResult:
     @pulumi.getter(name="billingCycle")
     def billing_cycle(self) -> str:
         """
-        The billing cycle of the device (monthly or hourly).
+        The billing cycle of the device (monthly or hourly)
         """
         return pulumi.get(self, "billing_cycle")
 
@@ -140,37 +140,41 @@ class GetDeviceResult:
     @pulumi.getter
     def description(self) -> str:
         """
-        Description string for the device.
+        Description string for the device
         """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="deviceId")
     def device_id(self) -> str:
+        """
+        Device ID
+        """
         return pulumi.get(self, "device_id")
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
     def facility(self) -> str:
         """
-        (**Deprecated**) The facility where the device is deployed. Use metro instead; read the facility to metro migration guide
+        The facility where the device is deployed
         """
-        warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
-        pulumi.log.warn("""facility is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
-
         return pulumi.get(self, "facility")
 
     @property
     @pulumi.getter(name="hardwareReservationId")
     def hardware_reservation_id(self) -> str:
         """
-        The id of hardware reservation which this device occupies.
+        The id of hardware reservation which this device occupies
         """
         return pulumi.get(self, "hardware_reservation_id")
 
     @property
     @pulumi.getter
     def hostname(self) -> str:
+        """
+        The device name
+        """
         return pulumi.get(self, "hostname")
 
     @property
@@ -198,8 +202,7 @@ class GetDeviceResult:
     @pulumi.getter(name="networkType")
     def network_type(self) -> str:
         """
-        L2 network type of the device, one of `layer3`, `layer2-bonded`,
-        `layer2-individual`, `hybrid`.
+        L2 network type of the device, one oflayer3, hybrid, layer2-individual, layer2-bonded
         """
         return pulumi.get(self, "network_type")
 
@@ -207,8 +210,7 @@ class GetDeviceResult:
     @pulumi.getter
     def networks(self) -> Sequence['outputs.GetDeviceNetworkResult']:
         """
-        The device's private and public IP (v4 and v6) network details. See
-        Network Attribute below for more details.
+        The device's private and public IP (v4 and v6) network details. When a device is run without any special network configuration, it will have 3 networks: ublic IPv4 at equinix*metal*device.name.network.0, IPv6 at equinix*metal*device.name.network.1 and private IPv4 at equinix*metal*device.name.network.2. Elastic addresses then stack by type - an assigned public IPv4 will go after the management public IPv4 (to index 1), and will then shift the indices of the IPv6 and private IPv4. Assigned private IPv4 will go after the management private IPv4 (to the end of the network list).
         """
         return pulumi.get(self, "networks")
 
@@ -216,7 +218,7 @@ class GetDeviceResult:
     @pulumi.getter(name="operatingSystem")
     def operating_system(self) -> str:
         """
-        The operating system running on the device.
+        The operating system running on the device
         """
         return pulumi.get(self, "operating_system")
 
@@ -224,7 +226,7 @@ class GetDeviceResult:
     @pulumi.getter
     def plan(self) -> str:
         """
-        The hardware config of the device.
+        The hardware config of the device
         """
         return pulumi.get(self, "plan")
 
@@ -232,21 +234,23 @@ class GetDeviceResult:
     @pulumi.getter
     def ports(self) -> Sequence['outputs.GetDevicePortResult']:
         """
-        List of ports assigned to the device. See Ports Attribute below for
-        more details.
+        Ports assigned to the device
         """
         return pulumi.get(self, "ports")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> str:
+        """
+        The id of the project in which the devices exists
+        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter(name="rootPassword")
     def root_password(self) -> str:
         """
-        Root password to the server (if still available).
+        Root password to the server (if still available)
         """
         return pulumi.get(self, "root_password")
 
@@ -262,7 +266,7 @@ class GetDeviceResult:
     @pulumi.getter(name="sshKeyIds")
     def ssh_key_ids(self) -> Sequence[str]:
         """
-        List of IDs of SSH keys deployed in the device, can be both user or project SSH keys.
+        List of IDs of SSH keys deployed in the device, can be both user or project SSH keys
         """
         return pulumi.get(self, "ssh_key_ids")
 
@@ -270,7 +274,7 @@ class GetDeviceResult:
     @pulumi.getter
     def state(self) -> str:
         """
-        The state of the device.
+        The state of the device
         """
         return pulumi.get(self, "state")
 
@@ -283,7 +287,7 @@ class GetDeviceResult:
     @pulumi.getter
     def tags(self) -> Sequence[str]:
         """
-        Tags attached to the device.
+        Tags attached to the device
         """
         return pulumi.get(self, "tags")
 
@@ -330,9 +334,7 @@ def get_device(device_id: Optional[str] = None,
 
     If you need to fetch a list of devices which meet filter criteria, you can use the metal_get_devices datasource.
 
-    > **Note:** All arguments including the `root_password` and `user_data` will be stored in
-     the raw state as plain-text.
-    Read more about sensitive data in state.
+    > **Note:** All arguments including the `root_password` and `user_data` will be stored in the raw state as plain-text. Read more about sensitive data in state.
 
     ## Example Usage
 
@@ -354,11 +356,9 @@ def get_device(device_id: Optional[str] = None,
     ```
 
 
-    :param str device_id: Device ID.
-           
-           > **NOTE:** You should pass either `device_id`, or both `project_id` and `hostname`.
-    :param str hostname: The device name.
-    :param str project_id: The id of the project in which the devices exists.
+    :param str device_id: Device ID
+    :param str hostname: The device name
+    :param str project_id: The id of the project in which the devices exists
     """
     __args__ = dict()
     __args__['deviceId'] = device_id
@@ -405,9 +405,7 @@ def get_device_output(device_id: Optional[pulumi.Input[Optional[str]]] = None,
 
     If you need to fetch a list of devices which meet filter criteria, you can use the metal_get_devices datasource.
 
-    > **Note:** All arguments including the `root_password` and `user_data` will be stored in
-     the raw state as plain-text.
-    Read more about sensitive data in state.
+    > **Note:** All arguments including the `root_password` and `user_data` will be stored in the raw state as plain-text. Read more about sensitive data in state.
 
     ## Example Usage
 
@@ -429,10 +427,8 @@ def get_device_output(device_id: Optional[pulumi.Input[Optional[str]]] = None,
     ```
 
 
-    :param str device_id: Device ID.
-           
-           > **NOTE:** You should pass either `device_id`, or both `project_id` and `hostname`.
-    :param str hostname: The device name.
-    :param str project_id: The id of the project in which the devices exists.
+    :param str device_id: Device ID
+    :param str hostname: The device name
+    :param str project_id: The id of the project in which the devices exists
     """
     ...

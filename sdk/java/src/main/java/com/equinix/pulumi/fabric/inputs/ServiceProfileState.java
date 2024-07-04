@@ -227,14 +227,14 @@ public final class ServiceProfileState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Self Profile indicating if the profile is created for customer&#39;s  self use
+     * Self Profile indicating if the profile is created for customer&#39;s self use
      * 
      */
     @Import(name="selfProfile")
     private @Nullable Output<Boolean> selfProfile;
 
     /**
-     * @return Self Profile indicating if the profile is created for customer&#39;s  self use
+     * @return Self Profile indicating if the profile is created for customer&#39;s self use
      * 
      */
     public Optional<Output<Boolean>> selfProfile() {
@@ -724,7 +724,7 @@ public final class ServiceProfileState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param selfProfile Self Profile indicating if the profile is created for customer&#39;s  self use
+         * @param selfProfile Self Profile indicating if the profile is created for customer&#39;s self use
          * 
          * @return builder
          * 
@@ -735,7 +735,7 @@ public final class ServiceProfileState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param selfProfile Self Profile indicating if the profile is created for customer&#39;s  self use
+         * @param selfProfile Self Profile indicating if the profile is created for customer&#39;s self use
          * 
          * @return builder
          * 

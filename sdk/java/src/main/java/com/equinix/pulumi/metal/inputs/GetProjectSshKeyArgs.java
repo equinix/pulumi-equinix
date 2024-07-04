@@ -50,16 +50,14 @@ public final class GetProjectSshKeyArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * The name, fingerprint, or public_key of the SSH Key to search for
-     * in the Equinix Metal project.
+     * The name, fingerprint, or public_key of the SSH Key to search for in the Equinix Metal project.
      * 
      */
     @Import(name="search")
     private @Nullable Output<String> search;
 
     /**
-     * @return The name, fingerprint, or public_key of the SSH Key to search for
-     * in the Equinix Metal project.
+     * @return The name, fingerprint, or public_key of the SSH Key to search for in the Equinix Metal project.
      * 
      */
     public Optional<Output<String>> search() {
@@ -139,8 +137,7 @@ public final class GetProjectSshKeyArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param search The name, fingerprint, or public_key of the SSH Key to search for
-         * in the Equinix Metal project.
+         * @param search The name, fingerprint, or public_key of the SSH Key to search for in the Equinix Metal project.
          * 
          * @return builder
          * 
@@ -151,8 +148,7 @@ public final class GetProjectSshKeyArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param search The name, fingerprint, or public_key of the SSH Key to search for
-         * in the Equinix Metal project.
+         * @param search The name, fingerprint, or public_key of the SSH Key to search for in the Equinix Metal project.
          * 
          * @return builder
          * 

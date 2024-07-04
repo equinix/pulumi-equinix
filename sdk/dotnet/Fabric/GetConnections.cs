@@ -15,8 +15,8 @@ namespace Pulumi.Equinix.Fabric
         /// Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID
         /// 
         /// Additional documentation:
-        /// * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm&gt;
-        /// * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections&gt;
+        /// * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm
+        /// * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections
         /// </summary>
         public static Task<GetConnectionsResult> InvokeAsync(GetConnectionsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetConnectionsResult>("equinix:fabric/getConnections:getConnections", args ?? new GetConnectionsArgs(), options.WithDefaults());
@@ -25,8 +25,8 @@ namespace Pulumi.Equinix.Fabric
         /// Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID
         /// 
         /// Additional documentation:
-        /// * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm&gt;
-        /// * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections&gt;
+        /// * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm
+        /// * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections
         /// </summary>
         public static Output<GetConnectionsResult> Invoke(GetConnectionsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetConnectionsResult>("equinix:fabric/getConnections:getConnections", args ?? new GetConnectionsInvokeArgs(), options.WithDefaults());

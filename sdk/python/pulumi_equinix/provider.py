@@ -26,15 +26,21 @@ class ProviderArgs:
         """
         The set of arguments for constructing a Provider resource.
         :param pulumi.Input[str] auth_token: The Equinix Metal API auth key for API operations
-        :param pulumi.Input[str] client_id: API Consumer Key available under My Apps section in developer portal
-        :param pulumi.Input[str] client_secret: API Consumer secret available under My Apps section in developer portal
-        :param pulumi.Input[str] endpoint: The Equinix API base URL to point out desired environment. Defaults to https://api.equinix.com
-        :param pulumi.Input[int] max_retries: Maximum number of retries.
+        :param pulumi.Input[str] client_id: API Consumer Key available under "My Apps" in developer portal. This argument can also be specified with the
+               `EQUINIX_API_CLIENTID` shell environment variable.
+        :param pulumi.Input[str] client_secret: API Consumer secret available under "My Apps" in developer portal. This argument can also be specified with the
+               `EQUINIX_API_CLIENTSECRET` shell environment variable.
+        :param pulumi.Input[str] endpoint: The Equinix API base URL to point out desired environment. This argument can also be specified with the
+               `EQUINIX_API_ENDPOINT` shell environment variable. (Defaults to `https://api.equinix.com`)
+        :param pulumi.Input[int] max_retries: Maximum number of retries in case of network failure.
         :param pulumi.Input[int] max_retry_wait_seconds: Maximum number of seconds to wait before retrying a request.
         :param pulumi.Input[int] request_timeout: The duration of time, in seconds, that the Equinix Platform API Client should wait before canceling an API request.
-               Defaults to 30
-        :param pulumi.Input[int] response_max_page_size: The maximum number of records in a single response for REST queries that produce paginated responses
-        :param pulumi.Input[str] token: API token from the developer sandbox
+               Canceled requests may still result in provisioned resources. (Defaults to `30`)
+        :param pulumi.Input[int] response_max_page_size: The maximum number of records in a single response for REST queries that produce paginated responses. (Default is client
+               specific)
+        :param pulumi.Input[str] token: API tokens are generated from API Consumer clients using the [OAuth2
+               API](https://developer.equinix.com/dev-docs/fabric/getting-started/getting-access-token#request-access-and-refresh-tokens).
+               This argument can also be specified with the `EQUINIX_API_TOKEN` shell environment variable.
         """
         if auth_token is not None:
             pulumi.set(__self__, "auth_token", auth_token)
@@ -71,7 +77,8 @@ class ProviderArgs:
     @pulumi.getter(name="clientId")
     def client_id(self) -> Optional[pulumi.Input[str]]:
         """
-        API Consumer Key available under My Apps section in developer portal
+        API Consumer Key available under "My Apps" in developer portal. This argument can also be specified with the
+        `EQUINIX_API_CLIENTID` shell environment variable.
         """
         return pulumi.get(self, "client_id")
 
@@ -83,7 +90,8 @@ class ProviderArgs:
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> Optional[pulumi.Input[str]]:
         """
-        API Consumer secret available under My Apps section in developer portal
+        API Consumer secret available under "My Apps" in developer portal. This argument can also be specified with the
+        `EQUINIX_API_CLIENTSECRET` shell environment variable.
         """
         return pulumi.get(self, "client_secret")
 
@@ -95,7 +103,8 @@ class ProviderArgs:
     @pulumi.getter
     def endpoint(self) -> Optional[pulumi.Input[str]]:
         """
-        The Equinix API base URL to point out desired environment. Defaults to https://api.equinix.com
+        The Equinix API base URL to point out desired environment. This argument can also be specified with the
+        `EQUINIX_API_ENDPOINT` shell environment variable. (Defaults to `https://api.equinix.com`)
         """
         return pulumi.get(self, "endpoint")
 
@@ -107,7 +116,7 @@ class ProviderArgs:
     @pulumi.getter(name="maxRetries")
     def max_retries(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum number of retries.
+        Maximum number of retries in case of network failure.
         """
         return pulumi.get(self, "max_retries")
 
@@ -132,7 +141,7 @@ class ProviderArgs:
     def request_timeout(self) -> Optional[pulumi.Input[int]]:
         """
         The duration of time, in seconds, that the Equinix Platform API Client should wait before canceling an API request.
-        Defaults to 30
+        Canceled requests may still result in provisioned resources. (Defaults to `30`)
         """
         return pulumi.get(self, "request_timeout")
 
@@ -144,7 +153,8 @@ class ProviderArgs:
     @pulumi.getter(name="responseMaxPageSize")
     def response_max_page_size(self) -> Optional[pulumi.Input[int]]:
         """
-        The maximum number of records in a single response for REST queries that produce paginated responses
+        The maximum number of records in a single response for REST queries that produce paginated responses. (Default is client
+        specific)
         """
         return pulumi.get(self, "response_max_page_size")
 
@@ -156,7 +166,9 @@ class ProviderArgs:
     @pulumi.getter
     def token(self) -> Optional[pulumi.Input[str]]:
         """
-        API token from the developer sandbox
+        API tokens are generated from API Consumer clients using the [OAuth2
+        API](https://developer.equinix.com/dev-docs/fabric/getting-started/getting-access-token#request-access-and-refresh-tokens).
+        This argument can also be specified with the `EQUINIX_API_TOKEN` shell environment variable.
         """
         return pulumi.get(self, "token")
 
@@ -189,15 +201,21 @@ class Provider(pulumi.ProviderResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] auth_token: The Equinix Metal API auth key for API operations
-        :param pulumi.Input[str] client_id: API Consumer Key available under My Apps section in developer portal
-        :param pulumi.Input[str] client_secret: API Consumer secret available under My Apps section in developer portal
-        :param pulumi.Input[str] endpoint: The Equinix API base URL to point out desired environment. Defaults to https://api.equinix.com
-        :param pulumi.Input[int] max_retries: Maximum number of retries.
+        :param pulumi.Input[str] client_id: API Consumer Key available under "My Apps" in developer portal. This argument can also be specified with the
+               `EQUINIX_API_CLIENTID` shell environment variable.
+        :param pulumi.Input[str] client_secret: API Consumer secret available under "My Apps" in developer portal. This argument can also be specified with the
+               `EQUINIX_API_CLIENTSECRET` shell environment variable.
+        :param pulumi.Input[str] endpoint: The Equinix API base URL to point out desired environment. This argument can also be specified with the
+               `EQUINIX_API_ENDPOINT` shell environment variable. (Defaults to `https://api.equinix.com`)
+        :param pulumi.Input[int] max_retries: Maximum number of retries in case of network failure.
         :param pulumi.Input[int] max_retry_wait_seconds: Maximum number of seconds to wait before retrying a request.
         :param pulumi.Input[int] request_timeout: The duration of time, in seconds, that the Equinix Platform API Client should wait before canceling an API request.
-               Defaults to 30
-        :param pulumi.Input[int] response_max_page_size: The maximum number of records in a single response for REST queries that produce paginated responses
-        :param pulumi.Input[str] token: API token from the developer sandbox
+               Canceled requests may still result in provisioned resources. (Defaults to `30`)
+        :param pulumi.Input[int] response_max_page_size: The maximum number of records in a single response for REST queries that produce paginated responses. (Default is client
+               specific)
+        :param pulumi.Input[str] token: API tokens are generated from API Consumer clients using the [OAuth2
+               API](https://developer.equinix.com/dev-docs/fabric/getting-started/getting-access-token#request-access-and-refresh-tokens).
+               This argument can also be specified with the `EQUINIX_API_TOKEN` shell environment variable.
         """
         ...
     @overload
@@ -271,7 +289,8 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="clientId")
     def client_id(self) -> pulumi.Output[Optional[str]]:
         """
-        API Consumer Key available under My Apps section in developer portal
+        API Consumer Key available under "My Apps" in developer portal. This argument can also be specified with the
+        `EQUINIX_API_CLIENTID` shell environment variable.
         """
         return pulumi.get(self, "client_id")
 
@@ -279,7 +298,8 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> pulumi.Output[Optional[str]]:
         """
-        API Consumer secret available under My Apps section in developer portal
+        API Consumer secret available under "My Apps" in developer portal. This argument can also be specified with the
+        `EQUINIX_API_CLIENTSECRET` shell environment variable.
         """
         return pulumi.get(self, "client_secret")
 
@@ -287,7 +307,8 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter
     def endpoint(self) -> pulumi.Output[Optional[str]]:
         """
-        The Equinix API base URL to point out desired environment. Defaults to https://api.equinix.com
+        The Equinix API base URL to point out desired environment. This argument can also be specified with the
+        `EQUINIX_API_ENDPOINT` shell environment variable. (Defaults to `https://api.equinix.com`)
         """
         return pulumi.get(self, "endpoint")
 
@@ -295,7 +316,9 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter
     def token(self) -> pulumi.Output[Optional[str]]:
         """
-        API token from the developer sandbox
+        API tokens are generated from API Consumer clients using the [OAuth2
+        API](https://developer.equinix.com/dev-docs/fabric/getting-started/getting-access-token#request-access-and-refresh-tokens).
+        This argument can also be specified with the `EQUINIX_API_TOKEN` shell environment variable.
         """
         return pulumi.get(self, "token")
 

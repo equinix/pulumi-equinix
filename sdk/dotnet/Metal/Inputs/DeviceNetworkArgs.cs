@@ -13,31 +13,31 @@ namespace Pulumi.Equinix.Metal.Inputs
     public sealed class DeviceNetworkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// IPv4 or IPv6 address string.
+        /// IPv4 or IPv6 address string
         /// </summary>
         [Input("address")]
         public Input<string>? Address { get; set; }
 
         /// <summary>
-        /// Bit length of the network mask of the address.
+        /// CIDR suffix for IP address block to be assigned, i.e. amount of addresses
         /// </summary>
         [Input("cidr")]
         public Input<int>? Cidr { get; set; }
 
         /// <summary>
-        /// IP version. One of `4`, `6`.
+        /// IP version - "4" or "6"
         /// </summary>
         [Input("family")]
         public Input<int>? Family { get; set; }
 
         /// <summary>
-        /// Address of router.
+        /// Address of router
         /// </summary>
         [Input("gateway")]
         public Input<string>? Gateway { get; set; }
 
         /// <summary>
-        /// Whether the address is routable from the Internet.
+        /// Whether the address is routable from the Internet
         /// </summary>
         [Input("public")]
         public Input<bool>? Public { get; set; }

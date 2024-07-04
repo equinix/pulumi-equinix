@@ -122,16 +122,14 @@ public class SshKey extends com.pulumi.resources.CustomResource {
         return this.ownerId;
     }
     /**
-     * The public key. If this is a file, it
-     * can be read using the file interpolation function
+     * The public key. If this is a file, it can be read using the file interpolation function
      * 
      */
     @Export(name="publicKey", refs={String.class}, tree="[0]")
     private Output<String> publicKey;
 
     /**
-     * @return The public key. If this is a file, it
-     * can be read using the file interpolation function
+     * @return The public key. If this is a file, it can be read using the file interpolation function
      * 
      */
     public Output<String> publicKey() {

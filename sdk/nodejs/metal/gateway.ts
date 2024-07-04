@@ -58,13 +58,11 @@ export class Gateway extends pulumi.CustomResource {
     }
 
     /**
-     * UUID of Public or VRF IP Reservation to associate with the gateway, the
-     * reservation must be in the same metro as the VLAN, conflicts with `privateIpv4SubnetSize`.
+     * UUID of Public or VRF IP Reservation to associate with the gateway, the reservation must be in the same metro as the VLAN, conflicts with `privateIpv4SubnetSize`.
      */
     public readonly ipReservationId!: pulumi.Output<string>;
     /**
-     * Size of the private IPv4 subnet to create for this metal
-     * gateway, must be one of `8`, `16`, `32`, `64`, `128`. Conflicts with `ipReservationId`.
+     * Size of the private IPv4 subnet to create for this metal gateway, must be one of `8`, `16`, `32`, `64`, `128`. Conflicts with `ipReservationId`.
      */
     public readonly privateIpv4SubnetSize!: pulumi.Output<number>;
     /**
@@ -131,13 +129,11 @@ export class Gateway extends pulumi.CustomResource {
  */
 export interface GatewayState {
     /**
-     * UUID of Public or VRF IP Reservation to associate with the gateway, the
-     * reservation must be in the same metro as the VLAN, conflicts with `privateIpv4SubnetSize`.
+     * UUID of Public or VRF IP Reservation to associate with the gateway, the reservation must be in the same metro as the VLAN, conflicts with `privateIpv4SubnetSize`.
      */
     ipReservationId?: pulumi.Input<string>;
     /**
-     * Size of the private IPv4 subnet to create for this metal
-     * gateway, must be one of `8`, `16`, `32`, `64`, `128`. Conflicts with `ipReservationId`.
+     * Size of the private IPv4 subnet to create for this metal gateway, must be one of `8`, `16`, `32`, `64`, `128`. Conflicts with `ipReservationId`.
      */
     privateIpv4SubnetSize?: pulumi.Input<number>;
     /**
@@ -164,13 +160,11 @@ export interface GatewayState {
  */
 export interface GatewayArgs {
     /**
-     * UUID of Public or VRF IP Reservation to associate with the gateway, the
-     * reservation must be in the same metro as the VLAN, conflicts with `privateIpv4SubnetSize`.
+     * UUID of Public or VRF IP Reservation to associate with the gateway, the reservation must be in the same metro as the VLAN, conflicts with `privateIpv4SubnetSize`.
      */
     ipReservationId?: pulumi.Input<string>;
     /**
-     * Size of the private IPv4 subnet to create for this metal
-     * gateway, must be one of `8`, `16`, `32`, `64`, `128`. Conflicts with `ipReservationId`.
+     * Size of the private IPv4 subnet to create for this metal gateway, must be one of `8`, `16`, `32`, `64`, `128`. Conflicts with `ipReservationId`.
      */
     privateIpv4SubnetSize?: pulumi.Input<number>;
     /**

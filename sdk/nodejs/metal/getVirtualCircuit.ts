@@ -5,8 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Use this data source to retrieve a virtual circuit resource from
- * [Equinix Fabric - software-defined interconnections](https://metal.equinix.com/developers/docs/networking/fabric/)
+ * Use this data source to retrieve a virtual circuit resource from [Equinix Fabric - software-defined interconnections](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/)
  *
  * See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
  */
@@ -83,10 +82,8 @@ export interface GetVirtualCircuitResult {
      */
     readonly status: string;
     /**
-     * A subnet from one of the IP
-     * blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.
-     * * For a /31 block, it will only have two IP addresses, which will be used for
-     * the metalIp and customer_ip.
+     * A subnet from one of the IP blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.
+     * * For a /31 block, it will only have two IP addresses, which will be used for the metalIp and customer_ip.
      * * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
      */
     readonly subnet: string;
@@ -97,8 +94,7 @@ export interface GetVirtualCircuitResult {
     readonly virtualCircuitId: string;
     readonly vlanId: string;
     /**
-     * , `nniVlan`, `nniNvid` - VLAN parameters, see the
-     * [documentation for Equinix Fabric](https://metal.equinix.com/developers/docs/networking/fabric/).
+     * , `nniVlan`, `nniNvid` - VLAN parameters, see the [documentation for Equinix Fabric](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/).
      */
     readonly vnid: number;
     /**
@@ -107,8 +103,7 @@ export interface GetVirtualCircuitResult {
     readonly vrfId: string;
 }
 /**
- * Use this data source to retrieve a virtual circuit resource from
- * [Equinix Fabric - software-defined interconnections](https://metal.equinix.com/developers/docs/networking/fabric/)
+ * Use this data source to retrieve a virtual circuit resource from [Equinix Fabric - software-defined interconnections](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/)
  *
  * See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
  */

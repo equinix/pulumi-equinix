@@ -12,8 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AclTemplateDeviceDetail {
     /**
-     * @return Device ACL provisioning status where template was applied. One of `PROVISIONING`,
-     * `PROVISIONED`.
+     * @return Device ACL provisioning status where template was applied. One of `PROVISIONING`, `PROVISIONED`.
      * 
      */
     private @Nullable String aclStatus;
@@ -30,8 +29,7 @@ public final class AclTemplateDeviceDetail {
 
     private AclTemplateDeviceDetail() {}
     /**
-     * @return Device ACL provisioning status where template was applied. One of `PROVISIONING`,
-     * `PROVISIONED`.
+     * @return Device ACL provisioning status where template was applied. One of `PROVISIONING`, `PROVISIONED`.
      * 
      */
     public Optional<String> aclStatus() {

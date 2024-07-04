@@ -32,14 +32,16 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * API Consumer Key available under My Apps section in developer portal
+     * API Consumer Key available under &#34;My Apps&#34; in developer portal. This argument can also be specified with the
+     * `EQUINIX_API_CLIENTID` shell environment variable.
      * 
      */
     @Import(name="clientId")
     private @Nullable Output<String> clientId;
 
     /**
-     * @return API Consumer Key available under My Apps section in developer portal
+     * @return API Consumer Key available under &#34;My Apps&#34; in developer portal. This argument can also be specified with the
+     * `EQUINIX_API_CLIENTID` shell environment variable.
      * 
      */
     public Optional<Output<String>> clientId() {
@@ -47,14 +49,16 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * API Consumer secret available under My Apps section in developer portal
+     * API Consumer secret available under &#34;My Apps&#34; in developer portal. This argument can also be specified with the
+     * `EQUINIX_API_CLIENTSECRET` shell environment variable.
      * 
      */
     @Import(name="clientSecret")
     private @Nullable Output<String> clientSecret;
 
     /**
-     * @return API Consumer secret available under My Apps section in developer portal
+     * @return API Consumer secret available under &#34;My Apps&#34; in developer portal. This argument can also be specified with the
+     * `EQUINIX_API_CLIENTSECRET` shell environment variable.
      * 
      */
     public Optional<Output<String>> clientSecret() {
@@ -62,14 +66,16 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Equinix API base URL to point out desired environment. Defaults to https://api.equinix.com
+     * The Equinix API base URL to point out desired environment. This argument can also be specified with the
+     * `EQUINIX_API_ENDPOINT` shell environment variable. (Defaults to `https://api.equinix.com`)
      * 
      */
     @Import(name="endpoint")
     private @Nullable Output<String> endpoint;
 
     /**
-     * @return The Equinix API base URL to point out desired environment. Defaults to https://api.equinix.com
+     * @return The Equinix API base URL to point out desired environment. This argument can also be specified with the
+     * `EQUINIX_API_ENDPOINT` shell environment variable. (Defaults to `https://api.equinix.com`)
      * 
      */
     public Optional<Output<String>> endpoint() {
@@ -77,14 +83,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Maximum number of retries.
+     * Maximum number of retries in case of network failure.
      * 
      */
     @Import(name="maxRetries", json=true)
     private @Nullable Output<Integer> maxRetries;
 
     /**
-     * @return Maximum number of retries.
+     * @return Maximum number of retries in case of network failure.
      * 
      */
     public Optional<Output<Integer>> maxRetries() {
@@ -108,7 +114,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The duration of time, in seconds, that the Equinix Platform API Client should wait before canceling an API request.
-     * Defaults to 30
+     * Canceled requests may still result in provisioned resources. (Defaults to `30`)
      * 
      */
     @Import(name="requestTimeout", json=true)
@@ -116,7 +122,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The duration of time, in seconds, that the Equinix Platform API Client should wait before canceling an API request.
-     * Defaults to 30
+     * Canceled requests may still result in provisioned resources. (Defaults to `30`)
      * 
      */
     public Optional<Output<Integer>> requestTimeout() {
@@ -124,14 +130,16 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The maximum number of records in a single response for REST queries that produce paginated responses
+     * The maximum number of records in a single response for REST queries that produce paginated responses. (Default is client
+     * specific)
      * 
      */
     @Import(name="responseMaxPageSize", json=true)
     private @Nullable Output<Integer> responseMaxPageSize;
 
     /**
-     * @return The maximum number of records in a single response for REST queries that produce paginated responses
+     * @return The maximum number of records in a single response for REST queries that produce paginated responses. (Default is client
+     * specific)
      * 
      */
     public Optional<Output<Integer>> responseMaxPageSize() {
@@ -139,14 +147,18 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * API token from the developer sandbox
+     * API tokens are generated from API Consumer clients using the [OAuth2
+     * API](https://developer.equinix.com/dev-docs/fabric/getting-started/getting-access-token#request-access-and-refresh-tokens).
+     * This argument can also be specified with the `EQUINIX_API_TOKEN` shell environment variable.
      * 
      */
     @Import(name="token")
     private @Nullable Output<String> token;
 
     /**
-     * @return API token from the developer sandbox
+     * @return API tokens are generated from API Consumer clients using the [OAuth2
+     * API](https://developer.equinix.com/dev-docs/fabric/getting-started/getting-access-token#request-access-and-refresh-tokens).
+     * This argument can also be specified with the `EQUINIX_API_TOKEN` shell environment variable.
      * 
      */
     public Optional<Output<String>> token() {
@@ -207,7 +219,8 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clientId API Consumer Key available under My Apps section in developer portal
+         * @param clientId API Consumer Key available under &#34;My Apps&#34; in developer portal. This argument can also be specified with the
+         * `EQUINIX_API_CLIENTID` shell environment variable.
          * 
          * @return builder
          * 
@@ -218,7 +231,8 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clientId API Consumer Key available under My Apps section in developer portal
+         * @param clientId API Consumer Key available under &#34;My Apps&#34; in developer portal. This argument can also be specified with the
+         * `EQUINIX_API_CLIENTID` shell environment variable.
          * 
          * @return builder
          * 
@@ -228,7 +242,8 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clientSecret API Consumer secret available under My Apps section in developer portal
+         * @param clientSecret API Consumer secret available under &#34;My Apps&#34; in developer portal. This argument can also be specified with the
+         * `EQUINIX_API_CLIENTSECRET` shell environment variable.
          * 
          * @return builder
          * 
@@ -239,7 +254,8 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clientSecret API Consumer secret available under My Apps section in developer portal
+         * @param clientSecret API Consumer secret available under &#34;My Apps&#34; in developer portal. This argument can also be specified with the
+         * `EQUINIX_API_CLIENTSECRET` shell environment variable.
          * 
          * @return builder
          * 
@@ -249,7 +265,8 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endpoint The Equinix API base URL to point out desired environment. Defaults to https://api.equinix.com
+         * @param endpoint The Equinix API base URL to point out desired environment. This argument can also be specified with the
+         * `EQUINIX_API_ENDPOINT` shell environment variable. (Defaults to `https://api.equinix.com`)
          * 
          * @return builder
          * 
@@ -260,7 +277,8 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endpoint The Equinix API base URL to point out desired environment. Defaults to https://api.equinix.com
+         * @param endpoint The Equinix API base URL to point out desired environment. This argument can also be specified with the
+         * `EQUINIX_API_ENDPOINT` shell environment variable. (Defaults to `https://api.equinix.com`)
          * 
          * @return builder
          * 
@@ -270,7 +288,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxRetries Maximum number of retries.
+         * @param maxRetries Maximum number of retries in case of network failure.
          * 
          * @return builder
          * 
@@ -281,7 +299,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxRetries Maximum number of retries.
+         * @param maxRetries Maximum number of retries in case of network failure.
          * 
          * @return builder
          * 
@@ -313,7 +331,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param requestTimeout The duration of time, in seconds, that the Equinix Platform API Client should wait before canceling an API request.
-         * Defaults to 30
+         * Canceled requests may still result in provisioned resources. (Defaults to `30`)
          * 
          * @return builder
          * 
@@ -325,7 +343,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param requestTimeout The duration of time, in seconds, that the Equinix Platform API Client should wait before canceling an API request.
-         * Defaults to 30
+         * Canceled requests may still result in provisioned resources. (Defaults to `30`)
          * 
          * @return builder
          * 
@@ -335,7 +353,8 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param responseMaxPageSize The maximum number of records in a single response for REST queries that produce paginated responses
+         * @param responseMaxPageSize The maximum number of records in a single response for REST queries that produce paginated responses. (Default is client
+         * specific)
          * 
          * @return builder
          * 
@@ -346,7 +365,8 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param responseMaxPageSize The maximum number of records in a single response for REST queries that produce paginated responses
+         * @param responseMaxPageSize The maximum number of records in a single response for REST queries that produce paginated responses. (Default is client
+         * specific)
          * 
          * @return builder
          * 
@@ -356,7 +376,9 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param token API token from the developer sandbox
+         * @param token API tokens are generated from API Consumer clients using the [OAuth2
+         * API](https://developer.equinix.com/dev-docs/fabric/getting-started/getting-access-token#request-access-and-refresh-tokens).
+         * This argument can also be specified with the `EQUINIX_API_TOKEN` shell environment variable.
          * 
          * @return builder
          * 
@@ -367,7 +389,9 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param token API token from the developer sandbox
+         * @param token API tokens are generated from API Consumer clients using the [OAuth2
+         * API](https://developer.equinix.com/dev-docs/fabric/getting-started/getting-access-token#request-access-and-refresh-tokens).
+         * This argument can also be specified with the `EQUINIX_API_TOKEN` shell environment variable.
          * 
          * @return builder
          * 

@@ -5,11 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Use this data source to get number and identifier of Equinix Network Edge
- * billing account in a given metro location.
+ * Use this data source to get number and identifier of Equinix Network Edge billing account in a given metro location.
  *
- * Billing account reference is required to create Network Edge virtual device
- * in corresponding metro location.
+ * Billing account reference is required to create Network Edge virtual device in corresponding metro location.
  *
  * ## Example Usage
  *
@@ -49,13 +47,11 @@ export interface GetAccountArgs {
      */
     name?: string;
     /**
-     * Unique Identifier for the project resource where the account is scoped to.If you
-     * leave it out, all the billing accounts under all projects in your organization will be returned and it may return more than one account.
+     * Unique Identifier for the project resource where the account is scoped to.If you leave it out, all the billing accounts under all projects in your organization will be returned and it may return more than one account.
      */
     projectId?: string;
     /**
-     * Account status for filtering. Possible values are: `Active`, `Processing`,
-     * `Submitted`, `Staged`.
+     * Account status for filtering. Possible values are: `Active`, `Processing`, `Submitted`, `Staged`.
      */
     status?: string;
 }
@@ -82,11 +78,9 @@ export interface GetAccountResult {
     readonly ucmId: string;
 }
 /**
- * Use this data source to get number and identifier of Equinix Network Edge
- * billing account in a given metro location.
+ * Use this data source to get number and identifier of Equinix Network Edge billing account in a given metro location.
  *
- * Billing account reference is required to create Network Edge virtual device
- * in corresponding metro location.
+ * Billing account reference is required to create Network Edge virtual device in corresponding metro location.
  *
  * ## Example Usage
  *
@@ -119,13 +113,11 @@ export interface GetAccountOutputArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique Identifier for the project resource where the account is scoped to.If you
-     * leave it out, all the billing accounts under all projects in your organization will be returned and it may return more than one account.
+     * Unique Identifier for the project resource where the account is scoped to.If you leave it out, all the billing accounts under all projects in your organization will be returned and it may return more than one account.
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Account status for filtering. Possible values are: `Active`, `Processing`,
-     * `Submitted`, `Staged`.
+     * Account status for filtering. Possible values are: `Active`, `Processing`, `Submitted`, `Staged`.
      */
     status?: pulumi.Input<string>;
 }

@@ -16,16 +16,14 @@ public final class AclTemplateDeviceDetailArgs extends com.pulumi.resources.Reso
     public static final AclTemplateDeviceDetailArgs Empty = new AclTemplateDeviceDetailArgs();
 
     /**
-     * Device ACL provisioning status where template was applied. One of `PROVISIONING`,
-     * `PROVISIONED`.
+     * Device ACL provisioning status where template was applied. One of `PROVISIONING`, `PROVISIONED`.
      * 
      */
     @Import(name="aclStatus")
     private @Nullable Output<String> aclStatus;
 
     /**
-     * @return Device ACL provisioning status where template was applied. One of `PROVISIONING`,
-     * `PROVISIONED`.
+     * @return Device ACL provisioning status where template was applied. One of `PROVISIONING`, `PROVISIONED`.
      * 
      */
     public Optional<Output<String>> aclStatus() {
@@ -89,8 +87,7 @@ public final class AclTemplateDeviceDetailArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param aclStatus Device ACL provisioning status where template was applied. One of `PROVISIONING`,
-         * `PROVISIONED`.
+         * @param aclStatus Device ACL provisioning status where template was applied. One of `PROVISIONING`, `PROVISIONED`.
          * 
          * @return builder
          * 
@@ -101,8 +98,7 @@ public final class AclTemplateDeviceDetailArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param aclStatus Device ACL provisioning status where template was applied. One of `PROVISIONING`,
-         * `PROVISIONED`.
+         * @param aclStatus Device ACL provisioning status where template was applied. One of `PROVISIONING`, `PROVISIONED`.
          * 
          * @return builder
          * 

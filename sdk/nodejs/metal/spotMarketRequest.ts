@@ -8,9 +8,7 @@ import * as enums from "../types/enums";
 import * as utilities from "../utilities";
 
 /**
- * Provides an Equinix Metal Spot Market Request resource to allow you to
- * manage spot market requests on your account. For more detail on Spot Market,
- * see [this article in Equinix Metal documentation](https://metal.equinix.com/developers/docs/deploy/spot-market/).
+ * Provides an Equinix Metal Spot Market Request resource to allow you to manage spot market requests on your account. For more detail on Spot Market, see [this article in Equinix Metal documentation](https://metal.equinix.com/developers/docs/deploy/spot-market/).
  *
  * ## Example Usage
  *
@@ -88,11 +86,7 @@ export class SpotMarketRequest extends pulumi.CustomResource {
      */
     public readonly facilities!: pulumi.Output<string[]>;
     /**
-     * Key/Value pairs of parameters for devices provisioned from
-     * this request. Valid keys are: `billingCycle`, `plan`, `operatingSystem`, `hostname`,
-     * `terminationTime`, `alwaysPxe`, `description`, `features`, `locked`, `projectSshKeys`,
-     * `userSshKeys`, `userdata`, `customdata`, `ipxeScriptUrl`, `tags`. You can find each parameter
-     * description in equinix.metal.Device docs.
+     * Key/Value pairs of parameters for devices provisioned from this request. Valid keys are: `billingCycle`, `plan`, `operatingSystem`, `hostname`, `terminationTime`, `alwaysPxe`, `description`, `features`, `locked`, `projectSshKeys`, `userSshKeys`, `userdata`, `customdata`, `ipxeScriptUrl`, `tags`. You can find each parameter description in equinix.metal.Device docs.
      */
     public readonly instanceParameters!: pulumi.Output<outputs.metal.SpotMarketRequestInstanceParameters>;
     /**
@@ -108,8 +102,7 @@ export class SpotMarketRequest extends pulumi.CustomResource {
      */
     public readonly projectId!: pulumi.Output<string>;
     /**
-     * On resource creation wait until all desired devices are active.
-     * On resource destruction wait until devices are removed.
+     * On resource creation wait until all desired devices are active. On resource destruction wait until devices are removed.
      */
     public readonly waitForDevices!: pulumi.Output<boolean | undefined>;
 
@@ -184,11 +177,7 @@ export interface SpotMarketRequestState {
      */
     facilities?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Key/Value pairs of parameters for devices provisioned from
-     * this request. Valid keys are: `billingCycle`, `plan`, `operatingSystem`, `hostname`,
-     * `terminationTime`, `alwaysPxe`, `description`, `features`, `locked`, `projectSshKeys`,
-     * `userSshKeys`, `userdata`, `customdata`, `ipxeScriptUrl`, `tags`. You can find each parameter
-     * description in equinix.metal.Device docs.
+     * Key/Value pairs of parameters for devices provisioned from this request. Valid keys are: `billingCycle`, `plan`, `operatingSystem`, `hostname`, `terminationTime`, `alwaysPxe`, `description`, `features`, `locked`, `projectSshKeys`, `userSshKeys`, `userdata`, `customdata`, `ipxeScriptUrl`, `tags`. You can find each parameter description in equinix.metal.Device docs.
      */
     instanceParameters?: pulumi.Input<inputs.metal.SpotMarketRequestInstanceParameters>;
     /**
@@ -204,8 +193,7 @@ export interface SpotMarketRequestState {
      */
     projectId?: pulumi.Input<string>;
     /**
-     * On resource creation wait until all desired devices are active.
-     * On resource destruction wait until devices are removed.
+     * On resource creation wait until all desired devices are active. On resource destruction wait until devices are removed.
      */
     waitForDevices?: pulumi.Input<boolean>;
 }
@@ -229,11 +217,7 @@ export interface SpotMarketRequestArgs {
      */
     facilities?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Key/Value pairs of parameters for devices provisioned from
-     * this request. Valid keys are: `billingCycle`, `plan`, `operatingSystem`, `hostname`,
-     * `terminationTime`, `alwaysPxe`, `description`, `features`, `locked`, `projectSshKeys`,
-     * `userSshKeys`, `userdata`, `customdata`, `ipxeScriptUrl`, `tags`. You can find each parameter
-     * description in equinix.metal.Device docs.
+     * Key/Value pairs of parameters for devices provisioned from this request. Valid keys are: `billingCycle`, `plan`, `operatingSystem`, `hostname`, `terminationTime`, `alwaysPxe`, `description`, `features`, `locked`, `projectSshKeys`, `userSshKeys`, `userdata`, `customdata`, `ipxeScriptUrl`, `tags`. You can find each parameter description in equinix.metal.Device docs.
      */
     instanceParameters: pulumi.Input<inputs.metal.SpotMarketRequestInstanceParameters>;
     /**
@@ -249,8 +233,7 @@ export interface SpotMarketRequestArgs {
      */
     projectId: pulumi.Input<string>;
     /**
-     * On resource creation wait until all desired devices are active.
-     * On resource destruction wait until devices are removed.
+     * On resource creation wait until all desired devices are active. On resource destruction wait until devices are removed.
      */
     waitForDevices?: pulumi.Input<boolean>;
 }

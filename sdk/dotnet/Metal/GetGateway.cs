@@ -120,8 +120,7 @@ namespace Pulumi.Equinix.Metal
         /// </summary>
         public readonly string IpReservationId;
         /// <summary>
-        /// Size of the private IPv4 subnet bound to this metal gateway. One of
-        /// `8`, `16`, `32`, `64`, `128`.
+        /// Size of the private IPv4 subnet bound to this metal gateway. One of `8`, `16`, `32`, `64`, `128`.
         /// </summary>
         public readonly int PrivateIpv4SubnetSize;
         /// <summary>

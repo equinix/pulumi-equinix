@@ -47,16 +47,14 @@ public final class DeviceLinkDeviceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Device network interface identifier to use for device link
-     * connection.
+     * Device network interface identifier to use for device link connection.
      * 
      */
     @Import(name="interfaceId")
     private @Nullable Output<Integer> interfaceId;
 
     /**
-     * @return Device network interface identifier to use for device link
-     * connection.
+     * @return Device network interface identifier to use for device link connection.
      * 
      */
     public Optional<Output<Integer>> interfaceId() {
@@ -79,16 +77,14 @@ public final class DeviceLinkDeviceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * device link provisioning status on a given device. One of `PROVISIONING`,
-     * `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
+     * device link provisioning status on a given device. One of `PROVISIONING`, `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return device link provisioning status on a given device. One of `PROVISIONING`,
-     * `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
+     * @return device link provisioning status on a given device. One of `PROVISIONING`, `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -166,8 +162,7 @@ public final class DeviceLinkDeviceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param interfaceId Device network interface identifier to use for device link
-         * connection.
+         * @param interfaceId Device network interface identifier to use for device link connection.
          * 
          * @return builder
          * 
@@ -178,8 +173,7 @@ public final class DeviceLinkDeviceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param interfaceId Device network interface identifier to use for device link
-         * connection.
+         * @param interfaceId Device network interface identifier to use for device link connection.
          * 
          * @return builder
          * 
@@ -210,8 +204,7 @@ public final class DeviceLinkDeviceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param status device link provisioning status on a given device. One of `PROVISIONING`,
-         * `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
+         * @param status device link provisioning status on a given device. One of `PROVISIONING`, `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
          * 
          * @return builder
          * 
@@ -222,8 +215,7 @@ public final class DeviceLinkDeviceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param status device link provisioning status on a given device. One of `PROVISIONING`,
-         * `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
+         * @param status device link provisioning status on a given device. One of `PROVISIONING`, `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
          * 
          * @return builder
          * 

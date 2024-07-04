@@ -18,8 +18,7 @@ public final class GetMetroCapacity {
      */
     private String plan;
     /**
-     * @return Minimum number of devices that must be available in selected location.
-     * Default is `1`.
+     * @return Minimum number of devices that must be available in selected location. Default is `1`.
      * 
      */
     private @Nullable Integer quantity;
@@ -33,8 +32,7 @@ public final class GetMetroCapacity {
         return this.plan;
     }
     /**
-     * @return Minimum number of devices that must be available in selected location.
-     * Default is `1`.
+     * @return Minimum number of devices that must be available in selected location. Default is `1`.
      * 
      */
     public Optional<Integer> quantity() {

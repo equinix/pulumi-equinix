@@ -74,22 +74,14 @@ public final class SpotMarketRequestArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Key/Value pairs of parameters for devices provisioned from
-     * this request. Valid keys are: `billing_cycle`, `plan`, `operating_system`, `hostname`,
-     * `termination_time`, `always_pxe`, `description`, `features`, `locked`, `project_ssh_keys`,
-     * `user_ssh_keys`, `userdata`, `customdata`, `ipxe_script_url`, `tags`. You can find each parameter
-     * description in equinix.metal.Device docs.
+     * Key/Value pairs of parameters for devices provisioned from this request. Valid keys are: `billing_cycle`, `plan`, `operating_system`, `hostname`, `termination_time`, `always_pxe`, `description`, `features`, `locked`, `project_ssh_keys`, `user_ssh_keys`, `userdata`, `customdata`, `ipxe_script_url`, `tags`. You can find each parameter description in equinix.metal.Device docs.
      * 
      */
     @Import(name="instanceParameters", required=true)
     private Output<SpotMarketRequestInstanceParametersArgs> instanceParameters;
 
     /**
-     * @return Key/Value pairs of parameters for devices provisioned from
-     * this request. Valid keys are: `billing_cycle`, `plan`, `operating_system`, `hostname`,
-     * `termination_time`, `always_pxe`, `description`, `features`, `locked`, `project_ssh_keys`,
-     * `user_ssh_keys`, `userdata`, `customdata`, `ipxe_script_url`, `tags`. You can find each parameter
-     * description in equinix.metal.Device docs.
+     * @return Key/Value pairs of parameters for devices provisioned from this request. Valid keys are: `billing_cycle`, `plan`, `operating_system`, `hostname`, `termination_time`, `always_pxe`, `description`, `features`, `locked`, `project_ssh_keys`, `user_ssh_keys`, `userdata`, `customdata`, `ipxe_script_url`, `tags`. You can find each parameter description in equinix.metal.Device docs.
      * 
      */
     public Output<SpotMarketRequestInstanceParametersArgs> instanceParameters() {
@@ -142,16 +134,14 @@ public final class SpotMarketRequestArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * On resource creation wait until all desired devices are active.
-     * On resource destruction wait until devices are removed.
+     * On resource creation wait until all desired devices are active. On resource destruction wait until devices are removed.
      * 
      */
     @Import(name="waitForDevices")
     private @Nullable Output<Boolean> waitForDevices;
 
     /**
-     * @return On resource creation wait until all desired devices are active.
-     * On resource destruction wait until devices are removed.
+     * @return On resource creation wait until all desired devices are active. On resource destruction wait until devices are removed.
      * 
      */
     public Optional<Output<Boolean>> waitForDevices() {
@@ -275,11 +265,7 @@ public final class SpotMarketRequestArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param instanceParameters Key/Value pairs of parameters for devices provisioned from
-         * this request. Valid keys are: `billing_cycle`, `plan`, `operating_system`, `hostname`,
-         * `termination_time`, `always_pxe`, `description`, `features`, `locked`, `project_ssh_keys`,
-         * `user_ssh_keys`, `userdata`, `customdata`, `ipxe_script_url`, `tags`. You can find each parameter
-         * description in equinix.metal.Device docs.
+         * @param instanceParameters Key/Value pairs of parameters for devices provisioned from this request. Valid keys are: `billing_cycle`, `plan`, `operating_system`, `hostname`, `termination_time`, `always_pxe`, `description`, `features`, `locked`, `project_ssh_keys`, `user_ssh_keys`, `userdata`, `customdata`, `ipxe_script_url`, `tags`. You can find each parameter description in equinix.metal.Device docs.
          * 
          * @return builder
          * 
@@ -290,11 +276,7 @@ public final class SpotMarketRequestArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param instanceParameters Key/Value pairs of parameters for devices provisioned from
-         * this request. Valid keys are: `billing_cycle`, `plan`, `operating_system`, `hostname`,
-         * `termination_time`, `always_pxe`, `description`, `features`, `locked`, `project_ssh_keys`,
-         * `user_ssh_keys`, `userdata`, `customdata`, `ipxe_script_url`, `tags`. You can find each parameter
-         * description in equinix.metal.Device docs.
+         * @param instanceParameters Key/Value pairs of parameters for devices provisioned from this request. Valid keys are: `billing_cycle`, `plan`, `operating_system`, `hostname`, `termination_time`, `always_pxe`, `description`, `features`, `locked`, `project_ssh_keys`, `user_ssh_keys`, `userdata`, `customdata`, `ipxe_script_url`, `tags`. You can find each parameter description in equinix.metal.Device docs.
          * 
          * @return builder
          * 
@@ -367,8 +349,7 @@ public final class SpotMarketRequestArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param waitForDevices On resource creation wait until all desired devices are active.
-         * On resource destruction wait until devices are removed.
+         * @param waitForDevices On resource creation wait until all desired devices are active. On resource destruction wait until devices are removed.
          * 
          * @return builder
          * 
@@ -379,8 +360,7 @@ public final class SpotMarketRequestArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param waitForDevices On resource creation wait until all desired devices are active.
-         * On resource destruction wait until devices are removed.
+         * @param waitForDevices On resource creation wait until all desired devices are active. On resource destruction wait until devices are removed.
          * 
          * @return builder
          * 

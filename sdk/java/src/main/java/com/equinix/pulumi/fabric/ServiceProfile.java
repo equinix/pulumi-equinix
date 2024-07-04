@@ -30,8 +30,8 @@ import javax.annotation.Nullable;
  * Fabric V4 API compatible resource allows creation and management of Equinix Fabric Service Profile
  * 
  * Additional documentation:
- * * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm&gt;
- * * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles&gt;
+ * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm
+ * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles
  * 
  * ## Example Usage
  * ```java
@@ -287,14 +287,14 @@ public class ServiceProfile extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.project);
     }
     /**
-     * Self Profile indicating if the profile is created for customer&#39;s  self use
+     * Self Profile indicating if the profile is created for customer&#39;s self use
      * 
      */
     @Export(name="selfProfile", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> selfProfile;
 
     /**
-     * @return Self Profile indicating if the profile is created for customer&#39;s  self use
+     * @return Self Profile indicating if the profile is created for customer&#39;s self use
      * 
      */
     public Output<Optional<Boolean>> selfProfile() {

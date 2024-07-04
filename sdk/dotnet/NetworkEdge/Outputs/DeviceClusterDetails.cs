@@ -22,13 +22,11 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
         /// </summary>
         public readonly string ClusterName;
         /// <summary>
-        /// An object that has `node0` configuration.
-        /// See Cluster Details - Nodes below for more details.
+        /// An object that has `node0` configuration. See Cluster Details - Nodes below for more details.
         /// </summary>
         public readonly Outputs.DeviceClusterDetailsNode0 Node0;
         /// <summary>
-        /// An object that has `node1` configuration.
-        /// See Cluster Details - Nodes below for more details.
+        /// An object that has `node1` configuration. See Cluster Details - Nodes below for more details.
         /// </summary>
         public readonly Outputs.DeviceClusterDetailsNode1 Node1;
         /// <summary>

@@ -7,48 +7,46 @@ import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServiceProfilesFilter {
     /**
-     * @return Possible operator to use on filters = - equal
+     * @return Operators to use on your filtered field with the values given. One of [=]
      * 
      */
-    private @Nullable String operator;
+    private String operator;
     /**
-     * @return Search Criteria for Service Profile - /name, /uuid, /state, /metros/code, /visibility, /type
+     * @return Property to apply operator and values to. One of [/name /uuid /state /metros/code /visibility /type /project/projectId]
      * 
      */
-    private @Nullable String property;
+    private String property;
     /**
-     * @return Values
+     * @return The values that you want to apply the property+operator combination to in order to filter your data search
      * 
      */
-    private @Nullable List<String> values;
+    private List<String> values;
 
     private GetServiceProfilesFilter() {}
     /**
-     * @return Possible operator to use on filters = - equal
+     * @return Operators to use on your filtered field with the values given. One of [=]
      * 
      */
-    public Optional<String> operator() {
-        return Optional.ofNullable(this.operator);
+    public String operator() {
+        return this.operator;
     }
     /**
-     * @return Search Criteria for Service Profile - /name, /uuid, /state, /metros/code, /visibility, /type
+     * @return Property to apply operator and values to. One of [/name /uuid /state /metros/code /visibility /type /project/projectId]
      * 
      */
-    public Optional<String> property() {
-        return Optional.ofNullable(this.property);
+    public String property() {
+        return this.property;
     }
     /**
-     * @return Values
+     * @return The values that you want to apply the property+operator combination to in order to filter your data search
      * 
      */
     public List<String> values() {
-        return this.values == null ? List.of() : this.values;
+        return this.values;
     }
 
     public static Builder builder() {
@@ -60,9 +58,9 @@ public final class GetServiceProfilesFilter {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String operator;
-        private @Nullable String property;
-        private @Nullable List<String> values;
+        private String operator;
+        private String property;
+        private List<String> values;
         public Builder() {}
         public Builder(GetServiceProfilesFilter defaults) {
     	      Objects.requireNonNull(defaults);
@@ -72,18 +70,18 @@ public final class GetServiceProfilesFilter {
         }
 
         @CustomType.Setter
-        public Builder operator(@Nullable String operator) {
-            this.operator = operator;
+        public Builder operator(String operator) {
+            this.operator = Objects.requireNonNull(operator);
             return this;
         }
         @CustomType.Setter
-        public Builder property(@Nullable String property) {
-            this.property = property;
+        public Builder property(String property) {
+            this.property = Objects.requireNonNull(property);
             return this;
         }
         @CustomType.Setter
-        public Builder values(@Nullable List<String> values) {
-            this.values = values;
+        public Builder values(List<String> values) {
+            this.values = Objects.requireNonNull(values);
             return this;
         }
         public Builder values(String... values) {

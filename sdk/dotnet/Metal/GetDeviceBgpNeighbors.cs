@@ -14,11 +14,9 @@ namespace Pulumi.Equinix.Metal
         /// <summary>
         /// Use this datasource to retrieve list of BGP neighbors of a device in the Equinix Metal host.
         /// 
-        /// To have any BGP neighbors listed, the device must be in BGP-enabled project
-        /// and have a BGP session assigned.
+        /// To have any BGP neighbors listed, the device must be in BGP-enabled project and have a BGP session assigned.
         /// 
-        /// To learn more about using BGP in Equinix Metal, see the
-        /// equinix.metal.BgpSession resource documentation.
+        /// To learn more about using BGP in Equinix Metal, see the equinix.metal.BgpSession resource documentation.
         /// 
         /// ## Example Usage
         /// 
@@ -48,11 +46,9 @@ namespace Pulumi.Equinix.Metal
         /// <summary>
         /// Use this datasource to retrieve list of BGP neighbors of a device in the Equinix Metal host.
         /// 
-        /// To have any BGP neighbors listed, the device must be in BGP-enabled project
-        /// and have a BGP session assigned.
+        /// To have any BGP neighbors listed, the device must be in BGP-enabled project and have a BGP session assigned.
         /// 
-        /// To learn more about using BGP in Equinix Metal, see the
-        /// equinix.metal.BgpSession resource documentation.
+        /// To learn more about using BGP in Equinix Metal, see the equinix.metal.BgpSession resource documentation.
         /// 
         /// ## Example Usage
         /// 

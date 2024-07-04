@@ -65,7 +65,7 @@ public final class GetDeviceResult {
      * @return List of device interfaces
      * * `interface.#.id` - interface identifier
      * * `interface.#.name` - interface name
-     * * `interface.#.status` -  interface status (AVAILABLE, RESERVED, ASSIGNED)
+     * * `interface.#.status` - interface status (AVAILABLE, RESERVED, ASSIGNED)
      * * `interface.#.operational_status` - interface operational status (up or down)
      * * `interface.#.mac_address` - interface MAC address
      * * `interface.#.ip_address` - interface IP address
@@ -101,8 +101,7 @@ public final class GetDeviceResult {
     private String projectId;
     private String purchaseOrderNumber;
     /**
-     * @return Device redundancy type applicable for HA devices, either
-     * primary or secondary
+     * @return Device redundancy type applicable for HA devices, either primary or secondary
      * 
      */
     private String redundancyType;
@@ -133,7 +132,7 @@ public final class GetDeviceResult {
      * @return Device provisioning status
      * * INITIALIZING
      * * PROVISIONING
-     * * PROVISIONED  (**NOTE: By default data source will only return devices in this state.  To include other states see `valid_state_list`**)
+     * * PROVISIONED (**NOTE: By default data source will only return devices in this state. To include other states see `valid_state_list`**)
      * * WAITING_FOR_PRIMARY
      * * WAITING_FOR_SECONDARY
      * * WAITING_FOR_REPLICA_CLUSTER_NODES
@@ -156,7 +155,7 @@ public final class GetDeviceResult {
      */
     private String uuid;
     /**
-     * @return Comma separated list of device states (from see `status` for full list) to be considered valid. Default is &#39;PROVISIONED&#39;.  Case insensitive.
+     * @return Comma separated list of device states (from see `status` for full list) to be considered valid. Default is &#39;PROVISIONED&#39;. Case insensitive.
      * 
      */
     private @Nullable String validStatusList;
@@ -244,7 +243,7 @@ public final class GetDeviceResult {
      * @return List of device interfaces
      * * `interface.#.id` - interface identifier
      * * `interface.#.name` - interface name
-     * * `interface.#.status` -  interface status (AVAILABLE, RESERVED, ASSIGNED)
+     * * `interface.#.status` - interface status (AVAILABLE, RESERVED, ASSIGNED)
      * * `interface.#.operational_status` - interface operational status (up or down)
      * * `interface.#.mac_address` - interface MAC address
      * * `interface.#.ip_address` - interface IP address
@@ -306,8 +305,7 @@ public final class GetDeviceResult {
         return this.purchaseOrderNumber;
     }
     /**
-     * @return Device redundancy type applicable for HA devices, either
-     * primary or secondary
+     * @return Device redundancy type applicable for HA devices, either primary or secondary
      * 
      */
     public String redundancyType() {
@@ -354,7 +352,7 @@ public final class GetDeviceResult {
      * @return Device provisioning status
      * * INITIALIZING
      * * PROVISIONING
-     * * PROVISIONED  (**NOTE: By default data source will only return devices in this state.  To include other states see `valid_state_list`**)
+     * * PROVISIONED (**NOTE: By default data source will only return devices in this state. To include other states see `valid_state_list`**)
      * * WAITING_FOR_PRIMARY
      * * WAITING_FOR_SECONDARY
      * * WAITING_FOR_REPLICA_CLUSTER_NODES
@@ -389,7 +387,7 @@ public final class GetDeviceResult {
         return this.uuid;
     }
     /**
-     * @return Comma separated list of device states (from see `status` for full list) to be considered valid. Default is &#39;PROVISIONED&#39;.  Case insensitive.
+     * @return Comma separated list of device states (from see `status` for full list) to be considered valid. Default is &#39;PROVISIONED&#39;. Case insensitive.
      * 
      */
     public Optional<String> validStatusList() {

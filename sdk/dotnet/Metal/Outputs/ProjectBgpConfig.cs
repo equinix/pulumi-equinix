@@ -18,8 +18,7 @@ namespace Pulumi.Equinix.Metal.Outputs
         /// </summary>
         public readonly int Asn;
         /// <summary>
-        /// `local` or `global`, the `local` is likely to be usable immediately, the
-        /// `global` will need to be reviewed by Equinix Metal engineers.
+        /// `local` or `global`, the `local` is likely to be usable immediately, the `global` will need to be reviewed by Equinix Metal engineers.
         /// </summary>
         public readonly string DeploymentType;
         /// <summary>

@@ -11,8 +11,8 @@ import * as utilities from "../utilities";
  * Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID
  *
  * Additional documentation:
- * * Getting Started: <https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm>
- * * API: <https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections>
+ * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm
+ * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections
  */
 export function getConnections(args: GetConnectionsArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectionsResult> {
 
@@ -80,8 +80,8 @@ export interface GetConnectionsResult {
  * Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID
  *
  * Additional documentation:
- * * Getting Started: <https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm>
- * * API: <https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections>
+ * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm
+ * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections
  */
 export function getConnectionsOutput(args: GetConnectionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectionsResult> {
     return pulumi.output(args).apply((a: any) => getConnections(a, opts))

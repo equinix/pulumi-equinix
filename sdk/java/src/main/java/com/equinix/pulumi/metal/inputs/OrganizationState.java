@@ -17,16 +17,14 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
     public static final OrganizationState Empty = new OrganizationState();
 
     /**
-     * An object that has the address information. See Address
-     * below for more details.
+     * An object that has the address information. See Address below for more details.
      * 
      */
     @Import(name="address")
     private @Nullable Output<OrganizationAddressArgs> address;
 
     /**
-     * @return An object that has the address information. See Address
-     * below for more details.
+     * @return An object that has the address information. See Address below for more details.
      * 
      */
     public Optional<Output<OrganizationAddressArgs>> address() {
@@ -170,8 +168,7 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param address An object that has the address information. See Address
-         * below for more details.
+         * @param address An object that has the address information. See Address below for more details.
          * 
          * @return builder
          * 
@@ -182,8 +179,7 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param address An object that has the address information. See Address
-         * below for more details.
+         * @param address An object that has the address information. See Address below for more details.
          * 
          * @return builder
          * 

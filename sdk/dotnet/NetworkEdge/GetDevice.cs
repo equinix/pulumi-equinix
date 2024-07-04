@@ -170,7 +170,7 @@ namespace Pulumi.Equinix.NetworkEdge
         /// List of device interfaces
         /// * `interface.#.id` - interface identifier
         /// * `interface.#.name` - interface name
-        /// * `interface.#.status` -  interface status (AVAILABLE, RESERVED, ASSIGNED)
+        /// * `interface.#.status` - interface status (AVAILABLE, RESERVED, ASSIGNED)
         /// * `interface.#.operational_status` - interface operational status (up or down)
         /// * `interface.#.mac_address` - interface MAC address
         /// * `interface.#.ip_address` - interface IP address
@@ -203,8 +203,7 @@ namespace Pulumi.Equinix.NetworkEdge
         public readonly string ProjectId;
         public readonly string PurchaseOrderNumber;
         /// <summary>
-        /// Device redundancy type applicable for HA devices, either
-        /// primary or secondary
+        /// Device redundancy type applicable for HA devices, either primary or secondary
         /// </summary>
         public readonly string RedundancyType;
         /// <summary>
@@ -230,7 +229,7 @@ namespace Pulumi.Equinix.NetworkEdge
         /// Device provisioning status
         /// * INITIALIZING
         /// * PROVISIONING
-        /// * PROVISIONED  (**NOTE: By default data source will only return devices in this state.  To include other states see `valid_state_list`**)
+        /// * PROVISIONED (**NOTE: By default data source will only return devices in this state. To include other states see `valid_state_list`**)
         /// * WAITING_FOR_PRIMARY
         /// * WAITING_FOR_SECONDARY
         /// * WAITING_FOR_REPLICA_CLUSTER_NODES
@@ -251,7 +250,7 @@ namespace Pulumi.Equinix.NetworkEdge
         /// </summary>
         public readonly string Uuid;
         /// <summary>
-        /// Comma separated list of device states (from see `status` for full list) to be considered valid. Default is 'PROVISIONED'.  Case insensitive.
+        /// Comma separated list of device states (from see `status` for full list) to be considered valid. Default is 'PROVISIONED'. Case insensitive.
         /// </summary>
         public readonly string? ValidStatusList;
         public readonly ImmutableDictionary<string, string> VendorConfiguration;

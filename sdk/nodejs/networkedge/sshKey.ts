@@ -62,13 +62,11 @@ export class SshKey extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Unique Identifier for the project resource where the SSH key is scoped to.If you
-     * leave it out, the ssh key will be created under the default project id of your organization.
+     * Unique Identifier for the project resource where the SSH key is scoped to.If you leave it out, the ssh key will be created under the default project id of your organization.
      */
     public readonly projectId!: pulumi.Output<string>;
     /**
-     * The SSH public key. If this is a file, it can be read using the file
-     * interpolation function.
+     * The SSH public key. If this is a file, it can be read using the file interpolation function.
      */
     public readonly publicKey!: pulumi.Output<string>;
     /**
@@ -123,13 +121,11 @@ export interface SshKeyState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique Identifier for the project resource where the SSH key is scoped to.If you
-     * leave it out, the ssh key will be created under the default project id of your organization.
+     * Unique Identifier for the project resource where the SSH key is scoped to.If you leave it out, the ssh key will be created under the default project id of your organization.
      */
     projectId?: pulumi.Input<string>;
     /**
-     * The SSH public key. If this is a file, it can be read using the file
-     * interpolation function.
+     * The SSH public key. If this is a file, it can be read using the file interpolation function.
      */
     publicKey?: pulumi.Input<string>;
     /**
@@ -151,13 +147,11 @@ export interface SshKeyArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique Identifier for the project resource where the SSH key is scoped to.If you
-     * leave it out, the ssh key will be created under the default project id of your organization.
+     * Unique Identifier for the project resource where the SSH key is scoped to.If you leave it out, the ssh key will be created under the default project id of your organization.
      */
     projectId?: pulumi.Input<string>;
     /**
-     * The SSH public key. If this is a file, it can be read using the file
-     * interpolation function.
+     * The SSH public key. If this is a file, it can be read using the file interpolation function.
      */
     publicKey: pulumi.Input<string>;
     /**

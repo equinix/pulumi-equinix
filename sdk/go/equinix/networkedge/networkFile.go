@@ -76,8 +76,7 @@ import (
 type NetworkFile struct {
 	pulumi.CustomResourceState
 
-	// Boolean value that determines device licensing mode, i.e.,
-	// `bring your own license` or `subscription`.
+	// Boolean value that determines device licensing mode, i.e., `bring your own license` or `subscription`.
 	Byol pulumi.BoolOutput `pulumi:"byol"`
 	// Uploaded file content, expected to be a UTF-8 encoded string.
 	Content pulumi.StringOutput `pulumi:"content"`
@@ -89,8 +88,7 @@ type NetworkFile struct {
 	MetroCode pulumi.StringOutput `pulumi:"metroCode"`
 	// File process type (LICENSE or CLOUD_INIT).
 	ProcessType pulumi.StringOutput `pulumi:"processType"`
-	// Boolean value that determines device management mode, i.e.,
-	// `self-managed` or `Equinix-managed`.
+	// Boolean value that determines device management mode, i.e., `self-managed` or `Equinix-managed`.
 	SelfManaged pulumi.BoolOutput `pulumi:"selfManaged"`
 	// File upload status.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -156,8 +154,7 @@ func GetNetworkFile(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NetworkFile resources.
 type networkFileState struct {
-	// Boolean value that determines device licensing mode, i.e.,
-	// `bring your own license` or `subscription`.
+	// Boolean value that determines device licensing mode, i.e., `bring your own license` or `subscription`.
 	Byol *bool `pulumi:"byol"`
 	// Uploaded file content, expected to be a UTF-8 encoded string.
 	Content *string `pulumi:"content"`
@@ -169,8 +166,7 @@ type networkFileState struct {
 	MetroCode *string `pulumi:"metroCode"`
 	// File process type (LICENSE or CLOUD_INIT).
 	ProcessType *string `pulumi:"processType"`
-	// Boolean value that determines device management mode, i.e.,
-	// `self-managed` or `Equinix-managed`.
+	// Boolean value that determines device management mode, i.e., `self-managed` or `Equinix-managed`.
 	SelfManaged *bool `pulumi:"selfManaged"`
 	// File upload status.
 	Status *string `pulumi:"status"`
@@ -179,8 +175,7 @@ type networkFileState struct {
 }
 
 type NetworkFileState struct {
-	// Boolean value that determines device licensing mode, i.e.,
-	// `bring your own license` or `subscription`.
+	// Boolean value that determines device licensing mode, i.e., `bring your own license` or `subscription`.
 	Byol pulumi.BoolPtrInput
 	// Uploaded file content, expected to be a UTF-8 encoded string.
 	Content pulumi.StringPtrInput
@@ -192,8 +187,7 @@ type NetworkFileState struct {
 	MetroCode pulumi.StringPtrInput
 	// File process type (LICENSE or CLOUD_INIT).
 	ProcessType pulumi.StringPtrInput
-	// Boolean value that determines device management mode, i.e.,
-	// `self-managed` or `Equinix-managed`.
+	// Boolean value that determines device management mode, i.e., `self-managed` or `Equinix-managed`.
 	SelfManaged pulumi.BoolPtrInput
 	// File upload status.
 	Status pulumi.StringPtrInput
@@ -206,8 +200,7 @@ func (NetworkFileState) ElementType() reflect.Type {
 }
 
 type networkFileArgs struct {
-	// Boolean value that determines device licensing mode, i.e.,
-	// `bring your own license` or `subscription`.
+	// Boolean value that determines device licensing mode, i.e., `bring your own license` or `subscription`.
 	Byol bool `pulumi:"byol"`
 	// Uploaded file content, expected to be a UTF-8 encoded string.
 	Content string `pulumi:"content"`
@@ -219,15 +212,13 @@ type networkFileArgs struct {
 	MetroCode string `pulumi:"metroCode"`
 	// File process type (LICENSE or CLOUD_INIT).
 	ProcessType string `pulumi:"processType"`
-	// Boolean value that determines device management mode, i.e.,
-	// `self-managed` or `Equinix-managed`.
+	// Boolean value that determines device management mode, i.e., `self-managed` or `Equinix-managed`.
 	SelfManaged bool `pulumi:"selfManaged"`
 }
 
 // The set of arguments for constructing a NetworkFile resource.
 type NetworkFileArgs struct {
-	// Boolean value that determines device licensing mode, i.e.,
-	// `bring your own license` or `subscription`.
+	// Boolean value that determines device licensing mode, i.e., `bring your own license` or `subscription`.
 	Byol pulumi.BoolInput
 	// Uploaded file content, expected to be a UTF-8 encoded string.
 	Content pulumi.StringInput
@@ -239,8 +230,7 @@ type NetworkFileArgs struct {
 	MetroCode pulumi.StringInput
 	// File process type (LICENSE or CLOUD_INIT).
 	ProcessType pulumi.StringInput
-	// Boolean value that determines device management mode, i.e.,
-	// `self-managed` or `Equinix-managed`.
+	// Boolean value that determines device management mode, i.e., `self-managed` or `Equinix-managed`.
 	SelfManaged pulumi.BoolInput
 }
 
@@ -331,8 +321,7 @@ func (o NetworkFileOutput) ToNetworkFileOutputWithContext(ctx context.Context) N
 	return o
 }
 
-// Boolean value that determines device licensing mode, i.e.,
-// `bring your own license` or `subscription`.
+// Boolean value that determines device licensing mode, i.e., `bring your own license` or `subscription`.
 func (o NetworkFileOutput) Byol() pulumi.BoolOutput {
 	return o.ApplyT(func(v *NetworkFile) pulumi.BoolOutput { return v.Byol }).(pulumi.BoolOutput)
 }
@@ -362,8 +351,7 @@ func (o NetworkFileOutput) ProcessType() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkFile) pulumi.StringOutput { return v.ProcessType }).(pulumi.StringOutput)
 }
 
-// Boolean value that determines device management mode, i.e.,
-// `self-managed` or `Equinix-managed`.
+// Boolean value that determines device management mode, i.e., `self-managed` or `Equinix-managed`.
 func (o NetworkFileOutput) SelfManaged() pulumi.BoolOutput {
 	return o.ApplyT(func(v *NetworkFile) pulumi.BoolOutput { return v.SelfManaged }).(pulumi.BoolOutput)
 }

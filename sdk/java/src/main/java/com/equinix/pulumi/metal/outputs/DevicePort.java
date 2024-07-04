@@ -13,62 +13,62 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DevicePort {
     /**
-     * @return Whether this port is part of a bond in bonded network setup.
+     * @return Whether this port is part of a bond in bonded network setup
      * 
      */
     private @Nullable Boolean bonded;
     /**
-     * @return ID of the port.
+     * @return The ID of the device
      * 
      */
     private @Nullable String id;
     /**
-     * @return MAC address assigned to the port.
+     * @return MAC address assigned to the port
      * 
      */
     private @Nullable String mac;
     /**
-     * @return Name of the port (e.g. `eth0`, or `bond0`).
+     * @return Name of the port (e.g. eth0, or bond0)
      * 
      */
     private @Nullable String name;
     /**
-     * @return Type of the port (e.g. `NetworkPort` or `NetworkBondPort`).
+     * @return One of [private_ipv4, public_ipv4, public_ipv6]
      * 
      */
     private @Nullable String type;
 
     private DevicePort() {}
     /**
-     * @return Whether this port is part of a bond in bonded network setup.
+     * @return Whether this port is part of a bond in bonded network setup
      * 
      */
     public Optional<Boolean> bonded() {
         return Optional.ofNullable(this.bonded);
     }
     /**
-     * @return ID of the port.
+     * @return The ID of the device
      * 
      */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
     /**
-     * @return MAC address assigned to the port.
+     * @return MAC address assigned to the port
      * 
      */
     public Optional<String> mac() {
         return Optional.ofNullable(this.mac);
     }
     /**
-     * @return Name of the port (e.g. `eth0`, or `bond0`).
+     * @return Name of the port (e.g. eth0, or bond0)
      * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return Type of the port (e.g. `NetworkPort` or `NetworkBondPort`).
+     * @return One of [private_ipv4, public_ipv4, public_ipv6]
      * 
      */
     public Optional<String> type() {

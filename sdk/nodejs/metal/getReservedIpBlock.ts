@@ -5,8 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Use this data source to find IP address blocks in Equinix Metal. You can use IP address or a block
- * ID for lookup.
+ * Use this data source to find IP address blocks in Equinix Metal. You can use IP address or a block ID for lookup.
  *
  * > For backward compatibility, this data source can be also used for precreated (management) IP blocks.
  *
@@ -74,8 +73,7 @@ export interface GetReservedIpBlockResult {
     readonly vrfId: number;
 }
 /**
- * Use this data source to find IP address blocks in Equinix Metal. You can use IP address or a block
- * ID for lookup.
+ * Use this data source to find IP address blocks in Equinix Metal. You can use IP address or a block ID for lookup.
  *
  * > For backward compatibility, this data source can be also used for precreated (management) IP blocks.
  *

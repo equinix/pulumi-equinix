@@ -26,13 +26,10 @@ class PortArgs:
         :param pulumi.Input[bool] bonded: Whether the port should be bonded.
         :param pulumi.Input[str] port_id: ID of the port to read.
         :param pulumi.Input[bool] layer2: Whether to put the port to Layer 2 mode, valid only for bond ports.
-        :param pulumi.Input[str] native_vlan_id: UUID of a VLAN to assign as a native VLAN. It must be one of
-               attached VLANs (from `vlan_ids` parameter).
+        :param pulumi.Input[str] native_vlan_id: UUID of a VLAN to assign as a native VLAN. It must be one of attached VLANs (from `vlan_ids` parameter).
         :param pulumi.Input[bool] reset_on_delete: Behavioral setting to reset the port to default settings (layer3 bonded mode without any vlan attached) before delete/destroy.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] vlan_ids: List of VLAN UUIDs to attach to the port, valid only for L2 and Hybrid
-               ports.
-        :param pulumi.Input[Sequence[pulumi.Input[int]]] vxlan_ids: List of VXLAN IDs to attach to the port, valid only for L2 and Hybrid
-               ports.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] vlan_ids: List of VLAN UUIDs to attach to the port, valid only for L2 and Hybrid ports.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] vxlan_ids: List of VXLAN IDs to attach to the port, valid only for L2 and Hybrid ports.
         """
         pulumi.set(__self__, "bonded", bonded)
         pulumi.set(__self__, "port_id", port_id)
@@ -87,8 +84,7 @@ class PortArgs:
     @pulumi.getter(name="nativeVlanId")
     def native_vlan_id(self) -> Optional[pulumi.Input[str]]:
         """
-        UUID of a VLAN to assign as a native VLAN. It must be one of
-        attached VLANs (from `vlan_ids` parameter).
+        UUID of a VLAN to assign as a native VLAN. It must be one of attached VLANs (from `vlan_ids` parameter).
         """
         return pulumi.get(self, "native_vlan_id")
 
@@ -112,8 +108,7 @@ class PortArgs:
     @pulumi.getter(name="vlanIds")
     def vlan_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of VLAN UUIDs to attach to the port, valid only for L2 and Hybrid
-        ports.
+        List of VLAN UUIDs to attach to the port, valid only for L2 and Hybrid ports.
         """
         return pulumi.get(self, "vlan_ids")
 
@@ -125,8 +120,7 @@ class PortArgs:
     @pulumi.getter(name="vxlanIds")
     def vxlan_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
         """
-        List of VXLAN IDs to attach to the port, valid only for L2 and Hybrid
-        ports.
+        List of VXLAN IDs to attach to the port, valid only for L2 and Hybrid ports.
         """
         return pulumi.get(self, "vxlan_ids")
 
@@ -161,17 +155,13 @@ class _PortState:
         :param pulumi.Input[bool] layer2: Whether to put the port to Layer 2 mode, valid only for bond ports.
         :param pulumi.Input[str] mac: MAC address of the port.
         :param pulumi.Input[str] name: Name of the port, e.g. `bond0` or `eth0`.
-        :param pulumi.Input[str] native_vlan_id: UUID of a VLAN to assign as a native VLAN. It must be one of
-               attached VLANs (from `vlan_ids` parameter).
-        :param pulumi.Input[str] network_type: One of layer2-bonded, layer2-individual, layer3, hybrid and hybrid-bonded. This
-               attribute is only set on bond ports.
+        :param pulumi.Input[str] native_vlan_id: UUID of a VLAN to assign as a native VLAN. It must be one of attached VLANs (from `vlan_ids` parameter).
+        :param pulumi.Input[str] network_type: One of layer2-bonded, layer2-individual, layer3, hybrid and hybrid-bonded. This attribute is only set on bond ports.
         :param pulumi.Input[str] port_id: ID of the port to read.
         :param pulumi.Input[bool] reset_on_delete: Behavioral setting to reset the port to default settings (layer3 bonded mode without any vlan attached) before delete/destroy.
         :param pulumi.Input[str] type: Type is either "NetworkBondPort" for bond ports or "NetworkPort" for bondable ethernet ports.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] vlan_ids: List of VLAN UUIDs to attach to the port, valid only for L2 and Hybrid
-               ports.
-        :param pulumi.Input[Sequence[pulumi.Input[int]]] vxlan_ids: List of VXLAN IDs to attach to the port, valid only for L2 and Hybrid
-               ports.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] vlan_ids: List of VLAN UUIDs to attach to the port, valid only for L2 and Hybrid ports.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] vxlan_ids: List of VXLAN IDs to attach to the port, valid only for L2 and Hybrid ports.
         """
         if bond_id is not None:
             pulumi.set(__self__, "bond_id", bond_id)
@@ -290,8 +280,7 @@ class _PortState:
     @pulumi.getter(name="nativeVlanId")
     def native_vlan_id(self) -> Optional[pulumi.Input[str]]:
         """
-        UUID of a VLAN to assign as a native VLAN. It must be one of
-        attached VLANs (from `vlan_ids` parameter).
+        UUID of a VLAN to assign as a native VLAN. It must be one of attached VLANs (from `vlan_ids` parameter).
         """
         return pulumi.get(self, "native_vlan_id")
 
@@ -303,8 +292,7 @@ class _PortState:
     @pulumi.getter(name="networkType")
     def network_type(self) -> Optional[pulumi.Input[str]]:
         """
-        One of layer2-bonded, layer2-individual, layer3, hybrid and hybrid-bonded. This
-        attribute is only set on bond ports.
+        One of layer2-bonded, layer2-individual, layer3, hybrid and hybrid-bonded. This attribute is only set on bond ports.
         """
         return pulumi.get(self, "network_type")
 
@@ -352,8 +340,7 @@ class _PortState:
     @pulumi.getter(name="vlanIds")
     def vlan_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of VLAN UUIDs to attach to the port, valid only for L2 and Hybrid
-        ports.
+        List of VLAN UUIDs to attach to the port, valid only for L2 and Hybrid ports.
         """
         return pulumi.get(self, "vlan_ids")
 
@@ -365,8 +352,7 @@ class _PortState:
     @pulumi.getter(name="vxlanIds")
     def vxlan_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
         """
-        List of VXLAN IDs to attach to the port, valid only for L2 and Hybrid
-        ports.
+        List of VXLAN IDs to attach to the port, valid only for L2 and Hybrid ports.
         """
         return pulumi.get(self, "vxlan_ids")
 
@@ -408,14 +394,11 @@ class Port(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] bonded: Whether the port should be bonded.
         :param pulumi.Input[bool] layer2: Whether to put the port to Layer 2 mode, valid only for bond ports.
-        :param pulumi.Input[str] native_vlan_id: UUID of a VLAN to assign as a native VLAN. It must be one of
-               attached VLANs (from `vlan_ids` parameter).
+        :param pulumi.Input[str] native_vlan_id: UUID of a VLAN to assign as a native VLAN. It must be one of attached VLANs (from `vlan_ids` parameter).
         :param pulumi.Input[str] port_id: ID of the port to read.
         :param pulumi.Input[bool] reset_on_delete: Behavioral setting to reset the port to default settings (layer3 bonded mode without any vlan attached) before delete/destroy.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] vlan_ids: List of VLAN UUIDs to attach to the port, valid only for L2 and Hybrid
-               ports.
-        :param pulumi.Input[Sequence[pulumi.Input[int]]] vxlan_ids: List of VXLAN IDs to attach to the port, valid only for L2 and Hybrid
-               ports.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] vlan_ids: List of VLAN UUIDs to attach to the port, valid only for L2 and Hybrid ports.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] vxlan_ids: List of VXLAN IDs to attach to the port, valid only for L2 and Hybrid ports.
         """
         ...
     @overload
@@ -526,17 +509,13 @@ class Port(pulumi.CustomResource):
         :param pulumi.Input[bool] layer2: Whether to put the port to Layer 2 mode, valid only for bond ports.
         :param pulumi.Input[str] mac: MAC address of the port.
         :param pulumi.Input[str] name: Name of the port, e.g. `bond0` or `eth0`.
-        :param pulumi.Input[str] native_vlan_id: UUID of a VLAN to assign as a native VLAN. It must be one of
-               attached VLANs (from `vlan_ids` parameter).
-        :param pulumi.Input[str] network_type: One of layer2-bonded, layer2-individual, layer3, hybrid and hybrid-bonded. This
-               attribute is only set on bond ports.
+        :param pulumi.Input[str] native_vlan_id: UUID of a VLAN to assign as a native VLAN. It must be one of attached VLANs (from `vlan_ids` parameter).
+        :param pulumi.Input[str] network_type: One of layer2-bonded, layer2-individual, layer3, hybrid and hybrid-bonded. This attribute is only set on bond ports.
         :param pulumi.Input[str] port_id: ID of the port to read.
         :param pulumi.Input[bool] reset_on_delete: Behavioral setting to reset the port to default settings (layer3 bonded mode without any vlan attached) before delete/destroy.
         :param pulumi.Input[str] type: Type is either "NetworkBondPort" for bond ports or "NetworkPort" for bondable ethernet ports.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] vlan_ids: List of VLAN UUIDs to attach to the port, valid only for L2 and Hybrid
-               ports.
-        :param pulumi.Input[Sequence[pulumi.Input[int]]] vxlan_ids: List of VXLAN IDs to attach to the port, valid only for L2 and Hybrid
-               ports.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] vlan_ids: List of VLAN UUIDs to attach to the port, valid only for L2 and Hybrid ports.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] vxlan_ids: List of VXLAN IDs to attach to the port, valid only for L2 and Hybrid ports.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -618,8 +597,7 @@ class Port(pulumi.CustomResource):
     @pulumi.getter(name="nativeVlanId")
     def native_vlan_id(self) -> pulumi.Output[Optional[str]]:
         """
-        UUID of a VLAN to assign as a native VLAN. It must be one of
-        attached VLANs (from `vlan_ids` parameter).
+        UUID of a VLAN to assign as a native VLAN. It must be one of attached VLANs (from `vlan_ids` parameter).
         """
         return pulumi.get(self, "native_vlan_id")
 
@@ -627,8 +605,7 @@ class Port(pulumi.CustomResource):
     @pulumi.getter(name="networkType")
     def network_type(self) -> pulumi.Output[str]:
         """
-        One of layer2-bonded, layer2-individual, layer3, hybrid and hybrid-bonded. This
-        attribute is only set on bond ports.
+        One of layer2-bonded, layer2-individual, layer3, hybrid and hybrid-bonded. This attribute is only set on bond ports.
         """
         return pulumi.get(self, "network_type")
 
@@ -660,8 +637,7 @@ class Port(pulumi.CustomResource):
     @pulumi.getter(name="vlanIds")
     def vlan_ids(self) -> pulumi.Output[Sequence[str]]:
         """
-        List of VLAN UUIDs to attach to the port, valid only for L2 and Hybrid
-        ports.
+        List of VLAN UUIDs to attach to the port, valid only for L2 and Hybrid ports.
         """
         return pulumi.get(self, "vlan_ids")
 
@@ -669,8 +645,7 @@ class Port(pulumi.CustomResource):
     @pulumi.getter(name="vxlanIds")
     def vxlan_ids(self) -> pulumi.Output[Sequence[int]]:
         """
-        List of VXLAN IDs to attach to the port, valid only for L2 and Hybrid
-        ports.
+        List of VXLAN IDs to attach to the port, valid only for L2 and Hybrid ports.
         """
         return pulumi.get(self, "vxlan_ids")
 

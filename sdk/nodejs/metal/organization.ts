@@ -66,8 +66,7 @@ export class Organization extends pulumi.CustomResource {
     }
 
     /**
-     * An object that has the address information. See Address
-     * below for more details.
+     * An object that has the address information. See Address below for more details.
      */
     public readonly address!: pulumi.Output<outputs.metal.OrganizationAddress | undefined>;
     /**
@@ -141,8 +140,7 @@ export class Organization extends pulumi.CustomResource {
  */
 export interface OrganizationState {
     /**
-     * An object that has the address information. See Address
-     * below for more details.
+     * An object that has the address information. See Address below for more details.
      */
     address?: pulumi.Input<inputs.metal.OrganizationAddress>;
     /**
@@ -180,8 +178,7 @@ export interface OrganizationState {
  */
 export interface OrganizationArgs {
     /**
-     * An object that has the address information. See Address
-     * below for more details.
+     * An object that has the address information. See Address below for more details.
      */
     address?: pulumi.Input<inputs.metal.OrganizationAddress>;
     /**

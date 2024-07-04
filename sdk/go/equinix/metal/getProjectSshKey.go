@@ -57,8 +57,7 @@ type LookupProjectSshKeyArgs struct {
 	//
 	// > **NOTE:** One of either `search` or `id` must be provided along with `projectId`.
 	ProjectId string `pulumi:"projectId"`
-	// The name, fingerprint, or publicKey of the SSH Key to search for
-	// in the Equinix Metal project.
+	// The name, fingerprint, or publicKey of the SSH Key to search for in the Equinix Metal project.
 	Search *string `pulumi:"search"`
 }
 
@@ -104,8 +103,7 @@ type LookupProjectSshKeyOutputArgs struct {
 	//
 	// > **NOTE:** One of either `search` or `id` must be provided along with `projectId`.
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
-	// The name, fingerprint, or publicKey of the SSH Key to search for
-	// in the Equinix Metal project.
+	// The name, fingerprint, or publicKey of the SSH Key to search for in the Equinix Metal project.
 	Search pulumi.StringPtrInput `pulumi:"search"`
 }
 

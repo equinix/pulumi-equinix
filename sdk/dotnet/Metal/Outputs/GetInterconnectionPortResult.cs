@@ -40,7 +40,7 @@ namespace Pulumi.Equinix.Metal.Outputs
         /// <summary>
         /// List of IDs of virtual cicruits attached to this port.
         /// </summary>
-        public readonly ImmutableArray<object> VirtualCircuitIds;
+        public readonly ImmutableArray<string> VirtualCircuitIds;
 
         [OutputConstructor]
         private GetInterconnectionPortResult(
@@ -56,7 +56,7 @@ namespace Pulumi.Equinix.Metal.Outputs
 
             string status,
 
-            ImmutableArray<object> virtualCircuitIds)
+            ImmutableArray<string> virtualCircuitIds)
         {
             Id = id;
             LinkStatus = linkStatus;

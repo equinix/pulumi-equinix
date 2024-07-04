@@ -54,32 +54,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="equinix:metal/gateway:Gateway")
 public class Gateway extends com.pulumi.resources.CustomResource {
     /**
-     * UUID of Public or VRF IP Reservation to associate with the gateway, the
-     * reservation must be in the same metro as the VLAN, conflicts with `private_ipv4_subnet_size`.
+     * UUID of Public or VRF IP Reservation to associate with the gateway, the reservation must be in the same metro as the VLAN, conflicts with `private_ipv4_subnet_size`.
      * 
      */
     @Export(name="ipReservationId", refs={String.class}, tree="[0]")
     private Output<String> ipReservationId;
 
     /**
-     * @return UUID of Public or VRF IP Reservation to associate with the gateway, the
-     * reservation must be in the same metro as the VLAN, conflicts with `private_ipv4_subnet_size`.
+     * @return UUID of Public or VRF IP Reservation to associate with the gateway, the reservation must be in the same metro as the VLAN, conflicts with `private_ipv4_subnet_size`.
      * 
      */
     public Output<String> ipReservationId() {
         return this.ipReservationId;
     }
     /**
-     * Size of the private IPv4 subnet to create for this metal
-     * gateway, must be one of `8`, `16`, `32`, `64`, `128`. Conflicts with `ip_reservation_id`.
+     * Size of the private IPv4 subnet to create for this metal gateway, must be one of `8`, `16`, `32`, `64`, `128`. Conflicts with `ip_reservation_id`.
      * 
      */
     @Export(name="privateIpv4SubnetSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> privateIpv4SubnetSize;
 
     /**
-     * @return Size of the private IPv4 subnet to create for this metal
-     * gateway, must be one of `8`, `16`, `32`, `64`, `128`. Conflicts with `ip_reservation_id`.
+     * @return Size of the private IPv4 subnet to create for this metal gateway, must be one of `8`, `16`, `32`, `64`, `128`. Conflicts with `ip_reservation_id`.
      * 
      */
     public Output<Integer> privateIpv4SubnetSize() {

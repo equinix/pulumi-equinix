@@ -5,7 +5,6 @@ package com.equinix.pulumi.metal.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -21,7 +20,7 @@ public final class InterconnectionPort {
     private String name;
     private String role;
     /**
-     * @return Connection speed -  Values must be in the format &#39;&lt;number&gt;Mbps&#39; or &#39;&lt;number&gt;Gpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
+     * @return Connection speed - Values must be in the format &#39;&lt;number&gt;Mbps&#39; or &#39;&lt;number&gt;Gpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
      * 
      */
     private Integer speed;
@@ -30,7 +29,7 @@ public final class InterconnectionPort {
      * 
      */
     private String status;
-    private List<Object> virtualCircuitIds;
+    private List<String> virtualCircuitIds;
 
     private InterconnectionPort() {}
     public String id() {
@@ -50,7 +49,7 @@ public final class InterconnectionPort {
         return this.role;
     }
     /**
-     * @return Connection speed -  Values must be in the format &#39;&lt;number&gt;Mbps&#39; or &#39;&lt;number&gt;Gpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
+     * @return Connection speed - Values must be in the format &#39;&lt;number&gt;Mbps&#39; or &#39;&lt;number&gt;Gpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
      * 
      */
     public Integer speed() {
@@ -63,7 +62,7 @@ public final class InterconnectionPort {
     public String status() {
         return this.status;
     }
-    public List<Object> virtualCircuitIds() {
+    public List<String> virtualCircuitIds() {
         return this.virtualCircuitIds;
     }
 
@@ -82,7 +81,7 @@ public final class InterconnectionPort {
         private String role;
         private Integer speed;
         private String status;
-        private List<Object> virtualCircuitIds;
+        private List<String> virtualCircuitIds;
         public Builder() {}
         public Builder(InterconnectionPort defaults) {
     	      Objects.requireNonNull(defaults);
@@ -126,11 +125,11 @@ public final class InterconnectionPort {
             return this;
         }
         @CustomType.Setter
-        public Builder virtualCircuitIds(List<Object> virtualCircuitIds) {
+        public Builder virtualCircuitIds(List<String> virtualCircuitIds) {
             this.virtualCircuitIds = Objects.requireNonNull(virtualCircuitIds);
             return this;
         }
-        public Builder virtualCircuitIds(Object... virtualCircuitIds) {
+        public Builder virtualCircuitIds(String... virtualCircuitIds) {
             return virtualCircuitIds(List.of(virtualCircuitIds));
         }
         public InterconnectionPort build() {

@@ -530,8 +530,8 @@ class RoutingProtocol(pulumi.CustomResource):
         Fabric V4 API compatible resource allows creation and management of Equinix Fabric connection
 
         Additional documentation:
-        * Getting Started: <https://docs.equinix.com/en-us/Content/Interconnection/FCR/connections/FCR-connect-azureQC.htm#ConfigureRoutingDetailsintheFabricPortal>
-        * API: <https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols>
+        * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/connections/FCR-connect-azureQC.htm#ConfigureRoutingDetailsintheFabricPortal
+        * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
 
         ## Example Usage
         ```python
@@ -577,8 +577,8 @@ class RoutingProtocol(pulumi.CustomResource):
         Fabric V4 API compatible resource allows creation and management of Equinix Fabric connection
 
         Additional documentation:
-        * Getting Started: <https://docs.equinix.com/en-us/Content/Interconnection/FCR/connections/FCR-connect-azureQC.htm#ConfigureRoutingDetailsintheFabricPortal>
-        * API: <https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols>
+        * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/connections/FCR-connect-azureQC.htm#ConfigureRoutingDetailsintheFabricPortal
+        * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
 
         ## Example Usage
         ```python
@@ -735,7 +735,7 @@ class RoutingProtocol(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def bfd(self) -> pulumi.Output[Optional['outputs.RoutingProtocolBfd']]:
+    def bfd(self) -> pulumi.Output['outputs.RoutingProtocolBfd']:
         """
         Bidirectional Forwarding Detection
         """
@@ -743,7 +743,7 @@ class RoutingProtocol(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="bgpAuthKey")
-    def bgp_auth_key(self) -> pulumi.Output[Optional[str]]:
+    def bgp_auth_key(self) -> pulumi.Output[str]:
         """
         BGP authorization key
         """
@@ -751,7 +751,7 @@ class RoutingProtocol(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="bgpIpv4")
-    def bgp_ipv4(self) -> pulumi.Output[Optional['outputs.RoutingProtocolBgpIpv4']]:
+    def bgp_ipv4(self) -> pulumi.Output['outputs.RoutingProtocolBgpIpv4']:
         """
         Routing Protocol BGP IPv4
         """
@@ -759,7 +759,7 @@ class RoutingProtocol(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="bgpIpv6")
-    def bgp_ipv6(self) -> pulumi.Output[Optional['outputs.RoutingProtocolBgpIpv6']]:
+    def bgp_ipv6(self) -> pulumi.Output['outputs.RoutingProtocolBgpIpv6']:
         """
         Routing Protocol BGP IPv6
         """
@@ -791,7 +791,7 @@ class RoutingProtocol(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="customerAsn")
-    def customer_asn(self) -> pulumi.Output[Optional[int]]:
+    def customer_asn(self) -> pulumi.Output[int]:
         """
         Customer-provided ASN
         """
@@ -799,7 +799,7 @@ class RoutingProtocol(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> pulumi.Output[Optional[str]]:
+    def description(self) -> pulumi.Output[str]:
         """
         Customer-provided Fabric Routing Protocol description
         """
@@ -807,7 +807,7 @@ class RoutingProtocol(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="directIpv4")
-    def direct_ipv4(self) -> pulumi.Output[Optional['outputs.RoutingProtocolDirectIpv4']]:
+    def direct_ipv4(self) -> pulumi.Output['outputs.RoutingProtocolDirectIpv4']:
         """
         Routing Protocol Direct IPv4
         """
@@ -815,7 +815,7 @@ class RoutingProtocol(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="directIpv6")
-    def direct_ipv6(self) -> pulumi.Output[Optional['outputs.RoutingProtocolDirectIpv6']]:
+    def direct_ipv6(self) -> pulumi.Output['outputs.RoutingProtocolDirectIpv6']:
         """
         Routing Protocol Direct IPv6
         """
@@ -863,7 +863,7 @@ class RoutingProtocol(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def type(self) -> pulumi.Output[Optional[str]]:
+    def type(self) -> pulumi.Output[str]:
         """
         Defines the routing protocol type like BGP or DIRECT
         """

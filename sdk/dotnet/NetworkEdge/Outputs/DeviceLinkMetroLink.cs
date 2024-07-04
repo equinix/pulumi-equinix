@@ -14,8 +14,7 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
     public sealed class DeviceLinkMetroLink
     {
         /// <summary>
-        /// billing account number to be used for
-        /// connection charges
+        /// billing account number to be used for connection charges
         /// </summary>
         public readonly string AccountNumber;
         /// <summary>

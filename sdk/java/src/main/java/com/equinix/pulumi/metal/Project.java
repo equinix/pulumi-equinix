@@ -17,12 +17,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides an Equinix Metal project resource to allow you manage devices
- * in your projects.
+ * Provides an Equinix Metal project resource to allow you manage devices in your projects.
  * 
- * &gt; **NOTE:** Keep in mind that Equinix Metal invoicing is per project, so creating many
- * `equinix.metal.Project` resources will affect the rendered invoice. If you want to keep your
- * Equinix Metal bill simple and easy to review, please re-use your existing projects.
+ * &gt; **NOTE:** Keep in mind that Equinix Metal invoicing is per project, so creating many `equinix.metal.Project` resources will affect the rendered invoice. If you want to keep your Equinix Metal bill simple and easy to review, please re-use your existing projects.
  * 
  * ## Example Usage
  * ```java
@@ -80,8 +77,7 @@ public class Project extends com.pulumi.resources.CustomResource {
     /**
      * Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
      * 
-     * &gt; **NOTE:** Once you set the BGP config in a project, it can&#39;t be removed (due to a limitation in
-     * the Equinix Metal API). It can be updated.
+     * &gt; **NOTE:** Once you set the BGP config in a project, it can&#39;t be removed (due to a limitation in the Equinix Metal API). It can be updated.
      * 
      */
     @Export(name="bgpConfig", refs={ProjectBgpConfig.class}, tree="[0]")
@@ -90,8 +86,7 @@ public class Project extends com.pulumi.resources.CustomResource {
     /**
      * @return Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
      * 
-     * &gt; **NOTE:** Once you set the BGP config in a project, it can&#39;t be removed (due to a limitation in
-     * the Equinix Metal API). It can be updated.
+     * &gt; **NOTE:** Once you set the BGP config in a project, it can&#39;t be removed (due to a limitation in the Equinix Metal API). It can be updated.
      * 
      */
     public Output<Optional<ProjectBgpConfig>> bgpConfig() {
@@ -112,46 +107,42 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.created;
     }
     /**
-     * The name of the project.  The maximum length is 80 characters
+     * The name of the project. The maximum length is 80 characters
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the project.  The maximum length is 80 characters
+     * @return The name of the project. The maximum length is 80 characters
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The UUID of organization under which you want to create the project. If you
-     * leave it out, the project will be created under your the default organization of your account.
+     * The UUID of organization under which you want to create the project. If you leave it out, the project will be created under your the default organization of your account.
      * 
      */
     @Export(name="organizationId", refs={String.class}, tree="[0]")
     private Output<String> organizationId;
 
     /**
-     * @return The UUID of organization under which you want to create the project. If you
-     * leave it out, the project will be created under your the default organization of your account.
+     * @return The UUID of organization under which you want to create the project. If you leave it out, the project will be created under your the default organization of your account.
      * 
      */
     public Output<String> organizationId() {
         return this.organizationId;
     }
     /**
-     * The UUID of payment method for this project. The payment method and the
-     * project need to belong to the same organization (passed with `organization_id`, or default).
+     * The UUID of payment method for this project. The payment method and the project need to belong to the same organization (passed with `organization_id`, or default).
      * 
      */
     @Export(name="paymentMethodId", refs={String.class}, tree="[0]")
     private Output<String> paymentMethodId;
 
     /**
-     * @return The UUID of payment method for this project. The payment method and the
-     * project need to belong to the same organization (passed with `organization_id`, or default).
+     * @return The UUID of payment method for this project. The payment method and the project need to belong to the same organization (passed with `organization_id`, or default).
      * 
      */
     public Output<String> paymentMethodId() {

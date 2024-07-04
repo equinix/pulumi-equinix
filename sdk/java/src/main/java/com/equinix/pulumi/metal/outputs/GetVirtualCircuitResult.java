@@ -74,10 +74,8 @@ public final class GetVirtualCircuitResult {
      */
     private String status;
     /**
-     * @return A subnet from one of the IP
-     * blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.
-     * * For a /31 block, it will only have two IP addresses, which will be used for
-     *   the metal_ip and customer_ip.
+     * @return A subnet from one of the IP blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.
+     * * For a /31 block, it will only have two IP addresses, which will be used for the metal_ip and customer_ip.
      * * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
      * 
      */
@@ -90,8 +88,7 @@ public final class GetVirtualCircuitResult {
     private String virtualCircuitId;
     private String vlanId;
     /**
-     * @return , `nni_vlan`, `nni_nvid` - VLAN parameters, see the
-     * [documentation for Equinix Fabric](https://metal.equinix.com/developers/docs/networking/fabric/).
+     * @return , `nni_vlan`, `nni_nvid` - VLAN parameters, see the [documentation for Equinix Fabric](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/).
      * 
      */
     private Integer vnid;
@@ -193,10 +190,8 @@ public final class GetVirtualCircuitResult {
         return this.status;
     }
     /**
-     * @return A subnet from one of the IP
-     * blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.
-     * * For a /31 block, it will only have two IP addresses, which will be used for
-     *   the metal_ip and customer_ip.
+     * @return A subnet from one of the IP blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.
+     * * For a /31 block, it will only have two IP addresses, which will be used for the metal_ip and customer_ip.
      * * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
      * 
      */
@@ -217,8 +212,7 @@ public final class GetVirtualCircuitResult {
         return this.vlanId;
     }
     /**
-     * @return , `nni_vlan`, `nni_nvid` - VLAN parameters, see the
-     * [documentation for Equinix Fabric](https://metal.equinix.com/developers/docs/networking/fabric/).
+     * @return , `nni_vlan`, `nni_nvid` - VLAN parameters, see the [documentation for Equinix Fabric](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/).
      * 
      */
     public Integer vnid() {

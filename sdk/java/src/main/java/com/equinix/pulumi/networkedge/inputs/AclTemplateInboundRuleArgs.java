@@ -35,16 +35,14 @@ public final class AclTemplateInboundRuleArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Inbound traffic destination ports. Allowed values are a comma separated
-     * list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
+     * Inbound traffic destination ports. Allowed values are a comma separated list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
      * 
      */
     @Import(name="dstPort", required=true)
     private Output<String> dstPort;
 
     /**
-     * @return Inbound traffic destination ports. Allowed values are a comma separated
-     * list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
+     * @return Inbound traffic destination ports. Allowed values are a comma separated list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
      * 
      */
     public Output<String> dstPort() {
@@ -105,16 +103,14 @@ public final class AclTemplateInboundRuleArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Inbound traffic source ports. Allowed values are a comma separated list
-     * of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
+     * Inbound traffic source ports. Allowed values are a comma separated list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
      * 
      */
     @Import(name="srcPort", required=true)
     private Output<String> srcPort;
 
     /**
-     * @return Inbound traffic source ports. Allowed values are a comma separated list
-     * of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
+     * @return Inbound traffic source ports. Allowed values are a comma separated list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
      * 
      */
     public Output<String> srcPort() {
@@ -212,8 +208,7 @@ public final class AclTemplateInboundRuleArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param dstPort Inbound traffic destination ports. Allowed values are a comma separated
-         * list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
+         * @param dstPort Inbound traffic destination ports. Allowed values are a comma separated list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
          * 
          * @return builder
          * 
@@ -224,8 +219,7 @@ public final class AclTemplateInboundRuleArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param dstPort Inbound traffic destination ports. Allowed values are a comma separated
-         * list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
+         * @param dstPort Inbound traffic destination ports. Allowed values are a comma separated list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
          * 
          * @return builder
          * 
@@ -326,8 +320,7 @@ public final class AclTemplateInboundRuleArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param srcPort Inbound traffic source ports. Allowed values are a comma separated list
-         * of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
+         * @param srcPort Inbound traffic source ports. Allowed values are a comma separated list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
          * 
          * @return builder
          * 
@@ -338,8 +331,7 @@ public final class AclTemplateInboundRuleArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param srcPort Inbound traffic source ports. Allowed values are a comma separated list
-         * of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
+         * @param srcPort Inbound traffic source ports. Allowed values are a comma separated list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
          * 
          * @return builder
          * 

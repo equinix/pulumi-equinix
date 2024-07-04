@@ -69,16 +69,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="equinix:metal/organization:Organization")
 public class Organization extends com.pulumi.resources.CustomResource {
     /**
-     * An object that has the address information. See Address
-     * below for more details.
+     * An object that has the address information. See Address below for more details.
      * 
      */
     @Export(name="address", refs={OrganizationAddress.class}, tree="[0]")
     private Output</* @Nullable */ OrganizationAddress> address;
 
     /**
-     * @return An object that has the address information. See Address
-     * below for more details.
+     * @return An object that has the address information. See Address below for more details.
      * 
      */
     public Output<Optional<OrganizationAddress>> address() {

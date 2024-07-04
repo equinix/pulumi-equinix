@@ -16,9 +16,7 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// If you need to fetch a list of devices which meet filter criteria, you can use the equinix.metal.getDevices datasource.
         /// 
-        /// &gt; **Note:** All arguments including the `root_password` and `user_data` will be stored in
-        ///  the raw state as plain-text.
-        /// Read more about sensitive data in state.
+        /// &gt; **Note:** All arguments including the `root_password` and `user_data` will be stored in the raw state as plain-text. Read more about sensitive data in state.
         /// 
         /// ## Example Usage
         /// 
@@ -71,9 +69,7 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// If you need to fetch a list of devices which meet filter criteria, you can use the equinix.metal.getDevices datasource.
         /// 
-        /// &gt; **Note:** All arguments including the `root_password` and `user_data` will be stored in
-        ///  the raw state as plain-text.
-        /// Read more about sensitive data in state.
+        /// &gt; **Note:** All arguments including the `root_password` and `user_data` will be stored in the raw state as plain-text. Read more about sensitive data in state.
         /// 
         /// ## Example Usage
         /// 
@@ -126,21 +122,19 @@ namespace Pulumi.Equinix.Metal
     public sealed class GetDeviceArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Device ID.
-        /// 
-        /// &gt; **NOTE:** You should pass either `device_id`, or both `project_id` and `hostname`.
+        /// Device ID
         /// </summary>
         [Input("deviceId")]
         public string? DeviceId { get; set; }
 
         /// <summary>
-        /// The device name.
+        /// The device name
         /// </summary>
         [Input("hostname")]
         public string? Hostname { get; set; }
 
         /// <summary>
-        /// The id of the project in which the devices exists.
+        /// The id of the project in which the devices exists
         /// </summary>
         [Input("projectId")]
         public string? ProjectId { get; set; }
@@ -154,21 +148,19 @@ namespace Pulumi.Equinix.Metal
     public sealed class GetDeviceInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Device ID.
-        /// 
-        /// &gt; **NOTE:** You should pass either `device_id`, or both `project_id` and `hostname`.
+        /// Device ID
         /// </summary>
         [Input("deviceId")]
         public Input<string>? DeviceId { get; set; }
 
         /// <summary>
-        /// The device name.
+        /// The device name
         /// </summary>
         [Input("hostname")]
         public Input<string>? Hostname { get; set; }
 
         /// <summary>
-        /// The id of the project in which the devices exists.
+        /// The id of the project in which the devices exists
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -184,35 +176,41 @@ namespace Pulumi.Equinix.Metal
     public sealed class GetDeviceResult
     {
         /// <summary>
-        /// The ipv4 private IP assigned to the device.
+        /// The ipv4 private IP assigned to the device
         /// </summary>
         public readonly string AccessPrivateIpv4;
         /// <summary>
-        /// The ipv4 management IP assigned to the device.
+        /// The ipv4 management IP assigned to the device
         /// </summary>
         public readonly string AccessPublicIpv4;
         /// <summary>
-        /// The ipv6 management IP assigned to the device.
+        /// The ipv6 management IP assigned to the device
         /// </summary>
         public readonly string AccessPublicIpv6;
         public readonly bool AlwaysPxe;
         /// <summary>
-        /// The billing cycle of the device (monthly or hourly).
+        /// The billing cycle of the device (monthly or hourly)
         /// </summary>
         public readonly string BillingCycle;
         /// <summary>
-        /// Description string for the device.
+        /// Description string for the device
         /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// Device ID
+        /// </summary>
         public readonly string DeviceId;
         /// <summary>
-        /// (**Deprecated**) The facility where the device is deployed. Use metro instead; read the facility to metro migration guide
+        /// The facility where the device is deployed
         /// </summary>
         public readonly string Facility;
         /// <summary>
-        /// The id of hardware reservation which this device occupies.
+        /// The id of hardware reservation which this device occupies
         /// </summary>
         public readonly string HardwareReservationId;
+        /// <summary>
+        /// The device name
+        /// </summary>
         public readonly string Hostname;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -224,31 +222,31 @@ namespace Pulumi.Equinix.Metal
         /// </summary>
         public readonly string Metro;
         /// <summary>
-        /// L2 network type of the device, one of `layer3`, `layer2-bonded`,
-        /// `layer2-individual`, `hybrid`.
+        /// L2 network type of the device, one oflayer3, hybrid, layer2-individual, layer2-bonded
         /// </summary>
         public readonly string NetworkType;
         /// <summary>
-        /// The device's private and public IP (v4 and v6) network details. See
-        /// Network Attribute below for more details.
+        /// The device's private and public IP (v4 and v6) network details. When a device is run without any special network configuration, it will have 3 networks: ublic IPv4 at equinix*metal*device.name.network.0, IPv6 at equinix*metal*device.name.network.1 and private IPv4 at equinix*metal*device.name.network.2. Elastic addresses then stack by type - an assigned public IPv4 will go after the management public IPv4 (to index 1), and will then shift the indices of the IPv6 and private IPv4. Assigned private IPv4 will go after the management private IPv4 (to the end of the network list).
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDeviceNetworkResult> Networks;
         /// <summary>
-        /// The operating system running on the device.
+        /// The operating system running on the device
         /// </summary>
         public readonly string OperatingSystem;
         /// <summary>
-        /// The hardware config of the device.
+        /// The hardware config of the device
         /// </summary>
         public readonly string Plan;
         /// <summary>
-        /// List of ports assigned to the device. See Ports Attribute below for
-        /// more details.
+        /// Ports assigned to the device
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDevicePortResult> Ports;
+        /// <summary>
+        /// The id of the project in which the devices exists
+        /// </summary>
         public readonly string ProjectId;
         /// <summary>
-        /// Root password to the server (if still available).
+        /// Root password to the server (if still available)
         /// </summary>
         public readonly string RootPassword;
         /// <summary>
@@ -256,16 +254,16 @@ namespace Pulumi.Equinix.Metal
         /// </summary>
         public readonly string SosHostname;
         /// <summary>
-        /// List of IDs of SSH keys deployed in the device, can be both user or project SSH keys.
+        /// List of IDs of SSH keys deployed in the device, can be both user or project SSH keys
         /// </summary>
         public readonly ImmutableArray<string> SshKeyIds;
         /// <summary>
-        /// The state of the device.
+        /// The state of the device
         /// </summary>
         public readonly string State;
         public readonly string Storage;
         /// <summary>
-        /// Tags attached to the device.
+        /// Tags attached to the device
         /// </summary>
         public readonly ImmutableArray<string> Tags;
 

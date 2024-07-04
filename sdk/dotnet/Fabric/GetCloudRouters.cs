@@ -15,8 +15,8 @@ namespace Pulumi.Equinix.Fabric
         /// Fabric V4 API compatible data resource that allow user to fetch Fabric Cloud Routers matching custom search criteria
         /// 
         /// Additional documentation:
-        /// * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-intro.htm#HowItWorks&gt;
-        /// * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers&gt;
+        /// * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-intro.htm#HowItWorks
+        /// * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers
         /// </summary>
         public static Task<GetCloudRoutersResult> InvokeAsync(GetCloudRoutersArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCloudRoutersResult>("equinix:fabric/getCloudRouters:getCloudRouters", args ?? new GetCloudRoutersArgs(), options.WithDefaults());
@@ -25,8 +25,8 @@ namespace Pulumi.Equinix.Fabric
         /// Fabric V4 API compatible data resource that allow user to fetch Fabric Cloud Routers matching custom search criteria
         /// 
         /// Additional documentation:
-        /// * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-intro.htm#HowItWorks&gt;
-        /// * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers&gt;
+        /// * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-intro.htm#HowItWorks
+        /// * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers
         /// </summary>
         public static Output<GetCloudRoutersResult> Invoke(GetCloudRoutersInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCloudRoutersResult>("equinix:fabric/getCloudRouters:getCloudRouters", args ?? new GetCloudRoutersInvokeArgs(), options.WithDefaults());

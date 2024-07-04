@@ -140,8 +140,7 @@ namespace Pulumi.Equinix.Metal
         /// </summary>
         public readonly string ProjectId;
         /// <summary>
-        /// Flag indicating whether the reserved server is provisionable or not. Spare
-        /// devices can't be provisioned unless they are activated first.
+        /// Flag indicating whether the reserved server is provisionable or not. Spare devices can't be provisioned unless they are activated first.
         /// </summary>
         public readonly bool Provisionable;
         /// <summary>
@@ -149,13 +148,11 @@ namespace Pulumi.Equinix.Metal
         /// </summary>
         public readonly string ShortId;
         /// <summary>
-        /// Flag indicating whether the Hardware Reservation is a spare. Spare Hardware
-        /// Reservations are used when a Hardware Reservations requires service from Metal Equinix.
+        /// Flag indicating whether the Hardware Reservation is a spare. Spare Hardware Reservations are used when a Hardware Reservations requires service from Metal Equinix.
         /// </summary>
         public readonly bool Spare;
         /// <summary>
-        /// Switch short ID, can be used to determine if two devices are connected to the
-        /// same switch.
+        /// Switch short ID, can be used to determine if two devices are connected to the same switch.
         /// </summary>
         public readonly string SwitchUuid;
 

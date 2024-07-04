@@ -64,11 +64,9 @@ type SshKey struct {
 
 	// The name of SSH key used for identification.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Unique Identifier for the project resource where the SSH key is scoped to.If you
-	// leave it out, the ssh key will be created under the default project id of your organization.
+	// Unique Identifier for the project resource where the SSH key is scoped to.If you leave it out, the ssh key will be created under the default project id of your organization.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
-	// The SSH public key. If this is a file, it can be read using the file
-	// interpolation function.
+	// The SSH public key. If this is a file, it can be read using the file interpolation function.
 	PublicKey pulumi.StringOutput `pulumi:"publicKey"`
 	// The type of SSH key: `RSA` (default) or `DSA`.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
@@ -111,11 +109,9 @@ func GetSshKey(ctx *pulumi.Context,
 type sshKeyState struct {
 	// The name of SSH key used for identification.
 	Name *string `pulumi:"name"`
-	// Unique Identifier for the project resource where the SSH key is scoped to.If you
-	// leave it out, the ssh key will be created under the default project id of your organization.
+	// Unique Identifier for the project resource where the SSH key is scoped to.If you leave it out, the ssh key will be created under the default project id of your organization.
 	ProjectId *string `pulumi:"projectId"`
-	// The SSH public key. If this is a file, it can be read using the file
-	// interpolation function.
+	// The SSH public key. If this is a file, it can be read using the file interpolation function.
 	PublicKey *string `pulumi:"publicKey"`
 	// The type of SSH key: `RSA` (default) or `DSA`.
 	Type *string `pulumi:"type"`
@@ -126,11 +122,9 @@ type sshKeyState struct {
 type SshKeyState struct {
 	// The name of SSH key used for identification.
 	Name pulumi.StringPtrInput
-	// Unique Identifier for the project resource where the SSH key is scoped to.If you
-	// leave it out, the ssh key will be created under the default project id of your organization.
+	// Unique Identifier for the project resource where the SSH key is scoped to.If you leave it out, the ssh key will be created under the default project id of your organization.
 	ProjectId pulumi.StringPtrInput
-	// The SSH public key. If this is a file, it can be read using the file
-	// interpolation function.
+	// The SSH public key. If this is a file, it can be read using the file interpolation function.
 	PublicKey pulumi.StringPtrInput
 	// The type of SSH key: `RSA` (default) or `DSA`.
 	Type pulumi.StringPtrInput
@@ -145,11 +139,9 @@ func (SshKeyState) ElementType() reflect.Type {
 type sshKeyArgs struct {
 	// The name of SSH key used for identification.
 	Name *string `pulumi:"name"`
-	// Unique Identifier for the project resource where the SSH key is scoped to.If you
-	// leave it out, the ssh key will be created under the default project id of your organization.
+	// Unique Identifier for the project resource where the SSH key is scoped to.If you leave it out, the ssh key will be created under the default project id of your organization.
 	ProjectId *string `pulumi:"projectId"`
-	// The SSH public key. If this is a file, it can be read using the file
-	// interpolation function.
+	// The SSH public key. If this is a file, it can be read using the file interpolation function.
 	PublicKey string `pulumi:"publicKey"`
 	// The type of SSH key: `RSA` (default) or `DSA`.
 	Type *string `pulumi:"type"`
@@ -159,11 +151,9 @@ type sshKeyArgs struct {
 type SshKeyArgs struct {
 	// The name of SSH key used for identification.
 	Name pulumi.StringPtrInput
-	// Unique Identifier for the project resource where the SSH key is scoped to.If you
-	// leave it out, the ssh key will be created under the default project id of your organization.
+	// Unique Identifier for the project resource where the SSH key is scoped to.If you leave it out, the ssh key will be created under the default project id of your organization.
 	ProjectId pulumi.StringPtrInput
-	// The SSH public key. If this is a file, it can be read using the file
-	// interpolation function.
+	// The SSH public key. If this is a file, it can be read using the file interpolation function.
 	PublicKey pulumi.StringInput
 	// The type of SSH key: `RSA` (default) or `DSA`.
 	Type pulumi.StringPtrInput
@@ -261,14 +251,12 @@ func (o SshKeyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SshKey) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Unique Identifier for the project resource where the SSH key is scoped to.If you
-// leave it out, the ssh key will be created under the default project id of your organization.
+// Unique Identifier for the project resource where the SSH key is scoped to.If you leave it out, the ssh key will be created under the default project id of your organization.
 func (o SshKeyOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SshKey) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
 }
 
-// The SSH public key. If this is a file, it can be read using the file
-// interpolation function.
+// The SSH public key. If this is a file, it can be read using the file interpolation function.
 func (o SshKeyOutput) PublicKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *SshKey) pulumi.StringOutput { return v.PublicKey }).(pulumi.StringOutput)
 }

@@ -8,23 +8,17 @@ import * as enums from "../types/enums";
 import * as utilities from "../utilities";
 
 /**
- * Resource `equinix.networkedge.Device` allows creation and management of Equinix Network Edge virtual
- * network devices.
+ * Resource `equinix.networkedge.Device` allows creation and management of Equinix Network Edge virtual network devices.
  *
  * Network Edge virtual network devices can be created in two modes:
  *
- * * **managed** - (default) Where Equinix manages connectivity and services in the device and
- *   customer gets limited access to the device.
- * * **self-configured** - Where customer provisions and manages own services in the device with less
- *   restricted access. Some device types are offered only in this mode.
+ * * **managed** - (default) Where Equinix manages connectivity and services in the device and customer gets limited access to the device.
+ * * **self-configured** - Where customer provisions and manages own services in the device with less restricted access. Some device types are offered only in this mode.
  *
  * In addition to management modes, there are two software license modes available:
  *
- * * **subscription** - Where Equinix provides software license, including end-to-end support, and
- *   bills for the service respectively.
- * * **BYOL** - [bring your own license] Where customer brings his own, already procured device
- *   software license. There are no charges associated with such license. It is the only licensing mode
- *   for `self-configured` devices.
+ * * **subscription** - Where Equinix provides software license, including end-to-end support, and bills for the service respectively.
+ * * **BYOL** - [bring your own license] Where customer brings his own, already procured device software license. There are no charges associated with such license. It is the only licensing mode for `self-configured` devices.
  *
  * ## Example Usage
  *
@@ -122,8 +116,7 @@ export class Device extends pulumi.CustomResource {
      */
     public readonly aclTemplateId!: pulumi.Output<string | undefined>;
     /**
-     * Additional Internet bandwidth, in Mbps, that will be
-     * allocated to the device (in addition to default 15Mbps).
+     * Additional Internet bandwidth, in Mbps, that will be allocated to the device (in addition to default 15Mbps).
      */
     public readonly additionalBandwidth!: pulumi.Output<number>;
     /**
@@ -131,8 +124,7 @@ export class Device extends pulumi.CustomResource {
      */
     public /*out*/ readonly asn!: pulumi.Output<number>;
     /**
-     * Boolean value that determines device licensing mode, i.e.,
-     * `bring your own license` or `subscription` (default).
+     * Boolean value that determines device licensing mode, i.e., `bring your own license` or `subscription` (default).
      */
     public readonly byol!: pulumi.Output<boolean | undefined>;
     /**
@@ -140,13 +132,11 @@ export class Device extends pulumi.CustomResource {
      */
     public readonly cloudInitFileId!: pulumi.Output<string | undefined>;
     /**
-     * An object that has the cluster details. See
-     * Cluster Details below for more details.
+     * An object that has the cluster details. See Cluster Details below for more details.
      */
     public readonly clusterDetails!: pulumi.Output<outputs.networkedge.DeviceClusterDetails | undefined>;
     /**
-     * Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT).
-     * If not specified, default will be INTERNET-ACCESS
+     * Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT). If not specified, default will be INTERNET-ACCESS
      */
     public readonly connectivity!: pulumi.Output<string | undefined>;
     /**
@@ -154,14 +144,11 @@ export class Device extends pulumi.CustomResource {
      */
     public readonly coreCount!: pulumi.Output<number>;
     /**
-     * Unique ID of an existing device.
-     * Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual
-     * device. This field is only meaningful for single devices.
+     * Unique ID of an existing device. Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual device. This field is only meaningful for single devices.
      */
     public readonly diverseDeviceId!: pulumi.Output<string>;
     /**
-     * Name of the device with diverse device UUID. This field is returned in device details if the
-     * device is created by passing diverse_device_id.
+     * Name of the device with diverse device UUID. This field is returned in device details if the device is created by passing diverse_device_id.
      */
     public /*out*/ readonly diverseDeviceName!: pulumi.Output<string>;
     /**
@@ -173,18 +160,15 @@ export class Device extends pulumi.CustomResource {
      */
     public /*out*/ readonly ibx!: pulumi.Output<string>;
     /**
-     * Number of network interfaces on a device. If not specified,
-     * default number for a given device type will be used.
+     * Number of network interfaces on a device. If not specified, default number for a given device type will be used.
      */
     public readonly interfaceCount!: pulumi.Output<number>;
     /**
-     * List of device interfaces. See Interface Attribute below
-     * for more details.
+     * List of device interfaces. See Interface Attribute below for more details.
      */
     public /*out*/ readonly interfaces!: pulumi.Output<outputs.networkedge.DeviceInterface[]>;
     /**
-     * Path to the license file that will be uploaded and applied on a
-     * device. Applicable for some device types in BYOL licensing mode.
+     * Path to the license file that will be uploaded and applied on a device. Applicable for some device types in BYOL licensing mode.
      */
     public readonly licenseFile!: pulumi.Output<string | undefined>;
     /**
@@ -192,13 +176,11 @@ export class Device extends pulumi.CustomResource {
      */
     public readonly licenseFileId!: pulumi.Output<string>;
     /**
-     * Device license registration status. Possible values are `APPLYING_LICENSE`,
-     * `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
+     * Device license registration status. Possible values are `APPLYING_LICENSE`, `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
      */
     public /*out*/ readonly licenseStatus!: pulumi.Output<string>;
     /**
-     * License Token applicable for some device types in BYOL licensing
-     * mode.
+     * License Token applicable for some device types in BYOL licensing mode.
      */
     public readonly licenseToken!: pulumi.Output<string | undefined>;
     /**
@@ -206,8 +188,7 @@ export class Device extends pulumi.CustomResource {
      */
     public readonly metroCode!: pulumi.Output<string>;
     /**
-     * Identifier of an MGMT interface ACL template that will be
-     * applied on the device.
+     * Identifier of an MGMT interface ACL template that will be applied on the device.
      */
     public readonly mgmtAclTemplateUuid!: pulumi.Output<string | undefined>;
     /**
@@ -215,8 +196,7 @@ export class Device extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * List of email addresses that will receive device status
-     * notifications.
+     * List of email addresses that will receive device status notifications.
      */
     public readonly notifications!: pulumi.Output<string[]>;
     /**
@@ -228,8 +208,7 @@ export class Device extends pulumi.CustomResource {
      */
     public readonly packageCode!: pulumi.Output<string>;
     /**
-     * Unique Identifier for the project resource where the device is scoped to.If you
-     * leave it out, the device will be created under the default project id of your organization.
+     * Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
      */
     public readonly projectId!: pulumi.Output<string>;
     /**
@@ -237,8 +216,7 @@ export class Device extends pulumi.CustomResource {
      */
     public readonly purchaseOrderNumber!: pulumi.Output<string | undefined>;
     /**
-     * Device redundancy type applicable for HA devices, either
-     * primary or secondary.
+     * Device redundancy type applicable for HA devices, either primary or secondary.
      */
     public /*out*/ readonly redundancyType!: pulumi.Output<string>;
     /**
@@ -250,13 +228,11 @@ export class Device extends pulumi.CustomResource {
      */
     public /*out*/ readonly region!: pulumi.Output<string>;
     /**
-     * Definition of secondary device for redundant
-     * device configurations. See Secondary Device below for more details.
+     * Definition of secondary device for redundant device configurations. See Secondary Device below for more details.
      */
     public readonly secondaryDevice!: pulumi.Output<outputs.networkedge.DeviceSecondaryDevice | undefined>;
     /**
-     * Boolean value that determines device management mode, i.e.,
-     * `self-managed` or `Equinix-managed` (default).
+     * Boolean value that determines device management mode, i.e., `self-managed` or `Equinix-managed` (default).
      */
     public readonly selfManaged!: pulumi.Output<boolean | undefined>;
     /**
@@ -296,10 +272,8 @@ export class Device extends pulumi.CustomResource {
      */
     public /*out*/ readonly uuid!: pulumi.Output<string>;
     /**
-     * Map of vendor specific configuration parameters for a device
-     * (controller1, activationKey, managementType, siteId, systemIpAddress, private_address, private_cidr_mask, private_gateway, license_key, license_id)
-     * * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
-     * on a device (max one key).  See SSH Key below for more details.
+     * Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId)
+     * * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
      */
     public readonly vendorConfiguration!: pulumi.Output<{[key: string]: string}>;
     /**
@@ -463,8 +437,7 @@ export interface DeviceState {
      */
     aclTemplateId?: pulumi.Input<string>;
     /**
-     * Additional Internet bandwidth, in Mbps, that will be
-     * allocated to the device (in addition to default 15Mbps).
+     * Additional Internet bandwidth, in Mbps, that will be allocated to the device (in addition to default 15Mbps).
      */
     additionalBandwidth?: pulumi.Input<number>;
     /**
@@ -472,8 +445,7 @@ export interface DeviceState {
      */
     asn?: pulumi.Input<number>;
     /**
-     * Boolean value that determines device licensing mode, i.e.,
-     * `bring your own license` or `subscription` (default).
+     * Boolean value that determines device licensing mode, i.e., `bring your own license` or `subscription` (default).
      */
     byol?: pulumi.Input<boolean>;
     /**
@@ -481,13 +453,11 @@ export interface DeviceState {
      */
     cloudInitFileId?: pulumi.Input<string>;
     /**
-     * An object that has the cluster details. See
-     * Cluster Details below for more details.
+     * An object that has the cluster details. See Cluster Details below for more details.
      */
     clusterDetails?: pulumi.Input<inputs.networkedge.DeviceClusterDetails>;
     /**
-     * Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT).
-     * If not specified, default will be INTERNET-ACCESS
+     * Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT). If not specified, default will be INTERNET-ACCESS
      */
     connectivity?: pulumi.Input<string>;
     /**
@@ -495,14 +465,11 @@ export interface DeviceState {
      */
     coreCount?: pulumi.Input<number>;
     /**
-     * Unique ID of an existing device.
-     * Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual
-     * device. This field is only meaningful for single devices.
+     * Unique ID of an existing device. Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual device. This field is only meaningful for single devices.
      */
     diverseDeviceId?: pulumi.Input<string>;
     /**
-     * Name of the device with diverse device UUID. This field is returned in device details if the
-     * device is created by passing diverse_device_id.
+     * Name of the device with diverse device UUID. This field is returned in device details if the device is created by passing diverse_device_id.
      */
     diverseDeviceName?: pulumi.Input<string>;
     /**
@@ -514,18 +481,15 @@ export interface DeviceState {
      */
     ibx?: pulumi.Input<string>;
     /**
-     * Number of network interfaces on a device. If not specified,
-     * default number for a given device type will be used.
+     * Number of network interfaces on a device. If not specified, default number for a given device type will be used.
      */
     interfaceCount?: pulumi.Input<number>;
     /**
-     * List of device interfaces. See Interface Attribute below
-     * for more details.
+     * List of device interfaces. See Interface Attribute below for more details.
      */
     interfaces?: pulumi.Input<pulumi.Input<inputs.networkedge.DeviceInterface>[]>;
     /**
-     * Path to the license file that will be uploaded and applied on a
-     * device. Applicable for some device types in BYOL licensing mode.
+     * Path to the license file that will be uploaded and applied on a device. Applicable for some device types in BYOL licensing mode.
      */
     licenseFile?: pulumi.Input<string>;
     /**
@@ -533,13 +497,11 @@ export interface DeviceState {
      */
     licenseFileId?: pulumi.Input<string>;
     /**
-     * Device license registration status. Possible values are `APPLYING_LICENSE`,
-     * `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
+     * Device license registration status. Possible values are `APPLYING_LICENSE`, `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
      */
     licenseStatus?: pulumi.Input<string>;
     /**
-     * License Token applicable for some device types in BYOL licensing
-     * mode.
+     * License Token applicable for some device types in BYOL licensing mode.
      */
     licenseToken?: pulumi.Input<string>;
     /**
@@ -547,8 +509,7 @@ export interface DeviceState {
      */
     metroCode?: pulumi.Input<string>;
     /**
-     * Identifier of an MGMT interface ACL template that will be
-     * applied on the device.
+     * Identifier of an MGMT interface ACL template that will be applied on the device.
      */
     mgmtAclTemplateUuid?: pulumi.Input<string>;
     /**
@@ -556,8 +517,7 @@ export interface DeviceState {
      */
     name?: pulumi.Input<string>;
     /**
-     * List of email addresses that will receive device status
-     * notifications.
+     * List of email addresses that will receive device status notifications.
      */
     notifications?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -569,8 +529,7 @@ export interface DeviceState {
      */
     packageCode?: pulumi.Input<string>;
     /**
-     * Unique Identifier for the project resource where the device is scoped to.If you
-     * leave it out, the device will be created under the default project id of your organization.
+     * Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
      */
     projectId?: pulumi.Input<string>;
     /**
@@ -578,8 +537,7 @@ export interface DeviceState {
      */
     purchaseOrderNumber?: pulumi.Input<string>;
     /**
-     * Device redundancy type applicable for HA devices, either
-     * primary or secondary.
+     * Device redundancy type applicable for HA devices, either primary or secondary.
      */
     redundancyType?: pulumi.Input<string>;
     /**
@@ -591,13 +549,11 @@ export interface DeviceState {
      */
     region?: pulumi.Input<string>;
     /**
-     * Definition of secondary device for redundant
-     * device configurations. See Secondary Device below for more details.
+     * Definition of secondary device for redundant device configurations. See Secondary Device below for more details.
      */
     secondaryDevice?: pulumi.Input<inputs.networkedge.DeviceSecondaryDevice>;
     /**
-     * Boolean value that determines device management mode, i.e.,
-     * `self-managed` or `Equinix-managed` (default).
+     * Boolean value that determines device management mode, i.e., `self-managed` or `Equinix-managed` (default).
      */
     selfManaged?: pulumi.Input<boolean>;
     /**
@@ -637,10 +593,8 @@ export interface DeviceState {
      */
     uuid?: pulumi.Input<string>;
     /**
-     * Map of vendor specific configuration parameters for a device
-     * (controller1, activationKey, managementType, siteId, systemIpAddress, private_address, private_cidr_mask, private_gateway, license_key, license_id)
-     * * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
-     * on a device (max one key).  See SSH Key below for more details.
+     * Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId)
+     * * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
      */
     vendorConfiguration?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -670,13 +624,11 @@ export interface DeviceArgs {
      */
     aclTemplateId?: pulumi.Input<string>;
     /**
-     * Additional Internet bandwidth, in Mbps, that will be
-     * allocated to the device (in addition to default 15Mbps).
+     * Additional Internet bandwidth, in Mbps, that will be allocated to the device (in addition to default 15Mbps).
      */
     additionalBandwidth?: pulumi.Input<number>;
     /**
-     * Boolean value that determines device licensing mode, i.e.,
-     * `bring your own license` or `subscription` (default).
+     * Boolean value that determines device licensing mode, i.e., `bring your own license` or `subscription` (default).
      */
     byol?: pulumi.Input<boolean>;
     /**
@@ -684,13 +636,11 @@ export interface DeviceArgs {
      */
     cloudInitFileId?: pulumi.Input<string>;
     /**
-     * An object that has the cluster details. See
-     * Cluster Details below for more details.
+     * An object that has the cluster details. See Cluster Details below for more details.
      */
     clusterDetails?: pulumi.Input<inputs.networkedge.DeviceClusterDetails>;
     /**
-     * Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT).
-     * If not specified, default will be INTERNET-ACCESS
+     * Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT). If not specified, default will be INTERNET-ACCESS
      */
     connectivity?: pulumi.Input<string>;
     /**
@@ -698,9 +648,7 @@ export interface DeviceArgs {
      */
     coreCount: pulumi.Input<number>;
     /**
-     * Unique ID of an existing device.
-     * Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual
-     * device. This field is only meaningful for single devices.
+     * Unique ID of an existing device. Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual device. This field is only meaningful for single devices.
      */
     diverseDeviceId?: pulumi.Input<string>;
     /**
@@ -708,13 +656,11 @@ export interface DeviceArgs {
      */
     hostname?: pulumi.Input<string>;
     /**
-     * Number of network interfaces on a device. If not specified,
-     * default number for a given device type will be used.
+     * Number of network interfaces on a device. If not specified, default number for a given device type will be used.
      */
     interfaceCount?: pulumi.Input<number>;
     /**
-     * Path to the license file that will be uploaded and applied on a
-     * device. Applicable for some device types in BYOL licensing mode.
+     * Path to the license file that will be uploaded and applied on a device. Applicable for some device types in BYOL licensing mode.
      */
     licenseFile?: pulumi.Input<string>;
     /**
@@ -722,8 +668,7 @@ export interface DeviceArgs {
      */
     licenseFileId?: pulumi.Input<string>;
     /**
-     * License Token applicable for some device types in BYOL licensing
-     * mode.
+     * License Token applicable for some device types in BYOL licensing mode.
      */
     licenseToken?: pulumi.Input<string>;
     /**
@@ -731,8 +676,7 @@ export interface DeviceArgs {
      */
     metroCode: pulumi.Input<string>;
     /**
-     * Identifier of an MGMT interface ACL template that will be
-     * applied on the device.
+     * Identifier of an MGMT interface ACL template that will be applied on the device.
      */
     mgmtAclTemplateUuid?: pulumi.Input<string>;
     /**
@@ -740,8 +684,7 @@ export interface DeviceArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * List of email addresses that will receive device status
-     * notifications.
+     * List of email addresses that will receive device status notifications.
      */
     notifications: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -753,8 +696,7 @@ export interface DeviceArgs {
      */
     packageCode: pulumi.Input<string>;
     /**
-     * Unique Identifier for the project resource where the device is scoped to.If you
-     * leave it out, the device will be created under the default project id of your organization.
+     * Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
      */
     projectId?: pulumi.Input<string>;
     /**
@@ -762,13 +704,11 @@ export interface DeviceArgs {
      */
     purchaseOrderNumber?: pulumi.Input<string>;
     /**
-     * Definition of secondary device for redundant
-     * device configurations. See Secondary Device below for more details.
+     * Definition of secondary device for redundant device configurations. See Secondary Device below for more details.
      */
     secondaryDevice?: pulumi.Input<inputs.networkedge.DeviceSecondaryDevice>;
     /**
-     * Boolean value that determines device management mode, i.e.,
-     * `self-managed` or `Equinix-managed` (default).
+     * Boolean value that determines device management mode, i.e., `self-managed` or `Equinix-managed` (default).
      */
     selfManaged?: pulumi.Input<boolean>;
     /**
@@ -792,10 +732,8 @@ export interface DeviceArgs {
      */
     typeCode: pulumi.Input<string>;
     /**
-     * Map of vendor specific configuration parameters for a device
-     * (controller1, activationKey, managementType, siteId, systemIpAddress, private_address, private_cidr_mask, private_gateway, license_key, license_id)
-     * * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
-     * on a device (max one key).  See SSH Key below for more details.
+     * Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId)
+     * * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
      */
     vendorConfiguration?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

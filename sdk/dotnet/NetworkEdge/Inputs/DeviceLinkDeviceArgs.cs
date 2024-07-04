@@ -25,8 +25,7 @@ namespace Pulumi.Equinix.NetworkEdge.Inputs
         public Input<string> Id { get; set; } = null!;
 
         /// <summary>
-        /// Device network interface identifier to use for device link
-        /// connection.
+        /// Device network interface identifier to use for device link connection.
         /// </summary>
         [Input("interfaceId")]
         public Input<int>? InterfaceId { get; set; }
@@ -38,8 +37,7 @@ namespace Pulumi.Equinix.NetworkEdge.Inputs
         public Input<string>? IpAddress { get; set; }
 
         /// <summary>
-        /// device link provisioning status on a given device. One of `PROVISIONING`,
-        /// `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
+        /// device link provisioning status on a given device. One of `PROVISIONING`, `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

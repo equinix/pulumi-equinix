@@ -4,8 +4,10 @@
 package com.equinix.pulumi.fabric.inputs;
 
 import com.equinix.pulumi.fabric.inputs.GetServiceProfilesFilter;
+import com.equinix.pulumi.fabric.inputs.GetServiceProfilesPagination;
 import com.equinix.pulumi.fabric.inputs.GetServiceProfilesSort;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -18,29 +20,59 @@ public final class GetServiceProfilesPlainArgs extends com.pulumi.resources.Invo
     public static final GetServiceProfilesPlainArgs Empty = new GetServiceProfilesPlainArgs();
 
     /**
-     * Service Profile Search Filter
+     * Optional boolean flag to indicate if the filters will be AND&#39;d together. Defaults to false
      * 
      */
-    @Import(name="filter")
-    private @Nullable GetServiceProfilesFilter filter;
+    @Import(name="andFilters")
+    private @Nullable Boolean andFilters;
 
     /**
-     * @return Service Profile Search Filter
+     * @return Optional boolean flag to indicate if the filters will be AND&#39;d together. Defaults to false
      * 
      */
-    public Optional<GetServiceProfilesFilter> filter() {
-        return Optional.ofNullable(this.filter);
+    public Optional<Boolean> andFilters() {
+        return Optional.ofNullable(this.andFilters);
     }
 
     /**
-     * Service Profile Sort criteria for Search Request response payload
+     * Filters for the Data Source Search Request (If and_filters is not set to true you cannot provide more than one filter block)
+     * 
+     */
+    @Import(name="filter", required=true)
+    private GetServiceProfilesFilter filter;
+
+    /**
+     * @return Filters for the Data Source Search Request (If and_filters is not set to true you cannot provide more than one filter block)
+     * 
+     */
+    public GetServiceProfilesFilter filter() {
+        return this.filter;
+    }
+
+    /**
+     * Pagination details for the Data Source Search Request
+     * 
+     */
+    @Import(name="pagination")
+    private @Nullable GetServiceProfilesPagination pagination;
+
+    /**
+     * @return Pagination details for the Data Source Search Request
+     * 
+     */
+    public Optional<GetServiceProfilesPagination> pagination() {
+        return Optional.ofNullable(this.pagination);
+    }
+
+    /**
+     * Filters for the Data Source Search Request
      * 
      */
     @Import(name="sort")
     private @Nullable List<GetServiceProfilesSort> sort;
 
     /**
-     * @return Service Profile Sort criteria for Search Request response payload
+     * @return Filters for the Data Source Search Request
      * 
      */
     public Optional<List<GetServiceProfilesSort>> sort() {
@@ -65,7 +97,9 @@ public final class GetServiceProfilesPlainArgs extends com.pulumi.resources.Invo
     private GetServiceProfilesPlainArgs() {}
 
     private GetServiceProfilesPlainArgs(GetServiceProfilesPlainArgs $) {
+        this.andFilters = $.andFilters;
         this.filter = $.filter;
+        this.pagination = $.pagination;
         this.sort = $.sort;
         this.viewPoint = $.viewPoint;
     }
@@ -89,18 +123,40 @@ public final class GetServiceProfilesPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param filter Service Profile Search Filter
+         * @param andFilters Optional boolean flag to indicate if the filters will be AND&#39;d together. Defaults to false
          * 
          * @return builder
          * 
          */
-        public Builder filter(@Nullable GetServiceProfilesFilter filter) {
+        public Builder andFilters(@Nullable Boolean andFilters) {
+            $.andFilters = andFilters;
+            return this;
+        }
+
+        /**
+         * @param filter Filters for the Data Source Search Request (If and_filters is not set to true you cannot provide more than one filter block)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filter(GetServiceProfilesFilter filter) {
             $.filter = filter;
             return this;
         }
 
         /**
-         * @param sort Service Profile Sort criteria for Search Request response payload
+         * @param pagination Pagination details for the Data Source Search Request
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pagination(@Nullable GetServiceProfilesPagination pagination) {
+            $.pagination = pagination;
+            return this;
+        }
+
+        /**
+         * @param sort Filters for the Data Source Search Request
          * 
          * @return builder
          * 
@@ -111,7 +167,7 @@ public final class GetServiceProfilesPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param sort Service Profile Sort criteria for Search Request response payload
+         * @param sort Filters for the Data Source Search Request
          * 
          * @return builder
          * 
@@ -132,6 +188,7 @@ public final class GetServiceProfilesPlainArgs extends com.pulumi.resources.Invo
         }
 
         public GetServiceProfilesPlainArgs build() {
+            $.filter = Objects.requireNonNull($.filter, "expected parameter 'filter' to be non-null");
             return $;
         }
     }

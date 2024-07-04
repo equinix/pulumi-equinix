@@ -56,8 +56,7 @@ namespace Pulumi.Equinix.NetworkEdge
     public partial class NetworkFile : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Boolean value that determines device licensing mode, i.e.,
-        /// `bring your own license` or `subscription`.
+        /// Boolean value that determines device licensing mode, i.e., `bring your own license` or `subscription`.
         /// </summary>
         [Output("byol")]
         public Output<bool> Byol { get; private set; } = null!;
@@ -93,8 +92,7 @@ namespace Pulumi.Equinix.NetworkEdge
         public Output<string> ProcessType { get; private set; } = null!;
 
         /// <summary>
-        /// Boolean value that determines device management mode, i.e.,
-        /// `self-managed` or `Equinix-managed`.
+        /// Boolean value that determines device management mode, i.e., `self-managed` or `Equinix-managed`.
         /// </summary>
         [Output("selfManaged")]
         public Output<bool> SelfManaged { get; private set; } = null!;
@@ -163,8 +161,7 @@ namespace Pulumi.Equinix.NetworkEdge
     public sealed class NetworkFileArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Boolean value that determines device licensing mode, i.e.,
-        /// `bring your own license` or `subscription`.
+        /// Boolean value that determines device licensing mode, i.e., `bring your own license` or `subscription`.
         /// </summary>
         [Input("byol", required: true)]
         public Input<bool> Byol { get; set; } = null!;
@@ -210,8 +207,7 @@ namespace Pulumi.Equinix.NetworkEdge
         public InputUnion<string, Pulumi.Equinix.NetworkEdge.FileType> ProcessType { get; set; } = null!;
 
         /// <summary>
-        /// Boolean value that determines device management mode, i.e.,
-        /// `self-managed` or `Equinix-managed`.
+        /// Boolean value that determines device management mode, i.e., `self-managed` or `Equinix-managed`.
         /// </summary>
         [Input("selfManaged", required: true)]
         public Input<bool> SelfManaged { get; set; } = null!;
@@ -225,8 +221,7 @@ namespace Pulumi.Equinix.NetworkEdge
     public sealed class NetworkFileState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Boolean value that determines device licensing mode, i.e.,
-        /// `bring your own license` or `subscription`.
+        /// Boolean value that determines device licensing mode, i.e., `bring your own license` or `subscription`.
         /// </summary>
         [Input("byol")]
         public Input<bool>? Byol { get; set; }
@@ -272,8 +267,7 @@ namespace Pulumi.Equinix.NetworkEdge
         public InputUnion<string, Pulumi.Equinix.NetworkEdge.FileType>? ProcessType { get; set; }
 
         /// <summary>
-        /// Boolean value that determines device management mode, i.e.,
-        /// `self-managed` or `Equinix-managed`.
+        /// Boolean value that determines device management mode, i.e., `self-managed` or `Equinix-managed`.
         /// </summary>
         [Input("selfManaged")]
         public Input<bool>? SelfManaged { get; set; }

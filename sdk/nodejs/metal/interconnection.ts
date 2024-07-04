@@ -77,7 +77,7 @@ export class Interconnection extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * Facility where the connection will be created.   Use metro instead; read the facility to metro migration guide
+     * Facility where the connection will be created. Use metro instead; read the facility to metro migration guide
      *
      * @deprecated Use metro instead of facility. For more information, read the migration guide.
      */
@@ -99,9 +99,7 @@ export class Interconnection extends pulumi.CustomResource {
      */
     public readonly organizationId!: pulumi.Output<string>;
     /**
-     * List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`). Schema of
-     * port is described in documentation of the
-     * equinix.metal.Interconnection datasource.
+     * List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`). Schema of port is described in documentation of the equinix.metal.Interconnection datasource.
      */
     public /*out*/ readonly ports!: pulumi.Output<outputs.metal.InterconnectionPort[]>;
     /**
@@ -117,11 +115,11 @@ export class Interconnection extends pulumi.CustomResource {
      */
     public readonly serviceTokenType!: pulumi.Output<string | undefined>;
     /**
-     * List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the equinixEcxL2Connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). Scehma of serviceToken is described in documentation of the equinix.metal.Interconnection datasource.
+     * List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the equinix.fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard). Scehma of serviceToken is described in documentation of the equinix.metal.Interconnection datasource.
      */
     public /*out*/ readonly serviceTokens!: pulumi.Output<outputs.metal.InterconnectionServiceToken[]>;
     /**
-     * Connection speed -  Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
+     * Connection speed - Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
      */
     public readonly speed!: pulumi.Output<string>;
     /**
@@ -133,7 +131,7 @@ export class Interconnection extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
-     * (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the equinixEcxL2Connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `serviceTokens` instead.
+     * (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the equinix.fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `serviceTokens` instead.
      *
      * @deprecated If your organization already has connection service tokens enabled, use `serviceTokens` instead
      */
@@ -237,7 +235,7 @@ export interface InterconnectionState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Facility where the connection will be created.   Use metro instead; read the facility to metro migration guide
+     * Facility where the connection will be created. Use metro instead; read the facility to metro migration guide
      *
      * @deprecated Use metro instead of facility. For more information, read the migration guide.
      */
@@ -259,9 +257,7 @@ export interface InterconnectionState {
      */
     organizationId?: pulumi.Input<string>;
     /**
-     * List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`). Schema of
-     * port is described in documentation of the
-     * equinix.metal.Interconnection datasource.
+     * List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`). Schema of port is described in documentation of the equinix.metal.Interconnection datasource.
      */
     ports?: pulumi.Input<pulumi.Input<inputs.metal.InterconnectionPort>[]>;
     /**
@@ -277,11 +273,11 @@ export interface InterconnectionState {
      */
     serviceTokenType?: pulumi.Input<string>;
     /**
-     * List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the equinixEcxL2Connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). Scehma of serviceToken is described in documentation of the equinix.metal.Interconnection datasource.
+     * List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the equinix.fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard). Scehma of serviceToken is described in documentation of the equinix.metal.Interconnection datasource.
      */
     serviceTokens?: pulumi.Input<pulumi.Input<inputs.metal.InterconnectionServiceToken>[]>;
     /**
-     * Connection speed -  Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
+     * Connection speed - Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
      */
     speed?: pulumi.Input<string>;
     /**
@@ -293,7 +289,7 @@ export interface InterconnectionState {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the equinixEcxL2Connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `serviceTokens` instead.
+     * (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the equinix.fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `serviceTokens` instead.
      *
      * @deprecated If your organization already has connection service tokens enabled, use `serviceTokens` instead
      */
@@ -326,7 +322,7 @@ export interface InterconnectionArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Facility where the connection will be created.   Use metro instead; read the facility to metro migration guide
+     * Facility where the connection will be created. Use metro instead; read the facility to metro migration guide
      *
      * @deprecated Use metro instead of facility. For more information, read the migration guide.
      */
@@ -360,7 +356,7 @@ export interface InterconnectionArgs {
      */
     serviceTokenType?: pulumi.Input<string>;
     /**
-     * Connection speed -  Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
+     * Connection speed - Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
      */
     speed?: pulumi.Input<string>;
     /**

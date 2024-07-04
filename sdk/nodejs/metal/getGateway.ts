@@ -55,8 +55,7 @@ export interface GetGatewayResult {
      */
     readonly ipReservationId: string;
     /**
-     * Size of the private IPv4 subnet bound to this metal gateway. One of
-     * `8`, `16`, `32`, `64`, `128`.
+     * Size of the private IPv4 subnet bound to this metal gateway. One of `8`, `16`, `32`, `64`, `128`.
      */
     readonly privateIpv4SubnetSize: number;
     /**

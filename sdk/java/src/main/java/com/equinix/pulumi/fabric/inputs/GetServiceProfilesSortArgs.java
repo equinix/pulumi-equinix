@@ -16,14 +16,14 @@ public final class GetServiceProfilesSortArgs extends com.pulumi.resources.Resou
     public static final GetServiceProfilesSortArgs Empty = new GetServiceProfilesSortArgs();
 
     /**
-     * Priority type- DESC, ASC
+     * The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
      * 
      */
     @Import(name="direction")
     private @Nullable Output<String> direction;
 
     /**
-     * @return Priority type- DESC, ASC
+     * @return The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
      * 
      */
     public Optional<Output<String>> direction() {
@@ -31,14 +31,14 @@ public final class GetServiceProfilesSortArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Search operation sort criteria /name /state /changeLog/createdDateTime /changeLog/updatedDateTime
+     * The property name to use in sorting. One of [/name /uuid /state /location/metroCode /location/metroName /package/code /changeLog/createdDateTime /changeLog/updatedDateTime]. Defaults to /changeLog/updatedDateTime
      * 
      */
     @Import(name="property")
     private @Nullable Output<String> property;
 
     /**
-     * @return Search operation sort criteria /name /state /changeLog/createdDateTime /changeLog/updatedDateTime
+     * @return The property name to use in sorting. One of [/name /uuid /state /location/metroCode /location/metroName /package/code /changeLog/createdDateTime /changeLog/updatedDateTime]. Defaults to /changeLog/updatedDateTime
      * 
      */
     public Optional<Output<String>> property() {
@@ -71,7 +71,7 @@ public final class GetServiceProfilesSortArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param direction Priority type- DESC, ASC
+         * @param direction The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class GetServiceProfilesSortArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param direction Priority type- DESC, ASC
+         * @param direction The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class GetServiceProfilesSortArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param property Search operation sort criteria /name /state /changeLog/createdDateTime /changeLog/updatedDateTime
+         * @param property The property name to use in sorting. One of [/name /uuid /state /location/metroCode /location/metroName /package/code /changeLog/createdDateTime /changeLog/updatedDateTime]. Defaults to /changeLog/updatedDateTime
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class GetServiceProfilesSortArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param property Search operation sort criteria /name /state /changeLog/createdDateTime /changeLog/updatedDateTime
+         * @param property The property name to use in sorting. One of [/name /uuid /state /location/metroCode /location/metroName /package/code /changeLog/createdDateTime /changeLog/updatedDateTime]. Defaults to /changeLog/updatedDateTime
          * 
          * @return builder
          * 

@@ -14,52 +14,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DeviceIpAddress {
     /**
-     * @return CIDR suffix for IP address block to be assigned, i.e. amount of addresses.
+     * @return CIDR suffix for IP block assigned to this device
      * 
      */
     private @Nullable Integer cidr;
     /**
-     * @return List of UUIDs of IP block reservations
-     * from which the public IPv4 address should be taken.
-     * 
-     * You can supply one `ip_address` block per IP address type. If you use the `ip_address` you must
-     * always pass a block for `private_ipv4`.
-     * 
-     * To learn more about using the reserved IP addresses for new devices, see the examples in the
-     * equinix.metal.ReservedIpBlock documentation.
+     * @return IDs of reservations to pick the blocks from
      * 
      */
     private @Nullable List<String> reservationIds;
     /**
-     * @return One of `private_ipv4`, `public_ipv4`, `public_ipv6`.
+     * @return one of public*ipv4,private*ipv4,public_ipv6
      * 
      */
     private String type;
 
     private DeviceIpAddress() {}
     /**
-     * @return CIDR suffix for IP address block to be assigned, i.e. amount of addresses.
+     * @return CIDR suffix for IP block assigned to this device
      * 
      */
     public Optional<Integer> cidr() {
         return Optional.ofNullable(this.cidr);
     }
     /**
-     * @return List of UUIDs of IP block reservations
-     * from which the public IPv4 address should be taken.
-     * 
-     * You can supply one `ip_address` block per IP address type. If you use the `ip_address` you must
-     * always pass a block for `private_ipv4`.
-     * 
-     * To learn more about using the reserved IP addresses for new devices, see the examples in the
-     * equinix.metal.ReservedIpBlock documentation.
+     * @return IDs of reservations to pick the blocks from
      * 
      */
     public List<String> reservationIds() {
         return this.reservationIds == null ? List.of() : this.reservationIds;
     }
     /**
-     * @return One of `private_ipv4`, `public_ipv4`, `public_ipv6`.
+     * @return one of public*ipv4,private*ipv4,public_ipv6
      * 
      */
     public String type() {

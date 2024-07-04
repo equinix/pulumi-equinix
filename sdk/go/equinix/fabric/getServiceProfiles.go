@@ -14,51 +14,8 @@ import (
 // Fabric V4 API compatible data resource that allow user to fetch Service Profile by name filter criteria
 //
 // Additional documentation:
-// * Getting Started: <https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm>
-// * API: <https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles>
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := fabric.GetServiceProfiles(ctx, &fabric.GetServiceProfilesArgs{
-//				Filter: fabric.GetServiceProfilesFilter{
-//					Property: pulumi.StringRef("/name"),
-//					Operator: pulumi.StringRef("="),
-//					Values: []string{
-//						"<list_of_profiles_to_return>",
-//					},
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("id", data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Id)
-//			ctx.Export("name", data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Name)
-//			ctx.Export("type", data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Type)
-//			ctx.Export("visibility", data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Visibility)
-//			ctx.Export("orgName", data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Account[0].Organization_name)
-//			ctx.Export("accessPointTypeConfigsType", data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Access_point_type_configs[0].Type)
-//			ctx.Export("allowRemoteConnections", data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Access_point_type_configs[0].Allow_remote_connections)
-//			ctx.Export("supportedBandwidth0", data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Access_point_type_configs[0].Supported_bandwidths[0])
-//			ctx.Export("supportedBandwidth1", data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Access_point_type_configs[0].Supported_bandwidths[1])
-//			ctx.Export("redundandyRequired", data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Access_point_type_configs[0].Connection_redundancy_required)
-//			ctx.Export("allowOverSubscription", data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Access_point_type_configs[0].Api_config[0].Allow_over_subscription)
-//			return nil
-//		})
-//	}
-//
-// ```
+// * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm
+// * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles
 func GetServiceProfiles(ctx *pulumi.Context, args *GetServiceProfilesArgs, opts ...pulumi.InvokeOption) (*GetServiceProfilesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServiceProfilesResult
@@ -71,9 +28,13 @@ func GetServiceProfiles(ctx *pulumi.Context, args *GetServiceProfilesArgs, opts 
 
 // A collection of arguments for invoking getServiceProfiles.
 type GetServiceProfilesArgs struct {
-	// Service Profile Search Filter
-	Filter *GetServiceProfilesFilter `pulumi:"filter"`
-	// Service Profile Sort criteria for Search Request response payload
+	// Optional boolean flag to indicate if the filters will be AND'd together. Defaults to false
+	AndFilters *bool `pulumi:"andFilters"`
+	// Filters for the Data Source Search Request (If andFilters is not set to true you cannot provide more than one filter block)
+	Filter GetServiceProfilesFilter `pulumi:"filter"`
+	// Pagination details for the Data Source Search Request
+	Pagination *GetServiceProfilesPagination `pulumi:"pagination"`
+	// Filters for the Data Source Search Request
 	Sort []GetServiceProfilesSort `pulumi:"sort"`
 	// flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
 	ViewPoint *string `pulumi:"viewPoint"`
@@ -81,13 +42,17 @@ type GetServiceProfilesArgs struct {
 
 // A collection of values returned by getServiceProfiles.
 type GetServiceProfilesResult struct {
+	// Optional boolean flag to indicate if the filters will be AND'd together. Defaults to false
+	AndFilters *bool `pulumi:"andFilters"`
 	// List of Service Profiles
 	Data []GetServiceProfilesDatum `pulumi:"data"`
-	// Service Profile Search Filter
-	Filter *GetServiceProfilesFilter `pulumi:"filter"`
+	// Filters for the Data Source Search Request (If andFilters is not set to true you cannot provide more than one filter block)
+	Filter GetServiceProfilesFilter `pulumi:"filter"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// Service Profile Sort criteria for Search Request response payload
+	// Pagination details for the Data Source Search Request
+	Pagination *GetServiceProfilesPagination `pulumi:"pagination"`
+	// Filters for the Data Source Search Request
 	Sort []GetServiceProfilesSort `pulumi:"sort"`
 	// flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
 	ViewPoint *string `pulumi:"viewPoint"`
@@ -108,9 +73,13 @@ func GetServiceProfilesOutput(ctx *pulumi.Context, args GetServiceProfilesOutput
 
 // A collection of arguments for invoking getServiceProfiles.
 type GetServiceProfilesOutputArgs struct {
-	// Service Profile Search Filter
-	Filter GetServiceProfilesFilterPtrInput `pulumi:"filter"`
-	// Service Profile Sort criteria for Search Request response payload
+	// Optional boolean flag to indicate if the filters will be AND'd together. Defaults to false
+	AndFilters pulumi.BoolPtrInput `pulumi:"andFilters"`
+	// Filters for the Data Source Search Request (If andFilters is not set to true you cannot provide more than one filter block)
+	Filter GetServiceProfilesFilterInput `pulumi:"filter"`
+	// Pagination details for the Data Source Search Request
+	Pagination GetServiceProfilesPaginationPtrInput `pulumi:"pagination"`
+	// Filters for the Data Source Search Request
 	Sort GetServiceProfilesSortArrayInput `pulumi:"sort"`
 	// flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
 	ViewPoint pulumi.StringPtrInput `pulumi:"viewPoint"`
@@ -135,14 +104,19 @@ func (o GetServiceProfilesResultOutput) ToGetServiceProfilesResultOutputWithCont
 	return o
 }
 
+// Optional boolean flag to indicate if the filters will be AND'd together. Defaults to false
+func (o GetServiceProfilesResultOutput) AndFilters() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetServiceProfilesResult) *bool { return v.AndFilters }).(pulumi.BoolPtrOutput)
+}
+
 // List of Service Profiles
 func (o GetServiceProfilesResultOutput) Data() GetServiceProfilesDatumArrayOutput {
 	return o.ApplyT(func(v GetServiceProfilesResult) []GetServiceProfilesDatum { return v.Data }).(GetServiceProfilesDatumArrayOutput)
 }
 
-// Service Profile Search Filter
-func (o GetServiceProfilesResultOutput) Filter() GetServiceProfilesFilterPtrOutput {
-	return o.ApplyT(func(v GetServiceProfilesResult) *GetServiceProfilesFilter { return v.Filter }).(GetServiceProfilesFilterPtrOutput)
+// Filters for the Data Source Search Request (If andFilters is not set to true you cannot provide more than one filter block)
+func (o GetServiceProfilesResultOutput) Filter() GetServiceProfilesFilterOutput {
+	return o.ApplyT(func(v GetServiceProfilesResult) GetServiceProfilesFilter { return v.Filter }).(GetServiceProfilesFilterOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
@@ -150,7 +124,12 @@ func (o GetServiceProfilesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceProfilesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Service Profile Sort criteria for Search Request response payload
+// Pagination details for the Data Source Search Request
+func (o GetServiceProfilesResultOutput) Pagination() GetServiceProfilesPaginationPtrOutput {
+	return o.ApplyT(func(v GetServiceProfilesResult) *GetServiceProfilesPagination { return v.Pagination }).(GetServiceProfilesPaginationPtrOutput)
+}
+
+// Filters for the Data Source Search Request
 func (o GetServiceProfilesResultOutput) Sort() GetServiceProfilesSortArrayOutput {
 	return o.ApplyT(func(v GetServiceProfilesResult) []GetServiceProfilesSort { return v.Sort }).(GetServiceProfilesSortArrayOutput)
 }

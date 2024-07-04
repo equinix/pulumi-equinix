@@ -8,8 +8,6 @@ import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetServiceProfilesFilterArgs extends com.pulumi.resources.ResourceArgs {
@@ -17,48 +15,48 @@ public final class GetServiceProfilesFilterArgs extends com.pulumi.resources.Res
     public static final GetServiceProfilesFilterArgs Empty = new GetServiceProfilesFilterArgs();
 
     /**
-     * Possible operator to use on filters = - equal
+     * Operators to use on your filtered field with the values given. One of [=]
      * 
      */
-    @Import(name="operator")
-    private @Nullable Output<String> operator;
+    @Import(name="operator", required=true)
+    private Output<String> operator;
 
     /**
-     * @return Possible operator to use on filters = - equal
+     * @return Operators to use on your filtered field with the values given. One of [=]
      * 
      */
-    public Optional<Output<String>> operator() {
-        return Optional.ofNullable(this.operator);
+    public Output<String> operator() {
+        return this.operator;
     }
 
     /**
-     * Search Criteria for Service Profile - /name, /uuid, /state, /metros/code, /visibility, /type
+     * Property to apply operator and values to. One of [/name /uuid /state /metros/code /visibility /type /project/projectId]
      * 
      */
-    @Import(name="property")
-    private @Nullable Output<String> property;
+    @Import(name="property", required=true)
+    private Output<String> property;
 
     /**
-     * @return Search Criteria for Service Profile - /name, /uuid, /state, /metros/code, /visibility, /type
+     * @return Property to apply operator and values to. One of [/name /uuid /state /metros/code /visibility /type /project/projectId]
      * 
      */
-    public Optional<Output<String>> property() {
-        return Optional.ofNullable(this.property);
+    public Output<String> property() {
+        return this.property;
     }
 
     /**
-     * Values
+     * The values that you want to apply the property+operator combination to in order to filter your data search
      * 
      */
-    @Import(name="values")
-    private @Nullable Output<List<String>> values;
+    @Import(name="values", required=true)
+    private Output<List<String>> values;
 
     /**
-     * @return Values
+     * @return The values that you want to apply the property+operator combination to in order to filter your data search
      * 
      */
-    public Optional<Output<List<String>>> values() {
-        return Optional.ofNullable(this.values);
+    public Output<List<String>> values() {
+        return this.values;
     }
 
     private GetServiceProfilesFilterArgs() {}
@@ -88,18 +86,18 @@ public final class GetServiceProfilesFilterArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param operator Possible operator to use on filters = - equal
+         * @param operator Operators to use on your filtered field with the values given. One of [=]
          * 
          * @return builder
          * 
          */
-        public Builder operator(@Nullable Output<String> operator) {
+        public Builder operator(Output<String> operator) {
             $.operator = operator;
             return this;
         }
 
         /**
-         * @param operator Possible operator to use on filters = - equal
+         * @param operator Operators to use on your filtered field with the values given. One of [=]
          * 
          * @return builder
          * 
@@ -109,18 +107,18 @@ public final class GetServiceProfilesFilterArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param property Search Criteria for Service Profile - /name, /uuid, /state, /metros/code, /visibility, /type
+         * @param property Property to apply operator and values to. One of [/name /uuid /state /metros/code /visibility /type /project/projectId]
          * 
          * @return builder
          * 
          */
-        public Builder property(@Nullable Output<String> property) {
+        public Builder property(Output<String> property) {
             $.property = property;
             return this;
         }
 
         /**
-         * @param property Search Criteria for Service Profile - /name, /uuid, /state, /metros/code, /visibility, /type
+         * @param property Property to apply operator and values to. One of [/name /uuid /state /metros/code /visibility /type /project/projectId]
          * 
          * @return builder
          * 
@@ -130,18 +128,18 @@ public final class GetServiceProfilesFilterArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param values Values
+         * @param values The values that you want to apply the property+operator combination to in order to filter your data search
          * 
          * @return builder
          * 
          */
-        public Builder values(@Nullable Output<List<String>> values) {
+        public Builder values(Output<List<String>> values) {
             $.values = values;
             return this;
         }
 
         /**
-         * @param values Values
+         * @param values The values that you want to apply the property+operator combination to in order to filter your data search
          * 
          * @return builder
          * 
@@ -151,7 +149,7 @@ public final class GetServiceProfilesFilterArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param values Values
+         * @param values The values that you want to apply the property+operator combination to in order to filter your data search
          * 
          * @return builder
          * 
@@ -161,6 +159,9 @@ public final class GetServiceProfilesFilterArgs extends com.pulumi.resources.Res
         }
 
         public GetServiceProfilesFilterArgs build() {
+            $.operator = Objects.requireNonNull($.operator, "expected parameter 'operator' to be non-null");
+            $.property = Objects.requireNonNull($.property, "expected parameter 'property' to be non-null");
+            $.values = Objects.requireNonNull($.values, "expected parameter 'values' to be non-null");
             return $;
         }
     }

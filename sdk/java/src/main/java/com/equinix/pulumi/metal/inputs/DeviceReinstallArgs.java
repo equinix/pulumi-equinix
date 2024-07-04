@@ -16,16 +16,14 @@ public final class DeviceReinstallArgs extends com.pulumi.resources.ResourceArgs
     public static final DeviceReinstallArgs Empty = new DeviceReinstallArgs();
 
     /**
-     * Whether the OS disk should be filled with `00h` bytes before reinstall.
-     * Defaults to `false`.
+     * Whether the OS disk should be filled with `00h` bytes before reinstall
      * 
      */
     @Import(name="deprovisionFast")
     private @Nullable Output<Boolean> deprovisionFast;
 
     /**
-     * @return Whether the OS disk should be filled with `00h` bytes before reinstall.
-     * Defaults to `false`.
+     * @return Whether the OS disk should be filled with `00h` bytes before reinstall
      * 
      */
     public Optional<Output<Boolean>> deprovisionFast() {
@@ -33,16 +31,14 @@ public final class DeviceReinstallArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Whether the provider should favour reinstall over destroy and create. Defaults to
-     * `false`.
+     * Whether the device should be reinstalled instead of destroyed
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Whether the provider should favour reinstall over destroy and create. Defaults to
-     * `false`.
+     * @return Whether the device should be reinstalled instead of destroyed
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -50,16 +46,14 @@ public final class DeviceReinstallArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Whether the non-OS disks should be kept or wiped during reinstall.
-     * Defaults to `false`.
+     * Whether the non-OS disks should be kept or wiped during reinstall
      * 
      */
     @Import(name="preserveData")
     private @Nullable Output<Boolean> preserveData;
 
     /**
-     * @return Whether the non-OS disks should be kept or wiped during reinstall.
-     * Defaults to `false`.
+     * @return Whether the non-OS disks should be kept or wiped during reinstall
      * 
      */
     public Optional<Output<Boolean>> preserveData() {
@@ -93,8 +87,7 @@ public final class DeviceReinstallArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param deprovisionFast Whether the OS disk should be filled with `00h` bytes before reinstall.
-         * Defaults to `false`.
+         * @param deprovisionFast Whether the OS disk should be filled with `00h` bytes before reinstall
          * 
          * @return builder
          * 
@@ -105,8 +98,7 @@ public final class DeviceReinstallArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param deprovisionFast Whether the OS disk should be filled with `00h` bytes before reinstall.
-         * Defaults to `false`.
+         * @param deprovisionFast Whether the OS disk should be filled with `00h` bytes before reinstall
          * 
          * @return builder
          * 
@@ -116,8 +108,7 @@ public final class DeviceReinstallArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param enabled Whether the provider should favour reinstall over destroy and create. Defaults to
-         * `false`.
+         * @param enabled Whether the device should be reinstalled instead of destroyed
          * 
          * @return builder
          * 
@@ -128,8 +119,7 @@ public final class DeviceReinstallArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param enabled Whether the provider should favour reinstall over destroy and create. Defaults to
-         * `false`.
+         * @param enabled Whether the device should be reinstalled instead of destroyed
          * 
          * @return builder
          * 
@@ -139,8 +129,7 @@ public final class DeviceReinstallArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param preserveData Whether the non-OS disks should be kept or wiped during reinstall.
-         * Defaults to `false`.
+         * @param preserveData Whether the non-OS disks should be kept or wiped during reinstall
          * 
          * @return builder
          * 
@@ -151,8 +140,7 @@ public final class DeviceReinstallArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param preserveData Whether the non-OS disks should be kept or wiped during reinstall.
-         * Defaults to `false`.
+         * @param preserveData Whether the non-OS disks should be kept or wiped during reinstall
          * 
          * @return builder
          * 

@@ -22,8 +22,7 @@ class BgpArgs:
                  authentication_key: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Bgp resource.
-        :param pulumi.Input[str] connection_id: identifier of a connection established between.
-               network device and remote service provider that will be used for peering.
+        :param pulumi.Input[str] connection_id: identifier of a connection established between. network device and remote service provider that will be used for peering.
         :param pulumi.Input[int] local_asn: Local ASN number.
         :param pulumi.Input[str] local_ip_address: IP address in CIDR format of a local device.
         :param pulumi.Input[int] remote_asn: Remote ASN number.
@@ -42,8 +41,7 @@ class BgpArgs:
     @pulumi.getter(name="connectionId")
     def connection_id(self) -> pulumi.Input[str]:
         """
-        identifier of a connection established between.
-        network device and remote service provider that will be used for peering.
+        identifier of a connection established between. network device and remote service provider that will be used for peering.
         """
         return pulumi.get(self, "connection_id")
 
@@ -128,18 +126,14 @@ class _BgpState:
         """
         Input properties used for looking up and filtering Bgp resources.
         :param pulumi.Input[str] authentication_key: shared key used for BGP peer authentication.
-        :param pulumi.Input[str] connection_id: identifier of a connection established between.
-               network device and remote service provider that will be used for peering.
-        :param pulumi.Input[str] device_id: unique identifier of a network device that is a local peer in a given BGP peering
-               configuration.
+        :param pulumi.Input[str] connection_id: identifier of a connection established between. network device and remote service provider that will be used for peering.
+        :param pulumi.Input[str] device_id: unique identifier of a network device that is a local peer in a given BGP peering configuration.
         :param pulumi.Input[int] local_asn: Local ASN number.
         :param pulumi.Input[str] local_ip_address: IP address in CIDR format of a local device.
-        :param pulumi.Input[str] provisioning_status: BGP peering configuration provisioning status, one of `PROVISIONING`,
-               `PENDING_UPDATE`, `PROVISIONED`, `FAILED`.
+        :param pulumi.Input[str] provisioning_status: BGP peering configuration provisioning status, one of `PROVISIONING`, `PENDING_UPDATE`, `PROVISIONED`, `FAILED`.
         :param pulumi.Input[int] remote_asn: Remote ASN number.
         :param pulumi.Input[str] remote_ip_address: IP address of remote peer.
-        :param pulumi.Input[str] state: BGP peer state, one of `Idle`, `Connect`, `Active`, `OpenSent`, `OpenConfirm`,
-               `Established`.
+        :param pulumi.Input[str] state: BGP peer state, one of `Idle`, `Connect`, `Active`, `OpenSent`, `OpenConfirm`, `Established`.
         :param pulumi.Input[str] uuid: BGP peering configuration unique identifier.
         """
         if authentication_key is not None:
@@ -179,8 +173,7 @@ class _BgpState:
     @pulumi.getter(name="connectionId")
     def connection_id(self) -> Optional[pulumi.Input[str]]:
         """
-        identifier of a connection established between.
-        network device and remote service provider that will be used for peering.
+        identifier of a connection established between. network device and remote service provider that will be used for peering.
         """
         return pulumi.get(self, "connection_id")
 
@@ -192,8 +185,7 @@ class _BgpState:
     @pulumi.getter(name="deviceId")
     def device_id(self) -> Optional[pulumi.Input[str]]:
         """
-        unique identifier of a network device that is a local peer in a given BGP peering
-        configuration.
+        unique identifier of a network device that is a local peer in a given BGP peering configuration.
         """
         return pulumi.get(self, "device_id")
 
@@ -229,8 +221,7 @@ class _BgpState:
     @pulumi.getter(name="provisioningStatus")
     def provisioning_status(self) -> Optional[pulumi.Input[str]]:
         """
-        BGP peering configuration provisioning status, one of `PROVISIONING`,
-        `PENDING_UPDATE`, `PROVISIONED`, `FAILED`.
+        BGP peering configuration provisioning status, one of `PROVISIONING`, `PENDING_UPDATE`, `PROVISIONED`, `FAILED`.
         """
         return pulumi.get(self, "provisioning_status")
 
@@ -266,8 +257,7 @@ class _BgpState:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        BGP peer state, one of `Idle`, `Connect`, `Active`, `OpenSent`, `OpenConfirm`,
-        `Established`.
+        BGP peer state, one of `Idle`, `Connect`, `Active`, `OpenSent`, `OpenConfirm`, `Established`.
         """
         return pulumi.get(self, "state")
 
@@ -301,8 +291,7 @@ class Bgp(pulumi.CustomResource):
                  remote_ip_address: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Resource `networkedge.Bgp` allows creation and management of Equinix Network
-        Edge BGP peering configurations.
+        Resource `networkedge.Bgp` allows creation and management of Equinix Network Edge BGP peering configurations.
 
         ## Example Usage
         ```python
@@ -331,8 +320,7 @@ class Bgp(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] authentication_key: shared key used for BGP peer authentication.
-        :param pulumi.Input[str] connection_id: identifier of a connection established between.
-               network device and remote service provider that will be used for peering.
+        :param pulumi.Input[str] connection_id: identifier of a connection established between. network device and remote service provider that will be used for peering.
         :param pulumi.Input[int] local_asn: Local ASN number.
         :param pulumi.Input[str] local_ip_address: IP address in CIDR format of a local device.
         :param pulumi.Input[int] remote_asn: Remote ASN number.
@@ -345,8 +333,7 @@ class Bgp(pulumi.CustomResource):
                  args: BgpArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Resource `networkedge.Bgp` allows creation and management of Equinix Network
-        Edge BGP peering configurations.
+        Resource `networkedge.Bgp` allows creation and management of Equinix Network Edge BGP peering configurations.
 
         ## Example Usage
         ```python
@@ -452,18 +439,14 @@ class Bgp(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] authentication_key: shared key used for BGP peer authentication.
-        :param pulumi.Input[str] connection_id: identifier of a connection established between.
-               network device and remote service provider that will be used for peering.
-        :param pulumi.Input[str] device_id: unique identifier of a network device that is a local peer in a given BGP peering
-               configuration.
+        :param pulumi.Input[str] connection_id: identifier of a connection established between. network device and remote service provider that will be used for peering.
+        :param pulumi.Input[str] device_id: unique identifier of a network device that is a local peer in a given BGP peering configuration.
         :param pulumi.Input[int] local_asn: Local ASN number.
         :param pulumi.Input[str] local_ip_address: IP address in CIDR format of a local device.
-        :param pulumi.Input[str] provisioning_status: BGP peering configuration provisioning status, one of `PROVISIONING`,
-               `PENDING_UPDATE`, `PROVISIONED`, `FAILED`.
+        :param pulumi.Input[str] provisioning_status: BGP peering configuration provisioning status, one of `PROVISIONING`, `PENDING_UPDATE`, `PROVISIONED`, `FAILED`.
         :param pulumi.Input[int] remote_asn: Remote ASN number.
         :param pulumi.Input[str] remote_ip_address: IP address of remote peer.
-        :param pulumi.Input[str] state: BGP peer state, one of `Idle`, `Connect`, `Active`, `OpenSent`, `OpenConfirm`,
-               `Established`.
+        :param pulumi.Input[str] state: BGP peer state, one of `Idle`, `Connect`, `Active`, `OpenSent`, `OpenConfirm`, `Established`.
         :param pulumi.Input[str] uuid: BGP peering configuration unique identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -494,8 +477,7 @@ class Bgp(pulumi.CustomResource):
     @pulumi.getter(name="connectionId")
     def connection_id(self) -> pulumi.Output[str]:
         """
-        identifier of a connection established between.
-        network device and remote service provider that will be used for peering.
+        identifier of a connection established between. network device and remote service provider that will be used for peering.
         """
         return pulumi.get(self, "connection_id")
 
@@ -503,8 +485,7 @@ class Bgp(pulumi.CustomResource):
     @pulumi.getter(name="deviceId")
     def device_id(self) -> pulumi.Output[str]:
         """
-        unique identifier of a network device that is a local peer in a given BGP peering
-        configuration.
+        unique identifier of a network device that is a local peer in a given BGP peering configuration.
         """
         return pulumi.get(self, "device_id")
 
@@ -528,8 +509,7 @@ class Bgp(pulumi.CustomResource):
     @pulumi.getter(name="provisioningStatus")
     def provisioning_status(self) -> pulumi.Output[str]:
         """
-        BGP peering configuration provisioning status, one of `PROVISIONING`,
-        `PENDING_UPDATE`, `PROVISIONED`, `FAILED`.
+        BGP peering configuration provisioning status, one of `PROVISIONING`, `PENDING_UPDATE`, `PROVISIONED`, `FAILED`.
         """
         return pulumi.get(self, "provisioning_status")
 
@@ -553,8 +533,7 @@ class Bgp(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
-        BGP peer state, one of `Idle`, `Connect`, `Active`, `OpenSent`, `OpenConfirm`,
-        `Established`.
+        BGP peer state, one of `Idle`, `Connect`, `Active`, `OpenSent`, `OpenConfirm`, `Established`.
         """
         return pulumi.get(self, "state")
 

@@ -20,10 +20,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a resource to create and manage blocks of reserved IP addresses in a project.
  * 
- * When a user provisions first device in a metro, Equinix Metal API automatically allocates IPv6/56 and private IPv4/25 blocks.
- * The new device then gets IPv6 and private IPv4 addresses from those block. It also gets a public IPv4/31 address.
- * Every new device in the project and metro will automatically get IPv6 and private IPv4 addresses from these pre-allocated blocks.
- * The IPv6 and private IPv4 blocks can&#39;t be created, only imported. With this resource, it&#39;s possible to create either public IPv4 blocks or global IPv4 blocks.
+ * When a user provisions first device in a metro, Equinix Metal API automatically allocates IPv6/56 and private IPv4/25 blocks. The new device then gets IPv6 and private IPv4 addresses from those block. It also gets a public IPv4/31 address. Every new device in the project and metro will automatically get IPv6 and private IPv4 addresses from these pre-allocated blocks. The IPv6 and private IPv4 blocks can&#39;t be created, only imported. With this resource, it&#39;s possible to create either public IPv4 blocks or global IPv4 blocks.
  * 
  * Public blocks are allocated in a metro. Addresses from public blocks can only be assigned to devices in the metro. Public blocks can have mask from /24 (256 addresses) to /32 (1 address). If you create public block with this resource, you must fill the metro argument.
  * 
@@ -146,16 +143,14 @@ public class ReservedIpBlock extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * Facility where to allocate the public IP address block, makes sense only
-     * if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
+     * Facility where to allocate the public IP address block, makes sense only if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
      * 
      */
     @Export(name="facility", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> facility;
 
     /**
-     * @return Facility where to allocate the public IP address block, makes sense only
-     * if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
+     * @return Facility where to allocate the public IP address block, makes sense only if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
      * 
      */
     public Output<Optional<String>> facility() {
@@ -168,16 +163,14 @@ public class ReservedIpBlock extends com.pulumi.resources.CustomResource {
         return this.gateway;
     }
     /**
-     * Boolean flag whether addresses from a block are global (i.e. can be assigned in any
-     * metro).
+     * Boolean flag whether addresses from a block are global (i.e. can be assigned in any metro).
      * 
      */
     @Export(name="global", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> global;
 
     /**
-     * @return Boolean flag whether addresses from a block are global (i.e. can be assigned in any
-     * metro).
+     * @return Boolean flag whether addresses from a block are global (i.e. can be assigned in any metro).
      * 
      */
     public Output<Boolean> global() {
@@ -196,16 +189,14 @@ public class ReservedIpBlock extends com.pulumi.resources.CustomResource {
         return this.management;
     }
     /**
-     * Metro where to allocate the public IP address block, makes sense only
-     * if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `facility`.
+     * Metro where to allocate the public IP address block, makes sense only if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `facility`.
      * 
      */
     @Export(name="metro", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> metro;
 
     /**
-     * @return Metro where to allocate the public IP address block, makes sense only
-     * if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `facility`.
+     * @return Metro where to allocate the public IP address block, makes sense only if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `facility`.
      * 
      */
     public Output<Optional<String>> metro() {
@@ -296,16 +287,14 @@ public class ReservedIpBlock extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * One of `global_ipv4`, `public_ipv4`, or `vrf`. Defaults to `public_ipv4` for backward
-     * compatibility.
+     * One of `global_ipv4`, `public_ipv4`, or `vrf`. Defaults to `public_ipv4` for backward compatibility.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**
-     * @return One of `global_ipv4`, `public_ipv4`, or `vrf`. Defaults to `public_ipv4` for backward
-     * compatibility.
+     * @return One of `global_ipv4`, `public_ipv4`, or `vrf`. Defaults to `public_ipv4` for backward compatibility.
      * 
      */
     public Output<Optional<String>> type() {

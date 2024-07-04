@@ -23,8 +23,7 @@ public final class DeviceLinkDevice {
      */
     private String id;
     /**
-     * @return Device network interface identifier to use for device link
-     * connection.
+     * @return Device network interface identifier to use for device link connection.
      * 
      */
     private @Nullable Integer interfaceId;
@@ -34,8 +33,7 @@ public final class DeviceLinkDevice {
      */
     private @Nullable String ipAddress;
     /**
-     * @return device link provisioning status on a given device. One of `PROVISIONING`,
-     * `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
+     * @return device link provisioning status on a given device. One of `PROVISIONING`, `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
      * 
      */
     private @Nullable String status;
@@ -56,8 +54,7 @@ public final class DeviceLinkDevice {
         return this.id;
     }
     /**
-     * @return Device network interface identifier to use for device link
-     * connection.
+     * @return Device network interface identifier to use for device link connection.
      * 
      */
     public Optional<Integer> interfaceId() {
@@ -71,8 +68,7 @@ public final class DeviceLinkDevice {
         return Optional.ofNullable(this.ipAddress);
     }
     /**
-     * @return device link provisioning status on a given device. One of `PROVISIONING`,
-     * `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
+     * @return device link provisioning status on a given device. One of `PROVISIONING`, `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
      * 
      */
     public Optional<String> status() {

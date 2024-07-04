@@ -98,7 +98,7 @@ export interface GetDeviceResult {
      * List of device interfaces
      * * `interface.#.id` - interface identifier
      * * `interface.#.name` - interface name
-     * * `interface.#.status` -  interface status (AVAILABLE, RESERVED, ASSIGNED)
+     * * `interface.#.status` - interface status (AVAILABLE, RESERVED, ASSIGNED)
      * * `interface.#.operational_status` - interface operational status (up or down)
      * * `interface.#.mac_address` - interface MAC address
      * * `interface.#.ip_address` - interface IP address
@@ -131,8 +131,7 @@ export interface GetDeviceResult {
     readonly projectId: string;
     readonly purchaseOrderNumber: string;
     /**
-     * Device redundancy type applicable for HA devices, either
-     * primary or secondary
+     * Device redundancy type applicable for HA devices, either primary or secondary
      */
     readonly redundancyType: string;
     /**
@@ -158,7 +157,7 @@ export interface GetDeviceResult {
      * Device provisioning status
      * * INITIALIZING
      * * PROVISIONING
-     * * PROVISIONED  (**NOTE: By default data source will only return devices in this state.  To include other states see `validStateList`**)
+     * * PROVISIONED (**NOTE: By default data source will only return devices in this state. To include other states see `validStateList`**)
      * * WAITING_FOR_PRIMARY
      * * WAITING_FOR_SECONDARY
      * * WAITING_FOR_REPLICA_CLUSTER_NODES
@@ -179,7 +178,7 @@ export interface GetDeviceResult {
      */
     readonly uuid: string;
     /**
-     * Comma separated list of device states (from see `status` for full list) to be considered valid. Default is 'PROVISIONED'.  Case insensitive.
+     * Comma separated list of device states (from see `status` for full list) to be considered valid. Default is 'PROVISIONED'. Case insensitive.
      */
     readonly validStatusList?: string;
     readonly vendorConfiguration: {[key: string]: string};

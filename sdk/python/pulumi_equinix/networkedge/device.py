@@ -54,51 +54,35 @@ class DeviceArgs:
         :param pulumi.Input[str] account_number: Billing account number for a device.
         :param pulumi.Input[int] core_count: Number of CPU cores used by device. (**NOTE: Use this field to resize your device. When resizing your HA devices, primary device will be upgraded first. If the upgrade failed, device will be automatically rolled back to the previous state with original core number.**)
         :param pulumi.Input[str] metro_code: Device location metro code.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] notifications: List of email addresses that will receive device status
-               notifications.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] notifications: List of email addresses that will receive device status notifications.
         :param pulumi.Input[str] package_code: Device software package code.
         :param pulumi.Input[int] term_length: Device term length.
         :param pulumi.Input[str] type_code: Device type code.
         :param pulumi.Input[str] version: Device software software version.
         :param pulumi.Input[str] acl_template_id: Identifier of a WAN interface ACL template that will be applied on the device.
-        :param pulumi.Input[int] additional_bandwidth: Additional Internet bandwidth, in Mbps, that will be
-               allocated to the device (in addition to default 15Mbps).
-        :param pulumi.Input[bool] byol: Boolean value that determines device licensing mode, i.e.,
-               `bring your own license` or `subscription` (default).
+        :param pulumi.Input[int] additional_bandwidth: Additional Internet bandwidth, in Mbps, that will be allocated to the device (in addition to default 15Mbps).
+        :param pulumi.Input[bool] byol: Boolean value that determines device licensing mode, i.e., `bring your own license` or `subscription` (default).
         :param pulumi.Input[str] cloud_init_file_id: Identifier of a cloud init file that will be applied on the device.
-        :param pulumi.Input['DeviceClusterDetailsArgs'] cluster_details: An object that has the cluster details. See
-               Cluster Details below for more details.
-        :param pulumi.Input[str] connectivity: Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT).
-               If not specified, default will be INTERNET-ACCESS
-        :param pulumi.Input[str] diverse_device_id: Unique ID of an existing device.
-               Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual
-               device. This field is only meaningful for single devices.
+        :param pulumi.Input['DeviceClusterDetailsArgs'] cluster_details: An object that has the cluster details. See Cluster Details below for more details.
+        :param pulumi.Input[str] connectivity: Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT). If not specified, default will be INTERNET-ACCESS
+        :param pulumi.Input[str] diverse_device_id: Unique ID of an existing device. Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual device. This field is only meaningful for single devices.
         :param pulumi.Input[str] hostname: Device hostname prefix.
-        :param pulumi.Input[int] interface_count: Number of network interfaces on a device. If not specified,
-               default number for a given device type will be used.
-        :param pulumi.Input[str] license_file: Path to the license file that will be uploaded and applied on a
-               device. Applicable for some device types in BYOL licensing mode.
+        :param pulumi.Input[int] interface_count: Number of network interfaces on a device. If not specified, default number for a given device type will be used.
+        :param pulumi.Input[str] license_file: Path to the license file that will be uploaded and applied on a device. Applicable for some device types in BYOL licensing mode.
         :param pulumi.Input[str] license_file_id: Identifier of a license file that will be applied on the device.
-        :param pulumi.Input[str] license_token: License Token applicable for some device types in BYOL licensing
-               mode.
-        :param pulumi.Input[str] mgmt_acl_template_uuid: Identifier of an MGMT interface ACL template that will be
-               applied on the device.
+        :param pulumi.Input[str] license_token: License Token applicable for some device types in BYOL licensing mode.
+        :param pulumi.Input[str] mgmt_acl_template_uuid: Identifier of an MGMT interface ACL template that will be applied on the device.
         :param pulumi.Input[str] name: Device name.
         :param pulumi.Input[str] order_reference: Name/number used to identify device order on the invoice.
-        :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the device is scoped to.If you
-               leave it out, the device will be created under the default project id of your organization.
+        :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
         :param pulumi.Input[str] purchase_order_number: Purchase order number associated with a device order.
-        :param pulumi.Input['DeviceSecondaryDeviceArgs'] secondary_device: Definition of secondary device for redundant
-               device configurations. See Secondary Device below for more details.
-        :param pulumi.Input[bool] self_managed: Boolean value that determines device management mode, i.e.,
-               `self-managed` or `Equinix-managed` (default).
+        :param pulumi.Input['DeviceSecondaryDeviceArgs'] secondary_device: Definition of secondary device for redundant device configurations. See Secondary Device below for more details.
+        :param pulumi.Input[bool] self_managed: Boolean value that determines device management mode, i.e., `self-managed` or `Equinix-managed` (default).
         :param pulumi.Input['DeviceSshKeyArgs'] ssh_key: Definition of SSH key that will be provisioned on a device
         :param pulumi.Input[int] throughput: Device license throughput.
         :param pulumi.Input[Union[str, 'ThroughputUnit']] throughput_unit: License throughput unit. One of `Mbps` or `Gbps`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vendor_configuration: Map of vendor specific configuration parameters for a device
-               (controller1, activationKey, managementType, siteId, systemIpAddress, private_address, private_cidr_mask, private_gateway, license_key, license_id)
-               * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
-               on a device (max one key).  See SSH Key below for more details.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vendor_configuration: Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId)
+               * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
         :param pulumi.Input[str] wan_interface_id: device interface id picked for WAN
         """
         pulumi.set(__self__, "account_number", account_number)
@@ -198,8 +182,7 @@ class DeviceArgs:
     @pulumi.getter
     def notifications(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        List of email addresses that will receive device status
-        notifications.
+        List of email addresses that will receive device status notifications.
         """
         return pulumi.get(self, "notifications")
 
@@ -271,8 +254,7 @@ class DeviceArgs:
     @pulumi.getter(name="additionalBandwidth")
     def additional_bandwidth(self) -> Optional[pulumi.Input[int]]:
         """
-        Additional Internet bandwidth, in Mbps, that will be
-        allocated to the device (in addition to default 15Mbps).
+        Additional Internet bandwidth, in Mbps, that will be allocated to the device (in addition to default 15Mbps).
         """
         return pulumi.get(self, "additional_bandwidth")
 
@@ -284,8 +266,7 @@ class DeviceArgs:
     @pulumi.getter
     def byol(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean value that determines device licensing mode, i.e.,
-        `bring your own license` or `subscription` (default).
+        Boolean value that determines device licensing mode, i.e., `bring your own license` or `subscription` (default).
         """
         return pulumi.get(self, "byol")
 
@@ -309,8 +290,7 @@ class DeviceArgs:
     @pulumi.getter(name="clusterDetails")
     def cluster_details(self) -> Optional[pulumi.Input['DeviceClusterDetailsArgs']]:
         """
-        An object that has the cluster details. See
-        Cluster Details below for more details.
+        An object that has the cluster details. See Cluster Details below for more details.
         """
         return pulumi.get(self, "cluster_details")
 
@@ -322,8 +302,7 @@ class DeviceArgs:
     @pulumi.getter
     def connectivity(self) -> Optional[pulumi.Input[str]]:
         """
-        Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT).
-        If not specified, default will be INTERNET-ACCESS
+        Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT). If not specified, default will be INTERNET-ACCESS
         """
         return pulumi.get(self, "connectivity")
 
@@ -335,9 +314,7 @@ class DeviceArgs:
     @pulumi.getter(name="diverseDeviceId")
     def diverse_device_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique ID of an existing device.
-        Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual
-        device. This field is only meaningful for single devices.
+        Unique ID of an existing device. Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual device. This field is only meaningful for single devices.
         """
         return pulumi.get(self, "diverse_device_id")
 
@@ -361,8 +338,7 @@ class DeviceArgs:
     @pulumi.getter(name="interfaceCount")
     def interface_count(self) -> Optional[pulumi.Input[int]]:
         """
-        Number of network interfaces on a device. If not specified,
-        default number for a given device type will be used.
+        Number of network interfaces on a device. If not specified, default number for a given device type will be used.
         """
         return pulumi.get(self, "interface_count")
 
@@ -374,8 +350,7 @@ class DeviceArgs:
     @pulumi.getter(name="licenseFile")
     def license_file(self) -> Optional[pulumi.Input[str]]:
         """
-        Path to the license file that will be uploaded and applied on a
-        device. Applicable for some device types in BYOL licensing mode.
+        Path to the license file that will be uploaded and applied on a device. Applicable for some device types in BYOL licensing mode.
         """
         return pulumi.get(self, "license_file")
 
@@ -399,8 +374,7 @@ class DeviceArgs:
     @pulumi.getter(name="licenseToken")
     def license_token(self) -> Optional[pulumi.Input[str]]:
         """
-        License Token applicable for some device types in BYOL licensing
-        mode.
+        License Token applicable for some device types in BYOL licensing mode.
         """
         return pulumi.get(self, "license_token")
 
@@ -412,8 +386,7 @@ class DeviceArgs:
     @pulumi.getter(name="mgmtAclTemplateUuid")
     def mgmt_acl_template_uuid(self) -> Optional[pulumi.Input[str]]:
         """
-        Identifier of an MGMT interface ACL template that will be
-        applied on the device.
+        Identifier of an MGMT interface ACL template that will be applied on the device.
         """
         return pulumi.get(self, "mgmt_acl_template_uuid")
 
@@ -449,8 +422,7 @@ class DeviceArgs:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique Identifier for the project resource where the device is scoped to.If you
-        leave it out, the device will be created under the default project id of your organization.
+        Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
         """
         return pulumi.get(self, "project_id")
 
@@ -474,8 +446,7 @@ class DeviceArgs:
     @pulumi.getter(name="secondaryDevice")
     def secondary_device(self) -> Optional[pulumi.Input['DeviceSecondaryDeviceArgs']]:
         """
-        Definition of secondary device for redundant
-        device configurations. See Secondary Device below for more details.
+        Definition of secondary device for redundant device configurations. See Secondary Device below for more details.
         """
         return pulumi.get(self, "secondary_device")
 
@@ -487,8 +458,7 @@ class DeviceArgs:
     @pulumi.getter(name="selfManaged")
     def self_managed(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean value that determines device management mode, i.e.,
-        `self-managed` or `Equinix-managed` (default).
+        Boolean value that determines device management mode, i.e., `self-managed` or `Equinix-managed` (default).
         """
         return pulumi.get(self, "self_managed")
 
@@ -536,10 +506,8 @@ class DeviceArgs:
     @pulumi.getter(name="vendorConfiguration")
     def vendor_configuration(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Map of vendor specific configuration parameters for a device
-        (controller1, activationKey, managementType, siteId, systemIpAddress, private_address, private_cidr_mask, private_gateway, license_key, license_id)
-        * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
-        on a device (max one key).  See SSH Key below for more details.
+        Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId)
+        * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
         """
         return pulumi.get(self, "vendor_configuration")
 
@@ -612,54 +580,36 @@ class _DeviceState:
         Input properties used for looking up and filtering Device resources.
         :param pulumi.Input[str] account_number: Billing account number for a device.
         :param pulumi.Input[str] acl_template_id: Identifier of a WAN interface ACL template that will be applied on the device.
-        :param pulumi.Input[int] additional_bandwidth: Additional Internet bandwidth, in Mbps, that will be
-               allocated to the device (in addition to default 15Mbps).
+        :param pulumi.Input[int] additional_bandwidth: Additional Internet bandwidth, in Mbps, that will be allocated to the device (in addition to default 15Mbps).
         :param pulumi.Input[int] asn: (Autonomous System Number) Unique identifier for a network on the internet.
-        :param pulumi.Input[bool] byol: Boolean value that determines device licensing mode, i.e.,
-               `bring your own license` or `subscription` (default).
+        :param pulumi.Input[bool] byol: Boolean value that determines device licensing mode, i.e., `bring your own license` or `subscription` (default).
         :param pulumi.Input[str] cloud_init_file_id: Identifier of a cloud init file that will be applied on the device.
-        :param pulumi.Input['DeviceClusterDetailsArgs'] cluster_details: An object that has the cluster details. See
-               Cluster Details below for more details.
-        :param pulumi.Input[str] connectivity: Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT).
-               If not specified, default will be INTERNET-ACCESS
+        :param pulumi.Input['DeviceClusterDetailsArgs'] cluster_details: An object that has the cluster details. See Cluster Details below for more details.
+        :param pulumi.Input[str] connectivity: Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT). If not specified, default will be INTERNET-ACCESS
         :param pulumi.Input[int] core_count: Number of CPU cores used by device. (**NOTE: Use this field to resize your device. When resizing your HA devices, primary device will be upgraded first. If the upgrade failed, device will be automatically rolled back to the previous state with original core number.**)
-        :param pulumi.Input[str] diverse_device_id: Unique ID of an existing device.
-               Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual
-               device. This field is only meaningful for single devices.
-        :param pulumi.Input[str] diverse_device_name: Name of the device with diverse device UUID. This field is returned in device details if the
-               device is created by passing diverse_device_id.
+        :param pulumi.Input[str] diverse_device_id: Unique ID of an existing device. Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual device. This field is only meaningful for single devices.
+        :param pulumi.Input[str] diverse_device_name: Name of the device with diverse device UUID. This field is returned in device details if the device is created by passing diverse_device_id.
         :param pulumi.Input[str] hostname: Device hostname prefix.
         :param pulumi.Input[str] ibx: Device location Equinix Business Exchange name.
-        :param pulumi.Input[int] interface_count: Number of network interfaces on a device. If not specified,
-               default number for a given device type will be used.
-        :param pulumi.Input[Sequence[pulumi.Input['DeviceInterfaceArgs']]] interfaces: List of device interfaces. See Interface Attribute below
-               for more details.
-        :param pulumi.Input[str] license_file: Path to the license file that will be uploaded and applied on a
-               device. Applicable for some device types in BYOL licensing mode.
+        :param pulumi.Input[int] interface_count: Number of network interfaces on a device. If not specified, default number for a given device type will be used.
+        :param pulumi.Input[Sequence[pulumi.Input['DeviceInterfaceArgs']]] interfaces: List of device interfaces. See Interface Attribute below for more details.
+        :param pulumi.Input[str] license_file: Path to the license file that will be uploaded and applied on a device. Applicable for some device types in BYOL licensing mode.
         :param pulumi.Input[str] license_file_id: Identifier of a license file that will be applied on the device.
-        :param pulumi.Input[str] license_status: Device license registration status. Possible values are `APPLYING_LICENSE`,
-               `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
-        :param pulumi.Input[str] license_token: License Token applicable for some device types in BYOL licensing
-               mode.
+        :param pulumi.Input[str] license_status: Device license registration status. Possible values are `APPLYING_LICENSE`, `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
+        :param pulumi.Input[str] license_token: License Token applicable for some device types in BYOL licensing mode.
         :param pulumi.Input[str] metro_code: Device location metro code.
-        :param pulumi.Input[str] mgmt_acl_template_uuid: Identifier of an MGMT interface ACL template that will be
-               applied on the device.
+        :param pulumi.Input[str] mgmt_acl_template_uuid: Identifier of an MGMT interface ACL template that will be applied on the device.
         :param pulumi.Input[str] name: Device name.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] notifications: List of email addresses that will receive device status
-               notifications.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] notifications: List of email addresses that will receive device status notifications.
         :param pulumi.Input[str] order_reference: Name/number used to identify device order on the invoice.
         :param pulumi.Input[str] package_code: Device software package code.
-        :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the device is scoped to.If you
-               leave it out, the device will be created under the default project id of your organization.
+        :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
         :param pulumi.Input[str] purchase_order_number: Purchase order number associated with a device order.
-        :param pulumi.Input[str] redundancy_type: Device redundancy type applicable for HA devices, either
-               primary or secondary.
+        :param pulumi.Input[str] redundancy_type: Device redundancy type applicable for HA devices, either primary or secondary.
         :param pulumi.Input[str] redundant_id: Unique identifier for a redundant device applicable for HA devices.
         :param pulumi.Input[str] region: Device location region.
-        :param pulumi.Input['DeviceSecondaryDeviceArgs'] secondary_device: Definition of secondary device for redundant
-               device configurations. See Secondary Device below for more details.
-        :param pulumi.Input[bool] self_managed: Boolean value that determines device management mode, i.e.,
-               `self-managed` or `Equinix-managed` (default).
+        :param pulumi.Input['DeviceSecondaryDeviceArgs'] secondary_device: Definition of secondary device for redundant device configurations. See Secondary Device below for more details.
+        :param pulumi.Input[bool] self_managed: Boolean value that determines device management mode, i.e., `self-managed` or `Equinix-managed` (default).
         :param pulumi.Input[str] ssh_ip_address: IP address of SSH enabled interface on the device.
         :param pulumi.Input[str] ssh_ip_fqdn: FQDN of SSH enabled interface on the device.
         :param pulumi.Input['DeviceSshKeyArgs'] ssh_key: Definition of SSH key that will be provisioned on a device
@@ -669,10 +619,8 @@ class _DeviceState:
         :param pulumi.Input[Union[str, 'ThroughputUnit']] throughput_unit: License throughput unit. One of `Mbps` or `Gbps`.
         :param pulumi.Input[str] type_code: Device type code.
         :param pulumi.Input[str] uuid: Device unique identifier.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vendor_configuration: Map of vendor specific configuration parameters for a device
-               (controller1, activationKey, managementType, siteId, systemIpAddress, private_address, private_cidr_mask, private_gateway, license_key, license_id)
-               * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
-               on a device (max one key).  See SSH Key below for more details.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vendor_configuration: Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId)
+               * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
         :param pulumi.Input[str] version: Device software software version.
         :param pulumi.Input[str] wan_interface_id: device interface id picked for WAN
         :param pulumi.Input[str] zone_code: Device location zone code.
@@ -796,8 +744,7 @@ class _DeviceState:
     @pulumi.getter(name="additionalBandwidth")
     def additional_bandwidth(self) -> Optional[pulumi.Input[int]]:
         """
-        Additional Internet bandwidth, in Mbps, that will be
-        allocated to the device (in addition to default 15Mbps).
+        Additional Internet bandwidth, in Mbps, that will be allocated to the device (in addition to default 15Mbps).
         """
         return pulumi.get(self, "additional_bandwidth")
 
@@ -821,8 +768,7 @@ class _DeviceState:
     @pulumi.getter
     def byol(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean value that determines device licensing mode, i.e.,
-        `bring your own license` or `subscription` (default).
+        Boolean value that determines device licensing mode, i.e., `bring your own license` or `subscription` (default).
         """
         return pulumi.get(self, "byol")
 
@@ -846,8 +792,7 @@ class _DeviceState:
     @pulumi.getter(name="clusterDetails")
     def cluster_details(self) -> Optional[pulumi.Input['DeviceClusterDetailsArgs']]:
         """
-        An object that has the cluster details. See
-        Cluster Details below for more details.
+        An object that has the cluster details. See Cluster Details below for more details.
         """
         return pulumi.get(self, "cluster_details")
 
@@ -859,8 +804,7 @@ class _DeviceState:
     @pulumi.getter
     def connectivity(self) -> Optional[pulumi.Input[str]]:
         """
-        Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT).
-        If not specified, default will be INTERNET-ACCESS
+        Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT). If not specified, default will be INTERNET-ACCESS
         """
         return pulumi.get(self, "connectivity")
 
@@ -884,9 +828,7 @@ class _DeviceState:
     @pulumi.getter(name="diverseDeviceId")
     def diverse_device_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique ID of an existing device.
-        Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual
-        device. This field is only meaningful for single devices.
+        Unique ID of an existing device. Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual device. This field is only meaningful for single devices.
         """
         return pulumi.get(self, "diverse_device_id")
 
@@ -898,8 +840,7 @@ class _DeviceState:
     @pulumi.getter(name="diverseDeviceName")
     def diverse_device_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the device with diverse device UUID. This field is returned in device details if the
-        device is created by passing diverse_device_id.
+        Name of the device with diverse device UUID. This field is returned in device details if the device is created by passing diverse_device_id.
         """
         return pulumi.get(self, "diverse_device_name")
 
@@ -935,8 +876,7 @@ class _DeviceState:
     @pulumi.getter(name="interfaceCount")
     def interface_count(self) -> Optional[pulumi.Input[int]]:
         """
-        Number of network interfaces on a device. If not specified,
-        default number for a given device type will be used.
+        Number of network interfaces on a device. If not specified, default number for a given device type will be used.
         """
         return pulumi.get(self, "interface_count")
 
@@ -948,8 +888,7 @@ class _DeviceState:
     @pulumi.getter
     def interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeviceInterfaceArgs']]]]:
         """
-        List of device interfaces. See Interface Attribute below
-        for more details.
+        List of device interfaces. See Interface Attribute below for more details.
         """
         return pulumi.get(self, "interfaces")
 
@@ -961,8 +900,7 @@ class _DeviceState:
     @pulumi.getter(name="licenseFile")
     def license_file(self) -> Optional[pulumi.Input[str]]:
         """
-        Path to the license file that will be uploaded and applied on a
-        device. Applicable for some device types in BYOL licensing mode.
+        Path to the license file that will be uploaded and applied on a device. Applicable for some device types in BYOL licensing mode.
         """
         return pulumi.get(self, "license_file")
 
@@ -986,8 +924,7 @@ class _DeviceState:
     @pulumi.getter(name="licenseStatus")
     def license_status(self) -> Optional[pulumi.Input[str]]:
         """
-        Device license registration status. Possible values are `APPLYING_LICENSE`,
-        `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
+        Device license registration status. Possible values are `APPLYING_LICENSE`, `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
         """
         return pulumi.get(self, "license_status")
 
@@ -999,8 +936,7 @@ class _DeviceState:
     @pulumi.getter(name="licenseToken")
     def license_token(self) -> Optional[pulumi.Input[str]]:
         """
-        License Token applicable for some device types in BYOL licensing
-        mode.
+        License Token applicable for some device types in BYOL licensing mode.
         """
         return pulumi.get(self, "license_token")
 
@@ -1024,8 +960,7 @@ class _DeviceState:
     @pulumi.getter(name="mgmtAclTemplateUuid")
     def mgmt_acl_template_uuid(self) -> Optional[pulumi.Input[str]]:
         """
-        Identifier of an MGMT interface ACL template that will be
-        applied on the device.
+        Identifier of an MGMT interface ACL template that will be applied on the device.
         """
         return pulumi.get(self, "mgmt_acl_template_uuid")
 
@@ -1049,8 +984,7 @@ class _DeviceState:
     @pulumi.getter
     def notifications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of email addresses that will receive device status
-        notifications.
+        List of email addresses that will receive device status notifications.
         """
         return pulumi.get(self, "notifications")
 
@@ -1086,8 +1020,7 @@ class _DeviceState:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique Identifier for the project resource where the device is scoped to.If you
-        leave it out, the device will be created under the default project id of your organization.
+        Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
         """
         return pulumi.get(self, "project_id")
 
@@ -1111,8 +1044,7 @@ class _DeviceState:
     @pulumi.getter(name="redundancyType")
     def redundancy_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Device redundancy type applicable for HA devices, either
-        primary or secondary.
+        Device redundancy type applicable for HA devices, either primary or secondary.
         """
         return pulumi.get(self, "redundancy_type")
 
@@ -1148,8 +1080,7 @@ class _DeviceState:
     @pulumi.getter(name="secondaryDevice")
     def secondary_device(self) -> Optional[pulumi.Input['DeviceSecondaryDeviceArgs']]:
         """
-        Definition of secondary device for redundant
-        device configurations. See Secondary Device below for more details.
+        Definition of secondary device for redundant device configurations. See Secondary Device below for more details.
         """
         return pulumi.get(self, "secondary_device")
 
@@ -1161,8 +1092,7 @@ class _DeviceState:
     @pulumi.getter(name="selfManaged")
     def self_managed(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean value that determines device management mode, i.e.,
-        `self-managed` or `Equinix-managed` (default).
+        Boolean value that determines device management mode, i.e., `self-managed` or `Equinix-managed` (default).
         """
         return pulumi.get(self, "self_managed")
 
@@ -1282,10 +1212,8 @@ class _DeviceState:
     @pulumi.getter(name="vendorConfiguration")
     def vendor_configuration(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Map of vendor specific configuration parameters for a device
-        (controller1, activationKey, managementType, siteId, systemIpAddress, private_address, private_cidr_mask, private_gateway, license_key, license_id)
-        * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
-        on a device (max one key).  See SSH Key below for more details.
+        Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId)
+        * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
         """
         return pulumi.get(self, "vendor_configuration")
 
@@ -1369,23 +1297,17 @@ class Device(pulumi.CustomResource):
                  wan_interface_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Resource `networkedge.Device` allows creation and management of Equinix Network Edge virtual
-        network devices.
+        Resource `networkedge.Device` allows creation and management of Equinix Network Edge virtual network devices.
 
         Network Edge virtual network devices can be created in two modes:
 
-        * **managed** - (default) Where Equinix manages connectivity and services in the device and
-          customer gets limited access to the device.
-        * **self-configured** - Where customer provisions and manages own services in the device with less
-          restricted access. Some device types are offered only in this mode.
+        * **managed** - (default) Where Equinix manages connectivity and services in the device and customer gets limited access to the device.
+        * **self-configured** - Where customer provisions and manages own services in the device with less restricted access. Some device types are offered only in this mode.
 
         In addition to management modes, there are two software license modes available:
 
-        * **subscription** - Where Equinix provides software license, including end-to-end support, and
-          bills for the service respectively.
-        * **BYOL** - [bring your own license] Where customer brings his own, already procured device
-          software license. There are no charges associated with such license. It is the only licensing mode
-          for `self-configured` devices.
+        * **subscription** - Where Equinix provides software license, including end-to-end support, and bills for the service respectively.
+        * **BYOL** - [bring your own license] Where customer brings his own, already procured device software license. There are no charges associated with such license. It is the only licensing mode for `self-configured` devices.
 
         ## Example Usage
         ```python
@@ -1458,51 +1380,35 @@ class Device(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_number: Billing account number for a device.
         :param pulumi.Input[str] acl_template_id: Identifier of a WAN interface ACL template that will be applied on the device.
-        :param pulumi.Input[int] additional_bandwidth: Additional Internet bandwidth, in Mbps, that will be
-               allocated to the device (in addition to default 15Mbps).
-        :param pulumi.Input[bool] byol: Boolean value that determines device licensing mode, i.e.,
-               `bring your own license` or `subscription` (default).
+        :param pulumi.Input[int] additional_bandwidth: Additional Internet bandwidth, in Mbps, that will be allocated to the device (in addition to default 15Mbps).
+        :param pulumi.Input[bool] byol: Boolean value that determines device licensing mode, i.e., `bring your own license` or `subscription` (default).
         :param pulumi.Input[str] cloud_init_file_id: Identifier of a cloud init file that will be applied on the device.
-        :param pulumi.Input[pulumi.InputType['DeviceClusterDetailsArgs']] cluster_details: An object that has the cluster details. See
-               Cluster Details below for more details.
-        :param pulumi.Input[str] connectivity: Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT).
-               If not specified, default will be INTERNET-ACCESS
+        :param pulumi.Input[pulumi.InputType['DeviceClusterDetailsArgs']] cluster_details: An object that has the cluster details. See Cluster Details below for more details.
+        :param pulumi.Input[str] connectivity: Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT). If not specified, default will be INTERNET-ACCESS
         :param pulumi.Input[int] core_count: Number of CPU cores used by device. (**NOTE: Use this field to resize your device. When resizing your HA devices, primary device will be upgraded first. If the upgrade failed, device will be automatically rolled back to the previous state with original core number.**)
-        :param pulumi.Input[str] diverse_device_id: Unique ID of an existing device.
-               Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual
-               device. This field is only meaningful for single devices.
+        :param pulumi.Input[str] diverse_device_id: Unique ID of an existing device. Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual device. This field is only meaningful for single devices.
         :param pulumi.Input[str] hostname: Device hostname prefix.
-        :param pulumi.Input[int] interface_count: Number of network interfaces on a device. If not specified,
-               default number for a given device type will be used.
-        :param pulumi.Input[str] license_file: Path to the license file that will be uploaded and applied on a
-               device. Applicable for some device types in BYOL licensing mode.
+        :param pulumi.Input[int] interface_count: Number of network interfaces on a device. If not specified, default number for a given device type will be used.
+        :param pulumi.Input[str] license_file: Path to the license file that will be uploaded and applied on a device. Applicable for some device types in BYOL licensing mode.
         :param pulumi.Input[str] license_file_id: Identifier of a license file that will be applied on the device.
-        :param pulumi.Input[str] license_token: License Token applicable for some device types in BYOL licensing
-               mode.
+        :param pulumi.Input[str] license_token: License Token applicable for some device types in BYOL licensing mode.
         :param pulumi.Input[str] metro_code: Device location metro code.
-        :param pulumi.Input[str] mgmt_acl_template_uuid: Identifier of an MGMT interface ACL template that will be
-               applied on the device.
+        :param pulumi.Input[str] mgmt_acl_template_uuid: Identifier of an MGMT interface ACL template that will be applied on the device.
         :param pulumi.Input[str] name: Device name.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] notifications: List of email addresses that will receive device status
-               notifications.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] notifications: List of email addresses that will receive device status notifications.
         :param pulumi.Input[str] order_reference: Name/number used to identify device order on the invoice.
         :param pulumi.Input[str] package_code: Device software package code.
-        :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the device is scoped to.If you
-               leave it out, the device will be created under the default project id of your organization.
+        :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
         :param pulumi.Input[str] purchase_order_number: Purchase order number associated with a device order.
-        :param pulumi.Input[pulumi.InputType['DeviceSecondaryDeviceArgs']] secondary_device: Definition of secondary device for redundant
-               device configurations. See Secondary Device below for more details.
-        :param pulumi.Input[bool] self_managed: Boolean value that determines device management mode, i.e.,
-               `self-managed` or `Equinix-managed` (default).
+        :param pulumi.Input[pulumi.InputType['DeviceSecondaryDeviceArgs']] secondary_device: Definition of secondary device for redundant device configurations. See Secondary Device below for more details.
+        :param pulumi.Input[bool] self_managed: Boolean value that determines device management mode, i.e., `self-managed` or `Equinix-managed` (default).
         :param pulumi.Input[pulumi.InputType['DeviceSshKeyArgs']] ssh_key: Definition of SSH key that will be provisioned on a device
         :param pulumi.Input[int] term_length: Device term length.
         :param pulumi.Input[int] throughput: Device license throughput.
         :param pulumi.Input[Union[str, 'ThroughputUnit']] throughput_unit: License throughput unit. One of `Mbps` or `Gbps`.
         :param pulumi.Input[str] type_code: Device type code.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vendor_configuration: Map of vendor specific configuration parameters for a device
-               (controller1, activationKey, managementType, siteId, systemIpAddress, private_address, private_cidr_mask, private_gateway, license_key, license_id)
-               * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
-               on a device (max one key).  See SSH Key below for more details.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vendor_configuration: Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId)
+               * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
         :param pulumi.Input[str] version: Device software software version.
         :param pulumi.Input[str] wan_interface_id: device interface id picked for WAN
         """
@@ -1513,23 +1419,17 @@ class Device(pulumi.CustomResource):
                  args: DeviceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Resource `networkedge.Device` allows creation and management of Equinix Network Edge virtual
-        network devices.
+        Resource `networkedge.Device` allows creation and management of Equinix Network Edge virtual network devices.
 
         Network Edge virtual network devices can be created in two modes:
 
-        * **managed** - (default) Where Equinix manages connectivity and services in the device and
-          customer gets limited access to the device.
-        * **self-configured** - Where customer provisions and manages own services in the device with less
-          restricted access. Some device types are offered only in this mode.
+        * **managed** - (default) Where Equinix manages connectivity and services in the device and customer gets limited access to the device.
+        * **self-configured** - Where customer provisions and manages own services in the device with less restricted access. Some device types are offered only in this mode.
 
         In addition to management modes, there are two software license modes available:
 
-        * **subscription** - Where Equinix provides software license, including end-to-end support, and
-          bills for the service respectively.
-        * **BYOL** - [bring your own license] Where customer brings his own, already procured device
-          software license. There are no charges associated with such license. It is the only licensing mode
-          for `self-configured` devices.
+        * **subscription** - Where Equinix provides software license, including end-to-end support, and bills for the service respectively.
+        * **BYOL** - [bring your own license] Where customer brings his own, already procured device software license. There are no charges associated with such license. It is the only licensing mode for `self-configured` devices.
 
         ## Example Usage
         ```python
@@ -1779,54 +1679,36 @@ class Device(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_number: Billing account number for a device.
         :param pulumi.Input[str] acl_template_id: Identifier of a WAN interface ACL template that will be applied on the device.
-        :param pulumi.Input[int] additional_bandwidth: Additional Internet bandwidth, in Mbps, that will be
-               allocated to the device (in addition to default 15Mbps).
+        :param pulumi.Input[int] additional_bandwidth: Additional Internet bandwidth, in Mbps, that will be allocated to the device (in addition to default 15Mbps).
         :param pulumi.Input[int] asn: (Autonomous System Number) Unique identifier for a network on the internet.
-        :param pulumi.Input[bool] byol: Boolean value that determines device licensing mode, i.e.,
-               `bring your own license` or `subscription` (default).
+        :param pulumi.Input[bool] byol: Boolean value that determines device licensing mode, i.e., `bring your own license` or `subscription` (default).
         :param pulumi.Input[str] cloud_init_file_id: Identifier of a cloud init file that will be applied on the device.
-        :param pulumi.Input[pulumi.InputType['DeviceClusterDetailsArgs']] cluster_details: An object that has the cluster details. See
-               Cluster Details below for more details.
-        :param pulumi.Input[str] connectivity: Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT).
-               If not specified, default will be INTERNET-ACCESS
+        :param pulumi.Input[pulumi.InputType['DeviceClusterDetailsArgs']] cluster_details: An object that has the cluster details. See Cluster Details below for more details.
+        :param pulumi.Input[str] connectivity: Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT). If not specified, default will be INTERNET-ACCESS
         :param pulumi.Input[int] core_count: Number of CPU cores used by device. (**NOTE: Use this field to resize your device. When resizing your HA devices, primary device will be upgraded first. If the upgrade failed, device will be automatically rolled back to the previous state with original core number.**)
-        :param pulumi.Input[str] diverse_device_id: Unique ID of an existing device.
-               Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual
-               device. This field is only meaningful for single devices.
-        :param pulumi.Input[str] diverse_device_name: Name of the device with diverse device UUID. This field is returned in device details if the
-               device is created by passing diverse_device_id.
+        :param pulumi.Input[str] diverse_device_id: Unique ID of an existing device. Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual device. This field is only meaningful for single devices.
+        :param pulumi.Input[str] diverse_device_name: Name of the device with diverse device UUID. This field is returned in device details if the device is created by passing diverse_device_id.
         :param pulumi.Input[str] hostname: Device hostname prefix.
         :param pulumi.Input[str] ibx: Device location Equinix Business Exchange name.
-        :param pulumi.Input[int] interface_count: Number of network interfaces on a device. If not specified,
-               default number for a given device type will be used.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceInterfaceArgs']]]] interfaces: List of device interfaces. See Interface Attribute below
-               for more details.
-        :param pulumi.Input[str] license_file: Path to the license file that will be uploaded and applied on a
-               device. Applicable for some device types in BYOL licensing mode.
+        :param pulumi.Input[int] interface_count: Number of network interfaces on a device. If not specified, default number for a given device type will be used.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceInterfaceArgs']]]] interfaces: List of device interfaces. See Interface Attribute below for more details.
+        :param pulumi.Input[str] license_file: Path to the license file that will be uploaded and applied on a device. Applicable for some device types in BYOL licensing mode.
         :param pulumi.Input[str] license_file_id: Identifier of a license file that will be applied on the device.
-        :param pulumi.Input[str] license_status: Device license registration status. Possible values are `APPLYING_LICENSE`,
-               `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
-        :param pulumi.Input[str] license_token: License Token applicable for some device types in BYOL licensing
-               mode.
+        :param pulumi.Input[str] license_status: Device license registration status. Possible values are `APPLYING_LICENSE`, `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
+        :param pulumi.Input[str] license_token: License Token applicable for some device types in BYOL licensing mode.
         :param pulumi.Input[str] metro_code: Device location metro code.
-        :param pulumi.Input[str] mgmt_acl_template_uuid: Identifier of an MGMT interface ACL template that will be
-               applied on the device.
+        :param pulumi.Input[str] mgmt_acl_template_uuid: Identifier of an MGMT interface ACL template that will be applied on the device.
         :param pulumi.Input[str] name: Device name.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] notifications: List of email addresses that will receive device status
-               notifications.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] notifications: List of email addresses that will receive device status notifications.
         :param pulumi.Input[str] order_reference: Name/number used to identify device order on the invoice.
         :param pulumi.Input[str] package_code: Device software package code.
-        :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the device is scoped to.If you
-               leave it out, the device will be created under the default project id of your organization.
+        :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
         :param pulumi.Input[str] purchase_order_number: Purchase order number associated with a device order.
-        :param pulumi.Input[str] redundancy_type: Device redundancy type applicable for HA devices, either
-               primary or secondary.
+        :param pulumi.Input[str] redundancy_type: Device redundancy type applicable for HA devices, either primary or secondary.
         :param pulumi.Input[str] redundant_id: Unique identifier for a redundant device applicable for HA devices.
         :param pulumi.Input[str] region: Device location region.
-        :param pulumi.Input[pulumi.InputType['DeviceSecondaryDeviceArgs']] secondary_device: Definition of secondary device for redundant
-               device configurations. See Secondary Device below for more details.
-        :param pulumi.Input[bool] self_managed: Boolean value that determines device management mode, i.e.,
-               `self-managed` or `Equinix-managed` (default).
+        :param pulumi.Input[pulumi.InputType['DeviceSecondaryDeviceArgs']] secondary_device: Definition of secondary device for redundant device configurations. See Secondary Device below for more details.
+        :param pulumi.Input[bool] self_managed: Boolean value that determines device management mode, i.e., `self-managed` or `Equinix-managed` (default).
         :param pulumi.Input[str] ssh_ip_address: IP address of SSH enabled interface on the device.
         :param pulumi.Input[str] ssh_ip_fqdn: FQDN of SSH enabled interface on the device.
         :param pulumi.Input[pulumi.InputType['DeviceSshKeyArgs']] ssh_key: Definition of SSH key that will be provisioned on a device
@@ -1836,10 +1718,8 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[Union[str, 'ThroughputUnit']] throughput_unit: License throughput unit. One of `Mbps` or `Gbps`.
         :param pulumi.Input[str] type_code: Device type code.
         :param pulumi.Input[str] uuid: Device unique identifier.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vendor_configuration: Map of vendor specific configuration parameters for a device
-               (controller1, activationKey, managementType, siteId, systemIpAddress, private_address, private_cidr_mask, private_gateway, license_key, license_id)
-               * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
-               on a device (max one key).  See SSH Key below for more details.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vendor_configuration: Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId)
+               * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
         :param pulumi.Input[str] version: Device software software version.
         :param pulumi.Input[str] wan_interface_id: device interface id picked for WAN
         :param pulumi.Input[str] zone_code: Device location zone code.
@@ -1915,8 +1795,7 @@ class Device(pulumi.CustomResource):
     @pulumi.getter(name="additionalBandwidth")
     def additional_bandwidth(self) -> pulumi.Output[int]:
         """
-        Additional Internet bandwidth, in Mbps, that will be
-        allocated to the device (in addition to default 15Mbps).
+        Additional Internet bandwidth, in Mbps, that will be allocated to the device (in addition to default 15Mbps).
         """
         return pulumi.get(self, "additional_bandwidth")
 
@@ -1932,8 +1811,7 @@ class Device(pulumi.CustomResource):
     @pulumi.getter
     def byol(self) -> pulumi.Output[Optional[bool]]:
         """
-        Boolean value that determines device licensing mode, i.e.,
-        `bring your own license` or `subscription` (default).
+        Boolean value that determines device licensing mode, i.e., `bring your own license` or `subscription` (default).
         """
         return pulumi.get(self, "byol")
 
@@ -1949,8 +1827,7 @@ class Device(pulumi.CustomResource):
     @pulumi.getter(name="clusterDetails")
     def cluster_details(self) -> pulumi.Output[Optional['outputs.DeviceClusterDetails']]:
         """
-        An object that has the cluster details. See
-        Cluster Details below for more details.
+        An object that has the cluster details. See Cluster Details below for more details.
         """
         return pulumi.get(self, "cluster_details")
 
@@ -1958,8 +1835,7 @@ class Device(pulumi.CustomResource):
     @pulumi.getter
     def connectivity(self) -> pulumi.Output[Optional[str]]:
         """
-        Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT).
-        If not specified, default will be INTERNET-ACCESS
+        Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT). If not specified, default will be INTERNET-ACCESS
         """
         return pulumi.get(self, "connectivity")
 
@@ -1975,9 +1851,7 @@ class Device(pulumi.CustomResource):
     @pulumi.getter(name="diverseDeviceId")
     def diverse_device_id(self) -> pulumi.Output[str]:
         """
-        Unique ID of an existing device.
-        Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual
-        device. This field is only meaningful for single devices.
+        Unique ID of an existing device. Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual device. This field is only meaningful for single devices.
         """
         return pulumi.get(self, "diverse_device_id")
 
@@ -1985,8 +1859,7 @@ class Device(pulumi.CustomResource):
     @pulumi.getter(name="diverseDeviceName")
     def diverse_device_name(self) -> pulumi.Output[str]:
         """
-        Name of the device with diverse device UUID. This field is returned in device details if the
-        device is created by passing diverse_device_id.
+        Name of the device with diverse device UUID. This field is returned in device details if the device is created by passing diverse_device_id.
         """
         return pulumi.get(self, "diverse_device_name")
 
@@ -2010,8 +1883,7 @@ class Device(pulumi.CustomResource):
     @pulumi.getter(name="interfaceCount")
     def interface_count(self) -> pulumi.Output[int]:
         """
-        Number of network interfaces on a device. If not specified,
-        default number for a given device type will be used.
+        Number of network interfaces on a device. If not specified, default number for a given device type will be used.
         """
         return pulumi.get(self, "interface_count")
 
@@ -2019,8 +1891,7 @@ class Device(pulumi.CustomResource):
     @pulumi.getter
     def interfaces(self) -> pulumi.Output[Sequence['outputs.DeviceInterface']]:
         """
-        List of device interfaces. See Interface Attribute below
-        for more details.
+        List of device interfaces. See Interface Attribute below for more details.
         """
         return pulumi.get(self, "interfaces")
 
@@ -2028,8 +1899,7 @@ class Device(pulumi.CustomResource):
     @pulumi.getter(name="licenseFile")
     def license_file(self) -> pulumi.Output[Optional[str]]:
         """
-        Path to the license file that will be uploaded and applied on a
-        device. Applicable for some device types in BYOL licensing mode.
+        Path to the license file that will be uploaded and applied on a device. Applicable for some device types in BYOL licensing mode.
         """
         return pulumi.get(self, "license_file")
 
@@ -2045,8 +1915,7 @@ class Device(pulumi.CustomResource):
     @pulumi.getter(name="licenseStatus")
     def license_status(self) -> pulumi.Output[str]:
         """
-        Device license registration status. Possible values are `APPLYING_LICENSE`,
-        `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
+        Device license registration status. Possible values are `APPLYING_LICENSE`, `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
         """
         return pulumi.get(self, "license_status")
 
@@ -2054,8 +1923,7 @@ class Device(pulumi.CustomResource):
     @pulumi.getter(name="licenseToken")
     def license_token(self) -> pulumi.Output[Optional[str]]:
         """
-        License Token applicable for some device types in BYOL licensing
-        mode.
+        License Token applicable for some device types in BYOL licensing mode.
         """
         return pulumi.get(self, "license_token")
 
@@ -2071,8 +1939,7 @@ class Device(pulumi.CustomResource):
     @pulumi.getter(name="mgmtAclTemplateUuid")
     def mgmt_acl_template_uuid(self) -> pulumi.Output[Optional[str]]:
         """
-        Identifier of an MGMT interface ACL template that will be
-        applied on the device.
+        Identifier of an MGMT interface ACL template that will be applied on the device.
         """
         return pulumi.get(self, "mgmt_acl_template_uuid")
 
@@ -2088,8 +1955,7 @@ class Device(pulumi.CustomResource):
     @pulumi.getter
     def notifications(self) -> pulumi.Output[Sequence[str]]:
         """
-        List of email addresses that will receive device status
-        notifications.
+        List of email addresses that will receive device status notifications.
         """
         return pulumi.get(self, "notifications")
 
@@ -2113,8 +1979,7 @@ class Device(pulumi.CustomResource):
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[str]:
         """
-        Unique Identifier for the project resource where the device is scoped to.If you
-        leave it out, the device will be created under the default project id of your organization.
+        Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
         """
         return pulumi.get(self, "project_id")
 
@@ -2130,8 +1995,7 @@ class Device(pulumi.CustomResource):
     @pulumi.getter(name="redundancyType")
     def redundancy_type(self) -> pulumi.Output[str]:
         """
-        Device redundancy type applicable for HA devices, either
-        primary or secondary.
+        Device redundancy type applicable for HA devices, either primary or secondary.
         """
         return pulumi.get(self, "redundancy_type")
 
@@ -2155,8 +2019,7 @@ class Device(pulumi.CustomResource):
     @pulumi.getter(name="secondaryDevice")
     def secondary_device(self) -> pulumi.Output[Optional['outputs.DeviceSecondaryDevice']]:
         """
-        Definition of secondary device for redundant
-        device configurations. See Secondary Device below for more details.
+        Definition of secondary device for redundant device configurations. See Secondary Device below for more details.
         """
         return pulumi.get(self, "secondary_device")
 
@@ -2164,8 +2027,7 @@ class Device(pulumi.CustomResource):
     @pulumi.getter(name="selfManaged")
     def self_managed(self) -> pulumi.Output[Optional[bool]]:
         """
-        Boolean value that determines device management mode, i.e.,
-        `self-managed` or `Equinix-managed` (default).
+        Boolean value that determines device management mode, i.e., `self-managed` or `Equinix-managed` (default).
         """
         return pulumi.get(self, "self_managed")
 
@@ -2245,10 +2107,8 @@ class Device(pulumi.CustomResource):
     @pulumi.getter(name="vendorConfiguration")
     def vendor_configuration(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        Map of vendor specific configuration parameters for a device
-        (controller1, activationKey, managementType, siteId, systemIpAddress, private_address, private_cidr_mask, private_gateway, license_key, license_id)
-        * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
-        on a device (max one key).  See SSH Key below for more details.
+        Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId)
+        * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
         """
         return pulumi.get(self, "vendor_configuration")
 

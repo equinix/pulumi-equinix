@@ -31,16 +31,14 @@ public final class SshKeyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Unique Identifier for the project resource where the SSH key is scoped to.If you
-     * leave it out, the ssh key will be created under the default project id of your organization.
+     * Unique Identifier for the project resource where the SSH key is scoped to.If you leave it out, the ssh key will be created under the default project id of your organization.
      * 
      */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
     /**
-     * @return Unique Identifier for the project resource where the SSH key is scoped to.If you
-     * leave it out, the ssh key will be created under the default project id of your organization.
+     * @return Unique Identifier for the project resource where the SSH key is scoped to.If you leave it out, the ssh key will be created under the default project id of your organization.
      * 
      */
     public Optional<Output<String>> projectId() {
@@ -48,16 +46,14 @@ public final class SshKeyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The SSH public key. If this is a file, it can be read using the file
-     * interpolation function.
+     * The SSH public key. If this is a file, it can be read using the file interpolation function.
      * 
      */
     @Import(name="publicKey")
     private @Nullable Output<String> publicKey;
 
     /**
-     * @return The SSH public key. If this is a file, it can be read using the file
-     * interpolation function.
+     * @return The SSH public key. If this is a file, it can be read using the file interpolation function.
      * 
      */
     public Optional<Output<String>> publicKey() {
@@ -144,8 +140,7 @@ public final class SshKeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectId Unique Identifier for the project resource where the SSH key is scoped to.If you
-         * leave it out, the ssh key will be created under the default project id of your organization.
+         * @param projectId Unique Identifier for the project resource where the SSH key is scoped to.If you leave it out, the ssh key will be created under the default project id of your organization.
          * 
          * @return builder
          * 
@@ -156,8 +151,7 @@ public final class SshKeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectId Unique Identifier for the project resource where the SSH key is scoped to.If you
-         * leave it out, the ssh key will be created under the default project id of your organization.
+         * @param projectId Unique Identifier for the project resource where the SSH key is scoped to.If you leave it out, the ssh key will be created under the default project id of your organization.
          * 
          * @return builder
          * 
@@ -167,8 +161,7 @@ public final class SshKeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param publicKey The SSH public key. If this is a file, it can be read using the file
-         * interpolation function.
+         * @param publicKey The SSH public key. If this is a file, it can be read using the file interpolation function.
          * 
          * @return builder
          * 
@@ -179,8 +172,7 @@ public final class SshKeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param publicKey The SSH public key. If this is a file, it can be read using the file
-         * interpolation function.
+         * @param publicKey The SSH public key. If this is a file, it can be read using the file interpolation function.
          * 
          * @return builder
          * 

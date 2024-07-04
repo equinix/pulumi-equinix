@@ -15,100 +15,20 @@ namespace Pulumi.Equinix.Fabric
         /// Fabric V4 API compatible data resource that allow user to fetch Service Profile by name filter criteria
         /// 
         /// Additional documentation:
-        /// * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm&gt;
-        /// * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles&gt;
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Equinix = Pulumi.Equinix;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var serviceProfilesDataName = Equinix.Fabric.GetServiceProfiles.Invoke(new()
-        ///     {
-        ///         Filter = new Equinix.Fabric.Inputs.GetServiceProfilesFilterInputArgs
-        ///         {
-        ///             Property = "/name",
-        ///             Operator = "=",
-        ///             Values = new[]
-        ///             {
-        ///                 "&lt;list_of_profiles_to_return&gt;",
-        ///             },
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["id"] = data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Id,
-        ///         ["name"] = data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Name,
-        ///         ["type"] = data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Type,
-        ///         ["visibility"] = data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Visibility,
-        ///         ["orgName"] = data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Account[0].Organization_name,
-        ///         ["accessPointTypeConfigsType"] = data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Access_point_type_configs[0].Type,
-        ///         ["allowRemoteConnections"] = data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Access_point_type_configs[0].Allow_remote_connections,
-        ///         ["supportedBandwidth0"] = data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Access_point_type_configs[0].Supported_bandwidths[0],
-        ///         ["supportedBandwidth1"] = data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Access_point_type_configs[0].Supported_bandwidths[1],
-        ///         ["redundandyRequired"] = data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Access_point_type_configs[0].Connection_redundancy_required,
-        ///         ["allowOverSubscription"] = data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Access_point_type_configs[0].Api_config[0].Allow_over_subscription,
-        ///     };
-        /// });
-        /// ```
+        /// * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm
+        /// * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles
         /// </summary>
-        public static Task<GetServiceProfilesResult> InvokeAsync(GetServiceProfilesArgs? args = null, InvokeOptions? options = null)
+        public static Task<GetServiceProfilesResult> InvokeAsync(GetServiceProfilesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServiceProfilesResult>("equinix:fabric/getServiceProfiles:getServiceProfiles", args ?? new GetServiceProfilesArgs(), options.WithDefaults());
 
         /// <summary>
         /// Fabric V4 API compatible data resource that allow user to fetch Service Profile by name filter criteria
         /// 
         /// Additional documentation:
-        /// * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm&gt;
-        /// * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles&gt;
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Equinix = Pulumi.Equinix;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var serviceProfilesDataName = Equinix.Fabric.GetServiceProfiles.Invoke(new()
-        ///     {
-        ///         Filter = new Equinix.Fabric.Inputs.GetServiceProfilesFilterInputArgs
-        ///         {
-        ///             Property = "/name",
-        ///             Operator = "=",
-        ///             Values = new[]
-        ///             {
-        ///                 "&lt;list_of_profiles_to_return&gt;",
-        ///             },
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["id"] = data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Id,
-        ///         ["name"] = data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Name,
-        ///         ["type"] = data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Type,
-        ///         ["visibility"] = data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Visibility,
-        ///         ["orgName"] = data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Account[0].Organization_name,
-        ///         ["accessPointTypeConfigsType"] = data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Access_point_type_configs[0].Type,
-        ///         ["allowRemoteConnections"] = data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Access_point_type_configs[0].Allow_remote_connections,
-        ///         ["supportedBandwidth0"] = data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Access_point_type_configs[0].Supported_bandwidths[0],
-        ///         ["supportedBandwidth1"] = data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Access_point_type_configs[0].Supported_bandwidths[1],
-        ///         ["redundandyRequired"] = data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Access_point_type_configs[0].Connection_redundancy_required,
-        ///         ["allowOverSubscription"] = data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Access_point_type_configs[0].Api_config[0].Allow_over_subscription,
-        ///     };
-        /// });
-        /// ```
+        /// * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm
+        /// * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles
         /// </summary>
-        public static Output<GetServiceProfilesResult> Invoke(GetServiceProfilesInvokeArgs? args = null, InvokeOptions? options = null)
+        public static Output<GetServiceProfilesResult> Invoke(GetServiceProfilesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceProfilesResult>("equinix:fabric/getServiceProfiles:getServiceProfiles", args ?? new GetServiceProfilesInvokeArgs(), options.WithDefaults());
     }
 
@@ -116,16 +36,28 @@ namespace Pulumi.Equinix.Fabric
     public sealed class GetServiceProfilesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Service Profile Search Filter
+        /// Optional boolean flag to indicate if the filters will be AND'd together. Defaults to false
         /// </summary>
-        [Input("filter")]
-        public Inputs.GetServiceProfilesFilterArgs? Filter { get; set; }
+        [Input("andFilters")]
+        public bool? AndFilters { get; set; }
+
+        /// <summary>
+        /// Filters for the Data Source Search Request (If and_filters is not set to true you cannot provide more than one filter block)
+        /// </summary>
+        [Input("filter", required: true)]
+        public Inputs.GetServiceProfilesFilterArgs Filter { get; set; } = null!;
+
+        /// <summary>
+        /// Pagination details for the Data Source Search Request
+        /// </summary>
+        [Input("pagination")]
+        public Inputs.GetServiceProfilesPaginationArgs? Pagination { get; set; }
 
         [Input("sort")]
         private List<Inputs.GetServiceProfilesSortArgs>? _sort;
 
         /// <summary>
-        /// Service Profile Sort criteria for Search Request response payload
+        /// Filters for the Data Source Search Request
         /// </summary>
         public List<Inputs.GetServiceProfilesSortArgs> Sort
         {
@@ -148,16 +80,28 @@ namespace Pulumi.Equinix.Fabric
     public sealed class GetServiceProfilesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Service Profile Search Filter
+        /// Optional boolean flag to indicate if the filters will be AND'd together. Defaults to false
         /// </summary>
-        [Input("filter")]
-        public Input<Inputs.GetServiceProfilesFilterInputArgs>? Filter { get; set; }
+        [Input("andFilters")]
+        public Input<bool>? AndFilters { get; set; }
+
+        /// <summary>
+        /// Filters for the Data Source Search Request (If and_filters is not set to true you cannot provide more than one filter block)
+        /// </summary>
+        [Input("filter", required: true)]
+        public Input<Inputs.GetServiceProfilesFilterInputArgs> Filter { get; set; } = null!;
+
+        /// <summary>
+        /// Pagination details for the Data Source Search Request
+        /// </summary>
+        [Input("pagination")]
+        public Input<Inputs.GetServiceProfilesPaginationInputArgs>? Pagination { get; set; }
 
         [Input("sort")]
         private InputList<Inputs.GetServiceProfilesSortInputArgs>? _sort;
 
         /// <summary>
-        /// Service Profile Sort criteria for Search Request response payload
+        /// Filters for the Data Source Search Request
         /// </summary>
         public InputList<Inputs.GetServiceProfilesSortInputArgs> Sort
         {
@@ -182,19 +126,27 @@ namespace Pulumi.Equinix.Fabric
     public sealed class GetServiceProfilesResult
     {
         /// <summary>
+        /// Optional boolean flag to indicate if the filters will be AND'd together. Defaults to false
+        /// </summary>
+        public readonly bool? AndFilters;
+        /// <summary>
         /// List of Service Profiles
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceProfilesDatumResult> Data;
         /// <summary>
-        /// Service Profile Search Filter
+        /// Filters for the Data Source Search Request (If and_filters is not set to true you cannot provide more than one filter block)
         /// </summary>
-        public readonly Outputs.GetServiceProfilesFilterResult? Filter;
+        public readonly Outputs.GetServiceProfilesFilterResult Filter;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Service Profile Sort criteria for Search Request response payload
+        /// Pagination details for the Data Source Search Request
+        /// </summary>
+        public readonly Outputs.GetServiceProfilesPaginationResult? Pagination;
+        /// <summary>
+        /// Filters for the Data Source Search Request
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceProfilesSortResult> Sort;
         /// <summary>
@@ -204,19 +156,25 @@ namespace Pulumi.Equinix.Fabric
 
         [OutputConstructor]
         private GetServiceProfilesResult(
+            bool? andFilters,
+
             ImmutableArray<Outputs.GetServiceProfilesDatumResult> data,
 
-            Outputs.GetServiceProfilesFilterResult? filter,
+            Outputs.GetServiceProfilesFilterResult filter,
 
             string id,
+
+            Outputs.GetServiceProfilesPaginationResult? pagination,
 
             ImmutableArray<Outputs.GetServiceProfilesSortResult> sort,
 
             string? viewPoint)
         {
+            AndFilters = andFilters;
             Data = data;
             Filter = filter;
             Id = id;
+            Pagination = pagination;
             Sort = sort;
             ViewPoint = viewPoint;
         }

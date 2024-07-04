@@ -25,10 +25,8 @@ class GatewayArgs:
         The set of arguments for constructing a Gateway resource.
         :param pulumi.Input[str] project_id: UUID of the project where the gateway is scoped to.
         :param pulumi.Input[str] vlan_id: UUID of the VLAN where the gateway is scoped to.
-        :param pulumi.Input[str] ip_reservation_id: UUID of Public or VRF IP Reservation to associate with the gateway, the
-               reservation must be in the same metro as the VLAN, conflicts with `private_ipv4_subnet_size`.
-        :param pulumi.Input[int] private_ipv4_subnet_size: Size of the private IPv4 subnet to create for this metal
-               gateway, must be one of `8`, `16`, `32`, `64`, `128`. Conflicts with `ip_reservation_id`.
+        :param pulumi.Input[str] ip_reservation_id: UUID of Public or VRF IP Reservation to associate with the gateway, the reservation must be in the same metro as the VLAN, conflicts with `private_ipv4_subnet_size`.
+        :param pulumi.Input[int] private_ipv4_subnet_size: Size of the private IPv4 subnet to create for this metal gateway, must be one of `8`, `16`, `32`, `64`, `128`. Conflicts with `ip_reservation_id`.
         """
         pulumi.set(__self__, "project_id", project_id)
         pulumi.set(__self__, "vlan_id", vlan_id)
@@ -67,8 +65,7 @@ class GatewayArgs:
     @pulumi.getter(name="ipReservationId")
     def ip_reservation_id(self) -> Optional[pulumi.Input[str]]:
         """
-        UUID of Public or VRF IP Reservation to associate with the gateway, the
-        reservation must be in the same metro as the VLAN, conflicts with `private_ipv4_subnet_size`.
+        UUID of Public or VRF IP Reservation to associate with the gateway, the reservation must be in the same metro as the VLAN, conflicts with `private_ipv4_subnet_size`.
         """
         return pulumi.get(self, "ip_reservation_id")
 
@@ -80,8 +77,7 @@ class GatewayArgs:
     @pulumi.getter(name="privateIpv4SubnetSize")
     def private_ipv4_subnet_size(self) -> Optional[pulumi.Input[int]]:
         """
-        Size of the private IPv4 subnet to create for this metal
-        gateway, must be one of `8`, `16`, `32`, `64`, `128`. Conflicts with `ip_reservation_id`.
+        Size of the private IPv4 subnet to create for this metal gateway, must be one of `8`, `16`, `32`, `64`, `128`. Conflicts with `ip_reservation_id`.
         """
         return pulumi.get(self, "private_ipv4_subnet_size")
 
@@ -111,10 +107,8 @@ class _GatewayState:
                  vrf_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Gateway resources.
-        :param pulumi.Input[str] ip_reservation_id: UUID of Public or VRF IP Reservation to associate with the gateway, the
-               reservation must be in the same metro as the VLAN, conflicts with `private_ipv4_subnet_size`.
-        :param pulumi.Input[int] private_ipv4_subnet_size: Size of the private IPv4 subnet to create for this metal
-               gateway, must be one of `8`, `16`, `32`, `64`, `128`. Conflicts with `ip_reservation_id`.
+        :param pulumi.Input[str] ip_reservation_id: UUID of Public or VRF IP Reservation to associate with the gateway, the reservation must be in the same metro as the VLAN, conflicts with `private_ipv4_subnet_size`.
+        :param pulumi.Input[int] private_ipv4_subnet_size: Size of the private IPv4 subnet to create for this metal gateway, must be one of `8`, `16`, `32`, `64`, `128`. Conflicts with `ip_reservation_id`.
         :param pulumi.Input[str] project_id: UUID of the project where the gateway is scoped to.
         :param pulumi.Input[str] state: Status of the gateway resource.
         :param pulumi.Input[str] vlan_id: UUID of the VLAN where the gateway is scoped to.
@@ -139,8 +133,7 @@ class _GatewayState:
     @pulumi.getter(name="ipReservationId")
     def ip_reservation_id(self) -> Optional[pulumi.Input[str]]:
         """
-        UUID of Public or VRF IP Reservation to associate with the gateway, the
-        reservation must be in the same metro as the VLAN, conflicts with `private_ipv4_subnet_size`.
+        UUID of Public or VRF IP Reservation to associate with the gateway, the reservation must be in the same metro as the VLAN, conflicts with `private_ipv4_subnet_size`.
         """
         return pulumi.get(self, "ip_reservation_id")
 
@@ -152,8 +145,7 @@ class _GatewayState:
     @pulumi.getter(name="privateIpv4SubnetSize")
     def private_ipv4_subnet_size(self) -> Optional[pulumi.Input[int]]:
         """
-        Size of the private IPv4 subnet to create for this metal
-        gateway, must be one of `8`, `16`, `32`, `64`, `128`. Conflicts with `ip_reservation_id`.
+        Size of the private IPv4 subnet to create for this metal gateway, must be one of `8`, `16`, `32`, `64`, `128`. Conflicts with `ip_reservation_id`.
         """
         return pulumi.get(self, "private_ipv4_subnet_size")
 
@@ -252,10 +244,8 @@ class Gateway(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] ip_reservation_id: UUID of Public or VRF IP Reservation to associate with the gateway, the
-               reservation must be in the same metro as the VLAN, conflicts with `private_ipv4_subnet_size`.
-        :param pulumi.Input[int] private_ipv4_subnet_size: Size of the private IPv4 subnet to create for this metal
-               gateway, must be one of `8`, `16`, `32`, `64`, `128`. Conflicts with `ip_reservation_id`.
+        :param pulumi.Input[str] ip_reservation_id: UUID of Public or VRF IP Reservation to associate with the gateway, the reservation must be in the same metro as the VLAN, conflicts with `private_ipv4_subnet_size`.
+        :param pulumi.Input[int] private_ipv4_subnet_size: Size of the private IPv4 subnet to create for this metal gateway, must be one of `8`, `16`, `32`, `64`, `128`. Conflicts with `ip_reservation_id`.
         :param pulumi.Input[str] project_id: UUID of the project where the gateway is scoped to.
         :param pulumi.Input[str] vlan_id: UUID of the VLAN where the gateway is scoped to.
         """
@@ -349,10 +339,8 @@ class Gateway(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] ip_reservation_id: UUID of Public or VRF IP Reservation to associate with the gateway, the
-               reservation must be in the same metro as the VLAN, conflicts with `private_ipv4_subnet_size`.
-        :param pulumi.Input[int] private_ipv4_subnet_size: Size of the private IPv4 subnet to create for this metal
-               gateway, must be one of `8`, `16`, `32`, `64`, `128`. Conflicts with `ip_reservation_id`.
+        :param pulumi.Input[str] ip_reservation_id: UUID of Public or VRF IP Reservation to associate with the gateway, the reservation must be in the same metro as the VLAN, conflicts with `private_ipv4_subnet_size`.
+        :param pulumi.Input[int] private_ipv4_subnet_size: Size of the private IPv4 subnet to create for this metal gateway, must be one of `8`, `16`, `32`, `64`, `128`. Conflicts with `ip_reservation_id`.
         :param pulumi.Input[str] project_id: UUID of the project where the gateway is scoped to.
         :param pulumi.Input[str] state: Status of the gateway resource.
         :param pulumi.Input[str] vlan_id: UUID of the VLAN where the gateway is scoped to.
@@ -375,8 +363,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter(name="ipReservationId")
     def ip_reservation_id(self) -> pulumi.Output[str]:
         """
-        UUID of Public or VRF IP Reservation to associate with the gateway, the
-        reservation must be in the same metro as the VLAN, conflicts with `private_ipv4_subnet_size`.
+        UUID of Public or VRF IP Reservation to associate with the gateway, the reservation must be in the same metro as the VLAN, conflicts with `private_ipv4_subnet_size`.
         """
         return pulumi.get(self, "ip_reservation_id")
 
@@ -384,8 +371,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter(name="privateIpv4SubnetSize")
     def private_ipv4_subnet_size(self) -> pulumi.Output[int]:
         """
-        Size of the private IPv4 subnet to create for this metal
-        gateway, must be one of `8`, `16`, `32`, `64`, `128`. Conflicts with `ip_reservation_id`.
+        Size of the private IPv4 subnet to create for this metal gateway, must be one of `8`, `16`, `32`, `64`, `128`. Conflicts with `ip_reservation_id`.
         """
         return pulumi.get(self, "private_ipv4_subnet_size")
 

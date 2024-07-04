@@ -195,9 +195,7 @@ class ProjectSshKey(pulumi.CustomResource):
                  public_key: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides an Equinix Metal project SSH key resource to manage project-specific SSH keys.
-        Project SSH keys will only be populated onto servers that belong to that project, in contrast to
-        User SSH Keys.
+        Provides an Equinix Metal project SSH key resource to manage project-specific SSH keys. Project SSH keys will only be populated onto servers that belong to that project, in contrast to User SSH Keys.
 
         ## Example Usage
         ```python
@@ -226,9 +224,7 @@ class ProjectSshKey(pulumi.CustomResource):
                  args: ProjectSshKeyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides an Equinix Metal project SSH key resource to manage project-specific SSH keys.
-        Project SSH keys will only be populated onto servers that belong to that project, in contrast to
-        User SSH Keys.
+        Provides an Equinix Metal project SSH key resource to manage project-specific SSH keys. Project SSH keys will only be populated onto servers that belong to that project, in contrast to User SSH Keys.
 
         ## Example Usage
         ```python

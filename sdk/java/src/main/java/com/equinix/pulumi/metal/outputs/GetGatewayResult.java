@@ -18,8 +18,7 @@ public final class GetGatewayResult {
      */
     private String ipReservationId;
     /**
-     * @return Size of the private IPv4 subnet bound to this metal gateway. One of
-     * `8`, `16`, `32`, `64`, `128`.
+     * @return Size of the private IPv4 subnet bound to this metal gateway. One of `8`, `16`, `32`, `64`, `128`.
      * 
      */
     private Integer privateIpv4SubnetSize;
@@ -59,8 +58,7 @@ public final class GetGatewayResult {
         return this.ipReservationId;
     }
     /**
-     * @return Size of the private IPv4 subnet bound to this metal gateway. One of
-     * `8`, `16`, `32`, `64`, `128`.
+     * @return Size of the private IPv4 subnet bound to this metal gateway. One of `8`, `16`, `32`, `64`, `128`.
      * 
      */
     public Integer privateIpv4SubnetSize() {

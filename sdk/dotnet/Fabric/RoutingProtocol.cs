@@ -13,8 +13,8 @@ namespace Pulumi.Equinix.Fabric
     /// Fabric V4 API compatible resource allows creation and management of Equinix Fabric connection
     /// 
     /// Additional documentation:
-    /// * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/FCR/connections/FCR-connect-azureQC.htm#ConfigureRoutingDetailsintheFabricPortal&gt;
-    /// * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols&gt;
+    /// * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/connections/FCR-connect-azureQC.htm#ConfigureRoutingDetailsintheFabricPortal
+    /// * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
     /// 
     /// ## Example Usage
     /// ```csharp
@@ -54,25 +54,25 @@ namespace Pulumi.Equinix.Fabric
         /// Bidirectional Forwarding Detection
         /// </summary>
         [Output("bfd")]
-        public Output<Outputs.RoutingProtocolBfd?> Bfd { get; private set; } = null!;
+        public Output<Outputs.RoutingProtocolBfd> Bfd { get; private set; } = null!;
 
         /// <summary>
         /// BGP authorization key
         /// </summary>
         [Output("bgpAuthKey")]
-        public Output<string?> BgpAuthKey { get; private set; } = null!;
+        public Output<string> BgpAuthKey { get; private set; } = null!;
 
         /// <summary>
         /// Routing Protocol BGP IPv4
         /// </summary>
         [Output("bgpIpv4")]
-        public Output<Outputs.RoutingProtocolBgpIpv4?> BgpIpv4 { get; private set; } = null!;
+        public Output<Outputs.RoutingProtocolBgpIpv4> BgpIpv4 { get; private set; } = null!;
 
         /// <summary>
         /// Routing Protocol BGP IPv6
         /// </summary>
         [Output("bgpIpv6")]
-        public Output<Outputs.RoutingProtocolBgpIpv6?> BgpIpv6 { get; private set; } = null!;
+        public Output<Outputs.RoutingProtocolBgpIpv6> BgpIpv6 { get; private set; } = null!;
 
         /// <summary>
         /// Captures Routing Protocol lifecycle change information
@@ -96,25 +96,25 @@ namespace Pulumi.Equinix.Fabric
         /// Customer-provided ASN
         /// </summary>
         [Output("customerAsn")]
-        public Output<int?> CustomerAsn { get; private set; } = null!;
+        public Output<int> CustomerAsn { get; private set; } = null!;
 
         /// <summary>
         /// Customer-provided Fabric Routing Protocol description
         /// </summary>
         [Output("description")]
-        public Output<string?> Description { get; private set; } = null!;
+        public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
         /// Routing Protocol Direct IPv4
         /// </summary>
         [Output("directIpv4")]
-        public Output<Outputs.RoutingProtocolDirectIpv4?> DirectIpv4 { get; private set; } = null!;
+        public Output<Outputs.RoutingProtocolDirectIpv4> DirectIpv4 { get; private set; } = null!;
 
         /// <summary>
         /// Routing Protocol Direct IPv6
         /// </summary>
         [Output("directIpv6")]
-        public Output<Outputs.RoutingProtocolDirectIpv6?> DirectIpv6 { get; private set; } = null!;
+        public Output<Outputs.RoutingProtocolDirectIpv6> DirectIpv6 { get; private set; } = null!;
 
         /// <summary>
         /// Equinix ASN
@@ -150,7 +150,7 @@ namespace Pulumi.Equinix.Fabric
         /// Defines the routing protocol type like BGP or DIRECT
         /// </summary>
         [Output("type")]
-        public Output<string?> Type { get; private set; } = null!;
+        public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
         /// Equinix-assigned routing protocol identifier

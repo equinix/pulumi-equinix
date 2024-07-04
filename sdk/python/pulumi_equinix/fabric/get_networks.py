@@ -115,8 +115,8 @@ def get_networks(filters: Optional[Sequence[pulumi.InputType['GetNetworksFilterA
     Fabric V4 API compatible data resource that allow user to fetch Fabric Network for a given UUID
 
     Additional documentation:
-    * Getting Started: <https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-networks-implement.htm>
-    * API: <https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-networks>
+    * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-networks-implement.htm
+    * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-networks
 
 
     :param Sequence[pulumi.InputType['GetNetworksFilterArgs']] filters: Filters for the Data Source Search Request
@@ -151,8 +151,8 @@ def get_networks_output(filters: Optional[pulumi.Input[Sequence[pulumi.InputType
     Fabric V4 API compatible data resource that allow user to fetch Fabric Network for a given UUID
 
     Additional documentation:
-    * Getting Started: <https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-networks-implement.htm>
-    * API: <https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-networks>
+    * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-networks-implement.htm
+    * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-networks
 
 
     :param Sequence[pulumi.InputType['GetNetworksFilterArgs']] filters: Filters for the Data Source Search Request

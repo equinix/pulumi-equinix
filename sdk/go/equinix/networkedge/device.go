@@ -13,23 +13,17 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Resource `networkedge.Device` allows creation and management of Equinix Network Edge virtual
-// network devices.
+// Resource `networkedge.Device` allows creation and management of Equinix Network Edge virtual network devices.
 //
 // Network Edge virtual network devices can be created in two modes:
 //
-//   - **managed** - (default) Where Equinix manages connectivity and services in the device and
-//     customer gets limited access to the device.
-//   - **self-configured** - Where customer provisions and manages own services in the device with less
-//     restricted access. Some device types are offered only in this mode.
+// * **managed** - (default) Where Equinix manages connectivity and services in the device and customer gets limited access to the device.
+// * **self-configured** - Where customer provisions and manages own services in the device with less restricted access. Some device types are offered only in this mode.
 //
 // In addition to management modes, there are two software license modes available:
 //
-//   - **subscription** - Where Equinix provides software license, including end-to-end support, and
-//     bills for the service respectively.
-//   - **BYOL** - [bring your own license] Where customer brings his own, already procured device
-//     software license. There are no charges associated with such license. It is the only licensing mode
-//     for `self-configured` devices.
+// * **subscription** - Where Equinix provides software license, including end-to-end support, and bills for the service respectively.
+// * **BYOL** - [bring your own license] Where customer brings his own, already procured device software license. There are no charges associated with such license. It is the only licensing mode for `self-configured` devices.
 //
 // ## Example Usage
 // ```go
@@ -131,83 +125,65 @@ type Device struct {
 	AccountNumber pulumi.StringOutput `pulumi:"accountNumber"`
 	// Identifier of a WAN interface ACL template that will be applied on the device.
 	AclTemplateId pulumi.StringPtrOutput `pulumi:"aclTemplateId"`
-	// Additional Internet bandwidth, in Mbps, that will be
-	// allocated to the device (in addition to default 15Mbps).
+	// Additional Internet bandwidth, in Mbps, that will be allocated to the device (in addition to default 15Mbps).
 	AdditionalBandwidth pulumi.IntOutput `pulumi:"additionalBandwidth"`
 	// (Autonomous System Number) Unique identifier for a network on the internet.
 	Asn pulumi.IntOutput `pulumi:"asn"`
-	// Boolean value that determines device licensing mode, i.e.,
-	// `bring your own license` or `subscription` (default).
+	// Boolean value that determines device licensing mode, i.e., `bring your own license` or `subscription` (default).
 	Byol pulumi.BoolPtrOutput `pulumi:"byol"`
 	// Identifier of a cloud init file that will be applied on the device.
 	CloudInitFileId pulumi.StringPtrOutput `pulumi:"cloudInitFileId"`
-	// An object that has the cluster details. See
-	// Cluster Details below for more details.
+	// An object that has the cluster details. See Cluster Details below for more details.
 	ClusterDetails DeviceClusterDetailsPtrOutput `pulumi:"clusterDetails"`
-	// Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT).
-	// If not specified, default will be INTERNET-ACCESS
+	// Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT). If not specified, default will be INTERNET-ACCESS
 	Connectivity pulumi.StringPtrOutput `pulumi:"connectivity"`
 	// Number of CPU cores used by device. (**NOTE: Use this field to resize your device. When resizing your HA devices, primary device will be upgraded first. If the upgrade failed, device will be automatically rolled back to the previous state with original core number.**)
 	CoreCount pulumi.IntOutput `pulumi:"coreCount"`
-	// Unique ID of an existing device.
-	// Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual
-	// device. This field is only meaningful for single devices.
+	// Unique ID of an existing device. Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual device. This field is only meaningful for single devices.
 	DiverseDeviceId pulumi.StringOutput `pulumi:"diverseDeviceId"`
-	// Name of the device with diverse device UUID. This field is returned in device details if the
-	// device is created by passing diverse_device_id.
+	// Name of the device with diverse device UUID. This field is returned in device details if the device is created by passing diverse_device_id.
 	DiverseDeviceName pulumi.StringOutput `pulumi:"diverseDeviceName"`
 	// Device hostname prefix.
 	Hostname pulumi.StringOutput `pulumi:"hostname"`
 	// Device location Equinix Business Exchange name.
 	Ibx pulumi.StringOutput `pulumi:"ibx"`
-	// Number of network interfaces on a device. If not specified,
-	// default number for a given device type will be used.
+	// Number of network interfaces on a device. If not specified, default number for a given device type will be used.
 	InterfaceCount pulumi.IntOutput `pulumi:"interfaceCount"`
-	// List of device interfaces. See Interface Attribute below
-	// for more details.
+	// List of device interfaces. See Interface Attribute below for more details.
 	Interfaces DeviceInterfaceArrayOutput `pulumi:"interfaces"`
-	// Path to the license file that will be uploaded and applied on a
-	// device. Applicable for some device types in BYOL licensing mode.
+	// Path to the license file that will be uploaded and applied on a device. Applicable for some device types in BYOL licensing mode.
 	LicenseFile pulumi.StringPtrOutput `pulumi:"licenseFile"`
 	// Identifier of a license file that will be applied on the device.
 	LicenseFileId pulumi.StringOutput `pulumi:"licenseFileId"`
-	// Device license registration status. Possible values are `APPLYING_LICENSE`,
-	// `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
+	// Device license registration status. Possible values are `APPLYING_LICENSE`, `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
 	LicenseStatus pulumi.StringOutput `pulumi:"licenseStatus"`
-	// License Token applicable for some device types in BYOL licensing
-	// mode.
+	// License Token applicable for some device types in BYOL licensing mode.
 	LicenseToken pulumi.StringPtrOutput `pulumi:"licenseToken"`
 	// Device location metro code.
 	MetroCode pulumi.StringOutput `pulumi:"metroCode"`
-	// Identifier of an MGMT interface ACL template that will be
-	// applied on the device.
+	// Identifier of an MGMT interface ACL template that will be applied on the device.
 	MgmtAclTemplateUuid pulumi.StringPtrOutput `pulumi:"mgmtAclTemplateUuid"`
 	// Device name.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// List of email addresses that will receive device status
-	// notifications.
+	// List of email addresses that will receive device status notifications.
 	Notifications pulumi.StringArrayOutput `pulumi:"notifications"`
 	// Name/number used to identify device order on the invoice.
 	OrderReference pulumi.StringPtrOutput `pulumi:"orderReference"`
 	// Device software package code.
 	PackageCode pulumi.StringOutput `pulumi:"packageCode"`
-	// Unique Identifier for the project resource where the device is scoped to.If you
-	// leave it out, the device will be created under the default project id of your organization.
+	// Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// Purchase order number associated with a device order.
 	PurchaseOrderNumber pulumi.StringPtrOutput `pulumi:"purchaseOrderNumber"`
-	// Device redundancy type applicable for HA devices, either
-	// primary or secondary.
+	// Device redundancy type applicable for HA devices, either primary or secondary.
 	RedundancyType pulumi.StringOutput `pulumi:"redundancyType"`
 	// Unique identifier for a redundant device applicable for HA devices.
 	RedundantId pulumi.StringOutput `pulumi:"redundantId"`
 	// Device location region.
 	Region pulumi.StringOutput `pulumi:"region"`
-	// Definition of secondary device for redundant
-	// device configurations. See Secondary Device below for more details.
+	// Definition of secondary device for redundant device configurations. See Secondary Device below for more details.
 	SecondaryDevice DeviceSecondaryDevicePtrOutput `pulumi:"secondaryDevice"`
-	// Boolean value that determines device management mode, i.e.,
-	// `self-managed` or `Equinix-managed` (default).
+	// Boolean value that determines device management mode, i.e., `self-managed` or `Equinix-managed` (default).
 	SelfManaged pulumi.BoolPtrOutput `pulumi:"selfManaged"`
 	// IP address of SSH enabled interface on the device.
 	SshIpAddress pulumi.StringOutput `pulumi:"sshIpAddress"`
@@ -227,10 +203,8 @@ type Device struct {
 	TypeCode pulumi.StringOutput `pulumi:"typeCode"`
 	// Device unique identifier.
 	Uuid pulumi.StringOutput `pulumi:"uuid"`
-	// Map of vendor specific configuration parameters for a device
-	// (controller1, activationKey, managementType, siteId, systemIpAddress, private_address, private_cidr_mask, private_gateway, license_key, license_id)
-	// * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
-	//   on a device (max one key).  See SSH Key below for more details.
+	// Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId)
+	// * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
 	VendorConfiguration pulumi.StringMapOutput `pulumi:"vendorConfiguration"`
 	// Device software software version.
 	Version pulumi.StringOutput `pulumi:"version"`
@@ -298,83 +272,65 @@ type deviceState struct {
 	AccountNumber *string `pulumi:"accountNumber"`
 	// Identifier of a WAN interface ACL template that will be applied on the device.
 	AclTemplateId *string `pulumi:"aclTemplateId"`
-	// Additional Internet bandwidth, in Mbps, that will be
-	// allocated to the device (in addition to default 15Mbps).
+	// Additional Internet bandwidth, in Mbps, that will be allocated to the device (in addition to default 15Mbps).
 	AdditionalBandwidth *int `pulumi:"additionalBandwidth"`
 	// (Autonomous System Number) Unique identifier for a network on the internet.
 	Asn *int `pulumi:"asn"`
-	// Boolean value that determines device licensing mode, i.e.,
-	// `bring your own license` or `subscription` (default).
+	// Boolean value that determines device licensing mode, i.e., `bring your own license` or `subscription` (default).
 	Byol *bool `pulumi:"byol"`
 	// Identifier of a cloud init file that will be applied on the device.
 	CloudInitFileId *string `pulumi:"cloudInitFileId"`
-	// An object that has the cluster details. See
-	// Cluster Details below for more details.
+	// An object that has the cluster details. See Cluster Details below for more details.
 	ClusterDetails *DeviceClusterDetails `pulumi:"clusterDetails"`
-	// Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT).
-	// If not specified, default will be INTERNET-ACCESS
+	// Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT). If not specified, default will be INTERNET-ACCESS
 	Connectivity *string `pulumi:"connectivity"`
 	// Number of CPU cores used by device. (**NOTE: Use this field to resize your device. When resizing your HA devices, primary device will be upgraded first. If the upgrade failed, device will be automatically rolled back to the previous state with original core number.**)
 	CoreCount *int `pulumi:"coreCount"`
-	// Unique ID of an existing device.
-	// Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual
-	// device. This field is only meaningful for single devices.
+	// Unique ID of an existing device. Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual device. This field is only meaningful for single devices.
 	DiverseDeviceId *string `pulumi:"diverseDeviceId"`
-	// Name of the device with diverse device UUID. This field is returned in device details if the
-	// device is created by passing diverse_device_id.
+	// Name of the device with diverse device UUID. This field is returned in device details if the device is created by passing diverse_device_id.
 	DiverseDeviceName *string `pulumi:"diverseDeviceName"`
 	// Device hostname prefix.
 	Hostname *string `pulumi:"hostname"`
 	// Device location Equinix Business Exchange name.
 	Ibx *string `pulumi:"ibx"`
-	// Number of network interfaces on a device. If not specified,
-	// default number for a given device type will be used.
+	// Number of network interfaces on a device. If not specified, default number for a given device type will be used.
 	InterfaceCount *int `pulumi:"interfaceCount"`
-	// List of device interfaces. See Interface Attribute below
-	// for more details.
+	// List of device interfaces. See Interface Attribute below for more details.
 	Interfaces []DeviceInterface `pulumi:"interfaces"`
-	// Path to the license file that will be uploaded and applied on a
-	// device. Applicable for some device types in BYOL licensing mode.
+	// Path to the license file that will be uploaded and applied on a device. Applicable for some device types in BYOL licensing mode.
 	LicenseFile *string `pulumi:"licenseFile"`
 	// Identifier of a license file that will be applied on the device.
 	LicenseFileId *string `pulumi:"licenseFileId"`
-	// Device license registration status. Possible values are `APPLYING_LICENSE`,
-	// `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
+	// Device license registration status. Possible values are `APPLYING_LICENSE`, `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
 	LicenseStatus *string `pulumi:"licenseStatus"`
-	// License Token applicable for some device types in BYOL licensing
-	// mode.
+	// License Token applicable for some device types in BYOL licensing mode.
 	LicenseToken *string `pulumi:"licenseToken"`
 	// Device location metro code.
 	MetroCode *string `pulumi:"metroCode"`
-	// Identifier of an MGMT interface ACL template that will be
-	// applied on the device.
+	// Identifier of an MGMT interface ACL template that will be applied on the device.
 	MgmtAclTemplateUuid *string `pulumi:"mgmtAclTemplateUuid"`
 	// Device name.
 	Name *string `pulumi:"name"`
-	// List of email addresses that will receive device status
-	// notifications.
+	// List of email addresses that will receive device status notifications.
 	Notifications []string `pulumi:"notifications"`
 	// Name/number used to identify device order on the invoice.
 	OrderReference *string `pulumi:"orderReference"`
 	// Device software package code.
 	PackageCode *string `pulumi:"packageCode"`
-	// Unique Identifier for the project resource where the device is scoped to.If you
-	// leave it out, the device will be created under the default project id of your organization.
+	// Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
 	ProjectId *string `pulumi:"projectId"`
 	// Purchase order number associated with a device order.
 	PurchaseOrderNumber *string `pulumi:"purchaseOrderNumber"`
-	// Device redundancy type applicable for HA devices, either
-	// primary or secondary.
+	// Device redundancy type applicable for HA devices, either primary or secondary.
 	RedundancyType *string `pulumi:"redundancyType"`
 	// Unique identifier for a redundant device applicable for HA devices.
 	RedundantId *string `pulumi:"redundantId"`
 	// Device location region.
 	Region *string `pulumi:"region"`
-	// Definition of secondary device for redundant
-	// device configurations. See Secondary Device below for more details.
+	// Definition of secondary device for redundant device configurations. See Secondary Device below for more details.
 	SecondaryDevice *DeviceSecondaryDevice `pulumi:"secondaryDevice"`
-	// Boolean value that determines device management mode, i.e.,
-	// `self-managed` or `Equinix-managed` (default).
+	// Boolean value that determines device management mode, i.e., `self-managed` or `Equinix-managed` (default).
 	SelfManaged *bool `pulumi:"selfManaged"`
 	// IP address of SSH enabled interface on the device.
 	SshIpAddress *string `pulumi:"sshIpAddress"`
@@ -394,10 +350,8 @@ type deviceState struct {
 	TypeCode *string `pulumi:"typeCode"`
 	// Device unique identifier.
 	Uuid *string `pulumi:"uuid"`
-	// Map of vendor specific configuration parameters for a device
-	// (controller1, activationKey, managementType, siteId, systemIpAddress, private_address, private_cidr_mask, private_gateway, license_key, license_id)
-	// * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
-	//   on a device (max one key).  See SSH Key below for more details.
+	// Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId)
+	// * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
 	VendorConfiguration map[string]string `pulumi:"vendorConfiguration"`
 	// Device software software version.
 	Version *string `pulumi:"version"`
@@ -412,83 +366,65 @@ type DeviceState struct {
 	AccountNumber pulumi.StringPtrInput
 	// Identifier of a WAN interface ACL template that will be applied on the device.
 	AclTemplateId pulumi.StringPtrInput
-	// Additional Internet bandwidth, in Mbps, that will be
-	// allocated to the device (in addition to default 15Mbps).
+	// Additional Internet bandwidth, in Mbps, that will be allocated to the device (in addition to default 15Mbps).
 	AdditionalBandwidth pulumi.IntPtrInput
 	// (Autonomous System Number) Unique identifier for a network on the internet.
 	Asn pulumi.IntPtrInput
-	// Boolean value that determines device licensing mode, i.e.,
-	// `bring your own license` or `subscription` (default).
+	// Boolean value that determines device licensing mode, i.e., `bring your own license` or `subscription` (default).
 	Byol pulumi.BoolPtrInput
 	// Identifier of a cloud init file that will be applied on the device.
 	CloudInitFileId pulumi.StringPtrInput
-	// An object that has the cluster details. See
-	// Cluster Details below for more details.
+	// An object that has the cluster details. See Cluster Details below for more details.
 	ClusterDetails DeviceClusterDetailsPtrInput
-	// Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT).
-	// If not specified, default will be INTERNET-ACCESS
+	// Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT). If not specified, default will be INTERNET-ACCESS
 	Connectivity pulumi.StringPtrInput
 	// Number of CPU cores used by device. (**NOTE: Use this field to resize your device. When resizing your HA devices, primary device will be upgraded first. If the upgrade failed, device will be automatically rolled back to the previous state with original core number.**)
 	CoreCount pulumi.IntPtrInput
-	// Unique ID of an existing device.
-	// Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual
-	// device. This field is only meaningful for single devices.
+	// Unique ID of an existing device. Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual device. This field is only meaningful for single devices.
 	DiverseDeviceId pulumi.StringPtrInput
-	// Name of the device with diverse device UUID. This field is returned in device details if the
-	// device is created by passing diverse_device_id.
+	// Name of the device with diverse device UUID. This field is returned in device details if the device is created by passing diverse_device_id.
 	DiverseDeviceName pulumi.StringPtrInput
 	// Device hostname prefix.
 	Hostname pulumi.StringPtrInput
 	// Device location Equinix Business Exchange name.
 	Ibx pulumi.StringPtrInput
-	// Number of network interfaces on a device. If not specified,
-	// default number for a given device type will be used.
+	// Number of network interfaces on a device. If not specified, default number for a given device type will be used.
 	InterfaceCount pulumi.IntPtrInput
-	// List of device interfaces. See Interface Attribute below
-	// for more details.
+	// List of device interfaces. See Interface Attribute below for more details.
 	Interfaces DeviceInterfaceArrayInput
-	// Path to the license file that will be uploaded and applied on a
-	// device. Applicable for some device types in BYOL licensing mode.
+	// Path to the license file that will be uploaded and applied on a device. Applicable for some device types in BYOL licensing mode.
 	LicenseFile pulumi.StringPtrInput
 	// Identifier of a license file that will be applied on the device.
 	LicenseFileId pulumi.StringPtrInput
-	// Device license registration status. Possible values are `APPLYING_LICENSE`,
-	// `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
+	// Device license registration status. Possible values are `APPLYING_LICENSE`, `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
 	LicenseStatus pulumi.StringPtrInput
-	// License Token applicable for some device types in BYOL licensing
-	// mode.
+	// License Token applicable for some device types in BYOL licensing mode.
 	LicenseToken pulumi.StringPtrInput
 	// Device location metro code.
 	MetroCode pulumi.StringPtrInput
-	// Identifier of an MGMT interface ACL template that will be
-	// applied on the device.
+	// Identifier of an MGMT interface ACL template that will be applied on the device.
 	MgmtAclTemplateUuid pulumi.StringPtrInput
 	// Device name.
 	Name pulumi.StringPtrInput
-	// List of email addresses that will receive device status
-	// notifications.
+	// List of email addresses that will receive device status notifications.
 	Notifications pulumi.StringArrayInput
 	// Name/number used to identify device order on the invoice.
 	OrderReference pulumi.StringPtrInput
 	// Device software package code.
 	PackageCode pulumi.StringPtrInput
-	// Unique Identifier for the project resource where the device is scoped to.If you
-	// leave it out, the device will be created under the default project id of your organization.
+	// Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
 	ProjectId pulumi.StringPtrInput
 	// Purchase order number associated with a device order.
 	PurchaseOrderNumber pulumi.StringPtrInput
-	// Device redundancy type applicable for HA devices, either
-	// primary or secondary.
+	// Device redundancy type applicable for HA devices, either primary or secondary.
 	RedundancyType pulumi.StringPtrInput
 	// Unique identifier for a redundant device applicable for HA devices.
 	RedundantId pulumi.StringPtrInput
 	// Device location region.
 	Region pulumi.StringPtrInput
-	// Definition of secondary device for redundant
-	// device configurations. See Secondary Device below for more details.
+	// Definition of secondary device for redundant device configurations. See Secondary Device below for more details.
 	SecondaryDevice DeviceSecondaryDevicePtrInput
-	// Boolean value that determines device management mode, i.e.,
-	// `self-managed` or `Equinix-managed` (default).
+	// Boolean value that determines device management mode, i.e., `self-managed` or `Equinix-managed` (default).
 	SelfManaged pulumi.BoolPtrInput
 	// IP address of SSH enabled interface on the device.
 	SshIpAddress pulumi.StringPtrInput
@@ -508,10 +444,8 @@ type DeviceState struct {
 	TypeCode pulumi.StringPtrInput
 	// Device unique identifier.
 	Uuid pulumi.StringPtrInput
-	// Map of vendor specific configuration parameters for a device
-	// (controller1, activationKey, managementType, siteId, systemIpAddress, private_address, private_cidr_mask, private_gateway, license_key, license_id)
-	// * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
-	//   on a device (max one key).  See SSH Key below for more details.
+	// Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId)
+	// * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
 	VendorConfiguration pulumi.StringMapInput
 	// Device software software version.
 	Version pulumi.StringPtrInput
@@ -530,63 +464,49 @@ type deviceArgs struct {
 	AccountNumber string `pulumi:"accountNumber"`
 	// Identifier of a WAN interface ACL template that will be applied on the device.
 	AclTemplateId *string `pulumi:"aclTemplateId"`
-	// Additional Internet bandwidth, in Mbps, that will be
-	// allocated to the device (in addition to default 15Mbps).
+	// Additional Internet bandwidth, in Mbps, that will be allocated to the device (in addition to default 15Mbps).
 	AdditionalBandwidth *int `pulumi:"additionalBandwidth"`
-	// Boolean value that determines device licensing mode, i.e.,
-	// `bring your own license` or `subscription` (default).
+	// Boolean value that determines device licensing mode, i.e., `bring your own license` or `subscription` (default).
 	Byol *bool `pulumi:"byol"`
 	// Identifier of a cloud init file that will be applied on the device.
 	CloudInitFileId *string `pulumi:"cloudInitFileId"`
-	// An object that has the cluster details. See
-	// Cluster Details below for more details.
+	// An object that has the cluster details. See Cluster Details below for more details.
 	ClusterDetails *DeviceClusterDetails `pulumi:"clusterDetails"`
-	// Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT).
-	// If not specified, default will be INTERNET-ACCESS
+	// Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT). If not specified, default will be INTERNET-ACCESS
 	Connectivity *string `pulumi:"connectivity"`
 	// Number of CPU cores used by device. (**NOTE: Use this field to resize your device. When resizing your HA devices, primary device will be upgraded first. If the upgrade failed, device will be automatically rolled back to the previous state with original core number.**)
 	CoreCount int `pulumi:"coreCount"`
-	// Unique ID of an existing device.
-	// Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual
-	// device. This field is only meaningful for single devices.
+	// Unique ID of an existing device. Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual device. This field is only meaningful for single devices.
 	DiverseDeviceId *string `pulumi:"diverseDeviceId"`
 	// Device hostname prefix.
 	Hostname *string `pulumi:"hostname"`
-	// Number of network interfaces on a device. If not specified,
-	// default number for a given device type will be used.
+	// Number of network interfaces on a device. If not specified, default number for a given device type will be used.
 	InterfaceCount *int `pulumi:"interfaceCount"`
-	// Path to the license file that will be uploaded and applied on a
-	// device. Applicable for some device types in BYOL licensing mode.
+	// Path to the license file that will be uploaded and applied on a device. Applicable for some device types in BYOL licensing mode.
 	LicenseFile *string `pulumi:"licenseFile"`
 	// Identifier of a license file that will be applied on the device.
 	LicenseFileId *string `pulumi:"licenseFileId"`
-	// License Token applicable for some device types in BYOL licensing
-	// mode.
+	// License Token applicable for some device types in BYOL licensing mode.
 	LicenseToken *string `pulumi:"licenseToken"`
 	// Device location metro code.
 	MetroCode string `pulumi:"metroCode"`
-	// Identifier of an MGMT interface ACL template that will be
-	// applied on the device.
+	// Identifier of an MGMT interface ACL template that will be applied on the device.
 	MgmtAclTemplateUuid *string `pulumi:"mgmtAclTemplateUuid"`
 	// Device name.
 	Name *string `pulumi:"name"`
-	// List of email addresses that will receive device status
-	// notifications.
+	// List of email addresses that will receive device status notifications.
 	Notifications []string `pulumi:"notifications"`
 	// Name/number used to identify device order on the invoice.
 	OrderReference *string `pulumi:"orderReference"`
 	// Device software package code.
 	PackageCode string `pulumi:"packageCode"`
-	// Unique Identifier for the project resource where the device is scoped to.If you
-	// leave it out, the device will be created under the default project id of your organization.
+	// Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
 	ProjectId *string `pulumi:"projectId"`
 	// Purchase order number associated with a device order.
 	PurchaseOrderNumber *string `pulumi:"purchaseOrderNumber"`
-	// Definition of secondary device for redundant
-	// device configurations. See Secondary Device below for more details.
+	// Definition of secondary device for redundant device configurations. See Secondary Device below for more details.
 	SecondaryDevice *DeviceSecondaryDevice `pulumi:"secondaryDevice"`
-	// Boolean value that determines device management mode, i.e.,
-	// `self-managed` or `Equinix-managed` (default).
+	// Boolean value that determines device management mode, i.e., `self-managed` or `Equinix-managed` (default).
 	SelfManaged *bool `pulumi:"selfManaged"`
 	// Definition of SSH key that will be provisioned on a device
 	SshKey *DeviceSshKey `pulumi:"sshKey"`
@@ -598,10 +518,8 @@ type deviceArgs struct {
 	ThroughputUnit *string `pulumi:"throughputUnit"`
 	// Device type code.
 	TypeCode string `pulumi:"typeCode"`
-	// Map of vendor specific configuration parameters for a device
-	// (controller1, activationKey, managementType, siteId, systemIpAddress, private_address, private_cidr_mask, private_gateway, license_key, license_id)
-	// * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
-	//   on a device (max one key).  See SSH Key below for more details.
+	// Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId)
+	// * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
 	VendorConfiguration map[string]string `pulumi:"vendorConfiguration"`
 	// Device software software version.
 	Version string `pulumi:"version"`
@@ -615,63 +533,49 @@ type DeviceArgs struct {
 	AccountNumber pulumi.StringInput
 	// Identifier of a WAN interface ACL template that will be applied on the device.
 	AclTemplateId pulumi.StringPtrInput
-	// Additional Internet bandwidth, in Mbps, that will be
-	// allocated to the device (in addition to default 15Mbps).
+	// Additional Internet bandwidth, in Mbps, that will be allocated to the device (in addition to default 15Mbps).
 	AdditionalBandwidth pulumi.IntPtrInput
-	// Boolean value that determines device licensing mode, i.e.,
-	// `bring your own license` or `subscription` (default).
+	// Boolean value that determines device licensing mode, i.e., `bring your own license` or `subscription` (default).
 	Byol pulumi.BoolPtrInput
 	// Identifier of a cloud init file that will be applied on the device.
 	CloudInitFileId pulumi.StringPtrInput
-	// An object that has the cluster details. See
-	// Cluster Details below for more details.
+	// An object that has the cluster details. See Cluster Details below for more details.
 	ClusterDetails DeviceClusterDetailsPtrInput
-	// Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT).
-	// If not specified, default will be INTERNET-ACCESS
+	// Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT). If not specified, default will be INTERNET-ACCESS
 	Connectivity pulumi.StringPtrInput
 	// Number of CPU cores used by device. (**NOTE: Use this field to resize your device. When resizing your HA devices, primary device will be upgraded first. If the upgrade failed, device will be automatically rolled back to the previous state with original core number.**)
 	CoreCount pulumi.IntInput
-	// Unique ID of an existing device.
-	// Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual
-	// device. This field is only meaningful for single devices.
+	// Unique ID of an existing device. Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual device. This field is only meaningful for single devices.
 	DiverseDeviceId pulumi.StringPtrInput
 	// Device hostname prefix.
 	Hostname pulumi.StringPtrInput
-	// Number of network interfaces on a device. If not specified,
-	// default number for a given device type will be used.
+	// Number of network interfaces on a device. If not specified, default number for a given device type will be used.
 	InterfaceCount pulumi.IntPtrInput
-	// Path to the license file that will be uploaded and applied on a
-	// device. Applicable for some device types in BYOL licensing mode.
+	// Path to the license file that will be uploaded and applied on a device. Applicable for some device types in BYOL licensing mode.
 	LicenseFile pulumi.StringPtrInput
 	// Identifier of a license file that will be applied on the device.
 	LicenseFileId pulumi.StringPtrInput
-	// License Token applicable for some device types in BYOL licensing
-	// mode.
+	// License Token applicable for some device types in BYOL licensing mode.
 	LicenseToken pulumi.StringPtrInput
 	// Device location metro code.
 	MetroCode pulumi.StringInput
-	// Identifier of an MGMT interface ACL template that will be
-	// applied on the device.
+	// Identifier of an MGMT interface ACL template that will be applied on the device.
 	MgmtAclTemplateUuid pulumi.StringPtrInput
 	// Device name.
 	Name pulumi.StringPtrInput
-	// List of email addresses that will receive device status
-	// notifications.
+	// List of email addresses that will receive device status notifications.
 	Notifications pulumi.StringArrayInput
 	// Name/number used to identify device order on the invoice.
 	OrderReference pulumi.StringPtrInput
 	// Device software package code.
 	PackageCode pulumi.StringInput
-	// Unique Identifier for the project resource where the device is scoped to.If you
-	// leave it out, the device will be created under the default project id of your organization.
+	// Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
 	ProjectId pulumi.StringPtrInput
 	// Purchase order number associated with a device order.
 	PurchaseOrderNumber pulumi.StringPtrInput
-	// Definition of secondary device for redundant
-	// device configurations. See Secondary Device below for more details.
+	// Definition of secondary device for redundant device configurations. See Secondary Device below for more details.
 	SecondaryDevice DeviceSecondaryDevicePtrInput
-	// Boolean value that determines device management mode, i.e.,
-	// `self-managed` or `Equinix-managed` (default).
+	// Boolean value that determines device management mode, i.e., `self-managed` or `Equinix-managed` (default).
 	SelfManaged pulumi.BoolPtrInput
 	// Definition of SSH key that will be provisioned on a device
 	SshKey DeviceSshKeyPtrInput
@@ -683,10 +587,8 @@ type DeviceArgs struct {
 	ThroughputUnit pulumi.StringPtrInput
 	// Device type code.
 	TypeCode pulumi.StringInput
-	// Map of vendor specific configuration parameters for a device
-	// (controller1, activationKey, managementType, siteId, systemIpAddress, private_address, private_cidr_mask, private_gateway, license_key, license_id)
-	// * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
-	//   on a device (max one key).  See SSH Key below for more details.
+	// Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId)
+	// * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
 	VendorConfiguration pulumi.StringMapInput
 	// Device software software version.
 	Version pulumi.StringInput
@@ -791,8 +693,7 @@ func (o DeviceOutput) AclTemplateId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringPtrOutput { return v.AclTemplateId }).(pulumi.StringPtrOutput)
 }
 
-// Additional Internet bandwidth, in Mbps, that will be
-// allocated to the device (in addition to default 15Mbps).
+// Additional Internet bandwidth, in Mbps, that will be allocated to the device (in addition to default 15Mbps).
 func (o DeviceOutput) AdditionalBandwidth() pulumi.IntOutput {
 	return o.ApplyT(func(v *Device) pulumi.IntOutput { return v.AdditionalBandwidth }).(pulumi.IntOutput)
 }
@@ -802,8 +703,7 @@ func (o DeviceOutput) Asn() pulumi.IntOutput {
 	return o.ApplyT(func(v *Device) pulumi.IntOutput { return v.Asn }).(pulumi.IntOutput)
 }
 
-// Boolean value that determines device licensing mode, i.e.,
-// `bring your own license` or `subscription` (default).
+// Boolean value that determines device licensing mode, i.e., `bring your own license` or `subscription` (default).
 func (o DeviceOutput) Byol() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Device) pulumi.BoolPtrOutput { return v.Byol }).(pulumi.BoolPtrOutput)
 }
@@ -813,14 +713,12 @@ func (o DeviceOutput) CloudInitFileId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringPtrOutput { return v.CloudInitFileId }).(pulumi.StringPtrOutput)
 }
 
-// An object that has the cluster details. See
-// Cluster Details below for more details.
+// An object that has the cluster details. See Cluster Details below for more details.
 func (o DeviceOutput) ClusterDetails() DeviceClusterDetailsPtrOutput {
 	return o.ApplyT(func(v *Device) DeviceClusterDetailsPtrOutput { return v.ClusterDetails }).(DeviceClusterDetailsPtrOutput)
 }
 
-// Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT).
-// If not specified, default will be INTERNET-ACCESS
+// Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT). If not specified, default will be INTERNET-ACCESS
 func (o DeviceOutput) Connectivity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringPtrOutput { return v.Connectivity }).(pulumi.StringPtrOutput)
 }
@@ -830,15 +728,12 @@ func (o DeviceOutput) CoreCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *Device) pulumi.IntOutput { return v.CoreCount }).(pulumi.IntOutput)
 }
 
-// Unique ID of an existing device.
-// Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual
-// device. This field is only meaningful for single devices.
+// Unique ID of an existing device. Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual device. This field is only meaningful for single devices.
 func (o DeviceOutput) DiverseDeviceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.DiverseDeviceId }).(pulumi.StringOutput)
 }
 
-// Name of the device with diverse device UUID. This field is returned in device details if the
-// device is created by passing diverse_device_id.
+// Name of the device with diverse device UUID. This field is returned in device details if the device is created by passing diverse_device_id.
 func (o DeviceOutput) DiverseDeviceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.DiverseDeviceName }).(pulumi.StringOutput)
 }
@@ -853,20 +748,17 @@ func (o DeviceOutput) Ibx() pulumi.StringOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.Ibx }).(pulumi.StringOutput)
 }
 
-// Number of network interfaces on a device. If not specified,
-// default number for a given device type will be used.
+// Number of network interfaces on a device. If not specified, default number for a given device type will be used.
 func (o DeviceOutput) InterfaceCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *Device) pulumi.IntOutput { return v.InterfaceCount }).(pulumi.IntOutput)
 }
 
-// List of device interfaces. See Interface Attribute below
-// for more details.
+// List of device interfaces. See Interface Attribute below for more details.
 func (o DeviceOutput) Interfaces() DeviceInterfaceArrayOutput {
 	return o.ApplyT(func(v *Device) DeviceInterfaceArrayOutput { return v.Interfaces }).(DeviceInterfaceArrayOutput)
 }
 
-// Path to the license file that will be uploaded and applied on a
-// device. Applicable for some device types in BYOL licensing mode.
+// Path to the license file that will be uploaded and applied on a device. Applicable for some device types in BYOL licensing mode.
 func (o DeviceOutput) LicenseFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringPtrOutput { return v.LicenseFile }).(pulumi.StringPtrOutput)
 }
@@ -876,14 +768,12 @@ func (o DeviceOutput) LicenseFileId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.LicenseFileId }).(pulumi.StringOutput)
 }
 
-// Device license registration status. Possible values are `APPLYING_LICENSE`,
-// `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
+// Device license registration status. Possible values are `APPLYING_LICENSE`, `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
 func (o DeviceOutput) LicenseStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.LicenseStatus }).(pulumi.StringOutput)
 }
 
-// License Token applicable for some device types in BYOL licensing
-// mode.
+// License Token applicable for some device types in BYOL licensing mode.
 func (o DeviceOutput) LicenseToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringPtrOutput { return v.LicenseToken }).(pulumi.StringPtrOutput)
 }
@@ -893,8 +783,7 @@ func (o DeviceOutput) MetroCode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.MetroCode }).(pulumi.StringOutput)
 }
 
-// Identifier of an MGMT interface ACL template that will be
-// applied on the device.
+// Identifier of an MGMT interface ACL template that will be applied on the device.
 func (o DeviceOutput) MgmtAclTemplateUuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringPtrOutput { return v.MgmtAclTemplateUuid }).(pulumi.StringPtrOutput)
 }
@@ -904,8 +793,7 @@ func (o DeviceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// List of email addresses that will receive device status
-// notifications.
+// List of email addresses that will receive device status notifications.
 func (o DeviceOutput) Notifications() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringArrayOutput { return v.Notifications }).(pulumi.StringArrayOutput)
 }
@@ -920,8 +808,7 @@ func (o DeviceOutput) PackageCode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.PackageCode }).(pulumi.StringOutput)
 }
 
-// Unique Identifier for the project resource where the device is scoped to.If you
-// leave it out, the device will be created under the default project id of your organization.
+// Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
 func (o DeviceOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
 }
@@ -931,8 +818,7 @@ func (o DeviceOutput) PurchaseOrderNumber() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringPtrOutput { return v.PurchaseOrderNumber }).(pulumi.StringPtrOutput)
 }
 
-// Device redundancy type applicable for HA devices, either
-// primary or secondary.
+// Device redundancy type applicable for HA devices, either primary or secondary.
 func (o DeviceOutput) RedundancyType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.RedundancyType }).(pulumi.StringOutput)
 }
@@ -947,14 +833,12 @@ func (o DeviceOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Definition of secondary device for redundant
-// device configurations. See Secondary Device below for more details.
+// Definition of secondary device for redundant device configurations. See Secondary Device below for more details.
 func (o DeviceOutput) SecondaryDevice() DeviceSecondaryDevicePtrOutput {
 	return o.ApplyT(func(v *Device) DeviceSecondaryDevicePtrOutput { return v.SecondaryDevice }).(DeviceSecondaryDevicePtrOutput)
 }
 
-// Boolean value that determines device management mode, i.e.,
-// `self-managed` or `Equinix-managed` (default).
+// Boolean value that determines device management mode, i.e., `self-managed` or `Equinix-managed` (default).
 func (o DeviceOutput) SelfManaged() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Device) pulumi.BoolPtrOutput { return v.SelfManaged }).(pulumi.BoolPtrOutput)
 }
@@ -1004,10 +888,8 @@ func (o DeviceOutput) Uuid() pulumi.StringOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.Uuid }).(pulumi.StringOutput)
 }
 
-// Map of vendor specific configuration parameters for a device
-// (controller1, activationKey, managementType, siteId, systemIpAddress, private_address, private_cidr_mask, private_gateway, license_key, license_id)
-//   - `ssh-key` - (Optional) Definition of SSH key that will be provisioned
-//     on a device (max one key).  See SSH Key below for more details.
+// Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId)
+// * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
 func (o DeviceOutput) VendorConfiguration() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringMapOutput { return v.VendorConfiguration }).(pulumi.StringMapOutput)
 }

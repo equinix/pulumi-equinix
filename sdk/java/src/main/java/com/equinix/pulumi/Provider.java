@@ -37,56 +37,66 @@ public class Provider extends com.pulumi.resources.ProviderResource {
         return Codegen.optional(this.authToken);
     }
     /**
-     * API Consumer Key available under My Apps section in developer portal
+     * API Consumer Key available under &#34;My Apps&#34; in developer portal. This argument can also be specified with the
+     * `EQUINIX_API_CLIENTID` shell environment variable.
      * 
      */
     @Export(name="clientId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clientId;
 
     /**
-     * @return API Consumer Key available under My Apps section in developer portal
+     * @return API Consumer Key available under &#34;My Apps&#34; in developer portal. This argument can also be specified with the
+     * `EQUINIX_API_CLIENTID` shell environment variable.
      * 
      */
     public Output<Optional<String>> clientId() {
         return Codegen.optional(this.clientId);
     }
     /**
-     * API Consumer secret available under My Apps section in developer portal
+     * API Consumer secret available under &#34;My Apps&#34; in developer portal. This argument can also be specified with the
+     * `EQUINIX_API_CLIENTSECRET` shell environment variable.
      * 
      */
     @Export(name="clientSecret", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clientSecret;
 
     /**
-     * @return API Consumer secret available under My Apps section in developer portal
+     * @return API Consumer secret available under &#34;My Apps&#34; in developer portal. This argument can also be specified with the
+     * `EQUINIX_API_CLIENTSECRET` shell environment variable.
      * 
      */
     public Output<Optional<String>> clientSecret() {
         return Codegen.optional(this.clientSecret);
     }
     /**
-     * The Equinix API base URL to point out desired environment. Defaults to https://api.equinix.com
+     * The Equinix API base URL to point out desired environment. This argument can also be specified with the
+     * `EQUINIX_API_ENDPOINT` shell environment variable. (Defaults to `https://api.equinix.com`)
      * 
      */
     @Export(name="endpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> endpoint;
 
     /**
-     * @return The Equinix API base URL to point out desired environment. Defaults to https://api.equinix.com
+     * @return The Equinix API base URL to point out desired environment. This argument can also be specified with the
+     * `EQUINIX_API_ENDPOINT` shell environment variable. (Defaults to `https://api.equinix.com`)
      * 
      */
     public Output<Optional<String>> endpoint() {
         return Codegen.optional(this.endpoint);
     }
     /**
-     * API token from the developer sandbox
+     * API tokens are generated from API Consumer clients using the [OAuth2
+     * API](https://developer.equinix.com/dev-docs/fabric/getting-started/getting-access-token#request-access-and-refresh-tokens).
+     * This argument can also be specified with the `EQUINIX_API_TOKEN` shell environment variable.
      * 
      */
     @Export(name="token", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> token;
 
     /**
-     * @return API token from the developer sandbox
+     * @return API tokens are generated from API Consumer clients using the [OAuth2
+     * API](https://developer.equinix.com/dev-docs/fabric/getting-started/getting-access-token#request-access-and-refresh-tokens).
+     * This argument can also be specified with the `EQUINIX_API_TOKEN` shell environment variable.
      * 
      */
     public Output<Optional<String>> token() {

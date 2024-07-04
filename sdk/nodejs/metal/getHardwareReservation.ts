@@ -74,8 +74,7 @@ export interface GetHardwareReservationResult {
      */
     readonly projectId: string;
     /**
-     * Flag indicating whether the reserved server is provisionable or not. Spare
-     * devices can't be provisioned unless they are activated first.
+     * Flag indicating whether the reserved server is provisionable or not. Spare devices can't be provisioned unless they are activated first.
      */
     readonly provisionable: boolean;
     /**
@@ -83,13 +82,11 @@ export interface GetHardwareReservationResult {
      */
     readonly shortId: string;
     /**
-     * Flag indicating whether the Hardware Reservation is a spare. Spare Hardware
-     * Reservations are used when a Hardware Reservations requires service from Metal Equinix.
+     * Flag indicating whether the Hardware Reservation is a spare. Spare Hardware Reservations are used when a Hardware Reservations requires service from Metal Equinix.
      */
     readonly spare: boolean;
     /**
-     * Switch short ID, can be used to determine if two devices are connected to the
-     * same switch.
+     * Switch short ID, can be used to determine if two devices are connected to the same switch.
      */
     readonly switchUuid: string;
 }

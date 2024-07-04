@@ -18,14 +18,14 @@ public final class DeviceNetworkArgs extends com.pulumi.resources.ResourceArgs {
     public static final DeviceNetworkArgs Empty = new DeviceNetworkArgs();
 
     /**
-     * IPv4 or IPv6 address string.
+     * IPv4 or IPv6 address string
      * 
      */
     @Import(name="address")
     private @Nullable Output<String> address;
 
     /**
-     * @return IPv4 or IPv6 address string.
+     * @return IPv4 or IPv6 address string
      * 
      */
     public Optional<Output<String>> address() {
@@ -33,14 +33,14 @@ public final class DeviceNetworkArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Bit length of the network mask of the address.
+     * CIDR suffix for IP address block to be assigned, i.e. amount of addresses
      * 
      */
     @Import(name="cidr")
     private @Nullable Output<Integer> cidr;
 
     /**
-     * @return Bit length of the network mask of the address.
+     * @return CIDR suffix for IP address block to be assigned, i.e. amount of addresses
      * 
      */
     public Optional<Output<Integer>> cidr() {
@@ -48,14 +48,14 @@ public final class DeviceNetworkArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * IP version. One of `4`, `6`.
+     * IP version - &#34;4&#34; or &#34;6&#34;
      * 
      */
     @Import(name="family")
     private @Nullable Output<Integer> family;
 
     /**
-     * @return IP version. One of `4`, `6`.
+     * @return IP version - &#34;4&#34; or &#34;6&#34;
      * 
      */
     public Optional<Output<Integer>> family() {
@@ -63,14 +63,14 @@ public final class DeviceNetworkArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Address of router.
+     * Address of router
      * 
      */
     @Import(name="gateway")
     private @Nullable Output<String> gateway;
 
     /**
-     * @return Address of router.
+     * @return Address of router
      * 
      */
     public Optional<Output<String>> gateway() {
@@ -78,14 +78,14 @@ public final class DeviceNetworkArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether the address is routable from the Internet.
+     * Whether the address is routable from the Internet
      * 
      */
     @Import(name="public")
     private @Nullable Output<Boolean> public_;
 
     /**
-     * @return Whether the address is routable from the Internet.
+     * @return Whether the address is routable from the Internet
      * 
      */
     public Optional<Output<Boolean>> public_() {
@@ -121,7 +121,7 @@ public final class DeviceNetworkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param address IPv4 or IPv6 address string.
+         * @param address IPv4 or IPv6 address string
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class DeviceNetworkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param address IPv4 or IPv6 address string.
+         * @param address IPv4 or IPv6 address string
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class DeviceNetworkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cidr Bit length of the network mask of the address.
+         * @param cidr CIDR suffix for IP address block to be assigned, i.e. amount of addresses
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class DeviceNetworkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cidr Bit length of the network mask of the address.
+         * @param cidr CIDR suffix for IP address block to be assigned, i.e. amount of addresses
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class DeviceNetworkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param family IP version. One of `4`, `6`.
+         * @param family IP version - &#34;4&#34; or &#34;6&#34;
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class DeviceNetworkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param family IP version. One of `4`, `6`.
+         * @param family IP version - &#34;4&#34; or &#34;6&#34;
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class DeviceNetworkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gateway Address of router.
+         * @param gateway Address of router
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class DeviceNetworkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gateway Address of router.
+         * @param gateway Address of router
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class DeviceNetworkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param public_ Whether the address is routable from the Internet.
+         * @param public_ Whether the address is routable from the Internet
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class DeviceNetworkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param public_ Whether the address is routable from the Internet.
+         * @param public_ Whether the address is routable from the Internet
          * 
          * @return builder
          * 

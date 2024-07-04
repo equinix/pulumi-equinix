@@ -25,28 +25,31 @@ class _ExportableConfig(types.ModuleType):
     @property
     def client_id(self) -> Optional[str]:
         """
-        API Consumer Key available under My Apps section in developer portal
+        API Consumer Key available under "My Apps" in developer portal. This argument can also be specified with the
+        `EQUINIX_API_CLIENTID` shell environment variable.
         """
         return __config__.get('clientId')
 
     @property
     def client_secret(self) -> Optional[str]:
         """
-        API Consumer secret available under My Apps section in developer portal
+        API Consumer secret available under "My Apps" in developer portal. This argument can also be specified with the
+        `EQUINIX_API_CLIENTSECRET` shell environment variable.
         """
         return __config__.get('clientSecret')
 
     @property
     def endpoint(self) -> Optional[str]:
         """
-        The Equinix API base URL to point out desired environment. Defaults to https://api.equinix.com
+        The Equinix API base URL to point out desired environment. This argument can also be specified with the
+        `EQUINIX_API_ENDPOINT` shell environment variable. (Defaults to `https://api.equinix.com`)
         """
         return __config__.get('endpoint')
 
     @property
     def max_retries(self) -> Optional[int]:
         """
-        Maximum number of retries.
+        Maximum number of retries in case of network failure.
         """
         return __config__.get_int('maxRetries')
 
@@ -61,21 +64,24 @@ class _ExportableConfig(types.ModuleType):
     def request_timeout(self) -> Optional[int]:
         """
         The duration of time, in seconds, that the Equinix Platform API Client should wait before canceling an API request.
-        Defaults to 30
+        Canceled requests may still result in provisioned resources. (Defaults to `30`)
         """
         return __config__.get_int('requestTimeout')
 
     @property
     def response_max_page_size(self) -> Optional[int]:
         """
-        The maximum number of records in a single response for REST queries that produce paginated responses
+        The maximum number of records in a single response for REST queries that produce paginated responses. (Default is client
+        specific)
         """
         return __config__.get_int('responseMaxPageSize')
 
     @property
     def token(self) -> Optional[str]:
         """
-        API token from the developer sandbox
+        API tokens are generated from API Consumer clients using the [OAuth2
+        API](https://developer.equinix.com/dev-docs/fabric/getting-started/getting-access-token#request-access-and-refresh-tokens).
+        This argument can also be specified with the `EQUINIX_API_TOKEN` shell environment variable.
         """
         return __config__.get('token')
 

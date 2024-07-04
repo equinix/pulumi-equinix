@@ -32,16 +32,14 @@ public final class BgpState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * identifier of a connection established between.
-     * network device and remote service provider that will be used for peering.
+     * identifier of a connection established between. network device and remote service provider that will be used for peering.
      * 
      */
     @Import(name="connectionId")
     private @Nullable Output<String> connectionId;
 
     /**
-     * @return identifier of a connection established between.
-     * network device and remote service provider that will be used for peering.
+     * @return identifier of a connection established between. network device and remote service provider that will be used for peering.
      * 
      */
     public Optional<Output<String>> connectionId() {
@@ -49,16 +47,14 @@ public final class BgpState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * unique identifier of a network device that is a local peer in a given BGP peering
-     * configuration.
+     * unique identifier of a network device that is a local peer in a given BGP peering configuration.
      * 
      */
     @Import(name="deviceId")
     private @Nullable Output<String> deviceId;
 
     /**
-     * @return unique identifier of a network device that is a local peer in a given BGP peering
-     * configuration.
+     * @return unique identifier of a network device that is a local peer in a given BGP peering configuration.
      * 
      */
     public Optional<Output<String>> deviceId() {
@@ -96,16 +92,14 @@ public final class BgpState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * BGP peering configuration provisioning status, one of `PROVISIONING`,
-     * `PENDING_UPDATE`, `PROVISIONED`, `FAILED`.
+     * BGP peering configuration provisioning status, one of `PROVISIONING`, `PENDING_UPDATE`, `PROVISIONED`, `FAILED`.
      * 
      */
     @Import(name="provisioningStatus")
     private @Nullable Output<String> provisioningStatus;
 
     /**
-     * @return BGP peering configuration provisioning status, one of `PROVISIONING`,
-     * `PENDING_UPDATE`, `PROVISIONED`, `FAILED`.
+     * @return BGP peering configuration provisioning status, one of `PROVISIONING`, `PENDING_UPDATE`, `PROVISIONED`, `FAILED`.
      * 
      */
     public Optional<Output<String>> provisioningStatus() {
@@ -143,16 +137,14 @@ public final class BgpState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * BGP peer state, one of `Idle`, `Connect`, `Active`, `OpenSent`, `OpenConfirm`,
-     * `Established`.
+     * BGP peer state, one of `Idle`, `Connect`, `Active`, `OpenSent`, `OpenConfirm`, `Established`.
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return BGP peer state, one of `Idle`, `Connect`, `Active`, `OpenSent`, `OpenConfirm`,
-     * `Established`.
+     * @return BGP peer state, one of `Idle`, `Connect`, `Active`, `OpenSent`, `OpenConfirm`, `Established`.
      * 
      */
     public Optional<Output<String>> state() {
@@ -229,8 +221,7 @@ public final class BgpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectionId identifier of a connection established between.
-         * network device and remote service provider that will be used for peering.
+         * @param connectionId identifier of a connection established between. network device and remote service provider that will be used for peering.
          * 
          * @return builder
          * 
@@ -241,8 +232,7 @@ public final class BgpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectionId identifier of a connection established between.
-         * network device and remote service provider that will be used for peering.
+         * @param connectionId identifier of a connection established between. network device and remote service provider that will be used for peering.
          * 
          * @return builder
          * 
@@ -252,8 +242,7 @@ public final class BgpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deviceId unique identifier of a network device that is a local peer in a given BGP peering
-         * configuration.
+         * @param deviceId unique identifier of a network device that is a local peer in a given BGP peering configuration.
          * 
          * @return builder
          * 
@@ -264,8 +253,7 @@ public final class BgpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deviceId unique identifier of a network device that is a local peer in a given BGP peering
-         * configuration.
+         * @param deviceId unique identifier of a network device that is a local peer in a given BGP peering configuration.
          * 
          * @return builder
          * 
@@ -317,8 +305,7 @@ public final class BgpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param provisioningStatus BGP peering configuration provisioning status, one of `PROVISIONING`,
-         * `PENDING_UPDATE`, `PROVISIONED`, `FAILED`.
+         * @param provisioningStatus BGP peering configuration provisioning status, one of `PROVISIONING`, `PENDING_UPDATE`, `PROVISIONED`, `FAILED`.
          * 
          * @return builder
          * 
@@ -329,8 +316,7 @@ public final class BgpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param provisioningStatus BGP peering configuration provisioning status, one of `PROVISIONING`,
-         * `PENDING_UPDATE`, `PROVISIONED`, `FAILED`.
+         * @param provisioningStatus BGP peering configuration provisioning status, one of `PROVISIONING`, `PENDING_UPDATE`, `PROVISIONED`, `FAILED`.
          * 
          * @return builder
          * 
@@ -382,8 +368,7 @@ public final class BgpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param state BGP peer state, one of `Idle`, `Connect`, `Active`, `OpenSent`, `OpenConfirm`,
-         * `Established`.
+         * @param state BGP peer state, one of `Idle`, `Connect`, `Active`, `OpenSent`, `OpenConfirm`, `Established`.
          * 
          * @return builder
          * 
@@ -394,8 +379,7 @@ public final class BgpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param state BGP peer state, one of `Idle`, `Connect`, `Active`, `OpenSent`, `OpenConfirm`,
-         * `Established`.
+         * @param state BGP peer state, one of `Idle`, `Connect`, `Active`, `OpenSent`, `OpenConfirm`, `Established`.
          * 
          * @return builder
          * 

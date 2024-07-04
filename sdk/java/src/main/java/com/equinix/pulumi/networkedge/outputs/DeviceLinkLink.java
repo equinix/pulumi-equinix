@@ -12,8 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DeviceLinkLink {
     /**
-     * @return billing account number to be used for
-     * connection charges
+     * @return billing account number to be used for connection charges
      * 
      */
     private String accountNumber;
@@ -58,8 +57,7 @@ public final class DeviceLinkLink {
 
     private DeviceLinkLink() {}
     /**
-     * @return billing account number to be used for
-     * connection charges
+     * @return billing account number to be used for connection charges
      * 
      */
     public String accountNumber() {

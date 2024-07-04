@@ -5,8 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides an Equinix Metal Virtual Network datasource. VLANs data sources can be
- * searched by VLAN UUID, or project UUID and vxlan number.
+ * Provides an Equinix Metal Virtual Network datasource. VLANs data sources can be searched by VLAN UUID, or project UUID and vxlan number.
  *
  * ## Example Usage
  *
@@ -105,8 +104,7 @@ export interface GetVlanResult {
     readonly vxlan: number;
 }
 /**
- * Provides an Equinix Metal Virtual Network datasource. VLANs data sources can be
- * searched by VLAN UUID, or project UUID and vxlan number.
+ * Provides an Equinix Metal Virtual Network datasource. VLANs data sources can be searched by VLAN UUID, or project UUID and vxlan number.
  *
  * ## Example Usage
  *

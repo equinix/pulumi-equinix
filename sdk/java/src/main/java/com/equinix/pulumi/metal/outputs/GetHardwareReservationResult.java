@@ -40,8 +40,7 @@ public final class GetHardwareReservationResult {
      */
     private String projectId;
     /**
-     * @return Flag indicating whether the reserved server is provisionable or not. Spare
-     * devices can&#39;t be provisioned unless they are activated first.
+     * @return Flag indicating whether the reserved server is provisionable or not. Spare devices can&#39;t be provisioned unless they are activated first.
      * 
      */
     private Boolean provisionable;
@@ -51,14 +50,12 @@ public final class GetHardwareReservationResult {
      */
     private String shortId;
     /**
-     * @return Flag indicating whether the Hardware Reservation is a spare. Spare Hardware
-     * Reservations are used when a Hardware Reservations requires service from Metal Equinix.
+     * @return Flag indicating whether the Hardware Reservation is a spare. Spare Hardware Reservations are used when a Hardware Reservations requires service from Metal Equinix.
      * 
      */
     private Boolean spare;
     /**
-     * @return Switch short ID, can be used to determine if two devices are connected to the
-     * same switch.
+     * @return Switch short ID, can be used to determine if two devices are connected to the same switch.
      * 
      */
     private String switchUuid;
@@ -104,8 +101,7 @@ public final class GetHardwareReservationResult {
         return this.projectId;
     }
     /**
-     * @return Flag indicating whether the reserved server is provisionable or not. Spare
-     * devices can&#39;t be provisioned unless they are activated first.
+     * @return Flag indicating whether the reserved server is provisionable or not. Spare devices can&#39;t be provisioned unless they are activated first.
      * 
      */
     public Boolean provisionable() {
@@ -119,16 +115,14 @@ public final class GetHardwareReservationResult {
         return this.shortId;
     }
     /**
-     * @return Flag indicating whether the Hardware Reservation is a spare. Spare Hardware
-     * Reservations are used when a Hardware Reservations requires service from Metal Equinix.
+     * @return Flag indicating whether the Hardware Reservation is a spare. Spare Hardware Reservations are used when a Hardware Reservations requires service from Metal Equinix.
      * 
      */
     public Boolean spare() {
         return this.spare;
     }
     /**
-     * @return Switch short ID, can be used to determine if two devices are connected to the
-     * same switch.
+     * @return Switch short ID, can be used to determine if two devices are connected to the same switch.
      * 
      */
     public String switchUuid() {

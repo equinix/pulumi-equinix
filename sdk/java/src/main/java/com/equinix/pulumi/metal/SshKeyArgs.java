@@ -31,16 +31,14 @@ public final class SshKeyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The public key. If this is a file, it
-     * can be read using the file interpolation function
+     * The public key. If this is a file, it can be read using the file interpolation function
      * 
      */
     @Import(name="publicKey", required=true)
     private Output<String> publicKey;
 
     /**
-     * @return The public key. If this is a file, it
-     * can be read using the file interpolation function
+     * @return The public key. If this is a file, it can be read using the file interpolation function
      * 
      */
     public Output<String> publicKey() {
@@ -94,8 +92,7 @@ public final class SshKeyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param publicKey The public key. If this is a file, it
-         * can be read using the file interpolation function
+         * @param publicKey The public key. If this is a file, it can be read using the file interpolation function
          * 
          * @return builder
          * 
@@ -106,8 +103,7 @@ public final class SshKeyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param publicKey The public key. If this is a file, it
-         * can be read using the file interpolation function
+         * @param publicKey The public key. If this is a file, it can be read using the file interpolation function
          * 
          * @return builder
          * 

@@ -10,8 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Equinix.NetworkEdge
 {
     /// <summary>
-    /// Resource `equinix.networkedge.DeviceLink` allows creation and management of Equinix
-    /// Network Edge virtual network device links.
+    /// Resource `equinix.networkedge.DeviceLink` allows creation and management of Equinix Network Edge virtual network device links.
     /// 
     /// ## Example Usage
     /// ```csharp
@@ -94,22 +93,19 @@ namespace Pulumi.Equinix.NetworkEdge
     public partial class DeviceLink : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// definition of one or more devices belonging to the
-        /// device link. See Device section below for more details.
+        /// definition of one or more devices belonging to the device link. See Device section below for more details.
         /// </summary>
         [Output("devices")]
         public Output<ImmutableArray<Outputs.DeviceLinkDevice>> Devices { get; private set; } = null!;
 
         /// <summary>
-        /// definition of one or more, inter metro, connections belonging
-        /// to the device link. See Link section below for more details.
+        /// definition of one or more, inter metro, connections belonging to the device link. See Link section below for more details.
         /// </summary>
         [Output("links")]
         public Output<ImmutableArray<Outputs.DeviceLinkLink>> Links { get; private set; } = null!;
 
         /// <summary>
-        /// definition of one or more, inter metro, connections belonging
-        /// to the device link. See Metro Link section below for more details.
+        /// definition of one or more, inter metro, connections belonging to the device link. See Metro Link section below for more details.
         /// </summary>
         [Output("metroLinks")]
         public Output<ImmutableArray<Outputs.DeviceLinkMetroLink>> MetroLinks { get; private set; } = null!;
@@ -121,29 +117,25 @@ namespace Pulumi.Equinix.NetworkEdge
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Unique Identifier for the project resource where the device link is scoped to.If you
-        /// leave it out, the device link will be created under the default project id of your organization.
+        /// Unique Identifier for the project resource where the device link is scoped to.If you leave it out, the device link will be created under the default project id of your organization.
         /// </summary>
         [Output("projectId")]
         public Output<string> ProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the connection should be created through 
-        /// Fabric's primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
+        /// Whether the connection should be created through Fabric's primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
         /// </summary>
         [Output("redundancyType")]
         public Output<string?> RedundancyType { get; private set; } = null!;
 
         /// <summary>
-        /// device link provisioning status on a given device. One of `PROVISIONING`,
-        /// `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
+        /// device link provisioning status on a given device. One of `PROVISIONING`, `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// device link subnet in CIDR format. Not required for link
-        /// between self configured devices.
+        /// device link subnet in CIDR format. Not required for link between self configured devices.
         /// </summary>
         [Output("subnet")]
         public Output<string?> Subnet { get; private set; } = null!;
@@ -205,8 +197,7 @@ namespace Pulumi.Equinix.NetworkEdge
         private InputList<Inputs.DeviceLinkDeviceArgs>? _devices;
 
         /// <summary>
-        /// definition of one or more devices belonging to the
-        /// device link. See Device section below for more details.
+        /// definition of one or more devices belonging to the device link. See Device section below for more details.
         /// </summary>
         public InputList<Inputs.DeviceLinkDeviceArgs> Devices
         {
@@ -218,8 +209,7 @@ namespace Pulumi.Equinix.NetworkEdge
         private InputList<Inputs.DeviceLinkLinkArgs>? _links;
 
         /// <summary>
-        /// definition of one or more, inter metro, connections belonging
-        /// to the device link. See Link section below for more details.
+        /// definition of one or more, inter metro, connections belonging to the device link. See Link section below for more details.
         /// </summary>
         [Obsolete(@"Links is deprecated. Please use metro links instead.")]
         public InputList<Inputs.DeviceLinkLinkArgs> Links
@@ -232,8 +222,7 @@ namespace Pulumi.Equinix.NetworkEdge
         private InputList<Inputs.DeviceLinkMetroLinkArgs>? _metroLinks;
 
         /// <summary>
-        /// definition of one or more, inter metro, connections belonging
-        /// to the device link. See Metro Link section below for more details.
+        /// definition of one or more, inter metro, connections belonging to the device link. See Metro Link section below for more details.
         /// </summary>
         public InputList<Inputs.DeviceLinkMetroLinkArgs> MetroLinks
         {
@@ -248,22 +237,19 @@ namespace Pulumi.Equinix.NetworkEdge
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Unique Identifier for the project resource where the device link is scoped to.If you
-        /// leave it out, the device link will be created under the default project id of your organization.
+        /// Unique Identifier for the project resource where the device link is scoped to.If you leave it out, the device link will be created under the default project id of your organization.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// Whether the connection should be created through 
-        /// Fabric's primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
+        /// Whether the connection should be created through Fabric's primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
         /// </summary>
         [Input("redundancyType")]
         public Input<string>? RedundancyType { get; set; }
 
         /// <summary>
-        /// device link subnet in CIDR format. Not required for link
-        /// between self configured devices.
+        /// device link subnet in CIDR format. Not required for link between self configured devices.
         /// </summary>
         [Input("subnet")]
         public Input<string>? Subnet { get; set; }
@@ -280,8 +266,7 @@ namespace Pulumi.Equinix.NetworkEdge
         private InputList<Inputs.DeviceLinkDeviceGetArgs>? _devices;
 
         /// <summary>
-        /// definition of one or more devices belonging to the
-        /// device link. See Device section below for more details.
+        /// definition of one or more devices belonging to the device link. See Device section below for more details.
         /// </summary>
         public InputList<Inputs.DeviceLinkDeviceGetArgs> Devices
         {
@@ -293,8 +278,7 @@ namespace Pulumi.Equinix.NetworkEdge
         private InputList<Inputs.DeviceLinkLinkGetArgs>? _links;
 
         /// <summary>
-        /// definition of one or more, inter metro, connections belonging
-        /// to the device link. See Link section below for more details.
+        /// definition of one or more, inter metro, connections belonging to the device link. See Link section below for more details.
         /// </summary>
         [Obsolete(@"Links is deprecated. Please use metro links instead.")]
         public InputList<Inputs.DeviceLinkLinkGetArgs> Links
@@ -307,8 +291,7 @@ namespace Pulumi.Equinix.NetworkEdge
         private InputList<Inputs.DeviceLinkMetroLinkGetArgs>? _metroLinks;
 
         /// <summary>
-        /// definition of one or more, inter metro, connections belonging
-        /// to the device link. See Metro Link section below for more details.
+        /// definition of one or more, inter metro, connections belonging to the device link. See Metro Link section below for more details.
         /// </summary>
         public InputList<Inputs.DeviceLinkMetroLinkGetArgs> MetroLinks
         {
@@ -323,29 +306,25 @@ namespace Pulumi.Equinix.NetworkEdge
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Unique Identifier for the project resource where the device link is scoped to.If you
-        /// leave it out, the device link will be created under the default project id of your organization.
+        /// Unique Identifier for the project resource where the device link is scoped to.If you leave it out, the device link will be created under the default project id of your organization.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// Whether the connection should be created through 
-        /// Fabric's primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
+        /// Whether the connection should be created through Fabric's primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
         /// </summary>
         [Input("redundancyType")]
         public Input<string>? RedundancyType { get; set; }
 
         /// <summary>
-        /// device link provisioning status on a given device. One of `PROVISIONING`,
-        /// `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
+        /// device link provisioning status on a given device. One of `PROVISIONING`, `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// device link subnet in CIDR format. Not required for link
-        /// between self configured devices.
+        /// device link subnet in CIDR format. Not required for link between self configured devices.
         /// </summary>
         [Input("subnet")]
         public Input<string>? Subnet { get; set; }

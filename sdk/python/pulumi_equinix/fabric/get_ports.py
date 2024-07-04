@@ -76,8 +76,8 @@ def get_ports(filter: Optional[pulumi.InputType['GetPortsFilterArgs']] = None,
     Fabric V4 API compatible data resource that allow user to fetch port by name
 
     Additional documentation:
-    * Getting Started: <https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-ports-implement.htm>
-    * API: <https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#ports>
+    * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-ports-implement.htm
+    * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#ports
 
     ## Example Usage
 
@@ -125,8 +125,8 @@ def get_ports_output(filter: Optional[pulumi.Input[pulumi.InputType['GetPortsFil
     Fabric V4 API compatible data resource that allow user to fetch port by name
 
     Additional documentation:
-    * Getting Started: <https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-ports-implement.htm>
-    * API: <https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#ports>
+    * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-ports-implement.htm
+    * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#ports
 
     ## Example Usage
 

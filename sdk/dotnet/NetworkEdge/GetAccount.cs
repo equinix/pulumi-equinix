@@ -12,11 +12,9 @@ namespace Pulumi.Equinix.NetworkEdge
     public static class GetAccount
     {
         /// <summary>
-        /// Use this data source to get number and identifier of Equinix Network Edge
-        /// billing account in a given metro location.
+        /// Use this data source to get number and identifier of Equinix Network Edge billing account in a given metro location.
         /// 
-        /// Billing account reference is required to create Network Edge virtual device
-        /// in corresponding metro location.
+        /// Billing account reference is required to create Network Edge virtual device in corresponding metro location.
         /// 
         /// ## Example Usage
         /// 
@@ -46,11 +44,9 @@ namespace Pulumi.Equinix.NetworkEdge
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountResult>("equinix:networkedge/getAccount:getAccount", args ?? new GetAccountArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to get number and identifier of Equinix Network Edge
-        /// billing account in a given metro location.
+        /// Use this data source to get number and identifier of Equinix Network Edge billing account in a given metro location.
         /// 
-        /// Billing account reference is required to create Network Edge virtual device
-        /// in corresponding metro location.
+        /// Billing account reference is required to create Network Edge virtual device in corresponding metro location.
         /// 
         /// ## Example Usage
         /// 
@@ -96,15 +92,13 @@ namespace Pulumi.Equinix.NetworkEdge
         public string? Name { get; set; }
 
         /// <summary>
-        /// Unique Identifier for the project resource where the account is scoped to.If you
-        /// leave it out, all the billing accounts under all projects in your organization will be returned and it may return more than one account.
+        /// Unique Identifier for the project resource where the account is scoped to.If you leave it out, all the billing accounts under all projects in your organization will be returned and it may return more than one account.
         /// </summary>
         [Input("projectId")]
         public string? ProjectId { get; set; }
 
         /// <summary>
-        /// Account status for filtering. Possible values are: `Active`, `Processing`,
-        /// `Submitted`, `Staged`.
+        /// Account status for filtering. Possible values are: `Active`, `Processing`, `Submitted`, `Staged`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -130,15 +124,13 @@ namespace Pulumi.Equinix.NetworkEdge
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Unique Identifier for the project resource where the account is scoped to.If you
-        /// leave it out, all the billing accounts under all projects in your organization will be returned and it may return more than one account.
+        /// Unique Identifier for the project resource where the account is scoped to.If you leave it out, all the billing accounts under all projects in your organization will be returned and it may return more than one account.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// Account status for filtering. Possible values are: `Active`, `Processing`,
-        /// `Submitted`, `Staged`.
+        /// Account status for filtering. Possible values are: `Active`, `Processing`, `Submitted`, `Staged`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

@@ -61,11 +61,9 @@ type Port struct {
 	Mac pulumi.StringOutput `pulumi:"mac"`
 	// Name of the port, e.g. `bond0` or `eth0`.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// UUID of a VLAN to assign as a native VLAN. It must be one of
-	// attached VLANs (from `vlanIds` parameter).
+	// UUID of a VLAN to assign as a native VLAN. It must be one of attached VLANs (from `vlanIds` parameter).
 	NativeVlanId pulumi.StringPtrOutput `pulumi:"nativeVlanId"`
-	// One of layer2-bonded, layer2-individual, layer3, hybrid and hybrid-bonded. This
-	// attribute is only set on bond ports.
+	// One of layer2-bonded, layer2-individual, layer3, hybrid and hybrid-bonded. This attribute is only set on bond ports.
 	NetworkType pulumi.StringOutput `pulumi:"networkType"`
 	// ID of the port to read.
 	PortId pulumi.StringOutput `pulumi:"portId"`
@@ -73,11 +71,9 @@ type Port struct {
 	ResetOnDelete pulumi.BoolPtrOutput `pulumi:"resetOnDelete"`
 	// Type is either "NetworkBondPort" for bond ports or "NetworkPort" for bondable ethernet ports.
 	Type pulumi.StringOutput `pulumi:"type"`
-	// List of VLAN UUIDs to attach to the port, valid only for L2 and Hybrid
-	// ports.
+	// List of VLAN UUIDs to attach to the port, valid only for L2 and Hybrid ports.
 	VlanIds pulumi.StringArrayOutput `pulumi:"vlanIds"`
-	// List of VXLAN IDs to attach to the port, valid only for L2 and Hybrid
-	// ports.
+	// List of VXLAN IDs to attach to the port, valid only for L2 and Hybrid ports.
 	VxlanIds pulumi.IntArrayOutput `pulumi:"vxlanIds"`
 }
 
@@ -131,11 +127,9 @@ type portState struct {
 	Mac *string `pulumi:"mac"`
 	// Name of the port, e.g. `bond0` or `eth0`.
 	Name *string `pulumi:"name"`
-	// UUID of a VLAN to assign as a native VLAN. It must be one of
-	// attached VLANs (from `vlanIds` parameter).
+	// UUID of a VLAN to assign as a native VLAN. It must be one of attached VLANs (from `vlanIds` parameter).
 	NativeVlanId *string `pulumi:"nativeVlanId"`
-	// One of layer2-bonded, layer2-individual, layer3, hybrid and hybrid-bonded. This
-	// attribute is only set on bond ports.
+	// One of layer2-bonded, layer2-individual, layer3, hybrid and hybrid-bonded. This attribute is only set on bond ports.
 	NetworkType *string `pulumi:"networkType"`
 	// ID of the port to read.
 	PortId *string `pulumi:"portId"`
@@ -143,11 +137,9 @@ type portState struct {
 	ResetOnDelete *bool `pulumi:"resetOnDelete"`
 	// Type is either "NetworkBondPort" for bond ports or "NetworkPort" for bondable ethernet ports.
 	Type *string `pulumi:"type"`
-	// List of VLAN UUIDs to attach to the port, valid only for L2 and Hybrid
-	// ports.
+	// List of VLAN UUIDs to attach to the port, valid only for L2 and Hybrid ports.
 	VlanIds []string `pulumi:"vlanIds"`
-	// List of VXLAN IDs to attach to the port, valid only for L2 and Hybrid
-	// ports.
+	// List of VXLAN IDs to attach to the port, valid only for L2 and Hybrid ports.
 	VxlanIds []int `pulumi:"vxlanIds"`
 }
 
@@ -166,11 +158,9 @@ type PortState struct {
 	Mac pulumi.StringPtrInput
 	// Name of the port, e.g. `bond0` or `eth0`.
 	Name pulumi.StringPtrInput
-	// UUID of a VLAN to assign as a native VLAN. It must be one of
-	// attached VLANs (from `vlanIds` parameter).
+	// UUID of a VLAN to assign as a native VLAN. It must be one of attached VLANs (from `vlanIds` parameter).
 	NativeVlanId pulumi.StringPtrInput
-	// One of layer2-bonded, layer2-individual, layer3, hybrid and hybrid-bonded. This
-	// attribute is only set on bond ports.
+	// One of layer2-bonded, layer2-individual, layer3, hybrid and hybrid-bonded. This attribute is only set on bond ports.
 	NetworkType pulumi.StringPtrInput
 	// ID of the port to read.
 	PortId pulumi.StringPtrInput
@@ -178,11 +168,9 @@ type PortState struct {
 	ResetOnDelete pulumi.BoolPtrInput
 	// Type is either "NetworkBondPort" for bond ports or "NetworkPort" for bondable ethernet ports.
 	Type pulumi.StringPtrInput
-	// List of VLAN UUIDs to attach to the port, valid only for L2 and Hybrid
-	// ports.
+	// List of VLAN UUIDs to attach to the port, valid only for L2 and Hybrid ports.
 	VlanIds pulumi.StringArrayInput
-	// List of VXLAN IDs to attach to the port, valid only for L2 and Hybrid
-	// ports.
+	// List of VXLAN IDs to attach to the port, valid only for L2 and Hybrid ports.
 	VxlanIds pulumi.IntArrayInput
 }
 
@@ -195,18 +183,15 @@ type portArgs struct {
 	Bonded bool `pulumi:"bonded"`
 	// Whether to put the port to Layer 2 mode, valid only for bond ports.
 	Layer2 *bool `pulumi:"layer2"`
-	// UUID of a VLAN to assign as a native VLAN. It must be one of
-	// attached VLANs (from `vlanIds` parameter).
+	// UUID of a VLAN to assign as a native VLAN. It must be one of attached VLANs (from `vlanIds` parameter).
 	NativeVlanId *string `pulumi:"nativeVlanId"`
 	// ID of the port to read.
 	PortId string `pulumi:"portId"`
 	// Behavioral setting to reset the port to default settings (layer3 bonded mode without any vlan attached) before delete/destroy.
 	ResetOnDelete *bool `pulumi:"resetOnDelete"`
-	// List of VLAN UUIDs to attach to the port, valid only for L2 and Hybrid
-	// ports.
+	// List of VLAN UUIDs to attach to the port, valid only for L2 and Hybrid ports.
 	VlanIds []string `pulumi:"vlanIds"`
-	// List of VXLAN IDs to attach to the port, valid only for L2 and Hybrid
-	// ports.
+	// List of VXLAN IDs to attach to the port, valid only for L2 and Hybrid ports.
 	VxlanIds []int `pulumi:"vxlanIds"`
 }
 
@@ -216,18 +201,15 @@ type PortArgs struct {
 	Bonded pulumi.BoolInput
 	// Whether to put the port to Layer 2 mode, valid only for bond ports.
 	Layer2 pulumi.BoolPtrInput
-	// UUID of a VLAN to assign as a native VLAN. It must be one of
-	// attached VLANs (from `vlanIds` parameter).
+	// UUID of a VLAN to assign as a native VLAN. It must be one of attached VLANs (from `vlanIds` parameter).
 	NativeVlanId pulumi.StringPtrInput
 	// ID of the port to read.
 	PortId pulumi.StringInput
 	// Behavioral setting to reset the port to default settings (layer3 bonded mode without any vlan attached) before delete/destroy.
 	ResetOnDelete pulumi.BoolPtrInput
-	// List of VLAN UUIDs to attach to the port, valid only for L2 and Hybrid
-	// ports.
+	// List of VLAN UUIDs to attach to the port, valid only for L2 and Hybrid ports.
 	VlanIds pulumi.StringArrayInput
-	// List of VXLAN IDs to attach to the port, valid only for L2 and Hybrid
-	// ports.
+	// List of VXLAN IDs to attach to the port, valid only for L2 and Hybrid ports.
 	VxlanIds pulumi.IntArrayInput
 }
 
@@ -353,14 +335,12 @@ func (o PortOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Port) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// UUID of a VLAN to assign as a native VLAN. It must be one of
-// attached VLANs (from `vlanIds` parameter).
+// UUID of a VLAN to assign as a native VLAN. It must be one of attached VLANs (from `vlanIds` parameter).
 func (o PortOutput) NativeVlanId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Port) pulumi.StringPtrOutput { return v.NativeVlanId }).(pulumi.StringPtrOutput)
 }
 
-// One of layer2-bonded, layer2-individual, layer3, hybrid and hybrid-bonded. This
-// attribute is only set on bond ports.
+// One of layer2-bonded, layer2-individual, layer3, hybrid and hybrid-bonded. This attribute is only set on bond ports.
 func (o PortOutput) NetworkType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Port) pulumi.StringOutput { return v.NetworkType }).(pulumi.StringOutput)
 }
@@ -380,14 +360,12 @@ func (o PortOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Port) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// List of VLAN UUIDs to attach to the port, valid only for L2 and Hybrid
-// ports.
+// List of VLAN UUIDs to attach to the port, valid only for L2 and Hybrid ports.
 func (o PortOutput) VlanIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Port) pulumi.StringArrayOutput { return v.VlanIds }).(pulumi.StringArrayOutput)
 }
 
-// List of VXLAN IDs to attach to the port, valid only for L2 and Hybrid
-// ports.
+// List of VXLAN IDs to attach to the port, valid only for L2 and Hybrid ports.
 func (o PortOutput) VxlanIds() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v *Port) pulumi.IntArrayOutput { return v.VxlanIds }).(pulumi.IntArrayOutput)
 }

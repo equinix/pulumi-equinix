@@ -12,8 +12,7 @@ namespace Pulumi.Equinix.Metal
     public static class GetReservedIpBlock
     {
         /// <summary>
-        /// Use this data source to find IP address blocks in Equinix Metal. You can use IP address or a block
-        /// ID for lookup.
+        /// Use this data source to find IP address blocks in Equinix Metal. You can use IP address or a block ID for lookup.
         /// 
         /// &gt; For backward compatibility, this data source can be also used for precreated (management) IP blocks.
         /// 
@@ -23,8 +22,7 @@ namespace Pulumi.Equinix.Metal
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetReservedIpBlockResult>("equinix:metal/getReservedIpBlock:getReservedIpBlock", args ?? new GetReservedIpBlockArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to find IP address blocks in Equinix Metal. You can use IP address or a block
-        /// ID for lookup.
+        /// Use this data source to find IP address blocks in Equinix Metal. You can use IP address or a block ID for lookup.
         /// 
         /// &gt; For backward compatibility, this data source can be also used for precreated (management) IP blocks.
         /// 

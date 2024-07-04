@@ -103,6 +103,7 @@ __all__ = [
     'GetNetworksSortArgs',
     'GetPortsFilterArgs',
     'GetServiceProfilesFilterArgs',
+    'GetServiceProfilesPaginationArgs',
     'GetServiceProfilesSortArgs',
 ]
 
@@ -734,13 +735,11 @@ class ConnectionASideAccessPointArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""use router attribute instead; gateway is no longer a part of the supported backend""")
     def gateway(self) -> Optional[pulumi.Input['ConnectionASideAccessPointGatewayArgs']]:
         """
         **Deprecated** `gateway` Use `router` attribute instead
         """
-        warnings.warn("""use router attribute instead; gateway is no longer a part of the supported backend""", DeprecationWarning)
-        pulumi.log.warn("""gateway is deprecated: use router attribute instead; gateway is no longer a part of the supported backend""")
-
         return pulumi.get(self, "gateway")
 
     @gateway.setter
@@ -2671,13 +2670,11 @@ class ConnectionZSideAccessPointArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""use router attribute instead; gateway is no longer a part of the supported backend""")
     def gateway(self) -> Optional[pulumi.Input['ConnectionZSideAccessPointGatewayArgs']]:
         """
         **Deprecated** `gateway` Use `router` attribute instead
         """
-        warnings.warn("""use router attribute instead; gateway is no longer a part of the supported backend""", DeprecationWarning)
-        pulumi.log.warn("""gateway is deprecated: use router attribute instead; gateway is no longer a part of the supported backend""")
-
         return pulumi.get(self, "gateway")
 
     @gateway.setter
@@ -6733,56 +6730,92 @@ class GetPortsFilterArgs:
 @pulumi.input_type
 class GetServiceProfilesFilterArgs:
     def __init__(__self__, *,
-                 operator: Optional[str] = None,
-                 property: Optional[str] = None,
-                 values: Optional[Sequence[str]] = None):
+                 operator: str,
+                 property: str,
+                 values: Sequence[str]):
         """
-        :param str operator: Possible operator to use on filters = - equal
-        :param str property: Search Criteria for Service Profile - /name, /uuid, /state, /metros/code, /visibility, /type
-        :param Sequence[str] values: Values
+        :param str operator: Operators to use on your filtered field with the values given. One of [=]
+        :param str property: Property to apply operator and values to. One of [/name /uuid /state /metros/code /visibility /type /project/projectId]
+        :param Sequence[str] values: The values that you want to apply the property+operator combination to in order to filter your data search
         """
-        if operator is not None:
-            pulumi.set(__self__, "operator", operator)
-        if property is not None:
-            pulumi.set(__self__, "property", property)
-        if values is not None:
-            pulumi.set(__self__, "values", values)
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "property", property)
+        pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
-    def operator(self) -> Optional[str]:
+    def operator(self) -> str:
         """
-        Possible operator to use on filters = - equal
+        Operators to use on your filtered field with the values given. One of [=]
         """
         return pulumi.get(self, "operator")
 
     @operator.setter
-    def operator(self, value: Optional[str]):
+    def operator(self, value: str):
         pulumi.set(self, "operator", value)
 
     @property
     @pulumi.getter
-    def values(self) -> Optional[Sequence[str]]:
+    def values(self) -> Sequence[str]:
         """
-        Values
+        The values that you want to apply the property+operator combination to in order to filter your data search
         """
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Optional[Sequence[str]]):
+    def values(self, value: Sequence[str]):
         pulumi.set(self, "values", value)
 
     @property
     @pulumi.getter
-    def property(self) -> Optional[str]:
+    def property(self) -> str:
         """
-        Search Criteria for Service Profile - /name, /uuid, /state, /metros/code, /visibility, /type
+        Property to apply operator and values to. One of [/name /uuid /state /metros/code /visibility /type /project/projectId]
         """
         return pulumi.get(self, "property")
 
     @property.setter
-    def property(self, value: Optional[str]):
+    def property(self, value: str):
         pulumi.set(self, "property", value)
+
+
+@pulumi.input_type
+class GetServiceProfilesPaginationArgs:
+    def __init__(__self__, *,
+                 limit: Optional[int] = None,
+                 offset: Optional[int] = None):
+        """
+        :param int limit: Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+        :param int offset: The page offset for the pagination request. Index of the first element. Default is 0.
+        """
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if offset is not None:
+            pulumi.set(__self__, "offset", offset)
+
+    @property
+    @pulumi.getter
+    def limit(self) -> Optional[int]:
+        """
+        Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+        """
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: Optional[int]):
+        pulumi.set(self, "limit", value)
+
+    @property
+    @pulumi.getter
+    def offset(self) -> Optional[int]:
+        """
+        The page offset for the pagination request. Index of the first element. Default is 0.
+        """
+        return pulumi.get(self, "offset")
+
+    @offset.setter
+    def offset(self, value: Optional[int]):
+        pulumi.set(self, "offset", value)
 
 
 @pulumi.input_type
@@ -6791,8 +6824,8 @@ class GetServiceProfilesSortArgs:
                  direction: Optional[str] = None,
                  property: Optional[str] = None):
         """
-        :param str direction: Priority type- DESC, ASC
-        :param str property: Search operation sort criteria /name /state /changeLog/createdDateTime /changeLog/updatedDateTime
+        :param str direction: The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+        :param str property: The property name to use in sorting. One of [/name /uuid /state /location/metroCode /location/metroName /package/code /changeLog/createdDateTime /changeLog/updatedDateTime]. Defaults to /changeLog/updatedDateTime
         """
         if direction is not None:
             pulumi.set(__self__, "direction", direction)
@@ -6803,7 +6836,7 @@ class GetServiceProfilesSortArgs:
     @pulumi.getter
     def direction(self) -> Optional[str]:
         """
-        Priority type- DESC, ASC
+        The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
         """
         return pulumi.get(self, "direction")
 
@@ -6815,7 +6848,7 @@ class GetServiceProfilesSortArgs:
     @pulumi.getter
     def property(self) -> Optional[str]:
         """
-        Search operation sort criteria /name /state /changeLog/createdDateTime /changeLog/updatedDateTime
+        The property name to use in sorting. One of [/name /uuid /state /location/metroCode /location/metroName /package/code /changeLog/createdDateTime /changeLog/updatedDateTime]. Defaults to /changeLog/updatedDateTime
         """
         return pulumi.get(self, "property")
 

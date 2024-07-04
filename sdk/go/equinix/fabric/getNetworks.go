@@ -14,8 +14,8 @@ import (
 // Fabric V4 API compatible data resource that allow user to fetch Fabric Network for a given UUID
 //
 // Additional documentation:
-// * Getting Started: <https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-networks-implement.htm>
-// * API: <https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-networks>
+// * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-networks-implement.htm
+// * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-networks
 func GetNetworks(ctx *pulumi.Context, args *GetNetworksArgs, opts ...pulumi.InvokeOption) (*GetNetworksResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetNetworksResult

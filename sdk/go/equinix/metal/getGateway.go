@@ -71,8 +71,7 @@ type LookupGatewayResult struct {
 	Id        string `pulumi:"id"`
 	// UUID of IP reservation block bound to the gateway.
 	IpReservationId string `pulumi:"ipReservationId"`
-	// Size of the private IPv4 subnet bound to this metal gateway. One of
-	// `8`, `16`, `32`, `64`, `128`.
+	// Size of the private IPv4 subnet bound to this metal gateway. One of `8`, `16`, `32`, `64`, `128`.
 	PrivateIpv4SubnetSize int `pulumi:"privateIpv4SubnetSize"`
 	// UUID of the project where the gateway is scoped to.
 	ProjectId string `pulumi:"projectId"`
@@ -135,8 +134,7 @@ func (o LookupGatewayResultOutput) IpReservationId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGatewayResult) string { return v.IpReservationId }).(pulumi.StringOutput)
 }
 
-// Size of the private IPv4 subnet bound to this metal gateway. One of
-// `8`, `16`, `32`, `64`, `128`.
+// Size of the private IPv4 subnet bound to this metal gateway. One of `8`, `16`, `32`, `64`, `128`.
 func (o LookupGatewayResultOutput) PrivateIpv4SubnetSize() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupGatewayResult) int { return v.PrivateIpv4SubnetSize }).(pulumi.IntOutput)
 }

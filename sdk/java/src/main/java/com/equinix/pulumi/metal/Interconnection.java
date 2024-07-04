@@ -113,7 +113,7 @@ public class Interconnection extends com.pulumi.resources.CustomResource {
         return this.description;
     }
     /**
-     * Facility where the connection will be created.   Use metro instead; read the facility to metro migration guide
+     * Facility where the connection will be created. Use metro instead; read the facility to metro migration guide
      * 
      * @deprecated
      * Use metro instead of facility. For more information, read the migration guide.
@@ -124,7 +124,7 @@ public class Interconnection extends com.pulumi.resources.CustomResource {
     private Output<String> facility;
 
     /**
-     * @return Facility where the connection will be created.   Use metro instead; read the facility to metro migration guide
+     * @return Facility where the connection will be created. Use metro instead; read the facility to metro migration guide
      * 
      */
     public Output<String> facility() {
@@ -187,18 +187,14 @@ public class Interconnection extends com.pulumi.resources.CustomResource {
         return this.organizationId;
     }
     /**
-     * List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`). Schema of
-     * port is described in documentation of the
-     * equinix.metal.Interconnection datasource.
+     * List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`). Schema of port is described in documentation of the equinix.metal.Interconnection datasource.
      * 
      */
     @Export(name="ports", refs={List.class,InterconnectionPort.class}, tree="[0,1]")
     private Output<List<InterconnectionPort>> ports;
 
     /**
-     * @return List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`). Schema of
-     * port is described in documentation of the
-     * equinix.metal.Interconnection datasource.
+     * @return List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`). Schema of port is described in documentation of the equinix.metal.Interconnection datasource.
      * 
      */
     public Output<List<InterconnectionPort>> ports() {
@@ -247,28 +243,28 @@ public class Interconnection extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.serviceTokenType);
     }
     /**
-     * List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the equinix_ecx_l2_connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). Scehma of service_token is described in documentation of the equinix.metal.Interconnection datasource.
+     * List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the equinix.fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard). Scehma of service_token is described in documentation of the equinix.metal.Interconnection datasource.
      * 
      */
     @Export(name="serviceTokens", refs={List.class,InterconnectionServiceToken.class}, tree="[0,1]")
     private Output<List<InterconnectionServiceToken>> serviceTokens;
 
     /**
-     * @return List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the equinix_ecx_l2_connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). Scehma of service_token is described in documentation of the equinix.metal.Interconnection datasource.
+     * @return List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the equinix.fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard). Scehma of service_token is described in documentation of the equinix.metal.Interconnection datasource.
      * 
      */
     public Output<List<InterconnectionServiceToken>> serviceTokens() {
         return this.serviceTokens;
     }
     /**
-     * Connection speed -  Values must be in the format &#39;&lt;number&gt;Mbps&#39; or &#39;&lt;number&gt;Gpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
+     * Connection speed - Values must be in the format &#39;&lt;number&gt;Mbps&#39; or &#39;&lt;number&gt;Gpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
      * 
      */
     @Export(name="speed", refs={String.class}, tree="[0]")
     private Output<String> speed;
 
     /**
-     * @return Connection speed -  Values must be in the format &#39;&lt;number&gt;Mbps&#39; or &#39;&lt;number&gt;Gpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
+     * @return Connection speed - Values must be in the format &#39;&lt;number&gt;Mbps&#39; or &#39;&lt;number&gt;Gpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
      * 
      */
     public Output<String> speed() {
@@ -303,7 +299,7 @@ public class Interconnection extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the equinix_ecx_l2_connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `service_tokens` instead.
+     * (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the equinix.fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `service_tokens` instead.
      * 
      * @deprecated
      * If your organization already has connection service tokens enabled, use `service_tokens` instead
@@ -314,7 +310,7 @@ public class Interconnection extends com.pulumi.resources.CustomResource {
     private Output<String> token;
 
     /**
-     * @return (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the equinix_ecx_l2_connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `service_tokens` instead.
+     * @return (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the equinix.fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `service_tokens` instead.
      * 
      */
     public Output<String> token() {

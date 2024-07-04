@@ -10,12 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Equinix.Metal
 {
     /// <summary>
-    /// Provides an Equinix Metal project resource to allow you manage devices
-    /// in your projects.
+    /// Provides an Equinix Metal project resource to allow you manage devices in your projects.
     /// 
-    /// &gt; **NOTE:** Keep in mind that Equinix Metal invoicing is per project, so creating many
-    /// `equinix.metal.Project` resources will affect the rendered invoice. If you want to keep your
-    /// Equinix Metal bill simple and easy to review, please re-use your existing projects.
+    /// &gt; **NOTE:** Keep in mind that Equinix Metal invoicing is per project, so creating many `equinix.metal.Project` resources will affect the rendered invoice. If you want to keep your Equinix Metal bill simple and easy to review, please re-use your existing projects.
     /// 
     /// ## Example Usage
     /// ```csharp
@@ -61,8 +58,7 @@ namespace Pulumi.Equinix.Metal
         /// <summary>
         /// Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
         /// 
-        /// &gt; **NOTE:** Once you set the BGP config in a project, it can't be removed (due to a limitation in
-        /// the Equinix Metal API). It can be updated.
+        /// &gt; **NOTE:** Once you set the BGP config in a project, it can't be removed (due to a limitation in the Equinix Metal API). It can be updated.
         /// </summary>
         [Output("bgpConfig")]
         public Output<Outputs.ProjectBgpConfig?> BgpConfig { get; private set; } = null!;
@@ -74,21 +70,19 @@ namespace Pulumi.Equinix.Metal
         public Output<string> Created { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the project.  The maximum length is 80 characters
+        /// The name of the project. The maximum length is 80 characters
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The UUID of organization under which you want to create the project. If you
-        /// leave it out, the project will be created under your the default organization of your account.
+        /// The UUID of organization under which you want to create the project. If you leave it out, the project will be created under your the default organization of your account.
         /// </summary>
         [Output("organizationId")]
         public Output<string> OrganizationId { get; private set; } = null!;
 
         /// <summary>
-        /// The UUID of payment method for this project. The payment method and the
-        /// project need to belong to the same organization (passed with `organization_id`, or default).
+        /// The UUID of payment method for this project. The payment method and the project need to belong to the same organization (passed with `organization_id`, or default).
         /// </summary>
         [Output("paymentMethodId")]
         public Output<string> PaymentMethodId { get; private set; } = null!;
@@ -155,28 +149,25 @@ namespace Pulumi.Equinix.Metal
         /// <summary>
         /// Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
         /// 
-        /// &gt; **NOTE:** Once you set the BGP config in a project, it can't be removed (due to a limitation in
-        /// the Equinix Metal API). It can be updated.
+        /// &gt; **NOTE:** Once you set the BGP config in a project, it can't be removed (due to a limitation in the Equinix Metal API). It can be updated.
         /// </summary>
         [Input("bgpConfig")]
         public Input<Inputs.ProjectBgpConfigArgs>? BgpConfig { get; set; }
 
         /// <summary>
-        /// The name of the project.  The maximum length is 80 characters
+        /// The name of the project. The maximum length is 80 characters
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The UUID of organization under which you want to create the project. If you
-        /// leave it out, the project will be created under your the default organization of your account.
+        /// The UUID of organization under which you want to create the project. If you leave it out, the project will be created under your the default organization of your account.
         /// </summary>
         [Input("organizationId")]
         public Input<string>? OrganizationId { get; set; }
 
         /// <summary>
-        /// The UUID of payment method for this project. The payment method and the
-        /// project need to belong to the same organization (passed with `organization_id`, or default).
+        /// The UUID of payment method for this project. The payment method and the project need to belong to the same organization (passed with `organization_id`, or default).
         /// </summary>
         [Input("paymentMethodId")]
         public Input<string>? PaymentMethodId { get; set; }
@@ -198,8 +189,7 @@ namespace Pulumi.Equinix.Metal
         /// <summary>
         /// Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
         /// 
-        /// &gt; **NOTE:** Once you set the BGP config in a project, it can't be removed (due to a limitation in
-        /// the Equinix Metal API). It can be updated.
+        /// &gt; **NOTE:** Once you set the BGP config in a project, it can't be removed (due to a limitation in the Equinix Metal API). It can be updated.
         /// </summary>
         [Input("bgpConfig")]
         public Input<Inputs.ProjectBgpConfigGetArgs>? BgpConfig { get; set; }
@@ -211,21 +201,19 @@ namespace Pulumi.Equinix.Metal
         public Input<string>? Created { get; set; }
 
         /// <summary>
-        /// The name of the project.  The maximum length is 80 characters
+        /// The name of the project. The maximum length is 80 characters
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The UUID of organization under which you want to create the project. If you
-        /// leave it out, the project will be created under your the default organization of your account.
+        /// The UUID of organization under which you want to create the project. If you leave it out, the project will be created under your the default organization of your account.
         /// </summary>
         [Input("organizationId")]
         public Input<string>? OrganizationId { get; set; }
 
         /// <summary>
-        /// The UUID of payment method for this project. The payment method and the
-        /// project need to belong to the same organization (passed with `organization_id`, or default).
+        /// The UUID of payment method for this project. The payment method and the project need to belong to the same organization (passed with `organization_id`, or default).
         /// </summary>
         [Input("paymentMethodId")]
         public Input<string>? PaymentMethodId { get; set; }

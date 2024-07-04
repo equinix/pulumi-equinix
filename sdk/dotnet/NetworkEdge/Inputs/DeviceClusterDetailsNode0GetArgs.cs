@@ -47,9 +47,7 @@ namespace Pulumi.Equinix.NetworkEdge.Inputs
         public Input<string>? Uuid { get; set; }
 
         /// <summary>
-        /// An object that has fields relevant to the vendor of the
-        /// cluster device. See Cluster Details - Nodes - Vendor Configuration
-        /// below for more details.
+        /// An object that has fields relevant to the vendor of the cluster device. See Cluster Details - Nodes - Vendor Configuration below for more details.
         /// </summary>
         [Input("vendorConfiguration")]
         public Input<Inputs.DeviceClusterDetailsNode0VendorConfigurationGetArgs>? VendorConfiguration { get; set; }

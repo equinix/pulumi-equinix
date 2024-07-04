@@ -11,8 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to find IP address blocks in Equinix Metal. You can use IP address or a block
-// ID for lookup.
+// Use this data source to find IP address blocks in Equinix Metal. You can use IP address or a block ID for lookup.
 //
 // > For backward compatibility, this data source can be also used for precreated (management) IP blocks.
 //

@@ -114,7 +114,7 @@ def get_facility(capacities: Optional[Sequence[pulumi.InputType['GetFacilityCapa
                  features_requireds: Optional[Sequence[str]] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFacilityResult:
     """
-    > **Deprecated** Use `metal_get_metro` instead.  For more information, refer to the facility to metro migration guide.
+    > **Deprecated** Use `metal_get_metro` instead. For more information, refer to the facility to metro migration guide.
 
     Provides an Equinix Metal facility datasource.
 
@@ -131,8 +131,7 @@ def get_facility(capacities: Optional[Sequence[pulumi.InputType['GetFacilityCapa
 
     :param Sequence[pulumi.InputType['GetFacilityCapacityArgs']] capacities: One or more device plans for which the facility must have capacity.
     :param str code: The facility code to search for facilities.
-    :param Sequence[str] features_requireds: Set of feature strings that the facility must have. Some
-           possible values are `baremetal`, `ibx`, `storage`, `global_ipv4`, `backend_transfer`, `layer_2`.
+    :param Sequence[str] features_requireds: Set of feature strings that the facility must have. Some possible values are `baremetal`, `ibx`, `storage`, `global_ipv4`, `backend_transfer`, `layer_2`.
     """
     __args__ = dict()
     __args__['capacities'] = capacities
@@ -157,7 +156,7 @@ def get_facility_output(capacities: Optional[pulumi.Input[Optional[Sequence[pulu
                         features_requireds: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFacilityResult]:
     """
-    > **Deprecated** Use `metal_get_metro` instead.  For more information, refer to the facility to metro migration guide.
+    > **Deprecated** Use `metal_get_metro` instead. For more information, refer to the facility to metro migration guide.
 
     Provides an Equinix Metal facility datasource.
 
@@ -174,7 +173,6 @@ def get_facility_output(capacities: Optional[pulumi.Input[Optional[Sequence[pulu
 
     :param Sequence[pulumi.InputType['GetFacilityCapacityArgs']] capacities: One or more device plans for which the facility must have capacity.
     :param str code: The facility code to search for facilities.
-    :param Sequence[str] features_requireds: Set of feature strings that the facility must have. Some
-           possible values are `baremetal`, `ibx`, `storage`, `global_ipv4`, `backend_transfer`, `layer_2`.
+    :param Sequence[str] features_requireds: Set of feature strings that the facility must have. Some possible values are `baremetal`, `ibx`, `storage`, `global_ipv4`, `backend_transfer`, `layer_2`.
     """
     ...

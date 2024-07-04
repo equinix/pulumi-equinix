@@ -13,8 +13,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Resource `networkedge.SshUser` allows creation and management of Equinix Network
-// Edge SSH users.
+// Resource `networkedge.SshUser` allows creation and management of Equinix Network Edge SSH users.
 //
 // ## Example Usage
 // ```go

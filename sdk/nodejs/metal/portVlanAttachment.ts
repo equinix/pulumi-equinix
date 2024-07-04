@@ -13,8 +13,8 @@ import * as utilities from "../utilities";
  *
  * To learn more about Layer 2 networking in Equinix Metal, refer to
  *
- * * <https://metal.equinix.com/developers/docs/networking/layer2/>
- * * <https://metal.equinix.com/developers/docs/networking/layer2-configs/>
+ * * https://metal.equinix.com/developers/docs/networking/layer2/
+ * * https://metal.equinix.com/developers/docs/networking/layer2-configs/
  *
  * ## Attribute Referece
  *
@@ -76,15 +76,11 @@ export class PortVlanAttachment extends pulumi.CustomResource {
      */
     public readonly deviceId!: pulumi.Output<string>;
     /**
-     * Add port back to the bond when this resource is removed. Default is
-     * `false`.
+     * Add port back to the bond when this resource is removed. Default is `false`.
      */
     public readonly forceBond!: pulumi.Output<boolean | undefined>;
     /**
-     * Mark this VLAN a native VLAN on the port. This can be used only if this
-     * assignment assigns second or further VLAN to the port. To ensure that this attachment is not first
-     * on a port, you can use `dependsOn` pointing to another `equinix.metal.PortVlanAttachment`, just
-     * like in the layer2-individual example above.
+     * Mark this VLAN a native VLAN on the port. This can be used only if this assignment assigns second or further VLAN to the port. To ensure that this attachment is not first on a port, you can use `dependsOn` pointing to another `equinix.metal.PortVlanAttachment`, just like in the layer2-individual example above.
      */
     public readonly native!: pulumi.Output<boolean | undefined>;
     /**
@@ -157,15 +153,11 @@ export interface PortVlanAttachmentState {
      */
     deviceId?: pulumi.Input<string>;
     /**
-     * Add port back to the bond when this resource is removed. Default is
-     * `false`.
+     * Add port back to the bond when this resource is removed. Default is `false`.
      */
     forceBond?: pulumi.Input<boolean>;
     /**
-     * Mark this VLAN a native VLAN on the port. This can be used only if this
-     * assignment assigns second or further VLAN to the port. To ensure that this attachment is not first
-     * on a port, you can use `dependsOn` pointing to another `equinix.metal.PortVlanAttachment`, just
-     * like in the layer2-individual example above.
+     * Mark this VLAN a native VLAN on the port. This can be used only if this assignment assigns second or further VLAN to the port. To ensure that this attachment is not first on a port, you can use `dependsOn` pointing to another `equinix.metal.PortVlanAttachment`, just like in the layer2-individual example above.
      */
     native?: pulumi.Input<boolean>;
     /**
@@ -195,15 +187,11 @@ export interface PortVlanAttachmentArgs {
      */
     deviceId: pulumi.Input<string>;
     /**
-     * Add port back to the bond when this resource is removed. Default is
-     * `false`.
+     * Add port back to the bond when this resource is removed. Default is `false`.
      */
     forceBond?: pulumi.Input<boolean>;
     /**
-     * Mark this VLAN a native VLAN on the port. This can be used only if this
-     * assignment assigns second or further VLAN to the port. To ensure that this attachment is not first
-     * on a port, you can use `dependsOn` pointing to another `equinix.metal.PortVlanAttachment`, just
-     * like in the layer2-individual example above.
+     * Mark this VLAN a native VLAN on the port. This can be used only if this assignment assigns second or further VLAN to the port. To ensure that this attachment is not first on a port, you can use `dependsOn` pointing to another `equinix.metal.PortVlanAttachment`, just like in the layer2-individual example above.
      */
     native?: pulumi.Input<boolean>;
     /**

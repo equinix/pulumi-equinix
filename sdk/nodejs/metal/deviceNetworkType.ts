@@ -62,8 +62,7 @@ export class DeviceNetworkType extends pulumi.CustomResource {
      */
     public readonly deviceId!: pulumi.Output<string>;
     /**
-     * Network type to set. Must be one of `layer3`, `hybrid`, `hybrid-bonded`, `layer2-individual`
-     * and `layer2-bonded`.
+     * Network type to set. Must be one of `layer3`, `hybrid`, `hybrid-bonded`, `layer2-individual` and `layer2-bonded`.
      */
     public readonly type!: pulumi.Output<string>;
 
@@ -107,8 +106,7 @@ export interface DeviceNetworkTypeState {
      */
     deviceId?: pulumi.Input<string>;
     /**
-     * Network type to set. Must be one of `layer3`, `hybrid`, `hybrid-bonded`, `layer2-individual`
-     * and `layer2-bonded`.
+     * Network type to set. Must be one of `layer3`, `hybrid`, `hybrid-bonded`, `layer2-individual` and `layer2-bonded`.
      */
     type?: pulumi.Input<string>;
 }
@@ -122,8 +120,7 @@ export interface DeviceNetworkTypeArgs {
      */
     deviceId: pulumi.Input<string>;
     /**
-     * Network type to set. Must be one of `layer3`, `hybrid`, `hybrid-bonded`, `layer2-individual`
-     * and `layer2-bonded`.
+     * Network type to set. Must be one of `layer3`, `hybrid`, `hybrid-bonded`, `layer2-individual` and `layer2-bonded`.
      */
     type: pulumi.Input<string>;
 }

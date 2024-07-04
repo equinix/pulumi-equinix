@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > **Deprecated** Use `metal.getMetro` instead.  For more information, refer to the facility to metro migration guide.
+// > **Deprecated** Use `metal.getMetro` instead. For more information, refer to the facility to metro migration guide.
 //
 // Provides an Equinix Metal facility datasource.
 //
@@ -57,8 +57,7 @@ type GetFacilityArgs struct {
 	Capacities []GetFacilityCapacity `pulumi:"capacities"`
 	// The facility code to search for facilities.
 	Code string `pulumi:"code"`
-	// Set of feature strings that the facility must have. Some
-	// possible values are `baremetal`, `ibx`, `storage`, `globalIpv4`, `backendTransfer`, `layer2`.
+	// Set of feature strings that the facility must have. Some possible values are `baremetal`, `ibx`, `storage`, `globalIpv4`, `backendTransfer`, `layer2`.
 	FeaturesRequireds []string `pulumi:"featuresRequireds"`
 }
 
@@ -96,8 +95,7 @@ type GetFacilityOutputArgs struct {
 	Capacities GetFacilityCapacityArrayInput `pulumi:"capacities"`
 	// The facility code to search for facilities.
 	Code pulumi.StringInput `pulumi:"code"`
-	// Set of feature strings that the facility must have. Some
-	// possible values are `baremetal`, `ibx`, `storage`, `globalIpv4`, `backendTransfer`, `layer2`.
+	// Set of feature strings that the facility must have. Some possible values are `baremetal`, `ibx`, `storage`, `globalIpv4`, `backendTransfer`, `layer2`.
 	FeaturesRequireds pulumi.StringArrayInput `pulumi:"featuresRequireds"`
 }
 

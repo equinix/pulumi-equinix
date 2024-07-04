@@ -84,15 +84,13 @@ namespace Pulumi.Equinix.Metal
     public sealed class GetIpBlockRangesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Facility code filtering the IP blocks. Global IPv4 blocks will be listed
-        /// anyway. If you omit this and metro, all the block from the project will be listed.   Use metro instead; read the facility to metro migration guide
+        /// Facility code filtering the IP blocks. Global IPv4 blocks will be listed anyway. If you omit this and metro, all the block from the project will be listed. Use metro instead; read the facility to metro migration guide
         /// </summary>
         [Input("facility")]
         public string? Facility { get; set; }
 
         /// <summary>
-        /// Metro code filtering the IP blocks. Global IPv4 blocks will be listed
-        /// anyway. If you omit this and facility, all the block from the project will be listed.
+        /// Metro code filtering the IP blocks. Global IPv4 blocks will be listed anyway. If you omit this and facility, all the block from the project will be listed.
         /// </summary>
         [Input("metro")]
         public string? Metro { get; set; }
@@ -112,15 +110,13 @@ namespace Pulumi.Equinix.Metal
     public sealed class GetIpBlockRangesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Facility code filtering the IP blocks. Global IPv4 blocks will be listed
-        /// anyway. If you omit this and metro, all the block from the project will be listed.   Use metro instead; read the facility to metro migration guide
+        /// Facility code filtering the IP blocks. Global IPv4 blocks will be listed anyway. If you omit this and metro, all the block from the project will be listed. Use metro instead; read the facility to metro migration guide
         /// </summary>
         [Input("facility")]
         public Input<string>? Facility { get; set; }
 
         /// <summary>
-        /// Metro code filtering the IP blocks. Global IPv4 blocks will be listed
-        /// anyway. If you omit this and facility, all the block from the project will be listed.
+        /// Metro code filtering the IP blocks. Global IPv4 blocks will be listed anyway. If you omit this and facility, all the block from the project will be listed.
         /// </summary>
         [Input("metro")]
         public Input<string>? Metro { get; set; }

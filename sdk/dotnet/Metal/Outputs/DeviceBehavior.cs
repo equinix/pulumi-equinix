@@ -14,7 +14,7 @@ namespace Pulumi.Equinix.Metal.Outputs
     public sealed class DeviceBehavior
     {
         /// <summary>
-        /// List of attributes that are allowed to change without recreating the instance. Supported attributes: `custom_data`, `user_data`"
+        /// List of attributes that are allowed to change without recreating the instance. Supported attributes: `custom_data`, `user_data`
         /// </summary>
         public readonly ImmutableArray<string> AllowChanges;
 

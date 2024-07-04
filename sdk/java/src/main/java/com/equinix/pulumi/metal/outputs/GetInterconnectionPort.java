@@ -5,7 +5,6 @@ package com.equinix.pulumi.metal.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -46,7 +45,7 @@ public final class GetInterconnectionPort {
      * @return List of IDs of virtual cicruits attached to this port.
      * 
      */
-    private List<Object> virtualCircuitIds;
+    private List<String> virtualCircuitIds;
 
     private GetInterconnectionPort() {}
     /**
@@ -95,7 +94,7 @@ public final class GetInterconnectionPort {
      * @return List of IDs of virtual cicruits attached to this port.
      * 
      */
-    public List<Object> virtualCircuitIds() {
+    public List<String> virtualCircuitIds() {
         return this.virtualCircuitIds;
     }
 
@@ -114,7 +113,7 @@ public final class GetInterconnectionPort {
         private String role;
         private Integer speed;
         private String status;
-        private List<Object> virtualCircuitIds;
+        private List<String> virtualCircuitIds;
         public Builder() {}
         public Builder(GetInterconnectionPort defaults) {
     	      Objects.requireNonNull(defaults);
@@ -158,11 +157,11 @@ public final class GetInterconnectionPort {
             return this;
         }
         @CustomType.Setter
-        public Builder virtualCircuitIds(List<Object> virtualCircuitIds) {
+        public Builder virtualCircuitIds(List<String> virtualCircuitIds) {
             this.virtualCircuitIds = Objects.requireNonNull(virtualCircuitIds);
             return this;
         }
-        public Builder virtualCircuitIds(Object... virtualCircuitIds) {
+        public Builder virtualCircuitIds(String... virtualCircuitIds) {
             return virtualCircuitIds(List.of(virtualCircuitIds));
         }
         public GetInterconnectionPort build() {

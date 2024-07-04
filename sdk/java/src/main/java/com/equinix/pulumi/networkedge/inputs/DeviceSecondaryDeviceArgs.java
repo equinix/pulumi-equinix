@@ -36,16 +36,14 @@ public final class DeviceSecondaryDeviceArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Identifier of a WAN interface ACL template that will be applied
-     * on a secondary device.
+     * Identifier of a WAN interface ACL template that will be applied on a secondary device.
      * 
      */
     @Import(name="aclTemplateId")
     private @Nullable Output<String> aclTemplateId;
 
     /**
-     * @return Identifier of a WAN interface ACL template that will be applied
-     * on a secondary device.
+     * @return Identifier of a WAN interface ACL template that will be applied on a secondary device.
      * 
      */
     public Optional<Output<String>> aclTemplateId() {
@@ -53,16 +51,14 @@ public final class DeviceSecondaryDeviceArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Additional Internet bandwidth, in Mbps, for a secondary
-     * device.
+     * Additional Internet bandwidth, in Mbps, for a secondary device.
      * 
      */
     @Import(name="additionalBandwidth")
     private @Nullable Output<Integer> additionalBandwidth;
 
     /**
-     * @return Additional Internet bandwidth, in Mbps, for a secondary
-     * device.
+     * @return Additional Internet bandwidth, in Mbps, for a secondary device.
      * 
      */
     public Optional<Output<Integer>> additionalBandwidth() {
@@ -130,16 +126,14 @@ public final class DeviceSecondaryDeviceArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * List of device interfaces. See Interface Attribute below
-     * for more details.
+     * List of device interfaces. See Interface Attribute below for more details.
      * 
      */
     @Import(name="interfaces")
     private @Nullable Output<List<DeviceSecondaryDeviceInterfaceArgs>> interfaces;
 
     /**
-     * @return List of device interfaces. See Interface Attribute below
-     * for more details.
+     * @return List of device interfaces. See Interface Attribute below for more details.
      * 
      */
     public Optional<Output<List<DeviceSecondaryDeviceInterfaceArgs>>> interfaces() {
@@ -147,16 +141,14 @@ public final class DeviceSecondaryDeviceArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Path to the license file that will be uploaded and applied on a
-     * secondary device. Applicable for some device types in BYOL licensing mode.
+     * Path to the license file that will be uploaded and applied on a secondary device. Applicable for some device types in BYOL licensing mode.
      * 
      */
     @Import(name="licenseFile")
     private @Nullable Output<String> licenseFile;
 
     /**
-     * @return Path to the license file that will be uploaded and applied on a
-     * secondary device. Applicable for some device types in BYOL licensing mode.
+     * @return Path to the license file that will be uploaded and applied on a secondary device. Applicable for some device types in BYOL licensing mode.
      * 
      */
     public Optional<Output<String>> licenseFile() {
@@ -179,16 +171,14 @@ public final class DeviceSecondaryDeviceArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Device license registration status. Possible values are `APPLYING_LICENSE`,
-     * `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
+     * Device license registration status. Possible values are `APPLYING_LICENSE`, `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
      * 
      */
     @Import(name="licenseStatus")
     private @Nullable Output<String> licenseStatus;
 
     /**
-     * @return Device license registration status. Possible values are `APPLYING_LICENSE`,
-     * `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
+     * @return Device license registration status. Possible values are `APPLYING_LICENSE`, `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
      * 
      */
     public Optional<Output<String>> licenseStatus() {
@@ -226,20 +216,16 @@ public final class DeviceSecondaryDeviceArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Identifier of an MGMT interface ACL template that will be
-     * applied on a secondary device.
-     * * `ssh-key` - (Optional) Up to one definition of SSH key that will be provisioned on a secondary
-     *   device.
+     * Identifier of an MGMT interface ACL template that will be applied on a secondary device.
+     * * `ssh-key` - (Optional) Up to one definition of SSH key that will be provisioned on a secondary device.
      * 
      */
     @Import(name="mgmtAclTemplateUuid")
     private @Nullable Output<String> mgmtAclTemplateUuid;
 
     /**
-     * @return Identifier of an MGMT interface ACL template that will be
-     * applied on a secondary device.
-     * * `ssh-key` - (Optional) Up to one definition of SSH key that will be provisioned on a secondary
-     *   device.
+     * @return Identifier of an MGMT interface ACL template that will be applied on a secondary device.
+     * * `ssh-key` - (Optional) Up to one definition of SSH key that will be provisioned on a secondary device.
      * 
      */
     public Optional<Output<String>> mgmtAclTemplateUuid() {
@@ -262,16 +248,14 @@ public final class DeviceSecondaryDeviceArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * List of email addresses that will receive notifications about
-     * secondary device.
+     * List of email addresses that will receive notifications about secondary device.
      * 
      */
     @Import(name="notifications", required=true)
     private Output<List<String>> notifications;
 
     /**
-     * @return List of email addresses that will receive notifications about
-     * secondary device.
+     * @return List of email addresses that will receive notifications about secondary device.
      * 
      */
     public Output<List<String>> notifications() {
@@ -279,16 +263,14 @@ public final class DeviceSecondaryDeviceArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Unique Identifier for the project resource where the device is scoped to.If you
-     * leave it out, the device will be created under the default project id of your organization.
+     * Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
      * 
      */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
     /**
-     * @return Unique Identifier for the project resource where the device is scoped to.If you
-     * leave it out, the device will be created under the default project id of your organization.
+     * @return Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
      * 
      */
     public Optional<Output<String>> projectId() {
@@ -296,16 +278,14 @@ public final class DeviceSecondaryDeviceArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Device redundancy type applicable for HA devices, either
-     * primary or secondary.
+     * Device redundancy type applicable for HA devices, either primary or secondary.
      * 
      */
     @Import(name="redundancyType")
     private @Nullable Output<String> redundancyType;
 
     /**
-     * @return Device redundancy type applicable for HA devices, either
-     * primary or secondary.
+     * @return Device redundancy type applicable for HA devices, either primary or secondary.
      * 
      */
     public Optional<Output<String>> redundancyType() {
@@ -418,18 +398,14 @@ public final class DeviceSecondaryDeviceArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Key/Value pairs of vendor specific configuration parameters
-     * for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`,
-     * `systemIpAddress`, `private_address`, `private_cidr_mask`, `private_gateway`, `license_key`, `license_id`.
+     * Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`.
      * 
      */
     @Import(name="vendorConfiguration")
     private @Nullable Output<Map<String,String>> vendorConfiguration;
 
     /**
-     * @return Key/Value pairs of vendor specific configuration parameters
-     * for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`,
-     * `systemIpAddress`, `private_address`, `private_cidr_mask`, `private_gateway`, `license_key`, `license_id`.
+     * @return Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`.
      * 
      */
     public Optional<Output<Map<String,String>>> vendorConfiguration() {
@@ -539,8 +515,7 @@ public final class DeviceSecondaryDeviceArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param aclTemplateId Identifier of a WAN interface ACL template that will be applied
-         * on a secondary device.
+         * @param aclTemplateId Identifier of a WAN interface ACL template that will be applied on a secondary device.
          * 
          * @return builder
          * 
@@ -551,8 +526,7 @@ public final class DeviceSecondaryDeviceArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param aclTemplateId Identifier of a WAN interface ACL template that will be applied
-         * on a secondary device.
+         * @param aclTemplateId Identifier of a WAN interface ACL template that will be applied on a secondary device.
          * 
          * @return builder
          * 
@@ -562,8 +536,7 @@ public final class DeviceSecondaryDeviceArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param additionalBandwidth Additional Internet bandwidth, in Mbps, for a secondary
-         * device.
+         * @param additionalBandwidth Additional Internet bandwidth, in Mbps, for a secondary device.
          * 
          * @return builder
          * 
@@ -574,8 +547,7 @@ public final class DeviceSecondaryDeviceArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param additionalBandwidth Additional Internet bandwidth, in Mbps, for a secondary
-         * device.
+         * @param additionalBandwidth Additional Internet bandwidth, in Mbps, for a secondary device.
          * 
          * @return builder
          * 
@@ -669,8 +641,7 @@ public final class DeviceSecondaryDeviceArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param interfaces List of device interfaces. See Interface Attribute below
-         * for more details.
+         * @param interfaces List of device interfaces. See Interface Attribute below for more details.
          * 
          * @return builder
          * 
@@ -681,8 +652,7 @@ public final class DeviceSecondaryDeviceArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param interfaces List of device interfaces. See Interface Attribute below
-         * for more details.
+         * @param interfaces List of device interfaces. See Interface Attribute below for more details.
          * 
          * @return builder
          * 
@@ -692,8 +662,7 @@ public final class DeviceSecondaryDeviceArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param interfaces List of device interfaces. See Interface Attribute below
-         * for more details.
+         * @param interfaces List of device interfaces. See Interface Attribute below for more details.
          * 
          * @return builder
          * 
@@ -703,8 +672,7 @@ public final class DeviceSecondaryDeviceArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param licenseFile Path to the license file that will be uploaded and applied on a
-         * secondary device. Applicable for some device types in BYOL licensing mode.
+         * @param licenseFile Path to the license file that will be uploaded and applied on a secondary device. Applicable for some device types in BYOL licensing mode.
          * 
          * @return builder
          * 
@@ -715,8 +683,7 @@ public final class DeviceSecondaryDeviceArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param licenseFile Path to the license file that will be uploaded and applied on a
-         * secondary device. Applicable for some device types in BYOL licensing mode.
+         * @param licenseFile Path to the license file that will be uploaded and applied on a secondary device. Applicable for some device types in BYOL licensing mode.
          * 
          * @return builder
          * 
@@ -747,8 +714,7 @@ public final class DeviceSecondaryDeviceArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param licenseStatus Device license registration status. Possible values are `APPLYING_LICENSE`,
-         * `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
+         * @param licenseStatus Device license registration status. Possible values are `APPLYING_LICENSE`, `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
          * 
          * @return builder
          * 
@@ -759,8 +725,7 @@ public final class DeviceSecondaryDeviceArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param licenseStatus Device license registration status. Possible values are `APPLYING_LICENSE`,
-         * `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
+         * @param licenseStatus Device license registration status. Possible values are `APPLYING_LICENSE`, `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
          * 
          * @return builder
          * 
@@ -812,10 +777,8 @@ public final class DeviceSecondaryDeviceArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param mgmtAclTemplateUuid Identifier of an MGMT interface ACL template that will be
-         * applied on a secondary device.
-         * * `ssh-key` - (Optional) Up to one definition of SSH key that will be provisioned on a secondary
-         *   device.
+         * @param mgmtAclTemplateUuid Identifier of an MGMT interface ACL template that will be applied on a secondary device.
+         * * `ssh-key` - (Optional) Up to one definition of SSH key that will be provisioned on a secondary device.
          * 
          * @return builder
          * 
@@ -826,10 +789,8 @@ public final class DeviceSecondaryDeviceArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param mgmtAclTemplateUuid Identifier of an MGMT interface ACL template that will be
-         * applied on a secondary device.
-         * * `ssh-key` - (Optional) Up to one definition of SSH key that will be provisioned on a secondary
-         *   device.
+         * @param mgmtAclTemplateUuid Identifier of an MGMT interface ACL template that will be applied on a secondary device.
+         * * `ssh-key` - (Optional) Up to one definition of SSH key that will be provisioned on a secondary device.
          * 
          * @return builder
          * 
@@ -860,8 +821,7 @@ public final class DeviceSecondaryDeviceArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param notifications List of email addresses that will receive notifications about
-         * secondary device.
+         * @param notifications List of email addresses that will receive notifications about secondary device.
          * 
          * @return builder
          * 
@@ -872,8 +832,7 @@ public final class DeviceSecondaryDeviceArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param notifications List of email addresses that will receive notifications about
-         * secondary device.
+         * @param notifications List of email addresses that will receive notifications about secondary device.
          * 
          * @return builder
          * 
@@ -883,8 +842,7 @@ public final class DeviceSecondaryDeviceArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param notifications List of email addresses that will receive notifications about
-         * secondary device.
+         * @param notifications List of email addresses that will receive notifications about secondary device.
          * 
          * @return builder
          * 
@@ -894,8 +852,7 @@ public final class DeviceSecondaryDeviceArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param projectId Unique Identifier for the project resource where the device is scoped to.If you
-         * leave it out, the device will be created under the default project id of your organization.
+         * @param projectId Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
          * 
          * @return builder
          * 
@@ -906,8 +863,7 @@ public final class DeviceSecondaryDeviceArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param projectId Unique Identifier for the project resource where the device is scoped to.If you
-         * leave it out, the device will be created under the default project id of your organization.
+         * @param projectId Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
          * 
          * @return builder
          * 
@@ -917,8 +873,7 @@ public final class DeviceSecondaryDeviceArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param redundancyType Device redundancy type applicable for HA devices, either
-         * primary or secondary.
+         * @param redundancyType Device redundancy type applicable for HA devices, either primary or secondary.
          * 
          * @return builder
          * 
@@ -929,8 +884,7 @@ public final class DeviceSecondaryDeviceArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param redundancyType Device redundancy type applicable for HA devices, either
-         * primary or secondary.
+         * @param redundancyType Device redundancy type applicable for HA devices, either primary or secondary.
          * 
          * @return builder
          * 
@@ -1087,9 +1041,7 @@ public final class DeviceSecondaryDeviceArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param vendorConfiguration Key/Value pairs of vendor specific configuration parameters
-         * for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`,
-         * `systemIpAddress`, `private_address`, `private_cidr_mask`, `private_gateway`, `license_key`, `license_id`.
+         * @param vendorConfiguration Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`.
          * 
          * @return builder
          * 
@@ -1100,9 +1052,7 @@ public final class DeviceSecondaryDeviceArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param vendorConfiguration Key/Value pairs of vendor specific configuration parameters
-         * for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`,
-         * `systemIpAddress`, `private_address`, `private_cidr_mask`, `private_gateway`, `license_key`, `license_id`.
+         * @param vendorConfiguration Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`.
          * 
          * @return builder
          * 

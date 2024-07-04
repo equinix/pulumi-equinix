@@ -206,7 +206,7 @@ class GetServiceProfileResult:
     @pulumi.getter(name="selfProfile")
     def self_profile(self) -> bool:
         """
-        Self Profile indicating if the profile is created for customer's  self use
+        Self Profile indicating if the profile is created for customer's self use
         """
         return pulumi.get(self, "self_profile")
 
@@ -300,8 +300,8 @@ def get_service_profile(uuid: Optional[str] = None,
     Fabric V4 API compatible data resource that allow user to fetch Service Profile by UUID filter criteria
 
     Additional documentation:
-    * Getting Started: <https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm>
-    * API: <https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles>
+    * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm
+    * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles
 
     ## Example Usage
 
@@ -363,8 +363,8 @@ def get_service_profile_output(uuid: Optional[pulumi.Input[str]] = None,
     Fabric V4 API compatible data resource that allow user to fetch Service Profile by UUID filter criteria
 
     Additional documentation:
-    * Getting Started: <https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm>
-    * API: <https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles>
+    * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm
+    * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles
 
     ## Example Usage
 

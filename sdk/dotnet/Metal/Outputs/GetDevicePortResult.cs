@@ -14,23 +14,23 @@ namespace Pulumi.Equinix.Metal.Outputs
     public sealed class GetDevicePortResult
     {
         /// <summary>
-        /// Whether this port is part of a bond in bonded network setup.
+        /// Whether this port is part of a bond in bonded network setup
         /// </summary>
         public readonly bool Bonded;
         /// <summary>
-        /// ID of the port.
+        /// The ID of the device
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// MAC address assigned to the port.
+        /// MAC address assigned to the port
         /// </summary>
         public readonly string Mac;
         /// <summary>
-        /// Name of the port (e.g. `eth0`, or `bond0`).
+        /// Name of the port (e.g. eth0, or bond0)
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Type of the port (e.g. `NetworkPort` or `NetworkBondPort`).
+        /// Type of the port (e.g. NetworkPort or NetworkBondPort)
         /// </summary>
         public readonly string Type;
 

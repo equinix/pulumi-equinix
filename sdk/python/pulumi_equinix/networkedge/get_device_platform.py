@@ -130,9 +130,7 @@ def get_device_platform(core_count: Optional[int] = None,
                         packages: Optional[Sequence[str]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDevicePlatformResult:
     """
-    Use this data source to get Equinix Network Edge device platform configuration details
-    for a given device type. For further details, check supported
-    [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
+    Use this data source to get Equinix Network Edge device platform configuration details for a given device type. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
 
     ## Example Usage
 
@@ -148,12 +146,9 @@ def get_device_platform(core_count: Optional[int] = None,
 
     :param int core_count: Number of CPU cores used to limit platform search results.
     :param str device_type: Device type code
-    :param str flavor: Device platform flavor that determines number of CPU cores and memory.
-           Supported values are: `small`, `medium`, `large`, `xlarge`.
-    :param Sequence[str] license_options: List of device licensing options to limit platform search result.
-           Supported values are: `BYOL` (for Bring Your Own License), `Sub` (for license subscription).
-    :param Sequence[str] management_types: List of device management types to limit platform search results.
-           Supported values are: `EQUINIX-CONFIGURED`, `SELF-CONFIGURED`.
+    :param str flavor: Device platform flavor that determines number of CPU cores and memory. Supported values are: `small`, `medium`, `large`, `xlarge`.
+    :param Sequence[str] license_options: List of device licensing options to limit platform search result. Supported values are: `BYOL` (for Bring Your Own License), `Sub` (for license subscription).
+    :param Sequence[str] management_types: List of device management types to limit platform search results. Supported values are: `EQUINIX-CONFIGURED`, `SELF-CONFIGURED`.
     :param Sequence[str] packages: List of software package codes to limit platform search results.
     """
     __args__ = dict()
@@ -187,9 +182,7 @@ def get_device_platform_output(core_count: Optional[pulumi.Input[Optional[int]]]
                                packages: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDevicePlatformResult]:
     """
-    Use this data source to get Equinix Network Edge device platform configuration details
-    for a given device type. For further details, check supported
-    [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
+    Use this data source to get Equinix Network Edge device platform configuration details for a given device type. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
 
     ## Example Usage
 
@@ -205,12 +198,9 @@ def get_device_platform_output(core_count: Optional[pulumi.Input[Optional[int]]]
 
     :param int core_count: Number of CPU cores used to limit platform search results.
     :param str device_type: Device type code
-    :param str flavor: Device platform flavor that determines number of CPU cores and memory.
-           Supported values are: `small`, `medium`, `large`, `xlarge`.
-    :param Sequence[str] license_options: List of device licensing options to limit platform search result.
-           Supported values are: `BYOL` (for Bring Your Own License), `Sub` (for license subscription).
-    :param Sequence[str] management_types: List of device management types to limit platform search results.
-           Supported values are: `EQUINIX-CONFIGURED`, `SELF-CONFIGURED`.
+    :param str flavor: Device platform flavor that determines number of CPU cores and memory. Supported values are: `small`, `medium`, `large`, `xlarge`.
+    :param Sequence[str] license_options: List of device licensing options to limit platform search result. Supported values are: `BYOL` (for Bring Your Own License), `Sub` (for license subscription).
+    :param Sequence[str] management_types: List of device management types to limit platform search results. Supported values are: `EQUINIX-CONFIGURED`, `SELF-CONFIGURED`.
     :param Sequence[str] packages: List of software package codes to limit platform search results.
     """
     ...

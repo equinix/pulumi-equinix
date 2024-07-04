@@ -188,8 +188,7 @@ def get_plans(filters: Optional[Sequence[pulumi.InputType['GetPlansFilterArgs']]
 
 
     :param Sequence[pulumi.InputType['GetPlansFilterArgs']] filters: One or more attribute/values pairs to filter off of
-    :param Sequence[pulumi.InputType['GetPlansSortArgs']] sorts: One or more attribute/direction pairs on which to sort results. If multiple
-           sorts are provided, they will be applied in order
+    :param Sequence[pulumi.InputType['GetPlansSortArgs']] sorts: One or more attribute/direction pairs on which to sort results. If multiple sorts are provided, they will be applied in order
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -320,7 +319,6 @@ def get_plans_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.Inp
 
 
     :param Sequence[pulumi.InputType['GetPlansFilterArgs']] filters: One or more attribute/values pairs to filter off of
-    :param Sequence[pulumi.InputType['GetPlansSortArgs']] sorts: One or more attribute/direction pairs on which to sort results. If multiple
-           sorts are provided, they will be applied in order
+    :param Sequence[pulumi.InputType['GetPlansSortArgs']] sorts: One or more attribute/direction pairs on which to sort results. If multiple sorts are provided, they will be applied in order
     """
     ...

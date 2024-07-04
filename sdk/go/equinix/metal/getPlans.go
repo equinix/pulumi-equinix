@@ -220,8 +220,7 @@ func GetPlans(ctx *pulumi.Context, args *GetPlansArgs, opts ...pulumi.InvokeOpti
 type GetPlansArgs struct {
 	// One or more attribute/values pairs to filter off of
 	Filters []GetPlansFilter `pulumi:"filters"`
-	// One or more attribute/direction pairs on which to sort results. If multiple
-	// sorts are provided, they will be applied in order
+	// One or more attribute/direction pairs on which to sort results. If multiple sorts are provided, they will be applied in order
 	Sorts []GetPlansSort `pulumi:"sorts"`
 }
 
@@ -251,8 +250,7 @@ func GetPlansOutput(ctx *pulumi.Context, args GetPlansOutputArgs, opts ...pulumi
 type GetPlansOutputArgs struct {
 	// One or more attribute/values pairs to filter off of
 	Filters GetPlansFilterArrayInput `pulumi:"filters"`
-	// One or more attribute/direction pairs on which to sort results. If multiple
-	// sorts are provided, they will be applied in order
+	// One or more attribute/direction pairs on which to sort results. If multiple sorts are provided, they will be applied in order
 	Sorts GetPlansSortArrayInput `pulumi:"sorts"`
 }
 

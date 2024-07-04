@@ -17,8 +17,7 @@ public final class DeviceClusterDetailsNode1VendorConfiguration {
      */
     private @Nullable String activationKey;
     /**
-     * @return The administrative password of the device. You can use it to log in
-     * to the console. This field is not available for all device types.
+     * @return The administrative password of the device. You can use it to log in to the console. This field is not available for all device types.
      * 
      */
     private @Nullable String adminPassword;
@@ -63,8 +62,7 @@ public final class DeviceClusterDetailsNode1VendorConfiguration {
      */
     private @Nullable String privateGateway;
     /**
-     * @return The CLI password of the device. This field is relevant only for the
-     * Velocloud SDWAN cluster.
+     * @return The CLI password of the device. This field is relevant only for the Velocloud SDWAN cluster.
      * 
      */
     private @Nullable String rootPassword;
@@ -78,8 +76,7 @@ public final class DeviceClusterDetailsNode1VendorConfiguration {
         return Optional.ofNullable(this.activationKey);
     }
     /**
-     * @return The administrative password of the device. You can use it to log in
-     * to the console. This field is not available for all device types.
+     * @return The administrative password of the device. You can use it to log in to the console. This field is not available for all device types.
      * 
      */
     public Optional<String> adminPassword() {
@@ -142,8 +139,7 @@ public final class DeviceClusterDetailsNode1VendorConfiguration {
         return Optional.ofNullable(this.privateGateway);
     }
     /**
-     * @return The CLI password of the device. This field is relevant only for the
-     * Velocloud SDWAN cluster.
+     * @return The CLI password of the device. This field is relevant only for the Velocloud SDWAN cluster.
      * 
      */
     public Optional<String> rootPassword() {

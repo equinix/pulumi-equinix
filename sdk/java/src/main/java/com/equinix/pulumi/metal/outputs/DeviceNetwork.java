@@ -14,62 +14,62 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DeviceNetwork {
     /**
-     * @return IPv4 or IPv6 address string.
+     * @return IPv4 or IPv6 address string
      * 
      */
     private @Nullable String address;
     /**
-     * @return Bit length of the network mask of the address.
+     * @return CIDR suffix for IP address block to be assigned, i.e. amount of addresses
      * 
      */
     private @Nullable Integer cidr;
     /**
-     * @return IP version. One of `4`, `6`.
+     * @return IP version - &#34;4&#34; or &#34;6&#34;
      * 
      */
     private @Nullable Integer family;
     /**
-     * @return Address of router.
+     * @return Address of router
      * 
      */
     private @Nullable String gateway;
     /**
-     * @return Whether the address is routable from the Internet.
+     * @return Whether the address is routable from the Internet
      * 
      */
     private @Nullable Boolean public_;
 
     private DeviceNetwork() {}
     /**
-     * @return IPv4 or IPv6 address string.
+     * @return IPv4 or IPv6 address string
      * 
      */
     public Optional<String> address() {
         return Optional.ofNullable(this.address);
     }
     /**
-     * @return Bit length of the network mask of the address.
+     * @return CIDR suffix for IP address block to be assigned, i.e. amount of addresses
      * 
      */
     public Optional<Integer> cidr() {
         return Optional.ofNullable(this.cidr);
     }
     /**
-     * @return IP version. One of `4`, `6`.
+     * @return IP version - &#34;4&#34; or &#34;6&#34;
      * 
      */
     public Optional<Integer> family() {
         return Optional.ofNullable(this.family);
     }
     /**
-     * @return Address of router.
+     * @return Address of router
      * 
      */
     public Optional<String> gateway() {
         return Optional.ofNullable(this.gateway);
     }
     /**
-     * @return Whether the address is routable from the Internet.
+     * @return Whether the address is routable from the Internet
      * 
      */
     public Optional<Boolean> public_() {

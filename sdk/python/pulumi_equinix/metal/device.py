@@ -43,62 +43,28 @@ class DeviceArgs:
                  wait_for_reservation_deprovision: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Device resource.
-        :param pulumi.Input[Union[str, 'OperatingSystem']] operating_system: The operating system slug. To find the slug, or visit
-               [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your
-               API auth token in the top of the page and see JSON from the API response.
-        :param pulumi.Input[Union[str, 'Plan']] plan: The device plan slug. To find the plan slug, visit the
-               [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/).
+        :param pulumi.Input[Union[str, 'OperatingSystem']] operating_system: The operating system slug. To find the slug, or visit [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your API auth token in the top of the page and see JSON from the API response.  By default, changing this attribute will cause your device to be deleted and recreated.  If `reinstall` is enabled, the device will be updated in-place instead of recreated.
+        :param pulumi.Input[Union[str, 'Plan']] plan: The device plan slug. To find the plan slug, visit the [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/)
         :param pulumi.Input[str] project_id: The ID of the project in which to create the device
-        :param pulumi.Input[bool] always_pxe: If true, a device with OS `custom_ipxe` will continue to boot via iPXE
-               on reboots.
-        :param pulumi.Input['DeviceBehaviorArgs'] behavior: Behavioral overrides that change how the resource handles certain attribute updates. See Behavior below for more details.
+        :param pulumi.Input[bool] always_pxe: If true, a device with OS custom_ipxe will
         :param pulumi.Input[Union[str, 'BillingCycle']] billing_cycle: monthly or hourly
         :param pulumi.Input[str] custom_data: A string of the desired Custom Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"custom_data"`, the device will be updated in-place instead of recreated.
-        :param pulumi.Input[str] description: The device description.
-        :param pulumi.Input[Sequence[pulumi.Input[Union[str, 'Facility']]]] facilities: List of facility codes with deployment preferences. Equinix Metal API will go
-               through the list and will deploy your device to first facility with free capacity. List items must
-               be facility codes or `any` (a wildcard). To find the facility code, visit
-               [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth
-               token in the top of the page and see JSON from the API response. Conflicts with `metro`.  Use metro instead; read the facility to metro migration guide
-        :param pulumi.Input[bool] force_detach_volumes: Delete device even if it has volumes attached. Only applies
-               for destroy action.
-        :param pulumi.Input[str] hardware_reservation_id: The UUID of the hardware reservation where you want this
-               device deployed, or `next-available` if you want to pick your next available reservation
-               automatically. Changing this from a reservation UUID to `next-available` will re-create the device
-               in another reservation. Please be careful when using hardware reservation UUID and `next-available`
-               together for the same pool of reservations. It might happen that the reservation which Equinix
-               Metal API will pick as `next-available` is the reservation which you refer with UUID in another
-               metal.Device resource. If that happens, and the metal.Device with the UUID is
-               created later, resource creation will fail because the reservation is already in use (by the
-               resource created with `next-available`). To workaround this, have the `next-available` resource
-               explicitly depend_on
-               the resource with hardware reservation UUID, so that the latter is created first. For more details,
-               see issue #176.
-        :param pulumi.Input[str] hostname: The device hostname used in deployments taking advantage of Layer3 DHCP
-               or metadata service configuration.
-        :param pulumi.Input[Sequence[pulumi.Input['DeviceIpAddressArgs']]] ip_addresses: A list of IP address types for the device. See
-               IP address below for more details.
-        :param pulumi.Input[str] ipxe_script_url: URL pointing to a hosted iPXE script. More information is in the
-               [Custom iPXE](https://metal.equinix.com/developers/docs/servers/custom-ipxe/) doc.
+        :param pulumi.Input[str] description: Description string for the device
+        :param pulumi.Input[Sequence[pulumi.Input[Union[str, 'Facility']]]] facilities: List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the top of the page and see JSON from the API response. Conflicts with metro
+        :param pulumi.Input[bool] force_detach_volumes: Delete device even if it has volumes attached. Only applies for destroy action
+        :param pulumi.Input[str] hardware_reservation_id: The UUID of the hardware reservation where you want this device deployed, or next-available if you want to pick your next available reservation automatically
+        :param pulumi.Input[str] hostname: The device hostname used in deployments taking advantage of Layer3 DHCP or metadata service configuration.
+        :param pulumi.Input[Sequence[pulumi.Input['DeviceIpAddressArgs']]] ip_addresses: A list of IP address types for the device (structure is documented below)
+        :param pulumi.Input[str] ipxe_script_url: URL pointing to a hosted iPXE script. More
         :param pulumi.Input[bool] locked: Whether the device is locked or unlocked. Locking a device prevents you from deleting or reinstalling the device or performing a firmware update on the device, and it prevents an instance with a termination time set from being reclaimed, even if the termination time was reached
-        :param pulumi.Input[str] metro: Metro area for the new device. Conflicts with `facilities`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] project_ssh_key_ids: Array of IDs of the project SSH keys which should be added to the device. If you specify this array, only the listed project SSH keys (and any SSH keys for the users specified in user_ssh_key_ids) will be added. If no SSH keys are specified (both user_ssh_keys_ids and project_ssh_key_ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included.  Project SSH keys can be created with the metal.ProjectSshKey resource.
-        :param pulumi.Input['DeviceReinstallArgs'] reinstall: Whether the device should be reinstalled instead of destroyed when
-               modifying user_data, custom_data, or operating system. See Reinstall below for more
-               details.
-        :param pulumi.Input[str] storage: JSON for custom partitioning. Only usable on reserved hardware. More
-               information in in the
-               [Custom Partitioning and RAID](https://metal.equinix.com/developers/docs/servers/custom-partitioning-raid/)
-               doc. Please note that the disks.partitions.size attribute must be a string, not an integer. It can
-               be a number string, or size notation string, e.g. "4G" or "8M" (for gigabytes and megabytes).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags attached to the device.
-        :param pulumi.Input[str] termination_time: Timestamp for device termination. For example `2021-09-03T16:32:00+03:00`.
-               If you don't supply timezone info, timestamp is assumed to be in UTC.
+        :param pulumi.Input[str] metro: Metro area for the new device. Conflicts with facilities
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] project_ssh_key_ids: Array of IDs of the project SSH keys which should be added to the device. If you specify this array, only the listed project SSH keys (and any SSH keys for the users specified in user*ssh*key*ids) will be added. If no SSH keys are specified (both user*ssh*keys*ids and project*ssh*key*ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included.  Project SSH keys can be created with the equinix*metal*project*ssh*key resource
+        :param pulumi.Input[str] storage: JSON for custom partitioning. Only usable on reserved hardware. More information in in the [Custom Partitioning and RAID](https://metal.equinix.com/developers/docs/servers/custom-partitioning-raid/) doc
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags attached to the device
+        :param pulumi.Input[str] termination_time: Timestamp for device termination. For example "2021-09-03T16:32:00+03:00". If you don't supply timezone info, timestamp is assumed to be in UTC.
         :param pulumi.Input[str] user_data: A string of the desired User Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"user_data"`, the device will be updated in-place instead of recreated.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] user_ssh_key_ids: Array of IDs of the users whose SSH keys should be added to the device. If you specify this array, only the listed users' SSH keys (and any project SSH keys specified in project_ssh_key_ids) will be added. If no SSH keys are specified (both user_ssh_keys_ids and project_ssh_key_ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included. User SSH keys can be created with the metal.SshKey resource.
-        :param pulumi.Input[bool] wait_for_reservation_deprovision: Only used for devices in reserved hardware. If
-               set, the deletion of this device will block until the hardware reservation is marked provisionable
-               (about 4 minutes in August 2019).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] user_ssh_key_ids: Array of IDs of the users whose SSH keys should be added to the device. If you specify this array, only the listed users' SSH keys (and any project SSH keys specified in project*ssh*key*ids) will be added. If no SSH keys are specified (both user*ssh*keys*ids and project*ssh*key*ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included. User SSH keys can be created with the equinix*metal*ssh*key resource
+        :param pulumi.Input[bool] wait_for_reservation_deprovision: Only used for devices in reserved hardware. If set, the deletion of this device will block until the hardware reservation is marked provisionable (about 4 minutes in August 2019)
         """
         pulumi.set(__self__, "operating_system", operating_system)
         pulumi.set(__self__, "plan", plan)
@@ -153,9 +119,7 @@ class DeviceArgs:
     @pulumi.getter(name="operatingSystem")
     def operating_system(self) -> pulumi.Input[Union[str, 'OperatingSystem']]:
         """
-        The operating system slug. To find the slug, or visit
-        [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your
-        API auth token in the top of the page and see JSON from the API response.
+        The operating system slug. To find the slug, or visit [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your API auth token in the top of the page and see JSON from the API response.  By default, changing this attribute will cause your device to be deleted and recreated.  If `reinstall` is enabled, the device will be updated in-place instead of recreated.
         """
         return pulumi.get(self, "operating_system")
 
@@ -167,8 +131,7 @@ class DeviceArgs:
     @pulumi.getter
     def plan(self) -> pulumi.Input[Union[str, 'Plan']]:
         """
-        The device plan slug. To find the plan slug, visit the
-        [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/).
+        The device plan slug. To find the plan slug, visit the [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/)
         """
         return pulumi.get(self, "plan")
 
@@ -192,8 +155,7 @@ class DeviceArgs:
     @pulumi.getter(name="alwaysPxe")
     def always_pxe(self) -> Optional[pulumi.Input[bool]]:
         """
-        If true, a device with OS `custom_ipxe` will continue to boot via iPXE
-        on reboots.
+        If true, a device with OS custom_ipxe will
         """
         return pulumi.get(self, "always_pxe")
 
@@ -204,9 +166,6 @@ class DeviceArgs:
     @property
     @pulumi.getter
     def behavior(self) -> Optional[pulumi.Input['DeviceBehaviorArgs']]:
-        """
-        Behavioral overrides that change how the resource handles certain attribute updates. See Behavior below for more details.
-        """
         return pulumi.get(self, "behavior")
 
     @behavior.setter
@@ -241,7 +200,7 @@ class DeviceArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The device description.
+        Description string for the device
         """
         return pulumi.get(self, "description")
 
@@ -251,17 +210,11 @@ class DeviceArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
     def facilities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Union[str, 'Facility']]]]]:
         """
-        List of facility codes with deployment preferences. Equinix Metal API will go
-        through the list and will deploy your device to first facility with free capacity. List items must
-        be facility codes or `any` (a wildcard). To find the facility code, visit
-        [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth
-        token in the top of the page and see JSON from the API response. Conflicts with `metro`.  Use metro instead; read the facility to metro migration guide
+        List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the top of the page and see JSON from the API response. Conflicts with metro
         """
-        warnings.warn("""Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
-        pulumi.log.warn("""facilities is deprecated: Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
-
         return pulumi.get(self, "facilities")
 
     @facilities.setter
@@ -272,8 +225,7 @@ class DeviceArgs:
     @pulumi.getter(name="forceDetachVolumes")
     def force_detach_volumes(self) -> Optional[pulumi.Input[bool]]:
         """
-        Delete device even if it has volumes attached. Only applies
-        for destroy action.
+        Delete device even if it has volumes attached. Only applies for destroy action
         """
         return pulumi.get(self, "force_detach_volumes")
 
@@ -285,18 +237,7 @@ class DeviceArgs:
     @pulumi.getter(name="hardwareReservationId")
     def hardware_reservation_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The UUID of the hardware reservation where you want this
-        device deployed, or `next-available` if you want to pick your next available reservation
-        automatically. Changing this from a reservation UUID to `next-available` will re-create the device
-        in another reservation. Please be careful when using hardware reservation UUID and `next-available`
-        together for the same pool of reservations. It might happen that the reservation which Equinix
-        Metal API will pick as `next-available` is the reservation which you refer with UUID in another
-        metal.Device resource. If that happens, and the metal.Device with the UUID is
-        created later, resource creation will fail because the reservation is already in use (by the
-        resource created with `next-available`). To workaround this, have the `next-available` resource
-        explicitly depend_on
-        the resource with hardware reservation UUID, so that the latter is created first. For more details,
-        see issue #176.
+        The UUID of the hardware reservation where you want this device deployed, or next-available if you want to pick your next available reservation automatically
         """
         return pulumi.get(self, "hardware_reservation_id")
 
@@ -308,8 +249,7 @@ class DeviceArgs:
     @pulumi.getter
     def hostname(self) -> Optional[pulumi.Input[str]]:
         """
-        The device hostname used in deployments taking advantage of Layer3 DHCP
-        or metadata service configuration.
+        The device hostname used in deployments taking advantage of Layer3 DHCP or metadata service configuration.
         """
         return pulumi.get(self, "hostname")
 
@@ -321,8 +261,7 @@ class DeviceArgs:
     @pulumi.getter(name="ipAddresses")
     def ip_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeviceIpAddressArgs']]]]:
         """
-        A list of IP address types for the device. See
-        IP address below for more details.
+        A list of IP address types for the device (structure is documented below)
         """
         return pulumi.get(self, "ip_addresses")
 
@@ -334,8 +273,7 @@ class DeviceArgs:
     @pulumi.getter(name="ipxeScriptUrl")
     def ipxe_script_url(self) -> Optional[pulumi.Input[str]]:
         """
-        URL pointing to a hosted iPXE script. More information is in the
-        [Custom iPXE](https://metal.equinix.com/developers/docs/servers/custom-ipxe/) doc.
+        URL pointing to a hosted iPXE script. More
         """
         return pulumi.get(self, "ipxe_script_url")
 
@@ -359,7 +297,7 @@ class DeviceArgs:
     @pulumi.getter
     def metro(self) -> Optional[pulumi.Input[str]]:
         """
-        Metro area for the new device. Conflicts with `facilities`.
+        Metro area for the new device. Conflicts with facilities
         """
         return pulumi.get(self, "metro")
 
@@ -371,7 +309,7 @@ class DeviceArgs:
     @pulumi.getter(name="projectSshKeyIds")
     def project_ssh_key_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Array of IDs of the project SSH keys which should be added to the device. If you specify this array, only the listed project SSH keys (and any SSH keys for the users specified in user_ssh_key_ids) will be added. If no SSH keys are specified (both user_ssh_keys_ids and project_ssh_key_ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included.  Project SSH keys can be created with the metal.ProjectSshKey resource.
+        Array of IDs of the project SSH keys which should be added to the device. If you specify this array, only the listed project SSH keys (and any SSH keys for the users specified in user*ssh*key*ids) will be added. If no SSH keys are specified (both user*ssh*keys*ids and project*ssh*key*ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included.  Project SSH keys can be created with the equinix*metal*project*ssh*key resource
         """
         return pulumi.get(self, "project_ssh_key_ids")
 
@@ -382,11 +320,6 @@ class DeviceArgs:
     @property
     @pulumi.getter
     def reinstall(self) -> Optional[pulumi.Input['DeviceReinstallArgs']]:
-        """
-        Whether the device should be reinstalled instead of destroyed when
-        modifying user_data, custom_data, or operating system. See Reinstall below for more
-        details.
-        """
         return pulumi.get(self, "reinstall")
 
     @reinstall.setter
@@ -397,11 +330,7 @@ class DeviceArgs:
     @pulumi.getter
     def storage(self) -> Optional[pulumi.Input[str]]:
         """
-        JSON for custom partitioning. Only usable on reserved hardware. More
-        information in in the
-        [Custom Partitioning and RAID](https://metal.equinix.com/developers/docs/servers/custom-partitioning-raid/)
-        doc. Please note that the disks.partitions.size attribute must be a string, not an integer. It can
-        be a number string, or size notation string, e.g. "4G" or "8M" (for gigabytes and megabytes).
+        JSON for custom partitioning. Only usable on reserved hardware. More information in in the [Custom Partitioning and RAID](https://metal.equinix.com/developers/docs/servers/custom-partitioning-raid/) doc
         """
         return pulumi.get(self, "storage")
 
@@ -413,7 +342,7 @@ class DeviceArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags attached to the device.
+        Tags attached to the device
         """
         return pulumi.get(self, "tags")
 
@@ -425,8 +354,7 @@ class DeviceArgs:
     @pulumi.getter(name="terminationTime")
     def termination_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Timestamp for device termination. For example `2021-09-03T16:32:00+03:00`.
-        If you don't supply timezone info, timestamp is assumed to be in UTC.
+        Timestamp for device termination. For example "2021-09-03T16:32:00+03:00". If you don't supply timezone info, timestamp is assumed to be in UTC.
         """
         return pulumi.get(self, "termination_time")
 
@@ -450,7 +378,7 @@ class DeviceArgs:
     @pulumi.getter(name="userSshKeyIds")
     def user_ssh_key_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Array of IDs of the users whose SSH keys should be added to the device. If you specify this array, only the listed users' SSH keys (and any project SSH keys specified in project_ssh_key_ids) will be added. If no SSH keys are specified (both user_ssh_keys_ids and project_ssh_key_ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included. User SSH keys can be created with the metal.SshKey resource.
+        Array of IDs of the users whose SSH keys should be added to the device. If you specify this array, only the listed users' SSH keys (and any project SSH keys specified in project*ssh*key*ids) will be added. If no SSH keys are specified (both user*ssh*keys*ids and project*ssh*key*ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included. User SSH keys can be created with the equinix*metal*ssh*key resource
         """
         return pulumi.get(self, "user_ssh_key_ids")
 
@@ -462,9 +390,7 @@ class DeviceArgs:
     @pulumi.getter(name="waitForReservationDeprovision")
     def wait_for_reservation_deprovision(self) -> Optional[pulumi.Input[bool]]:
         """
-        Only used for devices in reserved hardware. If
-        set, the deletion of this device will block until the hardware reservation is marked provisionable
-        (about 4 minutes in August 2019).
+        Only used for devices in reserved hardware. If set, the deletion of this device will block until the hardware reservation is marked provisionable (about 4 minutes in August 2019)
         """
         return pulumi.get(self, "wait_for_reservation_deprovision")
 
@@ -516,85 +442,42 @@ class _DeviceState:
                  wait_for_reservation_deprovision: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering Device resources.
-        :param pulumi.Input[str] access_private_ipv4: The ipv4 private IP assigned to the device.
-        :param pulumi.Input[str] access_public_ipv4: The ipv4 maintenance IP assigned to the device.
-        :param pulumi.Input[str] access_public_ipv6: The ipv6 maintenance IP assigned to the device.
-        :param pulumi.Input[bool] always_pxe: If true, a device with OS `custom_ipxe` will continue to boot via iPXE
-               on reboots.
-        :param pulumi.Input['DeviceBehaviorArgs'] behavior: Behavioral overrides that change how the resource handles certain attribute updates. See Behavior below for more details.
+        :param pulumi.Input[str] access_private_ipv4: The ipv4 private IP assigned to the device
+        :param pulumi.Input[str] access_public_ipv4: The ipv4 maintenance IP assigned to the device
+        :param pulumi.Input[str] access_public_ipv6: The ipv6 maintenance IP assigned to the device
+        :param pulumi.Input[bool] always_pxe: If true, a device with OS custom_ipxe will
         :param pulumi.Input[Union[str, 'BillingCycle']] billing_cycle: monthly or hourly
-        :param pulumi.Input[str] created: The timestamp for when the device was created.
+        :param pulumi.Input[str] created: The timestamp for when the device was created
         :param pulumi.Input[str] custom_data: A string of the desired Custom Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"custom_data"`, the device will be updated in-place instead of recreated.
-        :param pulumi.Input[str] deployed_facility: (**Deprecated**) The facility where the device is deployed. Use metro instead; read the facility to metro migration guide
-        :param pulumi.Input[str] deployed_hardware_reservation_id: ID of hardware reservation where this device was deployed.
-               It is useful when using the `next-available` hardware reservation.
-        :param pulumi.Input[str] description: The device description.
-        :param pulumi.Input[Sequence[pulumi.Input[Union[str, 'Facility']]]] facilities: List of facility codes with deployment preferences. Equinix Metal API will go
-               through the list and will deploy your device to first facility with free capacity. List items must
-               be facility codes or `any` (a wildcard). To find the facility code, visit
-               [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth
-               token in the top of the page and see JSON from the API response. Conflicts with `metro`.  Use metro instead; read the facility to metro migration guide
-        :param pulumi.Input[bool] force_detach_volumes: Delete device even if it has volumes attached. Only applies
-               for destroy action.
-        :param pulumi.Input[str] hardware_reservation_id: The UUID of the hardware reservation where you want this
-               device deployed, or `next-available` if you want to pick your next available reservation
-               automatically. Changing this from a reservation UUID to `next-available` will re-create the device
-               in another reservation. Please be careful when using hardware reservation UUID and `next-available`
-               together for the same pool of reservations. It might happen that the reservation which Equinix
-               Metal API will pick as `next-available` is the reservation which you refer with UUID in another
-               metal.Device resource. If that happens, and the metal.Device with the UUID is
-               created later, resource creation will fail because the reservation is already in use (by the
-               resource created with `next-available`). To workaround this, have the `next-available` resource
-               explicitly depend_on
-               the resource with hardware reservation UUID, so that the latter is created first. For more details,
-               see issue #176.
-        :param pulumi.Input[str] hostname: The device hostname used in deployments taking advantage of Layer3 DHCP
-               or metadata service configuration.
-        :param pulumi.Input[Sequence[pulumi.Input['DeviceIpAddressArgs']]] ip_addresses: A list of IP address types for the device. See
-               IP address below for more details.
-        :param pulumi.Input[str] ipxe_script_url: URL pointing to a hosted iPXE script. More information is in the
-               [Custom iPXE](https://metal.equinix.com/developers/docs/servers/custom-ipxe/) doc.
+        :param pulumi.Input[str] deployed_facility: The facility where the device is deployed
+        :param pulumi.Input[str] deployed_hardware_reservation_id: ID of hardware reservation where this device was deployed. It is useful when using the next-available hardware reservation
+        :param pulumi.Input[str] description: Description string for the device
+        :param pulumi.Input[Sequence[pulumi.Input[Union[str, 'Facility']]]] facilities: List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the top of the page and see JSON from the API response. Conflicts with metro
+        :param pulumi.Input[bool] force_detach_volumes: Delete device even if it has volumes attached. Only applies for destroy action
+        :param pulumi.Input[str] hardware_reservation_id: The UUID of the hardware reservation where you want this device deployed, or next-available if you want to pick your next available reservation automatically
+        :param pulumi.Input[str] hostname: The device hostname used in deployments taking advantage of Layer3 DHCP or metadata service configuration.
+        :param pulumi.Input[Sequence[pulumi.Input['DeviceIpAddressArgs']]] ip_addresses: A list of IP address types for the device (structure is documented below)
+        :param pulumi.Input[str] ipxe_script_url: URL pointing to a hosted iPXE script. More
         :param pulumi.Input[bool] locked: Whether the device is locked or unlocked. Locking a device prevents you from deleting or reinstalling the device or performing a firmware update on the device, and it prevents an instance with a termination time set from being reclaimed, even if the termination time was reached
-        :param pulumi.Input[str] metro: Metro area for the new device. Conflicts with `facilities`.
-        :param pulumi.Input[Sequence[pulumi.Input['DeviceNetworkArgs']]] network: The device's private and public IP (v4 and v6) network details. See
-               Network Attribute below for more details.
-        :param pulumi.Input[Union[str, 'NetworkType']] network_type: (Deprecated) Network type of a device, used in
-               [Layer 2 networking](https://metal.equinix.com/developers/docs/networking/layer2/). Since this
-               attribute is deprecated you should handle Network Type with one of
-               equinix_metal_port,
-               metal.DeviceNetworkType resources or
-               metal.Port datasource.
-               See network_types guide for more info.
-        :param pulumi.Input[Union[str, 'OperatingSystem']] operating_system: The operating system slug. To find the slug, or visit
-               [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your
-               API auth token in the top of the page and see JSON from the API response.
-        :param pulumi.Input[Union[str, 'Plan']] plan: The device plan slug. To find the plan slug, visit the
-               [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/).
-        :param pulumi.Input[Sequence[pulumi.Input['DevicePortArgs']]] ports: List of ports assigned to the device. See Ports Attribute below for
-               more details.
+        :param pulumi.Input[str] metro: Metro area for the new device. Conflicts with facilities
+        :param pulumi.Input[Sequence[pulumi.Input['DeviceNetworkArgs']]] network: The device's private and public IP (v4 and v6) network details. When a device is run without any special network configuration, it will have 3 addresses: public ipv4, private ipv4 and ipv6
+        :param pulumi.Input[Union[str, 'NetworkType']] network_type: Network type of a device, used in [Layer 2 networking](https://metal.equinix.com/developers/docs/networking/layer2/). Will be one of layer3, hybrid, hybrid-bonded, layer2-individual, layer2-bonded
+        :param pulumi.Input[Union[str, 'OperatingSystem']] operating_system: The operating system slug. To find the slug, or visit [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your API auth token in the top of the page and see JSON from the API response.  By default, changing this attribute will cause your device to be deleted and recreated.  If `reinstall` is enabled, the device will be updated in-place instead of recreated.
+        :param pulumi.Input[Union[str, 'Plan']] plan: The device plan slug. To find the plan slug, visit the [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/)
+        :param pulumi.Input[Sequence[pulumi.Input['DevicePortArgs']]] ports: Ports assigned to the device
         :param pulumi.Input[str] project_id: The ID of the project in which to create the device
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] project_ssh_key_ids: Array of IDs of the project SSH keys which should be added to the device. If you specify this array, only the listed project SSH keys (and any SSH keys for the users specified in user_ssh_key_ids) will be added. If no SSH keys are specified (both user_ssh_keys_ids and project_ssh_key_ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included.  Project SSH keys can be created with the metal.ProjectSshKey resource.
-        :param pulumi.Input['DeviceReinstallArgs'] reinstall: Whether the device should be reinstalled instead of destroyed when
-               modifying user_data, custom_data, or operating system. See Reinstall below for more
-               details.
-        :param pulumi.Input[str] root_password: Root password to the server (disabled after 24 hours).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] project_ssh_key_ids: Array of IDs of the project SSH keys which should be added to the device. If you specify this array, only the listed project SSH keys (and any SSH keys for the users specified in user*ssh*key*ids) will be added. If no SSH keys are specified (both user*ssh*keys*ids and project*ssh*key*ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included.  Project SSH keys can be created with the equinix*metal*project*ssh*key resource
+        :param pulumi.Input[str] root_password: Root password to the server (disabled after 24 hours)
         :param pulumi.Input[str] sos_hostname: The hostname to use for [Serial over SSH](https://deploy.equinix.com/developers/docs/metal/resilience-recovery/serial-over-ssh/) access to the device
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_key_ids: List of IDs of SSH keys deployed in the device, can be both user and project SSH keys.
-        :param pulumi.Input[str] state: The status of the device.
-        :param pulumi.Input[str] storage: JSON for custom partitioning. Only usable on reserved hardware. More
-               information in in the
-               [Custom Partitioning and RAID](https://metal.equinix.com/developers/docs/servers/custom-partitioning-raid/)
-               doc. Please note that the disks.partitions.size attribute must be a string, not an integer. It can
-               be a number string, or size notation string, e.g. "4G" or "8M" (for gigabytes and megabytes).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags attached to the device.
-        :param pulumi.Input[str] termination_time: Timestamp for device termination. For example `2021-09-03T16:32:00+03:00`.
-               If you don't supply timezone info, timestamp is assumed to be in UTC.
-        :param pulumi.Input[str] updated: The timestamp for the last time the device was updated.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_key_ids: List of IDs of SSH keys deployed in the device, can be both user and project SSH keys
+        :param pulumi.Input[str] state: The status of the device
+        :param pulumi.Input[str] storage: JSON for custom partitioning. Only usable on reserved hardware. More information in in the [Custom Partitioning and RAID](https://metal.equinix.com/developers/docs/servers/custom-partitioning-raid/) doc
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags attached to the device
+        :param pulumi.Input[str] termination_time: Timestamp for device termination. For example "2021-09-03T16:32:00+03:00". If you don't supply timezone info, timestamp is assumed to be in UTC.
+        :param pulumi.Input[str] updated: The timestamp for the last time the device was updated
         :param pulumi.Input[str] user_data: A string of the desired User Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"user_data"`, the device will be updated in-place instead of recreated.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] user_ssh_key_ids: Array of IDs of the users whose SSH keys should be added to the device. If you specify this array, only the listed users' SSH keys (and any project SSH keys specified in project_ssh_key_ids) will be added. If no SSH keys are specified (both user_ssh_keys_ids and project_ssh_key_ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included. User SSH keys can be created with the metal.SshKey resource.
-        :param pulumi.Input[bool] wait_for_reservation_deprovision: Only used for devices in reserved hardware. If
-               set, the deletion of this device will block until the hardware reservation is marked provisionable
-               (about 4 minutes in August 2019).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] user_ssh_key_ids: Array of IDs of the users whose SSH keys should be added to the device. If you specify this array, only the listed users' SSH keys (and any project SSH keys specified in project*ssh*key*ids) will be added. If no SSH keys are specified (both user*ssh*keys*ids and project*ssh*key*ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included. User SSH keys can be created with the equinix*metal*ssh*key resource
+        :param pulumi.Input[bool] wait_for_reservation_deprovision: Only used for devices in reserved hardware. If set, the deletion of this device will block until the hardware reservation is marked provisionable (about 4 minutes in August 2019)
         """
         if access_private_ipv4 is not None:
             pulumi.set(__self__, "access_private_ipv4", access_private_ipv4)
@@ -686,7 +569,7 @@ class _DeviceState:
     @pulumi.getter(name="accessPrivateIpv4")
     def access_private_ipv4(self) -> Optional[pulumi.Input[str]]:
         """
-        The ipv4 private IP assigned to the device.
+        The ipv4 private IP assigned to the device
         """
         return pulumi.get(self, "access_private_ipv4")
 
@@ -698,7 +581,7 @@ class _DeviceState:
     @pulumi.getter(name="accessPublicIpv4")
     def access_public_ipv4(self) -> Optional[pulumi.Input[str]]:
         """
-        The ipv4 maintenance IP assigned to the device.
+        The ipv4 maintenance IP assigned to the device
         """
         return pulumi.get(self, "access_public_ipv4")
 
@@ -710,7 +593,7 @@ class _DeviceState:
     @pulumi.getter(name="accessPublicIpv6")
     def access_public_ipv6(self) -> Optional[pulumi.Input[str]]:
         """
-        The ipv6 maintenance IP assigned to the device.
+        The ipv6 maintenance IP assigned to the device
         """
         return pulumi.get(self, "access_public_ipv6")
 
@@ -722,8 +605,7 @@ class _DeviceState:
     @pulumi.getter(name="alwaysPxe")
     def always_pxe(self) -> Optional[pulumi.Input[bool]]:
         """
-        If true, a device with OS `custom_ipxe` will continue to boot via iPXE
-        on reboots.
+        If true, a device with OS custom_ipxe will
         """
         return pulumi.get(self, "always_pxe")
 
@@ -734,9 +616,6 @@ class _DeviceState:
     @property
     @pulumi.getter
     def behavior(self) -> Optional[pulumi.Input['DeviceBehaviorArgs']]:
-        """
-        Behavioral overrides that change how the resource handles certain attribute updates. See Behavior below for more details.
-        """
         return pulumi.get(self, "behavior")
 
     @behavior.setter
@@ -759,7 +638,7 @@ class _DeviceState:
     @pulumi.getter
     def created(self) -> Optional[pulumi.Input[str]]:
         """
-        The timestamp for when the device was created.
+        The timestamp for when the device was created
         """
         return pulumi.get(self, "created")
 
@@ -781,13 +660,11 @@ class _DeviceState:
 
     @property
     @pulumi.getter(name="deployedFacility")
+    @_utilities.deprecated("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
     def deployed_facility(self) -> Optional[pulumi.Input[str]]:
         """
-        (**Deprecated**) The facility where the device is deployed. Use metro instead; read the facility to metro migration guide
+        The facility where the device is deployed
         """
-        warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
-        pulumi.log.warn("""deployed_facility is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
-
         return pulumi.get(self, "deployed_facility")
 
     @deployed_facility.setter
@@ -798,8 +675,7 @@ class _DeviceState:
     @pulumi.getter(name="deployedHardwareReservationId")
     def deployed_hardware_reservation_id(self) -> Optional[pulumi.Input[str]]:
         """
-        ID of hardware reservation where this device was deployed.
-        It is useful when using the `next-available` hardware reservation.
+        ID of hardware reservation where this device was deployed. It is useful when using the next-available hardware reservation
         """
         return pulumi.get(self, "deployed_hardware_reservation_id")
 
@@ -811,7 +687,7 @@ class _DeviceState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The device description.
+        Description string for the device
         """
         return pulumi.get(self, "description")
 
@@ -821,17 +697,11 @@ class _DeviceState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
     def facilities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Union[str, 'Facility']]]]]:
         """
-        List of facility codes with deployment preferences. Equinix Metal API will go
-        through the list and will deploy your device to first facility with free capacity. List items must
-        be facility codes or `any` (a wildcard). To find the facility code, visit
-        [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth
-        token in the top of the page and see JSON from the API response. Conflicts with `metro`.  Use metro instead; read the facility to metro migration guide
+        List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the top of the page and see JSON from the API response. Conflicts with metro
         """
-        warnings.warn("""Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
-        pulumi.log.warn("""facilities is deprecated: Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
-
         return pulumi.get(self, "facilities")
 
     @facilities.setter
@@ -842,8 +712,7 @@ class _DeviceState:
     @pulumi.getter(name="forceDetachVolumes")
     def force_detach_volumes(self) -> Optional[pulumi.Input[bool]]:
         """
-        Delete device even if it has volumes attached. Only applies
-        for destroy action.
+        Delete device even if it has volumes attached. Only applies for destroy action
         """
         return pulumi.get(self, "force_detach_volumes")
 
@@ -855,18 +724,7 @@ class _DeviceState:
     @pulumi.getter(name="hardwareReservationId")
     def hardware_reservation_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The UUID of the hardware reservation where you want this
-        device deployed, or `next-available` if you want to pick your next available reservation
-        automatically. Changing this from a reservation UUID to `next-available` will re-create the device
-        in another reservation. Please be careful when using hardware reservation UUID and `next-available`
-        together for the same pool of reservations. It might happen that the reservation which Equinix
-        Metal API will pick as `next-available` is the reservation which you refer with UUID in another
-        metal.Device resource. If that happens, and the metal.Device with the UUID is
-        created later, resource creation will fail because the reservation is already in use (by the
-        resource created with `next-available`). To workaround this, have the `next-available` resource
-        explicitly depend_on
-        the resource with hardware reservation UUID, so that the latter is created first. For more details,
-        see issue #176.
+        The UUID of the hardware reservation where you want this device deployed, or next-available if you want to pick your next available reservation automatically
         """
         return pulumi.get(self, "hardware_reservation_id")
 
@@ -878,8 +736,7 @@ class _DeviceState:
     @pulumi.getter
     def hostname(self) -> Optional[pulumi.Input[str]]:
         """
-        The device hostname used in deployments taking advantage of Layer3 DHCP
-        or metadata service configuration.
+        The device hostname used in deployments taking advantage of Layer3 DHCP or metadata service configuration.
         """
         return pulumi.get(self, "hostname")
 
@@ -891,8 +748,7 @@ class _DeviceState:
     @pulumi.getter(name="ipAddresses")
     def ip_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeviceIpAddressArgs']]]]:
         """
-        A list of IP address types for the device. See
-        IP address below for more details.
+        A list of IP address types for the device (structure is documented below)
         """
         return pulumi.get(self, "ip_addresses")
 
@@ -904,8 +760,7 @@ class _DeviceState:
     @pulumi.getter(name="ipxeScriptUrl")
     def ipxe_script_url(self) -> Optional[pulumi.Input[str]]:
         """
-        URL pointing to a hosted iPXE script. More information is in the
-        [Custom iPXE](https://metal.equinix.com/developers/docs/servers/custom-ipxe/) doc.
+        URL pointing to a hosted iPXE script. More
         """
         return pulumi.get(self, "ipxe_script_url")
 
@@ -929,7 +784,7 @@ class _DeviceState:
     @pulumi.getter
     def metro(self) -> Optional[pulumi.Input[str]]:
         """
-        Metro area for the new device. Conflicts with `facilities`.
+        Metro area for the new device. Conflicts with facilities
         """
         return pulumi.get(self, "metro")
 
@@ -941,8 +796,7 @@ class _DeviceState:
     @pulumi.getter
     def network(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeviceNetworkArgs']]]]:
         """
-        The device's private and public IP (v4 and v6) network details. See
-        Network Attribute below for more details.
+        The device's private and public IP (v4 and v6) network details. When a device is run without any special network configuration, it will have 3 addresses: public ipv4, private ipv4 and ipv6
         """
         return pulumi.get(self, "network")
 
@@ -952,19 +806,11 @@ class _DeviceState:
 
     @property
     @pulumi.getter(name="networkType")
+    @_utilities.deprecated("""You should handle Network Type with one of 'equinix_metal_port' or 'equinix_metal_device_network_type' resources. See section 'Guides' for more info""")
     def network_type(self) -> Optional[pulumi.Input[Union[str, 'NetworkType']]]:
         """
-        (Deprecated) Network type of a device, used in
-        [Layer 2 networking](https://metal.equinix.com/developers/docs/networking/layer2/). Since this
-        attribute is deprecated you should handle Network Type with one of
-        equinix_metal_port,
-        metal.DeviceNetworkType resources or
-        metal.Port datasource.
-        See network_types guide for more info.
+        Network type of a device, used in [Layer 2 networking](https://metal.equinix.com/developers/docs/networking/layer2/). Will be one of layer3, hybrid, hybrid-bonded, layer2-individual, layer2-bonded
         """
-        warnings.warn("""You should handle Network Type with one of 'equinix_metal_port' or 'equinix_metal_device_network_type' resources. See section 'Guides' for more info""", DeprecationWarning)
-        pulumi.log.warn("""network_type is deprecated: You should handle Network Type with one of 'equinix_metal_port' or 'equinix_metal_device_network_type' resources. See section 'Guides' for more info""")
-
         return pulumi.get(self, "network_type")
 
     @network_type.setter
@@ -975,9 +821,7 @@ class _DeviceState:
     @pulumi.getter(name="operatingSystem")
     def operating_system(self) -> Optional[pulumi.Input[Union[str, 'OperatingSystem']]]:
         """
-        The operating system slug. To find the slug, or visit
-        [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your
-        API auth token in the top of the page and see JSON from the API response.
+        The operating system slug. To find the slug, or visit [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your API auth token in the top of the page and see JSON from the API response.  By default, changing this attribute will cause your device to be deleted and recreated.  If `reinstall` is enabled, the device will be updated in-place instead of recreated.
         """
         return pulumi.get(self, "operating_system")
 
@@ -989,8 +833,7 @@ class _DeviceState:
     @pulumi.getter
     def plan(self) -> Optional[pulumi.Input[Union[str, 'Plan']]]:
         """
-        The device plan slug. To find the plan slug, visit the
-        [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/).
+        The device plan slug. To find the plan slug, visit the [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/)
         """
         return pulumi.get(self, "plan")
 
@@ -1002,8 +845,7 @@ class _DeviceState:
     @pulumi.getter
     def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DevicePortArgs']]]]:
         """
-        List of ports assigned to the device. See Ports Attribute below for
-        more details.
+        Ports assigned to the device
         """
         return pulumi.get(self, "ports")
 
@@ -1027,7 +869,7 @@ class _DeviceState:
     @pulumi.getter(name="projectSshKeyIds")
     def project_ssh_key_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Array of IDs of the project SSH keys which should be added to the device. If you specify this array, only the listed project SSH keys (and any SSH keys for the users specified in user_ssh_key_ids) will be added. If no SSH keys are specified (both user_ssh_keys_ids and project_ssh_key_ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included.  Project SSH keys can be created with the metal.ProjectSshKey resource.
+        Array of IDs of the project SSH keys which should be added to the device. If you specify this array, only the listed project SSH keys (and any SSH keys for the users specified in user*ssh*key*ids) will be added. If no SSH keys are specified (both user*ssh*keys*ids and project*ssh*key*ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included.  Project SSH keys can be created with the equinix*metal*project*ssh*key resource
         """
         return pulumi.get(self, "project_ssh_key_ids")
 
@@ -1038,11 +880,6 @@ class _DeviceState:
     @property
     @pulumi.getter
     def reinstall(self) -> Optional[pulumi.Input['DeviceReinstallArgs']]:
-        """
-        Whether the device should be reinstalled instead of destroyed when
-        modifying user_data, custom_data, or operating system. See Reinstall below for more
-        details.
-        """
         return pulumi.get(self, "reinstall")
 
     @reinstall.setter
@@ -1053,7 +890,7 @@ class _DeviceState:
     @pulumi.getter(name="rootPassword")
     def root_password(self) -> Optional[pulumi.Input[str]]:
         """
-        Root password to the server (disabled after 24 hours).
+        Root password to the server (disabled after 24 hours)
         """
         return pulumi.get(self, "root_password")
 
@@ -1077,7 +914,7 @@ class _DeviceState:
     @pulumi.getter(name="sshKeyIds")
     def ssh_key_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of IDs of SSH keys deployed in the device, can be both user and project SSH keys.
+        List of IDs of SSH keys deployed in the device, can be both user and project SSH keys
         """
         return pulumi.get(self, "ssh_key_ids")
 
@@ -1089,7 +926,7 @@ class _DeviceState:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the device.
+        The status of the device
         """
         return pulumi.get(self, "state")
 
@@ -1101,11 +938,7 @@ class _DeviceState:
     @pulumi.getter
     def storage(self) -> Optional[pulumi.Input[str]]:
         """
-        JSON for custom partitioning. Only usable on reserved hardware. More
-        information in in the
-        [Custom Partitioning and RAID](https://metal.equinix.com/developers/docs/servers/custom-partitioning-raid/)
-        doc. Please note that the disks.partitions.size attribute must be a string, not an integer. It can
-        be a number string, or size notation string, e.g. "4G" or "8M" (for gigabytes and megabytes).
+        JSON for custom partitioning. Only usable on reserved hardware. More information in in the [Custom Partitioning and RAID](https://metal.equinix.com/developers/docs/servers/custom-partitioning-raid/) doc
         """
         return pulumi.get(self, "storage")
 
@@ -1117,7 +950,7 @@ class _DeviceState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags attached to the device.
+        Tags attached to the device
         """
         return pulumi.get(self, "tags")
 
@@ -1129,8 +962,7 @@ class _DeviceState:
     @pulumi.getter(name="terminationTime")
     def termination_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Timestamp for device termination. For example `2021-09-03T16:32:00+03:00`.
-        If you don't supply timezone info, timestamp is assumed to be in UTC.
+        Timestamp for device termination. For example "2021-09-03T16:32:00+03:00". If you don't supply timezone info, timestamp is assumed to be in UTC.
         """
         return pulumi.get(self, "termination_time")
 
@@ -1142,7 +974,7 @@ class _DeviceState:
     @pulumi.getter
     def updated(self) -> Optional[pulumi.Input[str]]:
         """
-        The timestamp for the last time the device was updated.
+        The timestamp for the last time the device was updated
         """
         return pulumi.get(self, "updated")
 
@@ -1166,7 +998,7 @@ class _DeviceState:
     @pulumi.getter(name="userSshKeyIds")
     def user_ssh_key_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Array of IDs of the users whose SSH keys should be added to the device. If you specify this array, only the listed users' SSH keys (and any project SSH keys specified in project_ssh_key_ids) will be added. If no SSH keys are specified (both user_ssh_keys_ids and project_ssh_key_ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included. User SSH keys can be created with the metal.SshKey resource.
+        Array of IDs of the users whose SSH keys should be added to the device. If you specify this array, only the listed users' SSH keys (and any project SSH keys specified in project*ssh*key*ids) will be added. If no SSH keys are specified (both user*ssh*keys*ids and project*ssh*key*ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included. User SSH keys can be created with the equinix*metal*ssh*key resource
         """
         return pulumi.get(self, "user_ssh_key_ids")
 
@@ -1178,9 +1010,7 @@ class _DeviceState:
     @pulumi.getter(name="waitForReservationDeprovision")
     def wait_for_reservation_deprovision(self) -> Optional[pulumi.Input[bool]]:
         """
-        Only used for devices in reserved hardware. If
-        set, the deletion of this device will block until the hardware reservation is marked provisionable
-        (about 4 minutes in August 2019).
+        Only used for devices in reserved hardware. If set, the deletion of this device will block until the hardware reservation is marked provisionable (about 4 minutes in August 2019)
         """
         return pulumi.get(self, "wait_for_reservation_deprovision")
 
@@ -1220,12 +1050,9 @@ class Device(pulumi.CustomResource):
                  wait_for_reservation_deprovision: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        Provides an Equinix Metal device resource. This can be used to create,
-        modify, and delete devices.
+        Provides an Equinix Metal device resource. This can be used to create, modify, and delete devices.
 
-        > **NOTE:** All arguments including the `root_password` and `user_data` will be stored in
-         the raw state as plain-text.
-        Read more about sensitive data in state.
+        > **NOTE:** All arguments including the `root_password` and `user_data` will be stored in the raw state as plain-text. Read more about sensitive data in state.
 
         ## Example Usage
         ```python
@@ -1244,72 +1071,30 @@ class Device(pulumi.CustomResource):
         pulumi.export("webPublicIp", web.access_public_ipv4.apply(lambda access_public_ipv4: f"http://{access_public_ipv4}"))
         ```
 
-        ## Import
-
-        This resource can be imported using an existing device ID:
-
-        ```sh
-        $ pulumi import equinix:metal/device:Device equinix_metal_device {existing_device_id}
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] always_pxe: If true, a device with OS `custom_ipxe` will continue to boot via iPXE
-               on reboots.
-        :param pulumi.Input[pulumi.InputType['DeviceBehaviorArgs']] behavior: Behavioral overrides that change how the resource handles certain attribute updates. See Behavior below for more details.
+        :param pulumi.Input[bool] always_pxe: If true, a device with OS custom_ipxe will
         :param pulumi.Input[Union[str, 'BillingCycle']] billing_cycle: monthly or hourly
         :param pulumi.Input[str] custom_data: A string of the desired Custom Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"custom_data"`, the device will be updated in-place instead of recreated.
-        :param pulumi.Input[str] description: The device description.
-        :param pulumi.Input[Sequence[pulumi.Input[Union[str, 'Facility']]]] facilities: List of facility codes with deployment preferences. Equinix Metal API will go
-               through the list and will deploy your device to first facility with free capacity. List items must
-               be facility codes or `any` (a wildcard). To find the facility code, visit
-               [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth
-               token in the top of the page and see JSON from the API response. Conflicts with `metro`.  Use metro instead; read the facility to metro migration guide
-        :param pulumi.Input[bool] force_detach_volumes: Delete device even if it has volumes attached. Only applies
-               for destroy action.
-        :param pulumi.Input[str] hardware_reservation_id: The UUID of the hardware reservation where you want this
-               device deployed, or `next-available` if you want to pick your next available reservation
-               automatically. Changing this from a reservation UUID to `next-available` will re-create the device
-               in another reservation. Please be careful when using hardware reservation UUID and `next-available`
-               together for the same pool of reservations. It might happen that the reservation which Equinix
-               Metal API will pick as `next-available` is the reservation which you refer with UUID in another
-               metal.Device resource. If that happens, and the metal.Device with the UUID is
-               created later, resource creation will fail because the reservation is already in use (by the
-               resource created with `next-available`). To workaround this, have the `next-available` resource
-               explicitly depend_on
-               the resource with hardware reservation UUID, so that the latter is created first. For more details,
-               see issue #176.
-        :param pulumi.Input[str] hostname: The device hostname used in deployments taking advantage of Layer3 DHCP
-               or metadata service configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceIpAddressArgs']]]] ip_addresses: A list of IP address types for the device. See
-               IP address below for more details.
-        :param pulumi.Input[str] ipxe_script_url: URL pointing to a hosted iPXE script. More information is in the
-               [Custom iPXE](https://metal.equinix.com/developers/docs/servers/custom-ipxe/) doc.
+        :param pulumi.Input[str] description: Description string for the device
+        :param pulumi.Input[Sequence[pulumi.Input[Union[str, 'Facility']]]] facilities: List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the top of the page and see JSON from the API response. Conflicts with metro
+        :param pulumi.Input[bool] force_detach_volumes: Delete device even if it has volumes attached. Only applies for destroy action
+        :param pulumi.Input[str] hardware_reservation_id: The UUID of the hardware reservation where you want this device deployed, or next-available if you want to pick your next available reservation automatically
+        :param pulumi.Input[str] hostname: The device hostname used in deployments taking advantage of Layer3 DHCP or metadata service configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceIpAddressArgs']]]] ip_addresses: A list of IP address types for the device (structure is documented below)
+        :param pulumi.Input[str] ipxe_script_url: URL pointing to a hosted iPXE script. More
         :param pulumi.Input[bool] locked: Whether the device is locked or unlocked. Locking a device prevents you from deleting or reinstalling the device or performing a firmware update on the device, and it prevents an instance with a termination time set from being reclaimed, even if the termination time was reached
-        :param pulumi.Input[str] metro: Metro area for the new device. Conflicts with `facilities`.
-        :param pulumi.Input[Union[str, 'OperatingSystem']] operating_system: The operating system slug. To find the slug, or visit
-               [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your
-               API auth token in the top of the page and see JSON from the API response.
-        :param pulumi.Input[Union[str, 'Plan']] plan: The device plan slug. To find the plan slug, visit the
-               [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/).
+        :param pulumi.Input[str] metro: Metro area for the new device. Conflicts with facilities
+        :param pulumi.Input[Union[str, 'OperatingSystem']] operating_system: The operating system slug. To find the slug, or visit [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your API auth token in the top of the page and see JSON from the API response.  By default, changing this attribute will cause your device to be deleted and recreated.  If `reinstall` is enabled, the device will be updated in-place instead of recreated.
+        :param pulumi.Input[Union[str, 'Plan']] plan: The device plan slug. To find the plan slug, visit the [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/)
         :param pulumi.Input[str] project_id: The ID of the project in which to create the device
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] project_ssh_key_ids: Array of IDs of the project SSH keys which should be added to the device. If you specify this array, only the listed project SSH keys (and any SSH keys for the users specified in user_ssh_key_ids) will be added. If no SSH keys are specified (both user_ssh_keys_ids and project_ssh_key_ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included.  Project SSH keys can be created with the metal.ProjectSshKey resource.
-        :param pulumi.Input[pulumi.InputType['DeviceReinstallArgs']] reinstall: Whether the device should be reinstalled instead of destroyed when
-               modifying user_data, custom_data, or operating system. See Reinstall below for more
-               details.
-        :param pulumi.Input[str] storage: JSON for custom partitioning. Only usable on reserved hardware. More
-               information in in the
-               [Custom Partitioning and RAID](https://metal.equinix.com/developers/docs/servers/custom-partitioning-raid/)
-               doc. Please note that the disks.partitions.size attribute must be a string, not an integer. It can
-               be a number string, or size notation string, e.g. "4G" or "8M" (for gigabytes and megabytes).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags attached to the device.
-        :param pulumi.Input[str] termination_time: Timestamp for device termination. For example `2021-09-03T16:32:00+03:00`.
-               If you don't supply timezone info, timestamp is assumed to be in UTC.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] project_ssh_key_ids: Array of IDs of the project SSH keys which should be added to the device. If you specify this array, only the listed project SSH keys (and any SSH keys for the users specified in user*ssh*key*ids) will be added. If no SSH keys are specified (both user*ssh*keys*ids and project*ssh*key*ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included.  Project SSH keys can be created with the equinix*metal*project*ssh*key resource
+        :param pulumi.Input[str] storage: JSON for custom partitioning. Only usable on reserved hardware. More information in in the [Custom Partitioning and RAID](https://metal.equinix.com/developers/docs/servers/custom-partitioning-raid/) doc
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags attached to the device
+        :param pulumi.Input[str] termination_time: Timestamp for device termination. For example "2021-09-03T16:32:00+03:00". If you don't supply timezone info, timestamp is assumed to be in UTC.
         :param pulumi.Input[str] user_data: A string of the desired User Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"user_data"`, the device will be updated in-place instead of recreated.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] user_ssh_key_ids: Array of IDs of the users whose SSH keys should be added to the device. If you specify this array, only the listed users' SSH keys (and any project SSH keys specified in project_ssh_key_ids) will be added. If no SSH keys are specified (both user_ssh_keys_ids and project_ssh_key_ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included. User SSH keys can be created with the metal.SshKey resource.
-        :param pulumi.Input[bool] wait_for_reservation_deprovision: Only used for devices in reserved hardware. If
-               set, the deletion of this device will block until the hardware reservation is marked provisionable
-               (about 4 minutes in August 2019).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] user_ssh_key_ids: Array of IDs of the users whose SSH keys should be added to the device. If you specify this array, only the listed users' SSH keys (and any project SSH keys specified in project*ssh*key*ids) will be added. If no SSH keys are specified (both user*ssh*keys*ids and project*ssh*key*ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included. User SSH keys can be created with the equinix*metal*ssh*key resource
+        :param pulumi.Input[bool] wait_for_reservation_deprovision: Only used for devices in reserved hardware. If set, the deletion of this device will block until the hardware reservation is marked provisionable (about 4 minutes in August 2019)
         """
         ...
     @overload
@@ -1318,12 +1103,9 @@ class Device(pulumi.CustomResource):
                  args: DeviceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides an Equinix Metal device resource. This can be used to create,
-        modify, and delete devices.
+        Provides an Equinix Metal device resource. This can be used to create, modify, and delete devices.
 
-        > **NOTE:** All arguments including the `root_password` and `user_data` will be stored in
-         the raw state as plain-text.
-        Read more about sensitive data in state.
+        > **NOTE:** All arguments including the `root_password` and `user_data` will be stored in the raw state as plain-text. Read more about sensitive data in state.
 
         ## Example Usage
         ```python
@@ -1340,14 +1122,6 @@ class Device(pulumi.CustomResource):
             billing_cycle="hourly",
             project_id=project_id)
         pulumi.export("webPublicIp", web.access_public_ipv4.apply(lambda access_public_ipv4: f"http://{access_public_ipv4}"))
-        ```
-
-        ## Import
-
-        This resource can be imported using an existing device ID:
-
-        ```sh
-        $ pulumi import equinix:metal/device:Device equinix_metal_device {existing_device_id}
         ```
 
         :param str resource_name: The name of the resource.
@@ -1499,85 +1273,42 @@ class Device(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_private_ipv4: The ipv4 private IP assigned to the device.
-        :param pulumi.Input[str] access_public_ipv4: The ipv4 maintenance IP assigned to the device.
-        :param pulumi.Input[str] access_public_ipv6: The ipv6 maintenance IP assigned to the device.
-        :param pulumi.Input[bool] always_pxe: If true, a device with OS `custom_ipxe` will continue to boot via iPXE
-               on reboots.
-        :param pulumi.Input[pulumi.InputType['DeviceBehaviorArgs']] behavior: Behavioral overrides that change how the resource handles certain attribute updates. See Behavior below for more details.
+        :param pulumi.Input[str] access_private_ipv4: The ipv4 private IP assigned to the device
+        :param pulumi.Input[str] access_public_ipv4: The ipv4 maintenance IP assigned to the device
+        :param pulumi.Input[str] access_public_ipv6: The ipv6 maintenance IP assigned to the device
+        :param pulumi.Input[bool] always_pxe: If true, a device with OS custom_ipxe will
         :param pulumi.Input[Union[str, 'BillingCycle']] billing_cycle: monthly or hourly
-        :param pulumi.Input[str] created: The timestamp for when the device was created.
+        :param pulumi.Input[str] created: The timestamp for when the device was created
         :param pulumi.Input[str] custom_data: A string of the desired Custom Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"custom_data"`, the device will be updated in-place instead of recreated.
-        :param pulumi.Input[str] deployed_facility: (**Deprecated**) The facility where the device is deployed. Use metro instead; read the facility to metro migration guide
-        :param pulumi.Input[str] deployed_hardware_reservation_id: ID of hardware reservation where this device was deployed.
-               It is useful when using the `next-available` hardware reservation.
-        :param pulumi.Input[str] description: The device description.
-        :param pulumi.Input[Sequence[pulumi.Input[Union[str, 'Facility']]]] facilities: List of facility codes with deployment preferences. Equinix Metal API will go
-               through the list and will deploy your device to first facility with free capacity. List items must
-               be facility codes or `any` (a wildcard). To find the facility code, visit
-               [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth
-               token in the top of the page and see JSON from the API response. Conflicts with `metro`.  Use metro instead; read the facility to metro migration guide
-        :param pulumi.Input[bool] force_detach_volumes: Delete device even if it has volumes attached. Only applies
-               for destroy action.
-        :param pulumi.Input[str] hardware_reservation_id: The UUID of the hardware reservation where you want this
-               device deployed, or `next-available` if you want to pick your next available reservation
-               automatically. Changing this from a reservation UUID to `next-available` will re-create the device
-               in another reservation. Please be careful when using hardware reservation UUID and `next-available`
-               together for the same pool of reservations. It might happen that the reservation which Equinix
-               Metal API will pick as `next-available` is the reservation which you refer with UUID in another
-               metal.Device resource. If that happens, and the metal.Device with the UUID is
-               created later, resource creation will fail because the reservation is already in use (by the
-               resource created with `next-available`). To workaround this, have the `next-available` resource
-               explicitly depend_on
-               the resource with hardware reservation UUID, so that the latter is created first. For more details,
-               see issue #176.
-        :param pulumi.Input[str] hostname: The device hostname used in deployments taking advantage of Layer3 DHCP
-               or metadata service configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceIpAddressArgs']]]] ip_addresses: A list of IP address types for the device. See
-               IP address below for more details.
-        :param pulumi.Input[str] ipxe_script_url: URL pointing to a hosted iPXE script. More information is in the
-               [Custom iPXE](https://metal.equinix.com/developers/docs/servers/custom-ipxe/) doc.
+        :param pulumi.Input[str] deployed_facility: The facility where the device is deployed
+        :param pulumi.Input[str] deployed_hardware_reservation_id: ID of hardware reservation where this device was deployed. It is useful when using the next-available hardware reservation
+        :param pulumi.Input[str] description: Description string for the device
+        :param pulumi.Input[Sequence[pulumi.Input[Union[str, 'Facility']]]] facilities: List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the top of the page and see JSON from the API response. Conflicts with metro
+        :param pulumi.Input[bool] force_detach_volumes: Delete device even if it has volumes attached. Only applies for destroy action
+        :param pulumi.Input[str] hardware_reservation_id: The UUID of the hardware reservation where you want this device deployed, or next-available if you want to pick your next available reservation automatically
+        :param pulumi.Input[str] hostname: The device hostname used in deployments taking advantage of Layer3 DHCP or metadata service configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceIpAddressArgs']]]] ip_addresses: A list of IP address types for the device (structure is documented below)
+        :param pulumi.Input[str] ipxe_script_url: URL pointing to a hosted iPXE script. More
         :param pulumi.Input[bool] locked: Whether the device is locked or unlocked. Locking a device prevents you from deleting or reinstalling the device or performing a firmware update on the device, and it prevents an instance with a termination time set from being reclaimed, even if the termination time was reached
-        :param pulumi.Input[str] metro: Metro area for the new device. Conflicts with `facilities`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceNetworkArgs']]]] network: The device's private and public IP (v4 and v6) network details. See
-               Network Attribute below for more details.
-        :param pulumi.Input[Union[str, 'NetworkType']] network_type: (Deprecated) Network type of a device, used in
-               [Layer 2 networking](https://metal.equinix.com/developers/docs/networking/layer2/). Since this
-               attribute is deprecated you should handle Network Type with one of
-               equinix_metal_port,
-               metal.DeviceNetworkType resources or
-               metal.Port datasource.
-               See network_types guide for more info.
-        :param pulumi.Input[Union[str, 'OperatingSystem']] operating_system: The operating system slug. To find the slug, or visit
-               [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your
-               API auth token in the top of the page and see JSON from the API response.
-        :param pulumi.Input[Union[str, 'Plan']] plan: The device plan slug. To find the plan slug, visit the
-               [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DevicePortArgs']]]] ports: List of ports assigned to the device. See Ports Attribute below for
-               more details.
+        :param pulumi.Input[str] metro: Metro area for the new device. Conflicts with facilities
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceNetworkArgs']]]] network: The device's private and public IP (v4 and v6) network details. When a device is run without any special network configuration, it will have 3 addresses: public ipv4, private ipv4 and ipv6
+        :param pulumi.Input[Union[str, 'NetworkType']] network_type: Network type of a device, used in [Layer 2 networking](https://metal.equinix.com/developers/docs/networking/layer2/). Will be one of layer3, hybrid, hybrid-bonded, layer2-individual, layer2-bonded
+        :param pulumi.Input[Union[str, 'OperatingSystem']] operating_system: The operating system slug. To find the slug, or visit [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your API auth token in the top of the page and see JSON from the API response.  By default, changing this attribute will cause your device to be deleted and recreated.  If `reinstall` is enabled, the device will be updated in-place instead of recreated.
+        :param pulumi.Input[Union[str, 'Plan']] plan: The device plan slug. To find the plan slug, visit the [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/)
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DevicePortArgs']]]] ports: Ports assigned to the device
         :param pulumi.Input[str] project_id: The ID of the project in which to create the device
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] project_ssh_key_ids: Array of IDs of the project SSH keys which should be added to the device. If you specify this array, only the listed project SSH keys (and any SSH keys for the users specified in user_ssh_key_ids) will be added. If no SSH keys are specified (both user_ssh_keys_ids and project_ssh_key_ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included.  Project SSH keys can be created with the metal.ProjectSshKey resource.
-        :param pulumi.Input[pulumi.InputType['DeviceReinstallArgs']] reinstall: Whether the device should be reinstalled instead of destroyed when
-               modifying user_data, custom_data, or operating system. See Reinstall below for more
-               details.
-        :param pulumi.Input[str] root_password: Root password to the server (disabled after 24 hours).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] project_ssh_key_ids: Array of IDs of the project SSH keys which should be added to the device. If you specify this array, only the listed project SSH keys (and any SSH keys for the users specified in user*ssh*key*ids) will be added. If no SSH keys are specified (both user*ssh*keys*ids and project*ssh*key*ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included.  Project SSH keys can be created with the equinix*metal*project*ssh*key resource
+        :param pulumi.Input[str] root_password: Root password to the server (disabled after 24 hours)
         :param pulumi.Input[str] sos_hostname: The hostname to use for [Serial over SSH](https://deploy.equinix.com/developers/docs/metal/resilience-recovery/serial-over-ssh/) access to the device
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_key_ids: List of IDs of SSH keys deployed in the device, can be both user and project SSH keys.
-        :param pulumi.Input[str] state: The status of the device.
-        :param pulumi.Input[str] storage: JSON for custom partitioning. Only usable on reserved hardware. More
-               information in in the
-               [Custom Partitioning and RAID](https://metal.equinix.com/developers/docs/servers/custom-partitioning-raid/)
-               doc. Please note that the disks.partitions.size attribute must be a string, not an integer. It can
-               be a number string, or size notation string, e.g. "4G" or "8M" (for gigabytes and megabytes).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags attached to the device.
-        :param pulumi.Input[str] termination_time: Timestamp for device termination. For example `2021-09-03T16:32:00+03:00`.
-               If you don't supply timezone info, timestamp is assumed to be in UTC.
-        :param pulumi.Input[str] updated: The timestamp for the last time the device was updated.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_key_ids: List of IDs of SSH keys deployed in the device, can be both user and project SSH keys
+        :param pulumi.Input[str] state: The status of the device
+        :param pulumi.Input[str] storage: JSON for custom partitioning. Only usable on reserved hardware. More information in in the [Custom Partitioning and RAID](https://metal.equinix.com/developers/docs/servers/custom-partitioning-raid/) doc
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags attached to the device
+        :param pulumi.Input[str] termination_time: Timestamp for device termination. For example "2021-09-03T16:32:00+03:00". If you don't supply timezone info, timestamp is assumed to be in UTC.
+        :param pulumi.Input[str] updated: The timestamp for the last time the device was updated
         :param pulumi.Input[str] user_data: A string of the desired User Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"user_data"`, the device will be updated in-place instead of recreated.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] user_ssh_key_ids: Array of IDs of the users whose SSH keys should be added to the device. If you specify this array, only the listed users' SSH keys (and any project SSH keys specified in project_ssh_key_ids) will be added. If no SSH keys are specified (both user_ssh_keys_ids and project_ssh_key_ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included. User SSH keys can be created with the metal.SshKey resource.
-        :param pulumi.Input[bool] wait_for_reservation_deprovision: Only used for devices in reserved hardware. If
-               set, the deletion of this device will block until the hardware reservation is marked provisionable
-               (about 4 minutes in August 2019).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] user_ssh_key_ids: Array of IDs of the users whose SSH keys should be added to the device. If you specify this array, only the listed users' SSH keys (and any project SSH keys specified in project*ssh*key*ids) will be added. If no SSH keys are specified (both user*ssh*keys*ids and project*ssh*key*ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included. User SSH keys can be created with the equinix*metal*ssh*key resource
+        :param pulumi.Input[bool] wait_for_reservation_deprovision: Only used for devices in reserved hardware. If set, the deletion of this device will block until the hardware reservation is marked provisionable (about 4 minutes in August 2019)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1627,7 +1358,7 @@ class Device(pulumi.CustomResource):
     @pulumi.getter(name="accessPrivateIpv4")
     def access_private_ipv4(self) -> pulumi.Output[str]:
         """
-        The ipv4 private IP assigned to the device.
+        The ipv4 private IP assigned to the device
         """
         return pulumi.get(self, "access_private_ipv4")
 
@@ -1635,7 +1366,7 @@ class Device(pulumi.CustomResource):
     @pulumi.getter(name="accessPublicIpv4")
     def access_public_ipv4(self) -> pulumi.Output[str]:
         """
-        The ipv4 maintenance IP assigned to the device.
+        The ipv4 maintenance IP assigned to the device
         """
         return pulumi.get(self, "access_public_ipv4")
 
@@ -1643,7 +1374,7 @@ class Device(pulumi.CustomResource):
     @pulumi.getter(name="accessPublicIpv6")
     def access_public_ipv6(self) -> pulumi.Output[str]:
         """
-        The ipv6 maintenance IP assigned to the device.
+        The ipv6 maintenance IP assigned to the device
         """
         return pulumi.get(self, "access_public_ipv6")
 
@@ -1651,17 +1382,13 @@ class Device(pulumi.CustomResource):
     @pulumi.getter(name="alwaysPxe")
     def always_pxe(self) -> pulumi.Output[Optional[bool]]:
         """
-        If true, a device with OS `custom_ipxe` will continue to boot via iPXE
-        on reboots.
+        If true, a device with OS custom_ipxe will
         """
         return pulumi.get(self, "always_pxe")
 
     @property
     @pulumi.getter
     def behavior(self) -> pulumi.Output[Optional['outputs.DeviceBehavior']]:
-        """
-        Behavioral overrides that change how the resource handles certain attribute updates. See Behavior below for more details.
-        """
         return pulumi.get(self, "behavior")
 
     @property
@@ -1676,7 +1403,7 @@ class Device(pulumi.CustomResource):
     @pulumi.getter
     def created(self) -> pulumi.Output[str]:
         """
-        The timestamp for when the device was created.
+        The timestamp for when the device was created
         """
         return pulumi.get(self, "created")
 
@@ -1690,21 +1417,18 @@ class Device(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="deployedFacility")
+    @_utilities.deprecated("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
     def deployed_facility(self) -> pulumi.Output[str]:
         """
-        (**Deprecated**) The facility where the device is deployed. Use metro instead; read the facility to metro migration guide
+        The facility where the device is deployed
         """
-        warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
-        pulumi.log.warn("""deployed_facility is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
-
         return pulumi.get(self, "deployed_facility")
 
     @property
     @pulumi.getter(name="deployedHardwareReservationId")
     def deployed_hardware_reservation_id(self) -> pulumi.Output[str]:
         """
-        ID of hardware reservation where this device was deployed.
-        It is useful when using the `next-available` hardware reservation.
+        ID of hardware reservation where this device was deployed. It is useful when using the next-available hardware reservation
         """
         return pulumi.get(self, "deployed_hardware_reservation_id")
 
@@ -1712,31 +1436,24 @@ class Device(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        The device description.
+        Description string for the device
         """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
     def facilities(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        List of facility codes with deployment preferences. Equinix Metal API will go
-        through the list and will deploy your device to first facility with free capacity. List items must
-        be facility codes or `any` (a wildcard). To find the facility code, visit
-        [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth
-        token in the top of the page and see JSON from the API response. Conflicts with `metro`.  Use metro instead; read the facility to metro migration guide
+        List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the top of the page and see JSON from the API response. Conflicts with metro
         """
-        warnings.warn("""Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
-        pulumi.log.warn("""facilities is deprecated: Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
-
         return pulumi.get(self, "facilities")
 
     @property
     @pulumi.getter(name="forceDetachVolumes")
     def force_detach_volumes(self) -> pulumi.Output[Optional[bool]]:
         """
-        Delete device even if it has volumes attached. Only applies
-        for destroy action.
+        Delete device even if it has volumes attached. Only applies for destroy action
         """
         return pulumi.get(self, "force_detach_volumes")
 
@@ -1744,18 +1461,7 @@ class Device(pulumi.CustomResource):
     @pulumi.getter(name="hardwareReservationId")
     def hardware_reservation_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The UUID of the hardware reservation where you want this
-        device deployed, or `next-available` if you want to pick your next available reservation
-        automatically. Changing this from a reservation UUID to `next-available` will re-create the device
-        in another reservation. Please be careful when using hardware reservation UUID and `next-available`
-        together for the same pool of reservations. It might happen that the reservation which Equinix
-        Metal API will pick as `next-available` is the reservation which you refer with UUID in another
-        metal.Device resource. If that happens, and the metal.Device with the UUID is
-        created later, resource creation will fail because the reservation is already in use (by the
-        resource created with `next-available`). To workaround this, have the `next-available` resource
-        explicitly depend_on
-        the resource with hardware reservation UUID, so that the latter is created first. For more details,
-        see issue #176.
+        The UUID of the hardware reservation where you want this device deployed, or next-available if you want to pick your next available reservation automatically
         """
         return pulumi.get(self, "hardware_reservation_id")
 
@@ -1763,8 +1469,7 @@ class Device(pulumi.CustomResource):
     @pulumi.getter
     def hostname(self) -> pulumi.Output[str]:
         """
-        The device hostname used in deployments taking advantage of Layer3 DHCP
-        or metadata service configuration.
+        The device hostname used in deployments taking advantage of Layer3 DHCP or metadata service configuration.
         """
         return pulumi.get(self, "hostname")
 
@@ -1772,8 +1477,7 @@ class Device(pulumi.CustomResource):
     @pulumi.getter(name="ipAddresses")
     def ip_addresses(self) -> pulumi.Output[Optional[Sequence['outputs.DeviceIpAddress']]]:
         """
-        A list of IP address types for the device. See
-        IP address below for more details.
+        A list of IP address types for the device (structure is documented below)
         """
         return pulumi.get(self, "ip_addresses")
 
@@ -1781,8 +1485,7 @@ class Device(pulumi.CustomResource):
     @pulumi.getter(name="ipxeScriptUrl")
     def ipxe_script_url(self) -> pulumi.Output[Optional[str]]:
         """
-        URL pointing to a hosted iPXE script. More information is in the
-        [Custom iPXE](https://metal.equinix.com/developers/docs/servers/custom-ipxe/) doc.
+        URL pointing to a hosted iPXE script. More
         """
         return pulumi.get(self, "ipxe_script_url")
 
@@ -1798,7 +1501,7 @@ class Device(pulumi.CustomResource):
     @pulumi.getter
     def metro(self) -> pulumi.Output[Optional[str]]:
         """
-        Metro area for the new device. Conflicts with `facilities`.
+        Metro area for the new device. Conflicts with facilities
         """
         return pulumi.get(self, "metro")
 
@@ -1806,35 +1509,24 @@ class Device(pulumi.CustomResource):
     @pulumi.getter
     def network(self) -> pulumi.Output[Sequence['outputs.DeviceNetwork']]:
         """
-        The device's private and public IP (v4 and v6) network details. See
-        Network Attribute below for more details.
+        The device's private and public IP (v4 and v6) network details. When a device is run without any special network configuration, it will have 3 addresses: public ipv4, private ipv4 and ipv6
         """
         return pulumi.get(self, "network")
 
     @property
     @pulumi.getter(name="networkType")
+    @_utilities.deprecated("""You should handle Network Type with one of 'equinix_metal_port' or 'equinix_metal_device_network_type' resources. See section 'Guides' for more info""")
     def network_type(self) -> pulumi.Output[str]:
         """
-        (Deprecated) Network type of a device, used in
-        [Layer 2 networking](https://metal.equinix.com/developers/docs/networking/layer2/). Since this
-        attribute is deprecated you should handle Network Type with one of
-        equinix_metal_port,
-        metal.DeviceNetworkType resources or
-        metal.Port datasource.
-        See network_types guide for more info.
+        Network type of a device, used in [Layer 2 networking](https://metal.equinix.com/developers/docs/networking/layer2/). Will be one of layer3, hybrid, hybrid-bonded, layer2-individual, layer2-bonded
         """
-        warnings.warn("""You should handle Network Type with one of 'equinix_metal_port' or 'equinix_metal_device_network_type' resources. See section 'Guides' for more info""", DeprecationWarning)
-        pulumi.log.warn("""network_type is deprecated: You should handle Network Type with one of 'equinix_metal_port' or 'equinix_metal_device_network_type' resources. See section 'Guides' for more info""")
-
         return pulumi.get(self, "network_type")
 
     @property
     @pulumi.getter(name="operatingSystem")
     def operating_system(self) -> pulumi.Output[str]:
         """
-        The operating system slug. To find the slug, or visit
-        [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your
-        API auth token in the top of the page and see JSON from the API response.
+        The operating system slug. To find the slug, or visit [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your API auth token in the top of the page and see JSON from the API response.  By default, changing this attribute will cause your device to be deleted and recreated.  If `reinstall` is enabled, the device will be updated in-place instead of recreated.
         """
         return pulumi.get(self, "operating_system")
 
@@ -1842,8 +1534,7 @@ class Device(pulumi.CustomResource):
     @pulumi.getter
     def plan(self) -> pulumi.Output[str]:
         """
-        The device plan slug. To find the plan slug, visit the
-        [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/).
+        The device plan slug. To find the plan slug, visit the [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/)
         """
         return pulumi.get(self, "plan")
 
@@ -1851,8 +1542,7 @@ class Device(pulumi.CustomResource):
     @pulumi.getter
     def ports(self) -> pulumi.Output[Sequence['outputs.DevicePort']]:
         """
-        List of ports assigned to the device. See Ports Attribute below for
-        more details.
+        Ports assigned to the device
         """
         return pulumi.get(self, "ports")
 
@@ -1868,25 +1558,20 @@ class Device(pulumi.CustomResource):
     @pulumi.getter(name="projectSshKeyIds")
     def project_ssh_key_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Array of IDs of the project SSH keys which should be added to the device. If you specify this array, only the listed project SSH keys (and any SSH keys for the users specified in user_ssh_key_ids) will be added. If no SSH keys are specified (both user_ssh_keys_ids and project_ssh_key_ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included.  Project SSH keys can be created with the metal.ProjectSshKey resource.
+        Array of IDs of the project SSH keys which should be added to the device. If you specify this array, only the listed project SSH keys (and any SSH keys for the users specified in user*ssh*key*ids) will be added. If no SSH keys are specified (both user*ssh*keys*ids and project*ssh*key*ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included.  Project SSH keys can be created with the equinix*metal*project*ssh*key resource
         """
         return pulumi.get(self, "project_ssh_key_ids")
 
     @property
     @pulumi.getter
     def reinstall(self) -> pulumi.Output[Optional['outputs.DeviceReinstall']]:
-        """
-        Whether the device should be reinstalled instead of destroyed when
-        modifying user_data, custom_data, or operating system. See Reinstall below for more
-        details.
-        """
         return pulumi.get(self, "reinstall")
 
     @property
     @pulumi.getter(name="rootPassword")
     def root_password(self) -> pulumi.Output[str]:
         """
-        Root password to the server (disabled after 24 hours).
+        Root password to the server (disabled after 24 hours)
         """
         return pulumi.get(self, "root_password")
 
@@ -1902,7 +1587,7 @@ class Device(pulumi.CustomResource):
     @pulumi.getter(name="sshKeyIds")
     def ssh_key_ids(self) -> pulumi.Output[Sequence[str]]:
         """
-        List of IDs of SSH keys deployed in the device, can be both user and project SSH keys.
+        List of IDs of SSH keys deployed in the device, can be both user and project SSH keys
         """
         return pulumi.get(self, "ssh_key_ids")
 
@@ -1910,7 +1595,7 @@ class Device(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
-        The status of the device.
+        The status of the device
         """
         return pulumi.get(self, "state")
 
@@ -1918,11 +1603,7 @@ class Device(pulumi.CustomResource):
     @pulumi.getter
     def storage(self) -> pulumi.Output[Optional[str]]:
         """
-        JSON for custom partitioning. Only usable on reserved hardware. More
-        information in in the
-        [Custom Partitioning and RAID](https://metal.equinix.com/developers/docs/servers/custom-partitioning-raid/)
-        doc. Please note that the disks.partitions.size attribute must be a string, not an integer. It can
-        be a number string, or size notation string, e.g. "4G" or "8M" (for gigabytes and megabytes).
+        JSON for custom partitioning. Only usable on reserved hardware. More information in in the [Custom Partitioning and RAID](https://metal.equinix.com/developers/docs/servers/custom-partitioning-raid/) doc
         """
         return pulumi.get(self, "storage")
 
@@ -1930,7 +1611,7 @@ class Device(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Tags attached to the device.
+        Tags attached to the device
         """
         return pulumi.get(self, "tags")
 
@@ -1938,8 +1619,7 @@ class Device(pulumi.CustomResource):
     @pulumi.getter(name="terminationTime")
     def termination_time(self) -> pulumi.Output[Optional[str]]:
         """
-        Timestamp for device termination. For example `2021-09-03T16:32:00+03:00`.
-        If you don't supply timezone info, timestamp is assumed to be in UTC.
+        Timestamp for device termination. For example "2021-09-03T16:32:00+03:00". If you don't supply timezone info, timestamp is assumed to be in UTC.
         """
         return pulumi.get(self, "termination_time")
 
@@ -1947,7 +1627,7 @@ class Device(pulumi.CustomResource):
     @pulumi.getter
     def updated(self) -> pulumi.Output[str]:
         """
-        The timestamp for the last time the device was updated.
+        The timestamp for the last time the device was updated
         """
         return pulumi.get(self, "updated")
 
@@ -1963,7 +1643,7 @@ class Device(pulumi.CustomResource):
     @pulumi.getter(name="userSshKeyIds")
     def user_ssh_key_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Array of IDs of the users whose SSH keys should be added to the device. If you specify this array, only the listed users' SSH keys (and any project SSH keys specified in project_ssh_key_ids) will be added. If no SSH keys are specified (both user_ssh_keys_ids and project_ssh_key_ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included. User SSH keys can be created with the metal.SshKey resource.
+        Array of IDs of the users whose SSH keys should be added to the device. If you specify this array, only the listed users' SSH keys (and any project SSH keys specified in project*ssh*key*ids) will be added. If no SSH keys are specified (both user*ssh*keys*ids and project*ssh*key*ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included. User SSH keys can be created with the equinix*metal*ssh*key resource
         """
         return pulumi.get(self, "user_ssh_key_ids")
 
@@ -1971,9 +1651,7 @@ class Device(pulumi.CustomResource):
     @pulumi.getter(name="waitForReservationDeprovision")
     def wait_for_reservation_deprovision(self) -> pulumi.Output[Optional[bool]]:
         """
-        Only used for devices in reserved hardware. If
-        set, the deletion of this device will block until the hardware reservation is marked provisionable
-        (about 4 minutes in August 2019).
+        Only used for devices in reserved hardware. If set, the deletion of this device will block until the hardware reservation is marked provisionable (about 4 minutes in August 2019)
         """
         return pulumi.get(self, "wait_for_reservation_deprovision")
 

@@ -114,7 +114,7 @@ export interface GetInterconnectionResult {
      */
     readonly tags: string[];
     /**
-     * (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the equinixEcxL2Connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `serviceTokens` instead.
+     * (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the equinix.fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `serviceTokens` instead.
      *
      * @deprecated If your organization already has connection service tokens enabled, use `serviceTokens` instead
      */

@@ -33,16 +33,14 @@ public final class GetDeviceSoftwareArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * Boolean value to indicate that most recent version should be used *(in
-     * case when more than one result is returned)*.
+     * Boolean value to indicate that most recent version should be used *(in case when more than one result is returned)*.
      * 
      */
     @Import(name="mostRecent")
     private @Nullable Output<Boolean> mostRecent;
 
     /**
-     * @return Boolean value to indicate that most recent version should be used *(in
-     * case when more than one result is returned)*.
+     * @return Boolean value to indicate that most recent version should be used *(in case when more than one result is returned)*.
      * 
      */
     public Optional<Output<Boolean>> mostRecent() {
@@ -50,16 +48,14 @@ public final class GetDeviceSoftwareArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * Limits returned versions to those that are supported by given software
-     * package codes.
+     * Limits returned versions to those that are supported by given software package codes.
      * 
      */
     @Import(name="packages")
     private @Nullable Output<List<String>> packages;
 
     /**
-     * @return Limits returned versions to those that are supported by given software
-     * package codes.
+     * @return Limits returned versions to those that are supported by given software package codes.
      * 
      */
     public Optional<Output<List<String>>> packages() {
@@ -82,16 +78,14 @@ public final class GetDeviceSoftwareArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * A regex string to apply on returned versions and filter search
-     * results.
+     * A regex string to apply on returned versions and filter search results.
      * 
      */
     @Import(name="versionRegex")
     private @Nullable Output<String> versionRegex;
 
     /**
-     * @return A regex string to apply on returned versions and filter search
-     * results.
+     * @return A regex string to apply on returned versions and filter search results.
      * 
      */
     public Optional<Output<String>> versionRegex() {
@@ -148,8 +142,7 @@ public final class GetDeviceSoftwareArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param mostRecent Boolean value to indicate that most recent version should be used *(in
-         * case when more than one result is returned)*.
+         * @param mostRecent Boolean value to indicate that most recent version should be used *(in case when more than one result is returned)*.
          * 
          * @return builder
          * 
@@ -160,8 +153,7 @@ public final class GetDeviceSoftwareArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param mostRecent Boolean value to indicate that most recent version should be used *(in
-         * case when more than one result is returned)*.
+         * @param mostRecent Boolean value to indicate that most recent version should be used *(in case when more than one result is returned)*.
          * 
          * @return builder
          * 
@@ -171,8 +163,7 @@ public final class GetDeviceSoftwareArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param packages Limits returned versions to those that are supported by given software
-         * package codes.
+         * @param packages Limits returned versions to those that are supported by given software package codes.
          * 
          * @return builder
          * 
@@ -183,8 +174,7 @@ public final class GetDeviceSoftwareArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param packages Limits returned versions to those that are supported by given software
-         * package codes.
+         * @param packages Limits returned versions to those that are supported by given software package codes.
          * 
          * @return builder
          * 
@@ -194,8 +184,7 @@ public final class GetDeviceSoftwareArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param packages Limits returned versions to those that are supported by given software
-         * package codes.
+         * @param packages Limits returned versions to those that are supported by given software package codes.
          * 
          * @return builder
          * 
@@ -226,8 +215,7 @@ public final class GetDeviceSoftwareArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param versionRegex A regex string to apply on returned versions and filter search
-         * results.
+         * @param versionRegex A regex string to apply on returned versions and filter search results.
          * 
          * @return builder
          * 
@@ -238,8 +226,7 @@ public final class GetDeviceSoftwareArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param versionRegex A regex string to apply on returned versions and filter search
-         * results.
+         * @param versionRegex A regex string to apply on returned versions and filter search results.
          * 
          * @return builder
          * 

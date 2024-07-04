@@ -49,16 +49,14 @@ public final class DeviceClusterDetailsArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * An object that has `node0` configuration.
-     * See Cluster Details - Nodes below for more details.
+     * An object that has `node0` configuration. See Cluster Details - Nodes below for more details.
      * 
      */
     @Import(name="node0", required=true)
     private Output<DeviceClusterDetailsNode0Args> node0;
 
     /**
-     * @return An object that has `node0` configuration.
-     * See Cluster Details - Nodes below for more details.
+     * @return An object that has `node0` configuration. See Cluster Details - Nodes below for more details.
      * 
      */
     public Output<DeviceClusterDetailsNode0Args> node0() {
@@ -66,16 +64,14 @@ public final class DeviceClusterDetailsArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * An object that has `node1` configuration.
-     * See Cluster Details - Nodes below for more details.
+     * An object that has `node1` configuration. See Cluster Details - Nodes below for more details.
      * 
      */
     @Import(name="node1", required=true)
     private Output<DeviceClusterDetailsNode1Args> node1;
 
     /**
-     * @return An object that has `node1` configuration.
-     * See Cluster Details - Nodes below for more details.
+     * @return An object that has `node1` configuration. See Cluster Details - Nodes below for more details.
      * 
      */
     public Output<DeviceClusterDetailsNode1Args> node1() {
@@ -168,8 +164,7 @@ public final class DeviceClusterDetailsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param node0 An object that has `node0` configuration.
-         * See Cluster Details - Nodes below for more details.
+         * @param node0 An object that has `node0` configuration. See Cluster Details - Nodes below for more details.
          * 
          * @return builder
          * 
@@ -180,8 +175,7 @@ public final class DeviceClusterDetailsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param node0 An object that has `node0` configuration.
-         * See Cluster Details - Nodes below for more details.
+         * @param node0 An object that has `node0` configuration. See Cluster Details - Nodes below for more details.
          * 
          * @return builder
          * 
@@ -191,8 +185,7 @@ public final class DeviceClusterDetailsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param node1 An object that has `node1` configuration.
-         * See Cluster Details - Nodes below for more details.
+         * @param node1 An object that has `node1` configuration. See Cluster Details - Nodes below for more details.
          * 
          * @return builder
          * 
@@ -203,8 +196,7 @@ public final class DeviceClusterDetailsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param node1 An object that has `node1` configuration.
-         * See Cluster Details - Nodes below for more details.
+         * @param node1 An object that has `node1` configuration. See Cluster Details - Nodes below for more details.
          * 
          * @return builder
          * 

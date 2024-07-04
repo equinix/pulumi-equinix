@@ -19,8 +19,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Resource `equinix.networkedge.DeviceLink` allows creation and management of Equinix
- * Network Edge virtual network device links.
+ * Resource `equinix.networkedge.DeviceLink` allows creation and management of Equinix Network Edge virtual network device links.
  * 
  * ## Example Usage
  * ```java
@@ -108,24 +107,21 @@ import javax.annotation.Nullable;
 @ResourceType(type="equinix:networkedge/deviceLink:DeviceLink")
 public class DeviceLink extends com.pulumi.resources.CustomResource {
     /**
-     * definition of one or more devices belonging to the
-     * device link. See Device section below for more details.
+     * definition of one or more devices belonging to the device link. See Device section below for more details.
      * 
      */
     @Export(name="devices", refs={List.class,DeviceLinkDevice.class}, tree="[0,1]")
     private Output<List<DeviceLinkDevice>> devices;
 
     /**
-     * @return definition of one or more devices belonging to the
-     * device link. See Device section below for more details.
+     * @return definition of one or more devices belonging to the device link. See Device section below for more details.
      * 
      */
     public Output<List<DeviceLinkDevice>> devices() {
         return this.devices;
     }
     /**
-     * definition of one or more, inter metro, connections belonging
-     * to the device link. See Link section below for more details.
+     * definition of one or more, inter metro, connections belonging to the device link. See Link section below for more details.
      * 
      * @deprecated
      * Links is deprecated. Please use metro links instead.
@@ -136,24 +132,21 @@ public class DeviceLink extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ List<DeviceLinkLink>> links;
 
     /**
-     * @return definition of one or more, inter metro, connections belonging
-     * to the device link. See Link section below for more details.
+     * @return definition of one or more, inter metro, connections belonging to the device link. See Link section below for more details.
      * 
      */
     public Output<Optional<List<DeviceLinkLink>>> links() {
         return Codegen.optional(this.links);
     }
     /**
-     * definition of one or more, inter metro, connections belonging
-     * to the device link. See Metro Link section below for more details.
+     * definition of one or more, inter metro, connections belonging to the device link. See Metro Link section below for more details.
      * 
      */
     @Export(name="metroLinks", refs={List.class,DeviceLinkMetroLink.class}, tree="[0,1]")
     private Output</* @Nullable */ List<DeviceLinkMetroLink>> metroLinks;
 
     /**
-     * @return definition of one or more, inter metro, connections belonging
-     * to the device link. See Metro Link section below for more details.
+     * @return definition of one or more, inter metro, connections belonging to the device link. See Metro Link section below for more details.
      * 
      */
     public Output<Optional<List<DeviceLinkMetroLink>>> metroLinks() {
@@ -174,64 +167,56 @@ public class DeviceLink extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Unique Identifier for the project resource where the device link is scoped to.If you
-     * leave it out, the device link will be created under the default project id of your organization.
+     * Unique Identifier for the project resource where the device link is scoped to.If you leave it out, the device link will be created under the default project id of your organization.
      * 
      */
     @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output<String> projectId;
 
     /**
-     * @return Unique Identifier for the project resource where the device link is scoped to.If you
-     * leave it out, the device link will be created under the default project id of your organization.
+     * @return Unique Identifier for the project resource where the device link is scoped to.If you leave it out, the device link will be created under the default project id of your organization.
      * 
      */
     public Output<String> projectId() {
         return this.projectId;
     }
     /**
-     * Whether the connection should be created through
-     * Fabric&#39;s primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
+     * Whether the connection should be created through Fabric&#39;s primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
      * 
      */
     @Export(name="redundancyType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> redundancyType;
 
     /**
-     * @return Whether the connection should be created through
-     * Fabric&#39;s primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
+     * @return Whether the connection should be created through Fabric&#39;s primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
      * 
      */
     public Output<Optional<String>> redundancyType() {
         return Codegen.optional(this.redundancyType);
     }
     /**
-     * device link provisioning status on a given device. One of `PROVISIONING`,
-     * `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
+     * device link provisioning status on a given device. One of `PROVISIONING`, `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return device link provisioning status on a given device. One of `PROVISIONING`,
-     * `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
+     * @return device link provisioning status on a given device. One of `PROVISIONING`, `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * device link subnet in CIDR format. Not required for link
-     * between self configured devices.
+     * device link subnet in CIDR format. Not required for link between self configured devices.
      * 
      */
     @Export(name="subnet", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> subnet;
 
     /**
-     * @return device link subnet in CIDR format. Not required for link
-     * between self configured devices.
+     * @return device link subnet in CIDR format. Not required for link between self configured devices.
      * 
      */
     public Output<Optional<String>> subnet() {

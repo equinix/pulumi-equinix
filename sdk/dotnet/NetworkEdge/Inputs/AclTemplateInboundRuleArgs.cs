@@ -19,8 +19,7 @@ namespace Pulumi.Equinix.NetworkEdge.Inputs
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Inbound traffic destination ports. Allowed values are a comma separated
-        /// list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
+        /// Inbound traffic destination ports. Allowed values are a comma separated list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
         /// </summary>
         [Input("dstPort", required: true)]
         public Input<string> DstPort { get; set; } = null!;
@@ -44,8 +43,7 @@ namespace Pulumi.Equinix.NetworkEdge.Inputs
         public Input<string>? SourceType { get; set; }
 
         /// <summary>
-        /// Inbound traffic source ports. Allowed values are a comma separated list
-        /// of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
+        /// Inbound traffic source ports. Allowed values are a comma separated list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
         /// </summary>
         [Input("srcPort", required: true)]
         public Input<string> SrcPort { get; set; } = null!;

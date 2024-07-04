@@ -18,13 +18,11 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
         /// </summary>
         public readonly string AccountNumber;
         /// <summary>
-        /// Identifier of a WAN interface ACL template that will be applied
-        /// on a secondary device.
+        /// Identifier of a WAN interface ACL template that will be applied on a secondary device.
         /// </summary>
         public readonly string? AclTemplateId;
         /// <summary>
-        /// Additional Internet bandwidth, in Mbps, for a secondary
-        /// device.
+        /// Additional Internet bandwidth, in Mbps, for a secondary device.
         /// </summary>
         public readonly int? AdditionalBandwidth;
         /// <summary>
@@ -44,13 +42,11 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
         /// </summary>
         public readonly string? Ibx;
         /// <summary>
-        /// List of device interfaces. See Interface Attribute below
-        /// for more details.
+        /// List of device interfaces. See Interface Attribute below for more details.
         /// </summary>
         public readonly ImmutableArray<Outputs.DeviceSecondaryDeviceInterface> Interfaces;
         /// <summary>
-        /// Path to the license file that will be uploaded and applied on a
-        /// secondary device. Applicable for some device types in BYOL licensing mode.
+        /// Path to the license file that will be uploaded and applied on a secondary device. Applicable for some device types in BYOL licensing mode.
         /// </summary>
         public readonly string? LicenseFile;
         /// <summary>
@@ -58,8 +54,7 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
         /// </summary>
         public readonly string? LicenseFileId;
         /// <summary>
-        /// Device license registration status. Possible values are `APPLYING_LICENSE`,
-        /// `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
+        /// Device license registration status. Possible values are `APPLYING_LICENSE`, `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
         /// </summary>
         public readonly string? LicenseStatus;
         /// <summary>
@@ -71,10 +66,8 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
         /// </summary>
         public readonly string MetroCode;
         /// <summary>
-        /// Identifier of an MGMT interface ACL template that will be
-        /// applied on a secondary device.
-        /// * `ssh-key` - (Optional) Up to one definition of SSH key that will be provisioned on a secondary
-        /// device.
+        /// Identifier of an MGMT interface ACL template that will be applied on a secondary device.
+        /// * `ssh-key` - (Optional) Up to one definition of SSH key that will be provisioned on a secondary device.
         /// </summary>
         public readonly string? MgmtAclTemplateUuid;
         /// <summary>
@@ -82,18 +75,15 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// List of email addresses that will receive notifications about
-        /// secondary device.
+        /// List of email addresses that will receive notifications about secondary device.
         /// </summary>
         public readonly ImmutableArray<string> Notifications;
         /// <summary>
-        /// Unique Identifier for the project resource where the device is scoped to.If you
-        /// leave it out, the device will be created under the default project id of your organization.
+        /// Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
         /// </summary>
         public readonly string? ProjectId;
         /// <summary>
-        /// Device redundancy type applicable for HA devices, either
-        /// primary or secondary.
+        /// Device redundancy type applicable for HA devices, either primary or secondary.
         /// </summary>
         public readonly string? RedundancyType;
         /// <summary>
@@ -125,9 +115,7 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
         /// </summary>
         public readonly string? Uuid;
         /// <summary>
-        /// Key/Value pairs of vendor specific configuration parameters
-        /// for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`,
-        /// `systemIpAddress`, `private_address`, `private_cidr_mask`, `private_gateway`, `license_key`, `license_id`.
+        /// Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? VendorConfiguration;
         /// <summary>

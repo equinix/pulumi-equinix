@@ -81,15 +81,13 @@ namespace Pulumi.Equinix.Metal
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// UUID of a VLAN to assign as a native VLAN. It must be one of
-        /// attached VLANs (from `vlan_ids` parameter).
+        /// UUID of a VLAN to assign as a native VLAN. It must be one of attached VLANs (from `vlan_ids` parameter).
         /// </summary>
         [Output("nativeVlanId")]
         public Output<string?> NativeVlanId { get; private set; } = null!;
 
         /// <summary>
-        /// One of layer2-bonded, layer2-individual, layer3, hybrid and hybrid-bonded. This
-        /// attribute is only set on bond ports.
+        /// One of layer2-bonded, layer2-individual, layer3, hybrid and hybrid-bonded. This attribute is only set on bond ports.
         /// </summary>
         [Output("networkType")]
         public Output<string> NetworkType { get; private set; } = null!;
@@ -113,15 +111,13 @@ namespace Pulumi.Equinix.Metal
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// List of VLAN UUIDs to attach to the port, valid only for L2 and Hybrid
-        /// ports.
+        /// List of VLAN UUIDs to attach to the port, valid only for L2 and Hybrid ports.
         /// </summary>
         [Output("vlanIds")]
         public Output<ImmutableArray<string>> VlanIds { get; private set; } = null!;
 
         /// <summary>
-        /// List of VXLAN IDs to attach to the port, valid only for L2 and Hybrid
-        /// ports.
+        /// List of VXLAN IDs to attach to the port, valid only for L2 and Hybrid ports.
         /// </summary>
         [Output("vxlanIds")]
         public Output<ImmutableArray<int>> VxlanIds { get; private set; } = null!;
@@ -186,8 +182,7 @@ namespace Pulumi.Equinix.Metal
         public Input<bool>? Layer2 { get; set; }
 
         /// <summary>
-        /// UUID of a VLAN to assign as a native VLAN. It must be one of
-        /// attached VLANs (from `vlan_ids` parameter).
+        /// UUID of a VLAN to assign as a native VLAN. It must be one of attached VLANs (from `vlan_ids` parameter).
         /// </summary>
         [Input("nativeVlanId")]
         public Input<string>? NativeVlanId { get; set; }
@@ -208,8 +203,7 @@ namespace Pulumi.Equinix.Metal
         private InputList<string>? _vlanIds;
 
         /// <summary>
-        /// List of VLAN UUIDs to attach to the port, valid only for L2 and Hybrid
-        /// ports.
+        /// List of VLAN UUIDs to attach to the port, valid only for L2 and Hybrid ports.
         /// </summary>
         public InputList<string> VlanIds
         {
@@ -221,8 +215,7 @@ namespace Pulumi.Equinix.Metal
         private InputList<int>? _vxlanIds;
 
         /// <summary>
-        /// List of VXLAN IDs to attach to the port, valid only for L2 and Hybrid
-        /// ports.
+        /// List of VXLAN IDs to attach to the port, valid only for L2 and Hybrid ports.
         /// </summary>
         public InputList<int> VxlanIds
         {
@@ -281,15 +274,13 @@ namespace Pulumi.Equinix.Metal
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// UUID of a VLAN to assign as a native VLAN. It must be one of
-        /// attached VLANs (from `vlan_ids` parameter).
+        /// UUID of a VLAN to assign as a native VLAN. It must be one of attached VLANs (from `vlan_ids` parameter).
         /// </summary>
         [Input("nativeVlanId")]
         public Input<string>? NativeVlanId { get; set; }
 
         /// <summary>
-        /// One of layer2-bonded, layer2-individual, layer3, hybrid and hybrid-bonded. This
-        /// attribute is only set on bond ports.
+        /// One of layer2-bonded, layer2-individual, layer3, hybrid and hybrid-bonded. This attribute is only set on bond ports.
         /// </summary>
         [Input("networkType")]
         public Input<string>? NetworkType { get; set; }
@@ -316,8 +307,7 @@ namespace Pulumi.Equinix.Metal
         private InputList<string>? _vlanIds;
 
         /// <summary>
-        /// List of VLAN UUIDs to attach to the port, valid only for L2 and Hybrid
-        /// ports.
+        /// List of VLAN UUIDs to attach to the port, valid only for L2 and Hybrid ports.
         /// </summary>
         public InputList<string> VlanIds
         {
@@ -329,8 +319,7 @@ namespace Pulumi.Equinix.Metal
         private InputList<int>? _vxlanIds;
 
         /// <summary>
-        /// List of VXLAN IDs to attach to the port, valid only for L2 and Hybrid
-        /// ports.
+        /// List of VXLAN IDs to attach to the port, valid only for L2 and Hybrid ports.
         /// </summary>
         public InputList<int> VxlanIds
         {

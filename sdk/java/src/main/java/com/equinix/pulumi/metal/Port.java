@@ -158,32 +158,28 @@ public class Port extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * UUID of a VLAN to assign as a native VLAN. It must be one of
-     * attached VLANs (from `vlan_ids` parameter).
+     * UUID of a VLAN to assign as a native VLAN. It must be one of attached VLANs (from `vlan_ids` parameter).
      * 
      */
     @Export(name="nativeVlanId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> nativeVlanId;
 
     /**
-     * @return UUID of a VLAN to assign as a native VLAN. It must be one of
-     * attached VLANs (from `vlan_ids` parameter).
+     * @return UUID of a VLAN to assign as a native VLAN. It must be one of attached VLANs (from `vlan_ids` parameter).
      * 
      */
     public Output<Optional<String>> nativeVlanId() {
         return Codegen.optional(this.nativeVlanId);
     }
     /**
-     * One of layer2-bonded, layer2-individual, layer3, hybrid and hybrid-bonded. This
-     * attribute is only set on bond ports.
+     * One of layer2-bonded, layer2-individual, layer3, hybrid and hybrid-bonded. This attribute is only set on bond ports.
      * 
      */
     @Export(name="networkType", refs={String.class}, tree="[0]")
     private Output<String> networkType;
 
     /**
-     * @return One of layer2-bonded, layer2-individual, layer3, hybrid and hybrid-bonded. This
-     * attribute is only set on bond ports.
+     * @return One of layer2-bonded, layer2-individual, layer3, hybrid and hybrid-bonded. This attribute is only set on bond ports.
      * 
      */
     public Output<String> networkType() {
@@ -232,32 +228,28 @@ public class Port extends com.pulumi.resources.CustomResource {
         return this.type;
     }
     /**
-     * List of VLAN UUIDs to attach to the port, valid only for L2 and Hybrid
-     * ports.
+     * List of VLAN UUIDs to attach to the port, valid only for L2 and Hybrid ports.
      * 
      */
     @Export(name="vlanIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> vlanIds;
 
     /**
-     * @return List of VLAN UUIDs to attach to the port, valid only for L2 and Hybrid
-     * ports.
+     * @return List of VLAN UUIDs to attach to the port, valid only for L2 and Hybrid ports.
      * 
      */
     public Output<List<String>> vlanIds() {
         return this.vlanIds;
     }
     /**
-     * List of VXLAN IDs to attach to the port, valid only for L2 and Hybrid
-     * ports.
+     * List of VXLAN IDs to attach to the port, valid only for L2 and Hybrid ports.
      * 
      */
     @Export(name="vxlanIds", refs={List.class,Integer.class}, tree="[0,1]")
     private Output<List<Integer>> vxlanIds;
 
     /**
-     * @return List of VXLAN IDs to attach to the port, valid only for L2 and Hybrid
-     * ports.
+     * @return List of VXLAN IDs to attach to the port, valid only for L2 and Hybrid ports.
      * 
      */
     public Output<List<Integer>> vxlanIds() {

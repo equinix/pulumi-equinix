@@ -77,18 +77,14 @@ public final class DeviceClusterDetailsNode0Args extends com.pulumi.resources.Re
     }
 
     /**
-     * An object that has fields relevant to the vendor of the
-     * cluster device. See Cluster Details - Nodes - Vendor Configuration
-     * below for more details.
+     * An object that has fields relevant to the vendor of the cluster device. See Cluster Details - Nodes - Vendor Configuration below for more details.
      * 
      */
     @Import(name="vendorConfiguration")
     private @Nullable Output<DeviceClusterDetailsNode0VendorConfigurationArgs> vendorConfiguration;
 
     /**
-     * @return An object that has fields relevant to the vendor of the
-     * cluster device. See Cluster Details - Nodes - Vendor Configuration
-     * below for more details.
+     * @return An object that has fields relevant to the vendor of the cluster device. See Cluster Details - Nodes - Vendor Configuration below for more details.
      * 
      */
     public Optional<Output<DeviceClusterDetailsNode0VendorConfigurationArgs>> vendorConfiguration() {
@@ -208,9 +204,7 @@ public final class DeviceClusterDetailsNode0Args extends com.pulumi.resources.Re
         }
 
         /**
-         * @param vendorConfiguration An object that has fields relevant to the vendor of the
-         * cluster device. See Cluster Details - Nodes - Vendor Configuration
-         * below for more details.
+         * @param vendorConfiguration An object that has fields relevant to the vendor of the cluster device. See Cluster Details - Nodes - Vendor Configuration below for more details.
          * 
          * @return builder
          * 
@@ -221,9 +215,7 @@ public final class DeviceClusterDetailsNode0Args extends com.pulumi.resources.Re
         }
 
         /**
-         * @param vendorConfiguration An object that has fields relevant to the vendor of the
-         * cluster device. See Cluster Details - Nodes - Vendor Configuration
-         * below for more details.
+         * @param vendorConfiguration An object that has fields relevant to the vendor of the cluster device. See Cluster Details - Nodes - Vendor Configuration below for more details.
          * 
          * @return builder
          * 

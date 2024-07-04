@@ -18,11 +18,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Resource `equinix.networkedge.AclTemplate` allows creation and management of
- * Equinix Network Edge device Access Control List templates.
+ * Resource `equinix.networkedge.AclTemplate` allows creation and management of Equinix Network Edge device Access Control List templates.
  * 
- * Device ACL templates give possibility to define set of rules will allowed inbound
- * traffic. Templates can be assigned to the network devices.
+ * Device ACL templates give possibility to define set of rules will allowed inbound traffic. Templates can be assigned to the network devices.
  * 
  * ## Example Usage
  * ```java
@@ -98,16 +96,14 @@ public class AclTemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * Status of ACL template provisioning process, where template was applied.
-     * One of `PROVISIONING`, `PROVISIONED`.
+     * Status of ACL template provisioning process, where template was applied. One of `PROVISIONING`, `PROVISIONED`.
      * 
      */
     @Export(name="deviceAclStatus", refs={String.class}, tree="[0]")
     private Output<String> deviceAclStatus;
 
     /**
-     * @return Status of ACL template provisioning process, where template was applied.
-     * One of `PROVISIONING`, `PROVISIONED`.
+     * @return Status of ACL template provisioning process, where template was applied. One of `PROVISIONING`, `PROVISIONED`.
      * 
      */
     public Output<String> deviceAclStatus() {
@@ -146,8 +142,7 @@ public class AclTemplate extends com.pulumi.resources.CustomResource {
         return this.deviceId;
     }
     /**
-     * One or more rules to specify allowed inbound traffic.
-     * Rules are ordered, matching traffic rule stops processing subsequent ones.
+     * One or more rules to specify allowed inbound traffic. Rules are ordered, matching traffic rule stops processing subsequent ones.
      * 
      * The `inbound_rule` block has below fields:
      * 
@@ -156,8 +151,7 @@ public class AclTemplate extends com.pulumi.resources.CustomResource {
     private Output<List<AclTemplateInboundRule>> inboundRules;
 
     /**
-     * @return One or more rules to specify allowed inbound traffic.
-     * Rules are ordered, matching traffic rule stops processing subsequent ones.
+     * @return One or more rules to specify allowed inbound traffic. Rules are ordered, matching traffic rule stops processing subsequent ones.
      * 
      * The `inbound_rule` block has below fields:
      * 
@@ -198,16 +192,14 @@ public class AclTemplate extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Unique Identifier for the project resource where the acl template is scoped to.If you
-     * leave it out, the ACL template will be created under the default project id of your organization.
+     * Unique Identifier for the project resource where the acl template is scoped to.If you leave it out, the ACL template will be created under the default project id of your organization.
      * 
      */
     @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output<String> projectId;
 
     /**
-     * @return Unique Identifier for the project resource where the acl template is scoped to.If you
-     * leave it out, the ACL template will be created under the default project id of your organization.
+     * @return Unique Identifier for the project resource where the acl template is scoped to.If you leave it out, the ACL template will be created under the default project id of your organization.
      * 
      */
     public Output<String> projectId() {

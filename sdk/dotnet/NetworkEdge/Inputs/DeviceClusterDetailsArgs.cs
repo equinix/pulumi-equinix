@@ -25,15 +25,13 @@ namespace Pulumi.Equinix.NetworkEdge.Inputs
         public Input<string> ClusterName { get; set; } = null!;
 
         /// <summary>
-        /// An object that has `node0` configuration.
-        /// See Cluster Details - Nodes below for more details.
+        /// An object that has `node0` configuration. See Cluster Details - Nodes below for more details.
         /// </summary>
         [Input("node0", required: true)]
         public Input<Inputs.DeviceClusterDetailsNode0Args> Node0 { get; set; } = null!;
 
         /// <summary>
-        /// An object that has `node1` configuration.
-        /// See Cluster Details - Nodes below for more details.
+        /// An object that has `node1` configuration. See Cluster Details - Nodes below for more details.
         /// </summary>
         [Input("node1", required: true)]
         public Input<Inputs.DeviceClusterDetailsNode1Args> Node1 { get; set; } = null!;

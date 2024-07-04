@@ -55,16 +55,14 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Additional Internet bandwidth, in Mbps, that will be
-     * allocated to the device (in addition to default 15Mbps).
+     * Additional Internet bandwidth, in Mbps, that will be allocated to the device (in addition to default 15Mbps).
      * 
      */
     @Import(name="additionalBandwidth")
     private @Nullable Output<Integer> additionalBandwidth;
 
     /**
-     * @return Additional Internet bandwidth, in Mbps, that will be
-     * allocated to the device (in addition to default 15Mbps).
+     * @return Additional Internet bandwidth, in Mbps, that will be allocated to the device (in addition to default 15Mbps).
      * 
      */
     public Optional<Output<Integer>> additionalBandwidth() {
@@ -72,16 +70,14 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Boolean value that determines device licensing mode, i.e.,
-     * `bring your own license` or `subscription` (default).
+     * Boolean value that determines device licensing mode, i.e., `bring your own license` or `subscription` (default).
      * 
      */
     @Import(name="byol")
     private @Nullable Output<Boolean> byol;
 
     /**
-     * @return Boolean value that determines device licensing mode, i.e.,
-     * `bring your own license` or `subscription` (default).
+     * @return Boolean value that determines device licensing mode, i.e., `bring your own license` or `subscription` (default).
      * 
      */
     public Optional<Output<Boolean>> byol() {
@@ -104,16 +100,14 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An object that has the cluster details. See
-     * Cluster Details below for more details.
+     * An object that has the cluster details. See Cluster Details below for more details.
      * 
      */
     @Import(name="clusterDetails")
     private @Nullable Output<DeviceClusterDetailsArgs> clusterDetails;
 
     /**
-     * @return An object that has the cluster details. See
-     * Cluster Details below for more details.
+     * @return An object that has the cluster details. See Cluster Details below for more details.
      * 
      */
     public Optional<Output<DeviceClusterDetailsArgs>> clusterDetails() {
@@ -121,16 +115,14 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT).
-     * If not specified, default will be INTERNET-ACCESS
+     * Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT). If not specified, default will be INTERNET-ACCESS
      * 
      */
     @Import(name="connectivity")
     private @Nullable Output<String> connectivity;
 
     /**
-     * @return Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT).
-     * If not specified, default will be INTERNET-ACCESS
+     * @return Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT). If not specified, default will be INTERNET-ACCESS
      * 
      */
     public Optional<Output<String>> connectivity() {
@@ -153,18 +145,14 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Unique ID of an existing device.
-     * Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual
-     * device. This field is only meaningful for single devices.
+     * Unique ID of an existing device. Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual device. This field is only meaningful for single devices.
      * 
      */
     @Import(name="diverseDeviceId")
     private @Nullable Output<String> diverseDeviceId;
 
     /**
-     * @return Unique ID of an existing device.
-     * Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual
-     * device. This field is only meaningful for single devices.
+     * @return Unique ID of an existing device. Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual device. This field is only meaningful for single devices.
      * 
      */
     public Optional<Output<String>> diverseDeviceId() {
@@ -187,16 +175,14 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Number of network interfaces on a device. If not specified,
-     * default number for a given device type will be used.
+     * Number of network interfaces on a device. If not specified, default number for a given device type will be used.
      * 
      */
     @Import(name="interfaceCount")
     private @Nullable Output<Integer> interfaceCount;
 
     /**
-     * @return Number of network interfaces on a device. If not specified,
-     * default number for a given device type will be used.
+     * @return Number of network interfaces on a device. If not specified, default number for a given device type will be used.
      * 
      */
     public Optional<Output<Integer>> interfaceCount() {
@@ -204,16 +190,14 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Path to the license file that will be uploaded and applied on a
-     * device. Applicable for some device types in BYOL licensing mode.
+     * Path to the license file that will be uploaded and applied on a device. Applicable for some device types in BYOL licensing mode.
      * 
      */
     @Import(name="licenseFile")
     private @Nullable Output<String> licenseFile;
 
     /**
-     * @return Path to the license file that will be uploaded and applied on a
-     * device. Applicable for some device types in BYOL licensing mode.
+     * @return Path to the license file that will be uploaded and applied on a device. Applicable for some device types in BYOL licensing mode.
      * 
      */
     public Optional<Output<String>> licenseFile() {
@@ -236,16 +220,14 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * License Token applicable for some device types in BYOL licensing
-     * mode.
+     * License Token applicable for some device types in BYOL licensing mode.
      * 
      */
     @Import(name="licenseToken")
     private @Nullable Output<String> licenseToken;
 
     /**
-     * @return License Token applicable for some device types in BYOL licensing
-     * mode.
+     * @return License Token applicable for some device types in BYOL licensing mode.
      * 
      */
     public Optional<Output<String>> licenseToken() {
@@ -268,16 +250,14 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Identifier of an MGMT interface ACL template that will be
-     * applied on the device.
+     * Identifier of an MGMT interface ACL template that will be applied on the device.
      * 
      */
     @Import(name="mgmtAclTemplateUuid")
     private @Nullable Output<String> mgmtAclTemplateUuid;
 
     /**
-     * @return Identifier of an MGMT interface ACL template that will be
-     * applied on the device.
+     * @return Identifier of an MGMT interface ACL template that will be applied on the device.
      * 
      */
     public Optional<Output<String>> mgmtAclTemplateUuid() {
@@ -300,16 +280,14 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of email addresses that will receive device status
-     * notifications.
+     * List of email addresses that will receive device status notifications.
      * 
      */
     @Import(name="notifications", required=true)
     private Output<List<String>> notifications;
 
     /**
-     * @return List of email addresses that will receive device status
-     * notifications.
+     * @return List of email addresses that will receive device status notifications.
      * 
      */
     public Output<List<String>> notifications() {
@@ -347,16 +325,14 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Unique Identifier for the project resource where the device is scoped to.If you
-     * leave it out, the device will be created under the default project id of your organization.
+     * Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
      * 
      */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
     /**
-     * @return Unique Identifier for the project resource where the device is scoped to.If you
-     * leave it out, the device will be created under the default project id of your organization.
+     * @return Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
      * 
      */
     public Optional<Output<String>> projectId() {
@@ -379,16 +355,14 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Definition of secondary device for redundant
-     * device configurations. See Secondary Device below for more details.
+     * Definition of secondary device for redundant device configurations. See Secondary Device below for more details.
      * 
      */
     @Import(name="secondaryDevice")
     private @Nullable Output<DeviceSecondaryDeviceArgs> secondaryDevice;
 
     /**
-     * @return Definition of secondary device for redundant
-     * device configurations. See Secondary Device below for more details.
+     * @return Definition of secondary device for redundant device configurations. See Secondary Device below for more details.
      * 
      */
     public Optional<Output<DeviceSecondaryDeviceArgs>> secondaryDevice() {
@@ -396,16 +370,14 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Boolean value that determines device management mode, i.e.,
-     * `self-managed` or `Equinix-managed` (default).
+     * Boolean value that determines device management mode, i.e., `self-managed` or `Equinix-managed` (default).
      * 
      */
     @Import(name="selfManaged")
     private @Nullable Output<Boolean> selfManaged;
 
     /**
-     * @return Boolean value that determines device management mode, i.e.,
-     * `self-managed` or `Equinix-managed` (default).
+     * @return Boolean value that determines device management mode, i.e., `self-managed` or `Equinix-managed` (default).
      * 
      */
     public Optional<Output<Boolean>> selfManaged() {
@@ -488,20 +460,16 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Map of vendor specific configuration parameters for a device
-     * (controller1, activationKey, managementType, siteId, systemIpAddress, private_address, private_cidr_mask, private_gateway, license_key, license_id)
-     * * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
-     *   on a device (max one key).  See SSH Key below for more details.
+     * Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId)
+     * * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
      * 
      */
     @Import(name="vendorConfiguration")
     private @Nullable Output<Map<String,String>> vendorConfiguration;
 
     /**
-     * @return Map of vendor specific configuration parameters for a device
-     * (controller1, activationKey, managementType, siteId, systemIpAddress, private_address, private_cidr_mask, private_gateway, license_key, license_id)
-     * * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
-     *   on a device (max one key).  See SSH Key below for more details.
+     * @return Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId)
+     * * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
      * 
      */
     public Optional<Output<Map<String,String>>> vendorConfiguration() {
@@ -636,8 +604,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param additionalBandwidth Additional Internet bandwidth, in Mbps, that will be
-         * allocated to the device (in addition to default 15Mbps).
+         * @param additionalBandwidth Additional Internet bandwidth, in Mbps, that will be allocated to the device (in addition to default 15Mbps).
          * 
          * @return builder
          * 
@@ -648,8 +615,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param additionalBandwidth Additional Internet bandwidth, in Mbps, that will be
-         * allocated to the device (in addition to default 15Mbps).
+         * @param additionalBandwidth Additional Internet bandwidth, in Mbps, that will be allocated to the device (in addition to default 15Mbps).
          * 
          * @return builder
          * 
@@ -659,8 +625,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param byol Boolean value that determines device licensing mode, i.e.,
-         * `bring your own license` or `subscription` (default).
+         * @param byol Boolean value that determines device licensing mode, i.e., `bring your own license` or `subscription` (default).
          * 
          * @return builder
          * 
@@ -671,8 +636,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param byol Boolean value that determines device licensing mode, i.e.,
-         * `bring your own license` or `subscription` (default).
+         * @param byol Boolean value that determines device licensing mode, i.e., `bring your own license` or `subscription` (default).
          * 
          * @return builder
          * 
@@ -703,8 +667,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterDetails An object that has the cluster details. See
-         * Cluster Details below for more details.
+         * @param clusterDetails An object that has the cluster details. See Cluster Details below for more details.
          * 
          * @return builder
          * 
@@ -715,8 +678,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterDetails An object that has the cluster details. See
-         * Cluster Details below for more details.
+         * @param clusterDetails An object that has the cluster details. See Cluster Details below for more details.
          * 
          * @return builder
          * 
@@ -726,8 +688,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectivity Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT).
-         * If not specified, default will be INTERNET-ACCESS
+         * @param connectivity Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT). If not specified, default will be INTERNET-ACCESS
          * 
          * @return builder
          * 
@@ -738,8 +699,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectivity Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT).
-         * If not specified, default will be INTERNET-ACCESS
+         * @param connectivity Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT). If not specified, default will be INTERNET-ACCESS
          * 
          * @return builder
          * 
@@ -770,9 +730,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param diverseDeviceId Unique ID of an existing device.
-         * Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual
-         * device. This field is only meaningful for single devices.
+         * @param diverseDeviceId Unique ID of an existing device. Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual device. This field is only meaningful for single devices.
          * 
          * @return builder
          * 
@@ -783,9 +741,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param diverseDeviceId Unique ID of an existing device.
-         * Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual
-         * device. This field is only meaningful for single devices.
+         * @param diverseDeviceId Unique ID of an existing device. Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual device. This field is only meaningful for single devices.
          * 
          * @return builder
          * 
@@ -816,8 +772,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param interfaceCount Number of network interfaces on a device. If not specified,
-         * default number for a given device type will be used.
+         * @param interfaceCount Number of network interfaces on a device. If not specified, default number for a given device type will be used.
          * 
          * @return builder
          * 
@@ -828,8 +783,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param interfaceCount Number of network interfaces on a device. If not specified,
-         * default number for a given device type will be used.
+         * @param interfaceCount Number of network interfaces on a device. If not specified, default number for a given device type will be used.
          * 
          * @return builder
          * 
@@ -839,8 +793,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param licenseFile Path to the license file that will be uploaded and applied on a
-         * device. Applicable for some device types in BYOL licensing mode.
+         * @param licenseFile Path to the license file that will be uploaded and applied on a device. Applicable for some device types in BYOL licensing mode.
          * 
          * @return builder
          * 
@@ -851,8 +804,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param licenseFile Path to the license file that will be uploaded and applied on a
-         * device. Applicable for some device types in BYOL licensing mode.
+         * @param licenseFile Path to the license file that will be uploaded and applied on a device. Applicable for some device types in BYOL licensing mode.
          * 
          * @return builder
          * 
@@ -883,8 +835,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param licenseToken License Token applicable for some device types in BYOL licensing
-         * mode.
+         * @param licenseToken License Token applicable for some device types in BYOL licensing mode.
          * 
          * @return builder
          * 
@@ -895,8 +846,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param licenseToken License Token applicable for some device types in BYOL licensing
-         * mode.
+         * @param licenseToken License Token applicable for some device types in BYOL licensing mode.
          * 
          * @return builder
          * 
@@ -927,8 +877,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mgmtAclTemplateUuid Identifier of an MGMT interface ACL template that will be
-         * applied on the device.
+         * @param mgmtAclTemplateUuid Identifier of an MGMT interface ACL template that will be applied on the device.
          * 
          * @return builder
          * 
@@ -939,8 +888,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mgmtAclTemplateUuid Identifier of an MGMT interface ACL template that will be
-         * applied on the device.
+         * @param mgmtAclTemplateUuid Identifier of an MGMT interface ACL template that will be applied on the device.
          * 
          * @return builder
          * 
@@ -971,8 +919,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notifications List of email addresses that will receive device status
-         * notifications.
+         * @param notifications List of email addresses that will receive device status notifications.
          * 
          * @return builder
          * 
@@ -983,8 +930,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notifications List of email addresses that will receive device status
-         * notifications.
+         * @param notifications List of email addresses that will receive device status notifications.
          * 
          * @return builder
          * 
@@ -994,8 +940,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notifications List of email addresses that will receive device status
-         * notifications.
+         * @param notifications List of email addresses that will receive device status notifications.
          * 
          * @return builder
          * 
@@ -1047,8 +992,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectId Unique Identifier for the project resource where the device is scoped to.If you
-         * leave it out, the device will be created under the default project id of your organization.
+         * @param projectId Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
          * 
          * @return builder
          * 
@@ -1059,8 +1003,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectId Unique Identifier for the project resource where the device is scoped to.If you
-         * leave it out, the device will be created under the default project id of your organization.
+         * @param projectId Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
          * 
          * @return builder
          * 
@@ -1091,8 +1034,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secondaryDevice Definition of secondary device for redundant
-         * device configurations. See Secondary Device below for more details.
+         * @param secondaryDevice Definition of secondary device for redundant device configurations. See Secondary Device below for more details.
          * 
          * @return builder
          * 
@@ -1103,8 +1045,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secondaryDevice Definition of secondary device for redundant
-         * device configurations. See Secondary Device below for more details.
+         * @param secondaryDevice Definition of secondary device for redundant device configurations. See Secondary Device below for more details.
          * 
          * @return builder
          * 
@@ -1114,8 +1055,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param selfManaged Boolean value that determines device management mode, i.e.,
-         * `self-managed` or `Equinix-managed` (default).
+         * @param selfManaged Boolean value that determines device management mode, i.e., `self-managed` or `Equinix-managed` (default).
          * 
          * @return builder
          * 
@@ -1126,8 +1066,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param selfManaged Boolean value that determines device management mode, i.e.,
-         * `self-managed` or `Equinix-managed` (default).
+         * @param selfManaged Boolean value that determines device management mode, i.e., `self-managed` or `Equinix-managed` (default).
          * 
          * @return builder
          * 
@@ -1262,10 +1201,8 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vendorConfiguration Map of vendor specific configuration parameters for a device
-         * (controller1, activationKey, managementType, siteId, systemIpAddress, private_address, private_cidr_mask, private_gateway, license_key, license_id)
-         * * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
-         *   on a device (max one key).  See SSH Key below for more details.
+         * @param vendorConfiguration Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId)
+         * * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
          * 
          * @return builder
          * 
@@ -1276,10 +1213,8 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vendorConfiguration Map of vendor specific configuration parameters for a device
-         * (controller1, activationKey, managementType, siteId, systemIpAddress, private_address, private_cidr_mask, private_gateway, license_key, license_id)
-         * * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
-         *   on a device (max one key).  See SSH Key below for more details.
+         * @param vendorConfiguration Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId)
+         * * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
          * 
          * @return builder
          * 

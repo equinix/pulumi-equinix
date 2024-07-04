@@ -11,8 +11,8 @@ import * as utilities from "../utilities";
  * Fabric V4 API compatible resource allows creation and management of [Equinix Fabric Cloud Router](https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-intro.htm#HowItWorks).
  *
  * Additional documentation:
- * * Getting Started: <https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-intro.htm#HowItWorks>
- * * API: <https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers>
+ * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-intro.htm#HowItWorks
+ * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers
  *
  * ## Example Usage
  *

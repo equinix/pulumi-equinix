@@ -32,15 +32,12 @@ class ReservedIpBlockArgs:
         :param pulumi.Input[str] project_id: The metal project ID where to allocate the address block.
         :param pulumi.Input[int] cidr: Only valid as an argument and required when `type` is `vrf`. The size of the network to reserve from an existing VRF ip_range. `cidr` can only be specified with `vrf_id`. Range is 22-31. Virtual Circuits require 30-31. Other VRF resources must use a CIDR in the 22-29 range.
         :param pulumi.Input[str] description: Arbitrary description.
-        :param pulumi.Input[Union[str, 'Facility']] facility: Facility where to allocate the public IP address block, makes sense only
-               if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
-        :param pulumi.Input[str] metro: Metro where to allocate the public IP address block, makes sense only
-               if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `facility`.
+        :param pulumi.Input[Union[str, 'Facility']] facility: Facility where to allocate the public IP address block, makes sense only if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
+        :param pulumi.Input[str] metro: Metro where to allocate the public IP address block, makes sense only if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `facility`.
         :param pulumi.Input[str] network: Only valid as an argument and required when `type` is `vrf`. An unreserved network address from an existing `ip_range` in the specified VRF.
         :param pulumi.Input[int] quantity: The number of allocated `/32` addresses, a power of 2. Required when `type` is not `vrf`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: String list of tags.
-        :param pulumi.Input[Union[str, 'IpBlockType']] type: One of `global_ipv4`, `public_ipv4`, or `vrf`. Defaults to `public_ipv4` for backward
-               compatibility.
+        :param pulumi.Input[Union[str, 'IpBlockType']] type: One of `global_ipv4`, `public_ipv4`, or `vrf`. Defaults to `public_ipv4` for backward compatibility.
         :param pulumi.Input[str] vrf_id: Only valid and required when `type` is `vrf`. VRF ID for type=vrf reservations.
         :param pulumi.Input[str] wait_for_state: Wait for the IP reservation block to reach a desired state on resource creation. One of: `pending`, `created`. The `created` state is default and recommended if the addresses are needed within the configuration. An error will be returned if a timeout or the `denied` state is encountered.
         """
@@ -117,8 +114,7 @@ class ReservedIpBlockArgs:
     @pulumi.getter
     def facility(self) -> Optional[pulumi.Input[Union[str, 'Facility']]]:
         """
-        Facility where to allocate the public IP address block, makes sense only
-        if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
+        Facility where to allocate the public IP address block, makes sense only if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
         """
         return pulumi.get(self, "facility")
 
@@ -130,8 +126,7 @@ class ReservedIpBlockArgs:
     @pulumi.getter
     def metro(self) -> Optional[pulumi.Input[str]]:
         """
-        Metro where to allocate the public IP address block, makes sense only
-        if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `facility`.
+        Metro where to allocate the public IP address block, makes sense only if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `facility`.
         """
         return pulumi.get(self, "metro")
 
@@ -179,8 +174,7 @@ class ReservedIpBlockArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[Union[str, 'IpBlockType']]]:
         """
-        One of `global_ipv4`, `public_ipv4`, or `vrf`. Defaults to `public_ipv4` for backward
-        compatibility.
+        One of `global_ipv4`, `public_ipv4`, or `vrf`. Defaults to `public_ipv4` for backward compatibility.
         """
         return pulumi.get(self, "type")
 
@@ -243,20 +237,16 @@ class _ReservedIpBlockState:
         :param pulumi.Input[int] cidr: Only valid as an argument and required when `type` is `vrf`. The size of the network to reserve from an existing VRF ip_range. `cidr` can only be specified with `vrf_id`. Range is 22-31. Virtual Circuits require 30-31. Other VRF resources must use a CIDR in the 22-29 range.
         :param pulumi.Input[str] cidr_notation: Address and mask in CIDR notation, e.g. `147.229.15.30/31`.
         :param pulumi.Input[str] description: Arbitrary description.
-        :param pulumi.Input[Union[str, 'Facility']] facility: Facility where to allocate the public IP address block, makes sense only
-               if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
-        :param pulumi.Input[bool] global_: Boolean flag whether addresses from a block are global (i.e. can be assigned in any
-               metro).
-        :param pulumi.Input[str] metro: Metro where to allocate the public IP address block, makes sense only
-               if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `facility`.
+        :param pulumi.Input[Union[str, 'Facility']] facility: Facility where to allocate the public IP address block, makes sense only if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
+        :param pulumi.Input[bool] global_: Boolean flag whether addresses from a block are global (i.e. can be assigned in any metro).
+        :param pulumi.Input[str] metro: Metro where to allocate the public IP address block, makes sense only if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `facility`.
         :param pulumi.Input[str] netmask: Mask in decimal notation, e.g. `255.255.255.0`.
         :param pulumi.Input[str] network: Only valid as an argument and required when `type` is `vrf`. An unreserved network address from an existing `ip_range` in the specified VRF.
         :param pulumi.Input[str] project_id: The metal project ID where to allocate the address block.
         :param pulumi.Input[bool] public: Boolean flag whether addresses from a block are public.
         :param pulumi.Input[int] quantity: The number of allocated `/32` addresses, a power of 2. Required when `type` is not `vrf`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: String list of tags.
-        :param pulumi.Input[Union[str, 'IpBlockType']] type: One of `global_ipv4`, `public_ipv4`, or `vrf`. Defaults to `public_ipv4` for backward
-               compatibility.
+        :param pulumi.Input[Union[str, 'IpBlockType']] type: One of `global_ipv4`, `public_ipv4`, or `vrf`. Defaults to `public_ipv4` for backward compatibility.
         :param pulumi.Input[str] vrf_id: Only valid and required when `type` is `vrf`. VRF ID for type=vrf reservations.
         :param pulumi.Input[str] wait_for_state: Wait for the IP reservation block to reach a desired state on resource creation. One of: `pending`, `created`. The `created` state is default and recommended if the addresses are needed within the configuration. An error will be returned if a timeout or the `denied` state is encountered.
         """
@@ -373,8 +363,7 @@ class _ReservedIpBlockState:
     @pulumi.getter
     def facility(self) -> Optional[pulumi.Input[Union[str, 'Facility']]]:
         """
-        Facility where to allocate the public IP address block, makes sense only
-        if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
+        Facility where to allocate the public IP address block, makes sense only if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
         """
         return pulumi.get(self, "facility")
 
@@ -395,8 +384,7 @@ class _ReservedIpBlockState:
     @pulumi.getter(name="global")
     def global_(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean flag whether addresses from a block are global (i.e. can be assigned in any
-        metro).
+        Boolean flag whether addresses from a block are global (i.e. can be assigned in any metro).
         """
         return pulumi.get(self, "global_")
 
@@ -426,8 +414,7 @@ class _ReservedIpBlockState:
     @pulumi.getter
     def metro(self) -> Optional[pulumi.Input[str]]:
         """
-        Metro where to allocate the public IP address block, makes sense only
-        if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `facility`.
+        Metro where to allocate the public IP address block, makes sense only if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `facility`.
         """
         return pulumi.get(self, "metro")
 
@@ -511,8 +498,7 @@ class _ReservedIpBlockState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[Union[str, 'IpBlockType']]]:
         """
-        One of `global_ipv4`, `public_ipv4`, or `vrf`. Defaults to `public_ipv4` for backward
-        compatibility.
+        One of `global_ipv4`, `public_ipv4`, or `vrf`. Defaults to `public_ipv4` for backward compatibility.
         """
         return pulumi.get(self, "type")
 
@@ -566,10 +552,7 @@ class ReservedIpBlock(pulumi.CustomResource):
         """
         Provides a resource to create and manage blocks of reserved IP addresses in a project.
 
-        When a user provisions first device in a metro, Equinix Metal API automatically allocates IPv6/56 and private IPv4/25 blocks.
-        The new device then gets IPv6 and private IPv4 addresses from those block. It also gets a public IPv4/31 address.
-        Every new device in the project and metro will automatically get IPv6 and private IPv4 addresses from these pre-allocated blocks.
-        The IPv6 and private IPv4 blocks can't be created, only imported. With this resource, it's possible to create either public IPv4 blocks or global IPv4 blocks.
+        When a user provisions first device in a metro, Equinix Metal API automatically allocates IPv6/56 and private IPv4/25 blocks. The new device then gets IPv6 and private IPv4 addresses from those block. It also gets a public IPv4/31 address. Every new device in the project and metro will automatically get IPv6 and private IPv4 addresses from these pre-allocated blocks. The IPv6 and private IPv4 blocks can't be created, only imported. With this resource, it's possible to create either public IPv4 blocks or global IPv4 blocks.
 
         Public blocks are allocated in a metro. Addresses from public blocks can only be assigned to devices in the metro. Public blocks can have mask from /24 (256 addresses) to /32 (1 address). If you create public block with this resource, you must fill the metro argument.
 
@@ -616,16 +599,13 @@ class ReservedIpBlock(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] cidr: Only valid as an argument and required when `type` is `vrf`. The size of the network to reserve from an existing VRF ip_range. `cidr` can only be specified with `vrf_id`. Range is 22-31. Virtual Circuits require 30-31. Other VRF resources must use a CIDR in the 22-29 range.
         :param pulumi.Input[str] description: Arbitrary description.
-        :param pulumi.Input[Union[str, 'Facility']] facility: Facility where to allocate the public IP address block, makes sense only
-               if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
-        :param pulumi.Input[str] metro: Metro where to allocate the public IP address block, makes sense only
-               if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `facility`.
+        :param pulumi.Input[Union[str, 'Facility']] facility: Facility where to allocate the public IP address block, makes sense only if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
+        :param pulumi.Input[str] metro: Metro where to allocate the public IP address block, makes sense only if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `facility`.
         :param pulumi.Input[str] network: Only valid as an argument and required when `type` is `vrf`. An unreserved network address from an existing `ip_range` in the specified VRF.
         :param pulumi.Input[str] project_id: The metal project ID where to allocate the address block.
         :param pulumi.Input[int] quantity: The number of allocated `/32` addresses, a power of 2. Required when `type` is not `vrf`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: String list of tags.
-        :param pulumi.Input[Union[str, 'IpBlockType']] type: One of `global_ipv4`, `public_ipv4`, or `vrf`. Defaults to `public_ipv4` for backward
-               compatibility.
+        :param pulumi.Input[Union[str, 'IpBlockType']] type: One of `global_ipv4`, `public_ipv4`, or `vrf`. Defaults to `public_ipv4` for backward compatibility.
         :param pulumi.Input[str] vrf_id: Only valid and required when `type` is `vrf`. VRF ID for type=vrf reservations.
         :param pulumi.Input[str] wait_for_state: Wait for the IP reservation block to reach a desired state on resource creation. One of: `pending`, `created`. The `created` state is default and recommended if the addresses are needed within the configuration. An error will be returned if a timeout or the `denied` state is encountered.
         """
@@ -638,10 +618,7 @@ class ReservedIpBlock(pulumi.CustomResource):
         """
         Provides a resource to create and manage blocks of reserved IP addresses in a project.
 
-        When a user provisions first device in a metro, Equinix Metal API automatically allocates IPv6/56 and private IPv4/25 blocks.
-        The new device then gets IPv6 and private IPv4 addresses from those block. It also gets a public IPv4/31 address.
-        Every new device in the project and metro will automatically get IPv6 and private IPv4 addresses from these pre-allocated blocks.
-        The IPv6 and private IPv4 blocks can't be created, only imported. With this resource, it's possible to create either public IPv4 blocks or global IPv4 blocks.
+        When a user provisions first device in a metro, Equinix Metal API automatically allocates IPv6/56 and private IPv4/25 blocks. The new device then gets IPv6 and private IPv4 addresses from those block. It also gets a public IPv4/31 address. Every new device in the project and metro will automatically get IPv6 and private IPv4 addresses from these pre-allocated blocks. The IPv6 and private IPv4 blocks can't be created, only imported. With this resource, it's possible to create either public IPv4 blocks or global IPv4 blocks.
 
         Public blocks are allocated in a metro. Addresses from public blocks can only be assigned to devices in the metro. Public blocks can have mask from /24 (256 addresses) to /32 (1 address). If you create public block with this resource, you must fill the metro argument.
 
@@ -785,20 +762,16 @@ class ReservedIpBlock(pulumi.CustomResource):
         :param pulumi.Input[int] cidr: Only valid as an argument and required when `type` is `vrf`. The size of the network to reserve from an existing VRF ip_range. `cidr` can only be specified with `vrf_id`. Range is 22-31. Virtual Circuits require 30-31. Other VRF resources must use a CIDR in the 22-29 range.
         :param pulumi.Input[str] cidr_notation: Address and mask in CIDR notation, e.g. `147.229.15.30/31`.
         :param pulumi.Input[str] description: Arbitrary description.
-        :param pulumi.Input[Union[str, 'Facility']] facility: Facility where to allocate the public IP address block, makes sense only
-               if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
-        :param pulumi.Input[bool] global_: Boolean flag whether addresses from a block are global (i.e. can be assigned in any
-               metro).
-        :param pulumi.Input[str] metro: Metro where to allocate the public IP address block, makes sense only
-               if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `facility`.
+        :param pulumi.Input[Union[str, 'Facility']] facility: Facility where to allocate the public IP address block, makes sense only if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
+        :param pulumi.Input[bool] global_: Boolean flag whether addresses from a block are global (i.e. can be assigned in any metro).
+        :param pulumi.Input[str] metro: Metro where to allocate the public IP address block, makes sense only if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `facility`.
         :param pulumi.Input[str] netmask: Mask in decimal notation, e.g. `255.255.255.0`.
         :param pulumi.Input[str] network: Only valid as an argument and required when `type` is `vrf`. An unreserved network address from an existing `ip_range` in the specified VRF.
         :param pulumi.Input[str] project_id: The metal project ID where to allocate the address block.
         :param pulumi.Input[bool] public: Boolean flag whether addresses from a block are public.
         :param pulumi.Input[int] quantity: The number of allocated `/32` addresses, a power of 2. Required when `type` is not `vrf`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: String list of tags.
-        :param pulumi.Input[Union[str, 'IpBlockType']] type: One of `global_ipv4`, `public_ipv4`, or `vrf`. Defaults to `public_ipv4` for backward
-               compatibility.
+        :param pulumi.Input[Union[str, 'IpBlockType']] type: One of `global_ipv4`, `public_ipv4`, or `vrf`. Defaults to `public_ipv4` for backward compatibility.
         :param pulumi.Input[str] vrf_id: Only valid and required when `type` is `vrf`. VRF ID for type=vrf reservations.
         :param pulumi.Input[str] wait_for_state: Wait for the IP reservation block to reach a desired state on resource creation. One of: `pending`, `created`. The `created` state is default and recommended if the addresses are needed within the configuration. An error will be returned if a timeout or the `denied` state is encountered.
         """
@@ -875,8 +848,7 @@ class ReservedIpBlock(pulumi.CustomResource):
     @pulumi.getter
     def facility(self) -> pulumi.Output[Optional[str]]:
         """
-        Facility where to allocate the public IP address block, makes sense only
-        if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
+        Facility where to allocate the public IP address block, makes sense only if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
         """
         return pulumi.get(self, "facility")
 
@@ -889,8 +861,7 @@ class ReservedIpBlock(pulumi.CustomResource):
     @pulumi.getter(name="global")
     def global_(self) -> pulumi.Output[bool]:
         """
-        Boolean flag whether addresses from a block are global (i.e. can be assigned in any
-        metro).
+        Boolean flag whether addresses from a block are global (i.e. can be assigned in any metro).
         """
         return pulumi.get(self, "global_")
 
@@ -908,8 +879,7 @@ class ReservedIpBlock(pulumi.CustomResource):
     @pulumi.getter
     def metro(self) -> pulumi.Output[Optional[str]]:
         """
-        Metro where to allocate the public IP address block, makes sense only
-        if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `facility`.
+        Metro where to allocate the public IP address block, makes sense only if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `facility`.
         """
         return pulumi.get(self, "metro")
 
@@ -965,8 +935,7 @@ class ReservedIpBlock(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[Optional[str]]:
         """
-        One of `global_ipv4`, `public_ipv4`, or `vrf`. Defaults to `public_ipv4` for backward
-        compatibility.
+        One of `global_ipv4`, `public_ipv4`, or `vrf`. Defaults to `public_ipv4` for backward compatibility.
         """
         return pulumi.get(self, "type")
 

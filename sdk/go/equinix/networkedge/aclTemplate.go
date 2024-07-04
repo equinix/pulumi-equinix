@@ -13,11 +13,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Resource `networkedge.AclTemplate` allows creation and management of
-// Equinix Network Edge device Access Control List templates.
+// Resource `networkedge.AclTemplate` allows creation and management of Equinix Network Edge device Access Control List templates.
 //
-// Device ACL templates give possibility to define set of rules will allowed inbound
-// traffic. Templates can be assigned to the network devices.
+// Device ACL templates give possibility to define set of rules will allowed inbound traffic. Templates can be assigned to the network devices.
 //
 // ## Example Usage
 // ```go
@@ -74,8 +72,7 @@ type AclTemplate struct {
 
 	// Inbound rule description, up to 200 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Status of ACL template provisioning process, where template was applied.
-	// One of `PROVISIONING`, `PROVISIONED`.
+	// Status of ACL template provisioning process, where template was applied. One of `PROVISIONING`, `PROVISIONED`.
 	DeviceAclStatus pulumi.StringOutput `pulumi:"deviceAclStatus"`
 	// List of the devices where the ACL template is applied.
 	DeviceDetails AclTemplateDeviceDetailArrayOutput `pulumi:"deviceDetails"`
@@ -83,8 +80,7 @@ type AclTemplate struct {
 	//
 	// Deprecated: Refer to device details get device information
 	DeviceId pulumi.StringOutput `pulumi:"deviceId"`
-	// One or more rules to specify allowed inbound traffic.
-	// Rules are ordered, matching traffic rule stops processing subsequent ones.
+	// One or more rules to specify allowed inbound traffic. Rules are ordered, matching traffic rule stops processing subsequent ones.
 	//
 	// The `inboundRule` block has below fields:
 	InboundRules AclTemplateInboundRuleArrayOutput `pulumi:"inboundRules"`
@@ -94,8 +90,7 @@ type AclTemplate struct {
 	MetroCode pulumi.StringPtrOutput `pulumi:"metroCode"`
 	// ACL template name.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Unique Identifier for the project resource where the acl template is scoped to.If you
-	// leave it out, the ACL template will be created under the default project id of your organization.
+	// Unique Identifier for the project resource where the acl template is scoped to.If you leave it out, the ACL template will be created under the default project id of your organization.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// Device uuid.
 	Uuid pulumi.StringOutput `pulumi:"uuid"`
@@ -136,8 +131,7 @@ func GetAclTemplate(ctx *pulumi.Context,
 type aclTemplateState struct {
 	// Inbound rule description, up to 200 characters.
 	Description *string `pulumi:"description"`
-	// Status of ACL template provisioning process, where template was applied.
-	// One of `PROVISIONING`, `PROVISIONED`.
+	// Status of ACL template provisioning process, where template was applied. One of `PROVISIONING`, `PROVISIONED`.
 	DeviceAclStatus *string `pulumi:"deviceAclStatus"`
 	// List of the devices where the ACL template is applied.
 	DeviceDetails []AclTemplateDeviceDetail `pulumi:"deviceDetails"`
@@ -145,8 +139,7 @@ type aclTemplateState struct {
 	//
 	// Deprecated: Refer to device details get device information
 	DeviceId *string `pulumi:"deviceId"`
-	// One or more rules to specify allowed inbound traffic.
-	// Rules are ordered, matching traffic rule stops processing subsequent ones.
+	// One or more rules to specify allowed inbound traffic. Rules are ordered, matching traffic rule stops processing subsequent ones.
 	//
 	// The `inboundRule` block has below fields:
 	InboundRules []AclTemplateInboundRule `pulumi:"inboundRules"`
@@ -156,8 +149,7 @@ type aclTemplateState struct {
 	MetroCode *string `pulumi:"metroCode"`
 	// ACL template name.
 	Name *string `pulumi:"name"`
-	// Unique Identifier for the project resource where the acl template is scoped to.If you
-	// leave it out, the ACL template will be created under the default project id of your organization.
+	// Unique Identifier for the project resource where the acl template is scoped to.If you leave it out, the ACL template will be created under the default project id of your organization.
 	ProjectId *string `pulumi:"projectId"`
 	// Device uuid.
 	Uuid *string `pulumi:"uuid"`
@@ -166,8 +158,7 @@ type aclTemplateState struct {
 type AclTemplateState struct {
 	// Inbound rule description, up to 200 characters.
 	Description pulumi.StringPtrInput
-	// Status of ACL template provisioning process, where template was applied.
-	// One of `PROVISIONING`, `PROVISIONED`.
+	// Status of ACL template provisioning process, where template was applied. One of `PROVISIONING`, `PROVISIONED`.
 	DeviceAclStatus pulumi.StringPtrInput
 	// List of the devices where the ACL template is applied.
 	DeviceDetails AclTemplateDeviceDetailArrayInput
@@ -175,8 +166,7 @@ type AclTemplateState struct {
 	//
 	// Deprecated: Refer to device details get device information
 	DeviceId pulumi.StringPtrInput
-	// One or more rules to specify allowed inbound traffic.
-	// Rules are ordered, matching traffic rule stops processing subsequent ones.
+	// One or more rules to specify allowed inbound traffic. Rules are ordered, matching traffic rule stops processing subsequent ones.
 	//
 	// The `inboundRule` block has below fields:
 	InboundRules AclTemplateInboundRuleArrayInput
@@ -186,8 +176,7 @@ type AclTemplateState struct {
 	MetroCode pulumi.StringPtrInput
 	// ACL template name.
 	Name pulumi.StringPtrInput
-	// Unique Identifier for the project resource where the acl template is scoped to.If you
-	// leave it out, the ACL template will be created under the default project id of your organization.
+	// Unique Identifier for the project resource where the acl template is scoped to.If you leave it out, the ACL template will be created under the default project id of your organization.
 	ProjectId pulumi.StringPtrInput
 	// Device uuid.
 	Uuid pulumi.StringPtrInput
@@ -200,8 +189,7 @@ func (AclTemplateState) ElementType() reflect.Type {
 type aclTemplateArgs struct {
 	// Inbound rule description, up to 200 characters.
 	Description *string `pulumi:"description"`
-	// One or more rules to specify allowed inbound traffic.
-	// Rules are ordered, matching traffic rule stops processing subsequent ones.
+	// One or more rules to specify allowed inbound traffic. Rules are ordered, matching traffic rule stops processing subsequent ones.
 	//
 	// The `inboundRule` block has below fields:
 	InboundRules []AclTemplateInboundRule `pulumi:"inboundRules"`
@@ -211,8 +199,7 @@ type aclTemplateArgs struct {
 	MetroCode *string `pulumi:"metroCode"`
 	// ACL template name.
 	Name *string `pulumi:"name"`
-	// Unique Identifier for the project resource where the acl template is scoped to.If you
-	// leave it out, the ACL template will be created under the default project id of your organization.
+	// Unique Identifier for the project resource where the acl template is scoped to.If you leave it out, the ACL template will be created under the default project id of your organization.
 	ProjectId *string `pulumi:"projectId"`
 }
 
@@ -220,8 +207,7 @@ type aclTemplateArgs struct {
 type AclTemplateArgs struct {
 	// Inbound rule description, up to 200 characters.
 	Description pulumi.StringPtrInput
-	// One or more rules to specify allowed inbound traffic.
-	// Rules are ordered, matching traffic rule stops processing subsequent ones.
+	// One or more rules to specify allowed inbound traffic. Rules are ordered, matching traffic rule stops processing subsequent ones.
 	//
 	// The `inboundRule` block has below fields:
 	InboundRules AclTemplateInboundRuleArrayInput
@@ -231,8 +217,7 @@ type AclTemplateArgs struct {
 	MetroCode pulumi.StringPtrInput
 	// ACL template name.
 	Name pulumi.StringPtrInput
-	// Unique Identifier for the project resource where the acl template is scoped to.If you
-	// leave it out, the ACL template will be created under the default project id of your organization.
+	// Unique Identifier for the project resource where the acl template is scoped to.If you leave it out, the ACL template will be created under the default project id of your organization.
 	ProjectId pulumi.StringPtrInput
 }
 
@@ -328,8 +313,7 @@ func (o AclTemplateOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AclTemplate) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Status of ACL template provisioning process, where template was applied.
-// One of `PROVISIONING`, `PROVISIONED`.
+// Status of ACL template provisioning process, where template was applied. One of `PROVISIONING`, `PROVISIONED`.
 func (o AclTemplateOutput) DeviceAclStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *AclTemplate) pulumi.StringOutput { return v.DeviceAclStatus }).(pulumi.StringOutput)
 }
@@ -346,8 +330,7 @@ func (o AclTemplateOutput) DeviceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AclTemplate) pulumi.StringOutput { return v.DeviceId }).(pulumi.StringOutput)
 }
 
-// One or more rules to specify allowed inbound traffic.
-// Rules are ordered, matching traffic rule stops processing subsequent ones.
+// One or more rules to specify allowed inbound traffic. Rules are ordered, matching traffic rule stops processing subsequent ones.
 //
 // The `inboundRule` block has below fields:
 func (o AclTemplateOutput) InboundRules() AclTemplateInboundRuleArrayOutput {
@@ -366,8 +349,7 @@ func (o AclTemplateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AclTemplate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Unique Identifier for the project resource where the acl template is scoped to.If you
-// leave it out, the ACL template will be created under the default project id of your organization.
+// Unique Identifier for the project resource where the acl template is scoped to.If you leave it out, the ACL template will be created under the default project id of your organization.
 func (o AclTemplateOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AclTemplate) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
 }

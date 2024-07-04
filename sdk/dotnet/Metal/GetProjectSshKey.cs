@@ -80,8 +80,7 @@ namespace Pulumi.Equinix.Metal
         public string ProjectId { get; set; } = null!;
 
         /// <summary>
-        /// The name, fingerprint, or public_key of the SSH Key to search for
-        /// in the Equinix Metal project.
+        /// The name, fingerprint, or public_key of the SSH Key to search for in the Equinix Metal project.
         /// </summary>
         [Input("search")]
         public string? Search { get; set; }
@@ -109,8 +108,7 @@ namespace Pulumi.Equinix.Metal
         public Input<string> ProjectId { get; set; } = null!;
 
         /// <summary>
-        /// The name, fingerprint, or public_key of the SSH Key to search for
-        /// in the Equinix Metal project.
+        /// The name, fingerprint, or public_key of the SSH Key to search for in the Equinix Metal project.
         /// </summary>
         [Input("search")]
         public Input<string>? Search { get; set; }

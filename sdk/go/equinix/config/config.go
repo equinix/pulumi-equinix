@@ -16,22 +16,25 @@ func GetAuthToken(ctx *pulumi.Context) string {
 	return config.Get(ctx, "equinix:authToken")
 }
 
-// API Consumer Key available under My Apps section in developer portal
+// API Consumer Key available under "My Apps" in developer portal. This argument can also be specified with the
+// `EQUINIX_API_CLIENTID` shell environment variable.
 func GetClientId(ctx *pulumi.Context) string {
 	return config.Get(ctx, "equinix:clientId")
 }
 
-// API Consumer secret available under My Apps section in developer portal
+// API Consumer secret available under "My Apps" in developer portal. This argument can also be specified with the
+// `EQUINIX_API_CLIENTSECRET` shell environment variable.
 func GetClientSecret(ctx *pulumi.Context) string {
 	return config.Get(ctx, "equinix:clientSecret")
 }
 
-// The Equinix API base URL to point out desired environment. Defaults to https://api.equinix.com
+// The Equinix API base URL to point out desired environment. This argument can also be specified with the
+// `EQUINIX_API_ENDPOINT` shell environment variable. (Defaults to `https://api.equinix.com`)
 func GetEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "equinix:endpoint")
 }
 
-// Maximum number of retries.
+// Maximum number of retries in case of network failure.
 func GetMaxRetries(ctx *pulumi.Context) int {
 	return config.GetInt(ctx, "equinix:maxRetries")
 }
@@ -42,17 +45,20 @@ func GetMaxRetryWaitSeconds(ctx *pulumi.Context) int {
 }
 
 // The duration of time, in seconds, that the Equinix Platform API Client should wait before canceling an API request.
-// Defaults to 30
+// Canceled requests may still result in provisioned resources. (Defaults to `30`)
 func GetRequestTimeout(ctx *pulumi.Context) int {
 	return config.GetInt(ctx, "equinix:requestTimeout")
 }
 
-// The maximum number of records in a single response for REST queries that produce paginated responses
+// The maximum number of records in a single response for REST queries that produce paginated responses. (Default is client
+// specific)
 func GetResponseMaxPageSize(ctx *pulumi.Context) int {
 	return config.GetInt(ctx, "equinix:responseMaxPageSize")
 }
 
-// API token from the developer sandbox
+// API tokens are generated from API Consumer clients using the [OAuth2
+// API](https://developer.equinix.com/dev-docs/fabric/getting-started/getting-access-token#request-access-and-refresh-tokens).
+// This argument can also be specified with the `EQUINIX_API_TOKEN` shell environment variable.
 func GetToken(ctx *pulumi.Context) string {
 	return config.Get(ctx, "equinix:token")
 }

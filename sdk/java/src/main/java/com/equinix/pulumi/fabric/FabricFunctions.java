@@ -48,8 +48,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Fabric Cloud Router for a given UUID
      * 
      * Additional documentation:
-     * * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-intro.htm#HowItWorks&gt;
-     * * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers&gt;
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-intro.htm#HowItWorks
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers
      * 
      * ## Example Usage
      * 
@@ -102,8 +102,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Fabric Cloud Router for a given UUID
      * 
      * Additional documentation:
-     * * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-intro.htm#HowItWorks&gt;
-     * * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers&gt;
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-intro.htm#HowItWorks
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers
      * 
      * ## Example Usage
      * 
@@ -156,8 +156,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Fabric Cloud Router for a given UUID
      * 
      * Additional documentation:
-     * * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-intro.htm#HowItWorks&gt;
-     * * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers&gt;
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-intro.htm#HowItWorks
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers
      * 
      * ## Example Usage
      * 
@@ -210,8 +210,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Fabric Cloud Router for a given UUID
      * 
      * Additional documentation:
-     * * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-intro.htm#HowItWorks&gt;
-     * * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers&gt;
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-intro.htm#HowItWorks
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers
      * 
      * ## Example Usage
      * 
@@ -264,8 +264,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Fabric Cloud Routers matching custom search criteria
      * 
      * Additional documentation:
-     * * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-intro.htm#HowItWorks&gt;
-     * * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers&gt;
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-intro.htm#HowItWorks
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers
      * 
      */
     public static Output<GetCloudRoutersResult> getCloudRouters(GetCloudRoutersArgs args) {
@@ -275,8 +275,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Fabric Cloud Routers matching custom search criteria
      * 
      * Additional documentation:
-     * * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-intro.htm#HowItWorks&gt;
-     * * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers&gt;
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-intro.htm#HowItWorks
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers
      * 
      */
     public static CompletableFuture<GetCloudRoutersResult> getCloudRoutersPlain(GetCloudRoutersPlainArgs args) {
@@ -286,8 +286,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Fabric Cloud Routers matching custom search criteria
      * 
      * Additional documentation:
-     * * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-intro.htm#HowItWorks&gt;
-     * * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers&gt;
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-intro.htm#HowItWorks
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers
      * 
      */
     public static Output<GetCloudRoutersResult> getCloudRouters(GetCloudRoutersArgs args, InvokeOptions options) {
@@ -297,8 +297,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Fabric Cloud Routers matching custom search criteria
      * 
      * Additional documentation:
-     * * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-intro.htm#HowItWorks&gt;
-     * * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers&gt;
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-intro.htm#HowItWorks
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers
      * 
      */
     public static CompletableFuture<GetCloudRoutersResult> getCloudRoutersPlain(GetCloudRoutersPlainArgs args, InvokeOptions options) {
@@ -308,8 +308,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID
      * 
      * Additional documentation:
-     * * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm&gt;
-     * * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections&gt;
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections
      * 
      * ## Example Usage
      * 
@@ -367,8 +367,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID
      * 
      * Additional documentation:
-     * * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm&gt;
-     * * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections&gt;
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections
      * 
      * ## Example Usage
      * 
@@ -426,8 +426,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID
      * 
      * Additional documentation:
-     * * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm&gt;
-     * * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections&gt;
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections
      * 
      * ## Example Usage
      * 
@@ -485,8 +485,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID
      * 
      * Additional documentation:
-     * * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm&gt;
-     * * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections&gt;
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections
      * 
      * ## Example Usage
      * 
@@ -544,8 +544,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID
      * 
      * Additional documentation:
-     * * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm&gt;
-     * * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections&gt;
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections
      * 
      */
     public static Output<GetConnectionsResult> getConnections(GetConnectionsArgs args) {
@@ -555,8 +555,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID
      * 
      * Additional documentation:
-     * * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm&gt;
-     * * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections&gt;
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections
      * 
      */
     public static CompletableFuture<GetConnectionsResult> getConnectionsPlain(GetConnectionsPlainArgs args) {
@@ -566,8 +566,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID
      * 
      * Additional documentation:
-     * * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm&gt;
-     * * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections&gt;
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections
      * 
      */
     public static Output<GetConnectionsResult> getConnections(GetConnectionsArgs args, InvokeOptions options) {
@@ -577,8 +577,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID
      * 
      * Additional documentation:
-     * * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm&gt;
-     * * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections&gt;
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections
      * 
      */
     public static CompletableFuture<GetConnectionsResult> getConnectionsPlain(GetConnectionsPlainArgs args, InvokeOptions options) {
@@ -588,8 +588,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Fabric Network for a given UUID
      * 
      * Additional documentation:
-     * * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-networks-implement.htm&gt;
-     * * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-networks&gt;
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-networks-implement.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-networks
      * 
      * ## Example Usage
      * 
@@ -637,8 +637,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Fabric Network for a given UUID
      * 
      * Additional documentation:
-     * * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-networks-implement.htm&gt;
-     * * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-networks&gt;
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-networks-implement.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-networks
      * 
      * ## Example Usage
      * 
@@ -686,8 +686,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Fabric Network for a given UUID
      * 
      * Additional documentation:
-     * * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-networks-implement.htm&gt;
-     * * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-networks&gt;
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-networks-implement.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-networks
      * 
      * ## Example Usage
      * 
@@ -735,8 +735,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Fabric Network for a given UUID
      * 
      * Additional documentation:
-     * * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-networks-implement.htm&gt;
-     * * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-networks&gt;
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-networks-implement.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-networks
      * 
      * ## Example Usage
      * 
@@ -784,8 +784,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Fabric Network for a given UUID
      * 
      * Additional documentation:
-     * * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-networks-implement.htm&gt;
-     * * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-networks&gt;
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-networks-implement.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-networks
      * 
      */
     public static Output<GetNetworksResult> getNetworks(GetNetworksArgs args) {
@@ -795,8 +795,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Fabric Network for a given UUID
      * 
      * Additional documentation:
-     * * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-networks-implement.htm&gt;
-     * * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-networks&gt;
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-networks-implement.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-networks
      * 
      */
     public static CompletableFuture<GetNetworksResult> getNetworksPlain(GetNetworksPlainArgs args) {
@@ -806,8 +806,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Fabric Network for a given UUID
      * 
      * Additional documentation:
-     * * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-networks-implement.htm&gt;
-     * * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-networks&gt;
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-networks-implement.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-networks
      * 
      */
     public static Output<GetNetworksResult> getNetworks(GetNetworksArgs args, InvokeOptions options) {
@@ -817,8 +817,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Fabric Network for a given UUID
      * 
      * Additional documentation:
-     * * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-networks-implement.htm&gt;
-     * * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-networks&gt;
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-networks-implement.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-networks
      * 
      */
     public static CompletableFuture<GetNetworksResult> getNetworksPlain(GetNetworksPlainArgs args, InvokeOptions options) {
@@ -828,8 +828,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch port by uuid
      * 
      * Additional documentation:
-     * * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-ports-implement.htm&gt;
-     * * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#ports&gt;
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-ports-implement.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#ports
      * 
      * ## Example Usage
      * 
@@ -886,8 +886,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch port by uuid
      * 
      * Additional documentation:
-     * * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-ports-implement.htm&gt;
-     * * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#ports&gt;
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-ports-implement.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#ports
      * 
      * ## Example Usage
      * 
@@ -944,8 +944,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch port by uuid
      * 
      * Additional documentation:
-     * * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-ports-implement.htm&gt;
-     * * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#ports&gt;
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-ports-implement.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#ports
      * 
      * ## Example Usage
      * 
@@ -1002,8 +1002,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch port by uuid
      * 
      * Additional documentation:
-     * * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-ports-implement.htm&gt;
-     * * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#ports&gt;
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-ports-implement.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#ports
      * 
      * ## Example Usage
      * 
@@ -1060,8 +1060,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch port by name
      * 
      * Additional documentation:
-     * * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-ports-implement.htm&gt;
-     * * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#ports&gt;
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-ports-implement.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#ports
      * 
      * ## Example Usage
      * 
@@ -1121,8 +1121,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch port by name
      * 
      * Additional documentation:
-     * * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-ports-implement.htm&gt;
-     * * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#ports&gt;
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-ports-implement.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#ports
      * 
      * ## Example Usage
      * 
@@ -1182,8 +1182,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch port by name
      * 
      * Additional documentation:
-     * * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-ports-implement.htm&gt;
-     * * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#ports&gt;
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-ports-implement.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#ports
      * 
      * ## Example Usage
      * 
@@ -1243,8 +1243,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch port by name
      * 
      * Additional documentation:
-     * * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-ports-implement.htm&gt;
-     * * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#ports&gt;
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-ports-implement.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#ports
      * 
      * ## Example Usage
      * 
@@ -1306,8 +1306,8 @@ public final class FabricFunctions {
      * API documentation can be found here - https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
      * 
      * Additional documentation:
-     * * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/FCR/connections/FCR-connect-azureQC.htm#ConfigureRoutingDetailsintheFabricPortal&gt;
-     * * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols&gt;
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/connections/FCR-connect-azureQC.htm#ConfigureRoutingDetailsintheFabricPortal
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
      * 
      * ## Example Usage
      * 
@@ -1365,8 +1365,8 @@ public final class FabricFunctions {
      * API documentation can be found here - https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
      * 
      * Additional documentation:
-     * * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/FCR/connections/FCR-connect-azureQC.htm#ConfigureRoutingDetailsintheFabricPortal&gt;
-     * * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols&gt;
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/connections/FCR-connect-azureQC.htm#ConfigureRoutingDetailsintheFabricPortal
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
      * 
      * ## Example Usage
      * 
@@ -1424,8 +1424,8 @@ public final class FabricFunctions {
      * API documentation can be found here - https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
      * 
      * Additional documentation:
-     * * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/FCR/connections/FCR-connect-azureQC.htm#ConfigureRoutingDetailsintheFabricPortal&gt;
-     * * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols&gt;
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/connections/FCR-connect-azureQC.htm#ConfigureRoutingDetailsintheFabricPortal
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
      * 
      * ## Example Usage
      * 
@@ -1483,8 +1483,8 @@ public final class FabricFunctions {
      * API documentation can be found here - https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
      * 
      * Additional documentation:
-     * * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/FCR/connections/FCR-connect-azureQC.htm#ConfigureRoutingDetailsintheFabricPortal&gt;
-     * * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols&gt;
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/connections/FCR-connect-azureQC.htm#ConfigureRoutingDetailsintheFabricPortal
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
      * 
      * ## Example Usage
      * 
@@ -1540,8 +1540,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Service Profile by UUID filter criteria
      * 
      * Additional documentation:
-     * * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm&gt;
-     * * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles&gt;
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles
      * 
      * ## Example Usage
      * 
@@ -1595,8 +1595,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Service Profile by UUID filter criteria
      * 
      * Additional documentation:
-     * * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm&gt;
-     * * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles&gt;
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles
      * 
      * ## Example Usage
      * 
@@ -1650,8 +1650,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Service Profile by UUID filter criteria
      * 
      * Additional documentation:
-     * * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm&gt;
-     * * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles&gt;
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles
      * 
      * ## Example Usage
      * 
@@ -1705,8 +1705,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Service Profile by UUID filter criteria
      * 
      * Additional documentation:
-     * * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm&gt;
-     * * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles&gt;
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles
      * 
      * ## Example Usage
      * 
@@ -1760,177 +1760,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Service Profile by name filter criteria
      * 
      * Additional documentation:
-     * * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm&gt;
-     * * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles&gt;
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.equinix.fabric.FabricFunctions;
-     * import com.pulumi.equinix.fabric.inputs.GetServiceProfilesArgs;
-     * import com.pulumi.equinix.fabric.inputs.GetServiceProfilesFilterArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var serviceProfilesDataName = FabricFunctions.getServiceProfiles(GetServiceProfilesArgs.builder()
-     *             .filter(GetServiceProfilesFilterArgs.builder()
-     *                 .property(&#34;/name&#34;)
-     *                 .operator(&#34;=&#34;)
-     *                 .values(&#34;&lt;list_of_profiles_to_return&gt;&#34;)
-     *                 .build())
-     *             .build());
-     * 
-     *         ctx.export(&#34;id&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].id());
-     *         ctx.export(&#34;name&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].name());
-     *         ctx.export(&#34;type&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].type());
-     *         ctx.export(&#34;visibility&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].visibility());
-     *         ctx.export(&#34;orgName&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].account()[0].organization_name());
-     *         ctx.export(&#34;accessPointTypeConfigsType&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].type());
-     *         ctx.export(&#34;allowRemoteConnections&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].allow_remote_connections());
-     *         ctx.export(&#34;supportedBandwidth0&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].supported_bandwidths()[0]);
-     *         ctx.export(&#34;supportedBandwidth1&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].supported_bandwidths()[1]);
-     *         ctx.export(&#34;redundandyRequired&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].connection_redundancy_required());
-     *         ctx.export(&#34;allowOverSubscription&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].api_config()[0].allow_over_subscription());
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
-    public static Output<GetServiceProfilesResult> getServiceProfiles() {
-        return getServiceProfiles(GetServiceProfilesArgs.Empty, InvokeOptions.Empty);
-    }
-    /**
-     * Fabric V4 API compatible data resource that allow user to fetch Service Profile by name filter criteria
-     * 
-     * Additional documentation:
-     * * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm&gt;
-     * * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles&gt;
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.equinix.fabric.FabricFunctions;
-     * import com.pulumi.equinix.fabric.inputs.GetServiceProfilesArgs;
-     * import com.pulumi.equinix.fabric.inputs.GetServiceProfilesFilterArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var serviceProfilesDataName = FabricFunctions.getServiceProfiles(GetServiceProfilesArgs.builder()
-     *             .filter(GetServiceProfilesFilterArgs.builder()
-     *                 .property(&#34;/name&#34;)
-     *                 .operator(&#34;=&#34;)
-     *                 .values(&#34;&lt;list_of_profiles_to_return&gt;&#34;)
-     *                 .build())
-     *             .build());
-     * 
-     *         ctx.export(&#34;id&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].id());
-     *         ctx.export(&#34;name&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].name());
-     *         ctx.export(&#34;type&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].type());
-     *         ctx.export(&#34;visibility&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].visibility());
-     *         ctx.export(&#34;orgName&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].account()[0].organization_name());
-     *         ctx.export(&#34;accessPointTypeConfigsType&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].type());
-     *         ctx.export(&#34;allowRemoteConnections&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].allow_remote_connections());
-     *         ctx.export(&#34;supportedBandwidth0&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].supported_bandwidths()[0]);
-     *         ctx.export(&#34;supportedBandwidth1&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].supported_bandwidths()[1]);
-     *         ctx.export(&#34;redundandyRequired&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].connection_redundancy_required());
-     *         ctx.export(&#34;allowOverSubscription&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].api_config()[0].allow_over_subscription());
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
-    public static CompletableFuture<GetServiceProfilesResult> getServiceProfilesPlain() {
-        return getServiceProfilesPlain(GetServiceProfilesPlainArgs.Empty, InvokeOptions.Empty);
-    }
-    /**
-     * Fabric V4 API compatible data resource that allow user to fetch Service Profile by name filter criteria
-     * 
-     * Additional documentation:
-     * * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm&gt;
-     * * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles&gt;
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.equinix.fabric.FabricFunctions;
-     * import com.pulumi.equinix.fabric.inputs.GetServiceProfilesArgs;
-     * import com.pulumi.equinix.fabric.inputs.GetServiceProfilesFilterArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var serviceProfilesDataName = FabricFunctions.getServiceProfiles(GetServiceProfilesArgs.builder()
-     *             .filter(GetServiceProfilesFilterArgs.builder()
-     *                 .property(&#34;/name&#34;)
-     *                 .operator(&#34;=&#34;)
-     *                 .values(&#34;&lt;list_of_profiles_to_return&gt;&#34;)
-     *                 .build())
-     *             .build());
-     * 
-     *         ctx.export(&#34;id&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].id());
-     *         ctx.export(&#34;name&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].name());
-     *         ctx.export(&#34;type&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].type());
-     *         ctx.export(&#34;visibility&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].visibility());
-     *         ctx.export(&#34;orgName&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].account()[0].organization_name());
-     *         ctx.export(&#34;accessPointTypeConfigsType&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].type());
-     *         ctx.export(&#34;allowRemoteConnections&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].allow_remote_connections());
-     *         ctx.export(&#34;supportedBandwidth0&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].supported_bandwidths()[0]);
-     *         ctx.export(&#34;supportedBandwidth1&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].supported_bandwidths()[1]);
-     *         ctx.export(&#34;redundandyRequired&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].connection_redundancy_required());
-     *         ctx.export(&#34;allowOverSubscription&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].api_config()[0].allow_over_subscription());
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles
      * 
      */
     public static Output<GetServiceProfilesResult> getServiceProfiles(GetServiceProfilesArgs args) {
@@ -1940,57 +1771,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Service Profile by name filter criteria
      * 
      * Additional documentation:
-     * * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm&gt;
-     * * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles&gt;
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.equinix.fabric.FabricFunctions;
-     * import com.pulumi.equinix.fabric.inputs.GetServiceProfilesArgs;
-     * import com.pulumi.equinix.fabric.inputs.GetServiceProfilesFilterArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var serviceProfilesDataName = FabricFunctions.getServiceProfiles(GetServiceProfilesArgs.builder()
-     *             .filter(GetServiceProfilesFilterArgs.builder()
-     *                 .property(&#34;/name&#34;)
-     *                 .operator(&#34;=&#34;)
-     *                 .values(&#34;&lt;list_of_profiles_to_return&gt;&#34;)
-     *                 .build())
-     *             .build());
-     * 
-     *         ctx.export(&#34;id&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].id());
-     *         ctx.export(&#34;name&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].name());
-     *         ctx.export(&#34;type&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].type());
-     *         ctx.export(&#34;visibility&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].visibility());
-     *         ctx.export(&#34;orgName&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].account()[0].organization_name());
-     *         ctx.export(&#34;accessPointTypeConfigsType&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].type());
-     *         ctx.export(&#34;allowRemoteConnections&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].allow_remote_connections());
-     *         ctx.export(&#34;supportedBandwidth0&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].supported_bandwidths()[0]);
-     *         ctx.export(&#34;supportedBandwidth1&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].supported_bandwidths()[1]);
-     *         ctx.export(&#34;redundandyRequired&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].connection_redundancy_required());
-     *         ctx.export(&#34;allowOverSubscription&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].api_config()[0].allow_over_subscription());
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles
      * 
      */
     public static CompletableFuture<GetServiceProfilesResult> getServiceProfilesPlain(GetServiceProfilesPlainArgs args) {
@@ -2000,57 +1782,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Service Profile by name filter criteria
      * 
      * Additional documentation:
-     * * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm&gt;
-     * * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles&gt;
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.equinix.fabric.FabricFunctions;
-     * import com.pulumi.equinix.fabric.inputs.GetServiceProfilesArgs;
-     * import com.pulumi.equinix.fabric.inputs.GetServiceProfilesFilterArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var serviceProfilesDataName = FabricFunctions.getServiceProfiles(GetServiceProfilesArgs.builder()
-     *             .filter(GetServiceProfilesFilterArgs.builder()
-     *                 .property(&#34;/name&#34;)
-     *                 .operator(&#34;=&#34;)
-     *                 .values(&#34;&lt;list_of_profiles_to_return&gt;&#34;)
-     *                 .build())
-     *             .build());
-     * 
-     *         ctx.export(&#34;id&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].id());
-     *         ctx.export(&#34;name&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].name());
-     *         ctx.export(&#34;type&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].type());
-     *         ctx.export(&#34;visibility&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].visibility());
-     *         ctx.export(&#34;orgName&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].account()[0].organization_name());
-     *         ctx.export(&#34;accessPointTypeConfigsType&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].type());
-     *         ctx.export(&#34;allowRemoteConnections&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].allow_remote_connections());
-     *         ctx.export(&#34;supportedBandwidth0&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].supported_bandwidths()[0]);
-     *         ctx.export(&#34;supportedBandwidth1&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].supported_bandwidths()[1]);
-     *         ctx.export(&#34;redundandyRequired&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].connection_redundancy_required());
-     *         ctx.export(&#34;allowOverSubscription&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].api_config()[0].allow_over_subscription());
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles
      * 
      */
     public static Output<GetServiceProfilesResult> getServiceProfiles(GetServiceProfilesArgs args, InvokeOptions options) {
@@ -2060,57 +1793,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Service Profile by name filter criteria
      * 
      * Additional documentation:
-     * * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm&gt;
-     * * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles&gt;
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.equinix.fabric.FabricFunctions;
-     * import com.pulumi.equinix.fabric.inputs.GetServiceProfilesArgs;
-     * import com.pulumi.equinix.fabric.inputs.GetServiceProfilesFilterArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var serviceProfilesDataName = FabricFunctions.getServiceProfiles(GetServiceProfilesArgs.builder()
-     *             .filter(GetServiceProfilesFilterArgs.builder()
-     *                 .property(&#34;/name&#34;)
-     *                 .operator(&#34;=&#34;)
-     *                 .values(&#34;&lt;list_of_profiles_to_return&gt;&#34;)
-     *                 .build())
-     *             .build());
-     * 
-     *         ctx.export(&#34;id&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].id());
-     *         ctx.export(&#34;name&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].name());
-     *         ctx.export(&#34;type&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].type());
-     *         ctx.export(&#34;visibility&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].visibility());
-     *         ctx.export(&#34;orgName&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].account()[0].organization_name());
-     *         ctx.export(&#34;accessPointTypeConfigsType&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].type());
-     *         ctx.export(&#34;allowRemoteConnections&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].allow_remote_connections());
-     *         ctx.export(&#34;supportedBandwidth0&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].supported_bandwidths()[0]);
-     *         ctx.export(&#34;supportedBandwidth1&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].supported_bandwidths()[1]);
-     *         ctx.export(&#34;redundandyRequired&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].connection_redundancy_required());
-     *         ctx.export(&#34;allowOverSubscription&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].api_config()[0].allow_over_subscription());
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles
      * 
      */
     public static CompletableFuture<GetServiceProfilesResult> getServiceProfilesPlain(GetServiceProfilesPlainArgs args, InvokeOptions options) {

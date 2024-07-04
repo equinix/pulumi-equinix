@@ -72,8 +72,7 @@ namespace Pulumi.Equinix.Metal
         public Output<string> OwnerId { get; private set; } = null!;
 
         /// <summary>
-        /// The public key. If this is a file, it
-        /// can be read using the file interpolation function
+        /// The public key. If this is a file, it can be read using the file interpolation function
         /// </summary>
         [Output("publicKey")]
         public Output<string> PublicKey { get; private set; } = null!;
@@ -138,8 +137,7 @@ namespace Pulumi.Equinix.Metal
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The public key. If this is a file, it
-        /// can be read using the file interpolation function
+        /// The public key. If this is a file, it can be read using the file interpolation function
         /// </summary>
         [Input("publicKey", required: true)]
         public Input<string> PublicKey { get; set; } = null!;
@@ -177,8 +175,7 @@ namespace Pulumi.Equinix.Metal
         public Input<string>? OwnerId { get; set; }
 
         /// <summary>
-        /// The public key. If this is a file, it
-        /// can be read using the file interpolation function
+        /// The public key. If this is a file, it can be read using the file interpolation function
         /// </summary>
         [Input("publicKey")]
         public Input<string>? PublicKey { get; set; }

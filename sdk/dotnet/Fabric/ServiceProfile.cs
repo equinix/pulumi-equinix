@@ -13,8 +13,8 @@ namespace Pulumi.Equinix.Fabric
     /// Fabric V4 API compatible resource allows creation and management of Equinix Fabric Service Profile
     /// 
     /// Additional documentation:
-    /// * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm&gt;
-    /// * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles&gt;
+    /// * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm
+    /// * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles
     /// 
     /// ## Example Usage
     /// ```csharp
@@ -168,7 +168,7 @@ namespace Pulumi.Equinix.Fabric
         public Output<Outputs.ServiceProfileProject?> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Self Profile indicating if the profile is created for customer's  self use
+        /// Self Profile indicating if the profile is created for customer's self use
         /// </summary>
         [Output("selfProfile")]
         public Output<bool?> SelfProfile { get; private set; } = null!;
@@ -359,7 +359,7 @@ namespace Pulumi.Equinix.Fabric
         public Input<Inputs.ServiceProfileProjectArgs>? Project { get; set; }
 
         /// <summary>
-        /// Self Profile indicating if the profile is created for customer's  self use
+        /// Self Profile indicating if the profile is created for customer's self use
         /// </summary>
         [Input("selfProfile")]
         public Input<bool>? SelfProfile { get; set; }
@@ -535,7 +535,7 @@ namespace Pulumi.Equinix.Fabric
         public Input<Inputs.ServiceProfileProjectGetArgs>? Project { get; set; }
 
         /// <summary>
-        /// Self Profile indicating if the profile is created for customer's  self use
+        /// Self Profile indicating if the profile is created for customer's self use
         /// </summary>
         [Input("selfProfile")]
         public Input<bool>? SelfProfile { get; set; }

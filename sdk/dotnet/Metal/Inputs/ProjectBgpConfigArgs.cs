@@ -19,8 +19,7 @@ namespace Pulumi.Equinix.Metal.Inputs
         public Input<int> Asn { get; set; } = null!;
 
         /// <summary>
-        /// `local` or `global`, the `local` is likely to be usable immediately, the
-        /// `global` will need to be reviewed by Equinix Metal engineers.
+        /// `local` or `global`, the `local` is likely to be usable immediately, the `global` will need to be reviewed by Equinix Metal engineers.
         /// </summary>
         [Input("deploymentType", required: true)]
         public Input<string> DeploymentType { get; set; } = null!;

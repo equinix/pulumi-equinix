@@ -193,10 +193,8 @@ class GetVirtualCircuitResult:
     @pulumi.getter
     def subnet(self) -> str:
         """
-        A subnet from one of the IP
-        blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.
-        * For a /31 block, it will only have two IP addresses, which will be used for
-        the metal_ip and customer_ip.
+        A subnet from one of the IP blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.
+        * For a /31 block, it will only have two IP addresses, which will be used for the metal_ip and customer_ip.
         * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
         """
         return pulumi.get(self, "subnet")
@@ -223,8 +221,7 @@ class GetVirtualCircuitResult:
     @pulumi.getter
     def vnid(self) -> int:
         """
-        , `nni_vlan`, `nni_nvid` - VLAN parameters, see the
-        [documentation for Equinix Fabric](https://metal.equinix.com/developers/docs/networking/fabric/).
+        , `nni_vlan`, `nni_nvid` - VLAN parameters, see the [documentation for Equinix Fabric](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/).
         """
         return pulumi.get(self, "vnid")
 
@@ -268,8 +265,7 @@ class AwaitableGetVirtualCircuitResult(GetVirtualCircuitResult):
 def get_virtual_circuit(virtual_circuit_id: Optional[str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVirtualCircuitResult:
     """
-    Use this data source to retrieve a virtual circuit resource from
-    [Equinix Fabric - software-defined interconnections](https://metal.equinix.com/developers/docs/networking/fabric/)
+    Use this data source to retrieve a virtual circuit resource from [Equinix Fabric - software-defined interconnections](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/)
 
     See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
 
@@ -308,8 +304,7 @@ def get_virtual_circuit(virtual_circuit_id: Optional[str] = None,
 def get_virtual_circuit_output(virtual_circuit_id: Optional[pulumi.Input[str]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVirtualCircuitResult]:
     """
-    Use this data source to retrieve a virtual circuit resource from
-    [Equinix Fabric - software-defined interconnections](https://metal.equinix.com/developers/docs/networking/fabric/)
+    Use this data source to retrieve a virtual circuit resource from [Equinix Fabric - software-defined interconnections](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/)
 
     See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
 

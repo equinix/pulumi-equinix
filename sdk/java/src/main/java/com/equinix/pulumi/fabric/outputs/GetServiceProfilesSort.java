@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetServiceProfilesSort {
     /**
-     * @return Priority type- DESC, ASC
+     * @return The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
      * 
      */
     private @Nullable String direction;
     /**
-     * @return Search operation sort criteria /name /state /changeLog/createdDateTime /changeLog/updatedDateTime
+     * @return The property name to use in sorting. One of [/name /uuid /state /location/metroCode /location/metroName /package/code /changeLog/createdDateTime /changeLog/updatedDateTime]. Defaults to /changeLog/updatedDateTime
      * 
      */
     private @Nullable String property;
 
     private GetServiceProfilesSort() {}
     /**
-     * @return Priority type- DESC, ASC
+     * @return The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
      * 
      */
     public Optional<String> direction() {
         return Optional.ofNullable(this.direction);
     }
     /**
-     * @return Search operation sort criteria /name /state /changeLog/createdDateTime /changeLog/updatedDateTime
+     * @return The property name to use in sorting. One of [/name /uuid /state /location/metroCode /location/metroName /package/code /changeLog/createdDateTime /changeLog/updatedDateTime]. Defaults to /changeLog/updatedDateTime
      * 
      */
     public Optional<String> property() {

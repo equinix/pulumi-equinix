@@ -48,16 +48,14 @@ public final class GetFacilityArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Set of feature strings that the facility must have. Some
-     * possible values are `baremetal`, `ibx`, `storage`, `global_ipv4`, `backend_transfer`, `layer_2`.
+     * Set of feature strings that the facility must have. Some possible values are `baremetal`, `ibx`, `storage`, `global_ipv4`, `backend_transfer`, `layer_2`.
      * 
      */
     @Import(name="featuresRequireds")
     private @Nullable Output<List<String>> featuresRequireds;
 
     /**
-     * @return Set of feature strings that the facility must have. Some
-     * possible values are `baremetal`, `ibx`, `storage`, `global_ipv4`, `backend_transfer`, `layer_2`.
+     * @return Set of feature strings that the facility must have. Some possible values are `baremetal`, `ibx`, `storage`, `global_ipv4`, `backend_transfer`, `layer_2`.
      * 
      */
     public Optional<Output<List<String>>> featuresRequireds() {
@@ -143,8 +141,7 @@ public final class GetFacilityArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param featuresRequireds Set of feature strings that the facility must have. Some
-         * possible values are `baremetal`, `ibx`, `storage`, `global_ipv4`, `backend_transfer`, `layer_2`.
+         * @param featuresRequireds Set of feature strings that the facility must have. Some possible values are `baremetal`, `ibx`, `storage`, `global_ipv4`, `backend_transfer`, `layer_2`.
          * 
          * @return builder
          * 
@@ -155,8 +152,7 @@ public final class GetFacilityArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param featuresRequireds Set of feature strings that the facility must have. Some
-         * possible values are `baremetal`, `ibx`, `storage`, `global_ipv4`, `backend_transfer`, `layer_2`.
+         * @param featuresRequireds Set of feature strings that the facility must have. Some possible values are `baremetal`, `ibx`, `storage`, `global_ipv4`, `backend_transfer`, `layer_2`.
          * 
          * @return builder
          * 
@@ -166,8 +162,7 @@ public final class GetFacilityArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param featuresRequireds Set of feature strings that the facility must have. Some
-         * possible values are `baremetal`, `ibx`, `storage`, `global_ipv4`, `backend_transfer`, `layer_2`.
+         * @param featuresRequireds Set of feature strings that the facility must have. Some possible values are `baremetal`, `ibx`, `storage`, `global_ipv4`, `backend_transfer`, `layer_2`.
          * 
          * @return builder
          * 

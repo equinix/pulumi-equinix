@@ -52,8 +52,7 @@ namespace Pulumi.Equinix.Metal
         public Output<string> DeviceId { get; private set; } = null!;
 
         /// <summary>
-        /// Network type to set. Must be one of `layer3`, `hybrid`, `hybrid-bonded`, `layer2-individual`
-        /// and `layer2-bonded`.
+        /// Network type to set. Must be one of `layer3`, `hybrid`, `hybrid-bonded`, `layer2-individual` and `layer2-bonded`.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -112,8 +111,7 @@ namespace Pulumi.Equinix.Metal
         public Input<string> DeviceId { get; set; } = null!;
 
         /// <summary>
-        /// Network type to set. Must be one of `layer3`, `hybrid`, `hybrid-bonded`, `layer2-individual`
-        /// and `layer2-bonded`.
+        /// Network type to set. Must be one of `layer3`, `hybrid`, `hybrid-bonded`, `layer2-individual` and `layer2-bonded`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -133,8 +131,7 @@ namespace Pulumi.Equinix.Metal
         public Input<string>? DeviceId { get; set; }
 
         /// <summary>
-        /// Network type to set. Must be one of `layer3`, `hybrid`, `hybrid-bonded`, `layer2-individual`
-        /// and `layer2-bonded`.
+        /// Network type to set. Must be one of `layer3`, `hybrid`, `hybrid-bonded`, `layer2-individual` and `layer2-bonded`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

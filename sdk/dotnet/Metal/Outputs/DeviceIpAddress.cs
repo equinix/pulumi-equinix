@@ -14,22 +14,15 @@ namespace Pulumi.Equinix.Metal.Outputs
     public sealed class DeviceIpAddress
     {
         /// <summary>
-        /// CIDR suffix for IP address block to be assigned, i.e. amount of addresses.
+        /// CIDR suffix for IP block assigned to this device
         /// </summary>
         public readonly int? Cidr;
         /// <summary>
-        /// List of UUIDs of IP block reservations
-        /// from which the public IPv4 address should be taken.
-        /// 
-        /// You can supply one `ip_address` block per IP address type. If you use the `ip_address` you must
-        /// always pass a block for `private_ipv4`.
-        /// 
-        /// To learn more about using the reserved IP addresses for new devices, see the examples in the
-        /// equinix.metal.ReservedIpBlock documentation.
+        /// IDs of reservations to pick the blocks from
         /// </summary>
         public readonly ImmutableArray<string> ReservationIds;
         /// <summary>
-        /// One of `private_ipv4`, `public_ipv4`, `public_ipv6`.
+        /// one of public*ipv4,private*ipv4,public_ipv6
         /// </summary>
         public readonly string Type;
 

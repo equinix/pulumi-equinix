@@ -31,16 +31,14 @@ public final class DeviceClusterDetailsNode0VendorConfigurationArgs extends com.
     }
 
     /**
-     * The administrative password of the device. You can use it to log in
-     * to the console. This field is not available for all device types.
+     * The administrative password of the device. You can use it to log in to the console. This field is not available for all device types.
      * 
      */
     @Import(name="adminPassword")
     private @Nullable Output<String> adminPassword;
 
     /**
-     * @return The administrative password of the device. You can use it to log in
-     * to the console. This field is not available for all device types.
+     * @return The administrative password of the device. You can use it to log in to the console. This field is not available for all device types.
      * 
      */
     public Optional<Output<String>> adminPassword() {
@@ -168,16 +166,14 @@ public final class DeviceClusterDetailsNode0VendorConfigurationArgs extends com.
     }
 
     /**
-     * The CLI password of the device. This field is relevant only for the
-     * Velocloud SDWAN cluster.
+     * The CLI password of the device. This field is relevant only for the Velocloud SDWAN cluster.
      * 
      */
     @Import(name="rootPassword")
     private @Nullable Output<String> rootPassword;
 
     /**
-     * @return The CLI password of the device. This field is relevant only for the
-     * Velocloud SDWAN cluster.
+     * @return The CLI password of the device. This field is relevant only for the Velocloud SDWAN cluster.
      * 
      */
     public Optional<Output<String>> rootPassword() {
@@ -240,8 +236,7 @@ public final class DeviceClusterDetailsNode0VendorConfigurationArgs extends com.
         }
 
         /**
-         * @param adminPassword The administrative password of the device. You can use it to log in
-         * to the console. This field is not available for all device types.
+         * @param adminPassword The administrative password of the device. You can use it to log in to the console. This field is not available for all device types.
          * 
          * @return builder
          * 
@@ -252,8 +247,7 @@ public final class DeviceClusterDetailsNode0VendorConfigurationArgs extends com.
         }
 
         /**
-         * @param adminPassword The administrative password of the device. You can use it to log in
-         * to the console. This field is not available for all device types.
+         * @param adminPassword The administrative password of the device. You can use it to log in to the console. This field is not available for all device types.
          * 
          * @return builder
          * 
@@ -431,8 +425,7 @@ public final class DeviceClusterDetailsNode0VendorConfigurationArgs extends com.
         }
 
         /**
-         * @param rootPassword The CLI password of the device. This field is relevant only for the
-         * Velocloud SDWAN cluster.
+         * @param rootPassword The CLI password of the device. This field is relevant only for the Velocloud SDWAN cluster.
          * 
          * @return builder
          * 
@@ -443,8 +436,7 @@ public final class DeviceClusterDetailsNode0VendorConfigurationArgs extends com.
         }
 
         /**
-         * @param rootPassword The CLI password of the device. This field is relevant only for the
-         * Velocloud SDWAN cluster.
+         * @param rootPassword The CLI password of the device. This field is relevant only for the Velocloud SDWAN cluster.
          * 
          * @return builder
          * 

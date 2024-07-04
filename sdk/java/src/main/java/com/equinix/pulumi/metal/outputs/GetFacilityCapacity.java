@@ -18,8 +18,7 @@ public final class GetFacilityCapacity {
      */
     private String plan;
     /**
-     * @return Minimun number of devices that must be available in selected location.
-     * Default is `1`.
+     * @return Minimun number of devices that must be available in selected location. Default is `1`.
      * 
      */
     private @Nullable Integer quantity;
@@ -33,8 +32,7 @@ public final class GetFacilityCapacity {
         return this.plan;
     }
     /**
-     * @return Minimun number of devices that must be available in selected location.
-     * Default is `1`.
+     * @return Minimun number of devices that must be available in selected location. Default is `1`.
      * 
      */
     public Optional<Integer> quantity() {

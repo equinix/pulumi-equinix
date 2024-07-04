@@ -59,8 +59,7 @@ type DeviceNetworkType struct {
 
 	// The ID of the device on which the network type should be set.
 	DeviceId pulumi.StringOutput `pulumi:"deviceId"`
-	// Network type to set. Must be one of `layer3`, `hybrid`, `hybrid-bonded`, `layer2-individual`
-	// and `layer2-bonded`.
+	// Network type to set. Must be one of `layer3`, `hybrid`, `hybrid-bonded`, `layer2-individual` and `layer2-bonded`.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -102,16 +101,14 @@ func GetDeviceNetworkType(ctx *pulumi.Context,
 type deviceNetworkTypeState struct {
 	// The ID of the device on which the network type should be set.
 	DeviceId *string `pulumi:"deviceId"`
-	// Network type to set. Must be one of `layer3`, `hybrid`, `hybrid-bonded`, `layer2-individual`
-	// and `layer2-bonded`.
+	// Network type to set. Must be one of `layer3`, `hybrid`, `hybrid-bonded`, `layer2-individual` and `layer2-bonded`.
 	Type *string `pulumi:"type"`
 }
 
 type DeviceNetworkTypeState struct {
 	// The ID of the device on which the network type should be set.
 	DeviceId pulumi.StringPtrInput
-	// Network type to set. Must be one of `layer3`, `hybrid`, `hybrid-bonded`, `layer2-individual`
-	// and `layer2-bonded`.
+	// Network type to set. Must be one of `layer3`, `hybrid`, `hybrid-bonded`, `layer2-individual` and `layer2-bonded`.
 	Type pulumi.StringPtrInput
 }
 
@@ -122,8 +119,7 @@ func (DeviceNetworkTypeState) ElementType() reflect.Type {
 type deviceNetworkTypeArgs struct {
 	// The ID of the device on which the network type should be set.
 	DeviceId string `pulumi:"deviceId"`
-	// Network type to set. Must be one of `layer3`, `hybrid`, `hybrid-bonded`, `layer2-individual`
-	// and `layer2-bonded`.
+	// Network type to set. Must be one of `layer3`, `hybrid`, `hybrid-bonded`, `layer2-individual` and `layer2-bonded`.
 	Type string `pulumi:"type"`
 }
 
@@ -131,8 +127,7 @@ type deviceNetworkTypeArgs struct {
 type DeviceNetworkTypeArgs struct {
 	// The ID of the device on which the network type should be set.
 	DeviceId pulumi.StringInput
-	// Network type to set. Must be one of `layer3`, `hybrid`, `hybrid-bonded`, `layer2-individual`
-	// and `layer2-bonded`.
+	// Network type to set. Must be one of `layer3`, `hybrid`, `hybrid-bonded`, `layer2-individual` and `layer2-bonded`.
 	Type pulumi.StringInput
 }
 
@@ -228,8 +223,7 @@ func (o DeviceNetworkTypeOutput) DeviceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DeviceNetworkType) pulumi.StringOutput { return v.DeviceId }).(pulumi.StringOutput)
 }
 
-// Network type to set. Must be one of `layer3`, `hybrid`, `hybrid-bonded`, `layer2-individual`
-// and `layer2-bonded`.
+// Network type to set. Must be one of `layer3`, `hybrid`, `hybrid-bonded`, `layer2-individual` and `layer2-bonded`.
 func (o DeviceNetworkTypeOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *DeviceNetworkType) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

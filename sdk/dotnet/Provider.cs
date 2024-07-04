@@ -25,25 +25,30 @@ namespace Pulumi.Equinix
         public Output<string?> AuthToken { get; private set; } = null!;
 
         /// <summary>
-        /// API Consumer Key available under My Apps section in developer portal
+        /// API Consumer Key available under "My Apps" in developer portal. This argument can also be specified with the
+        /// `EQUINIX_API_CLIENTID` shell environment variable.
         /// </summary>
         [Output("clientId")]
         public Output<string?> ClientId { get; private set; } = null!;
 
         /// <summary>
-        /// API Consumer secret available under My Apps section in developer portal
+        /// API Consumer secret available under "My Apps" in developer portal. This argument can also be specified with the
+        /// `EQUINIX_API_CLIENTSECRET` shell environment variable.
         /// </summary>
         [Output("clientSecret")]
         public Output<string?> ClientSecret { get; private set; } = null!;
 
         /// <summary>
-        /// The Equinix API base URL to point out desired environment. Defaults to https://api.equinix.com
+        /// The Equinix API base URL to point out desired environment. This argument can also be specified with the
+        /// `EQUINIX_API_ENDPOINT` shell environment variable. (Defaults to `https://api.equinix.com`)
         /// </summary>
         [Output("endpoint")]
         public Output<string?> Endpoint { get; private set; } = null!;
 
         /// <summary>
-        /// API token from the developer sandbox
+        /// API tokens are generated from API Consumer clients using the [OAuth2
+        /// API](https://developer.equinix.com/dev-docs/fabric/getting-started/getting-access-token#request-access-and-refresh-tokens).
+        /// This argument can also be specified with the `EQUINIX_API_TOKEN` shell environment variable.
         /// </summary>
         [Output("token")]
         public Output<string?> Token { get; private set; } = null!;
@@ -84,25 +89,28 @@ namespace Pulumi.Equinix
         public Input<string>? AuthToken { get; set; }
 
         /// <summary>
-        /// API Consumer Key available under My Apps section in developer portal
+        /// API Consumer Key available under "My Apps" in developer portal. This argument can also be specified with the
+        /// `EQUINIX_API_CLIENTID` shell environment variable.
         /// </summary>
         [Input("clientId")]
         public Input<string>? ClientId { get; set; }
 
         /// <summary>
-        /// API Consumer secret available under My Apps section in developer portal
+        /// API Consumer secret available under "My Apps" in developer portal. This argument can also be specified with the
+        /// `EQUINIX_API_CLIENTSECRET` shell environment variable.
         /// </summary>
         [Input("clientSecret")]
         public Input<string>? ClientSecret { get; set; }
 
         /// <summary>
-        /// The Equinix API base URL to point out desired environment. Defaults to https://api.equinix.com
+        /// The Equinix API base URL to point out desired environment. This argument can also be specified with the
+        /// `EQUINIX_API_ENDPOINT` shell environment variable. (Defaults to `https://api.equinix.com`)
         /// </summary>
         [Input("endpoint")]
         public Input<string>? Endpoint { get; set; }
 
         /// <summary>
-        /// Maximum number of retries.
+        /// Maximum number of retries in case of network failure.
         /// </summary>
         [Input("maxRetries", json: true)]
         public Input<int>? MaxRetries { get; set; }
@@ -115,19 +123,22 @@ namespace Pulumi.Equinix
 
         /// <summary>
         /// The duration of time, in seconds, that the Equinix Platform API Client should wait before canceling an API request.
-        /// Defaults to 30
+        /// Canceled requests may still result in provisioned resources. (Defaults to `30`)
         /// </summary>
         [Input("requestTimeout", json: true)]
         public Input<int>? RequestTimeout { get; set; }
 
         /// <summary>
-        /// The maximum number of records in a single response for REST queries that produce paginated responses
+        /// The maximum number of records in a single response for REST queries that produce paginated responses. (Default is client
+        /// specific)
         /// </summary>
         [Input("responseMaxPageSize", json: true)]
         public Input<int>? ResponseMaxPageSize { get; set; }
 
         /// <summary>
-        /// API token from the developer sandbox
+        /// API tokens are generated from API Consumer clients using the [OAuth2
+        /// API](https://developer.equinix.com/dev-docs/fabric/getting-started/getting-access-token#request-access-and-refresh-tokens).
+        /// This argument can also be specified with the `EQUINIX_API_TOKEN` shell environment variable.
         /// </summary>
         [Input("token")]
         public Input<string>? Token { get; set; }

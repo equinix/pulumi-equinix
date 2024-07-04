@@ -69,8 +69,7 @@ class GetGatewayResult:
     @pulumi.getter(name="privateIpv4SubnetSize")
     def private_ipv4_subnet_size(self) -> int:
         """
-        Size of the private IPv4 subnet bound to this metal gateway. One of
-        `8`, `16`, `32`, `64`, `128`.
+        Size of the private IPv4 subnet bound to this metal gateway. One of `8`, `16`, `32`, `64`, `128`.
         """
         return pulumi.get(self, "private_ipv4_subnet_size")
 

@@ -53,7 +53,7 @@ public final class GetDeviceSecondaryDevice {
      * @return List of device interfaces
      * * `interface.#.id` - interface identifier
      * * `interface.#.name` - interface name
-     * * `interface.#.status` -  interface status (AVAILABLE, RESERVED, ASSIGNED)
+     * * `interface.#.status` - interface status (AVAILABLE, RESERVED, ASSIGNED)
      * * `interface.#.operational_status` - interface operational status (up or down)
      * * `interface.#.mac_address` - interface MAC address
      * * `interface.#.ip_address` - interface IP address
@@ -114,8 +114,7 @@ public final class GetDeviceSecondaryDevice {
      */
     private String projectId;
     /**
-     * @return Device redundancy type applicable for HA devices, either
-     * primary or secondary
+     * @return Device redundancy type applicable for HA devices, either primary or secondary
      * 
      */
     private String redundancyType;
@@ -148,7 +147,7 @@ public final class GetDeviceSecondaryDevice {
      * @return Device provisioning status
      * * INITIALIZING
      * * PROVISIONING
-     * * PROVISIONED  (**NOTE: By default data source will only return devices in this state.  To include other states see `valid_state_list`**)
+     * * PROVISIONED (**NOTE: By default data source will only return devices in this state. To include other states see `valid_state_list`**)
      * * WAITING_FOR_PRIMARY
      * * WAITING_FOR_SECONDARY
      * * WAITING_FOR_REPLICA_CLUSTER_NODES
@@ -236,7 +235,7 @@ public final class GetDeviceSecondaryDevice {
      * @return List of device interfaces
      * * `interface.#.id` - interface identifier
      * * `interface.#.name` - interface name
-     * * `interface.#.status` -  interface status (AVAILABLE, RESERVED, ASSIGNED)
+     * * `interface.#.status` - interface status (AVAILABLE, RESERVED, ASSIGNED)
      * * `interface.#.operational_status` - interface operational status (up or down)
      * * `interface.#.mac_address` - interface MAC address
      * * `interface.#.ip_address` - interface IP address
@@ -317,8 +316,7 @@ public final class GetDeviceSecondaryDevice {
         return this.projectId;
     }
     /**
-     * @return Device redundancy type applicable for HA devices, either
-     * primary or secondary
+     * @return Device redundancy type applicable for HA devices, either primary or secondary
      * 
      */
     public String redundancyType() {
@@ -363,7 +361,7 @@ public final class GetDeviceSecondaryDevice {
      * @return Device provisioning status
      * * INITIALIZING
      * * PROVISIONING
-     * * PROVISIONED  (**NOTE: By default data source will only return devices in this state.  To include other states see `valid_state_list`**)
+     * * PROVISIONED (**NOTE: By default data source will only return devices in this state. To include other states see `valid_state_list`**)
      * * WAITING_FOR_PRIMARY
      * * WAITING_FOR_SECONDARY
      * * WAITING_FOR_REPLICA_CLUSTER_NODES

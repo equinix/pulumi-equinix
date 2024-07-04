@@ -208,8 +208,7 @@ def get_precreated_ip_block(address_family: Optional[int] = None,
                             public: Optional[bool] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPrecreatedIpBlockResult:
     """
-    Use this data source to get CIDR expression for precreated (management) IPv6 and IPv4 blocks in Equinix Metal.
-    You can then use the cidrsubnet TF builtin function to derive subnets.
+    Use this data source to get CIDR expression for precreated (management) IPv6 and IPv4 blocks in Equinix Metal. You can then use the cidrsubnet TF builtin function to derive subnets.
 
     > For backward compatibility, this data source will also return reserved (elastic) IP blocks.
 
@@ -265,8 +264,7 @@ def get_precreated_ip_block_output(address_family: Optional[pulumi.Input[int]] =
                                    public: Optional[pulumi.Input[bool]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPrecreatedIpBlockResult]:
     """
-    Use this data source to get CIDR expression for precreated (management) IPv6 and IPv4 blocks in Equinix Metal.
-    You can then use the cidrsubnet TF builtin function to derive subnets.
+    Use this data source to get CIDR expression for precreated (management) IPv6 and IPv4 blocks in Equinix Metal. You can then use the cidrsubnet TF builtin function to derive subnets.
 
     > For backward compatibility, this data source will also return reserved (elastic) IP blocks.
 

@@ -10,8 +10,7 @@ import java.util.Objects;
 @CustomType
 public final class DeviceLinkMetroLink {
     /**
-     * @return billing account number to be used for
-     * connection charges
+     * @return billing account number to be used for connection charges
      * 
      */
     private String accountNumber;
@@ -33,8 +32,7 @@ public final class DeviceLinkMetroLink {
 
     private DeviceLinkMetroLink() {}
     /**
-     * @return billing account number to be used for
-     * connection charges
+     * @return billing account number to be used for connection charges
      * 
      */
     public String accountNumber() {
