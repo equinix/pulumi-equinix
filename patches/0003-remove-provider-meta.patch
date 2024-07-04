@@ -1,15 +1,15 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
-From: ocobleseqx <oscar.cobles@eu.equinix.com>
-Date: Wed, 6 Mar 2024 19:08:04 +0100
+From: Oscar Cobles <oscar.cobles@eu.equinix.com>
+Date: Thu, 4 Jul 2024 12:29:16 +0200
 Subject: [PATCH 3/3] remove provider meta
 
-Signed-off-by: ocobleseqx <oscar.cobles@eu.equinix.com>
+Signed-off-by: Oscar Cobles <oscar.cobles@eu.equinix.com>
 
 diff --git a/equinix/provider.go b/equinix/provider.go
-index b9af613..25aed7b 100644
+index 7fbb03d..ee84017 100644
 --- a/equinix/provider.go
 +++ b/equinix/provider.go
-@@ -147,12 +147,6 @@ func Provider() *schema.Provider {
+@@ -137,12 +137,6 @@ func Provider() *schema.Provider {
  			"equinix_metal_bgp_session":          resourceMetalBGPSession(),
  			"equinix_metal_port_vlan_attachment": resourceMetalPortVlanAttachment(),
  		},
@@ -22,7 +22,7 @@ index b9af613..25aed7b 100644
  	}
  
  	provider.ConfigureContextFunc = func(ctx context.Context, d *schema.ResourceData) (interface{}, diag.Diagnostics) {
-@@ -161,10 +155,6 @@ func Provider() *schema.Provider {
+@@ -151,10 +145,6 @@ func Provider() *schema.Provider {
  	return provider
  }
  
@@ -33,7 +33,7 @@ index b9af613..25aed7b 100644
  func configureProvider(ctx context.Context, d *schema.ResourceData, p *schema.Provider) (interface{}, diag.Diagnostics) {
  	mrws := d.Get("max_retry_wait_seconds").(int)
  	rt := d.Get("request_timeout").(int)
-@@ -180,11 +170,7 @@ func configureProvider(ctx context.Context, d *schema.ResourceData, p *schema.Pr
+@@ -170,11 +160,7 @@ func configureProvider(ctx context.Context, d *schema.ResourceData, p *schema.Pr
  		MaxRetries:     d.Get("max_retries").(int),
  		MaxRetryWait:   time.Duration(mrws) * time.Second,
  	}
@@ -46,10 +46,10 @@ index b9af613..25aed7b 100644
  	if config.TerraformVersion == "" {
  		// Terraform 0.12 introduced this field to the protocol
 diff --git a/internal/config/config.go b/internal/config/config.go
-index 8b93e11..ac55739 100644
+index d118c04..96a3c10 100644
 --- a/internal/config/config.go
 +++ b/internal/config/config.go
-@@ -38,10 +38,6 @@ const (
+@@ -36,10 +36,6 @@ const (
  	MetalAuthTokenEnvVar = "METAL_AUTH_TOKEN"
  )
  
@@ -57,10 +57,10 @@ index 8b93e11..ac55739 100644
 -	ModuleName string `cty:"module_name"`
 -}
 -
- type DumpTransport struct {
- 	r http.RoundTripper
- }
-@@ -341,16 +337,7 @@ func (c *Config) AddFwModuleToMetalUserAgent(ctx context.Context, meta tfsdk.Con
+ const (
+ 	consumerToken         = "aZ9GmqHTPtxevvFq9SK3Pi2yr9YCbRzduCSXF2SNem5sjB91mDq7Th3ZwTtRqMWZ"
+ 	metalBasePath         = "/metal/v1/"
+@@ -312,16 +308,7 @@ func (c *Config) AddFwModuleToMetalUserAgent(ctx context.Context, meta tfsdk.Con
  	c.Metal.UserAgent = generateFwModuleUserAgentString(ctx, meta, c.metalUserAgent)
  }
  
@@ -78,7 +78,7 @@ index 8b93e11..ac55739 100644
  	return baseUserAgent
  }
  
-@@ -358,17 +345,7 @@ func (c *Config) AddModuleToMetalUserAgent(d *schema.ResourceData) {
+@@ -329,24 +316,14 @@ func (c *Config) AddModuleToMetalUserAgent(d *schema.ResourceData) {
  	c.Metal.UserAgent = generateModuleUserAgentString(d, c.metalUserAgent)
  }
  
@@ -97,19 +97,36 @@ index 8b93e11..ac55739 100644
  	return baseUserAgent
  }
  
+ func (c *Config) tfSdkUserAgent(suffix string) string {
+ 	sdkModulePath := "github.com/pulumi/pulumi/pkg/v3"
+ 	baseUserAgent := fmt.Sprintf("Pulumi/%s (+https://www.pulumi.com) Pulumi Plugin SDK/%s",
+-			c.TerraformVersion, moduleVersionFromBuild(sdkModulePath))
++		c.TerraformVersion, moduleVersionFromBuild(sdkModulePath))
+ 	baseUserAgent = appendUserAgentFromEnv(baseUserAgent)
+ 	userAgent := fmt.Sprintf("%s pulumi-equinix/%s %s", baseUserAgent, version.ProviderVersion, suffix)
+ 	return strings.TrimSpace(userAgent)
+@@ -355,7 +332,7 @@ func (c *Config) tfSdkUserAgent(suffix string) string {
+ func (c *Config) tfFrameworkUserAgent(suffix string) string {
+ 	frameworkModulePath := "github.com/pulumi/pulumi/pkg/v3"
+ 	baseUserAgent := fmt.Sprintf("Pulumi/%s (+https://www.pulumi.com) Pulumi Plugin SDK/%s",
+-			c.TerraformVersion, moduleVersionFromBuild(frameworkModulePath))
++		c.TerraformVersion, moduleVersionFromBuild(frameworkModulePath))
+ 	baseUserAgent = appendUserAgentFromEnv(baseUserAgent)
+ 	userAgent := fmt.Sprintf("%s pulumi-equinix/%s %s", baseUserAgent, version.ProviderVersion, suffix)
+ 	return strings.TrimSpace(userAgent)
 diff --git a/internal/provider/provider.go b/internal/provider/provider.go
-index b6a6246..fb6bc50 100644
+index 4e0d186..cd2574b 100644
 --- a/internal/provider/provider.go
 +++ b/internal/provider/provider.go
-@@ -14,7 +14,6 @@ import (
- 	"github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+@@ -17,7 +17,6 @@ import (
+ 	"github.com/hashicorp/terraform-plugin-framework-validators/int64validator"
  	"github.com/hashicorp/terraform-plugin-framework/datasource"
  	"github.com/hashicorp/terraform-plugin-framework/provider"
 -	"github.com/hashicorp/terraform-plugin-framework/provider/metaschema"
  	"github.com/hashicorp/terraform-plugin-framework/provider/schema"
  	"github.com/hashicorp/terraform-plugin-framework/resource"
  	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
-@@ -27,7 +26,7 @@ type FrameworkProvider struct {
+@@ -28,7 +27,7 @@ type FrameworkProvider struct {
  	Meta            *config.Config
  }
  
@@ -118,7 +135,7 @@ index b6a6246..fb6bc50 100644
  	return &FrameworkProvider{
  		ProviderVersion: version,
  	}
-@@ -97,20 +96,6 @@ func (p *FrameworkProvider) Schema(
+@@ -98,20 +97,6 @@ func (p *FrameworkProvider) Schema(
  	}
  }
  
