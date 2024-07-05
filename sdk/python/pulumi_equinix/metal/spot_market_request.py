@@ -28,17 +28,12 @@ class SpotMarketRequestArgs:
         The set of arguments for constructing a SpotMarketRequest resource.
         :param pulumi.Input[int] devices_max: Maximum number devices to be created.
         :param pulumi.Input[int] devices_min: Miniumum number devices to be created.
-        :param pulumi.Input['SpotMarketRequestInstanceParametersArgs'] instance_parameters: Key/Value pairs of parameters for devices provisioned from
-               this request. Valid keys are: `billing_cycle`, `plan`, `operating_system`, `hostname`,
-               `termination_time`, `always_pxe`, `description`, `features`, `locked`, `project_ssh_keys`,
-               `user_ssh_keys`, `userdata`, `customdata`, `ipxe_script_url`, `tags`. You can find each parameter
-               description in metal.Device docs.
+        :param pulumi.Input['SpotMarketRequestInstanceParametersArgs'] instance_parameters: Key/Value pairs of parameters for devices provisioned from this request. Valid keys are: `billing_cycle`, `plan`, `operating_system`, `hostname`, `termination_time`, `always_pxe`, `description`, `features`, `locked`, `project_ssh_keys`, `user_ssh_keys`, `userdata`, `customdata`, `ipxe_script_url`, `tags`. You can find each parameter description in metal.Device docs.
         :param pulumi.Input[float] max_bid_price: Maximum price user is willing to pay per hour per device.
         :param pulumi.Input[str] project_id: Project ID.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] facilities: Facility IDs where devices should be created. Use metro instead; read the facility to metro migration guide
         :param pulumi.Input[str] metro: Metro where devices should be created.
-        :param pulumi.Input[bool] wait_for_devices: On resource creation wait until all desired devices are active.
-               On resource destruction wait until devices are removed.
+        :param pulumi.Input[bool] wait_for_devices: On resource creation wait until all desired devices are active. On resource destruction wait until devices are removed.
         """
         pulumi.set(__self__, "devices_max", devices_max)
         pulumi.set(__self__, "devices_min", devices_min)
@@ -83,11 +78,7 @@ class SpotMarketRequestArgs:
     @pulumi.getter(name="instanceParameters")
     def instance_parameters(self) -> pulumi.Input['SpotMarketRequestInstanceParametersArgs']:
         """
-        Key/Value pairs of parameters for devices provisioned from
-        this request. Valid keys are: `billing_cycle`, `plan`, `operating_system`, `hostname`,
-        `termination_time`, `always_pxe`, `description`, `features`, `locked`, `project_ssh_keys`,
-        `user_ssh_keys`, `userdata`, `customdata`, `ipxe_script_url`, `tags`. You can find each parameter
-        description in metal.Device docs.
+        Key/Value pairs of parameters for devices provisioned from this request. Valid keys are: `billing_cycle`, `plan`, `operating_system`, `hostname`, `termination_time`, `always_pxe`, `description`, `features`, `locked`, `project_ssh_keys`, `user_ssh_keys`, `userdata`, `customdata`, `ipxe_script_url`, `tags`. You can find each parameter description in metal.Device docs.
         """
         return pulumi.get(self, "instance_parameters")
 
@@ -121,13 +112,11 @@ class SpotMarketRequestArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
     def facilities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Facility IDs where devices should be created. Use metro instead; read the facility to metro migration guide
         """
-        warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
-        pulumi.log.warn("""facilities is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
-
         return pulumi.get(self, "facilities")
 
     @facilities.setter
@@ -150,8 +139,7 @@ class SpotMarketRequestArgs:
     @pulumi.getter(name="waitForDevices")
     def wait_for_devices(self) -> Optional[pulumi.Input[bool]]:
         """
-        On resource creation wait until all desired devices are active.
-        On resource destruction wait until devices are removed.
+        On resource creation wait until all desired devices are active. On resource destruction wait until devices are removed.
         """
         return pulumi.get(self, "wait_for_devices")
 
@@ -176,16 +164,11 @@ class _SpotMarketRequestState:
         :param pulumi.Input[int] devices_max: Maximum number devices to be created.
         :param pulumi.Input[int] devices_min: Miniumum number devices to be created.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] facilities: Facility IDs where devices should be created. Use metro instead; read the facility to metro migration guide
-        :param pulumi.Input['SpotMarketRequestInstanceParametersArgs'] instance_parameters: Key/Value pairs of parameters for devices provisioned from
-               this request. Valid keys are: `billing_cycle`, `plan`, `operating_system`, `hostname`,
-               `termination_time`, `always_pxe`, `description`, `features`, `locked`, `project_ssh_keys`,
-               `user_ssh_keys`, `userdata`, `customdata`, `ipxe_script_url`, `tags`. You can find each parameter
-               description in metal.Device docs.
+        :param pulumi.Input['SpotMarketRequestInstanceParametersArgs'] instance_parameters: Key/Value pairs of parameters for devices provisioned from this request. Valid keys are: `billing_cycle`, `plan`, `operating_system`, `hostname`, `termination_time`, `always_pxe`, `description`, `features`, `locked`, `project_ssh_keys`, `user_ssh_keys`, `userdata`, `customdata`, `ipxe_script_url`, `tags`. You can find each parameter description in metal.Device docs.
         :param pulumi.Input[float] max_bid_price: Maximum price user is willing to pay per hour per device.
         :param pulumi.Input[str] metro: Metro where devices should be created.
         :param pulumi.Input[str] project_id: Project ID.
-        :param pulumi.Input[bool] wait_for_devices: On resource creation wait until all desired devices are active.
-               On resource destruction wait until devices are removed.
+        :param pulumi.Input[bool] wait_for_devices: On resource creation wait until all desired devices are active. On resource destruction wait until devices are removed.
         """
         if devices_max is not None:
             pulumi.set(__self__, "devices_max", devices_max)
@@ -233,13 +216,11 @@ class _SpotMarketRequestState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
     def facilities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Facility IDs where devices should be created. Use metro instead; read the facility to metro migration guide
         """
-        warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
-        pulumi.log.warn("""facilities is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
-
         return pulumi.get(self, "facilities")
 
     @facilities.setter
@@ -250,11 +231,7 @@ class _SpotMarketRequestState:
     @pulumi.getter(name="instanceParameters")
     def instance_parameters(self) -> Optional[pulumi.Input['SpotMarketRequestInstanceParametersArgs']]:
         """
-        Key/Value pairs of parameters for devices provisioned from
-        this request. Valid keys are: `billing_cycle`, `plan`, `operating_system`, `hostname`,
-        `termination_time`, `always_pxe`, `description`, `features`, `locked`, `project_ssh_keys`,
-        `user_ssh_keys`, `userdata`, `customdata`, `ipxe_script_url`, `tags`. You can find each parameter
-        description in metal.Device docs.
+        Key/Value pairs of parameters for devices provisioned from this request. Valid keys are: `billing_cycle`, `plan`, `operating_system`, `hostname`, `termination_time`, `always_pxe`, `description`, `features`, `locked`, `project_ssh_keys`, `user_ssh_keys`, `userdata`, `customdata`, `ipxe_script_url`, `tags`. You can find each parameter description in metal.Device docs.
         """
         return pulumi.get(self, "instance_parameters")
 
@@ -302,8 +279,7 @@ class _SpotMarketRequestState:
     @pulumi.getter(name="waitForDevices")
     def wait_for_devices(self) -> Optional[pulumi.Input[bool]]:
         """
-        On resource creation wait until all desired devices are active.
-        On resource destruction wait until devices are removed.
+        On resource creation wait until all desired devices are active. On resource destruction wait until devices are removed.
         """
         return pulumi.get(self, "wait_for_devices")
 
@@ -327,9 +303,7 @@ class SpotMarketRequest(pulumi.CustomResource):
                  wait_for_devices: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        Provides an Equinix Metal Spot Market Request resource to allow you to
-        manage spot market requests on your account. For more detail on Spot Market,
-        see [this article in Equinix Metal documentation](https://metal.equinix.com/developers/docs/deploy/spot-market/).
+        Provides an Equinix Metal Spot Market Request resource to allow you to manage spot market requests on your account. For more detail on Spot Market, see [this article in Equinix Metal documentation](https://metal.equinix.com/developers/docs/deploy/spot-market/).
 
         ## Example Usage
         ```python
@@ -369,16 +343,11 @@ class SpotMarketRequest(pulumi.CustomResource):
         :param pulumi.Input[int] devices_max: Maximum number devices to be created.
         :param pulumi.Input[int] devices_min: Miniumum number devices to be created.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] facilities: Facility IDs where devices should be created. Use metro instead; read the facility to metro migration guide
-        :param pulumi.Input[pulumi.InputType['SpotMarketRequestInstanceParametersArgs']] instance_parameters: Key/Value pairs of parameters for devices provisioned from
-               this request. Valid keys are: `billing_cycle`, `plan`, `operating_system`, `hostname`,
-               `termination_time`, `always_pxe`, `description`, `features`, `locked`, `project_ssh_keys`,
-               `user_ssh_keys`, `userdata`, `customdata`, `ipxe_script_url`, `tags`. You can find each parameter
-               description in metal.Device docs.
+        :param pulumi.Input[pulumi.InputType['SpotMarketRequestInstanceParametersArgs']] instance_parameters: Key/Value pairs of parameters for devices provisioned from this request. Valid keys are: `billing_cycle`, `plan`, `operating_system`, `hostname`, `termination_time`, `always_pxe`, `description`, `features`, `locked`, `project_ssh_keys`, `user_ssh_keys`, `userdata`, `customdata`, `ipxe_script_url`, `tags`. You can find each parameter description in metal.Device docs.
         :param pulumi.Input[float] max_bid_price: Maximum price user is willing to pay per hour per device.
         :param pulumi.Input[str] metro: Metro where devices should be created.
         :param pulumi.Input[str] project_id: Project ID.
-        :param pulumi.Input[bool] wait_for_devices: On resource creation wait until all desired devices are active.
-               On resource destruction wait until devices are removed.
+        :param pulumi.Input[bool] wait_for_devices: On resource creation wait until all desired devices are active. On resource destruction wait until devices are removed.
         """
         ...
     @overload
@@ -387,9 +356,7 @@ class SpotMarketRequest(pulumi.CustomResource):
                  args: SpotMarketRequestArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides an Equinix Metal Spot Market Request resource to allow you to
-        manage spot market requests on your account. For more detail on Spot Market,
-        see [this article in Equinix Metal documentation](https://metal.equinix.com/developers/docs/deploy/spot-market/).
+        Provides an Equinix Metal Spot Market Request resource to allow you to manage spot market requests on your account. For more detail on Spot Market, see [this article in Equinix Metal documentation](https://metal.equinix.com/developers/docs/deploy/spot-market/).
 
         ## Example Usage
         ```python
@@ -502,16 +469,11 @@ class SpotMarketRequest(pulumi.CustomResource):
         :param pulumi.Input[int] devices_max: Maximum number devices to be created.
         :param pulumi.Input[int] devices_min: Miniumum number devices to be created.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] facilities: Facility IDs where devices should be created. Use metro instead; read the facility to metro migration guide
-        :param pulumi.Input[pulumi.InputType['SpotMarketRequestInstanceParametersArgs']] instance_parameters: Key/Value pairs of parameters for devices provisioned from
-               this request. Valid keys are: `billing_cycle`, `plan`, `operating_system`, `hostname`,
-               `termination_time`, `always_pxe`, `description`, `features`, `locked`, `project_ssh_keys`,
-               `user_ssh_keys`, `userdata`, `customdata`, `ipxe_script_url`, `tags`. You can find each parameter
-               description in metal.Device docs.
+        :param pulumi.Input[pulumi.InputType['SpotMarketRequestInstanceParametersArgs']] instance_parameters: Key/Value pairs of parameters for devices provisioned from this request. Valid keys are: `billing_cycle`, `plan`, `operating_system`, `hostname`, `termination_time`, `always_pxe`, `description`, `features`, `locked`, `project_ssh_keys`, `user_ssh_keys`, `userdata`, `customdata`, `ipxe_script_url`, `tags`. You can find each parameter description in metal.Device docs.
         :param pulumi.Input[float] max_bid_price: Maximum price user is willing to pay per hour per device.
         :param pulumi.Input[str] metro: Metro where devices should be created.
         :param pulumi.Input[str] project_id: Project ID.
-        :param pulumi.Input[bool] wait_for_devices: On resource creation wait until all desired devices are active.
-               On resource destruction wait until devices are removed.
+        :param pulumi.Input[bool] wait_for_devices: On resource creation wait until all desired devices are active. On resource destruction wait until devices are removed.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -545,24 +507,18 @@ class SpotMarketRequest(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
     def facilities(self) -> pulumi.Output[Sequence[str]]:
         """
         Facility IDs where devices should be created. Use metro instead; read the facility to metro migration guide
         """
-        warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
-        pulumi.log.warn("""facilities is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
-
         return pulumi.get(self, "facilities")
 
     @property
     @pulumi.getter(name="instanceParameters")
     def instance_parameters(self) -> pulumi.Output['outputs.SpotMarketRequestInstanceParameters']:
         """
-        Key/Value pairs of parameters for devices provisioned from
-        this request. Valid keys are: `billing_cycle`, `plan`, `operating_system`, `hostname`,
-        `termination_time`, `always_pxe`, `description`, `features`, `locked`, `project_ssh_keys`,
-        `user_ssh_keys`, `userdata`, `customdata`, `ipxe_script_url`, `tags`. You can find each parameter
-        description in metal.Device docs.
+        Key/Value pairs of parameters for devices provisioned from this request. Valid keys are: `billing_cycle`, `plan`, `operating_system`, `hostname`, `termination_time`, `always_pxe`, `description`, `features`, `locked`, `project_ssh_keys`, `user_ssh_keys`, `userdata`, `customdata`, `ipxe_script_url`, `tags`. You can find each parameter description in metal.Device docs.
         """
         return pulumi.get(self, "instance_parameters")
 
@@ -594,8 +550,7 @@ class SpotMarketRequest(pulumi.CustomResource):
     @pulumi.getter(name="waitForDevices")
     def wait_for_devices(self) -> pulumi.Output[Optional[bool]]:
         """
-        On resource creation wait until all desired devices are active.
-        On resource destruction wait until devices are removed.
+        On resource creation wait until all desired devices are active. On resource destruction wait until devices are removed.
         """
         return pulumi.get(self, "wait_for_devices")
 

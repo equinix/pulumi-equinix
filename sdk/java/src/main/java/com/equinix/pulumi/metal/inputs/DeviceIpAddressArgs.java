@@ -18,14 +18,14 @@ public final class DeviceIpAddressArgs extends com.pulumi.resources.ResourceArgs
     public static final DeviceIpAddressArgs Empty = new DeviceIpAddressArgs();
 
     /**
-     * CIDR suffix for IP address block to be assigned, i.e. amount of addresses.
+     * CIDR suffix for IP block assigned to this device
      * 
      */
     @Import(name="cidr")
     private @Nullable Output<Integer> cidr;
 
     /**
-     * @return CIDR suffix for IP address block to be assigned, i.e. amount of addresses.
+     * @return CIDR suffix for IP block assigned to this device
      * 
      */
     public Optional<Output<Integer>> cidr() {
@@ -33,28 +33,14 @@ public final class DeviceIpAddressArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * List of UUIDs of IP block reservations
-     * from which the public IPv4 address should be taken.
-     * 
-     * You can supply one `ip_address` block per IP address type. If you use the `ip_address` you must
-     * always pass a block for `private_ipv4`.
-     * 
-     * To learn more about using the reserved IP addresses for new devices, see the examples in the
-     * equinix.metal.ReservedIpBlock documentation.
+     * IDs of reservations to pick the blocks from
      * 
      */
     @Import(name="reservationIds")
     private @Nullable Output<List<String>> reservationIds;
 
     /**
-     * @return List of UUIDs of IP block reservations
-     * from which the public IPv4 address should be taken.
-     * 
-     * You can supply one `ip_address` block per IP address type. If you use the `ip_address` you must
-     * always pass a block for `private_ipv4`.
-     * 
-     * To learn more about using the reserved IP addresses for new devices, see the examples in the
-     * equinix.metal.ReservedIpBlock documentation.
+     * @return IDs of reservations to pick the blocks from
      * 
      */
     public Optional<Output<List<String>>> reservationIds() {
@@ -62,14 +48,14 @@ public final class DeviceIpAddressArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * One of `private_ipv4`, `public_ipv4`, `public_ipv6`.
+     * one of public*ipv4,private*ipv4,public_ipv6
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return One of `private_ipv4`, `public_ipv4`, `public_ipv6`.
+     * @return one of public*ipv4,private*ipv4,public_ipv6
      * 
      */
     public Output<String> type() {
@@ -103,7 +89,7 @@ public final class DeviceIpAddressArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param cidr CIDR suffix for IP address block to be assigned, i.e. amount of addresses.
+         * @param cidr CIDR suffix for IP block assigned to this device
          * 
          * @return builder
          * 
@@ -114,7 +100,7 @@ public final class DeviceIpAddressArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param cidr CIDR suffix for IP address block to be assigned, i.e. amount of addresses.
+         * @param cidr CIDR suffix for IP block assigned to this device
          * 
          * @return builder
          * 
@@ -124,14 +110,7 @@ public final class DeviceIpAddressArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param reservationIds List of UUIDs of IP block reservations
-         * from which the public IPv4 address should be taken.
-         * 
-         * You can supply one `ip_address` block per IP address type. If you use the `ip_address` you must
-         * always pass a block for `private_ipv4`.
-         * 
-         * To learn more about using the reserved IP addresses for new devices, see the examples in the
-         * equinix.metal.ReservedIpBlock documentation.
+         * @param reservationIds IDs of reservations to pick the blocks from
          * 
          * @return builder
          * 
@@ -142,14 +121,7 @@ public final class DeviceIpAddressArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param reservationIds List of UUIDs of IP block reservations
-         * from which the public IPv4 address should be taken.
-         * 
-         * You can supply one `ip_address` block per IP address type. If you use the `ip_address` you must
-         * always pass a block for `private_ipv4`.
-         * 
-         * To learn more about using the reserved IP addresses for new devices, see the examples in the
-         * equinix.metal.ReservedIpBlock documentation.
+         * @param reservationIds IDs of reservations to pick the blocks from
          * 
          * @return builder
          * 
@@ -159,14 +131,7 @@ public final class DeviceIpAddressArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param reservationIds List of UUIDs of IP block reservations
-         * from which the public IPv4 address should be taken.
-         * 
-         * You can supply one `ip_address` block per IP address type. If you use the `ip_address` you must
-         * always pass a block for `private_ipv4`.
-         * 
-         * To learn more about using the reserved IP addresses for new devices, see the examples in the
-         * equinix.metal.ReservedIpBlock documentation.
+         * @param reservationIds IDs of reservations to pick the blocks from
          * 
          * @return builder
          * 
@@ -176,7 +141,7 @@ public final class DeviceIpAddressArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param type One of `private_ipv4`, `public_ipv4`, `public_ipv6`.
+         * @param type one of public*ipv4,private*ipv4,public_ipv6
          * 
          * @return builder
          * 
@@ -187,7 +152,7 @@ public final class DeviceIpAddressArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param type One of `private_ipv4`, `public_ipv4`, `public_ipv6`.
+         * @param type one of public*ipv4,private*ipv4,public_ipv6
          * 
          * @return builder
          * 

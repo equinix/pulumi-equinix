@@ -13,9 +13,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides an Equinix Metal Spot Market Request resource to allow you to
-// manage spot market requests on your account. For more detail on Spot Market,
-// see [this article in Equinix Metal documentation](https://metal.equinix.com/developers/docs/deploy/spot-market/).
+// Provides an Equinix Metal Spot Market Request resource to allow you to manage spot market requests on your account. For more detail on Spot Market, see [this article in Equinix Metal documentation](https://metal.equinix.com/developers/docs/deploy/spot-market/).
 //
 // ## Example Usage
 // ```go
@@ -78,11 +76,7 @@ type SpotMarketRequest struct {
 	//
 	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	Facilities pulumi.StringArrayOutput `pulumi:"facilities"`
-	// Key/Value pairs of parameters for devices provisioned from
-	// this request. Valid keys are: `billingCycle`, `plan`, `operatingSystem`, `hostname`,
-	// `terminationTime`, `alwaysPxe`, `description`, `features`, `locked`, `projectSshKeys`,
-	// `userSshKeys`, `userdata`, `customdata`, `ipxeScriptUrl`, `tags`. You can find each parameter
-	// description in metal.Device docs.
+	// Key/Value pairs of parameters for devices provisioned from this request. Valid keys are: `billingCycle`, `plan`, `operatingSystem`, `hostname`, `terminationTime`, `alwaysPxe`, `description`, `features`, `locked`, `projectSshKeys`, `userSshKeys`, `userdata`, `customdata`, `ipxeScriptUrl`, `tags`. You can find each parameter description in metal.Device docs.
 	InstanceParameters SpotMarketRequestInstanceParametersOutput `pulumi:"instanceParameters"`
 	// Maximum price user is willing to pay per hour per device.
 	MaxBidPrice pulumi.Float64Output `pulumi:"maxBidPrice"`
@@ -90,8 +84,7 @@ type SpotMarketRequest struct {
 	Metro pulumi.StringPtrOutput `pulumi:"metro"`
 	// Project ID.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
-	// On resource creation wait until all desired devices are active.
-	// On resource destruction wait until devices are removed.
+	// On resource creation wait until all desired devices are active. On resource destruction wait until devices are removed.
 	WaitForDevices pulumi.BoolPtrOutput `pulumi:"waitForDevices"`
 }
 
@@ -148,11 +141,7 @@ type spotMarketRequestState struct {
 	//
 	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	Facilities []string `pulumi:"facilities"`
-	// Key/Value pairs of parameters for devices provisioned from
-	// this request. Valid keys are: `billingCycle`, `plan`, `operatingSystem`, `hostname`,
-	// `terminationTime`, `alwaysPxe`, `description`, `features`, `locked`, `projectSshKeys`,
-	// `userSshKeys`, `userdata`, `customdata`, `ipxeScriptUrl`, `tags`. You can find each parameter
-	// description in metal.Device docs.
+	// Key/Value pairs of parameters for devices provisioned from this request. Valid keys are: `billingCycle`, `plan`, `operatingSystem`, `hostname`, `terminationTime`, `alwaysPxe`, `description`, `features`, `locked`, `projectSshKeys`, `userSshKeys`, `userdata`, `customdata`, `ipxeScriptUrl`, `tags`. You can find each parameter description in metal.Device docs.
 	InstanceParameters *SpotMarketRequestInstanceParameters `pulumi:"instanceParameters"`
 	// Maximum price user is willing to pay per hour per device.
 	MaxBidPrice *float64 `pulumi:"maxBidPrice"`
@@ -160,8 +149,7 @@ type spotMarketRequestState struct {
 	Metro *string `pulumi:"metro"`
 	// Project ID.
 	ProjectId *string `pulumi:"projectId"`
-	// On resource creation wait until all desired devices are active.
-	// On resource destruction wait until devices are removed.
+	// On resource creation wait until all desired devices are active. On resource destruction wait until devices are removed.
 	WaitForDevices *bool `pulumi:"waitForDevices"`
 }
 
@@ -174,11 +162,7 @@ type SpotMarketRequestState struct {
 	//
 	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	Facilities pulumi.StringArrayInput
-	// Key/Value pairs of parameters for devices provisioned from
-	// this request. Valid keys are: `billingCycle`, `plan`, `operatingSystem`, `hostname`,
-	// `terminationTime`, `alwaysPxe`, `description`, `features`, `locked`, `projectSshKeys`,
-	// `userSshKeys`, `userdata`, `customdata`, `ipxeScriptUrl`, `tags`. You can find each parameter
-	// description in metal.Device docs.
+	// Key/Value pairs of parameters for devices provisioned from this request. Valid keys are: `billingCycle`, `plan`, `operatingSystem`, `hostname`, `terminationTime`, `alwaysPxe`, `description`, `features`, `locked`, `projectSshKeys`, `userSshKeys`, `userdata`, `customdata`, `ipxeScriptUrl`, `tags`. You can find each parameter description in metal.Device docs.
 	InstanceParameters SpotMarketRequestInstanceParametersPtrInput
 	// Maximum price user is willing to pay per hour per device.
 	MaxBidPrice pulumi.Float64PtrInput
@@ -186,8 +170,7 @@ type SpotMarketRequestState struct {
 	Metro pulumi.StringPtrInput
 	// Project ID.
 	ProjectId pulumi.StringPtrInput
-	// On resource creation wait until all desired devices are active.
-	// On resource destruction wait until devices are removed.
+	// On resource creation wait until all desired devices are active. On resource destruction wait until devices are removed.
 	WaitForDevices pulumi.BoolPtrInput
 }
 
@@ -204,11 +187,7 @@ type spotMarketRequestArgs struct {
 	//
 	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	Facilities []string `pulumi:"facilities"`
-	// Key/Value pairs of parameters for devices provisioned from
-	// this request. Valid keys are: `billingCycle`, `plan`, `operatingSystem`, `hostname`,
-	// `terminationTime`, `alwaysPxe`, `description`, `features`, `locked`, `projectSshKeys`,
-	// `userSshKeys`, `userdata`, `customdata`, `ipxeScriptUrl`, `tags`. You can find each parameter
-	// description in metal.Device docs.
+	// Key/Value pairs of parameters for devices provisioned from this request. Valid keys are: `billingCycle`, `plan`, `operatingSystem`, `hostname`, `terminationTime`, `alwaysPxe`, `description`, `features`, `locked`, `projectSshKeys`, `userSshKeys`, `userdata`, `customdata`, `ipxeScriptUrl`, `tags`. You can find each parameter description in metal.Device docs.
 	InstanceParameters SpotMarketRequestInstanceParameters `pulumi:"instanceParameters"`
 	// Maximum price user is willing to pay per hour per device.
 	MaxBidPrice float64 `pulumi:"maxBidPrice"`
@@ -216,8 +195,7 @@ type spotMarketRequestArgs struct {
 	Metro *string `pulumi:"metro"`
 	// Project ID.
 	ProjectId string `pulumi:"projectId"`
-	// On resource creation wait until all desired devices are active.
-	// On resource destruction wait until devices are removed.
+	// On resource creation wait until all desired devices are active. On resource destruction wait until devices are removed.
 	WaitForDevices *bool `pulumi:"waitForDevices"`
 }
 
@@ -231,11 +209,7 @@ type SpotMarketRequestArgs struct {
 	//
 	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	Facilities pulumi.StringArrayInput
-	// Key/Value pairs of parameters for devices provisioned from
-	// this request. Valid keys are: `billingCycle`, `plan`, `operatingSystem`, `hostname`,
-	// `terminationTime`, `alwaysPxe`, `description`, `features`, `locked`, `projectSshKeys`,
-	// `userSshKeys`, `userdata`, `customdata`, `ipxeScriptUrl`, `tags`. You can find each parameter
-	// description in metal.Device docs.
+	// Key/Value pairs of parameters for devices provisioned from this request. Valid keys are: `billingCycle`, `plan`, `operatingSystem`, `hostname`, `terminationTime`, `alwaysPxe`, `description`, `features`, `locked`, `projectSshKeys`, `userSshKeys`, `userdata`, `customdata`, `ipxeScriptUrl`, `tags`. You can find each parameter description in metal.Device docs.
 	InstanceParameters SpotMarketRequestInstanceParametersInput
 	// Maximum price user is willing to pay per hour per device.
 	MaxBidPrice pulumi.Float64Input
@@ -243,8 +217,7 @@ type SpotMarketRequestArgs struct {
 	Metro pulumi.StringPtrInput
 	// Project ID.
 	ProjectId pulumi.StringInput
-	// On resource creation wait until all desired devices are active.
-	// On resource destruction wait until devices are removed.
+	// On resource creation wait until all desired devices are active. On resource destruction wait until devices are removed.
 	WaitForDevices pulumi.BoolPtrInput
 }
 
@@ -352,11 +325,7 @@ func (o SpotMarketRequestOutput) Facilities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SpotMarketRequest) pulumi.StringArrayOutput { return v.Facilities }).(pulumi.StringArrayOutput)
 }
 
-// Key/Value pairs of parameters for devices provisioned from
-// this request. Valid keys are: `billingCycle`, `plan`, `operatingSystem`, `hostname`,
-// `terminationTime`, `alwaysPxe`, `description`, `features`, `locked`, `projectSshKeys`,
-// `userSshKeys`, `userdata`, `customdata`, `ipxeScriptUrl`, `tags`. You can find each parameter
-// description in metal.Device docs.
+// Key/Value pairs of parameters for devices provisioned from this request. Valid keys are: `billingCycle`, `plan`, `operatingSystem`, `hostname`, `terminationTime`, `alwaysPxe`, `description`, `features`, `locked`, `projectSshKeys`, `userSshKeys`, `userdata`, `customdata`, `ipxeScriptUrl`, `tags`. You can find each parameter description in metal.Device docs.
 func (o SpotMarketRequestOutput) InstanceParameters() SpotMarketRequestInstanceParametersOutput {
 	return o.ApplyT(func(v *SpotMarketRequest) SpotMarketRequestInstanceParametersOutput { return v.InstanceParameters }).(SpotMarketRequestInstanceParametersOutput)
 }
@@ -376,8 +345,7 @@ func (o SpotMarketRequestOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SpotMarketRequest) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
 }
 
-// On resource creation wait until all desired devices are active.
-// On resource destruction wait until devices are removed.
+// On resource creation wait until all desired devices are active. On resource destruction wait until devices are removed.
 func (o SpotMarketRequestOutput) WaitForDevices() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SpotMarketRequest) pulumi.BoolPtrOutput { return v.WaitForDevices }).(pulumi.BoolPtrOutput)
 }

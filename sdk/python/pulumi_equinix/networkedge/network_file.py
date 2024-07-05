@@ -25,15 +25,13 @@ class NetworkFileArgs:
                  self_managed: pulumi.Input[bool]):
         """
         The set of arguments for constructing a NetworkFile resource.
-        :param pulumi.Input[bool] byol: Boolean value that determines device licensing mode, i.e.,
-               `bring your own license` or `subscription`.
+        :param pulumi.Input[bool] byol: Boolean value that determines device licensing mode, i.e., `bring your own license` or `subscription`.
         :param pulumi.Input[str] content: Uploaded file content, expected to be a UTF-8 encoded string.
         :param pulumi.Input[str] device_type_code: Device type code
         :param pulumi.Input[str] file_name: File name.
         :param pulumi.Input[Union[str, '_root_enums.Metro']] metro_code: File upload location metro code. It should match the device location metro code.
         :param pulumi.Input[Union[str, 'FileType']] process_type: File process type (LICENSE or CLOUD_INIT).
-        :param pulumi.Input[bool] self_managed: Boolean value that determines device management mode, i.e.,
-               `self-managed` or `Equinix-managed`.
+        :param pulumi.Input[bool] self_managed: Boolean value that determines device management mode, i.e., `self-managed` or `Equinix-managed`.
         """
         pulumi.set(__self__, "byol", byol)
         pulumi.set(__self__, "content", content)
@@ -47,8 +45,7 @@ class NetworkFileArgs:
     @pulumi.getter
     def byol(self) -> pulumi.Input[bool]:
         """
-        Boolean value that determines device licensing mode, i.e.,
-        `bring your own license` or `subscription`.
+        Boolean value that determines device licensing mode, i.e., `bring your own license` or `subscription`.
         """
         return pulumi.get(self, "byol")
 
@@ -120,8 +117,7 @@ class NetworkFileArgs:
     @pulumi.getter(name="selfManaged")
     def self_managed(self) -> pulumi.Input[bool]:
         """
-        Boolean value that determines device management mode, i.e.,
-        `self-managed` or `Equinix-managed`.
+        Boolean value that determines device management mode, i.e., `self-managed` or `Equinix-managed`.
         """
         return pulumi.get(self, "self_managed")
 
@@ -144,15 +140,13 @@ class _NetworkFileState:
                  uuid: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering NetworkFile resources.
-        :param pulumi.Input[bool] byol: Boolean value that determines device licensing mode, i.e.,
-               `bring your own license` or `subscription`.
+        :param pulumi.Input[bool] byol: Boolean value that determines device licensing mode, i.e., `bring your own license` or `subscription`.
         :param pulumi.Input[str] content: Uploaded file content, expected to be a UTF-8 encoded string.
         :param pulumi.Input[str] device_type_code: Device type code
         :param pulumi.Input[str] file_name: File name.
         :param pulumi.Input[Union[str, '_root_enums.Metro']] metro_code: File upload location metro code. It should match the device location metro code.
         :param pulumi.Input[Union[str, 'FileType']] process_type: File process type (LICENSE or CLOUD_INIT).
-        :param pulumi.Input[bool] self_managed: Boolean value that determines device management mode, i.e.,
-               `self-managed` or `Equinix-managed`.
+        :param pulumi.Input[bool] self_managed: Boolean value that determines device management mode, i.e., `self-managed` or `Equinix-managed`.
         :param pulumi.Input[str] status: File upload status.
         :param pulumi.Input[str] uuid: Unique identifier of file resource.
         """
@@ -179,8 +173,7 @@ class _NetworkFileState:
     @pulumi.getter
     def byol(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean value that determines device licensing mode, i.e.,
-        `bring your own license` or `subscription`.
+        Boolean value that determines device licensing mode, i.e., `bring your own license` or `subscription`.
         """
         return pulumi.get(self, "byol")
 
@@ -252,8 +245,7 @@ class _NetworkFileState:
     @pulumi.getter(name="selfManaged")
     def self_managed(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean value that determines device management mode, i.e.,
-        `self-managed` or `Equinix-managed`.
+        Boolean value that determines device management mode, i.e., `self-managed` or `Equinix-managed`.
         """
         return pulumi.get(self, "self_managed")
 
@@ -335,15 +327,13 @@ class NetworkFile(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] byol: Boolean value that determines device licensing mode, i.e.,
-               `bring your own license` or `subscription`.
+        :param pulumi.Input[bool] byol: Boolean value that determines device licensing mode, i.e., `bring your own license` or `subscription`.
         :param pulumi.Input[str] content: Uploaded file content, expected to be a UTF-8 encoded string.
         :param pulumi.Input[str] device_type_code: Device type code
         :param pulumi.Input[str] file_name: File name.
         :param pulumi.Input[Union[str, '_root_enums.Metro']] metro_code: File upload location metro code. It should match the device location metro code.
         :param pulumi.Input[Union[str, 'FileType']] process_type: File process type (LICENSE or CLOUD_INIT).
-        :param pulumi.Input[bool] self_managed: Boolean value that determines device management mode, i.e.,
-               `self-managed` or `Equinix-managed`.
+        :param pulumi.Input[bool] self_managed: Boolean value that determines device management mode, i.e., `self-managed` or `Equinix-managed`.
         """
         ...
     @overload
@@ -467,15 +457,13 @@ class NetworkFile(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] byol: Boolean value that determines device licensing mode, i.e.,
-               `bring your own license` or `subscription`.
+        :param pulumi.Input[bool] byol: Boolean value that determines device licensing mode, i.e., `bring your own license` or `subscription`.
         :param pulumi.Input[str] content: Uploaded file content, expected to be a UTF-8 encoded string.
         :param pulumi.Input[str] device_type_code: Device type code
         :param pulumi.Input[str] file_name: File name.
         :param pulumi.Input[Union[str, '_root_enums.Metro']] metro_code: File upload location metro code. It should match the device location metro code.
         :param pulumi.Input[Union[str, 'FileType']] process_type: File process type (LICENSE or CLOUD_INIT).
-        :param pulumi.Input[bool] self_managed: Boolean value that determines device management mode, i.e.,
-               `self-managed` or `Equinix-managed`.
+        :param pulumi.Input[bool] self_managed: Boolean value that determines device management mode, i.e., `self-managed` or `Equinix-managed`.
         :param pulumi.Input[str] status: File upload status.
         :param pulumi.Input[str] uuid: Unique identifier of file resource.
         """
@@ -498,8 +486,7 @@ class NetworkFile(pulumi.CustomResource):
     @pulumi.getter
     def byol(self) -> pulumi.Output[bool]:
         """
-        Boolean value that determines device licensing mode, i.e.,
-        `bring your own license` or `subscription`.
+        Boolean value that determines device licensing mode, i.e., `bring your own license` or `subscription`.
         """
         return pulumi.get(self, "byol")
 
@@ -547,8 +534,7 @@ class NetworkFile(pulumi.CustomResource):
     @pulumi.getter(name="selfManaged")
     def self_managed(self) -> pulumi.Output[bool]:
         """
-        Boolean value that determines device management mode, i.e.,
-        `self-managed` or `Equinix-managed`.
+        Boolean value that determines device management mode, i.e., `self-managed` or `Equinix-managed`.
         """
         return pulumi.get(self, "self_managed")
 

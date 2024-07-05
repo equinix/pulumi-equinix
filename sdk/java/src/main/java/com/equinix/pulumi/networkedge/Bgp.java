@@ -17,8 +17,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Resource `equinix.networkedge.Bgp` allows creation and management of Equinix Network
- * Edge BGP peering configurations.
+ * Resource `equinix.networkedge.Bgp` allows creation and management of Equinix Network Edge BGP peering configurations.
  * 
  * ## Example Usage
  * ```java
@@ -83,32 +82,28 @@ public class Bgp extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.authenticationKey);
     }
     /**
-     * identifier of a connection established between.
-     * network device and remote service provider that will be used for peering.
+     * identifier of a connection established between. network device and remote service provider that will be used for peering.
      * 
      */
     @Export(name="connectionId", refs={String.class}, tree="[0]")
     private Output<String> connectionId;
 
     /**
-     * @return identifier of a connection established between.
-     * network device and remote service provider that will be used for peering.
+     * @return identifier of a connection established between. network device and remote service provider that will be used for peering.
      * 
      */
     public Output<String> connectionId() {
         return this.connectionId;
     }
     /**
-     * unique identifier of a network device that is a local peer in a given BGP peering
-     * configuration.
+     * unique identifier of a network device that is a local peer in a given BGP peering configuration.
      * 
      */
     @Export(name="deviceId", refs={String.class}, tree="[0]")
     private Output<String> deviceId;
 
     /**
-     * @return unique identifier of a network device that is a local peer in a given BGP peering
-     * configuration.
+     * @return unique identifier of a network device that is a local peer in a given BGP peering configuration.
      * 
      */
     public Output<String> deviceId() {
@@ -143,16 +138,14 @@ public class Bgp extends com.pulumi.resources.CustomResource {
         return this.localIpAddress;
     }
     /**
-     * BGP peering configuration provisioning status, one of `PROVISIONING`,
-     * `PENDING_UPDATE`, `PROVISIONED`, `FAILED`.
+     * BGP peering configuration provisioning status, one of `PROVISIONING`, `PENDING_UPDATE`, `PROVISIONED`, `FAILED`.
      * 
      */
     @Export(name="provisioningStatus", refs={String.class}, tree="[0]")
     private Output<String> provisioningStatus;
 
     /**
-     * @return BGP peering configuration provisioning status, one of `PROVISIONING`,
-     * `PENDING_UPDATE`, `PROVISIONED`, `FAILED`.
+     * @return BGP peering configuration provisioning status, one of `PROVISIONING`, `PENDING_UPDATE`, `PROVISIONED`, `FAILED`.
      * 
      */
     public Output<String> provisioningStatus() {
@@ -187,16 +180,14 @@ public class Bgp extends com.pulumi.resources.CustomResource {
         return this.remoteIpAddress;
     }
     /**
-     * BGP peer state, one of `Idle`, `Connect`, `Active`, `OpenSent`, `OpenConfirm`,
-     * `Established`.
+     * BGP peer state, one of `Idle`, `Connect`, `Active`, `OpenSent`, `OpenConfirm`, `Established`.
      * 
      */
     @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
-     * @return BGP peer state, one of `Idle`, `Connect`, `Active`, `OpenSent`, `OpenConfirm`,
-     * `Established`.
+     * @return BGP peer state, one of `Idle`, `Connect`, `Active`, `OpenSent`, `OpenConfirm`, `Established`.
      * 
      */
     public Output<String> state() {

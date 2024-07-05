@@ -14,23 +14,23 @@ namespace Pulumi.Equinix.Metal.Outputs
     public sealed class DeviceNetwork
     {
         /// <summary>
-        /// IPv4 or IPv6 address string.
+        /// IPv4 or IPv6 address string
         /// </summary>
         public readonly string? Address;
         /// <summary>
-        /// Bit length of the network mask of the address.
+        /// CIDR suffix for IP address block to be assigned, i.e. amount of addresses
         /// </summary>
         public readonly int? Cidr;
         /// <summary>
-        /// IP version. One of `4`, `6`.
+        /// IP version - "4" or "6"
         /// </summary>
         public readonly int? Family;
         /// <summary>
-        /// Address of router.
+        /// Address of router
         /// </summary>
         public readonly string? Gateway;
         /// <summary>
-        /// Whether the address is routable from the Internet.
+        /// Whether the address is routable from the Internet
         /// </summary>
         public readonly bool? Public;
 

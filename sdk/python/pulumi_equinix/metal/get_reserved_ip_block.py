@@ -102,10 +102,8 @@ class GetReservedIpBlockResult:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
     def facility(self) -> str:
-        warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
-        pulumi.log.warn("""facility is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
-
         return pulumi.get(self, "facility")
 
     @property
@@ -214,8 +212,7 @@ def get_reserved_ip_block(id: Optional[str] = None,
                           project_id: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetReservedIpBlockResult:
     """
-    Use this data source to find IP address blocks in Equinix Metal. You can use IP address or a block
-    ID for lookup.
+    Use this data source to find IP address blocks in Equinix Metal. You can use IP address or a block ID for lookup.
 
     > For backward compatibility, this data source can be also used for precreated (management) IP blocks.
 
@@ -263,8 +260,7 @@ def get_reserved_ip_block_output(id: Optional[pulumi.Input[Optional[str]]] = Non
                                  project_id: Optional[pulumi.Input[Optional[str]]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetReservedIpBlockResult]:
     """
-    Use this data source to find IP address blocks in Equinix Metal. You can use IP address or a block
-    ID for lookup.
+    Use this data source to find IP address blocks in Equinix Metal. You can use IP address or a block ID for lookup.
 
     > For backward compatibility, this data source can be also used for precreated (management) IP blocks.
 

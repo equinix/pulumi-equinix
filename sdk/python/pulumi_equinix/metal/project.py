@@ -26,13 +26,10 @@ class ProjectArgs:
         :param pulumi.Input[bool] backend_transfer: Enable or disable [Backend Transfer](https://metal.equinix.com/developers/docs/networking/backend-transfer/), default is `false`.
         :param pulumi.Input['ProjectBgpConfigArgs'] bgp_config: Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
                
-               > **NOTE:** Once you set the BGP config in a project, it can't be removed (due to a limitation in
-               the Equinix Metal API). It can be updated.
-        :param pulumi.Input[str] name: The name of the project.  The maximum length is 80 characters
-        :param pulumi.Input[str] organization_id: The UUID of organization under which you want to create the project. If you
-               leave it out, the project will be created under your the default organization of your account.
-        :param pulumi.Input[str] payment_method_id: The UUID of payment method for this project. The payment method and the
-               project need to belong to the same organization (passed with `organization_id`, or default).
+               > **NOTE:** Once you set the BGP config in a project, it can't be removed (due to a limitation in the Equinix Metal API). It can be updated.
+        :param pulumi.Input[str] name: The name of the project. The maximum length is 80 characters
+        :param pulumi.Input[str] organization_id: The UUID of organization under which you want to create the project. If you leave it out, the project will be created under your the default organization of your account.
+        :param pulumi.Input[str] payment_method_id: The UUID of payment method for this project. The payment method and the project need to belong to the same organization (passed with `organization_id`, or default).
         """
         if backend_transfer is not None:
             pulumi.set(__self__, "backend_transfer", backend_transfer)
@@ -63,8 +60,7 @@ class ProjectArgs:
         """
         Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
 
-        > **NOTE:** Once you set the BGP config in a project, it can't be removed (due to a limitation in
-        the Equinix Metal API). It can be updated.
+        > **NOTE:** Once you set the BGP config in a project, it can't be removed (due to a limitation in the Equinix Metal API). It can be updated.
         """
         return pulumi.get(self, "bgp_config")
 
@@ -76,7 +72,7 @@ class ProjectArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the project.  The maximum length is 80 characters
+        The name of the project. The maximum length is 80 characters
         """
         return pulumi.get(self, "name")
 
@@ -88,8 +84,7 @@ class ProjectArgs:
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The UUID of organization under which you want to create the project. If you
-        leave it out, the project will be created under your the default organization of your account.
+        The UUID of organization under which you want to create the project. If you leave it out, the project will be created under your the default organization of your account.
         """
         return pulumi.get(self, "organization_id")
 
@@ -101,8 +96,7 @@ class ProjectArgs:
     @pulumi.getter(name="paymentMethodId")
     def payment_method_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The UUID of payment method for this project. The payment method and the
-        project need to belong to the same organization (passed with `organization_id`, or default).
+        The UUID of payment method for this project. The payment method and the project need to belong to the same organization (passed with `organization_id`, or default).
         """
         return pulumi.get(self, "payment_method_id")
 
@@ -126,14 +120,11 @@ class _ProjectState:
         :param pulumi.Input[bool] backend_transfer: Enable or disable [Backend Transfer](https://metal.equinix.com/developers/docs/networking/backend-transfer/), default is `false`.
         :param pulumi.Input['ProjectBgpConfigArgs'] bgp_config: Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
                
-               > **NOTE:** Once you set the BGP config in a project, it can't be removed (due to a limitation in
-               the Equinix Metal API). It can be updated.
+               > **NOTE:** Once you set the BGP config in a project, it can't be removed (due to a limitation in the Equinix Metal API). It can be updated.
         :param pulumi.Input[str] created: The timestamp for when the project was created.
-        :param pulumi.Input[str] name: The name of the project.  The maximum length is 80 characters
-        :param pulumi.Input[str] organization_id: The UUID of organization under which you want to create the project. If you
-               leave it out, the project will be created under your the default organization of your account.
-        :param pulumi.Input[str] payment_method_id: The UUID of payment method for this project. The payment method and the
-               project need to belong to the same organization (passed with `organization_id`, or default).
+        :param pulumi.Input[str] name: The name of the project. The maximum length is 80 characters
+        :param pulumi.Input[str] organization_id: The UUID of organization under which you want to create the project. If you leave it out, the project will be created under your the default organization of your account.
+        :param pulumi.Input[str] payment_method_id: The UUID of payment method for this project. The payment method and the project need to belong to the same organization (passed with `organization_id`, or default).
         :param pulumi.Input[str] updated: The timestamp for the last time the project was updated.
         """
         if backend_transfer is not None:
@@ -169,8 +160,7 @@ class _ProjectState:
         """
         Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
 
-        > **NOTE:** Once you set the BGP config in a project, it can't be removed (due to a limitation in
-        the Equinix Metal API). It can be updated.
+        > **NOTE:** Once you set the BGP config in a project, it can't be removed (due to a limitation in the Equinix Metal API). It can be updated.
         """
         return pulumi.get(self, "bgp_config")
 
@@ -194,7 +184,7 @@ class _ProjectState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the project.  The maximum length is 80 characters
+        The name of the project. The maximum length is 80 characters
         """
         return pulumi.get(self, "name")
 
@@ -206,8 +196,7 @@ class _ProjectState:
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The UUID of organization under which you want to create the project. If you
-        leave it out, the project will be created under your the default organization of your account.
+        The UUID of organization under which you want to create the project. If you leave it out, the project will be created under your the default organization of your account.
         """
         return pulumi.get(self, "organization_id")
 
@@ -219,8 +208,7 @@ class _ProjectState:
     @pulumi.getter(name="paymentMethodId")
     def payment_method_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The UUID of payment method for this project. The payment method and the
-        project need to belong to the same organization (passed with `organization_id`, or default).
+        The UUID of payment method for this project. The payment method and the project need to belong to the same organization (passed with `organization_id`, or default).
         """
         return pulumi.get(self, "payment_method_id")
 
@@ -253,12 +241,9 @@ class Project(pulumi.CustomResource):
                  payment_method_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides an Equinix Metal project resource to allow you manage devices
-        in your projects.
+        Provides an Equinix Metal project resource to allow you manage devices in your projects.
 
-        > **NOTE:** Keep in mind that Equinix Metal invoicing is per project, so creating many
-        `metal.Project` resources will affect the rendered invoice. If you want to keep your
-        Equinix Metal bill simple and easy to review, please re-use your existing projects.
+        > **NOTE:** Keep in mind that Equinix Metal invoicing is per project, so creating many `metal.Project` resources will affect the rendered invoice. If you want to keep your Equinix Metal bill simple and easy to review, please re-use your existing projects.
 
         ## Example Usage
         ```python
@@ -289,13 +274,10 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[bool] backend_transfer: Enable or disable [Backend Transfer](https://metal.equinix.com/developers/docs/networking/backend-transfer/), default is `false`.
         :param pulumi.Input[pulumi.InputType['ProjectBgpConfigArgs']] bgp_config: Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
                
-               > **NOTE:** Once you set the BGP config in a project, it can't be removed (due to a limitation in
-               the Equinix Metal API). It can be updated.
-        :param pulumi.Input[str] name: The name of the project.  The maximum length is 80 characters
-        :param pulumi.Input[str] organization_id: The UUID of organization under which you want to create the project. If you
-               leave it out, the project will be created under your the default organization of your account.
-        :param pulumi.Input[str] payment_method_id: The UUID of payment method for this project. The payment method and the
-               project need to belong to the same organization (passed with `organization_id`, or default).
+               > **NOTE:** Once you set the BGP config in a project, it can't be removed (due to a limitation in the Equinix Metal API). It can be updated.
+        :param pulumi.Input[str] name: The name of the project. The maximum length is 80 characters
+        :param pulumi.Input[str] organization_id: The UUID of organization under which you want to create the project. If you leave it out, the project will be created under your the default organization of your account.
+        :param pulumi.Input[str] payment_method_id: The UUID of payment method for this project. The payment method and the project need to belong to the same organization (passed with `organization_id`, or default).
         """
         ...
     @overload
@@ -304,12 +286,9 @@ class Project(pulumi.CustomResource):
                  args: Optional[ProjectArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides an Equinix Metal project resource to allow you manage devices
-        in your projects.
+        Provides an Equinix Metal project resource to allow you manage devices in your projects.
 
-        > **NOTE:** Keep in mind that Equinix Metal invoicing is per project, so creating many
-        `metal.Project` resources will affect the rendered invoice. If you want to keep your
-        Equinix Metal bill simple and easy to review, please re-use your existing projects.
+        > **NOTE:** Keep in mind that Equinix Metal invoicing is per project, so creating many `metal.Project` resources will affect the rendered invoice. If you want to keep your Equinix Metal bill simple and easy to review, please re-use your existing projects.
 
         ## Example Usage
         ```python
@@ -398,14 +377,11 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[bool] backend_transfer: Enable or disable [Backend Transfer](https://metal.equinix.com/developers/docs/networking/backend-transfer/), default is `false`.
         :param pulumi.Input[pulumi.InputType['ProjectBgpConfigArgs']] bgp_config: Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
                
-               > **NOTE:** Once you set the BGP config in a project, it can't be removed (due to a limitation in
-               the Equinix Metal API). It can be updated.
+               > **NOTE:** Once you set the BGP config in a project, it can't be removed (due to a limitation in the Equinix Metal API). It can be updated.
         :param pulumi.Input[str] created: The timestamp for when the project was created.
-        :param pulumi.Input[str] name: The name of the project.  The maximum length is 80 characters
-        :param pulumi.Input[str] organization_id: The UUID of organization under which you want to create the project. If you
-               leave it out, the project will be created under your the default organization of your account.
-        :param pulumi.Input[str] payment_method_id: The UUID of payment method for this project. The payment method and the
-               project need to belong to the same organization (passed with `organization_id`, or default).
+        :param pulumi.Input[str] name: The name of the project. The maximum length is 80 characters
+        :param pulumi.Input[str] organization_id: The UUID of organization under which you want to create the project. If you leave it out, the project will be created under your the default organization of your account.
+        :param pulumi.Input[str] payment_method_id: The UUID of payment method for this project. The payment method and the project need to belong to the same organization (passed with `organization_id`, or default).
         :param pulumi.Input[str] updated: The timestamp for the last time the project was updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -435,8 +411,7 @@ class Project(pulumi.CustomResource):
         """
         Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
 
-        > **NOTE:** Once you set the BGP config in a project, it can't be removed (due to a limitation in
-        the Equinix Metal API). It can be updated.
+        > **NOTE:** Once you set the BGP config in a project, it can't be removed (due to a limitation in the Equinix Metal API). It can be updated.
         """
         return pulumi.get(self, "bgp_config")
 
@@ -452,7 +427,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the project.  The maximum length is 80 characters
+        The name of the project. The maximum length is 80 characters
         """
         return pulumi.get(self, "name")
 
@@ -460,8 +435,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> pulumi.Output[str]:
         """
-        The UUID of organization under which you want to create the project. If you
-        leave it out, the project will be created under your the default organization of your account.
+        The UUID of organization under which you want to create the project. If you leave it out, the project will be created under your the default organization of your account.
         """
         return pulumi.get(self, "organization_id")
 
@@ -469,8 +443,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="paymentMethodId")
     def payment_method_id(self) -> pulumi.Output[str]:
         """
-        The UUID of payment method for this project. The payment method and the
-        project need to belong to the same organization (passed with `organization_id`, or default).
+        The UUID of payment method for this project. The payment method and the project need to belong to the same organization (passed with `organization_id`, or default).
         """
         return pulumi.get(self, "payment_method_id")
 

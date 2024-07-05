@@ -14,7 +14,7 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type DeviceBehavior struct {
-	// List of attributes that are allowed to change without recreating the instance. Supported attributes: `customData`, `userData`"
+	// List of attributes that are allowed to change without recreating the instance. Supported attributes: `customData`, `userData`
 	AllowChanges []string `pulumi:"allowChanges"`
 }
 
@@ -30,7 +30,7 @@ type DeviceBehaviorInput interface {
 }
 
 type DeviceBehaviorArgs struct {
-	// List of attributes that are allowed to change without recreating the instance. Supported attributes: `customData`, `userData`"
+	// List of attributes that are allowed to change without recreating the instance. Supported attributes: `customData`, `userData`
 	AllowChanges pulumi.StringArrayInput `pulumi:"allowChanges"`
 }
 
@@ -111,7 +111,7 @@ func (o DeviceBehaviorOutput) ToDeviceBehaviorPtrOutputWithContext(ctx context.C
 	}).(DeviceBehaviorPtrOutput)
 }
 
-// List of attributes that are allowed to change without recreating the instance. Supported attributes: `customData`, `userData`"
+// List of attributes that are allowed to change without recreating the instance. Supported attributes: `customData`, `userData`
 func (o DeviceBehaviorOutput) AllowChanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DeviceBehavior) []string { return v.AllowChanges }).(pulumi.StringArrayOutput)
 }
@@ -140,7 +140,7 @@ func (o DeviceBehaviorPtrOutput) Elem() DeviceBehaviorOutput {
 	}).(DeviceBehaviorOutput)
 }
 
-// List of attributes that are allowed to change without recreating the instance. Supported attributes: `customData`, `userData`"
+// List of attributes that are allowed to change without recreating the instance. Supported attributes: `customData`, `userData`
 func (o DeviceBehaviorPtrOutput) AllowChanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DeviceBehavior) []string {
 		if v == nil {
@@ -151,18 +151,11 @@ func (o DeviceBehaviorPtrOutput) AllowChanges() pulumi.StringArrayOutput {
 }
 
 type DeviceIpAddress struct {
-	// CIDR suffix for IP address block to be assigned, i.e. amount of addresses.
+	// CIDR suffix for IP block assigned to this device
 	Cidr *int `pulumi:"cidr"`
-	// List of UUIDs of IP block reservations
-	// from which the public IPv4 address should be taken.
-	//
-	// You can supply one `ipAddress` block per IP address type. If you use the `ipAddress` you must
-	// always pass a block for `privateIpv4`.
-	//
-	// To learn more about using the reserved IP addresses for new devices, see the examples in the
-	// metal.ReservedIpBlock documentation.
+	// IDs of reservations to pick the blocks from
 	ReservationIds []string `pulumi:"reservationIds"`
-	// One of `privateIpv4`, `publicIpv4`, `publicIpv6`.
+	// one of public*ipv4,private*ipv4,public_ipv6
 	Type string `pulumi:"type"`
 }
 
@@ -178,18 +171,11 @@ type DeviceIpAddressInput interface {
 }
 
 type DeviceIpAddressArgs struct {
-	// CIDR suffix for IP address block to be assigned, i.e. amount of addresses.
+	// CIDR suffix for IP block assigned to this device
 	Cidr pulumi.IntPtrInput `pulumi:"cidr"`
-	// List of UUIDs of IP block reservations
-	// from which the public IPv4 address should be taken.
-	//
-	// You can supply one `ipAddress` block per IP address type. If you use the `ipAddress` you must
-	// always pass a block for `privateIpv4`.
-	//
-	// To learn more about using the reserved IP addresses for new devices, see the examples in the
-	// metal.ReservedIpBlock documentation.
+	// IDs of reservations to pick the blocks from
 	ReservationIds pulumi.StringArrayInput `pulumi:"reservationIds"`
-	// One of `privateIpv4`, `publicIpv4`, `publicIpv6`.
+	// one of public*ipv4,private*ipv4,public_ipv6
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -244,24 +230,17 @@ func (o DeviceIpAddressOutput) ToDeviceIpAddressOutputWithContext(ctx context.Co
 	return o
 }
 
-// CIDR suffix for IP address block to be assigned, i.e. amount of addresses.
+// CIDR suffix for IP block assigned to this device
 func (o DeviceIpAddressOutput) Cidr() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DeviceIpAddress) *int { return v.Cidr }).(pulumi.IntPtrOutput)
 }
 
-// List of UUIDs of IP block reservations
-// from which the public IPv4 address should be taken.
-//
-// You can supply one `ipAddress` block per IP address type. If you use the `ipAddress` you must
-// always pass a block for `privateIpv4`.
-//
-// To learn more about using the reserved IP addresses for new devices, see the examples in the
-// metal.ReservedIpBlock documentation.
+// IDs of reservations to pick the blocks from
 func (o DeviceIpAddressOutput) ReservationIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DeviceIpAddress) []string { return v.ReservationIds }).(pulumi.StringArrayOutput)
 }
 
-// One of `privateIpv4`, `publicIpv4`, `publicIpv6`.
+// one of public*ipv4,private*ipv4,public_ipv6
 func (o DeviceIpAddressOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v DeviceIpAddress) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -287,15 +266,15 @@ func (o DeviceIpAddressArrayOutput) Index(i pulumi.IntInput) DeviceIpAddressOutp
 }
 
 type DeviceNetwork struct {
-	// IPv4 or IPv6 address string.
+	// IPv4 or IPv6 address string
 	Address *string `pulumi:"address"`
-	// Bit length of the network mask of the address.
+	// CIDR suffix for IP address block to be assigned, i.e. amount of addresses
 	Cidr *int `pulumi:"cidr"`
-	// IP version. One of `4`, `6`.
+	// IP version - "4" or "6"
 	Family *int `pulumi:"family"`
-	// Address of router.
+	// Address of router
 	Gateway *string `pulumi:"gateway"`
-	// Whether the address is routable from the Internet.
+	// Whether the address is routable from the Internet
 	Public *bool `pulumi:"public"`
 }
 
@@ -311,15 +290,15 @@ type DeviceNetworkInput interface {
 }
 
 type DeviceNetworkArgs struct {
-	// IPv4 or IPv6 address string.
+	// IPv4 or IPv6 address string
 	Address pulumi.StringPtrInput `pulumi:"address"`
-	// Bit length of the network mask of the address.
+	// CIDR suffix for IP address block to be assigned, i.e. amount of addresses
 	Cidr pulumi.IntPtrInput `pulumi:"cidr"`
-	// IP version. One of `4`, `6`.
+	// IP version - "4" or "6"
 	Family pulumi.IntPtrInput `pulumi:"family"`
-	// Address of router.
+	// Address of router
 	Gateway pulumi.StringPtrInput `pulumi:"gateway"`
-	// Whether the address is routable from the Internet.
+	// Whether the address is routable from the Internet
 	Public pulumi.BoolPtrInput `pulumi:"public"`
 }
 
@@ -374,27 +353,27 @@ func (o DeviceNetworkOutput) ToDeviceNetworkOutputWithContext(ctx context.Contex
 	return o
 }
 
-// IPv4 or IPv6 address string.
+// IPv4 or IPv6 address string
 func (o DeviceNetworkOutput) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceNetwork) *string { return v.Address }).(pulumi.StringPtrOutput)
 }
 
-// Bit length of the network mask of the address.
+// CIDR suffix for IP address block to be assigned, i.e. amount of addresses
 func (o DeviceNetworkOutput) Cidr() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DeviceNetwork) *int { return v.Cidr }).(pulumi.IntPtrOutput)
 }
 
-// IP version. One of `4`, `6`.
+// IP version - "4" or "6"
 func (o DeviceNetworkOutput) Family() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DeviceNetwork) *int { return v.Family }).(pulumi.IntPtrOutput)
 }
 
-// Address of router.
+// Address of router
 func (o DeviceNetworkOutput) Gateway() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceNetwork) *string { return v.Gateway }).(pulumi.StringPtrOutput)
 }
 
-// Whether the address is routable from the Internet.
+// Whether the address is routable from the Internet
 func (o DeviceNetworkOutput) Public() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DeviceNetwork) *bool { return v.Public }).(pulumi.BoolPtrOutput)
 }
@@ -420,15 +399,15 @@ func (o DeviceNetworkArrayOutput) Index(i pulumi.IntInput) DeviceNetworkOutput {
 }
 
 type DevicePort struct {
-	// Whether this port is part of a bond in bonded network setup.
+	// Whether this port is part of a bond in bonded network setup
 	Bonded *bool `pulumi:"bonded"`
-	// ID of the port.
+	// The ID of the device
 	Id *string `pulumi:"id"`
-	// MAC address assigned to the port.
+	// MAC address assigned to the port
 	Mac *string `pulumi:"mac"`
-	// Name of the port (e.g. `eth0`, or `bond0`).
+	// Name of the port (e.g. eth0, or bond0)
 	Name *string `pulumi:"name"`
-	// Type of the port (e.g. `NetworkPort` or `NetworkBondPort`).
+	// One of [private_ipv4, public_ipv4, publicIpv6]
 	Type *string `pulumi:"type"`
 }
 
@@ -444,15 +423,15 @@ type DevicePortInput interface {
 }
 
 type DevicePortArgs struct {
-	// Whether this port is part of a bond in bonded network setup.
+	// Whether this port is part of a bond in bonded network setup
 	Bonded pulumi.BoolPtrInput `pulumi:"bonded"`
-	// ID of the port.
+	// The ID of the device
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// MAC address assigned to the port.
+	// MAC address assigned to the port
 	Mac pulumi.StringPtrInput `pulumi:"mac"`
-	// Name of the port (e.g. `eth0`, or `bond0`).
+	// Name of the port (e.g. eth0, or bond0)
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Type of the port (e.g. `NetworkPort` or `NetworkBondPort`).
+	// One of [private_ipv4, public_ipv4, publicIpv6]
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -507,27 +486,27 @@ func (o DevicePortOutput) ToDevicePortOutputWithContext(ctx context.Context) Dev
 	return o
 }
 
-// Whether this port is part of a bond in bonded network setup.
+// Whether this port is part of a bond in bonded network setup
 func (o DevicePortOutput) Bonded() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DevicePort) *bool { return v.Bonded }).(pulumi.BoolPtrOutput)
 }
 
-// ID of the port.
+// The ID of the device
 func (o DevicePortOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DevicePort) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// MAC address assigned to the port.
+// MAC address assigned to the port
 func (o DevicePortOutput) Mac() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DevicePort) *string { return v.Mac }).(pulumi.StringPtrOutput)
 }
 
-// Name of the port (e.g. `eth0`, or `bond0`).
+// Name of the port (e.g. eth0, or bond0)
 func (o DevicePortOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DevicePort) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Type of the port (e.g. `NetworkPort` or `NetworkBondPort`).
+// One of [private_ipv4, public_ipv4, publicIpv6]
 func (o DevicePortOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DevicePort) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -553,14 +532,11 @@ func (o DevicePortArrayOutput) Index(i pulumi.IntInput) DevicePortOutput {
 }
 
 type DeviceReinstall struct {
-	// Whether the OS disk should be filled with `00h` bytes before reinstall.
-	// Defaults to `false`.
+	// Whether the OS disk should be filled with `00h` bytes before reinstall
 	DeprovisionFast *bool `pulumi:"deprovisionFast"`
-	// Whether the provider should favour reinstall over destroy and create. Defaults to
-	// `false`.
+	// Whether the device should be reinstalled instead of destroyed
 	Enabled *bool `pulumi:"enabled"`
-	// Whether the non-OS disks should be kept or wiped during reinstall.
-	// Defaults to `false`.
+	// Whether the non-OS disks should be kept or wiped during reinstall
 	PreserveData *bool `pulumi:"preserveData"`
 }
 
@@ -576,14 +552,11 @@ type DeviceReinstallInput interface {
 }
 
 type DeviceReinstallArgs struct {
-	// Whether the OS disk should be filled with `00h` bytes before reinstall.
-	// Defaults to `false`.
+	// Whether the OS disk should be filled with `00h` bytes before reinstall
 	DeprovisionFast pulumi.BoolPtrInput `pulumi:"deprovisionFast"`
-	// Whether the provider should favour reinstall over destroy and create. Defaults to
-	// `false`.
+	// Whether the device should be reinstalled instead of destroyed
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// Whether the non-OS disks should be kept or wiped during reinstall.
-	// Defaults to `false`.
+	// Whether the non-OS disks should be kept or wiped during reinstall
 	PreserveData pulumi.BoolPtrInput `pulumi:"preserveData"`
 }
 
@@ -664,20 +637,17 @@ func (o DeviceReinstallOutput) ToDeviceReinstallPtrOutputWithContext(ctx context
 	}).(DeviceReinstallPtrOutput)
 }
 
-// Whether the OS disk should be filled with `00h` bytes before reinstall.
-// Defaults to `false`.
+// Whether the OS disk should be filled with `00h` bytes before reinstall
 func (o DeviceReinstallOutput) DeprovisionFast() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DeviceReinstall) *bool { return v.DeprovisionFast }).(pulumi.BoolPtrOutput)
 }
 
-// Whether the provider should favour reinstall over destroy and create. Defaults to
-// `false`.
+// Whether the device should be reinstalled instead of destroyed
 func (o DeviceReinstallOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DeviceReinstall) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// Whether the non-OS disks should be kept or wiped during reinstall.
-// Defaults to `false`.
+// Whether the non-OS disks should be kept or wiped during reinstall
 func (o DeviceReinstallOutput) PreserveData() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DeviceReinstall) *bool { return v.PreserveData }).(pulumi.BoolPtrOutput)
 }
@@ -706,8 +676,7 @@ func (o DeviceReinstallPtrOutput) Elem() DeviceReinstallOutput {
 	}).(DeviceReinstallOutput)
 }
 
-// Whether the OS disk should be filled with `00h` bytes before reinstall.
-// Defaults to `false`.
+// Whether the OS disk should be filled with `00h` bytes before reinstall
 func (o DeviceReinstallPtrOutput) DeprovisionFast() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DeviceReinstall) *bool {
 		if v == nil {
@@ -717,8 +686,7 @@ func (o DeviceReinstallPtrOutput) DeprovisionFast() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Whether the provider should favour reinstall over destroy and create. Defaults to
-// `false`.
+// Whether the device should be reinstalled instead of destroyed
 func (o DeviceReinstallPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DeviceReinstall) *bool {
 		if v == nil {
@@ -728,8 +696,7 @@ func (o DeviceReinstallPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Whether the non-OS disks should be kept or wiped during reinstall.
-// Defaults to `false`.
+// Whether the non-OS disks should be kept or wiped during reinstall
 func (o DeviceReinstallPtrOutput) PreserveData() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DeviceReinstall) *bool {
 		if v == nil {
@@ -882,11 +849,11 @@ type InterconnectionPort struct {
 	// Name of the connection resource
 	Name string `pulumi:"name"`
 	Role string `pulumi:"role"`
-	// Connection speed -  Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
+	// Connection speed - Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
 	Speed int `pulumi:"speed"`
 	// Status of the connection resource.
-	Status            string        `pulumi:"status"`
-	VirtualCircuitIds []interface{} `pulumi:"virtualCircuitIds"`
+	Status            string   `pulumi:"status"`
+	VirtualCircuitIds []string `pulumi:"virtualCircuitIds"`
 }
 
 // InterconnectionPortInput is an input type that accepts InterconnectionPortArgs and InterconnectionPortOutput values.
@@ -906,11 +873,11 @@ type InterconnectionPortArgs struct {
 	// Name of the connection resource
 	Name pulumi.StringInput `pulumi:"name"`
 	Role pulumi.StringInput `pulumi:"role"`
-	// Connection speed -  Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
+	// Connection speed - Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
 	Speed pulumi.IntInput `pulumi:"speed"`
 	// Status of the connection resource.
-	Status            pulumi.StringInput `pulumi:"status"`
-	VirtualCircuitIds pulumi.ArrayInput  `pulumi:"virtualCircuitIds"`
+	Status            pulumi.StringInput      `pulumi:"status"`
+	VirtualCircuitIds pulumi.StringArrayInput `pulumi:"virtualCircuitIds"`
 }
 
 func (InterconnectionPortArgs) ElementType() reflect.Type {
@@ -981,7 +948,7 @@ func (o InterconnectionPortOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v InterconnectionPort) string { return v.Role }).(pulumi.StringOutput)
 }
 
-// Connection speed -  Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
+// Connection speed - Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
 func (o InterconnectionPortOutput) Speed() pulumi.IntOutput {
 	return o.ApplyT(func(v InterconnectionPort) int { return v.Speed }).(pulumi.IntOutput)
 }
@@ -991,8 +958,8 @@ func (o InterconnectionPortOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v InterconnectionPort) string { return v.Status }).(pulumi.StringOutput)
 }
 
-func (o InterconnectionPortOutput) VirtualCircuitIds() pulumi.ArrayOutput {
-	return o.ApplyT(func(v InterconnectionPort) []interface{} { return v.VirtualCircuitIds }).(pulumi.ArrayOutput)
+func (o InterconnectionPortOutput) VirtualCircuitIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InterconnectionPort) []string { return v.VirtualCircuitIds }).(pulumi.StringArrayOutput)
 }
 
 type InterconnectionPortArrayOutput struct{ *pulumi.OutputState }
@@ -1358,8 +1325,7 @@ func (o OrganizationAddressPtrOutput) ZipCode() pulumi.StringPtrOutput {
 type ProjectBgpConfig struct {
 	// Autonomous System Number for local BGP deployment.
 	Asn int `pulumi:"asn"`
-	// `local` or `global`, the `local` is likely to be usable immediately, the
-	// `global` will need to be reviewed by Equinix Metal engineers.
+	// `local` or `global`, the `local` is likely to be usable immediately, the `global` will need to be reviewed by Equinix Metal engineers.
 	DeploymentType string `pulumi:"deploymentType"`
 	// The maximum number of route filters allowed per server.
 	MaxPrefix *int `pulumi:"maxPrefix"`
@@ -1383,8 +1349,7 @@ type ProjectBgpConfigInput interface {
 type ProjectBgpConfigArgs struct {
 	// Autonomous System Number for local BGP deployment.
 	Asn pulumi.IntInput `pulumi:"asn"`
-	// `local` or `global`, the `local` is likely to be usable immediately, the
-	// `global` will need to be reviewed by Equinix Metal engineers.
+	// `local` or `global`, the `local` is likely to be usable immediately, the `global` will need to be reviewed by Equinix Metal engineers.
 	DeploymentType pulumi.StringInput `pulumi:"deploymentType"`
 	// The maximum number of route filters allowed per server.
 	MaxPrefix pulumi.IntPtrInput `pulumi:"maxPrefix"`
@@ -1476,8 +1441,7 @@ func (o ProjectBgpConfigOutput) Asn() pulumi.IntOutput {
 	return o.ApplyT(func(v ProjectBgpConfig) int { return v.Asn }).(pulumi.IntOutput)
 }
 
-// `local` or `global`, the `local` is likely to be usable immediately, the
-// `global` will need to be reviewed by Equinix Metal engineers.
+// `local` or `global`, the `local` is likely to be usable immediately, the `global` will need to be reviewed by Equinix Metal engineers.
 func (o ProjectBgpConfigOutput) DeploymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v ProjectBgpConfig) string { return v.DeploymentType }).(pulumi.StringOutput)
 }
@@ -1531,8 +1495,7 @@ func (o ProjectBgpConfigPtrOutput) Asn() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// `local` or `global`, the `local` is likely to be usable immediately, the
-// `global` will need to be reviewed by Equinix Metal engineers.
+// `local` or `global`, the `local` is likely to be usable immediately, the `global` will need to be reviewed by Equinix Metal engineers.
 func (o ProjectBgpConfigPtrOutput) DeploymentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProjectBgpConfig) *string {
 		if v == nil {
@@ -2333,15 +2296,15 @@ func (o GetDeviceBgpNeighborsBgpNeighborRoutesOutArrayOutput) Index(i pulumi.Int
 }
 
 type GetDeviceNetwork struct {
-	// IPv4 or IPv6 address string.
+	// IPv4 or IPv6 address string
 	Address string `pulumi:"address"`
-	// Bit length of the network mask of the address.
+	// Bit length of the network mask of the address
 	Cidr int `pulumi:"cidr"`
-	// IP version. One of `4`, `6`.
+	// IP version - "4" or "6"
 	Family int `pulumi:"family"`
-	// Address of router.
+	// Address of router
 	Gateway string `pulumi:"gateway"`
-	// Whether the address is routable from the Internet.
+	// Whether the address is routable from the Internet
 	Public bool `pulumi:"public"`
 }
 
@@ -2357,15 +2320,15 @@ type GetDeviceNetworkInput interface {
 }
 
 type GetDeviceNetworkArgs struct {
-	// IPv4 or IPv6 address string.
+	// IPv4 or IPv6 address string
 	Address pulumi.StringInput `pulumi:"address"`
-	// Bit length of the network mask of the address.
+	// Bit length of the network mask of the address
 	Cidr pulumi.IntInput `pulumi:"cidr"`
-	// IP version. One of `4`, `6`.
+	// IP version - "4" or "6"
 	Family pulumi.IntInput `pulumi:"family"`
-	// Address of router.
+	// Address of router
 	Gateway pulumi.StringInput `pulumi:"gateway"`
-	// Whether the address is routable from the Internet.
+	// Whether the address is routable from the Internet
 	Public pulumi.BoolInput `pulumi:"public"`
 }
 
@@ -2420,27 +2383,27 @@ func (o GetDeviceNetworkOutput) ToGetDeviceNetworkOutputWithContext(ctx context.
 	return o
 }
 
-// IPv4 or IPv6 address string.
+// IPv4 or IPv6 address string
 func (o GetDeviceNetworkOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDeviceNetwork) string { return v.Address }).(pulumi.StringOutput)
 }
 
-// Bit length of the network mask of the address.
+// Bit length of the network mask of the address
 func (o GetDeviceNetworkOutput) Cidr() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDeviceNetwork) int { return v.Cidr }).(pulumi.IntOutput)
 }
 
-// IP version. One of `4`, `6`.
+// IP version - "4" or "6"
 func (o GetDeviceNetworkOutput) Family() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDeviceNetwork) int { return v.Family }).(pulumi.IntOutput)
 }
 
-// Address of router.
+// Address of router
 func (o GetDeviceNetworkOutput) Gateway() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDeviceNetwork) string { return v.Gateway }).(pulumi.StringOutput)
 }
 
-// Whether the address is routable from the Internet.
+// Whether the address is routable from the Internet
 func (o GetDeviceNetworkOutput) Public() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDeviceNetwork) bool { return v.Public }).(pulumi.BoolOutput)
 }
@@ -2466,15 +2429,15 @@ func (o GetDeviceNetworkArrayOutput) Index(i pulumi.IntInput) GetDeviceNetworkOu
 }
 
 type GetDevicePort struct {
-	// Whether this port is part of a bond in bonded network setup.
+	// Whether this port is part of a bond in bonded network setup
 	Bonded bool `pulumi:"bonded"`
-	// ID of the port.
+	// The ID of the device
 	Id string `pulumi:"id"`
-	// MAC address assigned to the port.
+	// MAC address assigned to the port
 	Mac string `pulumi:"mac"`
-	// Name of the port (e.g. `eth0`, or `bond0`).
+	// Name of the port (e.g. eth0, or bond0)
 	Name string `pulumi:"name"`
-	// Type of the port (e.g. `NetworkPort` or `NetworkBondPort`).
+	// Type of the port (e.g. NetworkPort or NetworkBondPort)
 	Type string `pulumi:"type"`
 }
 
@@ -2490,15 +2453,15 @@ type GetDevicePortInput interface {
 }
 
 type GetDevicePortArgs struct {
-	// Whether this port is part of a bond in bonded network setup.
+	// Whether this port is part of a bond in bonded network setup
 	Bonded pulumi.BoolInput `pulumi:"bonded"`
-	// ID of the port.
+	// The ID of the device
 	Id pulumi.StringInput `pulumi:"id"`
-	// MAC address assigned to the port.
+	// MAC address assigned to the port
 	Mac pulumi.StringInput `pulumi:"mac"`
-	// Name of the port (e.g. `eth0`, or `bond0`).
+	// Name of the port (e.g. eth0, or bond0)
 	Name pulumi.StringInput `pulumi:"name"`
-	// Type of the port (e.g. `NetworkPort` or `NetworkBondPort`).
+	// Type of the port (e.g. NetworkPort or NetworkBondPort)
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -2553,27 +2516,27 @@ func (o GetDevicePortOutput) ToGetDevicePortOutputWithContext(ctx context.Contex
 	return o
 }
 
-// Whether this port is part of a bond in bonded network setup.
+// Whether this port is part of a bond in bonded network setup
 func (o GetDevicePortOutput) Bonded() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDevicePort) bool { return v.Bonded }).(pulumi.BoolOutput)
 }
 
-// ID of the port.
+// The ID of the device
 func (o GetDevicePortOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDevicePort) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// MAC address assigned to the port.
+// MAC address assigned to the port
 func (o GetDevicePortOutput) Mac() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDevicePort) string { return v.Mac }).(pulumi.StringOutput)
 }
 
-// Name of the port (e.g. `eth0`, or `bond0`).
+// Name of the port (e.g. eth0, or bond0)
 func (o GetDevicePortOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDevicePort) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Type of the port (e.g. `NetworkPort` or `NetworkBondPort`).
+// Type of the port (e.g. NetworkPort or NetworkBondPort)
 func (o GetDevicePortOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDevicePort) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -3404,8 +3367,7 @@ func (o GetDevicesSortArrayOutput) Index(i pulumi.IntInput) GetDevicesSortOutput
 type GetFacilityCapacity struct {
 	// Device plan that must be available in selected location.
 	Plan string `pulumi:"plan"`
-	// Minimun number of devices that must be available in selected location.
-	// Default is `1`.
+	// Minimun number of devices that must be available in selected location. Default is `1`.
 	Quantity *int `pulumi:"quantity"`
 }
 
@@ -3423,8 +3385,7 @@ type GetFacilityCapacityInput interface {
 type GetFacilityCapacityArgs struct {
 	// Device plan that must be available in selected location.
 	Plan pulumi.StringInput `pulumi:"plan"`
-	// Minimun number of devices that must be available in selected location.
-	// Default is `1`.
+	// Minimun number of devices that must be available in selected location. Default is `1`.
 	Quantity pulumi.IntPtrInput `pulumi:"quantity"`
 }
 
@@ -3484,8 +3445,7 @@ func (o GetFacilityCapacityOutput) Plan() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFacilityCapacity) string { return v.Plan }).(pulumi.StringOutput)
 }
 
-// Minimun number of devices that must be available in selected location.
-// Default is `1`.
+// Minimun number of devices that must be available in selected location. Default is `1`.
 func (o GetFacilityCapacityOutput) Quantity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetFacilityCapacity) *int { return v.Quantity }).(pulumi.IntPtrOutput)
 }
@@ -3524,7 +3484,7 @@ type GetInterconnectionPort struct {
 	// Port status.
 	Status string `pulumi:"status"`
 	// List of IDs of virtual cicruits attached to this port.
-	VirtualCircuitIds []interface{} `pulumi:"virtualCircuitIds"`
+	VirtualCircuitIds []string `pulumi:"virtualCircuitIds"`
 }
 
 // GetInterconnectionPortInput is an input type that accepts GetInterconnectionPortArgs and GetInterconnectionPortOutput values.
@@ -3552,7 +3512,7 @@ type GetInterconnectionPortArgs struct {
 	// Port status.
 	Status pulumi.StringInput `pulumi:"status"`
 	// List of IDs of virtual cicruits attached to this port.
-	VirtualCircuitIds pulumi.ArrayInput `pulumi:"virtualCircuitIds"`
+	VirtualCircuitIds pulumi.StringArrayInput `pulumi:"virtualCircuitIds"`
 }
 
 func (GetInterconnectionPortArgs) ElementType() reflect.Type {
@@ -3637,8 +3597,8 @@ func (o GetInterconnectionPortOutput) Status() pulumi.StringOutput {
 }
 
 // List of IDs of virtual cicruits attached to this port.
-func (o GetInterconnectionPortOutput) VirtualCircuitIds() pulumi.ArrayOutput {
-	return o.ApplyT(func(v GetInterconnectionPort) []interface{} { return v.VirtualCircuitIds }).(pulumi.ArrayOutput)
+func (o GetInterconnectionPortOutput) VirtualCircuitIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInterconnectionPort) []string { return v.VirtualCircuitIds }).(pulumi.StringArrayOutput)
 }
 
 type GetInterconnectionPortArrayOutput struct{ *pulumi.OutputState }
@@ -3803,8 +3763,7 @@ func (o GetInterconnectionServiceTokenArrayOutput) Index(i pulumi.IntInput) GetI
 type GetMetroCapacity struct {
 	// Device plan that must be available in selected location.
 	Plan string `pulumi:"plan"`
-	// Minimum number of devices that must be available in selected location.
-	// Default is `1`.
+	// Minimum number of devices that must be available in selected location. Default is `1`.
 	Quantity *int `pulumi:"quantity"`
 }
 
@@ -3822,8 +3781,7 @@ type GetMetroCapacityInput interface {
 type GetMetroCapacityArgs struct {
 	// Device plan that must be available in selected location.
 	Plan pulumi.StringInput `pulumi:"plan"`
-	// Minimum number of devices that must be available in selected location.
-	// Default is `1`.
+	// Minimum number of devices that must be available in selected location. Default is `1`.
 	Quantity pulumi.IntPtrInput `pulumi:"quantity"`
 }
 
@@ -3883,8 +3841,7 @@ func (o GetMetroCapacityOutput) Plan() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMetroCapacity) string { return v.Plan }).(pulumi.StringOutput)
 }
 
-// Minimum number of devices that must be available in selected location.
-// Default is `1`.
+// Minimum number of devices that must be available in selected location. Default is `1`.
 func (o GetMetroCapacityOutput) Quantity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetMetroCapacity) *int { return v.Quantity }).(pulumi.IntPtrOutput)
 }

@@ -146,8 +146,7 @@ class SshUser(pulumi.CustomResource):
                  username: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Resource `networkedge.SshUser` allows creation and management of Equinix Network
-        Edge SSH users.
+        Resource `networkedge.SshUser` allows creation and management of Equinix Network Edge SSH users.
 
         ## Example Usage
         ```python
@@ -187,8 +186,7 @@ class SshUser(pulumi.CustomResource):
                  args: SshUserArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Resource `networkedge.SshUser` allows creation and management of Equinix Network
-        Edge SSH users.
+        Resource `networkedge.SshUser` allows creation and management of Equinix Network Edge SSH users.
 
         ## Example Usage
         ```python

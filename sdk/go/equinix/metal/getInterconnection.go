@@ -94,7 +94,7 @@ type LookupInterconnectionResult struct {
 	Status string `pulumi:"status"`
 	// String list of tags.
 	Tags []string `pulumi:"tags"`
-	// (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the equinixEcxL2Connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `serviceTokens` instead.
+	// (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `serviceTokens` instead.
 	//
 	// Deprecated: If your organization already has connection service tokens enabled, use `serviceTokens` instead
 	Token string `pulumi:"token"`
@@ -233,7 +233,7 @@ func (o LookupInterconnectionResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupInterconnectionResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the equinixEcxL2Connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `serviceTokens` instead.
+// (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `serviceTokens` instead.
 //
 // Deprecated: If your organization already has connection service tokens enabled, use `serviceTokens` instead
 func (o LookupInterconnectionResultOutput) Token() pulumi.StringOutput {

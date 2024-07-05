@@ -48,7 +48,7 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Facility where the connection will be created.   Use metro instead; read the facility to metro migration guide
+     * Facility where the connection will be created. Use metro instead; read the facility to metro migration guide
      * 
      * @deprecated
      * Use metro instead of facility. For more information, read the migration guide.
@@ -59,7 +59,7 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
     private @Nullable Output<String> facility;
 
     /**
-     * @return Facility where the connection will be created.   Use metro instead; read the facility to metro migration guide
+     * @return Facility where the connection will be created. Use metro instead; read the facility to metro migration guide
      * 
      * @deprecated
      * Use metro instead of facility. For more information, read the migration guide.
@@ -176,14 +176,14 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Connection speed -  Values must be in the format &#39;&lt;number&gt;Mbps&#39; or &#39;&lt;number&gt;Gpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
+     * Connection speed - Values must be in the format &#39;&lt;number&gt;Mbps&#39; or &#39;&lt;number&gt;Gpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
      * 
      */
     @Import(name="speed")
     private @Nullable Output<String> speed;
 
     /**
-     * @return Connection speed -  Values must be in the format &#39;&lt;number&gt;Mbps&#39; or &#39;&lt;number&gt;Gpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
+     * @return Connection speed - Values must be in the format &#39;&lt;number&gt;Mbps&#39; or &#39;&lt;number&gt;Gpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
      * 
      */
     public Optional<Output<String>> speed() {
@@ -333,7 +333,7 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param facility Facility where the connection will be created.   Use metro instead; read the facility to metro migration guide
+         * @param facility Facility where the connection will be created. Use metro instead; read the facility to metro migration guide
          * 
          * @return builder
          * 
@@ -348,7 +348,7 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param facility Facility where the connection will be created.   Use metro instead; read the facility to metro migration guide
+         * @param facility Facility where the connection will be created. Use metro instead; read the facility to metro migration guide
          * 
          * @return builder
          * 
@@ -509,7 +509,7 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param speed Connection speed -  Values must be in the format &#39;&lt;number&gt;Mbps&#39; or &#39;&lt;number&gt;Gpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
+         * @param speed Connection speed - Values must be in the format &#39;&lt;number&gt;Mbps&#39; or &#39;&lt;number&gt;Gpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
          * 
          * @return builder
          * 
@@ -520,7 +520,7 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param speed Connection speed -  Values must be in the format &#39;&lt;number&gt;Mbps&#39; or &#39;&lt;number&gt;Gpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
+         * @param speed Connection speed - Values must be in the format &#39;&lt;number&gt;Mbps&#39; or &#39;&lt;number&gt;Gpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
          * 
          * @return builder
          * 

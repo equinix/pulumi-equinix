@@ -11,8 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to retrieve a virtual circuit resource from
-// [Equinix Fabric - software-defined interconnections](https://metal.equinix.com/developers/docs/networking/fabric/)
+// Use this data source to retrieve a virtual circuit resource from [Equinix Fabric - software-defined interconnections](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/)
 //
 // See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
 func LookupVirtualCircuit(ctx *pulumi.Context, args *LookupVirtualCircuitArgs, opts ...pulumi.InvokeOption) (*LookupVirtualCircuitResult, error) {
@@ -59,18 +58,15 @@ type LookupVirtualCircuitResult struct {
 	Speed string `pulumi:"speed"`
 	// Status of the virtal circuit.
 	Status string `pulumi:"status"`
-	// A subnet from one of the IP
-	// blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.
-	// * For a /31 block, it will only have two IP addresses, which will be used for
-	//   the metalIp and customer_ip.
+	// A subnet from one of the IP blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.
+	// * For a /31 block, it will only have two IP addresses, which will be used for the metalIp and customer_ip.
 	// * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
 	Subnet string `pulumi:"subnet"`
 	// Tags for the Virtual Circuit resource.
 	Tags             []string `pulumi:"tags"`
 	VirtualCircuitId string   `pulumi:"virtualCircuitId"`
 	VlanId           string   `pulumi:"vlanId"`
-	// , `nniVlan`, `nniNvid` - VLAN parameters, see the
-	// [documentation for Equinix Fabric](https://metal.equinix.com/developers/docs/networking/fabric/).
+	// , `nniVlan`, `nniNvid` - VLAN parameters, see the [documentation for Equinix Fabric](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/).
 	Vnid int `pulumi:"vnid"`
 	// UUID of the VLAN to associate.
 	VrfId string `pulumi:"vrfId"`
@@ -182,11 +178,9 @@ func (o LookupVirtualCircuitResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualCircuitResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// A subnet from one of the IP
-// blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.
-//   - For a /31 block, it will only have two IP addresses, which will be used for
-//     the metalIp and customer_ip.
-//   - For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
+// A subnet from one of the IP blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.
+// * For a /31 block, it will only have two IP addresses, which will be used for the metalIp and customer_ip.
+// * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
 func (o LookupVirtualCircuitResultOutput) Subnet() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualCircuitResult) string { return v.Subnet }).(pulumi.StringOutput)
 }
@@ -204,8 +198,7 @@ func (o LookupVirtualCircuitResultOutput) VlanId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualCircuitResult) string { return v.VlanId }).(pulumi.StringOutput)
 }
 
-// , `nniVlan`, `nniNvid` - VLAN parameters, see the
-// [documentation for Equinix Fabric](https://metal.equinix.com/developers/docs/networking/fabric/).
+// , `nniVlan`, `nniNvid` - VLAN parameters, see the [documentation for Equinix Fabric](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/).
 func (o LookupVirtualCircuitResultOutput) Vnid() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupVirtualCircuitResult) int { return v.Vnid }).(pulumi.IntOutput)
 }

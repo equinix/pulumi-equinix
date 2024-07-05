@@ -13,22 +13,22 @@ namespace Pulumi.Equinix.Fabric.Inputs
     public sealed class GetServiceProfilesFilterInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Possible operator to use on filters = - equal
+        /// Operators to use on your filtered field with the values given. One of [=]
         /// </summary>
-        [Input("operator")]
-        public Input<string>? Operator { get; set; }
+        [Input("operator", required: true)]
+        public Input<string> Operator { get; set; } = null!;
 
         /// <summary>
-        /// Search Criteria for Service Profile - /name, /uuid, /state, /metros/code, /visibility, /type
+        /// Property to apply operator and values to. One of [/name /uuid /state /metros/code /visibility /type /project/projectId]
         /// </summary>
-        [Input("property")]
-        public Input<string>? Property { get; set; }
+        [Input("property", required: true)]
+        public Input<string> Property { get; set; } = null!;
 
-        [Input("values")]
+        [Input("values", required: true)]
         private InputList<string>? _values;
 
         /// <summary>
-        /// Values
+        /// The values that you want to apply the property+operator combination to in order to filter your data search
         /// </summary>
         public InputList<string> Values
         {

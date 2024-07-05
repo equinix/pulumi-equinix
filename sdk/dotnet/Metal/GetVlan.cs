@@ -12,8 +12,7 @@ namespace Pulumi.Equinix.Metal
     public static class GetVlan
     {
         /// <summary>
-        /// Provides an Equinix Metal Virtual Network datasource. VLANs data sources can be
-        /// searched by VLAN UUID, or project UUID and vxlan number.
+        /// Provides an Equinix Metal Virtual Network datasource. VLANs data sources can be searched by VLAN UUID, or project UUID and vxlan number.
         /// 
         /// ## Example Usage
         /// 
@@ -66,8 +65,7 @@ namespace Pulumi.Equinix.Metal
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVlanResult>("equinix:metal/getVlan:getVlan", args ?? new GetVlanArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Provides an Equinix Metal Virtual Network datasource. VLANs data sources can be
-        /// searched by VLAN UUID, or project UUID and vxlan number.
+        /// Provides an Equinix Metal Virtual Network datasource. VLANs data sources can be searched by VLAN UUID, or project UUID and vxlan number.
         /// 
         /// ## Example Usage
         /// 

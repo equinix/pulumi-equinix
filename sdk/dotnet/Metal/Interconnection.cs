@@ -68,7 +68,7 @@ namespace Pulumi.Equinix.Metal
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Facility where the connection will be created.   Use metro instead; read the facility to metro migration guide
+        /// Facility where the connection will be created. Use metro instead; read the facility to metro migration guide
         /// </summary>
         [Output("facility")]
         public Output<string> Facility { get; private set; } = null!;
@@ -98,9 +98,7 @@ namespace Pulumi.Equinix.Metal
         public Output<string> OrganizationId { get; private set; } = null!;
 
         /// <summary>
-        /// List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`). Schema of
-        /// port is described in documentation of the
-        /// equinix.metal.Interconnection datasource.
+        /// List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`). Schema of port is described in documentation of the equinix.metal.Interconnection datasource.
         /// </summary>
         [Output("ports")]
         public Output<ImmutableArray<Outputs.InterconnectionPort>> Ports { get; private set; } = null!;
@@ -124,13 +122,13 @@ namespace Pulumi.Equinix.Metal
         public Output<string?> ServiceTokenType { get; private set; } = null!;
 
         /// <summary>
-        /// List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the equinix_ecx_l2_connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). Scehma of service_token is described in documentation of the equinix.metal.Interconnection datasource.
+        /// List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the equinix.fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard). Scehma of service_token is described in documentation of the equinix.metal.Interconnection datasource.
         /// </summary>
         [Output("serviceTokens")]
         public Output<ImmutableArray<Outputs.InterconnectionServiceToken>> ServiceTokens { get; private set; } = null!;
 
         /// <summary>
-        /// Connection speed -  Values must be in the format '&lt;number&gt;Mbps' or '&lt;number&gt;Gpbs', for example '100Mbps' or '50Gbps'.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
+        /// Connection speed - Values must be in the format '&lt;number&gt;Mbps' or '&lt;number&gt;Gpbs', for example '100Mbps' or '50Gbps'. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
         /// </summary>
         [Output("speed")]
         public Output<string> Speed { get; private set; } = null!;
@@ -148,7 +146,7 @@ namespace Pulumi.Equinix.Metal
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the equinix_ecx_l2_connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `service_tokens` instead.
+        /// (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the equinix.fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `service_tokens` instead.
         /// </summary>
         [Output("token")]
         public Output<string> Token { get; private set; } = null!;
@@ -232,7 +230,7 @@ namespace Pulumi.Equinix.Metal
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Facility where the connection will be created.   Use metro instead; read the facility to metro migration guide
+        /// Facility where the connection will be created. Use metro instead; read the facility to metro migration guide
         /// </summary>
         [Input("facility")]
         public Input<string>? Facility { get; set; }
@@ -280,7 +278,7 @@ namespace Pulumi.Equinix.Metal
         public Input<string>? ServiceTokenType { get; set; }
 
         /// <summary>
-        /// Connection speed -  Values must be in the format '&lt;number&gt;Mbps' or '&lt;number&gt;Gpbs', for example '100Mbps' or '50Gbps'.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
+        /// Connection speed - Values must be in the format '&lt;number&gt;Mbps' or '&lt;number&gt;Gpbs', for example '100Mbps' or '50Gbps'. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
         /// </summary>
         [Input("speed")]
         public Input<string>? Speed { get; set; }
@@ -356,7 +354,7 @@ namespace Pulumi.Equinix.Metal
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Facility where the connection will be created.   Use metro instead; read the facility to metro migration guide
+        /// Facility where the connection will be created. Use metro instead; read the facility to metro migration guide
         /// </summary>
         [Input("facility")]
         public Input<string>? Facility { get; set; }
@@ -389,9 +387,7 @@ namespace Pulumi.Equinix.Metal
         private InputList<Inputs.InterconnectionPortGetArgs>? _ports;
 
         /// <summary>
-        /// List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`). Schema of
-        /// port is described in documentation of the
-        /// equinix.metal.Interconnection datasource.
+        /// List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`). Schema of port is described in documentation of the equinix.metal.Interconnection datasource.
         /// </summary>
         public InputList<Inputs.InterconnectionPortGetArgs> Ports
         {
@@ -421,7 +417,7 @@ namespace Pulumi.Equinix.Metal
         private InputList<Inputs.InterconnectionServiceTokenGetArgs>? _serviceTokens;
 
         /// <summary>
-        /// List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the equinix_ecx_l2_connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). Scehma of service_token is described in documentation of the equinix.metal.Interconnection datasource.
+        /// List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the equinix.fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard). Scehma of service_token is described in documentation of the equinix.metal.Interconnection datasource.
         /// </summary>
         public InputList<Inputs.InterconnectionServiceTokenGetArgs> ServiceTokens
         {
@@ -430,7 +426,7 @@ namespace Pulumi.Equinix.Metal
         }
 
         /// <summary>
-        /// Connection speed -  Values must be in the format '&lt;number&gt;Mbps' or '&lt;number&gt;Gpbs', for example '100Mbps' or '50Gbps'.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
+        /// Connection speed - Values must be in the format '&lt;number&gt;Mbps' or '&lt;number&gt;Gpbs', for example '100Mbps' or '50Gbps'. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
         /// </summary>
         [Input("speed")]
         public Input<string>? Speed { get; set; }
@@ -454,7 +450,7 @@ namespace Pulumi.Equinix.Metal
         }
 
         /// <summary>
-        /// (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the equinix_ecx_l2_connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `service_tokens` instead.
+        /// (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the equinix.fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `service_tokens` instead.
         /// </summary>
         [Input("token")]
         public Input<string>? Token { get; set; }

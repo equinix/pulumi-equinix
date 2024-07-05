@@ -76,16 +76,14 @@ public final class SshKeyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The public key. If this is a file, it
-     * can be read using the file interpolation function
+     * The public key. If this is a file, it can be read using the file interpolation function
      * 
      */
     @Import(name="publicKey")
     private @Nullable Output<String> publicKey;
 
     /**
-     * @return The public key. If this is a file, it
-     * can be read using the file interpolation function
+     * @return The public key. If this is a file, it can be read using the file interpolation function
      * 
      */
     public Optional<Output<String>> publicKey() {
@@ -221,8 +219,7 @@ public final class SshKeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param publicKey The public key. If this is a file, it
-         * can be read using the file interpolation function
+         * @param publicKey The public key. If this is a file, it can be read using the file interpolation function
          * 
          * @return builder
          * 
@@ -233,8 +230,7 @@ public final class SshKeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param publicKey The public key. If this is a file, it
-         * can be read using the file interpolation function
+         * @param publicKey The public key. If this is a file, it can be read using the file interpolation function
          * 
          * @return builder
          * 

@@ -12,62 +12,62 @@ import java.util.Objects;
 @CustomType
 public final class GetDeviceNetwork {
     /**
-     * @return IPv4 or IPv6 address string.
+     * @return IPv4 or IPv6 address string
      * 
      */
     private String address;
     /**
-     * @return Bit length of the network mask of the address.
+     * @return Bit length of the network mask of the address
      * 
      */
     private Integer cidr;
     /**
-     * @return IP version. One of `4`, `6`.
+     * @return IP version - &#34;4&#34; or &#34;6&#34;
      * 
      */
     private Integer family;
     /**
-     * @return Address of router.
+     * @return Address of router
      * 
      */
     private String gateway;
     /**
-     * @return Whether the address is routable from the Internet.
+     * @return Whether the address is routable from the Internet
      * 
      */
     private Boolean public_;
 
     private GetDeviceNetwork() {}
     /**
-     * @return IPv4 or IPv6 address string.
+     * @return IPv4 or IPv6 address string
      * 
      */
     public String address() {
         return this.address;
     }
     /**
-     * @return Bit length of the network mask of the address.
+     * @return Bit length of the network mask of the address
      * 
      */
     public Integer cidr() {
         return this.cidr;
     }
     /**
-     * @return IP version. One of `4`, `6`.
+     * @return IP version - &#34;4&#34; or &#34;6&#34;
      * 
      */
     public Integer family() {
         return this.family;
     }
     /**
-     * @return Address of router.
+     * @return Address of router
      * 
      */
     public String gateway() {
         return this.gateway;
     }
     /**
-     * @return Whether the address is routable from the Internet.
+     * @return Whether the address is routable from the Internet
      * 
      */
     public Boolean public_() {

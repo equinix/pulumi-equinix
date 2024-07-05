@@ -18,8 +18,7 @@ public final class ProjectBgpConfig {
      */
     private Integer asn;
     /**
-     * @return `local` or `global`, the `local` is likely to be usable immediately, the
-     * `global` will need to be reviewed by Equinix Metal engineers.
+     * @return `local` or `global`, the `local` is likely to be usable immediately, the `global` will need to be reviewed by Equinix Metal engineers.
      * 
      */
     private String deploymentType;
@@ -48,8 +47,7 @@ public final class ProjectBgpConfig {
         return this.asn;
     }
     /**
-     * @return `local` or `global`, the `local` is likely to be usable immediately, the
-     * `global` will need to be reviewed by Equinix Metal engineers.
+     * @return `local` or `global`, the `local` is likely to be usable immediately, the `global` will need to be reviewed by Equinix Metal engineers.
      * 
      */
     public String deploymentType() {

@@ -18,13 +18,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a resource to attach elastic IP subnets to devices.
  * 
- * To attach an IP subnet from a reserved block to a provisioned device, you must derive a subnet CIDR
- * belonging to one of your reserved blocks in the same project and metro as the target device.
+ * To attach an IP subnet from a reserved block to a provisioned device, you must derive a subnet CIDR belonging to one of your reserved blocks in the same project and metro as the target device.
  * 
- * For example, you have reserved IPv4 address block `147.229.10.152/30`, you can choose to assign
- * either the whole block as one subnet to a device; or 2 subnets with CIDRs `147.229.10.152/31` and
- * `147.229.10.154/31`; or 4 subnets with mask prefix length `32`. More about the elastic IP subnets
- * is [here](https://metal.equinix.com/developers/docs/networking/elastic-ips/).
+ * For example, you have reserved IPv4 address block `147.229.10.152/30`, you can choose to assign either the whole block as one subnet to a device; or 2 subnets with CIDRs `147.229.10.152/31` and `147.229.10.154/31`; or 4 subnets with mask prefix length `32`. More about the elastic IP subnets is [here](https://metal.equinix.com/developers/docs/networking/elastic-ips/).
  * 
  * Device and reserved block must be in the same metro.
  * 
@@ -95,16 +91,14 @@ public class IpAttachment extends com.pulumi.resources.CustomResource {
         return this.cidr;
     }
     /**
-     * CIDR notation of subnet from block reserved in the same project
-     * and metro as the device.
+     * CIDR notation of subnet from block reserved in the same project and metro as the device.
      * 
      */
     @Export(name="cidrNotation", refs={String.class}, tree="[0]")
     private Output<String> cidrNotation;
 
     /**
-     * @return CIDR notation of subnet from block reserved in the same project
-     * and metro as the device.
+     * @return CIDR notation of subnet from block reserved in the same project and metro as the device.
      * 
      */
     public Output<String> cidrNotation() {

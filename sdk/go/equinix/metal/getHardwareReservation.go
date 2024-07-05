@@ -78,16 +78,13 @@ type GetHardwareReservationResult struct {
 	Plan string `pulumi:"plan"`
 	// UUID of project this reservation is scoped to.
 	ProjectId string `pulumi:"projectId"`
-	// Flag indicating whether the reserved server is provisionable or not. Spare
-	// devices can't be provisioned unless they are activated first.
+	// Flag indicating whether the reserved server is provisionable or not. Spare devices can't be provisioned unless they are activated first.
 	Provisionable bool `pulumi:"provisionable"`
 	// Reservation short ID.
 	ShortId string `pulumi:"shortId"`
-	// Flag indicating whether the Hardware Reservation is a spare. Spare Hardware
-	// Reservations are used when a Hardware Reservations requires service from Metal Equinix.
+	// Flag indicating whether the Hardware Reservation is a spare. Spare Hardware Reservations are used when a Hardware Reservations requires service from Metal Equinix.
 	Spare bool `pulumi:"spare"`
-	// Switch short ID, can be used to determine if two devices are connected to the
-	// same switch.
+	// Switch short ID, can be used to determine if two devices are connected to the same switch.
 	SwitchUuid string `pulumi:"switchUuid"`
 }
 
@@ -158,8 +155,7 @@ func (o GetHardwareReservationResultOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHardwareReservationResult) string { return v.ProjectId }).(pulumi.StringOutput)
 }
 
-// Flag indicating whether the reserved server is provisionable or not. Spare
-// devices can't be provisioned unless they are activated first.
+// Flag indicating whether the reserved server is provisionable or not. Spare devices can't be provisioned unless they are activated first.
 func (o GetHardwareReservationResultOutput) Provisionable() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetHardwareReservationResult) bool { return v.Provisionable }).(pulumi.BoolOutput)
 }
@@ -169,14 +165,12 @@ func (o GetHardwareReservationResultOutput) ShortId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHardwareReservationResult) string { return v.ShortId }).(pulumi.StringOutput)
 }
 
-// Flag indicating whether the Hardware Reservation is a spare. Spare Hardware
-// Reservations are used when a Hardware Reservations requires service from Metal Equinix.
+// Flag indicating whether the Hardware Reservation is a spare. Spare Hardware Reservations are used when a Hardware Reservations requires service from Metal Equinix.
 func (o GetHardwareReservationResultOutput) Spare() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetHardwareReservationResult) bool { return v.Spare }).(pulumi.BoolOutput)
 }
 
-// Switch short ID, can be used to determine if two devices are connected to the
-// same switch.
+// Switch short ID, can be used to determine if two devices are connected to the same switch.
 func (o GetHardwareReservationResultOutput) SwitchUuid() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHardwareReservationResult) string { return v.SwitchUuid }).(pulumi.StringOutput)
 }

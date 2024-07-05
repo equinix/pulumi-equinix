@@ -5,8 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Resource `equinix.networkedge.Bgp` allows creation and management of Equinix Network
- * Edge BGP peering configurations.
+ * Resource `equinix.networkedge.Bgp` allows creation and management of Equinix Network Edge BGP peering configurations.
  *
  * ## Example Usage
  *
@@ -67,13 +66,11 @@ export class Bgp extends pulumi.CustomResource {
      */
     public readonly authenticationKey!: pulumi.Output<string | undefined>;
     /**
-     * identifier of a connection established between.
-     * network device and remote service provider that will be used for peering.
+     * identifier of a connection established between. network device and remote service provider that will be used for peering.
      */
     public readonly connectionId!: pulumi.Output<string>;
     /**
-     * unique identifier of a network device that is a local peer in a given BGP peering
-     * configuration.
+     * unique identifier of a network device that is a local peer in a given BGP peering configuration.
      */
     public /*out*/ readonly deviceId!: pulumi.Output<string>;
     /**
@@ -85,8 +82,7 @@ export class Bgp extends pulumi.CustomResource {
      */
     public readonly localIpAddress!: pulumi.Output<string>;
     /**
-     * BGP peering configuration provisioning status, one of `PROVISIONING`,
-     * `PENDING_UPDATE`, `PROVISIONED`, `FAILED`.
+     * BGP peering configuration provisioning status, one of `PROVISIONING`, `PENDING_UPDATE`, `PROVISIONED`, `FAILED`.
      */
     public /*out*/ readonly provisioningStatus!: pulumi.Output<string>;
     /**
@@ -98,8 +94,7 @@ export class Bgp extends pulumi.CustomResource {
      */
     public readonly remoteIpAddress!: pulumi.Output<string>;
     /**
-     * BGP peer state, one of `Idle`, `Connect`, `Active`, `OpenSent`, `OpenConfirm`,
-     * `Established`.
+     * BGP peer state, one of `Idle`, `Connect`, `Active`, `OpenSent`, `OpenConfirm`, `Established`.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
@@ -174,13 +169,11 @@ export interface BgpState {
      */
     authenticationKey?: pulumi.Input<string>;
     /**
-     * identifier of a connection established between.
-     * network device and remote service provider that will be used for peering.
+     * identifier of a connection established between. network device and remote service provider that will be used for peering.
      */
     connectionId?: pulumi.Input<string>;
     /**
-     * unique identifier of a network device that is a local peer in a given BGP peering
-     * configuration.
+     * unique identifier of a network device that is a local peer in a given BGP peering configuration.
      */
     deviceId?: pulumi.Input<string>;
     /**
@@ -192,8 +185,7 @@ export interface BgpState {
      */
     localIpAddress?: pulumi.Input<string>;
     /**
-     * BGP peering configuration provisioning status, one of `PROVISIONING`,
-     * `PENDING_UPDATE`, `PROVISIONED`, `FAILED`.
+     * BGP peering configuration provisioning status, one of `PROVISIONING`, `PENDING_UPDATE`, `PROVISIONED`, `FAILED`.
      */
     provisioningStatus?: pulumi.Input<string>;
     /**
@@ -205,8 +197,7 @@ export interface BgpState {
      */
     remoteIpAddress?: pulumi.Input<string>;
     /**
-     * BGP peer state, one of `Idle`, `Connect`, `Active`, `OpenSent`, `OpenConfirm`,
-     * `Established`.
+     * BGP peer state, one of `Idle`, `Connect`, `Active`, `OpenSent`, `OpenConfirm`, `Established`.
      */
     state?: pulumi.Input<string>;
     /**
@@ -224,8 +215,7 @@ export interface BgpArgs {
      */
     authenticationKey?: pulumi.Input<string>;
     /**
-     * identifier of a connection established between.
-     * network device and remote service provider that will be used for peering.
+     * identifier of a connection established between. network device and remote service provider that will be used for peering.
      */
     connectionId: pulumi.Input<string>;
     /**

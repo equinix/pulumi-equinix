@@ -17,14 +17,14 @@ public final class DeviceBehaviorArgs extends com.pulumi.resources.ResourceArgs 
     public static final DeviceBehaviorArgs Empty = new DeviceBehaviorArgs();
 
     /**
-     * List of attributes that are allowed to change without recreating the instance. Supported attributes: `custom_data`, `user_data`&#34;
+     * List of attributes that are allowed to change without recreating the instance. Supported attributes: `custom_data`, `user_data`
      * 
      */
     @Import(name="allowChanges")
     private @Nullable Output<List<String>> allowChanges;
 
     /**
-     * @return List of attributes that are allowed to change without recreating the instance. Supported attributes: `custom_data`, `user_data`&#34;
+     * @return List of attributes that are allowed to change without recreating the instance. Supported attributes: `custom_data`, `user_data`
      * 
      */
     public Optional<Output<List<String>>> allowChanges() {
@@ -56,7 +56,7 @@ public final class DeviceBehaviorArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param allowChanges List of attributes that are allowed to change without recreating the instance. Supported attributes: `custom_data`, `user_data`&#34;
+         * @param allowChanges List of attributes that are allowed to change without recreating the instance. Supported attributes: `custom_data`, `user_data`
          * 
          * @return builder
          * 
@@ -67,7 +67,7 @@ public final class DeviceBehaviorArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param allowChanges List of attributes that are allowed to change without recreating the instance. Supported attributes: `custom_data`, `user_data`&#34;
+         * @param allowChanges List of attributes that are allowed to change without recreating the instance. Supported attributes: `custom_data`, `user_data`
          * 
          * @return builder
          * 
@@ -77,7 +77,7 @@ public final class DeviceBehaviorArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param allowChanges List of attributes that are allowed to change without recreating the instance. Supported attributes: `custom_data`, `user_data`&#34;
+         * @param allowChanges List of attributes that are allowed to change without recreating the instance. Supported attributes: `custom_data`, `user_data`
          * 
          * @return builder
          * 

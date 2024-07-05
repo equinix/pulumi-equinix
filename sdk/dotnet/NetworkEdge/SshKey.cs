@@ -52,15 +52,13 @@ namespace Pulumi.Equinix.NetworkEdge
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Unique Identifier for the project resource where the SSH key is scoped to.If you
-        /// leave it out, the ssh key will be created under the default project id of your organization.
+        /// Unique Identifier for the project resource where the SSH key is scoped to.If you leave it out, the ssh key will be created under the default project id of your organization.
         /// </summary>
         [Output("projectId")]
         public Output<string> ProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// The SSH public key. If this is a file, it can be read using the file
-        /// interpolation function.
+        /// The SSH public key. If this is a file, it can be read using the file interpolation function.
         /// </summary>
         [Output("publicKey")]
         public Output<string> PublicKey { get; private set; } = null!;
@@ -131,15 +129,13 @@ namespace Pulumi.Equinix.NetworkEdge
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Unique Identifier for the project resource where the SSH key is scoped to.If you
-        /// leave it out, the ssh key will be created under the default project id of your organization.
+        /// Unique Identifier for the project resource where the SSH key is scoped to.If you leave it out, the ssh key will be created under the default project id of your organization.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// The SSH public key. If this is a file, it can be read using the file
-        /// interpolation function.
+        /// The SSH public key. If this is a file, it can be read using the file interpolation function.
         /// </summary>
         [Input("publicKey", required: true)]
         public Input<string> PublicKey { get; set; } = null!;
@@ -165,15 +161,13 @@ namespace Pulumi.Equinix.NetworkEdge
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Unique Identifier for the project resource where the SSH key is scoped to.If you
-        /// leave it out, the ssh key will be created under the default project id of your organization.
+        /// Unique Identifier for the project resource where the SSH key is scoped to.If you leave it out, the ssh key will be created under the default project id of your organization.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// The SSH public key. If this is a file, it can be read using the file
-        /// interpolation function.
+        /// The SSH public key. If this is a file, it can be read using the file interpolation function.
         /// </summary>
         [Input("publicKey")]
         public Input<string>? PublicKey { get; set; }

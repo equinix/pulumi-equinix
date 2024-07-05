@@ -83,32 +83,28 @@ public class SshKey extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Unique Identifier for the project resource where the SSH key is scoped to.If you
-     * leave it out, the ssh key will be created under the default project id of your organization.
+     * Unique Identifier for the project resource where the SSH key is scoped to.If you leave it out, the ssh key will be created under the default project id of your organization.
      * 
      */
     @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output<String> projectId;
 
     /**
-     * @return Unique Identifier for the project resource where the SSH key is scoped to.If you
-     * leave it out, the ssh key will be created under the default project id of your organization.
+     * @return Unique Identifier for the project resource where the SSH key is scoped to.If you leave it out, the ssh key will be created under the default project id of your organization.
      * 
      */
     public Output<String> projectId() {
         return this.projectId;
     }
     /**
-     * The SSH public key. If this is a file, it can be read using the file
-     * interpolation function.
+     * The SSH public key. If this is a file, it can be read using the file interpolation function.
      * 
      */
     @Export(name="publicKey", refs={String.class}, tree="[0]")
     private Output<String> publicKey;
 
     /**
-     * @return The SSH public key. If this is a file, it can be read using the file
-     * interpolation function.
+     * @return The SSH public key. If this is a file, it can be read using the file interpolation function.
      * 
      */
     public Output<String> publicKey() {

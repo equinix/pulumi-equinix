@@ -20,8 +20,8 @@ import javax.annotation.Nullable;
  * 
  * To learn more about Layer 2 networking in Equinix Metal, refer to
  * 
- * * &lt;https://metal.equinix.com/developers/docs/networking/layer2/&gt;
- * * &lt;https://metal.equinix.com/developers/docs/networking/layer2-configs/&gt;
+ * * https://metal.equinix.com/developers/docs/networking/layer2/
+ * * https://metal.equinix.com/developers/docs/networking/layer2-configs/
  * 
  * ## Example Usage
  * ```java

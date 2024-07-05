@@ -10,23 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.Equinix.NetworkEdge
 {
     /// <summary>
-    /// Resource `equinix.networkedge.Device` allows creation and management of Equinix Network Edge virtual
-    /// network devices.
+    /// Resource `equinix.networkedge.Device` allows creation and management of Equinix Network Edge virtual network devices.
     /// 
     /// Network Edge virtual network devices can be created in two modes:
     /// 
-    /// * **managed** - (default) Where Equinix manages connectivity and services in the device and
-    ///   customer gets limited access to the device.
-    /// * **self-configured** - Where customer provisions and manages own services in the device with less
-    ///   restricted access. Some device types are offered only in this mode.
+    /// * **managed** - (default) Where Equinix manages connectivity and services in the device and customer gets limited access to the device.
+    /// * **self-configured** - Where customer provisions and manages own services in the device with less restricted access. Some device types are offered only in this mode.
     /// 
     /// In addition to management modes, there are two software license modes available:
     /// 
-    /// * **subscription** - Where Equinix provides software license, including end-to-end support, and
-    ///   bills for the service respectively.
-    /// * **BYOL** - [bring your own license] Where customer brings his own, already procured device
-    ///   software license. There are no charges associated with such license. It is the only licensing mode
-    ///   for `self-configured` devices.
+    /// * **subscription** - Where Equinix provides software license, including end-to-end support, and bills for the service respectively.
+    /// * **BYOL** - [bring your own license] Where customer brings his own, already procured device software license. There are no charges associated with such license. It is the only licensing mode for `self-configured` devices.
     /// 
     /// ## Example Usage
     /// ```csharp
@@ -117,8 +111,7 @@ namespace Pulumi.Equinix.NetworkEdge
         public Output<string?> AclTemplateId { get; private set; } = null!;
 
         /// <summary>
-        /// Additional Internet bandwidth, in Mbps, that will be
-        /// allocated to the device (in addition to default 15Mbps).
+        /// Additional Internet bandwidth, in Mbps, that will be allocated to the device (in addition to default 15Mbps).
         /// </summary>
         [Output("additionalBandwidth")]
         public Output<int> AdditionalBandwidth { get; private set; } = null!;
@@ -130,8 +123,7 @@ namespace Pulumi.Equinix.NetworkEdge
         public Output<int> Asn { get; private set; } = null!;
 
         /// <summary>
-        /// Boolean value that determines device licensing mode, i.e.,
-        /// `bring your own license` or `subscription` (default).
+        /// Boolean value that determines device licensing mode, i.e., `bring your own license` or `subscription` (default).
         /// </summary>
         [Output("byol")]
         public Output<bool?> Byol { get; private set; } = null!;
@@ -143,15 +135,13 @@ namespace Pulumi.Equinix.NetworkEdge
         public Output<string?> CloudInitFileId { get; private set; } = null!;
 
         /// <summary>
-        /// An object that has the cluster details. See
-        /// Cluster Details below for more details.
+        /// An object that has the cluster details. See Cluster Details below for more details.
         /// </summary>
         [Output("clusterDetails")]
         public Output<Outputs.DeviceClusterDetails?> ClusterDetails { get; private set; } = null!;
 
         /// <summary>
-        /// Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT).
-        /// If not specified, default will be INTERNET-ACCESS
+        /// Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT). If not specified, default will be INTERNET-ACCESS
         /// </summary>
         [Output("connectivity")]
         public Output<string?> Connectivity { get; private set; } = null!;
@@ -163,16 +153,13 @@ namespace Pulumi.Equinix.NetworkEdge
         public Output<int> CoreCount { get; private set; } = null!;
 
         /// <summary>
-        /// Unique ID of an existing device.
-        /// Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual
-        /// device. This field is only meaningful for single devices.
+        /// Unique ID of an existing device. Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual device. This field is only meaningful for single devices.
         /// </summary>
         [Output("diverseDeviceId")]
         public Output<string> DiverseDeviceId { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the device with diverse device UUID. This field is returned in device details if the
-        /// device is created by passing diverse_device_id.
+        /// Name of the device with diverse device UUID. This field is returned in device details if the device is created by passing diverse_device_id.
         /// </summary>
         [Output("diverseDeviceName")]
         public Output<string> DiverseDeviceName { get; private set; } = null!;
@@ -190,22 +177,19 @@ namespace Pulumi.Equinix.NetworkEdge
         public Output<string> Ibx { get; private set; } = null!;
 
         /// <summary>
-        /// Number of network interfaces on a device. If not specified,
-        /// default number for a given device type will be used.
+        /// Number of network interfaces on a device. If not specified, default number for a given device type will be used.
         /// </summary>
         [Output("interfaceCount")]
         public Output<int> InterfaceCount { get; private set; } = null!;
 
         /// <summary>
-        /// List of device interfaces. See Interface Attribute below
-        /// for more details.
+        /// List of device interfaces. See Interface Attribute below for more details.
         /// </summary>
         [Output("interfaces")]
         public Output<ImmutableArray<Outputs.DeviceInterface>> Interfaces { get; private set; } = null!;
 
         /// <summary>
-        /// Path to the license file that will be uploaded and applied on a
-        /// device. Applicable for some device types in BYOL licensing mode.
+        /// Path to the license file that will be uploaded and applied on a device. Applicable for some device types in BYOL licensing mode.
         /// </summary>
         [Output("licenseFile")]
         public Output<string?> LicenseFile { get; private set; } = null!;
@@ -217,15 +201,13 @@ namespace Pulumi.Equinix.NetworkEdge
         public Output<string> LicenseFileId { get; private set; } = null!;
 
         /// <summary>
-        /// Device license registration status. Possible values are `APPLYING_LICENSE`,
-        /// `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
+        /// Device license registration status. Possible values are `APPLYING_LICENSE`, `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
         /// </summary>
         [Output("licenseStatus")]
         public Output<string> LicenseStatus { get; private set; } = null!;
 
         /// <summary>
-        /// License Token applicable for some device types in BYOL licensing
-        /// mode.
+        /// License Token applicable for some device types in BYOL licensing mode.
         /// </summary>
         [Output("licenseToken")]
         public Output<string?> LicenseToken { get; private set; } = null!;
@@ -237,8 +219,7 @@ namespace Pulumi.Equinix.NetworkEdge
         public Output<string> MetroCode { get; private set; } = null!;
 
         /// <summary>
-        /// Identifier of an MGMT interface ACL template that will be
-        /// applied on the device.
+        /// Identifier of an MGMT interface ACL template that will be applied on the device.
         /// </summary>
         [Output("mgmtAclTemplateUuid")]
         public Output<string?> MgmtAclTemplateUuid { get; private set; } = null!;
@@ -250,8 +231,7 @@ namespace Pulumi.Equinix.NetworkEdge
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// List of email addresses that will receive device status
-        /// notifications.
+        /// List of email addresses that will receive device status notifications.
         /// </summary>
         [Output("notifications")]
         public Output<ImmutableArray<string>> Notifications { get; private set; } = null!;
@@ -269,8 +249,7 @@ namespace Pulumi.Equinix.NetworkEdge
         public Output<string> PackageCode { get; private set; } = null!;
 
         /// <summary>
-        /// Unique Identifier for the project resource where the device is scoped to.If you
-        /// leave it out, the device will be created under the default project id of your organization.
+        /// Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
         /// </summary>
         [Output("projectId")]
         public Output<string> ProjectId { get; private set; } = null!;
@@ -282,8 +261,7 @@ namespace Pulumi.Equinix.NetworkEdge
         public Output<string?> PurchaseOrderNumber { get; private set; } = null!;
 
         /// <summary>
-        /// Device redundancy type applicable for HA devices, either
-        /// primary or secondary.
+        /// Device redundancy type applicable for HA devices, either primary or secondary.
         /// </summary>
         [Output("redundancyType")]
         public Output<string> RedundancyType { get; private set; } = null!;
@@ -301,15 +279,13 @@ namespace Pulumi.Equinix.NetworkEdge
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// Definition of secondary device for redundant
-        /// device configurations. See Secondary Device below for more details.
+        /// Definition of secondary device for redundant device configurations. See Secondary Device below for more details.
         /// </summary>
         [Output("secondaryDevice")]
         public Output<Outputs.DeviceSecondaryDevice?> SecondaryDevice { get; private set; } = null!;
 
         /// <summary>
-        /// Boolean value that determines device management mode, i.e.,
-        /// `self-managed` or `Equinix-managed` (default).
+        /// Boolean value that determines device management mode, i.e., `self-managed` or `Equinix-managed` (default).
         /// </summary>
         [Output("selfManaged")]
         public Output<bool?> SelfManaged { get; private set; } = null!;
@@ -369,10 +345,8 @@ namespace Pulumi.Equinix.NetworkEdge
         public Output<string> Uuid { get; private set; } = null!;
 
         /// <summary>
-        /// Map of vendor specific configuration parameters for a device
-        /// (controller1, activationKey, managementType, siteId, systemIpAddress, private_address, private_cidr_mask, private_gateway, license_key, license_id)
-        /// * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
-        /// on a device (max one key).  See SSH Key below for more details.
+        /// Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId)
+        /// * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
         /// </summary>
         [Output("vendorConfiguration")]
         public Output<ImmutableDictionary<string, string>> VendorConfiguration { get; private set; } = null!;
@@ -455,15 +429,13 @@ namespace Pulumi.Equinix.NetworkEdge
         public Input<string>? AclTemplateId { get; set; }
 
         /// <summary>
-        /// Additional Internet bandwidth, in Mbps, that will be
-        /// allocated to the device (in addition to default 15Mbps).
+        /// Additional Internet bandwidth, in Mbps, that will be allocated to the device (in addition to default 15Mbps).
         /// </summary>
         [Input("additionalBandwidth")]
         public Input<int>? AdditionalBandwidth { get; set; }
 
         /// <summary>
-        /// Boolean value that determines device licensing mode, i.e.,
-        /// `bring your own license` or `subscription` (default).
+        /// Boolean value that determines device licensing mode, i.e., `bring your own license` or `subscription` (default).
         /// </summary>
         [Input("byol")]
         public Input<bool>? Byol { get; set; }
@@ -475,15 +447,13 @@ namespace Pulumi.Equinix.NetworkEdge
         public Input<string>? CloudInitFileId { get; set; }
 
         /// <summary>
-        /// An object that has the cluster details. See
-        /// Cluster Details below for more details.
+        /// An object that has the cluster details. See Cluster Details below for more details.
         /// </summary>
         [Input("clusterDetails")]
         public Input<Inputs.DeviceClusterDetailsArgs>? ClusterDetails { get; set; }
 
         /// <summary>
-        /// Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT).
-        /// If not specified, default will be INTERNET-ACCESS
+        /// Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT). If not specified, default will be INTERNET-ACCESS
         /// </summary>
         [Input("connectivity")]
         public Input<string>? Connectivity { get; set; }
@@ -495,9 +465,7 @@ namespace Pulumi.Equinix.NetworkEdge
         public Input<int> CoreCount { get; set; } = null!;
 
         /// <summary>
-        /// Unique ID of an existing device.
-        /// Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual
-        /// device. This field is only meaningful for single devices.
+        /// Unique ID of an existing device. Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual device. This field is only meaningful for single devices.
         /// </summary>
         [Input("diverseDeviceId")]
         public Input<string>? DiverseDeviceId { get; set; }
@@ -509,15 +477,13 @@ namespace Pulumi.Equinix.NetworkEdge
         public Input<string>? Hostname { get; set; }
 
         /// <summary>
-        /// Number of network interfaces on a device. If not specified,
-        /// default number for a given device type will be used.
+        /// Number of network interfaces on a device. If not specified, default number for a given device type will be used.
         /// </summary>
         [Input("interfaceCount")]
         public Input<int>? InterfaceCount { get; set; }
 
         /// <summary>
-        /// Path to the license file that will be uploaded and applied on a
-        /// device. Applicable for some device types in BYOL licensing mode.
+        /// Path to the license file that will be uploaded and applied on a device. Applicable for some device types in BYOL licensing mode.
         /// </summary>
         [Input("licenseFile")]
         public Input<string>? LicenseFile { get; set; }
@@ -529,8 +495,7 @@ namespace Pulumi.Equinix.NetworkEdge
         public Input<string>? LicenseFileId { get; set; }
 
         /// <summary>
-        /// License Token applicable for some device types in BYOL licensing
-        /// mode.
+        /// License Token applicable for some device types in BYOL licensing mode.
         /// </summary>
         [Input("licenseToken")]
         public Input<string>? LicenseToken { get; set; }
@@ -542,8 +507,7 @@ namespace Pulumi.Equinix.NetworkEdge
         public Input<string> MetroCode { get; set; } = null!;
 
         /// <summary>
-        /// Identifier of an MGMT interface ACL template that will be
-        /// applied on the device.
+        /// Identifier of an MGMT interface ACL template that will be applied on the device.
         /// </summary>
         [Input("mgmtAclTemplateUuid")]
         public Input<string>? MgmtAclTemplateUuid { get; set; }
@@ -558,8 +522,7 @@ namespace Pulumi.Equinix.NetworkEdge
         private InputList<string>? _notifications;
 
         /// <summary>
-        /// List of email addresses that will receive device status
-        /// notifications.
+        /// List of email addresses that will receive device status notifications.
         /// </summary>
         public InputList<string> Notifications
         {
@@ -580,8 +543,7 @@ namespace Pulumi.Equinix.NetworkEdge
         public Input<string> PackageCode { get; set; } = null!;
 
         /// <summary>
-        /// Unique Identifier for the project resource where the device is scoped to.If you
-        /// leave it out, the device will be created under the default project id of your organization.
+        /// Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -593,15 +555,13 @@ namespace Pulumi.Equinix.NetworkEdge
         public Input<string>? PurchaseOrderNumber { get; set; }
 
         /// <summary>
-        /// Definition of secondary device for redundant
-        /// device configurations. See Secondary Device below for more details.
+        /// Definition of secondary device for redundant device configurations. See Secondary Device below for more details.
         /// </summary>
         [Input("secondaryDevice")]
         public Input<Inputs.DeviceSecondaryDeviceArgs>? SecondaryDevice { get; set; }
 
         /// <summary>
-        /// Boolean value that determines device management mode, i.e.,
-        /// `self-managed` or `Equinix-managed` (default).
+        /// Boolean value that determines device management mode, i.e., `self-managed` or `Equinix-managed` (default).
         /// </summary>
         [Input("selfManaged")]
         public Input<bool>? SelfManaged { get; set; }
@@ -640,10 +600,8 @@ namespace Pulumi.Equinix.NetworkEdge
         private InputMap<string>? _vendorConfiguration;
 
         /// <summary>
-        /// Map of vendor specific configuration parameters for a device
-        /// (controller1, activationKey, managementType, siteId, systemIpAddress, private_address, private_cidr_mask, private_gateway, license_key, license_id)
-        /// * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
-        /// on a device (max one key).  See SSH Key below for more details.
+        /// Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId)
+        /// * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
         /// </summary>
         public InputMap<string> VendorConfiguration
         {
@@ -684,8 +642,7 @@ namespace Pulumi.Equinix.NetworkEdge
         public Input<string>? AclTemplateId { get; set; }
 
         /// <summary>
-        /// Additional Internet bandwidth, in Mbps, that will be
-        /// allocated to the device (in addition to default 15Mbps).
+        /// Additional Internet bandwidth, in Mbps, that will be allocated to the device (in addition to default 15Mbps).
         /// </summary>
         [Input("additionalBandwidth")]
         public Input<int>? AdditionalBandwidth { get; set; }
@@ -697,8 +654,7 @@ namespace Pulumi.Equinix.NetworkEdge
         public Input<int>? Asn { get; set; }
 
         /// <summary>
-        /// Boolean value that determines device licensing mode, i.e.,
-        /// `bring your own license` or `subscription` (default).
+        /// Boolean value that determines device licensing mode, i.e., `bring your own license` or `subscription` (default).
         /// </summary>
         [Input("byol")]
         public Input<bool>? Byol { get; set; }
@@ -710,15 +666,13 @@ namespace Pulumi.Equinix.NetworkEdge
         public Input<string>? CloudInitFileId { get; set; }
 
         /// <summary>
-        /// An object that has the cluster details. See
-        /// Cluster Details below for more details.
+        /// An object that has the cluster details. See Cluster Details below for more details.
         /// </summary>
         [Input("clusterDetails")]
         public Input<Inputs.DeviceClusterDetailsGetArgs>? ClusterDetails { get; set; }
 
         /// <summary>
-        /// Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT).
-        /// If not specified, default will be INTERNET-ACCESS
+        /// Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT). If not specified, default will be INTERNET-ACCESS
         /// </summary>
         [Input("connectivity")]
         public Input<string>? Connectivity { get; set; }
@@ -730,16 +684,13 @@ namespace Pulumi.Equinix.NetworkEdge
         public Input<int>? CoreCount { get; set; }
 
         /// <summary>
-        /// Unique ID of an existing device.
-        /// Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual
-        /// device. This field is only meaningful for single devices.
+        /// Unique ID of an existing device. Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual device. This field is only meaningful for single devices.
         /// </summary>
         [Input("diverseDeviceId")]
         public Input<string>? DiverseDeviceId { get; set; }
 
         /// <summary>
-        /// Name of the device with diverse device UUID. This field is returned in device details if the
-        /// device is created by passing diverse_device_id.
+        /// Name of the device with diverse device UUID. This field is returned in device details if the device is created by passing diverse_device_id.
         /// </summary>
         [Input("diverseDeviceName")]
         public Input<string>? DiverseDeviceName { get; set; }
@@ -757,8 +708,7 @@ namespace Pulumi.Equinix.NetworkEdge
         public Input<string>? Ibx { get; set; }
 
         /// <summary>
-        /// Number of network interfaces on a device. If not specified,
-        /// default number for a given device type will be used.
+        /// Number of network interfaces on a device. If not specified, default number for a given device type will be used.
         /// </summary>
         [Input("interfaceCount")]
         public Input<int>? InterfaceCount { get; set; }
@@ -767,8 +717,7 @@ namespace Pulumi.Equinix.NetworkEdge
         private InputList<Inputs.DeviceInterfaceGetArgs>? _interfaces;
 
         /// <summary>
-        /// List of device interfaces. See Interface Attribute below
-        /// for more details.
+        /// List of device interfaces. See Interface Attribute below for more details.
         /// </summary>
         public InputList<Inputs.DeviceInterfaceGetArgs> Interfaces
         {
@@ -777,8 +726,7 @@ namespace Pulumi.Equinix.NetworkEdge
         }
 
         /// <summary>
-        /// Path to the license file that will be uploaded and applied on a
-        /// device. Applicable for some device types in BYOL licensing mode.
+        /// Path to the license file that will be uploaded and applied on a device. Applicable for some device types in BYOL licensing mode.
         /// </summary>
         [Input("licenseFile")]
         public Input<string>? LicenseFile { get; set; }
@@ -790,15 +738,13 @@ namespace Pulumi.Equinix.NetworkEdge
         public Input<string>? LicenseFileId { get; set; }
 
         /// <summary>
-        /// Device license registration status. Possible values are `APPLYING_LICENSE`,
-        /// `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
+        /// Device license registration status. Possible values are `APPLYING_LICENSE`, `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
         /// </summary>
         [Input("licenseStatus")]
         public Input<string>? LicenseStatus { get; set; }
 
         /// <summary>
-        /// License Token applicable for some device types in BYOL licensing
-        /// mode.
+        /// License Token applicable for some device types in BYOL licensing mode.
         /// </summary>
         [Input("licenseToken")]
         public Input<string>? LicenseToken { get; set; }
@@ -810,8 +756,7 @@ namespace Pulumi.Equinix.NetworkEdge
         public Input<string>? MetroCode { get; set; }
 
         /// <summary>
-        /// Identifier of an MGMT interface ACL template that will be
-        /// applied on the device.
+        /// Identifier of an MGMT interface ACL template that will be applied on the device.
         /// </summary>
         [Input("mgmtAclTemplateUuid")]
         public Input<string>? MgmtAclTemplateUuid { get; set; }
@@ -826,8 +771,7 @@ namespace Pulumi.Equinix.NetworkEdge
         private InputList<string>? _notifications;
 
         /// <summary>
-        /// List of email addresses that will receive device status
-        /// notifications.
+        /// List of email addresses that will receive device status notifications.
         /// </summary>
         public InputList<string> Notifications
         {
@@ -848,8 +792,7 @@ namespace Pulumi.Equinix.NetworkEdge
         public Input<string>? PackageCode { get; set; }
 
         /// <summary>
-        /// Unique Identifier for the project resource where the device is scoped to.If you
-        /// leave it out, the device will be created under the default project id of your organization.
+        /// Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -861,8 +804,7 @@ namespace Pulumi.Equinix.NetworkEdge
         public Input<string>? PurchaseOrderNumber { get; set; }
 
         /// <summary>
-        /// Device redundancy type applicable for HA devices, either
-        /// primary or secondary.
+        /// Device redundancy type applicable for HA devices, either primary or secondary.
         /// </summary>
         [Input("redundancyType")]
         public Input<string>? RedundancyType { get; set; }
@@ -880,15 +822,13 @@ namespace Pulumi.Equinix.NetworkEdge
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// Definition of secondary device for redundant
-        /// device configurations. See Secondary Device below for more details.
+        /// Definition of secondary device for redundant device configurations. See Secondary Device below for more details.
         /// </summary>
         [Input("secondaryDevice")]
         public Input<Inputs.DeviceSecondaryDeviceGetArgs>? SecondaryDevice { get; set; }
 
         /// <summary>
-        /// Boolean value that determines device management mode, i.e.,
-        /// `self-managed` or `Equinix-managed` (default).
+        /// Boolean value that determines device management mode, i.e., `self-managed` or `Equinix-managed` (default).
         /// </summary>
         [Input("selfManaged")]
         public Input<bool>? SelfManaged { get; set; }
@@ -951,10 +891,8 @@ namespace Pulumi.Equinix.NetworkEdge
         private InputMap<string>? _vendorConfiguration;
 
         /// <summary>
-        /// Map of vendor specific configuration parameters for a device
-        /// (controller1, activationKey, managementType, siteId, systemIpAddress, private_address, private_cidr_mask, private_gateway, license_key, license_id)
-        /// * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
-        /// on a device (max one key).  See SSH Key below for more details.
+        /// Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId)
+        /// * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
         /// </summary>
         public InputMap<string> VendorConfiguration
         {

@@ -13,8 +13,8 @@ import * as utilities from "../utilities";
  * API documentation can be found here - https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
  *
  * Additional documentation:
- * * Getting Started: <https://docs.equinix.com/en-us/Content/Interconnection/FCR/connections/FCR-connect-azureQC.htm#ConfigureRoutingDetailsintheFabricPortal>
- * * API: <https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols>
+ * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/connections/FCR-connect-azureQC.htm#ConfigureRoutingDetailsintheFabricPortal
+ * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
  *
  * ## Example Usage
  *
@@ -150,8 +150,8 @@ export interface GetRoutingProtocolResult {
  * API documentation can be found here - https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
  *
  * Additional documentation:
- * * Getting Started: <https://docs.equinix.com/en-us/Content/Interconnection/FCR/connections/FCR-connect-azureQC.htm#ConfigureRoutingDetailsintheFabricPortal>
- * * API: <https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols>
+ * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/connections/FCR-connect-azureQC.htm#ConfigureRoutingDetailsintheFabricPortal
+ * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
  *
  * ## Example Usage
  *

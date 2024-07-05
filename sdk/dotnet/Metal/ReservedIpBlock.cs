@@ -12,10 +12,7 @@ namespace Pulumi.Equinix.Metal
     /// <summary>
     /// Provides a resource to create and manage blocks of reserved IP addresses in a project.
     /// 
-    /// When a user provisions first device in a metro, Equinix Metal API automatically allocates IPv6/56 and private IPv4/25 blocks.
-    /// The new device then gets IPv6 and private IPv4 addresses from those block. It also gets a public IPv4/31 address.
-    /// Every new device in the project and metro will automatically get IPv6 and private IPv4 addresses from these pre-allocated blocks.
-    /// The IPv6 and private IPv4 blocks can't be created, only imported. With this resource, it's possible to create either public IPv4 blocks or global IPv4 blocks.
+    /// When a user provisions first device in a metro, Equinix Metal API automatically allocates IPv6/56 and private IPv4/25 blocks. The new device then gets IPv6 and private IPv4 addresses from those block. It also gets a public IPv4/31 address. Every new device in the project and metro will automatically get IPv6 and private IPv4 addresses from these pre-allocated blocks. The IPv6 and private IPv4 blocks can't be created, only imported. With this resource, it's possible to create either public IPv4 blocks or global IPv4 blocks.
     /// 
     /// Public blocks are allocated in a metro. Addresses from public blocks can only be assigned to devices in the metro. Public blocks can have mask from /24 (256 addresses) to /32 (1 address). If you create public block with this resource, you must fill the metro argument.
     /// 
@@ -96,8 +93,7 @@ namespace Pulumi.Equinix.Metal
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Facility where to allocate the public IP address block, makes sense only
-        /// if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
+        /// Facility where to allocate the public IP address block, makes sense only if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
         /// </summary>
         [Output("facility")]
         public Output<string?> Facility { get; private set; } = null!;
@@ -106,8 +102,7 @@ namespace Pulumi.Equinix.Metal
         public Output<string> Gateway { get; private set; } = null!;
 
         /// <summary>
-        /// Boolean flag whether addresses from a block are global (i.e. can be assigned in any
-        /// metro).
+        /// Boolean flag whether addresses from a block are global (i.e. can be assigned in any metro).
         /// </summary>
         [Output("global")]
         public Output<bool> Global { get; private set; } = null!;
@@ -119,8 +114,7 @@ namespace Pulumi.Equinix.Metal
         public Output<bool> Management { get; private set; } = null!;
 
         /// <summary>
-        /// Metro where to allocate the public IP address block, makes sense only
-        /// if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `facility`.
+        /// Metro where to allocate the public IP address block, makes sense only if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `facility`.
         /// </summary>
         [Output("metro")]
         public Output<string?> Metro { get; private set; } = null!;
@@ -162,8 +156,7 @@ namespace Pulumi.Equinix.Metal
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// One of `global_ipv4`, `public_ipv4`, or `vrf`. Defaults to `public_ipv4` for backward
-        /// compatibility.
+        /// One of `global_ipv4`, `public_ipv4`, or `vrf`. Defaults to `public_ipv4` for backward compatibility.
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -243,15 +236,13 @@ namespace Pulumi.Equinix.Metal
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Facility where to allocate the public IP address block, makes sense only
-        /// if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
+        /// Facility where to allocate the public IP address block, makes sense only if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
         /// </summary>
         [Input("facility")]
         public InputUnion<string, Pulumi.Equinix.Metal.Facility>? Facility { get; set; }
 
         /// <summary>
-        /// Metro where to allocate the public IP address block, makes sense only
-        /// if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `facility`.
+        /// Metro where to allocate the public IP address block, makes sense only if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `facility`.
         /// </summary>
         [Input("metro")]
         public Input<string>? Metro { get; set; }
@@ -287,8 +278,7 @@ namespace Pulumi.Equinix.Metal
         }
 
         /// <summary>
-        /// One of `global_ipv4`, `public_ipv4`, or `vrf`. Defaults to `public_ipv4` for backward
-        /// compatibility.
+        /// One of `global_ipv4`, `public_ipv4`, or `vrf`. Defaults to `public_ipv4` for backward compatibility.
         /// </summary>
         [Input("type")]
         public InputUnion<string, Pulumi.Equinix.Metal.IpBlockType>? Type { get; set; }
@@ -344,8 +334,7 @@ namespace Pulumi.Equinix.Metal
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Facility where to allocate the public IP address block, makes sense only
-        /// if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
+        /// Facility where to allocate the public IP address block, makes sense only if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
         /// </summary>
         [Input("facility")]
         public InputUnion<string, Pulumi.Equinix.Metal.Facility>? Facility { get; set; }
@@ -354,8 +343,7 @@ namespace Pulumi.Equinix.Metal
         public Input<string>? Gateway { get; set; }
 
         /// <summary>
-        /// Boolean flag whether addresses from a block are global (i.e. can be assigned in any
-        /// metro).
+        /// Boolean flag whether addresses from a block are global (i.e. can be assigned in any metro).
         /// </summary>
         [Input("global")]
         public Input<bool>? Global { get; set; }
@@ -367,8 +355,7 @@ namespace Pulumi.Equinix.Metal
         public Input<bool>? Management { get; set; }
 
         /// <summary>
-        /// Metro where to allocate the public IP address block, makes sense only
-        /// if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `facility`.
+        /// Metro where to allocate the public IP address block, makes sense only if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `facility`.
         /// </summary>
         [Input("metro")]
         public Input<string>? Metro { get; set; }
@@ -416,8 +403,7 @@ namespace Pulumi.Equinix.Metal
         }
 
         /// <summary>
-        /// One of `global_ipv4`, `public_ipv4`, or `vrf`. Defaults to `public_ipv4` for backward
-        /// compatibility.
+        /// One of `global_ipv4`, `public_ipv4`, or `vrf`. Defaults to `public_ipv4` for backward compatibility.
         /// </summary>
         [Input("type")]
         public InputUnion<string, Pulumi.Equinix.Metal.IpBlockType>? Type { get; set; }

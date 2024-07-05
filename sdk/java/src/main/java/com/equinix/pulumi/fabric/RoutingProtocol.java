@@ -21,15 +21,14 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
  * Fabric V4 API compatible resource allows creation and management of Equinix Fabric connection
  * 
  * Additional documentation:
- * * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/FCR/connections/FCR-connect-azureQC.htm#ConfigureRoutingDetailsintheFabricPortal&gt;
- * * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols&gt;
+ * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/connections/FCR-connect-azureQC.htm#ConfigureRoutingDetailsintheFabricPortal
+ * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
  * 
  * ## Example Usage
  * ```java
@@ -80,56 +79,56 @@ public class RoutingProtocol extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="bfd", refs={RoutingProtocolBfd.class}, tree="[0]")
-    private Output</* @Nullable */ RoutingProtocolBfd> bfd;
+    private Output<RoutingProtocolBfd> bfd;
 
     /**
      * @return Bidirectional Forwarding Detection
      * 
      */
-    public Output<Optional<RoutingProtocolBfd>> bfd() {
-        return Codegen.optional(this.bfd);
+    public Output<RoutingProtocolBfd> bfd() {
+        return this.bfd;
     }
     /**
      * BGP authorization key
      * 
      */
     @Export(name="bgpAuthKey", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> bgpAuthKey;
+    private Output<String> bgpAuthKey;
 
     /**
      * @return BGP authorization key
      * 
      */
-    public Output<Optional<String>> bgpAuthKey() {
-        return Codegen.optional(this.bgpAuthKey);
+    public Output<String> bgpAuthKey() {
+        return this.bgpAuthKey;
     }
     /**
      * Routing Protocol BGP IPv4
      * 
      */
     @Export(name="bgpIpv4", refs={RoutingProtocolBgpIpv4.class}, tree="[0]")
-    private Output</* @Nullable */ RoutingProtocolBgpIpv4> bgpIpv4;
+    private Output<RoutingProtocolBgpIpv4> bgpIpv4;
 
     /**
      * @return Routing Protocol BGP IPv4
      * 
      */
-    public Output<Optional<RoutingProtocolBgpIpv4>> bgpIpv4() {
-        return Codegen.optional(this.bgpIpv4);
+    public Output<RoutingProtocolBgpIpv4> bgpIpv4() {
+        return this.bgpIpv4;
     }
     /**
      * Routing Protocol BGP IPv6
      * 
      */
     @Export(name="bgpIpv6", refs={RoutingProtocolBgpIpv6.class}, tree="[0]")
-    private Output</* @Nullable */ RoutingProtocolBgpIpv6> bgpIpv6;
+    private Output<RoutingProtocolBgpIpv6> bgpIpv6;
 
     /**
      * @return Routing Protocol BGP IPv6
      * 
      */
-    public Output<Optional<RoutingProtocolBgpIpv6>> bgpIpv6() {
-        return Codegen.optional(this.bgpIpv6);
+    public Output<RoutingProtocolBgpIpv6> bgpIpv6() {
+        return this.bgpIpv6;
     }
     /**
      * Captures Routing Protocol lifecycle change information
@@ -178,56 +177,56 @@ public class RoutingProtocol extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="customerAsn", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> customerAsn;
+    private Output<Integer> customerAsn;
 
     /**
      * @return Customer-provided ASN
      * 
      */
-    public Output<Optional<Integer>> customerAsn() {
-        return Codegen.optional(this.customerAsn);
+    public Output<Integer> customerAsn() {
+        return this.customerAsn;
     }
     /**
      * Customer-provided Fabric Routing Protocol description
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> description;
+    private Output<String> description;
 
     /**
      * @return Customer-provided Fabric Routing Protocol description
      * 
      */
-    public Output<Optional<String>> description() {
-        return Codegen.optional(this.description);
+    public Output<String> description() {
+        return this.description;
     }
     /**
      * Routing Protocol Direct IPv4
      * 
      */
     @Export(name="directIpv4", refs={RoutingProtocolDirectIpv4.class}, tree="[0]")
-    private Output</* @Nullable */ RoutingProtocolDirectIpv4> directIpv4;
+    private Output<RoutingProtocolDirectIpv4> directIpv4;
 
     /**
      * @return Routing Protocol Direct IPv4
      * 
      */
-    public Output<Optional<RoutingProtocolDirectIpv4>> directIpv4() {
-        return Codegen.optional(this.directIpv4);
+    public Output<RoutingProtocolDirectIpv4> directIpv4() {
+        return this.directIpv4;
     }
     /**
      * Routing Protocol Direct IPv6
      * 
      */
     @Export(name="directIpv6", refs={RoutingProtocolDirectIpv6.class}, tree="[0]")
-    private Output</* @Nullable */ RoutingProtocolDirectIpv6> directIpv6;
+    private Output<RoutingProtocolDirectIpv6> directIpv6;
 
     /**
      * @return Routing Protocol Direct IPv6
      * 
      */
-    public Output<Optional<RoutingProtocolDirectIpv6>> directIpv6() {
-        return Codegen.optional(this.directIpv6);
+    public Output<RoutingProtocolDirectIpv6> directIpv6() {
+        return this.directIpv6;
     }
     /**
      * Equinix ASN
@@ -304,14 +303,14 @@ public class RoutingProtocol extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> type;
+    private Output<String> type;
 
     /**
      * @return Defines the routing protocol type like BGP or DIRECT
      * 
      */
-    public Output<Optional<String>> type() {
-        return Codegen.optional(this.type);
+    public Output<String> type() {
+        return this.type;
     }
     /**
      * Equinix-assigned routing protocol identifier

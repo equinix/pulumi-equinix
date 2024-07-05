@@ -4543,7 +4543,7 @@ export namespace fabric {
          */
         uuid: string;
         /**
-         * flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
+         * Flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
          */
         viewPoint: string;
         /**
@@ -4958,26 +4958,37 @@ export namespace fabric {
 
     export interface GetServiceProfilesFilter {
         /**
-         * Possible operator to use on filters = - equal
+         * Operators to use on your filtered field with the values given. One of [=]
          */
-        operator?: string;
+        operator: string;
         /**
-         * Search Criteria for Service Profile - /name, /uuid, /state, /metros/code, /visibility, /type
+         * Property to apply operator and values to. One of [/name /uuid /state /metros/code /visibility /type /project/projectId]
          */
-        property?: string;
+        property: string;
         /**
-         * Values
+         * The values that you want to apply the property+operator combination to in order to filter your data search
          */
-        values?: string[];
+        values: string[];
+    }
+
+    export interface GetServiceProfilesPagination {
+        /**
+         * Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+         */
+        limit?: number;
+        /**
+         * The page offset for the pagination request. Index of the first element. Default is 0.
+         */
+        offset?: number;
     }
 
     export interface GetServiceProfilesSort {
         /**
-         * Priority type- DESC, ASC
+         * The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
          */
         direction?: string;
         /**
-         * Search operation sort criteria /name /state /changeLog/createdDateTime /changeLog/updatedDateTime
+         * The property name to use in sorting. One of [/name /uuid /state /location/metroCode /location/metroName /package/code /changeLog/createdDateTime /changeLog/updatedDateTime]. Defaults to /changeLog/updatedDateTime
          */
         property?: string;
     }
@@ -5668,93 +5679,83 @@ export namespace fabric {
 export namespace metal {
     export interface DeviceBehavior {
         /**
-         * List of attributes that are allowed to change without recreating the instance. Supported attributes: `customData`, `userData`"
+         * List of attributes that are allowed to change without recreating the instance. Supported attributes: `customData`, `userData`
          */
         allowChanges?: string[];
     }
 
     export interface DeviceIpAddress {
         /**
-         * CIDR suffix for IP address block to be assigned, i.e. amount of addresses.
+         * CIDR suffix for IP block assigned to this device
          */
         cidr?: number;
         /**
-         * List of UUIDs of IP block reservations
-         * from which the public IPv4 address should be taken.
-         *
-         * You can supply one `ipAddress` block per IP address type. If you use the `ipAddress` you must
-         * always pass a block for `privateIpv4`.
-         *
-         * To learn more about using the reserved IP addresses for new devices, see the examples in the
-         * equinix.metal.ReservedIpBlock documentation.
+         * IDs of reservations to pick the blocks from
          */
         reservationIds?: string[];
         /**
-         * One of `privateIpv4`, `publicIpv4`, `publicIpv6`.
+         * one of public*ipv4,private*ipv4,public_ipv6
          */
         type: string;
     }
 
     export interface DeviceNetwork {
         /**
-         * IPv4 or IPv6 address string.
+         * IPv4 or IPv6 address string
          */
         address: string;
         /**
-         * Bit length of the network mask of the address.
+         * CIDR suffix for IP address block to be assigned, i.e. amount of addresses
          */
         cidr: number;
         /**
-         * IP version. One of `4`, `6`.
+         * IP version - "4" or "6"
          */
         family: number;
         /**
-         * Address of router.
+         * Address of router
          */
         gateway: string;
         /**
-         * Whether the address is routable from the Internet.
+         * Whether the address is routable from the Internet
          */
         public: boolean;
     }
 
     export interface DevicePort {
         /**
-         * Whether this port is part of a bond in bonded network setup.
+         * Whether this port is part of a bond in bonded network setup
          */
         bonded: boolean;
         /**
-         * ID of the port.
+         * The ID of the device
          */
         id: string;
         /**
-         * MAC address assigned to the port.
+         * MAC address assigned to the port
          */
         mac: string;
         /**
-         * Name of the port (e.g. `eth0`, or `bond0`).
+         * Name of the port (e.g. eth0, or bond0)
          */
         name: string;
         /**
-         * Type of the port (e.g. `NetworkPort` or `NetworkBondPort`).
+         * One of [private_ipv4, public_ipv4, publicIpv6]
          */
         type: string;
     }
 
     export interface DeviceReinstall {
         /**
-         * Whether the OS disk should be filled with `00h` bytes before reinstall.
-         * Defaults to `false`.
+         * Whether the OS disk should be filled with `00h` bytes before reinstall
          */
         deprovisionFast?: boolean;
         /**
-         * Whether the provider should favour reinstall over destroy and create. Defaults to
-         * `false`.
+         * Whether the device should be reinstalled instead of destroyed
          */
         enabled?: boolean;
         /**
-         * Whether the non-OS disks should be kept or wiped during reinstall.
-         * Defaults to `false`.
+         * Whether the non-OS disks should be kept or wiped during reinstall
          */
         preserveData?: boolean;
     }
@@ -5833,46 +5834,46 @@ export namespace metal {
 
     export interface GetDeviceNetwork {
         /**
-         * IPv4 or IPv6 address string.
+         * IPv4 or IPv6 address string
          */
         address: string;
         /**
-         * Bit length of the network mask of the address.
+         * Bit length of the network mask of the address
          */
         cidr: number;
         /**
-         * IP version. One of `4`, `6`.
+         * IP version - "4" or "6"
          */
         family: number;
         /**
-         * Address of router.
+         * Address of router
          */
         gateway: string;
         /**
-         * Whether the address is routable from the Internet.
+         * Whether the address is routable from the Internet
          */
         public: boolean;
     }
 
     export interface GetDevicePort {
         /**
-         * Whether this port is part of a bond in bonded network setup.
+         * Whether this port is part of a bond in bonded network setup
          */
         bonded: boolean;
         /**
-         * ID of the port.
+         * The ID of the device
          */
         id: string;
         /**
-         * MAC address assigned to the port.
+         * MAC address assigned to the port
          */
         mac: string;
         /**
-         * Name of the port (e.g. `eth0`, or `bond0`).
+         * Name of the port (e.g. eth0, or bond0)
          */
         name: string;
         /**
-         * Type of the port (e.g. `NetworkPort` or `NetworkBondPort`).
+         * Type of the port (e.g. NetworkPort or NetworkBondPort)
          */
         type: string;
     }
@@ -6053,8 +6054,7 @@ export namespace metal {
          */
         plan: string;
         /**
-         * Minimun number of devices that must be available in selected location.
-         * Default is `1`.
+         * Minimun number of devices that must be available in selected location. Default is `1`.
          */
         quantity?: number;
     }
@@ -6087,7 +6087,7 @@ export namespace metal {
         /**
          * List of IDs of virtual cicruits attached to this port.
          */
-        virtualCircuitIds: any[];
+        virtualCircuitIds: string[];
     }
 
     export interface GetInterconnectionServiceToken {
@@ -6120,8 +6120,7 @@ export namespace metal {
          */
         plan: string;
         /**
-         * Minimum number of devices that must be available in selected location.
-         * Default is `1`.
+         * Minimum number of devices that must be available in selected location. Default is `1`.
          */
         quantity?: number;
     }
@@ -6266,14 +6265,14 @@ export namespace metal {
         name: string;
         role: string;
         /**
-         * Connection speed -  Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
+         * Connection speed - Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
          */
         speed: number;
         /**
          * Status of the connection resource.
          */
         status: string;
-        virtualCircuitIds: any[];
+        virtualCircuitIds: string[];
     }
 
     export interface InterconnectionServiceToken {
@@ -6317,8 +6316,7 @@ export namespace metal {
          */
         asn: number;
         /**
-         * `local` or `global`, the `local` is likely to be usable immediately, the
-         * `global` will need to be reviewed by Equinix Metal engineers.
+         * `local` or `global`, the `local` is likely to be usable immediately, the `global` will need to be reviewed by Equinix Metal engineers.
          */
         deploymentType: string;
         /**
@@ -6365,8 +6363,7 @@ export namespace metal {
 export namespace networkedge {
     export interface AclTemplateDeviceDetail {
         /**
-         * Device ACL provisioning status where template was applied. One of `PROVISIONING`,
-         * `PROVISIONED`.
+         * Device ACL provisioning status where template was applied. One of `PROVISIONING`, `PROVISIONED`.
          */
         aclStatus: string;
         /**
@@ -6385,8 +6382,7 @@ export namespace networkedge {
          */
         description?: string;
         /**
-         * Inbound traffic destination ports. Allowed values are a comma separated
-         * list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
+         * Inbound traffic destination ports. Allowed values are a comma separated list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
          */
         dstPort: string;
         /**
@@ -6404,8 +6400,7 @@ export namespace networkedge {
          */
         sourceType: string;
         /**
-         * Inbound traffic source ports. Allowed values are a comma separated list
-         * of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
+         * Inbound traffic source ports. Allowed values are a comma separated list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
          */
         srcPort: string;
         /**
@@ -6430,13 +6425,11 @@ export namespace networkedge {
          */
         clusterName: string;
         /**
-         * An object that has `node0` configuration.
-         * See Cluster Details - Nodes below for more details.
+         * An object that has `node0` configuration. See Cluster Details - Nodes below for more details.
          */
         node0: outputs.networkedge.DeviceClusterDetailsNode0;
         /**
-         * An object that has `node1` configuration.
-         * See Cluster Details - Nodes below for more details.
+         * An object that has `node1` configuration. See Cluster Details - Nodes below for more details.
          */
         node1: outputs.networkedge.DeviceClusterDetailsNode1;
         /**
@@ -6463,9 +6456,7 @@ export namespace networkedge {
          */
         uuid: string;
         /**
-         * An object that has fields relevant to the vendor of the
-         * cluster device. See Cluster Details - Nodes - Vendor Configuration
-         * below for more details.
+         * An object that has fields relevant to the vendor of the cluster device. See Cluster Details - Nodes - Vendor Configuration below for more details.
          */
         vendorConfiguration?: outputs.networkedge.DeviceClusterDetailsNode0VendorConfiguration;
     }
@@ -6476,8 +6467,7 @@ export namespace networkedge {
          */
         activationKey?: string;
         /**
-         * The administrative password of the device. You can use it to log in
-         * to the console. This field is not available for all device types.
+         * The administrative password of the device. You can use it to log in to the console. This field is not available for all device types.
          */
         adminPassword: string;
         /**
@@ -6513,8 +6503,7 @@ export namespace networkedge {
          */
         privateGateway?: string;
         /**
-         * The CLI password of the device. This field is relevant only for the
-         * Velocloud SDWAN cluster.
+         * The CLI password of the device. This field is relevant only for the Velocloud SDWAN cluster.
          */
         rootPassword?: string;
     }
@@ -6537,9 +6526,7 @@ export namespace networkedge {
          */
         uuid: string;
         /**
-         * An object that has fields relevant to the vendor of the
-         * cluster device. See Cluster Details - Nodes - Vendor Configuration
-         * below for more details.
+         * An object that has fields relevant to the vendor of the cluster device. See Cluster Details - Nodes - Vendor Configuration below for more details.
          */
         vendorConfiguration?: outputs.networkedge.DeviceClusterDetailsNode1VendorConfiguration;
     }
@@ -6550,8 +6537,7 @@ export namespace networkedge {
          */
         activationKey?: string;
         /**
-         * The administrative password of the device. You can use it to log in
-         * to the console. This field is not available for all device types.
+         * The administrative password of the device. You can use it to log in to the console. This field is not available for all device types.
          */
         adminPassword: string;
         /**
@@ -6587,8 +6573,7 @@ export namespace networkedge {
          */
         privateGateway?: string;
         /**
-         * The CLI password of the device. This field is relevant only for the
-         * Velocloud SDWAN cluster.
+         * The CLI password of the device. This field is relevant only for the Velocloud SDWAN cluster.
          */
         rootPassword?: string;
     }
@@ -6638,8 +6623,7 @@ export namespace networkedge {
          */
         id: string;
         /**
-         * Device network interface identifier to use for device link
-         * connection.
+         * Device network interface identifier to use for device link connection.
          */
         interfaceId?: number;
         /**
@@ -6647,16 +6631,14 @@ export namespace networkedge {
          */
         ipAddress: string;
         /**
-         * device link provisioning status on a given device. One of `PROVISIONING`,
-         * `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
+         * device link provisioning status on a given device. One of `PROVISIONING`, `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
          */
         status: string;
     }
 
     export interface DeviceLinkLink {
         /**
-         * billing account number to be used for
-         * connection charges
+         * billing account number to be used for connection charges
          */
         accountNumber: string;
         /**
@@ -6691,8 +6673,7 @@ export namespace networkedge {
 
     export interface DeviceLinkMetroLink {
         /**
-         * billing account number to be used for
-         * connection charges
+         * billing account number to be used for connection charges
          */
         accountNumber: string;
         /**
@@ -6715,13 +6696,11 @@ export namespace networkedge {
          */
         accountNumber: string;
         /**
-         * Identifier of a WAN interface ACL template that will be applied
-         * on a secondary device.
+         * Identifier of a WAN interface ACL template that will be applied on a secondary device.
          */
         aclTemplateId?: string;
         /**
-         * Additional Internet bandwidth, in Mbps, for a secondary
-         * device.
+         * Additional Internet bandwidth, in Mbps, for a secondary device.
          */
         additionalBandwidth: number;
         /**
@@ -6741,13 +6720,11 @@ export namespace networkedge {
          */
         ibx: string;
         /**
-         * List of device interfaces. See Interface Attribute below
-         * for more details.
+         * List of device interfaces. See Interface Attribute below for more details.
          */
         interfaces: outputs.networkedge.DeviceSecondaryDeviceInterface[];
         /**
-         * Path to the license file that will be uploaded and applied on a
-         * secondary device. Applicable for some device types in BYOL licensing mode.
+         * Path to the license file that will be uploaded and applied on a secondary device. Applicable for some device types in BYOL licensing mode.
          */
         licenseFile?: string;
         /**
@@ -6755,8 +6732,7 @@ export namespace networkedge {
          */
         licenseFileId: string;
         /**
-         * Device license registration status. Possible values are `APPLYING_LICENSE`,
-         * `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
+         * Device license registration status. Possible values are `APPLYING_LICENSE`, `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
          */
         licenseStatus: string;
         /**
@@ -6768,10 +6744,8 @@ export namespace networkedge {
          */
         metroCode: string;
         /**
-         * Identifier of an MGMT interface ACL template that will be
-         * applied on a secondary device.
-         * * `ssh-key` - (Optional) Up to one definition of SSH key that will be provisioned on a secondary
-         * device.
+         * Identifier of an MGMT interface ACL template that will be applied on a secondary device.
+         * * `ssh-key` - (Optional) Up to one definition of SSH key that will be provisioned on a secondary device.
          */
         mgmtAclTemplateUuid?: string;
         /**
@@ -6779,18 +6753,15 @@ export namespace networkedge {
          */
         name: string;
         /**
-         * List of email addresses that will receive notifications about
-         * secondary device.
+         * List of email addresses that will receive notifications about secondary device.
          */
         notifications: string[];
         /**
-         * Unique Identifier for the project resource where the device is scoped to.If you
-         * leave it out, the device will be created under the default project id of your organization.
+         * Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
          */
         projectId: string;
         /**
-         * Device redundancy type applicable for HA devices, either
-         * primary or secondary.
+         * Device redundancy type applicable for HA devices, either primary or secondary.
          */
         redundancyType: string;
         /**
@@ -6822,9 +6793,7 @@ export namespace networkedge {
          */
         uuid: string;
         /**
-         * Key/Value pairs of vendor specific configuration parameters
-         * for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`,
-         * `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`.
+         * Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`.
          */
         vendorConfiguration: {[key: string]: string};
         /**
@@ -7086,7 +7055,7 @@ export namespace networkedge {
          * Device provisioning status
          * * INITIALIZING
          * * PROVISIONING
-         * * PROVISIONED  (**NOTE: By default data source will only return devices in this state.  To include other states see `validStateList`**)
+         * * PROVISIONED (**NOTE: By default data source will only return devices in this state. To include other states see `validStateList`**)
          * * WAITING_FOR_PRIMARY
          * * WAITING_FOR_SECONDARY
          * * WAITING_FOR_REPLICA_CLUSTER_NODES
@@ -7137,7 +7106,7 @@ export namespace networkedge {
          * List of device interfaces
          * * `interface.#.id` - interface identifier
          * * `interface.#.name` - interface name
-         * * `interface.#.status` -  interface status (AVAILABLE, RESERVED, ASSIGNED)
+         * * `interface.#.status` - interface status (AVAILABLE, RESERVED, ASSIGNED)
          * * `interface.#.operational_status` - interface operational status (up or down)
          * * `interface.#.mac_address` - interface MAC address
          * * `interface.#.ip_address` - interface IP address
@@ -7188,8 +7157,7 @@ export namespace networkedge {
          */
         projectId: string;
         /**
-         * Device redundancy type applicable for HA devices, either
-         * primary or secondary
+         * Device redundancy type applicable for HA devices, either primary or secondary
          */
         redundancyType: string;
         /**
@@ -7216,7 +7184,7 @@ export namespace networkedge {
          * Device provisioning status
          * * INITIALIZING
          * * PROVISIONING
-         * * PROVISIONED  (**NOTE: By default data source will only return devices in this state.  To include other states see `validStateList`**)
+         * * PROVISIONED (**NOTE: By default data source will only return devices in this state. To include other states see `validStateList`**)
          * * WAITING_FOR_PRIMARY
          * * WAITING_FOR_SECONDARY
          * * WAITING_FOR_REPLICA_CLUSTER_NODES
@@ -7275,7 +7243,7 @@ export namespace networkedge {
          * Device provisioning status
          * * INITIALIZING
          * * PROVISIONING
-         * * PROVISIONED  (**NOTE: By default data source will only return devices in this state.  To include other states see `validStateList`**)
+         * * PROVISIONED (**NOTE: By default data source will only return devices in this state. To include other states see `validStateList`**)
          * * WAITING_FOR_PRIMARY
          * * WAITING_FOR_SECONDARY
          * * WAITING_FOR_REPLICA_CLUSTER_NODES

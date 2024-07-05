@@ -20,16 +20,14 @@ public final class DeviceLinkState extends com.pulumi.resources.ResourceArgs {
     public static final DeviceLinkState Empty = new DeviceLinkState();
 
     /**
-     * definition of one or more devices belonging to the
-     * device link. See Device section below for more details.
+     * definition of one or more devices belonging to the device link. See Device section below for more details.
      * 
      */
     @Import(name="devices")
     private @Nullable Output<List<DeviceLinkDeviceArgs>> devices;
 
     /**
-     * @return definition of one or more devices belonging to the
-     * device link. See Device section below for more details.
+     * @return definition of one or more devices belonging to the device link. See Device section below for more details.
      * 
      */
     public Optional<Output<List<DeviceLinkDeviceArgs>>> devices() {
@@ -37,8 +35,7 @@ public final class DeviceLinkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * definition of one or more, inter metro, connections belonging
-     * to the device link. See Link section below for more details.
+     * definition of one or more, inter metro, connections belonging to the device link. See Link section below for more details.
      * 
      * @deprecated
      * Links is deprecated. Please use metro links instead.
@@ -49,8 +46,7 @@ public final class DeviceLinkState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<DeviceLinkLinkArgs>> links;
 
     /**
-     * @return definition of one or more, inter metro, connections belonging
-     * to the device link. See Link section below for more details.
+     * @return definition of one or more, inter metro, connections belonging to the device link. See Link section below for more details.
      * 
      * @deprecated
      * Links is deprecated. Please use metro links instead.
@@ -62,16 +58,14 @@ public final class DeviceLinkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * definition of one or more, inter metro, connections belonging
-     * to the device link. See Metro Link section below for more details.
+     * definition of one or more, inter metro, connections belonging to the device link. See Metro Link section below for more details.
      * 
      */
     @Import(name="metroLinks")
     private @Nullable Output<List<DeviceLinkMetroLinkArgs>> metroLinks;
 
     /**
-     * @return definition of one or more, inter metro, connections belonging
-     * to the device link. See Metro Link section below for more details.
+     * @return definition of one or more, inter metro, connections belonging to the device link. See Metro Link section below for more details.
      * 
      */
     public Optional<Output<List<DeviceLinkMetroLinkArgs>>> metroLinks() {
@@ -94,16 +88,14 @@ public final class DeviceLinkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Unique Identifier for the project resource where the device link is scoped to.If you
-     * leave it out, the device link will be created under the default project id of your organization.
+     * Unique Identifier for the project resource where the device link is scoped to.If you leave it out, the device link will be created under the default project id of your organization.
      * 
      */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
     /**
-     * @return Unique Identifier for the project resource where the device link is scoped to.If you
-     * leave it out, the device link will be created under the default project id of your organization.
+     * @return Unique Identifier for the project resource where the device link is scoped to.If you leave it out, the device link will be created under the default project id of your organization.
      * 
      */
     public Optional<Output<String>> projectId() {
@@ -111,16 +103,14 @@ public final class DeviceLinkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether the connection should be created through
-     * Fabric&#39;s primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
+     * Whether the connection should be created through Fabric&#39;s primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
      * 
      */
     @Import(name="redundancyType")
     private @Nullable Output<String> redundancyType;
 
     /**
-     * @return Whether the connection should be created through
-     * Fabric&#39;s primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
+     * @return Whether the connection should be created through Fabric&#39;s primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
      * 
      */
     public Optional<Output<String>> redundancyType() {
@@ -128,16 +118,14 @@ public final class DeviceLinkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * device link provisioning status on a given device. One of `PROVISIONING`,
-     * `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
+     * device link provisioning status on a given device. One of `PROVISIONING`, `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return device link provisioning status on a given device. One of `PROVISIONING`,
-     * `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
+     * @return device link provisioning status on a given device. One of `PROVISIONING`, `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -145,16 +133,14 @@ public final class DeviceLinkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * device link subnet in CIDR format. Not required for link
-     * between self configured devices.
+     * device link subnet in CIDR format. Not required for link between self configured devices.
      * 
      */
     @Import(name="subnet")
     private @Nullable Output<String> subnet;
 
     /**
-     * @return device link subnet in CIDR format. Not required for link
-     * between self configured devices.
+     * @return device link subnet in CIDR format. Not required for link between self configured devices.
      * 
      */
     public Optional<Output<String>> subnet() {
@@ -209,8 +195,7 @@ public final class DeviceLinkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param devices definition of one or more devices belonging to the
-         * device link. See Device section below for more details.
+         * @param devices definition of one or more devices belonging to the device link. See Device section below for more details.
          * 
          * @return builder
          * 
@@ -221,8 +206,7 @@ public final class DeviceLinkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param devices definition of one or more devices belonging to the
-         * device link. See Device section below for more details.
+         * @param devices definition of one or more devices belonging to the device link. See Device section below for more details.
          * 
          * @return builder
          * 
@@ -232,8 +216,7 @@ public final class DeviceLinkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param devices definition of one or more devices belonging to the
-         * device link. See Device section below for more details.
+         * @param devices definition of one or more devices belonging to the device link. See Device section below for more details.
          * 
          * @return builder
          * 
@@ -243,8 +226,7 @@ public final class DeviceLinkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param links definition of one or more, inter metro, connections belonging
-         * to the device link. See Link section below for more details.
+         * @param links definition of one or more, inter metro, connections belonging to the device link. See Link section below for more details.
          * 
          * @return builder
          * 
@@ -259,8 +241,7 @@ public final class DeviceLinkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param links definition of one or more, inter metro, connections belonging
-         * to the device link. See Link section below for more details.
+         * @param links definition of one or more, inter metro, connections belonging to the device link. See Link section below for more details.
          * 
          * @return builder
          * 
@@ -274,8 +255,7 @@ public final class DeviceLinkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param links definition of one or more, inter metro, connections belonging
-         * to the device link. See Link section below for more details.
+         * @param links definition of one or more, inter metro, connections belonging to the device link. See Link section below for more details.
          * 
          * @return builder
          * 
@@ -289,8 +269,7 @@ public final class DeviceLinkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param metroLinks definition of one or more, inter metro, connections belonging
-         * to the device link. See Metro Link section below for more details.
+         * @param metroLinks definition of one or more, inter metro, connections belonging to the device link. See Metro Link section below for more details.
          * 
          * @return builder
          * 
@@ -301,8 +280,7 @@ public final class DeviceLinkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param metroLinks definition of one or more, inter metro, connections belonging
-         * to the device link. See Metro Link section below for more details.
+         * @param metroLinks definition of one or more, inter metro, connections belonging to the device link. See Metro Link section below for more details.
          * 
          * @return builder
          * 
@@ -312,8 +290,7 @@ public final class DeviceLinkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param metroLinks definition of one or more, inter metro, connections belonging
-         * to the device link. See Metro Link section below for more details.
+         * @param metroLinks definition of one or more, inter metro, connections belonging to the device link. See Metro Link section below for more details.
          * 
          * @return builder
          * 
@@ -344,8 +321,7 @@ public final class DeviceLinkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectId Unique Identifier for the project resource where the device link is scoped to.If you
-         * leave it out, the device link will be created under the default project id of your organization.
+         * @param projectId Unique Identifier for the project resource where the device link is scoped to.If you leave it out, the device link will be created under the default project id of your organization.
          * 
          * @return builder
          * 
@@ -356,8 +332,7 @@ public final class DeviceLinkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectId Unique Identifier for the project resource where the device link is scoped to.If you
-         * leave it out, the device link will be created under the default project id of your organization.
+         * @param projectId Unique Identifier for the project resource where the device link is scoped to.If you leave it out, the device link will be created under the default project id of your organization.
          * 
          * @return builder
          * 
@@ -367,8 +342,7 @@ public final class DeviceLinkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param redundancyType Whether the connection should be created through
-         * Fabric&#39;s primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
+         * @param redundancyType Whether the connection should be created through Fabric&#39;s primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
          * 
          * @return builder
          * 
@@ -379,8 +353,7 @@ public final class DeviceLinkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param redundancyType Whether the connection should be created through
-         * Fabric&#39;s primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
+         * @param redundancyType Whether the connection should be created through Fabric&#39;s primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
          * 
          * @return builder
          * 
@@ -390,8 +363,7 @@ public final class DeviceLinkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status device link provisioning status on a given device. One of `PROVISIONING`,
-         * `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
+         * @param status device link provisioning status on a given device. One of `PROVISIONING`, `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
          * 
          * @return builder
          * 
@@ -402,8 +374,7 @@ public final class DeviceLinkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status device link provisioning status on a given device. One of `PROVISIONING`,
-         * `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
+         * @param status device link provisioning status on a given device. One of `PROVISIONING`, `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
          * 
          * @return builder
          * 
@@ -413,8 +384,7 @@ public final class DeviceLinkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param subnet device link subnet in CIDR format. Not required for link
-         * between self configured devices.
+         * @param subnet device link subnet in CIDR format. Not required for link between self configured devices.
          * 
          * @return builder
          * 
@@ -425,8 +395,7 @@ public final class DeviceLinkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param subnet device link subnet in CIDR format. Not required for link
-         * between self configured devices.
+         * @param subnet device link subnet in CIDR format. Not required for link between self configured devices.
          * 
          * @return builder
          * 

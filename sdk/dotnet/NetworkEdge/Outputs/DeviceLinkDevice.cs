@@ -22,8 +22,7 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Device network interface identifier to use for device link
-        /// connection.
+        /// Device network interface identifier to use for device link connection.
         /// </summary>
         public readonly int? InterfaceId;
         /// <summary>
@@ -31,8 +30,7 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
         /// </summary>
         public readonly string? IpAddress;
         /// <summary>
-        /// device link provisioning status on a given device. One of `PROVISIONING`,
-        /// `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
+        /// device link provisioning status on a given device. One of `PROVISIONING`, `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
         /// </summary>
         public readonly string? Status;
 

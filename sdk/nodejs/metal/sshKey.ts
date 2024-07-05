@@ -76,8 +76,7 @@ export class SshKey extends pulumi.CustomResource {
      */
     public /*out*/ readonly ownerId!: pulumi.Output<string>;
     /**
-     * The public key. If this is a file, it
-     * can be read using the file interpolation function
+     * The public key. If this is a file, it can be read using the file interpolation function
      */
     public readonly publicKey!: pulumi.Output<string>;
     /**
@@ -142,8 +141,7 @@ export interface SshKeyState {
      */
     ownerId?: pulumi.Input<string>;
     /**
-     * The public key. If this is a file, it
-     * can be read using the file interpolation function
+     * The public key. If this is a file, it can be read using the file interpolation function
      */
     publicKey?: pulumi.Input<string>;
     /**
@@ -161,8 +159,7 @@ export interface SshKeyArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The public key. If this is a file, it
-     * can be read using the file interpolation function
+     * The public key. If this is a file, it can be read using the file interpolation function
      */
     publicKey: pulumi.Input<string>;
 }

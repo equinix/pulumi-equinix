@@ -19,8 +19,7 @@ class DeviceNetworkTypeArgs:
         """
         The set of arguments for constructing a DeviceNetworkType resource.
         :param pulumi.Input[str] device_id: The ID of the device on which the network type should be set.
-        :param pulumi.Input[str] type: Network type to set. Must be one of `layer3`, `hybrid`, `hybrid-bonded`, `layer2-individual`
-               and `layer2-bonded`.
+        :param pulumi.Input[str] type: Network type to set. Must be one of `layer3`, `hybrid`, `hybrid-bonded`, `layer2-individual` and `layer2-bonded`.
         """
         pulumi.set(__self__, "device_id", device_id)
         pulumi.set(__self__, "type", type)
@@ -41,8 +40,7 @@ class DeviceNetworkTypeArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        Network type to set. Must be one of `layer3`, `hybrid`, `hybrid-bonded`, `layer2-individual`
-        and `layer2-bonded`.
+        Network type to set. Must be one of `layer3`, `hybrid`, `hybrid-bonded`, `layer2-individual` and `layer2-bonded`.
         """
         return pulumi.get(self, "type")
 
@@ -59,8 +57,7 @@ class _DeviceNetworkTypeState:
         """
         Input properties used for looking up and filtering DeviceNetworkType resources.
         :param pulumi.Input[str] device_id: The ID of the device on which the network type should be set.
-        :param pulumi.Input[str] type: Network type to set. Must be one of `layer3`, `hybrid`, `hybrid-bonded`, `layer2-individual`
-               and `layer2-bonded`.
+        :param pulumi.Input[str] type: Network type to set. Must be one of `layer3`, `hybrid`, `hybrid-bonded`, `layer2-individual` and `layer2-bonded`.
         """
         if device_id is not None:
             pulumi.set(__self__, "device_id", device_id)
@@ -83,8 +80,7 @@ class _DeviceNetworkTypeState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        Network type to set. Must be one of `layer3`, `hybrid`, `hybrid-bonded`, `layer2-individual`
-        and `layer2-bonded`.
+        Network type to set. Must be one of `layer3`, `hybrid`, `hybrid-bonded`, `layer2-individual` and `layer2-bonded`.
         """
         return pulumi.get(self, "type")
 
@@ -129,8 +125,7 @@ class DeviceNetworkType(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] device_id: The ID of the device on which the network type should be set.
-        :param pulumi.Input[str] type: Network type to set. Must be one of `layer3`, `hybrid`, `hybrid-bonded`, `layer2-individual`
-               and `layer2-bonded`.
+        :param pulumi.Input[str] type: Network type to set. Must be one of `layer3`, `hybrid`, `hybrid-bonded`, `layer2-individual` and `layer2-bonded`.
         """
         ...
     @overload
@@ -215,8 +210,7 @@ class DeviceNetworkType(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] device_id: The ID of the device on which the network type should be set.
-        :param pulumi.Input[str] type: Network type to set. Must be one of `layer3`, `hybrid`, `hybrid-bonded`, `layer2-individual`
-               and `layer2-bonded`.
+        :param pulumi.Input[str] type: Network type to set. Must be one of `layer3`, `hybrid`, `hybrid-bonded`, `layer2-individual` and `layer2-bonded`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -238,8 +232,7 @@ class DeviceNetworkType(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        Network type to set. Must be one of `layer3`, `hybrid`, `hybrid-bonded`, `layer2-individual`
-        and `layer2-bonded`.
+        Network type to set. Must be one of `layer3`, `hybrid`, `hybrid-bonded`, `layer2-individual` and `layer2-bonded`.
         """
         return pulumi.get(self, "type")
 

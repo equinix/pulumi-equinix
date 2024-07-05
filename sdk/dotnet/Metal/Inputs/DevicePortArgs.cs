@@ -13,31 +13,31 @@ namespace Pulumi.Equinix.Metal.Inputs
     public sealed class DevicePortArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether this port is part of a bond in bonded network setup.
+        /// Whether this port is part of a bond in bonded network setup
         /// </summary>
         [Input("bonded")]
         public Input<bool>? Bonded { get; set; }
 
         /// <summary>
-        /// ID of the port.
+        /// The ID of the device
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// MAC address assigned to the port.
+        /// MAC address assigned to the port
         /// </summary>
         [Input("mac")]
         public Input<string>? Mac { get; set; }
 
         /// <summary>
-        /// Name of the port (e.g. `eth0`, or `bond0`).
+        /// Name of the port (e.g. eth0, or bond0)
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Type of the port (e.g. `NetworkPort` or `NetworkBondPort`).
+        /// One of [private_ipv4, public_ipv4, public_ipv6]
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

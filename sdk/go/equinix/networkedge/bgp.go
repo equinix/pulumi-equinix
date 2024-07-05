@@ -13,8 +13,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Resource `networkedge.Bgp` allows creation and management of Equinix Network
-// Edge BGP peering configurations.
+// Resource `networkedge.Bgp` allows creation and management of Equinix Network Edge BGP peering configurations.
 //
 // ## Example Usage
 // ```go
@@ -60,25 +59,21 @@ type Bgp struct {
 
 	// shared key used for BGP peer authentication.
 	AuthenticationKey pulumi.StringPtrOutput `pulumi:"authenticationKey"`
-	// identifier of a connection established between.
-	// network device and remote service provider that will be used for peering.
+	// identifier of a connection established between. network device and remote service provider that will be used for peering.
 	ConnectionId pulumi.StringOutput `pulumi:"connectionId"`
-	// unique identifier of a network device that is a local peer in a given BGP peering
-	// configuration.
+	// unique identifier of a network device that is a local peer in a given BGP peering configuration.
 	DeviceId pulumi.StringOutput `pulumi:"deviceId"`
 	// Local ASN number.
 	LocalAsn pulumi.IntOutput `pulumi:"localAsn"`
 	// IP address in CIDR format of a local device.
 	LocalIpAddress pulumi.StringOutput `pulumi:"localIpAddress"`
-	// BGP peering configuration provisioning status, one of `PROVISIONING`,
-	// `PENDING_UPDATE`, `PROVISIONED`, `FAILED`.
+	// BGP peering configuration provisioning status, one of `PROVISIONING`, `PENDING_UPDATE`, `PROVISIONED`, `FAILED`.
 	ProvisioningStatus pulumi.StringOutput `pulumi:"provisioningStatus"`
 	// Remote ASN number.
 	RemoteAsn pulumi.IntOutput `pulumi:"remoteAsn"`
 	// IP address of remote peer.
 	RemoteIpAddress pulumi.StringOutput `pulumi:"remoteIpAddress"`
-	// BGP peer state, one of `Idle`, `Connect`, `Active`, `OpenSent`, `OpenConfirm`,
-	// `Established`.
+	// BGP peer state, one of `Idle`, `Connect`, `Active`, `OpenSent`, `OpenConfirm`, `Established`.
 	State pulumi.StringOutput `pulumi:"state"`
 	// BGP peering configuration unique identifier.
 	Uuid pulumi.StringOutput `pulumi:"uuid"`
@@ -138,25 +133,21 @@ func GetBgp(ctx *pulumi.Context,
 type bgpState struct {
 	// shared key used for BGP peer authentication.
 	AuthenticationKey *string `pulumi:"authenticationKey"`
-	// identifier of a connection established between.
-	// network device and remote service provider that will be used for peering.
+	// identifier of a connection established between. network device and remote service provider that will be used for peering.
 	ConnectionId *string `pulumi:"connectionId"`
-	// unique identifier of a network device that is a local peer in a given BGP peering
-	// configuration.
+	// unique identifier of a network device that is a local peer in a given BGP peering configuration.
 	DeviceId *string `pulumi:"deviceId"`
 	// Local ASN number.
 	LocalAsn *int `pulumi:"localAsn"`
 	// IP address in CIDR format of a local device.
 	LocalIpAddress *string `pulumi:"localIpAddress"`
-	// BGP peering configuration provisioning status, one of `PROVISIONING`,
-	// `PENDING_UPDATE`, `PROVISIONED`, `FAILED`.
+	// BGP peering configuration provisioning status, one of `PROVISIONING`, `PENDING_UPDATE`, `PROVISIONED`, `FAILED`.
 	ProvisioningStatus *string `pulumi:"provisioningStatus"`
 	// Remote ASN number.
 	RemoteAsn *int `pulumi:"remoteAsn"`
 	// IP address of remote peer.
 	RemoteIpAddress *string `pulumi:"remoteIpAddress"`
-	// BGP peer state, one of `Idle`, `Connect`, `Active`, `OpenSent`, `OpenConfirm`,
-	// `Established`.
+	// BGP peer state, one of `Idle`, `Connect`, `Active`, `OpenSent`, `OpenConfirm`, `Established`.
 	State *string `pulumi:"state"`
 	// BGP peering configuration unique identifier.
 	Uuid *string `pulumi:"uuid"`
@@ -165,25 +156,21 @@ type bgpState struct {
 type BgpState struct {
 	// shared key used for BGP peer authentication.
 	AuthenticationKey pulumi.StringPtrInput
-	// identifier of a connection established between.
-	// network device and remote service provider that will be used for peering.
+	// identifier of a connection established between. network device and remote service provider that will be used for peering.
 	ConnectionId pulumi.StringPtrInput
-	// unique identifier of a network device that is a local peer in a given BGP peering
-	// configuration.
+	// unique identifier of a network device that is a local peer in a given BGP peering configuration.
 	DeviceId pulumi.StringPtrInput
 	// Local ASN number.
 	LocalAsn pulumi.IntPtrInput
 	// IP address in CIDR format of a local device.
 	LocalIpAddress pulumi.StringPtrInput
-	// BGP peering configuration provisioning status, one of `PROVISIONING`,
-	// `PENDING_UPDATE`, `PROVISIONED`, `FAILED`.
+	// BGP peering configuration provisioning status, one of `PROVISIONING`, `PENDING_UPDATE`, `PROVISIONED`, `FAILED`.
 	ProvisioningStatus pulumi.StringPtrInput
 	// Remote ASN number.
 	RemoteAsn pulumi.IntPtrInput
 	// IP address of remote peer.
 	RemoteIpAddress pulumi.StringPtrInput
-	// BGP peer state, one of `Idle`, `Connect`, `Active`, `OpenSent`, `OpenConfirm`,
-	// `Established`.
+	// BGP peer state, one of `Idle`, `Connect`, `Active`, `OpenSent`, `OpenConfirm`, `Established`.
 	State pulumi.StringPtrInput
 	// BGP peering configuration unique identifier.
 	Uuid pulumi.StringPtrInput
@@ -196,8 +183,7 @@ func (BgpState) ElementType() reflect.Type {
 type bgpArgs struct {
 	// shared key used for BGP peer authentication.
 	AuthenticationKey *string `pulumi:"authenticationKey"`
-	// identifier of a connection established between.
-	// network device and remote service provider that will be used for peering.
+	// identifier of a connection established between. network device and remote service provider that will be used for peering.
 	ConnectionId string `pulumi:"connectionId"`
 	// Local ASN number.
 	LocalAsn int `pulumi:"localAsn"`
@@ -213,8 +199,7 @@ type bgpArgs struct {
 type BgpArgs struct {
 	// shared key used for BGP peer authentication.
 	AuthenticationKey pulumi.StringPtrInput
-	// identifier of a connection established between.
-	// network device and remote service provider that will be used for peering.
+	// identifier of a connection established between. network device and remote service provider that will be used for peering.
 	ConnectionId pulumi.StringInput
 	// Local ASN number.
 	LocalAsn pulumi.IntInput
@@ -318,14 +303,12 @@ func (o BgpOutput) AuthenticationKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Bgp) pulumi.StringPtrOutput { return v.AuthenticationKey }).(pulumi.StringPtrOutput)
 }
 
-// identifier of a connection established between.
-// network device and remote service provider that will be used for peering.
+// identifier of a connection established between. network device and remote service provider that will be used for peering.
 func (o BgpOutput) ConnectionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Bgp) pulumi.StringOutput { return v.ConnectionId }).(pulumi.StringOutput)
 }
 
-// unique identifier of a network device that is a local peer in a given BGP peering
-// configuration.
+// unique identifier of a network device that is a local peer in a given BGP peering configuration.
 func (o BgpOutput) DeviceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Bgp) pulumi.StringOutput { return v.DeviceId }).(pulumi.StringOutput)
 }
@@ -340,8 +323,7 @@ func (o BgpOutput) LocalIpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *Bgp) pulumi.StringOutput { return v.LocalIpAddress }).(pulumi.StringOutput)
 }
 
-// BGP peering configuration provisioning status, one of `PROVISIONING`,
-// `PENDING_UPDATE`, `PROVISIONED`, `FAILED`.
+// BGP peering configuration provisioning status, one of `PROVISIONING`, `PENDING_UPDATE`, `PROVISIONED`, `FAILED`.
 func (o BgpOutput) ProvisioningStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *Bgp) pulumi.StringOutput { return v.ProvisioningStatus }).(pulumi.StringOutput)
 }
@@ -356,8 +338,7 @@ func (o BgpOutput) RemoteIpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *Bgp) pulumi.StringOutput { return v.RemoteIpAddress }).(pulumi.StringOutput)
 }
 
-// BGP peer state, one of `Idle`, `Connect`, `Active`, `OpenSent`, `OpenConfirm`,
-// `Established`.
+// BGP peer state, one of `Idle`, `Connect`, `Active`, `OpenSent`, `OpenConfirm`, `Established`.
 func (o BgpOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Bgp) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }

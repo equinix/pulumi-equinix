@@ -67,13 +67,11 @@ class VlanArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
     def facility(self) -> Optional[pulumi.Input[Union[str, 'Facility']]]:
         """
         Facility where to create the VLAN. Use metro instead; read the facility to metro migration guide
         """
-        warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
-        pulumi.log.warn("""facility is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
-
         return pulumi.get(self, "facility")
 
     @facility.setter
@@ -149,13 +147,11 @@ class _VlanState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
     def facility(self) -> Optional[pulumi.Input[Union[str, 'Facility']]]:
         """
         Facility where to create the VLAN. Use metro instead; read the facility to metro migration guide
         """
-        warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
-        pulumi.log.warn("""facility is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
-
         return pulumi.get(self, "facility")
 
     @facility.setter
@@ -215,8 +211,8 @@ class Vlan(pulumi.CustomResource):
 
         To learn more about Layer 2 networking in Equinix Metal, refer to
 
-        * <https://metal.equinix.com/developers/docs/networking/layer2/>
-        * <https://metal.equinix.com/developers/docs/networking/layer2-configs/>
+        * https://metal.equinix.com/developers/docs/networking/layer2/
+        * https://metal.equinix.com/developers/docs/networking/layer2-configs/
 
         ## Example Usage
         ```python
@@ -264,8 +260,8 @@ class Vlan(pulumi.CustomResource):
 
         To learn more about Layer 2 networking in Equinix Metal, refer to
 
-        * <https://metal.equinix.com/developers/docs/networking/layer2/>
-        * <https://metal.equinix.com/developers/docs/networking/layer2-configs/>
+        * https://metal.equinix.com/developers/docs/networking/layer2/
+        * https://metal.equinix.com/developers/docs/networking/layer2-configs/
 
         ## Example Usage
         ```python
@@ -379,13 +375,11 @@ class Vlan(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
     def facility(self) -> pulumi.Output[str]:
         """
         Facility where to create the VLAN. Use metro instead; read the facility to metro migration guide
         """
-        warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
-        pulumi.log.warn("""facility is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
-
         return pulumi.get(self, "facility")
 
     @property

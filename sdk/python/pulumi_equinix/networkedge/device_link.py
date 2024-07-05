@@ -25,19 +25,13 @@ class DeviceLinkArgs:
                  subnet: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a DeviceLink resource.
-        :param pulumi.Input[Sequence[pulumi.Input['DeviceLinkDeviceArgs']]] devices: definition of one or more devices belonging to the
-               device link. See Device section below for more details.
-        :param pulumi.Input[Sequence[pulumi.Input['DeviceLinkLinkArgs']]] links: definition of one or more, inter metro, connections belonging
-               to the device link. See Link section below for more details.
-        :param pulumi.Input[Sequence[pulumi.Input['DeviceLinkMetroLinkArgs']]] metro_links: definition of one or more, inter metro, connections belonging
-               to the device link. See Metro Link section below for more details.
+        :param pulumi.Input[Sequence[pulumi.Input['DeviceLinkDeviceArgs']]] devices: definition of one or more devices belonging to the device link. See Device section below for more details.
+        :param pulumi.Input[Sequence[pulumi.Input['DeviceLinkLinkArgs']]] links: definition of one or more, inter metro, connections belonging to the device link. See Link section below for more details.
+        :param pulumi.Input[Sequence[pulumi.Input['DeviceLinkMetroLinkArgs']]] metro_links: definition of one or more, inter metro, connections belonging to the device link. See Metro Link section below for more details.
         :param pulumi.Input[str] name: device link name.
-        :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the device link is scoped to.If you
-               leave it out, the device link will be created under the default project id of your organization.
-        :param pulumi.Input[str] redundancy_type: Whether the connection should be created through 
-               Fabric's primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
-        :param pulumi.Input[str] subnet: device link subnet in CIDR format. Not required for link
-               between self configured devices.
+        :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the device link is scoped to.If you leave it out, the device link will be created under the default project id of your organization.
+        :param pulumi.Input[str] redundancy_type: Whether the connection should be created through Fabric's primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
+        :param pulumi.Input[str] subnet: device link subnet in CIDR format. Not required for link between self configured devices.
         """
         pulumi.set(__self__, "devices", devices)
         if links is not None:
@@ -60,8 +54,7 @@ class DeviceLinkArgs:
     @pulumi.getter
     def devices(self) -> pulumi.Input[Sequence[pulumi.Input['DeviceLinkDeviceArgs']]]:
         """
-        definition of one or more devices belonging to the
-        device link. See Device section below for more details.
+        definition of one or more devices belonging to the device link. See Device section below for more details.
         """
         return pulumi.get(self, "devices")
 
@@ -71,14 +64,11 @@ class DeviceLinkArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Links is deprecated. Please use metro links instead.""")
     def links(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeviceLinkLinkArgs']]]]:
         """
-        definition of one or more, inter metro, connections belonging
-        to the device link. See Link section below for more details.
+        definition of one or more, inter metro, connections belonging to the device link. See Link section below for more details.
         """
-        warnings.warn("""Links is deprecated. Please use metro links instead.""", DeprecationWarning)
-        pulumi.log.warn("""links is deprecated: Links is deprecated. Please use metro links instead.""")
-
         return pulumi.get(self, "links")
 
     @links.setter
@@ -89,8 +79,7 @@ class DeviceLinkArgs:
     @pulumi.getter(name="metroLinks")
     def metro_links(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeviceLinkMetroLinkArgs']]]]:
         """
-        definition of one or more, inter metro, connections belonging
-        to the device link. See Metro Link section below for more details.
+        definition of one or more, inter metro, connections belonging to the device link. See Metro Link section below for more details.
         """
         return pulumi.get(self, "metro_links")
 
@@ -114,8 +103,7 @@ class DeviceLinkArgs:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique Identifier for the project resource where the device link is scoped to.If you
-        leave it out, the device link will be created under the default project id of your organization.
+        Unique Identifier for the project resource where the device link is scoped to.If you leave it out, the device link will be created under the default project id of your organization.
         """
         return pulumi.get(self, "project_id")
 
@@ -127,8 +115,7 @@ class DeviceLinkArgs:
     @pulumi.getter(name="redundancyType")
     def redundancy_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Whether the connection should be created through 
-        Fabric's primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
+        Whether the connection should be created through Fabric's primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
         """
         return pulumi.get(self, "redundancy_type")
 
@@ -140,8 +127,7 @@ class DeviceLinkArgs:
     @pulumi.getter
     def subnet(self) -> Optional[pulumi.Input[str]]:
         """
-        device link subnet in CIDR format. Not required for link
-        between self configured devices.
+        device link subnet in CIDR format. Not required for link between self configured devices.
         """
         return pulumi.get(self, "subnet")
 
@@ -164,21 +150,14 @@ class _DeviceLinkState:
                  uuid: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering DeviceLink resources.
-        :param pulumi.Input[Sequence[pulumi.Input['DeviceLinkDeviceArgs']]] devices: definition of one or more devices belonging to the
-               device link. See Device section below for more details.
-        :param pulumi.Input[Sequence[pulumi.Input['DeviceLinkLinkArgs']]] links: definition of one or more, inter metro, connections belonging
-               to the device link. See Link section below for more details.
-        :param pulumi.Input[Sequence[pulumi.Input['DeviceLinkMetroLinkArgs']]] metro_links: definition of one or more, inter metro, connections belonging
-               to the device link. See Metro Link section below for more details.
+        :param pulumi.Input[Sequence[pulumi.Input['DeviceLinkDeviceArgs']]] devices: definition of one or more devices belonging to the device link. See Device section below for more details.
+        :param pulumi.Input[Sequence[pulumi.Input['DeviceLinkLinkArgs']]] links: definition of one or more, inter metro, connections belonging to the device link. See Link section below for more details.
+        :param pulumi.Input[Sequence[pulumi.Input['DeviceLinkMetroLinkArgs']]] metro_links: definition of one or more, inter metro, connections belonging to the device link. See Metro Link section below for more details.
         :param pulumi.Input[str] name: device link name.
-        :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the device link is scoped to.If you
-               leave it out, the device link will be created under the default project id of your organization.
-        :param pulumi.Input[str] redundancy_type: Whether the connection should be created through 
-               Fabric's primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
-        :param pulumi.Input[str] status: device link provisioning status on a given device. One of `PROVISIONING`,
-               `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
-        :param pulumi.Input[str] subnet: device link subnet in CIDR format. Not required for link
-               between self configured devices.
+        :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the device link is scoped to.If you leave it out, the device link will be created under the default project id of your organization.
+        :param pulumi.Input[str] redundancy_type: Whether the connection should be created through Fabric's primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
+        :param pulumi.Input[str] status: device link provisioning status on a given device. One of `PROVISIONING`, `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
+        :param pulumi.Input[str] subnet: device link subnet in CIDR format. Not required for link between self configured devices.
         :param pulumi.Input[str] uuid: Device link unique identifier.
         """
         if devices is not None:
@@ -207,8 +186,7 @@ class _DeviceLinkState:
     @pulumi.getter
     def devices(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeviceLinkDeviceArgs']]]]:
         """
-        definition of one or more devices belonging to the
-        device link. See Device section below for more details.
+        definition of one or more devices belonging to the device link. See Device section below for more details.
         """
         return pulumi.get(self, "devices")
 
@@ -218,14 +196,11 @@ class _DeviceLinkState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Links is deprecated. Please use metro links instead.""")
     def links(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeviceLinkLinkArgs']]]]:
         """
-        definition of one or more, inter metro, connections belonging
-        to the device link. See Link section below for more details.
+        definition of one or more, inter metro, connections belonging to the device link. See Link section below for more details.
         """
-        warnings.warn("""Links is deprecated. Please use metro links instead.""", DeprecationWarning)
-        pulumi.log.warn("""links is deprecated: Links is deprecated. Please use metro links instead.""")
-
         return pulumi.get(self, "links")
 
     @links.setter
@@ -236,8 +211,7 @@ class _DeviceLinkState:
     @pulumi.getter(name="metroLinks")
     def metro_links(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeviceLinkMetroLinkArgs']]]]:
         """
-        definition of one or more, inter metro, connections belonging
-        to the device link. See Metro Link section below for more details.
+        definition of one or more, inter metro, connections belonging to the device link. See Metro Link section below for more details.
         """
         return pulumi.get(self, "metro_links")
 
@@ -261,8 +235,7 @@ class _DeviceLinkState:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique Identifier for the project resource where the device link is scoped to.If you
-        leave it out, the device link will be created under the default project id of your organization.
+        Unique Identifier for the project resource where the device link is scoped to.If you leave it out, the device link will be created under the default project id of your organization.
         """
         return pulumi.get(self, "project_id")
 
@@ -274,8 +247,7 @@ class _DeviceLinkState:
     @pulumi.getter(name="redundancyType")
     def redundancy_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Whether the connection should be created through 
-        Fabric's primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
+        Whether the connection should be created through Fabric's primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
         """
         return pulumi.get(self, "redundancy_type")
 
@@ -287,8 +259,7 @@ class _DeviceLinkState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        device link provisioning status on a given device. One of `PROVISIONING`,
-        `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
+        device link provisioning status on a given device. One of `PROVISIONING`, `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
         """
         return pulumi.get(self, "status")
 
@@ -300,8 +271,7 @@ class _DeviceLinkState:
     @pulumi.getter
     def subnet(self) -> Optional[pulumi.Input[str]]:
         """
-        device link subnet in CIDR format. Not required for link
-        between self configured devices.
+        device link subnet in CIDR format. Not required for link between self configured devices.
         """
         return pulumi.get(self, "subnet")
 
@@ -336,8 +306,7 @@ class DeviceLink(pulumi.CustomResource):
                  subnet: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Resource `networkedge.DeviceLink` allows creation and management of Equinix
-        Network Edge virtual network device links.
+        Resource `networkedge.DeviceLink` allows creation and management of Equinix Network Edge virtual network device links.
 
         ## Example Usage
         ```python
@@ -389,19 +358,13 @@ class DeviceLink(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceLinkDeviceArgs']]]] devices: definition of one or more devices belonging to the
-               device link. See Device section below for more details.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceLinkLinkArgs']]]] links: definition of one or more, inter metro, connections belonging
-               to the device link. See Link section below for more details.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceLinkMetroLinkArgs']]]] metro_links: definition of one or more, inter metro, connections belonging
-               to the device link. See Metro Link section below for more details.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceLinkDeviceArgs']]]] devices: definition of one or more devices belonging to the device link. See Device section below for more details.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceLinkLinkArgs']]]] links: definition of one or more, inter metro, connections belonging to the device link. See Link section below for more details.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceLinkMetroLinkArgs']]]] metro_links: definition of one or more, inter metro, connections belonging to the device link. See Metro Link section below for more details.
         :param pulumi.Input[str] name: device link name.
-        :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the device link is scoped to.If you
-               leave it out, the device link will be created under the default project id of your organization.
-        :param pulumi.Input[str] redundancy_type: Whether the connection should be created through 
-               Fabric's primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
-        :param pulumi.Input[str] subnet: device link subnet in CIDR format. Not required for link
-               between self configured devices.
+        :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the device link is scoped to.If you leave it out, the device link will be created under the default project id of your organization.
+        :param pulumi.Input[str] redundancy_type: Whether the connection should be created through Fabric's primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
+        :param pulumi.Input[str] subnet: device link subnet in CIDR format. Not required for link between self configured devices.
         """
         ...
     @overload
@@ -410,8 +373,7 @@ class DeviceLink(pulumi.CustomResource):
                  args: DeviceLinkArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Resource `networkedge.DeviceLink` allows creation and management of Equinix
-        Network Edge virtual network device links.
+        Resource `networkedge.DeviceLink` allows creation and management of Equinix Network Edge virtual network device links.
 
         ## Example Usage
         ```python
@@ -529,21 +491,14 @@ class DeviceLink(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceLinkDeviceArgs']]]] devices: definition of one or more devices belonging to the
-               device link. See Device section below for more details.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceLinkLinkArgs']]]] links: definition of one or more, inter metro, connections belonging
-               to the device link. See Link section below for more details.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceLinkMetroLinkArgs']]]] metro_links: definition of one or more, inter metro, connections belonging
-               to the device link. See Metro Link section below for more details.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceLinkDeviceArgs']]]] devices: definition of one or more devices belonging to the device link. See Device section below for more details.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceLinkLinkArgs']]]] links: definition of one or more, inter metro, connections belonging to the device link. See Link section below for more details.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceLinkMetroLinkArgs']]]] metro_links: definition of one or more, inter metro, connections belonging to the device link. See Metro Link section below for more details.
         :param pulumi.Input[str] name: device link name.
-        :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the device link is scoped to.If you
-               leave it out, the device link will be created under the default project id of your organization.
-        :param pulumi.Input[str] redundancy_type: Whether the connection should be created through 
-               Fabric's primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
-        :param pulumi.Input[str] status: device link provisioning status on a given device. One of `PROVISIONING`,
-               `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
-        :param pulumi.Input[str] subnet: device link subnet in CIDR format. Not required for link
-               between self configured devices.
+        :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the device link is scoped to.If you leave it out, the device link will be created under the default project id of your organization.
+        :param pulumi.Input[str] redundancy_type: Whether the connection should be created through Fabric's primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
+        :param pulumi.Input[str] status: device link provisioning status on a given device. One of `PROVISIONING`, `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
+        :param pulumi.Input[str] subnet: device link subnet in CIDR format. Not required for link between self configured devices.
         :param pulumi.Input[str] uuid: Device link unique identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -565,29 +520,24 @@ class DeviceLink(pulumi.CustomResource):
     @pulumi.getter
     def devices(self) -> pulumi.Output[Sequence['outputs.DeviceLinkDevice']]:
         """
-        definition of one or more devices belonging to the
-        device link. See Device section below for more details.
+        definition of one or more devices belonging to the device link. See Device section below for more details.
         """
         return pulumi.get(self, "devices")
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Links is deprecated. Please use metro links instead.""")
     def links(self) -> pulumi.Output[Optional[Sequence['outputs.DeviceLinkLink']]]:
         """
-        definition of one or more, inter metro, connections belonging
-        to the device link. See Link section below for more details.
+        definition of one or more, inter metro, connections belonging to the device link. See Link section below for more details.
         """
-        warnings.warn("""Links is deprecated. Please use metro links instead.""", DeprecationWarning)
-        pulumi.log.warn("""links is deprecated: Links is deprecated. Please use metro links instead.""")
-
         return pulumi.get(self, "links")
 
     @property
     @pulumi.getter(name="metroLinks")
     def metro_links(self) -> pulumi.Output[Optional[Sequence['outputs.DeviceLinkMetroLink']]]:
         """
-        definition of one or more, inter metro, connections belonging
-        to the device link. See Metro Link section below for more details.
+        definition of one or more, inter metro, connections belonging to the device link. See Metro Link section below for more details.
         """
         return pulumi.get(self, "metro_links")
 
@@ -603,8 +553,7 @@ class DeviceLink(pulumi.CustomResource):
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[str]:
         """
-        Unique Identifier for the project resource where the device link is scoped to.If you
-        leave it out, the device link will be created under the default project id of your organization.
+        Unique Identifier for the project resource where the device link is scoped to.If you leave it out, the device link will be created under the default project id of your organization.
         """
         return pulumi.get(self, "project_id")
 
@@ -612,8 +561,7 @@ class DeviceLink(pulumi.CustomResource):
     @pulumi.getter(name="redundancyType")
     def redundancy_type(self) -> pulumi.Output[Optional[str]]:
         """
-        Whether the connection should be created through 
-        Fabric's primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
+        Whether the connection should be created through Fabric's primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
         """
         return pulumi.get(self, "redundancy_type")
 
@@ -621,8 +569,7 @@ class DeviceLink(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        device link provisioning status on a given device. One of `PROVISIONING`,
-        `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
+        device link provisioning status on a given device. One of `PROVISIONING`, `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
         """
         return pulumi.get(self, "status")
 
@@ -630,8 +577,7 @@ class DeviceLink(pulumi.CustomResource):
     @pulumi.getter
     def subnet(self) -> pulumi.Output[Optional[str]]:
         """
-        device link subnet in CIDR format. Not required for link
-        between self configured devices.
+        device link subnet in CIDR format. Not required for link between self configured devices.
         """
         return pulumi.get(self, "subnet")
 

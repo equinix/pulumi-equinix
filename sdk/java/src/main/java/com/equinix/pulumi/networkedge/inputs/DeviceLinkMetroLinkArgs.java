@@ -14,16 +14,14 @@ public final class DeviceLinkMetroLinkArgs extends com.pulumi.resources.Resource
     public static final DeviceLinkMetroLinkArgs Empty = new DeviceLinkMetroLinkArgs();
 
     /**
-     * billing account number to be used for
-     * connection charges
+     * billing account number to be used for connection charges
      * 
      */
     @Import(name="accountNumber", required=true)
     private Output<String> accountNumber;
 
     /**
-     * @return billing account number to be used for
-     * connection charges
+     * @return billing account number to be used for connection charges
      * 
      */
     public Output<String> accountNumber() {
@@ -103,8 +101,7 @@ public final class DeviceLinkMetroLinkArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param accountNumber billing account number to be used for
-         * connection charges
+         * @param accountNumber billing account number to be used for connection charges
          * 
          * @return builder
          * 
@@ -115,8 +112,7 @@ public final class DeviceLinkMetroLinkArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param accountNumber billing account number to be used for
-         * connection charges
+         * @param accountNumber billing account number to be used for connection charges
          * 
          * @return builder
          * 

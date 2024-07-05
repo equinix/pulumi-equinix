@@ -10,11 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Equinix.NetworkEdge
 {
     /// <summary>
-    /// Resource `equinix.networkedge.AclTemplate` allows creation and management of
-    /// Equinix Network Edge device Access Control List templates.
+    /// Resource `equinix.networkedge.AclTemplate` allows creation and management of Equinix Network Edge device Access Control List templates.
     /// 
-    /// Device ACL templates give possibility to define set of rules will allowed inbound
-    /// traffic. Templates can be assigned to the network devices.
+    /// Device ACL templates give possibility to define set of rules will allowed inbound traffic. Templates can be assigned to the network devices.
     /// 
     /// ## Example Usage
     /// ```csharp
@@ -74,8 +72,7 @@ namespace Pulumi.Equinix.NetworkEdge
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Status of ACL template provisioning process, where template was applied.
-        /// One of `PROVISIONING`, `PROVISIONED`.
+        /// Status of ACL template provisioning process, where template was applied. One of `PROVISIONING`, `PROVISIONED`.
         /// </summary>
         [Output("deviceAclStatus")]
         public Output<string> DeviceAclStatus { get; private set; } = null!;
@@ -93,8 +90,7 @@ namespace Pulumi.Equinix.NetworkEdge
         public Output<string> DeviceId { get; private set; } = null!;
 
         /// <summary>
-        /// One or more rules to specify allowed inbound traffic.
-        /// Rules are ordered, matching traffic rule stops processing subsequent ones.
+        /// One or more rules to specify allowed inbound traffic. Rules are ordered, matching traffic rule stops processing subsequent ones.
         /// 
         /// The `inbound_rule` block has below fields:
         /// </summary>
@@ -114,8 +110,7 @@ namespace Pulumi.Equinix.NetworkEdge
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Unique Identifier for the project resource where the acl template is scoped to.If you
-        /// leave it out, the ACL template will be created under the default project id of your organization.
+        /// Unique Identifier for the project resource where the acl template is scoped to.If you leave it out, the ACL template will be created under the default project id of your organization.
         /// </summary>
         [Output("projectId")]
         public Output<string> ProjectId { get; private set; } = null!;
@@ -183,8 +178,7 @@ namespace Pulumi.Equinix.NetworkEdge
         private InputList<Inputs.AclTemplateInboundRuleArgs>? _inboundRules;
 
         /// <summary>
-        /// One or more rules to specify allowed inbound traffic.
-        /// Rules are ordered, matching traffic rule stops processing subsequent ones.
+        /// One or more rules to specify allowed inbound traffic. Rules are ordered, matching traffic rule stops processing subsequent ones.
         /// 
         /// The `inbound_rule` block has below fields:
         /// </summary>
@@ -207,8 +201,7 @@ namespace Pulumi.Equinix.NetworkEdge
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Unique Identifier for the project resource where the acl template is scoped to.If you
-        /// leave it out, the ACL template will be created under the default project id of your organization.
+        /// Unique Identifier for the project resource where the acl template is scoped to.If you leave it out, the ACL template will be created under the default project id of your organization.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -228,8 +221,7 @@ namespace Pulumi.Equinix.NetworkEdge
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Status of ACL template provisioning process, where template was applied.
-        /// One of `PROVISIONING`, `PROVISIONED`.
+        /// Status of ACL template provisioning process, where template was applied. One of `PROVISIONING`, `PROVISIONED`.
         /// </summary>
         [Input("deviceAclStatus")]
         public Input<string>? DeviceAclStatus { get; set; }
@@ -256,8 +248,7 @@ namespace Pulumi.Equinix.NetworkEdge
         private InputList<Inputs.AclTemplateInboundRuleGetArgs>? _inboundRules;
 
         /// <summary>
-        /// One or more rules to specify allowed inbound traffic.
-        /// Rules are ordered, matching traffic rule stops processing subsequent ones.
+        /// One or more rules to specify allowed inbound traffic. Rules are ordered, matching traffic rule stops processing subsequent ones.
         /// 
         /// The `inbound_rule` block has below fields:
         /// </summary>
@@ -280,8 +271,7 @@ namespace Pulumi.Equinix.NetworkEdge
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Unique Identifier for the project resource where the acl template is scoped to.If you
-        /// leave it out, the ACL template will be created under the default project id of your organization.
+        /// Unique Identifier for the project resource where the acl template is scoped to.If you leave it out, the ACL template will be created under the default project id of your organization.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }

@@ -17,8 +17,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Use this resource to associate VLAN with a Dedicated Port from
- * [Equinix Fabric - software-defined interconnections](https://metal.equinix.com/developers/docs/networking/fabric/#associating-a-vlan-with-a-dedicated-port).
+ * Use this resource to associate VLAN with a Dedicated Port from [Equinix Fabric - software-defined interconnections](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/#associating-a-vlan-with-a-dedicated-port).
  * 
  * See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
  * 
@@ -171,14 +170,14 @@ public class VirtualCircuit extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.nniVlan);
     }
     /**
-     * NNI VLAN parameters, see the [documentation for Equinix Fabric](https://metal.equinix.com/developers/docs/networking/fabric/).
+     * NNI VLAN parameters, see the [documentation for Equinix Fabric](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/).
      * 
      */
     @Export(name="nniVnid", refs={Integer.class}, tree="[0]")
     private Output<Integer> nniVnid;
 
     /**
-     * @return NNI VLAN parameters, see the [documentation for Equinix Fabric](https://metal.equinix.com/developers/docs/networking/fabric/).
+     * @return NNI VLAN parameters, see the [documentation for Equinix Fabric](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/).
      * 
      */
     public Output<Integer> nniVnid() {
@@ -255,10 +254,8 @@ public class VirtualCircuit extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * A subnet from one of the IP
-     * blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.
-     * * For a /31 block, it will only have two IP addresses, which will be used for
-     *   the metal_ip and customer_ip.
+     * A subnet from one of the IP blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.
+     * * For a /31 block, it will only have two IP addresses, which will be used for the metal_ip and customer_ip.
      * * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
      * 
      */
@@ -266,10 +263,8 @@ public class VirtualCircuit extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> subnet;
 
     /**
-     * @return A subnet from one of the IP
-     * blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.
-     * * For a /31 block, it will only have two IP addresses, which will be used for
-     *   the metal_ip and customer_ip.
+     * @return A subnet from one of the IP blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.
+     * * For a /31 block, it will only have two IP addresses, which will be used for the metal_ip and customer_ip.
      * * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
      * 
      */
@@ -305,14 +300,14 @@ public class VirtualCircuit extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.vlanId);
     }
     /**
-     * VNID VLAN parameter, see the [documentation for Equinix Fabric](https://metal.equinix.com/developers/docs/networking/fabric/).
+     * VNID VLAN parameter, see the [documentation for Equinix Fabric](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/).
      * 
      */
     @Export(name="vnid", refs={Integer.class}, tree="[0]")
     private Output<Integer> vnid;
 
     /**
-     * @return VNID VLAN parameter, see the [documentation for Equinix Fabric](https://metal.equinix.com/developers/docs/networking/fabric/).
+     * @return VNID VLAN parameter, see the [documentation for Equinix Fabric](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/).
      * 
      */
     public Output<Integer> vnid() {

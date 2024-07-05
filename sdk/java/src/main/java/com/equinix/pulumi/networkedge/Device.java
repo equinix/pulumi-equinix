@@ -23,23 +23,17 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Resource `equinix.networkedge.Device` allows creation and management of Equinix Network Edge virtual
- * network devices.
+ * Resource `equinix.networkedge.Device` allows creation and management of Equinix Network Edge virtual network devices.
  * 
  * Network Edge virtual network devices can be created in two modes:
  * 
- * * **managed** - (default) Where Equinix manages connectivity and services in the device and
- *   customer gets limited access to the device.
- * * **self-configured** - Where customer provisions and manages own services in the device with less
- *   restricted access. Some device types are offered only in this mode.
+ * * **managed** - (default) Where Equinix manages connectivity and services in the device and customer gets limited access to the device.
+ * * **self-configured** - Where customer provisions and manages own services in the device with less restricted access. Some device types are offered only in this mode.
  * 
  * In addition to management modes, there are two software license modes available:
  * 
- * * **subscription** - Where Equinix provides software license, including end-to-end support, and
- *   bills for the service respectively.
- * * **BYOL** - [bring your own license] Where customer brings his own, already procured device
- *   software license. There are no charges associated with such license. It is the only licensing mode
- *   for `self-configured` devices.
+ * * **subscription** - Where Equinix provides software license, including end-to-end support, and bills for the service respectively.
+ * * **BYOL** - [bring your own license] Where customer brings his own, already procured device software license. There are no charges associated with such license. It is the only licensing mode for `self-configured` devices.
  * 
  * ## Example Usage
  * ```java
@@ -155,16 +149,14 @@ public class Device extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.aclTemplateId);
     }
     /**
-     * Additional Internet bandwidth, in Mbps, that will be
-     * allocated to the device (in addition to default 15Mbps).
+     * Additional Internet bandwidth, in Mbps, that will be allocated to the device (in addition to default 15Mbps).
      * 
      */
     @Export(name="additionalBandwidth", refs={Integer.class}, tree="[0]")
     private Output<Integer> additionalBandwidth;
 
     /**
-     * @return Additional Internet bandwidth, in Mbps, that will be
-     * allocated to the device (in addition to default 15Mbps).
+     * @return Additional Internet bandwidth, in Mbps, that will be allocated to the device (in addition to default 15Mbps).
      * 
      */
     public Output<Integer> additionalBandwidth() {
@@ -185,16 +177,14 @@ public class Device extends com.pulumi.resources.CustomResource {
         return this.asn;
     }
     /**
-     * Boolean value that determines device licensing mode, i.e.,
-     * `bring your own license` or `subscription` (default).
+     * Boolean value that determines device licensing mode, i.e., `bring your own license` or `subscription` (default).
      * 
      */
     @Export(name="byol", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> byol;
 
     /**
-     * @return Boolean value that determines device licensing mode, i.e.,
-     * `bring your own license` or `subscription` (default).
+     * @return Boolean value that determines device licensing mode, i.e., `bring your own license` or `subscription` (default).
      * 
      */
     public Output<Optional<Boolean>> byol() {
@@ -215,32 +205,28 @@ public class Device extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.cloudInitFileId);
     }
     /**
-     * An object that has the cluster details. See
-     * Cluster Details below for more details.
+     * An object that has the cluster details. See Cluster Details below for more details.
      * 
      */
     @Export(name="clusterDetails", refs={DeviceClusterDetails.class}, tree="[0]")
     private Output</* @Nullable */ DeviceClusterDetails> clusterDetails;
 
     /**
-     * @return An object that has the cluster details. See
-     * Cluster Details below for more details.
+     * @return An object that has the cluster details. See Cluster Details below for more details.
      * 
      */
     public Output<Optional<DeviceClusterDetails>> clusterDetails() {
         return Codegen.optional(this.clusterDetails);
     }
     /**
-     * Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT).
-     * If not specified, default will be INTERNET-ACCESS
+     * Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT). If not specified, default will be INTERNET-ACCESS
      * 
      */
     @Export(name="connectivity", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> connectivity;
 
     /**
-     * @return Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT).
-     * If not specified, default will be INTERNET-ACCESS
+     * @return Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT). If not specified, default will be INTERNET-ACCESS
      * 
      */
     public Output<Optional<String>> connectivity() {
@@ -261,34 +247,28 @@ public class Device extends com.pulumi.resources.CustomResource {
         return this.coreCount;
     }
     /**
-     * Unique ID of an existing device.
-     * Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual
-     * device. This field is only meaningful for single devices.
+     * Unique ID of an existing device. Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual device. This field is only meaningful for single devices.
      * 
      */
     @Export(name="diverseDeviceId", refs={String.class}, tree="[0]")
     private Output<String> diverseDeviceId;
 
     /**
-     * @return Unique ID of an existing device.
-     * Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual
-     * device. This field is only meaningful for single devices.
+     * @return Unique ID of an existing device. Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual device. This field is only meaningful for single devices.
      * 
      */
     public Output<String> diverseDeviceId() {
         return this.diverseDeviceId;
     }
     /**
-     * Name of the device with diverse device UUID. This field is returned in device details if the
-     * device is created by passing diverse_device_id.
+     * Name of the device with diverse device UUID. This field is returned in device details if the device is created by passing diverse_device_id.
      * 
      */
     @Export(name="diverseDeviceName", refs={String.class}, tree="[0]")
     private Output<String> diverseDeviceName;
 
     /**
-     * @return Name of the device with diverse device UUID. This field is returned in device details if the
-     * device is created by passing diverse_device_id.
+     * @return Name of the device with diverse device UUID. This field is returned in device details if the device is created by passing diverse_device_id.
      * 
      */
     public Output<String> diverseDeviceName() {
@@ -323,48 +303,42 @@ public class Device extends com.pulumi.resources.CustomResource {
         return this.ibx;
     }
     /**
-     * Number of network interfaces on a device. If not specified,
-     * default number for a given device type will be used.
+     * Number of network interfaces on a device. If not specified, default number for a given device type will be used.
      * 
      */
     @Export(name="interfaceCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> interfaceCount;
 
     /**
-     * @return Number of network interfaces on a device. If not specified,
-     * default number for a given device type will be used.
+     * @return Number of network interfaces on a device. If not specified, default number for a given device type will be used.
      * 
      */
     public Output<Integer> interfaceCount() {
         return this.interfaceCount;
     }
     /**
-     * List of device interfaces. See Interface Attribute below
-     * for more details.
+     * List of device interfaces. See Interface Attribute below for more details.
      * 
      */
     @Export(name="interfaces", refs={List.class,DeviceInterface.class}, tree="[0,1]")
     private Output<List<DeviceInterface>> interfaces;
 
     /**
-     * @return List of device interfaces. See Interface Attribute below
-     * for more details.
+     * @return List of device interfaces. See Interface Attribute below for more details.
      * 
      */
     public Output<List<DeviceInterface>> interfaces() {
         return this.interfaces;
     }
     /**
-     * Path to the license file that will be uploaded and applied on a
-     * device. Applicable for some device types in BYOL licensing mode.
+     * Path to the license file that will be uploaded and applied on a device. Applicable for some device types in BYOL licensing mode.
      * 
      */
     @Export(name="licenseFile", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> licenseFile;
 
     /**
-     * @return Path to the license file that will be uploaded and applied on a
-     * device. Applicable for some device types in BYOL licensing mode.
+     * @return Path to the license file that will be uploaded and applied on a device. Applicable for some device types in BYOL licensing mode.
      * 
      */
     public Output<Optional<String>> licenseFile() {
@@ -385,32 +359,28 @@ public class Device extends com.pulumi.resources.CustomResource {
         return this.licenseFileId;
     }
     /**
-     * Device license registration status. Possible values are `APPLYING_LICENSE`,
-     * `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
+     * Device license registration status. Possible values are `APPLYING_LICENSE`, `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
      * 
      */
     @Export(name="licenseStatus", refs={String.class}, tree="[0]")
     private Output<String> licenseStatus;
 
     /**
-     * @return Device license registration status. Possible values are `APPLYING_LICENSE`,
-     * `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
+     * @return Device license registration status. Possible values are `APPLYING_LICENSE`, `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
      * 
      */
     public Output<String> licenseStatus() {
         return this.licenseStatus;
     }
     /**
-     * License Token applicable for some device types in BYOL licensing
-     * mode.
+     * License Token applicable for some device types in BYOL licensing mode.
      * 
      */
     @Export(name="licenseToken", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> licenseToken;
 
     /**
-     * @return License Token applicable for some device types in BYOL licensing
-     * mode.
+     * @return License Token applicable for some device types in BYOL licensing mode.
      * 
      */
     public Output<Optional<String>> licenseToken() {
@@ -431,16 +401,14 @@ public class Device extends com.pulumi.resources.CustomResource {
         return this.metroCode;
     }
     /**
-     * Identifier of an MGMT interface ACL template that will be
-     * applied on the device.
+     * Identifier of an MGMT interface ACL template that will be applied on the device.
      * 
      */
     @Export(name="mgmtAclTemplateUuid", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> mgmtAclTemplateUuid;
 
     /**
-     * @return Identifier of an MGMT interface ACL template that will be
-     * applied on the device.
+     * @return Identifier of an MGMT interface ACL template that will be applied on the device.
      * 
      */
     public Output<Optional<String>> mgmtAclTemplateUuid() {
@@ -461,16 +429,14 @@ public class Device extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * List of email addresses that will receive device status
-     * notifications.
+     * List of email addresses that will receive device status notifications.
      * 
      */
     @Export(name="notifications", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> notifications;
 
     /**
-     * @return List of email addresses that will receive device status
-     * notifications.
+     * @return List of email addresses that will receive device status notifications.
      * 
      */
     public Output<List<String>> notifications() {
@@ -505,16 +471,14 @@ public class Device extends com.pulumi.resources.CustomResource {
         return this.packageCode;
     }
     /**
-     * Unique Identifier for the project resource where the device is scoped to.If you
-     * leave it out, the device will be created under the default project id of your organization.
+     * Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
      * 
      */
     @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output<String> projectId;
 
     /**
-     * @return Unique Identifier for the project resource where the device is scoped to.If you
-     * leave it out, the device will be created under the default project id of your organization.
+     * @return Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
      * 
      */
     public Output<String> projectId() {
@@ -535,16 +499,14 @@ public class Device extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.purchaseOrderNumber);
     }
     /**
-     * Device redundancy type applicable for HA devices, either
-     * primary or secondary.
+     * Device redundancy type applicable for HA devices, either primary or secondary.
      * 
      */
     @Export(name="redundancyType", refs={String.class}, tree="[0]")
     private Output<String> redundancyType;
 
     /**
-     * @return Device redundancy type applicable for HA devices, either
-     * primary or secondary.
+     * @return Device redundancy type applicable for HA devices, either primary or secondary.
      * 
      */
     public Output<String> redundancyType() {
@@ -579,32 +541,28 @@ public class Device extends com.pulumi.resources.CustomResource {
         return this.region;
     }
     /**
-     * Definition of secondary device for redundant
-     * device configurations. See Secondary Device below for more details.
+     * Definition of secondary device for redundant device configurations. See Secondary Device below for more details.
      * 
      */
     @Export(name="secondaryDevice", refs={DeviceSecondaryDevice.class}, tree="[0]")
     private Output</* @Nullable */ DeviceSecondaryDevice> secondaryDevice;
 
     /**
-     * @return Definition of secondary device for redundant
-     * device configurations. See Secondary Device below for more details.
+     * @return Definition of secondary device for redundant device configurations. See Secondary Device below for more details.
      * 
      */
     public Output<Optional<DeviceSecondaryDevice>> secondaryDevice() {
         return Codegen.optional(this.secondaryDevice);
     }
     /**
-     * Boolean value that determines device management mode, i.e.,
-     * `self-managed` or `Equinix-managed` (default).
+     * Boolean value that determines device management mode, i.e., `self-managed` or `Equinix-managed` (default).
      * 
      */
     @Export(name="selfManaged", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> selfManaged;
 
     /**
-     * @return Boolean value that determines device management mode, i.e.,
-     * `self-managed` or `Equinix-managed` (default).
+     * @return Boolean value that determines device management mode, i.e., `self-managed` or `Equinix-managed` (default).
      * 
      */
     public Output<Optional<Boolean>> selfManaged() {
@@ -737,20 +695,16 @@ public class Device extends com.pulumi.resources.CustomResource {
         return this.uuid;
     }
     /**
-     * Map of vendor specific configuration parameters for a device
-     * (controller1, activationKey, managementType, siteId, systemIpAddress, private_address, private_cidr_mask, private_gateway, license_key, license_id)
-     * * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
-     *   on a device (max one key).  See SSH Key below for more details.
+     * Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId)
+     * * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
      * 
      */
     @Export(name="vendorConfiguration", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> vendorConfiguration;
 
     /**
-     * @return Map of vendor specific configuration parameters for a device
-     * (controller1, activationKey, managementType, siteId, systemIpAddress, private_address, private_cidr_mask, private_gateway, license_key, license_id)
-     * * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
-     *   on a device (max one key).  See SSH Key below for more details.
+     * @return Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId)
+     * * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
      * 
      */
     public Output<Map<String,String>> vendorConfiguration() {

@@ -26,33 +26,23 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
     public static final DeviceArgs Empty = new DeviceArgs();
 
     /**
-     * If true, a device with OS `custom_ipxe` will continue to boot via iPXE
-     * on reboots.
+     * If true, a device with OS custom_ipxe will
      * 
      */
     @Import(name="alwaysPxe")
     private @Nullable Output<Boolean> alwaysPxe;
 
     /**
-     * @return If true, a device with OS `custom_ipxe` will continue to boot via iPXE
-     * on reboots.
+     * @return If true, a device with OS custom_ipxe will
      * 
      */
     public Optional<Output<Boolean>> alwaysPxe() {
         return Optional.ofNullable(this.alwaysPxe);
     }
 
-    /**
-     * Behavioral overrides that change how the resource handles certain attribute updates. See Behavior below for more details.
-     * 
-     */
     @Import(name="behavior")
     private @Nullable Output<DeviceBehaviorArgs> behavior;
 
-    /**
-     * @return Behavioral overrides that change how the resource handles certain attribute updates. See Behavior below for more details.
-     * 
-     */
     public Optional<Output<DeviceBehaviorArgs>> behavior() {
         return Optional.ofNullable(this.behavior);
     }
@@ -88,14 +78,14 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The device description.
+     * Description string for the device
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The device description.
+     * @return Description string for the device
      * 
      */
     public Optional<Output<String>> description() {
@@ -103,11 +93,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of facility codes with deployment preferences. Equinix Metal API will go
-     * through the list and will deploy your device to first facility with free capacity. List items must
-     * be facility codes or `any` (a wildcard). To find the facility code, visit
-     * [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth
-     * token in the top of the page and see JSON from the API response. Conflicts with `metro`.  Use metro instead; read the facility to metro migration guide
+     * List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the top of the page and see JSON from the API response. Conflicts with metro
      * 
      * @deprecated
      * Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
@@ -118,11 +104,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<Either<String,Facility>>> facilities;
 
     /**
-     * @return List of facility codes with deployment preferences. Equinix Metal API will go
-     * through the list and will deploy your device to first facility with free capacity. List items must
-     * be facility codes or `any` (a wildcard). To find the facility code, visit
-     * [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth
-     * token in the top of the page and see JSON from the API response. Conflicts with `metro`.  Use metro instead; read the facility to metro migration guide
+     * @return List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the top of the page and see JSON from the API response. Conflicts with metro
      * 
      * @deprecated
      * Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
@@ -134,16 +116,14 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Delete device even if it has volumes attached. Only applies
-     * for destroy action.
+     * Delete device even if it has volumes attached. Only applies for destroy action
      * 
      */
     @Import(name="forceDetachVolumes")
     private @Nullable Output<Boolean> forceDetachVolumes;
 
     /**
-     * @return Delete device even if it has volumes attached. Only applies
-     * for destroy action.
+     * @return Delete device even if it has volumes attached. Only applies for destroy action
      * 
      */
     public Optional<Output<Boolean>> forceDetachVolumes() {
@@ -151,36 +131,14 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The UUID of the hardware reservation where you want this
-     * device deployed, or `next-available` if you want to pick your next available reservation
-     * automatically. Changing this from a reservation UUID to `next-available` will re-create the device
-     * in another reservation. Please be careful when using hardware reservation UUID and `next-available`
-     * together for the same pool of reservations. It might happen that the reservation which Equinix
-     * Metal API will pick as `next-available` is the reservation which you refer with UUID in another
-     * equinix.metal.Device resource. If that happens, and the equinix.metal.Device with the UUID is
-     * created later, resource creation will fail because the reservation is already in use (by the
-     * resource created with `next-available`). To workaround this, have the `next-available` resource
-     * explicitly depend_on
-     * the resource with hardware reservation UUID, so that the latter is created first. For more details,
-     * see issue #176.
+     * The UUID of the hardware reservation where you want this device deployed, or next-available if you want to pick your next available reservation automatically
      * 
      */
     @Import(name="hardwareReservationId")
     private @Nullable Output<String> hardwareReservationId;
 
     /**
-     * @return The UUID of the hardware reservation where you want this
-     * device deployed, or `next-available` if you want to pick your next available reservation
-     * automatically. Changing this from a reservation UUID to `next-available` will re-create the device
-     * in another reservation. Please be careful when using hardware reservation UUID and `next-available`
-     * together for the same pool of reservations. It might happen that the reservation which Equinix
-     * Metal API will pick as `next-available` is the reservation which you refer with UUID in another
-     * equinix.metal.Device resource. If that happens, and the equinix.metal.Device with the UUID is
-     * created later, resource creation will fail because the reservation is already in use (by the
-     * resource created with `next-available`). To workaround this, have the `next-available` resource
-     * explicitly depend_on
-     * the resource with hardware reservation UUID, so that the latter is created first. For more details,
-     * see issue #176.
+     * @return The UUID of the hardware reservation where you want this device deployed, or next-available if you want to pick your next available reservation automatically
      * 
      */
     public Optional<Output<String>> hardwareReservationId() {
@@ -188,16 +146,14 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The device hostname used in deployments taking advantage of Layer3 DHCP
-     * or metadata service configuration.
+     * The device hostname used in deployments taking advantage of Layer3 DHCP or metadata service configuration.
      * 
      */
     @Import(name="hostname")
     private @Nullable Output<String> hostname;
 
     /**
-     * @return The device hostname used in deployments taking advantage of Layer3 DHCP
-     * or metadata service configuration.
+     * @return The device hostname used in deployments taking advantage of Layer3 DHCP or metadata service configuration.
      * 
      */
     public Optional<Output<String>> hostname() {
@@ -205,16 +161,14 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A list of IP address types for the device. See
-     * IP address below for more details.
+     * A list of IP address types for the device (structure is documented below)
      * 
      */
     @Import(name="ipAddresses")
     private @Nullable Output<List<DeviceIpAddressArgs>> ipAddresses;
 
     /**
-     * @return A list of IP address types for the device. See
-     * IP address below for more details.
+     * @return A list of IP address types for the device (structure is documented below)
      * 
      */
     public Optional<Output<List<DeviceIpAddressArgs>>> ipAddresses() {
@@ -222,16 +176,14 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * URL pointing to a hosted iPXE script. More information is in the
-     * [Custom iPXE](https://metal.equinix.com/developers/docs/servers/custom-ipxe/) doc.
+     * URL pointing to a hosted iPXE script. More
      * 
      */
     @Import(name="ipxeScriptUrl")
     private @Nullable Output<String> ipxeScriptUrl;
 
     /**
-     * @return URL pointing to a hosted iPXE script. More information is in the
-     * [Custom iPXE](https://metal.equinix.com/developers/docs/servers/custom-ipxe/) doc.
+     * @return URL pointing to a hosted iPXE script. More
      * 
      */
     public Optional<Output<String>> ipxeScriptUrl() {
@@ -254,14 +206,14 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Metro area for the new device. Conflicts with `facilities`.
+     * Metro area for the new device. Conflicts with facilities
      * 
      */
     @Import(name="metro")
     private @Nullable Output<String> metro;
 
     /**
-     * @return Metro area for the new device. Conflicts with `facilities`.
+     * @return Metro area for the new device. Conflicts with facilities
      * 
      */
     public Optional<Output<String>> metro() {
@@ -269,18 +221,14 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The operating system slug. To find the slug, or visit
-     * [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your
-     * API auth token in the top of the page and see JSON from the API response.
+     * The operating system slug. To find the slug, or visit [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your API auth token in the top of the page and see JSON from the API response.  By default, changing this attribute will cause your device to be deleted and recreated.  If `reinstall` is enabled, the device will be updated in-place instead of recreated.
      * 
      */
     @Import(name="operatingSystem", required=true)
     private Output<Either<String,OperatingSystem>> operatingSystem;
 
     /**
-     * @return The operating system slug. To find the slug, or visit
-     * [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your
-     * API auth token in the top of the page and see JSON from the API response.
+     * @return The operating system slug. To find the slug, or visit [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your API auth token in the top of the page and see JSON from the API response.  By default, changing this attribute will cause your device to be deleted and recreated.  If `reinstall` is enabled, the device will be updated in-place instead of recreated.
      * 
      */
     public Output<Either<String,OperatingSystem>> operatingSystem() {
@@ -288,16 +236,14 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The device plan slug. To find the plan slug, visit the
-     * [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/).
+     * The device plan slug. To find the plan slug, visit the [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/)
      * 
      */
     @Import(name="plan", required=true)
     private Output<Either<String,Plan>> plan;
 
     /**
-     * @return The device plan slug. To find the plan slug, visit the
-     * [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/).
+     * @return The device plan slug. To find the plan slug, visit the [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/)
      * 
      */
     public Output<Either<String,Plan>> plan() {
@@ -320,56 +266,36 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Array of IDs of the project SSH keys which should be added to the device. If you specify this array, only the listed project SSH keys (and any SSH keys for the users specified in user_ssh_key_ids) will be added. If no SSH keys are specified (both user_ssh_keys_ids and project_ssh_key_ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included.  Project SSH keys can be created with the equinix.metal.ProjectSshKey resource.
+     * Array of IDs of the project SSH keys which should be added to the device. If you specify this array, only the listed project SSH keys (and any SSH keys for the users specified in user*ssh*key*ids) will be added. If no SSH keys are specified (both user*ssh*keys*ids and project*ssh*key*ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included.  Project SSH keys can be created with the equinix*metal*project*ssh*key resource
      * 
      */
     @Import(name="projectSshKeyIds")
     private @Nullable Output<List<String>> projectSshKeyIds;
 
     /**
-     * @return Array of IDs of the project SSH keys which should be added to the device. If you specify this array, only the listed project SSH keys (and any SSH keys for the users specified in user_ssh_key_ids) will be added. If no SSH keys are specified (both user_ssh_keys_ids and project_ssh_key_ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included.  Project SSH keys can be created with the equinix.metal.ProjectSshKey resource.
+     * @return Array of IDs of the project SSH keys which should be added to the device. If you specify this array, only the listed project SSH keys (and any SSH keys for the users specified in user*ssh*key*ids) will be added. If no SSH keys are specified (both user*ssh*keys*ids and project*ssh*key*ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included.  Project SSH keys can be created with the equinix*metal*project*ssh*key resource
      * 
      */
     public Optional<Output<List<String>>> projectSshKeyIds() {
         return Optional.ofNullable(this.projectSshKeyIds);
     }
 
-    /**
-     * Whether the device should be reinstalled instead of destroyed when
-     * modifying user_data, custom_data, or operating system. See Reinstall below for more
-     * details.
-     * 
-     */
     @Import(name="reinstall")
     private @Nullable Output<DeviceReinstallArgs> reinstall;
 
-    /**
-     * @return Whether the device should be reinstalled instead of destroyed when
-     * modifying user_data, custom_data, or operating system. See Reinstall below for more
-     * details.
-     * 
-     */
     public Optional<Output<DeviceReinstallArgs>> reinstall() {
         return Optional.ofNullable(this.reinstall);
     }
 
     /**
-     * JSON for custom partitioning. Only usable on reserved hardware. More
-     * information in in the
-     * [Custom Partitioning and RAID](https://metal.equinix.com/developers/docs/servers/custom-partitioning-raid/)
-     * doc. Please note that the disks.partitions.size attribute must be a string, not an integer. It can
-     * be a number string, or size notation string, e.g. &#34;4G&#34; or &#34;8M&#34; (for gigabytes and megabytes).
+     * JSON for custom partitioning. Only usable on reserved hardware. More information in in the [Custom Partitioning and RAID](https://metal.equinix.com/developers/docs/servers/custom-partitioning-raid/) doc
      * 
      */
     @Import(name="storage")
     private @Nullable Output<String> storage;
 
     /**
-     * @return JSON for custom partitioning. Only usable on reserved hardware. More
-     * information in in the
-     * [Custom Partitioning and RAID](https://metal.equinix.com/developers/docs/servers/custom-partitioning-raid/)
-     * doc. Please note that the disks.partitions.size attribute must be a string, not an integer. It can
-     * be a number string, or size notation string, e.g. &#34;4G&#34; or &#34;8M&#34; (for gigabytes and megabytes).
+     * @return JSON for custom partitioning. Only usable on reserved hardware. More information in in the [Custom Partitioning and RAID](https://metal.equinix.com/developers/docs/servers/custom-partitioning-raid/) doc
      * 
      */
     public Optional<Output<String>> storage() {
@@ -377,14 +303,14 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Tags attached to the device.
+     * Tags attached to the device
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return Tags attached to the device.
+     * @return Tags attached to the device
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -392,16 +318,14 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Timestamp for device termination. For example `2021-09-03T16:32:00+03:00`.
-     * If you don&#39;t supply timezone info, timestamp is assumed to be in UTC.
+     * Timestamp for device termination. For example &#34;2021-09-03T16:32:00+03:00&#34;. If you don&#39;t supply timezone info, timestamp is assumed to be in UTC.
      * 
      */
     @Import(name="terminationTime")
     private @Nullable Output<String> terminationTime;
 
     /**
-     * @return Timestamp for device termination. For example `2021-09-03T16:32:00+03:00`.
-     * If you don&#39;t supply timezone info, timestamp is assumed to be in UTC.
+     * @return Timestamp for device termination. For example &#34;2021-09-03T16:32:00+03:00&#34;. If you don&#39;t supply timezone info, timestamp is assumed to be in UTC.
      * 
      */
     public Optional<Output<String>> terminationTime() {
@@ -424,14 +348,14 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Array of IDs of the users whose SSH keys should be added to the device. If you specify this array, only the listed users&#39; SSH keys (and any project SSH keys specified in project_ssh_key_ids) will be added. If no SSH keys are specified (both user_ssh_keys_ids and project_ssh_key_ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included. User SSH keys can be created with the equinix.metal.SshKey resource.
+     * Array of IDs of the users whose SSH keys should be added to the device. If you specify this array, only the listed users&#39; SSH keys (and any project SSH keys specified in project*ssh*key*ids) will be added. If no SSH keys are specified (both user*ssh*keys*ids and project*ssh*key*ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included. User SSH keys can be created with the equinix*metal*ssh*key resource
      * 
      */
     @Import(name="userSshKeyIds")
     private @Nullable Output<List<String>> userSshKeyIds;
 
     /**
-     * @return Array of IDs of the users whose SSH keys should be added to the device. If you specify this array, only the listed users&#39; SSH keys (and any project SSH keys specified in project_ssh_key_ids) will be added. If no SSH keys are specified (both user_ssh_keys_ids and project_ssh_key_ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included. User SSH keys can be created with the equinix.metal.SshKey resource.
+     * @return Array of IDs of the users whose SSH keys should be added to the device. If you specify this array, only the listed users&#39; SSH keys (and any project SSH keys specified in project*ssh*key*ids) will be added. If no SSH keys are specified (both user*ssh*keys*ids and project*ssh*key*ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included. User SSH keys can be created with the equinix*metal*ssh*key resource
      * 
      */
     public Optional<Output<List<String>>> userSshKeyIds() {
@@ -439,18 +363,14 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Only used for devices in reserved hardware. If
-     * set, the deletion of this device will block until the hardware reservation is marked provisionable
-     * (about 4 minutes in August 2019).
+     * Only used for devices in reserved hardware. If set, the deletion of this device will block until the hardware reservation is marked provisionable (about 4 minutes in August 2019)
      * 
      */
     @Import(name="waitForReservationDeprovision")
     private @Nullable Output<Boolean> waitForReservationDeprovision;
 
     /**
-     * @return Only used for devices in reserved hardware. If
-     * set, the deletion of this device will block until the hardware reservation is marked provisionable
-     * (about 4 minutes in August 2019).
+     * @return Only used for devices in reserved hardware. If set, the deletion of this device will block until the hardware reservation is marked provisionable (about 4 minutes in August 2019)
      * 
      */
     public Optional<Output<Boolean>> waitForReservationDeprovision() {
@@ -505,8 +425,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param alwaysPxe If true, a device with OS `custom_ipxe` will continue to boot via iPXE
-         * on reboots.
+         * @param alwaysPxe If true, a device with OS custom_ipxe will
          * 
          * @return builder
          * 
@@ -517,8 +436,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param alwaysPxe If true, a device with OS `custom_ipxe` will continue to boot via iPXE
-         * on reboots.
+         * @param alwaysPxe If true, a device with OS custom_ipxe will
          * 
          * @return builder
          * 
@@ -527,23 +445,11 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
             return alwaysPxe(Output.of(alwaysPxe));
         }
 
-        /**
-         * @param behavior Behavioral overrides that change how the resource handles certain attribute updates. See Behavior below for more details.
-         * 
-         * @return builder
-         * 
-         */
         public Builder behavior(@Nullable Output<DeviceBehaviorArgs> behavior) {
             $.behavior = behavior;
             return this;
         }
 
-        /**
-         * @param behavior Behavioral overrides that change how the resource handles certain attribute updates. See Behavior below for more details.
-         * 
-         * @return builder
-         * 
-         */
         public Builder behavior(DeviceBehaviorArgs behavior) {
             return behavior(Output.of(behavior));
         }
@@ -611,7 +517,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The device description.
+         * @param description Description string for the device
          * 
          * @return builder
          * 
@@ -622,7 +528,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The device description.
+         * @param description Description string for the device
          * 
          * @return builder
          * 
@@ -632,11 +538,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param facilities List of facility codes with deployment preferences. Equinix Metal API will go
-         * through the list and will deploy your device to first facility with free capacity. List items must
-         * be facility codes or `any` (a wildcard). To find the facility code, visit
-         * [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth
-         * token in the top of the page and see JSON from the API response. Conflicts with `metro`.  Use metro instead; read the facility to metro migration guide
+         * @param facilities List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the top of the page and see JSON from the API response. Conflicts with metro
          * 
          * @return builder
          * 
@@ -651,11 +553,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param facilities List of facility codes with deployment preferences. Equinix Metal API will go
-         * through the list and will deploy your device to first facility with free capacity. List items must
-         * be facility codes or `any` (a wildcard). To find the facility code, visit
-         * [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth
-         * token in the top of the page and see JSON from the API response. Conflicts with `metro`.  Use metro instead; read the facility to metro migration guide
+         * @param facilities List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the top of the page and see JSON from the API response. Conflicts with metro
          * 
          * @return builder
          * 
@@ -669,11 +567,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param facilities List of facility codes with deployment preferences. Equinix Metal API will go
-         * through the list and will deploy your device to first facility with free capacity. List items must
-         * be facility codes or `any` (a wildcard). To find the facility code, visit
-         * [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth
-         * token in the top of the page and see JSON from the API response. Conflicts with `metro`.  Use metro instead; read the facility to metro migration guide
+         * @param facilities List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the top of the page and see JSON from the API response. Conflicts with metro
          * 
          * @return builder
          * 
@@ -687,8 +581,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param forceDetachVolumes Delete device even if it has volumes attached. Only applies
-         * for destroy action.
+         * @param forceDetachVolumes Delete device even if it has volumes attached. Only applies for destroy action
          * 
          * @return builder
          * 
@@ -699,8 +592,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param forceDetachVolumes Delete device even if it has volumes attached. Only applies
-         * for destroy action.
+         * @param forceDetachVolumes Delete device even if it has volumes attached. Only applies for destroy action
          * 
          * @return builder
          * 
@@ -710,18 +602,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hardwareReservationId The UUID of the hardware reservation where you want this
-         * device deployed, or `next-available` if you want to pick your next available reservation
-         * automatically. Changing this from a reservation UUID to `next-available` will re-create the device
-         * in another reservation. Please be careful when using hardware reservation UUID and `next-available`
-         * together for the same pool of reservations. It might happen that the reservation which Equinix
-         * Metal API will pick as `next-available` is the reservation which you refer with UUID in another
-         * equinix.metal.Device resource. If that happens, and the equinix.metal.Device with the UUID is
-         * created later, resource creation will fail because the reservation is already in use (by the
-         * resource created with `next-available`). To workaround this, have the `next-available` resource
-         * explicitly depend_on
-         * the resource with hardware reservation UUID, so that the latter is created first. For more details,
-         * see issue #176.
+         * @param hardwareReservationId The UUID of the hardware reservation where you want this device deployed, or next-available if you want to pick your next available reservation automatically
          * 
          * @return builder
          * 
@@ -732,18 +613,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hardwareReservationId The UUID of the hardware reservation where you want this
-         * device deployed, or `next-available` if you want to pick your next available reservation
-         * automatically. Changing this from a reservation UUID to `next-available` will re-create the device
-         * in another reservation. Please be careful when using hardware reservation UUID and `next-available`
-         * together for the same pool of reservations. It might happen that the reservation which Equinix
-         * Metal API will pick as `next-available` is the reservation which you refer with UUID in another
-         * equinix.metal.Device resource. If that happens, and the equinix.metal.Device with the UUID is
-         * created later, resource creation will fail because the reservation is already in use (by the
-         * resource created with `next-available`). To workaround this, have the `next-available` resource
-         * explicitly depend_on
-         * the resource with hardware reservation UUID, so that the latter is created first. For more details,
-         * see issue #176.
+         * @param hardwareReservationId The UUID of the hardware reservation where you want this device deployed, or next-available if you want to pick your next available reservation automatically
          * 
          * @return builder
          * 
@@ -753,8 +623,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hostname The device hostname used in deployments taking advantage of Layer3 DHCP
-         * or metadata service configuration.
+         * @param hostname The device hostname used in deployments taking advantage of Layer3 DHCP or metadata service configuration.
          * 
          * @return builder
          * 
@@ -765,8 +634,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hostname The device hostname used in deployments taking advantage of Layer3 DHCP
-         * or metadata service configuration.
+         * @param hostname The device hostname used in deployments taking advantage of Layer3 DHCP or metadata service configuration.
          * 
          * @return builder
          * 
@@ -776,8 +644,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipAddresses A list of IP address types for the device. See
-         * IP address below for more details.
+         * @param ipAddresses A list of IP address types for the device (structure is documented below)
          * 
          * @return builder
          * 
@@ -788,8 +655,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipAddresses A list of IP address types for the device. See
-         * IP address below for more details.
+         * @param ipAddresses A list of IP address types for the device (structure is documented below)
          * 
          * @return builder
          * 
@@ -799,8 +665,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipAddresses A list of IP address types for the device. See
-         * IP address below for more details.
+         * @param ipAddresses A list of IP address types for the device (structure is documented below)
          * 
          * @return builder
          * 
@@ -810,8 +675,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipxeScriptUrl URL pointing to a hosted iPXE script. More information is in the
-         * [Custom iPXE](https://metal.equinix.com/developers/docs/servers/custom-ipxe/) doc.
+         * @param ipxeScriptUrl URL pointing to a hosted iPXE script. More
          * 
          * @return builder
          * 
@@ -822,8 +686,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipxeScriptUrl URL pointing to a hosted iPXE script. More information is in the
-         * [Custom iPXE](https://metal.equinix.com/developers/docs/servers/custom-ipxe/) doc.
+         * @param ipxeScriptUrl URL pointing to a hosted iPXE script. More
          * 
          * @return builder
          * 
@@ -854,7 +717,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param metro Metro area for the new device. Conflicts with `facilities`.
+         * @param metro Metro area for the new device. Conflicts with facilities
          * 
          * @return builder
          * 
@@ -865,7 +728,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param metro Metro area for the new device. Conflicts with `facilities`.
+         * @param metro Metro area for the new device. Conflicts with facilities
          * 
          * @return builder
          * 
@@ -875,9 +738,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param operatingSystem The operating system slug. To find the slug, or visit
-         * [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your
-         * API auth token in the top of the page and see JSON from the API response.
+         * @param operatingSystem The operating system slug. To find the slug, or visit [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your API auth token in the top of the page and see JSON from the API response.  By default, changing this attribute will cause your device to be deleted and recreated.  If `reinstall` is enabled, the device will be updated in-place instead of recreated.
          * 
          * @return builder
          * 
@@ -888,9 +749,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param operatingSystem The operating system slug. To find the slug, or visit
-         * [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your
-         * API auth token in the top of the page and see JSON from the API response.
+         * @param operatingSystem The operating system slug. To find the slug, or visit [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your API auth token in the top of the page and see JSON from the API response.  By default, changing this attribute will cause your device to be deleted and recreated.  If `reinstall` is enabled, the device will be updated in-place instead of recreated.
          * 
          * @return builder
          * 
@@ -900,9 +759,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param operatingSystem The operating system slug. To find the slug, or visit
-         * [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your
-         * API auth token in the top of the page and see JSON from the API response.
+         * @param operatingSystem The operating system slug. To find the slug, or visit [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your API auth token in the top of the page and see JSON from the API response.  By default, changing this attribute will cause your device to be deleted and recreated.  If `reinstall` is enabled, the device will be updated in-place instead of recreated.
          * 
          * @return builder
          * 
@@ -912,9 +769,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param operatingSystem The operating system slug. To find the slug, or visit
-         * [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your
-         * API auth token in the top of the page and see JSON from the API response.
+         * @param operatingSystem The operating system slug. To find the slug, or visit [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your API auth token in the top of the page and see JSON from the API response.  By default, changing this attribute will cause your device to be deleted and recreated.  If `reinstall` is enabled, the device will be updated in-place instead of recreated.
          * 
          * @return builder
          * 
@@ -924,8 +779,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param plan The device plan slug. To find the plan slug, visit the
-         * [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/).
+         * @param plan The device plan slug. To find the plan slug, visit the [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/)
          * 
          * @return builder
          * 
@@ -936,8 +790,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param plan The device plan slug. To find the plan slug, visit the
-         * [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/).
+         * @param plan The device plan slug. To find the plan slug, visit the [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/)
          * 
          * @return builder
          * 
@@ -947,8 +800,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param plan The device plan slug. To find the plan slug, visit the
-         * [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/).
+         * @param plan The device plan slug. To find the plan slug, visit the [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/)
          * 
          * @return builder
          * 
@@ -958,8 +810,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param plan The device plan slug. To find the plan slug, visit the
-         * [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/).
+         * @param plan The device plan slug. To find the plan slug, visit the [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/)
          * 
          * @return builder
          * 
@@ -990,7 +841,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectSshKeyIds Array of IDs of the project SSH keys which should be added to the device. If you specify this array, only the listed project SSH keys (and any SSH keys for the users specified in user_ssh_key_ids) will be added. If no SSH keys are specified (both user_ssh_keys_ids and project_ssh_key_ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included.  Project SSH keys can be created with the equinix.metal.ProjectSshKey resource.
+         * @param projectSshKeyIds Array of IDs of the project SSH keys which should be added to the device. If you specify this array, only the listed project SSH keys (and any SSH keys for the users specified in user*ssh*key*ids) will be added. If no SSH keys are specified (both user*ssh*keys*ids and project*ssh*key*ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included.  Project SSH keys can be created with the equinix*metal*project*ssh*key resource
          * 
          * @return builder
          * 
@@ -1001,7 +852,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectSshKeyIds Array of IDs of the project SSH keys which should be added to the device. If you specify this array, only the listed project SSH keys (and any SSH keys for the users specified in user_ssh_key_ids) will be added. If no SSH keys are specified (both user_ssh_keys_ids and project_ssh_key_ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included.  Project SSH keys can be created with the equinix.metal.ProjectSshKey resource.
+         * @param projectSshKeyIds Array of IDs of the project SSH keys which should be added to the device. If you specify this array, only the listed project SSH keys (and any SSH keys for the users specified in user*ssh*key*ids) will be added. If no SSH keys are specified (both user*ssh*keys*ids and project*ssh*key*ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included.  Project SSH keys can be created with the equinix*metal*project*ssh*key resource
          * 
          * @return builder
          * 
@@ -1011,7 +862,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectSshKeyIds Array of IDs of the project SSH keys which should be added to the device. If you specify this array, only the listed project SSH keys (and any SSH keys for the users specified in user_ssh_key_ids) will be added. If no SSH keys are specified (both user_ssh_keys_ids and project_ssh_key_ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included.  Project SSH keys can be created with the equinix.metal.ProjectSshKey resource.
+         * @param projectSshKeyIds Array of IDs of the project SSH keys which should be added to the device. If you specify this array, only the listed project SSH keys (and any SSH keys for the users specified in user*ssh*key*ids) will be added. If no SSH keys are specified (both user*ssh*keys*ids and project*ssh*key*ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included.  Project SSH keys can be created with the equinix*metal*project*ssh*key resource
          * 
          * @return builder
          * 
@@ -1020,37 +871,17 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
             return projectSshKeyIds(List.of(projectSshKeyIds));
         }
 
-        /**
-         * @param reinstall Whether the device should be reinstalled instead of destroyed when
-         * modifying user_data, custom_data, or operating system. See Reinstall below for more
-         * details.
-         * 
-         * @return builder
-         * 
-         */
         public Builder reinstall(@Nullable Output<DeviceReinstallArgs> reinstall) {
             $.reinstall = reinstall;
             return this;
         }
 
-        /**
-         * @param reinstall Whether the device should be reinstalled instead of destroyed when
-         * modifying user_data, custom_data, or operating system. See Reinstall below for more
-         * details.
-         * 
-         * @return builder
-         * 
-         */
         public Builder reinstall(DeviceReinstallArgs reinstall) {
             return reinstall(Output.of(reinstall));
         }
 
         /**
-         * @param storage JSON for custom partitioning. Only usable on reserved hardware. More
-         * information in in the
-         * [Custom Partitioning and RAID](https://metal.equinix.com/developers/docs/servers/custom-partitioning-raid/)
-         * doc. Please note that the disks.partitions.size attribute must be a string, not an integer. It can
-         * be a number string, or size notation string, e.g. &#34;4G&#34; or &#34;8M&#34; (for gigabytes and megabytes).
+         * @param storage JSON for custom partitioning. Only usable on reserved hardware. More information in in the [Custom Partitioning and RAID](https://metal.equinix.com/developers/docs/servers/custom-partitioning-raid/) doc
          * 
          * @return builder
          * 
@@ -1061,11 +892,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storage JSON for custom partitioning. Only usable on reserved hardware. More
-         * information in in the
-         * [Custom Partitioning and RAID](https://metal.equinix.com/developers/docs/servers/custom-partitioning-raid/)
-         * doc. Please note that the disks.partitions.size attribute must be a string, not an integer. It can
-         * be a number string, or size notation string, e.g. &#34;4G&#34; or &#34;8M&#34; (for gigabytes and megabytes).
+         * @param storage JSON for custom partitioning. Only usable on reserved hardware. More information in in the [Custom Partitioning and RAID](https://metal.equinix.com/developers/docs/servers/custom-partitioning-raid/) doc
          * 
          * @return builder
          * 
@@ -1075,7 +902,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Tags attached to the device.
+         * @param tags Tags attached to the device
          * 
          * @return builder
          * 
@@ -1086,7 +913,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Tags attached to the device.
+         * @param tags Tags attached to the device
          * 
          * @return builder
          * 
@@ -1096,7 +923,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Tags attached to the device.
+         * @param tags Tags attached to the device
          * 
          * @return builder
          * 
@@ -1106,8 +933,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param terminationTime Timestamp for device termination. For example `2021-09-03T16:32:00+03:00`.
-         * If you don&#39;t supply timezone info, timestamp is assumed to be in UTC.
+         * @param terminationTime Timestamp for device termination. For example &#34;2021-09-03T16:32:00+03:00&#34;. If you don&#39;t supply timezone info, timestamp is assumed to be in UTC.
          * 
          * @return builder
          * 
@@ -1118,8 +944,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param terminationTime Timestamp for device termination. For example `2021-09-03T16:32:00+03:00`.
-         * If you don&#39;t supply timezone info, timestamp is assumed to be in UTC.
+         * @param terminationTime Timestamp for device termination. For example &#34;2021-09-03T16:32:00+03:00&#34;. If you don&#39;t supply timezone info, timestamp is assumed to be in UTC.
          * 
          * @return builder
          * 
@@ -1150,7 +975,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userSshKeyIds Array of IDs of the users whose SSH keys should be added to the device. If you specify this array, only the listed users&#39; SSH keys (and any project SSH keys specified in project_ssh_key_ids) will be added. If no SSH keys are specified (both user_ssh_keys_ids and project_ssh_key_ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included. User SSH keys can be created with the equinix.metal.SshKey resource.
+         * @param userSshKeyIds Array of IDs of the users whose SSH keys should be added to the device. If you specify this array, only the listed users&#39; SSH keys (and any project SSH keys specified in project*ssh*key*ids) will be added. If no SSH keys are specified (both user*ssh*keys*ids and project*ssh*key*ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included. User SSH keys can be created with the equinix*metal*ssh*key resource
          * 
          * @return builder
          * 
@@ -1161,7 +986,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userSshKeyIds Array of IDs of the users whose SSH keys should be added to the device. If you specify this array, only the listed users&#39; SSH keys (and any project SSH keys specified in project_ssh_key_ids) will be added. If no SSH keys are specified (both user_ssh_keys_ids and project_ssh_key_ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included. User SSH keys can be created with the equinix.metal.SshKey resource.
+         * @param userSshKeyIds Array of IDs of the users whose SSH keys should be added to the device. If you specify this array, only the listed users&#39; SSH keys (and any project SSH keys specified in project*ssh*key*ids) will be added. If no SSH keys are specified (both user*ssh*keys*ids and project*ssh*key*ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included. User SSH keys can be created with the equinix*metal*ssh*key resource
          * 
          * @return builder
          * 
@@ -1171,7 +996,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userSshKeyIds Array of IDs of the users whose SSH keys should be added to the device. If you specify this array, only the listed users&#39; SSH keys (and any project SSH keys specified in project_ssh_key_ids) will be added. If no SSH keys are specified (both user_ssh_keys_ids and project_ssh_key_ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included. User SSH keys can be created with the equinix.metal.SshKey resource.
+         * @param userSshKeyIds Array of IDs of the users whose SSH keys should be added to the device. If you specify this array, only the listed users&#39; SSH keys (and any project SSH keys specified in project*ssh*key*ids) will be added. If no SSH keys are specified (both user*ssh*keys*ids and project*ssh*key*ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included. User SSH keys can be created with the equinix*metal*ssh*key resource
          * 
          * @return builder
          * 
@@ -1181,9 +1006,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param waitForReservationDeprovision Only used for devices in reserved hardware. If
-         * set, the deletion of this device will block until the hardware reservation is marked provisionable
-         * (about 4 minutes in August 2019).
+         * @param waitForReservationDeprovision Only used for devices in reserved hardware. If set, the deletion of this device will block until the hardware reservation is marked provisionable (about 4 minutes in August 2019)
          * 
          * @return builder
          * 
@@ -1194,9 +1017,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param waitForReservationDeprovision Only used for devices in reserved hardware. If
-         * set, the deletion of this device will block until the hardware reservation is marked provisionable
-         * (about 4 minutes in August 2019).
+         * @param waitForReservationDeprovision Only used for devices in reserved hardware. If set, the deletion of this device will block until the hardware reservation is marked provisionable (about 4 minutes in August 2019)
          * 
          * @return builder
          * 

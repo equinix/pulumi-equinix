@@ -17,14 +17,14 @@ public final class DevicePortArgs extends com.pulumi.resources.ResourceArgs {
     public static final DevicePortArgs Empty = new DevicePortArgs();
 
     /**
-     * Whether this port is part of a bond in bonded network setup.
+     * Whether this port is part of a bond in bonded network setup
      * 
      */
     @Import(name="bonded")
     private @Nullable Output<Boolean> bonded;
 
     /**
-     * @return Whether this port is part of a bond in bonded network setup.
+     * @return Whether this port is part of a bond in bonded network setup
      * 
      */
     public Optional<Output<Boolean>> bonded() {
@@ -32,14 +32,14 @@ public final class DevicePortArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * ID of the port.
+     * The ID of the device
      * 
      */
     @Import(name="id")
     private @Nullable Output<String> id;
 
     /**
-     * @return ID of the port.
+     * @return The ID of the device
      * 
      */
     public Optional<Output<String>> id() {
@@ -47,14 +47,14 @@ public final class DevicePortArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * MAC address assigned to the port.
+     * MAC address assigned to the port
      * 
      */
     @Import(name="mac")
     private @Nullable Output<String> mac;
 
     /**
-     * @return MAC address assigned to the port.
+     * @return MAC address assigned to the port
      * 
      */
     public Optional<Output<String>> mac() {
@@ -62,14 +62,14 @@ public final class DevicePortArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the port (e.g. `eth0`, or `bond0`).
+     * Name of the port (e.g. eth0, or bond0)
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the port (e.g. `eth0`, or `bond0`).
+     * @return Name of the port (e.g. eth0, or bond0)
      * 
      */
     public Optional<Output<String>> name() {
@@ -77,14 +77,14 @@ public final class DevicePortArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Type of the port (e.g. `NetworkPort` or `NetworkBondPort`).
+     * One of [private_ipv4, public_ipv4, public_ipv6]
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Type of the port (e.g. `NetworkPort` or `NetworkBondPort`).
+     * @return One of [private_ipv4, public_ipv4, public_ipv6]
      * 
      */
     public Optional<Output<String>> type() {
@@ -120,7 +120,7 @@ public final class DevicePortArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bonded Whether this port is part of a bond in bonded network setup.
+         * @param bonded Whether this port is part of a bond in bonded network setup
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class DevicePortArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bonded Whether this port is part of a bond in bonded network setup.
+         * @param bonded Whether this port is part of a bond in bonded network setup
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class DevicePortArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param id ID of the port.
+         * @param id The ID of the device
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class DevicePortArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param id ID of the port.
+         * @param id The ID of the device
          * 
          * @return builder
          * 
@@ -162,7 +162,7 @@ public final class DevicePortArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mac MAC address assigned to the port.
+         * @param mac MAC address assigned to the port
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class DevicePortArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mac MAC address assigned to the port.
+         * @param mac MAC address assigned to the port
          * 
          * @return builder
          * 
@@ -183,7 +183,7 @@ public final class DevicePortArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the port (e.g. `eth0`, or `bond0`).
+         * @param name Name of the port (e.g. eth0, or bond0)
          * 
          * @return builder
          * 
@@ -194,7 +194,7 @@ public final class DevicePortArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the port (e.g. `eth0`, or `bond0`).
+         * @param name Name of the port (e.g. eth0, or bond0)
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class DevicePortArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Type of the port (e.g. `NetworkPort` or `NetworkBondPort`).
+         * @param type One of [private_ipv4, public_ipv4, public_ipv6]
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class DevicePortArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Type of the port (e.g. `NetworkPort` or `NetworkBondPort`).
+         * @param type One of [private_ipv4, public_ipv4, public_ipv6]
          * 
          * @return builder
          * 

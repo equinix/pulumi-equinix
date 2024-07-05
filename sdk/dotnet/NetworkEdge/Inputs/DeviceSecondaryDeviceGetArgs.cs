@@ -19,15 +19,13 @@ namespace Pulumi.Equinix.NetworkEdge.Inputs
         public Input<string> AccountNumber { get; set; } = null!;
 
         /// <summary>
-        /// Identifier of a WAN interface ACL template that will be applied
-        /// on a secondary device.
+        /// Identifier of a WAN interface ACL template that will be applied on a secondary device.
         /// </summary>
         [Input("aclTemplateId")]
         public Input<string>? AclTemplateId { get; set; }
 
         /// <summary>
-        /// Additional Internet bandwidth, in Mbps, for a secondary
-        /// device.
+        /// Additional Internet bandwidth, in Mbps, for a secondary device.
         /// </summary>
         [Input("additionalBandwidth")]
         public Input<int>? AdditionalBandwidth { get; set; }
@@ -60,8 +58,7 @@ namespace Pulumi.Equinix.NetworkEdge.Inputs
         private InputList<Inputs.DeviceSecondaryDeviceInterfaceGetArgs>? _interfaces;
 
         /// <summary>
-        /// List of device interfaces. See Interface Attribute below
-        /// for more details.
+        /// List of device interfaces. See Interface Attribute below for more details.
         /// </summary>
         public InputList<Inputs.DeviceSecondaryDeviceInterfaceGetArgs> Interfaces
         {
@@ -70,8 +67,7 @@ namespace Pulumi.Equinix.NetworkEdge.Inputs
         }
 
         /// <summary>
-        /// Path to the license file that will be uploaded and applied on a
-        /// secondary device. Applicable for some device types in BYOL licensing mode.
+        /// Path to the license file that will be uploaded and applied on a secondary device. Applicable for some device types in BYOL licensing mode.
         /// </summary>
         [Input("licenseFile")]
         public Input<string>? LicenseFile { get; set; }
@@ -83,8 +79,7 @@ namespace Pulumi.Equinix.NetworkEdge.Inputs
         public Input<string>? LicenseFileId { get; set; }
 
         /// <summary>
-        /// Device license registration status. Possible values are `APPLYING_LICENSE`,
-        /// `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
+        /// Device license registration status. Possible values are `APPLYING_LICENSE`, `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
         /// </summary>
         [Input("licenseStatus")]
         public Input<string>? LicenseStatus { get; set; }
@@ -102,10 +97,8 @@ namespace Pulumi.Equinix.NetworkEdge.Inputs
         public Input<string> MetroCode { get; set; } = null!;
 
         /// <summary>
-        /// Identifier of an MGMT interface ACL template that will be
-        /// applied on a secondary device.
-        /// * `ssh-key` - (Optional) Up to one definition of SSH key that will be provisioned on a secondary
-        /// device.
+        /// Identifier of an MGMT interface ACL template that will be applied on a secondary device.
+        /// * `ssh-key` - (Optional) Up to one definition of SSH key that will be provisioned on a secondary device.
         /// </summary>
         [Input("mgmtAclTemplateUuid")]
         public Input<string>? MgmtAclTemplateUuid { get; set; }
@@ -120,8 +113,7 @@ namespace Pulumi.Equinix.NetworkEdge.Inputs
         private InputList<string>? _notifications;
 
         /// <summary>
-        /// List of email addresses that will receive notifications about
-        /// secondary device.
+        /// List of email addresses that will receive notifications about secondary device.
         /// </summary>
         public InputList<string> Notifications
         {
@@ -130,15 +122,13 @@ namespace Pulumi.Equinix.NetworkEdge.Inputs
         }
 
         /// <summary>
-        /// Unique Identifier for the project resource where the device is scoped to.If you
-        /// leave it out, the device will be created under the default project id of your organization.
+        /// Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// Device redundancy type applicable for HA devices, either
-        /// primary or secondary.
+        /// Device redundancy type applicable for HA devices, either primary or secondary.
         /// </summary>
         [Input("redundancyType")]
         public Input<string>? RedundancyType { get; set; }
@@ -189,9 +179,7 @@ namespace Pulumi.Equinix.NetworkEdge.Inputs
         private InputMap<string>? _vendorConfiguration;
 
         /// <summary>
-        /// Key/Value pairs of vendor specific configuration parameters
-        /// for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`,
-        /// `systemIpAddress`, `private_address`, `private_cidr_mask`, `private_gateway`, `license_key`, `license_id`.
+        /// Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`.
         /// </summary>
         public InputMap<string> VendorConfiguration
         {

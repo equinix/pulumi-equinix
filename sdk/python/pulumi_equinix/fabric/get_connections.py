@@ -115,8 +115,8 @@ def get_connections(filters: Optional[Sequence[pulumi.InputType['GetConnectionsF
     Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID
 
     Additional documentation:
-    * Getting Started: <https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm>
-    * API: <https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections>
+    * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm
+    * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections
 
 
     :param Sequence[pulumi.InputType['GetConnectionsFilterArgs']] filters: Filters for the Data Source Search Request
@@ -151,8 +151,8 @@ def get_connections_output(filters: Optional[pulumi.Input[Sequence[pulumi.InputT
     Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID
 
     Additional documentation:
-    * Getting Started: <https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm>
-    * API: <https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections>
+    * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm
+    * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections
 
 
     :param Sequence[pulumi.InputType['GetConnectionsFilterArgs']] filters: Filters for the Data Source Search Request

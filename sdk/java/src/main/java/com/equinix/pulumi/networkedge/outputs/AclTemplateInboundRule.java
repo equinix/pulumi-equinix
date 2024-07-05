@@ -19,8 +19,7 @@ public final class AclTemplateInboundRule {
      */
     private @Nullable String description;
     /**
-     * @return Inbound traffic destination ports. Allowed values are a comma separated
-     * list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
+     * @return Inbound traffic destination ports. Allowed values are a comma separated list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
      * 
      */
     private String dstPort;
@@ -44,8 +43,7 @@ public final class AclTemplateInboundRule {
     @Deprecated /* Source Type will not be returned */
     private @Nullable String sourceType;
     /**
-     * @return Inbound traffic source ports. Allowed values are a comma separated list
-     * of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
+     * @return Inbound traffic source ports. Allowed values are a comma separated list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
      * 
      */
     private String srcPort;
@@ -73,8 +71,7 @@ public final class AclTemplateInboundRule {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return Inbound traffic destination ports. Allowed values are a comma separated
-     * list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
+     * @return Inbound traffic destination ports. Allowed values are a comma separated list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
      * 
      */
     public String dstPort() {
@@ -106,8 +103,7 @@ public final class AclTemplateInboundRule {
         return Optional.ofNullable(this.sourceType);
     }
     /**
-     * @return Inbound traffic source ports. Allowed values are a comma separated list
-     * of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
+     * @return Inbound traffic source ports. Allowed values are a comma separated list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
      * 
      */
     public String srcPort() {

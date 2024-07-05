@@ -65,10 +65,8 @@ class GetVlanResult:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
     def facility(self) -> str:
-        warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
-        pulumi.log.warn("""facility is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
-
         return pulumi.get(self, "facility")
 
     @property
@@ -120,8 +118,7 @@ def get_vlan(facility: Optional[str] = None,
              vxlan: Optional[int] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVlanResult:
     """
-    Provides an Equinix Metal Virtual Network datasource. VLANs data sources can be
-    searched by VLAN UUID, or project UUID and vxlan number.
+    Provides an Equinix Metal Virtual Network datasource. VLANs data sources can be searched by VLAN UUID, or project UUID and vxlan number.
 
     ## Example Usage
 
@@ -186,8 +183,7 @@ def get_vlan_output(facility: Optional[pulumi.Input[Optional[str]]] = None,
                     vxlan: Optional[pulumi.Input[Optional[int]]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVlanResult]:
     """
-    Provides an Equinix Metal Virtual Network datasource. VLANs data sources can be
-    searched by VLAN UUID, or project UUID and vxlan number.
+    Provides an Equinix Metal Virtual Network datasource. VLANs data sources can be searched by VLAN UUID, or project UUID and vxlan number.
 
     ## Example Usage
 

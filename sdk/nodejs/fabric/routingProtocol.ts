@@ -11,8 +11,8 @@ import * as utilities from "../utilities";
  * Fabric V4 API compatible resource allows creation and management of Equinix Fabric connection
  *
  * Additional documentation:
- * * Getting Started: <https://docs.equinix.com/en-us/Content/Interconnection/FCR/connections/FCR-connect-azureQC.htm#ConfigureRoutingDetailsintheFabricPortal>
- * * API: <https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols>
+ * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/connections/FCR-connect-azureQC.htm#ConfigureRoutingDetailsintheFabricPortal
+ * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
  *
  * ## Example Usage
  *
@@ -66,19 +66,19 @@ export class RoutingProtocol extends pulumi.CustomResource {
     /**
      * Bidirectional Forwarding Detection
      */
-    public readonly bfd!: pulumi.Output<outputs.fabric.RoutingProtocolBfd | undefined>;
+    public readonly bfd!: pulumi.Output<outputs.fabric.RoutingProtocolBfd>;
     /**
      * BGP authorization key
      */
-    public readonly bgpAuthKey!: pulumi.Output<string | undefined>;
+    public readonly bgpAuthKey!: pulumi.Output<string>;
     /**
      * Routing Protocol BGP IPv4
      */
-    public readonly bgpIpv4!: pulumi.Output<outputs.fabric.RoutingProtocolBgpIpv4 | undefined>;
+    public readonly bgpIpv4!: pulumi.Output<outputs.fabric.RoutingProtocolBgpIpv4>;
     /**
      * Routing Protocol BGP IPv6
      */
-    public readonly bgpIpv6!: pulumi.Output<outputs.fabric.RoutingProtocolBgpIpv6 | undefined>;
+    public readonly bgpIpv6!: pulumi.Output<outputs.fabric.RoutingProtocolBgpIpv6>;
     /**
      * Captures Routing Protocol lifecycle change information
      */
@@ -94,19 +94,19 @@ export class RoutingProtocol extends pulumi.CustomResource {
     /**
      * Customer-provided ASN
      */
-    public readonly customerAsn!: pulumi.Output<number | undefined>;
+    public readonly customerAsn!: pulumi.Output<number>;
     /**
      * Customer-provided Fabric Routing Protocol description
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string>;
     /**
      * Routing Protocol Direct IPv4
      */
-    public readonly directIpv4!: pulumi.Output<outputs.fabric.RoutingProtocolDirectIpv4 | undefined>;
+    public readonly directIpv4!: pulumi.Output<outputs.fabric.RoutingProtocolDirectIpv4>;
     /**
      * Routing Protocol Direct IPv6
      */
-    public readonly directIpv6!: pulumi.Output<outputs.fabric.RoutingProtocolDirectIpv6 | undefined>;
+    public readonly directIpv6!: pulumi.Output<outputs.fabric.RoutingProtocolDirectIpv6>;
     /**
      * Equinix ASN
      */
@@ -130,7 +130,7 @@ export class RoutingProtocol extends pulumi.CustomResource {
     /**
      * Defines the routing protocol type like BGP or DIRECT
      */
-    public readonly type!: pulumi.Output<string | undefined>;
+    public readonly type!: pulumi.Output<string>;
     /**
      * Equinix-assigned routing protocol identifier
      */

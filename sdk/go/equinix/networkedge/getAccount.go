@@ -11,11 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to get number and identifier of Equinix Network Edge
-// billing account in a given metro location.
+// Use this data source to get number and identifier of Equinix Network Edge billing account in a given metro location.
 //
-// Billing account reference is required to create Network Edge virtual device
-// in corresponding metro location.
+// Billing account reference is required to create Network Edge virtual device in corresponding metro location.
 //
 // ## Example Usage
 //
@@ -61,11 +59,9 @@ type GetAccountArgs struct {
 	MetroCode string `pulumi:"metroCode"`
 	// Account name for filtering.
 	Name *string `pulumi:"name"`
-	// Unique Identifier for the project resource where the account is scoped to.If you
-	// leave it out, all the billing accounts under all projects in your organization will be returned and it may return more than one account.
+	// Unique Identifier for the project resource where the account is scoped to.If you leave it out, all the billing accounts under all projects in your organization will be returned and it may return more than one account.
 	ProjectId *string `pulumi:"projectId"`
-	// Account status for filtering. Possible values are: `Active`, `Processing`,
-	// `Submitted`, `Staged`.
+	// Account status for filtering. Possible values are: `Active`, `Processing`, `Submitted`, `Staged`.
 	Status *string `pulumi:"status"`
 }
 
@@ -102,11 +98,9 @@ type GetAccountOutputArgs struct {
 	MetroCode pulumi.StringInput `pulumi:"metroCode"`
 	// Account name for filtering.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Unique Identifier for the project resource where the account is scoped to.If you
-	// leave it out, all the billing accounts under all projects in your organization will be returned and it may return more than one account.
+	// Unique Identifier for the project resource where the account is scoped to.If you leave it out, all the billing accounts under all projects in your organization will be returned and it may return more than one account.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
-	// Account status for filtering. Possible values are: `Active`, `Processing`,
-	// `Submitted`, `Staged`.
+	// Account status for filtering. Possible values are: `Active`, `Processing`, `Submitted`, `Staged`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 

@@ -11,41 +11,16 @@ import * as utilities from "../utilities";
  * Fabric V4 API compatible data resource that allow user to fetch Service Profile by name filter criteria
  *
  * Additional documentation:
- * * Getting Started: <https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm>
- * * API: <https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles>
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@equinix-labs/pulumi-equinix";
- *
- * const serviceProfilesDataName = equinix.fabric.getServiceProfiles({
- *     filter: {
- *         property: "/name",
- *         operator: "=",
- *         values: ["<list_of_profiles_to_return>"],
- *     },
- * });
- * export const id = data.equinix_fabric_service_profile.service_profiles_data_name.data[0].id;
- * export const name = data.equinix_fabric_service_profile.service_profiles_data_name.data[0].name;
- * export const type = data.equinix_fabric_service_profile.service_profiles_data_name.data[0].type;
- * export const visibility = data.equinix_fabric_service_profile.service_profiles_data_name.data[0].visibility;
- * export const orgName = data.equinix_fabric_service_profile.service_profiles_data_name.data[0].account[0].organization_name;
- * export const accessPointTypeConfigsType = data.equinix_fabric_service_profile.service_profiles_data_name.data[0].access_point_type_configs[0].type;
- * export const allowRemoteConnections = data.equinix_fabric_service_profile.service_profiles_data_name.data[0].access_point_type_configs[0].allow_remote_connections;
- * export const supportedBandwidth0 = data.equinix_fabric_service_profile.service_profiles_data_name.data[0].access_point_type_configs[0].supported_bandwidths[0];
- * export const supportedBandwidth1 = data.equinix_fabric_service_profile.service_profiles_data_name.data[0].access_point_type_configs[0].supported_bandwidths[1];
- * export const redundandyRequired = data.equinix_fabric_service_profile.service_profiles_data_name.data[0].access_point_type_configs[0].connection_redundancy_required;
- * export const allowOverSubscription = data.equinix_fabric_service_profile.service_profiles_data_name.data[0].access_point_type_configs[0].api_config[0].allow_over_subscription;
- * ```
+ * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm
+ * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles
  */
-export function getServiceProfiles(args?: GetServiceProfilesArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceProfilesResult> {
-    args = args || {};
+export function getServiceProfiles(args: GetServiceProfilesArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceProfilesResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:fabric/getServiceProfiles:getServiceProfiles", {
+        "andFilters": args.andFilters,
         "filter": args.filter,
+        "pagination": args.pagination,
         "sort": args.sort,
         "viewPoint": args.viewPoint,
     }, opts);
@@ -56,11 +31,19 @@ export function getServiceProfiles(args?: GetServiceProfilesArgs, opts?: pulumi.
  */
 export interface GetServiceProfilesArgs {
     /**
-     * Service Profile Search Filter
+     * Optional boolean flag to indicate if the filters will be AND'd together. Defaults to false
      */
-    filter?: inputs.fabric.GetServiceProfilesFilter;
+    andFilters?: boolean;
     /**
-     * Service Profile Sort criteria for Search Request response payload
+     * Filters for the Data Source Search Request (If andFilters is not set to true you cannot provide more than one filter block)
+     */
+    filter: inputs.fabric.GetServiceProfilesFilter;
+    /**
+     * Pagination details for the Data Source Search Request
+     */
+    pagination?: inputs.fabric.GetServiceProfilesPagination;
+    /**
+     * Filters for the Data Source Search Request
      */
     sort?: inputs.fabric.GetServiceProfilesSort[];
     /**
@@ -74,19 +57,27 @@ export interface GetServiceProfilesArgs {
  */
 export interface GetServiceProfilesResult {
     /**
+     * Optional boolean flag to indicate if the filters will be AND'd together. Defaults to false
+     */
+    readonly andFilters?: boolean;
+    /**
      * List of Service Profiles
      */
     readonly data: outputs.fabric.GetServiceProfilesDatum[];
     /**
-     * Service Profile Search Filter
+     * Filters for the Data Source Search Request (If andFilters is not set to true you cannot provide more than one filter block)
      */
-    readonly filter?: outputs.fabric.GetServiceProfilesFilter;
+    readonly filter: outputs.fabric.GetServiceProfilesFilter;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     /**
-     * Service Profile Sort criteria for Search Request response payload
+     * Pagination details for the Data Source Search Request
+     */
+    readonly pagination?: outputs.fabric.GetServiceProfilesPagination;
+    /**
+     * Filters for the Data Source Search Request
      */
     readonly sort?: outputs.fabric.GetServiceProfilesSort[];
     /**
@@ -98,36 +89,10 @@ export interface GetServiceProfilesResult {
  * Fabric V4 API compatible data resource that allow user to fetch Service Profile by name filter criteria
  *
  * Additional documentation:
- * * Getting Started: <https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm>
- * * API: <https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles>
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@equinix-labs/pulumi-equinix";
- *
- * const serviceProfilesDataName = equinix.fabric.getServiceProfiles({
- *     filter: {
- *         property: "/name",
- *         operator: "=",
- *         values: ["<list_of_profiles_to_return>"],
- *     },
- * });
- * export const id = data.equinix_fabric_service_profile.service_profiles_data_name.data[0].id;
- * export const name = data.equinix_fabric_service_profile.service_profiles_data_name.data[0].name;
- * export const type = data.equinix_fabric_service_profile.service_profiles_data_name.data[0].type;
- * export const visibility = data.equinix_fabric_service_profile.service_profiles_data_name.data[0].visibility;
- * export const orgName = data.equinix_fabric_service_profile.service_profiles_data_name.data[0].account[0].organization_name;
- * export const accessPointTypeConfigsType = data.equinix_fabric_service_profile.service_profiles_data_name.data[0].access_point_type_configs[0].type;
- * export const allowRemoteConnections = data.equinix_fabric_service_profile.service_profiles_data_name.data[0].access_point_type_configs[0].allow_remote_connections;
- * export const supportedBandwidth0 = data.equinix_fabric_service_profile.service_profiles_data_name.data[0].access_point_type_configs[0].supported_bandwidths[0];
- * export const supportedBandwidth1 = data.equinix_fabric_service_profile.service_profiles_data_name.data[0].access_point_type_configs[0].supported_bandwidths[1];
- * export const redundandyRequired = data.equinix_fabric_service_profile.service_profiles_data_name.data[0].access_point_type_configs[0].connection_redundancy_required;
- * export const allowOverSubscription = data.equinix_fabric_service_profile.service_profiles_data_name.data[0].access_point_type_configs[0].api_config[0].allow_over_subscription;
- * ```
+ * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm
+ * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles
  */
-export function getServiceProfilesOutput(args?: GetServiceProfilesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceProfilesResult> {
+export function getServiceProfilesOutput(args: GetServiceProfilesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceProfilesResult> {
     return pulumi.output(args).apply((a: any) => getServiceProfiles(a, opts))
 }
 
@@ -136,11 +101,19 @@ export function getServiceProfilesOutput(args?: GetServiceProfilesOutputArgs, op
  */
 export interface GetServiceProfilesOutputArgs {
     /**
-     * Service Profile Search Filter
+     * Optional boolean flag to indicate if the filters will be AND'd together. Defaults to false
      */
-    filter?: pulumi.Input<inputs.fabric.GetServiceProfilesFilterArgs>;
+    andFilters?: pulumi.Input<boolean>;
     /**
-     * Service Profile Sort criteria for Search Request response payload
+     * Filters for the Data Source Search Request (If andFilters is not set to true you cannot provide more than one filter block)
+     */
+    filter: pulumi.Input<inputs.fabric.GetServiceProfilesFilterArgs>;
+    /**
+     * Pagination details for the Data Source Search Request
+     */
+    pagination?: pulumi.Input<inputs.fabric.GetServiceProfilesPaginationArgs>;
+    /**
+     * Filters for the Data Source Search Request
      */
     sort?: pulumi.Input<pulumi.Input<inputs.fabric.GetServiceProfilesSortArgs>[]>;
     /**

@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DeviceBehavior {
     /**
-     * @return List of attributes that are allowed to change without recreating the instance. Supported attributes: `custom_data`, `user_data`&#34;
+     * @return List of attributes that are allowed to change without recreating the instance. Supported attributes: `custom_data`, `user_data`
      * 
      */
     private @Nullable List<String> allowChanges;
 
     private DeviceBehavior() {}
     /**
-     * @return List of attributes that are allowed to change without recreating the instance. Supported attributes: `custom_data`, `user_data`&#34;
+     * @return List of attributes that are allowed to change without recreating the instance. Supported attributes: `custom_data`, `user_data`
      * 
      */
     public List<String> allowChanges() {

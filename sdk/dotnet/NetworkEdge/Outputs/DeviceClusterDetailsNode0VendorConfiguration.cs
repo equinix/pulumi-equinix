@@ -18,8 +18,7 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
         /// </summary>
         public readonly string? ActivationKey;
         /// <summary>
-        /// The administrative password of the device. You can use it to log in
-        /// to the console. This field is not available for all device types.
+        /// The administrative password of the device. You can use it to log in to the console. This field is not available for all device types.
         /// </summary>
         public readonly string? AdminPassword;
         /// <summary>
@@ -55,8 +54,7 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
         /// </summary>
         public readonly string? PrivateGateway;
         /// <summary>
-        /// The CLI password of the device. This field is relevant only for the
-        /// Velocloud SDWAN cluster.
+        /// The CLI password of the device. This field is relevant only for the Velocloud SDWAN cluster.
         /// </summary>
         public readonly string? RootPassword;
 

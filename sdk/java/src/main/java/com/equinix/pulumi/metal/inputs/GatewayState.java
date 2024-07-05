@@ -18,16 +18,14 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
     public static final GatewayState Empty = new GatewayState();
 
     /**
-     * UUID of Public or VRF IP Reservation to associate with the gateway, the
-     * reservation must be in the same metro as the VLAN, conflicts with `private_ipv4_subnet_size`.
+     * UUID of Public or VRF IP Reservation to associate with the gateway, the reservation must be in the same metro as the VLAN, conflicts with `private_ipv4_subnet_size`.
      * 
      */
     @Import(name="ipReservationId")
     private @Nullable Output<String> ipReservationId;
 
     /**
-     * @return UUID of Public or VRF IP Reservation to associate with the gateway, the
-     * reservation must be in the same metro as the VLAN, conflicts with `private_ipv4_subnet_size`.
+     * @return UUID of Public or VRF IP Reservation to associate with the gateway, the reservation must be in the same metro as the VLAN, conflicts with `private_ipv4_subnet_size`.
      * 
      */
     public Optional<Output<String>> ipReservationId() {
@@ -35,16 +33,14 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Size of the private IPv4 subnet to create for this metal
-     * gateway, must be one of `8`, `16`, `32`, `64`, `128`. Conflicts with `ip_reservation_id`.
+     * Size of the private IPv4 subnet to create for this metal gateway, must be one of `8`, `16`, `32`, `64`, `128`. Conflicts with `ip_reservation_id`.
      * 
      */
     @Import(name="privateIpv4SubnetSize")
     private @Nullable Output<Integer> privateIpv4SubnetSize;
 
     /**
-     * @return Size of the private IPv4 subnet to create for this metal
-     * gateway, must be one of `8`, `16`, `32`, `64`, `128`. Conflicts with `ip_reservation_id`.
+     * @return Size of the private IPv4 subnet to create for this metal gateway, must be one of `8`, `16`, `32`, `64`, `128`. Conflicts with `ip_reservation_id`.
      * 
      */
     public Optional<Output<Integer>> privateIpv4SubnetSize() {
@@ -149,8 +145,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipReservationId UUID of Public or VRF IP Reservation to associate with the gateway, the
-         * reservation must be in the same metro as the VLAN, conflicts with `private_ipv4_subnet_size`.
+         * @param ipReservationId UUID of Public or VRF IP Reservation to associate with the gateway, the reservation must be in the same metro as the VLAN, conflicts with `private_ipv4_subnet_size`.
          * 
          * @return builder
          * 
@@ -161,8 +156,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipReservationId UUID of Public or VRF IP Reservation to associate with the gateway, the
-         * reservation must be in the same metro as the VLAN, conflicts with `private_ipv4_subnet_size`.
+         * @param ipReservationId UUID of Public or VRF IP Reservation to associate with the gateway, the reservation must be in the same metro as the VLAN, conflicts with `private_ipv4_subnet_size`.
          * 
          * @return builder
          * 
@@ -172,8 +166,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param privateIpv4SubnetSize Size of the private IPv4 subnet to create for this metal
-         * gateway, must be one of `8`, `16`, `32`, `64`, `128`. Conflicts with `ip_reservation_id`.
+         * @param privateIpv4SubnetSize Size of the private IPv4 subnet to create for this metal gateway, must be one of `8`, `16`, `32`, `64`, `128`. Conflicts with `ip_reservation_id`.
          * 
          * @return builder
          * 
@@ -184,8 +177,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param privateIpv4SubnetSize Size of the private IPv4 subnet to create for this metal
-         * gateway, must be one of `8`, `16`, `32`, `64`, `128`. Conflicts with `ip_reservation_id`.
+         * @param privateIpv4SubnetSize Size of the private IPv4 subnet to create for this metal gateway, must be one of `8`, `16`, `32`, `64`, `128`. Conflicts with `ip_reservation_id`.
          * 
          * @return builder
          * 

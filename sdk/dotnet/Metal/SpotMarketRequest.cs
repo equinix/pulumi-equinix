@@ -10,9 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Equinix.Metal
 {
     /// <summary>
-    /// Provides an Equinix Metal Spot Market Request resource to allow you to
-    /// manage spot market requests on your account. For more detail on Spot Market,
-    /// see [this article in Equinix Metal documentation](https://metal.equinix.com/developers/docs/deploy/spot-market/).
+    /// Provides an Equinix Metal Spot Market Request resource to allow you to manage spot market requests on your account. For more detail on Spot Market, see [this article in Equinix Metal documentation](https://metal.equinix.com/developers/docs/deploy/spot-market/).
     /// 
     /// ## Example Usage
     /// ```csharp
@@ -78,11 +76,7 @@ namespace Pulumi.Equinix.Metal
         public Output<ImmutableArray<string>> Facilities { get; private set; } = null!;
 
         /// <summary>
-        /// Key/Value pairs of parameters for devices provisioned from
-        /// this request. Valid keys are: `billing_cycle`, `plan`, `operating_system`, `hostname`,
-        /// `termination_time`, `always_pxe`, `description`, `features`, `locked`, `project_ssh_keys`,
-        /// `user_ssh_keys`, `userdata`, `customdata`, `ipxe_script_url`, `tags`. You can find each parameter
-        /// description in equinix.metal.Device docs.
+        /// Key/Value pairs of parameters for devices provisioned from this request. Valid keys are: `billing_cycle`, `plan`, `operating_system`, `hostname`, `termination_time`, `always_pxe`, `description`, `features`, `locked`, `project_ssh_keys`, `user_ssh_keys`, `userdata`, `customdata`, `ipxe_script_url`, `tags`. You can find each parameter description in equinix.metal.Device docs.
         /// </summary>
         [Output("instanceParameters")]
         public Output<Outputs.SpotMarketRequestInstanceParameters> InstanceParameters { get; private set; } = null!;
@@ -106,8 +100,7 @@ namespace Pulumi.Equinix.Metal
         public Output<string> ProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// On resource creation wait until all desired devices are active.
-        /// On resource destruction wait until devices are removed.
+        /// On resource creation wait until all desired devices are active. On resource destruction wait until devices are removed.
         /// </summary>
         [Output("waitForDevices")]
         public Output<bool?> WaitForDevices { get; private set; } = null!;
@@ -185,11 +178,7 @@ namespace Pulumi.Equinix.Metal
         }
 
         /// <summary>
-        /// Key/Value pairs of parameters for devices provisioned from
-        /// this request. Valid keys are: `billing_cycle`, `plan`, `operating_system`, `hostname`,
-        /// `termination_time`, `always_pxe`, `description`, `features`, `locked`, `project_ssh_keys`,
-        /// `user_ssh_keys`, `userdata`, `customdata`, `ipxe_script_url`, `tags`. You can find each parameter
-        /// description in equinix.metal.Device docs.
+        /// Key/Value pairs of parameters for devices provisioned from this request. Valid keys are: `billing_cycle`, `plan`, `operating_system`, `hostname`, `termination_time`, `always_pxe`, `description`, `features`, `locked`, `project_ssh_keys`, `user_ssh_keys`, `userdata`, `customdata`, `ipxe_script_url`, `tags`. You can find each parameter description in equinix.metal.Device docs.
         /// </summary>
         [Input("instanceParameters", required: true)]
         public Input<Inputs.SpotMarketRequestInstanceParametersArgs> InstanceParameters { get; set; } = null!;
@@ -213,8 +202,7 @@ namespace Pulumi.Equinix.Metal
         public Input<string> ProjectId { get; set; } = null!;
 
         /// <summary>
-        /// On resource creation wait until all desired devices are active.
-        /// On resource destruction wait until devices are removed.
+        /// On resource creation wait until all desired devices are active. On resource destruction wait until devices are removed.
         /// </summary>
         [Input("waitForDevices")]
         public Input<bool>? WaitForDevices { get; set; }
@@ -253,11 +241,7 @@ namespace Pulumi.Equinix.Metal
         }
 
         /// <summary>
-        /// Key/Value pairs of parameters for devices provisioned from
-        /// this request. Valid keys are: `billing_cycle`, `plan`, `operating_system`, `hostname`,
-        /// `termination_time`, `always_pxe`, `description`, `features`, `locked`, `project_ssh_keys`,
-        /// `user_ssh_keys`, `userdata`, `customdata`, `ipxe_script_url`, `tags`. You can find each parameter
-        /// description in equinix.metal.Device docs.
+        /// Key/Value pairs of parameters for devices provisioned from this request. Valid keys are: `billing_cycle`, `plan`, `operating_system`, `hostname`, `termination_time`, `always_pxe`, `description`, `features`, `locked`, `project_ssh_keys`, `user_ssh_keys`, `userdata`, `customdata`, `ipxe_script_url`, `tags`. You can find each parameter description in equinix.metal.Device docs.
         /// </summary>
         [Input("instanceParameters")]
         public Input<Inputs.SpotMarketRequestInstanceParametersGetArgs>? InstanceParameters { get; set; }
@@ -281,8 +265,7 @@ namespace Pulumi.Equinix.Metal
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// On resource creation wait until all desired devices are active.
-        /// On resource destruction wait until devices are removed.
+        /// On resource creation wait until all desired devices are active. On resource destruction wait until devices are removed.
         /// </summary>
         [Input("waitForDevices")]
         public Input<bool>? WaitForDevices { get; set; }

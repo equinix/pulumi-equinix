@@ -13,8 +13,7 @@ namespace Pulumi.Equinix.NetworkEdge.Inputs
     public sealed class DeviceLinkLinkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// billing account number to be used for
-        /// connection charges
+        /// billing account number to be used for connection charges
         /// </summary>
         [Input("accountNumber", required: true)]
         public Input<string> AccountNumber { get; set; } = null!;

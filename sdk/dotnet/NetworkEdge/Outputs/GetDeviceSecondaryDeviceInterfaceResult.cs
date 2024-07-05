@@ -41,7 +41,7 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
         /// Device provisioning status
         /// * INITIALIZING
         /// * PROVISIONING
-        /// * PROVISIONED  (**NOTE: By default data source will only return devices in this state.  To include other states see `valid_state_list`**)
+        /// * PROVISIONED (**NOTE: By default data source will only return devices in this state. To include other states see `valid_state_list`**)
         /// * WAITING_FOR_PRIMARY
         /// * WAITING_FOR_SECONDARY
         /// * WAITING_FOR_REPLICA_CLUSTER_NODES

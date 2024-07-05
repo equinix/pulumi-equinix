@@ -34,16 +34,14 @@ public final class AclTemplateState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Status of ACL template provisioning process, where template was applied.
-     * One of `PROVISIONING`, `PROVISIONED`.
+     * Status of ACL template provisioning process, where template was applied. One of `PROVISIONING`, `PROVISIONED`.
      * 
      */
     @Import(name="deviceAclStatus")
     private @Nullable Output<String> deviceAclStatus;
 
     /**
-     * @return Status of ACL template provisioning process, where template was applied.
-     * One of `PROVISIONING`, `PROVISIONED`.
+     * @return Status of ACL template provisioning process, where template was applied. One of `PROVISIONING`, `PROVISIONED`.
      * 
      */
     public Optional<Output<String>> deviceAclStatus() {
@@ -89,8 +87,7 @@ public final class AclTemplateState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * One or more rules to specify allowed inbound traffic.
-     * Rules are ordered, matching traffic rule stops processing subsequent ones.
+     * One or more rules to specify allowed inbound traffic. Rules are ordered, matching traffic rule stops processing subsequent ones.
      * 
      * The `inbound_rule` block has below fields:
      * 
@@ -99,8 +96,7 @@ public final class AclTemplateState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<AclTemplateInboundRuleArgs>> inboundRules;
 
     /**
-     * @return One or more rules to specify allowed inbound traffic.
-     * Rules are ordered, matching traffic rule stops processing subsequent ones.
+     * @return One or more rules to specify allowed inbound traffic. Rules are ordered, matching traffic rule stops processing subsequent ones.
      * 
      * The `inbound_rule` block has below fields:
      * 
@@ -148,16 +144,14 @@ public final class AclTemplateState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Unique Identifier for the project resource where the acl template is scoped to.If you
-     * leave it out, the ACL template will be created under the default project id of your organization.
+     * Unique Identifier for the project resource where the acl template is scoped to.If you leave it out, the ACL template will be created under the default project id of your organization.
      * 
      */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
     /**
-     * @return Unique Identifier for the project resource where the acl template is scoped to.If you
-     * leave it out, the ACL template will be created under the default project id of your organization.
+     * @return Unique Identifier for the project resource where the acl template is scoped to.If you leave it out, the ACL template will be created under the default project id of your organization.
      * 
      */
     public Optional<Output<String>> projectId() {
@@ -233,8 +227,7 @@ public final class AclTemplateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deviceAclStatus Status of ACL template provisioning process, where template was applied.
-         * One of `PROVISIONING`, `PROVISIONED`.
+         * @param deviceAclStatus Status of ACL template provisioning process, where template was applied. One of `PROVISIONING`, `PROVISIONED`.
          * 
          * @return builder
          * 
@@ -245,8 +238,7 @@ public final class AclTemplateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deviceAclStatus Status of ACL template provisioning process, where template was applied.
-         * One of `PROVISIONING`, `PROVISIONED`.
+         * @param deviceAclStatus Status of ACL template provisioning process, where template was applied. One of `PROVISIONING`, `PROVISIONED`.
          * 
          * @return builder
          * 
@@ -316,8 +308,7 @@ public final class AclTemplateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param inboundRules One or more rules to specify allowed inbound traffic.
-         * Rules are ordered, matching traffic rule stops processing subsequent ones.
+         * @param inboundRules One or more rules to specify allowed inbound traffic. Rules are ordered, matching traffic rule stops processing subsequent ones.
          * 
          * The `inbound_rule` block has below fields:
          * 
@@ -330,8 +321,7 @@ public final class AclTemplateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param inboundRules One or more rules to specify allowed inbound traffic.
-         * Rules are ordered, matching traffic rule stops processing subsequent ones.
+         * @param inboundRules One or more rules to specify allowed inbound traffic. Rules are ordered, matching traffic rule stops processing subsequent ones.
          * 
          * The `inbound_rule` block has below fields:
          * 
@@ -343,8 +333,7 @@ public final class AclTemplateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param inboundRules One or more rules to specify allowed inbound traffic.
-         * Rules are ordered, matching traffic rule stops processing subsequent ones.
+         * @param inboundRules One or more rules to specify allowed inbound traffic. Rules are ordered, matching traffic rule stops processing subsequent ones.
          * 
          * The `inbound_rule` block has below fields:
          * 
@@ -406,8 +395,7 @@ public final class AclTemplateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectId Unique Identifier for the project resource where the acl template is scoped to.If you
-         * leave it out, the ACL template will be created under the default project id of your organization.
+         * @param projectId Unique Identifier for the project resource where the acl template is scoped to.If you leave it out, the ACL template will be created under the default project id of your organization.
          * 
          * @return builder
          * 
@@ -418,8 +406,7 @@ public final class AclTemplateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectId Unique Identifier for the project resource where the acl template is scoped to.If you
-         * leave it out, the ACL template will be created under the default project id of your organization.
+         * @param projectId Unique Identifier for the project resource where the acl template is scoped to.If you leave it out, the ACL template will be created under the default project id of your organization.
          * 
          * @return builder
          * 

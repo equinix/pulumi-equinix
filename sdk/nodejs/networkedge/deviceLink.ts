@@ -8,8 +8,7 @@ import * as enums from "../types/enums";
 import * as utilities from "../utilities";
 
 /**
- * Resource `equinix.networkedge.DeviceLink` allows creation and management of Equinix
- * Network Edge virtual network device links.
+ * Resource `equinix.networkedge.DeviceLink` allows creation and management of Equinix Network Edge virtual network device links.
  *
  * ## Example Usage
  *
@@ -96,20 +95,17 @@ export class DeviceLink extends pulumi.CustomResource {
     }
 
     /**
-     * definition of one or more devices belonging to the
-     * device link. See Device section below for more details.
+     * definition of one or more devices belonging to the device link. See Device section below for more details.
      */
     public readonly devices!: pulumi.Output<outputs.networkedge.DeviceLinkDevice[]>;
     /**
-     * definition of one or more, inter metro, connections belonging
-     * to the device link. See Link section below for more details.
+     * definition of one or more, inter metro, connections belonging to the device link. See Link section below for more details.
      *
      * @deprecated Links is deprecated. Please use metro links instead.
      */
     public readonly links!: pulumi.Output<outputs.networkedge.DeviceLinkLink[] | undefined>;
     /**
-     * definition of one or more, inter metro, connections belonging
-     * to the device link. See Metro Link section below for more details.
+     * definition of one or more, inter metro, connections belonging to the device link. See Metro Link section below for more details.
      */
     public readonly metroLinks!: pulumi.Output<outputs.networkedge.DeviceLinkMetroLink[] | undefined>;
     /**
@@ -117,23 +113,19 @@ export class DeviceLink extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Unique Identifier for the project resource where the device link is scoped to.If you
-     * leave it out, the device link will be created under the default project id of your organization.
+     * Unique Identifier for the project resource where the device link is scoped to.If you leave it out, the device link will be created under the default project id of your organization.
      */
     public readonly projectId!: pulumi.Output<string>;
     /**
-     * Whether the connection should be created through 
-     * Fabric's primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
+     * Whether the connection should be created through Fabric's primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
      */
     public readonly redundancyType!: pulumi.Output<string | undefined>;
     /**
-     * device link provisioning status on a given device. One of `PROVISIONING`,
-     * `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
+     * device link provisioning status on a given device. One of `PROVISIONING`, `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * device link subnet in CIDR format. Not required for link
-     * between self configured devices.
+     * device link subnet in CIDR format. Not required for link between self configured devices.
      */
     public readonly subnet!: pulumi.Output<string | undefined>;
     /**
@@ -188,20 +180,17 @@ export class DeviceLink extends pulumi.CustomResource {
  */
 export interface DeviceLinkState {
     /**
-     * definition of one or more devices belonging to the
-     * device link. See Device section below for more details.
+     * definition of one or more devices belonging to the device link. See Device section below for more details.
      */
     devices?: pulumi.Input<pulumi.Input<inputs.networkedge.DeviceLinkDevice>[]>;
     /**
-     * definition of one or more, inter metro, connections belonging
-     * to the device link. See Link section below for more details.
+     * definition of one or more, inter metro, connections belonging to the device link. See Link section below for more details.
      *
      * @deprecated Links is deprecated. Please use metro links instead.
      */
     links?: pulumi.Input<pulumi.Input<inputs.networkedge.DeviceLinkLink>[]>;
     /**
-     * definition of one or more, inter metro, connections belonging
-     * to the device link. See Metro Link section below for more details.
+     * definition of one or more, inter metro, connections belonging to the device link. See Metro Link section below for more details.
      */
     metroLinks?: pulumi.Input<pulumi.Input<inputs.networkedge.DeviceLinkMetroLink>[]>;
     /**
@@ -209,23 +198,19 @@ export interface DeviceLinkState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique Identifier for the project resource where the device link is scoped to.If you
-     * leave it out, the device link will be created under the default project id of your organization.
+     * Unique Identifier for the project resource where the device link is scoped to.If you leave it out, the device link will be created under the default project id of your organization.
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Whether the connection should be created through 
-     * Fabric's primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
+     * Whether the connection should be created through Fabric's primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
      */
     redundancyType?: pulumi.Input<string>;
     /**
-     * device link provisioning status on a given device. One of `PROVISIONING`,
-     * `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
+     * device link provisioning status on a given device. One of `PROVISIONING`, `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
      */
     status?: pulumi.Input<string>;
     /**
-     * device link subnet in CIDR format. Not required for link
-     * between self configured devices.
+     * device link subnet in CIDR format. Not required for link between self configured devices.
      */
     subnet?: pulumi.Input<string>;
     /**
@@ -239,20 +224,17 @@ export interface DeviceLinkState {
  */
 export interface DeviceLinkArgs {
     /**
-     * definition of one or more devices belonging to the
-     * device link. See Device section below for more details.
+     * definition of one or more devices belonging to the device link. See Device section below for more details.
      */
     devices: pulumi.Input<pulumi.Input<inputs.networkedge.DeviceLinkDevice>[]>;
     /**
-     * definition of one or more, inter metro, connections belonging
-     * to the device link. See Link section below for more details.
+     * definition of one or more, inter metro, connections belonging to the device link. See Link section below for more details.
      *
      * @deprecated Links is deprecated. Please use metro links instead.
      */
     links?: pulumi.Input<pulumi.Input<inputs.networkedge.DeviceLinkLink>[]>;
     /**
-     * definition of one or more, inter metro, connections belonging
-     * to the device link. See Metro Link section below for more details.
+     * definition of one or more, inter metro, connections belonging to the device link. See Metro Link section below for more details.
      */
     metroLinks?: pulumi.Input<pulumi.Input<inputs.networkedge.DeviceLinkMetroLink>[]>;
     /**
@@ -260,18 +242,15 @@ export interface DeviceLinkArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique Identifier for the project resource where the device link is scoped to.If you
-     * leave it out, the device link will be created under the default project id of your organization.
+     * Unique Identifier for the project resource where the device link is scoped to.If you leave it out, the device link will be created under the default project id of your organization.
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Whether the connection should be created through 
-     * Fabric's primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
+     * Whether the connection should be created through Fabric's primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
      */
     redundancyType?: pulumi.Input<string>;
     /**
-     * device link subnet in CIDR format. Not required for link
-     * between self configured devices.
+     * device link subnet in CIDR format. Not required for link between self configured devices.
      */
     subnet?: pulumi.Input<string>;
 }

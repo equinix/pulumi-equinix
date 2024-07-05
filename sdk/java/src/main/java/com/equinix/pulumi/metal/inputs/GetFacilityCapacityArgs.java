@@ -32,16 +32,14 @@ public final class GetFacilityCapacityArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Minimun number of devices that must be available in selected location.
-     * Default is `1`.
+     * Minimun number of devices that must be available in selected location. Default is `1`.
      * 
      */
     @Import(name="quantity")
     private @Nullable Output<Integer> quantity;
 
     /**
-     * @return Minimun number of devices that must be available in selected location.
-     * Default is `1`.
+     * @return Minimun number of devices that must be available in selected location. Default is `1`.
      * 
      */
     public Optional<Output<Integer>> quantity() {
@@ -95,8 +93,7 @@ public final class GetFacilityCapacityArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param quantity Minimun number of devices that must be available in selected location.
-         * Default is `1`.
+         * @param quantity Minimun number of devices that must be available in selected location. Default is `1`.
          * 
          * @return builder
          * 
@@ -107,8 +104,7 @@ public final class GetFacilityCapacityArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param quantity Minimun number of devices that must be available in selected location.
-         * Default is `1`.
+         * @param quantity Minimun number of devices that must be available in selected location. Default is `1`.
          * 
          * @return builder
          * 

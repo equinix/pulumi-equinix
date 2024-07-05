@@ -32,16 +32,14 @@ public final class BgpArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * identifier of a connection established between.
-     * network device and remote service provider that will be used for peering.
+     * identifier of a connection established between. network device and remote service provider that will be used for peering.
      * 
      */
     @Import(name="connectionId", required=true)
     private Output<String> connectionId;
 
     /**
-     * @return identifier of a connection established between.
-     * network device and remote service provider that will be used for peering.
+     * @return identifier of a connection established between. network device and remote service provider that will be used for peering.
      * 
      */
     public Output<String> connectionId() {
@@ -159,8 +157,7 @@ public final class BgpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectionId identifier of a connection established between.
-         * network device and remote service provider that will be used for peering.
+         * @param connectionId identifier of a connection established between. network device and remote service provider that will be used for peering.
          * 
          * @return builder
          * 
@@ -171,8 +168,7 @@ public final class BgpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectionId identifier of a connection established between.
-         * network device and remote service provider that will be used for peering.
+         * @param connectionId identifier of a connection established between. network device and remote service provider that will be used for peering.
          * 
          * @return builder
          * 

@@ -118,13 +118,11 @@ class GetInterconnectionResult:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Use metro instead of facility. For more information, read the migration guide.""")
     def facility(self) -> str:
         """
         (**Deprecated**) Slug of a facility to which the connection belongs. Use metro instead; read the facility to metro migration guide
         """
-        warnings.warn("""Use metro instead of facility. For more information, read the migration guide.""", DeprecationWarning)
-        pulumi.log.warn("""facility is deprecated: Use metro instead of facility. For more information, read the migration guide.""")
-
         return pulumi.get(self, "facility")
 
     @property
@@ -233,13 +231,11 @@ class GetInterconnectionResult:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""If your organization already has connection service tokens enabled, use `service_tokens` instead""")
     def token(self) -> str:
         """
-        (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the equinix_ecx_l2_connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `service_tokens` instead.
+        (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `service_tokens` instead.
         """
-        warnings.warn("""If your organization already has connection service tokens enabled, use `service_tokens` instead""", DeprecationWarning)
-        pulumi.log.warn("""token is deprecated: If your organization already has connection service tokens enabled, use `service_tokens` instead""")
-
         return pulumi.get(self, "token")
 
     @property

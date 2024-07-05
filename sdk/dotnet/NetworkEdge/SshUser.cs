@@ -10,8 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Equinix.NetworkEdge
 {
     /// <summary>
-    /// Resource `equinix.networkedge.SshUser` allows creation and management of Equinix Network
-    /// Edge SSH users.
+    /// Resource `equinix.networkedge.SshUser` allows creation and management of Equinix Network Edge SSH users.
     /// 
     /// ## Example Usage
     /// ```csharp

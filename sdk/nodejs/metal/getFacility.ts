@@ -8,7 +8,7 @@ import * as enums from "../types/enums";
 import * as utilities from "../utilities";
 
 /**
- * > **Deprecated** Use `equinix.metal.getMetro` instead.  For more information, refer to the facility to metro migration guide.
+ * > **Deprecated** Use `equinix.metal.getMetro` instead. For more information, refer to the facility to metro migration guide.
  *
  * Provides an Equinix Metal facility datasource.
  *
@@ -47,8 +47,7 @@ export interface GetFacilityArgs {
      */
     code: string;
     /**
-     * Set of feature strings that the facility must have. Some
-     * possible values are `baremetal`, `ibx`, `storage`, `globalIpv4`, `backendTransfer`, `layer2`.
+     * Set of feature strings that the facility must have. Some possible values are `baremetal`, `ibx`, `storage`, `globalIpv4`, `backendTransfer`, `layer2`.
      */
     featuresRequireds?: string[];
 }
@@ -78,7 +77,7 @@ export interface GetFacilityResult {
     readonly name: string;
 }
 /**
- * > **Deprecated** Use `equinix.metal.getMetro` instead.  For more information, refer to the facility to metro migration guide.
+ * > **Deprecated** Use `equinix.metal.getMetro` instead. For more information, refer to the facility to metro migration guide.
  *
  * Provides an Equinix Metal facility datasource.
  *
@@ -111,8 +110,7 @@ export interface GetFacilityOutputArgs {
      */
     code: pulumi.Input<string>;
     /**
-     * Set of feature strings that the facility must have. Some
-     * possible values are `baremetal`, `ibx`, `storage`, `globalIpv4`, `backendTransfer`, `layer2`.
+     * Set of feature strings that the facility must have. Some possible values are `baremetal`, `ibx`, `storage`, `globalIpv4`, `backendTransfer`, `layer2`.
      */
     featuresRequireds?: pulumi.Input<pulumi.Input<string>[]>;
 }

@@ -10,9 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Equinix.Metal
 {
     /// <summary>
-    /// Provides an Equinix Metal project SSH key resource to manage project-specific SSH keys.
-    /// Project SSH keys will only be populated onto servers that belong to that project, in contrast to
-    /// User SSH Keys.
+    /// Provides an Equinix Metal project SSH key resource to manage project-specific SSH keys. Project SSH keys will only be populated onto servers that belong to that project, in contrast to User SSH Keys.
     /// 
     /// ## Example Usage
     /// ```csharp

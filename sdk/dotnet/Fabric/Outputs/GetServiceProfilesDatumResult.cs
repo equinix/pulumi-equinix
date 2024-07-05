@@ -86,7 +86,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// </summary>
         public readonly string Uuid;
         /// <summary>
-        /// flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
+        /// Flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
         /// </summary>
         public readonly string ViewPoint;
         /// <summary>

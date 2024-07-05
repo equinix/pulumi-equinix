@@ -47,7 +47,7 @@ class ServiceProfileArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ServiceProfileNotificationArgs']]] notifications: Preferences for notifications on connection configuration or status changes
         :param pulumi.Input[Sequence[pulumi.Input['ServiceProfilePortArgs']]] ports: Ports
         :param pulumi.Input['ServiceProfileProjectArgs'] project: Project information
-        :param pulumi.Input[bool] self_profile: Self Profile indicating if the profile is created for customer's  self use
+        :param pulumi.Input[bool] self_profile: Self Profile indicating if the profile is created for customer's self use
         :param pulumi.Input[Union[str, 'ProfileState']] state: Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags attached to the connection
         :param pulumi.Input[str] view_point: Flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
@@ -223,7 +223,7 @@ class ServiceProfileArgs:
     @pulumi.getter(name="selfProfile")
     def self_profile(self) -> Optional[pulumi.Input[bool]]:
         """
-        Self Profile indicating if the profile is created for customer's  self use
+        Self Profile indicating if the profile is created for customer's self use
         """
         return pulumi.get(self, "self_profile")
 
@@ -331,7 +331,7 @@ class _ServiceProfileState:
         :param pulumi.Input[Sequence[pulumi.Input['ServiceProfileNotificationArgs']]] notifications: Preferences for notifications on connection configuration or status changes
         :param pulumi.Input[Sequence[pulumi.Input['ServiceProfilePortArgs']]] ports: Ports
         :param pulumi.Input['ServiceProfileProjectArgs'] project: Project information
-        :param pulumi.Input[bool] self_profile: Self Profile indicating if the profile is created for customer's  self use
+        :param pulumi.Input[bool] self_profile: Self Profile indicating if the profile is created for customer's self use
         :param pulumi.Input[Union[str, 'ProfileState']] state: Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags attached to the connection
         :param pulumi.Input[Union[str, 'ProfileType']] type: Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
@@ -543,7 +543,7 @@ class _ServiceProfileState:
     @pulumi.getter(name="selfProfile")
     def self_profile(self) -> Optional[pulumi.Input[bool]]:
         """
-        Self Profile indicating if the profile is created for customer's  self use
+        Self Profile indicating if the profile is created for customer's self use
         """
         return pulumi.get(self, "self_profile")
 
@@ -663,8 +663,8 @@ class ServiceProfile(pulumi.CustomResource):
         Fabric V4 API compatible resource allows creation and management of Equinix Fabric Service Profile
 
         Additional documentation:
-        * Getting Started: <https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm>
-        * API: <https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles>
+        * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm
+        * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles
 
         ## Example Usage
         ```python
@@ -728,7 +728,7 @@ class ServiceProfile(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileNotificationArgs']]]] notifications: Preferences for notifications on connection configuration or status changes
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfilePortArgs']]]] ports: Ports
         :param pulumi.Input[pulumi.InputType['ServiceProfileProjectArgs']] project: Project information
-        :param pulumi.Input[bool] self_profile: Self Profile indicating if the profile is created for customer's  self use
+        :param pulumi.Input[bool] self_profile: Self Profile indicating if the profile is created for customer's self use
         :param pulumi.Input[Union[str, 'ProfileState']] state: Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags attached to the connection
         :param pulumi.Input[Union[str, 'ProfileType']] type: Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
@@ -746,8 +746,8 @@ class ServiceProfile(pulumi.CustomResource):
         Fabric V4 API compatible resource allows creation and management of Equinix Fabric Service Profile
 
         Additional documentation:
-        * Getting Started: <https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm>
-        * API: <https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles>
+        * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm
+        * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles
 
         ## Example Usage
         ```python
@@ -916,7 +916,7 @@ class ServiceProfile(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileNotificationArgs']]]] notifications: Preferences for notifications on connection configuration or status changes
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfilePortArgs']]]] ports: Ports
         :param pulumi.Input[pulumi.InputType['ServiceProfileProjectArgs']] project: Project information
-        :param pulumi.Input[bool] self_profile: Self Profile indicating if the profile is created for customer's  self use
+        :param pulumi.Input[bool] self_profile: Self Profile indicating if the profile is created for customer's self use
         :param pulumi.Input[Union[str, 'ProfileState']] state: Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags attached to the connection
         :param pulumi.Input[Union[str, 'ProfileType']] type: Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
@@ -1060,7 +1060,7 @@ class ServiceProfile(pulumi.CustomResource):
     @pulumi.getter(name="selfProfile")
     def self_profile(self) -> pulumi.Output[Optional[bool]]:
         """
-        Self Profile indicating if the profile is created for customer's  self use
+        Self Profile indicating if the profile is created for customer's self use
         """
         return pulumi.get(self, "self_profile")
 

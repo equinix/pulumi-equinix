@@ -12,9 +12,7 @@ namespace Pulumi.Equinix.NetworkEdge
     public static class GetDeviceSoftware
     {
         /// <summary>
-        /// Use this data source to get Equinix Network Edge device software details for a given
-        /// device type. For further details, check supported
-        /// [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
+        /// Use this data source to get Equinix Network Edge device software details for a given device type. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
         /// 
         /// ## Example Usage
         /// 
@@ -44,9 +42,7 @@ namespace Pulumi.Equinix.NetworkEdge
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDeviceSoftwareResult>("equinix:networkedge/getDeviceSoftware:getDeviceSoftware", args ?? new GetDeviceSoftwareArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to get Equinix Network Edge device software details for a given
-        /// device type. For further details, check supported
-        /// [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
+        /// Use this data source to get Equinix Network Edge device software details for a given device type. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
         /// 
         /// ## Example Usage
         /// 
@@ -86,8 +82,7 @@ namespace Pulumi.Equinix.NetworkEdge
         public string DeviceType { get; set; } = null!;
 
         /// <summary>
-        /// Boolean value to indicate that most recent version should be used *(in
-        /// case when more than one result is returned)*.
+        /// Boolean value to indicate that most recent version should be used *(in case when more than one result is returned)*.
         /// </summary>
         [Input("mostRecent")]
         public bool? MostRecent { get; set; }
@@ -96,8 +91,7 @@ namespace Pulumi.Equinix.NetworkEdge
         private List<string>? _packages;
 
         /// <summary>
-        /// Limits returned versions to those that are supported by given software
-        /// package codes.
+        /// Limits returned versions to those that are supported by given software package codes.
         /// </summary>
         public List<string> Packages
         {
@@ -112,8 +106,7 @@ namespace Pulumi.Equinix.NetworkEdge
         public bool? Stable { get; set; }
 
         /// <summary>
-        /// A regex string to apply on returned versions and filter search
-        /// results.
+        /// A regex string to apply on returned versions and filter search results.
         /// </summary>
         [Input("versionRegex")]
         public string? VersionRegex { get; set; }
@@ -133,8 +126,7 @@ namespace Pulumi.Equinix.NetworkEdge
         public Input<string> DeviceType { get; set; } = null!;
 
         /// <summary>
-        /// Boolean value to indicate that most recent version should be used *(in
-        /// case when more than one result is returned)*.
+        /// Boolean value to indicate that most recent version should be used *(in case when more than one result is returned)*.
         /// </summary>
         [Input("mostRecent")]
         public Input<bool>? MostRecent { get; set; }
@@ -143,8 +135,7 @@ namespace Pulumi.Equinix.NetworkEdge
         private InputList<string>? _packages;
 
         /// <summary>
-        /// Limits returned versions to those that are supported by given software
-        /// package codes.
+        /// Limits returned versions to those that are supported by given software package codes.
         /// </summary>
         public InputList<string> Packages
         {
@@ -159,8 +150,7 @@ namespace Pulumi.Equinix.NetworkEdge
         public Input<bool>? Stable { get; set; }
 
         /// <summary>
-        /// A regex string to apply on returned versions and filter search
-        /// results.
+        /// A regex string to apply on returned versions and filter search results.
         /// </summary>
         [Input("versionRegex")]
         public Input<string>? VersionRegex { get; set; }

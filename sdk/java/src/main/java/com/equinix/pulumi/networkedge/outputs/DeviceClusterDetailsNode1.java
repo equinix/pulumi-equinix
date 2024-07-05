@@ -33,9 +33,7 @@ public final class DeviceClusterDetailsNode1 {
      */
     private @Nullable String uuid;
     /**
-     * @return An object that has fields relevant to the vendor of the
-     * cluster device. See Cluster Details - Nodes - Vendor Configuration
-     * below for more details.
+     * @return An object that has fields relevant to the vendor of the cluster device. See Cluster Details - Nodes - Vendor Configuration below for more details.
      * 
      */
     private @Nullable DeviceClusterDetailsNode1VendorConfiguration vendorConfiguration;
@@ -70,9 +68,7 @@ public final class DeviceClusterDetailsNode1 {
         return Optional.ofNullable(this.uuid);
     }
     /**
-     * @return An object that has fields relevant to the vendor of the
-     * cluster device. See Cluster Details - Nodes - Vendor Configuration
-     * below for more details.
+     * @return An object that has fields relevant to the vendor of the cluster device. See Cluster Details - Nodes - Vendor Configuration below for more details.
      * 
      */
     public Optional<DeviceClusterDetailsNode1VendorConfiguration> vendorConfiguration() {

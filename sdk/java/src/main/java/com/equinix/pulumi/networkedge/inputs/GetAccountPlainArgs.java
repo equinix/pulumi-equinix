@@ -45,16 +45,14 @@ public final class GetAccountPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Unique Identifier for the project resource where the account is scoped to.If you
-     * leave it out, all the billing accounts under all projects in your organization will be returned and it may return more than one account.
+     * Unique Identifier for the project resource where the account is scoped to.If you leave it out, all the billing accounts under all projects in your organization will be returned and it may return more than one account.
      * 
      */
     @Import(name="projectId")
     private @Nullable String projectId;
 
     /**
-     * @return Unique Identifier for the project resource where the account is scoped to.If you
-     * leave it out, all the billing accounts under all projects in your organization will be returned and it may return more than one account.
+     * @return Unique Identifier for the project resource where the account is scoped to.If you leave it out, all the billing accounts under all projects in your organization will be returned and it may return more than one account.
      * 
      */
     public Optional<String> projectId() {
@@ -62,16 +60,14 @@ public final class GetAccountPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Account status for filtering. Possible values are: `Active`, `Processing`,
-     * `Submitted`, `Staged`.
+     * Account status for filtering. Possible values are: `Active`, `Processing`, `Submitted`, `Staged`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return Account status for filtering. Possible values are: `Active`, `Processing`,
-     * `Submitted`, `Staged`.
+     * @return Account status for filtering. Possible values are: `Active`, `Processing`, `Submitted`, `Staged`.
      * 
      */
     public Optional<String> status() {
@@ -128,8 +124,7 @@ public final class GetAccountPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param projectId Unique Identifier for the project resource where the account is scoped to.If you
-         * leave it out, all the billing accounts under all projects in your organization will be returned and it may return more than one account.
+         * @param projectId Unique Identifier for the project resource where the account is scoped to.If you leave it out, all the billing accounts under all projects in your organization will be returned and it may return more than one account.
          * 
          * @return builder
          * 
@@ -140,8 +135,7 @@ public final class GetAccountPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status Account status for filtering. Possible values are: `Active`, `Processing`,
-         * `Submitted`, `Staged`.
+         * @param status Account status for filtering. Possible values are: `Active`, `Processing`, `Submitted`, `Staged`.
          * 
          * @return builder
          * 

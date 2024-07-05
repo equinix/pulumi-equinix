@@ -82,9 +82,7 @@ public final class MetalFunctions {
      * 
      * If you need to fetch a list of devices which meet filter criteria, you can use the equinix.metal.getDevices datasource.
      * 
-     * &gt; **Note:** All arguments including the `root_password` and `user_data` will be stored in
-     *  the raw state as plain-text.
-     * Read more about sensitive data in state.
+     * &gt; **Note:** All arguments including the `root_password` and `user_data` will be stored in the raw state as plain-text. Read more about sensitive data in state.
      * 
      * ## Example Usage
      * 
@@ -162,9 +160,7 @@ public final class MetalFunctions {
      * 
      * If you need to fetch a list of devices which meet filter criteria, you can use the equinix.metal.getDevices datasource.
      * 
-     * &gt; **Note:** All arguments including the `root_password` and `user_data` will be stored in
-     *  the raw state as plain-text.
-     * Read more about sensitive data in state.
+     * &gt; **Note:** All arguments including the `root_password` and `user_data` will be stored in the raw state as plain-text. Read more about sensitive data in state.
      * 
      * ## Example Usage
      * 
@@ -242,9 +238,7 @@ public final class MetalFunctions {
      * 
      * If you need to fetch a list of devices which meet filter criteria, you can use the equinix.metal.getDevices datasource.
      * 
-     * &gt; **Note:** All arguments including the `root_password` and `user_data` will be stored in
-     *  the raw state as plain-text.
-     * Read more about sensitive data in state.
+     * &gt; **Note:** All arguments including the `root_password` and `user_data` will be stored in the raw state as plain-text. Read more about sensitive data in state.
      * 
      * ## Example Usage
      * 
@@ -322,9 +316,7 @@ public final class MetalFunctions {
      * 
      * If you need to fetch a list of devices which meet filter criteria, you can use the equinix.metal.getDevices datasource.
      * 
-     * &gt; **Note:** All arguments including the `root_password` and `user_data` will be stored in
-     *  the raw state as plain-text.
-     * Read more about sensitive data in state.
+     * &gt; **Note:** All arguments including the `root_password` and `user_data` will be stored in the raw state as plain-text. Read more about sensitive data in state.
      * 
      * ## Example Usage
      * 
@@ -402,9 +394,7 @@ public final class MetalFunctions {
      * 
      * If you need to fetch a list of devices which meet filter criteria, you can use the equinix.metal.getDevices datasource.
      * 
-     * &gt; **Note:** All arguments including the `root_password` and `user_data` will be stored in
-     *  the raw state as plain-text.
-     * Read more about sensitive data in state.
+     * &gt; **Note:** All arguments including the `root_password` and `user_data` will be stored in the raw state as plain-text. Read more about sensitive data in state.
      * 
      * ## Example Usage
      * 
@@ -482,9 +472,7 @@ public final class MetalFunctions {
      * 
      * If you need to fetch a list of devices which meet filter criteria, you can use the equinix.metal.getDevices datasource.
      * 
-     * &gt; **Note:** All arguments including the `root_password` and `user_data` will be stored in
-     *  the raw state as plain-text.
-     * Read more about sensitive data in state.
+     * &gt; **Note:** All arguments including the `root_password` and `user_data` will be stored in the raw state as plain-text. Read more about sensitive data in state.
      * 
      * ## Example Usage
      * 
@@ -560,11 +548,9 @@ public final class MetalFunctions {
     /**
      * Use this datasource to retrieve list of BGP neighbors of a device in the Equinix Metal host.
      * 
-     * To have any BGP neighbors listed, the device must be in BGP-enabled project
-     * and have a BGP session assigned.
+     * To have any BGP neighbors listed, the device must be in BGP-enabled project and have a BGP session assigned.
      * 
-     * To learn more about using BGP in Equinix Metal, see the
-     * equinix.metal.BgpSession resource documentation.
+     * To learn more about using BGP in Equinix Metal, see the equinix.metal.BgpSession resource documentation.
      * 
      * ## Example Usage
      * 
@@ -607,11 +593,9 @@ public final class MetalFunctions {
     /**
      * Use this datasource to retrieve list of BGP neighbors of a device in the Equinix Metal host.
      * 
-     * To have any BGP neighbors listed, the device must be in BGP-enabled project
-     * and have a BGP session assigned.
+     * To have any BGP neighbors listed, the device must be in BGP-enabled project and have a BGP session assigned.
      * 
-     * To learn more about using BGP in Equinix Metal, see the
-     * equinix.metal.BgpSession resource documentation.
+     * To learn more about using BGP in Equinix Metal, see the equinix.metal.BgpSession resource documentation.
      * 
      * ## Example Usage
      * 
@@ -654,11 +638,9 @@ public final class MetalFunctions {
     /**
      * Use this datasource to retrieve list of BGP neighbors of a device in the Equinix Metal host.
      * 
-     * To have any BGP neighbors listed, the device must be in BGP-enabled project
-     * and have a BGP session assigned.
+     * To have any BGP neighbors listed, the device must be in BGP-enabled project and have a BGP session assigned.
      * 
-     * To learn more about using BGP in Equinix Metal, see the
-     * equinix.metal.BgpSession resource documentation.
+     * To learn more about using BGP in Equinix Metal, see the equinix.metal.BgpSession resource documentation.
      * 
      * ## Example Usage
      * 
@@ -701,11 +683,9 @@ public final class MetalFunctions {
     /**
      * Use this datasource to retrieve list of BGP neighbors of a device in the Equinix Metal host.
      * 
-     * To have any BGP neighbors listed, the device must be in BGP-enabled project
-     * and have a BGP session assigned.
+     * To have any BGP neighbors listed, the device must be in BGP-enabled project and have a BGP session assigned.
      * 
-     * To learn more about using BGP in Equinix Metal, see the
-     * equinix.metal.BgpSession resource documentation.
+     * To learn more about using BGP in Equinix Metal, see the equinix.metal.BgpSession resource documentation.
      * 
      * ## Example Usage
      * 
@@ -1286,7 +1266,7 @@ public final class MetalFunctions {
         return Deployment.getInstance().invokeAsync("equinix:metal/getDevices:getDevices", TypeShape.of(GetDevicesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated** Use `equinix.metal.getMetro` instead.  For more information, refer to the facility to metro migration guide.
+     * &gt; **Deprecated** Use `equinix.metal.getMetro` instead. For more information, refer to the facility to metro migration guide.
      * 
      * Provides an Equinix Metal facility datasource.
      * 
@@ -1329,7 +1309,7 @@ public final class MetalFunctions {
         return getFacility(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated** Use `equinix.metal.getMetro` instead.  For more information, refer to the facility to metro migration guide.
+     * &gt; **Deprecated** Use `equinix.metal.getMetro` instead. For more information, refer to the facility to metro migration guide.
      * 
      * Provides an Equinix Metal facility datasource.
      * 
@@ -1372,7 +1352,7 @@ public final class MetalFunctions {
         return getFacilityPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated** Use `equinix.metal.getMetro` instead.  For more information, refer to the facility to metro migration guide.
+     * &gt; **Deprecated** Use `equinix.metal.getMetro` instead. For more information, refer to the facility to metro migration guide.
      * 
      * Provides an Equinix Metal facility datasource.
      * 
@@ -1415,7 +1395,7 @@ public final class MetalFunctions {
         return Deployment.getInstance().invoke("equinix:metal/getFacility:getFacility", TypeShape.of(GetFacilityResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated** Use `equinix.metal.getMetro` instead.  For more information, refer to the facility to metro migration guide.
+     * &gt; **Deprecated** Use `equinix.metal.getMetro` instead. For more information, refer to the facility to metro migration guide.
      * 
      * Provides an Equinix Metal facility datasource.
      * 
@@ -4258,8 +4238,7 @@ public final class MetalFunctions {
         return Deployment.getInstance().invokeAsync("equinix:metal/getPlans:getPlans", TypeShape.of(GetPlansResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to read ports of existing devices. You can read port by either its UUID,
-     * or by a device UUID and port name.
+     * Use this data source to read ports of existing devices. You can read port by either its UUID, or by a device UUID and port name.
      * 
      * ## Example Usage
      * 
@@ -4315,8 +4294,7 @@ public final class MetalFunctions {
         return getPort(GetPortArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to read ports of existing devices. You can read port by either its UUID,
-     * or by a device UUID and port name.
+     * Use this data source to read ports of existing devices. You can read port by either its UUID, or by a device UUID and port name.
      * 
      * ## Example Usage
      * 
@@ -4372,8 +4350,7 @@ public final class MetalFunctions {
         return getPortPlain(GetPortPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to read ports of existing devices. You can read port by either its UUID,
-     * or by a device UUID and port name.
+     * Use this data source to read ports of existing devices. You can read port by either its UUID, or by a device UUID and port name.
      * 
      * ## Example Usage
      * 
@@ -4429,8 +4406,7 @@ public final class MetalFunctions {
         return getPort(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to read ports of existing devices. You can read port by either its UUID,
-     * or by a device UUID and port name.
+     * Use this data source to read ports of existing devices. You can read port by either its UUID, or by a device UUID and port name.
      * 
      * ## Example Usage
      * 
@@ -4486,8 +4462,7 @@ public final class MetalFunctions {
         return getPortPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to read ports of existing devices. You can read port by either its UUID,
-     * or by a device UUID and port name.
+     * Use this data source to read ports of existing devices. You can read port by either its UUID, or by a device UUID and port name.
      * 
      * ## Example Usage
      * 
@@ -4543,8 +4518,7 @@ public final class MetalFunctions {
         return Deployment.getInstance().invoke("equinix:metal/getPort:getPort", TypeShape.of(GetPortResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to read ports of existing devices. You can read port by either its UUID,
-     * or by a device UUID and port name.
+     * Use this data source to read ports of existing devices. You can read port by either its UUID, or by a device UUID and port name.
      * 
      * ## Example Usage
      * 
@@ -4600,8 +4574,7 @@ public final class MetalFunctions {
         return Deployment.getInstance().invokeAsync("equinix:metal/getPort:getPort", TypeShape.of(GetPortResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to get CIDR expression for precreated (management) IPv6 and IPv4 blocks in Equinix Metal.
-     * You can then use the cidrsubnet TF builtin function to derive subnets.
+     * Use this data source to get CIDR expression for precreated (management) IPv6 and IPv4 blocks in Equinix Metal. You can then use the cidrsubnet TF builtin function to derive subnets.
      * 
      * &gt; For backward compatibility, this data source will also return reserved (elastic) IP blocks.
      * 
@@ -4614,8 +4587,7 @@ public final class MetalFunctions {
         return getPrecreatedIpBlock(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to get CIDR expression for precreated (management) IPv6 and IPv4 blocks in Equinix Metal.
-     * You can then use the cidrsubnet TF builtin function to derive subnets.
+     * Use this data source to get CIDR expression for precreated (management) IPv6 and IPv4 blocks in Equinix Metal. You can then use the cidrsubnet TF builtin function to derive subnets.
      * 
      * &gt; For backward compatibility, this data source will also return reserved (elastic) IP blocks.
      * 
@@ -4628,8 +4600,7 @@ public final class MetalFunctions {
         return getPrecreatedIpBlockPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to get CIDR expression for precreated (management) IPv6 and IPv4 blocks in Equinix Metal.
-     * You can then use the cidrsubnet TF builtin function to derive subnets.
+     * Use this data source to get CIDR expression for precreated (management) IPv6 and IPv4 blocks in Equinix Metal. You can then use the cidrsubnet TF builtin function to derive subnets.
      * 
      * &gt; For backward compatibility, this data source will also return reserved (elastic) IP blocks.
      * 
@@ -4642,8 +4613,7 @@ public final class MetalFunctions {
         return Deployment.getInstance().invoke("equinix:metal/getPrecreatedIpBlock:getPrecreatedIpBlock", TypeShape.of(GetPrecreatedIpBlockResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to get CIDR expression for precreated (management) IPv6 and IPv4 blocks in Equinix Metal.
-     * You can then use the cidrsubnet TF builtin function to derive subnets.
+     * Use this data source to get CIDR expression for precreated (management) IPv6 and IPv4 blocks in Equinix Metal. You can then use the cidrsubnet TF builtin function to derive subnets.
      * 
      * &gt; For backward compatibility, this data source will also return reserved (elastic) IP blocks.
      * 
@@ -5066,8 +5036,7 @@ public final class MetalFunctions {
         return Deployment.getInstance().invokeAsync("equinix:metal/getProjectSshKey:getProjectSshKey", TypeShape.of(GetProjectSshKeyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to find IP address blocks in Equinix Metal. You can use IP address or a block
-     * ID for lookup.
+     * Use this data source to find IP address blocks in Equinix Metal. You can use IP address or a block ID for lookup.
      * 
      * &gt; For backward compatibility, this data source can be also used for precreated (management) IP blocks.
      * 
@@ -5078,8 +5047,7 @@ public final class MetalFunctions {
         return getReservedIpBlock(GetReservedIpBlockArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to find IP address blocks in Equinix Metal. You can use IP address or a block
-     * ID for lookup.
+     * Use this data source to find IP address blocks in Equinix Metal. You can use IP address or a block ID for lookup.
      * 
      * &gt; For backward compatibility, this data source can be also used for precreated (management) IP blocks.
      * 
@@ -5090,8 +5058,7 @@ public final class MetalFunctions {
         return getReservedIpBlockPlain(GetReservedIpBlockPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to find IP address blocks in Equinix Metal. You can use IP address or a block
-     * ID for lookup.
+     * Use this data source to find IP address blocks in Equinix Metal. You can use IP address or a block ID for lookup.
      * 
      * &gt; For backward compatibility, this data source can be also used for precreated (management) IP blocks.
      * 
@@ -5102,8 +5069,7 @@ public final class MetalFunctions {
         return getReservedIpBlock(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to find IP address blocks in Equinix Metal. You can use IP address or a block
-     * ID for lookup.
+     * Use this data source to find IP address blocks in Equinix Metal. You can use IP address or a block ID for lookup.
      * 
      * &gt; For backward compatibility, this data source can be also used for precreated (management) IP blocks.
      * 
@@ -5114,8 +5080,7 @@ public final class MetalFunctions {
         return getReservedIpBlockPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to find IP address blocks in Equinix Metal. You can use IP address or a block
-     * ID for lookup.
+     * Use this data source to find IP address blocks in Equinix Metal. You can use IP address or a block ID for lookup.
      * 
      * &gt; For backward compatibility, this data source can be also used for precreated (management) IP blocks.
      * 
@@ -5126,8 +5091,7 @@ public final class MetalFunctions {
         return Deployment.getInstance().invoke("equinix:metal/getReservedIpBlock:getReservedIpBlock", TypeShape.of(GetReservedIpBlockResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to find IP address blocks in Equinix Metal. You can use IP address or a block
-     * ID for lookup.
+     * Use this data source to find IP address blocks in Equinix Metal. You can use IP address or a block ID for lookup.
      * 
      * &gt; For backward compatibility, this data source can be also used for precreated (management) IP blocks.
      * 
@@ -5322,8 +5286,7 @@ public final class MetalFunctions {
         return Deployment.getInstance().invokeAsync("equinix:metal/getSpotMarketRequest:getSpotMarketRequest", TypeShape.of(GetSpotMarketRequestResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to retrieve a virtual circuit resource from
-     * [Equinix Fabric - software-defined interconnections](https://metal.equinix.com/developers/docs/networking/fabric/)
+     * Use this data source to retrieve a virtual circuit resource from [Equinix Fabric - software-defined interconnections](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/)
      * 
      * See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
      * 
@@ -5332,8 +5295,7 @@ public final class MetalFunctions {
         return getVirtualCircuit(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to retrieve a virtual circuit resource from
-     * [Equinix Fabric - software-defined interconnections](https://metal.equinix.com/developers/docs/networking/fabric/)
+     * Use this data source to retrieve a virtual circuit resource from [Equinix Fabric - software-defined interconnections](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/)
      * 
      * See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
      * 
@@ -5342,8 +5304,7 @@ public final class MetalFunctions {
         return getVirtualCircuitPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to retrieve a virtual circuit resource from
-     * [Equinix Fabric - software-defined interconnections](https://metal.equinix.com/developers/docs/networking/fabric/)
+     * Use this data source to retrieve a virtual circuit resource from [Equinix Fabric - software-defined interconnections](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/)
      * 
      * See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
      * 
@@ -5352,8 +5313,7 @@ public final class MetalFunctions {
         return Deployment.getInstance().invoke("equinix:metal/getVirtualCircuit:getVirtualCircuit", TypeShape.of(GetVirtualCircuitResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to retrieve a virtual circuit resource from
-     * [Equinix Fabric - software-defined interconnections](https://metal.equinix.com/developers/docs/networking/fabric/)
+     * Use this data source to retrieve a virtual circuit resource from [Equinix Fabric - software-defined interconnections](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/)
      * 
      * See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
      * 
@@ -5362,8 +5322,7 @@ public final class MetalFunctions {
         return Deployment.getInstance().invokeAsync("equinix:metal/getVirtualCircuit:getVirtualCircuit", TypeShape.of(GetVirtualCircuitResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Provides an Equinix Metal Virtual Network datasource. VLANs data sources can be
-     * searched by VLAN UUID, or project UUID and vxlan number.
+     * Provides an Equinix Metal Virtual Network datasource. VLANs data sources can be searched by VLAN UUID, or project UUID and vxlan number.
      * 
      * ## Example Usage
      * 
@@ -5448,8 +5407,7 @@ public final class MetalFunctions {
         return getVlan(GetVlanArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Provides an Equinix Metal Virtual Network datasource. VLANs data sources can be
-     * searched by VLAN UUID, or project UUID and vxlan number.
+     * Provides an Equinix Metal Virtual Network datasource. VLANs data sources can be searched by VLAN UUID, or project UUID and vxlan number.
      * 
      * ## Example Usage
      * 
@@ -5534,8 +5492,7 @@ public final class MetalFunctions {
         return getVlanPlain(GetVlanPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Provides an Equinix Metal Virtual Network datasource. VLANs data sources can be
-     * searched by VLAN UUID, or project UUID and vxlan number.
+     * Provides an Equinix Metal Virtual Network datasource. VLANs data sources can be searched by VLAN UUID, or project UUID and vxlan number.
      * 
      * ## Example Usage
      * 
@@ -5620,8 +5577,7 @@ public final class MetalFunctions {
         return getVlan(args, InvokeOptions.Empty);
     }
     /**
-     * Provides an Equinix Metal Virtual Network datasource. VLANs data sources can be
-     * searched by VLAN UUID, or project UUID and vxlan number.
+     * Provides an Equinix Metal Virtual Network datasource. VLANs data sources can be searched by VLAN UUID, or project UUID and vxlan number.
      * 
      * ## Example Usage
      * 
@@ -5706,8 +5662,7 @@ public final class MetalFunctions {
         return getVlanPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Provides an Equinix Metal Virtual Network datasource. VLANs data sources can be
-     * searched by VLAN UUID, or project UUID and vxlan number.
+     * Provides an Equinix Metal Virtual Network datasource. VLANs data sources can be searched by VLAN UUID, or project UUID and vxlan number.
      * 
      * ## Example Usage
      * 
@@ -5792,8 +5747,7 @@ public final class MetalFunctions {
         return Deployment.getInstance().invoke("equinix:metal/getVlan:getVlan", TypeShape.of(GetVlanResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Provides an Equinix Metal Virtual Network datasource. VLANs data sources can be
-     * searched by VLAN UUID, or project UUID and vxlan number.
+     * Provides an Equinix Metal Virtual Network datasource. VLANs data sources can be searched by VLAN UUID, or project UUID and vxlan number.
      * 
      * ## Example Usage
      * 

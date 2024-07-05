@@ -10,10 +10,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a resource to create and manage blocks of reserved IP addresses in a project.
  *
- * When a user provisions first device in a metro, Equinix Metal API automatically allocates IPv6/56 and private IPv4/25 blocks.
- * The new device then gets IPv6 and private IPv4 addresses from those block. It also gets a public IPv4/31 address.
- * Every new device in the project and metro will automatically get IPv6 and private IPv4 addresses from these pre-allocated blocks.
- * The IPv6 and private IPv4 blocks can't be created, only imported. With this resource, it's possible to create either public IPv4 blocks or global IPv4 blocks.
+ * When a user provisions first device in a metro, Equinix Metal API automatically allocates IPv6/56 and private IPv4/25 blocks. The new device then gets IPv6 and private IPv4 addresses from those block. It also gets a public IPv4/31 address. Every new device in the project and metro will automatically get IPv6 and private IPv4 addresses from these pre-allocated blocks. The IPv6 and private IPv4 blocks can't be created, only imported. With this resource, it's possible to create either public IPv4 blocks or global IPv4 blocks.
  *
  * Public blocks are allocated in a metro. Addresses from public blocks can only be assigned to devices in the metro. Public blocks can have mask from /24 (256 addresses) to /32 (1 address). If you create public block with this resource, you must fill the metro argument.
  *
@@ -99,21 +96,18 @@ export class ReservedIpBlock extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Facility where to allocate the public IP address block, makes sense only
-     * if type is `publicIpv4` and must be empty if type is `globalIpv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
+     * Facility where to allocate the public IP address block, makes sense only if type is `publicIpv4` and must be empty if type is `globalIpv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
      */
     public readonly facility!: pulumi.Output<string | undefined>;
     public /*out*/ readonly gateway!: pulumi.Output<string>;
     /**
-     * Boolean flag whether addresses from a block are global (i.e. can be assigned in any
-     * metro).
+     * Boolean flag whether addresses from a block are global (i.e. can be assigned in any metro).
      */
     public /*out*/ readonly global!: pulumi.Output<boolean>;
     public /*out*/ readonly manageable!: pulumi.Output<boolean>;
     public /*out*/ readonly management!: pulumi.Output<boolean>;
     /**
-     * Metro where to allocate the public IP address block, makes sense only
-     * if type is `publicIpv4` and must be empty if type is `globalIpv4`. Conflicts with `facility`.
+     * Metro where to allocate the public IP address block, makes sense only if type is `publicIpv4` and must be empty if type is `globalIpv4`. Conflicts with `facility`.
      */
     public readonly metro!: pulumi.Output<string | undefined>;
     /**
@@ -141,8 +135,7 @@ export class ReservedIpBlock extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
-     * One of `globalIpv4`, `publicIpv4`, or `vrf`. Defaults to `publicIpv4` for backward
-     * compatibility.
+     * One of `globalIpv4`, `publicIpv4`, or `vrf`. Defaults to `publicIpv4` for backward compatibility.
      */
     public readonly type!: pulumi.Output<string | undefined>;
     /**
@@ -243,21 +236,18 @@ export interface ReservedIpBlockState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Facility where to allocate the public IP address block, makes sense only
-     * if type is `publicIpv4` and must be empty if type is `globalIpv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
+     * Facility where to allocate the public IP address block, makes sense only if type is `publicIpv4` and must be empty if type is `globalIpv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
      */
     facility?: pulumi.Input<string | enums.metal.Facility>;
     gateway?: pulumi.Input<string>;
     /**
-     * Boolean flag whether addresses from a block are global (i.e. can be assigned in any
-     * metro).
+     * Boolean flag whether addresses from a block are global (i.e. can be assigned in any metro).
      */
     global?: pulumi.Input<boolean>;
     manageable?: pulumi.Input<boolean>;
     management?: pulumi.Input<boolean>;
     /**
-     * Metro where to allocate the public IP address block, makes sense only
-     * if type is `publicIpv4` and must be empty if type is `globalIpv4`. Conflicts with `facility`.
+     * Metro where to allocate the public IP address block, makes sense only if type is `publicIpv4` and must be empty if type is `globalIpv4`. Conflicts with `facility`.
      */
     metro?: pulumi.Input<string>;
     /**
@@ -285,8 +275,7 @@ export interface ReservedIpBlockState {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * One of `globalIpv4`, `publicIpv4`, or `vrf`. Defaults to `publicIpv4` for backward
-     * compatibility.
+     * One of `globalIpv4`, `publicIpv4`, or `vrf`. Defaults to `publicIpv4` for backward compatibility.
      */
     type?: pulumi.Input<string | enums.metal.IpBlockType>;
     /**
@@ -313,13 +302,11 @@ export interface ReservedIpBlockArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Facility where to allocate the public IP address block, makes sense only
-     * if type is `publicIpv4` and must be empty if type is `globalIpv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
+     * Facility where to allocate the public IP address block, makes sense only if type is `publicIpv4` and must be empty if type is `globalIpv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
      */
     facility?: pulumi.Input<string | enums.metal.Facility>;
     /**
-     * Metro where to allocate the public IP address block, makes sense only
-     * if type is `publicIpv4` and must be empty if type is `globalIpv4`. Conflicts with `facility`.
+     * Metro where to allocate the public IP address block, makes sense only if type is `publicIpv4` and must be empty if type is `globalIpv4`. Conflicts with `facility`.
      */
     metro?: pulumi.Input<string>;
     /**
@@ -339,8 +326,7 @@ export interface ReservedIpBlockArgs {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * One of `globalIpv4`, `publicIpv4`, or `vrf`. Defaults to `publicIpv4` for backward
-     * compatibility.
+     * One of `globalIpv4`, `publicIpv4`, or `vrf`. Defaults to `publicIpv4` for backward compatibility.
      */
     type?: pulumi.Input<string | enums.metal.IpBlockType>;
     /**

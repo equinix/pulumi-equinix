@@ -20,11 +20,9 @@ class SshKeyArgs:
                  type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a SshKey resource.
-        :param pulumi.Input[str] public_key: The SSH public key. If this is a file, it can be read using the file
-               interpolation function.
+        :param pulumi.Input[str] public_key: The SSH public key. If this is a file, it can be read using the file interpolation function.
         :param pulumi.Input[str] name: The name of SSH key used for identification.
-        :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the SSH key is scoped to.If you
-               leave it out, the ssh key will be created under the default project id of your organization.
+        :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the SSH key is scoped to.If you leave it out, the ssh key will be created under the default project id of your organization.
         :param pulumi.Input[str] type: The type of SSH key: `RSA` (default) or `DSA`.
         """
         pulumi.set(__self__, "public_key", public_key)
@@ -39,8 +37,7 @@ class SshKeyArgs:
     @pulumi.getter(name="publicKey")
     def public_key(self) -> pulumi.Input[str]:
         """
-        The SSH public key. If this is a file, it can be read using the file
-        interpolation function.
+        The SSH public key. If this is a file, it can be read using the file interpolation function.
         """
         return pulumi.get(self, "public_key")
 
@@ -64,8 +61,7 @@ class SshKeyArgs:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique Identifier for the project resource where the SSH key is scoped to.If you
-        leave it out, the ssh key will be created under the default project id of your organization.
+        Unique Identifier for the project resource where the SSH key is scoped to.If you leave it out, the ssh key will be created under the default project id of your organization.
         """
         return pulumi.get(self, "project_id")
 
@@ -97,10 +93,8 @@ class _SshKeyState:
         """
         Input properties used for looking up and filtering SshKey resources.
         :param pulumi.Input[str] name: The name of SSH key used for identification.
-        :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the SSH key is scoped to.If you
-               leave it out, the ssh key will be created under the default project id of your organization.
-        :param pulumi.Input[str] public_key: The SSH public key. If this is a file, it can be read using the file
-               interpolation function.
+        :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the SSH key is scoped to.If you leave it out, the ssh key will be created under the default project id of your organization.
+        :param pulumi.Input[str] public_key: The SSH public key. If this is a file, it can be read using the file interpolation function.
         :param pulumi.Input[str] type: The type of SSH key: `RSA` (default) or `DSA`.
         :param pulumi.Input[str] uuid: The unique identifier of the key
         """
@@ -131,8 +125,7 @@ class _SshKeyState:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique Identifier for the project resource where the SSH key is scoped to.If you
-        leave it out, the ssh key will be created under the default project id of your organization.
+        Unique Identifier for the project resource where the SSH key is scoped to.If you leave it out, the ssh key will be created under the default project id of your organization.
         """
         return pulumi.get(self, "project_id")
 
@@ -144,8 +137,7 @@ class _SshKeyState:
     @pulumi.getter(name="publicKey")
     def public_key(self) -> Optional[pulumi.Input[str]]:
         """
-        The SSH public key. If this is a file, it can be read using the file
-        interpolation function.
+        The SSH public key. If this is a file, it can be read using the file interpolation function.
         """
         return pulumi.get(self, "public_key")
 
@@ -213,10 +205,8 @@ class SshKey(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of SSH key used for identification.
-        :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the SSH key is scoped to.If you
-               leave it out, the ssh key will be created under the default project id of your organization.
-        :param pulumi.Input[str] public_key: The SSH public key. If this is a file, it can be read using the file
-               interpolation function.
+        :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the SSH key is scoped to.If you leave it out, the ssh key will be created under the default project id of your organization.
+        :param pulumi.Input[str] public_key: The SSH public key. If this is a file, it can be read using the file interpolation function.
         :param pulumi.Input[str] type: The type of SSH key: `RSA` (default) or `DSA`.
         """
         ...
@@ -305,10 +295,8 @@ class SshKey(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of SSH key used for identification.
-        :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the SSH key is scoped to.If you
-               leave it out, the ssh key will be created under the default project id of your organization.
-        :param pulumi.Input[str] public_key: The SSH public key. If this is a file, it can be read using the file
-               interpolation function.
+        :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the SSH key is scoped to.If you leave it out, the ssh key will be created under the default project id of your organization.
+        :param pulumi.Input[str] public_key: The SSH public key. If this is a file, it can be read using the file interpolation function.
         :param pulumi.Input[str] type: The type of SSH key: `RSA` (default) or `DSA`.
         :param pulumi.Input[str] uuid: The unique identifier of the key
         """
@@ -335,8 +323,7 @@ class SshKey(pulumi.CustomResource):
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[str]:
         """
-        Unique Identifier for the project resource where the SSH key is scoped to.If you
-        leave it out, the ssh key will be created under the default project id of your organization.
+        Unique Identifier for the project resource where the SSH key is scoped to.If you leave it out, the ssh key will be created under the default project id of your organization.
         """
         return pulumi.get(self, "project_id")
 
@@ -344,8 +331,7 @@ class SshKey(pulumi.CustomResource):
     @pulumi.getter(name="publicKey")
     def public_key(self) -> pulumi.Output[str]:
         """
-        The SSH public key. If this is a file, it can be read using the file
-        interpolation function.
+        The SSH public key. If this is a file, it can be read using the file interpolation function.
         """
         return pulumi.get(self, "public_key")
 

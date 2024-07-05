@@ -81,16 +81,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="equinix:networkedge/networkFile:NetworkFile")
 public class NetworkFile extends com.pulumi.resources.CustomResource {
     /**
-     * Boolean value that determines device licensing mode, i.e.,
-     * `bring your own license` or `subscription`.
+     * Boolean value that determines device licensing mode, i.e., `bring your own license` or `subscription`.
      * 
      */
     @Export(name="byol", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> byol;
 
     /**
-     * @return Boolean value that determines device licensing mode, i.e.,
-     * `bring your own license` or `subscription`.
+     * @return Boolean value that determines device licensing mode, i.e., `bring your own license` or `subscription`.
      * 
      */
     public Output<Boolean> byol() {
@@ -167,16 +165,14 @@ public class NetworkFile extends com.pulumi.resources.CustomResource {
         return this.processType;
     }
     /**
-     * Boolean value that determines device management mode, i.e.,
-     * `self-managed` or `Equinix-managed`.
+     * Boolean value that determines device management mode, i.e., `self-managed` or `Equinix-managed`.
      * 
      */
     @Export(name="selfManaged", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> selfManaged;
 
     /**
-     * @return Boolean value that determines device management mode, i.e.,
-     * `self-managed` or `Equinix-managed`.
+     * @return Boolean value that determines device management mode, i.e., `self-managed` or `Equinix-managed`.
      * 
      */
     public Output<Boolean> selfManaged() {

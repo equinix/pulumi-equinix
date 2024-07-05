@@ -134,12 +134,9 @@ class UserApiKey(pulumi.CustomResource):
                  read_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        Use this resource to create Metal User API Key resources in Equinix Metal. Each API key contains a
-        token which can be used for authentication in Equinix Metal HTTP API (in HTTP request header
-        `X-Auth-Token`).
+        Use this resource to create Metal User API Key resources in Equinix Metal. Each API key contains a token which can be used for authentication in Equinix Metal HTTP API (in HTTP request header `X-Auth-Token`).
 
-        Read-only keys only allow to list and view existing resources, read-write keys can also be used to
-        create resources.
+        Read-only keys only allow to list and view existing resources, read-write keys can also be used to create resources.
 
         ## Example Usage
         ```python
@@ -172,12 +169,9 @@ class UserApiKey(pulumi.CustomResource):
                  args: UserApiKeyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Use this resource to create Metal User API Key resources in Equinix Metal. Each API key contains a
-        token which can be used for authentication in Equinix Metal HTTP API (in HTTP request header
-        `X-Auth-Token`).
+        Use this resource to create Metal User API Key resources in Equinix Metal. Each API key contains a token which can be used for authentication in Equinix Metal HTTP API (in HTTP request header `X-Auth-Token`).
 
-        Read-only keys only allow to list and view existing resources, read-write keys can also be used to
-        create resources.
+        Read-only keys only allow to list and view existing resources, read-write keys can also be used to create resources.
 
         ## Example Usage
         ```python

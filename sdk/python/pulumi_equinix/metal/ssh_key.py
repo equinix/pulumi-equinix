@@ -18,8 +18,7 @@ class SshKeyArgs:
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a SshKey resource.
-        :param pulumi.Input[str] public_key: The public key. If this is a file, it
-               can be read using the file interpolation function
+        :param pulumi.Input[str] public_key: The public key. If this is a file, it can be read using the file interpolation function
         :param pulumi.Input[str] name: The name of the SSH key for identification
         """
         pulumi.set(__self__, "public_key", public_key)
@@ -30,8 +29,7 @@ class SshKeyArgs:
     @pulumi.getter(name="publicKey")
     def public_key(self) -> pulumi.Input[str]:
         """
-        The public key. If this is a file, it
-        can be read using the file interpolation function
+        The public key. If this is a file, it can be read using the file interpolation function
         """
         return pulumi.get(self, "public_key")
 
@@ -67,8 +65,7 @@ class _SshKeyState:
         :param pulumi.Input[str] fingerprint: The fingerprint of the SSH key.
         :param pulumi.Input[str] name: The name of the SSH key for identification
         :param pulumi.Input[str] owner_id: The UUID of the Equinix Metal API User who owns this key.
-        :param pulumi.Input[str] public_key: The public key. If this is a file, it
-               can be read using the file interpolation function
+        :param pulumi.Input[str] public_key: The public key. If this is a file, it can be read using the file interpolation function
         :param pulumi.Input[str] updated: The timestamp for the last time the SSH key was updated.
         """
         if created is not None:
@@ -136,8 +133,7 @@ class _SshKeyState:
     @pulumi.getter(name="publicKey")
     def public_key(self) -> Optional[pulumi.Input[str]]:
         """
-        The public key. If this is a file, it
-        can be read using the file interpolation function
+        The public key. If this is a file, it can be read using the file interpolation function
         """
         return pulumi.get(self, "public_key")
 
@@ -193,8 +189,7 @@ class SshKey(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the SSH key for identification
-        :param pulumi.Input[str] public_key: The public key. If this is a file, it
-               can be read using the file interpolation function
+        :param pulumi.Input[str] public_key: The public key. If this is a file, it can be read using the file interpolation function
         """
         ...
     @overload
@@ -287,8 +282,7 @@ class SshKey(pulumi.CustomResource):
         :param pulumi.Input[str] fingerprint: The fingerprint of the SSH key.
         :param pulumi.Input[str] name: The name of the SSH key for identification
         :param pulumi.Input[str] owner_id: The UUID of the Equinix Metal API User who owns this key.
-        :param pulumi.Input[str] public_key: The public key. If this is a file, it
-               can be read using the file interpolation function
+        :param pulumi.Input[str] public_key: The public key. If this is a file, it can be read using the file interpolation function
         :param pulumi.Input[str] updated: The timestamp for the last time the SSH key was updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -339,8 +333,7 @@ class SshKey(pulumi.CustomResource):
     @pulumi.getter(name="publicKey")
     def public_key(self) -> pulumi.Output[str]:
         """
-        The public key. If this is a file, it
-        can be read using the file interpolation function
+        The public key. If this is a file, it can be read using the file interpolation function
         """
         return pulumi.get(self, "public_key")
 

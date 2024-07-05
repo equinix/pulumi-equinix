@@ -16,8 +16,8 @@ import (
 // Fabric V4 API compatible resource allows creation and management of Equinix Fabric Service Profile
 //
 // Additional documentation:
-// * Getting Started: <https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm>
-// * API: <https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles>
+// * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm
+// * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles
 //
 // ## Example Usage
 // ```go
@@ -115,7 +115,7 @@ type ServiceProfile struct {
 	Ports ServiceProfilePortArrayOutput `pulumi:"ports"`
 	// Project information
 	Project ServiceProfileProjectPtrOutput `pulumi:"project"`
-	// Self Profile indicating if the profile is created for customer's  self use
+	// Self Profile indicating if the profile is created for customer's self use
 	SelfProfile pulumi.BoolPtrOutput `pulumi:"selfProfile"`
 	// Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
 	State pulumi.StringPtrOutput `pulumi:"state"`
@@ -195,7 +195,7 @@ type serviceProfileState struct {
 	Ports []ServiceProfilePort `pulumi:"ports"`
 	// Project information
 	Project *ServiceProfileProject `pulumi:"project"`
-	// Self Profile indicating if the profile is created for customer's  self use
+	// Self Profile indicating if the profile is created for customer's self use
 	SelfProfile *bool `pulumi:"selfProfile"`
 	// Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
 	State *string `pulumi:"state"`
@@ -240,7 +240,7 @@ type ServiceProfileState struct {
 	Ports ServiceProfilePortArrayInput
 	// Project information
 	Project ServiceProfileProjectPtrInput
-	// Self Profile indicating if the profile is created for customer's  self use
+	// Self Profile indicating if the profile is created for customer's self use
 	SelfProfile pulumi.BoolPtrInput
 	// Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
 	State pulumi.StringPtrInput
@@ -283,7 +283,7 @@ type serviceProfileArgs struct {
 	Ports []ServiceProfilePort `pulumi:"ports"`
 	// Project information
 	Project *ServiceProfileProject `pulumi:"project"`
-	// Self Profile indicating if the profile is created for customer's  self use
+	// Self Profile indicating if the profile is created for customer's self use
 	SelfProfile *bool `pulumi:"selfProfile"`
 	// Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
 	State *string `pulumi:"state"`
@@ -321,7 +321,7 @@ type ServiceProfileArgs struct {
 	Ports ServiceProfilePortArrayInput
 	// Project information
 	Project ServiceProfileProjectPtrInput
-	// Self Profile indicating if the profile is created for customer's  self use
+	// Self Profile indicating if the profile is created for customer's self use
 	SelfProfile pulumi.BoolPtrInput
 	// Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
 	State pulumi.StringPtrInput
@@ -491,7 +491,7 @@ func (o ServiceProfileOutput) Project() ServiceProfileProjectPtrOutput {
 	return o.ApplyT(func(v *ServiceProfile) ServiceProfileProjectPtrOutput { return v.Project }).(ServiceProfileProjectPtrOutput)
 }
 
-// Self Profile indicating if the profile is created for customer's  self use
+// Self Profile indicating if the profile is created for customer's self use
 func (o ServiceProfileOutput) SelfProfile() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServiceProfile) pulumi.BoolPtrOutput { return v.SelfProfile }).(pulumi.BoolPtrOutput)
 }

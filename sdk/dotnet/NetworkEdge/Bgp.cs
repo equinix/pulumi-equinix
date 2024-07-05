@@ -10,8 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Equinix.NetworkEdge
 {
     /// <summary>
-    /// Resource `equinix.networkedge.Bgp` allows creation and management of Equinix Network
-    /// Edge BGP peering configurations.
+    /// Resource `equinix.networkedge.Bgp` allows creation and management of Equinix Network Edge BGP peering configurations.
     /// 
     /// ## Example Usage
     /// ```csharp
@@ -57,15 +56,13 @@ namespace Pulumi.Equinix.NetworkEdge
         public Output<string?> AuthenticationKey { get; private set; } = null!;
 
         /// <summary>
-        /// identifier of a connection established between.
-        /// network device and remote service provider that will be used for peering.
+        /// identifier of a connection established between. network device and remote service provider that will be used for peering.
         /// </summary>
         [Output("connectionId")]
         public Output<string> ConnectionId { get; private set; } = null!;
 
         /// <summary>
-        /// unique identifier of a network device that is a local peer in a given BGP peering
-        /// configuration.
+        /// unique identifier of a network device that is a local peer in a given BGP peering configuration.
         /// </summary>
         [Output("deviceId")]
         public Output<string> DeviceId { get; private set; } = null!;
@@ -83,8 +80,7 @@ namespace Pulumi.Equinix.NetworkEdge
         public Output<string> LocalIpAddress { get; private set; } = null!;
 
         /// <summary>
-        /// BGP peering configuration provisioning status, one of `PROVISIONING`,
-        /// `PENDING_UPDATE`, `PROVISIONED`, `FAILED`.
+        /// BGP peering configuration provisioning status, one of `PROVISIONING`, `PENDING_UPDATE`, `PROVISIONED`, `FAILED`.
         /// </summary>
         [Output("provisioningStatus")]
         public Output<string> ProvisioningStatus { get; private set; } = null!;
@@ -102,8 +98,7 @@ namespace Pulumi.Equinix.NetworkEdge
         public Output<string> RemoteIpAddress { get; private set; } = null!;
 
         /// <summary>
-        /// BGP peer state, one of `Idle`, `Connect`, `Active`, `OpenSent`, `OpenConfirm`,
-        /// `Established`.
+        /// BGP peer state, one of `Idle`, `Connect`, `Active`, `OpenSent`, `OpenConfirm`, `Established`.
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -182,8 +177,7 @@ namespace Pulumi.Equinix.NetworkEdge
         }
 
         /// <summary>
-        /// identifier of a connection established between.
-        /// network device and remote service provider that will be used for peering.
+        /// identifier of a connection established between. network device and remote service provider that will be used for peering.
         /// </summary>
         [Input("connectionId", required: true)]
         public Input<string> ConnectionId { get; set; } = null!;
@@ -237,15 +231,13 @@ namespace Pulumi.Equinix.NetworkEdge
         }
 
         /// <summary>
-        /// identifier of a connection established between.
-        /// network device and remote service provider that will be used for peering.
+        /// identifier of a connection established between. network device and remote service provider that will be used for peering.
         /// </summary>
         [Input("connectionId")]
         public Input<string>? ConnectionId { get; set; }
 
         /// <summary>
-        /// unique identifier of a network device that is a local peer in a given BGP peering
-        /// configuration.
+        /// unique identifier of a network device that is a local peer in a given BGP peering configuration.
         /// </summary>
         [Input("deviceId")]
         public Input<string>? DeviceId { get; set; }
@@ -263,8 +255,7 @@ namespace Pulumi.Equinix.NetworkEdge
         public Input<string>? LocalIpAddress { get; set; }
 
         /// <summary>
-        /// BGP peering configuration provisioning status, one of `PROVISIONING`,
-        /// `PENDING_UPDATE`, `PROVISIONED`, `FAILED`.
+        /// BGP peering configuration provisioning status, one of `PROVISIONING`, `PENDING_UPDATE`, `PROVISIONED`, `FAILED`.
         /// </summary>
         [Input("provisioningStatus")]
         public Input<string>? ProvisioningStatus { get; set; }
@@ -282,8 +273,7 @@ namespace Pulumi.Equinix.NetworkEdge
         public Input<string>? RemoteIpAddress { get; set; }
 
         /// <summary>
-        /// BGP peer state, one of `Idle`, `Connect`, `Active`, `OpenSent`, `OpenConfirm`,
-        /// `Established`.
+        /// BGP peer state, one of `Idle`, `Connect`, `Active`, `OpenSent`, `OpenConfirm`, `Established`.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

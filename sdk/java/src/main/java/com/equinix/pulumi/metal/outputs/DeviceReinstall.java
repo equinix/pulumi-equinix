@@ -12,44 +12,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DeviceReinstall {
     /**
-     * @return Whether the OS disk should be filled with `00h` bytes before reinstall.
-     * Defaults to `false`.
+     * @return Whether the OS disk should be filled with `00h` bytes before reinstall
      * 
      */
     private @Nullable Boolean deprovisionFast;
     /**
-     * @return Whether the provider should favour reinstall over destroy and create. Defaults to
-     * `false`.
+     * @return Whether the device should be reinstalled instead of destroyed
      * 
      */
     private @Nullable Boolean enabled;
     /**
-     * @return Whether the non-OS disks should be kept or wiped during reinstall.
-     * Defaults to `false`.
+     * @return Whether the non-OS disks should be kept or wiped during reinstall
      * 
      */
     private @Nullable Boolean preserveData;
 
     private DeviceReinstall() {}
     /**
-     * @return Whether the OS disk should be filled with `00h` bytes before reinstall.
-     * Defaults to `false`.
+     * @return Whether the OS disk should be filled with `00h` bytes before reinstall
      * 
      */
     public Optional<Boolean> deprovisionFast() {
         return Optional.ofNullable(this.deprovisionFast);
     }
     /**
-     * @return Whether the provider should favour reinstall over destroy and create. Defaults to
-     * `false`.
+     * @return Whether the device should be reinstalled instead of destroyed
      * 
      */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return Whether the non-OS disks should be kept or wiped during reinstall.
-     * Defaults to `false`.
+     * @return Whether the non-OS disks should be kept or wiped during reinstall
      * 
      */
     public Optional<Boolean> preserveData() {

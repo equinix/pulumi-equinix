@@ -68,16 +68,14 @@ public class DeviceNetworkType extends com.pulumi.resources.CustomResource {
         return this.deviceId;
     }
     /**
-     * Network type to set. Must be one of `layer3`, `hybrid`, `hybrid-bonded`, `layer2-individual`
-     * and `layer2-bonded`.
+     * Network type to set. Must be one of `layer3`, `hybrid`, `hybrid-bonded`, `layer2-individual` and `layer2-bonded`.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return Network type to set. Must be one of `layer3`, `hybrid`, `hybrid-bonded`, `layer2-individual`
-     * and `layer2-bonded`.
+     * @return Network type to set. Must be one of `layer3`, `hybrid`, `hybrid-bonded`, `layer2-individual` and `layer2-bonded`.
      * 
      */
     public Output<String> type() {

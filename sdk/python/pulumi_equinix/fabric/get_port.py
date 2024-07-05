@@ -267,8 +267,8 @@ def get_port(uuid: Optional[str] = None,
     Fabric V4 API compatible data resource that allow user to fetch port by uuid
 
     Additional documentation:
-    * Getting Started: <https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-ports-implement.htm>
-    * API: <https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#ports>
+    * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-ports-implement.htm
+    * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#ports
 
     ## Example Usage
 
@@ -330,8 +330,8 @@ def get_port_output(uuid: Optional[pulumi.Input[str]] = None,
     Fabric V4 API compatible data resource that allow user to fetch port by uuid
 
     Additional documentation:
-    * Getting Started: <https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-ports-implement.htm>
-    * API: <https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#ports>
+    * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-ports-implement.htm
+    * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#ports
 
     ## Example Usage
 

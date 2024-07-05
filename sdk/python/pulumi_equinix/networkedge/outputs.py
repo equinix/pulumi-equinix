@@ -63,8 +63,7 @@ class AclTemplateDeviceDetail(dict):
                  name: Optional[str] = None,
                  uuid: Optional[str] = None):
         """
-        :param str acl_status: Device ACL provisioning status where template was applied. One of `PROVISIONING`,
-               `PROVISIONED`.
+        :param str acl_status: Device ACL provisioning status where template was applied. One of `PROVISIONING`, `PROVISIONED`.
         :param str name: ACL template name.
         :param str uuid: Device uuid.
         """
@@ -79,8 +78,7 @@ class AclTemplateDeviceDetail(dict):
     @pulumi.getter(name="aclStatus")
     def acl_status(self) -> Optional[str]:
         """
-        Device ACL provisioning status where template was applied. One of `PROVISIONING`,
-        `PROVISIONED`.
+        Device ACL provisioning status where template was applied. One of `PROVISIONING`, `PROVISIONED`.
         """
         return pulumi.get(self, "acl_status")
 
@@ -136,11 +134,9 @@ class AclTemplateInboundRule(dict):
                  subnet: Optional[str] = None,
                  subnets: Optional[Sequence[str]] = None):
         """
-        :param str dst_port: Inbound traffic destination ports. Allowed values are a comma separated
-               list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
+        :param str dst_port: Inbound traffic destination ports. Allowed values are a comma separated list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
         :param Union[str, 'AclRuleProtocolType'] protocol: Inbound traffic protocol. One of `IP`, `TCP`, `UDP`.
-        :param str src_port: Inbound traffic source ports. Allowed values are a comma separated list
-               of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
+        :param str src_port: Inbound traffic source ports. Allowed values are a comma separated list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
         :param str description: Inbound rule description, up to 200 characters.
         :param int sequence_number: Inbound rule sequence number
         :param str source_type: Type of traffic source used in a given inbound rule
@@ -165,8 +161,7 @@ class AclTemplateInboundRule(dict):
     @pulumi.getter(name="dstPort")
     def dst_port(self) -> str:
         """
-        Inbound traffic destination ports. Allowed values are a comma separated
-        list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
+        Inbound traffic destination ports. Allowed values are a comma separated list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
         """
         return pulumi.get(self, "dst_port")
 
@@ -182,8 +177,7 @@ class AclTemplateInboundRule(dict):
     @pulumi.getter(name="srcPort")
     def src_port(self) -> str:
         """
-        Inbound traffic source ports. Allowed values are a comma separated list
-        of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
+        Inbound traffic source ports. Allowed values are a comma separated list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
         """
         return pulumi.get(self, "src_port")
 
@@ -205,13 +199,11 @@ class AclTemplateInboundRule(dict):
 
     @property
     @pulumi.getter(name="sourceType")
+    @_utilities.deprecated("""Source Type will not be returned""")
     def source_type(self) -> Optional[str]:
         """
         Type of traffic source used in a given inbound rule
         """
-        warnings.warn("""Source Type will not be returned""", DeprecationWarning)
-        pulumi.log.warn("""source_type is deprecated: Source Type will not be returned""")
-
         return pulumi.get(self, "source_type")
 
     @property
@@ -224,13 +216,11 @@ class AclTemplateInboundRule(dict):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Use Subnet instead""")
     def subnets(self) -> Optional[Sequence[str]]:
         """
         Inbound traffic source IP subnets in CIDR format.
         """
-        warnings.warn("""Use Subnet instead""", DeprecationWarning)
-        pulumi.log.warn("""subnets is deprecated: Use Subnet instead""")
-
         return pulumi.get(self, "subnets")
 
 
@@ -265,10 +255,8 @@ class DeviceClusterDetails(dict):
                  num_of_nodes: Optional[int] = None):
         """
         :param str cluster_name: The name of the cluster device
-        :param 'DeviceClusterDetailsNode0Args' node0: An object that has `node0` configuration.
-               See Cluster Details - Nodes below for more details.
-        :param 'DeviceClusterDetailsNode1Args' node1: An object that has `node1` configuration.
-               See Cluster Details - Nodes below for more details.
+        :param 'DeviceClusterDetailsNode0Args' node0: An object that has `node0` configuration. See Cluster Details - Nodes below for more details.
+        :param 'DeviceClusterDetailsNode1Args' node1: An object that has `node1` configuration. See Cluster Details - Nodes below for more details.
         :param str cluster_id: The ID of the cluster.
         :param int num_of_nodes: The number of nodes in the cluster.
         """
@@ -292,8 +280,7 @@ class DeviceClusterDetails(dict):
     @pulumi.getter
     def node0(self) -> 'outputs.DeviceClusterDetailsNode0':
         """
-        An object that has `node0` configuration.
-        See Cluster Details - Nodes below for more details.
+        An object that has `node0` configuration. See Cluster Details - Nodes below for more details.
         """
         return pulumi.get(self, "node0")
 
@@ -301,8 +288,7 @@ class DeviceClusterDetails(dict):
     @pulumi.getter
     def node1(self) -> 'outputs.DeviceClusterDetailsNode1':
         """
-        An object that has `node1` configuration.
-        See Cluster Details - Nodes below for more details.
+        An object that has `node1` configuration. See Cluster Details - Nodes below for more details.
         """
         return pulumi.get(self, "node1")
 
@@ -357,9 +343,7 @@ class DeviceClusterDetailsNode0(dict):
         :param str license_token: License token. This is necessary for Palo Alto clusters.
         :param str name: Device name.
         :param str uuid: Device unique identifier.
-        :param 'DeviceClusterDetailsNode0VendorConfigurationArgs' vendor_configuration: An object that has fields relevant to the vendor of the
-               cluster device. See Cluster Details - Nodes - Vendor Configuration
-               below for more details.
+        :param 'DeviceClusterDetailsNode0VendorConfigurationArgs' vendor_configuration: An object that has fields relevant to the vendor of the cluster device. See Cluster Details - Nodes - Vendor Configuration below for more details.
         """
         if license_file_id is not None:
             pulumi.set(__self__, "license_file_id", license_file_id)
@@ -408,9 +392,7 @@ class DeviceClusterDetailsNode0(dict):
     @pulumi.getter(name="vendorConfiguration")
     def vendor_configuration(self) -> Optional['outputs.DeviceClusterDetailsNode0VendorConfiguration']:
         """
-        An object that has fields relevant to the vendor of the
-        cluster device. See Cluster Details - Nodes - Vendor Configuration
-        below for more details.
+        An object that has fields relevant to the vendor of the cluster device. See Cluster Details - Nodes - Vendor Configuration below for more details.
         """
         return pulumi.get(self, "vendor_configuration")
 
@@ -464,8 +446,7 @@ class DeviceClusterDetailsNode0VendorConfiguration(dict):
                  root_password: Optional[str] = None):
         """
         :param str activation_key: Activation key. This is required for Velocloud clusters.
-        :param str admin_password: The administrative password of the device. You can use it to log in
-               to the console. This field is not available for all device types.
+        :param str admin_password: The administrative password of the device. You can use it to log in to the console. This field is not available for all device types.
         :param str controller1: System IP Address. Mandatory for the Fortinet SDWAN cluster device.
         :param str controller_fqdn: Controller fqdn. This is required for Velocloud clusters.
         :param str hostname: Hostname. This is necessary for Palo Alto, Juniper, and Fortinet clusters.
@@ -474,8 +455,7 @@ class DeviceClusterDetailsNode0VendorConfiguration(dict):
         :param str private_address: Private address. This field is relevant only for the BlueCat DNS and DHCP Server
         :param str private_cidr_mask: Private CIDR Mask. This field is relevant only for the BlueCat DNS and DHCP Server
         :param str private_gateway: Private gateway. This field is relevant only for the BlueCat DNS and DHCP Server
-        :param str root_password: The CLI password of the device. This field is relevant only for the
-               Velocloud SDWAN cluster.
+        :param str root_password: The CLI password of the device. This field is relevant only for the Velocloud SDWAN cluster.
         """
         if activation_key is not None:
             pulumi.set(__self__, "activation_key", activation_key)
@@ -512,8 +492,7 @@ class DeviceClusterDetailsNode0VendorConfiguration(dict):
     @pulumi.getter(name="adminPassword")
     def admin_password(self) -> Optional[str]:
         """
-        The administrative password of the device. You can use it to log in
-        to the console. This field is not available for all device types.
+        The administrative password of the device. You can use it to log in to the console. This field is not available for all device types.
         """
         return pulumi.get(self, "admin_password")
 
@@ -585,8 +564,7 @@ class DeviceClusterDetailsNode0VendorConfiguration(dict):
     @pulumi.getter(name="rootPassword")
     def root_password(self) -> Optional[str]:
         """
-        The CLI password of the device. This field is relevant only for the
-        Velocloud SDWAN cluster.
+        The CLI password of the device. This field is relevant only for the Velocloud SDWAN cluster.
         """
         return pulumi.get(self, "root_password")
 
@@ -625,9 +603,7 @@ class DeviceClusterDetailsNode1(dict):
         :param str license_token: License token. This is necessary for Palo Alto clusters.
         :param str name: Device name.
         :param str uuid: Device unique identifier.
-        :param 'DeviceClusterDetailsNode1VendorConfigurationArgs' vendor_configuration: An object that has fields relevant to the vendor of the
-               cluster device. See Cluster Details - Nodes - Vendor Configuration
-               below for more details.
+        :param 'DeviceClusterDetailsNode1VendorConfigurationArgs' vendor_configuration: An object that has fields relevant to the vendor of the cluster device. See Cluster Details - Nodes - Vendor Configuration below for more details.
         """
         if license_file_id is not None:
             pulumi.set(__self__, "license_file_id", license_file_id)
@@ -676,9 +652,7 @@ class DeviceClusterDetailsNode1(dict):
     @pulumi.getter(name="vendorConfiguration")
     def vendor_configuration(self) -> Optional['outputs.DeviceClusterDetailsNode1VendorConfiguration']:
         """
-        An object that has fields relevant to the vendor of the
-        cluster device. See Cluster Details - Nodes - Vendor Configuration
-        below for more details.
+        An object that has fields relevant to the vendor of the cluster device. See Cluster Details - Nodes - Vendor Configuration below for more details.
         """
         return pulumi.get(self, "vendor_configuration")
 
@@ -732,8 +706,7 @@ class DeviceClusterDetailsNode1VendorConfiguration(dict):
                  root_password: Optional[str] = None):
         """
         :param str activation_key: Activation key. This is required for Velocloud clusters.
-        :param str admin_password: The administrative password of the device. You can use it to log in
-               to the console. This field is not available for all device types.
+        :param str admin_password: The administrative password of the device. You can use it to log in to the console. This field is not available for all device types.
         :param str controller1: System IP Address. Mandatory for the Fortinet SDWAN cluster device.
         :param str controller_fqdn: Controller fqdn. This is required for Velocloud clusters.
         :param str hostname: Hostname. This is necessary for Palo Alto, Juniper, and Fortinet clusters.
@@ -742,8 +715,7 @@ class DeviceClusterDetailsNode1VendorConfiguration(dict):
         :param str private_address: Private address. This field is relevant only for the BlueCat DNS and DHCP Server
         :param str private_cidr_mask: Private CIDR Mask. This field is relevant only for the BlueCat DNS and DHCP Server
         :param str private_gateway: Private gateway. This field is relevant only for the BlueCat DNS and DHCP Server
-        :param str root_password: The CLI password of the device. This field is relevant only for the
-               Velocloud SDWAN cluster.
+        :param str root_password: The CLI password of the device. This field is relevant only for the Velocloud SDWAN cluster.
         """
         if activation_key is not None:
             pulumi.set(__self__, "activation_key", activation_key)
@@ -780,8 +752,7 @@ class DeviceClusterDetailsNode1VendorConfiguration(dict):
     @pulumi.getter(name="adminPassword")
     def admin_password(self) -> Optional[str]:
         """
-        The administrative password of the device. You can use it to log in
-        to the console. This field is not available for all device types.
+        The administrative password of the device. You can use it to log in to the console. This field is not available for all device types.
         """
         return pulumi.get(self, "admin_password")
 
@@ -853,8 +824,7 @@ class DeviceClusterDetailsNode1VendorConfiguration(dict):
     @pulumi.getter(name="rootPassword")
     def root_password(self) -> Optional[str]:
         """
-        The CLI password of the device. This field is relevant only for the
-        Velocloud SDWAN cluster.
+        The CLI password of the device. This field is relevant only for the Velocloud SDWAN cluster.
         """
         return pulumi.get(self, "root_password")
 
@@ -1015,11 +985,9 @@ class DeviceLinkDevice(dict):
         """
         :param str id: Device identifier.
         :param int asn: Device ASN number. Not required for self configured devices.
-        :param int interface_id: Device network interface identifier to use for device link
-               connection.
+        :param int interface_id: Device network interface identifier to use for device link connection.
         :param str ip_address: IP address from device link subnet that was assigned to the device
-        :param str status: device link provisioning status on a given device. One of `PROVISIONING`,
-               `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
+        :param str status: device link provisioning status on a given device. One of `PROVISIONING`, `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
         """
         pulumi.set(__self__, "id", id)
         if asn is not None:
@@ -1051,8 +1019,7 @@ class DeviceLinkDevice(dict):
     @pulumi.getter(name="interfaceId")
     def interface_id(self) -> Optional[int]:
         """
-        Device network interface identifier to use for device link
-        connection.
+        Device network interface identifier to use for device link connection.
         """
         return pulumi.get(self, "interface_id")
 
@@ -1068,8 +1035,7 @@ class DeviceLinkDevice(dict):
     @pulumi.getter
     def status(self) -> Optional[str]:
         """
-        device link provisioning status on a given device. One of `PROVISIONING`,
-        `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
+        device link provisioning status on a given device. One of `PROVISIONING`, `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
         """
         return pulumi.get(self, "status")
 
@@ -1112,8 +1078,7 @@ class DeviceLinkLink(dict):
                  dst_zone_code: Optional[str] = None,
                  src_zone_code: Optional[str] = None):
         """
-        :param str account_number: billing account number to be used for
-               connection charges
+        :param str account_number: billing account number to be used for connection charges
         :param str dst_metro_code: connection destination metro code.
         :param str src_metro_code: connection source metro code.
         :param str throughput: connection throughput.
@@ -1135,8 +1100,7 @@ class DeviceLinkLink(dict):
     @pulumi.getter(name="accountNumber")
     def account_number(self) -> str:
         """
-        billing account number to be used for
-        connection charges
+        billing account number to be used for connection charges
         """
         return pulumi.get(self, "account_number")
 
@@ -1174,24 +1138,20 @@ class DeviceLinkLink(dict):
 
     @property
     @pulumi.getter(name="dstZoneCode")
+    @_utilities.deprecated("""DestinationZoneCode is not required""")
     def dst_zone_code(self) -> Optional[str]:
         """
         connection destination zone code is not required.
         """
-        warnings.warn("""DestinationZoneCode is not required""", DeprecationWarning)
-        pulumi.log.warn("""dst_zone_code is deprecated: DestinationZoneCode is not required""")
-
         return pulumi.get(self, "dst_zone_code")
 
     @property
     @pulumi.getter(name="srcZoneCode")
+    @_utilities.deprecated("""SourceZoneCode is not required""")
     def src_zone_code(self) -> Optional[str]:
         """
         connection source zone code is not required.
         """
-        warnings.warn("""SourceZoneCode is not required""", DeprecationWarning)
-        pulumi.log.warn("""src_zone_code is deprecated: SourceZoneCode is not required""")
-
         return pulumi.get(self, "src_zone_code")
 
 
@@ -1224,8 +1184,7 @@ class DeviceLinkMetroLink(dict):
                  throughput: str,
                  throughput_unit: str):
         """
-        :param str account_number: billing account number to be used for
-               connection charges
+        :param str account_number: billing account number to be used for connection charges
         :param str metro_code: connection metro code.
         :param str throughput: connection throughput.
         :param str throughput_unit: connection throughput unit (Mbps or Gbps).
@@ -1239,8 +1198,7 @@ class DeviceLinkMetroLink(dict):
     @pulumi.getter(name="accountNumber")
     def account_number(self) -> str:
         """
-        billing account number to be used for
-        connection charges
+        billing account number to be used for connection charges
         """
         return pulumi.get(self, "account_number")
 
@@ -1357,32 +1315,22 @@ class DeviceSecondaryDevice(dict):
         :param str account_number: Billing account number for secondary device.
         :param str metro_code: Metro location of a secondary device.
         :param str name: Secondary device name.
-        :param Sequence[str] notifications: List of email addresses that will receive notifications about
-               secondary device.
-        :param str acl_template_id: Identifier of a WAN interface ACL template that will be applied
-               on a secondary device.
-        :param int additional_bandwidth: Additional Internet bandwidth, in Mbps, for a secondary
-               device.
+        :param Sequence[str] notifications: List of email addresses that will receive notifications about secondary device.
+        :param str acl_template_id: Identifier of a WAN interface ACL template that will be applied on a secondary device.
+        :param int additional_bandwidth: Additional Internet bandwidth, in Mbps, for a secondary device.
         :param int asn: (Autonomous System Number) Unique identifier for a network on the internet.
         :param str cloud_init_file_id: Identifier of a cloud init file that will be applied on a secondary device.
         :param str hostname: Secondary device hostname.
         :param str ibx: Device location Equinix Business Exchange name.
-        :param Sequence['DeviceSecondaryDeviceInterfaceArgs'] interfaces: List of device interfaces. See Interface Attribute below
-               for more details.
-        :param str license_file: Path to the license file that will be uploaded and applied on a
-               secondary device. Applicable for some device types in BYOL licensing mode.
+        :param Sequence['DeviceSecondaryDeviceInterfaceArgs'] interfaces: List of device interfaces. See Interface Attribute below for more details.
+        :param str license_file: Path to the license file that will be uploaded and applied on a secondary device. Applicable for some device types in BYOL licensing mode.
         :param str license_file_id: Identifier of a license file that will be applied on a secondary device.
-        :param str license_status: Device license registration status. Possible values are `APPLYING_LICENSE`,
-               `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
+        :param str license_status: Device license registration status. Possible values are `APPLYING_LICENSE`, `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
         :param str license_token: License Token can be provided for some device types o the device.
-        :param str mgmt_acl_template_uuid: Identifier of an MGMT interface ACL template that will be
-               applied on a secondary device.
-               * `ssh-key` - (Optional) Up to one definition of SSH key that will be provisioned on a secondary
-               device.
-        :param str project_id: Unique Identifier for the project resource where the device is scoped to.If you
-               leave it out, the device will be created under the default project id of your organization.
-        :param str redundancy_type: Device redundancy type applicable for HA devices, either
-               primary or secondary.
+        :param str mgmt_acl_template_uuid: Identifier of an MGMT interface ACL template that will be applied on a secondary device.
+               * `ssh-key` - (Optional) Up to one definition of SSH key that will be provisioned on a secondary device.
+        :param str project_id: Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
+        :param str redundancy_type: Device redundancy type applicable for HA devices, either primary or secondary.
         :param str redundant_id: Unique identifier for a redundant device applicable for HA devices.
         :param str region: Device location region.
         :param str ssh_ip_address: IP address of SSH enabled interface on the device.
@@ -1390,9 +1338,7 @@ class DeviceSecondaryDevice(dict):
         :param 'DeviceSecondaryDeviceSshKeyArgs' ssh_key: Definition of SSH key that will be provisioned on a device
         :param str status: interface status. One of `AVAILABLE`, `RESERVED`, `ASSIGNED`.
         :param str uuid: Device unique identifier.
-        :param Mapping[str, str] vendor_configuration: Key/Value pairs of vendor specific configuration parameters
-               for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`,
-               `systemIpAddress`, `private_address`, `private_cidr_mask`, `private_gateway`, `license_key`, `license_id`.
+        :param Mapping[str, str] vendor_configuration: Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`.
         :param str wan_interface_id: device interface id picked for WAN
         :param str zone_code: Device location zone code.
         """
@@ -1477,8 +1423,7 @@ class DeviceSecondaryDevice(dict):
     @pulumi.getter
     def notifications(self) -> Sequence[str]:
         """
-        List of email addresses that will receive notifications about
-        secondary device.
+        List of email addresses that will receive notifications about secondary device.
         """
         return pulumi.get(self, "notifications")
 
@@ -1486,8 +1431,7 @@ class DeviceSecondaryDevice(dict):
     @pulumi.getter(name="aclTemplateId")
     def acl_template_id(self) -> Optional[str]:
         """
-        Identifier of a WAN interface ACL template that will be applied
-        on a secondary device.
+        Identifier of a WAN interface ACL template that will be applied on a secondary device.
         """
         return pulumi.get(self, "acl_template_id")
 
@@ -1495,8 +1439,7 @@ class DeviceSecondaryDevice(dict):
     @pulumi.getter(name="additionalBandwidth")
     def additional_bandwidth(self) -> Optional[int]:
         """
-        Additional Internet bandwidth, in Mbps, for a secondary
-        device.
+        Additional Internet bandwidth, in Mbps, for a secondary device.
         """
         return pulumi.get(self, "additional_bandwidth")
 
@@ -1536,8 +1479,7 @@ class DeviceSecondaryDevice(dict):
     @pulumi.getter
     def interfaces(self) -> Optional[Sequence['outputs.DeviceSecondaryDeviceInterface']]:
         """
-        List of device interfaces. See Interface Attribute below
-        for more details.
+        List of device interfaces. See Interface Attribute below for more details.
         """
         return pulumi.get(self, "interfaces")
 
@@ -1545,8 +1487,7 @@ class DeviceSecondaryDevice(dict):
     @pulumi.getter(name="licenseFile")
     def license_file(self) -> Optional[str]:
         """
-        Path to the license file that will be uploaded and applied on a
-        secondary device. Applicable for some device types in BYOL licensing mode.
+        Path to the license file that will be uploaded and applied on a secondary device. Applicable for some device types in BYOL licensing mode.
         """
         return pulumi.get(self, "license_file")
 
@@ -1562,8 +1503,7 @@ class DeviceSecondaryDevice(dict):
     @pulumi.getter(name="licenseStatus")
     def license_status(self) -> Optional[str]:
         """
-        Device license registration status. Possible values are `APPLYING_LICENSE`,
-        `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
+        Device license registration status. Possible values are `APPLYING_LICENSE`, `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
         """
         return pulumi.get(self, "license_status")
 
@@ -1579,10 +1519,8 @@ class DeviceSecondaryDevice(dict):
     @pulumi.getter(name="mgmtAclTemplateUuid")
     def mgmt_acl_template_uuid(self) -> Optional[str]:
         """
-        Identifier of an MGMT interface ACL template that will be
-        applied on a secondary device.
-        * `ssh-key` - (Optional) Up to one definition of SSH key that will be provisioned on a secondary
-        device.
+        Identifier of an MGMT interface ACL template that will be applied on a secondary device.
+        * `ssh-key` - (Optional) Up to one definition of SSH key that will be provisioned on a secondary device.
         """
         return pulumi.get(self, "mgmt_acl_template_uuid")
 
@@ -1590,8 +1528,7 @@ class DeviceSecondaryDevice(dict):
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[str]:
         """
-        Unique Identifier for the project resource where the device is scoped to.If you
-        leave it out, the device will be created under the default project id of your organization.
+        Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
         """
         return pulumi.get(self, "project_id")
 
@@ -1599,8 +1536,7 @@ class DeviceSecondaryDevice(dict):
     @pulumi.getter(name="redundancyType")
     def redundancy_type(self) -> Optional[str]:
         """
-        Device redundancy type applicable for HA devices, either
-        primary or secondary.
+        Device redundancy type applicable for HA devices, either primary or secondary.
         """
         return pulumi.get(self, "redundancy_type")
 
@@ -1664,9 +1600,7 @@ class DeviceSecondaryDevice(dict):
     @pulumi.getter(name="vendorConfiguration")
     def vendor_configuration(self) -> Optional[Mapping[str, str]]:
         """
-        Key/Value pairs of vendor specific configuration parameters
-        for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`,
-        `systemIpAddress`, `private_address`, `private_cidr_mask`, `private_gateway`, `license_key`, `license_id`.
+        Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`.
         """
         return pulumi.get(self, "vendor_configuration")
 
@@ -2368,7 +2302,7 @@ class GetDeviceInterfaceResult(dict):
         :param str status: Device provisioning status
                * INITIALIZING
                * PROVISIONING
-               * PROVISIONED  (**NOTE: By default data source will only return devices in this state.  To include other states see `valid_state_list`**)
+               * PROVISIONED (**NOTE: By default data source will only return devices in this state. To include other states see `valid_state_list`**)
                * WAITING_FOR_PRIMARY
                * WAITING_FOR_SECONDARY
                * WAITING_FOR_REPLICA_CLUSTER_NODES
@@ -2444,7 +2378,7 @@ class GetDeviceInterfaceResult(dict):
         Device provisioning status
         * INITIALIZING
         * PROVISIONING
-        * PROVISIONED  (**NOTE: By default data source will only return devices in this state.  To include other states see `valid_state_list`**)
+        * PROVISIONED (**NOTE: By default data source will only return devices in this state. To include other states see `valid_state_list`**)
         * WAITING_FOR_PRIMARY
         * WAITING_FOR_SECONDARY
         * WAITING_FOR_REPLICA_CLUSTER_NODES
@@ -2508,7 +2442,7 @@ class GetDeviceSecondaryDeviceResult(dict):
         :param Sequence['GetDeviceSecondaryDeviceInterfaceArgs'] interfaces: List of device interfaces
                * `interface.#.id` - interface identifier
                * `interface.#.name` - interface name
-               * `interface.#.status` -  interface status (AVAILABLE, RESERVED, ASSIGNED)
+               * `interface.#.status` - interface status (AVAILABLE, RESERVED, ASSIGNED)
                * `interface.#.operational_status` - interface operational status (up or down)
                * `interface.#.mac_address` - interface MAC address
                * `interface.#.ip_address` - interface IP address
@@ -2529,8 +2463,7 @@ class GetDeviceSecondaryDeviceResult(dict):
         :param str name: Name of an existing Equinix Network Edge device
         :param Sequence[str] notifications: List of email addresses that will receive device status notifications
         :param str project_id: The unique identifier of Project Resource to which device is scoped to
-        :param str redundancy_type: Device redundancy type applicable for HA devices, either
-               primary or secondary
+        :param str redundancy_type: Device redundancy type applicable for HA devices, either primary or secondary
         :param str redundant_id: Unique identifier for a redundant device applicable for HA devices
         :param str region: Device location region
         :param str ssh_ip_address: IP address of SSH enabled interface on the device
@@ -2539,7 +2472,7 @@ class GetDeviceSecondaryDeviceResult(dict):
         :param str status: Device provisioning status
                * INITIALIZING
                * PROVISIONING
-               * PROVISIONED  (**NOTE: By default data source will only return devices in this state.  To include other states see `valid_state_list`**)
+               * PROVISIONED (**NOTE: By default data source will only return devices in this state. To include other states see `valid_state_list`**)
                * WAITING_FOR_PRIMARY
                * WAITING_FOR_SECONDARY
                * WAITING_FOR_REPLICA_CLUSTER_NODES
@@ -2646,7 +2579,7 @@ class GetDeviceSecondaryDeviceResult(dict):
         List of device interfaces
         * `interface.#.id` - interface identifier
         * `interface.#.name` - interface name
-        * `interface.#.status` -  interface status (AVAILABLE, RESERVED, ASSIGNED)
+        * `interface.#.status` - interface status (AVAILABLE, RESERVED, ASSIGNED)
         * `interface.#.operational_status` - interface operational status (up or down)
         * `interface.#.mac_address` - interface MAC address
         * `interface.#.ip_address` - interface IP address
@@ -2737,8 +2670,7 @@ class GetDeviceSecondaryDeviceResult(dict):
     @pulumi.getter(name="redundancyType")
     def redundancy_type(self) -> str:
         """
-        Device redundancy type applicable for HA devices, either
-        primary or secondary
+        Device redundancy type applicable for HA devices, either primary or secondary
         """
         return pulumi.get(self, "redundancy_type")
 
@@ -2789,7 +2721,7 @@ class GetDeviceSecondaryDeviceResult(dict):
         Device provisioning status
         * INITIALIZING
         * PROVISIONING
-        * PROVISIONED  (**NOTE: By default data source will only return devices in this state.  To include other states see `valid_state_list`**)
+        * PROVISIONED (**NOTE: By default data source will only return devices in this state. To include other states see `valid_state_list`**)
         * WAITING_FOR_PRIMARY
         * WAITING_FOR_SECONDARY
         * WAITING_FOR_REPLICA_CLUSTER_NODES
@@ -2856,7 +2788,7 @@ class GetDeviceSecondaryDeviceInterfaceResult(dict):
         :param str status: Device provisioning status
                * INITIALIZING
                * PROVISIONING
-               * PROVISIONED  (**NOTE: By default data source will only return devices in this state.  To include other states see `valid_state_list`**)
+               * PROVISIONED (**NOTE: By default data source will only return devices in this state. To include other states see `valid_state_list`**)
                * WAITING_FOR_PRIMARY
                * WAITING_FOR_SECONDARY
                * WAITING_FOR_REPLICA_CLUSTER_NODES
@@ -2932,7 +2864,7 @@ class GetDeviceSecondaryDeviceInterfaceResult(dict):
         Device provisioning status
         * INITIALIZING
         * PROVISIONING
-        * PROVISIONED  (**NOTE: By default data source will only return devices in this state.  To include other states see `valid_state_list`**)
+        * PROVISIONED (**NOTE: By default data source will only return devices in this state. To include other states see `valid_state_list`**)
         * WAITING_FOR_PRIMARY
         * WAITING_FOR_SECONDARY
         * WAITING_FOR_REPLICA_CLUSTER_NODES

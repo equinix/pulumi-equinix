@@ -16,7 +16,7 @@ namespace Pulumi.Equinix.Metal.Inputs
         private InputList<string>? _allowChanges;
 
         /// <summary>
-        /// List of attributes that are allowed to change without recreating the instance. Supported attributes: `custom_data`, `user_data`"
+        /// List of attributes that are allowed to change without recreating the instance. Supported attributes: `custom_data`, `user_data`
         /// </summary>
         public InputList<string> AllowChanges
         {

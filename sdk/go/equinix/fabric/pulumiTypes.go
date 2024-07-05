@@ -38350,7 +38350,7 @@ type GetServiceProfilesDatum struct {
 	Type string `pulumi:"type"`
 	// Equinix assigned service profile identifier
 	Uuid string `pulumi:"uuid"`
-	// flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
+	// Flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
 	ViewPoint string `pulumi:"viewPoint"`
 	// Virtual Devices
 	VirtualDevices []GetServiceProfilesDatumVirtualDevice `pulumi:"virtualDevices"`
@@ -38406,7 +38406,7 @@ type GetServiceProfilesDatumArgs struct {
 	Type pulumi.StringInput `pulumi:"type"`
 	// Equinix assigned service profile identifier
 	Uuid pulumi.StringInput `pulumi:"uuid"`
-	// flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
+	// Flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
 	ViewPoint pulumi.StringInput `pulumi:"viewPoint"`
 	// Virtual Devices
 	VirtualDevices GetServiceProfilesDatumVirtualDeviceArrayInput `pulumi:"virtualDevices"`
@@ -38557,7 +38557,7 @@ func (o GetServiceProfilesDatumOutput) Uuid() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceProfilesDatum) string { return v.Uuid }).(pulumi.StringOutput)
 }
 
-// flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
+// Flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
 func (o GetServiceProfilesDatumOutput) ViewPoint() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceProfilesDatum) string { return v.ViewPoint }).(pulumi.StringOutput)
 }
@@ -41165,11 +41165,11 @@ func (o GetServiceProfilesDatumVirtualDeviceLocationPtrOutput) Region() pulumi.S
 }
 
 type GetServiceProfilesFilter struct {
-	// Possible operator to use on filters = - equal
-	Operator *string `pulumi:"operator"`
-	// Search Criteria for Service Profile - /name, /uuid, /state, /metros/code, /visibility, /type
-	Property *string `pulumi:"property"`
-	// Values
+	// Operators to use on your filtered field with the values given. One of [=]
+	Operator string `pulumi:"operator"`
+	// Property to apply operator and values to. One of [/name /uuid /state /metros/code /visibility /type /project/projectId]
+	Property string `pulumi:"property"`
+	// The values that you want to apply the property+operator combination to in order to filter your data search
 	Values []string `pulumi:"values"`
 }
 
@@ -41185,11 +41185,11 @@ type GetServiceProfilesFilterInput interface {
 }
 
 type GetServiceProfilesFilterArgs struct {
-	// Possible operator to use on filters = - equal
-	Operator pulumi.StringPtrInput `pulumi:"operator"`
-	// Search Criteria for Service Profile - /name, /uuid, /state, /metros/code, /visibility, /type
-	Property pulumi.StringPtrInput `pulumi:"property"`
-	// Values
+	// Operators to use on your filtered field with the values given. One of [=]
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// Property to apply operator and values to. One of [/name /uuid /state /metros/code /visibility /type /project/projectId]
+	Property pulumi.StringInput `pulumi:"property"`
+	// The values that you want to apply the property+operator combination to in order to filter your data search
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -41203,47 +41203,6 @@ func (i GetServiceProfilesFilterArgs) ToGetServiceProfilesFilterOutput() GetServ
 
 func (i GetServiceProfilesFilterArgs) ToGetServiceProfilesFilterOutputWithContext(ctx context.Context) GetServiceProfilesFilterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesFilterOutput)
-}
-
-func (i GetServiceProfilesFilterArgs) ToGetServiceProfilesFilterPtrOutput() GetServiceProfilesFilterPtrOutput {
-	return i.ToGetServiceProfilesFilterPtrOutputWithContext(context.Background())
-}
-
-func (i GetServiceProfilesFilterArgs) ToGetServiceProfilesFilterPtrOutputWithContext(ctx context.Context) GetServiceProfilesFilterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesFilterOutput).ToGetServiceProfilesFilterPtrOutputWithContext(ctx)
-}
-
-// GetServiceProfilesFilterPtrInput is an input type that accepts GetServiceProfilesFilterArgs, GetServiceProfilesFilterPtr and GetServiceProfilesFilterPtrOutput values.
-// You can construct a concrete instance of `GetServiceProfilesFilterPtrInput` via:
-//
-//	        GetServiceProfilesFilterArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetServiceProfilesFilterPtrInput interface {
-	pulumi.Input
-
-	ToGetServiceProfilesFilterPtrOutput() GetServiceProfilesFilterPtrOutput
-	ToGetServiceProfilesFilterPtrOutputWithContext(context.Context) GetServiceProfilesFilterPtrOutput
-}
-
-type getServiceProfilesFilterPtrType GetServiceProfilesFilterArgs
-
-func GetServiceProfilesFilterPtr(v *GetServiceProfilesFilterArgs) GetServiceProfilesFilterPtrInput {
-	return (*getServiceProfilesFilterPtrType)(v)
-}
-
-func (*getServiceProfilesFilterPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetServiceProfilesFilter)(nil)).Elem()
-}
-
-func (i *getServiceProfilesFilterPtrType) ToGetServiceProfilesFilterPtrOutput() GetServiceProfilesFilterPtrOutput {
-	return i.ToGetServiceProfilesFilterPtrOutputWithContext(context.Background())
-}
-
-func (i *getServiceProfilesFilterPtrType) ToGetServiceProfilesFilterPtrOutputWithContext(ctx context.Context) GetServiceProfilesFilterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesFilterPtrOutput)
 }
 
 type GetServiceProfilesFilterOutput struct{ *pulumi.OutputState }
@@ -41260,89 +41219,181 @@ func (o GetServiceProfilesFilterOutput) ToGetServiceProfilesFilterOutputWithCont
 	return o
 }
 
-func (o GetServiceProfilesFilterOutput) ToGetServiceProfilesFilterPtrOutput() GetServiceProfilesFilterPtrOutput {
-	return o.ToGetServiceProfilesFilterPtrOutputWithContext(context.Background())
+// Operators to use on your filtered field with the values given. One of [=]
+func (o GetServiceProfilesFilterOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceProfilesFilter) string { return v.Operator }).(pulumi.StringOutput)
 }
 
-func (o GetServiceProfilesFilterOutput) ToGetServiceProfilesFilterPtrOutputWithContext(ctx context.Context) GetServiceProfilesFilterPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetServiceProfilesFilter) *GetServiceProfilesFilter {
-		return &v
-	}).(GetServiceProfilesFilterPtrOutput)
+// Property to apply operator and values to. One of [/name /uuid /state /metros/code /visibility /type /project/projectId]
+func (o GetServiceProfilesFilterOutput) Property() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceProfilesFilter) string { return v.Property }).(pulumi.StringOutput)
 }
 
-// Possible operator to use on filters = - equal
-func (o GetServiceProfilesFilterOutput) Operator() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceProfilesFilter) *string { return v.Operator }).(pulumi.StringPtrOutput)
-}
-
-// Search Criteria for Service Profile - /name, /uuid, /state, /metros/code, /visibility, /type
-func (o GetServiceProfilesFilterOutput) Property() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceProfilesFilter) *string { return v.Property }).(pulumi.StringPtrOutput)
-}
-
-// Values
+// The values that you want to apply the property+operator combination to in order to filter your data search
 func (o GetServiceProfilesFilterOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServiceProfilesFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
-type GetServiceProfilesFilterPtrOutput struct{ *pulumi.OutputState }
-
-func (GetServiceProfilesFilterPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetServiceProfilesFilter)(nil)).Elem()
+type GetServiceProfilesPagination struct {
+	// Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+	Limit *int `pulumi:"limit"`
+	// The page offset for the pagination request. Index of the first element. Default is 0.
+	Offset *int `pulumi:"offset"`
 }
 
-func (o GetServiceProfilesFilterPtrOutput) ToGetServiceProfilesFilterPtrOutput() GetServiceProfilesFilterPtrOutput {
+// GetServiceProfilesPaginationInput is an input type that accepts GetServiceProfilesPaginationArgs and GetServiceProfilesPaginationOutput values.
+// You can construct a concrete instance of `GetServiceProfilesPaginationInput` via:
+//
+//	GetServiceProfilesPaginationArgs{...}
+type GetServiceProfilesPaginationInput interface {
+	pulumi.Input
+
+	ToGetServiceProfilesPaginationOutput() GetServiceProfilesPaginationOutput
+	ToGetServiceProfilesPaginationOutputWithContext(context.Context) GetServiceProfilesPaginationOutput
+}
+
+type GetServiceProfilesPaginationArgs struct {
+	// Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+	Limit pulumi.IntPtrInput `pulumi:"limit"`
+	// The page offset for the pagination request. Index of the first element. Default is 0.
+	Offset pulumi.IntPtrInput `pulumi:"offset"`
+}
+
+func (GetServiceProfilesPaginationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceProfilesPagination)(nil)).Elem()
+}
+
+func (i GetServiceProfilesPaginationArgs) ToGetServiceProfilesPaginationOutput() GetServiceProfilesPaginationOutput {
+	return i.ToGetServiceProfilesPaginationOutputWithContext(context.Background())
+}
+
+func (i GetServiceProfilesPaginationArgs) ToGetServiceProfilesPaginationOutputWithContext(ctx context.Context) GetServiceProfilesPaginationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesPaginationOutput)
+}
+
+func (i GetServiceProfilesPaginationArgs) ToGetServiceProfilesPaginationPtrOutput() GetServiceProfilesPaginationPtrOutput {
+	return i.ToGetServiceProfilesPaginationPtrOutputWithContext(context.Background())
+}
+
+func (i GetServiceProfilesPaginationArgs) ToGetServiceProfilesPaginationPtrOutputWithContext(ctx context.Context) GetServiceProfilesPaginationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesPaginationOutput).ToGetServiceProfilesPaginationPtrOutputWithContext(ctx)
+}
+
+// GetServiceProfilesPaginationPtrInput is an input type that accepts GetServiceProfilesPaginationArgs, GetServiceProfilesPaginationPtr and GetServiceProfilesPaginationPtrOutput values.
+// You can construct a concrete instance of `GetServiceProfilesPaginationPtrInput` via:
+//
+//	        GetServiceProfilesPaginationArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetServiceProfilesPaginationPtrInput interface {
+	pulumi.Input
+
+	ToGetServiceProfilesPaginationPtrOutput() GetServiceProfilesPaginationPtrOutput
+	ToGetServiceProfilesPaginationPtrOutputWithContext(context.Context) GetServiceProfilesPaginationPtrOutput
+}
+
+type getServiceProfilesPaginationPtrType GetServiceProfilesPaginationArgs
+
+func GetServiceProfilesPaginationPtr(v *GetServiceProfilesPaginationArgs) GetServiceProfilesPaginationPtrInput {
+	return (*getServiceProfilesPaginationPtrType)(v)
+}
+
+func (*getServiceProfilesPaginationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServiceProfilesPagination)(nil)).Elem()
+}
+
+func (i *getServiceProfilesPaginationPtrType) ToGetServiceProfilesPaginationPtrOutput() GetServiceProfilesPaginationPtrOutput {
+	return i.ToGetServiceProfilesPaginationPtrOutputWithContext(context.Background())
+}
+
+func (i *getServiceProfilesPaginationPtrType) ToGetServiceProfilesPaginationPtrOutputWithContext(ctx context.Context) GetServiceProfilesPaginationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesPaginationPtrOutput)
+}
+
+type GetServiceProfilesPaginationOutput struct{ *pulumi.OutputState }
+
+func (GetServiceProfilesPaginationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceProfilesPagination)(nil)).Elem()
+}
+
+func (o GetServiceProfilesPaginationOutput) ToGetServiceProfilesPaginationOutput() GetServiceProfilesPaginationOutput {
 	return o
 }
 
-func (o GetServiceProfilesFilterPtrOutput) ToGetServiceProfilesFilterPtrOutputWithContext(ctx context.Context) GetServiceProfilesFilterPtrOutput {
+func (o GetServiceProfilesPaginationOutput) ToGetServiceProfilesPaginationOutputWithContext(ctx context.Context) GetServiceProfilesPaginationOutput {
 	return o
 }
 
-func (o GetServiceProfilesFilterPtrOutput) Elem() GetServiceProfilesFilterOutput {
-	return o.ApplyT(func(v *GetServiceProfilesFilter) GetServiceProfilesFilter {
+func (o GetServiceProfilesPaginationOutput) ToGetServiceProfilesPaginationPtrOutput() GetServiceProfilesPaginationPtrOutput {
+	return o.ToGetServiceProfilesPaginationPtrOutputWithContext(context.Background())
+}
+
+func (o GetServiceProfilesPaginationOutput) ToGetServiceProfilesPaginationPtrOutputWithContext(ctx context.Context) GetServiceProfilesPaginationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetServiceProfilesPagination) *GetServiceProfilesPagination {
+		return &v
+	}).(GetServiceProfilesPaginationPtrOutput)
+}
+
+// Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+func (o GetServiceProfilesPaginationOutput) Limit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetServiceProfilesPagination) *int { return v.Limit }).(pulumi.IntPtrOutput)
+}
+
+// The page offset for the pagination request. Index of the first element. Default is 0.
+func (o GetServiceProfilesPaginationOutput) Offset() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetServiceProfilesPagination) *int { return v.Offset }).(pulumi.IntPtrOutput)
+}
+
+type GetServiceProfilesPaginationPtrOutput struct{ *pulumi.OutputState }
+
+func (GetServiceProfilesPaginationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServiceProfilesPagination)(nil)).Elem()
+}
+
+func (o GetServiceProfilesPaginationPtrOutput) ToGetServiceProfilesPaginationPtrOutput() GetServiceProfilesPaginationPtrOutput {
+	return o
+}
+
+func (o GetServiceProfilesPaginationPtrOutput) ToGetServiceProfilesPaginationPtrOutputWithContext(ctx context.Context) GetServiceProfilesPaginationPtrOutput {
+	return o
+}
+
+func (o GetServiceProfilesPaginationPtrOutput) Elem() GetServiceProfilesPaginationOutput {
+	return o.ApplyT(func(v *GetServiceProfilesPagination) GetServiceProfilesPagination {
 		if v != nil {
 			return *v
 		}
-		var ret GetServiceProfilesFilter
+		var ret GetServiceProfilesPagination
 		return ret
-	}).(GetServiceProfilesFilterOutput)
+	}).(GetServiceProfilesPaginationOutput)
 }
 
-// Possible operator to use on filters = - equal
-func (o GetServiceProfilesFilterPtrOutput) Operator() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetServiceProfilesFilter) *string {
+// Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+func (o GetServiceProfilesPaginationPtrOutput) Limit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetServiceProfilesPagination) *int {
 		if v == nil {
 			return nil
 		}
-		return v.Operator
-	}).(pulumi.StringPtrOutput)
+		return v.Limit
+	}).(pulumi.IntPtrOutput)
 }
 
-// Search Criteria for Service Profile - /name, /uuid, /state, /metros/code, /visibility, /type
-func (o GetServiceProfilesFilterPtrOutput) Property() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetServiceProfilesFilter) *string {
+// The page offset for the pagination request. Index of the first element. Default is 0.
+func (o GetServiceProfilesPaginationPtrOutput) Offset() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetServiceProfilesPagination) *int {
 		if v == nil {
 			return nil
 		}
-		return v.Property
-	}).(pulumi.StringPtrOutput)
-}
-
-// Values
-func (o GetServiceProfilesFilterPtrOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GetServiceProfilesFilter) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Values
-	}).(pulumi.StringArrayOutput)
+		return v.Offset
+	}).(pulumi.IntPtrOutput)
 }
 
 type GetServiceProfilesSort struct {
-	// Priority type- DESC, ASC
+	// The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
 	Direction *string `pulumi:"direction"`
-	// Search operation sort criteria /name /state /changeLog/createdDateTime /changeLog/updatedDateTime
+	// The property name to use in sorting. One of [/name /uuid /state /location/metroCode /location/metroName /package/code /changeLog/createdDateTime /changeLog/updatedDateTime]. Defaults to /changeLog/updatedDateTime
 	Property *string `pulumi:"property"`
 }
 
@@ -41358,9 +41409,9 @@ type GetServiceProfilesSortInput interface {
 }
 
 type GetServiceProfilesSortArgs struct {
-	// Priority type- DESC, ASC
+	// The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
-	// Search operation sort criteria /name /state /changeLog/createdDateTime /changeLog/updatedDateTime
+	// The property name to use in sorting. One of [/name /uuid /state /location/metroCode /location/metroName /package/code /changeLog/createdDateTime /changeLog/updatedDateTime]. Defaults to /changeLog/updatedDateTime
 	Property pulumi.StringPtrInput `pulumi:"property"`
 }
 
@@ -41415,12 +41466,12 @@ func (o GetServiceProfilesSortOutput) ToGetServiceProfilesSortOutputWithContext(
 	return o
 }
 
-// Priority type- DESC, ASC
+// The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
 func (o GetServiceProfilesSortOutput) Direction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceProfilesSort) *string { return v.Direction }).(pulumi.StringPtrOutput)
 }
 
-// Search operation sort criteria /name /state /changeLog/createdDateTime /changeLog/updatedDateTime
+// The property name to use in sorting. One of [/name /uuid /state /location/metroCode /location/metroName /package/code /changeLog/createdDateTime /changeLog/updatedDateTime]. Defaults to /changeLog/updatedDateTime
 func (o GetServiceProfilesSortOutput) Property() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceProfilesSort) *string { return v.Property }).(pulumi.StringPtrOutput)
 }
@@ -41940,7 +41991,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDatumVirtualDeviceLocationInput)(nil)).Elem(), GetServiceProfilesDatumVirtualDeviceLocationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDatumVirtualDeviceLocationPtrInput)(nil)).Elem(), GetServiceProfilesDatumVirtualDeviceLocationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesFilterInput)(nil)).Elem(), GetServiceProfilesFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesFilterPtrInput)(nil)).Elem(), GetServiceProfilesFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesPaginationInput)(nil)).Elem(), GetServiceProfilesPaginationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesPaginationPtrInput)(nil)).Elem(), GetServiceProfilesPaginationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesSortInput)(nil)).Elem(), GetServiceProfilesSortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesSortArrayInput)(nil)).Elem(), GetServiceProfilesSortArray{})
 	pulumi.RegisterOutputType(CloudRouterAccountOutput{})
@@ -42437,7 +42489,8 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceProfilesDatumVirtualDeviceLocationOutput{})
 	pulumi.RegisterOutputType(GetServiceProfilesDatumVirtualDeviceLocationPtrOutput{})
 	pulumi.RegisterOutputType(GetServiceProfilesFilterOutput{})
-	pulumi.RegisterOutputType(GetServiceProfilesFilterPtrOutput{})
+	pulumi.RegisterOutputType(GetServiceProfilesPaginationOutput{})
+	pulumi.RegisterOutputType(GetServiceProfilesPaginationPtrOutput{})
 	pulumi.RegisterOutputType(GetServiceProfilesSortOutput{})
 	pulumi.RegisterOutputType(GetServiceProfilesSortArrayOutput{})
 }

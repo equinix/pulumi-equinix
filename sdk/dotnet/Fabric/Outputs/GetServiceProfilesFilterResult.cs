@@ -14,23 +14,23 @@ namespace Pulumi.Equinix.Fabric.Outputs
     public sealed class GetServiceProfilesFilterResult
     {
         /// <summary>
-        /// Possible operator to use on filters = - equal
+        /// Operators to use on your filtered field with the values given. One of [=]
         /// </summary>
-        public readonly string? Operator;
+        public readonly string Operator;
         /// <summary>
-        /// Search Criteria for Service Profile - /name, /uuid, /state, /metros/code, /visibility, /type
+        /// Property to apply operator and values to. One of [/name /uuid /state /metros/code /visibility /type /project/projectId]
         /// </summary>
-        public readonly string? Property;
+        public readonly string Property;
         /// <summary>
-        /// Values
+        /// The values that you want to apply the property+operator combination to in order to filter your data search
         /// </summary>
         public readonly ImmutableArray<string> Values;
 
         [OutputConstructor]
         private GetServiceProfilesFilterResult(
-            string? @operator,
+            string @operator,
 
-            string? property,
+            string property,
 
             ImmutableArray<string> values)
         {

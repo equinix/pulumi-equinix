@@ -44,7 +44,8 @@ namespace Pulumi.Equinix
 
         private static readonly __Value<string?> _clientId = new __Value<string?>(() => __config.Get("clientId"));
         /// <summary>
-        /// API Consumer Key available under My Apps section in developer portal
+        /// API Consumer Key available under "My Apps" in developer portal. This argument can also be specified with the
+        /// `EQUINIX_API_CLIENTID` shell environment variable.
         /// </summary>
         public static string? ClientId
         {
@@ -54,7 +55,8 @@ namespace Pulumi.Equinix
 
         private static readonly __Value<string?> _clientSecret = new __Value<string?>(() => __config.Get("clientSecret"));
         /// <summary>
-        /// API Consumer secret available under My Apps section in developer portal
+        /// API Consumer secret available under "My Apps" in developer portal. This argument can also be specified with the
+        /// `EQUINIX_API_CLIENTSECRET` shell environment variable.
         /// </summary>
         public static string? ClientSecret
         {
@@ -64,7 +66,8 @@ namespace Pulumi.Equinix
 
         private static readonly __Value<string?> _endpoint = new __Value<string?>(() => __config.Get("endpoint"));
         /// <summary>
-        /// The Equinix API base URL to point out desired environment. Defaults to https://api.equinix.com
+        /// The Equinix API base URL to point out desired environment. This argument can also be specified with the
+        /// `EQUINIX_API_ENDPOINT` shell environment variable. (Defaults to `https://api.equinix.com`)
         /// </summary>
         public static string? Endpoint
         {
@@ -74,7 +77,7 @@ namespace Pulumi.Equinix
 
         private static readonly __Value<int?> _maxRetries = new __Value<int?>(() => __config.GetInt32("maxRetries"));
         /// <summary>
-        /// Maximum number of retries.
+        /// Maximum number of retries in case of network failure.
         /// </summary>
         public static int? MaxRetries
         {
@@ -95,7 +98,7 @@ namespace Pulumi.Equinix
         private static readonly __Value<int?> _requestTimeout = new __Value<int?>(() => __config.GetInt32("requestTimeout"));
         /// <summary>
         /// The duration of time, in seconds, that the Equinix Platform API Client should wait before canceling an API request.
-        /// Defaults to 30
+        /// Canceled requests may still result in provisioned resources. (Defaults to `30`)
         /// </summary>
         public static int? RequestTimeout
         {
@@ -105,7 +108,8 @@ namespace Pulumi.Equinix
 
         private static readonly __Value<int?> _responseMaxPageSize = new __Value<int?>(() => __config.GetInt32("responseMaxPageSize"));
         /// <summary>
-        /// The maximum number of records in a single response for REST queries that produce paginated responses
+        /// The maximum number of records in a single response for REST queries that produce paginated responses. (Default is client
+        /// specific)
         /// </summary>
         public static int? ResponseMaxPageSize
         {
@@ -115,7 +119,9 @@ namespace Pulumi.Equinix
 
         private static readonly __Value<string?> _token = new __Value<string?>(() => __config.Get("token"));
         /// <summary>
-        /// API token from the developer sandbox
+        /// API tokens are generated from API Consumer clients using the [OAuth2
+        /// API](https://developer.equinix.com/dev-docs/fabric/getting-started/getting-access-token#request-access-and-refresh-tokens).
+        /// This argument can also be specified with the `EQUINIX_API_TOKEN` shell environment variable.
         /// </summary>
         public static string? Token
         {

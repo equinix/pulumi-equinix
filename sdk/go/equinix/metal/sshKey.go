@@ -72,8 +72,7 @@ type SshKey struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The UUID of the Equinix Metal API User who owns this key.
 	OwnerId pulumi.StringOutput `pulumi:"ownerId"`
-	// The public key. If this is a file, it
-	// can be read using the file interpolation function
+	// The public key. If this is a file, it can be read using the file interpolation function
 	PublicKey pulumi.StringOutput `pulumi:"publicKey"`
 	// The timestamp for the last time the SSH key was updated.
 	Updated pulumi.StringOutput `pulumi:"updated"`
@@ -120,8 +119,7 @@ type sshKeyState struct {
 	Name *string `pulumi:"name"`
 	// The UUID of the Equinix Metal API User who owns this key.
 	OwnerId *string `pulumi:"ownerId"`
-	// The public key. If this is a file, it
-	// can be read using the file interpolation function
+	// The public key. If this is a file, it can be read using the file interpolation function
 	PublicKey *string `pulumi:"publicKey"`
 	// The timestamp for the last time the SSH key was updated.
 	Updated *string `pulumi:"updated"`
@@ -136,8 +134,7 @@ type SshKeyState struct {
 	Name pulumi.StringPtrInput
 	// The UUID of the Equinix Metal API User who owns this key.
 	OwnerId pulumi.StringPtrInput
-	// The public key. If this is a file, it
-	// can be read using the file interpolation function
+	// The public key. If this is a file, it can be read using the file interpolation function
 	PublicKey pulumi.StringPtrInput
 	// The timestamp for the last time the SSH key was updated.
 	Updated pulumi.StringPtrInput
@@ -150,8 +147,7 @@ func (SshKeyState) ElementType() reflect.Type {
 type sshKeyArgs struct {
 	// The name of the SSH key for identification
 	Name *string `pulumi:"name"`
-	// The public key. If this is a file, it
-	// can be read using the file interpolation function
+	// The public key. If this is a file, it can be read using the file interpolation function
 	PublicKey string `pulumi:"publicKey"`
 }
 
@@ -159,8 +155,7 @@ type sshKeyArgs struct {
 type SshKeyArgs struct {
 	// The name of the SSH key for identification
 	Name pulumi.StringPtrInput
-	// The public key. If this is a file, it
-	// can be read using the file interpolation function
+	// The public key. If this is a file, it can be read using the file interpolation function
 	PublicKey pulumi.StringInput
 }
 
@@ -271,8 +266,7 @@ func (o SshKeyOutput) OwnerId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SshKey) pulumi.StringOutput { return v.OwnerId }).(pulumi.StringOutput)
 }
 
-// The public key. If this is a file, it
-// can be read using the file interpolation function
+// The public key. If this is a file, it can be read using the file interpolation function
 func (o SshKeyOutput) PublicKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *SshKey) pulumi.StringOutput { return v.PublicKey }).(pulumi.StringOutput)
 }

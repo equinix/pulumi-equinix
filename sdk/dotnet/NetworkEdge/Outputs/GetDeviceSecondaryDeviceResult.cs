@@ -45,7 +45,7 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
         /// List of device interfaces
         /// * `interface.#.id` - interface identifier
         /// * `interface.#.name` - interface name
-        /// * `interface.#.status` -  interface status (AVAILABLE, RESERVED, ASSIGNED)
+        /// * `interface.#.status` - interface status (AVAILABLE, RESERVED, ASSIGNED)
         /// * `interface.#.operational_status` - interface operational status (up or down)
         /// * `interface.#.mac_address` - interface MAC address
         /// * `interface.#.ip_address` - interface IP address
@@ -96,8 +96,7 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
         /// </summary>
         public readonly string ProjectId;
         /// <summary>
-        /// Device redundancy type applicable for HA devices, either
-        /// primary or secondary
+        /// Device redundancy type applicable for HA devices, either primary or secondary
         /// </summary>
         public readonly string RedundancyType;
         /// <summary>
@@ -124,7 +123,7 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
         /// Device provisioning status
         /// * INITIALIZING
         /// * PROVISIONING
-        /// * PROVISIONED  (**NOTE: By default data source will only return devices in this state.  To include other states see `valid_state_list`**)
+        /// * PROVISIONED (**NOTE: By default data source will only return devices in this state. To include other states see `valid_state_list`**)
         /// * WAITING_FOR_PRIMARY
         /// * WAITING_FOR_SECONDARY
         /// * WAITING_FOR_REPLICA_CLUSTER_NODES

@@ -15,11 +15,7 @@ import (
 //
 // If you need to fetch a list of devices which meet filter criteria, you can use the metal.getDevices datasource.
 //
-// > **Note:** All arguments including the `rootPassword` and `userData` will be stored in
-//
-//	the raw state as plain-text.
-//
-// Read more about sensitive data in state.
+// > **Note:** All arguments including the `rootPassword` and `userData` will be stored in the raw state as plain-text. Read more about sensitive data in state.
 //
 // ## Example Usage
 //
@@ -85,66 +81,64 @@ func LookupDevice(ctx *pulumi.Context, args *LookupDeviceArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getDevice.
 type LookupDeviceArgs struct {
-	// Device ID.
-	//
-	// > **NOTE:** You should pass either `deviceId`, or both `projectId` and `hostname`.
+	// Device ID
 	DeviceId *string `pulumi:"deviceId"`
-	// The device name.
+	// The device name
 	Hostname *string `pulumi:"hostname"`
-	// The id of the project in which the devices exists.
+	// The id of the project in which the devices exists
 	ProjectId *string `pulumi:"projectId"`
 }
 
 // A collection of values returned by getDevice.
 type LookupDeviceResult struct {
-	// The ipv4 private IP assigned to the device.
+	// The ipv4 private IP assigned to the device
 	AccessPrivateIpv4 string `pulumi:"accessPrivateIpv4"`
-	// The ipv4 management IP assigned to the device.
+	// The ipv4 management IP assigned to the device
 	AccessPublicIpv4 string `pulumi:"accessPublicIpv4"`
-	// The ipv6 management IP assigned to the device.
+	// The ipv6 management IP assigned to the device
 	AccessPublicIpv6 string `pulumi:"accessPublicIpv6"`
 	AlwaysPxe        bool   `pulumi:"alwaysPxe"`
-	// The billing cycle of the device (monthly or hourly).
+	// The billing cycle of the device (monthly or hourly)
 	BillingCycle string `pulumi:"billingCycle"`
-	// Description string for the device.
+	// Description string for the device
 	Description string `pulumi:"description"`
-	DeviceId    string `pulumi:"deviceId"`
-	// (**Deprecated**) The facility where the device is deployed. Use metro instead; read the facility to metro migration guide
+	// Device ID
+	DeviceId string `pulumi:"deviceId"`
+	// The facility where the device is deployed
 	//
 	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	Facility string `pulumi:"facility"`
-	// The id of hardware reservation which this device occupies.
+	// The id of hardware reservation which this device occupies
 	HardwareReservationId string `pulumi:"hardwareReservationId"`
-	Hostname              string `pulumi:"hostname"`
+	// The device name
+	Hostname string `pulumi:"hostname"`
 	// The provider-assigned unique ID for this managed resource.
 	Id            string `pulumi:"id"`
 	IpxeScriptUrl string `pulumi:"ipxeScriptUrl"`
 	// The metro where the device is deployed
 	Metro string `pulumi:"metro"`
-	// L2 network type of the device, one of `layer3`, `layer2-bonded`,
-	// `layer2-individual`, `hybrid`.
+	// L2 network type of the device, one oflayer3, hybrid, layer2-individual, layer2-bonded
 	NetworkType string `pulumi:"networkType"`
-	// The device's private and public IP (v4 and v6) network details. See
-	// Network Attribute below for more details.
+	// The device's private and public IP (v4 and v6) network details. When a device is run without any special network configuration, it will have 3 networks: ublic IPv4 at equinix*metal*device.name.network.0, IPv6 at equinix*metal*device.name.network.1 and private IPv4 at equinix*metal*device.name.network.2. Elastic addresses then stack by type - an assigned public IPv4 will go after the management public IPv4 (to index 1), and will then shift the indices of the IPv6 and private IPv4. Assigned private IPv4 will go after the management private IPv4 (to the end of the network list).
 	Networks []GetDeviceNetwork `pulumi:"networks"`
-	// The operating system running on the device.
+	// The operating system running on the device
 	OperatingSystem string `pulumi:"operatingSystem"`
-	// The hardware config of the device.
+	// The hardware config of the device
 	Plan string `pulumi:"plan"`
-	// List of ports assigned to the device. See Ports Attribute below for
-	// more details.
-	Ports     []GetDevicePort `pulumi:"ports"`
-	ProjectId string          `pulumi:"projectId"`
-	// Root password to the server (if still available).
+	// Ports assigned to the device
+	Ports []GetDevicePort `pulumi:"ports"`
+	// The id of the project in which the devices exists
+	ProjectId string `pulumi:"projectId"`
+	// Root password to the server (if still available)
 	RootPassword string `pulumi:"rootPassword"`
 	// The hostname to use for [Serial over SSH](https://deploy.equinix.com/developers/docs/metal/resilience-recovery/serial-over-ssh/) access to the device
 	SosHostname string `pulumi:"sosHostname"`
-	// List of IDs of SSH keys deployed in the device, can be both user or project SSH keys.
+	// List of IDs of SSH keys deployed in the device, can be both user or project SSH keys
 	SshKeyIds []string `pulumi:"sshKeyIds"`
-	// The state of the device.
+	// The state of the device
 	State   string `pulumi:"state"`
 	Storage string `pulumi:"storage"`
-	// Tags attached to the device.
+	// Tags attached to the device
 	Tags []string `pulumi:"tags"`
 }
 
@@ -163,13 +157,11 @@ func LookupDeviceOutput(ctx *pulumi.Context, args LookupDeviceOutputArgs, opts .
 
 // A collection of arguments for invoking getDevice.
 type LookupDeviceOutputArgs struct {
-	// Device ID.
-	//
-	// > **NOTE:** You should pass either `deviceId`, or both `projectId` and `hostname`.
+	// Device ID
 	DeviceId pulumi.StringPtrInput `pulumi:"deviceId"`
-	// The device name.
+	// The device name
 	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
-	// The id of the project in which the devices exists.
+	// The id of the project in which the devices exists
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 }
 
@@ -192,17 +184,17 @@ func (o LookupDeviceResultOutput) ToLookupDeviceResultOutputWithContext(ctx cont
 	return o
 }
 
-// The ipv4 private IP assigned to the device.
+// The ipv4 private IP assigned to the device
 func (o LookupDeviceResultOutput) AccessPrivateIpv4() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeviceResult) string { return v.AccessPrivateIpv4 }).(pulumi.StringOutput)
 }
 
-// The ipv4 management IP assigned to the device.
+// The ipv4 management IP assigned to the device
 func (o LookupDeviceResultOutput) AccessPublicIpv4() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeviceResult) string { return v.AccessPublicIpv4 }).(pulumi.StringOutput)
 }
 
-// The ipv6 management IP assigned to the device.
+// The ipv6 management IP assigned to the device
 func (o LookupDeviceResultOutput) AccessPublicIpv6() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeviceResult) string { return v.AccessPublicIpv6 }).(pulumi.StringOutput)
 }
@@ -211,32 +203,34 @@ func (o LookupDeviceResultOutput) AlwaysPxe() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupDeviceResult) bool { return v.AlwaysPxe }).(pulumi.BoolOutput)
 }
 
-// The billing cycle of the device (monthly or hourly).
+// The billing cycle of the device (monthly or hourly)
 func (o LookupDeviceResultOutput) BillingCycle() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeviceResult) string { return v.BillingCycle }).(pulumi.StringOutput)
 }
 
-// Description string for the device.
+// Description string for the device
 func (o LookupDeviceResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeviceResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// Device ID
 func (o LookupDeviceResultOutput) DeviceId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeviceResult) string { return v.DeviceId }).(pulumi.StringOutput)
 }
 
-// (**Deprecated**) The facility where the device is deployed. Use metro instead; read the facility to metro migration guide
+// The facility where the device is deployed
 //
 // Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 func (o LookupDeviceResultOutput) Facility() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeviceResult) string { return v.Facility }).(pulumi.StringOutput)
 }
 
-// The id of hardware reservation which this device occupies.
+// The id of hardware reservation which this device occupies
 func (o LookupDeviceResultOutput) HardwareReservationId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeviceResult) string { return v.HardwareReservationId }).(pulumi.StringOutput)
 }
 
+// The device name
 func (o LookupDeviceResultOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeviceResult) string { return v.Hostname }).(pulumi.StringOutput)
 }
@@ -255,39 +249,37 @@ func (o LookupDeviceResultOutput) Metro() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeviceResult) string { return v.Metro }).(pulumi.StringOutput)
 }
 
-// L2 network type of the device, one of `layer3`, `layer2-bonded`,
-// `layer2-individual`, `hybrid`.
+// L2 network type of the device, one oflayer3, hybrid, layer2-individual, layer2-bonded
 func (o LookupDeviceResultOutput) NetworkType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeviceResult) string { return v.NetworkType }).(pulumi.StringOutput)
 }
 
-// The device's private and public IP (v4 and v6) network details. See
-// Network Attribute below for more details.
+// The device's private and public IP (v4 and v6) network details. When a device is run without any special network configuration, it will have 3 networks: ublic IPv4 at equinix*metal*device.name.network.0, IPv6 at equinix*metal*device.name.network.1 and private IPv4 at equinix*metal*device.name.network.2. Elastic addresses then stack by type - an assigned public IPv4 will go after the management public IPv4 (to index 1), and will then shift the indices of the IPv6 and private IPv4. Assigned private IPv4 will go after the management private IPv4 (to the end of the network list).
 func (o LookupDeviceResultOutput) Networks() GetDeviceNetworkArrayOutput {
 	return o.ApplyT(func(v LookupDeviceResult) []GetDeviceNetwork { return v.Networks }).(GetDeviceNetworkArrayOutput)
 }
 
-// The operating system running on the device.
+// The operating system running on the device
 func (o LookupDeviceResultOutput) OperatingSystem() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeviceResult) string { return v.OperatingSystem }).(pulumi.StringOutput)
 }
 
-// The hardware config of the device.
+// The hardware config of the device
 func (o LookupDeviceResultOutput) Plan() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeviceResult) string { return v.Plan }).(pulumi.StringOutput)
 }
 
-// List of ports assigned to the device. See Ports Attribute below for
-// more details.
+// Ports assigned to the device
 func (o LookupDeviceResultOutput) Ports() GetDevicePortArrayOutput {
 	return o.ApplyT(func(v LookupDeviceResult) []GetDevicePort { return v.Ports }).(GetDevicePortArrayOutput)
 }
 
+// The id of the project in which the devices exists
 func (o LookupDeviceResultOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeviceResult) string { return v.ProjectId }).(pulumi.StringOutput)
 }
 
-// Root password to the server (if still available).
+// Root password to the server (if still available)
 func (o LookupDeviceResultOutput) RootPassword() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeviceResult) string { return v.RootPassword }).(pulumi.StringOutput)
 }
@@ -297,12 +289,12 @@ func (o LookupDeviceResultOutput) SosHostname() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeviceResult) string { return v.SosHostname }).(pulumi.StringOutput)
 }
 
-// List of IDs of SSH keys deployed in the device, can be both user or project SSH keys.
+// List of IDs of SSH keys deployed in the device, can be both user or project SSH keys
 func (o LookupDeviceResultOutput) SshKeyIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupDeviceResult) []string { return v.SshKeyIds }).(pulumi.StringArrayOutput)
 }
 
-// The state of the device.
+// The state of the device
 func (o LookupDeviceResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeviceResult) string { return v.State }).(pulumi.StringOutput)
 }
@@ -311,7 +303,7 @@ func (o LookupDeviceResultOutput) Storage() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeviceResult) string { return v.Storage }).(pulumi.StringOutput)
 }
 
-// Tags attached to the device.
+// Tags attached to the device
 func (o LookupDeviceResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupDeviceResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }

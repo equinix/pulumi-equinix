@@ -30,9 +30,7 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
         /// </summary>
         public readonly string? Uuid;
         /// <summary>
-        /// An object that has fields relevant to the vendor of the
-        /// cluster device. See Cluster Details - Nodes - Vendor Configuration
-        /// below for more details.
+        /// An object that has fields relevant to the vendor of the cluster device. See Cluster Details - Nodes - Vendor Configuration below for more details.
         /// </summary>
         public readonly Outputs.DeviceClusterDetailsNode0VendorConfiguration? VendorConfiguration;
 

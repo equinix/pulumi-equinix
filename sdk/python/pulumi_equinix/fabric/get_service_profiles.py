@@ -23,7 +23,10 @@ class GetServiceProfilesResult:
     """
     A collection of values returned by getServiceProfiles.
     """
-    def __init__(__self__, data=None, filter=None, id=None, sort=None, view_point=None):
+    def __init__(__self__, and_filters=None, data=None, filter=None, id=None, pagination=None, sort=None, view_point=None):
+        if and_filters and not isinstance(and_filters, bool):
+            raise TypeError("Expected argument 'and_filters' to be a bool")
+        pulumi.set(__self__, "and_filters", and_filters)
         if data and not isinstance(data, list):
             raise TypeError("Expected argument 'data' to be a list")
         pulumi.set(__self__, "data", data)
@@ -33,12 +36,23 @@ class GetServiceProfilesResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if pagination and not isinstance(pagination, dict):
+            raise TypeError("Expected argument 'pagination' to be a dict")
+        pulumi.set(__self__, "pagination", pagination)
         if sort and not isinstance(sort, list):
             raise TypeError("Expected argument 'sort' to be a list")
         pulumi.set(__self__, "sort", sort)
         if view_point and not isinstance(view_point, str):
             raise TypeError("Expected argument 'view_point' to be a str")
         pulumi.set(__self__, "view_point", view_point)
+
+    @property
+    @pulumi.getter(name="andFilters")
+    def and_filters(self) -> Optional[bool]:
+        """
+        Optional boolean flag to indicate if the filters will be AND'd together. Defaults to false
+        """
+        return pulumi.get(self, "and_filters")
 
     @property
     @pulumi.getter
@@ -50,9 +64,9 @@ class GetServiceProfilesResult:
 
     @property
     @pulumi.getter
-    def filter(self) -> Optional['outputs.GetServiceProfilesFilterResult']:
+    def filter(self) -> 'outputs.GetServiceProfilesFilterResult':
         """
-        Service Profile Search Filter
+        Filters for the Data Source Search Request (If and_filters is not set to true you cannot provide more than one filter block)
         """
         return pulumi.get(self, "filter")
 
@@ -66,9 +80,17 @@ class GetServiceProfilesResult:
 
     @property
     @pulumi.getter
+    def pagination(self) -> Optional['outputs.GetServiceProfilesPaginationResult']:
+        """
+        Pagination details for the Data Source Search Request
+        """
+        return pulumi.get(self, "pagination")
+
+    @property
+    @pulumi.getter
     def sort(self) -> Optional[Sequence['outputs.GetServiceProfilesSortResult']]:
         """
-        Service Profile Sort criteria for Search Request response payload
+        Filters for the Data Source Search Request
         """
         return pulumi.get(self, "sort")
 
@@ -87,14 +109,18 @@ class AwaitableGetServiceProfilesResult(GetServiceProfilesResult):
         if False:
             yield self
         return GetServiceProfilesResult(
+            and_filters=self.and_filters,
             data=self.data,
             filter=self.filter,
             id=self.id,
+            pagination=self.pagination,
             sort=self.sort,
             view_point=self.view_point)
 
 
-def get_service_profiles(filter: Optional[pulumi.InputType['GetServiceProfilesFilterArgs']] = None,
+def get_service_profiles(and_filters: Optional[bool] = None,
+                         filter: Optional[pulumi.InputType['GetServiceProfilesFilterArgs']] = None,
+                         pagination: Optional[pulumi.InputType['GetServiceProfilesPaginationArgs']] = None,
                          sort: Optional[Sequence[pulumi.InputType['GetServiceProfilesSortArgs']]] = None,
                          view_point: Optional[str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServiceProfilesResult:
@@ -102,55 +128,39 @@ def get_service_profiles(filter: Optional[pulumi.InputType['GetServiceProfilesFi
     Fabric V4 API compatible data resource that allow user to fetch Service Profile by name filter criteria
 
     Additional documentation:
-    * Getting Started: <https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm>
-    * API: <https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles>
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_equinix as equinix
-
-    service_profiles_data_name = equinix.fabric.get_service_profiles(filter=equinix.fabric.GetServiceProfilesFilterArgs(
-        property="/name",
-        operator="=",
-        values=["<list_of_profiles_to_return>"],
-    ))
-    pulumi.export("id", data["equinix_fabric_service_profile"]["service_profiles_data_name"]["data"][0]["id"])
-    pulumi.export("name", data["equinix_fabric_service_profile"]["service_profiles_data_name"]["data"][0]["name"])
-    pulumi.export("type", data["equinix_fabric_service_profile"]["service_profiles_data_name"]["data"][0]["type"])
-    pulumi.export("visibility", data["equinix_fabric_service_profile"]["service_profiles_data_name"]["data"][0]["visibility"])
-    pulumi.export("orgName", data["equinix_fabric_service_profile"]["service_profiles_data_name"]["data"][0]["account"][0]["organization_name"])
-    pulumi.export("accessPointTypeConfigsType", data["equinix_fabric_service_profile"]["service_profiles_data_name"]["data"][0]["access_point_type_configs"][0]["type"])
-    pulumi.export("allowRemoteConnections", data["equinix_fabric_service_profile"]["service_profiles_data_name"]["data"][0]["access_point_type_configs"][0]["allow_remote_connections"])
-    pulumi.export("supportedBandwidth0", data["equinix_fabric_service_profile"]["service_profiles_data_name"]["data"][0]["access_point_type_configs"][0]["supported_bandwidths"])
-    pulumi.export("supportedBandwidth1", data["equinix_fabric_service_profile"]["service_profiles_data_name"]["data"][0]["access_point_type_configs"][0]["supported_bandwidths"])
-    pulumi.export("redundandyRequired", data["equinix_fabric_service_profile"]["service_profiles_data_name"]["data"][0]["access_point_type_configs"][0]["connection_redundancy_required"])
-    pulumi.export("allowOverSubscription", data["equinix_fabric_service_profile"]["service_profiles_data_name"]["data"][0]["access_point_type_configs"][0]["api_config"][0]["allow_over_subscription"])
-    ```
+    * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm
+    * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles
 
 
-    :param pulumi.InputType['GetServiceProfilesFilterArgs'] filter: Service Profile Search Filter
-    :param Sequence[pulumi.InputType['GetServiceProfilesSortArgs']] sort: Service Profile Sort criteria for Search Request response payload
+    :param bool and_filters: Optional boolean flag to indicate if the filters will be AND'd together. Defaults to false
+    :param pulumi.InputType['GetServiceProfilesFilterArgs'] filter: Filters for the Data Source Search Request (If and_filters is not set to true you cannot provide more than one filter block)
+    :param pulumi.InputType['GetServiceProfilesPaginationArgs'] pagination: Pagination details for the Data Source Search Request
+    :param Sequence[pulumi.InputType['GetServiceProfilesSortArgs']] sort: Filters for the Data Source Search Request
     :param str view_point: flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
     """
     __args__ = dict()
+    __args__['andFilters'] = and_filters
     __args__['filter'] = filter
+    __args__['pagination'] = pagination
     __args__['sort'] = sort
     __args__['viewPoint'] = view_point
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('equinix:fabric/getServiceProfiles:getServiceProfiles', __args__, opts=opts, typ=GetServiceProfilesResult).value
 
     return AwaitableGetServiceProfilesResult(
+        and_filters=pulumi.get(__ret__, 'and_filters'),
         data=pulumi.get(__ret__, 'data'),
         filter=pulumi.get(__ret__, 'filter'),
         id=pulumi.get(__ret__, 'id'),
+        pagination=pulumi.get(__ret__, 'pagination'),
         sort=pulumi.get(__ret__, 'sort'),
         view_point=pulumi.get(__ret__, 'view_point'))
 
 
 @_utilities.lift_output_func(get_service_profiles)
-def get_service_profiles_output(filter: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceProfilesFilterArgs']]]] = None,
+def get_service_profiles_output(and_filters: Optional[pulumi.Input[Optional[bool]]] = None,
+                                filter: Optional[pulumi.Input[pulumi.InputType['GetServiceProfilesFilterArgs']]] = None,
+                                pagination: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceProfilesPaginationArgs']]]] = None,
                                 sort: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetServiceProfilesSortArgs']]]]] = None,
                                 view_point: Optional[pulumi.Input[Optional[str]]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceProfilesResult]:
@@ -158,36 +168,14 @@ def get_service_profiles_output(filter: Optional[pulumi.Input[Optional[pulumi.In
     Fabric V4 API compatible data resource that allow user to fetch Service Profile by name filter criteria
 
     Additional documentation:
-    * Getting Started: <https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm>
-    * API: <https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles>
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_equinix as equinix
-
-    service_profiles_data_name = equinix.fabric.get_service_profiles(filter=equinix.fabric.GetServiceProfilesFilterArgs(
-        property="/name",
-        operator="=",
-        values=["<list_of_profiles_to_return>"],
-    ))
-    pulumi.export("id", data["equinix_fabric_service_profile"]["service_profiles_data_name"]["data"][0]["id"])
-    pulumi.export("name", data["equinix_fabric_service_profile"]["service_profiles_data_name"]["data"][0]["name"])
-    pulumi.export("type", data["equinix_fabric_service_profile"]["service_profiles_data_name"]["data"][0]["type"])
-    pulumi.export("visibility", data["equinix_fabric_service_profile"]["service_profiles_data_name"]["data"][0]["visibility"])
-    pulumi.export("orgName", data["equinix_fabric_service_profile"]["service_profiles_data_name"]["data"][0]["account"][0]["organization_name"])
-    pulumi.export("accessPointTypeConfigsType", data["equinix_fabric_service_profile"]["service_profiles_data_name"]["data"][0]["access_point_type_configs"][0]["type"])
-    pulumi.export("allowRemoteConnections", data["equinix_fabric_service_profile"]["service_profiles_data_name"]["data"][0]["access_point_type_configs"][0]["allow_remote_connections"])
-    pulumi.export("supportedBandwidth0", data["equinix_fabric_service_profile"]["service_profiles_data_name"]["data"][0]["access_point_type_configs"][0]["supported_bandwidths"])
-    pulumi.export("supportedBandwidth1", data["equinix_fabric_service_profile"]["service_profiles_data_name"]["data"][0]["access_point_type_configs"][0]["supported_bandwidths"])
-    pulumi.export("redundandyRequired", data["equinix_fabric_service_profile"]["service_profiles_data_name"]["data"][0]["access_point_type_configs"][0]["connection_redundancy_required"])
-    pulumi.export("allowOverSubscription", data["equinix_fabric_service_profile"]["service_profiles_data_name"]["data"][0]["access_point_type_configs"][0]["api_config"][0]["allow_over_subscription"])
-    ```
+    * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm
+    * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles
 
 
-    :param pulumi.InputType['GetServiceProfilesFilterArgs'] filter: Service Profile Search Filter
-    :param Sequence[pulumi.InputType['GetServiceProfilesSortArgs']] sort: Service Profile Sort criteria for Search Request response payload
+    :param bool and_filters: Optional boolean flag to indicate if the filters will be AND'd together. Defaults to false
+    :param pulumi.InputType['GetServiceProfilesFilterArgs'] filter: Filters for the Data Source Search Request (If and_filters is not set to true you cannot provide more than one filter block)
+    :param pulumi.InputType['GetServiceProfilesPaginationArgs'] pagination: Pagination details for the Data Source Search Request
+    :param Sequence[pulumi.InputType['GetServiceProfilesSortArgs']] sort: Filters for the Data Source Search Request
     :param str view_point: flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
     """
     ...

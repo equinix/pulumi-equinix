@@ -12,9 +12,7 @@ namespace Pulumi.Equinix.NetworkEdge
     public static class GetDevicePlatform
     {
         /// <summary>
-        /// Use this data source to get Equinix Network Edge device platform configuration details
-        /// for a given device type. For further details, check supported
-        /// [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
+        /// Use this data source to get Equinix Network Edge device platform configuration details for a given device type. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
         /// 
         /// ## Example Usage
         /// 
@@ -43,9 +41,7 @@ namespace Pulumi.Equinix.NetworkEdge
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDevicePlatformResult>("equinix:networkedge/getDevicePlatform:getDevicePlatform", args ?? new GetDevicePlatformArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to get Equinix Network Edge device platform configuration details
-        /// for a given device type. For further details, check supported
-        /// [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
+        /// Use this data source to get Equinix Network Edge device platform configuration details for a given device type. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
         /// 
         /// ## Example Usage
         /// 
@@ -90,8 +86,7 @@ namespace Pulumi.Equinix.NetworkEdge
         public string DeviceType { get; set; } = null!;
 
         /// <summary>
-        /// Device platform flavor that determines number of CPU cores and memory.
-        /// Supported values are: `small`, `medium`, `large`, `xlarge`.
+        /// Device platform flavor that determines number of CPU cores and memory. Supported values are: `small`, `medium`, `large`, `xlarge`.
         /// </summary>
         [Input("flavor")]
         public string? Flavor { get; set; }
@@ -100,8 +95,7 @@ namespace Pulumi.Equinix.NetworkEdge
         private List<string>? _licenseOptions;
 
         /// <summary>
-        /// List of device licensing options to limit platform search result.
-        /// Supported values are: `BYOL` (for Bring Your Own License), `Sub` (for license subscription).
+        /// List of device licensing options to limit platform search result. Supported values are: `BYOL` (for Bring Your Own License), `Sub` (for license subscription).
         /// </summary>
         public List<string> LicenseOptions
         {
@@ -113,8 +107,7 @@ namespace Pulumi.Equinix.NetworkEdge
         private List<string>? _managementTypes;
 
         /// <summary>
-        /// List of device management types to limit platform search results.
-        /// Supported values are: `EQUINIX-CONFIGURED`, `SELF-CONFIGURED`.
+        /// List of device management types to limit platform search results. Supported values are: `EQUINIX-CONFIGURED`, `SELF-CONFIGURED`.
         /// </summary>
         public List<string> ManagementTypes
         {
@@ -155,8 +148,7 @@ namespace Pulumi.Equinix.NetworkEdge
         public Input<string> DeviceType { get; set; } = null!;
 
         /// <summary>
-        /// Device platform flavor that determines number of CPU cores and memory.
-        /// Supported values are: `small`, `medium`, `large`, `xlarge`.
+        /// Device platform flavor that determines number of CPU cores and memory. Supported values are: `small`, `medium`, `large`, `xlarge`.
         /// </summary>
         [Input("flavor")]
         public Input<string>? Flavor { get; set; }
@@ -165,8 +157,7 @@ namespace Pulumi.Equinix.NetworkEdge
         private InputList<string>? _licenseOptions;
 
         /// <summary>
-        /// List of device licensing options to limit platform search result.
-        /// Supported values are: `BYOL` (for Bring Your Own License), `Sub` (for license subscription).
+        /// List of device licensing options to limit platform search result. Supported values are: `BYOL` (for Bring Your Own License), `Sub` (for license subscription).
         /// </summary>
         public InputList<string> LicenseOptions
         {
@@ -178,8 +169,7 @@ namespace Pulumi.Equinix.NetworkEdge
         private InputList<string>? _managementTypes;
 
         /// <summary>
-        /// List of device management types to limit platform search results.
-        /// Supported values are: `EQUINIX-CONFIGURED`, `SELF-CONFIGURED`.
+        /// List of device management types to limit platform search results. Supported values are: `EQUINIX-CONFIGURED`, `SELF-CONFIGURED`.
         /// </summary>
         public InputList<string> ManagementTypes
         {

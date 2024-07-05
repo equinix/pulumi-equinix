@@ -44,8 +44,7 @@ export interface GetProjectSshKeyArgs {
      */
     projectId: string;
     /**
-     * The name, fingerprint, or publicKey of the SSH Key to search for
-     * in the Equinix Metal project.
+     * The name, fingerprint, or publicKey of the SSH Key to search for in the Equinix Metal project.
      */
     search?: string;
 }
@@ -122,8 +121,7 @@ export interface GetProjectSshKeyOutputArgs {
      */
     projectId: pulumi.Input<string>;
     /**
-     * The name, fingerprint, or publicKey of the SSH Key to search for
-     * in the Equinix Metal project.
+     * The name, fingerprint, or publicKey of the SSH Key to search for in the Equinix Metal project.
      */
     search?: pulumi.Input<string>;
 }

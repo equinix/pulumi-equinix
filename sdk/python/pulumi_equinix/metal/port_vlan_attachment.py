@@ -24,12 +24,8 @@ class PortVlanAttachmentArgs:
         :param pulumi.Input[str] device_id: ID of device to be assigned to the VLAN.
         :param pulumi.Input[str] port_name: Name of network port to be assigned to the VLAN.
         :param pulumi.Input[int] vlan_vnid: VXLAN Network Identifier.
-        :param pulumi.Input[bool] force_bond: Add port back to the bond when this resource is removed. Default is
-               `false`.
-        :param pulumi.Input[bool] native: Mark this VLAN a native VLAN on the port. This can be used only if this
-               assignment assigns second or further VLAN to the port. To ensure that this attachment is not first
-               on a port, you can use `depends_on` pointing to another `metal.PortVlanAttachment`, just
-               like in the layer2-individual example above.
+        :param pulumi.Input[bool] force_bond: Add port back to the bond when this resource is removed. Default is `false`.
+        :param pulumi.Input[bool] native: Mark this VLAN a native VLAN on the port. This can be used only if this assignment assigns second or further VLAN to the port. To ensure that this attachment is not first on a port, you can use `depends_on` pointing to another `metal.PortVlanAttachment`, just like in the layer2-individual example above.
         """
         pulumi.set(__self__, "device_id", device_id)
         pulumi.set(__self__, "port_name", port_name)
@@ -79,8 +75,7 @@ class PortVlanAttachmentArgs:
     @pulumi.getter(name="forceBond")
     def force_bond(self) -> Optional[pulumi.Input[bool]]:
         """
-        Add port back to the bond when this resource is removed. Default is
-        `false`.
+        Add port back to the bond when this resource is removed. Default is `false`.
         """
         return pulumi.get(self, "force_bond")
 
@@ -92,10 +87,7 @@ class PortVlanAttachmentArgs:
     @pulumi.getter
     def native(self) -> Optional[pulumi.Input[bool]]:
         """
-        Mark this VLAN a native VLAN on the port. This can be used only if this
-        assignment assigns second or further VLAN to the port. To ensure that this attachment is not first
-        on a port, you can use `depends_on` pointing to another `metal.PortVlanAttachment`, just
-        like in the layer2-individual example above.
+        Mark this VLAN a native VLAN on the port. This can be used only if this assignment assigns second or further VLAN to the port. To ensure that this attachment is not first on a port, you can use `depends_on` pointing to another `metal.PortVlanAttachment`, just like in the layer2-individual example above.
         """
         return pulumi.get(self, "native")
 
@@ -117,12 +109,8 @@ class _PortVlanAttachmentState:
         """
         Input properties used for looking up and filtering PortVlanAttachment resources.
         :param pulumi.Input[str] device_id: ID of device to be assigned to the VLAN.
-        :param pulumi.Input[bool] force_bond: Add port back to the bond when this resource is removed. Default is
-               `false`.
-        :param pulumi.Input[bool] native: Mark this VLAN a native VLAN on the port. This can be used only if this
-               assignment assigns second or further VLAN to the port. To ensure that this attachment is not first
-               on a port, you can use `depends_on` pointing to another `metal.PortVlanAttachment`, just
-               like in the layer2-individual example above.
+        :param pulumi.Input[bool] force_bond: Add port back to the bond when this resource is removed. Default is `false`.
+        :param pulumi.Input[bool] native: Mark this VLAN a native VLAN on the port. This can be used only if this assignment assigns second or further VLAN to the port. To ensure that this attachment is not first on a port, you can use `depends_on` pointing to another `metal.PortVlanAttachment`, just like in the layer2-individual example above.
         :param pulumi.Input[str] port_id: UUID of device port
         :param pulumi.Input[str] port_name: Name of network port to be assigned to the VLAN.
         :param pulumi.Input[str] vlan_id: UUID of VLAN API resource
@@ -159,8 +147,7 @@ class _PortVlanAttachmentState:
     @pulumi.getter(name="forceBond")
     def force_bond(self) -> Optional[pulumi.Input[bool]]:
         """
-        Add port back to the bond when this resource is removed. Default is
-        `false`.
+        Add port back to the bond when this resource is removed. Default is `false`.
         """
         return pulumi.get(self, "force_bond")
 
@@ -172,10 +159,7 @@ class _PortVlanAttachmentState:
     @pulumi.getter
     def native(self) -> Optional[pulumi.Input[bool]]:
         """
-        Mark this VLAN a native VLAN on the port. This can be used only if this
-        assignment assigns second or further VLAN to the port. To ensure that this attachment is not first
-        on a port, you can use `depends_on` pointing to another `metal.PortVlanAttachment`, just
-        like in the layer2-individual example above.
+        Mark this VLAN a native VLAN on the port. This can be used only if this assignment assigns second or further VLAN to the port. To ensure that this attachment is not first on a port, you can use `depends_on` pointing to another `metal.PortVlanAttachment`, just like in the layer2-individual example above.
         """
         return pulumi.get(self, "native")
 
@@ -252,8 +236,8 @@ class PortVlanAttachment(pulumi.CustomResource):
 
         To learn more about Layer 2 networking in Equinix Metal, refer to
 
-        * <https://metal.equinix.com/developers/docs/networking/layer2/>
-        * <https://metal.equinix.com/developers/docs/networking/layer2-configs/>
+        * https://metal.equinix.com/developers/docs/networking/layer2/
+        * https://metal.equinix.com/developers/docs/networking/layer2-configs/
 
         ## Attribute Referece
 
@@ -287,12 +271,8 @@ class PortVlanAttachment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] device_id: ID of device to be assigned to the VLAN.
-        :param pulumi.Input[bool] force_bond: Add port back to the bond when this resource is removed. Default is
-               `false`.
-        :param pulumi.Input[bool] native: Mark this VLAN a native VLAN on the port. This can be used only if this
-               assignment assigns second or further VLAN to the port. To ensure that this attachment is not first
-               on a port, you can use `depends_on` pointing to another `metal.PortVlanAttachment`, just
-               like in the layer2-individual example above.
+        :param pulumi.Input[bool] force_bond: Add port back to the bond when this resource is removed. Default is `false`.
+        :param pulumi.Input[bool] native: Mark this VLAN a native VLAN on the port. This can be used only if this assignment assigns second or further VLAN to the port. To ensure that this attachment is not first on a port, you can use `depends_on` pointing to another `metal.PortVlanAttachment`, just like in the layer2-individual example above.
         :param pulumi.Input[str] port_name: Name of network port to be assigned to the VLAN.
         :param pulumi.Input[int] vlan_vnid: VXLAN Network Identifier.
         """
@@ -311,8 +291,8 @@ class PortVlanAttachment(pulumi.CustomResource):
 
         To learn more about Layer 2 networking in Equinix Metal, refer to
 
-        * <https://metal.equinix.com/developers/docs/networking/layer2/>
-        * <https://metal.equinix.com/developers/docs/networking/layer2-configs/>
+        * https://metal.equinix.com/developers/docs/networking/layer2/
+        * https://metal.equinix.com/developers/docs/networking/layer2-configs/
 
         ## Attribute Referece
 
@@ -410,12 +390,8 @@ class PortVlanAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] device_id: ID of device to be assigned to the VLAN.
-        :param pulumi.Input[bool] force_bond: Add port back to the bond when this resource is removed. Default is
-               `false`.
-        :param pulumi.Input[bool] native: Mark this VLAN a native VLAN on the port. This can be used only if this
-               assignment assigns second or further VLAN to the port. To ensure that this attachment is not first
-               on a port, you can use `depends_on` pointing to another `metal.PortVlanAttachment`, just
-               like in the layer2-individual example above.
+        :param pulumi.Input[bool] force_bond: Add port back to the bond when this resource is removed. Default is `false`.
+        :param pulumi.Input[bool] native: Mark this VLAN a native VLAN on the port. This can be used only if this assignment assigns second or further VLAN to the port. To ensure that this attachment is not first on a port, you can use `depends_on` pointing to another `metal.PortVlanAttachment`, just like in the layer2-individual example above.
         :param pulumi.Input[str] port_id: UUID of device port
         :param pulumi.Input[str] port_name: Name of network port to be assigned to the VLAN.
         :param pulumi.Input[str] vlan_id: UUID of VLAN API resource
@@ -446,8 +422,7 @@ class PortVlanAttachment(pulumi.CustomResource):
     @pulumi.getter(name="forceBond")
     def force_bond(self) -> pulumi.Output[Optional[bool]]:
         """
-        Add port back to the bond when this resource is removed. Default is
-        `false`.
+        Add port back to the bond when this resource is removed. Default is `false`.
         """
         return pulumi.get(self, "force_bond")
 
@@ -455,10 +430,7 @@ class PortVlanAttachment(pulumi.CustomResource):
     @pulumi.getter
     def native(self) -> pulumi.Output[Optional[bool]]:
         """
-        Mark this VLAN a native VLAN on the port. This can be used only if this
-        assignment assigns second or further VLAN to the port. To ensure that this attachment is not first
-        on a port, you can use `depends_on` pointing to another `metal.PortVlanAttachment`, just
-        like in the layer2-individual example above.
+        Mark this VLAN a native VLAN on the port. This can be used only if this assignment assigns second or further VLAN to the port. To ensure that this attachment is not first on a port, you can use `depends_on` pointing to another `metal.PortVlanAttachment`, just like in the layer2-individual example above.
         """
         return pulumi.get(self, "native")
 

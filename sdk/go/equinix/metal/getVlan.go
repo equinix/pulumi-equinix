@@ -11,8 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides an Equinix Metal Virtual Network datasource. VLANs data sources can be
-// searched by VLAN UUID, or project UUID and vxlan number.
+// Provides an Equinix Metal Virtual Network datasource. VLANs data sources can be searched by VLAN UUID, or project UUID and vxlan number.
 //
 // ## Example Usage
 //

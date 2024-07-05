@@ -10,8 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Equinix.Metal
 {
     /// <summary>
-    /// Use this resource to associate VLAN with a Dedicated Port from
-    /// [Equinix Fabric - software-defined interconnections](https://metal.equinix.com/developers/docs/networking/fabric/#associating-a-vlan-with-a-dedicated-port).
+    /// Use this resource to associate VLAN with a Dedicated Port from [Equinix Fabric - software-defined interconnections](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/#associating-a-vlan-with-a-dedicated-port).
     /// 
     /// See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
     /// 
@@ -103,7 +102,7 @@ namespace Pulumi.Equinix.Metal
         public Output<int?> NniVlan { get; private set; } = null!;
 
         /// <summary>
-        /// NNI VLAN parameters, see the [documentation for Equinix Fabric](https://metal.equinix.com/developers/docs/networking/fabric/).
+        /// NNI VLAN parameters, see the [documentation for Equinix Fabric](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/).
         /// </summary>
         [Output("nniVnid")]
         public Output<int> NniVnid { get; private set; } = null!;
@@ -139,10 +138,8 @@ namespace Pulumi.Equinix.Metal
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// A subnet from one of the IP
-        /// blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.
-        /// * For a /31 block, it will only have two IP addresses, which will be used for
-        /// the metal_ip and customer_ip.
+        /// A subnet from one of the IP blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.
+        /// * For a /31 block, it will only have two IP addresses, which will be used for the metal_ip and customer_ip.
         /// * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
         /// </summary>
         [Output("subnet")]
@@ -161,7 +158,7 @@ namespace Pulumi.Equinix.Metal
         public Output<string?> VlanId { get; private set; } = null!;
 
         /// <summary>
-        /// VNID VLAN parameter, see the [documentation for Equinix Fabric](https://metal.equinix.com/developers/docs/networking/fabric/).
+        /// VNID VLAN parameter, see the [documentation for Equinix Fabric](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/).
         /// </summary>
         [Output("vnid")]
         public Output<int> Vnid { get; private set; } = null!;
@@ -300,10 +297,8 @@ namespace Pulumi.Equinix.Metal
         public Input<string>? Speed { get; set; }
 
         /// <summary>
-        /// A subnet from one of the IP
-        /// blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.
-        /// * For a /31 block, it will only have two IP addresses, which will be used for
-        /// the metal_ip and customer_ip.
+        /// A subnet from one of the IP blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.
+        /// * For a /31 block, it will only have two IP addresses, which will be used for the metal_ip and customer_ip.
         /// * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
         /// </summary>
         [Input("subnet")]
@@ -394,7 +389,7 @@ namespace Pulumi.Equinix.Metal
         public Input<int>? NniVlan { get; set; }
 
         /// <summary>
-        /// NNI VLAN parameters, see the [documentation for Equinix Fabric](https://metal.equinix.com/developers/docs/networking/fabric/).
+        /// NNI VLAN parameters, see the [documentation for Equinix Fabric](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/).
         /// </summary>
         [Input("nniVnid")]
         public Input<int>? NniVnid { get; set; }
@@ -430,10 +425,8 @@ namespace Pulumi.Equinix.Metal
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// A subnet from one of the IP
-        /// blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.
-        /// * For a /31 block, it will only have two IP addresses, which will be used for
-        /// the metal_ip and customer_ip.
+        /// A subnet from one of the IP blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.
+        /// * For a /31 block, it will only have two IP addresses, which will be used for the metal_ip and customer_ip.
         /// * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
         /// </summary>
         [Input("subnet")]
@@ -458,7 +451,7 @@ namespace Pulumi.Equinix.Metal
         public Input<string>? VlanId { get; set; }
 
         /// <summary>
-        /// VNID VLAN parameter, see the [documentation for Equinix Fabric](https://metal.equinix.com/developers/docs/networking/fabric/).
+        /// VNID VLAN parameter, see the [documentation for Equinix Fabric](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/).
         /// </summary>
         [Input("vnid")]
         public Input<int>? Vnid { get; set; }

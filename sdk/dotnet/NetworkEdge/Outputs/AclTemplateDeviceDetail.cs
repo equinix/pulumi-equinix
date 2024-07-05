@@ -14,8 +14,7 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
     public sealed class AclTemplateDeviceDetail
     {
         /// <summary>
-        /// Device ACL provisioning status where template was applied. One of `PROVISIONING`,
-        /// `PROVISIONED`.
+        /// Device ACL provisioning status where template was applied. One of `PROVISIONING`, `PROVISIONED`.
         /// </summary>
         public readonly string? AclStatus;
         /// <summary>

@@ -48,16 +48,14 @@ public final class GetDevicePlatformArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * Device platform flavor that determines number of CPU cores and memory.
-     * Supported values are: `small`, `medium`, `large`, `xlarge`.
+     * Device platform flavor that determines number of CPU cores and memory. Supported values are: `small`, `medium`, `large`, `xlarge`.
      * 
      */
     @Import(name="flavor")
     private @Nullable Output<String> flavor;
 
     /**
-     * @return Device platform flavor that determines number of CPU cores and memory.
-     * Supported values are: `small`, `medium`, `large`, `xlarge`.
+     * @return Device platform flavor that determines number of CPU cores and memory. Supported values are: `small`, `medium`, `large`, `xlarge`.
      * 
      */
     public Optional<Output<String>> flavor() {
@@ -65,16 +63,14 @@ public final class GetDevicePlatformArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * List of device licensing options to limit platform search result.
-     * Supported values are: `BYOL` (for Bring Your Own License), `Sub` (for license subscription).
+     * List of device licensing options to limit platform search result. Supported values are: `BYOL` (for Bring Your Own License), `Sub` (for license subscription).
      * 
      */
     @Import(name="licenseOptions")
     private @Nullable Output<List<String>> licenseOptions;
 
     /**
-     * @return List of device licensing options to limit platform search result.
-     * Supported values are: `BYOL` (for Bring Your Own License), `Sub` (for license subscription).
+     * @return List of device licensing options to limit platform search result. Supported values are: `BYOL` (for Bring Your Own License), `Sub` (for license subscription).
      * 
      */
     public Optional<Output<List<String>>> licenseOptions() {
@@ -82,16 +78,14 @@ public final class GetDevicePlatformArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * List of device management types to limit platform search results.
-     * Supported values are: `EQUINIX-CONFIGURED`, `SELF-CONFIGURED`.
+     * List of device management types to limit platform search results. Supported values are: `EQUINIX-CONFIGURED`, `SELF-CONFIGURED`.
      * 
      */
     @Import(name="managementTypes")
     private @Nullable Output<List<String>> managementTypes;
 
     /**
-     * @return List of device management types to limit platform search results.
-     * Supported values are: `EQUINIX-CONFIGURED`, `SELF-CONFIGURED`.
+     * @return List of device management types to limit platform search results. Supported values are: `EQUINIX-CONFIGURED`, `SELF-CONFIGURED`.
      * 
      */
     public Optional<Output<List<String>>> managementTypes() {
@@ -185,8 +179,7 @@ public final class GetDevicePlatformArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param flavor Device platform flavor that determines number of CPU cores and memory.
-         * Supported values are: `small`, `medium`, `large`, `xlarge`.
+         * @param flavor Device platform flavor that determines number of CPU cores and memory. Supported values are: `small`, `medium`, `large`, `xlarge`.
          * 
          * @return builder
          * 
@@ -197,8 +190,7 @@ public final class GetDevicePlatformArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param flavor Device platform flavor that determines number of CPU cores and memory.
-         * Supported values are: `small`, `medium`, `large`, `xlarge`.
+         * @param flavor Device platform flavor that determines number of CPU cores and memory. Supported values are: `small`, `medium`, `large`, `xlarge`.
          * 
          * @return builder
          * 
@@ -208,8 +200,7 @@ public final class GetDevicePlatformArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param licenseOptions List of device licensing options to limit platform search result.
-         * Supported values are: `BYOL` (for Bring Your Own License), `Sub` (for license subscription).
+         * @param licenseOptions List of device licensing options to limit platform search result. Supported values are: `BYOL` (for Bring Your Own License), `Sub` (for license subscription).
          * 
          * @return builder
          * 
@@ -220,8 +211,7 @@ public final class GetDevicePlatformArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param licenseOptions List of device licensing options to limit platform search result.
-         * Supported values are: `BYOL` (for Bring Your Own License), `Sub` (for license subscription).
+         * @param licenseOptions List of device licensing options to limit platform search result. Supported values are: `BYOL` (for Bring Your Own License), `Sub` (for license subscription).
          * 
          * @return builder
          * 
@@ -231,8 +221,7 @@ public final class GetDevicePlatformArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param licenseOptions List of device licensing options to limit platform search result.
-         * Supported values are: `BYOL` (for Bring Your Own License), `Sub` (for license subscription).
+         * @param licenseOptions List of device licensing options to limit platform search result. Supported values are: `BYOL` (for Bring Your Own License), `Sub` (for license subscription).
          * 
          * @return builder
          * 
@@ -242,8 +231,7 @@ public final class GetDevicePlatformArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param managementTypes List of device management types to limit platform search results.
-         * Supported values are: `EQUINIX-CONFIGURED`, `SELF-CONFIGURED`.
+         * @param managementTypes List of device management types to limit platform search results. Supported values are: `EQUINIX-CONFIGURED`, `SELF-CONFIGURED`.
          * 
          * @return builder
          * 
@@ -254,8 +242,7 @@ public final class GetDevicePlatformArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param managementTypes List of device management types to limit platform search results.
-         * Supported values are: `EQUINIX-CONFIGURED`, `SELF-CONFIGURED`.
+         * @param managementTypes List of device management types to limit platform search results. Supported values are: `EQUINIX-CONFIGURED`, `SELF-CONFIGURED`.
          * 
          * @return builder
          * 
@@ -265,8 +252,7 @@ public final class GetDevicePlatformArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param managementTypes List of device management types to limit platform search results.
-         * Supported values are: `EQUINIX-CONFIGURED`, `SELF-CONFIGURED`.
+         * @param managementTypes List of device management types to limit platform search results. Supported values are: `EQUINIX-CONFIGURED`, `SELF-CONFIGURED`.
          * 
          * @return builder
          * 

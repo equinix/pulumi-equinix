@@ -18,8 +18,7 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
         /// </summary>
         public readonly string? Description;
         /// <summary>
-        /// Inbound traffic destination ports. Allowed values are a comma separated
-        /// list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
+        /// Inbound traffic destination ports. Allowed values are a comma separated list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
         /// </summary>
         public readonly string DstPort;
         /// <summary>
@@ -35,8 +34,7 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
         /// </summary>
         public readonly string? SourceType;
         /// <summary>
-        /// Inbound traffic source ports. Allowed values are a comma separated list
-        /// of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
+        /// Inbound traffic source ports. Allowed values are a comma separated list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
         /// </summary>
         public readonly string SrcPort;
         /// <summary>

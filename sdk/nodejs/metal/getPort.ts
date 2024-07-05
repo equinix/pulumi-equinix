@@ -5,8 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Use this data source to read ports of existing devices. You can read port by either its UUID,
- * or by a device UUID and port name.
+ * Use this data source to read ports of existing devices. You can read port by either its UUID, or by a device UUID and port name.
  *
  * ## Example Usage
  *
@@ -114,8 +113,7 @@ export interface GetPortResult {
     readonly vxlanIds: number[];
 }
 /**
- * Use this data source to read ports of existing devices. You can read port by either its UUID,
- * or by a device UUID and port name.
+ * Use this data source to read ports of existing devices. You can read port by either its UUID, or by a device UUID and port name.
  *
  * ## Example Usage
  *

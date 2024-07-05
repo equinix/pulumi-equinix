@@ -14,8 +14,8 @@ import (
 // Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID
 //
 // Additional documentation:
-// * Getting Started: <https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm>
-// * API: <https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections>
+// * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm
+// * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections
 func GetConnections(ctx *pulumi.Context, args *GetConnectionsArgs, opts ...pulumi.InvokeOption) (*GetConnectionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetConnectionsResult

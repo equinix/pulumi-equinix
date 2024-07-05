@@ -11,9 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to get Equinix Network Edge device platform configuration details
-// for a given device type. For further details, check supported
-// [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
+// Use this data source to get Equinix Network Edge device platform configuration details for a given device type. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
 //
 // ## Example Usage
 //
@@ -60,14 +58,11 @@ type GetDevicePlatformArgs struct {
 	CoreCount *int `pulumi:"coreCount"`
 	// Device type code
 	DeviceType string `pulumi:"deviceType"`
-	// Device platform flavor that determines number of CPU cores and memory.
-	// Supported values are: `small`, `medium`, `large`, `xlarge`.
+	// Device platform flavor that determines number of CPU cores and memory. Supported values are: `small`, `medium`, `large`, `xlarge`.
 	Flavor *string `pulumi:"flavor"`
-	// List of device licensing options to limit platform search result.
-	// Supported values are: `BYOL` (for Bring Your Own License), `Sub` (for license subscription).
+	// List of device licensing options to limit platform search result. Supported values are: `BYOL` (for Bring Your Own License), `Sub` (for license subscription).
 	LicenseOptions []string `pulumi:"licenseOptions"`
-	// List of device management types to limit platform search results.
-	// Supported values are: `EQUINIX-CONFIGURED`, `SELF-CONFIGURED`.
+	// List of device management types to limit platform search results. Supported values are: `EQUINIX-CONFIGURED`, `SELF-CONFIGURED`.
 	ManagementTypes []string `pulumi:"managementTypes"`
 	// List of software package codes to limit platform search results.
 	Packages []string `pulumi:"packages"`
@@ -108,14 +103,11 @@ type GetDevicePlatformOutputArgs struct {
 	CoreCount pulumi.IntPtrInput `pulumi:"coreCount"`
 	// Device type code
 	DeviceType pulumi.StringInput `pulumi:"deviceType"`
-	// Device platform flavor that determines number of CPU cores and memory.
-	// Supported values are: `small`, `medium`, `large`, `xlarge`.
+	// Device platform flavor that determines number of CPU cores and memory. Supported values are: `small`, `medium`, `large`, `xlarge`.
 	Flavor pulumi.StringPtrInput `pulumi:"flavor"`
-	// List of device licensing options to limit platform search result.
-	// Supported values are: `BYOL` (for Bring Your Own License), `Sub` (for license subscription).
+	// List of device licensing options to limit platform search result. Supported values are: `BYOL` (for Bring Your Own License), `Sub` (for license subscription).
 	LicenseOptions pulumi.StringArrayInput `pulumi:"licenseOptions"`
-	// List of device management types to limit platform search results.
-	// Supported values are: `EQUINIX-CONFIGURED`, `SELF-CONFIGURED`.
+	// List of device management types to limit platform search results. Supported values are: `EQUINIX-CONFIGURED`, `SELF-CONFIGURED`.
 	ManagementTypes pulumi.StringArrayInput `pulumi:"managementTypes"`
 	// List of software package codes to limit platform search results.
 	Packages pulumi.StringArrayInput `pulumi:"packages"`

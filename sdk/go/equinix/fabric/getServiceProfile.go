@@ -14,8 +14,8 @@ import (
 // Fabric V4 API compatible data resource that allow user to fetch Service Profile by UUID filter criteria
 //
 // Additional documentation:
-// * Getting Started: <https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm>
-// * API: <https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles>
+// * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm
+// * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles
 //
 // ## Example Usage
 //
@@ -99,7 +99,7 @@ type LookupServiceProfileResult struct {
 	Ports []GetServiceProfilePort `pulumi:"ports"`
 	// Project information
 	Project GetServiceProfileProject `pulumi:"project"`
-	// Self Profile indicating if the profile is created for customer's  self use
+	// Self Profile indicating if the profile is created for customer's self use
 	SelfProfile bool `pulumi:"selfProfile"`
 	// Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
 	State string `pulumi:"state"`
@@ -226,7 +226,7 @@ func (o LookupServiceProfileResultOutput) Project() GetServiceProfileProjectOutp
 	return o.ApplyT(func(v LookupServiceProfileResult) GetServiceProfileProject { return v.Project }).(GetServiceProfileProjectOutput)
 }
 
-// Self Profile indicating if the profile is created for customer's  self use
+// Self Profile indicating if the profile is created for customer's self use
 func (o LookupServiceProfileResultOutput) SelfProfile() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupServiceProfileResult) bool { return v.SelfProfile }).(pulumi.BoolOutput)
 }

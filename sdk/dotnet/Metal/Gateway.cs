@@ -43,15 +43,13 @@ namespace Pulumi.Equinix.Metal
     public partial class Gateway : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// UUID of Public or VRF IP Reservation to associate with the gateway, the
-        /// reservation must be in the same metro as the VLAN, conflicts with `private_ipv4_subnet_size`.
+        /// UUID of Public or VRF IP Reservation to associate with the gateway, the reservation must be in the same metro as the VLAN, conflicts with `private_ipv4_subnet_size`.
         /// </summary>
         [Output("ipReservationId")]
         public Output<string> IpReservationId { get; private set; } = null!;
 
         /// <summary>
-        /// Size of the private IPv4 subnet to create for this metal
-        /// gateway, must be one of `8`, `16`, `32`, `64`, `128`. Conflicts with `ip_reservation_id`.
+        /// Size of the private IPv4 subnet to create for this metal gateway, must be one of `8`, `16`, `32`, `64`, `128`. Conflicts with `ip_reservation_id`.
         /// </summary>
         [Output("privateIpv4SubnetSize")]
         public Output<int> PrivateIpv4SubnetSize { get; private set; } = null!;
@@ -131,15 +129,13 @@ namespace Pulumi.Equinix.Metal
     public sealed class GatewayArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// UUID of Public or VRF IP Reservation to associate with the gateway, the
-        /// reservation must be in the same metro as the VLAN, conflicts with `private_ipv4_subnet_size`.
+        /// UUID of Public or VRF IP Reservation to associate with the gateway, the reservation must be in the same metro as the VLAN, conflicts with `private_ipv4_subnet_size`.
         /// </summary>
         [Input("ipReservationId")]
         public Input<string>? IpReservationId { get; set; }
 
         /// <summary>
-        /// Size of the private IPv4 subnet to create for this metal
-        /// gateway, must be one of `8`, `16`, `32`, `64`, `128`. Conflicts with `ip_reservation_id`.
+        /// Size of the private IPv4 subnet to create for this metal gateway, must be one of `8`, `16`, `32`, `64`, `128`. Conflicts with `ip_reservation_id`.
         /// </summary>
         [Input("privateIpv4SubnetSize")]
         public Input<int>? PrivateIpv4SubnetSize { get; set; }
@@ -168,15 +164,13 @@ namespace Pulumi.Equinix.Metal
     public sealed class GatewayState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// UUID of Public or VRF IP Reservation to associate with the gateway, the
-        /// reservation must be in the same metro as the VLAN, conflicts with `private_ipv4_subnet_size`.
+        /// UUID of Public or VRF IP Reservation to associate with the gateway, the reservation must be in the same metro as the VLAN, conflicts with `private_ipv4_subnet_size`.
         /// </summary>
         [Input("ipReservationId")]
         public Input<string>? IpReservationId { get; set; }
 
         /// <summary>
-        /// Size of the private IPv4 subnet to create for this metal
-        /// gateway, must be one of `8`, `16`, `32`, `64`, `128`. Conflicts with `ip_reservation_id`.
+        /// Size of the private IPv4 subnet to create for this metal gateway, must be one of `8`, `16`, `32`, `64`, `128`. Conflicts with `ip_reservation_id`.
         /// </summary>
         [Input("privateIpv4SubnetSize")]
         public Input<int>? PrivateIpv4SubnetSize { get; set; }

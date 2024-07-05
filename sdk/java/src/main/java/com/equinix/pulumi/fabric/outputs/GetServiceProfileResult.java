@@ -92,7 +92,7 @@ public final class GetServiceProfileResult {
      */
     private GetServiceProfileProject project;
     /**
-     * @return Self Profile indicating if the profile is created for customer&#39;s  self use
+     * @return Self Profile indicating if the profile is created for customer&#39;s self use
      * 
      */
     private Boolean selfProfile;
@@ -228,7 +228,7 @@ public final class GetServiceProfileResult {
         return this.project;
     }
     /**
-     * @return Self Profile indicating if the profile is created for customer&#39;s  self use
+     * @return Self Profile indicating if the profile is created for customer&#39;s self use
      * 
      */
     public Boolean selfProfile() {

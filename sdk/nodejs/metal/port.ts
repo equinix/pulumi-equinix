@@ -79,13 +79,11 @@ export class Port extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * UUID of a VLAN to assign as a native VLAN. It must be one of
-     * attached VLANs (from `vlanIds` parameter).
+     * UUID of a VLAN to assign as a native VLAN. It must be one of attached VLANs (from `vlanIds` parameter).
      */
     public readonly nativeVlanId!: pulumi.Output<string | undefined>;
     /**
-     * One of layer2-bonded, layer2-individual, layer3, hybrid and hybrid-bonded. This
-     * attribute is only set on bond ports.
+     * One of layer2-bonded, layer2-individual, layer3, hybrid and hybrid-bonded. This attribute is only set on bond ports.
      */
     public /*out*/ readonly networkType!: pulumi.Output<string>;
     /**
@@ -101,13 +99,11 @@ export class Port extends pulumi.CustomResource {
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
     /**
-     * List of VLAN UUIDs to attach to the port, valid only for L2 and Hybrid
-     * ports.
+     * List of VLAN UUIDs to attach to the port, valid only for L2 and Hybrid ports.
      */
     public readonly vlanIds!: pulumi.Output<string[]>;
     /**
-     * List of VXLAN IDs to attach to the port, valid only for L2 and Hybrid
-     * ports.
+     * List of VXLAN IDs to attach to the port, valid only for L2 and Hybrid ports.
      */
     public readonly vxlanIds!: pulumi.Output<number[]>;
 
@@ -199,13 +195,11 @@ export interface PortState {
      */
     name?: pulumi.Input<string>;
     /**
-     * UUID of a VLAN to assign as a native VLAN. It must be one of
-     * attached VLANs (from `vlanIds` parameter).
+     * UUID of a VLAN to assign as a native VLAN. It must be one of attached VLANs (from `vlanIds` parameter).
      */
     nativeVlanId?: pulumi.Input<string>;
     /**
-     * One of layer2-bonded, layer2-individual, layer3, hybrid and hybrid-bonded. This
-     * attribute is only set on bond ports.
+     * One of layer2-bonded, layer2-individual, layer3, hybrid and hybrid-bonded. This attribute is only set on bond ports.
      */
     networkType?: pulumi.Input<string>;
     /**
@@ -221,13 +215,11 @@ export interface PortState {
      */
     type?: pulumi.Input<string>;
     /**
-     * List of VLAN UUIDs to attach to the port, valid only for L2 and Hybrid
-     * ports.
+     * List of VLAN UUIDs to attach to the port, valid only for L2 and Hybrid ports.
      */
     vlanIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * List of VXLAN IDs to attach to the port, valid only for L2 and Hybrid
-     * ports.
+     * List of VXLAN IDs to attach to the port, valid only for L2 and Hybrid ports.
      */
     vxlanIds?: pulumi.Input<pulumi.Input<number>[]>;
 }
@@ -245,8 +237,7 @@ export interface PortArgs {
      */
     layer2?: pulumi.Input<boolean>;
     /**
-     * UUID of a VLAN to assign as a native VLAN. It must be one of
-     * attached VLANs (from `vlanIds` parameter).
+     * UUID of a VLAN to assign as a native VLAN. It must be one of attached VLANs (from `vlanIds` parameter).
      */
     nativeVlanId?: pulumi.Input<string>;
     /**
@@ -258,13 +249,11 @@ export interface PortArgs {
      */
     resetOnDelete?: pulumi.Input<boolean>;
     /**
-     * List of VLAN UUIDs to attach to the port, valid only for L2 and Hybrid
-     * ports.
+     * List of VLAN UUIDs to attach to the port, valid only for L2 and Hybrid ports.
      */
     vlanIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * List of VXLAN IDs to attach to the port, valid only for L2 and Hybrid
-     * ports.
+     * List of VXLAN IDs to attach to the port, valid only for L2 and Hybrid ports.
      */
     vxlanIds?: pulumi.Input<pulumi.Input<number>[]>;
 }

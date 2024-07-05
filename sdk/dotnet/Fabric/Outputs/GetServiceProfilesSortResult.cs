@@ -14,11 +14,11 @@ namespace Pulumi.Equinix.Fabric.Outputs
     public sealed class GetServiceProfilesSortResult
     {
         /// <summary>
-        /// Priority type- DESC, ASC
+        /// The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
         /// </summary>
         public readonly string? Direction;
         /// <summary>
-        /// Search operation sort criteria /name /state /changeLog/createdDateTime /changeLog/updatedDateTime
+        /// The property name to use in sorting. One of [/name /uuid /state /location/metroCode /location/metroName /package/code /changeLog/createdDateTime /changeLog/updatedDateTime]. Defaults to /changeLog/updatedDateTime
         /// </summary>
         public readonly string? Property;
 

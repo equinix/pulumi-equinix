@@ -14,8 +14,8 @@ import (
 // Fabric V4 API compatible data resource that allow user to fetch Fabric Cloud Routers matching custom search criteria
 //
 // Additional documentation:
-// * Getting Started: <https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-intro.htm#HowItWorks>
-// * API: <https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers>
+// * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-intro.htm#HowItWorks
+// * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers
 func GetCloudRouters(ctx *pulumi.Context, args *GetCloudRoutersArgs, opts ...pulumi.InvokeOption) (*GetCloudRoutersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCloudRoutersResult

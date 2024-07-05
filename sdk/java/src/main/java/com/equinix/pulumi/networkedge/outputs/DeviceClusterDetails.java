@@ -25,14 +25,12 @@ public final class DeviceClusterDetails {
      */
     private String clusterName;
     /**
-     * @return An object that has `node0` configuration.
-     * See Cluster Details - Nodes below for more details.
+     * @return An object that has `node0` configuration. See Cluster Details - Nodes below for more details.
      * 
      */
     private DeviceClusterDetailsNode0 node0;
     /**
-     * @return An object that has `node1` configuration.
-     * See Cluster Details - Nodes below for more details.
+     * @return An object that has `node1` configuration. See Cluster Details - Nodes below for more details.
      * 
      */
     private DeviceClusterDetailsNode1 node1;
@@ -58,16 +56,14 @@ public final class DeviceClusterDetails {
         return this.clusterName;
     }
     /**
-     * @return An object that has `node0` configuration.
-     * See Cluster Details - Nodes below for more details.
+     * @return An object that has `node0` configuration. See Cluster Details - Nodes below for more details.
      * 
      */
     public DeviceClusterDetailsNode0 node0() {
         return this.node0;
     }
     /**
-     * @return An object that has `node1` configuration.
-     * See Cluster Details - Nodes below for more details.
+     * @return An object that has `node1` configuration. See Cluster Details - Nodes below for more details.
      * 
      */
     public DeviceClusterDetailsNode1 node1() {

@@ -11,62 +11,62 @@ import java.util.Objects;
 @CustomType
 public final class GetDevicePort {
     /**
-     * @return Whether this port is part of a bond in bonded network setup.
+     * @return Whether this port is part of a bond in bonded network setup
      * 
      */
     private Boolean bonded;
     /**
-     * @return ID of the port.
+     * @return The ID of the device
      * 
      */
     private String id;
     /**
-     * @return MAC address assigned to the port.
+     * @return MAC address assigned to the port
      * 
      */
     private String mac;
     /**
-     * @return Name of the port (e.g. `eth0`, or `bond0`).
+     * @return Name of the port (e.g. eth0, or bond0)
      * 
      */
     private String name;
     /**
-     * @return Type of the port (e.g. `NetworkPort` or `NetworkBondPort`).
+     * @return Type of the port (e.g. NetworkPort or NetworkBondPort)
      * 
      */
     private String type;
 
     private GetDevicePort() {}
     /**
-     * @return Whether this port is part of a bond in bonded network setup.
+     * @return Whether this port is part of a bond in bonded network setup
      * 
      */
     public Boolean bonded() {
         return this.bonded;
     }
     /**
-     * @return ID of the port.
+     * @return The ID of the device
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return MAC address assigned to the port.
+     * @return MAC address assigned to the port
      * 
      */
     public String mac() {
         return this.mac;
     }
     /**
-     * @return Name of the port (e.g. `eth0`, or `bond0`).
+     * @return Name of the port (e.g. eth0, or bond0)
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return Type of the port (e.g. `NetworkPort` or `NetworkBondPort`).
+     * @return Type of the port (e.g. NetworkPort or NetworkBondPort)
      * 
      */
     public String type() {

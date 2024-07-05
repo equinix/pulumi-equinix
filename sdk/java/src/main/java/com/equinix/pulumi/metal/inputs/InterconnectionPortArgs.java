@@ -6,7 +6,6 @@ package com.equinix.pulumi.metal.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -53,14 +52,14 @@ public final class InterconnectionPortArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Connection speed -  Values must be in the format &#39;&lt;number&gt;Mbps&#39; or &#39;&lt;number&gt;Gpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
+     * Connection speed - Values must be in the format &#39;&lt;number&gt;Mbps&#39; or &#39;&lt;number&gt;Gpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
      * 
      */
     @Import(name="speed", required=true)
     private Output<Integer> speed;
 
     /**
-     * @return Connection speed -  Values must be in the format &#39;&lt;number&gt;Mbps&#39; or &#39;&lt;number&gt;Gpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
+     * @return Connection speed - Values must be in the format &#39;&lt;number&gt;Mbps&#39; or &#39;&lt;number&gt;Gpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
      * 
      */
     public Output<Integer> speed() {
@@ -83,9 +82,9 @@ public final class InterconnectionPortArgs extends com.pulumi.resources.Resource
     }
 
     @Import(name="virtualCircuitIds", required=true)
-    private Output<List<Object>> virtualCircuitIds;
+    private Output<List<String>> virtualCircuitIds;
 
-    public Output<List<Object>> virtualCircuitIds() {
+    public Output<List<String>> virtualCircuitIds() {
         return this.virtualCircuitIds;
     }
 
@@ -168,7 +167,7 @@ public final class InterconnectionPortArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param speed Connection speed -  Values must be in the format &#39;&lt;number&gt;Mbps&#39; or &#39;&lt;number&gt;Gpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
+         * @param speed Connection speed - Values must be in the format &#39;&lt;number&gt;Mbps&#39; or &#39;&lt;number&gt;Gpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
          * 
          * @return builder
          * 
@@ -179,7 +178,7 @@ public final class InterconnectionPortArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param speed Connection speed -  Values must be in the format &#39;&lt;number&gt;Mbps&#39; or &#39;&lt;number&gt;Gpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
+         * @param speed Connection speed - Values must be in the format &#39;&lt;number&gt;Mbps&#39; or &#39;&lt;number&gt;Gpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
          * 
          * @return builder
          * 
@@ -209,16 +208,16 @@ public final class InterconnectionPortArgs extends com.pulumi.resources.Resource
             return status(Output.of(status));
         }
 
-        public Builder virtualCircuitIds(Output<List<Object>> virtualCircuitIds) {
+        public Builder virtualCircuitIds(Output<List<String>> virtualCircuitIds) {
             $.virtualCircuitIds = virtualCircuitIds;
             return this;
         }
 
-        public Builder virtualCircuitIds(List<Object> virtualCircuitIds) {
+        public Builder virtualCircuitIds(List<String> virtualCircuitIds) {
             return virtualCircuitIds(Output.of(virtualCircuitIds));
         }
 
-        public Builder virtualCircuitIds(Object... virtualCircuitIds) {
+        public Builder virtualCircuitIds(String... virtualCircuitIds) {
             return virtualCircuitIds(List.of(virtualCircuitIds));
         }
 

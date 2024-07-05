@@ -71,8 +71,7 @@ export class NetworkFile extends pulumi.CustomResource {
     }
 
     /**
-     * Boolean value that determines device licensing mode, i.e.,
-     * `bring your own license` or `subscription`.
+     * Boolean value that determines device licensing mode, i.e., `bring your own license` or `subscription`.
      */
     public readonly byol!: pulumi.Output<boolean>;
     /**
@@ -96,8 +95,7 @@ export class NetworkFile extends pulumi.CustomResource {
      */
     public readonly processType!: pulumi.Output<string>;
     /**
-     * Boolean value that determines device management mode, i.e.,
-     * `self-managed` or `Equinix-managed`.
+     * Boolean value that determines device management mode, i.e., `self-managed` or `Equinix-managed`.
      */
     public readonly selfManaged!: pulumi.Output<boolean>;
     /**
@@ -176,8 +174,7 @@ export class NetworkFile extends pulumi.CustomResource {
  */
 export interface NetworkFileState {
     /**
-     * Boolean value that determines device licensing mode, i.e.,
-     * `bring your own license` or `subscription`.
+     * Boolean value that determines device licensing mode, i.e., `bring your own license` or `subscription`.
      */
     byol?: pulumi.Input<boolean>;
     /**
@@ -201,8 +198,7 @@ export interface NetworkFileState {
      */
     processType?: pulumi.Input<string | enums.networkedge.FileType>;
     /**
-     * Boolean value that determines device management mode, i.e.,
-     * `self-managed` or `Equinix-managed`.
+     * Boolean value that determines device management mode, i.e., `self-managed` or `Equinix-managed`.
      */
     selfManaged?: pulumi.Input<boolean>;
     /**
@@ -220,8 +216,7 @@ export interface NetworkFileState {
  */
 export interface NetworkFileArgs {
     /**
-     * Boolean value that determines device licensing mode, i.e.,
-     * `bring your own license` or `subscription`.
+     * Boolean value that determines device licensing mode, i.e., `bring your own license` or `subscription`.
      */
     byol: pulumi.Input<boolean>;
     /**
@@ -245,8 +240,7 @@ export interface NetworkFileArgs {
      */
     processType: pulumi.Input<string | enums.networkedge.FileType>;
     /**
-     * Boolean value that determines device management mode, i.e.,
-     * `self-managed` or `Equinix-managed`.
+     * Boolean value that determines device management mode, i.e., `self-managed` or `Equinix-managed`.
      */
     selfManaged: pulumi.Input<boolean>;
 }

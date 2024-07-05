@@ -32,8 +32,7 @@ namespace Pulumi.Equinix.NetworkEdge.Inputs
         private Input<string>? _adminPassword;
 
         /// <summary>
-        /// The administrative password of the device. You can use it to log in
-        /// to the console. This field is not available for all device types.
+        /// The administrative password of the device. You can use it to log in to the console. This field is not available for all device types.
         /// </summary>
         public Input<string>? AdminPassword
         {
@@ -117,8 +116,7 @@ namespace Pulumi.Equinix.NetworkEdge.Inputs
         private Input<string>? _rootPassword;
 
         /// <summary>
-        /// The CLI password of the device. This field is relevant only for the
-        /// Velocloud SDWAN cluster.
+        /// The CLI password of the device. This field is relevant only for the Velocloud SDWAN cluster.
         /// </summary>
         public Input<string>? RootPassword
         {

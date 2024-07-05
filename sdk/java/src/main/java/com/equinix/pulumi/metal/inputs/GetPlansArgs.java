@@ -33,16 +33,14 @@ public final class GetPlansArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * One or more attribute/direction pairs on which to sort results. If multiple
-     * sorts are provided, they will be applied in order
+     * One or more attribute/direction pairs on which to sort results. If multiple sorts are provided, they will be applied in order
      * 
      */
     @Import(name="sorts")
     private @Nullable Output<List<GetPlansSortArgs>> sorts;
 
     /**
-     * @return One or more attribute/direction pairs on which to sort results. If multiple
-     * sorts are provided, they will be applied in order
+     * @return One or more attribute/direction pairs on which to sort results. If multiple sorts are provided, they will be applied in order
      * 
      */
     public Optional<Output<List<GetPlansSortArgs>>> sorts() {
@@ -106,8 +104,7 @@ public final class GetPlansArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param sorts One or more attribute/direction pairs on which to sort results. If multiple
-         * sorts are provided, they will be applied in order
+         * @param sorts One or more attribute/direction pairs on which to sort results. If multiple sorts are provided, they will be applied in order
          * 
          * @return builder
          * 
@@ -118,8 +115,7 @@ public final class GetPlansArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param sorts One or more attribute/direction pairs on which to sort results. If multiple
-         * sorts are provided, they will be applied in order
+         * @param sorts One or more attribute/direction pairs on which to sort results. If multiple sorts are provided, they will be applied in order
          * 
          * @return builder
          * 
@@ -129,8 +125,7 @@ public final class GetPlansArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param sorts One or more attribute/direction pairs on which to sort results. If multiple
-         * sorts are provided, they will be applied in order
+         * @param sorts One or more attribute/direction pairs on which to sort results. If multiple sorts are provided, they will be applied in order
          * 
          * @return builder
          * 

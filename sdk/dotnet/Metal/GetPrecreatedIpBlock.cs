@@ -12,8 +12,7 @@ namespace Pulumi.Equinix.Metal
     public static class GetPrecreatedIpBlock
     {
         /// <summary>
-        /// Use this data source to get CIDR expression for precreated (management) IPv6 and IPv4 blocks in Equinix Metal.
-        /// You can then use the cidrsubnet TF builtin function to derive subnets.
+        /// Use this data source to get CIDR expression for precreated (management) IPv6 and IPv4 blocks in Equinix Metal. You can then use the cidrsubnet TF builtin function to derive subnets.
         /// 
         /// &gt; For backward compatibility, this data source will also return reserved (elastic) IP blocks.
         /// 
@@ -25,8 +24,7 @@ namespace Pulumi.Equinix.Metal
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPrecreatedIpBlockResult>("equinix:metal/getPrecreatedIpBlock:getPrecreatedIpBlock", args ?? new GetPrecreatedIpBlockArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to get CIDR expression for precreated (management) IPv6 and IPv4 blocks in Equinix Metal.
-        /// You can then use the cidrsubnet TF builtin function to derive subnets.
+        /// Use this data source to get CIDR expression for precreated (management) IPv6 and IPv4 blocks in Equinix Metal. You can then use the cidrsubnet TF builtin function to derive subnets.
         /// 
         /// &gt; For backward compatibility, this data source will also return reserved (elastic) IP blocks.
         /// 

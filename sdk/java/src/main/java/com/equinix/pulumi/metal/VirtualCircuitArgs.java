@@ -183,10 +183,8 @@ public final class VirtualCircuitArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * A subnet from one of the IP
-     * blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.
-     * * For a /31 block, it will only have two IP addresses, which will be used for
-     *   the metal_ip and customer_ip.
+     * A subnet from one of the IP blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.
+     * * For a /31 block, it will only have two IP addresses, which will be used for the metal_ip and customer_ip.
      * * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
      * 
      */
@@ -194,10 +192,8 @@ public final class VirtualCircuitArgs extends com.pulumi.resources.ResourceArgs 
     private @Nullable Output<String> subnet;
 
     /**
-     * @return A subnet from one of the IP
-     * blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.
-     * * For a /31 block, it will only have two IP addresses, which will be used for
-     *   the metal_ip and customer_ip.
+     * @return A subnet from one of the IP blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.
+     * * For a /31 block, it will only have two IP addresses, which will be used for the metal_ip and customer_ip.
      * * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
      * 
      */
@@ -520,10 +516,8 @@ public final class VirtualCircuitArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param subnet A subnet from one of the IP
-         * blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.
-         * * For a /31 block, it will only have two IP addresses, which will be used for
-         *   the metal_ip and customer_ip.
+         * @param subnet A subnet from one of the IP blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.
+         * * For a /31 block, it will only have two IP addresses, which will be used for the metal_ip and customer_ip.
          * * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
          * 
          * @return builder
@@ -535,10 +529,8 @@ public final class VirtualCircuitArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param subnet A subnet from one of the IP
-         * blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.
-         * * For a /31 block, it will only have two IP addresses, which will be used for
-         *   the metal_ip and customer_ip.
+         * @param subnet A subnet from one of the IP blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.
+         * * For a /31 block, it will only have two IP addresses, which will be used for the metal_ip and customer_ip.
          * * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
          * 
          * @return builder

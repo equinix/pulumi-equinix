@@ -13,8 +13,7 @@ namespace Pulumi.Equinix.NetworkEdge.Inputs
     public sealed class AclTemplateDeviceDetailGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Device ACL provisioning status where template was applied. One of `PROVISIONING`,
-        /// `PROVISIONED`.
+        /// Device ACL provisioning status where template was applied. One of `PROVISIONING`, `PROVISIONED`.
         /// </summary>
         [Input("aclStatus")]
         public Input<string>? AclStatus { get; set; }

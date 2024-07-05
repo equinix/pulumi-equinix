@@ -22,14 +22,12 @@ public final class DeviceSecondaryDevice {
      */
     private String accountNumber;
     /**
-     * @return Identifier of a WAN interface ACL template that will be applied
-     * on a secondary device.
+     * @return Identifier of a WAN interface ACL template that will be applied on a secondary device.
      * 
      */
     private @Nullable String aclTemplateId;
     /**
-     * @return Additional Internet bandwidth, in Mbps, for a secondary
-     * device.
+     * @return Additional Internet bandwidth, in Mbps, for a secondary device.
      * 
      */
     private @Nullable Integer additionalBandwidth;
@@ -54,14 +52,12 @@ public final class DeviceSecondaryDevice {
      */
     private @Nullable String ibx;
     /**
-     * @return List of device interfaces. See Interface Attribute below
-     * for more details.
+     * @return List of device interfaces. See Interface Attribute below for more details.
      * 
      */
     private @Nullable List<DeviceSecondaryDeviceInterface> interfaces;
     /**
-     * @return Path to the license file that will be uploaded and applied on a
-     * secondary device. Applicable for some device types in BYOL licensing mode.
+     * @return Path to the license file that will be uploaded and applied on a secondary device. Applicable for some device types in BYOL licensing mode.
      * 
      */
     private @Nullable String licenseFile;
@@ -71,8 +67,7 @@ public final class DeviceSecondaryDevice {
      */
     private @Nullable String licenseFileId;
     /**
-     * @return Device license registration status. Possible values are `APPLYING_LICENSE`,
-     * `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
+     * @return Device license registration status. Possible values are `APPLYING_LICENSE`, `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
      * 
      */
     private @Nullable String licenseStatus;
@@ -87,10 +82,8 @@ public final class DeviceSecondaryDevice {
      */
     private String metroCode;
     /**
-     * @return Identifier of an MGMT interface ACL template that will be
-     * applied on a secondary device.
-     * * `ssh-key` - (Optional) Up to one definition of SSH key that will be provisioned on a secondary
-     *   device.
+     * @return Identifier of an MGMT interface ACL template that will be applied on a secondary device.
+     * * `ssh-key` - (Optional) Up to one definition of SSH key that will be provisioned on a secondary device.
      * 
      */
     private @Nullable String mgmtAclTemplateUuid;
@@ -100,20 +93,17 @@ public final class DeviceSecondaryDevice {
      */
     private String name;
     /**
-     * @return List of email addresses that will receive notifications about
-     * secondary device.
+     * @return List of email addresses that will receive notifications about secondary device.
      * 
      */
     private List<String> notifications;
     /**
-     * @return Unique Identifier for the project resource where the device is scoped to.If you
-     * leave it out, the device will be created under the default project id of your organization.
+     * @return Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
      * 
      */
     private @Nullable String projectId;
     /**
-     * @return Device redundancy type applicable for HA devices, either
-     * primary or secondary.
+     * @return Device redundancy type applicable for HA devices, either primary or secondary.
      * 
      */
     private @Nullable String redundancyType;
@@ -153,9 +143,7 @@ public final class DeviceSecondaryDevice {
      */
     private @Nullable String uuid;
     /**
-     * @return Key/Value pairs of vendor specific configuration parameters
-     * for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`,
-     * `systemIpAddress`, `private_address`, `private_cidr_mask`, `private_gateway`, `license_key`, `license_id`.
+     * @return Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`.
      * 
      */
     private @Nullable Map<String,String> vendorConfiguration;
@@ -179,16 +167,14 @@ public final class DeviceSecondaryDevice {
         return this.accountNumber;
     }
     /**
-     * @return Identifier of a WAN interface ACL template that will be applied
-     * on a secondary device.
+     * @return Identifier of a WAN interface ACL template that will be applied on a secondary device.
      * 
      */
     public Optional<String> aclTemplateId() {
         return Optional.ofNullable(this.aclTemplateId);
     }
     /**
-     * @return Additional Internet bandwidth, in Mbps, for a secondary
-     * device.
+     * @return Additional Internet bandwidth, in Mbps, for a secondary device.
      * 
      */
     public Optional<Integer> additionalBandwidth() {
@@ -223,16 +209,14 @@ public final class DeviceSecondaryDevice {
         return Optional.ofNullable(this.ibx);
     }
     /**
-     * @return List of device interfaces. See Interface Attribute below
-     * for more details.
+     * @return List of device interfaces. See Interface Attribute below for more details.
      * 
      */
     public List<DeviceSecondaryDeviceInterface> interfaces() {
         return this.interfaces == null ? List.of() : this.interfaces;
     }
     /**
-     * @return Path to the license file that will be uploaded and applied on a
-     * secondary device. Applicable for some device types in BYOL licensing mode.
+     * @return Path to the license file that will be uploaded and applied on a secondary device. Applicable for some device types in BYOL licensing mode.
      * 
      */
     public Optional<String> licenseFile() {
@@ -246,8 +230,7 @@ public final class DeviceSecondaryDevice {
         return Optional.ofNullable(this.licenseFileId);
     }
     /**
-     * @return Device license registration status. Possible values are `APPLYING_LICENSE`,
-     * `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
+     * @return Device license registration status. Possible values are `APPLYING_LICENSE`, `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
      * 
      */
     public Optional<String> licenseStatus() {
@@ -268,10 +251,8 @@ public final class DeviceSecondaryDevice {
         return this.metroCode;
     }
     /**
-     * @return Identifier of an MGMT interface ACL template that will be
-     * applied on a secondary device.
-     * * `ssh-key` - (Optional) Up to one definition of SSH key that will be provisioned on a secondary
-     *   device.
+     * @return Identifier of an MGMT interface ACL template that will be applied on a secondary device.
+     * * `ssh-key` - (Optional) Up to one definition of SSH key that will be provisioned on a secondary device.
      * 
      */
     public Optional<String> mgmtAclTemplateUuid() {
@@ -285,24 +266,21 @@ public final class DeviceSecondaryDevice {
         return this.name;
     }
     /**
-     * @return List of email addresses that will receive notifications about
-     * secondary device.
+     * @return List of email addresses that will receive notifications about secondary device.
      * 
      */
     public List<String> notifications() {
         return this.notifications;
     }
     /**
-     * @return Unique Identifier for the project resource where the device is scoped to.If you
-     * leave it out, the device will be created under the default project id of your organization.
+     * @return Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
      * 
      */
     public Optional<String> projectId() {
         return Optional.ofNullable(this.projectId);
     }
     /**
-     * @return Device redundancy type applicable for HA devices, either
-     * primary or secondary.
+     * @return Device redundancy type applicable for HA devices, either primary or secondary.
      * 
      */
     public Optional<String> redundancyType() {
@@ -358,9 +336,7 @@ public final class DeviceSecondaryDevice {
         return Optional.ofNullable(this.uuid);
     }
     /**
-     * @return Key/Value pairs of vendor specific configuration parameters
-     * for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`,
-     * `systemIpAddress`, `private_address`, `private_cidr_mask`, `private_gateway`, `license_key`, `license_id`.
+     * @return Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`.
      * 
      */
     public Map<String,String> vendorConfiguration() {

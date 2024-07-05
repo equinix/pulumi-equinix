@@ -35,8 +35,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
      * 
-     * &gt; **NOTE:** Once you set the BGP config in a project, it can&#39;t be removed (due to a limitation in
-     * the Equinix Metal API). It can be updated.
+     * &gt; **NOTE:** Once you set the BGP config in a project, it can&#39;t be removed (due to a limitation in the Equinix Metal API). It can be updated.
      * 
      */
     @Import(name="bgpConfig")
@@ -45,8 +44,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
      * 
-     * &gt; **NOTE:** Once you set the BGP config in a project, it can&#39;t be removed (due to a limitation in
-     * the Equinix Metal API). It can be updated.
+     * &gt; **NOTE:** Once you set the BGP config in a project, it can&#39;t be removed (due to a limitation in the Equinix Metal API). It can be updated.
      * 
      */
     public Optional<Output<ProjectBgpConfigArgs>> bgpConfig() {
@@ -54,14 +52,14 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the project.  The maximum length is 80 characters
+     * The name of the project. The maximum length is 80 characters
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the project.  The maximum length is 80 characters
+     * @return The name of the project. The maximum length is 80 characters
      * 
      */
     public Optional<Output<String>> name() {
@@ -69,16 +67,14 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The UUID of organization under which you want to create the project. If you
-     * leave it out, the project will be created under your the default organization of your account.
+     * The UUID of organization under which you want to create the project. If you leave it out, the project will be created under your the default organization of your account.
      * 
      */
     @Import(name="organizationId")
     private @Nullable Output<String> organizationId;
 
     /**
-     * @return The UUID of organization under which you want to create the project. If you
-     * leave it out, the project will be created under your the default organization of your account.
+     * @return The UUID of organization under which you want to create the project. If you leave it out, the project will be created under your the default organization of your account.
      * 
      */
     public Optional<Output<String>> organizationId() {
@@ -86,16 +82,14 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The UUID of payment method for this project. The payment method and the
-     * project need to belong to the same organization (passed with `organization_id`, or default).
+     * The UUID of payment method for this project. The payment method and the project need to belong to the same organization (passed with `organization_id`, or default).
      * 
      */
     @Import(name="paymentMethodId")
     private @Nullable Output<String> paymentMethodId;
 
     /**
-     * @return The UUID of payment method for this project. The payment method and the
-     * project need to belong to the same organization (passed with `organization_id`, or default).
+     * @return The UUID of payment method for this project. The payment method and the project need to belong to the same organization (passed with `organization_id`, or default).
      * 
      */
     public Optional<Output<String>> paymentMethodId() {
@@ -154,8 +148,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param bgpConfig Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
          * 
-         * &gt; **NOTE:** Once you set the BGP config in a project, it can&#39;t be removed (due to a limitation in
-         * the Equinix Metal API). It can be updated.
+         * &gt; **NOTE:** Once you set the BGP config in a project, it can&#39;t be removed (due to a limitation in the Equinix Metal API). It can be updated.
          * 
          * @return builder
          * 
@@ -168,8 +161,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param bgpConfig Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
          * 
-         * &gt; **NOTE:** Once you set the BGP config in a project, it can&#39;t be removed (due to a limitation in
-         * the Equinix Metal API). It can be updated.
+         * &gt; **NOTE:** Once you set the BGP config in a project, it can&#39;t be removed (due to a limitation in the Equinix Metal API). It can be updated.
          * 
          * @return builder
          * 
@@ -179,7 +171,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the project.  The maximum length is 80 characters
+         * @param name The name of the project. The maximum length is 80 characters
          * 
          * @return builder
          * 
@@ -190,7 +182,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the project.  The maximum length is 80 characters
+         * @param name The name of the project. The maximum length is 80 characters
          * 
          * @return builder
          * 
@@ -200,8 +192,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param organizationId The UUID of organization under which you want to create the project. If you
-         * leave it out, the project will be created under your the default organization of your account.
+         * @param organizationId The UUID of organization under which you want to create the project. If you leave it out, the project will be created under your the default organization of your account.
          * 
          * @return builder
          * 
@@ -212,8 +203,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param organizationId The UUID of organization under which you want to create the project. If you
-         * leave it out, the project will be created under your the default organization of your account.
+         * @param organizationId The UUID of organization under which you want to create the project. If you leave it out, the project will be created under your the default organization of your account.
          * 
          * @return builder
          * 
@@ -223,8 +213,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentMethodId The UUID of payment method for this project. The payment method and the
-         * project need to belong to the same organization (passed with `organization_id`, or default).
+         * @param paymentMethodId The UUID of payment method for this project. The payment method and the project need to belong to the same organization (passed with `organization_id`, or default).
          * 
          * @return builder
          * 
@@ -235,8 +224,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentMethodId The UUID of payment method for this project. The payment method and the
-         * project need to belong to the same organization (passed with `organization_id`, or default).
+         * @param paymentMethodId The UUID of payment method for this project. The payment method and the project need to belong to the same organization (passed with `organization_id`, or default).
          * 
          * @return builder
          * 

@@ -19,7 +19,8 @@ Object.defineProperty(exports, "authToken", {
 });
 
 /**
- * API Consumer Key available under My Apps section in developer portal
+ * API Consumer Key available under "My Apps" in developer portal. This argument can also be specified with the
+ * `EQUINIX_API_CLIENTID` shell environment variable.
  */
 export declare const clientId: string | undefined;
 Object.defineProperty(exports, "clientId", {
@@ -30,7 +31,8 @@ Object.defineProperty(exports, "clientId", {
 });
 
 /**
- * API Consumer secret available under My Apps section in developer portal
+ * API Consumer secret available under "My Apps" in developer portal. This argument can also be specified with the
+ * `EQUINIX_API_CLIENTSECRET` shell environment variable.
  */
 export declare const clientSecret: string | undefined;
 Object.defineProperty(exports, "clientSecret", {
@@ -41,7 +43,8 @@ Object.defineProperty(exports, "clientSecret", {
 });
 
 /**
- * The Equinix API base URL to point out desired environment. Defaults to https://api.equinix.com
+ * The Equinix API base URL to point out desired environment. This argument can also be specified with the
+ * `EQUINIX_API_ENDPOINT` shell environment variable. (Defaults to `https://api.equinix.com`)
  */
 export declare const endpoint: string | undefined;
 Object.defineProperty(exports, "endpoint", {
@@ -52,7 +55,7 @@ Object.defineProperty(exports, "endpoint", {
 });
 
 /**
- * Maximum number of retries.
+ * Maximum number of retries in case of network failure.
  */
 export declare const maxRetries: number | undefined;
 Object.defineProperty(exports, "maxRetries", {
@@ -75,7 +78,7 @@ Object.defineProperty(exports, "maxRetryWaitSeconds", {
 
 /**
  * The duration of time, in seconds, that the Equinix Platform API Client should wait before canceling an API request.
- * Defaults to 30
+ * Canceled requests may still result in provisioned resources. (Defaults to `30`)
  */
 export declare const requestTimeout: number | undefined;
 Object.defineProperty(exports, "requestTimeout", {
@@ -86,7 +89,8 @@ Object.defineProperty(exports, "requestTimeout", {
 });
 
 /**
- * The maximum number of records in a single response for REST queries that produce paginated responses
+ * The maximum number of records in a single response for REST queries that produce paginated responses. (Default is client
+ * specific)
  */
 export declare const responseMaxPageSize: number | undefined;
 Object.defineProperty(exports, "responseMaxPageSize", {
@@ -97,7 +101,9 @@ Object.defineProperty(exports, "responseMaxPageSize", {
 });
 
 /**
- * API token from the developer sandbox
+ * API tokens are generated from API Consumer clients using the [OAuth2
+ * API](https://developer.equinix.com/dev-docs/fabric/getting-started/getting-access-token#request-access-and-refresh-tokens).
+ * This argument can also be specified with the `EQUINIX_API_TOKEN` shell environment variable.
  */
 export declare const token: string | undefined;
 Object.defineProperty(exports, "token", {

@@ -32,16 +32,14 @@ public final class GetMetroCapacityArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Minimum number of devices that must be available in selected location.
-     * Default is `1`.
+     * Minimum number of devices that must be available in selected location. Default is `1`.
      * 
      */
     @Import(name="quantity")
     private @Nullable Output<Integer> quantity;
 
     /**
-     * @return Minimum number of devices that must be available in selected location.
-     * Default is `1`.
+     * @return Minimum number of devices that must be available in selected location. Default is `1`.
      * 
      */
     public Optional<Output<Integer>> quantity() {
@@ -95,8 +93,7 @@ public final class GetMetroCapacityArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param quantity Minimum number of devices that must be available in selected location.
-         * Default is `1`.
+         * @param quantity Minimum number of devices that must be available in selected location. Default is `1`.
          * 
          * @return builder
          * 
@@ -107,8 +104,7 @@ public final class GetMetroCapacityArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param quantity Minimum number of devices that must be available in selected location.
-         * Default is `1`.
+         * @param quantity Minimum number of devices that must be available in selected location. Default is `1`.
          * 
          * @return builder
          * 

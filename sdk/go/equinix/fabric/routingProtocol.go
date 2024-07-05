@@ -16,8 +16,8 @@ import (
 // Fabric V4 API compatible resource allows creation and management of Equinix Fabric connection
 //
 // Additional documentation:
-// * Getting Started: <https://docs.equinix.com/en-us/Content/Interconnection/FCR/connections/FCR-connect-azureQC.htm#ConfigureRoutingDetailsintheFabricPortal>
-// * API: <https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols>
+// * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/connections/FCR-connect-azureQC.htm#ConfigureRoutingDetailsintheFabricPortal
+// * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
 //
 // ## Example Usage
 // ```go
@@ -58,13 +58,13 @@ type RoutingProtocol struct {
 	pulumi.CustomResourceState
 
 	// Bidirectional Forwarding Detection
-	Bfd RoutingProtocolBfdPtrOutput `pulumi:"bfd"`
+	Bfd RoutingProtocolBfdOutput `pulumi:"bfd"`
 	// BGP authorization key
-	BgpAuthKey pulumi.StringPtrOutput `pulumi:"bgpAuthKey"`
+	BgpAuthKey pulumi.StringOutput `pulumi:"bgpAuthKey"`
 	// Routing Protocol BGP IPv4
-	BgpIpv4 RoutingProtocolBgpIpv4PtrOutput `pulumi:"bgpIpv4"`
+	BgpIpv4 RoutingProtocolBgpIpv4Output `pulumi:"bgpIpv4"`
 	// Routing Protocol BGP IPv6
-	BgpIpv6 RoutingProtocolBgpIpv6PtrOutput `pulumi:"bgpIpv6"`
+	BgpIpv6 RoutingProtocolBgpIpv6Output `pulumi:"bgpIpv6"`
 	// Captures Routing Protocol lifecycle change information
 	ChangeLogs RoutingProtocolChangeLogArrayOutput `pulumi:"changeLogs"`
 	// Routing Protocol configuration Changes
@@ -72,13 +72,13 @@ type RoutingProtocol struct {
 	// Connection URI associated with Routing Protocol
 	ConnectionUuid pulumi.StringOutput `pulumi:"connectionUuid"`
 	// Customer-provided ASN
-	CustomerAsn pulumi.IntPtrOutput `pulumi:"customerAsn"`
+	CustomerAsn pulumi.IntOutput `pulumi:"customerAsn"`
 	// Customer-provided Fabric Routing Protocol description
-	Description pulumi.StringPtrOutput `pulumi:"description"`
+	Description pulumi.StringOutput `pulumi:"description"`
 	// Routing Protocol Direct IPv4
-	DirectIpv4 RoutingProtocolDirectIpv4PtrOutput `pulumi:"directIpv4"`
+	DirectIpv4 RoutingProtocolDirectIpv4Output `pulumi:"directIpv4"`
 	// Routing Protocol Direct IPv6
-	DirectIpv6 RoutingProtocolDirectIpv6PtrOutput `pulumi:"directIpv6"`
+	DirectIpv6 RoutingProtocolDirectIpv6Output `pulumi:"directIpv6"`
 	// Equinix ASN
 	EquinixAsn pulumi.IntOutput `pulumi:"equinixAsn"`
 	// Routing Protocol URI information
@@ -90,7 +90,7 @@ type RoutingProtocol struct {
 	// Routing Protocol overall state
 	State pulumi.StringOutput `pulumi:"state"`
 	// Defines the routing protocol type like BGP or DIRECT
-	Type pulumi.StringPtrOutput `pulumi:"type"`
+	Type pulumi.StringOutput `pulumi:"type"`
 	// Equinix-assigned routing protocol identifier
 	Uuid pulumi.StringOutput `pulumi:"uuid"`
 }
@@ -352,23 +352,23 @@ func (o RoutingProtocolOutput) ToRoutingProtocolOutputWithContext(ctx context.Co
 }
 
 // Bidirectional Forwarding Detection
-func (o RoutingProtocolOutput) Bfd() RoutingProtocolBfdPtrOutput {
-	return o.ApplyT(func(v *RoutingProtocol) RoutingProtocolBfdPtrOutput { return v.Bfd }).(RoutingProtocolBfdPtrOutput)
+func (o RoutingProtocolOutput) Bfd() RoutingProtocolBfdOutput {
+	return o.ApplyT(func(v *RoutingProtocol) RoutingProtocolBfdOutput { return v.Bfd }).(RoutingProtocolBfdOutput)
 }
 
 // BGP authorization key
-func (o RoutingProtocolOutput) BgpAuthKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RoutingProtocol) pulumi.StringPtrOutput { return v.BgpAuthKey }).(pulumi.StringPtrOutput)
+func (o RoutingProtocolOutput) BgpAuthKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *RoutingProtocol) pulumi.StringOutput { return v.BgpAuthKey }).(pulumi.StringOutput)
 }
 
 // Routing Protocol BGP IPv4
-func (o RoutingProtocolOutput) BgpIpv4() RoutingProtocolBgpIpv4PtrOutput {
-	return o.ApplyT(func(v *RoutingProtocol) RoutingProtocolBgpIpv4PtrOutput { return v.BgpIpv4 }).(RoutingProtocolBgpIpv4PtrOutput)
+func (o RoutingProtocolOutput) BgpIpv4() RoutingProtocolBgpIpv4Output {
+	return o.ApplyT(func(v *RoutingProtocol) RoutingProtocolBgpIpv4Output { return v.BgpIpv4 }).(RoutingProtocolBgpIpv4Output)
 }
 
 // Routing Protocol BGP IPv6
-func (o RoutingProtocolOutput) BgpIpv6() RoutingProtocolBgpIpv6PtrOutput {
-	return o.ApplyT(func(v *RoutingProtocol) RoutingProtocolBgpIpv6PtrOutput { return v.BgpIpv6 }).(RoutingProtocolBgpIpv6PtrOutput)
+func (o RoutingProtocolOutput) BgpIpv6() RoutingProtocolBgpIpv6Output {
+	return o.ApplyT(func(v *RoutingProtocol) RoutingProtocolBgpIpv6Output { return v.BgpIpv6 }).(RoutingProtocolBgpIpv6Output)
 }
 
 // Captures Routing Protocol lifecycle change information
@@ -387,23 +387,23 @@ func (o RoutingProtocolOutput) ConnectionUuid() pulumi.StringOutput {
 }
 
 // Customer-provided ASN
-func (o RoutingProtocolOutput) CustomerAsn() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *RoutingProtocol) pulumi.IntPtrOutput { return v.CustomerAsn }).(pulumi.IntPtrOutput)
+func (o RoutingProtocolOutput) CustomerAsn() pulumi.IntOutput {
+	return o.ApplyT(func(v *RoutingProtocol) pulumi.IntOutput { return v.CustomerAsn }).(pulumi.IntOutput)
 }
 
 // Customer-provided Fabric Routing Protocol description
-func (o RoutingProtocolOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RoutingProtocol) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+func (o RoutingProtocolOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *RoutingProtocol) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
 // Routing Protocol Direct IPv4
-func (o RoutingProtocolOutput) DirectIpv4() RoutingProtocolDirectIpv4PtrOutput {
-	return o.ApplyT(func(v *RoutingProtocol) RoutingProtocolDirectIpv4PtrOutput { return v.DirectIpv4 }).(RoutingProtocolDirectIpv4PtrOutput)
+func (o RoutingProtocolOutput) DirectIpv4() RoutingProtocolDirectIpv4Output {
+	return o.ApplyT(func(v *RoutingProtocol) RoutingProtocolDirectIpv4Output { return v.DirectIpv4 }).(RoutingProtocolDirectIpv4Output)
 }
 
 // Routing Protocol Direct IPv6
-func (o RoutingProtocolOutput) DirectIpv6() RoutingProtocolDirectIpv6PtrOutput {
-	return o.ApplyT(func(v *RoutingProtocol) RoutingProtocolDirectIpv6PtrOutput { return v.DirectIpv6 }).(RoutingProtocolDirectIpv6PtrOutput)
+func (o RoutingProtocolOutput) DirectIpv6() RoutingProtocolDirectIpv6Output {
+	return o.ApplyT(func(v *RoutingProtocol) RoutingProtocolDirectIpv6Output { return v.DirectIpv6 }).(RoutingProtocolDirectIpv6Output)
 }
 
 // Equinix ASN
@@ -432,8 +432,8 @@ func (o RoutingProtocolOutput) State() pulumi.StringOutput {
 }
 
 // Defines the routing protocol type like BGP or DIRECT
-func (o RoutingProtocolOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RoutingProtocol) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
+func (o RoutingProtocolOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *RoutingProtocol) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
 // Equinix-assigned routing protocol identifier

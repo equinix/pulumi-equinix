@@ -12,7 +12,7 @@ namespace Pulumi.Equinix.Metal
     public static class GetFacility
     {
         /// <summary>
-        /// &gt; **Deprecated** Use `equinix.metal.getMetro` instead.  For more information, refer to the facility to metro migration guide.
+        /// &gt; **Deprecated** Use `equinix.metal.getMetro` instead. For more information, refer to the facility to metro migration guide.
         /// 
         /// Provides an Equinix Metal facility datasource.
         /// 
@@ -42,7 +42,7 @@ namespace Pulumi.Equinix.Metal
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFacilityResult>("equinix:metal/getFacility:getFacility", args ?? new GetFacilityArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **Deprecated** Use `equinix.metal.getMetro` instead.  For more information, refer to the facility to metro migration guide.
+        /// &gt; **Deprecated** Use `equinix.metal.getMetro` instead. For more information, refer to the facility to metro migration guide.
         /// 
         /// Provides an Equinix Metal facility datasource.
         /// 
@@ -97,8 +97,7 @@ namespace Pulumi.Equinix.Metal
         private List<string>? _featuresRequireds;
 
         /// <summary>
-        /// Set of feature strings that the facility must have. Some
-        /// possible values are `baremetal`, `ibx`, `storage`, `global_ipv4`, `backend_transfer`, `layer_2`.
+        /// Set of feature strings that the facility must have. Some possible values are `baremetal`, `ibx`, `storage`, `global_ipv4`, `backend_transfer`, `layer_2`.
         /// </summary>
         public List<string> FeaturesRequireds
         {
@@ -136,8 +135,7 @@ namespace Pulumi.Equinix.Metal
         private InputList<string>? _featuresRequireds;
 
         /// <summary>
-        /// Set of feature strings that the facility must have. Some
-        /// possible values are `baremetal`, `ibx`, `storage`, `global_ipv4`, `backend_transfer`, `layer_2`.
+        /// Set of feature strings that the facility must have. Some possible values are `baremetal`, `ibx`, `storage`, `global_ipv4`, `backend_transfer`, `layer_2`.
         /// </summary>
         public InputList<string> FeaturesRequireds
         {

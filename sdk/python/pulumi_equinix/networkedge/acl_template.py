@@ -24,15 +24,13 @@ class AclTemplateArgs:
                  project_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AclTemplate resource.
-        :param pulumi.Input[Sequence[pulumi.Input['AclTemplateInboundRuleArgs']]] inbound_rules: One or more rules to specify allowed inbound traffic.
-               Rules are ordered, matching traffic rule stops processing subsequent ones.
+        :param pulumi.Input[Sequence[pulumi.Input['AclTemplateInboundRuleArgs']]] inbound_rules: One or more rules to specify allowed inbound traffic. Rules are ordered, matching traffic rule stops processing subsequent ones.
                
                The `inbound_rule` block has below fields:
         :param pulumi.Input[str] description: Inbound rule description, up to 200 characters.
         :param pulumi.Input[str] metro_code: ACL template location metro code.
         :param pulumi.Input[str] name: ACL template name.
-        :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the acl template is scoped to.If you
-               leave it out, the ACL template will be created under the default project id of your organization.
+        :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the acl template is scoped to.If you leave it out, the ACL template will be created under the default project id of your organization.
         """
         pulumi.set(__self__, "inbound_rules", inbound_rules)
         if description is not None:
@@ -51,8 +49,7 @@ class AclTemplateArgs:
     @pulumi.getter(name="inboundRules")
     def inbound_rules(self) -> pulumi.Input[Sequence[pulumi.Input['AclTemplateInboundRuleArgs']]]:
         """
-        One or more rules to specify allowed inbound traffic.
-        Rules are ordered, matching traffic rule stops processing subsequent ones.
+        One or more rules to specify allowed inbound traffic. Rules are ordered, matching traffic rule stops processing subsequent ones.
 
         The `inbound_rule` block has below fields:
         """
@@ -76,13 +73,11 @@ class AclTemplateArgs:
 
     @property
     @pulumi.getter(name="metroCode")
+    @_utilities.deprecated("""Metro Code is no longer required""")
     def metro_code(self) -> Optional[pulumi.Input[str]]:
         """
         ACL template location metro code.
         """
-        warnings.warn("""Metro Code is no longer required""", DeprecationWarning)
-        pulumi.log.warn("""metro_code is deprecated: Metro Code is no longer required""")
-
         return pulumi.get(self, "metro_code")
 
     @metro_code.setter
@@ -105,8 +100,7 @@ class AclTemplateArgs:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique Identifier for the project resource where the acl template is scoped to.If you
-        leave it out, the ACL template will be created under the default project id of your organization.
+        Unique Identifier for the project resource where the acl template is scoped to.If you leave it out, the ACL template will be created under the default project id of your organization.
         """
         return pulumi.get(self, "project_id")
 
@@ -130,18 +124,15 @@ class _AclTemplateState:
         """
         Input properties used for looking up and filtering AclTemplate resources.
         :param pulumi.Input[str] description: Inbound rule description, up to 200 characters.
-        :param pulumi.Input[str] device_acl_status: Status of ACL template provisioning process, where template was applied.
-               One of `PROVISIONING`, `PROVISIONED`.
+        :param pulumi.Input[str] device_acl_status: Status of ACL template provisioning process, where template was applied. One of `PROVISIONING`, `PROVISIONED`.
         :param pulumi.Input[Sequence[pulumi.Input['AclTemplateDeviceDetailArgs']]] device_details: List of the devices where the ACL template is applied.
         :param pulumi.Input[str] device_id: (Deprecated) Identifier of a network device where template was applied.
-        :param pulumi.Input[Sequence[pulumi.Input['AclTemplateInboundRuleArgs']]] inbound_rules: One or more rules to specify allowed inbound traffic.
-               Rules are ordered, matching traffic rule stops processing subsequent ones.
+        :param pulumi.Input[Sequence[pulumi.Input['AclTemplateInboundRuleArgs']]] inbound_rules: One or more rules to specify allowed inbound traffic. Rules are ordered, matching traffic rule stops processing subsequent ones.
                
                The `inbound_rule` block has below fields:
         :param pulumi.Input[str] metro_code: ACL template location metro code.
         :param pulumi.Input[str] name: ACL template name.
-        :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the acl template is scoped to.If you
-               leave it out, the ACL template will be created under the default project id of your organization.
+        :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the acl template is scoped to.If you leave it out, the ACL template will be created under the default project id of your organization.
         :param pulumi.Input[str] uuid: Device uuid.
         """
         if description is not None:
@@ -185,8 +176,7 @@ class _AclTemplateState:
     @pulumi.getter(name="deviceAclStatus")
     def device_acl_status(self) -> Optional[pulumi.Input[str]]:
         """
-        Status of ACL template provisioning process, where template was applied.
-        One of `PROVISIONING`, `PROVISIONED`.
+        Status of ACL template provisioning process, where template was applied. One of `PROVISIONING`, `PROVISIONED`.
         """
         return pulumi.get(self, "device_acl_status")
 
@@ -208,13 +198,11 @@ class _AclTemplateState:
 
     @property
     @pulumi.getter(name="deviceId")
+    @_utilities.deprecated("""Refer to device details get device information""")
     def device_id(self) -> Optional[pulumi.Input[str]]:
         """
         (Deprecated) Identifier of a network device where template was applied.
         """
-        warnings.warn("""Refer to device details get device information""", DeprecationWarning)
-        pulumi.log.warn("""device_id is deprecated: Refer to device details get device information""")
-
         return pulumi.get(self, "device_id")
 
     @device_id.setter
@@ -225,8 +213,7 @@ class _AclTemplateState:
     @pulumi.getter(name="inboundRules")
     def inbound_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AclTemplateInboundRuleArgs']]]]:
         """
-        One or more rules to specify allowed inbound traffic.
-        Rules are ordered, matching traffic rule stops processing subsequent ones.
+        One or more rules to specify allowed inbound traffic. Rules are ordered, matching traffic rule stops processing subsequent ones.
 
         The `inbound_rule` block has below fields:
         """
@@ -238,13 +225,11 @@ class _AclTemplateState:
 
     @property
     @pulumi.getter(name="metroCode")
+    @_utilities.deprecated("""Metro Code is no longer required""")
     def metro_code(self) -> Optional[pulumi.Input[str]]:
         """
         ACL template location metro code.
         """
-        warnings.warn("""Metro Code is no longer required""", DeprecationWarning)
-        pulumi.log.warn("""metro_code is deprecated: Metro Code is no longer required""")
-
         return pulumi.get(self, "metro_code")
 
     @metro_code.setter
@@ -267,8 +252,7 @@ class _AclTemplateState:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique Identifier for the project resource where the acl template is scoped to.If you
-        leave it out, the ACL template will be created under the default project id of your organization.
+        Unique Identifier for the project resource where the acl template is scoped to.If you leave it out, the ACL template will be created under the default project id of your organization.
         """
         return pulumi.get(self, "project_id")
 
@@ -301,11 +285,9 @@ class AclTemplate(pulumi.CustomResource):
                  project_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Resource `networkedge.AclTemplate` allows creation and management of
-        Equinix Network Edge device Access Control List templates.
+        Resource `networkedge.AclTemplate` allows creation and management of Equinix Network Edge device Access Control List templates.
 
-        Device ACL templates give possibility to define set of rules will allowed inbound
-        traffic. Templates can be assigned to the network devices.
+        Device ACL templates give possibility to define set of rules will allowed inbound traffic. Templates can be assigned to the network devices.
 
         ## Example Usage
         ```python
@@ -345,14 +327,12 @@ class AclTemplate(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Inbound rule description, up to 200 characters.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTemplateInboundRuleArgs']]]] inbound_rules: One or more rules to specify allowed inbound traffic.
-               Rules are ordered, matching traffic rule stops processing subsequent ones.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTemplateInboundRuleArgs']]]] inbound_rules: One or more rules to specify allowed inbound traffic. Rules are ordered, matching traffic rule stops processing subsequent ones.
                
                The `inbound_rule` block has below fields:
         :param pulumi.Input[str] metro_code: ACL template location metro code.
         :param pulumi.Input[str] name: ACL template name.
-        :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the acl template is scoped to.If you
-               leave it out, the ACL template will be created under the default project id of your organization.
+        :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the acl template is scoped to.If you leave it out, the ACL template will be created under the default project id of your organization.
         """
         ...
     @overload
@@ -361,11 +341,9 @@ class AclTemplate(pulumi.CustomResource):
                  args: AclTemplateArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Resource `networkedge.AclTemplate` allows creation and management of
-        Equinix Network Edge device Access Control List templates.
+        Resource `networkedge.AclTemplate` allows creation and management of Equinix Network Edge device Access Control List templates.
 
-        Device ACL templates give possibility to define set of rules will allowed inbound
-        traffic. Templates can be assigned to the network devices.
+        Device ACL templates give possibility to define set of rules will allowed inbound traffic. Templates can be assigned to the network devices.
 
         ## Example Usage
         ```python
@@ -469,18 +447,15 @@ class AclTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Inbound rule description, up to 200 characters.
-        :param pulumi.Input[str] device_acl_status: Status of ACL template provisioning process, where template was applied.
-               One of `PROVISIONING`, `PROVISIONED`.
+        :param pulumi.Input[str] device_acl_status: Status of ACL template provisioning process, where template was applied. One of `PROVISIONING`, `PROVISIONED`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTemplateDeviceDetailArgs']]]] device_details: List of the devices where the ACL template is applied.
         :param pulumi.Input[str] device_id: (Deprecated) Identifier of a network device where template was applied.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTemplateInboundRuleArgs']]]] inbound_rules: One or more rules to specify allowed inbound traffic.
-               Rules are ordered, matching traffic rule stops processing subsequent ones.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTemplateInboundRuleArgs']]]] inbound_rules: One or more rules to specify allowed inbound traffic. Rules are ordered, matching traffic rule stops processing subsequent ones.
                
                The `inbound_rule` block has below fields:
         :param pulumi.Input[str] metro_code: ACL template location metro code.
         :param pulumi.Input[str] name: ACL template name.
-        :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the acl template is scoped to.If you
-               leave it out, the ACL template will be created under the default project id of your organization.
+        :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the acl template is scoped to.If you leave it out, the ACL template will be created under the default project id of your organization.
         :param pulumi.Input[str] uuid: Device uuid.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -510,8 +485,7 @@ class AclTemplate(pulumi.CustomResource):
     @pulumi.getter(name="deviceAclStatus")
     def device_acl_status(self) -> pulumi.Output[str]:
         """
-        Status of ACL template provisioning process, where template was applied.
-        One of `PROVISIONING`, `PROVISIONED`.
+        Status of ACL template provisioning process, where template was applied. One of `PROVISIONING`, `PROVISIONED`.
         """
         return pulumi.get(self, "device_acl_status")
 
@@ -525,21 +499,18 @@ class AclTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="deviceId")
+    @_utilities.deprecated("""Refer to device details get device information""")
     def device_id(self) -> pulumi.Output[str]:
         """
         (Deprecated) Identifier of a network device where template was applied.
         """
-        warnings.warn("""Refer to device details get device information""", DeprecationWarning)
-        pulumi.log.warn("""device_id is deprecated: Refer to device details get device information""")
-
         return pulumi.get(self, "device_id")
 
     @property
     @pulumi.getter(name="inboundRules")
     def inbound_rules(self) -> pulumi.Output[Sequence['outputs.AclTemplateInboundRule']]:
         """
-        One or more rules to specify allowed inbound traffic.
-        Rules are ordered, matching traffic rule stops processing subsequent ones.
+        One or more rules to specify allowed inbound traffic. Rules are ordered, matching traffic rule stops processing subsequent ones.
 
         The `inbound_rule` block has below fields:
         """
@@ -547,13 +518,11 @@ class AclTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="metroCode")
+    @_utilities.deprecated("""Metro Code is no longer required""")
     def metro_code(self) -> pulumi.Output[Optional[str]]:
         """
         ACL template location metro code.
         """
-        warnings.warn("""Metro Code is no longer required""", DeprecationWarning)
-        pulumi.log.warn("""metro_code is deprecated: Metro Code is no longer required""")
-
         return pulumi.get(self, "metro_code")
 
     @property
@@ -568,8 +537,7 @@ class AclTemplate(pulumi.CustomResource):
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[str]:
         """
-        Unique Identifier for the project resource where the acl template is scoped to.If you
-        leave it out, the ACL template will be created under the default project id of your organization.
+        Unique Identifier for the project resource where the acl template is scoped to.If you leave it out, the ACL template will be created under the default project id of your organization.
         """
         return pulumi.get(self, "project_id")
 

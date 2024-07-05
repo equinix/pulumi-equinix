@@ -18,16 +18,14 @@ public final class NetworkFileArgs extends com.pulumi.resources.ResourceArgs {
     public static final NetworkFileArgs Empty = new NetworkFileArgs();
 
     /**
-     * Boolean value that determines device licensing mode, i.e.,
-     * `bring your own license` or `subscription`.
+     * Boolean value that determines device licensing mode, i.e., `bring your own license` or `subscription`.
      * 
      */
     @Import(name="byol", required=true)
     private Output<Boolean> byol;
 
     /**
-     * @return Boolean value that determines device licensing mode, i.e.,
-     * `bring your own license` or `subscription`.
+     * @return Boolean value that determines device licensing mode, i.e., `bring your own license` or `subscription`.
      * 
      */
     public Output<Boolean> byol() {
@@ -110,16 +108,14 @@ public final class NetworkFileArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Boolean value that determines device management mode, i.e.,
-     * `self-managed` or `Equinix-managed`.
+     * Boolean value that determines device management mode, i.e., `self-managed` or `Equinix-managed`.
      * 
      */
     @Import(name="selfManaged", required=true)
     private Output<Boolean> selfManaged;
 
     /**
-     * @return Boolean value that determines device management mode, i.e.,
-     * `self-managed` or `Equinix-managed`.
+     * @return Boolean value that determines device management mode, i.e., `self-managed` or `Equinix-managed`.
      * 
      */
     public Output<Boolean> selfManaged() {
@@ -157,8 +153,7 @@ public final class NetworkFileArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param byol Boolean value that determines device licensing mode, i.e.,
-         * `bring your own license` or `subscription`.
+         * @param byol Boolean value that determines device licensing mode, i.e., `bring your own license` or `subscription`.
          * 
          * @return builder
          * 
@@ -169,8 +164,7 @@ public final class NetworkFileArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param byol Boolean value that determines device licensing mode, i.e.,
-         * `bring your own license` or `subscription`.
+         * @param byol Boolean value that determines device licensing mode, i.e., `bring your own license` or `subscription`.
          * 
          * @return builder
          * 
@@ -325,8 +319,7 @@ public final class NetworkFileArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param selfManaged Boolean value that determines device management mode, i.e.,
-         * `self-managed` or `Equinix-managed`.
+         * @param selfManaged Boolean value that determines device management mode, i.e., `self-managed` or `Equinix-managed`.
          * 
          * @return builder
          * 
@@ -337,8 +330,7 @@ public final class NetworkFileArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param selfManaged Boolean value that determines device management mode, i.e.,
-         * `self-managed` or `Equinix-managed`.
+         * @param selfManaged Boolean value that determines device management mode, i.e., `self-managed` or `Equinix-managed`.
          * 
          * @return builder
          * 

@@ -141,8 +141,7 @@ export interface GetPlansArgs {
      */
     filters?: inputs.metal.GetPlansFilter[];
     /**
-     * One or more attribute/direction pairs on which to sort results. If multiple
-     * sorts are provided, they will be applied in order
+     * One or more attribute/direction pairs on which to sort results. If multiple sorts are provided, they will be applied in order
      */
     sorts?: inputs.metal.GetPlansSort[];
 }
@@ -287,8 +286,7 @@ export interface GetPlansOutputArgs {
      */
     filters?: pulumi.Input<pulumi.Input<inputs.metal.GetPlansFilterArgs>[]>;
     /**
-     * One or more attribute/direction pairs on which to sort results. If multiple
-     * sorts are provided, they will be applied in order
+     * One or more attribute/direction pairs on which to sort results. If multiple sorts are provided, they will be applied in order
      */
     sorts?: pulumi.Input<pulumi.Input<inputs.metal.GetPlansSortArgs>[]>;
 }

@@ -25,8 +25,8 @@ import javax.annotation.Nullable;
  * 
  * To learn more about Layer 2 networking in Equinix Metal, refer to
  * 
- * * &lt;https://metal.equinix.com/developers/docs/networking/layer2/&gt;
- * * &lt;https://metal.equinix.com/developers/docs/networking/layer2-configs/&gt;
+ * * https://metal.equinix.com/developers/docs/networking/layer2/
+ * * https://metal.equinix.com/developers/docs/networking/layer2-configs/
  * 
  * ## Attribute Referece
  * 
@@ -86,36 +86,28 @@ public class PortVlanAttachment extends com.pulumi.resources.CustomResource {
         return this.deviceId;
     }
     /**
-     * Add port back to the bond when this resource is removed. Default is
-     * `false`.
+     * Add port back to the bond when this resource is removed. Default is `false`.
      * 
      */
     @Export(name="forceBond", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceBond;
 
     /**
-     * @return Add port back to the bond when this resource is removed. Default is
-     * `false`.
+     * @return Add port back to the bond when this resource is removed. Default is `false`.
      * 
      */
     public Output<Optional<Boolean>> forceBond() {
         return Codegen.optional(this.forceBond);
     }
     /**
-     * Mark this VLAN a native VLAN on the port. This can be used only if this
-     * assignment assigns second or further VLAN to the port. To ensure that this attachment is not first
-     * on a port, you can use `depends_on` pointing to another `equinix.metal.PortVlanAttachment`, just
-     * like in the layer2-individual example above.
+     * Mark this VLAN a native VLAN on the port. This can be used only if this assignment assigns second or further VLAN to the port. To ensure that this attachment is not first on a port, you can use `depends_on` pointing to another `equinix.metal.PortVlanAttachment`, just like in the layer2-individual example above.
      * 
      */
     @Export(name="native", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> native_;
 
     /**
-     * @return Mark this VLAN a native VLAN on the port. This can be used only if this
-     * assignment assigns second or further VLAN to the port. To ensure that this attachment is not first
-     * on a port, you can use `depends_on` pointing to another `equinix.metal.PortVlanAttachment`, just
-     * like in the layer2-individual example above.
+     * @return Mark this VLAN a native VLAN on the port. This can be used only if this assignment assigns second or further VLAN to the port. To ensure that this attachment is not first on a port, you can use `depends_on` pointing to another `equinix.metal.PortVlanAttachment`, just like in the layer2-individual example above.
      * 
      */
     public Output<Optional<Boolean>> native_() {

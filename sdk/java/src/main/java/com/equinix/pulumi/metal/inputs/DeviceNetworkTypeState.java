@@ -31,16 +31,14 @@ public final class DeviceNetworkTypeState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Network type to set. Must be one of `layer3`, `hybrid`, `hybrid-bonded`, `layer2-individual`
-     * and `layer2-bonded`.
+     * Network type to set. Must be one of `layer3`, `hybrid`, `hybrid-bonded`, `layer2-individual` and `layer2-bonded`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Network type to set. Must be one of `layer3`, `hybrid`, `hybrid-bonded`, `layer2-individual`
-     * and `layer2-bonded`.
+     * @return Network type to set. Must be one of `layer3`, `hybrid`, `hybrid-bonded`, `layer2-individual` and `layer2-bonded`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -94,8 +92,7 @@ public final class DeviceNetworkTypeState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param type Network type to set. Must be one of `layer3`, `hybrid`, `hybrid-bonded`, `layer2-individual`
-         * and `layer2-bonded`.
+         * @param type Network type to set. Must be one of `layer3`, `hybrid`, `hybrid-bonded`, `layer2-individual` and `layer2-bonded`.
          * 
          * @return builder
          * 
@@ -106,8 +103,7 @@ public final class DeviceNetworkTypeState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param type Network type to set. Must be one of `layer3`, `hybrid`, `hybrid-bonded`, `layer2-individual`
-         * and `layer2-bonded`.
+         * @param type Network type to set. Must be one of `layer3`, `hybrid`, `hybrid-bonded`, `layer2-individual` and `layer2-bonded`.
          * 
          * @return builder
          * 

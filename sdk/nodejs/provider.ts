@@ -30,19 +30,24 @@ export class Provider extends pulumi.ProviderResource {
      */
     public readonly authToken!: pulumi.Output<string | undefined>;
     /**
-     * API Consumer Key available under My Apps section in developer portal
+     * API Consumer Key available under "My Apps" in developer portal. This argument can also be specified with the
+     * `EQUINIX_API_CLIENTID` shell environment variable.
      */
     public readonly clientId!: pulumi.Output<string | undefined>;
     /**
-     * API Consumer secret available under My Apps section in developer portal
+     * API Consumer secret available under "My Apps" in developer portal. This argument can also be specified with the
+     * `EQUINIX_API_CLIENTSECRET` shell environment variable.
      */
     public readonly clientSecret!: pulumi.Output<string | undefined>;
     /**
-     * The Equinix API base URL to point out desired environment. Defaults to https://api.equinix.com
+     * The Equinix API base URL to point out desired environment. This argument can also be specified with the
+     * `EQUINIX_API_ENDPOINT` shell environment variable. (Defaults to `https://api.equinix.com`)
      */
     public readonly endpoint!: pulumi.Output<string | undefined>;
     /**
-     * API token from the developer sandbox
+     * API tokens are generated from API Consumer clients using the [OAuth2
+     * API](https://developer.equinix.com/dev-docs/fabric/getting-started/getting-access-token#request-access-and-refresh-tokens).
+     * This argument can also be specified with the `EQUINIX_API_TOKEN` shell environment variable.
      */
     public readonly token!: pulumi.Output<string | undefined>;
 
@@ -81,19 +86,22 @@ export interface ProviderArgs {
      */
     authToken?: pulumi.Input<string>;
     /**
-     * API Consumer Key available under My Apps section in developer portal
+     * API Consumer Key available under "My Apps" in developer portal. This argument can also be specified with the
+     * `EQUINIX_API_CLIENTID` shell environment variable.
      */
     clientId?: pulumi.Input<string>;
     /**
-     * API Consumer secret available under My Apps section in developer portal
+     * API Consumer secret available under "My Apps" in developer portal. This argument can also be specified with the
+     * `EQUINIX_API_CLIENTSECRET` shell environment variable.
      */
     clientSecret?: pulumi.Input<string>;
     /**
-     * The Equinix API base URL to point out desired environment. Defaults to https://api.equinix.com
+     * The Equinix API base URL to point out desired environment. This argument can also be specified with the
+     * `EQUINIX_API_ENDPOINT` shell environment variable. (Defaults to `https://api.equinix.com`)
      */
     endpoint?: pulumi.Input<string>;
     /**
-     * Maximum number of retries.
+     * Maximum number of retries in case of network failure.
      */
     maxRetries?: pulumi.Input<number>;
     /**
@@ -102,15 +110,18 @@ export interface ProviderArgs {
     maxRetryWaitSeconds?: pulumi.Input<number>;
     /**
      * The duration of time, in seconds, that the Equinix Platform API Client should wait before canceling an API request.
-     * Defaults to 30
+     * Canceled requests may still result in provisioned resources. (Defaults to `30`)
      */
     requestTimeout?: pulumi.Input<number>;
     /**
-     * The maximum number of records in a single response for REST queries that produce paginated responses
+     * The maximum number of records in a single response for REST queries that produce paginated responses. (Default is client
+     * specific)
      */
     responseMaxPageSize?: pulumi.Input<number>;
     /**
-     * API token from the developer sandbox
+     * API tokens are generated from API Consumer clients using the [OAuth2
+     * API](https://developer.equinix.com/dev-docs/fabric/getting-started/getting-access-token#request-access-and-refresh-tokens).
+     * This argument can also be specified with the `EQUINIX_API_TOKEN` shell environment variable.
      */
     token?: pulumi.Input<string>;
 }

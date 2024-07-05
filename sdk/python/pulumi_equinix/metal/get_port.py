@@ -205,8 +205,7 @@ def get_port(device_id: Optional[str] = None,
              port_id: Optional[str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPortResult:
     """
-    Use this data source to read ports of existing devices. You can read port by either its UUID,
-    or by a device UUID and port name.
+    Use this data source to read ports of existing devices. You can read port by either its UUID, or by a device UUID and port name.
 
     ## Example Usage
 
@@ -264,8 +263,7 @@ def get_port_output(device_id: Optional[pulumi.Input[Optional[str]]] = None,
                     port_id: Optional[pulumi.Input[Optional[str]]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPortResult]:
     """
-    Use this data source to read ports of existing devices. You can read port by either its UUID,
-    or by a device UUID and port name.
+    Use this data source to read ports of existing devices. You can read port by either its UUID, or by a device UUID and port name.
 
     ## Example Usage
 

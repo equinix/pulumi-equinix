@@ -11,12 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides an Equinix Metal project resource to allow you manage devices
-// in your projects.
+// Provides an Equinix Metal project resource to allow you manage devices in your projects.
 //
-// > **NOTE:** Keep in mind that Equinix Metal invoicing is per project, so creating many
-// `metal.Project` resources will affect the rendered invoice. If you want to keep your
-// Equinix Metal bill simple and easy to review, please re-use your existing projects.
+// > **NOTE:** Keep in mind that Equinix Metal invoicing is per project, so creating many `metal.Project` resources will affect the rendered invoice. If you want to keep your Equinix Metal bill simple and easy to review, please re-use your existing projects.
 //
 // ## Example Usage
 // ```go
@@ -66,18 +63,15 @@ type Project struct {
 	BackendTransfer pulumi.BoolOutput `pulumi:"backendTransfer"`
 	// Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
 	//
-	// > **NOTE:** Once you set the BGP config in a project, it can't be removed (due to a limitation in
-	// the Equinix Metal API). It can be updated.
+	// > **NOTE:** Once you set the BGP config in a project, it can't be removed (due to a limitation in the Equinix Metal API). It can be updated.
 	BgpConfig ProjectBgpConfigPtrOutput `pulumi:"bgpConfig"`
 	// The timestamp for when the project was created.
 	Created pulumi.StringOutput `pulumi:"created"`
-	// The name of the project.  The maximum length is 80 characters
+	// The name of the project. The maximum length is 80 characters
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The UUID of organization under which you want to create the project. If you
-	// leave it out, the project will be created under your the default organization of your account.
+	// The UUID of organization under which you want to create the project. If you leave it out, the project will be created under your the default organization of your account.
 	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
-	// The UUID of payment method for this project. The payment method and the
-	// project need to belong to the same organization (passed with `organizationId`, or default).
+	// The UUID of payment method for this project. The payment method and the project need to belong to the same organization (passed with `organizationId`, or default).
 	PaymentMethodId pulumi.StringOutput `pulumi:"paymentMethodId"`
 	// The timestamp for the last time the project was updated.
 	Updated pulumi.StringOutput `pulumi:"updated"`
@@ -117,18 +111,15 @@ type projectState struct {
 	BackendTransfer *bool `pulumi:"backendTransfer"`
 	// Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
 	//
-	// > **NOTE:** Once you set the BGP config in a project, it can't be removed (due to a limitation in
-	// the Equinix Metal API). It can be updated.
+	// > **NOTE:** Once you set the BGP config in a project, it can't be removed (due to a limitation in the Equinix Metal API). It can be updated.
 	BgpConfig *ProjectBgpConfig `pulumi:"bgpConfig"`
 	// The timestamp for when the project was created.
 	Created *string `pulumi:"created"`
-	// The name of the project.  The maximum length is 80 characters
+	// The name of the project. The maximum length is 80 characters
 	Name *string `pulumi:"name"`
-	// The UUID of organization under which you want to create the project. If you
-	// leave it out, the project will be created under your the default organization of your account.
+	// The UUID of organization under which you want to create the project. If you leave it out, the project will be created under your the default organization of your account.
 	OrganizationId *string `pulumi:"organizationId"`
-	// The UUID of payment method for this project. The payment method and the
-	// project need to belong to the same organization (passed with `organizationId`, or default).
+	// The UUID of payment method for this project. The payment method and the project need to belong to the same organization (passed with `organizationId`, or default).
 	PaymentMethodId *string `pulumi:"paymentMethodId"`
 	// The timestamp for the last time the project was updated.
 	Updated *string `pulumi:"updated"`
@@ -139,18 +130,15 @@ type ProjectState struct {
 	BackendTransfer pulumi.BoolPtrInput
 	// Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
 	//
-	// > **NOTE:** Once you set the BGP config in a project, it can't be removed (due to a limitation in
-	// the Equinix Metal API). It can be updated.
+	// > **NOTE:** Once you set the BGP config in a project, it can't be removed (due to a limitation in the Equinix Metal API). It can be updated.
 	BgpConfig ProjectBgpConfigPtrInput
 	// The timestamp for when the project was created.
 	Created pulumi.StringPtrInput
-	// The name of the project.  The maximum length is 80 characters
+	// The name of the project. The maximum length is 80 characters
 	Name pulumi.StringPtrInput
-	// The UUID of organization under which you want to create the project. If you
-	// leave it out, the project will be created under your the default organization of your account.
+	// The UUID of organization under which you want to create the project. If you leave it out, the project will be created under your the default organization of your account.
 	OrganizationId pulumi.StringPtrInput
-	// The UUID of payment method for this project. The payment method and the
-	// project need to belong to the same organization (passed with `organizationId`, or default).
+	// The UUID of payment method for this project. The payment method and the project need to belong to the same organization (passed with `organizationId`, or default).
 	PaymentMethodId pulumi.StringPtrInput
 	// The timestamp for the last time the project was updated.
 	Updated pulumi.StringPtrInput
@@ -165,16 +153,13 @@ type projectArgs struct {
 	BackendTransfer *bool `pulumi:"backendTransfer"`
 	// Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
 	//
-	// > **NOTE:** Once you set the BGP config in a project, it can't be removed (due to a limitation in
-	// the Equinix Metal API). It can be updated.
+	// > **NOTE:** Once you set the BGP config in a project, it can't be removed (due to a limitation in the Equinix Metal API). It can be updated.
 	BgpConfig *ProjectBgpConfig `pulumi:"bgpConfig"`
-	// The name of the project.  The maximum length is 80 characters
+	// The name of the project. The maximum length is 80 characters
 	Name *string `pulumi:"name"`
-	// The UUID of organization under which you want to create the project. If you
-	// leave it out, the project will be created under your the default organization of your account.
+	// The UUID of organization under which you want to create the project. If you leave it out, the project will be created under your the default organization of your account.
 	OrganizationId *string `pulumi:"organizationId"`
-	// The UUID of payment method for this project. The payment method and the
-	// project need to belong to the same organization (passed with `organizationId`, or default).
+	// The UUID of payment method for this project. The payment method and the project need to belong to the same organization (passed with `organizationId`, or default).
 	PaymentMethodId *string `pulumi:"paymentMethodId"`
 }
 
@@ -184,16 +169,13 @@ type ProjectArgs struct {
 	BackendTransfer pulumi.BoolPtrInput
 	// Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
 	//
-	// > **NOTE:** Once you set the BGP config in a project, it can't be removed (due to a limitation in
-	// the Equinix Metal API). It can be updated.
+	// > **NOTE:** Once you set the BGP config in a project, it can't be removed (due to a limitation in the Equinix Metal API). It can be updated.
 	BgpConfig ProjectBgpConfigPtrInput
-	// The name of the project.  The maximum length is 80 characters
+	// The name of the project. The maximum length is 80 characters
 	Name pulumi.StringPtrInput
-	// The UUID of organization under which you want to create the project. If you
-	// leave it out, the project will be created under your the default organization of your account.
+	// The UUID of organization under which you want to create the project. If you leave it out, the project will be created under your the default organization of your account.
 	OrganizationId pulumi.StringPtrInput
-	// The UUID of payment method for this project. The payment method and the
-	// project need to belong to the same organization (passed with `organizationId`, or default).
+	// The UUID of payment method for this project. The payment method and the project need to belong to the same organization (passed with `organizationId`, or default).
 	PaymentMethodId pulumi.StringPtrInput
 }
 
@@ -291,8 +273,7 @@ func (o ProjectOutput) BackendTransfer() pulumi.BoolOutput {
 
 // Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
 //
-// > **NOTE:** Once you set the BGP config in a project, it can't be removed (due to a limitation in
-// the Equinix Metal API). It can be updated.
+// > **NOTE:** Once you set the BGP config in a project, it can't be removed (due to a limitation in the Equinix Metal API). It can be updated.
 func (o ProjectOutput) BgpConfig() ProjectBgpConfigPtrOutput {
 	return o.ApplyT(func(v *Project) ProjectBgpConfigPtrOutput { return v.BgpConfig }).(ProjectBgpConfigPtrOutput)
 }
@@ -302,19 +283,17 @@ func (o ProjectOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.Created }).(pulumi.StringOutput)
 }
 
-// The name of the project.  The maximum length is 80 characters
+// The name of the project. The maximum length is 80 characters
 func (o ProjectOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The UUID of organization under which you want to create the project. If you
-// leave it out, the project will be created under your the default organization of your account.
+// The UUID of organization under which you want to create the project. If you leave it out, the project will be created under your the default organization of your account.
 func (o ProjectOutput) OrganizationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
 }
 
-// The UUID of payment method for this project. The payment method and the
-// project need to belong to the same organization (passed with `organizationId`, or default).
+// The UUID of payment method for this project. The payment method and the project need to belong to the same organization (passed with `organizationId`, or default).
 func (o ProjectOutput) PaymentMethodId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.PaymentMethodId }).(pulumi.StringOutput)
 }

@@ -49,16 +49,14 @@ public final class PortArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * UUID of a VLAN to assign as a native VLAN. It must be one of
-     * attached VLANs (from `vlan_ids` parameter).
+     * UUID of a VLAN to assign as a native VLAN. It must be one of attached VLANs (from `vlan_ids` parameter).
      * 
      */
     @Import(name="nativeVlanId")
     private @Nullable Output<String> nativeVlanId;
 
     /**
-     * @return UUID of a VLAN to assign as a native VLAN. It must be one of
-     * attached VLANs (from `vlan_ids` parameter).
+     * @return UUID of a VLAN to assign as a native VLAN. It must be one of attached VLANs (from `vlan_ids` parameter).
      * 
      */
     public Optional<Output<String>> nativeVlanId() {
@@ -96,16 +94,14 @@ public final class PortArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of VLAN UUIDs to attach to the port, valid only for L2 and Hybrid
-     * ports.
+     * List of VLAN UUIDs to attach to the port, valid only for L2 and Hybrid ports.
      * 
      */
     @Import(name="vlanIds")
     private @Nullable Output<List<String>> vlanIds;
 
     /**
-     * @return List of VLAN UUIDs to attach to the port, valid only for L2 and Hybrid
-     * ports.
+     * @return List of VLAN UUIDs to attach to the port, valid only for L2 and Hybrid ports.
      * 
      */
     public Optional<Output<List<String>>> vlanIds() {
@@ -113,16 +109,14 @@ public final class PortArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of VXLAN IDs to attach to the port, valid only for L2 and Hybrid
-     * ports.
+     * List of VXLAN IDs to attach to the port, valid only for L2 and Hybrid ports.
      * 
      */
     @Import(name="vxlanIds")
     private @Nullable Output<List<Integer>> vxlanIds;
 
     /**
-     * @return List of VXLAN IDs to attach to the port, valid only for L2 and Hybrid
-     * ports.
+     * @return List of VXLAN IDs to attach to the port, valid only for L2 and Hybrid ports.
      * 
      */
     public Optional<Output<List<Integer>>> vxlanIds() {
@@ -202,8 +196,7 @@ public final class PortArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nativeVlanId UUID of a VLAN to assign as a native VLAN. It must be one of
-         * attached VLANs (from `vlan_ids` parameter).
+         * @param nativeVlanId UUID of a VLAN to assign as a native VLAN. It must be one of attached VLANs (from `vlan_ids` parameter).
          * 
          * @return builder
          * 
@@ -214,8 +207,7 @@ public final class PortArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nativeVlanId UUID of a VLAN to assign as a native VLAN. It must be one of
-         * attached VLANs (from `vlan_ids` parameter).
+         * @param nativeVlanId UUID of a VLAN to assign as a native VLAN. It must be one of attached VLANs (from `vlan_ids` parameter).
          * 
          * @return builder
          * 
@@ -267,8 +259,7 @@ public final class PortArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vlanIds List of VLAN UUIDs to attach to the port, valid only for L2 and Hybrid
-         * ports.
+         * @param vlanIds List of VLAN UUIDs to attach to the port, valid only for L2 and Hybrid ports.
          * 
          * @return builder
          * 
@@ -279,8 +270,7 @@ public final class PortArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vlanIds List of VLAN UUIDs to attach to the port, valid only for L2 and Hybrid
-         * ports.
+         * @param vlanIds List of VLAN UUIDs to attach to the port, valid only for L2 and Hybrid ports.
          * 
          * @return builder
          * 
@@ -290,8 +280,7 @@ public final class PortArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vlanIds List of VLAN UUIDs to attach to the port, valid only for L2 and Hybrid
-         * ports.
+         * @param vlanIds List of VLAN UUIDs to attach to the port, valid only for L2 and Hybrid ports.
          * 
          * @return builder
          * 
@@ -301,8 +290,7 @@ public final class PortArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vxlanIds List of VXLAN IDs to attach to the port, valid only for L2 and Hybrid
-         * ports.
+         * @param vxlanIds List of VXLAN IDs to attach to the port, valid only for L2 and Hybrid ports.
          * 
          * @return builder
          * 
@@ -313,8 +301,7 @@ public final class PortArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vxlanIds List of VXLAN IDs to attach to the port, valid only for L2 and Hybrid
-         * ports.
+         * @param vxlanIds List of VXLAN IDs to attach to the port, valid only for L2 and Hybrid ports.
          * 
          * @return builder
          * 
@@ -324,8 +311,7 @@ public final class PortArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vxlanIds List of VXLAN IDs to attach to the port, valid only for L2 and Hybrid
-         * ports.
+         * @param vxlanIds List of VXLAN IDs to attach to the port, valid only for L2 and Hybrid ports.
          * 
          * @return builder
          * 

@@ -4,9 +4,11 @@
 package com.equinix.pulumi.fabric.inputs;
 
 import com.equinix.pulumi.fabric.inputs.GetServiceProfilesFilterArgs;
+import com.equinix.pulumi.fabric.inputs.GetServiceProfilesPaginationArgs;
 import com.equinix.pulumi.fabric.inputs.GetServiceProfilesSortArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -19,29 +21,59 @@ public final class GetServiceProfilesArgs extends com.pulumi.resources.InvokeArg
     public static final GetServiceProfilesArgs Empty = new GetServiceProfilesArgs();
 
     /**
-     * Service Profile Search Filter
+     * Optional boolean flag to indicate if the filters will be AND&#39;d together. Defaults to false
      * 
      */
-    @Import(name="filter")
-    private @Nullable Output<GetServiceProfilesFilterArgs> filter;
+    @Import(name="andFilters")
+    private @Nullable Output<Boolean> andFilters;
 
     /**
-     * @return Service Profile Search Filter
+     * @return Optional boolean flag to indicate if the filters will be AND&#39;d together. Defaults to false
      * 
      */
-    public Optional<Output<GetServiceProfilesFilterArgs>> filter() {
-        return Optional.ofNullable(this.filter);
+    public Optional<Output<Boolean>> andFilters() {
+        return Optional.ofNullable(this.andFilters);
     }
 
     /**
-     * Service Profile Sort criteria for Search Request response payload
+     * Filters for the Data Source Search Request (If and_filters is not set to true you cannot provide more than one filter block)
+     * 
+     */
+    @Import(name="filter", required=true)
+    private Output<GetServiceProfilesFilterArgs> filter;
+
+    /**
+     * @return Filters for the Data Source Search Request (If and_filters is not set to true you cannot provide more than one filter block)
+     * 
+     */
+    public Output<GetServiceProfilesFilterArgs> filter() {
+        return this.filter;
+    }
+
+    /**
+     * Pagination details for the Data Source Search Request
+     * 
+     */
+    @Import(name="pagination")
+    private @Nullable Output<GetServiceProfilesPaginationArgs> pagination;
+
+    /**
+     * @return Pagination details for the Data Source Search Request
+     * 
+     */
+    public Optional<Output<GetServiceProfilesPaginationArgs>> pagination() {
+        return Optional.ofNullable(this.pagination);
+    }
+
+    /**
+     * Filters for the Data Source Search Request
      * 
      */
     @Import(name="sort")
     private @Nullable Output<List<GetServiceProfilesSortArgs>> sort;
 
     /**
-     * @return Service Profile Sort criteria for Search Request response payload
+     * @return Filters for the Data Source Search Request
      * 
      */
     public Optional<Output<List<GetServiceProfilesSortArgs>>> sort() {
@@ -66,7 +98,9 @@ public final class GetServiceProfilesArgs extends com.pulumi.resources.InvokeArg
     private GetServiceProfilesArgs() {}
 
     private GetServiceProfilesArgs(GetServiceProfilesArgs $) {
+        this.andFilters = $.andFilters;
         this.filter = $.filter;
+        this.pagination = $.pagination;
         this.sort = $.sort;
         this.viewPoint = $.viewPoint;
     }
@@ -90,18 +124,39 @@ public final class GetServiceProfilesArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param filter Service Profile Search Filter
+         * @param andFilters Optional boolean flag to indicate if the filters will be AND&#39;d together. Defaults to false
          * 
          * @return builder
          * 
          */
-        public Builder filter(@Nullable Output<GetServiceProfilesFilterArgs> filter) {
+        public Builder andFilters(@Nullable Output<Boolean> andFilters) {
+            $.andFilters = andFilters;
+            return this;
+        }
+
+        /**
+         * @param andFilters Optional boolean flag to indicate if the filters will be AND&#39;d together. Defaults to false
+         * 
+         * @return builder
+         * 
+         */
+        public Builder andFilters(Boolean andFilters) {
+            return andFilters(Output.of(andFilters));
+        }
+
+        /**
+         * @param filter Filters for the Data Source Search Request (If and_filters is not set to true you cannot provide more than one filter block)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filter(Output<GetServiceProfilesFilterArgs> filter) {
             $.filter = filter;
             return this;
         }
 
         /**
-         * @param filter Service Profile Search Filter
+         * @param filter Filters for the Data Source Search Request (If and_filters is not set to true you cannot provide more than one filter block)
          * 
          * @return builder
          * 
@@ -111,7 +166,28 @@ public final class GetServiceProfilesArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param sort Service Profile Sort criteria for Search Request response payload
+         * @param pagination Pagination details for the Data Source Search Request
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pagination(@Nullable Output<GetServiceProfilesPaginationArgs> pagination) {
+            $.pagination = pagination;
+            return this;
+        }
+
+        /**
+         * @param pagination Pagination details for the Data Source Search Request
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pagination(GetServiceProfilesPaginationArgs pagination) {
+            return pagination(Output.of(pagination));
+        }
+
+        /**
+         * @param sort Filters for the Data Source Search Request
          * 
          * @return builder
          * 
@@ -122,7 +198,7 @@ public final class GetServiceProfilesArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param sort Service Profile Sort criteria for Search Request response payload
+         * @param sort Filters for the Data Source Search Request
          * 
          * @return builder
          * 
@@ -132,7 +208,7 @@ public final class GetServiceProfilesArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param sort Service Profile Sort criteria for Search Request response payload
+         * @param sort Filters for the Data Source Search Request
          * 
          * @return builder
          * 
@@ -163,6 +239,7 @@ public final class GetServiceProfilesArgs extends com.pulumi.resources.InvokeArg
         }
 
         public GetServiceProfilesArgs build() {
+            $.filter = Objects.requireNonNull($.filter, "expected parameter 'filter' to be non-null");
             return $;
         }
     }

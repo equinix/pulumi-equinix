@@ -28,7 +28,7 @@ namespace Pulumi.Equinix.Metal.Inputs
         public Input<string> Role { get; set; } = null!;
 
         /// <summary>
-        /// Connection speed -  Values must be in the format '&lt;number&gt;Mbps' or '&lt;number&gt;Gpbs', for example '100Mbps' or '50Gbps'.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
+        /// Connection speed - Values must be in the format '&lt;number&gt;Mbps' or '&lt;number&gt;Gpbs', for example '100Mbps' or '50Gbps'. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
         /// </summary>
         [Input("speed", required: true)]
         public Input<int> Speed { get; set; } = null!;
@@ -40,10 +40,10 @@ namespace Pulumi.Equinix.Metal.Inputs
         public Input<string> Status { get; set; } = null!;
 
         [Input("virtualCircuitIds", required: true)]
-        private InputList<object>? _virtualCircuitIds;
-        public InputList<object> VirtualCircuitIds
+        private InputList<string>? _virtualCircuitIds;
+        public InputList<string> VirtualCircuitIds
         {
-            get => _virtualCircuitIds ?? (_virtualCircuitIds = new InputList<object>());
+            get => _virtualCircuitIds ?? (_virtualCircuitIds = new InputList<string>());
             set => _virtualCircuitIds = value;
         }
 

@@ -15,10 +15,7 @@ import (
 
 // Provides a resource to create and manage blocks of reserved IP addresses in a project.
 //
-// When a user provisions first device in a metro, Equinix Metal API automatically allocates IPv6/56 and private IPv4/25 blocks.
-// The new device then gets IPv6 and private IPv4 addresses from those block. It also gets a public IPv4/31 address.
-// Every new device in the project and metro will automatically get IPv6 and private IPv4 addresses from these pre-allocated blocks.
-// The IPv6 and private IPv4 blocks can't be created, only imported. With this resource, it's possible to create either public IPv4 blocks or global IPv4 blocks.
+// When a user provisions first device in a metro, Equinix Metal API automatically allocates IPv6/56 and private IPv4/25 blocks. The new device then gets IPv6 and private IPv4 addresses from those block. It also gets a public IPv4/31 address. Every new device in the project and metro will automatically get IPv6 and private IPv4 addresses from these pre-allocated blocks. The IPv6 and private IPv4 blocks can't be created, only imported. With this resource, it's possible to create either public IPv4 blocks or global IPv4 blocks.
 //
 // Public blocks are allocated in a metro. Addresses from public blocks can only be assigned to devices in the metro. Public blocks can have mask from /24 (256 addresses) to /32 (1 address). If you create public block with this resource, you must fill the metro argument.
 //
@@ -93,17 +90,14 @@ type ReservedIpBlock struct {
 	CustomData   pulumi.StringPtrOutput `pulumi:"customData"`
 	// Arbitrary description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Facility where to allocate the public IP address block, makes sense only
-	// if type is `publicIpv4` and must be empty if type is `globalIpv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
+	// Facility where to allocate the public IP address block, makes sense only if type is `publicIpv4` and must be empty if type is `globalIpv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
 	Facility pulumi.StringPtrOutput `pulumi:"facility"`
 	Gateway  pulumi.StringOutput    `pulumi:"gateway"`
-	// Boolean flag whether addresses from a block are global (i.e. can be assigned in any
-	// metro).
+	// Boolean flag whether addresses from a block are global (i.e. can be assigned in any metro).
 	Global     pulumi.BoolOutput `pulumi:"global"`
 	Manageable pulumi.BoolOutput `pulumi:"manageable"`
 	Management pulumi.BoolOutput `pulumi:"management"`
-	// Metro where to allocate the public IP address block, makes sense only
-	// if type is `publicIpv4` and must be empty if type is `globalIpv4`. Conflicts with `facility`.
+	// Metro where to allocate the public IP address block, makes sense only if type is `publicIpv4` and must be empty if type is `globalIpv4`. Conflicts with `facility`.
 	Metro pulumi.StringPtrOutput `pulumi:"metro"`
 	// Mask in decimal notation, e.g. `255.255.255.0`.
 	Netmask pulumi.StringOutput `pulumi:"netmask"`
@@ -117,8 +111,7 @@ type ReservedIpBlock struct {
 	Quantity pulumi.IntOutput `pulumi:"quantity"`
 	// String list of tags.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
-	// One of `globalIpv4`, `publicIpv4`, or `vrf`. Defaults to `publicIpv4` for backward
-	// compatibility.
+	// One of `globalIpv4`, `publicIpv4`, or `vrf`. Defaults to `publicIpv4` for backward compatibility.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 	// Only valid and required when `type` is `vrf`. VRF ID for type=vrf reservations.
 	VrfId pulumi.StringPtrOutput `pulumi:"vrfId"`
@@ -169,17 +162,14 @@ type reservedIpBlockState struct {
 	CustomData   *string `pulumi:"customData"`
 	// Arbitrary description.
 	Description *string `pulumi:"description"`
-	// Facility where to allocate the public IP address block, makes sense only
-	// if type is `publicIpv4` and must be empty if type is `globalIpv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
+	// Facility where to allocate the public IP address block, makes sense only if type is `publicIpv4` and must be empty if type is `globalIpv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
 	Facility *string `pulumi:"facility"`
 	Gateway  *string `pulumi:"gateway"`
-	// Boolean flag whether addresses from a block are global (i.e. can be assigned in any
-	// metro).
+	// Boolean flag whether addresses from a block are global (i.e. can be assigned in any metro).
 	Global     *bool `pulumi:"global"`
 	Manageable *bool `pulumi:"manageable"`
 	Management *bool `pulumi:"management"`
-	// Metro where to allocate the public IP address block, makes sense only
-	// if type is `publicIpv4` and must be empty if type is `globalIpv4`. Conflicts with `facility`.
+	// Metro where to allocate the public IP address block, makes sense only if type is `publicIpv4` and must be empty if type is `globalIpv4`. Conflicts with `facility`.
 	Metro *string `pulumi:"metro"`
 	// Mask in decimal notation, e.g. `255.255.255.0`.
 	Netmask *string `pulumi:"netmask"`
@@ -193,8 +183,7 @@ type reservedIpBlockState struct {
 	Quantity *int `pulumi:"quantity"`
 	// String list of tags.
 	Tags []string `pulumi:"tags"`
-	// One of `globalIpv4`, `publicIpv4`, or `vrf`. Defaults to `publicIpv4` for backward
-	// compatibility.
+	// One of `globalIpv4`, `publicIpv4`, or `vrf`. Defaults to `publicIpv4` for backward compatibility.
 	Type *string `pulumi:"type"`
 	// Only valid and required when `type` is `vrf`. VRF ID for type=vrf reservations.
 	VrfId *string `pulumi:"vrfId"`
@@ -213,17 +202,14 @@ type ReservedIpBlockState struct {
 	CustomData   pulumi.StringPtrInput
 	// Arbitrary description.
 	Description pulumi.StringPtrInput
-	// Facility where to allocate the public IP address block, makes sense only
-	// if type is `publicIpv4` and must be empty if type is `globalIpv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
+	// Facility where to allocate the public IP address block, makes sense only if type is `publicIpv4` and must be empty if type is `globalIpv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
 	Facility pulumi.StringPtrInput
 	Gateway  pulumi.StringPtrInput
-	// Boolean flag whether addresses from a block are global (i.e. can be assigned in any
-	// metro).
+	// Boolean flag whether addresses from a block are global (i.e. can be assigned in any metro).
 	Global     pulumi.BoolPtrInput
 	Manageable pulumi.BoolPtrInput
 	Management pulumi.BoolPtrInput
-	// Metro where to allocate the public IP address block, makes sense only
-	// if type is `publicIpv4` and must be empty if type is `globalIpv4`. Conflicts with `facility`.
+	// Metro where to allocate the public IP address block, makes sense only if type is `publicIpv4` and must be empty if type is `globalIpv4`. Conflicts with `facility`.
 	Metro pulumi.StringPtrInput
 	// Mask in decimal notation, e.g. `255.255.255.0`.
 	Netmask pulumi.StringPtrInput
@@ -237,8 +223,7 @@ type ReservedIpBlockState struct {
 	Quantity pulumi.IntPtrInput
 	// String list of tags.
 	Tags pulumi.StringArrayInput
-	// One of `globalIpv4`, `publicIpv4`, or `vrf`. Defaults to `publicIpv4` for backward
-	// compatibility.
+	// One of `globalIpv4`, `publicIpv4`, or `vrf`. Defaults to `publicIpv4` for backward compatibility.
 	Type pulumi.StringPtrInput
 	// Only valid and required when `type` is `vrf`. VRF ID for type=vrf reservations.
 	VrfId pulumi.StringPtrInput
@@ -256,11 +241,9 @@ type reservedIpBlockArgs struct {
 	CustomData *string `pulumi:"customData"`
 	// Arbitrary description.
 	Description *string `pulumi:"description"`
-	// Facility where to allocate the public IP address block, makes sense only
-	// if type is `publicIpv4` and must be empty if type is `globalIpv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
+	// Facility where to allocate the public IP address block, makes sense only if type is `publicIpv4` and must be empty if type is `globalIpv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
 	Facility *string `pulumi:"facility"`
-	// Metro where to allocate the public IP address block, makes sense only
-	// if type is `publicIpv4` and must be empty if type is `globalIpv4`. Conflicts with `facility`.
+	// Metro where to allocate the public IP address block, makes sense only if type is `publicIpv4` and must be empty if type is `globalIpv4`. Conflicts with `facility`.
 	Metro *string `pulumi:"metro"`
 	// Only valid as an argument and required when `type` is `vrf`. An unreserved network address from an existing `ipRange` in the specified VRF.
 	Network *string `pulumi:"network"`
@@ -270,8 +253,7 @@ type reservedIpBlockArgs struct {
 	Quantity *int `pulumi:"quantity"`
 	// String list of tags.
 	Tags []string `pulumi:"tags"`
-	// One of `globalIpv4`, `publicIpv4`, or `vrf`. Defaults to `publicIpv4` for backward
-	// compatibility.
+	// One of `globalIpv4`, `publicIpv4`, or `vrf`. Defaults to `publicIpv4` for backward compatibility.
 	Type *string `pulumi:"type"`
 	// Only valid and required when `type` is `vrf`. VRF ID for type=vrf reservations.
 	VrfId *string `pulumi:"vrfId"`
@@ -286,11 +268,9 @@ type ReservedIpBlockArgs struct {
 	CustomData pulumi.StringPtrInput
 	// Arbitrary description.
 	Description pulumi.StringPtrInput
-	// Facility where to allocate the public IP address block, makes sense only
-	// if type is `publicIpv4` and must be empty if type is `globalIpv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
+	// Facility where to allocate the public IP address block, makes sense only if type is `publicIpv4` and must be empty if type is `globalIpv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
 	Facility pulumi.StringPtrInput
-	// Metro where to allocate the public IP address block, makes sense only
-	// if type is `publicIpv4` and must be empty if type is `globalIpv4`. Conflicts with `facility`.
+	// Metro where to allocate the public IP address block, makes sense only if type is `publicIpv4` and must be empty if type is `globalIpv4`. Conflicts with `facility`.
 	Metro pulumi.StringPtrInput
 	// Only valid as an argument and required when `type` is `vrf`. An unreserved network address from an existing `ipRange` in the specified VRF.
 	Network pulumi.StringPtrInput
@@ -300,8 +280,7 @@ type ReservedIpBlockArgs struct {
 	Quantity pulumi.IntPtrInput
 	// String list of tags.
 	Tags pulumi.StringArrayInput
-	// One of `globalIpv4`, `publicIpv4`, or `vrf`. Defaults to `publicIpv4` for backward
-	// compatibility.
+	// One of `globalIpv4`, `publicIpv4`, or `vrf`. Defaults to `publicIpv4` for backward compatibility.
 	Type pulumi.StringPtrInput
 	// Only valid and required when `type` is `vrf`. VRF ID for type=vrf reservations.
 	VrfId pulumi.StringPtrInput
@@ -424,8 +403,7 @@ func (o ReservedIpBlockOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ReservedIpBlock) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Facility where to allocate the public IP address block, makes sense only
-// if type is `publicIpv4` and must be empty if type is `globalIpv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
+// Facility where to allocate the public IP address block, makes sense only if type is `publicIpv4` and must be empty if type is `globalIpv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
 func (o ReservedIpBlockOutput) Facility() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ReservedIpBlock) pulumi.StringPtrOutput { return v.Facility }).(pulumi.StringPtrOutput)
 }
@@ -434,8 +412,7 @@ func (o ReservedIpBlockOutput) Gateway() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReservedIpBlock) pulumi.StringOutput { return v.Gateway }).(pulumi.StringOutput)
 }
 
-// Boolean flag whether addresses from a block are global (i.e. can be assigned in any
-// metro).
+// Boolean flag whether addresses from a block are global (i.e. can be assigned in any metro).
 func (o ReservedIpBlockOutput) Global() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ReservedIpBlock) pulumi.BoolOutput { return v.Global }).(pulumi.BoolOutput)
 }
@@ -448,8 +425,7 @@ func (o ReservedIpBlockOutput) Management() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ReservedIpBlock) pulumi.BoolOutput { return v.Management }).(pulumi.BoolOutput)
 }
 
-// Metro where to allocate the public IP address block, makes sense only
-// if type is `publicIpv4` and must be empty if type is `globalIpv4`. Conflicts with `facility`.
+// Metro where to allocate the public IP address block, makes sense only if type is `publicIpv4` and must be empty if type is `globalIpv4`. Conflicts with `facility`.
 func (o ReservedIpBlockOutput) Metro() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ReservedIpBlock) pulumi.StringPtrOutput { return v.Metro }).(pulumi.StringPtrOutput)
 }
@@ -484,8 +460,7 @@ func (o ReservedIpBlockOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ReservedIpBlock) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// One of `globalIpv4`, `publicIpv4`, or `vrf`. Defaults to `publicIpv4` for backward
-// compatibility.
+// One of `globalIpv4`, `publicIpv4`, or `vrf`. Defaults to `publicIpv4` for backward compatibility.
 func (o ReservedIpBlockOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ReservedIpBlock) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }

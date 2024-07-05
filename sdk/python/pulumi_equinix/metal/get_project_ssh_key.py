@@ -159,8 +159,7 @@ def get_project_ssh_key(id: Optional[str] = None,
     :param str project_id: The Equinix Metal project id of the Equinix Metal SSH Key.
            
            > **NOTE:** One of either `search` or `id` must be provided along with `project_id`.
-    :param str search: The name, fingerprint, or public_key of the SSH Key to search for
-           in the Equinix Metal project.
+    :param str search: The name, fingerprint, or public_key of the SSH Key to search for in the Equinix Metal project.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -204,7 +203,6 @@ def get_project_ssh_key_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     :param str project_id: The Equinix Metal project id of the Equinix Metal SSH Key.
            
            > **NOTE:** One of either `search` or `id` must be provided along with `project_id`.
-    :param str search: The name, fingerprint, or public_key of the SSH Key to search for
-           in the Equinix Metal project.
+    :param str search: The name, fingerprint, or public_key of the SSH Key to search for in the Equinix Metal project.
     """
     ...

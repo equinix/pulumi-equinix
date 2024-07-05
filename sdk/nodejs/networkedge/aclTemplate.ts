@@ -8,11 +8,9 @@ import * as enums from "../types/enums";
 import * as utilities from "../utilities";
 
 /**
- * Resource `equinix.networkedge.AclTemplate` allows creation and management of
- * Equinix Network Edge device Access Control List templates.
+ * Resource `equinix.networkedge.AclTemplate` allows creation and management of Equinix Network Edge device Access Control List templates.
  *
- * Device ACL templates give possibility to define set of rules will allowed inbound
- * traffic. Templates can be assigned to the network devices.
+ * Device ACL templates give possibility to define set of rules will allowed inbound traffic. Templates can be assigned to the network devices.
  *
  * ## Example Usage
  *
@@ -84,8 +82,7 @@ export class AclTemplate extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Status of ACL template provisioning process, where template was applied.
-     * One of `PROVISIONING`, `PROVISIONED`.
+     * Status of ACL template provisioning process, where template was applied. One of `PROVISIONING`, `PROVISIONED`.
      */
     public /*out*/ readonly deviceAclStatus!: pulumi.Output<string>;
     /**
@@ -99,8 +96,7 @@ export class AclTemplate extends pulumi.CustomResource {
      */
     public /*out*/ readonly deviceId!: pulumi.Output<string>;
     /**
-     * One or more rules to specify allowed inbound traffic.
-     * Rules are ordered, matching traffic rule stops processing subsequent ones.
+     * One or more rules to specify allowed inbound traffic. Rules are ordered, matching traffic rule stops processing subsequent ones.
      *
      * The `inboundRule` block has below fields:
      */
@@ -116,8 +112,7 @@ export class AclTemplate extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Unique Identifier for the project resource where the acl template is scoped to.If you
-     * leave it out, the ACL template will be created under the default project id of your organization.
+     * Unique Identifier for the project resource where the acl template is scoped to.If you leave it out, the ACL template will be created under the default project id of your organization.
      */
     public readonly projectId!: pulumi.Output<string>;
     /**
@@ -176,8 +171,7 @@ export interface AclTemplateState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Status of ACL template provisioning process, where template was applied.
-     * One of `PROVISIONING`, `PROVISIONED`.
+     * Status of ACL template provisioning process, where template was applied. One of `PROVISIONING`, `PROVISIONED`.
      */
     deviceAclStatus?: pulumi.Input<string>;
     /**
@@ -191,8 +185,7 @@ export interface AclTemplateState {
      */
     deviceId?: pulumi.Input<string>;
     /**
-     * One or more rules to specify allowed inbound traffic.
-     * Rules are ordered, matching traffic rule stops processing subsequent ones.
+     * One or more rules to specify allowed inbound traffic. Rules are ordered, matching traffic rule stops processing subsequent ones.
      *
      * The `inboundRule` block has below fields:
      */
@@ -208,8 +201,7 @@ export interface AclTemplateState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique Identifier for the project resource where the acl template is scoped to.If you
-     * leave it out, the ACL template will be created under the default project id of your organization.
+     * Unique Identifier for the project resource where the acl template is scoped to.If you leave it out, the ACL template will be created under the default project id of your organization.
      */
     projectId?: pulumi.Input<string>;
     /**
@@ -227,8 +219,7 @@ export interface AclTemplateArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * One or more rules to specify allowed inbound traffic.
-     * Rules are ordered, matching traffic rule stops processing subsequent ones.
+     * One or more rules to specify allowed inbound traffic. Rules are ordered, matching traffic rule stops processing subsequent ones.
      *
      * The `inboundRule` block has below fields:
      */
@@ -244,8 +235,7 @@ export interface AclTemplateArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique Identifier for the project resource where the acl template is scoped to.If you
-     * leave it out, the ACL template will be created under the default project id of your organization.
+     * Unique Identifier for the project resource where the acl template is scoped to.If you leave it out, the ACL template will be created under the default project id of your organization.
      */
     projectId?: pulumi.Input<string>;
 }

@@ -14,34 +14,38 @@ import java.util.Objects;
 @CustomType
 public final class GetDeviceResult {
     /**
-     * @return The ipv4 private IP assigned to the device.
+     * @return The ipv4 private IP assigned to the device
      * 
      */
     private String accessPrivateIpv4;
     /**
-     * @return The ipv4 management IP assigned to the device.
+     * @return The ipv4 management IP assigned to the device
      * 
      */
     private String accessPublicIpv4;
     /**
-     * @return The ipv6 management IP assigned to the device.
+     * @return The ipv6 management IP assigned to the device
      * 
      */
     private String accessPublicIpv6;
     private Boolean alwaysPxe;
     /**
-     * @return The billing cycle of the device (monthly or hourly).
+     * @return The billing cycle of the device (monthly or hourly)
      * 
      */
     private String billingCycle;
     /**
-     * @return Description string for the device.
+     * @return Description string for the device
      * 
      */
     private String description;
+    /**
+     * @return Device ID
+     * 
+     */
     private String deviceId;
     /**
-     * @return (**Deprecated**) The facility where the device is deployed. Use metro instead; read the facility to metro migration guide
+     * @return The facility where the device is deployed
      * 
      * @deprecated
      * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
@@ -50,10 +54,14 @@ public final class GetDeviceResult {
     @Deprecated /* Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
     private String facility;
     /**
-     * @return The id of hardware reservation which this device occupies.
+     * @return The id of hardware reservation which this device occupies
      * 
      */
     private String hardwareReservationId;
+    /**
+     * @return The device name
+     * 
+     */
     private String hostname;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -67,36 +75,37 @@ public final class GetDeviceResult {
      */
     private String metro;
     /**
-     * @return L2 network type of the device, one of `layer3`, `layer2-bonded`,
-     * `layer2-individual`, `hybrid`.
+     * @return L2 network type of the device, one oflayer3, hybrid, layer2-individual, layer2-bonded
      * 
      */
     private String networkType;
     /**
-     * @return The device&#39;s private and public IP (v4 and v6) network details. See
-     * Network Attribute below for more details.
+     * @return The device&#39;s private and public IP (v4 and v6) network details. When a device is run without any special network configuration, it will have 3 networks: ublic IPv4 at equinix*metal*device.name.network.0, IPv6 at equinix*metal*device.name.network.1 and private IPv4 at equinix*metal*device.name.network.2. Elastic addresses then stack by type - an assigned public IPv4 will go after the management public IPv4 (to index 1), and will then shift the indices of the IPv6 and private IPv4. Assigned private IPv4 will go after the management private IPv4 (to the end of the network list).
      * 
      */
     private List<GetDeviceNetwork> networks;
     /**
-     * @return The operating system running on the device.
+     * @return The operating system running on the device
      * 
      */
     private String operatingSystem;
     /**
-     * @return The hardware config of the device.
+     * @return The hardware config of the device
      * 
      */
     private String plan;
     /**
-     * @return List of ports assigned to the device. See Ports Attribute below for
-     * more details.
+     * @return Ports assigned to the device
      * 
      */
     private List<GetDevicePort> ports;
+    /**
+     * @return The id of the project in which the devices exists
+     * 
+     */
     private String projectId;
     /**
-     * @return Root password to the server (if still available).
+     * @return Root password to the server (if still available)
      * 
      */
     private String rootPassword;
@@ -106,39 +115,39 @@ public final class GetDeviceResult {
      */
     private String sosHostname;
     /**
-     * @return List of IDs of SSH keys deployed in the device, can be both user or project SSH keys.
+     * @return List of IDs of SSH keys deployed in the device, can be both user or project SSH keys
      * 
      */
     private List<String> sshKeyIds;
     /**
-     * @return The state of the device.
+     * @return The state of the device
      * 
      */
     private String state;
     private String storage;
     /**
-     * @return Tags attached to the device.
+     * @return Tags attached to the device
      * 
      */
     private List<String> tags;
 
     private GetDeviceResult() {}
     /**
-     * @return The ipv4 private IP assigned to the device.
+     * @return The ipv4 private IP assigned to the device
      * 
      */
     public String accessPrivateIpv4() {
         return this.accessPrivateIpv4;
     }
     /**
-     * @return The ipv4 management IP assigned to the device.
+     * @return The ipv4 management IP assigned to the device
      * 
      */
     public String accessPublicIpv4() {
         return this.accessPublicIpv4;
     }
     /**
-     * @return The ipv6 management IP assigned to the device.
+     * @return The ipv6 management IP assigned to the device
      * 
      */
     public String accessPublicIpv6() {
@@ -148,24 +157,28 @@ public final class GetDeviceResult {
         return this.alwaysPxe;
     }
     /**
-     * @return The billing cycle of the device (monthly or hourly).
+     * @return The billing cycle of the device (monthly or hourly)
      * 
      */
     public String billingCycle() {
         return this.billingCycle;
     }
     /**
-     * @return Description string for the device.
+     * @return Description string for the device
      * 
      */
     public String description() {
         return this.description;
     }
+    /**
+     * @return Device ID
+     * 
+     */
     public String deviceId() {
         return this.deviceId;
     }
     /**
-     * @return (**Deprecated**) The facility where the device is deployed. Use metro instead; read the facility to metro migration guide
+     * @return The facility where the device is deployed
      * 
      * @deprecated
      * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
@@ -176,12 +189,16 @@ public final class GetDeviceResult {
         return this.facility;
     }
     /**
-     * @return The id of hardware reservation which this device occupies.
+     * @return The id of hardware reservation which this device occupies
      * 
      */
     public String hardwareReservationId() {
         return this.hardwareReservationId;
     }
+    /**
+     * @return The device name
+     * 
+     */
     public String hostname() {
         return this.hostname;
     }
@@ -203,48 +220,49 @@ public final class GetDeviceResult {
         return this.metro;
     }
     /**
-     * @return L2 network type of the device, one of `layer3`, `layer2-bonded`,
-     * `layer2-individual`, `hybrid`.
+     * @return L2 network type of the device, one oflayer3, hybrid, layer2-individual, layer2-bonded
      * 
      */
     public String networkType() {
         return this.networkType;
     }
     /**
-     * @return The device&#39;s private and public IP (v4 and v6) network details. See
-     * Network Attribute below for more details.
+     * @return The device&#39;s private and public IP (v4 and v6) network details. When a device is run without any special network configuration, it will have 3 networks: ublic IPv4 at equinix*metal*device.name.network.0, IPv6 at equinix*metal*device.name.network.1 and private IPv4 at equinix*metal*device.name.network.2. Elastic addresses then stack by type - an assigned public IPv4 will go after the management public IPv4 (to index 1), and will then shift the indices of the IPv6 and private IPv4. Assigned private IPv4 will go after the management private IPv4 (to the end of the network list).
      * 
      */
     public List<GetDeviceNetwork> networks() {
         return this.networks;
     }
     /**
-     * @return The operating system running on the device.
+     * @return The operating system running on the device
      * 
      */
     public String operatingSystem() {
         return this.operatingSystem;
     }
     /**
-     * @return The hardware config of the device.
+     * @return The hardware config of the device
      * 
      */
     public String plan() {
         return this.plan;
     }
     /**
-     * @return List of ports assigned to the device. See Ports Attribute below for
-     * more details.
+     * @return Ports assigned to the device
      * 
      */
     public List<GetDevicePort> ports() {
         return this.ports;
     }
+    /**
+     * @return The id of the project in which the devices exists
+     * 
+     */
     public String projectId() {
         return this.projectId;
     }
     /**
-     * @return Root password to the server (if still available).
+     * @return Root password to the server (if still available)
      * 
      */
     public String rootPassword() {
@@ -258,14 +276,14 @@ public final class GetDeviceResult {
         return this.sosHostname;
     }
     /**
-     * @return List of IDs of SSH keys deployed in the device, can be both user or project SSH keys.
+     * @return List of IDs of SSH keys deployed in the device, can be both user or project SSH keys
      * 
      */
     public List<String> sshKeyIds() {
         return this.sshKeyIds;
     }
     /**
-     * @return The state of the device.
+     * @return The state of the device
      * 
      */
     public String state() {
@@ -275,7 +293,7 @@ public final class GetDeviceResult {
         return this.storage;
     }
     /**
-     * @return Tags attached to the device.
+     * @return Tags attached to the device
      * 
      */
     public List<String> tags() {

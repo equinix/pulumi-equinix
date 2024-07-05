@@ -49,10 +49,8 @@ class GetIpBlockRangesResult:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
     def facility(self) -> Optional[str]:
-        warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
-        pulumi.log.warn("""facility is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
-
         return pulumi.get(self, "facility")
 
     @property
@@ -145,10 +143,8 @@ def get_ip_block_ranges(facility: Optional[str] = None,
     ```
 
 
-    :param str facility: Facility code filtering the IP blocks. Global IPv4 blocks will be listed
-           anyway. If you omit this and metro, all the block from the project will be listed.   Use metro instead; read the facility to metro migration guide
-    :param str metro: Metro code filtering the IP blocks. Global IPv4 blocks will be listed
-           anyway. If you omit this and facility, all the block from the project will be listed.
+    :param str facility: Facility code filtering the IP blocks. Global IPv4 blocks will be listed anyway. If you omit this and metro, all the block from the project will be listed. Use metro instead; read the facility to metro migration guide
+    :param str metro: Metro code filtering the IP blocks. Global IPv4 blocks will be listed anyway. If you omit this and facility, all the block from the project will be listed.
     :param str project_id: ID of the project from which to list the blocks.
     """
     __args__ = dict()
@@ -193,10 +189,8 @@ def get_ip_block_ranges_output(facility: Optional[pulumi.Input[Optional[str]]] =
     ```
 
 
-    :param str facility: Facility code filtering the IP blocks. Global IPv4 blocks will be listed
-           anyway. If you omit this and metro, all the block from the project will be listed.   Use metro instead; read the facility to metro migration guide
-    :param str metro: Metro code filtering the IP blocks. Global IPv4 blocks will be listed
-           anyway. If you omit this and facility, all the block from the project will be listed.
+    :param str facility: Facility code filtering the IP blocks. Global IPv4 blocks will be listed anyway. If you omit this and metro, all the block from the project will be listed. Use metro instead; read the facility to metro migration guide
+    :param str metro: Metro code filtering the IP blocks. Global IPv4 blocks will be listed anyway. If you omit this and facility, all the block from the project will be listed.
     :param str project_id: ID of the project from which to list the blocks.
     """
     ...

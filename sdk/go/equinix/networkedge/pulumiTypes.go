@@ -14,8 +14,7 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type AclTemplateDeviceDetail struct {
-	// Device ACL provisioning status where template was applied. One of `PROVISIONING`,
-	// `PROVISIONED`.
+	// Device ACL provisioning status where template was applied. One of `PROVISIONING`, `PROVISIONED`.
 	AclStatus *string `pulumi:"aclStatus"`
 	// ACL template name.
 	Name *string `pulumi:"name"`
@@ -35,8 +34,7 @@ type AclTemplateDeviceDetailInput interface {
 }
 
 type AclTemplateDeviceDetailArgs struct {
-	// Device ACL provisioning status where template was applied. One of `PROVISIONING`,
-	// `PROVISIONED`.
+	// Device ACL provisioning status where template was applied. One of `PROVISIONING`, `PROVISIONED`.
 	AclStatus pulumi.StringPtrInput `pulumi:"aclStatus"`
 	// ACL template name.
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -95,8 +93,7 @@ func (o AclTemplateDeviceDetailOutput) ToAclTemplateDeviceDetailOutputWithContex
 	return o
 }
 
-// Device ACL provisioning status where template was applied. One of `PROVISIONING`,
-// `PROVISIONED`.
+// Device ACL provisioning status where template was applied. One of `PROVISIONING`, `PROVISIONED`.
 func (o AclTemplateDeviceDetailOutput) AclStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AclTemplateDeviceDetail) *string { return v.AclStatus }).(pulumi.StringPtrOutput)
 }
@@ -134,8 +131,7 @@ func (o AclTemplateDeviceDetailArrayOutput) Index(i pulumi.IntInput) AclTemplate
 type AclTemplateInboundRule struct {
 	// Inbound rule description, up to 200 characters.
 	Description *string `pulumi:"description"`
-	// Inbound traffic destination ports. Allowed values are a comma separated
-	// list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
+	// Inbound traffic destination ports. Allowed values are a comma separated list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
 	DstPort string `pulumi:"dstPort"`
 	// Inbound traffic protocol. One of `IP`, `TCP`, `UDP`.
 	Protocol string `pulumi:"protocol"`
@@ -145,8 +141,7 @@ type AclTemplateInboundRule struct {
 	//
 	// Deprecated: Source Type will not be returned
 	SourceType *string `pulumi:"sourceType"`
-	// Inbound traffic source ports. Allowed values are a comma separated list
-	// of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
+	// Inbound traffic source ports. Allowed values are a comma separated list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
 	SrcPort string `pulumi:"srcPort"`
 	// Inbound traffic source IP subnet in CIDR format.
 	Subnet *string `pulumi:"subnet"`
@@ -170,8 +165,7 @@ type AclTemplateInboundRuleInput interface {
 type AclTemplateInboundRuleArgs struct {
 	// Inbound rule description, up to 200 characters.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Inbound traffic destination ports. Allowed values are a comma separated
-	// list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
+	// Inbound traffic destination ports. Allowed values are a comma separated list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
 	DstPort pulumi.StringInput `pulumi:"dstPort"`
 	// Inbound traffic protocol. One of `IP`, `TCP`, `UDP`.
 	Protocol pulumi.StringInput `pulumi:"protocol"`
@@ -181,8 +175,7 @@ type AclTemplateInboundRuleArgs struct {
 	//
 	// Deprecated: Source Type will not be returned
 	SourceType pulumi.StringPtrInput `pulumi:"sourceType"`
-	// Inbound traffic source ports. Allowed values are a comma separated list
-	// of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
+	// Inbound traffic source ports. Allowed values are a comma separated list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
 	SrcPort pulumi.StringInput `pulumi:"srcPort"`
 	// Inbound traffic source IP subnet in CIDR format.
 	Subnet pulumi.StringPtrInput `pulumi:"subnet"`
@@ -248,8 +241,7 @@ func (o AclTemplateInboundRuleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AclTemplateInboundRule) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Inbound traffic destination ports. Allowed values are a comma separated
-// list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
+// Inbound traffic destination ports. Allowed values are a comma separated list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
 func (o AclTemplateInboundRuleOutput) DstPort() pulumi.StringOutput {
 	return o.ApplyT(func(v AclTemplateInboundRule) string { return v.DstPort }).(pulumi.StringOutput)
 }
@@ -271,8 +263,7 @@ func (o AclTemplateInboundRuleOutput) SourceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AclTemplateInboundRule) *string { return v.SourceType }).(pulumi.StringPtrOutput)
 }
 
-// Inbound traffic source ports. Allowed values are a comma separated list
-// of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
+// Inbound traffic source ports. Allowed values are a comma separated list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
 func (o AclTemplateInboundRuleOutput) SrcPort() pulumi.StringOutput {
 	return o.ApplyT(func(v AclTemplateInboundRule) string { return v.SrcPort }).(pulumi.StringOutput)
 }
@@ -314,11 +305,9 @@ type DeviceClusterDetails struct {
 	ClusterId *string `pulumi:"clusterId"`
 	// The name of the cluster device
 	ClusterName string `pulumi:"clusterName"`
-	// An object that has `node0` configuration.
-	// See Cluster Details - Nodes below for more details.
+	// An object that has `node0` configuration. See Cluster Details - Nodes below for more details.
 	Node0 DeviceClusterDetailsNode0 `pulumi:"node0"`
-	// An object that has `node1` configuration.
-	// See Cluster Details - Nodes below for more details.
+	// An object that has `node1` configuration. See Cluster Details - Nodes below for more details.
 	Node1 DeviceClusterDetailsNode1 `pulumi:"node1"`
 	// The number of nodes in the cluster.
 	NumOfNodes *int `pulumi:"numOfNodes"`
@@ -340,11 +329,9 @@ type DeviceClusterDetailsArgs struct {
 	ClusterId pulumi.StringPtrInput `pulumi:"clusterId"`
 	// The name of the cluster device
 	ClusterName pulumi.StringInput `pulumi:"clusterName"`
-	// An object that has `node0` configuration.
-	// See Cluster Details - Nodes below for more details.
+	// An object that has `node0` configuration. See Cluster Details - Nodes below for more details.
 	Node0 DeviceClusterDetailsNode0Input `pulumi:"node0"`
-	// An object that has `node1` configuration.
-	// See Cluster Details - Nodes below for more details.
+	// An object that has `node1` configuration. See Cluster Details - Nodes below for more details.
 	Node1 DeviceClusterDetailsNode1Input `pulumi:"node1"`
 	// The number of nodes in the cluster.
 	NumOfNodes pulumi.IntPtrInput `pulumi:"numOfNodes"`
@@ -437,14 +424,12 @@ func (o DeviceClusterDetailsOutput) ClusterName() pulumi.StringOutput {
 	return o.ApplyT(func(v DeviceClusterDetails) string { return v.ClusterName }).(pulumi.StringOutput)
 }
 
-// An object that has `node0` configuration.
-// See Cluster Details - Nodes below for more details.
+// An object that has `node0` configuration. See Cluster Details - Nodes below for more details.
 func (o DeviceClusterDetailsOutput) Node0() DeviceClusterDetailsNode0Output {
 	return o.ApplyT(func(v DeviceClusterDetails) DeviceClusterDetailsNode0 { return v.Node0 }).(DeviceClusterDetailsNode0Output)
 }
 
-// An object that has `node1` configuration.
-// See Cluster Details - Nodes below for more details.
+// An object that has `node1` configuration. See Cluster Details - Nodes below for more details.
 func (o DeviceClusterDetailsOutput) Node1() DeviceClusterDetailsNode1Output {
 	return o.ApplyT(func(v DeviceClusterDetails) DeviceClusterDetailsNode1 { return v.Node1 }).(DeviceClusterDetailsNode1Output)
 }
@@ -498,8 +483,7 @@ func (o DeviceClusterDetailsPtrOutput) ClusterName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// An object that has `node0` configuration.
-// See Cluster Details - Nodes below for more details.
+// An object that has `node0` configuration. See Cluster Details - Nodes below for more details.
 func (o DeviceClusterDetailsPtrOutput) Node0() DeviceClusterDetailsNode0PtrOutput {
 	return o.ApplyT(func(v *DeviceClusterDetails) *DeviceClusterDetailsNode0 {
 		if v == nil {
@@ -509,8 +493,7 @@ func (o DeviceClusterDetailsPtrOutput) Node0() DeviceClusterDetailsNode0PtrOutpu
 	}).(DeviceClusterDetailsNode0PtrOutput)
 }
 
-// An object that has `node1` configuration.
-// See Cluster Details - Nodes below for more details.
+// An object that has `node1` configuration. See Cluster Details - Nodes below for more details.
 func (o DeviceClusterDetailsPtrOutput) Node1() DeviceClusterDetailsNode1PtrOutput {
 	return o.ApplyT(func(v *DeviceClusterDetails) *DeviceClusterDetailsNode1 {
 		if v == nil {
@@ -539,9 +522,7 @@ type DeviceClusterDetailsNode0 struct {
 	Name *string `pulumi:"name"`
 	// Device unique identifier.
 	Uuid *string `pulumi:"uuid"`
-	// An object that has fields relevant to the vendor of the
-	// cluster device. See Cluster Details - Nodes - Vendor Configuration
-	// below for more details.
+	// An object that has fields relevant to the vendor of the cluster device. See Cluster Details - Nodes - Vendor Configuration below for more details.
 	VendorConfiguration *DeviceClusterDetailsNode0VendorConfiguration `pulumi:"vendorConfiguration"`
 }
 
@@ -565,9 +546,7 @@ type DeviceClusterDetailsNode0Args struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Device unique identifier.
 	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
-	// An object that has fields relevant to the vendor of the
-	// cluster device. See Cluster Details - Nodes - Vendor Configuration
-	// below for more details.
+	// An object that has fields relevant to the vendor of the cluster device. See Cluster Details - Nodes - Vendor Configuration below for more details.
 	VendorConfiguration DeviceClusterDetailsNode0VendorConfigurationPtrInput `pulumi:"vendorConfiguration"`
 }
 
@@ -668,9 +647,7 @@ func (o DeviceClusterDetailsNode0Output) Uuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceClusterDetailsNode0) *string { return v.Uuid }).(pulumi.StringPtrOutput)
 }
 
-// An object that has fields relevant to the vendor of the
-// cluster device. See Cluster Details - Nodes - Vendor Configuration
-// below for more details.
+// An object that has fields relevant to the vendor of the cluster device. See Cluster Details - Nodes - Vendor Configuration below for more details.
 func (o DeviceClusterDetailsNode0Output) VendorConfiguration() DeviceClusterDetailsNode0VendorConfigurationPtrOutput {
 	return o.ApplyT(func(v DeviceClusterDetailsNode0) *DeviceClusterDetailsNode0VendorConfiguration {
 		return v.VendorConfiguration
@@ -741,9 +718,7 @@ func (o DeviceClusterDetailsNode0PtrOutput) Uuid() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// An object that has fields relevant to the vendor of the
-// cluster device. See Cluster Details - Nodes - Vendor Configuration
-// below for more details.
+// An object that has fields relevant to the vendor of the cluster device. See Cluster Details - Nodes - Vendor Configuration below for more details.
 func (o DeviceClusterDetailsNode0PtrOutput) VendorConfiguration() DeviceClusterDetailsNode0VendorConfigurationPtrOutput {
 	return o.ApplyT(func(v *DeviceClusterDetailsNode0) *DeviceClusterDetailsNode0VendorConfiguration {
 		if v == nil {
@@ -756,8 +731,7 @@ func (o DeviceClusterDetailsNode0PtrOutput) VendorConfiguration() DeviceClusterD
 type DeviceClusterDetailsNode0VendorConfiguration struct {
 	// Activation key. This is required for Velocloud clusters.
 	ActivationKey *string `pulumi:"activationKey"`
-	// The administrative password of the device. You can use it to log in
-	// to the console. This field is not available for all device types.
+	// The administrative password of the device. You can use it to log in to the console. This field is not available for all device types.
 	AdminPassword *string `pulumi:"adminPassword"`
 	// System IP Address. Mandatory for the Fortinet SDWAN cluster device.
 	Controller1 *string `pulumi:"controller1"`
@@ -775,8 +749,7 @@ type DeviceClusterDetailsNode0VendorConfiguration struct {
 	PrivateCidrMask *string `pulumi:"privateCidrMask"`
 	// Private gateway. This field is relevant only for the BlueCat DNS and DHCP Server
 	PrivateGateway *string `pulumi:"privateGateway"`
-	// The CLI password of the device. This field is relevant only for the
-	// Velocloud SDWAN cluster.
+	// The CLI password of the device. This field is relevant only for the Velocloud SDWAN cluster.
 	RootPassword *string `pulumi:"rootPassword"`
 }
 
@@ -794,8 +767,7 @@ type DeviceClusterDetailsNode0VendorConfigurationInput interface {
 type DeviceClusterDetailsNode0VendorConfigurationArgs struct {
 	// Activation key. This is required for Velocloud clusters.
 	ActivationKey pulumi.StringPtrInput `pulumi:"activationKey"`
-	// The administrative password of the device. You can use it to log in
-	// to the console. This field is not available for all device types.
+	// The administrative password of the device. You can use it to log in to the console. This field is not available for all device types.
 	AdminPassword pulumi.StringPtrInput `pulumi:"adminPassword"`
 	// System IP Address. Mandatory for the Fortinet SDWAN cluster device.
 	Controller1 pulumi.StringPtrInput `pulumi:"controller1"`
@@ -813,8 +785,7 @@ type DeviceClusterDetailsNode0VendorConfigurationArgs struct {
 	PrivateCidrMask pulumi.StringPtrInput `pulumi:"privateCidrMask"`
 	// Private gateway. This field is relevant only for the BlueCat DNS and DHCP Server
 	PrivateGateway pulumi.StringPtrInput `pulumi:"privateGateway"`
-	// The CLI password of the device. This field is relevant only for the
-	// Velocloud SDWAN cluster.
+	// The CLI password of the device. This field is relevant only for the Velocloud SDWAN cluster.
 	RootPassword pulumi.StringPtrInput `pulumi:"rootPassword"`
 }
 
@@ -900,8 +871,7 @@ func (o DeviceClusterDetailsNode0VendorConfigurationOutput) ActivationKey() pulu
 	return o.ApplyT(func(v DeviceClusterDetailsNode0VendorConfiguration) *string { return v.ActivationKey }).(pulumi.StringPtrOutput)
 }
 
-// The administrative password of the device. You can use it to log in
-// to the console. This field is not available for all device types.
+// The administrative password of the device. You can use it to log in to the console. This field is not available for all device types.
 func (o DeviceClusterDetailsNode0VendorConfigurationOutput) AdminPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceClusterDetailsNode0VendorConfiguration) *string { return v.AdminPassword }).(pulumi.StringPtrOutput)
 }
@@ -946,8 +916,7 @@ func (o DeviceClusterDetailsNode0VendorConfigurationOutput) PrivateGateway() pul
 	return o.ApplyT(func(v DeviceClusterDetailsNode0VendorConfiguration) *string { return v.PrivateGateway }).(pulumi.StringPtrOutput)
 }
 
-// The CLI password of the device. This field is relevant only for the
-// Velocloud SDWAN cluster.
+// The CLI password of the device. This field is relevant only for the Velocloud SDWAN cluster.
 func (o DeviceClusterDetailsNode0VendorConfigurationOutput) RootPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceClusterDetailsNode0VendorConfiguration) *string { return v.RootPassword }).(pulumi.StringPtrOutput)
 }
@@ -986,8 +955,7 @@ func (o DeviceClusterDetailsNode0VendorConfigurationPtrOutput) ActivationKey() p
 	}).(pulumi.StringPtrOutput)
 }
 
-// The administrative password of the device. You can use it to log in
-// to the console. This field is not available for all device types.
+// The administrative password of the device. You can use it to log in to the console. This field is not available for all device types.
 func (o DeviceClusterDetailsNode0VendorConfigurationPtrOutput) AdminPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeviceClusterDetailsNode0VendorConfiguration) *string {
 		if v == nil {
@@ -1077,8 +1045,7 @@ func (o DeviceClusterDetailsNode0VendorConfigurationPtrOutput) PrivateGateway() 
 	}).(pulumi.StringPtrOutput)
 }
 
-// The CLI password of the device. This field is relevant only for the
-// Velocloud SDWAN cluster.
+// The CLI password of the device. This field is relevant only for the Velocloud SDWAN cluster.
 func (o DeviceClusterDetailsNode0VendorConfigurationPtrOutput) RootPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeviceClusterDetailsNode0VendorConfiguration) *string {
 		if v == nil {
@@ -1097,9 +1064,7 @@ type DeviceClusterDetailsNode1 struct {
 	Name *string `pulumi:"name"`
 	// Device unique identifier.
 	Uuid *string `pulumi:"uuid"`
-	// An object that has fields relevant to the vendor of the
-	// cluster device. See Cluster Details - Nodes - Vendor Configuration
-	// below for more details.
+	// An object that has fields relevant to the vendor of the cluster device. See Cluster Details - Nodes - Vendor Configuration below for more details.
 	VendorConfiguration *DeviceClusterDetailsNode1VendorConfiguration `pulumi:"vendorConfiguration"`
 }
 
@@ -1123,9 +1088,7 @@ type DeviceClusterDetailsNode1Args struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Device unique identifier.
 	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
-	// An object that has fields relevant to the vendor of the
-	// cluster device. See Cluster Details - Nodes - Vendor Configuration
-	// below for more details.
+	// An object that has fields relevant to the vendor of the cluster device. See Cluster Details - Nodes - Vendor Configuration below for more details.
 	VendorConfiguration DeviceClusterDetailsNode1VendorConfigurationPtrInput `pulumi:"vendorConfiguration"`
 }
 
@@ -1226,9 +1189,7 @@ func (o DeviceClusterDetailsNode1Output) Uuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceClusterDetailsNode1) *string { return v.Uuid }).(pulumi.StringPtrOutput)
 }
 
-// An object that has fields relevant to the vendor of the
-// cluster device. See Cluster Details - Nodes - Vendor Configuration
-// below for more details.
+// An object that has fields relevant to the vendor of the cluster device. See Cluster Details - Nodes - Vendor Configuration below for more details.
 func (o DeviceClusterDetailsNode1Output) VendorConfiguration() DeviceClusterDetailsNode1VendorConfigurationPtrOutput {
 	return o.ApplyT(func(v DeviceClusterDetailsNode1) *DeviceClusterDetailsNode1VendorConfiguration {
 		return v.VendorConfiguration
@@ -1299,9 +1260,7 @@ func (o DeviceClusterDetailsNode1PtrOutput) Uuid() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// An object that has fields relevant to the vendor of the
-// cluster device. See Cluster Details - Nodes - Vendor Configuration
-// below for more details.
+// An object that has fields relevant to the vendor of the cluster device. See Cluster Details - Nodes - Vendor Configuration below for more details.
 func (o DeviceClusterDetailsNode1PtrOutput) VendorConfiguration() DeviceClusterDetailsNode1VendorConfigurationPtrOutput {
 	return o.ApplyT(func(v *DeviceClusterDetailsNode1) *DeviceClusterDetailsNode1VendorConfiguration {
 		if v == nil {
@@ -1314,8 +1273,7 @@ func (o DeviceClusterDetailsNode1PtrOutput) VendorConfiguration() DeviceClusterD
 type DeviceClusterDetailsNode1VendorConfiguration struct {
 	// Activation key. This is required for Velocloud clusters.
 	ActivationKey *string `pulumi:"activationKey"`
-	// The administrative password of the device. You can use it to log in
-	// to the console. This field is not available for all device types.
+	// The administrative password of the device. You can use it to log in to the console. This field is not available for all device types.
 	AdminPassword *string `pulumi:"adminPassword"`
 	// System IP Address. Mandatory for the Fortinet SDWAN cluster device.
 	Controller1 *string `pulumi:"controller1"`
@@ -1333,8 +1291,7 @@ type DeviceClusterDetailsNode1VendorConfiguration struct {
 	PrivateCidrMask *string `pulumi:"privateCidrMask"`
 	// Private gateway. This field is relevant only for the BlueCat DNS and DHCP Server
 	PrivateGateway *string `pulumi:"privateGateway"`
-	// The CLI password of the device. This field is relevant only for the
-	// Velocloud SDWAN cluster.
+	// The CLI password of the device. This field is relevant only for the Velocloud SDWAN cluster.
 	RootPassword *string `pulumi:"rootPassword"`
 }
 
@@ -1352,8 +1309,7 @@ type DeviceClusterDetailsNode1VendorConfigurationInput interface {
 type DeviceClusterDetailsNode1VendorConfigurationArgs struct {
 	// Activation key. This is required for Velocloud clusters.
 	ActivationKey pulumi.StringPtrInput `pulumi:"activationKey"`
-	// The administrative password of the device. You can use it to log in
-	// to the console. This field is not available for all device types.
+	// The administrative password of the device. You can use it to log in to the console. This field is not available for all device types.
 	AdminPassword pulumi.StringPtrInput `pulumi:"adminPassword"`
 	// System IP Address. Mandatory for the Fortinet SDWAN cluster device.
 	Controller1 pulumi.StringPtrInput `pulumi:"controller1"`
@@ -1371,8 +1327,7 @@ type DeviceClusterDetailsNode1VendorConfigurationArgs struct {
 	PrivateCidrMask pulumi.StringPtrInput `pulumi:"privateCidrMask"`
 	// Private gateway. This field is relevant only for the BlueCat DNS and DHCP Server
 	PrivateGateway pulumi.StringPtrInput `pulumi:"privateGateway"`
-	// The CLI password of the device. This field is relevant only for the
-	// Velocloud SDWAN cluster.
+	// The CLI password of the device. This field is relevant only for the Velocloud SDWAN cluster.
 	RootPassword pulumi.StringPtrInput `pulumi:"rootPassword"`
 }
 
@@ -1458,8 +1413,7 @@ func (o DeviceClusterDetailsNode1VendorConfigurationOutput) ActivationKey() pulu
 	return o.ApplyT(func(v DeviceClusterDetailsNode1VendorConfiguration) *string { return v.ActivationKey }).(pulumi.StringPtrOutput)
 }
 
-// The administrative password of the device. You can use it to log in
-// to the console. This field is not available for all device types.
+// The administrative password of the device. You can use it to log in to the console. This field is not available for all device types.
 func (o DeviceClusterDetailsNode1VendorConfigurationOutput) AdminPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceClusterDetailsNode1VendorConfiguration) *string { return v.AdminPassword }).(pulumi.StringPtrOutput)
 }
@@ -1504,8 +1458,7 @@ func (o DeviceClusterDetailsNode1VendorConfigurationOutput) PrivateGateway() pul
 	return o.ApplyT(func(v DeviceClusterDetailsNode1VendorConfiguration) *string { return v.PrivateGateway }).(pulumi.StringPtrOutput)
 }
 
-// The CLI password of the device. This field is relevant only for the
-// Velocloud SDWAN cluster.
+// The CLI password of the device. This field is relevant only for the Velocloud SDWAN cluster.
 func (o DeviceClusterDetailsNode1VendorConfigurationOutput) RootPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceClusterDetailsNode1VendorConfiguration) *string { return v.RootPassword }).(pulumi.StringPtrOutput)
 }
@@ -1544,8 +1497,7 @@ func (o DeviceClusterDetailsNode1VendorConfigurationPtrOutput) ActivationKey() p
 	}).(pulumi.StringPtrOutput)
 }
 
-// The administrative password of the device. You can use it to log in
-// to the console. This field is not available for all device types.
+// The administrative password of the device. You can use it to log in to the console. This field is not available for all device types.
 func (o DeviceClusterDetailsNode1VendorConfigurationPtrOutput) AdminPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeviceClusterDetailsNode1VendorConfiguration) *string {
 		if v == nil {
@@ -1635,8 +1587,7 @@ func (o DeviceClusterDetailsNode1VendorConfigurationPtrOutput) PrivateGateway() 
 	}).(pulumi.StringPtrOutput)
 }
 
-// The CLI password of the device. This field is relevant only for the
-// Velocloud SDWAN cluster.
+// The CLI password of the device. This field is relevant only for the Velocloud SDWAN cluster.
 func (o DeviceClusterDetailsNode1VendorConfigurationPtrOutput) RootPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeviceClusterDetailsNode1VendorConfiguration) *string {
 		if v == nil {
@@ -1811,13 +1762,11 @@ type DeviceLinkDevice struct {
 	Asn *int `pulumi:"asn"`
 	// Device identifier.
 	Id string `pulumi:"id"`
-	// Device network interface identifier to use for device link
-	// connection.
+	// Device network interface identifier to use for device link connection.
 	InterfaceId *int `pulumi:"interfaceId"`
 	// IP address from device link subnet that was assigned to the device
 	IpAddress *string `pulumi:"ipAddress"`
-	// device link provisioning status on a given device. One of `PROVISIONING`,
-	// `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
+	// device link provisioning status on a given device. One of `PROVISIONING`, `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
 	Status *string `pulumi:"status"`
 }
 
@@ -1837,13 +1786,11 @@ type DeviceLinkDeviceArgs struct {
 	Asn pulumi.IntPtrInput `pulumi:"asn"`
 	// Device identifier.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Device network interface identifier to use for device link
-	// connection.
+	// Device network interface identifier to use for device link connection.
 	InterfaceId pulumi.IntPtrInput `pulumi:"interfaceId"`
 	// IP address from device link subnet that was assigned to the device
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
-	// device link provisioning status on a given device. One of `PROVISIONING`,
-	// `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
+	// device link provisioning status on a given device. One of `PROVISIONING`, `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
@@ -1908,8 +1855,7 @@ func (o DeviceLinkDeviceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v DeviceLinkDevice) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Device network interface identifier to use for device link
-// connection.
+// Device network interface identifier to use for device link connection.
 func (o DeviceLinkDeviceOutput) InterfaceId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DeviceLinkDevice) *int { return v.InterfaceId }).(pulumi.IntPtrOutput)
 }
@@ -1919,8 +1865,7 @@ func (o DeviceLinkDeviceOutput) IpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceLinkDevice) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
 }
 
-// device link provisioning status on a given device. One of `PROVISIONING`,
-// `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
+// device link provisioning status on a given device. One of `PROVISIONING`, `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
 func (o DeviceLinkDeviceOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceLinkDevice) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
@@ -1946,8 +1891,7 @@ func (o DeviceLinkDeviceArrayOutput) Index(i pulumi.IntInput) DeviceLinkDeviceOu
 }
 
 type DeviceLinkLink struct {
-	// billing account number to be used for
-	// connection charges
+	// billing account number to be used for connection charges
 	AccountNumber string `pulumi:"accountNumber"`
 	// connection destination metro code.
 	DstMetroCode string `pulumi:"dstMetroCode"`
@@ -1979,8 +1923,7 @@ type DeviceLinkLinkInput interface {
 }
 
 type DeviceLinkLinkArgs struct {
-	// billing account number to be used for
-	// connection charges
+	// billing account number to be used for connection charges
 	AccountNumber pulumi.StringInput `pulumi:"accountNumber"`
 	// connection destination metro code.
 	DstMetroCode pulumi.StringInput `pulumi:"dstMetroCode"`
@@ -2051,8 +1994,7 @@ func (o DeviceLinkLinkOutput) ToDeviceLinkLinkOutputWithContext(ctx context.Cont
 	return o
 }
 
-// billing account number to be used for
-// connection charges
+// billing account number to be used for connection charges
 func (o DeviceLinkLinkOutput) AccountNumber() pulumi.StringOutput {
 	return o.ApplyT(func(v DeviceLinkLink) string { return v.AccountNumber }).(pulumi.StringOutput)
 }
@@ -2112,8 +2054,7 @@ func (o DeviceLinkLinkArrayOutput) Index(i pulumi.IntInput) DeviceLinkLinkOutput
 }
 
 type DeviceLinkMetroLink struct {
-	// billing account number to be used for
-	// connection charges
+	// billing account number to be used for connection charges
 	AccountNumber string `pulumi:"accountNumber"`
 	// connection metro code.
 	MetroCode string `pulumi:"metroCode"`
@@ -2135,8 +2076,7 @@ type DeviceLinkMetroLinkInput interface {
 }
 
 type DeviceLinkMetroLinkArgs struct {
-	// billing account number to be used for
-	// connection charges
+	// billing account number to be used for connection charges
 	AccountNumber pulumi.StringInput `pulumi:"accountNumber"`
 	// connection metro code.
 	MetroCode pulumi.StringInput `pulumi:"metroCode"`
@@ -2197,8 +2137,7 @@ func (o DeviceLinkMetroLinkOutput) ToDeviceLinkMetroLinkOutputWithContext(ctx co
 	return o
 }
 
-// billing account number to be used for
-// connection charges
+// billing account number to be used for connection charges
 func (o DeviceLinkMetroLinkOutput) AccountNumber() pulumi.StringOutput {
 	return o.ApplyT(func(v DeviceLinkMetroLink) string { return v.AccountNumber }).(pulumi.StringOutput)
 }
@@ -2241,11 +2180,9 @@ func (o DeviceLinkMetroLinkArrayOutput) Index(i pulumi.IntInput) DeviceLinkMetro
 type DeviceSecondaryDevice struct {
 	// Billing account number for secondary device.
 	AccountNumber string `pulumi:"accountNumber"`
-	// Identifier of a WAN interface ACL template that will be applied
-	// on a secondary device.
+	// Identifier of a WAN interface ACL template that will be applied on a secondary device.
 	AclTemplateId *string `pulumi:"aclTemplateId"`
-	// Additional Internet bandwidth, in Mbps, for a secondary
-	// device.
+	// Additional Internet bandwidth, in Mbps, for a secondary device.
 	AdditionalBandwidth *int `pulumi:"additionalBandwidth"`
 	// (Autonomous System Number) Unique identifier for a network on the internet.
 	Asn *int `pulumi:"asn"`
@@ -2255,36 +2192,28 @@ type DeviceSecondaryDevice struct {
 	Hostname *string `pulumi:"hostname"`
 	// Device location Equinix Business Exchange name.
 	Ibx *string `pulumi:"ibx"`
-	// List of device interfaces. See Interface Attribute below
-	// for more details.
+	// List of device interfaces. See Interface Attribute below for more details.
 	Interfaces []DeviceSecondaryDeviceInterface `pulumi:"interfaces"`
-	// Path to the license file that will be uploaded and applied on a
-	// secondary device. Applicable for some device types in BYOL licensing mode.
+	// Path to the license file that will be uploaded and applied on a secondary device. Applicable for some device types in BYOL licensing mode.
 	LicenseFile *string `pulumi:"licenseFile"`
 	// Identifier of a license file that will be applied on a secondary device.
 	LicenseFileId *string `pulumi:"licenseFileId"`
-	// Device license registration status. Possible values are `APPLYING_LICENSE`,
-	// `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
+	// Device license registration status. Possible values are `APPLYING_LICENSE`, `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
 	LicenseStatus *string `pulumi:"licenseStatus"`
 	// License Token can be provided for some device types o the device.
 	LicenseToken *string `pulumi:"licenseToken"`
 	// Metro location of a secondary device.
 	MetroCode string `pulumi:"metroCode"`
-	// Identifier of an MGMT interface ACL template that will be
-	// applied on a secondary device.
-	// * `ssh-key` - (Optional) Up to one definition of SSH key that will be provisioned on a secondary
-	//   device.
+	// Identifier of an MGMT interface ACL template that will be applied on a secondary device.
+	// * `ssh-key` - (Optional) Up to one definition of SSH key that will be provisioned on a secondary device.
 	MgmtAclTemplateUuid *string `pulumi:"mgmtAclTemplateUuid"`
 	// Secondary device name.
 	Name string `pulumi:"name"`
-	// List of email addresses that will receive notifications about
-	// secondary device.
+	// List of email addresses that will receive notifications about secondary device.
 	Notifications []string `pulumi:"notifications"`
-	// Unique Identifier for the project resource where the device is scoped to.If you
-	// leave it out, the device will be created under the default project id of your organization.
+	// Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
 	ProjectId *string `pulumi:"projectId"`
-	// Device redundancy type applicable for HA devices, either
-	// primary or secondary.
+	// Device redundancy type applicable for HA devices, either primary or secondary.
 	RedundancyType *string `pulumi:"redundancyType"`
 	// Unique identifier for a redundant device applicable for HA devices.
 	RedundantId *string `pulumi:"redundantId"`
@@ -2300,9 +2229,7 @@ type DeviceSecondaryDevice struct {
 	Status *string `pulumi:"status"`
 	// Device unique identifier.
 	Uuid *string `pulumi:"uuid"`
-	// Key/Value pairs of vendor specific configuration parameters
-	// for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`,
-	// `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`.
+	// Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`.
 	VendorConfiguration map[string]string `pulumi:"vendorConfiguration"`
 	// device interface id picked for WAN
 	WanInterfaceId *string `pulumi:"wanInterfaceId"`
@@ -2324,11 +2251,9 @@ type DeviceSecondaryDeviceInput interface {
 type DeviceSecondaryDeviceArgs struct {
 	// Billing account number for secondary device.
 	AccountNumber pulumi.StringInput `pulumi:"accountNumber"`
-	// Identifier of a WAN interface ACL template that will be applied
-	// on a secondary device.
+	// Identifier of a WAN interface ACL template that will be applied on a secondary device.
 	AclTemplateId pulumi.StringPtrInput `pulumi:"aclTemplateId"`
-	// Additional Internet bandwidth, in Mbps, for a secondary
-	// device.
+	// Additional Internet bandwidth, in Mbps, for a secondary device.
 	AdditionalBandwidth pulumi.IntPtrInput `pulumi:"additionalBandwidth"`
 	// (Autonomous System Number) Unique identifier for a network on the internet.
 	Asn pulumi.IntPtrInput `pulumi:"asn"`
@@ -2338,36 +2263,28 @@ type DeviceSecondaryDeviceArgs struct {
 	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
 	// Device location Equinix Business Exchange name.
 	Ibx pulumi.StringPtrInput `pulumi:"ibx"`
-	// List of device interfaces. See Interface Attribute below
-	// for more details.
+	// List of device interfaces. See Interface Attribute below for more details.
 	Interfaces DeviceSecondaryDeviceInterfaceArrayInput `pulumi:"interfaces"`
-	// Path to the license file that will be uploaded and applied on a
-	// secondary device. Applicable for some device types in BYOL licensing mode.
+	// Path to the license file that will be uploaded and applied on a secondary device. Applicable for some device types in BYOL licensing mode.
 	LicenseFile pulumi.StringPtrInput `pulumi:"licenseFile"`
 	// Identifier of a license file that will be applied on a secondary device.
 	LicenseFileId pulumi.StringPtrInput `pulumi:"licenseFileId"`
-	// Device license registration status. Possible values are `APPLYING_LICENSE`,
-	// `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
+	// Device license registration status. Possible values are `APPLYING_LICENSE`, `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
 	LicenseStatus pulumi.StringPtrInput `pulumi:"licenseStatus"`
 	// License Token can be provided for some device types o the device.
 	LicenseToken pulumi.StringPtrInput `pulumi:"licenseToken"`
 	// Metro location of a secondary device.
 	MetroCode pulumi.StringInput `pulumi:"metroCode"`
-	// Identifier of an MGMT interface ACL template that will be
-	// applied on a secondary device.
-	// * `ssh-key` - (Optional) Up to one definition of SSH key that will be provisioned on a secondary
-	//   device.
+	// Identifier of an MGMT interface ACL template that will be applied on a secondary device.
+	// * `ssh-key` - (Optional) Up to one definition of SSH key that will be provisioned on a secondary device.
 	MgmtAclTemplateUuid pulumi.StringPtrInput `pulumi:"mgmtAclTemplateUuid"`
 	// Secondary device name.
 	Name pulumi.StringInput `pulumi:"name"`
-	// List of email addresses that will receive notifications about
-	// secondary device.
+	// List of email addresses that will receive notifications about secondary device.
 	Notifications pulumi.StringArrayInput `pulumi:"notifications"`
-	// Unique Identifier for the project resource where the device is scoped to.If you
-	// leave it out, the device will be created under the default project id of your organization.
+	// Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
-	// Device redundancy type applicable for HA devices, either
-	// primary or secondary.
+	// Device redundancy type applicable for HA devices, either primary or secondary.
 	RedundancyType pulumi.StringPtrInput `pulumi:"redundancyType"`
 	// Unique identifier for a redundant device applicable for HA devices.
 	RedundantId pulumi.StringPtrInput `pulumi:"redundantId"`
@@ -2383,9 +2300,7 @@ type DeviceSecondaryDeviceArgs struct {
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// Device unique identifier.
 	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
-	// Key/Value pairs of vendor specific configuration parameters
-	// for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`,
-	// `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`.
+	// Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`.
 	VendorConfiguration pulumi.StringMapInput `pulumi:"vendorConfiguration"`
 	// device interface id picked for WAN
 	WanInterfaceId pulumi.StringPtrInput `pulumi:"wanInterfaceId"`
@@ -2475,14 +2390,12 @@ func (o DeviceSecondaryDeviceOutput) AccountNumber() pulumi.StringOutput {
 	return o.ApplyT(func(v DeviceSecondaryDevice) string { return v.AccountNumber }).(pulumi.StringOutput)
 }
 
-// Identifier of a WAN interface ACL template that will be applied
-// on a secondary device.
+// Identifier of a WAN interface ACL template that will be applied on a secondary device.
 func (o DeviceSecondaryDeviceOutput) AclTemplateId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceSecondaryDevice) *string { return v.AclTemplateId }).(pulumi.StringPtrOutput)
 }
 
-// Additional Internet bandwidth, in Mbps, for a secondary
-// device.
+// Additional Internet bandwidth, in Mbps, for a secondary device.
 func (o DeviceSecondaryDeviceOutput) AdditionalBandwidth() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DeviceSecondaryDevice) *int { return v.AdditionalBandwidth }).(pulumi.IntPtrOutput)
 }
@@ -2507,14 +2420,12 @@ func (o DeviceSecondaryDeviceOutput) Ibx() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceSecondaryDevice) *string { return v.Ibx }).(pulumi.StringPtrOutput)
 }
 
-// List of device interfaces. See Interface Attribute below
-// for more details.
+// List of device interfaces. See Interface Attribute below for more details.
 func (o DeviceSecondaryDeviceOutput) Interfaces() DeviceSecondaryDeviceInterfaceArrayOutput {
 	return o.ApplyT(func(v DeviceSecondaryDevice) []DeviceSecondaryDeviceInterface { return v.Interfaces }).(DeviceSecondaryDeviceInterfaceArrayOutput)
 }
 
-// Path to the license file that will be uploaded and applied on a
-// secondary device. Applicable for some device types in BYOL licensing mode.
+// Path to the license file that will be uploaded and applied on a secondary device. Applicable for some device types in BYOL licensing mode.
 func (o DeviceSecondaryDeviceOutput) LicenseFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceSecondaryDevice) *string { return v.LicenseFile }).(pulumi.StringPtrOutput)
 }
@@ -2524,8 +2435,7 @@ func (o DeviceSecondaryDeviceOutput) LicenseFileId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceSecondaryDevice) *string { return v.LicenseFileId }).(pulumi.StringPtrOutput)
 }
 
-// Device license registration status. Possible values are `APPLYING_LICENSE`,
-// `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
+// Device license registration status. Possible values are `APPLYING_LICENSE`, `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
 func (o DeviceSecondaryDeviceOutput) LicenseStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceSecondaryDevice) *string { return v.LicenseStatus }).(pulumi.StringPtrOutput)
 }
@@ -2540,10 +2450,8 @@ func (o DeviceSecondaryDeviceOutput) MetroCode() pulumi.StringOutput {
 	return o.ApplyT(func(v DeviceSecondaryDevice) string { return v.MetroCode }).(pulumi.StringOutput)
 }
 
-// Identifier of an MGMT interface ACL template that will be
-// applied on a secondary device.
-//   - `ssh-key` - (Optional) Up to one definition of SSH key that will be provisioned on a secondary
-//     device.
+// Identifier of an MGMT interface ACL template that will be applied on a secondary device.
+// * `ssh-key` - (Optional) Up to one definition of SSH key that will be provisioned on a secondary device.
 func (o DeviceSecondaryDeviceOutput) MgmtAclTemplateUuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceSecondaryDevice) *string { return v.MgmtAclTemplateUuid }).(pulumi.StringPtrOutput)
 }
@@ -2553,20 +2461,17 @@ func (o DeviceSecondaryDeviceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v DeviceSecondaryDevice) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// List of email addresses that will receive notifications about
-// secondary device.
+// List of email addresses that will receive notifications about secondary device.
 func (o DeviceSecondaryDeviceOutput) Notifications() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DeviceSecondaryDevice) []string { return v.Notifications }).(pulumi.StringArrayOutput)
 }
 
-// Unique Identifier for the project resource where the device is scoped to.If you
-// leave it out, the device will be created under the default project id of your organization.
+// Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
 func (o DeviceSecondaryDeviceOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceSecondaryDevice) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// Device redundancy type applicable for HA devices, either
-// primary or secondary.
+// Device redundancy type applicable for HA devices, either primary or secondary.
 func (o DeviceSecondaryDeviceOutput) RedundancyType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceSecondaryDevice) *string { return v.RedundancyType }).(pulumi.StringPtrOutput)
 }
@@ -2606,9 +2511,7 @@ func (o DeviceSecondaryDeviceOutput) Uuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceSecondaryDevice) *string { return v.Uuid }).(pulumi.StringPtrOutput)
 }
 
-// Key/Value pairs of vendor specific configuration parameters
-// for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`,
-// `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`.
+// Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`.
 func (o DeviceSecondaryDeviceOutput) VendorConfiguration() pulumi.StringMapOutput {
 	return o.ApplyT(func(v DeviceSecondaryDevice) map[string]string { return v.VendorConfiguration }).(pulumi.StringMapOutput)
 }
@@ -2657,8 +2560,7 @@ func (o DeviceSecondaryDevicePtrOutput) AccountNumber() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Identifier of a WAN interface ACL template that will be applied
-// on a secondary device.
+// Identifier of a WAN interface ACL template that will be applied on a secondary device.
 func (o DeviceSecondaryDevicePtrOutput) AclTemplateId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeviceSecondaryDevice) *string {
 		if v == nil {
@@ -2668,8 +2570,7 @@ func (o DeviceSecondaryDevicePtrOutput) AclTemplateId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Additional Internet bandwidth, in Mbps, for a secondary
-// device.
+// Additional Internet bandwidth, in Mbps, for a secondary device.
 func (o DeviceSecondaryDevicePtrOutput) AdditionalBandwidth() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DeviceSecondaryDevice) *int {
 		if v == nil {
@@ -2719,8 +2620,7 @@ func (o DeviceSecondaryDevicePtrOutput) Ibx() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// List of device interfaces. See Interface Attribute below
-// for more details.
+// List of device interfaces. See Interface Attribute below for more details.
 func (o DeviceSecondaryDevicePtrOutput) Interfaces() DeviceSecondaryDeviceInterfaceArrayOutput {
 	return o.ApplyT(func(v *DeviceSecondaryDevice) []DeviceSecondaryDeviceInterface {
 		if v == nil {
@@ -2730,8 +2630,7 @@ func (o DeviceSecondaryDevicePtrOutput) Interfaces() DeviceSecondaryDeviceInterf
 	}).(DeviceSecondaryDeviceInterfaceArrayOutput)
 }
 
-// Path to the license file that will be uploaded and applied on a
-// secondary device. Applicable for some device types in BYOL licensing mode.
+// Path to the license file that will be uploaded and applied on a secondary device. Applicable for some device types in BYOL licensing mode.
 func (o DeviceSecondaryDevicePtrOutput) LicenseFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeviceSecondaryDevice) *string {
 		if v == nil {
@@ -2751,8 +2650,7 @@ func (o DeviceSecondaryDevicePtrOutput) LicenseFileId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Device license registration status. Possible values are `APPLYING_LICENSE`,
-// `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
+// Device license registration status. Possible values are `APPLYING_LICENSE`, `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
 func (o DeviceSecondaryDevicePtrOutput) LicenseStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeviceSecondaryDevice) *string {
 		if v == nil {
@@ -2782,10 +2680,8 @@ func (o DeviceSecondaryDevicePtrOutput) MetroCode() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Identifier of an MGMT interface ACL template that will be
-// applied on a secondary device.
-//   - `ssh-key` - (Optional) Up to one definition of SSH key that will be provisioned on a secondary
-//     device.
+// Identifier of an MGMT interface ACL template that will be applied on a secondary device.
+// * `ssh-key` - (Optional) Up to one definition of SSH key that will be provisioned on a secondary device.
 func (o DeviceSecondaryDevicePtrOutput) MgmtAclTemplateUuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeviceSecondaryDevice) *string {
 		if v == nil {
@@ -2805,8 +2701,7 @@ func (o DeviceSecondaryDevicePtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// List of email addresses that will receive notifications about
-// secondary device.
+// List of email addresses that will receive notifications about secondary device.
 func (o DeviceSecondaryDevicePtrOutput) Notifications() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DeviceSecondaryDevice) []string {
 		if v == nil {
@@ -2816,8 +2711,7 @@ func (o DeviceSecondaryDevicePtrOutput) Notifications() pulumi.StringArrayOutput
 	}).(pulumi.StringArrayOutput)
 }
 
-// Unique Identifier for the project resource where the device is scoped to.If you
-// leave it out, the device will be created under the default project id of your organization.
+// Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
 func (o DeviceSecondaryDevicePtrOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeviceSecondaryDevice) *string {
 		if v == nil {
@@ -2827,8 +2721,7 @@ func (o DeviceSecondaryDevicePtrOutput) ProjectId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Device redundancy type applicable for HA devices, either
-// primary or secondary.
+// Device redundancy type applicable for HA devices, either primary or secondary.
 func (o DeviceSecondaryDevicePtrOutput) RedundancyType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeviceSecondaryDevice) *string {
 		if v == nil {
@@ -2908,9 +2801,7 @@ func (o DeviceSecondaryDevicePtrOutput) Uuid() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Key/Value pairs of vendor specific configuration parameters
-// for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`,
-// `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`.
+// Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`.
 func (o DeviceSecondaryDevicePtrOutput) VendorConfiguration() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *DeviceSecondaryDevice) map[string]string {
 		if v == nil {
@@ -4205,7 +4096,7 @@ type GetDeviceInterface struct {
 	// Device provisioning status
 	// * INITIALIZING
 	// * PROVISIONING
-	// * PROVISIONED  (**NOTE: By default data source will only return devices in this state.  To include other states see `validStateList`**)
+	// * PROVISIONED (**NOTE: By default data source will only return devices in this state. To include other states see `validStateList`**)
 	// * WAITING_FOR_PRIMARY
 	// * WAITING_FOR_SECONDARY
 	// * WAITING_FOR_REPLICA_CLUSTER_NODES
@@ -4247,7 +4138,7 @@ type GetDeviceInterfaceArgs struct {
 	// Device provisioning status
 	// * INITIALIZING
 	// * PROVISIONING
-	// * PROVISIONED  (**NOTE: By default data source will only return devices in this state.  To include other states see `validStateList`**)
+	// * PROVISIONED (**NOTE: By default data source will only return devices in this state. To include other states see `validStateList`**)
 	// * WAITING_FOR_PRIMARY
 	// * WAITING_FOR_SECONDARY
 	// * WAITING_FOR_REPLICA_CLUSTER_NODES
@@ -4346,7 +4237,7 @@ func (o GetDeviceInterfaceOutput) OperationalStatus() pulumi.StringOutput {
 // Device provisioning status
 // * INITIALIZING
 // * PROVISIONING
-// * PROVISIONED  (**NOTE: By default data source will only return devices in this state.  To include other states see `validStateList`**)
+// * PROVISIONED (**NOTE: By default data source will only return devices in this state. To include other states see `validStateList`**)
 // * WAITING_FOR_PRIMARY
 // * WAITING_FOR_SECONDARY
 // * WAITING_FOR_REPLICA_CLUSTER_NODES
@@ -4403,7 +4294,7 @@ type GetDeviceSecondaryDevice struct {
 	// List of device interfaces
 	// * `interface.#.id` - interface identifier
 	// * `interface.#.name` - interface name
-	// * `interface.#.status` -  interface status (AVAILABLE, RESERVED, ASSIGNED)
+	// * `interface.#.status` - interface status (AVAILABLE, RESERVED, ASSIGNED)
 	// * `interface.#.operational_status` - interface operational status (up or down)
 	// * `interface.#.mac_address` - interface MAC address
 	// * `interface.#.ip_address` - interface IP address
@@ -4434,8 +4325,7 @@ type GetDeviceSecondaryDevice struct {
 	Notifications []string `pulumi:"notifications"`
 	// The unique identifier of Project Resource to which device is scoped to
 	ProjectId string `pulumi:"projectId"`
-	// Device redundancy type applicable for HA devices, either
-	// primary or secondary
+	// Device redundancy type applicable for HA devices, either primary or secondary
 	RedundancyType string `pulumi:"redundancyType"`
 	// Unique identifier for a redundant device applicable for HA devices
 	RedundantId string `pulumi:"redundantId"`
@@ -4450,7 +4340,7 @@ type GetDeviceSecondaryDevice struct {
 	// Device provisioning status
 	// * INITIALIZING
 	// * PROVISIONING
-	// * PROVISIONED  (**NOTE: By default data source will only return devices in this state.  To include other states see `validStateList`**)
+	// * PROVISIONED (**NOTE: By default data source will only return devices in this state. To include other states see `validStateList`**)
 	// * WAITING_FOR_PRIMARY
 	// * WAITING_FOR_SECONDARY
 	// * WAITING_FOR_REPLICA_CLUSTER_NODES
@@ -4500,7 +4390,7 @@ type GetDeviceSecondaryDeviceArgs struct {
 	// List of device interfaces
 	// * `interface.#.id` - interface identifier
 	// * `interface.#.name` - interface name
-	// * `interface.#.status` -  interface status (AVAILABLE, RESERVED, ASSIGNED)
+	// * `interface.#.status` - interface status (AVAILABLE, RESERVED, ASSIGNED)
 	// * `interface.#.operational_status` - interface operational status (up or down)
 	// * `interface.#.mac_address` - interface MAC address
 	// * `interface.#.ip_address` - interface IP address
@@ -4531,8 +4421,7 @@ type GetDeviceSecondaryDeviceArgs struct {
 	Notifications pulumi.StringArrayInput `pulumi:"notifications"`
 	// The unique identifier of Project Resource to which device is scoped to
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
-	// Device redundancy type applicable for HA devices, either
-	// primary or secondary
+	// Device redundancy type applicable for HA devices, either primary or secondary
 	RedundancyType pulumi.StringInput `pulumi:"redundancyType"`
 	// Unique identifier for a redundant device applicable for HA devices
 	RedundantId pulumi.StringInput `pulumi:"redundantId"`
@@ -4547,7 +4436,7 @@ type GetDeviceSecondaryDeviceArgs struct {
 	// Device provisioning status
 	// * INITIALIZING
 	// * PROVISIONING
-	// * PROVISIONED  (**NOTE: By default data source will only return devices in this state.  To include other states see `validStateList`**)
+	// * PROVISIONED (**NOTE: By default data source will only return devices in this state. To include other states see `validStateList`**)
 	// * WAITING_FOR_PRIMARY
 	// * WAITING_FOR_SECONDARY
 	// * WAITING_FOR_REPLICA_CLUSTER_NODES
@@ -4657,7 +4546,7 @@ func (o GetDeviceSecondaryDeviceOutput) Ibx() pulumi.StringOutput {
 // List of device interfaces
 // * `interface.#.id` - interface identifier
 // * `interface.#.name` - interface name
-// * `interface.#.status` -  interface status (AVAILABLE, RESERVED, ASSIGNED)
+// * `interface.#.status` - interface status (AVAILABLE, RESERVED, ASSIGNED)
 // * `interface.#.operational_status` - interface operational status (up or down)
 // * `interface.#.mac_address` - interface MAC address
 // * `interface.#.ip_address` - interface IP address
@@ -4718,8 +4607,7 @@ func (o GetDeviceSecondaryDeviceOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDeviceSecondaryDevice) string { return v.ProjectId }).(pulumi.StringOutput)
 }
 
-// Device redundancy type applicable for HA devices, either
-// primary or secondary
+// Device redundancy type applicable for HA devices, either primary or secondary
 func (o GetDeviceSecondaryDeviceOutput) RedundancyType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDeviceSecondaryDevice) string { return v.RedundancyType }).(pulumi.StringOutput)
 }
@@ -4752,7 +4640,7 @@ func (o GetDeviceSecondaryDeviceOutput) SshKeys() GetDeviceSecondaryDeviceSshKey
 // Device provisioning status
 // * INITIALIZING
 // * PROVISIONING
-// * PROVISIONED  (**NOTE: By default data source will only return devices in this state.  To include other states see `validStateList`**)
+// * PROVISIONED (**NOTE: By default data source will only return devices in this state. To include other states see `validStateList`**)
 // * WAITING_FOR_PRIMARY
 // * WAITING_FOR_SECONDARY
 // * WAITING_FOR_REPLICA_CLUSTER_NODES
@@ -4822,7 +4710,7 @@ type GetDeviceSecondaryDeviceInterface struct {
 	// Device provisioning status
 	// * INITIALIZING
 	// * PROVISIONING
-	// * PROVISIONED  (**NOTE: By default data source will only return devices in this state.  To include other states see `validStateList`**)
+	// * PROVISIONED (**NOTE: By default data source will only return devices in this state. To include other states see `validStateList`**)
 	// * WAITING_FOR_PRIMARY
 	// * WAITING_FOR_SECONDARY
 	// * WAITING_FOR_REPLICA_CLUSTER_NODES
@@ -4864,7 +4752,7 @@ type GetDeviceSecondaryDeviceInterfaceArgs struct {
 	// Device provisioning status
 	// * INITIALIZING
 	// * PROVISIONING
-	// * PROVISIONED  (**NOTE: By default data source will only return devices in this state.  To include other states see `validStateList`**)
+	// * PROVISIONED (**NOTE: By default data source will only return devices in this state. To include other states see `validStateList`**)
 	// * WAITING_FOR_PRIMARY
 	// * WAITING_FOR_SECONDARY
 	// * WAITING_FOR_REPLICA_CLUSTER_NODES
@@ -4963,7 +4851,7 @@ func (o GetDeviceSecondaryDeviceInterfaceOutput) OperationalStatus() pulumi.Stri
 // Device provisioning status
 // * INITIALIZING
 // * PROVISIONING
-// * PROVISIONED  (**NOTE: By default data source will only return devices in this state.  To include other states see `validStateList`**)
+// * PROVISIONED (**NOTE: By default data source will only return devices in this state. To include other states see `validStateList`**)
 // * WAITING_FOR_PRIMARY
 // * WAITING_FOR_SECONDARY
 // * WAITING_FOR_REPLICA_CLUSTER_NODES

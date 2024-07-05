@@ -110,11 +110,9 @@ def get_account(metro_code: Optional[str] = None,
                 status: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountResult:
     """
-    Use this data source to get number and identifier of Equinix Network Edge
-    billing account in a given metro location.
+    Use this data source to get number and identifier of Equinix Network Edge billing account in a given metro location.
 
-    Billing account reference is required to create Network Edge virtual device
-    in corresponding metro location.
+    Billing account reference is required to create Network Edge virtual device in corresponding metro location.
 
     ## Example Usage
 
@@ -131,10 +129,8 @@ def get_account(metro_code: Optional[str] = None,
 
     :param str metro_code: Account location metro code.
     :param str name: Account name for filtering.
-    :param str project_id: Unique Identifier for the project resource where the account is scoped to.If you
-           leave it out, all the billing accounts under all projects in your organization will be returned and it may return more than one account.
-    :param str status: Account status for filtering. Possible values are: `Active`, `Processing`,
-           `Submitted`, `Staged`.
+    :param str project_id: Unique Identifier for the project resource where the account is scoped to.If you leave it out, all the billing accounts under all projects in your organization will be returned and it may return more than one account.
+    :param str status: Account status for filtering. Possible values are: `Active`, `Processing`, `Submitted`, `Staged`.
     """
     __args__ = dict()
     __args__['metroCode'] = metro_code
@@ -161,11 +157,9 @@ def get_account_output(metro_code: Optional[pulumi.Input[str]] = None,
                        status: Optional[pulumi.Input[Optional[str]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountResult]:
     """
-    Use this data source to get number and identifier of Equinix Network Edge
-    billing account in a given metro location.
+    Use this data source to get number and identifier of Equinix Network Edge billing account in a given metro location.
 
-    Billing account reference is required to create Network Edge virtual device
-    in corresponding metro location.
+    Billing account reference is required to create Network Edge virtual device in corresponding metro location.
 
     ## Example Usage
 
@@ -182,9 +176,7 @@ def get_account_output(metro_code: Optional[pulumi.Input[str]] = None,
 
     :param str metro_code: Account location metro code.
     :param str name: Account name for filtering.
-    :param str project_id: Unique Identifier for the project resource where the account is scoped to.If you
-           leave it out, all the billing accounts under all projects in your organization will be returned and it may return more than one account.
-    :param str status: Account status for filtering. Possible values are: `Active`, `Processing`,
-           `Submitted`, `Staged`.
+    :param str project_id: Unique Identifier for the project resource where the account is scoped to.If you leave it out, all the billing accounts under all projects in your organization will be returned and it may return more than one account.
+    :param str status: Account status for filtering. Possible values are: `Active`, `Processing`, `Submitted`, `Staged`.
     """
     ...

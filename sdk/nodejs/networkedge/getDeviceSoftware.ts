@@ -5,9 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Use this data source to get Equinix Network Edge device software details for a given
- * device type. For further details, check supported
- * [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
+ * Use this data source to get Equinix Network Edge device software details for a given device type. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
  *
  * ## Example Usage
  *
@@ -44,13 +42,11 @@ export interface GetDeviceSoftwareArgs {
      */
     deviceType: string;
     /**
-     * Boolean value to indicate that most recent version should be used *(in
-     * case when more than one result is returned)*.
+     * Boolean value to indicate that most recent version should be used *(in case when more than one result is returned)*.
      */
     mostRecent?: boolean;
     /**
-     * Limits returned versions to those that are supported by given software
-     * package codes.
+     * Limits returned versions to those that are supported by given software package codes.
      */
     packages?: string[];
     /**
@@ -58,8 +54,7 @@ export interface GetDeviceSoftwareArgs {
      */
     stable?: boolean;
     /**
-     * A regex string to apply on returned versions and filter search
-     * results.
+     * A regex string to apply on returned versions and filter search results.
      */
     versionRegex?: string;
 }
@@ -99,9 +94,7 @@ export interface GetDeviceSoftwareResult {
     readonly versionRegex?: string;
 }
 /**
- * Use this data source to get Equinix Network Edge device software details for a given
- * device type. For further details, check supported
- * [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
+ * Use this data source to get Equinix Network Edge device software details for a given device type. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
  *
  * ## Example Usage
  *
@@ -130,13 +123,11 @@ export interface GetDeviceSoftwareOutputArgs {
      */
     deviceType: pulumi.Input<string>;
     /**
-     * Boolean value to indicate that most recent version should be used *(in
-     * case when more than one result is returned)*.
+     * Boolean value to indicate that most recent version should be used *(in case when more than one result is returned)*.
      */
     mostRecent?: pulumi.Input<boolean>;
     /**
-     * Limits returned versions to those that are supported by given software
-     * package codes.
+     * Limits returned versions to those that are supported by given software package codes.
      */
     packages?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -144,8 +135,7 @@ export interface GetDeviceSoftwareOutputArgs {
      */
     stable?: pulumi.Input<boolean>;
     /**
-     * A regex string to apply on returned versions and filter search
-     * results.
+     * A regex string to apply on returned versions and filter search results.
      */
     versionRegex?: pulumi.Input<string>;
 }

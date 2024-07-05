@@ -12,8 +12,7 @@ namespace Pulumi.Equinix.Metal
     public static class GetPort
     {
         /// <summary>
-        /// Use this data source to read ports of existing devices. You can read port by either its UUID,
-        /// or by a device UUID and port name.
+        /// Use this data source to read ports of existing devices. You can read port by either its UUID, or by a device UUID and port name.
         /// 
         /// ## Example Usage
         /// 
@@ -52,8 +51,7 @@ namespace Pulumi.Equinix.Metal
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPortResult>("equinix:metal/getPort:getPort", args ?? new GetPortArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to read ports of existing devices. You can read port by either its UUID,
-        /// or by a device UUID and port name.
+        /// Use this data source to read ports of existing devices. You can read port by either its UUID, or by a device UUID and port name.
         /// 
         /// ## Example Usage
         /// 

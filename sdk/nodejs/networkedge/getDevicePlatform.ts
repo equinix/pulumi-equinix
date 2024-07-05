@@ -5,9 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Use this data source to get Equinix Network Edge device platform configuration details
- * for a given device type. For further details, check supported
- * [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
+ * Use this data source to get Equinix Network Edge device platform configuration details for a given device type. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
  *
  * ## Example Usage
  *
@@ -48,18 +46,15 @@ export interface GetDevicePlatformArgs {
      */
     deviceType: string;
     /**
-     * Device platform flavor that determines number of CPU cores and memory.
-     * Supported values are: `small`, `medium`, `large`, `xlarge`.
+     * Device platform flavor that determines number of CPU cores and memory. Supported values are: `small`, `medium`, `large`, `xlarge`.
      */
     flavor?: string;
     /**
-     * List of device licensing options to limit platform search result.
-     * Supported values are: `BYOL` (for Bring Your Own License), `Sub` (for license subscription).
+     * List of device licensing options to limit platform search result. Supported values are: `BYOL` (for Bring Your Own License), `Sub` (for license subscription).
      */
     licenseOptions?: string[];
     /**
-     * List of device management types to limit platform search results.
-     * Supported values are: `EQUINIX-CONFIGURED`, `SELF-CONFIGURED`.
+     * List of device management types to limit platform search results. Supported values are: `EQUINIX-CONFIGURED`, `SELF-CONFIGURED`.
      */
     managementTypes?: string[];
     /**
@@ -92,9 +87,7 @@ export interface GetDevicePlatformResult {
     readonly packages: string[];
 }
 /**
- * Use this data source to get Equinix Network Edge device platform configuration details
- * for a given device type. For further details, check supported
- * [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
+ * Use this data source to get Equinix Network Edge device platform configuration details for a given device type. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
  *
  * ## Example Usage
  *
@@ -126,18 +119,15 @@ export interface GetDevicePlatformOutputArgs {
      */
     deviceType: pulumi.Input<string>;
     /**
-     * Device platform flavor that determines number of CPU cores and memory.
-     * Supported values are: `small`, `medium`, `large`, `xlarge`.
+     * Device platform flavor that determines number of CPU cores and memory. Supported values are: `small`, `medium`, `large`, `xlarge`.
      */
     flavor?: pulumi.Input<string>;
     /**
-     * List of device licensing options to limit platform search result.
-     * Supported values are: `BYOL` (for Bring Your Own License), `Sub` (for license subscription).
+     * List of device licensing options to limit platform search result. Supported values are: `BYOL` (for Bring Your Own License), `Sub` (for license subscription).
      */
     licenseOptions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * List of device management types to limit platform search results.
-     * Supported values are: `EQUINIX-CONFIGURED`, `SELF-CONFIGURED`.
+     * List of device management types to limit platform search results. Supported values are: `EQUINIX-CONFIGURED`, `SELF-CONFIGURED`.
      */
     managementTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**

@@ -35,7 +35,7 @@ class DeviceBehaviorArgs:
     def __init__(__self__, *,
                  allow_changes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_changes: List of attributes that are allowed to change without recreating the instance. Supported attributes: `custom_data`, `user_data`"
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_changes: List of attributes that are allowed to change without recreating the instance. Supported attributes: `custom_data`, `user_data`
         """
         if allow_changes is not None:
             pulumi.set(__self__, "allow_changes", allow_changes)
@@ -44,7 +44,7 @@ class DeviceBehaviorArgs:
     @pulumi.getter(name="allowChanges")
     def allow_changes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of attributes that are allowed to change without recreating the instance. Supported attributes: `custom_data`, `user_data`"
+        List of attributes that are allowed to change without recreating the instance. Supported attributes: `custom_data`, `user_data`
         """
         return pulumi.get(self, "allow_changes")
 
@@ -60,16 +60,9 @@ class DeviceIpAddressArgs:
                  cidr: Optional[pulumi.Input[int]] = None,
                  reservation_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[str] type: One of `private_ipv4`, `public_ipv4`, `public_ipv6`.
-        :param pulumi.Input[int] cidr: CIDR suffix for IP address block to be assigned, i.e. amount of addresses.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] reservation_ids: List of UUIDs of IP block reservations
-               from which the public IPv4 address should be taken.
-               
-               You can supply one `ip_address` block per IP address type. If you use the `ip_address` you must
-               always pass a block for `private_ipv4`.
-               
-               To learn more about using the reserved IP addresses for new devices, see the examples in the
-               metal.ReservedIpBlock documentation.
+        :param pulumi.Input[str] type: one of public*ipv4,private*ipv4,public_ipv6
+        :param pulumi.Input[int] cidr: CIDR suffix for IP block assigned to this device
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] reservation_ids: IDs of reservations to pick the blocks from
         """
         pulumi.set(__self__, "type", type)
         if cidr is not None:
@@ -81,7 +74,7 @@ class DeviceIpAddressArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        One of `private_ipv4`, `public_ipv4`, `public_ipv6`.
+        one of public*ipv4,private*ipv4,public_ipv6
         """
         return pulumi.get(self, "type")
 
@@ -93,7 +86,7 @@ class DeviceIpAddressArgs:
     @pulumi.getter
     def cidr(self) -> Optional[pulumi.Input[int]]:
         """
-        CIDR suffix for IP address block to be assigned, i.e. amount of addresses.
+        CIDR suffix for IP block assigned to this device
         """
         return pulumi.get(self, "cidr")
 
@@ -105,14 +98,7 @@ class DeviceIpAddressArgs:
     @pulumi.getter(name="reservationIds")
     def reservation_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of UUIDs of IP block reservations
-        from which the public IPv4 address should be taken.
-
-        You can supply one `ip_address` block per IP address type. If you use the `ip_address` you must
-        always pass a block for `private_ipv4`.
-
-        To learn more about using the reserved IP addresses for new devices, see the examples in the
-        metal.ReservedIpBlock documentation.
+        IDs of reservations to pick the blocks from
         """
         return pulumi.get(self, "reservation_ids")
 
@@ -130,11 +116,11 @@ class DeviceNetworkArgs:
                  gateway: Optional[pulumi.Input[str]] = None,
                  public: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] address: IPv4 or IPv6 address string.
-        :param pulumi.Input[int] cidr: Bit length of the network mask of the address.
-        :param pulumi.Input[int] family: IP version. One of `4`, `6`.
-        :param pulumi.Input[str] gateway: Address of router.
-        :param pulumi.Input[bool] public: Whether the address is routable from the Internet.
+        :param pulumi.Input[str] address: IPv4 or IPv6 address string
+        :param pulumi.Input[int] cidr: CIDR suffix for IP address block to be assigned, i.e. amount of addresses
+        :param pulumi.Input[int] family: IP version - "4" or "6"
+        :param pulumi.Input[str] gateway: Address of router
+        :param pulumi.Input[bool] public: Whether the address is routable from the Internet
         """
         if address is not None:
             pulumi.set(__self__, "address", address)
@@ -151,7 +137,7 @@ class DeviceNetworkArgs:
     @pulumi.getter
     def address(self) -> Optional[pulumi.Input[str]]:
         """
-        IPv4 or IPv6 address string.
+        IPv4 or IPv6 address string
         """
         return pulumi.get(self, "address")
 
@@ -163,7 +149,7 @@ class DeviceNetworkArgs:
     @pulumi.getter
     def cidr(self) -> Optional[pulumi.Input[int]]:
         """
-        Bit length of the network mask of the address.
+        CIDR suffix for IP address block to be assigned, i.e. amount of addresses
         """
         return pulumi.get(self, "cidr")
 
@@ -175,7 +161,7 @@ class DeviceNetworkArgs:
     @pulumi.getter
     def family(self) -> Optional[pulumi.Input[int]]:
         """
-        IP version. One of `4`, `6`.
+        IP version - "4" or "6"
         """
         return pulumi.get(self, "family")
 
@@ -187,7 +173,7 @@ class DeviceNetworkArgs:
     @pulumi.getter
     def gateway(self) -> Optional[pulumi.Input[str]]:
         """
-        Address of router.
+        Address of router
         """
         return pulumi.get(self, "gateway")
 
@@ -199,7 +185,7 @@ class DeviceNetworkArgs:
     @pulumi.getter
     def public(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether the address is routable from the Internet.
+        Whether the address is routable from the Internet
         """
         return pulumi.get(self, "public")
 
@@ -217,11 +203,11 @@ class DevicePortArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[bool] bonded: Whether this port is part of a bond in bonded network setup.
-        :param pulumi.Input[str] id: ID of the port.
-        :param pulumi.Input[str] mac: MAC address assigned to the port.
-        :param pulumi.Input[str] name: Name of the port (e.g. `eth0`, or `bond0`).
-        :param pulumi.Input[str] type: Type of the port (e.g. `NetworkPort` or `NetworkBondPort`).
+        :param pulumi.Input[bool] bonded: Whether this port is part of a bond in bonded network setup
+        :param pulumi.Input[str] id: The ID of the device
+        :param pulumi.Input[str] mac: MAC address assigned to the port
+        :param pulumi.Input[str] name: Name of the port (e.g. eth0, or bond0)
+        :param pulumi.Input[str] type: One of [private_ipv4, public_ipv4, public_ipv6]
         """
         if bonded is not None:
             pulumi.set(__self__, "bonded", bonded)
@@ -238,7 +224,7 @@ class DevicePortArgs:
     @pulumi.getter
     def bonded(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether this port is part of a bond in bonded network setup.
+        Whether this port is part of a bond in bonded network setup
         """
         return pulumi.get(self, "bonded")
 
@@ -250,7 +236,7 @@ class DevicePortArgs:
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[str]]:
         """
-        ID of the port.
+        The ID of the device
         """
         return pulumi.get(self, "id")
 
@@ -262,7 +248,7 @@ class DevicePortArgs:
     @pulumi.getter
     def mac(self) -> Optional[pulumi.Input[str]]:
         """
-        MAC address assigned to the port.
+        MAC address assigned to the port
         """
         return pulumi.get(self, "mac")
 
@@ -274,7 +260,7 @@ class DevicePortArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the port (e.g. `eth0`, or `bond0`).
+        Name of the port (e.g. eth0, or bond0)
         """
         return pulumi.get(self, "name")
 
@@ -286,7 +272,7 @@ class DevicePortArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        Type of the port (e.g. `NetworkPort` or `NetworkBondPort`).
+        One of [private_ipv4, public_ipv4, public_ipv6]
         """
         return pulumi.get(self, "type")
 
@@ -302,12 +288,9 @@ class DeviceReinstallArgs:
                  enabled: Optional[pulumi.Input[bool]] = None,
                  preserve_data: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[bool] deprovision_fast: Whether the OS disk should be filled with `00h` bytes before reinstall.
-               Defaults to `false`.
-        :param pulumi.Input[bool] enabled: Whether the provider should favour reinstall over destroy and create. Defaults to
-               `false`.
-        :param pulumi.Input[bool] preserve_data: Whether the non-OS disks should be kept or wiped during reinstall.
-               Defaults to `false`.
+        :param pulumi.Input[bool] deprovision_fast: Whether the OS disk should be filled with `00h` bytes before reinstall
+        :param pulumi.Input[bool] enabled: Whether the device should be reinstalled instead of destroyed
+        :param pulumi.Input[bool] preserve_data: Whether the non-OS disks should be kept or wiped during reinstall
         """
         if deprovision_fast is not None:
             pulumi.set(__self__, "deprovision_fast", deprovision_fast)
@@ -320,8 +303,7 @@ class DeviceReinstallArgs:
     @pulumi.getter(name="deprovisionFast")
     def deprovision_fast(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether the OS disk should be filled with `00h` bytes before reinstall.
-        Defaults to `false`.
+        Whether the OS disk should be filled with `00h` bytes before reinstall
         """
         return pulumi.get(self, "deprovision_fast")
 
@@ -333,8 +315,7 @@ class DeviceReinstallArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether the provider should favour reinstall over destroy and create. Defaults to
-        `false`.
+        Whether the device should be reinstalled instead of destroyed
         """
         return pulumi.get(self, "enabled")
 
@@ -346,8 +327,7 @@ class DeviceReinstallArgs:
     @pulumi.getter(name="preserveData")
     def preserve_data(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether the non-OS disks should be kept or wiped during reinstall.
-        Defaults to `false`.
+        Whether the non-OS disks should be kept or wiped during reinstall
         """
         return pulumi.get(self, "preserve_data")
 
@@ -388,10 +368,10 @@ class InterconnectionPortArgs:
                  role: pulumi.Input[str],
                  speed: pulumi.Input[int],
                  status: pulumi.Input[str],
-                 virtual_circuit_ids: pulumi.Input[Sequence[Any]]):
+                 virtual_circuit_ids: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
         :param pulumi.Input[str] name: Name of the connection resource
-        :param pulumi.Input[int] speed: Connection speed -  Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
+        :param pulumi.Input[int] speed: Connection speed - Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
         :param pulumi.Input[str] status: Status of the connection resource.
         """
         pulumi.set(__self__, "id", id)
@@ -445,7 +425,7 @@ class InterconnectionPortArgs:
     @pulumi.getter
     def speed(self) -> pulumi.Input[int]:
         """
-        Connection speed -  Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
+        Connection speed - Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
         """
         return pulumi.get(self, "speed")
 
@@ -467,11 +447,11 @@ class InterconnectionPortArgs:
 
     @property
     @pulumi.getter(name="virtualCircuitIds")
-    def virtual_circuit_ids(self) -> pulumi.Input[Sequence[Any]]:
+    def virtual_circuit_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         return pulumi.get(self, "virtual_circuit_ids")
 
     @virtual_circuit_ids.setter
-    def virtual_circuit_ids(self, value: pulumi.Input[Sequence[Any]]):
+    def virtual_circuit_ids(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "virtual_circuit_ids", value)
 
 
@@ -645,8 +625,7 @@ class ProjectBgpConfigArgs:
                  status: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[int] asn: Autonomous System Number for local BGP deployment.
-        :param pulumi.Input[str] deployment_type: `local` or `global`, the `local` is likely to be usable immediately, the
-               `global` will need to be reviewed by Equinix Metal engineers.
+        :param pulumi.Input[str] deployment_type: `local` or `global`, the `local` is likely to be usable immediately, the `global` will need to be reviewed by Equinix Metal engineers.
         :param pulumi.Input[int] max_prefix: The maximum number of route filters allowed per server.
         :param pulumi.Input[str] md5: Password for BGP session in plaintext (not a checksum).
         :param pulumi.Input[str] status: status of BGP configuration in the project.
@@ -676,8 +655,7 @@ class ProjectBgpConfigArgs:
     @pulumi.getter(name="deploymentType")
     def deployment_type(self) -> pulumi.Input[str]:
         """
-        `local` or `global`, the `local` is likely to be usable immediately, the
-        `global` will need to be reviewed by Equinix Metal engineers.
+        `local` or `global`, the `local` is likely to be usable immediately, the `global` will need to be reviewed by Equinix Metal engineers.
         """
         return pulumi.get(self, "deployment_type")
 
@@ -898,10 +876,8 @@ class SpotMarketRequestInstanceParametersArgs:
 
     @property
     @pulumi.getter(name="termintationTime")
+    @_utilities.deprecated("""Use instance_parameters.termination_time instead""")
     def termintation_time(self) -> Optional[pulumi.Input[str]]:
-        warnings.warn("""Use instance_parameters.termination_time instead""", DeprecationWarning)
-        pulumi.log.warn("""termintation_time is deprecated: Use instance_parameters.termination_time instead""")
-
         return pulumi.get(self, "termintation_time")
 
     @termintation_time.setter
@@ -1045,8 +1021,7 @@ class GetFacilityCapacityArgs:
                  quantity: Optional[int] = None):
         """
         :param str plan: Device plan that must be available in selected location.
-        :param int quantity: Minimun number of devices that must be available in selected location.
-               Default is `1`.
+        :param int quantity: Minimun number of devices that must be available in selected location. Default is `1`.
         """
         pulumi.set(__self__, "plan", plan)
         if quantity is not None:
@@ -1068,8 +1043,7 @@ class GetFacilityCapacityArgs:
     @pulumi.getter
     def quantity(self) -> Optional[int]:
         """
-        Minimun number of devices that must be available in selected location.
-        Default is `1`.
+        Minimun number of devices that must be available in selected location. Default is `1`.
         """
         return pulumi.get(self, "quantity")
 
@@ -1085,8 +1059,7 @@ class GetMetroCapacityArgs:
                  quantity: Optional[int] = None):
         """
         :param str plan: Device plan that must be available in selected location.
-        :param int quantity: Minimum number of devices that must be available in selected location.
-               Default is `1`.
+        :param int quantity: Minimum number of devices that must be available in selected location. Default is `1`.
         """
         pulumi.set(__self__, "plan", plan)
         if quantity is not None:
@@ -1108,8 +1081,7 @@ class GetMetroCapacityArgs:
     @pulumi.getter
     def quantity(self) -> Optional[int]:
         """
-        Minimum number of devices that must be available in selected location.
-        Default is `1`.
+        Minimum number of devices that must be available in selected location. Default is `1`.
         """
         return pulumi.get(self, "quantity")
 

@@ -17,8 +17,8 @@ import (
 //
 // # To learn more about Layer 2 networking in Equinix Metal, refer to
 //
-// * <https://metal.equinix.com/developers/docs/networking/layer2/>
-// * <https://metal.equinix.com/developers/docs/networking/layer2-configs/>
+// * https://metal.equinix.com/developers/docs/networking/layer2/
+// * https://metal.equinix.com/developers/docs/networking/layer2-configs/
 //
 // ## Example Usage
 // ```go

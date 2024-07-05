@@ -18,8 +18,8 @@ namespace Pulumi.Equinix.Metal
     /// 
     /// To learn more about Layer 2 networking in Equinix Metal, refer to
     /// 
-    /// * &lt;https://metal.equinix.com/developers/docs/networking/layer2/&gt;
-    /// * &lt;https://metal.equinix.com/developers/docs/networking/layer2-configs/&gt;
+    /// * https://metal.equinix.com/developers/docs/networking/layer2/
+    /// * https://metal.equinix.com/developers/docs/networking/layer2-configs/
     /// 
     /// ## Attribute Referece
     /// 
@@ -66,17 +66,13 @@ namespace Pulumi.Equinix.Metal
         public Output<string> DeviceId { get; private set; } = null!;
 
         /// <summary>
-        /// Add port back to the bond when this resource is removed. Default is
-        /// `false`.
+        /// Add port back to the bond when this resource is removed. Default is `false`.
         /// </summary>
         [Output("forceBond")]
         public Output<bool?> ForceBond { get; private set; } = null!;
 
         /// <summary>
-        /// Mark this VLAN a native VLAN on the port. This can be used only if this
-        /// assignment assigns second or further VLAN to the port. To ensure that this attachment is not first
-        /// on a port, you can use `depends_on` pointing to another `equinix.metal.PortVlanAttachment`, just
-        /// like in the layer2-individual example above.
+        /// Mark this VLAN a native VLAN on the port. This can be used only if this assignment assigns second or further VLAN to the port. To ensure that this attachment is not first on a port, you can use `depends_on` pointing to another `equinix.metal.PortVlanAttachment`, just like in the layer2-individual example above.
         /// </summary>
         [Output("native")]
         public Output<bool?> Native { get; private set; } = null!;
@@ -159,17 +155,13 @@ namespace Pulumi.Equinix.Metal
         public Input<string> DeviceId { get; set; } = null!;
 
         /// <summary>
-        /// Add port back to the bond when this resource is removed. Default is
-        /// `false`.
+        /// Add port back to the bond when this resource is removed. Default is `false`.
         /// </summary>
         [Input("forceBond")]
         public Input<bool>? ForceBond { get; set; }
 
         /// <summary>
-        /// Mark this VLAN a native VLAN on the port. This can be used only if this
-        /// assignment assigns second or further VLAN to the port. To ensure that this attachment is not first
-        /// on a port, you can use `depends_on` pointing to another `equinix.metal.PortVlanAttachment`, just
-        /// like in the layer2-individual example above.
+        /// Mark this VLAN a native VLAN on the port. This can be used only if this assignment assigns second or further VLAN to the port. To ensure that this attachment is not first on a port, you can use `depends_on` pointing to another `equinix.metal.PortVlanAttachment`, just like in the layer2-individual example above.
         /// </summary>
         [Input("native")]
         public Input<bool>? Native { get; set; }
@@ -201,17 +193,13 @@ namespace Pulumi.Equinix.Metal
         public Input<string>? DeviceId { get; set; }
 
         /// <summary>
-        /// Add port back to the bond when this resource is removed. Default is
-        /// `false`.
+        /// Add port back to the bond when this resource is removed. Default is `false`.
         /// </summary>
         [Input("forceBond")]
         public Input<bool>? ForceBond { get; set; }
 
         /// <summary>
-        /// Mark this VLAN a native VLAN on the port. This can be used only if this
-        /// assignment assigns second or further VLAN to the port. To ensure that this attachment is not first
-        /// on a port, you can use `depends_on` pointing to another `equinix.metal.PortVlanAttachment`, just
-        /// like in the layer2-individual example above.
+        /// Mark this VLAN a native VLAN on the port. This can be used only if this assignment assigns second or further VLAN to the port. To ensure that this attachment is not first on a port, you can use `depends_on` pointing to another `equinix.metal.PortVlanAttachment`, just like in the layer2-individual example above.
         /// </summary>
         [Input("native")]
         public Input<bool>? Native { get; set; }

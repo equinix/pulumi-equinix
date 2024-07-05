@@ -92,7 +92,7 @@ type LookupDeviceResult struct {
 	// List of device interfaces
 	// * `interface.#.id` - interface identifier
 	// * `interface.#.name` - interface name
-	// * `interface.#.status` -  interface status (AVAILABLE, RESERVED, ASSIGNED)
+	// * `interface.#.status` - interface status (AVAILABLE, RESERVED, ASSIGNED)
 	// * `interface.#.operational_status` - interface operational status (up or down)
 	// * `interface.#.mac_address` - interface MAC address
 	// * `interface.#.ip_address` - interface IP address
@@ -119,8 +119,7 @@ type LookupDeviceResult struct {
 	PackageCode         string   `pulumi:"packageCode"`
 	ProjectId           string   `pulumi:"projectId"`
 	PurchaseOrderNumber string   `pulumi:"purchaseOrderNumber"`
-	// Device redundancy type applicable for HA devices, either
-	// primary or secondary
+	// Device redundancy type applicable for HA devices, either primary or secondary
 	RedundancyType string `pulumi:"redundancyType"`
 	// Unique identifier for a redundant device applicable for HA devices
 	RedundantId string `pulumi:"redundantId"`
@@ -136,7 +135,7 @@ type LookupDeviceResult struct {
 	// Device provisioning status
 	// * INITIALIZING
 	// * PROVISIONING
-	// * PROVISIONED  (**NOTE: By default data source will only return devices in this state.  To include other states see `validStateList`**)
+	// * PROVISIONED (**NOTE: By default data source will only return devices in this state. To include other states see `validStateList`**)
 	// * WAITING_FOR_PRIMARY
 	// * WAITING_FOR_SECONDARY
 	// * WAITING_FOR_REPLICA_CLUSTER_NODES
@@ -153,7 +152,7 @@ type LookupDeviceResult struct {
 	TypeCode       string `pulumi:"typeCode"`
 	// Device unique identifier
 	Uuid string `pulumi:"uuid"`
-	// Comma separated list of device states (from see `status` for full list) to be considered valid. Default is 'PROVISIONED'.  Case insensitive.
+	// Comma separated list of device states (from see `status` for full list) to be considered valid. Default is 'PROVISIONED'. Case insensitive.
 	ValidStatusList     *string           `pulumi:"validStatusList"`
 	VendorConfiguration map[string]string `pulumi:"vendorConfiguration"`
 	Version             string            `pulumi:"version"`
@@ -272,7 +271,7 @@ func (o LookupDeviceResultOutput) InterfaceCount() pulumi.IntOutput {
 // List of device interfaces
 // * `interface.#.id` - interface identifier
 // * `interface.#.name` - interface name
-// * `interface.#.status` -  interface status (AVAILABLE, RESERVED, ASSIGNED)
+// * `interface.#.status` - interface status (AVAILABLE, RESERVED, ASSIGNED)
 // * `interface.#.operational_status` - interface operational status (up or down)
 // * `interface.#.mac_address` - interface MAC address
 // * `interface.#.ip_address` - interface IP address
@@ -338,8 +337,7 @@ func (o LookupDeviceResultOutput) PurchaseOrderNumber() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeviceResult) string { return v.PurchaseOrderNumber }).(pulumi.StringOutput)
 }
 
-// Device redundancy type applicable for HA devices, either
-// primary or secondary
+// Device redundancy type applicable for HA devices, either primary or secondary
 func (o LookupDeviceResultOutput) RedundancyType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeviceResult) string { return v.RedundancyType }).(pulumi.StringOutput)
 }
@@ -379,7 +377,7 @@ func (o LookupDeviceResultOutput) SshKeys() GetDeviceSshKeyArrayOutput {
 // Device provisioning status
 // * INITIALIZING
 // * PROVISIONING
-// * PROVISIONED  (**NOTE: By default data source will only return devices in this state.  To include other states see `validStateList`**)
+// * PROVISIONED (**NOTE: By default data source will only return devices in this state. To include other states see `validStateList`**)
 // * WAITING_FOR_PRIMARY
 // * WAITING_FOR_SECONDARY
 // * WAITING_FOR_REPLICA_CLUSTER_NODES
@@ -414,7 +412,7 @@ func (o LookupDeviceResultOutput) Uuid() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeviceResult) string { return v.Uuid }).(pulumi.StringOutput)
 }
 
-// Comma separated list of device states (from see `status` for full list) to be considered valid. Default is 'PROVISIONED'.  Case insensitive.
+// Comma separated list of device states (from see `status` for full list) to be considered valid. Default is 'PROVISIONED'. Case insensitive.
 func (o LookupDeviceResultOutput) ValidStatusList() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDeviceResult) *string { return v.ValidStatusList }).(pulumi.StringPtrOutput)
 }

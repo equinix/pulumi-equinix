@@ -11,8 +11,8 @@ import * as utilities from "../utilities";
  * Fabric V4 API compatible resource allows creation and management of Equinix Fabric Service Profile
  *
  * Additional documentation:
- * * Getting Started: <https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm>
- * * API: <https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles>
+ * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm
+ * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles
  *
  * ## Example Usage
  *
@@ -147,7 +147,7 @@ export class ServiceProfile extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<outputs.fabric.ServiceProfileProject | undefined>;
     /**
-     * Self Profile indicating if the profile is created for customer's  self use
+     * Self Profile indicating if the profile is created for customer's self use
      */
     public readonly selfProfile!: pulumi.Output<boolean | undefined>;
     /**
@@ -305,7 +305,7 @@ export interface ServiceProfileState {
      */
     project?: pulumi.Input<inputs.fabric.ServiceProfileProject>;
     /**
-     * Self Profile indicating if the profile is created for customer's  self use
+     * Self Profile indicating if the profile is created for customer's self use
      */
     selfProfile?: pulumi.Input<boolean>;
     /**
@@ -383,7 +383,7 @@ export interface ServiceProfileArgs {
      */
     project?: pulumi.Input<inputs.fabric.ServiceProfileProject>;
     /**
-     * Self Profile indicating if the profile is created for customer's  self use
+     * Self Profile indicating if the profile is created for customer's self use
      */
     selfProfile?: pulumi.Input<boolean>;
     /**

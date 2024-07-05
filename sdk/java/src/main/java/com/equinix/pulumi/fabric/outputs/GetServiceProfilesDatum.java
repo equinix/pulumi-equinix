@@ -112,7 +112,7 @@ public final class GetServiceProfilesDatum {
      */
     private String uuid;
     /**
-     * @return flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
+     * @return Flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
      * 
      */
     private String viewPoint;
@@ -255,7 +255,7 @@ public final class GetServiceProfilesDatum {
         return this.uuid;
     }
     /**
-     * @return flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
+     * @return Flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
      * 
      */
     public String viewPoint() {

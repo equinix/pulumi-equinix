@@ -405,8 +405,7 @@ namespace Pulumi.Equinix.Metal
         private List<Inputs.GetPlansSortArgs>? _sorts;
 
         /// <summary>
-        /// One or more attribute/direction pairs on which to sort results. If multiple
-        /// sorts are provided, they will be applied in order
+        /// One or more attribute/direction pairs on which to sort results. If multiple sorts are provided, they will be applied in order
         /// </summary>
         public List<Inputs.GetPlansSortArgs> Sorts
         {
@@ -438,8 +437,7 @@ namespace Pulumi.Equinix.Metal
         private InputList<Inputs.GetPlansSortInputArgs>? _sorts;
 
         /// <summary>
-        /// One or more attribute/direction pairs on which to sort results. If multiple
-        /// sorts are provided, they will be applied in order
+        /// One or more attribute/direction pairs on which to sort results. If multiple sorts are provided, they will be applied in order
         /// </summary>
         public InputList<Inputs.GetPlansSortInputArgs> Sorts
         {

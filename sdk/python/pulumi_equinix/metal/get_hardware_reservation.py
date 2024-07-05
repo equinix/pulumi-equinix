@@ -60,13 +60,11 @@ class GetHardwareReservationResult:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
     def facility(self) -> str:
         """
         (**Deprecated**) Facility for the reservation. Use metro instead; read the facility to metro migration guide
         """
-        warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
-        pulumi.log.warn("""facility is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
-
         return pulumi.get(self, "facility")
 
     @property
@@ -97,8 +95,7 @@ class GetHardwareReservationResult:
     @pulumi.getter
     def provisionable(self) -> bool:
         """
-        Flag indicating whether the reserved server is provisionable or not. Spare
-        devices can't be provisioned unless they are activated first.
+        Flag indicating whether the reserved server is provisionable or not. Spare devices can't be provisioned unless they are activated first.
         """
         return pulumi.get(self, "provisionable")
 
@@ -114,8 +111,7 @@ class GetHardwareReservationResult:
     @pulumi.getter
     def spare(self) -> bool:
         """
-        Flag indicating whether the Hardware Reservation is a spare. Spare Hardware
-        Reservations are used when a Hardware Reservations requires service from Metal Equinix.
+        Flag indicating whether the Hardware Reservation is a spare. Spare Hardware Reservations are used when a Hardware Reservations requires service from Metal Equinix.
         """
         return pulumi.get(self, "spare")
 
@@ -123,8 +119,7 @@ class GetHardwareReservationResult:
     @pulumi.getter(name="switchUuid")
     def switch_uuid(self) -> str:
         """
-        Switch short ID, can be used to determine if two devices are connected to the
-        same switch.
+        Switch short ID, can be used to determine if two devices are connected to the same switch.
         """
         return pulumi.get(self, "switch_uuid")
 

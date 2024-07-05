@@ -22,12 +22,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides an Equinix Metal device resource. This can be used to create,
- * modify, and delete devices.
+ * Provides an Equinix Metal device resource. This can be used to create, modify, and delete devices.
  * 
- * &gt; **NOTE:** All arguments including the `root_password` and `user_data` will be stored in
- *  the raw state as plain-text.
- * Read more about sensitive data in state.
+ * &gt; **NOTE:** All arguments including the `root_password` and `user_data` will be stored in the raw state as plain-text. Read more about sensitive data in state.
  * 
  * ## Example Usage
  * ```java
@@ -60,86 +57,68 @@ import javax.annotation.Nullable;
  * }
  * ```
  * 
- * ## Import
- * 
- * This resource can be imported using an existing device ID:
- * 
- * ```sh
- * $ pulumi import equinix:metal/device:Device equinix_metal_device {existing_device_id}
- * ```
- * 
  */
 @ResourceType(type="equinix:metal/device:Device")
 public class Device extends com.pulumi.resources.CustomResource {
     /**
-     * The ipv4 private IP assigned to the device.
+     * The ipv4 private IP assigned to the device
      * 
      */
     @Export(name="accessPrivateIpv4", refs={String.class}, tree="[0]")
     private Output<String> accessPrivateIpv4;
 
     /**
-     * @return The ipv4 private IP assigned to the device.
+     * @return The ipv4 private IP assigned to the device
      * 
      */
     public Output<String> accessPrivateIpv4() {
         return this.accessPrivateIpv4;
     }
     /**
-     * The ipv4 maintenance IP assigned to the device.
+     * The ipv4 maintenance IP assigned to the device
      * 
      */
     @Export(name="accessPublicIpv4", refs={String.class}, tree="[0]")
     private Output<String> accessPublicIpv4;
 
     /**
-     * @return The ipv4 maintenance IP assigned to the device.
+     * @return The ipv4 maintenance IP assigned to the device
      * 
      */
     public Output<String> accessPublicIpv4() {
         return this.accessPublicIpv4;
     }
     /**
-     * The ipv6 maintenance IP assigned to the device.
+     * The ipv6 maintenance IP assigned to the device
      * 
      */
     @Export(name="accessPublicIpv6", refs={String.class}, tree="[0]")
     private Output<String> accessPublicIpv6;
 
     /**
-     * @return The ipv6 maintenance IP assigned to the device.
+     * @return The ipv6 maintenance IP assigned to the device
      * 
      */
     public Output<String> accessPublicIpv6() {
         return this.accessPublicIpv6;
     }
     /**
-     * If true, a device with OS `custom_ipxe` will continue to boot via iPXE
-     * on reboots.
+     * If true, a device with OS custom_ipxe will
      * 
      */
     @Export(name="alwaysPxe", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> alwaysPxe;
 
     /**
-     * @return If true, a device with OS `custom_ipxe` will continue to boot via iPXE
-     * on reboots.
+     * @return If true, a device with OS custom_ipxe will
      * 
      */
     public Output<Optional<Boolean>> alwaysPxe() {
         return Codegen.optional(this.alwaysPxe);
     }
-    /**
-     * Behavioral overrides that change how the resource handles certain attribute updates. See Behavior below for more details.
-     * 
-     */
     @Export(name="behavior", refs={DeviceBehavior.class}, tree="[0]")
     private Output</* @Nullable */ DeviceBehavior> behavior;
 
-    /**
-     * @return Behavioral overrides that change how the resource handles certain attribute updates. See Behavior below for more details.
-     * 
-     */
     public Output<Optional<DeviceBehavior>> behavior() {
         return Codegen.optional(this.behavior);
     }
@@ -158,14 +137,14 @@ public class Device extends com.pulumi.resources.CustomResource {
         return this.billingCycle;
     }
     /**
-     * The timestamp for when the device was created.
+     * The timestamp for when the device was created
      * 
      */
     @Export(name="created", refs={String.class}, tree="[0]")
     private Output<String> created;
 
     /**
-     * @return The timestamp for when the device was created.
+     * @return The timestamp for when the device was created
      * 
      */
     public Output<String> created() {
@@ -186,7 +165,7 @@ public class Device extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.customData);
     }
     /**
-     * (**Deprecated**) The facility where the device is deployed. Use metro instead; read the facility to metro migration guide
+     * The facility where the device is deployed
      * 
      * @deprecated
      * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
@@ -197,48 +176,42 @@ public class Device extends com.pulumi.resources.CustomResource {
     private Output<String> deployedFacility;
 
     /**
-     * @return (**Deprecated**) The facility where the device is deployed. Use metro instead; read the facility to metro migration guide
+     * @return The facility where the device is deployed
      * 
      */
     public Output<String> deployedFacility() {
         return this.deployedFacility;
     }
     /**
-     * ID of hardware reservation where this device was deployed.
-     * It is useful when using the `next-available` hardware reservation.
+     * ID of hardware reservation where this device was deployed. It is useful when using the next-available hardware reservation
      * 
      */
     @Export(name="deployedHardwareReservationId", refs={String.class}, tree="[0]")
     private Output<String> deployedHardwareReservationId;
 
     /**
-     * @return ID of hardware reservation where this device was deployed.
-     * It is useful when using the `next-available` hardware reservation.
+     * @return ID of hardware reservation where this device was deployed. It is useful when using the next-available hardware reservation
      * 
      */
     public Output<String> deployedHardwareReservationId() {
         return this.deployedHardwareReservationId;
     }
     /**
-     * The device description.
+     * Description string for the device
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The device description.
+     * @return Description string for the device
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * List of facility codes with deployment preferences. Equinix Metal API will go
-     * through the list and will deploy your device to first facility with free capacity. List items must
-     * be facility codes or `any` (a wildcard). To find the facility code, visit
-     * [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth
-     * token in the top of the page and see JSON from the API response. Conflicts with `metro`.  Use metro instead; read the facility to metro migration guide
+     * List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the top of the page and see JSON from the API response. Conflicts with metro
      * 
      * @deprecated
      * Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
@@ -249,111 +222,77 @@ public class Device extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ List<String>> facilities;
 
     /**
-     * @return List of facility codes with deployment preferences. Equinix Metal API will go
-     * through the list and will deploy your device to first facility with free capacity. List items must
-     * be facility codes or `any` (a wildcard). To find the facility code, visit
-     * [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth
-     * token in the top of the page and see JSON from the API response. Conflicts with `metro`.  Use metro instead; read the facility to metro migration guide
+     * @return List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the top of the page and see JSON from the API response. Conflicts with metro
      * 
      */
     public Output<Optional<List<String>>> facilities() {
         return Codegen.optional(this.facilities);
     }
     /**
-     * Delete device even if it has volumes attached. Only applies
-     * for destroy action.
+     * Delete device even if it has volumes attached. Only applies for destroy action
      * 
      */
     @Export(name="forceDetachVolumes", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceDetachVolumes;
 
     /**
-     * @return Delete device even if it has volumes attached. Only applies
-     * for destroy action.
+     * @return Delete device even if it has volumes attached. Only applies for destroy action
      * 
      */
     public Output<Optional<Boolean>> forceDetachVolumes() {
         return Codegen.optional(this.forceDetachVolumes);
     }
     /**
-     * The UUID of the hardware reservation where you want this
-     * device deployed, or `next-available` if you want to pick your next available reservation
-     * automatically. Changing this from a reservation UUID to `next-available` will re-create the device
-     * in another reservation. Please be careful when using hardware reservation UUID and `next-available`
-     * together for the same pool of reservations. It might happen that the reservation which Equinix
-     * Metal API will pick as `next-available` is the reservation which you refer with UUID in another
-     * equinix.metal.Device resource. If that happens, and the equinix.metal.Device with the UUID is
-     * created later, resource creation will fail because the reservation is already in use (by the
-     * resource created with `next-available`). To workaround this, have the `next-available` resource
-     * explicitly depend_on
-     * the resource with hardware reservation UUID, so that the latter is created first. For more details,
-     * see issue #176.
+     * The UUID of the hardware reservation where you want this device deployed, or next-available if you want to pick your next available reservation automatically
      * 
      */
     @Export(name="hardwareReservationId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> hardwareReservationId;
 
     /**
-     * @return The UUID of the hardware reservation where you want this
-     * device deployed, or `next-available` if you want to pick your next available reservation
-     * automatically. Changing this from a reservation UUID to `next-available` will re-create the device
-     * in another reservation. Please be careful when using hardware reservation UUID and `next-available`
-     * together for the same pool of reservations. It might happen that the reservation which Equinix
-     * Metal API will pick as `next-available` is the reservation which you refer with UUID in another
-     * equinix.metal.Device resource. If that happens, and the equinix.metal.Device with the UUID is
-     * created later, resource creation will fail because the reservation is already in use (by the
-     * resource created with `next-available`). To workaround this, have the `next-available` resource
-     * explicitly depend_on
-     * the resource with hardware reservation UUID, so that the latter is created first. For more details,
-     * see issue #176.
+     * @return The UUID of the hardware reservation where you want this device deployed, or next-available if you want to pick your next available reservation automatically
      * 
      */
     public Output<Optional<String>> hardwareReservationId() {
         return Codegen.optional(this.hardwareReservationId);
     }
     /**
-     * The device hostname used in deployments taking advantage of Layer3 DHCP
-     * or metadata service configuration.
+     * The device hostname used in deployments taking advantage of Layer3 DHCP or metadata service configuration.
      * 
      */
     @Export(name="hostname", refs={String.class}, tree="[0]")
     private Output<String> hostname;
 
     /**
-     * @return The device hostname used in deployments taking advantage of Layer3 DHCP
-     * or metadata service configuration.
+     * @return The device hostname used in deployments taking advantage of Layer3 DHCP or metadata service configuration.
      * 
      */
     public Output<String> hostname() {
         return this.hostname;
     }
     /**
-     * A list of IP address types for the device. See
-     * IP address below for more details.
+     * A list of IP address types for the device (structure is documented below)
      * 
      */
     @Export(name="ipAddresses", refs={List.class,DeviceIpAddress.class}, tree="[0,1]")
     private Output</* @Nullable */ List<DeviceIpAddress>> ipAddresses;
 
     /**
-     * @return A list of IP address types for the device. See
-     * IP address below for more details.
+     * @return A list of IP address types for the device (structure is documented below)
      * 
      */
     public Output<Optional<List<DeviceIpAddress>>> ipAddresses() {
         return Codegen.optional(this.ipAddresses);
     }
     /**
-     * URL pointing to a hosted iPXE script. More information is in the
-     * [Custom iPXE](https://metal.equinix.com/developers/docs/servers/custom-ipxe/) doc.
+     * URL pointing to a hosted iPXE script. More
      * 
      */
     @Export(name="ipxeScriptUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ipxeScriptUrl;
 
     /**
-     * @return URL pointing to a hosted iPXE script. More information is in the
-     * [Custom iPXE](https://metal.equinix.com/developers/docs/servers/custom-ipxe/) doc.
+     * @return URL pointing to a hosted iPXE script. More
      * 
      */
     public Output<Optional<String>> ipxeScriptUrl() {
@@ -374,43 +313,35 @@ public class Device extends com.pulumi.resources.CustomResource {
         return this.locked;
     }
     /**
-     * Metro area for the new device. Conflicts with `facilities`.
+     * Metro area for the new device. Conflicts with facilities
      * 
      */
     @Export(name="metro", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> metro;
 
     /**
-     * @return Metro area for the new device. Conflicts with `facilities`.
+     * @return Metro area for the new device. Conflicts with facilities
      * 
      */
     public Output<Optional<String>> metro() {
         return Codegen.optional(this.metro);
     }
     /**
-     * The device&#39;s private and public IP (v4 and v6) network details. See
-     * Network Attribute below for more details.
+     * The device&#39;s private and public IP (v4 and v6) network details. When a device is run without any special network configuration, it will have 3 addresses: public ipv4, private ipv4 and ipv6
      * 
      */
     @Export(name="network", refs={List.class,DeviceNetwork.class}, tree="[0,1]")
     private Output<List<DeviceNetwork>> network;
 
     /**
-     * @return The device&#39;s private and public IP (v4 and v6) network details. See
-     * Network Attribute below for more details.
+     * @return The device&#39;s private and public IP (v4 and v6) network details. When a device is run without any special network configuration, it will have 3 addresses: public ipv4, private ipv4 and ipv6
      * 
      */
     public Output<List<DeviceNetwork>> network() {
         return this.network;
     }
     /**
-     * (Deprecated) Network type of a device, used in
-     * [Layer 2 networking](https://metal.equinix.com/developers/docs/networking/layer2/). Since this
-     * attribute is deprecated you should handle Network Type with one of
-     * equinix_metal_port,
-     * equinix.metal.DeviceNetworkType resources or
-     * equinix.metal.Port datasource.
-     * See network_types guide for more info.
+     * Network type of a device, used in [Layer 2 networking](https://metal.equinix.com/developers/docs/networking/layer2/). Will be one of layer3, hybrid, hybrid-bonded, layer2-individual, layer2-bonded
      * 
      * @deprecated
      * You should handle Network Type with one of &#39;equinix_metal_port&#39; or &#39;equinix_metal_device_network_type&#39; resources. See section &#39;Guides&#39; for more info
@@ -421,63 +352,49 @@ public class Device extends com.pulumi.resources.CustomResource {
     private Output<String> networkType;
 
     /**
-     * @return (Deprecated) Network type of a device, used in
-     * [Layer 2 networking](https://metal.equinix.com/developers/docs/networking/layer2/). Since this
-     * attribute is deprecated you should handle Network Type with one of
-     * equinix_metal_port,
-     * equinix.metal.DeviceNetworkType resources or
-     * equinix.metal.Port datasource.
-     * See network_types guide for more info.
+     * @return Network type of a device, used in [Layer 2 networking](https://metal.equinix.com/developers/docs/networking/layer2/). Will be one of layer3, hybrid, hybrid-bonded, layer2-individual, layer2-bonded
      * 
      */
     public Output<String> networkType() {
         return this.networkType;
     }
     /**
-     * The operating system slug. To find the slug, or visit
-     * [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your
-     * API auth token in the top of the page and see JSON from the API response.
+     * The operating system slug. To find the slug, or visit [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your API auth token in the top of the page and see JSON from the API response.  By default, changing this attribute will cause your device to be deleted and recreated.  If `reinstall` is enabled, the device will be updated in-place instead of recreated.
      * 
      */
     @Export(name="operatingSystem", refs={String.class}, tree="[0]")
     private Output<String> operatingSystem;
 
     /**
-     * @return The operating system slug. To find the slug, or visit
-     * [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your
-     * API auth token in the top of the page and see JSON from the API response.
+     * @return The operating system slug. To find the slug, or visit [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your API auth token in the top of the page and see JSON from the API response.  By default, changing this attribute will cause your device to be deleted and recreated.  If `reinstall` is enabled, the device will be updated in-place instead of recreated.
      * 
      */
     public Output<String> operatingSystem() {
         return this.operatingSystem;
     }
     /**
-     * The device plan slug. To find the plan slug, visit the
-     * [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/).
+     * The device plan slug. To find the plan slug, visit the [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/)
      * 
      */
     @Export(name="plan", refs={String.class}, tree="[0]")
     private Output<String> plan;
 
     /**
-     * @return The device plan slug. To find the plan slug, visit the
-     * [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/).
+     * @return The device plan slug. To find the plan slug, visit the [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/)
      * 
      */
     public Output<String> plan() {
         return this.plan;
     }
     /**
-     * List of ports assigned to the device. See Ports Attribute below for
-     * more details.
+     * Ports assigned to the device
      * 
      */
     @Export(name="ports", refs={List.class,DevicePort.class}, tree="[0,1]")
     private Output<List<DevicePort>> ports;
 
     /**
-     * @return List of ports assigned to the device. See Ports Attribute below for
-     * more details.
+     * @return Ports assigned to the device
      * 
      */
     public Output<List<DevicePort>> ports() {
@@ -498,46 +415,34 @@ public class Device extends com.pulumi.resources.CustomResource {
         return this.projectId;
     }
     /**
-     * Array of IDs of the project SSH keys which should be added to the device. If you specify this array, only the listed project SSH keys (and any SSH keys for the users specified in user_ssh_key_ids) will be added. If no SSH keys are specified (both user_ssh_keys_ids and project_ssh_key_ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included.  Project SSH keys can be created with the equinix.metal.ProjectSshKey resource.
+     * Array of IDs of the project SSH keys which should be added to the device. If you specify this array, only the listed project SSH keys (and any SSH keys for the users specified in user*ssh*key*ids) will be added. If no SSH keys are specified (both user*ssh*keys*ids and project*ssh*key*ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included.  Project SSH keys can be created with the equinix*metal*project*ssh*key resource
      * 
      */
     @Export(name="projectSshKeyIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> projectSshKeyIds;
 
     /**
-     * @return Array of IDs of the project SSH keys which should be added to the device. If you specify this array, only the listed project SSH keys (and any SSH keys for the users specified in user_ssh_key_ids) will be added. If no SSH keys are specified (both user_ssh_keys_ids and project_ssh_key_ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included.  Project SSH keys can be created with the equinix.metal.ProjectSshKey resource.
+     * @return Array of IDs of the project SSH keys which should be added to the device. If you specify this array, only the listed project SSH keys (and any SSH keys for the users specified in user*ssh*key*ids) will be added. If no SSH keys are specified (both user*ssh*keys*ids and project*ssh*key*ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included.  Project SSH keys can be created with the equinix*metal*project*ssh*key resource
      * 
      */
     public Output<Optional<List<String>>> projectSshKeyIds() {
         return Codegen.optional(this.projectSshKeyIds);
     }
-    /**
-     * Whether the device should be reinstalled instead of destroyed when
-     * modifying user_data, custom_data, or operating system. See Reinstall below for more
-     * details.
-     * 
-     */
     @Export(name="reinstall", refs={DeviceReinstall.class}, tree="[0]")
     private Output</* @Nullable */ DeviceReinstall> reinstall;
 
-    /**
-     * @return Whether the device should be reinstalled instead of destroyed when
-     * modifying user_data, custom_data, or operating system. See Reinstall below for more
-     * details.
-     * 
-     */
     public Output<Optional<DeviceReinstall>> reinstall() {
         return Codegen.optional(this.reinstall);
     }
     /**
-     * Root password to the server (disabled after 24 hours).
+     * Root password to the server (disabled after 24 hours)
      * 
      */
     @Export(name="rootPassword", refs={String.class}, tree="[0]")
     private Output<String> rootPassword;
 
     /**
-     * @return Root password to the server (disabled after 24 hours).
+     * @return Root password to the server (disabled after 24 hours)
      * 
      */
     public Output<String> rootPassword() {
@@ -558,94 +463,84 @@ public class Device extends com.pulumi.resources.CustomResource {
         return this.sosHostname;
     }
     /**
-     * List of IDs of SSH keys deployed in the device, can be both user and project SSH keys.
+     * List of IDs of SSH keys deployed in the device, can be both user and project SSH keys
      * 
      */
     @Export(name="sshKeyIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> sshKeyIds;
 
     /**
-     * @return List of IDs of SSH keys deployed in the device, can be both user and project SSH keys.
+     * @return List of IDs of SSH keys deployed in the device, can be both user and project SSH keys
      * 
      */
     public Output<List<String>> sshKeyIds() {
         return this.sshKeyIds;
     }
     /**
-     * The status of the device.
+     * The status of the device
      * 
      */
     @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
-     * @return The status of the device.
+     * @return The status of the device
      * 
      */
     public Output<String> state() {
         return this.state;
     }
     /**
-     * JSON for custom partitioning. Only usable on reserved hardware. More
-     * information in in the
-     * [Custom Partitioning and RAID](https://metal.equinix.com/developers/docs/servers/custom-partitioning-raid/)
-     * doc. Please note that the disks.partitions.size attribute must be a string, not an integer. It can
-     * be a number string, or size notation string, e.g. &#34;4G&#34; or &#34;8M&#34; (for gigabytes and megabytes).
+     * JSON for custom partitioning. Only usable on reserved hardware. More information in in the [Custom Partitioning and RAID](https://metal.equinix.com/developers/docs/servers/custom-partitioning-raid/) doc
      * 
      */
     @Export(name="storage", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> storage;
 
     /**
-     * @return JSON for custom partitioning. Only usable on reserved hardware. More
-     * information in in the
-     * [Custom Partitioning and RAID](https://metal.equinix.com/developers/docs/servers/custom-partitioning-raid/)
-     * doc. Please note that the disks.partitions.size attribute must be a string, not an integer. It can
-     * be a number string, or size notation string, e.g. &#34;4G&#34; or &#34;8M&#34; (for gigabytes and megabytes).
+     * @return JSON for custom partitioning. Only usable on reserved hardware. More information in in the [Custom Partitioning and RAID](https://metal.equinix.com/developers/docs/servers/custom-partitioning-raid/) doc
      * 
      */
     public Output<Optional<String>> storage() {
         return Codegen.optional(this.storage);
     }
     /**
-     * Tags attached to the device.
+     * Tags attached to the device
      * 
      */
     @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
-     * @return Tags attached to the device.
+     * @return Tags attached to the device
      * 
      */
     public Output<Optional<List<String>>> tags() {
         return Codegen.optional(this.tags);
     }
     /**
-     * Timestamp for device termination. For example `2021-09-03T16:32:00+03:00`.
-     * If you don&#39;t supply timezone info, timestamp is assumed to be in UTC.
+     * Timestamp for device termination. For example &#34;2021-09-03T16:32:00+03:00&#34;. If you don&#39;t supply timezone info, timestamp is assumed to be in UTC.
      * 
      */
     @Export(name="terminationTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> terminationTime;
 
     /**
-     * @return Timestamp for device termination. For example `2021-09-03T16:32:00+03:00`.
-     * If you don&#39;t supply timezone info, timestamp is assumed to be in UTC.
+     * @return Timestamp for device termination. For example &#34;2021-09-03T16:32:00+03:00&#34;. If you don&#39;t supply timezone info, timestamp is assumed to be in UTC.
      * 
      */
     public Output<Optional<String>> terminationTime() {
         return Codegen.optional(this.terminationTime);
     }
     /**
-     * The timestamp for the last time the device was updated.
+     * The timestamp for the last time the device was updated
      * 
      */
     @Export(name="updated", refs={String.class}, tree="[0]")
     private Output<String> updated;
 
     /**
-     * @return The timestamp for the last time the device was updated.
+     * @return The timestamp for the last time the device was updated
      * 
      */
     public Output<String> updated() {
@@ -666,32 +561,28 @@ public class Device extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.userData);
     }
     /**
-     * Array of IDs of the users whose SSH keys should be added to the device. If you specify this array, only the listed users&#39; SSH keys (and any project SSH keys specified in project_ssh_key_ids) will be added. If no SSH keys are specified (both user_ssh_keys_ids and project_ssh_key_ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included. User SSH keys can be created with the equinix.metal.SshKey resource.
+     * Array of IDs of the users whose SSH keys should be added to the device. If you specify this array, only the listed users&#39; SSH keys (and any project SSH keys specified in project*ssh*key*ids) will be added. If no SSH keys are specified (both user*ssh*keys*ids and project*ssh*key*ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included. User SSH keys can be created with the equinix*metal*ssh*key resource
      * 
      */
     @Export(name="userSshKeyIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> userSshKeyIds;
 
     /**
-     * @return Array of IDs of the users whose SSH keys should be added to the device. If you specify this array, only the listed users&#39; SSH keys (and any project SSH keys specified in project_ssh_key_ids) will be added. If no SSH keys are specified (both user_ssh_keys_ids and project_ssh_key_ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included. User SSH keys can be created with the equinix.metal.SshKey resource.
+     * @return Array of IDs of the users whose SSH keys should be added to the device. If you specify this array, only the listed users&#39; SSH keys (and any project SSH keys specified in project*ssh*key*ids) will be added. If no SSH keys are specified (both user*ssh*keys*ids and project*ssh*key*ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included. User SSH keys can be created with the equinix*metal*ssh*key resource
      * 
      */
     public Output<Optional<List<String>>> userSshKeyIds() {
         return Codegen.optional(this.userSshKeyIds);
     }
     /**
-     * Only used for devices in reserved hardware. If
-     * set, the deletion of this device will block until the hardware reservation is marked provisionable
-     * (about 4 minutes in August 2019).
+     * Only used for devices in reserved hardware. If set, the deletion of this device will block until the hardware reservation is marked provisionable (about 4 minutes in August 2019)
      * 
      */
     @Export(name="waitForReservationDeprovision", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> waitForReservationDeprovision;
 
     /**
-     * @return Only used for devices in reserved hardware. If
-     * set, the deletion of this device will block until the hardware reservation is marked provisionable
-     * (about 4 minutes in August 2019).
+     * @return Only used for devices in reserved hardware. If set, the deletion of this device will block until the hardware reservation is marked provisionable (about 4 minutes in August 2019)
      * 
      */
     public Output<Optional<Boolean>> waitForReservationDeprovision() {

@@ -15,18 +15,14 @@ public final class GetDevicePlainArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetDevicePlainArgs Empty = new GetDevicePlainArgs();
 
     /**
-     * Device ID.
-     * 
-     * &gt; **NOTE:** You should pass either `device_id`, or both `project_id` and `hostname`.
+     * Device ID
      * 
      */
     @Import(name="deviceId")
     private @Nullable String deviceId;
 
     /**
-     * @return Device ID.
-     * 
-     * &gt; **NOTE:** You should pass either `device_id`, or both `project_id` and `hostname`.
+     * @return Device ID
      * 
      */
     public Optional<String> deviceId() {
@@ -34,14 +30,14 @@ public final class GetDevicePlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The device name.
+     * The device name
      * 
      */
     @Import(name="hostname")
     private @Nullable String hostname;
 
     /**
-     * @return The device name.
+     * @return The device name
      * 
      */
     public Optional<String> hostname() {
@@ -49,14 +45,14 @@ public final class GetDevicePlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The id of the project in which the devices exists.
+     * The id of the project in which the devices exists
      * 
      */
     @Import(name="projectId")
     private @Nullable String projectId;
 
     /**
-     * @return The id of the project in which the devices exists.
+     * @return The id of the project in which the devices exists
      * 
      */
     public Optional<String> projectId() {
@@ -90,9 +86,7 @@ public final class GetDevicePlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param deviceId Device ID.
-         * 
-         * &gt; **NOTE:** You should pass either `device_id`, or both `project_id` and `hostname`.
+         * @param deviceId Device ID
          * 
          * @return builder
          * 
@@ -103,7 +97,7 @@ public final class GetDevicePlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param hostname The device name.
+         * @param hostname The device name
          * 
          * @return builder
          * 
@@ -114,7 +108,7 @@ public final class GetDevicePlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param projectId The id of the project in which the devices exists.
+         * @param projectId The id of the project in which the devices exists
          * 
          * @return builder
          * 

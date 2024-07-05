@@ -15,14 +15,14 @@ public final class GetServiceProfilesSort extends com.pulumi.resources.InvokeArg
     public static final GetServiceProfilesSort Empty = new GetServiceProfilesSort();
 
     /**
-     * Priority type- DESC, ASC
+     * The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
      * 
      */
     @Import(name="direction")
     private @Nullable String direction;
 
     /**
-     * @return Priority type- DESC, ASC
+     * @return The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
      * 
      */
     public Optional<String> direction() {
@@ -30,14 +30,14 @@ public final class GetServiceProfilesSort extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * Search operation sort criteria /name /state /changeLog/createdDateTime /changeLog/updatedDateTime
+     * The property name to use in sorting. One of [/name /uuid /state /location/metroCode /location/metroName /package/code /changeLog/createdDateTime /changeLog/updatedDateTime]. Defaults to /changeLog/updatedDateTime
      * 
      */
     @Import(name="property")
     private @Nullable String property;
 
     /**
-     * @return Search operation sort criteria /name /state /changeLog/createdDateTime /changeLog/updatedDateTime
+     * @return The property name to use in sorting. One of [/name /uuid /state /location/metroCode /location/metroName /package/code /changeLog/createdDateTime /changeLog/updatedDateTime]. Defaults to /changeLog/updatedDateTime
      * 
      */
     public Optional<String> property() {
@@ -70,7 +70,7 @@ public final class GetServiceProfilesSort extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param direction Priority type- DESC, ASC
+         * @param direction The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class GetServiceProfilesSort extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param property Search operation sort criteria /name /state /changeLog/createdDateTime /changeLog/updatedDateTime
+         * @param property The property name to use in sorting. One of [/name /uuid /state /location/metroCode /location/metroName /package/code /changeLog/createdDateTime /changeLog/updatedDateTime]. Defaults to /changeLog/updatedDateTime
          * 
          * @return builder
          * 

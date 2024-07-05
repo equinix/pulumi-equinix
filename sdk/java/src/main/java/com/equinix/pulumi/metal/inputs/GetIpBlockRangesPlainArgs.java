@@ -15,8 +15,7 @@ public final class GetIpBlockRangesPlainArgs extends com.pulumi.resources.Invoke
     public static final GetIpBlockRangesPlainArgs Empty = new GetIpBlockRangesPlainArgs();
 
     /**
-     * Facility code filtering the IP blocks. Global IPv4 blocks will be listed
-     * anyway. If you omit this and metro, all the block from the project will be listed.   Use metro instead; read the facility to metro migration guide
+     * Facility code filtering the IP blocks. Global IPv4 blocks will be listed anyway. If you omit this and metro, all the block from the project will be listed. Use metro instead; read the facility to metro migration guide
      * 
      * @deprecated
      * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
@@ -27,8 +26,7 @@ public final class GetIpBlockRangesPlainArgs extends com.pulumi.resources.Invoke
     private @Nullable String facility;
 
     /**
-     * @return Facility code filtering the IP blocks. Global IPv4 blocks will be listed
-     * anyway. If you omit this and metro, all the block from the project will be listed.   Use metro instead; read the facility to metro migration guide
+     * @return Facility code filtering the IP blocks. Global IPv4 blocks will be listed anyway. If you omit this and metro, all the block from the project will be listed. Use metro instead; read the facility to metro migration guide
      * 
      * @deprecated
      * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
@@ -40,16 +38,14 @@ public final class GetIpBlockRangesPlainArgs extends com.pulumi.resources.Invoke
     }
 
     /**
-     * Metro code filtering the IP blocks. Global IPv4 blocks will be listed
-     * anyway. If you omit this and facility, all the block from the project will be listed.
+     * Metro code filtering the IP blocks. Global IPv4 blocks will be listed anyway. If you omit this and facility, all the block from the project will be listed.
      * 
      */
     @Import(name="metro")
     private @Nullable String metro;
 
     /**
-     * @return Metro code filtering the IP blocks. Global IPv4 blocks will be listed
-     * anyway. If you omit this and facility, all the block from the project will be listed.
+     * @return Metro code filtering the IP blocks. Global IPv4 blocks will be listed anyway. If you omit this and facility, all the block from the project will be listed.
      * 
      */
     public Optional<String> metro() {
@@ -98,8 +94,7 @@ public final class GetIpBlockRangesPlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param facility Facility code filtering the IP blocks. Global IPv4 blocks will be listed
-         * anyway. If you omit this and metro, all the block from the project will be listed.   Use metro instead; read the facility to metro migration guide
+         * @param facility Facility code filtering the IP blocks. Global IPv4 blocks will be listed anyway. If you omit this and metro, all the block from the project will be listed. Use metro instead; read the facility to metro migration guide
          * 
          * @return builder
          * 
@@ -114,8 +109,7 @@ public final class GetIpBlockRangesPlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param metro Metro code filtering the IP blocks. Global IPv4 blocks will be listed
-         * anyway. If you omit this and facility, all the block from the project will be listed.
+         * @param metro Metro code filtering the IP blocks. Global IPv4 blocks will be listed anyway. If you omit this and facility, all the block from the project will be listed.
          * 
          * @return builder
          * 

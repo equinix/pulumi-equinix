@@ -16,16 +16,14 @@ public final class DeviceLinkLinkArgs extends com.pulumi.resources.ResourceArgs 
     public static final DeviceLinkLinkArgs Empty = new DeviceLinkLinkArgs();
 
     /**
-     * billing account number to be used for
-     * connection charges
+     * billing account number to be used for connection charges
      * 
      */
     @Import(name="accountNumber", required=true)
     private Output<String> accountNumber;
 
     /**
-     * @return billing account number to be used for
-     * connection charges
+     * @return billing account number to be used for connection charges
      * 
      */
     public Output<String> accountNumber() {
@@ -169,8 +167,7 @@ public final class DeviceLinkLinkArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param accountNumber billing account number to be used for
-         * connection charges
+         * @param accountNumber billing account number to be used for connection charges
          * 
          * @return builder
          * 
@@ -181,8 +178,7 @@ public final class DeviceLinkLinkArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param accountNumber billing account number to be used for
-         * connection charges
+         * @param accountNumber billing account number to be used for connection charges
          * 
          * @return builder
          * 
