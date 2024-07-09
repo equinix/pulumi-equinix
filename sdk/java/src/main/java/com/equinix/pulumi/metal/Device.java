@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** All arguments including the `root_password` and `user_data` will be stored in the raw state as plain-text. Read more about sensitive data in state.
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -42,20 +43,21 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var projectId = config.get(&#34;projectId&#34;).get();
- *         var web = new Device(&#34;web&#34;, DeviceArgs.builder()        
- *             .hostname(&#34;webserver1&#34;)
- *             .plan(&#34;c3.small.x86&#34;)
- *             .operatingSystem(&#34;ubuntu_20_04&#34;)
- *             .metro(&#34;sv&#34;)
- *             .billingCycle(&#34;hourly&#34;)
+ *         final var projectId = config.get("projectId").get();
+ *         var web = new Device("web", DeviceArgs.builder()        
+ *             .hostname("webserver1")
+ *             .plan("c3.small.x86")
+ *             .operatingSystem("ubuntu_20_04")
+ *             .metro("sv")
+ *             .billingCycle("hourly")
  *             .projectId(projectId)
  *             .build());
  * 
- *         ctx.export(&#34;webPublicIp&#34;, web.accessPublicIpv4().applyValue(accessPublicIpv4 -&gt; String.format(&#34;http://%s&#34;, accessPublicIpv4)));
+ *         ctx.export("webPublicIp", web.accessPublicIpv4().applyValue(accessPublicIpv4 -> String.format("http://%s", accessPublicIpv4)));
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  */
 @ResourceType(type="equinix:metal/device:Device")

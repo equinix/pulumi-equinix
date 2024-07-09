@@ -11,6 +11,7 @@ import com.equinix.pulumi.fabric.outputs.GetPortsDatumLocation;
 import com.equinix.pulumi.fabric.outputs.GetPortsDatumOperation;
 import com.equinix.pulumi.fabric.outputs.GetPortsDatumRedundancy;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -290,7 +291,10 @@ public final class GetPortsDatum {
 
         @CustomType.Setter
         public Builder accounts(List<GetPortsDatumAccount> accounts) {
-            this.accounts = Objects.requireNonNull(accounts);
+            if (accounts == null) {
+              throw new MissingRequiredPropertyException("GetPortsDatum", "accounts");
+            }
+            this.accounts = accounts;
             return this;
         }
         public Builder accounts(GetPortsDatumAccount... accounts) {
@@ -298,17 +302,26 @@ public final class GetPortsDatum {
         }
         @CustomType.Setter
         public Builder availableBandwidth(Integer availableBandwidth) {
-            this.availableBandwidth = Objects.requireNonNull(availableBandwidth);
+            if (availableBandwidth == null) {
+              throw new MissingRequiredPropertyException("GetPortsDatum", "availableBandwidth");
+            }
+            this.availableBandwidth = availableBandwidth;
             return this;
         }
         @CustomType.Setter
         public Builder bandwidth(Integer bandwidth) {
-            this.bandwidth = Objects.requireNonNull(bandwidth);
+            if (bandwidth == null) {
+              throw new MissingRequiredPropertyException("GetPortsDatum", "bandwidth");
+            }
+            this.bandwidth = bandwidth;
             return this;
         }
         @CustomType.Setter
         public Builder changeLogs(List<GetPortsDatumChangeLog> changeLogs) {
-            this.changeLogs = Objects.requireNonNull(changeLogs);
+            if (changeLogs == null) {
+              throw new MissingRequiredPropertyException("GetPortsDatum", "changeLogs");
+            }
+            this.changeLogs = changeLogs;
             return this;
         }
         public Builder changeLogs(GetPortsDatumChangeLog... changeLogs) {
@@ -316,12 +329,18 @@ public final class GetPortsDatum {
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetPortsDatum", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder devices(List<GetPortsDatumDevice> devices) {
-            this.devices = Objects.requireNonNull(devices);
+            if (devices == null) {
+              throw new MissingRequiredPropertyException("GetPortsDatum", "devices");
+            }
+            this.devices = devices;
             return this;
         }
         public Builder devices(GetPortsDatumDevice... devices) {
@@ -329,7 +348,10 @@ public final class GetPortsDatum {
         }
         @CustomType.Setter
         public Builder encapsulations(List<GetPortsDatumEncapsulation> encapsulations) {
-            this.encapsulations = Objects.requireNonNull(encapsulations);
+            if (encapsulations == null) {
+              throw new MissingRequiredPropertyException("GetPortsDatum", "encapsulations");
+            }
+            this.encapsulations = encapsulations;
             return this;
         }
         public Builder encapsulations(GetPortsDatumEncapsulation... encapsulations) {
@@ -337,17 +359,26 @@ public final class GetPortsDatum {
         }
         @CustomType.Setter
         public Builder href(String href) {
-            this.href = Objects.requireNonNull(href);
+            if (href == null) {
+              throw new MissingRequiredPropertyException("GetPortsDatum", "href");
+            }
+            this.href = href;
             return this;
         }
         @CustomType.Setter
         public Builder lagEnabled(Boolean lagEnabled) {
-            this.lagEnabled = Objects.requireNonNull(lagEnabled);
+            if (lagEnabled == null) {
+              throw new MissingRequiredPropertyException("GetPortsDatum", "lagEnabled");
+            }
+            this.lagEnabled = lagEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder locations(List<GetPortsDatumLocation> locations) {
-            this.locations = Objects.requireNonNull(locations);
+            if (locations == null) {
+              throw new MissingRequiredPropertyException("GetPortsDatum", "locations");
+            }
+            this.locations = locations;
             return this;
         }
         public Builder locations(GetPortsDatumLocation... locations) {
@@ -355,12 +386,18 @@ public final class GetPortsDatum {
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetPortsDatum", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder operations(List<GetPortsDatumOperation> operations) {
-            this.operations = Objects.requireNonNull(operations);
+            if (operations == null) {
+              throw new MissingRequiredPropertyException("GetPortsDatum", "operations");
+            }
+            this.operations = operations;
             return this;
         }
         public Builder operations(GetPortsDatumOperation... operations) {
@@ -368,7 +405,10 @@ public final class GetPortsDatum {
         }
         @CustomType.Setter
         public Builder redundancies(List<GetPortsDatumRedundancy> redundancies) {
-            this.redundancies = Objects.requireNonNull(redundancies);
+            if (redundancies == null) {
+              throw new MissingRequiredPropertyException("GetPortsDatum", "redundancies");
+            }
+            this.redundancies = redundancies;
             return this;
         }
         public Builder redundancies(GetPortsDatumRedundancy... redundancies) {
@@ -376,27 +416,42 @@ public final class GetPortsDatum {
         }
         @CustomType.Setter
         public Builder serviceType(String serviceType) {
-            this.serviceType = Objects.requireNonNull(serviceType);
+            if (serviceType == null) {
+              throw new MissingRequiredPropertyException("GetPortsDatum", "serviceType");
+            }
+            this.serviceType = serviceType;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetPortsDatum", "state");
+            }
+            this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetPortsDatum", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder usedBandwidth(Integer usedBandwidth) {
-            this.usedBandwidth = Objects.requireNonNull(usedBandwidth);
+            if (usedBandwidth == null) {
+              throw new MissingRequiredPropertyException("GetPortsDatum", "usedBandwidth");
+            }
+            this.usedBandwidth = usedBandwidth;
             return this;
         }
         @CustomType.Setter
         public Builder uuid(String uuid) {
-            this.uuid = Objects.requireNonNull(uuid);
+            if (uuid == null) {
+              throw new MissingRequiredPropertyException("GetPortsDatum", "uuid");
+            }
+            this.uuid = uuid;
             return this;
         }
         public GetPortsDatum build() {

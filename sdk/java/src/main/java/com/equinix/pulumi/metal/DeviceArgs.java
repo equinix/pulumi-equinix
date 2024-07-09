@@ -13,6 +13,7 @@ import com.equinix.pulumi.metal.inputs.DeviceReinstallArgs;
 import com.pulumi.core.Either;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -1027,9 +1028,15 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public DeviceArgs build() {
-            $.operatingSystem = Objects.requireNonNull($.operatingSystem, "expected parameter 'operatingSystem' to be non-null");
-            $.plan = Objects.requireNonNull($.plan, "expected parameter 'plan' to be non-null");
-            $.projectId = Objects.requireNonNull($.projectId, "expected parameter 'projectId' to be non-null");
+            if ($.operatingSystem == null) {
+                throw new MissingRequiredPropertyException("DeviceArgs", "operatingSystem");
+            }
+            if ($.plan == null) {
+                throw new MissingRequiredPropertyException("DeviceArgs", "plan");
+            }
+            if ($.projectId == null) {
+                throw new MissingRequiredPropertyException("DeviceArgs", "projectId");
+            }
             return $;
         }
     }

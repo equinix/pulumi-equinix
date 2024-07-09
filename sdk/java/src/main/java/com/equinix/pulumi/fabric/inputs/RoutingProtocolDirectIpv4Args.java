@@ -5,6 +5,7 @@ package com.equinix.pulumi.fabric.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class RoutingProtocolDirectIpv4Args extends com.pulumi.resources.Re
         }
 
         public RoutingProtocolDirectIpv4Args build() {
-            $.equinixIfaceIp = Objects.requireNonNull($.equinixIfaceIp, "expected parameter 'equinixIfaceIp' to be non-null");
+            if ($.equinixIfaceIp == null) {
+                throw new MissingRequiredPropertyException("RoutingProtocolDirectIpv4Args", "equinixIfaceIp");
+            }
             return $;
         }
     }

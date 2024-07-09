@@ -17,7 +17,8 @@ import javax.annotation.Nullable;
  * Provides an Equinix Metal project SSH key resource to manage project-specific SSH keys. Project SSH keys will only be populated onto servers that belong to that project, in contrast to User SSH Keys.
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -36,25 +37,26 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var projectId = config.get(&#34;projectId&#34;).get();
+ *         final var projectId = config.get("projectId").get();
  * 
  *         String content = null;
  *         try {
- *             content = Files.readString(Paths.get(&#34;/Users/John/.ssh/metal_rsa.pub&#34;));
+ *             content = Files.readString(Paths.get("/Users/John/.ssh/metal_rsa.pub"));
  *         } catch (IOException e) {
  *             e.printStackTrace();
  *         }
  * 
- *         var sshKey = new ProjectSshKey(&#34;sshKey&#34;, ProjectSshKeyArgs.builder()        
+ *         var sshKey = new ProjectSshKey("sshKey", ProjectSshKeyArgs.builder()        
  *             .projectId(projectId)
- *             .name(&#34;johnKent&#34;)
+ *             .name("johnKent")
  *             .publicKey(content)
  *             .build());
  * 
- *         ctx.export(&#34;sshKeyId&#34;, sshKey.id());
+ *         ctx.export("sshKeyId", sshKey.id());
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  */
 @ResourceType(type="equinix:metal/projectSshKey:ProjectSshKey")

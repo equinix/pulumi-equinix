@@ -7,6 +7,7 @@ import com.equinix.pulumi.networkedge.enums.AclRuleProtocolType;
 import com.pulumi.core.Either;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -405,9 +406,15 @@ public final class AclTemplateInboundRuleArgs extends com.pulumi.resources.Resou
         }
 
         public AclTemplateInboundRuleArgs build() {
-            $.dstPort = Objects.requireNonNull($.dstPort, "expected parameter 'dstPort' to be non-null");
-            $.protocol = Objects.requireNonNull($.protocol, "expected parameter 'protocol' to be non-null");
-            $.srcPort = Objects.requireNonNull($.srcPort, "expected parameter 'srcPort' to be non-null");
+            if ($.dstPort == null) {
+                throw new MissingRequiredPropertyException("AclTemplateInboundRuleArgs", "dstPort");
+            }
+            if ($.protocol == null) {
+                throw new MissingRequiredPropertyException("AclTemplateInboundRuleArgs", "protocol");
+            }
+            if ($.srcPort == null) {
+                throw new MissingRequiredPropertyException("AclTemplateInboundRuleArgs", "srcPort");
+            }
             return $;
         }
     }

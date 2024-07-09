@@ -4,6 +4,7 @@
 package com.equinix.pulumi.metal.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -128,37 +129,58 @@ public final class GetInterconnectionPort {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetInterconnectionPort", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder linkStatus(String linkStatus) {
-            this.linkStatus = Objects.requireNonNull(linkStatus);
+            if (linkStatus == null) {
+              throw new MissingRequiredPropertyException("GetInterconnectionPort", "linkStatus");
+            }
+            this.linkStatus = linkStatus;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetInterconnectionPort", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder role(String role) {
-            this.role = Objects.requireNonNull(role);
+            if (role == null) {
+              throw new MissingRequiredPropertyException("GetInterconnectionPort", "role");
+            }
+            this.role = role;
             return this;
         }
         @CustomType.Setter
         public Builder speed(Integer speed) {
-            this.speed = Objects.requireNonNull(speed);
+            if (speed == null) {
+              throw new MissingRequiredPropertyException("GetInterconnectionPort", "speed");
+            }
+            this.speed = speed;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetInterconnectionPort", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder virtualCircuitIds(List<String> virtualCircuitIds) {
-            this.virtualCircuitIds = Objects.requireNonNull(virtualCircuitIds);
+            if (virtualCircuitIds == null) {
+              throw new MissingRequiredPropertyException("GetInterconnectionPort", "virtualCircuitIds");
+            }
+            this.virtualCircuitIds = virtualCircuitIds;
             return this;
         }
         public Builder virtualCircuitIds(String... virtualCircuitIds) {

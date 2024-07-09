@@ -4,6 +4,7 @@
 package com.equinix.pulumi.metal.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
@@ -185,7 +186,10 @@ public final class GetSpotMarketRequestResult {
 
         @CustomType.Setter
         public Builder deviceIds(List<String> deviceIds) {
-            this.deviceIds = Objects.requireNonNull(deviceIds);
+            if (deviceIds == null) {
+              throw new MissingRequiredPropertyException("GetSpotMarketRequestResult", "deviceIds");
+            }
+            this.deviceIds = deviceIds;
             return this;
         }
         public Builder deviceIds(String... deviceIds) {
@@ -193,22 +197,34 @@ public final class GetSpotMarketRequestResult {
         }
         @CustomType.Setter
         public Builder devicesMax(Integer devicesMax) {
-            this.devicesMax = Objects.requireNonNull(devicesMax);
+            if (devicesMax == null) {
+              throw new MissingRequiredPropertyException("GetSpotMarketRequestResult", "devicesMax");
+            }
+            this.devicesMax = devicesMax;
             return this;
         }
         @CustomType.Setter
         public Builder devicesMin(Integer devicesMin) {
-            this.devicesMin = Objects.requireNonNull(devicesMin);
+            if (devicesMin == null) {
+              throw new MissingRequiredPropertyException("GetSpotMarketRequestResult", "devicesMin");
+            }
+            this.devicesMin = devicesMin;
             return this;
         }
         @CustomType.Setter
         public Builder endAt(String endAt) {
-            this.endAt = Objects.requireNonNull(endAt);
+            if (endAt == null) {
+              throw new MissingRequiredPropertyException("GetSpotMarketRequestResult", "endAt");
+            }
+            this.endAt = endAt;
             return this;
         }
         @CustomType.Setter
         public Builder facilities(List<String> facilities) {
-            this.facilities = Objects.requireNonNull(facilities);
+            if (facilities == null) {
+              throw new MissingRequiredPropertyException("GetSpotMarketRequestResult", "facilities");
+            }
+            this.facilities = facilities;
             return this;
         }
         public Builder facilities(String... facilities) {
@@ -216,32 +232,50 @@ public final class GetSpotMarketRequestResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetSpotMarketRequestResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder maxBidPrice(Double maxBidPrice) {
-            this.maxBidPrice = Objects.requireNonNull(maxBidPrice);
+            if (maxBidPrice == null) {
+              throw new MissingRequiredPropertyException("GetSpotMarketRequestResult", "maxBidPrice");
+            }
+            this.maxBidPrice = maxBidPrice;
             return this;
         }
         @CustomType.Setter
         public Builder metro(String metro) {
-            this.metro = Objects.requireNonNull(metro);
+            if (metro == null) {
+              throw new MissingRequiredPropertyException("GetSpotMarketRequestResult", "metro");
+            }
+            this.metro = metro;
             return this;
         }
         @CustomType.Setter
         public Builder plan(String plan) {
-            this.plan = Objects.requireNonNull(plan);
+            if (plan == null) {
+              throw new MissingRequiredPropertyException("GetSpotMarketRequestResult", "plan");
+            }
+            this.plan = plan;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("GetSpotMarketRequestResult", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder requestId(String requestId) {
-            this.requestId = Objects.requireNonNull(requestId);
+            if (requestId == null) {
+              throw new MissingRequiredPropertyException("GetSpotMarketRequestResult", "requestId");
+            }
+            this.requestId = requestId;
             return this;
         }
         public GetSpotMarketRequestResult build() {

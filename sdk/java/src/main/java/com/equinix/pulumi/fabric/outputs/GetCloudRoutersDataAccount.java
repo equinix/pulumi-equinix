@@ -4,6 +4,7 @@
 package com.equinix.pulumi.fabric.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class GetCloudRoutersDataAccount {
 
         @CustomType.Setter
         public Builder accountNumber(Integer accountNumber) {
-            this.accountNumber = Objects.requireNonNull(accountNumber);
+            if (accountNumber == null) {
+              throw new MissingRequiredPropertyException("GetCloudRoutersDataAccount", "accountNumber");
+            }
+            this.accountNumber = accountNumber;
             return this;
         }
         public GetCloudRoutersDataAccount build() {

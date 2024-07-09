@@ -4,6 +4,7 @@
 package com.equinix.pulumi.metal.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -131,12 +132,16 @@ public final class GetIpBlockRangesResult {
 
         @CustomType.Setter
         public Builder facility(@Nullable String facility) {
+
             this.facility = facility;
             return this;
         }
         @CustomType.Setter
         public Builder globalIpv4s(List<String> globalIpv4s) {
-            this.globalIpv4s = Objects.requireNonNull(globalIpv4s);
+            if (globalIpv4s == null) {
+              throw new MissingRequiredPropertyException("GetIpBlockRangesResult", "globalIpv4s");
+            }
+            this.globalIpv4s = globalIpv4s;
             return this;
         }
         public Builder globalIpv4s(String... globalIpv4s) {
@@ -144,12 +149,18 @@ public final class GetIpBlockRangesResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetIpBlockRangesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ipv6s(List<String> ipv6s) {
-            this.ipv6s = Objects.requireNonNull(ipv6s);
+            if (ipv6s == null) {
+              throw new MissingRequiredPropertyException("GetIpBlockRangesResult", "ipv6s");
+            }
+            this.ipv6s = ipv6s;
             return this;
         }
         public Builder ipv6s(String... ipv6s) {
@@ -157,12 +168,16 @@ public final class GetIpBlockRangesResult {
         }
         @CustomType.Setter
         public Builder metro(@Nullable String metro) {
+
             this.metro = metro;
             return this;
         }
         @CustomType.Setter
         public Builder privateIpv4s(List<String> privateIpv4s) {
-            this.privateIpv4s = Objects.requireNonNull(privateIpv4s);
+            if (privateIpv4s == null) {
+              throw new MissingRequiredPropertyException("GetIpBlockRangesResult", "privateIpv4s");
+            }
+            this.privateIpv4s = privateIpv4s;
             return this;
         }
         public Builder privateIpv4s(String... privateIpv4s) {
@@ -170,12 +185,18 @@ public final class GetIpBlockRangesResult {
         }
         @CustomType.Setter
         public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("GetIpBlockRangesResult", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder publicIpv4s(List<String> publicIpv4s) {
-            this.publicIpv4s = Objects.requireNonNull(publicIpv4s);
+            if (publicIpv4s == null) {
+              throw new MissingRequiredPropertyException("GetIpBlockRangesResult", "publicIpv4s");
+            }
+            this.publicIpv4s = publicIpv4s;
             return this;
         }
         public Builder publicIpv4s(String... publicIpv4s) {

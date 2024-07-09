@@ -5,6 +5,7 @@ package com.equinix.pulumi.networkedge.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class DeviceSecondaryDeviceSshKeyArgs extends com.pulumi.resources.
         }
 
         public DeviceSecondaryDeviceSshKeyArgs build() {
-            $.keyName = Objects.requireNonNull($.keyName, "expected parameter 'keyName' to be non-null");
-            $.username = Objects.requireNonNull($.username, "expected parameter 'username' to be non-null");
+            if ($.keyName == null) {
+                throw new MissingRequiredPropertyException("DeviceSecondaryDeviceSshKeyArgs", "keyName");
+            }
+            if ($.username == null) {
+                throw new MissingRequiredPropertyException("DeviceSecondaryDeviceSshKeyArgs", "username");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.equinix.pulumi.metal.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -63,7 +64,9 @@ public final class GetSpotMarketRequestPlainArgs extends com.pulumi.resources.In
         }
 
         public GetSpotMarketRequestPlainArgs build() {
-            $.requestId = Objects.requireNonNull($.requestId, "expected parameter 'requestId' to be non-null");
+            if ($.requestId == null) {
+                throw new MissingRequiredPropertyException("GetSpotMarketRequestPlainArgs", "requestId");
+            }
             return $;
         }
     }

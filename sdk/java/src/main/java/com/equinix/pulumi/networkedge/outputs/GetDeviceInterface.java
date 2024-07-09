@@ -4,6 +4,7 @@
 package com.equinix.pulumi.networkedge.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -165,42 +166,66 @@ public final class GetDeviceInterface {
 
         @CustomType.Setter
         public Builder assignedType(String assignedType) {
-            this.assignedType = Objects.requireNonNull(assignedType);
+            if (assignedType == null) {
+              throw new MissingRequiredPropertyException("GetDeviceInterface", "assignedType");
+            }
+            this.assignedType = assignedType;
             return this;
         }
         @CustomType.Setter
         public Builder id(Integer id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDeviceInterface", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ipAddress(String ipAddress) {
-            this.ipAddress = Objects.requireNonNull(ipAddress);
+            if (ipAddress == null) {
+              throw new MissingRequiredPropertyException("GetDeviceInterface", "ipAddress");
+            }
+            this.ipAddress = ipAddress;
             return this;
         }
         @CustomType.Setter
         public Builder macAddress(String macAddress) {
-            this.macAddress = Objects.requireNonNull(macAddress);
+            if (macAddress == null) {
+              throw new MissingRequiredPropertyException("GetDeviceInterface", "macAddress");
+            }
+            this.macAddress = macAddress;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetDeviceInterface", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder operationalStatus(String operationalStatus) {
-            this.operationalStatus = Objects.requireNonNull(operationalStatus);
+            if (operationalStatus == null) {
+              throw new MissingRequiredPropertyException("GetDeviceInterface", "operationalStatus");
+            }
+            this.operationalStatus = operationalStatus;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetDeviceInterface", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetDeviceInterface", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetDeviceInterface build() {

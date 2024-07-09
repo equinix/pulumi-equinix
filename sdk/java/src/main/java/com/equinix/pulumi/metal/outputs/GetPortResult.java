@@ -4,6 +4,7 @@
 package com.equinix.pulumi.metal.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -211,72 +212,110 @@ public final class GetPortResult {
 
         @CustomType.Setter
         public Builder bondId(String bondId) {
-            this.bondId = Objects.requireNonNull(bondId);
+            if (bondId == null) {
+              throw new MissingRequiredPropertyException("GetPortResult", "bondId");
+            }
+            this.bondId = bondId;
             return this;
         }
         @CustomType.Setter
         public Builder bondName(String bondName) {
-            this.bondName = Objects.requireNonNull(bondName);
+            if (bondName == null) {
+              throw new MissingRequiredPropertyException("GetPortResult", "bondName");
+            }
+            this.bondName = bondName;
             return this;
         }
         @CustomType.Setter
         public Builder bonded(Boolean bonded) {
-            this.bonded = Objects.requireNonNull(bonded);
+            if (bonded == null) {
+              throw new MissingRequiredPropertyException("GetPortResult", "bonded");
+            }
+            this.bonded = bonded;
             return this;
         }
         @CustomType.Setter
         public Builder deviceId(@Nullable String deviceId) {
+
             this.deviceId = deviceId;
             return this;
         }
         @CustomType.Setter
         public Builder disbondSupported(Boolean disbondSupported) {
-            this.disbondSupported = Objects.requireNonNull(disbondSupported);
+            if (disbondSupported == null) {
+              throw new MissingRequiredPropertyException("GetPortResult", "disbondSupported");
+            }
+            this.disbondSupported = disbondSupported;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetPortResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder layer2(Boolean layer2) {
-            this.layer2 = Objects.requireNonNull(layer2);
+            if (layer2 == null) {
+              throw new MissingRequiredPropertyException("GetPortResult", "layer2");
+            }
+            this.layer2 = layer2;
             return this;
         }
         @CustomType.Setter
         public Builder mac(String mac) {
-            this.mac = Objects.requireNonNull(mac);
+            if (mac == null) {
+              throw new MissingRequiredPropertyException("GetPortResult", "mac");
+            }
+            this.mac = mac;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetPortResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder nativeVlanId(String nativeVlanId) {
-            this.nativeVlanId = Objects.requireNonNull(nativeVlanId);
+            if (nativeVlanId == null) {
+              throw new MissingRequiredPropertyException("GetPortResult", "nativeVlanId");
+            }
+            this.nativeVlanId = nativeVlanId;
             return this;
         }
         @CustomType.Setter
         public Builder networkType(String networkType) {
-            this.networkType = Objects.requireNonNull(networkType);
+            if (networkType == null) {
+              throw new MissingRequiredPropertyException("GetPortResult", "networkType");
+            }
+            this.networkType = networkType;
             return this;
         }
         @CustomType.Setter
         public Builder portId(@Nullable String portId) {
+
             this.portId = portId;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetPortResult", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder vlanIds(List<String> vlanIds) {
-            this.vlanIds = Objects.requireNonNull(vlanIds);
+            if (vlanIds == null) {
+              throw new MissingRequiredPropertyException("GetPortResult", "vlanIds");
+            }
+            this.vlanIds = vlanIds;
             return this;
         }
         public Builder vlanIds(String... vlanIds) {
@@ -284,7 +323,10 @@ public final class GetPortResult {
         }
         @CustomType.Setter
         public Builder vxlanIds(List<Integer> vxlanIds) {
-            this.vxlanIds = Objects.requireNonNull(vxlanIds);
+            if (vxlanIds == null) {
+              throw new MissingRequiredPropertyException("GetPortResult", "vxlanIds");
+            }
+            this.vxlanIds = vxlanIds;
             return this;
         }
         public Builder vxlanIds(Integer... vxlanIds) {

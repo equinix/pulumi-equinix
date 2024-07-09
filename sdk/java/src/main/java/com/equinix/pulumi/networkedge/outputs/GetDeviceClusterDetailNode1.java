@@ -5,6 +5,7 @@ package com.equinix.pulumi.networkedge.outputs;
 
 import com.equinix.pulumi.networkedge.outputs.GetDeviceClusterDetailNode1VendorConfiguration;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -100,27 +101,42 @@ public final class GetDeviceClusterDetailNode1 {
 
         @CustomType.Setter
         public Builder licenseFileId(String licenseFileId) {
-            this.licenseFileId = Objects.requireNonNull(licenseFileId);
+            if (licenseFileId == null) {
+              throw new MissingRequiredPropertyException("GetDeviceClusterDetailNode1", "licenseFileId");
+            }
+            this.licenseFileId = licenseFileId;
             return this;
         }
         @CustomType.Setter
         public Builder licenseToken(String licenseToken) {
-            this.licenseToken = Objects.requireNonNull(licenseToken);
+            if (licenseToken == null) {
+              throw new MissingRequiredPropertyException("GetDeviceClusterDetailNode1", "licenseToken");
+            }
+            this.licenseToken = licenseToken;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetDeviceClusterDetailNode1", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder uuid(String uuid) {
-            this.uuid = Objects.requireNonNull(uuid);
+            if (uuid == null) {
+              throw new MissingRequiredPropertyException("GetDeviceClusterDetailNode1", "uuid");
+            }
+            this.uuid = uuid;
             return this;
         }
         @CustomType.Setter
         public Builder vendorConfigurations(List<GetDeviceClusterDetailNode1VendorConfiguration> vendorConfigurations) {
-            this.vendorConfigurations = Objects.requireNonNull(vendorConfigurations);
+            if (vendorConfigurations == null) {
+              throw new MissingRequiredPropertyException("GetDeviceClusterDetailNode1", "vendorConfigurations");
+            }
+            this.vendorConfigurations = vendorConfigurations;
             return this;
         }
         public Builder vendorConfigurations(GetDeviceClusterDetailNode1VendorConfiguration... vendorConfigurations) {

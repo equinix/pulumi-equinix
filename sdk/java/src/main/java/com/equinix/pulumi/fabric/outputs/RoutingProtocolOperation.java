@@ -44,6 +44,7 @@ public final class RoutingProtocolOperation {
 
         @CustomType.Setter
         public Builder errors(@Nullable List<RoutingProtocolOperationError> errors) {
+
             this.errors = errors;
             return this;
         }

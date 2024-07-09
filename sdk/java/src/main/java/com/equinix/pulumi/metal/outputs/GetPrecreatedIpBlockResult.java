@@ -4,6 +4,7 @@
 package com.equinix.pulumi.metal.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -156,92 +157,140 @@ public final class GetPrecreatedIpBlockResult {
 
         @CustomType.Setter
         public Builder address(String address) {
-            this.address = Objects.requireNonNull(address);
+            if (address == null) {
+              throw new MissingRequiredPropertyException("GetPrecreatedIpBlockResult", "address");
+            }
+            this.address = address;
             return this;
         }
         @CustomType.Setter
         public Builder addressFamily(Integer addressFamily) {
-            this.addressFamily = Objects.requireNonNull(addressFamily);
+            if (addressFamily == null) {
+              throw new MissingRequiredPropertyException("GetPrecreatedIpBlockResult", "addressFamily");
+            }
+            this.addressFamily = addressFamily;
             return this;
         }
         @CustomType.Setter
         public Builder cidr(Integer cidr) {
-            this.cidr = Objects.requireNonNull(cidr);
+            if (cidr == null) {
+              throw new MissingRequiredPropertyException("GetPrecreatedIpBlockResult", "cidr");
+            }
+            this.cidr = cidr;
             return this;
         }
         @CustomType.Setter
         public Builder cidrNotation(String cidrNotation) {
-            this.cidrNotation = Objects.requireNonNull(cidrNotation);
+            if (cidrNotation == null) {
+              throw new MissingRequiredPropertyException("GetPrecreatedIpBlockResult", "cidrNotation");
+            }
+            this.cidrNotation = cidrNotation;
             return this;
         }
         @CustomType.Setter
         public Builder facility(@Nullable String facility) {
+
             this.facility = facility;
             return this;
         }
         @CustomType.Setter
         public Builder gateway(String gateway) {
-            this.gateway = Objects.requireNonNull(gateway);
+            if (gateway == null) {
+              throw new MissingRequiredPropertyException("GetPrecreatedIpBlockResult", "gateway");
+            }
+            this.gateway = gateway;
             return this;
         }
         @CustomType.Setter
         public Builder global(@Nullable Boolean global) {
+
             this.global = global;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetPrecreatedIpBlockResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder manageable(Boolean manageable) {
-            this.manageable = Objects.requireNonNull(manageable);
+            if (manageable == null) {
+              throw new MissingRequiredPropertyException("GetPrecreatedIpBlockResult", "manageable");
+            }
+            this.manageable = manageable;
             return this;
         }
         @CustomType.Setter
         public Builder management(Boolean management) {
-            this.management = Objects.requireNonNull(management);
+            if (management == null) {
+              throw new MissingRequiredPropertyException("GetPrecreatedIpBlockResult", "management");
+            }
+            this.management = management;
             return this;
         }
         @CustomType.Setter
         public Builder metro(@Nullable String metro) {
+
             this.metro = metro;
             return this;
         }
         @CustomType.Setter
         public Builder netmask(String netmask) {
-            this.netmask = Objects.requireNonNull(netmask);
+            if (netmask == null) {
+              throw new MissingRequiredPropertyException("GetPrecreatedIpBlockResult", "netmask");
+            }
+            this.netmask = netmask;
             return this;
         }
         @CustomType.Setter
         public Builder network(String network) {
-            this.network = Objects.requireNonNull(network);
+            if (network == null) {
+              throw new MissingRequiredPropertyException("GetPrecreatedIpBlockResult", "network");
+            }
+            this.network = network;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("GetPrecreatedIpBlockResult", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter("public")
         public Builder public_(Boolean public_) {
-            this.public_ = Objects.requireNonNull(public_);
+            if (public_ == null) {
+              throw new MissingRequiredPropertyException("GetPrecreatedIpBlockResult", "public_");
+            }
+            this.public_ = public_;
             return this;
         }
         @CustomType.Setter
         public Builder quantity(Integer quantity) {
-            this.quantity = Objects.requireNonNull(quantity);
+            if (quantity == null) {
+              throw new MissingRequiredPropertyException("GetPrecreatedIpBlockResult", "quantity");
+            }
+            this.quantity = quantity;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetPrecreatedIpBlockResult", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder vrfId(String vrfId) {
-            this.vrfId = Objects.requireNonNull(vrfId);
+            if (vrfId == null) {
+              throw new MissingRequiredPropertyException("GetPrecreatedIpBlockResult", "vrfId");
+            }
+            this.vrfId = vrfId;
             return this;
         }
         public GetPrecreatedIpBlockResult build() {

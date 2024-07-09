@@ -5,6 +5,7 @@ package com.equinix.pulumi.fabric.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class GetServiceProfileArgs extends com.pulumi.resources.InvokeArgs
         }
 
         public GetServiceProfileArgs build() {
-            $.uuid = Objects.requireNonNull($.uuid, "expected parameter 'uuid' to be non-null");
+            if ($.uuid == null) {
+                throw new MissingRequiredPropertyException("GetServiceProfileArgs", "uuid");
+            }
             return $;
         }
     }

@@ -58,11 +58,13 @@ public final class GetConnectionsPagination {
 
         @CustomType.Setter
         public Builder limit(@Nullable Integer limit) {
+
             this.limit = limit;
             return this;
         }
         @CustomType.Setter
         public Builder offset(@Nullable Integer offset) {
+
             this.offset = offset;
             return this;
         }

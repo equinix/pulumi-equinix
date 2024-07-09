@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -37,23 +38,24 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var projectId = config.get(&#34;projectId&#34;).get();
- *         final var metro = config.get(&#34;metro&#34;).orElse(&#34;DA&#34;);
- *         var vrf = new Vrf(&#34;vrf&#34;, VrfArgs.builder()        
- *             .description(&#34;VRF with ASN 65000 and a pool of address space&#34;)
- *             .name(&#34;example-vrf&#34;)
+ *         final var projectId = config.get("projectId").get();
+ *         final var metro = config.get("metro").orElse("DA");
+ *         var vrf = new Vrf("vrf", VrfArgs.builder()        
+ *             .description("VRF with ASN 65000 and a pool of address space")
+ *             .name("example-vrf")
  *             .metro(metro)
  *             .localAsn(65000)
  *             .ipRanges(            
- *                 &#34;192.168.100.0/25&#34;,
- *                 &#34;192.168.200.0/25&#34;)
+ *                 "192.168.100.0/25",
+ *                 "192.168.200.0/25")
  *             .projectId(projectId)
  *             .build());
  * 
- *         ctx.export(&#34;vrfId&#34;, vrf.id());
+ *         ctx.export("vrfId", vrf.id());
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  * ## Import
  * 

@@ -4,6 +4,7 @@
 package com.equinix.pulumi.metal.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -58,11 +59,15 @@ public final class GetPlansSort {
 
         @CustomType.Setter
         public Builder attribute(String attribute) {
-            this.attribute = Objects.requireNonNull(attribute);
+            if (attribute == null) {
+              throw new MissingRequiredPropertyException("GetPlansSort", "attribute");
+            }
+            this.attribute = attribute;
             return this;
         }
         @CustomType.Setter
         public Builder direction(@Nullable String direction) {
+
             this.direction = direction;
             return this;
         }

@@ -5,6 +5,7 @@ package com.equinix.pulumi.metal.outputs;
 
 import com.equinix.pulumi.metal.outputs.GetDeviceBgpNeighborsBgpNeighbor;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -64,7 +65,10 @@ public final class GetDeviceBgpNeighborsResult {
 
         @CustomType.Setter
         public Builder bgpNeighbors(List<GetDeviceBgpNeighborsBgpNeighbor> bgpNeighbors) {
-            this.bgpNeighbors = Objects.requireNonNull(bgpNeighbors);
+            if (bgpNeighbors == null) {
+              throw new MissingRequiredPropertyException("GetDeviceBgpNeighborsResult", "bgpNeighbors");
+            }
+            this.bgpNeighbors = bgpNeighbors;
             return this;
         }
         public Builder bgpNeighbors(GetDeviceBgpNeighborsBgpNeighbor... bgpNeighbors) {
@@ -72,12 +76,18 @@ public final class GetDeviceBgpNeighborsResult {
         }
         @CustomType.Setter
         public Builder deviceId(String deviceId) {
-            this.deviceId = Objects.requireNonNull(deviceId);
+            if (deviceId == null) {
+              throw new MissingRequiredPropertyException("GetDeviceBgpNeighborsResult", "deviceId");
+            }
+            this.deviceId = deviceId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDeviceBgpNeighborsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         public GetDeviceBgpNeighborsResult build() {

@@ -44,6 +44,7 @@ public final class NetworkOperation {
 
         @CustomType.Setter
         public Builder equinixStatus(@Nullable String equinixStatus) {
+
             this.equinixStatus = equinixStatus;
             return this;
         }

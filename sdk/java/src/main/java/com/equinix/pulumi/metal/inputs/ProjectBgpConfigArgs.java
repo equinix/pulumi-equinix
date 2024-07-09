@@ -5,6 +5,7 @@ package com.equinix.pulumi.metal.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -225,8 +226,12 @@ public final class ProjectBgpConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         public ProjectBgpConfigArgs build() {
-            $.asn = Objects.requireNonNull($.asn, "expected parameter 'asn' to be non-null");
-            $.deploymentType = Objects.requireNonNull($.deploymentType, "expected parameter 'deploymentType' to be non-null");
+            if ($.asn == null) {
+                throw new MissingRequiredPropertyException("ProjectBgpConfigArgs", "asn");
+            }
+            if ($.deploymentType == null) {
+                throw new MissingRequiredPropertyException("ProjectBgpConfigArgs", "deploymentType");
+            }
             return $;
         }
     }

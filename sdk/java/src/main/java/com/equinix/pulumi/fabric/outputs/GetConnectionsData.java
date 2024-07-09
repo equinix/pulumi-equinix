@@ -13,6 +13,7 @@ import com.equinix.pulumi.fabric.outputs.GetConnectionsDataProject;
 import com.equinix.pulumi.fabric.outputs.GetConnectionsDataRedundancy;
 import com.equinix.pulumi.fabric.outputs.GetConnectionsDataZSide;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -308,7 +309,10 @@ public final class GetConnectionsData {
 
         @CustomType.Setter
         public Builder aSides(List<GetConnectionsDataASide> aSides) {
-            this.aSides = Objects.requireNonNull(aSides);
+            if (aSides == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsData", "aSides");
+            }
+            this.aSides = aSides;
             return this;
         }
         public Builder aSides(GetConnectionsDataASide... aSides) {
@@ -316,7 +320,10 @@ public final class GetConnectionsData {
         }
         @CustomType.Setter
         public Builder accounts(List<GetConnectionsDataAccount> accounts) {
-            this.accounts = Objects.requireNonNull(accounts);
+            if (accounts == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsData", "accounts");
+            }
+            this.accounts = accounts;
             return this;
         }
         public Builder accounts(GetConnectionsDataAccount... accounts) {
@@ -324,17 +331,26 @@ public final class GetConnectionsData {
         }
         @CustomType.Setter
         public Builder additionalInfos(List<Map<String,Object>> additionalInfos) {
-            this.additionalInfos = Objects.requireNonNull(additionalInfos);
+            if (additionalInfos == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsData", "additionalInfos");
+            }
+            this.additionalInfos = additionalInfos;
             return this;
         }
         @CustomType.Setter
         public Builder bandwidth(Integer bandwidth) {
-            this.bandwidth = Objects.requireNonNull(bandwidth);
+            if (bandwidth == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsData", "bandwidth");
+            }
+            this.bandwidth = bandwidth;
             return this;
         }
         @CustomType.Setter
         public Builder changeLogs(List<GetConnectionsDataChangeLog> changeLogs) {
-            this.changeLogs = Objects.requireNonNull(changeLogs);
+            if (changeLogs == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsData", "changeLogs");
+            }
+            this.changeLogs = changeLogs;
             return this;
         }
         public Builder changeLogs(GetConnectionsDataChangeLog... changeLogs) {
@@ -342,32 +358,50 @@ public final class GetConnectionsData {
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsData", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder direction(String direction) {
-            this.direction = Objects.requireNonNull(direction);
+            if (direction == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsData", "direction");
+            }
+            this.direction = direction;
             return this;
         }
         @CustomType.Setter
         public Builder href(String href) {
-            this.href = Objects.requireNonNull(href);
+            if (href == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsData", "href");
+            }
+            this.href = href;
             return this;
         }
         @CustomType.Setter
         public Builder isRemote(Boolean isRemote) {
-            this.isRemote = Objects.requireNonNull(isRemote);
+            if (isRemote == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsData", "isRemote");
+            }
+            this.isRemote = isRemote;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsData", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder notifications(List<GetConnectionsDataNotification> notifications) {
-            this.notifications = Objects.requireNonNull(notifications);
+            if (notifications == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsData", "notifications");
+            }
+            this.notifications = notifications;
             return this;
         }
         public Builder notifications(GetConnectionsDataNotification... notifications) {
@@ -375,7 +409,10 @@ public final class GetConnectionsData {
         }
         @CustomType.Setter
         public Builder operations(List<GetConnectionsDataOperation> operations) {
-            this.operations = Objects.requireNonNull(operations);
+            if (operations == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsData", "operations");
+            }
+            this.operations = operations;
             return this;
         }
         public Builder operations(GetConnectionsDataOperation... operations) {
@@ -383,7 +420,10 @@ public final class GetConnectionsData {
         }
         @CustomType.Setter
         public Builder orders(List<GetConnectionsDataOrder> orders) {
-            this.orders = Objects.requireNonNull(orders);
+            if (orders == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsData", "orders");
+            }
+            this.orders = orders;
             return this;
         }
         public Builder orders(GetConnectionsDataOrder... orders) {
@@ -391,7 +431,10 @@ public final class GetConnectionsData {
         }
         @CustomType.Setter
         public Builder projects(List<GetConnectionsDataProject> projects) {
-            this.projects = Objects.requireNonNull(projects);
+            if (projects == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsData", "projects");
+            }
+            this.projects = projects;
             return this;
         }
         public Builder projects(GetConnectionsDataProject... projects) {
@@ -399,7 +442,10 @@ public final class GetConnectionsData {
         }
         @CustomType.Setter
         public Builder redundancies(List<GetConnectionsDataRedundancy> redundancies) {
-            this.redundancies = Objects.requireNonNull(redundancies);
+            if (redundancies == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsData", "redundancies");
+            }
+            this.redundancies = redundancies;
             return this;
         }
         public Builder redundancies(GetConnectionsDataRedundancy... redundancies) {
@@ -407,22 +453,34 @@ public final class GetConnectionsData {
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsData", "state");
+            }
+            this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsData", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder uuid(String uuid) {
-            this.uuid = Objects.requireNonNull(uuid);
+            if (uuid == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsData", "uuid");
+            }
+            this.uuid = uuid;
             return this;
         }
         @CustomType.Setter
         public Builder zSides(List<GetConnectionsDataZSide> zSides) {
-            this.zSides = Objects.requireNonNull(zSides);
+            if (zSides == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsData", "zSides");
+            }
+            this.zSides = zSides;
             return this;
         }
         public Builder zSides(GetConnectionsDataZSide... zSides) {

@@ -4,6 +4,7 @@
 package com.equinix.pulumi.fabric.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -73,16 +74,21 @@ public final class RoutingProtocolBgpIpv4 {
 
         @CustomType.Setter
         public Builder customerPeerIp(String customerPeerIp) {
-            this.customerPeerIp = Objects.requireNonNull(customerPeerIp);
+            if (customerPeerIp == null) {
+              throw new MissingRequiredPropertyException("RoutingProtocolBgpIpv4", "customerPeerIp");
+            }
+            this.customerPeerIp = customerPeerIp;
             return this;
         }
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
+
             this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder equinixPeerIp(@Nullable String equinixPeerIp) {
+
             this.equinixPeerIp = equinixPeerIp;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.equinix.pulumi.fabric.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class GetPortsDatumEncapsulation {
 
         @CustomType.Setter
         public Builder tagProtocolId(String tagProtocolId) {
-            this.tagProtocolId = Objects.requireNonNull(tagProtocolId);
+            if (tagProtocolId == null) {
+              throw new MissingRequiredPropertyException("GetPortsDatumEncapsulation", "tagProtocolId");
+            }
+            this.tagProtocolId = tagProtocolId;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetPortsDatumEncapsulation", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetPortsDatumEncapsulation build() {

@@ -4,6 +4,7 @@
 package com.equinix.pulumi.metal.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -104,32 +105,50 @@ public final class GetInterconnectionServiceToken {
 
         @CustomType.Setter
         public Builder expiresAt(String expiresAt) {
-            this.expiresAt = Objects.requireNonNull(expiresAt);
+            if (expiresAt == null) {
+              throw new MissingRequiredPropertyException("GetInterconnectionServiceToken", "expiresAt");
+            }
+            this.expiresAt = expiresAt;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetInterconnectionServiceToken", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder maxAllowedSpeed(String maxAllowedSpeed) {
-            this.maxAllowedSpeed = Objects.requireNonNull(maxAllowedSpeed);
+            if (maxAllowedSpeed == null) {
+              throw new MissingRequiredPropertyException("GetInterconnectionServiceToken", "maxAllowedSpeed");
+            }
+            this.maxAllowedSpeed = maxAllowedSpeed;
             return this;
         }
         @CustomType.Setter
         public Builder role(String role) {
-            this.role = Objects.requireNonNull(role);
+            if (role == null) {
+              throw new MissingRequiredPropertyException("GetInterconnectionServiceToken", "role");
+            }
+            this.role = role;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetInterconnectionServiceToken", "state");
+            }
+            this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetInterconnectionServiceToken", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetInterconnectionServiceToken build() {

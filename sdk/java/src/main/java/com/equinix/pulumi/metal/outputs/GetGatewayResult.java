@@ -4,6 +4,7 @@
 package com.equinix.pulumi.metal.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -125,42 +126,66 @@ public final class GetGatewayResult {
 
         @CustomType.Setter
         public Builder gatewayId(String gatewayId) {
-            this.gatewayId = Objects.requireNonNull(gatewayId);
+            if (gatewayId == null) {
+              throw new MissingRequiredPropertyException("GetGatewayResult", "gatewayId");
+            }
+            this.gatewayId = gatewayId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetGatewayResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ipReservationId(String ipReservationId) {
-            this.ipReservationId = Objects.requireNonNull(ipReservationId);
+            if (ipReservationId == null) {
+              throw new MissingRequiredPropertyException("GetGatewayResult", "ipReservationId");
+            }
+            this.ipReservationId = ipReservationId;
             return this;
         }
         @CustomType.Setter
         public Builder privateIpv4SubnetSize(Integer privateIpv4SubnetSize) {
-            this.privateIpv4SubnetSize = Objects.requireNonNull(privateIpv4SubnetSize);
+            if (privateIpv4SubnetSize == null) {
+              throw new MissingRequiredPropertyException("GetGatewayResult", "privateIpv4SubnetSize");
+            }
+            this.privateIpv4SubnetSize = privateIpv4SubnetSize;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("GetGatewayResult", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetGatewayResult", "state");
+            }
+            this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder vlanId(String vlanId) {
-            this.vlanId = Objects.requireNonNull(vlanId);
+            if (vlanId == null) {
+              throw new MissingRequiredPropertyException("GetGatewayResult", "vlanId");
+            }
+            this.vlanId = vlanId;
             return this;
         }
         @CustomType.Setter
         public Builder vrfId(String vrfId) {
-            this.vrfId = Objects.requireNonNull(vrfId);
+            if (vrfId == null) {
+              throw new MissingRequiredPropertyException("GetGatewayResult", "vrfId");
+            }
+            this.vrfId = vrfId;
             return this;
         }
         public GetGatewayResult build() {

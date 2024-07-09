@@ -7,6 +7,7 @@ import com.equinix.pulumi.networkedge.inputs.DeviceSecondaryDeviceInterfaceArgs;
 import com.equinix.pulumi.networkedge.inputs.DeviceSecondaryDeviceSshKeyArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -1104,10 +1105,18 @@ public final class DeviceSecondaryDeviceArgs extends com.pulumi.resources.Resour
         }
 
         public DeviceSecondaryDeviceArgs build() {
-            $.accountNumber = Objects.requireNonNull($.accountNumber, "expected parameter 'accountNumber' to be non-null");
-            $.metroCode = Objects.requireNonNull($.metroCode, "expected parameter 'metroCode' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
-            $.notifications = Objects.requireNonNull($.notifications, "expected parameter 'notifications' to be non-null");
+            if ($.accountNumber == null) {
+                throw new MissingRequiredPropertyException("DeviceSecondaryDeviceArgs", "accountNumber");
+            }
+            if ($.metroCode == null) {
+                throw new MissingRequiredPropertyException("DeviceSecondaryDeviceArgs", "metroCode");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("DeviceSecondaryDeviceArgs", "name");
+            }
+            if ($.notifications == null) {
+                throw new MissingRequiredPropertyException("DeviceSecondaryDeviceArgs", "notifications");
+            }
             return $;
         }
     }

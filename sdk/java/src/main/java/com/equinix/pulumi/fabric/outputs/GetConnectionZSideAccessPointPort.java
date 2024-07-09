@@ -5,6 +5,7 @@ package com.equinix.pulumi.fabric.outputs;
 
 import com.equinix.pulumi.fabric.outputs.GetConnectionZSideAccessPointPortRedundancy;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -86,17 +87,26 @@ public final class GetConnectionZSideAccessPointPort {
 
         @CustomType.Setter
         public Builder href(String href) {
-            this.href = Objects.requireNonNull(href);
+            if (href == null) {
+              throw new MissingRequiredPropertyException("GetConnectionZSideAccessPointPort", "href");
+            }
+            this.href = href;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetConnectionZSideAccessPointPort", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder redundancies(List<GetConnectionZSideAccessPointPortRedundancy> redundancies) {
-            this.redundancies = Objects.requireNonNull(redundancies);
+            if (redundancies == null) {
+              throw new MissingRequiredPropertyException("GetConnectionZSideAccessPointPort", "redundancies");
+            }
+            this.redundancies = redundancies;
             return this;
         }
         public Builder redundancies(GetConnectionZSideAccessPointPortRedundancy... redundancies) {
@@ -104,7 +114,10 @@ public final class GetConnectionZSideAccessPointPort {
         }
         @CustomType.Setter
         public Builder uuid(String uuid) {
-            this.uuid = Objects.requireNonNull(uuid);
+            if (uuid == null) {
+              throw new MissingRequiredPropertyException("GetConnectionZSideAccessPointPort", "uuid");
+            }
+            this.uuid = uuid;
             return this;
         }
         public GetConnectionZSideAccessPointPort build() {

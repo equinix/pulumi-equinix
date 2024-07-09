@@ -7,6 +7,7 @@ import com.equinix.pulumi.networkedge.inputs.DeviceClusterDetailsNode0Args;
 import com.equinix.pulumi.networkedge.inputs.DeviceClusterDetailsNode1Args;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -227,9 +228,15 @@ public final class DeviceClusterDetailsArgs extends com.pulumi.resources.Resourc
         }
 
         public DeviceClusterDetailsArgs build() {
-            $.clusterName = Objects.requireNonNull($.clusterName, "expected parameter 'clusterName' to be non-null");
-            $.node0 = Objects.requireNonNull($.node0, "expected parameter 'node0' to be non-null");
-            $.node1 = Objects.requireNonNull($.node1, "expected parameter 'node1' to be non-null");
+            if ($.clusterName == null) {
+                throw new MissingRequiredPropertyException("DeviceClusterDetailsArgs", "clusterName");
+            }
+            if ($.node0 == null) {
+                throw new MissingRequiredPropertyException("DeviceClusterDetailsArgs", "node0");
+            }
+            if ($.node1 == null) {
+                throw new MissingRequiredPropertyException("DeviceClusterDetailsArgs", "node1");
+            }
             return $;
         }
     }

@@ -15,7 +15,6 @@ TFGEN            := pulumi-tfgen-${PACK}
 PROVIDER         := pulumi-resource-${PACK}
 VERSION          := $(shell pulumictl get version)
 JAVA_GEN         := pulumi-java-gen
-JAVA_GEN_VERSION := v0.9.8
 JAVA_GROUP_ID    := com.${ORG}.pulumi
 JAVA_ARTIFACT_ID := ${PACK}
 TESTPARALLELISM  := 4
@@ -31,18 +30,18 @@ development: install_plugins provider lint_provider build_sdks install_sdks clea
 build: install_plugins provider build_sdks install_sdks
 only_build: build
 
-tfgen: install_plugins upstream
+tfgen: cleanup install_plugins upstream
 	(cd provider && go build -o $(WORKING_DIR)/bin/${TFGEN} -ldflags "-X ${PROJECT}/${VERSION_PATH}=${VERSION}" ${PROJECT}/${PROVIDER_PATH}/cmd/${TFGEN})
 	$(WORKING_DIR)/bin/${TFGEN} schema --out provider/cmd/${PROVIDER}
 	(cd provider && VERSION=$(VERSION) go generate cmd/${PROVIDER}/main.go)
 
-bin/pulumi-java-gen:
-	pulumictl download-binary -n pulumi-language-java -v $(JAVA_GEN_VERSION) -r pulumi/pulumi-java
+bin/pulumi-java-gen: .pulumi-java-gen.version
+	pulumictl download-binary -n pulumi-language-java -v v$(shell cat .pulumi-java-gen.version) -r pulumi/pulumi-java
 
 provider: tfgen install_plugins # build the provider binary
 	(cd provider && go build -o $(WORKING_DIR)/bin/${PROVIDER} -ldflags "-X ${PROJECT}/${VERSION_PATH}=${VERSION} -X github.com/equinix/terraform-provider-equinix/version.ProviderVersion=${VERSION}" ${PROJECT}/${PROVIDER_PATH}/cmd/${PROVIDER})
 
-build_sdks: build_nodejs build_python build_go build_dotnet build_java # build all the sdks
+build_sdks: clean build_nodejs build_python build_go build_dotnet build_java # build all the sdks
 
 build_nodejs: VERSION := $(shell pulumictl get version --language javascript)
 build_nodejs: upstream
@@ -119,7 +118,8 @@ build_java: bin/pulumi-java-gen patch_java_schema upstream
 		rm -f build.gradle.bak
 	cd sdk/java/ && \
 		printf "module fake_java_module // Exclude this directory from Go tools\n\ngo 1.17\n" > go.mod && \
-		gradle --console=plain build
+		gradle --console=plain build && \
+		gradle --console=plain javadoc
 
 patch_java_schema:
 	echo "patch_java_schema: copy schema.json to schema-java.json " && \
@@ -137,8 +137,8 @@ lint_provider: provider # lint the provider code
 	cd provider && golangci-lint run -c ../.golangci.yml
 
 cleanup: # cleans up the temporary directory
-	rm -r $(WORKING_DIR)/bin
-	rm -f provider/cmd/${PROVIDER}/schema.go
+	- rm -r $(WORKING_DIR)/bin
+	- rm -f provider/cmd/${PROVIDER}/schema.go
 
 help:
 	@grep '^[^.#]\+:\s\+.*#' Makefile | \

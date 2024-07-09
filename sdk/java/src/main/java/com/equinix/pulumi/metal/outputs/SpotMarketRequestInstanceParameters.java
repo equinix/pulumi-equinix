@@ -4,6 +4,7 @@
 package com.equinix.pulumi.metal.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -148,26 +149,33 @@ public final class SpotMarketRequestInstanceParameters {
 
         @CustomType.Setter
         public Builder alwaysPxe(@Nullable Boolean alwaysPxe) {
+
             this.alwaysPxe = alwaysPxe;
             return this;
         }
         @CustomType.Setter
         public Builder billingCycle(String billingCycle) {
-            this.billingCycle = Objects.requireNonNull(billingCycle);
+            if (billingCycle == null) {
+              throw new MissingRequiredPropertyException("SpotMarketRequestInstanceParameters", "billingCycle");
+            }
+            this.billingCycle = billingCycle;
             return this;
         }
         @CustomType.Setter
         public Builder customdata(@Nullable String customdata) {
+
             this.customdata = customdata;
             return this;
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder features(@Nullable List<String> features) {
+
             this.features = features;
             return this;
         }
@@ -176,31 +184,43 @@ public final class SpotMarketRequestInstanceParameters {
         }
         @CustomType.Setter
         public Builder hostname(String hostname) {
-            this.hostname = Objects.requireNonNull(hostname);
+            if (hostname == null) {
+              throw new MissingRequiredPropertyException("SpotMarketRequestInstanceParameters", "hostname");
+            }
+            this.hostname = hostname;
             return this;
         }
         @CustomType.Setter
         public Builder ipxeScriptUrl(@Nullable String ipxeScriptUrl) {
+
             this.ipxeScriptUrl = ipxeScriptUrl;
             return this;
         }
         @CustomType.Setter
         public Builder locked(@Nullable Boolean locked) {
+
             this.locked = locked;
             return this;
         }
         @CustomType.Setter
         public Builder operatingSystem(String operatingSystem) {
-            this.operatingSystem = Objects.requireNonNull(operatingSystem);
+            if (operatingSystem == null) {
+              throw new MissingRequiredPropertyException("SpotMarketRequestInstanceParameters", "operatingSystem");
+            }
+            this.operatingSystem = operatingSystem;
             return this;
         }
         @CustomType.Setter
         public Builder plan(String plan) {
-            this.plan = Objects.requireNonNull(plan);
+            if (plan == null) {
+              throw new MissingRequiredPropertyException("SpotMarketRequestInstanceParameters", "plan");
+            }
+            this.plan = plan;
             return this;
         }
         @CustomType.Setter
         public Builder projectSshKeys(@Nullable List<String> projectSshKeys) {
+
             this.projectSshKeys = projectSshKeys;
             return this;
         }
@@ -209,6 +229,7 @@ public final class SpotMarketRequestInstanceParameters {
         }
         @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
+
             this.tags = tags;
             return this;
         }
@@ -217,16 +238,19 @@ public final class SpotMarketRequestInstanceParameters {
         }
         @CustomType.Setter
         public Builder terminationTime(@Nullable String terminationTime) {
+
             this.terminationTime = terminationTime;
             return this;
         }
         @CustomType.Setter
         public Builder termintationTime(@Nullable String termintationTime) {
+
             this.termintationTime = termintationTime;
             return this;
         }
         @CustomType.Setter
         public Builder userSshKeys(@Nullable List<String> userSshKeys) {
+
             this.userSshKeys = userSshKeys;
             return this;
         }
@@ -235,6 +259,7 @@ public final class SpotMarketRequestInstanceParameters {
         }
         @CustomType.Setter
         public Builder userdata(@Nullable String userdata) {
+
             this.userdata = userdata;
             return this;
         }

@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -37,18 +38,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var projectId = config.get(&#34;projectId&#34;).get();
- *         final var vlanId = config.get(&#34;vlanId&#34;).get();
- *         var gateway = new Gateway(&#34;gateway&#34;, GatewayArgs.builder()        
+ *         final var projectId = config.get("projectId").get();
+ *         final var vlanId = config.get("vlanId").get();
+ *         var gateway = new Gateway("gateway", GatewayArgs.builder()        
  *             .projectId(projectId)
  *             .vlanId(vlanId)
  *             .privateIpv4SubnetSize(8)
  *             .build());
  * 
- *         ctx.export(&#34;gatewayState&#34;, gateway.state());
+ *         ctx.export("gatewayState", gateway.state());
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  */
 @ResourceType(type="equinix:metal/gateway:Gateway")

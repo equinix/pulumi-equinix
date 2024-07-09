@@ -5,6 +5,7 @@ package com.equinix.pulumi.metal;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class DeviceNetworkTypeArgs extends com.pulumi.resources.ResourceAr
         }
 
         public DeviceNetworkTypeArgs build() {
-            $.deviceId = Objects.requireNonNull($.deviceId, "expected parameter 'deviceId' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.deviceId == null) {
+                throw new MissingRequiredPropertyException("DeviceNetworkTypeArgs", "deviceId");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("DeviceNetworkTypeArgs", "type");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.equinix.pulumi.metal.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
@@ -89,27 +90,38 @@ public final class GetSpotMarketPriceResult {
 
         @CustomType.Setter
         public Builder facility(@Nullable String facility) {
+
             this.facility = facility;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetSpotMarketPriceResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder metro(@Nullable String metro) {
+
             this.metro = metro;
             return this;
         }
         @CustomType.Setter
         public Builder plan(String plan) {
-            this.plan = Objects.requireNonNull(plan);
+            if (plan == null) {
+              throw new MissingRequiredPropertyException("GetSpotMarketPriceResult", "plan");
+            }
+            this.plan = plan;
             return this;
         }
         @CustomType.Setter
         public Builder price(Double price) {
-            this.price = Objects.requireNonNull(price);
+            if (price == null) {
+              throw new MissingRequiredPropertyException("GetSpotMarketPriceResult", "price");
+            }
+            this.price = price;
             return this;
         }
         public GetSpotMarketPriceResult build() {

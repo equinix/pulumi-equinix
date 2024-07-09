@@ -101,26 +101,31 @@ public final class DevicePort {
 
         @CustomType.Setter
         public Builder bonded(@Nullable Boolean bonded) {
+
             this.bonded = bonded;
             return this;
         }
         @CustomType.Setter
         public Builder id(@Nullable String id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder mac(@Nullable String mac) {
+
             this.mac = mac;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }

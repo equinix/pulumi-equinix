@@ -8,6 +8,7 @@ import com.equinix.pulumi.networkedge.enums.FileType;
 import com.pulumi.core.Either;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -340,13 +341,27 @@ public final class NetworkFileArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public NetworkFileArgs build() {
-            $.byol = Objects.requireNonNull($.byol, "expected parameter 'byol' to be non-null");
-            $.content = Objects.requireNonNull($.content, "expected parameter 'content' to be non-null");
-            $.deviceTypeCode = Objects.requireNonNull($.deviceTypeCode, "expected parameter 'deviceTypeCode' to be non-null");
-            $.fileName = Objects.requireNonNull($.fileName, "expected parameter 'fileName' to be non-null");
-            $.metroCode = Objects.requireNonNull($.metroCode, "expected parameter 'metroCode' to be non-null");
-            $.processType = Objects.requireNonNull($.processType, "expected parameter 'processType' to be non-null");
-            $.selfManaged = Objects.requireNonNull($.selfManaged, "expected parameter 'selfManaged' to be non-null");
+            if ($.byol == null) {
+                throw new MissingRequiredPropertyException("NetworkFileArgs", "byol");
+            }
+            if ($.content == null) {
+                throw new MissingRequiredPropertyException("NetworkFileArgs", "content");
+            }
+            if ($.deviceTypeCode == null) {
+                throw new MissingRequiredPropertyException("NetworkFileArgs", "deviceTypeCode");
+            }
+            if ($.fileName == null) {
+                throw new MissingRequiredPropertyException("NetworkFileArgs", "fileName");
+            }
+            if ($.metroCode == null) {
+                throw new MissingRequiredPropertyException("NetworkFileArgs", "metroCode");
+            }
+            if ($.processType == null) {
+                throw new MissingRequiredPropertyException("NetworkFileArgs", "processType");
+            }
+            if ($.selfManaged == null) {
+                throw new MissingRequiredPropertyException("NetworkFileArgs", "selfManaged");
+            }
             return $;
         }
     }

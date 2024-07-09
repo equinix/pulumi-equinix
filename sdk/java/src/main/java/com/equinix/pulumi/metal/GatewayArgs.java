@@ -6,6 +6,7 @@ package com.equinix.pulumi.metal;
 import com.equinix.pulumi.metal.inputs.GatewayTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -206,8 +207,12 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public GatewayArgs build() {
-            $.projectId = Objects.requireNonNull($.projectId, "expected parameter 'projectId' to be non-null");
-            $.vlanId = Objects.requireNonNull($.vlanId, "expected parameter 'vlanId' to be non-null");
+            if ($.projectId == null) {
+                throw new MissingRequiredPropertyException("GatewayArgs", "projectId");
+            }
+            if ($.vlanId == null) {
+                throw new MissingRequiredPropertyException("GatewayArgs", "vlanId");
+            }
             return $;
         }
     }

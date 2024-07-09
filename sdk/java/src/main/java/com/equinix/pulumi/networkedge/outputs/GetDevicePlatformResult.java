@@ -4,6 +4,7 @@
 package com.equinix.pulumi.networkedge.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -108,27 +109,42 @@ public final class GetDevicePlatformResult {
 
         @CustomType.Setter
         public Builder coreCount(Integer coreCount) {
-            this.coreCount = Objects.requireNonNull(coreCount);
+            if (coreCount == null) {
+              throw new MissingRequiredPropertyException("GetDevicePlatformResult", "coreCount");
+            }
+            this.coreCount = coreCount;
             return this;
         }
         @CustomType.Setter
         public Builder deviceType(String deviceType) {
-            this.deviceType = Objects.requireNonNull(deviceType);
+            if (deviceType == null) {
+              throw new MissingRequiredPropertyException("GetDevicePlatformResult", "deviceType");
+            }
+            this.deviceType = deviceType;
             return this;
         }
         @CustomType.Setter
         public Builder flavor(String flavor) {
-            this.flavor = Objects.requireNonNull(flavor);
+            if (flavor == null) {
+              throw new MissingRequiredPropertyException("GetDevicePlatformResult", "flavor");
+            }
+            this.flavor = flavor;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDevicePlatformResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder licenseOptions(List<String> licenseOptions) {
-            this.licenseOptions = Objects.requireNonNull(licenseOptions);
+            if (licenseOptions == null) {
+              throw new MissingRequiredPropertyException("GetDevicePlatformResult", "licenseOptions");
+            }
+            this.licenseOptions = licenseOptions;
             return this;
         }
         public Builder licenseOptions(String... licenseOptions) {
@@ -136,7 +152,10 @@ public final class GetDevicePlatformResult {
         }
         @CustomType.Setter
         public Builder managementTypes(List<String> managementTypes) {
-            this.managementTypes = Objects.requireNonNull(managementTypes);
+            if (managementTypes == null) {
+              throw new MissingRequiredPropertyException("GetDevicePlatformResult", "managementTypes");
+            }
+            this.managementTypes = managementTypes;
             return this;
         }
         public Builder managementTypes(String... managementTypes) {
@@ -144,17 +163,26 @@ public final class GetDevicePlatformResult {
         }
         @CustomType.Setter
         public Builder memory(Integer memory) {
-            this.memory = Objects.requireNonNull(memory);
+            if (memory == null) {
+              throw new MissingRequiredPropertyException("GetDevicePlatformResult", "memory");
+            }
+            this.memory = memory;
             return this;
         }
         @CustomType.Setter
         public Builder memoryUnit(String memoryUnit) {
-            this.memoryUnit = Objects.requireNonNull(memoryUnit);
+            if (memoryUnit == null) {
+              throw new MissingRequiredPropertyException("GetDevicePlatformResult", "memoryUnit");
+            }
+            this.memoryUnit = memoryUnit;
             return this;
         }
         @CustomType.Setter
         public Builder packages(List<String> packages) {
-            this.packages = Objects.requireNonNull(packages);
+            if (packages == null) {
+              throw new MissingRequiredPropertyException("GetDevicePlatformResult", "packages");
+            }
+            this.packages = packages;
             return this;
         }
         public Builder packages(String... packages) {

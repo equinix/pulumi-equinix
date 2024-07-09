@@ -6,6 +6,7 @@ package com.equinix.pulumi.metal.outputs;
 import com.equinix.pulumi.metal.outputs.GetDevicesDeviceNetwork;
 import com.equinix.pulumi.metal.outputs.GetDevicesDevicePort;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -352,72 +353,114 @@ public final class GetDevicesDevice {
 
         @CustomType.Setter
         public Builder accessPrivateIpv4(String accessPrivateIpv4) {
-            this.accessPrivateIpv4 = Objects.requireNonNull(accessPrivateIpv4);
+            if (accessPrivateIpv4 == null) {
+              throw new MissingRequiredPropertyException("GetDevicesDevice", "accessPrivateIpv4");
+            }
+            this.accessPrivateIpv4 = accessPrivateIpv4;
             return this;
         }
         @CustomType.Setter
         public Builder accessPublicIpv4(String accessPublicIpv4) {
-            this.accessPublicIpv4 = Objects.requireNonNull(accessPublicIpv4);
+            if (accessPublicIpv4 == null) {
+              throw new MissingRequiredPropertyException("GetDevicesDevice", "accessPublicIpv4");
+            }
+            this.accessPublicIpv4 = accessPublicIpv4;
             return this;
         }
         @CustomType.Setter
         public Builder accessPublicIpv6(String accessPublicIpv6) {
-            this.accessPublicIpv6 = Objects.requireNonNull(accessPublicIpv6);
+            if (accessPublicIpv6 == null) {
+              throw new MissingRequiredPropertyException("GetDevicesDevice", "accessPublicIpv6");
+            }
+            this.accessPublicIpv6 = accessPublicIpv6;
             return this;
         }
         @CustomType.Setter
         public Builder alwaysPxe(Boolean alwaysPxe) {
-            this.alwaysPxe = Objects.requireNonNull(alwaysPxe);
+            if (alwaysPxe == null) {
+              throw new MissingRequiredPropertyException("GetDevicesDevice", "alwaysPxe");
+            }
+            this.alwaysPxe = alwaysPxe;
             return this;
         }
         @CustomType.Setter
         public Builder billingCycle(String billingCycle) {
-            this.billingCycle = Objects.requireNonNull(billingCycle);
+            if (billingCycle == null) {
+              throw new MissingRequiredPropertyException("GetDevicesDevice", "billingCycle");
+            }
+            this.billingCycle = billingCycle;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetDevicesDevice", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder deviceId(String deviceId) {
-            this.deviceId = Objects.requireNonNull(deviceId);
+            if (deviceId == null) {
+              throw new MissingRequiredPropertyException("GetDevicesDevice", "deviceId");
+            }
+            this.deviceId = deviceId;
             return this;
         }
         @CustomType.Setter
         public Builder facility(String facility) {
-            this.facility = Objects.requireNonNull(facility);
+            if (facility == null) {
+              throw new MissingRequiredPropertyException("GetDevicesDevice", "facility");
+            }
+            this.facility = facility;
             return this;
         }
         @CustomType.Setter
         public Builder hardwareReservationId(String hardwareReservationId) {
-            this.hardwareReservationId = Objects.requireNonNull(hardwareReservationId);
+            if (hardwareReservationId == null) {
+              throw new MissingRequiredPropertyException("GetDevicesDevice", "hardwareReservationId");
+            }
+            this.hardwareReservationId = hardwareReservationId;
             return this;
         }
         @CustomType.Setter
         public Builder hostname(String hostname) {
-            this.hostname = Objects.requireNonNull(hostname);
+            if (hostname == null) {
+              throw new MissingRequiredPropertyException("GetDevicesDevice", "hostname");
+            }
+            this.hostname = hostname;
             return this;
         }
         @CustomType.Setter
         public Builder ipxeScriptUrl(String ipxeScriptUrl) {
-            this.ipxeScriptUrl = Objects.requireNonNull(ipxeScriptUrl);
+            if (ipxeScriptUrl == null) {
+              throw new MissingRequiredPropertyException("GetDevicesDevice", "ipxeScriptUrl");
+            }
+            this.ipxeScriptUrl = ipxeScriptUrl;
             return this;
         }
         @CustomType.Setter
         public Builder metro(String metro) {
-            this.metro = Objects.requireNonNull(metro);
+            if (metro == null) {
+              throw new MissingRequiredPropertyException("GetDevicesDevice", "metro");
+            }
+            this.metro = metro;
             return this;
         }
         @CustomType.Setter
         public Builder networkType(String networkType) {
-            this.networkType = Objects.requireNonNull(networkType);
+            if (networkType == null) {
+              throw new MissingRequiredPropertyException("GetDevicesDevice", "networkType");
+            }
+            this.networkType = networkType;
             return this;
         }
         @CustomType.Setter
         public Builder networks(List<GetDevicesDeviceNetwork> networks) {
-            this.networks = Objects.requireNonNull(networks);
+            if (networks == null) {
+              throw new MissingRequiredPropertyException("GetDevicesDevice", "networks");
+            }
+            this.networks = networks;
             return this;
         }
         public Builder networks(GetDevicesDeviceNetwork... networks) {
@@ -425,17 +468,26 @@ public final class GetDevicesDevice {
         }
         @CustomType.Setter
         public Builder operatingSystem(String operatingSystem) {
-            this.operatingSystem = Objects.requireNonNull(operatingSystem);
+            if (operatingSystem == null) {
+              throw new MissingRequiredPropertyException("GetDevicesDevice", "operatingSystem");
+            }
+            this.operatingSystem = operatingSystem;
             return this;
         }
         @CustomType.Setter
         public Builder plan(String plan) {
-            this.plan = Objects.requireNonNull(plan);
+            if (plan == null) {
+              throw new MissingRequiredPropertyException("GetDevicesDevice", "plan");
+            }
+            this.plan = plan;
             return this;
         }
         @CustomType.Setter
         public Builder ports(List<GetDevicesDevicePort> ports) {
-            this.ports = Objects.requireNonNull(ports);
+            if (ports == null) {
+              throw new MissingRequiredPropertyException("GetDevicesDevice", "ports");
+            }
+            this.ports = ports;
             return this;
         }
         public Builder ports(GetDevicesDevicePort... ports) {
@@ -443,22 +495,34 @@ public final class GetDevicesDevice {
         }
         @CustomType.Setter
         public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("GetDevicesDevice", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder rootPassword(String rootPassword) {
-            this.rootPassword = Objects.requireNonNull(rootPassword);
+            if (rootPassword == null) {
+              throw new MissingRequiredPropertyException("GetDevicesDevice", "rootPassword");
+            }
+            this.rootPassword = rootPassword;
             return this;
         }
         @CustomType.Setter
         public Builder sosHostname(String sosHostname) {
-            this.sosHostname = Objects.requireNonNull(sosHostname);
+            if (sosHostname == null) {
+              throw new MissingRequiredPropertyException("GetDevicesDevice", "sosHostname");
+            }
+            this.sosHostname = sosHostname;
             return this;
         }
         @CustomType.Setter
         public Builder sshKeyIds(List<String> sshKeyIds) {
-            this.sshKeyIds = Objects.requireNonNull(sshKeyIds);
+            if (sshKeyIds == null) {
+              throw new MissingRequiredPropertyException("GetDevicesDevice", "sshKeyIds");
+            }
+            this.sshKeyIds = sshKeyIds;
             return this;
         }
         public Builder sshKeyIds(String... sshKeyIds) {
@@ -466,17 +530,26 @@ public final class GetDevicesDevice {
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetDevicesDevice", "state");
+            }
+            this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder storage(String storage) {
-            this.storage = Objects.requireNonNull(storage);
+            if (storage == null) {
+              throw new MissingRequiredPropertyException("GetDevicesDevice", "storage");
+            }
+            this.storage = storage;
             return this;
         }
         @CustomType.Setter
         public Builder tags(List<String> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetDevicesDevice", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         public Builder tags(String... tags) {

@@ -4,6 +4,7 @@
 package com.equinix.pulumi.metal.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -131,7 +132,9 @@ public final class GetSpotMarketPricePlainArgs extends com.pulumi.resources.Invo
         }
 
         public GetSpotMarketPricePlainArgs build() {
-            $.plan = Objects.requireNonNull($.plan, "expected parameter 'plan' to be non-null");
+            if ($.plan == null) {
+                throw new MissingRequiredPropertyException("GetSpotMarketPricePlainArgs", "plan");
+            }
             return $;
         }
     }

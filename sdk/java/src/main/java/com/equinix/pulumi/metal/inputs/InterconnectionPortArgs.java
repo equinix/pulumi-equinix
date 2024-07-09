@@ -5,6 +5,7 @@ package com.equinix.pulumi.metal.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -222,13 +223,27 @@ public final class InterconnectionPortArgs extends com.pulumi.resources.Resource
         }
 
         public InterconnectionPortArgs build() {
-            $.id = Objects.requireNonNull($.id, "expected parameter 'id' to be non-null");
-            $.linkStatus = Objects.requireNonNull($.linkStatus, "expected parameter 'linkStatus' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
-            $.speed = Objects.requireNonNull($.speed, "expected parameter 'speed' to be non-null");
-            $.status = Objects.requireNonNull($.status, "expected parameter 'status' to be non-null");
-            $.virtualCircuitIds = Objects.requireNonNull($.virtualCircuitIds, "expected parameter 'virtualCircuitIds' to be non-null");
+            if ($.id == null) {
+                throw new MissingRequiredPropertyException("InterconnectionPortArgs", "id");
+            }
+            if ($.linkStatus == null) {
+                throw new MissingRequiredPropertyException("InterconnectionPortArgs", "linkStatus");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("InterconnectionPortArgs", "name");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("InterconnectionPortArgs", "role");
+            }
+            if ($.speed == null) {
+                throw new MissingRequiredPropertyException("InterconnectionPortArgs", "speed");
+            }
+            if ($.status == null) {
+                throw new MissingRequiredPropertyException("InterconnectionPortArgs", "status");
+            }
+            if ($.virtualCircuitIds == null) {
+                throw new MissingRequiredPropertyException("InterconnectionPortArgs", "virtualCircuitIds");
+            }
             return $;
         }
     }

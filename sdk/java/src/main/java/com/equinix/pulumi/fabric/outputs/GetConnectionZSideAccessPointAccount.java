@@ -4,6 +4,7 @@
 package com.equinix.pulumi.fabric.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -141,42 +142,66 @@ public final class GetConnectionZSideAccessPointAccount {
 
         @CustomType.Setter
         public Builder accountName(String accountName) {
-            this.accountName = Objects.requireNonNull(accountName);
+            if (accountName == null) {
+              throw new MissingRequiredPropertyException("GetConnectionZSideAccessPointAccount", "accountName");
+            }
+            this.accountName = accountName;
             return this;
         }
         @CustomType.Setter
         public Builder accountNumber(Integer accountNumber) {
-            this.accountNumber = Objects.requireNonNull(accountNumber);
+            if (accountNumber == null) {
+              throw new MissingRequiredPropertyException("GetConnectionZSideAccessPointAccount", "accountNumber");
+            }
+            this.accountNumber = accountNumber;
             return this;
         }
         @CustomType.Setter
         public Builder globalCustId(String globalCustId) {
-            this.globalCustId = Objects.requireNonNull(globalCustId);
+            if (globalCustId == null) {
+              throw new MissingRequiredPropertyException("GetConnectionZSideAccessPointAccount", "globalCustId");
+            }
+            this.globalCustId = globalCustId;
             return this;
         }
         @CustomType.Setter
         public Builder globalOrgId(String globalOrgId) {
-            this.globalOrgId = Objects.requireNonNull(globalOrgId);
+            if (globalOrgId == null) {
+              throw new MissingRequiredPropertyException("GetConnectionZSideAccessPointAccount", "globalOrgId");
+            }
+            this.globalOrgId = globalOrgId;
             return this;
         }
         @CustomType.Setter
         public Builder globalOrganizationName(String globalOrganizationName) {
-            this.globalOrganizationName = Objects.requireNonNull(globalOrganizationName);
+            if (globalOrganizationName == null) {
+              throw new MissingRequiredPropertyException("GetConnectionZSideAccessPointAccount", "globalOrganizationName");
+            }
+            this.globalOrganizationName = globalOrganizationName;
             return this;
         }
         @CustomType.Setter
         public Builder orgId(Integer orgId) {
-            this.orgId = Objects.requireNonNull(orgId);
+            if (orgId == null) {
+              throw new MissingRequiredPropertyException("GetConnectionZSideAccessPointAccount", "orgId");
+            }
+            this.orgId = orgId;
             return this;
         }
         @CustomType.Setter
         public Builder organizationName(String organizationName) {
-            this.organizationName = Objects.requireNonNull(organizationName);
+            if (organizationName == null) {
+              throw new MissingRequiredPropertyException("GetConnectionZSideAccessPointAccount", "organizationName");
+            }
+            this.organizationName = organizationName;
             return this;
         }
         @CustomType.Setter
         public Builder ucmId(String ucmId) {
-            this.ucmId = Objects.requireNonNull(ucmId);
+            if (ucmId == null) {
+              throw new MissingRequiredPropertyException("GetConnectionZSideAccessPointAccount", "ucmId");
+            }
+            this.ucmId = ucmId;
             return this;
         }
         public GetConnectionZSideAccessPointAccount build() {

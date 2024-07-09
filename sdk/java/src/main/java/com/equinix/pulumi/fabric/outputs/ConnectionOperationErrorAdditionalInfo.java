@@ -58,11 +58,13 @@ public final class ConnectionOperationErrorAdditionalInfo {
 
         @CustomType.Setter
         public Builder property(@Nullable String property) {
+
             this.property = property;
             return this;
         }
         @CustomType.Setter
         public Builder reason(@Nullable String reason) {
+
             this.reason = reason;
             return this;
         }

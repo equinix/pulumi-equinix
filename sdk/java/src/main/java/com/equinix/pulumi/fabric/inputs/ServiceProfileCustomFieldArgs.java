@@ -5,6 +5,7 @@ package com.equinix.pulumi.fabric.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -273,9 +274,15 @@ public final class ServiceProfileCustomFieldArgs extends com.pulumi.resources.Re
         }
 
         public ServiceProfileCustomFieldArgs build() {
-            $.dataType = Objects.requireNonNull($.dataType, "expected parameter 'dataType' to be non-null");
-            $.label = Objects.requireNonNull($.label, "expected parameter 'label' to be non-null");
-            $.required = Objects.requireNonNull($.required, "expected parameter 'required' to be non-null");
+            if ($.dataType == null) {
+                throw new MissingRequiredPropertyException("ServiceProfileCustomFieldArgs", "dataType");
+            }
+            if ($.label == null) {
+                throw new MissingRequiredPropertyException("ServiceProfileCustomFieldArgs", "label");
+            }
+            if ($.required == null) {
+                throw new MissingRequiredPropertyException("ServiceProfileCustomFieldArgs", "required");
+            }
             return $;
         }
     }

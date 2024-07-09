@@ -44,6 +44,7 @@ public final class DeviceBehavior {
 
         @CustomType.Setter
         public Builder allowChanges(@Nullable List<String> allowChanges) {
+
             this.allowChanges = allowChanges;
             return this;
         }

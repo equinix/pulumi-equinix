@@ -5,6 +5,7 @@ package com.equinix.pulumi.metal.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -224,10 +225,18 @@ public final class OrganizationAddressArgs extends com.pulumi.resources.Resource
         }
 
         public OrganizationAddressArgs build() {
-            $.address = Objects.requireNonNull($.address, "expected parameter 'address' to be non-null");
-            $.city = Objects.requireNonNull($.city, "expected parameter 'city' to be non-null");
-            $.country = Objects.requireNonNull($.country, "expected parameter 'country' to be non-null");
-            $.zipCode = Objects.requireNonNull($.zipCode, "expected parameter 'zipCode' to be non-null");
+            if ($.address == null) {
+                throw new MissingRequiredPropertyException("OrganizationAddressArgs", "address");
+            }
+            if ($.city == null) {
+                throw new MissingRequiredPropertyException("OrganizationAddressArgs", "city");
+            }
+            if ($.country == null) {
+                throw new MissingRequiredPropertyException("OrganizationAddressArgs", "country");
+            }
+            if ($.zipCode == null) {
+                throw new MissingRequiredPropertyException("OrganizationAddressArgs", "zipCode");
+            }
             return $;
         }
     }

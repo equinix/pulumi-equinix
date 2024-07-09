@@ -5,6 +5,7 @@ package com.equinix.pulumi.fabric.outputs;
 
 import com.equinix.pulumi.fabric.outputs.GetRoutingProtocolOperationErrorAdditionalInfo;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -114,7 +115,10 @@ public final class GetRoutingProtocolOperationError {
 
         @CustomType.Setter
         public Builder additionalInfos(List<GetRoutingProtocolOperationErrorAdditionalInfo> additionalInfos) {
-            this.additionalInfos = Objects.requireNonNull(additionalInfos);
+            if (additionalInfos == null) {
+              throw new MissingRequiredPropertyException("GetRoutingProtocolOperationError", "additionalInfos");
+            }
+            this.additionalInfos = additionalInfos;
             return this;
         }
         public Builder additionalInfos(GetRoutingProtocolOperationErrorAdditionalInfo... additionalInfos) {
@@ -122,27 +126,42 @@ public final class GetRoutingProtocolOperationError {
         }
         @CustomType.Setter
         public Builder correlationId(String correlationId) {
-            this.correlationId = Objects.requireNonNull(correlationId);
+            if (correlationId == null) {
+              throw new MissingRequiredPropertyException("GetRoutingProtocolOperationError", "correlationId");
+            }
+            this.correlationId = correlationId;
             return this;
         }
         @CustomType.Setter
         public Builder details(String details) {
-            this.details = Objects.requireNonNull(details);
+            if (details == null) {
+              throw new MissingRequiredPropertyException("GetRoutingProtocolOperationError", "details");
+            }
+            this.details = details;
             return this;
         }
         @CustomType.Setter
         public Builder errorCode(String errorCode) {
-            this.errorCode = Objects.requireNonNull(errorCode);
+            if (errorCode == null) {
+              throw new MissingRequiredPropertyException("GetRoutingProtocolOperationError", "errorCode");
+            }
+            this.errorCode = errorCode;
             return this;
         }
         @CustomType.Setter
         public Builder errorMessage(String errorMessage) {
-            this.errorMessage = Objects.requireNonNull(errorMessage);
+            if (errorMessage == null) {
+              throw new MissingRequiredPropertyException("GetRoutingProtocolOperationError", "errorMessage");
+            }
+            this.errorMessage = errorMessage;
             return this;
         }
         @CustomType.Setter
         public Builder help(String help) {
-            this.help = Objects.requireNonNull(help);
+            if (help == null) {
+              throw new MissingRequiredPropertyException("GetRoutingProtocolOperationError", "help");
+            }
+            this.help = help;
             return this;
         }
         public GetRoutingProtocolOperationError build() {

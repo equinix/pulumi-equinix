@@ -4,6 +4,7 @@
 package com.equinix.pulumi.fabric.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -73,7 +74,10 @@ public final class GetNetworkNotification {
 
         @CustomType.Setter
         public Builder emails(List<String> emails) {
-            this.emails = Objects.requireNonNull(emails);
+            if (emails == null) {
+              throw new MissingRequiredPropertyException("GetNetworkNotification", "emails");
+            }
+            this.emails = emails;
             return this;
         }
         public Builder emails(String... emails) {
@@ -81,12 +85,16 @@ public final class GetNetworkNotification {
         }
         @CustomType.Setter
         public Builder sendInterval(@Nullable String sendInterval) {
+
             this.sendInterval = sendInterval;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetNetworkNotification", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetNetworkNotification build() {

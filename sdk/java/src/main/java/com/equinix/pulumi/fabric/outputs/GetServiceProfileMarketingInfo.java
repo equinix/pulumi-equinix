@@ -75,11 +75,13 @@ public final class GetServiceProfileMarketingInfo {
 
         @CustomType.Setter
         public Builder logo(@Nullable String logo) {
+
             this.logo = logo;
             return this;
         }
         @CustomType.Setter
         public Builder processSteps(@Nullable List<GetServiceProfileMarketingInfoProcessStep> processSteps) {
+
             this.processSteps = processSteps;
             return this;
         }
@@ -88,6 +90,7 @@ public final class GetServiceProfileMarketingInfo {
         }
         @CustomType.Setter
         public Builder promotion(@Nullable Boolean promotion) {
+
             this.promotion = promotion;
             return this;
         }

@@ -184,56 +184,67 @@ public final class DeviceClusterDetailsNode0VendorConfiguration {
 
         @CustomType.Setter
         public Builder activationKey(@Nullable String activationKey) {
+
             this.activationKey = activationKey;
             return this;
         }
         @CustomType.Setter
         public Builder adminPassword(@Nullable String adminPassword) {
+
             this.adminPassword = adminPassword;
             return this;
         }
         @CustomType.Setter
         public Builder controller1(@Nullable String controller1) {
+
             this.controller1 = controller1;
             return this;
         }
         @CustomType.Setter
         public Builder controllerFqdn(@Nullable String controllerFqdn) {
+
             this.controllerFqdn = controllerFqdn;
             return this;
         }
         @CustomType.Setter
         public Builder hostname(@Nullable String hostname) {
+
             this.hostname = hostname;
             return this;
         }
         @CustomType.Setter
         public Builder licenseId(@Nullable String licenseId) {
+
             this.licenseId = licenseId;
             return this;
         }
         @CustomType.Setter
         public Builder licenseKey(@Nullable String licenseKey) {
+
             this.licenseKey = licenseKey;
             return this;
         }
         @CustomType.Setter
         public Builder privateAddress(@Nullable String privateAddress) {
+
             this.privateAddress = privateAddress;
             return this;
         }
         @CustomType.Setter
         public Builder privateCidrMask(@Nullable String privateCidrMask) {
+
             this.privateCidrMask = privateCidrMask;
             return this;
         }
         @CustomType.Setter
         public Builder privateGateway(@Nullable String privateGateway) {
+
             this.privateGateway = privateGateway;
             return this;
         }
         @CustomType.Setter
         public Builder rootPassword(@Nullable String rootPassword) {
+
             this.rootPassword = rootPassword;
             return this;
         }

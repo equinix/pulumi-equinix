@@ -5,6 +5,7 @@ package com.equinix.pulumi.metal;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -153,9 +154,15 @@ public final class ProjectApiKeyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ProjectApiKeyArgs build() {
-            $.description = Objects.requireNonNull($.description, "expected parameter 'description' to be non-null");
-            $.projectId = Objects.requireNonNull($.projectId, "expected parameter 'projectId' to be non-null");
-            $.readOnly = Objects.requireNonNull($.readOnly, "expected parameter 'readOnly' to be non-null");
+            if ($.description == null) {
+                throw new MissingRequiredPropertyException("ProjectApiKeyArgs", "description");
+            }
+            if ($.projectId == null) {
+                throw new MissingRequiredPropertyException("ProjectApiKeyArgs", "projectId");
+            }
+            if ($.readOnly == null) {
+                throw new MissingRequiredPropertyException("ProjectApiKeyArgs", "readOnly");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.equinix.pulumi.fabric.outputs;
 
 import com.equinix.pulumi.fabric.outputs.GetServiceProfilePortLocation;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -115,32 +116,42 @@ public final class GetServiceProfilePort {
 
         @CustomType.Setter
         public Builder crossConnectId(@Nullable String crossConnectId) {
+
             this.crossConnectId = crossConnectId;
             return this;
         }
         @CustomType.Setter
         public Builder location(@Nullable GetServiceProfilePortLocation location) {
+
             this.location = location;
             return this;
         }
         @CustomType.Setter
         public Builder sellerRegion(@Nullable String sellerRegion) {
+
             this.sellerRegion = sellerRegion;
             return this;
         }
         @CustomType.Setter
         public Builder sellerRegionDescription(@Nullable String sellerRegionDescription) {
+
             this.sellerRegionDescription = sellerRegionDescription;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetServiceProfilePort", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder uuid(String uuid) {
-            this.uuid = Objects.requireNonNull(uuid);
+            if (uuid == null) {
+              throw new MissingRequiredPropertyException("GetServiceProfilePort", "uuid");
+            }
+            this.uuid = uuid;
             return this;
         }
         public GetServiceProfilePort build() {

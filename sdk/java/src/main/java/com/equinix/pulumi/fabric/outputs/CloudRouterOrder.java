@@ -86,21 +86,25 @@ public final class CloudRouterOrder {
 
         @CustomType.Setter
         public Builder billingTier(@Nullable String billingTier) {
+
             this.billingTier = billingTier;
             return this;
         }
         @CustomType.Setter
         public Builder orderId(@Nullable String orderId) {
+
             this.orderId = orderId;
             return this;
         }
         @CustomType.Setter
         public Builder orderNumber(@Nullable String orderNumber) {
+
             this.orderNumber = orderNumber;
             return this;
         }
         @CustomType.Setter
         public Builder purchaseOrderNumber(@Nullable String purchaseOrderNumber) {
+
             this.purchaseOrderNumber = purchaseOrderNumber;
             return this;
         }

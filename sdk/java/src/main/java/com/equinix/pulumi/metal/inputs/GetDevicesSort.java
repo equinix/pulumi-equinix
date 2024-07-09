@@ -4,6 +4,7 @@
 package com.equinix.pulumi.metal.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -92,7 +93,9 @@ public final class GetDevicesSort extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetDevicesSort build() {
-            $.attribute = Objects.requireNonNull($.attribute, "expected parameter 'attribute' to be non-null");
+            if ($.attribute == null) {
+                throw new MissingRequiredPropertyException("GetDevicesSort", "attribute");
+            }
             return $;
         }
     }

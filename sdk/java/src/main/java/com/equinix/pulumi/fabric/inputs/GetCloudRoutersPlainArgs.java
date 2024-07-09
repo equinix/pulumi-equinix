@@ -7,6 +7,7 @@ import com.equinix.pulumi.fabric.inputs.GetCloudRoutersFilter;
 import com.equinix.pulumi.fabric.inputs.GetCloudRoutersPagination;
 import com.equinix.pulumi.fabric.inputs.GetCloudRoutersSort;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -132,7 +133,9 @@ public final class GetCloudRoutersPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         public GetCloudRoutersPlainArgs build() {
-            $.filters = Objects.requireNonNull($.filters, "expected parameter 'filters' to be non-null");
+            if ($.filters == null) {
+                throw new MissingRequiredPropertyException("GetCloudRoutersPlainArgs", "filters");
+            }
             return $;
         }
     }

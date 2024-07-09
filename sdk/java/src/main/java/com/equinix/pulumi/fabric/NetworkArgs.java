@@ -8,6 +8,7 @@ import com.equinix.pulumi.fabric.inputs.NetworkNotificationArgs;
 import com.equinix.pulumi.fabric.inputs.NetworkProjectArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -275,10 +276,18 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public NetworkArgs build() {
-            $.notifications = Objects.requireNonNull($.notifications, "expected parameter 'notifications' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
-            $.scope = Objects.requireNonNull($.scope, "expected parameter 'scope' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.notifications == null) {
+                throw new MissingRequiredPropertyException("NetworkArgs", "notifications");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("NetworkArgs", "project");
+            }
+            if ($.scope == null) {
+                throw new MissingRequiredPropertyException("NetworkArgs", "scope");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("NetworkArgs", "type");
+            }
             return $;
         }
     }

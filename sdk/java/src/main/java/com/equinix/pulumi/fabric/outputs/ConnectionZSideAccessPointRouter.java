@@ -58,11 +58,13 @@ public final class ConnectionZSideAccessPointRouter {
 
         @CustomType.Setter
         public Builder href(@Nullable String href) {
+
             this.href = href;
             return this;
         }
         @CustomType.Setter
         public Builder uuid(@Nullable String uuid) {
+
             this.uuid = uuid;
             return this;
         }

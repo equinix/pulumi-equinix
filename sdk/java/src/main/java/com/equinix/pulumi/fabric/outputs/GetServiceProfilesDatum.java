@@ -14,6 +14,7 @@ import com.equinix.pulumi.fabric.outputs.GetServiceProfilesDatumPort;
 import com.equinix.pulumi.fabric.outputs.GetServiceProfilesDatumProject;
 import com.equinix.pulumi.fabric.outputs.GetServiceProfilesDatumVirtualDevice;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -334,7 +335,10 @@ public final class GetServiceProfilesDatum {
 
         @CustomType.Setter
         public Builder accessPointTypeConfigs(List<GetServiceProfilesDatumAccessPointTypeConfig> accessPointTypeConfigs) {
-            this.accessPointTypeConfigs = Objects.requireNonNull(accessPointTypeConfigs);
+            if (accessPointTypeConfigs == null) {
+              throw new MissingRequiredPropertyException("GetServiceProfilesDatum", "accessPointTypeConfigs");
+            }
+            this.accessPointTypeConfigs = accessPointTypeConfigs;
             return this;
         }
         public Builder accessPointTypeConfigs(GetServiceProfilesDatumAccessPointTypeConfig... accessPointTypeConfigs) {
@@ -342,7 +346,10 @@ public final class GetServiceProfilesDatum {
         }
         @CustomType.Setter
         public Builder accounts(List<GetServiceProfilesDatumAccount> accounts) {
-            this.accounts = Objects.requireNonNull(accounts);
+            if (accounts == null) {
+              throw new MissingRequiredPropertyException("GetServiceProfilesDatum", "accounts");
+            }
+            this.accounts = accounts;
             return this;
         }
         public Builder accounts(GetServiceProfilesDatumAccount... accounts) {
@@ -350,7 +357,10 @@ public final class GetServiceProfilesDatum {
         }
         @CustomType.Setter
         public Builder allowedEmails(List<String> allowedEmails) {
-            this.allowedEmails = Objects.requireNonNull(allowedEmails);
+            if (allowedEmails == null) {
+              throw new MissingRequiredPropertyException("GetServiceProfilesDatum", "allowedEmails");
+            }
+            this.allowedEmails = allowedEmails;
             return this;
         }
         public Builder allowedEmails(String... allowedEmails) {
@@ -358,7 +368,10 @@ public final class GetServiceProfilesDatum {
         }
         @CustomType.Setter
         public Builder changeLogs(List<GetServiceProfilesDatumChangeLog> changeLogs) {
-            this.changeLogs = Objects.requireNonNull(changeLogs);
+            if (changeLogs == null) {
+              throw new MissingRequiredPropertyException("GetServiceProfilesDatum", "changeLogs");
+            }
+            this.changeLogs = changeLogs;
             return this;
         }
         public Builder changeLogs(GetServiceProfilesDatumChangeLog... changeLogs) {
@@ -366,7 +379,10 @@ public final class GetServiceProfilesDatum {
         }
         @CustomType.Setter
         public Builder customFields(List<GetServiceProfilesDatumCustomField> customFields) {
-            this.customFields = Objects.requireNonNull(customFields);
+            if (customFields == null) {
+              throw new MissingRequiredPropertyException("GetServiceProfilesDatum", "customFields");
+            }
+            this.customFields = customFields;
             return this;
         }
         public Builder customFields(GetServiceProfilesDatumCustomField... customFields) {
@@ -374,17 +390,26 @@ public final class GetServiceProfilesDatum {
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetServiceProfilesDatum", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder href(String href) {
-            this.href = Objects.requireNonNull(href);
+            if (href == null) {
+              throw new MissingRequiredPropertyException("GetServiceProfilesDatum", "href");
+            }
+            this.href = href;
             return this;
         }
         @CustomType.Setter
         public Builder marketingInfos(List<GetServiceProfilesDatumMarketingInfo> marketingInfos) {
-            this.marketingInfos = Objects.requireNonNull(marketingInfos);
+            if (marketingInfos == null) {
+              throw new MissingRequiredPropertyException("GetServiceProfilesDatum", "marketingInfos");
+            }
+            this.marketingInfos = marketingInfos;
             return this;
         }
         public Builder marketingInfos(GetServiceProfilesDatumMarketingInfo... marketingInfos) {
@@ -392,7 +417,10 @@ public final class GetServiceProfilesDatum {
         }
         @CustomType.Setter
         public Builder metros(List<GetServiceProfilesDatumMetro> metros) {
-            this.metros = Objects.requireNonNull(metros);
+            if (metros == null) {
+              throw new MissingRequiredPropertyException("GetServiceProfilesDatum", "metros");
+            }
+            this.metros = metros;
             return this;
         }
         public Builder metros(GetServiceProfilesDatumMetro... metros) {
@@ -400,12 +428,18 @@ public final class GetServiceProfilesDatum {
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetServiceProfilesDatum", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder notifications(List<GetServiceProfilesDatumNotification> notifications) {
-            this.notifications = Objects.requireNonNull(notifications);
+            if (notifications == null) {
+              throw new MissingRequiredPropertyException("GetServiceProfilesDatum", "notifications");
+            }
+            this.notifications = notifications;
             return this;
         }
         public Builder notifications(GetServiceProfilesDatumNotification... notifications) {
@@ -413,7 +447,10 @@ public final class GetServiceProfilesDatum {
         }
         @CustomType.Setter
         public Builder ports(List<GetServiceProfilesDatumPort> ports) {
-            this.ports = Objects.requireNonNull(ports);
+            if (ports == null) {
+              throw new MissingRequiredPropertyException("GetServiceProfilesDatum", "ports");
+            }
+            this.ports = ports;
             return this;
         }
         public Builder ports(GetServiceProfilesDatumPort... ports) {
@@ -421,7 +458,10 @@ public final class GetServiceProfilesDatum {
         }
         @CustomType.Setter
         public Builder projects(List<GetServiceProfilesDatumProject> projects) {
-            this.projects = Objects.requireNonNull(projects);
+            if (projects == null) {
+              throw new MissingRequiredPropertyException("GetServiceProfilesDatum", "projects");
+            }
+            this.projects = projects;
             return this;
         }
         public Builder projects(GetServiceProfilesDatumProject... projects) {
@@ -429,17 +469,26 @@ public final class GetServiceProfilesDatum {
         }
         @CustomType.Setter
         public Builder selfProfile(Boolean selfProfile) {
-            this.selfProfile = Objects.requireNonNull(selfProfile);
+            if (selfProfile == null) {
+              throw new MissingRequiredPropertyException("GetServiceProfilesDatum", "selfProfile");
+            }
+            this.selfProfile = selfProfile;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetServiceProfilesDatum", "state");
+            }
+            this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder tags(List<String> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetServiceProfilesDatum", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         public Builder tags(String... tags) {
@@ -447,22 +496,34 @@ public final class GetServiceProfilesDatum {
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetServiceProfilesDatum", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder uuid(String uuid) {
-            this.uuid = Objects.requireNonNull(uuid);
+            if (uuid == null) {
+              throw new MissingRequiredPropertyException("GetServiceProfilesDatum", "uuid");
+            }
+            this.uuid = uuid;
             return this;
         }
         @CustomType.Setter
         public Builder viewPoint(String viewPoint) {
-            this.viewPoint = Objects.requireNonNull(viewPoint);
+            if (viewPoint == null) {
+              throw new MissingRequiredPropertyException("GetServiceProfilesDatum", "viewPoint");
+            }
+            this.viewPoint = viewPoint;
             return this;
         }
         @CustomType.Setter
         public Builder virtualDevices(List<GetServiceProfilesDatumVirtualDevice> virtualDevices) {
-            this.virtualDevices = Objects.requireNonNull(virtualDevices);
+            if (virtualDevices == null) {
+              throw new MissingRequiredPropertyException("GetServiceProfilesDatum", "virtualDevices");
+            }
+            this.virtualDevices = virtualDevices;
             return this;
         }
         public Builder virtualDevices(GetServiceProfilesDatumVirtualDevice... virtualDevices) {
@@ -470,7 +531,10 @@ public final class GetServiceProfilesDatum {
         }
         @CustomType.Setter
         public Builder visibility(String visibility) {
-            this.visibility = Objects.requireNonNull(visibility);
+            if (visibility == null) {
+              throw new MissingRequiredPropertyException("GetServiceProfilesDatum", "visibility");
+            }
+            this.visibility = visibility;
             return this;
         }
         public GetServiceProfilesDatum build() {

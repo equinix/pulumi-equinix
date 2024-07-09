@@ -4,6 +4,7 @@
 package com.equinix.pulumi.metal.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -101,26 +102,35 @@ public final class ProjectBgpConfig {
 
         @CustomType.Setter
         public Builder asn(Integer asn) {
-            this.asn = Objects.requireNonNull(asn);
+            if (asn == null) {
+              throw new MissingRequiredPropertyException("ProjectBgpConfig", "asn");
+            }
+            this.asn = asn;
             return this;
         }
         @CustomType.Setter
         public Builder deploymentType(String deploymentType) {
-            this.deploymentType = Objects.requireNonNull(deploymentType);
+            if (deploymentType == null) {
+              throw new MissingRequiredPropertyException("ProjectBgpConfig", "deploymentType");
+            }
+            this.deploymentType = deploymentType;
             return this;
         }
         @CustomType.Setter
         public Builder maxPrefix(@Nullable Integer maxPrefix) {
+
             this.maxPrefix = maxPrefix;
             return this;
         }
         @CustomType.Setter
         public Builder md5(@Nullable String md5) {
+
             this.md5 = md5;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }

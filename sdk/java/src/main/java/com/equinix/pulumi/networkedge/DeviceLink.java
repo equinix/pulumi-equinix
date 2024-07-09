@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * Resource `equinix.networkedge.DeviceLink` allows creation and management of Equinix Network Edge virtual network device links.
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,34 +50,34 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var accountName = config.get(&#34;accountName&#34;).get();
- *         final var accountMetro = config.get(&#34;accountMetro&#34;).get();
- *         final var device1Id = config.get(&#34;device1Id&#34;).get();
- *         final var device2Id = config.get(&#34;device2Id&#34;).get();
+ *         final var accountName = config.get("accountName").get();
+ *         final var accountMetro = config.get("accountMetro").get();
+ *         final var device1Id = config.get("device1Id").get();
+ *         final var device2Id = config.get("device2Id").get();
  *         final var accountfNum = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
  *             .name(accountName)
  *             .metroCode(accountMetro)
- *             .build()).applyValue(account -&gt; account.number());
+ *             .build()).applyValue(account -> account.number());
  * 
  *         final var device1Metro = NetworkedgeFunctions.getDevice(GetDeviceArgs.builder()
  *             .uuid(device1Id)
- *             .build()).applyValue(device -&gt; device.metroCode());
+ *             .build()).applyValue(device -> device.metroCode());
  * 
  *         final var device2Metro = NetworkedgeFunctions.getDevice(GetDeviceArgs.builder()
  *             .uuid(device2Id)
- *             .build()).applyValue(device -&gt; device.metroCode());
+ *             .build()).applyValue(device -> device.metroCode());
  * 
- *         var deviceLink = new DeviceLink(&#34;deviceLink&#34;, DeviceLinkArgs.builder()        
- *             .name(&#34;test-link&#34;)
- *             .subnet(&#34;192.168.40.64/27&#34;)
+ *         var deviceLink = new DeviceLink("deviceLink", DeviceLinkArgs.builder()        
+ *             .name("test-link")
+ *             .subnet("192.168.40.64/27")
  *             .devices(            
  *                 DeviceLinkDeviceArgs.builder()
- *                     .id(&#34;device1Id&#34;)
+ *                     .id("device1Id")
  *                     .asn(22111)
  *                     .interfaceId(6)
  *                     .build(),
  *                 DeviceLinkDeviceArgs.builder()
- *                     .id(&#34;device2Id&#34;)
+ *                     .id("device2Id")
  *                     .asn(22333)
  *                     .interfaceId(7)
  *                     .build())
@@ -84,16 +85,17 @@ import javax.annotation.Nullable;
  *                 .accountNumber(accountfNum)
  *                 .srcMetroCode(device1Metro)
  *                 .dstMetroCode(device2Metro)
- *                 .throughput(&#34;50&#34;)
- *                 .throughputUnit(&#34;Mbps&#34;)
+ *                 .throughput("50")
+ *                 .throughputUnit("Mbps")
  *                 .build())
  *             .build());
  * 
- *         ctx.export(&#34;status&#34;, deviceLink.status());
- *         ctx.export(&#34;devices&#34;, deviceLink.devices());
+ *         ctx.export("status", deviceLink.status());
+ *         ctx.export("devices", deviceLink.devices());
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  * ## Import
  * 

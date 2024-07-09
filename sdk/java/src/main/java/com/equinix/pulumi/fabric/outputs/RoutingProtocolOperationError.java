@@ -116,6 +116,7 @@ public final class RoutingProtocolOperationError {
 
         @CustomType.Setter
         public Builder additionalInfos(@Nullable List<RoutingProtocolOperationErrorAdditionalInfo> additionalInfos) {
+
             this.additionalInfos = additionalInfos;
             return this;
         }
@@ -124,26 +125,31 @@ public final class RoutingProtocolOperationError {
         }
         @CustomType.Setter
         public Builder correlationId(@Nullable String correlationId) {
+
             this.correlationId = correlationId;
             return this;
         }
         @CustomType.Setter
         public Builder details(@Nullable String details) {
+
             this.details = details;
             return this;
         }
         @CustomType.Setter
         public Builder errorCode(@Nullable String errorCode) {
+
             this.errorCode = errorCode;
             return this;
         }
         @CustomType.Setter
         public Builder errorMessage(@Nullable String errorMessage) {
+
             this.errorMessage = errorMessage;
             return this;
         }
         @CustomType.Setter
         public Builder help(@Nullable String help) {
+
             this.help = help;
             return this;
         }

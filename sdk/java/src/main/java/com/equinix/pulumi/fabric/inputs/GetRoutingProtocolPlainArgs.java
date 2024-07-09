@@ -4,6 +4,7 @@
 package com.equinix.pulumi.fabric.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -90,8 +91,12 @@ public final class GetRoutingProtocolPlainArgs extends com.pulumi.resources.Invo
         }
 
         public GetRoutingProtocolPlainArgs build() {
-            $.connectionUuid = Objects.requireNonNull($.connectionUuid, "expected parameter 'connectionUuid' to be non-null");
-            $.uuid = Objects.requireNonNull($.uuid, "expected parameter 'uuid' to be non-null");
+            if ($.connectionUuid == null) {
+                throw new MissingRequiredPropertyException("GetRoutingProtocolPlainArgs", "connectionUuid");
+            }
+            if ($.uuid == null) {
+                throw new MissingRequiredPropertyException("GetRoutingProtocolPlainArgs", "uuid");
+            }
             return $;
         }
     }

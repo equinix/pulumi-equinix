@@ -5,6 +5,7 @@ package com.equinix.pulumi.metal.inputs;
 
 import com.equinix.pulumi.metal.inputs.GetFacilityCapacity;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -141,7 +142,9 @@ public final class GetFacilityPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         public GetFacilityPlainArgs build() {
-            $.code = Objects.requireNonNull($.code, "expected parameter 'code' to be non-null");
+            if ($.code == null) {
+                throw new MissingRequiredPropertyException("GetFacilityPlainArgs", "code");
+            }
             return $;
         }
     }

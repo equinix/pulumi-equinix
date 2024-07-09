@@ -4,6 +4,7 @@
 package com.equinix.pulumi.metal.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -82,31 +83,41 @@ public final class GetOperatingSystemResult {
 
         @CustomType.Setter
         public Builder distro(@Nullable String distro) {
+
             this.distro = distro;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetOperatingSystemResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder provisionableOn(@Nullable String provisionableOn) {
+
             this.provisionableOn = provisionableOn;
             return this;
         }
         @CustomType.Setter
         public Builder slug(String slug) {
-            this.slug = Objects.requireNonNull(slug);
+            if (slug == null) {
+              throw new MissingRequiredPropertyException("GetOperatingSystemResult", "slug");
+            }
+            this.slug = slug;
             return this;
         }
         @CustomType.Setter
         public Builder version(@Nullable String version) {
+
             this.version = version;
             return this;
         }

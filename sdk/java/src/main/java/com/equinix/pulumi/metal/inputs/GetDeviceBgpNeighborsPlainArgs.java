@@ -4,6 +4,7 @@
 package com.equinix.pulumi.metal.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -63,7 +64,9 @@ public final class GetDeviceBgpNeighborsPlainArgs extends com.pulumi.resources.I
         }
 
         public GetDeviceBgpNeighborsPlainArgs build() {
-            $.deviceId = Objects.requireNonNull($.deviceId, "expected parameter 'deviceId' to be non-null");
+            if ($.deviceId == null) {
+                throw new MissingRequiredPropertyException("GetDeviceBgpNeighborsPlainArgs", "deviceId");
+            }
             return $;
         }
     }

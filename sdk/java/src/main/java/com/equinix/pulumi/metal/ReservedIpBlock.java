@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,22 +47,23 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var projectId = config.get(&#34;projectId&#34;).get();
- *         final var metro = config.get(&#34;metro&#34;).orElse(&#34;FR&#34;);
- *         final var type = config.get(&#34;type&#34;).orElse(&#34;public_ipv4&#34;);
- *         final var quantity = Integer.parseInt(config.get(&#34;quantity&#34;).orElse(&#34;1&#34;));
- *         var ipBlock = new ReservedIpBlock(&#34;ipBlock&#34;, ReservedIpBlockArgs.builder()        
+ *         final var projectId = config.get("projectId").get();
+ *         final var metro = config.get("metro").orElse("FR");
+ *         final var type = config.get("type").orElse("public_ipv4");
+ *         final var quantity = Integer.parseInt(config.get("quantity").orElse("1"));
+ *         var ipBlock = new ReservedIpBlock("ipBlock", ReservedIpBlockArgs.builder()        
  *             .projectId(projectId)
  *             .type(type)
  *             .quantity(quantity)
  *             .metro(metro)
  *             .build());
  * 
- *         ctx.export(&#34;ipBlockId&#34;, ipBlock.id());
- *         ctx.export(&#34;ipBlockSubent&#34;, ipBlock.cidrNotation());
+ *         ctx.export("ipBlockId", ipBlock.id());
+ *         ctx.export("ipBlockSubent", ipBlock.cidrNotation());
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  * ## Import
  * 

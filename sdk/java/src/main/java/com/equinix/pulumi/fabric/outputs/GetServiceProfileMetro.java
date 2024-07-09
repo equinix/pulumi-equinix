@@ -117,16 +117,19 @@ public final class GetServiceProfileMetro {
 
         @CustomType.Setter
         public Builder code(@Nullable String code) {
+
             this.code = code;
             return this;
         }
         @CustomType.Setter
         public Builder displayName(@Nullable String displayName) {
+
             this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
         public Builder ibxs(@Nullable List<String> ibxs) {
+
             this.ibxs = ibxs;
             return this;
         }
@@ -135,16 +138,19 @@ public final class GetServiceProfileMetro {
         }
         @CustomType.Setter
         public Builder inTrail(@Nullable Boolean inTrail) {
+
             this.inTrail = inTrail;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder sellerRegions(@Nullable Map<String,String> sellerRegions) {
+
             this.sellerRegions = sellerRegions;
             return this;
         }

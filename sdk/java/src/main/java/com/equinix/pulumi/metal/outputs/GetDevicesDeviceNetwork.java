@@ -4,6 +4,7 @@
 package com.equinix.pulumi.metal.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -100,27 +101,42 @@ public final class GetDevicesDeviceNetwork {
 
         @CustomType.Setter
         public Builder address(String address) {
-            this.address = Objects.requireNonNull(address);
+            if (address == null) {
+              throw new MissingRequiredPropertyException("GetDevicesDeviceNetwork", "address");
+            }
+            this.address = address;
             return this;
         }
         @CustomType.Setter
         public Builder cidr(Integer cidr) {
-            this.cidr = Objects.requireNonNull(cidr);
+            if (cidr == null) {
+              throw new MissingRequiredPropertyException("GetDevicesDeviceNetwork", "cidr");
+            }
+            this.cidr = cidr;
             return this;
         }
         @CustomType.Setter
         public Builder family(Integer family) {
-            this.family = Objects.requireNonNull(family);
+            if (family == null) {
+              throw new MissingRequiredPropertyException("GetDevicesDeviceNetwork", "family");
+            }
+            this.family = family;
             return this;
         }
         @CustomType.Setter
         public Builder gateway(String gateway) {
-            this.gateway = Objects.requireNonNull(gateway);
+            if (gateway == null) {
+              throw new MissingRequiredPropertyException("GetDevicesDeviceNetwork", "gateway");
+            }
+            this.gateway = gateway;
             return this;
         }
         @CustomType.Setter("public")
         public Builder public_(Boolean public_) {
-            this.public_ = Objects.requireNonNull(public_);
+            if (public_ == null) {
+              throw new MissingRequiredPropertyException("GetDevicesDeviceNetwork", "public_");
+            }
+            this.public_ = public_;
             return this;
         }
         public GetDevicesDeviceNetwork build() {

@@ -4,6 +4,7 @@
 package com.equinix.pulumi.fabric.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -84,22 +85,34 @@ public final class GetConnectionsDataOrder {
 
         @CustomType.Setter
         public Builder billingTier(String billingTier) {
-            this.billingTier = Objects.requireNonNull(billingTier);
+            if (billingTier == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsDataOrder", "billingTier");
+            }
+            this.billingTier = billingTier;
             return this;
         }
         @CustomType.Setter
         public Builder orderId(String orderId) {
-            this.orderId = Objects.requireNonNull(orderId);
+            if (orderId == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsDataOrder", "orderId");
+            }
+            this.orderId = orderId;
             return this;
         }
         @CustomType.Setter
         public Builder orderNumber(String orderNumber) {
-            this.orderNumber = Objects.requireNonNull(orderNumber);
+            if (orderNumber == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsDataOrder", "orderNumber");
+            }
+            this.orderNumber = orderNumber;
             return this;
         }
         @CustomType.Setter
         public Builder purchaseOrderNumber(String purchaseOrderNumber) {
-            this.purchaseOrderNumber = Objects.requireNonNull(purchaseOrderNumber);
+            if (purchaseOrderNumber == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsDataOrder", "purchaseOrderNumber");
+            }
+            this.purchaseOrderNumber = purchaseOrderNumber;
             return this;
         }
         public GetConnectionsDataOrder build() {

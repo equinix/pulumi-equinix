@@ -4,6 +4,7 @@
 package com.equinix.pulumi.networkedge.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class DeviceSshKey {
 
         @CustomType.Setter
         public Builder keyName(String keyName) {
-            this.keyName = Objects.requireNonNull(keyName);
+            if (keyName == null) {
+              throw new MissingRequiredPropertyException("DeviceSshKey", "keyName");
+            }
+            this.keyName = keyName;
             return this;
         }
         @CustomType.Setter
         public Builder username(String username) {
-            this.username = Objects.requireNonNull(username);
+            if (username == null) {
+              throw new MissingRequiredPropertyException("DeviceSshKey", "username");
+            }
+            this.username = username;
             return this;
         }
         public DeviceSshKey build() {

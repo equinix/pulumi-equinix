@@ -87,21 +87,25 @@ public final class ConnectionASideAccessPointPort {
 
         @CustomType.Setter
         public Builder href(@Nullable String href) {
+
             this.href = href;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder redundancy(@Nullable ConnectionASideAccessPointPortRedundancy redundancy) {
+
             this.redundancy = redundancy;
             return this;
         }
         @CustomType.Setter
         public Builder uuid(@Nullable String uuid) {
+
             this.uuid = uuid;
             return this;
         }

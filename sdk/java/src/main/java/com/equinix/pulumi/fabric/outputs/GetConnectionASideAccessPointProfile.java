@@ -5,6 +5,7 @@ package com.equinix.pulumi.fabric.outputs;
 
 import com.equinix.pulumi.fabric.outputs.GetConnectionASideAccessPointProfileAccessPointTypeConfig;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -114,7 +115,10 @@ public final class GetConnectionASideAccessPointProfile {
 
         @CustomType.Setter
         public Builder accessPointTypeConfigs(List<GetConnectionASideAccessPointProfileAccessPointTypeConfig> accessPointTypeConfigs) {
-            this.accessPointTypeConfigs = Objects.requireNonNull(accessPointTypeConfigs);
+            if (accessPointTypeConfigs == null) {
+              throw new MissingRequiredPropertyException("GetConnectionASideAccessPointProfile", "accessPointTypeConfigs");
+            }
+            this.accessPointTypeConfigs = accessPointTypeConfigs;
             return this;
         }
         public Builder accessPointTypeConfigs(GetConnectionASideAccessPointProfileAccessPointTypeConfig... accessPointTypeConfigs) {
@@ -122,27 +126,42 @@ public final class GetConnectionASideAccessPointProfile {
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetConnectionASideAccessPointProfile", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder href(String href) {
-            this.href = Objects.requireNonNull(href);
+            if (href == null) {
+              throw new MissingRequiredPropertyException("GetConnectionASideAccessPointProfile", "href");
+            }
+            this.href = href;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetConnectionASideAccessPointProfile", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetConnectionASideAccessPointProfile", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder uuid(String uuid) {
-            this.uuid = Objects.requireNonNull(uuid);
+            if (uuid == null) {
+              throw new MissingRequiredPropertyException("GetConnectionASideAccessPointProfile", "uuid");
+            }
+            this.uuid = uuid;
             return this;
         }
         public GetConnectionASideAccessPointProfile build() {

@@ -4,6 +4,7 @@
 package com.equinix.pulumi.metal.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -74,11 +75,13 @@ public final class DeviceIpAddress {
 
         @CustomType.Setter
         public Builder cidr(@Nullable Integer cidr) {
+
             this.cidr = cidr;
             return this;
         }
         @CustomType.Setter
         public Builder reservationIds(@Nullable List<String> reservationIds) {
+
             this.reservationIds = reservationIds;
             return this;
         }
@@ -87,7 +90,10 @@ public final class DeviceIpAddress {
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("DeviceIpAddress", "type");
+            }
+            this.type = type;
             return this;
         }
         public DeviceIpAddress build() {

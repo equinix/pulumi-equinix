@@ -5,6 +5,7 @@ package com.equinix.pulumi.metal;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -226,9 +227,15 @@ public final class PortVlanAttachmentArgs extends com.pulumi.resources.ResourceA
         }
 
         public PortVlanAttachmentArgs build() {
-            $.deviceId = Objects.requireNonNull($.deviceId, "expected parameter 'deviceId' to be non-null");
-            $.portName = Objects.requireNonNull($.portName, "expected parameter 'portName' to be non-null");
-            $.vlanVnid = Objects.requireNonNull($.vlanVnid, "expected parameter 'vlanVnid' to be non-null");
+            if ($.deviceId == null) {
+                throw new MissingRequiredPropertyException("PortVlanAttachmentArgs", "deviceId");
+            }
+            if ($.portName == null) {
+                throw new MissingRequiredPropertyException("PortVlanAttachmentArgs", "portName");
+            }
+            if ($.vlanVnid == null) {
+                throw new MissingRequiredPropertyException("PortVlanAttachmentArgs", "vlanVnid");
+            }
             return $;
         }
     }

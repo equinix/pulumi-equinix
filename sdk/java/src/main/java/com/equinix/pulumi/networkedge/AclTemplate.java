@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * Device ACL templates give possibility to define set of rules will allowed inbound traffic. Templates can be assigned to the network devices.
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -45,30 +46,31 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var aclTemplate = new AclTemplate(&#34;aclTemplate&#34;, AclTemplateArgs.builder()        
- *             .name(&#34;test&#34;)
- *             .description(&#34;Test ACL template&#34;)
+ *         var aclTemplate = new AclTemplate("aclTemplate", AclTemplateArgs.builder()        
+ *             .name("test")
+ *             .description("Test ACL template")
  *             .inboundRules(            
  *                 AclTemplateInboundRuleArgs.builder()
- *                     .subnet(&#34;1.1.1.1/32&#34;)
- *                     .protocol(&#34;IP&#34;)
- *                     .srcPort(&#34;any&#34;)
- *                     .dstPort(&#34;any&#34;)
- *                     .description(&#34;inbound rule description&#34;)
+ *                     .subnet("1.1.1.1/32")
+ *                     .protocol("IP")
+ *                     .srcPort("any")
+ *                     .dstPort("any")
+ *                     .description("inbound rule description")
  *                     .build(),
  *                 AclTemplateInboundRuleArgs.builder()
- *                     .subnet(&#34;2.2.2.2/28&#34;)
- *                     .protocol(&#34;TCP&#34;)
- *                     .srcPort(&#34;any&#34;)
- *                     .dstPort(&#34;any&#34;)
- *                     .description(&#34;inbound rule description&#34;)
+ *                     .subnet("2.2.2.2/28")
+ *                     .protocol("TCP")
+ *                     .srcPort("any")
+ *                     .dstPort("any")
+ *                     .description("inbound rule description")
  *                     .build())
  *             .build());
  * 
- *         ctx.export(&#34;templateId&#34;, aclTemplate.id());
+ *         ctx.export("templateId", aclTemplate.id());
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  * ## Import
  * 

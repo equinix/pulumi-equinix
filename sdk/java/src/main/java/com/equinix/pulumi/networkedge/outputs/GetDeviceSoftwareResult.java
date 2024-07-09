@@ -4,6 +4,7 @@
 package com.equinix.pulumi.networkedge.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -146,32 +147,48 @@ public final class GetDeviceSoftwareResult {
 
         @CustomType.Setter
         public Builder date(String date) {
-            this.date = Objects.requireNonNull(date);
+            if (date == null) {
+              throw new MissingRequiredPropertyException("GetDeviceSoftwareResult", "date");
+            }
+            this.date = date;
             return this;
         }
         @CustomType.Setter
         public Builder deviceType(String deviceType) {
-            this.deviceType = Objects.requireNonNull(deviceType);
+            if (deviceType == null) {
+              throw new MissingRequiredPropertyException("GetDeviceSoftwareResult", "deviceType");
+            }
+            this.deviceType = deviceType;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDeviceSoftwareResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder imageName(String imageName) {
-            this.imageName = Objects.requireNonNull(imageName);
+            if (imageName == null) {
+              throw new MissingRequiredPropertyException("GetDeviceSoftwareResult", "imageName");
+            }
+            this.imageName = imageName;
             return this;
         }
         @CustomType.Setter
         public Builder mostRecent(@Nullable Boolean mostRecent) {
+
             this.mostRecent = mostRecent;
             return this;
         }
         @CustomType.Setter
         public Builder packages(List<String> packages) {
-            this.packages = Objects.requireNonNull(packages);
+            if (packages == null) {
+              throw new MissingRequiredPropertyException("GetDeviceSoftwareResult", "packages");
+            }
+            this.packages = packages;
             return this;
         }
         public Builder packages(String... packages) {
@@ -179,26 +196,39 @@ public final class GetDeviceSoftwareResult {
         }
         @CustomType.Setter
         public Builder releaseNotesLink(String releaseNotesLink) {
-            this.releaseNotesLink = Objects.requireNonNull(releaseNotesLink);
+            if (releaseNotesLink == null) {
+              throw new MissingRequiredPropertyException("GetDeviceSoftwareResult", "releaseNotesLink");
+            }
+            this.releaseNotesLink = releaseNotesLink;
             return this;
         }
         @CustomType.Setter
         public Builder stable(Boolean stable) {
-            this.stable = Objects.requireNonNull(stable);
+            if (stable == null) {
+              throw new MissingRequiredPropertyException("GetDeviceSoftwareResult", "stable");
+            }
+            this.stable = stable;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetDeviceSoftwareResult", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder version(String version) {
-            this.version = Objects.requireNonNull(version);
+            if (version == null) {
+              throw new MissingRequiredPropertyException("GetDeviceSoftwareResult", "version");
+            }
+            this.version = version;
             return this;
         }
         @CustomType.Setter
         public Builder versionRegex(@Nullable String versionRegex) {
+
             this.versionRegex = versionRegex;
             return this;
         }

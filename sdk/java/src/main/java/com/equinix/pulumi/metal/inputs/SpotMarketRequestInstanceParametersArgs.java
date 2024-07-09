@@ -5,6 +5,7 @@ package com.equinix.pulumi.metal.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -377,10 +378,18 @@ public final class SpotMarketRequestInstanceParametersArgs extends com.pulumi.re
         }
 
         public SpotMarketRequestInstanceParametersArgs build() {
-            $.billingCycle = Objects.requireNonNull($.billingCycle, "expected parameter 'billingCycle' to be non-null");
-            $.hostname = Objects.requireNonNull($.hostname, "expected parameter 'hostname' to be non-null");
-            $.operatingSystem = Objects.requireNonNull($.operatingSystem, "expected parameter 'operatingSystem' to be non-null");
-            $.plan = Objects.requireNonNull($.plan, "expected parameter 'plan' to be non-null");
+            if ($.billingCycle == null) {
+                throw new MissingRequiredPropertyException("SpotMarketRequestInstanceParametersArgs", "billingCycle");
+            }
+            if ($.hostname == null) {
+                throw new MissingRequiredPropertyException("SpotMarketRequestInstanceParametersArgs", "hostname");
+            }
+            if ($.operatingSystem == null) {
+                throw new MissingRequiredPropertyException("SpotMarketRequestInstanceParametersArgs", "operatingSystem");
+            }
+            if ($.plan == null) {
+                throw new MissingRequiredPropertyException("SpotMarketRequestInstanceParametersArgs", "plan");
+            }
             return $;
         }
     }

@@ -8,6 +8,7 @@ import com.equinix.pulumi.fabric.inputs.ConnectionASideAccessPointProfileAccessP
 import com.pulumi.core.Either;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -295,8 +296,12 @@ public final class ConnectionASideAccessPointProfileArgs extends com.pulumi.reso
         }
 
         public ConnectionASideAccessPointProfileArgs build() {
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
-            $.uuid = Objects.requireNonNull($.uuid, "expected parameter 'uuid' to be non-null");
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("ConnectionASideAccessPointProfileArgs", "type");
+            }
+            if ($.uuid == null) {
+                throw new MissingRequiredPropertyException("ConnectionASideAccessPointProfileArgs", "uuid");
+            }
             return $;
         }
     }

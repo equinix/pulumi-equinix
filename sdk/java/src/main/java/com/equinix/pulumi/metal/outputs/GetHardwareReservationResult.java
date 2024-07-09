@@ -4,6 +4,7 @@
 package com.equinix.pulumi.metal.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -163,47 +164,74 @@ public final class GetHardwareReservationResult {
 
         @CustomType.Setter
         public Builder deviceId(String deviceId) {
-            this.deviceId = Objects.requireNonNull(deviceId);
+            if (deviceId == null) {
+              throw new MissingRequiredPropertyException("GetHardwareReservationResult", "deviceId");
+            }
+            this.deviceId = deviceId;
             return this;
         }
         @CustomType.Setter
         public Builder facility(String facility) {
-            this.facility = Objects.requireNonNull(facility);
+            if (facility == null) {
+              throw new MissingRequiredPropertyException("GetHardwareReservationResult", "facility");
+            }
+            this.facility = facility;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetHardwareReservationResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder plan(String plan) {
-            this.plan = Objects.requireNonNull(plan);
+            if (plan == null) {
+              throw new MissingRequiredPropertyException("GetHardwareReservationResult", "plan");
+            }
+            this.plan = plan;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("GetHardwareReservationResult", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder provisionable(Boolean provisionable) {
-            this.provisionable = Objects.requireNonNull(provisionable);
+            if (provisionable == null) {
+              throw new MissingRequiredPropertyException("GetHardwareReservationResult", "provisionable");
+            }
+            this.provisionable = provisionable;
             return this;
         }
         @CustomType.Setter
         public Builder shortId(String shortId) {
-            this.shortId = Objects.requireNonNull(shortId);
+            if (shortId == null) {
+              throw new MissingRequiredPropertyException("GetHardwareReservationResult", "shortId");
+            }
+            this.shortId = shortId;
             return this;
         }
         @CustomType.Setter
         public Builder spare(Boolean spare) {
-            this.spare = Objects.requireNonNull(spare);
+            if (spare == null) {
+              throw new MissingRequiredPropertyException("GetHardwareReservationResult", "spare");
+            }
+            this.spare = spare;
             return this;
         }
         @CustomType.Setter
         public Builder switchUuid(String switchUuid) {
-            this.switchUuid = Objects.requireNonNull(switchUuid);
+            if (switchUuid == null) {
+              throw new MissingRequiredPropertyException("GetHardwareReservationResult", "switchUuid");
+            }
+            this.switchUuid = switchUuid;
             return this;
         }
         public GetHardwareReservationResult build() {

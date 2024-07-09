@@ -44,6 +44,7 @@ public final class GatewayTimeouts {
 
         @CustomType.Setter
         public Builder delete(@Nullable String delete) {
+
             this.delete = delete;
             return this;
         }

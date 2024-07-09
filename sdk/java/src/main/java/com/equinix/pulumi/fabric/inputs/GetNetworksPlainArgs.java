@@ -7,6 +7,7 @@ import com.equinix.pulumi.fabric.inputs.GetNetworksFilter;
 import com.equinix.pulumi.fabric.inputs.GetNetworksPagination;
 import com.equinix.pulumi.fabric.inputs.GetNetworksSort;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -170,8 +171,12 @@ public final class GetNetworksPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         public GetNetworksPlainArgs build() {
-            $.filters = Objects.requireNonNull($.filters, "expected parameter 'filters' to be non-null");
-            $.outerOperator = Objects.requireNonNull($.outerOperator, "expected parameter 'outerOperator' to be non-null");
+            if ($.filters == null) {
+                throw new MissingRequiredPropertyException("GetNetworksPlainArgs", "filters");
+            }
+            if ($.outerOperator == null) {
+                throw new MissingRequiredPropertyException("GetNetworksPlainArgs", "outerOperator");
+            }
             return $;
         }
     }

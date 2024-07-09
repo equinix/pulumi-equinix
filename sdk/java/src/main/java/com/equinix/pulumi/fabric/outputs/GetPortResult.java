@@ -11,6 +11,7 @@ import com.equinix.pulumi.fabric.outputs.GetPortLocation;
 import com.equinix.pulumi.fabric.outputs.GetPortOperation;
 import com.equinix.pulumi.fabric.outputs.GetPortRedundancy;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -303,97 +304,154 @@ public final class GetPortResult {
 
         @CustomType.Setter
         public Builder account(GetPortAccount account) {
-            this.account = Objects.requireNonNull(account);
+            if (account == null) {
+              throw new MissingRequiredPropertyException("GetPortResult", "account");
+            }
+            this.account = account;
             return this;
         }
         @CustomType.Setter
         public Builder availableBandwidth(Integer availableBandwidth) {
-            this.availableBandwidth = Objects.requireNonNull(availableBandwidth);
+            if (availableBandwidth == null) {
+              throw new MissingRequiredPropertyException("GetPortResult", "availableBandwidth");
+            }
+            this.availableBandwidth = availableBandwidth;
             return this;
         }
         @CustomType.Setter
         public Builder bandwidth(Integer bandwidth) {
-            this.bandwidth = Objects.requireNonNull(bandwidth);
+            if (bandwidth == null) {
+              throw new MissingRequiredPropertyException("GetPortResult", "bandwidth");
+            }
+            this.bandwidth = bandwidth;
             return this;
         }
         @CustomType.Setter
         public Builder changeLog(GetPortChangeLog changeLog) {
-            this.changeLog = Objects.requireNonNull(changeLog);
+            if (changeLog == null) {
+              throw new MissingRequiredPropertyException("GetPortResult", "changeLog");
+            }
+            this.changeLog = changeLog;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetPortResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder device(GetPortDevice device) {
-            this.device = Objects.requireNonNull(device);
+            if (device == null) {
+              throw new MissingRequiredPropertyException("GetPortResult", "device");
+            }
+            this.device = device;
             return this;
         }
         @CustomType.Setter
         public Builder encapsulation(GetPortEncapsulation encapsulation) {
-            this.encapsulation = Objects.requireNonNull(encapsulation);
+            if (encapsulation == null) {
+              throw new MissingRequiredPropertyException("GetPortResult", "encapsulation");
+            }
+            this.encapsulation = encapsulation;
             return this;
         }
         @CustomType.Setter
         public Builder href(String href) {
-            this.href = Objects.requireNonNull(href);
+            if (href == null) {
+              throw new MissingRequiredPropertyException("GetPortResult", "href");
+            }
+            this.href = href;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetPortResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder lagEnabled(Boolean lagEnabled) {
-            this.lagEnabled = Objects.requireNonNull(lagEnabled);
+            if (lagEnabled == null) {
+              throw new MissingRequiredPropertyException("GetPortResult", "lagEnabled");
+            }
+            this.lagEnabled = lagEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder location(GetPortLocation location) {
-            this.location = Objects.requireNonNull(location);
+            if (location == null) {
+              throw new MissingRequiredPropertyException("GetPortResult", "location");
+            }
+            this.location = location;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetPortResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder operation(GetPortOperation operation) {
-            this.operation = Objects.requireNonNull(operation);
+            if (operation == null) {
+              throw new MissingRequiredPropertyException("GetPortResult", "operation");
+            }
+            this.operation = operation;
             return this;
         }
         @CustomType.Setter
         public Builder redundancy(GetPortRedundancy redundancy) {
-            this.redundancy = Objects.requireNonNull(redundancy);
+            if (redundancy == null) {
+              throw new MissingRequiredPropertyException("GetPortResult", "redundancy");
+            }
+            this.redundancy = redundancy;
             return this;
         }
         @CustomType.Setter
         public Builder serviceType(String serviceType) {
-            this.serviceType = Objects.requireNonNull(serviceType);
+            if (serviceType == null) {
+              throw new MissingRequiredPropertyException("GetPortResult", "serviceType");
+            }
+            this.serviceType = serviceType;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetPortResult", "state");
+            }
+            this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetPortResult", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder usedBandwidth(Integer usedBandwidth) {
-            this.usedBandwidth = Objects.requireNonNull(usedBandwidth);
+            if (usedBandwidth == null) {
+              throw new MissingRequiredPropertyException("GetPortResult", "usedBandwidth");
+            }
+            this.usedBandwidth = usedBandwidth;
             return this;
         }
         @CustomType.Setter
         public Builder uuid(String uuid) {
-            this.uuid = Objects.requireNonNull(uuid);
+            if (uuid == null) {
+              throw new MissingRequiredPropertyException("GetPortResult", "uuid");
+            }
+            this.uuid = uuid;
             return this;
         }
         public GetPortResult build() {

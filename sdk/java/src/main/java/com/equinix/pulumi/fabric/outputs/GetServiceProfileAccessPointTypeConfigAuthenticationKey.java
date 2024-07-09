@@ -73,16 +73,19 @@ public final class GetServiceProfileAccessPointTypeConfigAuthenticationKey {
 
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder label(@Nullable String label) {
+
             this.label = label;
             return this;
         }
         @CustomType.Setter
         public Builder required(@Nullable Boolean required) {
+
             this.required = required;
             return this;
         }

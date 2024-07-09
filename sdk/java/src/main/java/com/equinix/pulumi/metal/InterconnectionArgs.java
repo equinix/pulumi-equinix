@@ -5,6 +5,7 @@ package com.equinix.pulumi.metal;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -647,8 +648,12 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public InterconnectionArgs build() {
-            $.redundancy = Objects.requireNonNull($.redundancy, "expected parameter 'redundancy' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.redundancy == null) {
+                throw new MissingRequiredPropertyException("InterconnectionArgs", "redundancy");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("InterconnectionArgs", "type");
+            }
             return $;
         }
     }

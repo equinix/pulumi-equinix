@@ -10,6 +10,7 @@ import com.equinix.pulumi.fabric.inputs.ServiceProfileAccessPointTypeConfigLinkP
 import com.pulumi.core.Either;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
@@ -596,7 +597,9 @@ public final class ServiceProfileAccessPointTypeConfigArgs extends com.pulumi.re
         }
 
         public ServiceProfileAccessPointTypeConfigArgs build() {
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("ServiceProfileAccessPointTypeConfigArgs", "type");
+            }
             return $;
         }
     }

@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** Keep in mind that Equinix Metal invoicing is per project, so creating many `equinix.metal.Project` resources will affect the rendered invoice. If you want to keep your Equinix Metal bill simple and easy to review, please re-use your existing projects.
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -37,17 +38,18 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var organizationId = config.get(&#34;organizationId&#34;).get();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;Default Project&#34;);
- *         var projectResource = new Project(&#34;projectResource&#34;, ProjectArgs.builder()        
+ *         final var organizationId = config.get("organizationId").get();
+ *         final var name = config.get("name").orElse("Default Project");
+ *         var projectResource = new Project("projectResource", ProjectArgs.builder()        
  *             .name(name)
  *             .organizationId(organizationId)
  *             .build());
  * 
- *         ctx.export(&#34;projectId&#34;, projectResource.id());
+ *         ctx.export("projectId", projectResource.id());
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  * ## Import
  * 

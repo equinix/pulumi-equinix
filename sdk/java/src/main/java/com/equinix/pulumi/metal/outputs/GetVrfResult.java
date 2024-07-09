@@ -4,6 +4,7 @@
 package com.equinix.pulumi.metal.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -134,17 +135,26 @@ public final class GetVrfResult {
 
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetVrfResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetVrfResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ipRanges(List<String> ipRanges) {
-            this.ipRanges = Objects.requireNonNull(ipRanges);
+            if (ipRanges == null) {
+              throw new MissingRequiredPropertyException("GetVrfResult", "ipRanges");
+            }
+            this.ipRanges = ipRanges;
             return this;
         }
         public Builder ipRanges(String... ipRanges) {
@@ -152,27 +162,42 @@ public final class GetVrfResult {
         }
         @CustomType.Setter
         public Builder localAsn(Integer localAsn) {
-            this.localAsn = Objects.requireNonNull(localAsn);
+            if (localAsn == null) {
+              throw new MissingRequiredPropertyException("GetVrfResult", "localAsn");
+            }
+            this.localAsn = localAsn;
             return this;
         }
         @CustomType.Setter
         public Builder metro(String metro) {
-            this.metro = Objects.requireNonNull(metro);
+            if (metro == null) {
+              throw new MissingRequiredPropertyException("GetVrfResult", "metro");
+            }
+            this.metro = metro;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetVrfResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("GetVrfResult", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder vrfId(String vrfId) {
-            this.vrfId = Objects.requireNonNull(vrfId);
+            if (vrfId == null) {
+              throw new MissingRequiredPropertyException("GetVrfResult", "vrfId");
+            }
+            this.vrfId = vrfId;
             return this;
         }
         public GetVrfResult build() {

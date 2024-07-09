@@ -19,7 +19,8 @@ import javax.annotation.Nullable;
  * Manage the membership of existing and new invitees within an Equinix Metal organization and its projects.
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -34,21 +35,22 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var organizationId = config.get(&#34;organizationId&#34;).get();
- *         final var projectId = config.get(&#34;projectId&#34;).get();
- *         final var userEmailAddress = config.get(&#34;userEmailAddress&#34;).get();
- *         var member = new OrganizationMember(&#34;member&#34;, OrganizationMemberArgs.builder()        
+ *         final var organizationId = config.get("organizationId").get();
+ *         final var projectId = config.get("projectId").get();
+ *         final var userEmailAddress = config.get("userEmailAddress").get();
+ *         var member = new OrganizationMember("member", OrganizationMemberArgs.builder()        
  *             .invitee(userEmailAddress)
- *             .roles(&#34;limited_collaborator&#34;)
+ *             .roles("limited_collaborator")
  *             .projectsIds(projectId)
  *             .organizationId(organizationId)
  *             .build());
  * 
- *         ctx.export(&#34;memberId&#34;, member.id());
- *         ctx.export(&#34;memberState&#34;, member.state());
+ *         ctx.export("memberId", member.id());
+ *         ctx.export("memberState", member.state());
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  * ## Import
  * 

@@ -4,6 +4,7 @@
 package com.equinix.pulumi.metal.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -57,12 +58,18 @@ public final class GetDeviceBgpNeighborsBgpNeighborRoutesOut {
 
         @CustomType.Setter
         public Builder exact(Boolean exact) {
-            this.exact = Objects.requireNonNull(exact);
+            if (exact == null) {
+              throw new MissingRequiredPropertyException("GetDeviceBgpNeighborsBgpNeighborRoutesOut", "exact");
+            }
+            this.exact = exact;
             return this;
         }
         @CustomType.Setter
         public Builder route(String route) {
-            this.route = Objects.requireNonNull(route);
+            if (route == null) {
+              throw new MissingRequiredPropertyException("GetDeviceBgpNeighborsBgpNeighborRoutesOut", "route");
+            }
+            this.route = route;
             return this;
         }
         public GetDeviceBgpNeighborsBgpNeighborRoutesOut build() {

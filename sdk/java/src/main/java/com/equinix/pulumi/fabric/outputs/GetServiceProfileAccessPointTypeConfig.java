@@ -7,6 +7,7 @@ import com.equinix.pulumi.fabric.outputs.GetServiceProfileAccessPointTypeConfigA
 import com.equinix.pulumi.fabric.outputs.GetServiceProfileAccessPointTypeConfigAuthenticationKey;
 import com.equinix.pulumi.fabric.outputs.GetServiceProfileAccessPointTypeConfigLinkProtocolConfig;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
@@ -233,61 +234,73 @@ public final class GetServiceProfileAccessPointTypeConfig {
 
         @CustomType.Setter
         public Builder allowBandwidthAutoApproval(@Nullable Boolean allowBandwidthAutoApproval) {
+
             this.allowBandwidthAutoApproval = allowBandwidthAutoApproval;
             return this;
         }
         @CustomType.Setter
         public Builder allowBandwidthUpgrade(@Nullable Boolean allowBandwidthUpgrade) {
+
             this.allowBandwidthUpgrade = allowBandwidthUpgrade;
             return this;
         }
         @CustomType.Setter
         public Builder allowCustomBandwidth(@Nullable Boolean allowCustomBandwidth) {
+
             this.allowCustomBandwidth = allowCustomBandwidth;
             return this;
         }
         @CustomType.Setter
         public Builder allowRemoteConnections(@Nullable Boolean allowRemoteConnections) {
+
             this.allowRemoteConnections = allowRemoteConnections;
             return this;
         }
         @CustomType.Setter
         public Builder apiConfig(@Nullable GetServiceProfileAccessPointTypeConfigApiConfig apiConfig) {
+
             this.apiConfig = apiConfig;
             return this;
         }
         @CustomType.Setter
         public Builder authenticationKey(@Nullable GetServiceProfileAccessPointTypeConfigAuthenticationKey authenticationKey) {
+
             this.authenticationKey = authenticationKey;
             return this;
         }
         @CustomType.Setter
         public Builder bandwidthAlertThreshold(@Nullable Double bandwidthAlertThreshold) {
+
             this.bandwidthAlertThreshold = bandwidthAlertThreshold;
             return this;
         }
         @CustomType.Setter
         public Builder connectionLabel(@Nullable String connectionLabel) {
+
             this.connectionLabel = connectionLabel;
             return this;
         }
         @CustomType.Setter
         public Builder connectionRedundancyRequired(@Nullable Boolean connectionRedundancyRequired) {
+
             this.connectionRedundancyRequired = connectionRedundancyRequired;
             return this;
         }
         @CustomType.Setter
         public Builder enableAutoGenerateServiceKey(@Nullable Boolean enableAutoGenerateServiceKey) {
+
             this.enableAutoGenerateServiceKey = enableAutoGenerateServiceKey;
             return this;
         }
         @CustomType.Setter
         public Builder linkProtocolConfig(@Nullable GetServiceProfileAccessPointTypeConfigLinkProtocolConfig linkProtocolConfig) {
+
             this.linkProtocolConfig = linkProtocolConfig;
             return this;
         }
         @CustomType.Setter
         public Builder supportedBandwidths(@Nullable List<Integer> supportedBandwidths) {
+
             this.supportedBandwidths = supportedBandwidths;
             return this;
         }
@@ -296,12 +309,18 @@ public final class GetServiceProfileAccessPointTypeConfig {
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetServiceProfileAccessPointTypeConfig", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder uuid(String uuid) {
-            this.uuid = Objects.requireNonNull(uuid);
+            if (uuid == null) {
+              throw new MissingRequiredPropertyException("GetServiceProfileAccessPointTypeConfig", "uuid");
+            }
+            this.uuid = uuid;
             return this;
         }
         public GetServiceProfileAccessPointTypeConfig build() {

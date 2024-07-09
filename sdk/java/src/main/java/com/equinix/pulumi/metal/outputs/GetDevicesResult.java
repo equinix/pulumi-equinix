@@ -7,6 +7,7 @@ import com.equinix.pulumi.metal.outputs.GetDevicesDevice;
 import com.equinix.pulumi.metal.outputs.GetDevicesFilter;
 import com.equinix.pulumi.metal.outputs.GetDevicesSort;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -92,7 +93,10 @@ public final class GetDevicesResult {
 
         @CustomType.Setter
         public Builder devices(List<GetDevicesDevice> devices) {
-            this.devices = Objects.requireNonNull(devices);
+            if (devices == null) {
+              throw new MissingRequiredPropertyException("GetDevicesResult", "devices");
+            }
+            this.devices = devices;
             return this;
         }
         public Builder devices(GetDevicesDevice... devices) {
@@ -100,6 +104,7 @@ public final class GetDevicesResult {
         }
         @CustomType.Setter
         public Builder filters(@Nullable List<GetDevicesFilter> filters) {
+
             this.filters = filters;
             return this;
         }
@@ -108,26 +113,33 @@ public final class GetDevicesResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDevicesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder organizationId(@Nullable String organizationId) {
+
             this.organizationId = organizationId;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(@Nullable String projectId) {
+
             this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder search(@Nullable String search) {
+
             this.search = search;
             return this;
         }
         @CustomType.Setter
         public Builder sorts(@Nullable List<GetDevicesSort> sorts) {
+
             this.sorts = sorts;
             return this;
         }

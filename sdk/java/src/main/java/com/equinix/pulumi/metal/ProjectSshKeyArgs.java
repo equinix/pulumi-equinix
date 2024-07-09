@@ -5,6 +5,7 @@ package com.equinix.pulumi.metal;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -150,8 +151,12 @@ public final class ProjectSshKeyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ProjectSshKeyArgs build() {
-            $.projectId = Objects.requireNonNull($.projectId, "expected parameter 'projectId' to be non-null");
-            $.publicKey = Objects.requireNonNull($.publicKey, "expected parameter 'publicKey' to be non-null");
+            if ($.projectId == null) {
+                throw new MissingRequiredPropertyException("ProjectSshKeyArgs", "projectId");
+            }
+            if ($.publicKey == null) {
+                throw new MissingRequiredPropertyException("ProjectSshKeyArgs", "publicKey");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.equinix.pulumi.fabric.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class GetRoutingProtocolDirectIpv4 {
 
         @CustomType.Setter
         public Builder equinixIfaceIp(String equinixIfaceIp) {
-            this.equinixIfaceIp = Objects.requireNonNull(equinixIfaceIp);
+            if (equinixIfaceIp == null) {
+              throw new MissingRequiredPropertyException("GetRoutingProtocolDirectIpv4", "equinixIfaceIp");
+            }
+            this.equinixIfaceIp = equinixIfaceIp;
             return this;
         }
         public GetRoutingProtocolDirectIpv4 build() {

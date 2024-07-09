@@ -10,6 +10,7 @@ import com.equinix.pulumi.fabric.outputs.GetNetworkNotification;
 import com.equinix.pulumi.fabric.outputs.GetNetworkOperation;
 import com.equinix.pulumi.fabric.outputs.GetNetworkProject;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -232,32 +233,50 @@ public final class GetNetworkResult {
 
         @CustomType.Setter
         public Builder change(GetNetworkChange change) {
-            this.change = Objects.requireNonNull(change);
+            if (change == null) {
+              throw new MissingRequiredPropertyException("GetNetworkResult", "change");
+            }
+            this.change = change;
             return this;
         }
         @CustomType.Setter
         public Builder changeLog(GetNetworkChangeLog changeLog) {
-            this.changeLog = Objects.requireNonNull(changeLog);
+            if (changeLog == null) {
+              throw new MissingRequiredPropertyException("GetNetworkResult", "changeLog");
+            }
+            this.changeLog = changeLog;
             return this;
         }
         @CustomType.Setter
         public Builder connectionsCount(Integer connectionsCount) {
-            this.connectionsCount = Objects.requireNonNull(connectionsCount);
+            if (connectionsCount == null) {
+              throw new MissingRequiredPropertyException("GetNetworkResult", "connectionsCount");
+            }
+            this.connectionsCount = connectionsCount;
             return this;
         }
         @CustomType.Setter
         public Builder href(String href) {
-            this.href = Objects.requireNonNull(href);
+            if (href == null) {
+              throw new MissingRequiredPropertyException("GetNetworkResult", "href");
+            }
+            this.href = href;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetNetworkResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder locations(List<GetNetworkLocation> locations) {
-            this.locations = Objects.requireNonNull(locations);
+            if (locations == null) {
+              throw new MissingRequiredPropertyException("GetNetworkResult", "locations");
+            }
+            this.locations = locations;
             return this;
         }
         public Builder locations(GetNetworkLocation... locations) {
@@ -265,12 +284,18 @@ public final class GetNetworkResult {
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetNetworkResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder notifications(List<GetNetworkNotification> notifications) {
-            this.notifications = Objects.requireNonNull(notifications);
+            if (notifications == null) {
+              throw new MissingRequiredPropertyException("GetNetworkResult", "notifications");
+            }
+            this.notifications = notifications;
             return this;
         }
         public Builder notifications(GetNetworkNotification... notifications) {
@@ -278,32 +303,50 @@ public final class GetNetworkResult {
         }
         @CustomType.Setter
         public Builder operation(GetNetworkOperation operation) {
-            this.operation = Objects.requireNonNull(operation);
+            if (operation == null) {
+              throw new MissingRequiredPropertyException("GetNetworkResult", "operation");
+            }
+            this.operation = operation;
             return this;
         }
         @CustomType.Setter
         public Builder project(GetNetworkProject project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetNetworkResult", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder scope(String scope) {
-            this.scope = Objects.requireNonNull(scope);
+            if (scope == null) {
+              throw new MissingRequiredPropertyException("GetNetworkResult", "scope");
+            }
+            this.scope = scope;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetNetworkResult", "state");
+            }
+            this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetNetworkResult", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder uuid(String uuid) {
-            this.uuid = Objects.requireNonNull(uuid);
+            if (uuid == null) {
+              throw new MissingRequiredPropertyException("GetNetworkResult", "uuid");
+            }
+            this.uuid = uuid;
             return this;
         }
         public GetNetworkResult build() {

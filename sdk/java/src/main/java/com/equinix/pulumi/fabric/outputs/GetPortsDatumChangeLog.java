@@ -4,6 +4,7 @@
 package com.equinix.pulumi.fabric.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -196,62 +197,98 @@ public final class GetPortsDatumChangeLog {
 
         @CustomType.Setter
         public Builder createdBy(String createdBy) {
-            this.createdBy = Objects.requireNonNull(createdBy);
+            if (createdBy == null) {
+              throw new MissingRequiredPropertyException("GetPortsDatumChangeLog", "createdBy");
+            }
+            this.createdBy = createdBy;
             return this;
         }
         @CustomType.Setter
         public Builder createdByEmail(String createdByEmail) {
-            this.createdByEmail = Objects.requireNonNull(createdByEmail);
+            if (createdByEmail == null) {
+              throw new MissingRequiredPropertyException("GetPortsDatumChangeLog", "createdByEmail");
+            }
+            this.createdByEmail = createdByEmail;
             return this;
         }
         @CustomType.Setter
         public Builder createdByFullName(String createdByFullName) {
-            this.createdByFullName = Objects.requireNonNull(createdByFullName);
+            if (createdByFullName == null) {
+              throw new MissingRequiredPropertyException("GetPortsDatumChangeLog", "createdByFullName");
+            }
+            this.createdByFullName = createdByFullName;
             return this;
         }
         @CustomType.Setter
         public Builder createdDateTime(String createdDateTime) {
-            this.createdDateTime = Objects.requireNonNull(createdDateTime);
+            if (createdDateTime == null) {
+              throw new MissingRequiredPropertyException("GetPortsDatumChangeLog", "createdDateTime");
+            }
+            this.createdDateTime = createdDateTime;
             return this;
         }
         @CustomType.Setter
         public Builder deletedBy(String deletedBy) {
-            this.deletedBy = Objects.requireNonNull(deletedBy);
+            if (deletedBy == null) {
+              throw new MissingRequiredPropertyException("GetPortsDatumChangeLog", "deletedBy");
+            }
+            this.deletedBy = deletedBy;
             return this;
         }
         @CustomType.Setter
         public Builder deletedByEmail(String deletedByEmail) {
-            this.deletedByEmail = Objects.requireNonNull(deletedByEmail);
+            if (deletedByEmail == null) {
+              throw new MissingRequiredPropertyException("GetPortsDatumChangeLog", "deletedByEmail");
+            }
+            this.deletedByEmail = deletedByEmail;
             return this;
         }
         @CustomType.Setter
         public Builder deletedByFullName(String deletedByFullName) {
-            this.deletedByFullName = Objects.requireNonNull(deletedByFullName);
+            if (deletedByFullName == null) {
+              throw new MissingRequiredPropertyException("GetPortsDatumChangeLog", "deletedByFullName");
+            }
+            this.deletedByFullName = deletedByFullName;
             return this;
         }
         @CustomType.Setter
         public Builder deletedDateTime(String deletedDateTime) {
-            this.deletedDateTime = Objects.requireNonNull(deletedDateTime);
+            if (deletedDateTime == null) {
+              throw new MissingRequiredPropertyException("GetPortsDatumChangeLog", "deletedDateTime");
+            }
+            this.deletedDateTime = deletedDateTime;
             return this;
         }
         @CustomType.Setter
         public Builder updatedBy(String updatedBy) {
-            this.updatedBy = Objects.requireNonNull(updatedBy);
+            if (updatedBy == null) {
+              throw new MissingRequiredPropertyException("GetPortsDatumChangeLog", "updatedBy");
+            }
+            this.updatedBy = updatedBy;
             return this;
         }
         @CustomType.Setter
         public Builder updatedByEmail(String updatedByEmail) {
-            this.updatedByEmail = Objects.requireNonNull(updatedByEmail);
+            if (updatedByEmail == null) {
+              throw new MissingRequiredPropertyException("GetPortsDatumChangeLog", "updatedByEmail");
+            }
+            this.updatedByEmail = updatedByEmail;
             return this;
         }
         @CustomType.Setter
         public Builder updatedByFullName(String updatedByFullName) {
-            this.updatedByFullName = Objects.requireNonNull(updatedByFullName);
+            if (updatedByFullName == null) {
+              throw new MissingRequiredPropertyException("GetPortsDatumChangeLog", "updatedByFullName");
+            }
+            this.updatedByFullName = updatedByFullName;
             return this;
         }
         @CustomType.Setter
         public Builder updatedDateTime(String updatedDateTime) {
-            this.updatedDateTime = Objects.requireNonNull(updatedDateTime);
+            if (updatedDateTime == null) {
+              throw new MissingRequiredPropertyException("GetPortsDatumChangeLog", "updatedDateTime");
+            }
+            this.updatedDateTime = updatedDateTime;
             return this;
         }
         public GetPortsDatumChangeLog build() {

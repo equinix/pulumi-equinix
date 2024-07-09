@@ -8,6 +8,7 @@ import com.equinix.pulumi.fabric.outputs.GetNetworksFilter;
 import com.equinix.pulumi.fabric.outputs.GetNetworksPagination;
 import com.equinix.pulumi.fabric.outputs.GetNetworksSort;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -119,7 +120,10 @@ public final class GetNetworksResult {
 
         @CustomType.Setter
         public Builder datas(List<GetNetworksData> datas) {
-            this.datas = Objects.requireNonNull(datas);
+            if (datas == null) {
+              throw new MissingRequiredPropertyException("GetNetworksResult", "datas");
+            }
+            this.datas = datas;
             return this;
         }
         public Builder datas(GetNetworksData... datas) {
@@ -127,7 +131,10 @@ public final class GetNetworksResult {
         }
         @CustomType.Setter
         public Builder filters(List<GetNetworksFilter> filters) {
-            this.filters = Objects.requireNonNull(filters);
+            if (filters == null) {
+              throw new MissingRequiredPropertyException("GetNetworksResult", "filters");
+            }
+            this.filters = filters;
             return this;
         }
         public Builder filters(GetNetworksFilter... filters) {
@@ -135,21 +142,29 @@ public final class GetNetworksResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetNetworksResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder outerOperator(String outerOperator) {
-            this.outerOperator = Objects.requireNonNull(outerOperator);
+            if (outerOperator == null) {
+              throw new MissingRequiredPropertyException("GetNetworksResult", "outerOperator");
+            }
+            this.outerOperator = outerOperator;
             return this;
         }
         @CustomType.Setter
         public Builder pagination(@Nullable GetNetworksPagination pagination) {
+
             this.pagination = pagination;
             return this;
         }
         @CustomType.Setter
         public Builder sorts(@Nullable List<GetNetworksSort> sorts) {
+
             this.sorts = sorts;
             return this;
         }

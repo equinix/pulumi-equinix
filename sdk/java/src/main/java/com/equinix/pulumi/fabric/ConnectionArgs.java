@@ -13,6 +13,7 @@ import com.equinix.pulumi.fabric.inputs.ConnectionZSideArgs;
 import com.pulumi.core.Either;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -498,11 +499,21 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ConnectionArgs build() {
-            $.aSide = Objects.requireNonNull($.aSide, "expected parameter 'aSide' to be non-null");
-            $.bandwidth = Objects.requireNonNull($.bandwidth, "expected parameter 'bandwidth' to be non-null");
-            $.notifications = Objects.requireNonNull($.notifications, "expected parameter 'notifications' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
-            $.zSide = Objects.requireNonNull($.zSide, "expected parameter 'zSide' to be non-null");
+            if ($.aSide == null) {
+                throw new MissingRequiredPropertyException("ConnectionArgs", "aSide");
+            }
+            if ($.bandwidth == null) {
+                throw new MissingRequiredPropertyException("ConnectionArgs", "bandwidth");
+            }
+            if ($.notifications == null) {
+                throw new MissingRequiredPropertyException("ConnectionArgs", "notifications");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("ConnectionArgs", "type");
+            }
+            if ($.zSide == null) {
+                throw new MissingRequiredPropertyException("ConnectionArgs", "zSide");
+            }
             return $;
         }
     }

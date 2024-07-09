@@ -8,6 +8,7 @@ import com.equinix.pulumi.fabric.outputs.GetServiceProfilesFilter;
 import com.equinix.pulumi.fabric.outputs.GetServiceProfilesPagination;
 import com.equinix.pulumi.fabric.outputs.GetServiceProfilesSort;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -134,12 +135,16 @@ public final class GetServiceProfilesResult {
 
         @CustomType.Setter
         public Builder andFilters(@Nullable Boolean andFilters) {
+
             this.andFilters = andFilters;
             return this;
         }
         @CustomType.Setter
         public Builder data(List<GetServiceProfilesDatum> data) {
-            this.data = Objects.requireNonNull(data);
+            if (data == null) {
+              throw new MissingRequiredPropertyException("GetServiceProfilesResult", "data");
+            }
+            this.data = data;
             return this;
         }
         public Builder data(GetServiceProfilesDatum... data) {
@@ -147,21 +152,29 @@ public final class GetServiceProfilesResult {
         }
         @CustomType.Setter
         public Builder filter(GetServiceProfilesFilter filter) {
-            this.filter = Objects.requireNonNull(filter);
+            if (filter == null) {
+              throw new MissingRequiredPropertyException("GetServiceProfilesResult", "filter");
+            }
+            this.filter = filter;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetServiceProfilesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder pagination(@Nullable GetServiceProfilesPagination pagination) {
+
             this.pagination = pagination;
             return this;
         }
         @CustomType.Setter
         public Builder sort(@Nullable List<GetServiceProfilesSort> sort) {
+
             this.sort = sort;
             return this;
         }
@@ -170,6 +183,7 @@ public final class GetServiceProfilesResult {
         }
         @CustomType.Setter
         public Builder viewPoint(@Nullable String viewPoint) {
+
             this.viewPoint = viewPoint;
             return this;
         }

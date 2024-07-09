@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -39,14 +40,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var projectId = config.get(&#34;projectId&#34;).get();
- *         final var connectionId = config.get(&#34;connectionId&#34;).get();
- *         final var vlanId = config.get(&#34;vlanId&#34;).get();
+ *         final var projectId = config.get("projectId").get();
+ *         final var connectionId = config.get("connectionId").get();
+ *         final var vlanId = config.get("vlanId").get();
  *         final var portId = MetalFunctions.getInterconnection(GetInterconnectionArgs.builder()
  *             .connectionId(connectionId)
- *             .build()).applyValue(data -&gt; data.ports().get(0).id());
+ *             .build()).applyValue(data -> data.ports().get(0).id());
  * 
- *         var vc = new VirtualCircuit(&#34;vc&#34;, VirtualCircuitArgs.builder()        
+ *         var vc = new VirtualCircuit("vc", VirtualCircuitArgs.builder()        
  *             .connectionId(connectionId)
  *             .projectId(projectId)
  *             .portId(portId)
@@ -54,11 +55,12 @@ import javax.annotation.Nullable;
  *             .nniVlan(1056)
  *             .build());
  * 
- *         ctx.export(&#34;vcStatus&#34;, vc.status());
- *         ctx.export(&#34;vcVnid&#34;, vc.vnid());
+ *         ctx.export("vcStatus", vc.status());
+ *         ctx.export("vcVnid", vc.vnid());
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  * ## Import
  * 

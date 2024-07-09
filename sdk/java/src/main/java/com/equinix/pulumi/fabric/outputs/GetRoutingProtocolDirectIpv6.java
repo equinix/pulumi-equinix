@@ -44,6 +44,7 @@ public final class GetRoutingProtocolDirectIpv6 {
 
         @CustomType.Setter
         public Builder equinixIfaceIp(@Nullable String equinixIfaceIp) {
+
             this.equinixIfaceIp = equinixIfaceIp;
             return this;
         }

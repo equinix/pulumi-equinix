@@ -4,6 +4,7 @@
 package com.equinix.pulumi.metal.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -100,27 +101,40 @@ public final class OrganizationAddress {
 
         @CustomType.Setter
         public Builder address(String address) {
-            this.address = Objects.requireNonNull(address);
+            if (address == null) {
+              throw new MissingRequiredPropertyException("OrganizationAddress", "address");
+            }
+            this.address = address;
             return this;
         }
         @CustomType.Setter
         public Builder city(String city) {
-            this.city = Objects.requireNonNull(city);
+            if (city == null) {
+              throw new MissingRequiredPropertyException("OrganizationAddress", "city");
+            }
+            this.city = city;
             return this;
         }
         @CustomType.Setter
         public Builder country(String country) {
-            this.country = Objects.requireNonNull(country);
+            if (country == null) {
+              throw new MissingRequiredPropertyException("OrganizationAddress", "country");
+            }
+            this.country = country;
             return this;
         }
         @CustomType.Setter
         public Builder state(@Nullable String state) {
+
             this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder zipCode(String zipCode) {
-            this.zipCode = Objects.requireNonNull(zipCode);
+            if (zipCode == null) {
+              throw new MissingRequiredPropertyException("OrganizationAddress", "zipCode");
+            }
+            this.zipCode = zipCode;
             return this;
         }
         public OrganizationAddress build() {

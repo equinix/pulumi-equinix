@@ -10,6 +10,7 @@ import com.equinix.pulumi.networkedge.inputs.DeviceSshKeyArgs;
 import com.pulumi.core.Either;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -1266,14 +1267,30 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public DeviceArgs build() {
-            $.accountNumber = Objects.requireNonNull($.accountNumber, "expected parameter 'accountNumber' to be non-null");
-            $.coreCount = Objects.requireNonNull($.coreCount, "expected parameter 'coreCount' to be non-null");
-            $.metroCode = Objects.requireNonNull($.metroCode, "expected parameter 'metroCode' to be non-null");
-            $.notifications = Objects.requireNonNull($.notifications, "expected parameter 'notifications' to be non-null");
-            $.packageCode = Objects.requireNonNull($.packageCode, "expected parameter 'packageCode' to be non-null");
-            $.termLength = Objects.requireNonNull($.termLength, "expected parameter 'termLength' to be non-null");
-            $.typeCode = Objects.requireNonNull($.typeCode, "expected parameter 'typeCode' to be non-null");
-            $.version = Objects.requireNonNull($.version, "expected parameter 'version' to be non-null");
+            if ($.accountNumber == null) {
+                throw new MissingRequiredPropertyException("DeviceArgs", "accountNumber");
+            }
+            if ($.coreCount == null) {
+                throw new MissingRequiredPropertyException("DeviceArgs", "coreCount");
+            }
+            if ($.metroCode == null) {
+                throw new MissingRequiredPropertyException("DeviceArgs", "metroCode");
+            }
+            if ($.notifications == null) {
+                throw new MissingRequiredPropertyException("DeviceArgs", "notifications");
+            }
+            if ($.packageCode == null) {
+                throw new MissingRequiredPropertyException("DeviceArgs", "packageCode");
+            }
+            if ($.termLength == null) {
+                throw new MissingRequiredPropertyException("DeviceArgs", "termLength");
+            }
+            if ($.typeCode == null) {
+                throw new MissingRequiredPropertyException("DeviceArgs", "typeCode");
+            }
+            if ($.version == null) {
+                throw new MissingRequiredPropertyException("DeviceArgs", "version");
+            }
             return $;
         }
     }

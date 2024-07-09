@@ -258,76 +258,91 @@ public final class ConnectionZSideAccessPoint {
 
         @CustomType.Setter
         public Builder account(@Nullable ConnectionZSideAccessPointAccount account) {
+
             this.account = account;
             return this;
         }
         @CustomType.Setter
         public Builder authenticationKey(@Nullable String authenticationKey) {
+
             this.authenticationKey = authenticationKey;
             return this;
         }
         @CustomType.Setter
         public Builder gateway(@Nullable ConnectionZSideAccessPointGateway gateway) {
+
             this.gateway = gateway;
             return this;
         }
         @CustomType.Setter("interface")
         public Builder interface_(@Nullable ConnectionZSideAccessPointInterface interface_) {
+
             this.interface_ = interface_;
             return this;
         }
         @CustomType.Setter
         public Builder linkProtocol(@Nullable ConnectionZSideAccessPointLinkProtocol linkProtocol) {
+
             this.linkProtocol = linkProtocol;
             return this;
         }
         @CustomType.Setter
         public Builder location(@Nullable ConnectionZSideAccessPointLocation location) {
+
             this.location = location;
             return this;
         }
         @CustomType.Setter
         public Builder network(@Nullable ConnectionZSideAccessPointNetwork network) {
+
             this.network = network;
             return this;
         }
         @CustomType.Setter
         public Builder peeringType(@Nullable String peeringType) {
+
             this.peeringType = peeringType;
             return this;
         }
         @CustomType.Setter
         public Builder port(@Nullable ConnectionZSideAccessPointPort port) {
+
             this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder profile(@Nullable ConnectionZSideAccessPointProfile profile) {
+
             this.profile = profile;
             return this;
         }
         @CustomType.Setter
         public Builder providerConnectionId(@Nullable String providerConnectionId) {
+
             this.providerConnectionId = providerConnectionId;
             return this;
         }
         @CustomType.Setter
         public Builder router(@Nullable ConnectionZSideAccessPointRouter router) {
+
             this.router = router;
             return this;
         }
         @CustomType.Setter
         public Builder sellerRegion(@Nullable String sellerRegion) {
+
             this.sellerRegion = sellerRegion;
             return this;
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder virtualDevice(@Nullable ConnectionZSideAccessPointVirtualDevice virtualDevice) {
+
             this.virtualDevice = virtualDevice;
             return this;
         }

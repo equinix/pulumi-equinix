@@ -18,7 +18,8 @@ import javax.annotation.Nullable;
  * Resource `equinix.networkedge.SshUser` allows creation and management of Equinix Network Edge SSH users.
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -40,19 +41,20 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var device1Id = config.get(&#34;device1Id&#34;).get();
- *         final var device2Id = config.get(&#34;device2Id&#34;).get();
- *         var sshUser = new SshUser(&#34;sshUser&#34;, SshUserArgs.builder()        
- *             .username(&#34;johnKent&#34;)
+ *         final var device1Id = config.get("device1Id").get();
+ *         final var device2Id = config.get("device2Id").get();
+ *         var sshUser = new SshUser("sshUser", SshUserArgs.builder()        
+ *             .username("johnKent")
  *             .deviceIds(            
  *                 device1Id,
  *                 device2Id)
  *             .build());
  * 
- *         ctx.export(&#34;sshUserId&#34;, sshUser.id());
+ *         ctx.export("sshUserId", sshUser.id());
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  * ## Import
  * 

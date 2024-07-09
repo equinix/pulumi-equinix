@@ -15,7 +15,8 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -30,17 +31,18 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var deviceId = config.get(&#34;deviceId&#34;).get();
- *         final var networkType = config.get(&#34;networkType&#34;).orElse(&#34;hybrid&#34;);
- *         var deviceNetwork = new DeviceNetworkType(&#34;deviceNetwork&#34;, DeviceNetworkTypeArgs.builder()        
+ *         final var deviceId = config.get("deviceId").get();
+ *         final var networkType = config.get("networkType").orElse("hybrid");
+ *         var deviceNetwork = new DeviceNetworkType("deviceNetwork", DeviceNetworkTypeArgs.builder()        
  *             .deviceId(deviceId)
  *             .type(networkType)
  *             .build());
  * 
- *         ctx.export(&#34;deviceNetworkId&#34;, deviceNetwork.id());
+ *         ctx.export("deviceNetworkId", deviceNetwork.id());
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  * ## Import
  * 

@@ -58,11 +58,13 @@ public final class ConnectionRedundancy {
 
         @CustomType.Setter
         public Builder group(@Nullable String group) {
+
             this.group = group;
             return this;
         }
         @CustomType.Setter
         public Builder priority(@Nullable String priority) {
+
             this.priority = priority;
             return this;
         }

@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,22 +55,23 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var connectionId = config.get(&#34;connectionId&#34;);
- *         var routingProtocol = new RoutingProtocol(&#34;routingProtocol&#34;, RoutingProtocolArgs.builder()        
+ *         final var connectionId = config.get("connectionId");
+ *         var routingProtocol = new RoutingProtocol("routingProtocol", RoutingProtocolArgs.builder()        
  *             .connectionUuid(connectionId)
- *             .name(&#34;My-Direct-route-1&#34;)
- *             .type(&#34;DIRECT&#34;)
+ *             .name("My-Direct-route-1")
+ *             .type("DIRECT")
  *             .directIpv4(RoutingProtocolDirectIpv4Args.builder()
- *                 .equinixIfaceIp(&#34;192.168.100.1/30&#34;)
+ *                 .equinixIfaceIp("192.168.100.1/30")
  *                 .build())
  *             .build());
  * 
- *         ctx.export(&#34;routingProtocolId&#34;, routingProtocol.id());
- *         ctx.export(&#34;routingProtocolState&#34;, routingProtocol.state());
- *         ctx.export(&#34;routingProtocolEquinixAsn&#34;, routingProtocol.equinixAsn());
+ *         ctx.export("routingProtocolId", routingProtocol.id());
+ *         ctx.export("routingProtocolState", routingProtocol.state());
+ *         ctx.export("routingProtocolEquinixAsn", routingProtocol.equinixAsn());
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  */
 @ResourceType(type="equinix:fabric/routingProtocol:RoutingProtocol")

@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,23 +55,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var newNetwork = new Network(&#34;newNetwork&#34;, NetworkArgs.builder()
+ *         var newNetwork = new Network("newNetwork", NetworkArgs.builder()
  *             .notifications(NetworkNotificationArgs.builder()
  *                 .emails(                
- *                     &#34;example@equinix.com&#34;,
- *                     &#34;test1@equinix.com&#34;)
- *                 .type(&#34;ALL&#34;)
+ *                     "example{@literal @}equinix.com",
+ *                     "test1{@literal @}equinix.com")
+ *                 .type("ALL")
  *                 .build())
  *             .project(NetworkProjectArgs.builder()
- *                 .projectId(&#34;776847000642406&#34;)
+ *                 .projectId("776847000642406")
  *                 .build())
- *             .scope(&#34;GLOBAL&#34;)
- *             .type(&#34;EVPLAN&#34;)
+ *             .scope("GLOBAL")
+ *             .type("EVPLAN")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

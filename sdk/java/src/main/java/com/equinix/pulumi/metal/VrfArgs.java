@@ -5,6 +5,7 @@ package com.equinix.pulumi.metal;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -273,8 +274,12 @@ public final class VrfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public VrfArgs build() {
-            $.metro = Objects.requireNonNull($.metro, "expected parameter 'metro' to be non-null");
-            $.projectId = Objects.requireNonNull($.projectId, "expected parameter 'projectId' to be non-null");
+            if ($.metro == null) {
+                throw new MissingRequiredPropertyException("VrfArgs", "metro");
+            }
+            if ($.projectId == null) {
+                throw new MissingRequiredPropertyException("VrfArgs", "projectId");
+            }
             return $;
         }
     }
