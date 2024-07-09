@@ -4,6 +4,7 @@
 package com.equinix.pulumi.networkedge.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -182,57 +183,90 @@ public final class GetDeviceClusterDetailNode0VendorConfiguration {
 
         @CustomType.Setter
         public Builder activationKey(String activationKey) {
-            this.activationKey = Objects.requireNonNull(activationKey);
+            if (activationKey == null) {
+              throw new MissingRequiredPropertyException("GetDeviceClusterDetailNode0VendorConfiguration", "activationKey");
+            }
+            this.activationKey = activationKey;
             return this;
         }
         @CustomType.Setter
         public Builder adminPassword(String adminPassword) {
-            this.adminPassword = Objects.requireNonNull(adminPassword);
+            if (adminPassword == null) {
+              throw new MissingRequiredPropertyException("GetDeviceClusterDetailNode0VendorConfiguration", "adminPassword");
+            }
+            this.adminPassword = adminPassword;
             return this;
         }
         @CustomType.Setter
         public Builder controller1(String controller1) {
-            this.controller1 = Objects.requireNonNull(controller1);
+            if (controller1 == null) {
+              throw new MissingRequiredPropertyException("GetDeviceClusterDetailNode0VendorConfiguration", "controller1");
+            }
+            this.controller1 = controller1;
             return this;
         }
         @CustomType.Setter
         public Builder controllerFqdn(String controllerFqdn) {
-            this.controllerFqdn = Objects.requireNonNull(controllerFqdn);
+            if (controllerFqdn == null) {
+              throw new MissingRequiredPropertyException("GetDeviceClusterDetailNode0VendorConfiguration", "controllerFqdn");
+            }
+            this.controllerFqdn = controllerFqdn;
             return this;
         }
         @CustomType.Setter
         public Builder hostname(String hostname) {
-            this.hostname = Objects.requireNonNull(hostname);
+            if (hostname == null) {
+              throw new MissingRequiredPropertyException("GetDeviceClusterDetailNode0VendorConfiguration", "hostname");
+            }
+            this.hostname = hostname;
             return this;
         }
         @CustomType.Setter
         public Builder licenseId(String licenseId) {
-            this.licenseId = Objects.requireNonNull(licenseId);
+            if (licenseId == null) {
+              throw new MissingRequiredPropertyException("GetDeviceClusterDetailNode0VendorConfiguration", "licenseId");
+            }
+            this.licenseId = licenseId;
             return this;
         }
         @CustomType.Setter
         public Builder licenseKey(String licenseKey) {
-            this.licenseKey = Objects.requireNonNull(licenseKey);
+            if (licenseKey == null) {
+              throw new MissingRequiredPropertyException("GetDeviceClusterDetailNode0VendorConfiguration", "licenseKey");
+            }
+            this.licenseKey = licenseKey;
             return this;
         }
         @CustomType.Setter
         public Builder privateAddress(String privateAddress) {
-            this.privateAddress = Objects.requireNonNull(privateAddress);
+            if (privateAddress == null) {
+              throw new MissingRequiredPropertyException("GetDeviceClusterDetailNode0VendorConfiguration", "privateAddress");
+            }
+            this.privateAddress = privateAddress;
             return this;
         }
         @CustomType.Setter
         public Builder privateCidrMask(String privateCidrMask) {
-            this.privateCidrMask = Objects.requireNonNull(privateCidrMask);
+            if (privateCidrMask == null) {
+              throw new MissingRequiredPropertyException("GetDeviceClusterDetailNode0VendorConfiguration", "privateCidrMask");
+            }
+            this.privateCidrMask = privateCidrMask;
             return this;
         }
         @CustomType.Setter
         public Builder privateGateway(String privateGateway) {
-            this.privateGateway = Objects.requireNonNull(privateGateway);
+            if (privateGateway == null) {
+              throw new MissingRequiredPropertyException("GetDeviceClusterDetailNode0VendorConfiguration", "privateGateway");
+            }
+            this.privateGateway = privateGateway;
             return this;
         }
         @CustomType.Setter
         public Builder rootPassword(String rootPassword) {
-            this.rootPassword = Objects.requireNonNull(rootPassword);
+            if (rootPassword == null) {
+              throw new MissingRequiredPropertyException("GetDeviceClusterDetailNode0VendorConfiguration", "rootPassword");
+            }
+            this.rootPassword = rootPassword;
             return this;
         }
         public GetDeviceClusterDetailNode0VendorConfiguration build() {

@@ -5,6 +5,7 @@ package com.equinix.pulumi.fabric.inputs;
 
 import com.equinix.pulumi.fabric.inputs.GetPortsFilter;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.Objects;
 
 
@@ -63,7 +64,9 @@ public final class GetPortsPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetPortsPlainArgs build() {
-            $.filter = Objects.requireNonNull($.filter, "expected parameter 'filter' to be non-null");
+            if ($.filter == null) {
+                throw new MissingRequiredPropertyException("GetPortsPlainArgs", "filter");
+            }
             return $;
         }
     }

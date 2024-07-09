@@ -14,6 +14,7 @@ import com.equinix.pulumi.fabric.outputs.GetServiceProfilePort;
 import com.equinix.pulumi.fabric.outputs.GetServiceProfileProject;
 import com.equinix.pulumi.fabric.outputs.GetServiceProfileVirtualDevice;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -340,7 +341,10 @@ public final class GetServiceProfileResult {
 
         @CustomType.Setter
         public Builder accessPointTypeConfigs(List<GetServiceProfileAccessPointTypeConfig> accessPointTypeConfigs) {
-            this.accessPointTypeConfigs = Objects.requireNonNull(accessPointTypeConfigs);
+            if (accessPointTypeConfigs == null) {
+              throw new MissingRequiredPropertyException("GetServiceProfileResult", "accessPointTypeConfigs");
+            }
+            this.accessPointTypeConfigs = accessPointTypeConfigs;
             return this;
         }
         public Builder accessPointTypeConfigs(GetServiceProfileAccessPointTypeConfig... accessPointTypeConfigs) {
@@ -348,12 +352,18 @@ public final class GetServiceProfileResult {
         }
         @CustomType.Setter
         public Builder account(GetServiceProfileAccount account) {
-            this.account = Objects.requireNonNull(account);
+            if (account == null) {
+              throw new MissingRequiredPropertyException("GetServiceProfileResult", "account");
+            }
+            this.account = account;
             return this;
         }
         @CustomType.Setter
         public Builder allowedEmails(List<String> allowedEmails) {
-            this.allowedEmails = Objects.requireNonNull(allowedEmails);
+            if (allowedEmails == null) {
+              throw new MissingRequiredPropertyException("GetServiceProfileResult", "allowedEmails");
+            }
+            this.allowedEmails = allowedEmails;
             return this;
         }
         public Builder allowedEmails(String... allowedEmails) {
@@ -361,12 +371,18 @@ public final class GetServiceProfileResult {
         }
         @CustomType.Setter
         public Builder changeLog(GetServiceProfileChangeLog changeLog) {
-            this.changeLog = Objects.requireNonNull(changeLog);
+            if (changeLog == null) {
+              throw new MissingRequiredPropertyException("GetServiceProfileResult", "changeLog");
+            }
+            this.changeLog = changeLog;
             return this;
         }
         @CustomType.Setter
         public Builder customFields(List<GetServiceProfileCustomField> customFields) {
-            this.customFields = Objects.requireNonNull(customFields);
+            if (customFields == null) {
+              throw new MissingRequiredPropertyException("GetServiceProfileResult", "customFields");
+            }
+            this.customFields = customFields;
             return this;
         }
         public Builder customFields(GetServiceProfileCustomField... customFields) {
@@ -374,27 +390,42 @@ public final class GetServiceProfileResult {
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetServiceProfileResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder href(String href) {
-            this.href = Objects.requireNonNull(href);
+            if (href == null) {
+              throw new MissingRequiredPropertyException("GetServiceProfileResult", "href");
+            }
+            this.href = href;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetServiceProfileResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder marketingInfo(GetServiceProfileMarketingInfo marketingInfo) {
-            this.marketingInfo = Objects.requireNonNull(marketingInfo);
+            if (marketingInfo == null) {
+              throw new MissingRequiredPropertyException("GetServiceProfileResult", "marketingInfo");
+            }
+            this.marketingInfo = marketingInfo;
             return this;
         }
         @CustomType.Setter
         public Builder metros(List<GetServiceProfileMetro> metros) {
-            this.metros = Objects.requireNonNull(metros);
+            if (metros == null) {
+              throw new MissingRequiredPropertyException("GetServiceProfileResult", "metros");
+            }
+            this.metros = metros;
             return this;
         }
         public Builder metros(GetServiceProfileMetro... metros) {
@@ -402,12 +433,18 @@ public final class GetServiceProfileResult {
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetServiceProfileResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder notifications(List<GetServiceProfileNotification> notifications) {
-            this.notifications = Objects.requireNonNull(notifications);
+            if (notifications == null) {
+              throw new MissingRequiredPropertyException("GetServiceProfileResult", "notifications");
+            }
+            this.notifications = notifications;
             return this;
         }
         public Builder notifications(GetServiceProfileNotification... notifications) {
@@ -415,7 +452,10 @@ public final class GetServiceProfileResult {
         }
         @CustomType.Setter
         public Builder ports(List<GetServiceProfilePort> ports) {
-            this.ports = Objects.requireNonNull(ports);
+            if (ports == null) {
+              throw new MissingRequiredPropertyException("GetServiceProfileResult", "ports");
+            }
+            this.ports = ports;
             return this;
         }
         public Builder ports(GetServiceProfilePort... ports) {
@@ -423,22 +463,34 @@ public final class GetServiceProfileResult {
         }
         @CustomType.Setter
         public Builder project(GetServiceProfileProject project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetServiceProfileResult", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder selfProfile(Boolean selfProfile) {
-            this.selfProfile = Objects.requireNonNull(selfProfile);
+            if (selfProfile == null) {
+              throw new MissingRequiredPropertyException("GetServiceProfileResult", "selfProfile");
+            }
+            this.selfProfile = selfProfile;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetServiceProfileResult", "state");
+            }
+            this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder tags(List<String> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetServiceProfileResult", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         public Builder tags(String... tags) {
@@ -446,22 +498,34 @@ public final class GetServiceProfileResult {
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetServiceProfileResult", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder uuid(String uuid) {
-            this.uuid = Objects.requireNonNull(uuid);
+            if (uuid == null) {
+              throw new MissingRequiredPropertyException("GetServiceProfileResult", "uuid");
+            }
+            this.uuid = uuid;
             return this;
         }
         @CustomType.Setter
         public Builder viewPoint(String viewPoint) {
-            this.viewPoint = Objects.requireNonNull(viewPoint);
+            if (viewPoint == null) {
+              throw new MissingRequiredPropertyException("GetServiceProfileResult", "viewPoint");
+            }
+            this.viewPoint = viewPoint;
             return this;
         }
         @CustomType.Setter
         public Builder virtualDevices(List<GetServiceProfileVirtualDevice> virtualDevices) {
-            this.virtualDevices = Objects.requireNonNull(virtualDevices);
+            if (virtualDevices == null) {
+              throw new MissingRequiredPropertyException("GetServiceProfileResult", "virtualDevices");
+            }
+            this.virtualDevices = virtualDevices;
             return this;
         }
         public Builder virtualDevices(GetServiceProfileVirtualDevice... virtualDevices) {
@@ -469,7 +533,10 @@ public final class GetServiceProfileResult {
         }
         @CustomType.Setter
         public Builder visibility(String visibility) {
-            this.visibility = Objects.requireNonNull(visibility);
+            if (visibility == null) {
+              throw new MissingRequiredPropertyException("GetServiceProfileResult", "visibility");
+            }
+            this.visibility = visibility;
             return this;
         }
         public GetServiceProfileResult build() {

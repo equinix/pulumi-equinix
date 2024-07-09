@@ -4,6 +4,7 @@
 package com.equinix.pulumi.fabric.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class GetConnectionsDataOperationErrorAdditionalInfo {
 
         @CustomType.Setter
         public Builder property(String property) {
-            this.property = Objects.requireNonNull(property);
+            if (property == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsDataOperationErrorAdditionalInfo", "property");
+            }
+            this.property = property;
             return this;
         }
         @CustomType.Setter
         public Builder reason(String reason) {
-            this.reason = Objects.requireNonNull(reason);
+            if (reason == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsDataOperationErrorAdditionalInfo", "reason");
+            }
+            this.reason = reason;
             return this;
         }
         public GetConnectionsDataOperationErrorAdditionalInfo build() {

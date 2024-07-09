@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * Provides an Equinix Metal Spot Market Request resource to allow you to manage spot market requests on your account. For more detail on Spot Market, see [this article in Equinix Metal documentation](https://metal.equinix.com/developers/docs/deploy/spot-market/).
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -39,26 +40,27 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var projectId = config.get(&#34;projectId&#34;).get();
- *         final var metro = config.get(&#34;metro&#34;).orElse(&#34;FR&#34;);
- *         var request = new SpotMarketRequest(&#34;request&#34;, SpotMarketRequestArgs.builder()        
+ *         final var projectId = config.get("projectId").get();
+ *         final var metro = config.get("metro").orElse("FR");
+ *         var request = new SpotMarketRequest("request", SpotMarketRequestArgs.builder()        
  *             .projectId(projectId)
  *             .metro(metro)
  *             .maxBidPrice(0.75)
  *             .devicesMin(1)
  *             .devicesMax(1)
  *             .instanceParameters(SpotMarketRequestInstanceParametersArgs.builder()
- *                 .hostname(&#34;testspot&#34;)
- *                 .billingCycle(&#34;hourly&#34;)
- *                 .operatingSystem(&#34;ubuntu_20_04&#34;)
- *                 .plan(&#34;c3.small.x86&#34;)
+ *                 .hostname("testspot")
+ *                 .billingCycle("hourly")
+ *                 .operatingSystem("ubuntu_20_04")
+ *                 .plan("c3.small.x86")
  *                 .build())
  *             .build());
  * 
- *         ctx.export(&#34;requestId&#34;, request.id());
+ *         ctx.export("requestId", request.id());
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  * ## Import
  * 

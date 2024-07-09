@@ -6,6 +6,7 @@ package com.equinix.pulumi.networkedge.outputs;
 import com.equinix.pulumi.networkedge.outputs.GetDeviceSecondaryDeviceInterface;
 import com.equinix.pulumi.networkedge.outputs.GetDeviceSecondaryDeviceSshKey;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -477,42 +478,66 @@ public final class GetDeviceSecondaryDevice {
 
         @CustomType.Setter
         public Builder accountNumber(String accountNumber) {
-            this.accountNumber = Objects.requireNonNull(accountNumber);
+            if (accountNumber == null) {
+              throw new MissingRequiredPropertyException("GetDeviceSecondaryDevice", "accountNumber");
+            }
+            this.accountNumber = accountNumber;
             return this;
         }
         @CustomType.Setter
         public Builder aclTemplateId(String aclTemplateId) {
-            this.aclTemplateId = Objects.requireNonNull(aclTemplateId);
+            if (aclTemplateId == null) {
+              throw new MissingRequiredPropertyException("GetDeviceSecondaryDevice", "aclTemplateId");
+            }
+            this.aclTemplateId = aclTemplateId;
             return this;
         }
         @CustomType.Setter
         public Builder additionalBandwidth(Integer additionalBandwidth) {
-            this.additionalBandwidth = Objects.requireNonNull(additionalBandwidth);
+            if (additionalBandwidth == null) {
+              throw new MissingRequiredPropertyException("GetDeviceSecondaryDevice", "additionalBandwidth");
+            }
+            this.additionalBandwidth = additionalBandwidth;
             return this;
         }
         @CustomType.Setter
         public Builder asn(Integer asn) {
-            this.asn = Objects.requireNonNull(asn);
+            if (asn == null) {
+              throw new MissingRequiredPropertyException("GetDeviceSecondaryDevice", "asn");
+            }
+            this.asn = asn;
             return this;
         }
         @CustomType.Setter
         public Builder cloudInitFileId(String cloudInitFileId) {
-            this.cloudInitFileId = Objects.requireNonNull(cloudInitFileId);
+            if (cloudInitFileId == null) {
+              throw new MissingRequiredPropertyException("GetDeviceSecondaryDevice", "cloudInitFileId");
+            }
+            this.cloudInitFileId = cloudInitFileId;
             return this;
         }
         @CustomType.Setter
         public Builder hostname(String hostname) {
-            this.hostname = Objects.requireNonNull(hostname);
+            if (hostname == null) {
+              throw new MissingRequiredPropertyException("GetDeviceSecondaryDevice", "hostname");
+            }
+            this.hostname = hostname;
             return this;
         }
         @CustomType.Setter
         public Builder ibx(String ibx) {
-            this.ibx = Objects.requireNonNull(ibx);
+            if (ibx == null) {
+              throw new MissingRequiredPropertyException("GetDeviceSecondaryDevice", "ibx");
+            }
+            this.ibx = ibx;
             return this;
         }
         @CustomType.Setter
         public Builder interfaces(List<GetDeviceSecondaryDeviceInterface> interfaces) {
-            this.interfaces = Objects.requireNonNull(interfaces);
+            if (interfaces == null) {
+              throw new MissingRequiredPropertyException("GetDeviceSecondaryDevice", "interfaces");
+            }
+            this.interfaces = interfaces;
             return this;
         }
         public Builder interfaces(GetDeviceSecondaryDeviceInterface... interfaces) {
@@ -520,42 +545,66 @@ public final class GetDeviceSecondaryDevice {
         }
         @CustomType.Setter
         public Builder licenseFile(String licenseFile) {
-            this.licenseFile = Objects.requireNonNull(licenseFile);
+            if (licenseFile == null) {
+              throw new MissingRequiredPropertyException("GetDeviceSecondaryDevice", "licenseFile");
+            }
+            this.licenseFile = licenseFile;
             return this;
         }
         @CustomType.Setter
         public Builder licenseFileId(String licenseFileId) {
-            this.licenseFileId = Objects.requireNonNull(licenseFileId);
+            if (licenseFileId == null) {
+              throw new MissingRequiredPropertyException("GetDeviceSecondaryDevice", "licenseFileId");
+            }
+            this.licenseFileId = licenseFileId;
             return this;
         }
         @CustomType.Setter
         public Builder licenseStatus(String licenseStatus) {
-            this.licenseStatus = Objects.requireNonNull(licenseStatus);
+            if (licenseStatus == null) {
+              throw new MissingRequiredPropertyException("GetDeviceSecondaryDevice", "licenseStatus");
+            }
+            this.licenseStatus = licenseStatus;
             return this;
         }
         @CustomType.Setter
         public Builder licenseToken(String licenseToken) {
-            this.licenseToken = Objects.requireNonNull(licenseToken);
+            if (licenseToken == null) {
+              throw new MissingRequiredPropertyException("GetDeviceSecondaryDevice", "licenseToken");
+            }
+            this.licenseToken = licenseToken;
             return this;
         }
         @CustomType.Setter
         public Builder metroCode(String metroCode) {
-            this.metroCode = Objects.requireNonNull(metroCode);
+            if (metroCode == null) {
+              throw new MissingRequiredPropertyException("GetDeviceSecondaryDevice", "metroCode");
+            }
+            this.metroCode = metroCode;
             return this;
         }
         @CustomType.Setter
         public Builder mgmtAclTemplateUuid(String mgmtAclTemplateUuid) {
-            this.mgmtAclTemplateUuid = Objects.requireNonNull(mgmtAclTemplateUuid);
+            if (mgmtAclTemplateUuid == null) {
+              throw new MissingRequiredPropertyException("GetDeviceSecondaryDevice", "mgmtAclTemplateUuid");
+            }
+            this.mgmtAclTemplateUuid = mgmtAclTemplateUuid;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetDeviceSecondaryDevice", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder notifications(List<String> notifications) {
-            this.notifications = Objects.requireNonNull(notifications);
+            if (notifications == null) {
+              throw new MissingRequiredPropertyException("GetDeviceSecondaryDevice", "notifications");
+            }
+            this.notifications = notifications;
             return this;
         }
         public Builder notifications(String... notifications) {
@@ -563,37 +612,58 @@ public final class GetDeviceSecondaryDevice {
         }
         @CustomType.Setter
         public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("GetDeviceSecondaryDevice", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder redundancyType(String redundancyType) {
-            this.redundancyType = Objects.requireNonNull(redundancyType);
+            if (redundancyType == null) {
+              throw new MissingRequiredPropertyException("GetDeviceSecondaryDevice", "redundancyType");
+            }
+            this.redundancyType = redundancyType;
             return this;
         }
         @CustomType.Setter
         public Builder redundantId(String redundantId) {
-            this.redundantId = Objects.requireNonNull(redundantId);
+            if (redundantId == null) {
+              throw new MissingRequiredPropertyException("GetDeviceSecondaryDevice", "redundantId");
+            }
+            this.redundantId = redundantId;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetDeviceSecondaryDevice", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder sshIpAddress(String sshIpAddress) {
-            this.sshIpAddress = Objects.requireNonNull(sshIpAddress);
+            if (sshIpAddress == null) {
+              throw new MissingRequiredPropertyException("GetDeviceSecondaryDevice", "sshIpAddress");
+            }
+            this.sshIpAddress = sshIpAddress;
             return this;
         }
         @CustomType.Setter
         public Builder sshIpFqdn(String sshIpFqdn) {
-            this.sshIpFqdn = Objects.requireNonNull(sshIpFqdn);
+            if (sshIpFqdn == null) {
+              throw new MissingRequiredPropertyException("GetDeviceSecondaryDevice", "sshIpFqdn");
+            }
+            this.sshIpFqdn = sshIpFqdn;
             return this;
         }
         @CustomType.Setter
         public Builder sshKeys(List<GetDeviceSecondaryDeviceSshKey> sshKeys) {
-            this.sshKeys = Objects.requireNonNull(sshKeys);
+            if (sshKeys == null) {
+              throw new MissingRequiredPropertyException("GetDeviceSecondaryDevice", "sshKeys");
+            }
+            this.sshKeys = sshKeys;
             return this;
         }
         public Builder sshKeys(GetDeviceSecondaryDeviceSshKey... sshKeys) {
@@ -601,27 +671,42 @@ public final class GetDeviceSecondaryDevice {
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetDeviceSecondaryDevice", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder uuid(String uuid) {
-            this.uuid = Objects.requireNonNull(uuid);
+            if (uuid == null) {
+              throw new MissingRequiredPropertyException("GetDeviceSecondaryDevice", "uuid");
+            }
+            this.uuid = uuid;
             return this;
         }
         @CustomType.Setter
         public Builder vendorConfiguration(Map<String,String> vendorConfiguration) {
-            this.vendorConfiguration = Objects.requireNonNull(vendorConfiguration);
+            if (vendorConfiguration == null) {
+              throw new MissingRequiredPropertyException("GetDeviceSecondaryDevice", "vendorConfiguration");
+            }
+            this.vendorConfiguration = vendorConfiguration;
             return this;
         }
         @CustomType.Setter
         public Builder wanInterfaceId(String wanInterfaceId) {
-            this.wanInterfaceId = Objects.requireNonNull(wanInterfaceId);
+            if (wanInterfaceId == null) {
+              throw new MissingRequiredPropertyException("GetDeviceSecondaryDevice", "wanInterfaceId");
+            }
+            this.wanInterfaceId = wanInterfaceId;
             return this;
         }
         @CustomType.Setter
         public Builder zoneCode(String zoneCode) {
-            this.zoneCode = Objects.requireNonNull(zoneCode);
+            if (zoneCode == null) {
+              throw new MissingRequiredPropertyException("GetDeviceSecondaryDevice", "zoneCode");
+            }
+            this.zoneCode = zoneCode;
             return this;
         }
         public GetDeviceSecondaryDevice build() {

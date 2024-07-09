@@ -5,6 +5,7 @@ package com.equinix.pulumi.metal;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -614,9 +615,15 @@ public final class VirtualCircuitArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public VirtualCircuitArgs build() {
-            $.connectionId = Objects.requireNonNull($.connectionId, "expected parameter 'connectionId' to be non-null");
-            $.portId = Objects.requireNonNull($.portId, "expected parameter 'portId' to be non-null");
-            $.projectId = Objects.requireNonNull($.projectId, "expected parameter 'projectId' to be non-null");
+            if ($.connectionId == null) {
+                throw new MissingRequiredPropertyException("VirtualCircuitArgs", "connectionId");
+            }
+            if ($.portId == null) {
+                throw new MissingRequiredPropertyException("VirtualCircuitArgs", "portId");
+            }
+            if ($.projectId == null) {
+                throw new MissingRequiredPropertyException("VirtualCircuitArgs", "projectId");
+            }
             return $;
         }
     }

@@ -8,6 +8,7 @@ import com.equinix.pulumi.networkedge.outputs.GetDeviceInterface;
 import com.equinix.pulumi.networkedge.outputs.GetDeviceSecondaryDevice;
 import com.equinix.pulumi.networkedge.outputs.GetDeviceSshKey;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -518,32 +519,50 @@ public final class GetDeviceResult {
 
         @CustomType.Setter
         public Builder accountNumber(String accountNumber) {
-            this.accountNumber = Objects.requireNonNull(accountNumber);
+            if (accountNumber == null) {
+              throw new MissingRequiredPropertyException("GetDeviceResult", "accountNumber");
+            }
+            this.accountNumber = accountNumber;
             return this;
         }
         @CustomType.Setter
         public Builder aclTemplateId(String aclTemplateId) {
-            this.aclTemplateId = Objects.requireNonNull(aclTemplateId);
+            if (aclTemplateId == null) {
+              throw new MissingRequiredPropertyException("GetDeviceResult", "aclTemplateId");
+            }
+            this.aclTemplateId = aclTemplateId;
             return this;
         }
         @CustomType.Setter
         public Builder additionalBandwidth(Integer additionalBandwidth) {
-            this.additionalBandwidth = Objects.requireNonNull(additionalBandwidth);
+            if (additionalBandwidth == null) {
+              throw new MissingRequiredPropertyException("GetDeviceResult", "additionalBandwidth");
+            }
+            this.additionalBandwidth = additionalBandwidth;
             return this;
         }
         @CustomType.Setter
         public Builder asn(Integer asn) {
-            this.asn = Objects.requireNonNull(asn);
+            if (asn == null) {
+              throw new MissingRequiredPropertyException("GetDeviceResult", "asn");
+            }
+            this.asn = asn;
             return this;
         }
         @CustomType.Setter
         public Builder byol(Boolean byol) {
-            this.byol = Objects.requireNonNull(byol);
+            if (byol == null) {
+              throw new MissingRequiredPropertyException("GetDeviceResult", "byol");
+            }
+            this.byol = byol;
             return this;
         }
         @CustomType.Setter
         public Builder clusterDetails(List<GetDeviceClusterDetail> clusterDetails) {
-            this.clusterDetails = Objects.requireNonNull(clusterDetails);
+            if (clusterDetails == null) {
+              throw new MissingRequiredPropertyException("GetDeviceResult", "clusterDetails");
+            }
+            this.clusterDetails = clusterDetails;
             return this;
         }
         public Builder clusterDetails(GetDeviceClusterDetail... clusterDetails) {
@@ -551,47 +570,74 @@ public final class GetDeviceResult {
         }
         @CustomType.Setter
         public Builder connectivity(String connectivity) {
-            this.connectivity = Objects.requireNonNull(connectivity);
+            if (connectivity == null) {
+              throw new MissingRequiredPropertyException("GetDeviceResult", "connectivity");
+            }
+            this.connectivity = connectivity;
             return this;
         }
         @CustomType.Setter
         public Builder coreCount(Integer coreCount) {
-            this.coreCount = Objects.requireNonNull(coreCount);
+            if (coreCount == null) {
+              throw new MissingRequiredPropertyException("GetDeviceResult", "coreCount");
+            }
+            this.coreCount = coreCount;
             return this;
         }
         @CustomType.Setter
         public Builder diverseDeviceId(String diverseDeviceId) {
-            this.diverseDeviceId = Objects.requireNonNull(diverseDeviceId);
+            if (diverseDeviceId == null) {
+              throw new MissingRequiredPropertyException("GetDeviceResult", "diverseDeviceId");
+            }
+            this.diverseDeviceId = diverseDeviceId;
             return this;
         }
         @CustomType.Setter
         public Builder diverseDeviceName(String diverseDeviceName) {
-            this.diverseDeviceName = Objects.requireNonNull(diverseDeviceName);
+            if (diverseDeviceName == null) {
+              throw new MissingRequiredPropertyException("GetDeviceResult", "diverseDeviceName");
+            }
+            this.diverseDeviceName = diverseDeviceName;
             return this;
         }
         @CustomType.Setter
         public Builder hostname(String hostname) {
-            this.hostname = Objects.requireNonNull(hostname);
+            if (hostname == null) {
+              throw new MissingRequiredPropertyException("GetDeviceResult", "hostname");
+            }
+            this.hostname = hostname;
             return this;
         }
         @CustomType.Setter
         public Builder ibx(String ibx) {
-            this.ibx = Objects.requireNonNull(ibx);
+            if (ibx == null) {
+              throw new MissingRequiredPropertyException("GetDeviceResult", "ibx");
+            }
+            this.ibx = ibx;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDeviceResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder interfaceCount(Integer interfaceCount) {
-            this.interfaceCount = Objects.requireNonNull(interfaceCount);
+            if (interfaceCount == null) {
+              throw new MissingRequiredPropertyException("GetDeviceResult", "interfaceCount");
+            }
+            this.interfaceCount = interfaceCount;
             return this;
         }
         @CustomType.Setter
         public Builder interfaces(List<GetDeviceInterface> interfaces) {
-            this.interfaces = Objects.requireNonNull(interfaces);
+            if (interfaces == null) {
+              throw new MissingRequiredPropertyException("GetDeviceResult", "interfaces");
+            }
+            this.interfaces = interfaces;
             return this;
         }
         public Builder interfaces(GetDeviceInterface... interfaces) {
@@ -599,42 +645,66 @@ public final class GetDeviceResult {
         }
         @CustomType.Setter
         public Builder licenseFile(String licenseFile) {
-            this.licenseFile = Objects.requireNonNull(licenseFile);
+            if (licenseFile == null) {
+              throw new MissingRequiredPropertyException("GetDeviceResult", "licenseFile");
+            }
+            this.licenseFile = licenseFile;
             return this;
         }
         @CustomType.Setter
         public Builder licenseFileId(String licenseFileId) {
-            this.licenseFileId = Objects.requireNonNull(licenseFileId);
+            if (licenseFileId == null) {
+              throw new MissingRequiredPropertyException("GetDeviceResult", "licenseFileId");
+            }
+            this.licenseFileId = licenseFileId;
             return this;
         }
         @CustomType.Setter
         public Builder licenseStatus(String licenseStatus) {
-            this.licenseStatus = Objects.requireNonNull(licenseStatus);
+            if (licenseStatus == null) {
+              throw new MissingRequiredPropertyException("GetDeviceResult", "licenseStatus");
+            }
+            this.licenseStatus = licenseStatus;
             return this;
         }
         @CustomType.Setter
         public Builder licenseToken(String licenseToken) {
-            this.licenseToken = Objects.requireNonNull(licenseToken);
+            if (licenseToken == null) {
+              throw new MissingRequiredPropertyException("GetDeviceResult", "licenseToken");
+            }
+            this.licenseToken = licenseToken;
             return this;
         }
         @CustomType.Setter
         public Builder metroCode(String metroCode) {
-            this.metroCode = Objects.requireNonNull(metroCode);
+            if (metroCode == null) {
+              throw new MissingRequiredPropertyException("GetDeviceResult", "metroCode");
+            }
+            this.metroCode = metroCode;
             return this;
         }
         @CustomType.Setter
         public Builder mgmtAclTemplateUuid(String mgmtAclTemplateUuid) {
-            this.mgmtAclTemplateUuid = Objects.requireNonNull(mgmtAclTemplateUuid);
+            if (mgmtAclTemplateUuid == null) {
+              throw new MissingRequiredPropertyException("GetDeviceResult", "mgmtAclTemplateUuid");
+            }
+            this.mgmtAclTemplateUuid = mgmtAclTemplateUuid;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetDeviceResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder notifications(List<String> notifications) {
-            this.notifications = Objects.requireNonNull(notifications);
+            if (notifications == null) {
+              throw new MissingRequiredPropertyException("GetDeviceResult", "notifications");
+            }
+            this.notifications = notifications;
             return this;
         }
         public Builder notifications(String... notifications) {
@@ -642,42 +712,66 @@ public final class GetDeviceResult {
         }
         @CustomType.Setter
         public Builder orderReference(String orderReference) {
-            this.orderReference = Objects.requireNonNull(orderReference);
+            if (orderReference == null) {
+              throw new MissingRequiredPropertyException("GetDeviceResult", "orderReference");
+            }
+            this.orderReference = orderReference;
             return this;
         }
         @CustomType.Setter
         public Builder packageCode(String packageCode) {
-            this.packageCode = Objects.requireNonNull(packageCode);
+            if (packageCode == null) {
+              throw new MissingRequiredPropertyException("GetDeviceResult", "packageCode");
+            }
+            this.packageCode = packageCode;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("GetDeviceResult", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder purchaseOrderNumber(String purchaseOrderNumber) {
-            this.purchaseOrderNumber = Objects.requireNonNull(purchaseOrderNumber);
+            if (purchaseOrderNumber == null) {
+              throw new MissingRequiredPropertyException("GetDeviceResult", "purchaseOrderNumber");
+            }
+            this.purchaseOrderNumber = purchaseOrderNumber;
             return this;
         }
         @CustomType.Setter
         public Builder redundancyType(String redundancyType) {
-            this.redundancyType = Objects.requireNonNull(redundancyType);
+            if (redundancyType == null) {
+              throw new MissingRequiredPropertyException("GetDeviceResult", "redundancyType");
+            }
+            this.redundancyType = redundancyType;
             return this;
         }
         @CustomType.Setter
         public Builder redundantId(String redundantId) {
-            this.redundantId = Objects.requireNonNull(redundantId);
+            if (redundantId == null) {
+              throw new MissingRequiredPropertyException("GetDeviceResult", "redundantId");
+            }
+            this.redundantId = redundantId;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetDeviceResult", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder secondaryDevices(List<GetDeviceSecondaryDevice> secondaryDevices) {
-            this.secondaryDevices = Objects.requireNonNull(secondaryDevices);
+            if (secondaryDevices == null) {
+              throw new MissingRequiredPropertyException("GetDeviceResult", "secondaryDevices");
+            }
+            this.secondaryDevices = secondaryDevices;
             return this;
         }
         public Builder secondaryDevices(GetDeviceSecondaryDevice... secondaryDevices) {
@@ -685,22 +779,34 @@ public final class GetDeviceResult {
         }
         @CustomType.Setter
         public Builder selfManaged(Boolean selfManaged) {
-            this.selfManaged = Objects.requireNonNull(selfManaged);
+            if (selfManaged == null) {
+              throw new MissingRequiredPropertyException("GetDeviceResult", "selfManaged");
+            }
+            this.selfManaged = selfManaged;
             return this;
         }
         @CustomType.Setter
         public Builder sshIpAddress(String sshIpAddress) {
-            this.sshIpAddress = Objects.requireNonNull(sshIpAddress);
+            if (sshIpAddress == null) {
+              throw new MissingRequiredPropertyException("GetDeviceResult", "sshIpAddress");
+            }
+            this.sshIpAddress = sshIpAddress;
             return this;
         }
         @CustomType.Setter
         public Builder sshIpFqdn(String sshIpFqdn) {
-            this.sshIpFqdn = Objects.requireNonNull(sshIpFqdn);
+            if (sshIpFqdn == null) {
+              throw new MissingRequiredPropertyException("GetDeviceResult", "sshIpFqdn");
+            }
+            this.sshIpFqdn = sshIpFqdn;
             return this;
         }
         @CustomType.Setter
         public Builder sshKeys(List<GetDeviceSshKey> sshKeys) {
-            this.sshKeys = Objects.requireNonNull(sshKeys);
+            if (sshKeys == null) {
+              throw new MissingRequiredPropertyException("GetDeviceResult", "sshKeys");
+            }
+            this.sshKeys = sshKeys;
             return this;
         }
         public Builder sshKeys(GetDeviceSshKey... sshKeys) {
@@ -708,57 +814,88 @@ public final class GetDeviceResult {
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetDeviceResult", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder termLength(Integer termLength) {
-            this.termLength = Objects.requireNonNull(termLength);
+            if (termLength == null) {
+              throw new MissingRequiredPropertyException("GetDeviceResult", "termLength");
+            }
+            this.termLength = termLength;
             return this;
         }
         @CustomType.Setter
         public Builder throughput(Integer throughput) {
-            this.throughput = Objects.requireNonNull(throughput);
+            if (throughput == null) {
+              throw new MissingRequiredPropertyException("GetDeviceResult", "throughput");
+            }
+            this.throughput = throughput;
             return this;
         }
         @CustomType.Setter
         public Builder throughputUnit(String throughputUnit) {
-            this.throughputUnit = Objects.requireNonNull(throughputUnit);
+            if (throughputUnit == null) {
+              throw new MissingRequiredPropertyException("GetDeviceResult", "throughputUnit");
+            }
+            this.throughputUnit = throughputUnit;
             return this;
         }
         @CustomType.Setter
         public Builder typeCode(String typeCode) {
-            this.typeCode = Objects.requireNonNull(typeCode);
+            if (typeCode == null) {
+              throw new MissingRequiredPropertyException("GetDeviceResult", "typeCode");
+            }
+            this.typeCode = typeCode;
             return this;
         }
         @CustomType.Setter
         public Builder uuid(String uuid) {
-            this.uuid = Objects.requireNonNull(uuid);
+            if (uuid == null) {
+              throw new MissingRequiredPropertyException("GetDeviceResult", "uuid");
+            }
+            this.uuid = uuid;
             return this;
         }
         @CustomType.Setter
         public Builder validStatusList(@Nullable String validStatusList) {
+
             this.validStatusList = validStatusList;
             return this;
         }
         @CustomType.Setter
         public Builder vendorConfiguration(Map<String,String> vendorConfiguration) {
-            this.vendorConfiguration = Objects.requireNonNull(vendorConfiguration);
+            if (vendorConfiguration == null) {
+              throw new MissingRequiredPropertyException("GetDeviceResult", "vendorConfiguration");
+            }
+            this.vendorConfiguration = vendorConfiguration;
             return this;
         }
         @CustomType.Setter
         public Builder version(String version) {
-            this.version = Objects.requireNonNull(version);
+            if (version == null) {
+              throw new MissingRequiredPropertyException("GetDeviceResult", "version");
+            }
+            this.version = version;
             return this;
         }
         @CustomType.Setter
         public Builder wanInterfaceId(String wanInterfaceId) {
-            this.wanInterfaceId = Objects.requireNonNull(wanInterfaceId);
+            if (wanInterfaceId == null) {
+              throw new MissingRequiredPropertyException("GetDeviceResult", "wanInterfaceId");
+            }
+            this.wanInterfaceId = wanInterfaceId;
             return this;
         }
         @CustomType.Setter
         public Builder zoneCode(String zoneCode) {
-            this.zoneCode = Objects.requireNonNull(zoneCode);
+            if (zoneCode == null) {
+              throw new MissingRequiredPropertyException("GetDeviceResult", "zoneCode");
+            }
+            this.zoneCode = zoneCode;
             return this;
         }
         public GetDeviceResult build() {

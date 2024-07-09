@@ -5,6 +5,7 @@ package com.equinix.pulumi.fabric.outputs;
 
 import com.equinix.pulumi.fabric.outputs.ConnectionASideAccessPointProfileAccessPointTypeConfig;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -116,6 +117,7 @@ public final class ConnectionASideAccessPointProfile {
 
         @CustomType.Setter
         public Builder accessPointTypeConfigs(@Nullable List<ConnectionASideAccessPointProfileAccessPointTypeConfig> accessPointTypeConfigs) {
+
             this.accessPointTypeConfigs = accessPointTypeConfigs;
             return this;
         }
@@ -124,27 +126,36 @@ public final class ConnectionASideAccessPointProfile {
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder href(@Nullable String href) {
+
             this.href = href;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("ConnectionASideAccessPointProfile", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder uuid(String uuid) {
-            this.uuid = Objects.requireNonNull(uuid);
+            if (uuid == null) {
+              throw new MissingRequiredPropertyException("ConnectionASideAccessPointProfile", "uuid");
+            }
+            this.uuid = uuid;
             return this;
         }
         public ConnectionASideAccessPointProfile build() {

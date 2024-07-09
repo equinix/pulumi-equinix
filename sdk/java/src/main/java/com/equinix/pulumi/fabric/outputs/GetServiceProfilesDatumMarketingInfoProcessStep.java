@@ -72,16 +72,19 @@ public final class GetServiceProfilesDatumMarketingInfoProcessStep {
 
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder subTitle(@Nullable String subTitle) {
+
             this.subTitle = subTitle;
             return this;
         }
         @CustomType.Setter
         public Builder title(@Nullable String title) {
+
             this.title = title;
             return this;
         }

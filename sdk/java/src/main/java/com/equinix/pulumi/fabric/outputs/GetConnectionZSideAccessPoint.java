@@ -14,6 +14,7 @@ import com.equinix.pulumi.fabric.outputs.GetConnectionZSideAccessPointProfile;
 import com.equinix.pulumi.fabric.outputs.GetConnectionZSideAccessPointRouter;
 import com.equinix.pulumi.fabric.outputs.GetConnectionZSideAccessPointVirtualDevice;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -259,7 +260,10 @@ public final class GetConnectionZSideAccessPoint {
 
         @CustomType.Setter
         public Builder accounts(List<GetConnectionZSideAccessPointAccount> accounts) {
-            this.accounts = Objects.requireNonNull(accounts);
+            if (accounts == null) {
+              throw new MissingRequiredPropertyException("GetConnectionZSideAccessPoint", "accounts");
+            }
+            this.accounts = accounts;
             return this;
         }
         public Builder accounts(GetConnectionZSideAccessPointAccount... accounts) {
@@ -267,71 +271,89 @@ public final class GetConnectionZSideAccessPoint {
         }
         @CustomType.Setter
         public Builder authenticationKey(@Nullable String authenticationKey) {
+
             this.authenticationKey = authenticationKey;
             return this;
         }
         @CustomType.Setter
         public Builder gateway(@Nullable GetConnectionZSideAccessPointGateway gateway) {
+
             this.gateway = gateway;
             return this;
         }
         @CustomType.Setter("interface")
         public Builder interface_(@Nullable GetConnectionZSideAccessPointInterface interface_) {
+
             this.interface_ = interface_;
             return this;
         }
         @CustomType.Setter
         public Builder linkProtocol(@Nullable GetConnectionZSideAccessPointLinkProtocol linkProtocol) {
+
             this.linkProtocol = linkProtocol;
             return this;
         }
         @CustomType.Setter
         public Builder location(GetConnectionZSideAccessPointLocation location) {
-            this.location = Objects.requireNonNull(location);
+            if (location == null) {
+              throw new MissingRequiredPropertyException("GetConnectionZSideAccessPoint", "location");
+            }
+            this.location = location;
             return this;
         }
         @CustomType.Setter
         public Builder network(@Nullable GetConnectionZSideAccessPointNetwork network) {
+
             this.network = network;
             return this;
         }
         @CustomType.Setter
         public Builder peeringType(@Nullable String peeringType) {
+
             this.peeringType = peeringType;
             return this;
         }
         @CustomType.Setter
         public Builder port(@Nullable GetConnectionZSideAccessPointPort port) {
+
             this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder profile(@Nullable GetConnectionZSideAccessPointProfile profile) {
+
             this.profile = profile;
             return this;
         }
         @CustomType.Setter
         public Builder providerConnectionId(String providerConnectionId) {
-            this.providerConnectionId = Objects.requireNonNull(providerConnectionId);
+            if (providerConnectionId == null) {
+              throw new MissingRequiredPropertyException("GetConnectionZSideAccessPoint", "providerConnectionId");
+            }
+            this.providerConnectionId = providerConnectionId;
             return this;
         }
         @CustomType.Setter
         public Builder router(@Nullable GetConnectionZSideAccessPointRouter router) {
+
             this.router = router;
             return this;
         }
         @CustomType.Setter
         public Builder sellerRegion(@Nullable String sellerRegion) {
+
             this.sellerRegion = sellerRegion;
             return this;
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder virtualDevice(@Nullable GetConnectionZSideAccessPointVirtualDevice virtualDevice) {
+
             this.virtualDevice = virtualDevice;
             return this;
         }

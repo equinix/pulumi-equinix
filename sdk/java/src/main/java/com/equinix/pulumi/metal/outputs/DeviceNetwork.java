@@ -102,26 +102,31 @@ public final class DeviceNetwork {
 
         @CustomType.Setter
         public Builder address(@Nullable String address) {
+
             this.address = address;
             return this;
         }
         @CustomType.Setter
         public Builder cidr(@Nullable Integer cidr) {
+
             this.cidr = cidr;
             return this;
         }
         @CustomType.Setter
         public Builder family(@Nullable Integer family) {
+
             this.family = family;
             return this;
         }
         @CustomType.Setter
         public Builder gateway(@Nullable String gateway) {
+
             this.gateway = gateway;
             return this;
         }
         @CustomType.Setter("public")
         public Builder public_(@Nullable Boolean public_) {
+
             this.public_ = public_;
             return this;
         }

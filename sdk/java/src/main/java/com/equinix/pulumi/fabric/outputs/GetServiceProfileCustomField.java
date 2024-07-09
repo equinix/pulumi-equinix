@@ -4,6 +4,7 @@
 package com.equinix.pulumi.fabric.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -116,26 +117,35 @@ public final class GetServiceProfileCustomField {
 
         @CustomType.Setter
         public Builder captureInEmail(@Nullable Boolean captureInEmail) {
+
             this.captureInEmail = captureInEmail;
             return this;
         }
         @CustomType.Setter
         public Builder dataType(String dataType) {
-            this.dataType = Objects.requireNonNull(dataType);
+            if (dataType == null) {
+              throw new MissingRequiredPropertyException("GetServiceProfileCustomField", "dataType");
+            }
+            this.dataType = dataType;
             return this;
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder label(String label) {
-            this.label = Objects.requireNonNull(label);
+            if (label == null) {
+              throw new MissingRequiredPropertyException("GetServiceProfileCustomField", "label");
+            }
+            this.label = label;
             return this;
         }
         @CustomType.Setter
         public Builder options(@Nullable List<String> options) {
+
             this.options = options;
             return this;
         }
@@ -144,7 +154,10 @@ public final class GetServiceProfileCustomField {
         }
         @CustomType.Setter
         public Builder required(Boolean required) {
-            this.required = Objects.requireNonNull(required);
+            if (required == null) {
+              throw new MissingRequiredPropertyException("GetServiceProfileCustomField", "required");
+            }
+            this.required = required;
             return this;
         }
         public GetServiceProfileCustomField build() {

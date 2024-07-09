@@ -8,6 +8,7 @@ import com.equinix.pulumi.networkedge.inputs.DeviceLinkLinkArgs;
 import com.equinix.pulumi.networkedge.inputs.DeviceLinkMetroLinkArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -352,7 +353,9 @@ public final class DeviceLinkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public DeviceLinkArgs build() {
-            $.devices = Objects.requireNonNull($.devices, "expected parameter 'devices' to be non-null");
+            if ($.devices == null) {
+                throw new MissingRequiredPropertyException("DeviceLinkArgs", "devices");
+            }
             return $;
         }
     }

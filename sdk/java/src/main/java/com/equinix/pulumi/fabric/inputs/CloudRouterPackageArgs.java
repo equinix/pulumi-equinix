@@ -5,6 +5,7 @@ package com.equinix.pulumi.fabric.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class CloudRouterPackageArgs extends com.pulumi.resources.ResourceA
         }
 
         public CloudRouterPackageArgs build() {
-            $.code = Objects.requireNonNull($.code, "expected parameter 'code' to be non-null");
+            if ($.code == null) {
+                throw new MissingRequiredPropertyException("CloudRouterPackageArgs", "code");
+            }
             return $;
         }
     }

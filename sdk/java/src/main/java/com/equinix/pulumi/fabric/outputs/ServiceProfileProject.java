@@ -58,11 +58,13 @@ public final class ServiceProfileProject {
 
         @CustomType.Setter
         public Builder href(@Nullable String href) {
+
             this.href = href;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(@Nullable String projectId) {
+
             this.projectId = projectId;
             return this;
         }

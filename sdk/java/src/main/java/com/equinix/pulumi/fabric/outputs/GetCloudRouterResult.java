@@ -11,6 +11,7 @@ import com.equinix.pulumi.fabric.outputs.GetCloudRouterOrder;
 import com.equinix.pulumi.fabric.outputs.GetCloudRouterPackage;
 import com.equinix.pulumi.fabric.outputs.GetCloudRouterProject;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -317,7 +318,10 @@ public final class GetCloudRouterResult {
 
         @CustomType.Setter
         public Builder accounts(List<GetCloudRouterAccount> accounts) {
-            this.accounts = Objects.requireNonNull(accounts);
+            if (accounts == null) {
+              throw new MissingRequiredPropertyException("GetCloudRouterResult", "accounts");
+            }
+            this.accounts = accounts;
             return this;
         }
         public Builder accounts(GetCloudRouterAccount... accounts) {
@@ -325,17 +329,26 @@ public final class GetCloudRouterResult {
         }
         @CustomType.Setter
         public Builder bgpIpv4RoutesCount(Integer bgpIpv4RoutesCount) {
-            this.bgpIpv4RoutesCount = Objects.requireNonNull(bgpIpv4RoutesCount);
+            if (bgpIpv4RoutesCount == null) {
+              throw new MissingRequiredPropertyException("GetCloudRouterResult", "bgpIpv4RoutesCount");
+            }
+            this.bgpIpv4RoutesCount = bgpIpv4RoutesCount;
             return this;
         }
         @CustomType.Setter
         public Builder bgpIpv6RoutesCount(Integer bgpIpv6RoutesCount) {
-            this.bgpIpv6RoutesCount = Objects.requireNonNull(bgpIpv6RoutesCount);
+            if (bgpIpv6RoutesCount == null) {
+              throw new MissingRequiredPropertyException("GetCloudRouterResult", "bgpIpv6RoutesCount");
+            }
+            this.bgpIpv6RoutesCount = bgpIpv6RoutesCount;
             return this;
         }
         @CustomType.Setter
         public Builder changeLogs(List<GetCloudRouterChangeLog> changeLogs) {
-            this.changeLogs = Objects.requireNonNull(changeLogs);
+            if (changeLogs == null) {
+              throw new MissingRequiredPropertyException("GetCloudRouterResult", "changeLogs");
+            }
+            this.changeLogs = changeLogs;
             return this;
         }
         public Builder changeLogs(GetCloudRouterChangeLog... changeLogs) {
@@ -343,42 +356,66 @@ public final class GetCloudRouterResult {
         }
         @CustomType.Setter
         public Builder connectionsCount(Integer connectionsCount) {
-            this.connectionsCount = Objects.requireNonNull(connectionsCount);
+            if (connectionsCount == null) {
+              throw new MissingRequiredPropertyException("GetCloudRouterResult", "connectionsCount");
+            }
+            this.connectionsCount = connectionsCount;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetCloudRouterResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder distinctIpv4PrefixesCount(Integer distinctIpv4PrefixesCount) {
-            this.distinctIpv4PrefixesCount = Objects.requireNonNull(distinctIpv4PrefixesCount);
+            if (distinctIpv4PrefixesCount == null) {
+              throw new MissingRequiredPropertyException("GetCloudRouterResult", "distinctIpv4PrefixesCount");
+            }
+            this.distinctIpv4PrefixesCount = distinctIpv4PrefixesCount;
             return this;
         }
         @CustomType.Setter
         public Builder distinctIpv6PrefixesCount(Integer distinctIpv6PrefixesCount) {
-            this.distinctIpv6PrefixesCount = Objects.requireNonNull(distinctIpv6PrefixesCount);
+            if (distinctIpv6PrefixesCount == null) {
+              throw new MissingRequiredPropertyException("GetCloudRouterResult", "distinctIpv6PrefixesCount");
+            }
+            this.distinctIpv6PrefixesCount = distinctIpv6PrefixesCount;
             return this;
         }
         @CustomType.Setter
         public Builder equinixAsn(Integer equinixAsn) {
-            this.equinixAsn = Objects.requireNonNull(equinixAsn);
+            if (equinixAsn == null) {
+              throw new MissingRequiredPropertyException("GetCloudRouterResult", "equinixAsn");
+            }
+            this.equinixAsn = equinixAsn;
             return this;
         }
         @CustomType.Setter
         public Builder href(String href) {
-            this.href = Objects.requireNonNull(href);
+            if (href == null) {
+              throw new MissingRequiredPropertyException("GetCloudRouterResult", "href");
+            }
+            this.href = href;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetCloudRouterResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder locations(List<GetCloudRouterLocation> locations) {
-            this.locations = Objects.requireNonNull(locations);
+            if (locations == null) {
+              throw new MissingRequiredPropertyException("GetCloudRouterResult", "locations");
+            }
+            this.locations = locations;
             return this;
         }
         public Builder locations(GetCloudRouterLocation... locations) {
@@ -386,12 +423,18 @@ public final class GetCloudRouterResult {
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetCloudRouterResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder notifications(List<GetCloudRouterNotification> notifications) {
-            this.notifications = Objects.requireNonNull(notifications);
+            if (notifications == null) {
+              throw new MissingRequiredPropertyException("GetCloudRouterResult", "notifications");
+            }
+            this.notifications = notifications;
             return this;
         }
         public Builder notifications(GetCloudRouterNotification... notifications) {
@@ -399,7 +442,10 @@ public final class GetCloudRouterResult {
         }
         @CustomType.Setter
         public Builder orders(List<GetCloudRouterOrder> orders) {
-            this.orders = Objects.requireNonNull(orders);
+            if (orders == null) {
+              throw new MissingRequiredPropertyException("GetCloudRouterResult", "orders");
+            }
+            this.orders = orders;
             return this;
         }
         public Builder orders(GetCloudRouterOrder... orders) {
@@ -407,7 +453,10 @@ public final class GetCloudRouterResult {
         }
         @CustomType.Setter
         public Builder packages(List<GetCloudRouterPackage> packages) {
-            this.packages = Objects.requireNonNull(packages);
+            if (packages == null) {
+              throw new MissingRequiredPropertyException("GetCloudRouterResult", "packages");
+            }
+            this.packages = packages;
             return this;
         }
         public Builder packages(GetCloudRouterPackage... packages) {
@@ -415,7 +464,10 @@ public final class GetCloudRouterResult {
         }
         @CustomType.Setter
         public Builder projects(List<GetCloudRouterProject> projects) {
-            this.projects = Objects.requireNonNull(projects);
+            if (projects == null) {
+              throw new MissingRequiredPropertyException("GetCloudRouterResult", "projects");
+            }
+            this.projects = projects;
             return this;
         }
         public Builder projects(GetCloudRouterProject... projects) {
@@ -423,17 +475,26 @@ public final class GetCloudRouterResult {
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetCloudRouterResult", "state");
+            }
+            this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetCloudRouterResult", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder uuid(String uuid) {
-            this.uuid = Objects.requireNonNull(uuid);
+            if (uuid == null) {
+              throw new MissingRequiredPropertyException("GetCloudRouterResult", "uuid");
+            }
+            this.uuid = uuid;
             return this;
         }
         public GetCloudRouterResult build() {

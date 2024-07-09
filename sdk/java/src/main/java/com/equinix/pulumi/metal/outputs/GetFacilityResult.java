@@ -5,6 +5,7 @@ package com.equinix.pulumi.metal.outputs;
 
 import com.equinix.pulumi.metal.outputs.GetFacilityCapacity;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -105,6 +106,7 @@ public final class GetFacilityResult {
 
         @CustomType.Setter
         public Builder capacities(@Nullable List<GetFacilityCapacity> capacities) {
+
             this.capacities = capacities;
             return this;
         }
@@ -113,12 +115,18 @@ public final class GetFacilityResult {
         }
         @CustomType.Setter
         public Builder code(String code) {
-            this.code = Objects.requireNonNull(code);
+            if (code == null) {
+              throw new MissingRequiredPropertyException("GetFacilityResult", "code");
+            }
+            this.code = code;
             return this;
         }
         @CustomType.Setter
         public Builder features(List<String> features) {
-            this.features = Objects.requireNonNull(features);
+            if (features == null) {
+              throw new MissingRequiredPropertyException("GetFacilityResult", "features");
+            }
+            this.features = features;
             return this;
         }
         public Builder features(String... features) {
@@ -126,6 +134,7 @@ public final class GetFacilityResult {
         }
         @CustomType.Setter
         public Builder featuresRequireds(@Nullable List<String> featuresRequireds) {
+
             this.featuresRequireds = featuresRequireds;
             return this;
         }
@@ -134,17 +143,26 @@ public final class GetFacilityResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetFacilityResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder metro(String metro) {
-            this.metro = Objects.requireNonNull(metro);
+            if (metro == null) {
+              throw new MissingRequiredPropertyException("GetFacilityResult", "metro");
+            }
+            this.metro = metro;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetFacilityResult", "name");
+            }
+            this.name = name;
             return this;
         }
         public GetFacilityResult build() {

@@ -4,6 +4,7 @@
 package com.equinix.pulumi.fabric.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -71,17 +72,26 @@ public final class GetConnectionsDataZSideAccessPointPortRedundancy {
 
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
-            this.enabled = Objects.requireNonNull(enabled);
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsDataZSideAccessPointPortRedundancy", "enabled");
+            }
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder group(String group) {
-            this.group = Objects.requireNonNull(group);
+            if (group == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsDataZSideAccessPointPortRedundancy", "group");
+            }
+            this.group = group;
             return this;
         }
         @CustomType.Setter
         public Builder priority(String priority) {
-            this.priority = Objects.requireNonNull(priority);
+            if (priority == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsDataZSideAccessPointPortRedundancy", "priority");
+            }
+            this.priority = priority;
             return this;
         }
         public GetConnectionsDataZSideAccessPointPortRedundancy build() {

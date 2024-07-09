@@ -5,6 +5,7 @@ package com.equinix.pulumi.metal;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -321,8 +322,12 @@ public final class PortArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public PortArgs build() {
-            $.bonded = Objects.requireNonNull($.bonded, "expected parameter 'bonded' to be non-null");
-            $.portId = Objects.requireNonNull($.portId, "expected parameter 'portId' to be non-null");
+            if ($.bonded == null) {
+                throw new MissingRequiredPropertyException("PortArgs", "bonded");
+            }
+            if ($.portId == null) {
+                throw new MissingRequiredPropertyException("PortArgs", "portId");
+            }
             return $;
         }
     }

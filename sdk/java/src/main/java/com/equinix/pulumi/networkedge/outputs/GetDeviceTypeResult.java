@@ -4,6 +4,7 @@
 package com.equinix.pulumi.networkedge.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -95,27 +96,42 @@ public final class GetDeviceTypeResult {
 
         @CustomType.Setter
         public Builder category(String category) {
-            this.category = Objects.requireNonNull(category);
+            if (category == null) {
+              throw new MissingRequiredPropertyException("GetDeviceTypeResult", "category");
+            }
+            this.category = category;
             return this;
         }
         @CustomType.Setter
         public Builder code(String code) {
-            this.code = Objects.requireNonNull(code);
+            if (code == null) {
+              throw new MissingRequiredPropertyException("GetDeviceTypeResult", "code");
+            }
+            this.code = code;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetDeviceTypeResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDeviceTypeResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder metroCodes(List<String> metroCodes) {
-            this.metroCodes = Objects.requireNonNull(metroCodes);
+            if (metroCodes == null) {
+              throw new MissingRequiredPropertyException("GetDeviceTypeResult", "metroCodes");
+            }
+            this.metroCodes = metroCodes;
             return this;
         }
         public Builder metroCodes(String... metroCodes) {
@@ -123,12 +139,18 @@ public final class GetDeviceTypeResult {
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetDeviceTypeResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder vendor(String vendor) {
-            this.vendor = Objects.requireNonNull(vendor);
+            if (vendor == null) {
+              throw new MissingRequiredPropertyException("GetDeviceTypeResult", "vendor");
+            }
+            this.vendor = vendor;
             return this;
         }
         public GetDeviceTypeResult build() {

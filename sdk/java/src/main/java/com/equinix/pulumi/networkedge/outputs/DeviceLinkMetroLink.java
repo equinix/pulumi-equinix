@@ -4,6 +4,7 @@
 package com.equinix.pulumi.networkedge.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -84,22 +85,34 @@ public final class DeviceLinkMetroLink {
 
         @CustomType.Setter
         public Builder accountNumber(String accountNumber) {
-            this.accountNumber = Objects.requireNonNull(accountNumber);
+            if (accountNumber == null) {
+              throw new MissingRequiredPropertyException("DeviceLinkMetroLink", "accountNumber");
+            }
+            this.accountNumber = accountNumber;
             return this;
         }
         @CustomType.Setter
         public Builder metroCode(String metroCode) {
-            this.metroCode = Objects.requireNonNull(metroCode);
+            if (metroCode == null) {
+              throw new MissingRequiredPropertyException("DeviceLinkMetroLink", "metroCode");
+            }
+            this.metroCode = metroCode;
             return this;
         }
         @CustomType.Setter
         public Builder throughput(String throughput) {
-            this.throughput = Objects.requireNonNull(throughput);
+            if (throughput == null) {
+              throw new MissingRequiredPropertyException("DeviceLinkMetroLink", "throughput");
+            }
+            this.throughput = throughput;
             return this;
         }
         @CustomType.Setter
         public Builder throughputUnit(String throughputUnit) {
-            this.throughputUnit = Objects.requireNonNull(throughputUnit);
+            if (throughputUnit == null) {
+              throw new MissingRequiredPropertyException("DeviceLinkMetroLink", "throughputUnit");
+            }
+            this.throughputUnit = throughputUnit;
             return this;
         }
         public DeviceLinkMetroLink build() {

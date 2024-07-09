@@ -5,6 +5,7 @@ package com.equinix.pulumi.metal;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class IpAttachmentArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public IpAttachmentArgs build() {
-            $.cidrNotation = Objects.requireNonNull($.cidrNotation, "expected parameter 'cidrNotation' to be non-null");
-            $.deviceId = Objects.requireNonNull($.deviceId, "expected parameter 'deviceId' to be non-null");
+            if ($.cidrNotation == null) {
+                throw new MissingRequiredPropertyException("IpAttachmentArgs", "cidrNotation");
+            }
+            if ($.deviceId == null) {
+                throw new MissingRequiredPropertyException("IpAttachmentArgs", "deviceId");
+            }
             return $;
         }
     }

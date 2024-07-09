@@ -19,7 +19,8 @@ import javax.annotation.Nullable;
  * The link between User SSH key and device is implicit. If you want to make sure that a key will be copied to a device, you must ensure that the device resource `depends_on` the key resource.
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -39,20 +40,21 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         String content = null;
  *         try {
- *             content = Files.readString(Paths.get(&#34;/Users/John/.ssh/metal_rsa.pub&#34;));
+ *             content = Files.readString(Paths.get("/Users/John/.ssh/metal_rsa.pub"));
  *         } catch (IOException e) {
  *             e.printStackTrace();
  *         }
  * 
- *         var sshKey = new SshKey(&#34;sshKey&#34;, SshKeyArgs.builder()        
- *             .name(&#34;johnKent&#34;)
+ *         var sshKey = new SshKey("sshKey", SshKeyArgs.builder()        
+ *             .name("johnKent")
  *             .publicKey(content)
  *             .build());
  * 
- *         ctx.export(&#34;sshKeyId&#34;, sshKey.id());
+ *         ctx.export("sshKeyId", sshKey.id());
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  * ## Import
  * 

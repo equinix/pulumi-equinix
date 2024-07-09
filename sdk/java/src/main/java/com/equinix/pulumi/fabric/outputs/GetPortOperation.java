@@ -4,6 +4,7 @@
 package com.equinix.pulumi.fabric.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -71,17 +72,26 @@ public final class GetPortOperation {
 
         @CustomType.Setter
         public Builder connectionCount(Integer connectionCount) {
-            this.connectionCount = Objects.requireNonNull(connectionCount);
+            if (connectionCount == null) {
+              throw new MissingRequiredPropertyException("GetPortOperation", "connectionCount");
+            }
+            this.connectionCount = connectionCount;
             return this;
         }
         @CustomType.Setter
         public Builder opStatusChangedAt(String opStatusChangedAt) {
-            this.opStatusChangedAt = Objects.requireNonNull(opStatusChangedAt);
+            if (opStatusChangedAt == null) {
+              throw new MissingRequiredPropertyException("GetPortOperation", "opStatusChangedAt");
+            }
+            this.opStatusChangedAt = opStatusChangedAt;
             return this;
         }
         @CustomType.Setter
         public Builder operationalStatus(String operationalStatus) {
-            this.operationalStatus = Objects.requireNonNull(operationalStatus);
+            if (operationalStatus == null) {
+              throw new MissingRequiredPropertyException("GetPortOperation", "operationalStatus");
+            }
+            this.operationalStatus = operationalStatus;
             return this;
         }
         public GetPortOperation build() {

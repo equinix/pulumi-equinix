@@ -75,11 +75,13 @@ public final class GetConnectionASide {
 
         @CustomType.Setter
         public Builder accessPoint(@Nullable GetConnectionASideAccessPoint accessPoint) {
+
             this.accessPoint = accessPoint;
             return this;
         }
         @CustomType.Setter
         public Builder additionalInfos(@Nullable List<GetConnectionASideAdditionalInfo> additionalInfos) {
+
             this.additionalInfos = additionalInfos;
             return this;
         }
@@ -88,6 +90,7 @@ public final class GetConnectionASide {
         }
         @CustomType.Setter
         public Builder serviceToken(@Nullable GetConnectionASideServiceToken serviceToken) {
+
             this.serviceToken = serviceToken;
             return this;
         }

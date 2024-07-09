@@ -72,16 +72,19 @@ public final class AclTemplateDeviceDetail {
 
         @CustomType.Setter
         public Builder aclStatus(@Nullable String aclStatus) {
+
             this.aclStatus = aclStatus;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder uuid(@Nullable String uuid) {
+
             this.uuid = uuid;
             return this;
         }

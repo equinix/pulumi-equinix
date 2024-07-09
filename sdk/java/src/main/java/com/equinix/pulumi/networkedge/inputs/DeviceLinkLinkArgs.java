@@ -5,6 +5,7 @@ package com.equinix.pulumi.networkedge.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -330,11 +331,21 @@ public final class DeviceLinkLinkArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public DeviceLinkLinkArgs build() {
-            $.accountNumber = Objects.requireNonNull($.accountNumber, "expected parameter 'accountNumber' to be non-null");
-            $.dstMetroCode = Objects.requireNonNull($.dstMetroCode, "expected parameter 'dstMetroCode' to be non-null");
-            $.srcMetroCode = Objects.requireNonNull($.srcMetroCode, "expected parameter 'srcMetroCode' to be non-null");
-            $.throughput = Objects.requireNonNull($.throughput, "expected parameter 'throughput' to be non-null");
-            $.throughputUnit = Objects.requireNonNull($.throughputUnit, "expected parameter 'throughputUnit' to be non-null");
+            if ($.accountNumber == null) {
+                throw new MissingRequiredPropertyException("DeviceLinkLinkArgs", "accountNumber");
+            }
+            if ($.dstMetroCode == null) {
+                throw new MissingRequiredPropertyException("DeviceLinkLinkArgs", "dstMetroCode");
+            }
+            if ($.srcMetroCode == null) {
+                throw new MissingRequiredPropertyException("DeviceLinkLinkArgs", "srcMetroCode");
+            }
+            if ($.throughput == null) {
+                throw new MissingRequiredPropertyException("DeviceLinkLinkArgs", "throughput");
+            }
+            if ($.throughputUnit == null) {
+                throw new MissingRequiredPropertyException("DeviceLinkLinkArgs", "throughputUnit");
+            }
             return $;
         }
     }

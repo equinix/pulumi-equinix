@@ -6,6 +6,7 @@ package com.equinix.pulumi.networkedge.outputs;
 import com.equinix.pulumi.networkedge.outputs.DeviceSecondaryDeviceInterface;
 import com.equinix.pulumi.networkedge.outputs.DeviceSecondaryDeviceSshKey;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -429,41 +430,51 @@ public final class DeviceSecondaryDevice {
 
         @CustomType.Setter
         public Builder accountNumber(String accountNumber) {
-            this.accountNumber = Objects.requireNonNull(accountNumber);
+            if (accountNumber == null) {
+              throw new MissingRequiredPropertyException("DeviceSecondaryDevice", "accountNumber");
+            }
+            this.accountNumber = accountNumber;
             return this;
         }
         @CustomType.Setter
         public Builder aclTemplateId(@Nullable String aclTemplateId) {
+
             this.aclTemplateId = aclTemplateId;
             return this;
         }
         @CustomType.Setter
         public Builder additionalBandwidth(@Nullable Integer additionalBandwidth) {
+
             this.additionalBandwidth = additionalBandwidth;
             return this;
         }
         @CustomType.Setter
         public Builder asn(@Nullable Integer asn) {
+
             this.asn = asn;
             return this;
         }
         @CustomType.Setter
         public Builder cloudInitFileId(@Nullable String cloudInitFileId) {
+
             this.cloudInitFileId = cloudInitFileId;
             return this;
         }
         @CustomType.Setter
         public Builder hostname(@Nullable String hostname) {
+
             this.hostname = hostname;
             return this;
         }
         @CustomType.Setter
         public Builder ibx(@Nullable String ibx) {
+
             this.ibx = ibx;
             return this;
         }
         @CustomType.Setter
         public Builder interfaces(@Nullable List<DeviceSecondaryDeviceInterface> interfaces) {
+
             this.interfaces = interfaces;
             return this;
         }
@@ -472,42 +483,56 @@ public final class DeviceSecondaryDevice {
         }
         @CustomType.Setter
         public Builder licenseFile(@Nullable String licenseFile) {
+
             this.licenseFile = licenseFile;
             return this;
         }
         @CustomType.Setter
         public Builder licenseFileId(@Nullable String licenseFileId) {
+
             this.licenseFileId = licenseFileId;
             return this;
         }
         @CustomType.Setter
         public Builder licenseStatus(@Nullable String licenseStatus) {
+
             this.licenseStatus = licenseStatus;
             return this;
         }
         @CustomType.Setter
         public Builder licenseToken(@Nullable String licenseToken) {
+
             this.licenseToken = licenseToken;
             return this;
         }
         @CustomType.Setter
         public Builder metroCode(String metroCode) {
-            this.metroCode = Objects.requireNonNull(metroCode);
+            if (metroCode == null) {
+              throw new MissingRequiredPropertyException("DeviceSecondaryDevice", "metroCode");
+            }
+            this.metroCode = metroCode;
             return this;
         }
         @CustomType.Setter
         public Builder mgmtAclTemplateUuid(@Nullable String mgmtAclTemplateUuid) {
+
             this.mgmtAclTemplateUuid = mgmtAclTemplateUuid;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("DeviceSecondaryDevice", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder notifications(List<String> notifications) {
-            this.notifications = Objects.requireNonNull(notifications);
+            if (notifications == null) {
+              throw new MissingRequiredPropertyException("DeviceSecondaryDevice", "notifications");
+            }
+            this.notifications = notifications;
             return this;
         }
         public Builder notifications(String... notifications) {
@@ -515,61 +540,73 @@ public final class DeviceSecondaryDevice {
         }
         @CustomType.Setter
         public Builder projectId(@Nullable String projectId) {
+
             this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder redundancyType(@Nullable String redundancyType) {
+
             this.redundancyType = redundancyType;
             return this;
         }
         @CustomType.Setter
         public Builder redundantId(@Nullable String redundantId) {
+
             this.redundantId = redundantId;
             return this;
         }
         @CustomType.Setter
         public Builder region(@Nullable String region) {
+
             this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder sshIpAddress(@Nullable String sshIpAddress) {
+
             this.sshIpAddress = sshIpAddress;
             return this;
         }
         @CustomType.Setter
         public Builder sshIpFqdn(@Nullable String sshIpFqdn) {
+
             this.sshIpFqdn = sshIpFqdn;
             return this;
         }
         @CustomType.Setter
         public Builder sshKey(@Nullable DeviceSecondaryDeviceSshKey sshKey) {
+
             this.sshKey = sshKey;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder uuid(@Nullable String uuid) {
+
             this.uuid = uuid;
             return this;
         }
         @CustomType.Setter
         public Builder vendorConfiguration(@Nullable Map<String,String> vendorConfiguration) {
+
             this.vendorConfiguration = vendorConfiguration;
             return this;
         }
         @CustomType.Setter
         public Builder wanInterfaceId(@Nullable String wanInterfaceId) {
+
             this.wanInterfaceId = wanInterfaceId;
             return this;
         }
         @CustomType.Setter
         public Builder zoneCode(@Nullable String zoneCode) {
+
             this.zoneCode = zoneCode;
             return this;
         }

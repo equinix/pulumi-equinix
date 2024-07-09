@@ -4,6 +4,7 @@
 package com.equinix.pulumi.networkedge.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -146,7 +147,9 @@ public final class GetAccountPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetAccountPlainArgs build() {
-            $.metroCode = Objects.requireNonNull($.metroCode, "expected parameter 'metroCode' to be non-null");
+            if ($.metroCode == null) {
+                throw new MissingRequiredPropertyException("GetAccountPlainArgs", "metroCode");
+            }
             return $;
         }
     }

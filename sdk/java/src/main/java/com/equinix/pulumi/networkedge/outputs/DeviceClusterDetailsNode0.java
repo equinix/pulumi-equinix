@@ -101,26 +101,31 @@ public final class DeviceClusterDetailsNode0 {
 
         @CustomType.Setter
         public Builder licenseFileId(@Nullable String licenseFileId) {
+
             this.licenseFileId = licenseFileId;
             return this;
         }
         @CustomType.Setter
         public Builder licenseToken(@Nullable String licenseToken) {
+
             this.licenseToken = licenseToken;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder uuid(@Nullable String uuid) {
+
             this.uuid = uuid;
             return this;
         }
         @CustomType.Setter
         public Builder vendorConfiguration(@Nullable DeviceClusterDetailsNode0VendorConfiguration vendorConfiguration) {
+
             this.vendorConfiguration = vendorConfiguration;
             return this;
         }

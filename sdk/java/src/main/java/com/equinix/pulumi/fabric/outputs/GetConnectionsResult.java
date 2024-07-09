@@ -8,6 +8,7 @@ import com.equinix.pulumi.fabric.outputs.GetConnectionsFilter;
 import com.equinix.pulumi.fabric.outputs.GetConnectionsPagination;
 import com.equinix.pulumi.fabric.outputs.GetConnectionsSort;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -119,7 +120,10 @@ public final class GetConnectionsResult {
 
         @CustomType.Setter
         public Builder datas(List<GetConnectionsData> datas) {
-            this.datas = Objects.requireNonNull(datas);
+            if (datas == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsResult", "datas");
+            }
+            this.datas = datas;
             return this;
         }
         public Builder datas(GetConnectionsData... datas) {
@@ -127,7 +131,10 @@ public final class GetConnectionsResult {
         }
         @CustomType.Setter
         public Builder filters(List<GetConnectionsFilter> filters) {
-            this.filters = Objects.requireNonNull(filters);
+            if (filters == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsResult", "filters");
+            }
+            this.filters = filters;
             return this;
         }
         public Builder filters(GetConnectionsFilter... filters) {
@@ -135,21 +142,29 @@ public final class GetConnectionsResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder outerOperator(String outerOperator) {
-            this.outerOperator = Objects.requireNonNull(outerOperator);
+            if (outerOperator == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsResult", "outerOperator");
+            }
+            this.outerOperator = outerOperator;
             return this;
         }
         @CustomType.Setter
         public Builder pagination(@Nullable GetConnectionsPagination pagination) {
+
             this.pagination = pagination;
             return this;
         }
         @CustomType.Setter
         public Builder sorts(@Nullable List<GetConnectionsSort> sorts) {
+
             this.sorts = sorts;
             return this;
         }

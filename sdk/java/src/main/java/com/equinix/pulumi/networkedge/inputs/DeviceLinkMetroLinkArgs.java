@@ -5,6 +5,7 @@ package com.equinix.pulumi.networkedge.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -185,10 +186,18 @@ public final class DeviceLinkMetroLinkArgs extends com.pulumi.resources.Resource
         }
 
         public DeviceLinkMetroLinkArgs build() {
-            $.accountNumber = Objects.requireNonNull($.accountNumber, "expected parameter 'accountNumber' to be non-null");
-            $.metroCode = Objects.requireNonNull($.metroCode, "expected parameter 'metroCode' to be non-null");
-            $.throughput = Objects.requireNonNull($.throughput, "expected parameter 'throughput' to be non-null");
-            $.throughputUnit = Objects.requireNonNull($.throughputUnit, "expected parameter 'throughputUnit' to be non-null");
+            if ($.accountNumber == null) {
+                throw new MissingRequiredPropertyException("DeviceLinkMetroLinkArgs", "accountNumber");
+            }
+            if ($.metroCode == null) {
+                throw new MissingRequiredPropertyException("DeviceLinkMetroLinkArgs", "metroCode");
+            }
+            if ($.throughput == null) {
+                throw new MissingRequiredPropertyException("DeviceLinkMetroLinkArgs", "throughput");
+            }
+            if ($.throughputUnit == null) {
+                throw new MissingRequiredPropertyException("DeviceLinkMetroLinkArgs", "throughputUnit");
+            }
             return $;
         }
     }

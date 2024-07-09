@@ -5,6 +5,7 @@ package com.equinix.pulumi.networkedge.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -225,7 +226,9 @@ public final class DeviceLinkDeviceArgs extends com.pulumi.resources.ResourceArg
         }
 
         public DeviceLinkDeviceArgs build() {
-            $.id = Objects.requireNonNull($.id, "expected parameter 'id' to be non-null");
+            if ($.id == null) {
+                throw new MissingRequiredPropertyException("DeviceLinkDeviceArgs", "id");
+            }
             return $;
         }
     }

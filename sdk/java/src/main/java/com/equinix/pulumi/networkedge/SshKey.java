@@ -18,7 +18,8 @@ import javax.annotation.Nullable;
  * Resource `equinix.networkedge.SshKey` allows creation and management of Equinix Network Edge SSH keys.
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -42,20 +43,21 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         String key = null;
  *         try {
- *             key = Files.readString(Paths.get(&#34;/Users/John/.ssh/ne_rsa.pub&#34;));
+ *             key = Files.readString(Paths.get("/Users/John/.ssh/ne_rsa.pub"));
  *         } catch (IOException e) {
  *             e.printStackTrace();
  *         }
  * 
- *         var sshKey = new SshKey(&#34;sshKey&#34;, SshKeyArgs.builder()        
- *             .name(&#34;johnKent&#34;)
+ *         var sshKey = new SshKey("sshKey", SshKeyArgs.builder()        
+ *             .name("johnKent")
  *             .publicKey(key)
  *             .build());
  * 
- *         ctx.export(&#34;sshKeyId&#34;, sshKey.id());
+ *         ctx.export("sshKeyId", sshKey.id());
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  * ## Import
  * 

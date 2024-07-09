@@ -36,7 +36,8 @@ import javax.annotation.Nullable;
  * * **BYOL** - [bring your own license] Where customer brings his own, already procured device software license. There are no charges associated with such license. It is the only licensing mode for `self-configured` devices.
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -61,31 +62,31 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var accountName = config.get(&#34;accountName&#34;).get();
- *         final var licenseToken = config.get(&#34;licenseToken&#34;).get();
- *         final var sshUserName = config.get(&#34;sshUserName&#34;).get();
- *         final var sshKeyName = config.get(&#34;sshKeyName&#34;).get();
- *         final var aclTemplateId = config.get(&#34;aclTemplateId&#34;).get();
- *         final var metro = config.get(&#34;metro&#34;).orElse(&#34;SV&#34;);
- *         final var devicePackageCode = config.get(&#34;devicePackageCode&#34;).orElse(&#34;network-essentials&#34;);
- *         final var deviceVersion = config.get(&#34;deviceVersion&#34;).orElse(&#34;17.06.01a&#34;);
- *         final var sizeInCores = Integer.parseInt(config.get(&#34;sizeInCores&#34;).orElse(&#34;2&#34;));
- *         final var termLength = Integer.parseInt(config.get(&#34;termLength&#34;).orElse(&#34;6&#34;));
- *         final var additionalBandwidth = Integer.parseInt(config.get(&#34;additionalBandwidth&#34;).orElse(&#34;5&#34;));
+ *         final var accountName = config.get("accountName").get();
+ *         final var licenseToken = config.get("licenseToken").get();
+ *         final var sshUserName = config.get("sshUserName").get();
+ *         final var sshKeyName = config.get("sshKeyName").get();
+ *         final var aclTemplateId = config.get("aclTemplateId").get();
+ *         final var metro = config.get("metro").orElse("SV");
+ *         final var devicePackageCode = config.get("devicePackageCode").orElse("network-essentials");
+ *         final var deviceVersion = config.get("deviceVersion").orElse("17.06.01a");
+ *         final var sizeInCores = Integer.parseInt(config.get("sizeInCores").orElse("2"));
+ *         final var termLength = Integer.parseInt(config.get("termLength").orElse("6"));
+ *         final var additionalBandwidth = Integer.parseInt(config.get("additionalBandwidth").orElse("5"));
  *         final var accountNum = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
  *             .name(accountName)
  *             .metroCode(metro)
- *             .build()).applyValue(account -&gt; account.number());
+ *             .build()).applyValue(account -> account.number());
  * 
- *         var c8KRouter = new Device(&#34;c8KRouter&#34;, DeviceArgs.builder()        
- *             .name(&#34;catalystRouter&#34;)
+ *         var c8KRouter = new Device("c8KRouter", DeviceArgs.builder()        
+ *             .name("catalystRouter")
  *             .metroCode(metro)
- *             .typeCode(&#34;C8000V&#34;)
+ *             .typeCode("C8000V")
  *             .selfManaged(true)
  *             .byol(true)
  *             .packageCode(devicePackageCode)
- *             .notifications(&#34;example@equinix.com&#34;)
- *             .hostname(&#34;C8KV&#34;)
+ *             .notifications("example{@literal @}equinix.com")
+ *             .hostname("C8KV")
  *             .accountNumber(accountNum)
  *             .version(deviceVersion)
  *             .coreCount(sizeInCores)
@@ -99,13 +100,14 @@ import javax.annotation.Nullable;
  *             .aclTemplateId(aclTemplateId)
  *             .build());
  * 
- *         ctx.export(&#34;routerId&#34;, c8KRouter.id());
- *         ctx.export(&#34;provisionStatus&#34;, c8KRouter.status());
- *         ctx.export(&#34;licenseStatus&#34;, c8KRouter.licenseStatus());
- *         ctx.export(&#34;sshIpAddress&#34;, c8KRouter.sshIpAddress());
+ *         ctx.export("routerId", c8KRouter.id());
+ *         ctx.export("provisionStatus", c8KRouter.status());
+ *         ctx.export("licenseStatus", c8KRouter.licenseStatus());
+ *         ctx.export("sshIpAddress", c8KRouter.sshIpAddress());
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  * ## Import
  * 

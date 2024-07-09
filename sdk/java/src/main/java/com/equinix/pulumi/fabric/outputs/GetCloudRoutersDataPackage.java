@@ -4,6 +4,7 @@
 package com.equinix.pulumi.fabric.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class GetCloudRoutersDataPackage {
 
         @CustomType.Setter
         public Builder code(String code) {
-            this.code = Objects.requireNonNull(code);
+            if (code == null) {
+              throw new MissingRequiredPropertyException("GetCloudRoutersDataPackage", "code");
+            }
+            this.code = code;
             return this;
         }
         public GetCloudRoutersDataPackage build() {

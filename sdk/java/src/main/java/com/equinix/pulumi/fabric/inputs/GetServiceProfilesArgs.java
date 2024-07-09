@@ -8,6 +8,7 @@ import com.equinix.pulumi.fabric.inputs.GetServiceProfilesPaginationArgs;
 import com.equinix.pulumi.fabric.inputs.GetServiceProfilesSortArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -239,7 +240,9 @@ public final class GetServiceProfilesArgs extends com.pulumi.resources.InvokeArg
         }
 
         public GetServiceProfilesArgs build() {
-            $.filter = Objects.requireNonNull($.filter, "expected parameter 'filter' to be non-null");
+            if ($.filter == null) {
+                throw new MissingRequiredPropertyException("GetServiceProfilesArgs", "filter");
+            }
             return $;
         }
     }

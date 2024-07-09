@@ -7,6 +7,7 @@ import com.equinix.pulumi.fabric.enums.NotificationsType;
 import com.pulumi.core.Either;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -183,8 +184,12 @@ public final class ConnectionNotificationArgs extends com.pulumi.resources.Resou
         }
 
         public ConnectionNotificationArgs build() {
-            $.emails = Objects.requireNonNull($.emails, "expected parameter 'emails' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.emails == null) {
+                throw new MissingRequiredPropertyException("ConnectionNotificationArgs", "emails");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("ConnectionNotificationArgs", "type");
+            }
             return $;
         }
     }

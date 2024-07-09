@@ -7,6 +7,7 @@ import com.equinix.pulumi.fabric.outputs.ServiceProfileAccessPointTypeConfigApiC
 import com.equinix.pulumi.fabric.outputs.ServiceProfileAccessPointTypeConfigAuthenticationKey;
 import com.equinix.pulumi.fabric.outputs.ServiceProfileAccessPointTypeConfigLinkProtocolConfig;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
@@ -233,61 +234,73 @@ public final class ServiceProfileAccessPointTypeConfig {
 
         @CustomType.Setter
         public Builder allowBandwidthAutoApproval(@Nullable Boolean allowBandwidthAutoApproval) {
+
             this.allowBandwidthAutoApproval = allowBandwidthAutoApproval;
             return this;
         }
         @CustomType.Setter
         public Builder allowBandwidthUpgrade(@Nullable Boolean allowBandwidthUpgrade) {
+
             this.allowBandwidthUpgrade = allowBandwidthUpgrade;
             return this;
         }
         @CustomType.Setter
         public Builder allowCustomBandwidth(@Nullable Boolean allowCustomBandwidth) {
+
             this.allowCustomBandwidth = allowCustomBandwidth;
             return this;
         }
         @CustomType.Setter
         public Builder allowRemoteConnections(@Nullable Boolean allowRemoteConnections) {
+
             this.allowRemoteConnections = allowRemoteConnections;
             return this;
         }
         @CustomType.Setter
         public Builder apiConfig(@Nullable ServiceProfileAccessPointTypeConfigApiConfig apiConfig) {
+
             this.apiConfig = apiConfig;
             return this;
         }
         @CustomType.Setter
         public Builder authenticationKey(@Nullable ServiceProfileAccessPointTypeConfigAuthenticationKey authenticationKey) {
+
             this.authenticationKey = authenticationKey;
             return this;
         }
         @CustomType.Setter
         public Builder bandwidthAlertThreshold(@Nullable Double bandwidthAlertThreshold) {
+
             this.bandwidthAlertThreshold = bandwidthAlertThreshold;
             return this;
         }
         @CustomType.Setter
         public Builder connectionLabel(@Nullable String connectionLabel) {
+
             this.connectionLabel = connectionLabel;
             return this;
         }
         @CustomType.Setter
         public Builder connectionRedundancyRequired(@Nullable Boolean connectionRedundancyRequired) {
+
             this.connectionRedundancyRequired = connectionRedundancyRequired;
             return this;
         }
         @CustomType.Setter
         public Builder enableAutoGenerateServiceKey(@Nullable Boolean enableAutoGenerateServiceKey) {
+
             this.enableAutoGenerateServiceKey = enableAutoGenerateServiceKey;
             return this;
         }
         @CustomType.Setter
         public Builder linkProtocolConfig(@Nullable ServiceProfileAccessPointTypeConfigLinkProtocolConfig linkProtocolConfig) {
+
             this.linkProtocolConfig = linkProtocolConfig;
             return this;
         }
         @CustomType.Setter
         public Builder supportedBandwidths(@Nullable List<Integer> supportedBandwidths) {
+
             this.supportedBandwidths = supportedBandwidths;
             return this;
         }
@@ -296,11 +309,15 @@ public final class ServiceProfileAccessPointTypeConfig {
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("ServiceProfileAccessPointTypeConfig", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder uuid(@Nullable String uuid) {
+
             this.uuid = uuid;
             return this;
         }

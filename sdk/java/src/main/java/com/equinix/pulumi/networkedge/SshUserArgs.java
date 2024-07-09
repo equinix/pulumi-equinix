@@ -5,6 +5,7 @@ package com.equinix.pulumi.networkedge;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -159,9 +160,15 @@ public final class SshUserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public SshUserArgs build() {
-            $.deviceIds = Objects.requireNonNull($.deviceIds, "expected parameter 'deviceIds' to be non-null");
-            $.password = Objects.requireNonNull($.password, "expected parameter 'password' to be non-null");
-            $.username = Objects.requireNonNull($.username, "expected parameter 'username' to be non-null");
+            if ($.deviceIds == null) {
+                throw new MissingRequiredPropertyException("SshUserArgs", "deviceIds");
+            }
+            if ($.password == null) {
+                throw new MissingRequiredPropertyException("SshUserArgs", "password");
+            }
+            if ($.username == null) {
+                throw new MissingRequiredPropertyException("SshUserArgs", "username");
+            }
             return $;
         }
     }

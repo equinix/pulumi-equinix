@@ -6,6 +6,7 @@ package com.equinix.pulumi.networkedge;
 import com.equinix.pulumi.networkedge.inputs.AclTemplateInboundRuleArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -262,7 +263,9 @@ public final class AclTemplateArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AclTemplateArgs build() {
-            $.inboundRules = Objects.requireNonNull($.inboundRules, "expected parameter 'inboundRules' to be non-null");
+            if ($.inboundRules == null) {
+                throw new MissingRequiredPropertyException("AclTemplateArgs", "inboundRules");
+            }
             return $;
         }
     }

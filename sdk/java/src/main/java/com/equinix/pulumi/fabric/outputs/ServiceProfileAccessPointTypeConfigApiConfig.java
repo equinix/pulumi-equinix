@@ -130,36 +130,43 @@ public final class ServiceProfileAccessPointTypeConfigApiConfig {
 
         @CustomType.Setter
         public Builder allowOverSubscription(@Nullable Boolean allowOverSubscription) {
+
             this.allowOverSubscription = allowOverSubscription;
             return this;
         }
         @CustomType.Setter
         public Builder apiAvailable(@Nullable Boolean apiAvailable) {
+
             this.apiAvailable = apiAvailable;
             return this;
         }
         @CustomType.Setter
         public Builder bandwidthFromApi(@Nullable Boolean bandwidthFromApi) {
+
             this.bandwidthFromApi = bandwidthFromApi;
             return this;
         }
         @CustomType.Setter
         public Builder equinixManagedPort(@Nullable Boolean equinixManagedPort) {
+
             this.equinixManagedPort = equinixManagedPort;
             return this;
         }
         @CustomType.Setter
         public Builder equinixManagedVlan(@Nullable Boolean equinixManagedVlan) {
+
             this.equinixManagedVlan = equinixManagedVlan;
             return this;
         }
         @CustomType.Setter
         public Builder integrationId(@Nullable String integrationId) {
+
             this.integrationId = integrationId;
             return this;
         }
         @CustomType.Setter
         public Builder overSubscriptionLimit(@Nullable Integer overSubscriptionLimit) {
+
             this.overSubscriptionLimit = overSubscriptionLimit;
             return this;
         }

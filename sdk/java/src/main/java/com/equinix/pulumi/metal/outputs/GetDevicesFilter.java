@@ -4,6 +4,7 @@
 package com.equinix.pulumi.metal.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -92,22 +93,30 @@ public final class GetDevicesFilter {
 
         @CustomType.Setter
         public Builder all(@Nullable Boolean all) {
+
             this.all = all;
             return this;
         }
         @CustomType.Setter
         public Builder attribute(String attribute) {
-            this.attribute = Objects.requireNonNull(attribute);
+            if (attribute == null) {
+              throw new MissingRequiredPropertyException("GetDevicesFilter", "attribute");
+            }
+            this.attribute = attribute;
             return this;
         }
         @CustomType.Setter
         public Builder matchBy(@Nullable String matchBy) {
+
             this.matchBy = matchBy;
             return this;
         }
         @CustomType.Setter
         public Builder values(List<String> values) {
-            this.values = Objects.requireNonNull(values);
+            if (values == null) {
+              throw new MissingRequiredPropertyException("GetDevicesFilter", "values");
+            }
+            this.values = values;
             return this;
         }
         public Builder values(String... values) {

@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * * https://metal.equinix.com/developers/docs/networking/layer2-configs/
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -39,20 +40,21 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var projectId = config.get(&#34;projectId&#34;).get();
- *         final var metro = config.get(&#34;metro&#34;).orElse(&#34;DA&#34;);
- *         final var vxlan = Integer.parseInt(config.get(&#34;vxlan&#34;).get());
- *         var vlan = new Vlan(&#34;vlan&#34;, VlanArgs.builder()        
- *             .description(&#34;VLAN in Dallas&#34;)
+ *         final var projectId = config.get("projectId").get();
+ *         final var metro = config.get("metro").orElse("DA");
+ *         final var vxlan = Integer.parseInt(config.get("vxlan").get());
+ *         var vlan = new Vlan("vlan", VlanArgs.builder()        
+ *             .description("VLAN in Dallas")
  *             .projectId(projectId)
  *             .metro(metro)
  *             .vxlan(vxlan)
  *             .build());
  * 
- *         ctx.export(&#34;vlanId&#34;, vlan.id());
+ *         ctx.export("vlanId", vlan.id());
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  * ## Import
  * 

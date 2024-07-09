@@ -198,61 +198,73 @@ public final class ServiceProfileChangeLog {
 
         @CustomType.Setter
         public Builder createdBy(@Nullable String createdBy) {
+
             this.createdBy = createdBy;
             return this;
         }
         @CustomType.Setter
         public Builder createdByEmail(@Nullable String createdByEmail) {
+
             this.createdByEmail = createdByEmail;
             return this;
         }
         @CustomType.Setter
         public Builder createdByFullName(@Nullable String createdByFullName) {
+
             this.createdByFullName = createdByFullName;
             return this;
         }
         @CustomType.Setter
         public Builder createdDateTime(@Nullable String createdDateTime) {
+
             this.createdDateTime = createdDateTime;
             return this;
         }
         @CustomType.Setter
         public Builder deletedBy(@Nullable String deletedBy) {
+
             this.deletedBy = deletedBy;
             return this;
         }
         @CustomType.Setter
         public Builder deletedByEmail(@Nullable String deletedByEmail) {
+
             this.deletedByEmail = deletedByEmail;
             return this;
         }
         @CustomType.Setter
         public Builder deletedByFullName(@Nullable String deletedByFullName) {
+
             this.deletedByFullName = deletedByFullName;
             return this;
         }
         @CustomType.Setter
         public Builder deletedDateTime(@Nullable String deletedDateTime) {
+
             this.deletedDateTime = deletedDateTime;
             return this;
         }
         @CustomType.Setter
         public Builder updatedBy(@Nullable String updatedBy) {
+
             this.updatedBy = updatedBy;
             return this;
         }
         @CustomType.Setter
         public Builder updatedByEmail(@Nullable String updatedByEmail) {
+
             this.updatedByEmail = updatedByEmail;
             return this;
         }
         @CustomType.Setter
         public Builder updatedByFullName(@Nullable String updatedByFullName) {
+
             this.updatedByFullName = updatedByFullName;
             return this;
         }
         @CustomType.Setter
         public Builder updatedDateTime(@Nullable String updatedDateTime) {
+
             this.updatedDateTime = updatedDateTime;
             return this;
         }

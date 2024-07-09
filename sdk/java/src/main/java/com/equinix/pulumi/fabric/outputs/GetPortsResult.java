@@ -6,6 +6,7 @@ package com.equinix.pulumi.fabric.outputs;
 import com.equinix.pulumi.fabric.outputs.GetPortsDatum;
 import com.equinix.pulumi.fabric.outputs.GetPortsFilter;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -73,7 +74,10 @@ public final class GetPortsResult {
 
         @CustomType.Setter
         public Builder data(List<GetPortsDatum> data) {
-            this.data = Objects.requireNonNull(data);
+            if (data == null) {
+              throw new MissingRequiredPropertyException("GetPortsResult", "data");
+            }
+            this.data = data;
             return this;
         }
         public Builder data(GetPortsDatum... data) {
@@ -81,12 +85,18 @@ public final class GetPortsResult {
         }
         @CustomType.Setter
         public Builder filter(GetPortsFilter filter) {
-            this.filter = Objects.requireNonNull(filter);
+            if (filter == null) {
+              throw new MissingRequiredPropertyException("GetPortsResult", "filter");
+            }
+            this.filter = filter;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetPortsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         public GetPortsResult build() {

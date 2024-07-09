@@ -87,7 +87,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -110,17 +111,19 @@ public final class MetalFunctions {
      *     public static void stack(Context ctx) {
      *         final var test = MetalFunctions.getDevice(GetDeviceArgs.builder()
      *             .projectId(local.project_id())
-     *             .hostname(&#34;mydevice&#34;)
+     *             .hostname("mydevice")
      *             .build());
      * 
-     *         ctx.export(&#34;id&#34;, test.applyValue(getDeviceResult -&gt; getDeviceResult.id()));
+     *         ctx.export("id", test.applyValue(getDeviceResult -> getDeviceResult.id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -142,13 +145,14 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = MetalFunctions.getDevice(GetDeviceArgs.builder()
-     *             .deviceId(&#34;4c641195-25e5-4c3c-b2b7-4cd7a42c7b40&#34;)
+     *             .deviceId("4c641195-25e5-4c3c-b2b7-4cd7a42c7b40")
      *             .build());
      * 
-     *         ctx.export(&#34;ipv4&#34;, test.applyValue(getDeviceResult -&gt; getDeviceResult.accessPublicIpv4()));
+     *         ctx.export("ipv4", test.applyValue(getDeviceResult -> getDeviceResult.accessPublicIpv4()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -165,7 +169,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -188,17 +193,19 @@ public final class MetalFunctions {
      *     public static void stack(Context ctx) {
      *         final var test = MetalFunctions.getDevice(GetDeviceArgs.builder()
      *             .projectId(local.project_id())
-     *             .hostname(&#34;mydevice&#34;)
+     *             .hostname("mydevice")
      *             .build());
      * 
-     *         ctx.export(&#34;id&#34;, test.applyValue(getDeviceResult -&gt; getDeviceResult.id()));
+     *         ctx.export("id", test.applyValue(getDeviceResult -> getDeviceResult.id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -220,13 +227,14 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = MetalFunctions.getDevice(GetDeviceArgs.builder()
-     *             .deviceId(&#34;4c641195-25e5-4c3c-b2b7-4cd7a42c7b40&#34;)
+     *             .deviceId("4c641195-25e5-4c3c-b2b7-4cd7a42c7b40")
      *             .build());
      * 
-     *         ctx.export(&#34;ipv4&#34;, test.applyValue(getDeviceResult -&gt; getDeviceResult.accessPublicIpv4()));
+     *         ctx.export("ipv4", test.applyValue(getDeviceResult -> getDeviceResult.accessPublicIpv4()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -243,7 +251,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -266,17 +275,19 @@ public final class MetalFunctions {
      *     public static void stack(Context ctx) {
      *         final var test = MetalFunctions.getDevice(GetDeviceArgs.builder()
      *             .projectId(local.project_id())
-     *             .hostname(&#34;mydevice&#34;)
+     *             .hostname("mydevice")
      *             .build());
      * 
-     *         ctx.export(&#34;id&#34;, test.applyValue(getDeviceResult -&gt; getDeviceResult.id()));
+     *         ctx.export("id", test.applyValue(getDeviceResult -> getDeviceResult.id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -298,13 +309,14 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = MetalFunctions.getDevice(GetDeviceArgs.builder()
-     *             .deviceId(&#34;4c641195-25e5-4c3c-b2b7-4cd7a42c7b40&#34;)
+     *             .deviceId("4c641195-25e5-4c3c-b2b7-4cd7a42c7b40")
      *             .build());
      * 
-     *         ctx.export(&#34;ipv4&#34;, test.applyValue(getDeviceResult -&gt; getDeviceResult.accessPublicIpv4()));
+     *         ctx.export("ipv4", test.applyValue(getDeviceResult -> getDeviceResult.accessPublicIpv4()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -321,7 +333,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -344,17 +357,19 @@ public final class MetalFunctions {
      *     public static void stack(Context ctx) {
      *         final var test = MetalFunctions.getDevice(GetDeviceArgs.builder()
      *             .projectId(local.project_id())
-     *             .hostname(&#34;mydevice&#34;)
+     *             .hostname("mydevice")
      *             .build());
      * 
-     *         ctx.export(&#34;id&#34;, test.applyValue(getDeviceResult -&gt; getDeviceResult.id()));
+     *         ctx.export("id", test.applyValue(getDeviceResult -> getDeviceResult.id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -376,13 +391,14 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = MetalFunctions.getDevice(GetDeviceArgs.builder()
-     *             .deviceId(&#34;4c641195-25e5-4c3c-b2b7-4cd7a42c7b40&#34;)
+     *             .deviceId("4c641195-25e5-4c3c-b2b7-4cd7a42c7b40")
      *             .build());
      * 
-     *         ctx.export(&#34;ipv4&#34;, test.applyValue(getDeviceResult -&gt; getDeviceResult.accessPublicIpv4()));
+     *         ctx.export("ipv4", test.applyValue(getDeviceResult -> getDeviceResult.accessPublicIpv4()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -399,7 +415,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -422,17 +439,19 @@ public final class MetalFunctions {
      *     public static void stack(Context ctx) {
      *         final var test = MetalFunctions.getDevice(GetDeviceArgs.builder()
      *             .projectId(local.project_id())
-     *             .hostname(&#34;mydevice&#34;)
+     *             .hostname("mydevice")
      *             .build());
      * 
-     *         ctx.export(&#34;id&#34;, test.applyValue(getDeviceResult -&gt; getDeviceResult.id()));
+     *         ctx.export("id", test.applyValue(getDeviceResult -> getDeviceResult.id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -454,13 +473,14 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = MetalFunctions.getDevice(GetDeviceArgs.builder()
-     *             .deviceId(&#34;4c641195-25e5-4c3c-b2b7-4cd7a42c7b40&#34;)
+     *             .deviceId("4c641195-25e5-4c3c-b2b7-4cd7a42c7b40")
      *             .build());
      * 
-     *         ctx.export(&#34;ipv4&#34;, test.applyValue(getDeviceResult -&gt; getDeviceResult.accessPublicIpv4()));
+     *         ctx.export("ipv4", test.applyValue(getDeviceResult -> getDeviceResult.accessPublicIpv4()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -477,7 +497,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -500,17 +521,19 @@ public final class MetalFunctions {
      *     public static void stack(Context ctx) {
      *         final var test = MetalFunctions.getDevice(GetDeviceArgs.builder()
      *             .projectId(local.project_id())
-     *             .hostname(&#34;mydevice&#34;)
+     *             .hostname("mydevice")
      *             .build());
      * 
-     *         ctx.export(&#34;id&#34;, test.applyValue(getDeviceResult -&gt; getDeviceResult.id()));
+     *         ctx.export("id", test.applyValue(getDeviceResult -> getDeviceResult.id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -532,13 +555,14 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = MetalFunctions.getDevice(GetDeviceArgs.builder()
-     *             .deviceId(&#34;4c641195-25e5-4c3c-b2b7-4cd7a42c7b40&#34;)
+     *             .deviceId("4c641195-25e5-4c3c-b2b7-4cd7a42c7b40")
      *             .build());
      * 
-     *         ctx.export(&#34;ipv4&#34;, test.applyValue(getDeviceResult -&gt; getDeviceResult.accessPublicIpv4()));
+     *         ctx.export("ipv4", test.applyValue(getDeviceResult -> getDeviceResult.accessPublicIpv4()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -555,7 +579,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -577,13 +602,14 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = MetalFunctions.getDeviceBgpNeighbors(GetDeviceBgpNeighborsArgs.builder()
-     *             .deviceId(&#34;4c641195-25e5-4c3c-b2b7-4cd7a42c7b40&#34;)
+     *             .deviceId("4c641195-25e5-4c3c-b2b7-4cd7a42c7b40")
      *             .build());
      * 
-     *         ctx.export(&#34;bgpNeighborsListing&#34;, test.applyValue(getDeviceBgpNeighborsResult -&gt; getDeviceBgpNeighborsResult.bgpNeighbors()));
+     *         ctx.export("bgpNeighborsListing", test.applyValue(getDeviceBgpNeighborsResult -> getDeviceBgpNeighborsResult.bgpNeighbors()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -600,7 +626,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -622,13 +649,14 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = MetalFunctions.getDeviceBgpNeighbors(GetDeviceBgpNeighborsArgs.builder()
-     *             .deviceId(&#34;4c641195-25e5-4c3c-b2b7-4cd7a42c7b40&#34;)
+     *             .deviceId("4c641195-25e5-4c3c-b2b7-4cd7a42c7b40")
      *             .build());
      * 
-     *         ctx.export(&#34;bgpNeighborsListing&#34;, test.applyValue(getDeviceBgpNeighborsResult -&gt; getDeviceBgpNeighborsResult.bgpNeighbors()));
+     *         ctx.export("bgpNeighborsListing", test.applyValue(getDeviceBgpNeighborsResult -> getDeviceBgpNeighborsResult.bgpNeighbors()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -645,7 +673,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -667,13 +696,14 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = MetalFunctions.getDeviceBgpNeighbors(GetDeviceBgpNeighborsArgs.builder()
-     *             .deviceId(&#34;4c641195-25e5-4c3c-b2b7-4cd7a42c7b40&#34;)
+     *             .deviceId("4c641195-25e5-4c3c-b2b7-4cd7a42c7b40")
      *             .build());
      * 
-     *         ctx.export(&#34;bgpNeighborsListing&#34;, test.applyValue(getDeviceBgpNeighborsResult -&gt; getDeviceBgpNeighborsResult.bgpNeighbors()));
+     *         ctx.export("bgpNeighborsListing", test.applyValue(getDeviceBgpNeighborsResult -> getDeviceBgpNeighborsResult.bgpNeighbors()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -690,7 +720,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -712,13 +743,14 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = MetalFunctions.getDeviceBgpNeighbors(GetDeviceBgpNeighborsArgs.builder()
-     *             .deviceId(&#34;4c641195-25e5-4c3c-b2b7-4cd7a42c7b40&#34;)
+     *             .deviceId("4c641195-25e5-4c3c-b2b7-4cd7a42c7b40")
      *             .build());
      * 
-     *         ctx.export(&#34;bgpNeighborsListing&#34;, test.applyValue(getDeviceBgpNeighborsResult -&gt; getDeviceBgpNeighborsResult.bgpNeighbors()));
+     *         ctx.export("bgpNeighborsListing", test.applyValue(getDeviceBgpNeighborsResult -> getDeviceBgpNeighborsResult.bgpNeighbors()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -733,7 +765,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -758,25 +791,27 @@ public final class MetalFunctions {
      *             .projectId(local.project_id())
      *             .filters(            
      *                 GetDevicesFilterArgs.builder()
-     *                     .attribute(&#34;plan&#34;)
-     *                     .values(&#34;c3.small.x86&#34;)
+     *                     .attribute("plan")
+     *                     .values("c3.small.x86")
      *                     .build(),
      *                 GetDevicesFilterArgs.builder()
-     *                     .attribute(&#34;metro&#34;)
+     *                     .attribute("metro")
      *                     .values(                    
-     *                         &#34;da&#34;,
-     *                         &#34;sv&#34;)
+     *                         "da",
+     *                         "sv")
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;devices&#34;, example.applyValue(getDevicesResult -&gt; getDevicesResult.devices()));
+     *         ctx.export("devices", example.applyValue(getDevicesResult -> getDevicesResult.devices()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -798,13 +833,14 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = MetalFunctions.getDevices(GetDevicesArgs.builder()
-     *             .search(&#34;database&#34;)
+     *             .search("database")
      *             .build());
      * 
-     *         ctx.export(&#34;devices&#34;, example.applyValue(getDevicesResult -&gt; getDevicesResult.devices()));
+     *         ctx.export("devices", example.applyValue(getDevicesResult -> getDevicesResult.devices()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## search vs filter
@@ -823,7 +859,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -848,25 +885,27 @@ public final class MetalFunctions {
      *             .projectId(local.project_id())
      *             .filters(            
      *                 GetDevicesFilterArgs.builder()
-     *                     .attribute(&#34;plan&#34;)
-     *                     .values(&#34;c3.small.x86&#34;)
+     *                     .attribute("plan")
+     *                     .values("c3.small.x86")
      *                     .build(),
      *                 GetDevicesFilterArgs.builder()
-     *                     .attribute(&#34;metro&#34;)
+     *                     .attribute("metro")
      *                     .values(                    
-     *                         &#34;da&#34;,
-     *                         &#34;sv&#34;)
+     *                         "da",
+     *                         "sv")
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;devices&#34;, example.applyValue(getDevicesResult -&gt; getDevicesResult.devices()));
+     *         ctx.export("devices", example.applyValue(getDevicesResult -> getDevicesResult.devices()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -888,13 +927,14 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = MetalFunctions.getDevices(GetDevicesArgs.builder()
-     *             .search(&#34;database&#34;)
+     *             .search("database")
      *             .build());
      * 
-     *         ctx.export(&#34;devices&#34;, example.applyValue(getDevicesResult -&gt; getDevicesResult.devices()));
+     *         ctx.export("devices", example.applyValue(getDevicesResult -> getDevicesResult.devices()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## search vs filter
@@ -913,7 +953,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -938,25 +979,27 @@ public final class MetalFunctions {
      *             .projectId(local.project_id())
      *             .filters(            
      *                 GetDevicesFilterArgs.builder()
-     *                     .attribute(&#34;plan&#34;)
-     *                     .values(&#34;c3.small.x86&#34;)
+     *                     .attribute("plan")
+     *                     .values("c3.small.x86")
      *                     .build(),
      *                 GetDevicesFilterArgs.builder()
-     *                     .attribute(&#34;metro&#34;)
+     *                     .attribute("metro")
      *                     .values(                    
-     *                         &#34;da&#34;,
-     *                         &#34;sv&#34;)
+     *                         "da",
+     *                         "sv")
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;devices&#34;, example.applyValue(getDevicesResult -&gt; getDevicesResult.devices()));
+     *         ctx.export("devices", example.applyValue(getDevicesResult -> getDevicesResult.devices()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -978,13 +1021,14 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = MetalFunctions.getDevices(GetDevicesArgs.builder()
-     *             .search(&#34;database&#34;)
+     *             .search("database")
      *             .build());
      * 
-     *         ctx.export(&#34;devices&#34;, example.applyValue(getDevicesResult -&gt; getDevicesResult.devices()));
+     *         ctx.export("devices", example.applyValue(getDevicesResult -> getDevicesResult.devices()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## search vs filter
@@ -1003,7 +1047,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1028,25 +1073,27 @@ public final class MetalFunctions {
      *             .projectId(local.project_id())
      *             .filters(            
      *                 GetDevicesFilterArgs.builder()
-     *                     .attribute(&#34;plan&#34;)
-     *                     .values(&#34;c3.small.x86&#34;)
+     *                     .attribute("plan")
+     *                     .values("c3.small.x86")
      *                     .build(),
      *                 GetDevicesFilterArgs.builder()
-     *                     .attribute(&#34;metro&#34;)
+     *                     .attribute("metro")
      *                     .values(                    
-     *                         &#34;da&#34;,
-     *                         &#34;sv&#34;)
+     *                         "da",
+     *                         "sv")
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;devices&#34;, example.applyValue(getDevicesResult -&gt; getDevicesResult.devices()));
+     *         ctx.export("devices", example.applyValue(getDevicesResult -> getDevicesResult.devices()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1068,13 +1115,14 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = MetalFunctions.getDevices(GetDevicesArgs.builder()
-     *             .search(&#34;database&#34;)
+     *             .search("database")
      *             .build());
      * 
-     *         ctx.export(&#34;devices&#34;, example.applyValue(getDevicesResult -&gt; getDevicesResult.devices()));
+     *         ctx.export("devices", example.applyValue(getDevicesResult -> getDevicesResult.devices()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## search vs filter
@@ -1093,7 +1141,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1118,25 +1167,27 @@ public final class MetalFunctions {
      *             .projectId(local.project_id())
      *             .filters(            
      *                 GetDevicesFilterArgs.builder()
-     *                     .attribute(&#34;plan&#34;)
-     *                     .values(&#34;c3.small.x86&#34;)
+     *                     .attribute("plan")
+     *                     .values("c3.small.x86")
      *                     .build(),
      *                 GetDevicesFilterArgs.builder()
-     *                     .attribute(&#34;metro&#34;)
+     *                     .attribute("metro")
      *                     .values(                    
-     *                         &#34;da&#34;,
-     *                         &#34;sv&#34;)
+     *                         "da",
+     *                         "sv")
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;devices&#34;, example.applyValue(getDevicesResult -&gt; getDevicesResult.devices()));
+     *         ctx.export("devices", example.applyValue(getDevicesResult -> getDevicesResult.devices()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1158,13 +1209,14 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = MetalFunctions.getDevices(GetDevicesArgs.builder()
-     *             .search(&#34;database&#34;)
+     *             .search("database")
      *             .build());
      * 
-     *         ctx.export(&#34;devices&#34;, example.applyValue(getDevicesResult -&gt; getDevicesResult.devices()));
+     *         ctx.export("devices", example.applyValue(getDevicesResult -> getDevicesResult.devices()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## search vs filter
@@ -1183,7 +1235,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1208,25 +1261,27 @@ public final class MetalFunctions {
      *             .projectId(local.project_id())
      *             .filters(            
      *                 GetDevicesFilterArgs.builder()
-     *                     .attribute(&#34;plan&#34;)
-     *                     .values(&#34;c3.small.x86&#34;)
+     *                     .attribute("plan")
+     *                     .values("c3.small.x86")
      *                     .build(),
      *                 GetDevicesFilterArgs.builder()
-     *                     .attribute(&#34;metro&#34;)
+     *                     .attribute("metro")
      *                     .values(                    
-     *                         &#34;da&#34;,
-     *                         &#34;sv&#34;)
+     *                         "da",
+     *                         "sv")
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;devices&#34;, example.applyValue(getDevicesResult -&gt; getDevicesResult.devices()));
+     *         ctx.export("devices", example.applyValue(getDevicesResult -> getDevicesResult.devices()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1248,13 +1303,14 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = MetalFunctions.getDevices(GetDevicesArgs.builder()
-     *             .search(&#34;database&#34;)
+     *             .search("database")
      *             .build());
      * 
-     *         ctx.export(&#34;devices&#34;, example.applyValue(getDevicesResult -&gt; getDevicesResult.devices()));
+     *         ctx.export("devices", example.applyValue(getDevicesResult -> getDevicesResult.devices()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## search vs filter
@@ -1273,7 +1329,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1295,13 +1352,14 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ny5 = MetalFunctions.getFacility(GetFacilityArgs.builder()
-     *             .code(&#34;ny5&#34;)
+     *             .code("ny5")
      *             .build());
      * 
-     *         ctx.export(&#34;id&#34;, ny5.applyValue(getFacilityResult -&gt; getFacilityResult.id()));
+     *         ctx.export("id", ny5.applyValue(getFacilityResult -> getFacilityResult.id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1316,7 +1374,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1338,13 +1397,14 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ny5 = MetalFunctions.getFacility(GetFacilityArgs.builder()
-     *             .code(&#34;ny5&#34;)
+     *             .code("ny5")
      *             .build());
      * 
-     *         ctx.export(&#34;id&#34;, ny5.applyValue(getFacilityResult -&gt; getFacilityResult.id()));
+     *         ctx.export("id", ny5.applyValue(getFacilityResult -> getFacilityResult.id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1359,7 +1419,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1381,13 +1442,14 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ny5 = MetalFunctions.getFacility(GetFacilityArgs.builder()
-     *             .code(&#34;ny5&#34;)
+     *             .code("ny5")
      *             .build());
      * 
-     *         ctx.export(&#34;id&#34;, ny5.applyValue(getFacilityResult -&gt; getFacilityResult.id()));
+     *         ctx.export("id", ny5.applyValue(getFacilityResult -> getFacilityResult.id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1402,7 +1464,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1424,13 +1487,14 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ny5 = MetalFunctions.getFacility(GetFacilityArgs.builder()
-     *             .code(&#34;ny5&#34;)
+     *             .code("ny5")
      *             .build());
      * 
-     *         ctx.export(&#34;id&#34;, ny5.applyValue(getFacilityResult -&gt; getFacilityResult.id()));
+     *         ctx.export("id", ny5.applyValue(getFacilityResult -> getFacilityResult.id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1445,7 +1509,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1469,9 +1534,9 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         // Create Metal Gateway for a VLAN with a private IPv4 block with 8 IP addresses
-     *         var testVlan = new Vlan(&#34;testVlan&#34;, VlanArgs.builder()
-     *             .description(&#34;test VLAN in SV&#34;)
-     *             .metro(&#34;sv&#34;)
+     *         var testVlan = new Vlan("testVlan", VlanArgs.builder()
+     *             .description("test VLAN in SV")
+     *             .metro("sv")
      *             .projectId(local.project_id())
      *             .build());
      * 
@@ -1481,7 +1546,8 @@ public final class MetalFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1496,7 +1562,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1520,9 +1587,9 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         // Create Metal Gateway for a VLAN with a private IPv4 block with 8 IP addresses
-     *         var testVlan = new Vlan(&#34;testVlan&#34;, VlanArgs.builder()
-     *             .description(&#34;test VLAN in SV&#34;)
-     *             .metro(&#34;sv&#34;)
+     *         var testVlan = new Vlan("testVlan", VlanArgs.builder()
+     *             .description("test VLAN in SV")
+     *             .metro("sv")
      *             .projectId(local.project_id())
      *             .build());
      * 
@@ -1532,7 +1599,8 @@ public final class MetalFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1547,7 +1615,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1571,9 +1640,9 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         // Create Metal Gateway for a VLAN with a private IPv4 block with 8 IP addresses
-     *         var testVlan = new Vlan(&#34;testVlan&#34;, VlanArgs.builder()
-     *             .description(&#34;test VLAN in SV&#34;)
-     *             .metro(&#34;sv&#34;)
+     *         var testVlan = new Vlan("testVlan", VlanArgs.builder()
+     *             .description("test VLAN in SV")
+     *             .metro("sv")
      *             .projectId(local.project_id())
      *             .build());
      * 
@@ -1583,7 +1652,8 @@ public final class MetalFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1598,7 +1668,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1622,9 +1693,9 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         // Create Metal Gateway for a VLAN with a private IPv4 block with 8 IP addresses
-     *         var testVlan = new Vlan(&#34;testVlan&#34;, VlanArgs.builder()
-     *             .description(&#34;test VLAN in SV&#34;)
-     *             .metro(&#34;sv&#34;)
+     *         var testVlan = new Vlan("testVlan", VlanArgs.builder()
+     *             .description("test VLAN in SV")
+     *             .metro("sv")
      *             .projectId(local.project_id())
      *             .build());
      * 
@@ -1634,7 +1705,8 @@ public final class MetalFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1649,7 +1721,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1671,16 +1744,17 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = MetalFunctions.getHardwareReservation(GetHardwareReservationArgs.builder()
-     *             .id(&#34;4347e805-eb46-4699-9eb9-5c116e6a0172&#34;)
+     *             .id("4347e805-eb46-4699-9eb9-5c116e6a0172")
      *             .build());
      * 
      *         final var exampleByDeviceId = MetalFunctions.getHardwareReservation(GetHardwareReservationArgs.builder()
-     *             .deviceId(&#34;ff85aa58-c106-4624-8f1c-7c64554047ea&#34;)
+     *             .deviceId("ff85aa58-c106-4624-8f1c-7c64554047ea")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1695,7 +1769,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1717,16 +1792,17 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = MetalFunctions.getHardwareReservation(GetHardwareReservationArgs.builder()
-     *             .id(&#34;4347e805-eb46-4699-9eb9-5c116e6a0172&#34;)
+     *             .id("4347e805-eb46-4699-9eb9-5c116e6a0172")
      *             .build());
      * 
      *         final var exampleByDeviceId = MetalFunctions.getHardwareReservation(GetHardwareReservationArgs.builder()
-     *             .deviceId(&#34;ff85aa58-c106-4624-8f1c-7c64554047ea&#34;)
+     *             .deviceId("ff85aa58-c106-4624-8f1c-7c64554047ea")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1741,7 +1817,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1763,16 +1840,17 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = MetalFunctions.getHardwareReservation(GetHardwareReservationArgs.builder()
-     *             .id(&#34;4347e805-eb46-4699-9eb9-5c116e6a0172&#34;)
+     *             .id("4347e805-eb46-4699-9eb9-5c116e6a0172")
      *             .build());
      * 
      *         final var exampleByDeviceId = MetalFunctions.getHardwareReservation(GetHardwareReservationArgs.builder()
-     *             .deviceId(&#34;ff85aa58-c106-4624-8f1c-7c64554047ea&#34;)
+     *             .deviceId("ff85aa58-c106-4624-8f1c-7c64554047ea")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1787,7 +1865,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1809,16 +1888,17 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = MetalFunctions.getHardwareReservation(GetHardwareReservationArgs.builder()
-     *             .id(&#34;4347e805-eb46-4699-9eb9-5c116e6a0172&#34;)
+     *             .id("4347e805-eb46-4699-9eb9-5c116e6a0172")
      *             .build());
      * 
      *         final var exampleByDeviceId = MetalFunctions.getHardwareReservation(GetHardwareReservationArgs.builder()
-     *             .deviceId(&#34;ff85aa58-c106-4624-8f1c-7c64554047ea&#34;)
+     *             .deviceId("ff85aa58-c106-4624-8f1c-7c64554047ea")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1833,7 +1913,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1855,16 +1936,17 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = MetalFunctions.getHardwareReservation(GetHardwareReservationArgs.builder()
-     *             .id(&#34;4347e805-eb46-4699-9eb9-5c116e6a0172&#34;)
+     *             .id("4347e805-eb46-4699-9eb9-5c116e6a0172")
      *             .build());
      * 
      *         final var exampleByDeviceId = MetalFunctions.getHardwareReservation(GetHardwareReservationArgs.builder()
-     *             .deviceId(&#34;ff85aa58-c106-4624-8f1c-7c64554047ea&#34;)
+     *             .deviceId("ff85aa58-c106-4624-8f1c-7c64554047ea")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1879,7 +1961,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1901,16 +1984,17 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = MetalFunctions.getHardwareReservation(GetHardwareReservationArgs.builder()
-     *             .id(&#34;4347e805-eb46-4699-9eb9-5c116e6a0172&#34;)
+     *             .id("4347e805-eb46-4699-9eb9-5c116e6a0172")
      *             .build());
      * 
      *         final var exampleByDeviceId = MetalFunctions.getHardwareReservation(GetHardwareReservationArgs.builder()
-     *             .deviceId(&#34;ff85aa58-c106-4624-8f1c-7c64554047ea&#34;)
+     *             .deviceId("ff85aa58-c106-4624-8f1c-7c64554047ea")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1925,7 +2009,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1947,12 +2032,13 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = MetalFunctions.getInterconnection(GetInterconnectionArgs.builder()
-     *             .connectionId(&#34;4347e805-eb46-4699-9eb9-5c116e6a017d&#34;)
+     *             .connectionId("4347e805-eb46-4699-9eb9-5c116e6a017d")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1967,7 +2053,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1989,12 +2076,13 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = MetalFunctions.getInterconnection(GetInterconnectionArgs.builder()
-     *             .connectionId(&#34;4347e805-eb46-4699-9eb9-5c116e6a017d&#34;)
+     *             .connectionId("4347e805-eb46-4699-9eb9-5c116e6a017d")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2009,7 +2097,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2031,12 +2120,13 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = MetalFunctions.getInterconnection(GetInterconnectionArgs.builder()
-     *             .connectionId(&#34;4347e805-eb46-4699-9eb9-5c116e6a017d&#34;)
+     *             .connectionId("4347e805-eb46-4699-9eb9-5c116e6a017d")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2051,7 +2141,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2073,12 +2164,13 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = MetalFunctions.getInterconnection(GetInterconnectionArgs.builder()
-     *             .connectionId(&#34;4347e805-eb46-4699-9eb9-5c116e6a017d&#34;)
+     *             .connectionId("4347e805-eb46-4699-9eb9-5c116e6a017d")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2095,7 +2187,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2116,16 +2209,17 @@ public final class MetalFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var projectId = &#34;&lt;UUID_of_your_project&gt;&#34;;
+     *         final var projectId = "<UUID_of_your_project>";
      * 
      *         final var test = MetalFunctions.getIpBlockRanges(GetIpBlockRangesArgs.builder()
      *             .projectId(projectId)
      *             .build());
      * 
-     *         ctx.export(&#34;out&#34;, test.applyValue(getIpBlockRangesResult -&gt; getIpBlockRangesResult));
+     *         ctx.export("out", test.applyValue(getIpBlockRangesResult -> getIpBlockRangesResult));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2142,7 +2236,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2163,16 +2258,17 @@ public final class MetalFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var projectId = &#34;&lt;UUID_of_your_project&gt;&#34;;
+     *         final var projectId = "<UUID_of_your_project>";
      * 
      *         final var test = MetalFunctions.getIpBlockRanges(GetIpBlockRangesArgs.builder()
      *             .projectId(projectId)
      *             .build());
      * 
-     *         ctx.export(&#34;out&#34;, test.applyValue(getIpBlockRangesResult -&gt; getIpBlockRangesResult));
+     *         ctx.export("out", test.applyValue(getIpBlockRangesResult -> getIpBlockRangesResult));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2189,7 +2285,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2210,16 +2307,17 @@ public final class MetalFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var projectId = &#34;&lt;UUID_of_your_project&gt;&#34;;
+     *         final var projectId = "<UUID_of_your_project>";
      * 
      *         final var test = MetalFunctions.getIpBlockRanges(GetIpBlockRangesArgs.builder()
      *             .projectId(projectId)
      *             .build());
      * 
-     *         ctx.export(&#34;out&#34;, test.applyValue(getIpBlockRangesResult -&gt; getIpBlockRangesResult));
+     *         ctx.export("out", test.applyValue(getIpBlockRangesResult -> getIpBlockRangesResult));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2236,7 +2334,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2257,16 +2356,17 @@ public final class MetalFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var projectId = &#34;&lt;UUID_of_your_project&gt;&#34;;
+     *         final var projectId = "<UUID_of_your_project>";
      * 
      *         final var test = MetalFunctions.getIpBlockRanges(GetIpBlockRangesArgs.builder()
      *             .projectId(projectId)
      *             .build());
      * 
-     *         ctx.export(&#34;out&#34;, test.applyValue(getIpBlockRangesResult -&gt; getIpBlockRangesResult));
+     *         ctx.export("out", test.applyValue(getIpBlockRangesResult -> getIpBlockRangesResult));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2279,7 +2379,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2301,13 +2402,14 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var sv = MetalFunctions.getMetro(GetMetroArgs.builder()
-     *             .code(&#34;sv&#34;)
+     *             .code("sv")
      *             .build());
      * 
-     *         ctx.export(&#34;id&#34;, sv.applyValue(getMetroResult -&gt; getMetroResult.id()));
+     *         ctx.export("id", sv.applyValue(getMetroResult -> getMetroResult.id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2320,7 +2422,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2342,13 +2445,14 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var sv = MetalFunctions.getMetro(GetMetroArgs.builder()
-     *             .code(&#34;sv&#34;)
+     *             .code("sv")
      *             .build());
      * 
-     *         ctx.export(&#34;id&#34;, sv.applyValue(getMetroResult -&gt; getMetroResult.id()));
+     *         ctx.export("id", sv.applyValue(getMetroResult -> getMetroResult.id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2361,7 +2465,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2383,13 +2488,14 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var sv = MetalFunctions.getMetro(GetMetroArgs.builder()
-     *             .code(&#34;sv&#34;)
+     *             .code("sv")
      *             .build());
      * 
-     *         ctx.export(&#34;id&#34;, sv.applyValue(getMetroResult -&gt; getMetroResult.id()));
+     *         ctx.export("id", sv.applyValue(getMetroResult -> getMetroResult.id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2402,7 +2508,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2424,13 +2531,14 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var sv = MetalFunctions.getMetro(GetMetroArgs.builder()
-     *             .code(&#34;sv&#34;)
+     *             .code("sv")
      *             .build());
      * 
-     *         ctx.export(&#34;id&#34;, sv.applyValue(getMetroResult -&gt; getMetroResult.id()));
+     *         ctx.export("id", sv.applyValue(getMetroResult -> getMetroResult.id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2443,7 +2551,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2467,23 +2576,24 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = MetalFunctions.getOperatingSystem(GetOperatingSystemArgs.builder()
-     *             .distro(&#34;ubuntu&#34;)
-     *             .version(&#34;20.04&#34;)
-     *             .provisionableOn(&#34;c3.medium.x86&#34;)
+     *             .distro("ubuntu")
+     *             .version("20.04")
+     *             .provisionableOn("c3.medium.x86")
      *             .build());
      * 
-     *         var server = new Device(&#34;server&#34;, DeviceArgs.builder()
-     *             .hostname(&#34;tf.ubuntu&#34;)
-     *             .plan(&#34;c3.medium.x86&#34;)
-     *             .metro(&#34;ny&#34;)
-     *             .operatingSystem(example.applyValue(getOperatingSystemResult -&gt; getOperatingSystemResult.id()))
-     *             .billingCycle(&#34;hourly&#34;)
+     *         var server = new Device("server", DeviceArgs.builder()
+     *             .hostname("tf.ubuntu")
+     *             .plan("c3.medium.x86")
+     *             .metro("ny")
+     *             .operatingSystem(example.applyValue(getOperatingSystemResult -> getOperatingSystemResult.id()))
+     *             .billingCycle("hourly")
      *             .projectId(local.project_id())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2496,7 +2606,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2520,23 +2631,24 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = MetalFunctions.getOperatingSystem(GetOperatingSystemArgs.builder()
-     *             .distro(&#34;ubuntu&#34;)
-     *             .version(&#34;20.04&#34;)
-     *             .provisionableOn(&#34;c3.medium.x86&#34;)
+     *             .distro("ubuntu")
+     *             .version("20.04")
+     *             .provisionableOn("c3.medium.x86")
      *             .build());
      * 
-     *         var server = new Device(&#34;server&#34;, DeviceArgs.builder()
-     *             .hostname(&#34;tf.ubuntu&#34;)
-     *             .plan(&#34;c3.medium.x86&#34;)
-     *             .metro(&#34;ny&#34;)
-     *             .operatingSystem(example.applyValue(getOperatingSystemResult -&gt; getOperatingSystemResult.id()))
-     *             .billingCycle(&#34;hourly&#34;)
+     *         var server = new Device("server", DeviceArgs.builder()
+     *             .hostname("tf.ubuntu")
+     *             .plan("c3.medium.x86")
+     *             .metro("ny")
+     *             .operatingSystem(example.applyValue(getOperatingSystemResult -> getOperatingSystemResult.id()))
+     *             .billingCycle("hourly")
      *             .projectId(local.project_id())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2549,7 +2661,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2573,23 +2686,24 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = MetalFunctions.getOperatingSystem(GetOperatingSystemArgs.builder()
-     *             .distro(&#34;ubuntu&#34;)
-     *             .version(&#34;20.04&#34;)
-     *             .provisionableOn(&#34;c3.medium.x86&#34;)
+     *             .distro("ubuntu")
+     *             .version("20.04")
+     *             .provisionableOn("c3.medium.x86")
      *             .build());
      * 
-     *         var server = new Device(&#34;server&#34;, DeviceArgs.builder()
-     *             .hostname(&#34;tf.ubuntu&#34;)
-     *             .plan(&#34;c3.medium.x86&#34;)
-     *             .metro(&#34;ny&#34;)
-     *             .operatingSystem(example.applyValue(getOperatingSystemResult -&gt; getOperatingSystemResult.id()))
-     *             .billingCycle(&#34;hourly&#34;)
+     *         var server = new Device("server", DeviceArgs.builder()
+     *             .hostname("tf.ubuntu")
+     *             .plan("c3.medium.x86")
+     *             .metro("ny")
+     *             .operatingSystem(example.applyValue(getOperatingSystemResult -> getOperatingSystemResult.id()))
+     *             .billingCycle("hourly")
      *             .projectId(local.project_id())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2602,7 +2716,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2626,23 +2741,24 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = MetalFunctions.getOperatingSystem(GetOperatingSystemArgs.builder()
-     *             .distro(&#34;ubuntu&#34;)
-     *             .version(&#34;20.04&#34;)
-     *             .provisionableOn(&#34;c3.medium.x86&#34;)
+     *             .distro("ubuntu")
+     *             .version("20.04")
+     *             .provisionableOn("c3.medium.x86")
      *             .build());
      * 
-     *         var server = new Device(&#34;server&#34;, DeviceArgs.builder()
-     *             .hostname(&#34;tf.ubuntu&#34;)
-     *             .plan(&#34;c3.medium.x86&#34;)
-     *             .metro(&#34;ny&#34;)
-     *             .operatingSystem(example.applyValue(getOperatingSystemResult -&gt; getOperatingSystemResult.id()))
-     *             .billingCycle(&#34;hourly&#34;)
+     *         var server = new Device("server", DeviceArgs.builder()
+     *             .hostname("tf.ubuntu")
+     *             .plan("c3.medium.x86")
+     *             .metro("ny")
+     *             .operatingSystem(example.applyValue(getOperatingSystemResult -> getOperatingSystemResult.id()))
+     *             .billingCycle("hourly")
      *             .projectId(local.project_id())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2655,7 +2771,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2679,23 +2796,24 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = MetalFunctions.getOperatingSystem(GetOperatingSystemArgs.builder()
-     *             .distro(&#34;ubuntu&#34;)
-     *             .version(&#34;20.04&#34;)
-     *             .provisionableOn(&#34;c3.medium.x86&#34;)
+     *             .distro("ubuntu")
+     *             .version("20.04")
+     *             .provisionableOn("c3.medium.x86")
      *             .build());
      * 
-     *         var server = new Device(&#34;server&#34;, DeviceArgs.builder()
-     *             .hostname(&#34;tf.ubuntu&#34;)
-     *             .plan(&#34;c3.medium.x86&#34;)
-     *             .metro(&#34;ny&#34;)
-     *             .operatingSystem(example.applyValue(getOperatingSystemResult -&gt; getOperatingSystemResult.id()))
-     *             .billingCycle(&#34;hourly&#34;)
+     *         var server = new Device("server", DeviceArgs.builder()
+     *             .hostname("tf.ubuntu")
+     *             .plan("c3.medium.x86")
+     *             .metro("ny")
+     *             .operatingSystem(example.applyValue(getOperatingSystemResult -> getOperatingSystemResult.id()))
+     *             .billingCycle("hourly")
      *             .projectId(local.project_id())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2708,7 +2826,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2732,23 +2851,24 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = MetalFunctions.getOperatingSystem(GetOperatingSystemArgs.builder()
-     *             .distro(&#34;ubuntu&#34;)
-     *             .version(&#34;20.04&#34;)
-     *             .provisionableOn(&#34;c3.medium.x86&#34;)
+     *             .distro("ubuntu")
+     *             .version("20.04")
+     *             .provisionableOn("c3.medium.x86")
      *             .build());
      * 
-     *         var server = new Device(&#34;server&#34;, DeviceArgs.builder()
-     *             .hostname(&#34;tf.ubuntu&#34;)
-     *             .plan(&#34;c3.medium.x86&#34;)
-     *             .metro(&#34;ny&#34;)
-     *             .operatingSystem(example.applyValue(getOperatingSystemResult -&gt; getOperatingSystemResult.id()))
-     *             .billingCycle(&#34;hourly&#34;)
+     *         var server = new Device("server", DeviceArgs.builder()
+     *             .hostname("tf.ubuntu")
+     *             .plan("c3.medium.x86")
+     *             .metro("ny")
+     *             .operatingSystem(example.applyValue(getOperatingSystemResult -> getOperatingSystemResult.id()))
+     *             .billingCycle("hourly")
      *             .projectId(local.project_id())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2761,7 +2881,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2786,10 +2907,11 @@ public final class MetalFunctions {
      *             .organizationId(local.org_id())
      *             .build());
      * 
-     *         ctx.export(&#34;projectsInTheOrg&#34;, test.applyValue(getOrganizationResult -&gt; getOrganizationResult.projectIds()));
+     *         ctx.export("projectsInTheOrg", test.applyValue(getOrganizationResult -> getOrganizationResult.projectIds()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2802,7 +2924,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2827,10 +2950,11 @@ public final class MetalFunctions {
      *             .organizationId(local.org_id())
      *             .build());
      * 
-     *         ctx.export(&#34;projectsInTheOrg&#34;, test.applyValue(getOrganizationResult -&gt; getOrganizationResult.projectIds()));
+     *         ctx.export("projectsInTheOrg", test.applyValue(getOrganizationResult -> getOrganizationResult.projectIds()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2843,7 +2967,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2868,10 +2993,11 @@ public final class MetalFunctions {
      *             .organizationId(local.org_id())
      *             .build());
      * 
-     *         ctx.export(&#34;projectsInTheOrg&#34;, test.applyValue(getOrganizationResult -&gt; getOrganizationResult.projectIds()));
+     *         ctx.export("projectsInTheOrg", test.applyValue(getOrganizationResult -> getOrganizationResult.projectIds()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2884,7 +3010,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2909,10 +3036,11 @@ public final class MetalFunctions {
      *             .organizationId(local.org_id())
      *             .build());
      * 
-     *         ctx.export(&#34;projectsInTheOrg&#34;, test.applyValue(getOrganizationResult -&gt; getOrganizationResult.projectIds()));
+     *         ctx.export("projectsInTheOrg", test.applyValue(getOrganizationResult -> getOrganizationResult.projectIds()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2925,7 +3053,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2950,10 +3079,11 @@ public final class MetalFunctions {
      *             .organizationId(local.org_id())
      *             .build());
      * 
-     *         ctx.export(&#34;projectsInTheOrg&#34;, test.applyValue(getOrganizationResult -&gt; getOrganizationResult.projectIds()));
+     *         ctx.export("projectsInTheOrg", test.applyValue(getOrganizationResult -> getOrganizationResult.projectIds()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2966,7 +3096,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2991,10 +3122,11 @@ public final class MetalFunctions {
      *             .organizationId(local.org_id())
      *             .build());
      * 
-     *         ctx.export(&#34;projectsInTheOrg&#34;, test.applyValue(getOrganizationResult -&gt; getOrganizationResult.projectIds()));
+     *         ctx.export("projectsInTheOrg", test.applyValue(getOrganizationResult -> getOrganizationResult.projectIds()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3007,7 +3139,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3030,31 +3163,33 @@ public final class MetalFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = MetalFunctions.getPlans(GetPlansArgs.builder()
      *             .sorts(GetPlansSortArgs.builder()
-     *                 .attribute(&#34;pricing_hour&#34;)
-     *                 .direction(&#34;asc&#34;)
+     *                 .attribute("pricing_hour")
+     *                 .direction("asc")
      *                 .build())
      *             .filters(            
      *                 GetPlansFilterArgs.builder()
-     *                     .attribute(&#34;pricing_hour&#34;)
+     *                     .attribute("pricing_hour")
      *                     .values(2.5)
-     *                     .matchBy(&#34;less_than&#34;)
+     *                     .matchBy("less_than")
      *                     .build(),
      *                 GetPlansFilterArgs.builder()
-     *                     .attribute(&#34;available_in_metros&#34;)
+     *                     .attribute("available_in_metros")
      *                     .values(                    
-     *                         &#34;da&#34;,
-     *                         &#34;sv&#34;)
+     *                         "da",
+     *                         "sv")
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;plans&#34;, example.applyValue(getPlansResult -&gt; getPlansResult.plans()));
+     *         ctx.export("plans", example.applyValue(getPlansResult -> getPlansResult.plans()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3078,27 +3213,28 @@ public final class MetalFunctions {
      *         final var example = MetalFunctions.getPlans(GetPlansArgs.builder()
      *             .filters(            
      *                 GetPlansFilterArgs.builder()
-     *                     .attribute(&#34;class&#34;)
-     *                     .values(&#34;large&#34;)
-     *                     .matchBy(&#34;substring&#34;)
+     *                     .attribute("class")
+     *                     .values("large")
+     *                     .matchBy("substring")
      *                     .build(),
      *                 GetPlansFilterArgs.builder()
-     *                     .attribute(&#34;deployment_types&#34;)
-     *                     .values(&#34;spot_market&#34;)
+     *                     .attribute("deployment_types")
+     *                     .values("spot_market")
      *                     .build(),
      *                 GetPlansFilterArgs.builder()
-     *                     .attribute(&#34;available_in_metros&#34;)
+     *                     .attribute("available_in_metros")
      *                     .values(                    
-     *                         &#34;da&#34;,
-     *                         &#34;sv&#34;)
+     *                         "da",
+     *                         "sv")
      *                     .all(true)
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;plans&#34;, example.applyValue(getPlansResult -&gt; getPlansResult.plans()));
+     *         ctx.export("plans", example.applyValue(getPlansResult -> getPlansResult.plans()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Ignoring Changes to Plans/Metro
@@ -3108,7 +3244,8 @@ public final class MetalFunctions {
      * As described in the `data-resource-behavior` feature as shown in the example below.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3133,43 +3270,45 @@ public final class MetalFunctions {
      *     public static void stack(Context ctx) {
      *         final var examplePlans = MetalFunctions.getPlans(GetPlansArgs.builder()
      *             .sorts(GetPlansSortArgs.builder()
-     *                 .attribute(&#34;pricing_hour&#34;)
-     *                 .direction(&#34;asc&#34;)
+     *                 .attribute("pricing_hour")
+     *                 .direction("asc")
      *                 .build())
      *             .filters(            
      *                 GetPlansFilterArgs.builder()
-     *                     .attribute(&#34;name&#34;)
+     *                     .attribute("name")
      *                     .values(                    
-     *                         &#34;c3.small.x86&#34;,
-     *                         &#34;c3.medium.x86&#34;,
-     *                         &#34;m3.large.x86&#34;)
+     *                         "c3.small.x86",
+     *                         "c3.medium.x86",
+     *                         "m3.large.x86")
      *                     .build(),
      *                 GetPlansFilterArgs.builder()
-     *                     .attribute(&#34;available_in_metros&#34;)
-     *                     .values(&#34;sv&#34;)
+     *                     .attribute("available_in_metros")
+     *                     .values("sv")
      *                     .build())
      *             .build());
      * 
      *         // This equinix_metal_device will use the first returned plan and the first metro in which that plan is available
      *         // It will ignore future changes on plan and metro
-     *         var exampleDevice = new Device(&#34;exampleDevice&#34;, DeviceArgs.builder()
-     *             .hostname(&#34;example&#34;)
-     *             .plan(examplePlans.applyValue(getPlansResult -&gt; getPlansResult.plans()[0].name()))
-     *             .metro(examplePlans.applyValue(getPlansResult -&gt; getPlansResult.plans()[0].availableInMetros()[0]))
-     *             .operatingSystem(&#34;ubuntu_20_04&#34;)
-     *             .billingCycle(&#34;hourly&#34;)
+     *         var exampleDevice = new Device("exampleDevice", DeviceArgs.builder()
+     *             .hostname("example")
+     *             .plan(examplePlans.applyValue(getPlansResult -> getPlansResult.plans()[0].name()))
+     *             .metro(examplePlans.applyValue(getPlansResult -> getPlansResult.plans()[0].availableInMetros()[0]))
+     *             .operatingSystem("ubuntu_20_04")
+     *             .billingCycle("hourly")
      *             .projectId(var_.project_id())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * If your use case requires dynamic changes of a device plan or metro you can define the lifecycle with a condition.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3192,15 +3331,16 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var ignorePlansMetrosChanges = config.get(&#34;ignorePlansMetrosChanges&#34;).orElse(false);
+     *         final var ignorePlansMetrosChanges = config.get("ignorePlansMetrosChanges").orElse(false);
      *         final var examplePlans = MetalFunctions.getPlans();
      * 
      *         // required device arguments
-     *         var exampleDevice = new Device(&#34;exampleDevice&#34;);
+     *         var exampleDevice = new Device("exampleDevice");
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3213,7 +3353,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3236,31 +3377,33 @@ public final class MetalFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = MetalFunctions.getPlans(GetPlansArgs.builder()
      *             .sorts(GetPlansSortArgs.builder()
-     *                 .attribute(&#34;pricing_hour&#34;)
-     *                 .direction(&#34;asc&#34;)
+     *                 .attribute("pricing_hour")
+     *                 .direction("asc")
      *                 .build())
      *             .filters(            
      *                 GetPlansFilterArgs.builder()
-     *                     .attribute(&#34;pricing_hour&#34;)
+     *                     .attribute("pricing_hour")
      *                     .values(2.5)
-     *                     .matchBy(&#34;less_than&#34;)
+     *                     .matchBy("less_than")
      *                     .build(),
      *                 GetPlansFilterArgs.builder()
-     *                     .attribute(&#34;available_in_metros&#34;)
+     *                     .attribute("available_in_metros")
      *                     .values(                    
-     *                         &#34;da&#34;,
-     *                         &#34;sv&#34;)
+     *                         "da",
+     *                         "sv")
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;plans&#34;, example.applyValue(getPlansResult -&gt; getPlansResult.plans()));
+     *         ctx.export("plans", example.applyValue(getPlansResult -> getPlansResult.plans()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3284,27 +3427,28 @@ public final class MetalFunctions {
      *         final var example = MetalFunctions.getPlans(GetPlansArgs.builder()
      *             .filters(            
      *                 GetPlansFilterArgs.builder()
-     *                     .attribute(&#34;class&#34;)
-     *                     .values(&#34;large&#34;)
-     *                     .matchBy(&#34;substring&#34;)
+     *                     .attribute("class")
+     *                     .values("large")
+     *                     .matchBy("substring")
      *                     .build(),
      *                 GetPlansFilterArgs.builder()
-     *                     .attribute(&#34;deployment_types&#34;)
-     *                     .values(&#34;spot_market&#34;)
+     *                     .attribute("deployment_types")
+     *                     .values("spot_market")
      *                     .build(),
      *                 GetPlansFilterArgs.builder()
-     *                     .attribute(&#34;available_in_metros&#34;)
+     *                     .attribute("available_in_metros")
      *                     .values(                    
-     *                         &#34;da&#34;,
-     *                         &#34;sv&#34;)
+     *                         "da",
+     *                         "sv")
      *                     .all(true)
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;plans&#34;, example.applyValue(getPlansResult -&gt; getPlansResult.plans()));
+     *         ctx.export("plans", example.applyValue(getPlansResult -> getPlansResult.plans()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Ignoring Changes to Plans/Metro
@@ -3314,7 +3458,8 @@ public final class MetalFunctions {
      * As described in the `data-resource-behavior` feature as shown in the example below.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3339,43 +3484,45 @@ public final class MetalFunctions {
      *     public static void stack(Context ctx) {
      *         final var examplePlans = MetalFunctions.getPlans(GetPlansArgs.builder()
      *             .sorts(GetPlansSortArgs.builder()
-     *                 .attribute(&#34;pricing_hour&#34;)
-     *                 .direction(&#34;asc&#34;)
+     *                 .attribute("pricing_hour")
+     *                 .direction("asc")
      *                 .build())
      *             .filters(            
      *                 GetPlansFilterArgs.builder()
-     *                     .attribute(&#34;name&#34;)
+     *                     .attribute("name")
      *                     .values(                    
-     *                         &#34;c3.small.x86&#34;,
-     *                         &#34;c3.medium.x86&#34;,
-     *                         &#34;m3.large.x86&#34;)
+     *                         "c3.small.x86",
+     *                         "c3.medium.x86",
+     *                         "m3.large.x86")
      *                     .build(),
      *                 GetPlansFilterArgs.builder()
-     *                     .attribute(&#34;available_in_metros&#34;)
-     *                     .values(&#34;sv&#34;)
+     *                     .attribute("available_in_metros")
+     *                     .values("sv")
      *                     .build())
      *             .build());
      * 
      *         // This equinix_metal_device will use the first returned plan and the first metro in which that plan is available
      *         // It will ignore future changes on plan and metro
-     *         var exampleDevice = new Device(&#34;exampleDevice&#34;, DeviceArgs.builder()
-     *             .hostname(&#34;example&#34;)
-     *             .plan(examplePlans.applyValue(getPlansResult -&gt; getPlansResult.plans()[0].name()))
-     *             .metro(examplePlans.applyValue(getPlansResult -&gt; getPlansResult.plans()[0].availableInMetros()[0]))
-     *             .operatingSystem(&#34;ubuntu_20_04&#34;)
-     *             .billingCycle(&#34;hourly&#34;)
+     *         var exampleDevice = new Device("exampleDevice", DeviceArgs.builder()
+     *             .hostname("example")
+     *             .plan(examplePlans.applyValue(getPlansResult -> getPlansResult.plans()[0].name()))
+     *             .metro(examplePlans.applyValue(getPlansResult -> getPlansResult.plans()[0].availableInMetros()[0]))
+     *             .operatingSystem("ubuntu_20_04")
+     *             .billingCycle("hourly")
      *             .projectId(var_.project_id())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * If your use case requires dynamic changes of a device plan or metro you can define the lifecycle with a condition.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3398,15 +3545,16 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var ignorePlansMetrosChanges = config.get(&#34;ignorePlansMetrosChanges&#34;).orElse(false);
+     *         final var ignorePlansMetrosChanges = config.get("ignorePlansMetrosChanges").orElse(false);
      *         final var examplePlans = MetalFunctions.getPlans();
      * 
      *         // required device arguments
-     *         var exampleDevice = new Device(&#34;exampleDevice&#34;);
+     *         var exampleDevice = new Device("exampleDevice");
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3419,7 +3567,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3442,31 +3591,33 @@ public final class MetalFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = MetalFunctions.getPlans(GetPlansArgs.builder()
      *             .sorts(GetPlansSortArgs.builder()
-     *                 .attribute(&#34;pricing_hour&#34;)
-     *                 .direction(&#34;asc&#34;)
+     *                 .attribute("pricing_hour")
+     *                 .direction("asc")
      *                 .build())
      *             .filters(            
      *                 GetPlansFilterArgs.builder()
-     *                     .attribute(&#34;pricing_hour&#34;)
+     *                     .attribute("pricing_hour")
      *                     .values(2.5)
-     *                     .matchBy(&#34;less_than&#34;)
+     *                     .matchBy("less_than")
      *                     .build(),
      *                 GetPlansFilterArgs.builder()
-     *                     .attribute(&#34;available_in_metros&#34;)
+     *                     .attribute("available_in_metros")
      *                     .values(                    
-     *                         &#34;da&#34;,
-     *                         &#34;sv&#34;)
+     *                         "da",
+     *                         "sv")
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;plans&#34;, example.applyValue(getPlansResult -&gt; getPlansResult.plans()));
+     *         ctx.export("plans", example.applyValue(getPlansResult -> getPlansResult.plans()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3490,27 +3641,28 @@ public final class MetalFunctions {
      *         final var example = MetalFunctions.getPlans(GetPlansArgs.builder()
      *             .filters(            
      *                 GetPlansFilterArgs.builder()
-     *                     .attribute(&#34;class&#34;)
-     *                     .values(&#34;large&#34;)
-     *                     .matchBy(&#34;substring&#34;)
+     *                     .attribute("class")
+     *                     .values("large")
+     *                     .matchBy("substring")
      *                     .build(),
      *                 GetPlansFilterArgs.builder()
-     *                     .attribute(&#34;deployment_types&#34;)
-     *                     .values(&#34;spot_market&#34;)
+     *                     .attribute("deployment_types")
+     *                     .values("spot_market")
      *                     .build(),
      *                 GetPlansFilterArgs.builder()
-     *                     .attribute(&#34;available_in_metros&#34;)
+     *                     .attribute("available_in_metros")
      *                     .values(                    
-     *                         &#34;da&#34;,
-     *                         &#34;sv&#34;)
+     *                         "da",
+     *                         "sv")
      *                     .all(true)
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;plans&#34;, example.applyValue(getPlansResult -&gt; getPlansResult.plans()));
+     *         ctx.export("plans", example.applyValue(getPlansResult -> getPlansResult.plans()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Ignoring Changes to Plans/Metro
@@ -3520,7 +3672,8 @@ public final class MetalFunctions {
      * As described in the `data-resource-behavior` feature as shown in the example below.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3545,43 +3698,45 @@ public final class MetalFunctions {
      *     public static void stack(Context ctx) {
      *         final var examplePlans = MetalFunctions.getPlans(GetPlansArgs.builder()
      *             .sorts(GetPlansSortArgs.builder()
-     *                 .attribute(&#34;pricing_hour&#34;)
-     *                 .direction(&#34;asc&#34;)
+     *                 .attribute("pricing_hour")
+     *                 .direction("asc")
      *                 .build())
      *             .filters(            
      *                 GetPlansFilterArgs.builder()
-     *                     .attribute(&#34;name&#34;)
+     *                     .attribute("name")
      *                     .values(                    
-     *                         &#34;c3.small.x86&#34;,
-     *                         &#34;c3.medium.x86&#34;,
-     *                         &#34;m3.large.x86&#34;)
+     *                         "c3.small.x86",
+     *                         "c3.medium.x86",
+     *                         "m3.large.x86")
      *                     .build(),
      *                 GetPlansFilterArgs.builder()
-     *                     .attribute(&#34;available_in_metros&#34;)
-     *                     .values(&#34;sv&#34;)
+     *                     .attribute("available_in_metros")
+     *                     .values("sv")
      *                     .build())
      *             .build());
      * 
      *         // This equinix_metal_device will use the first returned plan and the first metro in which that plan is available
      *         // It will ignore future changes on plan and metro
-     *         var exampleDevice = new Device(&#34;exampleDevice&#34;, DeviceArgs.builder()
-     *             .hostname(&#34;example&#34;)
-     *             .plan(examplePlans.applyValue(getPlansResult -&gt; getPlansResult.plans()[0].name()))
-     *             .metro(examplePlans.applyValue(getPlansResult -&gt; getPlansResult.plans()[0].availableInMetros()[0]))
-     *             .operatingSystem(&#34;ubuntu_20_04&#34;)
-     *             .billingCycle(&#34;hourly&#34;)
+     *         var exampleDevice = new Device("exampleDevice", DeviceArgs.builder()
+     *             .hostname("example")
+     *             .plan(examplePlans.applyValue(getPlansResult -> getPlansResult.plans()[0].name()))
+     *             .metro(examplePlans.applyValue(getPlansResult -> getPlansResult.plans()[0].availableInMetros()[0]))
+     *             .operatingSystem("ubuntu_20_04")
+     *             .billingCycle("hourly")
      *             .projectId(var_.project_id())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * If your use case requires dynamic changes of a device plan or metro you can define the lifecycle with a condition.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3604,15 +3759,16 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var ignorePlansMetrosChanges = config.get(&#34;ignorePlansMetrosChanges&#34;).orElse(false);
+     *         final var ignorePlansMetrosChanges = config.get("ignorePlansMetrosChanges").orElse(false);
      *         final var examplePlans = MetalFunctions.getPlans();
      * 
      *         // required device arguments
-     *         var exampleDevice = new Device(&#34;exampleDevice&#34;);
+     *         var exampleDevice = new Device("exampleDevice");
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3625,7 +3781,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3648,31 +3805,33 @@ public final class MetalFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = MetalFunctions.getPlans(GetPlansArgs.builder()
      *             .sorts(GetPlansSortArgs.builder()
-     *                 .attribute(&#34;pricing_hour&#34;)
-     *                 .direction(&#34;asc&#34;)
+     *                 .attribute("pricing_hour")
+     *                 .direction("asc")
      *                 .build())
      *             .filters(            
      *                 GetPlansFilterArgs.builder()
-     *                     .attribute(&#34;pricing_hour&#34;)
+     *                     .attribute("pricing_hour")
      *                     .values(2.5)
-     *                     .matchBy(&#34;less_than&#34;)
+     *                     .matchBy("less_than")
      *                     .build(),
      *                 GetPlansFilterArgs.builder()
-     *                     .attribute(&#34;available_in_metros&#34;)
+     *                     .attribute("available_in_metros")
      *                     .values(                    
-     *                         &#34;da&#34;,
-     *                         &#34;sv&#34;)
+     *                         "da",
+     *                         "sv")
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;plans&#34;, example.applyValue(getPlansResult -&gt; getPlansResult.plans()));
+     *         ctx.export("plans", example.applyValue(getPlansResult -> getPlansResult.plans()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3696,27 +3855,28 @@ public final class MetalFunctions {
      *         final var example = MetalFunctions.getPlans(GetPlansArgs.builder()
      *             .filters(            
      *                 GetPlansFilterArgs.builder()
-     *                     .attribute(&#34;class&#34;)
-     *                     .values(&#34;large&#34;)
-     *                     .matchBy(&#34;substring&#34;)
+     *                     .attribute("class")
+     *                     .values("large")
+     *                     .matchBy("substring")
      *                     .build(),
      *                 GetPlansFilterArgs.builder()
-     *                     .attribute(&#34;deployment_types&#34;)
-     *                     .values(&#34;spot_market&#34;)
+     *                     .attribute("deployment_types")
+     *                     .values("spot_market")
      *                     .build(),
      *                 GetPlansFilterArgs.builder()
-     *                     .attribute(&#34;available_in_metros&#34;)
+     *                     .attribute("available_in_metros")
      *                     .values(                    
-     *                         &#34;da&#34;,
-     *                         &#34;sv&#34;)
+     *                         "da",
+     *                         "sv")
      *                     .all(true)
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;plans&#34;, example.applyValue(getPlansResult -&gt; getPlansResult.plans()));
+     *         ctx.export("plans", example.applyValue(getPlansResult -> getPlansResult.plans()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Ignoring Changes to Plans/Metro
@@ -3726,7 +3886,8 @@ public final class MetalFunctions {
      * As described in the `data-resource-behavior` feature as shown in the example below.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3751,43 +3912,45 @@ public final class MetalFunctions {
      *     public static void stack(Context ctx) {
      *         final var examplePlans = MetalFunctions.getPlans(GetPlansArgs.builder()
      *             .sorts(GetPlansSortArgs.builder()
-     *                 .attribute(&#34;pricing_hour&#34;)
-     *                 .direction(&#34;asc&#34;)
+     *                 .attribute("pricing_hour")
+     *                 .direction("asc")
      *                 .build())
      *             .filters(            
      *                 GetPlansFilterArgs.builder()
-     *                     .attribute(&#34;name&#34;)
+     *                     .attribute("name")
      *                     .values(                    
-     *                         &#34;c3.small.x86&#34;,
-     *                         &#34;c3.medium.x86&#34;,
-     *                         &#34;m3.large.x86&#34;)
+     *                         "c3.small.x86",
+     *                         "c3.medium.x86",
+     *                         "m3.large.x86")
      *                     .build(),
      *                 GetPlansFilterArgs.builder()
-     *                     .attribute(&#34;available_in_metros&#34;)
-     *                     .values(&#34;sv&#34;)
+     *                     .attribute("available_in_metros")
+     *                     .values("sv")
      *                     .build())
      *             .build());
      * 
      *         // This equinix_metal_device will use the first returned plan and the first metro in which that plan is available
      *         // It will ignore future changes on plan and metro
-     *         var exampleDevice = new Device(&#34;exampleDevice&#34;, DeviceArgs.builder()
-     *             .hostname(&#34;example&#34;)
-     *             .plan(examplePlans.applyValue(getPlansResult -&gt; getPlansResult.plans()[0].name()))
-     *             .metro(examplePlans.applyValue(getPlansResult -&gt; getPlansResult.plans()[0].availableInMetros()[0]))
-     *             .operatingSystem(&#34;ubuntu_20_04&#34;)
-     *             .billingCycle(&#34;hourly&#34;)
+     *         var exampleDevice = new Device("exampleDevice", DeviceArgs.builder()
+     *             .hostname("example")
+     *             .plan(examplePlans.applyValue(getPlansResult -> getPlansResult.plans()[0].name()))
+     *             .metro(examplePlans.applyValue(getPlansResult -> getPlansResult.plans()[0].availableInMetros()[0]))
+     *             .operatingSystem("ubuntu_20_04")
+     *             .billingCycle("hourly")
      *             .projectId(var_.project_id())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * If your use case requires dynamic changes of a device plan or metro you can define the lifecycle with a condition.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3810,15 +3973,16 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var ignorePlansMetrosChanges = config.get(&#34;ignorePlansMetrosChanges&#34;).orElse(false);
+     *         final var ignorePlansMetrosChanges = config.get("ignorePlansMetrosChanges").orElse(false);
      *         final var examplePlans = MetalFunctions.getPlans();
      * 
      *         // required device arguments
-     *         var exampleDevice = new Device(&#34;exampleDevice&#34;);
+     *         var exampleDevice = new Device("exampleDevice");
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3831,7 +3995,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3854,31 +4019,33 @@ public final class MetalFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = MetalFunctions.getPlans(GetPlansArgs.builder()
      *             .sorts(GetPlansSortArgs.builder()
-     *                 .attribute(&#34;pricing_hour&#34;)
-     *                 .direction(&#34;asc&#34;)
+     *                 .attribute("pricing_hour")
+     *                 .direction("asc")
      *                 .build())
      *             .filters(            
      *                 GetPlansFilterArgs.builder()
-     *                     .attribute(&#34;pricing_hour&#34;)
+     *                     .attribute("pricing_hour")
      *                     .values(2.5)
-     *                     .matchBy(&#34;less_than&#34;)
+     *                     .matchBy("less_than")
      *                     .build(),
      *                 GetPlansFilterArgs.builder()
-     *                     .attribute(&#34;available_in_metros&#34;)
+     *                     .attribute("available_in_metros")
      *                     .values(                    
-     *                         &#34;da&#34;,
-     *                         &#34;sv&#34;)
+     *                         "da",
+     *                         "sv")
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;plans&#34;, example.applyValue(getPlansResult -&gt; getPlansResult.plans()));
+     *         ctx.export("plans", example.applyValue(getPlansResult -> getPlansResult.plans()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3902,27 +4069,28 @@ public final class MetalFunctions {
      *         final var example = MetalFunctions.getPlans(GetPlansArgs.builder()
      *             .filters(            
      *                 GetPlansFilterArgs.builder()
-     *                     .attribute(&#34;class&#34;)
-     *                     .values(&#34;large&#34;)
-     *                     .matchBy(&#34;substring&#34;)
+     *                     .attribute("class")
+     *                     .values("large")
+     *                     .matchBy("substring")
      *                     .build(),
      *                 GetPlansFilterArgs.builder()
-     *                     .attribute(&#34;deployment_types&#34;)
-     *                     .values(&#34;spot_market&#34;)
+     *                     .attribute("deployment_types")
+     *                     .values("spot_market")
      *                     .build(),
      *                 GetPlansFilterArgs.builder()
-     *                     .attribute(&#34;available_in_metros&#34;)
+     *                     .attribute("available_in_metros")
      *                     .values(                    
-     *                         &#34;da&#34;,
-     *                         &#34;sv&#34;)
+     *                         "da",
+     *                         "sv")
      *                     .all(true)
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;plans&#34;, example.applyValue(getPlansResult -&gt; getPlansResult.plans()));
+     *         ctx.export("plans", example.applyValue(getPlansResult -> getPlansResult.plans()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Ignoring Changes to Plans/Metro
@@ -3932,7 +4100,8 @@ public final class MetalFunctions {
      * As described in the `data-resource-behavior` feature as shown in the example below.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3957,43 +4126,45 @@ public final class MetalFunctions {
      *     public static void stack(Context ctx) {
      *         final var examplePlans = MetalFunctions.getPlans(GetPlansArgs.builder()
      *             .sorts(GetPlansSortArgs.builder()
-     *                 .attribute(&#34;pricing_hour&#34;)
-     *                 .direction(&#34;asc&#34;)
+     *                 .attribute("pricing_hour")
+     *                 .direction("asc")
      *                 .build())
      *             .filters(            
      *                 GetPlansFilterArgs.builder()
-     *                     .attribute(&#34;name&#34;)
+     *                     .attribute("name")
      *                     .values(                    
-     *                         &#34;c3.small.x86&#34;,
-     *                         &#34;c3.medium.x86&#34;,
-     *                         &#34;m3.large.x86&#34;)
+     *                         "c3.small.x86",
+     *                         "c3.medium.x86",
+     *                         "m3.large.x86")
      *                     .build(),
      *                 GetPlansFilterArgs.builder()
-     *                     .attribute(&#34;available_in_metros&#34;)
-     *                     .values(&#34;sv&#34;)
+     *                     .attribute("available_in_metros")
+     *                     .values("sv")
      *                     .build())
      *             .build());
      * 
      *         // This equinix_metal_device will use the first returned plan and the first metro in which that plan is available
      *         // It will ignore future changes on plan and metro
-     *         var exampleDevice = new Device(&#34;exampleDevice&#34;, DeviceArgs.builder()
-     *             .hostname(&#34;example&#34;)
-     *             .plan(examplePlans.applyValue(getPlansResult -&gt; getPlansResult.plans()[0].name()))
-     *             .metro(examplePlans.applyValue(getPlansResult -&gt; getPlansResult.plans()[0].availableInMetros()[0]))
-     *             .operatingSystem(&#34;ubuntu_20_04&#34;)
-     *             .billingCycle(&#34;hourly&#34;)
+     *         var exampleDevice = new Device("exampleDevice", DeviceArgs.builder()
+     *             .hostname("example")
+     *             .plan(examplePlans.applyValue(getPlansResult -> getPlansResult.plans()[0].name()))
+     *             .metro(examplePlans.applyValue(getPlansResult -> getPlansResult.plans()[0].availableInMetros()[0]))
+     *             .operatingSystem("ubuntu_20_04")
+     *             .billingCycle("hourly")
      *             .projectId(var_.project_id())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * If your use case requires dynamic changes of a device plan or metro you can define the lifecycle with a condition.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4016,15 +4187,16 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var ignorePlansMetrosChanges = config.get(&#34;ignorePlansMetrosChanges&#34;).orElse(false);
+     *         final var ignorePlansMetrosChanges = config.get("ignorePlansMetrosChanges").orElse(false);
      *         final var examplePlans = MetalFunctions.getPlans();
      * 
      *         // required device arguments
-     *         var exampleDevice = new Device(&#34;exampleDevice&#34;);
+     *         var exampleDevice = new Device("exampleDevice");
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4037,7 +4209,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4060,31 +4233,33 @@ public final class MetalFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = MetalFunctions.getPlans(GetPlansArgs.builder()
      *             .sorts(GetPlansSortArgs.builder()
-     *                 .attribute(&#34;pricing_hour&#34;)
-     *                 .direction(&#34;asc&#34;)
+     *                 .attribute("pricing_hour")
+     *                 .direction("asc")
      *                 .build())
      *             .filters(            
      *                 GetPlansFilterArgs.builder()
-     *                     .attribute(&#34;pricing_hour&#34;)
+     *                     .attribute("pricing_hour")
      *                     .values(2.5)
-     *                     .matchBy(&#34;less_than&#34;)
+     *                     .matchBy("less_than")
      *                     .build(),
      *                 GetPlansFilterArgs.builder()
-     *                     .attribute(&#34;available_in_metros&#34;)
+     *                     .attribute("available_in_metros")
      *                     .values(                    
-     *                         &#34;da&#34;,
-     *                         &#34;sv&#34;)
+     *                         "da",
+     *                         "sv")
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;plans&#34;, example.applyValue(getPlansResult -&gt; getPlansResult.plans()));
+     *         ctx.export("plans", example.applyValue(getPlansResult -> getPlansResult.plans()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4108,27 +4283,28 @@ public final class MetalFunctions {
      *         final var example = MetalFunctions.getPlans(GetPlansArgs.builder()
      *             .filters(            
      *                 GetPlansFilterArgs.builder()
-     *                     .attribute(&#34;class&#34;)
-     *                     .values(&#34;large&#34;)
-     *                     .matchBy(&#34;substring&#34;)
+     *                     .attribute("class")
+     *                     .values("large")
+     *                     .matchBy("substring")
      *                     .build(),
      *                 GetPlansFilterArgs.builder()
-     *                     .attribute(&#34;deployment_types&#34;)
-     *                     .values(&#34;spot_market&#34;)
+     *                     .attribute("deployment_types")
+     *                     .values("spot_market")
      *                     .build(),
      *                 GetPlansFilterArgs.builder()
-     *                     .attribute(&#34;available_in_metros&#34;)
+     *                     .attribute("available_in_metros")
      *                     .values(                    
-     *                         &#34;da&#34;,
-     *                         &#34;sv&#34;)
+     *                         "da",
+     *                         "sv")
      *                     .all(true)
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;plans&#34;, example.applyValue(getPlansResult -&gt; getPlansResult.plans()));
+     *         ctx.export("plans", example.applyValue(getPlansResult -> getPlansResult.plans()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Ignoring Changes to Plans/Metro
@@ -4138,7 +4314,8 @@ public final class MetalFunctions {
      * As described in the `data-resource-behavior` feature as shown in the example below.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4163,43 +4340,45 @@ public final class MetalFunctions {
      *     public static void stack(Context ctx) {
      *         final var examplePlans = MetalFunctions.getPlans(GetPlansArgs.builder()
      *             .sorts(GetPlansSortArgs.builder()
-     *                 .attribute(&#34;pricing_hour&#34;)
-     *                 .direction(&#34;asc&#34;)
+     *                 .attribute("pricing_hour")
+     *                 .direction("asc")
      *                 .build())
      *             .filters(            
      *                 GetPlansFilterArgs.builder()
-     *                     .attribute(&#34;name&#34;)
+     *                     .attribute("name")
      *                     .values(                    
-     *                         &#34;c3.small.x86&#34;,
-     *                         &#34;c3.medium.x86&#34;,
-     *                         &#34;m3.large.x86&#34;)
+     *                         "c3.small.x86",
+     *                         "c3.medium.x86",
+     *                         "m3.large.x86")
      *                     .build(),
      *                 GetPlansFilterArgs.builder()
-     *                     .attribute(&#34;available_in_metros&#34;)
-     *                     .values(&#34;sv&#34;)
+     *                     .attribute("available_in_metros")
+     *                     .values("sv")
      *                     .build())
      *             .build());
      * 
      *         // This equinix_metal_device will use the first returned plan and the first metro in which that plan is available
      *         // It will ignore future changes on plan and metro
-     *         var exampleDevice = new Device(&#34;exampleDevice&#34;, DeviceArgs.builder()
-     *             .hostname(&#34;example&#34;)
-     *             .plan(examplePlans.applyValue(getPlansResult -&gt; getPlansResult.plans()[0].name()))
-     *             .metro(examplePlans.applyValue(getPlansResult -&gt; getPlansResult.plans()[0].availableInMetros()[0]))
-     *             .operatingSystem(&#34;ubuntu_20_04&#34;)
-     *             .billingCycle(&#34;hourly&#34;)
+     *         var exampleDevice = new Device("exampleDevice", DeviceArgs.builder()
+     *             .hostname("example")
+     *             .plan(examplePlans.applyValue(getPlansResult -> getPlansResult.plans()[0].name()))
+     *             .metro(examplePlans.applyValue(getPlansResult -> getPlansResult.plans()[0].availableInMetros()[0]))
+     *             .operatingSystem("ubuntu_20_04")
+     *             .billingCycle("hourly")
      *             .projectId(var_.project_id())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * If your use case requires dynamic changes of a device plan or metro you can define the lifecycle with a condition.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4222,15 +4401,16 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var ignorePlansMetrosChanges = config.get(&#34;ignorePlansMetrosChanges&#34;).orElse(false);
+     *         final var ignorePlansMetrosChanges = config.get("ignorePlansMetrosChanges").orElse(false);
      *         final var examplePlans = MetalFunctions.getPlans();
      * 
      *         // required device arguments
-     *         var exampleDevice = new Device(&#34;exampleDevice&#34;);
+     *         var exampleDevice = new Device("exampleDevice");
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4245,7 +4425,8 @@ public final class MetalFunctions {
      * Create a device and read it&#39;s eth0 port to the datasource.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4268,25 +4449,26 @@ public final class MetalFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var projectId = &#34;&lt;UUID_of_your_project&gt;&#34;;
+     *         final var projectId = "<UUID_of_your_project>";
      * 
-     *         var testDevice = new Device(&#34;testDevice&#34;, DeviceArgs.builder()
-     *             .hostname(&#34;tfacc-test-device-port&#34;)
-     *             .plan(&#34;c3.medium.x86&#34;)
-     *             .metro(&#34;sv&#34;)
-     *             .operatingSystem(&#34;ubuntu_20_04&#34;)
-     *             .billingCycle(&#34;hourly&#34;)
+     *         var testDevice = new Device("testDevice", DeviceArgs.builder()
+     *             .hostname("tfacc-test-device-port")
+     *             .plan("c3.medium.x86")
+     *             .metro("sv")
+     *             .operatingSystem("ubuntu_20_04")
+     *             .billingCycle("hourly")
      *             .projectId(projectId)
      *             .build());
      * 
      *         final var testPort = MetalFunctions.getPort(GetPortArgs.builder()
      *             .deviceId(testDevice.id())
-     *             .name(&#34;eth0&#34;)
+     *             .name("eth0")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4301,7 +4483,8 @@ public final class MetalFunctions {
      * Create a device and read it&#39;s eth0 port to the datasource.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4324,25 +4507,26 @@ public final class MetalFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var projectId = &#34;&lt;UUID_of_your_project&gt;&#34;;
+     *         final var projectId = "<UUID_of_your_project>";
      * 
-     *         var testDevice = new Device(&#34;testDevice&#34;, DeviceArgs.builder()
-     *             .hostname(&#34;tfacc-test-device-port&#34;)
-     *             .plan(&#34;c3.medium.x86&#34;)
-     *             .metro(&#34;sv&#34;)
-     *             .operatingSystem(&#34;ubuntu_20_04&#34;)
-     *             .billingCycle(&#34;hourly&#34;)
+     *         var testDevice = new Device("testDevice", DeviceArgs.builder()
+     *             .hostname("tfacc-test-device-port")
+     *             .plan("c3.medium.x86")
+     *             .metro("sv")
+     *             .operatingSystem("ubuntu_20_04")
+     *             .billingCycle("hourly")
      *             .projectId(projectId)
      *             .build());
      * 
      *         final var testPort = MetalFunctions.getPort(GetPortArgs.builder()
      *             .deviceId(testDevice.id())
-     *             .name(&#34;eth0&#34;)
+     *             .name("eth0")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4357,7 +4541,8 @@ public final class MetalFunctions {
      * Create a device and read it&#39;s eth0 port to the datasource.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4380,25 +4565,26 @@ public final class MetalFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var projectId = &#34;&lt;UUID_of_your_project&gt;&#34;;
+     *         final var projectId = "<UUID_of_your_project>";
      * 
-     *         var testDevice = new Device(&#34;testDevice&#34;, DeviceArgs.builder()
-     *             .hostname(&#34;tfacc-test-device-port&#34;)
-     *             .plan(&#34;c3.medium.x86&#34;)
-     *             .metro(&#34;sv&#34;)
-     *             .operatingSystem(&#34;ubuntu_20_04&#34;)
-     *             .billingCycle(&#34;hourly&#34;)
+     *         var testDevice = new Device("testDevice", DeviceArgs.builder()
+     *             .hostname("tfacc-test-device-port")
+     *             .plan("c3.medium.x86")
+     *             .metro("sv")
+     *             .operatingSystem("ubuntu_20_04")
+     *             .billingCycle("hourly")
      *             .projectId(projectId)
      *             .build());
      * 
      *         final var testPort = MetalFunctions.getPort(GetPortArgs.builder()
      *             .deviceId(testDevice.id())
-     *             .name(&#34;eth0&#34;)
+     *             .name("eth0")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4413,7 +4599,8 @@ public final class MetalFunctions {
      * Create a device and read it&#39;s eth0 port to the datasource.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4436,25 +4623,26 @@ public final class MetalFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var projectId = &#34;&lt;UUID_of_your_project&gt;&#34;;
+     *         final var projectId = "<UUID_of_your_project>";
      * 
-     *         var testDevice = new Device(&#34;testDevice&#34;, DeviceArgs.builder()
-     *             .hostname(&#34;tfacc-test-device-port&#34;)
-     *             .plan(&#34;c3.medium.x86&#34;)
-     *             .metro(&#34;sv&#34;)
-     *             .operatingSystem(&#34;ubuntu_20_04&#34;)
-     *             .billingCycle(&#34;hourly&#34;)
+     *         var testDevice = new Device("testDevice", DeviceArgs.builder()
+     *             .hostname("tfacc-test-device-port")
+     *             .plan("c3.medium.x86")
+     *             .metro("sv")
+     *             .operatingSystem("ubuntu_20_04")
+     *             .billingCycle("hourly")
      *             .projectId(projectId)
      *             .build());
      * 
      *         final var testPort = MetalFunctions.getPort(GetPortArgs.builder()
      *             .deviceId(testDevice.id())
-     *             .name(&#34;eth0&#34;)
+     *             .name("eth0")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4469,7 +4657,8 @@ public final class MetalFunctions {
      * Create a device and read it&#39;s eth0 port to the datasource.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4492,25 +4681,26 @@ public final class MetalFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var projectId = &#34;&lt;UUID_of_your_project&gt;&#34;;
+     *         final var projectId = "<UUID_of_your_project>";
      * 
-     *         var testDevice = new Device(&#34;testDevice&#34;, DeviceArgs.builder()
-     *             .hostname(&#34;tfacc-test-device-port&#34;)
-     *             .plan(&#34;c3.medium.x86&#34;)
-     *             .metro(&#34;sv&#34;)
-     *             .operatingSystem(&#34;ubuntu_20_04&#34;)
-     *             .billingCycle(&#34;hourly&#34;)
+     *         var testDevice = new Device("testDevice", DeviceArgs.builder()
+     *             .hostname("tfacc-test-device-port")
+     *             .plan("c3.medium.x86")
+     *             .metro("sv")
+     *             .operatingSystem("ubuntu_20_04")
+     *             .billingCycle("hourly")
      *             .projectId(projectId)
      *             .build());
      * 
      *         final var testPort = MetalFunctions.getPort(GetPortArgs.builder()
      *             .deviceId(testDevice.id())
-     *             .name(&#34;eth0&#34;)
+     *             .name("eth0")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4525,7 +4715,8 @@ public final class MetalFunctions {
      * Create a device and read it&#39;s eth0 port to the datasource.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4548,25 +4739,26 @@ public final class MetalFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var projectId = &#34;&lt;UUID_of_your_project&gt;&#34;;
+     *         final var projectId = "<UUID_of_your_project>";
      * 
-     *         var testDevice = new Device(&#34;testDevice&#34;, DeviceArgs.builder()
-     *             .hostname(&#34;tfacc-test-device-port&#34;)
-     *             .plan(&#34;c3.medium.x86&#34;)
-     *             .metro(&#34;sv&#34;)
-     *             .operatingSystem(&#34;ubuntu_20_04&#34;)
-     *             .billingCycle(&#34;hourly&#34;)
+     *         var testDevice = new Device("testDevice", DeviceArgs.builder()
+     *             .hostname("tfacc-test-device-port")
+     *             .plan("c3.medium.x86")
+     *             .metro("sv")
+     *             .operatingSystem("ubuntu_20_04")
+     *             .billingCycle("hourly")
      *             .projectId(projectId)
      *             .build());
      * 
      *         final var testPort = MetalFunctions.getPort(GetPortArgs.builder()
      *             .deviceId(testDevice.id())
-     *             .name(&#34;eth0&#34;)
+     *             .name("eth0")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4631,7 +4823,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4653,13 +4846,14 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var tfProject1 = MetalFunctions.getProject(GetProjectArgs.builder()
-     *             .name(&#34;Terraform Fun&#34;)
+     *             .name("Terraform Fun")
      *             .build());
      * 
-     *         ctx.export(&#34;usersOfTerraformFun&#34;, tfProject1.applyValue(getProjectResult -&gt; getProjectResult.userIds()));
+     *         ctx.export("usersOfTerraformFun", tfProject1.applyValue(getProjectResult -> getProjectResult.userIds()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4672,7 +4866,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4694,13 +4889,14 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var tfProject1 = MetalFunctions.getProject(GetProjectArgs.builder()
-     *             .name(&#34;Terraform Fun&#34;)
+     *             .name("Terraform Fun")
      *             .build());
      * 
-     *         ctx.export(&#34;usersOfTerraformFun&#34;, tfProject1.applyValue(getProjectResult -&gt; getProjectResult.userIds()));
+     *         ctx.export("usersOfTerraformFun", tfProject1.applyValue(getProjectResult -> getProjectResult.userIds()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4713,7 +4909,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4735,13 +4932,14 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var tfProject1 = MetalFunctions.getProject(GetProjectArgs.builder()
-     *             .name(&#34;Terraform Fun&#34;)
+     *             .name("Terraform Fun")
      *             .build());
      * 
-     *         ctx.export(&#34;usersOfTerraformFun&#34;, tfProject1.applyValue(getProjectResult -&gt; getProjectResult.userIds()));
+     *         ctx.export("usersOfTerraformFun", tfProject1.applyValue(getProjectResult -> getProjectResult.userIds()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4754,7 +4952,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4776,13 +4975,14 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var tfProject1 = MetalFunctions.getProject(GetProjectArgs.builder()
-     *             .name(&#34;Terraform Fun&#34;)
+     *             .name("Terraform Fun")
      *             .build());
      * 
-     *         ctx.export(&#34;usersOfTerraformFun&#34;, tfProject1.applyValue(getProjectResult -&gt; getProjectResult.userIds()));
+     *         ctx.export("usersOfTerraformFun", tfProject1.applyValue(getProjectResult -> getProjectResult.userIds()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4795,7 +4995,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4817,13 +5018,14 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var tfProject1 = MetalFunctions.getProject(GetProjectArgs.builder()
-     *             .name(&#34;Terraform Fun&#34;)
+     *             .name("Terraform Fun")
      *             .build());
      * 
-     *         ctx.export(&#34;usersOfTerraformFun&#34;, tfProject1.applyValue(getProjectResult -&gt; getProjectResult.userIds()));
+     *         ctx.export("usersOfTerraformFun", tfProject1.applyValue(getProjectResult -> getProjectResult.userIds()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4836,7 +5038,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4858,13 +5061,14 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var tfProject1 = MetalFunctions.getProject(GetProjectArgs.builder()
-     *             .name(&#34;Terraform Fun&#34;)
+     *             .name("Terraform Fun")
      *             .build());
      * 
-     *         ctx.export(&#34;usersOfTerraformFun&#34;, tfProject1.applyValue(getProjectResult -&gt; getProjectResult.userIds()));
+     *         ctx.export("usersOfTerraformFun", tfProject1.applyValue(getProjectResult -> getProjectResult.userIds()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4877,7 +5081,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4899,13 +5104,14 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myKey = MetalFunctions.getProjectSshKey(GetProjectSshKeyArgs.builder()
-     *             .search(&#34;username@hostname&#34;)
+     *             .search("username{@literal @}hostname")
      *             .projectId(local.project_id())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4918,7 +5124,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4940,13 +5147,14 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myKey = MetalFunctions.getProjectSshKey(GetProjectSshKeyArgs.builder()
-     *             .search(&#34;username@hostname&#34;)
+     *             .search("username{@literal @}hostname")
      *             .projectId(local.project_id())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4959,7 +5167,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4981,13 +5190,14 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myKey = MetalFunctions.getProjectSshKey(GetProjectSshKeyArgs.builder()
-     *             .search(&#34;username@hostname&#34;)
+     *             .search("username{@literal @}hostname")
      *             .projectId(local.project_id())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5000,7 +5210,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5022,13 +5233,14 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myKey = MetalFunctions.getProjectSshKey(GetProjectSshKeyArgs.builder()
-     *             .search(&#34;username@hostname&#34;)
+     *             .search("username{@literal @}hostname")
      *             .projectId(local.project_id())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5109,7 +5321,8 @@ public final class MetalFunctions {
      * Lookup by metro:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5131,13 +5344,14 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = MetalFunctions.getSpotMarketPrice(GetSpotMarketPriceArgs.builder()
-     *             .metro(&#34;sv&#34;)
-     *             .plan(&#34;c3.small.x86&#34;)
+     *             .metro("sv")
+     *             .plan("c3.small.x86")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5152,7 +5366,8 @@ public final class MetalFunctions {
      * Lookup by metro:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5174,13 +5389,14 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = MetalFunctions.getSpotMarketPrice(GetSpotMarketPriceArgs.builder()
-     *             .metro(&#34;sv&#34;)
-     *             .plan(&#34;c3.small.x86&#34;)
+     *             .metro("sv")
+     *             .plan("c3.small.x86")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5195,7 +5411,8 @@ public final class MetalFunctions {
      * Lookup by metro:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5217,13 +5434,14 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = MetalFunctions.getSpotMarketPrice(GetSpotMarketPriceArgs.builder()
-     *             .metro(&#34;sv&#34;)
-     *             .plan(&#34;c3.small.x86&#34;)
+     *             .metro("sv")
+     *             .plan("c3.small.x86")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5238,7 +5456,8 @@ public final class MetalFunctions {
      * Lookup by metro:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5260,13 +5479,14 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = MetalFunctions.getSpotMarketPrice(GetSpotMarketPriceArgs.builder()
-     *             .metro(&#34;sv&#34;)
-     *             .plan(&#34;c3.small.x86&#34;)
+     *             .metro("sv")
+     *             .plan("c3.small.x86")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5329,7 +5549,8 @@ public final class MetalFunctions {
      * Fetch a vlan by ID:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5352,9 +5573,9 @@ public final class MetalFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var foovlan = new Vlan(&#34;foovlan&#34;, VlanArgs.builder()
+     *         var foovlan = new Vlan("foovlan", VlanArgs.builder()
      *             .projectId(local.project_id())
-     *             .metro(&#34;sv&#34;)
+     *             .metro("sv")
      *             .vxlan(5)
      *             .build());
      * 
@@ -5364,13 +5585,15 @@ public final class MetalFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Fetch a vlan by project ID, vxlan and metro
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5394,12 +5617,13 @@ public final class MetalFunctions {
      *         final var dsvlan = MetalFunctions.getVlan(GetVlanArgs.builder()
      *             .projectId(local.project_id())
      *             .vxlan(5)
-     *             .metro(&#34;sv&#34;)
+     *             .metro("sv")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5414,7 +5638,8 @@ public final class MetalFunctions {
      * Fetch a vlan by ID:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5437,9 +5662,9 @@ public final class MetalFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var foovlan = new Vlan(&#34;foovlan&#34;, VlanArgs.builder()
+     *         var foovlan = new Vlan("foovlan", VlanArgs.builder()
      *             .projectId(local.project_id())
-     *             .metro(&#34;sv&#34;)
+     *             .metro("sv")
      *             .vxlan(5)
      *             .build());
      * 
@@ -5449,13 +5674,15 @@ public final class MetalFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Fetch a vlan by project ID, vxlan and metro
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5479,12 +5706,13 @@ public final class MetalFunctions {
      *         final var dsvlan = MetalFunctions.getVlan(GetVlanArgs.builder()
      *             .projectId(local.project_id())
      *             .vxlan(5)
-     *             .metro(&#34;sv&#34;)
+     *             .metro("sv")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5499,7 +5727,8 @@ public final class MetalFunctions {
      * Fetch a vlan by ID:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5522,9 +5751,9 @@ public final class MetalFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var foovlan = new Vlan(&#34;foovlan&#34;, VlanArgs.builder()
+     *         var foovlan = new Vlan("foovlan", VlanArgs.builder()
      *             .projectId(local.project_id())
-     *             .metro(&#34;sv&#34;)
+     *             .metro("sv")
      *             .vxlan(5)
      *             .build());
      * 
@@ -5534,13 +5763,15 @@ public final class MetalFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Fetch a vlan by project ID, vxlan and metro
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5564,12 +5795,13 @@ public final class MetalFunctions {
      *         final var dsvlan = MetalFunctions.getVlan(GetVlanArgs.builder()
      *             .projectId(local.project_id())
      *             .vxlan(5)
-     *             .metro(&#34;sv&#34;)
+     *             .metro("sv")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5584,7 +5816,8 @@ public final class MetalFunctions {
      * Fetch a vlan by ID:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5607,9 +5840,9 @@ public final class MetalFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var foovlan = new Vlan(&#34;foovlan&#34;, VlanArgs.builder()
+     *         var foovlan = new Vlan("foovlan", VlanArgs.builder()
      *             .projectId(local.project_id())
-     *             .metro(&#34;sv&#34;)
+     *             .metro("sv")
      *             .vxlan(5)
      *             .build());
      * 
@@ -5619,13 +5852,15 @@ public final class MetalFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Fetch a vlan by project ID, vxlan and metro
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5649,12 +5884,13 @@ public final class MetalFunctions {
      *         final var dsvlan = MetalFunctions.getVlan(GetVlanArgs.builder()
      *             .projectId(local.project_id())
      *             .vxlan(5)
-     *             .metro(&#34;sv&#34;)
+     *             .metro("sv")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5669,7 +5905,8 @@ public final class MetalFunctions {
      * Fetch a vlan by ID:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5692,9 +5929,9 @@ public final class MetalFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var foovlan = new Vlan(&#34;foovlan&#34;, VlanArgs.builder()
+     *         var foovlan = new Vlan("foovlan", VlanArgs.builder()
      *             .projectId(local.project_id())
-     *             .metro(&#34;sv&#34;)
+     *             .metro("sv")
      *             .vxlan(5)
      *             .build());
      * 
@@ -5704,13 +5941,15 @@ public final class MetalFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Fetch a vlan by project ID, vxlan and metro
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5734,12 +5973,13 @@ public final class MetalFunctions {
      *         final var dsvlan = MetalFunctions.getVlan(GetVlanArgs.builder()
      *             .projectId(local.project_id())
      *             .vxlan(5)
-     *             .metro(&#34;sv&#34;)
+     *             .metro("sv")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5754,7 +5994,8 @@ public final class MetalFunctions {
      * Fetch a vlan by ID:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5777,9 +6018,9 @@ public final class MetalFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var foovlan = new Vlan(&#34;foovlan&#34;, VlanArgs.builder()
+     *         var foovlan = new Vlan("foovlan", VlanArgs.builder()
      *             .projectId(local.project_id())
-     *             .metro(&#34;sv&#34;)
+     *             .metro("sv")
      *             .vxlan(5)
      *             .build());
      * 
@@ -5789,13 +6030,15 @@ public final class MetalFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Fetch a vlan by project ID, vxlan and metro
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5819,12 +6062,13 @@ public final class MetalFunctions {
      *         final var dsvlan = MetalFunctions.getVlan(GetVlanArgs.builder()
      *             .projectId(local.project_id())
      *             .vxlan(5)
-     *             .metro(&#34;sv&#34;)
+     *             .metro("sv")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5839,7 +6083,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5861,12 +6106,13 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleVrf = MetalFunctions.getVrf(GetVrfArgs.builder()
-     *             .vrfId(&#34;48630899-9ff2-4ce6-a93f-50ff4ebcdf6e&#34;)
+     *             .vrfId("48630899-9ff2-4ce6-a93f-50ff4ebcdf6e")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5881,7 +6127,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5903,12 +6150,13 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleVrf = MetalFunctions.getVrf(GetVrfArgs.builder()
-     *             .vrfId(&#34;48630899-9ff2-4ce6-a93f-50ff4ebcdf6e&#34;)
+     *             .vrfId("48630899-9ff2-4ce6-a93f-50ff4ebcdf6e")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5923,7 +6171,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5945,12 +6194,13 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleVrf = MetalFunctions.getVrf(GetVrfArgs.builder()
-     *             .vrfId(&#34;48630899-9ff2-4ce6-a93f-50ff4ebcdf6e&#34;)
+     *             .vrfId("48630899-9ff2-4ce6-a93f-50ff4ebcdf6e")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5965,7 +6215,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5987,12 +6238,13 @@ public final class MetalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleVrf = MetalFunctions.getVrf(GetVrfArgs.builder()
-     *             .vrfId(&#34;48630899-9ff2-4ce6-a93f-50ff4ebcdf6e&#34;)
+     *             .vrfId("48630899-9ff2-4ce6-a93f-50ff4ebcdf6e")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

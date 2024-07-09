@@ -5,6 +5,7 @@ package com.equinix.pulumi.metal.outputs;
 
 import com.equinix.pulumi.metal.outputs.GetProjectBgpConfig;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -147,52 +148,82 @@ public final class GetProjectResult {
 
         @CustomType.Setter
         public Builder backendTransfer(Boolean backendTransfer) {
-            this.backendTransfer = Objects.requireNonNull(backendTransfer);
+            if (backendTransfer == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "backendTransfer");
+            }
+            this.backendTransfer = backendTransfer;
             return this;
         }
         @CustomType.Setter
         public Builder bgpConfig(GetProjectBgpConfig bgpConfig) {
-            this.bgpConfig = Objects.requireNonNull(bgpConfig);
+            if (bgpConfig == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "bgpConfig");
+            }
+            this.bgpConfig = bgpConfig;
             return this;
         }
         @CustomType.Setter
         public Builder created(String created) {
-            this.created = Objects.requireNonNull(created);
+            if (created == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "created");
+            }
+            this.created = created;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder organizationId(String organizationId) {
-            this.organizationId = Objects.requireNonNull(organizationId);
+            if (organizationId == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "organizationId");
+            }
+            this.organizationId = organizationId;
             return this;
         }
         @CustomType.Setter
         public Builder paymentMethodId(String paymentMethodId) {
-            this.paymentMethodId = Objects.requireNonNull(paymentMethodId);
+            if (paymentMethodId == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "paymentMethodId");
+            }
+            this.paymentMethodId = paymentMethodId;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder updated(String updated) {
-            this.updated = Objects.requireNonNull(updated);
+            if (updated == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "updated");
+            }
+            this.updated = updated;
             return this;
         }
         @CustomType.Setter
         public Builder userIds(List<String> userIds) {
-            this.userIds = Objects.requireNonNull(userIds);
+            if (userIds == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "userIds");
+            }
+            this.userIds = userIds;
             return this;
         }
         public Builder userIds(String... userIds) {

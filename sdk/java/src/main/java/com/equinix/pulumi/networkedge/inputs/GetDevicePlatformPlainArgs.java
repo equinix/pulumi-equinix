@@ -4,6 +4,7 @@
 package com.equinix.pulumi.networkedge.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -232,7 +233,9 @@ public final class GetDevicePlatformPlainArgs extends com.pulumi.resources.Invok
         }
 
         public GetDevicePlatformPlainArgs build() {
-            $.deviceType = Objects.requireNonNull($.deviceType, "expected parameter 'deviceType' to be non-null");
+            if ($.deviceType == null) {
+                throw new MissingRequiredPropertyException("GetDevicePlatformPlainArgs", "deviceType");
+            }
             return $;
         }
     }

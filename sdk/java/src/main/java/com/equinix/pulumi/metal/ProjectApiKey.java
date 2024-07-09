@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * Read-only keys only allow to list and view existing resources, read-write keys can also be used to create resources.
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -36,18 +37,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var projectId = config.get(&#34;projectId&#34;).get();
- *         final var readOnly = config.getBoolean(&#34;readOnly&#34;).orElse(false);
- *         var apiKey = new ProjectApiKey(&#34;apiKey&#34;, ProjectApiKeyArgs.builder()        
+ *         final var projectId = config.get("projectId").get();
+ *         final var readOnly = config.getBoolean("readOnly").orElse(false);
+ *         var apiKey = new ProjectApiKey("apiKey", ProjectApiKeyArgs.builder()        
  *             .projectId(projectId)
- *             .description(&#34;A project level API Key&#34;)
+ *             .description("A project level API Key")
  *             .readOnly(readOnly)
  *             .build());
  * 
- *         ctx.export(&#34;apiKeyToken&#34;, apiKey.token());
+ *         ctx.export("apiKeyToken", apiKey.token());
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  */
 @ResourceType(type="equinix:metal/projectApiKey:ProjectApiKey")

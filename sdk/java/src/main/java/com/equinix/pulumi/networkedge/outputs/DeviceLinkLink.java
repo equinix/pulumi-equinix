@@ -4,6 +4,7 @@
 package com.equinix.pulumi.networkedge.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -144,37 +145,54 @@ public final class DeviceLinkLink {
 
         @CustomType.Setter
         public Builder accountNumber(String accountNumber) {
-            this.accountNumber = Objects.requireNonNull(accountNumber);
+            if (accountNumber == null) {
+              throw new MissingRequiredPropertyException("DeviceLinkLink", "accountNumber");
+            }
+            this.accountNumber = accountNumber;
             return this;
         }
         @CustomType.Setter
         public Builder dstMetroCode(String dstMetroCode) {
-            this.dstMetroCode = Objects.requireNonNull(dstMetroCode);
+            if (dstMetroCode == null) {
+              throw new MissingRequiredPropertyException("DeviceLinkLink", "dstMetroCode");
+            }
+            this.dstMetroCode = dstMetroCode;
             return this;
         }
         @CustomType.Setter
         public Builder dstZoneCode(@Nullable String dstZoneCode) {
+
             this.dstZoneCode = dstZoneCode;
             return this;
         }
         @CustomType.Setter
         public Builder srcMetroCode(String srcMetroCode) {
-            this.srcMetroCode = Objects.requireNonNull(srcMetroCode);
+            if (srcMetroCode == null) {
+              throw new MissingRequiredPropertyException("DeviceLinkLink", "srcMetroCode");
+            }
+            this.srcMetroCode = srcMetroCode;
             return this;
         }
         @CustomType.Setter
         public Builder srcZoneCode(@Nullable String srcZoneCode) {
+
             this.srcZoneCode = srcZoneCode;
             return this;
         }
         @CustomType.Setter
         public Builder throughput(String throughput) {
-            this.throughput = Objects.requireNonNull(throughput);
+            if (throughput == null) {
+              throw new MissingRequiredPropertyException("DeviceLinkLink", "throughput");
+            }
+            this.throughput = throughput;
             return this;
         }
         @CustomType.Setter
         public Builder throughputUnit(String throughputUnit) {
-            this.throughputUnit = Objects.requireNonNull(throughputUnit);
+            if (throughputUnit == null) {
+              throw new MissingRequiredPropertyException("DeviceLinkLink", "throughputUnit");
+            }
+            this.throughputUnit = throughputUnit;
             return this;
         }
         public DeviceLinkLink build() {

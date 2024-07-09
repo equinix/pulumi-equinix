@@ -5,6 +5,7 @@ package com.equinix.pulumi.fabric.outputs;
 
 import com.equinix.pulumi.fabric.outputs.GetPortsDatumDeviceRedundancy;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -58,12 +59,18 @@ public final class GetPortsDatumDevice {
 
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetPortsDatumDevice", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder redundancies(List<GetPortsDatumDeviceRedundancy> redundancies) {
-            this.redundancies = Objects.requireNonNull(redundancies);
+            if (redundancies == null) {
+              throw new MissingRequiredPropertyException("GetPortsDatumDevice", "redundancies");
+            }
+            this.redundancies = redundancies;
             return this;
         }
         public Builder redundancies(GetPortsDatumDeviceRedundancy... redundancies) {

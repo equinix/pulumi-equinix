@@ -87,21 +87,25 @@ public final class ConnectionASideAccessPointLinkProtocol {
 
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder vlanCTag(@Nullable Integer vlanCTag) {
+
             this.vlanCTag = vlanCTag;
             return this;
         }
         @CustomType.Setter
         public Builder vlanSTag(@Nullable Integer vlanSTag) {
+
             this.vlanSTag = vlanSTag;
             return this;
         }
         @CustomType.Setter
         public Builder vlanTag(@Nullable Integer vlanTag) {
+
             this.vlanTag = vlanTag;
             return this;
         }

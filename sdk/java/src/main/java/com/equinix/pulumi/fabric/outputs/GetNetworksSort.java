@@ -58,11 +58,13 @@ public final class GetNetworksSort {
 
         @CustomType.Setter
         public Builder direction(@Nullable String direction) {
+
             this.direction = direction;
             return this;
         }
         @CustomType.Setter
         public Builder property(@Nullable String property) {
+
             this.property = property;
             return this;
         }

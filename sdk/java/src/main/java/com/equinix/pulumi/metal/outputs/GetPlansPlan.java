@@ -4,6 +4,7 @@
 package com.equinix.pulumi.metal.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
@@ -207,7 +208,10 @@ public final class GetPlansPlan {
 
         @CustomType.Setter
         public Builder availableInMetros(List<String> availableInMetros) {
-            this.availableInMetros = Objects.requireNonNull(availableInMetros);
+            if (availableInMetros == null) {
+              throw new MissingRequiredPropertyException("GetPlansPlan", "availableInMetros");
+            }
+            this.availableInMetros = availableInMetros;
             return this;
         }
         public Builder availableInMetros(String... availableInMetros) {
@@ -215,7 +219,10 @@ public final class GetPlansPlan {
         }
         @CustomType.Setter
         public Builder availableIns(List<String> availableIns) {
-            this.availableIns = Objects.requireNonNull(availableIns);
+            if (availableIns == null) {
+              throw new MissingRequiredPropertyException("GetPlansPlan", "availableIns");
+            }
+            this.availableIns = availableIns;
             return this;
         }
         public Builder availableIns(String... availableIns) {
@@ -223,12 +230,18 @@ public final class GetPlansPlan {
         }
         @CustomType.Setter("class")
         public Builder class_(String class_) {
-            this.class_ = Objects.requireNonNull(class_);
+            if (class_ == null) {
+              throw new MissingRequiredPropertyException("GetPlansPlan", "class_");
+            }
+            this.class_ = class_;
             return this;
         }
         @CustomType.Setter
         public Builder deploymentTypes(List<String> deploymentTypes) {
-            this.deploymentTypes = Objects.requireNonNull(deploymentTypes);
+            if (deploymentTypes == null) {
+              throw new MissingRequiredPropertyException("GetPlansPlan", "deploymentTypes");
+            }
+            this.deploymentTypes = deploymentTypes;
             return this;
         }
         public Builder deploymentTypes(String... deploymentTypes) {
@@ -236,42 +249,66 @@ public final class GetPlansPlan {
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetPlansPlan", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetPlansPlan", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder legacy(Boolean legacy) {
-            this.legacy = Objects.requireNonNull(legacy);
+            if (legacy == null) {
+              throw new MissingRequiredPropertyException("GetPlansPlan", "legacy");
+            }
+            this.legacy = legacy;
             return this;
         }
         @CustomType.Setter
         public Builder line(String line) {
-            this.line = Objects.requireNonNull(line);
+            if (line == null) {
+              throw new MissingRequiredPropertyException("GetPlansPlan", "line");
+            }
+            this.line = line;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetPlansPlan", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder pricingHour(Double pricingHour) {
-            this.pricingHour = Objects.requireNonNull(pricingHour);
+            if (pricingHour == null) {
+              throw new MissingRequiredPropertyException("GetPlansPlan", "pricingHour");
+            }
+            this.pricingHour = pricingHour;
             return this;
         }
         @CustomType.Setter
         public Builder pricingMonth(Double pricingMonth) {
-            this.pricingMonth = Objects.requireNonNull(pricingMonth);
+            if (pricingMonth == null) {
+              throw new MissingRequiredPropertyException("GetPlansPlan", "pricingMonth");
+            }
+            this.pricingMonth = pricingMonth;
             return this;
         }
         @CustomType.Setter
         public Builder slug(String slug) {
-            this.slug = Objects.requireNonNull(slug);
+            if (slug == null) {
+              throw new MissingRequiredPropertyException("GetPlansPlan", "slug");
+            }
+            this.slug = slug;
             return this;
         }
         public GetPlansPlan build() {

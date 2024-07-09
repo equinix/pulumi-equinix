@@ -4,6 +4,7 @@
 package com.equinix.pulumi.fabric.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -59,11 +60,15 @@ public final class RoutingProtocolBfd {
 
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
-            this.enabled = Objects.requireNonNull(enabled);
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("RoutingProtocolBfd", "enabled");
+            }
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder interval(@Nullable String interval) {
+
             this.interval = interval;
             return this;
         }

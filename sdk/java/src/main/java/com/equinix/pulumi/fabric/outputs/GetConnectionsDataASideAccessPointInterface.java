@@ -4,6 +4,7 @@
 package com.equinix.pulumi.fabric.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -73,16 +74,21 @@ public final class GetConnectionsDataASideAccessPointInterface {
 
         @CustomType.Setter
         public Builder id(Integer id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsDataASideAccessPointInterface", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder uuid(@Nullable String uuid) {
+
             this.uuid = uuid;
             return this;
         }

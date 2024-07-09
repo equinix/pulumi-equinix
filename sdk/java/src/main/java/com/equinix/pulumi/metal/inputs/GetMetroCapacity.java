@@ -4,6 +4,7 @@
 package com.equinix.pulumi.metal.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -93,7 +94,9 @@ public final class GetMetroCapacity extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetMetroCapacity build() {
-            $.plan = Objects.requireNonNull($.plan, "expected parameter 'plan' to be non-null");
+            if ($.plan == null) {
+                throw new MissingRequiredPropertyException("GetMetroCapacity", "plan");
+            }
             return $;
         }
     }

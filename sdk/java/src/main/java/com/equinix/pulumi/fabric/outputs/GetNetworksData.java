@@ -10,6 +10,7 @@ import com.equinix.pulumi.fabric.outputs.GetNetworksDataNotification;
 import com.equinix.pulumi.fabric.outputs.GetNetworksDataOperation;
 import com.equinix.pulumi.fabric.outputs.GetNetworksDataProject;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -218,7 +219,10 @@ public final class GetNetworksData {
 
         @CustomType.Setter
         public Builder changeLogs(List<GetNetworksDataChangeLog> changeLogs) {
-            this.changeLogs = Objects.requireNonNull(changeLogs);
+            if (changeLogs == null) {
+              throw new MissingRequiredPropertyException("GetNetworksData", "changeLogs");
+            }
+            this.changeLogs = changeLogs;
             return this;
         }
         public Builder changeLogs(GetNetworksDataChangeLog... changeLogs) {
@@ -226,7 +230,10 @@ public final class GetNetworksData {
         }
         @CustomType.Setter
         public Builder changes(List<GetNetworksDataChange> changes) {
-            this.changes = Objects.requireNonNull(changes);
+            if (changes == null) {
+              throw new MissingRequiredPropertyException("GetNetworksData", "changes");
+            }
+            this.changes = changes;
             return this;
         }
         public Builder changes(GetNetworksDataChange... changes) {
@@ -234,17 +241,26 @@ public final class GetNetworksData {
         }
         @CustomType.Setter
         public Builder connectionsCount(Integer connectionsCount) {
-            this.connectionsCount = Objects.requireNonNull(connectionsCount);
+            if (connectionsCount == null) {
+              throw new MissingRequiredPropertyException("GetNetworksData", "connectionsCount");
+            }
+            this.connectionsCount = connectionsCount;
             return this;
         }
         @CustomType.Setter
         public Builder href(String href) {
-            this.href = Objects.requireNonNull(href);
+            if (href == null) {
+              throw new MissingRequiredPropertyException("GetNetworksData", "href");
+            }
+            this.href = href;
             return this;
         }
         @CustomType.Setter
         public Builder locations(List<GetNetworksDataLocation> locations) {
-            this.locations = Objects.requireNonNull(locations);
+            if (locations == null) {
+              throw new MissingRequiredPropertyException("GetNetworksData", "locations");
+            }
+            this.locations = locations;
             return this;
         }
         public Builder locations(GetNetworksDataLocation... locations) {
@@ -252,12 +268,18 @@ public final class GetNetworksData {
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetNetworksData", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder notifications(List<GetNetworksDataNotification> notifications) {
-            this.notifications = Objects.requireNonNull(notifications);
+            if (notifications == null) {
+              throw new MissingRequiredPropertyException("GetNetworksData", "notifications");
+            }
+            this.notifications = notifications;
             return this;
         }
         public Builder notifications(GetNetworksDataNotification... notifications) {
@@ -265,7 +287,10 @@ public final class GetNetworksData {
         }
         @CustomType.Setter
         public Builder operations(List<GetNetworksDataOperation> operations) {
-            this.operations = Objects.requireNonNull(operations);
+            if (operations == null) {
+              throw new MissingRequiredPropertyException("GetNetworksData", "operations");
+            }
+            this.operations = operations;
             return this;
         }
         public Builder operations(GetNetworksDataOperation... operations) {
@@ -273,7 +298,10 @@ public final class GetNetworksData {
         }
         @CustomType.Setter
         public Builder projects(List<GetNetworksDataProject> projects) {
-            this.projects = Objects.requireNonNull(projects);
+            if (projects == null) {
+              throw new MissingRequiredPropertyException("GetNetworksData", "projects");
+            }
+            this.projects = projects;
             return this;
         }
         public Builder projects(GetNetworksDataProject... projects) {
@@ -281,22 +309,34 @@ public final class GetNetworksData {
         }
         @CustomType.Setter
         public Builder scope(String scope) {
-            this.scope = Objects.requireNonNull(scope);
+            if (scope == null) {
+              throw new MissingRequiredPropertyException("GetNetworksData", "scope");
+            }
+            this.scope = scope;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetNetworksData", "state");
+            }
+            this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetNetworksData", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder uuid(String uuid) {
-            this.uuid = Objects.requireNonNull(uuid);
+            if (uuid == null) {
+              throw new MissingRequiredPropertyException("GetNetworksData", "uuid");
+            }
+            this.uuid = uuid;
             return this;
         }
         public GetNetworksData build() {

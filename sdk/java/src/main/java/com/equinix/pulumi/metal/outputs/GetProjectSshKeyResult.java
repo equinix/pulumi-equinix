@@ -4,6 +4,7 @@
 package com.equinix.pulumi.metal.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -148,47 +149,72 @@ public final class GetProjectSshKeyResult {
 
         @CustomType.Setter
         public Builder created(String created) {
-            this.created = Objects.requireNonNull(created);
+            if (created == null) {
+              throw new MissingRequiredPropertyException("GetProjectSshKeyResult", "created");
+            }
+            this.created = created;
             return this;
         }
         @CustomType.Setter
         public Builder fingerprint(String fingerprint) {
-            this.fingerprint = Objects.requireNonNull(fingerprint);
+            if (fingerprint == null) {
+              throw new MissingRequiredPropertyException("GetProjectSshKeyResult", "fingerprint");
+            }
+            this.fingerprint = fingerprint;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetProjectSshKeyResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetProjectSshKeyResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder ownerId(String ownerId) {
-            this.ownerId = Objects.requireNonNull(ownerId);
+            if (ownerId == null) {
+              throw new MissingRequiredPropertyException("GetProjectSshKeyResult", "ownerId");
+            }
+            this.ownerId = ownerId;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("GetProjectSshKeyResult", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder publicKey(String publicKey) {
-            this.publicKey = Objects.requireNonNull(publicKey);
+            if (publicKey == null) {
+              throw new MissingRequiredPropertyException("GetProjectSshKeyResult", "publicKey");
+            }
+            this.publicKey = publicKey;
             return this;
         }
         @CustomType.Setter
         public Builder search(@Nullable String search) {
+
             this.search = search;
             return this;
         }
         @CustomType.Setter
         public Builder updated(String updated) {
-            this.updated = Objects.requireNonNull(updated);
+            if (updated == null) {
+              throw new MissingRequiredPropertyException("GetProjectSshKeyResult", "updated");
+            }
+            this.updated = updated;
             return this;
         }
         public GetProjectSshKeyResult build() {

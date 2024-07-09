@@ -6,6 +6,7 @@ package com.equinix.pulumi.metal;
 import com.equinix.pulumi.metal.inputs.SpotMarketRequestInstanceParametersArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
@@ -370,11 +371,21 @@ public final class SpotMarketRequestArgs extends com.pulumi.resources.ResourceAr
         }
 
         public SpotMarketRequestArgs build() {
-            $.devicesMax = Objects.requireNonNull($.devicesMax, "expected parameter 'devicesMax' to be non-null");
-            $.devicesMin = Objects.requireNonNull($.devicesMin, "expected parameter 'devicesMin' to be non-null");
-            $.instanceParameters = Objects.requireNonNull($.instanceParameters, "expected parameter 'instanceParameters' to be non-null");
-            $.maxBidPrice = Objects.requireNonNull($.maxBidPrice, "expected parameter 'maxBidPrice' to be non-null");
-            $.projectId = Objects.requireNonNull($.projectId, "expected parameter 'projectId' to be non-null");
+            if ($.devicesMax == null) {
+                throw new MissingRequiredPropertyException("SpotMarketRequestArgs", "devicesMax");
+            }
+            if ($.devicesMin == null) {
+                throw new MissingRequiredPropertyException("SpotMarketRequestArgs", "devicesMin");
+            }
+            if ($.instanceParameters == null) {
+                throw new MissingRequiredPropertyException("SpotMarketRequestArgs", "instanceParameters");
+            }
+            if ($.maxBidPrice == null) {
+                throw new MissingRequiredPropertyException("SpotMarketRequestArgs", "maxBidPrice");
+            }
+            if ($.projectId == null) {
+                throw new MissingRequiredPropertyException("SpotMarketRequestArgs", "projectId");
+            }
             return $;
         }
     }

@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * Device and reserved block must be in the same metro.
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -40,18 +41,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var deviceId = config.get(&#34;deviceId&#34;).get();
- *         final var subnetCidr = config.get(&#34;subnetCidr&#34;).orElse(&#34;147.229.10.152/31&#34;);
- *         var ipAttachResource = new IpAttachment(&#34;ipAttachResource&#34;, IpAttachmentArgs.builder()        
+ *         final var deviceId = config.get("deviceId").get();
+ *         final var subnetCidr = config.get("subnetCidr").orElse("147.229.10.152/31");
+ *         var ipAttachResource = new IpAttachment("ipAttachResource", IpAttachmentArgs.builder()        
  *             .deviceId(deviceId)
  *             .cidrNotation(subnetCidr)
  *             .build());
  * 
- *         ctx.export(&#34;ipAttach&#34;, ipAttachResource.id());
- *         ctx.export(&#34;ipNetmask&#34;, ipAttachResource.netmask());
+ *         ctx.export("ipAttach", ipAttachResource.id());
+ *         ctx.export("ipNetmask", ipAttachResource.netmask());
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  */
 @ResourceType(type="equinix:metal/ipAttachment:IpAttachment")

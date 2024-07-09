@@ -6,6 +6,7 @@ package com.equinix.pulumi.metal.outputs;
 import com.equinix.pulumi.metal.outputs.GetDeviceBgpNeighborsBgpNeighborRoutesIn;
 import com.equinix.pulumi.metal.outputs.GetDeviceBgpNeighborsBgpNeighborRoutesOut;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -174,41 +175,63 @@ public final class GetDeviceBgpNeighborsBgpNeighbor {
 
         @CustomType.Setter
         public Builder addressFamily(Integer addressFamily) {
-            this.addressFamily = Objects.requireNonNull(addressFamily);
+            if (addressFamily == null) {
+              throw new MissingRequiredPropertyException("GetDeviceBgpNeighborsBgpNeighbor", "addressFamily");
+            }
+            this.addressFamily = addressFamily;
             return this;
         }
         @CustomType.Setter
         public Builder customerAs(Integer customerAs) {
-            this.customerAs = Objects.requireNonNull(customerAs);
+            if (customerAs == null) {
+              throw new MissingRequiredPropertyException("GetDeviceBgpNeighborsBgpNeighbor", "customerAs");
+            }
+            this.customerAs = customerAs;
             return this;
         }
         @CustomType.Setter
         public Builder customerIp(String customerIp) {
-            this.customerIp = Objects.requireNonNull(customerIp);
+            if (customerIp == null) {
+              throw new MissingRequiredPropertyException("GetDeviceBgpNeighborsBgpNeighbor", "customerIp");
+            }
+            this.customerIp = customerIp;
             return this;
         }
         @CustomType.Setter
         public Builder md5Enabled(Boolean md5Enabled) {
-            this.md5Enabled = Objects.requireNonNull(md5Enabled);
+            if (md5Enabled == null) {
+              throw new MissingRequiredPropertyException("GetDeviceBgpNeighborsBgpNeighbor", "md5Enabled");
+            }
+            this.md5Enabled = md5Enabled;
             return this;
         }
         @CustomType.Setter
         public Builder md5Password(String md5Password) {
-            this.md5Password = Objects.requireNonNull(md5Password);
+            if (md5Password == null) {
+              throw new MissingRequiredPropertyException("GetDeviceBgpNeighborsBgpNeighbor", "md5Password");
+            }
+            this.md5Password = md5Password;
             return this;
         }
         @CustomType.Setter
         public Builder multihop(Boolean multihop) {
-            this.multihop = Objects.requireNonNull(multihop);
+            if (multihop == null) {
+              throw new MissingRequiredPropertyException("GetDeviceBgpNeighborsBgpNeighbor", "multihop");
+            }
+            this.multihop = multihop;
             return this;
         }
         @CustomType.Setter
         public Builder peerAs(Integer peerAs) {
-            this.peerAs = Objects.requireNonNull(peerAs);
+            if (peerAs == null) {
+              throw new MissingRequiredPropertyException("GetDeviceBgpNeighborsBgpNeighbor", "peerAs");
+            }
+            this.peerAs = peerAs;
             return this;
         }
         @CustomType.Setter
         public Builder peerIps(@Nullable List<String> peerIps) {
+
             this.peerIps = peerIps;
             return this;
         }
@@ -217,7 +240,10 @@ public final class GetDeviceBgpNeighborsBgpNeighbor {
         }
         @CustomType.Setter
         public Builder routesIns(List<GetDeviceBgpNeighborsBgpNeighborRoutesIn> routesIns) {
-            this.routesIns = Objects.requireNonNull(routesIns);
+            if (routesIns == null) {
+              throw new MissingRequiredPropertyException("GetDeviceBgpNeighborsBgpNeighbor", "routesIns");
+            }
+            this.routesIns = routesIns;
             return this;
         }
         public Builder routesIns(GetDeviceBgpNeighborsBgpNeighborRoutesIn... routesIns) {
@@ -225,7 +251,10 @@ public final class GetDeviceBgpNeighborsBgpNeighbor {
         }
         @CustomType.Setter
         public Builder routesOuts(List<GetDeviceBgpNeighborsBgpNeighborRoutesOut> routesOuts) {
-            this.routesOuts = Objects.requireNonNull(routesOuts);
+            if (routesOuts == null) {
+              throw new MissingRequiredPropertyException("GetDeviceBgpNeighborsBgpNeighbor", "routesOuts");
+            }
+            this.routesOuts = routesOuts;
             return this;
         }
         public Builder routesOuts(GetDeviceBgpNeighborsBgpNeighborRoutesOut... routesOuts) {

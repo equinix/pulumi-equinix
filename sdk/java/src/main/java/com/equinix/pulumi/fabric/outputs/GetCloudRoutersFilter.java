@@ -4,6 +4,7 @@
 package com.equinix.pulumi.fabric.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -88,22 +89,32 @@ public final class GetCloudRoutersFilter {
 
         @CustomType.Setter
         public Builder operator(String operator) {
-            this.operator = Objects.requireNonNull(operator);
+            if (operator == null) {
+              throw new MissingRequiredPropertyException("GetCloudRoutersFilter", "operator");
+            }
+            this.operator = operator;
             return this;
         }
         @CustomType.Setter
         public Builder or(@Nullable Boolean or) {
+
             this.or = or;
             return this;
         }
         @CustomType.Setter
         public Builder property(String property) {
-            this.property = Objects.requireNonNull(property);
+            if (property == null) {
+              throw new MissingRequiredPropertyException("GetCloudRoutersFilter", "property");
+            }
+            this.property = property;
             return this;
         }
         @CustomType.Setter
         public Builder values(List<String> values) {
-            this.values = Objects.requireNonNull(values);
+            if (values == null) {
+              throw new MissingRequiredPropertyException("GetCloudRoutersFilter", "values");
+            }
+            this.values = values;
             return this;
         }
         public Builder values(String... values) {

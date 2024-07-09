@@ -12,6 +12,7 @@ import com.equinix.pulumi.fabric.outputs.GetRoutingProtocolDirectIpv4;
 import com.equinix.pulumi.fabric.outputs.GetRoutingProtocolDirectIpv6;
 import com.equinix.pulumi.fabric.outputs.GetRoutingProtocolOperation;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -304,27 +305,42 @@ public final class GetRoutingProtocolResult {
 
         @CustomType.Setter
         public Builder bfd(GetRoutingProtocolBfd bfd) {
-            this.bfd = Objects.requireNonNull(bfd);
+            if (bfd == null) {
+              throw new MissingRequiredPropertyException("GetRoutingProtocolResult", "bfd");
+            }
+            this.bfd = bfd;
             return this;
         }
         @CustomType.Setter
         public Builder bgpAuthKey(String bgpAuthKey) {
-            this.bgpAuthKey = Objects.requireNonNull(bgpAuthKey);
+            if (bgpAuthKey == null) {
+              throw new MissingRequiredPropertyException("GetRoutingProtocolResult", "bgpAuthKey");
+            }
+            this.bgpAuthKey = bgpAuthKey;
             return this;
         }
         @CustomType.Setter
         public Builder bgpIpv4(GetRoutingProtocolBgpIpv4 bgpIpv4) {
-            this.bgpIpv4 = Objects.requireNonNull(bgpIpv4);
+            if (bgpIpv4 == null) {
+              throw new MissingRequiredPropertyException("GetRoutingProtocolResult", "bgpIpv4");
+            }
+            this.bgpIpv4 = bgpIpv4;
             return this;
         }
         @CustomType.Setter
         public Builder bgpIpv6(GetRoutingProtocolBgpIpv6 bgpIpv6) {
-            this.bgpIpv6 = Objects.requireNonNull(bgpIpv6);
+            if (bgpIpv6 == null) {
+              throw new MissingRequiredPropertyException("GetRoutingProtocolResult", "bgpIpv6");
+            }
+            this.bgpIpv6 = bgpIpv6;
             return this;
         }
         @CustomType.Setter
         public Builder changeLogs(List<GetRoutingProtocolChangeLog> changeLogs) {
-            this.changeLogs = Objects.requireNonNull(changeLogs);
+            if (changeLogs == null) {
+              throw new MissingRequiredPropertyException("GetRoutingProtocolResult", "changeLogs");
+            }
+            this.changeLogs = changeLogs;
             return this;
         }
         public Builder changeLogs(GetRoutingProtocolChangeLog... changeLogs) {
@@ -332,7 +348,10 @@ public final class GetRoutingProtocolResult {
         }
         @CustomType.Setter
         public Builder changes(List<GetRoutingProtocolChange> changes) {
-            this.changes = Objects.requireNonNull(changes);
+            if (changes == null) {
+              throw new MissingRequiredPropertyException("GetRoutingProtocolResult", "changes");
+            }
+            this.changes = changes;
             return this;
         }
         public Builder changes(GetRoutingProtocolChange... changes) {
@@ -340,52 +359,82 @@ public final class GetRoutingProtocolResult {
         }
         @CustomType.Setter
         public Builder connectionUuid(String connectionUuid) {
-            this.connectionUuid = Objects.requireNonNull(connectionUuid);
+            if (connectionUuid == null) {
+              throw new MissingRequiredPropertyException("GetRoutingProtocolResult", "connectionUuid");
+            }
+            this.connectionUuid = connectionUuid;
             return this;
         }
         @CustomType.Setter
         public Builder customerAsn(Integer customerAsn) {
-            this.customerAsn = Objects.requireNonNull(customerAsn);
+            if (customerAsn == null) {
+              throw new MissingRequiredPropertyException("GetRoutingProtocolResult", "customerAsn");
+            }
+            this.customerAsn = customerAsn;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetRoutingProtocolResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder directIpv4(GetRoutingProtocolDirectIpv4 directIpv4) {
-            this.directIpv4 = Objects.requireNonNull(directIpv4);
+            if (directIpv4 == null) {
+              throw new MissingRequiredPropertyException("GetRoutingProtocolResult", "directIpv4");
+            }
+            this.directIpv4 = directIpv4;
             return this;
         }
         @CustomType.Setter
         public Builder directIpv6(GetRoutingProtocolDirectIpv6 directIpv6) {
-            this.directIpv6 = Objects.requireNonNull(directIpv6);
+            if (directIpv6 == null) {
+              throw new MissingRequiredPropertyException("GetRoutingProtocolResult", "directIpv6");
+            }
+            this.directIpv6 = directIpv6;
             return this;
         }
         @CustomType.Setter
         public Builder equinixAsn(Integer equinixAsn) {
-            this.equinixAsn = Objects.requireNonNull(equinixAsn);
+            if (equinixAsn == null) {
+              throw new MissingRequiredPropertyException("GetRoutingProtocolResult", "equinixAsn");
+            }
+            this.equinixAsn = equinixAsn;
             return this;
         }
         @CustomType.Setter
         public Builder href(String href) {
-            this.href = Objects.requireNonNull(href);
+            if (href == null) {
+              throw new MissingRequiredPropertyException("GetRoutingProtocolResult", "href");
+            }
+            this.href = href;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRoutingProtocolResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetRoutingProtocolResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder operations(List<GetRoutingProtocolOperation> operations) {
-            this.operations = Objects.requireNonNull(operations);
+            if (operations == null) {
+              throw new MissingRequiredPropertyException("GetRoutingProtocolResult", "operations");
+            }
+            this.operations = operations;
             return this;
         }
         public Builder operations(GetRoutingProtocolOperation... operations) {
@@ -393,17 +442,26 @@ public final class GetRoutingProtocolResult {
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetRoutingProtocolResult", "state");
+            }
+            this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetRoutingProtocolResult", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder uuid(String uuid) {
-            this.uuid = Objects.requireNonNull(uuid);
+            if (uuid == null) {
+              throw new MissingRequiredPropertyException("GetRoutingProtocolResult", "uuid");
+            }
+            this.uuid = uuid;
             return this;
         }
         public GetRoutingProtocolResult build() {

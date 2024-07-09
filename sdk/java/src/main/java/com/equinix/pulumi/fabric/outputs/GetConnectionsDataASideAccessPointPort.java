@@ -5,6 +5,7 @@ package com.equinix.pulumi.fabric.outputs;
 
 import com.equinix.pulumi.fabric.outputs.GetConnectionsDataASideAccessPointPortRedundancy;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -86,17 +87,26 @@ public final class GetConnectionsDataASideAccessPointPort {
 
         @CustomType.Setter
         public Builder href(String href) {
-            this.href = Objects.requireNonNull(href);
+            if (href == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsDataASideAccessPointPort", "href");
+            }
+            this.href = href;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsDataASideAccessPointPort", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder redundancies(List<GetConnectionsDataASideAccessPointPortRedundancy> redundancies) {
-            this.redundancies = Objects.requireNonNull(redundancies);
+            if (redundancies == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsDataASideAccessPointPort", "redundancies");
+            }
+            this.redundancies = redundancies;
             return this;
         }
         public Builder redundancies(GetConnectionsDataASideAccessPointPortRedundancy... redundancies) {
@@ -104,7 +114,10 @@ public final class GetConnectionsDataASideAccessPointPort {
         }
         @CustomType.Setter
         public Builder uuid(String uuid) {
-            this.uuid = Objects.requireNonNull(uuid);
+            if (uuid == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsDataASideAccessPointPort", "uuid");
+            }
+            this.uuid = uuid;
             return this;
         }
         public GetConnectionsDataASideAccessPointPort build() {

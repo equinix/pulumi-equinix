@@ -72,16 +72,19 @@ public final class DeviceReinstall {
 
         @CustomType.Setter
         public Builder deprovisionFast(@Nullable Boolean deprovisionFast) {
+
             this.deprovisionFast = deprovisionFast;
             return this;
         }
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
+
             this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder preserveData(@Nullable Boolean preserveData) {
+
             this.preserveData = preserveData;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.equinix.pulumi.networkedge.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -101,26 +102,33 @@ public final class DeviceLinkDevice {
 
         @CustomType.Setter
         public Builder asn(@Nullable Integer asn) {
+
             this.asn = asn;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("DeviceLinkDevice", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder interfaceId(@Nullable Integer interfaceId) {
+
             this.interfaceId = interfaceId;
             return this;
         }
         @CustomType.Setter
         public Builder ipAddress(@Nullable String ipAddress) {
+
             this.ipAddress = ipAddress;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }

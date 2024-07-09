@@ -5,6 +5,7 @@ package com.equinix.pulumi.metal.outputs;
 
 import com.equinix.pulumi.metal.outputs.GetMetroCapacity;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -85,6 +86,7 @@ public final class GetMetroResult {
 
         @CustomType.Setter
         public Builder capacities(@Nullable List<GetMetroCapacity> capacities) {
+
             this.capacities = capacities;
             return this;
         }
@@ -93,22 +95,34 @@ public final class GetMetroResult {
         }
         @CustomType.Setter
         public Builder code(String code) {
-            this.code = Objects.requireNonNull(code);
+            if (code == null) {
+              throw new MissingRequiredPropertyException("GetMetroResult", "code");
+            }
+            this.code = code;
             return this;
         }
         @CustomType.Setter
         public Builder country(String country) {
-            this.country = Objects.requireNonNull(country);
+            if (country == null) {
+              throw new MissingRequiredPropertyException("GetMetroResult", "country");
+            }
+            this.country = country;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetMetroResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetMetroResult", "name");
+            }
+            this.name = name;
             return this;
         }
         public GetMetroResult build() {

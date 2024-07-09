@@ -7,6 +7,7 @@ import com.equinix.pulumi.fabric.inputs.GetConnectionsFilter;
 import com.equinix.pulumi.fabric.inputs.GetConnectionsPagination;
 import com.equinix.pulumi.fabric.inputs.GetConnectionsSort;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -170,8 +171,12 @@ public final class GetConnectionsPlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         public GetConnectionsPlainArgs build() {
-            $.filters = Objects.requireNonNull($.filters, "expected parameter 'filters' to be non-null");
-            $.outerOperator = Objects.requireNonNull($.outerOperator, "expected parameter 'outerOperator' to be non-null");
+            if ($.filters == null) {
+                throw new MissingRequiredPropertyException("GetConnectionsPlainArgs", "filters");
+            }
+            if ($.outerOperator == null) {
+                throw new MissingRequiredPropertyException("GetConnectionsPlainArgs", "outerOperator");
+            }
             return $;
         }
     }

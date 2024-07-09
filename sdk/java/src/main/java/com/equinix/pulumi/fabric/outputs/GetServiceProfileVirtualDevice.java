@@ -5,6 +5,7 @@ package com.equinix.pulumi.fabric.outputs;
 
 import com.equinix.pulumi.fabric.outputs.GetServiceProfileVirtualDeviceLocation;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -87,22 +88,30 @@ public final class GetServiceProfileVirtualDevice {
 
         @CustomType.Setter
         public Builder interfaceUuid(@Nullable String interfaceUuid) {
+
             this.interfaceUuid = interfaceUuid;
             return this;
         }
         @CustomType.Setter
         public Builder location(@Nullable GetServiceProfileVirtualDeviceLocation location) {
+
             this.location = location;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetServiceProfileVirtualDevice", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder uuid(String uuid) {
-            this.uuid = Objects.requireNonNull(uuid);
+            if (uuid == null) {
+              throw new MissingRequiredPropertyException("GetServiceProfileVirtualDevice", "uuid");
+            }
+            this.uuid = uuid;
             return this;
         }
         public GetServiceProfileVirtualDevice build() {

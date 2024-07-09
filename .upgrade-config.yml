@@ -5,4 +5,3 @@
 upstream-provider-name: terraform-provider-equinix
 remove-plugins: true
 pr-reviewers: equinix/governor-devrel-engineering
-javaVersion: "v0.9.8"

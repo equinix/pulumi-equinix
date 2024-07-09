@@ -74,11 +74,13 @@ public final class ConnectionOperation {
 
         @CustomType.Setter
         public Builder equinixStatus(@Nullable String equinixStatus) {
+
             this.equinixStatus = equinixStatus;
             return this;
         }
         @CustomType.Setter
         public Builder errors(@Nullable List<ConnectionOperationError> errors) {
+
             this.errors = errors;
             return this;
         }
@@ -87,6 +89,7 @@ public final class ConnectionOperation {
         }
         @CustomType.Setter
         public Builder providerStatus(@Nullable String providerStatus) {
+
             this.providerStatus = providerStatus;
             return this;
         }

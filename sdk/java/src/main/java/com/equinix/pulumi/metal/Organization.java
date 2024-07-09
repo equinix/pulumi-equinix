@@ -19,7 +19,8 @@ import javax.annotation.Nullable;
  * Provides a resource to manage organization resource in Equinix Metal.
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -41,21 +42,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var orgResource = new Organization(&#34;orgResource&#34;, OrganizationArgs.builder()        
- *             .name(&#34;Foo Organization&#34;)
+ *         var orgResource = new Organization("orgResource", OrganizationArgs.builder()        
+ *             .name("Foo Organization")
  *             .address(OrganizationAddressArgs.builder()
- *                 .address(&#34;org street&#34;)
- *                 .city(&#34;london&#34;)
- *                 .country(&#34;GB&#34;)
- *                 .zipCode(&#34;12345&#34;)
+ *                 .address("org street")
+ *                 .city("london")
+ *                 .country("GB")
+ *                 .zipCode("12345")
  *                 .build())
- *             .description(&#34;An organization&#34;)
+ *             .description("An organization")
  *             .build());
  * 
- *         ctx.export(&#34;org&#34;, orgResource.id());
+ *         ctx.export("org", orgResource.id());
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  * ## Import
  * 

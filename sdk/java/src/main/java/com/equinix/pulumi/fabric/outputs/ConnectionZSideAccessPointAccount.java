@@ -143,41 +143,49 @@ public final class ConnectionZSideAccessPointAccount {
 
         @CustomType.Setter
         public Builder accountName(@Nullable String accountName) {
+
             this.accountName = accountName;
             return this;
         }
         @CustomType.Setter
         public Builder accountNumber(@Nullable Integer accountNumber) {
+
             this.accountNumber = accountNumber;
             return this;
         }
         @CustomType.Setter
         public Builder globalCustId(@Nullable String globalCustId) {
+
             this.globalCustId = globalCustId;
             return this;
         }
         @CustomType.Setter
         public Builder globalOrgId(@Nullable String globalOrgId) {
+
             this.globalOrgId = globalOrgId;
             return this;
         }
         @CustomType.Setter
         public Builder globalOrganizationName(@Nullable String globalOrganizationName) {
+
             this.globalOrganizationName = globalOrganizationName;
             return this;
         }
         @CustomType.Setter
         public Builder orgId(@Nullable Integer orgId) {
+
             this.orgId = orgId;
             return this;
         }
         @CustomType.Setter
         public Builder organizationName(@Nullable String organizationName) {
+
             this.organizationName = organizationName;
             return this;
         }
         @CustomType.Setter
         public Builder ucmId(@Nullable String ucmId) {
+
             this.ucmId = ucmId;
             return this;
         }

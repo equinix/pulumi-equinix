@@ -6,6 +6,7 @@ package com.equinix.pulumi.networkedge.outputs;
 import com.equinix.pulumi.networkedge.outputs.GetDeviceClusterDetailNode0;
 import com.equinix.pulumi.networkedge.outputs.GetDeviceClusterDetailNode1;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -102,17 +103,26 @@ public final class GetDeviceClusterDetail {
 
         @CustomType.Setter
         public Builder clusterId(String clusterId) {
-            this.clusterId = Objects.requireNonNull(clusterId);
+            if (clusterId == null) {
+              throw new MissingRequiredPropertyException("GetDeviceClusterDetail", "clusterId");
+            }
+            this.clusterId = clusterId;
             return this;
         }
         @CustomType.Setter
         public Builder clusterName(String clusterName) {
-            this.clusterName = Objects.requireNonNull(clusterName);
+            if (clusterName == null) {
+              throw new MissingRequiredPropertyException("GetDeviceClusterDetail", "clusterName");
+            }
+            this.clusterName = clusterName;
             return this;
         }
         @CustomType.Setter
         public Builder node0s(List<GetDeviceClusterDetailNode0> node0s) {
-            this.node0s = Objects.requireNonNull(node0s);
+            if (node0s == null) {
+              throw new MissingRequiredPropertyException("GetDeviceClusterDetail", "node0s");
+            }
+            this.node0s = node0s;
             return this;
         }
         public Builder node0s(GetDeviceClusterDetailNode0... node0s) {
@@ -120,7 +130,10 @@ public final class GetDeviceClusterDetail {
         }
         @CustomType.Setter
         public Builder node1s(List<GetDeviceClusterDetailNode1> node1s) {
-            this.node1s = Objects.requireNonNull(node1s);
+            if (node1s == null) {
+              throw new MissingRequiredPropertyException("GetDeviceClusterDetail", "node1s");
+            }
+            this.node1s = node1s;
             return this;
         }
         public Builder node1s(GetDeviceClusterDetailNode1... node1s) {
@@ -128,7 +141,10 @@ public final class GetDeviceClusterDetail {
         }
         @CustomType.Setter
         public Builder numOfNodes(Integer numOfNodes) {
-            this.numOfNodes = Objects.requireNonNull(numOfNodes);
+            if (numOfNodes == null) {
+              throw new MissingRequiredPropertyException("GetDeviceClusterDetail", "numOfNodes");
+            }
+            this.numOfNodes = numOfNodes;
             return this;
         }
         public GetDeviceClusterDetail build() {

@@ -6,6 +6,7 @@ package com.equinix.pulumi.networkedge.outputs;
 import com.equinix.pulumi.networkedge.outputs.DeviceClusterDetailsNode0;
 import com.equinix.pulumi.networkedge.outputs.DeviceClusterDetailsNode1;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -103,26 +104,37 @@ public final class DeviceClusterDetails {
 
         @CustomType.Setter
         public Builder clusterId(@Nullable String clusterId) {
+
             this.clusterId = clusterId;
             return this;
         }
         @CustomType.Setter
         public Builder clusterName(String clusterName) {
-            this.clusterName = Objects.requireNonNull(clusterName);
+            if (clusterName == null) {
+              throw new MissingRequiredPropertyException("DeviceClusterDetails", "clusterName");
+            }
+            this.clusterName = clusterName;
             return this;
         }
         @CustomType.Setter
         public Builder node0(DeviceClusterDetailsNode0 node0) {
-            this.node0 = Objects.requireNonNull(node0);
+            if (node0 == null) {
+              throw new MissingRequiredPropertyException("DeviceClusterDetails", "node0");
+            }
+            this.node0 = node0;
             return this;
         }
         @CustomType.Setter
         public Builder node1(DeviceClusterDetailsNode1 node1) {
-            this.node1 = Objects.requireNonNull(node1);
+            if (node1 == null) {
+              throw new MissingRequiredPropertyException("DeviceClusterDetails", "node1");
+            }
+            this.node1 = node1;
             return this;
         }
         @CustomType.Setter
         public Builder numOfNodes(@Nullable Integer numOfNodes) {
+
             this.numOfNodes = numOfNodes;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.equinix.pulumi.metal.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -202,9 +203,15 @@ public final class GetPrecreatedIpBlockPlainArgs extends com.pulumi.resources.In
         }
 
         public GetPrecreatedIpBlockPlainArgs build() {
-            $.addressFamily = Objects.requireNonNull($.addressFamily, "expected parameter 'addressFamily' to be non-null");
-            $.projectId = Objects.requireNonNull($.projectId, "expected parameter 'projectId' to be non-null");
-            $.public_ = Objects.requireNonNull($.public_, "expected parameter 'public' to be non-null");
+            if ($.addressFamily == null) {
+                throw new MissingRequiredPropertyException("GetPrecreatedIpBlockPlainArgs", "addressFamily");
+            }
+            if ($.projectId == null) {
+                throw new MissingRequiredPropertyException("GetPrecreatedIpBlockPlainArgs", "projectId");
+            }
+            if ($.public_ == null) {
+                throw new MissingRequiredPropertyException("GetPrecreatedIpBlockPlainArgs", "public_");
+            }
             return $;
         }
     }

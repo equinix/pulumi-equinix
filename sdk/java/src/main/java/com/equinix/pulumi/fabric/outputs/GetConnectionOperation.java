@@ -5,6 +5,7 @@ package com.equinix.pulumi.fabric.outputs;
 
 import com.equinix.pulumi.fabric.outputs.GetConnectionOperationError;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -72,12 +73,18 @@ public final class GetConnectionOperation {
 
         @CustomType.Setter
         public Builder equinixStatus(String equinixStatus) {
-            this.equinixStatus = Objects.requireNonNull(equinixStatus);
+            if (equinixStatus == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOperation", "equinixStatus");
+            }
+            this.equinixStatus = equinixStatus;
             return this;
         }
         @CustomType.Setter
         public Builder errors(List<GetConnectionOperationError> errors) {
-            this.errors = Objects.requireNonNull(errors);
+            if (errors == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOperation", "errors");
+            }
+            this.errors = errors;
             return this;
         }
         public Builder errors(GetConnectionOperationError... errors) {
@@ -85,7 +92,10 @@ public final class GetConnectionOperation {
         }
         @CustomType.Setter
         public Builder providerStatus(String providerStatus) {
-            this.providerStatus = Objects.requireNonNull(providerStatus);
+            if (providerStatus == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOperation", "providerStatus");
+            }
+            this.providerStatus = providerStatus;
             return this;
         }
         public GetConnectionOperation build() {

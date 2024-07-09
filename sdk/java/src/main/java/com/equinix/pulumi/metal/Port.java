@@ -19,7 +19,8 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -41,20 +42,21 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var portId = config.get(&#34;portId&#34;).get();
- *         final var vlanId = config.get(&#34;vlanId&#34;).get();
- *         var port = new Port(&#34;port&#34;, PortArgs.builder()        
+ *         final var portId = config.get("portId").get();
+ *         final var vlanId = config.get("vlanId").get();
+ *         var port = new Port("port", PortArgs.builder()        
  *             .portId(portId)
  *             .bonded(true)
  *             .layer2(false)
  *             .vlanIds(vlanId)
  *             .build());
  * 
- *         ctx.export(&#34;portType&#34;, port.type());
- *         ctx.export(&#34;portBondedNetworkType&#34;, port.networkType());
+ *         ctx.export("portType", port.type());
+ *         ctx.export("portBondedNetworkType", port.networkType());
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  */
 @ResourceType(type="equinix:metal/port:Port")

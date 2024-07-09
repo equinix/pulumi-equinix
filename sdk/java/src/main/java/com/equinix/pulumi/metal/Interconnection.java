@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * &gt; Equinix Metal connection with with Service Token A-side / Z-side (service_token_type) is not generally available and may not be enabled yet for your organization.
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,24 +47,25 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var projectId = config.get(&#34;projectId&#34;).get();
- *         final var metro = config.get(&#34;metro&#34;).orElse(&#34;SV&#34;);
- *         final var speedInMbps = Integer.parseInt(config.get(&#34;speedInMbps&#34;).orElse(&#34;200&#34;));
- *         var connection = new Interconnection(&#34;connection&#34;, InterconnectionArgs.builder()        
- *             .name(&#34;fabric-port-to-metal&#34;)
+ *         final var projectId = config.get("projectId").get();
+ *         final var metro = config.get("metro").orElse("SV");
+ *         final var speedInMbps = Integer.parseInt(config.get("speedInMbps").orElse("200"));
+ *         var connection = new Interconnection("connection", InterconnectionArgs.builder()        
+ *             .name("fabric-port-to-metal")
  *             .projectId(projectId)
- *             .type(&#34;shared&#34;)
- *             .redundancy(&#34;primary&#34;)
+ *             .type("shared")
+ *             .redundancy("primary")
  *             .metro(metro)
- *             .speed(String.format(&#34;%sMbps&#34;, speedInMbps))
- *             .serviceTokenType(&#34;z_side&#34;)
+ *             .speed(String.format("%sMbps", speedInMbps))
+ *             .serviceTokenType("z_side")
  *             .build());
  * 
- *         ctx.export(&#34;connectionStatus&#34;, connection.status());
- *         ctx.export(&#34;connectionTokens&#34;, connection.serviceTokens());
+ *         ctx.export("connectionStatus", connection.status());
+ *         ctx.export("connectionTokens", connection.serviceTokens());
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  */
 @ResourceType(type="equinix:metal/interconnection:Interconnection")

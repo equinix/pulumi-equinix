@@ -73,16 +73,19 @@ public final class ServiceProfileAccessPointTypeConfigLinkProtocolConfig {
 
         @CustomType.Setter
         public Builder encapsulation(@Nullable String encapsulation) {
+
             this.encapsulation = encapsulation;
             return this;
         }
         @CustomType.Setter
         public Builder encapsulationStrategy(@Nullable String encapsulationStrategy) {
+
             this.encapsulationStrategy = encapsulationStrategy;
             return this;
         }
         @CustomType.Setter
         public Builder reuseVlanSTag(@Nullable Boolean reuseVlanSTag) {
+
             this.reuseVlanSTag = reuseVlanSTag;
             return this;
         }

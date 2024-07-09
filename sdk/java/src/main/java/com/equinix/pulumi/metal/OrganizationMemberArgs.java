@@ -5,6 +5,7 @@ package com.equinix.pulumi.metal;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -245,10 +246,18 @@ public final class OrganizationMemberArgs extends com.pulumi.resources.ResourceA
         }
 
         public OrganizationMemberArgs build() {
-            $.invitee = Objects.requireNonNull($.invitee, "expected parameter 'invitee' to be non-null");
-            $.organizationId = Objects.requireNonNull($.organizationId, "expected parameter 'organizationId' to be non-null");
-            $.projectsIds = Objects.requireNonNull($.projectsIds, "expected parameter 'projectsIds' to be non-null");
-            $.roles = Objects.requireNonNull($.roles, "expected parameter 'roles' to be non-null");
+            if ($.invitee == null) {
+                throw new MissingRequiredPropertyException("OrganizationMemberArgs", "invitee");
+            }
+            if ($.organizationId == null) {
+                throw new MissingRequiredPropertyException("OrganizationMemberArgs", "organizationId");
+            }
+            if ($.projectsIds == null) {
+                throw new MissingRequiredPropertyException("OrganizationMemberArgs", "projectsIds");
+            }
+            if ($.roles == null) {
+                throw new MissingRequiredPropertyException("OrganizationMemberArgs", "roles");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.equinix.pulumi.fabric.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class NetworkProjectArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public NetworkProjectArgs build() {
-            $.projectId = Objects.requireNonNull($.projectId, "expected parameter 'projectId' to be non-null");
+            if ($.projectId == null) {
+                throw new MissingRequiredPropertyException("NetworkProjectArgs", "projectId");
+            }
             return $;
         }
     }

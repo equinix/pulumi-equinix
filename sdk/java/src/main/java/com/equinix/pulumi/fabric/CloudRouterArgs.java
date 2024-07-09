@@ -11,6 +11,7 @@ import com.equinix.pulumi.fabric.inputs.CloudRouterPackageArgs;
 import com.equinix.pulumi.fabric.inputs.CloudRouterProjectArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -463,12 +464,24 @@ public final class CloudRouterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public CloudRouterArgs build() {
-            $.account = Objects.requireNonNull($.account, "expected parameter 'account' to be non-null");
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
-            $.notifications = Objects.requireNonNull($.notifications, "expected parameter 'notifications' to be non-null");
-            $.package_ = Objects.requireNonNull($.package_, "expected parameter 'package' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.account == null) {
+                throw new MissingRequiredPropertyException("CloudRouterArgs", "account");
+            }
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("CloudRouterArgs", "location");
+            }
+            if ($.notifications == null) {
+                throw new MissingRequiredPropertyException("CloudRouterArgs", "notifications");
+            }
+            if ($.package_ == null) {
+                throw new MissingRequiredPropertyException("CloudRouterArgs", "package_");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("CloudRouterArgs", "project");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("CloudRouterArgs", "type");
+            }
             return $;
         }
     }

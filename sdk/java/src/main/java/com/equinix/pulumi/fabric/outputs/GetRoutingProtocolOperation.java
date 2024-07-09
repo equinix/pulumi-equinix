@@ -5,6 +5,7 @@ package com.equinix.pulumi.fabric.outputs;
 
 import com.equinix.pulumi.fabric.outputs.GetRoutingProtocolOperationError;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.List;
 import java.util.Objects;
 
@@ -43,7 +44,10 @@ public final class GetRoutingProtocolOperation {
 
         @CustomType.Setter
         public Builder errors(List<GetRoutingProtocolOperationError> errors) {
-            this.errors = Objects.requireNonNull(errors);
+            if (errors == null) {
+              throw new MissingRequiredPropertyException("GetRoutingProtocolOperation", "errors");
+            }
+            this.errors = errors;
             return this;
         }
         public Builder errors(GetRoutingProtocolOperationError... errors) {

@@ -8,6 +8,7 @@ import com.equinix.pulumi.fabric.outputs.GetCloudRoutersFilter;
 import com.equinix.pulumi.fabric.outputs.GetCloudRoutersPagination;
 import com.equinix.pulumi.fabric.outputs.GetCloudRoutersSort;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -105,7 +106,10 @@ public final class GetCloudRoutersResult {
 
         @CustomType.Setter
         public Builder datas(List<GetCloudRoutersData> datas) {
-            this.datas = Objects.requireNonNull(datas);
+            if (datas == null) {
+              throw new MissingRequiredPropertyException("GetCloudRoutersResult", "datas");
+            }
+            this.datas = datas;
             return this;
         }
         public Builder datas(GetCloudRoutersData... datas) {
@@ -113,7 +117,10 @@ public final class GetCloudRoutersResult {
         }
         @CustomType.Setter
         public Builder filters(List<GetCloudRoutersFilter> filters) {
-            this.filters = Objects.requireNonNull(filters);
+            if (filters == null) {
+              throw new MissingRequiredPropertyException("GetCloudRoutersResult", "filters");
+            }
+            this.filters = filters;
             return this;
         }
         public Builder filters(GetCloudRoutersFilter... filters) {
@@ -121,16 +128,21 @@ public final class GetCloudRoutersResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetCloudRoutersResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder pagination(@Nullable GetCloudRoutersPagination pagination) {
+
             this.pagination = pagination;
             return this;
         }
         @CustomType.Setter
         public Builder sort(@Nullable GetCloudRoutersSort sort) {
+
             this.sort = sort;
             return this;
         }

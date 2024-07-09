@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -57,33 +58,34 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var metro = config.get(&#34;metro&#34;).orElse(&#34;FR&#34;);
- *         final var accountNum = config.get(&#34;accountNum&#34;);
- *         var router = new CloudRouter(&#34;router&#34;, CloudRouterArgs.builder()        
- *             .name(&#34;My-Fabric-Cloud-Router&#34;)
- *             .type(&#34;XF_ROUTER&#34;)
+ *         final var metro = config.get("metro").orElse("FR");
+ *         final var accountNum = config.get("accountNum");
+ *         var router = new CloudRouter("router", CloudRouterArgs.builder()        
+ *             .name("My-Fabric-Cloud-Router")
+ *             .type("XF_ROUTER")
  *             .location(CloudRouterLocationArgs.builder()
  *                 .metroCode(metro)
  *                 .build())
  *             .package_(CloudRouterPackageArgs.builder()
- *                 .code(&#34;BASIC&#34;)
+ *                 .code("BASIC")
  *                 .build())
  *             .notifications(CloudRouterNotificationArgs.builder()
- *                 .type(&#34;ALL&#34;)
- *                 .emails(&#34;example@equinix.com&#34;)
+ *                 .type("ALL")
+ *                 .emails("example{@literal @}equinix.com")
  *                 .build())
  *             .account(CloudRouterAccountArgs.builder()
  *                 .accountNumber(272010)
  *                 .build())
  *             .project(CloudRouterProjectArgs.builder()
- *                 .projectId(&#34;995072000433550&#34;)
+ *                 .projectId("995072000433550")
  *                 .build())
  *             .build());
  * 
- *         ctx.export(&#34;routerId&#34;, router.id());
+ *         ctx.export("routerId", router.id());
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  */
 @ResourceType(type="equinix:fabric/cloudRouter:CloudRouter")

@@ -5,6 +5,7 @@ package com.equinix.pulumi.networkedge;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -262,11 +263,21 @@ public final class BgpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public BgpArgs build() {
-            $.connectionId = Objects.requireNonNull($.connectionId, "expected parameter 'connectionId' to be non-null");
-            $.localAsn = Objects.requireNonNull($.localAsn, "expected parameter 'localAsn' to be non-null");
-            $.localIpAddress = Objects.requireNonNull($.localIpAddress, "expected parameter 'localIpAddress' to be non-null");
-            $.remoteAsn = Objects.requireNonNull($.remoteAsn, "expected parameter 'remoteAsn' to be non-null");
-            $.remoteIpAddress = Objects.requireNonNull($.remoteIpAddress, "expected parameter 'remoteIpAddress' to be non-null");
+            if ($.connectionId == null) {
+                throw new MissingRequiredPropertyException("BgpArgs", "connectionId");
+            }
+            if ($.localAsn == null) {
+                throw new MissingRequiredPropertyException("BgpArgs", "localAsn");
+            }
+            if ($.localIpAddress == null) {
+                throw new MissingRequiredPropertyException("BgpArgs", "localIpAddress");
+            }
+            if ($.remoteAsn == null) {
+                throw new MissingRequiredPropertyException("BgpArgs", "remoteAsn");
+            }
+            if ($.remoteIpAddress == null) {
+                throw new MissingRequiredPropertyException("BgpArgs", "remoteIpAddress");
+            }
             return $;
         }
     }

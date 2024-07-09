@@ -86,21 +86,25 @@ public final class ConnectionZSideAccessPointVirtualDevice {
 
         @CustomType.Setter
         public Builder href(@Nullable String href) {
+
             this.href = href;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder uuid(@Nullable String uuid) {
+
             this.uuid = uuid;
             return this;
         }

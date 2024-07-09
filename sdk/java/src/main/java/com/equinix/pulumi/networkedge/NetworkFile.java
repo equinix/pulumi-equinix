@@ -19,7 +19,8 @@ import javax.annotation.Nullable;
  * Resource `equinix.networkedge.NetworkFile` allows creation and management of Equinix Network Edge files.
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -42,30 +43,31 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var metro = config.get(&#34;metro&#34;).orElse(&#34;SV&#34;);
+ *         final var metro = config.get("metro").orElse("SV");
  * 
  *         String content = null;
  *         try {
- *             content = Files.readString(Paths.get(&#34;./../assets/aviatrix-cloud-init.txt&#34;));
+ *             content = Files.readString(Paths.get("./../assets/aviatrix-cloud-init.txt"));
  *         } catch (IOException e) {
  *             e.printStackTrace();
  *         }
  * 
- *         var networkFile = new NetworkFile(&#34;networkFile&#34;, NetworkFileArgs.builder()        
- *             .fileName(&#34;Aviatrix-ZTP-file&#34;)
+ *         var networkFile = new NetworkFile("networkFile", NetworkFileArgs.builder()        
+ *             .fileName("Aviatrix-ZTP-file")
  *             .content(content)
  *             .metroCode(metro)
- *             .deviceTypeCode(&#34;AVIATRIX_EDGE&#34;)
- *             .processType(&#34;CLOUD_INIT&#34;)
+ *             .deviceTypeCode("AVIATRIX_EDGE")
+ *             .processType("CLOUD_INIT")
  *             .selfManaged(true)
  *             .byol(true)
  *             .build());
  * 
- *         ctx.export(&#34;networkFileId&#34;, networkFile.id());
- *         ctx.export(&#34;networkFileStatus&#34;, networkFile.status());
+ *         ctx.export("networkFileId", networkFile.id());
+ *         ctx.export("networkFileStatus", networkFile.status());
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  * ## Import
  * 

@@ -4,6 +4,7 @@
 package com.equinix.pulumi.fabric.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -87,22 +88,32 @@ public final class GetConnectionsDataASideAccessPointLinkProtocol {
 
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder vlanCTag(Integer vlanCTag) {
-            this.vlanCTag = Objects.requireNonNull(vlanCTag);
+            if (vlanCTag == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsDataASideAccessPointLinkProtocol", "vlanCTag");
+            }
+            this.vlanCTag = vlanCTag;
             return this;
         }
         @CustomType.Setter
         public Builder vlanSTag(Integer vlanSTag) {
-            this.vlanSTag = Objects.requireNonNull(vlanSTag);
+            if (vlanSTag == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsDataASideAccessPointLinkProtocol", "vlanSTag");
+            }
+            this.vlanSTag = vlanSTag;
             return this;
         }
         @CustomType.Setter
         public Builder vlanTag(Integer vlanTag) {
-            this.vlanTag = Objects.requireNonNull(vlanTag);
+            if (vlanTag == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsDataASideAccessPointLinkProtocol", "vlanTag");
+            }
+            this.vlanTag = vlanTag;
             return this;
         }
         public GetConnectionsDataASideAccessPointLinkProtocol build() {

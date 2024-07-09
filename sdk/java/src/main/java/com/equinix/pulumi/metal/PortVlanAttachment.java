@@ -37,7 +37,8 @@ import javax.annotation.Nullable;
  * * `port_id` - UUID of device port.
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,21 +53,22 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var deviceId = config.get(&#34;deviceId&#34;).get();
- *         final var portName = config.get(&#34;portName&#34;).orElse(&#34;eth1&#34;);
- *         final var vxlanId = Integer.parseInt(config.get(&#34;vxlanId&#34;).orElse(&#34;1004&#34;));
+ *         final var deviceId = config.get("deviceId").get();
+ *         final var portName = config.get("portName").orElse("eth1");
+ *         final var vxlanId = Integer.parseInt(config.get("vxlanId").orElse("1004"));
  * 
- *         var attach = new PortVlanAttachment(&#34;attach&#34;, PortVlanAttachmentArgs.builder()        
+ *         var attach = new PortVlanAttachment("attach", PortVlanAttachmentArgs.builder()        
  *             .deviceId(deviceId)
  *             .portName(portName)
  *             .vlanVnid(vxlanId)
  *             .build());
  * 
- *         ctx.export(&#34;attachId&#34;, attach.id());
- *         ctx.export(&#34;portId&#34;, attach.portId());
+ *         ctx.export("attachId", attach.id());
+ *         ctx.export("portId", attach.portId());
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  */
 @ResourceType(type="equinix:metal/portVlanAttachment:PortVlanAttachment")

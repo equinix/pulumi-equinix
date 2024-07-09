@@ -34,7 +34,8 @@ import javax.annotation.Nullable;
  * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,12 +55,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var profile = new ServiceProfile(&#34;profile&#34;, ServiceProfileArgs.builder()        
- *             .name(&#34;Example Cloud Provider&#34;)
- *             .description(&#34;50 to 500 Mbps Hosted Connection to Example Cloud&#34;)
- *             .type(&#34;L2_PROFILE&#34;)
+ *         var profile = new ServiceProfile("profile", ServiceProfileArgs.builder()        
+ *             .name("Example Cloud Provider")
+ *             .description("50 to 500 Mbps Hosted Connection to Example Cloud")
+ *             .type("L2_PROFILE")
  *             .accessPointTypeConfigs(ServiceProfileAccessPointTypeConfigArgs.builder()
- *                 .type(&#34;COLO&#34;)
+ *                 .type("COLO")
  *                 .supportedBandwidths(                
  *                     50,
  *                     100,
@@ -69,37 +70,38 @@ import javax.annotation.Nullable;
  *                 .allowCustomBandwidth(false)
  *                 .allowBandwidthAutoApproval(false)
  *                 .linkProtocolConfig(ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs.builder()
- *                     .encapsulationStrategy(&#34;CTAGED&#34;)
+ *                     .encapsulationStrategy("CTAGED")
  *                     .reuseVlanSTag(false)
- *                     .encapsulation(&#34;DOT1Q&#34;)
+ *                     .encapsulation("DOT1Q")
  *                     .build())
  *                 .enableAutoGenerateServiceKey(false)
  *                 .connectionRedundancyRequired(false)
  *                 .apiConfig(ServiceProfileAccessPointTypeConfigApiConfigArgs.builder()
  *                     .apiAvailable(true)
- *                     .integrationId(&#34;Example-Connect-01&#34;)
+ *                     .integrationId("Example-Connect-01")
  *                     .bandwidthFromApi(false)
  *                     .build())
- *                 .connectionLabel(&#34;Virtual Circuit Name&#34;)
+ *                 .connectionLabel("Virtual Circuit Name")
  *                 .authenticationKey(ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs.builder()
  *                     .required(true)
- *                     .label(&#34;Example ACCOUNT ID&#34;)
+ *                     .label("Example ACCOUNT ID")
  *                     .build())
  *                 .build())
  *             .account(ServiceProfileAccountArgs.builder()
- *                 .organizationName(&#34;Example Cloud&#34;)
- *                 .globalOrganizationName(&#34;Example Global&#34;)
+ *                 .organizationName("Example Cloud")
+ *                 .globalOrganizationName("Example Global")
  *                 .build())
- *             .visibility(&#34;PUBLIC&#34;)
+ *             .visibility("PUBLIC")
  *             .marketingInfo(ServiceProfileMarketingInfoArgs.builder()
  *                 .promotion(true)
  *                 .build())
  *             .build());
  * 
- *         ctx.export(&#34;profileId&#34;, profile.id());
+ *         ctx.export("profileId", profile.id());
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  */
 @ResourceType(type="equinix:fabric/serviceProfile:ServiceProfile")

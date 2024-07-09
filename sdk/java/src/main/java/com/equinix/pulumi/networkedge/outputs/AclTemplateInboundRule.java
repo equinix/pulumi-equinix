@@ -4,6 +4,7 @@
 package com.equinix.pulumi.networkedge.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -160,41 +161,55 @@ public final class AclTemplateInboundRule {
 
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder dstPort(String dstPort) {
-            this.dstPort = Objects.requireNonNull(dstPort);
+            if (dstPort == null) {
+              throw new MissingRequiredPropertyException("AclTemplateInboundRule", "dstPort");
+            }
+            this.dstPort = dstPort;
             return this;
         }
         @CustomType.Setter
         public Builder protocol(String protocol) {
-            this.protocol = Objects.requireNonNull(protocol);
+            if (protocol == null) {
+              throw new MissingRequiredPropertyException("AclTemplateInboundRule", "protocol");
+            }
+            this.protocol = protocol;
             return this;
         }
         @CustomType.Setter
         public Builder sequenceNumber(@Nullable Integer sequenceNumber) {
+
             this.sequenceNumber = sequenceNumber;
             return this;
         }
         @CustomType.Setter
         public Builder sourceType(@Nullable String sourceType) {
+
             this.sourceType = sourceType;
             return this;
         }
         @CustomType.Setter
         public Builder srcPort(String srcPort) {
-            this.srcPort = Objects.requireNonNull(srcPort);
+            if (srcPort == null) {
+              throw new MissingRequiredPropertyException("AclTemplateInboundRule", "srcPort");
+            }
+            this.srcPort = srcPort;
             return this;
         }
         @CustomType.Setter
         public Builder subnet(@Nullable String subnet) {
+
             this.subnet = subnet;
             return this;
         }
         @CustomType.Setter
         public Builder subnets(@Nullable List<String> subnets) {
+
             this.subnets = subnets;
             return this;
         }

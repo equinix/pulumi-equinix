@@ -34,7 +34,8 @@ public final class NetworkedgeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -56,15 +57,16 @@ public final class NetworkedgeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var dc = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
-     *             .metroCode(&#34;DC&#34;)
-     *             .status(&#34;Active&#34;)
-     *             .projectId(&#34;a86d7112-d740-4758-9c9c-31e66373746b&#34;)
+     *             .metroCode("DC")
+     *             .status("Active")
+     *             .projectId("a86d7112-d740-4758-9c9c-31e66373746b")
      *             .build());
      * 
-     *         ctx.export(&#34;number&#34;, dc.applyValue(getAccountResult -&gt; getAccountResult.number()));
+     *         ctx.export("number", dc.applyValue(getAccountResult -> getAccountResult.number()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -79,7 +81,8 @@ public final class NetworkedgeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -101,15 +104,16 @@ public final class NetworkedgeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var dc = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
-     *             .metroCode(&#34;DC&#34;)
-     *             .status(&#34;Active&#34;)
-     *             .projectId(&#34;a86d7112-d740-4758-9c9c-31e66373746b&#34;)
+     *             .metroCode("DC")
+     *             .status("Active")
+     *             .projectId("a86d7112-d740-4758-9c9c-31e66373746b")
      *             .build());
      * 
-     *         ctx.export(&#34;number&#34;, dc.applyValue(getAccountResult -&gt; getAccountResult.number()));
+     *         ctx.export("number", dc.applyValue(getAccountResult -> getAccountResult.number()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -124,7 +128,8 @@ public final class NetworkedgeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -146,15 +151,16 @@ public final class NetworkedgeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var dc = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
-     *             .metroCode(&#34;DC&#34;)
-     *             .status(&#34;Active&#34;)
-     *             .projectId(&#34;a86d7112-d740-4758-9c9c-31e66373746b&#34;)
+     *             .metroCode("DC")
+     *             .status("Active")
+     *             .projectId("a86d7112-d740-4758-9c9c-31e66373746b")
      *             .build());
      * 
-     *         ctx.export(&#34;number&#34;, dc.applyValue(getAccountResult -&gt; getAccountResult.number()));
+     *         ctx.export("number", dc.applyValue(getAccountResult -> getAccountResult.number()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -169,7 +175,8 @@ public final class NetworkedgeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -191,15 +198,16 @@ public final class NetworkedgeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var dc = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
-     *             .metroCode(&#34;DC&#34;)
-     *             .status(&#34;Active&#34;)
-     *             .projectId(&#34;a86d7112-d740-4758-9c9c-31e66373746b&#34;)
+     *             .metroCode("DC")
+     *             .status("Active")
+     *             .projectId("a86d7112-d740-4758-9c9c-31e66373746b")
      *             .build());
      * 
-     *         ctx.export(&#34;number&#34;, dc.applyValue(getAccountResult -&gt; getAccountResult.number()));
+     *         ctx.export("number", dc.applyValue(getAccountResult -> getAccountResult.number()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -212,7 +220,8 @@ public final class NetworkedgeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -234,16 +243,17 @@ public final class NetworkedgeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var byUuid = NetworkedgeFunctions.getDevice(GetDeviceArgs.builder()
-     *             .uuid(&#34;f0b5c553-cdeb-4bc3-95b8-23db9ccfd5ee&#34;)
+     *             .uuid("f0b5c553-cdeb-4bc3-95b8-23db9ccfd5ee")
      *             .build());
      * 
      *         final var byName = NetworkedgeFunctions.getDevice(GetDeviceArgs.builder()
-     *             .name(&#34;Arcus-Gateway-A1&#34;)
+     *             .name("Arcus-Gateway-A1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -256,7 +266,8 @@ public final class NetworkedgeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -278,16 +289,17 @@ public final class NetworkedgeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var byUuid = NetworkedgeFunctions.getDevice(GetDeviceArgs.builder()
-     *             .uuid(&#34;f0b5c553-cdeb-4bc3-95b8-23db9ccfd5ee&#34;)
+     *             .uuid("f0b5c553-cdeb-4bc3-95b8-23db9ccfd5ee")
      *             .build());
      * 
      *         final var byName = NetworkedgeFunctions.getDevice(GetDeviceArgs.builder()
-     *             .name(&#34;Arcus-Gateway-A1&#34;)
+     *             .name("Arcus-Gateway-A1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -300,7 +312,8 @@ public final class NetworkedgeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -322,16 +335,17 @@ public final class NetworkedgeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var byUuid = NetworkedgeFunctions.getDevice(GetDeviceArgs.builder()
-     *             .uuid(&#34;f0b5c553-cdeb-4bc3-95b8-23db9ccfd5ee&#34;)
+     *             .uuid("f0b5c553-cdeb-4bc3-95b8-23db9ccfd5ee")
      *             .build());
      * 
      *         final var byName = NetworkedgeFunctions.getDevice(GetDeviceArgs.builder()
-     *             .name(&#34;Arcus-Gateway-A1&#34;)
+     *             .name("Arcus-Gateway-A1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -344,7 +358,8 @@ public final class NetworkedgeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -366,16 +381,17 @@ public final class NetworkedgeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var byUuid = NetworkedgeFunctions.getDevice(GetDeviceArgs.builder()
-     *             .uuid(&#34;f0b5c553-cdeb-4bc3-95b8-23db9ccfd5ee&#34;)
+     *             .uuid("f0b5c553-cdeb-4bc3-95b8-23db9ccfd5ee")
      *             .build());
      * 
      *         final var byName = NetworkedgeFunctions.getDevice(GetDeviceArgs.builder()
-     *             .name(&#34;Arcus-Gateway-A1&#34;)
+     *             .name("Arcus-Gateway-A1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -388,7 +404,8 @@ public final class NetworkedgeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -410,16 +427,17 @@ public final class NetworkedgeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var byUuid = NetworkedgeFunctions.getDevice(GetDeviceArgs.builder()
-     *             .uuid(&#34;f0b5c553-cdeb-4bc3-95b8-23db9ccfd5ee&#34;)
+     *             .uuid("f0b5c553-cdeb-4bc3-95b8-23db9ccfd5ee")
      *             .build());
      * 
      *         final var byName = NetworkedgeFunctions.getDevice(GetDeviceArgs.builder()
-     *             .name(&#34;Arcus-Gateway-A1&#34;)
+     *             .name("Arcus-Gateway-A1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -432,7 +450,8 @@ public final class NetworkedgeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -454,16 +473,17 @@ public final class NetworkedgeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var byUuid = NetworkedgeFunctions.getDevice(GetDeviceArgs.builder()
-     *             .uuid(&#34;f0b5c553-cdeb-4bc3-95b8-23db9ccfd5ee&#34;)
+     *             .uuid("f0b5c553-cdeb-4bc3-95b8-23db9ccfd5ee")
      *             .build());
      * 
      *         final var byName = NetworkedgeFunctions.getDevice(GetDeviceArgs.builder()
-     *             .name(&#34;Arcus-Gateway-A1&#34;)
+     *             .name("Arcus-Gateway-A1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -476,7 +496,8 @@ public final class NetworkedgeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -498,14 +519,15 @@ public final class NetworkedgeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var csrLarge = NetworkedgeFunctions.getDevicePlatform(GetDevicePlatformArgs.builder()
-     *             .deviceType(&#34;CSR1000V&#34;)
-     *             .flavor(&#34;large&#34;)
-     *             .packages(&#34;IPBASE&#34;)
+     *             .deviceType("CSR1000V")
+     *             .flavor("large")
+     *             .packages("IPBASE")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -518,7 +540,8 @@ public final class NetworkedgeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -540,14 +563,15 @@ public final class NetworkedgeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var csrLarge = NetworkedgeFunctions.getDevicePlatform(GetDevicePlatformArgs.builder()
-     *             .deviceType(&#34;CSR1000V&#34;)
-     *             .flavor(&#34;large&#34;)
-     *             .packages(&#34;IPBASE&#34;)
+     *             .deviceType("CSR1000V")
+     *             .flavor("large")
+     *             .packages("IPBASE")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -560,7 +584,8 @@ public final class NetworkedgeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -582,14 +607,15 @@ public final class NetworkedgeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var csrLarge = NetworkedgeFunctions.getDevicePlatform(GetDevicePlatformArgs.builder()
-     *             .deviceType(&#34;CSR1000V&#34;)
-     *             .flavor(&#34;large&#34;)
-     *             .packages(&#34;IPBASE&#34;)
+     *             .deviceType("CSR1000V")
+     *             .flavor("large")
+     *             .packages("IPBASE")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -602,7 +628,8 @@ public final class NetworkedgeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -624,14 +651,15 @@ public final class NetworkedgeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var csrLarge = NetworkedgeFunctions.getDevicePlatform(GetDevicePlatformArgs.builder()
-     *             .deviceType(&#34;CSR1000V&#34;)
-     *             .flavor(&#34;large&#34;)
-     *             .packages(&#34;IPBASE&#34;)
+     *             .deviceType("CSR1000V")
+     *             .flavor("large")
+     *             .packages("IPBASE")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -644,7 +672,8 @@ public final class NetworkedgeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -666,15 +695,16 @@ public final class NetworkedgeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var csrLatest1609 = NetworkedgeFunctions.getDeviceSoftware(GetDeviceSoftwareArgs.builder()
-     *             .deviceType(&#34;CSR1000V&#34;)
+     *             .deviceType("CSR1000V")
      *             .mostRecent(true)
-     *             .packages(&#34;IPBASE&#34;)
-     *             .versionRegex(&#34;^16.09.+&#34;)
+     *             .packages("IPBASE")
+     *             .versionRegex("^16.09.+")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -687,7 +717,8 @@ public final class NetworkedgeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -709,15 +740,16 @@ public final class NetworkedgeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var csrLatest1609 = NetworkedgeFunctions.getDeviceSoftware(GetDeviceSoftwareArgs.builder()
-     *             .deviceType(&#34;CSR1000V&#34;)
+     *             .deviceType("CSR1000V")
      *             .mostRecent(true)
-     *             .packages(&#34;IPBASE&#34;)
-     *             .versionRegex(&#34;^16.09.+&#34;)
+     *             .packages("IPBASE")
+     *             .versionRegex("^16.09.+")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -730,7 +762,8 @@ public final class NetworkedgeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -752,15 +785,16 @@ public final class NetworkedgeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var csrLatest1609 = NetworkedgeFunctions.getDeviceSoftware(GetDeviceSoftwareArgs.builder()
-     *             .deviceType(&#34;CSR1000V&#34;)
+     *             .deviceType("CSR1000V")
      *             .mostRecent(true)
-     *             .packages(&#34;IPBASE&#34;)
-     *             .versionRegex(&#34;^16.09.+&#34;)
+     *             .packages("IPBASE")
+     *             .versionRegex("^16.09.+")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -773,7 +807,8 @@ public final class NetworkedgeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -795,15 +830,16 @@ public final class NetworkedgeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var csrLatest1609 = NetworkedgeFunctions.getDeviceSoftware(GetDeviceSoftwareArgs.builder()
-     *             .deviceType(&#34;CSR1000V&#34;)
+     *             .deviceType("CSR1000V")
      *             .mostRecent(true)
-     *             .packages(&#34;IPBASE&#34;)
-     *             .versionRegex(&#34;^16.09.+&#34;)
+     *             .packages("IPBASE")
+     *             .versionRegex("^16.09.+")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -816,7 +852,8 @@ public final class NetworkedgeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -838,16 +875,17 @@ public final class NetworkedgeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ciscoRouter = NetworkedgeFunctions.getDeviceType(GetDeviceTypeArgs.builder()
-     *             .category(&#34;Router&#34;)
+     *             .category("Router")
      *             .metroCodes(            
-     *                 &#34;DC&#34;,
-     *                 &#34;SV&#34;)
-     *             .vendor(&#34;Cisco&#34;)
+     *                 "DC",
+     *                 "SV")
+     *             .vendor("Cisco")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -860,7 +898,8 @@ public final class NetworkedgeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -882,16 +921,17 @@ public final class NetworkedgeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ciscoRouter = NetworkedgeFunctions.getDeviceType(GetDeviceTypeArgs.builder()
-     *             .category(&#34;Router&#34;)
+     *             .category("Router")
      *             .metroCodes(            
-     *                 &#34;DC&#34;,
-     *                 &#34;SV&#34;)
-     *             .vendor(&#34;Cisco&#34;)
+     *                 "DC",
+     *                 "SV")
+     *             .vendor("Cisco")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -904,7 +944,8 @@ public final class NetworkedgeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -926,16 +967,17 @@ public final class NetworkedgeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ciscoRouter = NetworkedgeFunctions.getDeviceType(GetDeviceTypeArgs.builder()
-     *             .category(&#34;Router&#34;)
+     *             .category("Router")
      *             .metroCodes(            
-     *                 &#34;DC&#34;,
-     *                 &#34;SV&#34;)
-     *             .vendor(&#34;Cisco&#34;)
+     *                 "DC",
+     *                 "SV")
+     *             .vendor("Cisco")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -948,7 +990,8 @@ public final class NetworkedgeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -970,16 +1013,17 @@ public final class NetworkedgeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ciscoRouter = NetworkedgeFunctions.getDeviceType(GetDeviceTypeArgs.builder()
-     *             .category(&#34;Router&#34;)
+     *             .category("Router")
      *             .metroCodes(            
-     *                 &#34;DC&#34;,
-     *                 &#34;SV&#34;)
-     *             .vendor(&#34;Cisco&#34;)
+     *                 "DC",
+     *                 "SV")
+     *             .vendor("Cisco")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -992,7 +1036,8 @@ public final class NetworkedgeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1014,16 +1059,17 @@ public final class NetworkedgeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ciscoRouter = NetworkedgeFunctions.getDeviceType(GetDeviceTypeArgs.builder()
-     *             .category(&#34;Router&#34;)
+     *             .category("Router")
      *             .metroCodes(            
-     *                 &#34;DC&#34;,
-     *                 &#34;SV&#34;)
-     *             .vendor(&#34;Cisco&#34;)
+     *                 "DC",
+     *                 "SV")
+     *             .vendor("Cisco")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1036,7 +1082,8 @@ public final class NetworkedgeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1058,16 +1105,17 @@ public final class NetworkedgeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ciscoRouter = NetworkedgeFunctions.getDeviceType(GetDeviceTypeArgs.builder()
-     *             .category(&#34;Router&#34;)
+     *             .category("Router")
      *             .metroCodes(            
-     *                 &#34;DC&#34;,
-     *                 &#34;SV&#34;)
-     *             .vendor(&#34;Cisco&#34;)
+     *                 "DC",
+     *                 "SV")
+     *             .vendor("Cisco")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

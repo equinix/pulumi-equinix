@@ -7,6 +7,7 @@ import com.equinix.pulumi.metal.enums.Facility;
 import com.pulumi.core.Either;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -271,7 +272,9 @@ public final class VlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public VlanArgs build() {
-            $.projectId = Objects.requireNonNull($.projectId, "expected parameter 'projectId' to be non-null");
+            if ($.projectId == null) {
+                throw new MissingRequiredPropertyException("VlanArgs", "projectId");
+            }
             return $;
         }
     }

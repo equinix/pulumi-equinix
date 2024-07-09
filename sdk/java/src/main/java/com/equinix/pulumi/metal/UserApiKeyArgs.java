@@ -5,6 +5,7 @@ package com.equinix.pulumi.metal;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -116,8 +117,12 @@ public final class UserApiKeyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public UserApiKeyArgs build() {
-            $.description = Objects.requireNonNull($.description, "expected parameter 'description' to be non-null");
-            $.readOnly = Objects.requireNonNull($.readOnly, "expected parameter 'readOnly' to be non-null");
+            if ($.description == null) {
+                throw new MissingRequiredPropertyException("UserApiKeyArgs", "description");
+            }
+            if ($.readOnly == null) {
+                throw new MissingRequiredPropertyException("UserApiKeyArgs", "readOnly");
+            }
             return $;
         }
     }

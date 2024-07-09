@@ -6,6 +6,7 @@ package com.equinix.pulumi.metal.outputs;
 import com.equinix.pulumi.metal.outputs.GetInterconnectionPort;
 import com.equinix.pulumi.metal.outputs.GetInterconnectionServiceToken;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -332,57 +333,90 @@ public final class GetInterconnectionResult {
 
         @CustomType.Setter
         public Builder authorizationCode(String authorizationCode) {
-            this.authorizationCode = Objects.requireNonNull(authorizationCode);
+            if (authorizationCode == null) {
+              throw new MissingRequiredPropertyException("GetInterconnectionResult", "authorizationCode");
+            }
+            this.authorizationCode = authorizationCode;
             return this;
         }
         @CustomType.Setter
         public Builder connectionId(String connectionId) {
-            this.connectionId = Objects.requireNonNull(connectionId);
+            if (connectionId == null) {
+              throw new MissingRequiredPropertyException("GetInterconnectionResult", "connectionId");
+            }
+            this.connectionId = connectionId;
             return this;
         }
         @CustomType.Setter
         public Builder contactEmail(String contactEmail) {
-            this.contactEmail = Objects.requireNonNull(contactEmail);
+            if (contactEmail == null) {
+              throw new MissingRequiredPropertyException("GetInterconnectionResult", "contactEmail");
+            }
+            this.contactEmail = contactEmail;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetInterconnectionResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder facility(String facility) {
-            this.facility = Objects.requireNonNull(facility);
+            if (facility == null) {
+              throw new MissingRequiredPropertyException("GetInterconnectionResult", "facility");
+            }
+            this.facility = facility;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetInterconnectionResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder metro(String metro) {
-            this.metro = Objects.requireNonNull(metro);
+            if (metro == null) {
+              throw new MissingRequiredPropertyException("GetInterconnectionResult", "metro");
+            }
+            this.metro = metro;
             return this;
         }
         @CustomType.Setter
         public Builder mode(String mode) {
-            this.mode = Objects.requireNonNull(mode);
+            if (mode == null) {
+              throw new MissingRequiredPropertyException("GetInterconnectionResult", "mode");
+            }
+            this.mode = mode;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetInterconnectionResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder organizationId(String organizationId) {
-            this.organizationId = Objects.requireNonNull(organizationId);
+            if (organizationId == null) {
+              throw new MissingRequiredPropertyException("GetInterconnectionResult", "organizationId");
+            }
+            this.organizationId = organizationId;
             return this;
         }
         @CustomType.Setter
         public Builder ports(List<GetInterconnectionPort> ports) {
-            this.ports = Objects.requireNonNull(ports);
+            if (ports == null) {
+              throw new MissingRequiredPropertyException("GetInterconnectionResult", "ports");
+            }
+            this.ports = ports;
             return this;
         }
         public Builder ports(GetInterconnectionPort... ports) {
@@ -390,22 +424,34 @@ public final class GetInterconnectionResult {
         }
         @CustomType.Setter
         public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("GetInterconnectionResult", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder redundancy(String redundancy) {
-            this.redundancy = Objects.requireNonNull(redundancy);
+            if (redundancy == null) {
+              throw new MissingRequiredPropertyException("GetInterconnectionResult", "redundancy");
+            }
+            this.redundancy = redundancy;
             return this;
         }
         @CustomType.Setter
         public Builder serviceTokenType(String serviceTokenType) {
-            this.serviceTokenType = Objects.requireNonNull(serviceTokenType);
+            if (serviceTokenType == null) {
+              throw new MissingRequiredPropertyException("GetInterconnectionResult", "serviceTokenType");
+            }
+            this.serviceTokenType = serviceTokenType;
             return this;
         }
         @CustomType.Setter
         public Builder serviceTokens(List<GetInterconnectionServiceToken> serviceTokens) {
-            this.serviceTokens = Objects.requireNonNull(serviceTokens);
+            if (serviceTokens == null) {
+              throw new MissingRequiredPropertyException("GetInterconnectionResult", "serviceTokens");
+            }
+            this.serviceTokens = serviceTokens;
             return this;
         }
         public Builder serviceTokens(GetInterconnectionServiceToken... serviceTokens) {
@@ -413,17 +459,26 @@ public final class GetInterconnectionResult {
         }
         @CustomType.Setter
         public Builder speed(String speed) {
-            this.speed = Objects.requireNonNull(speed);
+            if (speed == null) {
+              throw new MissingRequiredPropertyException("GetInterconnectionResult", "speed");
+            }
+            this.speed = speed;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetInterconnectionResult", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tags(List<String> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetInterconnectionResult", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         public Builder tags(String... tags) {
@@ -431,17 +486,26 @@ public final class GetInterconnectionResult {
         }
         @CustomType.Setter
         public Builder token(String token) {
-            this.token = Objects.requireNonNull(token);
+            if (token == null) {
+              throw new MissingRequiredPropertyException("GetInterconnectionResult", "token");
+            }
+            this.token = token;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetInterconnectionResult", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder vlans(List<Integer> vlans) {
-            this.vlans = Objects.requireNonNull(vlans);
+            if (vlans == null) {
+              throw new MissingRequiredPropertyException("GetInterconnectionResult", "vlans");
+            }
+            this.vlans = vlans;
             return this;
         }
         public Builder vlans(Integer... vlans) {
@@ -449,7 +513,10 @@ public final class GetInterconnectionResult {
         }
         @CustomType.Setter
         public Builder vrfs(List<String> vrfs) {
-            this.vrfs = Objects.requireNonNull(vrfs);
+            if (vrfs == null) {
+              throw new MissingRequiredPropertyException("GetInterconnectionResult", "vrfs");
+            }
+            this.vrfs = vrfs;
             return this;
         }
         public Builder vrfs(String... vrfs) {

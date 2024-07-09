@@ -4,6 +4,7 @@
 package com.equinix.pulumi.fabric.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -84,22 +85,34 @@ public final class GetNetworksDataLocation {
 
         @CustomType.Setter
         public Builder ibx(String ibx) {
-            this.ibx = Objects.requireNonNull(ibx);
+            if (ibx == null) {
+              throw new MissingRequiredPropertyException("GetNetworksDataLocation", "ibx");
+            }
+            this.ibx = ibx;
             return this;
         }
         @CustomType.Setter
         public Builder metroCode(String metroCode) {
-            this.metroCode = Objects.requireNonNull(metroCode);
+            if (metroCode == null) {
+              throw new MissingRequiredPropertyException("GetNetworksDataLocation", "metroCode");
+            }
+            this.metroCode = metroCode;
             return this;
         }
         @CustomType.Setter
         public Builder metroName(String metroName) {
-            this.metroName = Objects.requireNonNull(metroName);
+            if (metroName == null) {
+              throw new MissingRequiredPropertyException("GetNetworksDataLocation", "metroName");
+            }
+            this.metroName = metroName;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetNetworksDataLocation", "region");
+            }
+            this.region = region;
             return this;
         }
         public GetNetworksDataLocation build() {

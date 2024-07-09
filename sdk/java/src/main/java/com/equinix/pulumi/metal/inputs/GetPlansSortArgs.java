@@ -5,6 +5,7 @@ package com.equinix.pulumi.metal.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -113,7 +114,9 @@ public final class GetPlansSortArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public GetPlansSortArgs build() {
-            $.attribute = Objects.requireNonNull($.attribute, "expected parameter 'attribute' to be non-null");
+            if ($.attribute == null) {
+                throw new MissingRequiredPropertyException("GetPlansSortArgs", "attribute");
+            }
             return $;
         }
     }

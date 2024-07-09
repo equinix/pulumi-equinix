@@ -5,6 +5,7 @@ package com.equinix.pulumi.metal.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -159,12 +160,24 @@ public final class InterconnectionServiceTokenArgs extends com.pulumi.resources.
         }
 
         public InterconnectionServiceTokenArgs build() {
-            $.expiresAt = Objects.requireNonNull($.expiresAt, "expected parameter 'expiresAt' to be non-null");
-            $.id = Objects.requireNonNull($.id, "expected parameter 'id' to be non-null");
-            $.maxAllowedSpeed = Objects.requireNonNull($.maxAllowedSpeed, "expected parameter 'maxAllowedSpeed' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
-            $.state = Objects.requireNonNull($.state, "expected parameter 'state' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.expiresAt == null) {
+                throw new MissingRequiredPropertyException("InterconnectionServiceTokenArgs", "expiresAt");
+            }
+            if ($.id == null) {
+                throw new MissingRequiredPropertyException("InterconnectionServiceTokenArgs", "id");
+            }
+            if ($.maxAllowedSpeed == null) {
+                throw new MissingRequiredPropertyException("InterconnectionServiceTokenArgs", "maxAllowedSpeed");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("InterconnectionServiceTokenArgs", "role");
+            }
+            if ($.state == null) {
+                throw new MissingRequiredPropertyException("InterconnectionServiceTokenArgs", "state");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("InterconnectionServiceTokenArgs", "type");
+            }
             return $;
         }
     }

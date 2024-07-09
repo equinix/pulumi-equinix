@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -60,56 +61,56 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var metro = config.get(&#34;metro&#34;).orElse(&#34;FR&#34;);
- *         final var speedInMbps = Integer.parseInt(config.get(&#34;speedInMbps&#34;).orElse(&#34;50&#34;));
- *         final var fabricPortName = config.get(&#34;fabricPortName&#34;).get().toString();
- *         final var awsRegion = config.get(&#34;awsRegion&#34;).orElse(&#34;eu-central-1&#34;);
- *         final var awsAccountId = config.get(&#34;awsAccountId&#34;).get().toString();
- *         System.out.println(System.getProperty(&#34;java.classpath&#34;));
+ *         final var metro = config.get("metro").orElse("FR");
+ *         final var speedInMbps = Integer.parseInt(config.get("speedInMbps").orElse("50"));
+ *         final var fabricPortName = config.get("fabricPortName").get().toString();
+ *         final var awsRegion = config.get("awsRegion").orElse("eu-central-1");
+ *         final var awsAccountId = config.get("awsAccountId").get().toString();
+ *         System.out.println(System.getProperty("java.classpath"));
  *         final var serviceProfileId = FabricFunctions.getServiceProfiles(GetServiceProfilesArgs.builder()
  *             .filter(GetServiceProfilesFilterArgs.builder()
- *                 .property(&#34;/name&#34;)
- *                 .operator(&#34;=&#34;)
- *                 .values(&#34;AWS Direct Connect&#34;)
+ *                 .property("/name")
+ *                 .operator("=")
+ *                 .values("AWS Direct Connect")
  *                 .build())
- *             .build()).applyValue(data -&gt; data.data().get(0).uuid().get());
+ *             .build()).applyValue(data -> data.data().get(0).uuid().get());
  * 
  *         final var portId = FabricFunctions.getPorts(GetPortsArgs.builder()
  *             .filter(GetPortsFilterArgs.builder()
  *                 .name(fabricPortName)
  *                 .build())
- *             .build()).applyValue(data -&gt; data.data().get(0).uuid().get());
+ *             .build()).applyValue(data -> data.data().get(0).uuid().get());
  * 
- *         var colo2Aws = new Connection(&#34;colo2Aws&#34;, ConnectionArgs.builder()        
- *             .name(&#34;Pulumi-colo2Aws&#34;)
- *             .type(&#34;EVPL_VC&#34;)
+ *         var colo2Aws = new Connection("colo2Aws", ConnectionArgs.builder()        
+ *             .name("Pulumi-colo2Aws")
+ *             .type("EVPL_VC")
  *             .notifications(ConnectionNotificationArgs.builder()
- *                 .type(&#34;ALL&#34;)
- *                 .emails(&#34;example@equinix.com&#34;)
+ *                 .type("ALL")
+ *                 .emails("example{@literal @}equinix.com")
  *                 .build())
  *             .bandwidth(speedInMbps)
  *             .redundancy(ConnectionRedundancyArgs.builder()
- *                 .priority(&#34;PRIMARY&#34;)
+ *                 .priority("PRIMARY")
  *                 .build())
  *             .aSide(ConnectionASideArgs.builder()
  *                 .accessPoint(ConnectionASideAccessPointArgs.builder()
- *                     .type(&#34;COLO&#34;)
+ *                     .type("COLO")
  *                     .port(ConnectionASideAccessPointPortArgs.builder()
  *                         .uuid(portId)
  *                         .build())
  *                     .linkProtocol(ConnectionASideAccessPointLinkProtocolArgs.builder()
- *                         .type(&#34;DOT1Q&#34;)
+ *                         .type("DOT1Q")
  *                         .vlanTag(1234)
  *                         .build())
  *                     .build())
  *                 .build())
  *             .zSide(ConnectionZSideArgs.builder()
  *                 .accessPoint(ConnectionZSideAccessPointArgs.builder()
- *                     .type(&#34;SP&#34;)
+ *                     .type("SP")
  *                     .authenticationKey(awsAccountId)
  *                     .sellerRegion(awsRegion)
  *                     .profile(ConnectionZSideAccessPointProfileArgs.builder()
- *                         .type(&#34;L2_PROFILE&#34;)
+ *                         .type("L2_PROFILE")
  *                         .uuid(serviceProfileId)
  *                         .build())
  *                     .location(ConnectionZSideAccessPointLocationArgs.builder()
@@ -119,13 +120,14 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         ctx.export(&#34;connectionId&#34;, colo2Aws.id());
- *         ctx.export(&#34;connectionStatus&#34;, colo2Aws.operation().applyValue(operation -&gt; operation.equinixStatus()));
- *         ctx.export(&#34;connectionProviderStatus&#34;, colo2Aws.operation().applyValue(operation -&gt; operation.providerStatus()));
- *         ctx.export(&#34;awsDirectConnectId&#34;, colo2Aws.zSide().applyValue(zSide -&gt; zSide.accessPoint().get().providerConnectionId()));
+ *         ctx.export("connectionId", colo2Aws.id());
+ *         ctx.export("connectionStatus", colo2Aws.operation().applyValue(operation -> operation.equinixStatus()));
+ *         ctx.export("connectionProviderStatus", colo2Aws.operation().applyValue(operation -> operation.providerStatus()));
+ *         ctx.export("awsDirectConnectId", colo2Aws.zSide().applyValue(zSide -> zSide.accessPoint().get().providerConnectionId()));
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  */
 @ResourceType(type="equinix:fabric/connection:Connection")

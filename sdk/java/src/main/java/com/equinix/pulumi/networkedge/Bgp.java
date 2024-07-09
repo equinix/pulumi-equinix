@@ -20,7 +20,8 @@ import javax.annotation.Nullable;
  * Resource `equinix.networkedge.Bgp` allows creation and management of Equinix Network Edge BGP peering configurations.
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -41,20 +42,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bgp = new Bgp(&#34;bgp&#34;, BgpArgs.builder()        
- *             .connectionId(&#34;54014acf-9730-4b55-a791-459283d05fb1&#34;)
- *             .localIpAddress(&#34;10.1.1.1/30&#34;)
+ *         var bgp = new Bgp("bgp", BgpArgs.builder()        
+ *             .connectionId("54014acf-9730-4b55-a791-459283d05fb1")
+ *             .localIpAddress("10.1.1.1/30")
  *             .localAsn(12345)
- *             .remoteIpAddress(&#34;10.1.1.2&#34;)
+ *             .remoteIpAddress("10.1.1.2")
  *             .remoteAsn(66123)
- *             .authenticationKey(&#34;secret&#34;)
+ *             .authenticationKey("secret")
  *             .build());
  * 
- *         ctx.export(&#34;state&#34;, bgp.state());
- *         ctx.export(&#34;provisioningStatus&#34;, bgp.provisioningStatus());
+ *         ctx.export("state", bgp.state());
+ *         ctx.export("provisioningStatus", bgp.provisioningStatus());
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  * ## Import
  * 

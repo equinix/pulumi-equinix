@@ -4,6 +4,7 @@
 package com.equinix.pulumi.metal.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -106,7 +107,10 @@ public final class GetVlanResult {
 
         @CustomType.Setter
         public Builder assignedDevicesIds(List<String> assignedDevicesIds) {
-            this.assignedDevicesIds = Objects.requireNonNull(assignedDevicesIds);
+            if (assignedDevicesIds == null) {
+              throw new MissingRequiredPropertyException("GetVlanResult", "assignedDevicesIds");
+            }
+            this.assignedDevicesIds = assignedDevicesIds;
             return this;
         }
         public Builder assignedDevicesIds(String... assignedDevicesIds) {
@@ -114,37 +118,58 @@ public final class GetVlanResult {
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetVlanResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder facility(String facility) {
-            this.facility = Objects.requireNonNull(facility);
+            if (facility == null) {
+              throw new MissingRequiredPropertyException("GetVlanResult", "facility");
+            }
+            this.facility = facility;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetVlanResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder metro(String metro) {
-            this.metro = Objects.requireNonNull(metro);
+            if (metro == null) {
+              throw new MissingRequiredPropertyException("GetVlanResult", "metro");
+            }
+            this.metro = metro;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("GetVlanResult", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder vlanId(String vlanId) {
-            this.vlanId = Objects.requireNonNull(vlanId);
+            if (vlanId == null) {
+              throw new MissingRequiredPropertyException("GetVlanResult", "vlanId");
+            }
+            this.vlanId = vlanId;
             return this;
         }
         @CustomType.Setter
         public Builder vxlan(Integer vxlan) {
-            this.vxlan = Objects.requireNonNull(vxlan);
+            if (vxlan == null) {
+              throw new MissingRequiredPropertyException("GetVlanResult", "vxlan");
+            }
+            this.vxlan = vxlan;
             return this;
         }
         public GetVlanResult build() {
