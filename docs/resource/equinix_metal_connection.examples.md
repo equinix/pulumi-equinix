@@ -1,7 +1,7 @@
 ## Example Usage
 
 {{% example %}}
-### metal billed token
+### example metal billed token
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -184,7 +184,7 @@ outputs:
 {{% /example %}}
 
 {{% example %}}
-### fabric billed token
+### example fabric billed token
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";

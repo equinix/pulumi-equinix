@@ -30,10 +30,11 @@ development: install_plugins provider lint_provider build_sdks install_sdks clea
 build: install_plugins provider build_sdks install_sdks
 only_build: build
 
-tfgen: cleanup install_plugins upstream
+tfgen: cleanup install_plugins upstream examples
 	(cd provider && go build -o $(WORKING_DIR)/bin/${TFGEN} -ldflags "-X ${PROJECT}/${VERSION_PATH}=${VERSION}" ${PROJECT}/${PROVIDER_PATH}/cmd/${TFGEN})
 	$(WORKING_DIR)/bin/${TFGEN} schema --out provider/cmd/${PROVIDER}
 	(cd provider && VERSION=$(VERSION) go generate cmd/${PROVIDER}/main.go)
+
 
 bin/pulumi-java-gen: .pulumi-java-gen.version
 	pulumictl download-binary -n pulumi-language-java -v v$(shell cat .pulumi-java-gen.version) -r pulumi/pulumi-java
@@ -196,12 +197,6 @@ upstream.rebase:
 
 examples: install_equinix_plugin
 	scripts/generate_examples.sh
-
-examples_check: examples
-	if git status --porcelain | grep examples; then \
-		echo "Uncommitted changes detected. Run 'make examples' and commit changes."; \
-		exit 1; \
-	fi
 
 # Compute the version of Pulumi to use by inspecting the Go dependencies of the provider.
 .pulumi/version:

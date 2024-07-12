@@ -59,7 +59,8 @@ mappings() {
     sed -i '' 's/"arista-ha"/"arista_ha"/g' "$tf_file"
     sed -i '' 's/"vsrx-single"/"vsrx_single"/g' "$tf_file"
     sed -i '' 's/"c8kv-single"/"c8kv_single"/g' "$tf_file"
-    
+
+    rm ${tf_file}.bak
 }
 
 # generate pululmi yaml from terraform examples
@@ -246,7 +247,7 @@ merge_example_files() {
     echo "Generating merged example: $RESULT_FILE_NAME"
     echo "${1}_example_*.examples.md"
     # Find all example files with the specified prefix in OUTPUT_DIR
-    local EXAMPLES_TO_MERGE=($(find "$OUTPUT_DIR" -maxdepth 1 -name "${1}_*.examples.md"))
+    local EXAMPLES_TO_MERGE=($(find "$OUTPUT_DIR" -maxdepth 1 -name "${1}_example*.examples.md"))
     echo "${EXAMPLES_TO_MERGE[@]}"
 
     local CONTENTS=""
