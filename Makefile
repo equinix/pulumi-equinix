@@ -30,11 +30,16 @@ development: install_plugins provider lint_provider build_sdks install_sdks clea
 build: install_plugins provider build_sdks install_sdks
 only_build: build
 
-tfgen: install_plugins upstream
+tfgen: install_plugins upstream build_schema generate_examples
+
+# Generate examples after the schema is generated
+generate_examples: examples
+
+# Build the tfgen binary and generate the schema
+build_schema:
 	(cd provider && go build -o $(WORKING_DIR)/bin/${TFGEN} -ldflags "-X ${PROJECT}/${VERSION_PATH}=${VERSION}" ${PROJECT}/${PROVIDER_PATH}/cmd/${TFGEN})
 	$(WORKING_DIR)/bin/${TFGEN} schema --out provider/cmd/${PROVIDER}
 	(cd provider && VERSION=$(VERSION) go generate cmd/${PROVIDER}/main.go)
-tfgen: examples
 
 bin/pulumi-java-gen: .pulumi-java-gen.version
 	pulumictl download-binary -n pulumi-language-java -v v$(shell cat .pulumi-java-gen.version) -r pulumi/pulumi-java
