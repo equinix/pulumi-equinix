@@ -26,6 +26,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.equinix.metal.ProjectSshKey;
  * import com.pulumi.equinix.metal.ProjectSshKeyArgs;
+ * import com.pulumi.equinix.metal.Device;
+ * import com.pulumi.equinix.metal.DeviceArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -39,31 +41,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
-<<<<<<< HEAD
- *         final var projectId = config.get("projectId").get();
+ *         final var projectId = "<UUID_of_your_project>";
  * 
- *         String content = null;
- *         try {
- *             content = Files.readString(Paths.get("/Users/John/.ssh/metal_rsa.pub"));
- *         } catch (IOException e) {
- *             e.printStackTrace();
- *         }
- * 
- *         var sshKey = new ProjectSshKey("sshKey", ProjectSshKeyArgs.builder()        
+ *         var test = new ProjectSshKey("test", ProjectSshKeyArgs.builder()
+ *             .name("test")
+ *             .publicKey("ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDM/unxJeFqxsTJcu6mhqsMHSaVlpu+Jj/P+44zrm6X/MAoHSX3X9oLgujEjjZ74yLfdfe0bJrbL2YgJzNaEkIQQ1VPMHB5EhTKUBGnzlPP0hHTnxsjAm9qDHgUPgvgFDQSAMzdJRJ0Cexo16Ph9VxCoLh3dxiE7s2gaM2FdVg7P8aSxKypsxAhYV3D0AwqzoOyT6WWhBoQ0xZ85XevOTnJCpImSemEGs6nVGEsWcEc1d1YvdxFjAK4SdsKUMkj4Dsy/leKsdi/DEAf356vbMT1UHsXXvy5TlHu/Pa6qF53v32Enz+nhKy7/8W2Yt2yWx8HnQcT2rug9lvCXagJO6oauqRTO77C4QZn13ZLMZgLT66S/tNh2EX0gi6vmIs5dth8uF+K6nxIyKJXbcA4ASg7F1OJrHKFZdTc5v1cPeq6PcbqGgc+8SrPYQmzvQqLoMBuxyos2hUkYOmw3aeWJj9nFa8Wu5WaN89mUeOqSkU4S5cgUzWUOmKey56B/j/s1sVys9rMhZapVs0wL4L9GBBM48N5jAQZnnpo85A8KsZq5ME22bTLqnxsDXqDYZvS7PSI6Dxi7eleOFE/NYYDkrgDLHTQri8ucDMVeVWHgoMY2bPXdn7KKy5jW5jKsf8EPARXg77A4gRYmgKrcwIKqJEUPqyxJBe0CPoGTqgXPRsUiQ== tomk{@literal @}hp2")
  *             .projectId(projectId)
- *             .name("johnKent")
- *             .publicKey(content)
-=======
- *         final var projectId = config.get("projectId");
- *         var sshKey = new ProjectSshKey("sshKey", ProjectSshKeyArgs.builder()
- *             .projectId(projectId)
- *             .name("johnKent")
- *             .publicKey(Files.readString(Paths.get("/Users/John/.ssh/metal_rsa.pub")))
->>>>>>> 667aad3 (add make command to build examples and examples in docs)
  *             .build());
  * 
- *         ctx.export("sshKeyId", sshKey.id());
+ *         var testDevice = new Device("testDevice", DeviceArgs.builder()
+ *             .hostname("test")
+ *             .plan("c3.medium.x86")
+ *             .metro("ny")
+ *             .operatingSystem("ubuntu_20_04")
+ *             .billingCycle("hourly")
+ *             .projectSshKeyIds(test.id())
+ *             .projectId(projectId)
+ *             .build());
+ * 
  *     }
  * }
  * }

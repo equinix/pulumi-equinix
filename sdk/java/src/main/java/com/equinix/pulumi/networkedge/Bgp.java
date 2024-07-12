@@ -42,11 +42,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
-<<<<<<< HEAD
- *         var bgp = new Bgp("bgp", BgpArgs.builder()        
-=======
- *         var bgp = new Bgp("bgp", BgpArgs.builder()
->>>>>>> 667aad3 (add make command to build examples and examples in docs)
+ *         var test = new Bgp("test", BgpArgs.builder()
  *             .connectionId("54014acf-9730-4b55-a791-459283d05fb1")
  *             .localIpAddress("10.1.1.1/30")
  *             .localAsn(12345)
@@ -55,8 +51,6 @@ import javax.annotation.Nullable;
  *             .authenticationKey("secret")
  *             .build());
  * 
- *         ctx.export("state", bgp.state());
- *         ctx.export("provisioningStatus", bgp.provisioningStatus());
  *     }
  * }
  * }

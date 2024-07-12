@@ -42,33 +42,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var metro = config.get("metro").orElse("SV");
-<<<<<<< HEAD
- * 
- *         String content = null;
- *         try {
- *             content = Files.readString(Paths.get("./../assets/aviatrix-cloud-init.txt"));
- *         } catch (IOException e) {
- *             e.printStackTrace();
- *         }
- * 
- *         var networkFile = new NetworkFile("networkFile", NetworkFileArgs.builder()        
- *             .fileName("Aviatrix-ZTP-file")
- *             .content(content)
-=======
- *         var networkFile = new NetworkFile("networkFile", NetworkFileArgs.builder()
- *             .fileName("Aviatrix-ZTP-file")
- *             .content(Files.readString(Paths.get("./../assets/aviatrix-cloud-init.txt")))
->>>>>>> 667aad3 (add make command to build examples and examples in docs)
- *             .metroCode(metro)
+ *         final var filepath = config.get("filepath").orElse("fileFolder/fileName.txt");
+ *         var testFile = new NetworkFile("testFile", NetworkFileArgs.builder()
+ *             .fileName("fileName.txt")
+ *             .content(StdFunctions.file(FileArgs.builder()
+ *                 .input(filepath)
+ *                 .build()).result())
+ *             .metroCode("SV")
  *             .deviceTypeCode("AVIATRIX_EDGE")
  *             .processType("CLOUD_INIT")
  *             .selfManaged(true)
  *             .byol(true)
  *             .build());
  * 
- *         ctx.export("networkFileId", networkFile.id());
- *         ctx.export("networkFileStatus", networkFile.status());
  *     }
  * }
  * }

@@ -40,9 +40,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.equinix.fabric.CloudRouter;
  * import com.pulumi.equinix.fabric.CloudRouterArgs;
+ * import com.pulumi.equinix.fabric.inputs.CloudRouterNotificationArgs;
+ * import com.pulumi.equinix.fabric.inputs.CloudRouterOrderArgs;
  * import com.pulumi.equinix.fabric.inputs.CloudRouterLocationArgs;
  * import com.pulumi.equinix.fabric.inputs.CloudRouterPackageArgs;
- * import com.pulumi.equinix.fabric.inputs.CloudRouterNotificationArgs;
+ * import com.pulumi.equinix.fabric.inputs.CloudRouterProjectArgs;
  * import com.pulumi.equinix.fabric.inputs.CloudRouterAccountArgs;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -57,38 +59,32 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var metro = config.get("metro").orElse("FR");
- *         final var accountNum = config.get("accountNum");
-<<<<<<< HEAD
- *         var router = new CloudRouter("router", CloudRouterArgs.builder()        
-=======
- *         var router = new CloudRouter("router", CloudRouterArgs.builder()
->>>>>>> 667aad3 (add make command to build examples and examples in docs)
- *             .name("My-Fabric-Cloud-Router")
+ *         var newCloudRouter = new CloudRouter("newCloudRouter", CloudRouterArgs.builder()
+ *             .name("Router-SV")
  *             .type("XF_ROUTER")
- *             .location(CloudRouterLocationArgs.builder()
- *                 .metroCode(metro)
- *                 .build())
- *             .package_(CloudRouterPackageArgs.builder()
- *                 .code("BASIC")
- *                 .build())
  *             .notifications(CloudRouterNotificationArgs.builder()
  *                 .type("ALL")
- *                 .emails("example{@literal @}equinix.com")
+ *                 .emails(                
+ *                     "example{@literal @}equinix.com",
+ *                     "test1{@literal @}equinix.com")
+ *                 .build())
+ *             .order(CloudRouterOrderArgs.builder()
+ *                 .purchaseOrderNumber("1-323292")
+ *                 .build())
+ *             .location(CloudRouterLocationArgs.builder()
+ *                 .metroCode("SV")
+ *                 .build())
+ *             .package_(CloudRouterPackageArgs.builder()
+ *                 .code("STANDARD")
+ *                 .build())
+ *             .project(CloudRouterProjectArgs.builder()
+ *                 .projectId("776847000642406")
  *                 .build())
  *             .account(CloudRouterAccountArgs.builder()
- *                 .accountNumber(272010)
+ *                 .accountNumber("203612")
  *                 .build())
-<<<<<<< HEAD
- *             .project(CloudRouterProjectArgs.builder()
- *                 .projectId("995072000433550")
- *                 .build())
-=======
->>>>>>> 667aad3 (add make command to build examples and examples in docs)
  *             .build());
  * 
- *         ctx.export("routerId", router.id());
  *     }
  * }
  * }

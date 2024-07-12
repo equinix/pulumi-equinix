@@ -40,23 +40,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
-<<<<<<< HEAD
- *         final var device1Id = config.get("device1Id").get();
- *         final var device2Id = config.get("device2Id").get();
- *         var sshUser = new SshUser("sshUser", SshUserArgs.builder()        
-=======
- *         final var device1Id = config.get("device1Id");
- *         final var device2Id = config.get("device2Id");
- *         var sshUser = new SshUser("sshUser", SshUserArgs.builder()
->>>>>>> 667aad3 (add make command to build examples and examples in docs)
- *             .username("johnKent")
+ *         var john = new SshUser("john", SshUserArgs.builder()
+ *             .username("john")
+ *             .password("secret")
  *             .deviceIds(            
- *                 device1Id,
- *                 device2Id)
+ *                 "csr1000v-ha-uuid",
+ *                 "csr1000v-ha-redundant-uuid")
  *             .build());
  * 
- *         ctx.export("sshUserId", sshUser.id());
  *     }
  * }
  * }

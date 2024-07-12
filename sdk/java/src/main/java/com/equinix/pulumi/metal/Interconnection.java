@@ -24,62 +24,7 @@ import javax.annotation.Nullable;
  * &gt; Equinix Metal connection with with Service Token A-side / Z-side (service_token_type) is not generally available and may not be enabled yet for your organization.
  * 
  * ## Example Usage
-<<<<<<< HEAD
-=======
- * ### equinix metal connection fabric billed token
->>>>>>> 667aad3 (add make command to build examples and examples in docs)
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.equinix.metal.Interconnection;
- * import com.pulumi.equinix.metal.InterconnectionArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
-<<<<<<< HEAD
- *         final var projectId = config.get("projectId").get();
- *         final var metro = config.get("metro").orElse("SV");
- *         final var speedInMbps = Integer.parseInt(config.get("speedInMbps").orElse("200"));
- *         var connection = new Interconnection("connection", InterconnectionArgs.builder()        
-=======
- *         final var projectId = config.get("projectId");
- *         final var metro = config.get("metro").orElse("SV");
- *         final var speedInMbps = config.get("speedInMbps").orElse(200);
- *         var connection = new Interconnection("connection", InterconnectionArgs.builder()
->>>>>>> 667aad3 (add make command to build examples and examples in docs)
- *             .name("fabric-port-to-metal")
- *             .projectId(projectId)
- *             .type("shared")
- *             .redundancy("primary")
- *             .metro(metro)
- *             .speed(String.format("%sMbps", speedInMbps))
- *             .serviceTokenType("z_side")
- *             .build());
- * 
- *         ctx.export("connectionStatus", connection.status());
- *         ctx.export("connectionTokens", connection.serviceTokens());
- *     }
- * }
- * }
- * </pre>
-<<<<<<< HEAD
-=======
- * ### equinix metal connection metal billed token
+ * ### example metal billed token
  * <pre>
  * {@code
  * package generated_program;
@@ -122,7 +67,49 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
->>>>>>> 667aad3 (add make command to build examples and examples in docs)
+ * ### example fabric billed token
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.metal.Interconnection;
+ * import com.pulumi.equinix.metal.InterconnectionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var projectId = config.get("projectId");
+ *         final var metro = config.get("metro").orElse("SV");
+ *         final var speedInMbps = config.get("speedInMbps").orElse(200);
+ *         var connection = new Interconnection("connection", InterconnectionArgs.builder()
+ *             .name("fabric-port-to-metal")
+ *             .projectId(projectId)
+ *             .type("shared")
+ *             .redundancy("primary")
+ *             .metro(metro)
+ *             .speed(String.format("%sMbps", speedInMbps))
+ *             .serviceTokenType("z_side")
+ *             .build());
+ * 
+ *         ctx.export("connectionStatus", connection.status());
+ *         ctx.export("connectionTokens", connection.serviceTokens());
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  */
 @ResourceType(type="equinix:metal/interconnection:Interconnection")

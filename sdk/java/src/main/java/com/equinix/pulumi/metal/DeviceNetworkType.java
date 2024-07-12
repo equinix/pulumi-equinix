@@ -38,15 +38,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
-<<<<<<< HEAD
- *         final var deviceId = config.get("deviceId").get();
- *         final var networkType = config.get("networkType").orElse("hybrid");
- *         var deviceNetwork = new DeviceNetworkType("deviceNetwork", DeviceNetworkTypeArgs.builder()        
-=======
  *         final var deviceId = config.get("deviceId");
  *         final var networkType = config.get("networkType").orElse("hybrid");
  *         var deviceNetwork = new DeviceNetworkType("deviceNetwork", DeviceNetworkTypeArgs.builder()
->>>>>>> 667aad3 (add make command to build examples and examples in docs)
  *             .deviceId(deviceId)
  *             .type(networkType)
  *             .build());

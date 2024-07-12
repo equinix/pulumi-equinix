@@ -22,6 +22,7 @@ import javax.annotation.Nullable;
  * See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
  * 
  * ## Example Usage
+ * ### example 1
  * <pre>
  * {@code
  * package generated_program;
@@ -29,6 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.metal.Vlan;
+ * import com.pulumi.equinix.metal.VlanArgs;
  * import com.pulumi.equinix.metal.Gateway;
  * import com.pulumi.equinix.metal.GatewayArgs;
  * import java.util.List;
@@ -44,22 +47,67 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
-<<<<<<< HEAD
- *         final var projectId = config.get("projectId").get();
- *         final var vlanId = config.get("vlanId").get();
- *         var gateway = new Gateway("gateway", GatewayArgs.builder()        
-=======
- *         final var projectId = config.get("projectId");
- *         final var vlanId = config.get("vlanId");
- *         var gateway = new Gateway("gateway", GatewayArgs.builder()
->>>>>>> 667aad3 (add make command to build examples and examples in docs)
+ *         var test = new Vlan("test", VlanArgs.builder()
+ *             .description("test VLAN in SV")
+ *             .metro("sv")
  *             .projectId(projectId)
- *             .vlanId(vlanId)
+ *             .build());
+ * 
+ *         var testGateway = new Gateway("testGateway", GatewayArgs.builder()
+ *             .projectId(projectId)
+ *             .vlanId(test.id())
  *             .privateIpv4SubnetSize(8)
  *             .build());
  * 
- *         ctx.export("gatewayState", gateway.state());
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### example 2
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.metal.Vlan;
+ * import com.pulumi.equinix.metal.VlanArgs;
+ * import com.pulumi.equinix.metal.ReservedIpBlock;
+ * import com.pulumi.equinix.metal.ReservedIpBlockArgs;
+ * import com.pulumi.equinix.metal.Gateway;
+ * import com.pulumi.equinix.metal.GatewayArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var test = new Vlan("test", VlanArgs.builder()
+ *             .description("test VLAN in SV")
+ *             .metro("sv")
+ *             .projectId(projectId)
+ *             .build());
+ * 
+ *         var test1 = new ReservedIpBlock("test1", ReservedIpBlockArgs.builder()
+ *             .projectId(projectId)
+ *             .metro("sv")
+ *             .quantity(8)
+ *             .build());
+ * 
+ *         var testGateway = new Gateway("testGateway", GatewayArgs.builder()
+ *             .projectId(projectId)
+ *             .vlanId(test.id())
+ *             .ipReservationId(testEquinixMetalReservedIpBlock.id())
+ *             .build());
+ * 
  *     }
  * }
  * }

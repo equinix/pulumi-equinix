@@ -43,11 +43,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.equinix.fabric.ServiceProfile;
  * import com.pulumi.equinix.fabric.ServiceProfileArgs;
+ * import com.pulumi.equinix.fabric.inputs.ServiceProfileNotificationArgs;
+ * import com.pulumi.equinix.fabric.inputs.ServiceProfilePortArgs;
  * import com.pulumi.equinix.fabric.inputs.ServiceProfileAccessPointTypeConfigArgs;
- * import com.pulumi.equinix.fabric.inputs.ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs;
- * import com.pulumi.equinix.fabric.inputs.ServiceProfileAccessPointTypeConfigApiConfigArgs;
- * import com.pulumi.equinix.fabric.inputs.ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs;
- * import com.pulumi.equinix.fabric.inputs.ServiceProfileMarketingInfoArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -61,57 +59,36 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
-<<<<<<< HEAD
- *         var profile = new ServiceProfile("profile", ServiceProfileArgs.builder()        
-=======
- *         var profile = new ServiceProfile("profile", ServiceProfileArgs.builder()
->>>>>>> 667aad3 (add make command to build examples and examples in docs)
- *             .name("Example Cloud Provider")
- *             .description("50 to 500 Mbps Hosted Connection to Example Cloud")
+ *         var newServiceProfile = new ServiceProfile("newServiceProfile", ServiceProfileArgs.builder()
+ *             .description("Service Profile for Receiving Connections")
+ *             .name("Name Of Business + Use Case Tag")
  *             .type("L2_PROFILE")
+ *             .visibility("PUBLIC")
+ *             .notifications(ServiceProfileNotificationArgs.builder()
+ *                 .emails("someone{@literal @}sample.com")
+ *                 .type("BANDWIDTH_ALERT")
+ *                 .build())
+ *             .allowedEmails(            
+ *                 "test{@literal @}equinix.com",
+ *                 "testagain{@literal @}equinix.com")
+ *             .ports(ServiceProfilePortArgs.builder()
+ *                 .uuid("c791f8cb-5cc9-cc90-8ce0-306a5c00a4ee")
+ *                 .type("XF_PORT")
+ *                 .build())
  *             .accessPointTypeConfigs(ServiceProfileAccessPointTypeConfigArgs.builder()
  *                 .type("COLO")
- *                 .supportedBandwidths(                
- *                     50,
- *                     100,
- *                     200,
- *                     500)
  *                 .allowRemoteConnections(true)
- *                 .allowCustomBandwidth(false)
+ *                 .allowCustomBandwidth(true)
  *                 .allowBandwidthAutoApproval(false)
- *                 .linkProtocolConfig(ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs.builder()
- *                     .encapsulationStrategy("CTAGED")
- *                     .reuseVlanSTag(false)
- *                     .encapsulation("DOT1Q")
- *                     .build())
- *                 .enableAutoGenerateServiceKey("false,")
- *                 .connectionRedundancyRequired("false,")
- *                 .apiConfig(ServiceProfileAccessPointTypeConfigApiConfigArgs.builder()
- *                     .apiAvailable(true)
- *                     .integrationId("Example-Connect-01")
- *                     .bandwidthFromApi(false)
- *                     .build())
- *                 .connectionLabel("Virtual Circuit Name")
- *                 .authenticationKey(ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs.builder()
- *                     .required(true)
- *                     .label("Example ACCOUNT ID")
- *                     .build())
- *                 .build())
-<<<<<<< HEAD
- *             .account(ServiceProfileAccountArgs.builder()
- *                 .organizationName("Example Cloud")
- *                 .globalOrganizationName("Example Global")
- *                 .build())
-=======
- *             .metros(null)
->>>>>>> 667aad3 (add make command to build examples and examples in docs)
- *             .visibility("PUBLIC")
- *             .marketingInfo(ServiceProfileMarketingInfoArgs.builder()
- *                 .promotion(true)
+ *                 .connectionRedundancyRequired(false)
+ *                 .connectionLabel("Service Profile Tag1")
+ *                 .bandwidthAlertThreshold(10)
+ *                 .supportedBandwidths(                
+ *                     100,
+ *                     500)
  *                 .build())
  *             .build());
  * 
- *         ctx.export("profileId", profile.id());
  *     }
  * }
  * }

@@ -46,13 +46,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
-<<<<<<< HEAD
- *         var aclTemplate = new AclTemplate("aclTemplate", AclTemplateArgs.builder()        
-=======
- *         var aclTemplate = new AclTemplate("aclTemplate", AclTemplateArgs.builder()
->>>>>>> 667aad3 (add make command to build examples and examples in docs)
+ *         var myacl = new AclTemplate("myacl", AclTemplateArgs.builder()
  *             .name("test")
  *             .description("Test ACL template")
+ *             .projectId("a86d7112-d740-4758-9c9c-31e66373746b")
  *             .inboundRules(            
  *                 AclTemplateInboundRuleArgs.builder()
  *                     .subnet("1.1.1.1/32")
@@ -62,15 +59,13 @@ import javax.annotation.Nullable;
  *                     .description("inbound rule description")
  *                     .build(),
  *                 AclTemplateInboundRuleArgs.builder()
- *                     .subnet("2.2.2.2/28")
- *                     .protocol("TCP")
+ *                     .subnet("172.16.25.0/24")
+ *                     .protocol("UDP")
  *                     .srcPort("any")
- *                     .dstPort("any")
- *                     .description("inbound rule description")
+ *                     .dstPort("53,1045,2041")
  *                     .build())
  *             .build());
  * 
- *         ctx.export("templateId", aclTemplate.id());
  *     }
  * }
  * }

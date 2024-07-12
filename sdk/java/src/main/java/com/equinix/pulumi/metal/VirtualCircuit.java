@@ -29,6 +29,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.metal.MetalFunctions;
+ * import com.pulumi.equinix.metal.inputs.GetInterconnectionArgs;
+ * import com.pulumi.equinix.metal.Vlan;
+ * import com.pulumi.equinix.metal.VlanArgs;
  * import com.pulumi.equinix.metal.VirtualCircuit;
  * import com.pulumi.equinix.metal.VirtualCircuitArgs;
  * import java.util.List;
@@ -44,35 +48,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
-<<<<<<< HEAD
- *         final var projectId = config.get("projectId").get();
- *         final var connectionId = config.get("connectionId").get();
- *         final var vlanId = config.get("vlanId").get();
- *         final var portId = MetalFunctions.getInterconnection(GetInterconnectionArgs.builder()
- *             .connectionId(connectionId)
- *             .build()).applyValue(data -> data.ports().get(0).id());
+ *         final var projectId = "52000fb2-ee46-4673-93a8-de2c2bdba33c";
  * 
- *         var vc = new VirtualCircuit("vc", VirtualCircuitArgs.builder()        
-=======
- *         final var projectId = config.get("projectId");
- *         final var connectionId = config.get("connectionId");
- *         final var vlanId = config.get("vlanId");
- *         final var portId = MetalFunctions.getInterconnection(GetInterconnectionArgs.builder()
- *             .connectionId(connectionId)
- *             .build()).ports()[0].id();
+ *         final var connId = "73f12f29-3e19-43a0-8e90-ae81580db1e0";
  * 
- *         var vc = new VirtualCircuit("vc", VirtualCircuitArgs.builder()
->>>>>>> 667aad3 (add make command to build examples and examples in docs)
- *             .connectionId(connectionId)
+ *         final var test = MetalFunctions.getInterconnection(GetInterconnectionArgs.builder()
+ *             .connectionId(connId)
+ *             .build());
+ * 
+ *         var testVlan = new Vlan("testVlan", VlanArgs.builder()
  *             .projectId(projectId)
- *             .portId(portId)
- *             .vlanId(vlanId)
+ *             .metro(test.applyValue(getInterconnectionResult -> getInterconnectionResult.metro()))
+ *             .build());
+ * 
+ *         var testVirtualCircuit = new VirtualCircuit("testVirtualCircuit", VirtualCircuitArgs.builder()
+ *             .connectionId(connId)
+ *             .projectId(projectId)
+ *             .portId(test.applyValue(getInterconnectionResult -> getInterconnectionResult.ports()[0].id()))
+ *             .vlanId(testVlan.id())
  *             .nniVlan(1056)
  *             .build());
  * 
- *         ctx.export("vcStatus", vc.status());
- *         ctx.export("vcVnid", vc.vnid());
  *     }
  * }
  * }

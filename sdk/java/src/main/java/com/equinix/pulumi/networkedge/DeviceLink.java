@@ -46,70 +46,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
-<<<<<<< HEAD
- *         final var accountName = config.get("accountName").get();
- *         final var accountMetro = config.get("accountMetro").get();
- *         final var device1Id = config.get("device1Id").get();
- *         final var device2Id = config.get("device2Id").get();
- *         final var accountfNum = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
- *             .name(accountName)
- *             .metroCode(accountMetro)
- *             .build()).applyValue(account -> account.number());
- * 
- *         final var device1Metro = NetworkedgeFunctions.getDevice(GetDeviceArgs.builder()
- *             .uuid(device1Id)
- *             .build()).applyValue(device -> device.metroCode());
- * 
- *         final var device2Metro = NetworkedgeFunctions.getDevice(GetDeviceArgs.builder()
- *             .uuid(device2Id)
- *             .build()).applyValue(device -> device.metroCode());
- * 
- *         var deviceLink = new DeviceLink("deviceLink", DeviceLinkArgs.builder()        
-=======
- *         final var accountName = config.get("accountName");
- *         final var accountMetro = config.get("accountMetro");
- *         final var device1Id = config.get("device1Id");
- *         final var device2Id = config.get("device2Id");
- *         final var accountfNum = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
- *             .name(accountName)
- *             .metroCode(accountMetro)
- *             .build()).number();
- * 
- *         final var device1Metro = NetworkedgeFunctions.getDevice(GetDeviceArgs.builder()
- *             .uuid(device1Id)
- *             .build()).metroCode();
- * 
- *         final var device2Metro = NetworkedgeFunctions.getDevice(GetDeviceArgs.builder()
- *             .uuid(device2Id)
- *             .build()).metroCode();
- * 
- *         var deviceLink = new DeviceLink("deviceLink", DeviceLinkArgs.builder()
->>>>>>> 667aad3 (add make command to build examples and examples in docs)
+ *         var test = new DeviceLink("test", DeviceLinkArgs.builder()
  *             .name("test-link")
  *             .subnet("192.168.40.64/27")
+ *             .projectId("a86d7112-d740-4758-9c9c-31e66373746b")
  *             .devices(            
  *                 DeviceLinkDeviceArgs.builder()
- *                     .id("device1Id")
+ *                     .id(testEquinixNetworkDevice.uuid())
  *                     .asn(22111)
  *                     .interfaceId(6)
  *                     .build(),
  *                 DeviceLinkDeviceArgs.builder()
- *                     .id("device2Id")
+ *                     .id(testEquinixNetworkDevice.secondaryDevice()[0].uuid())
  *                     .asn(22333)
  *                     .interfaceId(7)
  *                     .build())
  *             .links(DeviceLinkLinkArgs.builder()
- *                 .accountNumber(accountfNum)
- *                 .srcMetroCode(device1Metro)
- *                 .dstMetroCode(device2Metro)
+ *                 .accountNumber(testEquinixNetworkDevice.accountNumber())
+ *                 .srcMetroCode(testEquinixNetworkDevice.metroCode())
+ *                 .dstMetroCode(testEquinixNetworkDevice.secondaryDevice()[0].metroCode())
  *                 .throughput("50")
  *                 .throughputUnit("Mbps")
  *                 .build())
  *             .build());
  * 
- *         ctx.export("status", deviceLink.status());
- *         ctx.export("devices", deviceLink.devices());
  *     }
  * }
  * }

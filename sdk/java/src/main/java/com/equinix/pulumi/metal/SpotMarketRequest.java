@@ -46,19 +46,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
-<<<<<<< HEAD
- *         final var projectId = config.get("projectId").get();
- *         final var metro = config.get("metro").orElse("FR");
- *         var request = new SpotMarketRequest("request", SpotMarketRequestArgs.builder()        
-=======
- *         final var projectId = config.get("projectId");
- *         final var metro = config.get("metro").orElse("FR");
- *         var request = new SpotMarketRequest("request", SpotMarketRequestArgs.builder()
->>>>>>> 667aad3 (add make command to build examples and examples in docs)
+ *         var req = new SpotMarketRequest("req", SpotMarketRequestArgs.builder()
  *             .projectId(projectId)
- *             .metro(metro)
- *             .maxBidPrice(0.75)
+ *             .maxBidPrice(0.03)
+ *             .metro("ny")
  *             .devicesMin(1)
  *             .devicesMax(1)
  *             .instanceParameters(SpotMarketRequestInstanceParametersArgs.builder()
@@ -69,7 +60,6 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         ctx.export("requestId", request.id());
  *     }
  * }
  * }

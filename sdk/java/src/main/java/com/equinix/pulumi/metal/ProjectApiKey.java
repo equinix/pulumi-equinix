@@ -43,22 +43,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
-<<<<<<< HEAD
- *         final var projectId = config.get("projectId").get();
- *         final var readOnly = config.getBoolean("readOnly").orElse(false);
- *         var apiKey = new ProjectApiKey("apiKey", ProjectApiKeyArgs.builder()        
-=======
- *         final var projectId = config.get("projectId");
- *         final var readOnly = config.get("readOnly").orElse(false);
- *         var apiKey = new ProjectApiKey("apiKey", ProjectApiKeyArgs.builder()
->>>>>>> 667aad3 (add make command to build examples and examples in docs)
- *             .projectId(projectId)
- *             .description("A project level API Key")
- *             .readOnly(readOnly)
+ *         var test = new ProjectApiKey("test", ProjectApiKeyArgs.builder()
+ *             .projectId(existingProjectId)
+ *             .description("Read-only key scoped to a projct")
+ *             .readOnly(true)
  *             .build());
  * 
- *         ctx.export("apiKeyToken", apiKey.token());
  *     }
  * }
  * }

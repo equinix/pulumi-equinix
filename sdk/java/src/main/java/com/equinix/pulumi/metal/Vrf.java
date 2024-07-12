@@ -22,6 +22,7 @@ import javax.annotation.Nullable;
  * See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
  * 
  * ## Example Usage
+ * ### example 2
  * <pre>
  * {@code
  * package generated_program;
@@ -29,6 +30,61 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.metal.ReservedIpBlock;
+ * import com.pulumi.equinix.metal.ReservedIpBlockArgs;
+ * import com.pulumi.equinix.metal.Vlan;
+ * import com.pulumi.equinix.metal.VlanArgs;
+ * import com.pulumi.equinix.metal.Gateway;
+ * import com.pulumi.equinix.metal.GatewayArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new ReservedIpBlock("example", ReservedIpBlockArgs.builder()
+ *             .description("Reserved IP block (192.168.100.0/29) taken from on of the ranges in the VRF's pool of address space.")
+ *             .projectId(exampleEquinixMetalProject.id())
+ *             .metro(exampleEquinixMetalVrf.metro())
+ *             .type("vrf")
+ *             .vrfId(exampleEquinixMetalVrf.id())
+ *             .cidr(29)
+ *             .network("192.168.100.0")
+ *             .build());
+ * 
+ *         var exampleVlan = new Vlan("exampleVlan", VlanArgs.builder()
+ *             .description("A VLAN for Layer2 and Hybrid Metal devices")
+ *             .metro(exampleEquinixMetalVrf.metro())
+ *             .projectId(exampleEquinixMetalProject.id())
+ *             .build());
+ * 
+ *         var exampleGateway = new Gateway("exampleGateway", GatewayArgs.builder()
+ *             .projectId(exampleEquinixMetalProject.id())
+ *             .vlanId(exampleVlan.id())
+ *             .ipReservationId(example.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### example 1
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.metal.Project;
+ * import com.pulumi.equinix.metal.ProjectArgs;
  * import com.pulumi.equinix.metal.Vrf;
  * import com.pulumi.equinix.metal.VrfArgs;
  * import java.util.List;
@@ -44,27 +100,62 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
-<<<<<<< HEAD
- *         final var projectId = config.get("projectId").get();
- *         final var metro = config.get("metro").orElse("DA");
- *         var vrf = new Vrf("vrf", VrfArgs.builder()        
-=======
- *         final var projectId = config.get("projectId");
- *         final var metro = config.get("metro").orElse("DA");
- *         var vrf = new Vrf("vrf", VrfArgs.builder()
->>>>>>> 667aad3 (add make command to build examples and examples in docs)
- *             .description("VRF with ASN 65000 and a pool of address space")
+ *         var example = new Project("example", ProjectArgs.builder()
+ *             .name("example")
+ *             .build());
+ * 
+ *         var exampleVrf = new Vrf("exampleVrf", VrfArgs.builder()
+ *             .description("VRF with ASN 65000 and a pool of address space that includes 192.168.100.0/25")
  *             .name("example-vrf")
- *             .metro(metro)
- *             .localAsn(65000)
+ *             .metro("da")
+ *             .localAsn("65000")
  *             .ipRanges(            
  *                 "192.168.100.0/25",
  *                 "192.168.200.0/25")
- *             .projectId(projectId)
+ *             .projectId(example.id())
  *             .build());
  * 
- *         ctx.export("vrfId", vrf.id());
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### example 3
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.metal.VirtualCircuit;
+ * import com.pulumi.equinix.metal.VirtualCircuitArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleVirtualCircuit = new VirtualCircuit("exampleVirtualCircuit", VirtualCircuitArgs.builder()
+ *             .name("example-vc")
+ *             .description("Virtual Circuit")
+ *             .connectionId(example.id())
+ *             .projectId(exampleEquinixMetalProject.id())
+ *             .portId(example.ports()[0].id())
+ *             .nniVlan(1024)
+ *             .vrfId(exampleEquinixMetalVrf.id())
+ *             .peerAsn(65530)
+ *             .subnet("192.168.100.16/31")
+ *             .metalIp("192.168.100.16")
+ *             .customerIp("192.168.100.17")
+ *             .build());
+ * 
  *     }
  * }
  * }

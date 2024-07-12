@@ -30,16 +30,19 @@ development: install_plugins provider lint_provider build_sdks install_sdks clea
 build: install_plugins provider build_sdks install_sdks
 only_build: build
 
-tfgen: cleanup install_plugins upstream examples
+tfgen: install_plugins upstream
 	(cd provider && go build -o $(WORKING_DIR)/bin/${TFGEN} -ldflags "-X ${PROJECT}/${VERSION_PATH}=${VERSION}" ${PROJECT}/${PROVIDER_PATH}/cmd/${TFGEN})
 	$(WORKING_DIR)/bin/${TFGEN} schema --out provider/cmd/${PROVIDER}
 	(cd provider && VERSION=$(VERSION) go generate cmd/${PROVIDER}/main.go)
-
+tfgen: examples
 
 bin/pulumi-java-gen: .pulumi-java-gen.version
 	pulumictl download-binary -n pulumi-language-java -v v$(shell cat .pulumi-java-gen.version) -r pulumi/pulumi-java
 
 provider: tfgen install_plugins # build the provider binary
+provider: only_provider
+
+only_provider:
 	(cd provider && go build -o $(WORKING_DIR)/bin/${PROVIDER} -ldflags "-X ${PROJECT}/${VERSION_PATH}=${VERSION} -X github.com/equinix/terraform-provider-equinix/version.ProviderVersion=${VERSION}" ${PROJECT}/${PROVIDER_PATH}/cmd/${PROVIDER})
 
 build_sdks: clean build_nodejs build_python build_go build_dotnet build_java # build all the sdks
@@ -147,7 +150,7 @@ help:
 clean:
 	rm -rf sdk/{dotnet,nodejs,go,python,java}
 
-install_equinix_plugin: provider uninstall_equinix_plugin
+install_equinix_plugin: only_provider uninstall_equinix_plugin
 	.pulumi/bin/pulumi plugin install resource equinix $(shell pulumictl get version --language generic) --file $(WORKING_DIR)/bin/$(PROVIDER)
 
 uninstall_equinix_plugin: provider
