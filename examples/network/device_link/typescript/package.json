@@ -1,5 +1,5 @@
 {
-	"name": "equinix-network-device-link",
+	"name": "equinix-network-device_link",
 	"devDependencies": {
 		"@types/node": "^14"
 	},

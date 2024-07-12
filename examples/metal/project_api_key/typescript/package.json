@@ -1,5 +1,5 @@
 {
-	"name": "equinix-metal-project-api-key",
+	"name": "equinix-metal-project_api_key",
 	"devDependencies": {
 		"@types/node": "^14"
 	},

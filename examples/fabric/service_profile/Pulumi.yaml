@@ -1,36 +1,32 @@
-name: equinix-fabric-service-profile
+name: equinix-fabric-service_profile
 runtime: yaml
-description: An Equinix Fabric service profile resource
 resources:
-  profile:
+  newServiceProfile:
     type: equinix:fabric:ServiceProfile
+    name: new_service_profile
     properties:
-      name: Example Cloud Provider
-      description: 50 to 500 Mbps Hosted Connection to Example Cloud
+      description: Service Profile for Receiving Connections
+      name: Name Of Business + Use Case Tag
       type: L2_PROFILE
-      accessPointTypeConfigs:
-      - type: COLO
-        supportedBandwidths: [ 50, 100, 200, 500]
-        allowRemoteConnections: true
-        allowCustomBandwidth: false
-        allowBandwidthAutoApproval: false
-        linkProtocolConfig:
-          encapsulationStrategy: CTAGED
-          reuseVlanSTag: false
-          encapsulation: DOT1Q
-        enableAutoGenerateServiceKey: false,
-        connectionRedundancyRequired: false,
-        apiConfig:
-          apiAvailable: true
-          integrationId: Example-Connect-01
-          bandwidthFromApi: false
-        connectionLabel: Virtual Circuit Name
-        authenticationKey:
-          required: true
-          label: Example ACCOUNT ID
-      metros:
       visibility: PUBLIC
-      marketingInfo:
-        promotion: true
-outputs:
-  profileId: ${profile.id}
+      notifications:
+        - emails:
+            - someone@sample.com
+          type: BANDWIDTH_ALERT
+      allowedEmails:
+        - test@equinix.com
+        - testagain@equinix.com
+      ports:
+        - uuid: c791f8cb-5cc9-cc90-8ce0-306a5c00a4ee
+          type: XF_PORT
+      accessPointTypeConfigs:
+        - type: COLO
+          allowRemoteConnections: true
+          allowCustomBandwidth: true
+          allowBandwidthAutoApproval: false
+          connectionRedundancyRequired: false
+          connectionLabel: Service Profile Tag1
+          bandwidthAlertThreshold: 10
+          supportedBandwidths:
+            - 100
+            - 500

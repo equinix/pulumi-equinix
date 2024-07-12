@@ -1,6 +1,2 @@
-name: equinix-metal-bgp-session
+name: equinix-metal-bgp_session
 runtime: java
-description: An Equinix Metal BGP Session resource. Refer to [Equinix Metal BGP documentation](https://deploy.equinix.com/developers/docs/metal/bgp/bgp-on-equinix-metal/) for more details
-config:
-  deviceId:
-    type: string

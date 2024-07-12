@@ -18,16 +18,13 @@ public class App {
     }
 
     public static void stack(Context ctx) {
-        final var config = ctx.config();
-        final var device1Id = config.get("device1Id");
-        final var device2Id = config.get("device2Id");
-        var sshUser = new SshUser("sshUser", SshUserArgs.builder()
-            .username("johnKent")
+        var john = new SshUser("john", SshUserArgs.builder()
+            .username("john")
+            .password("secret")
             .deviceIds(            
-                device1Id,
-                device2Id)
+                "csr1000v-ha-uuid",
+                "csr1000v-ha-redundant-uuid")
             .build());
 
-        ctx.export("sshUserId", sshUser.id());
     }
 }

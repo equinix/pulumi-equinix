@@ -1,3 +1,2 @@
-name: equinix-network-acl-template
+name: equinix-network-acl_template
 runtime: python
-description: An Equinix Network Edge Access Control List template resource

@@ -5,7 +5,6 @@ import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
 import com.pulumi.equinix.metal.Organization;
 import com.pulumi.equinix.metal.OrganizationArgs;
-import com.pulumi.equinix.metal.inputs.OrganizationAddressArgs;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
@@ -19,17 +18,10 @@ public class App {
     }
 
     public static void stack(Context ctx) {
-        var orgResource = new Organization("orgResource", OrganizationArgs.builder()
-            .name("Foo Organization")
-            .address(OrganizationAddressArgs.builder()
-                .address("org street")
-                .city("london")
-                .country("GB")
-                .zipCode("12345")
-                .build())
-            .description("An organization")
+        var tfOrganization1 = new Organization("tfOrganization1", OrganizationArgs.builder()
+            .name("foobar")
+            .description("quux")
             .build());
 
-        ctx.export("org", orgResource.id());
     }
 }

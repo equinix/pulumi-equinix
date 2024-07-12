@@ -1,0 +1,26 @@
+name: equinix-metal-reserved_ip_block-example_2
+runtime: yaml
+resources:
+  # Allocate /31 block of max 2 public IPv4 addresses in Silicon Valley (sv) metro
+  example:
+    type: equinix:metal:ReservedIpBlock
+    properties:
+      projectId: ${projectId}
+      metro: sv
+      quantity: 2
+  # Run a device with both public IPv4 from the block assigned
+  nodes:
+    type: equinix:metal:Device
+    properties:
+      projectId: ${projectId}
+      metro: sv
+      plan: c3.small.x86
+      operatingSystem: ubuntu_20_04
+      hostname: test
+      billingCycle: hourly
+      ipAddresses:
+        - type: public_ipv4
+          cidr: 31
+          reservationIds:
+            - ${example.id}
+        - type: private_ipv4

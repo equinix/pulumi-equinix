@@ -4,90 +4,72 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
 
-const profile = new equinix.fabric.ServiceProfile("profile", {
-    name: "Example Cloud Provider",
-    description: "50 to 500 Mbps Hosted Connection to Example Cloud",
+const newServiceProfile = new equinix.fabric.ServiceProfile("newServiceProfile", {
+    description: "Service Profile for Receiving Connections",
+    name: "Name Of Business + Use Case Tag",
     type: equinix.fabric.ProfileType.L2Profile,
+    visibility: equinix.fabric.ProfileVisibility.Public,
+    notifications: [{
+        emails: ["someone@sample.com"],
+        type: "BANDWIDTH_ALERT",
+    }],
+    allowedEmails: [
+        "test@equinix.com",
+        "testagain@equinix.com",
+    ],
+    ports: [{
+        uuid: "c791f8cb-5cc9-cc90-8ce0-306a5c00a4ee",
+        type: "XF_PORT",
+    }],
     accessPointTypeConfigs: [{
         type: equinix.fabric.ProfileAccessPointType.Colo,
+        allowRemoteConnections: true,
+        allowCustomBandwidth: true,
+        allowBandwidthAutoApproval: false,
+        connectionRedundancyRequired: false,
+        connectionLabel: "Service Profile Tag1",
+        bandwidthAlertThreshold: 10,
         supportedBandwidths: [
-            50,
             100,
-            200,
             500,
         ],
-        allowRemoteConnections: true,
-        allowCustomBandwidth: false,
-        allowBandwidthAutoApproval: false,
-        linkProtocolConfig: {
-            encapsulationStrategy: "CTAGED",
-            reuseVlanSTag: false,
-            encapsulation: "DOT1Q",
-        },
-        enableAutoGenerateServiceKey: "false,",
-        connectionRedundancyRequired: "false,",
-        apiConfig: {
-            apiAvailable: true,
-            integrationId: "Example-Connect-01",
-            bandwidthFromApi: false,
-        },
-        connectionLabel: "Virtual Circuit Name",
-        authenticationKey: {
-            required: true,
-            label: "Example ACCOUNT ID",
-        },
     }],
-    metros: undefined,
-    visibility: equinix.fabric.ProfileVisibility.Public,
-    marketingInfo: {
-        promotion: true,
-    },
 });
-export const profileId = profile.id;
 ```
 ```python
 import pulumi
 import pulumi_equinix as equinix
 
-profile = equinix.fabric.ServiceProfile("profile",
-    name="Example Cloud Provider",
-    description="50 to 500 Mbps Hosted Connection to Example Cloud",
+new_service_profile = equinix.fabric.ServiceProfile("newServiceProfile",
+    description="Service Profile for Receiving Connections",
+    name="Name Of Business + Use Case Tag",
     type=equinix.fabric.ProfileType.L2_PROFILE,
+    visibility=equinix.fabric.ProfileVisibility.PUBLIC,
+    notifications=[equinix.fabric.ServiceProfileNotificationArgs(
+        emails=["someone@sample.com"],
+        type="BANDWIDTH_ALERT",
+    )],
+    allowed_emails=[
+        "test@equinix.com",
+        "testagain@equinix.com",
+    ],
+    ports=[equinix.fabric.ServiceProfilePortArgs(
+        uuid="c791f8cb-5cc9-cc90-8ce0-306a5c00a4ee",
+        type="XF_PORT",
+    )],
     access_point_type_configs=[equinix.fabric.ServiceProfileAccessPointTypeConfigArgs(
         type=equinix.fabric.ProfileAccessPointType.COLO,
+        allow_remote_connections=True,
+        allow_custom_bandwidth=True,
+        allow_bandwidth_auto_approval=False,
+        connection_redundancy_required=False,
+        connection_label="Service Profile Tag1",
+        bandwidth_alert_threshold=10,
         supported_bandwidths=[
-            50,
             100,
-            200,
             500,
         ],
-        allow_remote_connections=True,
-        allow_custom_bandwidth=False,
-        allow_bandwidth_auto_approval=False,
-        link_protocol_config=equinix.fabric.ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs(
-            encapsulation_strategy="CTAGED",
-            reuse_vlan_s_tag=False,
-            encapsulation="DOT1Q",
-        ),
-        enable_auto_generate_service_key="false,",
-        connection_redundancy_required="false,",
-        api_config=equinix.fabric.ServiceProfileAccessPointTypeConfigApiConfigArgs(
-            api_available=True,
-            integration_id="Example-Connect-01",
-            bandwidth_from_api=False,
-        ),
-        connection_label="Virtual Circuit Name",
-        authentication_key=equinix.fabric.ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs(
-            required=True,
-            label="Example ACCOUNT ID",
-        ),
-    )],
-    metros=None,
-    visibility=equinix.fabric.ProfileVisibility.PUBLIC,
-    marketing_info=equinix.fabric.ServiceProfileMarketingInfoArgs(
-        promotion=True,
-    ))
-pulumi.export("profileId", profile.id)
+    )])
 ```
 ```go
 package main
@@ -99,51 +81,48 @@ import (
 
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
-		profile, err := fabric.NewServiceProfile(ctx, "profile", &fabric.ServiceProfileArgs{
-			Name:        pulumi.String("Example Cloud Provider"),
-			Description: pulumi.String("50 to 500 Mbps Hosted Connection to Example Cloud"),
+		_, err := fabric.NewServiceProfile(ctx, "newServiceProfile", &fabric.ServiceProfileArgs{
+			Description: pulumi.String("Service Profile for Receiving Connections"),
+			Name:        pulumi.String("Name Of Business + Use Case Tag"),
 			Type:        pulumi.String(fabric.ProfileTypeL2Profile),
-			AccessPointTypeConfigs: fabric.ServiceProfileAccessPointTypeConfigArray{
-				&fabric.ServiceProfileAccessPointTypeConfigArgs{
-					Type: pulumi.String(fabric.ProfileAccessPointTypeColo),
-					SupportedBandwidths: pulumi.IntArray{
-						pulumi.Int(50),
-						pulumi.Int(100),
-						pulumi.Int(200),
-						pulumi.Int(500),
+			Visibility:  pulumi.String(fabric.ProfileVisibilityPublic),
+			Notifications: fabric.ServiceProfileNotificationArray{
+				&fabric.ServiceProfileNotificationArgs{
+					Emails: pulumi.StringArray{
+						pulumi.String("someone@sample.com"),
 					},
-					AllowRemoteConnections:     pulumi.Bool(true),
-					AllowCustomBandwidth:       pulumi.Bool(false),
-					AllowBandwidthAutoApproval: pulumi.Bool(false),
-					LinkProtocolConfig: &fabric.ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs{
-						EncapsulationStrategy: pulumi.String("CTAGED"),
-						ReuseVlanSTag:         pulumi.Bool(false),
-						Encapsulation:         pulumi.String("DOT1Q"),
-					},
-					EnableAutoGenerateServiceKey: pulumi.Bool("false,"),
-					ConnectionRedundancyRequired: pulumi.Bool("false,"),
-					ApiConfig: &fabric.ServiceProfileAccessPointTypeConfigApiConfigArgs{
-						ApiAvailable:     pulumi.Bool(true),
-						IntegrationId:    pulumi.String("Example-Connect-01"),
-						BandwidthFromApi: pulumi.Bool(false),
-					},
-					ConnectionLabel: pulumi.String("Virtual Circuit Name"),
-					AuthenticationKey: &fabric.ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs{
-						Required: pulumi.Bool(true),
-						Label:    pulumi.String("Example ACCOUNT ID"),
-					},
+					Type: pulumi.String("BANDWIDTH_ALERT"),
 				},
 			},
-			Metros:     nil,
-			Visibility: pulumi.String(fabric.ProfileVisibilityPublic),
-			MarketingInfo: &fabric.ServiceProfileMarketingInfoArgs{
-				Promotion: pulumi.Bool(true),
+			AllowedEmails: pulumi.StringArray{
+				pulumi.String("test@equinix.com"),
+				pulumi.String("testagain@equinix.com"),
+			},
+			Ports: fabric.ServiceProfilePortArray{
+				&fabric.ServiceProfilePortArgs{
+					Uuid: pulumi.String("c791f8cb-5cc9-cc90-8ce0-306a5c00a4ee"),
+					Type: pulumi.String("XF_PORT"),
+				},
+			},
+			AccessPointTypeConfigs: fabric.ServiceProfileAccessPointTypeConfigArray{
+				&fabric.ServiceProfileAccessPointTypeConfigArgs{
+					Type:                         pulumi.String(fabric.ProfileAccessPointTypeColo),
+					AllowRemoteConnections:       pulumi.Bool(true),
+					AllowCustomBandwidth:         pulumi.Bool(true),
+					AllowBandwidthAutoApproval:   pulumi.Bool(false),
+					ConnectionRedundancyRequired: pulumi.Bool(false),
+					ConnectionLabel:              pulumi.String("Service Profile Tag1"),
+					BandwidthAlertThreshold:      pulumi.Float64(10),
+					SupportedBandwidths: pulumi.IntArray{
+						pulumi.Int(100),
+						pulumi.Int(500),
+					},
+				},
 			},
 		})
 		if err != nil {
 			return err
 		}
-		ctx.Export("profileId", profile.ID())
 		return nil
 	})
 }
@@ -156,60 +135,56 @@ using Equinix = Pulumi.Equinix;
 
 return await Deployment.RunAsync(() => 
 {
-    var profile = new Equinix.Fabric.ServiceProfile("profile", new()
+    var newServiceProfile = new Equinix.Fabric.ServiceProfile("newServiceProfile", new()
     {
-        Name = "Example Cloud Provider",
-        Description = "50 to 500 Mbps Hosted Connection to Example Cloud",
+        Description = "Service Profile for Receiving Connections",
+        Name = "Name Of Business + Use Case Tag",
         Type = Equinix.Fabric.ProfileType.L2Profile,
+        Visibility = Equinix.Fabric.ProfileVisibility.Public,
+        Notifications = new[]
+        {
+            new Equinix.Fabric.Inputs.ServiceProfileNotificationArgs
+            {
+                Emails = new[]
+                {
+                    "someone@sample.com",
+                },
+                Type = "BANDWIDTH_ALERT",
+            },
+        },
+        AllowedEmails = new[]
+        {
+            "test@equinix.com",
+            "testagain@equinix.com",
+        },
+        Ports = new[]
+        {
+            new Equinix.Fabric.Inputs.ServiceProfilePortArgs
+            {
+                Uuid = "c791f8cb-5cc9-cc90-8ce0-306a5c00a4ee",
+                Type = "XF_PORT",
+            },
+        },
         AccessPointTypeConfigs = new[]
         {
             new Equinix.Fabric.Inputs.ServiceProfileAccessPointTypeConfigArgs
             {
                 Type = Equinix.Fabric.ProfileAccessPointType.Colo,
+                AllowRemoteConnections = true,
+                AllowCustomBandwidth = true,
+                AllowBandwidthAutoApproval = false,
+                ConnectionRedundancyRequired = false,
+                ConnectionLabel = "Service Profile Tag1",
+                BandwidthAlertThreshold = 10,
                 SupportedBandwidths = new[]
                 {
-                    50,
                     100,
-                    200,
                     500,
-                },
-                AllowRemoteConnections = true,
-                AllowCustomBandwidth = false,
-                AllowBandwidthAutoApproval = false,
-                LinkProtocolConfig = new Equinix.Fabric.Inputs.ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs
-                {
-                    EncapsulationStrategy = "CTAGED",
-                    ReuseVlanSTag = false,
-                    Encapsulation = "DOT1Q",
-                },
-                EnableAutoGenerateServiceKey = "false,",
-                ConnectionRedundancyRequired = "false,",
-                ApiConfig = new Equinix.Fabric.Inputs.ServiceProfileAccessPointTypeConfigApiConfigArgs
-                {
-                    ApiAvailable = true,
-                    IntegrationId = "Example-Connect-01",
-                    BandwidthFromApi = false,
-                },
-                ConnectionLabel = "Virtual Circuit Name",
-                AuthenticationKey = new Equinix.Fabric.Inputs.ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs
-                {
-                    Required = true,
-                    Label = "Example ACCOUNT ID",
                 },
             },
         },
-        Metros = null,
-        Visibility = Equinix.Fabric.ProfileVisibility.Public,
-        MarketingInfo = new Equinix.Fabric.Inputs.ServiceProfileMarketingInfoArgs
-        {
-            Promotion = true,
-        },
     });
 
-    return new Dictionary<string, object?>
-    {
-        ["profileId"] = profile.Id,
-    };
 });
 ```
 ```java
@@ -220,11 +195,9 @@ import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
 import com.pulumi.equinix.fabric.ServiceProfile;
 import com.pulumi.equinix.fabric.ServiceProfileArgs;
+import com.pulumi.equinix.fabric.inputs.ServiceProfileNotificationArgs;
+import com.pulumi.equinix.fabric.inputs.ServiceProfilePortArgs;
 import com.pulumi.equinix.fabric.inputs.ServiceProfileAccessPointTypeConfigArgs;
-import com.pulumi.equinix.fabric.inputs.ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs;
-import com.pulumi.equinix.fabric.inputs.ServiceProfileAccessPointTypeConfigApiConfigArgs;
-import com.pulumi.equinix.fabric.inputs.ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs;
-import com.pulumi.equinix.fabric.inputs.ServiceProfileMarketingInfoArgs;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
@@ -238,82 +211,68 @@ public class App {
     }
 
     public static void stack(Context ctx) {
-        var profile = new ServiceProfile("profile", ServiceProfileArgs.builder()
-            .name("Example Cloud Provider")
-            .description("50 to 500 Mbps Hosted Connection to Example Cloud")
+        var newServiceProfile = new ServiceProfile("newServiceProfile", ServiceProfileArgs.builder()
+            .description("Service Profile for Receiving Connections")
+            .name("Name Of Business + Use Case Tag")
             .type("L2_PROFILE")
+            .visibility("PUBLIC")
+            .notifications(ServiceProfileNotificationArgs.builder()
+                .emails("someone@sample.com")
+                .type("BANDWIDTH_ALERT")
+                .build())
+            .allowedEmails(            
+                "test@equinix.com",
+                "testagain@equinix.com")
+            .ports(ServiceProfilePortArgs.builder()
+                .uuid("c791f8cb-5cc9-cc90-8ce0-306a5c00a4ee")
+                .type("XF_PORT")
+                .build())
             .accessPointTypeConfigs(ServiceProfileAccessPointTypeConfigArgs.builder()
                 .type("COLO")
-                .supportedBandwidths(                
-                    50,
-                    100,
-                    200,
-                    500)
                 .allowRemoteConnections(true)
-                .allowCustomBandwidth(false)
+                .allowCustomBandwidth(true)
                 .allowBandwidthAutoApproval(false)
-                .linkProtocolConfig(ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs.builder()
-                    .encapsulationStrategy("CTAGED")
-                    .reuseVlanSTag(false)
-                    .encapsulation("DOT1Q")
-                    .build())
-                .enableAutoGenerateServiceKey("false,")
-                .connectionRedundancyRequired("false,")
-                .apiConfig(ServiceProfileAccessPointTypeConfigApiConfigArgs.builder()
-                    .apiAvailable(true)
-                    .integrationId("Example-Connect-01")
-                    .bandwidthFromApi(false)
-                    .build())
-                .connectionLabel("Virtual Circuit Name")
-                .authenticationKey(ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs.builder()
-                    .required(true)
-                    .label("Example ACCOUNT ID")
-                    .build())
-                .build())
-            .metros(null)
-            .visibility("PUBLIC")
-            .marketingInfo(ServiceProfileMarketingInfoArgs.builder()
-                .promotion(true)
+                .connectionRedundancyRequired(false)
+                .connectionLabel("Service Profile Tag1")
+                .bandwidthAlertThreshold(10)
+                .supportedBandwidths(                
+                    100,
+                    500)
                 .build())
             .build());
 
-        ctx.export("profileId", profile.id());
     }
 }
 ```
 ```yaml
-resources:
-  profile:
+  newServiceProfile:
     type: equinix:fabric:ServiceProfile
+    name: new_service_profile
     properties:
-      name: Example Cloud Provider
-      description: 50 to 500 Mbps Hosted Connection to Example Cloud
+      description: Service Profile for Receiving Connections
+      name: Name Of Business + Use Case Tag
       type: L2_PROFILE
-      accessPointTypeConfigs:
-      - type: COLO
-        supportedBandwidths: [ 50, 100, 200, 500]
-        allowRemoteConnections: true
-        allowCustomBandwidth: false
-        allowBandwidthAutoApproval: false
-        linkProtocolConfig:
-          encapsulationStrategy: CTAGED
-          reuseVlanSTag: false
-          encapsulation: DOT1Q
-        enableAutoGenerateServiceKey: false,
-        connectionRedundancyRequired: false,
-        apiConfig:
-          apiAvailable: true
-          integrationId: Example-Connect-01
-          bandwidthFromApi: false
-        connectionLabel: Virtual Circuit Name
-        authenticationKey:
-          required: true
-          label: Example ACCOUNT ID
-      metros:
       visibility: PUBLIC
-      marketingInfo:
-        promotion: true
-outputs:
-  profileId: ${profile.id}
+      notifications:
+        - emails:
+            - someone@sample.com
+          type: BANDWIDTH_ALERT
+      allowedEmails:
+        - test@equinix.com
+        - testagain@equinix.com
+      ports:
+        - uuid: c791f8cb-5cc9-cc90-8ce0-306a5c00a4ee
+          type: XF_PORT
+      accessPointTypeConfigs:
+        - type: COLO
+          allowRemoteConnections: true
+          allowCustomBandwidth: true
+          allowBandwidthAutoApproval: false
+          connectionRedundancyRequired: false
+          connectionLabel: Service Profile Tag1
+          bandwidthAlertThreshold: 10
+          supportedBandwidths:
+            - 100
+            - 500
 ```
 {{% /example %}}

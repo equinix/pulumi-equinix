@@ -1,5 +1,5 @@
 {
-	"name": "equinix-fabric-service-profile",
+	"name": "equinix-fabric-service_profile",
 	"devDependencies": {
 		"@types/node": "^14"
 	},

@@ -1,16 +1,10 @@
 name: equinix-metal-organization
 runtime: yaml
-description: An Equinix Metal Organization resource
 resources:
-  org:
+  # Create a new Organization
+  tfOrganization1:
     type: equinix:metal:Organization
+    name: tf_organization_1
     properties:
-      name: Foo Organization
-      address:
-        address: org street
-        city: london
-        country: GB
-        zipCode: "12345"
-      description: An organization
-outputs:
-  org: ${org.id}
+      name: foobar
+      description: quux

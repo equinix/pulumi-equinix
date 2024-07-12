@@ -1,0 +1,17 @@
+name: equinix-metal-gateway-example_1
+runtime: yaml
+resources:
+  # Create Metal Gateway for a VLAN with a private IPv4 block with 8 IP addresses
+  test:
+    type: equinix:metal:Vlan
+    properties:
+      description: test VLAN in SV
+      metro: sv
+      projectId: ${projectId}
+  testGateway:
+    type: equinix:metal:Gateway
+    name: test
+    properties:
+      projectId: ${projectId}
+      vlanId: ${test.id}
+      privateIpv4SubnetSize: 8

@@ -1,5 +1,5 @@
 {
-	"name": "equinix-metal-project-ssh-key",
+	"name": "equinix-metal-project_ssh_key",
 	"devDependencies": {
 		"@types/node": "^14"
 	},

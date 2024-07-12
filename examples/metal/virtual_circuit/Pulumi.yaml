@@ -1,29 +1,26 @@
-name: equinix-metal-virtual-circuit
+name: equinix-metal-virtual_circuit
 runtime: yaml
-description: An Equinix Metal Virtual Circuit resource
-config:
-  projectId:
-    type: string
-  connectionId:
-    type: string
-  vlanId:
-    type: string
-variables:
-  portId:
-    fn::invoke:
-      function: equinix:metal:getInterconnection
-      arguments:
-        connectionId: ${connectionId}
-      return: ports[0].id
 resources:
-  vc:
-    type: equinix:metal:VirtualCircuit
+  testVlan:
+    type: equinix:metal:Vlan
+    name: test
     properties:
-      connectionId: ${connectionId}
       projectId: ${projectId}
-      portId: ${portId}
-      vlanId: ${vlanId}
+      metro: ${test.metro}
+  testVirtualCircuit:
+    type: equinix:metal:VirtualCircuit
+    name: test
+    properties:
+      connectionId: ${connId}
+      projectId: ${projectId}
+      portId: ${test.ports[0].id}
+      vlanId: ${testVlan.id}
       nniVlan: 1056
-outputs:
-  vcStatus: ${vc.status}
-  vcVnid: ${vc.vnid}
+variables:
+  projectId: 52000fb2-ee46-4673-93a8-de2c2bdba33c
+  connId: 73f12f29-3e19-43a0-8e90-ae81580db1e0
+  test:
+    fn::invoke:
+      Function: equinix:metal:getInterconnection
+      Arguments:
+        connectionId: ${connId}

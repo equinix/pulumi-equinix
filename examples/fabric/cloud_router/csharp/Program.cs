@@ -5,21 +5,10 @@ using Equinix = Pulumi.Equinix;
 
 return await Deployment.RunAsync(() => 
 {
-    var config = new Config();
-    var metro = config.Get("metro") ?? "FR";
-    var accountNum = config.RequireInt32("accountNum");
-    var router = new Equinix.Fabric.CloudRouter("router", new()
+    var newCloudRouter = new Equinix.Fabric.CloudRouter("newCloudRouter", new()
     {
-        Name = "My-Fabric-Cloud-Router",
+        Name = "Router-SV",
         Type = "XF_ROUTER",
-        Location = new Equinix.Fabric.Inputs.CloudRouterLocationArgs
-        {
-            MetroCode = metro,
-        },
-        Package = new Equinix.Fabric.Inputs.CloudRouterPackageArgs
-        {
-            Code = "BASIC",
-        },
         Notifications = new[]
         {
             new Equinix.Fabric.Inputs.CloudRouterNotificationArgs
@@ -28,18 +17,31 @@ return await Deployment.RunAsync(() =>
                 Emails = new[]
                 {
                     "example@equinix.com",
+                    "test1@equinix.com",
                 },
             },
         },
+        Order = new Equinix.Fabric.Inputs.CloudRouterOrderArgs
+        {
+            PurchaseOrderNumber = "1-323292",
+        },
+        Location = new Equinix.Fabric.Inputs.CloudRouterLocationArgs
+        {
+            MetroCode = "SV",
+        },
+        Package = new Equinix.Fabric.Inputs.CloudRouterPackageArgs
+        {
+            Code = "STANDARD",
+        },
+        Project = new Equinix.Fabric.Inputs.CloudRouterProjectArgs
+        {
+            ProjectId = "776847000642406",
+        },
         Account = new Equinix.Fabric.Inputs.CloudRouterAccountArgs
         {
-            AccountNumber = 272010,
+            AccountNumber = 203612,
         },
     });
 
-    return new Dictionary<string, object?>
-    {
-        ["routerId"] = router.Id,
-    };
 });
 

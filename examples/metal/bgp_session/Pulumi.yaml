@@ -1,14 +1,72 @@
-name: equinix-metal-bgp-session
+name: equinix-metal-bgp_session
 runtime: yaml
-description: An Equinix Metal BGP Session resource. Refer to [Equinix Metal BGP documentation](https://deploy.equinix.com/developers/docs/metal/bgp/bgp-on-equinix-metal/) for more details
-config:
-  deviceId:
-    type: string
 resources:
-  bgp:
-    type: equinix:metal:BgpSession
+  # you need to enable BGP config for the project. If you decide to create new
+  # project, you can use the bgp_config section to enable BGP.
+  # resource "equinix_metal_project" "test" {
+  #   name = "testpro"
+  #   bgp_config {
+  #      deployment_type = "local"
+  #      md5 = local.bgp_password
+  #      asn = 65000
+  #   }
+  # }
+  addr:
+    type: equinix:metal:ReservedIpBlock
     properties:
-      deviceId: ${deviceId}
+      projectId: ${projectId}
+      metro: ny
+      quantity: 1
+  test:
+    type: equinix:metal:Device
+    properties:
+      hostname: terraform-test-bgp-sesh
+      plan: c3.small.x86
+      metro: ny
+      operatingSystem: ubuntu_20_04
+      billingCycle: hourly
+      projectId: ${projectId}
+  testBgpSession:
+    type: equinix:metal:BgpSession
+    name: test
+    properties:
+      deviceId: ${test.id}
       addressFamily: ipv4
-outputs:
-  bgpSessionStatus: ${bgp.status}
+  configureBird:
+    type: null:Resource
+    name: configure_bird
+    properties:
+      triggers:
+        bird_conf: ${birdConf}
+        interface: ${interfaceLo0}
+variables:
+  bgpPassword: 955dB0b81Ef
+  projectId: <UUID_of_your_project>
+  interfaceLo0: |
+    auto lo:0
+    iface lo:0 inet static
+       address ${addr.address}
+       netmask ${addr.netmask}
+  birdConf: |
+    filter equinix_metal_bgp {
+        if net = ${addr.address}/${addr.cidr} then accept;
+    }
+    router id ${test.network[2].address};
+    protocol direct {
+        interface "lo";
+    }
+    protocol kernel {
+        scan time 10;
+        persist;
+        import all;
+        export all;
+    }
+    protocol device {
+        scan time 10;
+    }
+    protocol bgp {
+        export filter equinix_metal_bgp;
+        local as 65000;
+        neighbor ${test.network[2].gateway} as 65530;
+        password "${bgpPassword}";
+    }

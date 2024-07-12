@@ -1,5 +1,5 @@
 {
-	"name": "equinix-fabric-cloud-router",
+	"name": "equinix-fabric-cloud_router",
 	"devDependencies": {
 		"@types/node": "^14"
 	},

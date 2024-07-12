@@ -5,7 +5,7 @@
 			<modelVersion>4.0.0</modelVersion>
 
 			<groupId>com.pulumi</groupId>
-			<artifactId>equinix-metal-project-ssh-key</artifactId>
+			<artifactId>equinix-metal-project_ssh_key</artifactId>
 			<version>1.0-SNAPSHOT</version>
 
 			<properties>

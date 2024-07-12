@@ -1,5 +1,5 @@
 {
-	"name": "equinix-network-ssh-user",
+	"name": "equinix-network-ssh_user",
 	"devDependencies": {
 		"@types/node": "^14"
 	},

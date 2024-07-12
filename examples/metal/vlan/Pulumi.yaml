@@ -1,21 +1,11 @@
 name: equinix-metal-vlan
 runtime: yaml
-description: An Equinix Metal VLAN resource
-config:
-  projectId:
-    type: string
-  metro:
-    type: string
-    default: DA
-  vxlan:
-    type: integer
 resources:
-  vlan:
+  # Create a new VLAN in metro "esv"
+  vlan1:
     type: equinix:metal:Vlan
     properties:
-      description: VLAN in Dallas
+      description: VLAN in New Jersey
+      metro: sv
       projectId: ${projectId}
-      metro: ${metro}
-      vxlan: ${vxlan}
-outputs:
-  vlanId: ${vlan.id}
+      vxlan: 1040

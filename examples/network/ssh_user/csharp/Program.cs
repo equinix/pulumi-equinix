@@ -5,22 +5,16 @@ using Equinix = Pulumi.Equinix;
 
 return await Deployment.RunAsync(() => 
 {
-    var config = new Config();
-    var device1Id = config.Require("device1Id");
-    var device2Id = config.Require("device2Id");
-    var sshUser = new Equinix.NetworkEdge.SshUser("sshUser", new()
+    var john = new Equinix.NetworkEdge.SshUser("john", new()
     {
-        Username = "johnKent",
+        Username = "john",
+        Password = "secret",
         DeviceIds = new[]
         {
-            device1Id,
-            device2Id,
+            "csr1000v-ha-uuid",
+            "csr1000v-ha-redundant-uuid",
         },
     });
 
-    return new Dictionary<string, object?>
-    {
-        ["sshUserId"] = sshUser.Id,
-    };
 });
 

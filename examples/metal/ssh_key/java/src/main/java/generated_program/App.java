@@ -5,6 +5,9 @@ import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
 import com.pulumi.equinix.metal.SshKey;
 import com.pulumi.equinix.metal.SshKeyArgs;
+import com.pulumi.equinix.metal.Device;
+import com.pulumi.equinix.metal.DeviceArgs;
+import com.pulumi.resources.CustomResourceOptions;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
@@ -18,11 +21,23 @@ public class App {
     }
 
     public static void stack(Context ctx) {
-        var sshKey = new SshKey("sshKey", SshKeyArgs.builder()
-            .name("johnKent")
-            .publicKey(Files.readString(Paths.get("/Users/John/.ssh/metal_rsa.pub")))
+        var key1 = new SshKey("key1", SshKeyArgs.builder()
+            .name("terraform-1")
+            .publicKey(StdFunctions.file(FileArgs.builder()
+                .input("/home/terraform/.ssh/id_rsa.pub")
+                .build()).result())
             .build());
 
-        ctx.export("sshKeyId", sshKey.id());
+        var test = new Device("test", DeviceArgs.builder()
+            .hostname("test-device")
+            .plan("c3.small.x86")
+            .metro("sv")
+            .operatingSystem("ubuntu_20_04")
+            .billingCycle("hourly")
+            .projectId(projectId)
+            .build(), CustomResourceOptions.builder()
+                .dependsOn(key1)
+                .build());
+
     }
 }

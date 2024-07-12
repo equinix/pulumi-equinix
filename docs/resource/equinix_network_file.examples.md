@@ -3,71 +3,68 @@
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
-import * as fs from "fs";
+import * as std from "@pulumi/std";
 
 const config = new pulumi.Config();
-const metro = config.get("metro") || "SV";
-const networkFile = new equinix.networkedge.NetworkFile("networkFile", {
-    fileName: "Aviatrix-ZTP-file",
-    content: fs.readFileSync("./../assets/aviatrix-cloud-init.txt", "utf8"),
-    metroCode: metro,
+const filepath = config.get("filepath") || "fileFolder/fileName.txt";
+const testFile = new equinix.networkedge.NetworkFile("test-file", {
+    fileName: "fileName.txt",
+    content: std.fileOutput({
+        input: filepath,
+    }).apply(invoke => invoke.result),
+    metroCode: equinix.index.Metro.SiliconValley,
     deviceTypeCode: "AVIATRIX_EDGE",
     processType: equinix.networkedge.FileType.CloudInit,
     selfManaged: true,
     byol: true,
 });
-export const networkFileId = networkFile.id;
-export const networkFileStatus = networkFile.status;
 ```
 ```python
 import pulumi
 import pulumi_equinix as equinix
+import pulumi_std as std
 
 config = pulumi.Config()
-metro = config.get("metro")
-if metro is None:
-    metro = "SV"
-network_file = equinix.networkedge.NetworkFile("networkFile",
-    file_name="Aviatrix-ZTP-file",
-    content=(lambda path: open(path).read())("./../assets/aviatrix-cloud-init.txt"),
-    metro_code=metro,
+filepath = config.get("filepath")
+if filepath is None:
+    filepath = "fileFolder/fileName.txt"
+test_file = equinix.networkedge.NetworkFile("test-file",
+    file_name="fileName.txt",
+    content=std.file_output(input=filepath).apply(lambda invoke: invoke.result),
+    metro_code=equinix.Metro.SILICON_VALLEY,
     device_type_code="AVIATRIX_EDGE",
     process_type=equinix.networkedge.FileType.CLOUD_INIT,
     self_managed=True,
     byol=True)
-pulumi.export("networkFileId", network_file.id)
-pulumi.export("networkFileStatus", network_file.status)
 ```
 ```go
 package main
 
 import (
-	"os"
-
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix"
 	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
+	"github.com/pulumi/pulumi-std/sdk/go/std"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
 
-func readFileOrPanic(path string) pulumi.StringPtrInput {
-	data, err := os.ReadFile(path)
-	if err != nil {
-		panic(err.Error())
-	}
-	return pulumi.String(string(data))
-}
-
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
 		cfg := config.New(ctx, "")
-		metro := "SV"
-		if param := cfg.Get("metro"); param != "" {
-			metro = param
+		filepath := "fileFolder/fileName.txt"
+		if param := cfg.Get("filepath"); param != "" {
+			filepath = param
 		}
-		networkFile, err := networkedge.NewNetworkFile(ctx, "networkFile", &networkedge.NetworkFileArgs{
-			FileName:       pulumi.String("Aviatrix-ZTP-file"),
-			Content:        readFileOrPanic("./../assets/aviatrix-cloud-init.txt"),
-			MetroCode:      pulumi.String(metro),
+		invokeFile, err := std.File(ctx, &std.FileArgs{
+			Input: filepath,
+		}, nil)
+		if err != nil {
+			return err
+		}
+		_, err = networkedge.NewNetworkFile(ctx, "test-file", &networkedge.NetworkFileArgs{
+			FileName:       pulumi.String("fileName.txt"),
+			Content:        invokeFile.Result,
+			MetroCode:      pulumi.String(equinix.MetroSiliconValley),
 			DeviceTypeCode: pulumi.String("AVIATRIX_EDGE"),
 			ProcessType:    pulumi.String(networkedge.FileTypeCloudInit),
 			SelfManaged:    pulumi.Bool(true),
@@ -76,39 +73,35 @@ func main() {
 		if err != nil {
 			return err
 		}
-		ctx.Export("networkFileId", networkFile.ID())
-		ctx.Export("networkFileStatus", networkFile.Status)
 		return nil
 	})
 }
 ```
 ```csharp
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using Pulumi;
 using Equinix = Pulumi.Equinix;
+using Std = Pulumi.Std;
 
 return await Deployment.RunAsync(() => 
 {
     var config = new Config();
-    var metro = config.Get("metro") ?? "SV";
-    var networkFile = new Equinix.NetworkEdge.NetworkFile("networkFile", new()
+    var filepath = config.Get("filepath") ?? "fileFolder/fileName.txt";
+    var testFile = new Equinix.NetworkEdge.NetworkFile("test-file", new()
     {
-        FileName = "Aviatrix-ZTP-file",
-        Content = File.ReadAllText("./../assets/aviatrix-cloud-init.txt"),
-        MetroCode = metro,
+        FileName = "fileName.txt",
+        Content = Std.File.Invoke(new()
+        {
+            Input = filepath,
+        }).Apply(invoke => invoke.Result),
+        MetroCode = Equinix.Metro.SiliconValley,
         DeviceTypeCode = "AVIATRIX_EDGE",
         ProcessType = Equinix.NetworkEdge.FileType.CloudInit,
         SelfManaged = true,
         Byol = true,
     });
 
-    return new Dictionary<string, object?>
-    {
-        ["networkFileId"] = networkFile.Id,
-        ["networkFileStatus"] = networkFile.Status,
-    };
 });
 ```
 ```java
@@ -133,41 +126,41 @@ public class App {
 
     public static void stack(Context ctx) {
         final var config = ctx.config();
-        final var metro = config.get("metro").orElse("SV");
-        var networkFile = new NetworkFile("networkFile", NetworkFileArgs.builder()
-            .fileName("Aviatrix-ZTP-file")
-            .content(Files.readString(Paths.get("./../assets/aviatrix-cloud-init.txt")))
-            .metroCode(metro)
+        final var filepath = config.get("filepath").orElse("fileFolder/fileName.txt");
+        var testFile = new NetworkFile("testFile", NetworkFileArgs.builder()
+            .fileName("fileName.txt")
+            .content(StdFunctions.file(FileArgs.builder()
+                .input(filepath)
+                .build()).result())
+            .metroCode("SV")
             .deviceTypeCode("AVIATRIX_EDGE")
             .processType("CLOUD_INIT")
             .selfManaged(true)
             .byol(true)
             .build());
 
-        ctx.export("networkFileId", networkFile.id());
-        ctx.export("networkFileStatus", networkFile.status());
     }
 }
 ```
 ```yaml
-config:
-  metro:
+  filepath:
     type: string
-    default: SV
+    default: fileFolder/fileName.txt
 resources:
-  networkFile:
+  test-file:
     type: equinix:networkedge:NetworkFile
     properties:
-      fileName: Aviatrix-ZTP-file
+      fileName: fileName.txt
       content:
-        fn::readFile: ./../assets/aviatrix-cloud-init.txt
-      metroCode: ${metro}
+        fn::invoke:
+          Function: std:file
+          Arguments:
+            input: ${filepath}
+          Return: result
+      metroCode: SV
       deviceTypeCode: AVIATRIX_EDGE
       processType: CLOUD_INIT
       selfManaged: true
       byol: true
-outputs:
-  networkFileId: ${networkFile.id}
-  networkFileStatus: ${networkFile.status}
 ```
 {{% /example %}}

@@ -1,0 +1,22 @@
+name: equinix-network-file
+runtime: yaml
+configuration:
+  filepath:
+    type: string
+    default: fileFolder/fileName.txt
+resources:
+  test-file:
+    type: equinix:networkedge:NetworkFile
+    properties:
+      fileName: fileName.txt
+      content:
+        fn::invoke:
+          Function: std:file
+          Arguments:
+            input: ${filepath}
+          Return: result
+      metroCode: SV
+      deviceTypeCode: AVIATRIX_EDGE
+      processType: CLOUD_INIT
+      selfManaged: true
+      byol: true

@@ -1,0 +1,13 @@
+name: equinix-metal-project-example_2
+runtime: yaml
+resources:
+  # Create a new Project
+  tfProject1:
+    type: equinix:metal:Project
+    name: tf_project_1
+    properties:
+      name: tftest
+      bgpConfig:
+        deploymentType: local
+        md5: C179c28c41a85b
+        asn: 65000

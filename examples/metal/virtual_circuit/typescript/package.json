@@ -1,5 +1,5 @@
 {
-	"name": "equinix-metal-virtual-circuit",
+	"name": "equinix-metal-virtual_circuit",
 	"devDependencies": {
 		"@types/node": "^14"
 	},

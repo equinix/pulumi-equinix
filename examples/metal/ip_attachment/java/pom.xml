@@ -5,7 +5,7 @@
 			<modelVersion>4.0.0</modelVersion>
 
 			<groupId>com.pulumi</groupId>
-			<artifactId>equinix-metal-ip-attachment</artifactId>
+			<artifactId>equinix-metal-ip_attachment</artifactId>
 			<version>1.0-SNAPSHOT</version>
 
 			<properties>
@@ -27,6 +27,10 @@
             		<groupId>com.pulumi</groupId>
             		<artifactId>equinix</artifactId>
             		<version>(,1.0)</version>
+        		</dependency><dependency>
+            		<groupId>com.pulumi</groupId>
+            		<artifactId>std</artifactId>
+            		<version>1.7.2</version>
         		</dependency>
 			</dependencies>
 

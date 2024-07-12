@@ -1,6 +1,0 @@
-name: equinix-metal-device
-runtime: java
-description: An Equinix Metal Device resource
-config:
-  projectId:
-    type: string

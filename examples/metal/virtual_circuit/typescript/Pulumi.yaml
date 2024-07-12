@@ -1,10 +1,2 @@
-name: equinix-metal-virtual-circuit
+name: equinix-metal-virtual_circuit
 runtime: nodejs
-description: An Equinix Metal Virtual Circuit resource
-config:
-  connectionId:
-    type: string
-  projectId:
-    type: string
-  vlanId:
-    type: string

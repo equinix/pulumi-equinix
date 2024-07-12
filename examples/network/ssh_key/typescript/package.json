@@ -1,5 +1,5 @@
 {
-	"name": "equinix-network-ssh-key",
+	"name": "equinix-network-ssh_key",
 	"devDependencies": {
 		"@types/node": "^14"
 	},

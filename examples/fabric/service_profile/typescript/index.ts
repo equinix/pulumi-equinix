@@ -1,43 +1,34 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
 
-const profile = new equinix.fabric.ServiceProfile("profile", {
-    name: "Example Cloud Provider",
-    description: "50 to 500 Mbps Hosted Connection to Example Cloud",
+const newServiceProfile = new equinix.fabric.ServiceProfile("newServiceProfile", {
+    description: "Service Profile for Receiving Connections",
+    name: "Name Of Business + Use Case Tag",
     type: equinix.fabric.ProfileType.L2Profile,
+    visibility: equinix.fabric.ProfileVisibility.Public,
+    notifications: [{
+        emails: ["someone@sample.com"],
+        type: "BANDWIDTH_ALERT",
+    }],
+    allowedEmails: [
+        "test@equinix.com",
+        "testagain@equinix.com",
+    ],
+    ports: [{
+        uuid: "c791f8cb-5cc9-cc90-8ce0-306a5c00a4ee",
+        type: "XF_PORT",
+    }],
     accessPointTypeConfigs: [{
         type: equinix.fabric.ProfileAccessPointType.Colo,
+        allowRemoteConnections: true,
+        allowCustomBandwidth: true,
+        allowBandwidthAutoApproval: false,
+        connectionRedundancyRequired: false,
+        connectionLabel: "Service Profile Tag1",
+        bandwidthAlertThreshold: 10,
         supportedBandwidths: [
-            50,
             100,
-            200,
             500,
         ],
-        allowRemoteConnections: true,
-        allowCustomBandwidth: false,
-        allowBandwidthAutoApproval: false,
-        linkProtocolConfig: {
-            encapsulationStrategy: "CTAGED",
-            reuseVlanSTag: false,
-            encapsulation: "DOT1Q",
-        },
-        enableAutoGenerateServiceKey: "false,",
-        connectionRedundancyRequired: "false,",
-        apiConfig: {
-            apiAvailable: true,
-            integrationId: "Example-Connect-01",
-            bandwidthFromApi: false,
-        },
-        connectionLabel: "Virtual Circuit Name",
-        authenticationKey: {
-            required: true,
-            label: "Example ACCOUNT ID",
-        },
     }],
-    metros: undefined,
-    visibility: equinix.fabric.ProfileVisibility.Public,
-    marketingInfo: {
-        promotion: true,
-    },
 });
-export const profileId = profile.id;

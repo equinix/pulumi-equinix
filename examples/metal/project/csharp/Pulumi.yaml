@@ -1,9 +1,0 @@
-name: equinix-metal-project
-runtime: dotnet
-description: An Equinix Metal Project resource
-config:
-  name:
-    type: string
-    default: Default Project
-  organizationId:
-    type: string

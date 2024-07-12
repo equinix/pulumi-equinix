@@ -5,7 +5,7 @@ using Equinix = Pulumi.Equinix;
 
 return await Deployment.RunAsync(() => 
 {
-    var bgp = new Equinix.NetworkEdge.Bgp("bgp", new()
+    var test = new Equinix.NetworkEdge.Bgp("test", new()
     {
         ConnectionId = "54014acf-9730-4b55-a791-459283d05fb1",
         LocalIpAddress = "10.1.1.1/30",
@@ -15,10 +15,5 @@ return await Deployment.RunAsync(() =>
         AuthenticationKey = "secret",
     });
 
-    return new Dictionary<string, object?>
-    {
-        ["state"] = bgp.State,
-        ["provisioningStatus"] = bgp.ProvisioningStatus,
-    };
 });
 

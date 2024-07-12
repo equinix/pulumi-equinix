@@ -1,18 +1,10 @@
-name: equinix-metal-project-api-key
+name: equinix-metal-project_api_key
 runtime: yaml
-description: An Equinix Metal Project API Key resource
-config:
-  projectId:
-    type: string
-  readOnly:
-    type: boolean
-    default: false
 resources:
-  apiKey:
+  # Create a new read-only API key in existing project
+  test:
     type: equinix:metal:ProjectApiKey
     properties:
-      projectId: ${projectId}
-      description: A project level API Key
-      readOnly: ${readOnly}
-outputs:
-  apiKeyToken: ${apiKey.token}
+      projectId: ${existingProjectId}
+      description: Read-only key scoped to a projct
+      readOnly: true

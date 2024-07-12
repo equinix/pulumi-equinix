@@ -1,6 +1,0 @@
-name: equinix-metal-port-hybrid-unbonded
-runtime: java
-description: An Equinix Metal Port resource
-config:
-  portId:
-    type: string

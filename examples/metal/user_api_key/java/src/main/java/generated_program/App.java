@@ -18,14 +18,10 @@ public class App {
     }
 
     public static void stack(Context ctx) {
-        final var config = ctx.config();
-        final var description = config.get("description").orElse("An user level API Key");
-        final var readOnly = config.get("readOnly").orElse(false);
-        var apiKey = new UserApiKey("apiKey", UserApiKeyArgs.builder()
-            .description(description)
-            .readOnly(readOnly)
+        var test = new UserApiKey("test", UserApiKeyArgs.builder()
+            .description("Read-only user key")
+            .readOnly(true)
             .build());
 
-        ctx.export("apiKeyToken", apiKey.token());
     }
 }

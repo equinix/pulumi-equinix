@@ -1,8 +1,2 @@
-name: equinix-network-ssh-user
+name: equinix-network-ssh_user
 runtime: python
-description: An Equinix Network Edge SSH User resource
-config:
-  device1Id:
-    type: string
-  device2Id:
-    type: string

@@ -18,15 +18,11 @@ public class App {
     }
 
     public static void stack(Context ctx) {
-        final var config = ctx.config();
-        final var projectId = config.get("projectId");
-        final var readOnly = config.get("readOnly").orElse(false);
-        var apiKey = new ProjectApiKey("apiKey", ProjectApiKeyArgs.builder()
-            .projectId(projectId)
-            .description("A project level API Key")
-            .readOnly(readOnly)
+        var test = new ProjectApiKey("test", ProjectApiKeyArgs.builder()
+            .projectId(existingProjectId)
+            .description("Read-only key scoped to a projct")
+            .readOnly(true)
             .build());
 
-        ctx.export("apiKeyToken", apiKey.token());
     }
 }

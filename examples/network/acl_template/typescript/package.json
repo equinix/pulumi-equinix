@@ -1,5 +1,5 @@
 {
-	"name": "equinix-network-acl-template",
+	"name": "equinix-network-acl_template",
 	"devDependencies": {
 		"@types/node": "^14"
 	},

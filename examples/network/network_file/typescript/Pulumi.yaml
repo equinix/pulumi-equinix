@@ -1,7 +1,0 @@
-name: equinix-network-file
-runtime: nodejs
-description: An Equinix Network Edge File (LICENSE or CLOUD_INIT) resource
-config:
-  metro:
-    type: string
-    default: SV

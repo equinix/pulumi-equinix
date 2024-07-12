@@ -7,51 +7,48 @@ import (
 
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
-		profile, err := fabric.NewServiceProfile(ctx, "profile", &fabric.ServiceProfileArgs{
-			Name:        pulumi.String("Example Cloud Provider"),
-			Description: pulumi.String("50 to 500 Mbps Hosted Connection to Example Cloud"),
+		_, err := fabric.NewServiceProfile(ctx, "newServiceProfile", &fabric.ServiceProfileArgs{
+			Description: pulumi.String("Service Profile for Receiving Connections"),
+			Name:        pulumi.String("Name Of Business + Use Case Tag"),
 			Type:        pulumi.String(fabric.ProfileTypeL2Profile),
-			AccessPointTypeConfigs: fabric.ServiceProfileAccessPointTypeConfigArray{
-				&fabric.ServiceProfileAccessPointTypeConfigArgs{
-					Type: pulumi.String(fabric.ProfileAccessPointTypeColo),
-					SupportedBandwidths: pulumi.IntArray{
-						pulumi.Int(50),
-						pulumi.Int(100),
-						pulumi.Int(200),
-						pulumi.Int(500),
+			Visibility:  pulumi.String(fabric.ProfileVisibilityPublic),
+			Notifications: fabric.ServiceProfileNotificationArray{
+				&fabric.ServiceProfileNotificationArgs{
+					Emails: pulumi.StringArray{
+						pulumi.String("someone@sample.com"),
 					},
-					AllowRemoteConnections:     pulumi.Bool(true),
-					AllowCustomBandwidth:       pulumi.Bool(false),
-					AllowBandwidthAutoApproval: pulumi.Bool(false),
-					LinkProtocolConfig: &fabric.ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs{
-						EncapsulationStrategy: pulumi.String("CTAGED"),
-						ReuseVlanSTag:         pulumi.Bool(false),
-						Encapsulation:         pulumi.String("DOT1Q"),
-					},
-					EnableAutoGenerateServiceKey: pulumi.Bool("false,"),
-					ConnectionRedundancyRequired: pulumi.Bool("false,"),
-					ApiConfig: &fabric.ServiceProfileAccessPointTypeConfigApiConfigArgs{
-						ApiAvailable:     pulumi.Bool(true),
-						IntegrationId:    pulumi.String("Example-Connect-01"),
-						BandwidthFromApi: pulumi.Bool(false),
-					},
-					ConnectionLabel: pulumi.String("Virtual Circuit Name"),
-					AuthenticationKey: &fabric.ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs{
-						Required: pulumi.Bool(true),
-						Label:    pulumi.String("Example ACCOUNT ID"),
-					},
+					Type: pulumi.String("BANDWIDTH_ALERT"),
 				},
 			},
-			Metros:     nil,
-			Visibility: pulumi.String(fabric.ProfileVisibilityPublic),
-			MarketingInfo: &fabric.ServiceProfileMarketingInfoArgs{
-				Promotion: pulumi.Bool(true),
+			AllowedEmails: pulumi.StringArray{
+				pulumi.String("test@equinix.com"),
+				pulumi.String("testagain@equinix.com"),
+			},
+			Ports: fabric.ServiceProfilePortArray{
+				&fabric.ServiceProfilePortArgs{
+					Uuid: pulumi.String("c791f8cb-5cc9-cc90-8ce0-306a5c00a4ee"),
+					Type: pulumi.String("XF_PORT"),
+				},
+			},
+			AccessPointTypeConfigs: fabric.ServiceProfileAccessPointTypeConfigArray{
+				&fabric.ServiceProfileAccessPointTypeConfigArgs{
+					Type:                         pulumi.String(fabric.ProfileAccessPointTypeColo),
+					AllowRemoteConnections:       pulumi.Bool(true),
+					AllowCustomBandwidth:         pulumi.Bool(true),
+					AllowBandwidthAutoApproval:   pulumi.Bool(false),
+					ConnectionRedundancyRequired: pulumi.Bool(false),
+					ConnectionLabel:              pulumi.String("Service Profile Tag1"),
+					BandwidthAlertThreshold:      pulumi.Float64(10),
+					SupportedBandwidths: pulumi.IntArray{
+						pulumi.Int(100),
+						pulumi.Int(500),
+					},
+				},
 			},
 		})
 		if err != nil {
 			return err
 		}
-		ctx.Export("profileId", profile.ID())
 		return nil
 	})
 }

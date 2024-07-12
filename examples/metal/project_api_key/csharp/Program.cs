@@ -5,19 +5,12 @@ using Equinix = Pulumi.Equinix;
 
 return await Deployment.RunAsync(() => 
 {
-    var config = new Config();
-    var projectId = config.Require("projectId");
-    var readOnly = config.GetBoolean("readOnly") ?? false;
-    var apiKey = new Equinix.Metal.ProjectApiKey("apiKey", new()
+    var test = new Equinix.Metal.ProjectApiKey("test", new()
     {
-        ProjectId = projectId,
-        Description = "A project level API Key",
-        ReadOnly = readOnly,
+        ProjectId = existingProjectId,
+        Description = "Read-only key scoped to a projct",
+        ReadOnly = true,
     });
 
-    return new Dictionary<string, object?>
-    {
-        ["apiKeyToken"] = apiKey.Token,
-    };
 });
 

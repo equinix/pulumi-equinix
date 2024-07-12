@@ -1,18 +1,9 @@
-name: equinix-metal-user-api-key
+name: equinix-metal-user_api_key
 runtime: yaml
-description: An Equinix Metal User API Key resource
-config:
-  description:
-    type: string
-    default: An user level API Key
-  readOnly:
-    type: boolean
-    default: false
 resources:
-  apiKey:
+  # Create a new read-only user API key
+  test:
     type: equinix:metal:UserApiKey
     properties:
-      description: ${description}
-      readOnly: ${readOnly}
-outputs:
-  apiKeyToken: ${apiKey.token}
+      description: Read-only user key
+      readOnly: true

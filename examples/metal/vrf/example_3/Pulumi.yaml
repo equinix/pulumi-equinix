@@ -1,0 +1,24 @@
+name: equinix-metal-vrf-example_3
+runtime: yaml
+resources:
+  exampleVirtualCircuit:
+    type: equinix:metal:VirtualCircuit
+    name: example
+    properties:
+      name: example-vc
+      description: Virtual Circuit
+      connectionId: ${example.id}
+      projectId: ${exampleEquinixMetalProject.id}
+      portId: ${example.ports[0].id}
+      nniVlan: 1024
+      vrfId: ${exampleEquinixMetalVrf.id}
+      peerAsn: 65530
+      subnet: 192.168.100.16/31
+      metalIp: 192.168.100.16
+      customerIp: 192.168.100.17
+variables:
+  example:
+    fn::invoke:
+      Function: equinix:metal:getInterconnection
+      Arguments:
+        connectionId: ${metalDedicatedConnectionId}

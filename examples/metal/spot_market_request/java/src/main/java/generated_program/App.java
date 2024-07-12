@@ -19,13 +19,10 @@ public class App {
     }
 
     public static void stack(Context ctx) {
-        final var config = ctx.config();
-        final var projectId = config.get("projectId");
-        final var metro = config.get("metro").orElse("FR");
-        var request = new SpotMarketRequest("request", SpotMarketRequestArgs.builder()
+        var req = new SpotMarketRequest("req", SpotMarketRequestArgs.builder()
             .projectId(projectId)
-            .metro(metro)
-            .maxBidPrice(0.75)
+            .maxBidPrice(0.03)
+            .metro("ny")
             .devicesMin(1)
             .devicesMax(1)
             .instanceParameters(SpotMarketRequestInstanceParametersArgs.builder()
@@ -36,6 +33,5 @@ public class App {
                 .build())
             .build());
 
-        ctx.export("requestId", request.id());
     }
 }

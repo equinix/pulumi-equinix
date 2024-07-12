@@ -4,9 +4,10 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
 
-const aclTemplate = new equinix.networkedge.AclTemplate("aclTemplate", {
+const myacl = new equinix.networkedge.AclTemplate("myacl", {
     name: "test",
     description: "Test ACL template",
+    projectId: "a86d7112-d740-4758-9c9c-31e66373746b",
     inboundRules: [
         {
             subnet: "1.1.1.1/32",
@@ -16,23 +17,22 @@ const aclTemplate = new equinix.networkedge.AclTemplate("aclTemplate", {
             description: "inbound rule description",
         },
         {
-            subnet: "2.2.2.2/28",
-            protocol: equinix.networkedge.AclRuleProtocolType.TCP,
+            subnet: "172.16.25.0/24",
+            protocol: equinix.networkedge.AclRuleProtocolType.UDP,
             srcPort: "any",
-            dstPort: "any",
-            description: "inbound rule description",
+            dstPort: "53,1045,2041",
         },
     ],
 });
-export const templateId = aclTemplate.id;
 ```
 ```python
 import pulumi
 import pulumi_equinix as equinix
 
-acl_template = equinix.networkedge.AclTemplate("aclTemplate",
+myacl = equinix.networkedge.AclTemplate("myacl",
     name="test",
     description="Test ACL template",
+    project_id="a86d7112-d740-4758-9c9c-31e66373746b",
     inbound_rules=[
         equinix.networkedge.AclTemplateInboundRuleArgs(
             subnet="1.1.1.1/32",
@@ -42,14 +42,12 @@ acl_template = equinix.networkedge.AclTemplate("aclTemplate",
             description="inbound rule description",
         ),
         equinix.networkedge.AclTemplateInboundRuleArgs(
-            subnet="2.2.2.2/28",
-            protocol=equinix.networkedge.AclRuleProtocolType.TCP,
+            subnet="172.16.25.0/24",
+            protocol=equinix.networkedge.AclRuleProtocolType.UDP,
             src_port="any",
-            dst_port="any",
-            description="inbound rule description",
+            dst_port="53,1045,2041",
         ),
     ])
-pulumi.export("templateId", acl_template.id)
 ```
 ```go
 package main
@@ -61,9 +59,10 @@ import (
 
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
-		aclTemplate, err := networkedge.NewAclTemplate(ctx, "aclTemplate", &networkedge.AclTemplateArgs{
+		_, err := networkedge.NewAclTemplate(ctx, "myacl", &networkedge.AclTemplateArgs{
 			Name:        pulumi.String("test"),
 			Description: pulumi.String("Test ACL template"),
+			ProjectId:   pulumi.String("a86d7112-d740-4758-9c9c-31e66373746b"),
 			InboundRules: networkedge.AclTemplateInboundRuleArray{
 				&networkedge.AclTemplateInboundRuleArgs{
 					Subnet:      pulumi.String("1.1.1.1/32"),
@@ -73,18 +72,16 @@ func main() {
 					Description: pulumi.String("inbound rule description"),
 				},
 				&networkedge.AclTemplateInboundRuleArgs{
-					Subnet:      pulumi.String("2.2.2.2/28"),
-					Protocol:    pulumi.String(networkedge.AclRuleProtocolTypeTCP),
-					SrcPort:     pulumi.String("any"),
-					DstPort:     pulumi.String("any"),
-					Description: pulumi.String("inbound rule description"),
+					Subnet:   pulumi.String("172.16.25.0/24"),
+					Protocol: pulumi.String(networkedge.AclRuleProtocolTypeUDP),
+					SrcPort:  pulumi.String("any"),
+					DstPort:  pulumi.String("53,1045,2041"),
 				},
 			},
 		})
 		if err != nil {
 			return err
 		}
-		ctx.Export("templateId", aclTemplate.ID())
 		return nil
 	})
 }
@@ -97,10 +94,11 @@ using Equinix = Pulumi.Equinix;
 
 return await Deployment.RunAsync(() => 
 {
-    var aclTemplate = new Equinix.NetworkEdge.AclTemplate("aclTemplate", new()
+    var myacl = new Equinix.NetworkEdge.AclTemplate("myacl", new()
     {
         Name = "test",
         Description = "Test ACL template",
+        ProjectId = "a86d7112-d740-4758-9c9c-31e66373746b",
         InboundRules = new[]
         {
             new Equinix.NetworkEdge.Inputs.AclTemplateInboundRuleArgs
@@ -113,19 +111,14 @@ return await Deployment.RunAsync(() =>
             },
             new Equinix.NetworkEdge.Inputs.AclTemplateInboundRuleArgs
             {
-                Subnet = "2.2.2.2/28",
-                Protocol = Equinix.NetworkEdge.AclRuleProtocolType.TCP,
+                Subnet = "172.16.25.0/24",
+                Protocol = Equinix.NetworkEdge.AclRuleProtocolType.UDP,
                 SrcPort = "any",
-                DstPort = "any",
-                Description = "inbound rule description",
+                DstPort = "53,1045,2041",
             },
         },
     });
 
-    return new Dictionary<string, object?>
-    {
-        ["templateId"] = aclTemplate.Id,
-    };
 });
 ```
 ```java
@@ -150,9 +143,10 @@ public class App {
     }
 
     public static void stack(Context ctx) {
-        var aclTemplate = new AclTemplate("aclTemplate", AclTemplateArgs.builder()
+        var myacl = new AclTemplate("myacl", AclTemplateArgs.builder()
             .name("test")
             .description("Test ACL template")
+            .projectId("a86d7112-d740-4758-9c9c-31e66373746b")
             .inboundRules(            
                 AclTemplateInboundRuleArgs.builder()
                     .subnet("1.1.1.1/32")
@@ -162,37 +156,33 @@ public class App {
                     .description("inbound rule description")
                     .build(),
                 AclTemplateInboundRuleArgs.builder()
-                    .subnet("2.2.2.2/28")
-                    .protocol("TCP")
+                    .subnet("172.16.25.0/24")
+                    .protocol("UDP")
                     .srcPort("any")
-                    .dstPort("any")
-                    .description("inbound rule description")
+                    .dstPort("53,1045,2041")
                     .build())
             .build());
 
-        ctx.export("templateId", aclTemplate.id());
     }
 }
 ```
 ```yaml
-resources:
-  aclTemplate:
+  # Creates ACL template and assigns it to the network device
+  myacl:
     type: equinix:networkedge:AclTemplate
     properties:
       name: test
       description: Test ACL template
+      projectId: a86d7112-d740-4758-9c9c-31e66373746b
       inboundRules:
-      - subnet: 1.1.1.1/32
-        protocol: IP
-        srcPort: any
-        dstPort: any
-        description: inbound rule description
-      - subnet: 2.2.2.2/28
-        protocol: TCP
-        srcPort: any
-        dstPort: any
-        description: inbound rule description
-outputs:
-  templateId: ${aclTemplate.id}
+        - subnet: 1.1.1.1/32
+          protocol: IP
+          srcPort: any
+          dstPort: any
+          description: inbound rule description
+        - subnet: 172.16.25.0/24
+          protocol: UDP
+          srcPort: any
+          dstPort: 53,1045,2041
 ```
 {{% /example %}}

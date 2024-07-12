@@ -4,32 +4,26 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
 
-const config = new pulumi.Config();
-const device1Id = config.require("device1Id");
-const device2Id = config.require("device2Id");
-const sshUser = new equinix.networkedge.SshUser("sshUser", {
-    username: "johnKent",
+const john = new equinix.networkedge.SshUser("john", {
+    username: "john",
+    password: "secret",
     deviceIds: [
-        device1Id,
-        device2Id,
+        "csr1000v-ha-uuid",
+        "csr1000v-ha-redundant-uuid",
     ],
 });
-export const sshUserId = sshUser.id;
 ```
 ```python
 import pulumi
 import pulumi_equinix as equinix
 
-config = pulumi.Config()
-device1_id = config.require("device1Id")
-device2_id = config.require("device2Id")
-ssh_user = equinix.networkedge.SshUser("sshUser",
-    username="johnKent",
+john = equinix.networkedge.SshUser("john",
+    username="john",
+    password="secret",
     device_ids=[
-        device1_id,
-        device2_id,
+        "csr1000v-ha-uuid",
+        "csr1000v-ha-redundant-uuid",
     ])
-pulumi.export("sshUserId", ssh_user.id)
 ```
 ```go
 package main
@@ -37,25 +31,21 @@ package main
 import (
 	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
 
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
-		cfg := config.New(ctx, "")
-		device1Id := cfg.Require("device1Id")
-		device2Id := cfg.Require("device2Id")
-		sshUser, err := networkedge.NewSshUser(ctx, "sshUser", &networkedge.SshUserArgs{
-			Username: pulumi.String("johnKent"),
+		_, err := networkedge.NewSshUser(ctx, "john", &networkedge.SshUserArgs{
+			Username: pulumi.String("john"),
+			Password: pulumi.String("secret"),
 			DeviceIds: pulumi.StringArray{
-				pulumi.String(device1Id),
-				pulumi.String(device2Id),
+				pulumi.String("csr1000v-ha-uuid"),
+				pulumi.String("csr1000v-ha-redundant-uuid"),
 			},
 		})
 		if err != nil {
 			return err
 		}
-		ctx.Export("sshUserId", sshUser.ID())
 		return nil
 	})
 }
@@ -68,23 +58,17 @@ using Equinix = Pulumi.Equinix;
 
 return await Deployment.RunAsync(() => 
 {
-    var config = new Config();
-    var device1Id = config.Require("device1Id");
-    var device2Id = config.Require("device2Id");
-    var sshUser = new Equinix.NetworkEdge.SshUser("sshUser", new()
+    var john = new Equinix.NetworkEdge.SshUser("john", new()
     {
-        Username = "johnKent",
+        Username = "john",
+        Password = "secret",
         DeviceIds = new[]
         {
-            device1Id,
-            device2Id,
+            "csr1000v-ha-uuid",
+            "csr1000v-ha-redundant-uuid",
         },
     });
 
-    return new Dictionary<string, object?>
-    {
-        ["sshUserId"] = sshUser.Id,
-    };
 });
 ```
 ```java
@@ -108,35 +92,27 @@ public class App {
     }
 
     public static void stack(Context ctx) {
-        final var config = ctx.config();
-        final var device1Id = config.get("device1Id");
-        final var device2Id = config.get("device2Id");
-        var sshUser = new SshUser("sshUser", SshUserArgs.builder()
-            .username("johnKent")
+        var john = new SshUser("john", SshUserArgs.builder()
+            .username("john")
+            .password("secret")
             .deviceIds(            
-                device1Id,
-                device2Id)
+                "csr1000v-ha-uuid",
+                "csr1000v-ha-redundant-uuid")
             .build());
 
-        ctx.export("sshUserId", sshUser.id());
     }
 }
 ```
 ```yaml
-config:
-  device1Id:
-    type: string
-  device2Id:
-    type: string
-resources:
-  sshUser:
+  # Create SSH user with password auth method and associate it with
+  # two virtual network devices
+  john:
     type: equinix:networkedge:SshUser
     properties:
-      username: johnKent
+      username: john
+      password: secret
       deviceIds:
-      - ${device1Id}
-      - ${device2Id}
-outputs:
-  sshUserId: ${sshUser.id}
+        - csr1000v-ha-uuid
+        - csr1000v-ha-redundant-uuid
 ```
 {{% /example %}}

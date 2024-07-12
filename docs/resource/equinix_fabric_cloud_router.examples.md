@@ -4,54 +4,62 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
 
-const config = new pulumi.Config();
-const metro = config.get("metro") || "FR";
-const accountNum = config.requireNumber("accountNum");
-const router = new equinix.fabric.CloudRouter("router", {
-    name: "My-Fabric-Cloud-Router",
+const newCloudRouter = new equinix.fabric.CloudRouter("newCloudRouter", {
+    name: "Router-SV",
     type: "XF_ROUTER",
-    location: {
-        metroCode: metro,
-    },
-    "package": {
-        code: "BASIC",
-    },
     notifications: [{
         type: "ALL",
-        emails: ["example@equinix.com"],
+        emails: [
+            "example@equinix.com",
+            "test1@equinix.com",
+        ],
     }],
+    order: {
+        purchaseOrderNumber: "1-323292",
+    },
+    location: {
+        metroCode: "SV",
+    },
+    "package": {
+        code: "STANDARD",
+    },
+    project: {
+        projectId: "776847000642406",
+    },
     account: {
-        accountNumber: 272010,
+        accountNumber: 203612,
     },
 });
-export const routerId = router.id;
 ```
 ```python
 import pulumi
 import pulumi_equinix as equinix
 
-config = pulumi.Config()
-metro = config.get("metro")
-if metro is None:
-    metro = "FR"
-account_num = config.require_int("accountNum")
-router = equinix.fabric.CloudRouter("router",
-    name="My-Fabric-Cloud-Router",
+new_cloud_router = equinix.fabric.CloudRouter("newCloudRouter",
+    name="Router-SV",
     type="XF_ROUTER",
-    location=equinix.fabric.CloudRouterLocationArgs(
-        metro_code=metro,
-    ),
-    package=equinix.fabric.CloudRouterPackageArgs(
-        code="BASIC",
-    ),
     notifications=[equinix.fabric.CloudRouterNotificationArgs(
         type="ALL",
-        emails=["example@equinix.com"],
+        emails=[
+            "example@equinix.com",
+            "test1@equinix.com",
+        ],
     )],
+    order=equinix.fabric.CloudRouterOrderArgs(
+        purchase_order_number="1-323292",
+    ),
+    location=equinix.fabric.CloudRouterLocationArgs(
+        metro_code="SV",
+    ),
+    package=equinix.fabric.CloudRouterPackageArgs(
+        code="STANDARD",
+    ),
+    project=equinix.fabric.CloudRouterProjectArgs(
+        project_id="776847000642406",
+    ),
     account=equinix.fabric.CloudRouterAccountArgs(
-        account_number=272010,
+        account_number=203612,
     ))
-pulumi.export("routerId", router.id)
 ```
 ```go
 package main
@@ -59,42 +67,41 @@ package main
 import (
 	"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
 
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
-		cfg := config.New(ctx, "")
-		metro := "FR"
-		if param := cfg.Get("metro"); param != "" {
-			metro = param
-		}
-		accountNum := cfg.RequireInt("accountNum")
-		router, err := fabric.NewCloudRouter(ctx, "router", &fabric.CloudRouterArgs{
-			Name: pulumi.String("My-Fabric-Cloud-Router"),
+		_, err := fabric.NewCloudRouter(ctx, "newCloudRouter", &fabric.CloudRouterArgs{
+			Name: pulumi.String("Router-SV"),
 			Type: pulumi.String("XF_ROUTER"),
-			Location: &fabric.CloudRouterLocationArgs{
-				MetroCode: pulumi.String(metro),
-			},
-			Package: &fabric.CloudRouterPackageArgs{
-				Code: pulumi.String("BASIC"),
-			},
 			Notifications: fabric.CloudRouterNotificationArray{
 				&fabric.CloudRouterNotificationArgs{
 					Type: pulumi.String("ALL"),
 					Emails: pulumi.StringArray{
 						pulumi.String("example@equinix.com"),
+						pulumi.String("test1@equinix.com"),
 					},
 				},
 			},
+			Order: &fabric.CloudRouterOrderArgs{
+				PurchaseOrderNumber: pulumi.String("1-323292"),
+			},
+			Location: &fabric.CloudRouterLocationArgs{
+				MetroCode: pulumi.String("SV"),
+			},
+			Package: &fabric.CloudRouterPackageArgs{
+				Code: pulumi.String("STANDARD"),
+			},
+			Project: &fabric.CloudRouterProjectArgs{
+				ProjectId: pulumi.String("776847000642406"),
+			},
 			Account: &fabric.CloudRouterAccountArgs{
-				AccountNumber: pulumi.Int(272010),
+				AccountNumber: pulumi.Int(203612),
 			},
 		})
 		if err != nil {
 			return err
 		}
-		ctx.Export("routerId", router.ID())
 		return nil
 	})
 }
@@ -107,21 +114,10 @@ using Equinix = Pulumi.Equinix;
 
 return await Deployment.RunAsync(() => 
 {
-    var config = new Config();
-    var metro = config.Get("metro") ?? "FR";
-    var accountNum = config.RequireInt32("accountNum");
-    var router = new Equinix.Fabric.CloudRouter("router", new()
+    var newCloudRouter = new Equinix.Fabric.CloudRouter("newCloudRouter", new()
     {
-        Name = "My-Fabric-Cloud-Router",
+        Name = "Router-SV",
         Type = "XF_ROUTER",
-        Location = new Equinix.Fabric.Inputs.CloudRouterLocationArgs
-        {
-            MetroCode = metro,
-        },
-        Package = new Equinix.Fabric.Inputs.CloudRouterPackageArgs
-        {
-            Code = "BASIC",
-        },
         Notifications = new[]
         {
             new Equinix.Fabric.Inputs.CloudRouterNotificationArgs
@@ -130,19 +126,32 @@ return await Deployment.RunAsync(() =>
                 Emails = new[]
                 {
                     "example@equinix.com",
+                    "test1@equinix.com",
                 },
             },
         },
+        Order = new Equinix.Fabric.Inputs.CloudRouterOrderArgs
+        {
+            PurchaseOrderNumber = "1-323292",
+        },
+        Location = new Equinix.Fabric.Inputs.CloudRouterLocationArgs
+        {
+            MetroCode = "SV",
+        },
+        Package = new Equinix.Fabric.Inputs.CloudRouterPackageArgs
+        {
+            Code = "STANDARD",
+        },
+        Project = new Equinix.Fabric.Inputs.CloudRouterProjectArgs
+        {
+            ProjectId = "776847000642406",
+        },
         Account = new Equinix.Fabric.Inputs.CloudRouterAccountArgs
         {
-            AccountNumber = 272010,
+            AccountNumber = 203612,
         },
     });
 
-    return new Dictionary<string, object?>
-    {
-        ["routerId"] = router.Id,
-    };
 });
 ```
 ```java
@@ -153,9 +162,11 @@ import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
 import com.pulumi.equinix.fabric.CloudRouter;
 import com.pulumi.equinix.fabric.CloudRouterArgs;
+import com.pulumi.equinix.fabric.inputs.CloudRouterNotificationArgs;
+import com.pulumi.equinix.fabric.inputs.CloudRouterOrderArgs;
 import com.pulumi.equinix.fabric.inputs.CloudRouterLocationArgs;
 import com.pulumi.equinix.fabric.inputs.CloudRouterPackageArgs;
-import com.pulumi.equinix.fabric.inputs.CloudRouterNotificationArgs;
+import com.pulumi.equinix.fabric.inputs.CloudRouterProjectArgs;
 import com.pulumi.equinix.fabric.inputs.CloudRouterAccountArgs;
 import java.util.List;
 import java.util.ArrayList;
@@ -170,55 +181,56 @@ public class App {
     }
 
     public static void stack(Context ctx) {
-        final var config = ctx.config();
-        final var metro = config.get("metro").orElse("FR");
-        final var accountNum = config.get("accountNum");
-        var router = new CloudRouter("router", CloudRouterArgs.builder()
-            .name("My-Fabric-Cloud-Router")
+        var newCloudRouter = new CloudRouter("newCloudRouter", CloudRouterArgs.builder()
+            .name("Router-SV")
             .type("XF_ROUTER")
-            .location(CloudRouterLocationArgs.builder()
-                .metroCode(metro)
-                .build())
-            .package_(CloudRouterPackageArgs.builder()
-                .code("BASIC")
-                .build())
             .notifications(CloudRouterNotificationArgs.builder()
                 .type("ALL")
-                .emails("example@equinix.com")
+                .emails(                
+                    "example@equinix.com",
+                    "test1@equinix.com")
+                .build())
+            .order(CloudRouterOrderArgs.builder()
+                .purchaseOrderNumber("1-323292")
+                .build())
+            .location(CloudRouterLocationArgs.builder()
+                .metroCode("SV")
+                .build())
+            .package_(CloudRouterPackageArgs.builder()
+                .code("STANDARD")
+                .build())
+            .project(CloudRouterProjectArgs.builder()
+                .projectId("776847000642406")
                 .build())
             .account(CloudRouterAccountArgs.builder()
-                .accountNumber(272010)
+                .accountNumber("203612")
                 .build())
             .build());
 
-        ctx.export("routerId", router.id());
     }
 }
 ```
 ```yaml
-config:
-  metro:
-    type: string
-    default: FR
-  accountNum:
-    type: integer
-resources:
-  router:
+  newCloudRouter:
     type: equinix:fabric:CloudRouter
+    name: new_cloud_router
     properties:
-      name: My-Fabric-Cloud-Router
+      name: Router-SV
       type: XF_ROUTER
-      location:
-        metroCode: ${metro}
-      package:
-        code: BASIC
       notifications:
-      - type: ALL
-        emails:
-        - example@equinix.com
+        - type: ALL
+          emails:
+            - example@equinix.com
+            - test1@equinix.com
+      order:
+        purchaseOrderNumber: 1-323292
+      location:
+        metroCode: SV
+      package:
+        code: STANDARD
+      project:
+        projectId: '776847000642406'
       account:
-        accountNumber: 272010
-outputs:
-  routerId: ${router.id}
+        accountNumber: '203612'
 ```
 {{% /example %}}

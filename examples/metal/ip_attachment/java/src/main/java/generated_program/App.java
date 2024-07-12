@@ -3,6 +3,8 @@ package generated_program;
 import com.pulumi.Context;
 import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
+import com.pulumi.equinix.metal.ReservedIpBlock;
+import com.pulumi.equinix.metal.ReservedIpBlockArgs;
 import com.pulumi.equinix.metal.IpAttachment;
 import com.pulumi.equinix.metal.IpAttachmentArgs;
 import java.util.List;
@@ -18,15 +20,24 @@ public class App {
     }
 
     public static void stack(Context ctx) {
-        final var config = ctx.config();
-        final var deviceId = config.get("deviceId");
-        final var subnetCidr = config.get("subnetCidr").orElse("147.229.10.152/31");
-        var ipAttachResource = new IpAttachment("ipAttachResource", IpAttachmentArgs.builder()
-            .deviceId(deviceId)
-            .cidrNotation(subnetCidr)
+        var myblock = new ReservedIpBlock("myblock", ReservedIpBlockArgs.builder()
+            .projectId(projectId)
+            .metro("ny")
+            .quantity(2)
             .build());
 
-        ctx.export("ipAttach", ipAttachResource.id());
-        ctx.export("ipNetmask", ipAttachResource.netmask());
+        var firstAddressAssignment = new IpAttachment("firstAddressAssignment", IpAttachmentArgs.builder()
+            .deviceId(mydevice.id())
+            .cidrNotation(StdFunctions.join(JoinArgs.builder()
+                .separator("/")
+                .input(                
+                    StdFunctions.cidrhost(CidrhostArgs.builder()
+                        .input(myblockMetalReservedIpBlock.cidrNotation())
+                        .host(0)
+                        .build()).result(),
+                    "32")
+                .build()).result())
+            .build());
+
     }
 }

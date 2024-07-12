@@ -1,12 +1,2 @@
-name: equinix-network-device-link
+name: equinix-network-device_link
 runtime: dotnet
-description: An Equinix Network Edge virtual network device link resource
-config:
-  accountMetro:
-    type: string
-  accountName:
-    type: string
-  device1Id:
-    type: string
-  device2Id:
-    type: string

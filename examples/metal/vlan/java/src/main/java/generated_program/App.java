@@ -18,17 +18,12 @@ public class App {
     }
 
     public static void stack(Context ctx) {
-        final var config = ctx.config();
-        final var projectId = config.get("projectId");
-        final var metro = config.get("metro").orElse("DA");
-        final var vxlan = config.get("vxlan");
-        var vlan = new Vlan("vlan", VlanArgs.builder()
-            .description("VLAN in Dallas")
+        var vlan1 = new Vlan("vlan1", VlanArgs.builder()
+            .description("VLAN in New Jersey")
+            .metro("sv")
             .projectId(projectId)
-            .metro(metro)
-            .vxlan(vxlan)
+            .vxlan(1040)
             .build());
 
-        ctx.export("vlanId", vlan.id());
     }
 }

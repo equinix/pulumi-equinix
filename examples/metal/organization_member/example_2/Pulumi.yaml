@@ -1,0 +1,11 @@
+name: equinix-metal-organization_member-example_2
+runtime: yaml
+resources:
+  owner:
+    type: equinix:metal:OrganizationMember
+    properties:
+      invitee: admin@example.com
+      roles:
+        - owner
+      projectsIds: []
+      organizationId: ${organizationId}
