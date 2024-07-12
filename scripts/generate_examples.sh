@@ -27,38 +27,38 @@ GOLANG_MIN_NEXT_VERSION=$(increment_patch "$VERSION")
 mappings() {
     local tf_file=$1
     # Remove occurrences of ${path.module}/
-    sed -i '' 's/\${path\.module}\///g' "$tf_file"
+    sed -i.bak 's/\${path\.module}\///g' "$tf_file"
     # Replace one function with index 0
-    sed -i '' 's/one(equinix_fabric_connection.vd2azure_primary.redundancy).group/equinix_fabric_connection.vd2azure_primary.redundancy.0.group/g' "$tf_file"
+    sed -i.bak 's/one(equinix_fabric_connection.vd2azure_primary.redundancy).group/equinix_fabric_connection.vd2azure_primary.redundancy.0.group/g' "$tf_file"
     # Fix invalid strings
-    sed -i '' 's/<some_id>/"<some_id>"/g' "$tf_file"
-    sed -i '' 's/<same_connection_id_as_first_equinix_fabric_routing_protocol>/"<same_connection_id_as_first_equinix_fabric_routing_protocol>"/g' "$tf_file"
+    sed -i.bak 's/<some_id>/"<some_id>"/g' "$tf_file"
+    sed -i.bak 's/<same_connection_id_as_first_equinix_fabric_routing_protocol>/"<same_connection_id_as_first_equinix_fabric_routing_protocol>"/g' "$tf_file"
     # Replace public_key with EOF format
-    sed -i '' '/public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDpXGdxljAyPp9vH97436U171cX/,/John.Kent@company.com"/ {
+    sed -i.bak '/public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDpXGdxljAyPp9vH97436U171cX/,/John.Kent@company.com"/ {
         s/public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDpXGdxljAyPp9vH97436U171cX/public_key = <<EOF\n  ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDpXGdxljAyPp9vH97436U171cX/
         s/John.Kent@company.com"/John.Kent@company.com\n  EOF/
     }' "$tf_file"
     # Replace unimplemented conditional expression
-    sed -i '' 's/equinix_network_device\.test\.asn > 0 ? equinix_network_device\.test\.asn : 22111/22111/g' "$tf_file"
-    sed -i '' 's/equinix_network_device\.test\.secondary_device\[0\]\.asn > 0 ? equinix_network_device\.test\.secondary_device\[0\]\.asn : 22333/22333/g' "$tf_file"
+    sed -i.bak 's/equinix_network_device\.test\.asn > 0 ? equinix_network_device\.test\.asn : 22111/22111/g' "$tf_file"
+    sed -i.bak 's/equinix_network_device\.test\.secondary_device\[0\]\.asn > 0 ? equinix_network_device\.test\.secondary_device\[0\]\.asn : 22333/22333/g' "$tf_file"
     # Replace references to not declared resources or variables
-    sed -i '' 's/equinix_network_device\.csr1000v-ha\.uuid,/"csr1000v-ha-uuid",/g' "$tf_file"
-    sed -i '' 's/equinix_network_device\.csr1000v-ha\.redundant_uuid/"csr1000v-ha-redundant-uuid"/g' "$tf_file"
+    sed -i.bak 's/equinix_network_device\.csr1000v-ha\.uuid,/"csr1000v-ha-uuid",/g' "$tf_file"
+    sed -i.bak 's/equinix_network_device\.csr1000v-ha\.redundant_uuid/"csr1000v-ha-redundant-uuid"/g' "$tf_file"
     # Replace duplicate resource name
-    sed -i '' '1,/resource "equinix_metal_reserved_ip_block" "test"/ s/resource "equinix_metal_reserved_ip_block" "test"/resource "equinix_metal_reserved_ip_block" "test1"/g' "$tf_file"
+    sed -i.bak '1,/resource "equinix_metal_reserved_ip_block" "test"/ s/resource "equinix_metal_reserved_ip_block" "test"/resource "equinix_metal_reserved_ip_block" "test1"/g' "$tf_file"
     # Replace - with _ in resource names
-    sed -i '' 's/test-public-key/test_public_key/g' "$tf_file"
-    sed -i '' 's/"csr1000v-ha"/"csr1000v_ha"/g' "$tf_file"
-    sed -i '' 's/"panw-cluster"/"panw_cluster"/g' "$tf_file"
-    sed -i '' 's/"aviatrix-single"/"aviatrix_single"/g' "$tf_file"
-    sed -i '' 's/aviatrix-cloudinit-file/aviatrix_cloudinit_file/g' "$tf_file"
-    sed -i '' 's/bluecat-edge-service-point-cloudinit-primary-file/bluecat_edge_service_point_cloudinit_primary_file/g' "$tf_file"
-    sed -i '' 's/bluecat-edge-service-point-cloudinit-secondary-file/bluecat_edge_service_point_cloudinit_secondary_file/g' "$tf_file"
-    sed -i '' 's/"bluecat-edge-service-point-ha"/"bluecat_edge_service_point_ha"/g' "$tf_file"
-    sed -i '' 's/"bluecat-bdds-ha"/"bluecat_bdds_ha"/g' "$tf_file"
-    sed -i '' 's/"arista-ha"/"arista_ha"/g' "$tf_file"
-    sed -i '' 's/"vsrx-single"/"vsrx_single"/g' "$tf_file"
-    sed -i '' 's/"c8kv-single"/"c8kv_single"/g' "$tf_file"
+    sed -i.bak 's/test-public-key/test_public_key/g' "$tf_file"
+    sed -i.bak 's/"csr1000v-ha"/"csr1000v_ha"/g' "$tf_file"
+    sed -i.bak 's/"panw-cluster"/"panw_cluster"/g' "$tf_file"
+    sed -i.bak 's/"aviatrix-single"/"aviatrix_single"/g' "$tf_file"
+    sed -i.bak 's/aviatrix-cloudinit-file/aviatrix_cloudinit_file/g' "$tf_file"
+    sed -i.bak 's/bluecat-edge-service-point-cloudinit-primary-file/bluecat_edge_service_point_cloudinit_primary_file/g' "$tf_file"
+    sed -i.bak 's/bluecat-edge-service-point-cloudinit-secondary-file/bluecat_edge_service_point_cloudinit_secondary_file/g' "$tf_file"
+    sed -i.bak 's/"bluecat-edge-service-point-ha"/"bluecat_edge_service_point_ha"/g' "$tf_file"
+    sed -i.bak 's/"bluecat-bdds-ha"/"bluecat_bdds_ha"/g' "$tf_file"
+    sed -i.bak 's/"arista-ha"/"arista_ha"/g' "$tf_file"
+    sed -i.bak 's/"vsrx-single"/"vsrx_single"/g' "$tf_file"
+    sed -i.bak 's/"c8kv-single"/"c8kv_single"/g' "$tf_file"
 
     rm ${tf_file}.bak
 }
@@ -107,11 +107,12 @@ generate_pulumi_yaml() {
             # Combine Main.yaml and Pulumi.yaml into a single file
             if [ -f "$resource_dir/Main.yaml" ] && [ -f "$resource_dir/Pulumi.yaml" ]; then
                 cat "$resource_dir/Main.yaml" >> "$resource_dir/Pulumi.yaml"
-                rm "$resource_dir/Main.yaml"
+                rm $resource_dir/Main.yaml
             fi
 
              # Update the name field in Pulumi.yaml
-            sed -i '' "s/^name: \(.*\)/name: equinix-${service_part}-\1/" "$resource_dir/Pulumi.yaml"
+            sed -i.bak "s/^name: \(.*\)/name: equinix-${service_part}-\1/" "$resource_dir/Pulumi.yaml"
+            rm $resource_dir/Pulumi.yaml.bak
         else
             # If there are multiple .tf files, process them individually
             for tf_file in "${tf_files[@]}"; do
@@ -146,7 +147,8 @@ generate_pulumi_yaml() {
                     fi
 
                      # Update the name field in Pulumi.yaml
-                    sed -i '' "s/^name: \(.*\)/name: equinix-${service_part}-${resource_part}-\1/" "$resource_dir/Pulumi.yaml"
+                    sed -i.bak "s/^name: \(.*\)/name: equinix-${service_part}-${resource_part}-\1/" "$resource_dir/Pulumi.yaml"
+                    rm $resource_dir/Pulumi.yaml.bak
                 fi
             done
         fi
@@ -245,10 +247,8 @@ merge_example_files() {
     local MERGED_FILE="${OUTPUT_DIR}/${RESULT_FILE_NAME}"
 
     echo "Generating merged example: $RESULT_FILE_NAME"
-    echo "${1}_example_*.examples.md"
     # Find all example files with the specified prefix in OUTPUT_DIR
     local EXAMPLES_TO_MERGE=($(find "$OUTPUT_DIR" -maxdepth 1 -name "${1}_example*.examples.md"))
-    echo "${EXAMPLES_TO_MERGE[@]}"
 
     local CONTENTS=""
     for FILE in "${EXAMPLES_TO_MERGE[@]}"; do
@@ -267,8 +267,8 @@ merge_example_files() {
     echo "Merged file generated: $MERGED_FILE"
 }
 
-### main
-# generate_pulumi_yaml
+## main
+generate_pulumi_yaml
 generate_examples_and_docs
 
 merge_example_files "equinix_network_device"
