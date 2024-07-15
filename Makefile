@@ -30,7 +30,8 @@ development: install_plugins provider lint_provider build_sdks install_sdks clea
 build: install_plugins provider build_sdks install_sdks
 only_build: build
 
-tfgen: install_plugins upstream build_schema generate_examples
+only_tfgen: install_plugins upstream build_schema
+tfgen: only_tfgen generate_examples
 
 # Generate examples after the schema is generated
 generate_examples: examples
