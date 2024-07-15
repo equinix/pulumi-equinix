@@ -2,7 +2,7 @@
 set -e
 
 # List of files to exclude
-EXCLUDE_FILES=("/metal_connection/example_1.tf /metal_connection/example_2.tf /metal_connection/example_3.tf /metal_bgp_session/example_1.tf")
+EXCLUDE_FILES=("metal_connection/example_1.tf metal_connection/example_2.tf metal_connection/example_3.tf metal_bgp_session/example_1.tf")
 EXCLUDED_FILES=()
 # this script current directory
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
@@ -90,9 +90,10 @@ generate_pulumi_yaml() {
             local example_relative_path="${tf_file#$SOURCE_DIR}"
 
             # Check if the file is in the exclude list
-            echo "Check if ${example_relative_path} should be excluded"
-            if [[ " ${EXCLUDE_FILES[@]} " =~ " ${example_relative_path} " ]]; then
-                EXCLUDED_FILES+=("$example_relative_path")
+            normalized_path="${example_relative_path#/}"
+            echo "Check if ${normalized_path} should be excluded"
+            if [[ " ${EXCLUDE_FILES[@]} " =~ " ${normalized_path} " ]]; then
+                EXCLUDED_FILES+=("$normalized_path")
                 continue
             fi
 
@@ -101,7 +102,7 @@ generate_pulumi_yaml() {
             mappings $tf_destination_file
 
             # Generate Pulumi template
-            echo -e "\033[0;34m CONVERTING $example_relative_path"
+            echo -e "\033[0;34m CONVERTING $normalized_path"
             pulumi convert --cwd "$resource_dir" --from terraform --language yaml --out $resource_dir --generate-only "${tf_files[0]}"
             rm $tf_destination_file
         
@@ -122,9 +123,10 @@ generate_pulumi_yaml() {
                 echo $example_name
 
                 # Check if the file is in the exclude list
-                echo "Check if ${example_relative_path} should be excluded"
-                if [[ " ${EXCLUDE_FILES[@]} " =~ " ${example_relative_path} " ]]; then
-                    EXCLUDED_FILES+=("$example_relative_path")
+                normalized_path="${example_relative_path#/}"
+                echo "Check if ${normalized_path} should be excluded"
+                if [[ " ${EXCLUDE_FILES[@]} " =~ " ${normalized_path} " ]]; then
+                    EXCLUDED_FILES+=("$normalized_path")
                     continue
                 fi
 
@@ -138,7 +140,7 @@ generate_pulumi_yaml() {
                     mappings $tf_destination_file
 
                     # Execute the Terraform to YAML conversion
-                    echo -e "\033[0;34m CONVERTING $example_relative_path"
+                    echo -e "\033[0;34m CONVERTING $normalized_path"
                     pulumi convert --cwd "$resource_dir" --from terraform --language yaml --out $resource_dir --generate-only $tf_file
                     rm $tf_destination_file
 
