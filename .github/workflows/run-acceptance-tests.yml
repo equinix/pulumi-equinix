@@ -177,7 +177,7 @@ jobs:
       with:
         repo: pulumi/schema-tools
     - name: Build tfgen binary
-        run: make only_tfgen
+      run: make only_tfgen
     - name: Build provider binary
       run: make only_provider
     - name: Unit-test provider code
