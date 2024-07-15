@@ -90,6 +90,7 @@ generate_pulumi_yaml() {
             local example_relative_path="${tf_file#$SOURCE_DIR}"
 
             # Check if the file is in the exclude list
+            echo "Check if ${example_relative_path} should be excluded"
             if [[ " ${EXCLUDE_FILES[@]} " =~ " ${example_relative_path} " ]]; then
                 EXCLUDED_FILES+=("$example_relative_path")
                 continue
@@ -121,6 +122,7 @@ generate_pulumi_yaml() {
                 echo $example_name
 
                 # Check if the file is in the exclude list
+                echo "Check if ${example_relative_path} should be excluded"
                 if [[ " ${EXCLUDE_FILES[@]} " =~ " ${example_relative_path} " ]]; then
                     EXCLUDED_FILES+=("$example_relative_path")
                     continue
