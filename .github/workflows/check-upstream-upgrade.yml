@@ -36,5 +36,5 @@ name: Check upstream upgrade
 on:
   workflow_dispatch: {} #so we can run this manually if necessary.
   schedule:
-    # 3 AM UTC ~ 8 PM PDT / 7 PM PST daily. Time chosen to run during off hours.
-    - cron: 0 3 * * *
+    # Run every 8 hours Monday through Friday
+    - cron: '0 */8 * * 1-5'
