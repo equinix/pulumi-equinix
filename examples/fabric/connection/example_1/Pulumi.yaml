@@ -1,0 +1,34 @@
+name: equinix-fabric-connection-example_1
+runtime: yaml
+resources:
+  port2port:
+    type: equinix:fabric:Connection
+    properties:
+      name: ConnectionName
+      type: EVPL_VC
+      notifications:
+        - type: ALL
+          emails:
+            - example@equinix.com
+            - test1@equinix.com
+      bandwidth: 50
+      order:
+        purchaseOrderNumber: 1-323292
+      aSide:
+        accessPoint:
+          type: COLO
+          port:
+            uuid: <aside_port_uuid>
+          linkProtocol:
+            type: QINQ
+            vlanSTag: '1976'
+      zSide:
+        accessPoint:
+          type: COLO
+          port:
+            uuid: <zside_port_uuid>
+          linkProtocol:
+            type: QINQ
+            vlanSTag: '3711'
+          location:
+            metroCode: SV

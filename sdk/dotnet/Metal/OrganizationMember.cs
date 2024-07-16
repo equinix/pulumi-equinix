@@ -13,20 +13,40 @@ namespace Pulumi.Equinix.Metal
     /// Manage the membership of existing and new invitees within an Equinix Metal organization and its projects.
     /// 
     /// ## Example Usage
+    /// ### example 2
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Equinix = Pulumi.Equinix;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var config = new Config();
-    ///     var organizationId = config.Require("organizationId");
-    ///     var projectId = config.Require("projectId");
-    ///     var userEmailAddress = config.Require("userEmailAddress");
+    ///     var owner = new Equinix.Metal.OrganizationMember("owner", new()
+    ///     {
+    ///         Invitee = "admin@example.com",
+    ///         Roles = new[]
+    ///         {
+    ///             "owner",
+    ///         },
+    ///         ProjectsIds = new[] {},
+    ///         OrganizationId = organizationId,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### example 1
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Equinix = Pulumi.Equinix;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
     ///     var member = new Equinix.Metal.OrganizationMember("member", new()
     ///     {
-    ///         Invitee = userEmailAddress,
+    ///         Invitee = "member@example.com",
     ///         Roles = new[]
     ///         {
     ///             "limited_collaborator",
@@ -38,11 +58,6 @@ namespace Pulumi.Equinix.Metal
     ///         OrganizationId = organizationId,
     ///     });
     /// 
-    ///     return new Dictionary&lt;string, object?&gt;
-    ///     {
-    ///         ["memberId"] = member.Id,
-    ///         ["memberState"] = member.State,
-    ///     };
     /// });
     /// ```
     /// 

@@ -1,3 +1,2 @@
-name: equinix-fabric-service-profile
+name: equinix-fabric-service_profile
 runtime: java
-description: An Equinix Fabric service profile resource

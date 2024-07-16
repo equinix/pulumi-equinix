@@ -313,39 +313,29 @@ class DeviceLink(pulumi.CustomResource):
         import pulumi
         import pulumi_equinix as equinix
 
-        config = pulumi.Config()
-        account_name = config.require("accountName")
-        account_metro = config.require("accountMetro")
-        device1_id = config.require("device1Id")
-        device2_id = config.require("device2Id")
-        accountf_num = equinix.networkedge.get_account(name=account_name,
-            metro_code=account_metro).number
-        device1_metro = equinix.networkedge.get_device(uuid=device1_id).metro_code
-        device2_metro = equinix.networkedge.get_device(uuid=device2_id).metro_code
-        device_link = equinix.networkedge.DeviceLink("deviceLink",
+        test = equinix.networkedge.DeviceLink("test",
             name="test-link",
             subnet="192.168.40.64/27",
+            project_id="a86d7112-d740-4758-9c9c-31e66373746b",
             devices=[
                 equinix.networkedge.DeviceLinkDeviceArgs(
-                    id="device1Id",
+                    id=test_equinix_network_device["uuid"],
                     asn=22111,
                     interface_id=6,
                 ),
                 equinix.networkedge.DeviceLinkDeviceArgs(
-                    id="device2Id",
+                    id=test_equinix_network_device["secondaryDevice"][0]["uuid"],
                     asn=22333,
                     interface_id=7,
                 ),
             ],
             links=[equinix.networkedge.DeviceLinkLinkArgs(
-                account_number=accountf_num,
-                src_metro_code=device1_metro,
-                dst_metro_code=device2_metro,
+                account_number=test_equinix_network_device["accountNumber"],
+                src_metro_code=test_equinix_network_device["metroCode"],
+                dst_metro_code=test_equinix_network_device["secondaryDevice"][0]["metroCode"],
                 throughput="50",
                 throughput_unit="Mbps",
             )])
-        pulumi.export("status", device_link.status)
-        pulumi.export("devices", device_link.devices)
         ```
 
         ## Import
@@ -380,39 +370,29 @@ class DeviceLink(pulumi.CustomResource):
         import pulumi
         import pulumi_equinix as equinix
 
-        config = pulumi.Config()
-        account_name = config.require("accountName")
-        account_metro = config.require("accountMetro")
-        device1_id = config.require("device1Id")
-        device2_id = config.require("device2Id")
-        accountf_num = equinix.networkedge.get_account(name=account_name,
-            metro_code=account_metro).number
-        device1_metro = equinix.networkedge.get_device(uuid=device1_id).metro_code
-        device2_metro = equinix.networkedge.get_device(uuid=device2_id).metro_code
-        device_link = equinix.networkedge.DeviceLink("deviceLink",
+        test = equinix.networkedge.DeviceLink("test",
             name="test-link",
             subnet="192.168.40.64/27",
+            project_id="a86d7112-d740-4758-9c9c-31e66373746b",
             devices=[
                 equinix.networkedge.DeviceLinkDeviceArgs(
-                    id="device1Id",
+                    id=test_equinix_network_device["uuid"],
                     asn=22111,
                     interface_id=6,
                 ),
                 equinix.networkedge.DeviceLinkDeviceArgs(
-                    id="device2Id",
+                    id=test_equinix_network_device["secondaryDevice"][0]["uuid"],
                     asn=22333,
                     interface_id=7,
                 ),
             ],
             links=[equinix.networkedge.DeviceLinkLinkArgs(
-                account_number=accountf_num,
-                src_metro_code=device1_metro,
-                dst_metro_code=device2_metro,
+                account_number=test_equinix_network_device["accountNumber"],
+                src_metro_code=test_equinix_network_device["metroCode"],
+                dst_metro_code=test_equinix_network_device["secondaryDevice"][0]["metroCode"],
                 throughput="50",
                 throughput_unit="Mbps",
             )])
-        pulumi.export("status", device_link.status)
-        pulumi.export("devices", device_link.devices)
         ```
 
         ## Import

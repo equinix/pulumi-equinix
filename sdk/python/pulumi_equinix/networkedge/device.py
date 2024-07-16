@@ -1310,60 +1310,315 @@ class Device(pulumi.CustomResource):
         * **BYOL** - [bring your own license] Where customer brings his own, already procured device software license. There are no charges associated with such license. It is the only licensing mode for `self-configured` devices.
 
         ## Example Usage
+        ### example 8
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+        import pulumi_std as std
+
+        sv = equinix.networkedge.get_account_output(name="account-name",
+            metro_code="SV")
+        bluecat_edge_service_point_cloudinit_primary_file = equinix.networkedge.NetworkFile("bluecatEdgeServicePointCloudinitPrimaryFile",
+            file_name="TF-BLUECAT-ESP-cloud-init-file.txt",
+            content=std.file_output(input=filepath).apply(lambda invoke: invoke.result),
+            metro_code=sv.metro_code.apply(lambda x: equinix.Metro(x)),
+            device_type_code="BLUECAT-EDGE-SERVICE-POINT",
+            process_type=equinix.networkedge.FileType.CLOUD_INIT,
+            self_managed=True,
+            byol=True)
+        bluecat_edge_service_point_cloudinit_secondary_file = equinix.networkedge.NetworkFile("bluecatEdgeServicePointCloudinitSecondaryFile",
+            file_name="TF-BLUECAT-ESP-cloud-init-file.txt",
+            content=std.file_output(input=filepath).apply(lambda invoke: invoke.result),
+            metro_code=sv.metro_code.apply(lambda x: equinix.Metro(x)),
+            device_type_code="BLUECAT-EDGE-SERVICE-POINT",
+            process_type=equinix.networkedge.FileType.CLOUD_INIT,
+            self_managed=True,
+            byol=True)
+        bluecat_edge_service_point_ha = equinix.networkedge.Device("bluecatEdgeServicePointHa",
+            name="tf-bluecat-edge-service-point-p",
+            metro_code=sv.metro_code,
+            type_code="BLUECAT-EDGE-SERVICE-POINT",
+            self_managed=True,
+            connectivity="PRIVATE",
+            byol=True,
+            package_code="STD",
+            notifications=["test@equinix.com"],
+            account_number=sv.number,
+            cloud_init_file_id=bluecat_edge_service_point_cloudinit_primary_file.uuid,
+            version="4.6.3",
+            core_count=4,
+            term_length=12,
+            secondary_device=equinix.networkedge.DeviceSecondaryDeviceArgs(
+                name="tf-bluecat-edge-service-point-s",
+                metro_code=sv.metro_code,
+                notifications=["test@eq.com"],
+                account_number=sv.number,
+                cloud_init_file_id=bluecat_edge_service_point_cloudinit_secondary_file.uuid,
+            ))
+        ```
+        ### example 1
         ```python
         import pulumi
         import pulumi_equinix as equinix
 
-        config = pulumi.Config()
-        account_name = config.require("accountName")
-        license_token = config.require("licenseToken")
-        ssh_user_name = config.require("sshUserName")
-        ssh_key_name = config.require("sshKeyName")
-        acl_template_id = config.require("aclTemplateId")
-        metro = config.get("metro")
-        if metro is None:
-            metro = "SV"
-        device_package_code = config.get("devicePackageCode")
-        if device_package_code is None:
-            device_package_code = "network-essentials"
-        device_version = config.get("deviceVersion")
-        if device_version is None:
-            device_version = "17.06.01a"
-        size_in_cores = config.get_int("sizeInCores")
-        if size_in_cores is None:
-            size_in_cores = 2
-        term_length = config.get_int("termLength")
-        if term_length is None:
-            term_length = 6
-        additional_bandwidth = config.get_int("additionalBandwidth")
-        if additional_bandwidth is None:
-            additional_bandwidth = 5
-        account_num = equinix.networkedge.get_account(name=account_name,
-            metro_code=metro).number
-        c8_k_router = equinix.networkedge.Device("c8kRouter",
-            name="catalystRouter",
-            metro_code=metro,
+        dc = equinix.networkedge.get_account_output(metro_code="DC")
+        sv = equinix.networkedge.get_account_output(metro_code="SV")
+        csr1000_v_ha = equinix.networkedge.Device("csr1000vHa",
+            name="tf-csr1000v-p",
+            throughput=500,
+            throughput_unit=equinix.networkedge.ThroughputUnit.MBPS,
+            metro_code=dc.metro_code,
+            type_code="CSR1000V",
+            self_managed=False,
+            connectivity="INTERNET-ACCESS",
+            byol=False,
+            package_code="SEC",
+            notifications=[
+                "john@equinix.com",
+                "marry@equinix.com",
+                "fred@equinix.com",
+            ],
+            hostname="csr1000v-p",
+            term_length=12,
+            account_number=dc.number,
+            version="16.09.05",
+            core_count=2,
+            secondary_device=equinix.networkedge.DeviceSecondaryDeviceArgs(
+                name="tf-csr1000v-s",
+                metro_code=sv.metro_code,
+                hostname="csr1000v-s",
+                notifications=[
+                    "john@equinix.com",
+                    "marry@equinix.com",
+                ],
+                account_number=sv.number,
+            ))
+        ```
+        ### example 4
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(name="account-name",
+            metro_code="SV")
+        c8_kv_single = equinix.networkedge.Device("c8kvSingle",
+            name="tf-c8kv",
+            metro_code=sv.metro_code,
             type_code="C8000V",
             self_managed=True,
             byol=True,
-            package_code=device_package_code,
-            notifications=["example@equinix.com"],
+            package_code="network-essentials",
+            notifications=["test@equinix.com"],
             hostname="C8KV",
-            account_number=account_num,
-            version=device_version,
-            core_count=size_in_cores,
-            term_length=term_length,
-            license_token=license_token,
-            additional_bandwidth=additional_bandwidth,
+            account_number=sv.number,
+            version="17.06.01a",
+            core_count=2,
+            term_length=12,
+            license_token="valid-license-token",
+            additional_bandwidth=5,
             ssh_key=equinix.networkedge.DeviceSshKeyArgs(
-                username=ssh_user_name,
-                key_name=ssh_key_name,
+                username="test-username",
+                key_name="valid-key-name",
             ),
-            acl_template_id=acl_template_id)
-        pulumi.export("routerId", c8_k_router.id)
-        pulumi.export("provisionStatus", c8_k_router.status)
-        pulumi.export("licenseStatus", c8_k_router.license_status)
-        pulumi.export("sshIpAddress", c8_k_router.ssh_ip_address)
+            acl_template_id="3e548c02-9164-4197-aa23-05b1f644883c")
+        ```
+        ### example 7
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(name="account-name",
+            metro_code="SV")
+        test_public_key = equinix.networkedge.SshKey("testPublicKey",
+            name="key-name",
+            public_key="ssh-dss key-value",
+            type="DSA")
+        bluecat_bdds_ha = equinix.networkedge.Device("bluecatBddsHa",
+            name="tf-bluecat-bdds-p",
+            metro_code=sv.metro_code,
+            type_code="BLUECAT",
+            self_managed=True,
+            connectivity="PRIVATE",
+            byol=True,
+            package_code="STD",
+            notifications=["test@equinix.com"],
+            account_number=sv.number,
+            version="9.6.0",
+            core_count=2,
+            term_length=12,
+            vendor_configuration={
+                "hostname": "test",
+                "privateAddress": "x.x.x.x",
+                "privateCidrMask": "24",
+                "privateGateway": "x.x.x.x",
+                "licenseKey": "xxxxx-xxxxx-xxxxx-xxxxx-xxxxx",
+                "licenseId": "xxxxxxxxxxxxxxx",
+            },
+            ssh_key=equinix.networkedge.DeviceSshKeyArgs(
+                username="test-username",
+                key_name=test_public_key.name,
+            ),
+            secondary_device=equinix.networkedge.DeviceSecondaryDeviceArgs(
+                name="tf-bluecat-bdds-s",
+                metro_code=sv.metro_code,
+                notifications=["test@eq.com"],
+                account_number=sv.number,
+                vendor_configuration={
+                    "hostname": "test",
+                    "privateAddress": "x.x.x.x",
+                    "privateCidrMask": "24",
+                    "privateGateway": "x.x.x.x",
+                    "licenseKey": "xxxxx-xxxxx-xxxxx-xxxxx-xxxxx",
+                    "licenseId": "xxxxxxxxxxxxxxx",
+                },
+            ))
+        ```
+        ### example 2
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(metro_code="SV")
+        panw_cluster = equinix.networkedge.Device("panwCluster",
+            name="tf-panw",
+            metro_code=sv.metro_code,
+            type_code="PA-VM",
+            self_managed=True,
+            byol=True,
+            package_code="VM100",
+            notifications=[
+                "john@equinix.com",
+                "marry@equinix.com",
+                "fred@equinix.com",
+            ],
+            term_length=12,
+            account_number=sv.number,
+            version="10.1.3",
+            interface_count=10,
+            core_count=2,
+            ssh_key=equinix.networkedge.DeviceSshKeyArgs(
+                username="test",
+                key_name="test-key",
+            ),
+            acl_template_id="0bff6e05-f0e7-44cd-804a-25b92b835f8b",
+            cluster_details=equinix.networkedge.DeviceClusterDetailsArgs(
+                cluster_name="tf-panw-cluster",
+                node0=equinix.networkedge.DeviceClusterDetailsNode0Args(
+                    vendor_configuration=equinix.networkedge.DeviceClusterDetailsNode0VendorConfigurationArgs(
+                        hostname="panw-node0",
+                    ),
+                    license_token="licenseToken",
+                ),
+                node1=equinix.networkedge.DeviceClusterDetailsNode1Args(
+                    vendor_configuration=equinix.networkedge.DeviceClusterDetailsNode1VendorConfigurationArgs(
+                        hostname="panw-node1",
+                    ),
+                    license_token="licenseToken",
+                ),
+            ))
+        ```
+        ### example 5
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(name="account-name",
+            metro_code="SV")
+        vsrx_single = equinix.networkedge.Device("vsrxSingle",
+            name="tf-c8kv-sdwan",
+            metro_code=sv.metro_code,
+            type_code="VSRX",
+            self_managed=True,
+            byol=True,
+            package_code="STD",
+            notifications=["test@equinix.com"],
+            hostname="VSRX",
+            account_number=sv.number,
+            version="23.2R1.13",
+            core_count=2,
+            term_length=12,
+            additional_bandwidth=5,
+            project_id="a86d7112-d740-4758-9c9c-31e66373746b",
+            diverse_device_id="ed7891bd-15b4-4f72-ac56-d96cfdacddcc",
+            ssh_key=equinix.networkedge.DeviceSshKeyArgs(
+                username="test-username",
+                key_name="valid-key-name",
+            ),
+            acl_template_id="3e548c02-9164-4197-aa23-05b1f644883c")
+        ```
+        ### example 3
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        filepath = config.get("filepath")
+        if filepath is None:
+            filepath = "cloudInitFileFolder/TF-AVX-cloud-init-file.txt"
+        sv = equinix.networkedge.get_account_output(metro_code="SV")
+        aviatrix_cloudinit_file = equinix.networkedge.NetworkFile("aviatrixCloudinitFile",
+            file_name="TF-AVX-cloud-init-file.txt",
+            content=std.file_output(input=filepath).apply(lambda invoke: invoke.result),
+            metro_code=sv.metro_code.apply(lambda x: equinix.Metro(x)),
+            device_type_code="AVIATRIX_EDGE",
+            process_type=equinix.networkedge.FileType.CLOUD_INIT,
+            self_managed=True,
+            byol=True)
+        aviatrix_single = equinix.networkedge.Device("aviatrixSingle",
+            name="tf-aviatrix",
+            metro_code=sv.metro_code,
+            type_code="AVIATRIX_EDGE",
+            self_managed=True,
+            byol=True,
+            package_code="STD",
+            notifications=["john@equinix.com"],
+            term_length=12,
+            account_number=sv.number,
+            version="6.9",
+            core_count=2,
+            cloud_init_file_id=aviatrix_cloudinit_file.uuid,
+            acl_template_id="c06150ea-b604-4ad1-832a-d63936e9b938")
+        ```
+        ### example 6
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(name="account-name",
+            metro_code="SV")
+        test_public_key = equinix.networkedge.SshKey("testPublicKey",
+            name="key-name",
+            public_key="ssh-dss key-value",
+            type="DSA")
+        arista_ha = equinix.networkedge.Device("aristaHa",
+            name="tf-arista-p",
+            metro_code=sv.metro_code,
+            type_code="ARISTA-ROUTER",
+            self_managed=True,
+            connectivity="PRIVATE",
+            byol=True,
+            package_code="CloudEOS",
+            notifications=["test@equinix.com"],
+            hostname="arista-p",
+            account_number=sv.number,
+            version="4.29.0",
+            core_count=4,
+            term_length=12,
+            additional_bandwidth=5,
+            ssh_key=equinix.networkedge.DeviceSshKeyArgs(
+                username="test-username",
+                key_name=test_public_key.name,
+            ),
+            acl_template_id="c637a17b-7a6a-4486-924b-30e6c36904b0",
+            secondary_device=equinix.networkedge.DeviceSecondaryDeviceArgs(
+                name="tf-arista-s",
+                metro_code=sv.metro_code,
+                hostname="arista-s",
+                notifications=["test@eq.com"],
+                account_number=sv.number,
+                acl_template_id="fee5e2c0-6198-4ce6-9cbd-bbe6c1dbe138",
+            ))
         ```
 
         ## Import
@@ -1432,60 +1687,315 @@ class Device(pulumi.CustomResource):
         * **BYOL** - [bring your own license] Where customer brings his own, already procured device software license. There are no charges associated with such license. It is the only licensing mode for `self-configured` devices.
 
         ## Example Usage
+        ### example 8
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+        import pulumi_std as std
+
+        sv = equinix.networkedge.get_account_output(name="account-name",
+            metro_code="SV")
+        bluecat_edge_service_point_cloudinit_primary_file = equinix.networkedge.NetworkFile("bluecatEdgeServicePointCloudinitPrimaryFile",
+            file_name="TF-BLUECAT-ESP-cloud-init-file.txt",
+            content=std.file_output(input=filepath).apply(lambda invoke: invoke.result),
+            metro_code=sv.metro_code.apply(lambda x: equinix.Metro(x)),
+            device_type_code="BLUECAT-EDGE-SERVICE-POINT",
+            process_type=equinix.networkedge.FileType.CLOUD_INIT,
+            self_managed=True,
+            byol=True)
+        bluecat_edge_service_point_cloudinit_secondary_file = equinix.networkedge.NetworkFile("bluecatEdgeServicePointCloudinitSecondaryFile",
+            file_name="TF-BLUECAT-ESP-cloud-init-file.txt",
+            content=std.file_output(input=filepath).apply(lambda invoke: invoke.result),
+            metro_code=sv.metro_code.apply(lambda x: equinix.Metro(x)),
+            device_type_code="BLUECAT-EDGE-SERVICE-POINT",
+            process_type=equinix.networkedge.FileType.CLOUD_INIT,
+            self_managed=True,
+            byol=True)
+        bluecat_edge_service_point_ha = equinix.networkedge.Device("bluecatEdgeServicePointHa",
+            name="tf-bluecat-edge-service-point-p",
+            metro_code=sv.metro_code,
+            type_code="BLUECAT-EDGE-SERVICE-POINT",
+            self_managed=True,
+            connectivity="PRIVATE",
+            byol=True,
+            package_code="STD",
+            notifications=["test@equinix.com"],
+            account_number=sv.number,
+            cloud_init_file_id=bluecat_edge_service_point_cloudinit_primary_file.uuid,
+            version="4.6.3",
+            core_count=4,
+            term_length=12,
+            secondary_device=equinix.networkedge.DeviceSecondaryDeviceArgs(
+                name="tf-bluecat-edge-service-point-s",
+                metro_code=sv.metro_code,
+                notifications=["test@eq.com"],
+                account_number=sv.number,
+                cloud_init_file_id=bluecat_edge_service_point_cloudinit_secondary_file.uuid,
+            ))
+        ```
+        ### example 1
         ```python
         import pulumi
         import pulumi_equinix as equinix
 
-        config = pulumi.Config()
-        account_name = config.require("accountName")
-        license_token = config.require("licenseToken")
-        ssh_user_name = config.require("sshUserName")
-        ssh_key_name = config.require("sshKeyName")
-        acl_template_id = config.require("aclTemplateId")
-        metro = config.get("metro")
-        if metro is None:
-            metro = "SV"
-        device_package_code = config.get("devicePackageCode")
-        if device_package_code is None:
-            device_package_code = "network-essentials"
-        device_version = config.get("deviceVersion")
-        if device_version is None:
-            device_version = "17.06.01a"
-        size_in_cores = config.get_int("sizeInCores")
-        if size_in_cores is None:
-            size_in_cores = 2
-        term_length = config.get_int("termLength")
-        if term_length is None:
-            term_length = 6
-        additional_bandwidth = config.get_int("additionalBandwidth")
-        if additional_bandwidth is None:
-            additional_bandwidth = 5
-        account_num = equinix.networkedge.get_account(name=account_name,
-            metro_code=metro).number
-        c8_k_router = equinix.networkedge.Device("c8kRouter",
-            name="catalystRouter",
-            metro_code=metro,
+        dc = equinix.networkedge.get_account_output(metro_code="DC")
+        sv = equinix.networkedge.get_account_output(metro_code="SV")
+        csr1000_v_ha = equinix.networkedge.Device("csr1000vHa",
+            name="tf-csr1000v-p",
+            throughput=500,
+            throughput_unit=equinix.networkedge.ThroughputUnit.MBPS,
+            metro_code=dc.metro_code,
+            type_code="CSR1000V",
+            self_managed=False,
+            connectivity="INTERNET-ACCESS",
+            byol=False,
+            package_code="SEC",
+            notifications=[
+                "john@equinix.com",
+                "marry@equinix.com",
+                "fred@equinix.com",
+            ],
+            hostname="csr1000v-p",
+            term_length=12,
+            account_number=dc.number,
+            version="16.09.05",
+            core_count=2,
+            secondary_device=equinix.networkedge.DeviceSecondaryDeviceArgs(
+                name="tf-csr1000v-s",
+                metro_code=sv.metro_code,
+                hostname="csr1000v-s",
+                notifications=[
+                    "john@equinix.com",
+                    "marry@equinix.com",
+                ],
+                account_number=sv.number,
+            ))
+        ```
+        ### example 4
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(name="account-name",
+            metro_code="SV")
+        c8_kv_single = equinix.networkedge.Device("c8kvSingle",
+            name="tf-c8kv",
+            metro_code=sv.metro_code,
             type_code="C8000V",
             self_managed=True,
             byol=True,
-            package_code=device_package_code,
-            notifications=["example@equinix.com"],
+            package_code="network-essentials",
+            notifications=["test@equinix.com"],
             hostname="C8KV",
-            account_number=account_num,
-            version=device_version,
-            core_count=size_in_cores,
-            term_length=term_length,
-            license_token=license_token,
-            additional_bandwidth=additional_bandwidth,
+            account_number=sv.number,
+            version="17.06.01a",
+            core_count=2,
+            term_length=12,
+            license_token="valid-license-token",
+            additional_bandwidth=5,
             ssh_key=equinix.networkedge.DeviceSshKeyArgs(
-                username=ssh_user_name,
-                key_name=ssh_key_name,
+                username="test-username",
+                key_name="valid-key-name",
             ),
-            acl_template_id=acl_template_id)
-        pulumi.export("routerId", c8_k_router.id)
-        pulumi.export("provisionStatus", c8_k_router.status)
-        pulumi.export("licenseStatus", c8_k_router.license_status)
-        pulumi.export("sshIpAddress", c8_k_router.ssh_ip_address)
+            acl_template_id="3e548c02-9164-4197-aa23-05b1f644883c")
+        ```
+        ### example 7
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(name="account-name",
+            metro_code="SV")
+        test_public_key = equinix.networkedge.SshKey("testPublicKey",
+            name="key-name",
+            public_key="ssh-dss key-value",
+            type="DSA")
+        bluecat_bdds_ha = equinix.networkedge.Device("bluecatBddsHa",
+            name="tf-bluecat-bdds-p",
+            metro_code=sv.metro_code,
+            type_code="BLUECAT",
+            self_managed=True,
+            connectivity="PRIVATE",
+            byol=True,
+            package_code="STD",
+            notifications=["test@equinix.com"],
+            account_number=sv.number,
+            version="9.6.0",
+            core_count=2,
+            term_length=12,
+            vendor_configuration={
+                "hostname": "test",
+                "privateAddress": "x.x.x.x",
+                "privateCidrMask": "24",
+                "privateGateway": "x.x.x.x",
+                "licenseKey": "xxxxx-xxxxx-xxxxx-xxxxx-xxxxx",
+                "licenseId": "xxxxxxxxxxxxxxx",
+            },
+            ssh_key=equinix.networkedge.DeviceSshKeyArgs(
+                username="test-username",
+                key_name=test_public_key.name,
+            ),
+            secondary_device=equinix.networkedge.DeviceSecondaryDeviceArgs(
+                name="tf-bluecat-bdds-s",
+                metro_code=sv.metro_code,
+                notifications=["test@eq.com"],
+                account_number=sv.number,
+                vendor_configuration={
+                    "hostname": "test",
+                    "privateAddress": "x.x.x.x",
+                    "privateCidrMask": "24",
+                    "privateGateway": "x.x.x.x",
+                    "licenseKey": "xxxxx-xxxxx-xxxxx-xxxxx-xxxxx",
+                    "licenseId": "xxxxxxxxxxxxxxx",
+                },
+            ))
+        ```
+        ### example 2
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(metro_code="SV")
+        panw_cluster = equinix.networkedge.Device("panwCluster",
+            name="tf-panw",
+            metro_code=sv.metro_code,
+            type_code="PA-VM",
+            self_managed=True,
+            byol=True,
+            package_code="VM100",
+            notifications=[
+                "john@equinix.com",
+                "marry@equinix.com",
+                "fred@equinix.com",
+            ],
+            term_length=12,
+            account_number=sv.number,
+            version="10.1.3",
+            interface_count=10,
+            core_count=2,
+            ssh_key=equinix.networkedge.DeviceSshKeyArgs(
+                username="test",
+                key_name="test-key",
+            ),
+            acl_template_id="0bff6e05-f0e7-44cd-804a-25b92b835f8b",
+            cluster_details=equinix.networkedge.DeviceClusterDetailsArgs(
+                cluster_name="tf-panw-cluster",
+                node0=equinix.networkedge.DeviceClusterDetailsNode0Args(
+                    vendor_configuration=equinix.networkedge.DeviceClusterDetailsNode0VendorConfigurationArgs(
+                        hostname="panw-node0",
+                    ),
+                    license_token="licenseToken",
+                ),
+                node1=equinix.networkedge.DeviceClusterDetailsNode1Args(
+                    vendor_configuration=equinix.networkedge.DeviceClusterDetailsNode1VendorConfigurationArgs(
+                        hostname="panw-node1",
+                    ),
+                    license_token="licenseToken",
+                ),
+            ))
+        ```
+        ### example 5
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(name="account-name",
+            metro_code="SV")
+        vsrx_single = equinix.networkedge.Device("vsrxSingle",
+            name="tf-c8kv-sdwan",
+            metro_code=sv.metro_code,
+            type_code="VSRX",
+            self_managed=True,
+            byol=True,
+            package_code="STD",
+            notifications=["test@equinix.com"],
+            hostname="VSRX",
+            account_number=sv.number,
+            version="23.2R1.13",
+            core_count=2,
+            term_length=12,
+            additional_bandwidth=5,
+            project_id="a86d7112-d740-4758-9c9c-31e66373746b",
+            diverse_device_id="ed7891bd-15b4-4f72-ac56-d96cfdacddcc",
+            ssh_key=equinix.networkedge.DeviceSshKeyArgs(
+                username="test-username",
+                key_name="valid-key-name",
+            ),
+            acl_template_id="3e548c02-9164-4197-aa23-05b1f644883c")
+        ```
+        ### example 3
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        filepath = config.get("filepath")
+        if filepath is None:
+            filepath = "cloudInitFileFolder/TF-AVX-cloud-init-file.txt"
+        sv = equinix.networkedge.get_account_output(metro_code="SV")
+        aviatrix_cloudinit_file = equinix.networkedge.NetworkFile("aviatrixCloudinitFile",
+            file_name="TF-AVX-cloud-init-file.txt",
+            content=std.file_output(input=filepath).apply(lambda invoke: invoke.result),
+            metro_code=sv.metro_code.apply(lambda x: equinix.Metro(x)),
+            device_type_code="AVIATRIX_EDGE",
+            process_type=equinix.networkedge.FileType.CLOUD_INIT,
+            self_managed=True,
+            byol=True)
+        aviatrix_single = equinix.networkedge.Device("aviatrixSingle",
+            name="tf-aviatrix",
+            metro_code=sv.metro_code,
+            type_code="AVIATRIX_EDGE",
+            self_managed=True,
+            byol=True,
+            package_code="STD",
+            notifications=["john@equinix.com"],
+            term_length=12,
+            account_number=sv.number,
+            version="6.9",
+            core_count=2,
+            cloud_init_file_id=aviatrix_cloudinit_file.uuid,
+            acl_template_id="c06150ea-b604-4ad1-832a-d63936e9b938")
+        ```
+        ### example 6
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(name="account-name",
+            metro_code="SV")
+        test_public_key = equinix.networkedge.SshKey("testPublicKey",
+            name="key-name",
+            public_key="ssh-dss key-value",
+            type="DSA")
+        arista_ha = equinix.networkedge.Device("aristaHa",
+            name="tf-arista-p",
+            metro_code=sv.metro_code,
+            type_code="ARISTA-ROUTER",
+            self_managed=True,
+            connectivity="PRIVATE",
+            byol=True,
+            package_code="CloudEOS",
+            notifications=["test@equinix.com"],
+            hostname="arista-p",
+            account_number=sv.number,
+            version="4.29.0",
+            core_count=4,
+            term_length=12,
+            additional_bandwidth=5,
+            ssh_key=equinix.networkedge.DeviceSshKeyArgs(
+                username="test-username",
+                key_name=test_public_key.name,
+            ),
+            acl_template_id="c637a17b-7a6a-4486-924b-30e6c36904b0",
+            secondary_device=equinix.networkedge.DeviceSecondaryDeviceArgs(
+                name="tf-arista-s",
+                metro_code=sv.metro_code,
+                hostname="arista-s",
+                notifications=["test@eq.com"],
+                account_number=sv.number,
+                acl_template_id="fee5e2c0-6198-4ce6-9cbd-bbe6c1dbe138",
+            ))
         ```
 
         ## Import

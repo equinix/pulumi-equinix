@@ -8,12 +8,11 @@ import * as utilities from "../utilities";
  * Resource `equinix.networkedge.Bgp` allows creation and management of Equinix Network Edge BGP peering configurations.
  *
  * ## Example Usage
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
  *
- * const bgp = new equinix.networkedge.Bgp("bgp", {
+ * const test = new equinix.networkedge.Bgp("test", {
  *     connectionId: "54014acf-9730-4b55-a791-459283d05fb1",
  *     localIpAddress: "10.1.1.1/30",
  *     localAsn: 12345,
@@ -21,8 +20,6 @@ import * as utilities from "../utilities";
  *     remoteAsn: 66123,
  *     authenticationKey: "secret",
  * });
- * export const state = bgp.state;
- * export const provisioningStatus = bgp.provisioningStatus;
  * ```
  *
  * ## Import

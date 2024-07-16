@@ -1,0 +1,74 @@
+name: equinix-fabric-connection-example_11
+runtime: yaml
+resources:
+  vd2azurePrimary:
+    type: equinix:fabric:Connection
+    name: vd2azure_primary
+    properties:
+      name: ConnectionName
+      type: EVPL_VC
+      redundancy:
+        priority: PRIMARY
+      notifications:
+        - type: ALL
+          emails:
+            - example@equinix.com
+            - test1@equinix.com
+      bandwidth: 50
+      order:
+        purchaseOrderNumber: 1-323292
+      aSide:
+        accessPoint:
+          type: VD
+          virtualDevice:
+            type: EDGE
+            uuid: <device_uuid>
+          interface:
+            type: CLOUD
+            id: 7
+      zSide:
+        accessPoint:
+          type: SP
+          authenticationKey: <Azure_ExpressRouter_Auth_Key>
+          peeringType: PRIVATE
+          profile:
+            type: L2_PROFILE
+            uuid: <Azure_Service_Profile_UUID>
+          location:
+            metroCode: SV
+  vd2azureSecondary:
+    type: equinix:fabric:Connection
+    name: vd2azure_secondary
+    properties:
+      name: ConnectionName
+      type: EVPL_VC
+      redundancy:
+        priority: SECONDARY
+        group: ${vd2azurePrimary.redundancy.group}
+      notifications:
+        - type: ALL
+          emails:
+            - example@equinix.com
+            - test1@equinix.com
+      bandwidth: 50
+      order:
+        purchaseOrderNumber: 1-323292
+      aSide:
+        accessPoint:
+          type: VD
+          virtualDevice:
+            type: EDGE
+            uuid: <device_uuid>
+          interface:
+            type: CLOUD
+            id: 5
+      zSide:
+        accessPoint:
+          type: SP
+          authenticationKey: <Azure_ExpressRouter_Auth_Key>
+          peeringType: PRIVATE
+          profile:
+            type: L2_PROFILE
+            uuid: <Azure_Service_Profile_UUID>
+          location:
+            metroCode: SV

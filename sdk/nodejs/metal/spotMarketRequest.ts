@@ -11,18 +11,14 @@ import * as utilities from "../utilities";
  * Provides an Equinix Metal Spot Market Request resource to allow you to manage spot market requests on your account. For more detail on Spot Market, see [this article in Equinix Metal documentation](https://metal.equinix.com/developers/docs/deploy/spot-market/).
  *
  * ## Example Usage
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
  *
- * const config = new pulumi.Config();
- * const projectId = config.require("projectId");
- * const metro = config.get("metro") || "FR";
- * const request = new equinix.metal.SpotMarketRequest("request", {
+ * const req = new equinix.metal.SpotMarketRequest("req", {
  *     projectId: projectId,
- *     metro: metro,
- *     maxBidPrice: 0.75,
+ *     maxBidPrice: 0.03,
+ *     metro: "ny",
  *     devicesMin: 1,
  *     devicesMax: 1,
  *     instanceParameters: {
@@ -32,7 +28,6 @@ import * as utilities from "../utilities";
  *         plan: "c3.small.x86",
  *     },
  * });
- * export const requestId = request.id;
  * ```
  *
  * ## Import

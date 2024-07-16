@@ -1,38 +1,27 @@
 ## Example Usage
-{{% example %}}
 
+{{% example %}}
+### example 2
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
 
-const config = new pulumi.Config();
-const organizationId = config.require("organizationId");
-const projectId = config.require("projectId");
-const userEmailAddress = config.require("userEmailAddress");
-const member = new equinix.metal.OrganizationMember("member", {
-    invitee: userEmailAddress,
-    roles: ["limited_collaborator"],
-    projectsIds: [projectId],
+const owner = new equinix.metal.OrganizationMember("owner", {
+    invitee: "admin@example.com",
+    roles: ["owner"],
+    projectsIds: [],
     organizationId: organizationId,
 });
-export const memberId = member.id;
-export const memberState = member.state;
 ```
 ```python
 import pulumi
 import pulumi_equinix as equinix
 
-config = pulumi.Config()
-organization_id = config.require("organizationId")
-project_id = config.require("projectId")
-user_email_address = config.require("userEmailAddress")
-member = equinix.metal.OrganizationMember("member",
-    invitee=user_email_address,
-    roles=["limited_collaborator"],
-    projects_ids=[project_id],
+owner = equinix.metal.OrganizationMember("owner",
+    invitee="admin@example.com",
+    roles=["owner"],
+    projects_ids=[],
     organization_id=organization_id)
-pulumi.export("memberId", member.id)
-pulumi.export("memberState", member.state)
 ```
 ```go
 package main
@@ -40,48 +29,150 @@ package main
 import (
 	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
 
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
-		cfg := config.New(ctx, "")
-		organizationId := cfg.Require("organizationId")
-		projectId := cfg.Require("projectId")
-		userEmailAddress := cfg.Require("userEmailAddress")
-		member, err := metal.NewOrganizationMember(ctx, "member", &metal.OrganizationMemberArgs{
-			Invitee: pulumi.String(userEmailAddress),
+		_, err := metal.NewOrganizationMember(ctx, "owner", &metal.OrganizationMemberArgs{
+			Invitee: pulumi.String("admin@example.com"),
 			Roles: pulumi.StringArray{
-				pulumi.String("limited_collaborator"),
+				pulumi.String("owner"),
 			},
-			ProjectsIds: pulumi.StringArray{
-				pulumi.String(projectId),
-			},
-			OrganizationId: pulumi.String(organizationId),
+			ProjectsIds:    pulumi.StringArray{},
+			OrganizationId: pulumi.Any(organizationId),
 		})
 		if err != nil {
 			return err
 		}
-		ctx.Export("memberId", member.ID())
-		ctx.Export("memberState", member.State)
 		return nil
 	})
 }
 ```
 ```csharp
 using System.Collections.Generic;
+using System.Linq;
 using Pulumi;
 using Equinix = Pulumi.Equinix;
 
 return await Deployment.RunAsync(() => 
 {
-    var config = new Config();
-    var organizationId = config.Require("organizationId");
-    var projectId = config.Require("projectId");
-    var userEmailAddress = config.Require("userEmailAddress");
+    var owner = new Equinix.Metal.OrganizationMember("owner", new()
+    {
+        Invitee = "admin@example.com",
+        Roles = new[]
+        {
+            "owner",
+        },
+        ProjectsIds = new[] {},
+        OrganizationId = organizationId,
+    });
+
+});
+```
+```java
+package generated_program;
+
+import com.pulumi.Context;
+import com.pulumi.Pulumi;
+import com.pulumi.core.Output;
+import com.pulumi.equinix.metal.OrganizationMember;
+import com.pulumi.equinix.metal.OrganizationMemberArgs;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+public class App {
+    public static void main(String[] args) {
+        Pulumi.run(App::stack);
+    }
+
+    public static void stack(Context ctx) {
+        var owner = new OrganizationMember("owner", OrganizationMemberArgs.builder()
+            .invitee("admin@example.com")
+            .roles("owner")
+            .projectsIds()
+            .organizationId(organizationId)
+            .build());
+
+    }
+}
+```
+```yaml
+  owner:
+    type: equinix:metal:OrganizationMember
+    properties:
+      invitee: admin@example.com
+      roles:
+        - owner
+      projectsIds: []
+      organizationId: ${organizationId}
+```
+{{% /example %}}
+
+{{% example %}}
+### example 1
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as equinix from "@equinix-labs/pulumi-equinix";
+
+const member = new equinix.metal.OrganizationMember("member", {
+    invitee: "member@example.com",
+    roles: ["limited_collaborator"],
+    projectsIds: [projectId],
+    organizationId: organizationId,
+});
+```
+```python
+import pulumi
+import pulumi_equinix as equinix
+
+member = equinix.metal.OrganizationMember("member",
+    invitee="member@example.com",
+    roles=["limited_collaborator"],
+    projects_ids=[project_id],
+    organization_id=organization_id)
+```
+```go
+package main
+
+import (
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+)
+
+func main() {
+	pulumi.Run(func(ctx *pulumi.Context) error {
+		_, err := metal.NewOrganizationMember(ctx, "member", &metal.OrganizationMemberArgs{
+			Invitee: pulumi.String("member@example.com"),
+			Roles: pulumi.StringArray{
+				pulumi.String("limited_collaborator"),
+			},
+			ProjectsIds: pulumi.StringArray{
+				projectId,
+			},
+			OrganizationId: pulumi.Any(organizationId),
+		})
+		if err != nil {
+			return err
+		}
+		return nil
+	})
+}
+```
+```csharp
+using System.Collections.Generic;
+using System.Linq;
+using Pulumi;
+using Equinix = Pulumi.Equinix;
+
+return await Deployment.RunAsync(() => 
+{
     var member = new Equinix.Metal.OrganizationMember("member", new()
     {
-        Invitee = userEmailAddress,
+        Invitee = "member@example.com",
         Roles = new[]
         {
             "limited_collaborator",
@@ -93,11 +184,6 @@ return await Deployment.RunAsync(() =>
         OrganizationId = organizationId,
     });
 
-    return new Dictionary<string, object?>
-    {
-        ["memberId"] = member.Id,
-        ["memberState"] = member.State,
-    };
 });
 ```
 ```java
@@ -105,8 +191,15 @@ package generated_program;
 
 import com.pulumi.Context;
 import com.pulumi.Pulumi;
-import com.equinix.pulumi.metal.OrganizationMember;
-import com.equinix.pulumi.metal.OrganizationMemberArgs;
+import com.pulumi.core.Output;
+import com.pulumi.equinix.metal.OrganizationMember;
+import com.pulumi.equinix.metal.OrganizationMemberArgs;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class App {
     public static void main(String[] args) {
@@ -114,42 +207,27 @@ public class App {
     }
 
     public static void stack(Context ctx) {
-        final var config = ctx.config();
-        final var organizationId = config.get("organizationId").get();
-        final var projectId = config.get("projectId").get();
-        final var userEmailAddress = config.get("userEmailAddress").get();
-        var member = new OrganizationMember("member", OrganizationMemberArgs.builder()        
-            .invitee(userEmailAddress)
+        var member = new OrganizationMember("member", OrganizationMemberArgs.builder()
+            .invitee("member@example.com")
             .roles("limited_collaborator")
             .projectsIds(projectId)
             .organizationId(organizationId)
             .build());
 
-        ctx.export("memberId", member.id());
-        ctx.export("memberState", member.state());
     }
 }
 ```
 ```yaml
-config:
-  organizationId:
-    type: string
-  projectId:
-    type: string
-  userEmailAddress:
-    type: string
-resources:
   member:
     type: equinix:metal:OrganizationMember
     properties:
-      invitee: ${userEmailAddress}
+      invitee: member@example.com
       roles:
-      - limited_collaborator
+        - limited_collaborator
       projectsIds:
-      - ${projectId}
+        - ${projectId}
       organizationId: ${organizationId}
-outputs:
-  memberId: ${member.id}
-  memberState: ${member.state}
 ```
 {{% /example %}}
+
+

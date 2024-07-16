@@ -1,0 +1,58 @@
+name: equinix-network-device-example_7
+runtime: yaml
+resources:
+  testPublicKey:
+    type: equinix:networkedge:SshKey
+    name: test_public_key
+    properties:
+      name: key-name
+      publicKey: ssh-dss key-value
+      type: DSA
+  bluecatBddsHa:
+    type: equinix:networkedge:Device
+    name: bluecat_bdds_ha
+    properties:
+      name: tf-bluecat-bdds-p
+      metroCode: ${sv.metroCode}
+      typeCode: BLUECAT
+      selfManaged: true
+      connectivity: PRIVATE
+      byol: true
+      packageCode: STD
+      notifications:
+        - test@equinix.com
+      accountNumber: ${sv.number}
+      version: 9.6.0
+      coreCount: 2
+      termLength: 12
+      vendorConfiguration:
+        hostname: test
+        privateAddress: x.x.x.x
+        privateCidrMask: '24'
+        privateGateway: x.x.x.x
+        licenseKey: xxxxx-xxxxx-xxxxx-xxxxx-xxxxx
+        licenseId: xxxxxxxxxxxxxxx
+      sshKey:
+        username: test-username
+        keyName: ${testPublicKey.name}
+      secondaryDevice:
+        name: tf-bluecat-bdds-s
+        metroCode: ${sv.metroCode}
+        notifications:
+          - test@eq.com
+        accountNumber: ${sv.number}
+        vendorConfiguration:
+          hostname: test
+          privateAddress: x.x.x.x
+          privateCidrMask: '24'
+          privateGateway: x.x.x.x
+          licenseKey: xxxxx-xxxxx-xxxxx-xxxxx-xxxxx
+          licenseId: xxxxxxxxxxxxxxx
+variables:
+  # Create self configured redundant BlueCat DNS and DHCP Server
+  sv:
+    fn::invoke:
+      Function: equinix:networkedge:getAccount
+      Arguments:
+        name: account-name
+        metroCode: SV

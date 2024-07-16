@@ -9,32 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Equinix.Metal
 {
-    /// <summary>
-    /// ## Example Usage
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using Pulumi;
-    /// using Equinix = Pulumi.Equinix;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var portId = config.Require("portId");
-    ///     var org = new Equinix.Metal.Port("org", new()
-    ///     {
-    ///         PortId = portId,
-    ///         Bonded = true,
-    ///         Layer2 = true,
-    ///     });
-    /// 
-    ///     return new Dictionary&lt;string, object?&gt;
-    ///     {
-    ///         ["portType"] = port.Type,
-    ///         ["portBondedNetworkType"] = port.NetworkType,
-    ///     };
-    /// });
-    /// ```
-    /// </summary>
     [EquinixResourceType("equinix:metal/port:Port")]
     public partial class Port : global::Pulumi.CustomResource
     {

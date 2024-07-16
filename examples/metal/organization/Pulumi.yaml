@@ -1,0 +1,10 @@
+name: equinix-metal-organization
+runtime: yaml
+resources:
+  # Create a new Organization
+  tfOrganization1:
+    type: equinix:metal:Organization
+    name: tf_organization_1
+    properties:
+      name: foobar
+      description: quux

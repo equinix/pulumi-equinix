@@ -22,14 +22,23 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** Keep in mind that Equinix Metal invoicing is per project, so creating many `equinix.metal.Project` resources will affect the rendered invoice. If you want to keep your Equinix Metal bill simple and easy to review, please re-use your existing projects.
  * 
  * ## Example Usage
+ * ### example 3
  * <pre>
  * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
- * import com.equinix.pulumi.metal.Project;
- * import com.equinix.pulumi.metal.ProjectArgs;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.metal.Project;
+ * import com.pulumi.equinix.metal.ProjectArgs;
+ * import com.pulumi.equinix.metal.inputs.ProjectBgpConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -37,15 +46,83 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var organizationId = config.get("organizationId").get();
- *         final var name = config.get("name").orElse("Default Project");
- *         var projectResource = new Project("projectResource", ProjectArgs.builder()        
- *             .name(name)
- *             .organizationId(organizationId)
+ *         var existingProject = new Project("existingProject", ProjectArgs.builder()
+ *             .name("The name of the project (if different, will rewrite)")
+ *             .bgpConfig(ProjectBgpConfigArgs.builder()
+ *                 .deploymentType("local")
+ *                 .md5("C179c28c41a85b")
+ *                 .asn(65000)
+ *                 .build())
  *             .build());
  * 
- *         ctx.export("projectId", projectResource.id());
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### example 2
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.metal.Project;
+ * import com.pulumi.equinix.metal.ProjectArgs;
+ * import com.pulumi.equinix.metal.inputs.ProjectBgpConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var tfProject1 = new Project("tfProject1", ProjectArgs.builder()
+ *             .name("tftest")
+ *             .bgpConfig(ProjectBgpConfigArgs.builder()
+ *                 .deploymentType("local")
+ *                 .md5("C179c28c41a85b")
+ *                 .asn(65000)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### example 1
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.metal.Project;
+ * import com.pulumi.equinix.metal.ProjectArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var tfProject1 = new Project("tfProject1", ProjectArgs.builder()
+ *             .name("Terraform Fun")
+ *             .build());
+ * 
  *     }
  * }
  * }

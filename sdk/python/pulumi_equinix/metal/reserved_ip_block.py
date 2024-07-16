@@ -563,28 +563,51 @@ class ReservedIpBlock(pulumi.CustomResource):
         See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
 
         ## Example Usage
+        ### example 1
         ```python
         import pulumi
         import pulumi_equinix as equinix
 
-        config = pulumi.Config()
-        project_id = config.require("projectId")
-        metro = config.get("metro")
-        if metro is None:
-            metro = "FR"
-        type = config.get("type")
-        if type is None:
-            type = "public_ipv4"
-        quantity = config.get_int("quantity")
-        if quantity is None:
-            quantity = 1
-        ip_block = equinix.metal.ReservedIpBlock("ipBlock",
+        two_elastic_addresses = equinix.metal.ReservedIpBlock("twoElasticAddresses",
             project_id=project_id,
-            type="public_ipv4",
-            quantity=quantity,
-            metro=metro)
-        pulumi.export("ipBlockId", ip_block.id)
-        pulumi.export("ipBlockSubent", ip_block.cidr_notation)
+            metro="sv",
+            quantity=2)
+        test1 = equinix.metal.ReservedIpBlock("test1",
+            project_id=project_id,
+            type=equinix.metal.IpBlockType.PUBLIC_I_PV4,
+            metro="sv",
+            quantity=1)
+        test = equinix.metal.ReservedIpBlock("test",
+            project_id=project_id,
+            type=equinix.metal.IpBlockType.GLOBAL_I_PV4,
+            quantity=1)
+        ```
+        ### example 2
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        example = equinix.metal.ReservedIpBlock("example",
+            project_id=project_id,
+            metro="sv",
+            quantity=2)
+        nodes = equinix.metal.Device("nodes",
+            project_id=project_id,
+            metro="sv",
+            plan=equinix.metal.Plan.C3_SMALL_X86,
+            operating_system=equinix.metal.OperatingSystem.UBUNTU20_04,
+            hostname="test",
+            billing_cycle=equinix.metal.BillingCycle.HOURLY,
+            ip_addresses=[
+                equinix.metal.DeviceIpAddressArgs(
+                    type="public_ipv4",
+                    cidr=31,
+                    reservation_ids=[example.id],
+                ),
+                equinix.metal.DeviceIpAddressArgs(
+                    type="private_ipv4",
+                ),
+            ])
         ```
 
         ## Import
@@ -629,28 +652,51 @@ class ReservedIpBlock(pulumi.CustomResource):
         See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
 
         ## Example Usage
+        ### example 1
         ```python
         import pulumi
         import pulumi_equinix as equinix
 
-        config = pulumi.Config()
-        project_id = config.require("projectId")
-        metro = config.get("metro")
-        if metro is None:
-            metro = "FR"
-        type = config.get("type")
-        if type is None:
-            type = "public_ipv4"
-        quantity = config.get_int("quantity")
-        if quantity is None:
-            quantity = 1
-        ip_block = equinix.metal.ReservedIpBlock("ipBlock",
+        two_elastic_addresses = equinix.metal.ReservedIpBlock("twoElasticAddresses",
             project_id=project_id,
-            type="public_ipv4",
-            quantity=quantity,
-            metro=metro)
-        pulumi.export("ipBlockId", ip_block.id)
-        pulumi.export("ipBlockSubent", ip_block.cidr_notation)
+            metro="sv",
+            quantity=2)
+        test1 = equinix.metal.ReservedIpBlock("test1",
+            project_id=project_id,
+            type=equinix.metal.IpBlockType.PUBLIC_I_PV4,
+            metro="sv",
+            quantity=1)
+        test = equinix.metal.ReservedIpBlock("test",
+            project_id=project_id,
+            type=equinix.metal.IpBlockType.GLOBAL_I_PV4,
+            quantity=1)
+        ```
+        ### example 2
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        example = equinix.metal.ReservedIpBlock("example",
+            project_id=project_id,
+            metro="sv",
+            quantity=2)
+        nodes = equinix.metal.Device("nodes",
+            project_id=project_id,
+            metro="sv",
+            plan=equinix.metal.Plan.C3_SMALL_X86,
+            operating_system=equinix.metal.OperatingSystem.UBUNTU20_04,
+            hostname="test",
+            billing_cycle=equinix.metal.BillingCycle.HOURLY,
+            ip_addresses=[
+                equinix.metal.DeviceIpAddressArgs(
+                    type="public_ipv4",
+                    cidr=31,
+                    reservation_ids=[example.id],
+                ),
+                equinix.metal.DeviceIpAddressArgs(
+                    type="private_ipv4",
+                ),
+            ])
         ```
 
         ## Import

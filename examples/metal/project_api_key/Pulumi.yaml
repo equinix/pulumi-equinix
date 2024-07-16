@@ -1,0 +1,10 @@
+name: equinix-metal-project_api_key
+runtime: yaml
+resources:
+  # Create a new read-only API key in existing project
+  test:
+    type: equinix:metal:ProjectApiKey
+    properties:
+      projectId: ${existingProjectId}
+      description: Read-only key scoped to a projct
+      readOnly: true

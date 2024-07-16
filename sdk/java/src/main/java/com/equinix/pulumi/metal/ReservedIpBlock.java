@@ -31,14 +31,22 @@ import javax.annotation.Nullable;
  * See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
  * 
  * ## Example Usage
+ * ### example 1
  * <pre>
  * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
- * import com.equinix.pulumi.metal.ReservedIpBlock;
- * import com.equinix.pulumi.metal.ReservedIpBlockArgs;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.metal.ReservedIpBlock;
+ * import com.pulumi.equinix.metal.ReservedIpBlockArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -46,20 +54,79 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var projectId = config.get("projectId").get();
- *         final var metro = config.get("metro").orElse("FR");
- *         final var type = config.get("type").orElse("public_ipv4");
- *         final var quantity = Integer.parseInt(config.get("quantity").orElse("1"));
- *         var ipBlock = new ReservedIpBlock("ipBlock", ReservedIpBlockArgs.builder()        
+ *         var twoElasticAddresses = new ReservedIpBlock("twoElasticAddresses", ReservedIpBlockArgs.builder()
  *             .projectId(projectId)
- *             .type(type)
- *             .quantity(quantity)
- *             .metro(metro)
+ *             .metro("sv")
+ *             .quantity(2)
  *             .build());
  * 
- *         ctx.export("ipBlockId", ipBlock.id());
- *         ctx.export("ipBlockSubent", ipBlock.cidrNotation());
+ *         var test1 = new ReservedIpBlock("test1", ReservedIpBlockArgs.builder()
+ *             .projectId(projectId)
+ *             .type("public_ipv4")
+ *             .metro("sv")
+ *             .quantity(1)
+ *             .build());
+ * 
+ *         var test = new ReservedIpBlock("test", ReservedIpBlockArgs.builder()
+ *             .projectId(projectId)
+ *             .type("global_ipv4")
+ *             .quantity(1)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### example 2
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.metal.ReservedIpBlock;
+ * import com.pulumi.equinix.metal.ReservedIpBlockArgs;
+ * import com.pulumi.equinix.metal.Device;
+ * import com.pulumi.equinix.metal.DeviceArgs;
+ * import com.pulumi.equinix.metal.inputs.DeviceIpAddressArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new ReservedIpBlock("example", ReservedIpBlockArgs.builder()
+ *             .projectId(projectId)
+ *             .metro("sv")
+ *             .quantity(2)
+ *             .build());
+ * 
+ *         var nodes = new Device("nodes", DeviceArgs.builder()
+ *             .projectId(projectId)
+ *             .metro("sv")
+ *             .plan("c3.small.x86")
+ *             .operatingSystem("ubuntu_20_04")
+ *             .hostname("test")
+ *             .billingCycle("hourly")
+ *             .ipAddresses(            
+ *                 DeviceIpAddressArgs.builder()
+ *                     .type("public_ipv4")
+ *                     .cidr(31)
+ *                     .reservationIds(example.id())
+ *                     .build(),
+ *                 DeviceIpAddressArgs.builder()
+ *                     .type("private_ipv4")
+ *                     .build())
+ *             .build());
+ * 
  *     }
  * }
  * }

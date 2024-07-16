@@ -96,19 +96,23 @@ This project utilizes the [pulumi-terraform-bridge](https://github.com/pulumi/pu
 
 - Generating New Examples
 
-  - In the ./examples/ directory, use the .generate.sh script to create a new example for a specific resource.
-  - Create a subdirectory for the new resource under ./examples/{service}/{resource}.
-  - Copy the script into the new subdirectory and create a Pulumi.yaml file, following the format of existing examples.
-  - After generating the examples, create a new subdirectory named yaml to store the Pulumi.yaml file.
-  - Copy the new example.md file to the docs/resource directory and rename it accordingly.
-  - Update the internal format by removing the tags `chooser` and `choosable` and enclosing the content within a single block `example`:
+  The bridge plugin has the capability to import Terraform examples, but this functionality is not always reliable. Therefore, we generate examples for all supported languages using the `pulumi convert` command and replace the examples section in the documentation.
 
-    ```
-    ## Example Usage
-    {{% example %}}
-      add all SDK examples here
-    {{% /example %}}.
-    ```
+  To add or update an example, you need to edit or add a new YAML template at the path `examples/{service-name}/{resource-name}/Pulumi.yaml`. You can use any existing templates as references or consult the [Pulumi YAML Language Reference](https://www.pulumi.com/docs/languages-sdks/yaml/yaml-language-reference/).
+
+  Once you have made your edits, you can use the `make examples` command. This command will:
+  1. Generate the example in all supported languages, which can be found in their respective folders: `examples/{service-name}/{resource-name}/{language-name}` (e.g., go, python, typescript, csharp, java).
+  2. Update the examples that appear in the documentation with a new markdown file in `docs/resource/{resource-name}`.
+
+  If you are adding an example for a new resource, don't forget to include the `ReplaceExamplesSection: true` option in the resource definition in the ProviderInfo mapping in `provider/resources.go`.
+
+  For multiple examples of the same resource, each example must have its own subfolder (see `examples/metal/port/` for reference) with its own Pulumi.yaml. To ensure all examples are correctly displayed in the documentation, update the `scripts/generate_examples.sh` file by adding a new call to the `merge_examples_files` function at the end of the file. For example:
+  ```sh
+  merge_example_files "equinix_metal_port" "equinix_metal_port_hybrid_bonded" "equinix_metal_port_hybrid_unbonded" "equinix_metal_port_layer2_bonded"
+  ```
+  In this command, the first parameter is the resource name, and the subsequent parameters are the normalized names of the examples to be merged. For example, if the name defined within the yaml file is "equinix-metal-port-hybrid-bonded" then its normalized name will be "equinix_metal_port_hybrid_bonded".
+
+  By following these steps, you can ensure that all examples are properly generated and included in the documentation for Pulumi providers.
 
 **Note: Failing upgrade-provider Tool**
 Pulumi provides an [upgrade-provider](https://github.com/pulumi/upgrade-provider) tool that aims to reduce the amount of human intervention necessary for upgrading bridged Pulumi providers. As of March 2024, the upgrade-provider tool may encounter issues (with Equinix provider) due to changes in directory structure during the migration of resources from SDKv2 to Framework. Until this issue is resolved, manual updates are necessary following the outlined steps.

@@ -17,34 +17,36 @@ namespace Pulumi.Equinix.Metal
     /// ## Example Usage
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Equinix = Pulumi.Equinix;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var config = new Config();
-    ///     var projectId = config.Require("projectId");
-    ///     var connectionId = config.Require("connectionId");
-    ///     var vlanId = config.Require("vlanId");
-    ///     var portId = Equinix.Metal.GetInterconnection.Invoke(new()
-    ///     {
-    ///         ConnectionId = connectionId,
-    ///     }).Apply(invoke =&gt; invoke.Ports[0]?.Id);
+    ///     var projectId = "52000fb2-ee46-4673-93a8-de2c2bdba33c";
     /// 
-    ///     var vc = new Equinix.Metal.VirtualCircuit("vc", new()
+    ///     var connId = "73f12f29-3e19-43a0-8e90-ae81580db1e0";
+    /// 
+    ///     var test = Equinix.Metal.GetInterconnection.Invoke(new()
     ///     {
-    ///         ConnectionId = connectionId,
+    ///         ConnectionId = connId,
+    ///     });
+    /// 
+    ///     var testVlan = new Equinix.Metal.Vlan("testVlan", new()
+    ///     {
     ///         ProjectId = projectId,
-    ///         PortId = portId,
-    ///         VlanId = vlanId,
+    ///         Metro = test.Apply(getInterconnectionResult =&gt; getInterconnectionResult.Metro),
+    ///     });
+    /// 
+    ///     var testVirtualCircuit = new Equinix.Metal.VirtualCircuit("testVirtualCircuit", new()
+    ///     {
+    ///         ConnectionId = connId,
+    ///         ProjectId = projectId,
+    ///         PortId = test.Apply(getInterconnectionResult =&gt; getInterconnectionResult.Ports[0]?.Id),
+    ///         VlanId = testVlan.Id,
     ///         NniVlan = 1056,
     ///     });
     /// 
-    ///     return new Dictionary&lt;string, object?&gt;
-    ///     {
-    ///         ["vcStatus"] = vc.Status,
-    ///         ["vcVnid"] = vc.Vnid,
-    ///     };
     /// });
     /// ```
     /// 

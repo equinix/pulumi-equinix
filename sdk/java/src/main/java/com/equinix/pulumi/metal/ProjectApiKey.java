@@ -27,8 +27,15 @@ import javax.annotation.Nullable;
  * 
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
- * import com.equinix.pulumi.metal.ProjectApiKey;
- * import com.equinix.pulumi.metal.ProjectApiKeyArgs;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.metal.ProjectApiKey;
+ * import com.pulumi.equinix.metal.ProjectApiKeyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -36,16 +43,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var projectId = config.get("projectId").get();
- *         final var readOnly = config.getBoolean("readOnly").orElse(false);
- *         var apiKey = new ProjectApiKey("apiKey", ProjectApiKeyArgs.builder()        
- *             .projectId(projectId)
- *             .description("A project level API Key")
- *             .readOnly(readOnly)
+ *         var test = new ProjectApiKey("test", ProjectApiKeyArgs.builder()
+ *             .projectId(existingProjectId)
+ *             .description("Read-only key scoped to a projct")
+ *             .readOnly(true)
  *             .build());
  * 
- *         ctx.export("apiKeyToken", apiKey.token());
  *     }
  * }
  * }

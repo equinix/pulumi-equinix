@@ -18,6 +18,7 @@ import (
 // See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
 //
 // ## Example Usage
+// ### example 2
 // ```go
 // package main
 //
@@ -25,33 +26,111 @@ import (
 //
 //	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			projectId := cfg.Require("projectId")
-//			metro := "DA"
-//			if param := cfg.Get("metro"); param != "" {
-//				metro = param
+//			example, err := metal.NewReservedIpBlock(ctx, "example", &metal.ReservedIpBlockArgs{
+//				Description: pulumi.String("Reserved IP block (192.168.100.0/29) taken from on of the ranges in the VRF's pool of address space."),
+//				ProjectId:   pulumi.Any(exampleEquinixMetalProject.Id),
+//				Metro:       pulumi.Any(exampleEquinixMetalVrf.Metro),
+//				Type:        pulumi.String("vrf"),
+//				VrfId:       pulumi.Any(exampleEquinixMetalVrf.Id),
+//				Cidr:        pulumi.Int(29),
+//				Network:     pulumi.String("192.168.100.0"),
+//			})
+//			if err != nil {
+//				return err
 //			}
-//			vrf, err := metal.NewVrf(ctx, "vrf", &metal.VrfArgs{
-//				Description: pulumi.String("VRF with ASN 65000 and a pool of address space"),
+//			exampleVlan, err := metal.NewVlan(ctx, "exampleVlan", &metal.VlanArgs{
+//				Description: pulumi.String("A VLAN for Layer2 and Hybrid Metal devices"),
+//				Metro:       pulumi.Any(exampleEquinixMetalVrf.Metro),
+//				ProjectId:   pulumi.Any(exampleEquinixMetalProject.Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = metal.NewGateway(ctx, "exampleGateway", &metal.GatewayArgs{
+//				ProjectId:       pulumi.Any(exampleEquinixMetalProject.Id),
+//				VlanId:          exampleVlan.ID(),
+//				IpReservationId: example.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### example 1
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := metal.NewProject(ctx, "example", &metal.ProjectArgs{
+//				Name: pulumi.String("example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = metal.NewVrf(ctx, "exampleVrf", &metal.VrfArgs{
+//				Description: pulumi.String("VRF with ASN 65000 and a pool of address space that includes 192.168.100.0/25"),
 //				Name:        pulumi.String("example-vrf"),
-//				Metro:       pulumi.String(metro),
+//				Metro:       pulumi.String("da"),
 //				LocalAsn:    pulumi.Int(65000),
 //				IpRanges: pulumi.StringArray{
 //					pulumi.String("192.168.100.0/25"),
 //					pulumi.String("192.168.200.0/25"),
 //				},
-//				ProjectId: pulumi.String(projectId),
+//				ProjectId: example.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("vrfId", vrf.ID())
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### example 3
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := metal.NewVirtualCircuit(ctx, "exampleVirtualCircuit", &metal.VirtualCircuitArgs{
+//				Name:         pulumi.String("example-vc"),
+//				Description:  pulumi.String("Virtual Circuit"),
+//				ConnectionId: pulumi.Any(example.Id),
+//				ProjectId:    pulumi.Any(exampleEquinixMetalProject.Id),
+//				PortId:       pulumi.Any(example.Ports[0].Id),
+//				NniVlan:      pulumi.Int(1024),
+//				VrfId:        pulumi.Any(exampleEquinixMetalVrf.Id),
+//				PeerAsn:      pulumi.Int(65530),
+//				Subnet:       pulumi.String("192.168.100.16/31"),
+//				MetalIp:      pulumi.String("192.168.100.16"),
+//				CustomerIp:   pulumi.String("192.168.100.17"),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			return nil
 //		})
 //	}

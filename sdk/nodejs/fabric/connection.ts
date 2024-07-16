@@ -9,71 +9,715 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
- *
+ * ### example 9
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
  *
- * const config = new pulumi.Config();
- * const metro = config.get("metro") || "FR";
- * const speedInMbps = config.getNumber("speedInMbps") || 50;
- * const fabricPortName = config.require("fabricPortName");
- * const awsRegion = config.get("awsRegion") || "eu-central-1";
- * const awsAccountId = config.require("awsAccountId");
- * const serviceProfileId = equinix.fabric.getServiceProfiles({
- *     filter: {
- *         property: "/name",
- *         operator: "=",
- *         values: ["AWS Direct Connect"],
- *     },
- * }).then(invoke => invoke.data?.[0]?.uuid!);
- * const portId = equinix.fabric.getPorts({
- *     filter: {
- *         name: fabricPortName,
- *     },
- * }).then(invoke => invoke.data?.[0]?.uuid!);
- * const colo2Aws = new equinix.fabric.Connection("colo2Aws", {
- *     name: "Pulumi-colo2Aws",
- *     type: "EVPL_VC",
+ * const fcr2Azure = new equinix.fabric.Connection("fcr2azure", {
+ *     name: "ConnectionName",
+ *     type: "IP_VC",
  *     notifications: [{
- *         type: "ALL",
- *         emails: ["example@equinix.com"],
+ *         type: equinix.fabric.NotificationsType.All,
+ *         emails: [
+ *             "example@equinix.com",
+ *             "test1@equinix.com",
+ *         ],
  *     }],
- *     bandwidth: speedInMbps,
- *     redundancy: {
- *         priority: "PRIMARY",
+ *     bandwidth: 50,
+ *     order: {
+ *         purchaseOrderNumber: "1-323292",
  *     },
  *     aSide: {
  *         accessPoint: {
- *             type: "COLO",
- *             port: {
- *                 uuid: portId,
- *             },
- *             linkProtocol: {
- *                 type: "DOT1Q",
- *                 vlanTag: 1234,
+ *             type: "CLOUD_ROUTER",
+ *             router: {
+ *                 uuid: "<cloud_router_uuid>",
  *             },
  *         },
  *     },
  *     zSide: {
  *         accessPoint: {
- *             type: "SP",
- *             authenticationKey: awsAccountId,
- *             sellerRegion: awsRegion,
+ *             type: equinix.fabric.AccessPointType.SP,
+ *             authenticationKey: "<Azure_ExpressRouter_Auth_Key>",
+ *             peeringType: equinix.fabric.AccessPointPeeringType.Private,
  *             profile: {
- *                 type: "L2_PROFILE",
- *                 uuid: serviceProfileId,
+ *                 type: equinix.fabric.ProfileType.L2Profile,
+ *                 uuid: "<Azure_Service_Profile_UUID>",
  *             },
  *             location: {
- *                 metroCode: metro,
+ *                 metroCode: equinix.index.Metro.SiliconValley,
  *             },
  *         },
  *     },
  * });
- * export const connectionId = colo2Aws.id;
- * export const connectionStatus = colo2Aws.operation.apply(operation => operation.equinixStatus);
- * export const connectionProviderStatus = colo2Aws.operation.apply(operation => operation.providerStatus);
- * export const awsDirectConnectId = colo2Aws.zSide.apply(zSide => zSide.accessPoint?.providerConnectionId);
+ * ```
+ * ### example 5
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const vd2Port = new equinix.fabric.Connection("vd2port", {
+ *     name: "ConnectionName",
+ *     type: equinix.fabric.ConnectionType.EVPL,
+ *     notifications: [{
+ *         type: equinix.fabric.NotificationsType.All,
+ *         emails: [
+ *             "example@equinix.com",
+ *             "test1@equinix.com",
+ *         ],
+ *     }],
+ *     bandwidth: 50,
+ *     order: {
+ *         purchaseOrderNumber: "1-323292",
+ *     },
+ *     aSide: {
+ *         accessPoint: {
+ *             type: equinix.fabric.AccessPointType.VD,
+ *             virtualDevice: {
+ *                 type: "EDGE",
+ *                 uuid: "<device_uuid>",
+ *             },
+ *             "interface": {
+ *                 type: "NETWORK",
+ *                 id: 7,
+ *             },
+ *         },
+ *     },
+ *     zSide: {
+ *         accessPoint: {
+ *             type: equinix.fabric.AccessPointType.Colo,
+ *             port: {
+ *                 uuid: "<zside_port_uuid>",
+ *             },
+ *             linkProtocol: {
+ *                 type: equinix.fabric.AccessPointLinkProtocolType.Dot1q,
+ *                 vlanSTag: 3711,
+ *             },
+ *             location: {
+ *                 metroCode: equinix.index.Metro.SiliconValley,
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
+ * ### example 12
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const fcr2Network = new equinix.fabric.Connection("fcr2network", {
+ *     name: "ConnectionName",
+ *     type: "IPWAN_VC",
+ *     notifications: [{
+ *         type: equinix.fabric.NotificationsType.All,
+ *         emails: [
+ *             "example@equinix.com",
+ *             "test1@equinix.com",
+ *         ],
+ *     }],
+ *     bandwidth: 50,
+ *     order: {
+ *         purchaseOrderNumber: "1-323292",
+ *     },
+ *     aSide: {
+ *         accessPoint: {
+ *             type: "CLOUD_ROUTER",
+ *             router: {
+ *                 uuid: "<cloud_router_uuid>",
+ *             },
+ *         },
+ *     },
+ *     zSide: {
+ *         accessPoint: {
+ *             type: equinix.fabric.AccessPointType.Network,
+ *             network: {
+ *                 uuid: "<network_uuid>",
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
+ * ### example 11
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const vd2AzurePrimary = new equinix.fabric.Connection("vd2azurePrimary", {
+ *     name: "ConnectionName",
+ *     type: equinix.fabric.ConnectionType.EVPL,
+ *     redundancy: {
+ *         priority: "PRIMARY",
+ *     },
+ *     notifications: [{
+ *         type: equinix.fabric.NotificationsType.All,
+ *         emails: [
+ *             "example@equinix.com",
+ *             "test1@equinix.com",
+ *         ],
+ *     }],
+ *     bandwidth: 50,
+ *     order: {
+ *         purchaseOrderNumber: "1-323292",
+ *     },
+ *     aSide: {
+ *         accessPoint: {
+ *             type: equinix.fabric.AccessPointType.VD,
+ *             virtualDevice: {
+ *                 type: "EDGE",
+ *                 uuid: "<device_uuid>",
+ *             },
+ *             "interface": {
+ *                 type: "CLOUD",
+ *                 id: 7,
+ *             },
+ *         },
+ *     },
+ *     zSide: {
+ *         accessPoint: {
+ *             type: equinix.fabric.AccessPointType.SP,
+ *             authenticationKey: "<Azure_ExpressRouter_Auth_Key>",
+ *             peeringType: equinix.fabric.AccessPointPeeringType.Private,
+ *             profile: {
+ *                 type: equinix.fabric.ProfileType.L2Profile,
+ *                 uuid: "<Azure_Service_Profile_UUID>",
+ *             },
+ *             location: {
+ *                 metroCode: equinix.index.Metro.SiliconValley,
+ *             },
+ *         },
+ *     },
+ * });
+ * const vd2AzureSecondary = new equinix.fabric.Connection("vd2azureSecondary", {
+ *     name: "ConnectionName",
+ *     type: equinix.fabric.ConnectionType.EVPL,
+ *     redundancy: {
+ *         priority: "SECONDARY",
+ *         group: vd2AzurePrimary.redundancy.apply(redundancy => redundancy?.group),
+ *     },
+ *     notifications: [{
+ *         type: equinix.fabric.NotificationsType.All,
+ *         emails: [
+ *             "example@equinix.com",
+ *             "test1@equinix.com",
+ *         ],
+ *     }],
+ *     bandwidth: 50,
+ *     order: {
+ *         purchaseOrderNumber: "1-323292",
+ *     },
+ *     aSide: {
+ *         accessPoint: {
+ *             type: equinix.fabric.AccessPointType.VD,
+ *             virtualDevice: {
+ *                 type: "EDGE",
+ *                 uuid: "<device_uuid>",
+ *             },
+ *             "interface": {
+ *                 type: "CLOUD",
+ *                 id: 5,
+ *             },
+ *         },
+ *     },
+ *     zSide: {
+ *         accessPoint: {
+ *             type: equinix.fabric.AccessPointType.SP,
+ *             authenticationKey: "<Azure_ExpressRouter_Auth_Key>",
+ *             peeringType: equinix.fabric.AccessPointPeeringType.Private,
+ *             profile: {
+ *                 type: equinix.fabric.ProfileType.L2Profile,
+ *                 uuid: "<Azure_Service_Profile_UUID>",
+ *             },
+ *             location: {
+ *                 metroCode: equinix.index.Metro.SiliconValley,
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
+ * ### example 6
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const vd2Token = new equinix.fabric.Connection("vd2token", {
+ *     name: "ConnectionName",
+ *     type: equinix.fabric.ConnectionType.EVPL,
+ *     notifications: [{
+ *         type: equinix.fabric.NotificationsType.All,
+ *         emails: [
+ *             "example@equinix.com",
+ *             "test1@equinix.com",
+ *         ],
+ *     }],
+ *     bandwidth: 50,
+ *     order: {
+ *         purchaseOrderNumber: "1-323292",
+ *     },
+ *     aSide: {
+ *         accessPoint: {
+ *             type: equinix.fabric.AccessPointType.VD,
+ *             virtualDevice: {
+ *                 type: "EDGE",
+ *                 uuid: "<device_uuid>",
+ *             },
+ *             "interface": {
+ *                 type: "NETWORK",
+ *                 id: 7,
+ *             },
+ *         },
+ *     },
+ *     zSide: {
+ *         serviceToken: {
+ *             uuid: "<service_token_uuid>",
+ *         },
+ *     },
+ * });
+ * ```
+ * ### example 3
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const epl = new equinix.fabric.Connection("epl", {
+ *     name: "ConnectionName",
+ *     type: equinix.fabric.ConnectionType.EPL,
+ *     notifications: [{
+ *         type: equinix.fabric.NotificationsType.All,
+ *         emails: [
+ *             "example@equinix.com",
+ *             "test1@equinix.com",
+ *         ],
+ *     }],
+ *     bandwidth: 50,
+ *     order: {
+ *         purchaseOrderNumber: "1-323292",
+ *     },
+ *     aSide: {
+ *         accessPoint: {
+ *             type: equinix.fabric.AccessPointType.Colo,
+ *             port: {
+ *                 uuid: "<aside_port_uuid>",
+ *             },
+ *         },
+ *     },
+ *     zSide: {
+ *         accessPoint: {
+ *             type: equinix.fabric.AccessPointType.Colo,
+ *             port: {
+ *                 uuid: "<zside_port_uuid>",
+ *             },
+ *             location: {
+ *                 metroCode: equinix.index.Metro.SiliconValley,
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
+ * ### example 14
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const epl = new equinix.fabric.Connection("epl", {
+ *     name: "ConnectionName",
+ *     type: "EPLAN_VC",
+ *     notifications: [{
+ *         type: equinix.fabric.NotificationsType.All,
+ *         emails: [
+ *             "example@equinix.com",
+ *             "test1@equinix.com",
+ *         ],
+ *     }],
+ *     bandwidth: 50,
+ *     order: {
+ *         purchaseOrderNumber: "1-323292",
+ *     },
+ *     aSide: {
+ *         accessPoint: {
+ *             type: equinix.fabric.AccessPointType.Colo,
+ *             port: {
+ *                 uuid: "<aside_port_uuid>",
+ *             },
+ *         },
+ *     },
+ *     zSide: {
+ *         accessPoint: {
+ *             type: equinix.fabric.AccessPointType.Network,
+ *             network: {
+ *                 uuid: "<network_uuid>",
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
+ * ### example 4
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const accessEplVc = new equinix.fabric.Connection("accessEplVc", {
+ *     name: "ConnectionName",
+ *     type: equinix.fabric.ConnectionType.AccessEPL,
+ *     notifications: [{
+ *         type: equinix.fabric.NotificationsType.All,
+ *         emails: [
+ *             "example@equinix.com",
+ *             "test1@equinix.com",
+ *         ],
+ *     }],
+ *     bandwidth: 50,
+ *     order: {
+ *         purchaseOrderNumber: "1-323292",
+ *     },
+ *     aSide: {
+ *         accessPoint: {
+ *             type: equinix.fabric.AccessPointType.Colo,
+ *             port: {
+ *                 uuid: "<aside_port_uuid>",
+ *             },
+ *             linkProtocol: {
+ *                 type: equinix.fabric.AccessPointLinkProtocolType.QinQ,
+ *                 vlanSTag: 1976,
+ *             },
+ *         },
+ *     },
+ *     zSide: {
+ *         accessPoint: {
+ *             type: equinix.fabric.AccessPointType.Colo,
+ *             port: {
+ *                 uuid: "<zside_port_uuid>",
+ *             },
+ *             location: {
+ *                 metroCode: equinix.index.Metro.SiliconValley,
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
+ * ### example 13
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const vd2Token = new equinix.fabric.Connection("vd2token", {
+ *     name: "ConnectionName",
+ *     type: "EVPLAN_VC",
+ *     notifications: [{
+ *         type: equinix.fabric.NotificationsType.All,
+ *         emails: [
+ *             "example@equinix.com",
+ *             "test1@equinix.com",
+ *         ],
+ *     }],
+ *     bandwidth: 50,
+ *     order: {
+ *         purchaseOrderNumber: "1-323292",
+ *     },
+ *     aSide: {
+ *         accessPoint: {
+ *             type: equinix.fabric.AccessPointType.VD,
+ *             virtualDevice: {
+ *                 type: "EDGE",
+ *                 uuid: "<device_uuid>",
+ *             },
+ *             "interface": {
+ *                 type: "CLOUD",
+ *                 id: 7,
+ *             },
+ *         },
+ *     },
+ *     zSide: {
+ *         accessPoint: {
+ *             type: equinix.fabric.AccessPointType.Network,
+ *             network: {
+ *                 uuid: "<network_uuid>",
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
+ * ### example 1
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const port2Port = new equinix.fabric.Connection("port2port", {
+ *     name: "ConnectionName",
+ *     type: equinix.fabric.ConnectionType.EVPL,
+ *     notifications: [{
+ *         type: equinix.fabric.NotificationsType.All,
+ *         emails: [
+ *             "example@equinix.com",
+ *             "test1@equinix.com",
+ *         ],
+ *     }],
+ *     bandwidth: 50,
+ *     order: {
+ *         purchaseOrderNumber: "1-323292",
+ *     },
+ *     aSide: {
+ *         accessPoint: {
+ *             type: equinix.fabric.AccessPointType.Colo,
+ *             port: {
+ *                 uuid: "<aside_port_uuid>",
+ *             },
+ *             linkProtocol: {
+ *                 type: equinix.fabric.AccessPointLinkProtocolType.QinQ,
+ *                 vlanSTag: 1976,
+ *             },
+ *         },
+ *     },
+ *     zSide: {
+ *         accessPoint: {
+ *             type: equinix.fabric.AccessPointType.Colo,
+ *             port: {
+ *                 uuid: "<zside_port_uuid>",
+ *             },
+ *             linkProtocol: {
+ *                 type: equinix.fabric.AccessPointLinkProtocolType.QinQ,
+ *                 vlanSTag: 3711,
+ *             },
+ *             location: {
+ *                 metroCode: equinix.index.Metro.SiliconValley,
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
+ * ### example 8
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const fcr2Port = new equinix.fabric.Connection("fcr2port", {
+ *     name: "ConnectionName",
+ *     type: "IP_VC",
+ *     notifications: [{
+ *         type: equinix.fabric.NotificationsType.All,
+ *         emails: [
+ *             "example@equinix.com",
+ *             "test1@equinix.com",
+ *         ],
+ *     }],
+ *     bandwidth: 50,
+ *     order: {
+ *         purchaseOrderNumber: "1-323292",
+ *     },
+ *     aSide: {
+ *         accessPoint: {
+ *             type: "CLOUD_ROUTER",
+ *             router: {
+ *                 uuid: "<cloud_router_uuid>",
+ *             },
+ *         },
+ *     },
+ *     zSide: {
+ *         accessPoint: {
+ *             type: equinix.fabric.AccessPointType.Colo,
+ *             port: {
+ *                 uuid: "<port_uuid>",
+ *             },
+ *             linkProtocol: {
+ *                 type: equinix.fabric.AccessPointLinkProtocolType.Dot1q,
+ *                 vlanTag: 2711,
+ *             },
+ *             location: {
+ *                 metroCode: equinix.index.Metro.SiliconValley,
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
+ * ### example 2
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const port2Aws = new equinix.fabric.Connection("port2aws", {
+ *     name: "ConnectionName",
+ *     type: equinix.fabric.ConnectionType.EVPL,
+ *     notifications: [{
+ *         type: equinix.fabric.NotificationsType.All,
+ *         emails: [
+ *             "example@equinix.com",
+ *             "test1@equinix.com",
+ *         ],
+ *     }],
+ *     bandwidth: 50,
+ *     redundancy: {
+ *         priority: "PRIMARY",
+ *     },
+ *     order: {
+ *         purchaseOrderNumber: "1-323929",
+ *     },
+ *     aSide: {
+ *         accessPoint: {
+ *             type: equinix.fabric.AccessPointType.Colo,
+ *             port: {
+ *                 uuid: "<aside_port_uuid>",
+ *             },
+ *             linkProtocol: {
+ *                 type: equinix.fabric.AccessPointLinkProtocolType.QinQ,
+ *                 vlanSTag: 2019,
+ *                 vlanCTag: 2112,
+ *             },
+ *         },
+ *     },
+ *     zSide: {
+ *         accessPoint: {
+ *             type: equinix.fabric.AccessPointType.SP,
+ *             authenticationKey: "<aws_account_id>",
+ *             sellerRegion: "us-west-1",
+ *             profile: {
+ *                 type: equinix.fabric.ProfileType.L2Profile,
+ *                 uuid: "<service_profile_uuid>",
+ *             },
+ *             location: {
+ *                 metroCode: equinix.index.Metro.SiliconValley,
+ *             },
+ *         },
+ *     },
+ *     additionalInfo: [
+ *         {
+ *             key: "accessKey",
+ *             value: "<aws_access_key>",
+ *         },
+ *         {
+ *             key: "secretKey",
+ *             value: "<aws_secret_key>",
+ *         },
+ *     ],
+ * });
+ * ```
+ * ### example 15
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const epl = new equinix.fabric.Connection("epl", {
+ *     name: "ConnectionName",
+ *     type: "EVPLAN_VC",
+ *     notifications: [{
+ *         type: equinix.fabric.NotificationsType.All,
+ *         emails: [
+ *             "example@equinix.com",
+ *             "test1@equinix.com",
+ *         ],
+ *     }],
+ *     bandwidth: 50,
+ *     order: {
+ *         purchaseOrderNumber: "1-323292",
+ *     },
+ *     aSide: {
+ *         accessPoint: {
+ *             type: equinix.fabric.AccessPointType.Colo,
+ *             port: {
+ *                 uuid: "<aside_port_uuid>",
+ *             },
+ *             linkProtocol: {
+ *                 type: equinix.fabric.AccessPointLinkProtocolType.Dot1q,
+ *                 vlanSTag: 1976,
+ *             },
+ *         },
+ *     },
+ *     zSide: {
+ *         accessPoint: {
+ *             type: equinix.fabric.AccessPointType.Network,
+ *             network: {
+ *                 uuid: "<network_uuid>",
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
+ * ### example 10
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const vd2Azure = new equinix.fabric.Connection("vd2azure", {
+ *     name: "ConnectionName",
+ *     type: equinix.fabric.ConnectionType.EVPL,
+ *     notifications: [{
+ *         type: equinix.fabric.NotificationsType.All,
+ *         emails: [
+ *             "example@equinix.com",
+ *             "test1@equinix.com",
+ *         ],
+ *     }],
+ *     bandwidth: 50,
+ *     order: {
+ *         purchaseOrderNumber: "1-323292",
+ *     },
+ *     aSide: {
+ *         accessPoint: {
+ *             type: equinix.fabric.AccessPointType.VD,
+ *             virtualDevice: {
+ *                 type: "EDGE",
+ *                 uuid: "<device_uuid>",
+ *             },
+ *             "interface": {
+ *                 type: "CLOUD",
+ *                 id: 7,
+ *             },
+ *         },
+ *     },
+ *     zSide: {
+ *         accessPoint: {
+ *             type: equinix.fabric.AccessPointType.SP,
+ *             authenticationKey: "<Azure_ExpressRouter_Auth_Key>",
+ *             peeringType: equinix.fabric.AccessPointPeeringType.Private,
+ *             profile: {
+ *                 type: equinix.fabric.ProfileType.L2Profile,
+ *                 uuid: "<Azure_Service_Profile_UUID>",
+ *             },
+ *             location: {
+ *                 metroCode: equinix.index.Metro.SiliconValley,
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
+ * ### example 7
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const token2Aws = new equinix.fabric.Connection("token2aws", {
+ *     name: "ConnectionName",
+ *     type: equinix.fabric.ConnectionType.EVPL,
+ *     notifications: [{
+ *         type: equinix.fabric.NotificationsType.All,
+ *         emails: [
+ *             "example@equinix.com",
+ *             "test1@equinix.com",
+ *         ],
+ *     }],
+ *     bandwidth: 50,
+ *     order: {
+ *         purchaseOrderNumber: "1-323292",
+ *     },
+ *     aSide: {
+ *         serviceToken: {
+ *             uuid: "<service_token_uuid>",
+ *         },
+ *     },
+ *     zSide: {
+ *         accessPoint: {
+ *             type: equinix.fabric.AccessPointType.SP,
+ *             authenticationKey: "<aws_account_id>",
+ *             sellerRegion: "us-west-1",
+ *             profile: {
+ *                 type: equinix.fabric.ProfileType.L2Profile,
+ *                 uuid: "<service_profile_uuid>",
+ *             },
+ *             location: {
+ *                 metroCode: equinix.index.Metro.SiliconValley,
+ *             },
+ *         },
+ *     },
+ * });
  * ```
  */
 export class Connection extends pulumi.CustomResource {

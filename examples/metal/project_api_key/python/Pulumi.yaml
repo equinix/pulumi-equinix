@@ -1,9 +1,2 @@
-name: equinix-metal-project-api-key
+name: equinix-metal-project_api_key
 runtime: python
-description: An Equinix Metal Project API Key resource
-config:
-  projectId:
-    type: string
-  readOnly:
-    type: boolean
-    default: false

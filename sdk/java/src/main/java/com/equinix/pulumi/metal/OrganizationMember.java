@@ -19,14 +19,22 @@ import javax.annotation.Nullable;
  * Manage the membership of existing and new invitees within an Equinix Metal organization and its projects.
  * 
  * ## Example Usage
+ * ### example 2
  * <pre>
  * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
- * import com.equinix.pulumi.metal.OrganizationMember;
- * import com.equinix.pulumi.metal.OrganizationMemberArgs;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.metal.OrganizationMember;
+ * import com.pulumi.equinix.metal.OrganizationMemberArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -34,19 +42,47 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var organizationId = config.get("organizationId").get();
- *         final var projectId = config.get("projectId").get();
- *         final var userEmailAddress = config.get("userEmailAddress").get();
- *         var member = new OrganizationMember("member", OrganizationMemberArgs.builder()        
- *             .invitee(userEmailAddress)
+ *         var owner = new OrganizationMember("owner", OrganizationMemberArgs.builder()
+ *             .invitee("admin{@literal @}example.com")
+ *             .roles("owner")
+ *             .projectsIds()
+ *             .organizationId(organizationId)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### example 1
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.metal.OrganizationMember;
+ * import com.pulumi.equinix.metal.OrganizationMemberArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var member = new OrganizationMember("member", OrganizationMemberArgs.builder()
+ *             .invitee("member{@literal @}example.com")
  *             .roles("limited_collaborator")
  *             .projectsIds(projectId)
  *             .organizationId(organizationId)
  *             .build());
  * 
- *         ctx.export("memberId", member.id());
- *         ctx.export("memberState", member.state());
  *     }
  * }
  * }

@@ -1,13 +1,16 @@
 import pulumi
 import pulumi_equinix as equinix
+import pulumi_std as std
 
-config = pulumi.Config()
-device_id = config.require("deviceId")
-subnet_cidr = config.get("subnetCidr")
-if subnet_cidr is None:
-    subnet_cidr = "147.229.10.152/31"
-ip_attach_resource = equinix.metal.IpAttachment("ipAttach",
-    device_id=device_id,
-    cidr_notation=subnet_cidr)
-pulumi.export("ipAttach", ip_attach_resource.id)
-pulumi.export("ipNetmask", ip_attach_resource.netmask)
+myblock = equinix.metal.ReservedIpBlock("myblock",
+    project_id=project_id,
+    metro="ny",
+    quantity=2)
+first_address_assignment = equinix.metal.IpAttachment("firstAddressAssignment",
+    device_id=mydevice["id"],
+    cidr_notation=std.join_output(separator="/",
+        input=[
+            std.cidrhost_output(input=myblock_metal_reserved_ip_block["cidrNotation"],
+                host=0).apply(lambda invoke: invoke.result),
+            "32",
+        ]).apply(lambda invoke: invoke.result))

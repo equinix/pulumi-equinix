@@ -1,6 +1,0 @@
-name: equinix-metal-port
-runtime: go
-description: An Equinix Metal Port resource
-config:
-  portId:
-    type: string

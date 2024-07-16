@@ -21,25 +21,38 @@ namespace Pulumi.Equinix.Metal
     /// ## Example Usage
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Equinix = Pulumi.Equinix;
+    /// using Std = Pulumi.Std;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var config = new Config();
-    ///     var deviceId = config.Require("deviceId");
-    ///     var subnetCidr = config.Get("subnetCidr") ?? "147.229.10.152/31";
-    ///     var ipAttachResource = new Equinix.Metal.IpAttachment("ipAttach", new()
+    ///     var myblock = new Equinix.Metal.ReservedIpBlock("myblock", new()
     ///     {
-    ///         DeviceId = deviceId,
-    ///         CidrNotation = subnetCidr,
+    ///         ProjectId = projectId,
+    ///         Metro = "ny",
+    ///         Quantity = 2,
     ///     });
     /// 
-    ///     return new Dictionary&lt;string, object?&gt;
+    ///     var firstAddressAssignment = new Equinix.Metal.IpAttachment("firstAddressAssignment", new()
     ///     {
-    ///         ["ipAttach"] = ipAttachResource.Id,
-    ///         ["ipNetmask"] = ipAttachResource.Netmask,
-    ///     };
+    ///         DeviceId = mydevice.Id,
+    ///         CidrNotation = Std.Cidrhost.Invoke(new()
+    ///         {
+    ///             Input = myblockMetalReservedIpBlock.CidrNotation,
+    ///             Host = 0,
+    ///         }).Apply(invoke =&gt; Std.Join.Invoke(new()
+    ///         {
+    ///             Separator = "/",
+    ///             Input = new[]
+    ///             {
+    ///                 invoke.Result,
+    ///                 "32",
+    ///             },
+    ///         })).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
     /// });
     /// ```
     /// </summary>

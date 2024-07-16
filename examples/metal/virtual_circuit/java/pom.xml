@@ -5,7 +5,7 @@
 			<modelVersion>4.0.0</modelVersion>
 
 			<groupId>com.pulumi</groupId>
-			<artifactId>equinix-metal-virtual-circuit</artifactId>
+			<artifactId>equinix-metal-virtual_circuit</artifactId>
 			<version>1.0-SNAPSHOT</version>
 
 			<properties>
@@ -19,15 +19,15 @@
 
 			<dependencies>
 				<dependency>
-            		<groupId>com.equinix.pulumi</groupId>
-            		<artifactId>equinix</artifactId>
-            		<version>[0.1.0,)</version>
-        		</dependency>
-				<dependency>
 					<groupId>com.pulumi</groupId>
 					<artifactId>pulumi</artifactId>
 					<version>(,1.0]</version>
 				</dependency>
+				<dependency>
+            		<groupId>com.pulumi</groupId>
+            		<artifactId>equinix</artifactId>
+            		<version>(,1.0)</version>
+        		</dependency>
 			</dependencies>
 
 			<build>

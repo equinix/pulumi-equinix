@@ -1055,20 +1055,142 @@ class Device(pulumi.CustomResource):
         > **NOTE:** All arguments including the `root_password` and `user_data` will be stored in the raw state as plain-text. Read more about sensitive data in state.
 
         ## Example Usage
+        ### example 1
         ```python
         import pulumi
         import pulumi_equinix as equinix
 
-        config = pulumi.Config()
-        project_id = config.require("projectId")
-        web = equinix.metal.Device("web",
-            hostname="webserver1",
-            plan="c3.small.x86",
-            operating_system="ubuntu_20_04",
+        web1 = equinix.metal.Device("web1",
+            hostname="tf.coreos2",
+            plan=equinix.metal.Plan.C3_SMALL_X86,
             metro="sv",
-            billing_cycle="hourly",
+            operating_system=equinix.metal.OperatingSystem.UBUNTU20_04,
+            billing_cycle=equinix.metal.BillingCycle.HOURLY,
             project_id=project_id)
-        pulumi.export("webPublicIp", web.access_public_ipv4.apply(lambda access_public_ipv4: f"http://{access_public_ipv4}"))
+        ```
+        ### example 4
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        web1 = equinix.metal.Device("web1",
+            hostname="tftest",
+            plan=equinix.metal.Plan.C3_SMALL_X86,
+            metro="ny",
+            operating_system=equinix.metal.OperatingSystem.UBUNTU20_04,
+            billing_cycle=equinix.metal.BillingCycle.HOURLY,
+            project_id=project_id,
+            hardware_reservation_id="next-available",
+            storage=\"\"\"{
+          "disks": [
+            {
+              "device": "/dev/sda",
+              "wipeTable": true,
+              "partitions": [
+                {
+                  "label": "BIOS",
+                  "number": 1,
+                  "size": "4096"
+                },
+                {
+                  "label": "SWAP",
+                  "number": 2,
+                  "size": "3993600"
+                },
+                {
+                  "label": "ROOT",
+                  "number": 3,
+                  "size": "0"
+                }
+              ]
+            }
+          ],
+          "filesystems": [
+            {
+              "mount": {
+                "device": "/dev/sda3",
+                "format": "ext4",
+                "point": "/",
+                "create": {
+                  "options": [
+                    "-L",
+                    "ROOT"
+                  ]
+                }
+              }
+            },
+            {
+              "mount": {
+                "device": "/dev/sda2",
+                "format": "swap",
+                "point": "none",
+                "create": {
+                  "options": [
+                    "-L",
+                    "SWAP"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+        \"\"\")
+        ```
+        ### example 2
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        pxe1 = equinix.metal.Device("pxe1",
+            hostname="tf.coreos2-pxe",
+            plan=equinix.metal.Plan.C3_SMALL_X86,
+            metro="sv",
+            operating_system=equinix.metal.OperatingSystem.CUSTOM_IPXE,
+            billing_cycle=equinix.metal.BillingCycle.HOURLY,
+            project_id=project_id,
+            ipxe_script_url="https://rawgit.com/cloudnativelabs/pxe/master/packet/coreos-stable-metal.ipxe",
+            always_pxe=False,
+            user_data=example["rendered"])
+        ```
+        ### example 5
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        pxe1 = equinix.metal.Device("pxe1",
+            hostname="tf.coreos2-pxe",
+            plan=equinix.metal.Plan.C3_SMALL_X86,
+            metro="sv",
+            operating_system=equinix.metal.OperatingSystem.CUSTOM_IPXE,
+            billing_cycle=equinix.metal.BillingCycle.HOURLY,
+            project_id=project_id,
+            ipxe_script_url="https://rawgit.com/cloudnativelabs/pxe/master/packet/coreos-stable-metal.ipxe",
+            always_pxe=False,
+            user_data=user_data,
+            custom_data=custom_data,
+            behavior=equinix.metal.DeviceBehaviorArgs(
+                allow_changes=[
+                    "custom_data",
+                    "user_data",
+                ],
+            ))
+        ```
+        ### example 3
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        web1 = equinix.metal.Device("web1",
+            hostname="tf.coreos2",
+            plan=equinix.metal.Plan.C3_SMALL_X86,
+            metro="ny",
+            operating_system=equinix.metal.OperatingSystem.UBUNTU20_04,
+            billing_cycle=equinix.metal.BillingCycle.HOURLY,
+            project_id=project_id,
+            ip_addresses=[equinix.metal.DeviceIpAddressArgs(
+                type="private_ipv4",
+                cidr=30,
+            )])
         ```
 
         :param str resource_name: The name of the resource.
@@ -1108,20 +1230,142 @@ class Device(pulumi.CustomResource):
         > **NOTE:** All arguments including the `root_password` and `user_data` will be stored in the raw state as plain-text. Read more about sensitive data in state.
 
         ## Example Usage
+        ### example 1
         ```python
         import pulumi
         import pulumi_equinix as equinix
 
-        config = pulumi.Config()
-        project_id = config.require("projectId")
-        web = equinix.metal.Device("web",
-            hostname="webserver1",
-            plan="c3.small.x86",
-            operating_system="ubuntu_20_04",
+        web1 = equinix.metal.Device("web1",
+            hostname="tf.coreos2",
+            plan=equinix.metal.Plan.C3_SMALL_X86,
             metro="sv",
-            billing_cycle="hourly",
+            operating_system=equinix.metal.OperatingSystem.UBUNTU20_04,
+            billing_cycle=equinix.metal.BillingCycle.HOURLY,
             project_id=project_id)
-        pulumi.export("webPublicIp", web.access_public_ipv4.apply(lambda access_public_ipv4: f"http://{access_public_ipv4}"))
+        ```
+        ### example 4
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        web1 = equinix.metal.Device("web1",
+            hostname="tftest",
+            plan=equinix.metal.Plan.C3_SMALL_X86,
+            metro="ny",
+            operating_system=equinix.metal.OperatingSystem.UBUNTU20_04,
+            billing_cycle=equinix.metal.BillingCycle.HOURLY,
+            project_id=project_id,
+            hardware_reservation_id="next-available",
+            storage=\"\"\"{
+          "disks": [
+            {
+              "device": "/dev/sda",
+              "wipeTable": true,
+              "partitions": [
+                {
+                  "label": "BIOS",
+                  "number": 1,
+                  "size": "4096"
+                },
+                {
+                  "label": "SWAP",
+                  "number": 2,
+                  "size": "3993600"
+                },
+                {
+                  "label": "ROOT",
+                  "number": 3,
+                  "size": "0"
+                }
+              ]
+            }
+          ],
+          "filesystems": [
+            {
+              "mount": {
+                "device": "/dev/sda3",
+                "format": "ext4",
+                "point": "/",
+                "create": {
+                  "options": [
+                    "-L",
+                    "ROOT"
+                  ]
+                }
+              }
+            },
+            {
+              "mount": {
+                "device": "/dev/sda2",
+                "format": "swap",
+                "point": "none",
+                "create": {
+                  "options": [
+                    "-L",
+                    "SWAP"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+        \"\"\")
+        ```
+        ### example 2
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        pxe1 = equinix.metal.Device("pxe1",
+            hostname="tf.coreos2-pxe",
+            plan=equinix.metal.Plan.C3_SMALL_X86,
+            metro="sv",
+            operating_system=equinix.metal.OperatingSystem.CUSTOM_IPXE,
+            billing_cycle=equinix.metal.BillingCycle.HOURLY,
+            project_id=project_id,
+            ipxe_script_url="https://rawgit.com/cloudnativelabs/pxe/master/packet/coreos-stable-metal.ipxe",
+            always_pxe=False,
+            user_data=example["rendered"])
+        ```
+        ### example 5
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        pxe1 = equinix.metal.Device("pxe1",
+            hostname="tf.coreos2-pxe",
+            plan=equinix.metal.Plan.C3_SMALL_X86,
+            metro="sv",
+            operating_system=equinix.metal.OperatingSystem.CUSTOM_IPXE,
+            billing_cycle=equinix.metal.BillingCycle.HOURLY,
+            project_id=project_id,
+            ipxe_script_url="https://rawgit.com/cloudnativelabs/pxe/master/packet/coreos-stable-metal.ipxe",
+            always_pxe=False,
+            user_data=user_data,
+            custom_data=custom_data,
+            behavior=equinix.metal.DeviceBehaviorArgs(
+                allow_changes=[
+                    "custom_data",
+                    "user_data",
+                ],
+            ))
+        ```
+        ### example 3
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        web1 = equinix.metal.Device("web1",
+            hostname="tf.coreos2",
+            plan=equinix.metal.Plan.C3_SMALL_X86,
+            metro="ny",
+            operating_system=equinix.metal.OperatingSystem.UBUNTU20_04,
+            billing_cycle=equinix.metal.BillingCycle.HOURLY,
+            project_id=project_id,
+            ip_addresses=[equinix.metal.DeviceIpAddressArgs(
+                type="private_ipv4",
+                cidr=30,
+            )])
         ```
 
         :param str resource_name: The name of the resource.

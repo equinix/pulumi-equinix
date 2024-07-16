@@ -21,52 +21,350 @@ import * as utilities from "../utilities";
  * * **BYOL** - [bring your own license] Where customer brings his own, already procured device software license. There are no charges associated with such license. It is the only licensing mode for `self-configured` devices.
  *
  * ## Example Usage
+ * ### example 8
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ * import * as std from "@pulumi/std";
  *
+ * const sv = equinix.networkedge.getAccountOutput({
+ *     name: "account-name",
+ *     metroCode: "SV",
+ * });
+ * const bluecatEdgeServicePointCloudinitPrimaryFile = new equinix.networkedge.NetworkFile("bluecatEdgeServicePointCloudinitPrimaryFile", {
+ *     fileName: "TF-BLUECAT-ESP-cloud-init-file.txt",
+ *     content: std.fileOutput({
+ *         input: filepath,
+ *     }).apply(invoke => invoke.result),
+ *     metroCode: sv.apply(sv => sv.metroCode).apply((x) => equinix.index.Metro[x]),
+ *     deviceTypeCode: "BLUECAT-EDGE-SERVICE-POINT",
+ *     processType: equinix.networkedge.FileType.CloudInit,
+ *     selfManaged: true,
+ *     byol: true,
+ * });
+ * const bluecatEdgeServicePointCloudinitSecondaryFile = new equinix.networkedge.NetworkFile("bluecatEdgeServicePointCloudinitSecondaryFile", {
+ *     fileName: "TF-BLUECAT-ESP-cloud-init-file.txt",
+ *     content: std.fileOutput({
+ *         input: filepath,
+ *     }).apply(invoke => invoke.result),
+ *     metroCode: sv.apply(sv => sv.metroCode).apply((x) => equinix.index.Metro[x]),
+ *     deviceTypeCode: "BLUECAT-EDGE-SERVICE-POINT",
+ *     processType: equinix.networkedge.FileType.CloudInit,
+ *     selfManaged: true,
+ *     byol: true,
+ * });
+ * const bluecatEdgeServicePointHa = new equinix.networkedge.Device("bluecatEdgeServicePointHa", {
+ *     name: "tf-bluecat-edge-service-point-p",
+ *     metroCode: sv.apply(sv => sv.metroCode),
+ *     typeCode: "BLUECAT-EDGE-SERVICE-POINT",
+ *     selfManaged: true,
+ *     connectivity: "PRIVATE",
+ *     byol: true,
+ *     packageCode: "STD",
+ *     notifications: ["test@equinix.com"],
+ *     accountNumber: sv.apply(sv => sv.number),
+ *     cloudInitFileId: bluecatEdgeServicePointCloudinitPrimaryFile.uuid,
+ *     version: "4.6.3",
+ *     coreCount: 4,
+ *     termLength: 12,
+ *     secondaryDevice: {
+ *         name: "tf-bluecat-edge-service-point-s",
+ *         metroCode: sv.apply(sv => sv.metroCode),
+ *         notifications: ["test@eq.com"],
+ *         accountNumber: sv.apply(sv => sv.number),
+ *         cloudInitFileId: bluecatEdgeServicePointCloudinitSecondaryFile.uuid,
+ *     },
+ * });
+ * ```
+ * ### example 1
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
  *
- * const config = new pulumi.Config();
- * const accountName = config.require("accountName");
- * const licenseToken = config.require("licenseToken");
- * const sshUserName = config.require("sshUserName");
- * const sshKeyName = config.require("sshKeyName");
- * const aclTemplateId = config.require("aclTemplateId");
- * const metro = config.get("metro") || "SV";
- * const devicePackageCode = config.get("devicePackageCode") || "network-essentials";
- * const deviceVersion = config.get("deviceVersion") || "17.06.01a";
- * const sizeInCores = config.getNumber("sizeInCores") || 2;
- * const termLength = config.getNumber("termLength") || 6;
- * const additionalBandwidth = config.getNumber("additionalBandwidth") || 5;
- * const accountNum = equinix.networkedge.getAccount({
- *     name: accountName,
- *     metroCode: metro,
- * }).then(invoke => invoke.number);
- * const c8KRouter = new equinix.networkedge.Device("c8kRouter", {
- *     name: "catalystRouter",
- *     metroCode: metro,
+ * const dc = equinix.networkedge.getAccountOutput({
+ *     metroCode: "DC",
+ * });
+ * const sv = equinix.networkedge.getAccountOutput({
+ *     metroCode: "SV",
+ * });
+ * const csr1000VHa = new equinix.networkedge.Device("csr1000vHa", {
+ *     name: "tf-csr1000v-p",
+ *     throughput: 500,
+ *     throughputUnit: equinix.networkedge.ThroughputUnit.Mbps,
+ *     metroCode: dc.apply(dc => dc.metroCode),
+ *     typeCode: "CSR1000V",
+ *     selfManaged: false,
+ *     connectivity: "INTERNET-ACCESS",
+ *     byol: false,
+ *     packageCode: "SEC",
+ *     notifications: [
+ *         "john@equinix.com",
+ *         "marry@equinix.com",
+ *         "fred@equinix.com",
+ *     ],
+ *     hostname: "csr1000v-p",
+ *     termLength: 12,
+ *     accountNumber: dc.apply(dc => dc.number),
+ *     version: "16.09.05",
+ *     coreCount: 2,
+ *     secondaryDevice: {
+ *         name: "tf-csr1000v-s",
+ *         metroCode: sv.apply(sv => sv.metroCode),
+ *         hostname: "csr1000v-s",
+ *         notifications: [
+ *             "john@equinix.com",
+ *             "marry@equinix.com",
+ *         ],
+ *         accountNumber: sv.apply(sv => sv.number),
+ *     },
+ * });
+ * ```
+ * ### example 4
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const sv = equinix.networkedge.getAccountOutput({
+ *     name: "account-name",
+ *     metroCode: "SV",
+ * });
+ * const c8KvSingle = new equinix.networkedge.Device("c8kvSingle", {
+ *     name: "tf-c8kv",
+ *     metroCode: sv.apply(sv => sv.metroCode),
  *     typeCode: "C8000V",
  *     selfManaged: true,
  *     byol: true,
- *     packageCode: devicePackageCode,
- *     notifications: ["example@equinix.com"],
+ *     packageCode: "network-essentials",
+ *     notifications: ["test@equinix.com"],
  *     hostname: "C8KV",
- *     accountNumber: accountNum,
- *     version: deviceVersion,
- *     coreCount: sizeInCores,
- *     termLength: termLength,
- *     licenseToken: licenseToken,
- *     additionalBandwidth: additionalBandwidth,
+ *     accountNumber: sv.apply(sv => sv.number),
+ *     version: "17.06.01a",
+ *     coreCount: 2,
+ *     termLength: 12,
+ *     licenseToken: "valid-license-token",
+ *     additionalBandwidth: 5,
  *     sshKey: {
- *         username: sshUserName,
- *         keyName: sshKeyName,
+ *         username: "test-username",
+ *         keyName: "valid-key-name",
  *     },
- *     aclTemplateId: aclTemplateId,
+ *     aclTemplateId: "3e548c02-9164-4197-aa23-05b1f644883c",
  * });
- * export const routerId = c8KRouter.id;
- * export const provisionStatus = c8KRouter.status;
- * export const licenseStatus = c8KRouter.licenseStatus;
- * export const sshIpAddress = c8KRouter.sshIpAddress;
+ * ```
+ * ### example 7
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const sv = equinix.networkedge.getAccountOutput({
+ *     name: "account-name",
+ *     metroCode: "SV",
+ * });
+ * const testPublicKey = new equinix.networkedge.SshKey("testPublicKey", {
+ *     name: "key-name",
+ *     publicKey: "ssh-dss key-value",
+ *     type: "DSA",
+ * });
+ * const bluecatBddsHa = new equinix.networkedge.Device("bluecatBddsHa", {
+ *     name: "tf-bluecat-bdds-p",
+ *     metroCode: sv.apply(sv => sv.metroCode),
+ *     typeCode: "BLUECAT",
+ *     selfManaged: true,
+ *     connectivity: "PRIVATE",
+ *     byol: true,
+ *     packageCode: "STD",
+ *     notifications: ["test@equinix.com"],
+ *     accountNumber: sv.apply(sv => sv.number),
+ *     version: "9.6.0",
+ *     coreCount: 2,
+ *     termLength: 12,
+ *     vendorConfiguration: {
+ *         hostname: "test",
+ *         privateAddress: "x.x.x.x",
+ *         privateCidrMask: "24",
+ *         privateGateway: "x.x.x.x",
+ *         licenseKey: "xxxxx-xxxxx-xxxxx-xxxxx-xxxxx",
+ *         licenseId: "xxxxxxxxxxxxxxx",
+ *     },
+ *     sshKey: {
+ *         username: "test-username",
+ *         keyName: testPublicKey.name,
+ *     },
+ *     secondaryDevice: {
+ *         name: "tf-bluecat-bdds-s",
+ *         metroCode: sv.apply(sv => sv.metroCode),
+ *         notifications: ["test@eq.com"],
+ *         accountNumber: sv.apply(sv => sv.number),
+ *         vendorConfiguration: {
+ *             hostname: "test",
+ *             privateAddress: "x.x.x.x",
+ *             privateCidrMask: "24",
+ *             privateGateway: "x.x.x.x",
+ *             licenseKey: "xxxxx-xxxxx-xxxxx-xxxxx-xxxxx",
+ *             licenseId: "xxxxxxxxxxxxxxx",
+ *         },
+ *     },
+ * });
+ * ```
+ * ### example 2
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const sv = equinix.networkedge.getAccountOutput({
+ *     metroCode: "SV",
+ * });
+ * const panwCluster = new equinix.networkedge.Device("panwCluster", {
+ *     name: "tf-panw",
+ *     metroCode: sv.apply(sv => sv.metroCode),
+ *     typeCode: "PA-VM",
+ *     selfManaged: true,
+ *     byol: true,
+ *     packageCode: "VM100",
+ *     notifications: [
+ *         "john@equinix.com",
+ *         "marry@equinix.com",
+ *         "fred@equinix.com",
+ *     ],
+ *     termLength: 12,
+ *     accountNumber: sv.apply(sv => sv.number),
+ *     version: "10.1.3",
+ *     interfaceCount: 10,
+ *     coreCount: 2,
+ *     sshKey: {
+ *         username: "test",
+ *         keyName: "test-key",
+ *     },
+ *     aclTemplateId: "0bff6e05-f0e7-44cd-804a-25b92b835f8b",
+ *     clusterDetails: {
+ *         clusterName: "tf-panw-cluster",
+ *         node0: {
+ *             vendorConfiguration: {
+ *                 hostname: "panw-node0",
+ *             },
+ *             licenseToken: "licenseToken",
+ *         },
+ *         node1: {
+ *             vendorConfiguration: {
+ *                 hostname: "panw-node1",
+ *             },
+ *             licenseToken: "licenseToken",
+ *         },
+ *     },
+ * });
+ * ```
+ * ### example 5
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const sv = equinix.networkedge.getAccountOutput({
+ *     name: "account-name",
+ *     metroCode: "SV",
+ * });
+ * const vsrxSingle = new equinix.networkedge.Device("vsrxSingle", {
+ *     name: "tf-c8kv-sdwan",
+ *     metroCode: sv.apply(sv => sv.metroCode),
+ *     typeCode: "VSRX",
+ *     selfManaged: true,
+ *     byol: true,
+ *     packageCode: "STD",
+ *     notifications: ["test@equinix.com"],
+ *     hostname: "VSRX",
+ *     accountNumber: sv.apply(sv => sv.number),
+ *     version: "23.2R1.13",
+ *     coreCount: 2,
+ *     termLength: 12,
+ *     additionalBandwidth: 5,
+ *     projectId: "a86d7112-d740-4758-9c9c-31e66373746b",
+ *     diverseDeviceId: "ed7891bd-15b4-4f72-ac56-d96cfdacddcc",
+ *     sshKey: {
+ *         username: "test-username",
+ *         keyName: "valid-key-name",
+ *     },
+ *     aclTemplateId: "3e548c02-9164-4197-aa23-05b1f644883c",
+ * });
+ * ```
+ * ### example 3
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const filepath = config.get("filepath") || "cloudInitFileFolder/TF-AVX-cloud-init-file.txt";
+ * const sv = equinix.networkedge.getAccountOutput({
+ *     metroCode: "SV",
+ * });
+ * const aviatrixCloudinitFile = new equinix.networkedge.NetworkFile("aviatrixCloudinitFile", {
+ *     fileName: "TF-AVX-cloud-init-file.txt",
+ *     content: std.fileOutput({
+ *         input: filepath,
+ *     }).apply(invoke => invoke.result),
+ *     metroCode: sv.apply(sv => sv.metroCode).apply((x) => equinix.index.Metro[x]),
+ *     deviceTypeCode: "AVIATRIX_EDGE",
+ *     processType: equinix.networkedge.FileType.CloudInit,
+ *     selfManaged: true,
+ *     byol: true,
+ * });
+ * const aviatrixSingle = new equinix.networkedge.Device("aviatrixSingle", {
+ *     name: "tf-aviatrix",
+ *     metroCode: sv.apply(sv => sv.metroCode),
+ *     typeCode: "AVIATRIX_EDGE",
+ *     selfManaged: true,
+ *     byol: true,
+ *     packageCode: "STD",
+ *     notifications: ["john@equinix.com"],
+ *     termLength: 12,
+ *     accountNumber: sv.apply(sv => sv.number),
+ *     version: "6.9",
+ *     coreCount: 2,
+ *     cloudInitFileId: aviatrixCloudinitFile.uuid,
+ *     aclTemplateId: "c06150ea-b604-4ad1-832a-d63936e9b938",
+ * });
+ * ```
+ * ### example 6
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const sv = equinix.networkedge.getAccountOutput({
+ *     name: "account-name",
+ *     metroCode: "SV",
+ * });
+ * const testPublicKey = new equinix.networkedge.SshKey("testPublicKey", {
+ *     name: "key-name",
+ *     publicKey: "ssh-dss key-value",
+ *     type: "DSA",
+ * });
+ * const aristaHa = new equinix.networkedge.Device("aristaHa", {
+ *     name: "tf-arista-p",
+ *     metroCode: sv.apply(sv => sv.metroCode),
+ *     typeCode: "ARISTA-ROUTER",
+ *     selfManaged: true,
+ *     connectivity: "PRIVATE",
+ *     byol: true,
+ *     packageCode: "CloudEOS",
+ *     notifications: ["test@equinix.com"],
+ *     hostname: "arista-p",
+ *     accountNumber: sv.apply(sv => sv.number),
+ *     version: "4.29.0",
+ *     coreCount: 4,
+ *     termLength: 12,
+ *     additionalBandwidth: 5,
+ *     sshKey: {
+ *         username: "test-username",
+ *         keyName: testPublicKey.name,
+ *     },
+ *     aclTemplateId: "c637a17b-7a6a-4486-924b-30e6c36904b0",
+ *     secondaryDevice: {
+ *         name: "tf-arista-s",
+ *         metroCode: sv.apply(sv => sv.metroCode),
+ *         hostname: "arista-s",
+ *         notifications: ["test@eq.com"],
+ *         accountNumber: sv.apply(sv => sv.number),
+ *         aclTemplateId: "fee5e2c0-6198-4ce6-9cbd-bbe6c1dbe138",
+ *     },
+ * });
  * ```
  *
  * ## Import

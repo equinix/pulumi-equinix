@@ -15,30 +15,29 @@ namespace Pulumi.Equinix.NetworkEdge
     /// ## Example Usage
     /// ```csharp
     /// using System.Collections.Generic;
-    /// using System.IO;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Equinix = Pulumi.Equinix;
+    /// using Std = Pulumi.Std;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var metro = config.Get("metro") ?? "SV";
-    ///     var networkFile = new Equinix.NetworkEdge.NetworkFile("networkFile", new()
+    ///     var filepath = config.Get("filepath") ?? "fileFolder/fileName.txt";
+    ///     var testFile = new Equinix.NetworkEdge.NetworkFile("test-file", new()
     ///     {
-    ///         FileName = "Aviatrix-ZTP-file",
-    ///         Content = File.ReadAllText("./../assets/aviatrix-cloud-init.txt"),
-    ///         MetroCode = metro,
+    ///         FileName = "fileName.txt",
+    ///         Content = Std.File.Invoke(new()
+    ///         {
+    ///             Input = filepath,
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         MetroCode = Equinix.Metro.SiliconValley,
     ///         DeviceTypeCode = "AVIATRIX_EDGE",
-    ///         ProcessType = "CLOUD_INIT",
+    ///         ProcessType = Equinix.NetworkEdge.FileType.CloudInit,
     ///         SelfManaged = true,
     ///         Byol = true,
     ///     });
     /// 
-    ///     return new Dictionary&lt;string, object?&gt;
-    ///     {
-    ///         ["networkFileId"] = networkFile.Id,
-    ///         ["networkFileStatus"] = networkFile.Status,
-    ///     };
     /// });
     /// ```
     /// 

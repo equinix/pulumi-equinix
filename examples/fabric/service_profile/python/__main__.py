@@ -1,46 +1,33 @@
 import pulumi
 import pulumi_equinix as equinix
 
-profile = equinix.fabric.ServiceProfile("profile",
-    name="Example Cloud Provider",
-    description="50 to 500 Mbps Hosted Connection to Example Cloud",
-    type="L2_PROFILE",
+new_service_profile = equinix.fabric.ServiceProfile("newServiceProfile",
+    description="Service Profile for Receiving Connections",
+    name="Name Of Business + Use Case Tag",
+    type=equinix.fabric.ProfileType.L2_PROFILE,
+    visibility=equinix.fabric.ProfileVisibility.PUBLIC,
+    notifications=[equinix.fabric.ServiceProfileNotificationArgs(
+        emails=["someone@sample.com"],
+        type="BANDWIDTH_ALERT",
+    )],
+    allowed_emails=[
+        "test@equinix.com",
+        "testagain@equinix.com",
+    ],
+    ports=[equinix.fabric.ServiceProfilePortArgs(
+        uuid="c791f8cb-5cc9-cc90-8ce0-306a5c00a4ee",
+        type="XF_PORT",
+    )],
     access_point_type_configs=[equinix.fabric.ServiceProfileAccessPointTypeConfigArgs(
-        type="COLO",
+        type=equinix.fabric.ProfileAccessPointType.COLO,
+        allow_remote_connections=True,
+        allow_custom_bandwidth=True,
+        allow_bandwidth_auto_approval=False,
+        connection_redundancy_required=False,
+        connection_label="Service Profile Tag1",
+        bandwidth_alert_threshold=10,
         supported_bandwidths=[
-            50,
             100,
-            200,
             500,
         ],
-        allow_remote_connections=True,
-        allow_custom_bandwidth=False,
-        allow_bandwidth_auto_approval=False,
-        link_protocol_config=equinix.fabric.ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs(
-            encapsulation_strategy="CTAGED",
-            reuse_vlan_s_tag=False,
-            encapsulation="DOT1Q",
-        ),
-        enable_auto_generate_service_key="false,",
-        connection_redundancy_required="false,",
-        api_config=equinix.fabric.ServiceProfileAccessPointTypeConfigApiConfigArgs(
-            api_available=True,
-            integration_id="Example-Connect-01",
-            bandwidth_from_api=False,
-        ),
-        connection_label="Virtual Circuit Name",
-        authentication_key=equinix.fabric.ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs(
-            required=True,
-            label="Example ACCOUNT ID",
-        ),
-    )],
-    account=equinix.fabric.ServiceProfileAccountArgs(
-        organization_name="Example Cloud",
-        global_organization_name="Example Global",
-    ),
-    metros=None,
-    visibility="PUBLIC",
-    marketing_info=equinix.fabric.ServiceProfileMarketingInfoArgs(
-        promotion=True,
-    ))
-pulumi.export("profileId", profile.id)
+    )])

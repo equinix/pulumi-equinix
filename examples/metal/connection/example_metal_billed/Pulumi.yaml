@@ -1,0 +1,26 @@
+name: equinix-metal-connection-example-metal-billed-token
+runtime: yaml
+description: An [Equinix Metal Interconnection](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/#fabric-virtual-connections-metal-billed) -Metal Billed- resource
+config:
+  projectId:
+    type: string
+  metro:
+    type: string
+    default: SV
+  speedInMbps:
+    type: integer
+    default: 1000
+resources:
+  connection:
+    type: equinix:metal:Interconnection
+    properties:
+      name: metal-to-cloudprovider
+      projectId: ${projectId}
+      type: shared
+      redundancy: primary
+      metro: ${metro}
+      speed: ${speedInMbps}Mbps
+      serviceTokenType: a_side
+outputs:
+  connectionStatus: ${connection.status}
+  connectionTokens: ${connection.serviceTokens}

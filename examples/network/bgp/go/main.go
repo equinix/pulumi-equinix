@@ -7,7 +7,7 @@ import (
 
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
-		bgp, err := networkedge.NewBgp(ctx, "bgp", &networkedge.BgpArgs{
+		_, err := networkedge.NewBgp(ctx, "test", &networkedge.BgpArgs{
 			ConnectionId:      pulumi.String("54014acf-9730-4b55-a791-459283d05fb1"),
 			LocalIpAddress:    pulumi.String("10.1.1.1/30"),
 			LocalAsn:          pulumi.Int(12345),
@@ -18,8 +18,6 @@ func main() {
 		if err != nil {
 			return err
 		}
-		ctx.Export("state", bgp.State)
-		ctx.Export("provisioningStatus", bgp.ProvisioningStatus)
 		return nil
 	})
 }

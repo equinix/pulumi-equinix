@@ -1,89 +1,111 @@
 ## Example Usage
 {{% example %}}
-
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
-import * as fs from "fs";
 
-const config = new pulumi.Config();
-const projectId = config.require("projectId");
-const sshKey = new equinix.metal.ProjectSshKey("sshKey", {
+const projectId = "<UUID_of_your_project>";
+const test = new equinix.metal.ProjectSshKey("test", {
+    name: "test",
+    publicKey: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDM/unxJeFqxsTJcu6mhqsMHSaVlpu+Jj/P+44zrm6X/MAoHSX3X9oLgujEjjZ74yLfdfe0bJrbL2YgJzNaEkIQQ1VPMHB5EhTKUBGnzlPP0hHTnxsjAm9qDHgUPgvgFDQSAMzdJRJ0Cexo16Ph9VxCoLh3dxiE7s2gaM2FdVg7P8aSxKypsxAhYV3D0AwqzoOyT6WWhBoQ0xZ85XevOTnJCpImSemEGs6nVGEsWcEc1d1YvdxFjAK4SdsKUMkj4Dsy/leKsdi/DEAf356vbMT1UHsXXvy5TlHu/Pa6qF53v32Enz+nhKy7/8W2Yt2yWx8HnQcT2rug9lvCXagJO6oauqRTO77C4QZn13ZLMZgLT66S/tNh2EX0gi6vmIs5dth8uF+K6nxIyKJXbcA4ASg7F1OJrHKFZdTc5v1cPeq6PcbqGgc+8SrPYQmzvQqLoMBuxyos2hUkYOmw3aeWJj9nFa8Wu5WaN89mUeOqSkU4S5cgUzWUOmKey56B/j/s1sVys9rMhZapVs0wL4L9GBBM48N5jAQZnnpo85A8KsZq5ME22bTLqnxsDXqDYZvS7PSI6Dxi7eleOFE/NYYDkrgDLHTQri8ucDMVeVWHgoMY2bPXdn7KKy5jW5jKsf8EPARXg77A4gRYmgKrcwIKqJEUPqyxJBe0CPoGTqgXPRsUiQ== tomk@hp2",
     projectId: projectId,
-    name: "johnKent",
-    publicKey: fs.readFileSync("/Users/John/.ssh/metal_rsa.pub"),
 });
-export const sshKeyId = sshKey.id;
+const testDevice = new equinix.metal.Device("testDevice", {
+    hostname: "test",
+    plan: equinix.metal.Plan.C3MediumX86,
+    metro: "ny",
+    operatingSystem: equinix.metal.OperatingSystem.Ubuntu20_04,
+    billingCycle: equinix.metal.BillingCycle.Hourly,
+    projectSshKeyIds: [test.id],
+    projectId: projectId,
+});
 ```
 ```python
 import pulumi
 import pulumi_equinix as equinix
 
-config = pulumi.Config()
-project_id = config.require("projectId")
-ssh_key = equinix.metal.ProjectSshKey("sshKey",
-    project_id=project_id,
-    name="johnKent",
-    public_key=(lambda path: open(path).read())("/Users/John/.ssh/metal_rsa.pub"))
-pulumi.export("sshKeyId", ssh_key.id)
+project_id = "<UUID_of_your_project>"
+test = equinix.metal.ProjectSshKey("test",
+    name="test",
+    public_key="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDM/unxJeFqxsTJcu6mhqsMHSaVlpu+Jj/P+44zrm6X/MAoHSX3X9oLgujEjjZ74yLfdfe0bJrbL2YgJzNaEkIQQ1VPMHB5EhTKUBGnzlPP0hHTnxsjAm9qDHgUPgvgFDQSAMzdJRJ0Cexo16Ph9VxCoLh3dxiE7s2gaM2FdVg7P8aSxKypsxAhYV3D0AwqzoOyT6WWhBoQ0xZ85XevOTnJCpImSemEGs6nVGEsWcEc1d1YvdxFjAK4SdsKUMkj4Dsy/leKsdi/DEAf356vbMT1UHsXXvy5TlHu/Pa6qF53v32Enz+nhKy7/8W2Yt2yWx8HnQcT2rug9lvCXagJO6oauqRTO77C4QZn13ZLMZgLT66S/tNh2EX0gi6vmIs5dth8uF+K6nxIyKJXbcA4ASg7F1OJrHKFZdTc5v1cPeq6PcbqGgc+8SrPYQmzvQqLoMBuxyos2hUkYOmw3aeWJj9nFa8Wu5WaN89mUeOqSkU4S5cgUzWUOmKey56B/j/s1sVys9rMhZapVs0wL4L9GBBM48N5jAQZnnpo85A8KsZq5ME22bTLqnxsDXqDYZvS7PSI6Dxi7eleOFE/NYYDkrgDLHTQri8ucDMVeVWHgoMY2bPXdn7KKy5jW5jKsf8EPARXg77A4gRYmgKrcwIKqJEUPqyxJBe0CPoGTqgXPRsUiQ== tomk@hp2",
+    project_id=project_id)
+test_device = equinix.metal.Device("testDevice",
+    hostname="test",
+    plan=equinix.metal.Plan.C3_MEDIUM_X86,
+    metro="ny",
+    operating_system=equinix.metal.OperatingSystem.UBUNTU20_04,
+    billing_cycle=equinix.metal.BillingCycle.HOURLY,
+    project_ssh_key_ids=[test.id],
+    project_id=project_id)
 ```
 ```go
 package main
 
 import (
-	"os"
-
 	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
-
-func readFileOrPanic(path string) pulumi.StringPtrInput {
-	data, err := os.ReadFile(path)
-	if err != nil {
-		panic(err.Error())
-	}
-	return pulumi.String(string(data))
-}
 
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
-		cfg := config.New(ctx, "")
-		projectId := cfg.Require("projectId")
-		sshKey, err := metal.NewProjectSshKey(ctx, "sshKey", &metal.ProjectSshKeyArgs{
+		projectId := "<UUID_of_your_project>"
+		test, err := metal.NewProjectSshKey(ctx, "test", &metal.ProjectSshKeyArgs{
+			Name:      pulumi.String("test"),
+			PublicKey: pulumi.String("ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDM/unxJeFqxsTJcu6mhqsMHSaVlpu+Jj/P+44zrm6X/MAoHSX3X9oLgujEjjZ74yLfdfe0bJrbL2YgJzNaEkIQQ1VPMHB5EhTKUBGnzlPP0hHTnxsjAm9qDHgUPgvgFDQSAMzdJRJ0Cexo16Ph9VxCoLh3dxiE7s2gaM2FdVg7P8aSxKypsxAhYV3D0AwqzoOyT6WWhBoQ0xZ85XevOTnJCpImSemEGs6nVGEsWcEc1d1YvdxFjAK4SdsKUMkj4Dsy/leKsdi/DEAf356vbMT1UHsXXvy5TlHu/Pa6qF53v32Enz+nhKy7/8W2Yt2yWx8HnQcT2rug9lvCXagJO6oauqRTO77C4QZn13ZLMZgLT66S/tNh2EX0gi6vmIs5dth8uF+K6nxIyKJXbcA4ASg7F1OJrHKFZdTc5v1cPeq6PcbqGgc+8SrPYQmzvQqLoMBuxyos2hUkYOmw3aeWJj9nFa8Wu5WaN89mUeOqSkU4S5cgUzWUOmKey56B/j/s1sVys9rMhZapVs0wL4L9GBBM48N5jAQZnnpo85A8KsZq5ME22bTLqnxsDXqDYZvS7PSI6Dxi7eleOFE/NYYDkrgDLHTQri8ucDMVeVWHgoMY2bPXdn7KKy5jW5jKsf8EPARXg77A4gRYmgKrcwIKqJEUPqyxJBe0CPoGTqgXPRsUiQ== tomk@hp2"),
 			ProjectId: pulumi.String(projectId),
-			Name:      pulumi.String("johnKent"),
-			PublicKey: readFileOrPanic("/Users/John/.ssh/metal_rsa.pub"),
 		})
 		if err != nil {
 			return err
 		}
-		ctx.Export("sshKeyId", sshKey.ID())
+		_, err = metal.NewDevice(ctx, "testDevice", &metal.DeviceArgs{
+			Hostname:        pulumi.String("test"),
+			Plan:            pulumi.String(metal.PlanC3MediumX86),
+			Metro:           pulumi.String("ny"),
+			OperatingSystem: pulumi.String(metal.OperatingSystem_Ubuntu20_04),
+			BillingCycle:    pulumi.String(metal.BillingCycleHourly),
+			ProjectSshKeyIds: pulumi.StringArray{
+				test.ID(),
+			},
+			ProjectId: pulumi.String(projectId),
+		})
+		if err != nil {
+			return err
+		}
 		return nil
 	})
 }
 ```
 ```csharp
 using System.Collections.Generic;
-using System.IO;
+using System.Linq;
 using Pulumi;
 using Equinix = Pulumi.Equinix;
 
 return await Deployment.RunAsync(() => 
 {
-    var config = new Config();
-    var projectId = config.Require("projectId");
-    var sshKey = new Equinix.Metal.ProjectSshKey("sshKey", new()
+    var projectId = "<UUID_of_your_project>";
+
+    var test = new Equinix.Metal.ProjectSshKey("test", new()
     {
+        Name = "test",
+        PublicKey = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDM/unxJeFqxsTJcu6mhqsMHSaVlpu+Jj/P+44zrm6X/MAoHSX3X9oLgujEjjZ74yLfdfe0bJrbL2YgJzNaEkIQQ1VPMHB5EhTKUBGnzlPP0hHTnxsjAm9qDHgUPgvgFDQSAMzdJRJ0Cexo16Ph9VxCoLh3dxiE7s2gaM2FdVg7P8aSxKypsxAhYV3D0AwqzoOyT6WWhBoQ0xZ85XevOTnJCpImSemEGs6nVGEsWcEc1d1YvdxFjAK4SdsKUMkj4Dsy/leKsdi/DEAf356vbMT1UHsXXvy5TlHu/Pa6qF53v32Enz+nhKy7/8W2Yt2yWx8HnQcT2rug9lvCXagJO6oauqRTO77C4QZn13ZLMZgLT66S/tNh2EX0gi6vmIs5dth8uF+K6nxIyKJXbcA4ASg7F1OJrHKFZdTc5v1cPeq6PcbqGgc+8SrPYQmzvQqLoMBuxyos2hUkYOmw3aeWJj9nFa8Wu5WaN89mUeOqSkU4S5cgUzWUOmKey56B/j/s1sVys9rMhZapVs0wL4L9GBBM48N5jAQZnnpo85A8KsZq5ME22bTLqnxsDXqDYZvS7PSI6Dxi7eleOFE/NYYDkrgDLHTQri8ucDMVeVWHgoMY2bPXdn7KKy5jW5jKsf8EPARXg77A4gRYmgKrcwIKqJEUPqyxJBe0CPoGTqgXPRsUiQ== tomk@hp2",
         ProjectId = projectId,
-        Name = "johnKent",
-        PublicKey = File.ReadAllText("/Users/John/.ssh/metal_rsa.pub"),
     });
 
-    return new Dictionary<string, object?>
+    var testDevice = new Equinix.Metal.Device("testDevice", new()
     {
-        ["sshKeyId"] = sshKey.Id,
-    };
+        Hostname = "test",
+        Plan = Equinix.Metal.Plan.C3MediumX86,
+        Metro = "ny",
+        OperatingSystem = Equinix.Metal.OperatingSystem.Ubuntu20_04,
+        BillingCycle = Equinix.Metal.BillingCycle.Hourly,
+        ProjectSshKeyIds = new[]
+        {
+            test.Id,
+        },
+        ProjectId = projectId,
+    });
+
 });
 ```
 ```java
@@ -91,10 +113,15 @@ package generated_program;
 
 import com.pulumi.Context;
 import com.pulumi.Pulumi;
-import com.equinix.pulumi.metal.ProjectSshKey;
-import com.equinix.pulumi.metal.ProjectSshKeyArgs;
-
-import java.io.IOException;
+import com.pulumi.core.Output;
+import com.pulumi.equinix.metal.ProjectSshKey;
+import com.pulumi.equinix.metal.ProjectSshKeyArgs;
+import com.pulumi.equinix.metal.Device;
+import com.pulumi.equinix.metal.DeviceArgs;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
@@ -104,39 +131,47 @@ public class App {
     }
 
     public static void stack(Context ctx) {
-        final var config = ctx.config();
-        final var projectId = config.get("projectId").get();
+        final var projectId = "<UUID_of_your_project>";
 
-        String content = null;
-        try {
-            content = Files.readString(Paths.get("/Users/John/.ssh/metal_rsa.pub"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        var sshKey = new ProjectSshKey("sshKey", ProjectSshKeyArgs.builder()        
+        var test = new ProjectSshKey("test", ProjectSshKeyArgs.builder()
+            .name("test")
+            .publicKey("ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDM/unxJeFqxsTJcu6mhqsMHSaVlpu+Jj/P+44zrm6X/MAoHSX3X9oLgujEjjZ74yLfdfe0bJrbL2YgJzNaEkIQQ1VPMHB5EhTKUBGnzlPP0hHTnxsjAm9qDHgUPgvgFDQSAMzdJRJ0Cexo16Ph9VxCoLh3dxiE7s2gaM2FdVg7P8aSxKypsxAhYV3D0AwqzoOyT6WWhBoQ0xZ85XevOTnJCpImSemEGs6nVGEsWcEc1d1YvdxFjAK4SdsKUMkj4Dsy/leKsdi/DEAf356vbMT1UHsXXvy5TlHu/Pa6qF53v32Enz+nhKy7/8W2Yt2yWx8HnQcT2rug9lvCXagJO6oauqRTO77C4QZn13ZLMZgLT66S/tNh2EX0gi6vmIs5dth8uF+K6nxIyKJXbcA4ASg7F1OJrHKFZdTc5v1cPeq6PcbqGgc+8SrPYQmzvQqLoMBuxyos2hUkYOmw3aeWJj9nFa8Wu5WaN89mUeOqSkU4S5cgUzWUOmKey56B/j/s1sVys9rMhZapVs0wL4L9GBBM48N5jAQZnnpo85A8KsZq5ME22bTLqnxsDXqDYZvS7PSI6Dxi7eleOFE/NYYDkrgDLHTQri8ucDMVeVWHgoMY2bPXdn7KKy5jW5jKsf8EPARXg77A4gRYmgKrcwIKqJEUPqyxJBe0CPoGTqgXPRsUiQ== tomk@hp2")
             .projectId(projectId)
-            .name("johnKent")
-            .publicKey(content)
             .build());
 
-        ctx.export("sshKeyId", sshKey.id());
+        var testDevice = new Device("testDevice", DeviceArgs.builder()
+            .hostname("test")
+            .plan("c3.medium.x86")
+            .metro("ny")
+            .operatingSystem("ubuntu_20_04")
+            .billingCycle("hourly")
+            .projectSshKeyIds(test.id())
+            .projectId(projectId)
+            .build());
+
     }
 }
 ```
 ```yaml
-config:
-  projectId:
-    type: string
-resources:
-  sshKey:
+  test:
     type: equinix:metal:ProjectSshKey
     properties:
+      name: test
+      publicKey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDM/unxJeFqxsTJcu6mhqsMHSaVlpu+Jj/P+44zrm6X/MAoHSX3X9oLgujEjjZ74yLfdfe0bJrbL2YgJzNaEkIQQ1VPMHB5EhTKUBGnzlPP0hHTnxsjAm9qDHgUPgvgFDQSAMzdJRJ0Cexo16Ph9VxCoLh3dxiE7s2gaM2FdVg7P8aSxKypsxAhYV3D0AwqzoOyT6WWhBoQ0xZ85XevOTnJCpImSemEGs6nVGEsWcEc1d1YvdxFjAK4SdsKUMkj4Dsy/leKsdi/DEAf356vbMT1UHsXXvy5TlHu/Pa6qF53v32Enz+nhKy7/8W2Yt2yWx8HnQcT2rug9lvCXagJO6oauqRTO77C4QZn13ZLMZgLT66S/tNh2EX0gi6vmIs5dth8uF+K6nxIyKJXbcA4ASg7F1OJrHKFZdTc5v1cPeq6PcbqGgc+8SrPYQmzvQqLoMBuxyos2hUkYOmw3aeWJj9nFa8Wu5WaN89mUeOqSkU4S5cgUzWUOmKey56B/j/s1sVys9rMhZapVs0wL4L9GBBM48N5jAQZnnpo85A8KsZq5ME22bTLqnxsDXqDYZvS7PSI6Dxi7eleOFE/NYYDkrgDLHTQri8ucDMVeVWHgoMY2bPXdn7KKy5jW5jKsf8EPARXg77A4gRYmgKrcwIKqJEUPqyxJBe0CPoGTqgXPRsUiQ== tomk@hp2
       projectId: ${projectId}
-      name: johnKent
-      publicKey:
-        fn::readFile: /Users/John/.ssh/metal_rsa.pub
-outputs:
-  sshKeyId: ${sshKey.id}
+  testDevice:
+    type: equinix:metal:Device
+    name: test
+    properties:
+      hostname: test
+      plan: c3.medium.x86
+      metro: ny
+      operatingSystem: ubuntu_20_04
+      billingCycle: hourly
+      projectSshKeyIds:
+        - ${test.id}
+      projectId: ${projectId}
+variables:
+  projectId: <UUID_of_your_project>
 ```
 {{% /example %}}

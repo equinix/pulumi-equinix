@@ -33,6 +33,7 @@ import (
 // * `portId` - UUID of device port.
 //
 // ## Example Usage
+// ### example 2
 // ```go
 // package main
 //
@@ -40,32 +41,116 @@ import (
 //
 //	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			deviceId := cfg.Require("deviceId")
-//			portName := "eth1"
-//			if param := cfg.Get("portName"); param != "" {
-//				portName = param
-//			}
-//			vxlanId := 1004
-//			if param := cfg.GetInt("vxlanId"); param != 0 {
-//				vxlanId = param
-//			}
-//			attach, err := metal.NewPortVlanAttachment(ctx, "attach", &metal.PortVlanAttachmentArgs{
-//				DeviceId: pulumi.String(deviceId),
-//				PortName: pulumi.String(portName),
-//				VlanVnid: pulumi.Int(vxlanId),
+//			test, err := metal.NewDevice(ctx, "test", &metal.DeviceArgs{
+//				Hostname:        pulumi.String("test"),
+//				Plan:            pulumi.String(metal.PlanC3SmallX86),
+//				Metro:           pulumi.String("ny"),
+//				OperatingSystem: pulumi.String(metal.OperatingSystem_Ubuntu20_04),
+//				BillingCycle:    pulumi.String(metal.BillingCycleHourly),
+//				ProjectId:       pulumi.Any(projectId),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("attachId", attach.ID())
-//			ctx.Export("portId", attach.PortId)
+//			testDeviceNetworkType, err := metal.NewDeviceNetworkType(ctx, "testDeviceNetworkType", &metal.DeviceNetworkTypeArgs{
+//				DeviceId: test.ID(),
+//				Type:     pulumi.String("layer2-individual"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			test1, err := metal.NewVlan(ctx, "test1", &metal.VlanArgs{
+//				Description: pulumi.String("VLAN in New York"),
+//				Metro:       pulumi.String("ny"),
+//				ProjectId:   pulumi.Any(projectId),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			test2, err := metal.NewVlan(ctx, "test2", &metal.VlanArgs{
+//				Description: pulumi.String("VLAN in New Jersey"),
+//				Metro:       pulumi.String("ny"),
+//				ProjectId:   pulumi.Any(projectId),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			test1PortVlanAttachment, err := metal.NewPortVlanAttachment(ctx, "test1PortVlanAttachment", &metal.PortVlanAttachmentArgs{
+//				DeviceId: testDeviceNetworkType.ID(),
+//				VlanVnid: test1.Vxlan,
+//				PortName: pulumi.String("eth1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = metal.NewPortVlanAttachment(ctx, "test2PortVlanAttachment", &metal.PortVlanAttachmentArgs{
+//				DeviceId: testDeviceNetworkType.ID(),
+//				VlanVnid: test2.Vxlan,
+//				PortName: pulumi.String("eth1"),
+//				Native:   pulumi.Bool(true),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				test1PortVlanAttachment,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### example 1
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			test, err := metal.NewVlan(ctx, "test", &metal.VlanArgs{
+//				Description: pulumi.String("VLAN in New York"),
+//				Metro:       pulumi.String("ny"),
+//				ProjectId:   pulumi.Any(projectId),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			testDevice, err := metal.NewDevice(ctx, "testDevice", &metal.DeviceArgs{
+//				Hostname:        pulumi.String("test"),
+//				Plan:            pulumi.String(metal.PlanC3SmallX86),
+//				Metro:           pulumi.String("ny"),
+//				OperatingSystem: pulumi.String(metal.OperatingSystem_Ubuntu20_04),
+//				BillingCycle:    pulumi.String(metal.BillingCycleHourly),
+//				ProjectId:       pulumi.Any(projectId),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			testDeviceNetworkType, err := metal.NewDeviceNetworkType(ctx, "testDeviceNetworkType", &metal.DeviceNetworkTypeArgs{
+//				DeviceId: testDevice.ID(),
+//				Type:     pulumi.String("hybrid"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = metal.NewPortVlanAttachment(ctx, "testPortVlanAttachment", &metal.PortVlanAttachmentArgs{
+//				DeviceId: testDeviceNetworkType.ID(),
+//				PortName: pulumi.String("eth1"),
+//				VlanVnid: test.Vxlan,
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			return nil
 //		})
 //	}

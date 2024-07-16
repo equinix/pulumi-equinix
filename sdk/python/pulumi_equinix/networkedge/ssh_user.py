@@ -153,16 +153,13 @@ class SshUser(pulumi.CustomResource):
         import pulumi
         import pulumi_equinix as equinix
 
-        config = pulumi.Config()
-        device1_id = config.require("device1Id")
-        device2_id = config.require("device2Id")
-        ssh_user = equinix.networkedge.SshUser("sshUser",
-            username="johnKent",
+        john = equinix.networkedge.SshUser("john",
+            username="john",
+            password="secret",
             device_ids=[
-                device1_id,
-                device2_id,
+                "csr1000v-ha-uuid",
+                "csr1000v-ha-redundant-uuid",
             ])
-        pulumi.export("sshUserId", ssh_user.id)
         ```
 
         ## Import
@@ -193,16 +190,13 @@ class SshUser(pulumi.CustomResource):
         import pulumi
         import pulumi_equinix as equinix
 
-        config = pulumi.Config()
-        device1_id = config.require("device1Id")
-        device2_id = config.require("device2Id")
-        ssh_user = equinix.networkedge.SshUser("sshUser",
-            username="johnKent",
+        john = equinix.networkedge.SshUser("john",
+            username="john",
+            password="secret",
             device_ids=[
-                device1_id,
-                device2_id,
+                "csr1000v-ha-uuid",
+                "csr1000v-ha-redundant-uuid",
             ])
-        pulumi.export("sshUserId", ssh_user.id)
         ```
 
         ## Import

@@ -19,70 +19,62 @@ namespace Pulumi.Equinix.Fabric
     /// ## Example Usage
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Equinix = Pulumi.Equinix;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var profile = new Equinix.Fabric.ServiceProfile("profile", new()
+    ///     var newServiceProfile = new Equinix.Fabric.ServiceProfile("newServiceProfile", new()
     ///     {
-    ///         Name = "Example Cloud Provider",
-    ///         Description = "50 to 500 Mbps Hosted Connection to Example Cloud",
-    ///         Type = "L2_PROFILE",
+    ///         Description = "Service Profile for Receiving Connections",
+    ///         Name = "Name Of Business + Use Case Tag",
+    ///         Type = Equinix.Fabric.ProfileType.L2Profile,
+    ///         Visibility = Equinix.Fabric.ProfileVisibility.Public,
+    ///         Notifications = new[]
+    ///         {
+    ///             new Equinix.Fabric.Inputs.ServiceProfileNotificationArgs
+    ///             {
+    ///                 Emails = new[]
+    ///                 {
+    ///                     "someone@sample.com",
+    ///                 },
+    ///                 Type = "BANDWIDTH_ALERT",
+    ///             },
+    ///         },
+    ///         AllowedEmails = new[]
+    ///         {
+    ///             "test@equinix.com",
+    ///             "testagain@equinix.com",
+    ///         },
+    ///         Ports = new[]
+    ///         {
+    ///             new Equinix.Fabric.Inputs.ServiceProfilePortArgs
+    ///             {
+    ///                 Uuid = "c791f8cb-5cc9-cc90-8ce0-306a5c00a4ee",
+    ///                 Type = "XF_PORT",
+    ///             },
+    ///         },
     ///         AccessPointTypeConfigs = new[]
     ///         {
     ///             new Equinix.Fabric.Inputs.ServiceProfileAccessPointTypeConfigArgs
     ///             {
-    ///                 Type = "COLO",
+    ///                 Type = Equinix.Fabric.ProfileAccessPointType.Colo,
+    ///                 AllowRemoteConnections = true,
+    ///                 AllowCustomBandwidth = true,
+    ///                 AllowBandwidthAutoApproval = false,
+    ///                 ConnectionRedundancyRequired = false,
+    ///                 ConnectionLabel = "Service Profile Tag1",
+    ///                 BandwidthAlertThreshold = 10,
     ///                 SupportedBandwidths = new[]
     ///                 {
-    ///                     50,
     ///                     100,
-    ///                     200,
     ///                     500,
-    ///                 },
-    ///                 AllowRemoteConnections = true,
-    ///                 AllowCustomBandwidth = false,
-    ///                 AllowBandwidthAutoApproval = false,
-    ///                 LinkProtocolConfig = new Equinix.Fabric.Inputs.ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs
-    ///                 {
-    ///                     EncapsulationStrategy = "CTAGED",
-    ///                     ReuseVlanSTag = false,
-    ///                     Encapsulation = "DOT1Q",
-    ///                 },
-    ///                 EnableAutoGenerateServiceKey = "false,",
-    ///                 ConnectionRedundancyRequired = "false,",
-    ///                 ApiConfig = new Equinix.Fabric.Inputs.ServiceProfileAccessPointTypeConfigApiConfigArgs
-    ///                 {
-    ///                     ApiAvailable = true,
-    ///                     IntegrationId = "Example-Connect-01",
-    ///                     BandwidthFromApi = false,
-    ///                 },
-    ///                 ConnectionLabel = "Virtual Circuit Name",
-    ///                 AuthenticationKey = new Equinix.Fabric.Inputs.ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs
-    ///                 {
-    ///                     Required = true,
-    ///                     Label = "Example ACCOUNT ID",
     ///                 },
     ///             },
     ///         },
-    ///         Account = new Equinix.Fabric.Inputs.ServiceProfileAccountArgs
-    ///         {
-    ///             OrganizationName = "Example Cloud",
-    ///             GlobalOrganizationName = "Example Global",
-    ///         },
-    ///         Metros = null,
-    ///         Visibility = "PUBLIC",
-    ///         MarketingInfo = new Equinix.Fabric.Inputs.ServiceProfileMarketingInfoArgs
-    ///         {
-    ///             Promotion = true,
-    ///         },
     ///     });
     /// 
-    ///     return new Dictionary&lt;string, object?&gt;
-    ///     {
-    ///         ["profileId"] = profile.Id,
-    ///     };
     /// });
     /// ```
     /// </summary>

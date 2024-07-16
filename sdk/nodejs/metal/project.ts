@@ -13,19 +13,40 @@ import * as utilities from "../utilities";
  * > **NOTE:** Keep in mind that Equinix Metal invoicing is per project, so creating many `equinix.metal.Project` resources will affect the rendered invoice. If you want to keep your Equinix Metal bill simple and easy to review, please re-use your existing projects.
  *
  * ## Example Usage
- *
+ * ### example 3
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
  *
- * const config = new pulumi.Config();
- * const organizationId = config.require("organizationId");
- * const name = config.get("name") || "Default Project";
- * const projectResource = new equinix.metal.Project("project", {
- *     name: name,
- *     organizationId: organizationId,
+ * const existingProject = new equinix.metal.Project("existingProject", {
+ *     name: "The name of the project (if different, will rewrite)",
+ *     bgpConfig: {
+ *         deploymentType: "local",
+ *         md5: "C179c28c41a85b",
+ *         asn: 65000,
+ *     },
  * });
- * export const projectId = projectResource.id;
+ * ```
+ * ### example 2
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const tfProject1 = new equinix.metal.Project("tfProject1", {
+ *     name: "tftest",
+ *     bgpConfig: {
+ *         deploymentType: "local",
+ *         md5: "C179c28c41a85b",
+ *         asn: 65000,
+ *     },
+ * });
+ * ```
+ * ### example 1
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const tfProject1 = new equinix.metal.Project("tfProject1", {name: "Terraform Fun"});
  * ```
  *
  * ## Import

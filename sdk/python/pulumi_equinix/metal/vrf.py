@@ -235,26 +235,62 @@ class Vrf(pulumi.CustomResource):
         See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
 
         ## Example Usage
+        ### example 2
         ```python
         import pulumi
         import pulumi_equinix as equinix
 
-        config = pulumi.Config()
-        project_id = config.require("projectId")
-        metro = config.get("metro")
-        if metro is None:
-            metro = "DA"
-        vrf = equinix.metal.Vrf("vrf",
-            description="VRF with ASN 65000 and a pool of address space",
+        example = equinix.metal.ReservedIpBlock("example",
+            description="Reserved IP block (192.168.100.0/29) taken from on of the ranges in the VRF's pool of address space.",
+            project_id=example_equinix_metal_project["id"],
+            metro=example_equinix_metal_vrf["metro"],
+            type="vrf",
+            vrf_id=example_equinix_metal_vrf["id"],
+            cidr=29,
+            network="192.168.100.0")
+        example_vlan = equinix.metal.Vlan("exampleVlan",
+            description="A VLAN for Layer2 and Hybrid Metal devices",
+            metro=example_equinix_metal_vrf["metro"],
+            project_id=example_equinix_metal_project["id"])
+        example_gateway = equinix.metal.Gateway("exampleGateway",
+            project_id=example_equinix_metal_project["id"],
+            vlan_id=example_vlan.id,
+            ip_reservation_id=example.id)
+        ```
+        ### example 1
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        example = equinix.metal.Project("example", name="example")
+        example_vrf = equinix.metal.Vrf("exampleVrf",
+            description="VRF with ASN 65000 and a pool of address space that includes 192.168.100.0/25",
             name="example-vrf",
-            metro=metro,
+            metro="da",
             local_asn=65000,
             ip_ranges=[
                 "192.168.100.0/25",
                 "192.168.200.0/25",
             ],
-            project_id=project_id)
-        pulumi.export("vrfId", vrf.id)
+            project_id=example.id)
+        ```
+        ### example 3
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        example_virtual_circuit = equinix.metal.VirtualCircuit("exampleVirtualCircuit",
+            name="example-vc",
+            description="Virtual Circuit",
+            connection_id=example["id"],
+            project_id=example_equinix_metal_project["id"],
+            port_id=example["ports"][0]["id"],
+            nni_vlan=1024,
+            vrf_id=example_equinix_metal_vrf["id"],
+            peer_asn=65530,
+            subnet="192.168.100.16/31",
+            metal_ip="192.168.100.16",
+            customer_ip="192.168.100.17")
         ```
 
         ## Import
@@ -286,26 +322,62 @@ class Vrf(pulumi.CustomResource):
         See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
 
         ## Example Usage
+        ### example 2
         ```python
         import pulumi
         import pulumi_equinix as equinix
 
-        config = pulumi.Config()
-        project_id = config.require("projectId")
-        metro = config.get("metro")
-        if metro is None:
-            metro = "DA"
-        vrf = equinix.metal.Vrf("vrf",
-            description="VRF with ASN 65000 and a pool of address space",
+        example = equinix.metal.ReservedIpBlock("example",
+            description="Reserved IP block (192.168.100.0/29) taken from on of the ranges in the VRF's pool of address space.",
+            project_id=example_equinix_metal_project["id"],
+            metro=example_equinix_metal_vrf["metro"],
+            type="vrf",
+            vrf_id=example_equinix_metal_vrf["id"],
+            cidr=29,
+            network="192.168.100.0")
+        example_vlan = equinix.metal.Vlan("exampleVlan",
+            description="A VLAN for Layer2 and Hybrid Metal devices",
+            metro=example_equinix_metal_vrf["metro"],
+            project_id=example_equinix_metal_project["id"])
+        example_gateway = equinix.metal.Gateway("exampleGateway",
+            project_id=example_equinix_metal_project["id"],
+            vlan_id=example_vlan.id,
+            ip_reservation_id=example.id)
+        ```
+        ### example 1
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        example = equinix.metal.Project("example", name="example")
+        example_vrf = equinix.metal.Vrf("exampleVrf",
+            description="VRF with ASN 65000 and a pool of address space that includes 192.168.100.0/25",
             name="example-vrf",
-            metro=metro,
+            metro="da",
             local_asn=65000,
             ip_ranges=[
                 "192.168.100.0/25",
                 "192.168.200.0/25",
             ],
-            project_id=project_id)
-        pulumi.export("vrfId", vrf.id)
+            project_id=example.id)
+        ```
+        ### example 3
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        example_virtual_circuit = equinix.metal.VirtualCircuit("exampleVirtualCircuit",
+            name="example-vc",
+            description="Virtual Circuit",
+            connection_id=example["id"],
+            project_id=example_equinix_metal_project["id"],
+            port_id=example["ports"][0]["id"],
+            nni_vlan=1024,
+            vrf_id=example_equinix_metal_vrf["id"],
+            peer_asn=65530,
+            subnet="192.168.100.16/31",
+            metal_ip="192.168.100.16",
+            customer_ip="192.168.100.17")
         ```
 
         ## Import

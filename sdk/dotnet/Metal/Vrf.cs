@@ -15,34 +15,96 @@ namespace Pulumi.Equinix.Metal
     /// See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
     /// 
     /// ## Example Usage
+    /// ### example 2
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Equinix = Pulumi.Equinix;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var config = new Config();
-    ///     var projectId = config.Require("projectId");
-    ///     var metro = config.Get("metro") ?? "DA";
-    ///     var vrf = new Equinix.Metal.Vrf("vrf", new()
+    ///     var example = new Equinix.Metal.ReservedIpBlock("example", new()
     ///     {
-    ///         Description = "VRF with ASN 65000 and a pool of address space",
+    ///         Description = "Reserved IP block (192.168.100.0/29) taken from on of the ranges in the VRF's pool of address space.",
+    ///         ProjectId = exampleEquinixMetalProject.Id,
+    ///         Metro = exampleEquinixMetalVrf.Metro,
+    ///         Type = "vrf",
+    ///         VrfId = exampleEquinixMetalVrf.Id,
+    ///         Cidr = 29,
+    ///         Network = "192.168.100.0",
+    ///     });
+    /// 
+    ///     var exampleVlan = new Equinix.Metal.Vlan("exampleVlan", new()
+    ///     {
+    ///         Description = "A VLAN for Layer2 and Hybrid Metal devices",
+    ///         Metro = exampleEquinixMetalVrf.Metro,
+    ///         ProjectId = exampleEquinixMetalProject.Id,
+    ///     });
+    /// 
+    ///     var exampleGateway = new Equinix.Metal.Gateway("exampleGateway", new()
+    ///     {
+    ///         ProjectId = exampleEquinixMetalProject.Id,
+    ///         VlanId = exampleVlan.Id,
+    ///         IpReservationId = example.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### example 1
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Equinix = Pulumi.Equinix;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Equinix.Metal.Project("example", new()
+    ///     {
+    ///         Name = "example",
+    ///     });
+    /// 
+    ///     var exampleVrf = new Equinix.Metal.Vrf("exampleVrf", new()
+    ///     {
+    ///         Description = "VRF with ASN 65000 and a pool of address space that includes 192.168.100.0/25",
     ///         Name = "example-vrf",
-    ///         Metro = metro,
+    ///         Metro = "da",
     ///         LocalAsn = 65000,
     ///         IpRanges = new[]
     ///         {
     ///             "192.168.100.0/25",
     ///             "192.168.200.0/25",
     ///         },
-    ///         ProjectId = projectId,
+    ///         ProjectId = example.Id,
     ///     });
     /// 
-    ///     return new Dictionary&lt;string, object?&gt;
+    /// });
+    /// ```
+    /// ### example 3
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Equinix = Pulumi.Equinix;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleVirtualCircuit = new Equinix.Metal.VirtualCircuit("exampleVirtualCircuit", new()
     ///     {
-    ///         ["vrfId"] = vrf.Id,
-    ///     };
+    ///         Name = "example-vc",
+    ///         Description = "Virtual Circuit",
+    ///         ConnectionId = example.Id,
+    ///         ProjectId = exampleEquinixMetalProject.Id,
+    ///         PortId = example.Ports[0].Id,
+    ///         NniVlan = 1024,
+    ///         VrfId = exampleEquinixMetalVrf.Id,
+    ///         PeerAsn = 65530,
+    ///         Subnet = "192.168.100.16/31",
+    ///         MetalIp = "192.168.100.16",
+    ///         CustomerIp = "192.168.100.17",
+    ///     });
+    /// 
     /// });
     /// ```
     /// 

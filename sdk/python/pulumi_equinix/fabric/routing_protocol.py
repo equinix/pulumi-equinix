@@ -534,22 +534,70 @@ class RoutingProtocol(pulumi.CustomResource):
         * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
 
         ## Example Usage
+        ### example 3
         ```python
         import pulumi
         import pulumi_equinix as equinix
 
-        config = pulumi.Config()
-        connection_id = config.require("connectionId")
-        routing_protocol = equinix.fabric.RoutingProtocol("RoutingProtocol",
-            connection_uuid=connection_id,
-            name="My-Direct-route-1",
+        direct = equinix.fabric.RoutingProtocol("direct",
+            connection_uuid="<some_id>",
             type="DIRECT",
+            name="direct_rp",
             direct_ipv4=equinix.fabric.RoutingProtocolDirectIpv4Args(
-                equinix_iface_ip="192.168.100.1/30",
+                equinix_iface_ip="190.1.1.1/30",
+            ),
+            direct_ipv6=equinix.fabric.RoutingProtocolDirectIpv6Args(
+                equinix_iface_ip="190::1:1/126",
             ))
-        pulumi.export("routingProtocolId", routing_protocol.id)
-        pulumi.export("routingProtocolState", routing_protocol.state)
-        pulumi.export("routingProtocolEquinixAsn", routing_protocol.equinix_asn)
+        bgp = equinix.fabric.RoutingProtocol("bgp",
+            connection_uuid="<same_connection_id_as_first_equinix_fabric_routing_protocol>",
+            type="BGP",
+            name="bgp_rp",
+            bgp_ipv4=equinix.fabric.RoutingProtocolBgpIpv4Args(
+                customer_peer_ip="190.1.1.2",
+                enabled=True,
+            ),
+            bgp_ipv6=equinix.fabric.RoutingProtocolBgpIpv6Args(
+                customer_peer_ip="190::1:2",
+                enabled=True,
+            ),
+            customer_asn=4532,
+            opts = pulumi.ResourceOptions(depends_on=[direct]))
+        ```
+        ### example 1
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        direct = equinix.fabric.RoutingProtocol("direct",
+            connection_uuid="<some_id>",
+            type="DIRECT",
+            name="direct_rp",
+            direct_ipv4=equinix.fabric.RoutingProtocolDirectIpv4Args(
+                equinix_iface_ip="190.1.1.1/30",
+            ),
+            direct_ipv6=equinix.fabric.RoutingProtocolDirectIpv6Args(
+                equinix_iface_ip="190::1:1/126",
+            ))
+        ```
+        ### example 2
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        bgp = equinix.fabric.RoutingProtocol("bgp",
+            connection_uuid="<same_connection_id_as_first_equinix_fabric_routing_protocol>",
+            type="BGP",
+            name="bgp_rp",
+            bgp_ipv4=equinix.fabric.RoutingProtocolBgpIpv4Args(
+                customer_peer_ip="190.1.1.2",
+                enabled=True,
+            ),
+            bgp_ipv6=equinix.fabric.RoutingProtocolBgpIpv6Args(
+                customer_peer_ip="190::1:2",
+                enabled=True,
+            ),
+            customer_asn=4532)
         ```
 
         :param str resource_name: The name of the resource.
@@ -581,22 +629,70 @@ class RoutingProtocol(pulumi.CustomResource):
         * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
 
         ## Example Usage
+        ### example 3
         ```python
         import pulumi
         import pulumi_equinix as equinix
 
-        config = pulumi.Config()
-        connection_id = config.require("connectionId")
-        routing_protocol = equinix.fabric.RoutingProtocol("RoutingProtocol",
-            connection_uuid=connection_id,
-            name="My-Direct-route-1",
+        direct = equinix.fabric.RoutingProtocol("direct",
+            connection_uuid="<some_id>",
             type="DIRECT",
+            name="direct_rp",
             direct_ipv4=equinix.fabric.RoutingProtocolDirectIpv4Args(
-                equinix_iface_ip="192.168.100.1/30",
+                equinix_iface_ip="190.1.1.1/30",
+            ),
+            direct_ipv6=equinix.fabric.RoutingProtocolDirectIpv6Args(
+                equinix_iface_ip="190::1:1/126",
             ))
-        pulumi.export("routingProtocolId", routing_protocol.id)
-        pulumi.export("routingProtocolState", routing_protocol.state)
-        pulumi.export("routingProtocolEquinixAsn", routing_protocol.equinix_asn)
+        bgp = equinix.fabric.RoutingProtocol("bgp",
+            connection_uuid="<same_connection_id_as_first_equinix_fabric_routing_protocol>",
+            type="BGP",
+            name="bgp_rp",
+            bgp_ipv4=equinix.fabric.RoutingProtocolBgpIpv4Args(
+                customer_peer_ip="190.1.1.2",
+                enabled=True,
+            ),
+            bgp_ipv6=equinix.fabric.RoutingProtocolBgpIpv6Args(
+                customer_peer_ip="190::1:2",
+                enabled=True,
+            ),
+            customer_asn=4532,
+            opts = pulumi.ResourceOptions(depends_on=[direct]))
+        ```
+        ### example 1
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        direct = equinix.fabric.RoutingProtocol("direct",
+            connection_uuid="<some_id>",
+            type="DIRECT",
+            name="direct_rp",
+            direct_ipv4=equinix.fabric.RoutingProtocolDirectIpv4Args(
+                equinix_iface_ip="190.1.1.1/30",
+            ),
+            direct_ipv6=equinix.fabric.RoutingProtocolDirectIpv6Args(
+                equinix_iface_ip="190::1:1/126",
+            ))
+        ```
+        ### example 2
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        bgp = equinix.fabric.RoutingProtocol("bgp",
+            connection_uuid="<same_connection_id_as_first_equinix_fabric_routing_protocol>",
+            type="BGP",
+            name="bgp_rp",
+            bgp_ipv4=equinix.fabric.RoutingProtocolBgpIpv4Args(
+                customer_peer_ip="190.1.1.2",
+                enabled=True,
+            ),
+            bgp_ipv6=equinix.fabric.RoutingProtocolBgpIpv6Args(
+                customer_peer_ip="190::1:2",
+                enabled=True,
+            ),
+            customer_asn=4532)
         ```
 
         :param str resource_name: The name of the resource.

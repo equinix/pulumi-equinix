@@ -20,27 +20,20 @@ namespace Pulumi.Equinix.Metal
     /// ## Example Usage
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Equinix = Pulumi.Equinix;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var config = new Config();
-    ///     var projectId = config.Require("projectId");
-    ///     var metro = config.Get("metro") ?? "DA";
-    ///     var vxlan = config.RequireNumber("vxlan");
-    ///     var vlan = new Equinix.Metal.Vlan("vlan", new()
+    ///     var vlan1 = new Equinix.Metal.Vlan("vlan1", new()
     ///     {
-    ///         Description = "VLAN in Dallas",
+    ///         Description = "VLAN in New Jersey",
+    ///         Metro = "sv",
     ///         ProjectId = projectId,
-    ///         Metro = metro,
-    ///         Vxlan = vxlan,
+    ///         Vxlan = 1040,
     ///     });
     /// 
-    ///     return new Dictionary&lt;string, object?&gt;
-    ///     {
-    ///         ["vlanId"] = vlan.Id,
-    ///     };
     /// });
     /// ```
     /// 

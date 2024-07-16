@@ -10,19 +10,14 @@ import * as utilities from "../utilities";
  * Read-only keys only allow to list and view existing resources, read-write keys can also be used to create resources.
  *
  * ## Example Usage
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
  *
- * const config = new pulumi.Config();
- * const description = config.get("description") || "An user level API Key";
- * const readOnly = config.getBoolean("readOnly") || false;
- * const apiKey = new equinix.metal.UserApiKey("apiKey", {
- *     description: description,
- *     readOnly: readOnly,
+ * const test = new equinix.metal.UserApiKey("test", {
+ *     description: "Read-only user key",
+ *     readOnly: true,
  * });
- * export const apiKeyToken = apiKey.token;
  * ```
  */
 export class UserApiKey extends pulumi.CustomResource {

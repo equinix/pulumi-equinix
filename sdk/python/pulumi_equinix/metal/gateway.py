@@ -228,18 +228,37 @@ class Gateway(pulumi.CustomResource):
         See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
 
         ## Example Usage
+        ### example 1
         ```python
         import pulumi
         import pulumi_equinix as equinix
 
-        config = pulumi.Config()
-        project_id = config.require("projectId")
-        vlan_id = config.require("vlanId")
-        gateway = equinix.metal.Gateway("gateway",
+        test = equinix.metal.Vlan("test",
+            description="test VLAN in SV",
+            metro="sv",
+            project_id=project_id)
+        test_gateway = equinix.metal.Gateway("testGateway",
             project_id=project_id,
-            vlan_id=vlan_id,
+            vlan_id=test.id,
             private_ipv4_subnet_size=8)
-        pulumi.export("gatewayState", gateway.state)
+        ```
+        ### example 2
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        test = equinix.metal.Vlan("test",
+            description="test VLAN in SV",
+            metro="sv",
+            project_id=project_id)
+        test1 = equinix.metal.ReservedIpBlock("test1",
+            project_id=project_id,
+            metro="sv",
+            quantity=8)
+        test_gateway = equinix.metal.Gateway("testGateway",
+            project_id=project_id,
+            vlan_id=test.id,
+            ip_reservation_id=test_equinix_metal_reserved_ip_block["id"])
         ```
 
         :param str resource_name: The name of the resource.
@@ -261,18 +280,37 @@ class Gateway(pulumi.CustomResource):
         See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
 
         ## Example Usage
+        ### example 1
         ```python
         import pulumi
         import pulumi_equinix as equinix
 
-        config = pulumi.Config()
-        project_id = config.require("projectId")
-        vlan_id = config.require("vlanId")
-        gateway = equinix.metal.Gateway("gateway",
+        test = equinix.metal.Vlan("test",
+            description="test VLAN in SV",
+            metro="sv",
+            project_id=project_id)
+        test_gateway = equinix.metal.Gateway("testGateway",
             project_id=project_id,
-            vlan_id=vlan_id,
+            vlan_id=test.id,
             private_ipv4_subnet_size=8)
-        pulumi.export("gatewayState", gateway.state)
+        ```
+        ### example 2
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        test = equinix.metal.Vlan("test",
+            description="test VLAN in SV",
+            metro="sv",
+            project_id=project_id)
+        test1 = equinix.metal.ReservedIpBlock("test1",
+            project_id=project_id,
+            metro="sv",
+            quantity=8)
+        test_gateway = equinix.metal.Gateway("testGateway",
+            project_id=project_id,
+            vlan_id=test.id,
+            ip_reservation_id=test_equinix_metal_reserved_ip_block["id"])
         ```
 
         :param str resource_name: The name of the resource.

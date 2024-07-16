@@ -1,6 +1,0 @@
-name: equinix-metal-port
-runtime: python
-description: An Equinix Metal Port resource
-config:
-  portId:
-    type: string

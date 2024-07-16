@@ -1,86 +1,127 @@
 ## Example Usage
 {{% example %}}
-
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
+import * as std from "@pulumi/std";
 
-const config = new pulumi.Config();
-const deviceId = config.require("deviceId");
-const subnetCidr = config.get("subnetCidr") || "147.229.10.152/31";
-const ipAttachResource = new equinix.metal.IpAttachment("ipAttach", {
-    deviceId: deviceId,
-    cidrNotation: subnetCidr,
+const myblock = new equinix.metal.ReservedIpBlock("myblock", {
+    projectId: projectId,
+    metro: "ny",
+    quantity: 2,
 });
-export const ipAttach = ipAttachResource.id;
-export const ipNetmask = ipAttachResource.netmask;
+const firstAddressAssignment = new equinix.metal.IpAttachment("firstAddressAssignment", {
+    deviceId: mydevice.id,
+    cidrNotation: std.joinOutput({
+        separator: "/",
+        input: [
+            std.cidrhostOutput({
+                input: myblockMetalReservedIpBlock.cidrNotation,
+                host: 0,
+            }).apply(invoke => invoke.result),
+            "32",
+        ],
+    }).apply(invoke => invoke.result),
+});
 ```
 ```python
 import pulumi
 import pulumi_equinix as equinix
+import pulumi_std as std
 
-config = pulumi.Config()
-device_id = config.require("deviceId")
-subnet_cidr = config.get("subnetCidr")
-if subnet_cidr is None:
-    subnet_cidr = "147.229.10.152/31"
-ip_attach_resource = equinix.metal.IpAttachment("ipAttach",
-    device_id=device_id,
-    cidr_notation=subnet_cidr)
-pulumi.export("ipAttach", ip_attach_resource.id)
-pulumi.export("ipNetmask", ip_attach_resource.netmask)
+myblock = equinix.metal.ReservedIpBlock("myblock",
+    project_id=project_id,
+    metro="ny",
+    quantity=2)
+first_address_assignment = equinix.metal.IpAttachment("firstAddressAssignment",
+    device_id=mydevice["id"],
+    cidr_notation=std.join_output(separator="/",
+        input=[
+            std.cidrhost_output(input=myblock_metal_reserved_ip_block["cidrNotation"],
+                host=0).apply(lambda invoke: invoke.result),
+            "32",
+        ]).apply(lambda invoke: invoke.result))
 ```
 ```go
 package main
 
 import (
 	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
+	"github.com/pulumi/pulumi-std/sdk/go/std"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
-
 func main() {
-	pulumi.Run(func(ctx *pulumi.Context) error {
-		cfg := config.New(ctx, "")
-		deviceId := cfg.Require("deviceId")
-		subnetCidr := "147.229.10.152/31"
-		if param := cfg.Get("subnetCidr"); param != "" {
-			subnetCidr = param
-		}
-		ipAttachResource, err := metal.NewIpAttachment(ctx, "ipAttach", &metal.IpAttachmentArgs{
-			DeviceId:     pulumi.String(deviceId),
-			CidrNotation: pulumi.String(subnetCidr),
-		})
-		if err != nil {
-			return err
-		}
-		ctx.Export("ipAttach", ipAttachResource.ID())
-		ctx.Export("ipNetmask", ipAttachResource.Netmask)
-		return nil
-	})
+pulumi.Run(func(ctx *pulumi.Context) error {
+_, err := metal.NewReservedIpBlock(ctx, "myblock", &metal.ReservedIpBlockArgs{
+ProjectId: pulumi.Any(projectId),
+Metro: pulumi.String("ny"),
+Quantity: pulumi.Int(2),
+})
+if err != nil {
+return err
+}
+invokeJoin, err := std.Join(ctx, invokeCidrhost1, err := std.Cidrhost(ctx, &std.CidrhostArgs{
+Input: myblockMetalReservedIpBlock.CidrNotation,
+Host: 0,
+}, nil)
+if err != nil {
+return err
+}
+&std.JoinArgs{
+Separator: "/",
+Input: []*string{
+invokeCidrhost1.Result,
+"32",
+},
+}, nil)
+if err != nil {
+return err
+}
+_, err = metal.NewIpAttachment(ctx, "firstAddressAssignment", &metal.IpAttachmentArgs{
+DeviceId: pulumi.Any(mydevice.Id),
+CidrNotation: invokeJoin.Result,
+})
+if err != nil {
+return err
+}
+return nil
+})
 }
 ```
 ```csharp
 using System.Collections.Generic;
+using System.Linq;
 using Pulumi;
 using Equinix = Pulumi.Equinix;
+using Std = Pulumi.Std;
 
 return await Deployment.RunAsync(() => 
 {
-    var config = new Config();
-    var deviceId = config.Require("deviceId");
-    var subnetCidr = config.Get("subnetCidr") ?? "147.229.10.152/31";
-    var ipAttachResource = new Equinix.Metal.IpAttachment("ipAttach", new()
+    var myblock = new Equinix.Metal.ReservedIpBlock("myblock", new()
     {
-        DeviceId = deviceId,
-        CidrNotation = subnetCidr,
+        ProjectId = projectId,
+        Metro = "ny",
+        Quantity = 2,
     });
 
-    return new Dictionary<string, object?>
+    var firstAddressAssignment = new Equinix.Metal.IpAttachment("firstAddressAssignment", new()
     {
-        ["ipAttach"] = ipAttachResource.Id,
-        ["ipNetmask"] = ipAttachResource.Netmask,
-    };
+        DeviceId = mydevice.Id,
+        CidrNotation = Std.Cidrhost.Invoke(new()
+        {
+            Input = myblockMetalReservedIpBlock.CidrNotation,
+            Host = 0,
+        }).Apply(invoke => Std.Join.Invoke(new()
+        {
+            Separator = "/",
+            Input = new[]
+            {
+                invoke.Result,
+                "32",
+            },
+        })).Apply(invoke => invoke.Result),
+    });
+
 });
 ```
 ```java
@@ -88,8 +129,17 @@ package generated_program;
 
 import com.pulumi.Context;
 import com.pulumi.Pulumi;
-import com.equinix.pulumi.metal.IpAttachment;
-import com.equinix.pulumi.metal.IpAttachmentArgs;
+import com.pulumi.core.Output;
+import com.pulumi.equinix.metal.ReservedIpBlock;
+import com.pulumi.equinix.metal.ReservedIpBlockArgs;
+import com.pulumi.equinix.metal.IpAttachment;
+import com.pulumi.equinix.metal.IpAttachmentArgs;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class App {
     public static void main(String[] args) {
@@ -97,34 +147,55 @@ public class App {
     }
 
     public static void stack(Context ctx) {
-        final var config = ctx.config();
-        final var deviceId = config.get("deviceId").get();
-        final var subnetCidr = config.get("subnetCidr").orElse("147.229.10.152/31");
-        var ipAttachResource = new IpAttachment("ipAttachResource", IpAttachmentArgs.builder()        
-            .deviceId(deviceId)
-            .cidrNotation(subnetCidr)
+        var myblock = new ReservedIpBlock("myblock", ReservedIpBlockArgs.builder()
+            .projectId(projectId)
+            .metro("ny")
+            .quantity(2)
             .build());
 
-        ctx.export("ipAttach", ipAttachResource.id());
-        ctx.export("ipNetmask", ipAttachResource.netmask());
+        var firstAddressAssignment = new IpAttachment("firstAddressAssignment", IpAttachmentArgs.builder()
+            .deviceId(mydevice.id())
+            .cidrNotation(StdFunctions.join(JoinArgs.builder()
+                .separator("/")
+                .input(                
+                    StdFunctions.cidrhost(CidrhostArgs.builder()
+                        .input(myblockMetalReservedIpBlock.cidrNotation())
+                        .host(0)
+                        .build()).result(),
+                    "32")
+                .build()).result())
+            .build());
+
     }
 }
 ```
 ```yaml
-config:
-  deviceId:
-    type: string
-  subnetCidr:
-    type: string
-    default: 147.229.10.152/31
-resources:
-  ipAttach:
-    type: equinix:metal:IpAttachment
+  # Reserve /30 block of max 2 public IPv4 addresses in metro ny for myproject
+  myblock:
+    type: equinix:metal:ReservedIpBlock
     properties:
-      deviceId: ${deviceId}
-      cidrNotation: ${subnetCidr}
-outputs:
-  ipAttach: ${ipAttach.id}
-  ipNetmask: ${ipAttach.netmask}
+      projectId: ${projectId}
+      metro: ny
+      quantity: 2
+  # Assign /32 subnet (single address) from reserved block to a device
+  firstAddressAssignment:
+    type: equinix:metal:IpAttachment
+    name: first_address_assignment
+    properties:
+      deviceId: ${mydevice.id}
+      cidrNotation:
+        fn::invoke:
+          Function: std:join
+          Arguments:
+            separator: /
+            input:
+              - fn::invoke:
+                  Function: std:cidrhost
+                  Arguments:
+                    input: ${myblockMetalReservedIpBlock.cidrNotation}
+                    host: 0
+                  Return: result
+              - '32'
+          Return: result
 ```
 {{% /example %}}

@@ -1,44 +1,43 @@
 ## Example Usage
 {{% example %}}
-
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
+import * as equinix from "@pulumi/equinix";
 
-const config = new pulumi.Config();
-const projectId = config.require("projectId");
-const connectionId = config.require("connectionId");
-const vlanId = config.require("vlanId");
-const portId = equinix.metal.getInterconnection({
-    connectionId: connectionId,
-}).then(invoke => invoke.ports?.[0]?.id);
-const vc = new equinix.metal.VirtualCircuit("vc", {
-    connectionId: connectionId,
+const projectId = "52000fb2-ee46-4673-93a8-de2c2bdba33c";
+const connId = "73f12f29-3e19-43a0-8e90-ae81580db1e0";
+const test = equinix.metal.getInterconnectionOutput({
+    connectionId: connId,
+});
+const testVlan = new equinix.metal.Vlan("testVlan", {
     projectId: projectId,
-    portId: portId,
-    vlanId: vlanId,
+    metro: test.apply(test => test.metro),
+});
+const testVirtualCircuit = new equinix.metal.VirtualCircuit("testVirtualCircuit", {
+    connectionId: connId,
+    projectId: projectId,
+    portId: test.apply(test => test.ports?.[0]?.id),
+    vlanId: testVlan.id,
     nniVlan: 1056,
 });
-export const vcStatus = vc.status;
-export const vcVnid = vc.vnid;
 ```
 ```python
 import pulumi
 import pulumi_equinix as equinix
 
-config = pulumi.Config()
-project_id = config.require("projectId")
-connection_id = config.require("connectionId")
-vlan_id = config.require("vlanId")
-port_id = equinix.metal.get_interconnection(connection_id=connection_id).ports[0].id
-vc = equinix.metal.VirtualCircuit("vc",
-    connection_id=connection_id,
+project_id = "52000fb2-ee46-4673-93a8-de2c2bdba33c"
+conn_id = "73f12f29-3e19-43a0-8e90-ae81580db1e0"
+test = equinix.metal.get_interconnection_output(connection_id=conn_id)
+test_vlan = equinix.metal.Vlan("testVlan",
     project_id=project_id,
-    port_id=port_id,
-    vlan_id=vlan_id,
+    metro=test.metro)
+test_virtual_circuit = equinix.metal.VirtualCircuit("testVirtualCircuit",
+    connection_id=conn_id,
+    project_id=project_id,
+    port_id=test.ports[0].id,
+    vlan_id=test_vlan.id,
     nni_vlan=1056)
-pulumi.export("vcStatus", vc.status)
-pulumi.export("vcVnid", vc.vnid)
 ```
 ```go
 package main
@@ -46,64 +45,71 @@ package main
 import (
 	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
 
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
-		cfg := config.New(ctx, "")
-		projectId := cfg.Require("projectId")
-		connectionId := cfg.Require("connectionId")
-		vlanId := cfg.Require("vlanId")
-		portId := metal.LookupInterconnection(ctx, &metal.LookupInterconnectionArgs{
-			ConnectionId: connectionId,
-		}, nil).Ports[0].Id
-		vc, err := metal.NewVirtualCircuit(ctx, "vc", &metal.VirtualCircuitArgs{
-			ConnectionId: pulumi.String(connectionId),
+		projectId := "52000fb2-ee46-4673-93a8-de2c2bdba33c"
+		connId := "73f12f29-3e19-43a0-8e90-ae81580db1e0"
+		test, err := metal.LookupInterconnection(ctx, &metal.LookupInterconnectionArgs{
+			ConnectionId: connId,
+		}, nil)
+		if err != nil {
+			return err
+		}
+		testVlan, err := metal.NewVlan(ctx, "testVlan", &metal.VlanArgs{
+			ProjectId: pulumi.String(projectId),
+			Metro:     pulumi.String(test.Metro),
+		})
+		if err != nil {
+			return err
+		}
+		_, err = metal.NewVirtualCircuit(ctx, "testVirtualCircuit", &metal.VirtualCircuitArgs{
+			ConnectionId: pulumi.String(connId),
 			ProjectId:    pulumi.String(projectId),
-			PortId:       *pulumi.String(portId),
-			VlanId:       pulumi.String(vlanId),
+			PortId:       pulumi.String(test.Ports[0].Id),
+			VlanId:       testVlan.ID(),
 			NniVlan:      pulumi.Int(1056),
 		})
 		if err != nil {
 			return err
 		}
-		ctx.Export("vcStatus", vc.Status)
-		ctx.Export("vcVnid", vc.Vnid)
 		return nil
 	})
 }
 ```
 ```csharp
 using System.Collections.Generic;
+using System.Linq;
 using Pulumi;
 using Equinix = Pulumi.Equinix;
 
 return await Deployment.RunAsync(() => 
 {
-    var config = new Config();
-    var projectId = config.Require("projectId");
-    var connectionId = config.Require("connectionId");
-    var vlanId = config.Require("vlanId");
-    var portId = Equinix.Metal.GetInterconnection.Invoke(new()
-    {
-        ConnectionId = connectionId,
-    }).Apply(invoke => invoke.Ports[0]?.Id);
+    var projectId = "52000fb2-ee46-4673-93a8-de2c2bdba33c";
 
-    var vc = new Equinix.Metal.VirtualCircuit("vc", new()
+    var connId = "73f12f29-3e19-43a0-8e90-ae81580db1e0";
+
+    var test = Equinix.Metal.GetInterconnection.Invoke(new()
     {
-        ConnectionId = connectionId,
+        ConnectionId = connId,
+    });
+
+    var testVlan = new Equinix.Metal.Vlan("testVlan", new()
+    {
         ProjectId = projectId,
-        PortId = portId,
-        VlanId = vlanId,
+        Metro = test.Apply(getInterconnectionResult => getInterconnectionResult.Metro),
+    });
+
+    var testVirtualCircuit = new Equinix.Metal.VirtualCircuit("testVirtualCircuit", new()
+    {
+        ConnectionId = connId,
+        ProjectId = projectId,
+        PortId = test.Apply(getInterconnectionResult => getInterconnectionResult.Ports[0]?.Id),
+        VlanId = testVlan.Id,
         NniVlan = 1056,
     });
 
-    return new Dictionary<string, object?>
-    {
-        ["vcStatus"] = vc.Status,
-        ["vcVnid"] = vc.Vnid,
-    };
 });
 ```
 ```java
@@ -111,10 +117,19 @@ package generated_program;
 
 import com.pulumi.Context;
 import com.pulumi.Pulumi;
-import com.equinix.pulumi.metal.inputs.GetInterconnectionArgs;
-import com.equinix.pulumi.metal.MetalFunctions;
-import com.equinix.pulumi.metal.VirtualCircuit;
-import com.equinix.pulumi.metal.VirtualCircuitArgs;
+import com.pulumi.core.Output;
+import com.pulumi.equinix.metal.MetalFunctions;
+import com.pulumi.equinix.metal.inputs.GetInterconnectionArgs;
+import com.pulumi.equinix.metal.Vlan;
+import com.pulumi.equinix.metal.VlanArgs;
+import com.pulumi.equinix.metal.VirtualCircuit;
+import com.pulumi.equinix.metal.VirtualCircuitArgs;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class App {
     public static void main(String[] args) {
@@ -122,53 +137,53 @@ public class App {
     }
 
     public static void stack(Context ctx) {
-        final var config = ctx.config();
-        final var projectId = config.get("projectId").get();
-        final var connectionId = config.get("connectionId").get();
-        final var vlanId = config.get("vlanId").get();
-        final var portId = MetalFunctions.getInterconnection(GetInterconnectionArgs.builder()
-            .connectionId(connectionId)
-            .build()).applyValue(data -> data.ports().get(0).id());
+        final var projectId = "52000fb2-ee46-4673-93a8-de2c2bdba33c";
 
-        var vc = new VirtualCircuit("vc", VirtualCircuitArgs.builder()        
-            .connectionId(connectionId)
+        final var connId = "73f12f29-3e19-43a0-8e90-ae81580db1e0";
+
+        final var test = MetalFunctions.getInterconnection(GetInterconnectionArgs.builder()
+            .connectionId(connId)
+            .build());
+
+        var testVlan = new Vlan("testVlan", VlanArgs.builder()
             .projectId(projectId)
-            .portId(portId)
-            .vlanId(vlanId)
+            .metro(test.applyValue(getInterconnectionResult -> getInterconnectionResult.metro()))
+            .build());
+
+        var testVirtualCircuit = new VirtualCircuit("testVirtualCircuit", VirtualCircuitArgs.builder()
+            .connectionId(connId)
+            .projectId(projectId)
+            .portId(test.applyValue(getInterconnectionResult -> getInterconnectionResult.ports()[0].id()))
+            .vlanId(testVlan.id())
             .nniVlan(1056)
             .build());
 
-        ctx.export("vcStatus", vc.status());
-        ctx.export("vcVnid", vc.vnid());
     }
 }
 ```
 ```yaml
-config:
-  projectId:
-    type: string
-  connectionId:
-    type: string
-  vlanId:
-    type: string
-variables:
-  portId:
-    fn::invoke:
-      function: equinix:metal:getInterconnection
-      arguments:
-        connectionId: ${connectionId}
-      return: ports[0].id
-resources:
-  vc:
-    type: equinix:metal:VirtualCircuit
+  testVlan:
+    type: equinix:metal:Vlan
+    name: test
     properties:
-      connectionId: ${connectionId}
       projectId: ${projectId}
-      portId: ${portId}
-      vlanId: ${vlanId}
+      metro: ${test.metro}
+  testVirtualCircuit:
+    type: equinix:metal:VirtualCircuit
+    name: test
+    properties:
+      connectionId: ${connId}
+      projectId: ${projectId}
+      portId: ${test.ports[0].id}
+      vlanId: ${testVlan.id}
       nniVlan: 1056
-outputs:
-  vcStatus: ${vc.status}
-  vcVnid: ${vc.vnid}
+variables:
+  projectId: 52000fb2-ee46-4673-93a8-de2c2bdba33c
+  connId: 73f12f29-3e19-43a0-8e90-ae81580db1e0
+  test:
+    fn::invoke:
+      Function: equinix:metal:getInterconnection
+      Arguments:
+        connectionId: ${connId}
 ```
 {{% /example %}}

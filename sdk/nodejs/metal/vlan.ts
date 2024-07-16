@@ -16,22 +16,16 @@ import * as utilities from "../utilities";
  * * https://metal.equinix.com/developers/docs/networking/layer2-configs/
  *
  * ## Example Usage
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
  *
- * const config = new pulumi.Config();
- * const projectId = config.require("projectId");
- * const metro = config.get("metro") || "DA";
- * const vxlan = config.requireNumber("vxlan");
- * const vlan = new equinix.metal.Vlan("vlan", {
- *     description: "VLAN in Dallas",
+ * const vlan1 = new equinix.metal.Vlan("vlan1", {
+ *     description: "VLAN in New Jersey",
+ *     metro: "sv",
  *     projectId: projectId,
- *     metro: metro,
- *     vxlan: vxlan,
+ *     vxlan: 1040,
  * });
- * export const vlanId = vlan.id;
  * ```
  *
  * ## Import

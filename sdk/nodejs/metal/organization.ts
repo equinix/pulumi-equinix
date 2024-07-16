@@ -11,22 +11,14 @@ import * as utilities from "../utilities";
  * Provides a resource to manage organization resource in Equinix Metal.
  *
  * ## Example Usage
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
  *
- * const orgResource = new equinix.metal.Organization("org", {
- *     name: "Foo Organization",
- *     address: {
- *         address: "org street",
- *         city: "london",
- *         country: "GB",
- *         zipCode: "12345",
- *     },
- *     description: "An organization",
+ * const tfOrganization1 = new equinix.metal.Organization("tfOrganization1", {
+ *     name: "foobar",
+ *     description: "quux",
  * });
- * export const org = orgResource.id;
  * ```
  *
  * ## Import

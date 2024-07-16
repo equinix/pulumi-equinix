@@ -1,0 +1,16 @@
+name: equinix-fabric-routing_protocol-example_2
+runtime: yaml
+resources:
+  bgp:
+    type: equinix:fabric:RoutingProtocol
+    properties:
+      connectionUuid: <same_connection_id_as_first_equinix_fabric_routing_protocol>
+      type: BGP
+      name: bgp_rp
+      bgpIpv4:
+        customerPeerIp: 190.1.1.2
+        enabled: true
+      bgpIpv6:
+        customerPeerIp: 190::1:2
+        enabled: true
+      customerAsn: 4532

@@ -1,17 +1,15 @@
 using System.Collections.Generic;
+using System.Linq;
 using Pulumi;
 using Equinix = Pulumi.Equinix;
 
 return await Deployment.RunAsync(() => 
 {
-    var config = new Config();
-    var projectId = config.Require("projectId");
-    var metro = config.Get("metro") ?? "FR";
-    var request = new Equinix.Metal.SpotMarketRequest("request", new()
+    var req = new Equinix.Metal.SpotMarketRequest("req", new()
     {
         ProjectId = projectId,
-        Metro = metro,
-        MaxBidPrice = 0.75,
+        MaxBidPrice = 0.03,
+        Metro = "ny",
         DevicesMin = 1,
         DevicesMax = 1,
         InstanceParameters = new Equinix.Metal.Inputs.SpotMarketRequestInstanceParametersArgs
@@ -23,9 +21,5 @@ return await Deployment.RunAsync(() =>
         },
     });
 
-    return new Dictionary<string, object?>
-    {
-        ["requestId"] = request.Id,
-    };
 });
 

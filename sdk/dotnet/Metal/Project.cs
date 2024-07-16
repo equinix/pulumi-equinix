@@ -15,26 +15,64 @@ namespace Pulumi.Equinix.Metal
     /// &gt; **NOTE:** Keep in mind that Equinix Metal invoicing is per project, so creating many `equinix.metal.Project` resources will affect the rendered invoice. If you want to keep your Equinix Metal bill simple and easy to review, please re-use your existing projects.
     /// 
     /// ## Example Usage
+    /// ### example 3
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Equinix = Pulumi.Equinix;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var config = new Config();
-    ///     var organizationId = config.Require("organizationId");
-    ///     var name = config.Get("name") ?? "Default Project";
-    ///     var projectResource = new Equinix.Metal.Project("project", new()
+    ///     var existingProject = new Equinix.Metal.Project("existingProject", new()
     ///     {
-    ///         Name = name,
-    ///         OrganizationId = organizationId,
+    ///         Name = "The name of the project (if different, will rewrite)",
+    ///         BgpConfig = new Equinix.Metal.Inputs.ProjectBgpConfigArgs
+    ///         {
+    ///             DeploymentType = "local",
+    ///             Md5 = "C179c28c41a85b",
+    ///             Asn = 65000,
+    ///         },
     ///     });
     /// 
-    ///     return new Dictionary&lt;string, object?&gt;
+    /// });
+    /// ```
+    /// ### example 2
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Equinix = Pulumi.Equinix;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var tfProject1 = new Equinix.Metal.Project("tfProject1", new()
     ///     {
-    ///         ["projectId"] = projectResource.Id,
-    ///     };
+    ///         Name = "tftest",
+    ///         BgpConfig = new Equinix.Metal.Inputs.ProjectBgpConfigArgs
+    ///         {
+    ///             DeploymentType = "local",
+    ///             Md5 = "C179c28c41a85b",
+    ///             Asn = 65000,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### example 1
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Equinix = Pulumi.Equinix;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var tfProject1 = new Equinix.Metal.Project("tfProject1", new()
+    ///     {
+    ///         Name = "Terraform Fun",
+    ///     });
+    /// 
     /// });
     /// ```
     /// 

@@ -1,9 +1,0 @@
-name: equinix-metal-vrf
-runtime: java
-description: An Equinix Metal VRF resource
-config:
-  metro:
-    type: string
-    default: DA
-  projectId:
-    type: string

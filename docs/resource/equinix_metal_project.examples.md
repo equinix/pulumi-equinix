@@ -1,32 +1,31 @@
 ## Example Usage
-{{% example %}}
 
+{{% example %}}
+### example 3
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
 
-const config = new pulumi.Config();
-const organizationId = config.require("organizationId");
-const name = config.get("name") || "Default Project";
-const projectResource = new equinix.metal.Project("project", {
-    name: name,
-    organizationId: organizationId,
+const existingProject = new equinix.metal.Project("existingProject", {
+    name: "The name of the project (if different, will rewrite)",
+    bgpConfig: {
+        deploymentType: "local",
+        md5: "C179c28c41a85b",
+        asn: 65000,
+    },
 });
-export const projectId = projectResource.id;
 ```
 ```python
 import pulumi
 import pulumi_equinix as equinix
 
-config = pulumi.Config()
-organization_id = config.require("organizationId")
-name = config.get("name")
-if name is None:
-    name = "Default Project"
-project_resource = equinix.metal.Project("project",
-    name=name,
-    organization_id=organization_id)
-pulumi.export("projectId", project_resource.id)
+existing_project = equinix.metal.Project("existingProject",
+    name="The name of the project (if different, will rewrite)",
+    bgp_config=equinix.metal.ProjectBgpConfigArgs(
+        deployment_type="local",
+        md5="C179c28c41a85b",
+        asn=65000,
+    ))
 ```
 ```go
 package main
@@ -34,49 +33,44 @@ package main
 import (
 	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
 
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
-		cfg := config.New(ctx, "")
-		organizationId := cfg.Require("organizationId")
-		name := "Default Project"
-		if param := cfg.Get("name"); param != "" {
-			name = param
-		}
-		projectResource, err := metal.NewProject(ctx, "project", &metal.ProjectArgs{
-			Name:           pulumi.String(name),
-			OrganizationId: pulumi.String(organizationId),
+		_, err := metal.NewProject(ctx, "existingProject", &metal.ProjectArgs{
+			Name: pulumi.String("The name of the project (if different, will rewrite)"),
+			BgpConfig: &metal.ProjectBgpConfigArgs{
+				DeploymentType: pulumi.String("local"),
+				Md5:            pulumi.String("C179c28c41a85b"),
+				Asn:            pulumi.Int(65000),
+			},
 		})
 		if err != nil {
 			return err
 		}
-		ctx.Export("projectId", projectResource.ID())
 		return nil
 	})
 }
 ```
 ```csharp
 using System.Collections.Generic;
+using System.Linq;
 using Pulumi;
 using Equinix = Pulumi.Equinix;
 
 return await Deployment.RunAsync(() => 
 {
-    var config = new Config();
-    var organizationId = config.Require("organizationId");
-    var name = config.Get("name") ?? "Default Project";
-    var projectResource = new Equinix.Metal.Project("project", new()
+    var existingProject = new Equinix.Metal.Project("existingProject", new()
     {
-        Name = name,
-        OrganizationId = organizationId,
+        Name = "The name of the project (if different, will rewrite)",
+        BgpConfig = new Equinix.Metal.Inputs.ProjectBgpConfigArgs
+        {
+            DeploymentType = "local",
+            Md5 = "C179c28c41a85b",
+            Asn = 65000,
+        },
     });
 
-    return new Dictionary<string, object?>
-    {
-        ["projectId"] = projectResource.Id,
-    };
 });
 ```
 ```java
@@ -84,8 +78,16 @@ package generated_program;
 
 import com.pulumi.Context;
 import com.pulumi.Pulumi;
-import com.equinix.pulumi.metal.Project;
-import com.equinix.pulumi.metal.ProjectArgs;
+import com.pulumi.core.Output;
+import com.pulumi.equinix.metal.Project;
+import com.pulumi.equinix.metal.ProjectArgs;
+import com.pulumi.equinix.metal.inputs.ProjectBgpConfigArgs;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class App {
     public static void main(String[] args) {
@@ -93,32 +95,236 @@ public class App {
     }
 
     public static void stack(Context ctx) {
-        final var config = ctx.config();
-        final var organizationId = config.get("organizationId").get();
-        final var name = config.get("name").orElse("Default Project");
-        var projectResource = new Project("projectResource", ProjectArgs.builder()        
-            .name(name)
-            .organizationId(organizationId)
+        var existingProject = new Project("existingProject", ProjectArgs.builder()
+            .name("The name of the project (if different, will rewrite)")
+            .bgpConfig(ProjectBgpConfigArgs.builder()
+                .deploymentType("local")
+                .md5("C179c28c41a85b")
+                .asn(65000)
+                .build())
             .build());
 
-        ctx.export("projectId", projectResource.id());
     }
 }
 ```
 ```yaml
-config:
-  organizationId:
-    type: string
-  name:
-    type: string
-    default: Default Project
-resources:
-  project:
+  existingProject:
     type: equinix:metal:Project
+    name: existing_project
     properties:
-      name: ${name}
-      organizationId: ${organizationId}
-outputs:
-  projectId: ${project.id}
+      name: The name of the project (if different, will rewrite)
+      bgpConfig:
+        deploymentType: local
+        md5: C179c28c41a85b
+        asn: 65000
 ```
 {{% /example %}}
+
+{{% example %}}
+### example 2
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as equinix from "@equinix-labs/pulumi-equinix";
+
+const tfProject1 = new equinix.metal.Project("tfProject1", {
+    name: "tftest",
+    bgpConfig: {
+        deploymentType: "local",
+        md5: "C179c28c41a85b",
+        asn: 65000,
+    },
+});
+```
+```python
+import pulumi
+import pulumi_equinix as equinix
+
+tf_project1 = equinix.metal.Project("tfProject1",
+    name="tftest",
+    bgp_config=equinix.metal.ProjectBgpConfigArgs(
+        deployment_type="local",
+        md5="C179c28c41a85b",
+        asn=65000,
+    ))
+```
+```go
+package main
+
+import (
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+)
+
+func main() {
+	pulumi.Run(func(ctx *pulumi.Context) error {
+		_, err := metal.NewProject(ctx, "tfProject1", &metal.ProjectArgs{
+			Name: pulumi.String("tftest"),
+			BgpConfig: &metal.ProjectBgpConfigArgs{
+				DeploymentType: pulumi.String("local"),
+				Md5:            pulumi.String("C179c28c41a85b"),
+				Asn:            pulumi.Int(65000),
+			},
+		})
+		if err != nil {
+			return err
+		}
+		return nil
+	})
+}
+```
+```csharp
+using System.Collections.Generic;
+using System.Linq;
+using Pulumi;
+using Equinix = Pulumi.Equinix;
+
+return await Deployment.RunAsync(() => 
+{
+    var tfProject1 = new Equinix.Metal.Project("tfProject1", new()
+    {
+        Name = "tftest",
+        BgpConfig = new Equinix.Metal.Inputs.ProjectBgpConfigArgs
+        {
+            DeploymentType = "local",
+            Md5 = "C179c28c41a85b",
+            Asn = 65000,
+        },
+    });
+
+});
+```
+```java
+package generated_program;
+
+import com.pulumi.Context;
+import com.pulumi.Pulumi;
+import com.pulumi.core.Output;
+import com.pulumi.equinix.metal.Project;
+import com.pulumi.equinix.metal.ProjectArgs;
+import com.pulumi.equinix.metal.inputs.ProjectBgpConfigArgs;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+public class App {
+    public static void main(String[] args) {
+        Pulumi.run(App::stack);
+    }
+
+    public static void stack(Context ctx) {
+        var tfProject1 = new Project("tfProject1", ProjectArgs.builder()
+            .name("tftest")
+            .bgpConfig(ProjectBgpConfigArgs.builder()
+                .deploymentType("local")
+                .md5("C179c28c41a85b")
+                .asn(65000)
+                .build())
+            .build());
+
+    }
+}
+```
+```yaml
+  # Create a new Project
+  tfProject1:
+    type: equinix:metal:Project
+    name: tf_project_1
+    properties:
+      name: tftest
+      bgpConfig:
+        deploymentType: local
+        md5: C179c28c41a85b
+        asn: 65000
+```
+{{% /example %}}
+
+{{% example %}}
+### example 1
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as equinix from "@equinix-labs/pulumi-equinix";
+
+const tfProject1 = new equinix.metal.Project("tfProject1", {name: "Terraform Fun"});
+```
+```python
+import pulumi
+import pulumi_equinix as equinix
+
+tf_project1 = equinix.metal.Project("tfProject1", name="Terraform Fun")
+```
+```go
+package main
+
+import (
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+)
+
+func main() {
+	pulumi.Run(func(ctx *pulumi.Context) error {
+		_, err := metal.NewProject(ctx, "tfProject1", &metal.ProjectArgs{
+			Name: pulumi.String("Terraform Fun"),
+		})
+		if err != nil {
+			return err
+		}
+		return nil
+	})
+}
+```
+```csharp
+using System.Collections.Generic;
+using System.Linq;
+using Pulumi;
+using Equinix = Pulumi.Equinix;
+
+return await Deployment.RunAsync(() => 
+{
+    var tfProject1 = new Equinix.Metal.Project("tfProject1", new()
+    {
+        Name = "Terraform Fun",
+    });
+
+});
+```
+```java
+package generated_program;
+
+import com.pulumi.Context;
+import com.pulumi.Pulumi;
+import com.pulumi.core.Output;
+import com.pulumi.equinix.metal.Project;
+import com.pulumi.equinix.metal.ProjectArgs;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+public class App {
+    public static void main(String[] args) {
+        Pulumi.run(App::stack);
+    }
+
+    public static void stack(Context ctx) {
+        var tfProject1 = new Project("tfProject1", ProjectArgs.builder()
+            .name("Terraform Fun")
+            .build());
+
+    }
+}
+```
+```yaml
+  tfProject1:
+    type: equinix:metal:Project
+    name: tf_project_1
+    properties:
+      name: Terraform Fun
+```
+{{% /example %}}
+
+

@@ -40,14 +40,18 @@ import javax.annotation.Nullable;
  * 
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
- * import com.equinix.pulumi.fabric.ServiceProfile;
- * import com.equinix.pulumi.fabric.ServiceProfileArgs;
- * import com.equinix.pulumi.fabric.inputs.ServiceProfileAccessPointTypeConfigArgs;
- * import com.equinix.pulumi.fabric.inputs.ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs;
- * import com.equinix.pulumi.fabric.inputs.ServiceProfileAccessPointTypeConfigApiConfigArgs;
- * import com.equinix.pulumi.fabric.inputs.ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs;
- * import com.equinix.pulumi.fabric.inputs.ServiceProfileAccountArgs;
- * import com.equinix.pulumi.fabric.inputs.ServiceProfileMarketingInfoArgs;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.fabric.ServiceProfile;
+ * import com.pulumi.equinix.fabric.ServiceProfileArgs;
+ * import com.pulumi.equinix.fabric.inputs.ServiceProfileNotificationArgs;
+ * import com.pulumi.equinix.fabric.inputs.ServiceProfilePortArgs;
+ * import com.pulumi.equinix.fabric.inputs.ServiceProfileAccessPointTypeConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -55,49 +59,36 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var profile = new ServiceProfile("profile", ServiceProfileArgs.builder()        
- *             .name("Example Cloud Provider")
- *             .description("50 to 500 Mbps Hosted Connection to Example Cloud")
+ *         var newServiceProfile = new ServiceProfile("newServiceProfile", ServiceProfileArgs.builder()
+ *             .description("Service Profile for Receiving Connections")
+ *             .name("Name Of Business + Use Case Tag")
  *             .type("L2_PROFILE")
+ *             .visibility("PUBLIC")
+ *             .notifications(ServiceProfileNotificationArgs.builder()
+ *                 .emails("someone{@literal @}sample.com")
+ *                 .type("BANDWIDTH_ALERT")
+ *                 .build())
+ *             .allowedEmails(            
+ *                 "test{@literal @}equinix.com",
+ *                 "testagain{@literal @}equinix.com")
+ *             .ports(ServiceProfilePortArgs.builder()
+ *                 .uuid("c791f8cb-5cc9-cc90-8ce0-306a5c00a4ee")
+ *                 .type("XF_PORT")
+ *                 .build())
  *             .accessPointTypeConfigs(ServiceProfileAccessPointTypeConfigArgs.builder()
  *                 .type("COLO")
- *                 .supportedBandwidths(                
- *                     50,
- *                     100,
- *                     200,
- *                     500)
  *                 .allowRemoteConnections(true)
- *                 .allowCustomBandwidth(false)
+ *                 .allowCustomBandwidth(true)
  *                 .allowBandwidthAutoApproval(false)
- *                 .linkProtocolConfig(ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs.builder()
- *                     .encapsulationStrategy("CTAGED")
- *                     .reuseVlanSTag(false)
- *                     .encapsulation("DOT1Q")
- *                     .build())
- *                 .enableAutoGenerateServiceKey(false)
  *                 .connectionRedundancyRequired(false)
- *                 .apiConfig(ServiceProfileAccessPointTypeConfigApiConfigArgs.builder()
- *                     .apiAvailable(true)
- *                     .integrationId("Example-Connect-01")
- *                     .bandwidthFromApi(false)
- *                     .build())
- *                 .connectionLabel("Virtual Circuit Name")
- *                 .authenticationKey(ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs.builder()
- *                     .required(true)
- *                     .label("Example ACCOUNT ID")
- *                     .build())
- *                 .build())
- *             .account(ServiceProfileAccountArgs.builder()
- *                 .organizationName("Example Cloud")
- *                 .globalOrganizationName("Example Global")
- *                 .build())
- *             .visibility("PUBLIC")
- *             .marketingInfo(ServiceProfileMarketingInfoArgs.builder()
- *                 .promotion(true)
+ *                 .connectionLabel("Service Profile Tag1")
+ *                 .bandwidthAlertThreshold(10)
+ *                 .supportedBandwidths(                
+ *                     100,
+ *                     500)
  *                 .build())
  *             .build());
  * 
- *         ctx.export("profileId", profile.id());
  *     }
  * }
  * }

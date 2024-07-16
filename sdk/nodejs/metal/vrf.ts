@@ -10,26 +10,67 @@ import * as utilities from "../utilities";
  * See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
  *
  * ## Example Usage
- *
+ * ### example 2
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
  *
- * const config = new pulumi.Config();
- * const projectId = config.require("projectId");
- * const metro = config.get("metro") || "DA";
- * const vrf = new equinix.metal.Vrf("vrf", {
- *     description: "VRF with ASN 65000 and a pool of address space",
+ * const example = new equinix.metal.ReservedIpBlock("example", {
+ *     description: "Reserved IP block (192.168.100.0/29) taken from on of the ranges in the VRF's pool of address space.",
+ *     projectId: exampleEquinixMetalProject.id,
+ *     metro: exampleEquinixMetalVrf.metro,
+ *     type: "vrf",
+ *     vrfId: exampleEquinixMetalVrf.id,
+ *     cidr: 29,
+ *     network: "192.168.100.0",
+ * });
+ * const exampleVlan = new equinix.metal.Vlan("exampleVlan", {
+ *     description: "A VLAN for Layer2 and Hybrid Metal devices",
+ *     metro: exampleEquinixMetalVrf.metro,
+ *     projectId: exampleEquinixMetalProject.id,
+ * });
+ * const exampleGateway = new equinix.metal.Gateway("exampleGateway", {
+ *     projectId: exampleEquinixMetalProject.id,
+ *     vlanId: exampleVlan.id,
+ *     ipReservationId: example.id,
+ * });
+ * ```
+ * ### example 1
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const example = new equinix.metal.Project("example", {name: "example"});
+ * const exampleVrf = new equinix.metal.Vrf("exampleVrf", {
+ *     description: "VRF with ASN 65000 and a pool of address space that includes 192.168.100.0/25",
  *     name: "example-vrf",
- *     metro: metro,
+ *     metro: "da",
  *     localAsn: 65000,
  *     ipRanges: [
  *         "192.168.100.0/25",
  *         "192.168.200.0/25",
  *     ],
- *     projectId: projectId,
+ *     projectId: example.id,
  * });
- * export const vrfId = vrf.id;
+ * ```
+ * ### example 3
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const exampleVirtualCircuit = new equinix.metal.VirtualCircuit("exampleVirtualCircuit", {
+ *     name: "example-vc",
+ *     description: "Virtual Circuit",
+ *     connectionId: example.id,
+ *     projectId: exampleEquinixMetalProject.id,
+ *     portId: example.ports[0].id,
+ *     nniVlan: 1024,
+ *     vrfId: exampleEquinixMetalVrf.id,
+ *     peerAsn: 65530,
+ *     subnet: "192.168.100.16/31",
+ *     metalIp: "192.168.100.16",
+ *     customerIp: "192.168.100.17",
+ * });
  * ```
  *
  * ## Import

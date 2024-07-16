@@ -1,0 +1,20 @@
+name: equinix-metal-device-example_5
+runtime: yaml
+resources:
+  pxe1:
+    type: equinix:metal:Device
+    properties:
+      hostname: tf.coreos2-pxe
+      plan: c3.small.x86
+      metro: sv
+      operatingSystem: custom_ipxe
+      billingCycle: hourly
+      projectId: ${projectId}
+      ipxeScriptUrl: https://rawgit.com/cloudnativelabs/pxe/master/packet/coreos-stable-metal.ipxe
+      alwaysPxe: 'false'
+      userData: ${userData}
+      customData: ${customData}
+      behavior:
+        allowChanges:
+          - custom_data
+          - user_data

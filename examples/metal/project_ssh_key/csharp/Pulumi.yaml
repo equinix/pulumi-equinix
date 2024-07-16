@@ -1,6 +1,2 @@
-name: equinix-metal-project-ssh-key
+name: equinix-metal-project_ssh_key
 runtime: dotnet
-description: An Equinix Metal Project SSH Key resource
-config:
-  projectId:
-    type: string

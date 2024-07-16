@@ -1,9 +1,2 @@
-name: equinix-metal-ip-attachment
+name: equinix-metal-ip_attachment
 runtime: nodejs
-description: An Equinix Metal Ip Attachment resource to attach elastic IP subnets to devices
-config:
-  deviceId:
-    type: string
-  subnetCidr:
-    type: string
-    default: 147.229.10.152/31

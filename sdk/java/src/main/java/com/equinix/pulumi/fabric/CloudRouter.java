@@ -40,9 +40,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.equinix.fabric.CloudRouter;
  * import com.pulumi.equinix.fabric.CloudRouterArgs;
+ * import com.pulumi.equinix.fabric.inputs.CloudRouterNotificationArgs;
+ * import com.pulumi.equinix.fabric.inputs.CloudRouterOrderArgs;
  * import com.pulumi.equinix.fabric.inputs.CloudRouterLocationArgs;
  * import com.pulumi.equinix.fabric.inputs.CloudRouterPackageArgs;
- * import com.pulumi.equinix.fabric.inputs.CloudRouterNotificationArgs;
+ * import com.pulumi.equinix.fabric.inputs.CloudRouterProjectArgs;
  * import com.pulumi.equinix.fabric.inputs.CloudRouterAccountArgs;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -57,31 +59,32 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var metro = config.get("metro").orElse("FR");
- *         final var accountNum = config.get("accountNum");
- *         var router = new CloudRouter("router", CloudRouterArgs.builder()        
- *             .name("My-Fabric-Cloud-Router")
+ *         var newCloudRouter = new CloudRouter("newCloudRouter", CloudRouterArgs.builder()
+ *             .name("Router-SV")
  *             .type("XF_ROUTER")
- *             .location(CloudRouterLocationArgs.builder()
- *                 .metroCode(metro)
- *                 .build())
- *             .package_(CloudRouterPackageArgs.builder()
- *                 .code("BASIC")
- *                 .build())
  *             .notifications(CloudRouterNotificationArgs.builder()
  *                 .type("ALL")
- *                 .emails("example{@literal @}equinix.com")
+ *                 .emails(                
+ *                     "example{@literal @}equinix.com",
+ *                     "test1{@literal @}equinix.com")
  *                 .build())
- *             .account(CloudRouterAccountArgs.builder()
- *                 .accountNumber(272010)
+ *             .order(CloudRouterOrderArgs.builder()
+ *                 .purchaseOrderNumber("1-323292")
+ *                 .build())
+ *             .location(CloudRouterLocationArgs.builder()
+ *                 .metroCode("SV")
+ *                 .build())
+ *             .package_(CloudRouterPackageArgs.builder()
+ *                 .code("STANDARD")
  *                 .build())
  *             .project(CloudRouterProjectArgs.builder()
- *                 .projectId("995072000433550")
+ *                 .projectId("776847000642406")
+ *                 .build())
+ *             .account(CloudRouterAccountArgs.builder()
+ *                 .accountNumber("203612")
  *                 .build())
  *             .build());
  * 
- *         ctx.export("routerId", router.id());
  *     }
  * }
  * }

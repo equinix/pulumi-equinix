@@ -1,0 +1,42 @@
+name: equinix-fabric-connection-example_2
+runtime: yaml
+resources:
+  port2aws:
+    type: equinix:fabric:Connection
+    properties:
+      name: ConnectionName
+      type: EVPL_VC
+      notifications:
+        - type: ALL
+          emails:
+            - example@equinix.com
+            - test1@equinix.com
+      bandwidth: 50
+      redundancy:
+        priority: PRIMARY
+      order:
+        purchaseOrderNumber: 1-323929
+      aSide:
+        accessPoint:
+          type: COLO
+          port:
+            uuid: <aside_port_uuid>
+          linkProtocol:
+            type: QINQ
+            vlanSTag: '2019'
+            vlanCTag: '2112'
+      zSide:
+        accessPoint:
+          type: SP
+          authenticationKey: <aws_account_id>
+          sellerRegion: us-west-1
+          profile:
+            type: L2_PROFILE
+            uuid: <service_profile_uuid>
+          location:
+            metroCode: SV
+      additionalInfo:
+        - key: accessKey
+          value: <aws_access_key>
+        - key: secretKey
+          value: <aws_secret_key>

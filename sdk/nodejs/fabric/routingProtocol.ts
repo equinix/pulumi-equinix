@@ -15,24 +15,75 @@ import * as utilities from "../utilities";
  * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
  *
  * ## Example Usage
- *
+ * ### example 3
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
  *
- * const config = new pulumi.Config();
- * const connectionId = config.require("connectionId");
- * const routingProtocol = new equinix.fabric.RoutingProtocol("RoutingProtocol", {
- *     connectionUuid: connectionId,
- *     name: "My-Direct-route-1",
+ * const direct = new equinix.fabric.RoutingProtocol("direct", {
+ *     connectionUuid: "<some_id>",
  *     type: "DIRECT",
+ *     name: "direct_rp",
  *     directIpv4: {
- *         equinixIfaceIp: "192.168.100.1/30",
+ *         equinixIfaceIp: "190.1.1.1/30",
+ *     },
+ *     directIpv6: {
+ *         equinixIfaceIp: "190::1:1/126",
  *     },
  * });
- * export const routingProtocolId = routingProtocol.id;
- * export const routingProtocolState = routingProtocol.state;
- * export const routingProtocolEquinixAsn = routingProtocol.equinixAsn;
+ * const bgp = new equinix.fabric.RoutingProtocol("bgp", {
+ *     connectionUuid: "<same_connection_id_as_first_equinix_fabric_routing_protocol>",
+ *     type: "BGP",
+ *     name: "bgp_rp",
+ *     bgpIpv4: {
+ *         customerPeerIp: "190.1.1.2",
+ *         enabled: true,
+ *     },
+ *     bgpIpv6: {
+ *         customerPeerIp: "190::1:2",
+ *         enabled: true,
+ *     },
+ *     customerAsn: 4532,
+ * }, {
+ *     dependsOn: [direct],
+ * });
+ * ```
+ * ### example 1
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const direct = new equinix.fabric.RoutingProtocol("direct", {
+ *     connectionUuid: "<some_id>",
+ *     type: "DIRECT",
+ *     name: "direct_rp",
+ *     directIpv4: {
+ *         equinixIfaceIp: "190.1.1.1/30",
+ *     },
+ *     directIpv6: {
+ *         equinixIfaceIp: "190::1:1/126",
+ *     },
+ * });
+ * ```
+ * ### example 2
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const bgp = new equinix.fabric.RoutingProtocol("bgp", {
+ *     connectionUuid: "<same_connection_id_as_first_equinix_fabric_routing_protocol>",
+ *     type: "BGP",
+ *     name: "bgp_rp",
+ *     bgpIpv4: {
+ *         customerPeerIp: "190.1.1.2",
+ *         enabled: true,
+ *     },
+ *     bgpIpv6: {
+ *         customerPeerIp: "190::1:2",
+ *         enabled: true,
+ *     },
+ *     customerAsn: 4532,
+ * });
  * ```
  */
 export class RoutingProtocol extends pulumi.CustomResource {

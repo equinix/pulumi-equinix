@@ -23,31 +23,81 @@ namespace Pulumi.Equinix.Metal
     /// See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
     /// 
     /// ## Example Usage
+    /// ### example 1
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Equinix = Pulumi.Equinix;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var config = new Config();
-    ///     var projectId = config.Require("projectId");
-    ///     var metro = config.Get("metro") ?? "FR";
-    ///     var type = config.Get("type") ?? "public_ipv4";
-    ///     var quantity = config.GetNumber("quantity") ?? 1;
-    ///     var ipBlock = new Equinix.Metal.ReservedIpBlock("ipBlock", new()
+    ///     var twoElasticAddresses = new Equinix.Metal.ReservedIpBlock("twoElasticAddresses", new()
     ///     {
     ///         ProjectId = projectId,
-    ///         Type = "public_ipv4",
-    ///         Quantity = quantity,
-    ///         Metro = metro,
+    ///         Metro = "sv",
+    ///         Quantity = 2,
     ///     });
     /// 
-    ///     return new Dictionary&lt;string, object?&gt;
+    ///     var test1 = new Equinix.Metal.ReservedIpBlock("test1", new()
     ///     {
-    ///         ["ipBlockId"] = ipBlock.Id,
-    ///         ["ipBlockSubent"] = ipBlock.CidrNotation,
-    ///     };
+    ///         ProjectId = projectId,
+    ///         Type = Equinix.Metal.IpBlockType.PublicIPv4,
+    ///         Metro = "sv",
+    ///         Quantity = 1,
+    ///     });
+    /// 
+    ///     var test = new Equinix.Metal.ReservedIpBlock("test", new()
+    ///     {
+    ///         ProjectId = projectId,
+    ///         Type = Equinix.Metal.IpBlockType.GlobalIPv4,
+    ///         Quantity = 1,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### example 2
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Equinix = Pulumi.Equinix;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Equinix.Metal.ReservedIpBlock("example", new()
+    ///     {
+    ///         ProjectId = projectId,
+    ///         Metro = "sv",
+    ///         Quantity = 2,
+    ///     });
+    /// 
+    ///     var nodes = new Equinix.Metal.Device("nodes", new()
+    ///     {
+    ///         ProjectId = projectId,
+    ///         Metro = "sv",
+    ///         Plan = Equinix.Metal.Plan.C3SmallX86,
+    ///         OperatingSystem = Equinix.Metal.OperatingSystem.Ubuntu20_04,
+    ///         Hostname = "test",
+    ///         BillingCycle = Equinix.Metal.BillingCycle.Hourly,
+    ///         IpAddresses = new[]
+    ///         {
+    ///             new Equinix.Metal.Inputs.DeviceIpAddressArgs
+    ///             {
+    ///                 Type = "public_ipv4",
+    ///                 Cidr = 31,
+    ///                 ReservationIds = new[]
+    ///                 {
+    ///                     example.Id,
+    ///                 },
+    ///             },
+    ///             new Equinix.Metal.Inputs.DeviceIpAddressArgs
+    ///             {
+    ///                 Type = "private_ipv4",
+    ///             },
+    ///         },
+    ///     });
+    /// 
     /// });
     /// ```
     /// 

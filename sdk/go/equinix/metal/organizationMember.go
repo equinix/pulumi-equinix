@@ -16,6 +16,7 @@ import (
 // Manage the membership of existing and new invitees within an Equinix Metal organization and its projects.
 //
 // ## Example Usage
+// ### example 2
 // ```go
 // package main
 //
@@ -23,31 +24,53 @@ import (
 //
 //	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			organizationId := cfg.Require("organizationId")
-//			projectId := cfg.Require("projectId")
-//			userEmailAddress := cfg.Require("userEmailAddress")
-//			member, err := metal.NewOrganizationMember(ctx, "member", &metal.OrganizationMemberArgs{
-//				Invitee: pulumi.String(userEmailAddress),
+//			_, err := metal.NewOrganizationMember(ctx, "owner", &metal.OrganizationMemberArgs{
+//				Invitee: pulumi.String("admin@example.com"),
 //				Roles: pulumi.StringArray{
-//					pulumi.String("limited_collaborator"),
+//					pulumi.String("owner"),
 //				},
-//				ProjectsIds: pulumi.StringArray{
-//					pulumi.String(projectId),
-//				},
-//				OrganizationId: pulumi.String(organizationId),
+//				ProjectsIds:    pulumi.StringArray{},
+//				OrganizationId: pulumi.Any(organizationId),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("memberId", member.ID())
-//			ctx.Export("memberState", member.State)
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### example 1
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := metal.NewOrganizationMember(ctx, "member", &metal.OrganizationMemberArgs{
+//				Invitee: pulumi.String("member@example.com"),
+//				Roles: pulumi.StringArray{
+//					pulumi.String("limited_collaborator"),
+//				},
+//				ProjectsIds: pulumi.StringArray{
+//					projectId,
+//				},
+//				OrganizationId: pulumi.Any(organizationId),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			return nil
 //		})
 //	}

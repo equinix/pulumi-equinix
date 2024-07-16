@@ -1,0 +1,19 @@
+name: equinix-metal-vrf-example_1
+runtime: yaml
+resources:
+  example:
+    type: equinix:metal:Project
+    properties:
+      name: example
+  exampleVrf:
+    type: equinix:metal:Vrf
+    name: example
+    properties:
+      description: VRF with ASN 65000 and a pool of address space that includes 192.168.100.0/25
+      name: example-vrf
+      metro: da
+      localAsn: '65000'
+      ipRanges:
+        - 192.168.100.0/25
+        - 192.168.200.0/25
+      projectId: ${example.id}

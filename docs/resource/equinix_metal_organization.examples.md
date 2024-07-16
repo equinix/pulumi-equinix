@@ -1,36 +1,21 @@
 ## Example Usage
 {{% example %}}
-
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
 
-const orgResource = new equinix.metal.Organization("org", {
-    name: "Foo Organization",
-    address: {
-        address: "org street",
-        city: "london",
-        country: "GB",
-        zipCode: "12345",
-    },
-    description: "An organization",
+const tfOrganization1 = new equinix.metal.Organization("tfOrganization1", {
+    name: "foobar",
+    description: "quux",
 });
-export const org = orgResource.id;
 ```
 ```python
 import pulumi
 import pulumi_equinix as equinix
 
-org_resource = equinix.metal.Organization("org",
-    name="Foo Organization",
-    address=equinix.metal.OrganizationAddressArgs(
-        address="org street",
-        city="london",
-        country="GB",
-        zip_code="12345",
-    ),
-    description="An organization")
-pulumi.export("org", org_resource.id)
+tf_organization1 = equinix.metal.Organization("tfOrganization1",
+    name="foobar",
+    description="quux")
 ```
 ```go
 package main
@@ -42,48 +27,31 @@ import (
 
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
-		orgResource, err := metal.NewOrganization(ctx, "org", &metal.OrganizationArgs{
-			Name: pulumi.String("Foo Organization"),
-			Address: &metal.OrganizationAddressArgs{
-				Address: pulumi.String("org street"),
-				City:    pulumi.String("london"),
-				Country: pulumi.String("GB"),
-				ZipCode: pulumi.String("12345"),
-			},
-			Description: pulumi.String("An organization"),
+		_, err := metal.NewOrganization(ctx, "tfOrganization1", &metal.OrganizationArgs{
+			Name:        pulumi.String("foobar"),
+			Description: pulumi.String("quux"),
 		})
 		if err != nil {
 			return err
 		}
-		ctx.Export("org", orgResource.ID())
 		return nil
 	})
 }
 ```
 ```csharp
 using System.Collections.Generic;
+using System.Linq;
 using Pulumi;
 using Equinix = Pulumi.Equinix;
 
 return await Deployment.RunAsync(() => 
 {
-    var orgResource = new Equinix.Metal.Organization("org", new()
+    var tfOrganization1 = new Equinix.Metal.Organization("tfOrganization1", new()
     {
-        Name = "Foo Organization",
-        Address = new Equinix.Metal.Inputs.OrganizationAddressArgs
-        {
-            Address = "org street",
-            City = "london",
-            Country = "GB",
-            ZipCode = "12345",
-        },
-        Description = "An organization",
+        Name = "foobar",
+        Description = "quux",
     });
 
-    return new Dictionary<string, object?>
-    {
-        ["org"] = orgResource.Id,
-    };
 });
 ```
 ```java
@@ -92,9 +60,8 @@ package generated_program;
 import com.pulumi.Context;
 import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
-import com.equinix.pulumi.metal.Organization;
-import com.equinix.pulumi.metal.OrganizationArgs;
-import com.equinix.pulumi.metal.inputs.OrganizationAddressArgs;
+import com.pulumi.equinix.metal.Organization;
+import com.pulumi.equinix.metal.OrganizationArgs;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
@@ -108,34 +75,21 @@ public class App {
     }
 
     public static void stack(Context ctx) {
-        var orgResource = new Organization("orgResource", OrganizationArgs.builder()        
-            .name("Foo Organization")
-            .address(OrganizationAddressArgs.builder()
-                .address("org street")
-                .city("london")
-                .country("GB")
-                .zipCode("12345")
-                .build())
-            .description("An organization")
+        var tfOrganization1 = new Organization("tfOrganization1", OrganizationArgs.builder()
+            .name("foobar")
+            .description("quux")
             .build());
 
-        ctx.export("org", orgResource.id());
     }
 }
 ```
 ```yaml
-resources:
-  org:
+  # Create a new Organization
+  tfOrganization1:
     type: equinix:metal:Organization
+    name: tf_organization_1
     properties:
-      name: Foo Organization
-      address:
-        address: org street
-        city: london
-        country: GB
-        zipCode: "12345"
-      description: An organization
-outputs:
-  org: ${org.id}
+      name: foobar
+      description: quux
 ```
 {{% /example %}}

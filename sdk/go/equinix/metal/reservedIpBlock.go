@@ -26,6 +26,7 @@ import (
 // See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
 //
 // ## Example Usage
+// ### example 1
 // ```go
 // package main
 //
@@ -33,37 +34,85 @@ import (
 //
 //	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			projectId := cfg.Require("projectId")
-//			metro := "FR"
-//			if param := cfg.Get("metro"); param != "" {
-//				metro = param
-//			}
-//			_type := "public_ipv4"
-//			if param := cfg.Get("type"); param != "" {
-//				_type = param
-//			}
-//			quantity := 1
-//			if param := cfg.GetInt("quantity"); param != 0 {
-//				quantity = param
-//			}
-//			ipBlock, err := metal.NewReservedIpBlock(ctx, "ipBlock", &metal.ReservedIpBlockArgs{
-//				ProjectId: pulumi.String(projectId),
-//				Type:      pulumi.String("public_ipv4"),
-//				Quantity:  pulumi.Int(quantity),
-//				Metro:     pulumi.String(metro),
+//			_, err := metal.NewReservedIpBlock(ctx, "twoElasticAddresses", &metal.ReservedIpBlockArgs{
+//				ProjectId: pulumi.Any(projectId),
+//				Metro:     pulumi.String("sv"),
+//				Quantity:  pulumi.Int(2),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("ipBlockId", ipBlock.ID())
-//			ctx.Export("ipBlockSubent", ipBlock.CidrNotation)
+//			_, err = metal.NewReservedIpBlock(ctx, "test1", &metal.ReservedIpBlockArgs{
+//				ProjectId: pulumi.Any(projectId),
+//				Type:      pulumi.String(metal.IpBlockTypePublicIPv4),
+//				Metro:     pulumi.String("sv"),
+//				Quantity:  pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = metal.NewReservedIpBlock(ctx, "test", &metal.ReservedIpBlockArgs{
+//				ProjectId: pulumi.Any(projectId),
+//				Type:      pulumi.String(metal.IpBlockTypeGlobalIPv4),
+//				Quantity:  pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### example 2
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := metal.NewReservedIpBlock(ctx, "example", &metal.ReservedIpBlockArgs{
+//				ProjectId: pulumi.Any(projectId),
+//				Metro:     pulumi.String("sv"),
+//				Quantity:  pulumi.Int(2),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = metal.NewDevice(ctx, "nodes", &metal.DeviceArgs{
+//				ProjectId:       pulumi.Any(projectId),
+//				Metro:           pulumi.String("sv"),
+//				Plan:            pulumi.String(metal.PlanC3SmallX86),
+//				OperatingSystem: pulumi.String(metal.OperatingSystem_Ubuntu20_04),
+//				Hostname:        pulumi.String("test"),
+//				BillingCycle:    pulumi.String(metal.BillingCycleHourly),
+//				IpAddresses: metal.DeviceIpAddressArray{
+//					&metal.DeviceIpAddressArgs{
+//						Type: pulumi.String("public_ipv4"),
+//						Cidr: pulumi.Int(31),
+//						ReservationIds: pulumi.StringArray{
+//							example.ID(),
+//						},
+//					},
+//					&metal.DeviceIpAddressArgs{
+//						Type: pulumi.String("private_ipv4"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			return nil
 //		})
 //	}

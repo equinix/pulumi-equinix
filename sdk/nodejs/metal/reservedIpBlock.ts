@@ -21,24 +21,56 @@ import * as utilities from "../utilities";
  * See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
  *
  * ## Example Usage
- *
+ * ### example 1
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
  *
- * const config = new pulumi.Config();
- * const projectId = config.require("projectId");
- * const metro = config.get("metro") || "FR";
- * const type = config.get("type") || "public_ipv4";
- * const quantity = config.getNumber("quantity") || 1;
- * const ipBlock = new equinix.metal.ReservedIpBlock("ipBlock", {
+ * const twoElasticAddresses = new equinix.metal.ReservedIpBlock("twoElasticAddresses", {
  *     projectId: projectId,
- *     type: "public_ipv4",
- *     quantity: quantity,
- *     metro: metro,
+ *     metro: "sv",
+ *     quantity: 2,
  * });
- * export const ipBlockId = ipBlock.id;
- * export const ipBlockSubent = ipBlock.cidrNotation;
+ * const test1 = new equinix.metal.ReservedIpBlock("test1", {
+ *     projectId: projectId,
+ *     type: equinix.metal.IpBlockType.PublicIPv4,
+ *     metro: "sv",
+ *     quantity: 1,
+ * });
+ * const test = new equinix.metal.ReservedIpBlock("test", {
+ *     projectId: projectId,
+ *     type: equinix.metal.IpBlockType.GlobalIPv4,
+ *     quantity: 1,
+ * });
+ * ```
+ * ### example 2
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const example = new equinix.metal.ReservedIpBlock("example", {
+ *     projectId: projectId,
+ *     metro: "sv",
+ *     quantity: 2,
+ * });
+ * const nodes = new equinix.metal.Device("nodes", {
+ *     projectId: projectId,
+ *     metro: "sv",
+ *     plan: equinix.metal.Plan.C3SmallX86,
+ *     operatingSystem: equinix.metal.OperatingSystem.Ubuntu20_04,
+ *     hostname: "test",
+ *     billingCycle: equinix.metal.BillingCycle.Hourly,
+ *     ipAddresses: [
+ *         {
+ *             type: "public_ipv4",
+ *             cidr: 31,
+ *             reservationIds: [example.id],
+ *         },
+ *         {
+ *             type: "private_ipv4",
+ *         },
+ *     ],
+ * });
  * ```
  *
  * ## Import

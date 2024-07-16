@@ -13,20 +13,42 @@ import * as utilities from "../utilities";
  * See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
  *
  * ## Example Usage
- *
+ * ### example 1
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
  *
- * const config = new pulumi.Config();
- * const projectId = config.require("projectId");
- * const vlanId = config.require("vlanId");
- * const gateway = new equinix.metal.Gateway("gateway", {
+ * const test = new equinix.metal.Vlan("test", {
+ *     description: "test VLAN in SV",
+ *     metro: "sv",
  *     projectId: projectId,
- *     vlanId: vlanId,
+ * });
+ * const testGateway = new equinix.metal.Gateway("testGateway", {
+ *     projectId: projectId,
+ *     vlanId: test.id,
  *     privateIpv4SubnetSize: 8,
  * });
- * export const gatewayState = gateway.state;
+ * ```
+ * ### example 2
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const test = new equinix.metal.Vlan("test", {
+ *     description: "test VLAN in SV",
+ *     metro: "sv",
+ *     projectId: projectId,
+ * });
+ * const test1 = new equinix.metal.ReservedIpBlock("test1", {
+ *     projectId: projectId,
+ *     metro: "sv",
+ *     quantity: 8,
+ * });
+ * const testGateway = new equinix.metal.Gateway("testGateway", {
+ *     projectId: projectId,
+ *     vlanId: test.id,
+ *     ipReservationId: testEquinixMetalReservedIpBlock.id,
+ * });
  * ```
  */
 export class Gateway extends pulumi.CustomResource {

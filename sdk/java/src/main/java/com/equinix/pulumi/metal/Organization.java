@@ -26,9 +26,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.equinix.pulumi.metal.Organization;
- * import com.equinix.pulumi.metal.OrganizationArgs;
- * import com.equinix.pulumi.metal.inputs.OrganizationAddressArgs;
+ * import com.pulumi.equinix.metal.Organization;
+ * import com.pulumi.equinix.metal.OrganizationArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -42,18 +41,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var orgResource = new Organization("orgResource", OrganizationArgs.builder()        
- *             .name("Foo Organization")
- *             .address(OrganizationAddressArgs.builder()
- *                 .address("org street")
- *                 .city("london")
- *                 .country("GB")
- *                 .zipCode("12345")
- *                 .build())
- *             .description("An organization")
+ *         var tfOrganization1 = new Organization("tfOrganization1", OrganizationArgs.builder()
+ *             .name("foobar")
+ *             .description("quux")
  *             .build());
  * 
- *         ctx.export("org", orgResource.id());
  *     }
  * }
  * }

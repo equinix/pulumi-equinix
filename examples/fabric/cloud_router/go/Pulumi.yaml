@@ -1,9 +1,2 @@
-name: equinix-fabric-cloud-router
+name: equinix-fabric-cloud_router
 runtime: go
-description: An Equinix Fabric Cloud Router instance
-config:
-  accountNum:
-    type: integer
-  metro:
-    type: string
-    default: FR

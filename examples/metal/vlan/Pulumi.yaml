@@ -1,0 +1,11 @@
+name: equinix-metal-vlan
+runtime: yaml
+resources:
+  # Create a new VLAN in metro "esv"
+  vlan1:
+    type: equinix:metal:Vlan
+    properties:
+      description: VLAN in New Jersey
+      metro: sv
+      projectId: ${projectId}
+      vxlan: 1040

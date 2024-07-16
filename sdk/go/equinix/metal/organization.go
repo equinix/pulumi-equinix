@@ -26,20 +26,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			orgResource, err := metal.NewOrganization(ctx, "org", &metal.OrganizationArgs{
-//				Name: pulumi.String("Foo Organization"),
-//				Address: &metal.OrganizationAddressArgs{
-//					Address: pulumi.String("org street"),
-//					City:    pulumi.String("london"),
-//					Country: pulumi.String("GB"),
-//					ZipCode: pulumi.String("12345"),
-//				},
-//				Description: pulumi.String("An organization"),
+//			_, err := metal.NewOrganization(ctx, "tfOrganization1", &metal.OrganizationArgs{
+//				Name:        pulumi.String("foobar"),
+//				Description: pulumi.String("quux"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("org", orgResource.ID())
 //			return nil
 //		})
 //	}

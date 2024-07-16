@@ -13,22 +13,147 @@ import * as utilities from "../utilities";
  * > **NOTE:** All arguments including the `rootPassword` and `userData` will be stored in the raw state as plain-text. Read more about sensitive data in state.
  *
  * ## Example Usage
- *
+ * ### example 1
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
  *
- * const config = new pulumi.Config();
- * const projectId = config.require("projectId");
- * const web = new equinix.metal.Device("web", {
- *     hostname: "webserver1",
- *     plan: "c3.small.x86",
- *     operatingSystem: "ubuntu_20_04",
+ * const web1 = new equinix.metal.Device("web1", {
+ *     hostname: "tf.coreos2",
+ *     plan: equinix.metal.Plan.C3SmallX86,
  *     metro: "sv",
- *     billingCycle: "hourly",
+ *     operatingSystem: equinix.metal.OperatingSystem.Ubuntu20_04,
+ *     billingCycle: equinix.metal.BillingCycle.Hourly,
  *     projectId: projectId,
  * });
- * export const webPublicIp = pulumi.interpolate`http://${web.accessPublicIpv4}`;
+ * ```
+ * ### example 4
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const web1 = new equinix.metal.Device("web1", {
+ *     hostname: "tftest",
+ *     plan: equinix.metal.Plan.C3SmallX86,
+ *     metro: "ny",
+ *     operatingSystem: equinix.metal.OperatingSystem.Ubuntu20_04,
+ *     billingCycle: equinix.metal.BillingCycle.Hourly,
+ *     projectId: projectId,
+ *     hardwareReservationId: "next-available",
+ *     storage: `{
+ *   "disks": [
+ *     {
+ *       "device": "/dev/sda",
+ *       "wipeTable": true,
+ *       "partitions": [
+ *         {
+ *           "label": "BIOS",
+ *           "number": 1,
+ *           "size": "4096"
+ *         },
+ *         {
+ *           "label": "SWAP",
+ *           "number": 2,
+ *           "size": "3993600"
+ *         },
+ *         {
+ *           "label": "ROOT",
+ *           "number": 3,
+ *           "size": "0"
+ *         }
+ *       ]
+ *     }
+ *   ],
+ *   "filesystems": [
+ *     {
+ *       "mount": {
+ *         "device": "/dev/sda3",
+ *         "format": "ext4",
+ *         "point": "/",
+ *         "create": {
+ *           "options": [
+ *             "-L",
+ *             "ROOT"
+ *           ]
+ *         }
+ *       }
+ *     },
+ *     {
+ *       "mount": {
+ *         "device": "/dev/sda2",
+ *         "format": "swap",
+ *         "point": "none",
+ *         "create": {
+ *           "options": [
+ *             "-L",
+ *             "SWAP"
+ *           ]
+ *         }
+ *       }
+ *     }
+ *   ]
+ * }
+ * `,
+ * });
+ * ```
+ * ### example 2
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const pxe1 = new equinix.metal.Device("pxe1", {
+ *     hostname: "tf.coreos2-pxe",
+ *     plan: equinix.metal.Plan.C3SmallX86,
+ *     metro: "sv",
+ *     operatingSystem: equinix.metal.OperatingSystem.CustomIPXE,
+ *     billingCycle: equinix.metal.BillingCycle.Hourly,
+ *     projectId: projectId,
+ *     ipxeScriptUrl: "https://rawgit.com/cloudnativelabs/pxe/master/packet/coreos-stable-metal.ipxe",
+ *     alwaysPxe: false,
+ *     userData: example.rendered,
+ * });
+ * ```
+ * ### example 5
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const pxe1 = new equinix.metal.Device("pxe1", {
+ *     hostname: "tf.coreos2-pxe",
+ *     plan: equinix.metal.Plan.C3SmallX86,
+ *     metro: "sv",
+ *     operatingSystem: equinix.metal.OperatingSystem.CustomIPXE,
+ *     billingCycle: equinix.metal.BillingCycle.Hourly,
+ *     projectId: projectId,
+ *     ipxeScriptUrl: "https://rawgit.com/cloudnativelabs/pxe/master/packet/coreos-stable-metal.ipxe",
+ *     alwaysPxe: false,
+ *     userData: userData,
+ *     customData: customData,
+ *     behavior: {
+ *         allowChanges: [
+ *             "custom_data",
+ *             "user_data",
+ *         ],
+ *     },
+ * });
+ * ```
+ * ### example 3
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const web1 = new equinix.metal.Device("web1", {
+ *     hostname: "tf.coreos2",
+ *     plan: equinix.metal.Plan.C3SmallX86,
+ *     metro: "ny",
+ *     operatingSystem: equinix.metal.OperatingSystem.Ubuntu20_04,
+ *     billingCycle: equinix.metal.BillingCycle.Hourly,
+ *     projectId: projectId,
+ *     ipAddresses: [{
+ *         type: "private_ipv4",
+ *         cidr: 30,
+ *     }],
+ * });
  * ```
  */
 export class Device extends pulumi.CustomResource {

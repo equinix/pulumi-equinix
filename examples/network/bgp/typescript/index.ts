@@ -1,7 +1,7 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
 
-const bgp = new equinix.networkedge.Bgp("bgp", {
+const test = new equinix.networkedge.Bgp("test", {
     connectionId: "54014acf-9730-4b55-a791-459283d05fb1",
     localIpAddress: "10.1.1.1/30",
     localAsn: 12345,
@@ -9,5 +9,3 @@ const bgp = new equinix.networkedge.Bgp("bgp", {
     remoteAsn: 66123,
     authenticationKey: "secret",
 });
-export const state = bgp.state;
-export const provisioningStatus = bgp.provisioningStatus;

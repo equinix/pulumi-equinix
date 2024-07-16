@@ -1,25 +1,15 @@
 using System.Collections.Generic;
+using System.Linq;
 using Pulumi;
 using Equinix = Pulumi.Equinix;
 
 return await Deployment.RunAsync(() => 
 {
-    var orgResource = new Equinix.Metal.Organization("org", new()
+    var tfOrganization1 = new Equinix.Metal.Organization("tfOrganization1", new()
     {
-        Name = "Foo Organization",
-        Address = new Equinix.Metal.Inputs.OrganizationAddressArgs
-        {
-            Address = "org street",
-            City = "london",
-            Country = "GB",
-            ZipCode = "12345",
-        },
-        Description = "An organization",
+        Name = "foobar",
+        Description = "quux",
     });
 
-    return new Dictionary<string, object?>
-    {
-        ["org"] = orgResource.Id,
-    };
 });
 

@@ -17,24 +17,18 @@ namespace Pulumi.Equinix.Metal
     /// ## Example Usage
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Equinix = Pulumi.Equinix;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var config = new Config();
-    ///     var description = config.Get("description") ?? "An user level API Key";
-    ///     var readOnly = config.GetBoolean("readOnly") ?? false;
-    ///     var apiKey = new Equinix.Metal.UserApiKey("apiKey", new()
+    ///     var test = new Equinix.Metal.UserApiKey("test", new()
     ///     {
-    ///         Description = description,
-    ///         ReadOnly = readOnly,
+    ///         Description = "Read-only user key",
+    ///         ReadOnly = true,
     ///     });
     /// 
-    ///     return new Dictionary&lt;string, object?&gt;
-    ///     {
-    ///         ["apiKeyToken"] = apiKey.Token,
-    ///     };
     /// });
     /// ```
     /// </summary>

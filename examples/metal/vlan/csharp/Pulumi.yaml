@@ -1,11 +1,2 @@
 name: equinix-metal-vlan
 runtime: dotnet
-description: An Equinix Metal VLAN resource
-config:
-  metro:
-    type: string
-    default: DA
-  projectId:
-    type: string
-  vxlan:
-    type: integer

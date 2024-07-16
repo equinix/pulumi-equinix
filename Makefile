@@ -30,7 +30,14 @@ development: install_plugins provider lint_provider build_sdks install_sdks clea
 build: install_plugins provider build_sdks install_sdks
 only_build: build
 
-tfgen: cleanup install_plugins upstream
+only_tfgen: install_plugins upstream build_schema
+tfgen: only_tfgen generate_examples
+
+# Generate examples after the schema is generated
+generate_examples: examples
+
+# Build the tfgen binary and generate the schema
+build_schema:
 	(cd provider && go build -o $(WORKING_DIR)/bin/${TFGEN} -ldflags "-X ${PROJECT}/${VERSION_PATH}=${VERSION}" ${PROJECT}/${PROVIDER_PATH}/cmd/${TFGEN})
 	$(WORKING_DIR)/bin/${TFGEN} schema --out provider/cmd/${PROVIDER}
 	(cd provider && VERSION=$(VERSION) go generate cmd/${PROVIDER}/main.go)
@@ -39,6 +46,9 @@ bin/pulumi-java-gen: .pulumi-java-gen.version
 	pulumictl download-binary -n pulumi-language-java -v v$(shell cat .pulumi-java-gen.version) -r pulumi/pulumi-java
 
 provider: tfgen install_plugins # build the provider binary
+provider: only_provider
+
+only_provider:
 	(cd provider && go build -o $(WORKING_DIR)/bin/${PROVIDER} -ldflags "-X ${PROJECT}/${VERSION_PATH}=${VERSION} -X github.com/equinix/terraform-provider-equinix/version.ProviderVersion=${VERSION}" ${PROJECT}/${PROVIDER_PATH}/cmd/${PROVIDER})
 
 build_sdks: clean build_nodejs build_python build_go build_dotnet build_java # build all the sdks
@@ -58,8 +68,6 @@ build_nodejs: upstream
         yarn run tsc && \
         cp ../../README.md ../../LICENSE package.json yarn.lock ./bin/ && \
 		sed -i.bak -e "s/\$${VERSION}/$(VERSION)/g" ./bin/package.json
-
-
 
 build_python: PYPI_VERSION := $(shell pulumictl get version --language python)
 build_python: upstream
@@ -148,6 +156,12 @@ help:
 clean:
 	rm -rf sdk/{dotnet,nodejs,go,python,java}
 
+install_equinix_plugin: only_provider uninstall_equinix_plugin
+	.pulumi/bin/pulumi plugin install resource equinix $(shell pulumictl get version --language generic) --file $(WORKING_DIR)/bin/$(PROVIDER)
+
+uninstall_equinix_plugin:
+	.pulumi/bin/pulumi plugin rm resource equinix -a -y
+
 install_plugins: .pulumi/bin/pulumi
 	.pulumi/bin/pulumi plugin install resource tls 4.11.0
 	.pulumi/bin/pulumi plugin install resource random 4.14.0
@@ -190,9 +204,12 @@ upstream.rebase:
 .pulumi/bin/pulumi: .pulumi/version
 	curl -fsSL https://get.pulumi.com | HOME=$(WORKING_DIR) sh -s -- --version $(cat .pulumi/version)
 
+examples: install_equinix_plugin
+	scripts/generate_examples.sh
+
 # Compute the version of Pulumi to use by inspecting the Go dependencies of the provider.
 .pulumi/version:
 	@mkdir -p .pulumi
 	@cd provider && go list -f "{{slice .Version 1}}" -m github.com/pulumi/pulumi/pkg/v3 | tee ../$@
 
-.PHONY: development build build_sdks install_go_sdk install_java_sdk install_python_sdk install_sdks only_build build_dotnet build_go build_java build_nodejs build_python clean cleanup help install_dotnet_sdk install_nodejs_sdk install_plugins lint_provider provider test tfgen upstream upstream.finalize upstream.rebase test_provider
+.PHONY: development build build_sdks install_go_sdk install_java_sdk install_python_sdk install_sdks only_build build_dotnet build_go build_java build_nodejs build_python clean cleanup help install_dotnet_sdk install_nodejs_sdk install_equinix_plugin uninstall_equinix_plugin install_plugins lint_provider provider test tfgen upstream upstream.finalize upstream.rebase test_provider examples examples_check

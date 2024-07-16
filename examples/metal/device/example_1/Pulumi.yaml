@@ -1,0 +1,12 @@
+name: equinix-metal-device-example_1
+runtime: yaml
+resources:
+  web1:
+    type: equinix:metal:Device
+    properties:
+      hostname: tf.coreos2
+      plan: c3.small.x86
+      metro: sv
+      operatingSystem: ubuntu_20_04
+      billingCycle: hourly
+      projectId: ${projectId}
