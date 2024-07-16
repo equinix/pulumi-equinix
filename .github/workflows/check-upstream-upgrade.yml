@@ -20,10 +20,10 @@ jobs:
       run: go install github.com/pulumi/upgrade-provider@main
       shell: bash
     - name: "Set up git identity: name"
-      run: git config --global user.name equinix-bot
+      run: git config --global user.name GitHub
       shell: bash
     - name: "Set up git identity: email"
-      run: git config --global user.email bot@equinix.com
+      run: git config --global user.email noreply@github.com
       shell: bash
     - name: Run upgrade-provider upstream check
       id: upstream_version
