@@ -1,0 +1,117 @@
+name: 'Upgrade provider'
+description: 'An action to upgrade bridged providers'
+inputs:
+  kind:
+    description: The kind of upgrade to perform; valid options are ["all", "provider", "bridge"]
+    required: true
+    default: "all"
+  username:
+    description: 'The username for git configuration'
+    required: false
+    default: ${{ github.actor }}
+  email:
+    description: 'The email for git configuration'
+    required: false
+  automerge:
+    description: 'If the created PR should be auto-merged'
+    required: false
+    default: false
+  pr-assign:
+    description: |
+      A user to assign the upgrade PR to
+    required: true
+    default: ${{ github.actor }}
+  pr-reviewers:
+    description: |
+      Handles of reviewers to assign the created PRs to. If empty, default reviewers are assigned.
+    required: false
+    default: ""
+  pr-description:
+    description: |
+      Extra description to insert in the auto-generated pull request.
+    required: false
+    default: ""
+  pr-title-prefix:
+    description: |
+      Prefix to add to the title of the auto-generated pull request.
+    required: false
+    default: ""
+  target-bridge-version:
+    description: |
+      Informs which version of pulumi-terraform-bridge to target for updating the bridge; valid
+      options are "latest", a version like "1.2.3", or a Git commit hash reference like "cad926a2d".
+    required: false
+    default: "latest"
+  target-pulumi-version:
+    description: |
+      Set the version of `pulumi/pkg` and `pulumi/sdk` to depend on for bridged providers. Currently,
+      these versions inform the linked runtime and SDK generation in all languages except Java. Valid
+      options are:
+      - "", "follow": Use the same version as pulumi-terraform-bridge
+      - A go version such as "v3.90.1"
+      - A commit SHA in pulumi/pulumi such as "ac71ebc1d34e5ccfd1a7fed61e6ff43a3160f3cb"
+    required: false
+    default: ""
+  target-java-version:
+    description: |
+      Explicitly set the version pf pulumi/pulumi-java to generate the java sdk with.
+    required: false
+    default: ""
+runs:
+  using: "composite"
+  steps:
+  - name: Install Go
+    uses: actions/setup-go@v3
+    with:
+      go-version: 1.21.x
+  - name: Install pulumictl
+    uses: jaxxstorm/action-install-gh-release@v1.10.0
+    with:
+      repo: pulumi/pulumictl
+  - name: Install Pulumi CLI
+    uses: pulumi/actions@v4
+  - name: Checkout repo
+    uses: actions/checkout@v3
+    with:
+      ref: ${{ github.ref_name }}
+  - name: Unshallow clone for tags
+    run: git fetch --prune --unshallow --tags
+    shell: bash
+  - name: Install upgrade-provider
+    run: go install github.com/pulumi/upgrade-provider@main
+    shell: bash
+  - name: Setup Gradle
+    uses: gradle/gradle-build-action@v2
+    with:
+      gradle-version: "7.6"
+  - name: "Set up git identity: name"
+    run: git config --global user.name '${{ inputs.username }}'
+    shell: bash
+  - name: "Set up git identity: email"
+    if: ${{ inputs.email != '' }}
+    run: git config --global user.email '${{ inputs.email }}'
+    shell: bash
+  - name: Run upgrade-provider
+    run: |
+      upgrade-provider "$REPO" --kind="$KIND" ${TBV:+--target-bridge-version="$TBV"} ${ASS:+--pr-assign="$ASS"} ${REV:+--pr-reviewers="$REV"} ${DESC:+--pr-description="$DESC"} ${PREF:+--pr-title-prefix="$PREF"} ${PUV:+--target-pulumi-version="$PUV"} ${JV:+--java-version="$JV"}
+    shell: bash
+    env:
+      GH_TOKEN: ${{ env.GH_TOKEN }}
+      REPO: ${{ github.repository }}
+      KIND: ${{ inputs.kind }}
+      TBV: ${{ inputs.target-bridge-version }}
+      ASS: ${{ inputs.pr-assign }}
+      REV: ${{ inputs.pr-reviewers }}
+      DESC: ${{ inputs.pr-description }}
+      PREF: ${{ inputs.pr-title-prefix }}
+      PUV: ${{ inputs.target-pulumi-version }}
+      JV: ${{ inputs.target-java-version }}
+  - name: Set PR to auto-merge
+    if: ${{ inputs.automerge == 'true' }}
+    # This tolerates repos that do not have auto-merge enabled.  `continue-on-error: true`
+    # should be removed when https://github.com/pulumi/home/issues/3140 closes.
+    continue-on-error: true
+    run: gh pr merge --auto --squash --delete-branch
+    shell: bash
+    env:
+      GH_TOKEN: ${{ env.GH_TOKEN }}

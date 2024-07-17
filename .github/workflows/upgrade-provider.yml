@@ -17,33 +17,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Call upgrade provider action
-      uses: pulumi/pulumi-upgrade-provider-action@v0.0.10
+      # TODO(ocobles): upgrade-provider tool tries to assign the PR to the user who created it.
+      # Since we don't have an Equinix bot user, we are using the GITHUB_TOKEN. This results in an
+      # error when trying to assign the PR to the user of the token (github-action). As a workaround
+      # we override the assign user. The pulumi-upgrade-provider-action does not have this option so
+      # we temporarily overwrite the action locally with a pr-assign input.
+      # Set pulumi-upgrade-provider-action back when pr-assign is available or we have a bot token
+      #
+      # uses: pulumi/pulumi-upgrade-provider-action@v0.0.10
+      uses: ./.github/actions/upgrade-provider
       with:
         kind: all
         email: noreply@github.com
         username: GitHub
-    ## TODO
-    # - env:
-    #     SLACK_CHANNEL: provider-upgrade-publish-status
-    #     SLACK_COLOR: "#7CFC00"
-    #     SLACK_ICON_EMOJI: ":taco:"
-    #     SLACK_MESSAGE: >-
-    #       Upgrade succeeded :heart_decoration:
-
-    #       PR opened at github.com/pulumi/${{ github.event.repository.name }}/pulls
-    #     SLACK_TITLE: ${{ github.event.repository.name }} upgrade result
-    #     SLACK_USERNAME: provider-bot
-    #     SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
-    #   name: Send Upgrade Success To Slack
-    #   uses: rtCamp/action-slack-notify@v2
-    # - env:
-    #     SLACK_CHANNEL: provider-upgrade-publish-status
-    #     SLACK_COLOR: "#FF0000"
-    #     SLACK_ICON_EMOJI: ":taco:"
-    #     SLACK_MESSAGE: " Upgrade failed :x:"
-    #     SLACK_TITLE: ${{ github.event.repository.name }} upgrade result
-    #     SLACK_USERNAME: provider-bot
-    #     SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
-    #   if: failure()
-    #   name: Send Upgrade Failure To Slack
-    #   uses: rtCamp/action-slack-notify@v2
