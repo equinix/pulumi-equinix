@@ -11509,6 +11509,17 @@
                     "secret": true,
                     "willReplaceOnChanges": true
                 },
+                "panoramaAuthKey": {
+                    "type": "string",
+                    "description": "Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.\n",
+                    "secret": true,
+                    "willReplaceOnChanges": true
+                },
+                "panoramaIpAddress": {
+                    "type": "string",
+                    "description": "Panorama Server IP Address. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.\n",
+                    "willReplaceOnChanges": true
+                },
                 "privateAddress": {
                     "type": "string",
                     "description": "Private address. This field is relevant only for the BlueCat DNS and DHCP Server\n",
@@ -11616,6 +11627,17 @@
                     "type": "string",
                     "description": "License key. This field is relevant only for the BlueCat DNS and DHCP Server\n",
                     "secret": true,
+                    "willReplaceOnChanges": true
+                },
+                "panoramaAuthKey": {
+                    "type": "string",
+                    "description": "Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.\n",
+                    "secret": true,
+                    "willReplaceOnChanges": true
+                },
+                "panoramaIpAddress": {
+                    "type": "string",
+                    "description": "Panorama Server IP Address. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.\n",
                     "willReplaceOnChanges": true
                 },
                 "privateAddress": {
@@ -11928,7 +11950,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`.\n",
+                    "description": "Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`, `panoramaAuthKey`, `panoramaIpAddress`.\n",
                     "willReplaceOnChanges": true
                 },
                 "wanInterfaceId": {
@@ -12208,6 +12230,15 @@
                     "description": "License key. This field is relevant only for the BlueCat DNS and DHCP Server\n",
                     "secret": true
                 },
+                "panoramaAuthKey": {
+                    "type": "string",
+                    "description": "Panorama Server Auth Key. This field is relevant only for Palo Alto Networks Firewall devices\n",
+                    "secret": true
+                },
+                "panoramaIpAddress": {
+                    "type": "string",
+                    "description": "Panorama Server IP Address. This field is relevant only for Palo Alto Networks Firewall devices\n"
+                },
                 "privateAddress": {
                     "type": "string",
                     "description": "Private address. This field is relevant only for the BlueCat DNS and DHCP Server\n"
@@ -12235,6 +12266,8 @@
                 "hostname",
                 "licenseId",
                 "licenseKey",
+                "panoramaAuthKey",
+                "panoramaIpAddress",
                 "privateAddress",
                 "privateCidrMask",
                 "privateGateway",
@@ -12321,6 +12354,15 @@
                     "description": "License key. This field is relevant only for the BlueCat DNS and DHCP Server\n",
                     "secret": true
                 },
+                "panoramaAuthKey": {
+                    "type": "string",
+                    "description": "Panorama Server Auth Key. This field is relevant only for Palo Alto Networks Firewall devices\n",
+                    "secret": true
+                },
+                "panoramaIpAddress": {
+                    "type": "string",
+                    "description": "Panorama Server IP Address. This field is relevant only for Palo Alto Networks Firewall devices\n"
+                },
                 "privateAddress": {
                     "type": "string",
                     "description": "Private address. This field is relevant only for the BlueCat DNS and DHCP Server\n"
@@ -12348,6 +12390,8 @@
                 "hostname",
                 "licenseId",
                 "licenseKey",
+                "panoramaAuthKey",
+                "panoramaIpAddress",
                 "privateAddress",
                 "privateCidrMask",
                 "privateGateway",
@@ -16789,19 +16833,23 @@
             }
         },
         "equinix:metal/virtualCircuit:VirtualCircuit": {
-            "description": "Use this resource to associate VLAN with a Dedicated Port from [Equinix Fabric - software-defined interconnections](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/#associating-a-vlan-with-a-dedicated-port).\n\nSee the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.\n\n{{% examples %}}\n## Example Usage\n\n{{% example %}}\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix-labs/pulumi-equinix\";\nimport * as equinix from \"@pulumi/equinix\";\n\nconst projectId = \"52000fb2-ee46-4673-93a8-de2c2bdba33c\";\nconst connId = \"73f12f29-3e19-43a0-8e90-ae81580db1e0\";\nconst test = equinix.metal.getInterconnectionOutput({\n    connectionId: connId,\n});\nconst testVlan = new equinix.metal.Vlan(\"testVlan\", {\n    projectId: projectId,\n    metro: test.apply(test =\u003e test.metro),\n});\nconst testVirtualCircuit = new equinix.metal.VirtualCircuit(\"testVirtualCircuit\", {\n    connectionId: connId,\n    projectId: projectId,\n    portId: test.apply(test =\u003e test.ports?.[0]?.id),\n    vlanId: testVlan.id,\n    nniVlan: 1056,\n});\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nproject_id = \"52000fb2-ee46-4673-93a8-de2c2bdba33c\"\nconn_id = \"73f12f29-3e19-43a0-8e90-ae81580db1e0\"\ntest = equinix.metal.get_interconnection_output(connection_id=conn_id)\ntest_vlan = equinix.metal.Vlan(\"testVlan\",\n    project_id=project_id,\n    metro=test.metro)\ntest_virtual_circuit = equinix.metal.VirtualCircuit(\"testVirtualCircuit\",\n    connection_id=conn_id,\n    project_id=project_id,\n    port_id=test.ports[0].id,\n    vlan_id=test_vlan.id,\n    nni_vlan=1056)\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tprojectId := \"52000fb2-ee46-4673-93a8-de2c2bdba33c\"\n\t\tconnId := \"73f12f29-3e19-43a0-8e90-ae81580db1e0\"\n\t\ttest, err := metal.LookupInterconnection(ctx, \u0026metal.LookupInterconnectionArgs{\n\t\t\tConnectionId: connId,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttestVlan, err := metal.NewVlan(ctx, \"testVlan\", \u0026metal.VlanArgs{\n\t\t\tProjectId: pulumi.String(projectId),\n\t\t\tMetro:     pulumi.String(test.Metro),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = metal.NewVirtualCircuit(ctx, \"testVirtualCircuit\", \u0026metal.VirtualCircuitArgs{\n\t\t\tConnectionId: pulumi.String(connId),\n\t\t\tProjectId:    pulumi.String(projectId),\n\t\t\tPortId:       pulumi.String(test.Ports[0].Id),\n\t\t\tVlanId:       testVlan.ID(),\n\t\t\tNniVlan:      pulumi.Int(1056),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var projectId = \"52000fb2-ee46-4673-93a8-de2c2bdba33c\";\n\n    var connId = \"73f12f29-3e19-43a0-8e90-ae81580db1e0\";\n\n    var test = Equinix.Metal.GetInterconnection.Invoke(new()\n    {\n        ConnectionId = connId,\n    });\n\n    var testVlan = new Equinix.Metal.Vlan(\"testVlan\", new()\n    {\n        ProjectId = projectId,\n        Metro = test.Apply(getInterconnectionResult =\u003e getInterconnectionResult.Metro),\n    });\n\n    var testVirtualCircuit = new Equinix.Metal.VirtualCircuit(\"testVirtualCircuit\", new()\n    {\n        ConnectionId = connId,\n        ProjectId = projectId,\n        PortId = test.Apply(getInterconnectionResult =\u003e getInterconnectionResult.Ports[0]?.Id),\n        VlanId = testVlan.Id,\n        NniVlan = 1056,\n    });\n\n});\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.MetalFunctions;\nimport com.pulumi.equinix.metal.inputs.GetInterconnectionArgs;\nimport com.pulumi.equinix.metal.Vlan;\nimport com.pulumi.equinix.metal.VlanArgs;\nimport com.pulumi.equinix.metal.VirtualCircuit;\nimport com.pulumi.equinix.metal.VirtualCircuitArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var projectId = \"52000fb2-ee46-4673-93a8-de2c2bdba33c\";\n\n        final var connId = \"73f12f29-3e19-43a0-8e90-ae81580db1e0\";\n\n        final var test = MetalFunctions.getInterconnection(GetInterconnectionArgs.builder()\n            .connectionId(connId)\n            .build());\n\n        var testVlan = new Vlan(\"testVlan\", VlanArgs.builder()\n            .projectId(projectId)\n            .metro(test.applyValue(getInterconnectionResult -\u003e getInterconnectionResult.metro()))\n            .build());\n\n        var testVirtualCircuit = new VirtualCircuit(\"testVirtualCircuit\", VirtualCircuitArgs.builder()\n            .connectionId(connId)\n            .projectId(projectId)\n            .portId(test.applyValue(getInterconnectionResult -\u003e getInterconnectionResult.ports()[0].id()))\n            .vlanId(testVlan.id())\n            .nniVlan(1056)\n            .build());\n\n    }\n}\n```\n```yaml\n  testVlan:\n    type: equinix:metal:Vlan\n    name: test\n    properties:\n      projectId: ${projectId}\n      metro: ${test.metro}\n  testVirtualCircuit:\n    type: equinix:metal:VirtualCircuit\n    name: test\n    properties:\n      connectionId: ${connId}\n      projectId: ${projectId}\n      portId: ${test.ports[0].id}\n      vlanId: ${testVlan.id}\n      nniVlan: 1056\nvariables:\n  projectId: 52000fb2-ee46-4673-93a8-de2c2bdba33c\n  connId: 73f12f29-3e19-43a0-8e90-ae81580db1e0\n  test:\n    fn::invoke:\n      Function: equinix:metal:getInterconnection\n      Arguments:\n        connectionId: ${connId}\n```\n{{% /example %}}\n\n## Import\n\nThis resource can be imported using an existing Virtual Circuit ID:\n\n```sh\n$ pulumi import equinix:metal/virtualCircuit:VirtualCircuit equinix_metal_virtual_circuit {existing_id}\n```\n\n\n{{% /examples %}}",
+            "description": "Use this resource to associate VLAN with a Dedicated Port from [Equinix Fabric - software-defined interconnections](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/#associating-a-vlan-with-a-dedicated-port).\n\nSee the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.\n\n{{% examples %}}\n## Example Usage\n\n{{% example %}}\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix-labs/pulumi-equinix\";\nimport * as equinix from \"@pulumi/equinix\";\n\nconst projectId = \"52000fb2-ee46-4673-93a8-de2c2bdba33c\";\nconst connId = \"73f12f29-3e19-43a0-8e90-ae81580db1e0\";\nconst test = equinix.metal.getInterconnectionOutput({\n    connectionId: connId,\n});\nconst testVlan = new equinix.metal.Vlan(\"testVlan\", {\n    projectId: projectId,\n    metro: test.apply(test =\u003e test.metro),\n});\nconst testVirtualCircuit = new equinix.metal.VirtualCircuit(\"testVirtualCircuit\", {\n    connectionId: connId,\n    projectId: projectId,\n    portId: test.apply(test =\u003e test.ports?.[0]?.id),\n    vlanId: testVlan.id,\n    nniVlan: 1056,\n});\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nproject_id = \"52000fb2-ee46-4673-93a8-de2c2bdba33c\"\nconn_id = \"73f12f29-3e19-43a0-8e90-ae81580db1e0\"\ntest = equinix.metal.get_interconnection_output(connection_id=conn_id)\ntest_vlan = equinix.metal.Vlan(\"testVlan\",\n    project_id=project_id,\n    metro=test.metro)\ntest_virtual_circuit = equinix.metal.VirtualCircuit(\"testVirtualCircuit\",\n    connection_id=conn_id,\n    project_id=project_id,\n    port_id=test.ports[0].id,\n    vlan_id=test_vlan.id,\n    nni_vlan=1056)\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tprojectId := \"52000fb2-ee46-4673-93a8-de2c2bdba33c\"\n\t\tconnId := \"73f12f29-3e19-43a0-8e90-ae81580db1e0\"\n\t\ttest, err := metal.LookupInterconnection(ctx, \u0026metal.LookupInterconnectionArgs{\n\t\t\tConnectionId: connId,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttestVlan, err := metal.NewVlan(ctx, \"testVlan\", \u0026metal.VlanArgs{\n\t\t\tProjectId: pulumi.String(projectId),\n\t\t\tMetro:     pulumi.String(test.Metro),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = metal.NewVirtualCircuit(ctx, \"testVirtualCircuit\", \u0026metal.VirtualCircuitArgs{\n\t\t\tConnectionId: pulumi.String(connId),\n\t\t\tProjectId:    pulumi.String(projectId),\n\t\t\tPortId:       pulumi.String(test.Ports[0].Id),\n\t\t\tVlanId:       testVlan.ID(),\n\t\t\tNniVlan:      pulumi.Int(1056),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var projectId = \"52000fb2-ee46-4673-93a8-de2c2bdba33c\";\n\n    var connId = \"73f12f29-3e19-43a0-8e90-ae81580db1e0\";\n\n    var test = Equinix.Metal.GetInterconnection.Invoke(new()\n    {\n        ConnectionId = connId,\n    });\n\n    var testVlan = new Equinix.Metal.Vlan(\"testVlan\", new()\n    {\n        ProjectId = projectId,\n        Metro = test.Apply(getInterconnectionResult =\u003e getInterconnectionResult.Metro),\n    });\n\n    var testVirtualCircuit = new Equinix.Metal.VirtualCircuit(\"testVirtualCircuit\", new()\n    {\n        ConnectionId = connId,\n        ProjectId = projectId,\n        PortId = test.Apply(getInterconnectionResult =\u003e getInterconnectionResult.Ports[0]?.Id),\n        VlanId = testVlan.Id,\n        NniVlan = 1056,\n    });\n\n});\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.MetalFunctions;\nimport com.pulumi.equinix.metal.inputs.GetInterconnectionArgs;\nimport com.pulumi.equinix.metal.Vlan;\nimport com.pulumi.equinix.metal.VlanArgs;\nimport com.pulumi.equinix.metal.VirtualCircuit;\nimport com.pulumi.equinix.metal.VirtualCircuitArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var projectId = \"52000fb2-ee46-4673-93a8-de2c2bdba33c\";\n\n        final var connId = \"73f12f29-3e19-43a0-8e90-ae81580db1e0\";\n\n        final var test = MetalFunctions.getInterconnection(GetInterconnectionArgs.builder()\n            .connectionId(connId)\n            .build());\n\n        var testVlan = new Vlan(\"testVlan\", VlanArgs.builder()\n            .projectId(projectId)\n            .metro(test.applyValue(getInterconnectionResult -\u003e getInterconnectionResult.metro()))\n            .build());\n\n        var testVirtualCircuit = new VirtualCircuit(\"testVirtualCircuit\", VirtualCircuitArgs.builder()\n            .connectionId(connId)\n            .projectId(projectId)\n            .portId(test.applyValue(getInterconnectionResult -\u003e getInterconnectionResult.ports()[0].id()))\n            .vlanId(testVlan.id())\n            .nniVlan(1056)\n            .build());\n\n    }\n}\n```\n```yaml\n  testVlan:\n    type: equinix:metal:Vlan\n    name: test\n    properties:\n      projectId: ${projectId}\n      metro: ${test.metro}\n  testVirtualCircuit:\n    type: equinix:metal:VirtualCircuit\n    name: test\n    properties:\n      connectionId: ${connId}\n      projectId: ${projectId}\n      portId: ${test.ports[0].id}\n      vlanId: ${testVlan.id}\n      nniVlan: 1056\nvariables:\n  projectId: 52000fb2-ee46-4673-93a8-de2c2bdba33c\n  connId: 73f12f29-3e19-43a0-8e90-ae81580db1e0\n  test:\n    fn::invoke:\n      Function: equinix:metal:getInterconnection\n      Arguments:\n        connectionId: ${connId}\n```\n{{% /example %}}\n\n## Import\n\n```sh\n$ pulumi import equinix:metal/virtualCircuit:VirtualCircuit equinix_metal_virtual_circuit {existing_id}\n```\n\n\n{{% /examples %}}",
             "properties": {
                 "connectionId": {
                     "type": "string",
-                    "description": "UUID of Connection where the VC is scoped to.\n"
+                    "description": "UUID of Connection where the VC is scoped to.  Only used for dedicated connections\n"
                 },
                 "customerIp": {
                     "type": "string",
                     "description": "The Customer IP address which the CSR switch will peer with. Will default to the other usable IP in the subnet.\n"
                 },
+                "customerIpv6": {
+                    "type": "string",
+                    "description": "The Customer IPv6 address which the CSR switch will peer with. Will default to the other usable IP in the IPv6 subnet.\n"
+                },
                 "description": {
                     "type": "string",
-                    "description": "Description for the Virtual Circuit resource.\n"
+                    "description": "Description of the Virtual Circuit resource\n"
                 },
                 "md5": {
                     "type": "string",
@@ -16812,17 +16860,21 @@
                     "type": "string",
                     "description": "The Metal IP address for the SVI (Switch Virtual Interface) of the VirtualCircuit. Will default to the first usable IP in the subnet.\n"
                 },
+                "metalIpv6": {
+                    "type": "string",
+                    "description": "The Metal IPv6 address for the SVI (Switch Virtual Interface) of the VirtualCircuit. Will default to the first usable IP in the IPv6 subnet.\n"
+                },
                 "name": {
                     "type": "string",
-                    "description": "Name of the Virtual Circuit resource.\n"
+                    "description": "Name of the Virtual Circuit resource\n"
                 },
                 "nniVlan": {
                     "type": "integer",
-                    "description": "Equinix Metal network-to-network VLAN ID.\n"
+                    "description": "Equinix Metal network-to-network VLAN ID (optional when the connection has mode=tunnel)\n"
                 },
                 "nniVnid": {
                     "type": "integer",
-                    "description": "NNI VLAN parameters, see the [documentation for Equinix Fabric](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/).\n"
+                    "description": "Nni VLAN ID parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/\n"
                 },
                 "peerAsn": {
                     "type": "integer",
@@ -16830,47 +16882,60 @@
                 },
                 "portId": {
                     "type": "string",
-                    "description": "UUID of the Connection Port where the VC is scoped to.\n"
+                    "description": "UUID of the Connection Port where the VC is scoped to\n"
                 },
                 "projectId": {
                     "type": "string",
-                    "description": "UUID of the Project where the VC is scoped to.\n"
+                    "description": "UUID of the Project where the VC is scoped to\n"
                 },
                 "speed": {
                     "type": "string",
-                    "description": "Speed of the Virtual Circuit resource.\n"
+                    "description": "Description of the Virtual Circuit speed. This is for information purposes and is computed when the connection type is shared.\n"
                 },
                 "status": {
                     "type": "string",
-                    "description": "Status of the virtal circuit.\n"
+                    "description": "Status of the virtual circuit resource\n"
                 },
                 "subnet": {
                     "type": "string",
-                    "description": "A subnet from one of the IP blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.\n* For a /31 block, it will only have two IP addresses, which will be used for the metal_ip and customer_ip.\n* For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.\n"
+                    "description": "A subnet from one of the IP blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.\n\t\t\t * For a /31 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.\n\t\t\t * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.\n"
+                },
+                "subnetIpv6": {
+                    "type": "string",
+                    "description": "A subnet from one of the IPv6 blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /126 or /127.\n\t\t\t * For a /127 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.\n\t\t\t * For a /126 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.\n"
                 },
                 "tags": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Tags for the Virtual Circuit resource.\n"
+                    "description": "Tags attached to the virtual circuit\n"
+                },
+                "virtualCircuitId": {
+                    "type": "string",
+                    "description": "UUID of an existing VC to configure. Used in the case of shared interconnections where the VC has already been created.\n"
                 },
                 "vlanId": {
                     "type": "string",
-                    "description": "UUID of the VLAN to associate.\n"
+                    "description": "UUID of the VLAN to associate\n"
                 },
                 "vnid": {
                     "type": "integer",
-                    "description": "VNID VLAN parameter, see the [documentation for Equinix Fabric](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/).\n"
+                    "description": "VNID VLAN parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/\n"
                 },
                 "vrfId": {
                     "type": "string",
-                    "description": "UUID of the VRF to associate.\n"
+                    "description": "UUID of the VRF to associate\n"
                 }
             },
             "required": [
                 "connectionId",
+                "customerIp",
+                "customerIpv6",
+                "metalIp",
+                "metalIpv6",
                 "name",
+                "nniVlan",
                 "nniVnid",
                 "portId",
                 "projectId",
@@ -16881,16 +16946,20 @@
             "inputProperties": {
                 "connectionId": {
                     "type": "string",
-                    "description": "UUID of Connection where the VC is scoped to.\n",
+                    "description": "UUID of Connection where the VC is scoped to.  Only used for dedicated connections\n",
                     "willReplaceOnChanges": true
                 },
                 "customerIp": {
                     "type": "string",
                     "description": "The Customer IP address which the CSR switch will peer with. Will default to the other usable IP in the subnet.\n"
                 },
+                "customerIpv6": {
+                    "type": "string",
+                    "description": "The Customer IPv6 address which the CSR switch will peer with. Will default to the other usable IP in the IPv6 subnet.\n"
+                },
                 "description": {
                     "type": "string",
-                    "description": "Description for the Virtual Circuit resource.\n"
+                    "description": "Description of the Virtual Circuit resource\n"
                 },
                 "md5": {
                     "type": "string",
@@ -16901,13 +16970,17 @@
                     "type": "string",
                     "description": "The Metal IP address for the SVI (Switch Virtual Interface) of the VirtualCircuit. Will default to the first usable IP in the subnet.\n"
                 },
+                "metalIpv6": {
+                    "type": "string",
+                    "description": "The Metal IPv6 address for the SVI (Switch Virtual Interface) of the VirtualCircuit. Will default to the first usable IP in the IPv6 subnet.\n"
+                },
                 "name": {
                     "type": "string",
-                    "description": "Name of the Virtual Circuit resource.\n"
+                    "description": "Name of the Virtual Circuit resource\n"
                 },
                 "nniVlan": {
                     "type": "integer",
-                    "description": "Equinix Metal network-to-network VLAN ID.\n",
+                    "description": "Equinix Metal network-to-network VLAN ID (optional when the connection has mode=tunnel)\n",
                     "willReplaceOnChanges": true
                 },
                 "peerAsn": {
@@ -16917,41 +16990,49 @@
                 },
                 "portId": {
                     "type": "string",
-                    "description": "UUID of the Connection Port where the VC is scoped to.\n",
+                    "description": "UUID of the Connection Port where the VC is scoped to\n",
                     "willReplaceOnChanges": true
                 },
                 "projectId": {
                     "type": "string",
-                    "description": "UUID of the Project where the VC is scoped to.\n",
+                    "description": "UUID of the Project where the VC is scoped to\n",
                     "willReplaceOnChanges": true
                 },
                 "speed": {
                     "type": "string",
-                    "description": "Speed of the Virtual Circuit resource.\n"
+                    "description": "Description of the Virtual Circuit speed. This is for information purposes and is computed when the connection type is shared.\n"
                 },
                 "subnet": {
                     "type": "string",
-                    "description": "A subnet from one of the IP blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.\n* For a /31 block, it will only have two IP addresses, which will be used for the metal_ip and customer_ip.\n* For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.\n"
+                    "description": "A subnet from one of the IP blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.\n\t\t\t * For a /31 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.\n\t\t\t * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.\n"
+                },
+                "subnetIpv6": {
+                    "type": "string",
+                    "description": "A subnet from one of the IPv6 blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /126 or /127.\n\t\t\t * For a /127 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.\n\t\t\t * For a /126 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.\n"
                 },
                 "tags": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Tags for the Virtual Circuit resource.\n"
+                    "description": "Tags attached to the virtual circuit\n"
+                },
+                "virtualCircuitId": {
+                    "type": "string",
+                    "description": "UUID of an existing VC to configure. Used in the case of shared interconnections where the VC has already been created.\n",
+                    "willReplaceOnChanges": true
                 },
                 "vlanId": {
                     "type": "string",
-                    "description": "UUID of the VLAN to associate.\n"
+                    "description": "UUID of the VLAN to associate\n"
                 },
                 "vrfId": {
                     "type": "string",
-                    "description": "UUID of the VRF to associate.\n",
+                    "description": "UUID of the VRF to associate\n",
                     "willReplaceOnChanges": true
                 }
             },
             "requiredInputs": [
-                "connectionId",
                 "portId",
                 "projectId"
             ],
@@ -16960,16 +17041,20 @@
                 "properties": {
                     "connectionId": {
                         "type": "string",
-                        "description": "UUID of Connection where the VC is scoped to.\n",
+                        "description": "UUID of Connection where the VC is scoped to.  Only used for dedicated connections\n",
                         "willReplaceOnChanges": true
                     },
                     "customerIp": {
                         "type": "string",
                         "description": "The Customer IP address which the CSR switch will peer with. Will default to the other usable IP in the subnet.\n"
                     },
+                    "customerIpv6": {
+                        "type": "string",
+                        "description": "The Customer IPv6 address which the CSR switch will peer with. Will default to the other usable IP in the IPv6 subnet.\n"
+                    },
                     "description": {
                         "type": "string",
-                        "description": "Description for the Virtual Circuit resource.\n"
+                        "description": "Description of the Virtual Circuit resource\n"
                     },
                     "md5": {
                         "type": "string",
@@ -16980,18 +17065,22 @@
                         "type": "string",
                         "description": "The Metal IP address for the SVI (Switch Virtual Interface) of the VirtualCircuit. Will default to the first usable IP in the subnet.\n"
                     },
+                    "metalIpv6": {
+                        "type": "string",
+                        "description": "The Metal IPv6 address for the SVI (Switch Virtual Interface) of the VirtualCircuit. Will default to the first usable IP in the IPv6 subnet.\n"
+                    },
                     "name": {
                         "type": "string",
-                        "description": "Name of the Virtual Circuit resource.\n"
+                        "description": "Name of the Virtual Circuit resource\n"
                     },
                     "nniVlan": {
                         "type": "integer",
-                        "description": "Equinix Metal network-to-network VLAN ID.\n",
+                        "description": "Equinix Metal network-to-network VLAN ID (optional when the connection has mode=tunnel)\n",
                         "willReplaceOnChanges": true
                     },
                     "nniVnid": {
                         "type": "integer",
-                        "description": "NNI VLAN parameters, see the [documentation for Equinix Fabric](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/).\n"
+                        "description": "Nni VLAN ID parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/\n"
                     },
                     "peerAsn": {
                         "type": "integer",
@@ -17000,44 +17089,53 @@
                     },
                     "portId": {
                         "type": "string",
-                        "description": "UUID of the Connection Port where the VC is scoped to.\n",
+                        "description": "UUID of the Connection Port where the VC is scoped to\n",
                         "willReplaceOnChanges": true
                     },
                     "projectId": {
                         "type": "string",
-                        "description": "UUID of the Project where the VC is scoped to.\n",
+                        "description": "UUID of the Project where the VC is scoped to\n",
                         "willReplaceOnChanges": true
                     },
                     "speed": {
                         "type": "string",
-                        "description": "Speed of the Virtual Circuit resource.\n"
+                        "description": "Description of the Virtual Circuit speed. This is for information purposes and is computed when the connection type is shared.\n"
                     },
                     "status": {
                         "type": "string",
-                        "description": "Status of the virtal circuit.\n"
+                        "description": "Status of the virtual circuit resource\n"
                     },
                     "subnet": {
                         "type": "string",
-                        "description": "A subnet from one of the IP blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.\n* For a /31 block, it will only have two IP addresses, which will be used for the metal_ip and customer_ip.\n* For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.\n"
+                        "description": "A subnet from one of the IP blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.\n\t\t\t * For a /31 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.\n\t\t\t * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.\n"
+                    },
+                    "subnetIpv6": {
+                        "type": "string",
+                        "description": "A subnet from one of the IPv6 blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /126 or /127.\n\t\t\t * For a /127 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.\n\t\t\t * For a /126 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.\n"
                     },
                     "tags": {
                         "type": "array",
                         "items": {
                             "type": "string"
                         },
-                        "description": "Tags for the Virtual Circuit resource.\n"
+                        "description": "Tags attached to the virtual circuit\n"
+                    },
+                    "virtualCircuitId": {
+                        "type": "string",
+                        "description": "UUID of an existing VC to configure. Used in the case of shared interconnections where the VC has already been created.\n",
+                        "willReplaceOnChanges": true
                     },
                     "vlanId": {
                         "type": "string",
-                        "description": "UUID of the VLAN to associate.\n"
+                        "description": "UUID of the VLAN to associate\n"
                     },
                     "vnid": {
                         "type": "integer",
-                        "description": "VNID VLAN parameter, see the [documentation for Equinix Fabric](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/).\n"
+                        "description": "VNID VLAN parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/\n"
                     },
                     "vrfId": {
                         "type": "string",
-                        "description": "UUID of the VRF to associate.\n",
+                        "description": "UUID of the VRF to associate\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -17708,7 +17806,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId)\n* `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.\n"
+                    "description": "Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress)\n* `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.\n"
                 },
                 "version": {
                     "type": "string",
@@ -17909,7 +18007,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId)\n* `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.\n",
+                    "description": "Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress)\n* `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.\n",
                     "willReplaceOnChanges": true
                 },
                 "version": {
@@ -18141,7 +18239,7 @@
                         "additionalProperties": {
                             "type": "string"
                         },
-                        "description": "Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId)\n* `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.\n",
+                        "description": "Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress)\n* `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.\n",
                         "willReplaceOnChanges": true
                     },
                     "version": {
@@ -20714,7 +20812,7 @@
             }
         },
         "equinix:metal/getPlans:getPlans": {
-            "description": "Provides an Equinix Metal plans datasource. This can be used to find plans that meet a filter criteria.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@pulumi/equinix\";\n\nconst example = equinix.metal.getPlans({\n    sorts: [{\n        attribute: \"pricing_hour\",\n        direction: \"asc\",\n    }],\n    filters: [\n        {\n            attribute: \"pricing_hour\",\n            values: [\"2.5\"],\n            matchBy: \"less_than\",\n        },\n        {\n            attribute: \"available_in_metros\",\n            values: [\n                \"da\",\n                \"sv\",\n            ],\n        },\n    ],\n});\nexport const plans = example.then(example =\u003e example.plans);\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nexample = equinix.metal.get_plans(sorts=[equinix.metal.GetPlansSortArgs(\n        attribute=\"pricing_hour\",\n        direction=\"asc\",\n    )],\n    filters=[\n        equinix.metal.GetPlansFilterArgs(\n            attribute=\"pricing_hour\",\n            values=[\"2.5\"],\n            match_by=\"less_than\",\n        ),\n        equinix.metal.GetPlansFilterArgs(\n            attribute=\"available_in_metros\",\n            values=[\n                \"da\",\n                \"sv\",\n            ],\n        ),\n    ])\npulumi.export(\"plans\", example.plans)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Equinix.Metal.GetPlans.Invoke(new()\n    {\n        Sorts = new[]\n        {\n            new Equinix.Metal.Inputs.GetPlansSortInputArgs\n            {\n                Attribute = \"pricing_hour\",\n                Direction = \"asc\",\n            },\n        },\n        Filters = new[]\n        {\n            new Equinix.Metal.Inputs.GetPlansFilterInputArgs\n            {\n                Attribute = \"pricing_hour\",\n                Values = new[]\n                {\n                    \"2.5\",\n                },\n                MatchBy = \"less_than\",\n            },\n            new Equinix.Metal.Inputs.GetPlansFilterInputArgs\n            {\n                Attribute = \"available_in_metros\",\n                Values = new[]\n                {\n                    \"da\",\n                    \"sv\",\n                },\n            },\n        },\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"plans\"] = example.Apply(getPlansResult =\u003e getPlansResult.Plans),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := metal.GetPlans(ctx, \u0026metal.GetPlansArgs{\n\t\t\tSorts: []metal.GetPlansSort{\n\t\t\t\t{\n\t\t\t\t\tAttribute: \"pricing_hour\",\n\t\t\t\t\tDirection: pulumi.StringRef(\"asc\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tFilters: []metal.GetPlansFilter{\n\t\t\t\t{\n\t\t\t\t\tAttribute: \"pricing_hour\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"2.5\",\n\t\t\t\t\t},\n\t\t\t\t\tMatchBy: pulumi.StringRef(\"less_than\"),\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\tAttribute: \"available_in_metros\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"da\",\n\t\t\t\t\t\t\"sv\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"plans\", example.Plans)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.MetalFunctions;\nimport com.pulumi.equinix.metal.inputs.GetPlansArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = MetalFunctions.getPlans(GetPlansArgs.builder()\n            .sorts(GetPlansSortArgs.builder()\n                .attribute(\"pricing_hour\")\n                .direction(\"asc\")\n                .build())\n            .filters(            \n                GetPlansFilterArgs.builder()\n                    .attribute(\"pricing_hour\")\n                    .values(2.5)\n                    .matchBy(\"less_than\")\n                    .build(),\n                GetPlansFilterArgs.builder()\n                    .attribute(\"available_in_metros\")\n                    .values(                    \n                        \"da\",\n                        \"sv\")\n                    .build())\n            .build());\n\n        ctx.export(\"plans\", example.applyValue(getPlansResult -\u003e getPlansResult.plans()));\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: equinix:metal:getPlans\n      Arguments:\n        sorts:\n          - attribute: pricing_hour\n            direction: asc\n        filters:\n          - attribute: pricing_hour\n            values:\n              - 2.5\n            matchBy: less_than\n          - attribute: available_in_metros\n            values:\n              - da\n              - sv\noutputs:\n  plans: ${example.plans}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@pulumi/equinix\";\n\nconst example = equinix.metal.getPlans({\n    filters: [\n        {\n            attribute: \"class\",\n            values: [\"large\"],\n            matchBy: \"substring\",\n        },\n        {\n            attribute: \"deployment_types\",\n            values: [\"spot_market\"],\n        },\n        {\n            attribute: \"available_in_metros\",\n            values: [\n                \"da\",\n                \"sv\",\n            ],\n            all: true,\n        },\n    ],\n});\nexport const plans = example.then(example =\u003e example.plans);\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nexample = equinix.metal.get_plans(filters=[\n    equinix.metal.GetPlansFilterArgs(\n        attribute=\"class\",\n        values=[\"large\"],\n        match_by=\"substring\",\n    ),\n    equinix.metal.GetPlansFilterArgs(\n        attribute=\"deployment_types\",\n        values=[\"spot_market\"],\n    ),\n    equinix.metal.GetPlansFilterArgs(\n        attribute=\"available_in_metros\",\n        values=[\n            \"da\",\n            \"sv\",\n        ],\n        all=True,\n    ),\n])\npulumi.export(\"plans\", example.plans)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Equinix.Metal.GetPlans.Invoke(new()\n    {\n        Filters = new[]\n        {\n            new Equinix.Metal.Inputs.GetPlansFilterInputArgs\n            {\n                Attribute = \"class\",\n                Values = new[]\n                {\n                    \"large\",\n                },\n                MatchBy = \"substring\",\n            },\n            new Equinix.Metal.Inputs.GetPlansFilterInputArgs\n            {\n                Attribute = \"deployment_types\",\n                Values = new[]\n                {\n                    \"spot_market\",\n                },\n            },\n            new Equinix.Metal.Inputs.GetPlansFilterInputArgs\n            {\n                Attribute = \"available_in_metros\",\n                Values = new[]\n                {\n                    \"da\",\n                    \"sv\",\n                },\n                All = true,\n            },\n        },\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"plans\"] = example.Apply(getPlansResult =\u003e getPlansResult.Plans),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := metal.GetPlans(ctx, \u0026metal.GetPlansArgs{\n\t\t\tFilters: pulumi.Array{\n\t\t\t\tmetal.GetPlansFilter{\n\t\t\t\t\tAttribute: \"class\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"large\",\n\t\t\t\t\t},\n\t\t\t\t\tMatchBy: pulumi.StringRef(\"substring\"),\n\t\t\t\t},\n\t\t\t\tmetal.GetPlansFilter{\n\t\t\t\t\tAttribute: \"deployment_types\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"spot_market\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tmetal.GetPlansFilter{\n\t\t\t\t\tAttribute: \"available_in_metros\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"da\",\n\t\t\t\t\t\t\"sv\",\n\t\t\t\t\t},\n\t\t\t\t\tAll: pulumi.BoolRef(true),\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"plans\", example.Plans)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.MetalFunctions;\nimport com.pulumi.equinix.metal.inputs.GetPlansArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = MetalFunctions.getPlans(GetPlansArgs.builder()\n            .filters(            \n                GetPlansFilterArgs.builder()\n                    .attribute(\"class\")\n                    .values(\"large\")\n                    .matchBy(\"substring\")\n                    .build(),\n                GetPlansFilterArgs.builder()\n                    .attribute(\"deployment_types\")\n                    .values(\"spot_market\")\n                    .build(),\n                GetPlansFilterArgs.builder()\n                    .attribute(\"available_in_metros\")\n                    .values(                    \n                        \"da\",\n                        \"sv\")\n                    .all(true)\n                    .build())\n            .build());\n\n        ctx.export(\"plans\", example.applyValue(getPlansResult -\u003e getPlansResult.plans()));\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: equinix:metal:getPlans\n      Arguments:\n        filters:\n          - attribute: class\n            values:\n              - large\n            matchBy: substring\n          - attribute: deployment_types\n            values:\n              - spot_market\n          - attribute: available_in_metros\n            values:\n              - da\n              - sv\n            all: true\noutputs:\n  plans: ${example.plans}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Ignoring Changes to Plans/Metro\n\nPreserve deployed device plan, facility and metro when creating a new execution plan.\n\nAs described in the `data-resource-behavior` feature as shown in the example below.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix-labs/pulumi-equinix\";\nimport * as equinix from \"@pulumi/equinix\";\n\nconst examplePlans = equinix.metal.getPlans({\n    sorts: [{\n        attribute: \"pricing_hour\",\n        direction: \"asc\",\n    }],\n    filters: [\n        {\n            attribute: \"name\",\n            values: [\n                \"c3.small.x86\",\n                \"c3.medium.x86\",\n                \"m3.large.x86\",\n            ],\n        },\n        {\n            attribute: \"available_in_metros\",\n            values: [\"sv\"],\n        },\n    ],\n});\n// This equinix_metal_device will use the first returned plan and the first metro in which that plan is available\n// It will ignore future changes on plan and metro\nconst exampleDevice = new equinix.metal.Device(\"exampleDevice\", {\n    hostname: \"example\",\n    plan: examplePlans.then(examplePlans =\u003e examplePlans.plans?.[0]?.name).apply((x) =\u003e equinix.metal.Plan[x]),\n    metro: examplePlans.then(examplePlans =\u003e examplePlans.plans?.[0]?.availableInMetros?.[0]),\n    operatingSystem: equinix.metal.OperatingSystem.Ubuntu20_04,\n    billingCycle: equinix.metal.BillingCycle.Hourly,\n    projectId: _var.project_id,\n});\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nexample_plans = equinix.metal.get_plans(sorts=[equinix.metal.GetPlansSortArgs(\n        attribute=\"pricing_hour\",\n        direction=\"asc\",\n    )],\n    filters=[\n        equinix.metal.GetPlansFilterArgs(\n            attribute=\"name\",\n            values=[\n                \"c3.small.x86\",\n                \"c3.medium.x86\",\n                \"m3.large.x86\",\n            ],\n        ),\n        equinix.metal.GetPlansFilterArgs(\n            attribute=\"available_in_metros\",\n            values=[\"sv\"],\n        ),\n    ])\n# This equinix_metal_device will use the first returned plan and the first metro in which that plan is available\n# It will ignore future changes on plan and metro\nexample_device = equinix.metal.Device(\"exampleDevice\",\n    hostname=\"example\",\n    plan=example_plans.plans[0].name.apply(lambda x: equinix.metal.Plan(x)),\n    metro=example_plans.plans[0].available_in_metros[0],\n    operating_system=equinix.metal.OperatingSystem.UBUNTU20_04,\n    billing_cycle=equinix.metal.BillingCycle.HOURLY,\n    project_id=var[\"project_id\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var examplePlans = Equinix.Metal.GetPlans.Invoke(new()\n    {\n        Sorts = new[]\n        {\n            new Equinix.Metal.Inputs.GetPlansSortInputArgs\n            {\n                Attribute = \"pricing_hour\",\n                Direction = \"asc\",\n            },\n        },\n        Filters = new[]\n        {\n            new Equinix.Metal.Inputs.GetPlansFilterInputArgs\n            {\n                Attribute = \"name\",\n                Values = new[]\n                {\n                    \"c3.small.x86\",\n                    \"c3.medium.x86\",\n                    \"m3.large.x86\",\n                },\n            },\n            new Equinix.Metal.Inputs.GetPlansFilterInputArgs\n            {\n                Attribute = \"available_in_metros\",\n                Values = new[]\n                {\n                    \"sv\",\n                },\n            },\n        },\n    });\n\n    // This equinix_metal_device will use the first returned plan and the first metro in which that plan is available\n    // It will ignore future changes on plan and metro\n    var exampleDevice = new Equinix.Metal.Device(\"exampleDevice\", new()\n    {\n        Hostname = \"example\",\n        Plan = examplePlans.Apply(getPlansResult =\u003e getPlansResult.Plans[0]?.Name).Apply(System.Enum.Parse\u003cEquinix.Metal.Plan\u003e),\n        Metro = examplePlans.Apply(getPlansResult =\u003e getPlansResult.Plans[0]?.AvailableInMetros[0]),\n        OperatingSystem = Equinix.Metal.OperatingSystem.Ubuntu20_04,\n        BillingCycle = Equinix.Metal.BillingCycle.Hourly,\n        ProjectId = @var.Project_id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texamplePlans, err := metal.GetPlans(ctx, \u0026metal.GetPlansArgs{\n\t\t\tSorts: []metal.GetPlansSort{\n\t\t\t\t{\n\t\t\t\t\tAttribute: \"pricing_hour\",\n\t\t\t\t\tDirection: pulumi.StringRef(\"asc\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tFilters: []metal.GetPlansFilter{\n\t\t\t\t{\n\t\t\t\t\tAttribute: \"name\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"c3.small.x86\",\n\t\t\t\t\t\t\"c3.medium.x86\",\n\t\t\t\t\t\t\"m3.large.x86\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\tAttribute: \"available_in_metros\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"sv\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// This equinix_metal_device will use the first returned plan and the first metro in which that plan is available\n\t\t// It will ignore future changes on plan and metro\n\t\t_, err = metal.NewDevice(ctx, \"exampleDevice\", \u0026metal.DeviceArgs{\n\t\t\tHostname:        pulumi.String(\"example\"),\n\t\t\tPlan:            examplePlans.Plans[0].Name.ApplyT(func(x *string) metal.Plan { return metal.Plan(*x) }).(metal.PlanOutput),\n\t\t\tMetro:           pulumi.String(examplePlans.Plans[0].AvailableInMetros[0]),\n\t\t\tOperatingSystem: pulumi.String(metal.OperatingSystem_Ubuntu20_04),\n\t\t\tBillingCycle:    pulumi.String(metal.BillingCycleHourly),\n\t\t\tProjectId:       pulumi.Any(_var.Project_id),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.MetalFunctions;\nimport com.pulumi.equinix.metal.inputs.GetPlansArgs;\nimport com.pulumi.equinix.metal.Device;\nimport com.pulumi.equinix.metal.DeviceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var examplePlans = MetalFunctions.getPlans(GetPlansArgs.builder()\n            .sorts(GetPlansSortArgs.builder()\n                .attribute(\"pricing_hour\")\n                .direction(\"asc\")\n                .build())\n            .filters(            \n                GetPlansFilterArgs.builder()\n                    .attribute(\"name\")\n                    .values(                    \n                        \"c3.small.x86\",\n                        \"c3.medium.x86\",\n                        \"m3.large.x86\")\n                    .build(),\n                GetPlansFilterArgs.builder()\n                    .attribute(\"available_in_metros\")\n                    .values(\"sv\")\n                    .build())\n            .build());\n\n        // This equinix_metal_device will use the first returned plan and the first metro in which that plan is available\n        // It will ignore future changes on plan and metro\n        var exampleDevice = new Device(\"exampleDevice\", DeviceArgs.builder()\n            .hostname(\"example\")\n            .plan(examplePlans.applyValue(getPlansResult -\u003e getPlansResult.plans()[0].name()))\n            .metro(examplePlans.applyValue(getPlansResult -\u003e getPlansResult.plans()[0].availableInMetros()[0]))\n            .operatingSystem(\"ubuntu_20_04\")\n            .billingCycle(\"hourly\")\n            .projectId(var_.project_id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # This equinix_metal_device will use the first returned plan and the first metro in which that plan is available\n  # It will ignore future changes on plan and metro\n  exampleDevice:\n    type: equinix:metal:Device\n    properties:\n      hostname: example\n      plan: ${examplePlans.plans[0].name}\n      metro: ${examplePlans.plans[0].availableInMetros[0]}\n      operatingSystem: ubuntu_20_04\n      billingCycle: hourly\n      projectId: ${var.project_id}\nvariables:\n  examplePlans:\n    fn::invoke:\n      Function: equinix:metal:getPlans\n      Arguments:\n        sorts:\n          - attribute: pricing_hour\n            direction: asc\n        filters:\n          - attribute: name\n            values:\n              - c3.small.x86\n              - c3.medium.x86\n              - m3.large.x86\n          - attribute: available_in_metros\n            values:\n              - sv\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nIf your use case requires dynamic changes of a device plan or metro you can define the lifecycle with a condition.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix-labs/pulumi-equinix\";\nimport * as equinix from \"@pulumi/equinix\";\n\nconst config = new pulumi.Config();\nconst ignorePlansMetrosChanges = config.getBoolean(\"ignorePlansMetrosChanges\") || false;\nconst examplePlans = equinix.metal.getPlans({});\n// required device arguments\nconst exampleDevice = new equinix.metal.Device(\"exampleDevice\", {});\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nconfig = pulumi.Config()\nignore_plans_metros_changes = config.get_bool(\"ignorePlansMetrosChanges\")\nif ignore_plans_metros_changes is None:\n    ignore_plans_metros_changes = False\nexample_plans = equinix.metal.get_plans()\n# required device arguments\nexample_device = equinix.metal.Device(\"exampleDevice\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var config = new Config();\n    var ignorePlansMetrosChanges = config.GetBoolean(\"ignorePlansMetrosChanges\") ?? false;\n    var examplePlans = Equinix.Metal.GetPlans.Invoke();\n\n    // required device arguments\n    var exampleDevice = new Equinix.Metal.Device(\"exampleDevice\");\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tcfg := config.New(ctx, \"\")\n\t\tignorePlansMetrosChanges := false\n\t\tif param := cfg.GetBool(\"ignorePlansMetrosChanges\"); param {\n\t\t\tignorePlansMetrosChanges = param\n\t\t}\n\t\t_, err := metal.GetPlans(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// required device arguments\n\t\t_, err = metal.NewDevice(ctx, \"exampleDevice\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.MetalFunctions;\nimport com.pulumi.equinix.metal.inputs.GetPlansArgs;\nimport com.pulumi.equinix.metal.Device;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var config = ctx.config();\n        final var ignorePlansMetrosChanges = config.get(\"ignorePlansMetrosChanges\").orElse(false);\n        final var examplePlans = MetalFunctions.getPlans();\n\n        // required device arguments\n        var exampleDevice = new Device(\"exampleDevice\");\n\n    }\n}\n```\n```yaml\nconfiguration:\n  # Following example uses a boolean variable that may eventually be set to you false when you update your equinix_metal_plans filter criteria because you need a device plan with a new feature.\n  ignorePlansMetrosChanges:\n    type: bool\n    default: false\nresources:\n  exampleDevice:\n    type: equinix:metal:Device\nvariables:\n  examplePlans:\n    fn::invoke:\n      Function: equinix:metal:getPlans\n      Arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Provides an Equinix Metal plans datasource. This can be used to find plans that meet a filter criteria.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@pulumi/equinix\";\n\nconst example = equinix.metal.getPlans({\n    sorts: [{\n        attribute: \"pricing_hour\",\n        direction: \"asc\",\n    }],\n    filters: [\n        {\n            attribute: \"pricing_hour\",\n            values: [\"2.5\"],\n            matchBy: \"less_than\",\n        },\n        {\n            attribute: \"available_in_metros\",\n            values: [\n                \"da\",\n                \"sv\",\n            ],\n        },\n    ],\n});\nexport const plans = example.then(example =\u003e example.plans);\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nexample = equinix.metal.get_plans(sorts=[equinix.metal.GetPlansSortArgs(\n        attribute=\"pricing_hour\",\n        direction=\"asc\",\n    )],\n    filters=[\n        equinix.metal.GetPlansFilterArgs(\n            attribute=\"pricing_hour\",\n            values=[\"2.5\"],\n            match_by=\"less_than\",\n        ),\n        equinix.metal.GetPlansFilterArgs(\n            attribute=\"available_in_metros\",\n            values=[\n                \"da\",\n                \"sv\",\n            ],\n        ),\n    ])\npulumi.export(\"plans\", example.plans)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Equinix.Metal.GetPlans.Invoke(new()\n    {\n        Sorts = new[]\n        {\n            new Equinix.Metal.Inputs.GetPlansSortInputArgs\n            {\n                Attribute = \"pricing_hour\",\n                Direction = \"asc\",\n            },\n        },\n        Filters = new[]\n        {\n            new Equinix.Metal.Inputs.GetPlansFilterInputArgs\n            {\n                Attribute = \"pricing_hour\",\n                Values = new[]\n                {\n                    \"2.5\",\n                },\n                MatchBy = \"less_than\",\n            },\n            new Equinix.Metal.Inputs.GetPlansFilterInputArgs\n            {\n                Attribute = \"available_in_metros\",\n                Values = new[]\n                {\n                    \"da\",\n                    \"sv\",\n                },\n            },\n        },\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"plans\"] = example.Apply(getPlansResult =\u003e getPlansResult.Plans),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := metal.GetPlans(ctx, \u0026metal.GetPlansArgs{\n\t\t\tSorts: []metal.GetPlansSort{\n\t\t\t\t{\n\t\t\t\t\tAttribute: \"pricing_hour\",\n\t\t\t\t\tDirection: pulumi.StringRef(\"asc\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tFilters: []metal.GetPlansFilter{\n\t\t\t\t{\n\t\t\t\t\tAttribute: \"pricing_hour\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"2.5\",\n\t\t\t\t\t},\n\t\t\t\t\tMatchBy: pulumi.StringRef(\"less_than\"),\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\tAttribute: \"available_in_metros\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"da\",\n\t\t\t\t\t\t\"sv\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"plans\", example.Plans)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.MetalFunctions;\nimport com.pulumi.equinix.metal.inputs.GetPlansArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = MetalFunctions.getPlans(GetPlansArgs.builder()\n            .sorts(GetPlansSortArgs.builder()\n                .attribute(\"pricing_hour\")\n                .direction(\"asc\")\n                .build())\n            .filters(            \n                GetPlansFilterArgs.builder()\n                    .attribute(\"pricing_hour\")\n                    .values(2.5)\n                    .matchBy(\"less_than\")\n                    .build(),\n                GetPlansFilterArgs.builder()\n                    .attribute(\"available_in_metros\")\n                    .values(                    \n                        \"da\",\n                        \"sv\")\n                    .build())\n            .build());\n\n        ctx.export(\"plans\", example.applyValue(getPlansResult -\u003e getPlansResult.plans()));\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: equinix:metal:getPlans\n      Arguments:\n        sorts:\n          - attribute: pricing_hour\n            direction: asc\n        filters:\n          - attribute: pricing_hour\n            values:\n              - 2.5\n            matchBy: less_than\n          - attribute: available_in_metros\n            values:\n              - da\n              - sv\noutputs:\n  plans: ${example.plans}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@pulumi/equinix\";\n\nconst example = equinix.metal.getPlans({\n    filters: [\n        {\n            attribute: \"class\",\n            values: [\"large\"],\n            matchBy: \"substring\",\n        },\n        {\n            attribute: \"deployment_types\",\n            values: [\"spot_market\"],\n        },\n        {\n            attribute: \"available_in_metros\",\n            values: [\n                \"da\",\n                \"sv\",\n            ],\n            all: true,\n        },\n    ],\n});\nexport const plans = example.then(example =\u003e example.plans);\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nexample = equinix.metal.get_plans(filters=[\n    equinix.metal.GetPlansFilterArgs(\n        attribute=\"class\",\n        values=[\"large\"],\n        match_by=\"substring\",\n    ),\n    equinix.metal.GetPlansFilterArgs(\n        attribute=\"deployment_types\",\n        values=[\"spot_market\"],\n    ),\n    equinix.metal.GetPlansFilterArgs(\n        attribute=\"available_in_metros\",\n        values=[\n            \"da\",\n            \"sv\",\n        ],\n        all=True,\n    ),\n])\npulumi.export(\"plans\", example.plans)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Equinix.Metal.GetPlans.Invoke(new()\n    {\n        Filters = new[]\n        {\n            new Equinix.Metal.Inputs.GetPlansFilterInputArgs\n            {\n                Attribute = \"class\",\n                Values = new[]\n                {\n                    \"large\",\n                },\n                MatchBy = \"substring\",\n            },\n            new Equinix.Metal.Inputs.GetPlansFilterInputArgs\n            {\n                Attribute = \"deployment_types\",\n                Values = new[]\n                {\n                    \"spot_market\",\n                },\n            },\n            new Equinix.Metal.Inputs.GetPlansFilterInputArgs\n            {\n                Attribute = \"available_in_metros\",\n                Values = new[]\n                {\n                    \"da\",\n                    \"sv\",\n                },\n                All = true,\n            },\n        },\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"plans\"] = example.Apply(getPlansResult =\u003e getPlansResult.Plans),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := metal.GetPlans(ctx, \u0026metal.GetPlansArgs{\n\t\t\tFilters: []metal.GetPlansFilter{\n\t\t\t\t{\n\t\t\t\t\tAttribute: \"class\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"large\",\n\t\t\t\t\t},\n\t\t\t\t\tMatchBy: pulumi.StringRef(\"substring\"),\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\tAttribute: \"deployment_types\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"spot_market\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\tAttribute: \"available_in_metros\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"da\",\n\t\t\t\t\t\t\"sv\",\n\t\t\t\t\t},\n\t\t\t\t\tAll: pulumi.BoolRef(true),\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"plans\", example.Plans)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.MetalFunctions;\nimport com.pulumi.equinix.metal.inputs.GetPlansArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = MetalFunctions.getPlans(GetPlansArgs.builder()\n            .filters(            \n                GetPlansFilterArgs.builder()\n                    .attribute(\"class\")\n                    .values(\"large\")\n                    .matchBy(\"substring\")\n                    .build(),\n                GetPlansFilterArgs.builder()\n                    .attribute(\"deployment_types\")\n                    .values(\"spot_market\")\n                    .build(),\n                GetPlansFilterArgs.builder()\n                    .attribute(\"available_in_metros\")\n                    .values(                    \n                        \"da\",\n                        \"sv\")\n                    .all(true)\n                    .build())\n            .build());\n\n        ctx.export(\"plans\", example.applyValue(getPlansResult -\u003e getPlansResult.plans()));\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: equinix:metal:getPlans\n      Arguments:\n        filters:\n          - attribute: class\n            values:\n              - large\n            matchBy: substring\n          - attribute: deployment_types\n            values:\n              - spot_market\n          - attribute: available_in_metros\n            values:\n              - da\n              - sv\n            all: true\noutputs:\n  plans: ${example.plans}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Ignoring Changes to Plans/Metro\n\nPreserve deployed device plan, facility and metro when creating a new execution plan.\n\nAs described in the `data-resource-behavior` feature as shown in the example below.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix-labs/pulumi-equinix\";\nimport * as equinix from \"@pulumi/equinix\";\n\nconst examplePlans = equinix.metal.getPlans({\n    sorts: [{\n        attribute: \"pricing_hour\",\n        direction: \"asc\",\n    }],\n    filters: [\n        {\n            attribute: \"name\",\n            values: [\n                \"c3.small.x86\",\n                \"c3.medium.x86\",\n                \"m3.large.x86\",\n            ],\n        },\n        {\n            attribute: \"available_in_metros\",\n            values: [\"sv\"],\n        },\n    ],\n});\n// This equinix_metal_device will use the first returned plan and the first metro in which that plan is available\n// It will ignore future changes on plan and metro\nconst exampleDevice = new equinix.metal.Device(\"exampleDevice\", {\n    hostname: \"example\",\n    plan: examplePlans.then(examplePlans =\u003e examplePlans.plans?.[0]?.name).apply((x) =\u003e equinix.metal.Plan[x]),\n    metro: examplePlans.then(examplePlans =\u003e examplePlans.plans?.[0]?.availableInMetros?.[0]),\n    operatingSystem: equinix.metal.OperatingSystem.Ubuntu20_04,\n    billingCycle: equinix.metal.BillingCycle.Hourly,\n    projectId: _var.project_id,\n});\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nexample_plans = equinix.metal.get_plans(sorts=[equinix.metal.GetPlansSortArgs(\n        attribute=\"pricing_hour\",\n        direction=\"asc\",\n    )],\n    filters=[\n        equinix.metal.GetPlansFilterArgs(\n            attribute=\"name\",\n            values=[\n                \"c3.small.x86\",\n                \"c3.medium.x86\",\n                \"m3.large.x86\",\n            ],\n        ),\n        equinix.metal.GetPlansFilterArgs(\n            attribute=\"available_in_metros\",\n            values=[\"sv\"],\n        ),\n    ])\n# This equinix_metal_device will use the first returned plan and the first metro in which that plan is available\n# It will ignore future changes on plan and metro\nexample_device = equinix.metal.Device(\"exampleDevice\",\n    hostname=\"example\",\n    plan=example_plans.plans[0].name.apply(lambda x: equinix.metal.Plan(x)),\n    metro=example_plans.plans[0].available_in_metros[0],\n    operating_system=equinix.metal.OperatingSystem.UBUNTU20_04,\n    billing_cycle=equinix.metal.BillingCycle.HOURLY,\n    project_id=var[\"project_id\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var examplePlans = Equinix.Metal.GetPlans.Invoke(new()\n    {\n        Sorts = new[]\n        {\n            new Equinix.Metal.Inputs.GetPlansSortInputArgs\n            {\n                Attribute = \"pricing_hour\",\n                Direction = \"asc\",\n            },\n        },\n        Filters = new[]\n        {\n            new Equinix.Metal.Inputs.GetPlansFilterInputArgs\n            {\n                Attribute = \"name\",\n                Values = new[]\n                {\n                    \"c3.small.x86\",\n                    \"c3.medium.x86\",\n                    \"m3.large.x86\",\n                },\n            },\n            new Equinix.Metal.Inputs.GetPlansFilterInputArgs\n            {\n                Attribute = \"available_in_metros\",\n                Values = new[]\n                {\n                    \"sv\",\n                },\n            },\n        },\n    });\n\n    // This equinix_metal_device will use the first returned plan and the first metro in which that plan is available\n    // It will ignore future changes on plan and metro\n    var exampleDevice = new Equinix.Metal.Device(\"exampleDevice\", new()\n    {\n        Hostname = \"example\",\n        Plan = examplePlans.Apply(getPlansResult =\u003e getPlansResult.Plans[0]?.Name).Apply(System.Enum.Parse\u003cEquinix.Metal.Plan\u003e),\n        Metro = examplePlans.Apply(getPlansResult =\u003e getPlansResult.Plans[0]?.AvailableInMetros[0]),\n        OperatingSystem = Equinix.Metal.OperatingSystem.Ubuntu20_04,\n        BillingCycle = Equinix.Metal.BillingCycle.Hourly,\n        ProjectId = @var.Project_id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texamplePlans, err := metal.GetPlans(ctx, \u0026metal.GetPlansArgs{\n\t\t\tSorts: []metal.GetPlansSort{\n\t\t\t\t{\n\t\t\t\t\tAttribute: \"pricing_hour\",\n\t\t\t\t\tDirection: pulumi.StringRef(\"asc\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tFilters: []metal.GetPlansFilter{\n\t\t\t\t{\n\t\t\t\t\tAttribute: \"name\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"c3.small.x86\",\n\t\t\t\t\t\t\"c3.medium.x86\",\n\t\t\t\t\t\t\"m3.large.x86\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\tAttribute: \"available_in_metros\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"sv\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// This equinix_metal_device will use the first returned plan and the first metro in which that plan is available\n\t\t// It will ignore future changes on plan and metro\n\t\t_, err = metal.NewDevice(ctx, \"exampleDevice\", \u0026metal.DeviceArgs{\n\t\t\tHostname:        pulumi.String(\"example\"),\n\t\t\tPlan:            examplePlans.Plans[0].Name.ApplyT(func(x *string) metal.Plan { return metal.Plan(*x) }).(metal.PlanOutput),\n\t\t\tMetro:           pulumi.String(examplePlans.Plans[0].AvailableInMetros[0]),\n\t\t\tOperatingSystem: pulumi.String(metal.OperatingSystem_Ubuntu20_04),\n\t\t\tBillingCycle:    pulumi.String(metal.BillingCycleHourly),\n\t\t\tProjectId:       pulumi.Any(_var.Project_id),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.MetalFunctions;\nimport com.pulumi.equinix.metal.inputs.GetPlansArgs;\nimport com.pulumi.equinix.metal.Device;\nimport com.pulumi.equinix.metal.DeviceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var examplePlans = MetalFunctions.getPlans(GetPlansArgs.builder()\n            .sorts(GetPlansSortArgs.builder()\n                .attribute(\"pricing_hour\")\n                .direction(\"asc\")\n                .build())\n            .filters(            \n                GetPlansFilterArgs.builder()\n                    .attribute(\"name\")\n                    .values(                    \n                        \"c3.small.x86\",\n                        \"c3.medium.x86\",\n                        \"m3.large.x86\")\n                    .build(),\n                GetPlansFilterArgs.builder()\n                    .attribute(\"available_in_metros\")\n                    .values(\"sv\")\n                    .build())\n            .build());\n\n        // This equinix_metal_device will use the first returned plan and the first metro in which that plan is available\n        // It will ignore future changes on plan and metro\n        var exampleDevice = new Device(\"exampleDevice\", DeviceArgs.builder()\n            .hostname(\"example\")\n            .plan(examplePlans.applyValue(getPlansResult -\u003e getPlansResult.plans()[0].name()))\n            .metro(examplePlans.applyValue(getPlansResult -\u003e getPlansResult.plans()[0].availableInMetros()[0]))\n            .operatingSystem(\"ubuntu_20_04\")\n            .billingCycle(\"hourly\")\n            .projectId(var_.project_id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # This equinix_metal_device will use the first returned plan and the first metro in which that plan is available\n  # It will ignore future changes on plan and metro\n  exampleDevice:\n    type: equinix:metal:Device\n    properties:\n      hostname: example\n      plan: ${examplePlans.plans[0].name}\n      metro: ${examplePlans.plans[0].availableInMetros[0]}\n      operatingSystem: ubuntu_20_04\n      billingCycle: hourly\n      projectId: ${var.project_id}\nvariables:\n  examplePlans:\n    fn::invoke:\n      Function: equinix:metal:getPlans\n      Arguments:\n        sorts:\n          - attribute: pricing_hour\n            direction: asc\n        filters:\n          - attribute: name\n            values:\n              - c3.small.x86\n              - c3.medium.x86\n              - m3.large.x86\n          - attribute: available_in_metros\n            values:\n              - sv\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nIf your use case requires dynamic changes of a device plan or metro you can define the lifecycle with a condition.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix-labs/pulumi-equinix\";\nimport * as equinix from \"@pulumi/equinix\";\n\nconst config = new pulumi.Config();\nconst ignorePlansMetrosChanges = config.getBoolean(\"ignorePlansMetrosChanges\") || false;\nconst examplePlans = equinix.metal.getPlans({});\n// required device arguments\nconst exampleDevice = new equinix.metal.Device(\"exampleDevice\", {});\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nconfig = pulumi.Config()\nignore_plans_metros_changes = config.get_bool(\"ignorePlansMetrosChanges\")\nif ignore_plans_metros_changes is None:\n    ignore_plans_metros_changes = False\nexample_plans = equinix.metal.get_plans()\n# required device arguments\nexample_device = equinix.metal.Device(\"exampleDevice\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var config = new Config();\n    var ignorePlansMetrosChanges = config.GetBoolean(\"ignorePlansMetrosChanges\") ?? false;\n    var examplePlans = Equinix.Metal.GetPlans.Invoke();\n\n    // required device arguments\n    var exampleDevice = new Equinix.Metal.Device(\"exampleDevice\");\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tcfg := config.New(ctx, \"\")\n\t\tignorePlansMetrosChanges := false\n\t\tif param := cfg.GetBool(\"ignorePlansMetrosChanges\"); param {\n\t\t\tignorePlansMetrosChanges = param\n\t\t}\n\t\t_, err := metal.GetPlans(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// required device arguments\n\t\t_, err = metal.NewDevice(ctx, \"exampleDevice\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.MetalFunctions;\nimport com.pulumi.equinix.metal.inputs.GetPlansArgs;\nimport com.pulumi.equinix.metal.Device;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var config = ctx.config();\n        final var ignorePlansMetrosChanges = config.get(\"ignorePlansMetrosChanges\").orElse(false);\n        final var examplePlans = MetalFunctions.getPlans();\n\n        // required device arguments\n        var exampleDevice = new Device(\"exampleDevice\");\n\n    }\n}\n```\n```yaml\nconfiguration:\n  # Following example uses a boolean variable that may eventually be set to you false when you update your equinix_metal_plans filter criteria because you need a device plan with a new feature.\n  ignorePlansMetrosChanges:\n    type: bool\n    default: false\nresources:\n  exampleDevice:\n    type: equinix:metal:Device\nvariables:\n  examplePlans:\n    fn::invoke:\n      Function: equinix:metal:getPlans\n      Arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getPlans.\n",
                 "properties": {
@@ -21388,9 +21486,21 @@
             "inputs": {
                 "description": "A collection of arguments for invoking getVirtualCircuit.\n",
                 "properties": {
+                    "customerIpv6": {
+                        "type": "string",
+                        "description": "The Customer IPv6 address which the CSR switch will peer with. Will default to the other usable IP in the IPv6 subnet.\n"
+                    },
+                    "metalIpv6": {
+                        "type": "string",
+                        "description": "The Metal IPv6 address for the SVI (Switch Virtual Interface) of the VirtualCircuit. Will default to the first usable IP in the IPv6 subnet.\n"
+                    },
+                    "subnetIpv6": {
+                        "type": "string",
+                        "description": "A subnet from one of the IPv6 blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /126 or /127.\n\t\t\t * For a /127 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.\n\t\t\t * For a /126 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.\n"
+                    },
                     "virtualCircuitId": {
                         "type": "string",
-                        "description": "ID of the virtual circuit resource\n"
+                        "description": "ID of the virtual circuit to lookup\n"
                     }
                 },
                 "type": "object",
@@ -21403,15 +21513,19 @@
                 "properties": {
                     "connectionId": {
                         "type": "string",
-                        "description": "UUID of Connection where the VC is scoped to.\n"
+                        "description": "UUID of Connection where the VC is scoped to\n"
                     },
                     "customerIp": {
                         "type": "string",
                         "description": "The Customer IP address which the CSR switch will peer with. Will default to the other usable IP in the subnet.\n"
                     },
+                    "customerIpv6": {
+                        "type": "string",
+                        "description": "The Customer IPv6 address which the CSR switch will peer with. Will default to the other usable IP in the IPv6 subnet.\n"
+                    },
                     "description": {
                         "type": "string",
-                        "description": "Description for the Virtual Circuit resource.\n"
+                        "description": "Description of the virtual circuit\n"
                     },
                     "id": {
                         "type": "string",
@@ -21426,15 +21540,21 @@
                         "type": "string",
                         "description": "The Metal IP address for the SVI (Switch Virtual Interface) of the VirtualCircuit. Will default to the first usable IP in the subnet.\n"
                     },
+                    "metalIpv6": {
+                        "type": "string",
+                        "description": "The Metal IPv6 address for the SVI (Switch Virtual Interface) of the VirtualCircuit. Will default to the first usable IP in the IPv6 subnet.\n"
+                    },
                     "name": {
                         "type": "string",
-                        "description": "Name of the virtual circuit resource.\n"
+                        "description": "Name of the virtual circuit\n"
                     },
                     "nniVlan": {
-                        "type": "integer"
+                        "type": "integer",
+                        "description": "Nni VLAN parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/\n"
                     },
                     "nniVnid": {
-                        "type": "integer"
+                        "type": "integer",
+                        "description": "Nni VLAN ID parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/\n"
                     },
                     "peerAsn": {
                         "type": "integer",
@@ -21442,44 +21562,50 @@
                     },
                     "portId": {
                         "type": "string",
-                        "description": "UUID of the Connection Port where the VC is scoped to.\n"
+                        "description": "UUID of the Connection Port where the VC is scoped to\n"
                     },
                     "projectId": {
                         "type": "string",
-                        "description": "ID of project to which the VC belongs.\n"
+                        "description": "ID of the projct to which the virtual circuit belongs\n"
                     },
                     "speed": {
                         "type": "string",
-                        "description": "Speed of the Virtual Circuit resource.\n"
+                        "description": "Description of the Virtual Circuit speed. This is for information purposes and is computed when the connection type is shared.\n"
                     },
                     "status": {
                         "type": "string",
-                        "description": "Status of the virtal circuit.\n"
+                        "description": "Status of the virtual circuit\n"
                     },
                     "subnet": {
                         "type": "string",
-                        "description": "A subnet from one of the IP blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.\n* For a /31 block, it will only have two IP addresses, which will be used for the metal_ip and customer_ip.\n* For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.\n"
+                        "description": "A subnet from one of the IP blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.\n\t\t\t * For a /31 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.\n\t\t\t * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.\n"
+                    },
+                    "subnetIpv6": {
+                        "type": "string",
+                        "description": "A subnet from one of the IPv6 blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /126 or /127.\n\t\t\t * For a /127 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.\n\t\t\t * For a /126 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.\n"
                     },
                     "tags": {
                         "type": "array",
                         "items": {
                             "type": "string"
                         },
-                        "description": "Tags for the Virtual Circuit resource.\n"
+                        "description": "Tags attached to the virtual circuit\n"
                     },
                     "virtualCircuitId": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "ID of the virtual circuit to lookup\n"
                     },
                     "vlanId": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "UUID of the associated VLAN\n"
                     },
                     "vnid": {
                         "type": "integer",
-                        "description": ", `nni_vlan`, `nni_nvid` - VLAN parameters, see the [documentation for Equinix Fabric](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/).\n"
+                        "description": "VNID VLAN parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/\n"
                     },
                     "vrfId": {
                         "type": "string",
-                        "description": "UUID of the VLAN to associate.\n"
+                        "description": "UUID of the associated VRF\n"
                     }
                 },
                 "type": "object",
