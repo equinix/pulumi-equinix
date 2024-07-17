@@ -6491,6 +6491,14 @@ export namespace networkedge {
          */
         licenseKey?: string;
         /**
+         * Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
+         */
+        panoramaAuthKey?: string;
+        /**
+         * Panorama Server IP Address. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
+         */
+        panoramaIpAddress?: string;
+        /**
          * Private address. This field is relevant only for the BlueCat DNS and DHCP Server
          */
         privateAddress?: string;
@@ -6560,6 +6568,14 @@ export namespace networkedge {
          * License key. This field is relevant only for the BlueCat DNS and DHCP Server
          */
         licenseKey?: string;
+        /**
+         * Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
+         */
+        panoramaAuthKey?: string;
+        /**
+         * Panorama Server IP Address. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
+         */
+        panoramaIpAddress?: string;
         /**
          * Private address. This field is relevant only for the BlueCat DNS and DHCP Server
          */
@@ -6793,7 +6809,7 @@ export namespace networkedge {
          */
         uuid: string;
         /**
-         * Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`.
+         * Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`, `panoramaAuthKey`, `panoramaIpAddress`.
          */
         vendorConfiguration: {[key: string]: string};
         /**
@@ -6939,6 +6955,14 @@ export namespace networkedge {
          */
         licenseKey: string;
         /**
+         * Panorama Server Auth Key. This field is relevant only for Palo Alto Networks Firewall devices
+         */
+        panoramaAuthKey: string;
+        /**
+         * Panorama Server IP Address. This field is relevant only for Palo Alto Networks Firewall devices
+         */
+        panoramaIpAddress: string;
+        /**
          * Private address. This field is relevant only for the BlueCat DNS and DHCP Server
          */
         privateAddress: string;
@@ -7008,6 +7032,14 @@ export namespace networkedge {
          * License key. This field is relevant only for the BlueCat DNS and DHCP Server
          */
         licenseKey: string;
+        /**
+         * Panorama Server Auth Key. This field is relevant only for Palo Alto Networks Firewall devices
+         */
+        panoramaAuthKey: string;
+        /**
+         * Panorama Server IP Address. This field is relevant only for Palo Alto Networks Firewall devices
+         */
+        panoramaIpAddress: string;
         /**
          * Private address. This field is relevant only for the BlueCat DNS and DHCP Server
          */

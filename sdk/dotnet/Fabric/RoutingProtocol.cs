@@ -17,56 +17,6 @@ namespace Pulumi.Equinix.Fabric
     /// * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
     /// 
     /// ## Example Usage
-    /// ### example 3
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Equinix = Pulumi.Equinix;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var direct = new Equinix.Fabric.RoutingProtocol("direct", new()
-    ///     {
-    ///         ConnectionUuid = "&lt;some_id&gt;",
-    ///         Type = "DIRECT",
-    ///         Name = "direct_rp",
-    ///         DirectIpv4 = new Equinix.Fabric.Inputs.RoutingProtocolDirectIpv4Args
-    ///         {
-    ///             EquinixIfaceIp = "190.1.1.1/30",
-    ///         },
-    ///         DirectIpv6 = new Equinix.Fabric.Inputs.RoutingProtocolDirectIpv6Args
-    ///         {
-    ///             EquinixIfaceIp = "190::1:1/126",
-    ///         },
-    ///     });
-    /// 
-    ///     var bgp = new Equinix.Fabric.RoutingProtocol("bgp", new()
-    ///     {
-    ///         ConnectionUuid = "&lt;same_connection_id_as_first_equinix_fabric_routing_protocol&gt;",
-    ///         Type = "BGP",
-    ///         Name = "bgp_rp",
-    ///         BgpIpv4 = new Equinix.Fabric.Inputs.RoutingProtocolBgpIpv4Args
-    ///         {
-    ///             CustomerPeerIp = "190.1.1.2",
-    ///             Enabled = true,
-    ///         },
-    ///         BgpIpv6 = new Equinix.Fabric.Inputs.RoutingProtocolBgpIpv6Args
-    ///         {
-    ///             CustomerPeerIp = "190::1:2",
-    ///             Enabled = true,
-    ///         },
-    ///         CustomerAsn = 4532,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn =
-    ///         {
-    ///             direct,
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// ### example 1
     /// ```csharp
     /// using System.Collections.Generic;
@@ -118,6 +68,56 @@ namespace Pulumi.Equinix.Fabric
     ///             Enabled = true,
     ///         },
     ///         CustomerAsn = 4532,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### example 3
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Equinix = Pulumi.Equinix;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var direct = new Equinix.Fabric.RoutingProtocol("direct", new()
+    ///     {
+    ///         ConnectionUuid = "&lt;some_id&gt;",
+    ///         Type = "DIRECT",
+    ///         Name = "direct_rp",
+    ///         DirectIpv4 = new Equinix.Fabric.Inputs.RoutingProtocolDirectIpv4Args
+    ///         {
+    ///             EquinixIfaceIp = "190.1.1.1/30",
+    ///         },
+    ///         DirectIpv6 = new Equinix.Fabric.Inputs.RoutingProtocolDirectIpv6Args
+    ///         {
+    ///             EquinixIfaceIp = "190::1:1/126",
+    ///         },
+    ///     });
+    /// 
+    ///     var bgp = new Equinix.Fabric.RoutingProtocol("bgp", new()
+    ///     {
+    ///         ConnectionUuid = "&lt;same_connection_id_as_first_equinix_fabric_routing_protocol&gt;",
+    ///         Type = "BGP",
+    ///         Name = "bgp_rp",
+    ///         BgpIpv4 = new Equinix.Fabric.Inputs.RoutingProtocolBgpIpv4Args
+    ///         {
+    ///             CustomerPeerIp = "190.1.1.2",
+    ///             Enabled = true,
+    ///         },
+    ///         BgpIpv6 = new Equinix.Fabric.Inputs.RoutingProtocolBgpIpv6Args
+    ///         {
+    ///             CustomerPeerIp = "190::1:2",
+    ///             Enabled = true,
+    ///         },
+    ///         CustomerAsn = 4532,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             direct,
+    ///         },
     ///     });
     /// 
     /// });

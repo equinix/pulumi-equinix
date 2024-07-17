@@ -9,11 +9,13 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetVirtualCircuitResult {
     /**
-     * @return UUID of Connection where the VC is scoped to.
+     * @return UUID of Connection where the VC is scoped to
      * 
      */
     private String connectionId;
@@ -23,7 +25,12 @@ public final class GetVirtualCircuitResult {
      */
     private String customerIp;
     /**
-     * @return Description for the Virtual Circuit resource.
+     * @return The Customer IPv6 address which the CSR switch will peer with. Will default to the other usable IP in the IPv6 subnet.
+     * 
+     */
+    private @Nullable String customerIpv6;
+    /**
+     * @return Description of the virtual circuit
      * 
      */
     private String description;
@@ -43,11 +50,24 @@ public final class GetVirtualCircuitResult {
      */
     private String metalIp;
     /**
-     * @return Name of the virtual circuit resource.
+     * @return The Metal IPv6 address for the SVI (Switch Virtual Interface) of the VirtualCircuit. Will default to the first usable IP in the IPv6 subnet.
+     * 
+     */
+    private @Nullable String metalIpv6;
+    /**
+     * @return Name of the virtual circuit
      * 
      */
     private String name;
+    /**
+     * @return Nni VLAN parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+     * 
+     */
     private Integer nniVlan;
+    /**
+     * @return Nni VLAN ID parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+     * 
+     */
     private Integer nniVnid;
     /**
      * @return The BGP ASN of the peer. The same ASN may be the used across several VCs, but it cannot be the same as the local_asn of the VRF.
@@ -55,53 +75,68 @@ public final class GetVirtualCircuitResult {
      */
     private Integer peerAsn;
     /**
-     * @return UUID of the Connection Port where the VC is scoped to.
+     * @return UUID of the Connection Port where the VC is scoped to
      * 
      */
     private String portId;
     /**
-     * @return ID of project to which the VC belongs.
+     * @return ID of the projct to which the virtual circuit belongs
      * 
      */
     private String projectId;
     /**
-     * @return Speed of the Virtual Circuit resource.
+     * @return Description of the Virtual Circuit speed. This is for information purposes and is computed when the connection type is shared.
      * 
      */
     private String speed;
     /**
-     * @return Status of the virtal circuit.
+     * @return Status of the virtual circuit
      * 
      */
     private String status;
     /**
      * @return A subnet from one of the IP blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.
-     * * For a /31 block, it will only have two IP addresses, which will be used for the metal_ip and customer_ip.
-     * * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
+     * 			 * For a /31 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.
+     * 			 * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
      * 
      */
     private String subnet;
     /**
-     * @return Tags for the Virtual Circuit resource.
+     * @return A subnet from one of the IPv6 blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /126 or /127.
+     * 			 * For a /127 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.
+     * 			 * For a /126 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
+     * 
+     */
+    private @Nullable String subnetIpv6;
+    /**
+     * @return Tags attached to the virtual circuit
      * 
      */
     private List<String> tags;
+    /**
+     * @return ID of the virtual circuit to lookup
+     * 
+     */
     private String virtualCircuitId;
+    /**
+     * @return UUID of the associated VLAN
+     * 
+     */
     private String vlanId;
     /**
-     * @return , `nni_vlan`, `nni_nvid` - VLAN parameters, see the [documentation for Equinix Fabric](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/).
+     * @return VNID VLAN parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
      * 
      */
     private Integer vnid;
     /**
-     * @return UUID of the VLAN to associate.
+     * @return UUID of the associated VRF
      * 
      */
     private String vrfId;
 
     private GetVirtualCircuitResult() {}
     /**
-     * @return UUID of Connection where the VC is scoped to.
+     * @return UUID of Connection where the VC is scoped to
      * 
      */
     public String connectionId() {
@@ -115,7 +150,14 @@ public final class GetVirtualCircuitResult {
         return this.customerIp;
     }
     /**
-     * @return Description for the Virtual Circuit resource.
+     * @return The Customer IPv6 address which the CSR switch will peer with. Will default to the other usable IP in the IPv6 subnet.
+     * 
+     */
+    public Optional<String> customerIpv6() {
+        return Optional.ofNullable(this.customerIpv6);
+    }
+    /**
+     * @return Description of the virtual circuit
      * 
      */
     public String description() {
@@ -143,15 +185,30 @@ public final class GetVirtualCircuitResult {
         return this.metalIp;
     }
     /**
-     * @return Name of the virtual circuit resource.
+     * @return The Metal IPv6 address for the SVI (Switch Virtual Interface) of the VirtualCircuit. Will default to the first usable IP in the IPv6 subnet.
+     * 
+     */
+    public Optional<String> metalIpv6() {
+        return Optional.ofNullable(this.metalIpv6);
+    }
+    /**
+     * @return Name of the virtual circuit
      * 
      */
     public String name() {
         return this.name;
     }
+    /**
+     * @return Nni VLAN parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+     * 
+     */
     public Integer nniVlan() {
         return this.nniVlan;
     }
+    /**
+     * @return Nni VLAN ID parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+     * 
+     */
     public Integer nniVnid() {
         return this.nniVnid;
     }
@@ -163,28 +220,28 @@ public final class GetVirtualCircuitResult {
         return this.peerAsn;
     }
     /**
-     * @return UUID of the Connection Port where the VC is scoped to.
+     * @return UUID of the Connection Port where the VC is scoped to
      * 
      */
     public String portId() {
         return this.portId;
     }
     /**
-     * @return ID of project to which the VC belongs.
+     * @return ID of the projct to which the virtual circuit belongs
      * 
      */
     public String projectId() {
         return this.projectId;
     }
     /**
-     * @return Speed of the Virtual Circuit resource.
+     * @return Description of the Virtual Circuit speed. This is for information purposes and is computed when the connection type is shared.
      * 
      */
     public String speed() {
         return this.speed;
     }
     /**
-     * @return Status of the virtal circuit.
+     * @return Status of the virtual circuit
      * 
      */
     public String status() {
@@ -192,35 +249,52 @@ public final class GetVirtualCircuitResult {
     }
     /**
      * @return A subnet from one of the IP blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.
-     * * For a /31 block, it will only have two IP addresses, which will be used for the metal_ip and customer_ip.
-     * * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
+     * 			 * For a /31 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.
+     * 			 * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
      * 
      */
     public String subnet() {
         return this.subnet;
     }
     /**
-     * @return Tags for the Virtual Circuit resource.
+     * @return A subnet from one of the IPv6 blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /126 or /127.
+     * 			 * For a /127 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.
+     * 			 * For a /126 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
+     * 
+     */
+    public Optional<String> subnetIpv6() {
+        return Optional.ofNullable(this.subnetIpv6);
+    }
+    /**
+     * @return Tags attached to the virtual circuit
      * 
      */
     public List<String> tags() {
         return this.tags;
     }
+    /**
+     * @return ID of the virtual circuit to lookup
+     * 
+     */
     public String virtualCircuitId() {
         return this.virtualCircuitId;
     }
+    /**
+     * @return UUID of the associated VLAN
+     * 
+     */
     public String vlanId() {
         return this.vlanId;
     }
     /**
-     * @return , `nni_vlan`, `nni_nvid` - VLAN parameters, see the [documentation for Equinix Fabric](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/).
+     * @return VNID VLAN parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
      * 
      */
     public Integer vnid() {
         return this.vnid;
     }
     /**
-     * @return UUID of the VLAN to associate.
+     * @return UUID of the associated VRF
      * 
      */
     public String vrfId() {
@@ -238,10 +312,12 @@ public final class GetVirtualCircuitResult {
     public static final class Builder {
         private String connectionId;
         private String customerIp;
+        private @Nullable String customerIpv6;
         private String description;
         private String id;
         private String md5;
         private String metalIp;
+        private @Nullable String metalIpv6;
         private String name;
         private Integer nniVlan;
         private Integer nniVnid;
@@ -251,6 +327,7 @@ public final class GetVirtualCircuitResult {
         private String speed;
         private String status;
         private String subnet;
+        private @Nullable String subnetIpv6;
         private List<String> tags;
         private String virtualCircuitId;
         private String vlanId;
@@ -261,10 +338,12 @@ public final class GetVirtualCircuitResult {
     	      Objects.requireNonNull(defaults);
     	      this.connectionId = defaults.connectionId;
     	      this.customerIp = defaults.customerIp;
+    	      this.customerIpv6 = defaults.customerIpv6;
     	      this.description = defaults.description;
     	      this.id = defaults.id;
     	      this.md5 = defaults.md5;
     	      this.metalIp = defaults.metalIp;
+    	      this.metalIpv6 = defaults.metalIpv6;
     	      this.name = defaults.name;
     	      this.nniVlan = defaults.nniVlan;
     	      this.nniVnid = defaults.nniVnid;
@@ -274,6 +353,7 @@ public final class GetVirtualCircuitResult {
     	      this.speed = defaults.speed;
     	      this.status = defaults.status;
     	      this.subnet = defaults.subnet;
+    	      this.subnetIpv6 = defaults.subnetIpv6;
     	      this.tags = defaults.tags;
     	      this.virtualCircuitId = defaults.virtualCircuitId;
     	      this.vlanId = defaults.vlanId;
@@ -295,6 +375,12 @@ public final class GetVirtualCircuitResult {
               throw new MissingRequiredPropertyException("GetVirtualCircuitResult", "customerIp");
             }
             this.customerIp = customerIp;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder customerIpv6(@Nullable String customerIpv6) {
+
+            this.customerIpv6 = customerIpv6;
             return this;
         }
         @CustomType.Setter
@@ -327,6 +413,12 @@ public final class GetVirtualCircuitResult {
               throw new MissingRequiredPropertyException("GetVirtualCircuitResult", "metalIp");
             }
             this.metalIp = metalIp;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder metalIpv6(@Nullable String metalIpv6) {
+
+            this.metalIpv6 = metalIpv6;
             return this;
         }
         @CustomType.Setter
@@ -402,6 +494,12 @@ public final class GetVirtualCircuitResult {
             return this;
         }
         @CustomType.Setter
+        public Builder subnetIpv6(@Nullable String subnetIpv6) {
+
+            this.subnetIpv6 = subnetIpv6;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tags(List<String> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetVirtualCircuitResult", "tags");
@@ -448,10 +546,12 @@ public final class GetVirtualCircuitResult {
             final var _resultValue = new GetVirtualCircuitResult();
             _resultValue.connectionId = connectionId;
             _resultValue.customerIp = customerIp;
+            _resultValue.customerIpv6 = customerIpv6;
             _resultValue.description = description;
             _resultValue.id = id;
             _resultValue.md5 = md5;
             _resultValue.metalIp = metalIp;
+            _resultValue.metalIpv6 = metalIpv6;
             _resultValue.name = name;
             _resultValue.nniVlan = nniVlan;
             _resultValue.nniVnid = nniVnid;
@@ -461,6 +561,7 @@ public final class GetVirtualCircuitResult {
             _resultValue.speed = speed;
             _resultValue.status = status;
             _resultValue.subnet = subnet;
+            _resultValue.subnetIpv6 = subnetIpv6;
             _resultValue.tags = tags;
             _resultValue.virtualCircuitId = virtualCircuitId;
             _resultValue.vlanId = vlanId;

@@ -76,8 +76,6 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * This resource can be imported using an existing Virtual Circuit ID:
- * 
  * ```sh
  * $ pulumi import equinix:metal/virtualCircuit:VirtualCircuit equinix_metal_virtual_circuit {existing_id}
  * ```
@@ -86,14 +84,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="equinix:metal/virtualCircuit:VirtualCircuit")
 public class VirtualCircuit extends com.pulumi.resources.CustomResource {
     /**
-     * UUID of Connection where the VC is scoped to.
+     * UUID of Connection where the VC is scoped to.  Only used for dedicated connections
      * 
      */
     @Export(name="connectionId", refs={String.class}, tree="[0]")
     private Output<String> connectionId;
 
     /**
-     * @return UUID of Connection where the VC is scoped to.
+     * @return UUID of Connection where the VC is scoped to.  Only used for dedicated connections
      * 
      */
     public Output<String> connectionId() {
@@ -104,24 +102,38 @@ public class VirtualCircuit extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="customerIp", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> customerIp;
+    private Output<String> customerIp;
 
     /**
      * @return The Customer IP address which the CSR switch will peer with. Will default to the other usable IP in the subnet.
      * 
      */
-    public Output<Optional<String>> customerIp() {
-        return Codegen.optional(this.customerIp);
+    public Output<String> customerIp() {
+        return this.customerIp;
     }
     /**
-     * Description for the Virtual Circuit resource.
+     * The Customer IPv6 address which the CSR switch will peer with. Will default to the other usable IP in the IPv6 subnet.
+     * 
+     */
+    @Export(name="customerIpv6", refs={String.class}, tree="[0]")
+    private Output<String> customerIpv6;
+
+    /**
+     * @return The Customer IPv6 address which the CSR switch will peer with. Will default to the other usable IP in the IPv6 subnet.
+     * 
+     */
+    public Output<String> customerIpv6() {
+        return this.customerIpv6;
+    }
+    /**
+     * Description of the Virtual Circuit resource
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Description for the Virtual Circuit resource.
+     * @return Description of the Virtual Circuit resource
      * 
      */
     public Output<Optional<String>> description() {
@@ -146,52 +158,66 @@ public class VirtualCircuit extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="metalIp", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> metalIp;
+    private Output<String> metalIp;
 
     /**
      * @return The Metal IP address for the SVI (Switch Virtual Interface) of the VirtualCircuit. Will default to the first usable IP in the subnet.
      * 
      */
-    public Output<Optional<String>> metalIp() {
-        return Codegen.optional(this.metalIp);
+    public Output<String> metalIp() {
+        return this.metalIp;
     }
     /**
-     * Name of the Virtual Circuit resource.
+     * The Metal IPv6 address for the SVI (Switch Virtual Interface) of the VirtualCircuit. Will default to the first usable IP in the IPv6 subnet.
+     * 
+     */
+    @Export(name="metalIpv6", refs={String.class}, tree="[0]")
+    private Output<String> metalIpv6;
+
+    /**
+     * @return The Metal IPv6 address for the SVI (Switch Virtual Interface) of the VirtualCircuit. Will default to the first usable IP in the IPv6 subnet.
+     * 
+     */
+    public Output<String> metalIpv6() {
+        return this.metalIpv6;
+    }
+    /**
+     * Name of the Virtual Circuit resource
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the Virtual Circuit resource.
+     * @return Name of the Virtual Circuit resource
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Equinix Metal network-to-network VLAN ID.
+     * Equinix Metal network-to-network VLAN ID (optional when the connection has mode=tunnel)
      * 
      */
     @Export(name="nniVlan", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> nniVlan;
+    private Output<Integer> nniVlan;
 
     /**
-     * @return Equinix Metal network-to-network VLAN ID.
+     * @return Equinix Metal network-to-network VLAN ID (optional when the connection has mode=tunnel)
      * 
      */
-    public Output<Optional<Integer>> nniVlan() {
-        return Codegen.optional(this.nniVlan);
+    public Output<Integer> nniVlan() {
+        return this.nniVlan;
     }
     /**
-     * NNI VLAN parameters, see the [documentation for Equinix Fabric](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/).
+     * Nni VLAN ID parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
      * 
      */
     @Export(name="nniVnid", refs={Integer.class}, tree="[0]")
     private Output<Integer> nniVnid;
 
     /**
-     * @return NNI VLAN parameters, see the [documentation for Equinix Fabric](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/).
+     * @return Nni VLAN ID parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
      * 
      */
     public Output<Integer> nniVnid() {
@@ -212,56 +238,56 @@ public class VirtualCircuit extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.peerAsn);
     }
     /**
-     * UUID of the Connection Port where the VC is scoped to.
+     * UUID of the Connection Port where the VC is scoped to
      * 
      */
     @Export(name="portId", refs={String.class}, tree="[0]")
     private Output<String> portId;
 
     /**
-     * @return UUID of the Connection Port where the VC is scoped to.
+     * @return UUID of the Connection Port where the VC is scoped to
      * 
      */
     public Output<String> portId() {
         return this.portId;
     }
     /**
-     * UUID of the Project where the VC is scoped to.
+     * UUID of the Project where the VC is scoped to
      * 
      */
     @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output<String> projectId;
 
     /**
-     * @return UUID of the Project where the VC is scoped to.
+     * @return UUID of the Project where the VC is scoped to
      * 
      */
     public Output<String> projectId() {
         return this.projectId;
     }
     /**
-     * Speed of the Virtual Circuit resource.
+     * Description of the Virtual Circuit speed. This is for information purposes and is computed when the connection type is shared.
      * 
      */
     @Export(name="speed", refs={String.class}, tree="[0]")
     private Output<String> speed;
 
     /**
-     * @return Speed of the Virtual Circuit resource.
+     * @return Description of the Virtual Circuit speed. This is for information purposes and is computed when the connection type is shared.
      * 
      */
     public Output<String> speed() {
         return this.speed;
     }
     /**
-     * Status of the virtal circuit.
+     * Status of the virtual circuit resource
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return Status of the virtal circuit.
+     * @return Status of the virtual circuit resource
      * 
      */
     public Output<String> status() {
@@ -269,8 +295,8 @@ public class VirtualCircuit extends com.pulumi.resources.CustomResource {
     }
     /**
      * A subnet from one of the IP blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.
-     * * For a /31 block, it will only have two IP addresses, which will be used for the metal_ip and customer_ip.
-     * * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
+     * 			 * For a /31 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.
+     * 			 * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
      * 
      */
     @Export(name="subnet", refs={String.class}, tree="[0]")
@@ -278,64 +304,96 @@ public class VirtualCircuit extends com.pulumi.resources.CustomResource {
 
     /**
      * @return A subnet from one of the IP blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.
-     * * For a /31 block, it will only have two IP addresses, which will be used for the metal_ip and customer_ip.
-     * * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
+     * 			 * For a /31 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.
+     * 			 * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
      * 
      */
     public Output<Optional<String>> subnet() {
         return Codegen.optional(this.subnet);
     }
     /**
-     * Tags for the Virtual Circuit resource.
+     * A subnet from one of the IPv6 blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /126 or /127.
+     * 			 * For a /127 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.
+     * 			 * For a /126 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
+     * 
+     */
+    @Export(name="subnetIpv6", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> subnetIpv6;
+
+    /**
+     * @return A subnet from one of the IPv6 blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /126 or /127.
+     * 			 * For a /127 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.
+     * 			 * For a /126 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
+     * 
+     */
+    public Output<Optional<String>> subnetIpv6() {
+        return Codegen.optional(this.subnetIpv6);
+    }
+    /**
+     * Tags attached to the virtual circuit
      * 
      */
     @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
-     * @return Tags for the Virtual Circuit resource.
+     * @return Tags attached to the virtual circuit
      * 
      */
     public Output<Optional<List<String>>> tags() {
         return Codegen.optional(this.tags);
     }
     /**
-     * UUID of the VLAN to associate.
+     * UUID of an existing VC to configure. Used in the case of shared interconnections where the VC has already been created.
+     * 
+     */
+    @Export(name="virtualCircuitId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> virtualCircuitId;
+
+    /**
+     * @return UUID of an existing VC to configure. Used in the case of shared interconnections where the VC has already been created.
+     * 
+     */
+    public Output<Optional<String>> virtualCircuitId() {
+        return Codegen.optional(this.virtualCircuitId);
+    }
+    /**
+     * UUID of the VLAN to associate
      * 
      */
     @Export(name="vlanId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vlanId;
 
     /**
-     * @return UUID of the VLAN to associate.
+     * @return UUID of the VLAN to associate
      * 
      */
     public Output<Optional<String>> vlanId() {
         return Codegen.optional(this.vlanId);
     }
     /**
-     * VNID VLAN parameter, see the [documentation for Equinix Fabric](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/).
+     * VNID VLAN parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
      * 
      */
     @Export(name="vnid", refs={Integer.class}, tree="[0]")
     private Output<Integer> vnid;
 
     /**
-     * @return VNID VLAN parameter, see the [documentation for Equinix Fabric](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/).
+     * @return VNID VLAN parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
      * 
      */
     public Output<Integer> vnid() {
         return this.vnid;
     }
     /**
-     * UUID of the VRF to associate.
+     * UUID of the VRF to associate
      * 
      */
     @Export(name="vrfId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vrfId;
 
     /**
-     * @return UUID of the VRF to associate.
+     * @return UUID of the VRF to associate
      * 
      */
     public Output<Optional<String>> vrfId() {

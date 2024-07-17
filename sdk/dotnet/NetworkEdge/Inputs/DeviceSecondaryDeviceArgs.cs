@@ -179,7 +179,7 @@ namespace Pulumi.Equinix.NetworkEdge.Inputs
         private InputMap<string>? _vendorConfiguration;
 
         /// <summary>
-        /// Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`.
+        /// Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`, `panoramaAuthKey`, `panoramaIpAddress`.
         /// </summary>
         public InputMap<string> VendorConfiguration
         {

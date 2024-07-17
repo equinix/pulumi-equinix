@@ -94,6 +94,28 @@ namespace Pulumi.Equinix.NetworkEdge.Inputs
             }
         }
 
+        [Input("panoramaAuthKey")]
+        private Input<string>? _panoramaAuthKey;
+
+        /// <summary>
+        /// Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
+        /// </summary>
+        public Input<string>? PanoramaAuthKey
+        {
+            get => _panoramaAuthKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _panoramaAuthKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Panorama Server IP Address. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
+        /// </summary>
+        [Input("panoramaIpAddress")]
+        public Input<string>? PanoramaIpAddress { get; set; }
+
         /// <summary>
         /// Private address. This field is relevant only for the BlueCat DNS and DHCP Server
         /// </summary>

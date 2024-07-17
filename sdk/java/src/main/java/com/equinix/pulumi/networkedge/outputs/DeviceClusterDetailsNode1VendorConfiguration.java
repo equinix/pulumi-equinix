@@ -47,6 +47,16 @@ public final class DeviceClusterDetailsNode1VendorConfiguration {
      */
     private @Nullable String licenseKey;
     /**
+     * @return Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
+     * 
+     */
+    private @Nullable String panoramaAuthKey;
+    /**
+     * @return Panorama Server IP Address. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
+     * 
+     */
+    private @Nullable String panoramaIpAddress;
+    /**
      * @return Private address. This field is relevant only for the BlueCat DNS and DHCP Server
      * 
      */
@@ -118,6 +128,20 @@ public final class DeviceClusterDetailsNode1VendorConfiguration {
         return Optional.ofNullable(this.licenseKey);
     }
     /**
+     * @return Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
+     * 
+     */
+    public Optional<String> panoramaAuthKey() {
+        return Optional.ofNullable(this.panoramaAuthKey);
+    }
+    /**
+     * @return Panorama Server IP Address. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
+     * 
+     */
+    public Optional<String> panoramaIpAddress() {
+        return Optional.ofNullable(this.panoramaIpAddress);
+    }
+    /**
      * @return Private address. This field is relevant only for the BlueCat DNS and DHCP Server
      * 
      */
@@ -162,6 +186,8 @@ public final class DeviceClusterDetailsNode1VendorConfiguration {
         private @Nullable String hostname;
         private @Nullable String licenseId;
         private @Nullable String licenseKey;
+        private @Nullable String panoramaAuthKey;
+        private @Nullable String panoramaIpAddress;
         private @Nullable String privateAddress;
         private @Nullable String privateCidrMask;
         private @Nullable String privateGateway;
@@ -176,6 +202,8 @@ public final class DeviceClusterDetailsNode1VendorConfiguration {
     	      this.hostname = defaults.hostname;
     	      this.licenseId = defaults.licenseId;
     	      this.licenseKey = defaults.licenseKey;
+    	      this.panoramaAuthKey = defaults.panoramaAuthKey;
+    	      this.panoramaIpAddress = defaults.panoramaIpAddress;
     	      this.privateAddress = defaults.privateAddress;
     	      this.privateCidrMask = defaults.privateCidrMask;
     	      this.privateGateway = defaults.privateGateway;
@@ -225,6 +253,18 @@ public final class DeviceClusterDetailsNode1VendorConfiguration {
             return this;
         }
         @CustomType.Setter
+        public Builder panoramaAuthKey(@Nullable String panoramaAuthKey) {
+
+            this.panoramaAuthKey = panoramaAuthKey;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder panoramaIpAddress(@Nullable String panoramaIpAddress) {
+
+            this.panoramaIpAddress = panoramaIpAddress;
+            return this;
+        }
+        @CustomType.Setter
         public Builder privateAddress(@Nullable String privateAddress) {
 
             this.privateAddress = privateAddress;
@@ -257,6 +297,8 @@ public final class DeviceClusterDetailsNode1VendorConfiguration {
             _resultValue.hostname = hostname;
             _resultValue.licenseId = licenseId;
             _resultValue.licenseKey = licenseKey;
+            _resultValue.panoramaAuthKey = panoramaAuthKey;
+            _resultValue.panoramaIpAddress = panoramaIpAddress;
             _resultValue.privateAddress = privateAddress;
             _resultValue.privateCidrMask = privateCidrMask;
             _resultValue.privateGateway = privateGateway;

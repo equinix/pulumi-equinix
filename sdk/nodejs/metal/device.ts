@@ -13,18 +13,28 @@ import * as utilities from "../utilities";
  * > **NOTE:** All arguments including the `rootPassword` and `userData` will be stored in the raw state as plain-text. Read more about sensitive data in state.
  *
  * ## Example Usage
- * ### example 1
+ * ### example 5
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
  *
- * const web1 = new equinix.metal.Device("web1", {
- *     hostname: "tf.coreos2",
+ * const pxe1 = new equinix.metal.Device("pxe1", {
+ *     hostname: "tf.coreos2-pxe",
  *     plan: equinix.metal.Plan.C3SmallX86,
  *     metro: "sv",
- *     operatingSystem: equinix.metal.OperatingSystem.Ubuntu20_04,
+ *     operatingSystem: equinix.metal.OperatingSystem.CustomIPXE,
  *     billingCycle: equinix.metal.BillingCycle.Hourly,
  *     projectId: projectId,
+ *     ipxeScriptUrl: "https://rawgit.com/cloudnativelabs/pxe/master/packet/coreos-stable-metal.ipxe",
+ *     alwaysPxe: false,
+ *     userData: userData,
+ *     customData: customData,
+ *     behavior: {
+ *         allowChanges: [
+ *             "custom_data",
+ *             "user_data",
+ *         ],
+ *     },
  * });
  * ```
  * ### example 4
@@ -96,45 +106,18 @@ import * as utilities from "../utilities";
  * `,
  * });
  * ```
- * ### example 2
+ * ### example 1
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
  *
- * const pxe1 = new equinix.metal.Device("pxe1", {
- *     hostname: "tf.coreos2-pxe",
+ * const web1 = new equinix.metal.Device("web1", {
+ *     hostname: "tf.coreos2",
  *     plan: equinix.metal.Plan.C3SmallX86,
  *     metro: "sv",
- *     operatingSystem: equinix.metal.OperatingSystem.CustomIPXE,
+ *     operatingSystem: equinix.metal.OperatingSystem.Ubuntu20_04,
  *     billingCycle: equinix.metal.BillingCycle.Hourly,
  *     projectId: projectId,
- *     ipxeScriptUrl: "https://rawgit.com/cloudnativelabs/pxe/master/packet/coreos-stable-metal.ipxe",
- *     alwaysPxe: false,
- *     userData: example.rendered,
- * });
- * ```
- * ### example 5
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@equinix-labs/pulumi-equinix";
- *
- * const pxe1 = new equinix.metal.Device("pxe1", {
- *     hostname: "tf.coreos2-pxe",
- *     plan: equinix.metal.Plan.C3SmallX86,
- *     metro: "sv",
- *     operatingSystem: equinix.metal.OperatingSystem.CustomIPXE,
- *     billingCycle: equinix.metal.BillingCycle.Hourly,
- *     projectId: projectId,
- *     ipxeScriptUrl: "https://rawgit.com/cloudnativelabs/pxe/master/packet/coreos-stable-metal.ipxe",
- *     alwaysPxe: false,
- *     userData: userData,
- *     customData: customData,
- *     behavior: {
- *         allowChanges: [
- *             "custom_data",
- *             "user_data",
- *         ],
- *     },
  * });
  * ```
  * ### example 3
@@ -153,6 +136,23 @@ import * as utilities from "../utilities";
  *         type: "private_ipv4",
  *         cidr: 30,
  *     }],
+ * });
+ * ```
+ * ### example 2
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const pxe1 = new equinix.metal.Device("pxe1", {
+ *     hostname: "tf.coreos2-pxe",
+ *     plan: equinix.metal.Plan.C3SmallX86,
+ *     metro: "sv",
+ *     operatingSystem: equinix.metal.OperatingSystem.CustomIPXE,
+ *     billingCycle: equinix.metal.BillingCycle.Hourly,
+ *     projectId: projectId,
+ *     ipxeScriptUrl: "https://rawgit.com/cloudnativelabs/pxe/master/packet/coreos-stable-metal.ipxe",
+ *     alwaysPxe: false,
+ *     userData: example.rendered,
  * });
  * ```
  */

@@ -15,37 +15,6 @@ namespace Pulumi.Equinix.Metal
     /// &gt; Equinix Metal connection with with Service Token A-side / Z-side (service_token_type) is not generally available and may not be enabled yet for your organization.
     /// 
     /// ## Example Usage
-    /// ### example metal billed token
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Equinix = Pulumi.Equinix;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var projectId = config.Require("projectId");
-    ///     var metro = config.Get("metro") ?? "SV";
-    ///     var speedInMbps = config.GetInt32("speedInMbps") ?? 1000;
-    ///     var connection = new Equinix.Metal.Interconnection("connection", new()
-    ///     {
-    ///         Name = "metal-to-cloudprovider",
-    ///         ProjectId = projectId,
-    ///         Type = "shared",
-    ///         Redundancy = "primary",
-    ///         Metro = metro,
-    ///         Speed = $"{speedInMbps}Mbps",
-    ///         ServiceTokenType = "a_side",
-    ///     });
-    /// 
-    ///     return new Dictionary&lt;string, object?&gt;
-    ///     {
-    ///         ["connectionStatus"] = connection.Status,
-    ///         ["connectionTokens"] = connection.ServiceTokens,
-    ///     };
-    /// });
-    /// ```
     /// ### example fabric billed token
     /// ```csharp
     /// using System.Collections.Generic;
@@ -68,6 +37,37 @@ namespace Pulumi.Equinix.Metal
     ///         Metro = metro,
     ///         Speed = $"{speedInMbps}Mbps",
     ///         ServiceTokenType = "z_side",
+    ///     });
+    /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["connectionStatus"] = connection.Status,
+    ///         ["connectionTokens"] = connection.ServiceTokens,
+    ///     };
+    /// });
+    /// ```
+    /// ### example metal billed token
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Equinix = Pulumi.Equinix;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var projectId = config.Require("projectId");
+    ///     var metro = config.Get("metro") ?? "SV";
+    ///     var speedInMbps = config.GetInt32("speedInMbps") ?? 1000;
+    ///     var connection = new Equinix.Metal.Interconnection("connection", new()
+    ///     {
+    ///         Name = "metal-to-cloudprovider",
+    ///         ProjectId = projectId,
+    ///         Type = "shared",
+    ///         Redundancy = "primary",
+    ///         Metro = metro,
+    ///         Speed = $"{speedInMbps}Mbps",
+    ///         ServiceTokenType = "a_side",
     ///     });
     /// 
     ///     return new Dictionary&lt;string, object?&gt;

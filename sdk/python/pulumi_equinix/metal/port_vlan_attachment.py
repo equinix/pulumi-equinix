@@ -248,6 +248,30 @@ class PortVlanAttachment(pulumi.CustomResource):
         * `port_id` - UUID of device port.
 
         ## Example Usage
+        ### example 1
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        test = equinix.metal.Vlan("test",
+            description="VLAN in New York",
+            metro="ny",
+            project_id=project_id)
+        test_device = equinix.metal.Device("testDevice",
+            hostname="test",
+            plan=equinix.metal.Plan.C3_SMALL_X86,
+            metro="ny",
+            operating_system=equinix.metal.OperatingSystem.UBUNTU20_04,
+            billing_cycle=equinix.metal.BillingCycle.HOURLY,
+            project_id=project_id)
+        test_device_network_type = equinix.metal.DeviceNetworkType("testDeviceNetworkType",
+            device_id=test_device.id,
+            type="hybrid")
+        test_port_vlan_attachment = equinix.metal.PortVlanAttachment("testPortVlanAttachment",
+            device_id=test_device_network_type.id,
+            port_name="eth1",
+            vlan_vnid=test.vxlan)
+        ```
         ### example 2
         ```python
         import pulumi
@@ -281,30 +305,6 @@ class PortVlanAttachment(pulumi.CustomResource):
             port_name="eth1",
             native=True,
             opts = pulumi.ResourceOptions(depends_on=[test1_port_vlan_attachment]))
-        ```
-        ### example 1
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        test = equinix.metal.Vlan("test",
-            description="VLAN in New York",
-            metro="ny",
-            project_id=project_id)
-        test_device = equinix.metal.Device("testDevice",
-            hostname="test",
-            plan=equinix.metal.Plan.C3_SMALL_X86,
-            metro="ny",
-            operating_system=equinix.metal.OperatingSystem.UBUNTU20_04,
-            billing_cycle=equinix.metal.BillingCycle.HOURLY,
-            project_id=project_id)
-        test_device_network_type = equinix.metal.DeviceNetworkType("testDeviceNetworkType",
-            device_id=test_device.id,
-            type="hybrid")
-        test_port_vlan_attachment = equinix.metal.PortVlanAttachment("testPortVlanAttachment",
-            device_id=test_device_network_type.id,
-            port_name="eth1",
-            vlan_vnid=test.vxlan)
         ```
 
         :param str resource_name: The name of the resource.
@@ -342,6 +342,30 @@ class PortVlanAttachment(pulumi.CustomResource):
         * `port_id` - UUID of device port.
 
         ## Example Usage
+        ### example 1
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        test = equinix.metal.Vlan("test",
+            description="VLAN in New York",
+            metro="ny",
+            project_id=project_id)
+        test_device = equinix.metal.Device("testDevice",
+            hostname="test",
+            plan=equinix.metal.Plan.C3_SMALL_X86,
+            metro="ny",
+            operating_system=equinix.metal.OperatingSystem.UBUNTU20_04,
+            billing_cycle=equinix.metal.BillingCycle.HOURLY,
+            project_id=project_id)
+        test_device_network_type = equinix.metal.DeviceNetworkType("testDeviceNetworkType",
+            device_id=test_device.id,
+            type="hybrid")
+        test_port_vlan_attachment = equinix.metal.PortVlanAttachment("testPortVlanAttachment",
+            device_id=test_device_network_type.id,
+            port_name="eth1",
+            vlan_vnid=test.vxlan)
+        ```
         ### example 2
         ```python
         import pulumi
@@ -375,30 +399,6 @@ class PortVlanAttachment(pulumi.CustomResource):
             port_name="eth1",
             native=True,
             opts = pulumi.ResourceOptions(depends_on=[test1_port_vlan_attachment]))
-        ```
-        ### example 1
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        test = equinix.metal.Vlan("test",
-            description="VLAN in New York",
-            metro="ny",
-            project_id=project_id)
-        test_device = equinix.metal.Device("testDevice",
-            hostname="test",
-            plan=equinix.metal.Plan.C3_SMALL_X86,
-            metro="ny",
-            operating_system=equinix.metal.OperatingSystem.UBUNTU20_04,
-            billing_cycle=equinix.metal.BillingCycle.HOURLY,
-            project_id=project_id)
-        test_device_network_type = equinix.metal.DeviceNetworkType("testDeviceNetworkType",
-            device_id=test_device.id,
-            type="hybrid")
-        test_port_vlan_attachment = equinix.metal.PortVlanAttachment("testPortVlanAttachment",
-            device_id=test_device_network_type.id,
-            port_name="eth1",
-            vlan_vnid=test.vxlan)
         ```
 
         :param str resource_name: The name of the resource.

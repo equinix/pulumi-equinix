@@ -743,6 +743,10 @@ type DeviceClusterDetailsNode0VendorConfiguration struct {
 	LicenseId *string `pulumi:"licenseId"`
 	// License key. This field is relevant only for the BlueCat DNS and DHCP Server
 	LicenseKey *string `pulumi:"licenseKey"`
+	// Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
+	PanoramaAuthKey *string `pulumi:"panoramaAuthKey"`
+	// Panorama Server IP Address. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
+	PanoramaIpAddress *string `pulumi:"panoramaIpAddress"`
 	// Private address. This field is relevant only for the BlueCat DNS and DHCP Server
 	PrivateAddress *string `pulumi:"privateAddress"`
 	// Private CIDR Mask. This field is relevant only for the BlueCat DNS and DHCP Server
@@ -779,6 +783,10 @@ type DeviceClusterDetailsNode0VendorConfigurationArgs struct {
 	LicenseId pulumi.StringPtrInput `pulumi:"licenseId"`
 	// License key. This field is relevant only for the BlueCat DNS and DHCP Server
 	LicenseKey pulumi.StringPtrInput `pulumi:"licenseKey"`
+	// Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
+	PanoramaAuthKey pulumi.StringPtrInput `pulumi:"panoramaAuthKey"`
+	// Panorama Server IP Address. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
+	PanoramaIpAddress pulumi.StringPtrInput `pulumi:"panoramaIpAddress"`
 	// Private address. This field is relevant only for the BlueCat DNS and DHCP Server
 	PrivateAddress pulumi.StringPtrInput `pulumi:"privateAddress"`
 	// Private CIDR Mask. This field is relevant only for the BlueCat DNS and DHCP Server
@@ -901,6 +909,16 @@ func (o DeviceClusterDetailsNode0VendorConfigurationOutput) LicenseKey() pulumi.
 	return o.ApplyT(func(v DeviceClusterDetailsNode0VendorConfiguration) *string { return v.LicenseKey }).(pulumi.StringPtrOutput)
 }
 
+// Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
+func (o DeviceClusterDetailsNode0VendorConfigurationOutput) PanoramaAuthKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceClusterDetailsNode0VendorConfiguration) *string { return v.PanoramaAuthKey }).(pulumi.StringPtrOutput)
+}
+
+// Panorama Server IP Address. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
+func (o DeviceClusterDetailsNode0VendorConfigurationOutput) PanoramaIpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceClusterDetailsNode0VendorConfiguration) *string { return v.PanoramaIpAddress }).(pulumi.StringPtrOutput)
+}
+
 // Private address. This field is relevant only for the BlueCat DNS and DHCP Server
 func (o DeviceClusterDetailsNode0VendorConfigurationOutput) PrivateAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceClusterDetailsNode0VendorConfiguration) *string { return v.PrivateAddress }).(pulumi.StringPtrOutput)
@@ -1012,6 +1030,26 @@ func (o DeviceClusterDetailsNode0VendorConfigurationPtrOutput) LicenseKey() pulu
 			return nil
 		}
 		return v.LicenseKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
+func (o DeviceClusterDetailsNode0VendorConfigurationPtrOutput) PanoramaAuthKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceClusterDetailsNode0VendorConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PanoramaAuthKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Panorama Server IP Address. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
+func (o DeviceClusterDetailsNode0VendorConfigurationPtrOutput) PanoramaIpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceClusterDetailsNode0VendorConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PanoramaIpAddress
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1285,6 +1323,10 @@ type DeviceClusterDetailsNode1VendorConfiguration struct {
 	LicenseId *string `pulumi:"licenseId"`
 	// License key. This field is relevant only for the BlueCat DNS and DHCP Server
 	LicenseKey *string `pulumi:"licenseKey"`
+	// Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
+	PanoramaAuthKey *string `pulumi:"panoramaAuthKey"`
+	// Panorama Server IP Address. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
+	PanoramaIpAddress *string `pulumi:"panoramaIpAddress"`
 	// Private address. This field is relevant only for the BlueCat DNS and DHCP Server
 	PrivateAddress *string `pulumi:"privateAddress"`
 	// Private CIDR Mask. This field is relevant only for the BlueCat DNS and DHCP Server
@@ -1321,6 +1363,10 @@ type DeviceClusterDetailsNode1VendorConfigurationArgs struct {
 	LicenseId pulumi.StringPtrInput `pulumi:"licenseId"`
 	// License key. This field is relevant only for the BlueCat DNS and DHCP Server
 	LicenseKey pulumi.StringPtrInput `pulumi:"licenseKey"`
+	// Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
+	PanoramaAuthKey pulumi.StringPtrInput `pulumi:"panoramaAuthKey"`
+	// Panorama Server IP Address. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
+	PanoramaIpAddress pulumi.StringPtrInput `pulumi:"panoramaIpAddress"`
 	// Private address. This field is relevant only for the BlueCat DNS and DHCP Server
 	PrivateAddress pulumi.StringPtrInput `pulumi:"privateAddress"`
 	// Private CIDR Mask. This field is relevant only for the BlueCat DNS and DHCP Server
@@ -1443,6 +1489,16 @@ func (o DeviceClusterDetailsNode1VendorConfigurationOutput) LicenseKey() pulumi.
 	return o.ApplyT(func(v DeviceClusterDetailsNode1VendorConfiguration) *string { return v.LicenseKey }).(pulumi.StringPtrOutput)
 }
 
+// Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
+func (o DeviceClusterDetailsNode1VendorConfigurationOutput) PanoramaAuthKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceClusterDetailsNode1VendorConfiguration) *string { return v.PanoramaAuthKey }).(pulumi.StringPtrOutput)
+}
+
+// Panorama Server IP Address. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
+func (o DeviceClusterDetailsNode1VendorConfigurationOutput) PanoramaIpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceClusterDetailsNode1VendorConfiguration) *string { return v.PanoramaIpAddress }).(pulumi.StringPtrOutput)
+}
+
 // Private address. This field is relevant only for the BlueCat DNS and DHCP Server
 func (o DeviceClusterDetailsNode1VendorConfigurationOutput) PrivateAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceClusterDetailsNode1VendorConfiguration) *string { return v.PrivateAddress }).(pulumi.StringPtrOutput)
@@ -1554,6 +1610,26 @@ func (o DeviceClusterDetailsNode1VendorConfigurationPtrOutput) LicenseKey() pulu
 			return nil
 		}
 		return v.LicenseKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
+func (o DeviceClusterDetailsNode1VendorConfigurationPtrOutput) PanoramaAuthKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceClusterDetailsNode1VendorConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PanoramaAuthKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Panorama Server IP Address. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
+func (o DeviceClusterDetailsNode1VendorConfigurationPtrOutput) PanoramaIpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceClusterDetailsNode1VendorConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PanoramaIpAddress
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2229,7 +2305,7 @@ type DeviceSecondaryDevice struct {
 	Status *string `pulumi:"status"`
 	// Device unique identifier.
 	Uuid *string `pulumi:"uuid"`
-	// Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`.
+	// Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`, `panoramaAuthKey`, `panoramaIpAddress`.
 	VendorConfiguration map[string]string `pulumi:"vendorConfiguration"`
 	// device interface id picked for WAN
 	WanInterfaceId *string `pulumi:"wanInterfaceId"`
@@ -2300,7 +2376,7 @@ type DeviceSecondaryDeviceArgs struct {
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// Device unique identifier.
 	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
-	// Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`.
+	// Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`, `panoramaAuthKey`, `panoramaIpAddress`.
 	VendorConfiguration pulumi.StringMapInput `pulumi:"vendorConfiguration"`
 	// device interface id picked for WAN
 	WanInterfaceId pulumi.StringPtrInput `pulumi:"wanInterfaceId"`
@@ -2511,7 +2587,7 @@ func (o DeviceSecondaryDeviceOutput) Uuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceSecondaryDevice) *string { return v.Uuid }).(pulumi.StringPtrOutput)
 }
 
-// Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`.
+// Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`, `panoramaAuthKey`, `panoramaIpAddress`.
 func (o DeviceSecondaryDeviceOutput) VendorConfiguration() pulumi.StringMapOutput {
 	return o.ApplyT(func(v DeviceSecondaryDevice) map[string]string { return v.VendorConfiguration }).(pulumi.StringMapOutput)
 }
@@ -2801,7 +2877,7 @@ func (o DeviceSecondaryDevicePtrOutput) Uuid() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`.
+// Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`, `panoramaAuthKey`, `panoramaIpAddress`.
 func (o DeviceSecondaryDevicePtrOutput) VendorConfiguration() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *DeviceSecondaryDevice) map[string]string {
 		if v == nil {
@@ -3586,6 +3662,10 @@ type GetDeviceClusterDetailNode0VendorConfiguration struct {
 	LicenseId string `pulumi:"licenseId"`
 	// License key. This field is relevant only for the BlueCat DNS and DHCP Server
 	LicenseKey string `pulumi:"licenseKey"`
+	// Panorama Server Auth Key. This field is relevant only for Palo Alto Networks Firewall devices
+	PanoramaAuthKey string `pulumi:"panoramaAuthKey"`
+	// Panorama Server IP Address. This field is relevant only for Palo Alto Networks Firewall devices
+	PanoramaIpAddress string `pulumi:"panoramaIpAddress"`
 	// Private address. This field is relevant only for the BlueCat DNS and DHCP Server
 	PrivateAddress string `pulumi:"privateAddress"`
 	// Private CIDR Mask. This field is relevant only for the BlueCat DNS and DHCP Server
@@ -3622,6 +3702,10 @@ type GetDeviceClusterDetailNode0VendorConfigurationArgs struct {
 	LicenseId pulumi.StringInput `pulumi:"licenseId"`
 	// License key. This field is relevant only for the BlueCat DNS and DHCP Server
 	LicenseKey pulumi.StringInput `pulumi:"licenseKey"`
+	// Panorama Server Auth Key. This field is relevant only for Palo Alto Networks Firewall devices
+	PanoramaAuthKey pulumi.StringInput `pulumi:"panoramaAuthKey"`
+	// Panorama Server IP Address. This field is relevant only for Palo Alto Networks Firewall devices
+	PanoramaIpAddress pulumi.StringInput `pulumi:"panoramaIpAddress"`
 	// Private address. This field is relevant only for the BlueCat DNS and DHCP Server
 	PrivateAddress pulumi.StringInput `pulumi:"privateAddress"`
 	// Private CIDR Mask. This field is relevant only for the BlueCat DNS and DHCP Server
@@ -3716,6 +3800,16 @@ func (o GetDeviceClusterDetailNode0VendorConfigurationOutput) LicenseId() pulumi
 // License key. This field is relevant only for the BlueCat DNS and DHCP Server
 func (o GetDeviceClusterDetailNode0VendorConfigurationOutput) LicenseKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDeviceClusterDetailNode0VendorConfiguration) string { return v.LicenseKey }).(pulumi.StringOutput)
+}
+
+// Panorama Server Auth Key. This field is relevant only for Palo Alto Networks Firewall devices
+func (o GetDeviceClusterDetailNode0VendorConfigurationOutput) PanoramaAuthKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDeviceClusterDetailNode0VendorConfiguration) string { return v.PanoramaAuthKey }).(pulumi.StringOutput)
+}
+
+// Panorama Server IP Address. This field is relevant only for Palo Alto Networks Firewall devices
+func (o GetDeviceClusterDetailNode0VendorConfigurationOutput) PanoramaIpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDeviceClusterDetailNode0VendorConfiguration) string { return v.PanoramaIpAddress }).(pulumi.StringOutput)
 }
 
 // Private address. This field is relevant only for the BlueCat DNS and DHCP Server
@@ -3908,6 +4002,10 @@ type GetDeviceClusterDetailNode1VendorConfiguration struct {
 	LicenseId string `pulumi:"licenseId"`
 	// License key. This field is relevant only for the BlueCat DNS and DHCP Server
 	LicenseKey string `pulumi:"licenseKey"`
+	// Panorama Server Auth Key. This field is relevant only for Palo Alto Networks Firewall devices
+	PanoramaAuthKey string `pulumi:"panoramaAuthKey"`
+	// Panorama Server IP Address. This field is relevant only for Palo Alto Networks Firewall devices
+	PanoramaIpAddress string `pulumi:"panoramaIpAddress"`
 	// Private address. This field is relevant only for the BlueCat DNS and DHCP Server
 	PrivateAddress string `pulumi:"privateAddress"`
 	// Private CIDR Mask. This field is relevant only for the BlueCat DNS and DHCP Server
@@ -3944,6 +4042,10 @@ type GetDeviceClusterDetailNode1VendorConfigurationArgs struct {
 	LicenseId pulumi.StringInput `pulumi:"licenseId"`
 	// License key. This field is relevant only for the BlueCat DNS and DHCP Server
 	LicenseKey pulumi.StringInput `pulumi:"licenseKey"`
+	// Panorama Server Auth Key. This field is relevant only for Palo Alto Networks Firewall devices
+	PanoramaAuthKey pulumi.StringInput `pulumi:"panoramaAuthKey"`
+	// Panorama Server IP Address. This field is relevant only for Palo Alto Networks Firewall devices
+	PanoramaIpAddress pulumi.StringInput `pulumi:"panoramaIpAddress"`
 	// Private address. This field is relevant only for the BlueCat DNS and DHCP Server
 	PrivateAddress pulumi.StringInput `pulumi:"privateAddress"`
 	// Private CIDR Mask. This field is relevant only for the BlueCat DNS and DHCP Server
@@ -4038,6 +4140,16 @@ func (o GetDeviceClusterDetailNode1VendorConfigurationOutput) LicenseId() pulumi
 // License key. This field is relevant only for the BlueCat DNS and DHCP Server
 func (o GetDeviceClusterDetailNode1VendorConfigurationOutput) LicenseKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDeviceClusterDetailNode1VendorConfiguration) string { return v.LicenseKey }).(pulumi.StringOutput)
+}
+
+// Panorama Server Auth Key. This field is relevant only for Palo Alto Networks Firewall devices
+func (o GetDeviceClusterDetailNode1VendorConfigurationOutput) PanoramaAuthKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDeviceClusterDetailNode1VendorConfiguration) string { return v.PanoramaAuthKey }).(pulumi.StringOutput)
+}
+
+// Panorama Server IP Address. This field is relevant only for Palo Alto Networks Firewall devices
+func (o GetDeviceClusterDetailNode1VendorConfigurationOutput) PanoramaIpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDeviceClusterDetailNode1VendorConfiguration) string { return v.PanoramaIpAddress }).(pulumi.StringOutput)
 }
 
 // Private address. This field is relevant only for the BlueCat DNS and DHCP Server
