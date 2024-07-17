@@ -69,10 +69,6 @@ runs:
       repo: pulumi/pulumictl
   - name: Install Pulumi CLI
     uses: pulumi/actions@v4
-  - name: Checkout repo
-    uses: actions/checkout@v3
-    with:
-      ref: ${{ github.ref_name }}
   - name: Unshallow clone for tags
     run: git fetch --prune --unshallow --tags
     shell: bash
