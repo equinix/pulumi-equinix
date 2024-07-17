@@ -11509,6 +11509,17 @@
                     "secret": true,
                     "willReplaceOnChanges": true
                 },
+                "panoramaAuthKey": {
+                    "type": "string",
+                    "description": "Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.\n",
+                    "secret": true,
+                    "willReplaceOnChanges": true
+                },
+                "panoramaIpAddress": {
+                    "type": "string",
+                    "description": "Panorama Server IP Address. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.\n",
+                    "willReplaceOnChanges": true
+                },
                 "privateAddress": {
                     "type": "string",
                     "description": "Private address. This field is relevant only for the BlueCat DNS and DHCP Server\n",
@@ -11616,6 +11627,17 @@
                     "type": "string",
                     "description": "License key. This field is relevant only for the BlueCat DNS and DHCP Server\n",
                     "secret": true,
+                    "willReplaceOnChanges": true
+                },
+                "panoramaAuthKey": {
+                    "type": "string",
+                    "description": "Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.\n",
+                    "secret": true,
+                    "willReplaceOnChanges": true
+                },
+                "panoramaIpAddress": {
+                    "type": "string",
+                    "description": "Panorama Server IP Address. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.\n",
                     "willReplaceOnChanges": true
                 },
                 "privateAddress": {
@@ -11928,7 +11950,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`.\n",
+                    "description": "Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`, `panoramaAuthKey`, `panoramaIpAddress`.\n",
                     "willReplaceOnChanges": true
                 },
                 "wanInterfaceId": {
@@ -12208,6 +12230,15 @@
                     "description": "License key. This field is relevant only for the BlueCat DNS and DHCP Server\n",
                     "secret": true
                 },
+                "panoramaAuthKey": {
+                    "type": "string",
+                    "description": "Panorama Server Auth Key. This field is relevant only for Palo Alto Networks Firewall devices\n",
+                    "secret": true
+                },
+                "panoramaIpAddress": {
+                    "type": "string",
+                    "description": "Panorama Server IP Address. This field is relevant only for Palo Alto Networks Firewall devices\n"
+                },
                 "privateAddress": {
                     "type": "string",
                     "description": "Private address. This field is relevant only for the BlueCat DNS and DHCP Server\n"
@@ -12235,6 +12266,8 @@
                 "hostname",
                 "licenseId",
                 "licenseKey",
+                "panoramaAuthKey",
+                "panoramaIpAddress",
                 "privateAddress",
                 "privateCidrMask",
                 "privateGateway",
@@ -12321,6 +12354,15 @@
                     "description": "License key. This field is relevant only for the BlueCat DNS and DHCP Server\n",
                     "secret": true
                 },
+                "panoramaAuthKey": {
+                    "type": "string",
+                    "description": "Panorama Server Auth Key. This field is relevant only for Palo Alto Networks Firewall devices\n",
+                    "secret": true
+                },
+                "panoramaIpAddress": {
+                    "type": "string",
+                    "description": "Panorama Server IP Address. This field is relevant only for Palo Alto Networks Firewall devices\n"
+                },
                 "privateAddress": {
                     "type": "string",
                     "description": "Private address. This field is relevant only for the BlueCat DNS and DHCP Server\n"
@@ -12348,6 +12390,8 @@
                 "hostname",
                 "licenseId",
                 "licenseKey",
+                "panoramaAuthKey",
+                "panoramaIpAddress",
                 "privateAddress",
                 "privateCidrMask",
                 "privateGateway",
@@ -16789,19 +16833,23 @@
             }
         },
         "equinix:metal/virtualCircuit:VirtualCircuit": {
-            "description": "Use this resource to associate VLAN with a Dedicated Port from [Equinix Fabric - software-defined interconnections](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/#associating-a-vlan-with-a-dedicated-port).\n\nSee the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.\n\n{{% examples %}}\n## Example Usage\n\n{{% example %}}\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix-labs/pulumi-equinix\";\nimport * as equinix from \"@pulumi/equinix\";\n\nconst projectId = \"52000fb2-ee46-4673-93a8-de2c2bdba33c\";\nconst connId = \"73f12f29-3e19-43a0-8e90-ae81580db1e0\";\nconst test = equinix.metal.getInterconnectionOutput({\n    connectionId: connId,\n});\nconst testVlan = new equinix.metal.Vlan(\"testVlan\", {\n    projectId: projectId,\n    metro: test.apply(test =\u003e test.metro),\n});\nconst testVirtualCircuit = new equinix.metal.VirtualCircuit(\"testVirtualCircuit\", {\n    connectionId: connId,\n    projectId: projectId,\n    portId: test.apply(test =\u003e test.ports?.[0]?.id),\n    vlanId: testVlan.id,\n    nniVlan: 1056,\n});\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nproject_id = \"52000fb2-ee46-4673-93a8-de2c2bdba33c\"\nconn_id = \"73f12f29-3e19-43a0-8e90-ae81580db1e0\"\ntest = equinix.metal.get_interconnection_output(connection_id=conn_id)\ntest_vlan = equinix.metal.Vlan(\"testVlan\",\n    project_id=project_id,\n    metro=test.metro)\ntest_virtual_circuit = equinix.metal.VirtualCircuit(\"testVirtualCircuit\",\n    connection_id=conn_id,\n    project_id=project_id,\n    port_id=test.ports[0].id,\n    vlan_id=test_vlan.id,\n    nni_vlan=1056)\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tprojectId := \"52000fb2-ee46-4673-93a8-de2c2bdba33c\"\n\t\tconnId := \"73f12f29-3e19-43a0-8e90-ae81580db1e0\"\n\t\ttest, err := metal.LookupInterconnection(ctx, \u0026metal.LookupInterconnectionArgs{\n\t\t\tConnectionId: connId,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttestVlan, err := metal.NewVlan(ctx, \"testVlan\", \u0026metal.VlanArgs{\n\t\t\tProjectId: pulumi.String(projectId),\n\t\t\tMetro:     pulumi.String(test.Metro),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = metal.NewVirtualCircuit(ctx, \"testVirtualCircuit\", \u0026metal.VirtualCircuitArgs{\n\t\t\tConnectionId: pulumi.String(connId),\n\t\t\tProjectId:    pulumi.String(projectId),\n\t\t\tPortId:       pulumi.String(test.Ports[0].Id),\n\t\t\tVlanId:       testVlan.ID(),\n\t\t\tNniVlan:      pulumi.Int(1056),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var projectId = \"52000fb2-ee46-4673-93a8-de2c2bdba33c\";\n\n    var connId = \"73f12f29-3e19-43a0-8e90-ae81580db1e0\";\n\n    var test = Equinix.Metal.GetInterconnection.Invoke(new()\n    {\n        ConnectionId = connId,\n    });\n\n    var testVlan = new Equinix.Metal.Vlan(\"testVlan\", new()\n    {\n        ProjectId = projectId,\n        Metro = test.Apply(getInterconnectionResult =\u003e getInterconnectionResult.Metro),\n    });\n\n    var testVirtualCircuit = new Equinix.Metal.VirtualCircuit(\"testVirtualCircuit\", new()\n    {\n        ConnectionId = connId,\n        ProjectId = projectId,\n        PortId = test.Apply(getInterconnectionResult =\u003e getInterconnectionResult.Ports[0]?.Id),\n        VlanId = testVlan.Id,\n        NniVlan = 1056,\n    });\n\n});\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.MetalFunctions;\nimport com.pulumi.equinix.metal.inputs.GetInterconnectionArgs;\nimport com.pulumi.equinix.metal.Vlan;\nimport com.pulumi.equinix.metal.VlanArgs;\nimport com.pulumi.equinix.metal.VirtualCircuit;\nimport com.pulumi.equinix.metal.VirtualCircuitArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var projectId = \"52000fb2-ee46-4673-93a8-de2c2bdba33c\";\n\n        final var connId = \"73f12f29-3e19-43a0-8e90-ae81580db1e0\";\n\n        final var test = MetalFunctions.getInterconnection(GetInterconnectionArgs.builder()\n            .connectionId(connId)\n            .build());\n\n        var testVlan = new Vlan(\"testVlan\", VlanArgs.builder()\n            .projectId(projectId)\n            .metro(test.applyValue(getInterconnectionResult -\u003e getInterconnectionResult.metro()))\n            .build());\n\n        var testVirtualCircuit = new VirtualCircuit(\"testVirtualCircuit\", VirtualCircuitArgs.builder()\n            .connectionId(connId)\n            .projectId(projectId)\n            .portId(test.applyValue(getInterconnectionResult -\u003e getInterconnectionResult.ports()[0].id()))\n            .vlanId(testVlan.id())\n            .nniVlan(1056)\n            .build());\n\n    }\n}\n```\n```yaml\n  testVlan:\n    type: equinix:metal:Vlan\n    name: test\n    properties:\n      projectId: ${projectId}\n      metro: ${test.metro}\n  testVirtualCircuit:\n    type: equinix:metal:VirtualCircuit\n    name: test\n    properties:\n      connectionId: ${connId}\n      projectId: ${projectId}\n      portId: ${test.ports[0].id}\n      vlanId: ${testVlan.id}\n      nniVlan: 1056\nvariables:\n  projectId: 52000fb2-ee46-4673-93a8-de2c2bdba33c\n  connId: 73f12f29-3e19-43a0-8e90-ae81580db1e0\n  test:\n    fn::invoke:\n      Function: equinix:metal:getInterconnection\n      Arguments:\n        connectionId: ${connId}\n```\n{{% /example %}}\n\n## Import\n\nThis resource can be imported using an existing Virtual Circuit ID:\n\n```sh\n$ pulumi import equinix:metal/virtualCircuit:VirtualCircuit equinix_metal_virtual_circuit {existing_id}\n```\n\n\n{{% /examples %}}",
+            "description": "Use this resource to associate VLAN with a Dedicated Port from [Equinix Fabric - software-defined interconnections](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/#associating-a-vlan-with-a-dedicated-port).\n\nSee the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.\n\n{{% examples %}}\n## Example Usage\n\n{{% example %}}\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix-labs/pulumi-equinix\";\nimport * as equinix from \"@pulumi/equinix\";\n\nconst projectId = \"52000fb2-ee46-4673-93a8-de2c2bdba33c\";\nconst connId = \"73f12f29-3e19-43a0-8e90-ae81580db1e0\";\nconst test = equinix.metal.getInterconnectionOutput({\n    connectionId: connId,\n});\nconst testVlan = new equinix.metal.Vlan(\"testVlan\", {\n    projectId: projectId,\n    metro: test.apply(test =\u003e test.metro),\n});\nconst testVirtualCircuit = new equinix.metal.VirtualCircuit(\"testVirtualCircuit\", {\n    connectionId: connId,\n    projectId: projectId,\n    portId: test.apply(test =\u003e test.ports?.[0]?.id),\n    vlanId: testVlan.id,\n    nniVlan: 1056,\n});\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nproject_id = \"52000fb2-ee46-4673-93a8-de2c2bdba33c\"\nconn_id = \"73f12f29-3e19-43a0-8e90-ae81580db1e0\"\ntest = equinix.metal.get_interconnection_output(connection_id=conn_id)\ntest_vlan = equinix.metal.Vlan(\"testVlan\",\n    project_id=project_id,\n    metro=test.metro)\ntest_virtual_circuit = equinix.metal.VirtualCircuit(\"testVirtualCircuit\",\n    connection_id=conn_id,\n    project_id=project_id,\n    port_id=test.ports[0].id,\n    vlan_id=test_vlan.id,\n    nni_vlan=1056)\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tprojectId := \"52000fb2-ee46-4673-93a8-de2c2bdba33c\"\n\t\tconnId := \"73f12f29-3e19-43a0-8e90-ae81580db1e0\"\n\t\ttest, err := metal.LookupInterconnection(ctx, \u0026metal.LookupInterconnectionArgs{\n\t\t\tConnectionId: connId,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttestVlan, err := metal.NewVlan(ctx, \"testVlan\", \u0026metal.VlanArgs{\n\t\t\tProjectId: pulumi.String(projectId),\n\t\t\tMetro:     pulumi.String(test.Metro),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = metal.NewVirtualCircuit(ctx, \"testVirtualCircuit\", \u0026metal.VirtualCircuitArgs{\n\t\t\tConnectionId: pulumi.String(connId),\n\t\t\tProjectId:    pulumi.String(projectId),\n\t\t\tPortId:       pulumi.String(test.Ports[0].Id),\n\t\t\tVlanId:       testVlan.ID(),\n\t\t\tNniVlan:      pulumi.Int(1056),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var projectId = \"52000fb2-ee46-4673-93a8-de2c2bdba33c\";\n\n    var connId = \"73f12f29-3e19-43a0-8e90-ae81580db1e0\";\n\n    var test = Equinix.Metal.GetInterconnection.Invoke(new()\n    {\n        ConnectionId = connId,\n    });\n\n    var testVlan = new Equinix.Metal.Vlan(\"testVlan\", new()\n    {\n        ProjectId = projectId,\n        Metro = test.Apply(getInterconnectionResult =\u003e getInterconnectionResult.Metro),\n    });\n\n    var testVirtualCircuit = new Equinix.Metal.VirtualCircuit(\"testVirtualCircuit\", new()\n    {\n        ConnectionId = connId,\n        ProjectId = projectId,\n        PortId = test.Apply(getInterconnectionResult =\u003e getInterconnectionResult.Ports[0]?.Id),\n        VlanId = testVlan.Id,\n        NniVlan = 1056,\n    });\n\n});\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.MetalFunctions;\nimport com.pulumi.equinix.metal.inputs.GetInterconnectionArgs;\nimport com.pulumi.equinix.metal.Vlan;\nimport com.pulumi.equinix.metal.VlanArgs;\nimport com.pulumi.equinix.metal.VirtualCircuit;\nimport com.pulumi.equinix.metal.VirtualCircuitArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var projectId = \"52000fb2-ee46-4673-93a8-de2c2bdba33c\";\n\n        final var connId = \"73f12f29-3e19-43a0-8e90-ae81580db1e0\";\n\n        final var test = MetalFunctions.getInterconnection(GetInterconnectionArgs.builder()\n            .connectionId(connId)\n            .build());\n\n        var testVlan = new Vlan(\"testVlan\", VlanArgs.builder()\n            .projectId(projectId)\n            .metro(test.applyValue(getInterconnectionResult -\u003e getInterconnectionResult.metro()))\n            .build());\n\n        var testVirtualCircuit = new VirtualCircuit(\"testVirtualCircuit\", VirtualCircuitArgs.builder()\n            .connectionId(connId)\n            .projectId(projectId)\n            .portId(test.applyValue(getInterconnectionResult -\u003e getInterconnectionResult.ports()[0].id()))\n            .vlanId(testVlan.id())\n            .nniVlan(1056)\n            .build());\n\n    }\n}\n```\n```yaml\n  testVlan:\n    type: equinix:metal:Vlan\n    name: test\n    properties:\n      projectId: ${projectId}\n      metro: ${test.metro}\n  testVirtualCircuit:\n    type: equinix:metal:VirtualCircuit\n    name: test\n    properties:\n      connectionId: ${connId}\n      projectId: ${projectId}\n      portId: ${test.ports[0].id}\n      vlanId: ${testVlan.id}\n      nniVlan: 1056\nvariables:\n  projectId: 52000fb2-ee46-4673-93a8-de2c2bdba33c\n  connId: 73f12f29-3e19-43a0-8e90-ae81580db1e0\n  test:\n    fn::invoke:\n      Function: equinix:metal:getInterconnection\n      Arguments:\n        connectionId: ${connId}\n```\n{{% /example %}}\n\n## Import\n\n```sh\n$ pulumi import equinix:metal/virtualCircuit:VirtualCircuit equinix_metal_virtual_circuit {existing_id}\n```\n\n\n{{% /examples %}}",
             "properties": {
                 "connectionId": {
                     "type": "string",
-                    "description": "UUID of Connection where the VC is scoped to.\n"
+                    "description": "UUID of Connection where the VC is scoped to.  Only used for dedicated connections\n"
                 },
                 "customerIp": {
                     "type": "string",
                     "description": "The Customer IP address which the CSR switch will peer with. Will default to the other usable IP in the subnet.\n"
                 },
+                "customerIpv6": {
+                    "type": "string",
+                    "description": "The Customer IPv6 address which the CSR switch will peer with. Will default to the other usable IP in the IPv6 subnet.\n"
+                },
                 "description": {
                     "type": "string",
-                    "description": "Description for the Virtual Circuit resource.\n"
+                    "description": "Description of the Virtual Circuit resource\n"
                 },
                 "md5": {
                     "type": "string",
@@ -16812,17 +16860,21 @@
                     "type": "string",
                     "description": "The Metal IP address for the SVI (Switch Virtual Interface) of the VirtualCircuit. Will default to the first usable IP in the subnet.\n"
                 },
+                "metalIpv6": {
+                    "type": "string",
+                    "description": "The Metal IPv6 address for the SVI (Switch Virtual Interface) of the VirtualCircuit. Will default to the first usable IP in the IPv6 subnet.\n"
+                },
                 "name": {
                     "type": "string",
-                    "description": "Name of the Virtual Circuit resource.\n"
+                    "description": "Name of the Virtual Circuit resource\n"
                 },
                 "nniVlan": {
                     "type": "integer",
-                    "description": "Equinix Metal network-to-network VLAN ID.\n"
+                    "description": "Equinix Metal network-to-network VLAN ID (optional when the connection has mode=tunnel)\n"
                 },
                 "nniVnid": {
                     "type": "integer",
-                    "description": "NNI VLAN parameters, see the [documentation for Equinix Fabric](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/).\n"
+                    "description": "Nni VLAN ID parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/\n"
                 },
                 "peerAsn": {
                     "type": "integer",
@@ -16830,47 +16882,60 @@
                 },
                 "portId": {
                     "type": "string",
-                    "description": "UUID of the Connection Port where the VC is scoped to.\n"
+                    "description": "UUID of the Connection Port where the VC is scoped to\n"
                 },
                 "projectId": {
                     "type": "string",
-                    "description": "UUID of the Project where the VC is scoped to.\n"
+                    "description": "UUID of the Project where the VC is scoped to\n"
                 },
                 "speed": {
                     "type": "string",
-                    "description": "Speed of the Virtual Circuit resource.\n"
+                    "description": "Description of the Virtual Circuit speed. This is for information purposes and is computed when the connection type is shared.\n"
                 },
                 "status": {
                     "type": "string",
-                    "description": "Status of the virtal circuit.\n"
+                    "description": "Status of the virtual circuit resource\n"
                 },
                 "subnet": {
                     "type": "string",
-                    "description": "A subnet from one of the IP blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.\n* For a /31 block, it will only have two IP addresses, which will be used for the metal_ip and customer_ip.\n* For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.\n"
+                    "description": "A subnet from one of the IP blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.\n\t\t\t * For a /31 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.\n\t\t\t * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.\n"
+                },
+                "subnetIpv6": {
+                    "type": "string",
+                    "description": "A subnet from one of the IPv6 blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /126 or /127.\n\t\t\t * For a /127 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.\n\t\t\t * For a /126 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.\n"
                 },
                 "tags": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Tags for the Virtual Circuit resource.\n"
+                    "description": "Tags attached to the virtual circuit\n"
+                },
+                "virtualCircuitId": {
+                    "type": "string",
+                    "description": "UUID of an existing VC to configure. Used in the case of shared interconnections where the VC has already been created.\n"
                 },
                 "vlanId": {
                     "type": "string",
-                    "description": "UUID of the VLAN to associate.\n"
+                    "description": "UUID of the VLAN to associate\n"
                 },
                 "vnid": {
                     "type": "integer",
-                    "description": "VNID VLAN parameter, see the [documentation for Equinix Fabric](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/).\n"
+                    "description": "VNID VLAN parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/\n"
                 },
                 "vrfId": {
                     "type": "string",
-                    "description": "UUID of the VRF to associate.\n"
+                    "description": "UUID of the VRF to associate\n"
                 }
             },
             "required": [
                 "connectionId",
+                "customerIp",
+                "customerIpv6",
+                "metalIp",
+                "metalIpv6",
                 "name",
+                "nniVlan",
                 "nniVnid",
                 "portId",
                 "projectId",
@@ -16881,16 +16946,20 @@
             "inputProperties": {
                 "connectionId": {
                     "type": "string",
-                    "description": "UUID of Connection where the VC is scoped to.\n",
+                    "description": "UUID of Connection where the VC is scoped to.  Only used for dedicated connections\n",
                     "willReplaceOnChanges": true
                 },
                 "customerIp": {
                     "type": "string",
                     "description": "The Customer IP address which the CSR switch will peer with. Will default to the other usable IP in the subnet.\n"
                 },
+                "customerIpv6": {
+                    "type": "string",
+                    "description": "The Customer IPv6 address which the CSR switch will peer with. Will default to the other usable IP in the IPv6 subnet.\n"
+                },
                 "description": {
                     "type": "string",
-                    "description": "Description for the Virtual Circuit resource.\n"
+                    "description": "Description of the Virtual Circuit resource\n"
                 },
                 "md5": {
                     "type": "string",
@@ -16901,13 +16970,17 @@
                     "type": "string",
                     "description": "The Metal IP address for the SVI (Switch Virtual Interface) of the VirtualCircuit. Will default to the first usable IP in the subnet.\n"
                 },
+                "metalIpv6": {
+                    "type": "string",
+                    "description": "The Metal IPv6 address for the SVI (Switch Virtual Interface) of the VirtualCircuit. Will default to the first usable IP in the IPv6 subnet.\n"
+                },
                 "name": {
                     "type": "string",
-                    "description": "Name of the Virtual Circuit resource.\n"
+                    "description": "Name of the Virtual Circuit resource\n"
                 },
                 "nniVlan": {
                     "type": "integer",
-                    "description": "Equinix Metal network-to-network VLAN ID.\n",
+                    "description": "Equinix Metal network-to-network VLAN ID (optional when the connection has mode=tunnel)\n",
                     "willReplaceOnChanges": true
                 },
                 "peerAsn": {
@@ -16917,41 +16990,49 @@
                 },
                 "portId": {
                     "type": "string",
-                    "description": "UUID of the Connection Port where the VC is scoped to.\n",
+                    "description": "UUID of the Connection Port where the VC is scoped to\n",
                     "willReplaceOnChanges": true
                 },
                 "projectId": {
                     "type": "string",
-                    "description": "UUID of the Project where the VC is scoped to.\n",
+                    "description": "UUID of the Project where the VC is scoped to\n",
                     "willReplaceOnChanges": true
                 },
                 "speed": {
                     "type": "string",
-                    "description": "Speed of the Virtual Circuit resource.\n"
+                    "description": "Description of the Virtual Circuit speed. This is for information purposes and is computed when the connection type is shared.\n"
                 },
                 "subnet": {
                     "type": "string",
-                    "description": "A subnet from one of the IP blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.\n* For a /31 block, it will only have two IP addresses, which will be used for the metal_ip and customer_ip.\n* For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.\n"
+                    "description": "A subnet from one of the IP blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.\n\t\t\t * For a /31 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.\n\t\t\t * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.\n"
+                },
+                "subnetIpv6": {
+                    "type": "string",
+                    "description": "A subnet from one of the IPv6 blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /126 or /127.\n\t\t\t * For a /127 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.\n\t\t\t * For a /126 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.\n"
                 },
                 "tags": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Tags for the Virtual Circuit resource.\n"
+                    "description": "Tags attached to the virtual circuit\n"
+                },
+                "virtualCircuitId": {
+                    "type": "string",
+                    "description": "UUID of an existing VC to configure. Used in the case of shared interconnections where the VC has already been created.\n",
+                    "willReplaceOnChanges": true
                 },
                 "vlanId": {
                     "type": "string",
-                    "description": "UUID of the VLAN to associate.\n"
+                    "description": "UUID of the VLAN to associate\n"
                 },
                 "vrfId": {
                     "type": "string",
-                    "description": "UUID of the VRF to associate.\n",
+                    "description": "UUID of the VRF to associate\n",
                     "willReplaceOnChanges": true
                 }
             },
             "requiredInputs": [
-                "connectionId",
                 "portId",
                 "projectId"
             ],
@@ -16960,16 +17041,20 @@
                 "properties": {
                     "connectionId": {
                         "type": "string",
-                        "description": "UUID of Connection where the VC is scoped to.\n",
+                        "description": "UUID of Connection where the VC is scoped to.  Only used for dedicated connections\n",
                         "willReplaceOnChanges": true
                     },
                     "customerIp": {
                         "type": "string",
                         "description": "The Customer IP address which the CSR switch will peer with. Will default to the other usable IP in the subnet.\n"
                     },
+                    "customerIpv6": {
+                        "type": "string",
+                        "description": "The Customer IPv6 address which the CSR switch will peer with. Will default to the other usable IP in the IPv6 subnet.\n"
+                    },
                     "description": {
                         "type": "string",
-                        "description": "Description for the Virtual Circuit resource.\n"
+                        "description": "Description of the Virtual Circuit resource\n"
                     },
                     "md5": {
                         "type": "string",
@@ -16980,18 +17065,22 @@
                         "type": "string",
                         "description": "The Metal IP address for the SVI (Switch Virtual Interface) of the VirtualCircuit. Will default to the first usable IP in the subnet.\n"
                     },
+                    "metalIpv6": {
+                        "type": "string",
+                        "description": "The Metal IPv6 address for the SVI (Switch Virtual Interface) of the VirtualCircuit. Will default to the first usable IP in the IPv6 subnet.\n"
+                    },
                     "name": {
                         "type": "string",
-                        "description": "Name of the Virtual Circuit resource.\n"
+                        "description": "Name of the Virtual Circuit resource\n"
                     },
                     "nniVlan": {
                         "type": "integer",
-                        "description": "Equinix Metal network-to-network VLAN ID.\n",
+                        "description": "Equinix Metal network-to-network VLAN ID (optional when the connection has mode=tunnel)\n",
                         "willReplaceOnChanges": true
                     },
                     "nniVnid": {
                         "type": "integer",
-                        "description": "NNI VLAN parameters, see the [documentation for Equinix Fabric](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/).\n"
+                        "description": "Nni VLAN ID parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/\n"
                     },
                     "peerAsn": {
                         "type": "integer",
@@ -17000,44 +17089,53 @@
                     },
                     "portId": {
                         "type": "string",
-                        "description": "UUID of the Connection Port where the VC is scoped to.\n",
+                        "description": "UUID of the Connection Port where the VC is scoped to\n",
                         "willReplaceOnChanges": true
                     },
                     "projectId": {
                         "type": "string",
-                        "description": "UUID of the Project where the VC is scoped to.\n",
+                        "description": "UUID of the Project where the VC is scoped to\n",
                         "willReplaceOnChanges": true
                     },
                     "speed": {
                         "type": "string",
-                        "description": "Speed of the Virtual Circuit resource.\n"
+                        "description": "Description of the Virtual Circuit speed. This is for information purposes and is computed when the connection type is shared.\n"
                     },
                     "status": {
                         "type": "string",
-                        "description": "Status of the virtal circuit.\n"
+                        "description": "Status of the virtual circuit resource\n"
                     },
                     "subnet": {
                         "type": "string",
-                        "description": "A subnet from one of the IP blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.\n* For a /31 block, it will only have two IP addresses, which will be used for the metal_ip and customer_ip.\n* For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.\n"
+                        "description": "A subnet from one of the IP blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.\n\t\t\t * For a /31 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.\n\t\t\t * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.\n"
+                    },
+                    "subnetIpv6": {
+                        "type": "string",
+                        "description": "A subnet from one of the IPv6 blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /126 or /127.\n\t\t\t * For a /127 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.\n\t\t\t * For a /126 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.\n"
                     },
                     "tags": {
                         "type": "array",
                         "items": {
                             "type": "string"
                         },
-                        "description": "Tags for the Virtual Circuit resource.\n"
+                        "description": "Tags attached to the virtual circuit\n"
+                    },
+                    "virtualCircuitId": {
+                        "type": "string",
+                        "description": "UUID of an existing VC to configure. Used in the case of shared interconnections where the VC has already been created.\n",
+                        "willReplaceOnChanges": true
                     },
                     "vlanId": {
                         "type": "string",
-                        "description": "UUID of the VLAN to associate.\n"
+                        "description": "UUID of the VLAN to associate\n"
                     },
                     "vnid": {
                         "type": "integer",
-                        "description": "VNID VLAN parameter, see the [documentation for Equinix Fabric](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/).\n"
+                        "description": "VNID VLAN parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/\n"
                     },
                     "vrfId": {
                         "type": "string",
-                        "description": "UUID of the VRF to associate.\n",
+                        "description": "UUID of the VRF to associate\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -17708,7 +17806,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId)\n* `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.\n"
+                    "description": "Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress)\n* `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.\n"
                 },
                 "version": {
                     "type": "string",
@@ -17909,7 +18007,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId)\n* `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.\n",
+                    "description": "Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress)\n* `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.\n",
                     "willReplaceOnChanges": true
                 },
                 "version": {
@@ -18141,7 +18239,7 @@
                         "additionalProperties": {
                             "type": "string"
                         },
-                        "description": "Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId)\n* `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.\n",
+                        "description": "Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress)\n* `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.\n",
                         "willReplaceOnChanges": true
                     },
                     "version": {
@@ -21388,9 +21486,21 @@
             "inputs": {
                 "description": "A collection of arguments for invoking getVirtualCircuit.\n",
                 "properties": {
+                    "customerIpv6": {
+                        "type": "string",
+                        "description": "The Customer IPv6 address which the CSR switch will peer with. Will default to the other usable IP in the IPv6 subnet.\n"
+                    },
+                    "metalIpv6": {
+                        "type": "string",
+                        "description": "The Metal IPv6 address for the SVI (Switch Virtual Interface) of the VirtualCircuit. Will default to the first usable IP in the IPv6 subnet.\n"
+                    },
+                    "subnetIpv6": {
+                        "type": "string",
+                        "description": "A subnet from one of the IPv6 blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /126 or /127.\n\t\t\t * For a /127 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.\n\t\t\t * For a /126 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.\n"
+                    },
                     "virtualCircuitId": {
                         "type": "string",
-                        "description": "ID of the virtual circuit resource\n"
+                        "description": "ID of the virtual circuit to lookup\n"
                     }
                 },
                 "type": "object",
@@ -21403,15 +21513,19 @@
                 "properties": {
                     "connectionId": {
                         "type": "string",
-                        "description": "UUID of Connection where the VC is scoped to.\n"
+                        "description": "UUID of Connection where the VC is scoped to\n"
                     },
                     "customerIp": {
                         "type": "string",
                         "description": "The Customer IP address which the CSR switch will peer with. Will default to the other usable IP in the subnet.\n"
                     },
+                    "customerIpv6": {
+                        "type": "string",
+                        "description": "The Customer IPv6 address which the CSR switch will peer with. Will default to the other usable IP in the IPv6 subnet.\n"
+                    },
                     "description": {
                         "type": "string",
-                        "description": "Description for the Virtual Circuit resource.\n"
+                        "description": "Description of the virtual circuit\n"
                     },
                     "id": {
                         "type": "string",
@@ -21426,15 +21540,21 @@
                         "type": "string",
                         "description": "The Metal IP address for the SVI (Switch Virtual Interface) of the VirtualCircuit. Will default to the first usable IP in the subnet.\n"
                     },
+                    "metalIpv6": {
+                        "type": "string",
+                        "description": "The Metal IPv6 address for the SVI (Switch Virtual Interface) of the VirtualCircuit. Will default to the first usable IP in the IPv6 subnet.\n"
+                    },
                     "name": {
                         "type": "string",
-                        "description": "Name of the virtual circuit resource.\n"
+                        "description": "Name of the virtual circuit\n"
                     },
                     "nniVlan": {
-                        "type": "integer"
+                        "type": "integer",
+                        "description": "Nni VLAN parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/\n"
                     },
                     "nniVnid": {
-                        "type": "integer"
+                        "type": "integer",
+                        "description": "Nni VLAN ID parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/\n"
                     },
                     "peerAsn": {
                         "type": "integer",
@@ -21442,44 +21562,50 @@
                     },
                     "portId": {
                         "type": "string",
-                        "description": "UUID of the Connection Port where the VC is scoped to.\n"
+                        "description": "UUID of the Connection Port where the VC is scoped to\n"
                     },
                     "projectId": {
                         "type": "string",
-                        "description": "ID of project to which the VC belongs.\n"
+                        "description": "ID of the projct to which the virtual circuit belongs\n"
                     },
                     "speed": {
                         "type": "string",
-                        "description": "Speed of the Virtual Circuit resource.\n"
+                        "description": "Description of the Virtual Circuit speed. This is for information purposes and is computed when the connection type is shared.\n"
                     },
                     "status": {
                         "type": "string",
-                        "description": "Status of the virtal circuit.\n"
+                        "description": "Status of the virtual circuit\n"
                     },
                     "subnet": {
                         "type": "string",
-                        "description": "A subnet from one of the IP blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.\n* For a /31 block, it will only have two IP addresses, which will be used for the metal_ip and customer_ip.\n* For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.\n"
+                        "description": "A subnet from one of the IP blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.\n\t\t\t * For a /31 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.\n\t\t\t * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.\n"
+                    },
+                    "subnetIpv6": {
+                        "type": "string",
+                        "description": "A subnet from one of the IPv6 blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /126 or /127.\n\t\t\t * For a /127 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.\n\t\t\t * For a /126 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.\n"
                     },
                     "tags": {
                         "type": "array",
                         "items": {
                             "type": "string"
                         },
-                        "description": "Tags for the Virtual Circuit resource.\n"
+                        "description": "Tags attached to the virtual circuit\n"
                     },
                     "virtualCircuitId": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "ID of the virtual circuit to lookup\n"
                     },
                     "vlanId": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "UUID of the associated VLAN\n"
                     },
                     "vnid": {
                         "type": "integer",
-                        "description": ", `nni_vlan`, `nni_nvid` - VLAN parameters, see the [documentation for Equinix Fabric](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/).\n"
+                        "description": "VNID VLAN parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/\n"
                     },
                     "vrfId": {
                         "type": "string",
-                        "description": "UUID of the VLAN to associate.\n"
+                        "description": "UUID of the associated VRF\n"
                     }
                 },
                 "type": "object",
