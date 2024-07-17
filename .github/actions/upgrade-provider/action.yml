@@ -17,10 +17,9 @@ inputs:
     required: false
     default: false
   pr-assign:
-    description: |
-      A user to assign the upgrade PR to
-    required: true
-    default: ${{ github.actor }}
+    description: 'A user to assign the upgrade PR to'
+    required: false
+    default: ""
   pr-reviewers:
     description: |
       Handles of reviewers to assign the created PRs to. If empty, default reviewers are assigned.

@@ -65,6 +65,7 @@ jobs:
         target-bridge-version: ${{ inputs.target-bridge-version }}
         pr-reviewers: ${{ inputs.pr-reviewers }}
         pr-description: ${{ inputs.pr-description }}
+        pr-assign: ${{ github.actor }}
     # TODO(ocobles) Set back when pr-assign is available or we have an Equinix bot token
     # - name: Call upgrade provider action
     #   if: github.event_name == 'repository_dispatch'

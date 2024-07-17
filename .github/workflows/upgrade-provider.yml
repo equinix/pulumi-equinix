@@ -10,12 +10,21 @@ on:
 env:
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  DEFAULT_PR_ASSIGN: ocobles
 jobs:
   upgrade_provider:
     if: ${{ contains(github.event.issue.title, 'Upgrade terraform-provider-') || github.event_name == 'workflow_dispatch' }}
     name: upgrade-provider
     runs-on: ubuntu-latest
     steps:
+    - name: Set pr-assign variable
+      id: set-pr-assign
+      run: |
+        if [ "${{ github.actor }}" == "github-actions[bot]" ]; then
+          echo "PR_ASSIGN=${{ env.DEFAULT_PR_ASSIGN }}" >> $GITHUB_ENV
+        else
+          echo "PR_ASSIGN=${{ github.actor }}" >> $GITHUB_ENV
+        fi
     - name: Call upgrade provider action
       # TODO(ocobles): upgrade-provider tool tries to assign the PR to the user who created it.
       # Since we don't have an Equinix bot user, we are using the GITHUB_TOKEN. This results in an
@@ -30,3 +39,4 @@ jobs:
         kind: all
         email: noreply@github.com
         username: GitHub
+        pr-assign: ${{ env.PR_ASSIGN }}
