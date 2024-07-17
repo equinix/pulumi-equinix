@@ -192,14 +192,16 @@ test_provider:
 
 upstream:
 ifneq ("$(wildcard upstream)","")
-	scripts/upstream.sh "$@" apply
+	./upstream.sh init
 endif
 
 upstream.finalize:
-	scripts/upstream.sh "$@" end_rebase
+	echo "Deprecated: Use `./upstream.sh format_patches` instead"
+	scripts/upstream_old.sh "$@" end_rebase
 
 upstream.rebase:
-	scripts/upstream.sh "$@" start_rebase
+	echo "Deprecated: Use `./upstream.sh checkout` and `./upstream.sh rebase` instead"
+	scripts/upstream_old.sh "$@" start_rebase
 
 .pulumi/bin/pulumi: .pulumi/version
 	curl -fsSL https://get.pulumi.com | HOME=$(WORKING_DIR) sh -s -- --version $(cat .pulumi/version)
