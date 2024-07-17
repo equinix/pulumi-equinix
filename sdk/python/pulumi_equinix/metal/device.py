@@ -1055,18 +1055,28 @@ class Device(pulumi.CustomResource):
         > **NOTE:** All arguments including the `root_password` and `user_data` will be stored in the raw state as plain-text. Read more about sensitive data in state.
 
         ## Example Usage
-        ### example 1
+        ### example 5
         ```python
         import pulumi
         import pulumi_equinix as equinix
 
-        web1 = equinix.metal.Device("web1",
-            hostname="tf.coreos2",
+        pxe1 = equinix.metal.Device("pxe1",
+            hostname="tf.coreos2-pxe",
             plan=equinix.metal.Plan.C3_SMALL_X86,
             metro="sv",
-            operating_system=equinix.metal.OperatingSystem.UBUNTU20_04,
+            operating_system=equinix.metal.OperatingSystem.CUSTOM_IPXE,
             billing_cycle=equinix.metal.BillingCycle.HOURLY,
-            project_id=project_id)
+            project_id=project_id,
+            ipxe_script_url="https://rawgit.com/cloudnativelabs/pxe/master/packet/coreos-stable-metal.ipxe",
+            always_pxe=False,
+            user_data=user_data,
+            custom_data=custom_data,
+            behavior=equinix.metal.DeviceBehaviorArgs(
+                allow_changes=[
+                    "custom_data",
+                    "user_data",
+                ],
+            ))
         ```
         ### example 4
         ```python
@@ -1136,44 +1146,18 @@ class Device(pulumi.CustomResource):
         }
         \"\"\")
         ```
-        ### example 2
+        ### example 1
         ```python
         import pulumi
         import pulumi_equinix as equinix
 
-        pxe1 = equinix.metal.Device("pxe1",
-            hostname="tf.coreos2-pxe",
+        web1 = equinix.metal.Device("web1",
+            hostname="tf.coreos2",
             plan=equinix.metal.Plan.C3_SMALL_X86,
             metro="sv",
-            operating_system=equinix.metal.OperatingSystem.CUSTOM_IPXE,
+            operating_system=equinix.metal.OperatingSystem.UBUNTU20_04,
             billing_cycle=equinix.metal.BillingCycle.HOURLY,
-            project_id=project_id,
-            ipxe_script_url="https://rawgit.com/cloudnativelabs/pxe/master/packet/coreos-stable-metal.ipxe",
-            always_pxe=False,
-            user_data=example["rendered"])
-        ```
-        ### example 5
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        pxe1 = equinix.metal.Device("pxe1",
-            hostname="tf.coreos2-pxe",
-            plan=equinix.metal.Plan.C3_SMALL_X86,
-            metro="sv",
-            operating_system=equinix.metal.OperatingSystem.CUSTOM_IPXE,
-            billing_cycle=equinix.metal.BillingCycle.HOURLY,
-            project_id=project_id,
-            ipxe_script_url="https://rawgit.com/cloudnativelabs/pxe/master/packet/coreos-stable-metal.ipxe",
-            always_pxe=False,
-            user_data=user_data,
-            custom_data=custom_data,
-            behavior=equinix.metal.DeviceBehaviorArgs(
-                allow_changes=[
-                    "custom_data",
-                    "user_data",
-                ],
-            ))
+            project_id=project_id)
         ```
         ### example 3
         ```python
@@ -1191,6 +1175,22 @@ class Device(pulumi.CustomResource):
                 type="private_ipv4",
                 cidr=30,
             )])
+        ```
+        ### example 2
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        pxe1 = equinix.metal.Device("pxe1",
+            hostname="tf.coreos2-pxe",
+            plan=equinix.metal.Plan.C3_SMALL_X86,
+            metro="sv",
+            operating_system=equinix.metal.OperatingSystem.CUSTOM_IPXE,
+            billing_cycle=equinix.metal.BillingCycle.HOURLY,
+            project_id=project_id,
+            ipxe_script_url="https://rawgit.com/cloudnativelabs/pxe/master/packet/coreos-stable-metal.ipxe",
+            always_pxe=False,
+            user_data=example["rendered"])
         ```
 
         :param str resource_name: The name of the resource.
@@ -1230,18 +1230,28 @@ class Device(pulumi.CustomResource):
         > **NOTE:** All arguments including the `root_password` and `user_data` will be stored in the raw state as plain-text. Read more about sensitive data in state.
 
         ## Example Usage
-        ### example 1
+        ### example 5
         ```python
         import pulumi
         import pulumi_equinix as equinix
 
-        web1 = equinix.metal.Device("web1",
-            hostname="tf.coreos2",
+        pxe1 = equinix.metal.Device("pxe1",
+            hostname="tf.coreos2-pxe",
             plan=equinix.metal.Plan.C3_SMALL_X86,
             metro="sv",
-            operating_system=equinix.metal.OperatingSystem.UBUNTU20_04,
+            operating_system=equinix.metal.OperatingSystem.CUSTOM_IPXE,
             billing_cycle=equinix.metal.BillingCycle.HOURLY,
-            project_id=project_id)
+            project_id=project_id,
+            ipxe_script_url="https://rawgit.com/cloudnativelabs/pxe/master/packet/coreos-stable-metal.ipxe",
+            always_pxe=False,
+            user_data=user_data,
+            custom_data=custom_data,
+            behavior=equinix.metal.DeviceBehaviorArgs(
+                allow_changes=[
+                    "custom_data",
+                    "user_data",
+                ],
+            ))
         ```
         ### example 4
         ```python
@@ -1311,44 +1321,18 @@ class Device(pulumi.CustomResource):
         }
         \"\"\")
         ```
-        ### example 2
+        ### example 1
         ```python
         import pulumi
         import pulumi_equinix as equinix
 
-        pxe1 = equinix.metal.Device("pxe1",
-            hostname="tf.coreos2-pxe",
+        web1 = equinix.metal.Device("web1",
+            hostname="tf.coreos2",
             plan=equinix.metal.Plan.C3_SMALL_X86,
             metro="sv",
-            operating_system=equinix.metal.OperatingSystem.CUSTOM_IPXE,
+            operating_system=equinix.metal.OperatingSystem.UBUNTU20_04,
             billing_cycle=equinix.metal.BillingCycle.HOURLY,
-            project_id=project_id,
-            ipxe_script_url="https://rawgit.com/cloudnativelabs/pxe/master/packet/coreos-stable-metal.ipxe",
-            always_pxe=False,
-            user_data=example["rendered"])
-        ```
-        ### example 5
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        pxe1 = equinix.metal.Device("pxe1",
-            hostname="tf.coreos2-pxe",
-            plan=equinix.metal.Plan.C3_SMALL_X86,
-            metro="sv",
-            operating_system=equinix.metal.OperatingSystem.CUSTOM_IPXE,
-            billing_cycle=equinix.metal.BillingCycle.HOURLY,
-            project_id=project_id,
-            ipxe_script_url="https://rawgit.com/cloudnativelabs/pxe/master/packet/coreos-stable-metal.ipxe",
-            always_pxe=False,
-            user_data=user_data,
-            custom_data=custom_data,
-            behavior=equinix.metal.DeviceBehaviorArgs(
-                allow_changes=[
-                    "custom_data",
-                    "user_data",
-                ],
-            ))
+            project_id=project_id)
         ```
         ### example 3
         ```python
@@ -1366,6 +1350,22 @@ class Device(pulumi.CustomResource):
                 type="private_ipv4",
                 cidr=30,
             )])
+        ```
+        ### example 2
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        pxe1 = equinix.metal.Device("pxe1",
+            hostname="tf.coreos2-pxe",
+            plan=equinix.metal.Plan.C3_SMALL_X86,
+            metro="sv",
+            operating_system=equinix.metal.OperatingSystem.CUSTOM_IPXE,
+            billing_cycle=equinix.metal.BillingCycle.HOURLY,
+            project_id=project_id,
+            ipxe_script_url="https://rawgit.com/cloudnativelabs/pxe/master/packet/coreos-stable-metal.ipxe",
+            always_pxe=False,
+            user_data=example["rendered"])
         ```
 
         :param str resource_name: The name of the resource.

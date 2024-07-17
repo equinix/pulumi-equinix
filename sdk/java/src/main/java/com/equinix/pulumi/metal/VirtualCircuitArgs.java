@@ -19,18 +19,18 @@ public final class VirtualCircuitArgs extends com.pulumi.resources.ResourceArgs 
     public static final VirtualCircuitArgs Empty = new VirtualCircuitArgs();
 
     /**
-     * UUID of Connection where the VC is scoped to.
+     * UUID of Connection where the VC is scoped to.  Only used for dedicated connections
      * 
      */
-    @Import(name="connectionId", required=true)
-    private Output<String> connectionId;
+    @Import(name="connectionId")
+    private @Nullable Output<String> connectionId;
 
     /**
-     * @return UUID of Connection where the VC is scoped to.
+     * @return UUID of Connection where the VC is scoped to.  Only used for dedicated connections
      * 
      */
-    public Output<String> connectionId() {
-        return this.connectionId;
+    public Optional<Output<String>> connectionId() {
+        return Optional.ofNullable(this.connectionId);
     }
 
     /**
@@ -49,14 +49,29 @@ public final class VirtualCircuitArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Description for the Virtual Circuit resource.
+     * The Customer IPv6 address which the CSR switch will peer with. Will default to the other usable IP in the IPv6 subnet.
+     * 
+     */
+    @Import(name="customerIpv6")
+    private @Nullable Output<String> customerIpv6;
+
+    /**
+     * @return The Customer IPv6 address which the CSR switch will peer with. Will default to the other usable IP in the IPv6 subnet.
+     * 
+     */
+    public Optional<Output<String>> customerIpv6() {
+        return Optional.ofNullable(this.customerIpv6);
+    }
+
+    /**
+     * Description of the Virtual Circuit resource
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description for the Virtual Circuit resource.
+     * @return Description of the Virtual Circuit resource
      * 
      */
     public Optional<Output<String>> description() {
@@ -94,14 +109,29 @@ public final class VirtualCircuitArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Name of the Virtual Circuit resource.
+     * The Metal IPv6 address for the SVI (Switch Virtual Interface) of the VirtualCircuit. Will default to the first usable IP in the IPv6 subnet.
+     * 
+     */
+    @Import(name="metalIpv6")
+    private @Nullable Output<String> metalIpv6;
+
+    /**
+     * @return The Metal IPv6 address for the SVI (Switch Virtual Interface) of the VirtualCircuit. Will default to the first usable IP in the IPv6 subnet.
+     * 
+     */
+    public Optional<Output<String>> metalIpv6() {
+        return Optional.ofNullable(this.metalIpv6);
+    }
+
+    /**
+     * Name of the Virtual Circuit resource
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the Virtual Circuit resource.
+     * @return Name of the Virtual Circuit resource
      * 
      */
     public Optional<Output<String>> name() {
@@ -109,14 +139,14 @@ public final class VirtualCircuitArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Equinix Metal network-to-network VLAN ID.
+     * Equinix Metal network-to-network VLAN ID (optional when the connection has mode=tunnel)
      * 
      */
     @Import(name="nniVlan")
     private @Nullable Output<Integer> nniVlan;
 
     /**
-     * @return Equinix Metal network-to-network VLAN ID.
+     * @return Equinix Metal network-to-network VLAN ID (optional when the connection has mode=tunnel)
      * 
      */
     public Optional<Output<Integer>> nniVlan() {
@@ -139,14 +169,14 @@ public final class VirtualCircuitArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * UUID of the Connection Port where the VC is scoped to.
+     * UUID of the Connection Port where the VC is scoped to
      * 
      */
     @Import(name="portId", required=true)
     private Output<String> portId;
 
     /**
-     * @return UUID of the Connection Port where the VC is scoped to.
+     * @return UUID of the Connection Port where the VC is scoped to
      * 
      */
     public Output<String> portId() {
@@ -154,14 +184,14 @@ public final class VirtualCircuitArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * UUID of the Project where the VC is scoped to.
+     * UUID of the Project where the VC is scoped to
      * 
      */
     @Import(name="projectId", required=true)
     private Output<String> projectId;
 
     /**
-     * @return UUID of the Project where the VC is scoped to.
+     * @return UUID of the Project where the VC is scoped to
      * 
      */
     public Output<String> projectId() {
@@ -169,14 +199,14 @@ public final class VirtualCircuitArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Speed of the Virtual Circuit resource.
+     * Description of the Virtual Circuit speed. This is for information purposes and is computed when the connection type is shared.
      * 
      */
     @Import(name="speed")
     private @Nullable Output<String> speed;
 
     /**
-     * @return Speed of the Virtual Circuit resource.
+     * @return Description of the Virtual Circuit speed. This is for information purposes and is computed when the connection type is shared.
      * 
      */
     public Optional<Output<String>> speed() {
@@ -185,8 +215,8 @@ public final class VirtualCircuitArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * A subnet from one of the IP blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.
-     * * For a /31 block, it will only have two IP addresses, which will be used for the metal_ip and customer_ip.
-     * * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
+     * 			 * For a /31 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.
+     * 			 * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
      * 
      */
     @Import(name="subnet")
@@ -194,8 +224,8 @@ public final class VirtualCircuitArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return A subnet from one of the IP blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.
-     * * For a /31 block, it will only have two IP addresses, which will be used for the metal_ip and customer_ip.
-     * * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
+     * 			 * For a /31 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.
+     * 			 * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
      * 
      */
     public Optional<Output<String>> subnet() {
@@ -203,14 +233,33 @@ public final class VirtualCircuitArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Tags for the Virtual Circuit resource.
+     * A subnet from one of the IPv6 blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /126 or /127.
+     * 			 * For a /127 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.
+     * 			 * For a /126 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
+     * 
+     */
+    @Import(name="subnetIpv6")
+    private @Nullable Output<String> subnetIpv6;
+
+    /**
+     * @return A subnet from one of the IPv6 blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /126 or /127.
+     * 			 * For a /127 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.
+     * 			 * For a /126 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
+     * 
+     */
+    public Optional<Output<String>> subnetIpv6() {
+        return Optional.ofNullable(this.subnetIpv6);
+    }
+
+    /**
+     * Tags attached to the virtual circuit
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return Tags for the Virtual Circuit resource.
+     * @return Tags attached to the virtual circuit
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -218,14 +267,29 @@ public final class VirtualCircuitArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * UUID of the VLAN to associate.
+     * UUID of an existing VC to configure. Used in the case of shared interconnections where the VC has already been created.
+     * 
+     */
+    @Import(name="virtualCircuitId")
+    private @Nullable Output<String> virtualCircuitId;
+
+    /**
+     * @return UUID of an existing VC to configure. Used in the case of shared interconnections where the VC has already been created.
+     * 
+     */
+    public Optional<Output<String>> virtualCircuitId() {
+        return Optional.ofNullable(this.virtualCircuitId);
+    }
+
+    /**
+     * UUID of the VLAN to associate
      * 
      */
     @Import(name="vlanId")
     private @Nullable Output<String> vlanId;
 
     /**
-     * @return UUID of the VLAN to associate.
+     * @return UUID of the VLAN to associate
      * 
      */
     public Optional<Output<String>> vlanId() {
@@ -233,14 +297,14 @@ public final class VirtualCircuitArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * UUID of the VRF to associate.
+     * UUID of the VRF to associate
      * 
      */
     @Import(name="vrfId")
     private @Nullable Output<String> vrfId;
 
     /**
-     * @return UUID of the VRF to associate.
+     * @return UUID of the VRF to associate
      * 
      */
     public Optional<Output<String>> vrfId() {
@@ -252,9 +316,11 @@ public final class VirtualCircuitArgs extends com.pulumi.resources.ResourceArgs 
     private VirtualCircuitArgs(VirtualCircuitArgs $) {
         this.connectionId = $.connectionId;
         this.customerIp = $.customerIp;
+        this.customerIpv6 = $.customerIpv6;
         this.description = $.description;
         this.md5 = $.md5;
         this.metalIp = $.metalIp;
+        this.metalIpv6 = $.metalIpv6;
         this.name = $.name;
         this.nniVlan = $.nniVlan;
         this.peerAsn = $.peerAsn;
@@ -262,7 +328,9 @@ public final class VirtualCircuitArgs extends com.pulumi.resources.ResourceArgs 
         this.projectId = $.projectId;
         this.speed = $.speed;
         this.subnet = $.subnet;
+        this.subnetIpv6 = $.subnetIpv6;
         this.tags = $.tags;
+        this.virtualCircuitId = $.virtualCircuitId;
         this.vlanId = $.vlanId;
         this.vrfId = $.vrfId;
     }
@@ -286,18 +354,18 @@ public final class VirtualCircuitArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param connectionId UUID of Connection where the VC is scoped to.
+         * @param connectionId UUID of Connection where the VC is scoped to.  Only used for dedicated connections
          * 
          * @return builder
          * 
          */
-        public Builder connectionId(Output<String> connectionId) {
+        public Builder connectionId(@Nullable Output<String> connectionId) {
             $.connectionId = connectionId;
             return this;
         }
 
         /**
-         * @param connectionId UUID of Connection where the VC is scoped to.
+         * @param connectionId UUID of Connection where the VC is scoped to.  Only used for dedicated connections
          * 
          * @return builder
          * 
@@ -328,7 +396,28 @@ public final class VirtualCircuitArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param description Description for the Virtual Circuit resource.
+         * @param customerIpv6 The Customer IPv6 address which the CSR switch will peer with. Will default to the other usable IP in the IPv6 subnet.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customerIpv6(@Nullable Output<String> customerIpv6) {
+            $.customerIpv6 = customerIpv6;
+            return this;
+        }
+
+        /**
+         * @param customerIpv6 The Customer IPv6 address which the CSR switch will peer with. Will default to the other usable IP in the IPv6 subnet.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customerIpv6(String customerIpv6) {
+            return customerIpv6(Output.of(customerIpv6));
+        }
+
+        /**
+         * @param description Description of the Virtual Circuit resource
          * 
          * @return builder
          * 
@@ -339,7 +428,7 @@ public final class VirtualCircuitArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param description Description for the Virtual Circuit resource.
+         * @param description Description of the Virtual Circuit resource
          * 
          * @return builder
          * 
@@ -391,7 +480,28 @@ public final class VirtualCircuitArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name Name of the Virtual Circuit resource.
+         * @param metalIpv6 The Metal IPv6 address for the SVI (Switch Virtual Interface) of the VirtualCircuit. Will default to the first usable IP in the IPv6 subnet.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metalIpv6(@Nullable Output<String> metalIpv6) {
+            $.metalIpv6 = metalIpv6;
+            return this;
+        }
+
+        /**
+         * @param metalIpv6 The Metal IPv6 address for the SVI (Switch Virtual Interface) of the VirtualCircuit. Will default to the first usable IP in the IPv6 subnet.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metalIpv6(String metalIpv6) {
+            return metalIpv6(Output.of(metalIpv6));
+        }
+
+        /**
+         * @param name Name of the Virtual Circuit resource
          * 
          * @return builder
          * 
@@ -402,7 +512,7 @@ public final class VirtualCircuitArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name Name of the Virtual Circuit resource.
+         * @param name Name of the Virtual Circuit resource
          * 
          * @return builder
          * 
@@ -412,7 +522,7 @@ public final class VirtualCircuitArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param nniVlan Equinix Metal network-to-network VLAN ID.
+         * @param nniVlan Equinix Metal network-to-network VLAN ID (optional when the connection has mode=tunnel)
          * 
          * @return builder
          * 
@@ -423,7 +533,7 @@ public final class VirtualCircuitArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param nniVlan Equinix Metal network-to-network VLAN ID.
+         * @param nniVlan Equinix Metal network-to-network VLAN ID (optional when the connection has mode=tunnel)
          * 
          * @return builder
          * 
@@ -454,7 +564,7 @@ public final class VirtualCircuitArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param portId UUID of the Connection Port where the VC is scoped to.
+         * @param portId UUID of the Connection Port where the VC is scoped to
          * 
          * @return builder
          * 
@@ -465,7 +575,7 @@ public final class VirtualCircuitArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param portId UUID of the Connection Port where the VC is scoped to.
+         * @param portId UUID of the Connection Port where the VC is scoped to
          * 
          * @return builder
          * 
@@ -475,7 +585,7 @@ public final class VirtualCircuitArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param projectId UUID of the Project where the VC is scoped to.
+         * @param projectId UUID of the Project where the VC is scoped to
          * 
          * @return builder
          * 
@@ -486,7 +596,7 @@ public final class VirtualCircuitArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param projectId UUID of the Project where the VC is scoped to.
+         * @param projectId UUID of the Project where the VC is scoped to
          * 
          * @return builder
          * 
@@ -496,7 +606,7 @@ public final class VirtualCircuitArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param speed Speed of the Virtual Circuit resource.
+         * @param speed Description of the Virtual Circuit speed. This is for information purposes and is computed when the connection type is shared.
          * 
          * @return builder
          * 
@@ -507,7 +617,7 @@ public final class VirtualCircuitArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param speed Speed of the Virtual Circuit resource.
+         * @param speed Description of the Virtual Circuit speed. This is for information purposes and is computed when the connection type is shared.
          * 
          * @return builder
          * 
@@ -518,8 +628,8 @@ public final class VirtualCircuitArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param subnet A subnet from one of the IP blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.
-         * * For a /31 block, it will only have two IP addresses, which will be used for the metal_ip and customer_ip.
-         * * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
+         * 			 * For a /31 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.
+         * 			 * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
          * 
          * @return builder
          * 
@@ -531,8 +641,8 @@ public final class VirtualCircuitArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param subnet A subnet from one of the IP blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.
-         * * For a /31 block, it will only have two IP addresses, which will be used for the metal_ip and customer_ip.
-         * * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
+         * 			 * For a /31 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.
+         * 			 * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
          * 
          * @return builder
          * 
@@ -542,7 +652,32 @@ public final class VirtualCircuitArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param tags Tags for the Virtual Circuit resource.
+         * @param subnetIpv6 A subnet from one of the IPv6 blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /126 or /127.
+         * 			 * For a /127 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.
+         * 			 * For a /126 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subnetIpv6(@Nullable Output<String> subnetIpv6) {
+            $.subnetIpv6 = subnetIpv6;
+            return this;
+        }
+
+        /**
+         * @param subnetIpv6 A subnet from one of the IPv6 blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /126 or /127.
+         * 			 * For a /127 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.
+         * 			 * For a /126 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subnetIpv6(String subnetIpv6) {
+            return subnetIpv6(Output.of(subnetIpv6));
+        }
+
+        /**
+         * @param tags Tags attached to the virtual circuit
          * 
          * @return builder
          * 
@@ -553,7 +688,7 @@ public final class VirtualCircuitArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param tags Tags for the Virtual Circuit resource.
+         * @param tags Tags attached to the virtual circuit
          * 
          * @return builder
          * 
@@ -563,7 +698,7 @@ public final class VirtualCircuitArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param tags Tags for the Virtual Circuit resource.
+         * @param tags Tags attached to the virtual circuit
          * 
          * @return builder
          * 
@@ -573,7 +708,28 @@ public final class VirtualCircuitArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param vlanId UUID of the VLAN to associate.
+         * @param virtualCircuitId UUID of an existing VC to configure. Used in the case of shared interconnections where the VC has already been created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder virtualCircuitId(@Nullable Output<String> virtualCircuitId) {
+            $.virtualCircuitId = virtualCircuitId;
+            return this;
+        }
+
+        /**
+         * @param virtualCircuitId UUID of an existing VC to configure. Used in the case of shared interconnections where the VC has already been created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder virtualCircuitId(String virtualCircuitId) {
+            return virtualCircuitId(Output.of(virtualCircuitId));
+        }
+
+        /**
+         * @param vlanId UUID of the VLAN to associate
          * 
          * @return builder
          * 
@@ -584,7 +740,7 @@ public final class VirtualCircuitArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param vlanId UUID of the VLAN to associate.
+         * @param vlanId UUID of the VLAN to associate
          * 
          * @return builder
          * 
@@ -594,7 +750,7 @@ public final class VirtualCircuitArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param vrfId UUID of the VRF to associate.
+         * @param vrfId UUID of the VRF to associate
          * 
          * @return builder
          * 
@@ -605,7 +761,7 @@ public final class VirtualCircuitArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param vrfId UUID of the VRF to associate.
+         * @param vrfId UUID of the VRF to associate
          * 
          * @return builder
          * 
@@ -615,9 +771,6 @@ public final class VirtualCircuitArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public VirtualCircuitArgs build() {
-            if ($.connectionId == null) {
-                throw new MissingRequiredPropertyException("VirtualCircuitArgs", "connectionId");
-            }
             if ($.portId == null) {
                 throw new MissingRequiredPropertyException("VirtualCircuitArgs", "portId");
             }

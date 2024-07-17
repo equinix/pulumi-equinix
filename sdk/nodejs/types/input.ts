@@ -2488,6 +2488,14 @@ export namespace networkedge {
          */
         licenseKey?: pulumi.Input<string>;
         /**
+         * Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
+         */
+        panoramaAuthKey?: pulumi.Input<string>;
+        /**
+         * Panorama Server IP Address. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
+         */
+        panoramaIpAddress?: pulumi.Input<string>;
+        /**
          * Private address. This field is relevant only for the BlueCat DNS and DHCP Server
          */
         privateAddress?: pulumi.Input<string>;
@@ -2557,6 +2565,14 @@ export namespace networkedge {
          * License key. This field is relevant only for the BlueCat DNS and DHCP Server
          */
         licenseKey?: pulumi.Input<string>;
+        /**
+         * Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
+         */
+        panoramaAuthKey?: pulumi.Input<string>;
+        /**
+         * Panorama Server IP Address. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
+         */
+        panoramaIpAddress?: pulumi.Input<string>;
         /**
          * Private address. This field is relevant only for the BlueCat DNS and DHCP Server
          */
@@ -2790,7 +2806,7 @@ export namespace networkedge {
          */
         uuid?: pulumi.Input<string>;
         /**
-         * Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`.
+         * Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`, `panoramaAuthKey`, `panoramaIpAddress`.
          */
         vendorConfiguration?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**

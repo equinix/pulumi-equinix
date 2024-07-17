@@ -74,21 +74,21 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			example, err := metal.GetPlans(ctx, &metal.GetPlansArgs{
-//				Filters: pulumi.Array{
-//					metal.GetPlansFilter{
+//				Filters: []metal.GetPlansFilter{
+//					{
 //						Attribute: "class",
 //						Values: []string{
 //							"large",
 //						},
 //						MatchBy: pulumi.StringRef("substring"),
 //					},
-//					metal.GetPlansFilter{
+//					{
 //						Attribute: "deployment_types",
 //						Values: []string{
 //							"spot_market",
 //						},
 //					},
-//					metal.GetPlansFilter{
+//					{
 //						Attribute: "available_in_metros",
 //						Values: []string{
 //							"da",

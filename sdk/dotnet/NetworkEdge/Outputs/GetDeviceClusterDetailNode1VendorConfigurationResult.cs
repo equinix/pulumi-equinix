@@ -42,6 +42,14 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
         /// </summary>
         public readonly string LicenseKey;
         /// <summary>
+        /// Panorama Server Auth Key. This field is relevant only for Palo Alto Networks Firewall devices
+        /// </summary>
+        public readonly string PanoramaAuthKey;
+        /// <summary>
+        /// Panorama Server IP Address. This field is relevant only for Palo Alto Networks Firewall devices
+        /// </summary>
+        public readonly string PanoramaIpAddress;
+        /// <summary>
         /// Private address. This field is relevant only for the BlueCat DNS and DHCP Server
         /// </summary>
         public readonly string PrivateAddress;
@@ -74,6 +82,10 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
 
             string licenseKey,
 
+            string panoramaAuthKey,
+
+            string panoramaIpAddress,
+
             string privateAddress,
 
             string privateCidrMask,
@@ -89,6 +101,8 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
             Hostname = hostname;
             LicenseId = licenseId;
             LicenseKey = licenseKey;
+            PanoramaAuthKey = panoramaAuthKey;
+            PanoramaIpAddress = panoramaIpAddress;
             PrivateAddress = privateAddress;
             PrivateCidrMask = privateCidrMask;
             PrivateGateway = privateGateway;

@@ -13,27 +13,6 @@ import * as utilities from "../utilities";
  * > Equinix Metal connection with with Service Token A-side / Z-side (service_token_type) is not generally available and may not be enabled yet for your organization.
  *
  * ## Example Usage
- * ### example metal billed token
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@equinix-labs/pulumi-equinix";
- *
- * const config = new pulumi.Config();
- * const projectId = config.require("projectId");
- * const metro = config.get("metro") || "SV";
- * const speedInMbps = config.getNumber("speedInMbps") || 1000;
- * const connection = new equinix.metal.Interconnection("connection", {
- *     name: "metal-to-cloudprovider",
- *     projectId: projectId,
- *     type: "shared",
- *     redundancy: "primary",
- *     metro: metro,
- *     speed: `${speedInMbps}Mbps`,
- *     serviceTokenType: "a_side",
- * });
- * export const connectionStatus = connection.status;
- * export const connectionTokens = connection.serviceTokens;
- * ```
  * ### example fabric billed token
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -51,6 +30,27 @@ import * as utilities from "../utilities";
  *     metro: metro,
  *     speed: `${speedInMbps}Mbps`,
  *     serviceTokenType: "z_side",
+ * });
+ * export const connectionStatus = connection.status;
+ * export const connectionTokens = connection.serviceTokens;
+ * ```
+ * ### example metal billed token
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const config = new pulumi.Config();
+ * const projectId = config.require("projectId");
+ * const metro = config.get("metro") || "SV";
+ * const speedInMbps = config.getNumber("speedInMbps") || 1000;
+ * const connection = new equinix.metal.Interconnection("connection", {
+ *     name: "metal-to-cloudprovider",
+ *     projectId: projectId,
+ *     type: "shared",
+ *     redundancy: "primary",
+ *     metro: metro,
+ *     speed: `${speedInMbps}Mbps`,
+ *     serviceTokenType: "a_side",
  * });
  * export const connectionStatus = connection.status;
  * export const connectionTokens = connection.serviceTokens;
