@@ -121,6 +121,36 @@ public final class DeviceClusterDetailsNode1VendorConfigurationArgs extends com.
     }
 
     /**
+     * Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
+     * 
+     */
+    @Import(name="panoramaAuthKey")
+    private @Nullable Output<String> panoramaAuthKey;
+
+    /**
+     * @return Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
+     * 
+     */
+    public Optional<Output<String>> panoramaAuthKey() {
+        return Optional.ofNullable(this.panoramaAuthKey);
+    }
+
+    /**
+     * Panorama Server IP Address. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
+     * 
+     */
+    @Import(name="panoramaIpAddress")
+    private @Nullable Output<String> panoramaIpAddress;
+
+    /**
+     * @return Panorama Server IP Address. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
+     * 
+     */
+    public Optional<Output<String>> panoramaIpAddress() {
+        return Optional.ofNullable(this.panoramaIpAddress);
+    }
+
+    /**
      * Private address. This field is relevant only for the BlueCat DNS and DHCP Server
      * 
      */
@@ -190,6 +220,8 @@ public final class DeviceClusterDetailsNode1VendorConfigurationArgs extends com.
         this.hostname = $.hostname;
         this.licenseId = $.licenseId;
         this.licenseKey = $.licenseKey;
+        this.panoramaAuthKey = $.panoramaAuthKey;
+        this.panoramaIpAddress = $.panoramaIpAddress;
         this.privateAddress = $.privateAddress;
         this.privateCidrMask = $.privateCidrMask;
         this.privateGateway = $.privateGateway;
@@ -359,6 +391,48 @@ public final class DeviceClusterDetailsNode1VendorConfigurationArgs extends com.
          */
         public Builder licenseKey(String licenseKey) {
             return licenseKey(Output.of(licenseKey));
+        }
+
+        /**
+         * @param panoramaAuthKey Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder panoramaAuthKey(@Nullable Output<String> panoramaAuthKey) {
+            $.panoramaAuthKey = panoramaAuthKey;
+            return this;
+        }
+
+        /**
+         * @param panoramaAuthKey Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder panoramaAuthKey(String panoramaAuthKey) {
+            return panoramaAuthKey(Output.of(panoramaAuthKey));
+        }
+
+        /**
+         * @param panoramaIpAddress Panorama Server IP Address. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder panoramaIpAddress(@Nullable Output<String> panoramaIpAddress) {
+            $.panoramaIpAddress = panoramaIpAddress;
+            return this;
+        }
+
+        /**
+         * @param panoramaIpAddress Panorama Server IP Address. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder panoramaIpAddress(String panoramaIpAddress) {
+            return panoramaIpAddress(Output.of(panoramaIpAddress));
         }
 
         /**

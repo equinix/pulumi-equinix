@@ -412,6 +412,10 @@ class DeviceClusterDetailsNode0VendorConfiguration(dict):
             suggest = "license_id"
         elif key == "licenseKey":
             suggest = "license_key"
+        elif key == "panoramaAuthKey":
+            suggest = "panorama_auth_key"
+        elif key == "panoramaIpAddress":
+            suggest = "panorama_ip_address"
         elif key == "privateAddress":
             suggest = "private_address"
         elif key == "privateCidrMask":
@@ -440,6 +444,8 @@ class DeviceClusterDetailsNode0VendorConfiguration(dict):
                  hostname: Optional[str] = None,
                  license_id: Optional[str] = None,
                  license_key: Optional[str] = None,
+                 panorama_auth_key: Optional[str] = None,
+                 panorama_ip_address: Optional[str] = None,
                  private_address: Optional[str] = None,
                  private_cidr_mask: Optional[str] = None,
                  private_gateway: Optional[str] = None,
@@ -452,6 +458,8 @@ class DeviceClusterDetailsNode0VendorConfiguration(dict):
         :param str hostname: Hostname. This is necessary for Palo Alto, Juniper, and Fortinet clusters.
         :param str license_id: License id. This field is relevant only for the BlueCat DNS and DHCP Server
         :param str license_key: License key. This field is relevant only for the BlueCat DNS and DHCP Server
+        :param str panorama_auth_key: Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
+        :param str panorama_ip_address: Panorama Server IP Address. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
         :param str private_address: Private address. This field is relevant only for the BlueCat DNS and DHCP Server
         :param str private_cidr_mask: Private CIDR Mask. This field is relevant only for the BlueCat DNS and DHCP Server
         :param str private_gateway: Private gateway. This field is relevant only for the BlueCat DNS and DHCP Server
@@ -471,6 +479,10 @@ class DeviceClusterDetailsNode0VendorConfiguration(dict):
             pulumi.set(__self__, "license_id", license_id)
         if license_key is not None:
             pulumi.set(__self__, "license_key", license_key)
+        if panorama_auth_key is not None:
+            pulumi.set(__self__, "panorama_auth_key", panorama_auth_key)
+        if panorama_ip_address is not None:
+            pulumi.set(__self__, "panorama_ip_address", panorama_ip_address)
         if private_address is not None:
             pulumi.set(__self__, "private_address", private_address)
         if private_cidr_mask is not None:
@@ -535,6 +547,22 @@ class DeviceClusterDetailsNode0VendorConfiguration(dict):
         License key. This field is relevant only for the BlueCat DNS and DHCP Server
         """
         return pulumi.get(self, "license_key")
+
+    @property
+    @pulumi.getter(name="panoramaAuthKey")
+    def panorama_auth_key(self) -> Optional[str]:
+        """
+        Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
+        """
+        return pulumi.get(self, "panorama_auth_key")
+
+    @property
+    @pulumi.getter(name="panoramaIpAddress")
+    def panorama_ip_address(self) -> Optional[str]:
+        """
+        Panorama Server IP Address. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
+        """
+        return pulumi.get(self, "panorama_ip_address")
 
     @property
     @pulumi.getter(name="privateAddress")
@@ -672,6 +700,10 @@ class DeviceClusterDetailsNode1VendorConfiguration(dict):
             suggest = "license_id"
         elif key == "licenseKey":
             suggest = "license_key"
+        elif key == "panoramaAuthKey":
+            suggest = "panorama_auth_key"
+        elif key == "panoramaIpAddress":
+            suggest = "panorama_ip_address"
         elif key == "privateAddress":
             suggest = "private_address"
         elif key == "privateCidrMask":
@@ -700,6 +732,8 @@ class DeviceClusterDetailsNode1VendorConfiguration(dict):
                  hostname: Optional[str] = None,
                  license_id: Optional[str] = None,
                  license_key: Optional[str] = None,
+                 panorama_auth_key: Optional[str] = None,
+                 panorama_ip_address: Optional[str] = None,
                  private_address: Optional[str] = None,
                  private_cidr_mask: Optional[str] = None,
                  private_gateway: Optional[str] = None,
@@ -712,6 +746,8 @@ class DeviceClusterDetailsNode1VendorConfiguration(dict):
         :param str hostname: Hostname. This is necessary for Palo Alto, Juniper, and Fortinet clusters.
         :param str license_id: License id. This field is relevant only for the BlueCat DNS and DHCP Server
         :param str license_key: License key. This field is relevant only for the BlueCat DNS and DHCP Server
+        :param str panorama_auth_key: Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
+        :param str panorama_ip_address: Panorama Server IP Address. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
         :param str private_address: Private address. This field is relevant only for the BlueCat DNS and DHCP Server
         :param str private_cidr_mask: Private CIDR Mask. This field is relevant only for the BlueCat DNS and DHCP Server
         :param str private_gateway: Private gateway. This field is relevant only for the BlueCat DNS and DHCP Server
@@ -731,6 +767,10 @@ class DeviceClusterDetailsNode1VendorConfiguration(dict):
             pulumi.set(__self__, "license_id", license_id)
         if license_key is not None:
             pulumi.set(__self__, "license_key", license_key)
+        if panorama_auth_key is not None:
+            pulumi.set(__self__, "panorama_auth_key", panorama_auth_key)
+        if panorama_ip_address is not None:
+            pulumi.set(__self__, "panorama_ip_address", panorama_ip_address)
         if private_address is not None:
             pulumi.set(__self__, "private_address", private_address)
         if private_cidr_mask is not None:
@@ -795,6 +835,22 @@ class DeviceClusterDetailsNode1VendorConfiguration(dict):
         License key. This field is relevant only for the BlueCat DNS and DHCP Server
         """
         return pulumi.get(self, "license_key")
+
+    @property
+    @pulumi.getter(name="panoramaAuthKey")
+    def panorama_auth_key(self) -> Optional[str]:
+        """
+        Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
+        """
+        return pulumi.get(self, "panorama_auth_key")
+
+    @property
+    @pulumi.getter(name="panoramaIpAddress")
+    def panorama_ip_address(self) -> Optional[str]:
+        """
+        Panorama Server IP Address. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
+        """
+        return pulumi.get(self, "panorama_ip_address")
 
     @property
     @pulumi.getter(name="privateAddress")
@@ -1338,7 +1394,7 @@ class DeviceSecondaryDevice(dict):
         :param 'DeviceSecondaryDeviceSshKeyArgs' ssh_key: Definition of SSH key that will be provisioned on a device
         :param str status: interface status. One of `AVAILABLE`, `RESERVED`, `ASSIGNED`.
         :param str uuid: Device unique identifier.
-        :param Mapping[str, str] vendor_configuration: Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`.
+        :param Mapping[str, str] vendor_configuration: Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`, `panoramaAuthKey`, `panoramaIpAddress`.
         :param str wan_interface_id: device interface id picked for WAN
         :param str zone_code: Device location zone code.
         """
@@ -1600,7 +1656,7 @@ class DeviceSecondaryDevice(dict):
     @pulumi.getter(name="vendorConfiguration")
     def vendor_configuration(self) -> Optional[Mapping[str, str]]:
         """
-        Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`.
+        Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`, `panoramaAuthKey`, `panoramaIpAddress`.
         """
         return pulumi.get(self, "vendor_configuration")
 
@@ -1973,6 +2029,8 @@ class GetDeviceClusterDetailNode0VendorConfigurationResult(dict):
                  hostname: str,
                  license_id: str,
                  license_key: str,
+                 panorama_auth_key: str,
+                 panorama_ip_address: str,
                  private_address: str,
                  private_cidr_mask: str,
                  private_gateway: str,
@@ -1985,6 +2043,8 @@ class GetDeviceClusterDetailNode0VendorConfigurationResult(dict):
         :param str hostname: Hostname. This is necessary for Palo Alto, Juniper, and Fortinet clusters
         :param str license_id: License id. This field is relevant only for the BlueCat DNS and DHCP Server
         :param str license_key: License key. This field is relevant only for the BlueCat DNS and DHCP Server
+        :param str panorama_auth_key: Panorama Server Auth Key. This field is relevant only for Palo Alto Networks Firewall devices
+        :param str panorama_ip_address: Panorama Server IP Address. This field is relevant only for Palo Alto Networks Firewall devices
         :param str private_address: Private address. This field is relevant only for the BlueCat DNS and DHCP Server
         :param str private_cidr_mask: Private CIDR Mask. This field is relevant only for the BlueCat DNS and DHCP Server
         :param str private_gateway: Private gateway. This field is relevant only for the BlueCat DNS and DHCP Server
@@ -1997,6 +2057,8 @@ class GetDeviceClusterDetailNode0VendorConfigurationResult(dict):
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "license_id", license_id)
         pulumi.set(__self__, "license_key", license_key)
+        pulumi.set(__self__, "panorama_auth_key", panorama_auth_key)
+        pulumi.set(__self__, "panorama_ip_address", panorama_ip_address)
         pulumi.set(__self__, "private_address", private_address)
         pulumi.set(__self__, "private_cidr_mask", private_cidr_mask)
         pulumi.set(__self__, "private_gateway", private_gateway)
@@ -2057,6 +2119,22 @@ class GetDeviceClusterDetailNode0VendorConfigurationResult(dict):
         License key. This field is relevant only for the BlueCat DNS and DHCP Server
         """
         return pulumi.get(self, "license_key")
+
+    @property
+    @pulumi.getter(name="panoramaAuthKey")
+    def panorama_auth_key(self) -> str:
+        """
+        Panorama Server Auth Key. This field is relevant only for Palo Alto Networks Firewall devices
+        """
+        return pulumi.get(self, "panorama_auth_key")
+
+    @property
+    @pulumi.getter(name="panoramaIpAddress")
+    def panorama_ip_address(self) -> str:
+        """
+        Panorama Server IP Address. This field is relevant only for Palo Alto Networks Firewall devices
+        """
+        return pulumi.get(self, "panorama_ip_address")
 
     @property
     @pulumi.getter(name="privateAddress")
@@ -2163,6 +2241,8 @@ class GetDeviceClusterDetailNode1VendorConfigurationResult(dict):
                  hostname: str,
                  license_id: str,
                  license_key: str,
+                 panorama_auth_key: str,
+                 panorama_ip_address: str,
                  private_address: str,
                  private_cidr_mask: str,
                  private_gateway: str,
@@ -2175,6 +2255,8 @@ class GetDeviceClusterDetailNode1VendorConfigurationResult(dict):
         :param str hostname: Hostname. This is necessary for Palo Alto, Juniper, and Fortinet clusters
         :param str license_id: License id. This field is relevant only for the BlueCat DNS and DHCP Server
         :param str license_key: License key. This field is relevant only for the BlueCat DNS and DHCP Server
+        :param str panorama_auth_key: Panorama Server Auth Key. This field is relevant only for Palo Alto Networks Firewall devices
+        :param str panorama_ip_address: Panorama Server IP Address. This field is relevant only for Palo Alto Networks Firewall devices
         :param str private_address: Private address. This field is relevant only for the BlueCat DNS and DHCP Server
         :param str private_cidr_mask: Private CIDR Mask. This field is relevant only for the BlueCat DNS and DHCP Server
         :param str private_gateway: Private gateway. This field is relevant only for the BlueCat DNS and DHCP Server
@@ -2187,6 +2269,8 @@ class GetDeviceClusterDetailNode1VendorConfigurationResult(dict):
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "license_id", license_id)
         pulumi.set(__self__, "license_key", license_key)
+        pulumi.set(__self__, "panorama_auth_key", panorama_auth_key)
+        pulumi.set(__self__, "panorama_ip_address", panorama_ip_address)
         pulumi.set(__self__, "private_address", private_address)
         pulumi.set(__self__, "private_cidr_mask", private_cidr_mask)
         pulumi.set(__self__, "private_gateway", private_gateway)
@@ -2247,6 +2331,22 @@ class GetDeviceClusterDetailNode1VendorConfigurationResult(dict):
         License key. This field is relevant only for the BlueCat DNS and DHCP Server
         """
         return pulumi.get(self, "license_key")
+
+    @property
+    @pulumi.getter(name="panoramaAuthKey")
+    def panorama_auth_key(self) -> str:
+        """
+        Panorama Server Auth Key. This field is relevant only for Palo Alto Networks Firewall devices
+        """
+        return pulumi.get(self, "panorama_auth_key")
+
+    @property
+    @pulumi.getter(name="panoramaIpAddress")
+    def panorama_ip_address(self) -> str:
+        """
+        Panorama Server IP Address. This field is relevant only for Palo Alto Networks Firewall devices
+        """
+        return pulumi.get(self, "panorama_ip_address")
 
     @property
     @pulumi.getter(name="privateAddress")

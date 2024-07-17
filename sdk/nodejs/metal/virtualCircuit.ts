@@ -34,8 +34,6 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * This resource can be imported using an existing Virtual Circuit ID:
- *
  * ```sh
  * $ pulumi import equinix:metal/virtualCircuit:VirtualCircuit equinix_metal_virtual_circuit {existing_id}
  * ```
@@ -69,15 +67,19 @@ export class VirtualCircuit extends pulumi.CustomResource {
     }
 
     /**
-     * UUID of Connection where the VC is scoped to.
+     * UUID of Connection where the VC is scoped to.  Only used for dedicated connections
      */
     public readonly connectionId!: pulumi.Output<string>;
     /**
      * The Customer IP address which the CSR switch will peer with. Will default to the other usable IP in the subnet.
      */
-    public readonly customerIp!: pulumi.Output<string | undefined>;
+    public readonly customerIp!: pulumi.Output<string>;
     /**
-     * Description for the Virtual Circuit resource.
+     * The Customer IPv6 address which the CSR switch will peer with. Will default to the other usable IP in the IPv6 subnet.
+     */
+    public readonly customerIpv6!: pulumi.Output<string>;
+    /**
+     * Description of the Virtual Circuit resource
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -87,17 +89,21 @@ export class VirtualCircuit extends pulumi.CustomResource {
     /**
      * The Metal IP address for the SVI (Switch Virtual Interface) of the VirtualCircuit. Will default to the first usable IP in the subnet.
      */
-    public readonly metalIp!: pulumi.Output<string | undefined>;
+    public readonly metalIp!: pulumi.Output<string>;
     /**
-     * Name of the Virtual Circuit resource.
+     * The Metal IPv6 address for the SVI (Switch Virtual Interface) of the VirtualCircuit. Will default to the first usable IP in the IPv6 subnet.
+     */
+    public readonly metalIpv6!: pulumi.Output<string>;
+    /**
+     * Name of the Virtual Circuit resource
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Equinix Metal network-to-network VLAN ID.
+     * Equinix Metal network-to-network VLAN ID (optional when the connection has mode=tunnel)
      */
-    public readonly nniVlan!: pulumi.Output<number | undefined>;
+    public readonly nniVlan!: pulumi.Output<number>;
     /**
-     * NNI VLAN parameters, see the [documentation for Equinix Fabric](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/).
+     * Nni VLAN ID parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
      */
     public /*out*/ readonly nniVnid!: pulumi.Output<number>;
     /**
@@ -105,41 +111,51 @@ export class VirtualCircuit extends pulumi.CustomResource {
      */
     public readonly peerAsn!: pulumi.Output<number | undefined>;
     /**
-     * UUID of the Connection Port where the VC is scoped to.
+     * UUID of the Connection Port where the VC is scoped to
      */
     public readonly portId!: pulumi.Output<string>;
     /**
-     * UUID of the Project where the VC is scoped to.
+     * UUID of the Project where the VC is scoped to
      */
     public readonly projectId!: pulumi.Output<string>;
     /**
-     * Speed of the Virtual Circuit resource.
+     * Description of the Virtual Circuit speed. This is for information purposes and is computed when the connection type is shared.
      */
     public readonly speed!: pulumi.Output<string>;
     /**
-     * Status of the virtal circuit.
+     * Status of the virtual circuit resource
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * A subnet from one of the IP blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.
-     * * For a /31 block, it will only have two IP addresses, which will be used for the metalIp and customer_ip.
-     * * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
+     * 			 * For a /31 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.
+     * 			 * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
      */
     public readonly subnet!: pulumi.Output<string | undefined>;
     /**
-     * Tags for the Virtual Circuit resource.
+     * A subnet from one of the IPv6 blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /126 or /127.
+     * 			 * For a /127 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.
+     * 			 * For a /126 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
+     */
+    public readonly subnetIpv6!: pulumi.Output<string | undefined>;
+    /**
+     * Tags attached to the virtual circuit
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
-     * UUID of the VLAN to associate.
+     * UUID of an existing VC to configure. Used in the case of shared interconnections where the VC has already been created.
+     */
+    public readonly virtualCircuitId!: pulumi.Output<string | undefined>;
+    /**
+     * UUID of the VLAN to associate
      */
     public readonly vlanId!: pulumi.Output<string | undefined>;
     /**
-     * VNID VLAN parameter, see the [documentation for Equinix Fabric](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/).
+     * VNID VLAN parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
      */
     public /*out*/ readonly vnid!: pulumi.Output<number>;
     /**
-     * UUID of the VRF to associate.
+     * UUID of the VRF to associate
      */
     public readonly vrfId!: pulumi.Output<string | undefined>;
 
@@ -158,9 +174,11 @@ export class VirtualCircuit extends pulumi.CustomResource {
             const state = argsOrState as VirtualCircuitState | undefined;
             resourceInputs["connectionId"] = state ? state.connectionId : undefined;
             resourceInputs["customerIp"] = state ? state.customerIp : undefined;
+            resourceInputs["customerIpv6"] = state ? state.customerIpv6 : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["md5"] = state ? state.md5 : undefined;
             resourceInputs["metalIp"] = state ? state.metalIp : undefined;
+            resourceInputs["metalIpv6"] = state ? state.metalIpv6 : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["nniVlan"] = state ? state.nniVlan : undefined;
             resourceInputs["nniVnid"] = state ? state.nniVnid : undefined;
@@ -170,15 +188,14 @@ export class VirtualCircuit extends pulumi.CustomResource {
             resourceInputs["speed"] = state ? state.speed : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["subnet"] = state ? state.subnet : undefined;
+            resourceInputs["subnetIpv6"] = state ? state.subnetIpv6 : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["virtualCircuitId"] = state ? state.virtualCircuitId : undefined;
             resourceInputs["vlanId"] = state ? state.vlanId : undefined;
             resourceInputs["vnid"] = state ? state.vnid : undefined;
             resourceInputs["vrfId"] = state ? state.vrfId : undefined;
         } else {
             const args = argsOrState as VirtualCircuitArgs | undefined;
-            if ((!args || args.connectionId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'connectionId'");
-            }
             if ((!args || args.portId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'portId'");
             }
@@ -187,9 +204,11 @@ export class VirtualCircuit extends pulumi.CustomResource {
             }
             resourceInputs["connectionId"] = args ? args.connectionId : undefined;
             resourceInputs["customerIp"] = args ? args.customerIp : undefined;
+            resourceInputs["customerIpv6"] = args ? args.customerIpv6 : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["md5"] = args?.md5 ? pulumi.secret(args.md5) : undefined;
             resourceInputs["metalIp"] = args ? args.metalIp : undefined;
+            resourceInputs["metalIpv6"] = args ? args.metalIpv6 : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["nniVlan"] = args ? args.nniVlan : undefined;
             resourceInputs["peerAsn"] = args ? args.peerAsn : undefined;
@@ -197,7 +216,9 @@ export class VirtualCircuit extends pulumi.CustomResource {
             resourceInputs["projectId"] = args ? args.projectId : undefined;
             resourceInputs["speed"] = args ? args.speed : undefined;
             resourceInputs["subnet"] = args ? args.subnet : undefined;
+            resourceInputs["subnetIpv6"] = args ? args.subnetIpv6 : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["virtualCircuitId"] = args ? args.virtualCircuitId : undefined;
             resourceInputs["vlanId"] = args ? args.vlanId : undefined;
             resourceInputs["vrfId"] = args ? args.vrfId : undefined;
             resourceInputs["nniVnid"] = undefined /*out*/;
@@ -216,7 +237,7 @@ export class VirtualCircuit extends pulumi.CustomResource {
  */
 export interface VirtualCircuitState {
     /**
-     * UUID of Connection where the VC is scoped to.
+     * UUID of Connection where the VC is scoped to.  Only used for dedicated connections
      */
     connectionId?: pulumi.Input<string>;
     /**
@@ -224,7 +245,11 @@ export interface VirtualCircuitState {
      */
     customerIp?: pulumi.Input<string>;
     /**
-     * Description for the Virtual Circuit resource.
+     * The Customer IPv6 address which the CSR switch will peer with. Will default to the other usable IP in the IPv6 subnet.
+     */
+    customerIpv6?: pulumi.Input<string>;
+    /**
+     * Description of the Virtual Circuit resource
      */
     description?: pulumi.Input<string>;
     /**
@@ -236,15 +261,19 @@ export interface VirtualCircuitState {
      */
     metalIp?: pulumi.Input<string>;
     /**
-     * Name of the Virtual Circuit resource.
+     * The Metal IPv6 address for the SVI (Switch Virtual Interface) of the VirtualCircuit. Will default to the first usable IP in the IPv6 subnet.
+     */
+    metalIpv6?: pulumi.Input<string>;
+    /**
+     * Name of the Virtual Circuit resource
      */
     name?: pulumi.Input<string>;
     /**
-     * Equinix Metal network-to-network VLAN ID.
+     * Equinix Metal network-to-network VLAN ID (optional when the connection has mode=tunnel)
      */
     nniVlan?: pulumi.Input<number>;
     /**
-     * NNI VLAN parameters, see the [documentation for Equinix Fabric](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/).
+     * Nni VLAN ID parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
      */
     nniVnid?: pulumi.Input<number>;
     /**
@@ -252,41 +281,51 @@ export interface VirtualCircuitState {
      */
     peerAsn?: pulumi.Input<number>;
     /**
-     * UUID of the Connection Port where the VC is scoped to.
+     * UUID of the Connection Port where the VC is scoped to
      */
     portId?: pulumi.Input<string>;
     /**
-     * UUID of the Project where the VC is scoped to.
+     * UUID of the Project where the VC is scoped to
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Speed of the Virtual Circuit resource.
+     * Description of the Virtual Circuit speed. This is for information purposes and is computed when the connection type is shared.
      */
     speed?: pulumi.Input<string>;
     /**
-     * Status of the virtal circuit.
+     * Status of the virtual circuit resource
      */
     status?: pulumi.Input<string>;
     /**
      * A subnet from one of the IP blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.
-     * * For a /31 block, it will only have two IP addresses, which will be used for the metalIp and customer_ip.
-     * * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
+     * 			 * For a /31 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.
+     * 			 * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
      */
     subnet?: pulumi.Input<string>;
     /**
-     * Tags for the Virtual Circuit resource.
+     * A subnet from one of the IPv6 blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /126 or /127.
+     * 			 * For a /127 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.
+     * 			 * For a /126 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
+     */
+    subnetIpv6?: pulumi.Input<string>;
+    /**
+     * Tags attached to the virtual circuit
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * UUID of the VLAN to associate.
+     * UUID of an existing VC to configure. Used in the case of shared interconnections where the VC has already been created.
+     */
+    virtualCircuitId?: pulumi.Input<string>;
+    /**
+     * UUID of the VLAN to associate
      */
     vlanId?: pulumi.Input<string>;
     /**
-     * VNID VLAN parameter, see the [documentation for Equinix Fabric](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/).
+     * VNID VLAN parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
      */
     vnid?: pulumi.Input<number>;
     /**
-     * UUID of the VRF to associate.
+     * UUID of the VRF to associate
      */
     vrfId?: pulumi.Input<string>;
 }
@@ -296,15 +335,19 @@ export interface VirtualCircuitState {
  */
 export interface VirtualCircuitArgs {
     /**
-     * UUID of Connection where the VC is scoped to.
+     * UUID of Connection where the VC is scoped to.  Only used for dedicated connections
      */
-    connectionId: pulumi.Input<string>;
+    connectionId?: pulumi.Input<string>;
     /**
      * The Customer IP address which the CSR switch will peer with. Will default to the other usable IP in the subnet.
      */
     customerIp?: pulumi.Input<string>;
     /**
-     * Description for the Virtual Circuit resource.
+     * The Customer IPv6 address which the CSR switch will peer with. Will default to the other usable IP in the IPv6 subnet.
+     */
+    customerIpv6?: pulumi.Input<string>;
+    /**
+     * Description of the Virtual Circuit resource
      */
     description?: pulumi.Input<string>;
     /**
@@ -316,11 +359,15 @@ export interface VirtualCircuitArgs {
      */
     metalIp?: pulumi.Input<string>;
     /**
-     * Name of the Virtual Circuit resource.
+     * The Metal IPv6 address for the SVI (Switch Virtual Interface) of the VirtualCircuit. Will default to the first usable IP in the IPv6 subnet.
+     */
+    metalIpv6?: pulumi.Input<string>;
+    /**
+     * Name of the Virtual Circuit resource
      */
     name?: pulumi.Input<string>;
     /**
-     * Equinix Metal network-to-network VLAN ID.
+     * Equinix Metal network-to-network VLAN ID (optional when the connection has mode=tunnel)
      */
     nniVlan?: pulumi.Input<number>;
     /**
@@ -328,33 +375,43 @@ export interface VirtualCircuitArgs {
      */
     peerAsn?: pulumi.Input<number>;
     /**
-     * UUID of the Connection Port where the VC is scoped to.
+     * UUID of the Connection Port where the VC is scoped to
      */
     portId: pulumi.Input<string>;
     /**
-     * UUID of the Project where the VC is scoped to.
+     * UUID of the Project where the VC is scoped to
      */
     projectId: pulumi.Input<string>;
     /**
-     * Speed of the Virtual Circuit resource.
+     * Description of the Virtual Circuit speed. This is for information purposes and is computed when the connection type is shared.
      */
     speed?: pulumi.Input<string>;
     /**
      * A subnet from one of the IP blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.
-     * * For a /31 block, it will only have two IP addresses, which will be used for the metalIp and customer_ip.
-     * * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
+     * 			 * For a /31 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.
+     * 			 * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
      */
     subnet?: pulumi.Input<string>;
     /**
-     * Tags for the Virtual Circuit resource.
+     * A subnet from one of the IPv6 blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /126 or /127.
+     * 			 * For a /127 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.
+     * 			 * For a /126 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
+     */
+    subnetIpv6?: pulumi.Input<string>;
+    /**
+     * Tags attached to the virtual circuit
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * UUID of the VLAN to associate.
+     * UUID of an existing VC to configure. Used in the case of shared interconnections where the VC has already been created.
+     */
+    virtualCircuitId?: pulumi.Input<string>;
+    /**
+     * UUID of the VLAN to associate
      */
     vlanId?: pulumi.Input<string>;
     /**
-     * UUID of the VRF to associate.
+     * UUID of the VRF to associate
      */
     vrfId?: pulumi.Input<string>;
 }

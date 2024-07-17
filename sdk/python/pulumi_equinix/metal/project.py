@@ -246,19 +246,6 @@ class Project(pulumi.CustomResource):
         > **NOTE:** Keep in mind that Equinix Metal invoicing is per project, so creating many `metal.Project` resources will affect the rendered invoice. If you want to keep your Equinix Metal bill simple and easy to review, please re-use your existing projects.
 
         ## Example Usage
-        ### example 3
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        existing_project = equinix.metal.Project("existingProject",
-            name="The name of the project (if different, will rewrite)",
-            bgp_config=equinix.metal.ProjectBgpConfigArgs(
-                deployment_type="local",
-                md5="C179c28c41a85b",
-                asn=65000,
-            ))
-        ```
         ### example 2
         ```python
         import pulumi
@@ -266,6 +253,19 @@ class Project(pulumi.CustomResource):
 
         tf_project1 = equinix.metal.Project("tfProject1",
             name="tftest",
+            bgp_config=equinix.metal.ProjectBgpConfigArgs(
+                deployment_type="local",
+                md5="C179c28c41a85b",
+                asn=65000,
+            ))
+        ```
+        ### example 3
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        existing_project = equinix.metal.Project("existingProject",
+            name="The name of the project (if different, will rewrite)",
             bgp_config=equinix.metal.ProjectBgpConfigArgs(
                 deployment_type="local",
                 md5="C179c28c41a85b",
@@ -310,19 +310,6 @@ class Project(pulumi.CustomResource):
         > **NOTE:** Keep in mind that Equinix Metal invoicing is per project, so creating many `metal.Project` resources will affect the rendered invoice. If you want to keep your Equinix Metal bill simple and easy to review, please re-use your existing projects.
 
         ## Example Usage
-        ### example 3
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        existing_project = equinix.metal.Project("existingProject",
-            name="The name of the project (if different, will rewrite)",
-            bgp_config=equinix.metal.ProjectBgpConfigArgs(
-                deployment_type="local",
-                md5="C179c28c41a85b",
-                asn=65000,
-            ))
-        ```
         ### example 2
         ```python
         import pulumi
@@ -330,6 +317,19 @@ class Project(pulumi.CustomResource):
 
         tf_project1 = equinix.metal.Project("tfProject1",
             name="tftest",
+            bgp_config=equinix.metal.ProjectBgpConfigArgs(
+                deployment_type="local",
+                md5="C179c28c41a85b",
+                asn=65000,
+            ))
+        ```
+        ### example 3
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        existing_project = equinix.metal.Project("existingProject",
+            name="The name of the project (if different, will rewrite)",
             bgp_config=equinix.metal.ProjectBgpConfigArgs(
                 deployment_type="local",
                 md5="C179c28c41a85b",

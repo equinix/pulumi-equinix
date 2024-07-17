@@ -15,7 +15,7 @@ namespace Pulumi.Equinix.Metal
     /// &gt; **NOTE:** All arguments including the `root_password` and `user_data` will be stored in the raw state as plain-text. Read more about sensitive data in state.
     /// 
     /// ## Example Usage
-    /// ### example 1
+    /// ### example 5
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -24,14 +24,26 @@ namespace Pulumi.Equinix.Metal
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var web1 = new Equinix.Metal.Device("web1", new()
+    ///     var pxe1 = new Equinix.Metal.Device("pxe1", new()
     ///     {
-    ///         Hostname = "tf.coreos2",
+    ///         Hostname = "tf.coreos2-pxe",
     ///         Plan = Equinix.Metal.Plan.C3SmallX86,
     ///         Metro = "sv",
-    ///         OperatingSystem = Equinix.Metal.OperatingSystem.Ubuntu20_04,
+    ///         OperatingSystem = Equinix.Metal.OperatingSystem.CustomIPXE,
     ///         BillingCycle = Equinix.Metal.BillingCycle.Hourly,
     ///         ProjectId = projectId,
+    ///         IpxeScriptUrl = "https://rawgit.com/cloudnativelabs/pxe/master/packet/coreos-stable-metal.ipxe",
+    ///         AlwaysPxe = false,
+    ///         UserData = userData,
+    ///         CustomData = customData,
+    ///         Behavior = new Equinix.Metal.Inputs.DeviceBehaviorArgs
+    ///         {
+    ///             AllowChanges = new[]
+    ///             {
+    ///                 "custom_data",
+    ///                 "user_data",
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });
@@ -112,7 +124,7 @@ namespace Pulumi.Equinix.Metal
     /// 
     /// });
     /// ```
-    /// ### example 2
+    /// ### example 1
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -121,50 +133,14 @@ namespace Pulumi.Equinix.Metal
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var pxe1 = new Equinix.Metal.Device("pxe1", new()
+    ///     var web1 = new Equinix.Metal.Device("web1", new()
     ///     {
-    ///         Hostname = "tf.coreos2-pxe",
+    ///         Hostname = "tf.coreos2",
     ///         Plan = Equinix.Metal.Plan.C3SmallX86,
     ///         Metro = "sv",
-    ///         OperatingSystem = Equinix.Metal.OperatingSystem.CustomIPXE,
+    ///         OperatingSystem = Equinix.Metal.OperatingSystem.Ubuntu20_04,
     ///         BillingCycle = Equinix.Metal.BillingCycle.Hourly,
     ///         ProjectId = projectId,
-    ///         IpxeScriptUrl = "https://rawgit.com/cloudnativelabs/pxe/master/packet/coreos-stable-metal.ipxe",
-    ///         AlwaysPxe = false,
-    ///         UserData = example.Rendered,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### example 5
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Equinix = Pulumi.Equinix;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var pxe1 = new Equinix.Metal.Device("pxe1", new()
-    ///     {
-    ///         Hostname = "tf.coreos2-pxe",
-    ///         Plan = Equinix.Metal.Plan.C3SmallX86,
-    ///         Metro = "sv",
-    ///         OperatingSystem = Equinix.Metal.OperatingSystem.CustomIPXE,
-    ///         BillingCycle = Equinix.Metal.BillingCycle.Hourly,
-    ///         ProjectId = projectId,
-    ///         IpxeScriptUrl = "https://rawgit.com/cloudnativelabs/pxe/master/packet/coreos-stable-metal.ipxe",
-    ///         AlwaysPxe = false,
-    ///         UserData = userData,
-    ///         CustomData = customData,
-    ///         Behavior = new Equinix.Metal.Inputs.DeviceBehaviorArgs
-    ///         {
-    ///             AllowChanges = new[]
-    ///             {
-    ///                 "custom_data",
-    ///                 "user_data",
-    ///             },
-    ///         },
     ///     });
     /// 
     /// });
@@ -194,6 +170,30 @@ namespace Pulumi.Equinix.Metal
     ///                 Cidr = 30,
     ///             },
     ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### example 2
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Equinix = Pulumi.Equinix;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var pxe1 = new Equinix.Metal.Device("pxe1", new()
+    ///     {
+    ///         Hostname = "tf.coreos2-pxe",
+    ///         Plan = Equinix.Metal.Plan.C3SmallX86,
+    ///         Metro = "sv",
+    ///         OperatingSystem = Equinix.Metal.OperatingSystem.CustomIPXE,
+    ///         BillingCycle = Equinix.Metal.BillingCycle.Hourly,
+    ///         ProjectId = projectId,
+    ///         IpxeScriptUrl = "https://rawgit.com/cloudnativelabs/pxe/master/packet/coreos-stable-metal.ipxe",
+    ///         AlwaysPxe = false,
+    ///         UserData = example.Rendered,
     ///     });
     /// 
     /// });
