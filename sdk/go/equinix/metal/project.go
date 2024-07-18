@@ -16,6 +16,30 @@ import (
 // > **NOTE:** Keep in mind that Equinix Metal invoicing is per project, so creating many `metal.Project` resources will affect the rendered invoice. If you want to keep your Equinix Metal bill simple and easy to review, please re-use your existing projects.
 //
 // ## Example Usage
+// ### example 1
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := metal.NewProject(ctx, "tfProject1", &metal.ProjectArgs{
+//				Name: pulumi.String("Terraform Fun"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### example 2
 // ```go
 // package main
@@ -65,30 +89,6 @@ import (
 //					Md5:            pulumi.String("C179c28c41a85b"),
 //					Asn:            pulumi.Int(65000),
 //				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// ### example 1
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := metal.NewProject(ctx, "tfProject1", &metal.ProjectArgs{
-//				Name: pulumi.String("Terraform Fun"),
 //			})
 //			if err != nil {
 //				return err

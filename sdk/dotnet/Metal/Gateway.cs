@@ -15,6 +15,31 @@ namespace Pulumi.Equinix.Metal
     /// See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
     /// 
     /// ## Example Usage
+    /// ### example 1
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Equinix = Pulumi.Equinix;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var test = new Equinix.Metal.Vlan("test", new()
+    ///     {
+    ///         Description = "test VLAN in SV",
+    ///         Metro = "sv",
+    ///         ProjectId = projectId,
+    ///     });
+    /// 
+    ///     var testGateway = new Equinix.Metal.Gateway("testGateway", new()
+    ///     {
+    ///         ProjectId = projectId,
+    ///         VlanId = test.Id,
+    ///         PrivateIpv4SubnetSize = 8,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### example 2
     /// ```csharp
     /// using System.Collections.Generic;
@@ -43,31 +68,6 @@ namespace Pulumi.Equinix.Metal
     ///         ProjectId = projectId,
     ///         VlanId = test.Id,
     ///         IpReservationId = testEquinixMetalReservedIpBlock.Id,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### example 1
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Equinix = Pulumi.Equinix;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var test = new Equinix.Metal.Vlan("test", new()
-    ///     {
-    ///         Description = "test VLAN in SV",
-    ///         Metro = "sv",
-    ///         ProjectId = projectId,
-    ///     });
-    /// 
-    ///     var testGateway = new Equinix.Metal.Gateway("testGateway", new()
-    ///     {
-    ///         ProjectId = projectId,
-    ///         VlanId = test.Id,
-    ///         PrivateIpv4SubnetSize = 8,
     ///     });
     /// 
     /// });

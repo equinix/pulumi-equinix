@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** Keep in mind that Equinix Metal invoicing is per project, so creating many `equinix.metal.Project` resources will affect the rendered invoice. If you want to keep your Equinix Metal bill simple and easy to review, please re-use your existing projects.
  * 
  * ## Example Usage
- * ### example 3
+ * ### example 1
  * <pre>
  * {@code
  * package generated_program;
@@ -32,7 +32,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.equinix.metal.Project;
  * import com.pulumi.equinix.metal.ProjectArgs;
- * import com.pulumi.equinix.metal.inputs.ProjectBgpConfigArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -46,13 +45,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var existingProject = new Project("existingProject", ProjectArgs.builder()
- *             .name("The name of the project (if different, will rewrite)")
- *             .bgpConfig(ProjectBgpConfigArgs.builder()
- *                 .deploymentType("local")
- *                 .md5("C179c28c41a85b")
- *                 .asn(65000)
- *                 .build())
+ *         var tfProject1 = new Project("tfProject1", ProjectArgs.builder()
+ *             .name("Terraform Fun")
  *             .build());
  * 
  *     }
@@ -96,7 +90,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
- * ### example 1
+ * ### example 3
  * <pre>
  * {@code
  * package generated_program;
@@ -106,6 +100,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.equinix.metal.Project;
  * import com.pulumi.equinix.metal.ProjectArgs;
+ * import com.pulumi.equinix.metal.inputs.ProjectBgpConfigArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -119,8 +114,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var tfProject1 = new Project("tfProject1", ProjectArgs.builder()
- *             .name("Terraform Fun")
+ *         var existingProject = new Project("existingProject", ProjectArgs.builder()
+ *             .name("The name of the project (if different, will rewrite)")
+ *             .bgpConfig(ProjectBgpConfigArgs.builder()
+ *                 .deploymentType("local")
+ *                 .md5("C179c28c41a85b")
+ *                 .asn(65000)
+ *                 .build())
  *             .build());
  * 
  *     }

@@ -278,17 +278,6 @@ class OrganizationMember(pulumi.CustomResource):
         Manage the membership of existing and new invitees within an Equinix Metal organization and its projects.
 
         ## Example Usage
-        ### example 2
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        owner = equinix.metal.OrganizationMember("owner",
-            invitee="admin@example.com",
-            roles=["owner"],
-            projects_ids=[],
-            organization_id=organization_id)
-        ```
         ### example 1
         ```python
         import pulumi
@@ -298,6 +287,17 @@ class OrganizationMember(pulumi.CustomResource):
             invitee="member@example.com",
             roles=["limited_collaborator"],
             projects_ids=[project_id],
+            organization_id=organization_id)
+        ```
+        ### example 2
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        owner = equinix.metal.OrganizationMember("owner",
+            invitee="admin@example.com",
+            roles=["owner"],
+            projects_ids=[],
             organization_id=organization_id)
         ```
 
@@ -327,17 +327,6 @@ class OrganizationMember(pulumi.CustomResource):
         Manage the membership of existing and new invitees within an Equinix Metal organization and its projects.
 
         ## Example Usage
-        ### example 2
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        owner = equinix.metal.OrganizationMember("owner",
-            invitee="admin@example.com",
-            roles=["owner"],
-            projects_ids=[],
-            organization_id=organization_id)
-        ```
         ### example 1
         ```python
         import pulumi
@@ -347,6 +336,17 @@ class OrganizationMember(pulumi.CustomResource):
             invitee="member@example.com",
             roles=["limited_collaborator"],
             projects_ids=[project_id],
+            organization_id=organization_id)
+        ```
+        ### example 2
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        owner = equinix.metal.OrganizationMember("owner",
+            invitee="admin@example.com",
+            roles=["owner"],
+            projects_ids=[],
             organization_id=organization_id)
         ```
 

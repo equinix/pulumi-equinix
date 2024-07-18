@@ -11,7 +11,7 @@ namespace Pulumi.Equinix.Fabric
 {
     /// <summary>
     /// ## Example Usage
-    /// ### example 11
+    /// ### example 1
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -20,143 +20,7 @@ namespace Pulumi.Equinix.Fabric
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var vd2AzurePrimary = new Equinix.Fabric.Connection("vd2azurePrimary", new()
-    ///     {
-    ///         Name = "ConnectionName",
-    ///         Type = Equinix.Fabric.ConnectionType.EVPL,
-    ///         Redundancy = new Equinix.Fabric.Inputs.ConnectionRedundancyArgs
-    ///         {
-    ///             Priority = "PRIMARY",
-    ///         },
-    ///         Notifications = new[]
-    ///         {
-    ///             new Equinix.Fabric.Inputs.ConnectionNotificationArgs
-    ///             {
-    ///                 Type = Equinix.Fabric.NotificationsType.All,
-    ///                 Emails = new[]
-    ///                 {
-    ///                     "example@equinix.com",
-    ///                     "test1@equinix.com",
-    ///                 },
-    ///             },
-    ///         },
-    ///         Bandwidth = 50,
-    ///         Order = new Equinix.Fabric.Inputs.ConnectionOrderArgs
-    ///         {
-    ///             PurchaseOrderNumber = "1-323292",
-    ///         },
-    ///         ASide = new Equinix.Fabric.Inputs.ConnectionASideArgs
-    ///         {
-    ///             AccessPoint = new Equinix.Fabric.Inputs.ConnectionASideAccessPointArgs
-    ///             {
-    ///                 Type = Equinix.Fabric.AccessPointType.VD,
-    ///                 VirtualDevice = new Equinix.Fabric.Inputs.ConnectionASideAccessPointVirtualDeviceArgs
-    ///                 {
-    ///                     Type = "EDGE",
-    ///                     Uuid = "&lt;device_uuid&gt;",
-    ///                 },
-    ///                 Interface = new Equinix.Fabric.Inputs.ConnectionASideAccessPointInterfaceArgs
-    ///                 {
-    ///                     Type = "CLOUD",
-    ///                     Id = 7,
-    ///                 },
-    ///             },
-    ///         },
-    ///         ZSide = new Equinix.Fabric.Inputs.ConnectionZSideArgs
-    ///         {
-    ///             AccessPoint = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointArgs
-    ///             {
-    ///                 Type = Equinix.Fabric.AccessPointType.SP,
-    ///                 AuthenticationKey = "&lt;Azure_ExpressRouter_Auth_Key&gt;",
-    ///                 PeeringType = Equinix.Fabric.AccessPointPeeringType.Private,
-    ///                 Profile = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointProfileArgs
-    ///                 {
-    ///                     Type = Equinix.Fabric.ProfileType.L2Profile,
-    ///                     Uuid = "&lt;Azure_Service_Profile_UUID&gt;",
-    ///                 },
-    ///                 Location = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointLocationArgs
-    ///                 {
-    ///                     MetroCode = Equinix.Metro.SiliconValley,
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     var vd2AzureSecondary = new Equinix.Fabric.Connection("vd2azureSecondary", new()
-    ///     {
-    ///         Name = "ConnectionName",
-    ///         Type = Equinix.Fabric.ConnectionType.EVPL,
-    ///         Redundancy = new Equinix.Fabric.Inputs.ConnectionRedundancyArgs
-    ///         {
-    ///             Priority = "SECONDARY",
-    ///             Group = vd2AzurePrimary.Redundancy.Apply(redundancy =&gt; redundancy?.Group),
-    ///         },
-    ///         Notifications = new[]
-    ///         {
-    ///             new Equinix.Fabric.Inputs.ConnectionNotificationArgs
-    ///             {
-    ///                 Type = Equinix.Fabric.NotificationsType.All,
-    ///                 Emails = new[]
-    ///                 {
-    ///                     "example@equinix.com",
-    ///                     "test1@equinix.com",
-    ///                 },
-    ///             },
-    ///         },
-    ///         Bandwidth = 50,
-    ///         Order = new Equinix.Fabric.Inputs.ConnectionOrderArgs
-    ///         {
-    ///             PurchaseOrderNumber = "1-323292",
-    ///         },
-    ///         ASide = new Equinix.Fabric.Inputs.ConnectionASideArgs
-    ///         {
-    ///             AccessPoint = new Equinix.Fabric.Inputs.ConnectionASideAccessPointArgs
-    ///             {
-    ///                 Type = Equinix.Fabric.AccessPointType.VD,
-    ///                 VirtualDevice = new Equinix.Fabric.Inputs.ConnectionASideAccessPointVirtualDeviceArgs
-    ///                 {
-    ///                     Type = "EDGE",
-    ///                     Uuid = "&lt;device_uuid&gt;",
-    ///                 },
-    ///                 Interface = new Equinix.Fabric.Inputs.ConnectionASideAccessPointInterfaceArgs
-    ///                 {
-    ///                     Type = "CLOUD",
-    ///                     Id = 5,
-    ///                 },
-    ///             },
-    ///         },
-    ///         ZSide = new Equinix.Fabric.Inputs.ConnectionZSideArgs
-    ///         {
-    ///             AccessPoint = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointArgs
-    ///             {
-    ///                 Type = Equinix.Fabric.AccessPointType.SP,
-    ///                 AuthenticationKey = "&lt;Azure_ExpressRouter_Auth_Key&gt;",
-    ///                 PeeringType = Equinix.Fabric.AccessPointPeeringType.Private,
-    ///                 Profile = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointProfileArgs
-    ///                 {
-    ///                     Type = Equinix.Fabric.ProfileType.L2Profile,
-    ///                     Uuid = "&lt;Azure_Service_Profile_UUID&gt;",
-    ///                 },
-    ///                 Location = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointLocationArgs
-    ///                 {
-    ///                     MetroCode = Equinix.Metro.SiliconValley,
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### example 7
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Equinix = Pulumi.Equinix;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var token2Aws = new Equinix.Fabric.Connection("token2aws", new()
+    ///     var port2Port = new Equinix.Fabric.Connection("port2port", new()
     ///     {
     ///         Name = "ConnectionName",
     ///         Type = Equinix.Fabric.ConnectionType.EVPL,
@@ -179,82 +43,37 @@ namespace Pulumi.Equinix.Fabric
     ///         },
     ///         ASide = new Equinix.Fabric.Inputs.ConnectionASideArgs
     ///         {
-    ///             ServiceToken = new Equinix.Fabric.Inputs.ConnectionASideServiceTokenArgs
+    ///             AccessPoint = new Equinix.Fabric.Inputs.ConnectionASideAccessPointArgs
     ///             {
-    ///                 Uuid = "&lt;service_token_uuid&gt;",
+    ///                 Type = Equinix.Fabric.AccessPointType.Colo,
+    ///                 Port = new Equinix.Fabric.Inputs.ConnectionASideAccessPointPortArgs
+    ///                 {
+    ///                     Uuid = "&lt;aside_port_uuid&gt;",
+    ///                 },
+    ///                 LinkProtocol = new Equinix.Fabric.Inputs.ConnectionASideAccessPointLinkProtocolArgs
+    ///                 {
+    ///                     Type = Equinix.Fabric.AccessPointLinkProtocolType.QinQ,
+    ///                     VlanSTag = 1976,
+    ///                 },
     ///             },
     ///         },
     ///         ZSide = new Equinix.Fabric.Inputs.ConnectionZSideArgs
     ///         {
     ///             AccessPoint = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointArgs
     ///             {
-    ///                 Type = Equinix.Fabric.AccessPointType.SP,
-    ///                 AuthenticationKey = "&lt;aws_account_id&gt;",
-    ///                 SellerRegion = "us-west-1",
-    ///                 Profile = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointProfileArgs
+    ///                 Type = Equinix.Fabric.AccessPointType.Colo,
+    ///                 Port = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointPortArgs
     ///                 {
-    ///                     Type = Equinix.Fabric.ProfileType.L2Profile,
-    ///                     Uuid = "&lt;service_profile_uuid&gt;",
+    ///                     Uuid = "&lt;zside_port_uuid&gt;",
+    ///                 },
+    ///                 LinkProtocol = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointLinkProtocolArgs
+    ///                 {
+    ///                     Type = Equinix.Fabric.AccessPointLinkProtocolType.QinQ,
+    ///                     VlanSTag = 3711,
     ///                 },
     ///                 Location = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointLocationArgs
     ///                 {
     ///                     MetroCode = Equinix.Metro.SiliconValley,
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### example 12
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Equinix = Pulumi.Equinix;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var fcr2Network = new Equinix.Fabric.Connection("fcr2network", new()
-    ///     {
-    ///         Name = "ConnectionName",
-    ///         Type = "IPWAN_VC",
-    ///         Notifications = new[]
-    ///         {
-    ///             new Equinix.Fabric.Inputs.ConnectionNotificationArgs
-    ///             {
-    ///                 Type = Equinix.Fabric.NotificationsType.All,
-    ///                 Emails = new[]
-    ///                 {
-    ///                     "example@equinix.com",
-    ///                     "test1@equinix.com",
-    ///                 },
-    ///             },
-    ///         },
-    ///         Bandwidth = 50,
-    ///         Order = new Equinix.Fabric.Inputs.ConnectionOrderArgs
-    ///         {
-    ///             PurchaseOrderNumber = "1-323292",
-    ///         },
-    ///         ASide = new Equinix.Fabric.Inputs.ConnectionASideArgs
-    ///         {
-    ///             AccessPoint = new Equinix.Fabric.Inputs.ConnectionASideAccessPointArgs
-    ///             {
-    ///                 Type = "CLOUD_ROUTER",
-    ///                 Router = new Equinix.Fabric.Inputs.ConnectionASideAccessPointRouterArgs
-    ///                 {
-    ///                     Uuid = "&lt;cloud_router_uuid&gt;",
-    ///                 },
-    ///             },
-    ///         },
-    ///         ZSide = new Equinix.Fabric.Inputs.ConnectionZSideArgs
-    ///         {
-    ///             AccessPoint = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointArgs
-    ///             {
-    ///                 Type = Equinix.Fabric.AccessPointType.Network,
-    ///                 Network = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointNetworkArgs
-    ///                 {
-    ///                     Uuid = "&lt;network_uuid&gt;",
     ///                 },
     ///             },
     ///         },
@@ -348,7 +167,7 @@ namespace Pulumi.Equinix.Fabric
     /// 
     /// });
     /// ```
-    /// ### example 6
+    /// ### example 3
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -357,10 +176,10 @@ namespace Pulumi.Equinix.Fabric
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var vd2Token = new Equinix.Fabric.Connection("vd2token", new()
+    ///     var epl = new Equinix.Fabric.Connection("epl", new()
     ///     {
     ///         Name = "ConnectionName",
-    ///         Type = Equinix.Fabric.ConnectionType.EVPL,
+    ///         Type = Equinix.Fabric.ConnectionType.EPL,
     ///         Notifications = new[]
     ///         {
     ///             new Equinix.Fabric.Inputs.ConnectionNotificationArgs
@@ -382,24 +201,26 @@ namespace Pulumi.Equinix.Fabric
     ///         {
     ///             AccessPoint = new Equinix.Fabric.Inputs.ConnectionASideAccessPointArgs
     ///             {
-    ///                 Type = Equinix.Fabric.AccessPointType.VD,
-    ///                 VirtualDevice = new Equinix.Fabric.Inputs.ConnectionASideAccessPointVirtualDeviceArgs
+    ///                 Type = Equinix.Fabric.AccessPointType.Colo,
+    ///                 Port = new Equinix.Fabric.Inputs.ConnectionASideAccessPointPortArgs
     ///                 {
-    ///                     Type = "EDGE",
-    ///                     Uuid = "&lt;device_uuid&gt;",
-    ///                 },
-    ///                 Interface = new Equinix.Fabric.Inputs.ConnectionASideAccessPointInterfaceArgs
-    ///                 {
-    ///                     Type = "NETWORK",
-    ///                     Id = 7,
+    ///                     Uuid = "&lt;aside_port_uuid&gt;",
     ///                 },
     ///             },
     ///         },
     ///         ZSide = new Equinix.Fabric.Inputs.ConnectionZSideArgs
     ///         {
-    ///             ServiceToken = new Equinix.Fabric.Inputs.ConnectionZSideServiceTokenArgs
+    ///             AccessPoint = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointArgs
     ///             {
-    ///                 Uuid = "&lt;service_token_uuid&gt;",
+    ///                 Type = Equinix.Fabric.AccessPointType.Colo,
+    ///                 Port = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointPortArgs
+    ///                 {
+    ///                     Uuid = "&lt;zside_port_uuid&gt;",
+    ///                 },
+    ///                 Location = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointLocationArgs
+    ///                 {
+    ///                     MetroCode = Equinix.Metro.SiliconValley,
+    ///                 },
     ///             },
     ///         },
     ///     });
@@ -542,7 +363,7 @@ namespace Pulumi.Equinix.Fabric
     /// 
     /// });
     /// ```
-    /// ### example 10
+    /// ### example 6
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -551,7 +372,7 @@ namespace Pulumi.Equinix.Fabric
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var vd2Azure = new Equinix.Fabric.Connection("vd2azure", new()
+    ///     var vd2Token = new Equinix.Fabric.Connection("vd2token", new()
     ///     {
     ///         Name = "ConnectionName",
     ///         Type = Equinix.Fabric.ConnectionType.EVPL,
@@ -584,34 +405,23 @@ namespace Pulumi.Equinix.Fabric
     ///                 },
     ///                 Interface = new Equinix.Fabric.Inputs.ConnectionASideAccessPointInterfaceArgs
     ///                 {
-    ///                     Type = "CLOUD",
+    ///                     Type = "NETWORK",
     ///                     Id = 7,
     ///                 },
     ///             },
     ///         },
     ///         ZSide = new Equinix.Fabric.Inputs.ConnectionZSideArgs
     ///         {
-    ///             AccessPoint = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointArgs
+    ///             ServiceToken = new Equinix.Fabric.Inputs.ConnectionZSideServiceTokenArgs
     ///             {
-    ///                 Type = Equinix.Fabric.AccessPointType.SP,
-    ///                 AuthenticationKey = "&lt;Azure_ExpressRouter_Auth_Key&gt;",
-    ///                 PeeringType = Equinix.Fabric.AccessPointPeeringType.Private,
-    ///                 Profile = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointProfileArgs
-    ///                 {
-    ///                     Type = Equinix.Fabric.ProfileType.L2Profile,
-    ///                     Uuid = "&lt;Azure_Service_Profile_UUID&gt;",
-    ///                 },
-    ///                 Location = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointLocationArgs
-    ///                 {
-    ///                     MetroCode = Equinix.Metro.SiliconValley,
-    ///                 },
+    ///                 Uuid = "&lt;service_token_uuid&gt;",
     ///             },
     ///         },
     ///     });
     /// 
     /// });
     /// ```
-    /// ### example 1
+    /// ### example 7
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -620,7 +430,7 @@ namespace Pulumi.Equinix.Fabric
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var port2Port = new Equinix.Fabric.Connection("port2port", new()
+    ///     var token2Aws = new Equinix.Fabric.Connection("token2aws", new()
     ///     {
     ///         Name = "ConnectionName",
     ///         Type = Equinix.Fabric.ConnectionType.EVPL,
@@ -643,214 +453,26 @@ namespace Pulumi.Equinix.Fabric
     ///         },
     ///         ASide = new Equinix.Fabric.Inputs.ConnectionASideArgs
     ///         {
-    ///             AccessPoint = new Equinix.Fabric.Inputs.ConnectionASideAccessPointArgs
+    ///             ServiceToken = new Equinix.Fabric.Inputs.ConnectionASideServiceTokenArgs
     ///             {
-    ///                 Type = Equinix.Fabric.AccessPointType.Colo,
-    ///                 Port = new Equinix.Fabric.Inputs.ConnectionASideAccessPointPortArgs
-    ///                 {
-    ///                     Uuid = "&lt;aside_port_uuid&gt;",
-    ///                 },
-    ///                 LinkProtocol = new Equinix.Fabric.Inputs.ConnectionASideAccessPointLinkProtocolArgs
-    ///                 {
-    ///                     Type = Equinix.Fabric.AccessPointLinkProtocolType.QinQ,
-    ///                     VlanSTag = 1976,
-    ///                 },
+    ///                 Uuid = "&lt;service_token_uuid&gt;",
     ///             },
     ///         },
     ///         ZSide = new Equinix.Fabric.Inputs.ConnectionZSideArgs
     ///         {
     ///             AccessPoint = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointArgs
     ///             {
-    ///                 Type = Equinix.Fabric.AccessPointType.Colo,
-    ///                 Port = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointPortArgs
+    ///                 Type = Equinix.Fabric.AccessPointType.SP,
+    ///                 AuthenticationKey = "&lt;aws_account_id&gt;",
+    ///                 SellerRegion = "us-west-1",
+    ///                 Profile = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointProfileArgs
     ///                 {
-    ///                     Uuid = "&lt;zside_port_uuid&gt;",
-    ///                 },
-    ///                 LinkProtocol = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointLinkProtocolArgs
-    ///                 {
-    ///                     Type = Equinix.Fabric.AccessPointLinkProtocolType.QinQ,
-    ///                     VlanSTag = 3711,
+    ///                     Type = Equinix.Fabric.ProfileType.L2Profile,
+    ///                     Uuid = "&lt;service_profile_uuid&gt;",
     ///                 },
     ///                 Location = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointLocationArgs
     ///                 {
     ///                     MetroCode = Equinix.Metro.SiliconValley,
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### example 14
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Equinix = Pulumi.Equinix;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var epl = new Equinix.Fabric.Connection("epl", new()
-    ///     {
-    ///         Name = "ConnectionName",
-    ///         Type = "EPLAN_VC",
-    ///         Notifications = new[]
-    ///         {
-    ///             new Equinix.Fabric.Inputs.ConnectionNotificationArgs
-    ///             {
-    ///                 Type = Equinix.Fabric.NotificationsType.All,
-    ///                 Emails = new[]
-    ///                 {
-    ///                     "example@equinix.com",
-    ///                     "test1@equinix.com",
-    ///                 },
-    ///             },
-    ///         },
-    ///         Bandwidth = 50,
-    ///         Order = new Equinix.Fabric.Inputs.ConnectionOrderArgs
-    ///         {
-    ///             PurchaseOrderNumber = "1-323292",
-    ///         },
-    ///         ASide = new Equinix.Fabric.Inputs.ConnectionASideArgs
-    ///         {
-    ///             AccessPoint = new Equinix.Fabric.Inputs.ConnectionASideAccessPointArgs
-    ///             {
-    ///                 Type = Equinix.Fabric.AccessPointType.Colo,
-    ///                 Port = new Equinix.Fabric.Inputs.ConnectionASideAccessPointPortArgs
-    ///                 {
-    ///                     Uuid = "&lt;aside_port_uuid&gt;",
-    ///                 },
-    ///             },
-    ///         },
-    ///         ZSide = new Equinix.Fabric.Inputs.ConnectionZSideArgs
-    ///         {
-    ///             AccessPoint = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointArgs
-    ///             {
-    ///                 Type = Equinix.Fabric.AccessPointType.Network,
-    ///                 Network = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointNetworkArgs
-    ///                 {
-    ///                     Uuid = "&lt;network_uuid&gt;",
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### example 3
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Equinix = Pulumi.Equinix;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var epl = new Equinix.Fabric.Connection("epl", new()
-    ///     {
-    ///         Name = "ConnectionName",
-    ///         Type = Equinix.Fabric.ConnectionType.EPL,
-    ///         Notifications = new[]
-    ///         {
-    ///             new Equinix.Fabric.Inputs.ConnectionNotificationArgs
-    ///             {
-    ///                 Type = Equinix.Fabric.NotificationsType.All,
-    ///                 Emails = new[]
-    ///                 {
-    ///                     "example@equinix.com",
-    ///                     "test1@equinix.com",
-    ///                 },
-    ///             },
-    ///         },
-    ///         Bandwidth = 50,
-    ///         Order = new Equinix.Fabric.Inputs.ConnectionOrderArgs
-    ///         {
-    ///             PurchaseOrderNumber = "1-323292",
-    ///         },
-    ///         ASide = new Equinix.Fabric.Inputs.ConnectionASideArgs
-    ///         {
-    ///             AccessPoint = new Equinix.Fabric.Inputs.ConnectionASideAccessPointArgs
-    ///             {
-    ///                 Type = Equinix.Fabric.AccessPointType.Colo,
-    ///                 Port = new Equinix.Fabric.Inputs.ConnectionASideAccessPointPortArgs
-    ///                 {
-    ///                     Uuid = "&lt;aside_port_uuid&gt;",
-    ///                 },
-    ///             },
-    ///         },
-    ///         ZSide = new Equinix.Fabric.Inputs.ConnectionZSideArgs
-    ///         {
-    ///             AccessPoint = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointArgs
-    ///             {
-    ///                 Type = Equinix.Fabric.AccessPointType.Colo,
-    ///                 Port = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointPortArgs
-    ///                 {
-    ///                     Uuid = "&lt;zside_port_uuid&gt;",
-    ///                 },
-    ///                 Location = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointLocationArgs
-    ///                 {
-    ///                     MetroCode = Equinix.Metro.SiliconValley,
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### example 15
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Equinix = Pulumi.Equinix;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var epl = new Equinix.Fabric.Connection("epl", new()
-    ///     {
-    ///         Name = "ConnectionName",
-    ///         Type = "EVPLAN_VC",
-    ///         Notifications = new[]
-    ///         {
-    ///             new Equinix.Fabric.Inputs.ConnectionNotificationArgs
-    ///             {
-    ///                 Type = Equinix.Fabric.NotificationsType.All,
-    ///                 Emails = new[]
-    ///                 {
-    ///                     "example@equinix.com",
-    ///                     "test1@equinix.com",
-    ///                 },
-    ///             },
-    ///         },
-    ///         Bandwidth = 50,
-    ///         Order = new Equinix.Fabric.Inputs.ConnectionOrderArgs
-    ///         {
-    ///             PurchaseOrderNumber = "1-323292",
-    ///         },
-    ///         ASide = new Equinix.Fabric.Inputs.ConnectionASideArgs
-    ///         {
-    ///             AccessPoint = new Equinix.Fabric.Inputs.ConnectionASideAccessPointArgs
-    ///             {
-    ///                 Type = Equinix.Fabric.AccessPointType.Colo,
-    ///                 Port = new Equinix.Fabric.Inputs.ConnectionASideAccessPointPortArgs
-    ///                 {
-    ///                     Uuid = "&lt;aside_port_uuid&gt;",
-    ///                 },
-    ///                 LinkProtocol = new Equinix.Fabric.Inputs.ConnectionASideAccessPointLinkProtocolArgs
-    ///                 {
-    ///                     Type = Equinix.Fabric.AccessPointLinkProtocolType.Dot1q,
-    ///                     VlanSTag = 1976,
-    ///                 },
-    ///             },
-    ///         },
-    ///         ZSide = new Equinix.Fabric.Inputs.ConnectionZSideArgs
-    ///         {
-    ///             AccessPoint = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointArgs
-    ///             {
-    ///                 Type = Equinix.Fabric.AccessPointType.Network,
-    ///                 Network = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointNetworkArgs
-    ///                 {
-    ///                     Uuid = "&lt;network_uuid&gt;",
     ///                 },
     ///             },
     ///         },
@@ -923,6 +545,330 @@ namespace Pulumi.Equinix.Fabric
     /// 
     /// });
     /// ```
+    /// ### example 9
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Equinix = Pulumi.Equinix;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var fcr2Azure = new Equinix.Fabric.Connection("fcr2azure", new()
+    ///     {
+    ///         Name = "ConnectionName",
+    ///         Type = "IP_VC",
+    ///         Notifications = new[]
+    ///         {
+    ///             new Equinix.Fabric.Inputs.ConnectionNotificationArgs
+    ///             {
+    ///                 Type = Equinix.Fabric.NotificationsType.All,
+    ///                 Emails = new[]
+    ///                 {
+    ///                     "example@equinix.com",
+    ///                     "test1@equinix.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///         Bandwidth = 50,
+    ///         Order = new Equinix.Fabric.Inputs.ConnectionOrderArgs
+    ///         {
+    ///             PurchaseOrderNumber = "1-323292",
+    ///         },
+    ///         ASide = new Equinix.Fabric.Inputs.ConnectionASideArgs
+    ///         {
+    ///             AccessPoint = new Equinix.Fabric.Inputs.ConnectionASideAccessPointArgs
+    ///             {
+    ///                 Type = "CLOUD_ROUTER",
+    ///                 Router = new Equinix.Fabric.Inputs.ConnectionASideAccessPointRouterArgs
+    ///                 {
+    ///                     Uuid = "&lt;cloud_router_uuid&gt;",
+    ///                 },
+    ///             },
+    ///         },
+    ///         ZSide = new Equinix.Fabric.Inputs.ConnectionZSideArgs
+    ///         {
+    ///             AccessPoint = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointArgs
+    ///             {
+    ///                 Type = Equinix.Fabric.AccessPointType.SP,
+    ///                 AuthenticationKey = "&lt;Azure_ExpressRouter_Auth_Key&gt;",
+    ///                 PeeringType = Equinix.Fabric.AccessPointPeeringType.Private,
+    ///                 Profile = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointProfileArgs
+    ///                 {
+    ///                     Type = Equinix.Fabric.ProfileType.L2Profile,
+    ///                     Uuid = "&lt;Azure_Service_Profile_UUID&gt;",
+    ///                 },
+    ///                 Location = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointLocationArgs
+    ///                 {
+    ///                     MetroCode = Equinix.Metro.SiliconValley,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### example 10
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Equinix = Pulumi.Equinix;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var vd2Azure = new Equinix.Fabric.Connection("vd2azure", new()
+    ///     {
+    ///         Name = "ConnectionName",
+    ///         Type = Equinix.Fabric.ConnectionType.EVPL,
+    ///         Notifications = new[]
+    ///         {
+    ///             new Equinix.Fabric.Inputs.ConnectionNotificationArgs
+    ///             {
+    ///                 Type = Equinix.Fabric.NotificationsType.All,
+    ///                 Emails = new[]
+    ///                 {
+    ///                     "example@equinix.com",
+    ///                     "test1@equinix.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///         Bandwidth = 50,
+    ///         Order = new Equinix.Fabric.Inputs.ConnectionOrderArgs
+    ///         {
+    ///             PurchaseOrderNumber = "1-323292",
+    ///         },
+    ///         ASide = new Equinix.Fabric.Inputs.ConnectionASideArgs
+    ///         {
+    ///             AccessPoint = new Equinix.Fabric.Inputs.ConnectionASideAccessPointArgs
+    ///             {
+    ///                 Type = Equinix.Fabric.AccessPointType.VD,
+    ///                 VirtualDevice = new Equinix.Fabric.Inputs.ConnectionASideAccessPointVirtualDeviceArgs
+    ///                 {
+    ///                     Type = "EDGE",
+    ///                     Uuid = "&lt;device_uuid&gt;",
+    ///                 },
+    ///                 Interface = new Equinix.Fabric.Inputs.ConnectionASideAccessPointInterfaceArgs
+    ///                 {
+    ///                     Type = "CLOUD",
+    ///                     Id = 7,
+    ///                 },
+    ///             },
+    ///         },
+    ///         ZSide = new Equinix.Fabric.Inputs.ConnectionZSideArgs
+    ///         {
+    ///             AccessPoint = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointArgs
+    ///             {
+    ///                 Type = Equinix.Fabric.AccessPointType.SP,
+    ///                 AuthenticationKey = "&lt;Azure_ExpressRouter_Auth_Key&gt;",
+    ///                 PeeringType = Equinix.Fabric.AccessPointPeeringType.Private,
+    ///                 Profile = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointProfileArgs
+    ///                 {
+    ///                     Type = Equinix.Fabric.ProfileType.L2Profile,
+    ///                     Uuid = "&lt;Azure_Service_Profile_UUID&gt;",
+    ///                 },
+    ///                 Location = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointLocationArgs
+    ///                 {
+    ///                     MetroCode = Equinix.Metro.SiliconValley,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### example 11
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Equinix = Pulumi.Equinix;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var vd2AzurePrimary = new Equinix.Fabric.Connection("vd2azurePrimary", new()
+    ///     {
+    ///         Name = "ConnectionName",
+    ///         Type = Equinix.Fabric.ConnectionType.EVPL,
+    ///         Redundancy = new Equinix.Fabric.Inputs.ConnectionRedundancyArgs
+    ///         {
+    ///             Priority = "PRIMARY",
+    ///         },
+    ///         Notifications = new[]
+    ///         {
+    ///             new Equinix.Fabric.Inputs.ConnectionNotificationArgs
+    ///             {
+    ///                 Type = Equinix.Fabric.NotificationsType.All,
+    ///                 Emails = new[]
+    ///                 {
+    ///                     "example@equinix.com",
+    ///                     "test1@equinix.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///         Bandwidth = 50,
+    ///         Order = new Equinix.Fabric.Inputs.ConnectionOrderArgs
+    ///         {
+    ///             PurchaseOrderNumber = "1-323292",
+    ///         },
+    ///         ASide = new Equinix.Fabric.Inputs.ConnectionASideArgs
+    ///         {
+    ///             AccessPoint = new Equinix.Fabric.Inputs.ConnectionASideAccessPointArgs
+    ///             {
+    ///                 Type = Equinix.Fabric.AccessPointType.VD,
+    ///                 VirtualDevice = new Equinix.Fabric.Inputs.ConnectionASideAccessPointVirtualDeviceArgs
+    ///                 {
+    ///                     Type = "EDGE",
+    ///                     Uuid = "&lt;device_uuid&gt;",
+    ///                 },
+    ///                 Interface = new Equinix.Fabric.Inputs.ConnectionASideAccessPointInterfaceArgs
+    ///                 {
+    ///                     Type = "CLOUD",
+    ///                     Id = 7,
+    ///                 },
+    ///             },
+    ///         },
+    ///         ZSide = new Equinix.Fabric.Inputs.ConnectionZSideArgs
+    ///         {
+    ///             AccessPoint = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointArgs
+    ///             {
+    ///                 Type = Equinix.Fabric.AccessPointType.SP,
+    ///                 AuthenticationKey = "&lt;Azure_ExpressRouter_Auth_Key&gt;",
+    ///                 PeeringType = Equinix.Fabric.AccessPointPeeringType.Private,
+    ///                 Profile = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointProfileArgs
+    ///                 {
+    ///                     Type = Equinix.Fabric.ProfileType.L2Profile,
+    ///                     Uuid = "&lt;Azure_Service_Profile_UUID&gt;",
+    ///                 },
+    ///                 Location = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointLocationArgs
+    ///                 {
+    ///                     MetroCode = Equinix.Metro.SiliconValley,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var vd2AzureSecondary = new Equinix.Fabric.Connection("vd2azureSecondary", new()
+    ///     {
+    ///         Name = "ConnectionName",
+    ///         Type = Equinix.Fabric.ConnectionType.EVPL,
+    ///         Redundancy = new Equinix.Fabric.Inputs.ConnectionRedundancyArgs
+    ///         {
+    ///             Priority = "SECONDARY",
+    ///             Group = vd2AzurePrimary.Redundancy.Apply(redundancy =&gt; redundancy?.Group),
+    ///         },
+    ///         Notifications = new[]
+    ///         {
+    ///             new Equinix.Fabric.Inputs.ConnectionNotificationArgs
+    ///             {
+    ///                 Type = Equinix.Fabric.NotificationsType.All,
+    ///                 Emails = new[]
+    ///                 {
+    ///                     "example@equinix.com",
+    ///                     "test1@equinix.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///         Bandwidth = 50,
+    ///         Order = new Equinix.Fabric.Inputs.ConnectionOrderArgs
+    ///         {
+    ///             PurchaseOrderNumber = "1-323292",
+    ///         },
+    ///         ASide = new Equinix.Fabric.Inputs.ConnectionASideArgs
+    ///         {
+    ///             AccessPoint = new Equinix.Fabric.Inputs.ConnectionASideAccessPointArgs
+    ///             {
+    ///                 Type = Equinix.Fabric.AccessPointType.VD,
+    ///                 VirtualDevice = new Equinix.Fabric.Inputs.ConnectionASideAccessPointVirtualDeviceArgs
+    ///                 {
+    ///                     Type = "EDGE",
+    ///                     Uuid = "&lt;device_uuid&gt;",
+    ///                 },
+    ///                 Interface = new Equinix.Fabric.Inputs.ConnectionASideAccessPointInterfaceArgs
+    ///                 {
+    ///                     Type = "CLOUD",
+    ///                     Id = 5,
+    ///                 },
+    ///             },
+    ///         },
+    ///         ZSide = new Equinix.Fabric.Inputs.ConnectionZSideArgs
+    ///         {
+    ///             AccessPoint = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointArgs
+    ///             {
+    ///                 Type = Equinix.Fabric.AccessPointType.SP,
+    ///                 AuthenticationKey = "&lt;Azure_ExpressRouter_Auth_Key&gt;",
+    ///                 PeeringType = Equinix.Fabric.AccessPointPeeringType.Private,
+    ///                 Profile = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointProfileArgs
+    ///                 {
+    ///                     Type = Equinix.Fabric.ProfileType.L2Profile,
+    ///                     Uuid = "&lt;Azure_Service_Profile_UUID&gt;",
+    ///                 },
+    ///                 Location = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointLocationArgs
+    ///                 {
+    ///                     MetroCode = Equinix.Metro.SiliconValley,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### example 12
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Equinix = Pulumi.Equinix;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var fcr2Network = new Equinix.Fabric.Connection("fcr2network", new()
+    ///     {
+    ///         Name = "ConnectionName",
+    ///         Type = "IPWAN_VC",
+    ///         Notifications = new[]
+    ///         {
+    ///             new Equinix.Fabric.Inputs.ConnectionNotificationArgs
+    ///             {
+    ///                 Type = Equinix.Fabric.NotificationsType.All,
+    ///                 Emails = new[]
+    ///                 {
+    ///                     "example@equinix.com",
+    ///                     "test1@equinix.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///         Bandwidth = 50,
+    ///         Order = new Equinix.Fabric.Inputs.ConnectionOrderArgs
+    ///         {
+    ///             PurchaseOrderNumber = "1-323292",
+    ///         },
+    ///         ASide = new Equinix.Fabric.Inputs.ConnectionASideArgs
+    ///         {
+    ///             AccessPoint = new Equinix.Fabric.Inputs.ConnectionASideAccessPointArgs
+    ///             {
+    ///                 Type = "CLOUD_ROUTER",
+    ///                 Router = new Equinix.Fabric.Inputs.ConnectionASideAccessPointRouterArgs
+    ///                 {
+    ///                     Uuid = "&lt;cloud_router_uuid&gt;",
+    ///                 },
+    ///             },
+    ///         },
+    ///         ZSide = new Equinix.Fabric.Inputs.ConnectionZSideArgs
+    ///         {
+    ///             AccessPoint = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointArgs
+    ///             {
+    ///                 Type = Equinix.Fabric.AccessPointType.Network,
+    ///                 Network = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointNetworkArgs
+    ///                 {
+    ///                     Uuid = "&lt;network_uuid&gt;",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### example 13
     /// ```csharp
     /// using System.Collections.Generic;
@@ -985,7 +931,7 @@ namespace Pulumi.Equinix.Fabric
     /// 
     /// });
     /// ```
-    /// ### example 9
+    /// ### example 14
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -994,10 +940,10 @@ namespace Pulumi.Equinix.Fabric
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var fcr2Azure = new Equinix.Fabric.Connection("fcr2azure", new()
+    ///     var epl = new Equinix.Fabric.Connection("epl", new()
     ///     {
     ///         Name = "ConnectionName",
-    ///         Type = "IP_VC",
+    ///         Type = "EPLAN_VC",
     ///         Notifications = new[]
     ///         {
     ///             new Equinix.Fabric.Inputs.ConnectionNotificationArgs
@@ -1019,10 +965,10 @@ namespace Pulumi.Equinix.Fabric
     ///         {
     ///             AccessPoint = new Equinix.Fabric.Inputs.ConnectionASideAccessPointArgs
     ///             {
-    ///                 Type = "CLOUD_ROUTER",
-    ///                 Router = new Equinix.Fabric.Inputs.ConnectionASideAccessPointRouterArgs
+    ///                 Type = Equinix.Fabric.AccessPointType.Colo,
+    ///                 Port = new Equinix.Fabric.Inputs.ConnectionASideAccessPointPortArgs
     ///                 {
-    ///                     Uuid = "&lt;cloud_router_uuid&gt;",
+    ///                     Uuid = "&lt;aside_port_uuid&gt;",
     ///                 },
     ///             },
     ///         },
@@ -1030,17 +976,71 @@ namespace Pulumi.Equinix.Fabric
     ///         {
     ///             AccessPoint = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointArgs
     ///             {
-    ///                 Type = Equinix.Fabric.AccessPointType.SP,
-    ///                 AuthenticationKey = "&lt;Azure_ExpressRouter_Auth_Key&gt;",
-    ///                 PeeringType = Equinix.Fabric.AccessPointPeeringType.Private,
-    ///                 Profile = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointProfileArgs
+    ///                 Type = Equinix.Fabric.AccessPointType.Network,
+    ///                 Network = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointNetworkArgs
     ///                 {
-    ///                     Type = Equinix.Fabric.ProfileType.L2Profile,
-    ///                     Uuid = "&lt;Azure_Service_Profile_UUID&gt;",
+    ///                     Uuid = "&lt;network_uuid&gt;",
     ///                 },
-    ///                 Location = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointLocationArgs
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### example 15
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Equinix = Pulumi.Equinix;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var epl = new Equinix.Fabric.Connection("epl", new()
+    ///     {
+    ///         Name = "ConnectionName",
+    ///         Type = "EVPLAN_VC",
+    ///         Notifications = new[]
+    ///         {
+    ///             new Equinix.Fabric.Inputs.ConnectionNotificationArgs
+    ///             {
+    ///                 Type = Equinix.Fabric.NotificationsType.All,
+    ///                 Emails = new[]
     ///                 {
-    ///                     MetroCode = Equinix.Metro.SiliconValley,
+    ///                     "example@equinix.com",
+    ///                     "test1@equinix.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///         Bandwidth = 50,
+    ///         Order = new Equinix.Fabric.Inputs.ConnectionOrderArgs
+    ///         {
+    ///             PurchaseOrderNumber = "1-323292",
+    ///         },
+    ///         ASide = new Equinix.Fabric.Inputs.ConnectionASideArgs
+    ///         {
+    ///             AccessPoint = new Equinix.Fabric.Inputs.ConnectionASideAccessPointArgs
+    ///             {
+    ///                 Type = Equinix.Fabric.AccessPointType.Colo,
+    ///                 Port = new Equinix.Fabric.Inputs.ConnectionASideAccessPointPortArgs
+    ///                 {
+    ///                     Uuid = "&lt;aside_port_uuid&gt;",
+    ///                 },
+    ///                 LinkProtocol = new Equinix.Fabric.Inputs.ConnectionASideAccessPointLinkProtocolArgs
+    ///                 {
+    ///                     Type = Equinix.Fabric.AccessPointLinkProtocolType.Dot1q,
+    ///                     VlanSTag = 1976,
+    ///                 },
+    ///             },
+    ///         },
+    ///         ZSide = new Equinix.Fabric.Inputs.ConnectionZSideArgs
+    ///         {
+    ///             AccessPoint = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointArgs
+    ///             {
+    ///                 Type = Equinix.Fabric.AccessPointType.Network,
+    ///                 Network = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointNetworkArgs
+    ///                 {
+    ///                     Uuid = "&lt;network_uuid&gt;",
     ///                 },
     ///             },
     ///         },

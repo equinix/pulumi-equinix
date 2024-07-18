@@ -8,18 +8,6 @@ import * as utilities from "../utilities";
  * Manage the membership of existing and new invitees within an Equinix Metal organization and its projects.
  *
  * ## Example Usage
- * ### example 2
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@equinix-labs/pulumi-equinix";
- *
- * const owner = new equinix.metal.OrganizationMember("owner", {
- *     invitee: "admin@example.com",
- *     roles: ["owner"],
- *     projectsIds: [],
- *     organizationId: organizationId,
- * });
- * ```
  * ### example 1
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -29,6 +17,18 @@ import * as utilities from "../utilities";
  *     invitee: "member@example.com",
  *     roles: ["limited_collaborator"],
  *     projectsIds: [projectId],
+ *     organizationId: organizationId,
+ * });
+ * ```
+ * ### example 2
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const owner = new equinix.metal.OrganizationMember("owner", {
+ *     invitee: "admin@example.com",
+ *     roles: ["owner"],
+ *     projectsIds: [],
  *     organizationId: organizationId,
  * });
  * ```

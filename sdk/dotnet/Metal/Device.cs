@@ -15,7 +15,28 @@ namespace Pulumi.Equinix.Metal
     /// &gt; **NOTE:** All arguments including the `root_password` and `user_data` will be stored in the raw state as plain-text. Read more about sensitive data in state.
     /// 
     /// ## Example Usage
-    /// ### example 5
+    /// ### example 1
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Equinix = Pulumi.Equinix;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var web1 = new Equinix.Metal.Device("web1", new()
+    ///     {
+    ///         Hostname = "tf.coreos2",
+    ///         Plan = Equinix.Metal.Plan.C3SmallX86,
+    ///         Metro = "sv",
+    ///         OperatingSystem = Equinix.Metal.OperatingSystem.Ubuntu20_04,
+    ///         BillingCycle = Equinix.Metal.BillingCycle.Hourly,
+    ///         ProjectId = projectId,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### example 2
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -34,14 +55,34 @@ namespace Pulumi.Equinix.Metal
     ///         ProjectId = projectId,
     ///         IpxeScriptUrl = "https://rawgit.com/cloudnativelabs/pxe/master/packet/coreos-stable-metal.ipxe",
     ///         AlwaysPxe = false,
-    ///         UserData = userData,
-    ///         CustomData = customData,
-    ///         Behavior = new Equinix.Metal.Inputs.DeviceBehaviorArgs
+    ///         UserData = example.Rendered,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### example 3
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Equinix = Pulumi.Equinix;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var web1 = new Equinix.Metal.Device("web1", new()
+    ///     {
+    ///         Hostname = "tf.coreos2",
+    ///         Plan = Equinix.Metal.Plan.C3SmallX86,
+    ///         Metro = "ny",
+    ///         OperatingSystem = Equinix.Metal.OperatingSystem.Ubuntu20_04,
+    ///         BillingCycle = Equinix.Metal.BillingCycle.Hourly,
+    ///         ProjectId = projectId,
+    ///         IpAddresses = new[]
     ///         {
-    ///             AllowChanges = new[]
+    ///             new Equinix.Metal.Inputs.DeviceIpAddressArgs
     ///             {
-    ///                 "custom_data",
-    ///                 "user_data",
+    ///                 Type = "private_ipv4",
+    ///                 Cidr = 30,
     ///             },
     ///         },
     ///     });
@@ -124,57 +165,7 @@ namespace Pulumi.Equinix.Metal
     /// 
     /// });
     /// ```
-    /// ### example 1
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Equinix = Pulumi.Equinix;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var web1 = new Equinix.Metal.Device("web1", new()
-    ///     {
-    ///         Hostname = "tf.coreos2",
-    ///         Plan = Equinix.Metal.Plan.C3SmallX86,
-    ///         Metro = "sv",
-    ///         OperatingSystem = Equinix.Metal.OperatingSystem.Ubuntu20_04,
-    ///         BillingCycle = Equinix.Metal.BillingCycle.Hourly,
-    ///         ProjectId = projectId,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### example 3
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Equinix = Pulumi.Equinix;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var web1 = new Equinix.Metal.Device("web1", new()
-    ///     {
-    ///         Hostname = "tf.coreos2",
-    ///         Plan = Equinix.Metal.Plan.C3SmallX86,
-    ///         Metro = "ny",
-    ///         OperatingSystem = Equinix.Metal.OperatingSystem.Ubuntu20_04,
-    ///         BillingCycle = Equinix.Metal.BillingCycle.Hourly,
-    ///         ProjectId = projectId,
-    ///         IpAddresses = new[]
-    ///         {
-    ///             new Equinix.Metal.Inputs.DeviceIpAddressArgs
-    ///             {
-    ///                 Type = "private_ipv4",
-    ///                 Cidr = 30,
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### example 2
+    /// ### example 5
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -193,7 +184,16 @@ namespace Pulumi.Equinix.Metal
     ///         ProjectId = projectId,
     ///         IpxeScriptUrl = "https://rawgit.com/cloudnativelabs/pxe/master/packet/coreos-stable-metal.ipxe",
     ///         AlwaysPxe = false,
-    ///         UserData = example.Rendered,
+    ///         UserData = userData,
+    ///         CustomData = customData,
+    ///         Behavior = new Equinix.Metal.Inputs.DeviceBehaviorArgs
+    ///         {
+    ///             AllowChanges = new[]
+    ///             {
+    ///                 "custom_data",
+    ///                 "user_data",
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });

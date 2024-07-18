@@ -26,7 +26,71 @@ import (
 // * **BYOL** - [bring your own license] Where customer brings his own, already procured device software license. There are no charges associated with such license. It is the only licensing mode for `self-configured` devices.
 //
 // ## Example Usage
-// ### example 6
+// ### example 1
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			dc, err := networkedge.GetAccount(ctx, &networkedge.GetAccountArgs{
+//				MetroCode: "DC",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			sv, err := networkedge.GetAccount(ctx, &networkedge.GetAccountArgs{
+//				MetroCode: "SV",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networkedge.NewDevice(ctx, "csr1000vHa", &networkedge.DeviceArgs{
+//				Name:           pulumi.String("tf-csr1000v-p"),
+//				Throughput:     pulumi.Int(500),
+//				ThroughputUnit: pulumi.String(networkedge.ThroughputUnitMbps),
+//				MetroCode:      pulumi.String(dc.MetroCode),
+//				TypeCode:       pulumi.String("CSR1000V"),
+//				SelfManaged:    pulumi.Bool(false),
+//				Connectivity:   pulumi.String("INTERNET-ACCESS"),
+//				Byol:           pulumi.Bool(false),
+//				PackageCode:    pulumi.String("SEC"),
+//				Notifications: pulumi.StringArray{
+//					pulumi.String("john@equinix.com"),
+//					pulumi.String("marry@equinix.com"),
+//					pulumi.String("fred@equinix.com"),
+//				},
+//				Hostname:      pulumi.String("csr1000v-p"),
+//				TermLength:    pulumi.Int(12),
+//				AccountNumber: pulumi.String(dc.Number),
+//				Version:       pulumi.String("16.09.05"),
+//				CoreCount:     pulumi.Int(2),
+//				SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
+//					Name:      pulumi.String("tf-csr1000v-s"),
+//					MetroCode: pulumi.String(sv.MetroCode),
+//					Hostname:  pulumi.String("csr1000v-s"),
+//					Notifications: pulumi.StringArray{
+//						pulumi.String("john@equinix.com"),
+//						pulumi.String("marry@equinix.com"),
+//					},
+//					AccountNumber: pulumi.String(sv.Number),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### example 2
 // ```go
 // package main
 //
@@ -40,51 +104,47 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			sv, err := networkedge.GetAccount(ctx, &networkedge.GetAccountArgs{
-//				Name:      pulumi.StringRef("account-name"),
 //				MetroCode: "SV",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			testPublicKey, err := networkedge.NewSshKey(ctx, "testPublicKey", &networkedge.SshKeyArgs{
-//				Name:      pulumi.String("key-name"),
-//				PublicKey: pulumi.String("ssh-dss key-value"),
-//				Type:      pulumi.String("DSA"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = networkedge.NewDevice(ctx, "aristaHa", &networkedge.DeviceArgs{
-//				Name:         pulumi.String("tf-arista-p"),
-//				MetroCode:    pulumi.String(sv.MetroCode),
-//				TypeCode:     pulumi.String("ARISTA-ROUTER"),
-//				SelfManaged:  pulumi.Bool(true),
-//				Connectivity: pulumi.String("PRIVATE"),
-//				Byol:         pulumi.Bool(true),
-//				PackageCode:  pulumi.String("CloudEOS"),
+//			_, err = networkedge.NewDevice(ctx, "panwCluster", &networkedge.DeviceArgs{
+//				Name:        pulumi.String("tf-panw"),
+//				MetroCode:   pulumi.String(sv.MetroCode),
+//				TypeCode:    pulumi.String("PA-VM"),
+//				SelfManaged: pulumi.Bool(true),
+//				Byol:        pulumi.Bool(true),
+//				PackageCode: pulumi.String("VM100"),
 //				Notifications: pulumi.StringArray{
-//					pulumi.String("test@equinix.com"),
+//					pulumi.String("john@equinix.com"),
+//					pulumi.String("marry@equinix.com"),
+//					pulumi.String("fred@equinix.com"),
 //				},
-//				Hostname:            pulumi.String("arista-p"),
-//				AccountNumber:       pulumi.String(sv.Number),
-//				Version:             pulumi.String("4.29.0"),
-//				CoreCount:           pulumi.Int(4),
-//				TermLength:          pulumi.Int(12),
-//				AdditionalBandwidth: pulumi.Int(5),
+//				TermLength:     pulumi.Int(12),
+//				AccountNumber:  pulumi.String(sv.Number),
+//				Version:        pulumi.String("10.1.3"),
+//				InterfaceCount: pulumi.Int(10),
+//				CoreCount:      pulumi.Int(2),
 //				SshKey: &networkedge.DeviceSshKeyArgs{
-//					Username: pulumi.String("test-username"),
-//					KeyName:  testPublicKey.Name,
+//					Username: pulumi.String("test"),
+//					KeyName:  pulumi.String("test-key"),
 //				},
-//				AclTemplateId: pulumi.String("c637a17b-7a6a-4486-924b-30e6c36904b0"),
-//				SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
-//					Name:      pulumi.String("tf-arista-s"),
-//					MetroCode: pulumi.String(sv.MetroCode),
-//					Hostname:  pulumi.String("arista-s"),
-//					Notifications: pulumi.StringArray{
-//						pulumi.String("test@eq.com"),
+//				AclTemplateId: pulumi.String("0bff6e05-f0e7-44cd-804a-25b92b835f8b"),
+//				ClusterDetails: &networkedge.DeviceClusterDetailsArgs{
+//					ClusterName: pulumi.String("tf-panw-cluster"),
+//					Node0: &networkedge.DeviceClusterDetailsNode0Args{
+//						VendorConfiguration: &networkedge.DeviceClusterDetailsNode0VendorConfigurationArgs{
+//							Hostname: pulumi.String("panw-node0"),
+//						},
+//						LicenseToken: pulumi.String("licenseToken"),
 //					},
-//					AccountNumber: pulumi.String(sv.Number),
-//					AclTemplateId: pulumi.String("fee5e2c0-6198-4ce6-9cbd-bbe6c1dbe138"),
+//					Node1: &networkedge.DeviceClusterDetailsNode1Args{
+//						VendorConfiguration: &networkedge.DeviceClusterDetailsNode1VendorConfigurationArgs{
+//							Hostname: pulumi.String("panw-node1"),
+//						},
+//						LicenseToken: pulumi.String("licenseToken"),
+//					},
 //				},
 //			})
 //			if err != nil {
@@ -165,6 +225,178 @@ import (
 //	}
 //
 // ```
+// ### example 4
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			sv, err := networkedge.GetAccount(ctx, &networkedge.GetAccountArgs{
+//				Name:      pulumi.StringRef("account-name"),
+//				MetroCode: "SV",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networkedge.NewDevice(ctx, "c8kvSingle", &networkedge.DeviceArgs{
+//				Name:        pulumi.String("tf-c8kv"),
+//				MetroCode:   pulumi.String(sv.MetroCode),
+//				TypeCode:    pulumi.String("C8000V"),
+//				SelfManaged: pulumi.Bool(true),
+//				Byol:        pulumi.Bool(true),
+//				PackageCode: pulumi.String("network-essentials"),
+//				Notifications: pulumi.StringArray{
+//					pulumi.String("test@equinix.com"),
+//				},
+//				Hostname:            pulumi.String("C8KV"),
+//				AccountNumber:       pulumi.String(sv.Number),
+//				Version:             pulumi.String("17.06.01a"),
+//				CoreCount:           pulumi.Int(2),
+//				TermLength:          pulumi.Int(12),
+//				LicenseToken:        pulumi.String("valid-license-token"),
+//				AdditionalBandwidth: pulumi.Int(5),
+//				SshKey: &networkedge.DeviceSshKeyArgs{
+//					Username: pulumi.String("test-username"),
+//					KeyName:  pulumi.String("valid-key-name"),
+//				},
+//				AclTemplateId: pulumi.String("3e548c02-9164-4197-aa23-05b1f644883c"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### example 5
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			sv, err := networkedge.GetAccount(ctx, &networkedge.GetAccountArgs{
+//				Name:      pulumi.StringRef("account-name"),
+//				MetroCode: "SV",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networkedge.NewDevice(ctx, "vsrxSingle", &networkedge.DeviceArgs{
+//				Name:        pulumi.String("tf-c8kv-sdwan"),
+//				MetroCode:   pulumi.String(sv.MetroCode),
+//				TypeCode:    pulumi.String("VSRX"),
+//				SelfManaged: pulumi.Bool(true),
+//				Byol:        pulumi.Bool(true),
+//				PackageCode: pulumi.String("STD"),
+//				Notifications: pulumi.StringArray{
+//					pulumi.String("test@equinix.com"),
+//				},
+//				Hostname:            pulumi.String("VSRX"),
+//				AccountNumber:       pulumi.String(sv.Number),
+//				Version:             pulumi.String("23.2R1.13"),
+//				CoreCount:           pulumi.Int(2),
+//				TermLength:          pulumi.Int(12),
+//				AdditionalBandwidth: pulumi.Int(5),
+//				ProjectId:           pulumi.String("a86d7112-d740-4758-9c9c-31e66373746b"),
+//				DiverseDeviceId:     pulumi.String("ed7891bd-15b4-4f72-ac56-d96cfdacddcc"),
+//				SshKey: &networkedge.DeviceSshKeyArgs{
+//					Username: pulumi.String("test-username"),
+//					KeyName:  pulumi.String("valid-key-name"),
+//				},
+//				AclTemplateId: pulumi.String("3e548c02-9164-4197-aa23-05b1f644883c"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### example 6
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			sv, err := networkedge.GetAccount(ctx, &networkedge.GetAccountArgs{
+//				Name:      pulumi.StringRef("account-name"),
+//				MetroCode: "SV",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			testPublicKey, err := networkedge.NewSshKey(ctx, "testPublicKey", &networkedge.SshKeyArgs{
+//				Name:      pulumi.String("key-name"),
+//				PublicKey: pulumi.String("ssh-dss key-value"),
+//				Type:      pulumi.String("DSA"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networkedge.NewDevice(ctx, "aristaHa", &networkedge.DeviceArgs{
+//				Name:         pulumi.String("tf-arista-p"),
+//				MetroCode:    pulumi.String(sv.MetroCode),
+//				TypeCode:     pulumi.String("ARISTA-ROUTER"),
+//				SelfManaged:  pulumi.Bool(true),
+//				Connectivity: pulumi.String("PRIVATE"),
+//				Byol:         pulumi.Bool(true),
+//				PackageCode:  pulumi.String("CloudEOS"),
+//				Notifications: pulumi.StringArray{
+//					pulumi.String("test@equinix.com"),
+//				},
+//				Hostname:            pulumi.String("arista-p"),
+//				AccountNumber:       pulumi.String(sv.Number),
+//				Version:             pulumi.String("4.29.0"),
+//				CoreCount:           pulumi.Int(4),
+//				TermLength:          pulumi.Int(12),
+//				AdditionalBandwidth: pulumi.Int(5),
+//				SshKey: &networkedge.DeviceSshKeyArgs{
+//					Username: pulumi.String("test-username"),
+//					KeyName:  testPublicKey.Name,
+//				},
+//				AclTemplateId: pulumi.String("c637a17b-7a6a-4486-924b-30e6c36904b0"),
+//				SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
+//					Name:      pulumi.String("tf-arista-s"),
+//					MetroCode: pulumi.String(sv.MetroCode),
+//					Hostname:  pulumi.String("arista-s"),
+//					Notifications: pulumi.StringArray{
+//						pulumi.String("test@eq.com"),
+//					},
+//					AccountNumber: pulumi.String(sv.Number),
+//					AclTemplateId: pulumi.String("fee5e2c0-6198-4ce6-9cbd-bbe6c1dbe138"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### example 7
 // ```go
 // package main
@@ -236,191 +468,6 @@ import (
 //						"licenseId":       pulumi.String("xxxxxxxxxxxxxxx"),
 //					},
 //				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// ### example 9
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			sv, err := networkedge.GetAccount(ctx, &networkedge.GetAccountArgs{
-//				MetroCode: "SV",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = networkedge.NewDevice(ctx, "panwCluster", &networkedge.DeviceArgs{
-//				Name:        pulumi.String("tf-panw"),
-//				MetroCode:   pulumi.String(sv.MetroCode),
-//				TypeCode:    pulumi.String("PA-VM"),
-//				SelfManaged: pulumi.Bool(true),
-//				Byol:        pulumi.Bool(true),
-//				PackageCode: pulumi.String("VM100"),
-//				Notifications: pulumi.StringArray{
-//					pulumi.String("john@equinix.com"),
-//					pulumi.String("marry@equinix.com"),
-//					pulumi.String("fred@equinix.com"),
-//				},
-//				TermLength:     pulumi.Int(12),
-//				AccountNumber:  pulumi.String(sv.Number),
-//				Version:        pulumi.String("11.1.3"),
-//				InterfaceCount: pulumi.Int(10),
-//				CoreCount:      pulumi.Int(2),
-//				SshKey: &networkedge.DeviceSshKeyArgs{
-//					Username: pulumi.String("test"),
-//					KeyName:  pulumi.String("test-key"),
-//				},
-//				AclTemplateId: pulumi.String("0bff6e05-f0e7-44cd-804a-25b92b835f8b"),
-//				ClusterDetails: &networkedge.DeviceClusterDetailsArgs{
-//					ClusterName: pulumi.String("tf-panw-cluster"),
-//					Node0: &networkedge.DeviceClusterDetailsNode0Args{
-//						VendorConfiguration: &networkedge.DeviceClusterDetailsNode0VendorConfigurationArgs{
-//							Hostname:          pulumi.String("panw-node0"),
-//							PanoramaIpAddress: pulumi.String("x.x.x.x"),
-//							PanoramaAuthKey:   pulumi.String("xxxxxxxxxxx"),
-//						},
-//						LicenseToken: pulumi.String("licenseToken"),
-//					},
-//					Node1: &networkedge.DeviceClusterDetailsNode1Args{
-//						VendorConfiguration: &networkedge.DeviceClusterDetailsNode1VendorConfigurationArgs{
-//							Hostname:          pulumi.String("panw-node1"),
-//							PanoramaIpAddress: pulumi.String("x.x.x.x"),
-//							PanoramaAuthKey:   pulumi.String("xxxxxxxxxxx"),
-//						},
-//						LicenseToken: pulumi.String("licenseToken"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// ### example 2
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			sv, err := networkedge.GetAccount(ctx, &networkedge.GetAccountArgs{
-//				MetroCode: "SV",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = networkedge.NewDevice(ctx, "panwCluster", &networkedge.DeviceArgs{
-//				Name:        pulumi.String("tf-panw"),
-//				MetroCode:   pulumi.String(sv.MetroCode),
-//				TypeCode:    pulumi.String("PA-VM"),
-//				SelfManaged: pulumi.Bool(true),
-//				Byol:        pulumi.Bool(true),
-//				PackageCode: pulumi.String("VM100"),
-//				Notifications: pulumi.StringArray{
-//					pulumi.String("john@equinix.com"),
-//					pulumi.String("marry@equinix.com"),
-//					pulumi.String("fred@equinix.com"),
-//				},
-//				TermLength:     pulumi.Int(12),
-//				AccountNumber:  pulumi.String(sv.Number),
-//				Version:        pulumi.String("10.1.3"),
-//				InterfaceCount: pulumi.Int(10),
-//				CoreCount:      pulumi.Int(2),
-//				SshKey: &networkedge.DeviceSshKeyArgs{
-//					Username: pulumi.String("test"),
-//					KeyName:  pulumi.String("test-key"),
-//				},
-//				AclTemplateId: pulumi.String("0bff6e05-f0e7-44cd-804a-25b92b835f8b"),
-//				ClusterDetails: &networkedge.DeviceClusterDetailsArgs{
-//					ClusterName: pulumi.String("tf-panw-cluster"),
-//					Node0: &networkedge.DeviceClusterDetailsNode0Args{
-//						VendorConfiguration: &networkedge.DeviceClusterDetailsNode0VendorConfigurationArgs{
-//							Hostname: pulumi.String("panw-node0"),
-//						},
-//						LicenseToken: pulumi.String("licenseToken"),
-//					},
-//					Node1: &networkedge.DeviceClusterDetailsNode1Args{
-//						VendorConfiguration: &networkedge.DeviceClusterDetailsNode1VendorConfigurationArgs{
-//							Hostname: pulumi.String("panw-node1"),
-//						},
-//						LicenseToken: pulumi.String("licenseToken"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// ### example 4
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			sv, err := networkedge.GetAccount(ctx, &networkedge.GetAccountArgs{
-//				Name:      pulumi.StringRef("account-name"),
-//				MetroCode: "SV",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = networkedge.NewDevice(ctx, "c8kvSingle", &networkedge.DeviceArgs{
-//				Name:        pulumi.String("tf-c8kv"),
-//				MetroCode:   pulumi.String(sv.MetroCode),
-//				TypeCode:    pulumi.String("C8000V"),
-//				SelfManaged: pulumi.Bool(true),
-//				Byol:        pulumi.Bool(true),
-//				PackageCode: pulumi.String("network-essentials"),
-//				Notifications: pulumi.StringArray{
-//					pulumi.String("test@equinix.com"),
-//				},
-//				Hostname:            pulumi.String("C8KV"),
-//				AccountNumber:       pulumi.String(sv.Number),
-//				Version:             pulumi.String("17.06.01a"),
-//				CoreCount:           pulumi.Int(2),
-//				TermLength:          pulumi.Int(12),
-//				LicenseToken:        pulumi.String("valid-license-token"),
-//				AdditionalBandwidth: pulumi.Int(5),
-//				SshKey: &networkedge.DeviceSshKeyArgs{
-//					Username: pulumi.String("test-username"),
-//					KeyName:  pulumi.String("valid-key-name"),
-//				},
-//				AclTemplateId: pulumi.String("3e548c02-9164-4197-aa23-05b1f644883c"),
 //			})
 //			if err != nil {
 //				return err
@@ -522,7 +569,7 @@ import (
 //	}
 //
 // ```
-// ### example 1
+// ### example 9
 // ```go
 // package main
 //
@@ -535,100 +582,53 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			dc, err := networkedge.GetAccount(ctx, &networkedge.GetAccountArgs{
-//				MetroCode: "DC",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
 //			sv, err := networkedge.GetAccount(ctx, &networkedge.GetAccountArgs{
 //				MetroCode: "SV",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = networkedge.NewDevice(ctx, "csr1000vHa", &networkedge.DeviceArgs{
-//				Name:           pulumi.String("tf-csr1000v-p"),
-//				Throughput:     pulumi.Int(500),
-//				ThroughputUnit: pulumi.String(networkedge.ThroughputUnitMbps),
-//				MetroCode:      pulumi.String(dc.MetroCode),
-//				TypeCode:       pulumi.String("CSR1000V"),
-//				SelfManaged:    pulumi.Bool(false),
-//				Connectivity:   pulumi.String("INTERNET-ACCESS"),
-//				Byol:           pulumi.Bool(false),
-//				PackageCode:    pulumi.String("SEC"),
+//			_, err = networkedge.NewDevice(ctx, "panwCluster", &networkedge.DeviceArgs{
+//				Name:        pulumi.String("tf-panw"),
+//				MetroCode:   pulumi.String(sv.MetroCode),
+//				TypeCode:    pulumi.String("PA-VM"),
+//				SelfManaged: pulumi.Bool(true),
+//				Byol:        pulumi.Bool(true),
+//				PackageCode: pulumi.String("VM100"),
 //				Notifications: pulumi.StringArray{
 //					pulumi.String("john@equinix.com"),
 //					pulumi.String("marry@equinix.com"),
 //					pulumi.String("fred@equinix.com"),
 //				},
-//				Hostname:      pulumi.String("csr1000v-p"),
-//				TermLength:    pulumi.Int(12),
-//				AccountNumber: pulumi.String(dc.Number),
-//				Version:       pulumi.String("16.09.05"),
-//				CoreCount:     pulumi.Int(2),
-//				SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
-//					Name:      pulumi.String("tf-csr1000v-s"),
-//					MetroCode: pulumi.String(sv.MetroCode),
-//					Hostname:  pulumi.String("csr1000v-s"),
-//					Notifications: pulumi.StringArray{
-//						pulumi.String("john@equinix.com"),
-//						pulumi.String("marry@equinix.com"),
-//					},
-//					AccountNumber: pulumi.String(sv.Number),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// ### example 5
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			sv, err := networkedge.GetAccount(ctx, &networkedge.GetAccountArgs{
-//				Name:      pulumi.StringRef("account-name"),
-//				MetroCode: "SV",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = networkedge.NewDevice(ctx, "vsrxSingle", &networkedge.DeviceArgs{
-//				Name:        pulumi.String("tf-c8kv-sdwan"),
-//				MetroCode:   pulumi.String(sv.MetroCode),
-//				TypeCode:    pulumi.String("VSRX"),
-//				SelfManaged: pulumi.Bool(true),
-//				Byol:        pulumi.Bool(true),
-//				PackageCode: pulumi.String("STD"),
-//				Notifications: pulumi.StringArray{
-//					pulumi.String("test@equinix.com"),
-//				},
-//				Hostname:            pulumi.String("VSRX"),
-//				AccountNumber:       pulumi.String(sv.Number),
-//				Version:             pulumi.String("23.2R1.13"),
-//				CoreCount:           pulumi.Int(2),
-//				TermLength:          pulumi.Int(12),
-//				AdditionalBandwidth: pulumi.Int(5),
-//				ProjectId:           pulumi.String("a86d7112-d740-4758-9c9c-31e66373746b"),
-//				DiverseDeviceId:     pulumi.String("ed7891bd-15b4-4f72-ac56-d96cfdacddcc"),
+//				TermLength:     pulumi.Int(12),
+//				AccountNumber:  pulumi.String(sv.Number),
+//				Version:        pulumi.String("11.1.3"),
+//				InterfaceCount: pulumi.Int(10),
+//				CoreCount:      pulumi.Int(2),
 //				SshKey: &networkedge.DeviceSshKeyArgs{
-//					Username: pulumi.String("test-username"),
-//					KeyName:  pulumi.String("valid-key-name"),
+//					Username: pulumi.String("test"),
+//					KeyName:  pulumi.String("test-key"),
 //				},
-//				AclTemplateId: pulumi.String("3e548c02-9164-4197-aa23-05b1f644883c"),
+//				AclTemplateId: pulumi.String("0bff6e05-f0e7-44cd-804a-25b92b835f8b"),
+//				ClusterDetails: &networkedge.DeviceClusterDetailsArgs{
+//					ClusterName: pulumi.String("tf-panw-cluster"),
+//					Node0: &networkedge.DeviceClusterDetailsNode0Args{
+//						VendorConfiguration: &networkedge.DeviceClusterDetailsNode0VendorConfigurationArgs{
+//							Hostname:          pulumi.String("panw-node0"),
+//							PanoramaIpAddress: pulumi.String("x.x.x.x"),
+//							PanoramaAuthKey:   pulumi.String("xxxxxxxxxxx"),
+//						},
+//						LicenseToken: pulumi.String("licenseToken"),
+//					},
+//					Node1: &networkedge.DeviceClusterDetailsNode1Args{
+//						VendorConfiguration: &networkedge.DeviceClusterDetailsNode1VendorConfigurationArgs{
+//							Hostname:          pulumi.String("panw-node1"),
+//							PanoramaIpAddress: pulumi.String("x.x.x.x"),
+//							PanoramaAuthKey:   pulumi.String("xxxxxxxxxxx"),
+//						},
+//						LicenseToken: pulumi.String("licenseToken"),
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err

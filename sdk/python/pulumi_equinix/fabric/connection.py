@@ -525,6 +525,452 @@ class Connection(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+        ### example 1
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        port2_port = equinix.fabric.Connection("port2port",
+            name="ConnectionName",
+            type=equinix.fabric.ConnectionType.EVPL,
+            notifications=[equinix.fabric.ConnectionNotificationArgs(
+                type=equinix.fabric.NotificationsType.ALL,
+                emails=[
+                    "example@equinix.com",
+                    "test1@equinix.com",
+                ],
+            )],
+            bandwidth=50,
+            order=equinix.fabric.ConnectionOrderArgs(
+                purchase_order_number="1-323292",
+            ),
+            a_side=equinix.fabric.ConnectionASideArgs(
+                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
+                    type=equinix.fabric.AccessPointType.COLO,
+                    port=equinix.fabric.ConnectionASideAccessPointPortArgs(
+                        uuid="<aside_port_uuid>",
+                    ),
+                    link_protocol=equinix.fabric.ConnectionASideAccessPointLinkProtocolArgs(
+                        type=equinix.fabric.AccessPointLinkProtocolType.QIN_Q,
+                        vlan_s_tag=1976,
+                    ),
+                ),
+            ),
+            z_side=equinix.fabric.ConnectionZSideArgs(
+                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
+                    type=equinix.fabric.AccessPointType.COLO,
+                    port=equinix.fabric.ConnectionZSideAccessPointPortArgs(
+                        uuid="<zside_port_uuid>",
+                    ),
+                    link_protocol=equinix.fabric.ConnectionZSideAccessPointLinkProtocolArgs(
+                        type=equinix.fabric.AccessPointLinkProtocolType.QIN_Q,
+                        vlan_s_tag=3711,
+                    ),
+                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
+                        metro_code=equinix.Metro.SILICON_VALLEY,
+                    ),
+                ),
+            ))
+        ```
+        ### example 2
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        port2_aws = equinix.fabric.Connection("port2aws",
+            name="ConnectionName",
+            type=equinix.fabric.ConnectionType.EVPL,
+            notifications=[equinix.fabric.ConnectionNotificationArgs(
+                type=equinix.fabric.NotificationsType.ALL,
+                emails=[
+                    "example@equinix.com",
+                    "test1@equinix.com",
+                ],
+            )],
+            bandwidth=50,
+            redundancy=equinix.fabric.ConnectionRedundancyArgs(
+                priority="PRIMARY",
+            ),
+            order=equinix.fabric.ConnectionOrderArgs(
+                purchase_order_number="1-323929",
+            ),
+            a_side=equinix.fabric.ConnectionASideArgs(
+                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
+                    type=equinix.fabric.AccessPointType.COLO,
+                    port=equinix.fabric.ConnectionASideAccessPointPortArgs(
+                        uuid="<aside_port_uuid>",
+                    ),
+                    link_protocol=equinix.fabric.ConnectionASideAccessPointLinkProtocolArgs(
+                        type=equinix.fabric.AccessPointLinkProtocolType.QIN_Q,
+                        vlan_s_tag=2019,
+                        vlan_c_tag=2112,
+                    ),
+                ),
+            ),
+            z_side=equinix.fabric.ConnectionZSideArgs(
+                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
+                    type=equinix.fabric.AccessPointType.SP,
+                    authentication_key="<aws_account_id>",
+                    seller_region="us-west-1",
+                    profile=equinix.fabric.ConnectionZSideAccessPointProfileArgs(
+                        type=equinix.fabric.ProfileType.L2_PROFILE,
+                        uuid="<service_profile_uuid>",
+                    ),
+                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
+                        metro_code=equinix.Metro.SILICON_VALLEY,
+                    ),
+                ),
+            ),
+            additional_info=[
+                {
+                    "key": "accessKey",
+                    "value": "<aws_access_key>",
+                },
+                {
+                    "key": "secretKey",
+                    "value": "<aws_secret_key>",
+                },
+            ])
+        ```
+        ### example 3
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        epl = equinix.fabric.Connection("epl",
+            name="ConnectionName",
+            type=equinix.fabric.ConnectionType.EPL,
+            notifications=[equinix.fabric.ConnectionNotificationArgs(
+                type=equinix.fabric.NotificationsType.ALL,
+                emails=[
+                    "example@equinix.com",
+                    "test1@equinix.com",
+                ],
+            )],
+            bandwidth=50,
+            order=equinix.fabric.ConnectionOrderArgs(
+                purchase_order_number="1-323292",
+            ),
+            a_side=equinix.fabric.ConnectionASideArgs(
+                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
+                    type=equinix.fabric.AccessPointType.COLO,
+                    port=equinix.fabric.ConnectionASideAccessPointPortArgs(
+                        uuid="<aside_port_uuid>",
+                    ),
+                ),
+            ),
+            z_side=equinix.fabric.ConnectionZSideArgs(
+                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
+                    type=equinix.fabric.AccessPointType.COLO,
+                    port=equinix.fabric.ConnectionZSideAccessPointPortArgs(
+                        uuid="<zside_port_uuid>",
+                    ),
+                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
+                        metro_code=equinix.Metro.SILICON_VALLEY,
+                    ),
+                ),
+            ))
+        ```
+        ### example 4
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        access_epl_vc = equinix.fabric.Connection("accessEplVc",
+            name="ConnectionName",
+            type=equinix.fabric.ConnectionType.ACCESS_EPL,
+            notifications=[equinix.fabric.ConnectionNotificationArgs(
+                type=equinix.fabric.NotificationsType.ALL,
+                emails=[
+                    "example@equinix.com",
+                    "test1@equinix.com",
+                ],
+            )],
+            bandwidth=50,
+            order=equinix.fabric.ConnectionOrderArgs(
+                purchase_order_number="1-323292",
+            ),
+            a_side=equinix.fabric.ConnectionASideArgs(
+                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
+                    type=equinix.fabric.AccessPointType.COLO,
+                    port=equinix.fabric.ConnectionASideAccessPointPortArgs(
+                        uuid="<aside_port_uuid>",
+                    ),
+                    link_protocol=equinix.fabric.ConnectionASideAccessPointLinkProtocolArgs(
+                        type=equinix.fabric.AccessPointLinkProtocolType.QIN_Q,
+                        vlan_s_tag=1976,
+                    ),
+                ),
+            ),
+            z_side=equinix.fabric.ConnectionZSideArgs(
+                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
+                    type=equinix.fabric.AccessPointType.COLO,
+                    port=equinix.fabric.ConnectionZSideAccessPointPortArgs(
+                        uuid="<zside_port_uuid>",
+                    ),
+                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
+                        metro_code=equinix.Metro.SILICON_VALLEY,
+                    ),
+                ),
+            ))
+        ```
+        ### example 5
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        vd2_port = equinix.fabric.Connection("vd2port",
+            name="ConnectionName",
+            type=equinix.fabric.ConnectionType.EVPL,
+            notifications=[equinix.fabric.ConnectionNotificationArgs(
+                type=equinix.fabric.NotificationsType.ALL,
+                emails=[
+                    "example@equinix.com",
+                    "test1@equinix.com",
+                ],
+            )],
+            bandwidth=50,
+            order=equinix.fabric.ConnectionOrderArgs(
+                purchase_order_number="1-323292",
+            ),
+            a_side=equinix.fabric.ConnectionASideArgs(
+                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
+                    type=equinix.fabric.AccessPointType.VD,
+                    virtual_device=equinix.fabric.ConnectionASideAccessPointVirtualDeviceArgs(
+                        type="EDGE",
+                        uuid="<device_uuid>",
+                    ),
+                    interface=equinix.fabric.ConnectionASideAccessPointInterfaceArgs(
+                        type="NETWORK",
+                        id=7,
+                    ),
+                ),
+            ),
+            z_side=equinix.fabric.ConnectionZSideArgs(
+                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
+                    type=equinix.fabric.AccessPointType.COLO,
+                    port=equinix.fabric.ConnectionZSideAccessPointPortArgs(
+                        uuid="<zside_port_uuid>",
+                    ),
+                    link_protocol=equinix.fabric.ConnectionZSideAccessPointLinkProtocolArgs(
+                        type=equinix.fabric.AccessPointLinkProtocolType.DOT1Q,
+                        vlan_s_tag=3711,
+                    ),
+                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
+                        metro_code=equinix.Metro.SILICON_VALLEY,
+                    ),
+                ),
+            ))
+        ```
+        ### example 6
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        vd2_token = equinix.fabric.Connection("vd2token",
+            name="ConnectionName",
+            type=equinix.fabric.ConnectionType.EVPL,
+            notifications=[equinix.fabric.ConnectionNotificationArgs(
+                type=equinix.fabric.NotificationsType.ALL,
+                emails=[
+                    "example@equinix.com",
+                    "test1@equinix.com",
+                ],
+            )],
+            bandwidth=50,
+            order=equinix.fabric.ConnectionOrderArgs(
+                purchase_order_number="1-323292",
+            ),
+            a_side=equinix.fabric.ConnectionASideArgs(
+                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
+                    type=equinix.fabric.AccessPointType.VD,
+                    virtual_device=equinix.fabric.ConnectionASideAccessPointVirtualDeviceArgs(
+                        type="EDGE",
+                        uuid="<device_uuid>",
+                    ),
+                    interface=equinix.fabric.ConnectionASideAccessPointInterfaceArgs(
+                        type="NETWORK",
+                        id=7,
+                    ),
+                ),
+            ),
+            z_side=equinix.fabric.ConnectionZSideArgs(
+                service_token=equinix.fabric.ConnectionZSideServiceTokenArgs(
+                    uuid="<service_token_uuid>",
+                ),
+            ))
+        ```
+        ### example 7
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        token2_aws = equinix.fabric.Connection("token2aws",
+            name="ConnectionName",
+            type=equinix.fabric.ConnectionType.EVPL,
+            notifications=[equinix.fabric.ConnectionNotificationArgs(
+                type=equinix.fabric.NotificationsType.ALL,
+                emails=[
+                    "example@equinix.com",
+                    "test1@equinix.com",
+                ],
+            )],
+            bandwidth=50,
+            order=equinix.fabric.ConnectionOrderArgs(
+                purchase_order_number="1-323292",
+            ),
+            a_side=equinix.fabric.ConnectionASideArgs(
+                service_token=equinix.fabric.ConnectionASideServiceTokenArgs(
+                    uuid="<service_token_uuid>",
+                ),
+            ),
+            z_side=equinix.fabric.ConnectionZSideArgs(
+                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
+                    type=equinix.fabric.AccessPointType.SP,
+                    authentication_key="<aws_account_id>",
+                    seller_region="us-west-1",
+                    profile=equinix.fabric.ConnectionZSideAccessPointProfileArgs(
+                        type=equinix.fabric.ProfileType.L2_PROFILE,
+                        uuid="<service_profile_uuid>",
+                    ),
+                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
+                        metro_code=equinix.Metro.SILICON_VALLEY,
+                    ),
+                ),
+            ))
+        ```
+        ### example 8
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        fcr2_port = equinix.fabric.Connection("fcr2port",
+            name="ConnectionName",
+            type="IP_VC",
+            notifications=[equinix.fabric.ConnectionNotificationArgs(
+                type=equinix.fabric.NotificationsType.ALL,
+                emails=[
+                    "example@equinix.com",
+                    "test1@equinix.com",
+                ],
+            )],
+            bandwidth=50,
+            order=equinix.fabric.ConnectionOrderArgs(
+                purchase_order_number="1-323292",
+            ),
+            a_side=equinix.fabric.ConnectionASideArgs(
+                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
+                    type="CLOUD_ROUTER",
+                    router=equinix.fabric.ConnectionASideAccessPointRouterArgs(
+                        uuid="<cloud_router_uuid>",
+                    ),
+                ),
+            ),
+            z_side=equinix.fabric.ConnectionZSideArgs(
+                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
+                    type=equinix.fabric.AccessPointType.COLO,
+                    port=equinix.fabric.ConnectionZSideAccessPointPortArgs(
+                        uuid="<port_uuid>",
+                    ),
+                    link_protocol=equinix.fabric.ConnectionZSideAccessPointLinkProtocolArgs(
+                        type=equinix.fabric.AccessPointLinkProtocolType.DOT1Q,
+                        vlan_tag=2711,
+                    ),
+                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
+                        metro_code=equinix.Metro.SILICON_VALLEY,
+                    ),
+                ),
+            ))
+        ```
+        ### example 9
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        fcr2_azure = equinix.fabric.Connection("fcr2azure",
+            name="ConnectionName",
+            type="IP_VC",
+            notifications=[equinix.fabric.ConnectionNotificationArgs(
+                type=equinix.fabric.NotificationsType.ALL,
+                emails=[
+                    "example@equinix.com",
+                    "test1@equinix.com",
+                ],
+            )],
+            bandwidth=50,
+            order=equinix.fabric.ConnectionOrderArgs(
+                purchase_order_number="1-323292",
+            ),
+            a_side=equinix.fabric.ConnectionASideArgs(
+                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
+                    type="CLOUD_ROUTER",
+                    router=equinix.fabric.ConnectionASideAccessPointRouterArgs(
+                        uuid="<cloud_router_uuid>",
+                    ),
+                ),
+            ),
+            z_side=equinix.fabric.ConnectionZSideArgs(
+                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
+                    type=equinix.fabric.AccessPointType.SP,
+                    authentication_key="<Azure_ExpressRouter_Auth_Key>",
+                    peering_type=equinix.fabric.AccessPointPeeringType.PRIVATE,
+                    profile=equinix.fabric.ConnectionZSideAccessPointProfileArgs(
+                        type=equinix.fabric.ProfileType.L2_PROFILE,
+                        uuid="<Azure_Service_Profile_UUID>",
+                    ),
+                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
+                        metro_code=equinix.Metro.SILICON_VALLEY,
+                    ),
+                ),
+            ))
+        ```
+        ### example 10
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        vd2_azure = equinix.fabric.Connection("vd2azure",
+            name="ConnectionName",
+            type=equinix.fabric.ConnectionType.EVPL,
+            notifications=[equinix.fabric.ConnectionNotificationArgs(
+                type=equinix.fabric.NotificationsType.ALL,
+                emails=[
+                    "example@equinix.com",
+                    "test1@equinix.com",
+                ],
+            )],
+            bandwidth=50,
+            order=equinix.fabric.ConnectionOrderArgs(
+                purchase_order_number="1-323292",
+            ),
+            a_side=equinix.fabric.ConnectionASideArgs(
+                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
+                    type=equinix.fabric.AccessPointType.VD,
+                    virtual_device=equinix.fabric.ConnectionASideAccessPointVirtualDeviceArgs(
+                        type="EDGE",
+                        uuid="<device_uuid>",
+                    ),
+                    interface=equinix.fabric.ConnectionASideAccessPointInterfaceArgs(
+                        type="CLOUD",
+                        id=7,
+                    ),
+                ),
+            ),
+            z_side=equinix.fabric.ConnectionZSideArgs(
+                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
+                    type=equinix.fabric.AccessPointType.SP,
+                    authentication_key="<Azure_ExpressRouter_Auth_Key>",
+                    peering_type=equinix.fabric.AccessPointPeeringType.PRIVATE,
+                    profile=equinix.fabric.ConnectionZSideAccessPointProfileArgs(
+                        type=equinix.fabric.ProfileType.L2_PROFILE,
+                        uuid="<Azure_Service_Profile_UUID>",
+                    ),
+                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
+                        metro_code=equinix.Metro.SILICON_VALLEY,
+                    ),
+                ),
+            ))
+        ```
         ### example 11
         ```python
         import pulumi
@@ -620,45 +1066,6 @@ class Connection(pulumi.CustomResource):
                 ),
             ))
         ```
-        ### example 7
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        token2_aws = equinix.fabric.Connection("token2aws",
-            name="ConnectionName",
-            type=equinix.fabric.ConnectionType.EVPL,
-            notifications=[equinix.fabric.ConnectionNotificationArgs(
-                type=equinix.fabric.NotificationsType.ALL,
-                emails=[
-                    "example@equinix.com",
-                    "test1@equinix.com",
-                ],
-            )],
-            bandwidth=50,
-            order=equinix.fabric.ConnectionOrderArgs(
-                purchase_order_number="1-323292",
-            ),
-            a_side=equinix.fabric.ConnectionASideArgs(
-                service_token=equinix.fabric.ConnectionASideServiceTokenArgs(
-                    uuid="<service_token_uuid>",
-                ),
-            ),
-            z_side=equinix.fabric.ConnectionZSideArgs(
-                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.SP,
-                    authentication_key="<aws_account_id>",
-                    seller_region="us-west-1",
-                    profile=equinix.fabric.ConnectionZSideAccessPointProfileArgs(
-                        type=equinix.fabric.ProfileType.L2_PROFILE,
-                        uuid="<service_profile_uuid>",
-                    ),
-                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
-                        metro_code=equinix.Metro.SILICON_VALLEY,
-                    ),
-                ),
-            ))
-        ```
         ### example 12
         ```python
         import pulumi
@@ -691,447 +1098,6 @@ class Connection(pulumi.CustomResource):
                     type=equinix.fabric.AccessPointType.NETWORK,
                     network=equinix.fabric.ConnectionZSideAccessPointNetworkArgs(
                         uuid="<network_uuid>",
-                    ),
-                ),
-            ))
-        ```
-        ### example 2
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        port2_aws = equinix.fabric.Connection("port2aws",
-            name="ConnectionName",
-            type=equinix.fabric.ConnectionType.EVPL,
-            notifications=[equinix.fabric.ConnectionNotificationArgs(
-                type=equinix.fabric.NotificationsType.ALL,
-                emails=[
-                    "example@equinix.com",
-                    "test1@equinix.com",
-                ],
-            )],
-            bandwidth=50,
-            redundancy=equinix.fabric.ConnectionRedundancyArgs(
-                priority="PRIMARY",
-            ),
-            order=equinix.fabric.ConnectionOrderArgs(
-                purchase_order_number="1-323929",
-            ),
-            a_side=equinix.fabric.ConnectionASideArgs(
-                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.COLO,
-                    port=equinix.fabric.ConnectionASideAccessPointPortArgs(
-                        uuid="<aside_port_uuid>",
-                    ),
-                    link_protocol=equinix.fabric.ConnectionASideAccessPointLinkProtocolArgs(
-                        type=equinix.fabric.AccessPointLinkProtocolType.QIN_Q,
-                        vlan_s_tag=2019,
-                        vlan_c_tag=2112,
-                    ),
-                ),
-            ),
-            z_side=equinix.fabric.ConnectionZSideArgs(
-                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.SP,
-                    authentication_key="<aws_account_id>",
-                    seller_region="us-west-1",
-                    profile=equinix.fabric.ConnectionZSideAccessPointProfileArgs(
-                        type=equinix.fabric.ProfileType.L2_PROFILE,
-                        uuid="<service_profile_uuid>",
-                    ),
-                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
-                        metro_code=equinix.Metro.SILICON_VALLEY,
-                    ),
-                ),
-            ),
-            additional_info=[
-                {
-                    "key": "accessKey",
-                    "value": "<aws_access_key>",
-                },
-                {
-                    "key": "secretKey",
-                    "value": "<aws_secret_key>",
-                },
-            ])
-        ```
-        ### example 6
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        vd2_token = equinix.fabric.Connection("vd2token",
-            name="ConnectionName",
-            type=equinix.fabric.ConnectionType.EVPL,
-            notifications=[equinix.fabric.ConnectionNotificationArgs(
-                type=equinix.fabric.NotificationsType.ALL,
-                emails=[
-                    "example@equinix.com",
-                    "test1@equinix.com",
-                ],
-            )],
-            bandwidth=50,
-            order=equinix.fabric.ConnectionOrderArgs(
-                purchase_order_number="1-323292",
-            ),
-            a_side=equinix.fabric.ConnectionASideArgs(
-                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.VD,
-                    virtual_device=equinix.fabric.ConnectionASideAccessPointVirtualDeviceArgs(
-                        type="EDGE",
-                        uuid="<device_uuid>",
-                    ),
-                    interface=equinix.fabric.ConnectionASideAccessPointInterfaceArgs(
-                        type="NETWORK",
-                        id=7,
-                    ),
-                ),
-            ),
-            z_side=equinix.fabric.ConnectionZSideArgs(
-                service_token=equinix.fabric.ConnectionZSideServiceTokenArgs(
-                    uuid="<service_token_uuid>",
-                ),
-            ))
-        ```
-        ### example 4
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        access_epl_vc = equinix.fabric.Connection("accessEplVc",
-            name="ConnectionName",
-            type=equinix.fabric.ConnectionType.ACCESS_EPL,
-            notifications=[equinix.fabric.ConnectionNotificationArgs(
-                type=equinix.fabric.NotificationsType.ALL,
-                emails=[
-                    "example@equinix.com",
-                    "test1@equinix.com",
-                ],
-            )],
-            bandwidth=50,
-            order=equinix.fabric.ConnectionOrderArgs(
-                purchase_order_number="1-323292",
-            ),
-            a_side=equinix.fabric.ConnectionASideArgs(
-                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.COLO,
-                    port=equinix.fabric.ConnectionASideAccessPointPortArgs(
-                        uuid="<aside_port_uuid>",
-                    ),
-                    link_protocol=equinix.fabric.ConnectionASideAccessPointLinkProtocolArgs(
-                        type=equinix.fabric.AccessPointLinkProtocolType.QIN_Q,
-                        vlan_s_tag=1976,
-                    ),
-                ),
-            ),
-            z_side=equinix.fabric.ConnectionZSideArgs(
-                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.COLO,
-                    port=equinix.fabric.ConnectionZSideAccessPointPortArgs(
-                        uuid="<zside_port_uuid>",
-                    ),
-                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
-                        metro_code=equinix.Metro.SILICON_VALLEY,
-                    ),
-                ),
-            ))
-        ```
-        ### example 5
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        vd2_port = equinix.fabric.Connection("vd2port",
-            name="ConnectionName",
-            type=equinix.fabric.ConnectionType.EVPL,
-            notifications=[equinix.fabric.ConnectionNotificationArgs(
-                type=equinix.fabric.NotificationsType.ALL,
-                emails=[
-                    "example@equinix.com",
-                    "test1@equinix.com",
-                ],
-            )],
-            bandwidth=50,
-            order=equinix.fabric.ConnectionOrderArgs(
-                purchase_order_number="1-323292",
-            ),
-            a_side=equinix.fabric.ConnectionASideArgs(
-                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.VD,
-                    virtual_device=equinix.fabric.ConnectionASideAccessPointVirtualDeviceArgs(
-                        type="EDGE",
-                        uuid="<device_uuid>",
-                    ),
-                    interface=equinix.fabric.ConnectionASideAccessPointInterfaceArgs(
-                        type="NETWORK",
-                        id=7,
-                    ),
-                ),
-            ),
-            z_side=equinix.fabric.ConnectionZSideArgs(
-                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.COLO,
-                    port=equinix.fabric.ConnectionZSideAccessPointPortArgs(
-                        uuid="<zside_port_uuid>",
-                    ),
-                    link_protocol=equinix.fabric.ConnectionZSideAccessPointLinkProtocolArgs(
-                        type=equinix.fabric.AccessPointLinkProtocolType.DOT1Q,
-                        vlan_s_tag=3711,
-                    ),
-                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
-                        metro_code=equinix.Metro.SILICON_VALLEY,
-                    ),
-                ),
-            ))
-        ```
-        ### example 10
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        vd2_azure = equinix.fabric.Connection("vd2azure",
-            name="ConnectionName",
-            type=equinix.fabric.ConnectionType.EVPL,
-            notifications=[equinix.fabric.ConnectionNotificationArgs(
-                type=equinix.fabric.NotificationsType.ALL,
-                emails=[
-                    "example@equinix.com",
-                    "test1@equinix.com",
-                ],
-            )],
-            bandwidth=50,
-            order=equinix.fabric.ConnectionOrderArgs(
-                purchase_order_number="1-323292",
-            ),
-            a_side=equinix.fabric.ConnectionASideArgs(
-                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.VD,
-                    virtual_device=equinix.fabric.ConnectionASideAccessPointVirtualDeviceArgs(
-                        type="EDGE",
-                        uuid="<device_uuid>",
-                    ),
-                    interface=equinix.fabric.ConnectionASideAccessPointInterfaceArgs(
-                        type="CLOUD",
-                        id=7,
-                    ),
-                ),
-            ),
-            z_side=equinix.fabric.ConnectionZSideArgs(
-                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.SP,
-                    authentication_key="<Azure_ExpressRouter_Auth_Key>",
-                    peering_type=equinix.fabric.AccessPointPeeringType.PRIVATE,
-                    profile=equinix.fabric.ConnectionZSideAccessPointProfileArgs(
-                        type=equinix.fabric.ProfileType.L2_PROFILE,
-                        uuid="<Azure_Service_Profile_UUID>",
-                    ),
-                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
-                        metro_code=equinix.Metro.SILICON_VALLEY,
-                    ),
-                ),
-            ))
-        ```
-        ### example 1
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        port2_port = equinix.fabric.Connection("port2port",
-            name="ConnectionName",
-            type=equinix.fabric.ConnectionType.EVPL,
-            notifications=[equinix.fabric.ConnectionNotificationArgs(
-                type=equinix.fabric.NotificationsType.ALL,
-                emails=[
-                    "example@equinix.com",
-                    "test1@equinix.com",
-                ],
-            )],
-            bandwidth=50,
-            order=equinix.fabric.ConnectionOrderArgs(
-                purchase_order_number="1-323292",
-            ),
-            a_side=equinix.fabric.ConnectionASideArgs(
-                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.COLO,
-                    port=equinix.fabric.ConnectionASideAccessPointPortArgs(
-                        uuid="<aside_port_uuid>",
-                    ),
-                    link_protocol=equinix.fabric.ConnectionASideAccessPointLinkProtocolArgs(
-                        type=equinix.fabric.AccessPointLinkProtocolType.QIN_Q,
-                        vlan_s_tag=1976,
-                    ),
-                ),
-            ),
-            z_side=equinix.fabric.ConnectionZSideArgs(
-                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.COLO,
-                    port=equinix.fabric.ConnectionZSideAccessPointPortArgs(
-                        uuid="<zside_port_uuid>",
-                    ),
-                    link_protocol=equinix.fabric.ConnectionZSideAccessPointLinkProtocolArgs(
-                        type=equinix.fabric.AccessPointLinkProtocolType.QIN_Q,
-                        vlan_s_tag=3711,
-                    ),
-                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
-                        metro_code=equinix.Metro.SILICON_VALLEY,
-                    ),
-                ),
-            ))
-        ```
-        ### example 14
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        epl = equinix.fabric.Connection("epl",
-            name="ConnectionName",
-            type="EPLAN_VC",
-            notifications=[equinix.fabric.ConnectionNotificationArgs(
-                type=equinix.fabric.NotificationsType.ALL,
-                emails=[
-                    "example@equinix.com",
-                    "test1@equinix.com",
-                ],
-            )],
-            bandwidth=50,
-            order=equinix.fabric.ConnectionOrderArgs(
-                purchase_order_number="1-323292",
-            ),
-            a_side=equinix.fabric.ConnectionASideArgs(
-                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.COLO,
-                    port=equinix.fabric.ConnectionASideAccessPointPortArgs(
-                        uuid="<aside_port_uuid>",
-                    ),
-                ),
-            ),
-            z_side=equinix.fabric.ConnectionZSideArgs(
-                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.NETWORK,
-                    network=equinix.fabric.ConnectionZSideAccessPointNetworkArgs(
-                        uuid="<network_uuid>",
-                    ),
-                ),
-            ))
-        ```
-        ### example 3
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        epl = equinix.fabric.Connection("epl",
-            name="ConnectionName",
-            type=equinix.fabric.ConnectionType.EPL,
-            notifications=[equinix.fabric.ConnectionNotificationArgs(
-                type=equinix.fabric.NotificationsType.ALL,
-                emails=[
-                    "example@equinix.com",
-                    "test1@equinix.com",
-                ],
-            )],
-            bandwidth=50,
-            order=equinix.fabric.ConnectionOrderArgs(
-                purchase_order_number="1-323292",
-            ),
-            a_side=equinix.fabric.ConnectionASideArgs(
-                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.COLO,
-                    port=equinix.fabric.ConnectionASideAccessPointPortArgs(
-                        uuid="<aside_port_uuid>",
-                    ),
-                ),
-            ),
-            z_side=equinix.fabric.ConnectionZSideArgs(
-                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.COLO,
-                    port=equinix.fabric.ConnectionZSideAccessPointPortArgs(
-                        uuid="<zside_port_uuid>",
-                    ),
-                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
-                        metro_code=equinix.Metro.SILICON_VALLEY,
-                    ),
-                ),
-            ))
-        ```
-        ### example 15
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        epl = equinix.fabric.Connection("epl",
-            name="ConnectionName",
-            type="EVPLAN_VC",
-            notifications=[equinix.fabric.ConnectionNotificationArgs(
-                type=equinix.fabric.NotificationsType.ALL,
-                emails=[
-                    "example@equinix.com",
-                    "test1@equinix.com",
-                ],
-            )],
-            bandwidth=50,
-            order=equinix.fabric.ConnectionOrderArgs(
-                purchase_order_number="1-323292",
-            ),
-            a_side=equinix.fabric.ConnectionASideArgs(
-                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.COLO,
-                    port=equinix.fabric.ConnectionASideAccessPointPortArgs(
-                        uuid="<aside_port_uuid>",
-                    ),
-                    link_protocol=equinix.fabric.ConnectionASideAccessPointLinkProtocolArgs(
-                        type=equinix.fabric.AccessPointLinkProtocolType.DOT1Q,
-                        vlan_s_tag=1976,
-                    ),
-                ),
-            ),
-            z_side=equinix.fabric.ConnectionZSideArgs(
-                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.NETWORK,
-                    network=equinix.fabric.ConnectionZSideAccessPointNetworkArgs(
-                        uuid="<network_uuid>",
-                    ),
-                ),
-            ))
-        ```
-        ### example 8
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        fcr2_port = equinix.fabric.Connection("fcr2port",
-            name="ConnectionName",
-            type="IP_VC",
-            notifications=[equinix.fabric.ConnectionNotificationArgs(
-                type=equinix.fabric.NotificationsType.ALL,
-                emails=[
-                    "example@equinix.com",
-                    "test1@equinix.com",
-                ],
-            )],
-            bandwidth=50,
-            order=equinix.fabric.ConnectionOrderArgs(
-                purchase_order_number="1-323292",
-            ),
-            a_side=equinix.fabric.ConnectionASideArgs(
-                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
-                    type="CLOUD_ROUTER",
-                    router=equinix.fabric.ConnectionASideAccessPointRouterArgs(
-                        uuid="<cloud_router_uuid>",
-                    ),
-                ),
-            ),
-            z_side=equinix.fabric.ConnectionZSideArgs(
-                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.COLO,
-                    port=equinix.fabric.ConnectionZSideAccessPointPortArgs(
-                        uuid="<port_uuid>",
-                    ),
-                    link_protocol=equinix.fabric.ConnectionZSideAccessPointLinkProtocolArgs(
-                        type=equinix.fabric.AccessPointLinkProtocolType.DOT1Q,
-                        vlan_tag=2711,
-                    ),
-                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
-                        metro_code=equinix.Metro.SILICON_VALLEY,
                     ),
                 ),
             ))
@@ -1177,14 +1143,14 @@ class Connection(pulumi.CustomResource):
                 ),
             ))
         ```
-        ### example 9
+        ### example 14
         ```python
         import pulumi
         import pulumi_equinix as equinix
 
-        fcr2_azure = equinix.fabric.Connection("fcr2azure",
+        epl = equinix.fabric.Connection("epl",
             name="ConnectionName",
-            type="IP_VC",
+            type="EPLAN_VC",
             notifications=[equinix.fabric.ConnectionNotificationArgs(
                 type=equinix.fabric.NotificationsType.ALL,
                 emails=[
@@ -1198,23 +1164,57 @@ class Connection(pulumi.CustomResource):
             ),
             a_side=equinix.fabric.ConnectionASideArgs(
                 access_point=equinix.fabric.ConnectionASideAccessPointArgs(
-                    type="CLOUD_ROUTER",
-                    router=equinix.fabric.ConnectionASideAccessPointRouterArgs(
-                        uuid="<cloud_router_uuid>",
+                    type=equinix.fabric.AccessPointType.COLO,
+                    port=equinix.fabric.ConnectionASideAccessPointPortArgs(
+                        uuid="<aside_port_uuid>",
                     ),
                 ),
             ),
             z_side=equinix.fabric.ConnectionZSideArgs(
                 access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.SP,
-                    authentication_key="<Azure_ExpressRouter_Auth_Key>",
-                    peering_type=equinix.fabric.AccessPointPeeringType.PRIVATE,
-                    profile=equinix.fabric.ConnectionZSideAccessPointProfileArgs(
-                        type=equinix.fabric.ProfileType.L2_PROFILE,
-                        uuid="<Azure_Service_Profile_UUID>",
+                    type=equinix.fabric.AccessPointType.NETWORK,
+                    network=equinix.fabric.ConnectionZSideAccessPointNetworkArgs(
+                        uuid="<network_uuid>",
                     ),
-                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
-                        metro_code=equinix.Metro.SILICON_VALLEY,
+                ),
+            ))
+        ```
+        ### example 15
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        epl = equinix.fabric.Connection("epl",
+            name="ConnectionName",
+            type="EVPLAN_VC",
+            notifications=[equinix.fabric.ConnectionNotificationArgs(
+                type=equinix.fabric.NotificationsType.ALL,
+                emails=[
+                    "example@equinix.com",
+                    "test1@equinix.com",
+                ],
+            )],
+            bandwidth=50,
+            order=equinix.fabric.ConnectionOrderArgs(
+                purchase_order_number="1-323292",
+            ),
+            a_side=equinix.fabric.ConnectionASideArgs(
+                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
+                    type=equinix.fabric.AccessPointType.COLO,
+                    port=equinix.fabric.ConnectionASideAccessPointPortArgs(
+                        uuid="<aside_port_uuid>",
+                    ),
+                    link_protocol=equinix.fabric.ConnectionASideAccessPointLinkProtocolArgs(
+                        type=equinix.fabric.AccessPointLinkProtocolType.DOT1Q,
+                        vlan_s_tag=1976,
+                    ),
+                ),
+            ),
+            z_side=equinix.fabric.ConnectionZSideArgs(
+                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
+                    type=equinix.fabric.AccessPointType.NETWORK,
+                    network=equinix.fabric.ConnectionZSideAccessPointNetworkArgs(
+                        uuid="<network_uuid>",
                     ),
                 ),
             ))
@@ -1242,6 +1242,452 @@ class Connection(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+        ### example 1
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        port2_port = equinix.fabric.Connection("port2port",
+            name="ConnectionName",
+            type=equinix.fabric.ConnectionType.EVPL,
+            notifications=[equinix.fabric.ConnectionNotificationArgs(
+                type=equinix.fabric.NotificationsType.ALL,
+                emails=[
+                    "example@equinix.com",
+                    "test1@equinix.com",
+                ],
+            )],
+            bandwidth=50,
+            order=equinix.fabric.ConnectionOrderArgs(
+                purchase_order_number="1-323292",
+            ),
+            a_side=equinix.fabric.ConnectionASideArgs(
+                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
+                    type=equinix.fabric.AccessPointType.COLO,
+                    port=equinix.fabric.ConnectionASideAccessPointPortArgs(
+                        uuid="<aside_port_uuid>",
+                    ),
+                    link_protocol=equinix.fabric.ConnectionASideAccessPointLinkProtocolArgs(
+                        type=equinix.fabric.AccessPointLinkProtocolType.QIN_Q,
+                        vlan_s_tag=1976,
+                    ),
+                ),
+            ),
+            z_side=equinix.fabric.ConnectionZSideArgs(
+                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
+                    type=equinix.fabric.AccessPointType.COLO,
+                    port=equinix.fabric.ConnectionZSideAccessPointPortArgs(
+                        uuid="<zside_port_uuid>",
+                    ),
+                    link_protocol=equinix.fabric.ConnectionZSideAccessPointLinkProtocolArgs(
+                        type=equinix.fabric.AccessPointLinkProtocolType.QIN_Q,
+                        vlan_s_tag=3711,
+                    ),
+                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
+                        metro_code=equinix.Metro.SILICON_VALLEY,
+                    ),
+                ),
+            ))
+        ```
+        ### example 2
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        port2_aws = equinix.fabric.Connection("port2aws",
+            name="ConnectionName",
+            type=equinix.fabric.ConnectionType.EVPL,
+            notifications=[equinix.fabric.ConnectionNotificationArgs(
+                type=equinix.fabric.NotificationsType.ALL,
+                emails=[
+                    "example@equinix.com",
+                    "test1@equinix.com",
+                ],
+            )],
+            bandwidth=50,
+            redundancy=equinix.fabric.ConnectionRedundancyArgs(
+                priority="PRIMARY",
+            ),
+            order=equinix.fabric.ConnectionOrderArgs(
+                purchase_order_number="1-323929",
+            ),
+            a_side=equinix.fabric.ConnectionASideArgs(
+                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
+                    type=equinix.fabric.AccessPointType.COLO,
+                    port=equinix.fabric.ConnectionASideAccessPointPortArgs(
+                        uuid="<aside_port_uuid>",
+                    ),
+                    link_protocol=equinix.fabric.ConnectionASideAccessPointLinkProtocolArgs(
+                        type=equinix.fabric.AccessPointLinkProtocolType.QIN_Q,
+                        vlan_s_tag=2019,
+                        vlan_c_tag=2112,
+                    ),
+                ),
+            ),
+            z_side=equinix.fabric.ConnectionZSideArgs(
+                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
+                    type=equinix.fabric.AccessPointType.SP,
+                    authentication_key="<aws_account_id>",
+                    seller_region="us-west-1",
+                    profile=equinix.fabric.ConnectionZSideAccessPointProfileArgs(
+                        type=equinix.fabric.ProfileType.L2_PROFILE,
+                        uuid="<service_profile_uuid>",
+                    ),
+                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
+                        metro_code=equinix.Metro.SILICON_VALLEY,
+                    ),
+                ),
+            ),
+            additional_info=[
+                {
+                    "key": "accessKey",
+                    "value": "<aws_access_key>",
+                },
+                {
+                    "key": "secretKey",
+                    "value": "<aws_secret_key>",
+                },
+            ])
+        ```
+        ### example 3
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        epl = equinix.fabric.Connection("epl",
+            name="ConnectionName",
+            type=equinix.fabric.ConnectionType.EPL,
+            notifications=[equinix.fabric.ConnectionNotificationArgs(
+                type=equinix.fabric.NotificationsType.ALL,
+                emails=[
+                    "example@equinix.com",
+                    "test1@equinix.com",
+                ],
+            )],
+            bandwidth=50,
+            order=equinix.fabric.ConnectionOrderArgs(
+                purchase_order_number="1-323292",
+            ),
+            a_side=equinix.fabric.ConnectionASideArgs(
+                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
+                    type=equinix.fabric.AccessPointType.COLO,
+                    port=equinix.fabric.ConnectionASideAccessPointPortArgs(
+                        uuid="<aside_port_uuid>",
+                    ),
+                ),
+            ),
+            z_side=equinix.fabric.ConnectionZSideArgs(
+                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
+                    type=equinix.fabric.AccessPointType.COLO,
+                    port=equinix.fabric.ConnectionZSideAccessPointPortArgs(
+                        uuid="<zside_port_uuid>",
+                    ),
+                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
+                        metro_code=equinix.Metro.SILICON_VALLEY,
+                    ),
+                ),
+            ))
+        ```
+        ### example 4
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        access_epl_vc = equinix.fabric.Connection("accessEplVc",
+            name="ConnectionName",
+            type=equinix.fabric.ConnectionType.ACCESS_EPL,
+            notifications=[equinix.fabric.ConnectionNotificationArgs(
+                type=equinix.fabric.NotificationsType.ALL,
+                emails=[
+                    "example@equinix.com",
+                    "test1@equinix.com",
+                ],
+            )],
+            bandwidth=50,
+            order=equinix.fabric.ConnectionOrderArgs(
+                purchase_order_number="1-323292",
+            ),
+            a_side=equinix.fabric.ConnectionASideArgs(
+                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
+                    type=equinix.fabric.AccessPointType.COLO,
+                    port=equinix.fabric.ConnectionASideAccessPointPortArgs(
+                        uuid="<aside_port_uuid>",
+                    ),
+                    link_protocol=equinix.fabric.ConnectionASideAccessPointLinkProtocolArgs(
+                        type=equinix.fabric.AccessPointLinkProtocolType.QIN_Q,
+                        vlan_s_tag=1976,
+                    ),
+                ),
+            ),
+            z_side=equinix.fabric.ConnectionZSideArgs(
+                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
+                    type=equinix.fabric.AccessPointType.COLO,
+                    port=equinix.fabric.ConnectionZSideAccessPointPortArgs(
+                        uuid="<zside_port_uuid>",
+                    ),
+                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
+                        metro_code=equinix.Metro.SILICON_VALLEY,
+                    ),
+                ),
+            ))
+        ```
+        ### example 5
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        vd2_port = equinix.fabric.Connection("vd2port",
+            name="ConnectionName",
+            type=equinix.fabric.ConnectionType.EVPL,
+            notifications=[equinix.fabric.ConnectionNotificationArgs(
+                type=equinix.fabric.NotificationsType.ALL,
+                emails=[
+                    "example@equinix.com",
+                    "test1@equinix.com",
+                ],
+            )],
+            bandwidth=50,
+            order=equinix.fabric.ConnectionOrderArgs(
+                purchase_order_number="1-323292",
+            ),
+            a_side=equinix.fabric.ConnectionASideArgs(
+                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
+                    type=equinix.fabric.AccessPointType.VD,
+                    virtual_device=equinix.fabric.ConnectionASideAccessPointVirtualDeviceArgs(
+                        type="EDGE",
+                        uuid="<device_uuid>",
+                    ),
+                    interface=equinix.fabric.ConnectionASideAccessPointInterfaceArgs(
+                        type="NETWORK",
+                        id=7,
+                    ),
+                ),
+            ),
+            z_side=equinix.fabric.ConnectionZSideArgs(
+                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
+                    type=equinix.fabric.AccessPointType.COLO,
+                    port=equinix.fabric.ConnectionZSideAccessPointPortArgs(
+                        uuid="<zside_port_uuid>",
+                    ),
+                    link_protocol=equinix.fabric.ConnectionZSideAccessPointLinkProtocolArgs(
+                        type=equinix.fabric.AccessPointLinkProtocolType.DOT1Q,
+                        vlan_s_tag=3711,
+                    ),
+                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
+                        metro_code=equinix.Metro.SILICON_VALLEY,
+                    ),
+                ),
+            ))
+        ```
+        ### example 6
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        vd2_token = equinix.fabric.Connection("vd2token",
+            name="ConnectionName",
+            type=equinix.fabric.ConnectionType.EVPL,
+            notifications=[equinix.fabric.ConnectionNotificationArgs(
+                type=equinix.fabric.NotificationsType.ALL,
+                emails=[
+                    "example@equinix.com",
+                    "test1@equinix.com",
+                ],
+            )],
+            bandwidth=50,
+            order=equinix.fabric.ConnectionOrderArgs(
+                purchase_order_number="1-323292",
+            ),
+            a_side=equinix.fabric.ConnectionASideArgs(
+                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
+                    type=equinix.fabric.AccessPointType.VD,
+                    virtual_device=equinix.fabric.ConnectionASideAccessPointVirtualDeviceArgs(
+                        type="EDGE",
+                        uuid="<device_uuid>",
+                    ),
+                    interface=equinix.fabric.ConnectionASideAccessPointInterfaceArgs(
+                        type="NETWORK",
+                        id=7,
+                    ),
+                ),
+            ),
+            z_side=equinix.fabric.ConnectionZSideArgs(
+                service_token=equinix.fabric.ConnectionZSideServiceTokenArgs(
+                    uuid="<service_token_uuid>",
+                ),
+            ))
+        ```
+        ### example 7
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        token2_aws = equinix.fabric.Connection("token2aws",
+            name="ConnectionName",
+            type=equinix.fabric.ConnectionType.EVPL,
+            notifications=[equinix.fabric.ConnectionNotificationArgs(
+                type=equinix.fabric.NotificationsType.ALL,
+                emails=[
+                    "example@equinix.com",
+                    "test1@equinix.com",
+                ],
+            )],
+            bandwidth=50,
+            order=equinix.fabric.ConnectionOrderArgs(
+                purchase_order_number="1-323292",
+            ),
+            a_side=equinix.fabric.ConnectionASideArgs(
+                service_token=equinix.fabric.ConnectionASideServiceTokenArgs(
+                    uuid="<service_token_uuid>",
+                ),
+            ),
+            z_side=equinix.fabric.ConnectionZSideArgs(
+                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
+                    type=equinix.fabric.AccessPointType.SP,
+                    authentication_key="<aws_account_id>",
+                    seller_region="us-west-1",
+                    profile=equinix.fabric.ConnectionZSideAccessPointProfileArgs(
+                        type=equinix.fabric.ProfileType.L2_PROFILE,
+                        uuid="<service_profile_uuid>",
+                    ),
+                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
+                        metro_code=equinix.Metro.SILICON_VALLEY,
+                    ),
+                ),
+            ))
+        ```
+        ### example 8
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        fcr2_port = equinix.fabric.Connection("fcr2port",
+            name="ConnectionName",
+            type="IP_VC",
+            notifications=[equinix.fabric.ConnectionNotificationArgs(
+                type=equinix.fabric.NotificationsType.ALL,
+                emails=[
+                    "example@equinix.com",
+                    "test1@equinix.com",
+                ],
+            )],
+            bandwidth=50,
+            order=equinix.fabric.ConnectionOrderArgs(
+                purchase_order_number="1-323292",
+            ),
+            a_side=equinix.fabric.ConnectionASideArgs(
+                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
+                    type="CLOUD_ROUTER",
+                    router=equinix.fabric.ConnectionASideAccessPointRouterArgs(
+                        uuid="<cloud_router_uuid>",
+                    ),
+                ),
+            ),
+            z_side=equinix.fabric.ConnectionZSideArgs(
+                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
+                    type=equinix.fabric.AccessPointType.COLO,
+                    port=equinix.fabric.ConnectionZSideAccessPointPortArgs(
+                        uuid="<port_uuid>",
+                    ),
+                    link_protocol=equinix.fabric.ConnectionZSideAccessPointLinkProtocolArgs(
+                        type=equinix.fabric.AccessPointLinkProtocolType.DOT1Q,
+                        vlan_tag=2711,
+                    ),
+                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
+                        metro_code=equinix.Metro.SILICON_VALLEY,
+                    ),
+                ),
+            ))
+        ```
+        ### example 9
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        fcr2_azure = equinix.fabric.Connection("fcr2azure",
+            name="ConnectionName",
+            type="IP_VC",
+            notifications=[equinix.fabric.ConnectionNotificationArgs(
+                type=equinix.fabric.NotificationsType.ALL,
+                emails=[
+                    "example@equinix.com",
+                    "test1@equinix.com",
+                ],
+            )],
+            bandwidth=50,
+            order=equinix.fabric.ConnectionOrderArgs(
+                purchase_order_number="1-323292",
+            ),
+            a_side=equinix.fabric.ConnectionASideArgs(
+                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
+                    type="CLOUD_ROUTER",
+                    router=equinix.fabric.ConnectionASideAccessPointRouterArgs(
+                        uuid="<cloud_router_uuid>",
+                    ),
+                ),
+            ),
+            z_side=equinix.fabric.ConnectionZSideArgs(
+                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
+                    type=equinix.fabric.AccessPointType.SP,
+                    authentication_key="<Azure_ExpressRouter_Auth_Key>",
+                    peering_type=equinix.fabric.AccessPointPeeringType.PRIVATE,
+                    profile=equinix.fabric.ConnectionZSideAccessPointProfileArgs(
+                        type=equinix.fabric.ProfileType.L2_PROFILE,
+                        uuid="<Azure_Service_Profile_UUID>",
+                    ),
+                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
+                        metro_code=equinix.Metro.SILICON_VALLEY,
+                    ),
+                ),
+            ))
+        ```
+        ### example 10
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        vd2_azure = equinix.fabric.Connection("vd2azure",
+            name="ConnectionName",
+            type=equinix.fabric.ConnectionType.EVPL,
+            notifications=[equinix.fabric.ConnectionNotificationArgs(
+                type=equinix.fabric.NotificationsType.ALL,
+                emails=[
+                    "example@equinix.com",
+                    "test1@equinix.com",
+                ],
+            )],
+            bandwidth=50,
+            order=equinix.fabric.ConnectionOrderArgs(
+                purchase_order_number="1-323292",
+            ),
+            a_side=equinix.fabric.ConnectionASideArgs(
+                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
+                    type=equinix.fabric.AccessPointType.VD,
+                    virtual_device=equinix.fabric.ConnectionASideAccessPointVirtualDeviceArgs(
+                        type="EDGE",
+                        uuid="<device_uuid>",
+                    ),
+                    interface=equinix.fabric.ConnectionASideAccessPointInterfaceArgs(
+                        type="CLOUD",
+                        id=7,
+                    ),
+                ),
+            ),
+            z_side=equinix.fabric.ConnectionZSideArgs(
+                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
+                    type=equinix.fabric.AccessPointType.SP,
+                    authentication_key="<Azure_ExpressRouter_Auth_Key>",
+                    peering_type=equinix.fabric.AccessPointPeeringType.PRIVATE,
+                    profile=equinix.fabric.ConnectionZSideAccessPointProfileArgs(
+                        type=equinix.fabric.ProfileType.L2_PROFILE,
+                        uuid="<Azure_Service_Profile_UUID>",
+                    ),
+                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
+                        metro_code=equinix.Metro.SILICON_VALLEY,
+                    ),
+                ),
+            ))
+        ```
         ### example 11
         ```python
         import pulumi
@@ -1337,45 +1783,6 @@ class Connection(pulumi.CustomResource):
                 ),
             ))
         ```
-        ### example 7
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        token2_aws = equinix.fabric.Connection("token2aws",
-            name="ConnectionName",
-            type=equinix.fabric.ConnectionType.EVPL,
-            notifications=[equinix.fabric.ConnectionNotificationArgs(
-                type=equinix.fabric.NotificationsType.ALL,
-                emails=[
-                    "example@equinix.com",
-                    "test1@equinix.com",
-                ],
-            )],
-            bandwidth=50,
-            order=equinix.fabric.ConnectionOrderArgs(
-                purchase_order_number="1-323292",
-            ),
-            a_side=equinix.fabric.ConnectionASideArgs(
-                service_token=equinix.fabric.ConnectionASideServiceTokenArgs(
-                    uuid="<service_token_uuid>",
-                ),
-            ),
-            z_side=equinix.fabric.ConnectionZSideArgs(
-                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.SP,
-                    authentication_key="<aws_account_id>",
-                    seller_region="us-west-1",
-                    profile=equinix.fabric.ConnectionZSideAccessPointProfileArgs(
-                        type=equinix.fabric.ProfileType.L2_PROFILE,
-                        uuid="<service_profile_uuid>",
-                    ),
-                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
-                        metro_code=equinix.Metro.SILICON_VALLEY,
-                    ),
-                ),
-            ))
-        ```
         ### example 12
         ```python
         import pulumi
@@ -1408,447 +1815,6 @@ class Connection(pulumi.CustomResource):
                     type=equinix.fabric.AccessPointType.NETWORK,
                     network=equinix.fabric.ConnectionZSideAccessPointNetworkArgs(
                         uuid="<network_uuid>",
-                    ),
-                ),
-            ))
-        ```
-        ### example 2
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        port2_aws = equinix.fabric.Connection("port2aws",
-            name="ConnectionName",
-            type=equinix.fabric.ConnectionType.EVPL,
-            notifications=[equinix.fabric.ConnectionNotificationArgs(
-                type=equinix.fabric.NotificationsType.ALL,
-                emails=[
-                    "example@equinix.com",
-                    "test1@equinix.com",
-                ],
-            )],
-            bandwidth=50,
-            redundancy=equinix.fabric.ConnectionRedundancyArgs(
-                priority="PRIMARY",
-            ),
-            order=equinix.fabric.ConnectionOrderArgs(
-                purchase_order_number="1-323929",
-            ),
-            a_side=equinix.fabric.ConnectionASideArgs(
-                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.COLO,
-                    port=equinix.fabric.ConnectionASideAccessPointPortArgs(
-                        uuid="<aside_port_uuid>",
-                    ),
-                    link_protocol=equinix.fabric.ConnectionASideAccessPointLinkProtocolArgs(
-                        type=equinix.fabric.AccessPointLinkProtocolType.QIN_Q,
-                        vlan_s_tag=2019,
-                        vlan_c_tag=2112,
-                    ),
-                ),
-            ),
-            z_side=equinix.fabric.ConnectionZSideArgs(
-                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.SP,
-                    authentication_key="<aws_account_id>",
-                    seller_region="us-west-1",
-                    profile=equinix.fabric.ConnectionZSideAccessPointProfileArgs(
-                        type=equinix.fabric.ProfileType.L2_PROFILE,
-                        uuid="<service_profile_uuid>",
-                    ),
-                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
-                        metro_code=equinix.Metro.SILICON_VALLEY,
-                    ),
-                ),
-            ),
-            additional_info=[
-                {
-                    "key": "accessKey",
-                    "value": "<aws_access_key>",
-                },
-                {
-                    "key": "secretKey",
-                    "value": "<aws_secret_key>",
-                },
-            ])
-        ```
-        ### example 6
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        vd2_token = equinix.fabric.Connection("vd2token",
-            name="ConnectionName",
-            type=equinix.fabric.ConnectionType.EVPL,
-            notifications=[equinix.fabric.ConnectionNotificationArgs(
-                type=equinix.fabric.NotificationsType.ALL,
-                emails=[
-                    "example@equinix.com",
-                    "test1@equinix.com",
-                ],
-            )],
-            bandwidth=50,
-            order=equinix.fabric.ConnectionOrderArgs(
-                purchase_order_number="1-323292",
-            ),
-            a_side=equinix.fabric.ConnectionASideArgs(
-                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.VD,
-                    virtual_device=equinix.fabric.ConnectionASideAccessPointVirtualDeviceArgs(
-                        type="EDGE",
-                        uuid="<device_uuid>",
-                    ),
-                    interface=equinix.fabric.ConnectionASideAccessPointInterfaceArgs(
-                        type="NETWORK",
-                        id=7,
-                    ),
-                ),
-            ),
-            z_side=equinix.fabric.ConnectionZSideArgs(
-                service_token=equinix.fabric.ConnectionZSideServiceTokenArgs(
-                    uuid="<service_token_uuid>",
-                ),
-            ))
-        ```
-        ### example 4
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        access_epl_vc = equinix.fabric.Connection("accessEplVc",
-            name="ConnectionName",
-            type=equinix.fabric.ConnectionType.ACCESS_EPL,
-            notifications=[equinix.fabric.ConnectionNotificationArgs(
-                type=equinix.fabric.NotificationsType.ALL,
-                emails=[
-                    "example@equinix.com",
-                    "test1@equinix.com",
-                ],
-            )],
-            bandwidth=50,
-            order=equinix.fabric.ConnectionOrderArgs(
-                purchase_order_number="1-323292",
-            ),
-            a_side=equinix.fabric.ConnectionASideArgs(
-                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.COLO,
-                    port=equinix.fabric.ConnectionASideAccessPointPortArgs(
-                        uuid="<aside_port_uuid>",
-                    ),
-                    link_protocol=equinix.fabric.ConnectionASideAccessPointLinkProtocolArgs(
-                        type=equinix.fabric.AccessPointLinkProtocolType.QIN_Q,
-                        vlan_s_tag=1976,
-                    ),
-                ),
-            ),
-            z_side=equinix.fabric.ConnectionZSideArgs(
-                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.COLO,
-                    port=equinix.fabric.ConnectionZSideAccessPointPortArgs(
-                        uuid="<zside_port_uuid>",
-                    ),
-                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
-                        metro_code=equinix.Metro.SILICON_VALLEY,
-                    ),
-                ),
-            ))
-        ```
-        ### example 5
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        vd2_port = equinix.fabric.Connection("vd2port",
-            name="ConnectionName",
-            type=equinix.fabric.ConnectionType.EVPL,
-            notifications=[equinix.fabric.ConnectionNotificationArgs(
-                type=equinix.fabric.NotificationsType.ALL,
-                emails=[
-                    "example@equinix.com",
-                    "test1@equinix.com",
-                ],
-            )],
-            bandwidth=50,
-            order=equinix.fabric.ConnectionOrderArgs(
-                purchase_order_number="1-323292",
-            ),
-            a_side=equinix.fabric.ConnectionASideArgs(
-                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.VD,
-                    virtual_device=equinix.fabric.ConnectionASideAccessPointVirtualDeviceArgs(
-                        type="EDGE",
-                        uuid="<device_uuid>",
-                    ),
-                    interface=equinix.fabric.ConnectionASideAccessPointInterfaceArgs(
-                        type="NETWORK",
-                        id=7,
-                    ),
-                ),
-            ),
-            z_side=equinix.fabric.ConnectionZSideArgs(
-                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.COLO,
-                    port=equinix.fabric.ConnectionZSideAccessPointPortArgs(
-                        uuid="<zside_port_uuid>",
-                    ),
-                    link_protocol=equinix.fabric.ConnectionZSideAccessPointLinkProtocolArgs(
-                        type=equinix.fabric.AccessPointLinkProtocolType.DOT1Q,
-                        vlan_s_tag=3711,
-                    ),
-                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
-                        metro_code=equinix.Metro.SILICON_VALLEY,
-                    ),
-                ),
-            ))
-        ```
-        ### example 10
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        vd2_azure = equinix.fabric.Connection("vd2azure",
-            name="ConnectionName",
-            type=equinix.fabric.ConnectionType.EVPL,
-            notifications=[equinix.fabric.ConnectionNotificationArgs(
-                type=equinix.fabric.NotificationsType.ALL,
-                emails=[
-                    "example@equinix.com",
-                    "test1@equinix.com",
-                ],
-            )],
-            bandwidth=50,
-            order=equinix.fabric.ConnectionOrderArgs(
-                purchase_order_number="1-323292",
-            ),
-            a_side=equinix.fabric.ConnectionASideArgs(
-                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.VD,
-                    virtual_device=equinix.fabric.ConnectionASideAccessPointVirtualDeviceArgs(
-                        type="EDGE",
-                        uuid="<device_uuid>",
-                    ),
-                    interface=equinix.fabric.ConnectionASideAccessPointInterfaceArgs(
-                        type="CLOUD",
-                        id=7,
-                    ),
-                ),
-            ),
-            z_side=equinix.fabric.ConnectionZSideArgs(
-                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.SP,
-                    authentication_key="<Azure_ExpressRouter_Auth_Key>",
-                    peering_type=equinix.fabric.AccessPointPeeringType.PRIVATE,
-                    profile=equinix.fabric.ConnectionZSideAccessPointProfileArgs(
-                        type=equinix.fabric.ProfileType.L2_PROFILE,
-                        uuid="<Azure_Service_Profile_UUID>",
-                    ),
-                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
-                        metro_code=equinix.Metro.SILICON_VALLEY,
-                    ),
-                ),
-            ))
-        ```
-        ### example 1
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        port2_port = equinix.fabric.Connection("port2port",
-            name="ConnectionName",
-            type=equinix.fabric.ConnectionType.EVPL,
-            notifications=[equinix.fabric.ConnectionNotificationArgs(
-                type=equinix.fabric.NotificationsType.ALL,
-                emails=[
-                    "example@equinix.com",
-                    "test1@equinix.com",
-                ],
-            )],
-            bandwidth=50,
-            order=equinix.fabric.ConnectionOrderArgs(
-                purchase_order_number="1-323292",
-            ),
-            a_side=equinix.fabric.ConnectionASideArgs(
-                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.COLO,
-                    port=equinix.fabric.ConnectionASideAccessPointPortArgs(
-                        uuid="<aside_port_uuid>",
-                    ),
-                    link_protocol=equinix.fabric.ConnectionASideAccessPointLinkProtocolArgs(
-                        type=equinix.fabric.AccessPointLinkProtocolType.QIN_Q,
-                        vlan_s_tag=1976,
-                    ),
-                ),
-            ),
-            z_side=equinix.fabric.ConnectionZSideArgs(
-                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.COLO,
-                    port=equinix.fabric.ConnectionZSideAccessPointPortArgs(
-                        uuid="<zside_port_uuid>",
-                    ),
-                    link_protocol=equinix.fabric.ConnectionZSideAccessPointLinkProtocolArgs(
-                        type=equinix.fabric.AccessPointLinkProtocolType.QIN_Q,
-                        vlan_s_tag=3711,
-                    ),
-                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
-                        metro_code=equinix.Metro.SILICON_VALLEY,
-                    ),
-                ),
-            ))
-        ```
-        ### example 14
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        epl = equinix.fabric.Connection("epl",
-            name="ConnectionName",
-            type="EPLAN_VC",
-            notifications=[equinix.fabric.ConnectionNotificationArgs(
-                type=equinix.fabric.NotificationsType.ALL,
-                emails=[
-                    "example@equinix.com",
-                    "test1@equinix.com",
-                ],
-            )],
-            bandwidth=50,
-            order=equinix.fabric.ConnectionOrderArgs(
-                purchase_order_number="1-323292",
-            ),
-            a_side=equinix.fabric.ConnectionASideArgs(
-                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.COLO,
-                    port=equinix.fabric.ConnectionASideAccessPointPortArgs(
-                        uuid="<aside_port_uuid>",
-                    ),
-                ),
-            ),
-            z_side=equinix.fabric.ConnectionZSideArgs(
-                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.NETWORK,
-                    network=equinix.fabric.ConnectionZSideAccessPointNetworkArgs(
-                        uuid="<network_uuid>",
-                    ),
-                ),
-            ))
-        ```
-        ### example 3
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        epl = equinix.fabric.Connection("epl",
-            name="ConnectionName",
-            type=equinix.fabric.ConnectionType.EPL,
-            notifications=[equinix.fabric.ConnectionNotificationArgs(
-                type=equinix.fabric.NotificationsType.ALL,
-                emails=[
-                    "example@equinix.com",
-                    "test1@equinix.com",
-                ],
-            )],
-            bandwidth=50,
-            order=equinix.fabric.ConnectionOrderArgs(
-                purchase_order_number="1-323292",
-            ),
-            a_side=equinix.fabric.ConnectionASideArgs(
-                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.COLO,
-                    port=equinix.fabric.ConnectionASideAccessPointPortArgs(
-                        uuid="<aside_port_uuid>",
-                    ),
-                ),
-            ),
-            z_side=equinix.fabric.ConnectionZSideArgs(
-                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.COLO,
-                    port=equinix.fabric.ConnectionZSideAccessPointPortArgs(
-                        uuid="<zside_port_uuid>",
-                    ),
-                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
-                        metro_code=equinix.Metro.SILICON_VALLEY,
-                    ),
-                ),
-            ))
-        ```
-        ### example 15
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        epl = equinix.fabric.Connection("epl",
-            name="ConnectionName",
-            type="EVPLAN_VC",
-            notifications=[equinix.fabric.ConnectionNotificationArgs(
-                type=equinix.fabric.NotificationsType.ALL,
-                emails=[
-                    "example@equinix.com",
-                    "test1@equinix.com",
-                ],
-            )],
-            bandwidth=50,
-            order=equinix.fabric.ConnectionOrderArgs(
-                purchase_order_number="1-323292",
-            ),
-            a_side=equinix.fabric.ConnectionASideArgs(
-                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.COLO,
-                    port=equinix.fabric.ConnectionASideAccessPointPortArgs(
-                        uuid="<aside_port_uuid>",
-                    ),
-                    link_protocol=equinix.fabric.ConnectionASideAccessPointLinkProtocolArgs(
-                        type=equinix.fabric.AccessPointLinkProtocolType.DOT1Q,
-                        vlan_s_tag=1976,
-                    ),
-                ),
-            ),
-            z_side=equinix.fabric.ConnectionZSideArgs(
-                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.NETWORK,
-                    network=equinix.fabric.ConnectionZSideAccessPointNetworkArgs(
-                        uuid="<network_uuid>",
-                    ),
-                ),
-            ))
-        ```
-        ### example 8
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        fcr2_port = equinix.fabric.Connection("fcr2port",
-            name="ConnectionName",
-            type="IP_VC",
-            notifications=[equinix.fabric.ConnectionNotificationArgs(
-                type=equinix.fabric.NotificationsType.ALL,
-                emails=[
-                    "example@equinix.com",
-                    "test1@equinix.com",
-                ],
-            )],
-            bandwidth=50,
-            order=equinix.fabric.ConnectionOrderArgs(
-                purchase_order_number="1-323292",
-            ),
-            a_side=equinix.fabric.ConnectionASideArgs(
-                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
-                    type="CLOUD_ROUTER",
-                    router=equinix.fabric.ConnectionASideAccessPointRouterArgs(
-                        uuid="<cloud_router_uuid>",
-                    ),
-                ),
-            ),
-            z_side=equinix.fabric.ConnectionZSideArgs(
-                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.COLO,
-                    port=equinix.fabric.ConnectionZSideAccessPointPortArgs(
-                        uuid="<port_uuid>",
-                    ),
-                    link_protocol=equinix.fabric.ConnectionZSideAccessPointLinkProtocolArgs(
-                        type=equinix.fabric.AccessPointLinkProtocolType.DOT1Q,
-                        vlan_tag=2711,
-                    ),
-                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
-                        metro_code=equinix.Metro.SILICON_VALLEY,
                     ),
                 ),
             ))
@@ -1894,14 +1860,14 @@ class Connection(pulumi.CustomResource):
                 ),
             ))
         ```
-        ### example 9
+        ### example 14
         ```python
         import pulumi
         import pulumi_equinix as equinix
 
-        fcr2_azure = equinix.fabric.Connection("fcr2azure",
+        epl = equinix.fabric.Connection("epl",
             name="ConnectionName",
-            type="IP_VC",
+            type="EPLAN_VC",
             notifications=[equinix.fabric.ConnectionNotificationArgs(
                 type=equinix.fabric.NotificationsType.ALL,
                 emails=[
@@ -1915,23 +1881,57 @@ class Connection(pulumi.CustomResource):
             ),
             a_side=equinix.fabric.ConnectionASideArgs(
                 access_point=equinix.fabric.ConnectionASideAccessPointArgs(
-                    type="CLOUD_ROUTER",
-                    router=equinix.fabric.ConnectionASideAccessPointRouterArgs(
-                        uuid="<cloud_router_uuid>",
+                    type=equinix.fabric.AccessPointType.COLO,
+                    port=equinix.fabric.ConnectionASideAccessPointPortArgs(
+                        uuid="<aside_port_uuid>",
                     ),
                 ),
             ),
             z_side=equinix.fabric.ConnectionZSideArgs(
                 access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.SP,
-                    authentication_key="<Azure_ExpressRouter_Auth_Key>",
-                    peering_type=equinix.fabric.AccessPointPeeringType.PRIVATE,
-                    profile=equinix.fabric.ConnectionZSideAccessPointProfileArgs(
-                        type=equinix.fabric.ProfileType.L2_PROFILE,
-                        uuid="<Azure_Service_Profile_UUID>",
+                    type=equinix.fabric.AccessPointType.NETWORK,
+                    network=equinix.fabric.ConnectionZSideAccessPointNetworkArgs(
+                        uuid="<network_uuid>",
                     ),
-                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
-                        metro_code=equinix.Metro.SILICON_VALLEY,
+                ),
+            ))
+        ```
+        ### example 15
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        epl = equinix.fabric.Connection("epl",
+            name="ConnectionName",
+            type="EVPLAN_VC",
+            notifications=[equinix.fabric.ConnectionNotificationArgs(
+                type=equinix.fabric.NotificationsType.ALL,
+                emails=[
+                    "example@equinix.com",
+                    "test1@equinix.com",
+                ],
+            )],
+            bandwidth=50,
+            order=equinix.fabric.ConnectionOrderArgs(
+                purchase_order_number="1-323292",
+            ),
+            a_side=equinix.fabric.ConnectionASideArgs(
+                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
+                    type=equinix.fabric.AccessPointType.COLO,
+                    port=equinix.fabric.ConnectionASideAccessPointPortArgs(
+                        uuid="<aside_port_uuid>",
+                    ),
+                    link_protocol=equinix.fabric.ConnectionASideAccessPointLinkProtocolArgs(
+                        type=equinix.fabric.AccessPointLinkProtocolType.DOT1Q,
+                        vlan_s_tag=1976,
+                    ),
+                ),
+            ),
+            z_side=equinix.fabric.ConnectionZSideArgs(
+                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
+                    type=equinix.fabric.AccessPointType.NETWORK,
+                    network=equinix.fabric.ConnectionZSideAccessPointNetworkArgs(
+                        uuid="<network_uuid>",
                     ),
                 ),
             ))

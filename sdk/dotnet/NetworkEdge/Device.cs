@@ -23,6 +23,268 @@ namespace Pulumi.Equinix.NetworkEdge
     /// * **BYOL** - [bring your own license] Where customer brings his own, already procured device software license. There are no charges associated with such license. It is the only licensing mode for `self-configured` devices.
     /// 
     /// ## Example Usage
+    /// ### example 1
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Equinix = Pulumi.Equinix;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var dc = Equinix.NetworkEdge.GetAccount.Invoke(new()
+    ///     {
+    ///         MetroCode = "DC",
+    ///     });
+    /// 
+    ///     var sv = Equinix.NetworkEdge.GetAccount.Invoke(new()
+    ///     {
+    ///         MetroCode = "SV",
+    ///     });
+    /// 
+    ///     var csr1000VHa = new Equinix.NetworkEdge.Device("csr1000vHa", new()
+    ///     {
+    ///         Name = "tf-csr1000v-p",
+    ///         Throughput = 500,
+    ///         ThroughputUnit = Equinix.NetworkEdge.ThroughputUnit.Mbps,
+    ///         MetroCode = dc.Apply(getAccountResult =&gt; getAccountResult.MetroCode),
+    ///         TypeCode = "CSR1000V",
+    ///         SelfManaged = false,
+    ///         Connectivity = "INTERNET-ACCESS",
+    ///         Byol = false,
+    ///         PackageCode = "SEC",
+    ///         Notifications = new[]
+    ///         {
+    ///             "john@equinix.com",
+    ///             "marry@equinix.com",
+    ///             "fred@equinix.com",
+    ///         },
+    ///         Hostname = "csr1000v-p",
+    ///         TermLength = 12,
+    ///         AccountNumber = dc.Apply(getAccountResult =&gt; getAccountResult.Number),
+    ///         Version = "16.09.05",
+    ///         CoreCount = 2,
+    ///         SecondaryDevice = new Equinix.NetworkEdge.Inputs.DeviceSecondaryDeviceArgs
+    ///         {
+    ///             Name = "tf-csr1000v-s",
+    ///             MetroCode = sv.Apply(getAccountResult =&gt; getAccountResult.MetroCode),
+    ///             Hostname = "csr1000v-s",
+    ///             Notifications = new[]
+    ///             {
+    ///                 "john@equinix.com",
+    ///                 "marry@equinix.com",
+    ///             },
+    ///             AccountNumber = sv.Apply(getAccountResult =&gt; getAccountResult.Number),
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### example 2
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Equinix = Pulumi.Equinix;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var sv = Equinix.NetworkEdge.GetAccount.Invoke(new()
+    ///     {
+    ///         MetroCode = "SV",
+    ///     });
+    /// 
+    ///     var panwCluster = new Equinix.NetworkEdge.Device("panwCluster", new()
+    ///     {
+    ///         Name = "tf-panw",
+    ///         MetroCode = sv.Apply(getAccountResult =&gt; getAccountResult.MetroCode),
+    ///         TypeCode = "PA-VM",
+    ///         SelfManaged = true,
+    ///         Byol = true,
+    ///         PackageCode = "VM100",
+    ///         Notifications = new[]
+    ///         {
+    ///             "john@equinix.com",
+    ///             "marry@equinix.com",
+    ///             "fred@equinix.com",
+    ///         },
+    ///         TermLength = 12,
+    ///         AccountNumber = sv.Apply(getAccountResult =&gt; getAccountResult.Number),
+    ///         Version = "10.1.3",
+    ///         InterfaceCount = 10,
+    ///         CoreCount = 2,
+    ///         SshKey = new Equinix.NetworkEdge.Inputs.DeviceSshKeyArgs
+    ///         {
+    ///             Username = "test",
+    ///             KeyName = "test-key",
+    ///         },
+    ///         AclTemplateId = "0bff6e05-f0e7-44cd-804a-25b92b835f8b",
+    ///         ClusterDetails = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsArgs
+    ///         {
+    ///             ClusterName = "tf-panw-cluster",
+    ///             Node0 = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsNode0Args
+    ///             {
+    ///                 VendorConfiguration = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsNode0VendorConfigurationArgs
+    ///                 {
+    ///                     Hostname = "panw-node0",
+    ///                 },
+    ///                 LicenseToken = "licenseToken",
+    ///             },
+    ///             Node1 = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsNode1Args
+    ///             {
+    ///                 VendorConfiguration = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsNode1VendorConfigurationArgs
+    ///                 {
+    ///                     Hostname = "panw-node1",
+    ///                 },
+    ///                 LicenseToken = "licenseToken",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### example 3
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Equinix = Pulumi.Equinix;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var filepath = config.Get("filepath") ?? "cloudInitFileFolder/TF-AVX-cloud-init-file.txt";
+    ///     var sv = Equinix.NetworkEdge.GetAccount.Invoke(new()
+    ///     {
+    ///         MetroCode = "SV",
+    ///     });
+    /// 
+    ///     var aviatrixCloudinitFile = new Equinix.NetworkEdge.NetworkFile("aviatrixCloudinitFile", new()
+    ///     {
+    ///         FileName = "TF-AVX-cloud-init-file.txt",
+    ///         Content = Std.File.Invoke(new()
+    ///         {
+    ///             Input = filepath,
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         MetroCode = sv.Apply(getAccountResult =&gt; getAccountResult.MetroCode).Apply(System.Enum.Parse&lt;Equinix.Metro&gt;),
+    ///         DeviceTypeCode = "AVIATRIX_EDGE",
+    ///         ProcessType = Equinix.NetworkEdge.FileType.CloudInit,
+    ///         SelfManaged = true,
+    ///         Byol = true,
+    ///     });
+    /// 
+    ///     var aviatrixSingle = new Equinix.NetworkEdge.Device("aviatrixSingle", new()
+    ///     {
+    ///         Name = "tf-aviatrix",
+    ///         MetroCode = sv.Apply(getAccountResult =&gt; getAccountResult.MetroCode),
+    ///         TypeCode = "AVIATRIX_EDGE",
+    ///         SelfManaged = true,
+    ///         Byol = true,
+    ///         PackageCode = "STD",
+    ///         Notifications = new[]
+    ///         {
+    ///             "john@equinix.com",
+    ///         },
+    ///         TermLength = 12,
+    ///         AccountNumber = sv.Apply(getAccountResult =&gt; getAccountResult.Number),
+    ///         Version = "6.9",
+    ///         CoreCount = 2,
+    ///         CloudInitFileId = aviatrixCloudinitFile.Uuid,
+    ///         AclTemplateId = "c06150ea-b604-4ad1-832a-d63936e9b938",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### example 4
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Equinix = Pulumi.Equinix;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var sv = Equinix.NetworkEdge.GetAccount.Invoke(new()
+    ///     {
+    ///         Name = "account-name",
+    ///         MetroCode = "SV",
+    ///     });
+    /// 
+    ///     var c8KvSingle = new Equinix.NetworkEdge.Device("c8kvSingle", new()
+    ///     {
+    ///         Name = "tf-c8kv",
+    ///         MetroCode = sv.Apply(getAccountResult =&gt; getAccountResult.MetroCode),
+    ///         TypeCode = "C8000V",
+    ///         SelfManaged = true,
+    ///         Byol = true,
+    ///         PackageCode = "network-essentials",
+    ///         Notifications = new[]
+    ///         {
+    ///             "test@equinix.com",
+    ///         },
+    ///         Hostname = "C8KV",
+    ///         AccountNumber = sv.Apply(getAccountResult =&gt; getAccountResult.Number),
+    ///         Version = "17.06.01a",
+    ///         CoreCount = 2,
+    ///         TermLength = 12,
+    ///         LicenseToken = "valid-license-token",
+    ///         AdditionalBandwidth = 5,
+    ///         SshKey = new Equinix.NetworkEdge.Inputs.DeviceSshKeyArgs
+    ///         {
+    ///             Username = "test-username",
+    ///             KeyName = "valid-key-name",
+    ///         },
+    ///         AclTemplateId = "3e548c02-9164-4197-aa23-05b1f644883c",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### example 5
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Equinix = Pulumi.Equinix;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var sv = Equinix.NetworkEdge.GetAccount.Invoke(new()
+    ///     {
+    ///         Name = "account-name",
+    ///         MetroCode = "SV",
+    ///     });
+    /// 
+    ///     var vsrxSingle = new Equinix.NetworkEdge.Device("vsrxSingle", new()
+    ///     {
+    ///         Name = "tf-c8kv-sdwan",
+    ///         MetroCode = sv.Apply(getAccountResult =&gt; getAccountResult.MetroCode),
+    ///         TypeCode = "VSRX",
+    ///         SelfManaged = true,
+    ///         Byol = true,
+    ///         PackageCode = "STD",
+    ///         Notifications = new[]
+    ///         {
+    ///             "test@equinix.com",
+    ///         },
+    ///         Hostname = "VSRX",
+    ///         AccountNumber = sv.Apply(getAccountResult =&gt; getAccountResult.Number),
+    ///         Version = "23.2R1.13",
+    ///         CoreCount = 2,
+    ///         TermLength = 12,
+    ///         AdditionalBandwidth = 5,
+    ///         ProjectId = "a86d7112-d740-4758-9c9c-31e66373746b",
+    ///         DiverseDeviceId = "ed7891bd-15b4-4f72-ac56-d96cfdacddcc",
+    ///         SshKey = new Equinix.NetworkEdge.Inputs.DeviceSshKeyArgs
+    ///         {
+    ///             Username = "test-username",
+    ///             KeyName = "valid-key-name",
+    ///         },
+    ///         AclTemplateId = "3e548c02-9164-4197-aa23-05b1f644883c",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### example 6
     /// ```csharp
     /// using System.Collections.Generic;
@@ -82,59 +344,6 @@ namespace Pulumi.Equinix.NetworkEdge
     ///             AccountNumber = sv.Apply(getAccountResult =&gt; getAccountResult.Number),
     ///             AclTemplateId = "fee5e2c0-6198-4ce6-9cbd-bbe6c1dbe138",
     ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### example 3
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Equinix = Pulumi.Equinix;
-    /// using Std = Pulumi.Std;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var filepath = config.Get("filepath") ?? "cloudInitFileFolder/TF-AVX-cloud-init-file.txt";
-    ///     var sv = Equinix.NetworkEdge.GetAccount.Invoke(new()
-    ///     {
-    ///         MetroCode = "SV",
-    ///     });
-    /// 
-    ///     var aviatrixCloudinitFile = new Equinix.NetworkEdge.NetworkFile("aviatrixCloudinitFile", new()
-    ///     {
-    ///         FileName = "TF-AVX-cloud-init-file.txt",
-    ///         Content = Std.File.Invoke(new()
-    ///         {
-    ///             Input = filepath,
-    ///         }).Apply(invoke =&gt; invoke.Result),
-    ///         MetroCode = sv.Apply(getAccountResult =&gt; getAccountResult.MetroCode).Apply(System.Enum.Parse&lt;Equinix.Metro&gt;),
-    ///         DeviceTypeCode = "AVIATRIX_EDGE",
-    ///         ProcessType = Equinix.NetworkEdge.FileType.CloudInit,
-    ///         SelfManaged = true,
-    ///         Byol = true,
-    ///     });
-    /// 
-    ///     var aviatrixSingle = new Equinix.NetworkEdge.Device("aviatrixSingle", new()
-    ///     {
-    ///         Name = "tf-aviatrix",
-    ///         MetroCode = sv.Apply(getAccountResult =&gt; getAccountResult.MetroCode),
-    ///         TypeCode = "AVIATRIX_EDGE",
-    ///         SelfManaged = true,
-    ///         Byol = true,
-    ///         PackageCode = "STD",
-    ///         Notifications = new[]
-    ///         {
-    ///             "john@equinix.com",
-    ///         },
-    ///         TermLength = 12,
-    ///         AccountNumber = sv.Apply(getAccountResult =&gt; getAccountResult.Number),
-    ///         Version = "6.9",
-    ///         CoreCount = 2,
-    ///         CloudInitFileId = aviatrixCloudinitFile.Uuid,
-    ///         AclTemplateId = "c06150ea-b604-4ad1-832a-d63936e9b938",
     ///     });
     /// 
     /// });
@@ -211,180 +420,6 @@ namespace Pulumi.Equinix.NetworkEdge
     ///                 { "licenseId", "xxxxxxxxxxxxxxx" },
     ///             },
     ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### example 9
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Equinix = Pulumi.Equinix;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var sv = Equinix.NetworkEdge.GetAccount.Invoke(new()
-    ///     {
-    ///         MetroCode = "SV",
-    ///     });
-    /// 
-    ///     var panwCluster = new Equinix.NetworkEdge.Device("panwCluster", new()
-    ///     {
-    ///         Name = "tf-panw",
-    ///         MetroCode = sv.Apply(getAccountResult =&gt; getAccountResult.MetroCode),
-    ///         TypeCode = "PA-VM",
-    ///         SelfManaged = true,
-    ///         Byol = true,
-    ///         PackageCode = "VM100",
-    ///         Notifications = new[]
-    ///         {
-    ///             "john@equinix.com",
-    ///             "marry@equinix.com",
-    ///             "fred@equinix.com",
-    ///         },
-    ///         TermLength = 12,
-    ///         AccountNumber = sv.Apply(getAccountResult =&gt; getAccountResult.Number),
-    ///         Version = "11.1.3",
-    ///         InterfaceCount = 10,
-    ///         CoreCount = 2,
-    ///         SshKey = new Equinix.NetworkEdge.Inputs.DeviceSshKeyArgs
-    ///         {
-    ///             Username = "test",
-    ///             KeyName = "test-key",
-    ///         },
-    ///         AclTemplateId = "0bff6e05-f0e7-44cd-804a-25b92b835f8b",
-    ///         ClusterDetails = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsArgs
-    ///         {
-    ///             ClusterName = "tf-panw-cluster",
-    ///             Node0 = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsNode0Args
-    ///             {
-    ///                 VendorConfiguration = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsNode0VendorConfigurationArgs
-    ///                 {
-    ///                     Hostname = "panw-node0",
-    ///                     PanoramaIpAddress = "x.x.x.x",
-    ///                     PanoramaAuthKey = "xxxxxxxxxxx",
-    ///                 },
-    ///                 LicenseToken = "licenseToken",
-    ///             },
-    ///             Node1 = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsNode1Args
-    ///             {
-    ///                 VendorConfiguration = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsNode1VendorConfigurationArgs
-    ///                 {
-    ///                     Hostname = "panw-node1",
-    ///                     PanoramaIpAddress = "x.x.x.x",
-    ///                     PanoramaAuthKey = "xxxxxxxxxxx",
-    ///                 },
-    ///                 LicenseToken = "licenseToken",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### example 2
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Equinix = Pulumi.Equinix;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var sv = Equinix.NetworkEdge.GetAccount.Invoke(new()
-    ///     {
-    ///         MetroCode = "SV",
-    ///     });
-    /// 
-    ///     var panwCluster = new Equinix.NetworkEdge.Device("panwCluster", new()
-    ///     {
-    ///         Name = "tf-panw",
-    ///         MetroCode = sv.Apply(getAccountResult =&gt; getAccountResult.MetroCode),
-    ///         TypeCode = "PA-VM",
-    ///         SelfManaged = true,
-    ///         Byol = true,
-    ///         PackageCode = "VM100",
-    ///         Notifications = new[]
-    ///         {
-    ///             "john@equinix.com",
-    ///             "marry@equinix.com",
-    ///             "fred@equinix.com",
-    ///         },
-    ///         TermLength = 12,
-    ///         AccountNumber = sv.Apply(getAccountResult =&gt; getAccountResult.Number),
-    ///         Version = "10.1.3",
-    ///         InterfaceCount = 10,
-    ///         CoreCount = 2,
-    ///         SshKey = new Equinix.NetworkEdge.Inputs.DeviceSshKeyArgs
-    ///         {
-    ///             Username = "test",
-    ///             KeyName = "test-key",
-    ///         },
-    ///         AclTemplateId = "0bff6e05-f0e7-44cd-804a-25b92b835f8b",
-    ///         ClusterDetails = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsArgs
-    ///         {
-    ///             ClusterName = "tf-panw-cluster",
-    ///             Node0 = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsNode0Args
-    ///             {
-    ///                 VendorConfiguration = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsNode0VendorConfigurationArgs
-    ///                 {
-    ///                     Hostname = "panw-node0",
-    ///                 },
-    ///                 LicenseToken = "licenseToken",
-    ///             },
-    ///             Node1 = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsNode1Args
-    ///             {
-    ///                 VendorConfiguration = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsNode1VendorConfigurationArgs
-    ///                 {
-    ///                     Hostname = "panw-node1",
-    ///                 },
-    ///                 LicenseToken = "licenseToken",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### example 4
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Equinix = Pulumi.Equinix;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var sv = Equinix.NetworkEdge.GetAccount.Invoke(new()
-    ///     {
-    ///         Name = "account-name",
-    ///         MetroCode = "SV",
-    ///     });
-    /// 
-    ///     var c8KvSingle = new Equinix.NetworkEdge.Device("c8kvSingle", new()
-    ///     {
-    ///         Name = "tf-c8kv",
-    ///         MetroCode = sv.Apply(getAccountResult =&gt; getAccountResult.MetroCode),
-    ///         TypeCode = "C8000V",
-    ///         SelfManaged = true,
-    ///         Byol = true,
-    ///         PackageCode = "network-essentials",
-    ///         Notifications = new[]
-    ///         {
-    ///             "test@equinix.com",
-    ///         },
-    ///         Hostname = "C8KV",
-    ///         AccountNumber = sv.Apply(getAccountResult =&gt; getAccountResult.Number),
-    ///         Version = "17.06.01a",
-    ///         CoreCount = 2,
-    ///         TermLength = 12,
-    ///         LicenseToken = "valid-license-token",
-    ///         AdditionalBandwidth = 5,
-    ///         SshKey = new Equinix.NetworkEdge.Inputs.DeviceSshKeyArgs
-    ///         {
-    ///             Username = "test-username",
-    ///             KeyName = "valid-key-name",
-    ///         },
-    ///         AclTemplateId = "3e548c02-9164-4197-aa23-05b1f644883c",
     ///     });
     /// 
     /// });
@@ -466,7 +501,7 @@ namespace Pulumi.Equinix.NetworkEdge
     /// 
     /// });
     /// ```
-    /// ### example 1
+    /// ### example 9
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -475,95 +510,60 @@ namespace Pulumi.Equinix.NetworkEdge
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var dc = Equinix.NetworkEdge.GetAccount.Invoke(new()
-    ///     {
-    ///         MetroCode = "DC",
-    ///     });
-    /// 
     ///     var sv = Equinix.NetworkEdge.GetAccount.Invoke(new()
     ///     {
     ///         MetroCode = "SV",
     ///     });
     /// 
-    ///     var csr1000VHa = new Equinix.NetworkEdge.Device("csr1000vHa", new()
+    ///     var panwCluster = new Equinix.NetworkEdge.Device("panwCluster", new()
     ///     {
-    ///         Name = "tf-csr1000v-p",
-    ///         Throughput = 500,
-    ///         ThroughputUnit = Equinix.NetworkEdge.ThroughputUnit.Mbps,
-    ///         MetroCode = dc.Apply(getAccountResult =&gt; getAccountResult.MetroCode),
-    ///         TypeCode = "CSR1000V",
-    ///         SelfManaged = false,
-    ///         Connectivity = "INTERNET-ACCESS",
-    ///         Byol = false,
-    ///         PackageCode = "SEC",
+    ///         Name = "tf-panw",
+    ///         MetroCode = sv.Apply(getAccountResult =&gt; getAccountResult.MetroCode),
+    ///         TypeCode = "PA-VM",
+    ///         SelfManaged = true,
+    ///         Byol = true,
+    ///         PackageCode = "VM100",
     ///         Notifications = new[]
     ///         {
     ///             "john@equinix.com",
     ///             "marry@equinix.com",
     ///             "fred@equinix.com",
     ///         },
-    ///         Hostname = "csr1000v-p",
     ///         TermLength = 12,
-    ///         AccountNumber = dc.Apply(getAccountResult =&gt; getAccountResult.Number),
-    ///         Version = "16.09.05",
-    ///         CoreCount = 2,
-    ///         SecondaryDevice = new Equinix.NetworkEdge.Inputs.DeviceSecondaryDeviceArgs
-    ///         {
-    ///             Name = "tf-csr1000v-s",
-    ///             MetroCode = sv.Apply(getAccountResult =&gt; getAccountResult.MetroCode),
-    ///             Hostname = "csr1000v-s",
-    ///             Notifications = new[]
-    ///             {
-    ///                 "john@equinix.com",
-    ///                 "marry@equinix.com",
-    ///             },
-    ///             AccountNumber = sv.Apply(getAccountResult =&gt; getAccountResult.Number),
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### example 5
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Equinix = Pulumi.Equinix;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var sv = Equinix.NetworkEdge.GetAccount.Invoke(new()
-    ///     {
-    ///         Name = "account-name",
-    ///         MetroCode = "SV",
-    ///     });
-    /// 
-    ///     var vsrxSingle = new Equinix.NetworkEdge.Device("vsrxSingle", new()
-    ///     {
-    ///         Name = "tf-c8kv-sdwan",
-    ///         MetroCode = sv.Apply(getAccountResult =&gt; getAccountResult.MetroCode),
-    ///         TypeCode = "VSRX",
-    ///         SelfManaged = true,
-    ///         Byol = true,
-    ///         PackageCode = "STD",
-    ///         Notifications = new[]
-    ///         {
-    ///             "test@equinix.com",
-    ///         },
-    ///         Hostname = "VSRX",
     ///         AccountNumber = sv.Apply(getAccountResult =&gt; getAccountResult.Number),
-    ///         Version = "23.2R1.13",
+    ///         Version = "11.1.3",
+    ///         InterfaceCount = 10,
     ///         CoreCount = 2,
-    ///         TermLength = 12,
-    ///         AdditionalBandwidth = 5,
-    ///         ProjectId = "a86d7112-d740-4758-9c9c-31e66373746b",
-    ///         DiverseDeviceId = "ed7891bd-15b4-4f72-ac56-d96cfdacddcc",
     ///         SshKey = new Equinix.NetworkEdge.Inputs.DeviceSshKeyArgs
     ///         {
-    ///             Username = "test-username",
-    ///             KeyName = "valid-key-name",
+    ///             Username = "test",
+    ///             KeyName = "test-key",
     ///         },
-    ///         AclTemplateId = "3e548c02-9164-4197-aa23-05b1f644883c",
+    ///         AclTemplateId = "0bff6e05-f0e7-44cd-804a-25b92b835f8b",
+    ///         ClusterDetails = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsArgs
+    ///         {
+    ///             ClusterName = "tf-panw-cluster",
+    ///             Node0 = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsNode0Args
+    ///             {
+    ///                 VendorConfiguration = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsNode0VendorConfigurationArgs
+    ///                 {
+    ///                     Hostname = "panw-node0",
+    ///                     PanoramaIpAddress = "x.x.x.x",
+    ///                     PanoramaAuthKey = "xxxxxxxxxxx",
+    ///                 },
+    ///                 LicenseToken = "licenseToken",
+    ///             },
+    ///             Node1 = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsNode1Args
+    ///             {
+    ///                 VendorConfiguration = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsNode1VendorConfigurationArgs
+    ///                 {
+    ///                     Hostname = "panw-node1",
+    ///                     PanoramaIpAddress = "x.x.x.x",
+    ///                     PanoramaAuthKey = "xxxxxxxxxxx",
+    ///                 },
+    ///                 LicenseToken = "licenseToken",
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });

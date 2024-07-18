@@ -13,6 +13,22 @@ import * as utilities from "../utilities";
  * See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
  *
  * ## Example Usage
+ * ### example 1
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const test = new equinix.metal.Vlan("test", {
+ *     description: "test VLAN in SV",
+ *     metro: "sv",
+ *     projectId: projectId,
+ * });
+ * const testGateway = new equinix.metal.Gateway("testGateway", {
+ *     projectId: projectId,
+ *     vlanId: test.id,
+ *     privateIpv4SubnetSize: 8,
+ * });
+ * ```
  * ### example 2
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -32,22 +48,6 @@ import * as utilities from "../utilities";
  *     projectId: projectId,
  *     vlanId: test.id,
  *     ipReservationId: testEquinixMetalReservedIpBlock.id,
- * });
- * ```
- * ### example 1
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@equinix-labs/pulumi-equinix";
- *
- * const test = new equinix.metal.Vlan("test", {
- *     description: "test VLAN in SV",
- *     metro: "sv",
- *     projectId: projectId,
- * });
- * const testGateway = new equinix.metal.Gateway("testGateway", {
- *     projectId: projectId,
- *     vlanId: test.id,
- *     privateIpv4SubnetSize: 8,
  * });
  * ```
  */

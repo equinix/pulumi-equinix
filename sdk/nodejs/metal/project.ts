@@ -13,6 +13,13 @@ import * as utilities from "../utilities";
  * > **NOTE:** Keep in mind that Equinix Metal invoicing is per project, so creating many `equinix.metal.Project` resources will affect the rendered invoice. If you want to keep your Equinix Metal bill simple and easy to review, please re-use your existing projects.
  *
  * ## Example Usage
+ * ### example 1
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const tfProject1 = new equinix.metal.Project("tfProject1", {name: "Terraform Fun"});
+ * ```
  * ### example 2
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -40,13 +47,6 @@ import * as utilities from "../utilities";
  *         asn: 65000,
  *     },
  * });
- * ```
- * ### example 1
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@equinix-labs/pulumi-equinix";
- *
- * const tfProject1 = new equinix.metal.Project("tfProject1", {name: "Terraform Fun"});
  * ```
  *
  * ## Import

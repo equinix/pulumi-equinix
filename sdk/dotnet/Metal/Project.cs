@@ -15,6 +15,22 @@ namespace Pulumi.Equinix.Metal
     /// &gt; **NOTE:** Keep in mind that Equinix Metal invoicing is per project, so creating many `equinix.metal.Project` resources will affect the rendered invoice. If you want to keep your Equinix Metal bill simple and easy to review, please re-use your existing projects.
     /// 
     /// ## Example Usage
+    /// ### example 1
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Equinix = Pulumi.Equinix;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var tfProject1 = new Equinix.Metal.Project("tfProject1", new()
+    ///     {
+    ///         Name = "Terraform Fun",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### example 2
     /// ```csharp
     /// using System.Collections.Generic;
@@ -55,22 +71,6 @@ namespace Pulumi.Equinix.Metal
     ///             Md5 = "C179c28c41a85b",
     ///             Asn = 65000,
     ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### example 1
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Equinix = Pulumi.Equinix;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var tfProject1 = new Equinix.Metal.Project("tfProject1", new()
-    ///     {
-    ///         Name = "Terraform Fun",
     ///     });
     /// 
     /// });

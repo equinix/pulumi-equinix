@@ -228,6 +228,20 @@ class Gateway(pulumi.CustomResource):
         See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
 
         ## Example Usage
+        ### example 1
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        test = equinix.metal.Vlan("test",
+            description="test VLAN in SV",
+            metro="sv",
+            project_id=project_id)
+        test_gateway = equinix.metal.Gateway("testGateway",
+            project_id=project_id,
+            vlan_id=test.id,
+            private_ipv4_subnet_size=8)
+        ```
         ### example 2
         ```python
         import pulumi
@@ -245,20 +259,6 @@ class Gateway(pulumi.CustomResource):
             project_id=project_id,
             vlan_id=test.id,
             ip_reservation_id=test_equinix_metal_reserved_ip_block["id"])
-        ```
-        ### example 1
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        test = equinix.metal.Vlan("test",
-            description="test VLAN in SV",
-            metro="sv",
-            project_id=project_id)
-        test_gateway = equinix.metal.Gateway("testGateway",
-            project_id=project_id,
-            vlan_id=test.id,
-            private_ipv4_subnet_size=8)
         ```
 
         :param str resource_name: The name of the resource.
@@ -280,6 +280,20 @@ class Gateway(pulumi.CustomResource):
         See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
 
         ## Example Usage
+        ### example 1
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        test = equinix.metal.Vlan("test",
+            description="test VLAN in SV",
+            metro="sv",
+            project_id=project_id)
+        test_gateway = equinix.metal.Gateway("testGateway",
+            project_id=project_id,
+            vlan_id=test.id,
+            private_ipv4_subnet_size=8)
+        ```
         ### example 2
         ```python
         import pulumi
@@ -297,20 +311,6 @@ class Gateway(pulumi.CustomResource):
             project_id=project_id,
             vlan_id=test.id,
             ip_reservation_id=test_equinix_metal_reserved_ip_block["id"])
-        ```
-        ### example 1
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        test = equinix.metal.Vlan("test",
-            description="test VLAN in SV",
-            metro="sv",
-            project_id=project_id)
-        test_gateway = equinix.metal.Gateway("testGateway",
-            project_id=project_id,
-            vlan_id=test.id,
-            private_ipv4_subnet_size=8)
         ```
 
         :param str resource_name: The name of the resource.
