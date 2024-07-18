@@ -2,11 +2,11 @@ module equinix-metal-ssh_key
 
 go 1.21
 
-toolchain go1.21.12
+toolchain go1.22.4
 
 require (
 	github.com/equinix/pulumi-equinix/sdk 0.12.2
-	github.com/pulumi/pulumi-std/sdk v1.7.2
+	github.com/pulumi/pulumi-std/sdk v1.7.3
 	github.com/pulumi/pulumi/sdk/v3 v3.121.0
 )
 

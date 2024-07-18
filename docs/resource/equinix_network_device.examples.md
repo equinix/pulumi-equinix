@@ -1,6 +1,1435 @@
 ## Example Usage
 
 {{% example %}}
+### example 1
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as equinix from "@equinix-labs/pulumi-equinix";
+import * as equinix from "@pulumi/equinix";
+
+const dc = equinix.networkedge.getAccountOutput({
+    metroCode: "DC",
+});
+const sv = equinix.networkedge.getAccountOutput({
+    metroCode: "SV",
+});
+const csr1000VHa = new equinix.networkedge.Device("csr1000vHa", {
+    name: "tf-csr1000v-p",
+    throughput: 500,
+    throughputUnit: equinix.networkedge.ThroughputUnit.Mbps,
+    metroCode: dc.apply(dc => dc.metroCode),
+    typeCode: "CSR1000V",
+    selfManaged: false,
+    connectivity: "INTERNET-ACCESS",
+    byol: false,
+    packageCode: "SEC",
+    notifications: [
+        "john@equinix.com",
+        "marry@equinix.com",
+        "fred@equinix.com",
+    ],
+    hostname: "csr1000v-p",
+    termLength: 12,
+    accountNumber: dc.apply(dc => dc.number),
+    version: "16.09.05",
+    coreCount: 2,
+    secondaryDevice: {
+        name: "tf-csr1000v-s",
+        metroCode: sv.apply(sv => sv.metroCode),
+        hostname: "csr1000v-s",
+        notifications: [
+            "john@equinix.com",
+            "marry@equinix.com",
+        ],
+        accountNumber: sv.apply(sv => sv.number),
+    },
+});
+```
+```python
+import pulumi
+import pulumi_equinix as equinix
+
+dc = equinix.networkedge.get_account_output(metro_code="DC")
+sv = equinix.networkedge.get_account_output(metro_code="SV")
+csr1000_v_ha = equinix.networkedge.Device("csr1000vHa",
+    name="tf-csr1000v-p",
+    throughput=500,
+    throughput_unit=equinix.networkedge.ThroughputUnit.MBPS,
+    metro_code=dc.metro_code,
+    type_code="CSR1000V",
+    self_managed=False,
+    connectivity="INTERNET-ACCESS",
+    byol=False,
+    package_code="SEC",
+    notifications=[
+        "john@equinix.com",
+        "marry@equinix.com",
+        "fred@equinix.com",
+    ],
+    hostname="csr1000v-p",
+    term_length=12,
+    account_number=dc.number,
+    version="16.09.05",
+    core_count=2,
+    secondary_device=equinix.networkedge.DeviceSecondaryDeviceArgs(
+        name="tf-csr1000v-s",
+        metro_code=sv.metro_code,
+        hostname="csr1000v-s",
+        notifications=[
+            "john@equinix.com",
+            "marry@equinix.com",
+        ],
+        account_number=sv.number,
+    ))
+```
+```go
+package main
+
+import (
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+)
+
+func main() {
+	pulumi.Run(func(ctx *pulumi.Context) error {
+		dc, err := networkedge.GetAccount(ctx, &networkedge.GetAccountArgs{
+			MetroCode: "DC",
+		}, nil)
+		if err != nil {
+			return err
+		}
+		sv, err := networkedge.GetAccount(ctx, &networkedge.GetAccountArgs{
+			MetroCode: "SV",
+		}, nil)
+		if err != nil {
+			return err
+		}
+		_, err = networkedge.NewDevice(ctx, "csr1000vHa", &networkedge.DeviceArgs{
+			Name:           pulumi.String("tf-csr1000v-p"),
+			Throughput:     pulumi.Int(500),
+			ThroughputUnit: pulumi.String(networkedge.ThroughputUnitMbps),
+			MetroCode:      pulumi.String(dc.MetroCode),
+			TypeCode:       pulumi.String("CSR1000V"),
+			SelfManaged:    pulumi.Bool(false),
+			Connectivity:   pulumi.String("INTERNET-ACCESS"),
+			Byol:           pulumi.Bool(false),
+			PackageCode:    pulumi.String("SEC"),
+			Notifications: pulumi.StringArray{
+				pulumi.String("john@equinix.com"),
+				pulumi.String("marry@equinix.com"),
+				pulumi.String("fred@equinix.com"),
+			},
+			Hostname:      pulumi.String("csr1000v-p"),
+			TermLength:    pulumi.Int(12),
+			AccountNumber: pulumi.String(dc.Number),
+			Version:       pulumi.String("16.09.05"),
+			CoreCount:     pulumi.Int(2),
+			SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
+				Name:      pulumi.String("tf-csr1000v-s"),
+				MetroCode: pulumi.String(sv.MetroCode),
+				Hostname:  pulumi.String("csr1000v-s"),
+				Notifications: pulumi.StringArray{
+					pulumi.String("john@equinix.com"),
+					pulumi.String("marry@equinix.com"),
+				},
+				AccountNumber: pulumi.String(sv.Number),
+			},
+		})
+		if err != nil {
+			return err
+		}
+		return nil
+	})
+}
+```
+```csharp
+using System.Collections.Generic;
+using System.Linq;
+using Pulumi;
+using Equinix = Pulumi.Equinix;
+
+return await Deployment.RunAsync(() => 
+{
+    var dc = Equinix.NetworkEdge.GetAccount.Invoke(new()
+    {
+        MetroCode = "DC",
+    });
+
+    var sv = Equinix.NetworkEdge.GetAccount.Invoke(new()
+    {
+        MetroCode = "SV",
+    });
+
+    var csr1000VHa = new Equinix.NetworkEdge.Device("csr1000vHa", new()
+    {
+        Name = "tf-csr1000v-p",
+        Throughput = 500,
+        ThroughputUnit = Equinix.NetworkEdge.ThroughputUnit.Mbps,
+        MetroCode = dc.Apply(getAccountResult => getAccountResult.MetroCode),
+        TypeCode = "CSR1000V",
+        SelfManaged = false,
+        Connectivity = "INTERNET-ACCESS",
+        Byol = false,
+        PackageCode = "SEC",
+        Notifications = new[]
+        {
+            "john@equinix.com",
+            "marry@equinix.com",
+            "fred@equinix.com",
+        },
+        Hostname = "csr1000v-p",
+        TermLength = 12,
+        AccountNumber = dc.Apply(getAccountResult => getAccountResult.Number),
+        Version = "16.09.05",
+        CoreCount = 2,
+        SecondaryDevice = new Equinix.NetworkEdge.Inputs.DeviceSecondaryDeviceArgs
+        {
+            Name = "tf-csr1000v-s",
+            MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
+            Hostname = "csr1000v-s",
+            Notifications = new[]
+            {
+                "john@equinix.com",
+                "marry@equinix.com",
+            },
+            AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
+        },
+    });
+
+});
+```
+```java
+package generated_program;
+
+import com.pulumi.Context;
+import com.pulumi.Pulumi;
+import com.pulumi.core.Output;
+import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
+import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
+import com.pulumi.equinix.networkedge.Device;
+import com.pulumi.equinix.networkedge.DeviceArgs;
+import com.pulumi.equinix.networkedge.inputs.DeviceSecondaryDeviceArgs;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+public class App {
+    public static void main(String[] args) {
+        Pulumi.run(App::stack);
+    }
+
+    public static void stack(Context ctx) {
+        final var dc = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
+            .metroCode("DC")
+            .build());
+
+        final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
+            .metroCode("SV")
+            .build());
+
+        var csr1000VHa = new Device("csr1000VHa", DeviceArgs.builder()
+            .name("tf-csr1000v-p")
+            .throughput(500)
+            .throughputUnit("Mbps")
+            .metroCode(dc.applyValue(getAccountResult -> getAccountResult.metroCode()))
+            .typeCode("CSR1000V")
+            .selfManaged(false)
+            .connectivity("INTERNET-ACCESS")
+            .byol(false)
+            .packageCode("SEC")
+            .notifications(            
+                "john@equinix.com",
+                "marry@equinix.com",
+                "fred@equinix.com")
+            .hostname("csr1000v-p")
+            .termLength(12)
+            .accountNumber(dc.applyValue(getAccountResult -> getAccountResult.number()))
+            .version("16.09.05")
+            .coreCount(2)
+            .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
+                .name("tf-csr1000v-s")
+                .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+                .hostname("csr1000v-s")
+                .notifications(                
+                    "john@equinix.com",
+                    "marry@equinix.com")
+                .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
+                .build())
+            .build());
+
+    }
+}
+```
+```yaml
+  csr1000vHa:
+    type: equinix:networkedge:Device
+    name: csr1000v_ha
+    properties:
+      name: tf-csr1000v-p
+      throughput: 500
+      throughputUnit: Mbps
+      metroCode: ${dc.metroCode}
+      typeCode: CSR1000V
+      selfManaged: false
+      connectivity: INTERNET-ACCESS
+      byol: false
+      packageCode: SEC
+      notifications:
+        - john@equinix.com
+        - marry@equinix.com
+        - fred@equinix.com
+      hostname: csr1000v-p
+      termLength: 12
+      accountNumber: ${dc.number}
+      version: 16.09.05
+      coreCount: 2
+      secondaryDevice:
+        name: tf-csr1000v-s
+        metroCode: ${sv.metroCode}
+        hostname: csr1000v-s
+        notifications:
+          - john@equinix.com
+          - marry@equinix.com
+        accountNumber: ${sv.number}
+variables:
+  # Create pair of redundant, managed CSR1000V routers with license subscription
+  # in two different metro locations
+  dc:
+    fn::invoke:
+      Function: equinix:networkedge:getAccount
+      Arguments:
+        metroCode: DC
+  sv:
+    fn::invoke:
+      Function: equinix:networkedge:getAccount
+      Arguments:
+        metroCode: SV
+```
+{{% /example %}}
+
+{{% example %}}
+### example 2
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as equinix from "@equinix-labs/pulumi-equinix";
+import * as equinix from "@pulumi/equinix";
+
+const sv = equinix.networkedge.getAccountOutput({
+    metroCode: "SV",
+});
+const panwCluster = new equinix.networkedge.Device("panwCluster", {
+    name: "tf-panw",
+    metroCode: sv.apply(sv => sv.metroCode),
+    typeCode: "PA-VM",
+    selfManaged: true,
+    byol: true,
+    packageCode: "VM100",
+    notifications: [
+        "john@equinix.com",
+        "marry@equinix.com",
+        "fred@equinix.com",
+    ],
+    termLength: 12,
+    accountNumber: sv.apply(sv => sv.number),
+    version: "10.1.3",
+    interfaceCount: 10,
+    coreCount: 2,
+    sshKey: {
+        username: "test",
+        keyName: "test-key",
+    },
+    aclTemplateId: "0bff6e05-f0e7-44cd-804a-25b92b835f8b",
+    clusterDetails: {
+        clusterName: "tf-panw-cluster",
+        node0: {
+            vendorConfiguration: {
+                hostname: "panw-node0",
+            },
+            licenseToken: "licenseToken",
+        },
+        node1: {
+            vendorConfiguration: {
+                hostname: "panw-node1",
+            },
+            licenseToken: "licenseToken",
+        },
+    },
+});
+```
+```python
+import pulumi
+import pulumi_equinix as equinix
+
+sv = equinix.networkedge.get_account_output(metro_code="SV")
+panw_cluster = equinix.networkedge.Device("panwCluster",
+    name="tf-panw",
+    metro_code=sv.metro_code,
+    type_code="PA-VM",
+    self_managed=True,
+    byol=True,
+    package_code="VM100",
+    notifications=[
+        "john@equinix.com",
+        "marry@equinix.com",
+        "fred@equinix.com",
+    ],
+    term_length=12,
+    account_number=sv.number,
+    version="10.1.3",
+    interface_count=10,
+    core_count=2,
+    ssh_key=equinix.networkedge.DeviceSshKeyArgs(
+        username="test",
+        key_name="test-key",
+    ),
+    acl_template_id="0bff6e05-f0e7-44cd-804a-25b92b835f8b",
+    cluster_details=equinix.networkedge.DeviceClusterDetailsArgs(
+        cluster_name="tf-panw-cluster",
+        node0=equinix.networkedge.DeviceClusterDetailsNode0Args(
+            vendor_configuration=equinix.networkedge.DeviceClusterDetailsNode0VendorConfigurationArgs(
+                hostname="panw-node0",
+            ),
+            license_token="licenseToken",
+        ),
+        node1=equinix.networkedge.DeviceClusterDetailsNode1Args(
+            vendor_configuration=equinix.networkedge.DeviceClusterDetailsNode1VendorConfigurationArgs(
+                hostname="panw-node1",
+            ),
+            license_token="licenseToken",
+        ),
+    ))
+```
+```go
+package main
+
+import (
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+)
+
+func main() {
+	pulumi.Run(func(ctx *pulumi.Context) error {
+		sv, err := networkedge.GetAccount(ctx, &networkedge.GetAccountArgs{
+			MetroCode: "SV",
+		}, nil)
+		if err != nil {
+			return err
+		}
+		_, err = networkedge.NewDevice(ctx, "panwCluster", &networkedge.DeviceArgs{
+			Name:        pulumi.String("tf-panw"),
+			MetroCode:   pulumi.String(sv.MetroCode),
+			TypeCode:    pulumi.String("PA-VM"),
+			SelfManaged: pulumi.Bool(true),
+			Byol:        pulumi.Bool(true),
+			PackageCode: pulumi.String("VM100"),
+			Notifications: pulumi.StringArray{
+				pulumi.String("john@equinix.com"),
+				pulumi.String("marry@equinix.com"),
+				pulumi.String("fred@equinix.com"),
+			},
+			TermLength:     pulumi.Int(12),
+			AccountNumber:  pulumi.String(sv.Number),
+			Version:        pulumi.String("10.1.3"),
+			InterfaceCount: pulumi.Int(10),
+			CoreCount:      pulumi.Int(2),
+			SshKey: &networkedge.DeviceSshKeyArgs{
+				Username: pulumi.String("test"),
+				KeyName:  pulumi.String("test-key"),
+			},
+			AclTemplateId: pulumi.String("0bff6e05-f0e7-44cd-804a-25b92b835f8b"),
+			ClusterDetails: &networkedge.DeviceClusterDetailsArgs{
+				ClusterName: pulumi.String("tf-panw-cluster"),
+				Node0: &networkedge.DeviceClusterDetailsNode0Args{
+					VendorConfiguration: &networkedge.DeviceClusterDetailsNode0VendorConfigurationArgs{
+						Hostname: pulumi.String("panw-node0"),
+					},
+					LicenseToken: pulumi.String("licenseToken"),
+				},
+				Node1: &networkedge.DeviceClusterDetailsNode1Args{
+					VendorConfiguration: &networkedge.DeviceClusterDetailsNode1VendorConfigurationArgs{
+						Hostname: pulumi.String("panw-node1"),
+					},
+					LicenseToken: pulumi.String("licenseToken"),
+				},
+			},
+		})
+		if err != nil {
+			return err
+		}
+		return nil
+	})
+}
+```
+```csharp
+using System.Collections.Generic;
+using System.Linq;
+using Pulumi;
+using Equinix = Pulumi.Equinix;
+
+return await Deployment.RunAsync(() => 
+{
+    var sv = Equinix.NetworkEdge.GetAccount.Invoke(new()
+    {
+        MetroCode = "SV",
+    });
+
+    var panwCluster = new Equinix.NetworkEdge.Device("panwCluster", new()
+    {
+        Name = "tf-panw",
+        MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
+        TypeCode = "PA-VM",
+        SelfManaged = true,
+        Byol = true,
+        PackageCode = "VM100",
+        Notifications = new[]
+        {
+            "john@equinix.com",
+            "marry@equinix.com",
+            "fred@equinix.com",
+        },
+        TermLength = 12,
+        AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
+        Version = "10.1.3",
+        InterfaceCount = 10,
+        CoreCount = 2,
+        SshKey = new Equinix.NetworkEdge.Inputs.DeviceSshKeyArgs
+        {
+            Username = "test",
+            KeyName = "test-key",
+        },
+        AclTemplateId = "0bff6e05-f0e7-44cd-804a-25b92b835f8b",
+        ClusterDetails = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsArgs
+        {
+            ClusterName = "tf-panw-cluster",
+            Node0 = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsNode0Args
+            {
+                VendorConfiguration = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsNode0VendorConfigurationArgs
+                {
+                    Hostname = "panw-node0",
+                },
+                LicenseToken = "licenseToken",
+            },
+            Node1 = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsNode1Args
+            {
+                VendorConfiguration = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsNode1VendorConfigurationArgs
+                {
+                    Hostname = "panw-node1",
+                },
+                LicenseToken = "licenseToken",
+            },
+        },
+    });
+
+});
+```
+```java
+package generated_program;
+
+import com.pulumi.Context;
+import com.pulumi.Pulumi;
+import com.pulumi.core.Output;
+import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
+import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
+import com.pulumi.equinix.networkedge.Device;
+import com.pulumi.equinix.networkedge.DeviceArgs;
+import com.pulumi.equinix.networkedge.inputs.DeviceSshKeyArgs;
+import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsArgs;
+import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsNode0Args;
+import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsNode0VendorConfigurationArgs;
+import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsNode1Args;
+import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsNode1VendorConfigurationArgs;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+public class App {
+    public static void main(String[] args) {
+        Pulumi.run(App::stack);
+    }
+
+    public static void stack(Context ctx) {
+        final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
+            .metroCode("SV")
+            .build());
+
+        var panwCluster = new Device("panwCluster", DeviceArgs.builder()
+            .name("tf-panw")
+            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+            .typeCode("PA-VM")
+            .selfManaged(true)
+            .byol(true)
+            .packageCode("VM100")
+            .notifications(            
+                "john@equinix.com",
+                "marry@equinix.com",
+                "fred@equinix.com")
+            .termLength(12)
+            .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
+            .version("10.1.3")
+            .interfaceCount(10)
+            .coreCount(2)
+            .sshKey(DeviceSshKeyArgs.builder()
+                .username("test")
+                .keyName("test-key")
+                .build())
+            .aclTemplateId("0bff6e05-f0e7-44cd-804a-25b92b835f8b")
+            .clusterDetails(DeviceClusterDetailsArgs.builder()
+                .clusterName("tf-panw-cluster")
+                .node0(DeviceClusterDetailsNode0Args.builder()
+                    .vendorConfiguration(DeviceClusterDetailsNode0VendorConfigurationArgs.builder()
+                        .hostname("panw-node0")
+                        .build())
+                    .licenseToken("licenseToken")
+                    .build())
+                .node1(DeviceClusterDetailsNode1Args.builder()
+                    .vendorConfiguration(DeviceClusterDetailsNode1VendorConfigurationArgs.builder()
+                        .hostname("panw-node1")
+                        .build())
+                    .licenseToken("licenseToken")
+                    .build())
+                .build())
+            .build());
+
+    }
+}
+```
+```yaml
+  panwCluster:
+    type: equinix:networkedge:Device
+    name: panw_cluster
+    properties:
+      name: tf-panw
+      metroCode: ${sv.metroCode}
+      typeCode: PA-VM
+      selfManaged: true
+      byol: true
+      packageCode: VM100
+      notifications:
+        - john@equinix.com
+        - marry@equinix.com
+        - fred@equinix.com
+      termLength: 12
+      accountNumber: ${sv.number}
+      version: 10.1.3
+      interfaceCount: 10
+      coreCount: 2
+      sshKey:
+        username: test
+        keyName: test-key
+      aclTemplateId: 0bff6e05-f0e7-44cd-804a-25b92b835f8b
+      clusterDetails:
+        clusterName: tf-panw-cluster
+        node0:
+          vendorConfiguration:
+            hostname: panw-node0
+          licenseToken: licenseToken
+        node1:
+          vendorConfiguration:
+            hostname: panw-node1
+          licenseToken: licenseToken
+variables:
+  # Create self configured PANW cluster with BYOL license
+  sv:
+    fn::invoke:
+      Function: equinix:networkedge:getAccount
+      Arguments:
+        metroCode: SV
+```
+{{% /example %}}
+
+{{% example %}}
+### example 3
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as equinix from "@equinix-labs/pulumi-equinix";
+import * as equinix from "@pulumi/equinix";
+import * as std from "@pulumi/std";
+
+const config = new pulumi.Config();
+const filepath = config.get("filepath") || "cloudInitFileFolder/TF-AVX-cloud-init-file.txt";
+const sv = equinix.networkedge.getAccountOutput({
+    metroCode: "SV",
+});
+const aviatrixCloudinitFile = new equinix.networkedge.NetworkFile("aviatrixCloudinitFile", {
+    fileName: "TF-AVX-cloud-init-file.txt",
+    content: std.fileOutput({
+        input: filepath,
+    }).apply(invoke => invoke.result),
+    metroCode: sv.apply(sv => sv.metroCode).apply((x) => equinix.index.Metro[x]),
+    deviceTypeCode: "AVIATRIX_EDGE",
+    processType: equinix.networkedge.FileType.CloudInit,
+    selfManaged: true,
+    byol: true,
+});
+const aviatrixSingle = new equinix.networkedge.Device("aviatrixSingle", {
+    name: "tf-aviatrix",
+    metroCode: sv.apply(sv => sv.metroCode),
+    typeCode: "AVIATRIX_EDGE",
+    selfManaged: true,
+    byol: true,
+    packageCode: "STD",
+    notifications: ["john@equinix.com"],
+    termLength: 12,
+    accountNumber: sv.apply(sv => sv.number),
+    version: "6.9",
+    coreCount: 2,
+    cloudInitFileId: aviatrixCloudinitFile.uuid,
+    aclTemplateId: "c06150ea-b604-4ad1-832a-d63936e9b938",
+});
+```
+```python
+import pulumi
+import pulumi_equinix as equinix
+import pulumi_std as std
+
+config = pulumi.Config()
+filepath = config.get("filepath")
+if filepath is None:
+    filepath = "cloudInitFileFolder/TF-AVX-cloud-init-file.txt"
+sv = equinix.networkedge.get_account_output(metro_code="SV")
+aviatrix_cloudinit_file = equinix.networkedge.NetworkFile("aviatrixCloudinitFile",
+    file_name="TF-AVX-cloud-init-file.txt",
+    content=std.file_output(input=filepath).apply(lambda invoke: invoke.result),
+    metro_code=sv.metro_code.apply(lambda x: equinix.Metro(x)),
+    device_type_code="AVIATRIX_EDGE",
+    process_type=equinix.networkedge.FileType.CLOUD_INIT,
+    self_managed=True,
+    byol=True)
+aviatrix_single = equinix.networkedge.Device("aviatrixSingle",
+    name="tf-aviatrix",
+    metro_code=sv.metro_code,
+    type_code="AVIATRIX_EDGE",
+    self_managed=True,
+    byol=True,
+    package_code="STD",
+    notifications=["john@equinix.com"],
+    term_length=12,
+    account_number=sv.number,
+    version="6.9",
+    core_count=2,
+    cloud_init_file_id=aviatrix_cloudinit_file.uuid,
+    acl_template_id="c06150ea-b604-4ad1-832a-d63936e9b938")
+```
+```go
+package main
+
+import (
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix"
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
+	"github.com/pulumi/pulumi-std/sdk/go/std"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+)
+
+func main() {
+	pulumi.Run(func(ctx *pulumi.Context) error {
+		cfg := config.New(ctx, "")
+		filepath := "cloudInitFileFolder/TF-AVX-cloud-init-file.txt"
+		if param := cfg.Get("filepath"); param != "" {
+			filepath = param
+		}
+		sv, err := networkedge.GetAccount(ctx, &networkedge.GetAccountArgs{
+			MetroCode: "SV",
+		}, nil)
+		if err != nil {
+			return err
+		}
+		invokeFile, err := std.File(ctx, &std.FileArgs{
+			Input: filepath,
+		}, nil)
+		if err != nil {
+			return err
+		}
+		aviatrixCloudinitFile, err := networkedge.NewNetworkFile(ctx, "aviatrixCloudinitFile", &networkedge.NetworkFileArgs{
+			FileName:       pulumi.String("TF-AVX-cloud-init-file.txt"),
+			Content:        invokeFile.Result,
+			MetroCode:      sv.MetroCode.ApplyT(func(x *string) equinix.Metro { return equinix.Metro(*x) }).(equinix.MetroOutput),
+			DeviceTypeCode: pulumi.String("AVIATRIX_EDGE"),
+			ProcessType:    pulumi.String(networkedge.FileTypeCloudInit),
+			SelfManaged:    pulumi.Bool(true),
+			Byol:           pulumi.Bool(true),
+		})
+		if err != nil {
+			return err
+		}
+		_, err = networkedge.NewDevice(ctx, "aviatrixSingle", &networkedge.DeviceArgs{
+			Name:        pulumi.String("tf-aviatrix"),
+			MetroCode:   pulumi.String(sv.MetroCode),
+			TypeCode:    pulumi.String("AVIATRIX_EDGE"),
+			SelfManaged: pulumi.Bool(true),
+			Byol:        pulumi.Bool(true),
+			PackageCode: pulumi.String("STD"),
+			Notifications: pulumi.StringArray{
+				pulumi.String("john@equinix.com"),
+			},
+			TermLength:      pulumi.Int(12),
+			AccountNumber:   pulumi.String(sv.Number),
+			Version:         pulumi.String("6.9"),
+			CoreCount:       pulumi.Int(2),
+			CloudInitFileId: aviatrixCloudinitFile.Uuid,
+			AclTemplateId:   pulumi.String("c06150ea-b604-4ad1-832a-d63936e9b938"),
+		})
+		if err != nil {
+			return err
+		}
+		return nil
+	})
+}
+```
+```csharp
+using System.Collections.Generic;
+using System.Linq;
+using Pulumi;
+using Equinix = Pulumi.Equinix;
+using Std = Pulumi.Std;
+
+return await Deployment.RunAsync(() => 
+{
+    var config = new Config();
+    var filepath = config.Get("filepath") ?? "cloudInitFileFolder/TF-AVX-cloud-init-file.txt";
+    var sv = Equinix.NetworkEdge.GetAccount.Invoke(new()
+    {
+        MetroCode = "SV",
+    });
+
+    var aviatrixCloudinitFile = new Equinix.NetworkEdge.NetworkFile("aviatrixCloudinitFile", new()
+    {
+        FileName = "TF-AVX-cloud-init-file.txt",
+        Content = Std.File.Invoke(new()
+        {
+            Input = filepath,
+        }).Apply(invoke => invoke.Result),
+        MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode).Apply(System.Enum.Parse<Equinix.Metro>),
+        DeviceTypeCode = "AVIATRIX_EDGE",
+        ProcessType = Equinix.NetworkEdge.FileType.CloudInit,
+        SelfManaged = true,
+        Byol = true,
+    });
+
+    var aviatrixSingle = new Equinix.NetworkEdge.Device("aviatrixSingle", new()
+    {
+        Name = "tf-aviatrix",
+        MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
+        TypeCode = "AVIATRIX_EDGE",
+        SelfManaged = true,
+        Byol = true,
+        PackageCode = "STD",
+        Notifications = new[]
+        {
+            "john@equinix.com",
+        },
+        TermLength = 12,
+        AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
+        Version = "6.9",
+        CoreCount = 2,
+        CloudInitFileId = aviatrixCloudinitFile.Uuid,
+        AclTemplateId = "c06150ea-b604-4ad1-832a-d63936e9b938",
+    });
+
+});
+```
+```java
+package generated_program;
+
+import com.pulumi.Context;
+import com.pulumi.Pulumi;
+import com.pulumi.core.Output;
+import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
+import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
+import com.pulumi.equinix.networkedge.NetworkFile;
+import com.pulumi.equinix.networkedge.NetworkFileArgs;
+import com.pulumi.equinix.networkedge.Device;
+import com.pulumi.equinix.networkedge.DeviceArgs;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+public class App {
+    public static void main(String[] args) {
+        Pulumi.run(App::stack);
+    }
+
+    public static void stack(Context ctx) {
+        final var config = ctx.config();
+        final var filepath = config.get("filepath").orElse("cloudInitFileFolder/TF-AVX-cloud-init-file.txt");
+        final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
+            .metroCode("SV")
+            .build());
+
+        var aviatrixCloudinitFile = new NetworkFile("aviatrixCloudinitFile", NetworkFileArgs.builder()
+            .fileName("TF-AVX-cloud-init-file.txt")
+            .content(StdFunctions.file(FileArgs.builder()
+                .input(filepath)
+                .build()).result())
+            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+            .deviceTypeCode("AVIATRIX_EDGE")
+            .processType("CLOUD_INIT")
+            .selfManaged(true)
+            .byol(true)
+            .build());
+
+        var aviatrixSingle = new Device("aviatrixSingle", DeviceArgs.builder()
+            .name("tf-aviatrix")
+            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+            .typeCode("AVIATRIX_EDGE")
+            .selfManaged(true)
+            .byol(true)
+            .packageCode("STD")
+            .notifications("john@equinix.com")
+            .termLength(12)
+            .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
+            .version("6.9")
+            .coreCount(2)
+            .cloudInitFileId(aviatrixCloudinitFile.uuid())
+            .aclTemplateId("c06150ea-b604-4ad1-832a-d63936e9b938")
+            .build());
+
+    }
+}
+```
+```yaml
+  filepath:
+    type: string
+    default: cloudInitFileFolder/TF-AVX-cloud-init-file.txt
+resources:
+  aviatrixCloudinitFile:
+    type: equinix:networkedge:NetworkFile
+    name: aviatrix_cloudinit_file
+    properties:
+      fileName: TF-AVX-cloud-init-file.txt
+      content:
+        fn::invoke:
+          Function: std:file
+          Arguments:
+            input: ${filepath}
+          Return: result
+      metroCode: ${sv.metroCode}
+      deviceTypeCode: AVIATRIX_EDGE
+      processType: CLOUD_INIT
+      selfManaged: true
+      byol: true
+  aviatrixSingle:
+    type: equinix:networkedge:Device
+    name: aviatrix_single
+    properties:
+      name: tf-aviatrix
+      metroCode: ${sv.metroCode}
+      typeCode: AVIATRIX_EDGE
+      selfManaged: true
+      byol: true
+      packageCode: STD
+      notifications:
+        - john@equinix.com
+      termLength: 12
+      accountNumber: ${sv.number}
+      version: '6.9'
+      coreCount: 2
+      cloudInitFileId: ${aviatrixCloudinitFile.uuid}
+      aclTemplateId: c06150ea-b604-4ad1-832a-d63936e9b938
+variables:
+  # Create self configured single Aviatrix device with cloud init file
+  sv:
+    fn::invoke:
+      Function: equinix:networkedge:getAccount
+      Arguments:
+        metroCode: SV
+```
+{{% /example %}}
+
+{{% example %}}
+### example 4
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as equinix from "@equinix-labs/pulumi-equinix";
+import * as equinix from "@pulumi/equinix";
+
+const sv = equinix.networkedge.getAccountOutput({
+    name: "account-name",
+    metroCode: "SV",
+});
+const c8KvSingle = new equinix.networkedge.Device("c8kvSingle", {
+    name: "tf-c8kv",
+    metroCode: sv.apply(sv => sv.metroCode),
+    typeCode: "C8000V",
+    selfManaged: true,
+    byol: true,
+    packageCode: "network-essentials",
+    notifications: ["test@equinix.com"],
+    hostname: "C8KV",
+    accountNumber: sv.apply(sv => sv.number),
+    version: "17.06.01a",
+    coreCount: 2,
+    termLength: 12,
+    licenseToken: "valid-license-token",
+    additionalBandwidth: 5,
+    sshKey: {
+        username: "test-username",
+        keyName: "valid-key-name",
+    },
+    aclTemplateId: "3e548c02-9164-4197-aa23-05b1f644883c",
+});
+```
+```python
+import pulumi
+import pulumi_equinix as equinix
+
+sv = equinix.networkedge.get_account_output(name="account-name",
+    metro_code="SV")
+c8_kv_single = equinix.networkedge.Device("c8kvSingle",
+    name="tf-c8kv",
+    metro_code=sv.metro_code,
+    type_code="C8000V",
+    self_managed=True,
+    byol=True,
+    package_code="network-essentials",
+    notifications=["test@equinix.com"],
+    hostname="C8KV",
+    account_number=sv.number,
+    version="17.06.01a",
+    core_count=2,
+    term_length=12,
+    license_token="valid-license-token",
+    additional_bandwidth=5,
+    ssh_key=equinix.networkedge.DeviceSshKeyArgs(
+        username="test-username",
+        key_name="valid-key-name",
+    ),
+    acl_template_id="3e548c02-9164-4197-aa23-05b1f644883c")
+```
+```go
+package main
+
+import (
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+)
+
+func main() {
+	pulumi.Run(func(ctx *pulumi.Context) error {
+		sv, err := networkedge.GetAccount(ctx, &networkedge.GetAccountArgs{
+			Name:      pulumi.StringRef("account-name"),
+			MetroCode: "SV",
+		}, nil)
+		if err != nil {
+			return err
+		}
+		_, err = networkedge.NewDevice(ctx, "c8kvSingle", &networkedge.DeviceArgs{
+			Name:        pulumi.String("tf-c8kv"),
+			MetroCode:   pulumi.String(sv.MetroCode),
+			TypeCode:    pulumi.String("C8000V"),
+			SelfManaged: pulumi.Bool(true),
+			Byol:        pulumi.Bool(true),
+			PackageCode: pulumi.String("network-essentials"),
+			Notifications: pulumi.StringArray{
+				pulumi.String("test@equinix.com"),
+			},
+			Hostname:            pulumi.String("C8KV"),
+			AccountNumber:       pulumi.String(sv.Number),
+			Version:             pulumi.String("17.06.01a"),
+			CoreCount:           pulumi.Int(2),
+			TermLength:          pulumi.Int(12),
+			LicenseToken:        pulumi.String("valid-license-token"),
+			AdditionalBandwidth: pulumi.Int(5),
+			SshKey: &networkedge.DeviceSshKeyArgs{
+				Username: pulumi.String("test-username"),
+				KeyName:  pulumi.String("valid-key-name"),
+			},
+			AclTemplateId: pulumi.String("3e548c02-9164-4197-aa23-05b1f644883c"),
+		})
+		if err != nil {
+			return err
+		}
+		return nil
+	})
+}
+```
+```csharp
+using System.Collections.Generic;
+using System.Linq;
+using Pulumi;
+using Equinix = Pulumi.Equinix;
+
+return await Deployment.RunAsync(() => 
+{
+    var sv = Equinix.NetworkEdge.GetAccount.Invoke(new()
+    {
+        Name = "account-name",
+        MetroCode = "SV",
+    });
+
+    var c8KvSingle = new Equinix.NetworkEdge.Device("c8kvSingle", new()
+    {
+        Name = "tf-c8kv",
+        MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
+        TypeCode = "C8000V",
+        SelfManaged = true,
+        Byol = true,
+        PackageCode = "network-essentials",
+        Notifications = new[]
+        {
+            "test@equinix.com",
+        },
+        Hostname = "C8KV",
+        AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
+        Version = "17.06.01a",
+        CoreCount = 2,
+        TermLength = 12,
+        LicenseToken = "valid-license-token",
+        AdditionalBandwidth = 5,
+        SshKey = new Equinix.NetworkEdge.Inputs.DeviceSshKeyArgs
+        {
+            Username = "test-username",
+            KeyName = "valid-key-name",
+        },
+        AclTemplateId = "3e548c02-9164-4197-aa23-05b1f644883c",
+    });
+
+});
+```
+```java
+package generated_program;
+
+import com.pulumi.Context;
+import com.pulumi.Pulumi;
+import com.pulumi.core.Output;
+import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
+import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
+import com.pulumi.equinix.networkedge.Device;
+import com.pulumi.equinix.networkedge.DeviceArgs;
+import com.pulumi.equinix.networkedge.inputs.DeviceSshKeyArgs;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+public class App {
+    public static void main(String[] args) {
+        Pulumi.run(App::stack);
+    }
+
+    public static void stack(Context ctx) {
+        final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
+            .name("account-name")
+            .metroCode("SV")
+            .build());
+
+        var c8KvSingle = new Device("c8KvSingle", DeviceArgs.builder()
+            .name("tf-c8kv")
+            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+            .typeCode("C8000V")
+            .selfManaged(true)
+            .byol(true)
+            .packageCode("network-essentials")
+            .notifications("test@equinix.com")
+            .hostname("C8KV")
+            .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
+            .version("17.06.01a")
+            .coreCount(2)
+            .termLength(12)
+            .licenseToken("valid-license-token")
+            .additionalBandwidth(5)
+            .sshKey(DeviceSshKeyArgs.builder()
+                .username("test-username")
+                .keyName("valid-key-name")
+                .build())
+            .aclTemplateId("3e548c02-9164-4197-aa23-05b1f644883c")
+            .build());
+
+    }
+}
+```
+```yaml
+  c8kvSingle:
+    type: equinix:networkedge:Device
+    name: c8kv_single
+    properties:
+      name: tf-c8kv
+      metroCode: ${sv.metroCode}
+      typeCode: C8000V
+      selfManaged: true
+      byol: true
+      packageCode: network-essentials
+      notifications:
+        - test@equinix.com
+      hostname: C8KV
+      accountNumber: ${sv.number}
+      version: 17.06.01a
+      coreCount: 2
+      termLength: 12
+      licenseToken: valid-license-token
+      additionalBandwidth: 5
+      sshKey:
+        username: test-username
+        keyName: valid-key-name
+      aclTemplateId: 3e548c02-9164-4197-aa23-05b1f644883c
+variables:
+  # Create self configured single Catalyst 8000V (Autonomous Mode) router with license token
+  sv:
+    fn::invoke:
+      Function: equinix:networkedge:getAccount
+      Arguments:
+        name: account-name
+        metroCode: SV
+```
+{{% /example %}}
+
+{{% example %}}
+### example 5
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as equinix from "@equinix-labs/pulumi-equinix";
+import * as equinix from "@pulumi/equinix";
+
+const sv = equinix.networkedge.getAccountOutput({
+    name: "account-name",
+    metroCode: "SV",
+});
+const vsrxSingle = new equinix.networkedge.Device("vsrxSingle", {
+    name: "tf-c8kv-sdwan",
+    metroCode: sv.apply(sv => sv.metroCode),
+    typeCode: "VSRX",
+    selfManaged: true,
+    byol: true,
+    packageCode: "STD",
+    notifications: ["test@equinix.com"],
+    hostname: "VSRX",
+    accountNumber: sv.apply(sv => sv.number),
+    version: "23.2R1.13",
+    coreCount: 2,
+    termLength: 12,
+    additionalBandwidth: 5,
+    projectId: "a86d7112-d740-4758-9c9c-31e66373746b",
+    diverseDeviceId: "ed7891bd-15b4-4f72-ac56-d96cfdacddcc",
+    sshKey: {
+        username: "test-username",
+        keyName: "valid-key-name",
+    },
+    aclTemplateId: "3e548c02-9164-4197-aa23-05b1f644883c",
+});
+```
+```python
+import pulumi
+import pulumi_equinix as equinix
+
+sv = equinix.networkedge.get_account_output(name="account-name",
+    metro_code="SV")
+vsrx_single = equinix.networkedge.Device("vsrxSingle",
+    name="tf-c8kv-sdwan",
+    metro_code=sv.metro_code,
+    type_code="VSRX",
+    self_managed=True,
+    byol=True,
+    package_code="STD",
+    notifications=["test@equinix.com"],
+    hostname="VSRX",
+    account_number=sv.number,
+    version="23.2R1.13",
+    core_count=2,
+    term_length=12,
+    additional_bandwidth=5,
+    project_id="a86d7112-d740-4758-9c9c-31e66373746b",
+    diverse_device_id="ed7891bd-15b4-4f72-ac56-d96cfdacddcc",
+    ssh_key=equinix.networkedge.DeviceSshKeyArgs(
+        username="test-username",
+        key_name="valid-key-name",
+    ),
+    acl_template_id="3e548c02-9164-4197-aa23-05b1f644883c")
+```
+```go
+package main
+
+import (
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+)
+
+func main() {
+	pulumi.Run(func(ctx *pulumi.Context) error {
+		sv, err := networkedge.GetAccount(ctx, &networkedge.GetAccountArgs{
+			Name:      pulumi.StringRef("account-name"),
+			MetroCode: "SV",
+		}, nil)
+		if err != nil {
+			return err
+		}
+		_, err = networkedge.NewDevice(ctx, "vsrxSingle", &networkedge.DeviceArgs{
+			Name:        pulumi.String("tf-c8kv-sdwan"),
+			MetroCode:   pulumi.String(sv.MetroCode),
+			TypeCode:    pulumi.String("VSRX"),
+			SelfManaged: pulumi.Bool(true),
+			Byol:        pulumi.Bool(true),
+			PackageCode: pulumi.String("STD"),
+			Notifications: pulumi.StringArray{
+				pulumi.String("test@equinix.com"),
+			},
+			Hostname:            pulumi.String("VSRX"),
+			AccountNumber:       pulumi.String(sv.Number),
+			Version:             pulumi.String("23.2R1.13"),
+			CoreCount:           pulumi.Int(2),
+			TermLength:          pulumi.Int(12),
+			AdditionalBandwidth: pulumi.Int(5),
+			ProjectId:           pulumi.String("a86d7112-d740-4758-9c9c-31e66373746b"),
+			DiverseDeviceId:     pulumi.String("ed7891bd-15b4-4f72-ac56-d96cfdacddcc"),
+			SshKey: &networkedge.DeviceSshKeyArgs{
+				Username: pulumi.String("test-username"),
+				KeyName:  pulumi.String("valid-key-name"),
+			},
+			AclTemplateId: pulumi.String("3e548c02-9164-4197-aa23-05b1f644883c"),
+		})
+		if err != nil {
+			return err
+		}
+		return nil
+	})
+}
+```
+```csharp
+using System.Collections.Generic;
+using System.Linq;
+using Pulumi;
+using Equinix = Pulumi.Equinix;
+
+return await Deployment.RunAsync(() => 
+{
+    var sv = Equinix.NetworkEdge.GetAccount.Invoke(new()
+    {
+        Name = "account-name",
+        MetroCode = "SV",
+    });
+
+    var vsrxSingle = new Equinix.NetworkEdge.Device("vsrxSingle", new()
+    {
+        Name = "tf-c8kv-sdwan",
+        MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
+        TypeCode = "VSRX",
+        SelfManaged = true,
+        Byol = true,
+        PackageCode = "STD",
+        Notifications = new[]
+        {
+            "test@equinix.com",
+        },
+        Hostname = "VSRX",
+        AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
+        Version = "23.2R1.13",
+        CoreCount = 2,
+        TermLength = 12,
+        AdditionalBandwidth = 5,
+        ProjectId = "a86d7112-d740-4758-9c9c-31e66373746b",
+        DiverseDeviceId = "ed7891bd-15b4-4f72-ac56-d96cfdacddcc",
+        SshKey = new Equinix.NetworkEdge.Inputs.DeviceSshKeyArgs
+        {
+            Username = "test-username",
+            KeyName = "valid-key-name",
+        },
+        AclTemplateId = "3e548c02-9164-4197-aa23-05b1f644883c",
+    });
+
+});
+```
+```java
+package generated_program;
+
+import com.pulumi.Context;
+import com.pulumi.Pulumi;
+import com.pulumi.core.Output;
+import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
+import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
+import com.pulumi.equinix.networkedge.Device;
+import com.pulumi.equinix.networkedge.DeviceArgs;
+import com.pulumi.equinix.networkedge.inputs.DeviceSshKeyArgs;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+public class App {
+    public static void main(String[] args) {
+        Pulumi.run(App::stack);
+    }
+
+    public static void stack(Context ctx) {
+        final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
+            .name("account-name")
+            .metroCode("SV")
+            .build());
+
+        var vsrxSingle = new Device("vsrxSingle", DeviceArgs.builder()
+            .name("tf-c8kv-sdwan")
+            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+            .typeCode("VSRX")
+            .selfManaged(true)
+            .byol(true)
+            .packageCode("STD")
+            .notifications("test@equinix.com")
+            .hostname("VSRX")
+            .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
+            .version("23.2R1.13")
+            .coreCount(2)
+            .termLength(12)
+            .additionalBandwidth(5)
+            .projectId("a86d7112-d740-4758-9c9c-31e66373746b")
+            .diverseDeviceId("ed7891bd-15b4-4f72-ac56-d96cfdacddcc")
+            .sshKey(DeviceSshKeyArgs.builder()
+                .username("test-username")
+                .keyName("valid-key-name")
+                .build())
+            .aclTemplateId("3e548c02-9164-4197-aa23-05b1f644883c")
+            .build());
+
+    }
+}
+```
+```yaml
+  vsrxSingle:
+    type: equinix:networkedge:Device
+    name: vsrx_single
+    properties:
+      name: tf-c8kv-sdwan
+      metroCode: ${sv.metroCode}
+      typeCode: VSRX
+      selfManaged: true
+      byol: true
+      packageCode: STD
+      notifications:
+        - test@equinix.com
+      hostname: VSRX
+      accountNumber: ${sv.number}
+      version: 23.2R1.13
+      coreCount: 2
+      termLength: 12
+      additionalBandwidth: 5
+      projectId: a86d7112-d740-4758-9c9c-31e66373746b
+      diverseDeviceId: ed7891bd-15b4-4f72-ac56-d96cfdacddcc
+      sshKey:
+        username: test-username
+        keyName: valid-key-name
+      aclTemplateId: 3e548c02-9164-4197-aa23-05b1f644883c
+variables:
+  # Create self configured single VSRX device with BYOL License
+  sv:
+    fn::invoke:
+      Function: equinix:networkedge:getAccount
+      Arguments:
+        name: account-name
+        metroCode: SV
+```
+{{% /example %}}
+
+{{% example %}}
 ### example 6
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
@@ -329,308 +1758,6 @@ variables:
       Function: equinix:networkedge:getAccount
       Arguments:
         name: account-name
-        metroCode: SV
-```
-{{% /example %}}
-
-{{% example %}}
-### example 3
-```typescript
-import * as pulumi from "@pulumi/pulumi";
-import * as equinix from "@equinix-labs/pulumi-equinix";
-import * as equinix from "@pulumi/equinix";
-import * as std from "@pulumi/std";
-
-const config = new pulumi.Config();
-const filepath = config.get("filepath") || "cloudInitFileFolder/TF-AVX-cloud-init-file.txt";
-const sv = equinix.networkedge.getAccountOutput({
-    metroCode: "SV",
-});
-const aviatrixCloudinitFile = new equinix.networkedge.NetworkFile("aviatrixCloudinitFile", {
-    fileName: "TF-AVX-cloud-init-file.txt",
-    content: std.fileOutput({
-        input: filepath,
-    }).apply(invoke => invoke.result),
-    metroCode: sv.apply(sv => sv.metroCode).apply((x) => equinix.index.Metro[x]),
-    deviceTypeCode: "AVIATRIX_EDGE",
-    processType: equinix.networkedge.FileType.CloudInit,
-    selfManaged: true,
-    byol: true,
-});
-const aviatrixSingle = new equinix.networkedge.Device("aviatrixSingle", {
-    name: "tf-aviatrix",
-    metroCode: sv.apply(sv => sv.metroCode),
-    typeCode: "AVIATRIX_EDGE",
-    selfManaged: true,
-    byol: true,
-    packageCode: "STD",
-    notifications: ["john@equinix.com"],
-    termLength: 12,
-    accountNumber: sv.apply(sv => sv.number),
-    version: "6.9",
-    coreCount: 2,
-    cloudInitFileId: aviatrixCloudinitFile.uuid,
-    aclTemplateId: "c06150ea-b604-4ad1-832a-d63936e9b938",
-});
-```
-```python
-import pulumi
-import pulumi_equinix as equinix
-import pulumi_std as std
-
-config = pulumi.Config()
-filepath = config.get("filepath")
-if filepath is None:
-    filepath = "cloudInitFileFolder/TF-AVX-cloud-init-file.txt"
-sv = equinix.networkedge.get_account_output(metro_code="SV")
-aviatrix_cloudinit_file = equinix.networkedge.NetworkFile("aviatrixCloudinitFile",
-    file_name="TF-AVX-cloud-init-file.txt",
-    content=std.file_output(input=filepath).apply(lambda invoke: invoke.result),
-    metro_code=sv.metro_code.apply(lambda x: equinix.Metro(x)),
-    device_type_code="AVIATRIX_EDGE",
-    process_type=equinix.networkedge.FileType.CLOUD_INIT,
-    self_managed=True,
-    byol=True)
-aviatrix_single = equinix.networkedge.Device("aviatrixSingle",
-    name="tf-aviatrix",
-    metro_code=sv.metro_code,
-    type_code="AVIATRIX_EDGE",
-    self_managed=True,
-    byol=True,
-    package_code="STD",
-    notifications=["john@equinix.com"],
-    term_length=12,
-    account_number=sv.number,
-    version="6.9",
-    core_count=2,
-    cloud_init_file_id=aviatrix_cloudinit_file.uuid,
-    acl_template_id="c06150ea-b604-4ad1-832a-d63936e9b938")
-```
-```go
-package main
-
-import (
-	"github.com/equinix/pulumi-equinix/sdk/go/equinix"
-	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
-	"github.com/pulumi/pulumi-std/sdk/go/std"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-)
-
-func main() {
-	pulumi.Run(func(ctx *pulumi.Context) error {
-		cfg := config.New(ctx, "")
-		filepath := "cloudInitFileFolder/TF-AVX-cloud-init-file.txt"
-		if param := cfg.Get("filepath"); param != "" {
-			filepath = param
-		}
-		sv, err := networkedge.GetAccount(ctx, &networkedge.GetAccountArgs{
-			MetroCode: "SV",
-		}, nil)
-		if err != nil {
-			return err
-		}
-		invokeFile, err := std.File(ctx, &std.FileArgs{
-			Input: filepath,
-		}, nil)
-		if err != nil {
-			return err
-		}
-		aviatrixCloudinitFile, err := networkedge.NewNetworkFile(ctx, "aviatrixCloudinitFile", &networkedge.NetworkFileArgs{
-			FileName:       pulumi.String("TF-AVX-cloud-init-file.txt"),
-			Content:        invokeFile.Result,
-			MetroCode:      sv.MetroCode.ApplyT(func(x *string) equinix.Metro { return equinix.Metro(*x) }).(equinix.MetroOutput),
-			DeviceTypeCode: pulumi.String("AVIATRIX_EDGE"),
-			ProcessType:    pulumi.String(networkedge.FileTypeCloudInit),
-			SelfManaged:    pulumi.Bool(true),
-			Byol:           pulumi.Bool(true),
-		})
-		if err != nil {
-			return err
-		}
-		_, err = networkedge.NewDevice(ctx, "aviatrixSingle", &networkedge.DeviceArgs{
-			Name:        pulumi.String("tf-aviatrix"),
-			MetroCode:   pulumi.String(sv.MetroCode),
-			TypeCode:    pulumi.String("AVIATRIX_EDGE"),
-			SelfManaged: pulumi.Bool(true),
-			Byol:        pulumi.Bool(true),
-			PackageCode: pulumi.String("STD"),
-			Notifications: pulumi.StringArray{
-				pulumi.String("john@equinix.com"),
-			},
-			TermLength:      pulumi.Int(12),
-			AccountNumber:   pulumi.String(sv.Number),
-			Version:         pulumi.String("6.9"),
-			CoreCount:       pulumi.Int(2),
-			CloudInitFileId: aviatrixCloudinitFile.Uuid,
-			AclTemplateId:   pulumi.String("c06150ea-b604-4ad1-832a-d63936e9b938"),
-		})
-		if err != nil {
-			return err
-		}
-		return nil
-	})
-}
-```
-```csharp
-using System.Collections.Generic;
-using System.Linq;
-using Pulumi;
-using Equinix = Pulumi.Equinix;
-using Std = Pulumi.Std;
-
-return await Deployment.RunAsync(() => 
-{
-    var config = new Config();
-    var filepath = config.Get("filepath") ?? "cloudInitFileFolder/TF-AVX-cloud-init-file.txt";
-    var sv = Equinix.NetworkEdge.GetAccount.Invoke(new()
-    {
-        MetroCode = "SV",
-    });
-
-    var aviatrixCloudinitFile = new Equinix.NetworkEdge.NetworkFile("aviatrixCloudinitFile", new()
-    {
-        FileName = "TF-AVX-cloud-init-file.txt",
-        Content = Std.File.Invoke(new()
-        {
-            Input = filepath,
-        }).Apply(invoke => invoke.Result),
-        MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode).Apply(System.Enum.Parse<Equinix.Metro>),
-        DeviceTypeCode = "AVIATRIX_EDGE",
-        ProcessType = Equinix.NetworkEdge.FileType.CloudInit,
-        SelfManaged = true,
-        Byol = true,
-    });
-
-    var aviatrixSingle = new Equinix.NetworkEdge.Device("aviatrixSingle", new()
-    {
-        Name = "tf-aviatrix",
-        MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
-        TypeCode = "AVIATRIX_EDGE",
-        SelfManaged = true,
-        Byol = true,
-        PackageCode = "STD",
-        Notifications = new[]
-        {
-            "john@equinix.com",
-        },
-        TermLength = 12,
-        AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
-        Version = "6.9",
-        CoreCount = 2,
-        CloudInitFileId = aviatrixCloudinitFile.Uuid,
-        AclTemplateId = "c06150ea-b604-4ad1-832a-d63936e9b938",
-    });
-
-});
-```
-```java
-package generated_program;
-
-import com.pulumi.Context;
-import com.pulumi.Pulumi;
-import com.pulumi.core.Output;
-import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
-import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
-import com.pulumi.equinix.networkedge.NetworkFile;
-import com.pulumi.equinix.networkedge.NetworkFileArgs;
-import com.pulumi.equinix.networkedge.Device;
-import com.pulumi.equinix.networkedge.DeviceArgs;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Map;
-import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-
-public class App {
-    public static void main(String[] args) {
-        Pulumi.run(App::stack);
-    }
-
-    public static void stack(Context ctx) {
-        final var config = ctx.config();
-        final var filepath = config.get("filepath").orElse("cloudInitFileFolder/TF-AVX-cloud-init-file.txt");
-        final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
-            .metroCode("SV")
-            .build());
-
-        var aviatrixCloudinitFile = new NetworkFile("aviatrixCloudinitFile", NetworkFileArgs.builder()
-            .fileName("TF-AVX-cloud-init-file.txt")
-            .content(StdFunctions.file(FileArgs.builder()
-                .input(filepath)
-                .build()).result())
-            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
-            .deviceTypeCode("AVIATRIX_EDGE")
-            .processType("CLOUD_INIT")
-            .selfManaged(true)
-            .byol(true)
-            .build());
-
-        var aviatrixSingle = new Device("aviatrixSingle", DeviceArgs.builder()
-            .name("tf-aviatrix")
-            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
-            .typeCode("AVIATRIX_EDGE")
-            .selfManaged(true)
-            .byol(true)
-            .packageCode("STD")
-            .notifications("john@equinix.com")
-            .termLength(12)
-            .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
-            .version("6.9")
-            .coreCount(2)
-            .cloudInitFileId(aviatrixCloudinitFile.uuid())
-            .aclTemplateId("c06150ea-b604-4ad1-832a-d63936e9b938")
-            .build());
-
-    }
-}
-```
-```yaml
-  filepath:
-    type: string
-    default: cloudInitFileFolder/TF-AVX-cloud-init-file.txt
-resources:
-  aviatrixCloudinitFile:
-    type: equinix:networkedge:NetworkFile
-    name: aviatrix_cloudinit_file
-    properties:
-      fileName: TF-AVX-cloud-init-file.txt
-      content:
-        fn::invoke:
-          Function: std:file
-          Arguments:
-            input: ${filepath}
-          Return: result
-      metroCode: ${sv.metroCode}
-      deviceTypeCode: AVIATRIX_EDGE
-      processType: CLOUD_INIT
-      selfManaged: true
-      byol: true
-  aviatrixSingle:
-    type: equinix:networkedge:Device
-    name: aviatrix_single
-    properties:
-      name: tf-aviatrix
-      metroCode: ${sv.metroCode}
-      typeCode: AVIATRIX_EDGE
-      selfManaged: true
-      byol: true
-      packageCode: STD
-      notifications:
-        - john@equinix.com
-      termLength: 12
-      accountNumber: ${sv.number}
-      version: '6.9'
-      coreCount: 2
-      cloudInitFileId: ${aviatrixCloudinitFile.uuid}
-      aclTemplateId: c06150ea-b604-4ad1-832a-d63936e9b938
-variables:
-  # Create self configured single Aviatrix device with cloud init file
-  sv:
-    fn::invoke:
-      Function: equinix:networkedge:getAccount
-      Arguments:
         metroCode: SV
 ```
 {{% /example %}}
@@ -1025,936 +2152,6 @@ public class App {
           licenseId: xxxxxxxxxxxxxxx
 variables:
   # Create self configured redundant BlueCat DNS and DHCP Server
-  sv:
-    fn::invoke:
-      Function: equinix:networkedge:getAccount
-      Arguments:
-        name: account-name
-        metroCode: SV
-```
-{{% /example %}}
-
-{{% example %}}
-### example 9
-```typescript
-import * as pulumi from "@pulumi/pulumi";
-import * as equinix from "@equinix-labs/pulumi-equinix";
-import * as equinix from "@pulumi/equinix";
-
-const sv = equinix.networkedge.getAccountOutput({
-    metroCode: "SV",
-});
-const panwCluster = new equinix.networkedge.Device("panwCluster", {
-    name: "tf-panw",
-    metroCode: sv.apply(sv => sv.metroCode),
-    typeCode: "PA-VM",
-    selfManaged: true,
-    byol: true,
-    packageCode: "VM100",
-    notifications: [
-        "john@equinix.com",
-        "marry@equinix.com",
-        "fred@equinix.com",
-    ],
-    termLength: 12,
-    accountNumber: sv.apply(sv => sv.number),
-    version: "11.1.3",
-    interfaceCount: 10,
-    coreCount: 2,
-    sshKey: {
-        username: "test",
-        keyName: "test-key",
-    },
-    aclTemplateId: "0bff6e05-f0e7-44cd-804a-25b92b835f8b",
-    clusterDetails: {
-        clusterName: "tf-panw-cluster",
-        node0: {
-            vendorConfiguration: {
-                hostname: "panw-node0",
-                panoramaIpAddress: "x.x.x.x",
-                panoramaAuthKey: "xxxxxxxxxxx",
-            },
-            licenseToken: "licenseToken",
-        },
-        node1: {
-            vendorConfiguration: {
-                hostname: "panw-node1",
-                panoramaIpAddress: "x.x.x.x",
-                panoramaAuthKey: "xxxxxxxxxxx",
-            },
-            licenseToken: "licenseToken",
-        },
-    },
-});
-```
-```python
-import pulumi
-import pulumi_equinix as equinix
-
-sv = equinix.networkedge.get_account_output(metro_code="SV")
-panw_cluster = equinix.networkedge.Device("panwCluster",
-    name="tf-panw",
-    metro_code=sv.metro_code,
-    type_code="PA-VM",
-    self_managed=True,
-    byol=True,
-    package_code="VM100",
-    notifications=[
-        "john@equinix.com",
-        "marry@equinix.com",
-        "fred@equinix.com",
-    ],
-    term_length=12,
-    account_number=sv.number,
-    version="11.1.3",
-    interface_count=10,
-    core_count=2,
-    ssh_key=equinix.networkedge.DeviceSshKeyArgs(
-        username="test",
-        key_name="test-key",
-    ),
-    acl_template_id="0bff6e05-f0e7-44cd-804a-25b92b835f8b",
-    cluster_details=equinix.networkedge.DeviceClusterDetailsArgs(
-        cluster_name="tf-panw-cluster",
-        node0=equinix.networkedge.DeviceClusterDetailsNode0Args(
-            vendor_configuration=equinix.networkedge.DeviceClusterDetailsNode0VendorConfigurationArgs(
-                hostname="panw-node0",
-                panorama_ip_address="x.x.x.x",
-                panorama_auth_key="xxxxxxxxxxx",
-            ),
-            license_token="licenseToken",
-        ),
-        node1=equinix.networkedge.DeviceClusterDetailsNode1Args(
-            vendor_configuration=equinix.networkedge.DeviceClusterDetailsNode1VendorConfigurationArgs(
-                hostname="panw-node1",
-                panorama_ip_address="x.x.x.x",
-                panorama_auth_key="xxxxxxxxxxx",
-            ),
-            license_token="licenseToken",
-        ),
-    ))
-```
-```go
-package main
-
-import (
-	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-)
-
-func main() {
-	pulumi.Run(func(ctx *pulumi.Context) error {
-		sv, err := networkedge.GetAccount(ctx, &networkedge.GetAccountArgs{
-			MetroCode: "SV",
-		}, nil)
-		if err != nil {
-			return err
-		}
-		_, err = networkedge.NewDevice(ctx, "panwCluster", &networkedge.DeviceArgs{
-			Name:        pulumi.String("tf-panw"),
-			MetroCode:   pulumi.String(sv.MetroCode),
-			TypeCode:    pulumi.String("PA-VM"),
-			SelfManaged: pulumi.Bool(true),
-			Byol:        pulumi.Bool(true),
-			PackageCode: pulumi.String("VM100"),
-			Notifications: pulumi.StringArray{
-				pulumi.String("john@equinix.com"),
-				pulumi.String("marry@equinix.com"),
-				pulumi.String("fred@equinix.com"),
-			},
-			TermLength:     pulumi.Int(12),
-			AccountNumber:  pulumi.String(sv.Number),
-			Version:        pulumi.String("11.1.3"),
-			InterfaceCount: pulumi.Int(10),
-			CoreCount:      pulumi.Int(2),
-			SshKey: &networkedge.DeviceSshKeyArgs{
-				Username: pulumi.String("test"),
-				KeyName:  pulumi.String("test-key"),
-			},
-			AclTemplateId: pulumi.String("0bff6e05-f0e7-44cd-804a-25b92b835f8b"),
-			ClusterDetails: &networkedge.DeviceClusterDetailsArgs{
-				ClusterName: pulumi.String("tf-panw-cluster"),
-				Node0: &networkedge.DeviceClusterDetailsNode0Args{
-					VendorConfiguration: &networkedge.DeviceClusterDetailsNode0VendorConfigurationArgs{
-						Hostname:          pulumi.String("panw-node0"),
-						PanoramaIpAddress: pulumi.String("x.x.x.x"),
-						PanoramaAuthKey:   pulumi.String("xxxxxxxxxxx"),
-					},
-					LicenseToken: pulumi.String("licenseToken"),
-				},
-				Node1: &networkedge.DeviceClusterDetailsNode1Args{
-					VendorConfiguration: &networkedge.DeviceClusterDetailsNode1VendorConfigurationArgs{
-						Hostname:          pulumi.String("panw-node1"),
-						PanoramaIpAddress: pulumi.String("x.x.x.x"),
-						PanoramaAuthKey:   pulumi.String("xxxxxxxxxxx"),
-					},
-					LicenseToken: pulumi.String("licenseToken"),
-				},
-			},
-		})
-		if err != nil {
-			return err
-		}
-		return nil
-	})
-}
-```
-```csharp
-using System.Collections.Generic;
-using System.Linq;
-using Pulumi;
-using Equinix = Pulumi.Equinix;
-
-return await Deployment.RunAsync(() => 
-{
-    var sv = Equinix.NetworkEdge.GetAccount.Invoke(new()
-    {
-        MetroCode = "SV",
-    });
-
-    var panwCluster = new Equinix.NetworkEdge.Device("panwCluster", new()
-    {
-        Name = "tf-panw",
-        MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
-        TypeCode = "PA-VM",
-        SelfManaged = true,
-        Byol = true,
-        PackageCode = "VM100",
-        Notifications = new[]
-        {
-            "john@equinix.com",
-            "marry@equinix.com",
-            "fred@equinix.com",
-        },
-        TermLength = 12,
-        AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
-        Version = "11.1.3",
-        InterfaceCount = 10,
-        CoreCount = 2,
-        SshKey = new Equinix.NetworkEdge.Inputs.DeviceSshKeyArgs
-        {
-            Username = "test",
-            KeyName = "test-key",
-        },
-        AclTemplateId = "0bff6e05-f0e7-44cd-804a-25b92b835f8b",
-        ClusterDetails = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsArgs
-        {
-            ClusterName = "tf-panw-cluster",
-            Node0 = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsNode0Args
-            {
-                VendorConfiguration = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsNode0VendorConfigurationArgs
-                {
-                    Hostname = "panw-node0",
-                    PanoramaIpAddress = "x.x.x.x",
-                    PanoramaAuthKey = "xxxxxxxxxxx",
-                },
-                LicenseToken = "licenseToken",
-            },
-            Node1 = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsNode1Args
-            {
-                VendorConfiguration = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsNode1VendorConfigurationArgs
-                {
-                    Hostname = "panw-node1",
-                    PanoramaIpAddress = "x.x.x.x",
-                    PanoramaAuthKey = "xxxxxxxxxxx",
-                },
-                LicenseToken = "licenseToken",
-            },
-        },
-    });
-
-});
-```
-```java
-package generated_program;
-
-import com.pulumi.Context;
-import com.pulumi.Pulumi;
-import com.pulumi.core.Output;
-import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
-import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
-import com.pulumi.equinix.networkedge.Device;
-import com.pulumi.equinix.networkedge.DeviceArgs;
-import com.pulumi.equinix.networkedge.inputs.DeviceSshKeyArgs;
-import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsArgs;
-import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsNode0Args;
-import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsNode0VendorConfigurationArgs;
-import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsNode1Args;
-import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsNode1VendorConfigurationArgs;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Map;
-import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-
-public class App {
-    public static void main(String[] args) {
-        Pulumi.run(App::stack);
-    }
-
-    public static void stack(Context ctx) {
-        final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
-            .metroCode("SV")
-            .build());
-
-        var panwCluster = new Device("panwCluster", DeviceArgs.builder()
-            .name("tf-panw")
-            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
-            .typeCode("PA-VM")
-            .selfManaged(true)
-            .byol(true)
-            .packageCode("VM100")
-            .notifications(            
-                "john@equinix.com",
-                "marry@equinix.com",
-                "fred@equinix.com")
-            .termLength(12)
-            .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
-            .version("11.1.3")
-            .interfaceCount(10)
-            .coreCount(2)
-            .sshKey(DeviceSshKeyArgs.builder()
-                .username("test")
-                .keyName("test-key")
-                .build())
-            .aclTemplateId("0bff6e05-f0e7-44cd-804a-25b92b835f8b")
-            .clusterDetails(DeviceClusterDetailsArgs.builder()
-                .clusterName("tf-panw-cluster")
-                .node0(DeviceClusterDetailsNode0Args.builder()
-                    .vendorConfiguration(DeviceClusterDetailsNode0VendorConfigurationArgs.builder()
-                        .hostname("panw-node0")
-                        .panoramaIpAddress("x.x.x.x")
-                        .panoramaAuthKey("xxxxxxxxxxx")
-                        .build())
-                    .licenseToken("licenseToken")
-                    .build())
-                .node1(DeviceClusterDetailsNode1Args.builder()
-                    .vendorConfiguration(DeviceClusterDetailsNode1VendorConfigurationArgs.builder()
-                        .hostname("panw-node1")
-                        .panoramaIpAddress("x.x.x.x")
-                        .panoramaAuthKey("xxxxxxxxxxx")
-                        .build())
-                    .licenseToken("licenseToken")
-                    .build())
-                .build())
-            .build());
-
-    }
-}
-```
-```yaml
-  panwCluster:
-    type: equinix:networkedge:Device
-    name: panw_cluster
-    properties:
-      name: tf-panw
-      metroCode: ${sv.metroCode}
-      typeCode: PA-VM
-      selfManaged: true
-      byol: true
-      packageCode: VM100
-      notifications:
-        - john@equinix.com
-        - marry@equinix.com
-        - fred@equinix.com
-      termLength: 12
-      accountNumber: ${sv.number}
-      version: 11.1.3
-      interfaceCount: 10
-      coreCount: 2
-      sshKey:
-        username: test
-        keyName: test-key
-      aclTemplateId: 0bff6e05-f0e7-44cd-804a-25b92b835f8b
-      clusterDetails:
-        clusterName: tf-panw-cluster
-        node0:
-          vendorConfiguration:
-            hostname: panw-node0
-            panoramaIpAddress: x.x.x.x
-            panoramaAuthKey: xxxxxxxxxxx
-          licenseToken: licenseToken
-        node1:
-          vendorConfiguration:
-            hostname: panw-node1
-            panoramaIpAddress: x.x.x.x
-            panoramaAuthKey: xxxxxxxxxxx
-          licenseToken: licenseToken
-variables:
-  # Create PA-VM firewall cluster with Panorama Server Integration
-  # with Panorama Server IP and Panorama Auth Key in vendor Configuration
-  sv:
-    fn::invoke:
-      Function: equinix:networkedge:getAccount
-      Arguments:
-        metroCode: SV
-```
-{{% /example %}}
-
-{{% example %}}
-### example 2
-```typescript
-import * as pulumi from "@pulumi/pulumi";
-import * as equinix from "@equinix-labs/pulumi-equinix";
-import * as equinix from "@pulumi/equinix";
-
-const sv = equinix.networkedge.getAccountOutput({
-    metroCode: "SV",
-});
-const panwCluster = new equinix.networkedge.Device("panwCluster", {
-    name: "tf-panw",
-    metroCode: sv.apply(sv => sv.metroCode),
-    typeCode: "PA-VM",
-    selfManaged: true,
-    byol: true,
-    packageCode: "VM100",
-    notifications: [
-        "john@equinix.com",
-        "marry@equinix.com",
-        "fred@equinix.com",
-    ],
-    termLength: 12,
-    accountNumber: sv.apply(sv => sv.number),
-    version: "10.1.3",
-    interfaceCount: 10,
-    coreCount: 2,
-    sshKey: {
-        username: "test",
-        keyName: "test-key",
-    },
-    aclTemplateId: "0bff6e05-f0e7-44cd-804a-25b92b835f8b",
-    clusterDetails: {
-        clusterName: "tf-panw-cluster",
-        node0: {
-            vendorConfiguration: {
-                hostname: "panw-node0",
-            },
-            licenseToken: "licenseToken",
-        },
-        node1: {
-            vendorConfiguration: {
-                hostname: "panw-node1",
-            },
-            licenseToken: "licenseToken",
-        },
-    },
-});
-```
-```python
-import pulumi
-import pulumi_equinix as equinix
-
-sv = equinix.networkedge.get_account_output(metro_code="SV")
-panw_cluster = equinix.networkedge.Device("panwCluster",
-    name="tf-panw",
-    metro_code=sv.metro_code,
-    type_code="PA-VM",
-    self_managed=True,
-    byol=True,
-    package_code="VM100",
-    notifications=[
-        "john@equinix.com",
-        "marry@equinix.com",
-        "fred@equinix.com",
-    ],
-    term_length=12,
-    account_number=sv.number,
-    version="10.1.3",
-    interface_count=10,
-    core_count=2,
-    ssh_key=equinix.networkedge.DeviceSshKeyArgs(
-        username="test",
-        key_name="test-key",
-    ),
-    acl_template_id="0bff6e05-f0e7-44cd-804a-25b92b835f8b",
-    cluster_details=equinix.networkedge.DeviceClusterDetailsArgs(
-        cluster_name="tf-panw-cluster",
-        node0=equinix.networkedge.DeviceClusterDetailsNode0Args(
-            vendor_configuration=equinix.networkedge.DeviceClusterDetailsNode0VendorConfigurationArgs(
-                hostname="panw-node0",
-            ),
-            license_token="licenseToken",
-        ),
-        node1=equinix.networkedge.DeviceClusterDetailsNode1Args(
-            vendor_configuration=equinix.networkedge.DeviceClusterDetailsNode1VendorConfigurationArgs(
-                hostname="panw-node1",
-            ),
-            license_token="licenseToken",
-        ),
-    ))
-```
-```go
-package main
-
-import (
-	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-)
-
-func main() {
-	pulumi.Run(func(ctx *pulumi.Context) error {
-		sv, err := networkedge.GetAccount(ctx, &networkedge.GetAccountArgs{
-			MetroCode: "SV",
-		}, nil)
-		if err != nil {
-			return err
-		}
-		_, err = networkedge.NewDevice(ctx, "panwCluster", &networkedge.DeviceArgs{
-			Name:        pulumi.String("tf-panw"),
-			MetroCode:   pulumi.String(sv.MetroCode),
-			TypeCode:    pulumi.String("PA-VM"),
-			SelfManaged: pulumi.Bool(true),
-			Byol:        pulumi.Bool(true),
-			PackageCode: pulumi.String("VM100"),
-			Notifications: pulumi.StringArray{
-				pulumi.String("john@equinix.com"),
-				pulumi.String("marry@equinix.com"),
-				pulumi.String("fred@equinix.com"),
-			},
-			TermLength:     pulumi.Int(12),
-			AccountNumber:  pulumi.String(sv.Number),
-			Version:        pulumi.String("10.1.3"),
-			InterfaceCount: pulumi.Int(10),
-			CoreCount:      pulumi.Int(2),
-			SshKey: &networkedge.DeviceSshKeyArgs{
-				Username: pulumi.String("test"),
-				KeyName:  pulumi.String("test-key"),
-			},
-			AclTemplateId: pulumi.String("0bff6e05-f0e7-44cd-804a-25b92b835f8b"),
-			ClusterDetails: &networkedge.DeviceClusterDetailsArgs{
-				ClusterName: pulumi.String("tf-panw-cluster"),
-				Node0: &networkedge.DeviceClusterDetailsNode0Args{
-					VendorConfiguration: &networkedge.DeviceClusterDetailsNode0VendorConfigurationArgs{
-						Hostname: pulumi.String("panw-node0"),
-					},
-					LicenseToken: pulumi.String("licenseToken"),
-				},
-				Node1: &networkedge.DeviceClusterDetailsNode1Args{
-					VendorConfiguration: &networkedge.DeviceClusterDetailsNode1VendorConfigurationArgs{
-						Hostname: pulumi.String("panw-node1"),
-					},
-					LicenseToken: pulumi.String("licenseToken"),
-				},
-			},
-		})
-		if err != nil {
-			return err
-		}
-		return nil
-	})
-}
-```
-```csharp
-using System.Collections.Generic;
-using System.Linq;
-using Pulumi;
-using Equinix = Pulumi.Equinix;
-
-return await Deployment.RunAsync(() => 
-{
-    var sv = Equinix.NetworkEdge.GetAccount.Invoke(new()
-    {
-        MetroCode = "SV",
-    });
-
-    var panwCluster = new Equinix.NetworkEdge.Device("panwCluster", new()
-    {
-        Name = "tf-panw",
-        MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
-        TypeCode = "PA-VM",
-        SelfManaged = true,
-        Byol = true,
-        PackageCode = "VM100",
-        Notifications = new[]
-        {
-            "john@equinix.com",
-            "marry@equinix.com",
-            "fred@equinix.com",
-        },
-        TermLength = 12,
-        AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
-        Version = "10.1.3",
-        InterfaceCount = 10,
-        CoreCount = 2,
-        SshKey = new Equinix.NetworkEdge.Inputs.DeviceSshKeyArgs
-        {
-            Username = "test",
-            KeyName = "test-key",
-        },
-        AclTemplateId = "0bff6e05-f0e7-44cd-804a-25b92b835f8b",
-        ClusterDetails = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsArgs
-        {
-            ClusterName = "tf-panw-cluster",
-            Node0 = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsNode0Args
-            {
-                VendorConfiguration = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsNode0VendorConfigurationArgs
-                {
-                    Hostname = "panw-node0",
-                },
-                LicenseToken = "licenseToken",
-            },
-            Node1 = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsNode1Args
-            {
-                VendorConfiguration = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsNode1VendorConfigurationArgs
-                {
-                    Hostname = "panw-node1",
-                },
-                LicenseToken = "licenseToken",
-            },
-        },
-    });
-
-});
-```
-```java
-package generated_program;
-
-import com.pulumi.Context;
-import com.pulumi.Pulumi;
-import com.pulumi.core.Output;
-import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
-import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
-import com.pulumi.equinix.networkedge.Device;
-import com.pulumi.equinix.networkedge.DeviceArgs;
-import com.pulumi.equinix.networkedge.inputs.DeviceSshKeyArgs;
-import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsArgs;
-import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsNode0Args;
-import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsNode0VendorConfigurationArgs;
-import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsNode1Args;
-import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsNode1VendorConfigurationArgs;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Map;
-import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-
-public class App {
-    public static void main(String[] args) {
-        Pulumi.run(App::stack);
-    }
-
-    public static void stack(Context ctx) {
-        final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
-            .metroCode("SV")
-            .build());
-
-        var panwCluster = new Device("panwCluster", DeviceArgs.builder()
-            .name("tf-panw")
-            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
-            .typeCode("PA-VM")
-            .selfManaged(true)
-            .byol(true)
-            .packageCode("VM100")
-            .notifications(            
-                "john@equinix.com",
-                "marry@equinix.com",
-                "fred@equinix.com")
-            .termLength(12)
-            .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
-            .version("10.1.3")
-            .interfaceCount(10)
-            .coreCount(2)
-            .sshKey(DeviceSshKeyArgs.builder()
-                .username("test")
-                .keyName("test-key")
-                .build())
-            .aclTemplateId("0bff6e05-f0e7-44cd-804a-25b92b835f8b")
-            .clusterDetails(DeviceClusterDetailsArgs.builder()
-                .clusterName("tf-panw-cluster")
-                .node0(DeviceClusterDetailsNode0Args.builder()
-                    .vendorConfiguration(DeviceClusterDetailsNode0VendorConfigurationArgs.builder()
-                        .hostname("panw-node0")
-                        .build())
-                    .licenseToken("licenseToken")
-                    .build())
-                .node1(DeviceClusterDetailsNode1Args.builder()
-                    .vendorConfiguration(DeviceClusterDetailsNode1VendorConfigurationArgs.builder()
-                        .hostname("panw-node1")
-                        .build())
-                    .licenseToken("licenseToken")
-                    .build())
-                .build())
-            .build());
-
-    }
-}
-```
-```yaml
-  panwCluster:
-    type: equinix:networkedge:Device
-    name: panw_cluster
-    properties:
-      name: tf-panw
-      metroCode: ${sv.metroCode}
-      typeCode: PA-VM
-      selfManaged: true
-      byol: true
-      packageCode: VM100
-      notifications:
-        - john@equinix.com
-        - marry@equinix.com
-        - fred@equinix.com
-      termLength: 12
-      accountNumber: ${sv.number}
-      version: 10.1.3
-      interfaceCount: 10
-      coreCount: 2
-      sshKey:
-        username: test
-        keyName: test-key
-      aclTemplateId: 0bff6e05-f0e7-44cd-804a-25b92b835f8b
-      clusterDetails:
-        clusterName: tf-panw-cluster
-        node0:
-          vendorConfiguration:
-            hostname: panw-node0
-          licenseToken: licenseToken
-        node1:
-          vendorConfiguration:
-            hostname: panw-node1
-          licenseToken: licenseToken
-variables:
-  # Create self configured PANW cluster with BYOL license
-  sv:
-    fn::invoke:
-      Function: equinix:networkedge:getAccount
-      Arguments:
-        metroCode: SV
-```
-{{% /example %}}
-
-{{% example %}}
-### example 4
-```typescript
-import * as pulumi from "@pulumi/pulumi";
-import * as equinix from "@equinix-labs/pulumi-equinix";
-import * as equinix from "@pulumi/equinix";
-
-const sv = equinix.networkedge.getAccountOutput({
-    name: "account-name",
-    metroCode: "SV",
-});
-const c8KvSingle = new equinix.networkedge.Device("c8kvSingle", {
-    name: "tf-c8kv",
-    metroCode: sv.apply(sv => sv.metroCode),
-    typeCode: "C8000V",
-    selfManaged: true,
-    byol: true,
-    packageCode: "network-essentials",
-    notifications: ["test@equinix.com"],
-    hostname: "C8KV",
-    accountNumber: sv.apply(sv => sv.number),
-    version: "17.06.01a",
-    coreCount: 2,
-    termLength: 12,
-    licenseToken: "valid-license-token",
-    additionalBandwidth: 5,
-    sshKey: {
-        username: "test-username",
-        keyName: "valid-key-name",
-    },
-    aclTemplateId: "3e548c02-9164-4197-aa23-05b1f644883c",
-});
-```
-```python
-import pulumi
-import pulumi_equinix as equinix
-
-sv = equinix.networkedge.get_account_output(name="account-name",
-    metro_code="SV")
-c8_kv_single = equinix.networkedge.Device("c8kvSingle",
-    name="tf-c8kv",
-    metro_code=sv.metro_code,
-    type_code="C8000V",
-    self_managed=True,
-    byol=True,
-    package_code="network-essentials",
-    notifications=["test@equinix.com"],
-    hostname="C8KV",
-    account_number=sv.number,
-    version="17.06.01a",
-    core_count=2,
-    term_length=12,
-    license_token="valid-license-token",
-    additional_bandwidth=5,
-    ssh_key=equinix.networkedge.DeviceSshKeyArgs(
-        username="test-username",
-        key_name="valid-key-name",
-    ),
-    acl_template_id="3e548c02-9164-4197-aa23-05b1f644883c")
-```
-```go
-package main
-
-import (
-	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-)
-
-func main() {
-	pulumi.Run(func(ctx *pulumi.Context) error {
-		sv, err := networkedge.GetAccount(ctx, &networkedge.GetAccountArgs{
-			Name:      pulumi.StringRef("account-name"),
-			MetroCode: "SV",
-		}, nil)
-		if err != nil {
-			return err
-		}
-		_, err = networkedge.NewDevice(ctx, "c8kvSingle", &networkedge.DeviceArgs{
-			Name:        pulumi.String("tf-c8kv"),
-			MetroCode:   pulumi.String(sv.MetroCode),
-			TypeCode:    pulumi.String("C8000V"),
-			SelfManaged: pulumi.Bool(true),
-			Byol:        pulumi.Bool(true),
-			PackageCode: pulumi.String("network-essentials"),
-			Notifications: pulumi.StringArray{
-				pulumi.String("test@equinix.com"),
-			},
-			Hostname:            pulumi.String("C8KV"),
-			AccountNumber:       pulumi.String(sv.Number),
-			Version:             pulumi.String("17.06.01a"),
-			CoreCount:           pulumi.Int(2),
-			TermLength:          pulumi.Int(12),
-			LicenseToken:        pulumi.String("valid-license-token"),
-			AdditionalBandwidth: pulumi.Int(5),
-			SshKey: &networkedge.DeviceSshKeyArgs{
-				Username: pulumi.String("test-username"),
-				KeyName:  pulumi.String("valid-key-name"),
-			},
-			AclTemplateId: pulumi.String("3e548c02-9164-4197-aa23-05b1f644883c"),
-		})
-		if err != nil {
-			return err
-		}
-		return nil
-	})
-}
-```
-```csharp
-using System.Collections.Generic;
-using System.Linq;
-using Pulumi;
-using Equinix = Pulumi.Equinix;
-
-return await Deployment.RunAsync(() => 
-{
-    var sv = Equinix.NetworkEdge.GetAccount.Invoke(new()
-    {
-        Name = "account-name",
-        MetroCode = "SV",
-    });
-
-    var c8KvSingle = new Equinix.NetworkEdge.Device("c8kvSingle", new()
-    {
-        Name = "tf-c8kv",
-        MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
-        TypeCode = "C8000V",
-        SelfManaged = true,
-        Byol = true,
-        PackageCode = "network-essentials",
-        Notifications = new[]
-        {
-            "test@equinix.com",
-        },
-        Hostname = "C8KV",
-        AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
-        Version = "17.06.01a",
-        CoreCount = 2,
-        TermLength = 12,
-        LicenseToken = "valid-license-token",
-        AdditionalBandwidth = 5,
-        SshKey = new Equinix.NetworkEdge.Inputs.DeviceSshKeyArgs
-        {
-            Username = "test-username",
-            KeyName = "valid-key-name",
-        },
-        AclTemplateId = "3e548c02-9164-4197-aa23-05b1f644883c",
-    });
-
-});
-```
-```java
-package generated_program;
-
-import com.pulumi.Context;
-import com.pulumi.Pulumi;
-import com.pulumi.core.Output;
-import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
-import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
-import com.pulumi.equinix.networkedge.Device;
-import com.pulumi.equinix.networkedge.DeviceArgs;
-import com.pulumi.equinix.networkedge.inputs.DeviceSshKeyArgs;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Map;
-import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-
-public class App {
-    public static void main(String[] args) {
-        Pulumi.run(App::stack);
-    }
-
-    public static void stack(Context ctx) {
-        final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
-            .name("account-name")
-            .metroCode("SV")
-            .build());
-
-        var c8KvSingle = new Device("c8KvSingle", DeviceArgs.builder()
-            .name("tf-c8kv")
-            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
-            .typeCode("C8000V")
-            .selfManaged(true)
-            .byol(true)
-            .packageCode("network-essentials")
-            .notifications("test@equinix.com")
-            .hostname("C8KV")
-            .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
-            .version("17.06.01a")
-            .coreCount(2)
-            .termLength(12)
-            .licenseToken("valid-license-token")
-            .additionalBandwidth(5)
-            .sshKey(DeviceSshKeyArgs.builder()
-                .username("test-username")
-                .keyName("valid-key-name")
-                .build())
-            .aclTemplateId("3e548c02-9164-4197-aa23-05b1f644883c")
-            .build());
-
-    }
-}
-```
-```yaml
-  c8kvSingle:
-    type: equinix:networkedge:Device
-    name: c8kv_single
-    properties:
-      name: tf-c8kv
-      metroCode: ${sv.metroCode}
-      typeCode: C8000V
-      selfManaged: true
-      byol: true
-      packageCode: network-essentials
-      notifications:
-        - test@equinix.com
-      hostname: C8KV
-      accountNumber: ${sv.number}
-      version: 17.06.01a
-      coreCount: 2
-      termLength: 12
-      licenseToken: valid-license-token
-      additionalBandwidth: 5
-      sshKey:
-        username: test-username
-        keyName: valid-key-name
-      aclTemplateId: 3e548c02-9164-4197-aa23-05b1f644883c
-variables:
-  # Create self configured single Catalyst 8000V (Autonomous Mode) router with license token
   sv:
     fn::invoke:
       Function: equinix:networkedge:getAccount
@@ -2381,47 +2578,55 @@ variables:
 {{% /example %}}
 
 {{% example %}}
-### example 1
+### example 9
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
 import * as equinix from "@pulumi/equinix";
 
-const dc = equinix.networkedge.getAccountOutput({
-    metroCode: "DC",
-});
 const sv = equinix.networkedge.getAccountOutput({
     metroCode: "SV",
 });
-const csr1000VHa = new equinix.networkedge.Device("csr1000vHa", {
-    name: "tf-csr1000v-p",
-    throughput: 500,
-    throughputUnit: equinix.networkedge.ThroughputUnit.Mbps,
-    metroCode: dc.apply(dc => dc.metroCode),
-    typeCode: "CSR1000V",
-    selfManaged: false,
-    connectivity: "INTERNET-ACCESS",
-    byol: false,
-    packageCode: "SEC",
+const panwCluster = new equinix.networkedge.Device("panwCluster", {
+    name: "tf-panw",
+    metroCode: sv.apply(sv => sv.metroCode),
+    typeCode: "PA-VM",
+    selfManaged: true,
+    byol: true,
+    packageCode: "VM100",
     notifications: [
         "john@equinix.com",
         "marry@equinix.com",
         "fred@equinix.com",
     ],
-    hostname: "csr1000v-p",
     termLength: 12,
-    accountNumber: dc.apply(dc => dc.number),
-    version: "16.09.05",
+    accountNumber: sv.apply(sv => sv.number),
+    version: "11.1.3",
+    interfaceCount: 10,
     coreCount: 2,
-    secondaryDevice: {
-        name: "tf-csr1000v-s",
-        metroCode: sv.apply(sv => sv.metroCode),
-        hostname: "csr1000v-s",
-        notifications: [
-            "john@equinix.com",
-            "marry@equinix.com",
-        ],
-        accountNumber: sv.apply(sv => sv.number),
+    sshKey: {
+        username: "test",
+        keyName: "test-key",
+    },
+    aclTemplateId: "0bff6e05-f0e7-44cd-804a-25b92b835f8b",
+    clusterDetails: {
+        clusterName: "tf-panw-cluster",
+        node0: {
+            vendorConfiguration: {
+                hostname: "panw-node0",
+                panoramaIpAddress: "x.x.x.x",
+                panoramaAuthKey: "xxxxxxxxxxx",
+            },
+            licenseToken: "licenseToken",
+        },
+        node1: {
+            vendorConfiguration: {
+                hostname: "panw-node1",
+                panoramaIpAddress: "x.x.x.x",
+                panoramaAuthKey: "xxxxxxxxxxx",
+            },
+            licenseToken: "licenseToken",
+        },
     },
 });
 ```
@@ -2429,37 +2634,47 @@ const csr1000VHa = new equinix.networkedge.Device("csr1000vHa", {
 import pulumi
 import pulumi_equinix as equinix
 
-dc = equinix.networkedge.get_account_output(metro_code="DC")
 sv = equinix.networkedge.get_account_output(metro_code="SV")
-csr1000_v_ha = equinix.networkedge.Device("csr1000vHa",
-    name="tf-csr1000v-p",
-    throughput=500,
-    throughput_unit=equinix.networkedge.ThroughputUnit.MBPS,
-    metro_code=dc.metro_code,
-    type_code="CSR1000V",
-    self_managed=False,
-    connectivity="INTERNET-ACCESS",
-    byol=False,
-    package_code="SEC",
+panw_cluster = equinix.networkedge.Device("panwCluster",
+    name="tf-panw",
+    metro_code=sv.metro_code,
+    type_code="PA-VM",
+    self_managed=True,
+    byol=True,
+    package_code="VM100",
     notifications=[
         "john@equinix.com",
         "marry@equinix.com",
         "fred@equinix.com",
     ],
-    hostname="csr1000v-p",
     term_length=12,
-    account_number=dc.number,
-    version="16.09.05",
+    account_number=sv.number,
+    version="11.1.3",
+    interface_count=10,
     core_count=2,
-    secondary_device=equinix.networkedge.DeviceSecondaryDeviceArgs(
-        name="tf-csr1000v-s",
-        metro_code=sv.metro_code,
-        hostname="csr1000v-s",
-        notifications=[
-            "john@equinix.com",
-            "marry@equinix.com",
-        ],
-        account_number=sv.number,
+    ssh_key=equinix.networkedge.DeviceSshKeyArgs(
+        username="test",
+        key_name="test-key",
+    ),
+    acl_template_id="0bff6e05-f0e7-44cd-804a-25b92b835f8b",
+    cluster_details=equinix.networkedge.DeviceClusterDetailsArgs(
+        cluster_name="tf-panw-cluster",
+        node0=equinix.networkedge.DeviceClusterDetailsNode0Args(
+            vendor_configuration=equinix.networkedge.DeviceClusterDetailsNode0VendorConfigurationArgs(
+                hostname="panw-node0",
+                panorama_ip_address="x.x.x.x",
+                panorama_auth_key="xxxxxxxxxxx",
+            ),
+            license_token="licenseToken",
+        ),
+        node1=equinix.networkedge.DeviceClusterDetailsNode1Args(
+            vendor_configuration=equinix.networkedge.DeviceClusterDetailsNode1VendorConfigurationArgs(
+                hostname="panw-node1",
+                panorama_ip_address="x.x.x.x",
+                panorama_auth_key="xxxxxxxxxxx",
+            ),
+            license_token="licenseToken",
+        ),
     ))
 ```
 ```go
@@ -2472,47 +2687,52 @@ import (
 
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
-		dc, err := networkedge.GetAccount(ctx, &networkedge.GetAccountArgs{
-			MetroCode: "DC",
-		}, nil)
-		if err != nil {
-			return err
-		}
 		sv, err := networkedge.GetAccount(ctx, &networkedge.GetAccountArgs{
 			MetroCode: "SV",
 		}, nil)
 		if err != nil {
 			return err
 		}
-		_, err = networkedge.NewDevice(ctx, "csr1000vHa", &networkedge.DeviceArgs{
-			Name:           pulumi.String("tf-csr1000v-p"),
-			Throughput:     pulumi.Int(500),
-			ThroughputUnit: pulumi.String(networkedge.ThroughputUnitMbps),
-			MetroCode:      pulumi.String(dc.MetroCode),
-			TypeCode:       pulumi.String("CSR1000V"),
-			SelfManaged:    pulumi.Bool(false),
-			Connectivity:   pulumi.String("INTERNET-ACCESS"),
-			Byol:           pulumi.Bool(false),
-			PackageCode:    pulumi.String("SEC"),
+		_, err = networkedge.NewDevice(ctx, "panwCluster", &networkedge.DeviceArgs{
+			Name:        pulumi.String("tf-panw"),
+			MetroCode:   pulumi.String(sv.MetroCode),
+			TypeCode:    pulumi.String("PA-VM"),
+			SelfManaged: pulumi.Bool(true),
+			Byol:        pulumi.Bool(true),
+			PackageCode: pulumi.String("VM100"),
 			Notifications: pulumi.StringArray{
 				pulumi.String("john@equinix.com"),
 				pulumi.String("marry@equinix.com"),
 				pulumi.String("fred@equinix.com"),
 			},
-			Hostname:      pulumi.String("csr1000v-p"),
-			TermLength:    pulumi.Int(12),
-			AccountNumber: pulumi.String(dc.Number),
-			Version:       pulumi.String("16.09.05"),
-			CoreCount:     pulumi.Int(2),
-			SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
-				Name:      pulumi.String("tf-csr1000v-s"),
-				MetroCode: pulumi.String(sv.MetroCode),
-				Hostname:  pulumi.String("csr1000v-s"),
-				Notifications: pulumi.StringArray{
-					pulumi.String("john@equinix.com"),
-					pulumi.String("marry@equinix.com"),
+			TermLength:     pulumi.Int(12),
+			AccountNumber:  pulumi.String(sv.Number),
+			Version:        pulumi.String("11.1.3"),
+			InterfaceCount: pulumi.Int(10),
+			CoreCount:      pulumi.Int(2),
+			SshKey: &networkedge.DeviceSshKeyArgs{
+				Username: pulumi.String("test"),
+				KeyName:  pulumi.String("test-key"),
+			},
+			AclTemplateId: pulumi.String("0bff6e05-f0e7-44cd-804a-25b92b835f8b"),
+			ClusterDetails: &networkedge.DeviceClusterDetailsArgs{
+				ClusterName: pulumi.String("tf-panw-cluster"),
+				Node0: &networkedge.DeviceClusterDetailsNode0Args{
+					VendorConfiguration: &networkedge.DeviceClusterDetailsNode0VendorConfigurationArgs{
+						Hostname:          pulumi.String("panw-node0"),
+						PanoramaIpAddress: pulumi.String("x.x.x.x"),
+						PanoramaAuthKey:   pulumi.String("xxxxxxxxxxx"),
+					},
+					LicenseToken: pulumi.String("licenseToken"),
 				},
-				AccountNumber: pulumi.String(sv.Number),
+				Node1: &networkedge.DeviceClusterDetailsNode1Args{
+					VendorConfiguration: &networkedge.DeviceClusterDetailsNode1VendorConfigurationArgs{
+						Hostname:          pulumi.String("panw-node1"),
+						PanoramaIpAddress: pulumi.String("x.x.x.x"),
+						PanoramaAuthKey:   pulumi.String("xxxxxxxxxxx"),
+					},
+					LicenseToken: pulumi.String("licenseToken"),
+				},
 			},
 		})
 		if err != nil {
@@ -2530,316 +2750,60 @@ using Equinix = Pulumi.Equinix;
 
 return await Deployment.RunAsync(() => 
 {
-    var dc = Equinix.NetworkEdge.GetAccount.Invoke(new()
-    {
-        MetroCode = "DC",
-    });
-
     var sv = Equinix.NetworkEdge.GetAccount.Invoke(new()
     {
         MetroCode = "SV",
     });
 
-    var csr1000VHa = new Equinix.NetworkEdge.Device("csr1000vHa", new()
+    var panwCluster = new Equinix.NetworkEdge.Device("panwCluster", new()
     {
-        Name = "tf-csr1000v-p",
-        Throughput = 500,
-        ThroughputUnit = Equinix.NetworkEdge.ThroughputUnit.Mbps,
-        MetroCode = dc.Apply(getAccountResult => getAccountResult.MetroCode),
-        TypeCode = "CSR1000V",
-        SelfManaged = false,
-        Connectivity = "INTERNET-ACCESS",
-        Byol = false,
-        PackageCode = "SEC",
+        Name = "tf-panw",
+        MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
+        TypeCode = "PA-VM",
+        SelfManaged = true,
+        Byol = true,
+        PackageCode = "VM100",
         Notifications = new[]
         {
             "john@equinix.com",
             "marry@equinix.com",
             "fred@equinix.com",
         },
-        Hostname = "csr1000v-p",
         TermLength = 12,
-        AccountNumber = dc.Apply(getAccountResult => getAccountResult.Number),
-        Version = "16.09.05",
-        CoreCount = 2,
-        SecondaryDevice = new Equinix.NetworkEdge.Inputs.DeviceSecondaryDeviceArgs
-        {
-            Name = "tf-csr1000v-s",
-            MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
-            Hostname = "csr1000v-s",
-            Notifications = new[]
-            {
-                "john@equinix.com",
-                "marry@equinix.com",
-            },
-            AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
-        },
-    });
-
-});
-```
-```java
-package generated_program;
-
-import com.pulumi.Context;
-import com.pulumi.Pulumi;
-import com.pulumi.core.Output;
-import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
-import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
-import com.pulumi.equinix.networkedge.Device;
-import com.pulumi.equinix.networkedge.DeviceArgs;
-import com.pulumi.equinix.networkedge.inputs.DeviceSecondaryDeviceArgs;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Map;
-import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-
-public class App {
-    public static void main(String[] args) {
-        Pulumi.run(App::stack);
-    }
-
-    public static void stack(Context ctx) {
-        final var dc = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
-            .metroCode("DC")
-            .build());
-
-        final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
-            .metroCode("SV")
-            .build());
-
-        var csr1000VHa = new Device("csr1000VHa", DeviceArgs.builder()
-            .name("tf-csr1000v-p")
-            .throughput(500)
-            .throughputUnit("Mbps")
-            .metroCode(dc.applyValue(getAccountResult -> getAccountResult.metroCode()))
-            .typeCode("CSR1000V")
-            .selfManaged(false)
-            .connectivity("INTERNET-ACCESS")
-            .byol(false)
-            .packageCode("SEC")
-            .notifications(            
-                "john@equinix.com",
-                "marry@equinix.com",
-                "fred@equinix.com")
-            .hostname("csr1000v-p")
-            .termLength(12)
-            .accountNumber(dc.applyValue(getAccountResult -> getAccountResult.number()))
-            .version("16.09.05")
-            .coreCount(2)
-            .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
-                .name("tf-csr1000v-s")
-                .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
-                .hostname("csr1000v-s")
-                .notifications(                
-                    "john@equinix.com",
-                    "marry@equinix.com")
-                .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
-                .build())
-            .build());
-
-    }
-}
-```
-```yaml
-  csr1000vHa:
-    type: equinix:networkedge:Device
-    name: csr1000v_ha
-    properties:
-      name: tf-csr1000v-p
-      throughput: 500
-      throughputUnit: Mbps
-      metroCode: ${dc.metroCode}
-      typeCode: CSR1000V
-      selfManaged: false
-      connectivity: INTERNET-ACCESS
-      byol: false
-      packageCode: SEC
-      notifications:
-        - john@equinix.com
-        - marry@equinix.com
-        - fred@equinix.com
-      hostname: csr1000v-p
-      termLength: 12
-      accountNumber: ${dc.number}
-      version: 16.09.05
-      coreCount: 2
-      secondaryDevice:
-        name: tf-csr1000v-s
-        metroCode: ${sv.metroCode}
-        hostname: csr1000v-s
-        notifications:
-          - john@equinix.com
-          - marry@equinix.com
-        accountNumber: ${sv.number}
-variables:
-  # Create pair of redundant, managed CSR1000V routers with license subscription
-  # in two different metro locations
-  dc:
-    fn::invoke:
-      Function: equinix:networkedge:getAccount
-      Arguments:
-        metroCode: DC
-  sv:
-    fn::invoke:
-      Function: equinix:networkedge:getAccount
-      Arguments:
-        metroCode: SV
-```
-{{% /example %}}
-
-{{% example %}}
-### example 5
-```typescript
-import * as pulumi from "@pulumi/pulumi";
-import * as equinix from "@equinix-labs/pulumi-equinix";
-import * as equinix from "@pulumi/equinix";
-
-const sv = equinix.networkedge.getAccountOutput({
-    name: "account-name",
-    metroCode: "SV",
-});
-const vsrxSingle = new equinix.networkedge.Device("vsrxSingle", {
-    name: "tf-c8kv-sdwan",
-    metroCode: sv.apply(sv => sv.metroCode),
-    typeCode: "VSRX",
-    selfManaged: true,
-    byol: true,
-    packageCode: "STD",
-    notifications: ["test@equinix.com"],
-    hostname: "VSRX",
-    accountNumber: sv.apply(sv => sv.number),
-    version: "23.2R1.13",
-    coreCount: 2,
-    termLength: 12,
-    additionalBandwidth: 5,
-    projectId: "a86d7112-d740-4758-9c9c-31e66373746b",
-    diverseDeviceId: "ed7891bd-15b4-4f72-ac56-d96cfdacddcc",
-    sshKey: {
-        username: "test-username",
-        keyName: "valid-key-name",
-    },
-    aclTemplateId: "3e548c02-9164-4197-aa23-05b1f644883c",
-});
-```
-```python
-import pulumi
-import pulumi_equinix as equinix
-
-sv = equinix.networkedge.get_account_output(name="account-name",
-    metro_code="SV")
-vsrx_single = equinix.networkedge.Device("vsrxSingle",
-    name="tf-c8kv-sdwan",
-    metro_code=sv.metro_code,
-    type_code="VSRX",
-    self_managed=True,
-    byol=True,
-    package_code="STD",
-    notifications=["test@equinix.com"],
-    hostname="VSRX",
-    account_number=sv.number,
-    version="23.2R1.13",
-    core_count=2,
-    term_length=12,
-    additional_bandwidth=5,
-    project_id="a86d7112-d740-4758-9c9c-31e66373746b",
-    diverse_device_id="ed7891bd-15b4-4f72-ac56-d96cfdacddcc",
-    ssh_key=equinix.networkedge.DeviceSshKeyArgs(
-        username="test-username",
-        key_name="valid-key-name",
-    ),
-    acl_template_id="3e548c02-9164-4197-aa23-05b1f644883c")
-```
-```go
-package main
-
-import (
-	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-)
-
-func main() {
-	pulumi.Run(func(ctx *pulumi.Context) error {
-		sv, err := networkedge.GetAccount(ctx, &networkedge.GetAccountArgs{
-			Name:      pulumi.StringRef("account-name"),
-			MetroCode: "SV",
-		}, nil)
-		if err != nil {
-			return err
-		}
-		_, err = networkedge.NewDevice(ctx, "vsrxSingle", &networkedge.DeviceArgs{
-			Name:        pulumi.String("tf-c8kv-sdwan"),
-			MetroCode:   pulumi.String(sv.MetroCode),
-			TypeCode:    pulumi.String("VSRX"),
-			SelfManaged: pulumi.Bool(true),
-			Byol:        pulumi.Bool(true),
-			PackageCode: pulumi.String("STD"),
-			Notifications: pulumi.StringArray{
-				pulumi.String("test@equinix.com"),
-			},
-			Hostname:            pulumi.String("VSRX"),
-			AccountNumber:       pulumi.String(sv.Number),
-			Version:             pulumi.String("23.2R1.13"),
-			CoreCount:           pulumi.Int(2),
-			TermLength:          pulumi.Int(12),
-			AdditionalBandwidth: pulumi.Int(5),
-			ProjectId:           pulumi.String("a86d7112-d740-4758-9c9c-31e66373746b"),
-			DiverseDeviceId:     pulumi.String("ed7891bd-15b4-4f72-ac56-d96cfdacddcc"),
-			SshKey: &networkedge.DeviceSshKeyArgs{
-				Username: pulumi.String("test-username"),
-				KeyName:  pulumi.String("valid-key-name"),
-			},
-			AclTemplateId: pulumi.String("3e548c02-9164-4197-aa23-05b1f644883c"),
-		})
-		if err != nil {
-			return err
-		}
-		return nil
-	})
-}
-```
-```csharp
-using System.Collections.Generic;
-using System.Linq;
-using Pulumi;
-using Equinix = Pulumi.Equinix;
-
-return await Deployment.RunAsync(() => 
-{
-    var sv = Equinix.NetworkEdge.GetAccount.Invoke(new()
-    {
-        Name = "account-name",
-        MetroCode = "SV",
-    });
-
-    var vsrxSingle = new Equinix.NetworkEdge.Device("vsrxSingle", new()
-    {
-        Name = "tf-c8kv-sdwan",
-        MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
-        TypeCode = "VSRX",
-        SelfManaged = true,
-        Byol = true,
-        PackageCode = "STD",
-        Notifications = new[]
-        {
-            "test@equinix.com",
-        },
-        Hostname = "VSRX",
         AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
-        Version = "23.2R1.13",
+        Version = "11.1.3",
+        InterfaceCount = 10,
         CoreCount = 2,
-        TermLength = 12,
-        AdditionalBandwidth = 5,
-        ProjectId = "a86d7112-d740-4758-9c9c-31e66373746b",
-        DiverseDeviceId = "ed7891bd-15b4-4f72-ac56-d96cfdacddcc",
         SshKey = new Equinix.NetworkEdge.Inputs.DeviceSshKeyArgs
         {
-            Username = "test-username",
-            KeyName = "valid-key-name",
+            Username = "test",
+            KeyName = "test-key",
         },
-        AclTemplateId = "3e548c02-9164-4197-aa23-05b1f644883c",
+        AclTemplateId = "0bff6e05-f0e7-44cd-804a-25b92b835f8b",
+        ClusterDetails = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsArgs
+        {
+            ClusterName = "tf-panw-cluster",
+            Node0 = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsNode0Args
+            {
+                VendorConfiguration = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsNode0VendorConfigurationArgs
+                {
+                    Hostname = "panw-node0",
+                    PanoramaIpAddress = "x.x.x.x",
+                    PanoramaAuthKey = "xxxxxxxxxxx",
+                },
+                LicenseToken = "licenseToken",
+            },
+            Node1 = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsNode1Args
+            {
+                VendorConfiguration = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsNode1VendorConfigurationArgs
+                {
+                    Hostname = "panw-node1",
+                    PanoramaIpAddress = "x.x.x.x",
+                    PanoramaAuthKey = "xxxxxxxxxxx",
+                },
+                LicenseToken = "licenseToken",
+            },
+        },
     });
 
 });
@@ -2855,6 +2819,11 @@ import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
 import com.pulumi.equinix.networkedge.Device;
 import com.pulumi.equinix.networkedge.DeviceArgs;
 import com.pulumi.equinix.networkedge.inputs.DeviceSshKeyArgs;
+import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsArgs;
+import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsNode0Args;
+import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsNode0VendorConfigurationArgs;
+import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsNode1Args;
+import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsNode1VendorConfigurationArgs;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
@@ -2869,68 +2838,99 @@ public class App {
 
     public static void stack(Context ctx) {
         final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
-            .name("account-name")
             .metroCode("SV")
             .build());
 
-        var vsrxSingle = new Device("vsrxSingle", DeviceArgs.builder()
-            .name("tf-c8kv-sdwan")
+        var panwCluster = new Device("panwCluster", DeviceArgs.builder()
+            .name("tf-panw")
             .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
-            .typeCode("VSRX")
+            .typeCode("PA-VM")
             .selfManaged(true)
             .byol(true)
-            .packageCode("STD")
-            .notifications("test@equinix.com")
-            .hostname("VSRX")
-            .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
-            .version("23.2R1.13")
-            .coreCount(2)
+            .packageCode("VM100")
+            .notifications(            
+                "john@equinix.com",
+                "marry@equinix.com",
+                "fred@equinix.com")
             .termLength(12)
-            .additionalBandwidth(5)
-            .projectId("a86d7112-d740-4758-9c9c-31e66373746b")
-            .diverseDeviceId("ed7891bd-15b4-4f72-ac56-d96cfdacddcc")
+            .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
+            .version("11.1.3")
+            .interfaceCount(10)
+            .coreCount(2)
             .sshKey(DeviceSshKeyArgs.builder()
-                .username("test-username")
-                .keyName("valid-key-name")
+                .username("test")
+                .keyName("test-key")
                 .build())
-            .aclTemplateId("3e548c02-9164-4197-aa23-05b1f644883c")
+            .aclTemplateId("0bff6e05-f0e7-44cd-804a-25b92b835f8b")
+            .clusterDetails(DeviceClusterDetailsArgs.builder()
+                .clusterName("tf-panw-cluster")
+                .node0(DeviceClusterDetailsNode0Args.builder()
+                    .vendorConfiguration(DeviceClusterDetailsNode0VendorConfigurationArgs.builder()
+                        .hostname("panw-node0")
+                        .panoramaIpAddress("x.x.x.x")
+                        .panoramaAuthKey("xxxxxxxxxxx")
+                        .build())
+                    .licenseToken("licenseToken")
+                    .build())
+                .node1(DeviceClusterDetailsNode1Args.builder()
+                    .vendorConfiguration(DeviceClusterDetailsNode1VendorConfigurationArgs.builder()
+                        .hostname("panw-node1")
+                        .panoramaIpAddress("x.x.x.x")
+                        .panoramaAuthKey("xxxxxxxxxxx")
+                        .build())
+                    .licenseToken("licenseToken")
+                    .build())
+                .build())
             .build());
 
     }
 }
 ```
 ```yaml
-  vsrxSingle:
+  panwCluster:
     type: equinix:networkedge:Device
-    name: vsrx_single
+    name: panw_cluster
     properties:
-      name: tf-c8kv-sdwan
+      name: tf-panw
       metroCode: ${sv.metroCode}
-      typeCode: VSRX
+      typeCode: PA-VM
       selfManaged: true
       byol: true
-      packageCode: STD
+      packageCode: VM100
       notifications:
-        - test@equinix.com
-      hostname: VSRX
-      accountNumber: ${sv.number}
-      version: 23.2R1.13
-      coreCount: 2
+        - john@equinix.com
+        - marry@equinix.com
+        - fred@equinix.com
       termLength: 12
-      additionalBandwidth: 5
-      projectId: a86d7112-d740-4758-9c9c-31e66373746b
-      diverseDeviceId: ed7891bd-15b4-4f72-ac56-d96cfdacddcc
+      accountNumber: ${sv.number}
+      version: 11.1.3
+      interfaceCount: 10
+      coreCount: 2
       sshKey:
-        username: test-username
-        keyName: valid-key-name
-      aclTemplateId: 3e548c02-9164-4197-aa23-05b1f644883c
+        username: test
+        keyName: test-key
+      aclTemplateId: 0bff6e05-f0e7-44cd-804a-25b92b835f8b
+      clusterDetails:
+        clusterName: tf-panw-cluster
+        node0:
+          vendorConfiguration:
+            hostname: panw-node0
+            panoramaIpAddress: x.x.x.x
+            panoramaAuthKey: xxxxxxxxxxx
+          licenseToken: licenseToken
+        node1:
+          vendorConfiguration:
+            hostname: panw-node1
+            panoramaIpAddress: x.x.x.x
+            panoramaAuthKey: xxxxxxxxxxx
+          licenseToken: licenseToken
 variables:
-  # Create self configured single VSRX device with BYOL License
+  # Create PA-VM firewall cluster with Panorama Server Integration
+  # with Panorama Server IP and Panorama Auth Key in vendor Configuration
   sv:
     fn::invoke:
       Function: equinix:networkedge:getAccount
       Arguments:
-        name: account-name
         metroCode: SV
 ```
 {{% /example %}}
