@@ -1,8 +1,7 @@
 name: release
 on:
-  push:
-    tags:
-      - v*.*.*
+  workflow_dispatch:
+
 env:
   PROVIDER: equinix
   DOTNETVERSION: 7.0.x
@@ -74,6 +73,15 @@ jobs:
           name: ${{ env.PROVIDER }}-provider.tar.gz
           path: ${{ github.workspace }}/bin/provider.tar.gz
           retention-days: 30
+      - name: Release
+        uses: cycjimmy/semantic-release-action@v3
+        with:
+          semantic_version: 19.0.5
+          extra_plugins: |
+            @semantic-release/git@10.0.0
+            conventional-changelog-conventionalcommits@4.6.3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Set PreRelease Version
         run: echo "GORELEASER_CURRENT_TAG=v$(pulumictl get version --language generic)" >> $GITHUB_ENV
       - name: Run GoReleaser
