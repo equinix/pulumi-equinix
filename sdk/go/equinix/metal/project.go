@@ -16,7 +16,7 @@ import (
 // > **NOTE:** Keep in mind that Equinix Metal invoicing is per project, so creating many `metal.Project` resources will affect the rendered invoice. If you want to keep your Equinix Metal bill simple and easy to review, please re-use your existing projects.
 //
 // ## Example Usage
-// ### example 3
+// ### example 1
 // ```go
 // package main
 //
@@ -29,13 +29,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := metal.NewProject(ctx, "existingProject", &metal.ProjectArgs{
-//				Name: pulumi.String("The name of the project (if different, will rewrite)"),
-//				BgpConfig: &metal.ProjectBgpConfigArgs{
-//					DeploymentType: pulumi.String("local"),
-//					Md5:            pulumi.String("C179c28c41a85b"),
-//					Asn:            pulumi.Int(65000),
-//				},
+//			_, err := metal.NewProject(ctx, "tfProject1", &metal.ProjectArgs{
+//				Name: pulumi.String("Terraform Fun"),
 //			})
 //			if err != nil {
 //				return err
@@ -74,7 +69,7 @@ import (
 //	}
 //
 // ```
-// ### example 1
+// ### example 3
 // ```go
 // package main
 //
@@ -87,8 +82,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := metal.NewProject(ctx, "tfProject1", &metal.ProjectArgs{
-//				Name: pulumi.String("Terraform Fun"),
+//			_, err := metal.NewProject(ctx, "existingProject", &metal.ProjectArgs{
+//				Name: pulumi.String("The name of the project (if different, will rewrite)"),
+//				BgpConfig: &metal.ProjectBgpConfigArgs{
+//					DeploymentType: pulumi.String("local"),
+//					Md5:            pulumi.String("C179c28c41a85b"),
+//					Asn:            pulumi.Int(65000),
+//				},
 //			})
 //			if err != nil {
 //				return err

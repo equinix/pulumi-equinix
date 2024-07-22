@@ -63,7 +63,7 @@ mappings() {
     rm ${tf_file}.bak
 }
 
-# generate pululmi yaml from terraform examples
+# generate Pulumi yaml from terraform examples
 generate_pulumi_yaml() {
     local SOURCE_DIR="${SCRIPT_DIR}/../upstream/examples/resources/"
     local DEST_DIR="${SCRIPT_DIR}/../examples/"
@@ -73,9 +73,16 @@ generate_pulumi_yaml() {
         local example_name=$(basename $example)
         IFS='_' read -r -a parts <<< "$example_name"
 
+        # Check if the first part is "equinix_"
+        if [ "${parts[0]}" == "equinix" ]; then
+            local service_part=${parts[1]}
+            local resource_part=$(IFS='_'; echo "${parts[*]:2}")
+        else
+            local service_part=${parts[0]}
+            local resource_part=$(IFS='_'; echo "${parts[*]:1}")
+        fi
+
         # Create the destination directory structure
-        local service_part=${parts[0]}
-        local resource_part=$(IFS='_'; echo "${parts[*]:1}")
         local target_dir="$DEST_DIR$service_part/$resource_part"
         mkdir -p $target_dir
 
@@ -159,6 +166,7 @@ generate_pulumi_yaml() {
     done
 }
 
+# convert the Pulumi yaml generated with generate_pulumi_yaml function into all supported languages
 generate_examples_and_docs() {
     # Find all Pulumi.yaml files within the examples directory structure
     find "$EXAMPLES_DIR" \( -name "go" -o -name "java" -o -name "python" -o -name "typescript" -o -name "csharp" \) -prune -o -name "Pulumi.yaml" -print0 | while IFS= read -r -d '' yaml_file; do
@@ -252,7 +260,7 @@ merge_example_files() {
 
     echo "Generating merged example: $RESULT_FILE_NAME"
     # Find all example files with the specified prefix in OUTPUT_DIR
-    local EXAMPLES_TO_MERGE=($(find "$OUTPUT_DIR" -maxdepth 1 -name "${1}_example*.examples.md"))
+    local EXAMPLES_TO_MERGE=($(find "$OUTPUT_DIR" -maxdepth 1 -name "${1}_example*.examples.md" | sort -V))
 
     local CONTENTS=""
     for FILE in "${EXAMPLES_TO_MERGE[@]}"; do

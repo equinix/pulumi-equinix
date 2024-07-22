@@ -2,10 +2,10 @@ module equinix-metal-vrf-example_3
 
 go 1.21
 
-toolchain go1.22.4
+toolchain go1.22.5
 
 require (
-	github.com/equinix/pulumi-equinix/sdk 0.11.5
+	github.com/equinix/pulumi-equinix/sdk 0.12.2
 	github.com/pulumi/pulumi/sdk/v3 v3.121.0
 )
 
@@ -39,7 +39,7 @@ require (
 	github.com/grpc-ecosystem/grpc-opentracing v0.0.0-20180507213350-8e809c8a8645 // indirect
 	github.com/hashicorp/errwrap v1.1.0 // indirect
 	github.com/hashicorp/go-multierror v1.1.1 // indirect
-	github.com/hashicorp/hcl/v2 v2.20.0 // indirect
+	github.com/hashicorp/hcl/v2 v2.20.1 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/jbenet/go-context v0.0.0-20150711004518-d14ea06fba99 // indirect
 	github.com/kevinburke/ssh_config v1.2.0 // indirect

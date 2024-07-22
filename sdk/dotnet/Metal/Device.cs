@@ -36,6 +36,59 @@ namespace Pulumi.Equinix.Metal
     /// 
     /// });
     /// ```
+    /// ### example 2
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Equinix = Pulumi.Equinix;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var pxe1 = new Equinix.Metal.Device("pxe1", new()
+    ///     {
+    ///         Hostname = "tf.coreos2-pxe",
+    ///         Plan = Equinix.Metal.Plan.C3SmallX86,
+    ///         Metro = "sv",
+    ///         OperatingSystem = Equinix.Metal.OperatingSystem.CustomIPXE,
+    ///         BillingCycle = Equinix.Metal.BillingCycle.Hourly,
+    ///         ProjectId = projectId,
+    ///         IpxeScriptUrl = "https://rawgit.com/cloudnativelabs/pxe/master/packet/coreos-stable-metal.ipxe",
+    ///         AlwaysPxe = false,
+    ///         UserData = example.Rendered,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### example 3
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Equinix = Pulumi.Equinix;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var web1 = new Equinix.Metal.Device("web1", new()
+    ///     {
+    ///         Hostname = "tf.coreos2",
+    ///         Plan = Equinix.Metal.Plan.C3SmallX86,
+    ///         Metro = "ny",
+    ///         OperatingSystem = Equinix.Metal.OperatingSystem.Ubuntu20_04,
+    ///         BillingCycle = Equinix.Metal.BillingCycle.Hourly,
+    ///         ProjectId = projectId,
+    ///         IpAddresses = new[]
+    ///         {
+    ///             new Equinix.Metal.Inputs.DeviceIpAddressArgs
+    ///             {
+    ///                 Type = "private_ipv4",
+    ///                 Cidr = 30,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### example 4
     /// ```csharp
     /// using System.Collections.Generic;
@@ -112,30 +165,6 @@ namespace Pulumi.Equinix.Metal
     /// 
     /// });
     /// ```
-    /// ### example 2
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Equinix = Pulumi.Equinix;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var pxe1 = new Equinix.Metal.Device("pxe1", new()
-    ///     {
-    ///         Hostname = "tf.coreos2-pxe",
-    ///         Plan = Equinix.Metal.Plan.C3SmallX86,
-    ///         Metro = "sv",
-    ///         OperatingSystem = Equinix.Metal.OperatingSystem.CustomIPXE,
-    ///         BillingCycle = Equinix.Metal.BillingCycle.Hourly,
-    ///         ProjectId = projectId,
-    ///         IpxeScriptUrl = "https://rawgit.com/cloudnativelabs/pxe/master/packet/coreos-stable-metal.ipxe",
-    ///         AlwaysPxe = false,
-    ///         UserData = example.Rendered,
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// ### example 5
     /// ```csharp
     /// using System.Collections.Generic;
@@ -163,35 +192,6 @@ namespace Pulumi.Equinix.Metal
     ///             {
     ///                 "custom_data",
     ///                 "user_data",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### example 3
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Equinix = Pulumi.Equinix;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var web1 = new Equinix.Metal.Device("web1", new()
-    ///     {
-    ///         Hostname = "tf.coreos2",
-    ///         Plan = Equinix.Metal.Plan.C3SmallX86,
-    ///         Metro = "ny",
-    ///         OperatingSystem = Equinix.Metal.OperatingSystem.Ubuntu20_04,
-    ///         BillingCycle = Equinix.Metal.BillingCycle.Hourly,
-    ///         ProjectId = projectId,
-    ///         IpAddresses = new[]
-    ///         {
-    ///             new Equinix.Metal.Inputs.DeviceIpAddressArgs
-    ///             {
-    ///                 Type = "private_ipv4",
-    ///                 Cidr = 30,
     ///             },
     ///         },
     ///     });

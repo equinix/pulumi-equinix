@@ -1,31 +1,18 @@
 ## Example Usage
 
 {{% example %}}
-### example 3
+### example 1
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
 
-const existingProject = new equinix.metal.Project("existingProject", {
-    name: "The name of the project (if different, will rewrite)",
-    bgpConfig: {
-        deploymentType: "local",
-        md5: "C179c28c41a85b",
-        asn: 65000,
-    },
-});
+const tfProject1 = new equinix.metal.Project("tfProject1", {name: "Terraform Fun"});
 ```
 ```python
 import pulumi
 import pulumi_equinix as equinix
 
-existing_project = equinix.metal.Project("existingProject",
-    name="The name of the project (if different, will rewrite)",
-    bgp_config=equinix.metal.ProjectBgpConfigArgs(
-        deployment_type="local",
-        md5="C179c28c41a85b",
-        asn=65000,
-    ))
+tf_project1 = equinix.metal.Project("tfProject1", name="Terraform Fun")
 ```
 ```go
 package main
@@ -37,13 +24,8 @@ import (
 
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
-		_, err := metal.NewProject(ctx, "existingProject", &metal.ProjectArgs{
-			Name: pulumi.String("The name of the project (if different, will rewrite)"),
-			BgpConfig: &metal.ProjectBgpConfigArgs{
-				DeploymentType: pulumi.String("local"),
-				Md5:            pulumi.String("C179c28c41a85b"),
-				Asn:            pulumi.Int(65000),
-			},
+		_, err := metal.NewProject(ctx, "tfProject1", &metal.ProjectArgs{
+			Name: pulumi.String("Terraform Fun"),
 		})
 		if err != nil {
 			return err
@@ -60,15 +42,9 @@ using Equinix = Pulumi.Equinix;
 
 return await Deployment.RunAsync(() => 
 {
-    var existingProject = new Equinix.Metal.Project("existingProject", new()
+    var tfProject1 = new Equinix.Metal.Project("tfProject1", new()
     {
-        Name = "The name of the project (if different, will rewrite)",
-        BgpConfig = new Equinix.Metal.Inputs.ProjectBgpConfigArgs
-        {
-            DeploymentType = "local",
-            Md5 = "C179c28c41a85b",
-            Asn = 65000,
-        },
+        Name = "Terraform Fun",
     });
 
 });
@@ -81,7 +57,6 @@ import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
 import com.pulumi.equinix.metal.Project;
 import com.pulumi.equinix.metal.ProjectArgs;
-import com.pulumi.equinix.metal.inputs.ProjectBgpConfigArgs;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
@@ -95,28 +70,19 @@ public class App {
     }
 
     public static void stack(Context ctx) {
-        var existingProject = new Project("existingProject", ProjectArgs.builder()
-            .name("The name of the project (if different, will rewrite)")
-            .bgpConfig(ProjectBgpConfigArgs.builder()
-                .deploymentType("local")
-                .md5("C179c28c41a85b")
-                .asn(65000)
-                .build())
+        var tfProject1 = new Project("tfProject1", ProjectArgs.builder()
+            .name("Terraform Fun")
             .build());
 
     }
 }
 ```
 ```yaml
-  existingProject:
+  tfProject1:
     type: equinix:metal:Project
-    name: existing_project
+    name: tf_project_1
     properties:
-      name: The name of the project (if different, will rewrite)
-      bgpConfig:
-        deploymentType: local
-        md5: C179c28c41a85b
-        asn: 65000
+      name: Terraform Fun
 ```
 {{% /example %}}
 
@@ -242,18 +208,31 @@ public class App {
 {{% /example %}}
 
 {{% example %}}
-### example 1
+### example 3
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
 
-const tfProject1 = new equinix.metal.Project("tfProject1", {name: "Terraform Fun"});
+const existingProject = new equinix.metal.Project("existingProject", {
+    name: "The name of the project (if different, will rewrite)",
+    bgpConfig: {
+        deploymentType: "local",
+        md5: "C179c28c41a85b",
+        asn: 65000,
+    },
+});
 ```
 ```python
 import pulumi
 import pulumi_equinix as equinix
 
-tf_project1 = equinix.metal.Project("tfProject1", name="Terraform Fun")
+existing_project = equinix.metal.Project("existingProject",
+    name="The name of the project (if different, will rewrite)",
+    bgp_config=equinix.metal.ProjectBgpConfigArgs(
+        deployment_type="local",
+        md5="C179c28c41a85b",
+        asn=65000,
+    ))
 ```
 ```go
 package main
@@ -265,8 +244,13 @@ import (
 
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
-		_, err := metal.NewProject(ctx, "tfProject1", &metal.ProjectArgs{
-			Name: pulumi.String("Terraform Fun"),
+		_, err := metal.NewProject(ctx, "existingProject", &metal.ProjectArgs{
+			Name: pulumi.String("The name of the project (if different, will rewrite)"),
+			BgpConfig: &metal.ProjectBgpConfigArgs{
+				DeploymentType: pulumi.String("local"),
+				Md5:            pulumi.String("C179c28c41a85b"),
+				Asn:            pulumi.Int(65000),
+			},
 		})
 		if err != nil {
 			return err
@@ -283,9 +267,15 @@ using Equinix = Pulumi.Equinix;
 
 return await Deployment.RunAsync(() => 
 {
-    var tfProject1 = new Equinix.Metal.Project("tfProject1", new()
+    var existingProject = new Equinix.Metal.Project("existingProject", new()
     {
-        Name = "Terraform Fun",
+        Name = "The name of the project (if different, will rewrite)",
+        BgpConfig = new Equinix.Metal.Inputs.ProjectBgpConfigArgs
+        {
+            DeploymentType = "local",
+            Md5 = "C179c28c41a85b",
+            Asn = 65000,
+        },
     });
 
 });
@@ -298,6 +288,7 @@ import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
 import com.pulumi.equinix.metal.Project;
 import com.pulumi.equinix.metal.ProjectArgs;
+import com.pulumi.equinix.metal.inputs.ProjectBgpConfigArgs;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
@@ -311,19 +302,28 @@ public class App {
     }
 
     public static void stack(Context ctx) {
-        var tfProject1 = new Project("tfProject1", ProjectArgs.builder()
-            .name("Terraform Fun")
+        var existingProject = new Project("existingProject", ProjectArgs.builder()
+            .name("The name of the project (if different, will rewrite)")
+            .bgpConfig(ProjectBgpConfigArgs.builder()
+                .deploymentType("local")
+                .md5("C179c28c41a85b")
+                .asn(65000)
+                .build())
             .build());
 
     }
 }
 ```
 ```yaml
-  tfProject1:
+  existingProject:
     type: equinix:metal:Project
-    name: tf_project_1
+    name: existing_project
     properties:
-      name: Terraform Fun
+      name: The name of the project (if different, will rewrite)
+      bgpConfig:
+        deploymentType: local
+        md5: C179c28c41a85b
+        asn: 65000
 ```
 {{% /example %}}
 

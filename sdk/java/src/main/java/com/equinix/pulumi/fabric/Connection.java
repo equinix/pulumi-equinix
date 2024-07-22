@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
- * ### example 9
+ * ### example 1
  * <pre>
  * {@code
  * package generated_program;
@@ -44,7 +44,89 @@ import javax.annotation.Nullable;
  * import com.pulumi.equinix.fabric.inputs.ConnectionOrderArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionASideArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointRouterArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointPortArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointLinkProtocolArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionZSideArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointPortArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointLinkProtocolArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointLocationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var port2Port = new Connection("port2Port", ConnectionArgs.builder()
+ *             .name("ConnectionName")
+ *             .type("EVPL_VC")
+ *             .notifications(ConnectionNotificationArgs.builder()
+ *                 .type("ALL")
+ *                 .emails(                
+ *                     "example{@literal @}equinix.com",
+ *                     "test1{@literal @}equinix.com")
+ *                 .build())
+ *             .bandwidth(50)
+ *             .order(ConnectionOrderArgs.builder()
+ *                 .purchaseOrderNumber("1-323292")
+ *                 .build())
+ *             .aSide(ConnectionASideArgs.builder()
+ *                 .accessPoint(ConnectionASideAccessPointArgs.builder()
+ *                     .type("COLO")
+ *                     .port(ConnectionASideAccessPointPortArgs.builder()
+ *                         .uuid("<aside_port_uuid>")
+ *                         .build())
+ *                     .linkProtocol(ConnectionASideAccessPointLinkProtocolArgs.builder()
+ *                         .type("QINQ")
+ *                         .vlanSTag("1976")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .zSide(ConnectionZSideArgs.builder()
+ *                 .accessPoint(ConnectionZSideAccessPointArgs.builder()
+ *                     .type("COLO")
+ *                     .port(ConnectionZSideAccessPointPortArgs.builder()
+ *                         .uuid("<zside_port_uuid>")
+ *                         .build())
+ *                     .linkProtocol(ConnectionZSideAccessPointLinkProtocolArgs.builder()
+ *                         .type("QINQ")
+ *                         .vlanSTag("3711")
+ *                         .build())
+ *                     .location(ConnectionZSideAccessPointLocationArgs.builder()
+ *                         .metroCode("SV")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### example 2
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.fabric.Connection;
+ * import com.pulumi.equinix.fabric.ConnectionArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionRedundancyArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionOrderArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionASideArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointPortArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointLinkProtocolArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionZSideArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointProfileArgs;
@@ -62,9 +144,99 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var fcr2Azure = new Connection("fcr2Azure", ConnectionArgs.builder()
+ *         var port2Aws = new Connection("port2Aws", ConnectionArgs.builder()
  *             .name("ConnectionName")
- *             .type("IP_VC")
+ *             .type("EVPL_VC")
+ *             .notifications(ConnectionNotificationArgs.builder()
+ *                 .type("ALL")
+ *                 .emails(                
+ *                     "example{@literal @}equinix.com",
+ *                     "test1{@literal @}equinix.com")
+ *                 .build())
+ *             .bandwidth(50)
+ *             .redundancy(ConnectionRedundancyArgs.builder()
+ *                 .priority("PRIMARY")
+ *                 .build())
+ *             .order(ConnectionOrderArgs.builder()
+ *                 .purchaseOrderNumber("1-323929")
+ *                 .build())
+ *             .aSide(ConnectionASideArgs.builder()
+ *                 .accessPoint(ConnectionASideAccessPointArgs.builder()
+ *                     .type("COLO")
+ *                     .port(ConnectionASideAccessPointPortArgs.builder()
+ *                         .uuid("<aside_port_uuid>")
+ *                         .build())
+ *                     .linkProtocol(ConnectionASideAccessPointLinkProtocolArgs.builder()
+ *                         .type("QINQ")
+ *                         .vlanSTag("2019")
+ *                         .vlanCTag("2112")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .zSide(ConnectionZSideArgs.builder()
+ *                 .accessPoint(ConnectionZSideAccessPointArgs.builder()
+ *                     .type("SP")
+ *                     .authenticationKey("<aws_account_id>")
+ *                     .sellerRegion("us-west-1")
+ *                     .profile(ConnectionZSideAccessPointProfileArgs.builder()
+ *                         .type("L2_PROFILE")
+ *                         .uuid("<service_profile_uuid>")
+ *                         .build())
+ *                     .location(ConnectionZSideAccessPointLocationArgs.builder()
+ *                         .metroCode("SV")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .additionalInfo(            
+ *                 Map.ofEntries(
+ *                     Map.entry("key", "accessKey"),
+ *                     Map.entry("value", "<aws_access_key>")
+ *                 ),
+ *                 Map.ofEntries(
+ *                     Map.entry("key", "secretKey"),
+ *                     Map.entry("value", "<aws_secret_key>")
+ *                 ))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### example 3
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.fabric.Connection;
+ * import com.pulumi.equinix.fabric.ConnectionArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionOrderArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionASideArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointPortArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionZSideArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointPortArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointLocationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var epl = new Connection("epl", ConnectionArgs.builder()
+ *             .name("ConnectionName")
+ *             .type("EPL_VC")
  *             .notifications(ConnectionNotificationArgs.builder()
  *                 .type("ALL")
  *                 .emails(                
@@ -77,20 +249,92 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .aSide(ConnectionASideArgs.builder()
  *                 .accessPoint(ConnectionASideAccessPointArgs.builder()
- *                     .type("CLOUD_ROUTER")
- *                     .router(ConnectionASideAccessPointRouterArgs.builder()
- *                         .uuid("<cloud_router_uuid>")
+ *                     .type("COLO")
+ *                     .port(ConnectionASideAccessPointPortArgs.builder()
+ *                         .uuid("<aside_port_uuid>")
  *                         .build())
  *                     .build())
  *                 .build())
  *             .zSide(ConnectionZSideArgs.builder()
  *                 .accessPoint(ConnectionZSideAccessPointArgs.builder()
- *                     .type("SP")
- *                     .authenticationKey("<Azure_ExpressRouter_Auth_Key>")
- *                     .peeringType("PRIVATE")
- *                     .profile(ConnectionZSideAccessPointProfileArgs.builder()
- *                         .type("L2_PROFILE")
- *                         .uuid("<Azure_Service_Profile_UUID>")
+ *                     .type("COLO")
+ *                     .port(ConnectionZSideAccessPointPortArgs.builder()
+ *                         .uuid("<zside_port_uuid>")
+ *                         .build())
+ *                     .location(ConnectionZSideAccessPointLocationArgs.builder()
+ *                         .metroCode("SV")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### example 4
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.fabric.Connection;
+ * import com.pulumi.equinix.fabric.ConnectionArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionOrderArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionASideArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointPortArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointLinkProtocolArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionZSideArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointPortArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointLocationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var accessEplVc = new Connection("accessEplVc", ConnectionArgs.builder()
+ *             .name("ConnectionName")
+ *             .type("ACCESS_EPL_VC")
+ *             .notifications(ConnectionNotificationArgs.builder()
+ *                 .type("ALL")
+ *                 .emails(                
+ *                     "example{@literal @}equinix.com",
+ *                     "test1{@literal @}equinix.com")
+ *                 .build())
+ *             .bandwidth(50)
+ *             .order(ConnectionOrderArgs.builder()
+ *                 .purchaseOrderNumber("1-323292")
+ *                 .build())
+ *             .aSide(ConnectionASideArgs.builder()
+ *                 .accessPoint(ConnectionASideAccessPointArgs.builder()
+ *                     .type("COLO")
+ *                     .port(ConnectionASideAccessPointPortArgs.builder()
+ *                         .uuid("<aside_port_uuid>")
+ *                         .build())
+ *                     .linkProtocol(ConnectionASideAccessPointLinkProtocolArgs.builder()
+ *                         .type("QINQ")
+ *                         .vlanSTag("1976")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .zSide(ConnectionZSideArgs.builder()
+ *                 .accessPoint(ConnectionZSideAccessPointArgs.builder()
+ *                     .type("COLO")
+ *                     .port(ConnectionZSideAccessPointPortArgs.builder()
+ *                         .uuid("<zside_port_uuid>")
  *                         .build())
  *                     .location(ConnectionZSideAccessPointLocationArgs.builder()
  *                         .metroCode("SV")
@@ -184,7 +428,144 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
- * ### example 12
+ * ### example 6
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.fabric.Connection;
+ * import com.pulumi.equinix.fabric.ConnectionArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionOrderArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionASideArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointVirtualDeviceArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointInterfaceArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionZSideArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionZSideServiceTokenArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var vd2Token = new Connection("vd2Token", ConnectionArgs.builder()
+ *             .name("ConnectionName")
+ *             .type("EVPL_VC")
+ *             .notifications(ConnectionNotificationArgs.builder()
+ *                 .type("ALL")
+ *                 .emails(                
+ *                     "example{@literal @}equinix.com",
+ *                     "test1{@literal @}equinix.com")
+ *                 .build())
+ *             .bandwidth(50)
+ *             .order(ConnectionOrderArgs.builder()
+ *                 .purchaseOrderNumber("1-323292")
+ *                 .build())
+ *             .aSide(ConnectionASideArgs.builder()
+ *                 .accessPoint(ConnectionASideAccessPointArgs.builder()
+ *                     .type("VD")
+ *                     .virtualDevice(ConnectionASideAccessPointVirtualDeviceArgs.builder()
+ *                         .type("EDGE")
+ *                         .uuid("<device_uuid>")
+ *                         .build())
+ *                     .interface_(ConnectionASideAccessPointInterfaceArgs.builder()
+ *                         .type("NETWORK")
+ *                         .id(7)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .zSide(ConnectionZSideArgs.builder()
+ *                 .serviceToken(ConnectionZSideServiceTokenArgs.builder()
+ *                     .uuid("<service_token_uuid>")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### example 7
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.fabric.Connection;
+ * import com.pulumi.equinix.fabric.ConnectionArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionOrderArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionASideArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionASideServiceTokenArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionZSideArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointProfileArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointLocationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var token2Aws = new Connection("token2Aws", ConnectionArgs.builder()
+ *             .name("ConnectionName")
+ *             .type("EVPL_VC")
+ *             .notifications(ConnectionNotificationArgs.builder()
+ *                 .type("ALL")
+ *                 .emails(                
+ *                     "example{@literal @}equinix.com",
+ *                     "test1{@literal @}equinix.com")
+ *                 .build())
+ *             .bandwidth(50)
+ *             .order(ConnectionOrderArgs.builder()
+ *                 .purchaseOrderNumber("1-323292")
+ *                 .build())
+ *             .aSide(ConnectionASideArgs.builder()
+ *                 .serviceToken(ConnectionASideServiceTokenArgs.builder()
+ *                     .uuid("<service_token_uuid>")
+ *                     .build())
+ *                 .build())
+ *             .zSide(ConnectionZSideArgs.builder()
+ *                 .accessPoint(ConnectionZSideAccessPointArgs.builder()
+ *                     .type("SP")
+ *                     .authenticationKey("<aws_account_id>")
+ *                     .sellerRegion("us-west-1")
+ *                     .profile(ConnectionZSideAccessPointProfileArgs.builder()
+ *                         .type("L2_PROFILE")
+ *                         .uuid("<service_profile_uuid>")
+ *                         .build())
+ *                     .location(ConnectionZSideAccessPointLocationArgs.builder()
+ *                         .metroCode("SV")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### example 8
  * <pre>
  * {@code
  * package generated_program;
@@ -201,7 +582,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointRouterArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionZSideArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointNetworkArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointPortArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointLinkProtocolArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointLocationArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -215,9 +598,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var fcr2Network = new Connection("fcr2Network", ConnectionArgs.builder()
+ *         var fcr2Port = new Connection("fcr2Port", ConnectionArgs.builder()
  *             .name("ConnectionName")
- *             .type("IPWAN_VC")
+ *             .type("IP_VC")
  *             .notifications(ConnectionNotificationArgs.builder()
  *                 .type("ALL")
  *                 .emails(                
@@ -238,9 +621,168 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .zSide(ConnectionZSideArgs.builder()
  *                 .accessPoint(ConnectionZSideAccessPointArgs.builder()
- *                     .type("NETWORK")
- *                     .network(ConnectionZSideAccessPointNetworkArgs.builder()
- *                         .uuid("<network_uuid>")
+ *                     .type("COLO")
+ *                     .port(ConnectionZSideAccessPointPortArgs.builder()
+ *                         .uuid("<port_uuid>")
+ *                         .build())
+ *                     .linkProtocol(ConnectionZSideAccessPointLinkProtocolArgs.builder()
+ *                         .type("DOT1Q")
+ *                         .vlanTag("2711")
+ *                         .build())
+ *                     .location(ConnectionZSideAccessPointLocationArgs.builder()
+ *                         .metroCode("SV")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### example 9
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.fabric.Connection;
+ * import com.pulumi.equinix.fabric.ConnectionArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionOrderArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionASideArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointRouterArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionZSideArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointProfileArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointLocationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var fcr2Azure = new Connection("fcr2Azure", ConnectionArgs.builder()
+ *             .name("ConnectionName")
+ *             .type("IP_VC")
+ *             .notifications(ConnectionNotificationArgs.builder()
+ *                 .type("ALL")
+ *                 .emails(                
+ *                     "example{@literal @}equinix.com",
+ *                     "test1{@literal @}equinix.com")
+ *                 .build())
+ *             .bandwidth(50)
+ *             .order(ConnectionOrderArgs.builder()
+ *                 .purchaseOrderNumber("1-323292")
+ *                 .build())
+ *             .aSide(ConnectionASideArgs.builder()
+ *                 .accessPoint(ConnectionASideAccessPointArgs.builder()
+ *                     .type("CLOUD_ROUTER")
+ *                     .router(ConnectionASideAccessPointRouterArgs.builder()
+ *                         .uuid("<cloud_router_uuid>")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .zSide(ConnectionZSideArgs.builder()
+ *                 .accessPoint(ConnectionZSideAccessPointArgs.builder()
+ *                     .type("SP")
+ *                     .authenticationKey("<Azure_ExpressRouter_Auth_Key>")
+ *                     .peeringType("PRIVATE")
+ *                     .profile(ConnectionZSideAccessPointProfileArgs.builder()
+ *                         .type("L2_PROFILE")
+ *                         .uuid("<Azure_Service_Profile_UUID>")
+ *                         .build())
+ *                     .location(ConnectionZSideAccessPointLocationArgs.builder()
+ *                         .metroCode("SV")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### example 10
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.fabric.Connection;
+ * import com.pulumi.equinix.fabric.ConnectionArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionOrderArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionASideArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointVirtualDeviceArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointInterfaceArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionZSideArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointProfileArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointLocationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var vd2Azure = new Connection("vd2Azure", ConnectionArgs.builder()
+ *             .name("ConnectionName")
+ *             .type("EVPL_VC")
+ *             .notifications(ConnectionNotificationArgs.builder()
+ *                 .type("ALL")
+ *                 .emails(                
+ *                     "example{@literal @}equinix.com",
+ *                     "test1{@literal @}equinix.com")
+ *                 .build())
+ *             .bandwidth(50)
+ *             .order(ConnectionOrderArgs.builder()
+ *                 .purchaseOrderNumber("1-323292")
+ *                 .build())
+ *             .aSide(ConnectionASideArgs.builder()
+ *                 .accessPoint(ConnectionASideAccessPointArgs.builder()
+ *                     .type("VD")
+ *                     .virtualDevice(ConnectionASideAccessPointVirtualDeviceArgs.builder()
+ *                         .type("EDGE")
+ *                         .uuid("<device_uuid>")
+ *                         .build())
+ *                     .interface_(ConnectionASideAccessPointInterfaceArgs.builder()
+ *                         .type("CLOUD")
+ *                         .id(7)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .zSide(ConnectionZSideArgs.builder()
+ *                 .accessPoint(ConnectionZSideAccessPointArgs.builder()
+ *                     .type("SP")
+ *                     .authenticationKey("<Azure_ExpressRouter_Auth_Key>")
+ *                     .peeringType("PRIVATE")
+ *                     .profile(ConnectionZSideAccessPointProfileArgs.builder()
+ *                         .type("L2_PROFILE")
+ *                         .uuid("<Azure_Service_Profile_UUID>")
+ *                         .build())
+ *                     .location(ConnectionZSideAccessPointLocationArgs.builder()
+ *                         .metroCode("SV")
  *                         .build())
  *                     .build())
  *                 .build())
@@ -379,7 +921,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
- * ### example 6
+ * ### example 12
  * <pre>
  * {@code
  * package generated_program;
@@ -393,145 +935,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.equinix.fabric.inputs.ConnectionOrderArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionASideArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointVirtualDeviceArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointInterfaceArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionZSideArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionZSideServiceTokenArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var vd2Token = new Connection("vd2Token", ConnectionArgs.builder()
- *             .name("ConnectionName")
- *             .type("EVPL_VC")
- *             .notifications(ConnectionNotificationArgs.builder()
- *                 .type("ALL")
- *                 .emails(                
- *                     "example{@literal @}equinix.com",
- *                     "test1{@literal @}equinix.com")
- *                 .build())
- *             .bandwidth(50)
- *             .order(ConnectionOrderArgs.builder()
- *                 .purchaseOrderNumber("1-323292")
- *                 .build())
- *             .aSide(ConnectionASideArgs.builder()
- *                 .accessPoint(ConnectionASideAccessPointArgs.builder()
- *                     .type("VD")
- *                     .virtualDevice(ConnectionASideAccessPointVirtualDeviceArgs.builder()
- *                         .type("EDGE")
- *                         .uuid("<device_uuid>")
- *                         .build())
- *                     .interface_(ConnectionASideAccessPointInterfaceArgs.builder()
- *                         .type("NETWORK")
- *                         .id(7)
- *                         .build())
- *                     .build())
- *                 .build())
- *             .zSide(ConnectionZSideArgs.builder()
- *                 .serviceToken(ConnectionZSideServiceTokenArgs.builder()
- *                     .uuid("<service_token_uuid>")
- *                     .build())
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * ### example 3
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.equinix.fabric.Connection;
- * import com.pulumi.equinix.fabric.ConnectionArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionOrderArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionASideArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointPortArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionZSideArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointPortArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointLocationArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var epl = new Connection("epl", ConnectionArgs.builder()
- *             .name("ConnectionName")
- *             .type("EPL_VC")
- *             .notifications(ConnectionNotificationArgs.builder()
- *                 .type("ALL")
- *                 .emails(                
- *                     "example{@literal @}equinix.com",
- *                     "test1{@literal @}equinix.com")
- *                 .build())
- *             .bandwidth(50)
- *             .order(ConnectionOrderArgs.builder()
- *                 .purchaseOrderNumber("1-323292")
- *                 .build())
- *             .aSide(ConnectionASideArgs.builder()
- *                 .accessPoint(ConnectionASideAccessPointArgs.builder()
- *                     .type("COLO")
- *                     .port(ConnectionASideAccessPointPortArgs.builder()
- *                         .uuid("<aside_port_uuid>")
- *                         .build())
- *                     .build())
- *                 .build())
- *             .zSide(ConnectionZSideArgs.builder()
- *                 .accessPoint(ConnectionZSideAccessPointArgs.builder()
- *                     .type("COLO")
- *                     .port(ConnectionZSideAccessPointPortArgs.builder()
- *                         .uuid("<zside_port_uuid>")
- *                         .build())
- *                     .location(ConnectionZSideAccessPointLocationArgs.builder()
- *                         .metroCode("SV")
- *                         .build())
- *                     .build())
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * ### example 14
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.equinix.fabric.Connection;
- * import com.pulumi.equinix.fabric.ConnectionArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionOrderArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionASideArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointPortArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointRouterArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionZSideArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointNetworkArgs;
@@ -548,9 +952,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var epl = new Connection("epl", ConnectionArgs.builder()
+ *         var fcr2Network = new Connection("fcr2Network", ConnectionArgs.builder()
  *             .name("ConnectionName")
- *             .type("EPLAN_VC")
+ *             .type("IPWAN_VC")
  *             .notifications(ConnectionNotificationArgs.builder()
  *                 .type("ALL")
  *                 .emails(                
@@ -563,9 +967,9 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .aSide(ConnectionASideArgs.builder()
  *                 .accessPoint(ConnectionASideAccessPointArgs.builder()
- *                     .type("COLO")
- *                     .port(ConnectionASideAccessPointPortArgs.builder()
- *                         .uuid("<aside_port_uuid>")
+ *                     .type("CLOUD_ROUTER")
+ *                     .router(ConnectionASideAccessPointRouterArgs.builder()
+ *                         .uuid("<cloud_router_uuid>")
  *                         .build())
  *                     .build())
  *                 .build())
@@ -574,81 +978,6 @@ import javax.annotation.Nullable;
  *                     .type("NETWORK")
  *                     .network(ConnectionZSideAccessPointNetworkArgs.builder()
  *                         .uuid("<network_uuid>")
- *                         .build())
- *                     .build())
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * ### example 4
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.equinix.fabric.Connection;
- * import com.pulumi.equinix.fabric.ConnectionArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionOrderArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionASideArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointPortArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointLinkProtocolArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionZSideArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointPortArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointLocationArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var accessEplVc = new Connection("accessEplVc", ConnectionArgs.builder()
- *             .name("ConnectionName")
- *             .type("ACCESS_EPL_VC")
- *             .notifications(ConnectionNotificationArgs.builder()
- *                 .type("ALL")
- *                 .emails(                
- *                     "example{@literal @}equinix.com",
- *                     "test1{@literal @}equinix.com")
- *                 .build())
- *             .bandwidth(50)
- *             .order(ConnectionOrderArgs.builder()
- *                 .purchaseOrderNumber("1-323292")
- *                 .build())
- *             .aSide(ConnectionASideArgs.builder()
- *                 .accessPoint(ConnectionASideAccessPointArgs.builder()
- *                     .type("COLO")
- *                     .port(ConnectionASideAccessPointPortArgs.builder()
- *                         .uuid("<aside_port_uuid>")
- *                         .build())
- *                     .linkProtocol(ConnectionASideAccessPointLinkProtocolArgs.builder()
- *                         .type("QINQ")
- *                         .vlanSTag("1976")
- *                         .build())
- *                     .build())
- *                 .build())
- *             .zSide(ConnectionZSideArgs.builder()
- *                 .accessPoint(ConnectionZSideAccessPointArgs.builder()
- *                     .type("COLO")
- *                     .port(ConnectionZSideAccessPointPortArgs.builder()
- *                         .uuid("<zside_port_uuid>")
- *                         .build())
- *                     .location(ConnectionZSideAccessPointLocationArgs.builder()
- *                         .metroCode("SV")
  *                         .build())
  *                     .build())
  *                 .build())
@@ -730,7 +1059,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
- * ### example 1
+ * ### example 14
  * <pre>
  * {@code
  * package generated_program;
@@ -745,12 +1074,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.equinix.fabric.inputs.ConnectionASideArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointPortArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointLinkProtocolArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionZSideArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointPortArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointLinkProtocolArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointLocationArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointNetworkArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -764,9 +1090,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var port2Port = new Connection("port2Port", ConnectionArgs.builder()
+ *         var epl = new Connection("epl", ConnectionArgs.builder()
  *             .name("ConnectionName")
- *             .type("EVPL_VC")
+ *             .type("EPLAN_VC")
  *             .notifications(ConnectionNotificationArgs.builder()
  *                 .type("ALL")
  *                 .emails(                
@@ -783,194 +1109,16 @@ import javax.annotation.Nullable;
  *                     .port(ConnectionASideAccessPointPortArgs.builder()
  *                         .uuid("<aside_port_uuid>")
  *                         .build())
- *                     .linkProtocol(ConnectionASideAccessPointLinkProtocolArgs.builder()
- *                         .type("QINQ")
- *                         .vlanSTag("1976")
- *                         .build())
  *                     .build())
  *                 .build())
  *             .zSide(ConnectionZSideArgs.builder()
  *                 .accessPoint(ConnectionZSideAccessPointArgs.builder()
- *                     .type("COLO")
- *                     .port(ConnectionZSideAccessPointPortArgs.builder()
- *                         .uuid("<zside_port_uuid>")
- *                         .build())
- *                     .linkProtocol(ConnectionZSideAccessPointLinkProtocolArgs.builder()
- *                         .type("QINQ")
- *                         .vlanSTag("3711")
- *                         .build())
- *                     .location(ConnectionZSideAccessPointLocationArgs.builder()
- *                         .metroCode("SV")
+ *                     .type("NETWORK")
+ *                     .network(ConnectionZSideAccessPointNetworkArgs.builder()
+ *                         .uuid("<network_uuid>")
  *                         .build())
  *                     .build())
  *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * ### example 8
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.equinix.fabric.Connection;
- * import com.pulumi.equinix.fabric.ConnectionArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionOrderArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionASideArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointRouterArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionZSideArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointPortArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointLinkProtocolArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointLocationArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var fcr2Port = new Connection("fcr2Port", ConnectionArgs.builder()
- *             .name("ConnectionName")
- *             .type("IP_VC")
- *             .notifications(ConnectionNotificationArgs.builder()
- *                 .type("ALL")
- *                 .emails(                
- *                     "example{@literal @}equinix.com",
- *                     "test1{@literal @}equinix.com")
- *                 .build())
- *             .bandwidth(50)
- *             .order(ConnectionOrderArgs.builder()
- *                 .purchaseOrderNumber("1-323292")
- *                 .build())
- *             .aSide(ConnectionASideArgs.builder()
- *                 .accessPoint(ConnectionASideAccessPointArgs.builder()
- *                     .type("CLOUD_ROUTER")
- *                     .router(ConnectionASideAccessPointRouterArgs.builder()
- *                         .uuid("<cloud_router_uuid>")
- *                         .build())
- *                     .build())
- *                 .build())
- *             .zSide(ConnectionZSideArgs.builder()
- *                 .accessPoint(ConnectionZSideAccessPointArgs.builder()
- *                     .type("COLO")
- *                     .port(ConnectionZSideAccessPointPortArgs.builder()
- *                         .uuid("<port_uuid>")
- *                         .build())
- *                     .linkProtocol(ConnectionZSideAccessPointLinkProtocolArgs.builder()
- *                         .type("DOT1Q")
- *                         .vlanTag("2711")
- *                         .build())
- *                     .location(ConnectionZSideAccessPointLocationArgs.builder()
- *                         .metroCode("SV")
- *                         .build())
- *                     .build())
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * ### example 2
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.equinix.fabric.Connection;
- * import com.pulumi.equinix.fabric.ConnectionArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionRedundancyArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionOrderArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionASideArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointPortArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointLinkProtocolArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionZSideArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointProfileArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointLocationArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var port2Aws = new Connection("port2Aws", ConnectionArgs.builder()
- *             .name("ConnectionName")
- *             .type("EVPL_VC")
- *             .notifications(ConnectionNotificationArgs.builder()
- *                 .type("ALL")
- *                 .emails(                
- *                     "example{@literal @}equinix.com",
- *                     "test1{@literal @}equinix.com")
- *                 .build())
- *             .bandwidth(50)
- *             .redundancy(ConnectionRedundancyArgs.builder()
- *                 .priority("PRIMARY")
- *                 .build())
- *             .order(ConnectionOrderArgs.builder()
- *                 .purchaseOrderNumber("1-323929")
- *                 .build())
- *             .aSide(ConnectionASideArgs.builder()
- *                 .accessPoint(ConnectionASideAccessPointArgs.builder()
- *                     .type("COLO")
- *                     .port(ConnectionASideAccessPointPortArgs.builder()
- *                         .uuid("<aside_port_uuid>")
- *                         .build())
- *                     .linkProtocol(ConnectionASideAccessPointLinkProtocolArgs.builder()
- *                         .type("QINQ")
- *                         .vlanSTag("2019")
- *                         .vlanCTag("2112")
- *                         .build())
- *                     .build())
- *                 .build())
- *             .zSide(ConnectionZSideArgs.builder()
- *                 .accessPoint(ConnectionZSideAccessPointArgs.builder()
- *                     .type("SP")
- *                     .authenticationKey("<aws_account_id>")
- *                     .sellerRegion("us-west-1")
- *                     .profile(ConnectionZSideAccessPointProfileArgs.builder()
- *                         .type("L2_PROFILE")
- *                         .uuid("<service_profile_uuid>")
- *                         .build())
- *                     .location(ConnectionZSideAccessPointLocationArgs.builder()
- *                         .metroCode("SV")
- *                         .build())
- *                     .build())
- *                 .build())
- *             .additionalInfo(            
- *                 Map.ofEntries(
- *                     Map.entry("key", "accessKey"),
- *                     Map.entry("value", "<aws_access_key>")
- *                 ),
- *                 Map.ofEntries(
- *                     Map.entry("key", "secretKey"),
- *                     Map.entry("value", "<aws_secret_key>")
- *                 ))
  *             .build());
  * 
  *     }
@@ -1039,154 +1187,6 @@ import javax.annotation.Nullable;
  *                     .type("NETWORK")
  *                     .network(ConnectionZSideAccessPointNetworkArgs.builder()
  *                         .uuid("<network_uuid>")
- *                         .build())
- *                     .build())
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * ### example 10
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.equinix.fabric.Connection;
- * import com.pulumi.equinix.fabric.ConnectionArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionOrderArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionASideArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointVirtualDeviceArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointInterfaceArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionZSideArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointProfileArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointLocationArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var vd2Azure = new Connection("vd2Azure", ConnectionArgs.builder()
- *             .name("ConnectionName")
- *             .type("EVPL_VC")
- *             .notifications(ConnectionNotificationArgs.builder()
- *                 .type("ALL")
- *                 .emails(                
- *                     "example{@literal @}equinix.com",
- *                     "test1{@literal @}equinix.com")
- *                 .build())
- *             .bandwidth(50)
- *             .order(ConnectionOrderArgs.builder()
- *                 .purchaseOrderNumber("1-323292")
- *                 .build())
- *             .aSide(ConnectionASideArgs.builder()
- *                 .accessPoint(ConnectionASideAccessPointArgs.builder()
- *                     .type("VD")
- *                     .virtualDevice(ConnectionASideAccessPointVirtualDeviceArgs.builder()
- *                         .type("EDGE")
- *                         .uuid("<device_uuid>")
- *                         .build())
- *                     .interface_(ConnectionASideAccessPointInterfaceArgs.builder()
- *                         .type("CLOUD")
- *                         .id(7)
- *                         .build())
- *                     .build())
- *                 .build())
- *             .zSide(ConnectionZSideArgs.builder()
- *                 .accessPoint(ConnectionZSideAccessPointArgs.builder()
- *                     .type("SP")
- *                     .authenticationKey("<Azure_ExpressRouter_Auth_Key>")
- *                     .peeringType("PRIVATE")
- *                     .profile(ConnectionZSideAccessPointProfileArgs.builder()
- *                         .type("L2_PROFILE")
- *                         .uuid("<Azure_Service_Profile_UUID>")
- *                         .build())
- *                     .location(ConnectionZSideAccessPointLocationArgs.builder()
- *                         .metroCode("SV")
- *                         .build())
- *                     .build())
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * ### example 7
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.equinix.fabric.Connection;
- * import com.pulumi.equinix.fabric.ConnectionArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionOrderArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionASideArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionASideServiceTokenArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionZSideArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointProfileArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointLocationArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var token2Aws = new Connection("token2Aws", ConnectionArgs.builder()
- *             .name("ConnectionName")
- *             .type("EVPL_VC")
- *             .notifications(ConnectionNotificationArgs.builder()
- *                 .type("ALL")
- *                 .emails(                
- *                     "example{@literal @}equinix.com",
- *                     "test1{@literal @}equinix.com")
- *                 .build())
- *             .bandwidth(50)
- *             .order(ConnectionOrderArgs.builder()
- *                 .purchaseOrderNumber("1-323292")
- *                 .build())
- *             .aSide(ConnectionASideArgs.builder()
- *                 .serviceToken(ConnectionASideServiceTokenArgs.builder()
- *                     .uuid("<service_token_uuid>")
- *                     .build())
- *                 .build())
- *             .zSide(ConnectionZSideArgs.builder()
- *                 .accessPoint(ConnectionZSideAccessPointArgs.builder()
- *                     .type("SP")
- *                     .authenticationKey("<aws_account_id>")
- *                     .sellerRegion("us-west-1")
- *                     .profile(ConnectionZSideAccessPointProfileArgs.builder()
- *                         .type("L2_PROFILE")
- *                         .uuid("<service_profile_uuid>")
- *                         .build())
- *                     .location(ConnectionZSideAccessPointLocationArgs.builder()
- *                         .metroCode("SV")
  *                         .build())
  *                     .build())
  *                 .build())

@@ -13,28 +13,6 @@ namespace Pulumi.Equinix.Metal
     /// Manage the membership of existing and new invitees within an Equinix Metal organization and its projects.
     /// 
     /// ## Example Usage
-    /// ### example 2
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Equinix = Pulumi.Equinix;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var owner = new Equinix.Metal.OrganizationMember("owner", new()
-    ///     {
-    ///         Invitee = "admin@example.com",
-    ///         Roles = new[]
-    ///         {
-    ///             "owner",
-    ///         },
-    ///         ProjectsIds = new[] {},
-    ///         OrganizationId = organizationId,
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// ### example 1
     /// ```csharp
     /// using System.Collections.Generic;
@@ -55,6 +33,28 @@ namespace Pulumi.Equinix.Metal
     ///         {
     ///             projectId,
     ///         },
+    ///         OrganizationId = organizationId,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### example 2
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Equinix = Pulumi.Equinix;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var owner = new Equinix.Metal.OrganizationMember("owner", new()
+    ///     {
+    ///         Invitee = "admin@example.com",
+    ///         Roles = new[]
+    ///         {
+    ///             "owner",
+    ///         },
+    ///         ProjectsIds = new[] {},
     ///         OrganizationId = organizationId,
     ///     });
     /// 

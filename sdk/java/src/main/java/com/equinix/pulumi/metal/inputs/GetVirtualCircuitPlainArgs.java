@@ -7,6 +7,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetVirtualCircuitPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -14,14 +16,63 @@ public final class GetVirtualCircuitPlainArgs extends com.pulumi.resources.Invok
     public static final GetVirtualCircuitPlainArgs Empty = new GetVirtualCircuitPlainArgs();
 
     /**
-     * ID of the virtual circuit resource
+     * The Customer IPv6 address which the CSR switch will peer with. Will default to the other usable IP in the IPv6 subnet.
+     * 
+     */
+    @Import(name="customerIpv6")
+    private @Nullable String customerIpv6;
+
+    /**
+     * @return The Customer IPv6 address which the CSR switch will peer with. Will default to the other usable IP in the IPv6 subnet.
+     * 
+     */
+    public Optional<String> customerIpv6() {
+        return Optional.ofNullable(this.customerIpv6);
+    }
+
+    /**
+     * The Metal IPv6 address for the SVI (Switch Virtual Interface) of the VirtualCircuit. Will default to the first usable IP in the IPv6 subnet.
+     * 
+     */
+    @Import(name="metalIpv6")
+    private @Nullable String metalIpv6;
+
+    /**
+     * @return The Metal IPv6 address for the SVI (Switch Virtual Interface) of the VirtualCircuit. Will default to the first usable IP in the IPv6 subnet.
+     * 
+     */
+    public Optional<String> metalIpv6() {
+        return Optional.ofNullable(this.metalIpv6);
+    }
+
+    /**
+     * A subnet from one of the IPv6 blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /126 or /127.
+     * 			 * For a /127 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.
+     * 			 * For a /126 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
+     * 
+     */
+    @Import(name="subnetIpv6")
+    private @Nullable String subnetIpv6;
+
+    /**
+     * @return A subnet from one of the IPv6 blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /126 or /127.
+     * 			 * For a /127 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.
+     * 			 * For a /126 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
+     * 
+     */
+    public Optional<String> subnetIpv6() {
+        return Optional.ofNullable(this.subnetIpv6);
+    }
+
+    /**
+     * ID of the virtual circuit to lookup
      * 
      */
     @Import(name="virtualCircuitId", required=true)
     private String virtualCircuitId;
 
     /**
-     * @return ID of the virtual circuit resource
+     * @return ID of the virtual circuit to lookup
      * 
      */
     public String virtualCircuitId() {
@@ -31,6 +82,9 @@ public final class GetVirtualCircuitPlainArgs extends com.pulumi.resources.Invok
     private GetVirtualCircuitPlainArgs() {}
 
     private GetVirtualCircuitPlainArgs(GetVirtualCircuitPlainArgs $) {
+        this.customerIpv6 = $.customerIpv6;
+        this.metalIpv6 = $.metalIpv6;
+        this.subnetIpv6 = $.subnetIpv6;
         this.virtualCircuitId = $.virtualCircuitId;
     }
 
@@ -53,7 +107,42 @@ public final class GetVirtualCircuitPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param virtualCircuitId ID of the virtual circuit resource
+         * @param customerIpv6 The Customer IPv6 address which the CSR switch will peer with. Will default to the other usable IP in the IPv6 subnet.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customerIpv6(@Nullable String customerIpv6) {
+            $.customerIpv6 = customerIpv6;
+            return this;
+        }
+
+        /**
+         * @param metalIpv6 The Metal IPv6 address for the SVI (Switch Virtual Interface) of the VirtualCircuit. Will default to the first usable IP in the IPv6 subnet.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metalIpv6(@Nullable String metalIpv6) {
+            $.metalIpv6 = metalIpv6;
+            return this;
+        }
+
+        /**
+         * @param subnetIpv6 A subnet from one of the IPv6 blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /126 or /127.
+         * 			 * For a /127 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.
+         * 			 * For a /126 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subnetIpv6(@Nullable String subnetIpv6) {
+            $.subnetIpv6 = subnetIpv6;
+            return this;
+        }
+
+        /**
+         * @param virtualCircuitId ID of the virtual circuit to lookup
          * 
          * @return builder
          * 

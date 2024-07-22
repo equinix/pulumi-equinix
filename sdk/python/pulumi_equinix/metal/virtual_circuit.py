@@ -14,52 +14,67 @@ __all__ = ['VirtualCircuitArgs', 'VirtualCircuit']
 @pulumi.input_type
 class VirtualCircuitArgs:
     def __init__(__self__, *,
-                 connection_id: pulumi.Input[str],
                  port_id: pulumi.Input[str],
                  project_id: pulumi.Input[str],
+                 connection_id: Optional[pulumi.Input[str]] = None,
                  customer_ip: Optional[pulumi.Input[str]] = None,
+                 customer_ipv6: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  md5: Optional[pulumi.Input[str]] = None,
                  metal_ip: Optional[pulumi.Input[str]] = None,
+                 metal_ipv6: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  nni_vlan: Optional[pulumi.Input[int]] = None,
                  peer_asn: Optional[pulumi.Input[int]] = None,
                  speed: Optional[pulumi.Input[str]] = None,
                  subnet: Optional[pulumi.Input[str]] = None,
+                 subnet_ipv6: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 virtual_circuit_id: Optional[pulumi.Input[str]] = None,
                  vlan_id: Optional[pulumi.Input[str]] = None,
                  vrf_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a VirtualCircuit resource.
-        :param pulumi.Input[str] connection_id: UUID of Connection where the VC is scoped to.
-        :param pulumi.Input[str] port_id: UUID of the Connection Port where the VC is scoped to.
-        :param pulumi.Input[str] project_id: UUID of the Project where the VC is scoped to.
+        :param pulumi.Input[str] port_id: UUID of the Connection Port where the VC is scoped to
+        :param pulumi.Input[str] project_id: UUID of the Project where the VC is scoped to
+        :param pulumi.Input[str] connection_id: UUID of Connection where the VC is scoped to.  Only used for dedicated connections
         :param pulumi.Input[str] customer_ip: The Customer IP address which the CSR switch will peer with. Will default to the other usable IP in the subnet.
-        :param pulumi.Input[str] description: Description for the Virtual Circuit resource.
+        :param pulumi.Input[str] customer_ipv6: The Customer IPv6 address which the CSR switch will peer with. Will default to the other usable IP in the IPv6 subnet.
+        :param pulumi.Input[str] description: Description of the Virtual Circuit resource
         :param pulumi.Input[str] md5: The password that can be set for the VRF BGP peer
         :param pulumi.Input[str] metal_ip: The Metal IP address for the SVI (Switch Virtual Interface) of the VirtualCircuit. Will default to the first usable IP in the subnet.
-        :param pulumi.Input[str] name: Name of the Virtual Circuit resource.
-        :param pulumi.Input[int] nni_vlan: Equinix Metal network-to-network VLAN ID.
+        :param pulumi.Input[str] metal_ipv6: The Metal IPv6 address for the SVI (Switch Virtual Interface) of the VirtualCircuit. Will default to the first usable IP in the IPv6 subnet.
+        :param pulumi.Input[str] name: Name of the Virtual Circuit resource
+        :param pulumi.Input[int] nni_vlan: Equinix Metal network-to-network VLAN ID (optional when the connection has mode=tunnel)
         :param pulumi.Input[int] peer_asn: The BGP ASN of the peer. The same ASN may be the used across several VCs, but it cannot be the same as the local_asn of the VRF.
-        :param pulumi.Input[str] speed: Speed of the Virtual Circuit resource.
+        :param pulumi.Input[str] speed: Description of the Virtual Circuit speed. This is for information purposes and is computed when the connection type is shared.
         :param pulumi.Input[str] subnet: A subnet from one of the IP blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.
-               * For a /31 block, it will only have two IP addresses, which will be used for the metal_ip and customer_ip.
-               * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags for the Virtual Circuit resource.
-        :param pulumi.Input[str] vlan_id: UUID of the VLAN to associate.
-        :param pulumi.Input[str] vrf_id: UUID of the VRF to associate.
+               			 * For a /31 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.
+               			 * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
+        :param pulumi.Input[str] subnet_ipv6: A subnet from one of the IPv6 blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /126 or /127.
+               			 * For a /127 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.
+               			 * For a /126 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags attached to the virtual circuit
+        :param pulumi.Input[str] virtual_circuit_id: UUID of an existing VC to configure. Used in the case of shared interconnections where the VC has already been created.
+        :param pulumi.Input[str] vlan_id: UUID of the VLAN to associate
+        :param pulumi.Input[str] vrf_id: UUID of the VRF to associate
         """
-        pulumi.set(__self__, "connection_id", connection_id)
         pulumi.set(__self__, "port_id", port_id)
         pulumi.set(__self__, "project_id", project_id)
+        if connection_id is not None:
+            pulumi.set(__self__, "connection_id", connection_id)
         if customer_ip is not None:
             pulumi.set(__self__, "customer_ip", customer_ip)
+        if customer_ipv6 is not None:
+            pulumi.set(__self__, "customer_ipv6", customer_ipv6)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if md5 is not None:
             pulumi.set(__self__, "md5", md5)
         if metal_ip is not None:
             pulumi.set(__self__, "metal_ip", metal_ip)
+        if metal_ipv6 is not None:
+            pulumi.set(__self__, "metal_ipv6", metal_ipv6)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if nni_vlan is not None:
@@ -70,30 +85,22 @@ class VirtualCircuitArgs:
             pulumi.set(__self__, "speed", speed)
         if subnet is not None:
             pulumi.set(__self__, "subnet", subnet)
+        if subnet_ipv6 is not None:
+            pulumi.set(__self__, "subnet_ipv6", subnet_ipv6)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if virtual_circuit_id is not None:
+            pulumi.set(__self__, "virtual_circuit_id", virtual_circuit_id)
         if vlan_id is not None:
             pulumi.set(__self__, "vlan_id", vlan_id)
         if vrf_id is not None:
             pulumi.set(__self__, "vrf_id", vrf_id)
 
     @property
-    @pulumi.getter(name="connectionId")
-    def connection_id(self) -> pulumi.Input[str]:
-        """
-        UUID of Connection where the VC is scoped to.
-        """
-        return pulumi.get(self, "connection_id")
-
-    @connection_id.setter
-    def connection_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "connection_id", value)
-
-    @property
     @pulumi.getter(name="portId")
     def port_id(self) -> pulumi.Input[str]:
         """
-        UUID of the Connection Port where the VC is scoped to.
+        UUID of the Connection Port where the VC is scoped to
         """
         return pulumi.get(self, "port_id")
 
@@ -105,13 +112,25 @@ class VirtualCircuitArgs:
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Input[str]:
         """
-        UUID of the Project where the VC is scoped to.
+        UUID of the Project where the VC is scoped to
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
     def project_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "project_id", value)
+
+    @property
+    @pulumi.getter(name="connectionId")
+    def connection_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        UUID of Connection where the VC is scoped to.  Only used for dedicated connections
+        """
+        return pulumi.get(self, "connection_id")
+
+    @connection_id.setter
+    def connection_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connection_id", value)
 
     @property
     @pulumi.getter(name="customerIp")
@@ -126,10 +145,22 @@ class VirtualCircuitArgs:
         pulumi.set(self, "customer_ip", value)
 
     @property
+    @pulumi.getter(name="customerIpv6")
+    def customer_ipv6(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Customer IPv6 address which the CSR switch will peer with. Will default to the other usable IP in the IPv6 subnet.
+        """
+        return pulumi.get(self, "customer_ipv6")
+
+    @customer_ipv6.setter
+    def customer_ipv6(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "customer_ipv6", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description for the Virtual Circuit resource.
+        Description of the Virtual Circuit resource
         """
         return pulumi.get(self, "description")
 
@@ -162,10 +193,22 @@ class VirtualCircuitArgs:
         pulumi.set(self, "metal_ip", value)
 
     @property
+    @pulumi.getter(name="metalIpv6")
+    def metal_ipv6(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Metal IPv6 address for the SVI (Switch Virtual Interface) of the VirtualCircuit. Will default to the first usable IP in the IPv6 subnet.
+        """
+        return pulumi.get(self, "metal_ipv6")
+
+    @metal_ipv6.setter
+    def metal_ipv6(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metal_ipv6", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the Virtual Circuit resource.
+        Name of the Virtual Circuit resource
         """
         return pulumi.get(self, "name")
 
@@ -177,7 +220,7 @@ class VirtualCircuitArgs:
     @pulumi.getter(name="nniVlan")
     def nni_vlan(self) -> Optional[pulumi.Input[int]]:
         """
-        Equinix Metal network-to-network VLAN ID.
+        Equinix Metal network-to-network VLAN ID (optional when the connection has mode=tunnel)
         """
         return pulumi.get(self, "nni_vlan")
 
@@ -201,7 +244,7 @@ class VirtualCircuitArgs:
     @pulumi.getter
     def speed(self) -> Optional[pulumi.Input[str]]:
         """
-        Speed of the Virtual Circuit resource.
+        Description of the Virtual Circuit speed. This is for information purposes and is computed when the connection type is shared.
         """
         return pulumi.get(self, "speed")
 
@@ -214,8 +257,8 @@ class VirtualCircuitArgs:
     def subnet(self) -> Optional[pulumi.Input[str]]:
         """
         A subnet from one of the IP blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.
-        * For a /31 block, it will only have two IP addresses, which will be used for the metal_ip and customer_ip.
-        * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
+        			 * For a /31 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.
+        			 * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
         """
         return pulumi.get(self, "subnet")
 
@@ -224,10 +267,24 @@ class VirtualCircuitArgs:
         pulumi.set(self, "subnet", value)
 
     @property
+    @pulumi.getter(name="subnetIpv6")
+    def subnet_ipv6(self) -> Optional[pulumi.Input[str]]:
+        """
+        A subnet from one of the IPv6 blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /126 or /127.
+        			 * For a /127 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.
+        			 * For a /126 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
+        """
+        return pulumi.get(self, "subnet_ipv6")
+
+    @subnet_ipv6.setter
+    def subnet_ipv6(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subnet_ipv6", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags for the Virtual Circuit resource.
+        Tags attached to the virtual circuit
         """
         return pulumi.get(self, "tags")
 
@@ -236,10 +293,22 @@ class VirtualCircuitArgs:
         pulumi.set(self, "tags", value)
 
     @property
+    @pulumi.getter(name="virtualCircuitId")
+    def virtual_circuit_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        UUID of an existing VC to configure. Used in the case of shared interconnections where the VC has already been created.
+        """
+        return pulumi.get(self, "virtual_circuit_id")
+
+    @virtual_circuit_id.setter
+    def virtual_circuit_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "virtual_circuit_id", value)
+
+    @property
     @pulumi.getter(name="vlanId")
     def vlan_id(self) -> Optional[pulumi.Input[str]]:
         """
-        UUID of the VLAN to associate.
+        UUID of the VLAN to associate
         """
         return pulumi.get(self, "vlan_id")
 
@@ -251,7 +320,7 @@ class VirtualCircuitArgs:
     @pulumi.getter(name="vrfId")
     def vrf_id(self) -> Optional[pulumi.Input[str]]:
         """
-        UUID of the VRF to associate.
+        UUID of the VRF to associate
         """
         return pulumi.get(self, "vrf_id")
 
@@ -265,9 +334,11 @@ class _VirtualCircuitState:
     def __init__(__self__, *,
                  connection_id: Optional[pulumi.Input[str]] = None,
                  customer_ip: Optional[pulumi.Input[str]] = None,
+                 customer_ipv6: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  md5: Optional[pulumi.Input[str]] = None,
                  metal_ip: Optional[pulumi.Input[str]] = None,
+                 metal_ipv6: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  nni_vlan: Optional[pulumi.Input[int]] = None,
                  nni_vnid: Optional[pulumi.Input[int]] = None,
@@ -277,43 +348,55 @@ class _VirtualCircuitState:
                  speed: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  subnet: Optional[pulumi.Input[str]] = None,
+                 subnet_ipv6: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 virtual_circuit_id: Optional[pulumi.Input[str]] = None,
                  vlan_id: Optional[pulumi.Input[str]] = None,
                  vnid: Optional[pulumi.Input[int]] = None,
                  vrf_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering VirtualCircuit resources.
-        :param pulumi.Input[str] connection_id: UUID of Connection where the VC is scoped to.
+        :param pulumi.Input[str] connection_id: UUID of Connection where the VC is scoped to.  Only used for dedicated connections
         :param pulumi.Input[str] customer_ip: The Customer IP address which the CSR switch will peer with. Will default to the other usable IP in the subnet.
-        :param pulumi.Input[str] description: Description for the Virtual Circuit resource.
+        :param pulumi.Input[str] customer_ipv6: The Customer IPv6 address which the CSR switch will peer with. Will default to the other usable IP in the IPv6 subnet.
+        :param pulumi.Input[str] description: Description of the Virtual Circuit resource
         :param pulumi.Input[str] md5: The password that can be set for the VRF BGP peer
         :param pulumi.Input[str] metal_ip: The Metal IP address for the SVI (Switch Virtual Interface) of the VirtualCircuit. Will default to the first usable IP in the subnet.
-        :param pulumi.Input[str] name: Name of the Virtual Circuit resource.
-        :param pulumi.Input[int] nni_vlan: Equinix Metal network-to-network VLAN ID.
-        :param pulumi.Input[int] nni_vnid: NNI VLAN parameters, see the [documentation for Equinix Fabric](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/).
+        :param pulumi.Input[str] metal_ipv6: The Metal IPv6 address for the SVI (Switch Virtual Interface) of the VirtualCircuit. Will default to the first usable IP in the IPv6 subnet.
+        :param pulumi.Input[str] name: Name of the Virtual Circuit resource
+        :param pulumi.Input[int] nni_vlan: Equinix Metal network-to-network VLAN ID (optional when the connection has mode=tunnel)
+        :param pulumi.Input[int] nni_vnid: Nni VLAN ID parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
         :param pulumi.Input[int] peer_asn: The BGP ASN of the peer. The same ASN may be the used across several VCs, but it cannot be the same as the local_asn of the VRF.
-        :param pulumi.Input[str] port_id: UUID of the Connection Port where the VC is scoped to.
-        :param pulumi.Input[str] project_id: UUID of the Project where the VC is scoped to.
-        :param pulumi.Input[str] speed: Speed of the Virtual Circuit resource.
-        :param pulumi.Input[str] status: Status of the virtal circuit.
+        :param pulumi.Input[str] port_id: UUID of the Connection Port where the VC is scoped to
+        :param pulumi.Input[str] project_id: UUID of the Project where the VC is scoped to
+        :param pulumi.Input[str] speed: Description of the Virtual Circuit speed. This is for information purposes and is computed when the connection type is shared.
+        :param pulumi.Input[str] status: Status of the virtual circuit resource
         :param pulumi.Input[str] subnet: A subnet from one of the IP blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.
-               * For a /31 block, it will only have two IP addresses, which will be used for the metal_ip and customer_ip.
-               * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags for the Virtual Circuit resource.
-        :param pulumi.Input[str] vlan_id: UUID of the VLAN to associate.
-        :param pulumi.Input[int] vnid: VNID VLAN parameter, see the [documentation for Equinix Fabric](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/).
-        :param pulumi.Input[str] vrf_id: UUID of the VRF to associate.
+               			 * For a /31 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.
+               			 * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
+        :param pulumi.Input[str] subnet_ipv6: A subnet from one of the IPv6 blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /126 or /127.
+               			 * For a /127 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.
+               			 * For a /126 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags attached to the virtual circuit
+        :param pulumi.Input[str] virtual_circuit_id: UUID of an existing VC to configure. Used in the case of shared interconnections where the VC has already been created.
+        :param pulumi.Input[str] vlan_id: UUID of the VLAN to associate
+        :param pulumi.Input[int] vnid: VNID VLAN parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+        :param pulumi.Input[str] vrf_id: UUID of the VRF to associate
         """
         if connection_id is not None:
             pulumi.set(__self__, "connection_id", connection_id)
         if customer_ip is not None:
             pulumi.set(__self__, "customer_ip", customer_ip)
+        if customer_ipv6 is not None:
+            pulumi.set(__self__, "customer_ipv6", customer_ipv6)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if md5 is not None:
             pulumi.set(__self__, "md5", md5)
         if metal_ip is not None:
             pulumi.set(__self__, "metal_ip", metal_ip)
+        if metal_ipv6 is not None:
+            pulumi.set(__self__, "metal_ipv6", metal_ipv6)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if nni_vlan is not None:
@@ -332,8 +415,12 @@ class _VirtualCircuitState:
             pulumi.set(__self__, "status", status)
         if subnet is not None:
             pulumi.set(__self__, "subnet", subnet)
+        if subnet_ipv6 is not None:
+            pulumi.set(__self__, "subnet_ipv6", subnet_ipv6)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if virtual_circuit_id is not None:
+            pulumi.set(__self__, "virtual_circuit_id", virtual_circuit_id)
         if vlan_id is not None:
             pulumi.set(__self__, "vlan_id", vlan_id)
         if vnid is not None:
@@ -345,7 +432,7 @@ class _VirtualCircuitState:
     @pulumi.getter(name="connectionId")
     def connection_id(self) -> Optional[pulumi.Input[str]]:
         """
-        UUID of Connection where the VC is scoped to.
+        UUID of Connection where the VC is scoped to.  Only used for dedicated connections
         """
         return pulumi.get(self, "connection_id")
 
@@ -366,10 +453,22 @@ class _VirtualCircuitState:
         pulumi.set(self, "customer_ip", value)
 
     @property
+    @pulumi.getter(name="customerIpv6")
+    def customer_ipv6(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Customer IPv6 address which the CSR switch will peer with. Will default to the other usable IP in the IPv6 subnet.
+        """
+        return pulumi.get(self, "customer_ipv6")
+
+    @customer_ipv6.setter
+    def customer_ipv6(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "customer_ipv6", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description for the Virtual Circuit resource.
+        Description of the Virtual Circuit resource
         """
         return pulumi.get(self, "description")
 
@@ -402,10 +501,22 @@ class _VirtualCircuitState:
         pulumi.set(self, "metal_ip", value)
 
     @property
+    @pulumi.getter(name="metalIpv6")
+    def metal_ipv6(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Metal IPv6 address for the SVI (Switch Virtual Interface) of the VirtualCircuit. Will default to the first usable IP in the IPv6 subnet.
+        """
+        return pulumi.get(self, "metal_ipv6")
+
+    @metal_ipv6.setter
+    def metal_ipv6(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metal_ipv6", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the Virtual Circuit resource.
+        Name of the Virtual Circuit resource
         """
         return pulumi.get(self, "name")
 
@@ -417,7 +528,7 @@ class _VirtualCircuitState:
     @pulumi.getter(name="nniVlan")
     def nni_vlan(self) -> Optional[pulumi.Input[int]]:
         """
-        Equinix Metal network-to-network VLAN ID.
+        Equinix Metal network-to-network VLAN ID (optional when the connection has mode=tunnel)
         """
         return pulumi.get(self, "nni_vlan")
 
@@ -429,7 +540,7 @@ class _VirtualCircuitState:
     @pulumi.getter(name="nniVnid")
     def nni_vnid(self) -> Optional[pulumi.Input[int]]:
         """
-        NNI VLAN parameters, see the [documentation for Equinix Fabric](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/).
+        Nni VLAN ID parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
         """
         return pulumi.get(self, "nni_vnid")
 
@@ -453,7 +564,7 @@ class _VirtualCircuitState:
     @pulumi.getter(name="portId")
     def port_id(self) -> Optional[pulumi.Input[str]]:
         """
-        UUID of the Connection Port where the VC is scoped to.
+        UUID of the Connection Port where the VC is scoped to
         """
         return pulumi.get(self, "port_id")
 
@@ -465,7 +576,7 @@ class _VirtualCircuitState:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        UUID of the Project where the VC is scoped to.
+        UUID of the Project where the VC is scoped to
         """
         return pulumi.get(self, "project_id")
 
@@ -477,7 +588,7 @@ class _VirtualCircuitState:
     @pulumi.getter
     def speed(self) -> Optional[pulumi.Input[str]]:
         """
-        Speed of the Virtual Circuit resource.
+        Description of the Virtual Circuit speed. This is for information purposes and is computed when the connection type is shared.
         """
         return pulumi.get(self, "speed")
 
@@ -489,7 +600,7 @@ class _VirtualCircuitState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        Status of the virtal circuit.
+        Status of the virtual circuit resource
         """
         return pulumi.get(self, "status")
 
@@ -502,8 +613,8 @@ class _VirtualCircuitState:
     def subnet(self) -> Optional[pulumi.Input[str]]:
         """
         A subnet from one of the IP blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.
-        * For a /31 block, it will only have two IP addresses, which will be used for the metal_ip and customer_ip.
-        * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
+        			 * For a /31 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.
+        			 * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
         """
         return pulumi.get(self, "subnet")
 
@@ -512,10 +623,24 @@ class _VirtualCircuitState:
         pulumi.set(self, "subnet", value)
 
     @property
+    @pulumi.getter(name="subnetIpv6")
+    def subnet_ipv6(self) -> Optional[pulumi.Input[str]]:
+        """
+        A subnet from one of the IPv6 blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /126 or /127.
+        			 * For a /127 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.
+        			 * For a /126 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
+        """
+        return pulumi.get(self, "subnet_ipv6")
+
+    @subnet_ipv6.setter
+    def subnet_ipv6(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subnet_ipv6", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags for the Virtual Circuit resource.
+        Tags attached to the virtual circuit
         """
         return pulumi.get(self, "tags")
 
@@ -524,10 +649,22 @@ class _VirtualCircuitState:
         pulumi.set(self, "tags", value)
 
     @property
+    @pulumi.getter(name="virtualCircuitId")
+    def virtual_circuit_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        UUID of an existing VC to configure. Used in the case of shared interconnections where the VC has already been created.
+        """
+        return pulumi.get(self, "virtual_circuit_id")
+
+    @virtual_circuit_id.setter
+    def virtual_circuit_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "virtual_circuit_id", value)
+
+    @property
     @pulumi.getter(name="vlanId")
     def vlan_id(self) -> Optional[pulumi.Input[str]]:
         """
-        UUID of the VLAN to associate.
+        UUID of the VLAN to associate
         """
         return pulumi.get(self, "vlan_id")
 
@@ -539,7 +676,7 @@ class _VirtualCircuitState:
     @pulumi.getter
     def vnid(self) -> Optional[pulumi.Input[int]]:
         """
-        VNID VLAN parameter, see the [documentation for Equinix Fabric](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/).
+        VNID VLAN parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
         """
         return pulumi.get(self, "vnid")
 
@@ -551,7 +688,7 @@ class _VirtualCircuitState:
     @pulumi.getter(name="vrfId")
     def vrf_id(self) -> Optional[pulumi.Input[str]]:
         """
-        UUID of the VRF to associate.
+        UUID of the VRF to associate
         """
         return pulumi.get(self, "vrf_id")
 
@@ -567,9 +704,11 @@ class VirtualCircuit(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connection_id: Optional[pulumi.Input[str]] = None,
                  customer_ip: Optional[pulumi.Input[str]] = None,
+                 customer_ipv6: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  md5: Optional[pulumi.Input[str]] = None,
                  metal_ip: Optional[pulumi.Input[str]] = None,
+                 metal_ipv6: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  nni_vlan: Optional[pulumi.Input[int]] = None,
                  peer_asn: Optional[pulumi.Input[int]] = None,
@@ -577,7 +716,9 @@ class VirtualCircuit(pulumi.CustomResource):
                  project_id: Optional[pulumi.Input[str]] = None,
                  speed: Optional[pulumi.Input[str]] = None,
                  subnet: Optional[pulumi.Input[str]] = None,
+                 subnet_ipv6: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 virtual_circuit_id: Optional[pulumi.Input[str]] = None,
                  vlan_id: Optional[pulumi.Input[str]] = None,
                  vrf_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -607,31 +748,35 @@ class VirtualCircuit(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported using an existing Virtual Circuit ID:
-
         ```sh
         $ pulumi import equinix:metal/virtualCircuit:VirtualCircuit equinix_metal_virtual_circuit {existing_id}
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] connection_id: UUID of Connection where the VC is scoped to.
+        :param pulumi.Input[str] connection_id: UUID of Connection where the VC is scoped to.  Only used for dedicated connections
         :param pulumi.Input[str] customer_ip: The Customer IP address which the CSR switch will peer with. Will default to the other usable IP in the subnet.
-        :param pulumi.Input[str] description: Description for the Virtual Circuit resource.
+        :param pulumi.Input[str] customer_ipv6: The Customer IPv6 address which the CSR switch will peer with. Will default to the other usable IP in the IPv6 subnet.
+        :param pulumi.Input[str] description: Description of the Virtual Circuit resource
         :param pulumi.Input[str] md5: The password that can be set for the VRF BGP peer
         :param pulumi.Input[str] metal_ip: The Metal IP address for the SVI (Switch Virtual Interface) of the VirtualCircuit. Will default to the first usable IP in the subnet.
-        :param pulumi.Input[str] name: Name of the Virtual Circuit resource.
-        :param pulumi.Input[int] nni_vlan: Equinix Metal network-to-network VLAN ID.
+        :param pulumi.Input[str] metal_ipv6: The Metal IPv6 address for the SVI (Switch Virtual Interface) of the VirtualCircuit. Will default to the first usable IP in the IPv6 subnet.
+        :param pulumi.Input[str] name: Name of the Virtual Circuit resource
+        :param pulumi.Input[int] nni_vlan: Equinix Metal network-to-network VLAN ID (optional when the connection has mode=tunnel)
         :param pulumi.Input[int] peer_asn: The BGP ASN of the peer. The same ASN may be the used across several VCs, but it cannot be the same as the local_asn of the VRF.
-        :param pulumi.Input[str] port_id: UUID of the Connection Port where the VC is scoped to.
-        :param pulumi.Input[str] project_id: UUID of the Project where the VC is scoped to.
-        :param pulumi.Input[str] speed: Speed of the Virtual Circuit resource.
+        :param pulumi.Input[str] port_id: UUID of the Connection Port where the VC is scoped to
+        :param pulumi.Input[str] project_id: UUID of the Project where the VC is scoped to
+        :param pulumi.Input[str] speed: Description of the Virtual Circuit speed. This is for information purposes and is computed when the connection type is shared.
         :param pulumi.Input[str] subnet: A subnet from one of the IP blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.
-               * For a /31 block, it will only have two IP addresses, which will be used for the metal_ip and customer_ip.
-               * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags for the Virtual Circuit resource.
-        :param pulumi.Input[str] vlan_id: UUID of the VLAN to associate.
-        :param pulumi.Input[str] vrf_id: UUID of the VRF to associate.
+               			 * For a /31 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.
+               			 * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
+        :param pulumi.Input[str] subnet_ipv6: A subnet from one of the IPv6 blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /126 or /127.
+               			 * For a /127 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.
+               			 * For a /126 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags attached to the virtual circuit
+        :param pulumi.Input[str] virtual_circuit_id: UUID of an existing VC to configure. Used in the case of shared interconnections where the VC has already been created.
+        :param pulumi.Input[str] vlan_id: UUID of the VLAN to associate
+        :param pulumi.Input[str] vrf_id: UUID of the VRF to associate
         """
         ...
     @overload
@@ -665,8 +810,6 @@ class VirtualCircuit(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported using an existing Virtual Circuit ID:
-
         ```sh
         $ pulumi import equinix:metal/virtualCircuit:VirtualCircuit equinix_metal_virtual_circuit {existing_id}
         ```
@@ -688,9 +831,11 @@ class VirtualCircuit(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connection_id: Optional[pulumi.Input[str]] = None,
                  customer_ip: Optional[pulumi.Input[str]] = None,
+                 customer_ipv6: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  md5: Optional[pulumi.Input[str]] = None,
                  metal_ip: Optional[pulumi.Input[str]] = None,
+                 metal_ipv6: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  nni_vlan: Optional[pulumi.Input[int]] = None,
                  peer_asn: Optional[pulumi.Input[int]] = None,
@@ -698,7 +843,9 @@ class VirtualCircuit(pulumi.CustomResource):
                  project_id: Optional[pulumi.Input[str]] = None,
                  speed: Optional[pulumi.Input[str]] = None,
                  subnet: Optional[pulumi.Input[str]] = None,
+                 subnet_ipv6: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 virtual_circuit_id: Optional[pulumi.Input[str]] = None,
                  vlan_id: Optional[pulumi.Input[str]] = None,
                  vrf_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -710,13 +857,13 @@ class VirtualCircuit(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = VirtualCircuitArgs.__new__(VirtualCircuitArgs)
 
-            if connection_id is None and not opts.urn:
-                raise TypeError("Missing required property 'connection_id'")
             __props__.__dict__["connection_id"] = connection_id
             __props__.__dict__["customer_ip"] = customer_ip
+            __props__.__dict__["customer_ipv6"] = customer_ipv6
             __props__.__dict__["description"] = description
             __props__.__dict__["md5"] = None if md5 is None else pulumi.Output.secret(md5)
             __props__.__dict__["metal_ip"] = metal_ip
+            __props__.__dict__["metal_ipv6"] = metal_ipv6
             __props__.__dict__["name"] = name
             __props__.__dict__["nni_vlan"] = nni_vlan
             __props__.__dict__["peer_asn"] = peer_asn
@@ -728,7 +875,9 @@ class VirtualCircuit(pulumi.CustomResource):
             __props__.__dict__["project_id"] = project_id
             __props__.__dict__["speed"] = speed
             __props__.__dict__["subnet"] = subnet
+            __props__.__dict__["subnet_ipv6"] = subnet_ipv6
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["virtual_circuit_id"] = virtual_circuit_id
             __props__.__dict__["vlan_id"] = vlan_id
             __props__.__dict__["vrf_id"] = vrf_id
             __props__.__dict__["nni_vnid"] = None
@@ -748,9 +897,11 @@ class VirtualCircuit(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             connection_id: Optional[pulumi.Input[str]] = None,
             customer_ip: Optional[pulumi.Input[str]] = None,
+            customer_ipv6: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             md5: Optional[pulumi.Input[str]] = None,
             metal_ip: Optional[pulumi.Input[str]] = None,
+            metal_ipv6: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             nni_vlan: Optional[pulumi.Input[int]] = None,
             nni_vnid: Optional[pulumi.Input[int]] = None,
@@ -760,7 +911,9 @@ class VirtualCircuit(pulumi.CustomResource):
             speed: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             subnet: Optional[pulumi.Input[str]] = None,
+            subnet_ipv6: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            virtual_circuit_id: Optional[pulumi.Input[str]] = None,
             vlan_id: Optional[pulumi.Input[str]] = None,
             vnid: Optional[pulumi.Input[int]] = None,
             vrf_id: Optional[pulumi.Input[str]] = None) -> 'VirtualCircuit':
@@ -771,26 +924,32 @@ class VirtualCircuit(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] connection_id: UUID of Connection where the VC is scoped to.
+        :param pulumi.Input[str] connection_id: UUID of Connection where the VC is scoped to.  Only used for dedicated connections
         :param pulumi.Input[str] customer_ip: The Customer IP address which the CSR switch will peer with. Will default to the other usable IP in the subnet.
-        :param pulumi.Input[str] description: Description for the Virtual Circuit resource.
+        :param pulumi.Input[str] customer_ipv6: The Customer IPv6 address which the CSR switch will peer with. Will default to the other usable IP in the IPv6 subnet.
+        :param pulumi.Input[str] description: Description of the Virtual Circuit resource
         :param pulumi.Input[str] md5: The password that can be set for the VRF BGP peer
         :param pulumi.Input[str] metal_ip: The Metal IP address for the SVI (Switch Virtual Interface) of the VirtualCircuit. Will default to the first usable IP in the subnet.
-        :param pulumi.Input[str] name: Name of the Virtual Circuit resource.
-        :param pulumi.Input[int] nni_vlan: Equinix Metal network-to-network VLAN ID.
-        :param pulumi.Input[int] nni_vnid: NNI VLAN parameters, see the [documentation for Equinix Fabric](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/).
+        :param pulumi.Input[str] metal_ipv6: The Metal IPv6 address for the SVI (Switch Virtual Interface) of the VirtualCircuit. Will default to the first usable IP in the IPv6 subnet.
+        :param pulumi.Input[str] name: Name of the Virtual Circuit resource
+        :param pulumi.Input[int] nni_vlan: Equinix Metal network-to-network VLAN ID (optional when the connection has mode=tunnel)
+        :param pulumi.Input[int] nni_vnid: Nni VLAN ID parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
         :param pulumi.Input[int] peer_asn: The BGP ASN of the peer. The same ASN may be the used across several VCs, but it cannot be the same as the local_asn of the VRF.
-        :param pulumi.Input[str] port_id: UUID of the Connection Port where the VC is scoped to.
-        :param pulumi.Input[str] project_id: UUID of the Project where the VC is scoped to.
-        :param pulumi.Input[str] speed: Speed of the Virtual Circuit resource.
-        :param pulumi.Input[str] status: Status of the virtal circuit.
+        :param pulumi.Input[str] port_id: UUID of the Connection Port where the VC is scoped to
+        :param pulumi.Input[str] project_id: UUID of the Project where the VC is scoped to
+        :param pulumi.Input[str] speed: Description of the Virtual Circuit speed. This is for information purposes and is computed when the connection type is shared.
+        :param pulumi.Input[str] status: Status of the virtual circuit resource
         :param pulumi.Input[str] subnet: A subnet from one of the IP blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.
-               * For a /31 block, it will only have two IP addresses, which will be used for the metal_ip and customer_ip.
-               * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags for the Virtual Circuit resource.
-        :param pulumi.Input[str] vlan_id: UUID of the VLAN to associate.
-        :param pulumi.Input[int] vnid: VNID VLAN parameter, see the [documentation for Equinix Fabric](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/).
-        :param pulumi.Input[str] vrf_id: UUID of the VRF to associate.
+               			 * For a /31 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.
+               			 * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
+        :param pulumi.Input[str] subnet_ipv6: A subnet from one of the IPv6 blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /126 or /127.
+               			 * For a /127 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.
+               			 * For a /126 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags attached to the virtual circuit
+        :param pulumi.Input[str] virtual_circuit_id: UUID of an existing VC to configure. Used in the case of shared interconnections where the VC has already been created.
+        :param pulumi.Input[str] vlan_id: UUID of the VLAN to associate
+        :param pulumi.Input[int] vnid: VNID VLAN parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+        :param pulumi.Input[str] vrf_id: UUID of the VRF to associate
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -798,9 +957,11 @@ class VirtualCircuit(pulumi.CustomResource):
 
         __props__.__dict__["connection_id"] = connection_id
         __props__.__dict__["customer_ip"] = customer_ip
+        __props__.__dict__["customer_ipv6"] = customer_ipv6
         __props__.__dict__["description"] = description
         __props__.__dict__["md5"] = md5
         __props__.__dict__["metal_ip"] = metal_ip
+        __props__.__dict__["metal_ipv6"] = metal_ipv6
         __props__.__dict__["name"] = name
         __props__.__dict__["nni_vlan"] = nni_vlan
         __props__.__dict__["nni_vnid"] = nni_vnid
@@ -810,7 +971,9 @@ class VirtualCircuit(pulumi.CustomResource):
         __props__.__dict__["speed"] = speed
         __props__.__dict__["status"] = status
         __props__.__dict__["subnet"] = subnet
+        __props__.__dict__["subnet_ipv6"] = subnet_ipv6
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["virtual_circuit_id"] = virtual_circuit_id
         __props__.__dict__["vlan_id"] = vlan_id
         __props__.__dict__["vnid"] = vnid
         __props__.__dict__["vrf_id"] = vrf_id
@@ -820,23 +983,31 @@ class VirtualCircuit(pulumi.CustomResource):
     @pulumi.getter(name="connectionId")
     def connection_id(self) -> pulumi.Output[str]:
         """
-        UUID of Connection where the VC is scoped to.
+        UUID of Connection where the VC is scoped to.  Only used for dedicated connections
         """
         return pulumi.get(self, "connection_id")
 
     @property
     @pulumi.getter(name="customerIp")
-    def customer_ip(self) -> pulumi.Output[Optional[str]]:
+    def customer_ip(self) -> pulumi.Output[str]:
         """
         The Customer IP address which the CSR switch will peer with. Will default to the other usable IP in the subnet.
         """
         return pulumi.get(self, "customer_ip")
 
     @property
+    @pulumi.getter(name="customerIpv6")
+    def customer_ipv6(self) -> pulumi.Output[str]:
+        """
+        The Customer IPv6 address which the CSR switch will peer with. Will default to the other usable IP in the IPv6 subnet.
+        """
+        return pulumi.get(self, "customer_ipv6")
+
+    @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        Description for the Virtual Circuit resource.
+        Description of the Virtual Circuit resource
         """
         return pulumi.get(self, "description")
 
@@ -850,25 +1021,33 @@ class VirtualCircuit(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="metalIp")
-    def metal_ip(self) -> pulumi.Output[Optional[str]]:
+    def metal_ip(self) -> pulumi.Output[str]:
         """
         The Metal IP address for the SVI (Switch Virtual Interface) of the VirtualCircuit. Will default to the first usable IP in the subnet.
         """
         return pulumi.get(self, "metal_ip")
 
     @property
+    @pulumi.getter(name="metalIpv6")
+    def metal_ipv6(self) -> pulumi.Output[str]:
+        """
+        The Metal IPv6 address for the SVI (Switch Virtual Interface) of the VirtualCircuit. Will default to the first usable IP in the IPv6 subnet.
+        """
+        return pulumi.get(self, "metal_ipv6")
+
+    @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the Virtual Circuit resource.
+        Name of the Virtual Circuit resource
         """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="nniVlan")
-    def nni_vlan(self) -> pulumi.Output[Optional[int]]:
+    def nni_vlan(self) -> pulumi.Output[int]:
         """
-        Equinix Metal network-to-network VLAN ID.
+        Equinix Metal network-to-network VLAN ID (optional when the connection has mode=tunnel)
         """
         return pulumi.get(self, "nni_vlan")
 
@@ -876,7 +1055,7 @@ class VirtualCircuit(pulumi.CustomResource):
     @pulumi.getter(name="nniVnid")
     def nni_vnid(self) -> pulumi.Output[int]:
         """
-        NNI VLAN parameters, see the [documentation for Equinix Fabric](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/).
+        Nni VLAN ID parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
         """
         return pulumi.get(self, "nni_vnid")
 
@@ -892,7 +1071,7 @@ class VirtualCircuit(pulumi.CustomResource):
     @pulumi.getter(name="portId")
     def port_id(self) -> pulumi.Output[str]:
         """
-        UUID of the Connection Port where the VC is scoped to.
+        UUID of the Connection Port where the VC is scoped to
         """
         return pulumi.get(self, "port_id")
 
@@ -900,7 +1079,7 @@ class VirtualCircuit(pulumi.CustomResource):
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[str]:
         """
-        UUID of the Project where the VC is scoped to.
+        UUID of the Project where the VC is scoped to
         """
         return pulumi.get(self, "project_id")
 
@@ -908,7 +1087,7 @@ class VirtualCircuit(pulumi.CustomResource):
     @pulumi.getter
     def speed(self) -> pulumi.Output[str]:
         """
-        Speed of the Virtual Circuit resource.
+        Description of the Virtual Circuit speed. This is for information purposes and is computed when the connection type is shared.
         """
         return pulumi.get(self, "speed")
 
@@ -916,7 +1095,7 @@ class VirtualCircuit(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        Status of the virtal circuit.
+        Status of the virtual circuit resource
         """
         return pulumi.get(self, "status")
 
@@ -925,24 +1104,42 @@ class VirtualCircuit(pulumi.CustomResource):
     def subnet(self) -> pulumi.Output[Optional[str]]:
         """
         A subnet from one of the IP blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.
-        * For a /31 block, it will only have two IP addresses, which will be used for the metal_ip and customer_ip.
-        * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
+        			 * For a /31 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.
+        			 * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
         """
         return pulumi.get(self, "subnet")
+
+    @property
+    @pulumi.getter(name="subnetIpv6")
+    def subnet_ipv6(self) -> pulumi.Output[Optional[str]]:
+        """
+        A subnet from one of the IPv6 blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /126 or /127.
+        			 * For a /127 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.
+        			 * For a /126 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
+        """
+        return pulumi.get(self, "subnet_ipv6")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Tags for the Virtual Circuit resource.
+        Tags attached to the virtual circuit
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="virtualCircuitId")
+    def virtual_circuit_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        UUID of an existing VC to configure. Used in the case of shared interconnections where the VC has already been created.
+        """
+        return pulumi.get(self, "virtual_circuit_id")
 
     @property
     @pulumi.getter(name="vlanId")
     def vlan_id(self) -> pulumi.Output[Optional[str]]:
         """
-        UUID of the VLAN to associate.
+        UUID of the VLAN to associate
         """
         return pulumi.get(self, "vlan_id")
 
@@ -950,7 +1147,7 @@ class VirtualCircuit(pulumi.CustomResource):
     @pulumi.getter
     def vnid(self) -> pulumi.Output[int]:
         """
-        VNID VLAN parameter, see the [documentation for Equinix Fabric](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/).
+        VNID VLAN parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
         """
         return pulumi.get(self, "vnid")
 
@@ -958,7 +1155,7 @@ class VirtualCircuit(pulumi.CustomResource):
     @pulumi.getter(name="vrfId")
     def vrf_id(self) -> pulumi.Output[Optional[str]]:
         """
-        UUID of the VRF to associate.
+        UUID of the VRF to associate
         """
         return pulumi.get(self, "vrf_id")
 

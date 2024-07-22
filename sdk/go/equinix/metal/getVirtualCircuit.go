@@ -26,17 +26,27 @@ func LookupVirtualCircuit(ctx *pulumi.Context, args *LookupVirtualCircuitArgs, o
 
 // A collection of arguments for invoking getVirtualCircuit.
 type LookupVirtualCircuitArgs struct {
-	// ID of the virtual circuit resource
+	// The Customer IPv6 address which the CSR switch will peer with. Will default to the other usable IP in the IPv6 subnet.
+	CustomerIpv6 *string `pulumi:"customerIpv6"`
+	// The Metal IPv6 address for the SVI (Switch Virtual Interface) of the VirtualCircuit. Will default to the first usable IP in the IPv6 subnet.
+	MetalIpv6 *string `pulumi:"metalIpv6"`
+	// A subnet from one of the IPv6 blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /126 or /127.
+	// 			 * For a /127 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.
+	// 			 * For a /126 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
+	SubnetIpv6 *string `pulumi:"subnetIpv6"`
+	// ID of the virtual circuit to lookup
 	VirtualCircuitId string `pulumi:"virtualCircuitId"`
 }
 
 // A collection of values returned by getVirtualCircuit.
 type LookupVirtualCircuitResult struct {
-	// UUID of Connection where the VC is scoped to.
+	// UUID of Connection where the VC is scoped to
 	ConnectionId string `pulumi:"connectionId"`
 	// The Customer IP address which the CSR switch will peer with. Will default to the other usable IP in the subnet.
 	CustomerIp string `pulumi:"customerIp"`
-	// Description for the Virtual Circuit resource.
+	// The Customer IPv6 address which the CSR switch will peer with. Will default to the other usable IP in the IPv6 subnet.
+	CustomerIpv6 *string `pulumi:"customerIpv6"`
+	// Description of the virtual circuit
 	Description string `pulumi:"description"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -44,31 +54,41 @@ type LookupVirtualCircuitResult struct {
 	Md5 string `pulumi:"md5"`
 	// The Metal IP address for the SVI (Switch Virtual Interface) of the VirtualCircuit. Will default to the first usable IP in the subnet.
 	MetalIp string `pulumi:"metalIp"`
-	// Name of the virtual circuit resource.
-	Name    string `pulumi:"name"`
-	NniVlan int    `pulumi:"nniVlan"`
-	NniVnid int    `pulumi:"nniVnid"`
+	// The Metal IPv6 address for the SVI (Switch Virtual Interface) of the VirtualCircuit. Will default to the first usable IP in the IPv6 subnet.
+	MetalIpv6 *string `pulumi:"metalIpv6"`
+	// Name of the virtual circuit
+	Name string `pulumi:"name"`
+	// Nni VLAN parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+	NniVlan int `pulumi:"nniVlan"`
+	// Nni VLAN ID parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+	NniVnid int `pulumi:"nniVnid"`
 	// The BGP ASN of the peer. The same ASN may be the used across several VCs, but it cannot be the same as the localAsn of the VRF.
 	PeerAsn int `pulumi:"peerAsn"`
-	// UUID of the Connection Port where the VC is scoped to.
+	// UUID of the Connection Port where the VC is scoped to
 	PortId string `pulumi:"portId"`
-	// ID of project to which the VC belongs.
+	// ID of the projct to which the virtual circuit belongs
 	ProjectId string `pulumi:"projectId"`
-	// Speed of the Virtual Circuit resource.
+	// Description of the Virtual Circuit speed. This is for information purposes and is computed when the connection type is shared.
 	Speed string `pulumi:"speed"`
-	// Status of the virtal circuit.
+	// Status of the virtual circuit
 	Status string `pulumi:"status"`
 	// A subnet from one of the IP blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.
-	// * For a /31 block, it will only have two IP addresses, which will be used for the metalIp and customer_ip.
-	// * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
+	// 			 * For a /31 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.
+	// 			 * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
 	Subnet string `pulumi:"subnet"`
-	// Tags for the Virtual Circuit resource.
-	Tags             []string `pulumi:"tags"`
-	VirtualCircuitId string   `pulumi:"virtualCircuitId"`
-	VlanId           string   `pulumi:"vlanId"`
-	// , `nniVlan`, `nniNvid` - VLAN parameters, see the [documentation for Equinix Fabric](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/).
+	// A subnet from one of the IPv6 blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /126 or /127.
+	// 			 * For a /127 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.
+	// 			 * For a /126 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
+	SubnetIpv6 *string `pulumi:"subnetIpv6"`
+	// Tags attached to the virtual circuit
+	Tags []string `pulumi:"tags"`
+	// ID of the virtual circuit to lookup
+	VirtualCircuitId string `pulumi:"virtualCircuitId"`
+	// UUID of the associated VLAN
+	VlanId string `pulumi:"vlanId"`
+	// VNID VLAN parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
 	Vnid int `pulumi:"vnid"`
-	// UUID of the VLAN to associate.
+	// UUID of the associated VRF
 	VrfId string `pulumi:"vrfId"`
 }
 
@@ -87,7 +107,15 @@ func LookupVirtualCircuitOutput(ctx *pulumi.Context, args LookupVirtualCircuitOu
 
 // A collection of arguments for invoking getVirtualCircuit.
 type LookupVirtualCircuitOutputArgs struct {
-	// ID of the virtual circuit resource
+	// The Customer IPv6 address which the CSR switch will peer with. Will default to the other usable IP in the IPv6 subnet.
+	CustomerIpv6 pulumi.StringPtrInput `pulumi:"customerIpv6"`
+	// The Metal IPv6 address for the SVI (Switch Virtual Interface) of the VirtualCircuit. Will default to the first usable IP in the IPv6 subnet.
+	MetalIpv6 pulumi.StringPtrInput `pulumi:"metalIpv6"`
+	// A subnet from one of the IPv6 blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /126 or /127.
+	// 			 * For a /127 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.
+	// 			 * For a /126 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
+	SubnetIpv6 pulumi.StringPtrInput `pulumi:"subnetIpv6"`
+	// ID of the virtual circuit to lookup
 	VirtualCircuitId pulumi.StringInput `pulumi:"virtualCircuitId"`
 }
 
@@ -110,7 +138,7 @@ func (o LookupVirtualCircuitResultOutput) ToLookupVirtualCircuitResultOutputWith
 	return o
 }
 
-// UUID of Connection where the VC is scoped to.
+// UUID of Connection where the VC is scoped to
 func (o LookupVirtualCircuitResultOutput) ConnectionId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualCircuitResult) string { return v.ConnectionId }).(pulumi.StringOutput)
 }
@@ -120,7 +148,12 @@ func (o LookupVirtualCircuitResultOutput) CustomerIp() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualCircuitResult) string { return v.CustomerIp }).(pulumi.StringOutput)
 }
 
-// Description for the Virtual Circuit resource.
+// The Customer IPv6 address which the CSR switch will peer with. Will default to the other usable IP in the IPv6 subnet.
+func (o LookupVirtualCircuitResultOutput) CustomerIpv6() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupVirtualCircuitResult) *string { return v.CustomerIpv6 }).(pulumi.StringPtrOutput)
+}
+
+// Description of the virtual circuit
 func (o LookupVirtualCircuitResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualCircuitResult) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -140,15 +173,22 @@ func (o LookupVirtualCircuitResultOutput) MetalIp() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualCircuitResult) string { return v.MetalIp }).(pulumi.StringOutput)
 }
 
-// Name of the virtual circuit resource.
+// The Metal IPv6 address for the SVI (Switch Virtual Interface) of the VirtualCircuit. Will default to the first usable IP in the IPv6 subnet.
+func (o LookupVirtualCircuitResultOutput) MetalIpv6() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupVirtualCircuitResult) *string { return v.MetalIpv6 }).(pulumi.StringPtrOutput)
+}
+
+// Name of the virtual circuit
 func (o LookupVirtualCircuitResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualCircuitResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Nni VLAN parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
 func (o LookupVirtualCircuitResultOutput) NniVlan() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupVirtualCircuitResult) int { return v.NniVlan }).(pulumi.IntOutput)
 }
 
+// Nni VLAN ID parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
 func (o LookupVirtualCircuitResultOutput) NniVnid() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupVirtualCircuitResult) int { return v.NniVnid }).(pulumi.IntOutput)
 }
@@ -158,52 +198,61 @@ func (o LookupVirtualCircuitResultOutput) PeerAsn() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupVirtualCircuitResult) int { return v.PeerAsn }).(pulumi.IntOutput)
 }
 
-// UUID of the Connection Port where the VC is scoped to.
+// UUID of the Connection Port where the VC is scoped to
 func (o LookupVirtualCircuitResultOutput) PortId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualCircuitResult) string { return v.PortId }).(pulumi.StringOutput)
 }
 
-// ID of project to which the VC belongs.
+// ID of the projct to which the virtual circuit belongs
 func (o LookupVirtualCircuitResultOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualCircuitResult) string { return v.ProjectId }).(pulumi.StringOutput)
 }
 
-// Speed of the Virtual Circuit resource.
+// Description of the Virtual Circuit speed. This is for information purposes and is computed when the connection type is shared.
 func (o LookupVirtualCircuitResultOutput) Speed() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualCircuitResult) string { return v.Speed }).(pulumi.StringOutput)
 }
 
-// Status of the virtal circuit.
+// Status of the virtual circuit
 func (o LookupVirtualCircuitResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualCircuitResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
 // A subnet from one of the IP blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.
-// * For a /31 block, it will only have two IP addresses, which will be used for the metalIp and customer_ip.
-// * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
+//   - For a /31 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.
+//   - For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
 func (o LookupVirtualCircuitResultOutput) Subnet() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualCircuitResult) string { return v.Subnet }).(pulumi.StringOutput)
 }
 
-// Tags for the Virtual Circuit resource.
+// A subnet from one of the IPv6 blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /126 or /127.
+//   - For a /127 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.
+//   - For a /126 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
+func (o LookupVirtualCircuitResultOutput) SubnetIpv6() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupVirtualCircuitResult) *string { return v.SubnetIpv6 }).(pulumi.StringPtrOutput)
+}
+
+// Tags attached to the virtual circuit
 func (o LookupVirtualCircuitResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupVirtualCircuitResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
+// ID of the virtual circuit to lookup
 func (o LookupVirtualCircuitResultOutput) VirtualCircuitId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualCircuitResult) string { return v.VirtualCircuitId }).(pulumi.StringOutput)
 }
 
+// UUID of the associated VLAN
 func (o LookupVirtualCircuitResultOutput) VlanId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualCircuitResult) string { return v.VlanId }).(pulumi.StringOutput)
 }
 
-// , `nniVlan`, `nniNvid` - VLAN parameters, see the [documentation for Equinix Fabric](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/).
+// VNID VLAN parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
 func (o LookupVirtualCircuitResultOutput) Vnid() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupVirtualCircuitResult) int { return v.Vnid }).(pulumi.IntOutput)
 }
 
-// UUID of the VLAN to associate.
+// UUID of the associated VRF
 func (o LookupVirtualCircuitResultOutput) VrfId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualCircuitResult) string { return v.VrfId }).(pulumi.StringOutput)
 }

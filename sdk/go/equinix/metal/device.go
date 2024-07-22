@@ -47,6 +47,73 @@ import (
 //	}
 //
 // ```
+// ### example 2
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := metal.NewDevice(ctx, "pxe1", &metal.DeviceArgs{
+//				Hostname:        pulumi.String("tf.coreos2-pxe"),
+//				Plan:            pulumi.String(metal.PlanC3SmallX86),
+//				Metro:           pulumi.String("sv"),
+//				OperatingSystem: pulumi.String(metal.OperatingSystemCustomIPXE),
+//				BillingCycle:    pulumi.String(metal.BillingCycleHourly),
+//				ProjectId:       pulumi.Any(projectId),
+//				IpxeScriptUrl:   pulumi.String("https://rawgit.com/cloudnativelabs/pxe/master/packet/coreos-stable-metal.ipxe"),
+//				AlwaysPxe:       pulumi.Bool(false),
+//				UserData:        pulumi.Any(example.Rendered),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### example 3
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := metal.NewDevice(ctx, "web1", &metal.DeviceArgs{
+//				Hostname:        pulumi.String("tf.coreos2"),
+//				Plan:            pulumi.String(metal.PlanC3SmallX86),
+//				Metro:           pulumi.String("ny"),
+//				OperatingSystem: pulumi.String(metal.OperatingSystem_Ubuntu20_04),
+//				BillingCycle:    pulumi.String(metal.BillingCycleHourly),
+//				ProjectId:       pulumi.Any(projectId),
+//				IpAddresses: metal.DeviceIpAddressArray{
+//					&metal.DeviceIpAddressArgs{
+//						Type: pulumi.String("private_ipv4"),
+//						Cidr: pulumi.Int(30),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### example 4
 // ```go
 // package main
@@ -133,38 +200,6 @@ import (
 //	}
 //
 // ```
-// ### example 2
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := metal.NewDevice(ctx, "pxe1", &metal.DeviceArgs{
-//				Hostname:        pulumi.String("tf.coreos2-pxe"),
-//				Plan:            pulumi.String(metal.PlanC3SmallX86),
-//				Metro:           pulumi.String("sv"),
-//				OperatingSystem: pulumi.String(metal.OperatingSystemCustomIPXE),
-//				BillingCycle:    pulumi.String(metal.BillingCycleHourly),
-//				ProjectId:       pulumi.Any(projectId),
-//				IpxeScriptUrl:   pulumi.String("https://rawgit.com/cloudnativelabs/pxe/master/packet/coreos-stable-metal.ipxe"),
-//				AlwaysPxe:       pulumi.Bool(false),
-//				UserData:        pulumi.Any(example.Rendered),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 // ### example 5
 // ```go
 // package main
@@ -193,41 +228,6 @@ import (
 //					AllowChanges: pulumi.StringArray{
 //						pulumi.String("custom_data"),
 //						pulumi.String("user_data"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// ### example 3
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := metal.NewDevice(ctx, "web1", &metal.DeviceArgs{
-//				Hostname:        pulumi.String("tf.coreos2"),
-//				Plan:            pulumi.String(metal.PlanC3SmallX86),
-//				Metro:           pulumi.String("ny"),
-//				OperatingSystem: pulumi.String(metal.OperatingSystem_Ubuntu20_04),
-//				BillingCycle:    pulumi.String(metal.BillingCycleHourly),
-//				ProjectId:       pulumi.Any(projectId),
-//				IpAddresses: metal.DeviceIpAddressArray{
-//					&metal.DeviceIpAddressArgs{
-//						Type: pulumi.String("private_ipv4"),
-//						Cidr: pulumi.Int(30),
 //					},
 //				},
 //			})

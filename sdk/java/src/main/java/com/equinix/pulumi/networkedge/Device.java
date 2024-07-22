@@ -36,90 +36,6 @@ import javax.annotation.Nullable;
  * * **BYOL** - [bring your own license] Where customer brings his own, already procured device software license. There are no charges associated with such license. It is the only licensing mode for `self-configured` devices.
  * 
  * ## Example Usage
- * ### example 8
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
- * import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
- * import com.pulumi.equinix.networkedge.NetworkFile;
- * import com.pulumi.equinix.networkedge.NetworkFileArgs;
- * import com.pulumi.equinix.networkedge.Device;
- * import com.pulumi.equinix.networkedge.DeviceArgs;
- * import com.pulumi.equinix.networkedge.inputs.DeviceSecondaryDeviceArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
- *             .name("account-name")
- *             .metroCode("SV")
- *             .build());
- * 
- *         var bluecatEdgeServicePointCloudinitPrimaryFile = new NetworkFile("bluecatEdgeServicePointCloudinitPrimaryFile", NetworkFileArgs.builder()
- *             .fileName("TF-BLUECAT-ESP-cloud-init-file.txt")
- *             .content(StdFunctions.file(FileArgs.builder()
- *                 .input(filepath)
- *                 .build()).result())
- *             .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
- *             .deviceTypeCode("BLUECAT-EDGE-SERVICE-POINT")
- *             .processType("CLOUD_INIT")
- *             .selfManaged(true)
- *             .byol(true)
- *             .build());
- * 
- *         var bluecatEdgeServicePointCloudinitSecondaryFile = new NetworkFile("bluecatEdgeServicePointCloudinitSecondaryFile", NetworkFileArgs.builder()
- *             .fileName("TF-BLUECAT-ESP-cloud-init-file.txt")
- *             .content(StdFunctions.file(FileArgs.builder()
- *                 .input(filepath)
- *                 .build()).result())
- *             .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
- *             .deviceTypeCode("BLUECAT-EDGE-SERVICE-POINT")
- *             .processType("CLOUD_INIT")
- *             .selfManaged(true)
- *             .byol(true)
- *             .build());
- * 
- *         var bluecatEdgeServicePointHa = new Device("bluecatEdgeServicePointHa", DeviceArgs.builder()
- *             .name("tf-bluecat-edge-service-point-p")
- *             .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
- *             .typeCode("BLUECAT-EDGE-SERVICE-POINT")
- *             .selfManaged(true)
- *             .connectivity("PRIVATE")
- *             .byol(true)
- *             .packageCode("STD")
- *             .notifications("test{@literal @}equinix.com")
- *             .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
- *             .cloudInitFileId(bluecatEdgeServicePointCloudinitPrimaryFile.uuid())
- *             .version("4.6.3")
- *             .coreCount(4)
- *             .termLength(12)
- *             .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
- *                 .name("tf-bluecat-edge-service-point-s")
- *                 .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
- *                 .notifications("test{@literal @}eq.com")
- *                 .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
- *                 .cloudInitFileId(bluecatEdgeServicePointCloudinitSecondaryFile.uuid())
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * ### example 1
  * <pre>
  * {@code
@@ -188,6 +104,148 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### example 2
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
+ * import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
+ * import com.pulumi.equinix.networkedge.Device;
+ * import com.pulumi.equinix.networkedge.DeviceArgs;
+ * import com.pulumi.equinix.networkedge.inputs.DeviceSshKeyArgs;
+ * import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsArgs;
+ * import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsNode0Args;
+ * import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsNode0VendorConfigurationArgs;
+ * import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsNode1Args;
+ * import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsNode1VendorConfigurationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
+ *             .metroCode("SV")
+ *             .build());
+ * 
+ *         var panwCluster = new Device("panwCluster", DeviceArgs.builder()
+ *             .name("tf-panw")
+ *             .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+ *             .typeCode("PA-VM")
+ *             .selfManaged(true)
+ *             .byol(true)
+ *             .packageCode("VM100")
+ *             .notifications(            
+ *                 "john{@literal @}equinix.com",
+ *                 "marry{@literal @}equinix.com",
+ *                 "fred{@literal @}equinix.com")
+ *             .termLength(12)
+ *             .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
+ *             .version("10.1.3")
+ *             .interfaceCount(10)
+ *             .coreCount(2)
+ *             .sshKey(DeviceSshKeyArgs.builder()
+ *                 .username("test")
+ *                 .keyName("test-key")
+ *                 .build())
+ *             .aclTemplateId("0bff6e05-f0e7-44cd-804a-25b92b835f8b")
+ *             .clusterDetails(DeviceClusterDetailsArgs.builder()
+ *                 .clusterName("tf-panw-cluster")
+ *                 .node0(DeviceClusterDetailsNode0Args.builder()
+ *                     .vendorConfiguration(DeviceClusterDetailsNode0VendorConfigurationArgs.builder()
+ *                         .hostname("panw-node0")
+ *                         .build())
+ *                     .licenseToken("licenseToken")
+ *                     .build())
+ *                 .node1(DeviceClusterDetailsNode1Args.builder()
+ *                     .vendorConfiguration(DeviceClusterDetailsNode1VendorConfigurationArgs.builder()
+ *                         .hostname("panw-node1")
+ *                         .build())
+ *                     .licenseToken("licenseToken")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### example 3
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
+ * import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
+ * import com.pulumi.equinix.networkedge.NetworkFile;
+ * import com.pulumi.equinix.networkedge.NetworkFileArgs;
+ * import com.pulumi.equinix.networkedge.Device;
+ * import com.pulumi.equinix.networkedge.DeviceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var filepath = config.get("filepath").orElse("cloudInitFileFolder/TF-AVX-cloud-init-file.txt");
+ *         final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
+ *             .metroCode("SV")
+ *             .build());
+ * 
+ *         var aviatrixCloudinitFile = new NetworkFile("aviatrixCloudinitFile", NetworkFileArgs.builder()
+ *             .fileName("TF-AVX-cloud-init-file.txt")
+ *             .content(StdFunctions.file(FileArgs.builder()
+ *                 .input(filepath)
+ *                 .build()).result())
+ *             .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+ *             .deviceTypeCode("AVIATRIX_EDGE")
+ *             .processType("CLOUD_INIT")
+ *             .selfManaged(true)
+ *             .byol(true)
+ *             .build());
+ * 
+ *         var aviatrixSingle = new Device("aviatrixSingle", DeviceArgs.builder()
+ *             .name("tf-aviatrix")
+ *             .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+ *             .typeCode("AVIATRIX_EDGE")
+ *             .selfManaged(true)
+ *             .byol(true)
+ *             .packageCode("STD")
+ *             .notifications("john{@literal @}equinix.com")
+ *             .termLength(12)
+ *             .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
+ *             .version("6.9")
+ *             .coreCount(2)
+ *             .cloudInitFileId(aviatrixCloudinitFile.uuid())
+ *             .aclTemplateId("c06150ea-b604-4ad1-832a-d63936e9b938")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * ### example 4
  * <pre>
  * {@code
@@ -239,6 +297,138 @@ import javax.annotation.Nullable;
  *                 .keyName("valid-key-name")
  *                 .build())
  *             .aclTemplateId("3e548c02-9164-4197-aa23-05b1f644883c")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### example 5
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
+ * import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
+ * import com.pulumi.equinix.networkedge.Device;
+ * import com.pulumi.equinix.networkedge.DeviceArgs;
+ * import com.pulumi.equinix.networkedge.inputs.DeviceSshKeyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
+ *             .name("account-name")
+ *             .metroCode("SV")
+ *             .build());
+ * 
+ *         var vsrxSingle = new Device("vsrxSingle", DeviceArgs.builder()
+ *             .name("tf-c8kv-sdwan")
+ *             .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+ *             .typeCode("VSRX")
+ *             .selfManaged(true)
+ *             .byol(true)
+ *             .packageCode("STD")
+ *             .notifications("test{@literal @}equinix.com")
+ *             .hostname("VSRX")
+ *             .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
+ *             .version("23.2R1.13")
+ *             .coreCount(2)
+ *             .termLength(12)
+ *             .additionalBandwidth(5)
+ *             .projectId("a86d7112-d740-4758-9c9c-31e66373746b")
+ *             .diverseDeviceId("ed7891bd-15b4-4f72-ac56-d96cfdacddcc")
+ *             .sshKey(DeviceSshKeyArgs.builder()
+ *                 .username("test-username")
+ *                 .keyName("valid-key-name")
+ *                 .build())
+ *             .aclTemplateId("3e548c02-9164-4197-aa23-05b1f644883c")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### example 6
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
+ * import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
+ * import com.pulumi.equinix.networkedge.SshKey;
+ * import com.pulumi.equinix.networkedge.SshKeyArgs;
+ * import com.pulumi.equinix.networkedge.Device;
+ * import com.pulumi.equinix.networkedge.DeviceArgs;
+ * import com.pulumi.equinix.networkedge.inputs.DeviceSshKeyArgs;
+ * import com.pulumi.equinix.networkedge.inputs.DeviceSecondaryDeviceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
+ *             .name("account-name")
+ *             .metroCode("SV")
+ *             .build());
+ * 
+ *         var testPublicKey = new SshKey("testPublicKey", SshKeyArgs.builder()
+ *             .name("key-name")
+ *             .publicKey("ssh-dss key-value")
+ *             .type("DSA")
+ *             .build());
+ * 
+ *         var aristaHa = new Device("aristaHa", DeviceArgs.builder()
+ *             .name("tf-arista-p")
+ *             .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+ *             .typeCode("ARISTA-ROUTER")
+ *             .selfManaged(true)
+ *             .connectivity("PRIVATE")
+ *             .byol(true)
+ *             .packageCode("CloudEOS")
+ *             .notifications("test{@literal @}equinix.com")
+ *             .hostname("arista-p")
+ *             .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
+ *             .version("4.29.0")
+ *             .coreCount(4)
+ *             .termLength(12)
+ *             .additionalBandwidth(5)
+ *             .sshKey(DeviceSshKeyArgs.builder()
+ *                 .username("test-username")
+ *                 .keyName(testPublicKey.name())
+ *                 .build())
+ *             .aclTemplateId("c637a17b-7a6a-4486-924b-30e6c36904b0")
+ *             .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
+ *                 .name("tf-arista-s")
+ *                 .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+ *                 .hostname("arista-s")
+ *                 .notifications("test{@literal @}eq.com")
+ *                 .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
+ *                 .aclTemplateId("fee5e2c0-6198-4ce6-9cbd-bbe6c1dbe138")
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -330,7 +520,91 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
- * ### example 2
+ * ### example 8
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
+ * import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
+ * import com.pulumi.equinix.networkedge.NetworkFile;
+ * import com.pulumi.equinix.networkedge.NetworkFileArgs;
+ * import com.pulumi.equinix.networkedge.Device;
+ * import com.pulumi.equinix.networkedge.DeviceArgs;
+ * import com.pulumi.equinix.networkedge.inputs.DeviceSecondaryDeviceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
+ *             .name("account-name")
+ *             .metroCode("SV")
+ *             .build());
+ * 
+ *         var bluecatEdgeServicePointCloudinitPrimaryFile = new NetworkFile("bluecatEdgeServicePointCloudinitPrimaryFile", NetworkFileArgs.builder()
+ *             .fileName("TF-BLUECAT-ESP-cloud-init-file.txt")
+ *             .content(StdFunctions.file(FileArgs.builder()
+ *                 .input(filepath)
+ *                 .build()).result())
+ *             .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+ *             .deviceTypeCode("BLUECAT-EDGE-SERVICE-POINT")
+ *             .processType("CLOUD_INIT")
+ *             .selfManaged(true)
+ *             .byol(true)
+ *             .build());
+ * 
+ *         var bluecatEdgeServicePointCloudinitSecondaryFile = new NetworkFile("bluecatEdgeServicePointCloudinitSecondaryFile", NetworkFileArgs.builder()
+ *             .fileName("TF-BLUECAT-ESP-cloud-init-file.txt")
+ *             .content(StdFunctions.file(FileArgs.builder()
+ *                 .input(filepath)
+ *                 .build()).result())
+ *             .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+ *             .deviceTypeCode("BLUECAT-EDGE-SERVICE-POINT")
+ *             .processType("CLOUD_INIT")
+ *             .selfManaged(true)
+ *             .byol(true)
+ *             .build());
+ * 
+ *         var bluecatEdgeServicePointHa = new Device("bluecatEdgeServicePointHa", DeviceArgs.builder()
+ *             .name("tf-bluecat-edge-service-point-p")
+ *             .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+ *             .typeCode("BLUECAT-EDGE-SERVICE-POINT")
+ *             .selfManaged(true)
+ *             .connectivity("PRIVATE")
+ *             .byol(true)
+ *             .packageCode("STD")
+ *             .notifications("test{@literal @}equinix.com")
+ *             .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
+ *             .cloudInitFileId(bluecatEdgeServicePointCloudinitPrimaryFile.uuid())
+ *             .version("4.6.3")
+ *             .coreCount(4)
+ *             .termLength(12)
+ *             .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
+ *                 .name("tf-bluecat-edge-service-point-s")
+ *                 .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+ *                 .notifications("test{@literal @}eq.com")
+ *                 .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
+ *                 .cloudInitFileId(bluecatEdgeServicePointCloudinitSecondaryFile.uuid())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### example 9
  * <pre>
  * {@code
  * package generated_program;
@@ -378,7 +652,7 @@ import javax.annotation.Nullable;
  *                 "fred{@literal @}equinix.com")
  *             .termLength(12)
  *             .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
- *             .version("10.1.3")
+ *             .version("11.1.3")
  *             .interfaceCount(10)
  *             .coreCount(2)
  *             .sshKey(DeviceSshKeyArgs.builder()
@@ -391,212 +665,19 @@ import javax.annotation.Nullable;
  *                 .node0(DeviceClusterDetailsNode0Args.builder()
  *                     .vendorConfiguration(DeviceClusterDetailsNode0VendorConfigurationArgs.builder()
  *                         .hostname("panw-node0")
+ *                         .panoramaIpAddress("x.x.x.x")
+ *                         .panoramaAuthKey("xxxxxxxxxxx")
  *                         .build())
  *                     .licenseToken("licenseToken")
  *                     .build())
  *                 .node1(DeviceClusterDetailsNode1Args.builder()
  *                     .vendorConfiguration(DeviceClusterDetailsNode1VendorConfigurationArgs.builder()
  *                         .hostname("panw-node1")
+ *                         .panoramaIpAddress("x.x.x.x")
+ *                         .panoramaAuthKey("xxxxxxxxxxx")
  *                         .build())
  *                     .licenseToken("licenseToken")
  *                     .build())
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * ### example 5
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
- * import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
- * import com.pulumi.equinix.networkedge.Device;
- * import com.pulumi.equinix.networkedge.DeviceArgs;
- * import com.pulumi.equinix.networkedge.inputs.DeviceSshKeyArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
- *             .name("account-name")
- *             .metroCode("SV")
- *             .build());
- * 
- *         var vsrxSingle = new Device("vsrxSingle", DeviceArgs.builder()
- *             .name("tf-c8kv-sdwan")
- *             .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
- *             .typeCode("VSRX")
- *             .selfManaged(true)
- *             .byol(true)
- *             .packageCode("STD")
- *             .notifications("test{@literal @}equinix.com")
- *             .hostname("VSRX")
- *             .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
- *             .version("23.2R1.13")
- *             .coreCount(2)
- *             .termLength(12)
- *             .additionalBandwidth(5)
- *             .projectId("a86d7112-d740-4758-9c9c-31e66373746b")
- *             .diverseDeviceId("ed7891bd-15b4-4f72-ac56-d96cfdacddcc")
- *             .sshKey(DeviceSshKeyArgs.builder()
- *                 .username("test-username")
- *                 .keyName("valid-key-name")
- *                 .build())
- *             .aclTemplateId("3e548c02-9164-4197-aa23-05b1f644883c")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * ### example 3
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
- * import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
- * import com.pulumi.equinix.networkedge.NetworkFile;
- * import com.pulumi.equinix.networkedge.NetworkFileArgs;
- * import com.pulumi.equinix.networkedge.Device;
- * import com.pulumi.equinix.networkedge.DeviceArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var filepath = config.get("filepath").orElse("cloudInitFileFolder/TF-AVX-cloud-init-file.txt");
- *         final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
- *             .metroCode("SV")
- *             .build());
- * 
- *         var aviatrixCloudinitFile = new NetworkFile("aviatrixCloudinitFile", NetworkFileArgs.builder()
- *             .fileName("TF-AVX-cloud-init-file.txt")
- *             .content(StdFunctions.file(FileArgs.builder()
- *                 .input(filepath)
- *                 .build()).result())
- *             .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
- *             .deviceTypeCode("AVIATRIX_EDGE")
- *             .processType("CLOUD_INIT")
- *             .selfManaged(true)
- *             .byol(true)
- *             .build());
- * 
- *         var aviatrixSingle = new Device("aviatrixSingle", DeviceArgs.builder()
- *             .name("tf-aviatrix")
- *             .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
- *             .typeCode("AVIATRIX_EDGE")
- *             .selfManaged(true)
- *             .byol(true)
- *             .packageCode("STD")
- *             .notifications("john{@literal @}equinix.com")
- *             .termLength(12)
- *             .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
- *             .version("6.9")
- *             .coreCount(2)
- *             .cloudInitFileId(aviatrixCloudinitFile.uuid())
- *             .aclTemplateId("c06150ea-b604-4ad1-832a-d63936e9b938")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * ### example 6
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
- * import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
- * import com.pulumi.equinix.networkedge.SshKey;
- * import com.pulumi.equinix.networkedge.SshKeyArgs;
- * import com.pulumi.equinix.networkedge.Device;
- * import com.pulumi.equinix.networkedge.DeviceArgs;
- * import com.pulumi.equinix.networkedge.inputs.DeviceSshKeyArgs;
- * import com.pulumi.equinix.networkedge.inputs.DeviceSecondaryDeviceArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
- *             .name("account-name")
- *             .metroCode("SV")
- *             .build());
- * 
- *         var testPublicKey = new SshKey("testPublicKey", SshKeyArgs.builder()
- *             .name("key-name")
- *             .publicKey("ssh-dss key-value")
- *             .type("DSA")
- *             .build());
- * 
- *         var aristaHa = new Device("aristaHa", DeviceArgs.builder()
- *             .name("tf-arista-p")
- *             .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
- *             .typeCode("ARISTA-ROUTER")
- *             .selfManaged(true)
- *             .connectivity("PRIVATE")
- *             .byol(true)
- *             .packageCode("CloudEOS")
- *             .notifications("test{@literal @}equinix.com")
- *             .hostname("arista-p")
- *             .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
- *             .version("4.29.0")
- *             .coreCount(4)
- *             .termLength(12)
- *             .additionalBandwidth(5)
- *             .sshKey(DeviceSshKeyArgs.builder()
- *                 .username("test-username")
- *                 .keyName(testPublicKey.name())
- *                 .build())
- *             .aclTemplateId("c637a17b-7a6a-4486-924b-30e6c36904b0")
- *             .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
- *                 .name("tf-arista-s")
- *                 .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
- *                 .hostname("arista-s")
- *                 .notifications("test{@literal @}eq.com")
- *                 .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
- *                 .aclTemplateId("fee5e2c0-6198-4ce6-9cbd-bbe6c1dbe138")
  *                 .build())
  *             .build());
  * 
@@ -1193,7 +1274,7 @@ public class Device extends com.pulumi.resources.CustomResource {
         return this.uuid;
     }
     /**
-     * Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId)
+     * Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress)
      * * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
      * 
      */
@@ -1201,7 +1282,7 @@ public class Device extends com.pulumi.resources.CustomResource {
     private Output<Map<String,String>> vendorConfiguration;
 
     /**
-     * @return Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId)
+     * @return Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress)
      * * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
      * 
      */

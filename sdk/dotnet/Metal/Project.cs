@@ -15,7 +15,7 @@ namespace Pulumi.Equinix.Metal
     /// &gt; **NOTE:** Keep in mind that Equinix Metal invoicing is per project, so creating many `equinix.metal.Project` resources will affect the rendered invoice. If you want to keep your Equinix Metal bill simple and easy to review, please re-use your existing projects.
     /// 
     /// ## Example Usage
-    /// ### example 3
+    /// ### example 1
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -24,15 +24,9 @@ namespace Pulumi.Equinix.Metal
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var existingProject = new Equinix.Metal.Project("existingProject", new()
+    ///     var tfProject1 = new Equinix.Metal.Project("tfProject1", new()
     ///     {
-    ///         Name = "The name of the project (if different, will rewrite)",
-    ///         BgpConfig = new Equinix.Metal.Inputs.ProjectBgpConfigArgs
-    ///         {
-    ///             DeploymentType = "local",
-    ///             Md5 = "C179c28c41a85b",
-    ///             Asn = 65000,
-    ///         },
+    ///         Name = "Terraform Fun",
     ///     });
     /// 
     /// });
@@ -59,7 +53,7 @@ namespace Pulumi.Equinix.Metal
     /// 
     /// });
     /// ```
-    /// ### example 1
+    /// ### example 3
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -68,9 +62,15 @@ namespace Pulumi.Equinix.Metal
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var tfProject1 = new Equinix.Metal.Project("tfProject1", new()
+    ///     var existingProject = new Equinix.Metal.Project("existingProject", new()
     ///     {
-    ///         Name = "Terraform Fun",
+    ///         Name = "The name of the project (if different, will rewrite)",
+    ///         BgpConfig = new Equinix.Metal.Inputs.ProjectBgpConfigArgs
+    ///         {
+    ///             DeploymentType = "local",
+    ///             Md5 = "C179c28c41a85b",
+    ///             Asn = 65000,
+    ///         },
     ///     });
     /// 
     /// });

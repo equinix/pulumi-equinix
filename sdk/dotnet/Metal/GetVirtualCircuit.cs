@@ -32,7 +32,27 @@ namespace Pulumi.Equinix.Metal
     public sealed class GetVirtualCircuitArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// ID of the virtual circuit resource
+        /// The Customer IPv6 address which the CSR switch will peer with. Will default to the other usable IP in the IPv6 subnet.
+        /// </summary>
+        [Input("customerIpv6")]
+        public string? CustomerIpv6 { get; set; }
+
+        /// <summary>
+        /// The Metal IPv6 address for the SVI (Switch Virtual Interface) of the VirtualCircuit. Will default to the first usable IP in the IPv6 subnet.
+        /// </summary>
+        [Input("metalIpv6")]
+        public string? MetalIpv6 { get; set; }
+
+        /// <summary>
+        /// A subnet from one of the IPv6 blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /126 or /127.
+        /// 			 * For a /127 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.
+        /// 			 * For a /126 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
+        /// </summary>
+        [Input("subnetIpv6")]
+        public string? SubnetIpv6 { get; set; }
+
+        /// <summary>
+        /// ID of the virtual circuit to lookup
         /// </summary>
         [Input("virtualCircuitId", required: true)]
         public string VirtualCircuitId { get; set; } = null!;
@@ -46,7 +66,27 @@ namespace Pulumi.Equinix.Metal
     public sealed class GetVirtualCircuitInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// ID of the virtual circuit resource
+        /// The Customer IPv6 address which the CSR switch will peer with. Will default to the other usable IP in the IPv6 subnet.
+        /// </summary>
+        [Input("customerIpv6")]
+        public Input<string>? CustomerIpv6 { get; set; }
+
+        /// <summary>
+        /// The Metal IPv6 address for the SVI (Switch Virtual Interface) of the VirtualCircuit. Will default to the first usable IP in the IPv6 subnet.
+        /// </summary>
+        [Input("metalIpv6")]
+        public Input<string>? MetalIpv6 { get; set; }
+
+        /// <summary>
+        /// A subnet from one of the IPv6 blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /126 or /127.
+        /// 			 * For a /127 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.
+        /// 			 * For a /126 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
+        /// </summary>
+        [Input("subnetIpv6")]
+        public Input<string>? SubnetIpv6 { get; set; }
+
+        /// <summary>
+        /// ID of the virtual circuit to lookup
         /// </summary>
         [Input("virtualCircuitId", required: true)]
         public Input<string> VirtualCircuitId { get; set; } = null!;
@@ -62,7 +102,7 @@ namespace Pulumi.Equinix.Metal
     public sealed class GetVirtualCircuitResult
     {
         /// <summary>
-        /// UUID of Connection where the VC is scoped to.
+        /// UUID of Connection where the VC is scoped to
         /// </summary>
         public readonly string ConnectionId;
         /// <summary>
@@ -70,7 +110,11 @@ namespace Pulumi.Equinix.Metal
         /// </summary>
         public readonly string CustomerIp;
         /// <summary>
-        /// Description for the Virtual Circuit resource.
+        /// The Customer IPv6 address which the CSR switch will peer with. Will default to the other usable IP in the IPv6 subnet.
+        /// </summary>
+        public readonly string? CustomerIpv6;
+        /// <summary>
+        /// Description of the virtual circuit
         /// </summary>
         public readonly string Description;
         /// <summary>
@@ -86,49 +130,71 @@ namespace Pulumi.Equinix.Metal
         /// </summary>
         public readonly string MetalIp;
         /// <summary>
-        /// Name of the virtual circuit resource.
+        /// The Metal IPv6 address for the SVI (Switch Virtual Interface) of the VirtualCircuit. Will default to the first usable IP in the IPv6 subnet.
+        /// </summary>
+        public readonly string? MetalIpv6;
+        /// <summary>
+        /// Name of the virtual circuit
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Nni VLAN parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+        /// </summary>
         public readonly int NniVlan;
+        /// <summary>
+        /// Nni VLAN ID parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+        /// </summary>
         public readonly int NniVnid;
         /// <summary>
         /// The BGP ASN of the peer. The same ASN may be the used across several VCs, but it cannot be the same as the local_asn of the VRF.
         /// </summary>
         public readonly int PeerAsn;
         /// <summary>
-        /// UUID of the Connection Port where the VC is scoped to.
+        /// UUID of the Connection Port where the VC is scoped to
         /// </summary>
         public readonly string PortId;
         /// <summary>
-        /// ID of project to which the VC belongs.
+        /// ID of the projct to which the virtual circuit belongs
         /// </summary>
         public readonly string ProjectId;
         /// <summary>
-        /// Speed of the Virtual Circuit resource.
+        /// Description of the Virtual Circuit speed. This is for information purposes and is computed when the connection type is shared.
         /// </summary>
         public readonly string Speed;
         /// <summary>
-        /// Status of the virtal circuit.
+        /// Status of the virtual circuit
         /// </summary>
         public readonly string Status;
         /// <summary>
         /// A subnet from one of the IP blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /30 or /31.
-        /// * For a /31 block, it will only have two IP addresses, which will be used for the metal_ip and customer_ip.
-        /// * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
+        /// 			 * For a /31 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.
+        /// 			 * For a /30 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
         /// </summary>
         public readonly string Subnet;
         /// <summary>
-        /// Tags for the Virtual Circuit resource.
+        /// A subnet from one of the IPv6 blocks associated with the VRF that we will help create an IP reservation for. Can only be either a /126 or /127.
+        /// 			 * For a /127 block, it will only have two IP addresses, which will be used for the metal*ip and customer*ip.
+        /// 			 * For a /126 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
+        /// </summary>
+        public readonly string? SubnetIpv6;
+        /// <summary>
+        /// Tags attached to the virtual circuit
         /// </summary>
         public readonly ImmutableArray<string> Tags;
+        /// <summary>
+        /// ID of the virtual circuit to lookup
+        /// </summary>
         public readonly string VirtualCircuitId;
+        /// <summary>
+        /// UUID of the associated VLAN
+        /// </summary>
         public readonly string VlanId;
         /// <summary>
-        /// , `nni_vlan`, `nni_nvid` - VLAN parameters, see the [documentation for Equinix Fabric](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/).
+        /// VNID VLAN parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
         /// </summary>
         public readonly int Vnid;
         /// <summary>
-        /// UUID of the VLAN to associate.
+        /// UUID of the associated VRF
         /// </summary>
         public readonly string VrfId;
 
@@ -138,6 +204,8 @@ namespace Pulumi.Equinix.Metal
 
             string customerIp,
 
+            string? customerIpv6,
+
             string description,
 
             string id,
@@ -145,6 +213,8 @@ namespace Pulumi.Equinix.Metal
             string md5,
 
             string metalIp,
+
+            string? metalIpv6,
 
             string name,
 
@@ -164,6 +234,8 @@ namespace Pulumi.Equinix.Metal
 
             string subnet,
 
+            string? subnetIpv6,
+
             ImmutableArray<string> tags,
 
             string virtualCircuitId,
@@ -176,10 +248,12 @@ namespace Pulumi.Equinix.Metal
         {
             ConnectionId = connectionId;
             CustomerIp = customerIp;
+            CustomerIpv6 = customerIpv6;
             Description = description;
             Id = id;
             Md5 = md5;
             MetalIp = metalIp;
+            MetalIpv6 = metalIpv6;
             Name = name;
             NniVlan = nniVlan;
             NniVnid = nniVnid;
@@ -189,6 +263,7 @@ namespace Pulumi.Equinix.Metal
             Speed = speed;
             Status = status;
             Subnet = subnet;
+            SubnetIpv6 = subnetIpv6;
             Tags = tags;
             VirtualCircuitId = virtualCircuitId;
             VlanId = vlanId;

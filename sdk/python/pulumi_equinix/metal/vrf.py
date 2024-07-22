@@ -235,6 +235,23 @@ class Vrf(pulumi.CustomResource):
         See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
 
         ## Example Usage
+        ### example 1
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        example = equinix.metal.Project("example", name="example")
+        example_vrf = equinix.metal.Vrf("exampleVrf",
+            description="VRF with ASN 65000 and a pool of address space that includes 192.168.100.0/25",
+            name="example-vrf",
+            metro="da",
+            local_asn=65000,
+            ip_ranges=[
+                "192.168.100.0/25",
+                "192.168.200.0/25",
+            ],
+            project_id=example.id)
+        ```
         ### example 2
         ```python
         import pulumi
@@ -256,23 +273,6 @@ class Vrf(pulumi.CustomResource):
             project_id=example_equinix_metal_project["id"],
             vlan_id=example_vlan.id,
             ip_reservation_id=example.id)
-        ```
-        ### example 1
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        example = equinix.metal.Project("example", name="example")
-        example_vrf = equinix.metal.Vrf("exampleVrf",
-            description="VRF with ASN 65000 and a pool of address space that includes 192.168.100.0/25",
-            name="example-vrf",
-            metro="da",
-            local_asn=65000,
-            ip_ranges=[
-                "192.168.100.0/25",
-                "192.168.200.0/25",
-            ],
-            project_id=example.id)
         ```
         ### example 3
         ```python
@@ -322,6 +322,23 @@ class Vrf(pulumi.CustomResource):
         See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
 
         ## Example Usage
+        ### example 1
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        example = equinix.metal.Project("example", name="example")
+        example_vrf = equinix.metal.Vrf("exampleVrf",
+            description="VRF with ASN 65000 and a pool of address space that includes 192.168.100.0/25",
+            name="example-vrf",
+            metro="da",
+            local_asn=65000,
+            ip_ranges=[
+                "192.168.100.0/25",
+                "192.168.200.0/25",
+            ],
+            project_id=example.id)
+        ```
         ### example 2
         ```python
         import pulumi
@@ -343,23 +360,6 @@ class Vrf(pulumi.CustomResource):
             project_id=example_equinix_metal_project["id"],
             vlan_id=example_vlan.id,
             ip_reservation_id=example.id)
-        ```
-        ### example 1
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        example = equinix.metal.Project("example", name="example")
-        example_vrf = equinix.metal.Vrf("exampleVrf",
-            description="VRF with ASN 65000 and a pool of address space that includes 192.168.100.0/25",
-            name="example-vrf",
-            metro="da",
-            local_asn=65000,
-            ip_ranges=[
-                "192.168.100.0/25",
-                "192.168.200.0/25",
-            ],
-            project_id=example.id)
         ```
         ### example 3
         ```python

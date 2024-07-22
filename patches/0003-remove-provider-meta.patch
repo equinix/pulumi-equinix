@@ -1,15 +1,15 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Oscar Cobles <oscar.cobles@eu.equinix.com>
 Date: Thu, 4 Jul 2024 12:29:16 +0200
-Subject: [PATCH 3/3] remove provider meta
+Subject: [PATCH] remove provider meta
 
 Signed-off-by: Oscar Cobles <oscar.cobles@eu.equinix.com>
 
 diff --git a/equinix/provider.go b/equinix/provider.go
-index 7fbb03d..ee84017 100644
+index b300753..7a4c77b 100644
 --- a/equinix/provider.go
 +++ b/equinix/provider.go
-@@ -137,12 +137,6 @@ func Provider() *schema.Provider {
+@@ -138,12 +138,6 @@ func Provider() *schema.Provider {
  			"equinix_metal_bgp_session":          resourceMetalBGPSession(),
  			"equinix_metal_port_vlan_attachment": resourceMetalPortVlanAttachment(),
  		},
@@ -22,7 +22,7 @@ index 7fbb03d..ee84017 100644
  	}
  
  	provider.ConfigureContextFunc = func(ctx context.Context, d *schema.ResourceData) (interface{}, diag.Diagnostics) {
-@@ -151,10 +145,6 @@ func Provider() *schema.Provider {
+@@ -152,10 +146,6 @@ func Provider() *schema.Provider {
  	return provider
  }
  
@@ -33,7 +33,7 @@ index 7fbb03d..ee84017 100644
  func configureProvider(ctx context.Context, d *schema.ResourceData, p *schema.Provider) (interface{}, diag.Diagnostics) {
  	mrws := d.Get("max_retry_wait_seconds").(int)
  	rt := d.Get("request_timeout").(int)
-@@ -170,11 +160,7 @@ func configureProvider(ctx context.Context, d *schema.ResourceData, p *schema.Pr
+@@ -171,11 +161,7 @@ func configureProvider(ctx context.Context, d *schema.ResourceData, p *schema.Pr
  		MaxRetries:     d.Get("max_retries").(int),
  		MaxRetryWait:   time.Duration(mrws) * time.Second,
  	}
