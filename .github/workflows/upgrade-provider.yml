@@ -44,3 +44,4 @@ jobs:
         email: noreply@github.com
         username: GitHub
         pr-assign: ${{ env.PR_ASSIGN }}
+        pr-title-prefix: "feat: "
