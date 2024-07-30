@@ -32,7 +32,4 @@ jobs:
       shell: bash
 name: Check upstream upgrade
 on:
-  workflow_dispatch: {} #so we can run this manually if necessary.
-  schedule:
-    # Run every 8 hours Monday through Friday
-    - cron: '0 */8 * * 1-5'
+  workflow_dispatch: {} #so we can run this manually if necessary
