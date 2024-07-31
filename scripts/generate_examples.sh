@@ -2,7 +2,17 @@
 set -e
 
 # List of files to exclude
-EXCLUDE_FILES=("metal_connection/example_1.tf metal_connection/example_2.tf metal_connection/example_3.tf metal_bgp_session/example_1.tf")
+EXCLUDE_FILES=(
+    "metal_connection/example_1.tf" \
+    "metal_connection/example_2.tf" \
+    "metal_connection/example_3.tf" \
+    "metal_connection/shared_nimf_from_fcr.tf" \
+    "metal_connection/shared_nimf_to_csp.tf" \
+    "metal_connection/shared_no_token_metal_to_fabric.tf" \
+    "metal_connection/shared_token_fabric_port_to_metal.tf" \
+    "metal_connection/shared_token_metal_to_csp.tf" \
+    "metal_bgp_session/example_1.tf"
+)
 EXCLUDED_FILES=()
 # this script current directory
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
@@ -13,16 +23,13 @@ OUTPUT_DIR="${SCRIPT_DIR}/../docs/resource"
 # Pulumi Equinix plugin version installed
 VERSION=$(pulumictl get version --language generic)
 
-increment_patch() {
+get_patch() {
     local version="$1"
-    local major_minor=$(echo "$version" | sed -E 's/^([0-9]+\.[0-9]+)\.[0-9]+.*$/\1/')
-    local patch=$(echo "$version" | sed -E 's/^[0-9]+\.[0-9]+\.([0-9]+).*$/\1/')
-    local new_patch=$((patch + 1))
-    local new_version="$major_minor.$new_patch"
+    local new_version=$(echo "$version" | awk -F'[.-]' '{print $1"."$2"."$3}')
     echo "$new_version"
 }
 
-GOLANG_MIN_NEXT_VERSION=$(increment_patch "$VERSION")
+GOLANG_MIN_NEXT_VERSION=$(get_patch "$VERSION")
 
 mappings() {
     local tf_file=$1
@@ -44,6 +51,7 @@ mappings() {
     # Replace references to not declared resources or variables
     sed -i.bak 's/equinix_network_device\.csr1000v-ha\.uuid,/"csr1000v-ha-uuid",/g' "$tf_file"
     sed -i.bak 's/equinix_network_device\.csr1000v-ha\.redundant_uuid/"csr1000v-ha-redundant-uuid"/g' "$tf_file"
+    sed -i.bak 's/equinix_metal_connection\.metal-connection/equinix_metal_connection\.example/g' "$tf_file"
     # Replace duplicate resource name
     sed -i.bak '1,/resource "equinix_metal_reserved_ip_block" "test"/ s/resource "equinix_metal_reserved_ip_block" "test"/resource "equinix_metal_reserved_ip_block" "test1"/g' "$tf_file"
     # Replace - with _ in resource names
@@ -98,7 +106,6 @@ generate_pulumi_yaml() {
 
             # Check if the file is in the exclude list
             normalized_path="${example_relative_path#/}"
-            echo "Check if ${normalized_path} should be excluded"
             if [[ " ${EXCLUDE_FILES[@]} " =~ " ${normalized_path} " ]]; then
                 EXCLUDED_FILES+=("$normalized_path")
                 continue
@@ -126,8 +133,6 @@ generate_pulumi_yaml() {
             # If there are multiple .tf files, process them individually
             for tf_file in "${tf_files[@]}"; do
                 local example_relative_path="${tf_file#$SOURCE_DIR}"
-                local example_name=$(basename -s .tf $example_relative_path)
-                echo $example_name
 
                 # Check if the file is in the exclude list
                 normalized_path="${example_relative_path#/}"
@@ -135,6 +140,17 @@ generate_pulumi_yaml() {
                 if [[ " ${EXCLUDE_FILES[@]} " =~ " ${normalized_path} " ]]; then
                     EXCLUDED_FILES+=("$normalized_path")
                     continue
+                fi
+
+                # Make sure examples start always with "example_" prefix to be able to distinguish
+                # later between resources that start the same and their examples, for example
+                # resources "equinix_metal_project" and "equinix_metal_project_api_key" have same
+                # "equinix_metal_project" prefix
+                local basename_example=$(basename -s .tf $example_relative_path)
+                if [[ $basename_example == example_* ]]; then
+                    local example_name="$basename_example"
+                else
+                    local example_name="example_$basename_example"
                 fi
 
                 if [ -n "$example_name" ]; then
