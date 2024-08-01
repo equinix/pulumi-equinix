@@ -1,0 +1,25 @@
+name: equinix-fabric-connection-example_fcr_to_metal
+runtime: yaml
+resources:
+  fcr2metal:
+    type: equinix:fabric:Connection
+    properties:
+      name: ConnectionName
+      type: IP_VC
+      notifications:
+        - type: ALL
+          emails:
+            - example@equinix.com
+            - test1@equinix.com
+      bandwidth: 50
+      order:
+        purchaseOrderNumber: 1-323292
+      aSide:
+        accessPoint:
+          type: CLOUD_ROUTER
+          router:
+            uuid: <cloud_router_uuid>
+      zSide:
+        accessPoint:
+          type: METAL_NETWORK
+          authenticationKey: <metal_authorization_code>

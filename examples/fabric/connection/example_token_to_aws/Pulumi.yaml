@@ -1,0 +1,29 @@
+name: equinix-fabric-connection-example_token_to_aws
+runtime: yaml
+resources:
+  token2aws:
+    type: equinix:fabric:Connection
+    properties:
+      name: ConnectionName
+      type: EVPL_VC
+      notifications:
+        - type: ALL
+          emails:
+            - example@equinix.com
+            - test1@equinix.com
+      bandwidth: 50
+      order:
+        purchaseOrderNumber: 1-323292
+      aSide:
+        serviceToken:
+          uuid: <service_token_uuid>
+      zSide:
+        accessPoint:
+          type: SP
+          authenticationKey: <aws_account_id>
+          sellerRegion: us-west-1
+          profile:
+            type: L2_PROFILE
+            uuid: <service_profile_uuid>
+          location:
+            metroCode: SV

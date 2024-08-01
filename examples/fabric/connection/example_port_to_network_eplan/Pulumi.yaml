@@ -1,0 +1,26 @@
+name: equinix-fabric-connection-example_port_to_network_eplan
+runtime: yaml
+resources:
+  eplan:
+    type: equinix:fabric:Connection
+    properties:
+      name: ConnectionName
+      type: EPLAN_VC
+      notifications:
+        - type: ALL
+          emails:
+            - example@equinix.com
+            - test1@equinix.com
+      bandwidth: 50
+      order:
+        purchaseOrderNumber: 1-323292
+      aSide:
+        accessPoint:
+          type: COLO
+          port:
+            uuid: <aside_port_uuid>
+      zSide:
+        accessPoint:
+          type: NETWORK
+          network:
+            uuid: <network_uuid>
