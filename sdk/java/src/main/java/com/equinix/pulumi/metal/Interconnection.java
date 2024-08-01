@@ -115,16 +115,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="equinix:metal/interconnection:Interconnection")
 public class Interconnection extends com.pulumi.resources.CustomResource {
     /**
-     * Only used with Fabric Shared connection. Fabric uses this token to be able to give more detailed information about the
-     * Metal end of the network, when viewing resources from within Fabric.
+     * Fabric Authorization code to configure the NIMF connection with Cloud Service Provider through Equinix Fabric with the equinix.fabric.Connection resource from the [Equinix Developer Portal](https://developer.equinix.com/dev-docs/fabric/getting-started/fabric-v4-apis/connect-metal-to-amazon-web-services).
      * 
      */
     @Export(name="authorizationCode", refs={String.class}, tree="[0]")
     private Output<String> authorizationCode;
 
     /**
-     * @return Only used with Fabric Shared connection. Fabric uses this token to be able to give more detailed information about the
-     * Metal end of the network, when viewing resources from within Fabric.
+     * @return Fabric Authorization code to configure the NIMF connection with Cloud Service Provider through Equinix Fabric with the equinix.fabric.Connection resource from the [Equinix Developer Portal](https://developer.equinix.com/dev-docs/fabric/getting-started/fabric-v4-apis/connect-metal-to-amazon-web-services).
      * 
      */
     public Output<String> authorizationCode() {
@@ -429,11 +427,18 @@ public class Interconnection extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Interconnection(String name, InterconnectionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("equinix:metal/interconnection:Interconnection", name, args == null ? InterconnectionArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("equinix:metal/interconnection:Interconnection", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Interconnection(String name, Output<String> id, @Nullable InterconnectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("equinix:metal/interconnection:Interconnection", name, state, makeResourceOptions(options, id));
+    }
+
+    private static InterconnectionArgs makeArgs(InterconnectionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? InterconnectionArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

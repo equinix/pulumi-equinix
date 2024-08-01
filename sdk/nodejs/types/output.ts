@@ -157,7 +157,7 @@ export namespace fabric {
          */
         account: outputs.fabric.ConnectionASideAccessPointAccount;
         /**
-         * Authentication key for provider based connections
+         * Authentication key for provider based connections or Metal NIMF connections
          */
         authenticationKey?: string;
         /**
@@ -207,7 +207,7 @@ export namespace fabric {
          */
         sellerRegion?: string;
         /**
-         * Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+         * Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD*ROUTER, NETWORK, METAL*NETWORK
          */
         type?: string;
         /**
@@ -378,7 +378,7 @@ export namespace fabric {
          */
         name: string;
         /**
-         * Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+         * Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
          */
         type: string;
         /**
@@ -674,7 +674,7 @@ export namespace fabric {
          */
         account: outputs.fabric.ConnectionZSideAccessPointAccount;
         /**
-         * Authentication key for provider based connections
+         * Authentication key for provider based connections or Metal NIMF connections
          */
         authenticationKey?: string;
         /**
@@ -724,7 +724,7 @@ export namespace fabric {
          */
         sellerRegion?: string;
         /**
-         * Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+         * Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD*ROUTER, NETWORK, METAL*NETWORK
          */
         type?: string;
         /**
@@ -895,7 +895,7 @@ export namespace fabric {
          */
         name: string;
         /**
-         * Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+         * Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
          */
         type: string;
         /**
@@ -1374,7 +1374,7 @@ export namespace fabric {
          */
         accounts: outputs.fabric.GetConnectionASideAccessPointAccount[];
         /**
-         * Authentication key for provider based connections
+         * Authentication key for provider based connections or Metal NIMF connections
          */
         authenticationKey?: string;
         /**
@@ -1424,7 +1424,7 @@ export namespace fabric {
          */
         sellerRegion?: string;
         /**
-         * Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+         * Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK, METAL_NETWORK
          */
         type?: string;
         /**
@@ -1891,7 +1891,7 @@ export namespace fabric {
          */
         accounts: outputs.fabric.GetConnectionZSideAccessPointAccount[];
         /**
-         * Authentication key for provider based connections
+         * Authentication key for provider based connections or Metal NIMF connections
          */
         authenticationKey?: string;
         /**
@@ -1941,7 +1941,7 @@ export namespace fabric {
          */
         sellerRegion?: string;
         /**
-         * Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+         * Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK, METAL_NETWORK
          */
         type?: string;
         /**
@@ -2292,7 +2292,7 @@ export namespace fabric {
          */
         accounts: outputs.fabric.GetConnectionsDataASideAccessPointAccount[];
         /**
-         * Authentication key for provider based connections
+         * Authentication key for provider based connections or Metal NIMF connections
          */
         authenticationKey?: string;
         /**
@@ -2342,7 +2342,7 @@ export namespace fabric {
          */
         sellerRegion?: string;
         /**
-         * Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+         * Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK, METAL_NETWORK
          */
         type?: string;
         /**
@@ -2809,7 +2809,7 @@ export namespace fabric {
          */
         accounts: outputs.fabric.GetConnectionsDataZSideAccessPointAccount[];
         /**
-         * Authentication key for provider based connections
+         * Authentication key for provider based connections or Metal NIMF connections
          */
         authenticationKey?: string;
         /**
@@ -2859,7 +2859,7 @@ export namespace fabric {
          */
         sellerRegion?: string;
         /**
-         * Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+         * Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK, METAL_NETWORK
          */
         type?: string;
         /**

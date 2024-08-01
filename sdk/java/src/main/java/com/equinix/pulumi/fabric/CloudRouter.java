@@ -382,11 +382,18 @@ public class CloudRouter extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public CloudRouter(String name, CloudRouterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("equinix:fabric/cloudRouter:CloudRouter", name, args == null ? CloudRouterArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("equinix:fabric/cloudRouter:CloudRouter", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private CloudRouter(String name, Output<String> id, @Nullable CloudRouterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("equinix:fabric/cloudRouter:CloudRouter", name, state, makeResourceOptions(options, id));
+    }
+
+    private static CloudRouterArgs makeArgs(CloudRouterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? CloudRouterArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

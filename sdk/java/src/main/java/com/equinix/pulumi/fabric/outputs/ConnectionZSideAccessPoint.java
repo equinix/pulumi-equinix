@@ -27,7 +27,7 @@ public final class ConnectionZSideAccessPoint {
      */
     private @Nullable ConnectionZSideAccessPointAccount account;
     /**
-     * @return Authentication key for provider based connections
+     * @return Authentication key for provider based connections or Metal NIMF connections
      * 
      */
     private @Nullable String authenticationKey;
@@ -91,7 +91,7 @@ public final class ConnectionZSideAccessPoint {
      */
     private @Nullable String sellerRegion;
     /**
-     * @return Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+     * @return Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD*ROUTER, NETWORK, METAL*NETWORK
      * 
      */
     private @Nullable String type;
@@ -110,7 +110,7 @@ public final class ConnectionZSideAccessPoint {
         return Optional.ofNullable(this.account);
     }
     /**
-     * @return Authentication key for provider based connections
+     * @return Authentication key for provider based connections or Metal NIMF connections
      * 
      */
     public Optional<String> authenticationKey() {
@@ -198,7 +198,7 @@ public final class ConnectionZSideAccessPoint {
         return Optional.ofNullable(this.sellerRegion);
     }
     /**
-     * @return Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+     * @return Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD*ROUTER, NETWORK, METAL*NETWORK
      * 
      */
     public Optional<String> type() {

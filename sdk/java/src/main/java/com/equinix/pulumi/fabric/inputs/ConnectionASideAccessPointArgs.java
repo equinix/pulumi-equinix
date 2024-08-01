@@ -44,14 +44,14 @@ public final class ConnectionASideAccessPointArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Authentication key for provider based connections
+     * Authentication key for provider based connections or Metal NIMF connections
      * 
      */
     @Import(name="authenticationKey")
     private @Nullable Output<String> authenticationKey;
 
     /**
-     * @return Authentication key for provider based connections
+     * @return Authentication key for provider based connections or Metal NIMF connections
      * 
      */
     public Optional<Output<String>> authenticationKey() {
@@ -232,14 +232,14 @@ public final class ConnectionASideAccessPointArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+     * Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD*ROUTER, NETWORK, METAL*NETWORK
      * 
      */
     @Import(name="type")
     private @Nullable Output<Either<String,AccessPointType>> type;
 
     /**
-     * @return Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+     * @return Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD*ROUTER, NETWORK, METAL*NETWORK
      * 
      */
     public Optional<Output<Either<String,AccessPointType>>> type() {
@@ -321,7 +321,7 @@ public final class ConnectionASideAccessPointArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param authenticationKey Authentication key for provider based connections
+         * @param authenticationKey Authentication key for provider based connections or Metal NIMF connections
          * 
          * @return builder
          * 
@@ -332,7 +332,7 @@ public final class ConnectionASideAccessPointArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param authenticationKey Authentication key for provider based connections
+         * @param authenticationKey Authentication key for provider based connections or Metal NIMF connections
          * 
          * @return builder
          * 
@@ -601,7 +601,7 @@ public final class ConnectionASideAccessPointArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param type Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+         * @param type Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD*ROUTER, NETWORK, METAL*NETWORK
          * 
          * @return builder
          * 
@@ -612,7 +612,7 @@ public final class ConnectionASideAccessPointArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param type Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+         * @param type Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD*ROUTER, NETWORK, METAL*NETWORK
          * 
          * @return builder
          * 
@@ -622,7 +622,7 @@ public final class ConnectionASideAccessPointArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param type Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+         * @param type Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD*ROUTER, NETWORK, METAL*NETWORK
          * 
          * @return builder
          * 
@@ -632,7 +632,7 @@ public final class ConnectionASideAccessPointArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param type Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+         * @param type Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD*ROUTER, NETWORK, METAL*NETWORK
          * 
          * @return builder
          * 

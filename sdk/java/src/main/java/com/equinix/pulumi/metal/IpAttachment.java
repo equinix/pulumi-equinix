@@ -249,11 +249,18 @@ public class IpAttachment extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public IpAttachment(String name, IpAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("equinix:metal/ipAttachment:IpAttachment", name, args == null ? IpAttachmentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("equinix:metal/ipAttachment:IpAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private IpAttachment(String name, Output<String> id, @Nullable IpAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("equinix:metal/ipAttachment:IpAttachment", name, state, makeResourceOptions(options, id));
+    }
+
+    private static IpAttachmentArgs makeArgs(IpAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? IpAttachmentArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
