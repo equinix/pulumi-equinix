@@ -262,11 +262,18 @@ public class OrganizationMember extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public OrganizationMember(String name, OrganizationMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("equinix:metal/organizationMember:OrganizationMember", name, args == null ? OrganizationMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("equinix:metal/organizationMember:OrganizationMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private OrganizationMember(String name, Output<String> id, @Nullable OrganizationMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("equinix:metal/organizationMember:OrganizationMember", name, state, makeResourceOptions(options, id));
+    }
+
+    private static OrganizationMemberArgs makeArgs(OrganizationMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? OrganizationMemberArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

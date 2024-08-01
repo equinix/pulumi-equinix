@@ -211,11 +211,18 @@ public class BgpSession extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public BgpSession(String name, BgpSessionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("equinix:metal/bgpSession:BgpSession", name, args == null ? BgpSessionArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("equinix:metal/bgpSession:BgpSession", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private BgpSession(String name, Output<String> id, @Nullable BgpSessionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("equinix:metal/bgpSession:BgpSession", name, state, makeResourceOptions(options, id));
+    }
+
+    private static BgpSessionArgs makeArgs(BgpSessionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? BgpSessionArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -996,6 +996,1099 @@ import (
 //	}
 //
 // ```
+// ### example fcr to azure
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix"
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fabric.NewConnection(ctx, "fcr2azure", &fabric.ConnectionArgs{
+//				Name: pulumi.String("ConnectionName"),
+//				Type: pulumi.String("IP_VC"),
+//				Notifications: fabric.ConnectionNotificationArray{
+//					&fabric.ConnectionNotificationArgs{
+//						Type: pulumi.String(fabric.NotificationsTypeAll),
+//						Emails: pulumi.StringArray{
+//							pulumi.String("example@equinix.com"),
+//							pulumi.String("test1@equinix.com"),
+//						},
+//					},
+//				},
+//				Bandwidth: pulumi.Int(50),
+//				Order: &fabric.ConnectionOrderArgs{
+//					PurchaseOrderNumber: pulumi.String("1-323292"),
+//				},
+//				ASide: &fabric.ConnectionASideArgs{
+//					AccessPoint: &fabric.ConnectionASideAccessPointArgs{
+//						Type: pulumi.String("CLOUD_ROUTER"),
+//						Router: &fabric.ConnectionASideAccessPointRouterArgs{
+//							Uuid: pulumi.String("<cloud_router_uuid>"),
+//						},
+//					},
+//				},
+//				ZSide: &fabric.ConnectionZSideArgs{
+//					AccessPoint: &fabric.ConnectionZSideAccessPointArgs{
+//						Type:              pulumi.String(fabric.AccessPointTypeSP),
+//						AuthenticationKey: pulumi.String("<Azure_ExpressRouter_Auth_Key>"),
+//						PeeringType:       pulumi.String(fabric.AccessPointPeeringTypePrivate),
+//						Profile: &fabric.ConnectionZSideAccessPointProfileArgs{
+//							Type: pulumi.String(fabric.ProfileTypeL2Profile),
+//							Uuid: pulumi.String("<Azure_Service_Profile_UUID>"),
+//						},
+//						Location: &fabric.ConnectionZSideAccessPointLocationArgs{
+//							MetroCode: pulumi.String(equinix.MetroSiliconValley),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### example fcr to metal
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fabric.NewConnection(ctx, "fcr2metal", &fabric.ConnectionArgs{
+//				Name: pulumi.String("ConnectionName"),
+//				Type: pulumi.String("IP_VC"),
+//				Notifications: fabric.ConnectionNotificationArray{
+//					&fabric.ConnectionNotificationArgs{
+//						Type: pulumi.String(fabric.NotificationsTypeAll),
+//						Emails: pulumi.StringArray{
+//							pulumi.String("example@equinix.com"),
+//							pulumi.String("test1@equinix.com"),
+//						},
+//					},
+//				},
+//				Bandwidth: pulumi.Int(50),
+//				Order: &fabric.ConnectionOrderArgs{
+//					PurchaseOrderNumber: pulumi.String("1-323292"),
+//				},
+//				ASide: &fabric.ConnectionASideArgs{
+//					AccessPoint: &fabric.ConnectionASideAccessPointArgs{
+//						Type: pulumi.String("CLOUD_ROUTER"),
+//						Router: &fabric.ConnectionASideAccessPointRouterArgs{
+//							Uuid: pulumi.String("<cloud_router_uuid>"),
+//						},
+//					},
+//				},
+//				ZSide: &fabric.ConnectionZSideArgs{
+//					AccessPoint: &fabric.ConnectionZSideAccessPointArgs{
+//						Type:              pulumi.String("METAL_NETWORK"),
+//						AuthenticationKey: pulumi.String("<metal_authorization_code>"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### example fcr to network
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fabric.NewConnection(ctx, "fcr2network", &fabric.ConnectionArgs{
+//				Name: pulumi.String("ConnectionName"),
+//				Type: pulumi.String("IPWAN_VC"),
+//				Notifications: fabric.ConnectionNotificationArray{
+//					&fabric.ConnectionNotificationArgs{
+//						Type: pulumi.String(fabric.NotificationsTypeAll),
+//						Emails: pulumi.StringArray{
+//							pulumi.String("example@equinix.com"),
+//							pulumi.String("test1@equinix.com"),
+//						},
+//					},
+//				},
+//				Bandwidth: pulumi.Int(50),
+//				Order: &fabric.ConnectionOrderArgs{
+//					PurchaseOrderNumber: pulumi.String("1-323292"),
+//				},
+//				ASide: &fabric.ConnectionASideArgs{
+//					AccessPoint: &fabric.ConnectionASideAccessPointArgs{
+//						Type: pulumi.String("CLOUD_ROUTER"),
+//						Router: &fabric.ConnectionASideAccessPointRouterArgs{
+//							Uuid: pulumi.String("<cloud_router_uuid>"),
+//						},
+//					},
+//				},
+//				ZSide: &fabric.ConnectionZSideArgs{
+//					AccessPoint: &fabric.ConnectionZSideAccessPointArgs{
+//						Type: pulumi.String(fabric.AccessPointTypeNetwork),
+//						Network: &fabric.ConnectionZSideAccessPointNetworkArgs{
+//							Uuid: pulumi.String("<network_uuid>"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### example fcr to port
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix"
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fabric.NewConnection(ctx, "fcr2port", &fabric.ConnectionArgs{
+//				Name: pulumi.String("ConnectionName"),
+//				Type: pulumi.String("IP_VC"),
+//				Notifications: fabric.ConnectionNotificationArray{
+//					&fabric.ConnectionNotificationArgs{
+//						Type: pulumi.String(fabric.NotificationsTypeAll),
+//						Emails: pulumi.StringArray{
+//							pulumi.String("example@equinix.com"),
+//							pulumi.String("test1@equinix.com"),
+//						},
+//					},
+//				},
+//				Bandwidth: pulumi.Int(50),
+//				Order: &fabric.ConnectionOrderArgs{
+//					PurchaseOrderNumber: pulumi.String("1-323292"),
+//				},
+//				ASide: &fabric.ConnectionASideArgs{
+//					AccessPoint: &fabric.ConnectionASideAccessPointArgs{
+//						Type: pulumi.String("CLOUD_ROUTER"),
+//						Router: &fabric.ConnectionASideAccessPointRouterArgs{
+//							Uuid: pulumi.String("<cloud_router_uuid>"),
+//						},
+//					},
+//				},
+//				ZSide: &fabric.ConnectionZSideArgs{
+//					AccessPoint: &fabric.ConnectionZSideAccessPointArgs{
+//						Type: pulumi.String(fabric.AccessPointTypeColo),
+//						Port: &fabric.ConnectionZSideAccessPointPortArgs{
+//							Uuid: pulumi.String("<port_uuid>"),
+//						},
+//						LinkProtocol: &fabric.ConnectionZSideAccessPointLinkProtocolArgs{
+//							Type:    pulumi.String(fabric.AccessPointLinkProtocolTypeDot1q),
+//							VlanTag: pulumi.Int(2711),
+//						},
+//						Location: &fabric.ConnectionZSideAccessPointLocationArgs{
+//							MetroCode: pulumi.String(equinix.MetroSiliconValley),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### example metal to aws
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix"
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fabric.NewConnection(ctx, "metal2aws", &fabric.ConnectionArgs{
+//				Name: pulumi.String("ConnectionName"),
+//				Type: pulumi.String("EVPLAN_VC"),
+//				Notifications: fabric.ConnectionNotificationArray{
+//					&fabric.ConnectionNotificationArgs{
+//						Type: pulumi.String(fabric.NotificationsTypeAll),
+//						Emails: pulumi.StringArray{
+//							pulumi.String("example@equinix.com"),
+//							pulumi.String("test1@equinix.com"),
+//						},
+//					},
+//				},
+//				Bandwidth: pulumi.Int(50),
+//				Order: &fabric.ConnectionOrderArgs{
+//					PurchaseOrderNumber: pulumi.String("1-323292"),
+//				},
+//				ASide: &fabric.ConnectionASideArgs{
+//					AccessPoint: &fabric.ConnectionASideAccessPointArgs{
+//						Type:              pulumi.String("METAL_NETWORK"),
+//						AuthenticationKey: pulumi.String("<metal_authorization_code>"),
+//					},
+//				},
+//				ZSide: &fabric.ConnectionZSideArgs{
+//					AccessPoint: &fabric.ConnectionZSideAccessPointArgs{
+//						Type:              pulumi.String(fabric.AccessPointTypeSP),
+//						AuthenticationKey: pulumi.String("<aws_account_id>"),
+//						SellerRegion:      pulumi.String("us-west-1"),
+//						Profile: &fabric.ConnectionZSideAccessPointProfileArgs{
+//							Type: pulumi.String(fabric.ProfileTypeL2Profile),
+//							Uuid: pulumi.String("<service_profile_uuid>"),
+//						},
+//						Location: &fabric.ConnectionZSideAccessPointLocationArgs{
+//							MetroCode: pulumi.String(equinix.MetroSiliconValley),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### example port to aws
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix"
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fabric.NewConnection(ctx, "port2aws", &fabric.ConnectionArgs{
+//				Name: pulumi.String("ConnectionName"),
+//				Type: pulumi.String(fabric.ConnectionTypeEVPL),
+//				Notifications: fabric.ConnectionNotificationArray{
+//					&fabric.ConnectionNotificationArgs{
+//						Type: pulumi.String(fabric.NotificationsTypeAll),
+//						Emails: pulumi.StringArray{
+//							pulumi.String("example@equinix.com"),
+//							pulumi.String("test1@equinix.com"),
+//						},
+//					},
+//				},
+//				Bandwidth: pulumi.Int(50),
+//				Redundancy: &fabric.ConnectionRedundancyArgs{
+//					Priority: pulumi.String("PRIMARY"),
+//				},
+//				Order: &fabric.ConnectionOrderArgs{
+//					PurchaseOrderNumber: pulumi.String("1-323929"),
+//				},
+//				ASide: &fabric.ConnectionASideArgs{
+//					AccessPoint: &fabric.ConnectionASideAccessPointArgs{
+//						Type: pulumi.String(fabric.AccessPointTypeColo),
+//						Port: &fabric.ConnectionASideAccessPointPortArgs{
+//							Uuid: pulumi.String("<aside_port_uuid>"),
+//						},
+//						LinkProtocol: &fabric.ConnectionASideAccessPointLinkProtocolArgs{
+//							Type:     pulumi.String(fabric.AccessPointLinkProtocolTypeQinQ),
+//							VlanSTag: pulumi.Int(2019),
+//							VlanCTag: pulumi.Int(2112),
+//						},
+//					},
+//				},
+//				ZSide: &fabric.ConnectionZSideArgs{
+//					AccessPoint: &fabric.ConnectionZSideAccessPointArgs{
+//						Type:              pulumi.String(fabric.AccessPointTypeSP),
+//						AuthenticationKey: pulumi.String("<aws_account_id>"),
+//						SellerRegion:      pulumi.String("us-west-1"),
+//						Profile: &fabric.ConnectionZSideAccessPointProfileArgs{
+//							Type: pulumi.String(fabric.ProfileTypeL2Profile),
+//							Uuid: pulumi.String("<service_profile_uuid>"),
+//						},
+//						Location: &fabric.ConnectionZSideAccessPointLocationArgs{
+//							MetroCode: pulumi.String(equinix.MetroSiliconValley),
+//						},
+//					},
+//				},
+//				AdditionalInfo: pulumi.MapArray{
+//					pulumi.Map{
+//						"key":   pulumi.Any("accessKey"),
+//						"value": pulumi.Any("<aws_access_key>"),
+//					},
+//					pulumi.Map{
+//						"key":   pulumi.Any("secretKey"),
+//						"value": pulumi.Any("<aws_secret_key>"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### example port to network eplan
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fabric.NewConnection(ctx, "eplan", &fabric.ConnectionArgs{
+//				Name: pulumi.String("ConnectionName"),
+//				Type: pulumi.String("EPLAN_VC"),
+//				Notifications: fabric.ConnectionNotificationArray{
+//					&fabric.ConnectionNotificationArgs{
+//						Type: pulumi.String(fabric.NotificationsTypeAll),
+//						Emails: pulumi.StringArray{
+//							pulumi.String("example@equinix.com"),
+//							pulumi.String("test1@equinix.com"),
+//						},
+//					},
+//				},
+//				Bandwidth: pulumi.Int(50),
+//				Order: &fabric.ConnectionOrderArgs{
+//					PurchaseOrderNumber: pulumi.String("1-323292"),
+//				},
+//				ASide: &fabric.ConnectionASideArgs{
+//					AccessPoint: &fabric.ConnectionASideAccessPointArgs{
+//						Type: pulumi.String(fabric.AccessPointTypeColo),
+//						Port: &fabric.ConnectionASideAccessPointPortArgs{
+//							Uuid: pulumi.String("<aside_port_uuid>"),
+//						},
+//					},
+//				},
+//				ZSide: &fabric.ConnectionZSideArgs{
+//					AccessPoint: &fabric.ConnectionZSideAccessPointArgs{
+//						Type: pulumi.String(fabric.AccessPointTypeNetwork),
+//						Network: &fabric.ConnectionZSideAccessPointNetworkArgs{
+//							Uuid: pulumi.String("<network_uuid>"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### example port to network evplan
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fabric.NewConnection(ctx, "evplan", &fabric.ConnectionArgs{
+//				Name: pulumi.String("ConnectionName"),
+//				Type: pulumi.String("EVPLAN_VC"),
+//				Notifications: fabric.ConnectionNotificationArray{
+//					&fabric.ConnectionNotificationArgs{
+//						Type: pulumi.String(fabric.NotificationsTypeAll),
+//						Emails: pulumi.StringArray{
+//							pulumi.String("example@equinix.com"),
+//							pulumi.String("test1@equinix.com"),
+//						},
+//					},
+//				},
+//				Bandwidth: pulumi.Int(50),
+//				Order: &fabric.ConnectionOrderArgs{
+//					PurchaseOrderNumber: pulumi.String("1-323292"),
+//				},
+//				ASide: &fabric.ConnectionASideArgs{
+//					AccessPoint: &fabric.ConnectionASideAccessPointArgs{
+//						Type: pulumi.String(fabric.AccessPointTypeColo),
+//						Port: &fabric.ConnectionASideAccessPointPortArgs{
+//							Uuid: pulumi.String("<aside_port_uuid>"),
+//						},
+//						LinkProtocol: &fabric.ConnectionASideAccessPointLinkProtocolArgs{
+//							Type:     pulumi.String(fabric.AccessPointLinkProtocolTypeDot1q),
+//							VlanSTag: pulumi.Int(1976),
+//						},
+//					},
+//				},
+//				ZSide: &fabric.ConnectionZSideArgs{
+//					AccessPoint: &fabric.ConnectionZSideAccessPointArgs{
+//						Type: pulumi.String(fabric.AccessPointTypeNetwork),
+//						Network: &fabric.ConnectionZSideAccessPointNetworkArgs{
+//							Uuid: pulumi.String("<network_uuid>"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### example port to port
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix"
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fabric.NewConnection(ctx, "port2port", &fabric.ConnectionArgs{
+//				Name: pulumi.String("ConnectionName"),
+//				Type: pulumi.String(fabric.ConnectionTypeEVPL),
+//				Notifications: fabric.ConnectionNotificationArray{
+//					&fabric.ConnectionNotificationArgs{
+//						Type: pulumi.String(fabric.NotificationsTypeAll),
+//						Emails: pulumi.StringArray{
+//							pulumi.String("example@equinix.com"),
+//							pulumi.String("test1@equinix.com"),
+//						},
+//					},
+//				},
+//				Bandwidth: pulumi.Int(50),
+//				Order: &fabric.ConnectionOrderArgs{
+//					PurchaseOrderNumber: pulumi.String("1-323292"),
+//				},
+//				ASide: &fabric.ConnectionASideArgs{
+//					AccessPoint: &fabric.ConnectionASideAccessPointArgs{
+//						Type: pulumi.String(fabric.AccessPointTypeColo),
+//						Port: &fabric.ConnectionASideAccessPointPortArgs{
+//							Uuid: pulumi.String("<aside_port_uuid>"),
+//						},
+//						LinkProtocol: &fabric.ConnectionASideAccessPointLinkProtocolArgs{
+//							Type:     pulumi.String(fabric.AccessPointLinkProtocolTypeQinQ),
+//							VlanSTag: pulumi.Int(1976),
+//						},
+//					},
+//				},
+//				ZSide: &fabric.ConnectionZSideArgs{
+//					AccessPoint: &fabric.ConnectionZSideAccessPointArgs{
+//						Type: pulumi.String(fabric.AccessPointTypeColo),
+//						Port: &fabric.ConnectionZSideAccessPointPortArgs{
+//							Uuid: pulumi.String("<zside_port_uuid>"),
+//						},
+//						LinkProtocol: &fabric.ConnectionZSideAccessPointLinkProtocolArgs{
+//							Type:     pulumi.String(fabric.AccessPointLinkProtocolTypeQinQ),
+//							VlanSTag: pulumi.Int(3711),
+//						},
+//						Location: &fabric.ConnectionZSideAccessPointLocationArgs{
+//							MetroCode: pulumi.String(equinix.MetroSiliconValley),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### example port to port access epl
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix"
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fabric.NewConnection(ctx, "accessEplVc", &fabric.ConnectionArgs{
+//				Name: pulumi.String("ConnectionName"),
+//				Type: pulumi.String(fabric.ConnectionTypeAccessEPL),
+//				Notifications: fabric.ConnectionNotificationArray{
+//					&fabric.ConnectionNotificationArgs{
+//						Type: pulumi.String(fabric.NotificationsTypeAll),
+//						Emails: pulumi.StringArray{
+//							pulumi.String("example@equinix.com"),
+//							pulumi.String("test1@equinix.com"),
+//						},
+//					},
+//				},
+//				Bandwidth: pulumi.Int(50),
+//				Order: &fabric.ConnectionOrderArgs{
+//					PurchaseOrderNumber: pulumi.String("1-323292"),
+//				},
+//				ASide: &fabric.ConnectionASideArgs{
+//					AccessPoint: &fabric.ConnectionASideAccessPointArgs{
+//						Type: pulumi.String(fabric.AccessPointTypeColo),
+//						Port: &fabric.ConnectionASideAccessPointPortArgs{
+//							Uuid: pulumi.String("<aside_port_uuid>"),
+//						},
+//						LinkProtocol: &fabric.ConnectionASideAccessPointLinkProtocolArgs{
+//							Type:     pulumi.String(fabric.AccessPointLinkProtocolTypeQinQ),
+//							VlanSTag: pulumi.Int(1976),
+//						},
+//					},
+//				},
+//				ZSide: &fabric.ConnectionZSideArgs{
+//					AccessPoint: &fabric.ConnectionZSideAccessPointArgs{
+//						Type: pulumi.String(fabric.AccessPointTypeColo),
+//						Port: &fabric.ConnectionZSideAccessPointPortArgs{
+//							Uuid: pulumi.String("<zside_port_uuid>"),
+//						},
+//						Location: &fabric.ConnectionZSideAccessPointLocationArgs{
+//							MetroCode: pulumi.String(equinix.MetroSiliconValley),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### example port to port epl
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix"
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fabric.NewConnection(ctx, "epl", &fabric.ConnectionArgs{
+//				Name: pulumi.String("ConnectionName"),
+//				Type: pulumi.String(fabric.ConnectionTypeEPL),
+//				Notifications: fabric.ConnectionNotificationArray{
+//					&fabric.ConnectionNotificationArgs{
+//						Type: pulumi.String(fabric.NotificationsTypeAll),
+//						Emails: pulumi.StringArray{
+//							pulumi.String("example@equinix.com"),
+//							pulumi.String("test1@equinix.com"),
+//						},
+//					},
+//				},
+//				Bandwidth: pulumi.Int(50),
+//				Order: &fabric.ConnectionOrderArgs{
+//					PurchaseOrderNumber: pulumi.String("1-323292"),
+//				},
+//				ASide: &fabric.ConnectionASideArgs{
+//					AccessPoint: &fabric.ConnectionASideAccessPointArgs{
+//						Type: pulumi.String(fabric.AccessPointTypeColo),
+//						Port: &fabric.ConnectionASideAccessPointPortArgs{
+//							Uuid: pulumi.String("<aside_port_uuid>"),
+//						},
+//					},
+//				},
+//				ZSide: &fabric.ConnectionZSideArgs{
+//					AccessPoint: &fabric.ConnectionZSideAccessPointArgs{
+//						Type: pulumi.String(fabric.AccessPointTypeColo),
+//						Port: &fabric.ConnectionZSideAccessPointPortArgs{
+//							Uuid: pulumi.String("<zside_port_uuid>"),
+//						},
+//						Location: &fabric.ConnectionZSideAccessPointLocationArgs{
+//							MetroCode: pulumi.String(equinix.MetroSiliconValley),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### example port to vd
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix"
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fabric.NewConnection(ctx, "vd2port", &fabric.ConnectionArgs{
+//				Name: pulumi.String("ConnectionName"),
+//				Type: pulumi.String(fabric.ConnectionTypeEVPL),
+//				Notifications: fabric.ConnectionNotificationArray{
+//					&fabric.ConnectionNotificationArgs{
+//						Type: pulumi.String(fabric.NotificationsTypeAll),
+//						Emails: pulumi.StringArray{
+//							pulumi.String("example@equinix.com"),
+//							pulumi.String("test1@equinix.com"),
+//						},
+//					},
+//				},
+//				Bandwidth: pulumi.Int(50),
+//				Order: &fabric.ConnectionOrderArgs{
+//					PurchaseOrderNumber: pulumi.String("1-323292"),
+//				},
+//				ASide: &fabric.ConnectionASideArgs{
+//					AccessPoint: &fabric.ConnectionASideAccessPointArgs{
+//						Type: pulumi.String(fabric.AccessPointTypeVD),
+//						VirtualDevice: &fabric.ConnectionASideAccessPointVirtualDeviceArgs{
+//							Type: pulumi.String("EDGE"),
+//							Uuid: pulumi.String("<device_uuid>"),
+//						},
+//						Interface: &fabric.ConnectionASideAccessPointInterfaceArgs{
+//							Type: pulumi.String("NETWORK"),
+//							Id:   pulumi.Int(7),
+//						},
+//					},
+//				},
+//				ZSide: &fabric.ConnectionZSideArgs{
+//					AccessPoint: &fabric.ConnectionZSideAccessPointArgs{
+//						Type: pulumi.String(fabric.AccessPointTypeColo),
+//						Port: &fabric.ConnectionZSideAccessPointPortArgs{
+//							Uuid: pulumi.String("<zside_port_uuid>"),
+//						},
+//						LinkProtocol: &fabric.ConnectionZSideAccessPointLinkProtocolArgs{
+//							Type:     pulumi.String(fabric.AccessPointLinkProtocolTypeDot1q),
+//							VlanSTag: pulumi.Int(3711),
+//						},
+//						Location: &fabric.ConnectionZSideAccessPointLocationArgs{
+//							MetroCode: pulumi.String(equinix.MetroSiliconValley),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### example token to aws
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix"
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fabric.NewConnection(ctx, "token2aws", &fabric.ConnectionArgs{
+//				Name: pulumi.String("ConnectionName"),
+//				Type: pulumi.String(fabric.ConnectionTypeEVPL),
+//				Notifications: fabric.ConnectionNotificationArray{
+//					&fabric.ConnectionNotificationArgs{
+//						Type: pulumi.String(fabric.NotificationsTypeAll),
+//						Emails: pulumi.StringArray{
+//							pulumi.String("example@equinix.com"),
+//							pulumi.String("test1@equinix.com"),
+//						},
+//					},
+//				},
+//				Bandwidth: pulumi.Int(50),
+//				Order: &fabric.ConnectionOrderArgs{
+//					PurchaseOrderNumber: pulumi.String("1-323292"),
+//				},
+//				ASide: &fabric.ConnectionASideArgs{
+//					ServiceToken: &fabric.ConnectionASideServiceTokenArgs{
+//						Uuid: pulumi.String("<service_token_uuid>"),
+//					},
+//				},
+//				ZSide: &fabric.ConnectionZSideArgs{
+//					AccessPoint: &fabric.ConnectionZSideAccessPointArgs{
+//						Type:              pulumi.String(fabric.AccessPointTypeSP),
+//						AuthenticationKey: pulumi.String("<aws_account_id>"),
+//						SellerRegion:      pulumi.String("us-west-1"),
+//						Profile: &fabric.ConnectionZSideAccessPointProfileArgs{
+//							Type: pulumi.String(fabric.ProfileTypeL2Profile),
+//							Uuid: pulumi.String("<service_profile_uuid>"),
+//						},
+//						Location: &fabric.ConnectionZSideAccessPointLocationArgs{
+//							MetroCode: pulumi.String(equinix.MetroSiliconValley),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### example vd to azure
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix"
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fabric.NewConnection(ctx, "vd2azure", &fabric.ConnectionArgs{
+//				Name: pulumi.String("ConnectionName"),
+//				Type: pulumi.String(fabric.ConnectionTypeEVPL),
+//				Notifications: fabric.ConnectionNotificationArray{
+//					&fabric.ConnectionNotificationArgs{
+//						Type: pulumi.String(fabric.NotificationsTypeAll),
+//						Emails: pulumi.StringArray{
+//							pulumi.String("example@equinix.com"),
+//							pulumi.String("test1@equinix.com"),
+//						},
+//					},
+//				},
+//				Bandwidth: pulumi.Int(50),
+//				Order: &fabric.ConnectionOrderArgs{
+//					PurchaseOrderNumber: pulumi.String("1-323292"),
+//				},
+//				ASide: &fabric.ConnectionASideArgs{
+//					AccessPoint: &fabric.ConnectionASideAccessPointArgs{
+//						Type: pulumi.String(fabric.AccessPointTypeVD),
+//						VirtualDevice: &fabric.ConnectionASideAccessPointVirtualDeviceArgs{
+//							Type: pulumi.String("EDGE"),
+//							Uuid: pulumi.String("<device_uuid>"),
+//						},
+//						Interface: &fabric.ConnectionASideAccessPointInterfaceArgs{
+//							Type: pulumi.String("CLOUD"),
+//							Id:   pulumi.Int(7),
+//						},
+//					},
+//				},
+//				ZSide: &fabric.ConnectionZSideArgs{
+//					AccessPoint: &fabric.ConnectionZSideAccessPointArgs{
+//						Type:              pulumi.String(fabric.AccessPointTypeSP),
+//						AuthenticationKey: pulumi.String("<Azure_ExpressRouter_Auth_Key>"),
+//						PeeringType:       pulumi.String(fabric.AccessPointPeeringTypePrivate),
+//						Profile: &fabric.ConnectionZSideAccessPointProfileArgs{
+//							Type: pulumi.String(fabric.ProfileTypeL2Profile),
+//							Uuid: pulumi.String("<Azure_Service_Profile_UUID>"),
+//						},
+//						Location: &fabric.ConnectionZSideAccessPointLocationArgs{
+//							MetroCode: pulumi.String(equinix.MetroSiliconValley),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### example vd to azure redundant
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix"
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			vd2AzurePrimary, err := fabric.NewConnection(ctx, "vd2azurePrimary", &fabric.ConnectionArgs{
+//				Name: pulumi.String("ConnectionName"),
+//				Type: pulumi.String(fabric.ConnectionTypeEVPL),
+//				Redundancy: &fabric.ConnectionRedundancyArgs{
+//					Priority: pulumi.String("PRIMARY"),
+//				},
+//				Notifications: fabric.ConnectionNotificationArray{
+//					&fabric.ConnectionNotificationArgs{
+//						Type: pulumi.String(fabric.NotificationsTypeAll),
+//						Emails: pulumi.StringArray{
+//							pulumi.String("example@equinix.com"),
+//							pulumi.String("test1@equinix.com"),
+//						},
+//					},
+//				},
+//				Bandwidth: pulumi.Int(50),
+//				Order: &fabric.ConnectionOrderArgs{
+//					PurchaseOrderNumber: pulumi.String("1-323292"),
+//				},
+//				ASide: &fabric.ConnectionASideArgs{
+//					AccessPoint: &fabric.ConnectionASideAccessPointArgs{
+//						Type: pulumi.String(fabric.AccessPointTypeVD),
+//						VirtualDevice: &fabric.ConnectionASideAccessPointVirtualDeviceArgs{
+//							Type: pulumi.String("EDGE"),
+//							Uuid: pulumi.String("<device_uuid>"),
+//						},
+//						Interface: &fabric.ConnectionASideAccessPointInterfaceArgs{
+//							Type: pulumi.String("CLOUD"),
+//							Id:   pulumi.Int(7),
+//						},
+//					},
+//				},
+//				ZSide: &fabric.ConnectionZSideArgs{
+//					AccessPoint: &fabric.ConnectionZSideAccessPointArgs{
+//						Type:              pulumi.String(fabric.AccessPointTypeSP),
+//						AuthenticationKey: pulumi.String("<Azure_ExpressRouter_Auth_Key>"),
+//						PeeringType:       pulumi.String(fabric.AccessPointPeeringTypePrivate),
+//						Profile: &fabric.ConnectionZSideAccessPointProfileArgs{
+//							Type: pulumi.String(fabric.ProfileTypeL2Profile),
+//							Uuid: pulumi.String("<Azure_Service_Profile_UUID>"),
+//						},
+//						Location: &fabric.ConnectionZSideAccessPointLocationArgs{
+//							MetroCode: pulumi.String(equinix.MetroSiliconValley),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = fabric.NewConnection(ctx, "vd2azureSecondary", &fabric.ConnectionArgs{
+//				Name: pulumi.String("ConnectionName"),
+//				Type: pulumi.String(fabric.ConnectionTypeEVPL),
+//				Redundancy: &fabric.ConnectionRedundancyArgs{
+//					Priority: pulumi.String("SECONDARY"),
+//					Group: vd2AzurePrimary.Redundancy.ApplyT(func(redundancy fabric.ConnectionRedundancy) (*string, error) {
+//						return &redundancy.Group, nil
+//					}).(pulumi.StringPtrOutput),
+//				},
+//				Notifications: fabric.ConnectionNotificationArray{
+//					&fabric.ConnectionNotificationArgs{
+//						Type: pulumi.String(fabric.NotificationsTypeAll),
+//						Emails: pulumi.StringArray{
+//							pulumi.String("example@equinix.com"),
+//							pulumi.String("test1@equinix.com"),
+//						},
+//					},
+//				},
+//				Bandwidth: pulumi.Int(50),
+//				Order: &fabric.ConnectionOrderArgs{
+//					PurchaseOrderNumber: pulumi.String("1-323292"),
+//				},
+//				ASide: &fabric.ConnectionASideArgs{
+//					AccessPoint: &fabric.ConnectionASideAccessPointArgs{
+//						Type: pulumi.String(fabric.AccessPointTypeVD),
+//						VirtualDevice: &fabric.ConnectionASideAccessPointVirtualDeviceArgs{
+//							Type: pulumi.String("EDGE"),
+//							Uuid: pulumi.String("<device_uuid>"),
+//						},
+//						Interface: &fabric.ConnectionASideAccessPointInterfaceArgs{
+//							Type: pulumi.String("CLOUD"),
+//							Id:   pulumi.Int(5),
+//						},
+//					},
+//				},
+//				ZSide: &fabric.ConnectionZSideArgs{
+//					AccessPoint: &fabric.ConnectionZSideAccessPointArgs{
+//						Type:              pulumi.String(fabric.AccessPointTypeSP),
+//						AuthenticationKey: pulumi.String("<Azure_ExpressRouter_Auth_Key>"),
+//						PeeringType:       pulumi.String(fabric.AccessPointPeeringTypePrivate),
+//						Profile: &fabric.ConnectionZSideAccessPointProfileArgs{
+//							Type: pulumi.String(fabric.ProfileTypeL2Profile),
+//							Uuid: pulumi.String("<Azure_Service_Profile_UUID>"),
+//						},
+//						Location: &fabric.ConnectionZSideAccessPointLocationArgs{
+//							MetroCode: pulumi.String(equinix.MetroSiliconValley),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### example vd to network
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fabric.NewConnection(ctx, "vd2network", &fabric.ConnectionArgs{
+//				Name: pulumi.String("ConnectionName"),
+//				Type: pulumi.String("EVPLAN_VC"),
+//				Notifications: fabric.ConnectionNotificationArray{
+//					&fabric.ConnectionNotificationArgs{
+//						Type: pulumi.String(fabric.NotificationsTypeAll),
+//						Emails: pulumi.StringArray{
+//							pulumi.String("example@equinix.com"),
+//							pulumi.String("test1@equinix.com"),
+//						},
+//					},
+//				},
+//				Bandwidth: pulumi.Int(50),
+//				Order: &fabric.ConnectionOrderArgs{
+//					PurchaseOrderNumber: pulumi.String("1-323292"),
+//				},
+//				ASide: &fabric.ConnectionASideArgs{
+//					AccessPoint: &fabric.ConnectionASideAccessPointArgs{
+//						Type: pulumi.String(fabric.AccessPointTypeVD),
+//						VirtualDevice: &fabric.ConnectionASideAccessPointVirtualDeviceArgs{
+//							Type: pulumi.String("EDGE"),
+//							Uuid: pulumi.String("<device_uuid>"),
+//						},
+//						Interface: &fabric.ConnectionASideAccessPointInterfaceArgs{
+//							Type: pulumi.String("CLOUD"),
+//							Id:   pulumi.Int(7),
+//						},
+//					},
+//				},
+//				ZSide: &fabric.ConnectionZSideArgs{
+//					AccessPoint: &fabric.ConnectionZSideAccessPointArgs{
+//						Type: pulumi.String(fabric.AccessPointTypeNetwork),
+//						Network: &fabric.ConnectionZSideAccessPointNetworkArgs{
+//							Uuid: pulumi.String("<network_uuid>"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### example vd to token
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fabric.NewConnection(ctx, "vd2token", &fabric.ConnectionArgs{
+//				Name: pulumi.String("ConnectionName"),
+//				Type: pulumi.String(fabric.ConnectionTypeEVPL),
+//				Notifications: fabric.ConnectionNotificationArray{
+//					&fabric.ConnectionNotificationArgs{
+//						Type: pulumi.String(fabric.NotificationsTypeAll),
+//						Emails: pulumi.StringArray{
+//							pulumi.String("example@equinix.com"),
+//							pulumi.String("test1@equinix.com"),
+//						},
+//					},
+//				},
+//				Bandwidth: pulumi.Int(50),
+//				Order: &fabric.ConnectionOrderArgs{
+//					PurchaseOrderNumber: pulumi.String("1-323292"),
+//				},
+//				ASide: &fabric.ConnectionASideArgs{
+//					AccessPoint: &fabric.ConnectionASideAccessPointArgs{
+//						Type: pulumi.String(fabric.AccessPointTypeVD),
+//						VirtualDevice: &fabric.ConnectionASideAccessPointVirtualDeviceArgs{
+//							Type: pulumi.String("EDGE"),
+//							Uuid: pulumi.String("<device_uuid>"),
+//						},
+//						Interface: &fabric.ConnectionASideAccessPointInterfaceArgs{
+//							Type: pulumi.String("NETWORK"),
+//							Id:   pulumi.Int(7),
+//						},
+//					},
+//				},
+//				ZSide: &fabric.ConnectionZSideArgs{
+//					ServiceToken: &fabric.ConnectionZSideServiceTokenArgs{
+//						Uuid: pulumi.String("<service_token_uuid>"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type Connection struct {
 	pulumi.CustomResourceState
 
@@ -1031,7 +2124,7 @@ type Connection struct {
 	Redundancy ConnectionRedundancyPtrOutput `pulumi:"redundancy"`
 	// Connection overall state
 	State pulumi.StringOutput `pulumi:"state"`
-	// Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
+	// Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, IA*VC, EC_VC
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Equinix-assigned connection identifier
 	Uuid pulumi.StringOutput `pulumi:"uuid"`
@@ -1116,7 +2209,7 @@ type connectionState struct {
 	Redundancy *ConnectionRedundancy `pulumi:"redundancy"`
 	// Connection overall state
 	State *string `pulumi:"state"`
-	// Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
+	// Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, IA*VC, EC_VC
 	Type *string `pulumi:"type"`
 	// Equinix-assigned connection identifier
 	Uuid *string `pulumi:"uuid"`
@@ -1157,7 +2250,7 @@ type ConnectionState struct {
 	Redundancy ConnectionRedundancyPtrInput
 	// Connection overall state
 	State pulumi.StringPtrInput
-	// Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
+	// Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, IA*VC, EC_VC
 	Type pulumi.StringPtrInput
 	// Equinix-assigned connection identifier
 	Uuid pulumi.StringPtrInput
@@ -1188,7 +2281,7 @@ type connectionArgs struct {
 	Project *ConnectionProject `pulumi:"project"`
 	// Connection Redundancy Configuration
 	Redundancy *ConnectionRedundancy `pulumi:"redundancy"`
-	// Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
+	// Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, IA*VC, EC_VC
 	Type string `pulumi:"type"`
 	// Destination or Provider side connection configuration object of the multi-segment connection
 	ZSide ConnectionZSide `pulumi:"zSide"`
@@ -1214,7 +2307,7 @@ type ConnectionArgs struct {
 	Project ConnectionProjectPtrInput
 	// Connection Redundancy Configuration
 	Redundancy ConnectionRedundancyPtrInput
-	// Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
+	// Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, IA*VC, EC_VC
 	Type pulumi.StringInput
 	// Destination or Provider side connection configuration object of the multi-segment connection
 	ZSide ConnectionZSideInput
@@ -1387,7 +2480,7 @@ func (o ConnectionOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
+// Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, IA*VC, EC_VC
 func (o ConnectionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

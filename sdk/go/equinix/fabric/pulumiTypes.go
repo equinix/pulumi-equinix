@@ -1320,7 +1320,7 @@ func (o ConnectionASidePtrOutput) ServiceToken() ConnectionASideServiceTokenPtrO
 type ConnectionASideAccessPoint struct {
 	// Account
 	Account *ConnectionASideAccessPointAccount `pulumi:"account"`
-	// Authentication key for provider based connections
+	// Authentication key for provider based connections or Metal NIMF connections
 	AuthenticationKey *string `pulumi:"authenticationKey"`
 	// **Deprecated** `gateway` Use `router` attribute instead
 	//
@@ -1346,7 +1346,7 @@ type ConnectionASideAccessPoint struct {
 	Router *ConnectionASideAccessPointRouter `pulumi:"router"`
 	// Access point seller region
 	SellerRegion *string `pulumi:"sellerRegion"`
-	// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+	// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD*ROUTER, NETWORK, METAL*NETWORK
 	Type *string `pulumi:"type"`
 	// Virtual device
 	VirtualDevice *ConnectionASideAccessPointVirtualDevice `pulumi:"virtualDevice"`
@@ -1366,7 +1366,7 @@ type ConnectionASideAccessPointInput interface {
 type ConnectionASideAccessPointArgs struct {
 	// Account
 	Account ConnectionASideAccessPointAccountPtrInput `pulumi:"account"`
-	// Authentication key for provider based connections
+	// Authentication key for provider based connections or Metal NIMF connections
 	AuthenticationKey pulumi.StringPtrInput `pulumi:"authenticationKey"`
 	// **Deprecated** `gateway` Use `router` attribute instead
 	//
@@ -1392,7 +1392,7 @@ type ConnectionASideAccessPointArgs struct {
 	Router ConnectionASideAccessPointRouterPtrInput `pulumi:"router"`
 	// Access point seller region
 	SellerRegion pulumi.StringPtrInput `pulumi:"sellerRegion"`
-	// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+	// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD*ROUTER, NETWORK, METAL*NETWORK
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// Virtual device
 	VirtualDevice ConnectionASideAccessPointVirtualDevicePtrInput `pulumi:"virtualDevice"`
@@ -1480,7 +1480,7 @@ func (o ConnectionASideAccessPointOutput) Account() ConnectionASideAccessPointAc
 	return o.ApplyT(func(v ConnectionASideAccessPoint) *ConnectionASideAccessPointAccount { return v.Account }).(ConnectionASideAccessPointAccountPtrOutput)
 }
 
-// Authentication key for provider based connections
+// Authentication key for provider based connections or Metal NIMF connections
 func (o ConnectionASideAccessPointOutput) AuthenticationKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionASideAccessPoint) *string { return v.AuthenticationKey }).(pulumi.StringPtrOutput)
 }
@@ -1542,7 +1542,7 @@ func (o ConnectionASideAccessPointOutput) SellerRegion() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v ConnectionASideAccessPoint) *string { return v.SellerRegion }).(pulumi.StringPtrOutput)
 }
 
-// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD*ROUTER, NETWORK, METAL*NETWORK
 func (o ConnectionASideAccessPointOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionASideAccessPoint) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -1586,7 +1586,7 @@ func (o ConnectionASideAccessPointPtrOutput) Account() ConnectionASideAccessPoin
 	}).(ConnectionASideAccessPointAccountPtrOutput)
 }
 
-// Authentication key for provider based connections
+// Authentication key for provider based connections or Metal NIMF connections
 func (o ConnectionASideAccessPointPtrOutput) AuthenticationKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionASideAccessPoint) *string {
 		if v == nil {
@@ -1708,7 +1708,7 @@ func (o ConnectionASideAccessPointPtrOutput) SellerRegion() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD*ROUTER, NETWORK, METAL*NETWORK
 func (o ConnectionASideAccessPointPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionASideAccessPoint) *string {
 		if v == nil {
@@ -3251,7 +3251,7 @@ type ConnectionASideAccessPointProfile struct {
 	Href *string `pulumi:"href"`
 	// Customer-assigned service profile name
 	Name *string `pulumi:"name"`
-	// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+	// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
 	Type string `pulumi:"type"`
 	// Equinix assigned service profile identifier
 	Uuid string `pulumi:"uuid"`
@@ -3277,7 +3277,7 @@ type ConnectionASideAccessPointProfileArgs struct {
 	Href pulumi.StringPtrInput `pulumi:"href"`
 	// Customer-assigned service profile name
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+	// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
 	Type pulumi.StringInput `pulumi:"type"`
 	// Equinix assigned service profile identifier
 	Uuid pulumi.StringInput `pulumi:"uuid"`
@@ -3382,7 +3382,7 @@ func (o ConnectionASideAccessPointProfileOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionASideAccessPointProfile) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
 func (o ConnectionASideAccessPointProfileOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectionASideAccessPointProfile) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -3456,7 +3456,7 @@ func (o ConnectionASideAccessPointProfilePtrOutput) Name() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
 func (o ConnectionASideAccessPointProfilePtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionASideAccessPointProfile) *string {
 		if v == nil {
@@ -6070,7 +6070,7 @@ func (o ConnectionZSidePtrOutput) ServiceToken() ConnectionZSideServiceTokenPtrO
 type ConnectionZSideAccessPoint struct {
 	// Account
 	Account *ConnectionZSideAccessPointAccount `pulumi:"account"`
-	// Authentication key for provider based connections
+	// Authentication key for provider based connections or Metal NIMF connections
 	AuthenticationKey *string `pulumi:"authenticationKey"`
 	// **Deprecated** `gateway` Use `router` attribute instead
 	//
@@ -6096,7 +6096,7 @@ type ConnectionZSideAccessPoint struct {
 	Router *ConnectionZSideAccessPointRouter `pulumi:"router"`
 	// Access point seller region
 	SellerRegion *string `pulumi:"sellerRegion"`
-	// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+	// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD*ROUTER, NETWORK, METAL*NETWORK
 	Type *string `pulumi:"type"`
 	// Virtual device
 	VirtualDevice *ConnectionZSideAccessPointVirtualDevice `pulumi:"virtualDevice"`
@@ -6116,7 +6116,7 @@ type ConnectionZSideAccessPointInput interface {
 type ConnectionZSideAccessPointArgs struct {
 	// Account
 	Account ConnectionZSideAccessPointAccountPtrInput `pulumi:"account"`
-	// Authentication key for provider based connections
+	// Authentication key for provider based connections or Metal NIMF connections
 	AuthenticationKey pulumi.StringPtrInput `pulumi:"authenticationKey"`
 	// **Deprecated** `gateway` Use `router` attribute instead
 	//
@@ -6142,7 +6142,7 @@ type ConnectionZSideAccessPointArgs struct {
 	Router ConnectionZSideAccessPointRouterPtrInput `pulumi:"router"`
 	// Access point seller region
 	SellerRegion pulumi.StringPtrInput `pulumi:"sellerRegion"`
-	// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+	// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD*ROUTER, NETWORK, METAL*NETWORK
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// Virtual device
 	VirtualDevice ConnectionZSideAccessPointVirtualDevicePtrInput `pulumi:"virtualDevice"`
@@ -6230,7 +6230,7 @@ func (o ConnectionZSideAccessPointOutput) Account() ConnectionZSideAccessPointAc
 	return o.ApplyT(func(v ConnectionZSideAccessPoint) *ConnectionZSideAccessPointAccount { return v.Account }).(ConnectionZSideAccessPointAccountPtrOutput)
 }
 
-// Authentication key for provider based connections
+// Authentication key for provider based connections or Metal NIMF connections
 func (o ConnectionZSideAccessPointOutput) AuthenticationKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionZSideAccessPoint) *string { return v.AuthenticationKey }).(pulumi.StringPtrOutput)
 }
@@ -6292,7 +6292,7 @@ func (o ConnectionZSideAccessPointOutput) SellerRegion() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v ConnectionZSideAccessPoint) *string { return v.SellerRegion }).(pulumi.StringPtrOutput)
 }
 
-// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD*ROUTER, NETWORK, METAL*NETWORK
 func (o ConnectionZSideAccessPointOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionZSideAccessPoint) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -6336,7 +6336,7 @@ func (o ConnectionZSideAccessPointPtrOutput) Account() ConnectionZSideAccessPoin
 	}).(ConnectionZSideAccessPointAccountPtrOutput)
 }
 
-// Authentication key for provider based connections
+// Authentication key for provider based connections or Metal NIMF connections
 func (o ConnectionZSideAccessPointPtrOutput) AuthenticationKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionZSideAccessPoint) *string {
 		if v == nil {
@@ -6458,7 +6458,7 @@ func (o ConnectionZSideAccessPointPtrOutput) SellerRegion() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD*ROUTER, NETWORK, METAL*NETWORK
 func (o ConnectionZSideAccessPointPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionZSideAccessPoint) *string {
 		if v == nil {
@@ -8001,7 +8001,7 @@ type ConnectionZSideAccessPointProfile struct {
 	Href *string `pulumi:"href"`
 	// Customer-assigned service profile name
 	Name *string `pulumi:"name"`
-	// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+	// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
 	Type string `pulumi:"type"`
 	// Equinix assigned service profile identifier
 	Uuid string `pulumi:"uuid"`
@@ -8027,7 +8027,7 @@ type ConnectionZSideAccessPointProfileArgs struct {
 	Href pulumi.StringPtrInput `pulumi:"href"`
 	// Customer-assigned service profile name
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+	// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
 	Type pulumi.StringInput `pulumi:"type"`
 	// Equinix assigned service profile identifier
 	Uuid pulumi.StringInput `pulumi:"uuid"`
@@ -8132,7 +8132,7 @@ func (o ConnectionZSideAccessPointProfileOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionZSideAccessPointProfile) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
 func (o ConnectionZSideAccessPointProfileOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectionZSideAccessPointProfile) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -8206,7 +8206,7 @@ func (o ConnectionZSideAccessPointProfilePtrOutput) Name() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
 func (o ConnectionZSideAccessPointProfilePtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionZSideAccessPointProfile) *string {
 		if v == nil {
@@ -16950,7 +16950,7 @@ func (o GetConnectionASideOutput) ServiceToken() GetConnectionASideServiceTokenP
 type GetConnectionASideAccessPoint struct {
 	// Account
 	Accounts []GetConnectionASideAccessPointAccount `pulumi:"accounts"`
-	// Authentication key for provider based connections
+	// Authentication key for provider based connections or Metal NIMF connections
 	AuthenticationKey *string `pulumi:"authenticationKey"`
 	// **Deprecated** `gateway` Use `router` attribute instead
 	//
@@ -16976,7 +16976,7 @@ type GetConnectionASideAccessPoint struct {
 	Router *GetConnectionASideAccessPointRouter `pulumi:"router"`
 	// Access point seller region
 	SellerRegion *string `pulumi:"sellerRegion"`
-	// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+	// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK, METAL_NETWORK
 	Type *string `pulumi:"type"`
 	// Virtual device
 	VirtualDevice *GetConnectionASideAccessPointVirtualDevice `pulumi:"virtualDevice"`
@@ -16996,7 +16996,7 @@ type GetConnectionASideAccessPointInput interface {
 type GetConnectionASideAccessPointArgs struct {
 	// Account
 	Accounts GetConnectionASideAccessPointAccountArrayInput `pulumi:"accounts"`
-	// Authentication key for provider based connections
+	// Authentication key for provider based connections or Metal NIMF connections
 	AuthenticationKey pulumi.StringPtrInput `pulumi:"authenticationKey"`
 	// **Deprecated** `gateway` Use `router` attribute instead
 	//
@@ -17022,7 +17022,7 @@ type GetConnectionASideAccessPointArgs struct {
 	Router GetConnectionASideAccessPointRouterPtrInput `pulumi:"router"`
 	// Access point seller region
 	SellerRegion pulumi.StringPtrInput `pulumi:"sellerRegion"`
-	// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+	// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK, METAL_NETWORK
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// Virtual device
 	VirtualDevice GetConnectionASideAccessPointVirtualDevicePtrInput `pulumi:"virtualDevice"`
@@ -17110,7 +17110,7 @@ func (o GetConnectionASideAccessPointOutput) Accounts() GetConnectionASideAccess
 	return o.ApplyT(func(v GetConnectionASideAccessPoint) []GetConnectionASideAccessPointAccount { return v.Accounts }).(GetConnectionASideAccessPointAccountArrayOutput)
 }
 
-// Authentication key for provider based connections
+// Authentication key for provider based connections or Metal NIMF connections
 func (o GetConnectionASideAccessPointOutput) AuthenticationKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetConnectionASideAccessPoint) *string { return v.AuthenticationKey }).(pulumi.StringPtrOutput)
 }
@@ -17174,7 +17174,7 @@ func (o GetConnectionASideAccessPointOutput) SellerRegion() pulumi.StringPtrOutp
 	return o.ApplyT(func(v GetConnectionASideAccessPoint) *string { return v.SellerRegion }).(pulumi.StringPtrOutput)
 }
 
-// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK, METAL_NETWORK
 func (o GetConnectionASideAccessPointOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetConnectionASideAccessPoint) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -17220,7 +17220,7 @@ func (o GetConnectionASideAccessPointPtrOutput) Accounts() GetConnectionASideAcc
 	}).(GetConnectionASideAccessPointAccountArrayOutput)
 }
 
-// Authentication key for provider based connections
+// Authentication key for provider based connections or Metal NIMF connections
 func (o GetConnectionASideAccessPointPtrOutput) AuthenticationKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetConnectionASideAccessPoint) *string {
 		if v == nil {
@@ -17342,7 +17342,7 @@ func (o GetConnectionASideAccessPointPtrOutput) SellerRegion() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK, METAL_NETWORK
 func (o GetConnectionASideAccessPointPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetConnectionASideAccessPoint) *string {
 		if v == nil {
@@ -20673,7 +20673,7 @@ func (o GetConnectionZSideOutput) ServiceToken() GetConnectionZSideServiceTokenP
 type GetConnectionZSideAccessPoint struct {
 	// Account
 	Accounts []GetConnectionZSideAccessPointAccount `pulumi:"accounts"`
-	// Authentication key for provider based connections
+	// Authentication key for provider based connections or Metal NIMF connections
 	AuthenticationKey *string `pulumi:"authenticationKey"`
 	// **Deprecated** `gateway` Use `router` attribute instead
 	//
@@ -20699,7 +20699,7 @@ type GetConnectionZSideAccessPoint struct {
 	Router *GetConnectionZSideAccessPointRouter `pulumi:"router"`
 	// Access point seller region
 	SellerRegion *string `pulumi:"sellerRegion"`
-	// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+	// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK, METAL_NETWORK
 	Type *string `pulumi:"type"`
 	// Virtual device
 	VirtualDevice *GetConnectionZSideAccessPointVirtualDevice `pulumi:"virtualDevice"`
@@ -20719,7 +20719,7 @@ type GetConnectionZSideAccessPointInput interface {
 type GetConnectionZSideAccessPointArgs struct {
 	// Account
 	Accounts GetConnectionZSideAccessPointAccountArrayInput `pulumi:"accounts"`
-	// Authentication key for provider based connections
+	// Authentication key for provider based connections or Metal NIMF connections
 	AuthenticationKey pulumi.StringPtrInput `pulumi:"authenticationKey"`
 	// **Deprecated** `gateway` Use `router` attribute instead
 	//
@@ -20745,7 +20745,7 @@ type GetConnectionZSideAccessPointArgs struct {
 	Router GetConnectionZSideAccessPointRouterPtrInput `pulumi:"router"`
 	// Access point seller region
 	SellerRegion pulumi.StringPtrInput `pulumi:"sellerRegion"`
-	// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+	// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK, METAL_NETWORK
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// Virtual device
 	VirtualDevice GetConnectionZSideAccessPointVirtualDevicePtrInput `pulumi:"virtualDevice"`
@@ -20833,7 +20833,7 @@ func (o GetConnectionZSideAccessPointOutput) Accounts() GetConnectionZSideAccess
 	return o.ApplyT(func(v GetConnectionZSideAccessPoint) []GetConnectionZSideAccessPointAccount { return v.Accounts }).(GetConnectionZSideAccessPointAccountArrayOutput)
 }
 
-// Authentication key for provider based connections
+// Authentication key for provider based connections or Metal NIMF connections
 func (o GetConnectionZSideAccessPointOutput) AuthenticationKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetConnectionZSideAccessPoint) *string { return v.AuthenticationKey }).(pulumi.StringPtrOutput)
 }
@@ -20897,7 +20897,7 @@ func (o GetConnectionZSideAccessPointOutput) SellerRegion() pulumi.StringPtrOutp
 	return o.ApplyT(func(v GetConnectionZSideAccessPoint) *string { return v.SellerRegion }).(pulumi.StringPtrOutput)
 }
 
-// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK, METAL_NETWORK
 func (o GetConnectionZSideAccessPointOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetConnectionZSideAccessPoint) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -20943,7 +20943,7 @@ func (o GetConnectionZSideAccessPointPtrOutput) Accounts() GetConnectionZSideAcc
 	}).(GetConnectionZSideAccessPointAccountArrayOutput)
 }
 
-// Authentication key for provider based connections
+// Authentication key for provider based connections or Metal NIMF connections
 func (o GetConnectionZSideAccessPointPtrOutput) AuthenticationKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetConnectionZSideAccessPoint) *string {
 		if v == nil {
@@ -21065,7 +21065,7 @@ func (o GetConnectionZSideAccessPointPtrOutput) SellerRegion() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK, METAL_NETWORK
 func (o GetConnectionZSideAccessPointPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetConnectionZSideAccessPoint) *string {
 		if v == nil {
@@ -23798,7 +23798,7 @@ func (o GetConnectionsDataASideArrayOutput) Index(i pulumi.IntInput) GetConnecti
 type GetConnectionsDataASideAccessPoint struct {
 	// Account
 	Accounts []GetConnectionsDataASideAccessPointAccount `pulumi:"accounts"`
-	// Authentication key for provider based connections
+	// Authentication key for provider based connections or Metal NIMF connections
 	AuthenticationKey *string `pulumi:"authenticationKey"`
 	// **Deprecated** `gateway` Use `router` attribute instead
 	//
@@ -23824,7 +23824,7 @@ type GetConnectionsDataASideAccessPoint struct {
 	Router *GetConnectionsDataASideAccessPointRouter `pulumi:"router"`
 	// Access point seller region
 	SellerRegion *string `pulumi:"sellerRegion"`
-	// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+	// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK, METAL_NETWORK
 	Type *string `pulumi:"type"`
 	// Virtual device
 	VirtualDevice *GetConnectionsDataASideAccessPointVirtualDevice `pulumi:"virtualDevice"`
@@ -23844,7 +23844,7 @@ type GetConnectionsDataASideAccessPointInput interface {
 type GetConnectionsDataASideAccessPointArgs struct {
 	// Account
 	Accounts GetConnectionsDataASideAccessPointAccountArrayInput `pulumi:"accounts"`
-	// Authentication key for provider based connections
+	// Authentication key for provider based connections or Metal NIMF connections
 	AuthenticationKey pulumi.StringPtrInput `pulumi:"authenticationKey"`
 	// **Deprecated** `gateway` Use `router` attribute instead
 	//
@@ -23870,7 +23870,7 @@ type GetConnectionsDataASideAccessPointArgs struct {
 	Router GetConnectionsDataASideAccessPointRouterPtrInput `pulumi:"router"`
 	// Access point seller region
 	SellerRegion pulumi.StringPtrInput `pulumi:"sellerRegion"`
-	// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+	// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK, METAL_NETWORK
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// Virtual device
 	VirtualDevice GetConnectionsDataASideAccessPointVirtualDevicePtrInput `pulumi:"virtualDevice"`
@@ -23960,7 +23960,7 @@ func (o GetConnectionsDataASideAccessPointOutput) Accounts() GetConnectionsDataA
 	}).(GetConnectionsDataASideAccessPointAccountArrayOutput)
 }
 
-// Authentication key for provider based connections
+// Authentication key for provider based connections or Metal NIMF connections
 func (o GetConnectionsDataASideAccessPointOutput) AuthenticationKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetConnectionsDataASideAccessPoint) *string { return v.AuthenticationKey }).(pulumi.StringPtrOutput)
 }
@@ -24034,7 +24034,7 @@ func (o GetConnectionsDataASideAccessPointOutput) SellerRegion() pulumi.StringPt
 	return o.ApplyT(func(v GetConnectionsDataASideAccessPoint) *string { return v.SellerRegion }).(pulumi.StringPtrOutput)
 }
 
-// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK, METAL_NETWORK
 func (o GetConnectionsDataASideAccessPointOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetConnectionsDataASideAccessPoint) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -24080,7 +24080,7 @@ func (o GetConnectionsDataASideAccessPointPtrOutput) Accounts() GetConnectionsDa
 	}).(GetConnectionsDataASideAccessPointAccountArrayOutput)
 }
 
-// Authentication key for provider based connections
+// Authentication key for provider based connections or Metal NIMF connections
 func (o GetConnectionsDataASideAccessPointPtrOutput) AuthenticationKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetConnectionsDataASideAccessPoint) *string {
 		if v == nil {
@@ -24202,7 +24202,7 @@ func (o GetConnectionsDataASideAccessPointPtrOutput) SellerRegion() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK, METAL_NETWORK
 func (o GetConnectionsDataASideAccessPointPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetConnectionsDataASideAccessPoint) *string {
 		if v == nil {
@@ -27848,7 +27848,7 @@ func (o GetConnectionsDataZSideArrayOutput) Index(i pulumi.IntInput) GetConnecti
 type GetConnectionsDataZSideAccessPoint struct {
 	// Account
 	Accounts []GetConnectionsDataZSideAccessPointAccount `pulumi:"accounts"`
-	// Authentication key for provider based connections
+	// Authentication key for provider based connections or Metal NIMF connections
 	AuthenticationKey *string `pulumi:"authenticationKey"`
 	// **Deprecated** `gateway` Use `router` attribute instead
 	//
@@ -27874,7 +27874,7 @@ type GetConnectionsDataZSideAccessPoint struct {
 	Router *GetConnectionsDataZSideAccessPointRouter `pulumi:"router"`
 	// Access point seller region
 	SellerRegion *string `pulumi:"sellerRegion"`
-	// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+	// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK, METAL_NETWORK
 	Type *string `pulumi:"type"`
 	// Virtual device
 	VirtualDevice *GetConnectionsDataZSideAccessPointVirtualDevice `pulumi:"virtualDevice"`
@@ -27894,7 +27894,7 @@ type GetConnectionsDataZSideAccessPointInput interface {
 type GetConnectionsDataZSideAccessPointArgs struct {
 	// Account
 	Accounts GetConnectionsDataZSideAccessPointAccountArrayInput `pulumi:"accounts"`
-	// Authentication key for provider based connections
+	// Authentication key for provider based connections or Metal NIMF connections
 	AuthenticationKey pulumi.StringPtrInput `pulumi:"authenticationKey"`
 	// **Deprecated** `gateway` Use `router` attribute instead
 	//
@@ -27920,7 +27920,7 @@ type GetConnectionsDataZSideAccessPointArgs struct {
 	Router GetConnectionsDataZSideAccessPointRouterPtrInput `pulumi:"router"`
 	// Access point seller region
 	SellerRegion pulumi.StringPtrInput `pulumi:"sellerRegion"`
-	// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+	// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK, METAL_NETWORK
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// Virtual device
 	VirtualDevice GetConnectionsDataZSideAccessPointVirtualDevicePtrInput `pulumi:"virtualDevice"`
@@ -28010,7 +28010,7 @@ func (o GetConnectionsDataZSideAccessPointOutput) Accounts() GetConnectionsDataZ
 	}).(GetConnectionsDataZSideAccessPointAccountArrayOutput)
 }
 
-// Authentication key for provider based connections
+// Authentication key for provider based connections or Metal NIMF connections
 func (o GetConnectionsDataZSideAccessPointOutput) AuthenticationKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetConnectionsDataZSideAccessPoint) *string { return v.AuthenticationKey }).(pulumi.StringPtrOutput)
 }
@@ -28084,7 +28084,7 @@ func (o GetConnectionsDataZSideAccessPointOutput) SellerRegion() pulumi.StringPt
 	return o.ApplyT(func(v GetConnectionsDataZSideAccessPoint) *string { return v.SellerRegion }).(pulumi.StringPtrOutput)
 }
 
-// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK, METAL_NETWORK
 func (o GetConnectionsDataZSideAccessPointOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetConnectionsDataZSideAccessPoint) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -28130,7 +28130,7 @@ func (o GetConnectionsDataZSideAccessPointPtrOutput) Accounts() GetConnectionsDa
 	}).(GetConnectionsDataZSideAccessPointAccountArrayOutput)
 }
 
-// Authentication key for provider based connections
+// Authentication key for provider based connections or Metal NIMF connections
 func (o GetConnectionsDataZSideAccessPointPtrOutput) AuthenticationKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPoint) *string {
 		if v == nil {
@@ -28252,7 +28252,7 @@ func (o GetConnectionsDataZSideAccessPointPtrOutput) SellerRegion() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK, METAL_NETWORK
 func (o GetConnectionsDataZSideAccessPointPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPoint) *string {
 		if v == nil {

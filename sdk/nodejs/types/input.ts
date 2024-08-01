@@ -157,7 +157,7 @@ export namespace fabric {
          */
         account?: pulumi.Input<inputs.fabric.ConnectionASideAccessPointAccount>;
         /**
-         * Authentication key for provider based connections
+         * Authentication key for provider based connections or Metal NIMF connections
          */
         authenticationKey?: pulumi.Input<string>;
         /**
@@ -207,7 +207,7 @@ export namespace fabric {
          */
         sellerRegion?: pulumi.Input<string>;
         /**
-         * Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+         * Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD*ROUTER, NETWORK, METAL*NETWORK
          */
         type?: pulumi.Input<string | enums.fabric.AccessPointType>;
         /**
@@ -378,7 +378,7 @@ export namespace fabric {
          */
         name?: pulumi.Input<string>;
         /**
-         * Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+         * Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
          */
         type: pulumi.Input<string | enums.fabric.ProfileType>;
         /**
@@ -674,7 +674,7 @@ export namespace fabric {
          */
         account?: pulumi.Input<inputs.fabric.ConnectionZSideAccessPointAccount>;
         /**
-         * Authentication key for provider based connections
+         * Authentication key for provider based connections or Metal NIMF connections
          */
         authenticationKey?: pulumi.Input<string>;
         /**
@@ -724,7 +724,7 @@ export namespace fabric {
          */
         sellerRegion?: pulumi.Input<string>;
         /**
-         * Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+         * Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD*ROUTER, NETWORK, METAL*NETWORK
          */
         type?: pulumi.Input<string | enums.fabric.AccessPointType>;
         /**
@@ -895,7 +895,7 @@ export namespace fabric {
          */
         name?: pulumi.Input<string>;
         /**
-         * Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+         * Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
          */
         type: pulumi.Input<string | enums.fabric.ProfileType>;
         /**

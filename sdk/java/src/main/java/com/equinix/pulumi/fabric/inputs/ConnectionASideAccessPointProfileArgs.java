@@ -81,14 +81,14 @@ public final class ConnectionASideAccessPointProfileArgs extends com.pulumi.reso
     }
 
     /**
-     * Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+     * Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
      * 
      */
     @Import(name="type", required=true)
     private Output<Either<String,ProfileType>> type;
 
     /**
-     * @return Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+     * @return Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
      * 
      */
     public Output<Either<String,ProfileType>> type() {
@@ -234,7 +234,7 @@ public final class ConnectionASideAccessPointProfileArgs extends com.pulumi.reso
         }
 
         /**
-         * @param type Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+         * @param type Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
          * 
          * @return builder
          * 
@@ -245,7 +245,7 @@ public final class ConnectionASideAccessPointProfileArgs extends com.pulumi.reso
         }
 
         /**
-         * @param type Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+         * @param type Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
          * 
          * @return builder
          * 
@@ -255,7 +255,7 @@ public final class ConnectionASideAccessPointProfileArgs extends com.pulumi.reso
         }
 
         /**
-         * @param type Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+         * @param type Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
          * 
          * @return builder
          * 
@@ -265,7 +265,7 @@ public final class ConnectionASideAccessPointProfileArgs extends com.pulumi.reso
         }
 
         /**
-         * @param type Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+         * @param type Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
          * 
          * @return builder
          * 

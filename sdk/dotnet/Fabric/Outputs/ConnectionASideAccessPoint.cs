@@ -18,7 +18,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// </summary>
         public readonly Outputs.ConnectionASideAccessPointAccount? Account;
         /// <summary>
-        /// Authentication key for provider based connections
+        /// Authentication key for provider based connections or Metal NIMF connections
         /// </summary>
         public readonly string? AuthenticationKey;
         /// <summary>
@@ -66,7 +66,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// </summary>
         public readonly string? SellerRegion;
         /// <summary>
-        /// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+        /// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD*ROUTER, NETWORK, METAL*NETWORK
         /// </summary>
         public readonly string? Type;
         /// <summary>

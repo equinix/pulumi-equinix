@@ -97,6 +97,9 @@ namespace Pulumi.Equinix.Metal
     [OutputType]
     public sealed class GetInterconnectionResult
     {
+        /// <summary>
+        /// Fabric Authorization Code to configure the NIMF connection in Equinix Fabric with the equinix.fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard).
+        /// </summary>
         public readonly string AuthorizationCode;
         public readonly string ConnectionId;
         /// <summary>

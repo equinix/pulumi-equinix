@@ -215,11 +215,18 @@ public class SpotMarketRequest extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public SpotMarketRequest(String name, SpotMarketRequestArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("equinix:metal/spotMarketRequest:SpotMarketRequest", name, args == null ? SpotMarketRequestArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("equinix:metal/spotMarketRequest:SpotMarketRequest", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private SpotMarketRequest(String name, Output<String> id, @Nullable SpotMarketRequestState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("equinix:metal/spotMarketRequest:SpotMarketRequest", name, state, makeResourceOptions(options, id));
+    }
+
+    private static SpotMarketRequestArgs makeArgs(SpotMarketRequestArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SpotMarketRequestArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

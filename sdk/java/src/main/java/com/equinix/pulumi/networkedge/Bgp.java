@@ -230,11 +230,18 @@ public class Bgp extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Bgp(String name, BgpArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("equinix:networkedge/bgp:Bgp", name, args == null ? BgpArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("equinix:networkedge/bgp:Bgp", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Bgp(String name, Output<String> id, @Nullable BgpState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("equinix:networkedge/bgp:Bgp", name, state, makeResourceOptions(options, id));
+    }
+
+    private static BgpArgs makeArgs(BgpArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? BgpArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
