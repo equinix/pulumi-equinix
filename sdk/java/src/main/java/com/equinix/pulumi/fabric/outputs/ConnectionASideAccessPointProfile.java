@@ -35,7 +35,7 @@ public final class ConnectionASideAccessPointProfile {
      */
     private @Nullable String name;
     /**
-     * @return Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+     * @return Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
      * 
      */
     private String type;
@@ -75,7 +75,7 @@ public final class ConnectionASideAccessPointProfile {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+     * @return Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
      * 
      */
     public String type() {

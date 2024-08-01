@@ -30,7 +30,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+        /// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
         /// </summary>
         public readonly string Type;
         /// <summary>

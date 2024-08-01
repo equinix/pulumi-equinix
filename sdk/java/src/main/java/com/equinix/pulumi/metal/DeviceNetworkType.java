@@ -113,11 +113,18 @@ public class DeviceNetworkType extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public DeviceNetworkType(String name, DeviceNetworkTypeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("equinix:metal/deviceNetworkType:DeviceNetworkType", name, args == null ? DeviceNetworkTypeArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("equinix:metal/deviceNetworkType:DeviceNetworkType", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private DeviceNetworkType(String name, Output<String> id, @Nullable DeviceNetworkTypeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("equinix:metal/deviceNetworkType:DeviceNetworkType", name, state, makeResourceOptions(options, id));
+    }
+
+    private static DeviceNetworkTypeArgs makeArgs(DeviceNetworkTypeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DeviceNetworkTypeArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -892,7 +892,7 @@ class ConnectionASideAccessPoint(dict):
                  virtual_device: Optional['outputs.ConnectionASideAccessPointVirtualDevice'] = None):
         """
         :param 'ConnectionASideAccessPointAccountArgs' account: Account
-        :param str authentication_key: Authentication key for provider based connections
+        :param str authentication_key: Authentication key for provider based connections or Metal NIMF connections
         :param 'ConnectionASideAccessPointGatewayArgs' gateway: **Deprecated** `gateway` Use `router` attribute instead
         :param 'ConnectionASideAccessPointInterfaceArgs' interface: Virtual device interface
         :param 'ConnectionASideAccessPointLinkProtocolArgs' link_protocol: Connection link protocol
@@ -904,7 +904,7 @@ class ConnectionASideAccessPoint(dict):
         :param str provider_connection_id: Provider assigned Connection Id
         :param 'ConnectionASideAccessPointRouterArgs' router: Cloud Router access point information that replaces `gateway`
         :param str seller_region: Access point seller region
-        :param Union[str, 'AccessPointType'] type: Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+        :param Union[str, 'AccessPointType'] type: Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD*ROUTER, NETWORK, METAL*NETWORK
         :param 'ConnectionASideAccessPointVirtualDeviceArgs' virtual_device: Virtual device
         """
         if account is not None:
@@ -950,7 +950,7 @@ class ConnectionASideAccessPoint(dict):
     @pulumi.getter(name="authenticationKey")
     def authentication_key(self) -> Optional[str]:
         """
-        Authentication key for provider based connections
+        Authentication key for provider based connections or Metal NIMF connections
         """
         return pulumi.get(self, "authentication_key")
 
@@ -1047,7 +1047,7 @@ class ConnectionASideAccessPoint(dict):
     @pulumi.getter
     def type(self) -> Optional[str]:
         """
-        Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+        Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD*ROUTER, NETWORK, METAL*NETWORK
         """
         return pulumi.get(self, "type")
 
@@ -1574,7 +1574,7 @@ class ConnectionASideAccessPointProfile(dict):
                  href: Optional[str] = None,
                  name: Optional[str] = None):
         """
-        :param Union[str, 'ProfileType'] type: Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+        :param Union[str, 'ProfileType'] type: Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
         :param str uuid: Equinix assigned service profile identifier
         :param Sequence['ConnectionASideAccessPointProfileAccessPointTypeConfigArgs'] access_point_type_configs: Access point config information
         :param str description: User-provided service description
@@ -1596,7 +1596,7 @@ class ConnectionASideAccessPointProfile(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+        Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
         """
         return pulumi.get(self, "type")
 
@@ -2689,7 +2689,7 @@ class ConnectionZSideAccessPoint(dict):
                  virtual_device: Optional['outputs.ConnectionZSideAccessPointVirtualDevice'] = None):
         """
         :param 'ConnectionZSideAccessPointAccountArgs' account: Account
-        :param str authentication_key: Authentication key for provider based connections
+        :param str authentication_key: Authentication key for provider based connections or Metal NIMF connections
         :param 'ConnectionZSideAccessPointGatewayArgs' gateway: **Deprecated** `gateway` Use `router` attribute instead
         :param 'ConnectionZSideAccessPointInterfaceArgs' interface: Virtual device interface
         :param 'ConnectionZSideAccessPointLinkProtocolArgs' link_protocol: Connection link protocol
@@ -2701,7 +2701,7 @@ class ConnectionZSideAccessPoint(dict):
         :param str provider_connection_id: Provider assigned Connection Id
         :param 'ConnectionZSideAccessPointRouterArgs' router: Cloud Router access point information that replaces `gateway`
         :param str seller_region: Access point seller region
-        :param Union[str, 'AccessPointType'] type: Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+        :param Union[str, 'AccessPointType'] type: Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD*ROUTER, NETWORK, METAL*NETWORK
         :param 'ConnectionZSideAccessPointVirtualDeviceArgs' virtual_device: Virtual device
         """
         if account is not None:
@@ -2747,7 +2747,7 @@ class ConnectionZSideAccessPoint(dict):
     @pulumi.getter(name="authenticationKey")
     def authentication_key(self) -> Optional[str]:
         """
-        Authentication key for provider based connections
+        Authentication key for provider based connections or Metal NIMF connections
         """
         return pulumi.get(self, "authentication_key")
 
@@ -2844,7 +2844,7 @@ class ConnectionZSideAccessPoint(dict):
     @pulumi.getter
     def type(self) -> Optional[str]:
         """
-        Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+        Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD*ROUTER, NETWORK, METAL*NETWORK
         """
         return pulumi.get(self, "type")
 
@@ -3371,7 +3371,7 @@ class ConnectionZSideAccessPointProfile(dict):
                  href: Optional[str] = None,
                  name: Optional[str] = None):
         """
-        :param Union[str, 'ProfileType'] type: Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+        :param Union[str, 'ProfileType'] type: Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
         :param str uuid: Equinix assigned service profile identifier
         :param Sequence['ConnectionZSideAccessPointProfileAccessPointTypeConfigArgs'] access_point_type_configs: Access point config information
         :param str description: User-provided service description
@@ -3393,7 +3393,7 @@ class ConnectionZSideAccessPointProfile(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+        Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
         """
         return pulumi.get(self, "type")
 
@@ -7275,7 +7275,7 @@ class GetConnectionASideAccessPointResult(dict):
         :param Sequence['GetConnectionASideAccessPointAccountArgs'] accounts: Account
         :param 'GetConnectionASideAccessPointLocationArgs' location: Access point location
         :param str provider_connection_id: Provider assigned Connection Id
-        :param str authentication_key: Authentication key for provider based connections
+        :param str authentication_key: Authentication key for provider based connections or Metal NIMF connections
         :param 'GetConnectionASideAccessPointGatewayArgs' gateway: **Deprecated** `gateway` Use `router` attribute instead
         :param 'GetConnectionASideAccessPointInterfaceArgs' interface: Virtual device interface
         :param 'GetConnectionASideAccessPointLinkProtocolArgs' link_protocol: Connection link protocol
@@ -7285,7 +7285,7 @@ class GetConnectionASideAccessPointResult(dict):
         :param 'GetConnectionASideAccessPointProfileArgs' profile: Service Profile
         :param 'GetConnectionASideAccessPointRouterArgs' router: Cloud Router access point information that replaces `gateway`
         :param str seller_region: Access point seller region
-        :param str type: Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+        :param str type: Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK, METAL_NETWORK
         :param 'GetConnectionASideAccessPointVirtualDeviceArgs' virtual_device: Virtual device
         """
         pulumi.set(__self__, "accounts", accounts)
@@ -7344,7 +7344,7 @@ class GetConnectionASideAccessPointResult(dict):
     @pulumi.getter(name="authenticationKey")
     def authentication_key(self) -> Optional[str]:
         """
-        Authentication key for provider based connections
+        Authentication key for provider based connections or Metal NIMF connections
         """
         return pulumi.get(self, "authentication_key")
 
@@ -7425,7 +7425,7 @@ class GetConnectionASideAccessPointResult(dict):
     @pulumi.getter
     def type(self) -> Optional[str]:
         """
-        Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+        Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK, METAL_NETWORK
         """
         return pulumi.get(self, "type")
 
@@ -8690,7 +8690,7 @@ class GetConnectionZSideAccessPointResult(dict):
         :param Sequence['GetConnectionZSideAccessPointAccountArgs'] accounts: Account
         :param 'GetConnectionZSideAccessPointLocationArgs' location: Access point location
         :param str provider_connection_id: Provider assigned Connection Id
-        :param str authentication_key: Authentication key for provider based connections
+        :param str authentication_key: Authentication key for provider based connections or Metal NIMF connections
         :param 'GetConnectionZSideAccessPointGatewayArgs' gateway: **Deprecated** `gateway` Use `router` attribute instead
         :param 'GetConnectionZSideAccessPointInterfaceArgs' interface: Virtual device interface
         :param 'GetConnectionZSideAccessPointLinkProtocolArgs' link_protocol: Connection link protocol
@@ -8700,7 +8700,7 @@ class GetConnectionZSideAccessPointResult(dict):
         :param 'GetConnectionZSideAccessPointProfileArgs' profile: Service Profile
         :param 'GetConnectionZSideAccessPointRouterArgs' router: Cloud Router access point information that replaces `gateway`
         :param str seller_region: Access point seller region
-        :param str type: Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+        :param str type: Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK, METAL_NETWORK
         :param 'GetConnectionZSideAccessPointVirtualDeviceArgs' virtual_device: Virtual device
         """
         pulumi.set(__self__, "accounts", accounts)
@@ -8759,7 +8759,7 @@ class GetConnectionZSideAccessPointResult(dict):
     @pulumi.getter(name="authenticationKey")
     def authentication_key(self) -> Optional[str]:
         """
-        Authentication key for provider based connections
+        Authentication key for provider based connections or Metal NIMF connections
         """
         return pulumi.get(self, "authentication_key")
 
@@ -8840,7 +8840,7 @@ class GetConnectionZSideAccessPointResult(dict):
     @pulumi.getter
     def type(self) -> Optional[str]:
         """
-        Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+        Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK, METAL_NETWORK
         """
         return pulumi.get(self, "type")
 
@@ -9795,7 +9795,7 @@ class GetConnectionsDataASideAccessPointResult(dict):
         :param Sequence['GetConnectionsDataASideAccessPointAccountArgs'] accounts: Account
         :param 'GetConnectionsDataASideAccessPointLocationArgs' location: Access point location
         :param str provider_connection_id: Provider assigned Connection Id
-        :param str authentication_key: Authentication key for provider based connections
+        :param str authentication_key: Authentication key for provider based connections or Metal NIMF connections
         :param 'GetConnectionsDataASideAccessPointGatewayArgs' gateway: **Deprecated** `gateway` Use `router` attribute instead
         :param 'GetConnectionsDataASideAccessPointInterfaceArgs' interface: Virtual device interface
         :param 'GetConnectionsDataASideAccessPointLinkProtocolArgs' link_protocol: Connection link protocol
@@ -9805,7 +9805,7 @@ class GetConnectionsDataASideAccessPointResult(dict):
         :param 'GetConnectionsDataASideAccessPointProfileArgs' profile: Service Profile
         :param 'GetConnectionsDataASideAccessPointRouterArgs' router: Cloud Router access point information that replaces `gateway`
         :param str seller_region: Access point seller region
-        :param str type: Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+        :param str type: Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK, METAL_NETWORK
         :param 'GetConnectionsDataASideAccessPointVirtualDeviceArgs' virtual_device: Virtual device
         """
         pulumi.set(__self__, "accounts", accounts)
@@ -9864,7 +9864,7 @@ class GetConnectionsDataASideAccessPointResult(dict):
     @pulumi.getter(name="authenticationKey")
     def authentication_key(self) -> Optional[str]:
         """
-        Authentication key for provider based connections
+        Authentication key for provider based connections or Metal NIMF connections
         """
         return pulumi.get(self, "authentication_key")
 
@@ -9945,7 +9945,7 @@ class GetConnectionsDataASideAccessPointResult(dict):
     @pulumi.getter
     def type(self) -> Optional[str]:
         """
-        Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+        Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK, METAL_NETWORK
         """
         return pulumi.get(self, "type")
 
@@ -11210,7 +11210,7 @@ class GetConnectionsDataZSideAccessPointResult(dict):
         :param Sequence['GetConnectionsDataZSideAccessPointAccountArgs'] accounts: Account
         :param 'GetConnectionsDataZSideAccessPointLocationArgs' location: Access point location
         :param str provider_connection_id: Provider assigned Connection Id
-        :param str authentication_key: Authentication key for provider based connections
+        :param str authentication_key: Authentication key for provider based connections or Metal NIMF connections
         :param 'GetConnectionsDataZSideAccessPointGatewayArgs' gateway: **Deprecated** `gateway` Use `router` attribute instead
         :param 'GetConnectionsDataZSideAccessPointInterfaceArgs' interface: Virtual device interface
         :param 'GetConnectionsDataZSideAccessPointLinkProtocolArgs' link_protocol: Connection link protocol
@@ -11220,7 +11220,7 @@ class GetConnectionsDataZSideAccessPointResult(dict):
         :param 'GetConnectionsDataZSideAccessPointProfileArgs' profile: Service Profile
         :param 'GetConnectionsDataZSideAccessPointRouterArgs' router: Cloud Router access point information that replaces `gateway`
         :param str seller_region: Access point seller region
-        :param str type: Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+        :param str type: Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK, METAL_NETWORK
         :param 'GetConnectionsDataZSideAccessPointVirtualDeviceArgs' virtual_device: Virtual device
         """
         pulumi.set(__self__, "accounts", accounts)
@@ -11279,7 +11279,7 @@ class GetConnectionsDataZSideAccessPointResult(dict):
     @pulumi.getter(name="authenticationKey")
     def authentication_key(self) -> Optional[str]:
         """
-        Authentication key for provider based connections
+        Authentication key for provider based connections or Metal NIMF connections
         """
         return pulumi.get(self, "authentication_key")
 
@@ -11360,7 +11360,7 @@ class GetConnectionsDataZSideAccessPointResult(dict):
     @pulumi.getter
     def type(self) -> Optional[str]:
         """
-        Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+        Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK, METAL_NETWORK
         """
         return pulumi.get(self, "type")
 

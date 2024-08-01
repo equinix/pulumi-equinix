@@ -1,0 +1,28 @@
+name: equinix-fabric-connection-example_vd_to_token
+runtime: yaml
+resources:
+  vd2token:
+    type: equinix:fabric:Connection
+    properties:
+      name: ConnectionName
+      type: EVPL_VC
+      notifications:
+        - type: ALL
+          emails:
+            - example@equinix.com
+            - test1@equinix.com
+      bandwidth: 50
+      order:
+        purchaseOrderNumber: 1-323292
+      aSide:
+        accessPoint:
+          type: VD
+          virtualDevice:
+            type: EDGE
+            uuid: <device_uuid>
+          interface:
+            type: NETWORK
+            id: 7
+      zSide:
+        serviceToken:
+          uuid: <service_token_uuid>

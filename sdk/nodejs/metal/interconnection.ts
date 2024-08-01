@@ -85,8 +85,7 @@ export class Interconnection extends pulumi.CustomResource {
     }
 
     /**
-     * Only used with Fabric Shared connection. Fabric uses this token to be able to give more detailed information about the
-     * Metal end of the network, when viewing resources from within Fabric.
+     * Fabric Authorization code to configure the NIMF connection with Cloud Service Provider through Equinix Fabric with the equinix.fabric.Connection resource from the [Equinix Developer Portal](https://developer.equinix.com/dev-docs/fabric/getting-started/fabric-v4-apis/connect-metal-to-amazon-web-services).
      */
     public /*out*/ readonly authorizationCode!: pulumi.Output<string>;
     /**
@@ -243,8 +242,7 @@ export class Interconnection extends pulumi.CustomResource {
  */
 export interface InterconnectionState {
     /**
-     * Only used with Fabric Shared connection. Fabric uses this token to be able to give more detailed information about the
-     * Metal end of the network, when viewing resources from within Fabric.
+     * Fabric Authorization code to configure the NIMF connection with Cloud Service Provider through Equinix Fabric with the equinix.fabric.Connection resource from the [Equinix Developer Portal](https://developer.equinix.com/dev-docs/fabric/getting-started/fabric-v4-apis/connect-metal-to-amazon-web-services).
      */
     authorizationCode?: pulumi.Input<string>;
     /**

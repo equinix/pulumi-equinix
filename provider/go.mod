@@ -11,10 +11,10 @@ replace (
 
 require (
 	github.com/equinix/terraform-provider-equinix v1.37.0
-	github.com/pulumi/pulumi-terraform-bridge/pf v0.40.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.87.0
-	github.com/pulumi/pulumi/pkg/v3 v3.124.0
-	github.com/pulumi/pulumi/sdk/v3 v3.124.0
+	github.com/pulumi/pulumi-terraform-bridge/pf v0.41.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.88.0
+	github.com/pulumi/pulumi/pkg/v3 v3.126.0
+	github.com/pulumi/pulumi/sdk/v3 v3.126.0
 )
 
 require (

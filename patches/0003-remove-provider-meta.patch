@@ -46,7 +46,7 @@ index b300753..7a4c77b 100644
  	if config.TerraformVersion == "" {
  		// Terraform 0.12 introduced this field to the protocol
 diff --git a/internal/config/config.go b/internal/config/config.go
-index d118c04..96a3c10 100644
+index 5b34288..f8e633e 100644
 --- a/internal/config/config.go
 +++ b/internal/config/config.go
 @@ -36,10 +36,6 @@ const (
@@ -58,9 +58,9 @@ index d118c04..96a3c10 100644
 -}
 -
  const (
- 	consumerToken         = "aZ9GmqHTPtxevvFq9SK3Pi2yr9YCbRzduCSXF2SNem5sjB91mDq7Th3ZwTtRqMWZ"
- 	metalBasePath         = "/metal/v1/"
-@@ -312,16 +308,7 @@ func (c *Config) AddFwModuleToMetalUserAgent(ctx context.Context, meta tfsdk.Con
+ 	consumerToken = "aZ9GmqHTPtxevvFq9SK3Pi2yr9YCbRzduCSXF2SNem5sjB91mDq7Th3ZwTtRqMWZ"
+ 	metalBasePath = "/metal/v1/"
+@@ -307,16 +303,7 @@ func (c *Config) AddFwModuleToMetalUserAgent(ctx context.Context, meta tfsdk.Con
  	c.Metal.UserAgent = generateFwModuleUserAgentString(ctx, meta, c.metalUserAgent)
  }
  
@@ -78,7 +78,7 @@ index d118c04..96a3c10 100644
  	return baseUserAgent
  }
  
-@@ -329,24 +316,14 @@ func (c *Config) AddModuleToMetalUserAgent(d *schema.ResourceData) {
+@@ -324,24 +311,14 @@ func (c *Config) AddModuleToMetalUserAgent(d *schema.ResourceData) {
  	c.Metal.UserAgent = generateModuleUserAgentString(d, c.metalUserAgent)
  }
  
@@ -105,7 +105,7 @@ index d118c04..96a3c10 100644
  	baseUserAgent = appendUserAgentFromEnv(baseUserAgent)
  	userAgent := fmt.Sprintf("%s pulumi-equinix/%s %s", baseUserAgent, version.ProviderVersion, suffix)
  	return strings.TrimSpace(userAgent)
-@@ -355,7 +332,7 @@ func (c *Config) tfSdkUserAgent(suffix string) string {
+@@ -350,7 +327,7 @@ func (c *Config) tfSdkUserAgent(suffix string) string {
  func (c *Config) tfFrameworkUserAgent(suffix string) string {
  	frameworkModulePath := "github.com/pulumi/pulumi/pkg/v3"
  	baseUserAgent := fmt.Sprintf("Pulumi/%s (+https://www.pulumi.com) Pulumi Plugin SDK/%s",

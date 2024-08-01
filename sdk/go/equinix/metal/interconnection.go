@@ -111,8 +111,7 @@ import (
 type Interconnection struct {
 	pulumi.CustomResourceState
 
-	// Only used with Fabric Shared connection. Fabric uses this token to be able to give more detailed information about the
-	// Metal end of the network, when viewing resources from within Fabric.
+	// Fabric Authorization code to configure the NIMF connection with Cloud Service Provider through Equinix Fabric with the fabric.Connection resource from the [Equinix Developer Portal](https://developer.equinix.com/dev-docs/fabric/getting-started/fabric-v4-apis/connect-metal-to-amazon-web-services).
 	AuthorizationCode pulumi.StringOutput `pulumi:"authorizationCode"`
 	// The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
 	ContactEmail pulumi.StringOutput `pulumi:"contactEmail"`
@@ -195,8 +194,7 @@ func GetInterconnection(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Interconnection resources.
 type interconnectionState struct {
-	// Only used with Fabric Shared connection. Fabric uses this token to be able to give more detailed information about the
-	// Metal end of the network, when viewing resources from within Fabric.
+	// Fabric Authorization code to configure the NIMF connection with Cloud Service Provider through Equinix Fabric with the fabric.Connection resource from the [Equinix Developer Portal](https://developer.equinix.com/dev-docs/fabric/getting-started/fabric-v4-apis/connect-metal-to-amazon-web-services).
 	AuthorizationCode *string `pulumi:"authorizationCode"`
 	// The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
 	ContactEmail *string `pulumi:"contactEmail"`
@@ -244,8 +242,7 @@ type interconnectionState struct {
 }
 
 type InterconnectionState struct {
-	// Only used with Fabric Shared connection. Fabric uses this token to be able to give more detailed information about the
-	// Metal end of the network, when viewing resources from within Fabric.
+	// Fabric Authorization code to configure the NIMF connection with Cloud Service Provider through Equinix Fabric with the fabric.Connection resource from the [Equinix Developer Portal](https://developer.equinix.com/dev-docs/fabric/getting-started/fabric-v4-apis/connect-metal-to-amazon-web-services).
 	AuthorizationCode pulumi.StringPtrInput
 	// The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
 	ContactEmail pulumi.StringPtrInput
@@ -456,8 +453,7 @@ func (o InterconnectionOutput) ToInterconnectionOutputWithContext(ctx context.Co
 	return o
 }
 
-// Only used with Fabric Shared connection. Fabric uses this token to be able to give more detailed information about the
-// Metal end of the network, when viewing resources from within Fabric.
+// Fabric Authorization code to configure the NIMF connection with Cloud Service Provider through Equinix Fabric with the fabric.Connection resource from the [Equinix Developer Portal](https://developer.equinix.com/dev-docs/fabric/getting-started/fabric-v4-apis/connect-metal-to-amazon-web-services).
 func (o InterconnectionOutput) AuthorizationCode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Interconnection) pulumi.StringOutput { return v.AuthorizationCode }).(pulumi.StringOutput)
 }

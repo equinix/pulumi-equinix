@@ -43,7 +43,7 @@ namespace Pulumi.Equinix.Fabric.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+        /// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
         /// </summary>
         [Input("type", required: true)]
         public InputUnion<string, Pulumi.Equinix.Fabric.ProfileType> Type { get; set; } = null!;

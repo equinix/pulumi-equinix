@@ -341,7 +341,7 @@
                 },
                 "authenticationKey": {
                     "type": "string",
-                    "description": "Authentication key for provider based connections\n"
+                    "description": "Authentication key for provider based connections or Metal NIMF connections\n"
                 },
                 "gateway": {
                     "$ref": "#/types/equinix:fabric/ConnectionASideAccessPointGateway:ConnectionASideAccessPointGateway",
@@ -408,7 +408,7 @@
                             "$ref": "#/types/equinix:fabric/accessPointType:AccessPointType"
                         }
                     ],
-                    "description": "Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK\n"
+                    "description": "Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD*ROUTER, NETWORK, METAL*NETWORK\n"
                 },
                 "virtualDevice": {
                     "$ref": "#/types/equinix:fabric/ConnectionASideAccessPointVirtualDevice:ConnectionASideAccessPointVirtualDevice",
@@ -709,7 +709,7 @@
                             "$ref": "#/types/equinix:fabric/profileType:ProfileType"
                         }
                     ],
-                    "description": "Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE\n"
+                    "description": "Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE\n"
                 },
                 "uuid": {
                     "type": "string",
@@ -1204,7 +1204,7 @@
                 },
                 "authenticationKey": {
                     "type": "string",
-                    "description": "Authentication key for provider based connections\n"
+                    "description": "Authentication key for provider based connections or Metal NIMF connections\n"
                 },
                 "gateway": {
                     "$ref": "#/types/equinix:fabric/ConnectionZSideAccessPointGateway:ConnectionZSideAccessPointGateway",
@@ -1271,7 +1271,7 @@
                             "$ref": "#/types/equinix:fabric/accessPointType:AccessPointType"
                         }
                     ],
-                    "description": "Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK\n"
+                    "description": "Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD*ROUTER, NETWORK, METAL*NETWORK\n"
                 },
                 "virtualDevice": {
                     "$ref": "#/types/equinix:fabric/ConnectionZSideAccessPointVirtualDevice:ConnectionZSideAccessPointVirtualDevice",
@@ -1572,7 +1572,7 @@
                             "$ref": "#/types/equinix:fabric/profileType:ProfileType"
                         }
                     ],
-                    "description": "Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE\n"
+                    "description": "Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE\n"
                 },
                 "uuid": {
                     "type": "string",
@@ -3491,7 +3491,7 @@
                 },
                 "authenticationKey": {
                     "type": "string",
-                    "description": "Authentication key for provider based connections\n"
+                    "description": "Authentication key for provider based connections or Metal NIMF connections\n"
                 },
                 "gateway": {
                     "$ref": "#/types/equinix:fabric/getConnectionASideAccessPointGateway:getConnectionASideAccessPointGateway",
@@ -3540,7 +3540,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK\n"
+                    "description": "Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK, METAL_NETWORK\n"
                 },
                 "virtualDevice": {
                     "$ref": "#/types/equinix:fabric/getConnectionASideAccessPointVirtualDevice:getConnectionASideAccessPointVirtualDevice",
@@ -4320,7 +4320,7 @@
                 },
                 "authenticationKey": {
                     "type": "string",
-                    "description": "Authentication key for provider based connections\n"
+                    "description": "Authentication key for provider based connections or Metal NIMF connections\n"
                 },
                 "gateway": {
                     "$ref": "#/types/equinix:fabric/getConnectionZSideAccessPointGateway:getConnectionZSideAccessPointGateway",
@@ -4369,7 +4369,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK\n"
+                    "description": "Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK, METAL_NETWORK\n"
                 },
                 "virtualDevice": {
                     "$ref": "#/types/equinix:fabric/getConnectionZSideAccessPointVirtualDevice:getConnectionZSideAccessPointVirtualDevice",
@@ -4963,7 +4963,7 @@
                 },
                 "authenticationKey": {
                     "type": "string",
-                    "description": "Authentication key for provider based connections\n"
+                    "description": "Authentication key for provider based connections or Metal NIMF connections\n"
                 },
                 "gateway": {
                     "$ref": "#/types/equinix:fabric/getConnectionsDataASideAccessPointGateway:getConnectionsDataASideAccessPointGateway",
@@ -5012,7 +5012,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK\n"
+                    "description": "Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK, METAL_NETWORK\n"
                 },
                 "virtualDevice": {
                     "$ref": "#/types/equinix:fabric/getConnectionsDataASideAccessPointVirtualDevice:getConnectionsDataASideAccessPointVirtualDevice",
@@ -5792,7 +5792,7 @@
                 },
                 "authenticationKey": {
                     "type": "string",
-                    "description": "Authentication key for provider based connections\n"
+                    "description": "Authentication key for provider based connections or Metal NIMF connections\n"
                 },
                 "gateway": {
                     "$ref": "#/types/equinix:fabric/getConnectionsDataZSideAccessPointGateway:getConnectionsDataZSideAccessPointGateway",
@@ -5841,7 +5841,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK\n"
+                    "description": "Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK, METAL_NETWORK\n"
                 },
                 "virtualDevice": {
                     "$ref": "#/types/equinix:fabric/getConnectionsDataZSideAccessPointVirtualDevice:getConnectionsDataZSideAccessPointVirtualDevice",
@@ -13139,7 +13139,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC\n"
+                    "description": "Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, IA*VC, EC_VC\n"
                 },
                 "uuid": {
                     "type": "string",
@@ -13225,7 +13225,7 @@
                             "$ref": "#/types/equinix:fabric/connectionType:ConnectionType"
                         }
                     ],
-                    "description": "Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC\n"
+                    "description": "Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, IA*VC, EC_VC\n"
                 },
                 "zSide": {
                     "$ref": "#/types/equinix:fabric/ConnectionZSide:ConnectionZSide",
@@ -13326,7 +13326,7 @@
                                 "$ref": "#/types/equinix:fabric/connectionType:ConnectionType"
                             }
                         ],
-                        "description": "Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC\n"
+                        "description": "Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, IA*VC, EC_VC\n"
                     },
                     "uuid": {
                         "type": "string",
@@ -14978,7 +14978,7 @@
             "properties": {
                 "authorizationCode": {
                     "type": "string",
-                    "description": "Only used with Fabric Shared connection. Fabric uses this token to be able to give more detailed information about the\nMetal end of the network, when viewing resources from within Fabric.\n"
+                    "description": "Fabric Authorization code to configure the NIMF connection with Cloud Service Provider through Equinix Fabric with the equinix.fabric.Connection resource from the [Equinix Developer Portal](https://developer.equinix.com/dev-docs/fabric/getting-started/fabric-v4-apis/connect-metal-to-amazon-web-services).\n"
                 },
                 "contactEmail": {
                     "type": "string",
@@ -15172,7 +15172,7 @@
                 "properties": {
                     "authorizationCode": {
                         "type": "string",
-                        "description": "Only used with Fabric Shared connection. Fabric uses this token to be able to give more detailed information about the\nMetal end of the network, when viewing resources from within Fabric.\n"
+                        "description": "Fabric Authorization code to configure the NIMF connection with Cloud Service Provider through Equinix Fabric with the equinix.fabric.Connection resource from the [Equinix Developer Portal](https://developer.equinix.com/dev-docs/fabric/getting-started/fabric-v4-apis/connect-metal-to-amazon-web-services).\n"
                     },
                     "contactEmail": {
                         "type": "string",
@@ -20417,7 +20417,8 @@
                 "description": "A collection of values returned by getInterconnection.\n",
                 "properties": {
                     "authorizationCode": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Fabric Authorization Code to configure the NIMF connection in Equinix Fabric with the equinix.fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard).\n"
                     },
                     "connectionId": {
                         "type": "string"

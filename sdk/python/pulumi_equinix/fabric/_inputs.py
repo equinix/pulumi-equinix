@@ -660,7 +660,7 @@ class ConnectionASideAccessPointArgs:
                  virtual_device: Optional[pulumi.Input['ConnectionASideAccessPointVirtualDeviceArgs']] = None):
         """
         :param pulumi.Input['ConnectionASideAccessPointAccountArgs'] account: Account
-        :param pulumi.Input[str] authentication_key: Authentication key for provider based connections
+        :param pulumi.Input[str] authentication_key: Authentication key for provider based connections or Metal NIMF connections
         :param pulumi.Input['ConnectionASideAccessPointGatewayArgs'] gateway: **Deprecated** `gateway` Use `router` attribute instead
         :param pulumi.Input['ConnectionASideAccessPointInterfaceArgs'] interface: Virtual device interface
         :param pulumi.Input['ConnectionASideAccessPointLinkProtocolArgs'] link_protocol: Connection link protocol
@@ -672,7 +672,7 @@ class ConnectionASideAccessPointArgs:
         :param pulumi.Input[str] provider_connection_id: Provider assigned Connection Id
         :param pulumi.Input['ConnectionASideAccessPointRouterArgs'] router: Cloud Router access point information that replaces `gateway`
         :param pulumi.Input[str] seller_region: Access point seller region
-        :param pulumi.Input[Union[str, 'AccessPointType']] type: Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+        :param pulumi.Input[Union[str, 'AccessPointType']] type: Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD*ROUTER, NETWORK, METAL*NETWORK
         :param pulumi.Input['ConnectionASideAccessPointVirtualDeviceArgs'] virtual_device: Virtual device
         """
         if account is not None:
@@ -725,7 +725,7 @@ class ConnectionASideAccessPointArgs:
     @pulumi.getter(name="authenticationKey")
     def authentication_key(self) -> Optional[pulumi.Input[str]]:
         """
-        Authentication key for provider based connections
+        Authentication key for provider based connections or Metal NIMF connections
         """
         return pulumi.get(self, "authentication_key")
 
@@ -870,7 +870,7 @@ class ConnectionASideAccessPointArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[Union[str, 'AccessPointType']]]:
         """
-        Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+        Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD*ROUTER, NETWORK, METAL*NETWORK
         """
         return pulumi.get(self, "type")
 
@@ -1437,7 +1437,7 @@ class ConnectionASideAccessPointProfileArgs:
                  href: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Union[str, 'ProfileType']] type: Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+        :param pulumi.Input[Union[str, 'ProfileType']] type: Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
         :param pulumi.Input[str] uuid: Equinix assigned service profile identifier
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionASideAccessPointProfileAccessPointTypeConfigArgs']]] access_point_type_configs: Access point config information
         :param pulumi.Input[str] description: User-provided service description
@@ -1459,7 +1459,7 @@ class ConnectionASideAccessPointProfileArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[Union[str, 'ProfileType']]:
         """
-        Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+        Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
         """
         return pulumi.get(self, "type")
 
@@ -2595,7 +2595,7 @@ class ConnectionZSideAccessPointArgs:
                  virtual_device: Optional[pulumi.Input['ConnectionZSideAccessPointVirtualDeviceArgs']] = None):
         """
         :param pulumi.Input['ConnectionZSideAccessPointAccountArgs'] account: Account
-        :param pulumi.Input[str] authentication_key: Authentication key for provider based connections
+        :param pulumi.Input[str] authentication_key: Authentication key for provider based connections or Metal NIMF connections
         :param pulumi.Input['ConnectionZSideAccessPointGatewayArgs'] gateway: **Deprecated** `gateway` Use `router` attribute instead
         :param pulumi.Input['ConnectionZSideAccessPointInterfaceArgs'] interface: Virtual device interface
         :param pulumi.Input['ConnectionZSideAccessPointLinkProtocolArgs'] link_protocol: Connection link protocol
@@ -2607,7 +2607,7 @@ class ConnectionZSideAccessPointArgs:
         :param pulumi.Input[str] provider_connection_id: Provider assigned Connection Id
         :param pulumi.Input['ConnectionZSideAccessPointRouterArgs'] router: Cloud Router access point information that replaces `gateway`
         :param pulumi.Input[str] seller_region: Access point seller region
-        :param pulumi.Input[Union[str, 'AccessPointType']] type: Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+        :param pulumi.Input[Union[str, 'AccessPointType']] type: Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD*ROUTER, NETWORK, METAL*NETWORK
         :param pulumi.Input['ConnectionZSideAccessPointVirtualDeviceArgs'] virtual_device: Virtual device
         """
         if account is not None:
@@ -2660,7 +2660,7 @@ class ConnectionZSideAccessPointArgs:
     @pulumi.getter(name="authenticationKey")
     def authentication_key(self) -> Optional[pulumi.Input[str]]:
         """
-        Authentication key for provider based connections
+        Authentication key for provider based connections or Metal NIMF connections
         """
         return pulumi.get(self, "authentication_key")
 
@@ -2805,7 +2805,7 @@ class ConnectionZSideAccessPointArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[Union[str, 'AccessPointType']]]:
         """
-        Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+        Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD*ROUTER, NETWORK, METAL*NETWORK
         """
         return pulumi.get(self, "type")
 
@@ -3372,7 +3372,7 @@ class ConnectionZSideAccessPointProfileArgs:
                  href: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Union[str, 'ProfileType']] type: Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+        :param pulumi.Input[Union[str, 'ProfileType']] type: Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
         :param pulumi.Input[str] uuid: Equinix assigned service profile identifier
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionZSideAccessPointProfileAccessPointTypeConfigArgs']]] access_point_type_configs: Access point config information
         :param pulumi.Input[str] description: User-provided service description
@@ -3394,7 +3394,7 @@ class ConnectionZSideAccessPointProfileArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[Union[str, 'ProfileType']]:
         """
-        Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+        Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
         """
         return pulumi.get(self, "type")
 

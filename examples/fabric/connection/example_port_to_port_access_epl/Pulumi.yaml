@@ -1,0 +1,32 @@
+name: equinix-fabric-connection-example_port_to_port_access_epl
+runtime: yaml
+resources:
+  accessEplVc:
+    type: equinix:fabric:Connection
+    name: access_epl_vc
+    properties:
+      name: ConnectionName
+      type: ACCESS_EPL_VC
+      notifications:
+        - type: ALL
+          emails:
+            - example@equinix.com
+            - test1@equinix.com
+      bandwidth: 50
+      order:
+        purchaseOrderNumber: 1-323292
+      aSide:
+        accessPoint:
+          type: COLO
+          port:
+            uuid: <aside_port_uuid>
+          linkProtocol:
+            type: QINQ
+            vlanSTag: '1976'
+      zSide:
+        accessPoint:
+          type: COLO
+          port:
+            uuid: <zside_port_uuid>
+          location:
+            metroCode: SV

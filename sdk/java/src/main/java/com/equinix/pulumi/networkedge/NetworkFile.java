@@ -222,11 +222,18 @@ public class NetworkFile extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public NetworkFile(String name, NetworkFileArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("equinix:networkedge/networkFile:NetworkFile", name, args == null ? NetworkFileArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("equinix:networkedge/networkFile:NetworkFile", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private NetworkFile(String name, Output<String> id, @Nullable NetworkFileState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("equinix:networkedge/networkFile:NetworkFile", name, state, makeResourceOptions(options, id));
+    }
+
+    private static NetworkFileArgs makeArgs(NetworkFileArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? NetworkFileArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

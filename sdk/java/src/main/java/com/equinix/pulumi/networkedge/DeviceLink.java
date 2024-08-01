@@ -239,11 +239,18 @@ public class DeviceLink extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public DeviceLink(String name, DeviceLinkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("equinix:networkedge/deviceLink:DeviceLink", name, args == null ? DeviceLinkArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("equinix:networkedge/deviceLink:DeviceLink", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private DeviceLink(String name, Output<String> id, @Nullable DeviceLinkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("equinix:networkedge/deviceLink:DeviceLink", name, state, makeResourceOptions(options, id));
+    }
+
+    private static DeviceLinkArgs makeArgs(DeviceLinkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DeviceLinkArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

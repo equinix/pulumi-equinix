@@ -290,8 +290,7 @@ class _InterconnectionState:
                  vrfs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Interconnection resources.
-        :param pulumi.Input[str] authorization_code: Only used with Fabric Shared connection. Fabric uses this token to be able to give more detailed information about the
-               Metal end of the network, when viewing resources from within Fabric.
+        :param pulumi.Input[str] authorization_code: Fabric Authorization code to configure the NIMF connection with Cloud Service Provider through Equinix Fabric with the fabric.Connection resource from the [Equinix Developer Portal](https://developer.equinix.com/dev-docs/fabric/getting-started/fabric-v4-apis/connect-metal-to-amazon-web-services).
         :param pulumi.Input[str] contact_email: The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
         :param pulumi.Input[str] description: Description for the connection resource.
         :param pulumi.Input[str] facility: Facility where the connection will be created. Use metro instead; read the facility to metro migration guide
@@ -364,8 +363,7 @@ class _InterconnectionState:
     @pulumi.getter(name="authorizationCode")
     def authorization_code(self) -> Optional[pulumi.Input[str]]:
         """
-        Only used with Fabric Shared connection. Fabric uses this token to be able to give more detailed information about the
-        Metal end of the network, when viewing resources from within Fabric.
+        Fabric Authorization code to configure the NIMF connection with Cloud Service Provider through Equinix Fabric with the fabric.Connection resource from the [Equinix Developer Portal](https://developer.equinix.com/dev-docs/fabric/getting-started/fabric-v4-apis/connect-metal-to-amazon-web-services).
         """
         return pulumi.get(self, "authorization_code")
 
@@ -861,8 +859,7 @@ class Interconnection(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] authorization_code: Only used with Fabric Shared connection. Fabric uses this token to be able to give more detailed information about the
-               Metal end of the network, when viewing resources from within Fabric.
+        :param pulumi.Input[str] authorization_code: Fabric Authorization code to configure the NIMF connection with Cloud Service Provider through Equinix Fabric with the fabric.Connection resource from the [Equinix Developer Portal](https://developer.equinix.com/dev-docs/fabric/getting-started/fabric-v4-apis/connect-metal-to-amazon-web-services).
         :param pulumi.Input[str] contact_email: The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
         :param pulumi.Input[str] description: Description for the connection resource.
         :param pulumi.Input[str] facility: Facility where the connection will be created. Use metro instead; read the facility to metro migration guide
@@ -914,8 +911,7 @@ class Interconnection(pulumi.CustomResource):
     @pulumi.getter(name="authorizationCode")
     def authorization_code(self) -> pulumi.Output[str]:
         """
-        Only used with Fabric Shared connection. Fabric uses this token to be able to give more detailed information about the
-        Metal end of the network, when viewing resources from within Fabric.
+        Fabric Authorization code to configure the NIMF connection with Cloud Service Provider through Equinix Fabric with the fabric.Connection resource from the [Equinix Developer Portal](https://developer.equinix.com/dev-docs/fabric/getting-started/fabric-v4-apis/connect-metal-to-amazon-web-services).
         """
         return pulumi.get(self, "authorization_code")
 
