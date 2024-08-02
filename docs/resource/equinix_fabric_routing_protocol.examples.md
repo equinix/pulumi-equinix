@@ -125,6 +125,7 @@ public class App {
 }
 ```
 ```yaml
+resources:
   direct:
     type: equinix:fabric:RoutingProtocol
     properties:
@@ -278,6 +279,7 @@ public class App {
 }
 ```
 ```yaml
+resources:
   bgp:
     type: equinix:fabric:RoutingProtocol
     properties:
@@ -512,6 +514,7 @@ public class App {
 }
 ```
 ```yaml
+resources:
   direct:
     type: equinix:fabric:RoutingProtocol
     properties:

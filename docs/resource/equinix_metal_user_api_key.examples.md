@@ -84,6 +84,7 @@ public class App {
 }
 ```
 ```yaml
+resources:
   # Create a new read-only user API key
   test:
     type: equinix:metal:UserApiKey

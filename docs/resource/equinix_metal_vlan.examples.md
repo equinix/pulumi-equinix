@@ -94,6 +94,7 @@ public class App {
 }
 ```
 ```yaml
+resources:
   # Create a new VLAN in metro "esv"
   vlan1:
     type: equinix:metal:Vlan

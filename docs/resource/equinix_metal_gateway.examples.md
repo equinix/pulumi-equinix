@@ -123,6 +123,7 @@ public class App {
 }
 ```
 ```yaml
+resources:
   # Create Metal Gateway for a VLAN with a private IPv4 block with 8 IP addresses
   test:
     type: equinix:metal:Vlan
@@ -295,6 +296,7 @@ public class App {
 }
 ```
 ```yaml
+resources:
   # Create Metal Gateway for a VLAN and reserved IP address block
   test:
     type: equinix:metal:Vlan

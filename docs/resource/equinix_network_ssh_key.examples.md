@@ -145,6 +145,7 @@ public class App {
 }
 ```
 ```yaml
+resources:
   john:
     type: equinix:networkedge:SshKey
     properties:

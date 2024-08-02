@@ -153,6 +153,7 @@ public class App {
 }
 ```
 ```yaml
+resources:
   test:
     type: equinix:metal:ProjectSshKey
     properties:

@@ -194,6 +194,7 @@ public class App {
 }
 ```
 ```yaml
+resources:
   # Example of device link with HA device pair
   # where each device is in different metro
   test:

@@ -106,6 +106,7 @@ public class App {
 }
 ```
 ```yaml
+resources:
   member:
     type: equinix:metal:OrganizationMember
     properties:
@@ -219,6 +220,7 @@ public class App {
 }
 ```
 ```yaml
+resources:
   owner:
     type: equinix:metal:OrganizationMember
     properties:

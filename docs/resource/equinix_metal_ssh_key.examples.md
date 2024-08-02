@@ -162,6 +162,7 @@ public class App {
 }
 ```
 ```yaml
+resources:
   # Create a new SSH key
   key1:
     type: equinix:metal:SshKey

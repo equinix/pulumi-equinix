@@ -148,6 +148,7 @@ public class App {
 }
 ```
 ```yaml
+resources:
   newNetwork:
     type: equinix:fabric:Network
     name: new_network

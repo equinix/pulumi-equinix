@@ -131,6 +131,7 @@ public class App {
 }
 ```
 ```yaml
+resources:
   # Create a spot market request
   req:
     type: equinix:metal:SpotMarketRequest

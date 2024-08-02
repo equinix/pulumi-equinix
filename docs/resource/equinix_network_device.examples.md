@@ -264,6 +264,7 @@ public class App {
 }
 ```
 ```yaml
+resources:
   csr1000vHa:
     type: equinix:networkedge:Device
     name: csr1000v_ha
@@ -600,6 +601,7 @@ public class App {
 }
 ```
 ```yaml
+resources:
   panwCluster:
     type: equinix:networkedge:Device
     name: panw_cluster
@@ -897,6 +899,7 @@ public class App {
 }
 ```
 ```yaml
+configuration:
   filepath:
     type: string
     default: cloudInitFileFolder/TF-AVX-cloud-init-file.txt
@@ -1150,6 +1153,7 @@ public class App {
 }
 ```
 ```yaml
+resources:
   c8kvSingle:
     type: equinix:networkedge:Device
     name: c8kv_single
@@ -1394,6 +1398,7 @@ public class App {
 }
 ```
 ```yaml
+resources:
   vsrxSingle:
     type: equinix:networkedge:Device
     name: vsrx_single
@@ -1713,6 +1718,7 @@ public class App {
 }
 ```
 ```yaml
+resources:
   testPublicKey:
     type: equinix:networkedge:SshKey
     name: test_public_key
@@ -2103,6 +2109,7 @@ public class App {
 }
 ```
 ```yaml
+resources:
   testPublicKey:
     type: equinix:networkedge:SshKey
     name: test_public_key
@@ -2509,6 +2516,7 @@ public class App {
 }
 ```
 ```yaml
+resources:
   bluecatEdgeServicePointCloudinitPrimaryFile:
     type: equinix:networkedge:NetworkFile
     name: bluecat_edge_service_point_cloudinit_primary_file
@@ -2887,6 +2895,7 @@ public class App {
 }
 ```
 ```yaml
+resources:
   panwCluster:
     type: equinix:networkedge:Device
     name: panw_cluster

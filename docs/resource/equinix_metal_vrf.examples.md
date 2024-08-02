@@ -140,6 +140,7 @@ public class App {
 }
 ```
 ```yaml
+resources:
   example:
     type: equinix:metal:Project
     properties:
@@ -334,6 +335,7 @@ public class App {
 }
 ```
 ```yaml
+resources:
   example:
     type: equinix:metal:ReservedIpBlock
     properties:
@@ -492,6 +494,7 @@ public class App {
 }
 ```
 ```yaml
+resources:
   exampleVirtualCircuit:
     type: equinix:metal:VirtualCircuit
     name: example

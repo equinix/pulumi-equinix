@@ -25,6 +25,7 @@ VERSION=$(pulumictl get version --language generic)
 get_patch() {
     local version="$1"
     local new_version=$(echo "$version" | awk -F'[.-]' '{print $1"."$2"."$3}')
+    echo "$new_version"
 }
 
 GOLANG_MIN_NEXT_VERSION=$(get_patch "$VERSION")

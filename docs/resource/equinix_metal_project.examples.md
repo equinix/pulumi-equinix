@@ -78,6 +78,7 @@ public class App {
 }
 ```
 ```yaml
+resources:
   tfProject1:
     type: equinix:metal:Project
     name: tf_project_1
@@ -194,6 +195,7 @@ public class App {
 }
 ```
 ```yaml
+resources:
   # Create a new Project
   tfProject1:
     type: equinix:metal:Project
@@ -315,6 +317,7 @@ public class App {
 }
 ```
 ```yaml
+resources:
   existingProject:
     type: equinix:metal:Project
     name: existing_project

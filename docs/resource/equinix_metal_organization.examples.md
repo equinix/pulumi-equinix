@@ -84,6 +84,7 @@ public class App {
 }
 ```
 ```yaml
+resources:
   # Create a new Organization
   tfOrganization1:
     type: equinix:metal:Organization
