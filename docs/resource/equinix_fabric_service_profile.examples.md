@@ -245,6 +245,7 @@ public class App {
 }
 ```
 ```yaml
+resources:
   newServiceProfile:
     type: equinix:fabric:ServiceProfile
     name: new_service_profile

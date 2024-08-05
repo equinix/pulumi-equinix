@@ -104,6 +104,7 @@ public class App {
 }
 ```
 ```yaml
+resources:
   # Create SSH user with password auth method and associate it with
   # two virtual network devices
   john:

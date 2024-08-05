@@ -167,6 +167,7 @@ public class App {
 }
 ```
 ```yaml
+resources:
   # Creates ACL template and assigns it to the network device
   myacl:
     type: equinix:networkedge:AclTemplate

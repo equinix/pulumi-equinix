@@ -197,6 +197,7 @@ public class App {
 }
 ```
 ```yaml
+resources:
   test:
     type: equinix:metal:Vlan
     properties:
@@ -505,6 +506,7 @@ public class App {
 }
 ```
 ```yaml
+resources:
   test:
     type: equinix:metal:Device
     properties:

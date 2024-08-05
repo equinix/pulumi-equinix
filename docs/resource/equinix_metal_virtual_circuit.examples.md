@@ -162,6 +162,7 @@ public class App {
 }
 ```
 ```yaml
+resources:
   testVlan:
     type: equinix:metal:Vlan
     name: test

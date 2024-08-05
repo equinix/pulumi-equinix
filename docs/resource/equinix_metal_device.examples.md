@@ -106,6 +106,7 @@ public class App {
 }
 ```
 ```yaml
+resources:
   web1:
     type: equinix:metal:Device
     properties:
@@ -239,6 +240,7 @@ public class App {
 }
 ```
 ```yaml
+resources:
   pxe1:
     type: equinix:metal:Device
     properties:
@@ -387,6 +389,7 @@ public class App {
 }
 ```
 ```yaml
+resources:
   web1:
     type: equinix:metal:Device
     properties:
@@ -784,6 +787,7 @@ public class App {
 }
 ```
 ```yaml
+resources:
   web1:
     type: equinix:metal:Device
     properties:
@@ -1009,6 +1013,7 @@ public class App {
 }
 ```
 ```yaml
+resources:
   pxe1:
     type: equinix:metal:Device
     properties:

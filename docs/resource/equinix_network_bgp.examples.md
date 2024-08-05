@@ -104,6 +104,7 @@ public class App {
 }
 ```
 ```yaml
+resources:
   # Create BGP peering configuration on a existing connection
   # between network device and service provider
   test:

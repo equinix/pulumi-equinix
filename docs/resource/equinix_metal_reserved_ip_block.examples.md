@@ -156,6 +156,7 @@ public class App {
 }
 ```
 ```yaml
+resources:
   # Allocate /31 block of max 2 public IPv4 addresses in Silicon Valley (sv) metro for myproject
   twoElasticAddresses:
     type: equinix:metal:ReservedIpBlock
@@ -378,6 +379,7 @@ public class App {
 }
 ```
 ```yaml
+resources:
   # Allocate /31 block of max 2 public IPv4 addresses in Silicon Valley (sv) metro
   example:
     type: equinix:metal:ReservedIpBlock

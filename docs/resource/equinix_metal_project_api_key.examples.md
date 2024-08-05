@@ -89,6 +89,7 @@ public class App {
 }
 ```
 ```yaml
+resources:
   # Create a new read-only API key in existing project
   test:
     type: equinix:metal:ProjectApiKey

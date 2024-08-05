@@ -211,6 +211,7 @@ public class App {
 }
 ```
 ```yaml
+resources:
   newCloudRouter:
     type: equinix:fabric:CloudRouter
     name: new_cloud_router

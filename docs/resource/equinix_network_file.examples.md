@@ -143,6 +143,7 @@ public class App {
 }
 ```
 ```yaml
+configuration:
   filepath:
     type: string
     default: fileFolder/fileName.txt
