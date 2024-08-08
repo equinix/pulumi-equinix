@@ -404,7 +404,7 @@ public class VirtualCircuit extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public VirtualCircuit(String name) {
+    public VirtualCircuit(java.lang.String name) {
         this(name, VirtualCircuitArgs.Empty);
     }
     /**
@@ -412,7 +412,7 @@ public class VirtualCircuit extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public VirtualCircuit(String name, VirtualCircuitArgs args) {
+    public VirtualCircuit(java.lang.String name, VirtualCircuitArgs args) {
         this(name, args, null);
     }
     /**
@@ -421,12 +421,12 @@ public class VirtualCircuit extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public VirtualCircuit(String name, VirtualCircuitArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("equinix:metal/virtualCircuit:VirtualCircuit", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public VirtualCircuit(java.lang.String name, VirtualCircuitArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("equinix:metal/virtualCircuit:VirtualCircuit", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private VirtualCircuit(String name, Output<String> id, @Nullable VirtualCircuitState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("equinix:metal/virtualCircuit:VirtualCircuit", name, state, makeResourceOptions(options, id));
+    private VirtualCircuit(java.lang.String name, Output<java.lang.String> id, @Nullable VirtualCircuitState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("equinix:metal/virtualCircuit:VirtualCircuit", name, state, makeResourceOptions(options, id), false);
     }
 
     private static VirtualCircuitArgs makeArgs(VirtualCircuitArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -436,7 +436,7 @@ public class VirtualCircuit extends com.pulumi.resources.CustomResource {
         return args == null ? VirtualCircuitArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -455,7 +455,7 @@ public class VirtualCircuit extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static VirtualCircuit get(String name, Output<String> id, @Nullable VirtualCircuitState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static VirtualCircuit get(java.lang.String name, Output<java.lang.String> id, @Nullable VirtualCircuitState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new VirtualCircuit(name, id, state, options);
     }
 }

@@ -818,7 +818,7 @@ public class Device extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Device(String name) {
+    public Device(java.lang.String name) {
         this(name, DeviceArgs.Empty);
     }
     /**
@@ -826,7 +826,7 @@ public class Device extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Device(String name, DeviceArgs args) {
+    public Device(java.lang.String name, DeviceArgs args) {
         this(name, args, null);
     }
     /**
@@ -835,12 +835,12 @@ public class Device extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Device(String name, DeviceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("equinix:metal/device:Device", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Device(java.lang.String name, DeviceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("equinix:metal/device:Device", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Device(String name, Output<String> id, @Nullable DeviceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("equinix:metal/device:Device", name, state, makeResourceOptions(options, id));
+    private Device(java.lang.String name, Output<java.lang.String> id, @Nullable DeviceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("equinix:metal/device:Device", name, state, makeResourceOptions(options, id), false);
     }
 
     private static DeviceArgs makeArgs(DeviceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -850,7 +850,7 @@ public class Device extends com.pulumi.resources.CustomResource {
         return args == null ? DeviceArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -871,7 +871,7 @@ public class Device extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Device get(String name, Output<String> id, @Nullable DeviceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Device get(java.lang.String name, Output<java.lang.String> id, @Nullable DeviceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Device(name, id, state, options);
     }
 }

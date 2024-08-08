@@ -193,7 +193,7 @@ public class BgpSession extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public BgpSession(String name) {
+    public BgpSession(java.lang.String name) {
         this(name, BgpSessionArgs.Empty);
     }
     /**
@@ -201,7 +201,7 @@ public class BgpSession extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public BgpSession(String name, BgpSessionArgs args) {
+    public BgpSession(java.lang.String name, BgpSessionArgs args) {
         this(name, args, null);
     }
     /**
@@ -210,12 +210,12 @@ public class BgpSession extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public BgpSession(String name, BgpSessionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("equinix:metal/bgpSession:BgpSession", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public BgpSession(java.lang.String name, BgpSessionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("equinix:metal/bgpSession:BgpSession", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private BgpSession(String name, Output<String> id, @Nullable BgpSessionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("equinix:metal/bgpSession:BgpSession", name, state, makeResourceOptions(options, id));
+    private BgpSession(java.lang.String name, Output<java.lang.String> id, @Nullable BgpSessionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("equinix:metal/bgpSession:BgpSession", name, state, makeResourceOptions(options, id), false);
     }
 
     private static BgpSessionArgs makeArgs(BgpSessionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -225,7 +225,7 @@ public class BgpSession extends com.pulumi.resources.CustomResource {
         return args == null ? BgpSessionArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -241,7 +241,7 @@ public class BgpSession extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static BgpSession get(String name, Output<String> id, @Nullable BgpSessionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static BgpSession get(java.lang.String name, Output<java.lang.String> id, @Nullable BgpSessionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new BgpSession(name, id, state, options);
     }
 }

@@ -225,7 +225,7 @@ public class AclTemplate extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AclTemplate(String name) {
+    public AclTemplate(java.lang.String name) {
         this(name, AclTemplateArgs.Empty);
     }
     /**
@@ -233,7 +233,7 @@ public class AclTemplate extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AclTemplate(String name, AclTemplateArgs args) {
+    public AclTemplate(java.lang.String name, AclTemplateArgs args) {
         this(name, args, null);
     }
     /**
@@ -242,12 +242,12 @@ public class AclTemplate extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AclTemplate(String name, AclTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("equinix:networkedge/aclTemplate:AclTemplate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public AclTemplate(java.lang.String name, AclTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("equinix:networkedge/aclTemplate:AclTemplate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AclTemplate(String name, Output<String> id, @Nullable AclTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("equinix:networkedge/aclTemplate:AclTemplate", name, state, makeResourceOptions(options, id));
+    private AclTemplate(java.lang.String name, Output<java.lang.String> id, @Nullable AclTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("equinix:networkedge/aclTemplate:AclTemplate", name, state, makeResourceOptions(options, id), false);
     }
 
     private static AclTemplateArgs makeArgs(AclTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -257,7 +257,7 @@ public class AclTemplate extends com.pulumi.resources.CustomResource {
         return args == null ? AclTemplateArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -273,7 +273,7 @@ public class AclTemplate extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AclTemplate get(String name, Output<String> id, @Nullable AclTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AclTemplate get(java.lang.String name, Output<java.lang.String> id, @Nullable AclTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AclTemplate(name, id, state, options);
     }
 }

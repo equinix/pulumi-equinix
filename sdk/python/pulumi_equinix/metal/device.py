@@ -1096,10 +1096,10 @@ class Device(pulumi.CustomResource):
             operating_system=equinix.metal.OperatingSystem.UBUNTU20_04,
             billing_cycle=equinix.metal.BillingCycle.HOURLY,
             project_id=project_id,
-            ip_addresses=[equinix.metal.DeviceIpAddressArgs(
-                type="private_ipv4",
-                cidr=30,
-            )])
+            ip_addresses=[{
+                "type": "private_ipv4",
+                "cidr": 30,
+            }])
         ```
         ### example 4
         ```python
@@ -1185,12 +1185,12 @@ class Device(pulumi.CustomResource):
             always_pxe=False,
             user_data=user_data,
             custom_data=custom_data,
-            behavior=equinix.metal.DeviceBehaviorArgs(
-                allow_changes=[
+            behavior={
+                "allow_changes": [
                     "custom_data",
                     "user_data",
                 ],
-            ))
+            })
         ```
 
         :param str resource_name: The name of the resource.
@@ -1271,10 +1271,10 @@ class Device(pulumi.CustomResource):
             operating_system=equinix.metal.OperatingSystem.UBUNTU20_04,
             billing_cycle=equinix.metal.BillingCycle.HOURLY,
             project_id=project_id,
-            ip_addresses=[equinix.metal.DeviceIpAddressArgs(
-                type="private_ipv4",
-                cidr=30,
-            )])
+            ip_addresses=[{
+                "type": "private_ipv4",
+                "cidr": 30,
+            }])
         ```
         ### example 4
         ```python
@@ -1360,12 +1360,12 @@ class Device(pulumi.CustomResource):
             always_pxe=False,
             user_data=user_data,
             custom_data=custom_data,
-            behavior=equinix.metal.DeviceBehaviorArgs(
-                allow_changes=[
+            behavior={
+                "allow_changes": [
                     "custom_data",
                     "user_data",
                 ],
-            ))
+            })
         ```
 
         :param str resource_name: The name of the resource.
