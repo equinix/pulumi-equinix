@@ -36,21 +36,21 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var member = new OrganizationMember("member", OrganizationMemberArgs.builder()
- *             .invitee("member{@literal @}example.com")
+ *             .invitee("member}{@literal @}{@code example.com")
  *             .roles("limited_collaborator")
  *             .projectsIds(projectId)
  *             .organizationId(organizationId)
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * ### example 2
@@ -70,21 +70,21 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var owner = new OrganizationMember("owner", OrganizationMemberArgs.builder()
- *             .invitee("admin{@literal @}example.com")
+ *             .invitee("admin}{@literal @}{@code example.com")
  *             .roles("owner")
  *             .projectsIds()
  *             .organizationId(organizationId)
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -244,7 +244,7 @@ public class OrganizationMember extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public OrganizationMember(String name) {
+    public OrganizationMember(java.lang.String name) {
         this(name, OrganizationMemberArgs.Empty);
     }
     /**
@@ -252,7 +252,7 @@ public class OrganizationMember extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public OrganizationMember(String name, OrganizationMemberArgs args) {
+    public OrganizationMember(java.lang.String name, OrganizationMemberArgs args) {
         this(name, args, null);
     }
     /**
@@ -261,12 +261,12 @@ public class OrganizationMember extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public OrganizationMember(String name, OrganizationMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("equinix:metal/organizationMember:OrganizationMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public OrganizationMember(java.lang.String name, OrganizationMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("equinix:metal/organizationMember:OrganizationMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private OrganizationMember(String name, Output<String> id, @Nullable OrganizationMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("equinix:metal/organizationMember:OrganizationMember", name, state, makeResourceOptions(options, id));
+    private OrganizationMember(java.lang.String name, Output<java.lang.String> id, @Nullable OrganizationMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("equinix:metal/organizationMember:OrganizationMember", name, state, makeResourceOptions(options, id), false);
     }
 
     private static OrganizationMemberArgs makeArgs(OrganizationMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -276,7 +276,7 @@ public class OrganizationMember extends com.pulumi.resources.CustomResource {
         return args == null ? OrganizationMemberArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -292,7 +292,7 @@ public class OrganizationMember extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static OrganizationMember get(String name, Output<String> id, @Nullable OrganizationMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static OrganizationMember get(java.lang.String name, Output<java.lang.String> id, @Nullable OrganizationMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new OrganizationMember(name, id, state, options);
     }
 }
