@@ -53,20 +53,20 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var newCloudRouter = new CloudRouter("newCloudRouter", CloudRouterArgs.builder()
  *             .name("Router-SV")
  *             .type("XF_ROUTER")
  *             .notifications(CloudRouterNotificationArgs.builder()
  *                 .type("ALL")
  *                 .emails(                
- *                     "example{@literal @}equinix.com",
- *                     "test1{@literal @}equinix.com")
+ *                     "example}{@literal @}{@code equinix.com",
+ *                     "test1}{@literal @}{@code equinix.com")
  *                 .build())
  *             .order(CloudRouterOrderArgs.builder()
  *                 .purchaseOrderNumber("1-323292")
@@ -85,8 +85,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -364,7 +364,7 @@ public class CloudRouter extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public CloudRouter(String name) {
+    public CloudRouter(java.lang.String name) {
         this(name, CloudRouterArgs.Empty);
     }
     /**
@@ -372,7 +372,7 @@ public class CloudRouter extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public CloudRouter(String name, CloudRouterArgs args) {
+    public CloudRouter(java.lang.String name, CloudRouterArgs args) {
         this(name, args, null);
     }
     /**
@@ -381,12 +381,12 @@ public class CloudRouter extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public CloudRouter(String name, CloudRouterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("equinix:fabric/cloudRouter:CloudRouter", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public CloudRouter(java.lang.String name, CloudRouterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("equinix:fabric/cloudRouter:CloudRouter", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private CloudRouter(String name, Output<String> id, @Nullable CloudRouterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("equinix:fabric/cloudRouter:CloudRouter", name, state, makeResourceOptions(options, id));
+    private CloudRouter(java.lang.String name, Output<java.lang.String> id, @Nullable CloudRouterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("equinix:fabric/cloudRouter:CloudRouter", name, state, makeResourceOptions(options, id), false);
     }
 
     private static CloudRouterArgs makeArgs(CloudRouterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -396,7 +396,7 @@ public class CloudRouter extends com.pulumi.resources.CustomResource {
         return args == null ? CloudRouterArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -412,7 +412,7 @@ public class CloudRouter extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static CloudRouter get(String name, Output<String> id, @Nullable CloudRouterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static CloudRouter get(java.lang.String name, Output<java.lang.String> id, @Nullable CloudRouterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new CloudRouter(name, id, state, options);
     }
 }

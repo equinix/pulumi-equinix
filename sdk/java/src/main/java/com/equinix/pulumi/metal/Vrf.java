@@ -261,7 +261,7 @@ public class Vrf extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Vrf(String name) {
+    public Vrf(java.lang.String name) {
         this(name, VrfArgs.Empty);
     }
     /**
@@ -269,7 +269,7 @@ public class Vrf extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Vrf(String name, VrfArgs args) {
+    public Vrf(java.lang.String name, VrfArgs args) {
         this(name, args, null);
     }
     /**
@@ -278,12 +278,12 @@ public class Vrf extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Vrf(String name, VrfArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("equinix:metal/vrf:Vrf", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Vrf(java.lang.String name, VrfArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("equinix:metal/vrf:Vrf", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Vrf(String name, Output<String> id, @Nullable VrfState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("equinix:metal/vrf:Vrf", name, state, makeResourceOptions(options, id));
+    private Vrf(java.lang.String name, Output<java.lang.String> id, @Nullable VrfState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("equinix:metal/vrf:Vrf", name, state, makeResourceOptions(options, id), false);
     }
 
     private static VrfArgs makeArgs(VrfArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -293,7 +293,7 @@ public class Vrf extends com.pulumi.resources.CustomResource {
         return args == null ? VrfArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -309,7 +309,7 @@ public class Vrf extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Vrf get(String name, Output<String> id, @Nullable VrfState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Vrf get(java.lang.String name, Output<java.lang.String> id, @Nullable VrfState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Vrf(name, id, state, options);
     }
 }

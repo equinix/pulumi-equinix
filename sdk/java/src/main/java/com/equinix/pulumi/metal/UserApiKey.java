@@ -119,7 +119,7 @@ public class UserApiKey extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public UserApiKey(String name) {
+    public UserApiKey(java.lang.String name) {
         this(name, UserApiKeyArgs.Empty);
     }
     /**
@@ -127,7 +127,7 @@ public class UserApiKey extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public UserApiKey(String name, UserApiKeyArgs args) {
+    public UserApiKey(java.lang.String name, UserApiKeyArgs args) {
         this(name, args, null);
     }
     /**
@@ -136,12 +136,12 @@ public class UserApiKey extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public UserApiKey(String name, UserApiKeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("equinix:metal/userApiKey:UserApiKey", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public UserApiKey(java.lang.String name, UserApiKeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("equinix:metal/userApiKey:UserApiKey", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private UserApiKey(String name, Output<String> id, @Nullable UserApiKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("equinix:metal/userApiKey:UserApiKey", name, state, makeResourceOptions(options, id));
+    private UserApiKey(java.lang.String name, Output<java.lang.String> id, @Nullable UserApiKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("equinix:metal/userApiKey:UserApiKey", name, state, makeResourceOptions(options, id), false);
     }
 
     private static UserApiKeyArgs makeArgs(UserApiKeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -151,7 +151,7 @@ public class UserApiKey extends com.pulumi.resources.CustomResource {
         return args == null ? UserApiKeyArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -170,7 +170,7 @@ public class UserApiKey extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static UserApiKey get(String name, Output<String> id, @Nullable UserApiKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static UserApiKey get(java.lang.String name, Output<java.lang.String> id, @Nullable UserApiKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new UserApiKey(name, id, state, options);
     }
 }

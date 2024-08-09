@@ -278,7 +278,7 @@ public class PortVlanAttachment extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public PortVlanAttachment(String name) {
+    public PortVlanAttachment(java.lang.String name) {
         this(name, PortVlanAttachmentArgs.Empty);
     }
     /**
@@ -286,7 +286,7 @@ public class PortVlanAttachment extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public PortVlanAttachment(String name, PortVlanAttachmentArgs args) {
+    public PortVlanAttachment(java.lang.String name, PortVlanAttachmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -295,12 +295,12 @@ public class PortVlanAttachment extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public PortVlanAttachment(String name, PortVlanAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("equinix:metal/portVlanAttachment:PortVlanAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public PortVlanAttachment(java.lang.String name, PortVlanAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("equinix:metal/portVlanAttachment:PortVlanAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private PortVlanAttachment(String name, Output<String> id, @Nullable PortVlanAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("equinix:metal/portVlanAttachment:PortVlanAttachment", name, state, makeResourceOptions(options, id));
+    private PortVlanAttachment(java.lang.String name, Output<java.lang.String> id, @Nullable PortVlanAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("equinix:metal/portVlanAttachment:PortVlanAttachment", name, state, makeResourceOptions(options, id), false);
     }
 
     private static PortVlanAttachmentArgs makeArgs(PortVlanAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -310,7 +310,7 @@ public class PortVlanAttachment extends com.pulumi.resources.CustomResource {
         return args == null ? PortVlanAttachmentArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -326,7 +326,7 @@ public class PortVlanAttachment extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static PortVlanAttachment get(String name, Output<String> id, @Nullable PortVlanAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static PortVlanAttachment get(java.lang.String name, Output<java.lang.String> id, @Nullable PortVlanAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new PortVlanAttachment(name, id, state, options);
     }
 }

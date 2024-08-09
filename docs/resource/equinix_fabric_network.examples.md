@@ -28,16 +28,16 @@ new_network = equinix.fabric.Network("newNetwork",
     name="Network-SV",
     type="EVPLAN",
     scope="GLOBAL",
-    notifications=[equinix.fabric.NetworkNotificationArgs(
-        type="ALL",
-        emails=[
+    notifications=[{
+        "type": "ALL",
+        "emails": [
             "example@equinix.com",
             "test1@equinix.com",
         ],
-    )],
-    project=equinix.fabric.NetworkProjectArgs(
-        project_id="776847000642406",
-    ))
+    }],
+    project={
+        "project_id": "776847000642406",
+    })
 ```
 ```go
 package main

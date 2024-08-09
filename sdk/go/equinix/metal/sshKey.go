@@ -39,7 +39,7 @@ import (
 //			}
 //			key1, err := metal.NewSshKey(ctx, "key1", &metal.SshKeyArgs{
 //				Name:      pulumi.String("terraform-1"),
-//				PublicKey: invokeFile.Result,
+//				PublicKey: pulumi.String(invokeFile.Result),
 //			})
 //			if err != nil {
 //				return err
