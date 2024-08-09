@@ -24,6 +24,10 @@ jobs:
       uses: actions/checkout@v4
       with:
         ref: ${{ github.ref_name }}
+    - name: Capture current pulumi-java version
+      id: pulumi-java
+      run: |
+        echo "version=$(cat .pulumi-java-gen.version)" >> "$GITHUB_OUTPUT"
     - name: Set pr-assign variable
       id: set-pr-assign
       run: |
@@ -48,3 +52,4 @@ jobs:
         username: GitHub
         pr-assign: ${{ env.PR_ASSIGN }}
         pr-title-prefix: "feat: "
+        target-java-version: ${{ steps.pulumi-java.outputs.version }}
