@@ -53,24 +53,24 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var newServiceProfile = new ServiceProfile("newServiceProfile", ServiceProfileArgs.builder()
  *             .description("Service Profile for Receiving Connections")
  *             .name("Name Of Business + Use Case Tag")
  *             .type("L2_PROFILE")
  *             .visibility("PUBLIC")
  *             .notifications(ServiceProfileNotificationArgs.builder()
- *                 .emails("someone{@literal @}sample.com")
+ *                 .emails("someone}{@literal @}{@code sample.com")
  *                 .type("BANDWIDTH_ALERT")
  *                 .build())
  *             .allowedEmails(            
- *                 "test{@literal @}equinix.com",
- *                 "testagain{@literal @}equinix.com")
+ *                 "test}{@literal @}{@code equinix.com",
+ *                 "testagain}{@literal @}{@code equinix.com")
  *             .ports(ServiceProfilePortArgs.builder()
  *                 .uuid("c791f8cb-5cc9-cc90-8ce0-306a5c00a4ee")
  *                 .type("XF_PORT")
@@ -89,8 +89,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -396,7 +396,7 @@ public class ServiceProfile extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ServiceProfile(String name) {
+    public ServiceProfile(java.lang.String name) {
         this(name, ServiceProfileArgs.Empty);
     }
     /**
@@ -404,7 +404,7 @@ public class ServiceProfile extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ServiceProfile(String name, ServiceProfileArgs args) {
+    public ServiceProfile(java.lang.String name, ServiceProfileArgs args) {
         this(name, args, null);
     }
     /**
@@ -413,12 +413,12 @@ public class ServiceProfile extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ServiceProfile(String name, ServiceProfileArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("equinix:fabric/serviceProfile:ServiceProfile", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public ServiceProfile(java.lang.String name, ServiceProfileArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("equinix:fabric/serviceProfile:ServiceProfile", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ServiceProfile(String name, Output<String> id, @Nullable ServiceProfileState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("equinix:fabric/serviceProfile:ServiceProfile", name, state, makeResourceOptions(options, id));
+    private ServiceProfile(java.lang.String name, Output<java.lang.String> id, @Nullable ServiceProfileState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("equinix:fabric/serviceProfile:ServiceProfile", name, state, makeResourceOptions(options, id), false);
     }
 
     private static ServiceProfileArgs makeArgs(ServiceProfileArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -428,7 +428,7 @@ public class ServiceProfile extends com.pulumi.resources.CustomResource {
         return args == null ? ServiceProfileArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -444,7 +444,7 @@ public class ServiceProfile extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ServiceProfile get(String name, Output<String> id, @Nullable ServiceProfileState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ServiceProfile get(java.lang.String name, Output<java.lang.String> id, @Nullable ServiceProfileState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ServiceProfile(name, id, state, options);
     }
 }
