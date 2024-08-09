@@ -27,7 +27,7 @@ jobs:
     - name: Set pr-assign variable
       id: set-pr-assign
       run: |
-        if [ "${{ github.actor }}" == "github-actions[bot]" ]; then
+        if [ "${{ github.event_name }}" == "schedule" ] || ["${{ github.actor }}" == "github-actions[bot]" ]; then
           echo "PR_ASSIGN=${{ env.DEFAULT_PR_ASSIGN }}" >> $GITHUB_ENV
         else
           echo "PR_ASSIGN=${{ github.actor }}" >> $GITHUB_ENV
