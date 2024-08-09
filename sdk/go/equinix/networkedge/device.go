@@ -190,7 +190,7 @@ import (
 //			}
 //			aviatrixCloudinitFile, err := networkedge.NewNetworkFile(ctx, "aviatrixCloudinitFile", &networkedge.NetworkFileArgs{
 //				FileName:       pulumi.String("TF-AVX-cloud-init-file.txt"),
-//				Content:        invokeFile.Result,
+//				Content:        pulumi.String(invokeFile.Result),
 //				MetroCode:      sv.MetroCode.ApplyT(func(x *string) equinix.Metro { return equinix.Metro(*x) }).(equinix.MetroOutput),
 //				DeviceTypeCode: pulumi.String("AVIATRIX_EDGE"),
 //				ProcessType:    pulumi.String(networkedge.FileTypeCloudInit),
@@ -507,7 +507,7 @@ import (
 //			}
 //			bluecatEdgeServicePointCloudinitPrimaryFile, err := networkedge.NewNetworkFile(ctx, "bluecatEdgeServicePointCloudinitPrimaryFile", &networkedge.NetworkFileArgs{
 //				FileName:       pulumi.String("TF-BLUECAT-ESP-cloud-init-file.txt"),
-//				Content:        invokeFile.Result,
+//				Content:        pulumi.String(invokeFile.Result),
 //				MetroCode:      sv.MetroCode.ApplyT(func(x *string) equinix.Metro { return equinix.Metro(*x) }).(equinix.MetroOutput),
 //				DeviceTypeCode: pulumi.String("BLUECAT-EDGE-SERVICE-POINT"),
 //				ProcessType:    pulumi.String(networkedge.FileTypeCloudInit),
@@ -525,7 +525,7 @@ import (
 //			}
 //			bluecatEdgeServicePointCloudinitSecondaryFile, err := networkedge.NewNetworkFile(ctx, "bluecatEdgeServicePointCloudinitSecondaryFile", &networkedge.NetworkFileArgs{
 //				FileName:       pulumi.String("TF-BLUECAT-ESP-cloud-init-file.txt"),
-//				Content:        invokeFile1.Result,
+//				Content:        pulumi.String(invokeFile1.Result),
 //				MetroCode:      sv.MetroCode.ApplyT(func(x *string) equinix.Metro { return equinix.Metro(*x) }).(equinix.MetroOutput),
 //				DeviceTypeCode: pulumi.String("BLUECAT-EDGE-SERVICE-POINT"),
 //				ProcessType:    pulumi.String(networkedge.FileTypeCloudInit),
