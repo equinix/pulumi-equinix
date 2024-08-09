@@ -23,13 +23,13 @@ csr1000_v_ha = equinix.networkedge.Device("csr1000vHa",
     account_number=dc.number,
     version="16.09.05",
     core_count=2,
-    secondary_device=equinix.networkedge.DeviceSecondaryDeviceArgs(
-        name="tf-csr1000v-s",
-        metro_code=sv.metro_code,
-        hostname="csr1000v-s",
-        notifications=[
+    secondary_device={
+        "name": "tf-csr1000v-s",
+        "metro_code": sv.metro_code,
+        "hostname": "csr1000v-s",
+        "notifications": [
             "john@equinix.com",
             "marry@equinix.com",
         ],
-        account_number=sv.number,
-    ))
+        "account_number": sv.number,
+    })
