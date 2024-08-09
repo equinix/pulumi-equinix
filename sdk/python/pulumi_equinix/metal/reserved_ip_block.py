@@ -599,14 +599,14 @@ class ReservedIpBlock(pulumi.CustomResource):
             hostname="test",
             billing_cycle=equinix.metal.BillingCycle.HOURLY,
             ip_addresses=[
-                equinix.metal.DeviceIpAddressArgs(
-                    type="public_ipv4",
-                    cidr=31,
-                    reservation_ids=[example.id],
-                ),
-                equinix.metal.DeviceIpAddressArgs(
-                    type="private_ipv4",
-                ),
+                {
+                    "type": "public_ipv4",
+                    "cidr": 31,
+                    "reservation_ids": [example.id],
+                },
+                {
+                    "type": "private_ipv4",
+                },
             ])
         ```
 
@@ -688,14 +688,14 @@ class ReservedIpBlock(pulumi.CustomResource):
             hostname="test",
             billing_cycle=equinix.metal.BillingCycle.HOURLY,
             ip_addresses=[
-                equinix.metal.DeviceIpAddressArgs(
-                    type="public_ipv4",
-                    cidr=31,
-                    reservation_ids=[example.id],
-                ),
-                equinix.metal.DeviceIpAddressArgs(
-                    type="private_ipv4",
-                ),
+                {
+                    "type": "public_ipv4",
+                    "cidr": 31,
+                    "reservation_ids": [example.id],
+                },
+                {
+                    "type": "private_ipv4",
+                },
             ])
         ```
 

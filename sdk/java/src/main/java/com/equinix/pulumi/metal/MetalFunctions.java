@@ -5097,19 +5097,19 @@ public final class MetalFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var myKey = MetalFunctions.getProjectSshKey(GetProjectSshKeyArgs.builder()
-     *             .search("username{@literal @}hostname")
+     *             .search("username}{@literal @}{@code hostname")
      *             .projectId(local.project_id())
      *             .build());
      * 
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -5140,19 +5140,19 @@ public final class MetalFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var myKey = MetalFunctions.getProjectSshKey(GetProjectSshKeyArgs.builder()
-     *             .search("username{@literal @}hostname")
+     *             .search("username}{@literal @}{@code hostname")
      *             .projectId(local.project_id())
      *             .build());
      * 
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -5183,19 +5183,19 @@ public final class MetalFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var myKey = MetalFunctions.getProjectSshKey(GetProjectSshKeyArgs.builder()
-     *             .search("username{@literal @}hostname")
+     *             .search("username}{@literal @}{@code hostname")
      *             .projectId(local.project_id())
      *             .build());
      * 
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -5226,19 +5226,19 @@ public final class MetalFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var myKey = MetalFunctions.getProjectSshKey(GetProjectSshKeyArgs.builder()
-     *             .search("username{@literal @}hostname")
+     *             .search("username}{@literal @}{@code hostname")
      *             .projectId(local.project_id())
      *             .build());
      * 
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;

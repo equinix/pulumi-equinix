@@ -56,12 +56,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var dc = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
  *             .metroCode("DC")
  *             .build());
@@ -81,9 +81,9 @@ import javax.annotation.Nullable;
  *             .byol(false)
  *             .packageCode("SEC")
  *             .notifications(            
- *                 "john{@literal @}equinix.com",
- *                 "marry{@literal @}equinix.com",
- *                 "fred{@literal @}equinix.com")
+ *                 "john}{@literal @}{@code equinix.com",
+ *                 "marry}{@literal @}{@code equinix.com",
+ *                 "fred}{@literal @}{@code equinix.com")
  *             .hostname("csr1000v-p")
  *             .termLength(12)
  *             .accountNumber(dc.applyValue(getAccountResult -> getAccountResult.number()))
@@ -94,14 +94,14 @@ import javax.annotation.Nullable;
  *                 .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
  *                 .hostname("csr1000v-s")
  *                 .notifications(                
- *                     "john{@literal @}equinix.com",
- *                     "marry{@literal @}equinix.com")
+ *                     "john}{@literal @}{@code equinix.com",
+ *                     "marry}{@literal @}{@code equinix.com")
  *                 .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * ### example 2
@@ -129,12 +129,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
  *             .metroCode("SV")
  *             .build());
@@ -147,9 +147,9 @@ import javax.annotation.Nullable;
  *             .byol(true)
  *             .packageCode("VM100")
  *             .notifications(            
- *                 "john{@literal @}equinix.com",
- *                 "marry{@literal @}equinix.com",
- *                 "fred{@literal @}equinix.com")
+ *                 "john}{@literal @}{@code equinix.com",
+ *                 "marry}{@literal @}{@code equinix.com",
+ *                 "fred}{@literal @}{@code equinix.com")
  *             .termLength(12)
  *             .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
  *             .version("10.1.3")
@@ -177,8 +177,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * ### example 3
@@ -202,12 +202,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
  *         final var filepath = config.get("filepath").orElse("cloudInitFileFolder/TF-AVX-cloud-init-file.txt");
  *         final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
@@ -233,7 +233,7 @@ import javax.annotation.Nullable;
  *             .selfManaged(true)
  *             .byol(true)
  *             .packageCode("STD")
- *             .notifications("john{@literal @}equinix.com")
+ *             .notifications("john}{@literal @}{@code equinix.com")
  *             .termLength(12)
  *             .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
  *             .version("6.9")
@@ -242,8 +242,8 @@ import javax.annotation.Nullable;
  *             .aclTemplateId("c06150ea-b604-4ad1-832a-d63936e9b938")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * ### example 4
@@ -266,12 +266,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
  *             .name("account-name")
  *             .metroCode("SV")
@@ -284,7 +284,7 @@ import javax.annotation.Nullable;
  *             .selfManaged(true)
  *             .byol(true)
  *             .packageCode("network-essentials")
- *             .notifications("test{@literal @}equinix.com")
+ *             .notifications("test}{@literal @}{@code equinix.com")
  *             .hostname("C8KV")
  *             .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
  *             .version("17.06.01a")
@@ -299,8 +299,8 @@ import javax.annotation.Nullable;
  *             .aclTemplateId("3e548c02-9164-4197-aa23-05b1f644883c")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * ### example 5
@@ -323,12 +323,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
  *             .name("account-name")
  *             .metroCode("SV")
@@ -341,7 +341,7 @@ import javax.annotation.Nullable;
  *             .selfManaged(true)
  *             .byol(true)
  *             .packageCode("STD")
- *             .notifications("test{@literal @}equinix.com")
+ *             .notifications("test}{@literal @}{@code equinix.com")
  *             .hostname("VSRX")
  *             .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
  *             .version("23.2R1.13")
@@ -357,8 +357,8 @@ import javax.annotation.Nullable;
  *             .aclTemplateId("3e548c02-9164-4197-aa23-05b1f644883c")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * ### example 6
@@ -384,12 +384,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
  *             .name("account-name")
  *             .metroCode("SV")
@@ -409,7 +409,7 @@ import javax.annotation.Nullable;
  *             .connectivity("PRIVATE")
  *             .byol(true)
  *             .packageCode("CloudEOS")
- *             .notifications("test{@literal @}equinix.com")
+ *             .notifications("test}{@literal @}{@code equinix.com")
  *             .hostname("arista-p")
  *             .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
  *             .version("4.29.0")
@@ -425,14 +425,14 @@ import javax.annotation.Nullable;
  *                 .name("tf-arista-s")
  *                 .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
  *                 .hostname("arista-s")
- *                 .notifications("test{@literal @}eq.com")
+ *                 .notifications("test}{@literal @}{@code eq.com")
  *                 .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
  *                 .aclTemplateId("fee5e2c0-6198-4ce6-9cbd-bbe6c1dbe138")
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * ### example 7
@@ -458,12 +458,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
  *             .name("account-name")
  *             .metroCode("SV")
@@ -483,7 +483,7 @@ import javax.annotation.Nullable;
  *             .connectivity("PRIVATE")
  *             .byol(true)
  *             .packageCode("STD")
- *             .notifications("test{@literal @}equinix.com")
+ *             .notifications("test}{@literal @}{@code equinix.com")
  *             .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
  *             .version("9.6.0")
  *             .coreCount(2)
@@ -503,7 +503,7 @@ import javax.annotation.Nullable;
  *             .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
  *                 .name("tf-bluecat-bdds-s")
  *                 .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
- *                 .notifications("test{@literal @}eq.com")
+ *                 .notifications("test}{@literal @}{@code eq.com")
  *                 .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
  *                 .vendorConfiguration(Map.ofEntries(
  *                     Map.entry("hostname", "test"),
@@ -516,8 +516,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * ### example 8
@@ -542,12 +542,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
  *             .name("account-name")
  *             .metroCode("SV")
@@ -585,7 +585,7 @@ import javax.annotation.Nullable;
  *             .connectivity("PRIVATE")
  *             .byol(true)
  *             .packageCode("STD")
- *             .notifications("test{@literal @}equinix.com")
+ *             .notifications("test}{@literal @}{@code equinix.com")
  *             .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
  *             .cloudInitFileId(bluecatEdgeServicePointCloudinitPrimaryFile.uuid())
  *             .version("4.6.3")
@@ -594,14 +594,14 @@ import javax.annotation.Nullable;
  *             .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
  *                 .name("tf-bluecat-edge-service-point-s")
  *                 .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
- *                 .notifications("test{@literal @}eq.com")
+ *                 .notifications("test}{@literal @}{@code eq.com")
  *                 .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
  *                 .cloudInitFileId(bluecatEdgeServicePointCloudinitSecondaryFile.uuid())
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * ### example 9
@@ -629,12 +629,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
  *             .metroCode("SV")
  *             .build());
@@ -647,9 +647,9 @@ import javax.annotation.Nullable;
  *             .byol(true)
  *             .packageCode("VM100")
  *             .notifications(            
- *                 "john{@literal @}equinix.com",
- *                 "marry{@literal @}equinix.com",
- *                 "fred{@literal @}equinix.com")
+ *                 "john}{@literal @}{@code equinix.com",
+ *                 "marry}{@literal @}{@code equinix.com",
+ *                 "fred}{@literal @}{@code equinix.com")
  *             .termLength(12)
  *             .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
  *             .version("11.1.3")
@@ -681,8 +681,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -1336,7 +1336,7 @@ public class Device extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Device(String name) {
+    public Device(java.lang.String name) {
         this(name, DeviceArgs.Empty);
     }
     /**
@@ -1344,7 +1344,7 @@ public class Device extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Device(String name, DeviceArgs args) {
+    public Device(java.lang.String name, DeviceArgs args) {
         this(name, args, null);
     }
     /**
@@ -1353,12 +1353,12 @@ public class Device extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Device(String name, DeviceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("equinix:networkedge/device:Device", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Device(java.lang.String name, DeviceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("equinix:networkedge/device:Device", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Device(String name, Output<String> id, @Nullable DeviceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("equinix:networkedge/device:Device", name, state, makeResourceOptions(options, id));
+    private Device(java.lang.String name, Output<java.lang.String> id, @Nullable DeviceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("equinix:networkedge/device:Device", name, state, makeResourceOptions(options, id), false);
     }
 
     private static DeviceArgs makeArgs(DeviceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -1368,7 +1368,7 @@ public class Device extends com.pulumi.resources.CustomResource {
         return args == null ? DeviceArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -1384,7 +1384,7 @@ public class Device extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Device get(String name, Output<String> id, @Nullable DeviceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Device get(java.lang.String name, Output<java.lang.String> id, @Nullable DeviceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Device(name, id, state, options);
     }
 }
