@@ -50,7 +50,7 @@ import (
 //				Type:             pulumi.String("shared"),
 //				Redundancy:       pulumi.String("primary"),
 //				Metro:            pulumi.String(metro),
-//				Speed:            pulumi.String(fmt.Sprintf("%vMbps", speedInMbps)),
+//				Speed:            pulumi.Sprintf("%vMbps", speedInMbps),
 //				ServiceTokenType: pulumi.String("z_side"),
 //			})
 //			if err != nil {
@@ -95,7 +95,7 @@ import (
 //				Type:             pulumi.String("shared"),
 //				Redundancy:       pulumi.String("primary"),
 //				Metro:            pulumi.String(metro),
-//				Speed:            pulumi.String(fmt.Sprintf("%vMbps", speedInMbps)),
+//				Speed:            pulumi.Sprintf("%vMbps", speedInMbps),
 //				ServiceTokenType: pulumi.String("a_side"),
 //			})
 //			if err != nil {

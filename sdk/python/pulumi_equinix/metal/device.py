@@ -1025,7 +1025,7 @@ class Device(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  always_pxe: Optional[pulumi.Input[bool]] = None,
-                 behavior: Optional[pulumi.Input[pulumi.InputType['DeviceBehaviorArgs']]] = None,
+                 behavior: Optional[pulumi.Input[Union['DeviceBehaviorArgs', 'DeviceBehaviorArgsDict']]] = None,
                  billing_cycle: Optional[pulumi.Input[Union[str, 'BillingCycle']]] = None,
                  custom_data: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -1033,7 +1033,7 @@ class Device(pulumi.CustomResource):
                  force_detach_volumes: Optional[pulumi.Input[bool]] = None,
                  hardware_reservation_id: Optional[pulumi.Input[str]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
-                 ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceIpAddressArgs']]]]] = None,
+                 ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DeviceIpAddressArgs', 'DeviceIpAddressArgsDict']]]]] = None,
                  ipxe_script_url: Optional[pulumi.Input[str]] = None,
                  locked: Optional[pulumi.Input[bool]] = None,
                  metro: Optional[pulumi.Input[str]] = None,
@@ -1041,7 +1041,7 @@ class Device(pulumi.CustomResource):
                  plan: Optional[pulumi.Input[Union[str, 'Plan']]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  project_ssh_key_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 reinstall: Optional[pulumi.Input[pulumi.InputType['DeviceReinstallArgs']]] = None,
+                 reinstall: Optional[pulumi.Input[Union['DeviceReinstallArgs', 'DeviceReinstallArgsDict']]] = None,
                  storage: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  termination_time: Optional[pulumi.Input[str]] = None,
@@ -1096,10 +1096,10 @@ class Device(pulumi.CustomResource):
             operating_system=equinix.metal.OperatingSystem.UBUNTU20_04,
             billing_cycle=equinix.metal.BillingCycle.HOURLY,
             project_id=project_id,
-            ip_addresses=[equinix.metal.DeviceIpAddressArgs(
-                type="private_ipv4",
-                cidr=30,
-            )])
+            ip_addresses=[{
+                "type": "private_ipv4",
+                "cidr": 30,
+            }])
         ```
         ### example 4
         ```python
@@ -1185,12 +1185,12 @@ class Device(pulumi.CustomResource):
             always_pxe=False,
             user_data=user_data,
             custom_data=custom_data,
-            behavior=equinix.metal.DeviceBehaviorArgs(
-                allow_changes=[
+            behavior={
+                "allow_changes": [
                     "custom_data",
                     "user_data",
                 ],
-            ))
+            })
         ```
 
         :param str resource_name: The name of the resource.
@@ -1203,7 +1203,7 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[bool] force_detach_volumes: Delete device even if it has volumes attached. Only applies for destroy action
         :param pulumi.Input[str] hardware_reservation_id: The UUID of the hardware reservation where you want this device deployed, or next-available if you want to pick your next available reservation automatically
         :param pulumi.Input[str] hostname: The device hostname used in deployments taking advantage of Layer3 DHCP or metadata service configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceIpAddressArgs']]]] ip_addresses: A list of IP address types for the device (structure is documented below)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DeviceIpAddressArgs', 'DeviceIpAddressArgsDict']]]] ip_addresses: A list of IP address types for the device (structure is documented below)
         :param pulumi.Input[str] ipxe_script_url: URL pointing to a hosted iPXE script. More
         :param pulumi.Input[bool] locked: Whether the device is locked or unlocked. Locking a device prevents you from deleting or reinstalling the device or performing a firmware update on the device, and it prevents an instance with a termination time set from being reclaimed, even if the termination time was reached
         :param pulumi.Input[str] metro: Metro area for the new device. Conflicts with facilities
@@ -1271,10 +1271,10 @@ class Device(pulumi.CustomResource):
             operating_system=equinix.metal.OperatingSystem.UBUNTU20_04,
             billing_cycle=equinix.metal.BillingCycle.HOURLY,
             project_id=project_id,
-            ip_addresses=[equinix.metal.DeviceIpAddressArgs(
-                type="private_ipv4",
-                cidr=30,
-            )])
+            ip_addresses=[{
+                "type": "private_ipv4",
+                "cidr": 30,
+            }])
         ```
         ### example 4
         ```python
@@ -1360,12 +1360,12 @@ class Device(pulumi.CustomResource):
             always_pxe=False,
             user_data=user_data,
             custom_data=custom_data,
-            behavior=equinix.metal.DeviceBehaviorArgs(
-                allow_changes=[
+            behavior={
+                "allow_changes": [
                     "custom_data",
                     "user_data",
                 ],
-            ))
+            })
         ```
 
         :param str resource_name: The name of the resource.
@@ -1384,7 +1384,7 @@ class Device(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  always_pxe: Optional[pulumi.Input[bool]] = None,
-                 behavior: Optional[pulumi.Input[pulumi.InputType['DeviceBehaviorArgs']]] = None,
+                 behavior: Optional[pulumi.Input[Union['DeviceBehaviorArgs', 'DeviceBehaviorArgsDict']]] = None,
                  billing_cycle: Optional[pulumi.Input[Union[str, 'BillingCycle']]] = None,
                  custom_data: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -1392,7 +1392,7 @@ class Device(pulumi.CustomResource):
                  force_detach_volumes: Optional[pulumi.Input[bool]] = None,
                  hardware_reservation_id: Optional[pulumi.Input[str]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
-                 ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceIpAddressArgs']]]]] = None,
+                 ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DeviceIpAddressArgs', 'DeviceIpAddressArgsDict']]]]] = None,
                  ipxe_script_url: Optional[pulumi.Input[str]] = None,
                  locked: Optional[pulumi.Input[bool]] = None,
                  metro: Optional[pulumi.Input[str]] = None,
@@ -1400,7 +1400,7 @@ class Device(pulumi.CustomResource):
                  plan: Optional[pulumi.Input[Union[str, 'Plan']]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  project_ssh_key_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 reinstall: Optional[pulumi.Input[pulumi.InputType['DeviceReinstallArgs']]] = None,
+                 reinstall: Optional[pulumi.Input[Union['DeviceReinstallArgs', 'DeviceReinstallArgsDict']]] = None,
                  storage: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  termination_time: Optional[pulumi.Input[str]] = None,
@@ -1476,7 +1476,7 @@ class Device(pulumi.CustomResource):
             access_public_ipv4: Optional[pulumi.Input[str]] = None,
             access_public_ipv6: Optional[pulumi.Input[str]] = None,
             always_pxe: Optional[pulumi.Input[bool]] = None,
-            behavior: Optional[pulumi.Input[pulumi.InputType['DeviceBehaviorArgs']]] = None,
+            behavior: Optional[pulumi.Input[Union['DeviceBehaviorArgs', 'DeviceBehaviorArgsDict']]] = None,
             billing_cycle: Optional[pulumi.Input[Union[str, 'BillingCycle']]] = None,
             created: Optional[pulumi.Input[str]] = None,
             custom_data: Optional[pulumi.Input[str]] = None,
@@ -1487,18 +1487,18 @@ class Device(pulumi.CustomResource):
             force_detach_volumes: Optional[pulumi.Input[bool]] = None,
             hardware_reservation_id: Optional[pulumi.Input[str]] = None,
             hostname: Optional[pulumi.Input[str]] = None,
-            ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceIpAddressArgs']]]]] = None,
+            ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DeviceIpAddressArgs', 'DeviceIpAddressArgsDict']]]]] = None,
             ipxe_script_url: Optional[pulumi.Input[str]] = None,
             locked: Optional[pulumi.Input[bool]] = None,
             metro: Optional[pulumi.Input[str]] = None,
-            network: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceNetworkArgs']]]]] = None,
+            network: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DeviceNetworkArgs', 'DeviceNetworkArgsDict']]]]] = None,
             network_type: Optional[pulumi.Input[Union[str, 'NetworkType']]] = None,
             operating_system: Optional[pulumi.Input[Union[str, 'OperatingSystem']]] = None,
             plan: Optional[pulumi.Input[Union[str, 'Plan']]] = None,
-            ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DevicePortArgs']]]]] = None,
+            ports: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DevicePortArgs', 'DevicePortArgsDict']]]]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
             project_ssh_key_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            reinstall: Optional[pulumi.Input[pulumi.InputType['DeviceReinstallArgs']]] = None,
+            reinstall: Optional[pulumi.Input[Union['DeviceReinstallArgs', 'DeviceReinstallArgsDict']]] = None,
             root_password: Optional[pulumi.Input[str]] = None,
             sos_hostname: Optional[pulumi.Input[str]] = None,
             ssh_key_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1531,15 +1531,15 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[bool] force_detach_volumes: Delete device even if it has volumes attached. Only applies for destroy action
         :param pulumi.Input[str] hardware_reservation_id: The UUID of the hardware reservation where you want this device deployed, or next-available if you want to pick your next available reservation automatically
         :param pulumi.Input[str] hostname: The device hostname used in deployments taking advantage of Layer3 DHCP or metadata service configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceIpAddressArgs']]]] ip_addresses: A list of IP address types for the device (structure is documented below)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DeviceIpAddressArgs', 'DeviceIpAddressArgsDict']]]] ip_addresses: A list of IP address types for the device (structure is documented below)
         :param pulumi.Input[str] ipxe_script_url: URL pointing to a hosted iPXE script. More
         :param pulumi.Input[bool] locked: Whether the device is locked or unlocked. Locking a device prevents you from deleting or reinstalling the device or performing a firmware update on the device, and it prevents an instance with a termination time set from being reclaimed, even if the termination time was reached
         :param pulumi.Input[str] metro: Metro area for the new device. Conflicts with facilities
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceNetworkArgs']]]] network: The device's private and public IP (v4 and v6) network details. When a device is run without any special network configuration, it will have 3 addresses: public ipv4, private ipv4 and ipv6
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DeviceNetworkArgs', 'DeviceNetworkArgsDict']]]] network: The device's private and public IP (v4 and v6) network details. When a device is run without any special network configuration, it will have 3 addresses: public ipv4, private ipv4 and ipv6
         :param pulumi.Input[Union[str, 'NetworkType']] network_type: Network type of a device, used in [Layer 2 networking](https://metal.equinix.com/developers/docs/networking/layer2/). Will be one of layer3, hybrid, hybrid-bonded, layer2-individual, layer2-bonded
         :param pulumi.Input[Union[str, 'OperatingSystem']] operating_system: The operating system slug. To find the slug, or visit [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your API auth token in the top of the page and see JSON from the API response.  By default, changing this attribute will cause your device to be deleted and recreated.  If `reinstall` is enabled, the device will be updated in-place instead of recreated.
         :param pulumi.Input[Union[str, 'Plan']] plan: The device plan slug. To find the plan slug, visit the [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DevicePortArgs']]]] ports: Ports assigned to the device
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DevicePortArgs', 'DevicePortArgsDict']]]] ports: Ports assigned to the device
         :param pulumi.Input[str] project_id: The ID of the project in which to create the device
         :param pulumi.Input[Sequence[pulumi.Input[str]]] project_ssh_key_ids: Array of IDs of the project SSH keys which should be added to the device. If you specify this array, only the listed project SSH keys (and any SSH keys for the users specified in user*ssh*key*ids) will be added. If no SSH keys are specified (both user*ssh*keys*ids and project*ssh*key*ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included.  Project SSH keys can be created with the equinix*metal*project*ssh*key resource
         :param pulumi.Input[str] root_password: Root password to the server (disabled after 24 hours)

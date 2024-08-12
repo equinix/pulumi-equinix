@@ -119,9 +119,9 @@ class AwaitableGetServiceProfilesResult(GetServiceProfilesResult):
 
 
 def get_service_profiles(and_filters: Optional[bool] = None,
-                         filter: Optional[pulumi.InputType['GetServiceProfilesFilterArgs']] = None,
-                         pagination: Optional[pulumi.InputType['GetServiceProfilesPaginationArgs']] = None,
-                         sort: Optional[Sequence[pulumi.InputType['GetServiceProfilesSortArgs']]] = None,
+                         filter: Optional[Union['GetServiceProfilesFilterArgs', 'GetServiceProfilesFilterArgsDict']] = None,
+                         pagination: Optional[Union['GetServiceProfilesPaginationArgs', 'GetServiceProfilesPaginationArgsDict']] = None,
+                         sort: Optional[Sequence[Union['GetServiceProfilesSortArgs', 'GetServiceProfilesSortArgsDict']]] = None,
                          view_point: Optional[str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServiceProfilesResult:
     """
@@ -133,9 +133,9 @@ def get_service_profiles(and_filters: Optional[bool] = None,
 
 
     :param bool and_filters: Optional boolean flag to indicate if the filters will be AND'd together. Defaults to false
-    :param pulumi.InputType['GetServiceProfilesFilterArgs'] filter: Filters for the Data Source Search Request (If and_filters is not set to true you cannot provide more than one filter block)
-    :param pulumi.InputType['GetServiceProfilesPaginationArgs'] pagination: Pagination details for the Data Source Search Request
-    :param Sequence[pulumi.InputType['GetServiceProfilesSortArgs']] sort: Filters for the Data Source Search Request
+    :param Union['GetServiceProfilesFilterArgs', 'GetServiceProfilesFilterArgsDict'] filter: Filters for the Data Source Search Request (If and_filters is not set to true you cannot provide more than one filter block)
+    :param Union['GetServiceProfilesPaginationArgs', 'GetServiceProfilesPaginationArgsDict'] pagination: Pagination details for the Data Source Search Request
+    :param Sequence[Union['GetServiceProfilesSortArgs', 'GetServiceProfilesSortArgsDict']] sort: Filters for the Data Source Search Request
     :param str view_point: flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
     """
     __args__ = dict()
@@ -159,9 +159,9 @@ def get_service_profiles(and_filters: Optional[bool] = None,
 
 @_utilities.lift_output_func(get_service_profiles)
 def get_service_profiles_output(and_filters: Optional[pulumi.Input[Optional[bool]]] = None,
-                                filter: Optional[pulumi.Input[pulumi.InputType['GetServiceProfilesFilterArgs']]] = None,
-                                pagination: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceProfilesPaginationArgs']]]] = None,
-                                sort: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetServiceProfilesSortArgs']]]]] = None,
+                                filter: Optional[pulumi.Input[Union['GetServiceProfilesFilterArgs', 'GetServiceProfilesFilterArgsDict']]] = None,
+                                pagination: Optional[pulumi.Input[Optional[Union['GetServiceProfilesPaginationArgs', 'GetServiceProfilesPaginationArgsDict']]]] = None,
+                                sort: Optional[pulumi.Input[Optional[Sequence[Union['GetServiceProfilesSortArgs', 'GetServiceProfilesSortArgsDict']]]]] = None,
                                 view_point: Optional[pulumi.Input[Optional[str]]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceProfilesResult]:
     """
@@ -173,9 +173,9 @@ def get_service_profiles_output(and_filters: Optional[pulumi.Input[Optional[bool
 
 
     :param bool and_filters: Optional boolean flag to indicate if the filters will be AND'd together. Defaults to false
-    :param pulumi.InputType['GetServiceProfilesFilterArgs'] filter: Filters for the Data Source Search Request (If and_filters is not set to true you cannot provide more than one filter block)
-    :param pulumi.InputType['GetServiceProfilesPaginationArgs'] pagination: Pagination details for the Data Source Search Request
-    :param Sequence[pulumi.InputType['GetServiceProfilesSortArgs']] sort: Filters for the Data Source Search Request
+    :param Union['GetServiceProfilesFilterArgs', 'GetServiceProfilesFilterArgsDict'] filter: Filters for the Data Source Search Request (If and_filters is not set to true you cannot provide more than one filter block)
+    :param Union['GetServiceProfilesPaginationArgs', 'GetServiceProfilesPaginationArgsDict'] pagination: Pagination details for the Data Source Search Request
+    :param Sequence[Union['GetServiceProfilesSortArgs', 'GetServiceProfilesSortArgsDict']] sort: Filters for the Data Source Search Request
     :param str view_point: flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
     """
     ...

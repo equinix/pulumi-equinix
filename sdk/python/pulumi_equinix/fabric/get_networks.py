@@ -106,10 +106,10 @@ class AwaitableGetNetworksResult(GetNetworksResult):
             sorts=self.sorts)
 
 
-def get_networks(filters: Optional[Sequence[pulumi.InputType['GetNetworksFilterArgs']]] = None,
+def get_networks(filters: Optional[Sequence[Union['GetNetworksFilterArgs', 'GetNetworksFilterArgsDict']]] = None,
                  outer_operator: Optional[str] = None,
-                 pagination: Optional[pulumi.InputType['GetNetworksPaginationArgs']] = None,
-                 sorts: Optional[Sequence[pulumi.InputType['GetNetworksSortArgs']]] = None,
+                 pagination: Optional[Union['GetNetworksPaginationArgs', 'GetNetworksPaginationArgsDict']] = None,
+                 sorts: Optional[Sequence[Union['GetNetworksSortArgs', 'GetNetworksSortArgsDict']]] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNetworksResult:
     """
     Fabric V4 API compatible data resource that allow user to fetch Fabric Network for a given UUID
@@ -119,10 +119,10 @@ def get_networks(filters: Optional[Sequence[pulumi.InputType['GetNetworksFilterA
     * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-networks
 
 
-    :param Sequence[pulumi.InputType['GetNetworksFilterArgs']] filters: Filters for the Data Source Search Request
+    :param Sequence[Union['GetNetworksFilterArgs', 'GetNetworksFilterArgsDict']] filters: Filters for the Data Source Search Request
     :param str outer_operator: Determines if the filter list will be grouped by AND or by OR. One of [AND, OR]
-    :param pulumi.InputType['GetNetworksPaginationArgs'] pagination: Pagination details for the Data Source Search Request
-    :param Sequence[pulumi.InputType['GetNetworksSortArgs']] sorts: Filters for the Data Source Search Request
+    :param Union['GetNetworksPaginationArgs', 'GetNetworksPaginationArgsDict'] pagination: Pagination details for the Data Source Search Request
+    :param Sequence[Union['GetNetworksSortArgs', 'GetNetworksSortArgsDict']] sorts: Filters for the Data Source Search Request
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -142,10 +142,10 @@ def get_networks(filters: Optional[Sequence[pulumi.InputType['GetNetworksFilterA
 
 
 @_utilities.lift_output_func(get_networks)
-def get_networks_output(filters: Optional[pulumi.Input[Sequence[pulumi.InputType['GetNetworksFilterArgs']]]] = None,
+def get_networks_output(filters: Optional[pulumi.Input[Sequence[Union['GetNetworksFilterArgs', 'GetNetworksFilterArgsDict']]]] = None,
                         outer_operator: Optional[pulumi.Input[str]] = None,
-                        pagination: Optional[pulumi.Input[Optional[pulumi.InputType['GetNetworksPaginationArgs']]]] = None,
-                        sorts: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetNetworksSortArgs']]]]] = None,
+                        pagination: Optional[pulumi.Input[Optional[Union['GetNetworksPaginationArgs', 'GetNetworksPaginationArgsDict']]]] = None,
+                        sorts: Optional[pulumi.Input[Optional[Sequence[Union['GetNetworksSortArgs', 'GetNetworksSortArgsDict']]]]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetworksResult]:
     """
     Fabric V4 API compatible data resource that allow user to fetch Fabric Network for a given UUID
@@ -155,9 +155,9 @@ def get_networks_output(filters: Optional[pulumi.Input[Sequence[pulumi.InputType
     * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-networks
 
 
-    :param Sequence[pulumi.InputType['GetNetworksFilterArgs']] filters: Filters for the Data Source Search Request
+    :param Sequence[Union['GetNetworksFilterArgs', 'GetNetworksFilterArgsDict']] filters: Filters for the Data Source Search Request
     :param str outer_operator: Determines if the filter list will be grouped by AND or by OR. One of [AND, OR]
-    :param pulumi.InputType['GetNetworksPaginationArgs'] pagination: Pagination details for the Data Source Search Request
-    :param Sequence[pulumi.InputType['GetNetworksSortArgs']] sorts: Filters for the Data Source Search Request
+    :param Union['GetNetworksPaginationArgs', 'GetNetworksPaginationArgsDict'] pagination: Pagination details for the Data Source Search Request
+    :param Sequence[Union['GetNetworksSortArgs', 'GetNetworksSortArgsDict']] sorts: Filters for the Data Source Search Request
     """
     ...

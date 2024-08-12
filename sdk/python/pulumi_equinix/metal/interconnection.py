@@ -840,11 +840,11 @@ class Interconnection(pulumi.CustomResource):
             mode: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             organization_id: Optional[pulumi.Input[str]] = None,
-            ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InterconnectionPortArgs']]]]] = None,
+            ports: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InterconnectionPortArgs', 'InterconnectionPortArgsDict']]]]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
             redundancy: Optional[pulumi.Input[str]] = None,
             service_token_type: Optional[pulumi.Input[str]] = None,
-            service_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InterconnectionServiceTokenArgs']]]]] = None,
+            service_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InterconnectionServiceTokenArgs', 'InterconnectionServiceTokenArgsDict']]]]] = None,
             speed: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -867,11 +867,11 @@ class Interconnection(pulumi.CustomResource):
         :param pulumi.Input[str] mode: Mode for connections in IBX facilities with the dedicated type - standard or tunnel. Default is standard.
         :param pulumi.Input[str] name: Name of the connection resource
         :param pulumi.Input[str] organization_id: ID of the organization where the connection is scoped to.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InterconnectionPortArgs']]]] ports: List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`). Schema of port is described in documentation of the metal.Interconnection datasource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InterconnectionPortArgs', 'InterconnectionPortArgsDict']]]] ports: List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`). Schema of port is described in documentation of the metal.Interconnection datasource.
         :param pulumi.Input[str] project_id: ID of the project where the connection is scoped to, must be set for.
         :param pulumi.Input[str] redundancy: Connection redundancy - redundant or primary.
         :param pulumi.Input[str] service_token_type: Only used with shared connection. Type of service token to use for the connection, a_side or z_side
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InterconnectionServiceTokenArgs']]]] service_tokens: List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard). Scehma of service_token is described in documentation of the metal.Interconnection datasource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InterconnectionServiceTokenArgs', 'InterconnectionServiceTokenArgsDict']]]] service_tokens: List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard). Scehma of service_token is described in documentation of the metal.Interconnection datasource.
         :param pulumi.Input[str] speed: Connection speed - Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
         :param pulumi.Input[str] status: Status of the connection resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: String list of tags.
