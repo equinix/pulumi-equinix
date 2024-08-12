@@ -58,7 +58,7 @@ import java.util.StringJoiner;
         }
 
         @Override
-        public String toString() {
+        public java.lang.String toString() {
             return new StringJoiner(", ", "AccessPointType[", "]")
                 .add("value='" + this.value + "'")
                 .toString();

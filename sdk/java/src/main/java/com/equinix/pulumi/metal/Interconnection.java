@@ -409,7 +409,7 @@ public class Interconnection extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Interconnection(String name) {
+    public Interconnection(java.lang.String name) {
         this(name, InterconnectionArgs.Empty);
     }
     /**
@@ -417,7 +417,7 @@ public class Interconnection extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Interconnection(String name, InterconnectionArgs args) {
+    public Interconnection(java.lang.String name, InterconnectionArgs args) {
         this(name, args, null);
     }
     /**
@@ -426,12 +426,12 @@ public class Interconnection extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Interconnection(String name, InterconnectionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("equinix:metal/interconnection:Interconnection", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Interconnection(java.lang.String name, InterconnectionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("equinix:metal/interconnection:Interconnection", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Interconnection(String name, Output<String> id, @Nullable InterconnectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("equinix:metal/interconnection:Interconnection", name, state, makeResourceOptions(options, id));
+    private Interconnection(java.lang.String name, Output<java.lang.String> id, @Nullable InterconnectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("equinix:metal/interconnection:Interconnection", name, state, makeResourceOptions(options, id), false);
     }
 
     private static InterconnectionArgs makeArgs(InterconnectionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -441,7 +441,7 @@ public class Interconnection extends com.pulumi.resources.CustomResource {
         return args == null ? InterconnectionArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -457,7 +457,7 @@ public class Interconnection extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Interconnection get(String name, Output<String> id, @Nullable InterconnectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Interconnection get(java.lang.String name, Output<java.lang.String> id, @Nullable InterconnectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Interconnection(name, id, state, options);
     }
 }
