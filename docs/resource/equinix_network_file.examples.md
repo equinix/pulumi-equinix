@@ -63,7 +63,7 @@ func main() {
 		}
 		_, err = networkedge.NewNetworkFile(ctx, "test-file", &networkedge.NetworkFileArgs{
 			FileName:       pulumi.String("fileName.txt"),
-			Content:        invokeFile.Result,
+			Content:        pulumi.String(invokeFile.Result),
 			MetroCode:      pulumi.String(equinix.MetroSiliconValley),
 			DeviceTypeCode: pulumi.String("AVIATRIX_EDGE"),
 			ProcessType:    pulumi.String(networkedge.FileTypeCloudInit),

@@ -18,8 +18,8 @@ c8_kv_single = equinix.networkedge.Device("c8kvSingle",
     term_length=12,
     license_token="valid-license-token",
     additional_bandwidth=5,
-    ssh_key=equinix.networkedge.DeviceSshKeyArgs(
-        username="test-username",
-        key_name="valid-key-name",
-    ),
+    ssh_key={
+        "username": "test-username",
+        "key_name": "valid-key-name",
+    },
     acl_template_id="3e548c02-9164-4197-aa23-05b1f644883c")

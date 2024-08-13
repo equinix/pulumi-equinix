@@ -6,7 +6,7 @@ Subject: [PATCH] remove provider meta
 Signed-off-by: Oscar Cobles <oscar.cobles@eu.equinix.com>
 
 diff --git a/equinix/provider.go b/equinix/provider.go
-index b300753..7a4c77b 100644
+index 4704398..a622712 100644
 --- a/equinix/provider.go
 +++ b/equinix/provider.go
 @@ -138,12 +138,6 @@ func Provider() *schema.Provider {
