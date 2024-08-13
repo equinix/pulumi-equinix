@@ -29,7 +29,7 @@ public final class GetConnectionsDataASideAccessPoint {
      */
     private List<GetConnectionsDataASideAccessPointAccount> accounts;
     /**
-     * @return Authentication key for provider based connections or Metal NIMF connections
+     * @return Authentication key for provider based connections or Metal-Fabric Integration connections
      * 
      */
     private @Nullable String authenticationKey;
@@ -112,7 +112,7 @@ public final class GetConnectionsDataASideAccessPoint {
         return this.accounts;
     }
     /**
-     * @return Authentication key for provider based connections or Metal NIMF connections
+     * @return Authentication key for provider based connections or Metal-Fabric Integration connections
      * 
      */
     public Optional<String> authenticationKey() {

@@ -88,7 +88,7 @@ class AwaitableGetMetroResult(GetMetroResult):
             name=self.name)
 
 
-def get_metro(capacities: Optional[Sequence[pulumi.InputType['GetMetroCapacityArgs']]] = None,
+def get_metro(capacities: Optional[Sequence[Union['GetMetroCapacityArgs', 'GetMetroCapacityArgsDict']]] = None,
               code: Optional[str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMetroResult:
     """
@@ -105,7 +105,7 @@ def get_metro(capacities: Optional[Sequence[pulumi.InputType['GetMetroCapacityAr
     ```
 
 
-    :param Sequence[pulumi.InputType['GetMetroCapacityArgs']] capacities: One or more device plans for which the metro must have capacity.
+    :param Sequence[Union['GetMetroCapacityArgs', 'GetMetroCapacityArgsDict']] capacities: One or more device plans for which the metro must have capacity.
     :param str code: The metro code to search for.
     """
     __args__ = dict()
@@ -123,7 +123,7 @@ def get_metro(capacities: Optional[Sequence[pulumi.InputType['GetMetroCapacityAr
 
 
 @_utilities.lift_output_func(get_metro)
-def get_metro_output(capacities: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetMetroCapacityArgs']]]]] = None,
+def get_metro_output(capacities: Optional[pulumi.Input[Optional[Sequence[Union['GetMetroCapacityArgs', 'GetMetroCapacityArgsDict']]]]] = None,
                      code: Optional[pulumi.Input[str]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMetroResult]:
     """
@@ -140,7 +140,7 @@ def get_metro_output(capacities: Optional[pulumi.Input[Optional[Sequence[pulumi.
     ```
 
 
-    :param Sequence[pulumi.InputType['GetMetroCapacityArgs']] capacities: One or more device plans for which the metro must have capacity.
+    :param Sequence[Union['GetMetroCapacityArgs', 'GetMetroCapacityArgsDict']] capacities: One or more device plans for which the metro must have capacity.
     :param str code: The metro code to search for.
     """
     ...

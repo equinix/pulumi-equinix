@@ -297,9 +297,9 @@ class DeviceLink(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceLinkDeviceArgs']]]]] = None,
-                 links: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceLinkLinkArgs']]]]] = None,
-                 metro_links: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceLinkMetroLinkArgs']]]]] = None,
+                 devices: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DeviceLinkDeviceArgs', 'DeviceLinkDeviceArgsDict']]]]] = None,
+                 links: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DeviceLinkLinkArgs', 'DeviceLinkLinkArgsDict']]]]] = None,
+                 metro_links: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DeviceLinkMetroLinkArgs', 'DeviceLinkMetroLinkArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  redundancy_type: Optional[pulumi.Input[str]] = None,
@@ -318,24 +318,24 @@ class DeviceLink(pulumi.CustomResource):
             subnet="192.168.40.64/27",
             project_id="a86d7112-d740-4758-9c9c-31e66373746b",
             devices=[
-                equinix.networkedge.DeviceLinkDeviceArgs(
-                    id=test_equinix_network_device["uuid"],
-                    asn=22111,
-                    interface_id=6,
-                ),
-                equinix.networkedge.DeviceLinkDeviceArgs(
-                    id=test_equinix_network_device["secondaryDevice"][0]["uuid"],
-                    asn=22333,
-                    interface_id=7,
-                ),
+                {
+                    "id": test_equinix_network_device["uuid"],
+                    "asn": 22111,
+                    "interface_id": 6,
+                },
+                {
+                    "id": test_equinix_network_device["secondaryDevice"][0]["uuid"],
+                    "asn": 22333,
+                    "interface_id": 7,
+                },
             ],
-            links=[equinix.networkedge.DeviceLinkLinkArgs(
-                account_number=test_equinix_network_device["accountNumber"],
-                src_metro_code=test_equinix_network_device["metroCode"],
-                dst_metro_code=test_equinix_network_device["secondaryDevice"][0]["metroCode"],
-                throughput="50",
-                throughput_unit="Mbps",
-            )])
+            links=[{
+                "account_number": test_equinix_network_device["accountNumber"],
+                "src_metro_code": test_equinix_network_device["metroCode"],
+                "dst_metro_code": test_equinix_network_device["secondaryDevice"][0]["metroCode"],
+                "throughput": "50",
+                "throughput_unit": "Mbps",
+            }])
         ```
 
         ## Import
@@ -348,9 +348,9 @@ class DeviceLink(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceLinkDeviceArgs']]]] devices: definition of one or more devices belonging to the device link. See Device section below for more details.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceLinkLinkArgs']]]] links: definition of one or more, inter metro, connections belonging to the device link. See Link section below for more details.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceLinkMetroLinkArgs']]]] metro_links: definition of one or more, inter metro, connections belonging to the device link. See Metro Link section below for more details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DeviceLinkDeviceArgs', 'DeviceLinkDeviceArgsDict']]]] devices: definition of one or more devices belonging to the device link. See Device section below for more details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DeviceLinkLinkArgs', 'DeviceLinkLinkArgsDict']]]] links: definition of one or more, inter metro, connections belonging to the device link. See Link section below for more details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DeviceLinkMetroLinkArgs', 'DeviceLinkMetroLinkArgsDict']]]] metro_links: definition of one or more, inter metro, connections belonging to the device link. See Metro Link section below for more details.
         :param pulumi.Input[str] name: device link name.
         :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the device link is scoped to.If you leave it out, the device link will be created under the default project id of your organization.
         :param pulumi.Input[str] redundancy_type: Whether the connection should be created through Fabric's primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
@@ -375,24 +375,24 @@ class DeviceLink(pulumi.CustomResource):
             subnet="192.168.40.64/27",
             project_id="a86d7112-d740-4758-9c9c-31e66373746b",
             devices=[
-                equinix.networkedge.DeviceLinkDeviceArgs(
-                    id=test_equinix_network_device["uuid"],
-                    asn=22111,
-                    interface_id=6,
-                ),
-                equinix.networkedge.DeviceLinkDeviceArgs(
-                    id=test_equinix_network_device["secondaryDevice"][0]["uuid"],
-                    asn=22333,
-                    interface_id=7,
-                ),
+                {
+                    "id": test_equinix_network_device["uuid"],
+                    "asn": 22111,
+                    "interface_id": 6,
+                },
+                {
+                    "id": test_equinix_network_device["secondaryDevice"][0]["uuid"],
+                    "asn": 22333,
+                    "interface_id": 7,
+                },
             ],
-            links=[equinix.networkedge.DeviceLinkLinkArgs(
-                account_number=test_equinix_network_device["accountNumber"],
-                src_metro_code=test_equinix_network_device["metroCode"],
-                dst_metro_code=test_equinix_network_device["secondaryDevice"][0]["metroCode"],
-                throughput="50",
-                throughput_unit="Mbps",
-            )])
+            links=[{
+                "account_number": test_equinix_network_device["accountNumber"],
+                "src_metro_code": test_equinix_network_device["metroCode"],
+                "dst_metro_code": test_equinix_network_device["secondaryDevice"][0]["metroCode"],
+                "throughput": "50",
+                "throughput_unit": "Mbps",
+            }])
         ```
 
         ## Import
@@ -418,9 +418,9 @@ class DeviceLink(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceLinkDeviceArgs']]]]] = None,
-                 links: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceLinkLinkArgs']]]]] = None,
-                 metro_links: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceLinkMetroLinkArgs']]]]] = None,
+                 devices: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DeviceLinkDeviceArgs', 'DeviceLinkDeviceArgsDict']]]]] = None,
+                 links: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DeviceLinkLinkArgs', 'DeviceLinkLinkArgsDict']]]]] = None,
+                 metro_links: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DeviceLinkMetroLinkArgs', 'DeviceLinkMetroLinkArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  redundancy_type: Optional[pulumi.Input[str]] = None,
@@ -455,9 +455,9 @@ class DeviceLink(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceLinkDeviceArgs']]]]] = None,
-            links: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceLinkLinkArgs']]]]] = None,
-            metro_links: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceLinkMetroLinkArgs']]]]] = None,
+            devices: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DeviceLinkDeviceArgs', 'DeviceLinkDeviceArgsDict']]]]] = None,
+            links: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DeviceLinkLinkArgs', 'DeviceLinkLinkArgsDict']]]]] = None,
+            metro_links: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DeviceLinkMetroLinkArgs', 'DeviceLinkMetroLinkArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
             redundancy_type: Optional[pulumi.Input[str]] = None,
@@ -471,9 +471,9 @@ class DeviceLink(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceLinkDeviceArgs']]]] devices: definition of one or more devices belonging to the device link. See Device section below for more details.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceLinkLinkArgs']]]] links: definition of one or more, inter metro, connections belonging to the device link. See Link section below for more details.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceLinkMetroLinkArgs']]]] metro_links: definition of one or more, inter metro, connections belonging to the device link. See Metro Link section below for more details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DeviceLinkDeviceArgs', 'DeviceLinkDeviceArgsDict']]]] devices: definition of one or more devices belonging to the device link. See Device section below for more details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DeviceLinkLinkArgs', 'DeviceLinkLinkArgsDict']]]] links: definition of one or more, inter metro, connections belonging to the device link. See Link section below for more details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DeviceLinkMetroLinkArgs', 'DeviceLinkMetroLinkArgsDict']]]] metro_links: definition of one or more, inter metro, connections belonging to the device link. See Metro Link section below for more details.
         :param pulumi.Input[str] name: device link name.
         :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the device link is scoped to.If you leave it out, the device link will be created under the default project id of your organization.
         :param pulumi.Input[str] redundancy_type: Whether the connection should be created through Fabric's primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`

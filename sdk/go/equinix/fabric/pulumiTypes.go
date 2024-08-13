@@ -1320,7 +1320,7 @@ func (o ConnectionASidePtrOutput) ServiceToken() ConnectionASideServiceTokenPtrO
 type ConnectionASideAccessPoint struct {
 	// Account
 	Account *ConnectionASideAccessPointAccount `pulumi:"account"`
-	// Authentication key for provider based connections or Metal NIMF connections
+	// Authentication key for provider based connections or Metal-Fabric Integration connections
 	AuthenticationKey *string `pulumi:"authenticationKey"`
 	// **Deprecated** `gateway` Use `router` attribute instead
 	//
@@ -1366,7 +1366,7 @@ type ConnectionASideAccessPointInput interface {
 type ConnectionASideAccessPointArgs struct {
 	// Account
 	Account ConnectionASideAccessPointAccountPtrInput `pulumi:"account"`
-	// Authentication key for provider based connections or Metal NIMF connections
+	// Authentication key for provider based connections or Metal-Fabric Integration connections
 	AuthenticationKey pulumi.StringPtrInput `pulumi:"authenticationKey"`
 	// **Deprecated** `gateway` Use `router` attribute instead
 	//
@@ -1480,7 +1480,7 @@ func (o ConnectionASideAccessPointOutput) Account() ConnectionASideAccessPointAc
 	return o.ApplyT(func(v ConnectionASideAccessPoint) *ConnectionASideAccessPointAccount { return v.Account }).(ConnectionASideAccessPointAccountPtrOutput)
 }
 
-// Authentication key for provider based connections or Metal NIMF connections
+// Authentication key for provider based connections or Metal-Fabric Integration connections
 func (o ConnectionASideAccessPointOutput) AuthenticationKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionASideAccessPoint) *string { return v.AuthenticationKey }).(pulumi.StringPtrOutput)
 }
@@ -1586,7 +1586,7 @@ func (o ConnectionASideAccessPointPtrOutput) Account() ConnectionASideAccessPoin
 	}).(ConnectionASideAccessPointAccountPtrOutput)
 }
 
-// Authentication key for provider based connections or Metal NIMF connections
+// Authentication key for provider based connections or Metal-Fabric Integration connections
 func (o ConnectionASideAccessPointPtrOutput) AuthenticationKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionASideAccessPoint) *string {
 		if v == nil {
@@ -6070,7 +6070,7 @@ func (o ConnectionZSidePtrOutput) ServiceToken() ConnectionZSideServiceTokenPtrO
 type ConnectionZSideAccessPoint struct {
 	// Account
 	Account *ConnectionZSideAccessPointAccount `pulumi:"account"`
-	// Authentication key for provider based connections or Metal NIMF connections
+	// Authentication key for provider based connections or Metal-Fabric Integration connections
 	AuthenticationKey *string `pulumi:"authenticationKey"`
 	// **Deprecated** `gateway` Use `router` attribute instead
 	//
@@ -6116,7 +6116,7 @@ type ConnectionZSideAccessPointInput interface {
 type ConnectionZSideAccessPointArgs struct {
 	// Account
 	Account ConnectionZSideAccessPointAccountPtrInput `pulumi:"account"`
-	// Authentication key for provider based connections or Metal NIMF connections
+	// Authentication key for provider based connections or Metal-Fabric Integration connections
 	AuthenticationKey pulumi.StringPtrInput `pulumi:"authenticationKey"`
 	// **Deprecated** `gateway` Use `router` attribute instead
 	//
@@ -6230,7 +6230,7 @@ func (o ConnectionZSideAccessPointOutput) Account() ConnectionZSideAccessPointAc
 	return o.ApplyT(func(v ConnectionZSideAccessPoint) *ConnectionZSideAccessPointAccount { return v.Account }).(ConnectionZSideAccessPointAccountPtrOutput)
 }
 
-// Authentication key for provider based connections or Metal NIMF connections
+// Authentication key for provider based connections or Metal-Fabric Integration connections
 func (o ConnectionZSideAccessPointOutput) AuthenticationKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionZSideAccessPoint) *string { return v.AuthenticationKey }).(pulumi.StringPtrOutput)
 }
@@ -6336,7 +6336,7 @@ func (o ConnectionZSideAccessPointPtrOutput) Account() ConnectionZSideAccessPoin
 	}).(ConnectionZSideAccessPointAccountPtrOutput)
 }
 
-// Authentication key for provider based connections or Metal NIMF connections
+// Authentication key for provider based connections or Metal-Fabric Integration connections
 func (o ConnectionZSideAccessPointPtrOutput) AuthenticationKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionZSideAccessPoint) *string {
 		if v == nil {
@@ -16950,7 +16950,7 @@ func (o GetConnectionASideOutput) ServiceToken() GetConnectionASideServiceTokenP
 type GetConnectionASideAccessPoint struct {
 	// Account
 	Accounts []GetConnectionASideAccessPointAccount `pulumi:"accounts"`
-	// Authentication key for provider based connections or Metal NIMF connections
+	// Authentication key for provider based connections or Metal-Fabric Integration connections
 	AuthenticationKey *string `pulumi:"authenticationKey"`
 	// **Deprecated** `gateway` Use `router` attribute instead
 	//
@@ -16996,7 +16996,7 @@ type GetConnectionASideAccessPointInput interface {
 type GetConnectionASideAccessPointArgs struct {
 	// Account
 	Accounts GetConnectionASideAccessPointAccountArrayInput `pulumi:"accounts"`
-	// Authentication key for provider based connections or Metal NIMF connections
+	// Authentication key for provider based connections or Metal-Fabric Integration connections
 	AuthenticationKey pulumi.StringPtrInput `pulumi:"authenticationKey"`
 	// **Deprecated** `gateway` Use `router` attribute instead
 	//
@@ -17110,7 +17110,7 @@ func (o GetConnectionASideAccessPointOutput) Accounts() GetConnectionASideAccess
 	return o.ApplyT(func(v GetConnectionASideAccessPoint) []GetConnectionASideAccessPointAccount { return v.Accounts }).(GetConnectionASideAccessPointAccountArrayOutput)
 }
 
-// Authentication key for provider based connections or Metal NIMF connections
+// Authentication key for provider based connections or Metal-Fabric Integration connections
 func (o GetConnectionASideAccessPointOutput) AuthenticationKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetConnectionASideAccessPoint) *string { return v.AuthenticationKey }).(pulumi.StringPtrOutput)
 }
@@ -17220,7 +17220,7 @@ func (o GetConnectionASideAccessPointPtrOutput) Accounts() GetConnectionASideAcc
 	}).(GetConnectionASideAccessPointAccountArrayOutput)
 }
 
-// Authentication key for provider based connections or Metal NIMF connections
+// Authentication key for provider based connections or Metal-Fabric Integration connections
 func (o GetConnectionASideAccessPointPtrOutput) AuthenticationKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetConnectionASideAccessPoint) *string {
 		if v == nil {
@@ -20673,7 +20673,7 @@ func (o GetConnectionZSideOutput) ServiceToken() GetConnectionZSideServiceTokenP
 type GetConnectionZSideAccessPoint struct {
 	// Account
 	Accounts []GetConnectionZSideAccessPointAccount `pulumi:"accounts"`
-	// Authentication key for provider based connections or Metal NIMF connections
+	// Authentication key for provider based connections or Metal-Fabric Integration connections
 	AuthenticationKey *string `pulumi:"authenticationKey"`
 	// **Deprecated** `gateway` Use `router` attribute instead
 	//
@@ -20719,7 +20719,7 @@ type GetConnectionZSideAccessPointInput interface {
 type GetConnectionZSideAccessPointArgs struct {
 	// Account
 	Accounts GetConnectionZSideAccessPointAccountArrayInput `pulumi:"accounts"`
-	// Authentication key for provider based connections or Metal NIMF connections
+	// Authentication key for provider based connections or Metal-Fabric Integration connections
 	AuthenticationKey pulumi.StringPtrInput `pulumi:"authenticationKey"`
 	// **Deprecated** `gateway` Use `router` attribute instead
 	//
@@ -20833,7 +20833,7 @@ func (o GetConnectionZSideAccessPointOutput) Accounts() GetConnectionZSideAccess
 	return o.ApplyT(func(v GetConnectionZSideAccessPoint) []GetConnectionZSideAccessPointAccount { return v.Accounts }).(GetConnectionZSideAccessPointAccountArrayOutput)
 }
 
-// Authentication key for provider based connections or Metal NIMF connections
+// Authentication key for provider based connections or Metal-Fabric Integration connections
 func (o GetConnectionZSideAccessPointOutput) AuthenticationKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetConnectionZSideAccessPoint) *string { return v.AuthenticationKey }).(pulumi.StringPtrOutput)
 }
@@ -20943,7 +20943,7 @@ func (o GetConnectionZSideAccessPointPtrOutput) Accounts() GetConnectionZSideAcc
 	}).(GetConnectionZSideAccessPointAccountArrayOutput)
 }
 
-// Authentication key for provider based connections or Metal NIMF connections
+// Authentication key for provider based connections or Metal-Fabric Integration connections
 func (o GetConnectionZSideAccessPointPtrOutput) AuthenticationKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetConnectionZSideAccessPoint) *string {
 		if v == nil {
@@ -23798,7 +23798,7 @@ func (o GetConnectionsDataASideArrayOutput) Index(i pulumi.IntInput) GetConnecti
 type GetConnectionsDataASideAccessPoint struct {
 	// Account
 	Accounts []GetConnectionsDataASideAccessPointAccount `pulumi:"accounts"`
-	// Authentication key for provider based connections or Metal NIMF connections
+	// Authentication key for provider based connections or Metal-Fabric Integration connections
 	AuthenticationKey *string `pulumi:"authenticationKey"`
 	// **Deprecated** `gateway` Use `router` attribute instead
 	//
@@ -23844,7 +23844,7 @@ type GetConnectionsDataASideAccessPointInput interface {
 type GetConnectionsDataASideAccessPointArgs struct {
 	// Account
 	Accounts GetConnectionsDataASideAccessPointAccountArrayInput `pulumi:"accounts"`
-	// Authentication key for provider based connections or Metal NIMF connections
+	// Authentication key for provider based connections or Metal-Fabric Integration connections
 	AuthenticationKey pulumi.StringPtrInput `pulumi:"authenticationKey"`
 	// **Deprecated** `gateway` Use `router` attribute instead
 	//
@@ -23960,7 +23960,7 @@ func (o GetConnectionsDataASideAccessPointOutput) Accounts() GetConnectionsDataA
 	}).(GetConnectionsDataASideAccessPointAccountArrayOutput)
 }
 
-// Authentication key for provider based connections or Metal NIMF connections
+// Authentication key for provider based connections or Metal-Fabric Integration connections
 func (o GetConnectionsDataASideAccessPointOutput) AuthenticationKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetConnectionsDataASideAccessPoint) *string { return v.AuthenticationKey }).(pulumi.StringPtrOutput)
 }
@@ -24080,7 +24080,7 @@ func (o GetConnectionsDataASideAccessPointPtrOutput) Accounts() GetConnectionsDa
 	}).(GetConnectionsDataASideAccessPointAccountArrayOutput)
 }
 
-// Authentication key for provider based connections or Metal NIMF connections
+// Authentication key for provider based connections or Metal-Fabric Integration connections
 func (o GetConnectionsDataASideAccessPointPtrOutput) AuthenticationKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetConnectionsDataASideAccessPoint) *string {
 		if v == nil {
@@ -27848,7 +27848,7 @@ func (o GetConnectionsDataZSideArrayOutput) Index(i pulumi.IntInput) GetConnecti
 type GetConnectionsDataZSideAccessPoint struct {
 	// Account
 	Accounts []GetConnectionsDataZSideAccessPointAccount `pulumi:"accounts"`
-	// Authentication key for provider based connections or Metal NIMF connections
+	// Authentication key for provider based connections or Metal-Fabric Integration connections
 	AuthenticationKey *string `pulumi:"authenticationKey"`
 	// **Deprecated** `gateway` Use `router` attribute instead
 	//
@@ -27894,7 +27894,7 @@ type GetConnectionsDataZSideAccessPointInput interface {
 type GetConnectionsDataZSideAccessPointArgs struct {
 	// Account
 	Accounts GetConnectionsDataZSideAccessPointAccountArrayInput `pulumi:"accounts"`
-	// Authentication key for provider based connections or Metal NIMF connections
+	// Authentication key for provider based connections or Metal-Fabric Integration connections
 	AuthenticationKey pulumi.StringPtrInput `pulumi:"authenticationKey"`
 	// **Deprecated** `gateway` Use `router` attribute instead
 	//
@@ -28010,7 +28010,7 @@ func (o GetConnectionsDataZSideAccessPointOutput) Accounts() GetConnectionsDataZ
 	}).(GetConnectionsDataZSideAccessPointAccountArrayOutput)
 }
 
-// Authentication key for provider based connections or Metal NIMF connections
+// Authentication key for provider based connections or Metal-Fabric Integration connections
 func (o GetConnectionsDataZSideAccessPointOutput) AuthenticationKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetConnectionsDataZSideAccessPoint) *string { return v.AuthenticationKey }).(pulumi.StringPtrOutput)
 }
@@ -28130,7 +28130,7 @@ func (o GetConnectionsDataZSideAccessPointPtrOutput) Accounts() GetConnectionsDa
 	}).(GetConnectionsDataZSideAccessPointAccountArrayOutput)
 }
 
-// Authentication key for provider based connections or Metal NIMF connections
+// Authentication key for provider based connections or Metal-Fabric Integration connections
 func (o GetConnectionsDataZSideAccessPointPtrOutput) AuthenticationKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPoint) *string {
 		if v == nil {

@@ -103,11 +103,11 @@ class AwaitableGetDevicesResult(GetDevicesResult):
             sorts=self.sorts)
 
 
-def get_devices(filters: Optional[Sequence[pulumi.InputType['GetDevicesFilterArgs']]] = None,
+def get_devices(filters: Optional[Sequence[Union['GetDevicesFilterArgs', 'GetDevicesFilterArgsDict']]] = None,
                 organization_id: Optional[str] = None,
                 project_id: Optional[str] = None,
                 search: Optional[str] = None,
-                sorts: Optional[Sequence[pulumi.InputType['GetDevicesSortArgs']]] = None,
+                sorts: Optional[Sequence[Union['GetDevicesSortArgs', 'GetDevicesSortArgsDict']]] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDevicesResult:
     """
     The datasource can be used to find a list of devices which meet filter criteria.
@@ -122,17 +122,17 @@ def get_devices(filters: Optional[Sequence[pulumi.InputType['GetDevicesFilterArg
 
     example = equinix.metal.get_devices(project_id=local["project_id"],
         filters=[
-            equinix.metal.GetDevicesFilterArgs(
-                attribute="plan",
-                values=["c3.small.x86"],
-            ),
-            equinix.metal.GetDevicesFilterArgs(
-                attribute="metro",
-                values=[
+            {
+                "attribute": "plan",
+                "values": ["c3.small.x86"],
+            },
+            {
+                "attribute": "metro",
+                "values": [
                     "da",
                     "sv",
                 ],
-            ),
+            },
         ])
     pulumi.export("devices", example.devices)
     ```
@@ -150,7 +150,7 @@ def get_devices(filters: Optional[Sequence[pulumi.InputType['GetDevicesFilterArg
     The difference between `search` and `filter` is that `search` is an API parameter, interpreted by the Equinix Metal service. The "filter" arguments will reduce the API list (or search) results by applying client-side filtering, within this provider.
 
 
-    :param Sequence[pulumi.InputType['GetDevicesFilterArgs']] filters: One or more attribute/values pairs to filter. List of atributes to filter can be found in the attribute reference of the `metal.Device` datasource.
+    :param Sequence[Union['GetDevicesFilterArgs', 'GetDevicesFilterArgsDict']] filters: One or more attribute/values pairs to filter. List of atributes to filter can be found in the attribute reference of the `metal.Device` datasource.
     :param str organization_id: ID of organization containing the devices.
     :param str project_id: ID of project containing the devices. Exactly one of `project_id` and `organization_id` must be set.
     :param str search: Search string to filter devices by hostname, description, short_id, reservation short_id, tags, plan name, plan slug, facility code, facility name, operating system name, operating system slug, IP addresses.
@@ -175,11 +175,11 @@ def get_devices(filters: Optional[Sequence[pulumi.InputType['GetDevicesFilterArg
 
 
 @_utilities.lift_output_func(get_devices)
-def get_devices_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetDevicesFilterArgs']]]]] = None,
+def get_devices_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetDevicesFilterArgs', 'GetDevicesFilterArgsDict']]]]] = None,
                        organization_id: Optional[pulumi.Input[Optional[str]]] = None,
                        project_id: Optional[pulumi.Input[Optional[str]]] = None,
                        search: Optional[pulumi.Input[Optional[str]]] = None,
-                       sorts: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetDevicesSortArgs']]]]] = None,
+                       sorts: Optional[pulumi.Input[Optional[Sequence[Union['GetDevicesSortArgs', 'GetDevicesSortArgsDict']]]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDevicesResult]:
     """
     The datasource can be used to find a list of devices which meet filter criteria.
@@ -194,17 +194,17 @@ def get_devices_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.I
 
     example = equinix.metal.get_devices(project_id=local["project_id"],
         filters=[
-            equinix.metal.GetDevicesFilterArgs(
-                attribute="plan",
-                values=["c3.small.x86"],
-            ),
-            equinix.metal.GetDevicesFilterArgs(
-                attribute="metro",
-                values=[
+            {
+                "attribute": "plan",
+                "values": ["c3.small.x86"],
+            },
+            {
+                "attribute": "metro",
+                "values": [
                     "da",
                     "sv",
                 ],
-            ),
+            },
         ])
     pulumi.export("devices", example.devices)
     ```
@@ -222,7 +222,7 @@ def get_devices_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.I
     The difference between `search` and `filter` is that `search` is an API parameter, interpreted by the Equinix Metal service. The "filter" arguments will reduce the API list (or search) results by applying client-side filtering, within this provider.
 
 
-    :param Sequence[pulumi.InputType['GetDevicesFilterArgs']] filters: One or more attribute/values pairs to filter. List of atributes to filter can be found in the attribute reference of the `metal.Device` datasource.
+    :param Sequence[Union['GetDevicesFilterArgs', 'GetDevicesFilterArgsDict']] filters: One or more attribute/values pairs to filter. List of atributes to filter can be found in the attribute reference of the `metal.Device` datasource.
     :param str organization_id: ID of organization containing the devices.
     :param str project_id: ID of project containing the devices. Exactly one of `project_id` and `organization_id` must be set.
     :param str search: Search string to filter devices by hostname, description, short_id, reservation short_id, tags, plan name, plan slug, facility code, facility name, operating system name, operating system slug, IP addresses.

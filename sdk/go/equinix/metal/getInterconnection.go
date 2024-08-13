@@ -58,7 +58,7 @@ type LookupInterconnectionArgs struct {
 
 // A collection of values returned by getInterconnection.
 type LookupInterconnectionResult struct {
-	// Fabric Authorization Code to configure the NIMF connection in Equinix Fabric with the fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard).
+	// Fabric Authorization Code to configure the Metal-Fabric Integration connection in Equinix Fabric with the fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard).
 	AuthorizationCode string `pulumi:"authorizationCode"`
 	ConnectionId      string `pulumi:"connectionId"`
 	// The preferred email used for communication and notifications about the Equinix Fabric interconnection.
@@ -144,7 +144,7 @@ func (o LookupInterconnectionResultOutput) ToLookupInterconnectionResultOutputWi
 	return o
 }
 
-// Fabric Authorization Code to configure the NIMF connection in Equinix Fabric with the fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard).
+// Fabric Authorization Code to configure the Metal-Fabric Integration connection in Equinix Fabric with the fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard).
 func (o LookupInterconnectionResultOutput) AuthorizationCode() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInterconnectionResult) string { return v.AuthorizationCode }).(pulumi.StringOutput)
 }

@@ -511,17 +511,17 @@ class Connection(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 a_side: Optional[pulumi.Input[pulumi.InputType['ConnectionASideArgs']]] = None,
+                 a_side: Optional[pulumi.Input[Union['ConnectionASideArgs', 'ConnectionASideArgsDict']]] = None,
                  additional_info: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
                  bandwidth: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 notifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionNotificationArgs']]]]] = None,
-                 order: Optional[pulumi.Input[pulumi.InputType['ConnectionOrderArgs']]] = None,
-                 project: Optional[pulumi.Input[pulumi.InputType['ConnectionProjectArgs']]] = None,
-                 redundancy: Optional[pulumi.Input[pulumi.InputType['ConnectionRedundancyArgs']]] = None,
+                 notifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectionNotificationArgs', 'ConnectionNotificationArgsDict']]]]] = None,
+                 order: Optional[pulumi.Input[Union['ConnectionOrderArgs', 'ConnectionOrderArgsDict']]] = None,
+                 project: Optional[pulumi.Input[Union['ConnectionProjectArgs', 'ConnectionProjectArgsDict']]] = None,
+                 redundancy: Optional[pulumi.Input[Union['ConnectionRedundancyArgs', 'ConnectionRedundancyArgsDict']]] = None,
                  type: Optional[pulumi.Input[Union[str, 'ConnectionType']]] = None,
-                 z_side: Optional[pulumi.Input[pulumi.InputType['ConnectionZSideArgs']]] = None,
+                 z_side: Optional[pulumi.Input[Union['ConnectionZSideArgs', 'ConnectionZSideArgsDict']]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -533,39 +533,39 @@ class Connection(pulumi.CustomResource):
         fcr2_azure = equinix.fabric.Connection("fcr2azure",
             name="ConnectionName",
             type="IP_VC",
-            notifications=[equinix.fabric.ConnectionNotificationArgs(
-                type=equinix.fabric.NotificationsType.ALL,
-                emails=[
+            notifications=[{
+                "type": equinix.fabric.NotificationsType.ALL,
+                "emails": [
                     "example@equinix.com",
                     "test1@equinix.com",
                 ],
-            )],
+            }],
             bandwidth=50,
-            order=equinix.fabric.ConnectionOrderArgs(
-                purchase_order_number="1-323292",
-            ),
-            a_side=equinix.fabric.ConnectionASideArgs(
-                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
-                    type="CLOUD_ROUTER",
-                    router=equinix.fabric.ConnectionASideAccessPointRouterArgs(
-                        uuid="<cloud_router_uuid>",
-                    ),
-                ),
-            ),
-            z_side=equinix.fabric.ConnectionZSideArgs(
-                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.SP,
-                    authentication_key="<Azure_ExpressRouter_Auth_Key>",
-                    peering_type=equinix.fabric.AccessPointPeeringType.PRIVATE,
-                    profile=equinix.fabric.ConnectionZSideAccessPointProfileArgs(
-                        type=equinix.fabric.ProfileType.L2_PROFILE,
-                        uuid="<Azure_Service_Profile_UUID>",
-                    ),
-                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
-                        metro_code=equinix.Metro.SILICON_VALLEY,
-                    ),
-                ),
-            ))
+            order={
+                "purchase_order_number": "1-323292",
+            },
+            a_side={
+                "access_point": {
+                    "type": "CLOUD_ROUTER",
+                    "router": {
+                        "uuid": "<cloud_router_uuid>",
+                    },
+                },
+            },
+            z_side={
+                "access_point": {
+                    "type": equinix.fabric.AccessPointType.SP,
+                    "authentication_key": "<Azure_ExpressRouter_Auth_Key>",
+                    "peering_type": equinix.fabric.AccessPointPeeringType.PRIVATE,
+                    "profile": {
+                        "type": equinix.fabric.ProfileType.L2_PROFILE,
+                        "uuid": "<Azure_Service_Profile_UUID>",
+                    },
+                    "location": {
+                        "metro_code": equinix.Metro.SILICON_VALLEY,
+                    },
+                },
+            })
         ```
         ### example fcr to metal
         ```python
@@ -575,31 +575,31 @@ class Connection(pulumi.CustomResource):
         fcr2_metal = equinix.fabric.Connection("fcr2metal",
             name="ConnectionName",
             type="IP_VC",
-            notifications=[equinix.fabric.ConnectionNotificationArgs(
-                type=equinix.fabric.NotificationsType.ALL,
-                emails=[
+            notifications=[{
+                "type": equinix.fabric.NotificationsType.ALL,
+                "emails": [
                     "example@equinix.com",
                     "test1@equinix.com",
                 ],
-            )],
+            }],
             bandwidth=50,
-            order=equinix.fabric.ConnectionOrderArgs(
-                purchase_order_number="1-323292",
-            ),
-            a_side=equinix.fabric.ConnectionASideArgs(
-                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
-                    type="CLOUD_ROUTER",
-                    router=equinix.fabric.ConnectionASideAccessPointRouterArgs(
-                        uuid="<cloud_router_uuid>",
-                    ),
-                ),
-            ),
-            z_side=equinix.fabric.ConnectionZSideArgs(
-                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
-                    type="METAL_NETWORK",
-                    authentication_key="<metal_authorization_code>",
-                ),
-            ))
+            order={
+                "purchase_order_number": "1-323292",
+            },
+            a_side={
+                "access_point": {
+                    "type": "CLOUD_ROUTER",
+                    "router": {
+                        "uuid": "<cloud_router_uuid>",
+                    },
+                },
+            },
+            z_side={
+                "access_point": {
+                    "type": "METAL_NETWORK",
+                    "authentication_key": "<metal_authorization_code>",
+                },
+            })
         ```
         ### example fcr to network
         ```python
@@ -609,33 +609,33 @@ class Connection(pulumi.CustomResource):
         fcr2_network = equinix.fabric.Connection("fcr2network",
             name="ConnectionName",
             type="IPWAN_VC",
-            notifications=[equinix.fabric.ConnectionNotificationArgs(
-                type=equinix.fabric.NotificationsType.ALL,
-                emails=[
+            notifications=[{
+                "type": equinix.fabric.NotificationsType.ALL,
+                "emails": [
                     "example@equinix.com",
                     "test1@equinix.com",
                 ],
-            )],
+            }],
             bandwidth=50,
-            order=equinix.fabric.ConnectionOrderArgs(
-                purchase_order_number="1-323292",
-            ),
-            a_side=equinix.fabric.ConnectionASideArgs(
-                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
-                    type="CLOUD_ROUTER",
-                    router=equinix.fabric.ConnectionASideAccessPointRouterArgs(
-                        uuid="<cloud_router_uuid>",
-                    ),
-                ),
-            ),
-            z_side=equinix.fabric.ConnectionZSideArgs(
-                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.NETWORK,
-                    network=equinix.fabric.ConnectionZSideAccessPointNetworkArgs(
-                        uuid="<network_uuid>",
-                    ),
-                ),
-            ))
+            order={
+                "purchase_order_number": "1-323292",
+            },
+            a_side={
+                "access_point": {
+                    "type": "CLOUD_ROUTER",
+                    "router": {
+                        "uuid": "<cloud_router_uuid>",
+                    },
+                },
+            },
+            z_side={
+                "access_point": {
+                    "type": equinix.fabric.AccessPointType.NETWORK,
+                    "network": {
+                        "uuid": "<network_uuid>",
+                    },
+                },
+            })
         ```
         ### example fcr to port
         ```python
@@ -645,40 +645,40 @@ class Connection(pulumi.CustomResource):
         fcr2_port = equinix.fabric.Connection("fcr2port",
             name="ConnectionName",
             type="IP_VC",
-            notifications=[equinix.fabric.ConnectionNotificationArgs(
-                type=equinix.fabric.NotificationsType.ALL,
-                emails=[
+            notifications=[{
+                "type": equinix.fabric.NotificationsType.ALL,
+                "emails": [
                     "example@equinix.com",
                     "test1@equinix.com",
                 ],
-            )],
+            }],
             bandwidth=50,
-            order=equinix.fabric.ConnectionOrderArgs(
-                purchase_order_number="1-323292",
-            ),
-            a_side=equinix.fabric.ConnectionASideArgs(
-                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
-                    type="CLOUD_ROUTER",
-                    router=equinix.fabric.ConnectionASideAccessPointRouterArgs(
-                        uuid="<cloud_router_uuid>",
-                    ),
-                ),
-            ),
-            z_side=equinix.fabric.ConnectionZSideArgs(
-                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.COLO,
-                    port=equinix.fabric.ConnectionZSideAccessPointPortArgs(
-                        uuid="<port_uuid>",
-                    ),
-                    link_protocol=equinix.fabric.ConnectionZSideAccessPointLinkProtocolArgs(
-                        type=equinix.fabric.AccessPointLinkProtocolType.DOT1Q,
-                        vlan_tag=2711,
-                    ),
-                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
-                        metro_code=equinix.Metro.SILICON_VALLEY,
-                    ),
-                ),
-            ))
+            order={
+                "purchase_order_number": "1-323292",
+            },
+            a_side={
+                "access_point": {
+                    "type": "CLOUD_ROUTER",
+                    "router": {
+                        "uuid": "<cloud_router_uuid>",
+                    },
+                },
+            },
+            z_side={
+                "access_point": {
+                    "type": equinix.fabric.AccessPointType.COLO,
+                    "port": {
+                        "uuid": "<port_uuid>",
+                    },
+                    "link_protocol": {
+                        "type": equinix.fabric.AccessPointLinkProtocolType.DOT1Q,
+                        "vlan_tag": 2711,
+                    },
+                    "location": {
+                        "metro_code": equinix.Metro.SILICON_VALLEY,
+                    },
+                },
+            })
         ```
         ### example metal to aws
         ```python
@@ -688,37 +688,37 @@ class Connection(pulumi.CustomResource):
         metal2_aws = equinix.fabric.Connection("metal2aws",
             name="ConnectionName",
             type="EVPLAN_VC",
-            notifications=[equinix.fabric.ConnectionNotificationArgs(
-                type=equinix.fabric.NotificationsType.ALL,
-                emails=[
+            notifications=[{
+                "type": equinix.fabric.NotificationsType.ALL,
+                "emails": [
                     "example@equinix.com",
                     "test1@equinix.com",
                 ],
-            )],
+            }],
             bandwidth=50,
-            order=equinix.fabric.ConnectionOrderArgs(
-                purchase_order_number="1-323292",
-            ),
-            a_side=equinix.fabric.ConnectionASideArgs(
-                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
-                    type="METAL_NETWORK",
-                    authentication_key="<metal_authorization_code>",
-                ),
-            ),
-            z_side=equinix.fabric.ConnectionZSideArgs(
-                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.SP,
-                    authentication_key="<aws_account_id>",
-                    seller_region="us-west-1",
-                    profile=equinix.fabric.ConnectionZSideAccessPointProfileArgs(
-                        type=equinix.fabric.ProfileType.L2_PROFILE,
-                        uuid="<service_profile_uuid>",
-                    ),
-                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
-                        metro_code=equinix.Metro.SILICON_VALLEY,
-                    ),
-                ),
-            ))
+            order={
+                "purchase_order_number": "1-323292",
+            },
+            a_side={
+                "access_point": {
+                    "type": "METAL_NETWORK",
+                    "authentication_key": "<metal_authorization_code>",
+                },
+            },
+            z_side={
+                "access_point": {
+                    "type": equinix.fabric.AccessPointType.SP,
+                    "authentication_key": "<aws_account_id>",
+                    "seller_region": "us-west-1",
+                    "profile": {
+                        "type": equinix.fabric.ProfileType.L2_PROFILE,
+                        "uuid": "<service_profile_uuid>",
+                    },
+                    "location": {
+                        "metro_code": equinix.Metro.SILICON_VALLEY,
+                    },
+                },
+            })
         ```
         ### example port to aws
         ```python
@@ -728,47 +728,47 @@ class Connection(pulumi.CustomResource):
         port2_aws = equinix.fabric.Connection("port2aws",
             name="ConnectionName",
             type=equinix.fabric.ConnectionType.EVPL,
-            notifications=[equinix.fabric.ConnectionNotificationArgs(
-                type=equinix.fabric.NotificationsType.ALL,
-                emails=[
+            notifications=[{
+                "type": equinix.fabric.NotificationsType.ALL,
+                "emails": [
                     "example@equinix.com",
                     "test1@equinix.com",
                 ],
-            )],
+            }],
             bandwidth=50,
-            redundancy=equinix.fabric.ConnectionRedundancyArgs(
-                priority="PRIMARY",
-            ),
-            order=equinix.fabric.ConnectionOrderArgs(
-                purchase_order_number="1-323929",
-            ),
-            a_side=equinix.fabric.ConnectionASideArgs(
-                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.COLO,
-                    port=equinix.fabric.ConnectionASideAccessPointPortArgs(
-                        uuid="<aside_port_uuid>",
-                    ),
-                    link_protocol=equinix.fabric.ConnectionASideAccessPointLinkProtocolArgs(
-                        type=equinix.fabric.AccessPointLinkProtocolType.QIN_Q,
-                        vlan_s_tag=2019,
-                        vlan_c_tag=2112,
-                    ),
-                ),
-            ),
-            z_side=equinix.fabric.ConnectionZSideArgs(
-                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.SP,
-                    authentication_key="<aws_account_id>",
-                    seller_region="us-west-1",
-                    profile=equinix.fabric.ConnectionZSideAccessPointProfileArgs(
-                        type=equinix.fabric.ProfileType.L2_PROFILE,
-                        uuid="<service_profile_uuid>",
-                    ),
-                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
-                        metro_code=equinix.Metro.SILICON_VALLEY,
-                    ),
-                ),
-            ),
+            redundancy={
+                "priority": "PRIMARY",
+            },
+            order={
+                "purchase_order_number": "1-323929",
+            },
+            a_side={
+                "access_point": {
+                    "type": equinix.fabric.AccessPointType.COLO,
+                    "port": {
+                        "uuid": "<aside_port_uuid>",
+                    },
+                    "link_protocol": {
+                        "type": equinix.fabric.AccessPointLinkProtocolType.QIN_Q,
+                        "vlan_s_tag": 2019,
+                        "vlan_c_tag": 2112,
+                    },
+                },
+            },
+            z_side={
+                "access_point": {
+                    "type": equinix.fabric.AccessPointType.SP,
+                    "authentication_key": "<aws_account_id>",
+                    "seller_region": "us-west-1",
+                    "profile": {
+                        "type": equinix.fabric.ProfileType.L2_PROFILE,
+                        "uuid": "<service_profile_uuid>",
+                    },
+                    "location": {
+                        "metro_code": equinix.Metro.SILICON_VALLEY,
+                    },
+                },
+            },
             additional_info=[
                 {
                     "key": "accessKey",
@@ -788,33 +788,33 @@ class Connection(pulumi.CustomResource):
         eplan = equinix.fabric.Connection("eplan",
             name="ConnectionName",
             type="EPLAN_VC",
-            notifications=[equinix.fabric.ConnectionNotificationArgs(
-                type=equinix.fabric.NotificationsType.ALL,
-                emails=[
+            notifications=[{
+                "type": equinix.fabric.NotificationsType.ALL,
+                "emails": [
                     "example@equinix.com",
                     "test1@equinix.com",
                 ],
-            )],
+            }],
             bandwidth=50,
-            order=equinix.fabric.ConnectionOrderArgs(
-                purchase_order_number="1-323292",
-            ),
-            a_side=equinix.fabric.ConnectionASideArgs(
-                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.COLO,
-                    port=equinix.fabric.ConnectionASideAccessPointPortArgs(
-                        uuid="<aside_port_uuid>",
-                    ),
-                ),
-            ),
-            z_side=equinix.fabric.ConnectionZSideArgs(
-                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.NETWORK,
-                    network=equinix.fabric.ConnectionZSideAccessPointNetworkArgs(
-                        uuid="<network_uuid>",
-                    ),
-                ),
-            ))
+            order={
+                "purchase_order_number": "1-323292",
+            },
+            a_side={
+                "access_point": {
+                    "type": equinix.fabric.AccessPointType.COLO,
+                    "port": {
+                        "uuid": "<aside_port_uuid>",
+                    },
+                },
+            },
+            z_side={
+                "access_point": {
+                    "type": equinix.fabric.AccessPointType.NETWORK,
+                    "network": {
+                        "uuid": "<network_uuid>",
+                    },
+                },
+            })
         ```
         ### example port to network evplan
         ```python
@@ -824,37 +824,37 @@ class Connection(pulumi.CustomResource):
         evplan = equinix.fabric.Connection("evplan",
             name="ConnectionName",
             type="EVPLAN_VC",
-            notifications=[equinix.fabric.ConnectionNotificationArgs(
-                type=equinix.fabric.NotificationsType.ALL,
-                emails=[
+            notifications=[{
+                "type": equinix.fabric.NotificationsType.ALL,
+                "emails": [
                     "example@equinix.com",
                     "test1@equinix.com",
                 ],
-            )],
+            }],
             bandwidth=50,
-            order=equinix.fabric.ConnectionOrderArgs(
-                purchase_order_number="1-323292",
-            ),
-            a_side=equinix.fabric.ConnectionASideArgs(
-                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.COLO,
-                    port=equinix.fabric.ConnectionASideAccessPointPortArgs(
-                        uuid="<aside_port_uuid>",
-                    ),
-                    link_protocol=equinix.fabric.ConnectionASideAccessPointLinkProtocolArgs(
-                        type=equinix.fabric.AccessPointLinkProtocolType.DOT1Q,
-                        vlan_s_tag=1976,
-                    ),
-                ),
-            ),
-            z_side=equinix.fabric.ConnectionZSideArgs(
-                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.NETWORK,
-                    network=equinix.fabric.ConnectionZSideAccessPointNetworkArgs(
-                        uuid="<network_uuid>",
-                    ),
-                ),
-            ))
+            order={
+                "purchase_order_number": "1-323292",
+            },
+            a_side={
+                "access_point": {
+                    "type": equinix.fabric.AccessPointType.COLO,
+                    "port": {
+                        "uuid": "<aside_port_uuid>",
+                    },
+                    "link_protocol": {
+                        "type": equinix.fabric.AccessPointLinkProtocolType.DOT1Q,
+                        "vlan_s_tag": 1976,
+                    },
+                },
+            },
+            z_side={
+                "access_point": {
+                    "type": equinix.fabric.AccessPointType.NETWORK,
+                    "network": {
+                        "uuid": "<network_uuid>",
+                    },
+                },
+            })
         ```
         ### example port to port
         ```python
@@ -864,44 +864,44 @@ class Connection(pulumi.CustomResource):
         port2_port = equinix.fabric.Connection("port2port",
             name="ConnectionName",
             type=equinix.fabric.ConnectionType.EVPL,
-            notifications=[equinix.fabric.ConnectionNotificationArgs(
-                type=equinix.fabric.NotificationsType.ALL,
-                emails=[
+            notifications=[{
+                "type": equinix.fabric.NotificationsType.ALL,
+                "emails": [
                     "example@equinix.com",
                     "test1@equinix.com",
                 ],
-            )],
+            }],
             bandwidth=50,
-            order=equinix.fabric.ConnectionOrderArgs(
-                purchase_order_number="1-323292",
-            ),
-            a_side=equinix.fabric.ConnectionASideArgs(
-                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.COLO,
-                    port=equinix.fabric.ConnectionASideAccessPointPortArgs(
-                        uuid="<aside_port_uuid>",
-                    ),
-                    link_protocol=equinix.fabric.ConnectionASideAccessPointLinkProtocolArgs(
-                        type=equinix.fabric.AccessPointLinkProtocolType.QIN_Q,
-                        vlan_s_tag=1976,
-                    ),
-                ),
-            ),
-            z_side=equinix.fabric.ConnectionZSideArgs(
-                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.COLO,
-                    port=equinix.fabric.ConnectionZSideAccessPointPortArgs(
-                        uuid="<zside_port_uuid>",
-                    ),
-                    link_protocol=equinix.fabric.ConnectionZSideAccessPointLinkProtocolArgs(
-                        type=equinix.fabric.AccessPointLinkProtocolType.QIN_Q,
-                        vlan_s_tag=3711,
-                    ),
-                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
-                        metro_code=equinix.Metro.SILICON_VALLEY,
-                    ),
-                ),
-            ))
+            order={
+                "purchase_order_number": "1-323292",
+            },
+            a_side={
+                "access_point": {
+                    "type": equinix.fabric.AccessPointType.COLO,
+                    "port": {
+                        "uuid": "<aside_port_uuid>",
+                    },
+                    "link_protocol": {
+                        "type": equinix.fabric.AccessPointLinkProtocolType.QIN_Q,
+                        "vlan_s_tag": 1976,
+                    },
+                },
+            },
+            z_side={
+                "access_point": {
+                    "type": equinix.fabric.AccessPointType.COLO,
+                    "port": {
+                        "uuid": "<zside_port_uuid>",
+                    },
+                    "link_protocol": {
+                        "type": equinix.fabric.AccessPointLinkProtocolType.QIN_Q,
+                        "vlan_s_tag": 3711,
+                    },
+                    "location": {
+                        "metro_code": equinix.Metro.SILICON_VALLEY,
+                    },
+                },
+            })
         ```
         ### example port to port access epl
         ```python
@@ -911,40 +911,40 @@ class Connection(pulumi.CustomResource):
         access_epl_vc = equinix.fabric.Connection("accessEplVc",
             name="ConnectionName",
             type=equinix.fabric.ConnectionType.ACCESS_EPL,
-            notifications=[equinix.fabric.ConnectionNotificationArgs(
-                type=equinix.fabric.NotificationsType.ALL,
-                emails=[
+            notifications=[{
+                "type": equinix.fabric.NotificationsType.ALL,
+                "emails": [
                     "example@equinix.com",
                     "test1@equinix.com",
                 ],
-            )],
+            }],
             bandwidth=50,
-            order=equinix.fabric.ConnectionOrderArgs(
-                purchase_order_number="1-323292",
-            ),
-            a_side=equinix.fabric.ConnectionASideArgs(
-                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.COLO,
-                    port=equinix.fabric.ConnectionASideAccessPointPortArgs(
-                        uuid="<aside_port_uuid>",
-                    ),
-                    link_protocol=equinix.fabric.ConnectionASideAccessPointLinkProtocolArgs(
-                        type=equinix.fabric.AccessPointLinkProtocolType.QIN_Q,
-                        vlan_s_tag=1976,
-                    ),
-                ),
-            ),
-            z_side=equinix.fabric.ConnectionZSideArgs(
-                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.COLO,
-                    port=equinix.fabric.ConnectionZSideAccessPointPortArgs(
-                        uuid="<zside_port_uuid>",
-                    ),
-                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
-                        metro_code=equinix.Metro.SILICON_VALLEY,
-                    ),
-                ),
-            ))
+            order={
+                "purchase_order_number": "1-323292",
+            },
+            a_side={
+                "access_point": {
+                    "type": equinix.fabric.AccessPointType.COLO,
+                    "port": {
+                        "uuid": "<aside_port_uuid>",
+                    },
+                    "link_protocol": {
+                        "type": equinix.fabric.AccessPointLinkProtocolType.QIN_Q,
+                        "vlan_s_tag": 1976,
+                    },
+                },
+            },
+            z_side={
+                "access_point": {
+                    "type": equinix.fabric.AccessPointType.COLO,
+                    "port": {
+                        "uuid": "<zside_port_uuid>",
+                    },
+                    "location": {
+                        "metro_code": equinix.Metro.SILICON_VALLEY,
+                    },
+                },
+            })
         ```
         ### example port to port epl
         ```python
@@ -954,36 +954,36 @@ class Connection(pulumi.CustomResource):
         epl = equinix.fabric.Connection("epl",
             name="ConnectionName",
             type=equinix.fabric.ConnectionType.EPL,
-            notifications=[equinix.fabric.ConnectionNotificationArgs(
-                type=equinix.fabric.NotificationsType.ALL,
-                emails=[
+            notifications=[{
+                "type": equinix.fabric.NotificationsType.ALL,
+                "emails": [
                     "example@equinix.com",
                     "test1@equinix.com",
                 ],
-            )],
+            }],
             bandwidth=50,
-            order=equinix.fabric.ConnectionOrderArgs(
-                purchase_order_number="1-323292",
-            ),
-            a_side=equinix.fabric.ConnectionASideArgs(
-                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.COLO,
-                    port=equinix.fabric.ConnectionASideAccessPointPortArgs(
-                        uuid="<aside_port_uuid>",
-                    ),
-                ),
-            ),
-            z_side=equinix.fabric.ConnectionZSideArgs(
-                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.COLO,
-                    port=equinix.fabric.ConnectionZSideAccessPointPortArgs(
-                        uuid="<zside_port_uuid>",
-                    ),
-                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
-                        metro_code=equinix.Metro.SILICON_VALLEY,
-                    ),
-                ),
-            ))
+            order={
+                "purchase_order_number": "1-323292",
+            },
+            a_side={
+                "access_point": {
+                    "type": equinix.fabric.AccessPointType.COLO,
+                    "port": {
+                        "uuid": "<aside_port_uuid>",
+                    },
+                },
+            },
+            z_side={
+                "access_point": {
+                    "type": equinix.fabric.AccessPointType.COLO,
+                    "port": {
+                        "uuid": "<zside_port_uuid>",
+                    },
+                    "location": {
+                        "metro_code": equinix.Metro.SILICON_VALLEY,
+                    },
+                },
+            })
         ```
         ### example port to vd
         ```python
@@ -993,45 +993,45 @@ class Connection(pulumi.CustomResource):
         vd2_port = equinix.fabric.Connection("vd2port",
             name="ConnectionName",
             type=equinix.fabric.ConnectionType.EVPL,
-            notifications=[equinix.fabric.ConnectionNotificationArgs(
-                type=equinix.fabric.NotificationsType.ALL,
-                emails=[
+            notifications=[{
+                "type": equinix.fabric.NotificationsType.ALL,
+                "emails": [
                     "example@equinix.com",
                     "test1@equinix.com",
                 ],
-            )],
+            }],
             bandwidth=50,
-            order=equinix.fabric.ConnectionOrderArgs(
-                purchase_order_number="1-323292",
-            ),
-            a_side=equinix.fabric.ConnectionASideArgs(
-                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.VD,
-                    virtual_device=equinix.fabric.ConnectionASideAccessPointVirtualDeviceArgs(
-                        type="EDGE",
-                        uuid="<device_uuid>",
-                    ),
-                    interface=equinix.fabric.ConnectionASideAccessPointInterfaceArgs(
-                        type="NETWORK",
-                        id=7,
-                    ),
-                ),
-            ),
-            z_side=equinix.fabric.ConnectionZSideArgs(
-                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.COLO,
-                    port=equinix.fabric.ConnectionZSideAccessPointPortArgs(
-                        uuid="<zside_port_uuid>",
-                    ),
-                    link_protocol=equinix.fabric.ConnectionZSideAccessPointLinkProtocolArgs(
-                        type=equinix.fabric.AccessPointLinkProtocolType.DOT1Q,
-                        vlan_s_tag=3711,
-                    ),
-                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
-                        metro_code=equinix.Metro.SILICON_VALLEY,
-                    ),
-                ),
-            ))
+            order={
+                "purchase_order_number": "1-323292",
+            },
+            a_side={
+                "access_point": {
+                    "type": equinix.fabric.AccessPointType.VD,
+                    "virtual_device": {
+                        "type": "EDGE",
+                        "uuid": "<device_uuid>",
+                    },
+                    "interface": {
+                        "type": "NETWORK",
+                        "id": 7,
+                    },
+                },
+            },
+            z_side={
+                "access_point": {
+                    "type": equinix.fabric.AccessPointType.COLO,
+                    "port": {
+                        "uuid": "<zside_port_uuid>",
+                    },
+                    "link_protocol": {
+                        "type": equinix.fabric.AccessPointLinkProtocolType.DOT1Q,
+                        "vlan_s_tag": 3711,
+                    },
+                    "location": {
+                        "metro_code": equinix.Metro.SILICON_VALLEY,
+                    },
+                },
+            })
         ```
         ### example token to aws
         ```python
@@ -1041,36 +1041,36 @@ class Connection(pulumi.CustomResource):
         token2_aws = equinix.fabric.Connection("token2aws",
             name="ConnectionName",
             type=equinix.fabric.ConnectionType.EVPL,
-            notifications=[equinix.fabric.ConnectionNotificationArgs(
-                type=equinix.fabric.NotificationsType.ALL,
-                emails=[
+            notifications=[{
+                "type": equinix.fabric.NotificationsType.ALL,
+                "emails": [
                     "example@equinix.com",
                     "test1@equinix.com",
                 ],
-            )],
+            }],
             bandwidth=50,
-            order=equinix.fabric.ConnectionOrderArgs(
-                purchase_order_number="1-323292",
-            ),
-            a_side=equinix.fabric.ConnectionASideArgs(
-                service_token=equinix.fabric.ConnectionASideServiceTokenArgs(
-                    uuid="<service_token_uuid>",
-                ),
-            ),
-            z_side=equinix.fabric.ConnectionZSideArgs(
-                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.SP,
-                    authentication_key="<aws_account_id>",
-                    seller_region="us-west-1",
-                    profile=equinix.fabric.ConnectionZSideAccessPointProfileArgs(
-                        type=equinix.fabric.ProfileType.L2_PROFILE,
-                        uuid="<service_profile_uuid>",
-                    ),
-                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
-                        metro_code=equinix.Metro.SILICON_VALLEY,
-                    ),
-                ),
-            ))
+            order={
+                "purchase_order_number": "1-323292",
+            },
+            a_side={
+                "service_token": {
+                    "uuid": "<service_token_uuid>",
+                },
+            },
+            z_side={
+                "access_point": {
+                    "type": equinix.fabric.AccessPointType.SP,
+                    "authentication_key": "<aws_account_id>",
+                    "seller_region": "us-west-1",
+                    "profile": {
+                        "type": equinix.fabric.ProfileType.L2_PROFILE,
+                        "uuid": "<service_profile_uuid>",
+                    },
+                    "location": {
+                        "metro_code": equinix.Metro.SILICON_VALLEY,
+                    },
+                },
+            })
         ```
         ### example vd to azure
         ```python
@@ -1080,44 +1080,44 @@ class Connection(pulumi.CustomResource):
         vd2_azure = equinix.fabric.Connection("vd2azure",
             name="ConnectionName",
             type=equinix.fabric.ConnectionType.EVPL,
-            notifications=[equinix.fabric.ConnectionNotificationArgs(
-                type=equinix.fabric.NotificationsType.ALL,
-                emails=[
+            notifications=[{
+                "type": equinix.fabric.NotificationsType.ALL,
+                "emails": [
                     "example@equinix.com",
                     "test1@equinix.com",
                 ],
-            )],
+            }],
             bandwidth=50,
-            order=equinix.fabric.ConnectionOrderArgs(
-                purchase_order_number="1-323292",
-            ),
-            a_side=equinix.fabric.ConnectionASideArgs(
-                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.VD,
-                    virtual_device=equinix.fabric.ConnectionASideAccessPointVirtualDeviceArgs(
-                        type="EDGE",
-                        uuid="<device_uuid>",
-                    ),
-                    interface=equinix.fabric.ConnectionASideAccessPointInterfaceArgs(
-                        type="CLOUD",
-                        id=7,
-                    ),
-                ),
-            ),
-            z_side=equinix.fabric.ConnectionZSideArgs(
-                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.SP,
-                    authentication_key="<Azure_ExpressRouter_Auth_Key>",
-                    peering_type=equinix.fabric.AccessPointPeeringType.PRIVATE,
-                    profile=equinix.fabric.ConnectionZSideAccessPointProfileArgs(
-                        type=equinix.fabric.ProfileType.L2_PROFILE,
-                        uuid="<Azure_Service_Profile_UUID>",
-                    ),
-                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
-                        metro_code=equinix.Metro.SILICON_VALLEY,
-                    ),
-                ),
-            ))
+            order={
+                "purchase_order_number": "1-323292",
+            },
+            a_side={
+                "access_point": {
+                    "type": equinix.fabric.AccessPointType.VD,
+                    "virtual_device": {
+                        "type": "EDGE",
+                        "uuid": "<device_uuid>",
+                    },
+                    "interface": {
+                        "type": "CLOUD",
+                        "id": 7,
+                    },
+                },
+            },
+            z_side={
+                "access_point": {
+                    "type": equinix.fabric.AccessPointType.SP,
+                    "authentication_key": "<Azure_ExpressRouter_Auth_Key>",
+                    "peering_type": equinix.fabric.AccessPointPeeringType.PRIVATE,
+                    "profile": {
+                        "type": equinix.fabric.ProfileType.L2_PROFILE,
+                        "uuid": "<Azure_Service_Profile_UUID>",
+                    },
+                    "location": {
+                        "metro_code": equinix.Metro.SILICON_VALLEY,
+                    },
+                },
+            })
         ```
         ### example vd to azure redundant
         ```python
@@ -1127,92 +1127,92 @@ class Connection(pulumi.CustomResource):
         vd2_azure_primary = equinix.fabric.Connection("vd2azurePrimary",
             name="ConnectionName",
             type=equinix.fabric.ConnectionType.EVPL,
-            redundancy=equinix.fabric.ConnectionRedundancyArgs(
-                priority="PRIMARY",
-            ),
-            notifications=[equinix.fabric.ConnectionNotificationArgs(
-                type=equinix.fabric.NotificationsType.ALL,
-                emails=[
+            redundancy={
+                "priority": "PRIMARY",
+            },
+            notifications=[{
+                "type": equinix.fabric.NotificationsType.ALL,
+                "emails": [
                     "example@equinix.com",
                     "test1@equinix.com",
                 ],
-            )],
+            }],
             bandwidth=50,
-            order=equinix.fabric.ConnectionOrderArgs(
-                purchase_order_number="1-323292",
-            ),
-            a_side=equinix.fabric.ConnectionASideArgs(
-                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.VD,
-                    virtual_device=equinix.fabric.ConnectionASideAccessPointVirtualDeviceArgs(
-                        type="EDGE",
-                        uuid="<device_uuid>",
-                    ),
-                    interface=equinix.fabric.ConnectionASideAccessPointInterfaceArgs(
-                        type="CLOUD",
-                        id=7,
-                    ),
-                ),
-            ),
-            z_side=equinix.fabric.ConnectionZSideArgs(
-                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.SP,
-                    authentication_key="<Azure_ExpressRouter_Auth_Key>",
-                    peering_type=equinix.fabric.AccessPointPeeringType.PRIVATE,
-                    profile=equinix.fabric.ConnectionZSideAccessPointProfileArgs(
-                        type=equinix.fabric.ProfileType.L2_PROFILE,
-                        uuid="<Azure_Service_Profile_UUID>",
-                    ),
-                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
-                        metro_code=equinix.Metro.SILICON_VALLEY,
-                    ),
-                ),
-            ))
+            order={
+                "purchase_order_number": "1-323292",
+            },
+            a_side={
+                "access_point": {
+                    "type": equinix.fabric.AccessPointType.VD,
+                    "virtual_device": {
+                        "type": "EDGE",
+                        "uuid": "<device_uuid>",
+                    },
+                    "interface": {
+                        "type": "CLOUD",
+                        "id": 7,
+                    },
+                },
+            },
+            z_side={
+                "access_point": {
+                    "type": equinix.fabric.AccessPointType.SP,
+                    "authentication_key": "<Azure_ExpressRouter_Auth_Key>",
+                    "peering_type": equinix.fabric.AccessPointPeeringType.PRIVATE,
+                    "profile": {
+                        "type": equinix.fabric.ProfileType.L2_PROFILE,
+                        "uuid": "<Azure_Service_Profile_UUID>",
+                    },
+                    "location": {
+                        "metro_code": equinix.Metro.SILICON_VALLEY,
+                    },
+                },
+            })
         vd2_azure_secondary = equinix.fabric.Connection("vd2azureSecondary",
             name="ConnectionName",
             type=equinix.fabric.ConnectionType.EVPL,
-            redundancy=equinix.fabric.ConnectionRedundancyArgs(
-                priority="SECONDARY",
-                group=vd2_azure_primary.redundancy.group,
-            ),
-            notifications=[equinix.fabric.ConnectionNotificationArgs(
-                type=equinix.fabric.NotificationsType.ALL,
-                emails=[
+            redundancy={
+                "priority": "SECONDARY",
+                "group": vd2_azure_primary.redundancy.group,
+            },
+            notifications=[{
+                "type": equinix.fabric.NotificationsType.ALL,
+                "emails": [
                     "example@equinix.com",
                     "test1@equinix.com",
                 ],
-            )],
+            }],
             bandwidth=50,
-            order=equinix.fabric.ConnectionOrderArgs(
-                purchase_order_number="1-323292",
-            ),
-            a_side=equinix.fabric.ConnectionASideArgs(
-                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.VD,
-                    virtual_device=equinix.fabric.ConnectionASideAccessPointVirtualDeviceArgs(
-                        type="EDGE",
-                        uuid="<device_uuid>",
-                    ),
-                    interface=equinix.fabric.ConnectionASideAccessPointInterfaceArgs(
-                        type="CLOUD",
-                        id=5,
-                    ),
-                ),
-            ),
-            z_side=equinix.fabric.ConnectionZSideArgs(
-                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.SP,
-                    authentication_key="<Azure_ExpressRouter_Auth_Key>",
-                    peering_type=equinix.fabric.AccessPointPeeringType.PRIVATE,
-                    profile=equinix.fabric.ConnectionZSideAccessPointProfileArgs(
-                        type=equinix.fabric.ProfileType.L2_PROFILE,
-                        uuid="<Azure_Service_Profile_UUID>",
-                    ),
-                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
-                        metro_code=equinix.Metro.SILICON_VALLEY,
-                    ),
-                ),
-            ))
+            order={
+                "purchase_order_number": "1-323292",
+            },
+            a_side={
+                "access_point": {
+                    "type": equinix.fabric.AccessPointType.VD,
+                    "virtual_device": {
+                        "type": "EDGE",
+                        "uuid": "<device_uuid>",
+                    },
+                    "interface": {
+                        "type": "CLOUD",
+                        "id": 5,
+                    },
+                },
+            },
+            z_side={
+                "access_point": {
+                    "type": equinix.fabric.AccessPointType.SP,
+                    "authentication_key": "<Azure_ExpressRouter_Auth_Key>",
+                    "peering_type": equinix.fabric.AccessPointPeeringType.PRIVATE,
+                    "profile": {
+                        "type": equinix.fabric.ProfileType.L2_PROFILE,
+                        "uuid": "<Azure_Service_Profile_UUID>",
+                    },
+                    "location": {
+                        "metro_code": equinix.Metro.SILICON_VALLEY,
+                    },
+                },
+            })
         ```
         ### example vd to network
         ```python
@@ -1222,38 +1222,38 @@ class Connection(pulumi.CustomResource):
         vd2_network = equinix.fabric.Connection("vd2network",
             name="ConnectionName",
             type="EVPLAN_VC",
-            notifications=[equinix.fabric.ConnectionNotificationArgs(
-                type=equinix.fabric.NotificationsType.ALL,
-                emails=[
+            notifications=[{
+                "type": equinix.fabric.NotificationsType.ALL,
+                "emails": [
                     "example@equinix.com",
                     "test1@equinix.com",
                 ],
-            )],
+            }],
             bandwidth=50,
-            order=equinix.fabric.ConnectionOrderArgs(
-                purchase_order_number="1-323292",
-            ),
-            a_side=equinix.fabric.ConnectionASideArgs(
-                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.VD,
-                    virtual_device=equinix.fabric.ConnectionASideAccessPointVirtualDeviceArgs(
-                        type="EDGE",
-                        uuid="<device_uuid>",
-                    ),
-                    interface=equinix.fabric.ConnectionASideAccessPointInterfaceArgs(
-                        type="CLOUD",
-                        id=7,
-                    ),
-                ),
-            ),
-            z_side=equinix.fabric.ConnectionZSideArgs(
-                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.NETWORK,
-                    network=equinix.fabric.ConnectionZSideAccessPointNetworkArgs(
-                        uuid="<network_uuid>",
-                    ),
-                ),
-            ))
+            order={
+                "purchase_order_number": "1-323292",
+            },
+            a_side={
+                "access_point": {
+                    "type": equinix.fabric.AccessPointType.VD,
+                    "virtual_device": {
+                        "type": "EDGE",
+                        "uuid": "<device_uuid>",
+                    },
+                    "interface": {
+                        "type": "CLOUD",
+                        "id": 7,
+                    },
+                },
+            },
+            z_side={
+                "access_point": {
+                    "type": equinix.fabric.AccessPointType.NETWORK,
+                    "network": {
+                        "uuid": "<network_uuid>",
+                    },
+                },
+            })
         ```
         ### example vd to token
         ```python
@@ -1263,50 +1263,50 @@ class Connection(pulumi.CustomResource):
         vd2_token = equinix.fabric.Connection("vd2token",
             name="ConnectionName",
             type=equinix.fabric.ConnectionType.EVPL,
-            notifications=[equinix.fabric.ConnectionNotificationArgs(
-                type=equinix.fabric.NotificationsType.ALL,
-                emails=[
+            notifications=[{
+                "type": equinix.fabric.NotificationsType.ALL,
+                "emails": [
                     "example@equinix.com",
                     "test1@equinix.com",
                 ],
-            )],
+            }],
             bandwidth=50,
-            order=equinix.fabric.ConnectionOrderArgs(
-                purchase_order_number="1-323292",
-            ),
-            a_side=equinix.fabric.ConnectionASideArgs(
-                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.VD,
-                    virtual_device=equinix.fabric.ConnectionASideAccessPointVirtualDeviceArgs(
-                        type="EDGE",
-                        uuid="<device_uuid>",
-                    ),
-                    interface=equinix.fabric.ConnectionASideAccessPointInterfaceArgs(
-                        type="NETWORK",
-                        id=7,
-                    ),
-                ),
-            ),
-            z_side=equinix.fabric.ConnectionZSideArgs(
-                service_token=equinix.fabric.ConnectionZSideServiceTokenArgs(
-                    uuid="<service_token_uuid>",
-                ),
-            ))
+            order={
+                "purchase_order_number": "1-323292",
+            },
+            a_side={
+                "access_point": {
+                    "type": equinix.fabric.AccessPointType.VD,
+                    "virtual_device": {
+                        "type": "EDGE",
+                        "uuid": "<device_uuid>",
+                    },
+                    "interface": {
+                        "type": "NETWORK",
+                        "id": 7,
+                    },
+                },
+            },
+            z_side={
+                "service_token": {
+                    "uuid": "<service_token_uuid>",
+                },
+            })
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ConnectionASideArgs']] a_side: Requester or Customer side connection configuration object of the multi-segment connection
+        :param pulumi.Input[Union['ConnectionASideArgs', 'ConnectionASideArgsDict']] a_side: Requester or Customer side connection configuration object of the multi-segment connection
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] additional_info: Connection additional information
         :param pulumi.Input[int] bandwidth: Connection bandwidth in Mbps
         :param pulumi.Input[str] description: Customer-provided connection description
         :param pulumi.Input[str] name: Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionNotificationArgs']]]] notifications: Preferences for notifications on connection configuration or status changes
-        :param pulumi.Input[pulumi.InputType['ConnectionOrderArgs']] order: Order details
-        :param pulumi.Input[pulumi.InputType['ConnectionProjectArgs']] project: Project information
-        :param pulumi.Input[pulumi.InputType['ConnectionRedundancyArgs']] redundancy: Connection Redundancy Configuration
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionNotificationArgs', 'ConnectionNotificationArgsDict']]]] notifications: Preferences for notifications on connection configuration or status changes
+        :param pulumi.Input[Union['ConnectionOrderArgs', 'ConnectionOrderArgsDict']] order: Order details
+        :param pulumi.Input[Union['ConnectionProjectArgs', 'ConnectionProjectArgsDict']] project: Project information
+        :param pulumi.Input[Union['ConnectionRedundancyArgs', 'ConnectionRedundancyArgsDict']] redundancy: Connection Redundancy Configuration
         :param pulumi.Input[Union[str, 'ConnectionType']] type: Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, IA*VC, EC_VC
-        :param pulumi.Input[pulumi.InputType['ConnectionZSideArgs']] z_side: Destination or Provider side connection configuration object of the multi-segment connection
+        :param pulumi.Input[Union['ConnectionZSideArgs', 'ConnectionZSideArgsDict']] z_side: Destination or Provider side connection configuration object of the multi-segment connection
         """
         ...
     @overload
@@ -1324,39 +1324,39 @@ class Connection(pulumi.CustomResource):
         fcr2_azure = equinix.fabric.Connection("fcr2azure",
             name="ConnectionName",
             type="IP_VC",
-            notifications=[equinix.fabric.ConnectionNotificationArgs(
-                type=equinix.fabric.NotificationsType.ALL,
-                emails=[
+            notifications=[{
+                "type": equinix.fabric.NotificationsType.ALL,
+                "emails": [
                     "example@equinix.com",
                     "test1@equinix.com",
                 ],
-            )],
+            }],
             bandwidth=50,
-            order=equinix.fabric.ConnectionOrderArgs(
-                purchase_order_number="1-323292",
-            ),
-            a_side=equinix.fabric.ConnectionASideArgs(
-                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
-                    type="CLOUD_ROUTER",
-                    router=equinix.fabric.ConnectionASideAccessPointRouterArgs(
-                        uuid="<cloud_router_uuid>",
-                    ),
-                ),
-            ),
-            z_side=equinix.fabric.ConnectionZSideArgs(
-                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.SP,
-                    authentication_key="<Azure_ExpressRouter_Auth_Key>",
-                    peering_type=equinix.fabric.AccessPointPeeringType.PRIVATE,
-                    profile=equinix.fabric.ConnectionZSideAccessPointProfileArgs(
-                        type=equinix.fabric.ProfileType.L2_PROFILE,
-                        uuid="<Azure_Service_Profile_UUID>",
-                    ),
-                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
-                        metro_code=equinix.Metro.SILICON_VALLEY,
-                    ),
-                ),
-            ))
+            order={
+                "purchase_order_number": "1-323292",
+            },
+            a_side={
+                "access_point": {
+                    "type": "CLOUD_ROUTER",
+                    "router": {
+                        "uuid": "<cloud_router_uuid>",
+                    },
+                },
+            },
+            z_side={
+                "access_point": {
+                    "type": equinix.fabric.AccessPointType.SP,
+                    "authentication_key": "<Azure_ExpressRouter_Auth_Key>",
+                    "peering_type": equinix.fabric.AccessPointPeeringType.PRIVATE,
+                    "profile": {
+                        "type": equinix.fabric.ProfileType.L2_PROFILE,
+                        "uuid": "<Azure_Service_Profile_UUID>",
+                    },
+                    "location": {
+                        "metro_code": equinix.Metro.SILICON_VALLEY,
+                    },
+                },
+            })
         ```
         ### example fcr to metal
         ```python
@@ -1366,31 +1366,31 @@ class Connection(pulumi.CustomResource):
         fcr2_metal = equinix.fabric.Connection("fcr2metal",
             name="ConnectionName",
             type="IP_VC",
-            notifications=[equinix.fabric.ConnectionNotificationArgs(
-                type=equinix.fabric.NotificationsType.ALL,
-                emails=[
+            notifications=[{
+                "type": equinix.fabric.NotificationsType.ALL,
+                "emails": [
                     "example@equinix.com",
                     "test1@equinix.com",
                 ],
-            )],
+            }],
             bandwidth=50,
-            order=equinix.fabric.ConnectionOrderArgs(
-                purchase_order_number="1-323292",
-            ),
-            a_side=equinix.fabric.ConnectionASideArgs(
-                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
-                    type="CLOUD_ROUTER",
-                    router=equinix.fabric.ConnectionASideAccessPointRouterArgs(
-                        uuid="<cloud_router_uuid>",
-                    ),
-                ),
-            ),
-            z_side=equinix.fabric.ConnectionZSideArgs(
-                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
-                    type="METAL_NETWORK",
-                    authentication_key="<metal_authorization_code>",
-                ),
-            ))
+            order={
+                "purchase_order_number": "1-323292",
+            },
+            a_side={
+                "access_point": {
+                    "type": "CLOUD_ROUTER",
+                    "router": {
+                        "uuid": "<cloud_router_uuid>",
+                    },
+                },
+            },
+            z_side={
+                "access_point": {
+                    "type": "METAL_NETWORK",
+                    "authentication_key": "<metal_authorization_code>",
+                },
+            })
         ```
         ### example fcr to network
         ```python
@@ -1400,33 +1400,33 @@ class Connection(pulumi.CustomResource):
         fcr2_network = equinix.fabric.Connection("fcr2network",
             name="ConnectionName",
             type="IPWAN_VC",
-            notifications=[equinix.fabric.ConnectionNotificationArgs(
-                type=equinix.fabric.NotificationsType.ALL,
-                emails=[
+            notifications=[{
+                "type": equinix.fabric.NotificationsType.ALL,
+                "emails": [
                     "example@equinix.com",
                     "test1@equinix.com",
                 ],
-            )],
+            }],
             bandwidth=50,
-            order=equinix.fabric.ConnectionOrderArgs(
-                purchase_order_number="1-323292",
-            ),
-            a_side=equinix.fabric.ConnectionASideArgs(
-                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
-                    type="CLOUD_ROUTER",
-                    router=equinix.fabric.ConnectionASideAccessPointRouterArgs(
-                        uuid="<cloud_router_uuid>",
-                    ),
-                ),
-            ),
-            z_side=equinix.fabric.ConnectionZSideArgs(
-                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.NETWORK,
-                    network=equinix.fabric.ConnectionZSideAccessPointNetworkArgs(
-                        uuid="<network_uuid>",
-                    ),
-                ),
-            ))
+            order={
+                "purchase_order_number": "1-323292",
+            },
+            a_side={
+                "access_point": {
+                    "type": "CLOUD_ROUTER",
+                    "router": {
+                        "uuid": "<cloud_router_uuid>",
+                    },
+                },
+            },
+            z_side={
+                "access_point": {
+                    "type": equinix.fabric.AccessPointType.NETWORK,
+                    "network": {
+                        "uuid": "<network_uuid>",
+                    },
+                },
+            })
         ```
         ### example fcr to port
         ```python
@@ -1436,40 +1436,40 @@ class Connection(pulumi.CustomResource):
         fcr2_port = equinix.fabric.Connection("fcr2port",
             name="ConnectionName",
             type="IP_VC",
-            notifications=[equinix.fabric.ConnectionNotificationArgs(
-                type=equinix.fabric.NotificationsType.ALL,
-                emails=[
+            notifications=[{
+                "type": equinix.fabric.NotificationsType.ALL,
+                "emails": [
                     "example@equinix.com",
                     "test1@equinix.com",
                 ],
-            )],
+            }],
             bandwidth=50,
-            order=equinix.fabric.ConnectionOrderArgs(
-                purchase_order_number="1-323292",
-            ),
-            a_side=equinix.fabric.ConnectionASideArgs(
-                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
-                    type="CLOUD_ROUTER",
-                    router=equinix.fabric.ConnectionASideAccessPointRouterArgs(
-                        uuid="<cloud_router_uuid>",
-                    ),
-                ),
-            ),
-            z_side=equinix.fabric.ConnectionZSideArgs(
-                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.COLO,
-                    port=equinix.fabric.ConnectionZSideAccessPointPortArgs(
-                        uuid="<port_uuid>",
-                    ),
-                    link_protocol=equinix.fabric.ConnectionZSideAccessPointLinkProtocolArgs(
-                        type=equinix.fabric.AccessPointLinkProtocolType.DOT1Q,
-                        vlan_tag=2711,
-                    ),
-                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
-                        metro_code=equinix.Metro.SILICON_VALLEY,
-                    ),
-                ),
-            ))
+            order={
+                "purchase_order_number": "1-323292",
+            },
+            a_side={
+                "access_point": {
+                    "type": "CLOUD_ROUTER",
+                    "router": {
+                        "uuid": "<cloud_router_uuid>",
+                    },
+                },
+            },
+            z_side={
+                "access_point": {
+                    "type": equinix.fabric.AccessPointType.COLO,
+                    "port": {
+                        "uuid": "<port_uuid>",
+                    },
+                    "link_protocol": {
+                        "type": equinix.fabric.AccessPointLinkProtocolType.DOT1Q,
+                        "vlan_tag": 2711,
+                    },
+                    "location": {
+                        "metro_code": equinix.Metro.SILICON_VALLEY,
+                    },
+                },
+            })
         ```
         ### example metal to aws
         ```python
@@ -1479,37 +1479,37 @@ class Connection(pulumi.CustomResource):
         metal2_aws = equinix.fabric.Connection("metal2aws",
             name="ConnectionName",
             type="EVPLAN_VC",
-            notifications=[equinix.fabric.ConnectionNotificationArgs(
-                type=equinix.fabric.NotificationsType.ALL,
-                emails=[
+            notifications=[{
+                "type": equinix.fabric.NotificationsType.ALL,
+                "emails": [
                     "example@equinix.com",
                     "test1@equinix.com",
                 ],
-            )],
+            }],
             bandwidth=50,
-            order=equinix.fabric.ConnectionOrderArgs(
-                purchase_order_number="1-323292",
-            ),
-            a_side=equinix.fabric.ConnectionASideArgs(
-                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
-                    type="METAL_NETWORK",
-                    authentication_key="<metal_authorization_code>",
-                ),
-            ),
-            z_side=equinix.fabric.ConnectionZSideArgs(
-                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.SP,
-                    authentication_key="<aws_account_id>",
-                    seller_region="us-west-1",
-                    profile=equinix.fabric.ConnectionZSideAccessPointProfileArgs(
-                        type=equinix.fabric.ProfileType.L2_PROFILE,
-                        uuid="<service_profile_uuid>",
-                    ),
-                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
-                        metro_code=equinix.Metro.SILICON_VALLEY,
-                    ),
-                ),
-            ))
+            order={
+                "purchase_order_number": "1-323292",
+            },
+            a_side={
+                "access_point": {
+                    "type": "METAL_NETWORK",
+                    "authentication_key": "<metal_authorization_code>",
+                },
+            },
+            z_side={
+                "access_point": {
+                    "type": equinix.fabric.AccessPointType.SP,
+                    "authentication_key": "<aws_account_id>",
+                    "seller_region": "us-west-1",
+                    "profile": {
+                        "type": equinix.fabric.ProfileType.L2_PROFILE,
+                        "uuid": "<service_profile_uuid>",
+                    },
+                    "location": {
+                        "metro_code": equinix.Metro.SILICON_VALLEY,
+                    },
+                },
+            })
         ```
         ### example port to aws
         ```python
@@ -1519,47 +1519,47 @@ class Connection(pulumi.CustomResource):
         port2_aws = equinix.fabric.Connection("port2aws",
             name="ConnectionName",
             type=equinix.fabric.ConnectionType.EVPL,
-            notifications=[equinix.fabric.ConnectionNotificationArgs(
-                type=equinix.fabric.NotificationsType.ALL,
-                emails=[
+            notifications=[{
+                "type": equinix.fabric.NotificationsType.ALL,
+                "emails": [
                     "example@equinix.com",
                     "test1@equinix.com",
                 ],
-            )],
+            }],
             bandwidth=50,
-            redundancy=equinix.fabric.ConnectionRedundancyArgs(
-                priority="PRIMARY",
-            ),
-            order=equinix.fabric.ConnectionOrderArgs(
-                purchase_order_number="1-323929",
-            ),
-            a_side=equinix.fabric.ConnectionASideArgs(
-                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.COLO,
-                    port=equinix.fabric.ConnectionASideAccessPointPortArgs(
-                        uuid="<aside_port_uuid>",
-                    ),
-                    link_protocol=equinix.fabric.ConnectionASideAccessPointLinkProtocolArgs(
-                        type=equinix.fabric.AccessPointLinkProtocolType.QIN_Q,
-                        vlan_s_tag=2019,
-                        vlan_c_tag=2112,
-                    ),
-                ),
-            ),
-            z_side=equinix.fabric.ConnectionZSideArgs(
-                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.SP,
-                    authentication_key="<aws_account_id>",
-                    seller_region="us-west-1",
-                    profile=equinix.fabric.ConnectionZSideAccessPointProfileArgs(
-                        type=equinix.fabric.ProfileType.L2_PROFILE,
-                        uuid="<service_profile_uuid>",
-                    ),
-                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
-                        metro_code=equinix.Metro.SILICON_VALLEY,
-                    ),
-                ),
-            ),
+            redundancy={
+                "priority": "PRIMARY",
+            },
+            order={
+                "purchase_order_number": "1-323929",
+            },
+            a_side={
+                "access_point": {
+                    "type": equinix.fabric.AccessPointType.COLO,
+                    "port": {
+                        "uuid": "<aside_port_uuid>",
+                    },
+                    "link_protocol": {
+                        "type": equinix.fabric.AccessPointLinkProtocolType.QIN_Q,
+                        "vlan_s_tag": 2019,
+                        "vlan_c_tag": 2112,
+                    },
+                },
+            },
+            z_side={
+                "access_point": {
+                    "type": equinix.fabric.AccessPointType.SP,
+                    "authentication_key": "<aws_account_id>",
+                    "seller_region": "us-west-1",
+                    "profile": {
+                        "type": equinix.fabric.ProfileType.L2_PROFILE,
+                        "uuid": "<service_profile_uuid>",
+                    },
+                    "location": {
+                        "metro_code": equinix.Metro.SILICON_VALLEY,
+                    },
+                },
+            },
             additional_info=[
                 {
                     "key": "accessKey",
@@ -1579,33 +1579,33 @@ class Connection(pulumi.CustomResource):
         eplan = equinix.fabric.Connection("eplan",
             name="ConnectionName",
             type="EPLAN_VC",
-            notifications=[equinix.fabric.ConnectionNotificationArgs(
-                type=equinix.fabric.NotificationsType.ALL,
-                emails=[
+            notifications=[{
+                "type": equinix.fabric.NotificationsType.ALL,
+                "emails": [
                     "example@equinix.com",
                     "test1@equinix.com",
                 ],
-            )],
+            }],
             bandwidth=50,
-            order=equinix.fabric.ConnectionOrderArgs(
-                purchase_order_number="1-323292",
-            ),
-            a_side=equinix.fabric.ConnectionASideArgs(
-                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.COLO,
-                    port=equinix.fabric.ConnectionASideAccessPointPortArgs(
-                        uuid="<aside_port_uuid>",
-                    ),
-                ),
-            ),
-            z_side=equinix.fabric.ConnectionZSideArgs(
-                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.NETWORK,
-                    network=equinix.fabric.ConnectionZSideAccessPointNetworkArgs(
-                        uuid="<network_uuid>",
-                    ),
-                ),
-            ))
+            order={
+                "purchase_order_number": "1-323292",
+            },
+            a_side={
+                "access_point": {
+                    "type": equinix.fabric.AccessPointType.COLO,
+                    "port": {
+                        "uuid": "<aside_port_uuid>",
+                    },
+                },
+            },
+            z_side={
+                "access_point": {
+                    "type": equinix.fabric.AccessPointType.NETWORK,
+                    "network": {
+                        "uuid": "<network_uuid>",
+                    },
+                },
+            })
         ```
         ### example port to network evplan
         ```python
@@ -1615,37 +1615,37 @@ class Connection(pulumi.CustomResource):
         evplan = equinix.fabric.Connection("evplan",
             name="ConnectionName",
             type="EVPLAN_VC",
-            notifications=[equinix.fabric.ConnectionNotificationArgs(
-                type=equinix.fabric.NotificationsType.ALL,
-                emails=[
+            notifications=[{
+                "type": equinix.fabric.NotificationsType.ALL,
+                "emails": [
                     "example@equinix.com",
                     "test1@equinix.com",
                 ],
-            )],
+            }],
             bandwidth=50,
-            order=equinix.fabric.ConnectionOrderArgs(
-                purchase_order_number="1-323292",
-            ),
-            a_side=equinix.fabric.ConnectionASideArgs(
-                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.COLO,
-                    port=equinix.fabric.ConnectionASideAccessPointPortArgs(
-                        uuid="<aside_port_uuid>",
-                    ),
-                    link_protocol=equinix.fabric.ConnectionASideAccessPointLinkProtocolArgs(
-                        type=equinix.fabric.AccessPointLinkProtocolType.DOT1Q,
-                        vlan_s_tag=1976,
-                    ),
-                ),
-            ),
-            z_side=equinix.fabric.ConnectionZSideArgs(
-                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.NETWORK,
-                    network=equinix.fabric.ConnectionZSideAccessPointNetworkArgs(
-                        uuid="<network_uuid>",
-                    ),
-                ),
-            ))
+            order={
+                "purchase_order_number": "1-323292",
+            },
+            a_side={
+                "access_point": {
+                    "type": equinix.fabric.AccessPointType.COLO,
+                    "port": {
+                        "uuid": "<aside_port_uuid>",
+                    },
+                    "link_protocol": {
+                        "type": equinix.fabric.AccessPointLinkProtocolType.DOT1Q,
+                        "vlan_s_tag": 1976,
+                    },
+                },
+            },
+            z_side={
+                "access_point": {
+                    "type": equinix.fabric.AccessPointType.NETWORK,
+                    "network": {
+                        "uuid": "<network_uuid>",
+                    },
+                },
+            })
         ```
         ### example port to port
         ```python
@@ -1655,44 +1655,44 @@ class Connection(pulumi.CustomResource):
         port2_port = equinix.fabric.Connection("port2port",
             name="ConnectionName",
             type=equinix.fabric.ConnectionType.EVPL,
-            notifications=[equinix.fabric.ConnectionNotificationArgs(
-                type=equinix.fabric.NotificationsType.ALL,
-                emails=[
+            notifications=[{
+                "type": equinix.fabric.NotificationsType.ALL,
+                "emails": [
                     "example@equinix.com",
                     "test1@equinix.com",
                 ],
-            )],
+            }],
             bandwidth=50,
-            order=equinix.fabric.ConnectionOrderArgs(
-                purchase_order_number="1-323292",
-            ),
-            a_side=equinix.fabric.ConnectionASideArgs(
-                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.COLO,
-                    port=equinix.fabric.ConnectionASideAccessPointPortArgs(
-                        uuid="<aside_port_uuid>",
-                    ),
-                    link_protocol=equinix.fabric.ConnectionASideAccessPointLinkProtocolArgs(
-                        type=equinix.fabric.AccessPointLinkProtocolType.QIN_Q,
-                        vlan_s_tag=1976,
-                    ),
-                ),
-            ),
-            z_side=equinix.fabric.ConnectionZSideArgs(
-                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.COLO,
-                    port=equinix.fabric.ConnectionZSideAccessPointPortArgs(
-                        uuid="<zside_port_uuid>",
-                    ),
-                    link_protocol=equinix.fabric.ConnectionZSideAccessPointLinkProtocolArgs(
-                        type=equinix.fabric.AccessPointLinkProtocolType.QIN_Q,
-                        vlan_s_tag=3711,
-                    ),
-                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
-                        metro_code=equinix.Metro.SILICON_VALLEY,
-                    ),
-                ),
-            ))
+            order={
+                "purchase_order_number": "1-323292",
+            },
+            a_side={
+                "access_point": {
+                    "type": equinix.fabric.AccessPointType.COLO,
+                    "port": {
+                        "uuid": "<aside_port_uuid>",
+                    },
+                    "link_protocol": {
+                        "type": equinix.fabric.AccessPointLinkProtocolType.QIN_Q,
+                        "vlan_s_tag": 1976,
+                    },
+                },
+            },
+            z_side={
+                "access_point": {
+                    "type": equinix.fabric.AccessPointType.COLO,
+                    "port": {
+                        "uuid": "<zside_port_uuid>",
+                    },
+                    "link_protocol": {
+                        "type": equinix.fabric.AccessPointLinkProtocolType.QIN_Q,
+                        "vlan_s_tag": 3711,
+                    },
+                    "location": {
+                        "metro_code": equinix.Metro.SILICON_VALLEY,
+                    },
+                },
+            })
         ```
         ### example port to port access epl
         ```python
@@ -1702,40 +1702,40 @@ class Connection(pulumi.CustomResource):
         access_epl_vc = equinix.fabric.Connection("accessEplVc",
             name="ConnectionName",
             type=equinix.fabric.ConnectionType.ACCESS_EPL,
-            notifications=[equinix.fabric.ConnectionNotificationArgs(
-                type=equinix.fabric.NotificationsType.ALL,
-                emails=[
+            notifications=[{
+                "type": equinix.fabric.NotificationsType.ALL,
+                "emails": [
                     "example@equinix.com",
                     "test1@equinix.com",
                 ],
-            )],
+            }],
             bandwidth=50,
-            order=equinix.fabric.ConnectionOrderArgs(
-                purchase_order_number="1-323292",
-            ),
-            a_side=equinix.fabric.ConnectionASideArgs(
-                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.COLO,
-                    port=equinix.fabric.ConnectionASideAccessPointPortArgs(
-                        uuid="<aside_port_uuid>",
-                    ),
-                    link_protocol=equinix.fabric.ConnectionASideAccessPointLinkProtocolArgs(
-                        type=equinix.fabric.AccessPointLinkProtocolType.QIN_Q,
-                        vlan_s_tag=1976,
-                    ),
-                ),
-            ),
-            z_side=equinix.fabric.ConnectionZSideArgs(
-                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.COLO,
-                    port=equinix.fabric.ConnectionZSideAccessPointPortArgs(
-                        uuid="<zside_port_uuid>",
-                    ),
-                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
-                        metro_code=equinix.Metro.SILICON_VALLEY,
-                    ),
-                ),
-            ))
+            order={
+                "purchase_order_number": "1-323292",
+            },
+            a_side={
+                "access_point": {
+                    "type": equinix.fabric.AccessPointType.COLO,
+                    "port": {
+                        "uuid": "<aside_port_uuid>",
+                    },
+                    "link_protocol": {
+                        "type": equinix.fabric.AccessPointLinkProtocolType.QIN_Q,
+                        "vlan_s_tag": 1976,
+                    },
+                },
+            },
+            z_side={
+                "access_point": {
+                    "type": equinix.fabric.AccessPointType.COLO,
+                    "port": {
+                        "uuid": "<zside_port_uuid>",
+                    },
+                    "location": {
+                        "metro_code": equinix.Metro.SILICON_VALLEY,
+                    },
+                },
+            })
         ```
         ### example port to port epl
         ```python
@@ -1745,36 +1745,36 @@ class Connection(pulumi.CustomResource):
         epl = equinix.fabric.Connection("epl",
             name="ConnectionName",
             type=equinix.fabric.ConnectionType.EPL,
-            notifications=[equinix.fabric.ConnectionNotificationArgs(
-                type=equinix.fabric.NotificationsType.ALL,
-                emails=[
+            notifications=[{
+                "type": equinix.fabric.NotificationsType.ALL,
+                "emails": [
                     "example@equinix.com",
                     "test1@equinix.com",
                 ],
-            )],
+            }],
             bandwidth=50,
-            order=equinix.fabric.ConnectionOrderArgs(
-                purchase_order_number="1-323292",
-            ),
-            a_side=equinix.fabric.ConnectionASideArgs(
-                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.COLO,
-                    port=equinix.fabric.ConnectionASideAccessPointPortArgs(
-                        uuid="<aside_port_uuid>",
-                    ),
-                ),
-            ),
-            z_side=equinix.fabric.ConnectionZSideArgs(
-                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.COLO,
-                    port=equinix.fabric.ConnectionZSideAccessPointPortArgs(
-                        uuid="<zside_port_uuid>",
-                    ),
-                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
-                        metro_code=equinix.Metro.SILICON_VALLEY,
-                    ),
-                ),
-            ))
+            order={
+                "purchase_order_number": "1-323292",
+            },
+            a_side={
+                "access_point": {
+                    "type": equinix.fabric.AccessPointType.COLO,
+                    "port": {
+                        "uuid": "<aside_port_uuid>",
+                    },
+                },
+            },
+            z_side={
+                "access_point": {
+                    "type": equinix.fabric.AccessPointType.COLO,
+                    "port": {
+                        "uuid": "<zside_port_uuid>",
+                    },
+                    "location": {
+                        "metro_code": equinix.Metro.SILICON_VALLEY,
+                    },
+                },
+            })
         ```
         ### example port to vd
         ```python
@@ -1784,45 +1784,45 @@ class Connection(pulumi.CustomResource):
         vd2_port = equinix.fabric.Connection("vd2port",
             name="ConnectionName",
             type=equinix.fabric.ConnectionType.EVPL,
-            notifications=[equinix.fabric.ConnectionNotificationArgs(
-                type=equinix.fabric.NotificationsType.ALL,
-                emails=[
+            notifications=[{
+                "type": equinix.fabric.NotificationsType.ALL,
+                "emails": [
                     "example@equinix.com",
                     "test1@equinix.com",
                 ],
-            )],
+            }],
             bandwidth=50,
-            order=equinix.fabric.ConnectionOrderArgs(
-                purchase_order_number="1-323292",
-            ),
-            a_side=equinix.fabric.ConnectionASideArgs(
-                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.VD,
-                    virtual_device=equinix.fabric.ConnectionASideAccessPointVirtualDeviceArgs(
-                        type="EDGE",
-                        uuid="<device_uuid>",
-                    ),
-                    interface=equinix.fabric.ConnectionASideAccessPointInterfaceArgs(
-                        type="NETWORK",
-                        id=7,
-                    ),
-                ),
-            ),
-            z_side=equinix.fabric.ConnectionZSideArgs(
-                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.COLO,
-                    port=equinix.fabric.ConnectionZSideAccessPointPortArgs(
-                        uuid="<zside_port_uuid>",
-                    ),
-                    link_protocol=equinix.fabric.ConnectionZSideAccessPointLinkProtocolArgs(
-                        type=equinix.fabric.AccessPointLinkProtocolType.DOT1Q,
-                        vlan_s_tag=3711,
-                    ),
-                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
-                        metro_code=equinix.Metro.SILICON_VALLEY,
-                    ),
-                ),
-            ))
+            order={
+                "purchase_order_number": "1-323292",
+            },
+            a_side={
+                "access_point": {
+                    "type": equinix.fabric.AccessPointType.VD,
+                    "virtual_device": {
+                        "type": "EDGE",
+                        "uuid": "<device_uuid>",
+                    },
+                    "interface": {
+                        "type": "NETWORK",
+                        "id": 7,
+                    },
+                },
+            },
+            z_side={
+                "access_point": {
+                    "type": equinix.fabric.AccessPointType.COLO,
+                    "port": {
+                        "uuid": "<zside_port_uuid>",
+                    },
+                    "link_protocol": {
+                        "type": equinix.fabric.AccessPointLinkProtocolType.DOT1Q,
+                        "vlan_s_tag": 3711,
+                    },
+                    "location": {
+                        "metro_code": equinix.Metro.SILICON_VALLEY,
+                    },
+                },
+            })
         ```
         ### example token to aws
         ```python
@@ -1832,36 +1832,36 @@ class Connection(pulumi.CustomResource):
         token2_aws = equinix.fabric.Connection("token2aws",
             name="ConnectionName",
             type=equinix.fabric.ConnectionType.EVPL,
-            notifications=[equinix.fabric.ConnectionNotificationArgs(
-                type=equinix.fabric.NotificationsType.ALL,
-                emails=[
+            notifications=[{
+                "type": equinix.fabric.NotificationsType.ALL,
+                "emails": [
                     "example@equinix.com",
                     "test1@equinix.com",
                 ],
-            )],
+            }],
             bandwidth=50,
-            order=equinix.fabric.ConnectionOrderArgs(
-                purchase_order_number="1-323292",
-            ),
-            a_side=equinix.fabric.ConnectionASideArgs(
-                service_token=equinix.fabric.ConnectionASideServiceTokenArgs(
-                    uuid="<service_token_uuid>",
-                ),
-            ),
-            z_side=equinix.fabric.ConnectionZSideArgs(
-                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.SP,
-                    authentication_key="<aws_account_id>",
-                    seller_region="us-west-1",
-                    profile=equinix.fabric.ConnectionZSideAccessPointProfileArgs(
-                        type=equinix.fabric.ProfileType.L2_PROFILE,
-                        uuid="<service_profile_uuid>",
-                    ),
-                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
-                        metro_code=equinix.Metro.SILICON_VALLEY,
-                    ),
-                ),
-            ))
+            order={
+                "purchase_order_number": "1-323292",
+            },
+            a_side={
+                "service_token": {
+                    "uuid": "<service_token_uuid>",
+                },
+            },
+            z_side={
+                "access_point": {
+                    "type": equinix.fabric.AccessPointType.SP,
+                    "authentication_key": "<aws_account_id>",
+                    "seller_region": "us-west-1",
+                    "profile": {
+                        "type": equinix.fabric.ProfileType.L2_PROFILE,
+                        "uuid": "<service_profile_uuid>",
+                    },
+                    "location": {
+                        "metro_code": equinix.Metro.SILICON_VALLEY,
+                    },
+                },
+            })
         ```
         ### example vd to azure
         ```python
@@ -1871,44 +1871,44 @@ class Connection(pulumi.CustomResource):
         vd2_azure = equinix.fabric.Connection("vd2azure",
             name="ConnectionName",
             type=equinix.fabric.ConnectionType.EVPL,
-            notifications=[equinix.fabric.ConnectionNotificationArgs(
-                type=equinix.fabric.NotificationsType.ALL,
-                emails=[
+            notifications=[{
+                "type": equinix.fabric.NotificationsType.ALL,
+                "emails": [
                     "example@equinix.com",
                     "test1@equinix.com",
                 ],
-            )],
+            }],
             bandwidth=50,
-            order=equinix.fabric.ConnectionOrderArgs(
-                purchase_order_number="1-323292",
-            ),
-            a_side=equinix.fabric.ConnectionASideArgs(
-                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.VD,
-                    virtual_device=equinix.fabric.ConnectionASideAccessPointVirtualDeviceArgs(
-                        type="EDGE",
-                        uuid="<device_uuid>",
-                    ),
-                    interface=equinix.fabric.ConnectionASideAccessPointInterfaceArgs(
-                        type="CLOUD",
-                        id=7,
-                    ),
-                ),
-            ),
-            z_side=equinix.fabric.ConnectionZSideArgs(
-                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.SP,
-                    authentication_key="<Azure_ExpressRouter_Auth_Key>",
-                    peering_type=equinix.fabric.AccessPointPeeringType.PRIVATE,
-                    profile=equinix.fabric.ConnectionZSideAccessPointProfileArgs(
-                        type=equinix.fabric.ProfileType.L2_PROFILE,
-                        uuid="<Azure_Service_Profile_UUID>",
-                    ),
-                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
-                        metro_code=equinix.Metro.SILICON_VALLEY,
-                    ),
-                ),
-            ))
+            order={
+                "purchase_order_number": "1-323292",
+            },
+            a_side={
+                "access_point": {
+                    "type": equinix.fabric.AccessPointType.VD,
+                    "virtual_device": {
+                        "type": "EDGE",
+                        "uuid": "<device_uuid>",
+                    },
+                    "interface": {
+                        "type": "CLOUD",
+                        "id": 7,
+                    },
+                },
+            },
+            z_side={
+                "access_point": {
+                    "type": equinix.fabric.AccessPointType.SP,
+                    "authentication_key": "<Azure_ExpressRouter_Auth_Key>",
+                    "peering_type": equinix.fabric.AccessPointPeeringType.PRIVATE,
+                    "profile": {
+                        "type": equinix.fabric.ProfileType.L2_PROFILE,
+                        "uuid": "<Azure_Service_Profile_UUID>",
+                    },
+                    "location": {
+                        "metro_code": equinix.Metro.SILICON_VALLEY,
+                    },
+                },
+            })
         ```
         ### example vd to azure redundant
         ```python
@@ -1918,92 +1918,92 @@ class Connection(pulumi.CustomResource):
         vd2_azure_primary = equinix.fabric.Connection("vd2azurePrimary",
             name="ConnectionName",
             type=equinix.fabric.ConnectionType.EVPL,
-            redundancy=equinix.fabric.ConnectionRedundancyArgs(
-                priority="PRIMARY",
-            ),
-            notifications=[equinix.fabric.ConnectionNotificationArgs(
-                type=equinix.fabric.NotificationsType.ALL,
-                emails=[
+            redundancy={
+                "priority": "PRIMARY",
+            },
+            notifications=[{
+                "type": equinix.fabric.NotificationsType.ALL,
+                "emails": [
                     "example@equinix.com",
                     "test1@equinix.com",
                 ],
-            )],
+            }],
             bandwidth=50,
-            order=equinix.fabric.ConnectionOrderArgs(
-                purchase_order_number="1-323292",
-            ),
-            a_side=equinix.fabric.ConnectionASideArgs(
-                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.VD,
-                    virtual_device=equinix.fabric.ConnectionASideAccessPointVirtualDeviceArgs(
-                        type="EDGE",
-                        uuid="<device_uuid>",
-                    ),
-                    interface=equinix.fabric.ConnectionASideAccessPointInterfaceArgs(
-                        type="CLOUD",
-                        id=7,
-                    ),
-                ),
-            ),
-            z_side=equinix.fabric.ConnectionZSideArgs(
-                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.SP,
-                    authentication_key="<Azure_ExpressRouter_Auth_Key>",
-                    peering_type=equinix.fabric.AccessPointPeeringType.PRIVATE,
-                    profile=equinix.fabric.ConnectionZSideAccessPointProfileArgs(
-                        type=equinix.fabric.ProfileType.L2_PROFILE,
-                        uuid="<Azure_Service_Profile_UUID>",
-                    ),
-                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
-                        metro_code=equinix.Metro.SILICON_VALLEY,
-                    ),
-                ),
-            ))
+            order={
+                "purchase_order_number": "1-323292",
+            },
+            a_side={
+                "access_point": {
+                    "type": equinix.fabric.AccessPointType.VD,
+                    "virtual_device": {
+                        "type": "EDGE",
+                        "uuid": "<device_uuid>",
+                    },
+                    "interface": {
+                        "type": "CLOUD",
+                        "id": 7,
+                    },
+                },
+            },
+            z_side={
+                "access_point": {
+                    "type": equinix.fabric.AccessPointType.SP,
+                    "authentication_key": "<Azure_ExpressRouter_Auth_Key>",
+                    "peering_type": equinix.fabric.AccessPointPeeringType.PRIVATE,
+                    "profile": {
+                        "type": equinix.fabric.ProfileType.L2_PROFILE,
+                        "uuid": "<Azure_Service_Profile_UUID>",
+                    },
+                    "location": {
+                        "metro_code": equinix.Metro.SILICON_VALLEY,
+                    },
+                },
+            })
         vd2_azure_secondary = equinix.fabric.Connection("vd2azureSecondary",
             name="ConnectionName",
             type=equinix.fabric.ConnectionType.EVPL,
-            redundancy=equinix.fabric.ConnectionRedundancyArgs(
-                priority="SECONDARY",
-                group=vd2_azure_primary.redundancy.group,
-            ),
-            notifications=[equinix.fabric.ConnectionNotificationArgs(
-                type=equinix.fabric.NotificationsType.ALL,
-                emails=[
+            redundancy={
+                "priority": "SECONDARY",
+                "group": vd2_azure_primary.redundancy.group,
+            },
+            notifications=[{
+                "type": equinix.fabric.NotificationsType.ALL,
+                "emails": [
                     "example@equinix.com",
                     "test1@equinix.com",
                 ],
-            )],
+            }],
             bandwidth=50,
-            order=equinix.fabric.ConnectionOrderArgs(
-                purchase_order_number="1-323292",
-            ),
-            a_side=equinix.fabric.ConnectionASideArgs(
-                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.VD,
-                    virtual_device=equinix.fabric.ConnectionASideAccessPointVirtualDeviceArgs(
-                        type="EDGE",
-                        uuid="<device_uuid>",
-                    ),
-                    interface=equinix.fabric.ConnectionASideAccessPointInterfaceArgs(
-                        type="CLOUD",
-                        id=5,
-                    ),
-                ),
-            ),
-            z_side=equinix.fabric.ConnectionZSideArgs(
-                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.SP,
-                    authentication_key="<Azure_ExpressRouter_Auth_Key>",
-                    peering_type=equinix.fabric.AccessPointPeeringType.PRIVATE,
-                    profile=equinix.fabric.ConnectionZSideAccessPointProfileArgs(
-                        type=equinix.fabric.ProfileType.L2_PROFILE,
-                        uuid="<Azure_Service_Profile_UUID>",
-                    ),
-                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
-                        metro_code=equinix.Metro.SILICON_VALLEY,
-                    ),
-                ),
-            ))
+            order={
+                "purchase_order_number": "1-323292",
+            },
+            a_side={
+                "access_point": {
+                    "type": equinix.fabric.AccessPointType.VD,
+                    "virtual_device": {
+                        "type": "EDGE",
+                        "uuid": "<device_uuid>",
+                    },
+                    "interface": {
+                        "type": "CLOUD",
+                        "id": 5,
+                    },
+                },
+            },
+            z_side={
+                "access_point": {
+                    "type": equinix.fabric.AccessPointType.SP,
+                    "authentication_key": "<Azure_ExpressRouter_Auth_Key>",
+                    "peering_type": equinix.fabric.AccessPointPeeringType.PRIVATE,
+                    "profile": {
+                        "type": equinix.fabric.ProfileType.L2_PROFILE,
+                        "uuid": "<Azure_Service_Profile_UUID>",
+                    },
+                    "location": {
+                        "metro_code": equinix.Metro.SILICON_VALLEY,
+                    },
+                },
+            })
         ```
         ### example vd to network
         ```python
@@ -2013,38 +2013,38 @@ class Connection(pulumi.CustomResource):
         vd2_network = equinix.fabric.Connection("vd2network",
             name="ConnectionName",
             type="EVPLAN_VC",
-            notifications=[equinix.fabric.ConnectionNotificationArgs(
-                type=equinix.fabric.NotificationsType.ALL,
-                emails=[
+            notifications=[{
+                "type": equinix.fabric.NotificationsType.ALL,
+                "emails": [
                     "example@equinix.com",
                     "test1@equinix.com",
                 ],
-            )],
+            }],
             bandwidth=50,
-            order=equinix.fabric.ConnectionOrderArgs(
-                purchase_order_number="1-323292",
-            ),
-            a_side=equinix.fabric.ConnectionASideArgs(
-                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.VD,
-                    virtual_device=equinix.fabric.ConnectionASideAccessPointVirtualDeviceArgs(
-                        type="EDGE",
-                        uuid="<device_uuid>",
-                    ),
-                    interface=equinix.fabric.ConnectionASideAccessPointInterfaceArgs(
-                        type="CLOUD",
-                        id=7,
-                    ),
-                ),
-            ),
-            z_side=equinix.fabric.ConnectionZSideArgs(
-                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.NETWORK,
-                    network=equinix.fabric.ConnectionZSideAccessPointNetworkArgs(
-                        uuid="<network_uuid>",
-                    ),
-                ),
-            ))
+            order={
+                "purchase_order_number": "1-323292",
+            },
+            a_side={
+                "access_point": {
+                    "type": equinix.fabric.AccessPointType.VD,
+                    "virtual_device": {
+                        "type": "EDGE",
+                        "uuid": "<device_uuid>",
+                    },
+                    "interface": {
+                        "type": "CLOUD",
+                        "id": 7,
+                    },
+                },
+            },
+            z_side={
+                "access_point": {
+                    "type": equinix.fabric.AccessPointType.NETWORK,
+                    "network": {
+                        "uuid": "<network_uuid>",
+                    },
+                },
+            })
         ```
         ### example vd to token
         ```python
@@ -2054,35 +2054,35 @@ class Connection(pulumi.CustomResource):
         vd2_token = equinix.fabric.Connection("vd2token",
             name="ConnectionName",
             type=equinix.fabric.ConnectionType.EVPL,
-            notifications=[equinix.fabric.ConnectionNotificationArgs(
-                type=equinix.fabric.NotificationsType.ALL,
-                emails=[
+            notifications=[{
+                "type": equinix.fabric.NotificationsType.ALL,
+                "emails": [
                     "example@equinix.com",
                     "test1@equinix.com",
                 ],
-            )],
+            }],
             bandwidth=50,
-            order=equinix.fabric.ConnectionOrderArgs(
-                purchase_order_number="1-323292",
-            ),
-            a_side=equinix.fabric.ConnectionASideArgs(
-                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
-                    type=equinix.fabric.AccessPointType.VD,
-                    virtual_device=equinix.fabric.ConnectionASideAccessPointVirtualDeviceArgs(
-                        type="EDGE",
-                        uuid="<device_uuid>",
-                    ),
-                    interface=equinix.fabric.ConnectionASideAccessPointInterfaceArgs(
-                        type="NETWORK",
-                        id=7,
-                    ),
-                ),
-            ),
-            z_side=equinix.fabric.ConnectionZSideArgs(
-                service_token=equinix.fabric.ConnectionZSideServiceTokenArgs(
-                    uuid="<service_token_uuid>",
-                ),
-            ))
+            order={
+                "purchase_order_number": "1-323292",
+            },
+            a_side={
+                "access_point": {
+                    "type": equinix.fabric.AccessPointType.VD,
+                    "virtual_device": {
+                        "type": "EDGE",
+                        "uuid": "<device_uuid>",
+                    },
+                    "interface": {
+                        "type": "NETWORK",
+                        "id": 7,
+                    },
+                },
+            },
+            z_side={
+                "service_token": {
+                    "uuid": "<service_token_uuid>",
+                },
+            })
         ```
 
         :param str resource_name: The name of the resource.
@@ -2100,17 +2100,17 @@ class Connection(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 a_side: Optional[pulumi.Input[pulumi.InputType['ConnectionASideArgs']]] = None,
+                 a_side: Optional[pulumi.Input[Union['ConnectionASideArgs', 'ConnectionASideArgsDict']]] = None,
                  additional_info: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
                  bandwidth: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 notifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionNotificationArgs']]]]] = None,
-                 order: Optional[pulumi.Input[pulumi.InputType['ConnectionOrderArgs']]] = None,
-                 project: Optional[pulumi.Input[pulumi.InputType['ConnectionProjectArgs']]] = None,
-                 redundancy: Optional[pulumi.Input[pulumi.InputType['ConnectionRedundancyArgs']]] = None,
+                 notifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectionNotificationArgs', 'ConnectionNotificationArgsDict']]]]] = None,
+                 order: Optional[pulumi.Input[Union['ConnectionOrderArgs', 'ConnectionOrderArgsDict']]] = None,
+                 project: Optional[pulumi.Input[Union['ConnectionProjectArgs', 'ConnectionProjectArgsDict']]] = None,
+                 redundancy: Optional[pulumi.Input[Union['ConnectionRedundancyArgs', 'ConnectionRedundancyArgsDict']]] = None,
                  type: Optional[pulumi.Input[Union[str, 'ConnectionType']]] = None,
-                 z_side: Optional[pulumi.Input[pulumi.InputType['ConnectionZSideArgs']]] = None,
+                 z_side: Optional[pulumi.Input[Union['ConnectionZSideArgs', 'ConnectionZSideArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -2159,25 +2159,25 @@ class Connection(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            a_side: Optional[pulumi.Input[pulumi.InputType['ConnectionASideArgs']]] = None,
-            account: Optional[pulumi.Input[pulumi.InputType['ConnectionAccountArgs']]] = None,
+            a_side: Optional[pulumi.Input[Union['ConnectionASideArgs', 'ConnectionASideArgsDict']]] = None,
+            account: Optional[pulumi.Input[Union['ConnectionAccountArgs', 'ConnectionAccountArgsDict']]] = None,
             additional_info: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
             bandwidth: Optional[pulumi.Input[int]] = None,
-            change_log: Optional[pulumi.Input[pulumi.InputType['ConnectionChangeLogArgs']]] = None,
+            change_log: Optional[pulumi.Input[Union['ConnectionChangeLogArgs', 'ConnectionChangeLogArgsDict']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             direction: Optional[pulumi.Input[str]] = None,
             href: Optional[pulumi.Input[str]] = None,
             is_remote: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            notifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionNotificationArgs']]]]] = None,
-            operation: Optional[pulumi.Input[pulumi.InputType['ConnectionOperationArgs']]] = None,
-            order: Optional[pulumi.Input[pulumi.InputType['ConnectionOrderArgs']]] = None,
-            project: Optional[pulumi.Input[pulumi.InputType['ConnectionProjectArgs']]] = None,
-            redundancy: Optional[pulumi.Input[pulumi.InputType['ConnectionRedundancyArgs']]] = None,
+            notifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectionNotificationArgs', 'ConnectionNotificationArgsDict']]]]] = None,
+            operation: Optional[pulumi.Input[Union['ConnectionOperationArgs', 'ConnectionOperationArgsDict']]] = None,
+            order: Optional[pulumi.Input[Union['ConnectionOrderArgs', 'ConnectionOrderArgsDict']]] = None,
+            project: Optional[pulumi.Input[Union['ConnectionProjectArgs', 'ConnectionProjectArgsDict']]] = None,
+            redundancy: Optional[pulumi.Input[Union['ConnectionRedundancyArgs', 'ConnectionRedundancyArgsDict']]] = None,
             state: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[Union[str, 'ConnectionType']]] = None,
             uuid: Optional[pulumi.Input[str]] = None,
-            z_side: Optional[pulumi.Input[pulumi.InputType['ConnectionZSideArgs']]] = None) -> 'Connection':
+            z_side: Optional[pulumi.Input[Union['ConnectionZSideArgs', 'ConnectionZSideArgsDict']]] = None) -> 'Connection':
         """
         Get an existing Connection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -2185,25 +2185,25 @@ class Connection(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ConnectionASideArgs']] a_side: Requester or Customer side connection configuration object of the multi-segment connection
-        :param pulumi.Input[pulumi.InputType['ConnectionAccountArgs']] account: Customer account information that is associated with this connection
+        :param pulumi.Input[Union['ConnectionASideArgs', 'ConnectionASideArgsDict']] a_side: Requester or Customer side connection configuration object of the multi-segment connection
+        :param pulumi.Input[Union['ConnectionAccountArgs', 'ConnectionAccountArgsDict']] account: Customer account information that is associated with this connection
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] additional_info: Connection additional information
         :param pulumi.Input[int] bandwidth: Connection bandwidth in Mbps
-        :param pulumi.Input[pulumi.InputType['ConnectionChangeLogArgs']] change_log: Captures connection lifecycle change information
+        :param pulumi.Input[Union['ConnectionChangeLogArgs', 'ConnectionChangeLogArgsDict']] change_log: Captures connection lifecycle change information
         :param pulumi.Input[str] description: Customer-provided connection description
         :param pulumi.Input[str] direction: Connection directionality from the requester point of view
         :param pulumi.Input[str] href: Connection URI information
         :param pulumi.Input[bool] is_remote: Connection property derived from access point locations
         :param pulumi.Input[str] name: Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionNotificationArgs']]]] notifications: Preferences for notifications on connection configuration or status changes
-        :param pulumi.Input[pulumi.InputType['ConnectionOperationArgs']] operation: Connection type-specific operational data
-        :param pulumi.Input[pulumi.InputType['ConnectionOrderArgs']] order: Order details
-        :param pulumi.Input[pulumi.InputType['ConnectionProjectArgs']] project: Project information
-        :param pulumi.Input[pulumi.InputType['ConnectionRedundancyArgs']] redundancy: Connection Redundancy Configuration
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionNotificationArgs', 'ConnectionNotificationArgsDict']]]] notifications: Preferences for notifications on connection configuration or status changes
+        :param pulumi.Input[Union['ConnectionOperationArgs', 'ConnectionOperationArgsDict']] operation: Connection type-specific operational data
+        :param pulumi.Input[Union['ConnectionOrderArgs', 'ConnectionOrderArgsDict']] order: Order details
+        :param pulumi.Input[Union['ConnectionProjectArgs', 'ConnectionProjectArgsDict']] project: Project information
+        :param pulumi.Input[Union['ConnectionRedundancyArgs', 'ConnectionRedundancyArgsDict']] redundancy: Connection Redundancy Configuration
         :param pulumi.Input[str] state: Connection overall state
         :param pulumi.Input[Union[str, 'ConnectionType']] type: Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, IA*VC, EC_VC
         :param pulumi.Input[str] uuid: Equinix-assigned connection identifier
-        :param pulumi.Input[pulumi.InputType['ConnectionZSideArgs']] z_side: Destination or Provider side connection configuration object of the multi-segment connection
+        :param pulumi.Input[Union['ConnectionZSideArgs', 'ConnectionZSideArgsDict']] z_side: Destination or Provider side connection configuration object of the multi-segment connection
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
