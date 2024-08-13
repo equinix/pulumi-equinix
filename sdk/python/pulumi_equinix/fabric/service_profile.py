@@ -641,22 +641,22 @@ class ServiceProfile(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_point_type_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileAccessPointTypeConfigArgs']]]]] = None,
+                 access_point_type_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceProfileAccessPointTypeConfigArgs', 'ServiceProfileAccessPointTypeConfigArgsDict']]]]] = None,
                  allowed_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 custom_fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileCustomFieldArgs']]]]] = None,
+                 custom_fields: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceProfileCustomFieldArgs', 'ServiceProfileCustomFieldArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 marketing_info: Optional[pulumi.Input[pulumi.InputType['ServiceProfileMarketingInfoArgs']]] = None,
-                 metros: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileMetroArgs']]]]] = None,
+                 marketing_info: Optional[pulumi.Input[Union['ServiceProfileMarketingInfoArgs', 'ServiceProfileMarketingInfoArgsDict']]] = None,
+                 metros: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceProfileMetroArgs', 'ServiceProfileMetroArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 notifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileNotificationArgs']]]]] = None,
-                 ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfilePortArgs']]]]] = None,
-                 project: Optional[pulumi.Input[pulumi.InputType['ServiceProfileProjectArgs']]] = None,
+                 notifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceProfileNotificationArgs', 'ServiceProfileNotificationArgsDict']]]]] = None,
+                 ports: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceProfilePortArgs', 'ServiceProfilePortArgsDict']]]]] = None,
+                 project: Optional[pulumi.Input[Union['ServiceProfileProjectArgs', 'ServiceProfileProjectArgsDict']]] = None,
                  self_profile: Optional[pulumi.Input[bool]] = None,
                  state: Optional[pulumi.Input[Union[str, 'ProfileState']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[Union[str, 'ProfileType']]] = None,
                  view_point: Optional[pulumi.Input[str]] = None,
-                 virtual_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileVirtualDeviceArgs']]]]] = None,
+                 virtual_devices: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceProfileVirtualDeviceArgs', 'ServiceProfileVirtualDeviceArgsDict']]]]] = None,
                  visibility: Optional[pulumi.Input[Union[str, 'ProfileVisibility']]] = None,
                  __props__=None):
         """
@@ -676,51 +676,51 @@ class ServiceProfile(pulumi.CustomResource):
             name="Name Of Business + Use Case Tag",
             type=equinix.fabric.ProfileType.L2_PROFILE,
             visibility=equinix.fabric.ProfileVisibility.PUBLIC,
-            notifications=[equinix.fabric.ServiceProfileNotificationArgs(
-                emails=["someone@sample.com"],
-                type="BANDWIDTH_ALERT",
-            )],
+            notifications=[{
+                "emails": ["someone@sample.com"],
+                "type": "BANDWIDTH_ALERT",
+            }],
             allowed_emails=[
                 "test@equinix.com",
                 "testagain@equinix.com",
             ],
-            ports=[equinix.fabric.ServiceProfilePortArgs(
-                uuid="c791f8cb-5cc9-cc90-8ce0-306a5c00a4ee",
-                type="XF_PORT",
-            )],
-            access_point_type_configs=[equinix.fabric.ServiceProfileAccessPointTypeConfigArgs(
-                type=equinix.fabric.ProfileAccessPointType.COLO,
-                allow_remote_connections=True,
-                allow_custom_bandwidth=True,
-                allow_bandwidth_auto_approval=False,
-                connection_redundancy_required=False,
-                connection_label="Service Profile Tag1",
-                bandwidth_alert_threshold=10,
-                supported_bandwidths=[
+            ports=[{
+                "uuid": "c791f8cb-5cc9-cc90-8ce0-306a5c00a4ee",
+                "type": "XF_PORT",
+            }],
+            access_point_type_configs=[{
+                "type": equinix.fabric.ProfileAccessPointType.COLO,
+                "allow_remote_connections": True,
+                "allow_custom_bandwidth": True,
+                "allow_bandwidth_auto_approval": False,
+                "connection_redundancy_required": False,
+                "connection_label": "Service Profile Tag1",
+                "bandwidth_alert_threshold": 10,
+                "supported_bandwidths": [
                     100,
                     500,
                 ],
-            )])
+            }])
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileAccessPointTypeConfigArgs']]]] access_point_type_configs: Access point config information
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceProfileAccessPointTypeConfigArgs', 'ServiceProfileAccessPointTypeConfigArgsDict']]]] access_point_type_configs: Access point config information
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_emails: Array of contact emails
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileCustomFieldArgs']]]] custom_fields: Custom Fields
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceProfileCustomFieldArgs', 'ServiceProfileCustomFieldArgsDict']]]] custom_fields: Custom Fields
         :param pulumi.Input[str] description: User-provided service description
-        :param pulumi.Input[pulumi.InputType['ServiceProfileMarketingInfoArgs']] marketing_info: Marketing Info
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileMetroArgs']]]] metros: Access point config information
+        :param pulumi.Input[Union['ServiceProfileMarketingInfoArgs', 'ServiceProfileMarketingInfoArgsDict']] marketing_info: Marketing Info
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceProfileMetroArgs', 'ServiceProfileMetroArgsDict']]]] metros: Access point config information
         :param pulumi.Input[str] name: Customer-assigned service profile name
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileNotificationArgs']]]] notifications: Preferences for notifications on connection configuration or status changes
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfilePortArgs']]]] ports: Ports
-        :param pulumi.Input[pulumi.InputType['ServiceProfileProjectArgs']] project: Project information
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceProfileNotificationArgs', 'ServiceProfileNotificationArgsDict']]]] notifications: Preferences for notifications on connection configuration or status changes
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceProfilePortArgs', 'ServiceProfilePortArgsDict']]]] ports: Ports
+        :param pulumi.Input[Union['ServiceProfileProjectArgs', 'ServiceProfileProjectArgsDict']] project: Project information
         :param pulumi.Input[bool] self_profile: Self Profile indicating if the profile is created for customer's self use
         :param pulumi.Input[Union[str, 'ProfileState']] state: Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags attached to the connection
         :param pulumi.Input[Union[str, 'ProfileType']] type: Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
         :param pulumi.Input[str] view_point: Flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileVirtualDeviceArgs']]]] virtual_devices: Virtual Devices
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceProfileVirtualDeviceArgs', 'ServiceProfileVirtualDeviceArgsDict']]]] virtual_devices: Virtual Devices
         :param pulumi.Input[Union[str, 'ProfileVisibility']] visibility: Service profile visibility - PUBLIC, PRIVATE
         """
         ...
@@ -746,31 +746,31 @@ class ServiceProfile(pulumi.CustomResource):
             name="Name Of Business + Use Case Tag",
             type=equinix.fabric.ProfileType.L2_PROFILE,
             visibility=equinix.fabric.ProfileVisibility.PUBLIC,
-            notifications=[equinix.fabric.ServiceProfileNotificationArgs(
-                emails=["someone@sample.com"],
-                type="BANDWIDTH_ALERT",
-            )],
+            notifications=[{
+                "emails": ["someone@sample.com"],
+                "type": "BANDWIDTH_ALERT",
+            }],
             allowed_emails=[
                 "test@equinix.com",
                 "testagain@equinix.com",
             ],
-            ports=[equinix.fabric.ServiceProfilePortArgs(
-                uuid="c791f8cb-5cc9-cc90-8ce0-306a5c00a4ee",
-                type="XF_PORT",
-            )],
-            access_point_type_configs=[equinix.fabric.ServiceProfileAccessPointTypeConfigArgs(
-                type=equinix.fabric.ProfileAccessPointType.COLO,
-                allow_remote_connections=True,
-                allow_custom_bandwidth=True,
-                allow_bandwidth_auto_approval=False,
-                connection_redundancy_required=False,
-                connection_label="Service Profile Tag1",
-                bandwidth_alert_threshold=10,
-                supported_bandwidths=[
+            ports=[{
+                "uuid": "c791f8cb-5cc9-cc90-8ce0-306a5c00a4ee",
+                "type": "XF_PORT",
+            }],
+            access_point_type_configs=[{
+                "type": equinix.fabric.ProfileAccessPointType.COLO,
+                "allow_remote_connections": True,
+                "allow_custom_bandwidth": True,
+                "allow_bandwidth_auto_approval": False,
+                "connection_redundancy_required": False,
+                "connection_label": "Service Profile Tag1",
+                "bandwidth_alert_threshold": 10,
+                "supported_bandwidths": [
                     100,
                     500,
                 ],
-            )])
+            }])
         ```
 
         :param str resource_name: The name of the resource.
@@ -788,22 +788,22 @@ class ServiceProfile(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_point_type_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileAccessPointTypeConfigArgs']]]]] = None,
+                 access_point_type_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceProfileAccessPointTypeConfigArgs', 'ServiceProfileAccessPointTypeConfigArgsDict']]]]] = None,
                  allowed_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 custom_fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileCustomFieldArgs']]]]] = None,
+                 custom_fields: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceProfileCustomFieldArgs', 'ServiceProfileCustomFieldArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 marketing_info: Optional[pulumi.Input[pulumi.InputType['ServiceProfileMarketingInfoArgs']]] = None,
-                 metros: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileMetroArgs']]]]] = None,
+                 marketing_info: Optional[pulumi.Input[Union['ServiceProfileMarketingInfoArgs', 'ServiceProfileMarketingInfoArgsDict']]] = None,
+                 metros: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceProfileMetroArgs', 'ServiceProfileMetroArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 notifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileNotificationArgs']]]]] = None,
-                 ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfilePortArgs']]]]] = None,
-                 project: Optional[pulumi.Input[pulumi.InputType['ServiceProfileProjectArgs']]] = None,
+                 notifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceProfileNotificationArgs', 'ServiceProfileNotificationArgsDict']]]]] = None,
+                 ports: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceProfilePortArgs', 'ServiceProfilePortArgsDict']]]]] = None,
+                 project: Optional[pulumi.Input[Union['ServiceProfileProjectArgs', 'ServiceProfileProjectArgsDict']]] = None,
                  self_profile: Optional[pulumi.Input[bool]] = None,
                  state: Optional[pulumi.Input[Union[str, 'ProfileState']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[Union[str, 'ProfileType']]] = None,
                  view_point: Optional[pulumi.Input[str]] = None,
-                 virtual_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileVirtualDeviceArgs']]]]] = None,
+                 virtual_devices: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceProfileVirtualDeviceArgs', 'ServiceProfileVirtualDeviceArgsDict']]]]] = None,
                  visibility: Optional[pulumi.Input[Union[str, 'ProfileVisibility']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -849,26 +849,26 @@ class ServiceProfile(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_point_type_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileAccessPointTypeConfigArgs']]]]] = None,
-            account: Optional[pulumi.Input[pulumi.InputType['ServiceProfileAccountArgs']]] = None,
+            access_point_type_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceProfileAccessPointTypeConfigArgs', 'ServiceProfileAccessPointTypeConfigArgsDict']]]]] = None,
+            account: Optional[pulumi.Input[Union['ServiceProfileAccountArgs', 'ServiceProfileAccountArgsDict']]] = None,
             allowed_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            change_log: Optional[pulumi.Input[pulumi.InputType['ServiceProfileChangeLogArgs']]] = None,
-            custom_fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileCustomFieldArgs']]]]] = None,
+            change_log: Optional[pulumi.Input[Union['ServiceProfileChangeLogArgs', 'ServiceProfileChangeLogArgsDict']]] = None,
+            custom_fields: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceProfileCustomFieldArgs', 'ServiceProfileCustomFieldArgsDict']]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             href: Optional[pulumi.Input[str]] = None,
-            marketing_info: Optional[pulumi.Input[pulumi.InputType['ServiceProfileMarketingInfoArgs']]] = None,
-            metros: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileMetroArgs']]]]] = None,
+            marketing_info: Optional[pulumi.Input[Union['ServiceProfileMarketingInfoArgs', 'ServiceProfileMarketingInfoArgsDict']]] = None,
+            metros: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceProfileMetroArgs', 'ServiceProfileMetroArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            notifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileNotificationArgs']]]]] = None,
-            ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfilePortArgs']]]]] = None,
-            project: Optional[pulumi.Input[pulumi.InputType['ServiceProfileProjectArgs']]] = None,
+            notifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceProfileNotificationArgs', 'ServiceProfileNotificationArgsDict']]]]] = None,
+            ports: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceProfilePortArgs', 'ServiceProfilePortArgsDict']]]]] = None,
+            project: Optional[pulumi.Input[Union['ServiceProfileProjectArgs', 'ServiceProfileProjectArgsDict']]] = None,
             self_profile: Optional[pulumi.Input[bool]] = None,
             state: Optional[pulumi.Input[Union[str, 'ProfileState']]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             type: Optional[pulumi.Input[Union[str, 'ProfileType']]] = None,
             uuid: Optional[pulumi.Input[str]] = None,
             view_point: Optional[pulumi.Input[str]] = None,
-            virtual_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileVirtualDeviceArgs']]]]] = None,
+            virtual_devices: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceProfileVirtualDeviceArgs', 'ServiceProfileVirtualDeviceArgsDict']]]]] = None,
             visibility: Optional[pulumi.Input[Union[str, 'ProfileVisibility']]] = None) -> 'ServiceProfile':
         """
         Get an existing ServiceProfile resource's state with the given name, id, and optional extra
@@ -877,26 +877,26 @@ class ServiceProfile(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileAccessPointTypeConfigArgs']]]] access_point_type_configs: Access point config information
-        :param pulumi.Input[pulumi.InputType['ServiceProfileAccountArgs']] account: Service Profile Owner Account Information
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceProfileAccessPointTypeConfigArgs', 'ServiceProfileAccessPointTypeConfigArgsDict']]]] access_point_type_configs: Access point config information
+        :param pulumi.Input[Union['ServiceProfileAccountArgs', 'ServiceProfileAccountArgsDict']] account: Service Profile Owner Account Information
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_emails: Array of contact emails
-        :param pulumi.Input[pulumi.InputType['ServiceProfileChangeLogArgs']] change_log: Captures connection lifecycle change information
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileCustomFieldArgs']]]] custom_fields: Custom Fields
+        :param pulumi.Input[Union['ServiceProfileChangeLogArgs', 'ServiceProfileChangeLogArgsDict']] change_log: Captures connection lifecycle change information
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceProfileCustomFieldArgs', 'ServiceProfileCustomFieldArgsDict']]]] custom_fields: Custom Fields
         :param pulumi.Input[str] description: User-provided service description
         :param pulumi.Input[str] href: Service Profile URI response attribute
-        :param pulumi.Input[pulumi.InputType['ServiceProfileMarketingInfoArgs']] marketing_info: Marketing Info
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileMetroArgs']]]] metros: Access point config information
+        :param pulumi.Input[Union['ServiceProfileMarketingInfoArgs', 'ServiceProfileMarketingInfoArgsDict']] marketing_info: Marketing Info
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceProfileMetroArgs', 'ServiceProfileMetroArgsDict']]]] metros: Access point config information
         :param pulumi.Input[str] name: Customer-assigned service profile name
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileNotificationArgs']]]] notifications: Preferences for notifications on connection configuration or status changes
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfilePortArgs']]]] ports: Ports
-        :param pulumi.Input[pulumi.InputType['ServiceProfileProjectArgs']] project: Project information
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceProfileNotificationArgs', 'ServiceProfileNotificationArgsDict']]]] notifications: Preferences for notifications on connection configuration or status changes
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceProfilePortArgs', 'ServiceProfilePortArgsDict']]]] ports: Ports
+        :param pulumi.Input[Union['ServiceProfileProjectArgs', 'ServiceProfileProjectArgsDict']] project: Project information
         :param pulumi.Input[bool] self_profile: Self Profile indicating if the profile is created for customer's self use
         :param pulumi.Input[Union[str, 'ProfileState']] state: Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags attached to the connection
         :param pulumi.Input[Union[str, 'ProfileType']] type: Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
         :param pulumi.Input[str] uuid: Equinix assigned service profile identifier
         :param pulumi.Input[str] view_point: Flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileVirtualDeviceArgs']]]] virtual_devices: Virtual Devices
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceProfileVirtualDeviceArgs', 'ServiceProfileVirtualDeviceArgsDict']]]] virtual_devices: Virtual Devices
         :param pulumi.Input[Union[str, 'ProfileVisibility']] visibility: Service profile visibility - PUBLIC, PRIVATE
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

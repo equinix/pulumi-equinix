@@ -44,14 +44,14 @@ public final class ConnectionZSideAccessPointArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Authentication key for provider based connections or Metal NIMF connections
+     * Authentication key for provider based connections or Metal-Fabric Integration connections
      * 
      */
     @Import(name="authenticationKey")
     private @Nullable Output<String> authenticationKey;
 
     /**
-     * @return Authentication key for provider based connections or Metal NIMF connections
+     * @return Authentication key for provider based connections or Metal-Fabric Integration connections
      * 
      */
     public Optional<Output<String>> authenticationKey() {
@@ -321,7 +321,7 @@ public final class ConnectionZSideAccessPointArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param authenticationKey Authentication key for provider based connections or Metal NIMF connections
+         * @param authenticationKey Authentication key for provider based connections or Metal-Fabric Integration connections
          * 
          * @return builder
          * 
@@ -332,7 +332,7 @@ public final class ConnectionZSideAccessPointArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param authenticationKey Authentication key for provider based connections or Metal NIMF connections
+         * @param authenticationKey Authentication key for provider based connections or Metal-Fabric Integration connections
          * 
          * @return builder
          * 

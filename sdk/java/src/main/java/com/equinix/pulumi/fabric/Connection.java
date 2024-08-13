@@ -56,20 +56,20 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var fcr2Azure = new Connection("fcr2Azure", ConnectionArgs.builder()
  *             .name("ConnectionName")
  *             .type("IP_VC")
  *             .notifications(ConnectionNotificationArgs.builder()
  *                 .type("ALL")
  *                 .emails(                
- *                     "example{@literal @}equinix.com",
- *                     "test1{@literal @}equinix.com")
+ *                     "example}{@literal @}{@code equinix.com",
+ *                     "test1}{@literal @}{@code equinix.com")
  *                 .build())
  *             .bandwidth(50)
  *             .order(ConnectionOrderArgs.builder()
@@ -99,8 +99,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * ### example fcr to metal
@@ -127,20 +127,20 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var fcr2Metal = new Connection("fcr2Metal", ConnectionArgs.builder()
  *             .name("ConnectionName")
  *             .type("IP_VC")
  *             .notifications(ConnectionNotificationArgs.builder()
  *                 .type("ALL")
  *                 .emails(                
- *                     "example{@literal @}equinix.com",
- *                     "test1{@literal @}equinix.com")
+ *                     "example}{@literal @}{@code equinix.com",
+ *                     "test1}{@literal @}{@code equinix.com")
  *                 .build())
  *             .bandwidth(50)
  *             .order(ConnectionOrderArgs.builder()
@@ -162,8 +162,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * ### example fcr to network
@@ -191,20 +191,20 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var fcr2Network = new Connection("fcr2Network", ConnectionArgs.builder()
  *             .name("ConnectionName")
  *             .type("IPWAN_VC")
  *             .notifications(ConnectionNotificationArgs.builder()
  *                 .type("ALL")
  *                 .emails(                
- *                     "example{@literal @}equinix.com",
- *                     "test1{@literal @}equinix.com")
+ *                     "example}{@literal @}{@code equinix.com",
+ *                     "test1}{@literal @}{@code equinix.com")
  *                 .build())
  *             .bandwidth(50)
  *             .order(ConnectionOrderArgs.builder()
@@ -228,8 +228,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * ### example fcr to port
@@ -259,20 +259,20 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var fcr2Port = new Connection("fcr2Port", ConnectionArgs.builder()
  *             .name("ConnectionName")
  *             .type("IP_VC")
  *             .notifications(ConnectionNotificationArgs.builder()
  *                 .type("ALL")
  *                 .emails(                
- *                     "example{@literal @}equinix.com",
- *                     "test1{@literal @}equinix.com")
+ *                     "example}{@literal @}{@code equinix.com",
+ *                     "test1}{@literal @}{@code equinix.com")
  *                 .build())
  *             .bandwidth(50)
  *             .order(ConnectionOrderArgs.builder()
@@ -303,8 +303,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * ### example metal to aws
@@ -332,20 +332,20 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var metal2Aws = new Connection("metal2Aws", ConnectionArgs.builder()
  *             .name("ConnectionName")
  *             .type("EVPLAN_VC")
  *             .notifications(ConnectionNotificationArgs.builder()
  *                 .type("ALL")
  *                 .emails(                
- *                     "example{@literal @}equinix.com",
- *                     "test1{@literal @}equinix.com")
+ *                     "example}{@literal @}{@code equinix.com",
+ *                     "test1}{@literal @}{@code equinix.com")
  *                 .build())
  *             .bandwidth(50)
  *             .order(ConnectionOrderArgs.builder()
@@ -373,8 +373,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * ### example port to aws
@@ -405,20 +405,20 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var port2Aws = new Connection("port2Aws", ConnectionArgs.builder()
  *             .name("ConnectionName")
  *             .type("EVPL_VC")
  *             .notifications(ConnectionNotificationArgs.builder()
  *                 .type("ALL")
  *                 .emails(                
- *                     "example{@literal @}equinix.com",
- *                     "test1{@literal @}equinix.com")
+ *                     "example}{@literal @}{@code equinix.com",
+ *                     "test1}{@literal @}{@code equinix.com")
  *                 .build())
  *             .bandwidth(50)
  *             .redundancy(ConnectionRedundancyArgs.builder()
@@ -465,8 +465,8 @@ import javax.annotation.Nullable;
  *                 ))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * ### example port to network eplan
@@ -494,20 +494,20 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var eplan = new Connection("eplan", ConnectionArgs.builder()
  *             .name("ConnectionName")
  *             .type("EPLAN_VC")
  *             .notifications(ConnectionNotificationArgs.builder()
  *                 .type("ALL")
  *                 .emails(                
- *                     "example{@literal @}equinix.com",
- *                     "test1{@literal @}equinix.com")
+ *                     "example}{@literal @}{@code equinix.com",
+ *                     "test1}{@literal @}{@code equinix.com")
  *                 .build())
  *             .bandwidth(50)
  *             .order(ConnectionOrderArgs.builder()
@@ -531,8 +531,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * ### example port to network evplan
@@ -561,20 +561,20 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var evplan = new Connection("evplan", ConnectionArgs.builder()
  *             .name("ConnectionName")
  *             .type("EVPLAN_VC")
  *             .notifications(ConnectionNotificationArgs.builder()
  *                 .type("ALL")
  *                 .emails(                
- *                     "example{@literal @}equinix.com",
- *                     "test1{@literal @}equinix.com")
+ *                     "example}{@literal @}{@code equinix.com",
+ *                     "test1}{@literal @}{@code equinix.com")
  *                 .build())
  *             .bandwidth(50)
  *             .order(ConnectionOrderArgs.builder()
@@ -602,8 +602,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * ### example port to port
@@ -634,20 +634,20 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var port2Port = new Connection("port2Port", ConnectionArgs.builder()
  *             .name("ConnectionName")
  *             .type("EVPL_VC")
  *             .notifications(ConnectionNotificationArgs.builder()
  *                 .type("ALL")
  *                 .emails(                
- *                     "example{@literal @}equinix.com",
- *                     "test1{@literal @}equinix.com")
+ *                     "example}{@literal @}{@code equinix.com",
+ *                     "test1}{@literal @}{@code equinix.com")
  *                 .build())
  *             .bandwidth(50)
  *             .order(ConnectionOrderArgs.builder()
@@ -682,8 +682,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * ### example port to port access epl
@@ -713,20 +713,20 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var accessEplVc = new Connection("accessEplVc", ConnectionArgs.builder()
  *             .name("ConnectionName")
  *             .type("ACCESS_EPL_VC")
  *             .notifications(ConnectionNotificationArgs.builder()
  *                 .type("ALL")
  *                 .emails(                
- *                     "example{@literal @}equinix.com",
- *                     "test1{@literal @}equinix.com")
+ *                     "example}{@literal @}{@code equinix.com",
+ *                     "test1}{@literal @}{@code equinix.com")
  *                 .build())
  *             .bandwidth(50)
  *             .order(ConnectionOrderArgs.builder()
@@ -757,8 +757,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * ### example port to port epl
@@ -787,20 +787,20 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var epl = new Connection("epl", ConnectionArgs.builder()
  *             .name("ConnectionName")
  *             .type("EPL_VC")
  *             .notifications(ConnectionNotificationArgs.builder()
  *                 .type("ALL")
  *                 .emails(                
- *                     "example{@literal @}equinix.com",
- *                     "test1{@literal @}equinix.com")
+ *                     "example}{@literal @}{@code equinix.com",
+ *                     "test1}{@literal @}{@code equinix.com")
  *                 .build())
  *             .bandwidth(50)
  *             .order(ConnectionOrderArgs.builder()
@@ -827,8 +827,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * ### example port to vd
@@ -859,20 +859,20 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var vd2Port = new Connection("vd2Port", ConnectionArgs.builder()
  *             .name("ConnectionName")
  *             .type("EVPL_VC")
  *             .notifications(ConnectionNotificationArgs.builder()
  *                 .type("ALL")
  *                 .emails(                
- *                     "example{@literal @}equinix.com",
- *                     "test1{@literal @}equinix.com")
+ *                     "example}{@literal @}{@code equinix.com",
+ *                     "test1}{@literal @}{@code equinix.com")
  *                 .build())
  *             .bandwidth(50)
  *             .order(ConnectionOrderArgs.builder()
@@ -908,8 +908,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * ### example token to aws
@@ -937,20 +937,20 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var token2Aws = new Connection("token2Aws", ConnectionArgs.builder()
  *             .name("ConnectionName")
  *             .type("EVPL_VC")
  *             .notifications(ConnectionNotificationArgs.builder()
  *                 .type("ALL")
  *                 .emails(                
- *                     "example{@literal @}equinix.com",
- *                     "test1{@literal @}equinix.com")
+ *                     "example}{@literal @}{@code equinix.com",
+ *                     "test1}{@literal @}{@code equinix.com")
  *                 .build())
  *             .bandwidth(50)
  *             .order(ConnectionOrderArgs.builder()
@@ -977,8 +977,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * ### example vd to azure
@@ -1008,20 +1008,20 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var vd2Azure = new Connection("vd2Azure", ConnectionArgs.builder()
  *             .name("ConnectionName")
  *             .type("EVPL_VC")
  *             .notifications(ConnectionNotificationArgs.builder()
  *                 .type("ALL")
  *                 .emails(                
- *                     "example{@literal @}equinix.com",
- *                     "test1{@literal @}equinix.com")
+ *                     "example}{@literal @}{@code equinix.com",
+ *                     "test1}{@literal @}{@code equinix.com")
  *                 .build())
  *             .bandwidth(50)
  *             .order(ConnectionOrderArgs.builder()
@@ -1056,8 +1056,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * ### example vd to azure redundant
@@ -1088,12 +1088,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var vd2AzurePrimary = new Connection("vd2AzurePrimary", ConnectionArgs.builder()
  *             .name("ConnectionName")
  *             .type("EVPL_VC")
@@ -1103,8 +1103,8 @@ import javax.annotation.Nullable;
  *             .notifications(ConnectionNotificationArgs.builder()
  *                 .type("ALL")
  *                 .emails(                
- *                     "example{@literal @}equinix.com",
- *                     "test1{@literal @}equinix.com")
+ *                     "example}{@literal @}{@code equinix.com",
+ *                     "test1}{@literal @}{@code equinix.com")
  *                 .build())
  *             .bandwidth(50)
  *             .order(ConnectionOrderArgs.builder()
@@ -1149,8 +1149,8 @@ import javax.annotation.Nullable;
  *             .notifications(ConnectionNotificationArgs.builder()
  *                 .type("ALL")
  *                 .emails(                
- *                     "example{@literal @}equinix.com",
- *                     "test1{@literal @}equinix.com")
+ *                     "example}{@literal @}{@code equinix.com",
+ *                     "test1}{@literal @}{@code equinix.com")
  *                 .build())
  *             .bandwidth(50)
  *             .order(ConnectionOrderArgs.builder()
@@ -1185,8 +1185,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * ### example vd to network
@@ -1215,20 +1215,20 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var vd2Network = new Connection("vd2Network", ConnectionArgs.builder()
  *             .name("ConnectionName")
  *             .type("EVPLAN_VC")
  *             .notifications(ConnectionNotificationArgs.builder()
  *                 .type("ALL")
  *                 .emails(                
- *                     "example{@literal @}equinix.com",
- *                     "test1{@literal @}equinix.com")
+ *                     "example}{@literal @}{@code equinix.com",
+ *                     "test1}{@literal @}{@code equinix.com")
  *                 .build())
  *             .bandwidth(50)
  *             .order(ConnectionOrderArgs.builder()
@@ -1257,8 +1257,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * ### example vd to token
@@ -1286,20 +1286,20 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var vd2Token = new Connection("vd2Token", ConnectionArgs.builder()
  *             .name("ConnectionName")
  *             .type("EVPL_VC")
  *             .notifications(ConnectionNotificationArgs.builder()
  *                 .type("ALL")
  *                 .emails(                
- *                     "example{@literal @}equinix.com",
- *                     "test1{@literal @}equinix.com")
+ *                     "example}{@literal @}{@code equinix.com",
+ *                     "test1}{@literal @}{@code equinix.com")
  *                 .build())
  *             .bandwidth(50)
  *             .order(ConnectionOrderArgs.builder()
@@ -1325,8 +1325,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -1604,7 +1604,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Connection(String name) {
+    public Connection(java.lang.String name) {
         this(name, ConnectionArgs.Empty);
     }
     /**
@@ -1612,7 +1612,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Connection(String name, ConnectionArgs args) {
+    public Connection(java.lang.String name, ConnectionArgs args) {
         this(name, args, null);
     }
     /**
@@ -1621,12 +1621,12 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Connection(String name, ConnectionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("equinix:fabric/connection:Connection", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Connection(java.lang.String name, ConnectionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("equinix:fabric/connection:Connection", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Connection(String name, Output<String> id, @Nullable ConnectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("equinix:fabric/connection:Connection", name, state, makeResourceOptions(options, id));
+    private Connection(java.lang.String name, Output<java.lang.String> id, @Nullable ConnectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("equinix:fabric/connection:Connection", name, state, makeResourceOptions(options, id), false);
     }
 
     private static ConnectionArgs makeArgs(ConnectionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -1636,7 +1636,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
         return args == null ? ConnectionArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -1652,7 +1652,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Connection get(String name, Output<String> id, @Nullable ConnectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Connection get(java.lang.String name, Output<java.lang.String> id, @Nullable ConnectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Connection(name, id, state, options);
     }
 }

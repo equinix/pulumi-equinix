@@ -296,7 +296,7 @@ class SpotMarketRequest(pulumi.CustomResource):
                  devices_max: Optional[pulumi.Input[int]] = None,
                  devices_min: Optional[pulumi.Input[int]] = None,
                  facilities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 instance_parameters: Optional[pulumi.Input[pulumi.InputType['SpotMarketRequestInstanceParametersArgs']]] = None,
+                 instance_parameters: Optional[pulumi.Input[Union['SpotMarketRequestInstanceParametersArgs', 'SpotMarketRequestInstanceParametersArgsDict']]] = None,
                  max_bid_price: Optional[pulumi.Input[float]] = None,
                  metro: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
@@ -316,12 +316,12 @@ class SpotMarketRequest(pulumi.CustomResource):
             metro="ny",
             devices_min=1,
             devices_max=1,
-            instance_parameters=equinix.metal.SpotMarketRequestInstanceParametersArgs(
-                hostname="testspot",
-                billing_cycle="hourly",
-                operating_system="ubuntu_20_04",
-                plan="c3.small.x86",
-            ))
+            instance_parameters={
+                "hostname": "testspot",
+                "billing_cycle": "hourly",
+                "operating_system": "ubuntu_20_04",
+                "plan": "c3.small.x86",
+            })
         ```
 
         ## Import
@@ -337,7 +337,7 @@ class SpotMarketRequest(pulumi.CustomResource):
         :param pulumi.Input[int] devices_max: Maximum number devices to be created.
         :param pulumi.Input[int] devices_min: Miniumum number devices to be created.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] facilities: Facility IDs where devices should be created. Use metro instead; read the facility to metro migration guide
-        :param pulumi.Input[pulumi.InputType['SpotMarketRequestInstanceParametersArgs']] instance_parameters: Key/Value pairs of parameters for devices provisioned from this request. Valid keys are: `billing_cycle`, `plan`, `operating_system`, `hostname`, `termination_time`, `always_pxe`, `description`, `features`, `locked`, `project_ssh_keys`, `user_ssh_keys`, `userdata`, `customdata`, `ipxe_script_url`, `tags`. You can find each parameter description in metal.Device docs.
+        :param pulumi.Input[Union['SpotMarketRequestInstanceParametersArgs', 'SpotMarketRequestInstanceParametersArgsDict']] instance_parameters: Key/Value pairs of parameters for devices provisioned from this request. Valid keys are: `billing_cycle`, `plan`, `operating_system`, `hostname`, `termination_time`, `always_pxe`, `description`, `features`, `locked`, `project_ssh_keys`, `user_ssh_keys`, `userdata`, `customdata`, `ipxe_script_url`, `tags`. You can find each parameter description in metal.Device docs.
         :param pulumi.Input[float] max_bid_price: Maximum price user is willing to pay per hour per device.
         :param pulumi.Input[str] metro: Metro where devices should be created.
         :param pulumi.Input[str] project_id: Project ID.
@@ -363,12 +363,12 @@ class SpotMarketRequest(pulumi.CustomResource):
             metro="ny",
             devices_min=1,
             devices_max=1,
-            instance_parameters=equinix.metal.SpotMarketRequestInstanceParametersArgs(
-                hostname="testspot",
-                billing_cycle="hourly",
-                operating_system="ubuntu_20_04",
-                plan="c3.small.x86",
-            ))
+            instance_parameters={
+                "hostname": "testspot",
+                "billing_cycle": "hourly",
+                "operating_system": "ubuntu_20_04",
+                "plan": "c3.small.x86",
+            })
         ```
 
         ## Import
@@ -397,7 +397,7 @@ class SpotMarketRequest(pulumi.CustomResource):
                  devices_max: Optional[pulumi.Input[int]] = None,
                  devices_min: Optional[pulumi.Input[int]] = None,
                  facilities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 instance_parameters: Optional[pulumi.Input[pulumi.InputType['SpotMarketRequestInstanceParametersArgs']]] = None,
+                 instance_parameters: Optional[pulumi.Input[Union['SpotMarketRequestInstanceParametersArgs', 'SpotMarketRequestInstanceParametersArgsDict']]] = None,
                  max_bid_price: Optional[pulumi.Input[float]] = None,
                  metro: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
@@ -442,7 +442,7 @@ class SpotMarketRequest(pulumi.CustomResource):
             devices_max: Optional[pulumi.Input[int]] = None,
             devices_min: Optional[pulumi.Input[int]] = None,
             facilities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            instance_parameters: Optional[pulumi.Input[pulumi.InputType['SpotMarketRequestInstanceParametersArgs']]] = None,
+            instance_parameters: Optional[pulumi.Input[Union['SpotMarketRequestInstanceParametersArgs', 'SpotMarketRequestInstanceParametersArgsDict']]] = None,
             max_bid_price: Optional[pulumi.Input[float]] = None,
             metro: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
@@ -457,7 +457,7 @@ class SpotMarketRequest(pulumi.CustomResource):
         :param pulumi.Input[int] devices_max: Maximum number devices to be created.
         :param pulumi.Input[int] devices_min: Miniumum number devices to be created.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] facilities: Facility IDs where devices should be created. Use metro instead; read the facility to metro migration guide
-        :param pulumi.Input[pulumi.InputType['SpotMarketRequestInstanceParametersArgs']] instance_parameters: Key/Value pairs of parameters for devices provisioned from this request. Valid keys are: `billing_cycle`, `plan`, `operating_system`, `hostname`, `termination_time`, `always_pxe`, `description`, `features`, `locked`, `project_ssh_keys`, `user_ssh_keys`, `userdata`, `customdata`, `ipxe_script_url`, `tags`. You can find each parameter description in metal.Device docs.
+        :param pulumi.Input[Union['SpotMarketRequestInstanceParametersArgs', 'SpotMarketRequestInstanceParametersArgsDict']] instance_parameters: Key/Value pairs of parameters for devices provisioned from this request. Valid keys are: `billing_cycle`, `plan`, `operating_system`, `hostname`, `termination_time`, `always_pxe`, `description`, `features`, `locked`, `project_ssh_keys`, `user_ssh_keys`, `userdata`, `customdata`, `ipxe_script_url`, `tags`. You can find each parameter description in metal.Device docs.
         :param pulumi.Input[float] max_bid_price: Maximum price user is willing to pay per hour per device.
         :param pulumi.Input[str] metro: Metro where devices should be created.
         :param pulumi.Input[str] project_id: Project ID.
