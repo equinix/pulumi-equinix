@@ -660,7 +660,7 @@ class ConnectionASideAccessPointArgs:
                  virtual_device: Optional[pulumi.Input['ConnectionASideAccessPointVirtualDeviceArgs']] = None):
         """
         :param pulumi.Input['ConnectionASideAccessPointAccountArgs'] account: Account
-        :param pulumi.Input[str] authentication_key: Authentication key for provider based connections or Metal NIMF connections
+        :param pulumi.Input[str] authentication_key: Authentication key for provider based connections or Metal-Fabric Integration connections
         :param pulumi.Input['ConnectionASideAccessPointGatewayArgs'] gateway: **Deprecated** `gateway` Use `router` attribute instead
         :param pulumi.Input['ConnectionASideAccessPointInterfaceArgs'] interface: Virtual device interface
         :param pulumi.Input['ConnectionASideAccessPointLinkProtocolArgs'] link_protocol: Connection link protocol
@@ -725,7 +725,7 @@ class ConnectionASideAccessPointArgs:
     @pulumi.getter(name="authenticationKey")
     def authentication_key(self) -> Optional[pulumi.Input[str]]:
         """
-        Authentication key for provider based connections or Metal NIMF connections
+        Authentication key for provider based connections or Metal-Fabric Integration connections
         """
         return pulumi.get(self, "authentication_key")
 
@@ -2595,7 +2595,7 @@ class ConnectionZSideAccessPointArgs:
                  virtual_device: Optional[pulumi.Input['ConnectionZSideAccessPointVirtualDeviceArgs']] = None):
         """
         :param pulumi.Input['ConnectionZSideAccessPointAccountArgs'] account: Account
-        :param pulumi.Input[str] authentication_key: Authentication key for provider based connections or Metal NIMF connections
+        :param pulumi.Input[str] authentication_key: Authentication key for provider based connections or Metal-Fabric Integration connections
         :param pulumi.Input['ConnectionZSideAccessPointGatewayArgs'] gateway: **Deprecated** `gateway` Use `router` attribute instead
         :param pulumi.Input['ConnectionZSideAccessPointInterfaceArgs'] interface: Virtual device interface
         :param pulumi.Input['ConnectionZSideAccessPointLinkProtocolArgs'] link_protocol: Connection link protocol
@@ -2660,7 +2660,7 @@ class ConnectionZSideAccessPointArgs:
     @pulumi.getter(name="authenticationKey")
     def authentication_key(self) -> Optional[pulumi.Input[str]]:
         """
-        Authentication key for provider based connections or Metal NIMF connections
+        Authentication key for provider based connections or Metal-Fabric Integration connections
         """
         return pulumi.get(self, "authentication_key")
 

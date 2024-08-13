@@ -508,15 +508,15 @@ class CloudRouter(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account: Optional[pulumi.Input[pulumi.InputType['CloudRouterAccountArgs']]] = None,
+                 account: Optional[pulumi.Input[Union['CloudRouterAccountArgs', 'CloudRouterAccountArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  href: Optional[pulumi.Input[str]] = None,
-                 location: Optional[pulumi.Input[pulumi.InputType['CloudRouterLocationArgs']]] = None,
+                 location: Optional[pulumi.Input[Union['CloudRouterLocationArgs', 'CloudRouterLocationArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 notifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CloudRouterNotificationArgs']]]]] = None,
-                 order: Optional[pulumi.Input[pulumi.InputType['CloudRouterOrderArgs']]] = None,
-                 package: Optional[pulumi.Input[pulumi.InputType['CloudRouterPackageArgs']]] = None,
-                 project: Optional[pulumi.Input[pulumi.InputType['CloudRouterProjectArgs']]] = None,
+                 notifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CloudRouterNotificationArgs', 'CloudRouterNotificationArgsDict']]]]] = None,
+                 order: Optional[pulumi.Input[Union['CloudRouterOrderArgs', 'CloudRouterOrderArgsDict']]] = None,
+                 package: Optional[pulumi.Input[Union['CloudRouterPackageArgs', 'CloudRouterPackageArgsDict']]] = None,
+                 project: Optional[pulumi.Input[Union['CloudRouterProjectArgs', 'CloudRouterProjectArgsDict']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  uuid: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -535,41 +535,41 @@ class CloudRouter(pulumi.CustomResource):
         new_cloud_router = equinix.fabric.CloudRouter("newCloudRouter",
             name="Router-SV",
             type="XF_ROUTER",
-            notifications=[equinix.fabric.CloudRouterNotificationArgs(
-                type="ALL",
-                emails=[
+            notifications=[{
+                "type": "ALL",
+                "emails": [
                     "example@equinix.com",
                     "test1@equinix.com",
                 ],
-            )],
-            order=equinix.fabric.CloudRouterOrderArgs(
-                purchase_order_number="1-323292",
-            ),
-            location=equinix.fabric.CloudRouterLocationArgs(
-                metro_code="SV",
-            ),
-            package=equinix.fabric.CloudRouterPackageArgs(
-                code="STANDARD",
-            ),
-            project=equinix.fabric.CloudRouterProjectArgs(
-                project_id="776847000642406",
-            ),
-            account=equinix.fabric.CloudRouterAccountArgs(
-                account_number=203612,
-            ))
+            }],
+            order={
+                "purchase_order_number": "1-323292",
+            },
+            location={
+                "metro_code": "SV",
+            },
+            package={
+                "code": "STANDARD",
+            },
+            project={
+                "project_id": "776847000642406",
+            },
+            account={
+                "account_number": 203612,
+            })
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['CloudRouterAccountArgs']] account: Customer account information that is associated with this Fabric Cloud Router
+        :param pulumi.Input[Union['CloudRouterAccountArgs', 'CloudRouterAccountArgsDict']] account: Customer account information that is associated with this Fabric Cloud Router
         :param pulumi.Input[str] description: Customer-provided Fabric Cloud Router description
         :param pulumi.Input[str] href: Fabric Cloud Router URI information
-        :param pulumi.Input[pulumi.InputType['CloudRouterLocationArgs']] location: Fabric Cloud Router location
+        :param pulumi.Input[Union['CloudRouterLocationArgs', 'CloudRouterLocationArgsDict']] location: Fabric Cloud Router location
         :param pulumi.Input[str] name: Fabric Cloud Router name. An alpha-numeric 24 characters string which can include only hyphens and underscores
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CloudRouterNotificationArgs']]]] notifications: Preferences for notifications on Fabric Cloud Router configuration or status changes
-        :param pulumi.Input[pulumi.InputType['CloudRouterOrderArgs']] order: Order information related to this Fabric Cloud Router
-        :param pulumi.Input[pulumi.InputType['CloudRouterPackageArgs']] package: Fabric Cloud Router Package Type
-        :param pulumi.Input[pulumi.InputType['CloudRouterProjectArgs']] project: Customer resource hierarchy project information. Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CloudRouterNotificationArgs', 'CloudRouterNotificationArgsDict']]]] notifications: Preferences for notifications on Fabric Cloud Router configuration or status changes
+        :param pulumi.Input[Union['CloudRouterOrderArgs', 'CloudRouterOrderArgsDict']] order: Order information related to this Fabric Cloud Router
+        :param pulumi.Input[Union['CloudRouterPackageArgs', 'CloudRouterPackageArgsDict']] package: Fabric Cloud Router Package Type
+        :param pulumi.Input[Union['CloudRouterProjectArgs', 'CloudRouterProjectArgsDict']] project: Customer resource hierarchy project information. Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
         :param pulumi.Input[str] type: Defines the FCR type like; XF_ROUTER
         :param pulumi.Input[str] uuid: Equinix-assigned Fabric Cloud Router identifier
         """
@@ -594,28 +594,28 @@ class CloudRouter(pulumi.CustomResource):
         new_cloud_router = equinix.fabric.CloudRouter("newCloudRouter",
             name="Router-SV",
             type="XF_ROUTER",
-            notifications=[equinix.fabric.CloudRouterNotificationArgs(
-                type="ALL",
-                emails=[
+            notifications=[{
+                "type": "ALL",
+                "emails": [
                     "example@equinix.com",
                     "test1@equinix.com",
                 ],
-            )],
-            order=equinix.fabric.CloudRouterOrderArgs(
-                purchase_order_number="1-323292",
-            ),
-            location=equinix.fabric.CloudRouterLocationArgs(
-                metro_code="SV",
-            ),
-            package=equinix.fabric.CloudRouterPackageArgs(
-                code="STANDARD",
-            ),
-            project=equinix.fabric.CloudRouterProjectArgs(
-                project_id="776847000642406",
-            ),
-            account=equinix.fabric.CloudRouterAccountArgs(
-                account_number=203612,
-            ))
+            }],
+            order={
+                "purchase_order_number": "1-323292",
+            },
+            location={
+                "metro_code": "SV",
+            },
+            package={
+                "code": "STANDARD",
+            },
+            project={
+                "project_id": "776847000642406",
+            },
+            account={
+                "account_number": 203612,
+            })
         ```
 
         :param str resource_name: The name of the resource.
@@ -633,15 +633,15 @@ class CloudRouter(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account: Optional[pulumi.Input[pulumi.InputType['CloudRouterAccountArgs']]] = None,
+                 account: Optional[pulumi.Input[Union['CloudRouterAccountArgs', 'CloudRouterAccountArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  href: Optional[pulumi.Input[str]] = None,
-                 location: Optional[pulumi.Input[pulumi.InputType['CloudRouterLocationArgs']]] = None,
+                 location: Optional[pulumi.Input[Union['CloudRouterLocationArgs', 'CloudRouterLocationArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 notifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CloudRouterNotificationArgs']]]]] = None,
-                 order: Optional[pulumi.Input[pulumi.InputType['CloudRouterOrderArgs']]] = None,
-                 package: Optional[pulumi.Input[pulumi.InputType['CloudRouterPackageArgs']]] = None,
-                 project: Optional[pulumi.Input[pulumi.InputType['CloudRouterProjectArgs']]] = None,
+                 notifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CloudRouterNotificationArgs', 'CloudRouterNotificationArgsDict']]]]] = None,
+                 order: Optional[pulumi.Input[Union['CloudRouterOrderArgs', 'CloudRouterOrderArgsDict']]] = None,
+                 package: Optional[pulumi.Input[Union['CloudRouterPackageArgs', 'CloudRouterPackageArgsDict']]] = None,
+                 project: Optional[pulumi.Input[Union['CloudRouterProjectArgs', 'CloudRouterProjectArgsDict']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  uuid: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -694,22 +694,22 @@ class CloudRouter(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account: Optional[pulumi.Input[pulumi.InputType['CloudRouterAccountArgs']]] = None,
+            account: Optional[pulumi.Input[Union['CloudRouterAccountArgs', 'CloudRouterAccountArgsDict']]] = None,
             bgp_ipv4_routes_count: Optional[pulumi.Input[int]] = None,
             bgp_ipv6_routes_count: Optional[pulumi.Input[int]] = None,
-            change_logs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CloudRouterChangeLogArgs']]]]] = None,
+            change_logs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CloudRouterChangeLogArgs', 'CloudRouterChangeLogArgsDict']]]]] = None,
             connections_count: Optional[pulumi.Input[int]] = None,
             description: Optional[pulumi.Input[str]] = None,
             distinct_ipv4_prefixes_count: Optional[pulumi.Input[int]] = None,
             distinct_ipv6_prefixes_count: Optional[pulumi.Input[int]] = None,
             equinix_asn: Optional[pulumi.Input[int]] = None,
             href: Optional[pulumi.Input[str]] = None,
-            location: Optional[pulumi.Input[pulumi.InputType['CloudRouterLocationArgs']]] = None,
+            location: Optional[pulumi.Input[Union['CloudRouterLocationArgs', 'CloudRouterLocationArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            notifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CloudRouterNotificationArgs']]]]] = None,
-            order: Optional[pulumi.Input[pulumi.InputType['CloudRouterOrderArgs']]] = None,
-            package: Optional[pulumi.Input[pulumi.InputType['CloudRouterPackageArgs']]] = None,
-            project: Optional[pulumi.Input[pulumi.InputType['CloudRouterProjectArgs']]] = None,
+            notifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CloudRouterNotificationArgs', 'CloudRouterNotificationArgsDict']]]]] = None,
+            order: Optional[pulumi.Input[Union['CloudRouterOrderArgs', 'CloudRouterOrderArgsDict']]] = None,
+            package: Optional[pulumi.Input[Union['CloudRouterPackageArgs', 'CloudRouterPackageArgsDict']]] = None,
+            project: Optional[pulumi.Input[Union['CloudRouterProjectArgs', 'CloudRouterProjectArgsDict']]] = None,
             state: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None,
             uuid: Optional[pulumi.Input[str]] = None) -> 'CloudRouter':
@@ -720,22 +720,22 @@ class CloudRouter(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['CloudRouterAccountArgs']] account: Customer account information that is associated with this Fabric Cloud Router
+        :param pulumi.Input[Union['CloudRouterAccountArgs', 'CloudRouterAccountArgsDict']] account: Customer account information that is associated with this Fabric Cloud Router
         :param pulumi.Input[int] bgp_ipv4_routes_count: Number of IPv4 BGP routes in use (including non-distinct prefixes)
         :param pulumi.Input[int] bgp_ipv6_routes_count: Number of IPv6 BGP routes in use (including non-distinct prefixes)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CloudRouterChangeLogArgs']]]] change_logs: Captures Fabric Cloud Router lifecycle change information
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CloudRouterChangeLogArgs', 'CloudRouterChangeLogArgsDict']]]] change_logs: Captures Fabric Cloud Router lifecycle change information
         :param pulumi.Input[int] connections_count: Number of connections associated with this Fabric Cloud Router instance
         :param pulumi.Input[str] description: Customer-provided Fabric Cloud Router description
         :param pulumi.Input[int] distinct_ipv4_prefixes_count: Number of distinct IPv4 routes
         :param pulumi.Input[int] distinct_ipv6_prefixes_count: Number of distinct IPv6 routes
         :param pulumi.Input[int] equinix_asn: Equinix ASN
         :param pulumi.Input[str] href: Fabric Cloud Router URI information
-        :param pulumi.Input[pulumi.InputType['CloudRouterLocationArgs']] location: Fabric Cloud Router location
+        :param pulumi.Input[Union['CloudRouterLocationArgs', 'CloudRouterLocationArgsDict']] location: Fabric Cloud Router location
         :param pulumi.Input[str] name: Fabric Cloud Router name. An alpha-numeric 24 characters string which can include only hyphens and underscores
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CloudRouterNotificationArgs']]]] notifications: Preferences for notifications on Fabric Cloud Router configuration or status changes
-        :param pulumi.Input[pulumi.InputType['CloudRouterOrderArgs']] order: Order information related to this Fabric Cloud Router
-        :param pulumi.Input[pulumi.InputType['CloudRouterPackageArgs']] package: Fabric Cloud Router Package Type
-        :param pulumi.Input[pulumi.InputType['CloudRouterProjectArgs']] project: Customer resource hierarchy project information. Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CloudRouterNotificationArgs', 'CloudRouterNotificationArgsDict']]]] notifications: Preferences for notifications on Fabric Cloud Router configuration or status changes
+        :param pulumi.Input[Union['CloudRouterOrderArgs', 'CloudRouterOrderArgsDict']] order: Order information related to this Fabric Cloud Router
+        :param pulumi.Input[Union['CloudRouterPackageArgs', 'CloudRouterPackageArgsDict']] package: Fabric Cloud Router Package Type
+        :param pulumi.Input[Union['CloudRouterProjectArgs', 'CloudRouterProjectArgsDict']] project: Customer resource hierarchy project information. Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
         :param pulumi.Input[str] state: Fabric Cloud Router overall state
         :param pulumi.Input[str] type: Defines the FCR type like; XF_ROUTER
         :param pulumi.Input[str] uuid: Equinix-assigned Fabric Cloud Router identifier

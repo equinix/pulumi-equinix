@@ -279,7 +279,7 @@ class AclTemplate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 inbound_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTemplateInboundRuleArgs']]]]] = None,
+                 inbound_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AclTemplateInboundRuleArgs', 'AclTemplateInboundRuleArgsDict']]]]] = None,
                  metro_code: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
@@ -299,19 +299,19 @@ class AclTemplate(pulumi.CustomResource):
             description="Test ACL template",
             project_id="a86d7112-d740-4758-9c9c-31e66373746b",
             inbound_rules=[
-                equinix.networkedge.AclTemplateInboundRuleArgs(
-                    subnet="1.1.1.1/32",
-                    protocol=equinix.networkedge.AclRuleProtocolType.IP,
-                    src_port="any",
-                    dst_port="any",
-                    description="inbound rule description",
-                ),
-                equinix.networkedge.AclTemplateInboundRuleArgs(
-                    subnet="172.16.25.0/24",
-                    protocol=equinix.networkedge.AclRuleProtocolType.UDP,
-                    src_port="any",
-                    dst_port="53,1045,2041",
-                ),
+                {
+                    "subnet": "1.1.1.1/32",
+                    "protocol": equinix.networkedge.AclRuleProtocolType.IP,
+                    "src_port": "any",
+                    "dst_port": "any",
+                    "description": "inbound rule description",
+                },
+                {
+                    "subnet": "172.16.25.0/24",
+                    "protocol": equinix.networkedge.AclRuleProtocolType.UDP,
+                    "src_port": "any",
+                    "dst_port": "53,1045,2041",
+                },
             ])
         ```
 
@@ -326,7 +326,7 @@ class AclTemplate(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Inbound rule description, up to 200 characters.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTemplateInboundRuleArgs']]]] inbound_rules: One or more rules to specify allowed inbound traffic. Rules are ordered, matching traffic rule stops processing subsequent ones.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AclTemplateInboundRuleArgs', 'AclTemplateInboundRuleArgsDict']]]] inbound_rules: One or more rules to specify allowed inbound traffic. Rules are ordered, matching traffic rule stops processing subsequent ones.
                
                The `inbound_rule` block has below fields:
         :param pulumi.Input[str] metro_code: ACL template location metro code.
@@ -354,19 +354,19 @@ class AclTemplate(pulumi.CustomResource):
             description="Test ACL template",
             project_id="a86d7112-d740-4758-9c9c-31e66373746b",
             inbound_rules=[
-                equinix.networkedge.AclTemplateInboundRuleArgs(
-                    subnet="1.1.1.1/32",
-                    protocol=equinix.networkedge.AclRuleProtocolType.IP,
-                    src_port="any",
-                    dst_port="any",
-                    description="inbound rule description",
-                ),
-                equinix.networkedge.AclTemplateInboundRuleArgs(
-                    subnet="172.16.25.0/24",
-                    protocol=equinix.networkedge.AclRuleProtocolType.UDP,
-                    src_port="any",
-                    dst_port="53,1045,2041",
-                ),
+                {
+                    "subnet": "1.1.1.1/32",
+                    "protocol": equinix.networkedge.AclRuleProtocolType.IP,
+                    "src_port": "any",
+                    "dst_port": "any",
+                    "description": "inbound rule description",
+                },
+                {
+                    "subnet": "172.16.25.0/24",
+                    "protocol": equinix.networkedge.AclRuleProtocolType.UDP,
+                    "src_port": "any",
+                    "dst_port": "53,1045,2041",
+                },
             ])
         ```
 
@@ -394,7 +394,7 @@ class AclTemplate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 inbound_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTemplateInboundRuleArgs']]]]] = None,
+                 inbound_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AclTemplateInboundRuleArgs', 'AclTemplateInboundRuleArgsDict']]]]] = None,
                  metro_code: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
@@ -430,9 +430,9 @@ class AclTemplate(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
             device_acl_status: Optional[pulumi.Input[str]] = None,
-            device_details: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTemplateDeviceDetailArgs']]]]] = None,
+            device_details: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AclTemplateDeviceDetailArgs', 'AclTemplateDeviceDetailArgsDict']]]]] = None,
             device_id: Optional[pulumi.Input[str]] = None,
-            inbound_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTemplateInboundRuleArgs']]]]] = None,
+            inbound_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AclTemplateInboundRuleArgs', 'AclTemplateInboundRuleArgsDict']]]]] = None,
             metro_code: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
@@ -446,9 +446,9 @@ class AclTemplate(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Inbound rule description, up to 200 characters.
         :param pulumi.Input[str] device_acl_status: Status of ACL template provisioning process, where template was applied. One of `PROVISIONING`, `PROVISIONED`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTemplateDeviceDetailArgs']]]] device_details: List of the devices where the ACL template is applied.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AclTemplateDeviceDetailArgs', 'AclTemplateDeviceDetailArgsDict']]]] device_details: List of the devices where the ACL template is applied.
         :param pulumi.Input[str] device_id: (Deprecated) Identifier of a network device where template was applied.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTemplateInboundRuleArgs']]]] inbound_rules: One or more rules to specify allowed inbound traffic. Rules are ordered, matching traffic rule stops processing subsequent ones.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AclTemplateInboundRuleArgs', 'AclTemplateInboundRuleArgsDict']]]] inbound_rules: One or more rules to specify allowed inbound traffic. Rules are ordered, matching traffic rule stops processing subsequent ones.
                
                The `inbound_rule` block has below fields:
         :param pulumi.Input[str] metro_code: ACL template location metro code.

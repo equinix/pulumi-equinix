@@ -157,7 +157,7 @@ export namespace fabric {
          */
         account: outputs.fabric.ConnectionASideAccessPointAccount;
         /**
-         * Authentication key for provider based connections or Metal NIMF connections
+         * Authentication key for provider based connections or Metal-Fabric Integration connections
          */
         authenticationKey?: string;
         /**
@@ -674,7 +674,7 @@ export namespace fabric {
          */
         account: outputs.fabric.ConnectionZSideAccessPointAccount;
         /**
-         * Authentication key for provider based connections or Metal NIMF connections
+         * Authentication key for provider based connections or Metal-Fabric Integration connections
          */
         authenticationKey?: string;
         /**
@@ -1374,7 +1374,7 @@ export namespace fabric {
          */
         accounts: outputs.fabric.GetConnectionASideAccessPointAccount[];
         /**
-         * Authentication key for provider based connections or Metal NIMF connections
+         * Authentication key for provider based connections or Metal-Fabric Integration connections
          */
         authenticationKey?: string;
         /**
@@ -1891,7 +1891,7 @@ export namespace fabric {
          */
         accounts: outputs.fabric.GetConnectionZSideAccessPointAccount[];
         /**
-         * Authentication key for provider based connections or Metal NIMF connections
+         * Authentication key for provider based connections or Metal-Fabric Integration connections
          */
         authenticationKey?: string;
         /**
@@ -2292,7 +2292,7 @@ export namespace fabric {
          */
         accounts: outputs.fabric.GetConnectionsDataASideAccessPointAccount[];
         /**
-         * Authentication key for provider based connections or Metal NIMF connections
+         * Authentication key for provider based connections or Metal-Fabric Integration connections
          */
         authenticationKey?: string;
         /**
@@ -2809,7 +2809,7 @@ export namespace fabric {
          */
         accounts: outputs.fabric.GetConnectionsDataZSideAccessPointAccount[];
         /**
-         * Authentication key for provider based connections or Metal NIMF connections
+         * Authentication key for provider based connections or Metal-Fabric Integration connections
          */
         authenticationKey?: string;
         /**
