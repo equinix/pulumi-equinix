@@ -157,7 +157,7 @@ export namespace fabric {
          */
         account?: pulumi.Input<inputs.fabric.ConnectionASideAccessPointAccount>;
         /**
-         * Authentication key for provider based connections or Metal NIMF connections
+         * Authentication key for provider based connections or Metal-Fabric Integration connections
          */
         authenticationKey?: pulumi.Input<string>;
         /**
@@ -674,7 +674,7 @@ export namespace fabric {
          */
         account?: pulumi.Input<inputs.fabric.ConnectionZSideAccessPointAccount>;
         /**
-         * Authentication key for provider based connections or Metal NIMF connections
+         * Authentication key for provider based connections or Metal-Fabric Integration connections
          */
         authenticationKey?: pulumi.Input<string>;
         /**

@@ -109,7 +109,7 @@ class AwaitableGetFacilityResult(GetFacilityResult):
             name=self.name)
 
 
-def get_facility(capacities: Optional[Sequence[pulumi.InputType['GetFacilityCapacityArgs']]] = None,
+def get_facility(capacities: Optional[Sequence[Union['GetFacilityCapacityArgs', 'GetFacilityCapacityArgsDict']]] = None,
                  code: Optional[str] = None,
                  features_requireds: Optional[Sequence[str]] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFacilityResult:
@@ -129,7 +129,7 @@ def get_facility(capacities: Optional[Sequence[pulumi.InputType['GetFacilityCapa
     ```
 
 
-    :param Sequence[pulumi.InputType['GetFacilityCapacityArgs']] capacities: One or more device plans for which the facility must have capacity.
+    :param Sequence[Union['GetFacilityCapacityArgs', 'GetFacilityCapacityArgsDict']] capacities: One or more device plans for which the facility must have capacity.
     :param str code: The facility code to search for facilities.
     :param Sequence[str] features_requireds: Set of feature strings that the facility must have. Some possible values are `baremetal`, `ibx`, `storage`, `global_ipv4`, `backend_transfer`, `layer_2`.
     """
@@ -151,7 +151,7 @@ def get_facility(capacities: Optional[Sequence[pulumi.InputType['GetFacilityCapa
 
 
 @_utilities.lift_output_func(get_facility)
-def get_facility_output(capacities: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetFacilityCapacityArgs']]]]] = None,
+def get_facility_output(capacities: Optional[pulumi.Input[Optional[Sequence[Union['GetFacilityCapacityArgs', 'GetFacilityCapacityArgsDict']]]]] = None,
                         code: Optional[pulumi.Input[str]] = None,
                         features_requireds: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFacilityResult]:
@@ -171,7 +171,7 @@ def get_facility_output(capacities: Optional[pulumi.Input[Optional[Sequence[pulu
     ```
 
 
-    :param Sequence[pulumi.InputType['GetFacilityCapacityArgs']] capacities: One or more device plans for which the facility must have capacity.
+    :param Sequence[Union['GetFacilityCapacityArgs', 'GetFacilityCapacityArgsDict']] capacities: One or more device plans for which the facility must have capacity.
     :param str code: The facility code to search for facilities.
     :param Sequence[str] features_requireds: Set of feature strings that the facility must have. Some possible values are `baremetal`, `ibx`, `storage`, `global_ipv4`, `backend_transfer`, `layer_2`.
     """

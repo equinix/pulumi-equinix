@@ -892,7 +892,7 @@ class ConnectionASideAccessPoint(dict):
                  virtual_device: Optional['outputs.ConnectionASideAccessPointVirtualDevice'] = None):
         """
         :param 'ConnectionASideAccessPointAccountArgs' account: Account
-        :param str authentication_key: Authentication key for provider based connections or Metal NIMF connections
+        :param str authentication_key: Authentication key for provider based connections or Metal-Fabric Integration connections
         :param 'ConnectionASideAccessPointGatewayArgs' gateway: **Deprecated** `gateway` Use `router` attribute instead
         :param 'ConnectionASideAccessPointInterfaceArgs' interface: Virtual device interface
         :param 'ConnectionASideAccessPointLinkProtocolArgs' link_protocol: Connection link protocol
@@ -950,7 +950,7 @@ class ConnectionASideAccessPoint(dict):
     @pulumi.getter(name="authenticationKey")
     def authentication_key(self) -> Optional[str]:
         """
-        Authentication key for provider based connections or Metal NIMF connections
+        Authentication key for provider based connections or Metal-Fabric Integration connections
         """
         return pulumi.get(self, "authentication_key")
 
@@ -2689,7 +2689,7 @@ class ConnectionZSideAccessPoint(dict):
                  virtual_device: Optional['outputs.ConnectionZSideAccessPointVirtualDevice'] = None):
         """
         :param 'ConnectionZSideAccessPointAccountArgs' account: Account
-        :param str authentication_key: Authentication key for provider based connections or Metal NIMF connections
+        :param str authentication_key: Authentication key for provider based connections or Metal-Fabric Integration connections
         :param 'ConnectionZSideAccessPointGatewayArgs' gateway: **Deprecated** `gateway` Use `router` attribute instead
         :param 'ConnectionZSideAccessPointInterfaceArgs' interface: Virtual device interface
         :param 'ConnectionZSideAccessPointLinkProtocolArgs' link_protocol: Connection link protocol
@@ -2747,7 +2747,7 @@ class ConnectionZSideAccessPoint(dict):
     @pulumi.getter(name="authenticationKey")
     def authentication_key(self) -> Optional[str]:
         """
-        Authentication key for provider based connections or Metal NIMF connections
+        Authentication key for provider based connections or Metal-Fabric Integration connections
         """
         return pulumi.get(self, "authentication_key")
 
@@ -7275,7 +7275,7 @@ class GetConnectionASideAccessPointResult(dict):
         :param Sequence['GetConnectionASideAccessPointAccountArgs'] accounts: Account
         :param 'GetConnectionASideAccessPointLocationArgs' location: Access point location
         :param str provider_connection_id: Provider assigned Connection Id
-        :param str authentication_key: Authentication key for provider based connections or Metal NIMF connections
+        :param str authentication_key: Authentication key for provider based connections or Metal-Fabric Integration connections
         :param 'GetConnectionASideAccessPointGatewayArgs' gateway: **Deprecated** `gateway` Use `router` attribute instead
         :param 'GetConnectionASideAccessPointInterfaceArgs' interface: Virtual device interface
         :param 'GetConnectionASideAccessPointLinkProtocolArgs' link_protocol: Connection link protocol
@@ -7344,7 +7344,7 @@ class GetConnectionASideAccessPointResult(dict):
     @pulumi.getter(name="authenticationKey")
     def authentication_key(self) -> Optional[str]:
         """
-        Authentication key for provider based connections or Metal NIMF connections
+        Authentication key for provider based connections or Metal-Fabric Integration connections
         """
         return pulumi.get(self, "authentication_key")
 
@@ -8690,7 +8690,7 @@ class GetConnectionZSideAccessPointResult(dict):
         :param Sequence['GetConnectionZSideAccessPointAccountArgs'] accounts: Account
         :param 'GetConnectionZSideAccessPointLocationArgs' location: Access point location
         :param str provider_connection_id: Provider assigned Connection Id
-        :param str authentication_key: Authentication key for provider based connections or Metal NIMF connections
+        :param str authentication_key: Authentication key for provider based connections or Metal-Fabric Integration connections
         :param 'GetConnectionZSideAccessPointGatewayArgs' gateway: **Deprecated** `gateway` Use `router` attribute instead
         :param 'GetConnectionZSideAccessPointInterfaceArgs' interface: Virtual device interface
         :param 'GetConnectionZSideAccessPointLinkProtocolArgs' link_protocol: Connection link protocol
@@ -8759,7 +8759,7 @@ class GetConnectionZSideAccessPointResult(dict):
     @pulumi.getter(name="authenticationKey")
     def authentication_key(self) -> Optional[str]:
         """
-        Authentication key for provider based connections or Metal NIMF connections
+        Authentication key for provider based connections or Metal-Fabric Integration connections
         """
         return pulumi.get(self, "authentication_key")
 
@@ -9795,7 +9795,7 @@ class GetConnectionsDataASideAccessPointResult(dict):
         :param Sequence['GetConnectionsDataASideAccessPointAccountArgs'] accounts: Account
         :param 'GetConnectionsDataASideAccessPointLocationArgs' location: Access point location
         :param str provider_connection_id: Provider assigned Connection Id
-        :param str authentication_key: Authentication key for provider based connections or Metal NIMF connections
+        :param str authentication_key: Authentication key for provider based connections or Metal-Fabric Integration connections
         :param 'GetConnectionsDataASideAccessPointGatewayArgs' gateway: **Deprecated** `gateway` Use `router` attribute instead
         :param 'GetConnectionsDataASideAccessPointInterfaceArgs' interface: Virtual device interface
         :param 'GetConnectionsDataASideAccessPointLinkProtocolArgs' link_protocol: Connection link protocol
@@ -9864,7 +9864,7 @@ class GetConnectionsDataASideAccessPointResult(dict):
     @pulumi.getter(name="authenticationKey")
     def authentication_key(self) -> Optional[str]:
         """
-        Authentication key for provider based connections or Metal NIMF connections
+        Authentication key for provider based connections or Metal-Fabric Integration connections
         """
         return pulumi.get(self, "authentication_key")
 
@@ -11210,7 +11210,7 @@ class GetConnectionsDataZSideAccessPointResult(dict):
         :param Sequence['GetConnectionsDataZSideAccessPointAccountArgs'] accounts: Account
         :param 'GetConnectionsDataZSideAccessPointLocationArgs' location: Access point location
         :param str provider_connection_id: Provider assigned Connection Id
-        :param str authentication_key: Authentication key for provider based connections or Metal NIMF connections
+        :param str authentication_key: Authentication key for provider based connections or Metal-Fabric Integration connections
         :param 'GetConnectionsDataZSideAccessPointGatewayArgs' gateway: **Deprecated** `gateway` Use `router` attribute instead
         :param 'GetConnectionsDataZSideAccessPointInterfaceArgs' interface: Virtual device interface
         :param 'GetConnectionsDataZSideAccessPointLinkProtocolArgs' link_protocol: Connection link protocol
@@ -11279,7 +11279,7 @@ class GetConnectionsDataZSideAccessPointResult(dict):
     @pulumi.getter(name="authenticationKey")
     def authentication_key(self) -> Optional[str]:
         """
-        Authentication key for provider based connections or Metal NIMF connections
+        Authentication key for provider based connections or Metal-Fabric Integration connections
         """
         return pulumi.get(self, "authentication_key")
 

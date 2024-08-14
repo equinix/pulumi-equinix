@@ -235,7 +235,7 @@ class Project(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backend_transfer: Optional[pulumi.Input[bool]] = None,
-                 bgp_config: Optional[pulumi.Input[pulumi.InputType['ProjectBgpConfigArgs']]] = None,
+                 bgp_config: Optional[pulumi.Input[Union['ProjectBgpConfigArgs', 'ProjectBgpConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  payment_method_id: Optional[pulumi.Input[str]] = None,
@@ -260,11 +260,11 @@ class Project(pulumi.CustomResource):
 
         tf_project1 = equinix.metal.Project("tfProject1",
             name="tftest",
-            bgp_config=equinix.metal.ProjectBgpConfigArgs(
-                deployment_type="local",
-                md5="C179c28c41a85b",
-                asn=65000,
-            ))
+            bgp_config={
+                "deployment_type": "local",
+                "md5": "C179c28c41a85b",
+                "asn": 65000,
+            })
         ```
         ### example 3
         ```python
@@ -273,11 +273,11 @@ class Project(pulumi.CustomResource):
 
         existing_project = equinix.metal.Project("existingProject",
             name="The name of the project (if different, will rewrite)",
-            bgp_config=equinix.metal.ProjectBgpConfigArgs(
-                deployment_type="local",
-                md5="C179c28c41a85b",
-                asn=65000,
-            ))
+            bgp_config={
+                "deployment_type": "local",
+                "md5": "C179c28c41a85b",
+                "asn": 65000,
+            })
         ```
 
         ## Import
@@ -291,7 +291,7 @@ class Project(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] backend_transfer: Enable or disable [Backend Transfer](https://metal.equinix.com/developers/docs/networking/backend-transfer/), default is `false`.
-        :param pulumi.Input[pulumi.InputType['ProjectBgpConfigArgs']] bgp_config: Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
+        :param pulumi.Input[Union['ProjectBgpConfigArgs', 'ProjectBgpConfigArgsDict']] bgp_config: Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
                
                > **NOTE:** Once you set the BGP config in a project, it can't be removed (due to a limitation in the Equinix Metal API). It can be updated.
         :param pulumi.Input[str] name: The name of the project. The maximum length is 80 characters
@@ -324,11 +324,11 @@ class Project(pulumi.CustomResource):
 
         tf_project1 = equinix.metal.Project("tfProject1",
             name="tftest",
-            bgp_config=equinix.metal.ProjectBgpConfigArgs(
-                deployment_type="local",
-                md5="C179c28c41a85b",
-                asn=65000,
-            ))
+            bgp_config={
+                "deployment_type": "local",
+                "md5": "C179c28c41a85b",
+                "asn": 65000,
+            })
         ```
         ### example 3
         ```python
@@ -337,11 +337,11 @@ class Project(pulumi.CustomResource):
 
         existing_project = equinix.metal.Project("existingProject",
             name="The name of the project (if different, will rewrite)",
-            bgp_config=equinix.metal.ProjectBgpConfigArgs(
-                deployment_type="local",
-                md5="C179c28c41a85b",
-                asn=65000,
-            ))
+            bgp_config={
+                "deployment_type": "local",
+                "md5": "C179c28c41a85b",
+                "asn": 65000,
+            })
         ```
 
         ## Import
@@ -368,7 +368,7 @@ class Project(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backend_transfer: Optional[pulumi.Input[bool]] = None,
-                 bgp_config: Optional[pulumi.Input[pulumi.InputType['ProjectBgpConfigArgs']]] = None,
+                 bgp_config: Optional[pulumi.Input[Union['ProjectBgpConfigArgs', 'ProjectBgpConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  payment_method_id: Optional[pulumi.Input[str]] = None,
@@ -399,7 +399,7 @@ class Project(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             backend_transfer: Optional[pulumi.Input[bool]] = None,
-            bgp_config: Optional[pulumi.Input[pulumi.InputType['ProjectBgpConfigArgs']]] = None,
+            bgp_config: Optional[pulumi.Input[Union['ProjectBgpConfigArgs', 'ProjectBgpConfigArgsDict']]] = None,
             created: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             organization_id: Optional[pulumi.Input[str]] = None,
@@ -413,7 +413,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] backend_transfer: Enable or disable [Backend Transfer](https://metal.equinix.com/developers/docs/networking/backend-transfer/), default is `false`.
-        :param pulumi.Input[pulumi.InputType['ProjectBgpConfigArgs']] bgp_config: Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
+        :param pulumi.Input[Union['ProjectBgpConfigArgs', 'ProjectBgpConfigArgsDict']] bgp_config: Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
                
                > **NOTE:** Once you set the BGP config in a project, it can't be removed (due to a limitation in the Equinix Metal API). It can be updated.
         :param pulumi.Input[str] created: The timestamp for when the project was created.

@@ -106,10 +106,10 @@ class AwaitableGetConnectionsResult(GetConnectionsResult):
             sorts=self.sorts)
 
 
-def get_connections(filters: Optional[Sequence[pulumi.InputType['GetConnectionsFilterArgs']]] = None,
+def get_connections(filters: Optional[Sequence[Union['GetConnectionsFilterArgs', 'GetConnectionsFilterArgsDict']]] = None,
                     outer_operator: Optional[str] = None,
-                    pagination: Optional[pulumi.InputType['GetConnectionsPaginationArgs']] = None,
-                    sorts: Optional[Sequence[pulumi.InputType['GetConnectionsSortArgs']]] = None,
+                    pagination: Optional[Union['GetConnectionsPaginationArgs', 'GetConnectionsPaginationArgsDict']] = None,
+                    sorts: Optional[Sequence[Union['GetConnectionsSortArgs', 'GetConnectionsSortArgsDict']]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetConnectionsResult:
     """
     Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID
@@ -119,10 +119,10 @@ def get_connections(filters: Optional[Sequence[pulumi.InputType['GetConnectionsF
     * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections
 
 
-    :param Sequence[pulumi.InputType['GetConnectionsFilterArgs']] filters: Filters for the Data Source Search Request
+    :param Sequence[Union['GetConnectionsFilterArgs', 'GetConnectionsFilterArgsDict']] filters: Filters for the Data Source Search Request
     :param str outer_operator: Determines if the filter list will be grouped by AND or by OR. One of [AND, OR]
-    :param pulumi.InputType['GetConnectionsPaginationArgs'] pagination: Pagination details for the Data Source Search Request
-    :param Sequence[pulumi.InputType['GetConnectionsSortArgs']] sorts: Filters for the Data Source Search Request
+    :param Union['GetConnectionsPaginationArgs', 'GetConnectionsPaginationArgsDict'] pagination: Pagination details for the Data Source Search Request
+    :param Sequence[Union['GetConnectionsSortArgs', 'GetConnectionsSortArgsDict']] sorts: Filters for the Data Source Search Request
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -142,10 +142,10 @@ def get_connections(filters: Optional[Sequence[pulumi.InputType['GetConnectionsF
 
 
 @_utilities.lift_output_func(get_connections)
-def get_connections_output(filters: Optional[pulumi.Input[Sequence[pulumi.InputType['GetConnectionsFilterArgs']]]] = None,
+def get_connections_output(filters: Optional[pulumi.Input[Sequence[Union['GetConnectionsFilterArgs', 'GetConnectionsFilterArgsDict']]]] = None,
                            outer_operator: Optional[pulumi.Input[str]] = None,
-                           pagination: Optional[pulumi.Input[Optional[pulumi.InputType['GetConnectionsPaginationArgs']]]] = None,
-                           sorts: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetConnectionsSortArgs']]]]] = None,
+                           pagination: Optional[pulumi.Input[Optional[Union['GetConnectionsPaginationArgs', 'GetConnectionsPaginationArgsDict']]]] = None,
+                           sorts: Optional[pulumi.Input[Optional[Sequence[Union['GetConnectionsSortArgs', 'GetConnectionsSortArgsDict']]]]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConnectionsResult]:
     """
     Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID
@@ -155,9 +155,9 @@ def get_connections_output(filters: Optional[pulumi.Input[Sequence[pulumi.InputT
     * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections
 
 
-    :param Sequence[pulumi.InputType['GetConnectionsFilterArgs']] filters: Filters for the Data Source Search Request
+    :param Sequence[Union['GetConnectionsFilterArgs', 'GetConnectionsFilterArgsDict']] filters: Filters for the Data Source Search Request
     :param str outer_operator: Determines if the filter list will be grouped by AND or by OR. One of [AND, OR]
-    :param pulumi.InputType['GetConnectionsPaginationArgs'] pagination: Pagination details for the Data Source Search Request
-    :param Sequence[pulumi.InputType['GetConnectionsSortArgs']] sorts: Filters for the Data Source Search Request
+    :param Union['GetConnectionsPaginationArgs', 'GetConnectionsPaginationArgsDict'] pagination: Pagination details for the Data Source Search Request
+    :param Sequence[Union['GetConnectionsSortArgs', 'GetConnectionsSortArgsDict']] sorts: Filters for the Data Source Search Request
     """
     ...
