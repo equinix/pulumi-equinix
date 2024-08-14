@@ -258,7 +258,7 @@ class Organization(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 address: Optional[pulumi.Input[pulumi.InputType['OrganizationAddressArgs']]] = None,
+                 address: Optional[pulumi.Input[Union['OrganizationAddressArgs', 'OrganizationAddressArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  logo: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -288,7 +288,7 @@ class Organization(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['OrganizationAddressArgs']] address: An object that has the address information. See Address below for more details.
+        :param pulumi.Input[Union['OrganizationAddressArgs', 'OrganizationAddressArgsDict']] address: An object that has the address information. See Address below for more details.
         :param pulumi.Input[str] description: Description string.
         :param pulumi.Input[str] logo: Logo URL.
         :param pulumi.Input[str] name: The name of the Organization.
@@ -337,7 +337,7 @@ class Organization(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 address: Optional[pulumi.Input[pulumi.InputType['OrganizationAddressArgs']]] = None,
+                 address: Optional[pulumi.Input[Union['OrganizationAddressArgs', 'OrganizationAddressArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  logo: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -370,7 +370,7 @@ class Organization(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            address: Optional[pulumi.Input[pulumi.InputType['OrganizationAddressArgs']]] = None,
+            address: Optional[pulumi.Input[Union['OrganizationAddressArgs', 'OrganizationAddressArgsDict']]] = None,
             created: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             logo: Optional[pulumi.Input[str]] = None,
@@ -385,7 +385,7 @@ class Organization(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['OrganizationAddressArgs']] address: An object that has the address information. See Address below for more details.
+        :param pulumi.Input[Union['OrganizationAddressArgs', 'OrganizationAddressArgsDict']] address: An object that has the address information. See Address below for more details.
         :param pulumi.Input[str] created: The timestamp for when the organization was created.
         :param pulumi.Input[str] description: Description string.
         :param pulumi.Input[str] logo: Logo URL.

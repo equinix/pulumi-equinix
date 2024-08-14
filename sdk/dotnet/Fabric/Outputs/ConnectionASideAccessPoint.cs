@@ -18,7 +18,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// </summary>
         public readonly Outputs.ConnectionASideAccessPointAccount? Account;
         /// <summary>
-        /// Authentication key for provider based connections or Metal NIMF connections
+        /// Authentication key for provider based connections or Metal-Fabric Integration connections
         /// </summary>
         public readonly string? AuthenticationKey;
         /// <summary>

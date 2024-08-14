@@ -94,9 +94,9 @@ class AwaitableGetCloudRoutersResult(GetCloudRoutersResult):
             sort=self.sort)
 
 
-def get_cloud_routers(filters: Optional[Sequence[pulumi.InputType['GetCloudRoutersFilterArgs']]] = None,
-                      pagination: Optional[pulumi.InputType['GetCloudRoutersPaginationArgs']] = None,
-                      sort: Optional[pulumi.InputType['GetCloudRoutersSortArgs']] = None,
+def get_cloud_routers(filters: Optional[Sequence[Union['GetCloudRoutersFilterArgs', 'GetCloudRoutersFilterArgsDict']]] = None,
+                      pagination: Optional[Union['GetCloudRoutersPaginationArgs', 'GetCloudRoutersPaginationArgsDict']] = None,
+                      sort: Optional[Union['GetCloudRoutersSortArgs', 'GetCloudRoutersSortArgsDict']] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCloudRoutersResult:
     """
     Fabric V4 API compatible data resource that allow user to fetch Fabric Cloud Routers matching custom search criteria
@@ -106,9 +106,9 @@ def get_cloud_routers(filters: Optional[Sequence[pulumi.InputType['GetCloudRoute
     * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers
 
 
-    :param Sequence[pulumi.InputType['GetCloudRoutersFilterArgs']] filters: Filters for the Data Source Search Request. Maximum of 8 total filters.
-    :param pulumi.InputType['GetCloudRoutersPaginationArgs'] pagination: Pagination details for the Data Source Search Request
-    :param pulumi.InputType['GetCloudRoutersSortArgs'] sort: Filters for the Data Source Search Request
+    :param Sequence[Union['GetCloudRoutersFilterArgs', 'GetCloudRoutersFilterArgsDict']] filters: Filters for the Data Source Search Request. Maximum of 8 total filters.
+    :param Union['GetCloudRoutersPaginationArgs', 'GetCloudRoutersPaginationArgsDict'] pagination: Pagination details for the Data Source Search Request
+    :param Union['GetCloudRoutersSortArgs', 'GetCloudRoutersSortArgsDict'] sort: Filters for the Data Source Search Request
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -126,9 +126,9 @@ def get_cloud_routers(filters: Optional[Sequence[pulumi.InputType['GetCloudRoute
 
 
 @_utilities.lift_output_func(get_cloud_routers)
-def get_cloud_routers_output(filters: Optional[pulumi.Input[Sequence[pulumi.InputType['GetCloudRoutersFilterArgs']]]] = None,
-                             pagination: Optional[pulumi.Input[Optional[pulumi.InputType['GetCloudRoutersPaginationArgs']]]] = None,
-                             sort: Optional[pulumi.Input[Optional[pulumi.InputType['GetCloudRoutersSortArgs']]]] = None,
+def get_cloud_routers_output(filters: Optional[pulumi.Input[Sequence[Union['GetCloudRoutersFilterArgs', 'GetCloudRoutersFilterArgsDict']]]] = None,
+                             pagination: Optional[pulumi.Input[Optional[Union['GetCloudRoutersPaginationArgs', 'GetCloudRoutersPaginationArgsDict']]]] = None,
+                             sort: Optional[pulumi.Input[Optional[Union['GetCloudRoutersSortArgs', 'GetCloudRoutersSortArgsDict']]]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCloudRoutersResult]:
     """
     Fabric V4 API compatible data resource that allow user to fetch Fabric Cloud Routers matching custom search criteria
@@ -138,8 +138,8 @@ def get_cloud_routers_output(filters: Optional[pulumi.Input[Sequence[pulumi.Inpu
     * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers
 
 
-    :param Sequence[pulumi.InputType['GetCloudRoutersFilterArgs']] filters: Filters for the Data Source Search Request. Maximum of 8 total filters.
-    :param pulumi.InputType['GetCloudRoutersPaginationArgs'] pagination: Pagination details for the Data Source Search Request
-    :param pulumi.InputType['GetCloudRoutersSortArgs'] sort: Filters for the Data Source Search Request
+    :param Sequence[Union['GetCloudRoutersFilterArgs', 'GetCloudRoutersFilterArgsDict']] filters: Filters for the Data Source Search Request. Maximum of 8 total filters.
+    :param Union['GetCloudRoutersPaginationArgs', 'GetCloudRoutersPaginationArgsDict'] pagination: Pagination details for the Data Source Search Request
+    :param Union['GetCloudRoutersSortArgs', 'GetCloudRoutersSortArgsDict'] sort: Filters for the Data Source Search Request
     """
     ...

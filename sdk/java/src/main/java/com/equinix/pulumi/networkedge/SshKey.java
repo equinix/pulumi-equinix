@@ -34,12 +34,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var john = new SshKey("john", SshKeyArgs.builder()
  *             .name("johnKent")
  *             .publicKey("""
@@ -52,14 +52,14 @@ import javax.annotation.Nullable;
  *   8UjMYiXEvv2U/qu8Vb7d5bxAshXM5nh67NSrgst9YzSSodjUCnFQkniz6KLrTkX6c2y2gJ5c9tWhg5
  *   SPkAc8OqLrmIwf5jGoHGh6eUJy7AtMcwE3iUpbrLw8EEoZDoDXkzh+RbOtSNKXWV4EAXsIhjQusCOW
  *   WQnuAHCy9N4Td0Sntzu/xhCZ8xN0oO67Cqlsk98xSRLXeg21PuuhOYJw0DLF6L68zU2OO0RzqoNq/F
- *   jIsltSUJPAIfYKL0yEefeNWOXSrasI1ezw== John.Kent{@literal @}company.com
+ *   jIsltSUJPAIfYKL0yEefeNWOXSrasI1ezw== John.Kent}{@literal @}{@code company.com
  *             """)
  *             .type("RSA")
  *             .projectId("a86d7112-d740-4758-9c9c-31e66373746b")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -149,7 +149,7 @@ public class SshKey extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public SshKey(String name) {
+    public SshKey(java.lang.String name) {
         this(name, SshKeyArgs.Empty);
     }
     /**
@@ -157,7 +157,7 @@ public class SshKey extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public SshKey(String name, SshKeyArgs args) {
+    public SshKey(java.lang.String name, SshKeyArgs args) {
         this(name, args, null);
     }
     /**
@@ -166,12 +166,12 @@ public class SshKey extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public SshKey(String name, SshKeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("equinix:networkedge/sshKey:SshKey", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public SshKey(java.lang.String name, SshKeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("equinix:networkedge/sshKey:SshKey", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private SshKey(String name, Output<String> id, @Nullable SshKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("equinix:networkedge/sshKey:SshKey", name, state, makeResourceOptions(options, id));
+    private SshKey(java.lang.String name, Output<java.lang.String> id, @Nullable SshKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("equinix:networkedge/sshKey:SshKey", name, state, makeResourceOptions(options, id), false);
     }
 
     private static SshKeyArgs makeArgs(SshKeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -181,7 +181,7 @@ public class SshKey extends com.pulumi.resources.CustomResource {
         return args == null ? SshKeyArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -197,7 +197,7 @@ public class SshKey extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static SshKey get(String name, Output<String> id, @Nullable SshKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static SshKey get(java.lang.String name, Output<java.lang.String> id, @Nullable SshKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new SshKey(name, id, state, options);
     }
 }

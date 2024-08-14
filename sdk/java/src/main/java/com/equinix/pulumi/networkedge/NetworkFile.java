@@ -204,7 +204,7 @@ public class NetworkFile extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public NetworkFile(String name) {
+    public NetworkFile(java.lang.String name) {
         this(name, NetworkFileArgs.Empty);
     }
     /**
@@ -212,7 +212,7 @@ public class NetworkFile extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public NetworkFile(String name, NetworkFileArgs args) {
+    public NetworkFile(java.lang.String name, NetworkFileArgs args) {
         this(name, args, null);
     }
     /**
@@ -221,12 +221,12 @@ public class NetworkFile extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public NetworkFile(String name, NetworkFileArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("equinix:networkedge/networkFile:NetworkFile", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public NetworkFile(java.lang.String name, NetworkFileArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("equinix:networkedge/networkFile:NetworkFile", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private NetworkFile(String name, Output<String> id, @Nullable NetworkFileState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("equinix:networkedge/networkFile:NetworkFile", name, state, makeResourceOptions(options, id));
+    private NetworkFile(java.lang.String name, Output<java.lang.String> id, @Nullable NetworkFileState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("equinix:networkedge/networkFile:NetworkFile", name, state, makeResourceOptions(options, id), false);
     }
 
     private static NetworkFileArgs makeArgs(NetworkFileArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -236,7 +236,7 @@ public class NetworkFile extends com.pulumi.resources.CustomResource {
         return args == null ? NetworkFileArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -255,7 +255,7 @@ public class NetworkFile extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static NetworkFile get(String name, Output<String> id, @Nullable NetworkFileState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static NetworkFile get(java.lang.String name, Output<java.lang.String> id, @Nullable NetworkFileState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new NetworkFile(name, id, state, options);
     }
 }

@@ -15,7 +15,7 @@ import java.util.Objects;
 @CustomType
 public final class GetInterconnectionResult {
     /**
-     * @return Fabric Authorization Code to configure the NIMF connection in Equinix Fabric with the equinix.fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard).
+     * @return Fabric Authorization Code to configure the Metal-Fabric Integration connection in Equinix Fabric with the equinix.fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard).
      * 
      */
     private String authorizationCode;
@@ -127,7 +127,7 @@ public final class GetInterconnectionResult {
 
     private GetInterconnectionResult() {}
     /**
-     * @return Fabric Authorization Code to configure the NIMF connection in Equinix Fabric with the equinix.fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard).
+     * @return Fabric Authorization Code to configure the Metal-Fabric Integration connection in Equinix Fabric with the equinix.fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard).
      * 
      */
     public String authorizationCode() {
