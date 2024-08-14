@@ -2,10 +2,10 @@ module equinix-fabric-connection-example_port_to_network_evplan
 
 go 1.21
 
-toolchain go1.22.5
+toolchain go1.22.6
 
 require (
-	github.com/equinix/pulumi-equinix/sdk 0.13.1
+	github.com/equinix/pulumi-equinix/sdk 0.14.0+dirty
 	github.com/pulumi/pulumi/sdk/v3 v3.126.0
 )
 
