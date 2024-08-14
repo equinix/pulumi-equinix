@@ -94,7 +94,7 @@ class GetInterconnectionResult:
     @pulumi.getter(name="authorizationCode")
     def authorization_code(self) -> str:
         """
-        Fabric Authorization Code to configure the NIMF connection in Equinix Fabric with the fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard).
+        Fabric Authorization Code to configure the Metal-Fabric Integration connection in Equinix Fabric with the fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard).
         """
         return pulumi.get(self, "authorization_code")
 

@@ -85,7 +85,7 @@ export class Interconnection extends pulumi.CustomResource {
     }
 
     /**
-     * Fabric Authorization code to configure the NIMF connection with Cloud Service Provider through Equinix Fabric with the equinix.fabric.Connection resource from the [Equinix Developer Portal](https://developer.equinix.com/dev-docs/fabric/getting-started/fabric-v4-apis/connect-metal-to-amazon-web-services).
+     * Fabric Authorization code to configure the Metal-Fabric Integration connection with Cloud Service Provider through Equinix Fabric with the equinix.fabric.Connection resource from the [Equinix Developer Portal](https://developer.equinix.com/dev-docs/fabric/getting-started/fabric-v4-apis/connect-metal-to-amazon-web-services).
      */
     public /*out*/ readonly authorizationCode!: pulumi.Output<string>;
     /**
@@ -242,7 +242,7 @@ export class Interconnection extends pulumi.CustomResource {
  */
 export interface InterconnectionState {
     /**
-     * Fabric Authorization code to configure the NIMF connection with Cloud Service Provider through Equinix Fabric with the equinix.fabric.Connection resource from the [Equinix Developer Portal](https://developer.equinix.com/dev-docs/fabric/getting-started/fabric-v4-apis/connect-metal-to-amazon-web-services).
+     * Fabric Authorization code to configure the Metal-Fabric Integration connection with Cloud Service Provider through Equinix Fabric with the equinix.fabric.Connection resource from the [Equinix Developer Portal](https://developer.equinix.com/dev-docs/fabric/getting-started/fabric-v4-apis/connect-metal-to-amazon-web-services).
      */
     authorizationCode?: pulumi.Input<string>;
     /**

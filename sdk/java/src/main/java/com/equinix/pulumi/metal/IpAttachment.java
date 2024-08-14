@@ -231,7 +231,7 @@ public class IpAttachment extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public IpAttachment(String name) {
+    public IpAttachment(java.lang.String name) {
         this(name, IpAttachmentArgs.Empty);
     }
     /**
@@ -239,7 +239,7 @@ public class IpAttachment extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public IpAttachment(String name, IpAttachmentArgs args) {
+    public IpAttachment(java.lang.String name, IpAttachmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -248,12 +248,12 @@ public class IpAttachment extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public IpAttachment(String name, IpAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("equinix:metal/ipAttachment:IpAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public IpAttachment(java.lang.String name, IpAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("equinix:metal/ipAttachment:IpAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private IpAttachment(String name, Output<String> id, @Nullable IpAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("equinix:metal/ipAttachment:IpAttachment", name, state, makeResourceOptions(options, id));
+    private IpAttachment(java.lang.String name, Output<java.lang.String> id, @Nullable IpAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("equinix:metal/ipAttachment:IpAttachment", name, state, makeResourceOptions(options, id), false);
     }
 
     private static IpAttachmentArgs makeArgs(IpAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -263,7 +263,7 @@ public class IpAttachment extends com.pulumi.resources.CustomResource {
         return args == null ? IpAttachmentArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -279,7 +279,7 @@ public class IpAttachment extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static IpAttachment get(String name, Output<String> id, @Nullable IpAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static IpAttachment get(java.lang.String name, Output<java.lang.String> id, @Nullable IpAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new IpAttachment(name, id, state, options);
     }
 }
