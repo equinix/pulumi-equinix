@@ -24,10 +24,14 @@ jobs:
       uses: actions/checkout@v4
       with:
         ref: ${{ github.ref_name }}
+    - name: Capture current pulumi-java version
+      id: pulumi-java
+      run: |
+        echo "version=$(cat .pulumi-java-gen.version)" >> "$GITHUB_OUTPUT"
     - name: Set pr-assign variable
       id: set-pr-assign
       run: |
-        if [ "${{ github.actor }}" == "github-actions[bot]" ]; then
+        if [ "${{ github.event_name }}" == "schedule" ] || ["${{ github.actor }}" == "github-actions[bot]" ]; then
           echo "PR_ASSIGN=${{ env.DEFAULT_PR_ASSIGN }}" >> $GITHUB_ENV
         else
           echo "PR_ASSIGN=${{ github.actor }}" >> $GITHUB_ENV
@@ -43,8 +47,9 @@ jobs:
       # uses: pulumi/pulumi-upgrade-provider-action@v0.0.10
       uses: ./.github/actions/upgrade-provider
       with:
-        kind: all
+        kind: provider
         email: noreply@github.com
         username: GitHub
         pr-assign: ${{ env.PR_ASSIGN }}
         pr-title-prefix: "feat: "
+        target-java-version: ${{ steps.pulumi-java.outputs.version }}
