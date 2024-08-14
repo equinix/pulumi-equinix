@@ -19,7 +19,7 @@ namespace Pulumi.Equinix.Fabric.Inputs
         public Input<Inputs.ConnectionASideAccessPointAccountArgs>? Account { get; set; }
 
         /// <summary>
-        /// Authentication key for provider based connections or Metal NIMF connections
+        /// Authentication key for provider based connections or Metal-Fabric Integration connections
         /// </summary>
         [Input("authenticationKey")]
         public Input<string>? AuthenticationKey { get; set; }

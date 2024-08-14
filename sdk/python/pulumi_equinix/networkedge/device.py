@@ -1268,7 +1268,7 @@ class Device(pulumi.CustomResource):
                  additional_bandwidth: Optional[pulumi.Input[int]] = None,
                  byol: Optional[pulumi.Input[bool]] = None,
                  cloud_init_file_id: Optional[pulumi.Input[str]] = None,
-                 cluster_details: Optional[pulumi.Input[pulumi.InputType['DeviceClusterDetailsArgs']]] = None,
+                 cluster_details: Optional[pulumi.Input[Union['DeviceClusterDetailsArgs', 'DeviceClusterDetailsArgsDict']]] = None,
                  connectivity: Optional[pulumi.Input[str]] = None,
                  core_count: Optional[pulumi.Input[int]] = None,
                  diverse_device_id: Optional[pulumi.Input[str]] = None,
@@ -1285,9 +1285,9 @@ class Device(pulumi.CustomResource):
                  package_code: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  purchase_order_number: Optional[pulumi.Input[str]] = None,
-                 secondary_device: Optional[pulumi.Input[pulumi.InputType['DeviceSecondaryDeviceArgs']]] = None,
+                 secondary_device: Optional[pulumi.Input[Union['DeviceSecondaryDeviceArgs', 'DeviceSecondaryDeviceArgsDict']]] = None,
                  self_managed: Optional[pulumi.Input[bool]] = None,
-                 ssh_key: Optional[pulumi.Input[pulumi.InputType['DeviceSshKeyArgs']]] = None,
+                 ssh_key: Optional[pulumi.Input[Union['DeviceSshKeyArgs', 'DeviceSshKeyArgsDict']]] = None,
                  term_length: Optional[pulumi.Input[int]] = None,
                  throughput: Optional[pulumi.Input[int]] = None,
                  throughput_unit: Optional[pulumi.Input[Union[str, 'ThroughputUnit']]] = None,
@@ -1337,16 +1337,16 @@ class Device(pulumi.CustomResource):
             account_number=dc.number,
             version="16.09.05",
             core_count=2,
-            secondary_device=equinix.networkedge.DeviceSecondaryDeviceArgs(
-                name="tf-csr1000v-s",
-                metro_code=sv.metro_code,
-                hostname="csr1000v-s",
-                notifications=[
+            secondary_device={
+                "name": "tf-csr1000v-s",
+                "metro_code": sv.metro_code,
+                "hostname": "csr1000v-s",
+                "notifications": [
                     "john@equinix.com",
                     "marry@equinix.com",
                 ],
-                account_number=sv.number,
-            ))
+                "account_number": sv.number,
+            })
         ```
         ### example 2
         ```python
@@ -1371,26 +1371,26 @@ class Device(pulumi.CustomResource):
             version="10.1.3",
             interface_count=10,
             core_count=2,
-            ssh_key=equinix.networkedge.DeviceSshKeyArgs(
-                username="test",
-                key_name="test-key",
-            ),
+            ssh_key={
+                "username": "test",
+                "key_name": "test-key",
+            },
             acl_template_id="0bff6e05-f0e7-44cd-804a-25b92b835f8b",
-            cluster_details=equinix.networkedge.DeviceClusterDetailsArgs(
-                cluster_name="tf-panw-cluster",
-                node0=equinix.networkedge.DeviceClusterDetailsNode0Args(
-                    vendor_configuration=equinix.networkedge.DeviceClusterDetailsNode0VendorConfigurationArgs(
-                        hostname="panw-node0",
-                    ),
-                    license_token="licenseToken",
-                ),
-                node1=equinix.networkedge.DeviceClusterDetailsNode1Args(
-                    vendor_configuration=equinix.networkedge.DeviceClusterDetailsNode1VendorConfigurationArgs(
-                        hostname="panw-node1",
-                    ),
-                    license_token="licenseToken",
-                ),
-            ))
+            cluster_details={
+                "cluster_name": "tf-panw-cluster",
+                "node0": {
+                    "vendor_configuration": {
+                        "hostname": "panw-node0",
+                    },
+                    "license_token": "licenseToken",
+                },
+                "node1": {
+                    "vendor_configuration": {
+                        "hostname": "panw-node1",
+                    },
+                    "license_token": "licenseToken",
+                },
+            })
         ```
         ### example 3
         ```python
@@ -1448,10 +1448,10 @@ class Device(pulumi.CustomResource):
             term_length=12,
             license_token="valid-license-token",
             additional_bandwidth=5,
-            ssh_key=equinix.networkedge.DeviceSshKeyArgs(
-                username="test-username",
-                key_name="valid-key-name",
-            ),
+            ssh_key={
+                "username": "test-username",
+                "key_name": "valid-key-name",
+            },
             acl_template_id="3e548c02-9164-4197-aa23-05b1f644883c")
         ```
         ### example 5
@@ -1477,10 +1477,10 @@ class Device(pulumi.CustomResource):
             additional_bandwidth=5,
             project_id="a86d7112-d740-4758-9c9c-31e66373746b",
             diverse_device_id="ed7891bd-15b4-4f72-ac56-d96cfdacddcc",
-            ssh_key=equinix.networkedge.DeviceSshKeyArgs(
-                username="test-username",
-                key_name="valid-key-name",
-            ),
+            ssh_key={
+                "username": "test-username",
+                "key_name": "valid-key-name",
+            },
             acl_template_id="3e548c02-9164-4197-aa23-05b1f644883c")
         ```
         ### example 6
@@ -1509,19 +1509,19 @@ class Device(pulumi.CustomResource):
             core_count=4,
             term_length=12,
             additional_bandwidth=5,
-            ssh_key=equinix.networkedge.DeviceSshKeyArgs(
-                username="test-username",
-                key_name=test_public_key.name,
-            ),
+            ssh_key={
+                "username": "test-username",
+                "key_name": test_public_key.name,
+            },
             acl_template_id="c637a17b-7a6a-4486-924b-30e6c36904b0",
-            secondary_device=equinix.networkedge.DeviceSecondaryDeviceArgs(
-                name="tf-arista-s",
-                metro_code=sv.metro_code,
-                hostname="arista-s",
-                notifications=["test@eq.com"],
-                account_number=sv.number,
-                acl_template_id="fee5e2c0-6198-4ce6-9cbd-bbe6c1dbe138",
-            ))
+            secondary_device={
+                "name": "tf-arista-s",
+                "metro_code": sv.metro_code,
+                "hostname": "arista-s",
+                "notifications": ["test@eq.com"],
+                "account_number": sv.number,
+                "acl_template_id": "fee5e2c0-6198-4ce6-9cbd-bbe6c1dbe138",
+            })
         ```
         ### example 7
         ```python
@@ -1555,24 +1555,24 @@ class Device(pulumi.CustomResource):
                 "licenseKey": "xxxxx-xxxxx-xxxxx-xxxxx-xxxxx",
                 "licenseId": "xxxxxxxxxxxxxxx",
             },
-            ssh_key=equinix.networkedge.DeviceSshKeyArgs(
-                username="test-username",
-                key_name=test_public_key.name,
-            ),
-            secondary_device=equinix.networkedge.DeviceSecondaryDeviceArgs(
-                name="tf-bluecat-bdds-s",
-                metro_code=sv.metro_code,
-                notifications=["test@eq.com"],
-                account_number=sv.number,
-                vendor_configuration={
+            ssh_key={
+                "username": "test-username",
+                "key_name": test_public_key.name,
+            },
+            secondary_device={
+                "name": "tf-bluecat-bdds-s",
+                "metro_code": sv.metro_code,
+                "notifications": ["test@eq.com"],
+                "account_number": sv.number,
+                "vendor_configuration": {
                     "hostname": "test",
-                    "privateAddress": "x.x.x.x",
-                    "privateCidrMask": "24",
-                    "privateGateway": "x.x.x.x",
-                    "licenseKey": "xxxxx-xxxxx-xxxxx-xxxxx-xxxxx",
-                    "licenseId": "xxxxxxxxxxxxxxx",
+                    "private_address": "x.x.x.x",
+                    "private_cidr_mask": "24",
+                    "private_gateway": "x.x.x.x",
+                    "license_key": "xxxxx-xxxxx-xxxxx-xxxxx-xxxxx",
+                    "license_id": "xxxxxxxxxxxxxxx",
                 },
-            ))
+            })
         ```
         ### example 8
         ```python
@@ -1612,13 +1612,13 @@ class Device(pulumi.CustomResource):
             version="4.6.3",
             core_count=4,
             term_length=12,
-            secondary_device=equinix.networkedge.DeviceSecondaryDeviceArgs(
-                name="tf-bluecat-edge-service-point-s",
-                metro_code=sv.metro_code,
-                notifications=["test@eq.com"],
-                account_number=sv.number,
-                cloud_init_file_id=bluecat_edge_service_point_cloudinit_secondary_file.uuid,
-            ))
+            secondary_device={
+                "name": "tf-bluecat-edge-service-point-s",
+                "metro_code": sv.metro_code,
+                "notifications": ["test@eq.com"],
+                "account_number": sv.number,
+                "cloud_init_file_id": bluecat_edge_service_point_cloudinit_secondary_file.uuid,
+            })
         ```
         ### example 9
         ```python
@@ -1643,30 +1643,30 @@ class Device(pulumi.CustomResource):
             version="11.1.3",
             interface_count=10,
             core_count=2,
-            ssh_key=equinix.networkedge.DeviceSshKeyArgs(
-                username="test",
-                key_name="test-key",
-            ),
+            ssh_key={
+                "username": "test",
+                "key_name": "test-key",
+            },
             acl_template_id="0bff6e05-f0e7-44cd-804a-25b92b835f8b",
-            cluster_details=equinix.networkedge.DeviceClusterDetailsArgs(
-                cluster_name="tf-panw-cluster",
-                node0=equinix.networkedge.DeviceClusterDetailsNode0Args(
-                    vendor_configuration=equinix.networkedge.DeviceClusterDetailsNode0VendorConfigurationArgs(
-                        hostname="panw-node0",
-                        panorama_ip_address="x.x.x.x",
-                        panorama_auth_key="xxxxxxxxxxx",
-                    ),
-                    license_token="licenseToken",
-                ),
-                node1=equinix.networkedge.DeviceClusterDetailsNode1Args(
-                    vendor_configuration=equinix.networkedge.DeviceClusterDetailsNode1VendorConfigurationArgs(
-                        hostname="panw-node1",
-                        panorama_ip_address="x.x.x.x",
-                        panorama_auth_key="xxxxxxxxxxx",
-                    ),
-                    license_token="licenseToken",
-                ),
-            ))
+            cluster_details={
+                "cluster_name": "tf-panw-cluster",
+                "node0": {
+                    "vendor_configuration": {
+                        "hostname": "panw-node0",
+                        "panorama_ip_address": "x.x.x.x",
+                        "panorama_auth_key": "xxxxxxxxxxx",
+                    },
+                    "license_token": "licenseToken",
+                },
+                "node1": {
+                    "vendor_configuration": {
+                        "hostname": "panw-node1",
+                        "panorama_ip_address": "x.x.x.x",
+                        "panorama_auth_key": "xxxxxxxxxxx",
+                    },
+                    "license_token": "licenseToken",
+                },
+            })
         ```
 
         ## Import
@@ -1686,7 +1686,7 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[int] additional_bandwidth: Additional Internet bandwidth, in Mbps, that will be allocated to the device (in addition to default 15Mbps).
         :param pulumi.Input[bool] byol: Boolean value that determines device licensing mode, i.e., `bring your own license` or `subscription` (default).
         :param pulumi.Input[str] cloud_init_file_id: Identifier of a cloud init file that will be applied on the device.
-        :param pulumi.Input[pulumi.InputType['DeviceClusterDetailsArgs']] cluster_details: An object that has the cluster details. See Cluster Details below for more details.
+        :param pulumi.Input[Union['DeviceClusterDetailsArgs', 'DeviceClusterDetailsArgsDict']] cluster_details: An object that has the cluster details. See Cluster Details below for more details.
         :param pulumi.Input[str] connectivity: Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT). If not specified, default will be INTERNET-ACCESS
         :param pulumi.Input[int] core_count: Number of CPU cores used by device. (**NOTE: Use this field to resize your device. When resizing your HA devices, primary device will be upgraded first. If the upgrade failed, device will be automatically rolled back to the previous state with original core number.**)
         :param pulumi.Input[str] diverse_device_id: Unique ID of an existing device. Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual device. This field is only meaningful for single devices.
@@ -1703,9 +1703,9 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[str] package_code: Device software package code.
         :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
         :param pulumi.Input[str] purchase_order_number: Purchase order number associated with a device order.
-        :param pulumi.Input[pulumi.InputType['DeviceSecondaryDeviceArgs']] secondary_device: Definition of secondary device for redundant device configurations. See Secondary Device below for more details.
+        :param pulumi.Input[Union['DeviceSecondaryDeviceArgs', 'DeviceSecondaryDeviceArgsDict']] secondary_device: Definition of secondary device for redundant device configurations. See Secondary Device below for more details.
         :param pulumi.Input[bool] self_managed: Boolean value that determines device management mode, i.e., `self-managed` or `Equinix-managed` (default).
-        :param pulumi.Input[pulumi.InputType['DeviceSshKeyArgs']] ssh_key: Definition of SSH key that will be provisioned on a device
+        :param pulumi.Input[Union['DeviceSshKeyArgs', 'DeviceSshKeyArgsDict']] ssh_key: Definition of SSH key that will be provisioned on a device
         :param pulumi.Input[int] term_length: Device term length.
         :param pulumi.Input[int] throughput: Device license throughput.
         :param pulumi.Input[Union[str, 'ThroughputUnit']] throughput_unit: License throughput unit. One of `Mbps` or `Gbps`.
@@ -1762,16 +1762,16 @@ class Device(pulumi.CustomResource):
             account_number=dc.number,
             version="16.09.05",
             core_count=2,
-            secondary_device=equinix.networkedge.DeviceSecondaryDeviceArgs(
-                name="tf-csr1000v-s",
-                metro_code=sv.metro_code,
-                hostname="csr1000v-s",
-                notifications=[
+            secondary_device={
+                "name": "tf-csr1000v-s",
+                "metro_code": sv.metro_code,
+                "hostname": "csr1000v-s",
+                "notifications": [
                     "john@equinix.com",
                     "marry@equinix.com",
                 ],
-                account_number=sv.number,
-            ))
+                "account_number": sv.number,
+            })
         ```
         ### example 2
         ```python
@@ -1796,26 +1796,26 @@ class Device(pulumi.CustomResource):
             version="10.1.3",
             interface_count=10,
             core_count=2,
-            ssh_key=equinix.networkedge.DeviceSshKeyArgs(
-                username="test",
-                key_name="test-key",
-            ),
+            ssh_key={
+                "username": "test",
+                "key_name": "test-key",
+            },
             acl_template_id="0bff6e05-f0e7-44cd-804a-25b92b835f8b",
-            cluster_details=equinix.networkedge.DeviceClusterDetailsArgs(
-                cluster_name="tf-panw-cluster",
-                node0=equinix.networkedge.DeviceClusterDetailsNode0Args(
-                    vendor_configuration=equinix.networkedge.DeviceClusterDetailsNode0VendorConfigurationArgs(
-                        hostname="panw-node0",
-                    ),
-                    license_token="licenseToken",
-                ),
-                node1=equinix.networkedge.DeviceClusterDetailsNode1Args(
-                    vendor_configuration=equinix.networkedge.DeviceClusterDetailsNode1VendorConfigurationArgs(
-                        hostname="panw-node1",
-                    ),
-                    license_token="licenseToken",
-                ),
-            ))
+            cluster_details={
+                "cluster_name": "tf-panw-cluster",
+                "node0": {
+                    "vendor_configuration": {
+                        "hostname": "panw-node0",
+                    },
+                    "license_token": "licenseToken",
+                },
+                "node1": {
+                    "vendor_configuration": {
+                        "hostname": "panw-node1",
+                    },
+                    "license_token": "licenseToken",
+                },
+            })
         ```
         ### example 3
         ```python
@@ -1873,10 +1873,10 @@ class Device(pulumi.CustomResource):
             term_length=12,
             license_token="valid-license-token",
             additional_bandwidth=5,
-            ssh_key=equinix.networkedge.DeviceSshKeyArgs(
-                username="test-username",
-                key_name="valid-key-name",
-            ),
+            ssh_key={
+                "username": "test-username",
+                "key_name": "valid-key-name",
+            },
             acl_template_id="3e548c02-9164-4197-aa23-05b1f644883c")
         ```
         ### example 5
@@ -1902,10 +1902,10 @@ class Device(pulumi.CustomResource):
             additional_bandwidth=5,
             project_id="a86d7112-d740-4758-9c9c-31e66373746b",
             diverse_device_id="ed7891bd-15b4-4f72-ac56-d96cfdacddcc",
-            ssh_key=equinix.networkedge.DeviceSshKeyArgs(
-                username="test-username",
-                key_name="valid-key-name",
-            ),
+            ssh_key={
+                "username": "test-username",
+                "key_name": "valid-key-name",
+            },
             acl_template_id="3e548c02-9164-4197-aa23-05b1f644883c")
         ```
         ### example 6
@@ -1934,19 +1934,19 @@ class Device(pulumi.CustomResource):
             core_count=4,
             term_length=12,
             additional_bandwidth=5,
-            ssh_key=equinix.networkedge.DeviceSshKeyArgs(
-                username="test-username",
-                key_name=test_public_key.name,
-            ),
+            ssh_key={
+                "username": "test-username",
+                "key_name": test_public_key.name,
+            },
             acl_template_id="c637a17b-7a6a-4486-924b-30e6c36904b0",
-            secondary_device=equinix.networkedge.DeviceSecondaryDeviceArgs(
-                name="tf-arista-s",
-                metro_code=sv.metro_code,
-                hostname="arista-s",
-                notifications=["test@eq.com"],
-                account_number=sv.number,
-                acl_template_id="fee5e2c0-6198-4ce6-9cbd-bbe6c1dbe138",
-            ))
+            secondary_device={
+                "name": "tf-arista-s",
+                "metro_code": sv.metro_code,
+                "hostname": "arista-s",
+                "notifications": ["test@eq.com"],
+                "account_number": sv.number,
+                "acl_template_id": "fee5e2c0-6198-4ce6-9cbd-bbe6c1dbe138",
+            })
         ```
         ### example 7
         ```python
@@ -1980,24 +1980,24 @@ class Device(pulumi.CustomResource):
                 "licenseKey": "xxxxx-xxxxx-xxxxx-xxxxx-xxxxx",
                 "licenseId": "xxxxxxxxxxxxxxx",
             },
-            ssh_key=equinix.networkedge.DeviceSshKeyArgs(
-                username="test-username",
-                key_name=test_public_key.name,
-            ),
-            secondary_device=equinix.networkedge.DeviceSecondaryDeviceArgs(
-                name="tf-bluecat-bdds-s",
-                metro_code=sv.metro_code,
-                notifications=["test@eq.com"],
-                account_number=sv.number,
-                vendor_configuration={
+            ssh_key={
+                "username": "test-username",
+                "key_name": test_public_key.name,
+            },
+            secondary_device={
+                "name": "tf-bluecat-bdds-s",
+                "metro_code": sv.metro_code,
+                "notifications": ["test@eq.com"],
+                "account_number": sv.number,
+                "vendor_configuration": {
                     "hostname": "test",
-                    "privateAddress": "x.x.x.x",
-                    "privateCidrMask": "24",
-                    "privateGateway": "x.x.x.x",
-                    "licenseKey": "xxxxx-xxxxx-xxxxx-xxxxx-xxxxx",
-                    "licenseId": "xxxxxxxxxxxxxxx",
+                    "private_address": "x.x.x.x",
+                    "private_cidr_mask": "24",
+                    "private_gateway": "x.x.x.x",
+                    "license_key": "xxxxx-xxxxx-xxxxx-xxxxx-xxxxx",
+                    "license_id": "xxxxxxxxxxxxxxx",
                 },
-            ))
+            })
         ```
         ### example 8
         ```python
@@ -2037,13 +2037,13 @@ class Device(pulumi.CustomResource):
             version="4.6.3",
             core_count=4,
             term_length=12,
-            secondary_device=equinix.networkedge.DeviceSecondaryDeviceArgs(
-                name="tf-bluecat-edge-service-point-s",
-                metro_code=sv.metro_code,
-                notifications=["test@eq.com"],
-                account_number=sv.number,
-                cloud_init_file_id=bluecat_edge_service_point_cloudinit_secondary_file.uuid,
-            ))
+            secondary_device={
+                "name": "tf-bluecat-edge-service-point-s",
+                "metro_code": sv.metro_code,
+                "notifications": ["test@eq.com"],
+                "account_number": sv.number,
+                "cloud_init_file_id": bluecat_edge_service_point_cloudinit_secondary_file.uuid,
+            })
         ```
         ### example 9
         ```python
@@ -2068,30 +2068,30 @@ class Device(pulumi.CustomResource):
             version="11.1.3",
             interface_count=10,
             core_count=2,
-            ssh_key=equinix.networkedge.DeviceSshKeyArgs(
-                username="test",
-                key_name="test-key",
-            ),
+            ssh_key={
+                "username": "test",
+                "key_name": "test-key",
+            },
             acl_template_id="0bff6e05-f0e7-44cd-804a-25b92b835f8b",
-            cluster_details=equinix.networkedge.DeviceClusterDetailsArgs(
-                cluster_name="tf-panw-cluster",
-                node0=equinix.networkedge.DeviceClusterDetailsNode0Args(
-                    vendor_configuration=equinix.networkedge.DeviceClusterDetailsNode0VendorConfigurationArgs(
-                        hostname="panw-node0",
-                        panorama_ip_address="x.x.x.x",
-                        panorama_auth_key="xxxxxxxxxxx",
-                    ),
-                    license_token="licenseToken",
-                ),
-                node1=equinix.networkedge.DeviceClusterDetailsNode1Args(
-                    vendor_configuration=equinix.networkedge.DeviceClusterDetailsNode1VendorConfigurationArgs(
-                        hostname="panw-node1",
-                        panorama_ip_address="x.x.x.x",
-                        panorama_auth_key="xxxxxxxxxxx",
-                    ),
-                    license_token="licenseToken",
-                ),
-            ))
+            cluster_details={
+                "cluster_name": "tf-panw-cluster",
+                "node0": {
+                    "vendor_configuration": {
+                        "hostname": "panw-node0",
+                        "panorama_ip_address": "x.x.x.x",
+                        "panorama_auth_key": "xxxxxxxxxxx",
+                    },
+                    "license_token": "licenseToken",
+                },
+                "node1": {
+                    "vendor_configuration": {
+                        "hostname": "panw-node1",
+                        "panorama_ip_address": "x.x.x.x",
+                        "panorama_auth_key": "xxxxxxxxxxx",
+                    },
+                    "license_token": "licenseToken",
+                },
+            })
         ```
 
         ## Import
@@ -2124,7 +2124,7 @@ class Device(pulumi.CustomResource):
                  additional_bandwidth: Optional[pulumi.Input[int]] = None,
                  byol: Optional[pulumi.Input[bool]] = None,
                  cloud_init_file_id: Optional[pulumi.Input[str]] = None,
-                 cluster_details: Optional[pulumi.Input[pulumi.InputType['DeviceClusterDetailsArgs']]] = None,
+                 cluster_details: Optional[pulumi.Input[Union['DeviceClusterDetailsArgs', 'DeviceClusterDetailsArgsDict']]] = None,
                  connectivity: Optional[pulumi.Input[str]] = None,
                  core_count: Optional[pulumi.Input[int]] = None,
                  diverse_device_id: Optional[pulumi.Input[str]] = None,
@@ -2141,9 +2141,9 @@ class Device(pulumi.CustomResource):
                  package_code: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  purchase_order_number: Optional[pulumi.Input[str]] = None,
-                 secondary_device: Optional[pulumi.Input[pulumi.InputType['DeviceSecondaryDeviceArgs']]] = None,
+                 secondary_device: Optional[pulumi.Input[Union['DeviceSecondaryDeviceArgs', 'DeviceSecondaryDeviceArgsDict']]] = None,
                  self_managed: Optional[pulumi.Input[bool]] = None,
-                 ssh_key: Optional[pulumi.Input[pulumi.InputType['DeviceSshKeyArgs']]] = None,
+                 ssh_key: Optional[pulumi.Input[Union['DeviceSshKeyArgs', 'DeviceSshKeyArgsDict']]] = None,
                  term_length: Optional[pulumi.Input[int]] = None,
                  throughput: Optional[pulumi.Input[int]] = None,
                  throughput_unit: Optional[pulumi.Input[Union[str, 'ThroughputUnit']]] = None,
@@ -2237,7 +2237,7 @@ class Device(pulumi.CustomResource):
             asn: Optional[pulumi.Input[int]] = None,
             byol: Optional[pulumi.Input[bool]] = None,
             cloud_init_file_id: Optional[pulumi.Input[str]] = None,
-            cluster_details: Optional[pulumi.Input[pulumi.InputType['DeviceClusterDetailsArgs']]] = None,
+            cluster_details: Optional[pulumi.Input[Union['DeviceClusterDetailsArgs', 'DeviceClusterDetailsArgsDict']]] = None,
             connectivity: Optional[pulumi.Input[str]] = None,
             core_count: Optional[pulumi.Input[int]] = None,
             diverse_device_id: Optional[pulumi.Input[str]] = None,
@@ -2245,7 +2245,7 @@ class Device(pulumi.CustomResource):
             hostname: Optional[pulumi.Input[str]] = None,
             ibx: Optional[pulumi.Input[str]] = None,
             interface_count: Optional[pulumi.Input[int]] = None,
-            interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceInterfaceArgs']]]]] = None,
+            interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DeviceInterfaceArgs', 'DeviceInterfaceArgsDict']]]]] = None,
             license_file: Optional[pulumi.Input[str]] = None,
             license_file_id: Optional[pulumi.Input[str]] = None,
             license_status: Optional[pulumi.Input[str]] = None,
@@ -2261,11 +2261,11 @@ class Device(pulumi.CustomResource):
             redundancy_type: Optional[pulumi.Input[str]] = None,
             redundant_id: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
-            secondary_device: Optional[pulumi.Input[pulumi.InputType['DeviceSecondaryDeviceArgs']]] = None,
+            secondary_device: Optional[pulumi.Input[Union['DeviceSecondaryDeviceArgs', 'DeviceSecondaryDeviceArgsDict']]] = None,
             self_managed: Optional[pulumi.Input[bool]] = None,
             ssh_ip_address: Optional[pulumi.Input[str]] = None,
             ssh_ip_fqdn: Optional[pulumi.Input[str]] = None,
-            ssh_key: Optional[pulumi.Input[pulumi.InputType['DeviceSshKeyArgs']]] = None,
+            ssh_key: Optional[pulumi.Input[Union['DeviceSshKeyArgs', 'DeviceSshKeyArgsDict']]] = None,
             status: Optional[pulumi.Input[str]] = None,
             term_length: Optional[pulumi.Input[int]] = None,
             throughput: Optional[pulumi.Input[int]] = None,
@@ -2289,7 +2289,7 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[int] asn: (Autonomous System Number) Unique identifier for a network on the internet.
         :param pulumi.Input[bool] byol: Boolean value that determines device licensing mode, i.e., `bring your own license` or `subscription` (default).
         :param pulumi.Input[str] cloud_init_file_id: Identifier of a cloud init file that will be applied on the device.
-        :param pulumi.Input[pulumi.InputType['DeviceClusterDetailsArgs']] cluster_details: An object that has the cluster details. See Cluster Details below for more details.
+        :param pulumi.Input[Union['DeviceClusterDetailsArgs', 'DeviceClusterDetailsArgsDict']] cluster_details: An object that has the cluster details. See Cluster Details below for more details.
         :param pulumi.Input[str] connectivity: Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT). If not specified, default will be INTERNET-ACCESS
         :param pulumi.Input[int] core_count: Number of CPU cores used by device. (**NOTE: Use this field to resize your device. When resizing your HA devices, primary device will be upgraded first. If the upgrade failed, device will be automatically rolled back to the previous state with original core number.**)
         :param pulumi.Input[str] diverse_device_id: Unique ID of an existing device. Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual device. This field is only meaningful for single devices.
@@ -2297,7 +2297,7 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[str] hostname: Device hostname prefix.
         :param pulumi.Input[str] ibx: Device location Equinix Business Exchange name.
         :param pulumi.Input[int] interface_count: Number of network interfaces on a device. If not specified, default number for a given device type will be used.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceInterfaceArgs']]]] interfaces: List of device interfaces. See Interface Attribute below for more details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DeviceInterfaceArgs', 'DeviceInterfaceArgsDict']]]] interfaces: List of device interfaces. See Interface Attribute below for more details.
         :param pulumi.Input[str] license_file: Path to the license file that will be uploaded and applied on a device. Applicable for some device types in BYOL licensing mode.
         :param pulumi.Input[str] license_file_id: Identifier of a license file that will be applied on the device.
         :param pulumi.Input[str] license_status: Device license registration status. Possible values are `APPLYING_LICENSE`, `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
@@ -2313,11 +2313,11 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[str] redundancy_type: Device redundancy type applicable for HA devices, either primary or secondary.
         :param pulumi.Input[str] redundant_id: Unique identifier for a redundant device applicable for HA devices.
         :param pulumi.Input[str] region: Device location region.
-        :param pulumi.Input[pulumi.InputType['DeviceSecondaryDeviceArgs']] secondary_device: Definition of secondary device for redundant device configurations. See Secondary Device below for more details.
+        :param pulumi.Input[Union['DeviceSecondaryDeviceArgs', 'DeviceSecondaryDeviceArgsDict']] secondary_device: Definition of secondary device for redundant device configurations. See Secondary Device below for more details.
         :param pulumi.Input[bool] self_managed: Boolean value that determines device management mode, i.e., `self-managed` or `Equinix-managed` (default).
         :param pulumi.Input[str] ssh_ip_address: IP address of SSH enabled interface on the device.
         :param pulumi.Input[str] ssh_ip_fqdn: FQDN of SSH enabled interface on the device.
-        :param pulumi.Input[pulumi.InputType['DeviceSshKeyArgs']] ssh_key: Definition of SSH key that will be provisioned on a device
+        :param pulumi.Input[Union['DeviceSshKeyArgs', 'DeviceSshKeyArgsDict']] ssh_key: Definition of SSH key that will be provisioned on a device
         :param pulumi.Input[str] status: interface status. One of `AVAILABLE`, `RESERVED`, `ASSIGNED`.
         :param pulumi.Input[int] term_length: Device term length.
         :param pulumi.Input[int] throughput: Device license throughput.

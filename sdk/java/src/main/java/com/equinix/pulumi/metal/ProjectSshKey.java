@@ -35,17 +35,17 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var projectId = "<UUID_of_your_project>";
  * 
  *         var test = new ProjectSshKey("test", ProjectSshKeyArgs.builder()
  *             .name("test")
- *             .publicKey("ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDM/unxJeFqxsTJcu6mhqsMHSaVlpu+Jj/P+44zrm6X/MAoHSX3X9oLgujEjjZ74yLfdfe0bJrbL2YgJzNaEkIQQ1VPMHB5EhTKUBGnzlPP0hHTnxsjAm9qDHgUPgvgFDQSAMzdJRJ0Cexo16Ph9VxCoLh3dxiE7s2gaM2FdVg7P8aSxKypsxAhYV3D0AwqzoOyT6WWhBoQ0xZ85XevOTnJCpImSemEGs6nVGEsWcEc1d1YvdxFjAK4SdsKUMkj4Dsy/leKsdi/DEAf356vbMT1UHsXXvy5TlHu/Pa6qF53v32Enz+nhKy7/8W2Yt2yWx8HnQcT2rug9lvCXagJO6oauqRTO77C4QZn13ZLMZgLT66S/tNh2EX0gi6vmIs5dth8uF+K6nxIyKJXbcA4ASg7F1OJrHKFZdTc5v1cPeq6PcbqGgc+8SrPYQmzvQqLoMBuxyos2hUkYOmw3aeWJj9nFa8Wu5WaN89mUeOqSkU4S5cgUzWUOmKey56B/j/s1sVys9rMhZapVs0wL4L9GBBM48N5jAQZnnpo85A8KsZq5ME22bTLqnxsDXqDYZvS7PSI6Dxi7eleOFE/NYYDkrgDLHTQri8ucDMVeVWHgoMY2bPXdn7KKy5jW5jKsf8EPARXg77A4gRYmgKrcwIKqJEUPqyxJBe0CPoGTqgXPRsUiQ== tomk{@literal @}hp2")
+ *             .publicKey("ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDM/unxJeFqxsTJcu6mhqsMHSaVlpu+Jj/P+44zrm6X/MAoHSX3X9oLgujEjjZ74yLfdfe0bJrbL2YgJzNaEkIQQ1VPMHB5EhTKUBGnzlPP0hHTnxsjAm9qDHgUPgvgFDQSAMzdJRJ0Cexo16Ph9VxCoLh3dxiE7s2gaM2FdVg7P8aSxKypsxAhYV3D0AwqzoOyT6WWhBoQ0xZ85XevOTnJCpImSemEGs6nVGEsWcEc1d1YvdxFjAK4SdsKUMkj4Dsy/leKsdi/DEAf356vbMT1UHsXXvy5TlHu/Pa6qF53v32Enz+nhKy7/8W2Yt2yWx8HnQcT2rug9lvCXagJO6oauqRTO77C4QZn13ZLMZgLT66S/tNh2EX0gi6vmIs5dth8uF+K6nxIyKJXbcA4ASg7F1OJrHKFZdTc5v1cPeq6PcbqGgc+8SrPYQmzvQqLoMBuxyos2hUkYOmw3aeWJj9nFa8Wu5WaN89mUeOqSkU4S5cgUzWUOmKey56B/j/s1sVys9rMhZapVs0wL4L9GBBM48N5jAQZnnpo85A8KsZq5ME22bTLqnxsDXqDYZvS7PSI6Dxi7eleOFE/NYYDkrgDLHTQri8ucDMVeVWHgoMY2bPXdn7KKy5jW5jKsf8EPARXg77A4gRYmgKrcwIKqJEUPqyxJBe0CPoGTqgXPRsUiQ== tomk}{@literal @}{@code hp2")
  *             .projectId(projectId)
  *             .build());
  * 
@@ -59,8 +59,8 @@ import javax.annotation.Nullable;
  *             .projectId(projectId)
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -170,7 +170,7 @@ public class ProjectSshKey extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ProjectSshKey(String name) {
+    public ProjectSshKey(java.lang.String name) {
         this(name, ProjectSshKeyArgs.Empty);
     }
     /**
@@ -178,7 +178,7 @@ public class ProjectSshKey extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ProjectSshKey(String name, ProjectSshKeyArgs args) {
+    public ProjectSshKey(java.lang.String name, ProjectSshKeyArgs args) {
         this(name, args, null);
     }
     /**
@@ -187,12 +187,12 @@ public class ProjectSshKey extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ProjectSshKey(String name, ProjectSshKeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("equinix:metal/projectSshKey:ProjectSshKey", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public ProjectSshKey(java.lang.String name, ProjectSshKeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("equinix:metal/projectSshKey:ProjectSshKey", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ProjectSshKey(String name, Output<String> id, @Nullable ProjectSshKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("equinix:metal/projectSshKey:ProjectSshKey", name, state, makeResourceOptions(options, id));
+    private ProjectSshKey(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectSshKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("equinix:metal/projectSshKey:ProjectSshKey", name, state, makeResourceOptions(options, id), false);
     }
 
     private static ProjectSshKeyArgs makeArgs(ProjectSshKeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -202,7 +202,7 @@ public class ProjectSshKey extends com.pulumi.resources.CustomResource {
         return args == null ? ProjectSshKeyArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -218,7 +218,7 @@ public class ProjectSshKey extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ProjectSshKey get(String name, Output<String> id, @Nullable ProjectSshKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ProjectSshKey get(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectSshKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ProjectSshKey(name, id, state, options);
     }
 }

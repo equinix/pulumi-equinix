@@ -219,7 +219,7 @@ class Gateway(pulumi.CustomResource):
                  ip_reservation_id: Optional[pulumi.Input[str]] = None,
                  private_ipv4_subnet_size: Optional[pulumi.Input[int]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 timeouts: Optional[pulumi.Input[pulumi.InputType['GatewayTimeoutsArgs']]] = None,
+                 timeouts: Optional[pulumi.Input[Union['GatewayTimeoutsArgs', 'GatewayTimeoutsArgsDict']]] = None,
                  vlan_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -331,7 +331,7 @@ class Gateway(pulumi.CustomResource):
                  ip_reservation_id: Optional[pulumi.Input[str]] = None,
                  private_ipv4_subnet_size: Optional[pulumi.Input[int]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 timeouts: Optional[pulumi.Input[pulumi.InputType['GatewayTimeoutsArgs']]] = None,
+                 timeouts: Optional[pulumi.Input[Union['GatewayTimeoutsArgs', 'GatewayTimeoutsArgsDict']]] = None,
                  vlan_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -367,7 +367,7 @@ class Gateway(pulumi.CustomResource):
             private_ipv4_subnet_size: Optional[pulumi.Input[int]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
-            timeouts: Optional[pulumi.Input[pulumi.InputType['GatewayTimeoutsArgs']]] = None,
+            timeouts: Optional[pulumi.Input[Union['GatewayTimeoutsArgs', 'GatewayTimeoutsArgsDict']]] = None,
             vlan_id: Optional[pulumi.Input[str]] = None,
             vrf_id: Optional[pulumi.Input[str]] = None) -> 'Gateway':
         """

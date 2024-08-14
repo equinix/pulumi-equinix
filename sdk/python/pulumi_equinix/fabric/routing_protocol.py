@@ -513,15 +513,15 @@ class RoutingProtocol(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bfd: Optional[pulumi.Input[pulumi.InputType['RoutingProtocolBfdArgs']]] = None,
+                 bfd: Optional[pulumi.Input[Union['RoutingProtocolBfdArgs', 'RoutingProtocolBfdArgsDict']]] = None,
                  bgp_auth_key: Optional[pulumi.Input[str]] = None,
-                 bgp_ipv4: Optional[pulumi.Input[pulumi.InputType['RoutingProtocolBgpIpv4Args']]] = None,
-                 bgp_ipv6: Optional[pulumi.Input[pulumi.InputType['RoutingProtocolBgpIpv6Args']]] = None,
+                 bgp_ipv4: Optional[pulumi.Input[Union['RoutingProtocolBgpIpv4Args', 'RoutingProtocolBgpIpv4ArgsDict']]] = None,
+                 bgp_ipv6: Optional[pulumi.Input[Union['RoutingProtocolBgpIpv6Args', 'RoutingProtocolBgpIpv6ArgsDict']]] = None,
                  connection_uuid: Optional[pulumi.Input[str]] = None,
                  customer_asn: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 direct_ipv4: Optional[pulumi.Input[pulumi.InputType['RoutingProtocolDirectIpv4Args']]] = None,
-                 direct_ipv6: Optional[pulumi.Input[pulumi.InputType['RoutingProtocolDirectIpv6Args']]] = None,
+                 direct_ipv4: Optional[pulumi.Input[Union['RoutingProtocolDirectIpv4Args', 'RoutingProtocolDirectIpv4ArgsDict']]] = None,
+                 direct_ipv6: Optional[pulumi.Input[Union['RoutingProtocolDirectIpv6Args', 'RoutingProtocolDirectIpv6ArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  uuid: Optional[pulumi.Input[str]] = None,
@@ -543,12 +543,12 @@ class RoutingProtocol(pulumi.CustomResource):
             connection_uuid="<some_id>",
             type="DIRECT",
             name="direct_rp",
-            direct_ipv4=equinix.fabric.RoutingProtocolDirectIpv4Args(
-                equinix_iface_ip="190.1.1.1/30",
-            ),
-            direct_ipv6=equinix.fabric.RoutingProtocolDirectIpv6Args(
-                equinix_iface_ip="190::1:1/126",
-            ))
+            direct_ipv4={
+                "equinix_iface_ip": "190.1.1.1/30",
+            },
+            direct_ipv6={
+                "equinix_iface_ip": "190::1:1/126",
+            })
         ```
         ### example 2
         ```python
@@ -559,14 +559,14 @@ class RoutingProtocol(pulumi.CustomResource):
             connection_uuid="<same_connection_id_as_first_equinix_fabric_routing_protocol>",
             type="BGP",
             name="bgp_rp",
-            bgp_ipv4=equinix.fabric.RoutingProtocolBgpIpv4Args(
-                customer_peer_ip="190.1.1.2",
-                enabled=True,
-            ),
-            bgp_ipv6=equinix.fabric.RoutingProtocolBgpIpv6Args(
-                customer_peer_ip="190::1:2",
-                enabled=True,
-            ),
+            bgp_ipv4={
+                "customer_peer_ip": "190.1.1.2",
+                "enabled": True,
+            },
+            bgp_ipv6={
+                "customer_peer_ip": "190::1:2",
+                "enabled": True,
+            },
             customer_asn=4532)
         ```
         ### example 3
@@ -578,39 +578,39 @@ class RoutingProtocol(pulumi.CustomResource):
             connection_uuid="<some_id>",
             type="DIRECT",
             name="direct_rp",
-            direct_ipv4=equinix.fabric.RoutingProtocolDirectIpv4Args(
-                equinix_iface_ip="190.1.1.1/30",
-            ),
-            direct_ipv6=equinix.fabric.RoutingProtocolDirectIpv6Args(
-                equinix_iface_ip="190::1:1/126",
-            ))
+            direct_ipv4={
+                "equinix_iface_ip": "190.1.1.1/30",
+            },
+            direct_ipv6={
+                "equinix_iface_ip": "190::1:1/126",
+            })
         bgp = equinix.fabric.RoutingProtocol("bgp",
             connection_uuid="<same_connection_id_as_first_equinix_fabric_routing_protocol>",
             type="BGP",
             name="bgp_rp",
-            bgp_ipv4=equinix.fabric.RoutingProtocolBgpIpv4Args(
-                customer_peer_ip="190.1.1.2",
-                enabled=True,
-            ),
-            bgp_ipv6=equinix.fabric.RoutingProtocolBgpIpv6Args(
-                customer_peer_ip="190::1:2",
-                enabled=True,
-            ),
+            bgp_ipv4={
+                "customer_peer_ip": "190.1.1.2",
+                "enabled": True,
+            },
+            bgp_ipv6={
+                "customer_peer_ip": "190::1:2",
+                "enabled": True,
+            },
             customer_asn=4532,
             opts = pulumi.ResourceOptions(depends_on=[direct]))
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['RoutingProtocolBfdArgs']] bfd: Bidirectional Forwarding Detection
+        :param pulumi.Input[Union['RoutingProtocolBfdArgs', 'RoutingProtocolBfdArgsDict']] bfd: Bidirectional Forwarding Detection
         :param pulumi.Input[str] bgp_auth_key: BGP authorization key
-        :param pulumi.Input[pulumi.InputType['RoutingProtocolBgpIpv4Args']] bgp_ipv4: Routing Protocol BGP IPv4
-        :param pulumi.Input[pulumi.InputType['RoutingProtocolBgpIpv6Args']] bgp_ipv6: Routing Protocol BGP IPv6
+        :param pulumi.Input[Union['RoutingProtocolBgpIpv4Args', 'RoutingProtocolBgpIpv4ArgsDict']] bgp_ipv4: Routing Protocol BGP IPv4
+        :param pulumi.Input[Union['RoutingProtocolBgpIpv6Args', 'RoutingProtocolBgpIpv6ArgsDict']] bgp_ipv6: Routing Protocol BGP IPv6
         :param pulumi.Input[str] connection_uuid: Connection URI associated with Routing Protocol
         :param pulumi.Input[int] customer_asn: Customer-provided ASN
         :param pulumi.Input[str] description: Customer-provided Fabric Routing Protocol description
-        :param pulumi.Input[pulumi.InputType['RoutingProtocolDirectIpv4Args']] direct_ipv4: Routing Protocol Direct IPv4
-        :param pulumi.Input[pulumi.InputType['RoutingProtocolDirectIpv6Args']] direct_ipv6: Routing Protocol Direct IPv6
+        :param pulumi.Input[Union['RoutingProtocolDirectIpv4Args', 'RoutingProtocolDirectIpv4ArgsDict']] direct_ipv4: Routing Protocol Direct IPv4
+        :param pulumi.Input[Union['RoutingProtocolDirectIpv6Args', 'RoutingProtocolDirectIpv6ArgsDict']] direct_ipv6: Routing Protocol Direct IPv6
         :param pulumi.Input[str] name: Routing Protocol name. An alpha-numeric 24 characters string which can include only hyphens and underscores
         :param pulumi.Input[str] type: Defines the routing protocol type like BGP or DIRECT
         :param pulumi.Input[str] uuid: Equinix-assigned routing protocol identifier
@@ -638,12 +638,12 @@ class RoutingProtocol(pulumi.CustomResource):
             connection_uuid="<some_id>",
             type="DIRECT",
             name="direct_rp",
-            direct_ipv4=equinix.fabric.RoutingProtocolDirectIpv4Args(
-                equinix_iface_ip="190.1.1.1/30",
-            ),
-            direct_ipv6=equinix.fabric.RoutingProtocolDirectIpv6Args(
-                equinix_iface_ip="190::1:1/126",
-            ))
+            direct_ipv4={
+                "equinix_iface_ip": "190.1.1.1/30",
+            },
+            direct_ipv6={
+                "equinix_iface_ip": "190::1:1/126",
+            })
         ```
         ### example 2
         ```python
@@ -654,14 +654,14 @@ class RoutingProtocol(pulumi.CustomResource):
             connection_uuid="<same_connection_id_as_first_equinix_fabric_routing_protocol>",
             type="BGP",
             name="bgp_rp",
-            bgp_ipv4=equinix.fabric.RoutingProtocolBgpIpv4Args(
-                customer_peer_ip="190.1.1.2",
-                enabled=True,
-            ),
-            bgp_ipv6=equinix.fabric.RoutingProtocolBgpIpv6Args(
-                customer_peer_ip="190::1:2",
-                enabled=True,
-            ),
+            bgp_ipv4={
+                "customer_peer_ip": "190.1.1.2",
+                "enabled": True,
+            },
+            bgp_ipv6={
+                "customer_peer_ip": "190::1:2",
+                "enabled": True,
+            },
             customer_asn=4532)
         ```
         ### example 3
@@ -673,24 +673,24 @@ class RoutingProtocol(pulumi.CustomResource):
             connection_uuid="<some_id>",
             type="DIRECT",
             name="direct_rp",
-            direct_ipv4=equinix.fabric.RoutingProtocolDirectIpv4Args(
-                equinix_iface_ip="190.1.1.1/30",
-            ),
-            direct_ipv6=equinix.fabric.RoutingProtocolDirectIpv6Args(
-                equinix_iface_ip="190::1:1/126",
-            ))
+            direct_ipv4={
+                "equinix_iface_ip": "190.1.1.1/30",
+            },
+            direct_ipv6={
+                "equinix_iface_ip": "190::1:1/126",
+            })
         bgp = equinix.fabric.RoutingProtocol("bgp",
             connection_uuid="<same_connection_id_as_first_equinix_fabric_routing_protocol>",
             type="BGP",
             name="bgp_rp",
-            bgp_ipv4=equinix.fabric.RoutingProtocolBgpIpv4Args(
-                customer_peer_ip="190.1.1.2",
-                enabled=True,
-            ),
-            bgp_ipv6=equinix.fabric.RoutingProtocolBgpIpv6Args(
-                customer_peer_ip="190::1:2",
-                enabled=True,
-            ),
+            bgp_ipv4={
+                "customer_peer_ip": "190.1.1.2",
+                "enabled": True,
+            },
+            bgp_ipv6={
+                "customer_peer_ip": "190::1:2",
+                "enabled": True,
+            },
             customer_asn=4532,
             opts = pulumi.ResourceOptions(depends_on=[direct]))
         ```
@@ -710,15 +710,15 @@ class RoutingProtocol(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bfd: Optional[pulumi.Input[pulumi.InputType['RoutingProtocolBfdArgs']]] = None,
+                 bfd: Optional[pulumi.Input[Union['RoutingProtocolBfdArgs', 'RoutingProtocolBfdArgsDict']]] = None,
                  bgp_auth_key: Optional[pulumi.Input[str]] = None,
-                 bgp_ipv4: Optional[pulumi.Input[pulumi.InputType['RoutingProtocolBgpIpv4Args']]] = None,
-                 bgp_ipv6: Optional[pulumi.Input[pulumi.InputType['RoutingProtocolBgpIpv6Args']]] = None,
+                 bgp_ipv4: Optional[pulumi.Input[Union['RoutingProtocolBgpIpv4Args', 'RoutingProtocolBgpIpv4ArgsDict']]] = None,
+                 bgp_ipv6: Optional[pulumi.Input[Union['RoutingProtocolBgpIpv6Args', 'RoutingProtocolBgpIpv6ArgsDict']]] = None,
                  connection_uuid: Optional[pulumi.Input[str]] = None,
                  customer_asn: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 direct_ipv4: Optional[pulumi.Input[pulumi.InputType['RoutingProtocolDirectIpv4Args']]] = None,
-                 direct_ipv6: Optional[pulumi.Input[pulumi.InputType['RoutingProtocolDirectIpv6Args']]] = None,
+                 direct_ipv4: Optional[pulumi.Input[Union['RoutingProtocolDirectIpv4Args', 'RoutingProtocolDirectIpv4ArgsDict']]] = None,
+                 direct_ipv6: Optional[pulumi.Input[Union['RoutingProtocolDirectIpv6Args', 'RoutingProtocolDirectIpv6ArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  uuid: Optional[pulumi.Input[str]] = None,
@@ -761,21 +761,21 @@ class RoutingProtocol(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bfd: Optional[pulumi.Input[pulumi.InputType['RoutingProtocolBfdArgs']]] = None,
+            bfd: Optional[pulumi.Input[Union['RoutingProtocolBfdArgs', 'RoutingProtocolBfdArgsDict']]] = None,
             bgp_auth_key: Optional[pulumi.Input[str]] = None,
-            bgp_ipv4: Optional[pulumi.Input[pulumi.InputType['RoutingProtocolBgpIpv4Args']]] = None,
-            bgp_ipv6: Optional[pulumi.Input[pulumi.InputType['RoutingProtocolBgpIpv6Args']]] = None,
-            change_logs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoutingProtocolChangeLogArgs']]]]] = None,
-            changes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoutingProtocolChangeArgs']]]]] = None,
+            bgp_ipv4: Optional[pulumi.Input[Union['RoutingProtocolBgpIpv4Args', 'RoutingProtocolBgpIpv4ArgsDict']]] = None,
+            bgp_ipv6: Optional[pulumi.Input[Union['RoutingProtocolBgpIpv6Args', 'RoutingProtocolBgpIpv6ArgsDict']]] = None,
+            change_logs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RoutingProtocolChangeLogArgs', 'RoutingProtocolChangeLogArgsDict']]]]] = None,
+            changes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RoutingProtocolChangeArgs', 'RoutingProtocolChangeArgsDict']]]]] = None,
             connection_uuid: Optional[pulumi.Input[str]] = None,
             customer_asn: Optional[pulumi.Input[int]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            direct_ipv4: Optional[pulumi.Input[pulumi.InputType['RoutingProtocolDirectIpv4Args']]] = None,
-            direct_ipv6: Optional[pulumi.Input[pulumi.InputType['RoutingProtocolDirectIpv6Args']]] = None,
+            direct_ipv4: Optional[pulumi.Input[Union['RoutingProtocolDirectIpv4Args', 'RoutingProtocolDirectIpv4ArgsDict']]] = None,
+            direct_ipv6: Optional[pulumi.Input[Union['RoutingProtocolDirectIpv6Args', 'RoutingProtocolDirectIpv6ArgsDict']]] = None,
             equinix_asn: Optional[pulumi.Input[int]] = None,
             href: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            operations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoutingProtocolOperationArgs']]]]] = None,
+            operations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RoutingProtocolOperationArgs', 'RoutingProtocolOperationArgsDict']]]]] = None,
             state: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None,
             uuid: Optional[pulumi.Input[str]] = None) -> 'RoutingProtocol':
@@ -786,21 +786,21 @@ class RoutingProtocol(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['RoutingProtocolBfdArgs']] bfd: Bidirectional Forwarding Detection
+        :param pulumi.Input[Union['RoutingProtocolBfdArgs', 'RoutingProtocolBfdArgsDict']] bfd: Bidirectional Forwarding Detection
         :param pulumi.Input[str] bgp_auth_key: BGP authorization key
-        :param pulumi.Input[pulumi.InputType['RoutingProtocolBgpIpv4Args']] bgp_ipv4: Routing Protocol BGP IPv4
-        :param pulumi.Input[pulumi.InputType['RoutingProtocolBgpIpv6Args']] bgp_ipv6: Routing Protocol BGP IPv6
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoutingProtocolChangeLogArgs']]]] change_logs: Captures Routing Protocol lifecycle change information
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoutingProtocolChangeArgs']]]] changes: Routing Protocol configuration Changes
+        :param pulumi.Input[Union['RoutingProtocolBgpIpv4Args', 'RoutingProtocolBgpIpv4ArgsDict']] bgp_ipv4: Routing Protocol BGP IPv4
+        :param pulumi.Input[Union['RoutingProtocolBgpIpv6Args', 'RoutingProtocolBgpIpv6ArgsDict']] bgp_ipv6: Routing Protocol BGP IPv6
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RoutingProtocolChangeLogArgs', 'RoutingProtocolChangeLogArgsDict']]]] change_logs: Captures Routing Protocol lifecycle change information
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RoutingProtocolChangeArgs', 'RoutingProtocolChangeArgsDict']]]] changes: Routing Protocol configuration Changes
         :param pulumi.Input[str] connection_uuid: Connection URI associated with Routing Protocol
         :param pulumi.Input[int] customer_asn: Customer-provided ASN
         :param pulumi.Input[str] description: Customer-provided Fabric Routing Protocol description
-        :param pulumi.Input[pulumi.InputType['RoutingProtocolDirectIpv4Args']] direct_ipv4: Routing Protocol Direct IPv4
-        :param pulumi.Input[pulumi.InputType['RoutingProtocolDirectIpv6Args']] direct_ipv6: Routing Protocol Direct IPv6
+        :param pulumi.Input[Union['RoutingProtocolDirectIpv4Args', 'RoutingProtocolDirectIpv4ArgsDict']] direct_ipv4: Routing Protocol Direct IPv4
+        :param pulumi.Input[Union['RoutingProtocolDirectIpv6Args', 'RoutingProtocolDirectIpv6ArgsDict']] direct_ipv6: Routing Protocol Direct IPv6
         :param pulumi.Input[int] equinix_asn: Equinix ASN
         :param pulumi.Input[str] href: Routing Protocol URI information
         :param pulumi.Input[str] name: Routing Protocol name. An alpha-numeric 24 characters string which can include only hyphens and underscores
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoutingProtocolOperationArgs']]]] operations: Routing Protocol type-specific operational data
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RoutingProtocolOperationArgs', 'RoutingProtocolOperationArgsDict']]]] operations: Routing Protocol type-specific operational data
         :param pulumi.Input[str] state: Routing Protocol overall state
         :param pulumi.Input[str] type: Defines the routing protocol type like BGP or DIRECT
         :param pulumi.Input[str] uuid: Equinix-assigned routing protocol identifier

@@ -334,10 +334,10 @@ class Network(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 location: Optional[pulumi.Input[pulumi.InputType['NetworkLocationArgs']]] = None,
+                 location: Optional[pulumi.Input[Union['NetworkLocationArgs', 'NetworkLocationArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 notifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkNotificationArgs']]]]] = None,
-                 project: Optional[pulumi.Input[pulumi.InputType['NetworkProjectArgs']]] = None,
+                 notifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkNotificationArgs', 'NetworkNotificationArgsDict']]]]] = None,
+                 project: Optional[pulumi.Input[Union['NetworkProjectArgs', 'NetworkProjectArgsDict']]] = None,
                  scope: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -355,26 +355,26 @@ class Network(pulumi.CustomResource):
         import pulumi_equinix as equinix
 
         new_network = equinix.fabric.Network("newNetwork",
-            notifications=[equinix.fabric.NetworkNotificationArgs(
-                emails=[
+            notifications=[{
+                "emails": [
                     "example@equinix.com",
                     "test1@equinix.com",
                 ],
-                type="ALL",
-            )],
-            project=equinix.fabric.NetworkProjectArgs(
-                project_id="776847000642406",
-            ),
+                "type": "ALL",
+            }],
+            project={
+                "project_id": "776847000642406",
+            },
             scope="GLOBAL",
             type="EVPLAN")
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['NetworkLocationArgs']] location: Fabric Network location
+        :param pulumi.Input[Union['NetworkLocationArgs', 'NetworkLocationArgsDict']] location: Fabric Network location
         :param pulumi.Input[str] name: Fabric Network name. An alpha-numeric 24 characters string which can include only hyphens and underscores
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkNotificationArgs']]]] notifications: Preferences for notifications on Fabric Network configuration or status changes
-        :param pulumi.Input[pulumi.InputType['NetworkProjectArgs']] project: Fabric Network project
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkNotificationArgs', 'NetworkNotificationArgsDict']]]] notifications: Preferences for notifications on Fabric Network configuration or status changes
+        :param pulumi.Input[Union['NetworkProjectArgs', 'NetworkProjectArgsDict']] project: Fabric Network project
         :param pulumi.Input[str] scope: Fabric Network scope
         :param pulumi.Input[str] type: Supported Network types - EVPLAN, EPLAN, IPWAN
         """
@@ -398,16 +398,16 @@ class Network(pulumi.CustomResource):
         import pulumi_equinix as equinix
 
         new_network = equinix.fabric.Network("newNetwork",
-            notifications=[equinix.fabric.NetworkNotificationArgs(
-                emails=[
+            notifications=[{
+                "emails": [
                     "example@equinix.com",
                     "test1@equinix.com",
                 ],
-                type="ALL",
-            )],
-            project=equinix.fabric.NetworkProjectArgs(
-                project_id="776847000642406",
-            ),
+                "type": "ALL",
+            }],
+            project={
+                "project_id": "776847000642406",
+            },
             scope="GLOBAL",
             type="EVPLAN")
         ```
@@ -427,10 +427,10 @@ class Network(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 location: Optional[pulumi.Input[pulumi.InputType['NetworkLocationArgs']]] = None,
+                 location: Optional[pulumi.Input[Union['NetworkLocationArgs', 'NetworkLocationArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 notifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkNotificationArgs']]]]] = None,
-                 project: Optional[pulumi.Input[pulumi.InputType['NetworkProjectArgs']]] = None,
+                 notifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkNotificationArgs', 'NetworkNotificationArgsDict']]]]] = None,
+                 project: Optional[pulumi.Input[Union['NetworkProjectArgs', 'NetworkProjectArgsDict']]] = None,
                  scope: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -473,15 +473,15 @@ class Network(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            change: Optional[pulumi.Input[pulumi.InputType['NetworkChangeArgs']]] = None,
-            change_log: Optional[pulumi.Input[pulumi.InputType['NetworkChangeLogArgs']]] = None,
+            change: Optional[pulumi.Input[Union['NetworkChangeArgs', 'NetworkChangeArgsDict']]] = None,
+            change_log: Optional[pulumi.Input[Union['NetworkChangeLogArgs', 'NetworkChangeLogArgsDict']]] = None,
             connections_count: Optional[pulumi.Input[int]] = None,
             href: Optional[pulumi.Input[str]] = None,
-            location: Optional[pulumi.Input[pulumi.InputType['NetworkLocationArgs']]] = None,
+            location: Optional[pulumi.Input[Union['NetworkLocationArgs', 'NetworkLocationArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            notifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkNotificationArgs']]]]] = None,
-            operation: Optional[pulumi.Input[pulumi.InputType['NetworkOperationArgs']]] = None,
-            project: Optional[pulumi.Input[pulumi.InputType['NetworkProjectArgs']]] = None,
+            notifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkNotificationArgs', 'NetworkNotificationArgsDict']]]]] = None,
+            operation: Optional[pulumi.Input[Union['NetworkOperationArgs', 'NetworkOperationArgsDict']]] = None,
+            project: Optional[pulumi.Input[Union['NetworkProjectArgs', 'NetworkProjectArgsDict']]] = None,
             scope: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None,
@@ -493,15 +493,15 @@ class Network(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['NetworkChangeArgs']] change: Information on asset change operation
-        :param pulumi.Input[pulumi.InputType['NetworkChangeLogArgs']] change_log: A permanent record of asset creation, modification, or deletion
+        :param pulumi.Input[Union['NetworkChangeArgs', 'NetworkChangeArgsDict']] change: Information on asset change operation
+        :param pulumi.Input[Union['NetworkChangeLogArgs', 'NetworkChangeLogArgsDict']] change_log: A permanent record of asset creation, modification, or deletion
         :param pulumi.Input[int] connections_count: Number of connections associated with this network
         :param pulumi.Input[str] href: Fabric Network URI information
-        :param pulumi.Input[pulumi.InputType['NetworkLocationArgs']] location: Fabric Network location
+        :param pulumi.Input[Union['NetworkLocationArgs', 'NetworkLocationArgsDict']] location: Fabric Network location
         :param pulumi.Input[str] name: Fabric Network name. An alpha-numeric 24 characters string which can include only hyphens and underscores
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkNotificationArgs']]]] notifications: Preferences for notifications on Fabric Network configuration or status changes
-        :param pulumi.Input[pulumi.InputType['NetworkOperationArgs']] operation: Network operation information that is associated with this Fabric Network
-        :param pulumi.Input[pulumi.InputType['NetworkProjectArgs']] project: Fabric Network project
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkNotificationArgs', 'NetworkNotificationArgsDict']]]] notifications: Preferences for notifications on Fabric Network configuration or status changes
+        :param pulumi.Input[Union['NetworkOperationArgs', 'NetworkOperationArgsDict']] operation: Network operation information that is associated with this Fabric Network
+        :param pulumi.Input[Union['NetworkProjectArgs', 'NetworkProjectArgsDict']] project: Fabric Network project
         :param pulumi.Input[str] scope: Fabric Network scope
         :param pulumi.Input[str] state: Fabric Network overall state
         :param pulumi.Input[str] type: Supported Network types - EVPLAN, EPLAN, IPWAN

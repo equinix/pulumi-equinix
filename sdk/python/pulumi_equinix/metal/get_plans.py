@@ -73,8 +73,8 @@ class AwaitableGetPlansResult(GetPlansResult):
             sorts=self.sorts)
 
 
-def get_plans(filters: Optional[Sequence[pulumi.InputType['GetPlansFilterArgs']]] = None,
-              sorts: Optional[Sequence[pulumi.InputType['GetPlansSortArgs']]] = None,
+def get_plans(filters: Optional[Sequence[Union['GetPlansFilterArgs', 'GetPlansFilterArgsDict']]] = None,
+              sorts: Optional[Sequence[Union['GetPlansSortArgs', 'GetPlansSortArgsDict']]] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPlansResult:
     """
     Provides an Equinix Metal plans datasource. This can be used to find plans that meet a filter criteria.
@@ -85,23 +85,23 @@ def get_plans(filters: Optional[Sequence[pulumi.InputType['GetPlansFilterArgs']]
     import pulumi
     import pulumi_equinix as equinix
 
-    example = equinix.metal.get_plans(sorts=[equinix.metal.GetPlansSortArgs(
-            attribute="pricing_hour",
-            direction="asc",
-        )],
+    example = equinix.metal.get_plans(sorts=[{
+            "attribute": "pricing_hour",
+            "direction": "asc",
+        }],
         filters=[
-            equinix.metal.GetPlansFilterArgs(
-                attribute="pricing_hour",
-                values=["2.5"],
-                match_by="less_than",
-            ),
-            equinix.metal.GetPlansFilterArgs(
-                attribute="available_in_metros",
-                values=[
+            {
+                "attribute": "pricing_hour",
+                "values": ["2.5"],
+                "match_by": "less_than",
+            },
+            {
+                "attribute": "available_in_metros",
+                "values": [
                     "da",
                     "sv",
                 ],
-            ),
+            },
         ])
     pulumi.export("plans", example.plans)
     ```
@@ -111,23 +111,23 @@ def get_plans(filters: Optional[Sequence[pulumi.InputType['GetPlansFilterArgs']]
     import pulumi_equinix as equinix
 
     example = equinix.metal.get_plans(filters=[
-        equinix.metal.GetPlansFilterArgs(
-            attribute="class",
-            values=["large"],
-            match_by="substring",
-        ),
-        equinix.metal.GetPlansFilterArgs(
-            attribute="deployment_types",
-            values=["spot_market"],
-        ),
-        equinix.metal.GetPlansFilterArgs(
-            attribute="available_in_metros",
-            values=[
+        {
+            "attribute": "class",
+            "values": ["large"],
+            "match_by": "substring",
+        },
+        {
+            "attribute": "deployment_types",
+            "values": ["spot_market"],
+        },
+        {
+            "attribute": "available_in_metros",
+            "values": [
                 "da",
                 "sv",
             ],
-            all=True,
-        ),
+            "all": True,
+        },
     ])
     pulumi.export("plans", example.plans)
     ```
@@ -142,23 +142,23 @@ def get_plans(filters: Optional[Sequence[pulumi.InputType['GetPlansFilterArgs']]
     import pulumi
     import pulumi_equinix as equinix
 
-    example_plans = equinix.metal.get_plans(sorts=[equinix.metal.GetPlansSortArgs(
-            attribute="pricing_hour",
-            direction="asc",
-        )],
+    example_plans = equinix.metal.get_plans(sorts=[{
+            "attribute": "pricing_hour",
+            "direction": "asc",
+        }],
         filters=[
-            equinix.metal.GetPlansFilterArgs(
-                attribute="name",
-                values=[
+            {
+                "attribute": "name",
+                "values": [
                     "c3.small.x86",
                     "c3.medium.x86",
                     "m3.large.x86",
                 ],
-            ),
-            equinix.metal.GetPlansFilterArgs(
-                attribute="available_in_metros",
-                values=["sv"],
-            ),
+            },
+            {
+                "attribute": "available_in_metros",
+                "values": ["sv"],
+            },
         ])
     # This equinix_metal_device will use the first returned plan and the first metro in which that plan is available
     # It will ignore future changes on plan and metro
@@ -187,8 +187,8 @@ def get_plans(filters: Optional[Sequence[pulumi.InputType['GetPlansFilterArgs']]
     ```
 
 
-    :param Sequence[pulumi.InputType['GetPlansFilterArgs']] filters: One or more attribute/values pairs to filter off of
-    :param Sequence[pulumi.InputType['GetPlansSortArgs']] sorts: One or more attribute/direction pairs on which to sort results. If multiple sorts are provided, they will be applied in order
+    :param Sequence[Union['GetPlansFilterArgs', 'GetPlansFilterArgsDict']] filters: One or more attribute/values pairs to filter off of
+    :param Sequence[Union['GetPlansSortArgs', 'GetPlansSortArgsDict']] sorts: One or more attribute/direction pairs on which to sort results. If multiple sorts are provided, they will be applied in order
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -204,8 +204,8 @@ def get_plans(filters: Optional[Sequence[pulumi.InputType['GetPlansFilterArgs']]
 
 
 @_utilities.lift_output_func(get_plans)
-def get_plans_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetPlansFilterArgs']]]]] = None,
-                     sorts: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetPlansSortArgs']]]]] = None,
+def get_plans_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetPlansFilterArgs', 'GetPlansFilterArgsDict']]]]] = None,
+                     sorts: Optional[pulumi.Input[Optional[Sequence[Union['GetPlansSortArgs', 'GetPlansSortArgsDict']]]]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPlansResult]:
     """
     Provides an Equinix Metal plans datasource. This can be used to find plans that meet a filter criteria.
@@ -216,23 +216,23 @@ def get_plans_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.Inp
     import pulumi
     import pulumi_equinix as equinix
 
-    example = equinix.metal.get_plans(sorts=[equinix.metal.GetPlansSortArgs(
-            attribute="pricing_hour",
-            direction="asc",
-        )],
+    example = equinix.metal.get_plans(sorts=[{
+            "attribute": "pricing_hour",
+            "direction": "asc",
+        }],
         filters=[
-            equinix.metal.GetPlansFilterArgs(
-                attribute="pricing_hour",
-                values=["2.5"],
-                match_by="less_than",
-            ),
-            equinix.metal.GetPlansFilterArgs(
-                attribute="available_in_metros",
-                values=[
+            {
+                "attribute": "pricing_hour",
+                "values": ["2.5"],
+                "match_by": "less_than",
+            },
+            {
+                "attribute": "available_in_metros",
+                "values": [
                     "da",
                     "sv",
                 ],
-            ),
+            },
         ])
     pulumi.export("plans", example.plans)
     ```
@@ -242,23 +242,23 @@ def get_plans_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.Inp
     import pulumi_equinix as equinix
 
     example = equinix.metal.get_plans(filters=[
-        equinix.metal.GetPlansFilterArgs(
-            attribute="class",
-            values=["large"],
-            match_by="substring",
-        ),
-        equinix.metal.GetPlansFilterArgs(
-            attribute="deployment_types",
-            values=["spot_market"],
-        ),
-        equinix.metal.GetPlansFilterArgs(
-            attribute="available_in_metros",
-            values=[
+        {
+            "attribute": "class",
+            "values": ["large"],
+            "match_by": "substring",
+        },
+        {
+            "attribute": "deployment_types",
+            "values": ["spot_market"],
+        },
+        {
+            "attribute": "available_in_metros",
+            "values": [
                 "da",
                 "sv",
             ],
-            all=True,
-        ),
+            "all": True,
+        },
     ])
     pulumi.export("plans", example.plans)
     ```
@@ -273,23 +273,23 @@ def get_plans_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.Inp
     import pulumi
     import pulumi_equinix as equinix
 
-    example_plans = equinix.metal.get_plans(sorts=[equinix.metal.GetPlansSortArgs(
-            attribute="pricing_hour",
-            direction="asc",
-        )],
+    example_plans = equinix.metal.get_plans(sorts=[{
+            "attribute": "pricing_hour",
+            "direction": "asc",
+        }],
         filters=[
-            equinix.metal.GetPlansFilterArgs(
-                attribute="name",
-                values=[
+            {
+                "attribute": "name",
+                "values": [
                     "c3.small.x86",
                     "c3.medium.x86",
                     "m3.large.x86",
                 ],
-            ),
-            equinix.metal.GetPlansFilterArgs(
-                attribute="available_in_metros",
-                values=["sv"],
-            ),
+            },
+            {
+                "attribute": "available_in_metros",
+                "values": ["sv"],
+            },
         ])
     # This equinix_metal_device will use the first returned plan and the first metro in which that plan is available
     # It will ignore future changes on plan and metro
@@ -318,7 +318,7 @@ def get_plans_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.Inp
     ```
 
 
-    :param Sequence[pulumi.InputType['GetPlansFilterArgs']] filters: One or more attribute/values pairs to filter off of
-    :param Sequence[pulumi.InputType['GetPlansSortArgs']] sorts: One or more attribute/direction pairs on which to sort results. If multiple sorts are provided, they will be applied in order
+    :param Sequence[Union['GetPlansFilterArgs', 'GetPlansFilterArgsDict']] filters: One or more attribute/values pairs to filter off of
+    :param Sequence[Union['GetPlansSortArgs', 'GetPlansSortArgsDict']] sorts: One or more attribute/direction pairs on which to sort results. If multiple sorts are provided, they will be applied in order
     """
     ...
