@@ -22,16 +22,16 @@ arista_ha = equinix.networkedge.Device("aristaHa",
     core_count=4,
     term_length=12,
     additional_bandwidth=5,
-    ssh_key={
-        "username": "test-username",
-        "key_name": test_public_key.name,
-    },
+    ssh_key=equinix.networkedge.DeviceSshKeyArgs(
+        username="test-username",
+        key_name=test_public_key.name,
+    ),
     acl_template_id="c637a17b-7a6a-4486-924b-30e6c36904b0",
-    secondary_device={
-        "name": "tf-arista-s",
-        "metro_code": sv.metro_code,
-        "hostname": "arista-s",
-        "notifications": ["test@eq.com"],
-        "account_number": sv.number,
-        "acl_template_id": "fee5e2c0-6198-4ce6-9cbd-bbe6c1dbe138",
-    })
+    secondary_device=equinix.networkedge.DeviceSecondaryDeviceArgs(
+        name="tf-arista-s",
+        metro_code=sv.metro_code,
+        hostname="arista-s",
+        notifications=["test@eq.com"],
+        account_number=sv.number,
+        acl_template_id="fee5e2c0-6198-4ce6-9cbd-bbe6c1dbe138",
+    ))

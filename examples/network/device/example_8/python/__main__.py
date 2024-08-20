@@ -34,10 +34,10 @@ bluecat_edge_service_point_ha = equinix.networkedge.Device("bluecatEdgeServicePo
     version="4.6.3",
     core_count=4,
     term_length=12,
-    secondary_device={
-        "name": "tf-bluecat-edge-service-point-s",
-        "metro_code": sv.metro_code,
-        "notifications": ["test@eq.com"],
-        "account_number": sv.number,
-        "cloud_init_file_id": bluecat_edge_service_point_cloudinit_secondary_file.uuid,
-    })
+    secondary_device=equinix.networkedge.DeviceSecondaryDeviceArgs(
+        name="tf-bluecat-edge-service-point-s",
+        metro_code=sv.metro_code,
+        notifications=["test@eq.com"],
+        account_number=sv.number,
+        cloud_init_file_id=bluecat_edge_service_point_cloudinit_secondary_file.uuid,
+    ))

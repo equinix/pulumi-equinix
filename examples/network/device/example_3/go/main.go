@@ -29,7 +29,7 @@ func main() {
 		}
 		aviatrixCloudinitFile, err := networkedge.NewNetworkFile(ctx, "aviatrixCloudinitFile", &networkedge.NetworkFileArgs{
 			FileName:       pulumi.String("TF-AVX-cloud-init-file.txt"),
-			Content:        pulumi.String(invokeFile.Result),
+			Content:        invokeFile.Result,
 			MetroCode:      sv.MetroCode.ApplyT(func(x *string) equinix.Metro { return equinix.Metro(*x) }).(equinix.MetroOutput),
 			DeviceTypeCode: pulumi.String("AVIATRIX_EDGE"),
 			ProcessType:    pulumi.String(networkedge.FileTypeCloudInit),

@@ -50,7 +50,7 @@ import (
 //				Type:             pulumi.String("shared"),
 //				Redundancy:       pulumi.String("primary"),
 //				Metro:            pulumi.String(metro),
-//				Speed:            pulumi.Sprintf("%vMbps", speedInMbps),
+//				Speed:            pulumi.String(fmt.Sprintf("%vMbps", speedInMbps)),
 //				ServiceTokenType: pulumi.String("z_side"),
 //			})
 //			if err != nil {
@@ -95,7 +95,7 @@ import (
 //				Type:             pulumi.String("shared"),
 //				Redundancy:       pulumi.String("primary"),
 //				Metro:            pulumi.String(metro),
-//				Speed:            pulumi.Sprintf("%vMbps", speedInMbps),
+//				Speed:            pulumi.String(fmt.Sprintf("%vMbps", speedInMbps)),
 //				ServiceTokenType: pulumi.String("a_side"),
 //			})
 //			if err != nil {
@@ -103,6 +103,173 @@ import (
 //			}
 //			ctx.Export("connectionStatus", connection.Status)
 //			ctx.Export("connectionTokens", connection.ServiceTokens)
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### example shared metal fabric connection from fcr
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric"
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example1, err := metal.NewVlan(ctx, "example1", &metal.VlanArgs{
+//				ProjectId: pulumi.Any(myProjectId),
+//				Metro:     pulumi.String("SV"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			example, err := metal.NewInterconnection(ctx, "example", &metal.InterconnectionArgs{
+//				Name:         pulumi.String("tf-port-to-metal-legacy"),
+//				ProjectId:    pulumi.Any(myProjectId),
+//				Metro:        pulumi.String("SV"),
+//				Redundancy:   pulumi.String("primary"),
+//				Type:         pulumi.String("shared_port_vlan"),
+//				ContactEmail: pulumi.String("username@example.com"),
+//				Vlans: pulumi.IntArray{
+//					example1.Vxlan,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = fabric.NewConnection(ctx, "exampleConnection", &fabric.ConnectionArgs{
+//				Name: pulumi.String("tf-NIMF-metal-2-aws-legacy"),
+//				Type: pulumi.String("IP_VC"),
+//				Notifications: fabric.ConnectionNotificationArray{
+//					&fabric.ConnectionNotificationArgs{
+//						Type:   pulumi.String(fabric.NotificationsTypeAll),
+//						Emails: pulumi.StringArray("sername@example.com"),
+//					},
+//				},
+//				Project: &fabric.ConnectionProjectArgs{
+//					ProjectId: pulumi.Any(fabricProjectId),
+//				},
+//				Bandwidth: pulumi.Int(200),
+//				Order: &fabric.ConnectionOrderArgs{
+//					PurchaseOrderNumber: pulumi.String("1-323292"),
+//				},
+//				ASide: &fabric.ConnectionASideArgs{
+//					AccessPoint: &fabric.ConnectionASideAccessPointArgs{
+//						Type: pulumi.String("CLOUD_ROUTER"),
+//						Router: &fabric.ConnectionASideAccessPointRouterArgs{
+//							Uuid: pulumi.Any(cloudRouterUuid),
+//						},
+//					},
+//				},
+//				ZSide: &fabric.ConnectionZSideArgs{
+//					AccessPoint: &fabric.ConnectionZSideAccessPointArgs{
+//						Type:              pulumi.String("METAL_NETWORK"),
+//						AuthenticationKey: example.AuthorizationCode,
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### example shared metal fabric connection to csp
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix"
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric"
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			zside, err := fabric.GetServiceProfiles(ctx, &fabric.GetServiceProfilesArgs{
+//				Filter: fabric.GetServiceProfilesFilter{
+//					Property: "/name",
+//					Operator: "=",
+//					Values: []string{
+//						"AWS Direct Connect",
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			example1, err := metal.NewVlan(ctx, "example1", &metal.VlanArgs{
+//				ProjectId: pulumi.Any(myProjectId),
+//				Metro:     pulumi.String("SV"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			example, err := metal.NewInterconnection(ctx, "example", &metal.InterconnectionArgs{
+//				Name:         pulumi.String("tf-port-to-metal-legacy"),
+//				ProjectId:    pulumi.Any(myProjectId),
+//				Metro:        pulumi.String("SV"),
+//				Redundancy:   pulumi.String("primary"),
+//				Type:         pulumi.String("shared_port_vlan"),
+//				ContactEmail: pulumi.String("username@example.com"),
+//				Vlans: pulumi.IntArray{
+//					example1.Vxlan,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = fabric.NewConnection(ctx, "exampleConnection", &fabric.ConnectionArgs{
+//				Name: pulumi.String("tf-NIMF-metal-2-aws-legacy"),
+//				Type: pulumi.String(fabric.ConnectionTypeEVPL),
+//				Notifications: fabric.ConnectionNotificationArray{
+//					&fabric.ConnectionNotificationArgs{
+//						Type:   pulumi.String(fabric.NotificationsTypeAll),
+//						Emails: pulumi.StringArray("sername@example.com"),
+//					},
+//				},
+//				Project: &fabric.ConnectionProjectArgs{
+//					ProjectId: pulumi.Any(fabricProjectId),
+//				},
+//				Bandwidth: pulumi.Int(200),
+//				Order: &fabric.ConnectionOrderArgs{
+//					PurchaseOrderNumber: pulumi.String("1-323292"),
+//				},
+//				ASide: &fabric.ConnectionASideArgs{
+//					AccessPoint: &fabric.ConnectionASideAccessPointArgs{
+//						Type:              pulumi.String("METAL_NETWORK"),
+//						AuthenticationKey: example.AuthorizationCode,
+//					},
+//				},
+//				ZSide: &fabric.ConnectionZSideArgs{
+//					AccessPoint: &fabric.ConnectionZSideAccessPointArgs{
+//						Type:              pulumi.String(fabric.AccessPointTypeSP),
+//						AuthenticationKey: pulumi.Any(awsAccountId),
+//						SellerRegion:      pulumi.String("us-west-1"),
+//						Profile: &fabric.ConnectionZSideAccessPointProfileArgs{
+//							Type: pulumi.String(fabric.ProfileTypeL2Profile),
+//							Uuid: pulumi.String(zside.Id),
+//						},
+//						Location: &fabric.ConnectionZSideAccessPointLocationArgs{
+//							MetroCode: pulumi.String(equinix.MetroSiliconValley),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			return nil
 //		})
 //	}

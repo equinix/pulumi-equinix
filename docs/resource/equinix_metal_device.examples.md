@@ -286,10 +286,10 @@ web1 = equinix.metal.Device("web1",
     operating_system=equinix.metal.OperatingSystem.UBUNTU20_04,
     billing_cycle=equinix.metal.BillingCycle.HOURLY,
     project_id=project_id,
-    ip_addresses=[{
-        "type": "private_ipv4",
-        "cidr": 30,
-    }])
+    ip_addresses=[equinix.metal.DeviceIpAddressArgs(
+        type="private_ipv4",
+        cidr=30,
+    )])
 ```
 ```go
 package main
@@ -895,12 +895,12 @@ pxe1 = equinix.metal.Device("pxe1",
     always_pxe=False,
     user_data=user_data,
     custom_data=custom_data,
-    behavior={
-        "allow_changes": [
+    behavior=equinix.metal.DeviceBehaviorArgs(
+        allow_changes=[
             "custom_data",
             "user_data",
         ],
-    })
+    ))
 ```
 ```go
 package main

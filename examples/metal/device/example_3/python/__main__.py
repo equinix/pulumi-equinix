@@ -8,7 +8,7 @@ web1 = equinix.metal.Device("web1",
     operating_system=equinix.metal.OperatingSystem.UBUNTU20_04,
     billing_cycle=equinix.metal.BillingCycle.HOURLY,
     project_id=project_id,
-    ip_addresses=[{
-        "type": "private_ipv4",
-        "cidr": 30,
-    }])
+    ip_addresses=[equinix.metal.DeviceIpAddressArgs(
+        type="private_ipv4",
+        cidr=30,
+    )])

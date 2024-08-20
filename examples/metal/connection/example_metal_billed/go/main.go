@@ -26,7 +26,7 @@ func main() {
 			Type:             pulumi.String("shared"),
 			Redundancy:       pulumi.String("primary"),
 			Metro:            pulumi.String(metro),
-			Speed:            pulumi.Sprintf("%vMbps", speedInMbps),
+			Speed:            pulumi.String(fmt.Sprintf("%vMbps", speedInMbps)),
 			ServiceTokenType: pulumi.String("a_side"),
 		})
 		if err != nil {

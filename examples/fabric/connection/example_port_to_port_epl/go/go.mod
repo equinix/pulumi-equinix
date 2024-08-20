@@ -2,11 +2,11 @@ module equinix-fabric-connection-example_port_to_port_epl
 
 go 1.21
 
-toolchain go1.22.6
+toolchain go1.22.5
 
 require (
-	github.com/equinix/pulumi-equinix/sdk 0.14.0+dirty
-	github.com/pulumi/pulumi/sdk/v3 v3.126.0
+	github.com/equinix/pulumi-equinix/sdk 0.15.1
+	github.com/pulumi/pulumi/sdk/v3 v3.128.0
 )
 
 require (
