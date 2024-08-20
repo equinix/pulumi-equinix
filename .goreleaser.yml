@@ -7,7 +7,7 @@ archives:
     name_template: "{{ .Binary }}-{{ .Tag }}-{{ .Os }}-{{ .Arch }}"
 before:
   hooks:
-    - make tfgen
+    - make only_tfgen
 builds:
   - binary: pulumi-resource-equinix
     dir: provider
