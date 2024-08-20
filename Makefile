@@ -10,19 +10,30 @@ NODE_MODULE_NAME := @${ORG}/${NODE_PACK}
 TF_NAME          := ${PACK}
 PROVIDER_PATH    := provider
 VERSION_PATH     := ${PROVIDER_PATH}/pkg/version.Version
-
 TFGEN            := pulumi-tfgen-${PACK}
 PROVIDER         := pulumi-resource-${PACK}
-VERSION          := $(shell pulumictl get version)
 JAVA_GEN         := pulumi-java-gen
 JAVA_GROUP_ID    := com.${ORG}.pulumi
 JAVA_ARTIFACT_ID := ${PACK}
 TESTPARALLELISM  := 4
 
-WORKING_DIR     := $(shell pwd)
+WORKING_DIR   := $(shell pwd)
+BIN_DIR       := $(WORKING_DIR)/.pulumi/bin
+PULUMICTL_BIN := $(BIN_DIR)/pulumictl
 
-OS := $(shell uname)
+OS   := $(shell uname | tr '[:upper:]' '[:lower:]')
+ARCH := $(shell uname -m)
+
 EMPTY_TO_AVOID_SED := ""
+
+PULUMICTL_VERSION := v0.0.46
+
+# estimated target version of the plugin that is currently being generated
+VERSION         = $(shell $(PULUMICTL_BIN) get version)
+PACKAGE_VERSION = $(shell $(PULUMICTL_BIN) get version --language generic)
+NODEJS_VERSION  = $(shell $(PULUMICTL_BIN) get version --language javascript)
+PYPI_VERSION    = $(shell $(PULUMICTL_BIN) get version --language python)
+DOTNET_VERSION  = $(shell $(PULUMICTL_BIN) get version--language dotnet)
 
 development: install_plugins provider lint_provider build_sdks install_sdks cleanup # Build the provider & SDKs for a development environment
 
@@ -37,13 +48,14 @@ tfgen: only_tfgen generate_examples
 generate_examples: examples
 
 # Build the tfgen binary and generate the schema
+build_schema: $(PULUMICTL_BIN)
 build_schema:
 	(cd provider && go build -o $(WORKING_DIR)/bin/${TFGEN} -ldflags "-X ${PROJECT}/${VERSION_PATH}=${VERSION}" ${PROJECT}/${PROVIDER_PATH}/cmd/${TFGEN})
 	$(WORKING_DIR)/bin/${TFGEN} schema --out provider/cmd/${PROVIDER}
 	(cd provider && VERSION=$(VERSION) go generate cmd/${PROVIDER}/main.go)
 
-bin/pulumi-java-gen: .pulumi-java-gen.version
-	pulumictl download-binary -n pulumi-language-java -v v$(shell cat .pulumi-java-gen.version) -r pulumi/pulumi-java
+bin/pulumi-java-gen: .pulumi-java-gen.version $(PULUMICTL_BIN)
+	$(PULUMICTL_BIN) download-binary -n pulumi-language-java -v v$(shell cat .pulumi-java-gen.version) -r pulumi/pulumi-java
 
 provider: tfgen install_plugins # build the provider binary
 provider: only_provider
@@ -53,8 +65,7 @@ only_provider:
 
 build_sdks: clean build_nodejs build_python build_go build_dotnet build_java # build all the sdks
 
-build_nodejs: VERSION := $(shell pulumictl get version --language javascript)
-build_nodejs: upstream
+build_nodejs: upstream $(PULUMICTL_BIN)
 	$(WORKING_DIR)/bin/$(TFGEN) nodejs --overlays provider/overlays/nodejs --out sdk/nodejs/
 	echo "patch_nodejs: find and replace wrong imports in examples" && \
 		find ./sdk/nodejs/ -type f -name "*.ts" -not \( -path "*/bin/*" -o -path "*/node_modules/*" -o -path "*/@types/*" \) -print -exec sed -i.bak 's/import \* as ${PACK} from "@pulumi\/${PACK}"/import \* as ${PACK} from "@${ORG}-labs\/${NODE_PACK}"/g; s/import \* as ${NODE_PACK_ALIAS} from "@${ORG}\/${NODE_PACK}"/import \* as ${PACK} from "@${ORG}-labs\/${NODE_PACK}"/g' {} \;
@@ -67,10 +78,9 @@ build_nodejs: upstream
         yarn install && \
         yarn run tsc && \
         cp ../../README.md ../../LICENSE package.json yarn.lock ./bin/ && \
-		sed -i.bak -e "s/\$${VERSION}/$(VERSION)/g" ./bin/package.json
+		sed -i.bak -e "s/\$${VERSION}/$(NODEJS_VERSION)/g" ./bin/package.json
 
-build_python: PYPI_VERSION := $(shell pulumictl get version --language python)
-build_python: upstream
+build_python: upstream $(PULUMICTL_BIN)
 	rm -rf sdk/python/
 	$(WORKING_DIR)/bin/$(TFGEN) python --overlays provider/overlays/python --out sdk/python/
 	cd sdk/python/ && \
@@ -82,9 +92,7 @@ build_python: upstream
         rm ./bin/setup.py.bak && \
         cd ./bin && python3 setup.py build sdist
 
-build_dotnet: DOTNET_VERSION := $(shell pulumictl get version --language dotnet)
-build_dotnet: upstream
-	pulumictl get version --language dotnet
+build_dotnet: upstream $(PULUMICTL_BIN)
 	$(WORKING_DIR)/bin/$(TFGEN) dotnet --overlays provider/overlays/dotnet --out sdk/dotnet/
 	cd sdk/dotnet/ && \
 		printf "module fake_dotnet_module // Exclude this directory from Go tools\n\ngo 1.17\n" > go.mod && \
@@ -96,8 +104,7 @@ build_go:: upstream
 	go install golang.org/x/tools/cmd/goimports@latest
 	cd sdk && goimports -w . && go list "$$(grep -e "^module" go.mod | cut -d ' ' -f 2)/go/..." | xargs go build
 
-build_java: PACKAGE_VERSION := $(shell pulumictl get version --language generic)
-build_java: bin/pulumi-java-gen patch_java_schema upstream
+build_java: bin/pulumi-java-gen patch_java_schema upstream $(PULUMICTL_BIN)
 	$(WORKING_DIR)/bin/$(JAVA_GEN) generate --schema provider/cmd/$(PROVIDER)/schema-java.json --out sdk/java --build gradle-nexus
 	rm -f ./provider/cmd/$(PROVIDER)/schema-java.json
 	echo "patch_java: find and replace invocations of pulumi:fabric/metal/networkedge" && \
@@ -156,8 +163,8 @@ help:
 clean:
 	rm -rf sdk/{dotnet,nodejs,go,python,java}
 
-install_equinix_plugin: only_provider uninstall_equinix_plugin .pulumi/bin/pulumi
-	.pulumi/bin/pulumi plugin install resource equinix $(shell pulumictl get version --language generic) --file $(WORKING_DIR)/bin/$(PROVIDER)
+install_equinix_plugin: only_provider uninstall_equinix_plugin .pulumi/bin/pulumi $(PULUMICTL_BIN)
+	.pulumi/bin/pulumi plugin install resource equinix $(VERSION) --file $(WORKING_DIR)/bin/$(PROVIDER)
 
 uninstall_equinix_plugin: .pulumi/bin/pulumi
 	.pulumi/bin/pulumi plugin rm resource equinix -a -y
@@ -205,6 +212,12 @@ upstream.rebase:
 
 .pulumi/bin/pulumi: .pulumi/version
 	curl -fsSL https://get.pulumi.com | HOME=$(WORKING_DIR) sh -s -- --version $(cat .pulumi/version)
+
+$(PULUMICTL_BIN):
+	@mkdir -p $(BIN_DIR)
+	curl -L https://github.com/pulumi/pulumictl/releases/download/$(PULUMICTL_VERSION)/pulumictl-$(PULUMICTL_VERSION)-$(OS)-$(ARCH).tar.gz -o $(BIN_DIR)/pulumictl.tar.gz
+	tar -xzf .pulumi/bin/pulumictl.tar.gz -C $(BIN_DIR)
+	rm -f $(BIN_DIR)/pulumictl.tar.gz
 
 examples: install_equinix_plugin
 	scripts/generate_examples.sh
