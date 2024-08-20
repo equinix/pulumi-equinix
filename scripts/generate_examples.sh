@@ -20,7 +20,7 @@ EXAMPLES_DIR="${SCRIPT_DIR}/../examples/"
 # Docs directory
 OUTPUT_DIR="${SCRIPT_DIR}/../docs/resource"
 # Pulumi Equinix plugin version installed
-VERSION=$(pulumictl get version --language generic)
+VERSION=$(.pulumi/bin/pulumictl get version --language generic)
 
 get_patch() {
     local version="$1"
