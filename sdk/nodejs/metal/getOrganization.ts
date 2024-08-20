@@ -67,7 +67,9 @@ export interface GetOrganizationResult {
     readonly description?: string;
     readonly id: string;
     /**
-     * Logo URL.
+     * (Deprecated) Logo URL.
+     *
+     * @deprecated Empty string is the only valid value. Support for this field has been removed from the API
      */
     readonly logo: string;
     readonly name: string;

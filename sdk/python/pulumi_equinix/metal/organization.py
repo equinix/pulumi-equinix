@@ -36,6 +36,9 @@ class OrganizationArgs:
         if description is not None:
             pulumi.set(__self__, "description", description)
         if logo is not None:
+            warnings.warn("""The default (empty string) is the only valid value. Support for this field has been removed from the API""", DeprecationWarning)
+            pulumi.log.warn("""logo is deprecated: The default (empty string) is the only valid value. Support for this field has been removed from the API""")
+        if logo is not None:
             pulumi.set(__self__, "logo", logo)
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -70,6 +73,7 @@ class OrganizationArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""The default (empty string) is the only valid value. Support for this field has been removed from the API""")
     def logo(self) -> Optional[pulumi.Input[str]]:
         """
         Logo URL.
@@ -146,6 +150,9 @@ class _OrganizationState:
         if description is not None:
             pulumi.set(__self__, "description", description)
         if logo is not None:
+            warnings.warn("""The default (empty string) is the only valid value. Support for this field has been removed from the API""", DeprecationWarning)
+            pulumi.log.warn("""logo is deprecated: The default (empty string) is the only valid value. Support for this field has been removed from the API""")
+        if logo is not None:
             pulumi.set(__self__, "logo", logo)
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -194,6 +201,7 @@ class _OrganizationState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""The default (empty string) is the only valid value. Support for this field has been removed from the API""")
     def logo(self) -> Optional[pulumi.Input[str]]:
         """
         Logo URL.
@@ -434,6 +442,7 @@ class Organization(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""The default (empty string) is the only valid value. Support for this field has been removed from the API""")
     def logo(self) -> pulumi.Output[str]:
         """
         Logo URL.

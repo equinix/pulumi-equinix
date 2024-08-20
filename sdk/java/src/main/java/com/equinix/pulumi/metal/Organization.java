@@ -107,7 +107,11 @@ public class Organization extends com.pulumi.resources.CustomResource {
     /**
      * Logo URL.
      * 
+     * @deprecated
+     * The default (empty string) is the only valid value. Support for this field has been removed from the API
+     * 
      */
+    @Deprecated /* The default (empty string) is the only valid value. Support for this field has been removed from the API */
     @Export(name="logo", refs={String.class}, tree="[0]")
     private Output<String> logo;
 
