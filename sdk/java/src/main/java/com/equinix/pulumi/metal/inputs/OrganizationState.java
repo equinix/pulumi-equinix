@@ -64,14 +64,22 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
     /**
      * Logo URL.
      * 
+     * @deprecated
+     * The default (empty string) is the only valid value. Support for this field has been removed from the API
+     * 
      */
+    @Deprecated /* The default (empty string) is the only valid value. Support for this field has been removed from the API */
     @Import(name="logo")
     private @Nullable Output<String> logo;
 
     /**
      * @return Logo URL.
      * 
+     * @deprecated
+     * The default (empty string) is the only valid value. Support for this field has been removed from the API
+     * 
      */
+    @Deprecated /* The default (empty string) is the only valid value. Support for this field has been removed from the API */
     public Optional<Output<String>> logo() {
         return Optional.ofNullable(this.logo);
     }
@@ -235,7 +243,11 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * The default (empty string) is the only valid value. Support for this field has been removed from the API
+         * 
          */
+        @Deprecated /* The default (empty string) is the only valid value. Support for this field has been removed from the API */
         public Builder logo(@Nullable Output<String> logo) {
             $.logo = logo;
             return this;
@@ -246,7 +258,11 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * The default (empty string) is the only valid value. Support for this field has been removed from the API
+         * 
          */
+        @Deprecated /* The default (empty string) is the only valid value. Support for this field has been removed from the API */
         public Builder logo(String logo) {
             return logo(Output.of(logo));
         }

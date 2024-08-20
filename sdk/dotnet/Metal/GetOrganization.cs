@@ -139,7 +139,7 @@ namespace Pulumi.Equinix.Metal
         public readonly string? Description;
         public readonly string Id;
         /// <summary>
-        /// Logo URL.
+        /// (Deprecated) Logo URL.
         /// </summary>
         public readonly string Logo;
         public readonly string Name;
