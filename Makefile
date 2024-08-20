@@ -23,6 +23,9 @@ PULUMICTL_BIN := $(BIN_DIR)/pulumictl
 
 OS   := $(shell uname | tr '[:upper:]' '[:lower:]')
 ARCH := $(shell uname -m)
+ifeq ($(ARCH),x86_64)
+  ARCH=amd64
+endif
 
 EMPTY_TO_AVOID_SED := ""
 
