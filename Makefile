@@ -156,10 +156,10 @@ help:
 clean:
 	rm -rf sdk/{dotnet,nodejs,go,python,java}
 
-install_equinix_plugin: only_provider uninstall_equinix_plugin
+install_equinix_plugin: only_provider uninstall_equinix_plugin .pulumi/bin/pulumi
 	.pulumi/bin/pulumi plugin install resource equinix $(shell pulumictl get version --language generic) --file $(WORKING_DIR)/bin/$(PROVIDER)
 
-uninstall_equinix_plugin:
+uninstall_equinix_plugin: .pulumi/bin/pulumi
 	.pulumi/bin/pulumi plugin rm resource equinix -a -y
 
 install_plugins: .pulumi/bin/pulumi
