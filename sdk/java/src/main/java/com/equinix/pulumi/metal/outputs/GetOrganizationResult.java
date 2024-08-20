@@ -26,9 +26,13 @@ public final class GetOrganizationResult {
     private @Nullable String description;
     private String id;
     /**
-     * @return Logo URL.
+     * @return (Deprecated) Logo URL.
+     * 
+     * @deprecated
+     * Empty string is the only valid value. Support for this field has been removed from the API
      * 
      */
+    @Deprecated /* Empty string is the only valid value. Support for this field has been removed from the API */
     private String logo;
     private String name;
     private String organizationId;
@@ -67,9 +71,13 @@ public final class GetOrganizationResult {
         return this.id;
     }
     /**
-     * @return Logo URL.
+     * @return (Deprecated) Logo URL.
+     * 
+     * @deprecated
+     * Empty string is the only valid value. Support for this field has been removed from the API
      * 
      */
+    @Deprecated /* Empty string is the only valid value. Support for this field has been removed from the API */
     public String logo() {
         return this.logo;
     }
