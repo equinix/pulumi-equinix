@@ -48,7 +48,7 @@ only_tfgen: install_plugins upstream build_schema
 tfgen: only_tfgen generate_examples
 
 # Generate examples after the schema is generated
-generate_examples: examples
+generate_examples: examples build_schema
 
 # Build the tfgen binary and generate the schema
 build_schema: $(PULUMICTL_BIN)
