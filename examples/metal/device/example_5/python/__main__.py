@@ -12,9 +12,9 @@ pxe1 = equinix.metal.Device("pxe1",
     always_pxe=False,
     user_data=user_data,
     custom_data=custom_data,
-    behavior=equinix.metal.DeviceBehaviorArgs(
-        allow_changes=[
+    behavior={
+        "allow_changes": [
             "custom_data",
             "user_data",
         ],
-    ))
+    })
