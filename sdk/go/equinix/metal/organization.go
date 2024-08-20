@@ -56,6 +56,8 @@ type Organization struct {
 	// Description string.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Logo URL.
+	//
+	// Deprecated: The default (empty string) is the only valid value. Support for this field has been removed from the API
 	Logo pulumi.StringOutput `pulumi:"logo"`
 	// The name of the Organization.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -104,6 +106,8 @@ type organizationState struct {
 	// Description string.
 	Description *string `pulumi:"description"`
 	// Logo URL.
+	//
+	// Deprecated: The default (empty string) is the only valid value. Support for this field has been removed from the API
 	Logo *string `pulumi:"logo"`
 	// The name of the Organization.
 	Name *string `pulumi:"name"`
@@ -123,6 +127,8 @@ type OrganizationState struct {
 	// Description string.
 	Description pulumi.StringPtrInput
 	// Logo URL.
+	//
+	// Deprecated: The default (empty string) is the only valid value. Support for this field has been removed from the API
 	Logo pulumi.StringPtrInput
 	// The name of the Organization.
 	Name pulumi.StringPtrInput
@@ -144,6 +150,8 @@ type organizationArgs struct {
 	// Description string.
 	Description *string `pulumi:"description"`
 	// Logo URL.
+	//
+	// Deprecated: The default (empty string) is the only valid value. Support for this field has been removed from the API
 	Logo *string `pulumi:"logo"`
 	// The name of the Organization.
 	Name *string `pulumi:"name"`
@@ -160,6 +168,8 @@ type OrganizationArgs struct {
 	// Description string.
 	Description pulumi.StringPtrInput
 	// Logo URL.
+	//
+	// Deprecated: The default (empty string) is the only valid value. Support for this field has been removed from the API
 	Logo pulumi.StringPtrInput
 	// The name of the Organization.
 	Name pulumi.StringPtrInput
@@ -272,6 +282,8 @@ func (o OrganizationOutput) Description() pulumi.StringOutput {
 }
 
 // Logo URL.
+//
+// Deprecated: The default (empty string) is the only valid value. Support for this field has been removed from the API
 func (o OrganizationOutput) Logo() pulumi.StringOutput {
 	return o.ApplyT(func(v *Organization) pulumi.StringOutput { return v.Logo }).(pulumi.StringOutput)
 }
