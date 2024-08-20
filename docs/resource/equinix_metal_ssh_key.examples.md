@@ -58,7 +58,7 @@ func main() {
 		}
 		key1, err := metal.NewSshKey(ctx, "key1", &metal.SshKeyArgs{
 			Name:      pulumi.String("terraform-1"),
-			PublicKey: pulumi.String(invokeFile.Result),
+			PublicKey: invokeFile.Result,
 		})
 		if err != nil {
 			return err

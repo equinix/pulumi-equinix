@@ -19,8 +19,8 @@ vsrx_single = equinix.networkedge.Device("vsrxSingle",
     additional_bandwidth=5,
     project_id="a86d7112-d740-4758-9c9c-31e66373746b",
     diverse_device_id="ed7891bd-15b4-4f72-ac56-d96cfdacddcc",
-    ssh_key={
-        "username": "test-username",
-        "key_name": "valid-key-name",
-    },
+    ssh_key=equinix.networkedge.DeviceSshKeyArgs(
+        username="test-username",
+        key_name="valid-key-name",
+    ),
     acl_template_id="3e548c02-9164-4197-aa23-05b1f644883c")

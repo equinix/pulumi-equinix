@@ -24,7 +24,7 @@ func main() {
 		}
 		bluecatEdgeServicePointCloudinitPrimaryFile, err := networkedge.NewNetworkFile(ctx, "bluecatEdgeServicePointCloudinitPrimaryFile", &networkedge.NetworkFileArgs{
 			FileName:       pulumi.String("TF-BLUECAT-ESP-cloud-init-file.txt"),
-			Content:        pulumi.String(invokeFile.Result),
+			Content:        invokeFile.Result,
 			MetroCode:      sv.MetroCode.ApplyT(func(x *string) equinix.Metro { return equinix.Metro(*x) }).(equinix.MetroOutput),
 			DeviceTypeCode: pulumi.String("BLUECAT-EDGE-SERVICE-POINT"),
 			ProcessType:    pulumi.String(networkedge.FileTypeCloudInit),
@@ -42,7 +42,7 @@ func main() {
 		}
 		bluecatEdgeServicePointCloudinitSecondaryFile, err := networkedge.NewNetworkFile(ctx, "bluecatEdgeServicePointCloudinitSecondaryFile", &networkedge.NetworkFileArgs{
 			FileName:       pulumi.String("TF-BLUECAT-ESP-cloud-init-file.txt"),
-			Content:        pulumi.String(invokeFile1.Result),
+			Content:        invokeFile1.Result,
 			MetroCode:      sv.MetroCode.ApplyT(func(x *string) equinix.Metro { return equinix.Metro(*x) }).(equinix.MetroOutput),
 			DeviceTypeCode: pulumi.String("BLUECAT-EDGE-SERVICE-POINT"),
 			ProcessType:    pulumi.String(networkedge.FileTypeCloudInit),

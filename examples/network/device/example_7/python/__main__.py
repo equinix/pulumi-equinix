@@ -28,21 +28,21 @@ bluecat_bdds_ha = equinix.networkedge.Device("bluecatBddsHa",
         "licenseKey": "xxxxx-xxxxx-xxxxx-xxxxx-xxxxx",
         "licenseId": "xxxxxxxxxxxxxxx",
     },
-    ssh_key={
-        "username": "test-username",
-        "key_name": test_public_key.name,
-    },
-    secondary_device={
-        "name": "tf-bluecat-bdds-s",
-        "metro_code": sv.metro_code,
-        "notifications": ["test@eq.com"],
-        "account_number": sv.number,
-        "vendor_configuration": {
+    ssh_key=equinix.networkedge.DeviceSshKeyArgs(
+        username="test-username",
+        key_name=test_public_key.name,
+    ),
+    secondary_device=equinix.networkedge.DeviceSecondaryDeviceArgs(
+        name="tf-bluecat-bdds-s",
+        metro_code=sv.metro_code,
+        notifications=["test@eq.com"],
+        account_number=sv.number,
+        vendor_configuration={
             "hostname": "test",
-            "private_address": "x.x.x.x",
-            "private_cidr_mask": "24",
-            "private_gateway": "x.x.x.x",
-            "license_key": "xxxxx-xxxxx-xxxxx-xxxxx-xxxxx",
-            "license_id": "xxxxxxxxxxxxxxx",
+            "privateAddress": "x.x.x.x",
+            "privateCidrMask": "24",
+            "privateGateway": "x.x.x.x",
+            "licenseKey": "xxxxx-xxxxx-xxxxx-xxxxx-xxxxx",
+            "licenseId": "xxxxxxxxxxxxxxx",
         },
-    })
+    ))
