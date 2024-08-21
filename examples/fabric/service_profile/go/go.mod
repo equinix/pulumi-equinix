@@ -2,7 +2,7 @@ module equinix-fabric-service_profile
 
 go 1.21
 
-toolchain go1.22.5
+toolchain go1.22.6
 
 require (
 	github.com/equinix/pulumi-equinix/sdk 0.15.1

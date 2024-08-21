@@ -933,6 +933,8 @@ github.com/equinix-labs/metal-go v0.25.1 h1:uL83lRKyAcOfab+9r2xujAuLD8lTsqv89+SP
 github.com/equinix-labs/metal-go v0.25.1/go.mod h1:SmxCklxW+KjmBLVMdEXgtFO5gD5/b4N0VxcNgUYbOH4=
 github.com/equinix/equinix-sdk-go v0.39.0 h1:ICJ0DVG/0eRBFJNNffpGn9936oHOxD5Ek71ormXKUJY=
 github.com/equinix/equinix-sdk-go v0.39.0/go.mod h1:hEb3XLaedz7xhl/dpPIS6eOIiXNPeqNiVoyDrT6paIg=
+github.com/equinix/equinix-sdk-go v0.43.0 h1:7i5x6aM1ZDVcIuAr1+yPNSDqsMp1Jye+kVQraGsOBBM=
+github.com/equinix/equinix-sdk-go v0.43.0/go.mod h1:hEb3XLaedz7xhl/dpPIS6eOIiXNPeqNiVoyDrT6paIg=
 github.com/erikgeiser/promptkit v0.9.0/go.mod h1:pU9dtogSe3Jlc2AY77EP7R4WFP/vgD4v+iImC83KsCo=
 github.com/evanphx/json-patch v4.9.0+incompatible/go.mod h1:50XU6AFN0ol/bzJsmQLiYLvXMP4fmwYFNcr97nuDLSk=
 github.com/evanphx/json-patch v4.11.0+incompatible/go.mod h1:50XU6AFN0ol/bzJsmQLiYLvXMP4fmwYFNcr97nuDLSk=
@@ -2328,7 +2330,6 @@ golang.org/x/oauth2 v0.12.0/go.mod h1:A74bZ3aGXgCY0qaIC9Ahg6Lglin4AMAco8cIv9baba
 golang.org/x/oauth2 v0.16.0/go.mod h1:hqZ+0LWXsiVoZpeld6jVt06P3adbS2Uu911W1SsJv2o=
 golang.org/x/oauth2 v0.17.0/go.mod h1:OzPDGQiuQMguemayvdylqddI7qcD9lnSDb+1FiwQ5HA=
 golang.org/x/oauth2 v0.18.0/go.mod h1:Wf7knwG0MPoWIMMBgFlEaSUDaKskp0dCfrlJRJXbBi8=
-golang.org/x/oauth2 v0.19.0/go.mod h1:vYi7skDa1x015PmRRYZ7+s1cWyPgrPiSYRe4rnsexc8=
 golang.org/x/sync v0.0.0-20190412183630-56d357773e84/go.mod h1:RxMgew5VJxzue5/jJTE5uejpjVlOe/izrB70Jof72aM=
 golang.org/x/sys v0.0.0-20180905080454-ebe1bf3edb33/go.mod h1:STP8DvDyc/dI5b8T5hshtkjS+E42TnysNCUPdjciGhY=
 golang.org/x/sys v0.0.0-20181026203630-95b1ffbd15a5/go.mod h1:STP8DvDyc/dI5b8T5hshtkjS+E42TnysNCUPdjciGhY=

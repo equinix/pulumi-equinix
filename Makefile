@@ -1,5 +1,12 @@
 PROJECT_NAME := equinix Package
 
+WORKING_DIR   := $(shell pwd)
+BIN_DIR       := $(WORKING_DIR)/.pulumi/bin
+PULUMICTL_BIN := $(BIN_DIR)/pulumictl
+export PATH := $(BIN_DIR):$(PATH)
+
+PULUMICTL_VERSION := v0.0.46
+
 SHELL            := /bin/bash
 PACK             := equinix
 ORG              := equinix
@@ -17,10 +24,6 @@ JAVA_GROUP_ID    := com.${ORG}.pulumi
 JAVA_ARTIFACT_ID := ${PACK}
 TESTPARALLELISM  := 4
 
-WORKING_DIR   := $(shell pwd)
-BIN_DIR       := $(WORKING_DIR)/.pulumi/bin
-PULUMICTL_BIN := $(BIN_DIR)/pulumictl
-
 OS   := $(shell uname | tr '[:upper:]' '[:lower:]')
 ARCH := $(shell uname -m)
 ifeq ($(ARCH),x86_64)
@@ -28,8 +31,6 @@ ifeq ($(ARCH),x86_64)
 endif
 
 EMPTY_TO_AVOID_SED := ""
-
-PULUMICTL_VERSION := v0.0.46
 
 # estimated target version of the plugin that is currently being generated
 VERSION         = $(shell $(PULUMICTL_BIN) get version)
@@ -48,11 +49,11 @@ only_tfgen: install_plugins upstream build_schema
 tfgen: only_tfgen generate_examples
 
 # Generate examples after the schema is generated
-generate_examples: examples build_schema
+generate_examples: examples build_schema_post_examples
 
 # Build the tfgen binary and generate the schema
-build_schema: $(PULUMICTL_BIN)
-build_schema:
+build_schema build_schema_post_examples: $(PULUMICTL_BIN)
+build_schema build_schema_post_examples:
 	(cd provider && go build -o $(WORKING_DIR)/bin/${TFGEN} -ldflags "-X ${PROJECT}/${VERSION_PATH}=${VERSION}" ${PROJECT}/${PROVIDER_PATH}/cmd/${TFGEN})
 	$(WORKING_DIR)/bin/${TFGEN} schema --out provider/cmd/${PROVIDER}
 	(cd provider && VERSION=$(VERSION) go generate cmd/${PROVIDER}/main.go)
@@ -214,7 +215,12 @@ upstream.rebase:
 	scripts/upstream_old.sh "$@" start_rebase
 
 .pulumi/bin/pulumi: .pulumi/version
-	curl -fsSL https://get.pulumi.com | HOME=$(WORKING_DIR) sh -s -- --version $(cat .pulumi/version)
+	@if [ -x .pulumi/bin/pulumi ] && [ "v$$(cat .pulumi/version)" = "$$(.pulumi/bin/pulumi version)" ]; then \
+		echo "pulumi/bin/pulumi version: v$$(cat .pulumi/version)"; \
+	else \
+		curl -fsSL https://get.pulumi.com | \
+			HOME=$(WORKING_DIR) sh -s -- --version "$$(cat .pulumi/version)"; \
+	fi
 
 $(PULUMICTL_BIN):
 	@mkdir -p $(BIN_DIR)
@@ -226,8 +232,8 @@ examples: install_equinix_plugin $(PULUMICTL_BIN)
 	scripts/generate_examples.sh
 
 # Compute the version of Pulumi to use by inspecting the Go dependencies of the provider.
-.pulumi/version:
+.pulumi/version: provider/go.mod
 	@mkdir -p .pulumi
 	@cd provider && go list -f "{{slice .Version 1}}" -m github.com/pulumi/pulumi/pkg/v3 | tee ../$@
 
-.PHONY: development build build_sdks install_go_sdk install_java_sdk install_python_sdk install_sdks only_build build_dotnet build_go build_java build_nodejs build_python clean cleanup help install_dotnet_sdk install_nodejs_sdk install_equinix_plugin uninstall_equinix_plugin install_plugins lint_provider provider test tfgen upstream upstream.finalize upstream.rebase test_provider examples examples_check
+.PHONY: development build build_schema build_schema_post_examples build_sdks install_go_sdk install_java_sdk install_python_sdk install_sdks only_build build_dotnet build_go build_java build_nodejs build_python clean cleanup help install_dotnet_sdk install_nodejs_sdk install_equinix_plugin uninstall_equinix_plugin install_plugins lint_provider provider test tfgen upstream upstream.finalize upstream.rebase test_provider examples examples_check
