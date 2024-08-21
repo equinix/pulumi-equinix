@@ -71,6 +71,8 @@ export class Organization extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string>;
     /**
      * Logo URL.
+     *
+     * @deprecated The default (empty string) is the only valid value. Support for this field has been removed from the API
      */
     public readonly logo!: pulumi.Output<string>;
     /**
@@ -145,6 +147,8 @@ export interface OrganizationState {
     description?: pulumi.Input<string>;
     /**
      * Logo URL.
+     *
+     * @deprecated The default (empty string) is the only valid value. Support for this field has been removed from the API
      */
     logo?: pulumi.Input<string>;
     /**
@@ -179,6 +183,8 @@ export interface OrganizationArgs {
     description?: pulumi.Input<string>;
     /**
      * Logo URL.
+     *
+     * @deprecated The default (empty string) is the only valid value. Support for this field has been removed from the API
      */
     logo?: pulumi.Input<string>;
     /**
