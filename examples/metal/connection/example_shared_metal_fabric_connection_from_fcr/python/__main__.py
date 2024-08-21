@@ -15,28 +15,28 @@ example = equinix.metal.Interconnection("example",
 example_connection = equinix.fabric.Connection("exampleConnection",
     name="tf-NIMF-metal-2-aws-legacy",
     type="IP_VC",
-    notifications=[equinix.fabric.ConnectionNotificationArgs(
-        type=equinix.fabric.NotificationsType.ALL,
-        emails="sername@example.com",
-    )],
-    project=equinix.fabric.ConnectionProjectArgs(
-        project_id=fabric_project_id,
-    ),
+    notifications=[{
+        "type": equinix.fabric.NotificationsType.ALL,
+        "emails": "sername@example.com",
+    }],
+    project={
+        "project_id": fabric_project_id,
+    },
     bandwidth=200,
-    order=equinix.fabric.ConnectionOrderArgs(
-        purchase_order_number="1-323292",
-    ),
-    a_side=equinix.fabric.ConnectionASideArgs(
-        access_point=equinix.fabric.ConnectionASideAccessPointArgs(
-            type="CLOUD_ROUTER",
-            router=equinix.fabric.ConnectionASideAccessPointRouterArgs(
-                uuid=cloud_router_uuid,
-            ),
-        ),
-    ),
-    z_side=equinix.fabric.ConnectionZSideArgs(
-        access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
-            type="METAL_NETWORK",
-            authentication_key=example.authorization_code,
-        ),
-    ))
+    order={
+        "purchase_order_number": "1-323292",
+    },
+    a_side={
+        "access_point": {
+            "type": "CLOUD_ROUTER",
+            "router": {
+                "uuid": cloud_router_uuid,
+            },
+        },
+    },
+    z_side={
+        "access_point": {
+            "type": "METAL_NETWORK",
+            "authentication_key": example.authorization_code,
+        },
+    })
