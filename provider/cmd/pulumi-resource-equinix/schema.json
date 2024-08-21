@@ -15428,7 +15428,8 @@
                 },
                 "logo": {
                     "type": "string",
-                    "description": "Logo URL.\n"
+                    "description": "Logo URL.\n",
+                    "deprecationMessage": "The default (empty string) is the only valid value. Support for this field has been removed from the API"
                 },
                 "name": {
                     "type": "string",
@@ -15467,7 +15468,8 @@
                 },
                 "logo": {
                     "type": "string",
-                    "description": "Logo URL.\n"
+                    "description": "Logo URL.\n",
+                    "deprecationMessage": "The default (empty string) is the only valid value. Support for this field has been removed from the API"
                 },
                 "name": {
                     "type": "string",
@@ -15499,7 +15501,8 @@
                     },
                     "logo": {
                         "type": "string",
-                        "description": "Logo URL.\n"
+                        "description": "Logo URL.\n",
+                        "deprecationMessage": "The default (empty string) is the only valid value. Support for this field has been removed from the API"
                     },
                     "name": {
                         "type": "string",
@@ -20775,7 +20778,8 @@
                     },
                     "logo": {
                         "type": "string",
-                        "description": "Logo URL.\n"
+                        "description": "(Deprecated) Logo URL.\n",
+                        "deprecationMessage": "Empty string is the only valid value. Support for this field has been removed from the API"
                     },
                     "name": {
                         "type": "string"
