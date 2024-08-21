@@ -74,9 +74,10 @@ class GetOrganizationResult:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Empty string is the only valid value. Support for this field has been removed from the API""")
     def logo(self) -> str:
         """
-        Logo URL.
+        (Deprecated) Logo URL.
         """
         return pulumi.get(self, "logo")
 
