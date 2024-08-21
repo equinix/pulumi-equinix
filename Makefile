@@ -37,7 +37,7 @@ VERSION         = $(shell $(PULUMICTL_BIN) get version)
 PACKAGE_VERSION = $(shell $(PULUMICTL_BIN) get version --language generic)
 NODEJS_VERSION  = $(shell $(PULUMICTL_BIN) get version --language javascript)
 PYPI_VERSION    = $(shell $(PULUMICTL_BIN) get version --language python)
-DOTNET_VERSION  = $(shell $(PULUMICTL_BIN) get version--language dotnet)
+DOTNET_VERSION  = $(shell $(PULUMICTL_BIN) get version --language dotnet)
 
 development: install_plugins provider lint_provider build_sdks install_sdks cleanup # Build the provider & SDKs for a development environment
 
