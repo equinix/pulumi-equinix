@@ -1337,16 +1337,16 @@ class Device(pulumi.CustomResource):
             account_number=dc.number,
             version="16.09.05",
             core_count=2,
-            secondary_device=equinix.networkedge.DeviceSecondaryDeviceArgs(
-                name="tf-csr1000v-s",
-                metro_code=sv.metro_code,
-                hostname="csr1000v-s",
-                notifications=[
+            secondary_device={
+                "name": "tf-csr1000v-s",
+                "metro_code": sv.metro_code,
+                "hostname": "csr1000v-s",
+                "notifications": [
                     "john@equinix.com",
                     "marry@equinix.com",
                 ],
-                account_number=sv.number,
-            ))
+                "account_number": sv.number,
+            })
         ```
         ### example 2
         ```python
@@ -1371,26 +1371,26 @@ class Device(pulumi.CustomResource):
             version="10.1.3",
             interface_count=10,
             core_count=2,
-            ssh_key=equinix.networkedge.DeviceSshKeyArgs(
-                username="test",
-                key_name="test-key",
-            ),
+            ssh_key={
+                "username": "test",
+                "key_name": "test-key",
+            },
             acl_template_id="0bff6e05-f0e7-44cd-804a-25b92b835f8b",
-            cluster_details=equinix.networkedge.DeviceClusterDetailsArgs(
-                cluster_name="tf-panw-cluster",
-                node0=equinix.networkedge.DeviceClusterDetailsNode0Args(
-                    vendor_configuration=equinix.networkedge.DeviceClusterDetailsNode0VendorConfigurationArgs(
-                        hostname="panw-node0",
-                    ),
-                    license_token="licenseToken",
-                ),
-                node1=equinix.networkedge.DeviceClusterDetailsNode1Args(
-                    vendor_configuration=equinix.networkedge.DeviceClusterDetailsNode1VendorConfigurationArgs(
-                        hostname="panw-node1",
-                    ),
-                    license_token="licenseToken",
-                ),
-            ))
+            cluster_details={
+                "cluster_name": "tf-panw-cluster",
+                "node0": {
+                    "vendor_configuration": {
+                        "hostname": "panw-node0",
+                    },
+                    "license_token": "licenseToken",
+                },
+                "node1": {
+                    "vendor_configuration": {
+                        "hostname": "panw-node1",
+                    },
+                    "license_token": "licenseToken",
+                },
+            })
         ```
         ### example 3
         ```python
@@ -1448,10 +1448,10 @@ class Device(pulumi.CustomResource):
             term_length=12,
             license_token="valid-license-token",
             additional_bandwidth=5,
-            ssh_key=equinix.networkedge.DeviceSshKeyArgs(
-                username="test-username",
-                key_name="valid-key-name",
-            ),
+            ssh_key={
+                "username": "test-username",
+                "key_name": "valid-key-name",
+            },
             acl_template_id="3e548c02-9164-4197-aa23-05b1f644883c")
         ```
         ### example 5
@@ -1477,10 +1477,10 @@ class Device(pulumi.CustomResource):
             additional_bandwidth=5,
             project_id="a86d7112-d740-4758-9c9c-31e66373746b",
             diverse_device_id="ed7891bd-15b4-4f72-ac56-d96cfdacddcc",
-            ssh_key=equinix.networkedge.DeviceSshKeyArgs(
-                username="test-username",
-                key_name="valid-key-name",
-            ),
+            ssh_key={
+                "username": "test-username",
+                "key_name": "valid-key-name",
+            },
             acl_template_id="3e548c02-9164-4197-aa23-05b1f644883c")
         ```
         ### example 6
@@ -1509,19 +1509,19 @@ class Device(pulumi.CustomResource):
             core_count=4,
             term_length=12,
             additional_bandwidth=5,
-            ssh_key=equinix.networkedge.DeviceSshKeyArgs(
-                username="test-username",
-                key_name=test_public_key.name,
-            ),
+            ssh_key={
+                "username": "test-username",
+                "key_name": test_public_key.name,
+            },
             acl_template_id="c637a17b-7a6a-4486-924b-30e6c36904b0",
-            secondary_device=equinix.networkedge.DeviceSecondaryDeviceArgs(
-                name="tf-arista-s",
-                metro_code=sv.metro_code,
-                hostname="arista-s",
-                notifications=["test@eq.com"],
-                account_number=sv.number,
-                acl_template_id="fee5e2c0-6198-4ce6-9cbd-bbe6c1dbe138",
-            ))
+            secondary_device={
+                "name": "tf-arista-s",
+                "metro_code": sv.metro_code,
+                "hostname": "arista-s",
+                "notifications": ["test@eq.com"],
+                "account_number": sv.number,
+                "acl_template_id": "fee5e2c0-6198-4ce6-9cbd-bbe6c1dbe138",
+            })
         ```
         ### example 7
         ```python
@@ -1555,24 +1555,24 @@ class Device(pulumi.CustomResource):
                 "licenseKey": "xxxxx-xxxxx-xxxxx-xxxxx-xxxxx",
                 "licenseId": "xxxxxxxxxxxxxxx",
             },
-            ssh_key=equinix.networkedge.DeviceSshKeyArgs(
-                username="test-username",
-                key_name=test_public_key.name,
-            ),
-            secondary_device=equinix.networkedge.DeviceSecondaryDeviceArgs(
-                name="tf-bluecat-bdds-s",
-                metro_code=sv.metro_code,
-                notifications=["test@eq.com"],
-                account_number=sv.number,
-                vendor_configuration={
+            ssh_key={
+                "username": "test-username",
+                "key_name": test_public_key.name,
+            },
+            secondary_device={
+                "name": "tf-bluecat-bdds-s",
+                "metro_code": sv.metro_code,
+                "notifications": ["test@eq.com"],
+                "account_number": sv.number,
+                "vendor_configuration": {
                     "hostname": "test",
-                    "privateAddress": "x.x.x.x",
-                    "privateCidrMask": "24",
-                    "privateGateway": "x.x.x.x",
-                    "licenseKey": "xxxxx-xxxxx-xxxxx-xxxxx-xxxxx",
-                    "licenseId": "xxxxxxxxxxxxxxx",
+                    "private_address": "x.x.x.x",
+                    "private_cidr_mask": "24",
+                    "private_gateway": "x.x.x.x",
+                    "license_key": "xxxxx-xxxxx-xxxxx-xxxxx-xxxxx",
+                    "license_id": "xxxxxxxxxxxxxxx",
                 },
-            ))
+            })
         ```
         ### example 8
         ```python
@@ -1612,13 +1612,13 @@ class Device(pulumi.CustomResource):
             version="4.6.3",
             core_count=4,
             term_length=12,
-            secondary_device=equinix.networkedge.DeviceSecondaryDeviceArgs(
-                name="tf-bluecat-edge-service-point-s",
-                metro_code=sv.metro_code,
-                notifications=["test@eq.com"],
-                account_number=sv.number,
-                cloud_init_file_id=bluecat_edge_service_point_cloudinit_secondary_file.uuid,
-            ))
+            secondary_device={
+                "name": "tf-bluecat-edge-service-point-s",
+                "metro_code": sv.metro_code,
+                "notifications": ["test@eq.com"],
+                "account_number": sv.number,
+                "cloud_init_file_id": bluecat_edge_service_point_cloudinit_secondary_file.uuid,
+            })
         ```
         ### example 9
         ```python
@@ -1643,30 +1643,30 @@ class Device(pulumi.CustomResource):
             version="11.1.3",
             interface_count=10,
             core_count=2,
-            ssh_key=equinix.networkedge.DeviceSshKeyArgs(
-                username="test",
-                key_name="test-key",
-            ),
+            ssh_key={
+                "username": "test",
+                "key_name": "test-key",
+            },
             acl_template_id="0bff6e05-f0e7-44cd-804a-25b92b835f8b",
-            cluster_details=equinix.networkedge.DeviceClusterDetailsArgs(
-                cluster_name="tf-panw-cluster",
-                node0=equinix.networkedge.DeviceClusterDetailsNode0Args(
-                    vendor_configuration=equinix.networkedge.DeviceClusterDetailsNode0VendorConfigurationArgs(
-                        hostname="panw-node0",
-                        panorama_ip_address="x.x.x.x",
-                        panorama_auth_key="xxxxxxxxxxx",
-                    ),
-                    license_token="licenseToken",
-                ),
-                node1=equinix.networkedge.DeviceClusterDetailsNode1Args(
-                    vendor_configuration=equinix.networkedge.DeviceClusterDetailsNode1VendorConfigurationArgs(
-                        hostname="panw-node1",
-                        panorama_ip_address="x.x.x.x",
-                        panorama_auth_key="xxxxxxxxxxx",
-                    ),
-                    license_token="licenseToken",
-                ),
-            ))
+            cluster_details={
+                "cluster_name": "tf-panw-cluster",
+                "node0": {
+                    "vendor_configuration": {
+                        "hostname": "panw-node0",
+                        "panorama_ip_address": "x.x.x.x",
+                        "panorama_auth_key": "xxxxxxxxxxx",
+                    },
+                    "license_token": "licenseToken",
+                },
+                "node1": {
+                    "vendor_configuration": {
+                        "hostname": "panw-node1",
+                        "panorama_ip_address": "x.x.x.x",
+                        "panorama_auth_key": "xxxxxxxxxxx",
+                    },
+                    "license_token": "licenseToken",
+                },
+            })
         ```
 
         ## Import
@@ -1762,16 +1762,16 @@ class Device(pulumi.CustomResource):
             account_number=dc.number,
             version="16.09.05",
             core_count=2,
-            secondary_device=equinix.networkedge.DeviceSecondaryDeviceArgs(
-                name="tf-csr1000v-s",
-                metro_code=sv.metro_code,
-                hostname="csr1000v-s",
-                notifications=[
+            secondary_device={
+                "name": "tf-csr1000v-s",
+                "metro_code": sv.metro_code,
+                "hostname": "csr1000v-s",
+                "notifications": [
                     "john@equinix.com",
                     "marry@equinix.com",
                 ],
-                account_number=sv.number,
-            ))
+                "account_number": sv.number,
+            })
         ```
         ### example 2
         ```python
@@ -1796,26 +1796,26 @@ class Device(pulumi.CustomResource):
             version="10.1.3",
             interface_count=10,
             core_count=2,
-            ssh_key=equinix.networkedge.DeviceSshKeyArgs(
-                username="test",
-                key_name="test-key",
-            ),
+            ssh_key={
+                "username": "test",
+                "key_name": "test-key",
+            },
             acl_template_id="0bff6e05-f0e7-44cd-804a-25b92b835f8b",
-            cluster_details=equinix.networkedge.DeviceClusterDetailsArgs(
-                cluster_name="tf-panw-cluster",
-                node0=equinix.networkedge.DeviceClusterDetailsNode0Args(
-                    vendor_configuration=equinix.networkedge.DeviceClusterDetailsNode0VendorConfigurationArgs(
-                        hostname="panw-node0",
-                    ),
-                    license_token="licenseToken",
-                ),
-                node1=equinix.networkedge.DeviceClusterDetailsNode1Args(
-                    vendor_configuration=equinix.networkedge.DeviceClusterDetailsNode1VendorConfigurationArgs(
-                        hostname="panw-node1",
-                    ),
-                    license_token="licenseToken",
-                ),
-            ))
+            cluster_details={
+                "cluster_name": "tf-panw-cluster",
+                "node0": {
+                    "vendor_configuration": {
+                        "hostname": "panw-node0",
+                    },
+                    "license_token": "licenseToken",
+                },
+                "node1": {
+                    "vendor_configuration": {
+                        "hostname": "panw-node1",
+                    },
+                    "license_token": "licenseToken",
+                },
+            })
         ```
         ### example 3
         ```python
@@ -1873,10 +1873,10 @@ class Device(pulumi.CustomResource):
             term_length=12,
             license_token="valid-license-token",
             additional_bandwidth=5,
-            ssh_key=equinix.networkedge.DeviceSshKeyArgs(
-                username="test-username",
-                key_name="valid-key-name",
-            ),
+            ssh_key={
+                "username": "test-username",
+                "key_name": "valid-key-name",
+            },
             acl_template_id="3e548c02-9164-4197-aa23-05b1f644883c")
         ```
         ### example 5
@@ -1902,10 +1902,10 @@ class Device(pulumi.CustomResource):
             additional_bandwidth=5,
             project_id="a86d7112-d740-4758-9c9c-31e66373746b",
             diverse_device_id="ed7891bd-15b4-4f72-ac56-d96cfdacddcc",
-            ssh_key=equinix.networkedge.DeviceSshKeyArgs(
-                username="test-username",
-                key_name="valid-key-name",
-            ),
+            ssh_key={
+                "username": "test-username",
+                "key_name": "valid-key-name",
+            },
             acl_template_id="3e548c02-9164-4197-aa23-05b1f644883c")
         ```
         ### example 6
@@ -1934,19 +1934,19 @@ class Device(pulumi.CustomResource):
             core_count=4,
             term_length=12,
             additional_bandwidth=5,
-            ssh_key=equinix.networkedge.DeviceSshKeyArgs(
-                username="test-username",
-                key_name=test_public_key.name,
-            ),
+            ssh_key={
+                "username": "test-username",
+                "key_name": test_public_key.name,
+            },
             acl_template_id="c637a17b-7a6a-4486-924b-30e6c36904b0",
-            secondary_device=equinix.networkedge.DeviceSecondaryDeviceArgs(
-                name="tf-arista-s",
-                metro_code=sv.metro_code,
-                hostname="arista-s",
-                notifications=["test@eq.com"],
-                account_number=sv.number,
-                acl_template_id="fee5e2c0-6198-4ce6-9cbd-bbe6c1dbe138",
-            ))
+            secondary_device={
+                "name": "tf-arista-s",
+                "metro_code": sv.metro_code,
+                "hostname": "arista-s",
+                "notifications": ["test@eq.com"],
+                "account_number": sv.number,
+                "acl_template_id": "fee5e2c0-6198-4ce6-9cbd-bbe6c1dbe138",
+            })
         ```
         ### example 7
         ```python
@@ -1980,24 +1980,24 @@ class Device(pulumi.CustomResource):
                 "licenseKey": "xxxxx-xxxxx-xxxxx-xxxxx-xxxxx",
                 "licenseId": "xxxxxxxxxxxxxxx",
             },
-            ssh_key=equinix.networkedge.DeviceSshKeyArgs(
-                username="test-username",
-                key_name=test_public_key.name,
-            ),
-            secondary_device=equinix.networkedge.DeviceSecondaryDeviceArgs(
-                name="tf-bluecat-bdds-s",
-                metro_code=sv.metro_code,
-                notifications=["test@eq.com"],
-                account_number=sv.number,
-                vendor_configuration={
+            ssh_key={
+                "username": "test-username",
+                "key_name": test_public_key.name,
+            },
+            secondary_device={
+                "name": "tf-bluecat-bdds-s",
+                "metro_code": sv.metro_code,
+                "notifications": ["test@eq.com"],
+                "account_number": sv.number,
+                "vendor_configuration": {
                     "hostname": "test",
-                    "privateAddress": "x.x.x.x",
-                    "privateCidrMask": "24",
-                    "privateGateway": "x.x.x.x",
-                    "licenseKey": "xxxxx-xxxxx-xxxxx-xxxxx-xxxxx",
-                    "licenseId": "xxxxxxxxxxxxxxx",
+                    "private_address": "x.x.x.x",
+                    "private_cidr_mask": "24",
+                    "private_gateway": "x.x.x.x",
+                    "license_key": "xxxxx-xxxxx-xxxxx-xxxxx-xxxxx",
+                    "license_id": "xxxxxxxxxxxxxxx",
                 },
-            ))
+            })
         ```
         ### example 8
         ```python
@@ -2037,13 +2037,13 @@ class Device(pulumi.CustomResource):
             version="4.6.3",
             core_count=4,
             term_length=12,
-            secondary_device=equinix.networkedge.DeviceSecondaryDeviceArgs(
-                name="tf-bluecat-edge-service-point-s",
-                metro_code=sv.metro_code,
-                notifications=["test@eq.com"],
-                account_number=sv.number,
-                cloud_init_file_id=bluecat_edge_service_point_cloudinit_secondary_file.uuid,
-            ))
+            secondary_device={
+                "name": "tf-bluecat-edge-service-point-s",
+                "metro_code": sv.metro_code,
+                "notifications": ["test@eq.com"],
+                "account_number": sv.number,
+                "cloud_init_file_id": bluecat_edge_service_point_cloudinit_secondary_file.uuid,
+            })
         ```
         ### example 9
         ```python
@@ -2068,30 +2068,30 @@ class Device(pulumi.CustomResource):
             version="11.1.3",
             interface_count=10,
             core_count=2,
-            ssh_key=equinix.networkedge.DeviceSshKeyArgs(
-                username="test",
-                key_name="test-key",
-            ),
+            ssh_key={
+                "username": "test",
+                "key_name": "test-key",
+            },
             acl_template_id="0bff6e05-f0e7-44cd-804a-25b92b835f8b",
-            cluster_details=equinix.networkedge.DeviceClusterDetailsArgs(
-                cluster_name="tf-panw-cluster",
-                node0=equinix.networkedge.DeviceClusterDetailsNode0Args(
-                    vendor_configuration=equinix.networkedge.DeviceClusterDetailsNode0VendorConfigurationArgs(
-                        hostname="panw-node0",
-                        panorama_ip_address="x.x.x.x",
-                        panorama_auth_key="xxxxxxxxxxx",
-                    ),
-                    license_token="licenseToken",
-                ),
-                node1=equinix.networkedge.DeviceClusterDetailsNode1Args(
-                    vendor_configuration=equinix.networkedge.DeviceClusterDetailsNode1VendorConfigurationArgs(
-                        hostname="panw-node1",
-                        panorama_ip_address="x.x.x.x",
-                        panorama_auth_key="xxxxxxxxxxx",
-                    ),
-                    license_token="licenseToken",
-                ),
-            ))
+            cluster_details={
+                "cluster_name": "tf-panw-cluster",
+                "node0": {
+                    "vendor_configuration": {
+                        "hostname": "panw-node0",
+                        "panorama_ip_address": "x.x.x.x",
+                        "panorama_auth_key": "xxxxxxxxxxx",
+                    },
+                    "license_token": "licenseToken",
+                },
+                "node1": {
+                    "vendor_configuration": {
+                        "hostname": "panw-node1",
+                        "panorama_ip_address": "x.x.x.x",
+                        "panorama_auth_key": "xxxxxxxxxxx",
+                    },
+                    "license_token": "licenseToken",
+                },
+            })
         ```
 
         ## Import
