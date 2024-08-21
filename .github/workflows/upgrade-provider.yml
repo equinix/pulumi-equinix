@@ -3,9 +3,6 @@
 
 name: Upgrade provider
 on:
-  issues:
-    types:
-    - opened
   workflow_dispatch: {}
   schedule:
   # Run every 8 hours Monday through Friday
