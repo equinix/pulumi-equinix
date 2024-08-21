@@ -68,7 +68,9 @@ type LookupOrganizationResult struct {
 	// Description string.
 	Description *string `pulumi:"description"`
 	Id          string  `pulumi:"id"`
-	// Logo URL.
+	// (Deprecated) Logo URL.
+	//
+	// Deprecated: Empty string is the only valid value. Support for this field has been removed from the API
 	Logo           string `pulumi:"logo"`
 	Name           string `pulumi:"name"`
 	OrganizationId string `pulumi:"organizationId"`
@@ -138,7 +140,9 @@ func (o LookupOrganizationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Logo URL.
+// (Deprecated) Logo URL.
+//
+// Deprecated: Empty string is the only valid value. Support for this field has been removed from the API
 func (o LookupOrganizationResultOutput) Logo() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationResult) string { return v.Logo }).(pulumi.StringOutput)
 }
