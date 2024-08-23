@@ -7,14 +7,10 @@ on:
     types:
     - opened
   workflow_dispatch: {}
-  schedule:
-  # Run every 8 hours Monday through Friday
-  - cron: '0 */8 * * 1-5'
 
 env:
-  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  GH_TOKEN: ${{ secrets.EQUINIX_BOT_TOKEN }}
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  DEFAULT_PR_ASSIGN: ocobles
 jobs:
   upgrade_provider:
     name: upgrade-provider
@@ -28,28 +24,11 @@ jobs:
       id: pulumi-java
       run: |
         echo "version=$(cat .pulumi-java-gen.version)" >> "$GITHUB_OUTPUT"
-    - name: Set pr-assign variable
-      id: set-pr-assign
-      run: |
-        if [ "${{ github.event_name }}" == "schedule" ] || ["${{ github.actor }}" == "github-actions[bot]" ]; then
-          echo "PR_ASSIGN=${{ env.DEFAULT_PR_ASSIGN }}" >> $GITHUB_ENV
-        else
-          echo "PR_ASSIGN=${{ github.actor }}" >> $GITHUB_ENV
-        fi
     - name: Call upgrade provider action
-      # TODO(ocobles): upgrade-provider tool tries to assign the PR to the user who created it.
-      # Since we don't have an Equinix bot user, we are using the GITHUB_TOKEN. This results in an
-      # error when trying to assign the PR to the user of the token (github-action). As a workaround
-      # we override the assign user. The pulumi-upgrade-provider-action does not have this option so
-      # we temporarily overwrite the action locally with a pr-assign input.
-      # Set pulumi-upgrade-provider-action back when pr-assign is available or we have a bot token
-      #
-      # uses: pulumi/pulumi-upgrade-provider-action@v0.0.10
-      uses: ./.github/actions/upgrade-provider
+      uses: pulumi/pulumi-upgrade-provider-action@v0.0.12
       with:
         kind: provider
         email: noreply@github.com
         username: GitHub
-        pr-assign: ${{ env.PR_ASSIGN }}
         pr-title-prefix: "feat: "
         target-java-version: ${{ steps.pulumi-java.outputs.version }}

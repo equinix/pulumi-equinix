@@ -29,7 +29,7 @@ on:
         type: boolean
         default: false
 env:
-  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  GH_TOKEN: ${{ secrets.EQUINIX_BOT_TOKEN }}
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 jobs:
   upgrade_provider:
@@ -53,34 +53,13 @@ jobs:
         pr-description: ${{ inputs.pr-description }}
         pr-title-prefix: "feat: "
     - name: Call upgrade provider action
-      # TODO(ocobles): upgrade-provider tool tries to assign the PR to the user who created it.
-      # Since we don't have an Equinix bot user, we are using the GITHUB_TOKEN. This results in an
-      # error when trying to assign the PR to the user of the token (github-action). As a workaround
-      # we override the assign user. The pulumi-upgrade-provider-action does not have this option so
-      # we temporarily overwrite the action locally with a pr-assign input.
-      # Set pulumi-upgrade-provider-action back when pr-assign is available or we have a an Equinix bot token
-      #
-      # uses: pulumi/pulumi-upgrade-provider-action@v0.0.10
-      uses: ./.github/actions/upgrade-provider
+      if: github.event_name == 'repository_dispatch'
+      uses: pulumi/pulumi-upgrade-provider-action@v0.0.12
       with:
         kind: bridge
         email: noreply@github.com
         username: GitHub
-        automerge: ${{ inputs.automerge }}
-        target-bridge-version: ${{ inputs.target-bridge-version }}
-        pr-reviewers: ${{ inputs.pr-reviewers }}
-        pr-description: ${{ inputs.pr-description }}
-        pr-assign: ${{ github.actor }}
-        pr-title-prefix: "feat: "
-    # TODO(ocobles) Set back when pr-assign is available or we have an Equinix bot token
-    # - name: Call upgrade provider action
-    #   if: github.event_name == 'repository_dispatch'
-    #   uses: pulumi/pulumi-upgrade-provider-action@v0.0.10
-    #   with:
-    #     kind: bridge
-    #     email: noreply@github.com
-    #     username: GitHub
-    #     automerge: ${{ github.event.client_payload.automerge }}
-    #     target-bridge-version: ${{ github.event.client_payload.target-bridge-version }}
-    #     pr-reviewers: ${{ github.event.client_payload.pr-reviewers }}
-    #     pr-description: ${{ github.event.client_payload.pr-description }}
+        automerge: ${{ github.event.client_payload.automerge }}
+        target-bridge-version: ${{ github.event.client_payload.target-bridge-version }}
+        pr-reviewers: ${{ github.event.client_payload.pr-reviewers }}
+        pr-description: ${{ github.event.client_payload.pr-description }}
