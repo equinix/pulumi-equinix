@@ -1,9 +1,0 @@
-name: equinix-metal-device-network-type
-runtime: java
-description: An Equinix Metal Device Network Type resource
-config:
-  deviceId:
-    type: string
-  networkType:
-    type: string
-    default: hybrid
