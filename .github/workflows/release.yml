@@ -40,10 +40,13 @@ env:
   PUBLISH_REPO_PASSWORD: ${{ secrets.OSSRH_TOKEN_PASSWORD }}
   PUBLISH_REPO_USERNAME: ${{ secrets.OSSRH_TOKEN }}
   PUBLISH_NRM: true
+  PUBLISH_GO: true
 jobs:
   publish_binary:
     name: publish
     runs-on: ubuntu-latest
+    outputs:
+      new_release_tag: ${{ steps.semantic_release.outputs.new_release_git_tag }}
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
@@ -74,6 +77,7 @@ jobs:
           path: ${{ github.workspace }}/bin/provider.tar.gz
           retention-days: 30
       - name: Release
+        id: semantic_release
         uses: cycjimmy/semantic-release-action@v3
         with:
           semantic_version: 19.0.5
@@ -202,6 +206,21 @@ jobs:
           arguments: publishToSonatype closeAndReleaseSonatypeStagingRepository
           build-root-directory: ./sdk/java
           gradle-version: 7.4.1
+      - if: ${{ matrix.language == 'go' && env.PUBLISH_GO == 'true' }}
+        name: Publish GO SDK
+        uses: pulumi/publish-go-sdk-action@v1
+        with:
+          repository: ${{ github.repository }}
+          base-ref: ${{ github.sha }}
+          source: sdk
+          path: sdk
+          version: ${{ needs.publish_binary.outputs.new_release_tag }}
+          additive: false
+          # Avoid including other language SDKs & artifacts in the commit
+          files: |
+            go.*
+            go/**
+            !*.tar.gz
     strategy:
       fail-fast: true
       matrix:
