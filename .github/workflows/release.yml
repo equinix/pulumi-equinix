@@ -46,7 +46,7 @@ jobs:
     name: publish
     runs-on: ubuntu-latest
     outputs:
-      new_release_tag: ${{ steps.semantic_release.outputs.new_release_git_tag }}
+      new_release_version: ${{ steps.semantic_release.outputs.new_release_version }}
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
@@ -214,7 +214,7 @@ jobs:
           base-ref: ${{ github.sha }}
           source: sdk
           path: sdk
-          version: ${{ needs.publish_binary.outputs.new_release_tag }}
+          version: ${{ needs.publish_binary.outputs.new_release_version }}
           additive: false
           # Avoid including other language SDKs & artifacts in the commit
           files: |
