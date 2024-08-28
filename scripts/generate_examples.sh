@@ -21,14 +21,8 @@ EXAMPLES_DIR="${SCRIPT_DIR}/../examples/"
 OUTPUT_DIR="${SCRIPT_DIR}/../docs/resource"
 # Pulumi Equinix plugin version installed
 VERSION=$(.pulumi/bin/pulumictl get version --language generic)
-
-get_patch() {
-    local version="$1"
-    local new_version=$(echo "$version" | awk -F'[.-]' '{print $1"."$2"."$3}')
-    echo "$new_version"
-}
-
-GOLANG_MIN_NEXT_VERSION=$(get_patch "$VERSION")
+# Pulumi Equinix plugin version specified in the examples go.mod files
+GOLANG_VERSION="latest"
 
 # Find all Pulumi.yaml files within the examples directory structure
 EXISTING_PULUMI_EXAMPLES=()
@@ -244,7 +238,7 @@ generate_examples_and_docs() {
         sed -i.bak "s|$VERSION|<1.0.0|g" $PULUMI_DIR/typescript/package.json
         rm "$PULUMI_DIR"/typescript/package.json.bak
         ## go
-        sed -i.bak "s|github.com/equinix/pulumi-equinix/sdk [^ ]*|github.com/equinix/pulumi-equinix/sdk $GOLANG_MIN_NEXT_VERSION|g" "$PULUMI_DIR/go/go.mod"
+        sed -i.bak "s|github.com/equinix/pulumi-equinix/sdk [^ ]*|github.com/equinix/pulumi-equinix/sdk $GOLANG_VERSION|g" "$PULUMI_DIR/go/go.mod"
         rm "$PULUMI_DIR"/go/go.sum "$PULUMI_DIR"/go/go.mod.bak
 
         # Read each source file
