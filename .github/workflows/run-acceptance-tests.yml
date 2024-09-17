@@ -211,7 +211,7 @@ jobs:
         github.workspace }}/bin/ pulumi-resource-${{ env.PROVIDER }}
         pulumi-tfgen-${{ env.PROVIDER }}
     - name: Upload artifacts
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: ${{ env.PROVIDER }}-provider.tar.gz
         path: ${{ github.workspace }}/bin/provider.tar.gz
