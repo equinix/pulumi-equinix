@@ -7,7 +7,6 @@ on:
     inputs: {}
 env:
   DOTNETVERSION: 7.0.x
-  GOVERSION: 1.22.x
   JAVAVERSION: "11"
   NODEVERSION: 20.x
   PYTHONVERSION: "3.9"
@@ -22,10 +21,10 @@ jobs:
     - name: Checkout Repo
       uses: actions/checkout@v4
     - name: Install go
-      uses: actions/setup-go@v4
+      uses: actions/setup-go@v5
       with:
         # The versions of golangci-lint and setup-go here cross-depend and need to update together.
-        go-version: 1.21
+        go-version-file: provider/go.mod
         # Either this action or golangci-lint needs to disable the cache
         cache: false
     - name: disarm go:embed directives to enable lint

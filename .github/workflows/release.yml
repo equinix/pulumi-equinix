@@ -5,7 +5,6 @@ on:
 env:
   PROVIDER: equinix
   DOTNETVERSION: 7.0.x
-  GOVERSION: 1.22.x
   GRADLEVERSION: "7.6"
   JAVAVERSION: "11"
   NODEVERSION: 20.x
@@ -53,9 +52,9 @@ jobs:
       - name: Unshallow clone for tags
         run: git fetch --prune --unshallow --tags
       - name: Install Go
-        uses: actions/setup-go@v2
+        uses: actions/setup-go@v5
         with:
-          go-version: ${{ env.GOVERSION }}
+          go-version-file: provider/go.mod
       - name: Install pulumictl
         uses: jaxxstorm/action-install-gh-release@v1.10.0
         with:
@@ -105,9 +104,9 @@ jobs:
       - name: Unshallow clone for tags
         run: git fetch --prune --unshallow --tags
       - name: Install Go
-        uses: actions/setup-go@v2
+        uses: actions/setup-go@v5
         with:
-          go-version: ${{ env.GOVERSION }}
+          go-version-file: provider/go.mod
       - name: Install pulumictl
         uses: jaxxstorm/action-install-gh-release@v1.10.0
         with:

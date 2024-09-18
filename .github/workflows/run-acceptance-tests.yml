@@ -16,7 +16,6 @@ env:
   PROVIDER: equinix
   PR_COMMIT_SHA: ${{ github.event.client_payload.pull_request.head.sha }}
   DOTNETVERSION: 7.0.x
-  GOVERSION: 1.22.x
   JAVAVERSION: "11"
   NODEVERSION: 20.x
   PYTHONVERSION: "3.9"
@@ -43,11 +42,11 @@ jobs:
     - name: Unshallow clone for tags
       run: git fetch --prune --unshallow --tags
     - name: Install Go
-      uses: actions/setup-go@v4
+      uses: actions/setup-go@v5
       with:
         cache-dependency-path: |
             sdk/go.sum
-        go-version: 1.21.x
+        go-version-file: provider/go.mod
     - name: Install pulumictl
       uses: jaxxstorm/action-install-gh-release@v1.10.0
       with:
@@ -160,11 +159,11 @@ jobs:
     - name: Unshallow clone for tags
       run: git fetch --prune --unshallow --tags
     - name: Install Go
-      uses: actions/setup-go@v4
+      uses: actions/setup-go@v5
       with:
         cache-dependency-path: |
             sdk/go.sum
-        go-version: 1.21.x
+        go-version-file: provider/go.mod
     - name: Install pulumictl
       uses: jaxxstorm/action-install-gh-release@v1.10.0
       with:
@@ -285,11 +284,11 @@ jobs:
     - name: Unshallow clone for tags
       run: git fetch --prune --unshallow --tags
     - name: Install Go
-      uses: actions/setup-go@v4
+      uses: actions/setup-go@v5
       with:
         cache-dependency-path: |
             sdk/go.sum
-        go-version: 1.21.x
+        go-version-file: provider/go.mod
     - name: Install pulumictl
       uses: jaxxstorm/action-install-gh-release@v1.10.0
       with:
