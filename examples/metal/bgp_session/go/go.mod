@@ -6,8 +6,8 @@ toolchain go1.21.13
 
 require (
 	github.com/equinix/pulumi-equinix/sdk latest
-	github.com/pulumi/pulumi-null/sdk v0.0.5
-	github.com/pulumi/pulumi/sdk/v3 v3.128.0
+	github.com/pulumi/pulumi-null/sdk v0.0.6
+	github.com/pulumi/pulumi/sdk/v3 v3.130.0
 )
 
 require (
