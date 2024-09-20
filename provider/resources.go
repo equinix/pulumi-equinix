@@ -1658,6 +1658,26 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
+			"equinix_fabric_market_place_subscription": {
+				Tok: makeEquinixDataSource(fabricMod, "MarketplaceSubscription"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"trial": {
+						MaxItemsOne: tfbridge.True(),
+					},
+					"entitlements": {
+						Fields: map[string]*tfbridge.SchemaInfo{
+							"asset": {
+								MaxItemsOne: tfbridge.True(),
+								Fields: map[string]*tfbridge.SchemaInfo{
+									"package": {
+										MaxItemsOne: tfbridge.True(),
+									},
+								},
+							},
+						},
+					},
+				},
+			},
 			// Equinix Metal v1
 			"equinix_metal_connection":           {Tok: makeEquinixDataSource(metalMod, "Interconnection")},
 			"equinix_metal_device":               {Tok: makeEquinixDataSource(metalMod, "Device")},
