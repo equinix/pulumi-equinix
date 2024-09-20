@@ -54,14 +54,14 @@ func main() {
 					},
 				},
 			},
-			AdditionalInfo: pulumi.MapArray{
-				pulumi.Map{
-					"key":   pulumi.Any("accessKey"),
-					"value": pulumi.Any("<aws_access_key>"),
+			AdditionalInfo: pulumi.StringMapArray{
+				pulumi.StringMap{
+					"key":   pulumi.String("accessKey"),
+					"value": pulumi.String("<aws_access_key>"),
 				},
-				pulumi.Map{
-					"key":   pulumi.Any("secretKey"),
-					"value": pulumi.Any("<aws_secret_key>"),
+				pulumi.StringMap{
+					"key":   pulumi.String("secretKey"),
+					"value": pulumi.String("<aws_secret_key>"),
 				},
 			},
 		})
