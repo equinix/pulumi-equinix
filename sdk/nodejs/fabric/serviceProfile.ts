@@ -133,7 +133,7 @@ export class ServiceProfile extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<outputs.fabric.ServiceProfileProject | undefined>;
     /**
-     * Self Profile indicating if the profile is created for customer's self use
+     * Self Profile indicating if the profile is created for customer's  self use
      */
     public readonly selfProfile!: pulumi.Output<boolean | undefined>;
     /**
@@ -145,7 +145,7 @@ export class ServiceProfile extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
-     * Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+     * Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
      */
     public readonly type!: pulumi.Output<string>;
     /**
@@ -291,7 +291,7 @@ export interface ServiceProfileState {
      */
     project?: pulumi.Input<inputs.fabric.ServiceProfileProject>;
     /**
-     * Self Profile indicating if the profile is created for customer's self use
+     * Self Profile indicating if the profile is created for customer's  self use
      */
     selfProfile?: pulumi.Input<boolean>;
     /**
@@ -303,7 +303,7 @@ export interface ServiceProfileState {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+     * Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
      */
     type?: pulumi.Input<string | enums.fabric.ProfileType>;
     /**
@@ -369,7 +369,7 @@ export interface ServiceProfileArgs {
      */
     project?: pulumi.Input<inputs.fabric.ServiceProfileProject>;
     /**
-     * Self Profile indicating if the profile is created for customer's self use
+     * Self Profile indicating if the profile is created for customer's  self use
      */
     selfProfile?: pulumi.Input<boolean>;
     /**
@@ -381,7 +381,7 @@ export interface ServiceProfileArgs {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+     * Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
      */
     type: pulumi.Input<string | enums.fabric.ProfileType>;
     /**

@@ -22,7 +22,7 @@ class GetCloudRouterResult:
     """
     A collection of values returned by getCloudRouter.
     """
-    def __init__(__self__, accounts=None, bgp_ipv4_routes_count=None, bgp_ipv6_routes_count=None, change_logs=None, connections_count=None, description=None, distinct_ipv4_prefixes_count=None, distinct_ipv6_prefixes_count=None, equinix_asn=None, href=None, id=None, locations=None, name=None, notifications=None, orders=None, packages=None, projects=None, state=None, type=None, uuid=None):
+    def __init__(__self__, accounts=None, bgp_ipv4_routes_count=None, bgp_ipv6_routes_count=None, change_logs=None, connections_count=None, description=None, distinct_ipv4_prefixes_count=None, distinct_ipv6_prefixes_count=None, equinix_asn=None, href=None, id=None, locations=None, marketplace_subscriptions=None, name=None, notifications=None, orders=None, packages=None, projects=None, state=None, type=None, uuid=None):
         if accounts and not isinstance(accounts, list):
             raise TypeError("Expected argument 'accounts' to be a list")
         pulumi.set(__self__, "accounts", accounts)
@@ -59,6 +59,9 @@ class GetCloudRouterResult:
         if locations and not isinstance(locations, list):
             raise TypeError("Expected argument 'locations' to be a list")
         pulumi.set(__self__, "locations", locations)
+        if marketplace_subscriptions and not isinstance(marketplace_subscriptions, list):
+            raise TypeError("Expected argument 'marketplace_subscriptions' to be a list")
+        pulumi.set(__self__, "marketplace_subscriptions", marketplace_subscriptions)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -181,6 +184,14 @@ class GetCloudRouterResult:
         return pulumi.get(self, "locations")
 
     @property
+    @pulumi.getter(name="marketplaceSubscriptions")
+    def marketplace_subscriptions(self) -> Sequence['outputs.GetCloudRouterMarketplaceSubscriptionResult']:
+        """
+        Equinix Fabric Entity for Marketplace Subscription
+        """
+        return pulumi.get(self, "marketplace_subscriptions")
+
+    @property
     @pulumi.getter
     def name(self) -> str:
         """
@@ -216,7 +227,7 @@ class GetCloudRouterResult:
     @pulumi.getter
     def projects(self) -> Sequence['outputs.GetCloudRouterProjectResult']:
         """
-        Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
+        Customer resource hierarchy project information. Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
         """
         return pulumi.get(self, "projects")
 
@@ -263,6 +274,7 @@ class AwaitableGetCloudRouterResult(GetCloudRouterResult):
             href=self.href,
             id=self.id,
             locations=self.locations,
+            marketplace_subscriptions=self.marketplace_subscriptions,
             name=self.name,
             notifications=self.notifications,
             orders=self.orders,
@@ -322,6 +334,7 @@ def get_cloud_router(uuid: Optional[str] = None,
         href=pulumi.get(__ret__, 'href'),
         id=pulumi.get(__ret__, 'id'),
         locations=pulumi.get(__ret__, 'locations'),
+        marketplace_subscriptions=pulumi.get(__ret__, 'marketplace_subscriptions'),
         name=pulumi.get(__ret__, 'name'),
         notifications=pulumi.get(__ret__, 'notifications'),
         orders=pulumi.get(__ret__, 'orders'),

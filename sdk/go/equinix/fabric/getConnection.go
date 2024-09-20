@@ -109,7 +109,7 @@ type LookupConnectionResult struct {
 	Redundancy GetConnectionRedundancy `pulumi:"redundancy"`
 	// Connection overall state
 	State string `pulumi:"state"`
-	// Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
+	// Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, IA*VC, EC_VC
 	Type string `pulumi:"type"`
 	// Equinix-assigned connection identifier
 	Uuid string `pulumi:"uuid"`
@@ -240,7 +240,7 @@ func (o LookupConnectionResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionResult) string { return v.State }).(pulumi.StringOutput)
 }
 
-// Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
+// Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, IA*VC, EC_VC
 func (o LookupConnectionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionResult) string { return v.Type }).(pulumi.StringOutput)
 }

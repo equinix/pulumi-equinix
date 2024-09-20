@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetConnectionsDataASideAccessPointInterface {
     /**
-     * @return The ID of this resource.
+     * @return id
      * 
      */
     private Integer id;
@@ -31,7 +31,7 @@ public final class GetConnectionsDataASideAccessPointInterface {
 
     private GetConnectionsDataASideAccessPointInterface() {}
     /**
-     * @return The ID of this resource.
+     * @return id
      * 
      */
     public Integer id() {

@@ -108,13 +108,13 @@ type ServiceProfile struct {
 	Ports ServiceProfilePortArrayOutput `pulumi:"ports"`
 	// Project information
 	Project ServiceProfileProjectPtrOutput `pulumi:"project"`
-	// Self Profile indicating if the profile is created for customer's self use
+	// Self Profile indicating if the profile is created for customer's  self use
 	SelfProfile pulumi.BoolPtrOutput `pulumi:"selfProfile"`
 	// Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
 	State pulumi.StringPtrOutput `pulumi:"state"`
 	// Tags attached to the connection
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
-	// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+	// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Equinix assigned service profile identifier
 	Uuid pulumi.StringOutput `pulumi:"uuid"`
@@ -188,13 +188,13 @@ type serviceProfileState struct {
 	Ports []ServiceProfilePort `pulumi:"ports"`
 	// Project information
 	Project *ServiceProfileProject `pulumi:"project"`
-	// Self Profile indicating if the profile is created for customer's self use
+	// Self Profile indicating if the profile is created for customer's  self use
 	SelfProfile *bool `pulumi:"selfProfile"`
 	// Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
 	State *string `pulumi:"state"`
 	// Tags attached to the connection
 	Tags []string `pulumi:"tags"`
-	// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+	// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
 	Type *string `pulumi:"type"`
 	// Equinix assigned service profile identifier
 	Uuid *string `pulumi:"uuid"`
@@ -233,13 +233,13 @@ type ServiceProfileState struct {
 	Ports ServiceProfilePortArrayInput
 	// Project information
 	Project ServiceProfileProjectPtrInput
-	// Self Profile indicating if the profile is created for customer's self use
+	// Self Profile indicating if the profile is created for customer's  self use
 	SelfProfile pulumi.BoolPtrInput
 	// Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
 	State pulumi.StringPtrInput
 	// Tags attached to the connection
 	Tags pulumi.StringArrayInput
-	// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+	// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
 	Type pulumi.StringPtrInput
 	// Equinix assigned service profile identifier
 	Uuid pulumi.StringPtrInput
@@ -276,13 +276,13 @@ type serviceProfileArgs struct {
 	Ports []ServiceProfilePort `pulumi:"ports"`
 	// Project information
 	Project *ServiceProfileProject `pulumi:"project"`
-	// Self Profile indicating if the profile is created for customer's self use
+	// Self Profile indicating if the profile is created for customer's  self use
 	SelfProfile *bool `pulumi:"selfProfile"`
 	// Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
 	State *string `pulumi:"state"`
 	// Tags attached to the connection
 	Tags []string `pulumi:"tags"`
-	// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+	// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
 	Type string `pulumi:"type"`
 	// Flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
 	ViewPoint *string `pulumi:"viewPoint"`
@@ -314,13 +314,13 @@ type ServiceProfileArgs struct {
 	Ports ServiceProfilePortArrayInput
 	// Project information
 	Project ServiceProfileProjectPtrInput
-	// Self Profile indicating if the profile is created for customer's self use
+	// Self Profile indicating if the profile is created for customer's  self use
 	SelfProfile pulumi.BoolPtrInput
 	// Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
 	State pulumi.StringPtrInput
 	// Tags attached to the connection
 	Tags pulumi.StringArrayInput
-	// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+	// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
 	Type pulumi.StringInput
 	// Flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
 	ViewPoint pulumi.StringPtrInput
@@ -484,7 +484,7 @@ func (o ServiceProfileOutput) Project() ServiceProfileProjectPtrOutput {
 	return o.ApplyT(func(v *ServiceProfile) ServiceProfileProjectPtrOutput { return v.Project }).(ServiceProfileProjectPtrOutput)
 }
 
-// Self Profile indicating if the profile is created for customer's self use
+// Self Profile indicating if the profile is created for customer's  self use
 func (o ServiceProfileOutput) SelfProfile() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServiceProfile) pulumi.BoolPtrOutput { return v.SelfProfile }).(pulumi.BoolPtrOutput)
 }
@@ -499,7 +499,7 @@ func (o ServiceProfileOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServiceProfile) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
 func (o ServiceProfileOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceProfile) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

@@ -160,7 +160,7 @@ namespace Pulumi.Equinix.Fabric
         public Output<Outputs.ServiceProfileProject?> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Self Profile indicating if the profile is created for customer's self use
+        /// Self Profile indicating if the profile is created for customer's  self use
         /// </summary>
         [Output("selfProfile")]
         public Output<bool?> SelfProfile { get; private set; } = null!;
@@ -178,7 +178,7 @@ namespace Pulumi.Equinix.Fabric
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+        /// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -351,7 +351,7 @@ namespace Pulumi.Equinix.Fabric
         public Input<Inputs.ServiceProfileProjectArgs>? Project { get; set; }
 
         /// <summary>
-        /// Self Profile indicating if the profile is created for customer's self use
+        /// Self Profile indicating if the profile is created for customer's  self use
         /// </summary>
         [Input("selfProfile")]
         public Input<bool>? SelfProfile { get; set; }
@@ -375,7 +375,7 @@ namespace Pulumi.Equinix.Fabric
         }
 
         /// <summary>
-        /// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+        /// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
         /// </summary>
         [Input("type", required: true)]
         public InputUnion<string, Pulumi.Equinix.Fabric.ProfileType> Type { get; set; } = null!;
@@ -527,7 +527,7 @@ namespace Pulumi.Equinix.Fabric
         public Input<Inputs.ServiceProfileProjectGetArgs>? Project { get; set; }
 
         /// <summary>
-        /// Self Profile indicating if the profile is created for customer's self use
+        /// Self Profile indicating if the profile is created for customer's  self use
         /// </summary>
         [Input("selfProfile")]
         public Input<bool>? SelfProfile { get; set; }
@@ -551,7 +551,7 @@ namespace Pulumi.Equinix.Fabric
         }
 
         /// <summary>
-        /// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+        /// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
         /// </summary>
         [Input("type")]
         public InputUnion<string, Pulumi.Equinix.Fabric.ProfileType>? Type { get; set; }

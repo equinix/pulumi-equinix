@@ -21,6 +21,7 @@
         "fabric/getCloudRouters.ts",
         "fabric/getConnection.ts",
         "fabric/getConnections.ts",
+        "fabric/getMarketplaceSubscription.ts",
         "fabric/getNetwork.ts",
         "fabric/getNetworks.ts",
         "fabric/getPort.ts",

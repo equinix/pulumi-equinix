@@ -35,6 +35,11 @@ export const getConnections: typeof import("./getConnections").getConnections = 
 export const getConnectionsOutput: typeof import("./getConnections").getConnectionsOutput = null as any;
 utilities.lazyLoad(exports, ["getConnections","getConnectionsOutput"], () => require("./getConnections"));
 
+export { GetMarketplaceSubscriptionArgs, GetMarketplaceSubscriptionResult, GetMarketplaceSubscriptionOutputArgs } from "./getMarketplaceSubscription";
+export const getMarketplaceSubscription: typeof import("./getMarketplaceSubscription").getMarketplaceSubscription = null as any;
+export const getMarketplaceSubscriptionOutput: typeof import("./getMarketplaceSubscription").getMarketplaceSubscriptionOutput = null as any;
+utilities.lazyLoad(exports, ["getMarketplaceSubscription","getMarketplaceSubscriptionOutput"], () => require("./getMarketplaceSubscription"));
+
 export { GetNetworkArgs, GetNetworkResult, GetNetworkOutputArgs } from "./getNetwork";
 export const getNetwork: typeof import("./getNetwork").getNetwork = null as any;
 export const getNetworkOutput: typeof import("./getNetwork").getNetworkOutput = null as any;

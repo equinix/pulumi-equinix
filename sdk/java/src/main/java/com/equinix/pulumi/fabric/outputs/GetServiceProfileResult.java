@@ -93,7 +93,7 @@ public final class GetServiceProfileResult {
      */
     private GetServiceProfileProject project;
     /**
-     * @return Self Profile indicating if the profile is created for customer&#39;s self use
+     * @return Self Profile indicating if the profile is created for customer&#39;s  self use
      * 
      */
     private Boolean selfProfile;
@@ -108,7 +108,7 @@ public final class GetServiceProfileResult {
      */
     private List<String> tags;
     /**
-     * @return Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+     * @return Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
      * 
      */
     private String type;
@@ -117,6 +117,10 @@ public final class GetServiceProfileResult {
      * 
      */
     private String uuid;
+    /**
+     * @return Flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
+     * 
+     */
     private String viewPoint;
     /**
      * @return Virtual Devices
@@ -229,7 +233,7 @@ public final class GetServiceProfileResult {
         return this.project;
     }
     /**
-     * @return Self Profile indicating if the profile is created for customer&#39;s self use
+     * @return Self Profile indicating if the profile is created for customer&#39;s  self use
      * 
      */
     public Boolean selfProfile() {
@@ -250,7 +254,7 @@ public final class GetServiceProfileResult {
         return this.tags;
     }
     /**
-     * @return Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+     * @return Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
      * 
      */
     public String type() {
@@ -263,6 +267,10 @@ public final class GetServiceProfileResult {
     public String uuid() {
         return this.uuid;
     }
+    /**
+     * @return Flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
+     * 
+     */
     public String viewPoint() {
         return this.viewPoint;
     }

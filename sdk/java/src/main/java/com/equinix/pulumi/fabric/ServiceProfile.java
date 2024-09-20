@@ -280,14 +280,14 @@ public class ServiceProfile extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.project);
     }
     /**
-     * Self Profile indicating if the profile is created for customer&#39;s self use
+     * Self Profile indicating if the profile is created for customer&#39;s  self use
      * 
      */
     @Export(name="selfProfile", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> selfProfile;
 
     /**
-     * @return Self Profile indicating if the profile is created for customer&#39;s self use
+     * @return Self Profile indicating if the profile is created for customer&#39;s  self use
      * 
      */
     public Output<Optional<Boolean>> selfProfile() {
@@ -322,14 +322,14 @@ public class ServiceProfile extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+     * Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+     * @return Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
      * 
      */
     public Output<String> type() {

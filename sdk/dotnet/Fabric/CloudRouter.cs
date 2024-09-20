@@ -17,6 +17,7 @@ namespace Pulumi.Equinix.Fabric
     /// * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers
     /// 
     /// ## Example Usage
+    /// ### example 1
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -60,6 +61,56 @@ namespace Pulumi.Equinix.Fabric
     ///         Account = new Equinix.Fabric.Inputs.CloudRouterAccountArgs
     ///         {
     ///             AccountNumber = 203612,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### example 2
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Equinix = Pulumi.Equinix;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var newCloudRouter = new Equinix.Fabric.CloudRouter("newCloudRouter", new()
+    ///     {
+    ///         Name = "Router-SV",
+    ///         Type = "XF_ROUTER",
+    ///         Notifications = new[]
+    ///         {
+    ///             new Equinix.Fabric.Inputs.CloudRouterNotificationArgs
+    ///             {
+    ///                 Type = "ALL",
+    ///                 Emails = new[]
+    ///                 {
+    ///                     "example@equinix.com",
+    ///                     "test1@equinix.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///         Order = new Equinix.Fabric.Inputs.CloudRouterOrderArgs
+    ///         {
+    ///             PurchaseOrderNumber = "1-323292",
+    ///         },
+    ///         Location = new Equinix.Fabric.Inputs.CloudRouterLocationArgs
+    ///         {
+    ///             MetroCode = "SV",
+    ///         },
+    ///         Package = new Equinix.Fabric.Inputs.CloudRouterPackageArgs
+    ///         {
+    ///             Code = "STANDARD",
+    ///         },
+    ///         Project = new Equinix.Fabric.Inputs.CloudRouterProjectArgs
+    ///         {
+    ///             ProjectId = "776847000642406",
+    ///         },
+    ///         MarketplaceSubscription = new Equinix.Fabric.Inputs.CloudRouterMarketplaceSubscriptionArgs
+    ///         {
+    ///             Type = "AWS_MARKETPLACE_SUBSCRIPTION",
+    ///             Uuid = "2823b8ae07-a2a2-45b4-a658-c3542bb24e9",
     ///         },
     ///     });
     /// 
@@ -134,6 +185,12 @@ namespace Pulumi.Equinix.Fabric
         /// </summary>
         [Output("location")]
         public Output<Outputs.CloudRouterLocation> Location { get; private set; } = null!;
+
+        /// <summary>
+        /// Equinix Fabric Entity for Marketplace Subscription
+        /// </summary>
+        [Output("marketplaceSubscription")]
+        public Output<Outputs.CloudRouterMarketplaceSubscription> MarketplaceSubscription { get; private set; } = null!;
 
         /// <summary>
         /// Fabric Cloud Router name. An alpha-numeric 24 characters string which can include only hyphens and underscores
@@ -233,8 +290,8 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Customer account information that is associated with this Fabric Cloud Router
         /// </summary>
-        [Input("account", required: true)]
-        public Input<Inputs.CloudRouterAccountArgs> Account { get; set; } = null!;
+        [Input("account")]
+        public Input<Inputs.CloudRouterAccountArgs>? Account { get; set; }
 
         /// <summary>
         /// Customer-provided Fabric Cloud Router description
@@ -253,6 +310,12 @@ namespace Pulumi.Equinix.Fabric
         /// </summary>
         [Input("location", required: true)]
         public Input<Inputs.CloudRouterLocationArgs> Location { get; set; } = null!;
+
+        /// <summary>
+        /// Equinix Fabric Entity for Marketplace Subscription
+        /// </summary>
+        [Input("marketplaceSubscription")]
+        public Input<Inputs.CloudRouterMarketplaceSubscriptionArgs>? MarketplaceSubscription { get; set; }
 
         /// <summary>
         /// Fabric Cloud Router name. An alpha-numeric 24 characters string which can include only hyphens and underscores
@@ -381,6 +444,12 @@ namespace Pulumi.Equinix.Fabric
         /// </summary>
         [Input("location")]
         public Input<Inputs.CloudRouterLocationGetArgs>? Location { get; set; }
+
+        /// <summary>
+        /// Equinix Fabric Entity for Marketplace Subscription
+        /// </summary>
+        [Input("marketplaceSubscription")]
+        public Input<Inputs.CloudRouterMarketplaceSubscriptionGetArgs>? MarketplaceSubscription { get; set; }
 
         /// <summary>
         /// Fabric Cloud Router name. An alpha-numeric 24 characters string which can include only hyphens and underscores

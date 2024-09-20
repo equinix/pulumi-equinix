@@ -20,6 +20,7 @@ import (
 // * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers
 //
 // ## Example Usage
+// ### example 1
 // ```go
 // package main
 //
@@ -68,6 +69,56 @@ import (
 //	}
 //
 // ```
+// ### example 2
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fabric.NewCloudRouter(ctx, "newCloudRouter", &fabric.CloudRouterArgs{
+//				Name: pulumi.String("Router-SV"),
+//				Type: pulumi.String("XF_ROUTER"),
+//				Notifications: fabric.CloudRouterNotificationArray{
+//					&fabric.CloudRouterNotificationArgs{
+//						Type: pulumi.String("ALL"),
+//						Emails: pulumi.StringArray{
+//							pulumi.String("example@equinix.com"),
+//							pulumi.String("test1@equinix.com"),
+//						},
+//					},
+//				},
+//				Order: &fabric.CloudRouterOrderArgs{
+//					PurchaseOrderNumber: pulumi.String("1-323292"),
+//				},
+//				Location: &fabric.CloudRouterLocationArgs{
+//					MetroCode: pulumi.String("SV"),
+//				},
+//				Package: &fabric.CloudRouterPackageArgs{
+//					Code: pulumi.String("STANDARD"),
+//				},
+//				Project: &fabric.CloudRouterProjectArgs{
+//					ProjectId: pulumi.String("776847000642406"),
+//				},
+//				MarketplaceSubscription: &fabric.CloudRouterMarketplaceSubscriptionArgs{
+//					Type: pulumi.String("AWS_MARKETPLACE_SUBSCRIPTION"),
+//					Uuid: pulumi.String("2823b8ae07-a2a2-45b4-a658-c3542bb24e9"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type CloudRouter struct {
 	pulumi.CustomResourceState
 
@@ -93,6 +144,8 @@ type CloudRouter struct {
 	Href pulumi.StringOutput `pulumi:"href"`
 	// Fabric Cloud Router location
 	Location CloudRouterLocationOutput `pulumi:"location"`
+	// Equinix Fabric Entity for Marketplace Subscription
+	MarketplaceSubscription CloudRouterMarketplaceSubscriptionOutput `pulumi:"marketplaceSubscription"`
 	// Fabric Cloud Router name. An alpha-numeric 24 characters string which can include only hyphens and underscores
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Preferences for notifications on Fabric Cloud Router configuration or status changes
@@ -118,9 +171,6 @@ func NewCloudRouter(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Account == nil {
-		return nil, errors.New("invalid value for required argument 'Account'")
-	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
@@ -181,6 +231,8 @@ type cloudRouterState struct {
 	Href *string `pulumi:"href"`
 	// Fabric Cloud Router location
 	Location *CloudRouterLocation `pulumi:"location"`
+	// Equinix Fabric Entity for Marketplace Subscription
+	MarketplaceSubscription *CloudRouterMarketplaceSubscription `pulumi:"marketplaceSubscription"`
 	// Fabric Cloud Router name. An alpha-numeric 24 characters string which can include only hyphens and underscores
 	Name *string `pulumi:"name"`
 	// Preferences for notifications on Fabric Cloud Router configuration or status changes
@@ -222,6 +274,8 @@ type CloudRouterState struct {
 	Href pulumi.StringPtrInput
 	// Fabric Cloud Router location
 	Location CloudRouterLocationPtrInput
+	// Equinix Fabric Entity for Marketplace Subscription
+	MarketplaceSubscription CloudRouterMarketplaceSubscriptionPtrInput
 	// Fabric Cloud Router name. An alpha-numeric 24 characters string which can include only hyphens and underscores
 	Name pulumi.StringPtrInput
 	// Preferences for notifications on Fabric Cloud Router configuration or status changes
@@ -246,13 +300,15 @@ func (CloudRouterState) ElementType() reflect.Type {
 
 type cloudRouterArgs struct {
 	// Customer account information that is associated with this Fabric Cloud Router
-	Account CloudRouterAccount `pulumi:"account"`
+	Account *CloudRouterAccount `pulumi:"account"`
 	// Customer-provided Fabric Cloud Router description
 	Description *string `pulumi:"description"`
 	// Fabric Cloud Router URI information
 	Href *string `pulumi:"href"`
 	// Fabric Cloud Router location
 	Location CloudRouterLocation `pulumi:"location"`
+	// Equinix Fabric Entity for Marketplace Subscription
+	MarketplaceSubscription *CloudRouterMarketplaceSubscription `pulumi:"marketplaceSubscription"`
 	// Fabric Cloud Router name. An alpha-numeric 24 characters string which can include only hyphens and underscores
 	Name *string `pulumi:"name"`
 	// Preferences for notifications on Fabric Cloud Router configuration or status changes
@@ -272,13 +328,15 @@ type cloudRouterArgs struct {
 // The set of arguments for constructing a CloudRouter resource.
 type CloudRouterArgs struct {
 	// Customer account information that is associated with this Fabric Cloud Router
-	Account CloudRouterAccountInput
+	Account CloudRouterAccountPtrInput
 	// Customer-provided Fabric Cloud Router description
 	Description pulumi.StringPtrInput
 	// Fabric Cloud Router URI information
 	Href pulumi.StringPtrInput
 	// Fabric Cloud Router location
 	Location CloudRouterLocationInput
+	// Equinix Fabric Entity for Marketplace Subscription
+	MarketplaceSubscription CloudRouterMarketplaceSubscriptionPtrInput
 	// Fabric Cloud Router name. An alpha-numeric 24 characters string which can include only hyphens and underscores
 	Name pulumi.StringPtrInput
 	// Preferences for notifications on Fabric Cloud Router configuration or status changes
@@ -435,6 +493,11 @@ func (o CloudRouterOutput) Href() pulumi.StringOutput {
 // Fabric Cloud Router location
 func (o CloudRouterOutput) Location() CloudRouterLocationOutput {
 	return o.ApplyT(func(v *CloudRouter) CloudRouterLocationOutput { return v.Location }).(CloudRouterLocationOutput)
+}
+
+// Equinix Fabric Entity for Marketplace Subscription
+func (o CloudRouterOutput) MarketplaceSubscription() CloudRouterMarketplaceSubscriptionOutput {
+	return o.ApplyT(func(v *CloudRouter) CloudRouterMarketplaceSubscriptionOutput { return v.MarketplaceSubscription }).(CloudRouterMarketplaceSubscriptionOutput)
 }
 
 // Fabric Cloud Router name. An alpha-numeric 24 characters string which can include only hyphens and underscores

@@ -16,10 +16,10 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// <summary>
         /// Account Number
         /// </summary>
-        public readonly int? AccountNumber;
+        public readonly int AccountNumber;
 
         [OutputConstructor]
-        private CloudRouterAccount(int? accountNumber)
+        private CloudRouterAccount(int accountNumber)
         {
             AccountNumber = accountNumber;
         }

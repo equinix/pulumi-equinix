@@ -16,59 +16,52 @@ __all__ = ['CloudRouterArgs', 'CloudRouter']
 @pulumi.input_type
 class CloudRouterArgs:
     def __init__(__self__, *,
-                 account: pulumi.Input['CloudRouterAccountArgs'],
                  location: pulumi.Input['CloudRouterLocationArgs'],
                  notifications: pulumi.Input[Sequence[pulumi.Input['CloudRouterNotificationArgs']]],
                  package: pulumi.Input['CloudRouterPackageArgs'],
                  project: pulumi.Input['CloudRouterProjectArgs'],
                  type: pulumi.Input[str],
+                 account: Optional[pulumi.Input['CloudRouterAccountArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  href: Optional[pulumi.Input[str]] = None,
+                 marketplace_subscription: Optional[pulumi.Input['CloudRouterMarketplaceSubscriptionArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  order: Optional[pulumi.Input['CloudRouterOrderArgs']] = None,
                  uuid: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a CloudRouter resource.
-        :param pulumi.Input['CloudRouterAccountArgs'] account: Customer account information that is associated with this Fabric Cloud Router
         :param pulumi.Input['CloudRouterLocationArgs'] location: Fabric Cloud Router location
         :param pulumi.Input[Sequence[pulumi.Input['CloudRouterNotificationArgs']]] notifications: Preferences for notifications on Fabric Cloud Router configuration or status changes
         :param pulumi.Input['CloudRouterPackageArgs'] package: Fabric Cloud Router Package Type
         :param pulumi.Input['CloudRouterProjectArgs'] project: Customer resource hierarchy project information. Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
         :param pulumi.Input[str] type: Defines the FCR type like; XF_ROUTER
+        :param pulumi.Input['CloudRouterAccountArgs'] account: Customer account information that is associated with this Fabric Cloud Router
         :param pulumi.Input[str] description: Customer-provided Fabric Cloud Router description
         :param pulumi.Input[str] href: Fabric Cloud Router URI information
+        :param pulumi.Input['CloudRouterMarketplaceSubscriptionArgs'] marketplace_subscription: Equinix Fabric Entity for Marketplace Subscription
         :param pulumi.Input[str] name: Fabric Cloud Router name. An alpha-numeric 24 characters string which can include only hyphens and underscores
         :param pulumi.Input['CloudRouterOrderArgs'] order: Order information related to this Fabric Cloud Router
         :param pulumi.Input[str] uuid: Equinix-assigned Fabric Cloud Router identifier
         """
-        pulumi.set(__self__, "account", account)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "notifications", notifications)
         pulumi.set(__self__, "package", package)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "type", type)
+        if account is not None:
+            pulumi.set(__self__, "account", account)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if href is not None:
             pulumi.set(__self__, "href", href)
+        if marketplace_subscription is not None:
+            pulumi.set(__self__, "marketplace_subscription", marketplace_subscription)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if order is not None:
             pulumi.set(__self__, "order", order)
         if uuid is not None:
             pulumi.set(__self__, "uuid", uuid)
-
-    @property
-    @pulumi.getter
-    def account(self) -> pulumi.Input['CloudRouterAccountArgs']:
-        """
-        Customer account information that is associated with this Fabric Cloud Router
-        """
-        return pulumi.get(self, "account")
-
-    @account.setter
-    def account(self, value: pulumi.Input['CloudRouterAccountArgs']):
-        pulumi.set(self, "account", value)
 
     @property
     @pulumi.getter
@@ -132,6 +125,18 @@ class CloudRouterArgs:
 
     @property
     @pulumi.getter
+    def account(self) -> Optional[pulumi.Input['CloudRouterAccountArgs']]:
+        """
+        Customer account information that is associated with this Fabric Cloud Router
+        """
+        return pulumi.get(self, "account")
+
+    @account.setter
+    def account(self, value: Optional[pulumi.Input['CloudRouterAccountArgs']]):
+        pulumi.set(self, "account", value)
+
+    @property
+    @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
         Customer-provided Fabric Cloud Router description
@@ -153,6 +158,18 @@ class CloudRouterArgs:
     @href.setter
     def href(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "href", value)
+
+    @property
+    @pulumi.getter(name="marketplaceSubscription")
+    def marketplace_subscription(self) -> Optional[pulumi.Input['CloudRouterMarketplaceSubscriptionArgs']]:
+        """
+        Equinix Fabric Entity for Marketplace Subscription
+        """
+        return pulumi.get(self, "marketplace_subscription")
+
+    @marketplace_subscription.setter
+    def marketplace_subscription(self, value: Optional[pulumi.Input['CloudRouterMarketplaceSubscriptionArgs']]):
+        pulumi.set(self, "marketplace_subscription", value)
 
     @property
     @pulumi.getter
@@ -205,6 +222,7 @@ class _CloudRouterState:
                  equinix_asn: Optional[pulumi.Input[int]] = None,
                  href: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input['CloudRouterLocationArgs']] = None,
+                 marketplace_subscription: Optional[pulumi.Input['CloudRouterMarketplaceSubscriptionArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notifications: Optional[pulumi.Input[Sequence[pulumi.Input['CloudRouterNotificationArgs']]]] = None,
                  order: Optional[pulumi.Input['CloudRouterOrderArgs']] = None,
@@ -226,6 +244,7 @@ class _CloudRouterState:
         :param pulumi.Input[int] equinix_asn: Equinix ASN
         :param pulumi.Input[str] href: Fabric Cloud Router URI information
         :param pulumi.Input['CloudRouterLocationArgs'] location: Fabric Cloud Router location
+        :param pulumi.Input['CloudRouterMarketplaceSubscriptionArgs'] marketplace_subscription: Equinix Fabric Entity for Marketplace Subscription
         :param pulumi.Input[str] name: Fabric Cloud Router name. An alpha-numeric 24 characters string which can include only hyphens and underscores
         :param pulumi.Input[Sequence[pulumi.Input['CloudRouterNotificationArgs']]] notifications: Preferences for notifications on Fabric Cloud Router configuration or status changes
         :param pulumi.Input['CloudRouterOrderArgs'] order: Order information related to this Fabric Cloud Router
@@ -257,6 +276,8 @@ class _CloudRouterState:
             pulumi.set(__self__, "href", href)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if marketplace_subscription is not None:
+            pulumi.set(__self__, "marketplace_subscription", marketplace_subscription)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if notifications is not None:
@@ -407,6 +428,18 @@ class _CloudRouterState:
         pulumi.set(self, "location", value)
 
     @property
+    @pulumi.getter(name="marketplaceSubscription")
+    def marketplace_subscription(self) -> Optional[pulumi.Input['CloudRouterMarketplaceSubscriptionArgs']]:
+        """
+        Equinix Fabric Entity for Marketplace Subscription
+        """
+        return pulumi.get(self, "marketplace_subscription")
+
+    @marketplace_subscription.setter
+    def marketplace_subscription(self, value: Optional[pulumi.Input['CloudRouterMarketplaceSubscriptionArgs']]):
+        pulumi.set(self, "marketplace_subscription", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -512,6 +545,7 @@ class CloudRouter(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  href: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[Union['CloudRouterLocationArgs', 'CloudRouterLocationArgsDict']]] = None,
+                 marketplace_subscription: Optional[pulumi.Input[Union['CloudRouterMarketplaceSubscriptionArgs', 'CloudRouterMarketplaceSubscriptionArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CloudRouterNotificationArgs', 'CloudRouterNotificationArgsDict']]]]] = None,
                  order: Optional[pulumi.Input[Union['CloudRouterOrderArgs', 'CloudRouterOrderArgsDict']]] = None,
@@ -528,6 +562,7 @@ class CloudRouter(pulumi.CustomResource):
         * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers
 
         ## Example Usage
+        ### example 1
         ```python
         import pulumi
         import pulumi_equinix as equinix
@@ -558,6 +593,38 @@ class CloudRouter(pulumi.CustomResource):
                 "account_number": 203612,
             })
         ```
+        ### example 2
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        new_cloud_router = equinix.fabric.CloudRouter("newCloudRouter",
+            name="Router-SV",
+            type="XF_ROUTER",
+            notifications=[{
+                "type": "ALL",
+                "emails": [
+                    "example@equinix.com",
+                    "test1@equinix.com",
+                ],
+            }],
+            order={
+                "purchase_order_number": "1-323292",
+            },
+            location={
+                "metro_code": "SV",
+            },
+            package={
+                "code": "STANDARD",
+            },
+            project={
+                "project_id": "776847000642406",
+            },
+            marketplace_subscription={
+                "type": "AWS_MARKETPLACE_SUBSCRIPTION",
+                "uuid": "2823b8ae07-a2a2-45b4-a658-c3542bb24e9",
+            })
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -565,6 +632,7 @@ class CloudRouter(pulumi.CustomResource):
         :param pulumi.Input[str] description: Customer-provided Fabric Cloud Router description
         :param pulumi.Input[str] href: Fabric Cloud Router URI information
         :param pulumi.Input[Union['CloudRouterLocationArgs', 'CloudRouterLocationArgsDict']] location: Fabric Cloud Router location
+        :param pulumi.Input[Union['CloudRouterMarketplaceSubscriptionArgs', 'CloudRouterMarketplaceSubscriptionArgsDict']] marketplace_subscription: Equinix Fabric Entity for Marketplace Subscription
         :param pulumi.Input[str] name: Fabric Cloud Router name. An alpha-numeric 24 characters string which can include only hyphens and underscores
         :param pulumi.Input[Sequence[pulumi.Input[Union['CloudRouterNotificationArgs', 'CloudRouterNotificationArgsDict']]]] notifications: Preferences for notifications on Fabric Cloud Router configuration or status changes
         :param pulumi.Input[Union['CloudRouterOrderArgs', 'CloudRouterOrderArgsDict']] order: Order information related to this Fabric Cloud Router
@@ -587,6 +655,7 @@ class CloudRouter(pulumi.CustomResource):
         * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers
 
         ## Example Usage
+        ### example 1
         ```python
         import pulumi
         import pulumi_equinix as equinix
@@ -617,6 +686,38 @@ class CloudRouter(pulumi.CustomResource):
                 "account_number": 203612,
             })
         ```
+        ### example 2
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        new_cloud_router = equinix.fabric.CloudRouter("newCloudRouter",
+            name="Router-SV",
+            type="XF_ROUTER",
+            notifications=[{
+                "type": "ALL",
+                "emails": [
+                    "example@equinix.com",
+                    "test1@equinix.com",
+                ],
+            }],
+            order={
+                "purchase_order_number": "1-323292",
+            },
+            location={
+                "metro_code": "SV",
+            },
+            package={
+                "code": "STANDARD",
+            },
+            project={
+                "project_id": "776847000642406",
+            },
+            marketplace_subscription={
+                "type": "AWS_MARKETPLACE_SUBSCRIPTION",
+                "uuid": "2823b8ae07-a2a2-45b4-a658-c3542bb24e9",
+            })
+        ```
 
         :param str resource_name: The name of the resource.
         :param CloudRouterArgs args: The arguments to use to populate this resource's properties.
@@ -637,6 +738,7 @@ class CloudRouter(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  href: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[Union['CloudRouterLocationArgs', 'CloudRouterLocationArgsDict']]] = None,
+                 marketplace_subscription: Optional[pulumi.Input[Union['CloudRouterMarketplaceSubscriptionArgs', 'CloudRouterMarketplaceSubscriptionArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CloudRouterNotificationArgs', 'CloudRouterNotificationArgsDict']]]]] = None,
                  order: Optional[pulumi.Input[Union['CloudRouterOrderArgs', 'CloudRouterOrderArgsDict']]] = None,
@@ -653,14 +755,13 @@ class CloudRouter(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CloudRouterArgs.__new__(CloudRouterArgs)
 
-            if account is None and not opts.urn:
-                raise TypeError("Missing required property 'account'")
             __props__.__dict__["account"] = account
             __props__.__dict__["description"] = description
             __props__.__dict__["href"] = href
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
+            __props__.__dict__["marketplace_subscription"] = marketplace_subscription
             __props__.__dict__["name"] = name
             if notifications is None and not opts.urn:
                 raise TypeError("Missing required property 'notifications'")
@@ -705,6 +806,7 @@ class CloudRouter(pulumi.CustomResource):
             equinix_asn: Optional[pulumi.Input[int]] = None,
             href: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[Union['CloudRouterLocationArgs', 'CloudRouterLocationArgsDict']]] = None,
+            marketplace_subscription: Optional[pulumi.Input[Union['CloudRouterMarketplaceSubscriptionArgs', 'CloudRouterMarketplaceSubscriptionArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             notifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CloudRouterNotificationArgs', 'CloudRouterNotificationArgsDict']]]]] = None,
             order: Optional[pulumi.Input[Union['CloudRouterOrderArgs', 'CloudRouterOrderArgsDict']]] = None,
@@ -731,6 +833,7 @@ class CloudRouter(pulumi.CustomResource):
         :param pulumi.Input[int] equinix_asn: Equinix ASN
         :param pulumi.Input[str] href: Fabric Cloud Router URI information
         :param pulumi.Input[Union['CloudRouterLocationArgs', 'CloudRouterLocationArgsDict']] location: Fabric Cloud Router location
+        :param pulumi.Input[Union['CloudRouterMarketplaceSubscriptionArgs', 'CloudRouterMarketplaceSubscriptionArgsDict']] marketplace_subscription: Equinix Fabric Entity for Marketplace Subscription
         :param pulumi.Input[str] name: Fabric Cloud Router name. An alpha-numeric 24 characters string which can include only hyphens and underscores
         :param pulumi.Input[Sequence[pulumi.Input[Union['CloudRouterNotificationArgs', 'CloudRouterNotificationArgsDict']]]] notifications: Preferences for notifications on Fabric Cloud Router configuration or status changes
         :param pulumi.Input[Union['CloudRouterOrderArgs', 'CloudRouterOrderArgsDict']] order: Order information related to this Fabric Cloud Router
@@ -755,6 +858,7 @@ class CloudRouter(pulumi.CustomResource):
         __props__.__dict__["equinix_asn"] = equinix_asn
         __props__.__dict__["href"] = href
         __props__.__dict__["location"] = location
+        __props__.__dict__["marketplace_subscription"] = marketplace_subscription
         __props__.__dict__["name"] = name
         __props__.__dict__["notifications"] = notifications
         __props__.__dict__["order"] = order
@@ -852,6 +956,14 @@ class CloudRouter(pulumi.CustomResource):
         Fabric Cloud Router location
         """
         return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter(name="marketplaceSubscription")
+    def marketplace_subscription(self) -> pulumi.Output['outputs.CloudRouterMarketplaceSubscription']:
+        """
+        Equinix Fabric Entity for Marketplace Subscription
+        """
+        return pulumi.get(self, "marketplace_subscription")
 
     @property
     @pulumi.getter

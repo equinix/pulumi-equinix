@@ -84,6 +84,17 @@ export namespace fabric {
         region: string;
     }
 
+    export interface CloudRouterMarketplaceSubscription {
+        /**
+         * Marketplace Subscription type like; AWS*MARKETPLACE*SUBSCRIPTION
+         */
+        type: string;
+        /**
+         * Equinix-assigned Marketplace Subscription identifier
+         */
+        uuid: string;
+    }
+
     export interface CloudRouterNotification {
         /**
          * Array of contact emails
@@ -1052,6 +1063,17 @@ export namespace fabric {
         region: string;
     }
 
+    export interface GetCloudRouterMarketplaceSubscription {
+        /**
+         * Marketplace Subscription type like; AWS_MARKETPLACE_SUBSCRIPTION
+         */
+        type: string;
+        /**
+         * Equinix-assigned Marketplace Subscription identifier
+         */
+        uuid: string;
+    }
+
     export interface GetCloudRouterNotification {
         /**
          * Array of contact emails
@@ -1149,6 +1171,10 @@ export namespace fabric {
          * Fabric Cloud Router location
          */
         locations: outputs.fabric.GetCloudRoutersDataLocation[];
+        /**
+         * Equinix Fabric Entity for Marketplace Subscription
+         */
+        marketplaceSubscriptions: outputs.fabric.GetCloudRoutersDataMarketplaceSubscription[];
         /**
          * Fabric Cloud Router name. An alpha-numeric 24 characters string which can include only hyphens and underscores
          */
@@ -1258,6 +1284,17 @@ export namespace fabric {
          * Access point region
          */
         region: string;
+    }
+
+    export interface GetCloudRoutersDataMarketplaceSubscription {
+        /**
+         * Marketplace Subscription type like; AWS_MARKETPLACE_SUBSCRIPTION
+         */
+        type: string;
+        /**
+         * Equinix-assigned Marketplace Subscription identifier
+         */
+        uuid: string;
     }
 
     export interface GetCloudRoutersDataNotification {
@@ -1606,11 +1643,11 @@ export namespace fabric {
 
     export interface GetConnectionASideAccessPointProfileAccessPointTypeConfig {
         /**
-         * Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
+         * Type of access point type config - VD, COLO
          */
         type: string;
         /**
-         * Equinix-assigned connection identifier
+         * Equinix-assigned access point type config identifier
          */
         uuid: string;
     }
@@ -2123,11 +2160,11 @@ export namespace fabric {
 
     export interface GetConnectionZSideAccessPointProfileAccessPointTypeConfig {
         /**
-         * Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
+         * Type of access point type config - VD, COLO
          */
         type: string;
         /**
-         * Equinix-assigned connection identifier
+         * Equinix-assigned access point type config identifier
          */
         uuid: string;
     }
@@ -2399,7 +2436,7 @@ export namespace fabric {
 
     export interface GetConnectionsDataASideAccessPointInterface {
         /**
-         * The ID of this resource.
+         * id
          */
         id: number;
         /**
@@ -2916,7 +2953,7 @@ export namespace fabric {
 
     export interface GetConnectionsDataZSideAccessPointInterface {
         /**
-         * The ID of this resource.
+         * id
          */
         id: number;
         /**
@@ -3120,7 +3157,7 @@ export namespace fabric {
          */
         operator: string;
         /**
-         * Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /change/status /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid *]
+         * Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /change/status /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid *]
          */
         property: string;
         /**
@@ -3149,6 +3186,54 @@ export namespace fabric {
          * The property name to use in sorting. One of [/name /direction /aSide/accessPoint/name /aSide/accessPoint/type /aSide/accessPoint/account/accountName /aSide/accessPoint/location/metroName /aSide/accessPoint/location/metroCode /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/name /zSide/accessPoint/type /zSide/accessPoint/account/accountName /zSide/accessPoint/location/metroName /zSide/accessPoint/location/metroCode /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/authenticationKey /bandwidth /geoScope /uuid /changeLog/createdDateTime /changeLog/updatedDateTime /operation/equinixStatus /operation/providerStatus /redundancy/priority]. Defaults to /changeLog/updatedDateTime
          */
         property?: string;
+    }
+
+    export interface GetMarketplaceSubscriptionEntitlement {
+        /**
+         * Asset information
+         */
+        assets: outputs.fabric.GetMarketplaceSubscriptionEntitlementAsset[];
+        /**
+         * Available Quantity
+         */
+        quantityAvailable: number;
+        /**
+         * Consumed Quantity
+         */
+        quantityConsumed: number;
+        /**
+         * Entitled Quantity
+         */
+        quantityEntitled: number;
+        /**
+         * Subscription Entitlement Id
+         */
+        uuid: string;
+    }
+
+    export interface GetMarketplaceSubscriptionEntitlementAsset {
+        /**
+         * Fabric Cloud Router Package Type
+         */
+        packages: outputs.fabric.GetMarketplaceSubscriptionEntitlementAssetPackage[];
+        /**
+         * Defines the FCR type like; XF_ROUTER
+         */
+        type: string;
+    }
+
+    export interface GetMarketplaceSubscriptionEntitlementAssetPackage {
+        /**
+         * Cloud Router package code
+         */
+        code: string;
+    }
+
+    export interface GetMarketplaceSubscriptionTrial {
+        /**
+         * Marketplace Subscription Trial Enabled
+         */
+        enabled: boolean;
     }
 
     export interface GetNetworkChange {

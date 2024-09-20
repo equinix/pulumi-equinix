@@ -186,7 +186,7 @@ namespace Pulumi.Equinix.Fabric
         /// </summary>
         public readonly Outputs.GetServiceProfileProjectResult Project;
         /// <summary>
-        /// Self Profile indicating if the profile is created for customer's self use
+        /// Self Profile indicating if the profile is created for customer's  self use
         /// </summary>
         public readonly bool SelfProfile;
         /// <summary>
@@ -198,13 +198,16 @@ namespace Pulumi.Equinix.Fabric
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>
-        /// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+        /// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
         /// </summary>
         public readonly string Type;
         /// <summary>
         /// Equinix assigned service profile identifier
         /// </summary>
         public readonly string Uuid;
+        /// <summary>
+        /// Flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
+        /// </summary>
         public readonly string ViewPoint;
         /// <summary>
         /// Virtual Devices

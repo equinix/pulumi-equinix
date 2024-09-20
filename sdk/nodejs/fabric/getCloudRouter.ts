@@ -106,6 +106,10 @@ export interface GetCloudRouterResult {
      */
     readonly locations: outputs.fabric.GetCloudRouterLocation[];
     /**
+     * Equinix Fabric Entity for Marketplace Subscription
+     */
+    readonly marketplaceSubscriptions: outputs.fabric.GetCloudRouterMarketplaceSubscription[];
+    /**
      * Fabric Cloud Router name. An alpha-numeric 24 characters string which can include only hyphens and underscores
      */
     readonly name: string;
@@ -122,7 +126,7 @@ export interface GetCloudRouterResult {
      */
     readonly packages: outputs.fabric.GetCloudRouterPackage[];
     /**
-     * Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
+     * Customer resource hierarchy project information. Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
      */
     readonly projects: outputs.fabric.GetCloudRouterProject[];
     /**

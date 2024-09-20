@@ -6,6 +6,7 @@ package com.equinix.pulumi.fabric.outputs;
 import com.equinix.pulumi.fabric.outputs.GetCloudRouterAccount;
 import com.equinix.pulumi.fabric.outputs.GetCloudRouterChangeLog;
 import com.equinix.pulumi.fabric.outputs.GetCloudRouterLocation;
+import com.equinix.pulumi.fabric.outputs.GetCloudRouterMarketplaceSubscription;
 import com.equinix.pulumi.fabric.outputs.GetCloudRouterNotification;
 import com.equinix.pulumi.fabric.outputs.GetCloudRouterOrder;
 import com.equinix.pulumi.fabric.outputs.GetCloudRouterPackage;
@@ -80,6 +81,11 @@ public final class GetCloudRouterResult {
      */
     private List<GetCloudRouterLocation> locations;
     /**
+     * @return Equinix Fabric Entity for Marketplace Subscription
+     * 
+     */
+    private List<GetCloudRouterMarketplaceSubscription> marketplaceSubscriptions;
+    /**
      * @return Fabric Cloud Router name. An alpha-numeric 24 characters string which can include only hyphens and underscores
      * 
      */
@@ -100,7 +106,7 @@ public final class GetCloudRouterResult {
      */
     private List<GetCloudRouterPackage> packages;
     /**
-     * @return Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
+     * @return Customer resource hierarchy project information. Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
      * 
      */
     private List<GetCloudRouterProject> projects;
@@ -206,6 +212,13 @@ public final class GetCloudRouterResult {
         return this.locations;
     }
     /**
+     * @return Equinix Fabric Entity for Marketplace Subscription
+     * 
+     */
+    public List<GetCloudRouterMarketplaceSubscription> marketplaceSubscriptions() {
+        return this.marketplaceSubscriptions;
+    }
+    /**
      * @return Fabric Cloud Router name. An alpha-numeric 24 characters string which can include only hyphens and underscores
      * 
      */
@@ -234,7 +247,7 @@ public final class GetCloudRouterResult {
         return this.packages;
     }
     /**
-     * @return Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
+     * @return Customer resource hierarchy project information. Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
      * 
      */
     public List<GetCloudRouterProject> projects() {
@@ -283,6 +296,7 @@ public final class GetCloudRouterResult {
         private String href;
         private String id;
         private List<GetCloudRouterLocation> locations;
+        private List<GetCloudRouterMarketplaceSubscription> marketplaceSubscriptions;
         private String name;
         private List<GetCloudRouterNotification> notifications;
         private List<GetCloudRouterOrder> orders;
@@ -306,6 +320,7 @@ public final class GetCloudRouterResult {
     	      this.href = defaults.href;
     	      this.id = defaults.id;
     	      this.locations = defaults.locations;
+    	      this.marketplaceSubscriptions = defaults.marketplaceSubscriptions;
     	      this.name = defaults.name;
     	      this.notifications = defaults.notifications;
     	      this.orders = defaults.orders;
@@ -422,6 +437,17 @@ public final class GetCloudRouterResult {
             return locations(List.of(locations));
         }
         @CustomType.Setter
+        public Builder marketplaceSubscriptions(List<GetCloudRouterMarketplaceSubscription> marketplaceSubscriptions) {
+            if (marketplaceSubscriptions == null) {
+              throw new MissingRequiredPropertyException("GetCloudRouterResult", "marketplaceSubscriptions");
+            }
+            this.marketplaceSubscriptions = marketplaceSubscriptions;
+            return this;
+        }
+        public Builder marketplaceSubscriptions(GetCloudRouterMarketplaceSubscription... marketplaceSubscriptions) {
+            return marketplaceSubscriptions(List.of(marketplaceSubscriptions));
+        }
+        @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
               throw new MissingRequiredPropertyException("GetCloudRouterResult", "name");
@@ -511,6 +537,7 @@ public final class GetCloudRouterResult {
             _resultValue.href = href;
             _resultValue.id = id;
             _resultValue.locations = locations;
+            _resultValue.marketplaceSubscriptions = marketplaceSubscriptions;
             _resultValue.name = name;
             _resultValue.notifications = notifications;
             _resultValue.orders = orders;

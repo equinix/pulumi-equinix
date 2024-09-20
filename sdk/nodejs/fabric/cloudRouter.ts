@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers
  *
  * ## Example Usage
+ * ### example 1
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -43,6 +44,39 @@ import * as utilities from "../utilities";
  *     },
  *     account: {
  *         accountNumber: 203612,
+ *     },
+ * });
+ * ```
+ * ### example 2
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const newCloudRouter = new equinix.fabric.CloudRouter("newCloudRouter", {
+ *     name: "Router-SV",
+ *     type: "XF_ROUTER",
+ *     notifications: [{
+ *         type: "ALL",
+ *         emails: [
+ *             "example@equinix.com",
+ *             "test1@equinix.com",
+ *         ],
+ *     }],
+ *     order: {
+ *         purchaseOrderNumber: "1-323292",
+ *     },
+ *     location: {
+ *         metroCode: "SV",
+ *     },
+ *     "package": {
+ *         code: "STANDARD",
+ *     },
+ *     project: {
+ *         projectId: "776847000642406",
+ *     },
+ *     marketplaceSubscription: {
+ *         type: "AWS_MARKETPLACE_SUBSCRIPTION",
+ *         uuid: "2823b8ae07-a2a2-45b4-a658-c3542bb24e9",
  *     },
  * });
  * ```
@@ -120,6 +154,10 @@ export class CloudRouter extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<outputs.fabric.CloudRouterLocation>;
     /**
+     * Equinix Fabric Entity for Marketplace Subscription
+     */
+    public readonly marketplaceSubscription!: pulumi.Output<outputs.fabric.CloudRouterMarketplaceSubscription>;
+    /**
      * Fabric Cloud Router name. An alpha-numeric 24 characters string which can include only hyphens and underscores
      */
     public readonly name!: pulumi.Output<string>;
@@ -176,6 +214,7 @@ export class CloudRouter extends pulumi.CustomResource {
             resourceInputs["equinixAsn"] = state ? state.equinixAsn : undefined;
             resourceInputs["href"] = state ? state.href : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["marketplaceSubscription"] = state ? state.marketplaceSubscription : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["notifications"] = state ? state.notifications : undefined;
             resourceInputs["order"] = state ? state.order : undefined;
@@ -186,9 +225,6 @@ export class CloudRouter extends pulumi.CustomResource {
             resourceInputs["uuid"] = state ? state.uuid : undefined;
         } else {
             const args = argsOrState as CloudRouterArgs | undefined;
-            if ((!args || args.account === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'account'");
-            }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
@@ -208,6 +244,7 @@ export class CloudRouter extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["href"] = args ? args.href : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["marketplaceSubscription"] = args ? args.marketplaceSubscription : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["notifications"] = args ? args.notifications : undefined;
             resourceInputs["order"] = args ? args.order : undefined;
@@ -278,6 +315,10 @@ export interface CloudRouterState {
      */
     location?: pulumi.Input<inputs.fabric.CloudRouterLocation>;
     /**
+     * Equinix Fabric Entity for Marketplace Subscription
+     */
+    marketplaceSubscription?: pulumi.Input<inputs.fabric.CloudRouterMarketplaceSubscription>;
+    /**
      * Fabric Cloud Router name. An alpha-numeric 24 characters string which can include only hyphens and underscores
      */
     name?: pulumi.Input<string>;
@@ -318,7 +359,7 @@ export interface CloudRouterArgs {
     /**
      * Customer account information that is associated with this Fabric Cloud Router
      */
-    account: pulumi.Input<inputs.fabric.CloudRouterAccount>;
+    account?: pulumi.Input<inputs.fabric.CloudRouterAccount>;
     /**
      * Customer-provided Fabric Cloud Router description
      */
@@ -331,6 +372,10 @@ export interface CloudRouterArgs {
      * Fabric Cloud Router location
      */
     location: pulumi.Input<inputs.fabric.CloudRouterLocation>;
+    /**
+     * Equinix Fabric Entity for Marketplace Subscription
+     */
+    marketplaceSubscription?: pulumi.Input<inputs.fabric.CloudRouterMarketplaceSubscription>;
     /**
      * Fabric Cloud Router name. An alpha-numeric 24 characters string which can include only hyphens and underscores
      */
