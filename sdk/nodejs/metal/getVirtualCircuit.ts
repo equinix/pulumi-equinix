@@ -10,7 +10,6 @@ import * as utilities from "../utilities";
  * See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
  */
 export function getVirtualCircuit(args: GetVirtualCircuitArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualCircuitResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:metal/getVirtualCircuit:getVirtualCircuit", {
         "customerIpv6": args.customerIpv6,
@@ -151,7 +150,13 @@ export interface GetVirtualCircuitResult {
  * See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
  */
 export function getVirtualCircuitOutput(args: GetVirtualCircuitOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVirtualCircuitResult> {
-    return pulumi.output(args).apply((a: any) => getVirtualCircuit(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("equinix:metal/getVirtualCircuit:getVirtualCircuit", {
+        "customerIpv6": args.customerIpv6,
+        "metalIpv6": args.metalIpv6,
+        "subnetIpv6": args.subnetIpv6,
+        "virtualCircuitId": args.virtualCircuitId,
+    }, opts);
 }
 
 /**

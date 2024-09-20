@@ -37,7 +37,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getServiceProfile(args: GetServiceProfileArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceProfileResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:fabric/getServiceProfile:getServiceProfile", {
         "uuid": args.uuid,
@@ -174,7 +173,10 @@ export interface GetServiceProfileResult {
  * ```
  */
 export function getServiceProfileOutput(args: GetServiceProfileOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceProfileResult> {
-    return pulumi.output(args).apply((a: any) => getServiceProfile(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("equinix:fabric/getServiceProfile:getServiceProfile", {
+        "uuid": args.uuid,
+    }, opts);
 }
 
 /**

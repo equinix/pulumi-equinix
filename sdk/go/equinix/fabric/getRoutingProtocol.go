@@ -119,14 +119,20 @@ type LookupRoutingProtocolResult struct {
 
 func LookupRoutingProtocolOutput(ctx *pulumi.Context, args LookupRoutingProtocolOutputArgs, opts ...pulumi.InvokeOption) LookupRoutingProtocolResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupRoutingProtocolResult, error) {
+		ApplyT(func(v interface{}) (LookupRoutingProtocolResultOutput, error) {
 			args := v.(LookupRoutingProtocolArgs)
-			r, err := LookupRoutingProtocol(ctx, &args, opts...)
-			var s LookupRoutingProtocolResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupRoutingProtocolResult
+			secret, err := ctx.InvokePackageRaw("equinix:fabric/getRoutingProtocol:getRoutingProtocol", args, &rv, "", opts...)
+			if err != nil {
+				return LookupRoutingProtocolResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupRoutingProtocolResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupRoutingProtocolResultOutput), nil
+			}
+			return output, nil
 		}).(LookupRoutingProtocolResultOutput)
 }
 

@@ -2204,7 +2204,7 @@ export namespace fabric {
         /**
          * Connection additional information
          */
-        additionalInfos: {[key: string]: any}[];
+        additionalInfos: {[key: string]: string}[];
         /**
          * Connection bandwidth in Mbps
          */

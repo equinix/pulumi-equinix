@@ -80,7 +80,7 @@ type LookupConnectionResult struct {
 	// Customer account information that is associated with this connection
 	Account GetConnectionAccount `pulumi:"account"`
 	// Connection additional information
-	AdditionalInfo []map[string]interface{} `pulumi:"additionalInfo"`
+	AdditionalInfo []map[string]string `pulumi:"additionalInfo"`
 	// Connection bandwidth in Mbps
 	Bandwidth int `pulumi:"bandwidth"`
 	// Captures connection lifecycle change information
@@ -119,14 +119,20 @@ type LookupConnectionResult struct {
 
 func LookupConnectionOutput(ctx *pulumi.Context, args LookupConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupConnectionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupConnectionResult, error) {
+		ApplyT(func(v interface{}) (LookupConnectionResultOutput, error) {
 			args := v.(LookupConnectionArgs)
-			r, err := LookupConnection(ctx, &args, opts...)
-			var s LookupConnectionResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupConnectionResult
+			secret, err := ctx.InvokePackageRaw("equinix:fabric/getConnection:getConnection", args, &rv, "", opts...)
+			if err != nil {
+				return LookupConnectionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupConnectionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupConnectionResultOutput), nil
+			}
+			return output, nil
 		}).(LookupConnectionResultOutput)
 }
 
@@ -166,8 +172,8 @@ func (o LookupConnectionResultOutput) Account() GetConnectionAccountOutput {
 }
 
 // Connection additional information
-func (o LookupConnectionResultOutput) AdditionalInfo() pulumi.MapArrayOutput {
-	return o.ApplyT(func(v LookupConnectionResult) []map[string]interface{} { return v.AdditionalInfo }).(pulumi.MapArrayOutput)
+func (o LookupConnectionResultOutput) AdditionalInfo() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v LookupConnectionResult) []map[string]string { return v.AdditionalInfo }).(pulumi.StringMapArrayOutput)
 }
 
 // Connection bandwidth in Mbps

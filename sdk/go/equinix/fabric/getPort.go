@@ -116,14 +116,20 @@ type GetPortResult struct {
 
 func GetPortOutput(ctx *pulumi.Context, args GetPortOutputArgs, opts ...pulumi.InvokeOption) GetPortResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetPortResult, error) {
+		ApplyT(func(v interface{}) (GetPortResultOutput, error) {
 			args := v.(GetPortArgs)
-			r, err := GetPort(ctx, &args, opts...)
-			var s GetPortResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetPortResult
+			secret, err := ctx.InvokePackageRaw("equinix:fabric/getPort:getPort", args, &rv, "", opts...)
+			if err != nil {
+				return GetPortResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetPortResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetPortResultOutput), nil
+			}
+			return output, nil
 		}).(GetPortResultOutput)
 }
 

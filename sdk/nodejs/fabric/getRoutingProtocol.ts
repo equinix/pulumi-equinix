@@ -41,7 +41,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getRoutingProtocol(args: GetRoutingProtocolArgs, opts?: pulumi.InvokeOptions): Promise<GetRoutingProtocolResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:fabric/getRoutingProtocol:getRoutingProtocol", {
         "connectionUuid": args.connectionUuid,
@@ -178,7 +177,11 @@ export interface GetRoutingProtocolResult {
  * ```
  */
 export function getRoutingProtocolOutput(args: GetRoutingProtocolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRoutingProtocolResult> {
-    return pulumi.output(args).apply((a: any) => getRoutingProtocol(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("equinix:fabric/getRoutingProtocol:getRoutingProtocol", {
+        "connectionUuid": args.connectionUuid,
+        "uuid": args.uuid,
+    }, opts);
 }
 
 /**

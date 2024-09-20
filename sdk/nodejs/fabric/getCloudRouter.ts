@@ -36,7 +36,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getCloudRouter(args: GetCloudRouterArgs, opts?: pulumi.InvokeOptions): Promise<GetCloudRouterResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:fabric/getCloudRouter:getCloudRouter", {
         "uuid": args.uuid,
@@ -167,7 +166,10 @@ export interface GetCloudRouterResult {
  * ```
  */
 export function getCloudRouterOutput(args: GetCloudRouterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCloudRouterResult> {
-    return pulumi.output(args).apply((a: any) => getCloudRouter(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("equinix:fabric/getCloudRouter:getCloudRouter", {
+        "uuid": args.uuid,
+    }, opts);
 }
 
 /**

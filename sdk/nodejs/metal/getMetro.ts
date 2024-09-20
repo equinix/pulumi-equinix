@@ -23,7 +23,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getMetro(args: GetMetroArgs, opts?: pulumi.InvokeOptions): Promise<GetMetroResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:metal/getMetro:getMetro", {
         "capacities": args.capacities,
@@ -80,7 +79,11 @@ export interface GetMetroResult {
  * ```
  */
 export function getMetroOutput(args: GetMetroOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMetroResult> {
-    return pulumi.output(args).apply((a: any) => getMetro(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("equinix:metal/getMetro:getMetro", {
+        "capacities": args.capacities,
+        "code": args.code,
+    }, opts);
 }
 
 /**

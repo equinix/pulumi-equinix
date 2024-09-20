@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers
  */
 export function getCloudRouters(args: GetCloudRoutersArgs, opts?: pulumi.InvokeOptions): Promise<GetCloudRoutersResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:fabric/getCloudRouters:getCloudRouters", {
         "filters": args.filters,
@@ -75,7 +74,12 @@ export interface GetCloudRoutersResult {
  * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers
  */
 export function getCloudRoutersOutput(args: GetCloudRoutersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCloudRoutersResult> {
-    return pulumi.output(args).apply((a: any) => getCloudRouters(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("equinix:fabric/getCloudRouters:getCloudRouters", {
+        "filters": args.filters,
+        "pagination": args.pagination,
+        "sort": args.sort,
+    }, opts);
 }
 
 /**

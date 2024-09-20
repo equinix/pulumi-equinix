@@ -23427,7 +23427,7 @@ type GetConnectionsData struct {
 	// Customer account information that is associated with this connection
 	Accounts []GetConnectionsDataAccount `pulumi:"accounts"`
 	// Connection additional information
-	AdditionalInfos []map[string]interface{} `pulumi:"additionalInfos"`
+	AdditionalInfos []map[string]string `pulumi:"additionalInfos"`
 	// Connection bandwidth in Mbps
 	Bandwidth int `pulumi:"bandwidth"`
 	// Captures connection lifecycle change information
@@ -23479,7 +23479,7 @@ type GetConnectionsDataArgs struct {
 	// Customer account information that is associated with this connection
 	Accounts GetConnectionsDataAccountArrayInput `pulumi:"accounts"`
 	// Connection additional information
-	AdditionalInfos pulumi.MapArrayInput `pulumi:"additionalInfos"`
+	AdditionalInfos pulumi.StringMapArrayInput `pulumi:"additionalInfos"`
 	// Connection bandwidth in Mbps
 	Bandwidth pulumi.IntInput `pulumi:"bandwidth"`
 	// Captures connection lifecycle change information
@@ -23576,8 +23576,8 @@ func (o GetConnectionsDataOutput) Accounts() GetConnectionsDataAccountArrayOutpu
 }
 
 // Connection additional information
-func (o GetConnectionsDataOutput) AdditionalInfos() pulumi.MapArrayOutput {
-	return o.ApplyT(func(v GetConnectionsData) []map[string]interface{} { return v.AdditionalInfos }).(pulumi.MapArrayOutput)
+func (o GetConnectionsDataOutput) AdditionalInfos() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v GetConnectionsData) []map[string]string { return v.AdditionalInfos }).(pulumi.StringMapArrayOutput)
 }
 
 // Connection bandwidth in Mbps

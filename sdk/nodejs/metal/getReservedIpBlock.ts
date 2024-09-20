@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  */
 export function getReservedIpBlock(args?: GetReservedIpBlockArgs, opts?: pulumi.InvokeOptions): Promise<GetReservedIpBlockResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:metal/getReservedIpBlock:getReservedIpBlock", {
         "id": args.id,
@@ -80,7 +79,13 @@ export interface GetReservedIpBlockResult {
  * See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
  */
 export function getReservedIpBlockOutput(args?: GetReservedIpBlockOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReservedIpBlockResult> {
-    return pulumi.output(args).apply((a: any) => getReservedIpBlock(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("equinix:metal/getReservedIpBlock:getReservedIpBlock", {
+        "id": args.id,
+        "ipAddress": args.ipAddress,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

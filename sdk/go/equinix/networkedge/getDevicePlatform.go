@@ -86,14 +86,20 @@ type GetDevicePlatformResult struct {
 
 func GetDevicePlatformOutput(ctx *pulumi.Context, args GetDevicePlatformOutputArgs, opts ...pulumi.InvokeOption) GetDevicePlatformResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetDevicePlatformResult, error) {
+		ApplyT(func(v interface{}) (GetDevicePlatformResultOutput, error) {
 			args := v.(GetDevicePlatformArgs)
-			r, err := GetDevicePlatform(ctx, &args, opts...)
-			var s GetDevicePlatformResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetDevicePlatformResult
+			secret, err := ctx.InvokePackageRaw("equinix:networkedge/getDevicePlatform:getDevicePlatform", args, &rv, "", opts...)
+			if err != nil {
+				return GetDevicePlatformResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetDevicePlatformResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetDevicePlatformResultOutput), nil
+			}
+			return output, nil
 		}).(GetDevicePlatformResultOutput)
 }
 

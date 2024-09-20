@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  */
 export function getHardwareReservation(args?: GetHardwareReservationArgs, opts?: pulumi.InvokeOptions): Promise<GetHardwareReservationResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:metal/getHardwareReservation:getHardwareReservation", {
         "deviceId": args.deviceId,
@@ -110,7 +109,12 @@ export interface GetHardwareReservationResult {
  * ```
  */
 export function getHardwareReservationOutput(args?: GetHardwareReservationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHardwareReservationResult> {
-    return pulumi.output(args).apply((a: any) => getHardwareReservation(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("equinix:metal/getHardwareReservation:getHardwareReservation", {
+        "deviceId": args.deviceId,
+        "id": args.id,
+    }, opts);
 }
 
 /**

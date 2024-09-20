@@ -23,7 +23,7 @@ class ConnectionArgs:
                  notifications: pulumi.Input[Sequence[pulumi.Input['ConnectionNotificationArgs']]],
                  type: pulumi.Input[Union[str, 'ConnectionType']],
                  z_side: pulumi.Input['ConnectionZSideArgs'],
-                 additional_info: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
+                 additional_info: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  order: Optional[pulumi.Input['ConnectionOrderArgs']] = None,
@@ -36,7 +36,7 @@ class ConnectionArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionNotificationArgs']]] notifications: Preferences for notifications on connection configuration or status changes
         :param pulumi.Input[Union[str, 'ConnectionType']] type: Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, IA*VC, EC_VC
         :param pulumi.Input['ConnectionZSideArgs'] z_side: Destination or Provider side connection configuration object of the multi-segment connection
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] additional_info: Connection additional information
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] additional_info: Connection additional information
         :param pulumi.Input[str] description: Customer-provided connection description
         :param pulumi.Input[str] name: Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
         :param pulumi.Input['ConnectionOrderArgs'] order: Order details
@@ -123,14 +123,14 @@ class ConnectionArgs:
 
     @property
     @pulumi.getter(name="additionalInfo")
-    def additional_info(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]:
+    def additional_info(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]:
         """
         Connection additional information
         """
         return pulumi.get(self, "additional_info")
 
     @additional_info.setter
-    def additional_info(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]):
+    def additional_info(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
         pulumi.set(self, "additional_info", value)
 
     @property
@@ -199,7 +199,7 @@ class _ConnectionState:
     def __init__(__self__, *,
                  a_side: Optional[pulumi.Input['ConnectionASideArgs']] = None,
                  account: Optional[pulumi.Input['ConnectionAccountArgs']] = None,
-                 additional_info: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
+                 additional_info: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
                  bandwidth: Optional[pulumi.Input[int]] = None,
                  change_log: Optional[pulumi.Input['ConnectionChangeLogArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -220,7 +220,7 @@ class _ConnectionState:
         Input properties used for looking up and filtering Connection resources.
         :param pulumi.Input['ConnectionASideArgs'] a_side: Requester or Customer side connection configuration object of the multi-segment connection
         :param pulumi.Input['ConnectionAccountArgs'] account: Customer account information that is associated with this connection
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] additional_info: Connection additional information
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] additional_info: Connection additional information
         :param pulumi.Input[int] bandwidth: Connection bandwidth in Mbps
         :param pulumi.Input['ConnectionChangeLogArgs'] change_log: Captures connection lifecycle change information
         :param pulumi.Input[str] description: Customer-provided connection description
@@ -303,14 +303,14 @@ class _ConnectionState:
 
     @property
     @pulumi.getter(name="additionalInfo")
-    def additional_info(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]:
+    def additional_info(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]:
         """
         Connection additional information
         """
         return pulumi.get(self, "additional_info")
 
     @additional_info.setter
-    def additional_info(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]):
+    def additional_info(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
         pulumi.set(self, "additional_info", value)
 
     @property
@@ -512,7 +512,7 @@ class Connection(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  a_side: Optional[pulumi.Input[Union['ConnectionASideArgs', 'ConnectionASideArgsDict']]] = None,
-                 additional_info: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
+                 additional_info: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
                  bandwidth: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -1297,7 +1297,7 @@ class Connection(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ConnectionASideArgs', 'ConnectionASideArgsDict']] a_side: Requester or Customer side connection configuration object of the multi-segment connection
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] additional_info: Connection additional information
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] additional_info: Connection additional information
         :param pulumi.Input[int] bandwidth: Connection bandwidth in Mbps
         :param pulumi.Input[str] description: Customer-provided connection description
         :param pulumi.Input[str] name: Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
@@ -2101,7 +2101,7 @@ class Connection(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  a_side: Optional[pulumi.Input[Union['ConnectionASideArgs', 'ConnectionASideArgsDict']]] = None,
-                 additional_info: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
+                 additional_info: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
                  bandwidth: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -2161,7 +2161,7 @@ class Connection(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             a_side: Optional[pulumi.Input[Union['ConnectionASideArgs', 'ConnectionASideArgsDict']]] = None,
             account: Optional[pulumi.Input[Union['ConnectionAccountArgs', 'ConnectionAccountArgsDict']]] = None,
-            additional_info: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
+            additional_info: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
             bandwidth: Optional[pulumi.Input[int]] = None,
             change_log: Optional[pulumi.Input[Union['ConnectionChangeLogArgs', 'ConnectionChangeLogArgsDict']]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -2187,7 +2187,7 @@ class Connection(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ConnectionASideArgs', 'ConnectionASideArgsDict']] a_side: Requester or Customer side connection configuration object of the multi-segment connection
         :param pulumi.Input[Union['ConnectionAccountArgs', 'ConnectionAccountArgsDict']] account: Customer account information that is associated with this connection
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] additional_info: Connection additional information
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] additional_info: Connection additional information
         :param pulumi.Input[int] bandwidth: Connection bandwidth in Mbps
         :param pulumi.Input[Union['ConnectionChangeLogArgs', 'ConnectionChangeLogArgsDict']] change_log: Captures connection lifecycle change information
         :param pulumi.Input[str] description: Customer-provided connection description
@@ -2248,7 +2248,7 @@ class Connection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="additionalInfo")
-    def additional_info(self) -> pulumi.Output[Optional[Sequence[Mapping[str, Any]]]]:
+    def additional_info(self) -> pulumi.Output[Optional[Sequence[Mapping[str, str]]]]:
         """
         Connection additional information
         """

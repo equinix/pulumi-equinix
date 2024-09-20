@@ -165,11 +165,15 @@ class BgpSession(pulumi.CustomResource):
             project_id=project_id,
             metro="ny",
             quantity=1)
-        interface_lo0 = pulumi.Output.all(addr.address, addr.netmask).apply(lambda address, netmask: f\"\"\"auto lo:0
+        interface_lo0 = pulumi.Output.all(
+            address=addr.address,
+            netmask=addr.netmask
+        ).apply(lambda resolved_outputs: f\"\"\"auto lo:0
         iface lo:0 inet static
-           address {address}
-           netmask {netmask}
+           address {resolved_outputs['address']}
+           netmask {resolved_outputs['netmask']}
         \"\"\")
+
         test = equinix.metal.Device("test",
             hostname="terraform-test-bgp-sesh",
             plan=equinix.metal.Plan.C3_SMALL_X86,
@@ -177,8 +181,13 @@ class BgpSession(pulumi.CustomResource):
             operating_system=equinix.metal.OperatingSystem.UBUNTU20_04,
             billing_cycle=equinix.metal.BillingCycle.HOURLY,
             project_id=project_id)
-        bird_conf = pulumi.Output.all(addr.address, addr.cidr, test.network, test.network).apply(lambda address, cidr, testNetwork, testNetwork1: f\"\"\"filter equinix_metal_bgp {{
-            if net = {address}/{cidr} then accept;
+        bird_conf = pulumi.Output.all(
+            address=addr.address,
+            cidr=addr.cidr,
+            testNetwork=test.network,
+            testNetwork1=test.network
+        ).apply(lambda resolved_outputs: f\"\"\"filter equinix_metal_bgp {{
+            if net = {resolved_outputs['address']}/{resolved_outputs['cidr']} then accept;
         }}
         router id {test_network[2].address};
         protocol direct {{
@@ -200,6 +209,7 @@ class BgpSession(pulumi.CustomResource):
             password "{bgp_password}";
         }}
         \"\"\")
+
         test_bgp_session = equinix.metal.BgpSession("testBgpSession",
             device_id=test.id,
             address_family="ipv4")
@@ -240,11 +250,15 @@ class BgpSession(pulumi.CustomResource):
             project_id=project_id,
             metro="ny",
             quantity=1)
-        interface_lo0 = pulumi.Output.all(addr.address, addr.netmask).apply(lambda address, netmask: f\"\"\"auto lo:0
+        interface_lo0 = pulumi.Output.all(
+            address=addr.address,
+            netmask=addr.netmask
+        ).apply(lambda resolved_outputs: f\"\"\"auto lo:0
         iface lo:0 inet static
-           address {address}
-           netmask {netmask}
+           address {resolved_outputs['address']}
+           netmask {resolved_outputs['netmask']}
         \"\"\")
+
         test = equinix.metal.Device("test",
             hostname="terraform-test-bgp-sesh",
             plan=equinix.metal.Plan.C3_SMALL_X86,
@@ -252,8 +266,13 @@ class BgpSession(pulumi.CustomResource):
             operating_system=equinix.metal.OperatingSystem.UBUNTU20_04,
             billing_cycle=equinix.metal.BillingCycle.HOURLY,
             project_id=project_id)
-        bird_conf = pulumi.Output.all(addr.address, addr.cidr, test.network, test.network).apply(lambda address, cidr, testNetwork, testNetwork1: f\"\"\"filter equinix_metal_bgp {{
-            if net = {address}/{cidr} then accept;
+        bird_conf = pulumi.Output.all(
+            address=addr.address,
+            cidr=addr.cidr,
+            testNetwork=test.network,
+            testNetwork1=test.network
+        ).apply(lambda resolved_outputs: f\"\"\"filter equinix_metal_bgp {{
+            if net = {resolved_outputs['address']}/{resolved_outputs['cidr']} then accept;
         }}
         router id {test_network[2].address};
         protocol direct {{
@@ -275,6 +294,7 @@ class BgpSession(pulumi.CustomResource):
             password "{bgp_password}";
         }}
         \"\"\")
+
         test_bgp_session = equinix.metal.BgpSession("testBgpSession",
             device_id=test.id,
             address_family="ipv4")

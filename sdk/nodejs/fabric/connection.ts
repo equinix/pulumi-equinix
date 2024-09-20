@@ -835,7 +835,7 @@ export class Connection extends pulumi.CustomResource {
     /**
      * Connection additional information
      */
-    public readonly additionalInfo!: pulumi.Output<{[key: string]: any}[] | undefined>;
+    public readonly additionalInfo!: pulumi.Output<{[key: string]: string}[] | undefined>;
     /**
      * Connection bandwidth in Mbps
      */
@@ -990,7 +990,7 @@ export interface ConnectionState {
     /**
      * Connection additional information
      */
-    additionalInfo?: pulumi.Input<pulumi.Input<{[key: string]: any}>[]>;
+    additionalInfo?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
     /**
      * Connection bandwidth in Mbps
      */
@@ -1068,7 +1068,7 @@ export interface ConnectionArgs {
     /**
      * Connection additional information
      */
-    additionalInfo?: pulumi.Input<pulumi.Input<{[key: string]: any}>[]>;
+    additionalInfo?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
     /**
      * Connection bandwidth in Mbps
      */

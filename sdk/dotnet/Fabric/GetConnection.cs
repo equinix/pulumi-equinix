@@ -148,7 +148,7 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Connection additional information
         /// </summary>
-        public readonly ImmutableArray<ImmutableDictionary<string, object>> AdditionalInfo;
+        public readonly ImmutableArray<ImmutableDictionary<string, string>> AdditionalInfo;
         /// <summary>
         /// Connection bandwidth in Mbps
         /// </summary>
@@ -224,7 +224,7 @@ namespace Pulumi.Equinix.Fabric
 
             Outputs.GetConnectionAccountResult account,
 
-            ImmutableArray<ImmutableDictionary<string, object>> additionalInfo,
+            ImmutableArray<ImmutableDictionary<string, string>> additionalInfo,
 
             int bandwidth,
 

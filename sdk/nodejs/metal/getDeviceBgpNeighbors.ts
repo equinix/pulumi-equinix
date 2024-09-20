@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getDeviceBgpNeighbors(args: GetDeviceBgpNeighborsArgs, opts?: pulumi.InvokeOptions): Promise<GetDeviceBgpNeighborsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:metal/getDeviceBgpNeighbors:getDeviceBgpNeighbors", {
         "deviceId": args.deviceId,
@@ -78,7 +77,10 @@ export interface GetDeviceBgpNeighborsResult {
  * ```
  */
 export function getDeviceBgpNeighborsOutput(args: GetDeviceBgpNeighborsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDeviceBgpNeighborsResult> {
-    return pulumi.output(args).apply((a: any) => getDeviceBgpNeighbors(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("equinix:metal/getDeviceBgpNeighbors:getDeviceBgpNeighbors", {
+        "deviceId": args.deviceId,
+    }, opts);
 }
 
 /**

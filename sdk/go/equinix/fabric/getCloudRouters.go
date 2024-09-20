@@ -52,14 +52,20 @@ type GetCloudRoutersResult struct {
 
 func GetCloudRoutersOutput(ctx *pulumi.Context, args GetCloudRoutersOutputArgs, opts ...pulumi.InvokeOption) GetCloudRoutersResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetCloudRoutersResult, error) {
+		ApplyT(func(v interface{}) (GetCloudRoutersResultOutput, error) {
 			args := v.(GetCloudRoutersArgs)
-			r, err := GetCloudRouters(ctx, &args, opts...)
-			var s GetCloudRoutersResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetCloudRoutersResult
+			secret, err := ctx.InvokePackageRaw("equinix:fabric/getCloudRouters:getCloudRouters", args, &rv, "", opts...)
+			if err != nil {
+				return GetCloudRoutersResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetCloudRoutersResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetCloudRoutersResultOutput), nil
+			}
+			return output, nil
 		}).(GetCloudRoutersResultOutput)
 }
 

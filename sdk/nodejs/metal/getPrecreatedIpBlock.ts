@@ -14,7 +14,6 @@ import * as utilities from "../utilities";
  * > Public IPv4 blocks auto-assigned (management) to a device cannot be retrieved. If you need that information, consider using the equinix.metal.Device data source instead.
  */
 export function getPrecreatedIpBlock(args: GetPrecreatedIpBlockArgs, opts?: pulumi.InvokeOptions): Promise<GetPrecreatedIpBlockResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:metal/getPrecreatedIpBlock:getPrecreatedIpBlock", {
         "addressFamily": args.addressFamily,
@@ -95,7 +94,15 @@ export interface GetPrecreatedIpBlockResult {
  * > Public IPv4 blocks auto-assigned (management) to a device cannot be retrieved. If you need that information, consider using the equinix.metal.Device data source instead.
  */
 export function getPrecreatedIpBlockOutput(args: GetPrecreatedIpBlockOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrecreatedIpBlockResult> {
-    return pulumi.output(args).apply((a: any) => getPrecreatedIpBlock(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("equinix:metal/getPrecreatedIpBlock:getPrecreatedIpBlock", {
+        "addressFamily": args.addressFamily,
+        "facility": args.facility,
+        "global": args.global,
+        "metro": args.metro,
+        "projectId": args.projectId,
+        "public": args.public,
+    }, opts);
 }
 
 /**

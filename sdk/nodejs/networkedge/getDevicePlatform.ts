@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getDevicePlatform(args: GetDevicePlatformArgs, opts?: pulumi.InvokeOptions): Promise<GetDevicePlatformResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:networkedge/getDevicePlatform:getDevicePlatform", {
         "coreCount": args.coreCount,
@@ -103,7 +102,15 @@ export interface GetDevicePlatformResult {
  * ```
  */
 export function getDevicePlatformOutput(args: GetDevicePlatformOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDevicePlatformResult> {
-    return pulumi.output(args).apply((a: any) => getDevicePlatform(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("equinix:networkedge/getDevicePlatform:getDevicePlatform", {
+        "coreCount": args.coreCount,
+        "deviceType": args.deviceType,
+        "flavor": args.flavor,
+        "licenseOptions": args.licenseOptions,
+        "managementTypes": args.managementTypes,
+        "packages": args.packages,
+    }, opts);
 }
 
 /**

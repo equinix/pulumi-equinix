@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  */
 export function getDeviceType(args?: GetDeviceTypeArgs, opts?: pulumi.InvokeOptions): Promise<GetDeviceTypeResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:networkedge/getDeviceType:getDeviceType", {
         "category": args.category,
@@ -98,7 +97,14 @@ export interface GetDeviceTypeResult {
  * ```
  */
 export function getDeviceTypeOutput(args?: GetDeviceTypeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDeviceTypeResult> {
-    return pulumi.output(args).apply((a: any) => getDeviceType(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("equinix:networkedge/getDeviceType:getDeviceType", {
+        "category": args.category,
+        "metroCodes": args.metroCodes,
+        "name": args.name,
+        "vendor": args.vendor,
+    }, opts);
 }
 
 /**

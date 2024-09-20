@@ -53,7 +53,6 @@ import * as utilities from "../utilities";
  */
 export function getDevices(args?: GetDevicesArgs, opts?: pulumi.InvokeOptions): Promise<GetDevicesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:metal/getDevices:getDevices", {
         "filters": args.filters,
@@ -150,7 +149,15 @@ export interface GetDevicesResult {
  * The difference between `search` and `filter` is that `search` is an API parameter, interpreted by the Equinix Metal service. The "filter" arguments will reduce the API list (or search) results by applying client-side filtering, within this provider.
  */
 export function getDevicesOutput(args?: GetDevicesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDevicesResult> {
-    return pulumi.output(args).apply((a: any) => getDevices(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("equinix:metal/getDevices:getDevices", {
+        "filters": args.filters,
+        "organizationId": args.organizationId,
+        "projectId": args.projectId,
+        "search": args.search,
+        "sorts": args.sorts,
+    }, opts);
 }
 
 /**

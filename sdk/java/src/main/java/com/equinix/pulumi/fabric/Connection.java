@@ -21,7 +21,6 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -1365,14 +1364,14 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * Connection additional information
      * 
      */
-    @Export(name="additionalInfo", refs={List.class,Map.class,String.class,Object.class}, tree="[0,[1,2,3]]")
-    private Output</* @Nullable */ List<Map<String,Object>>> additionalInfo;
+    @Export(name="additionalInfo", refs={List.class,Map.class,String.class}, tree="[0,[1,2,2]]")
+    private Output</* @Nullable */ List<Map<String,String>>> additionalInfo;
 
     /**
      * @return Connection additional information
      * 
      */
-    public Output<Optional<List<Map<String,Object>>>> additionalInfo() {
+    public Output<Optional<List<Map<String,String>>>> additionalInfo() {
         return Codegen.optional(this.additionalInfo);
     }
     /**

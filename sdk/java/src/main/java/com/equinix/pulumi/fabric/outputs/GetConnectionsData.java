@@ -16,7 +16,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -38,7 +37,7 @@ public final class GetConnectionsData {
      * @return Connection additional information
      * 
      */
-    private List<Map<String,Object>> additionalInfos;
+    private List<Map<String,String>> additionalInfos;
     /**
      * @return Connection bandwidth in Mbps
      * 
@@ -139,7 +138,7 @@ public final class GetConnectionsData {
      * @return Connection additional information
      * 
      */
-    public List<Map<String,Object>> additionalInfos() {
+    public List<Map<String,String>> additionalInfos() {
         return this.additionalInfos;
     }
     /**
@@ -266,7 +265,7 @@ public final class GetConnectionsData {
     public static final class Builder {
         private List<GetConnectionsDataASide> aSides;
         private List<GetConnectionsDataAccount> accounts;
-        private List<Map<String,Object>> additionalInfos;
+        private List<Map<String,String>> additionalInfos;
         private Integer bandwidth;
         private List<GetConnectionsDataChangeLog> changeLogs;
         private String description;
@@ -330,7 +329,7 @@ public final class GetConnectionsData {
             return accounts(List.of(accounts));
         }
         @CustomType.Setter
-        public Builder additionalInfos(List<Map<String,Object>> additionalInfos) {
+        public Builder additionalInfos(List<Map<String,String>> additionalInfos) {
             if (additionalInfos == null) {
               throw new MissingRequiredPropertyException("GetConnectionsData", "additionalInfos");
             }

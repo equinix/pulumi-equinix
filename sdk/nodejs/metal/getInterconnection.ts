@@ -24,7 +24,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getInterconnection(args: GetInterconnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetInterconnectionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:metal/getInterconnection:getInterconnection", {
         "connectionId": args.connectionId,
@@ -149,7 +148,10 @@ export interface GetInterconnectionResult {
  * ```
  */
 export function getInterconnectionOutput(args: GetInterconnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInterconnectionResult> {
-    return pulumi.output(args).apply((a: any) => getInterconnection(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("equinix:metal/getInterconnection:getInterconnection", {
+        "connectionId": args.connectionId,
+    }, opts);
 }
 
 /**

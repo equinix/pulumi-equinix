@@ -31,7 +31,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getNetwork(args: GetNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:fabric/getNetwork:getNetwork", {
         "uuid": args.uuid,
@@ -133,7 +132,10 @@ export interface GetNetworkResult {
  * ```
  */
 export function getNetworkOutput(args: GetNetworkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkResult> {
-    return pulumi.output(args).apply((a: any) => getNetwork(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("equinix:fabric/getNetwork:getNetwork", {
+        "uuid": args.uuid,
+    }, opts);
 }
 
 /**

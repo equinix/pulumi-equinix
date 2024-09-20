@@ -40,7 +40,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getPort(args: GetPortArgs, opts?: pulumi.InvokeOptions): Promise<GetPortResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:fabric/getPort:getPort", {
         "uuid": args.uuid,
@@ -171,7 +170,10 @@ export interface GetPortResult {
  * ```
  */
 export function getPortOutput(args: GetPortOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPortResult> {
-    return pulumi.output(args).apply((a: any) => getPort(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("equinix:fabric/getPort:getPort", {
+        "uuid": args.uuid,
+    }, opts);
 }
 
 /**
