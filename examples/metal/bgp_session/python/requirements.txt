@@ -1,3 +1,0 @@
-pulumi-null==0.0.6
-pulumi>=3.0.0,<4.0.0
-pulumi_equinix==<1.0.0
