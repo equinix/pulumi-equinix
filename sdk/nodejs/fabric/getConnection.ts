@@ -41,7 +41,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getConnection(args: GetConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:fabric/getConnection:getConnection", {
         "uuid": args.uuid,
@@ -73,7 +72,7 @@ export interface GetConnectionResult {
     /**
      * Connection additional information
      */
-    readonly additionalInfo: {[key: string]: any}[];
+    readonly additionalInfo: {[key: string]: string}[];
     /**
      * Connection bandwidth in Mbps
      */
@@ -177,7 +176,10 @@ export interface GetConnectionResult {
  * ```
  */
 export function getConnectionOutput(args: GetConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectionResult> {
-    return pulumi.output(args).apply((a: any) => getConnection(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("equinix:fabric/getConnection:getConnection", {
+        "uuid": args.uuid,
+    }, opts);
 }
 
 /**

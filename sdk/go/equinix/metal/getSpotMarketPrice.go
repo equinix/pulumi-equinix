@@ -77,14 +77,20 @@ type GetSpotMarketPriceResult struct {
 
 func GetSpotMarketPriceOutput(ctx *pulumi.Context, args GetSpotMarketPriceOutputArgs, opts ...pulumi.InvokeOption) GetSpotMarketPriceResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetSpotMarketPriceResult, error) {
+		ApplyT(func(v interface{}) (GetSpotMarketPriceResultOutput, error) {
 			args := v.(GetSpotMarketPriceArgs)
-			r, err := GetSpotMarketPrice(ctx, &args, opts...)
-			var s GetSpotMarketPriceResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetSpotMarketPriceResult
+			secret, err := ctx.InvokePackageRaw("equinix:metal/getSpotMarketPrice:getSpotMarketPrice", args, &rv, "", opts...)
+			if err != nil {
+				return GetSpotMarketPriceResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetSpotMarketPriceResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetSpotMarketPriceResultOutput), nil
+			}
+			return output, nil
 		}).(GetSpotMarketPriceResultOutput)
 }
 

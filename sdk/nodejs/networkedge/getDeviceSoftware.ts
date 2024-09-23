@@ -22,7 +22,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getDeviceSoftware(args: GetDeviceSoftwareArgs, opts?: pulumi.InvokeOptions): Promise<GetDeviceSoftwareResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:networkedge/getDeviceSoftware:getDeviceSoftware", {
         "deviceType": args.deviceType,
@@ -111,7 +110,14 @@ export interface GetDeviceSoftwareResult {
  * ```
  */
 export function getDeviceSoftwareOutput(args: GetDeviceSoftwareOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDeviceSoftwareResult> {
-    return pulumi.output(args).apply((a: any) => getDeviceSoftware(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("equinix:networkedge/getDeviceSoftware:getDeviceSoftware", {
+        "deviceType": args.deviceType,
+        "mostRecent": args.mostRecent,
+        "packages": args.packages,
+        "stable": args.stable,
+        "versionRegex": args.versionRegex,
+    }, opts);
 }
 
 /**

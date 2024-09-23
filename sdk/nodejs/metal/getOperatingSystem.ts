@@ -30,7 +30,6 @@ import * as utilities from "../utilities";
  */
 export function getOperatingSystem(args?: GetOperatingSystemArgs, opts?: pulumi.InvokeOptions): Promise<GetOperatingSystemResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:metal/getOperatingSystem:getOperatingSystem", {
         "distro": args.distro,
@@ -104,7 +103,14 @@ export interface GetOperatingSystemResult {
  * ```
  */
 export function getOperatingSystemOutput(args?: GetOperatingSystemOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOperatingSystemResult> {
-    return pulumi.output(args).apply((a: any) => getOperatingSystem(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("equinix:metal/getOperatingSystem:getOperatingSystem", {
+        "distro": args.distro,
+        "name": args.name,
+        "provisionableOn": args.provisionableOn,
+        "version": args.version,
+    }, opts);
 }
 
 /**

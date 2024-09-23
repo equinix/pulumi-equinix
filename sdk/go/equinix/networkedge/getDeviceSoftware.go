@@ -90,14 +90,20 @@ type GetDeviceSoftwareResult struct {
 
 func GetDeviceSoftwareOutput(ctx *pulumi.Context, args GetDeviceSoftwareOutputArgs, opts ...pulumi.InvokeOption) GetDeviceSoftwareResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetDeviceSoftwareResult, error) {
+		ApplyT(func(v interface{}) (GetDeviceSoftwareResultOutput, error) {
 			args := v.(GetDeviceSoftwareArgs)
-			r, err := GetDeviceSoftware(ctx, &args, opts...)
-			var s GetDeviceSoftwareResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetDeviceSoftwareResult
+			secret, err := ctx.InvokePackageRaw("equinix:networkedge/getDeviceSoftware:getDeviceSoftware", args, &rv, "", opts...)
+			if err != nil {
+				return GetDeviceSoftwareResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetDeviceSoftwareResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetDeviceSoftwareResultOutput), nil
+			}
+			return output, nil
 		}).(GetDeviceSoftwareResultOutput)
 }
 

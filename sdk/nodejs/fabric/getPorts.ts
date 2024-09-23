@@ -42,7 +42,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getPorts(args: GetPortsArgs, opts?: pulumi.InvokeOptions): Promise<GetPortsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:fabric/getPorts:getPorts", {
         "filter": args.filter,
@@ -111,7 +110,10 @@ export interface GetPortsResult {
  * ```
  */
 export function getPortsOutput(args: GetPortsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPortsResult> {
-    return pulumi.output(args).apply((a: any) => getPorts(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("equinix:fabric/getPorts:getPorts", {
+        "filter": args.filter,
+    }, opts);
 }
 
 /**

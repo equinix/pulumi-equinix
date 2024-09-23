@@ -84,14 +84,20 @@ type LookupProjectSshKeyResult struct {
 
 func LookupProjectSshKeyOutput(ctx *pulumi.Context, args LookupProjectSshKeyOutputArgs, opts ...pulumi.InvokeOption) LookupProjectSshKeyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupProjectSshKeyResult, error) {
+		ApplyT(func(v interface{}) (LookupProjectSshKeyResultOutput, error) {
 			args := v.(LookupProjectSshKeyArgs)
-			r, err := LookupProjectSshKey(ctx, &args, opts...)
-			var s LookupProjectSshKeyResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupProjectSshKeyResult
+			secret, err := ctx.InvokePackageRaw("equinix:metal/getProjectSshKey:getProjectSshKey", args, &rv, "", opts...)
+			if err != nil {
+				return LookupProjectSshKeyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupProjectSshKeyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupProjectSshKeyResultOutput), nil
+			}
+			return output, nil
 		}).(LookupProjectSshKeyResultOutput)
 }
 

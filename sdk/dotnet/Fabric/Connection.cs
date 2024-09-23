@@ -1181,7 +1181,7 @@ namespace Pulumi.Equinix.Fabric
         /// Connection additional information
         /// </summary>
         [Output("additionalInfo")]
-        public Output<ImmutableArray<ImmutableDictionary<string, object>>> AdditionalInfo { get; private set; } = null!;
+        public Output<ImmutableArray<ImmutableDictionary<string, string>>> AdditionalInfo { get; private set; } = null!;
 
         /// <summary>
         /// Connection bandwidth in Mbps
@@ -1333,14 +1333,14 @@ namespace Pulumi.Equinix.Fabric
         public Input<Inputs.ConnectionASideArgs> ASide { get; set; } = null!;
 
         [Input("additionalInfo")]
-        private InputList<ImmutableDictionary<string, object>>? _additionalInfo;
+        private InputList<ImmutableDictionary<string, string>>? _additionalInfo;
 
         /// <summary>
         /// Connection additional information
         /// </summary>
-        public InputList<ImmutableDictionary<string, object>> AdditionalInfo
+        public InputList<ImmutableDictionary<string, string>> AdditionalInfo
         {
-            get => _additionalInfo ?? (_additionalInfo = new InputList<ImmutableDictionary<string, object>>());
+            get => _additionalInfo ?? (_additionalInfo = new InputList<ImmutableDictionary<string, string>>());
             set => _additionalInfo = value;
         }
 
@@ -1425,14 +1425,14 @@ namespace Pulumi.Equinix.Fabric
         public Input<Inputs.ConnectionAccountGetArgs>? Account { get; set; }
 
         [Input("additionalInfo")]
-        private InputList<ImmutableDictionary<string, object>>? _additionalInfo;
+        private InputList<ImmutableDictionary<string, string>>? _additionalInfo;
 
         /// <summary>
         /// Connection additional information
         /// </summary>
-        public InputList<ImmutableDictionary<string, object>> AdditionalInfo
+        public InputList<ImmutableDictionary<string, string>> AdditionalInfo
         {
-            get => _additionalInfo ?? (_additionalInfo = new InputList<ImmutableDictionary<string, object>>());
+            get => _additionalInfo ?? (_additionalInfo = new InputList<ImmutableDictionary<string, string>>());
             set => _additionalInfo = value;
         }
 

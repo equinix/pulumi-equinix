@@ -60,14 +60,20 @@ type GetServiceProfilesResult struct {
 
 func GetServiceProfilesOutput(ctx *pulumi.Context, args GetServiceProfilesOutputArgs, opts ...pulumi.InvokeOption) GetServiceProfilesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetServiceProfilesResult, error) {
+		ApplyT(func(v interface{}) (GetServiceProfilesResultOutput, error) {
 			args := v.(GetServiceProfilesArgs)
-			r, err := GetServiceProfiles(ctx, &args, opts...)
-			var s GetServiceProfilesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetServiceProfilesResult
+			secret, err := ctx.InvokePackageRaw("equinix:fabric/getServiceProfiles:getServiceProfiles", args, &rv, "", opts...)
+			if err != nil {
+				return GetServiceProfilesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetServiceProfilesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetServiceProfilesResultOutput), nil
+			}
+			return output, nil
 		}).(GetServiceProfilesResultOutput)
 }
 

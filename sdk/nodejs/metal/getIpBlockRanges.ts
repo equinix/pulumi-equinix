@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getIpBlockRanges(args: GetIpBlockRangesArgs, opts?: pulumi.InvokeOptions): Promise<GetIpBlockRangesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:metal/getIpBlockRanges:getIpBlockRanges", {
         "facility": args.facility,
@@ -106,7 +105,12 @@ export interface GetIpBlockRangesResult {
  * ```
  */
 export function getIpBlockRangesOutput(args: GetIpBlockRangesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpBlockRangesResult> {
-    return pulumi.output(args).apply((a: any) => getIpBlockRanges(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("equinix:metal/getIpBlockRanges:getIpBlockRanges", {
+        "facility": args.facility,
+        "metro": args.metro,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

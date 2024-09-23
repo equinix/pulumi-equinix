@@ -40,7 +40,6 @@ import * as utilities from "../utilities";
  */
 export function getVlan(args?: GetVlanArgs, opts?: pulumi.InvokeOptions): Promise<GetVlanResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:metal/getVlan:getVlan", {
         "facility": args.facility,
@@ -138,7 +137,15 @@ export interface GetVlanResult {
  * ```
  */
 export function getVlanOutput(args?: GetVlanOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVlanResult> {
-    return pulumi.output(args).apply((a: any) => getVlan(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("equinix:metal/getVlan:getVlan", {
+        "facility": args.facility,
+        "metro": args.metro,
+        "projectId": args.projectId,
+        "vlanId": args.vlanId,
+        "vxlan": args.vxlan,
+    }, opts);
 }
 
 /**

@@ -32,7 +32,6 @@ import * as utilities from "../utilities";
  */
 export function getPort(args?: GetPortArgs, opts?: pulumi.InvokeOptions): Promise<GetPortResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:metal/getPort:getPort", {
         "deviceId": args.deviceId,
@@ -139,7 +138,13 @@ export interface GetPortResult {
  * ```
  */
 export function getPortOutput(args?: GetPortOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPortResult> {
-    return pulumi.output(args).apply((a: any) => getPort(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("equinix:metal/getPort:getPort", {
+        "deviceId": args.deviceId,
+        "name": args.name,
+        "portId": args.portId,
+    }, opts);
 }
 
 /**

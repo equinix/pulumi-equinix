@@ -77,14 +77,20 @@ type LookupVrfResult struct {
 
 func LookupVrfOutput(ctx *pulumi.Context, args LookupVrfOutputArgs, opts ...pulumi.InvokeOption) LookupVrfResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupVrfResult, error) {
+		ApplyT(func(v interface{}) (LookupVrfResultOutput, error) {
 			args := v.(LookupVrfArgs)
-			r, err := LookupVrf(ctx, &args, opts...)
-			var s LookupVrfResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupVrfResult
+			secret, err := ctx.InvokePackageRaw("equinix:metal/getVrf:getVrf", args, &rv, "", opts...)
+			if err != nil {
+				return LookupVrfResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupVrfResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupVrfResultOutput), nil
+			}
+			return output, nil
 		}).(LookupVrfResultOutput)
 }
 

@@ -22,7 +22,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getSpotMarketPrice(args: GetSpotMarketPriceArgs, opts?: pulumi.InvokeOptions): Promise<GetSpotMarketPriceResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:metal/getSpotMarketPrice:getSpotMarketPrice", {
         "facility": args.facility,
@@ -88,7 +87,12 @@ export interface GetSpotMarketPriceResult {
  * ```
  */
 export function getSpotMarketPriceOutput(args: GetSpotMarketPriceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSpotMarketPriceResult> {
-    return pulumi.output(args).apply((a: any) => getSpotMarketPrice(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("equinix:metal/getSpotMarketPrice:getSpotMarketPrice", {
+        "facility": args.facility,
+        "metro": args.metro,
+        "plan": args.plan,
+    }, opts);
 }
 
 /**

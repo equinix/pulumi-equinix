@@ -71,14 +71,20 @@ type GetMetroResult struct {
 
 func GetMetroOutput(ctx *pulumi.Context, args GetMetroOutputArgs, opts ...pulumi.InvokeOption) GetMetroResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetMetroResult, error) {
+		ApplyT(func(v interface{}) (GetMetroResultOutput, error) {
 			args := v.(GetMetroArgs)
-			r, err := GetMetro(ctx, &args, opts...)
-			var s GetMetroResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetMetroResult
+			secret, err := ctx.InvokePackageRaw("equinix:metal/getMetro:getMetro", args, &rv, "", opts...)
+			if err != nil {
+				return GetMetroResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetMetroResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetMetroResultOutput), nil
+			}
+			return output, nil
 		}).(GetMetroResultOutput)
 }
 

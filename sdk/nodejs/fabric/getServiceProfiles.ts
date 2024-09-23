@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles
  */
 export function getServiceProfiles(args: GetServiceProfilesArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceProfilesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:fabric/getServiceProfiles:getServiceProfiles", {
         "andFilters": args.andFilters,
@@ -93,7 +92,14 @@ export interface GetServiceProfilesResult {
  * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles
  */
 export function getServiceProfilesOutput(args: GetServiceProfilesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceProfilesResult> {
-    return pulumi.output(args).apply((a: any) => getServiceProfiles(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("equinix:fabric/getServiceProfiles:getServiceProfiles", {
+        "andFilters": args.andFilters,
+        "filter": args.filter,
+        "pagination": args.pagination,
+        "sort": args.sort,
+        "viewPoint": args.viewPoint,
+    }, opts);
 }
 
 /**

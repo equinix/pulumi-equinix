@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getFacility(args: GetFacilityArgs, opts?: pulumi.InvokeOptions): Promise<GetFacilityResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:metal/getFacility:getFacility", {
         "capacities": args.capacities,
@@ -94,7 +93,12 @@ export interface GetFacilityResult {
  * ```
  */
 export function getFacilityOutput(args: GetFacilityOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFacilityResult> {
-    return pulumi.output(args).apply((a: any) => getFacility(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("equinix:metal/getFacility:getFacility", {
+        "capacities": args.capacities,
+        "code": args.code,
+        "featuresRequireds": args.featuresRequireds,
+    }, opts);
 }
 
 /**

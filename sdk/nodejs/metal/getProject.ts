@@ -24,7 +24,6 @@ import * as utilities from "../utilities";
  */
 export function getProject(args?: GetProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:metal/getProject:getProject", {
         "name": args.name,
@@ -98,7 +97,12 @@ export interface GetProjectResult {
  * ```
  */
 export function getProjectOutput(args?: GetProjectOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectResult> {
-    return pulumi.output(args).apply((a: any) => getProject(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("equinix:metal/getProject:getProject", {
+        "name": args.name,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

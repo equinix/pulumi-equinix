@@ -102,7 +102,7 @@ class GetConnectionResult:
 
     @property
     @pulumi.getter(name="additionalInfo")
-    def additional_info(self) -> Sequence[Mapping[str, Any]]:
+    def additional_info(self) -> Sequence[Mapping[str, str]]:
         """
         Connection additional information
         """

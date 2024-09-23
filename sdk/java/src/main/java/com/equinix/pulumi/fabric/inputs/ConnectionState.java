@@ -18,7 +18,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -66,13 +65,13 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="additionalInfo")
-    private @Nullable Output<List<Map<String,Object>>> additionalInfo;
+    private @Nullable Output<List<Map<String,String>>> additionalInfo;
 
     /**
      * @return Connection additional information
      * 
      */
-    public Optional<Output<List<Map<String,Object>>>> additionalInfo() {
+    public Optional<Output<List<Map<String,String>>>> additionalInfo() {
         return Optional.ofNullable(this.additionalInfo);
     }
 
@@ -406,7 +405,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder additionalInfo(@Nullable Output<List<Map<String,Object>>> additionalInfo) {
+        public Builder additionalInfo(@Nullable Output<List<Map<String,String>>> additionalInfo) {
             $.additionalInfo = additionalInfo;
             return this;
         }
@@ -417,7 +416,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder additionalInfo(List<Map<String,Object>> additionalInfo) {
+        public Builder additionalInfo(List<Map<String,String>> additionalInfo) {
             return additionalInfo(Output.of(additionalInfo));
         }
 
@@ -427,7 +426,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder additionalInfo(Map<String,Object>... additionalInfo) {
+        public Builder additionalInfo(Map<String,String>... additionalInfo) {
             return additionalInfo(List.of(additionalInfo));
         }
 

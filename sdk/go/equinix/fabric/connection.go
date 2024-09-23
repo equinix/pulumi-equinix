@@ -362,14 +362,14 @@ import (
 //						},
 //					},
 //				},
-//				AdditionalInfo: pulumi.MapArray{
-//					pulumi.Map{
-//						"key":   pulumi.Any("accessKey"),
-//						"value": pulumi.Any("<aws_access_key>"),
+//				AdditionalInfo: pulumi.StringMapArray{
+//					pulumi.StringMap{
+//						"key":   pulumi.String("accessKey"),
+//						"value": pulumi.String("<aws_access_key>"),
 //					},
-//					pulumi.Map{
-//						"key":   pulumi.Any("secretKey"),
-//						"value": pulumi.Any("<aws_secret_key>"),
+//					pulumi.StringMap{
+//						"key":   pulumi.String("secretKey"),
+//						"value": pulumi.String("<aws_secret_key>"),
 //					},
 //				},
 //			})
@@ -1115,7 +1115,7 @@ type Connection struct {
 	// Customer account information that is associated with this connection
 	Account ConnectionAccountOutput `pulumi:"account"`
 	// Connection additional information
-	AdditionalInfo pulumi.MapArrayOutput `pulumi:"additionalInfo"`
+	AdditionalInfo pulumi.StringMapArrayOutput `pulumi:"additionalInfo"`
 	// Connection bandwidth in Mbps
 	Bandwidth pulumi.IntOutput `pulumi:"bandwidth"`
 	// Captures connection lifecycle change information
@@ -1200,7 +1200,7 @@ type connectionState struct {
 	// Customer account information that is associated with this connection
 	Account *ConnectionAccount `pulumi:"account"`
 	// Connection additional information
-	AdditionalInfo []map[string]interface{} `pulumi:"additionalInfo"`
+	AdditionalInfo []map[string]string `pulumi:"additionalInfo"`
 	// Connection bandwidth in Mbps
 	Bandwidth *int `pulumi:"bandwidth"`
 	// Captures connection lifecycle change information
@@ -1241,7 +1241,7 @@ type ConnectionState struct {
 	// Customer account information that is associated with this connection
 	Account ConnectionAccountPtrInput
 	// Connection additional information
-	AdditionalInfo pulumi.MapArrayInput
+	AdditionalInfo pulumi.StringMapArrayInput
 	// Connection bandwidth in Mbps
 	Bandwidth pulumi.IntPtrInput
 	// Captures connection lifecycle change information
@@ -1284,7 +1284,7 @@ type connectionArgs struct {
 	// Requester or Customer side connection configuration object of the multi-segment connection
 	ASide ConnectionASide `pulumi:"aSide"`
 	// Connection additional information
-	AdditionalInfo []map[string]interface{} `pulumi:"additionalInfo"`
+	AdditionalInfo []map[string]string `pulumi:"additionalInfo"`
 	// Connection bandwidth in Mbps
 	Bandwidth int `pulumi:"bandwidth"`
 	// Customer-provided connection description
@@ -1310,7 +1310,7 @@ type ConnectionArgs struct {
 	// Requester or Customer side connection configuration object of the multi-segment connection
 	ASide ConnectionASideInput
 	// Connection additional information
-	AdditionalInfo pulumi.MapArrayInput
+	AdditionalInfo pulumi.StringMapArrayInput
 	// Connection bandwidth in Mbps
 	Bandwidth pulumi.IntInput
 	// Customer-provided connection description
@@ -1429,8 +1429,8 @@ func (o ConnectionOutput) Account() ConnectionAccountOutput {
 }
 
 // Connection additional information
-func (o ConnectionOutput) AdditionalInfo() pulumi.MapArrayOutput {
-	return o.ApplyT(func(v *Connection) pulumi.MapArrayOutput { return v.AdditionalInfo }).(pulumi.MapArrayOutput)
+func (o ConnectionOutput) AdditionalInfo() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringMapArrayOutput { return v.AdditionalInfo }).(pulumi.StringMapArrayOutput)
 }
 
 // Connection bandwidth in Mbps

@@ -70,14 +70,20 @@ type GetDeviceBgpNeighborsResult struct {
 
 func GetDeviceBgpNeighborsOutput(ctx *pulumi.Context, args GetDeviceBgpNeighborsOutputArgs, opts ...pulumi.InvokeOption) GetDeviceBgpNeighborsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetDeviceBgpNeighborsResult, error) {
+		ApplyT(func(v interface{}) (GetDeviceBgpNeighborsResultOutput, error) {
 			args := v.(GetDeviceBgpNeighborsArgs)
-			r, err := GetDeviceBgpNeighbors(ctx, &args, opts...)
-			var s GetDeviceBgpNeighborsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetDeviceBgpNeighborsResult
+			secret, err := ctx.InvokePackageRaw("equinix:metal/getDeviceBgpNeighbors:getDeviceBgpNeighbors", args, &rv, "", opts...)
+			if err != nil {
+				return GetDeviceBgpNeighborsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetDeviceBgpNeighborsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetDeviceBgpNeighborsResultOutput), nil
+			}
+			return output, nil
 		}).(GetDeviceBgpNeighborsResultOutput)
 }
 

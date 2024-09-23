@@ -9624,7 +9624,7 @@ class GetConnectionsDataResult(dict):
     def __init__(__self__, *,
                  a_sides: Sequence['outputs.GetConnectionsDataASideResult'],
                  accounts: Sequence['outputs.GetConnectionsDataAccountResult'],
-                 additional_infos: Sequence[Mapping[str, Any]],
+                 additional_infos: Sequence[Mapping[str, str]],
                  bandwidth: int,
                  change_logs: Sequence['outputs.GetConnectionsDataChangeLogResult'],
                  description: str,
@@ -9644,7 +9644,7 @@ class GetConnectionsDataResult(dict):
         """
         :param Sequence['GetConnectionsDataASideArgs'] a_sides: Requester or Customer side connection configuration object of the multi-segment connection
         :param Sequence['GetConnectionsDataAccountArgs'] accounts: Customer account information that is associated with this connection
-        :param Sequence[Mapping[str, Any]] additional_infos: Connection additional information
+        :param Sequence[Mapping[str, str]] additional_infos: Connection additional information
         :param int bandwidth: Connection bandwidth in Mbps
         :param Sequence['GetConnectionsDataChangeLogArgs'] change_logs: Captures connection lifecycle change information
         :param str description: Customer-provided connection description
@@ -9700,7 +9700,7 @@ class GetConnectionsDataResult(dict):
 
     @property
     @pulumi.getter(name="additionalInfos")
-    def additional_infos(self) -> Sequence[Mapping[str, Any]]:
+    def additional_infos(self) -> Sequence[Mapping[str, str]]:
         """
         Connection additional information
         """

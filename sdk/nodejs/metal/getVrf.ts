@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getVrf(args: GetVrfArgs, opts?: pulumi.InvokeOptions): Promise<GetVrfResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:metal/getVrf:getVrf", {
         "vrfId": args.vrfId,
@@ -89,7 +88,10 @@ export interface GetVrfResult {
  * ```
  */
 export function getVrfOutput(args: GetVrfOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVrfResult> {
-    return pulumi.output(args).apply((a: any) => getVrf(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("equinix:metal/getVrf:getVrf", {
+        "vrfId": args.vrfId,
+    }, opts);
 }
 
 /**

@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-networks
  */
 export function getNetworks(args: GetNetworksArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworksResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:fabric/getNetworks:getNetworks", {
         "filters": args.filters,
@@ -84,7 +83,13 @@ export interface GetNetworksResult {
  * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-networks
  */
 export function getNetworksOutput(args: GetNetworksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworksResult> {
-    return pulumi.output(args).apply((a: any) => getNetworks(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("equinix:fabric/getNetworks:getNetworks", {
+        "filters": args.filters,
+        "outerOperator": args.outerOperator,
+        "pagination": args.pagination,
+        "sorts": args.sorts,
+    }, opts);
 }
 
 /**
