@@ -14,7 +14,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
     public sealed class GetConnectionsDataASideAccessPointInterfaceResult
     {
         /// <summary>
-        /// The ID of this resource.
+        /// id
         /// </summary>
         public readonly int Id;
         /// <summary>

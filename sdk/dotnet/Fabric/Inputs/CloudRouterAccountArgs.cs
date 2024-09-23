@@ -15,8 +15,8 @@ namespace Pulumi.Equinix.Fabric.Inputs
         /// <summary>
         /// Account Number
         /// </summary>
-        [Input("accountNumber")]
-        public Input<int>? AccountNumber { get; set; }
+        [Input("accountNumber", required: true)]
+        public Input<int> AccountNumber { get; set; } = null!;
 
         public CloudRouterAccountArgs()
         {

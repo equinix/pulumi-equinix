@@ -6,6 +6,7 @@ package com.equinix.pulumi.fabric.outputs;
 import com.equinix.pulumi.fabric.outputs.GetCloudRoutersDataAccount;
 import com.equinix.pulumi.fabric.outputs.GetCloudRoutersDataChangeLog;
 import com.equinix.pulumi.fabric.outputs.GetCloudRoutersDataLocation;
+import com.equinix.pulumi.fabric.outputs.GetCloudRoutersDataMarketplaceSubscription;
 import com.equinix.pulumi.fabric.outputs.GetCloudRoutersDataNotification;
 import com.equinix.pulumi.fabric.outputs.GetCloudRoutersDataOrder;
 import com.equinix.pulumi.fabric.outputs.GetCloudRoutersDataPackage;
@@ -74,6 +75,11 @@ public final class GetCloudRoutersData {
      * 
      */
     private List<GetCloudRoutersDataLocation> locations;
+    /**
+     * @return Equinix Fabric Entity for Marketplace Subscription
+     * 
+     */
+    private List<GetCloudRoutersDataMarketplaceSubscription> marketplaceSubscriptions;
     /**
      * @return Fabric Cloud Router name. An alpha-numeric 24 characters string which can include only hyphens and underscores
      * 
@@ -194,6 +200,13 @@ public final class GetCloudRoutersData {
         return this.locations;
     }
     /**
+     * @return Equinix Fabric Entity for Marketplace Subscription
+     * 
+     */
+    public List<GetCloudRoutersDataMarketplaceSubscription> marketplaceSubscriptions() {
+        return this.marketplaceSubscriptions;
+    }
+    /**
      * @return Fabric Cloud Router name. An alpha-numeric 24 characters string which can include only hyphens and underscores
      * 
      */
@@ -270,6 +283,7 @@ public final class GetCloudRoutersData {
         private Integer equinixAsn;
         private String href;
         private List<GetCloudRoutersDataLocation> locations;
+        private List<GetCloudRoutersDataMarketplaceSubscription> marketplaceSubscriptions;
         private String name;
         private List<GetCloudRoutersDataNotification> notifications;
         private List<GetCloudRoutersDataOrder> orders;
@@ -292,6 +306,7 @@ public final class GetCloudRoutersData {
     	      this.equinixAsn = defaults.equinixAsn;
     	      this.href = defaults.href;
     	      this.locations = defaults.locations;
+    	      this.marketplaceSubscriptions = defaults.marketplaceSubscriptions;
     	      this.name = defaults.name;
     	      this.notifications = defaults.notifications;
     	      this.orders = defaults.orders;
@@ -400,6 +415,17 @@ public final class GetCloudRoutersData {
             return locations(List.of(locations));
         }
         @CustomType.Setter
+        public Builder marketplaceSubscriptions(List<GetCloudRoutersDataMarketplaceSubscription> marketplaceSubscriptions) {
+            if (marketplaceSubscriptions == null) {
+              throw new MissingRequiredPropertyException("GetCloudRoutersData", "marketplaceSubscriptions");
+            }
+            this.marketplaceSubscriptions = marketplaceSubscriptions;
+            return this;
+        }
+        public Builder marketplaceSubscriptions(GetCloudRoutersDataMarketplaceSubscription... marketplaceSubscriptions) {
+            return marketplaceSubscriptions(List.of(marketplaceSubscriptions));
+        }
+        @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
               throw new MissingRequiredPropertyException("GetCloudRoutersData", "name");
@@ -488,6 +514,7 @@ public final class GetCloudRoutersData {
             _resultValue.equinixAsn = equinixAsn;
             _resultValue.href = href;
             _resultValue.locations = locations;
+            _resultValue.marketplaceSubscriptions = marketplaceSubscriptions;
             _resultValue.name = name;
             _resultValue.notifications = notifications;
             _resultValue.orders = orders;

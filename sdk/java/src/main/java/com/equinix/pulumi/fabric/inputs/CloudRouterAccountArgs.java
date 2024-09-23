@@ -5,10 +5,9 @@ package com.equinix.pulumi.fabric.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class CloudRouterAccountArgs extends com.pulumi.resources.ResourceArgs {
@@ -19,15 +18,15 @@ public final class CloudRouterAccountArgs extends com.pulumi.resources.ResourceA
      * Account Number
      * 
      */
-    @Import(name="accountNumber")
-    private @Nullable Output<Integer> accountNumber;
+    @Import(name="accountNumber", required=true)
+    private Output<Integer> accountNumber;
 
     /**
      * @return Account Number
      * 
      */
-    public Optional<Output<Integer>> accountNumber() {
-        return Optional.ofNullable(this.accountNumber);
+    public Output<Integer> accountNumber() {
+        return this.accountNumber;
     }
 
     private CloudRouterAccountArgs() {}
@@ -60,7 +59,7 @@ public final class CloudRouterAccountArgs extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          */
-        public Builder accountNumber(@Nullable Output<Integer> accountNumber) {
+        public Builder accountNumber(Output<Integer> accountNumber) {
             $.accountNumber = accountNumber;
             return this;
         }
@@ -76,6 +75,9 @@ public final class CloudRouterAccountArgs extends com.pulumi.resources.ResourceA
         }
 
         public CloudRouterAccountArgs build() {
+            if ($.accountNumber == null) {
+                throw new MissingRequiredPropertyException("CloudRouterAccountArgs", "accountNumber");
+            }
             return $;
         }
     }

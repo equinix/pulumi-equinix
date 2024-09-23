@@ -176,6 +176,10 @@ namespace Pulumi.Equinix.Fabric
         /// </summary>
         public readonly ImmutableArray<Outputs.GetCloudRouterLocationResult> Locations;
         /// <summary>
+        /// Equinix Fabric Entity for Marketplace Subscription
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetCloudRouterMarketplaceSubscriptionResult> MarketplaceSubscriptions;
+        /// <summary>
         /// Fabric Cloud Router name. An alpha-numeric 24 characters string which can include only hyphens and underscores
         /// </summary>
         public readonly string Name;
@@ -192,7 +196,7 @@ namespace Pulumi.Equinix.Fabric
         /// </summary>
         public readonly ImmutableArray<Outputs.GetCloudRouterPackageResult> Packages;
         /// <summary>
-        /// Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
+        /// Customer resource hierarchy project information. Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
         /// </summary>
         public readonly ImmutableArray<Outputs.GetCloudRouterProjectResult> Projects;
         /// <summary>
@@ -234,6 +238,8 @@ namespace Pulumi.Equinix.Fabric
 
             ImmutableArray<Outputs.GetCloudRouterLocationResult> locations,
 
+            ImmutableArray<Outputs.GetCloudRouterMarketplaceSubscriptionResult> marketplaceSubscriptions,
+
             string name,
 
             ImmutableArray<Outputs.GetCloudRouterNotificationResult> notifications,
@@ -262,6 +268,7 @@ namespace Pulumi.Equinix.Fabric
             Href = href;
             Id = id;
             Locations = locations;
+            MarketplaceSubscriptions = marketplaceSubscriptions;
             Name = name;
             Notifications = notifications;
             Orders = orders;

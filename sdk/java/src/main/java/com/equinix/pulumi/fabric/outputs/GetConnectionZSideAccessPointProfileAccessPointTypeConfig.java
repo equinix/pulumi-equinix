@@ -11,26 +11,26 @@ import java.util.Objects;
 @CustomType
 public final class GetConnectionZSideAccessPointProfileAccessPointTypeConfig {
     /**
-     * @return Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
+     * @return Type of access point type config - VD, COLO
      * 
      */
     private String type;
     /**
-     * @return Equinix-assigned connection identifier
+     * @return Equinix-assigned access point type config identifier
      * 
      */
     private String uuid;
 
     private GetConnectionZSideAccessPointProfileAccessPointTypeConfig() {}
     /**
-     * @return Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
+     * @return Type of access point type config - VD, COLO
      * 
      */
     public String type() {
         return this.type;
     }
     /**
-     * @return Equinix-assigned connection identifier
+     * @return Equinix-assigned access point type config identifier
      * 
      */
     public String uuid() {

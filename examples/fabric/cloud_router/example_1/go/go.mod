@@ -1,8 +1,8 @@
-module equinix-fabric-cloud_router
+module equinix-fabric-cloud_router-example_1
 
 go 1.21
 
-toolchain go1.21.13
+toolchain go1.22.6
 
 require (
 	github.com/equinix/pulumi-equinix/sdk latest

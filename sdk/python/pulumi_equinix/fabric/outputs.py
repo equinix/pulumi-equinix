@@ -16,6 +16,7 @@ __all__ = [
     'CloudRouterAccount',
     'CloudRouterChangeLog',
     'CloudRouterLocation',
+    'CloudRouterMarketplaceSubscription',
     'CloudRouterNotification',
     'CloudRouterOrder',
     'CloudRouterPackage',
@@ -96,6 +97,7 @@ __all__ = [
     'GetCloudRouterAccountResult',
     'GetCloudRouterChangeLogResult',
     'GetCloudRouterLocationResult',
+    'GetCloudRouterMarketplaceSubscriptionResult',
     'GetCloudRouterNotificationResult',
     'GetCloudRouterOrderResult',
     'GetCloudRouterPackageResult',
@@ -104,6 +106,7 @@ __all__ = [
     'GetCloudRoutersDataAccountResult',
     'GetCloudRoutersDataChangeLogResult',
     'GetCloudRoutersDataLocationResult',
+    'GetCloudRoutersDataMarketplaceSubscriptionResult',
     'GetCloudRoutersDataNotificationResult',
     'GetCloudRoutersDataOrderResult',
     'GetCloudRoutersDataPackageResult',
@@ -197,6 +200,10 @@ __all__ = [
     'GetConnectionsFilterResult',
     'GetConnectionsPaginationResult',
     'GetConnectionsSortResult',
+    'GetMarketplaceSubscriptionEntitlementResult',
+    'GetMarketplaceSubscriptionEntitlementAssetResult',
+    'GetMarketplaceSubscriptionEntitlementAssetPackageResult',
+    'GetMarketplaceSubscriptionTrialResult',
     'GetNetworkChangeResult',
     'GetNetworkChangeLogResult',
     'GetNetworkLocationResult',
@@ -299,16 +306,15 @@ class CloudRouterAccount(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 account_number: Optional[int] = None):
+                 account_number: int):
         """
         :param int account_number: Account Number
         """
-        if account_number is not None:
-            pulumi.set(__self__, "account_number", account_number)
+        pulumi.set(__self__, "account_number", account_number)
 
     @property
     @pulumi.getter(name="accountNumber")
-    def account_number(self) -> Optional[int]:
+    def account_number(self) -> int:
         """
         Account Number
         """
@@ -577,6 +583,36 @@ class CloudRouterLocation(dict):
         Access point region
         """
         return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class CloudRouterMarketplaceSubscription(dict):
+    def __init__(__self__, *,
+                 uuid: str,
+                 type: Optional[str] = None):
+        """
+        :param str uuid: Equinix-assigned Marketplace Subscription identifier
+        :param str type: Marketplace Subscription type like; AWS*MARKETPLACE*SUBSCRIPTION
+        """
+        pulumi.set(__self__, "uuid", uuid)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> str:
+        """
+        Equinix-assigned Marketplace Subscription identifier
+        """
+        return pulumi.get(self, "uuid")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        Marketplace Subscription type like; AWS*MARKETPLACE*SUBSCRIPTION
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type
@@ -6395,6 +6431,35 @@ class GetCloudRouterLocationResult(dict):
 
 
 @pulumi.output_type
+class GetCloudRouterMarketplaceSubscriptionResult(dict):
+    def __init__(__self__, *,
+                 type: str,
+                 uuid: str):
+        """
+        :param str type: Marketplace Subscription type like; AWS_MARKETPLACE_SUBSCRIPTION
+        :param str uuid: Equinix-assigned Marketplace Subscription identifier
+        """
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "uuid", uuid)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Marketplace Subscription type like; AWS_MARKETPLACE_SUBSCRIPTION
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> str:
+        """
+        Equinix-assigned Marketplace Subscription identifier
+        """
+        return pulumi.get(self, "uuid")
+
+
+@pulumi.output_type
 class GetCloudRouterNotificationResult(dict):
     def __init__(__self__, *,
                  emails: Sequence[str],
@@ -6547,6 +6612,7 @@ class GetCloudRoutersDataResult(dict):
                  equinix_asn: int,
                  href: str,
                  locations: Sequence['outputs.GetCloudRoutersDataLocationResult'],
+                 marketplace_subscriptions: Sequence['outputs.GetCloudRoutersDataMarketplaceSubscriptionResult'],
                  name: str,
                  notifications: Sequence['outputs.GetCloudRoutersDataNotificationResult'],
                  orders: Sequence['outputs.GetCloudRoutersDataOrderResult'],
@@ -6567,6 +6633,7 @@ class GetCloudRoutersDataResult(dict):
         :param int equinix_asn: Equinix ASN
         :param str href: Fabric Cloud Router URI information
         :param Sequence['GetCloudRoutersDataLocationArgs'] locations: Fabric Cloud Router location
+        :param Sequence['GetCloudRoutersDataMarketplaceSubscriptionArgs'] marketplace_subscriptions: Equinix Fabric Entity for Marketplace Subscription
         :param str name: Fabric Cloud Router name. An alpha-numeric 24 characters string which can include only hyphens and underscores
         :param Sequence['GetCloudRoutersDataNotificationArgs'] notifications: Preferences for notifications on Fabric Cloud Router configuration or status changes
         :param Sequence['GetCloudRoutersDataOrderArgs'] orders: Order information related to this Fabric Cloud Router
@@ -6587,6 +6654,7 @@ class GetCloudRoutersDataResult(dict):
         pulumi.set(__self__, "equinix_asn", equinix_asn)
         pulumi.set(__self__, "href", href)
         pulumi.set(__self__, "locations", locations)
+        pulumi.set(__self__, "marketplace_subscriptions", marketplace_subscriptions)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "notifications", notifications)
         pulumi.set(__self__, "orders", orders)
@@ -6683,6 +6751,14 @@ class GetCloudRoutersDataResult(dict):
         Fabric Cloud Router location
         """
         return pulumi.get(self, "locations")
+
+    @property
+    @pulumi.getter(name="marketplaceSubscriptions")
+    def marketplace_subscriptions(self) -> Sequence['outputs.GetCloudRoutersDataMarketplaceSubscriptionResult']:
+        """
+        Equinix Fabric Entity for Marketplace Subscription
+        """
+        return pulumi.get(self, "marketplace_subscriptions")
 
     @property
     @pulumi.getter
@@ -6955,6 +7031,35 @@ class GetCloudRoutersDataLocationResult(dict):
         Access point region
         """
         return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudRoutersDataMarketplaceSubscriptionResult(dict):
+    def __init__(__self__, *,
+                 type: str,
+                 uuid: str):
+        """
+        :param str type: Marketplace Subscription type like; AWS_MARKETPLACE_SUBSCRIPTION
+        :param str uuid: Equinix-assigned Marketplace Subscription identifier
+        """
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "uuid", uuid)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Marketplace Subscription type like; AWS_MARKETPLACE_SUBSCRIPTION
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> str:
+        """
+        Equinix-assigned Marketplace Subscription identifier
+        """
+        return pulumi.get(self, "uuid")
 
 
 @pulumi.output_type
@@ -7908,8 +8013,8 @@ class GetConnectionASideAccessPointProfileAccessPointTypeConfigResult(dict):
                  type: str,
                  uuid: str):
         """
-        :param str type: Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
-        :param str uuid: Equinix-assigned connection identifier
+        :param str type: Type of access point type config - VD, COLO
+        :param str uuid: Equinix-assigned access point type config identifier
         """
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "uuid", uuid)
@@ -7918,7 +8023,7 @@ class GetConnectionASideAccessPointProfileAccessPointTypeConfigResult(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
+        Type of access point type config - VD, COLO
         """
         return pulumi.get(self, "type")
 
@@ -7926,7 +8031,7 @@ class GetConnectionASideAccessPointProfileAccessPointTypeConfigResult(dict):
     @pulumi.getter
     def uuid(self) -> str:
         """
-        Equinix-assigned connection identifier
+        Equinix-assigned access point type config identifier
         """
         return pulumi.get(self, "uuid")
 
@@ -9323,8 +9428,8 @@ class GetConnectionZSideAccessPointProfileAccessPointTypeConfigResult(dict):
                  type: str,
                  uuid: str):
         """
-        :param str type: Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
-        :param str uuid: Equinix-assigned connection identifier
+        :param str type: Type of access point type config - VD, COLO
+        :param str uuid: Equinix-assigned access point type config identifier
         """
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "uuid", uuid)
@@ -9333,7 +9438,7 @@ class GetConnectionZSideAccessPointProfileAccessPointTypeConfigResult(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
+        Type of access point type config - VD, COLO
         """
         return pulumi.get(self, "type")
 
@@ -9341,7 +9446,7 @@ class GetConnectionZSideAccessPointProfileAccessPointTypeConfigResult(dict):
     @pulumi.getter
     def uuid(self) -> str:
         """
-        Equinix-assigned connection identifier
+        Equinix-assigned access point type config identifier
         """
         return pulumi.get(self, "uuid")
 
@@ -10090,7 +10195,7 @@ class GetConnectionsDataASideAccessPointInterfaceResult(dict):
                  type: Optional[str] = None,
                  uuid: Optional[str] = None):
         """
-        :param int id: The ID of this resource.
+        :param int id: id
         :param str type: Interface type
         :param str uuid: Equinix-assigned interface identifier
         """
@@ -10104,7 +10209,7 @@ class GetConnectionsDataASideAccessPointInterfaceResult(dict):
     @pulumi.getter
     def id(self) -> int:
         """
-        The ID of this resource.
+        id
         """
         return pulumi.get(self, "id")
 
@@ -11505,7 +11610,7 @@ class GetConnectionsDataZSideAccessPointInterfaceResult(dict):
                  type: Optional[str] = None,
                  uuid: Optional[str] = None):
         """
-        :param int id: The ID of this resource.
+        :param int id: id
         :param str type: Interface type
         :param str uuid: Equinix-assigned interface identifier
         """
@@ -11519,7 +11624,7 @@ class GetConnectionsDataZSideAccessPointInterfaceResult(dict):
     @pulumi.getter
     def id(self) -> int:
         """
-        The ID of this resource.
+        id
         """
         return pulumi.get(self, "id")
 
@@ -12043,7 +12148,7 @@ class GetConnectionsFilterResult(dict):
                  group: Optional[str] = None):
         """
         :param str operator: Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, IN, NOT IN, IS NOT NULL, IS NULL]
-        :param str property: Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /change/status /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid *]
+        :param str property: Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /change/status /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid *]
         :param Sequence[str] values: The values that you want to apply the property+operator combination to in order to filter your data search
         :param str group: Optional custom id parameter to assign this filter to an inner AND or OR group. Group id must be prefixed with AND_ or OR_. Ensure intended grouped elements have the same given id. Ungrouped filters will be placed in the filter list group by themselves.
         """
@@ -12081,7 +12186,7 @@ class GetConnectionsFilterResult(dict):
     @pulumi.getter
     def property(self) -> str:
         """
-        Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /change/status /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid *]
+        Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /change/status /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid *]
         """
         return pulumi.get(self, "property")
 
@@ -12146,6 +12251,133 @@ class GetConnectionsSortResult(dict):
         The property name to use in sorting. One of [/name /direction /aSide/accessPoint/name /aSide/accessPoint/type /aSide/accessPoint/account/accountName /aSide/accessPoint/location/metroName /aSide/accessPoint/location/metroCode /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/name /zSide/accessPoint/type /zSide/accessPoint/account/accountName /zSide/accessPoint/location/metroName /zSide/accessPoint/location/metroCode /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/authenticationKey /bandwidth /geoScope /uuid /changeLog/createdDateTime /changeLog/updatedDateTime /operation/equinixStatus /operation/providerStatus /redundancy/priority]. Defaults to /changeLog/updatedDateTime
         """
         return pulumi.get(self, "property")
+
+
+@pulumi.output_type
+class GetMarketplaceSubscriptionEntitlementResult(dict):
+    def __init__(__self__, *,
+                 assets: Sequence['outputs.GetMarketplaceSubscriptionEntitlementAssetResult'],
+                 quantity_available: int,
+                 quantity_consumed: int,
+                 quantity_entitled: int,
+                 uuid: str):
+        """
+        :param Sequence['GetMarketplaceSubscriptionEntitlementAssetArgs'] assets: Asset information
+        :param int quantity_available: Available Quantity
+        :param int quantity_consumed: Consumed Quantity
+        :param int quantity_entitled: Entitled Quantity
+        :param str uuid: Subscription Entitlement Id
+        """
+        pulumi.set(__self__, "assets", assets)
+        pulumi.set(__self__, "quantity_available", quantity_available)
+        pulumi.set(__self__, "quantity_consumed", quantity_consumed)
+        pulumi.set(__self__, "quantity_entitled", quantity_entitled)
+        pulumi.set(__self__, "uuid", uuid)
+
+    @property
+    @pulumi.getter
+    def assets(self) -> Sequence['outputs.GetMarketplaceSubscriptionEntitlementAssetResult']:
+        """
+        Asset information
+        """
+        return pulumi.get(self, "assets")
+
+    @property
+    @pulumi.getter(name="quantityAvailable")
+    def quantity_available(self) -> int:
+        """
+        Available Quantity
+        """
+        return pulumi.get(self, "quantity_available")
+
+    @property
+    @pulumi.getter(name="quantityConsumed")
+    def quantity_consumed(self) -> int:
+        """
+        Consumed Quantity
+        """
+        return pulumi.get(self, "quantity_consumed")
+
+    @property
+    @pulumi.getter(name="quantityEntitled")
+    def quantity_entitled(self) -> int:
+        """
+        Entitled Quantity
+        """
+        return pulumi.get(self, "quantity_entitled")
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> str:
+        """
+        Subscription Entitlement Id
+        """
+        return pulumi.get(self, "uuid")
+
+
+@pulumi.output_type
+class GetMarketplaceSubscriptionEntitlementAssetResult(dict):
+    def __init__(__self__, *,
+                 packages: Sequence['outputs.GetMarketplaceSubscriptionEntitlementAssetPackageResult'],
+                 type: str):
+        """
+        :param Sequence['GetMarketplaceSubscriptionEntitlementAssetPackageArgs'] packages: Fabric Cloud Router Package Type
+        :param str type: Defines the FCR type like; XF_ROUTER
+        """
+        pulumi.set(__self__, "packages", packages)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def packages(self) -> Sequence['outputs.GetMarketplaceSubscriptionEntitlementAssetPackageResult']:
+        """
+        Fabric Cloud Router Package Type
+        """
+        return pulumi.get(self, "packages")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Defines the FCR type like; XF_ROUTER
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetMarketplaceSubscriptionEntitlementAssetPackageResult(dict):
+    def __init__(__self__, *,
+                 code: str):
+        """
+        :param str code: Cloud Router package code
+        """
+        pulumi.set(__self__, "code", code)
+
+    @property
+    @pulumi.getter
+    def code(self) -> str:
+        """
+        Cloud Router package code
+        """
+        return pulumi.get(self, "code")
+
+
+@pulumi.output_type
+class GetMarketplaceSubscriptionTrialResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        :param bool enabled: Marketplace Subscription Trial Enabled
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Marketplace Subscription Trial Enabled
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type

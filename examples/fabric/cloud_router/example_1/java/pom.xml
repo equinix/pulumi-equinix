@@ -5,7 +5,7 @@
 			<modelVersion>4.0.0</modelVersion>
 
 			<groupId>com.pulumi</groupId>
-			<artifactId>equinix-fabric-cloud_router</artifactId>
+			<artifactId>equinix-fabric-cloud_router-example_1</artifactId>
 			<version>1.0-SNAPSHOT</version>
 
 			<properties>

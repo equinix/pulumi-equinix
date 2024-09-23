@@ -5,6 +5,7 @@ package com.equinix.pulumi.fabric;
 
 import com.equinix.pulumi.fabric.inputs.CloudRouterAccountArgs;
 import com.equinix.pulumi.fabric.inputs.CloudRouterLocationArgs;
+import com.equinix.pulumi.fabric.inputs.CloudRouterMarketplaceSubscriptionArgs;
 import com.equinix.pulumi.fabric.inputs.CloudRouterNotificationArgs;
 import com.equinix.pulumi.fabric.inputs.CloudRouterOrderArgs;
 import com.equinix.pulumi.fabric.inputs.CloudRouterPackageArgs;
@@ -27,15 +28,15 @@ public final class CloudRouterArgs extends com.pulumi.resources.ResourceArgs {
      * Customer account information that is associated with this Fabric Cloud Router
      * 
      */
-    @Import(name="account", required=true)
-    private Output<CloudRouterAccountArgs> account;
+    @Import(name="account")
+    private @Nullable Output<CloudRouterAccountArgs> account;
 
     /**
      * @return Customer account information that is associated with this Fabric Cloud Router
      * 
      */
-    public Output<CloudRouterAccountArgs> account() {
-        return this.account;
+    public Optional<Output<CloudRouterAccountArgs>> account() {
+        return Optional.ofNullable(this.account);
     }
 
     /**
@@ -81,6 +82,21 @@ public final class CloudRouterArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Output<CloudRouterLocationArgs> location() {
         return this.location;
+    }
+
+    /**
+     * Equinix Fabric Entity for Marketplace Subscription
+     * 
+     */
+    @Import(name="marketplaceSubscription")
+    private @Nullable Output<CloudRouterMarketplaceSubscriptionArgs> marketplaceSubscription;
+
+    /**
+     * @return Equinix Fabric Entity for Marketplace Subscription
+     * 
+     */
+    public Optional<Output<CloudRouterMarketplaceSubscriptionArgs>> marketplaceSubscription() {
+        return Optional.ofNullable(this.marketplaceSubscription);
     }
 
     /**
@@ -195,6 +211,7 @@ public final class CloudRouterArgs extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.href = $.href;
         this.location = $.location;
+        this.marketplaceSubscription = $.marketplaceSubscription;
         this.name = $.name;
         this.notifications = $.notifications;
         this.order = $.order;
@@ -228,7 +245,7 @@ public final class CloudRouterArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder account(Output<CloudRouterAccountArgs> account) {
+        public Builder account(@Nullable Output<CloudRouterAccountArgs> account) {
             $.account = account;
             return this;
         }
@@ -304,6 +321,27 @@ public final class CloudRouterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder location(CloudRouterLocationArgs location) {
             return location(Output.of(location));
+        }
+
+        /**
+         * @param marketplaceSubscription Equinix Fabric Entity for Marketplace Subscription
+         * 
+         * @return builder
+         * 
+         */
+        public Builder marketplaceSubscription(@Nullable Output<CloudRouterMarketplaceSubscriptionArgs> marketplaceSubscription) {
+            $.marketplaceSubscription = marketplaceSubscription;
+            return this;
+        }
+
+        /**
+         * @param marketplaceSubscription Equinix Fabric Entity for Marketplace Subscription
+         * 
+         * @return builder
+         * 
+         */
+        public Builder marketplaceSubscription(CloudRouterMarketplaceSubscriptionArgs marketplaceSubscription) {
+            return marketplaceSubscription(Output.of(marketplaceSubscription));
         }
 
         /**
@@ -464,9 +502,6 @@ public final class CloudRouterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public CloudRouterArgs build() {
-            if ($.account == null) {
-                throw new MissingRequiredPropertyException("CloudRouterArgs", "account");
-            }
             if ($.location == null) {
                 throw new MissingRequiredPropertyException("CloudRouterArgs", "location");
             }

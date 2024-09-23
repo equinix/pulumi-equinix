@@ -2,7 +2,7 @@ module equinix-fabric-connection-example_fcr_to_azure
 
 go 1.21
 
-toolchain go1.21.13
+toolchain go1.22.6
 
 require (
 	github.com/equinix/pulumi-equinix/sdk latest

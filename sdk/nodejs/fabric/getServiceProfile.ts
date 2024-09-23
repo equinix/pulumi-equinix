@@ -115,7 +115,7 @@ export interface GetServiceProfileResult {
      */
     readonly project: outputs.fabric.GetServiceProfileProject;
     /**
-     * Self Profile indicating if the profile is created for customer's self use
+     * Self Profile indicating if the profile is created for customer's  self use
      */
     readonly selfProfile: boolean;
     /**
@@ -127,13 +127,16 @@ export interface GetServiceProfileResult {
      */
     readonly tags: string[];
     /**
-     * Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+     * Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
      */
     readonly type: string;
     /**
      * Equinix assigned service profile identifier
      */
     readonly uuid: string;
+    /**
+     * Flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
+     */
     readonly viewPoint: string;
     /**
      * Virtual Devices

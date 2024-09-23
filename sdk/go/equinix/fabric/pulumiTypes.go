@@ -15,7 +15,7 @@ var _ = internal.GetEnvOrDefault
 
 type CloudRouterAccount struct {
 	// Account Number
-	AccountNumber *int `pulumi:"accountNumber"`
+	AccountNumber int `pulumi:"accountNumber"`
 }
 
 // CloudRouterAccountInput is an input type that accepts CloudRouterAccountArgs and CloudRouterAccountOutput values.
@@ -31,7 +31,7 @@ type CloudRouterAccountInput interface {
 
 type CloudRouterAccountArgs struct {
 	// Account Number
-	AccountNumber pulumi.IntPtrInput `pulumi:"accountNumber"`
+	AccountNumber pulumi.IntInput `pulumi:"accountNumber"`
 }
 
 func (CloudRouterAccountArgs) ElementType() reflect.Type {
@@ -112,8 +112,8 @@ func (o CloudRouterAccountOutput) ToCloudRouterAccountPtrOutputWithContext(ctx c
 }
 
 // Account Number
-func (o CloudRouterAccountOutput) AccountNumber() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v CloudRouterAccount) *int { return v.AccountNumber }).(pulumi.IntPtrOutput)
+func (o CloudRouterAccountOutput) AccountNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v CloudRouterAccount) int { return v.AccountNumber }).(pulumi.IntOutput)
 }
 
 type CloudRouterAccountPtrOutput struct{ *pulumi.OutputState }
@@ -146,7 +146,7 @@ func (o CloudRouterAccountPtrOutput) AccountNumber() pulumi.IntPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return v.AccountNumber
+		return &v.AccountNumber
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -537,6 +537,162 @@ func (o CloudRouterLocationPtrOutput) Region() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+type CloudRouterMarketplaceSubscription struct {
+	// Marketplace Subscription type like; AWS*MARKETPLACE*SUBSCRIPTION
+	Type *string `pulumi:"type"`
+	// Equinix-assigned Marketplace Subscription identifier
+	Uuid string `pulumi:"uuid"`
+}
+
+// CloudRouterMarketplaceSubscriptionInput is an input type that accepts CloudRouterMarketplaceSubscriptionArgs and CloudRouterMarketplaceSubscriptionOutput values.
+// You can construct a concrete instance of `CloudRouterMarketplaceSubscriptionInput` via:
+//
+//	CloudRouterMarketplaceSubscriptionArgs{...}
+type CloudRouterMarketplaceSubscriptionInput interface {
+	pulumi.Input
+
+	ToCloudRouterMarketplaceSubscriptionOutput() CloudRouterMarketplaceSubscriptionOutput
+	ToCloudRouterMarketplaceSubscriptionOutputWithContext(context.Context) CloudRouterMarketplaceSubscriptionOutput
+}
+
+type CloudRouterMarketplaceSubscriptionArgs struct {
+	// Marketplace Subscription type like; AWS*MARKETPLACE*SUBSCRIPTION
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Equinix-assigned Marketplace Subscription identifier
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (CloudRouterMarketplaceSubscriptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudRouterMarketplaceSubscription)(nil)).Elem()
+}
+
+func (i CloudRouterMarketplaceSubscriptionArgs) ToCloudRouterMarketplaceSubscriptionOutput() CloudRouterMarketplaceSubscriptionOutput {
+	return i.ToCloudRouterMarketplaceSubscriptionOutputWithContext(context.Background())
+}
+
+func (i CloudRouterMarketplaceSubscriptionArgs) ToCloudRouterMarketplaceSubscriptionOutputWithContext(ctx context.Context) CloudRouterMarketplaceSubscriptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudRouterMarketplaceSubscriptionOutput)
+}
+
+func (i CloudRouterMarketplaceSubscriptionArgs) ToCloudRouterMarketplaceSubscriptionPtrOutput() CloudRouterMarketplaceSubscriptionPtrOutput {
+	return i.ToCloudRouterMarketplaceSubscriptionPtrOutputWithContext(context.Background())
+}
+
+func (i CloudRouterMarketplaceSubscriptionArgs) ToCloudRouterMarketplaceSubscriptionPtrOutputWithContext(ctx context.Context) CloudRouterMarketplaceSubscriptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudRouterMarketplaceSubscriptionOutput).ToCloudRouterMarketplaceSubscriptionPtrOutputWithContext(ctx)
+}
+
+// CloudRouterMarketplaceSubscriptionPtrInput is an input type that accepts CloudRouterMarketplaceSubscriptionArgs, CloudRouterMarketplaceSubscriptionPtr and CloudRouterMarketplaceSubscriptionPtrOutput values.
+// You can construct a concrete instance of `CloudRouterMarketplaceSubscriptionPtrInput` via:
+//
+//	        CloudRouterMarketplaceSubscriptionArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudRouterMarketplaceSubscriptionPtrInput interface {
+	pulumi.Input
+
+	ToCloudRouterMarketplaceSubscriptionPtrOutput() CloudRouterMarketplaceSubscriptionPtrOutput
+	ToCloudRouterMarketplaceSubscriptionPtrOutputWithContext(context.Context) CloudRouterMarketplaceSubscriptionPtrOutput
+}
+
+type cloudRouterMarketplaceSubscriptionPtrType CloudRouterMarketplaceSubscriptionArgs
+
+func CloudRouterMarketplaceSubscriptionPtr(v *CloudRouterMarketplaceSubscriptionArgs) CloudRouterMarketplaceSubscriptionPtrInput {
+	return (*cloudRouterMarketplaceSubscriptionPtrType)(v)
+}
+
+func (*cloudRouterMarketplaceSubscriptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudRouterMarketplaceSubscription)(nil)).Elem()
+}
+
+func (i *cloudRouterMarketplaceSubscriptionPtrType) ToCloudRouterMarketplaceSubscriptionPtrOutput() CloudRouterMarketplaceSubscriptionPtrOutput {
+	return i.ToCloudRouterMarketplaceSubscriptionPtrOutputWithContext(context.Background())
+}
+
+func (i *cloudRouterMarketplaceSubscriptionPtrType) ToCloudRouterMarketplaceSubscriptionPtrOutputWithContext(ctx context.Context) CloudRouterMarketplaceSubscriptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudRouterMarketplaceSubscriptionPtrOutput)
+}
+
+type CloudRouterMarketplaceSubscriptionOutput struct{ *pulumi.OutputState }
+
+func (CloudRouterMarketplaceSubscriptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudRouterMarketplaceSubscription)(nil)).Elem()
+}
+
+func (o CloudRouterMarketplaceSubscriptionOutput) ToCloudRouterMarketplaceSubscriptionOutput() CloudRouterMarketplaceSubscriptionOutput {
+	return o
+}
+
+func (o CloudRouterMarketplaceSubscriptionOutput) ToCloudRouterMarketplaceSubscriptionOutputWithContext(ctx context.Context) CloudRouterMarketplaceSubscriptionOutput {
+	return o
+}
+
+func (o CloudRouterMarketplaceSubscriptionOutput) ToCloudRouterMarketplaceSubscriptionPtrOutput() CloudRouterMarketplaceSubscriptionPtrOutput {
+	return o.ToCloudRouterMarketplaceSubscriptionPtrOutputWithContext(context.Background())
+}
+
+func (o CloudRouterMarketplaceSubscriptionOutput) ToCloudRouterMarketplaceSubscriptionPtrOutputWithContext(ctx context.Context) CloudRouterMarketplaceSubscriptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudRouterMarketplaceSubscription) *CloudRouterMarketplaceSubscription {
+		return &v
+	}).(CloudRouterMarketplaceSubscriptionPtrOutput)
+}
+
+// Marketplace Subscription type like; AWS*MARKETPLACE*SUBSCRIPTION
+func (o CloudRouterMarketplaceSubscriptionOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudRouterMarketplaceSubscription) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// Equinix-assigned Marketplace Subscription identifier
+func (o CloudRouterMarketplaceSubscriptionOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudRouterMarketplaceSubscription) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type CloudRouterMarketplaceSubscriptionPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudRouterMarketplaceSubscriptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudRouterMarketplaceSubscription)(nil)).Elem()
+}
+
+func (o CloudRouterMarketplaceSubscriptionPtrOutput) ToCloudRouterMarketplaceSubscriptionPtrOutput() CloudRouterMarketplaceSubscriptionPtrOutput {
+	return o
+}
+
+func (o CloudRouterMarketplaceSubscriptionPtrOutput) ToCloudRouterMarketplaceSubscriptionPtrOutputWithContext(ctx context.Context) CloudRouterMarketplaceSubscriptionPtrOutput {
+	return o
+}
+
+func (o CloudRouterMarketplaceSubscriptionPtrOutput) Elem() CloudRouterMarketplaceSubscriptionOutput {
+	return o.ApplyT(func(v *CloudRouterMarketplaceSubscription) CloudRouterMarketplaceSubscription {
+		if v != nil {
+			return *v
+		}
+		var ret CloudRouterMarketplaceSubscription
+		return ret
+	}).(CloudRouterMarketplaceSubscriptionOutput)
+}
+
+// Marketplace Subscription type like; AWS*MARKETPLACE*SUBSCRIPTION
+func (o CloudRouterMarketplaceSubscriptionPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudRouterMarketplaceSubscription) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Equinix-assigned Marketplace Subscription identifier
+func (o CloudRouterMarketplaceSubscriptionPtrOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudRouterMarketplaceSubscription) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uuid
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -14881,6 +15037,112 @@ func (o GetCloudRouterLocationArrayOutput) Index(i pulumi.IntInput) GetCloudRout
 	}).(GetCloudRouterLocationOutput)
 }
 
+type GetCloudRouterMarketplaceSubscription struct {
+	// Marketplace Subscription type like; AWS_MARKETPLACE_SUBSCRIPTION
+	Type string `pulumi:"type"`
+	// Equinix-assigned Marketplace Subscription identifier
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetCloudRouterMarketplaceSubscriptionInput is an input type that accepts GetCloudRouterMarketplaceSubscriptionArgs and GetCloudRouterMarketplaceSubscriptionOutput values.
+// You can construct a concrete instance of `GetCloudRouterMarketplaceSubscriptionInput` via:
+//
+//	GetCloudRouterMarketplaceSubscriptionArgs{...}
+type GetCloudRouterMarketplaceSubscriptionInput interface {
+	pulumi.Input
+
+	ToGetCloudRouterMarketplaceSubscriptionOutput() GetCloudRouterMarketplaceSubscriptionOutput
+	ToGetCloudRouterMarketplaceSubscriptionOutputWithContext(context.Context) GetCloudRouterMarketplaceSubscriptionOutput
+}
+
+type GetCloudRouterMarketplaceSubscriptionArgs struct {
+	// Marketplace Subscription type like; AWS_MARKETPLACE_SUBSCRIPTION
+	Type pulumi.StringInput `pulumi:"type"`
+	// Equinix-assigned Marketplace Subscription identifier
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetCloudRouterMarketplaceSubscriptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudRouterMarketplaceSubscription)(nil)).Elem()
+}
+
+func (i GetCloudRouterMarketplaceSubscriptionArgs) ToGetCloudRouterMarketplaceSubscriptionOutput() GetCloudRouterMarketplaceSubscriptionOutput {
+	return i.ToGetCloudRouterMarketplaceSubscriptionOutputWithContext(context.Background())
+}
+
+func (i GetCloudRouterMarketplaceSubscriptionArgs) ToGetCloudRouterMarketplaceSubscriptionOutputWithContext(ctx context.Context) GetCloudRouterMarketplaceSubscriptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudRouterMarketplaceSubscriptionOutput)
+}
+
+// GetCloudRouterMarketplaceSubscriptionArrayInput is an input type that accepts GetCloudRouterMarketplaceSubscriptionArray and GetCloudRouterMarketplaceSubscriptionArrayOutput values.
+// You can construct a concrete instance of `GetCloudRouterMarketplaceSubscriptionArrayInput` via:
+//
+//	GetCloudRouterMarketplaceSubscriptionArray{ GetCloudRouterMarketplaceSubscriptionArgs{...} }
+type GetCloudRouterMarketplaceSubscriptionArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudRouterMarketplaceSubscriptionArrayOutput() GetCloudRouterMarketplaceSubscriptionArrayOutput
+	ToGetCloudRouterMarketplaceSubscriptionArrayOutputWithContext(context.Context) GetCloudRouterMarketplaceSubscriptionArrayOutput
+}
+
+type GetCloudRouterMarketplaceSubscriptionArray []GetCloudRouterMarketplaceSubscriptionInput
+
+func (GetCloudRouterMarketplaceSubscriptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudRouterMarketplaceSubscription)(nil)).Elem()
+}
+
+func (i GetCloudRouterMarketplaceSubscriptionArray) ToGetCloudRouterMarketplaceSubscriptionArrayOutput() GetCloudRouterMarketplaceSubscriptionArrayOutput {
+	return i.ToGetCloudRouterMarketplaceSubscriptionArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudRouterMarketplaceSubscriptionArray) ToGetCloudRouterMarketplaceSubscriptionArrayOutputWithContext(ctx context.Context) GetCloudRouterMarketplaceSubscriptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudRouterMarketplaceSubscriptionArrayOutput)
+}
+
+type GetCloudRouterMarketplaceSubscriptionOutput struct{ *pulumi.OutputState }
+
+func (GetCloudRouterMarketplaceSubscriptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudRouterMarketplaceSubscription)(nil)).Elem()
+}
+
+func (o GetCloudRouterMarketplaceSubscriptionOutput) ToGetCloudRouterMarketplaceSubscriptionOutput() GetCloudRouterMarketplaceSubscriptionOutput {
+	return o
+}
+
+func (o GetCloudRouterMarketplaceSubscriptionOutput) ToGetCloudRouterMarketplaceSubscriptionOutputWithContext(ctx context.Context) GetCloudRouterMarketplaceSubscriptionOutput {
+	return o
+}
+
+// Marketplace Subscription type like; AWS_MARKETPLACE_SUBSCRIPTION
+func (o GetCloudRouterMarketplaceSubscriptionOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudRouterMarketplaceSubscription) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Equinix-assigned Marketplace Subscription identifier
+func (o GetCloudRouterMarketplaceSubscriptionOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudRouterMarketplaceSubscription) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type GetCloudRouterMarketplaceSubscriptionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudRouterMarketplaceSubscriptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudRouterMarketplaceSubscription)(nil)).Elem()
+}
+
+func (o GetCloudRouterMarketplaceSubscriptionArrayOutput) ToGetCloudRouterMarketplaceSubscriptionArrayOutput() GetCloudRouterMarketplaceSubscriptionArrayOutput {
+	return o
+}
+
+func (o GetCloudRouterMarketplaceSubscriptionArrayOutput) ToGetCloudRouterMarketplaceSubscriptionArrayOutputWithContext(ctx context.Context) GetCloudRouterMarketplaceSubscriptionArrayOutput {
+	return o
+}
+
+func (o GetCloudRouterMarketplaceSubscriptionArrayOutput) Index(i pulumi.IntInput) GetCloudRouterMarketplaceSubscriptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudRouterMarketplaceSubscription {
+		return vs[0].([]GetCloudRouterMarketplaceSubscription)[vs[1].(int)]
+	}).(GetCloudRouterMarketplaceSubscriptionOutput)
+}
+
 type GetCloudRouterNotification struct {
 	// Array of contact emails
 	Emails []string `pulumi:"emails"`
@@ -15346,6 +15608,8 @@ type GetCloudRoutersData struct {
 	Href string `pulumi:"href"`
 	// Fabric Cloud Router location
 	Locations []GetCloudRoutersDataLocation `pulumi:"locations"`
+	// Equinix Fabric Entity for Marketplace Subscription
+	MarketplaceSubscriptions []GetCloudRoutersDataMarketplaceSubscription `pulumi:"marketplaceSubscriptions"`
 	// Fabric Cloud Router name. An alpha-numeric 24 characters string which can include only hyphens and underscores
 	Name string `pulumi:"name"`
 	// Preferences for notifications on Fabric Cloud Router configuration or status changes
@@ -15398,6 +15662,8 @@ type GetCloudRoutersDataArgs struct {
 	Href pulumi.StringInput `pulumi:"href"`
 	// Fabric Cloud Router location
 	Locations GetCloudRoutersDataLocationArrayInput `pulumi:"locations"`
+	// Equinix Fabric Entity for Marketplace Subscription
+	MarketplaceSubscriptions GetCloudRoutersDataMarketplaceSubscriptionArrayInput `pulumi:"marketplaceSubscriptions"`
 	// Fabric Cloud Router name. An alpha-numeric 24 characters string which can include only hyphens and underscores
 	Name pulumi.StringInput `pulumi:"name"`
 	// Preferences for notifications on Fabric Cloud Router configuration or status changes
@@ -15520,6 +15786,13 @@ func (o GetCloudRoutersDataOutput) Href() pulumi.StringOutput {
 // Fabric Cloud Router location
 func (o GetCloudRoutersDataOutput) Locations() GetCloudRoutersDataLocationArrayOutput {
 	return o.ApplyT(func(v GetCloudRoutersData) []GetCloudRoutersDataLocation { return v.Locations }).(GetCloudRoutersDataLocationArrayOutput)
+}
+
+// Equinix Fabric Entity for Marketplace Subscription
+func (o GetCloudRoutersDataOutput) MarketplaceSubscriptions() GetCloudRoutersDataMarketplaceSubscriptionArrayOutput {
+	return o.ApplyT(func(v GetCloudRoutersData) []GetCloudRoutersDataMarketplaceSubscription {
+		return v.MarketplaceSubscriptions
+	}).(GetCloudRoutersDataMarketplaceSubscriptionArrayOutput)
 }
 
 // Fabric Cloud Router name. An alpha-numeric 24 characters string which can include only hyphens and underscores
@@ -15997,6 +16270,112 @@ func (o GetCloudRoutersDataLocationArrayOutput) Index(i pulumi.IntInput) GetClou
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudRoutersDataLocation {
 		return vs[0].([]GetCloudRoutersDataLocation)[vs[1].(int)]
 	}).(GetCloudRoutersDataLocationOutput)
+}
+
+type GetCloudRoutersDataMarketplaceSubscription struct {
+	// Marketplace Subscription type like; AWS_MARKETPLACE_SUBSCRIPTION
+	Type string `pulumi:"type"`
+	// Equinix-assigned Marketplace Subscription identifier
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetCloudRoutersDataMarketplaceSubscriptionInput is an input type that accepts GetCloudRoutersDataMarketplaceSubscriptionArgs and GetCloudRoutersDataMarketplaceSubscriptionOutput values.
+// You can construct a concrete instance of `GetCloudRoutersDataMarketplaceSubscriptionInput` via:
+//
+//	GetCloudRoutersDataMarketplaceSubscriptionArgs{...}
+type GetCloudRoutersDataMarketplaceSubscriptionInput interface {
+	pulumi.Input
+
+	ToGetCloudRoutersDataMarketplaceSubscriptionOutput() GetCloudRoutersDataMarketplaceSubscriptionOutput
+	ToGetCloudRoutersDataMarketplaceSubscriptionOutputWithContext(context.Context) GetCloudRoutersDataMarketplaceSubscriptionOutput
+}
+
+type GetCloudRoutersDataMarketplaceSubscriptionArgs struct {
+	// Marketplace Subscription type like; AWS_MARKETPLACE_SUBSCRIPTION
+	Type pulumi.StringInput `pulumi:"type"`
+	// Equinix-assigned Marketplace Subscription identifier
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetCloudRoutersDataMarketplaceSubscriptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudRoutersDataMarketplaceSubscription)(nil)).Elem()
+}
+
+func (i GetCloudRoutersDataMarketplaceSubscriptionArgs) ToGetCloudRoutersDataMarketplaceSubscriptionOutput() GetCloudRoutersDataMarketplaceSubscriptionOutput {
+	return i.ToGetCloudRoutersDataMarketplaceSubscriptionOutputWithContext(context.Background())
+}
+
+func (i GetCloudRoutersDataMarketplaceSubscriptionArgs) ToGetCloudRoutersDataMarketplaceSubscriptionOutputWithContext(ctx context.Context) GetCloudRoutersDataMarketplaceSubscriptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudRoutersDataMarketplaceSubscriptionOutput)
+}
+
+// GetCloudRoutersDataMarketplaceSubscriptionArrayInput is an input type that accepts GetCloudRoutersDataMarketplaceSubscriptionArray and GetCloudRoutersDataMarketplaceSubscriptionArrayOutput values.
+// You can construct a concrete instance of `GetCloudRoutersDataMarketplaceSubscriptionArrayInput` via:
+//
+//	GetCloudRoutersDataMarketplaceSubscriptionArray{ GetCloudRoutersDataMarketplaceSubscriptionArgs{...} }
+type GetCloudRoutersDataMarketplaceSubscriptionArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudRoutersDataMarketplaceSubscriptionArrayOutput() GetCloudRoutersDataMarketplaceSubscriptionArrayOutput
+	ToGetCloudRoutersDataMarketplaceSubscriptionArrayOutputWithContext(context.Context) GetCloudRoutersDataMarketplaceSubscriptionArrayOutput
+}
+
+type GetCloudRoutersDataMarketplaceSubscriptionArray []GetCloudRoutersDataMarketplaceSubscriptionInput
+
+func (GetCloudRoutersDataMarketplaceSubscriptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudRoutersDataMarketplaceSubscription)(nil)).Elem()
+}
+
+func (i GetCloudRoutersDataMarketplaceSubscriptionArray) ToGetCloudRoutersDataMarketplaceSubscriptionArrayOutput() GetCloudRoutersDataMarketplaceSubscriptionArrayOutput {
+	return i.ToGetCloudRoutersDataMarketplaceSubscriptionArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudRoutersDataMarketplaceSubscriptionArray) ToGetCloudRoutersDataMarketplaceSubscriptionArrayOutputWithContext(ctx context.Context) GetCloudRoutersDataMarketplaceSubscriptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudRoutersDataMarketplaceSubscriptionArrayOutput)
+}
+
+type GetCloudRoutersDataMarketplaceSubscriptionOutput struct{ *pulumi.OutputState }
+
+func (GetCloudRoutersDataMarketplaceSubscriptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudRoutersDataMarketplaceSubscription)(nil)).Elem()
+}
+
+func (o GetCloudRoutersDataMarketplaceSubscriptionOutput) ToGetCloudRoutersDataMarketplaceSubscriptionOutput() GetCloudRoutersDataMarketplaceSubscriptionOutput {
+	return o
+}
+
+func (o GetCloudRoutersDataMarketplaceSubscriptionOutput) ToGetCloudRoutersDataMarketplaceSubscriptionOutputWithContext(ctx context.Context) GetCloudRoutersDataMarketplaceSubscriptionOutput {
+	return o
+}
+
+// Marketplace Subscription type like; AWS_MARKETPLACE_SUBSCRIPTION
+func (o GetCloudRoutersDataMarketplaceSubscriptionOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudRoutersDataMarketplaceSubscription) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Equinix-assigned Marketplace Subscription identifier
+func (o GetCloudRoutersDataMarketplaceSubscriptionOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudRoutersDataMarketplaceSubscription) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type GetCloudRoutersDataMarketplaceSubscriptionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudRoutersDataMarketplaceSubscriptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudRoutersDataMarketplaceSubscription)(nil)).Elem()
+}
+
+func (o GetCloudRoutersDataMarketplaceSubscriptionArrayOutput) ToGetCloudRoutersDataMarketplaceSubscriptionArrayOutput() GetCloudRoutersDataMarketplaceSubscriptionArrayOutput {
+	return o
+}
+
+func (o GetCloudRoutersDataMarketplaceSubscriptionArrayOutput) ToGetCloudRoutersDataMarketplaceSubscriptionArrayOutputWithContext(ctx context.Context) GetCloudRoutersDataMarketplaceSubscriptionArrayOutput {
+	return o
+}
+
+func (o GetCloudRoutersDataMarketplaceSubscriptionArrayOutput) Index(i pulumi.IntInput) GetCloudRoutersDataMarketplaceSubscriptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudRoutersDataMarketplaceSubscription {
+		return vs[0].([]GetCloudRoutersDataMarketplaceSubscription)[vs[1].(int)]
+	}).(GetCloudRoutersDataMarketplaceSubscriptionOutput)
 }
 
 type GetCloudRoutersDataNotification struct {
@@ -18943,9 +19322,9 @@ func (o GetConnectionASideAccessPointProfilePtrOutput) Uuid() pulumi.StringPtrOu
 }
 
 type GetConnectionASideAccessPointProfileAccessPointTypeConfig struct {
-	// Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
+	// Type of access point type config - VD, COLO
 	Type string `pulumi:"type"`
-	// Equinix-assigned connection identifier
+	// Equinix-assigned access point type config identifier
 	Uuid string `pulumi:"uuid"`
 }
 
@@ -18961,9 +19340,9 @@ type GetConnectionASideAccessPointProfileAccessPointTypeConfigInput interface {
 }
 
 type GetConnectionASideAccessPointProfileAccessPointTypeConfigArgs struct {
-	// Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
+	// Type of access point type config - VD, COLO
 	Type pulumi.StringInput `pulumi:"type"`
-	// Equinix-assigned connection identifier
+	// Equinix-assigned access point type config identifier
 	Uuid pulumi.StringInput `pulumi:"uuid"`
 }
 
@@ -19018,12 +19397,12 @@ func (o GetConnectionASideAccessPointProfileAccessPointTypeConfigOutput) ToGetCo
 	return o
 }
 
-// Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
+// Type of access point type config - VD, COLO
 func (o GetConnectionASideAccessPointProfileAccessPointTypeConfigOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionASideAccessPointProfileAccessPointTypeConfig) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Equinix-assigned connection identifier
+// Equinix-assigned access point type config identifier
 func (o GetConnectionASideAccessPointProfileAccessPointTypeConfigOutput) Uuid() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionASideAccessPointProfileAccessPointTypeConfig) string { return v.Uuid }).(pulumi.StringOutput)
 }
@@ -22666,9 +23045,9 @@ func (o GetConnectionZSideAccessPointProfilePtrOutput) Uuid() pulumi.StringPtrOu
 }
 
 type GetConnectionZSideAccessPointProfileAccessPointTypeConfig struct {
-	// Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
+	// Type of access point type config - VD, COLO
 	Type string `pulumi:"type"`
-	// Equinix-assigned connection identifier
+	// Equinix-assigned access point type config identifier
 	Uuid string `pulumi:"uuid"`
 }
 
@@ -22684,9 +23063,9 @@ type GetConnectionZSideAccessPointProfileAccessPointTypeConfigInput interface {
 }
 
 type GetConnectionZSideAccessPointProfileAccessPointTypeConfigArgs struct {
-	// Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
+	// Type of access point type config - VD, COLO
 	Type pulumi.StringInput `pulumi:"type"`
-	// Equinix-assigned connection identifier
+	// Equinix-assigned access point type config identifier
 	Uuid pulumi.StringInput `pulumi:"uuid"`
 }
 
@@ -22741,12 +23120,12 @@ func (o GetConnectionZSideAccessPointProfileAccessPointTypeConfigOutput) ToGetCo
 	return o
 }
 
-// Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
+// Type of access point type config - VD, COLO
 func (o GetConnectionZSideAccessPointProfileAccessPointTypeConfigOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionZSideAccessPointProfileAccessPointTypeConfig) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Equinix-assigned connection identifier
+// Equinix-assigned access point type config identifier
 func (o GetConnectionZSideAccessPointProfileAccessPointTypeConfigOutput) Uuid() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionZSideAccessPointProfileAccessPointTypeConfig) string { return v.Uuid }).(pulumi.StringOutput)
 }
@@ -24539,7 +24918,7 @@ func (o GetConnectionsDataASideAccessPointGatewayPtrOutput) Uuid() pulumi.String
 }
 
 type GetConnectionsDataASideAccessPointInterface struct {
-	// The ID of this resource.
+	// id
 	Id int `pulumi:"id"`
 	// Interface type
 	Type *string `pulumi:"type"`
@@ -24559,7 +24938,7 @@ type GetConnectionsDataASideAccessPointInterfaceInput interface {
 }
 
 type GetConnectionsDataASideAccessPointInterfaceArgs struct {
-	// The ID of this resource.
+	// id
 	Id pulumi.IntInput `pulumi:"id"`
 	// Interface type
 	Type pulumi.StringPtrInput `pulumi:"type"`
@@ -24644,7 +25023,7 @@ func (o GetConnectionsDataASideAccessPointInterfaceOutput) ToGetConnectionsDataA
 	}).(GetConnectionsDataASideAccessPointInterfacePtrOutput)
 }
 
-// The ID of this resource.
+// id
 func (o GetConnectionsDataASideAccessPointInterfaceOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetConnectionsDataASideAccessPointInterface) int { return v.Id }).(pulumi.IntOutput)
 }
@@ -24683,7 +25062,7 @@ func (o GetConnectionsDataASideAccessPointInterfacePtrOutput) Elem() GetConnecti
 	}).(GetConnectionsDataASideAccessPointInterfaceOutput)
 }
 
-// The ID of this resource.
+// id
 func (o GetConnectionsDataASideAccessPointInterfacePtrOutput) Id() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetConnectionsDataASideAccessPointInterface) *int {
 		if v == nil {
@@ -28589,7 +28968,7 @@ func (o GetConnectionsDataZSideAccessPointGatewayPtrOutput) Uuid() pulumi.String
 }
 
 type GetConnectionsDataZSideAccessPointInterface struct {
-	// The ID of this resource.
+	// id
 	Id int `pulumi:"id"`
 	// Interface type
 	Type *string `pulumi:"type"`
@@ -28609,7 +28988,7 @@ type GetConnectionsDataZSideAccessPointInterfaceInput interface {
 }
 
 type GetConnectionsDataZSideAccessPointInterfaceArgs struct {
-	// The ID of this resource.
+	// id
 	Id pulumi.IntInput `pulumi:"id"`
 	// Interface type
 	Type pulumi.StringPtrInput `pulumi:"type"`
@@ -28694,7 +29073,7 @@ func (o GetConnectionsDataZSideAccessPointInterfaceOutput) ToGetConnectionsDataZ
 	}).(GetConnectionsDataZSideAccessPointInterfacePtrOutput)
 }
 
-// The ID of this resource.
+// id
 func (o GetConnectionsDataZSideAccessPointInterfaceOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetConnectionsDataZSideAccessPointInterface) int { return v.Id }).(pulumi.IntOutput)
 }
@@ -28733,7 +29112,7 @@ func (o GetConnectionsDataZSideAccessPointInterfacePtrOutput) Elem() GetConnecti
 	}).(GetConnectionsDataZSideAccessPointInterfaceOutput)
 }
 
-// The ID of this resource.
+// id
 func (o GetConnectionsDataZSideAccessPointInterfacePtrOutput) Id() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPointInterface) *int {
 		if v == nil {
@@ -30613,7 +30992,7 @@ type GetConnectionsFilter struct {
 	Group *string `pulumi:"group"`
 	// Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, IN, NOT IN, IS NOT NULL, IS NULL]
 	Operator string `pulumi:"operator"`
-	// Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /change/status /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid *]
+	// Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /change/status /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid *]
 	Property string `pulumi:"property"`
 	// The values that you want to apply the property+operator combination to in order to filter your data search
 	Values []string `pulumi:"values"`
@@ -30635,7 +31014,7 @@ type GetConnectionsFilterArgs struct {
 	Group pulumi.StringPtrInput `pulumi:"group"`
 	// Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, IN, NOT IN, IS NOT NULL, IS NULL]
 	Operator pulumi.StringInput `pulumi:"operator"`
-	// Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /change/status /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid *]
+	// Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /change/status /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid *]
 	Property pulumi.StringInput `pulumi:"property"`
 	// The values that you want to apply the property+operator combination to in order to filter your data search
 	Values pulumi.StringArrayInput `pulumi:"values"`
@@ -30702,7 +31081,7 @@ func (o GetConnectionsFilterOutput) Operator() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionsFilter) string { return v.Operator }).(pulumi.StringOutput)
 }
 
-// Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /change/status /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid *]
+// Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /change/status /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid *]
 func (o GetConnectionsFilterOutput) Property() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionsFilter) string { return v.Property }).(pulumi.StringOutput)
 }
@@ -30992,6 +31371,398 @@ func (o GetConnectionsSortArrayOutput) Index(i pulumi.IntInput) GetConnectionsSo
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionsSort {
 		return vs[0].([]GetConnectionsSort)[vs[1].(int)]
 	}).(GetConnectionsSortOutput)
+}
+
+type GetMarketplaceSubscriptionEntitlement struct {
+	// Asset information
+	Assets []GetMarketplaceSubscriptionEntitlementAsset `pulumi:"assets"`
+	// Available Quantity
+	QuantityAvailable int `pulumi:"quantityAvailable"`
+	// Consumed Quantity
+	QuantityConsumed int `pulumi:"quantityConsumed"`
+	// Entitled Quantity
+	QuantityEntitled int `pulumi:"quantityEntitled"`
+	// Subscription Entitlement Id
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetMarketplaceSubscriptionEntitlementInput is an input type that accepts GetMarketplaceSubscriptionEntitlementArgs and GetMarketplaceSubscriptionEntitlementOutput values.
+// You can construct a concrete instance of `GetMarketplaceSubscriptionEntitlementInput` via:
+//
+//	GetMarketplaceSubscriptionEntitlementArgs{...}
+type GetMarketplaceSubscriptionEntitlementInput interface {
+	pulumi.Input
+
+	ToGetMarketplaceSubscriptionEntitlementOutput() GetMarketplaceSubscriptionEntitlementOutput
+	ToGetMarketplaceSubscriptionEntitlementOutputWithContext(context.Context) GetMarketplaceSubscriptionEntitlementOutput
+}
+
+type GetMarketplaceSubscriptionEntitlementArgs struct {
+	// Asset information
+	Assets GetMarketplaceSubscriptionEntitlementAssetArrayInput `pulumi:"assets"`
+	// Available Quantity
+	QuantityAvailable pulumi.IntInput `pulumi:"quantityAvailable"`
+	// Consumed Quantity
+	QuantityConsumed pulumi.IntInput `pulumi:"quantityConsumed"`
+	// Entitled Quantity
+	QuantityEntitled pulumi.IntInput `pulumi:"quantityEntitled"`
+	// Subscription Entitlement Id
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetMarketplaceSubscriptionEntitlementArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMarketplaceSubscriptionEntitlement)(nil)).Elem()
+}
+
+func (i GetMarketplaceSubscriptionEntitlementArgs) ToGetMarketplaceSubscriptionEntitlementOutput() GetMarketplaceSubscriptionEntitlementOutput {
+	return i.ToGetMarketplaceSubscriptionEntitlementOutputWithContext(context.Background())
+}
+
+func (i GetMarketplaceSubscriptionEntitlementArgs) ToGetMarketplaceSubscriptionEntitlementOutputWithContext(ctx context.Context) GetMarketplaceSubscriptionEntitlementOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMarketplaceSubscriptionEntitlementOutput)
+}
+
+// GetMarketplaceSubscriptionEntitlementArrayInput is an input type that accepts GetMarketplaceSubscriptionEntitlementArray and GetMarketplaceSubscriptionEntitlementArrayOutput values.
+// You can construct a concrete instance of `GetMarketplaceSubscriptionEntitlementArrayInput` via:
+//
+//	GetMarketplaceSubscriptionEntitlementArray{ GetMarketplaceSubscriptionEntitlementArgs{...} }
+type GetMarketplaceSubscriptionEntitlementArrayInput interface {
+	pulumi.Input
+
+	ToGetMarketplaceSubscriptionEntitlementArrayOutput() GetMarketplaceSubscriptionEntitlementArrayOutput
+	ToGetMarketplaceSubscriptionEntitlementArrayOutputWithContext(context.Context) GetMarketplaceSubscriptionEntitlementArrayOutput
+}
+
+type GetMarketplaceSubscriptionEntitlementArray []GetMarketplaceSubscriptionEntitlementInput
+
+func (GetMarketplaceSubscriptionEntitlementArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMarketplaceSubscriptionEntitlement)(nil)).Elem()
+}
+
+func (i GetMarketplaceSubscriptionEntitlementArray) ToGetMarketplaceSubscriptionEntitlementArrayOutput() GetMarketplaceSubscriptionEntitlementArrayOutput {
+	return i.ToGetMarketplaceSubscriptionEntitlementArrayOutputWithContext(context.Background())
+}
+
+func (i GetMarketplaceSubscriptionEntitlementArray) ToGetMarketplaceSubscriptionEntitlementArrayOutputWithContext(ctx context.Context) GetMarketplaceSubscriptionEntitlementArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMarketplaceSubscriptionEntitlementArrayOutput)
+}
+
+type GetMarketplaceSubscriptionEntitlementOutput struct{ *pulumi.OutputState }
+
+func (GetMarketplaceSubscriptionEntitlementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMarketplaceSubscriptionEntitlement)(nil)).Elem()
+}
+
+func (o GetMarketplaceSubscriptionEntitlementOutput) ToGetMarketplaceSubscriptionEntitlementOutput() GetMarketplaceSubscriptionEntitlementOutput {
+	return o
+}
+
+func (o GetMarketplaceSubscriptionEntitlementOutput) ToGetMarketplaceSubscriptionEntitlementOutputWithContext(ctx context.Context) GetMarketplaceSubscriptionEntitlementOutput {
+	return o
+}
+
+// Asset information
+func (o GetMarketplaceSubscriptionEntitlementOutput) Assets() GetMarketplaceSubscriptionEntitlementAssetArrayOutput {
+	return o.ApplyT(func(v GetMarketplaceSubscriptionEntitlement) []GetMarketplaceSubscriptionEntitlementAsset {
+		return v.Assets
+	}).(GetMarketplaceSubscriptionEntitlementAssetArrayOutput)
+}
+
+// Available Quantity
+func (o GetMarketplaceSubscriptionEntitlementOutput) QuantityAvailable() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMarketplaceSubscriptionEntitlement) int { return v.QuantityAvailable }).(pulumi.IntOutput)
+}
+
+// Consumed Quantity
+func (o GetMarketplaceSubscriptionEntitlementOutput) QuantityConsumed() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMarketplaceSubscriptionEntitlement) int { return v.QuantityConsumed }).(pulumi.IntOutput)
+}
+
+// Entitled Quantity
+func (o GetMarketplaceSubscriptionEntitlementOutput) QuantityEntitled() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMarketplaceSubscriptionEntitlement) int { return v.QuantityEntitled }).(pulumi.IntOutput)
+}
+
+// Subscription Entitlement Id
+func (o GetMarketplaceSubscriptionEntitlementOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMarketplaceSubscriptionEntitlement) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type GetMarketplaceSubscriptionEntitlementArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMarketplaceSubscriptionEntitlementArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMarketplaceSubscriptionEntitlement)(nil)).Elem()
+}
+
+func (o GetMarketplaceSubscriptionEntitlementArrayOutput) ToGetMarketplaceSubscriptionEntitlementArrayOutput() GetMarketplaceSubscriptionEntitlementArrayOutput {
+	return o
+}
+
+func (o GetMarketplaceSubscriptionEntitlementArrayOutput) ToGetMarketplaceSubscriptionEntitlementArrayOutputWithContext(ctx context.Context) GetMarketplaceSubscriptionEntitlementArrayOutput {
+	return o
+}
+
+func (o GetMarketplaceSubscriptionEntitlementArrayOutput) Index(i pulumi.IntInput) GetMarketplaceSubscriptionEntitlementOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMarketplaceSubscriptionEntitlement {
+		return vs[0].([]GetMarketplaceSubscriptionEntitlement)[vs[1].(int)]
+	}).(GetMarketplaceSubscriptionEntitlementOutput)
+}
+
+type GetMarketplaceSubscriptionEntitlementAsset struct {
+	// Fabric Cloud Router Package Type
+	Packages []GetMarketplaceSubscriptionEntitlementAssetPackage `pulumi:"packages"`
+	// Defines the FCR type like; XF_ROUTER
+	Type string `pulumi:"type"`
+}
+
+// GetMarketplaceSubscriptionEntitlementAssetInput is an input type that accepts GetMarketplaceSubscriptionEntitlementAssetArgs and GetMarketplaceSubscriptionEntitlementAssetOutput values.
+// You can construct a concrete instance of `GetMarketplaceSubscriptionEntitlementAssetInput` via:
+//
+//	GetMarketplaceSubscriptionEntitlementAssetArgs{...}
+type GetMarketplaceSubscriptionEntitlementAssetInput interface {
+	pulumi.Input
+
+	ToGetMarketplaceSubscriptionEntitlementAssetOutput() GetMarketplaceSubscriptionEntitlementAssetOutput
+	ToGetMarketplaceSubscriptionEntitlementAssetOutputWithContext(context.Context) GetMarketplaceSubscriptionEntitlementAssetOutput
+}
+
+type GetMarketplaceSubscriptionEntitlementAssetArgs struct {
+	// Fabric Cloud Router Package Type
+	Packages GetMarketplaceSubscriptionEntitlementAssetPackageArrayInput `pulumi:"packages"`
+	// Defines the FCR type like; XF_ROUTER
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetMarketplaceSubscriptionEntitlementAssetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMarketplaceSubscriptionEntitlementAsset)(nil)).Elem()
+}
+
+func (i GetMarketplaceSubscriptionEntitlementAssetArgs) ToGetMarketplaceSubscriptionEntitlementAssetOutput() GetMarketplaceSubscriptionEntitlementAssetOutput {
+	return i.ToGetMarketplaceSubscriptionEntitlementAssetOutputWithContext(context.Background())
+}
+
+func (i GetMarketplaceSubscriptionEntitlementAssetArgs) ToGetMarketplaceSubscriptionEntitlementAssetOutputWithContext(ctx context.Context) GetMarketplaceSubscriptionEntitlementAssetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMarketplaceSubscriptionEntitlementAssetOutput)
+}
+
+// GetMarketplaceSubscriptionEntitlementAssetArrayInput is an input type that accepts GetMarketplaceSubscriptionEntitlementAssetArray and GetMarketplaceSubscriptionEntitlementAssetArrayOutput values.
+// You can construct a concrete instance of `GetMarketplaceSubscriptionEntitlementAssetArrayInput` via:
+//
+//	GetMarketplaceSubscriptionEntitlementAssetArray{ GetMarketplaceSubscriptionEntitlementAssetArgs{...} }
+type GetMarketplaceSubscriptionEntitlementAssetArrayInput interface {
+	pulumi.Input
+
+	ToGetMarketplaceSubscriptionEntitlementAssetArrayOutput() GetMarketplaceSubscriptionEntitlementAssetArrayOutput
+	ToGetMarketplaceSubscriptionEntitlementAssetArrayOutputWithContext(context.Context) GetMarketplaceSubscriptionEntitlementAssetArrayOutput
+}
+
+type GetMarketplaceSubscriptionEntitlementAssetArray []GetMarketplaceSubscriptionEntitlementAssetInput
+
+func (GetMarketplaceSubscriptionEntitlementAssetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMarketplaceSubscriptionEntitlementAsset)(nil)).Elem()
+}
+
+func (i GetMarketplaceSubscriptionEntitlementAssetArray) ToGetMarketplaceSubscriptionEntitlementAssetArrayOutput() GetMarketplaceSubscriptionEntitlementAssetArrayOutput {
+	return i.ToGetMarketplaceSubscriptionEntitlementAssetArrayOutputWithContext(context.Background())
+}
+
+func (i GetMarketplaceSubscriptionEntitlementAssetArray) ToGetMarketplaceSubscriptionEntitlementAssetArrayOutputWithContext(ctx context.Context) GetMarketplaceSubscriptionEntitlementAssetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMarketplaceSubscriptionEntitlementAssetArrayOutput)
+}
+
+type GetMarketplaceSubscriptionEntitlementAssetOutput struct{ *pulumi.OutputState }
+
+func (GetMarketplaceSubscriptionEntitlementAssetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMarketplaceSubscriptionEntitlementAsset)(nil)).Elem()
+}
+
+func (o GetMarketplaceSubscriptionEntitlementAssetOutput) ToGetMarketplaceSubscriptionEntitlementAssetOutput() GetMarketplaceSubscriptionEntitlementAssetOutput {
+	return o
+}
+
+func (o GetMarketplaceSubscriptionEntitlementAssetOutput) ToGetMarketplaceSubscriptionEntitlementAssetOutputWithContext(ctx context.Context) GetMarketplaceSubscriptionEntitlementAssetOutput {
+	return o
+}
+
+// Fabric Cloud Router Package Type
+func (o GetMarketplaceSubscriptionEntitlementAssetOutput) Packages() GetMarketplaceSubscriptionEntitlementAssetPackageArrayOutput {
+	return o.ApplyT(func(v GetMarketplaceSubscriptionEntitlementAsset) []GetMarketplaceSubscriptionEntitlementAssetPackage {
+		return v.Packages
+	}).(GetMarketplaceSubscriptionEntitlementAssetPackageArrayOutput)
+}
+
+// Defines the FCR type like; XF_ROUTER
+func (o GetMarketplaceSubscriptionEntitlementAssetOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMarketplaceSubscriptionEntitlementAsset) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetMarketplaceSubscriptionEntitlementAssetArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMarketplaceSubscriptionEntitlementAssetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMarketplaceSubscriptionEntitlementAsset)(nil)).Elem()
+}
+
+func (o GetMarketplaceSubscriptionEntitlementAssetArrayOutput) ToGetMarketplaceSubscriptionEntitlementAssetArrayOutput() GetMarketplaceSubscriptionEntitlementAssetArrayOutput {
+	return o
+}
+
+func (o GetMarketplaceSubscriptionEntitlementAssetArrayOutput) ToGetMarketplaceSubscriptionEntitlementAssetArrayOutputWithContext(ctx context.Context) GetMarketplaceSubscriptionEntitlementAssetArrayOutput {
+	return o
+}
+
+func (o GetMarketplaceSubscriptionEntitlementAssetArrayOutput) Index(i pulumi.IntInput) GetMarketplaceSubscriptionEntitlementAssetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMarketplaceSubscriptionEntitlementAsset {
+		return vs[0].([]GetMarketplaceSubscriptionEntitlementAsset)[vs[1].(int)]
+	}).(GetMarketplaceSubscriptionEntitlementAssetOutput)
+}
+
+type GetMarketplaceSubscriptionEntitlementAssetPackage struct {
+	// Cloud Router package code
+	Code string `pulumi:"code"`
+}
+
+// GetMarketplaceSubscriptionEntitlementAssetPackageInput is an input type that accepts GetMarketplaceSubscriptionEntitlementAssetPackageArgs and GetMarketplaceSubscriptionEntitlementAssetPackageOutput values.
+// You can construct a concrete instance of `GetMarketplaceSubscriptionEntitlementAssetPackageInput` via:
+//
+//	GetMarketplaceSubscriptionEntitlementAssetPackageArgs{...}
+type GetMarketplaceSubscriptionEntitlementAssetPackageInput interface {
+	pulumi.Input
+
+	ToGetMarketplaceSubscriptionEntitlementAssetPackageOutput() GetMarketplaceSubscriptionEntitlementAssetPackageOutput
+	ToGetMarketplaceSubscriptionEntitlementAssetPackageOutputWithContext(context.Context) GetMarketplaceSubscriptionEntitlementAssetPackageOutput
+}
+
+type GetMarketplaceSubscriptionEntitlementAssetPackageArgs struct {
+	// Cloud Router package code
+	Code pulumi.StringInput `pulumi:"code"`
+}
+
+func (GetMarketplaceSubscriptionEntitlementAssetPackageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMarketplaceSubscriptionEntitlementAssetPackage)(nil)).Elem()
+}
+
+func (i GetMarketplaceSubscriptionEntitlementAssetPackageArgs) ToGetMarketplaceSubscriptionEntitlementAssetPackageOutput() GetMarketplaceSubscriptionEntitlementAssetPackageOutput {
+	return i.ToGetMarketplaceSubscriptionEntitlementAssetPackageOutputWithContext(context.Background())
+}
+
+func (i GetMarketplaceSubscriptionEntitlementAssetPackageArgs) ToGetMarketplaceSubscriptionEntitlementAssetPackageOutputWithContext(ctx context.Context) GetMarketplaceSubscriptionEntitlementAssetPackageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMarketplaceSubscriptionEntitlementAssetPackageOutput)
+}
+
+// GetMarketplaceSubscriptionEntitlementAssetPackageArrayInput is an input type that accepts GetMarketplaceSubscriptionEntitlementAssetPackageArray and GetMarketplaceSubscriptionEntitlementAssetPackageArrayOutput values.
+// You can construct a concrete instance of `GetMarketplaceSubscriptionEntitlementAssetPackageArrayInput` via:
+//
+//	GetMarketplaceSubscriptionEntitlementAssetPackageArray{ GetMarketplaceSubscriptionEntitlementAssetPackageArgs{...} }
+type GetMarketplaceSubscriptionEntitlementAssetPackageArrayInput interface {
+	pulumi.Input
+
+	ToGetMarketplaceSubscriptionEntitlementAssetPackageArrayOutput() GetMarketplaceSubscriptionEntitlementAssetPackageArrayOutput
+	ToGetMarketplaceSubscriptionEntitlementAssetPackageArrayOutputWithContext(context.Context) GetMarketplaceSubscriptionEntitlementAssetPackageArrayOutput
+}
+
+type GetMarketplaceSubscriptionEntitlementAssetPackageArray []GetMarketplaceSubscriptionEntitlementAssetPackageInput
+
+func (GetMarketplaceSubscriptionEntitlementAssetPackageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMarketplaceSubscriptionEntitlementAssetPackage)(nil)).Elem()
+}
+
+func (i GetMarketplaceSubscriptionEntitlementAssetPackageArray) ToGetMarketplaceSubscriptionEntitlementAssetPackageArrayOutput() GetMarketplaceSubscriptionEntitlementAssetPackageArrayOutput {
+	return i.ToGetMarketplaceSubscriptionEntitlementAssetPackageArrayOutputWithContext(context.Background())
+}
+
+func (i GetMarketplaceSubscriptionEntitlementAssetPackageArray) ToGetMarketplaceSubscriptionEntitlementAssetPackageArrayOutputWithContext(ctx context.Context) GetMarketplaceSubscriptionEntitlementAssetPackageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMarketplaceSubscriptionEntitlementAssetPackageArrayOutput)
+}
+
+type GetMarketplaceSubscriptionEntitlementAssetPackageOutput struct{ *pulumi.OutputState }
+
+func (GetMarketplaceSubscriptionEntitlementAssetPackageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMarketplaceSubscriptionEntitlementAssetPackage)(nil)).Elem()
+}
+
+func (o GetMarketplaceSubscriptionEntitlementAssetPackageOutput) ToGetMarketplaceSubscriptionEntitlementAssetPackageOutput() GetMarketplaceSubscriptionEntitlementAssetPackageOutput {
+	return o
+}
+
+func (o GetMarketplaceSubscriptionEntitlementAssetPackageOutput) ToGetMarketplaceSubscriptionEntitlementAssetPackageOutputWithContext(ctx context.Context) GetMarketplaceSubscriptionEntitlementAssetPackageOutput {
+	return o
+}
+
+// Cloud Router package code
+func (o GetMarketplaceSubscriptionEntitlementAssetPackageOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMarketplaceSubscriptionEntitlementAssetPackage) string { return v.Code }).(pulumi.StringOutput)
+}
+
+type GetMarketplaceSubscriptionEntitlementAssetPackageArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMarketplaceSubscriptionEntitlementAssetPackageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMarketplaceSubscriptionEntitlementAssetPackage)(nil)).Elem()
+}
+
+func (o GetMarketplaceSubscriptionEntitlementAssetPackageArrayOutput) ToGetMarketplaceSubscriptionEntitlementAssetPackageArrayOutput() GetMarketplaceSubscriptionEntitlementAssetPackageArrayOutput {
+	return o
+}
+
+func (o GetMarketplaceSubscriptionEntitlementAssetPackageArrayOutput) ToGetMarketplaceSubscriptionEntitlementAssetPackageArrayOutputWithContext(ctx context.Context) GetMarketplaceSubscriptionEntitlementAssetPackageArrayOutput {
+	return o
+}
+
+func (o GetMarketplaceSubscriptionEntitlementAssetPackageArrayOutput) Index(i pulumi.IntInput) GetMarketplaceSubscriptionEntitlementAssetPackageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMarketplaceSubscriptionEntitlementAssetPackage {
+		return vs[0].([]GetMarketplaceSubscriptionEntitlementAssetPackage)[vs[1].(int)]
+	}).(GetMarketplaceSubscriptionEntitlementAssetPackageOutput)
+}
+
+type GetMarketplaceSubscriptionTrial struct {
+	// Marketplace Subscription Trial Enabled
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetMarketplaceSubscriptionTrialInput is an input type that accepts GetMarketplaceSubscriptionTrialArgs and GetMarketplaceSubscriptionTrialOutput values.
+// You can construct a concrete instance of `GetMarketplaceSubscriptionTrialInput` via:
+//
+//	GetMarketplaceSubscriptionTrialArgs{...}
+type GetMarketplaceSubscriptionTrialInput interface {
+	pulumi.Input
+
+	ToGetMarketplaceSubscriptionTrialOutput() GetMarketplaceSubscriptionTrialOutput
+	ToGetMarketplaceSubscriptionTrialOutputWithContext(context.Context) GetMarketplaceSubscriptionTrialOutput
+}
+
+type GetMarketplaceSubscriptionTrialArgs struct {
+	// Marketplace Subscription Trial Enabled
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetMarketplaceSubscriptionTrialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMarketplaceSubscriptionTrial)(nil)).Elem()
+}
+
+func (i GetMarketplaceSubscriptionTrialArgs) ToGetMarketplaceSubscriptionTrialOutput() GetMarketplaceSubscriptionTrialOutput {
+	return i.ToGetMarketplaceSubscriptionTrialOutputWithContext(context.Background())
+}
+
+func (i GetMarketplaceSubscriptionTrialArgs) ToGetMarketplaceSubscriptionTrialOutputWithContext(ctx context.Context) GetMarketplaceSubscriptionTrialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMarketplaceSubscriptionTrialOutput)
+}
+
+type GetMarketplaceSubscriptionTrialOutput struct{ *pulumi.OutputState }
+
+func (GetMarketplaceSubscriptionTrialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMarketplaceSubscriptionTrial)(nil)).Elem()
+}
+
+func (o GetMarketplaceSubscriptionTrialOutput) ToGetMarketplaceSubscriptionTrialOutput() GetMarketplaceSubscriptionTrialOutput {
+	return o
+}
+
+func (o GetMarketplaceSubscriptionTrialOutput) ToGetMarketplaceSubscriptionTrialOutputWithContext(ctx context.Context) GetMarketplaceSubscriptionTrialOutput {
+	return o
+}
+
+// Marketplace Subscription Trial Enabled
+func (o GetMarketplaceSubscriptionTrialOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetMarketplaceSubscriptionTrial) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 type GetNetworkChange struct {
@@ -41503,6 +42274,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudRouterChangeLogArrayInput)(nil)).Elem(), CloudRouterChangeLogArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudRouterLocationInput)(nil)).Elem(), CloudRouterLocationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudRouterLocationPtrInput)(nil)).Elem(), CloudRouterLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudRouterMarketplaceSubscriptionInput)(nil)).Elem(), CloudRouterMarketplaceSubscriptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudRouterMarketplaceSubscriptionPtrInput)(nil)).Elem(), CloudRouterMarketplaceSubscriptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudRouterNotificationInput)(nil)).Elem(), CloudRouterNotificationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudRouterNotificationArrayInput)(nil)).Elem(), CloudRouterNotificationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudRouterOrderInput)(nil)).Elem(), CloudRouterOrderArgs{})
@@ -41663,6 +42436,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudRouterChangeLogArrayInput)(nil)).Elem(), GetCloudRouterChangeLogArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudRouterLocationInput)(nil)).Elem(), GetCloudRouterLocationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudRouterLocationArrayInput)(nil)).Elem(), GetCloudRouterLocationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudRouterMarketplaceSubscriptionInput)(nil)).Elem(), GetCloudRouterMarketplaceSubscriptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudRouterMarketplaceSubscriptionArrayInput)(nil)).Elem(), GetCloudRouterMarketplaceSubscriptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudRouterNotificationInput)(nil)).Elem(), GetCloudRouterNotificationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudRouterNotificationArrayInput)(nil)).Elem(), GetCloudRouterNotificationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudRouterOrderInput)(nil)).Elem(), GetCloudRouterOrderArgs{})
@@ -41679,6 +42454,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudRoutersDataChangeLogArrayInput)(nil)).Elem(), GetCloudRoutersDataChangeLogArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudRoutersDataLocationInput)(nil)).Elem(), GetCloudRoutersDataLocationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudRoutersDataLocationArrayInput)(nil)).Elem(), GetCloudRoutersDataLocationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudRoutersDataMarketplaceSubscriptionInput)(nil)).Elem(), GetCloudRoutersDataMarketplaceSubscriptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudRoutersDataMarketplaceSubscriptionArrayInput)(nil)).Elem(), GetCloudRoutersDataMarketplaceSubscriptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudRoutersDataNotificationInput)(nil)).Elem(), GetCloudRoutersDataNotificationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudRoutersDataNotificationArrayInput)(nil)).Elem(), GetCloudRoutersDataNotificationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudRoutersDataOrderInput)(nil)).Elem(), GetCloudRoutersDataOrderArgs{})
@@ -41857,6 +42634,13 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsPaginationPtrInput)(nil)).Elem(), GetConnectionsPaginationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsSortInput)(nil)).Elem(), GetConnectionsSortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsSortArrayInput)(nil)).Elem(), GetConnectionsSortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMarketplaceSubscriptionEntitlementInput)(nil)).Elem(), GetMarketplaceSubscriptionEntitlementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMarketplaceSubscriptionEntitlementArrayInput)(nil)).Elem(), GetMarketplaceSubscriptionEntitlementArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMarketplaceSubscriptionEntitlementAssetInput)(nil)).Elem(), GetMarketplaceSubscriptionEntitlementAssetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMarketplaceSubscriptionEntitlementAssetArrayInput)(nil)).Elem(), GetMarketplaceSubscriptionEntitlementAssetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMarketplaceSubscriptionEntitlementAssetPackageInput)(nil)).Elem(), GetMarketplaceSubscriptionEntitlementAssetPackageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMarketplaceSubscriptionEntitlementAssetPackageArrayInput)(nil)).Elem(), GetMarketplaceSubscriptionEntitlementAssetPackageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMarketplaceSubscriptionTrialInput)(nil)).Elem(), GetMarketplaceSubscriptionTrialArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkChangeInput)(nil)).Elem(), GetNetworkChangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkChangeLogInput)(nil)).Elem(), GetNetworkChangeLogArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkLocationInput)(nil)).Elem(), GetNetworkLocationArgs{})
@@ -42001,6 +42785,8 @@ func init() {
 	pulumi.RegisterOutputType(CloudRouterChangeLogArrayOutput{})
 	pulumi.RegisterOutputType(CloudRouterLocationOutput{})
 	pulumi.RegisterOutputType(CloudRouterLocationPtrOutput{})
+	pulumi.RegisterOutputType(CloudRouterMarketplaceSubscriptionOutput{})
+	pulumi.RegisterOutputType(CloudRouterMarketplaceSubscriptionPtrOutput{})
 	pulumi.RegisterOutputType(CloudRouterNotificationOutput{})
 	pulumi.RegisterOutputType(CloudRouterNotificationArrayOutput{})
 	pulumi.RegisterOutputType(CloudRouterOrderOutput{})
@@ -42161,6 +42947,8 @@ func init() {
 	pulumi.RegisterOutputType(GetCloudRouterChangeLogArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudRouterLocationOutput{})
 	pulumi.RegisterOutputType(GetCloudRouterLocationArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudRouterMarketplaceSubscriptionOutput{})
+	pulumi.RegisterOutputType(GetCloudRouterMarketplaceSubscriptionArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudRouterNotificationOutput{})
 	pulumi.RegisterOutputType(GetCloudRouterNotificationArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudRouterOrderOutput{})
@@ -42177,6 +42965,8 @@ func init() {
 	pulumi.RegisterOutputType(GetCloudRoutersDataChangeLogArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudRoutersDataLocationOutput{})
 	pulumi.RegisterOutputType(GetCloudRoutersDataLocationArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudRoutersDataMarketplaceSubscriptionOutput{})
+	pulumi.RegisterOutputType(GetCloudRoutersDataMarketplaceSubscriptionArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudRoutersDataNotificationOutput{})
 	pulumi.RegisterOutputType(GetCloudRoutersDataNotificationArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudRoutersDataOrderOutput{})
@@ -42355,6 +43145,13 @@ func init() {
 	pulumi.RegisterOutputType(GetConnectionsPaginationPtrOutput{})
 	pulumi.RegisterOutputType(GetConnectionsSortOutput{})
 	pulumi.RegisterOutputType(GetConnectionsSortArrayOutput{})
+	pulumi.RegisterOutputType(GetMarketplaceSubscriptionEntitlementOutput{})
+	pulumi.RegisterOutputType(GetMarketplaceSubscriptionEntitlementArrayOutput{})
+	pulumi.RegisterOutputType(GetMarketplaceSubscriptionEntitlementAssetOutput{})
+	pulumi.RegisterOutputType(GetMarketplaceSubscriptionEntitlementAssetArrayOutput{})
+	pulumi.RegisterOutputType(GetMarketplaceSubscriptionEntitlementAssetPackageOutput{})
+	pulumi.RegisterOutputType(GetMarketplaceSubscriptionEntitlementAssetPackageArrayOutput{})
+	pulumi.RegisterOutputType(GetMarketplaceSubscriptionTrialOutput{})
 	pulumi.RegisterOutputType(GetNetworkChangeOutput{})
 	pulumi.RegisterOutputType(GetNetworkChangeLogOutput{})
 	pulumi.RegisterOutputType(GetNetworkLocationOutput{})

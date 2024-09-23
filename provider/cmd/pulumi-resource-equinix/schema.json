@@ -115,13 +115,9 @@
                 }
             },
             "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "accountNumber"
-                    ]
-                }
-            }
+            "required": [
+                "accountNumber"
+            ]
         },
         "equinix:fabric/CloudRouterChangeLog:CloudRouterChangeLog": {
             "properties": {
@@ -221,6 +217,30 @@
                         "metroCode",
                         "metroName",
                         "region"
+                    ]
+                }
+            }
+        },
+        "equinix:fabric/CloudRouterMarketplaceSubscription:CloudRouterMarketplaceSubscription": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "Marketplace Subscription type like; AWS*MARKETPLACE*SUBSCRIPTION\n"
+                },
+                "uuid": {
+                    "type": "string",
+                    "description": "Equinix-assigned Marketplace Subscription identifier\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "uuid"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "type",
+                        "uuid"
                     ]
                 }
             }
@@ -2956,6 +2976,28 @@
                 }
             }
         },
+        "equinix:fabric/getCloudRouterMarketplaceSubscription:getCloudRouterMarketplaceSubscription": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "Marketplace Subscription type like; AWS_MARKETPLACE_SUBSCRIPTION\n"
+                },
+                "uuid": {
+                    "type": "string",
+                    "description": "Equinix-assigned Marketplace Subscription identifier\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "type",
+                "uuid"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "equinix:fabric/getCloudRouterNotification:getCloudRouterNotification": {
             "properties": {
                 "emails": {
@@ -3111,6 +3153,13 @@
                     },
                     "description": "Fabric Cloud Router location\n"
                 },
+                "marketplaceSubscriptions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/equinix:fabric/getCloudRoutersDataMarketplaceSubscription:getCloudRoutersDataMarketplaceSubscription"
+                    },
+                    "description": "Equinix Fabric Entity for Marketplace Subscription\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Fabric Cloud Router name. An alpha-numeric 24 characters string which can include only hyphens and underscores\n"
@@ -3169,6 +3218,7 @@
                 "equinixAsn",
                 "href",
                 "locations",
+                "marketplaceSubscriptions",
                 "name",
                 "notifications",
                 "orders",
@@ -3298,6 +3348,28 @@
                 "metroCode",
                 "metroName",
                 "region"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getCloudRoutersDataMarketplaceSubscription:getCloudRoutersDataMarketplaceSubscription": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "Marketplace Subscription type like; AWS_MARKETPLACE_SUBSCRIPTION\n"
+                },
+                "uuid": {
+                    "type": "string",
+                    "description": "Equinix-assigned Marketplace Subscription identifier\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "type",
+                "uuid"
             ],
             "language": {
                 "nodejs": {
@@ -3852,11 +3924,11 @@
             "properties": {
                 "type": {
                     "type": "string",
-                    "description": "Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC\n"
+                    "description": "Type of access point type config - VD, COLO\n"
                 },
                 "uuid": {
                     "type": "string",
-                    "description": "Equinix-assigned connection identifier\n"
+                    "description": "Equinix-assigned access point type config identifier\n"
                 }
             },
             "type": "object",
@@ -4681,11 +4753,11 @@
             "properties": {
                 "type": {
                     "type": "string",
-                    "description": "Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC\n"
+                    "description": "Type of access point type config - VD, COLO\n"
                 },
                 "uuid": {
                     "type": "string",
-                    "description": "Equinix-assigned connection identifier\n"
+                    "description": "Equinix-assigned access point type config identifier\n"
                 }
             },
             "type": "object",
@@ -5108,7 +5180,7 @@
             "properties": {
                 "id": {
                     "type": "integer",
-                    "description": "The ID of this resource.\n"
+                    "description": "id\n"
                 },
                 "type": {
                     "type": "string",
@@ -5937,7 +6009,7 @@
             "properties": {
                 "id": {
                     "type": "integer",
-                    "description": "The ID of this resource.\n"
+                    "description": "id\n"
                 },
                 "type": {
                     "type": "string",
@@ -6276,7 +6348,7 @@
                 },
                 "property": {
                     "type": "string",
-                    "description": "Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /change/status /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid *]\n"
+                    "description": "Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /change/status /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid *]\n"
                 },
                 "values": {
                     "type": "array",
@@ -6318,6 +6390,105 @@
                 }
             },
             "type": "object"
+        },
+        "equinix:fabric/getMarketplaceSubscriptionEntitlement:getMarketplaceSubscriptionEntitlement": {
+            "properties": {
+                "assets": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/equinix:fabric/getMarketplaceSubscriptionEntitlementAsset:getMarketplaceSubscriptionEntitlementAsset"
+                    },
+                    "description": "Asset information\n"
+                },
+                "quantityAvailable": {
+                    "type": "integer",
+                    "description": "Available Quantity\n"
+                },
+                "quantityConsumed": {
+                    "type": "integer",
+                    "description": "Consumed Quantity\n"
+                },
+                "quantityEntitled": {
+                    "type": "integer",
+                    "description": "Entitled Quantity\n"
+                },
+                "uuid": {
+                    "type": "string",
+                    "description": "Subscription Entitlement Id\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "assets",
+                "quantityAvailable",
+                "quantityConsumed",
+                "quantityEntitled",
+                "uuid"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getMarketplaceSubscriptionEntitlementAsset:getMarketplaceSubscriptionEntitlementAsset": {
+            "properties": {
+                "packages": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/equinix:fabric/getMarketplaceSubscriptionEntitlementAssetPackage:getMarketplaceSubscriptionEntitlementAssetPackage"
+                    },
+                    "description": "Fabric Cloud Router Package Type\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Defines the FCR type like; XF_ROUTER\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "packages",
+                "type"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getMarketplaceSubscriptionEntitlementAssetPackage:getMarketplaceSubscriptionEntitlementAssetPackage": {
+            "properties": {
+                "code": {
+                    "type": "string",
+                    "description": "Cloud Router package code\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "code"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getMarketplaceSubscriptionTrial:getMarketplaceSubscriptionTrial": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Marketplace Subscription Trial Enabled\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "equinix:fabric/getNetworkChange:getNetworkChange": {
             "properties": {
@@ -12810,7 +12981,7 @@
     },
     "resources": {
         "equinix:fabric/cloudRouter:CloudRouter": {
-            "description": "Fabric V4 API compatible resource allows creation and management of [Equinix Fabric Cloud Router](https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-intro.htm#HowItWorks).\n\nAdditional documentation:\n* Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-intro.htm#HowItWorks\n* API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers\n\n{{% examples %}}\n## Example Usage\n\n{{% example %}}\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix-labs/pulumi-equinix\";\n\nconst newCloudRouter = new equinix.fabric.CloudRouter(\"newCloudRouter\", {\n    name: \"Router-SV\",\n    type: \"XF_ROUTER\",\n    notifications: [{\n        type: \"ALL\",\n        emails: [\n            \"example@equinix.com\",\n            \"test1@equinix.com\",\n        ],\n    }],\n    order: {\n        purchaseOrderNumber: \"1-323292\",\n    },\n    location: {\n        metroCode: \"SV\",\n    },\n    \"package\": {\n        code: \"STANDARD\",\n    },\n    project: {\n        projectId: \"776847000642406\",\n    },\n    account: {\n        accountNumber: 203612,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nnew_cloud_router = equinix.fabric.CloudRouter(\"newCloudRouter\",\n    name=\"Router-SV\",\n    type=\"XF_ROUTER\",\n    notifications=[{\n        \"type\": \"ALL\",\n        \"emails\": [\n            \"example@equinix.com\",\n            \"test1@equinix.com\",\n        ],\n    }],\n    order={\n        \"purchase_order_number\": \"1-323292\",\n    },\n    location={\n        \"metro_code\": \"SV\",\n    },\n    package={\n        \"code\": \"STANDARD\",\n    },\n    project={\n        \"project_id\": \"776847000642406\",\n    },\n    account={\n        \"account_number\": 203612,\n    })\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fabric.NewCloudRouter(ctx, \"newCloudRouter\", \u0026fabric.CloudRouterArgs{\n\t\t\tName: pulumi.String(\"Router-SV\"),\n\t\t\tType: pulumi.String(\"XF_ROUTER\"),\n\t\t\tNotifications: fabric.CloudRouterNotificationArray{\n\t\t\t\t\u0026fabric.CloudRouterNotificationArgs{\n\t\t\t\t\tType: pulumi.String(\"ALL\"),\n\t\t\t\t\tEmails: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"example@equinix.com\"),\n\t\t\t\t\t\tpulumi.String(\"test1@equinix.com\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tOrder: \u0026fabric.CloudRouterOrderArgs{\n\t\t\t\tPurchaseOrderNumber: pulumi.String(\"1-323292\"),\n\t\t\t},\n\t\t\tLocation: \u0026fabric.CloudRouterLocationArgs{\n\t\t\t\tMetroCode: pulumi.String(\"SV\"),\n\t\t\t},\n\t\t\tPackage: \u0026fabric.CloudRouterPackageArgs{\n\t\t\t\tCode: pulumi.String(\"STANDARD\"),\n\t\t\t},\n\t\t\tProject: \u0026fabric.CloudRouterProjectArgs{\n\t\t\t\tProjectId: pulumi.String(\"776847000642406\"),\n\t\t\t},\n\t\t\tAccount: \u0026fabric.CloudRouterAccountArgs{\n\t\t\t\tAccountNumber: pulumi.Int(203612),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var newCloudRouter = new Equinix.Fabric.CloudRouter(\"newCloudRouter\", new()\n    {\n        Name = \"Router-SV\",\n        Type = \"XF_ROUTER\",\n        Notifications = new[]\n        {\n            new Equinix.Fabric.Inputs.CloudRouterNotificationArgs\n            {\n                Type = \"ALL\",\n                Emails = new[]\n                {\n                    \"example@equinix.com\",\n                    \"test1@equinix.com\",\n                },\n            },\n        },\n        Order = new Equinix.Fabric.Inputs.CloudRouterOrderArgs\n        {\n            PurchaseOrderNumber = \"1-323292\",\n        },\n        Location = new Equinix.Fabric.Inputs.CloudRouterLocationArgs\n        {\n            MetroCode = \"SV\",\n        },\n        Package = new Equinix.Fabric.Inputs.CloudRouterPackageArgs\n        {\n            Code = \"STANDARD\",\n        },\n        Project = new Equinix.Fabric.Inputs.CloudRouterProjectArgs\n        {\n            ProjectId = \"776847000642406\",\n        },\n        Account = new Equinix.Fabric.Inputs.CloudRouterAccountArgs\n        {\n            AccountNumber = 203612,\n        },\n    });\n\n});\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.fabric.CloudRouter;\nimport com.pulumi.equinix.fabric.CloudRouterArgs;\nimport com.pulumi.equinix.fabric.inputs.CloudRouterNotificationArgs;\nimport com.pulumi.equinix.fabric.inputs.CloudRouterOrderArgs;\nimport com.pulumi.equinix.fabric.inputs.CloudRouterLocationArgs;\nimport com.pulumi.equinix.fabric.inputs.CloudRouterPackageArgs;\nimport com.pulumi.equinix.fabric.inputs.CloudRouterProjectArgs;\nimport com.pulumi.equinix.fabric.inputs.CloudRouterAccountArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var newCloudRouter = new CloudRouter(\"newCloudRouter\", CloudRouterArgs.builder()\n            .name(\"Router-SV\")\n            .type(\"XF_ROUTER\")\n            .notifications(CloudRouterNotificationArgs.builder()\n                .type(\"ALL\")\n                .emails(                \n                    \"example@equinix.com\",\n                    \"test1@equinix.com\")\n                .build())\n            .order(CloudRouterOrderArgs.builder()\n                .purchaseOrderNumber(\"1-323292\")\n                .build())\n            .location(CloudRouterLocationArgs.builder()\n                .metroCode(\"SV\")\n                .build())\n            .package_(CloudRouterPackageArgs.builder()\n                .code(\"STANDARD\")\n                .build())\n            .project(CloudRouterProjectArgs.builder()\n                .projectId(\"776847000642406\")\n                .build())\n            .account(CloudRouterAccountArgs.builder()\n                .accountNumber(\"203612\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  newCloudRouter:\n    type: equinix:fabric:CloudRouter\n    name: new_cloud_router\n    properties:\n      name: Router-SV\n      type: XF_ROUTER\n      notifications:\n        - type: ALL\n          emails:\n            - example@equinix.com\n            - test1@equinix.com\n      order:\n        purchaseOrderNumber: 1-323292\n      location:\n        metroCode: SV\n      package:\n        code: STANDARD\n      project:\n        projectId: '776847000642406'\n      account:\n        accountNumber: '203612'\n```\n{{% /example %}}\n\n{{% /examples %}}",
+            "description": "Fabric V4 API compatible resource allows creation and management of [Equinix Fabric Cloud Router](https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-intro.htm#HowItWorks).\n\nAdditional documentation:\n* Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-intro.htm#HowItWorks\n* API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers\n\n{{% examples %}}\n## Example Usage\n\n{{% example %}}\n### example 1\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix-labs/pulumi-equinix\";\n\nconst newCloudRouter = new equinix.fabric.CloudRouter(\"newCloudRouter\", {\n    name: \"Router-SV\",\n    type: \"XF_ROUTER\",\n    notifications: [{\n        type: \"ALL\",\n        emails: [\n            \"example@equinix.com\",\n            \"test1@equinix.com\",\n        ],\n    }],\n    order: {\n        purchaseOrderNumber: \"1-323292\",\n    },\n    location: {\n        metroCode: \"SV\",\n    },\n    \"package\": {\n        code: \"STANDARD\",\n    },\n    project: {\n        projectId: \"776847000642406\",\n    },\n    account: {\n        accountNumber: 203612,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nnew_cloud_router = equinix.fabric.CloudRouter(\"newCloudRouter\",\n    name=\"Router-SV\",\n    type=\"XF_ROUTER\",\n    notifications=[{\n        \"type\": \"ALL\",\n        \"emails\": [\n            \"example@equinix.com\",\n            \"test1@equinix.com\",\n        ],\n    }],\n    order={\n        \"purchase_order_number\": \"1-323292\",\n    },\n    location={\n        \"metro_code\": \"SV\",\n    },\n    package={\n        \"code\": \"STANDARD\",\n    },\n    project={\n        \"project_id\": \"776847000642406\",\n    },\n    account={\n        \"account_number\": 203612,\n    })\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fabric.NewCloudRouter(ctx, \"newCloudRouter\", \u0026fabric.CloudRouterArgs{\n\t\t\tName: pulumi.String(\"Router-SV\"),\n\t\t\tType: pulumi.String(\"XF_ROUTER\"),\n\t\t\tNotifications: fabric.CloudRouterNotificationArray{\n\t\t\t\t\u0026fabric.CloudRouterNotificationArgs{\n\t\t\t\t\tType: pulumi.String(\"ALL\"),\n\t\t\t\t\tEmails: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"example@equinix.com\"),\n\t\t\t\t\t\tpulumi.String(\"test1@equinix.com\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tOrder: \u0026fabric.CloudRouterOrderArgs{\n\t\t\t\tPurchaseOrderNumber: pulumi.String(\"1-323292\"),\n\t\t\t},\n\t\t\tLocation: \u0026fabric.CloudRouterLocationArgs{\n\t\t\t\tMetroCode: pulumi.String(\"SV\"),\n\t\t\t},\n\t\t\tPackage: \u0026fabric.CloudRouterPackageArgs{\n\t\t\t\tCode: pulumi.String(\"STANDARD\"),\n\t\t\t},\n\t\t\tProject: \u0026fabric.CloudRouterProjectArgs{\n\t\t\t\tProjectId: pulumi.String(\"776847000642406\"),\n\t\t\t},\n\t\t\tAccount: \u0026fabric.CloudRouterAccountArgs{\n\t\t\t\tAccountNumber: pulumi.Int(203612),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var newCloudRouter = new Equinix.Fabric.CloudRouter(\"newCloudRouter\", new()\n    {\n        Name = \"Router-SV\",\n        Type = \"XF_ROUTER\",\n        Notifications = new[]\n        {\n            new Equinix.Fabric.Inputs.CloudRouterNotificationArgs\n            {\n                Type = \"ALL\",\n                Emails = new[]\n                {\n                    \"example@equinix.com\",\n                    \"test1@equinix.com\",\n                },\n            },\n        },\n        Order = new Equinix.Fabric.Inputs.CloudRouterOrderArgs\n        {\n            PurchaseOrderNumber = \"1-323292\",\n        },\n        Location = new Equinix.Fabric.Inputs.CloudRouterLocationArgs\n        {\n            MetroCode = \"SV\",\n        },\n        Package = new Equinix.Fabric.Inputs.CloudRouterPackageArgs\n        {\n            Code = \"STANDARD\",\n        },\n        Project = new Equinix.Fabric.Inputs.CloudRouterProjectArgs\n        {\n            ProjectId = \"776847000642406\",\n        },\n        Account = new Equinix.Fabric.Inputs.CloudRouterAccountArgs\n        {\n            AccountNumber = 203612,\n        },\n    });\n\n});\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.fabric.CloudRouter;\nimport com.pulumi.equinix.fabric.CloudRouterArgs;\nimport com.pulumi.equinix.fabric.inputs.CloudRouterNotificationArgs;\nimport com.pulumi.equinix.fabric.inputs.CloudRouterOrderArgs;\nimport com.pulumi.equinix.fabric.inputs.CloudRouterLocationArgs;\nimport com.pulumi.equinix.fabric.inputs.CloudRouterPackageArgs;\nimport com.pulumi.equinix.fabric.inputs.CloudRouterProjectArgs;\nimport com.pulumi.equinix.fabric.inputs.CloudRouterAccountArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var newCloudRouter = new CloudRouter(\"newCloudRouter\", CloudRouterArgs.builder()\n            .name(\"Router-SV\")\n            .type(\"XF_ROUTER\")\n            .notifications(CloudRouterNotificationArgs.builder()\n                .type(\"ALL\")\n                .emails(                \n                    \"example@equinix.com\",\n                    \"test1@equinix.com\")\n                .build())\n            .order(CloudRouterOrderArgs.builder()\n                .purchaseOrderNumber(\"1-323292\")\n                .build())\n            .location(CloudRouterLocationArgs.builder()\n                .metroCode(\"SV\")\n                .build())\n            .package_(CloudRouterPackageArgs.builder()\n                .code(\"STANDARD\")\n                .build())\n            .project(CloudRouterProjectArgs.builder()\n                .projectId(\"776847000642406\")\n                .build())\n            .account(CloudRouterAccountArgs.builder()\n                .accountNumber(\"203612\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  newCloudRouter:\n    type: equinix:fabric:CloudRouter\n    name: new_cloud_router\n    properties:\n      name: Router-SV\n      type: XF_ROUTER\n      notifications:\n        - type: ALL\n          emails:\n            - example@equinix.com\n            - test1@equinix.com\n      order:\n        purchaseOrderNumber: 1-323292\n      location:\n        metroCode: SV\n      package:\n        code: STANDARD\n      project:\n        projectId: '776847000642406'\n      account:\n        accountNumber: '203612'\n```\n{{% /example %}}\n\n{{% example %}}\n### example 2\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix-labs/pulumi-equinix\";\n\nconst newCloudRouter = new equinix.fabric.CloudRouter(\"newCloudRouter\", {\n    name: \"Router-SV\",\n    type: \"XF_ROUTER\",\n    notifications: [{\n        type: \"ALL\",\n        emails: [\n            \"example@equinix.com\",\n            \"test1@equinix.com\",\n        ],\n    }],\n    order: {\n        purchaseOrderNumber: \"1-323292\",\n    },\n    location: {\n        metroCode: \"SV\",\n    },\n    \"package\": {\n        code: \"STANDARD\",\n    },\n    project: {\n        projectId: \"776847000642406\",\n    },\n    marketplaceSubscription: {\n        type: \"AWS_MARKETPLACE_SUBSCRIPTION\",\n        uuid: \"2823b8ae07-a2a2-45b4-a658-c3542bb24e9\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nnew_cloud_router = equinix.fabric.CloudRouter(\"newCloudRouter\",\n    name=\"Router-SV\",\n    type=\"XF_ROUTER\",\n    notifications=[{\n        \"type\": \"ALL\",\n        \"emails\": [\n            \"example@equinix.com\",\n            \"test1@equinix.com\",\n        ],\n    }],\n    order={\n        \"purchase_order_number\": \"1-323292\",\n    },\n    location={\n        \"metro_code\": \"SV\",\n    },\n    package={\n        \"code\": \"STANDARD\",\n    },\n    project={\n        \"project_id\": \"776847000642406\",\n    },\n    marketplace_subscription={\n        \"type\": \"AWS_MARKETPLACE_SUBSCRIPTION\",\n        \"uuid\": \"2823b8ae07-a2a2-45b4-a658-c3542bb24e9\",\n    })\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fabric.NewCloudRouter(ctx, \"newCloudRouter\", \u0026fabric.CloudRouterArgs{\n\t\t\tName: pulumi.String(\"Router-SV\"),\n\t\t\tType: pulumi.String(\"XF_ROUTER\"),\n\t\t\tNotifications: fabric.CloudRouterNotificationArray{\n\t\t\t\t\u0026fabric.CloudRouterNotificationArgs{\n\t\t\t\t\tType: pulumi.String(\"ALL\"),\n\t\t\t\t\tEmails: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"example@equinix.com\"),\n\t\t\t\t\t\tpulumi.String(\"test1@equinix.com\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tOrder: \u0026fabric.CloudRouterOrderArgs{\n\t\t\t\tPurchaseOrderNumber: pulumi.String(\"1-323292\"),\n\t\t\t},\n\t\t\tLocation: \u0026fabric.CloudRouterLocationArgs{\n\t\t\t\tMetroCode: pulumi.String(\"SV\"),\n\t\t\t},\n\t\t\tPackage: \u0026fabric.CloudRouterPackageArgs{\n\t\t\t\tCode: pulumi.String(\"STANDARD\"),\n\t\t\t},\n\t\t\tProject: \u0026fabric.CloudRouterProjectArgs{\n\t\t\t\tProjectId: pulumi.String(\"776847000642406\"),\n\t\t\t},\n\t\t\tMarketplaceSubscription: \u0026fabric.CloudRouterMarketplaceSubscriptionArgs{\n\t\t\t\tType: pulumi.String(\"AWS_MARKETPLACE_SUBSCRIPTION\"),\n\t\t\t\tUuid: pulumi.String(\"2823b8ae07-a2a2-45b4-a658-c3542bb24e9\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var newCloudRouter = new Equinix.Fabric.CloudRouter(\"newCloudRouter\", new()\n    {\n        Name = \"Router-SV\",\n        Type = \"XF_ROUTER\",\n        Notifications = new[]\n        {\n            new Equinix.Fabric.Inputs.CloudRouterNotificationArgs\n            {\n                Type = \"ALL\",\n                Emails = new[]\n                {\n                    \"example@equinix.com\",\n                    \"test1@equinix.com\",\n                },\n            },\n        },\n        Order = new Equinix.Fabric.Inputs.CloudRouterOrderArgs\n        {\n            PurchaseOrderNumber = \"1-323292\",\n        },\n        Location = new Equinix.Fabric.Inputs.CloudRouterLocationArgs\n        {\n            MetroCode = \"SV\",\n        },\n        Package = new Equinix.Fabric.Inputs.CloudRouterPackageArgs\n        {\n            Code = \"STANDARD\",\n        },\n        Project = new Equinix.Fabric.Inputs.CloudRouterProjectArgs\n        {\n            ProjectId = \"776847000642406\",\n        },\n        MarketplaceSubscription = new Equinix.Fabric.Inputs.CloudRouterMarketplaceSubscriptionArgs\n        {\n            Type = \"AWS_MARKETPLACE_SUBSCRIPTION\",\n            Uuid = \"2823b8ae07-a2a2-45b4-a658-c3542bb24e9\",\n        },\n    });\n\n});\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.fabric.CloudRouter;\nimport com.pulumi.equinix.fabric.CloudRouterArgs;\nimport com.pulumi.equinix.fabric.inputs.CloudRouterNotificationArgs;\nimport com.pulumi.equinix.fabric.inputs.CloudRouterOrderArgs;\nimport com.pulumi.equinix.fabric.inputs.CloudRouterLocationArgs;\nimport com.pulumi.equinix.fabric.inputs.CloudRouterPackageArgs;\nimport com.pulumi.equinix.fabric.inputs.CloudRouterProjectArgs;\nimport com.pulumi.equinix.fabric.inputs.CloudRouterMarketplaceSubscriptionArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var newCloudRouter = new CloudRouter(\"newCloudRouter\", CloudRouterArgs.builder()\n            .name(\"Router-SV\")\n            .type(\"XF_ROUTER\")\n            .notifications(CloudRouterNotificationArgs.builder()\n                .type(\"ALL\")\n                .emails(                \n                    \"example@equinix.com\",\n                    \"test1@equinix.com\")\n                .build())\n            .order(CloudRouterOrderArgs.builder()\n                .purchaseOrderNumber(\"1-323292\")\n                .build())\n            .location(CloudRouterLocationArgs.builder()\n                .metroCode(\"SV\")\n                .build())\n            .package_(CloudRouterPackageArgs.builder()\n                .code(\"STANDARD\")\n                .build())\n            .project(CloudRouterProjectArgs.builder()\n                .projectId(\"776847000642406\")\n                .build())\n            .marketplaceSubscription(CloudRouterMarketplaceSubscriptionArgs.builder()\n                .type(\"AWS_MARKETPLACE_SUBSCRIPTION\")\n                .uuid(\"2823b8ae07-a2a2-45b4-a658-c3542bb24e9\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  newCloudRouter:\n    type: equinix:fabric:CloudRouter\n    name: new_cloud_router\n    properties:\n      name: Router-SV\n      type: XF_ROUTER\n      notifications:\n        - type: ALL\n          emails:\n            - example@equinix.com\n            - test1@equinix.com\n      order:\n        purchaseOrderNumber: 1-323292\n      location:\n        metroCode: SV\n      package:\n        code: STANDARD\n      project:\n        projectId: '776847000642406'\n      marketplaceSubscription:\n        type: AWS_MARKETPLACE_SUBSCRIPTION\n        uuid: 2823b8ae07-a2a2-45b4-a658-c3542bb24e9\n```\n{{% /example %}}\n\n{{% /examples %}}",
             "properties": {
                 "account": {
                     "$ref": "#/types/equinix:fabric/CloudRouterAccount:CloudRouterAccount",
@@ -12859,6 +13030,10 @@
                     "$ref": "#/types/equinix:fabric/CloudRouterLocation:CloudRouterLocation",
                     "description": "Fabric Cloud Router location\n"
                 },
+                "marketplaceSubscription": {
+                    "$ref": "#/types/equinix:fabric/CloudRouterMarketplaceSubscription:CloudRouterMarketplaceSubscription",
+                    "description": "Equinix Fabric Entity for Marketplace Subscription\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Fabric Cloud Router name. An alpha-numeric 24 characters string which can include only hyphens and underscores\n"
@@ -12906,6 +13081,7 @@
                 "equinixAsn",
                 "href",
                 "location",
+                "marketplaceSubscription",
                 "name",
                 "notifications",
                 "order",
@@ -12931,6 +13107,10 @@
                 "location": {
                     "$ref": "#/types/equinix:fabric/CloudRouterLocation:CloudRouterLocation",
                     "description": "Fabric Cloud Router location\n"
+                },
+                "marketplaceSubscription": {
+                    "$ref": "#/types/equinix:fabric/CloudRouterMarketplaceSubscription:CloudRouterMarketplaceSubscription",
+                    "description": "Equinix Fabric Entity for Marketplace Subscription\n"
                 },
                 "name": {
                     "type": "string",
@@ -12965,7 +13145,6 @@
                 }
             },
             "requiredInputs": [
-                "account",
                 "location",
                 "notifications",
                 "package",
@@ -13021,6 +13200,10 @@
                     "location": {
                         "$ref": "#/types/equinix:fabric/CloudRouterLocation:CloudRouterLocation",
                         "description": "Fabric Cloud Router location\n"
+                    },
+                    "marketplaceSubscription": {
+                        "$ref": "#/types/equinix:fabric/CloudRouterMarketplaceSubscription:CloudRouterMarketplaceSubscription",
+                        "description": "Equinix Fabric Entity for Marketplace Subscription\n"
                     },
                     "name": {
                         "type": "string",
@@ -13832,7 +14015,7 @@
                 },
                 "selfProfile": {
                     "type": "boolean",
-                    "description": "Self Profile indicating if the profile is created for customer's self use\n"
+                    "description": "Self Profile indicating if the profile is created for customer's  self use\n"
                 },
                 "state": {
                     "type": "string",
@@ -13847,7 +14030,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE\n"
+                    "description": "Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE\n"
                 },
                 "uuid": {
                     "type": "string",
@@ -13939,7 +14122,7 @@
                 },
                 "selfProfile": {
                     "type": "boolean",
-                    "description": "Self Profile indicating if the profile is created for customer's self use\n"
+                    "description": "Self Profile indicating if the profile is created for customer's  self use\n"
                 },
                 "state": {
                     "type": "string",
@@ -13972,7 +14155,7 @@
                             "$ref": "#/types/equinix:fabric/profileType:ProfileType"
                         }
                     ],
-                    "description": "Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE\n"
+                    "description": "Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE\n"
                 },
                 "viewPoint": {
                     "type": "string",
@@ -14078,7 +14261,7 @@
                     },
                     "selfProfile": {
                         "type": "boolean",
-                        "description": "Self Profile indicating if the profile is created for customer's self use\n"
+                        "description": "Self Profile indicating if the profile is created for customer's  self use\n"
                     },
                     "state": {
                         "type": "string",
@@ -14111,7 +14294,7 @@
                                 "$ref": "#/types/equinix:fabric/profileType:ProfileType"
                             }
                         ],
-                        "description": "Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE\n"
+                        "description": "Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE\n"
                     },
                     "uuid": {
                         "type": "string",
@@ -18851,6 +19034,13 @@
                         },
                         "description": "Fabric Cloud Router location\n"
                     },
+                    "marketplaceSubscriptions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/equinix:fabric/getCloudRouterMarketplaceSubscription:getCloudRouterMarketplaceSubscription"
+                        },
+                        "description": "Equinix Fabric Entity for Marketplace Subscription\n"
+                    },
                     "name": {
                         "type": "string",
                         "description": "Fabric Cloud Router name. An alpha-numeric 24 characters string which can include only hyphens and underscores\n"
@@ -18881,7 +19071,7 @@
                         "items": {
                             "$ref": "#/types/equinix:fabric/getCloudRouterProject:getCloudRouterProject"
                         },
-                        "description": "Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects\n"
+                        "description": "Customer resource hierarchy project information. Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects\n"
                     },
                     "state": {
                         "type": "string",
@@ -18909,6 +19099,7 @@
                     "equinixAsn",
                     "href",
                     "locations",
+                    "marketplaceSubscriptions",
                     "name",
                     "notifications",
                     "orders",
@@ -18986,7 +19177,7 @@
             }
         },
         "equinix:fabric/getConnection:getConnection": {
-            "description": "Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID\n\nAdditional documentation:\n* Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm\n* API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@pulumi/equinix\";\n\nconst connectionDataName = equinix.fabric.getConnection({\n    uuid: \"\u003cuuid_of_connection\u003e\",\n});\nexport const id = connectionDataName.then(connectionDataName =\u003e connectionDataName.id);\nexport const name = connectionDataName.then(connectionDataName =\u003e connectionDataName.bandwidth);\nexport const accountNumber = connectionDataName.then(connectionDataName =\u003e connectionDataName.account?.accountNumber);\nexport const bandwidth = connectionDataName.then(connectionDataName =\u003e connectionDataName.bandwidth);\nexport const projectId = connectionDataName.then(connectionDataName =\u003e connectionDataName.project?.projectId);\nexport const redundancyGroup = connectionDataName.then(connectionDataName =\u003e connectionDataName.redundancy?.group);\nexport const redundancyPriority = connectionDataName.then(connectionDataName =\u003e connectionDataName.redundancy?.priority);\nexport const state = connectionDataName.then(connectionDataName =\u003e connectionDataName.state);\nexport const type = connectionDataName.then(connectionDataName =\u003e connectionDataName.type);\nexport const accessPointType = connectionDataName.then(connectionDataName =\u003e connectionDataName.aSide?.accessPoint?.type);\nexport const accessPointLinkProtocolType = connectionDataName.then(connectionDataName =\u003e connectionDataName.aSide?.accessPoint?.linkProtocol?.type);\nexport const accessPointLinkProtocolVlanTag = connectionDataName.then(connectionDataName =\u003e connectionDataName.aSide?.accessPoint?.linkProtocol?.vlanTag);\nexport const accessPointLinkProtocolVlanCTag = connectionDataName.then(connectionDataName =\u003e connectionDataName.aSide?.accessPoint?.linkProtocol?.vlanCTag);\nexport const accessPointLinkProtocolVlanSTag = connectionDataName.then(connectionDataName =\u003e connectionDataName.aSide?.accessPoint?.linkProtocol?.vlanSTag);\nexport const accessPointProviderConnectionId = connectionDataName.then(connectionDataName =\u003e connectionDataName.aSide?.accessPoint?.providerConnectionId);\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nconnection_data_name = equinix.fabric.get_connection(uuid=\"\u003cuuid_of_connection\u003e\")\npulumi.export(\"id\", connection_data_name.id)\npulumi.export(\"name\", connection_data_name.bandwidth)\npulumi.export(\"accountNumber\", connection_data_name.account.account_number)\npulumi.export(\"bandwidth\", connection_data_name.bandwidth)\npulumi.export(\"projectId\", connection_data_name.project.project_id)\npulumi.export(\"redundancyGroup\", connection_data_name.redundancy.group)\npulumi.export(\"redundancyPriority\", connection_data_name.redundancy.priority)\npulumi.export(\"state\", connection_data_name.state)\npulumi.export(\"type\", connection_data_name.type)\npulumi.export(\"accessPointType\", connection_data_name.a_side.access_point.type)\npulumi.export(\"accessPointLinkProtocolType\", connection_data_name.a_side.access_point.link_protocol.type)\npulumi.export(\"accessPointLinkProtocolVlanTag\", connection_data_name.a_side.access_point.link_protocol.vlan_tag)\npulumi.export(\"accessPointLinkProtocolVlanCTag\", connection_data_name.a_side.access_point.link_protocol.vlan_c_tag)\npulumi.export(\"accessPointLinkProtocolVlanSTag\", connection_data_name.a_side.access_point.link_protocol.vlan_s_tag)\npulumi.export(\"accessPointProviderConnectionId\", connection_data_name.a_side.access_point.provider_connection_id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var connectionDataName = Equinix.Fabric.GetConnection.Invoke(new()\n    {\n        Uuid = \"\u003cuuid_of_connection\u003e\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"id\"] = connectionDataName.Apply(getConnectionResult =\u003e getConnectionResult.Id),\n        [\"name\"] = connectionDataName.Apply(getConnectionResult =\u003e getConnectionResult.Bandwidth),\n        [\"accountNumber\"] = connectionDataName.Apply(getConnectionResult =\u003e getConnectionResult.Account?.AccountNumber),\n        [\"bandwidth\"] = connectionDataName.Apply(getConnectionResult =\u003e getConnectionResult.Bandwidth),\n        [\"projectId\"] = connectionDataName.Apply(getConnectionResult =\u003e getConnectionResult.Project?.ProjectId),\n        [\"redundancyGroup\"] = connectionDataName.Apply(getConnectionResult =\u003e getConnectionResult.Redundancy?.Group),\n        [\"redundancyPriority\"] = connectionDataName.Apply(getConnectionResult =\u003e getConnectionResult.Redundancy?.Priority),\n        [\"state\"] = connectionDataName.Apply(getConnectionResult =\u003e getConnectionResult.State),\n        [\"type\"] = connectionDataName.Apply(getConnectionResult =\u003e getConnectionResult.Type),\n        [\"accessPointType\"] = connectionDataName.Apply(getConnectionResult =\u003e getConnectionResult.ASide?.AccessPoint?.Type),\n        [\"accessPointLinkProtocolType\"] = connectionDataName.Apply(getConnectionResult =\u003e getConnectionResult.ASide?.AccessPoint?.LinkProtocol?.Type),\n        [\"accessPointLinkProtocolVlanTag\"] = connectionDataName.Apply(getConnectionResult =\u003e getConnectionResult.ASide?.AccessPoint?.LinkProtocol?.VlanTag),\n        [\"accessPointLinkProtocolVlanCTag\"] = connectionDataName.Apply(getConnectionResult =\u003e getConnectionResult.ASide?.AccessPoint?.LinkProtocol?.VlanCTag),\n        [\"accessPointLinkProtocolVlanSTag\"] = connectionDataName.Apply(getConnectionResult =\u003e getConnectionResult.ASide?.AccessPoint?.LinkProtocol?.VlanSTag),\n        [\"accessPointProviderConnectionId\"] = connectionDataName.Apply(getConnectionResult =\u003e getConnectionResult.ASide?.AccessPoint?.ProviderConnectionId),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tconnectionDataName, err := fabric.LookupConnection(ctx, \u0026fabric.LookupConnectionArgs{\n\t\t\tUuid: \"\u003cuuid_of_connection\u003e\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"id\", connectionDataName.Id)\n\t\tctx.Export(\"name\", connectionDataName.Bandwidth)\n\t\tctx.Export(\"accountNumber\", connectionDataName.Account.AccountNumber)\n\t\tctx.Export(\"bandwidth\", connectionDataName.Bandwidth)\n\t\tctx.Export(\"projectId\", connectionDataName.Project.ProjectId)\n\t\tctx.Export(\"redundancyGroup\", connectionDataName.Redundancy.Group)\n\t\tctx.Export(\"redundancyPriority\", connectionDataName.Redundancy.Priority)\n\t\tctx.Export(\"state\", connectionDataName.State)\n\t\tctx.Export(\"type\", connectionDataName.Type)\n\t\tctx.Export(\"accessPointType\", connectionDataName.ASide.AccessPoint.Type)\n\t\tctx.Export(\"accessPointLinkProtocolType\", connectionDataName.ASide.AccessPoint.LinkProtocol.Type)\n\t\tctx.Export(\"accessPointLinkProtocolVlanTag\", connectionDataName.ASide.AccessPoint.LinkProtocol.VlanTag)\n\t\tctx.Export(\"accessPointLinkProtocolVlanCTag\", connectionDataName.ASide.AccessPoint.LinkProtocol.VlanCTag)\n\t\tctx.Export(\"accessPointLinkProtocolVlanSTag\", connectionDataName.ASide.AccessPoint.LinkProtocol.VlanSTag)\n\t\tctx.Export(\"accessPointProviderConnectionId\", connectionDataName.ASide.AccessPoint.ProviderConnectionId)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.fabric.FabricFunctions;\nimport com.pulumi.equinix.fabric.inputs.GetConnectionArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var connectionDataName = FabricFunctions.getConnection(GetConnectionArgs.builder()\n            .uuid(\"\u003cuuid_of_connection\u003e\")\n            .build());\n\n        ctx.export(\"id\", connectionDataName.applyValue(getConnectionResult -\u003e getConnectionResult.id()));\n        ctx.export(\"name\", connectionDataName.applyValue(getConnectionResult -\u003e getConnectionResult.bandwidth()));\n        ctx.export(\"accountNumber\", connectionDataName.applyValue(getConnectionResult -\u003e getConnectionResult.account().accountNumber()));\n        ctx.export(\"bandwidth\", connectionDataName.applyValue(getConnectionResult -\u003e getConnectionResult.bandwidth()));\n        ctx.export(\"projectId\", connectionDataName.applyValue(getConnectionResult -\u003e getConnectionResult.project().projectId()));\n        ctx.export(\"redundancyGroup\", connectionDataName.applyValue(getConnectionResult -\u003e getConnectionResult.redundancy().group()));\n        ctx.export(\"redundancyPriority\", connectionDataName.applyValue(getConnectionResult -\u003e getConnectionResult.redundancy().priority()));\n        ctx.export(\"state\", connectionDataName.applyValue(getConnectionResult -\u003e getConnectionResult.state()));\n        ctx.export(\"type\", connectionDataName.applyValue(getConnectionResult -\u003e getConnectionResult.type()));\n        ctx.export(\"accessPointType\", connectionDataName.applyValue(getConnectionResult -\u003e getConnectionResult.aSide().accessPoint().type()));\n        ctx.export(\"accessPointLinkProtocolType\", connectionDataName.applyValue(getConnectionResult -\u003e getConnectionResult.aSide().accessPoint().linkProtocol().type()));\n        ctx.export(\"accessPointLinkProtocolVlanTag\", connectionDataName.applyValue(getConnectionResult -\u003e getConnectionResult.aSide().accessPoint().linkProtocol().vlanTag()));\n        ctx.export(\"accessPointLinkProtocolVlanCTag\", connectionDataName.applyValue(getConnectionResult -\u003e getConnectionResult.aSide().accessPoint().linkProtocol().vlanCTag()));\n        ctx.export(\"accessPointLinkProtocolVlanSTag\", connectionDataName.applyValue(getConnectionResult -\u003e getConnectionResult.aSide().accessPoint().linkProtocol().vlanSTag()));\n        ctx.export(\"accessPointProviderConnectionId\", connectionDataName.applyValue(getConnectionResult -\u003e getConnectionResult.aSide().accessPoint().providerConnectionId()));\n    }\n}\n```\n```yaml\nvariables:\n  connectionDataName:\n    fn::invoke:\n      Function: equinix:fabric:getConnection\n      Arguments:\n        uuid: \u003cuuid_of_connection\u003e\noutputs:\n  id: ${connectionDataName.id}\n  name: ${connectionDataName.bandwidth}\n  accountNumber: ${connectionDataName.account.accountNumber}\n  bandwidth: ${connectionDataName.bandwidth}\n  projectId: ${connectionDataName.project.projectId}\n  redundancyGroup: ${connectionDataName.redundancy.group}\n  redundancyPriority: ${connectionDataName.redundancy.priority}\n  state: ${connectionDataName.state}\n  type: ${connectionDataName.type}\n  # Same for z_side just use z_side instead of a_side\n  accessPointType: ${connectionDataName.aSide.accessPoint.type}\n  # Same for z_side just use z_side instead of a_side\n  accessPointLinkProtocolType: ${connectionDataName.aSide.accessPoint.linkProtocol.type}\n  # Same for z_side just use z_side instead of a_side\n  accessPointLinkProtocolVlanTag: ${connectionDataName.aSide.accessPoint.linkProtocol.vlanTag}\n  # Same for z_side just use z_side instead of a_side\n  accessPointLinkProtocolVlanCTag: ${connectionDataName.aSide.accessPoint.linkProtocol.vlanCTag}\n  # Same for z_side just use z_side instead of a_side\n  accessPointLinkProtocolVlanSTag: ${connectionDataName.aSide.accessPoint.linkProtocol.vlanSTag}\n  # Same for z_side just use z_side instead of a_side\n  accessPointProviderConnectionId: ${connectionDataName.aSide.accessPoint.providerConnectionId}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID \n\nAdditional documentation:\n* Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm\n* API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@pulumi/equinix\";\n\nconst connectionDataName = equinix.fabric.getConnection({\n    uuid: \"\u003cuuid_of_connection\u003e\",\n});\nexport const id = connectionDataName.then(connectionDataName =\u003e connectionDataName.id);\nexport const name = connectionDataName.then(connectionDataName =\u003e connectionDataName.bandwidth);\nexport const accountNumber = connectionDataName.then(connectionDataName =\u003e connectionDataName.account?.accountNumber);\nexport const bandwidth = connectionDataName.then(connectionDataName =\u003e connectionDataName.bandwidth);\nexport const projectId = connectionDataName.then(connectionDataName =\u003e connectionDataName.project?.projectId);\nexport const redundancyGroup = connectionDataName.then(connectionDataName =\u003e connectionDataName.redundancy?.group);\nexport const redundancyPriority = connectionDataName.then(connectionDataName =\u003e connectionDataName.redundancy?.priority);\nexport const state = connectionDataName.then(connectionDataName =\u003e connectionDataName.state);\nexport const type = connectionDataName.then(connectionDataName =\u003e connectionDataName.type);\nexport const accessPointType = connectionDataName.then(connectionDataName =\u003e connectionDataName.aSide?.accessPoint?.type);\nexport const accessPointLinkProtocolType = connectionDataName.then(connectionDataName =\u003e connectionDataName.aSide?.accessPoint?.linkProtocol?.type);\nexport const accessPointLinkProtocolVlanTag = connectionDataName.then(connectionDataName =\u003e connectionDataName.aSide?.accessPoint?.linkProtocol?.vlanTag);\nexport const accessPointLinkProtocolVlanCTag = connectionDataName.then(connectionDataName =\u003e connectionDataName.aSide?.accessPoint?.linkProtocol?.vlanCTag);\nexport const accessPointLinkProtocolVlanSTag = connectionDataName.then(connectionDataName =\u003e connectionDataName.aSide?.accessPoint?.linkProtocol?.vlanSTag);\nexport const accessPointProviderConnectionId = connectionDataName.then(connectionDataName =\u003e connectionDataName.aSide?.accessPoint?.providerConnectionId);\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nconnection_data_name = equinix.fabric.get_connection(uuid=\"\u003cuuid_of_connection\u003e\")\npulumi.export(\"id\", connection_data_name.id)\npulumi.export(\"name\", connection_data_name.bandwidth)\npulumi.export(\"accountNumber\", connection_data_name.account.account_number)\npulumi.export(\"bandwidth\", connection_data_name.bandwidth)\npulumi.export(\"projectId\", connection_data_name.project.project_id)\npulumi.export(\"redundancyGroup\", connection_data_name.redundancy.group)\npulumi.export(\"redundancyPriority\", connection_data_name.redundancy.priority)\npulumi.export(\"state\", connection_data_name.state)\npulumi.export(\"type\", connection_data_name.type)\npulumi.export(\"accessPointType\", connection_data_name.a_side.access_point.type)\npulumi.export(\"accessPointLinkProtocolType\", connection_data_name.a_side.access_point.link_protocol.type)\npulumi.export(\"accessPointLinkProtocolVlanTag\", connection_data_name.a_side.access_point.link_protocol.vlan_tag)\npulumi.export(\"accessPointLinkProtocolVlanCTag\", connection_data_name.a_side.access_point.link_protocol.vlan_c_tag)\npulumi.export(\"accessPointLinkProtocolVlanSTag\", connection_data_name.a_side.access_point.link_protocol.vlan_s_tag)\npulumi.export(\"accessPointProviderConnectionId\", connection_data_name.a_side.access_point.provider_connection_id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var connectionDataName = Equinix.Fabric.GetConnection.Invoke(new()\n    {\n        Uuid = \"\u003cuuid_of_connection\u003e\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"id\"] = connectionDataName.Apply(getConnectionResult =\u003e getConnectionResult.Id),\n        [\"name\"] = connectionDataName.Apply(getConnectionResult =\u003e getConnectionResult.Bandwidth),\n        [\"accountNumber\"] = connectionDataName.Apply(getConnectionResult =\u003e getConnectionResult.Account?.AccountNumber),\n        [\"bandwidth\"] = connectionDataName.Apply(getConnectionResult =\u003e getConnectionResult.Bandwidth),\n        [\"projectId\"] = connectionDataName.Apply(getConnectionResult =\u003e getConnectionResult.Project?.ProjectId),\n        [\"redundancyGroup\"] = connectionDataName.Apply(getConnectionResult =\u003e getConnectionResult.Redundancy?.Group),\n        [\"redundancyPriority\"] = connectionDataName.Apply(getConnectionResult =\u003e getConnectionResult.Redundancy?.Priority),\n        [\"state\"] = connectionDataName.Apply(getConnectionResult =\u003e getConnectionResult.State),\n        [\"type\"] = connectionDataName.Apply(getConnectionResult =\u003e getConnectionResult.Type),\n        [\"accessPointType\"] = connectionDataName.Apply(getConnectionResult =\u003e getConnectionResult.ASide?.AccessPoint?.Type),\n        [\"accessPointLinkProtocolType\"] = connectionDataName.Apply(getConnectionResult =\u003e getConnectionResult.ASide?.AccessPoint?.LinkProtocol?.Type),\n        [\"accessPointLinkProtocolVlanTag\"] = connectionDataName.Apply(getConnectionResult =\u003e getConnectionResult.ASide?.AccessPoint?.LinkProtocol?.VlanTag),\n        [\"accessPointLinkProtocolVlanCTag\"] = connectionDataName.Apply(getConnectionResult =\u003e getConnectionResult.ASide?.AccessPoint?.LinkProtocol?.VlanCTag),\n        [\"accessPointLinkProtocolVlanSTag\"] = connectionDataName.Apply(getConnectionResult =\u003e getConnectionResult.ASide?.AccessPoint?.LinkProtocol?.VlanSTag),\n        [\"accessPointProviderConnectionId\"] = connectionDataName.Apply(getConnectionResult =\u003e getConnectionResult.ASide?.AccessPoint?.ProviderConnectionId),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tconnectionDataName, err := fabric.LookupConnection(ctx, \u0026fabric.LookupConnectionArgs{\n\t\t\tUuid: \"\u003cuuid_of_connection\u003e\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"id\", connectionDataName.Id)\n\t\tctx.Export(\"name\", connectionDataName.Bandwidth)\n\t\tctx.Export(\"accountNumber\", connectionDataName.Account.AccountNumber)\n\t\tctx.Export(\"bandwidth\", connectionDataName.Bandwidth)\n\t\tctx.Export(\"projectId\", connectionDataName.Project.ProjectId)\n\t\tctx.Export(\"redundancyGroup\", connectionDataName.Redundancy.Group)\n\t\tctx.Export(\"redundancyPriority\", connectionDataName.Redundancy.Priority)\n\t\tctx.Export(\"state\", connectionDataName.State)\n\t\tctx.Export(\"type\", connectionDataName.Type)\n\t\tctx.Export(\"accessPointType\", connectionDataName.ASide.AccessPoint.Type)\n\t\tctx.Export(\"accessPointLinkProtocolType\", connectionDataName.ASide.AccessPoint.LinkProtocol.Type)\n\t\tctx.Export(\"accessPointLinkProtocolVlanTag\", connectionDataName.ASide.AccessPoint.LinkProtocol.VlanTag)\n\t\tctx.Export(\"accessPointLinkProtocolVlanCTag\", connectionDataName.ASide.AccessPoint.LinkProtocol.VlanCTag)\n\t\tctx.Export(\"accessPointLinkProtocolVlanSTag\", connectionDataName.ASide.AccessPoint.LinkProtocol.VlanSTag)\n\t\tctx.Export(\"accessPointProviderConnectionId\", connectionDataName.ASide.AccessPoint.ProviderConnectionId)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.fabric.FabricFunctions;\nimport com.pulumi.equinix.fabric.inputs.GetConnectionArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var connectionDataName = FabricFunctions.getConnection(GetConnectionArgs.builder()\n            .uuid(\"\u003cuuid_of_connection\u003e\")\n            .build());\n\n        ctx.export(\"id\", connectionDataName.applyValue(getConnectionResult -\u003e getConnectionResult.id()));\n        ctx.export(\"name\", connectionDataName.applyValue(getConnectionResult -\u003e getConnectionResult.bandwidth()));\n        ctx.export(\"accountNumber\", connectionDataName.applyValue(getConnectionResult -\u003e getConnectionResult.account().accountNumber()));\n        ctx.export(\"bandwidth\", connectionDataName.applyValue(getConnectionResult -\u003e getConnectionResult.bandwidth()));\n        ctx.export(\"projectId\", connectionDataName.applyValue(getConnectionResult -\u003e getConnectionResult.project().projectId()));\n        ctx.export(\"redundancyGroup\", connectionDataName.applyValue(getConnectionResult -\u003e getConnectionResult.redundancy().group()));\n        ctx.export(\"redundancyPriority\", connectionDataName.applyValue(getConnectionResult -\u003e getConnectionResult.redundancy().priority()));\n        ctx.export(\"state\", connectionDataName.applyValue(getConnectionResult -\u003e getConnectionResult.state()));\n        ctx.export(\"type\", connectionDataName.applyValue(getConnectionResult -\u003e getConnectionResult.type()));\n        ctx.export(\"accessPointType\", connectionDataName.applyValue(getConnectionResult -\u003e getConnectionResult.aSide().accessPoint().type()));\n        ctx.export(\"accessPointLinkProtocolType\", connectionDataName.applyValue(getConnectionResult -\u003e getConnectionResult.aSide().accessPoint().linkProtocol().type()));\n        ctx.export(\"accessPointLinkProtocolVlanTag\", connectionDataName.applyValue(getConnectionResult -\u003e getConnectionResult.aSide().accessPoint().linkProtocol().vlanTag()));\n        ctx.export(\"accessPointLinkProtocolVlanCTag\", connectionDataName.applyValue(getConnectionResult -\u003e getConnectionResult.aSide().accessPoint().linkProtocol().vlanCTag()));\n        ctx.export(\"accessPointLinkProtocolVlanSTag\", connectionDataName.applyValue(getConnectionResult -\u003e getConnectionResult.aSide().accessPoint().linkProtocol().vlanSTag()));\n        ctx.export(\"accessPointProviderConnectionId\", connectionDataName.applyValue(getConnectionResult -\u003e getConnectionResult.aSide().accessPoint().providerConnectionId()));\n    }\n}\n```\n```yaml\nvariables:\n  connectionDataName:\n    fn::invoke:\n      Function: equinix:fabric:getConnection\n      Arguments:\n        uuid: \u003cuuid_of_connection\u003e\noutputs:\n  id: ${connectionDataName.id}\n  name: ${connectionDataName.bandwidth}\n  accountNumber: ${connectionDataName.account.accountNumber}\n  bandwidth: ${connectionDataName.bandwidth}\n  projectId: ${connectionDataName.project.projectId}\n  redundancyGroup: ${connectionDataName.redundancy.group}\n  redundancyPriority: ${connectionDataName.redundancy.priority}\n  state: ${connectionDataName.state}\n  type: ${connectionDataName.type}\n  # Same for z_side just use z_side instead of a_side\n  accessPointType: ${connectionDataName.aSide.accessPoint.type}\n  # Same for z_side just use z_side instead of a_side\n  accessPointLinkProtocolType: ${connectionDataName.aSide.accessPoint.linkProtocol.type}\n  # Same for z_side just use z_side instead of a_side\n  accessPointLinkProtocolVlanTag: ${connectionDataName.aSide.accessPoint.linkProtocol.vlanTag}\n  # Same for z_side just use z_side instead of a_side\n  accessPointLinkProtocolVlanCTag: ${connectionDataName.aSide.accessPoint.linkProtocol.vlanCTag}\n  # Same for z_side just use z_side instead of a_side\n  accessPointLinkProtocolVlanSTag: ${connectionDataName.aSide.accessPoint.linkProtocol.vlanSTag}\n  # Same for z_side just use z_side instead of a_side\n  accessPointProviderConnectionId: ${connectionDataName.aSide.accessPoint.providerConnectionId}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getConnection.\n",
                 "properties": {
@@ -19082,7 +19273,7 @@
                     },
                     "type": {
                         "type": "string",
-                        "description": "Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC\n"
+                        "description": "Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, IA*VC, EC_VC\n"
                     },
                     "uuid": {
                         "type": "string",
@@ -19194,6 +19385,78 @@
                     "datas",
                     "filters",
                     "outerOperator",
+                    "id"
+                ]
+            }
+        },
+        "equinix:fabric/getMarketplaceSubscription:getMarketplaceSubscription": {
+            "description": "Fabric V4 API compatible data resource that allow user to fetch Marketplace Subscription detail for a given UUID\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@pulumi/equinix\";\n\nconst subscription-test = equinix.fabric.getMarketplaceSubscription({\n    uuid: \"\u003cuuid_of_marketplace_subscription\u003e\",\n});\nexport const id = subscription_test.then(subscription_test =\u003e subscription_test.id);\nexport const status = subscription_test.then(subscription_test =\u003e subscription_test.status);\nexport const marketplace = subscription_test.then(subscription_test =\u003e subscription_test.marketplace);\nexport const offerType = subscription_test.then(subscription_test =\u003e subscription_test.offerType);\nexport const isAutoRenew = subscription_test.then(subscription_test =\u003e subscription_test.isAutoRenew);\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nsubscription_test = equinix.fabric.get_marketplace_subscription(uuid=\"\u003cuuid_of_marketplace_subscription\u003e\")\npulumi.export(\"id\", subscription_test.id)\npulumi.export(\"status\", subscription_test.status)\npulumi.export(\"marketplace\", subscription_test.marketplace)\npulumi.export(\"offerType\", subscription_test.offer_type)\npulumi.export(\"isAutoRenew\", subscription_test.is_auto_renew)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var subscription_test = Equinix.Fabric.GetMarketplaceSubscription.Invoke(new()\n    {\n        Uuid = \"\u003cuuid_of_marketplace_subscription\u003e\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"id\"] = subscription_test.Apply(subscription_test =\u003e subscription_test.Apply(getMarketplaceSubscriptionResult =\u003e getMarketplaceSubscriptionResult.Id)),\n        [\"status\"] = subscription_test.Apply(subscription_test =\u003e subscription_test.Apply(getMarketplaceSubscriptionResult =\u003e getMarketplaceSubscriptionResult.Status)),\n        [\"marketplace\"] = subscription_test.Apply(subscription_test =\u003e subscription_test.Apply(getMarketplaceSubscriptionResult =\u003e getMarketplaceSubscriptionResult.Marketplace)),\n        [\"offerType\"] = subscription_test.Apply(subscription_test =\u003e subscription_test.Apply(getMarketplaceSubscriptionResult =\u003e getMarketplaceSubscriptionResult.OfferType)),\n        [\"isAutoRenew\"] = subscription_test.Apply(subscription_test =\u003e subscription_test.Apply(getMarketplaceSubscriptionResult =\u003e getMarketplaceSubscriptionResult.IsAutoRenew)),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tsubscription_test, err := fabric.GetMarketplaceSubscription(ctx, \u0026fabric.GetMarketplaceSubscriptionArgs{\n\t\t\tUuid: \"\u003cuuid_of_marketplace_subscription\u003e\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"id\", subscription_test.Id)\n\t\tctx.Export(\"status\", subscription_test.Status)\n\t\tctx.Export(\"marketplace\", subscription_test.Marketplace)\n\t\tctx.Export(\"offerType\", subscription_test.OfferType)\n\t\tctx.Export(\"isAutoRenew\", subscription_test.IsAutoRenew)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.fabric.FabricFunctions;\nimport com.pulumi.equinix.fabric.inputs.GetMarketplaceSubscriptionArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var subscription-test = FabricFunctions.getMarketplaceSubscription(GetMarketplaceSubscriptionArgs.builder()\n            .uuid(\"\u003cuuid_of_marketplace_subscription\u003e\")\n            .build());\n\n        ctx.export(\"id\", subscription_test.id());\n        ctx.export(\"status\", subscription_test.status());\n        ctx.export(\"marketplace\", subscription_test.marketplace());\n        ctx.export(\"offerType\", subscription_test.offerType());\n        ctx.export(\"isAutoRenew\", subscription_test.isAutoRenew());\n    }\n}\n```\n```yaml\nvariables:\n  subscription-test:\n    fn::invoke:\n      Function: equinix:fabric:getMarketplaceSubscription\n      Arguments:\n        uuid: \u003cuuid_of_marketplace_subscription\u003e\noutputs:\n  id: ${[\"subscription-test\"].id}\n  status: ${[\"subscription-test\"].status}\n  marketplace: ${[\"subscription-test\"].marketplace}\n  offerType: ${[\"subscription-test\"].offerType}\n  isAutoRenew: ${[\"subscription-test\"].isAutoRenew}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getMarketplaceSubscription.\n",
+                "properties": {
+                    "uuid": {
+                        "type": "string",
+                        "description": "Equinix-assigned marketplace identifier\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "uuid"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getMarketplaceSubscription.\n",
+                "properties": {
+                    "entitlements": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/equinix:fabric/getMarketplaceSubscriptionEntitlement:getMarketplaceSubscriptionEntitlement"
+                        },
+                        "description": "Subscription entitlements\n"
+                    },
+                    "href": {
+                        "type": "string",
+                        "description": "Subscription URI information\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "isAutoRenew": {
+                        "type": "boolean",
+                        "description": "Information about subscription auto renewal\n"
+                    },
+                    "marketplace": {
+                        "type": "string",
+                        "description": "Marketplace like; AWS, GCP, AZURE, REDHAT\n"
+                    },
+                    "offerType": {
+                        "type": "string",
+                        "description": "Marketplace Offer Type like; PUBLIC, PRIVATE_OFFER\n"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "Subscription Status like; ACTIVE, EXPIRED, CANCELLED, GRACE_PERIOD\n"
+                    },
+                    "trial": {
+                        "$ref": "#/types/equinix:fabric/getMarketplaceSubscriptionTrial:getMarketplaceSubscriptionTrial",
+                        "description": "Subscription Trial\n"
+                    },
+                    "uuid": {
+                        "type": "string",
+                        "description": "Equinix-assigned marketplace identifier\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "entitlements",
+                    "href",
+                    "isAutoRenew",
+                    "marketplace",
+                    "offerType",
+                    "status",
+                    "trial",
+                    "uuid",
                     "id"
                 ]
             }
@@ -19766,7 +20029,7 @@
                     },
                     "selfProfile": {
                         "type": "boolean",
-                        "description": "Self Profile indicating if the profile is created for customer's self use\n"
+                        "description": "Self Profile indicating if the profile is created for customer's  self use\n"
                     },
                     "state": {
                         "type": "string",
@@ -19781,14 +20044,15 @@
                     },
                     "type": {
                         "type": "string",
-                        "description": "Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE\n"
+                        "description": "Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE\n"
                     },
                     "uuid": {
                         "type": "string",
                         "description": "Equinix assigned service profile identifier\n"
                     },
                     "viewPoint": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide\n"
                     },
                     "virtualDevices": {
                         "type": "array",
