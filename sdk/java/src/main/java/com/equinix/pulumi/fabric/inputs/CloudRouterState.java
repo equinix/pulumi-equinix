@@ -6,6 +6,7 @@ package com.equinix.pulumi.fabric.inputs;
 import com.equinix.pulumi.fabric.inputs.CloudRouterAccountArgs;
 import com.equinix.pulumi.fabric.inputs.CloudRouterChangeLogArgs;
 import com.equinix.pulumi.fabric.inputs.CloudRouterLocationArgs;
+import com.equinix.pulumi.fabric.inputs.CloudRouterMarketplaceSubscriptionArgs;
 import com.equinix.pulumi.fabric.inputs.CloudRouterNotificationArgs;
 import com.equinix.pulumi.fabric.inputs.CloudRouterOrderArgs;
 import com.equinix.pulumi.fabric.inputs.CloudRouterPackageArgs;
@@ -190,6 +191,21 @@ public final class CloudRouterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Equinix Fabric Entity for Marketplace Subscription
+     * 
+     */
+    @Import(name="marketplaceSubscription")
+    private @Nullable Output<CloudRouterMarketplaceSubscriptionArgs> marketplaceSubscription;
+
+    /**
+     * @return Equinix Fabric Entity for Marketplace Subscription
+     * 
+     */
+    public Optional<Output<CloudRouterMarketplaceSubscriptionArgs>> marketplaceSubscription() {
+        return Optional.ofNullable(this.marketplaceSubscription);
+    }
+
+    /**
      * Fabric Cloud Router name. An alpha-numeric 24 characters string which can include only hyphens and underscores
      * 
      */
@@ -323,6 +339,7 @@ public final class CloudRouterState extends com.pulumi.resources.ResourceArgs {
         this.equinixAsn = $.equinixAsn;
         this.href = $.href;
         this.location = $.location;
+        this.marketplaceSubscription = $.marketplaceSubscription;
         this.name = $.name;
         this.notifications = $.notifications;
         this.order = $.order;
@@ -590,6 +607,27 @@ public final class CloudRouterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder location(CloudRouterLocationArgs location) {
             return location(Output.of(location));
+        }
+
+        /**
+         * @param marketplaceSubscription Equinix Fabric Entity for Marketplace Subscription
+         * 
+         * @return builder
+         * 
+         */
+        public Builder marketplaceSubscription(@Nullable Output<CloudRouterMarketplaceSubscriptionArgs> marketplaceSubscription) {
+            $.marketplaceSubscription = marketplaceSubscription;
+            return this;
+        }
+
+        /**
+         * @param marketplaceSubscription Equinix Fabric Entity for Marketplace Subscription
+         * 
+         * @return builder
+         * 
+         */
+        public Builder marketplaceSubscription(CloudRouterMarketplaceSubscriptionArgs marketplaceSubscription) {
+            return marketplaceSubscription(Output.of(marketplaceSubscription));
         }
 
         /**

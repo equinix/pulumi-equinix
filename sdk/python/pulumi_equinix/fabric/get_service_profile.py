@@ -206,7 +206,7 @@ class GetServiceProfileResult:
     @pulumi.getter(name="selfProfile")
     def self_profile(self) -> bool:
         """
-        Self Profile indicating if the profile is created for customer's self use
+        Self Profile indicating if the profile is created for customer's  self use
         """
         return pulumi.get(self, "self_profile")
 
@@ -230,7 +230,7 @@ class GetServiceProfileResult:
     @pulumi.getter
     def type(self) -> str:
         """
-        Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+        Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
         """
         return pulumi.get(self, "type")
 
@@ -245,6 +245,9 @@ class GetServiceProfileResult:
     @property
     @pulumi.getter(name="viewPoint")
     def view_point(self) -> str:
+        """
+        Flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
+        """
         return pulumi.get(self, "view_point")
 
     @property

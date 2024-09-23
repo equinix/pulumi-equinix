@@ -227,14 +227,14 @@ public final class ServiceProfileState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Self Profile indicating if the profile is created for customer&#39;s self use
+     * Self Profile indicating if the profile is created for customer&#39;s  self use
      * 
      */
     @Import(name="selfProfile")
     private @Nullable Output<Boolean> selfProfile;
 
     /**
-     * @return Self Profile indicating if the profile is created for customer&#39;s self use
+     * @return Self Profile indicating if the profile is created for customer&#39;s  self use
      * 
      */
     public Optional<Output<Boolean>> selfProfile() {
@@ -272,14 +272,14 @@ public final class ServiceProfileState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+     * Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
      * 
      */
     @Import(name="type")
     private @Nullable Output<Either<String,ProfileType>> type;
 
     /**
-     * @return Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+     * @return Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
      * 
      */
     public Optional<Output<Either<String,ProfileType>>> type() {
@@ -724,7 +724,7 @@ public final class ServiceProfileState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param selfProfile Self Profile indicating if the profile is created for customer&#39;s self use
+         * @param selfProfile Self Profile indicating if the profile is created for customer&#39;s  self use
          * 
          * @return builder
          * 
@@ -735,7 +735,7 @@ public final class ServiceProfileState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param selfProfile Self Profile indicating if the profile is created for customer&#39;s self use
+         * @param selfProfile Self Profile indicating if the profile is created for customer&#39;s  self use
          * 
          * @return builder
          * 
@@ -817,7 +817,7 @@ public final class ServiceProfileState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param type Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+         * @param type Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
          * 
          * @return builder
          * 
@@ -828,7 +828,7 @@ public final class ServiceProfileState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param type Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+         * @param type Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
          * 
          * @return builder
          * 
@@ -838,7 +838,7 @@ public final class ServiceProfileState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param type Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+         * @param type Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
          * 
          * @return builder
          * 
@@ -848,7 +848,7 @@ public final class ServiceProfileState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param type Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+         * @param type Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
          * 
          * @return builder
          * 

@@ -99,16 +99,17 @@ type LookupServiceProfileResult struct {
 	Ports []GetServiceProfilePort `pulumi:"ports"`
 	// Project information
 	Project GetServiceProfileProject `pulumi:"project"`
-	// Self Profile indicating if the profile is created for customer's self use
+	// Self Profile indicating if the profile is created for customer's  self use
 	SelfProfile bool `pulumi:"selfProfile"`
 	// Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
 	State string `pulumi:"state"`
 	// Tags attached to the connection
 	Tags []string `pulumi:"tags"`
-	// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+	// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
 	Type string `pulumi:"type"`
 	// Equinix assigned service profile identifier
-	Uuid      string `pulumi:"uuid"`
+	Uuid string `pulumi:"uuid"`
+	// Flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
 	ViewPoint string `pulumi:"viewPoint"`
 	// Virtual Devices
 	VirtualDevices []GetServiceProfileVirtualDevice `pulumi:"virtualDevices"`
@@ -232,7 +233,7 @@ func (o LookupServiceProfileResultOutput) Project() GetServiceProfileProjectOutp
 	return o.ApplyT(func(v LookupServiceProfileResult) GetServiceProfileProject { return v.Project }).(GetServiceProfileProjectOutput)
 }
 
-// Self Profile indicating if the profile is created for customer's self use
+// Self Profile indicating if the profile is created for customer's  self use
 func (o LookupServiceProfileResultOutput) SelfProfile() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupServiceProfileResult) bool { return v.SelfProfile }).(pulumi.BoolOutput)
 }
@@ -247,7 +248,7 @@ func (o LookupServiceProfileResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupServiceProfileResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
 func (o LookupServiceProfileResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceProfileResult) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -257,6 +258,7 @@ func (o LookupServiceProfileResultOutput) Uuid() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceProfileResult) string { return v.Uuid }).(pulumi.StringOutput)
 }
 
+// Flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
 func (o LookupServiceProfileResultOutput) ViewPoint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceProfileResult) string { return v.ViewPoint }).(pulumi.StringOutput)
 }

@@ -4,10 +4,9 @@
 package com.equinix.pulumi.fabric.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class CloudRouterAccount {
@@ -15,15 +14,15 @@ public final class CloudRouterAccount {
      * @return Account Number
      * 
      */
-    private @Nullable Integer accountNumber;
+    private Integer accountNumber;
 
     private CloudRouterAccount() {}
     /**
      * @return Account Number
      * 
      */
-    public Optional<Integer> accountNumber() {
-        return Optional.ofNullable(this.accountNumber);
+    public Integer accountNumber() {
+        return this.accountNumber;
     }
 
     public static Builder builder() {
@@ -35,7 +34,7 @@ public final class CloudRouterAccount {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Integer accountNumber;
+        private Integer accountNumber;
         public Builder() {}
         public Builder(CloudRouterAccount defaults) {
     	      Objects.requireNonNull(defaults);
@@ -43,8 +42,10 @@ public final class CloudRouterAccount {
         }
 
         @CustomType.Setter
-        public Builder accountNumber(@Nullable Integer accountNumber) {
-
+        public Builder accountNumber(Integer accountNumber) {
+            if (accountNumber == null) {
+              throw new MissingRequiredPropertyException("CloudRouterAccount", "accountNumber");
+            }
             this.accountNumber = accountNumber;
             return this;
         }

@@ -94,6 +94,8 @@ type LookupCloudRouterResult struct {
 	Id string `pulumi:"id"`
 	// Fabric Cloud Router location
 	Locations []GetCloudRouterLocation `pulumi:"locations"`
+	// Equinix Fabric Entity for Marketplace Subscription
+	MarketplaceSubscriptions []GetCloudRouterMarketplaceSubscription `pulumi:"marketplaceSubscriptions"`
 	// Fabric Cloud Router name. An alpha-numeric 24 characters string which can include only hyphens and underscores
 	Name string `pulumi:"name"`
 	// Preferences for notifications on Fabric Cloud Router configuration or status changes
@@ -102,7 +104,7 @@ type LookupCloudRouterResult struct {
 	Orders []GetCloudRouterOrder `pulumi:"orders"`
 	// Fabric Cloud Router Package Type
 	Packages []GetCloudRouterPackage `pulumi:"packages"`
-	// Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
+	// Customer resource hierarchy project information. Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
 	Projects []GetCloudRouterProject `pulumi:"projects"`
 	// Fabric Cloud Router overall state
 	State string `pulumi:"state"`
@@ -216,6 +218,13 @@ func (o LookupCloudRouterResultOutput) Locations() GetCloudRouterLocationArrayOu
 	return o.ApplyT(func(v LookupCloudRouterResult) []GetCloudRouterLocation { return v.Locations }).(GetCloudRouterLocationArrayOutput)
 }
 
+// Equinix Fabric Entity for Marketplace Subscription
+func (o LookupCloudRouterResultOutput) MarketplaceSubscriptions() GetCloudRouterMarketplaceSubscriptionArrayOutput {
+	return o.ApplyT(func(v LookupCloudRouterResult) []GetCloudRouterMarketplaceSubscription {
+		return v.MarketplaceSubscriptions
+	}).(GetCloudRouterMarketplaceSubscriptionArrayOutput)
+}
+
 // Fabric Cloud Router name. An alpha-numeric 24 characters string which can include only hyphens and underscores
 func (o LookupCloudRouterResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloudRouterResult) string { return v.Name }).(pulumi.StringOutput)
@@ -236,7 +245,7 @@ func (o LookupCloudRouterResultOutput) Packages() GetCloudRouterPackageArrayOutp
 	return o.ApplyT(func(v LookupCloudRouterResult) []GetCloudRouterPackage { return v.Packages }).(GetCloudRouterPackageArrayOutput)
 }
 
-// Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
+// Customer resource hierarchy project information. Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
 func (o LookupCloudRouterResultOutput) Projects() GetCloudRouterProjectArrayOutput {
 	return o.ApplyT(func(v LookupCloudRouterResult) []GetCloudRouterProject { return v.Projects }).(GetCloudRouterProjectArrayOutput)
 }

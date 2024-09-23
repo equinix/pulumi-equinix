@@ -58,6 +58,10 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetCloudRoutersDataLocationResult> Locations;
         /// <summary>
+        /// Equinix Fabric Entity for Marketplace Subscription
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetCloudRoutersDataMarketplaceSubscriptionResult> MarketplaceSubscriptions;
+        /// <summary>
         /// Fabric Cloud Router name. An alpha-numeric 24 characters string which can include only hyphens and underscores
         /// </summary>
         public readonly string Name;
@@ -114,6 +118,8 @@ namespace Pulumi.Equinix.Fabric.Outputs
 
             ImmutableArray<Outputs.GetCloudRoutersDataLocationResult> locations,
 
+            ImmutableArray<Outputs.GetCloudRoutersDataMarketplaceSubscriptionResult> marketplaceSubscriptions,
+
             string name,
 
             ImmutableArray<Outputs.GetCloudRoutersDataNotificationResult> notifications,
@@ -141,6 +147,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
             EquinixAsn = equinixAsn;
             Href = href;
             Locations = locations;
+            MarketplaceSubscriptions = marketplaceSubscriptions;
             Name = name;
             Notifications = notifications;
             Orders = orders;

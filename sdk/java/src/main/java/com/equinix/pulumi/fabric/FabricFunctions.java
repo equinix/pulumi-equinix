@@ -12,6 +12,8 @@ import com.equinix.pulumi.fabric.inputs.GetConnectionArgs;
 import com.equinix.pulumi.fabric.inputs.GetConnectionPlainArgs;
 import com.equinix.pulumi.fabric.inputs.GetConnectionsArgs;
 import com.equinix.pulumi.fabric.inputs.GetConnectionsPlainArgs;
+import com.equinix.pulumi.fabric.inputs.GetMarketplaceSubscriptionArgs;
+import com.equinix.pulumi.fabric.inputs.GetMarketplaceSubscriptionPlainArgs;
 import com.equinix.pulumi.fabric.inputs.GetNetworkArgs;
 import com.equinix.pulumi.fabric.inputs.GetNetworkPlainArgs;
 import com.equinix.pulumi.fabric.inputs.GetNetworksArgs;
@@ -30,6 +32,7 @@ import com.equinix.pulumi.fabric.outputs.GetCloudRouterResult;
 import com.equinix.pulumi.fabric.outputs.GetCloudRoutersResult;
 import com.equinix.pulumi.fabric.outputs.GetConnectionResult;
 import com.equinix.pulumi.fabric.outputs.GetConnectionsResult;
+import com.equinix.pulumi.fabric.outputs.GetMarketplaceSubscriptionResult;
 import com.equinix.pulumi.fabric.outputs.GetNetworkResult;
 import com.equinix.pulumi.fabric.outputs.GetNetworksResult;
 import com.equinix.pulumi.fabric.outputs.GetPortResult;
@@ -599,6 +602,194 @@ public final class FabricFunctions {
      */
     public static CompletableFuture<GetConnectionsResult> getConnectionsPlain(GetConnectionsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("equinix:fabric/getConnections:getConnections", TypeShape.of(GetConnectionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Marketplace Subscription detail for a given UUID
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetMarketplaceSubscriptionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var subscription-test = FabricFunctions.getMarketplaceSubscription(GetMarketplaceSubscriptionArgs.builder()
+     *             .uuid("<uuid_of_marketplace_subscription>")
+     *             .build());
+     * 
+     *         ctx.export("id", subscription_test.id());
+     *         ctx.export("status", subscription_test.status());
+     *         ctx.export("marketplace", subscription_test.marketplace());
+     *         ctx.export("offerType", subscription_test.offerType());
+     *         ctx.export("isAutoRenew", subscription_test.isAutoRenew());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetMarketplaceSubscriptionResult> getMarketplaceSubscription(GetMarketplaceSubscriptionArgs args) {
+        return getMarketplaceSubscription(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Marketplace Subscription detail for a given UUID
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetMarketplaceSubscriptionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var subscription-test = FabricFunctions.getMarketplaceSubscription(GetMarketplaceSubscriptionArgs.builder()
+     *             .uuid("<uuid_of_marketplace_subscription>")
+     *             .build());
+     * 
+     *         ctx.export("id", subscription_test.id());
+     *         ctx.export("status", subscription_test.status());
+     *         ctx.export("marketplace", subscription_test.marketplace());
+     *         ctx.export("offerType", subscription_test.offerType());
+     *         ctx.export("isAutoRenew", subscription_test.isAutoRenew());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetMarketplaceSubscriptionResult> getMarketplaceSubscriptionPlain(GetMarketplaceSubscriptionPlainArgs args) {
+        return getMarketplaceSubscriptionPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Marketplace Subscription detail for a given UUID
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetMarketplaceSubscriptionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var subscription-test = FabricFunctions.getMarketplaceSubscription(GetMarketplaceSubscriptionArgs.builder()
+     *             .uuid("<uuid_of_marketplace_subscription>")
+     *             .build());
+     * 
+     *         ctx.export("id", subscription_test.id());
+     *         ctx.export("status", subscription_test.status());
+     *         ctx.export("marketplace", subscription_test.marketplace());
+     *         ctx.export("offerType", subscription_test.offerType());
+     *         ctx.export("isAutoRenew", subscription_test.isAutoRenew());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetMarketplaceSubscriptionResult> getMarketplaceSubscription(GetMarketplaceSubscriptionArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getMarketplaceSubscription:getMarketplaceSubscription", TypeShape.of(GetMarketplaceSubscriptionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Marketplace Subscription detail for a given UUID
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetMarketplaceSubscriptionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var subscription-test = FabricFunctions.getMarketplaceSubscription(GetMarketplaceSubscriptionArgs.builder()
+     *             .uuid("<uuid_of_marketplace_subscription>")
+     *             .build());
+     * 
+     *         ctx.export("id", subscription_test.id());
+     *         ctx.export("status", subscription_test.status());
+     *         ctx.export("marketplace", subscription_test.marketplace());
+     *         ctx.export("offerType", subscription_test.offerType());
+     *         ctx.export("isAutoRenew", subscription_test.isAutoRenew());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetMarketplaceSubscriptionResult> getMarketplaceSubscriptionPlain(GetMarketplaceSubscriptionPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("equinix:fabric/getMarketplaceSubscription:getMarketplaceSubscription", TypeShape.of(GetMarketplaceSubscriptionResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Fabric Network for a given UUID

@@ -12,7 +12,7 @@ namespace Pulumi.Equinix.Fabric
     public static class GetConnection
     {
         /// <summary>
-        /// Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID
+        /// Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID 
         /// 
         /// Additional documentation:
         /// * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm
@@ -58,7 +58,7 @@ namespace Pulumi.Equinix.Fabric
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetConnectionResult>("equinix:fabric/getConnection:getConnection", args ?? new GetConnectionArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID
+        /// Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID 
         /// 
         /// Additional documentation:
         /// * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm
@@ -206,7 +206,7 @@ namespace Pulumi.Equinix.Fabric
         /// </summary>
         public readonly string State;
         /// <summary>
-        /// Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
+        /// Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, IA*VC, EC_VC
         /// </summary>
         public readonly string Type;
         /// <summary>

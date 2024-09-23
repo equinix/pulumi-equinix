@@ -9,6 +9,7 @@ import com.equinix.pulumi.fabric.inputs.CloudRouterState;
 import com.equinix.pulumi.fabric.outputs.CloudRouterAccount;
 import com.equinix.pulumi.fabric.outputs.CloudRouterChangeLog;
 import com.equinix.pulumi.fabric.outputs.CloudRouterLocation;
+import com.equinix.pulumi.fabric.outputs.CloudRouterMarketplaceSubscription;
 import com.equinix.pulumi.fabric.outputs.CloudRouterNotification;
 import com.equinix.pulumi.fabric.outputs.CloudRouterOrder;
 import com.equinix.pulumi.fabric.outputs.CloudRouterPackage;
@@ -31,6 +32,7 @@ import javax.annotation.Nullable;
  * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers
  * 
  * ## Example Usage
+ * ### example 1
  * <pre>
  * {@code
  * package generated_program;
@@ -82,6 +84,66 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .account(CloudRouterAccountArgs.builder()
  *                 .accountNumber("203612")
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * ### example 2
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.fabric.CloudRouter;
+ * import com.pulumi.equinix.fabric.CloudRouterArgs;
+ * import com.pulumi.equinix.fabric.inputs.CloudRouterNotificationArgs;
+ * import com.pulumi.equinix.fabric.inputs.CloudRouterOrderArgs;
+ * import com.pulumi.equinix.fabric.inputs.CloudRouterLocationArgs;
+ * import com.pulumi.equinix.fabric.inputs.CloudRouterPackageArgs;
+ * import com.pulumi.equinix.fabric.inputs.CloudRouterProjectArgs;
+ * import com.pulumi.equinix.fabric.inputs.CloudRouterMarketplaceSubscriptionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var newCloudRouter = new CloudRouter("newCloudRouter", CloudRouterArgs.builder()
+ *             .name("Router-SV")
+ *             .type("XF_ROUTER")
+ *             .notifications(CloudRouterNotificationArgs.builder()
+ *                 .type("ALL")
+ *                 .emails(                
+ *                     "example}{@literal @}{@code equinix.com",
+ *                     "test1}{@literal @}{@code equinix.com")
+ *                 .build())
+ *             .order(CloudRouterOrderArgs.builder()
+ *                 .purchaseOrderNumber("1-323292")
+ *                 .build())
+ *             .location(CloudRouterLocationArgs.builder()
+ *                 .metroCode("SV")
+ *                 .build())
+ *             .package_(CloudRouterPackageArgs.builder()
+ *                 .code("STANDARD")
+ *                 .build())
+ *             .project(CloudRouterProjectArgs.builder()
+ *                 .projectId("776847000642406")
+ *                 .build())
+ *             .marketplaceSubscription(CloudRouterMarketplaceSubscriptionArgs.builder()
+ *                 .type("AWS_MARKETPLACE_SUBSCRIPTION")
+ *                 .uuid("2823b8ae07-a2a2-45b4-a658-c3542bb24e9")
  *                 .build())
  *             .build());
  * 
@@ -246,6 +308,20 @@ public class CloudRouter extends com.pulumi.resources.CustomResource {
      */
     public Output<CloudRouterLocation> location() {
         return this.location;
+    }
+    /**
+     * Equinix Fabric Entity for Marketplace Subscription
+     * 
+     */
+    @Export(name="marketplaceSubscription", refs={CloudRouterMarketplaceSubscription.class}, tree="[0]")
+    private Output<CloudRouterMarketplaceSubscription> marketplaceSubscription;
+
+    /**
+     * @return Equinix Fabric Entity for Marketplace Subscription
+     * 
+     */
+    public Output<CloudRouterMarketplaceSubscription> marketplaceSubscription() {
+        return this.marketplaceSubscription;
     }
     /**
      * Fabric Cloud Router name. An alpha-numeric 24 characters string which can include only hyphens and underscores
