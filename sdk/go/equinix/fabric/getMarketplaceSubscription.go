@@ -83,14 +83,20 @@ type GetMarketplaceSubscriptionResult struct {
 
 func GetMarketplaceSubscriptionOutput(ctx *pulumi.Context, args GetMarketplaceSubscriptionOutputArgs, opts ...pulumi.InvokeOption) GetMarketplaceSubscriptionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetMarketplaceSubscriptionResult, error) {
+		ApplyT(func(v interface{}) (GetMarketplaceSubscriptionResultOutput, error) {
 			args := v.(GetMarketplaceSubscriptionArgs)
-			r, err := GetMarketplaceSubscription(ctx, &args, opts...)
-			var s GetMarketplaceSubscriptionResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetMarketplaceSubscriptionResult
+			secret, err := ctx.InvokePackageRaw("equinix:fabric/getMarketplaceSubscription:getMarketplaceSubscription", args, &rv, "", opts...)
+			if err != nil {
+				return GetMarketplaceSubscriptionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetMarketplaceSubscriptionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetMarketplaceSubscriptionResultOutput), nil
+			}
+			return output, nil
 		}).(GetMarketplaceSubscriptionResultOutput)
 }
 

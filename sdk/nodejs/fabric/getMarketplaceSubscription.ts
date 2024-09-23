@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getMarketplaceSubscription(args: GetMarketplaceSubscriptionArgs, opts?: pulumi.InvokeOptions): Promise<GetMarketplaceSubscriptionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:fabric/getMarketplaceSubscription:getMarketplaceSubscription", {
         "uuid": args.uuid,
@@ -105,7 +104,10 @@ export interface GetMarketplaceSubscriptionResult {
  * ```
  */
 export function getMarketplaceSubscriptionOutput(args: GetMarketplaceSubscriptionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMarketplaceSubscriptionResult> {
-    return pulumi.output(args).apply((a: any) => getMarketplaceSubscription(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("equinix:fabric/getMarketplaceSubscription:getMarketplaceSubscription", {
+        "uuid": args.uuid,
+    }, opts);
 }
 
 /**
