@@ -26,7 +26,7 @@
 				<dependency>
             		<groupId>com.pulumi</groupId>
             		<artifactId>equinix</artifactId>
-            		<version>(,1.0)</version>
+            		<version>0.18.1-alpha.1728498536+7525edd6</version>
         		</dependency>
 			</dependencies>
 
