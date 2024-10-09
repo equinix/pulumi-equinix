@@ -14,21 +14,9 @@ import java.util.Objects;
 public final class InterconnectionPort {
     private String id;
     private String linkStatus;
-    /**
-     * @return Name of the connection resource
-     * 
-     */
     private String name;
     private String role;
-    /**
-     * @return Connection speed - Values must be in the format &#39;&lt;number&gt;Mbps&#39; or &#39;&lt;number&gt;Gpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
-     * 
-     */
     private Integer speed;
-    /**
-     * @return Status of the connection resource.
-     * 
-     */
     private String status;
     private List<String> virtualCircuitIds;
 
@@ -39,27 +27,15 @@ public final class InterconnectionPort {
     public String linkStatus() {
         return this.linkStatus;
     }
-    /**
-     * @return Name of the connection resource
-     * 
-     */
     public String name() {
         return this.name;
     }
     public String role() {
         return this.role;
     }
-    /**
-     * @return Connection speed - Values must be in the format &#39;&lt;number&gt;Mbps&#39; or &#39;&lt;number&gt;Gpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
-     * 
-     */
     public Integer speed() {
         return this.speed;
     }
-    /**
-     * @return Status of the connection resource.
-     * 
-     */
     public String status() {
         return this.status;
     }
