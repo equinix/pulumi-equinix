@@ -11,6 +11,12 @@ on:
 env:
   GH_TOKEN: ${{ secrets.EQUINIX_BOT_TOKEN }}
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  # Allow missing or extra mappings during TF provider
+  # upgrades.  This allows automation to do its job so
+  # that human contributions can be narrowly focused on
+  # adding or removing resource mappings
+  PULUMI_SKIP_MISSING_MAPPING_ERROR: true
+  PULUMI_SKIP_EXTRA_MAPPING_ERROR: true
 jobs:
   upgrade_provider:
     name: upgrade-provider
