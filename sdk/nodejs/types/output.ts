@@ -6344,18 +6344,9 @@ export namespace metal {
     export interface InterconnectionPort {
         id: string;
         linkStatus: string;
-        /**
-         * Name of the connection resource
-         */
         name: string;
         role: string;
-        /**
-         * Connection speed - Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
-         */
         speed: number;
-        /**
-         * Status of the connection resource.
-         */
         status: string;
         virtualCircuitIds: string[];
     }
@@ -6366,9 +6357,6 @@ export namespace metal {
         maxAllowedSpeed: string;
         role: string;
         state: string;
-        /**
-         * Connection type - dedicated or shared.
-         */
         type: string;
     }
 

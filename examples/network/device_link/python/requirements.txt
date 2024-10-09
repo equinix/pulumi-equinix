@@ -1,2 +1,2 @@
 pulumi>=3.0.0,<4.0.0
-pulumi_equinix==<1.0.0
+pulumi_equinix==0.18.1-alpha.1728498536+7525edd6

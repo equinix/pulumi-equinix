@@ -2268,18 +2268,9 @@ export namespace metal {
     export interface InterconnectionPort {
         id: pulumi.Input<string>;
         linkStatus: pulumi.Input<string>;
-        /**
-         * Name of the connection resource
-         */
         name: pulumi.Input<string>;
         role: pulumi.Input<string>;
-        /**
-         * Connection speed - Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
-         */
         speed: pulumi.Input<number>;
-        /**
-         * Status of the connection resource.
-         */
         status: pulumi.Input<string>;
         virtualCircuitIds: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -2290,9 +2281,6 @@ export namespace metal {
         maxAllowedSpeed: pulumi.Input<string>;
         role: pulumi.Input<string>;
         state: pulumi.Input<string>;
-        /**
-         * Connection type - dedicated or shared.
-         */
         type: pulumi.Input<string>;
     }
 

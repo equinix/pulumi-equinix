@@ -15,10 +15,99 @@ import (
 
 // Use this resource to request the creation an Interconnection asset to connect with other parties using [Equinix Fabric - software-defined interconnections](https://metal.equinix.com/developers/docs/networking/fabric/).
 //
-// > Equinix Metal connection with with Service Token A-side / Z-side (service_token_type) is not generally available and may not be enabled yet for your organization.
-//
 // ## Example Usage
-// ### example shared metal fabric connection from fcr
+// ### example fabric billed metal from fabric port
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric"
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			aSide, err := fabric.GetPorts(ctx, &fabric.GetPortsArgs{
+//				Filter: fabric.GetPortsFilter{
+//					Name: "<name_of_port||port_prefix>",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			example, err := metal.NewVlan(ctx, "example", &metal.VlanArgs{
+//				ProjectId: pulumi.String("<metal_project_id>"),
+//				Metro:     pulumi.String("FR"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleInterconnection, err := metal.NewInterconnection(ctx, "exampleInterconnection", &metal.InterconnectionArgs{
+//				Name:             pulumi.String("tf-metal-from-port"),
+//				ProjectId:        pulumi.String("<metal_project_id>"),
+//				Type:             pulumi.String("shared"),
+//				Redundancy:       pulumi.String("primary"),
+//				Metro:            pulumi.String("FR"),
+//				Speed:            pulumi.String("200Mbps"),
+//				ServiceTokenType: pulumi.String("z_side"),
+//				ContactEmail:     pulumi.String("username@example.com"),
+//				Vlans: pulumi.IntArray{
+//					example.Vxlan,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = fabric.NewConnection(ctx, "exampleConnection", &fabric.ConnectionArgs{
+//				Name:      pulumi.String("tf-metal-from-port"),
+//				Type:      pulumi.String(fabric.ConnectionTypeEVPL),
+//				Bandwidth: pulumi.Int(200),
+//				Notifications: fabric.ConnectionNotificationArray{
+//					&fabric.ConnectionNotificationArgs{
+//						Type: pulumi.String(fabric.NotificationsTypeAll),
+//						Emails: pulumi.StringArray{
+//							pulumi.String("username@example.com"),
+//						},
+//					},
+//				},
+//				Order: &fabric.ConnectionOrderArgs{
+//					PurchaseOrderNumber: pulumi.String("1-323292"),
+//				},
+//				Project: &fabric.ConnectionProjectArgs{
+//					ProjectId: pulumi.String("<fabric_project_id>"),
+//				},
+//				ASide: &fabric.ConnectionASideArgs{
+//					AccessPoint: &fabric.ConnectionASideAccessPointArgs{
+//						Type: pulumi.String(fabric.AccessPointTypeColo),
+//						Port: &fabric.ConnectionASideAccessPointPortArgs{
+//							Uuid: pulumi.String(aSide.Data[0].Uuid),
+//						},
+//						LinkProtocol: &fabric.ConnectionASideAccessPointLinkProtocolArgs{
+//							Type:    pulumi.String(fabric.AccessPointLinkProtocolTypeDot1q),
+//							VlanTag: pulumi.Int(1234),
+//						},
+//					},
+//				},
+//				ZSide: &fabric.ConnectionZSideArgs{
+//					ServiceToken: &fabric.ConnectionZSideServiceTokenArgs{
+//						Uuid: exampleInterconnection.ServiceTokens.ApplyT(func(serviceTokens []metal.InterconnectionServiceToken) (*string, error) {
+//							return &serviceTokens[0].Id, nil
+//						}).(pulumi.StringPtrOutput),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### example fabric billed metal from fcr
 // ```go
 // package main
 //
@@ -33,19 +122,20 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			example1, err := metal.NewVlan(ctx, "example1", &metal.VlanArgs{
-//				ProjectId: pulumi.Any(myProjectId),
+//				ProjectId: pulumi.String("<metal_project_id>"),
 //				Metro:     pulumi.String("SV"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			example, err := metal.NewInterconnection(ctx, "example", &metal.InterconnectionArgs{
-//				Name:         pulumi.String("tf-port-to-metal-legacy"),
-//				ProjectId:    pulumi.Any(myProjectId),
+//				Name:         pulumi.String("tf-metal-from-fcr"),
+//				ProjectId:    pulumi.String("<metal_project_id>"),
 //				Metro:        pulumi.String("SV"),
 //				Redundancy:   pulumi.String("primary"),
 //				Type:         pulumi.String("shared_port_vlan"),
 //				ContactEmail: pulumi.String("username@example.com"),
+//				Speed:        pulumi.String("200Mbps"),
 //				Vlans: pulumi.IntArray{
 //					example1.Vxlan,
 //				},
@@ -54,26 +144,25 @@ import (
 //				return err
 //			}
 //			_, err = fabric.NewConnection(ctx, "exampleConnection", &fabric.ConnectionArgs{
-//				Name: pulumi.String("tf-NIMF-metal-2-aws-legacy"),
-//				Type: pulumi.String("IP_VC"),
+//				Name:      pulumi.String("tf-metal-from-fcr"),
+//				Type:      pulumi.String("IP_VC"),
+//				Bandwidth: pulumi.Int(200),
 //				Notifications: fabric.ConnectionNotificationArray{
 //					&fabric.ConnectionNotificationArgs{
-//						Type:   pulumi.String(fabric.NotificationsTypeAll),
-//						Emails: pulumi.StringArray("sername@example.com"),
+//						Type: pulumi.String(fabric.NotificationsTypeAll),
+//						Emails: pulumi.StringArray{
+//							pulumi.String("username@example.com"),
+//						},
 //					},
 //				},
 //				Project: &fabric.ConnectionProjectArgs{
-//					ProjectId: pulumi.Any(fabricProjectId),
-//				},
-//				Bandwidth: pulumi.Int(200),
-//				Order: &fabric.ConnectionOrderArgs{
-//					PurchaseOrderNumber: pulumi.String("1-323292"),
+//					ProjectId: pulumi.String("<fabric_project_id>"),
 //				},
 //				ASide: &fabric.ConnectionASideArgs{
 //					AccessPoint: &fabric.ConnectionASideAccessPointArgs{
 //						Type: pulumi.String("CLOUD_ROUTER"),
 //						Router: &fabric.ConnectionASideAccessPointRouterArgs{
-//							Uuid: pulumi.Any(cloudRouterUuid),
+//							Uuid: pulumi.Any(exampleEquinixFabricCloudRouter.Id),
 //						},
 //					},
 //				},
@@ -92,13 +181,12 @@ import (
 //	}
 //
 // ```
-// ### example shared metal fabric connection to csp
+// ### example fabric billed metal from network edge
 // ```go
 // package main
 //
 // import (
 //
-//	"github.com/equinix/pulumi-equinix/sdk/go/equinix"
 //	"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric"
 //	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -107,72 +195,146 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			zside, err := fabric.GetServiceProfiles(ctx, &fabric.GetServiceProfilesArgs{
-//				Filter: fabric.GetServiceProfilesFilter{
-//					Property: "/name",
-//					Operator: "=",
-//					Values: []string{
-//						"AWS Direct Connect",
-//					},
+//			example, err := metal.NewVrf(ctx, "example", &metal.VrfArgs{
+//				Name:     pulumi.String("tf-metal-from-ne"),
+//				Metro:    pulumi.String("FR"),
+//				LocalAsn: pulumi.Int(65001),
+//				IpRanges: pulumi.StringArray{
+//					pulumi.String("10.99.1.0/24"),
 //				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			example1, err := metal.NewVlan(ctx, "example1", &metal.VlanArgs{
-//				ProjectId: pulumi.Any(myProjectId),
-//				Metro:     pulumi.String("SV"),
+//				ProjectId: pulumi.Any(test.Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			example, err := metal.NewInterconnection(ctx, "example", &metal.InterconnectionArgs{
-//				Name:         pulumi.String("tf-port-to-metal-legacy"),
-//				ProjectId:    pulumi.Any(myProjectId),
-//				Metro:        pulumi.String("SV"),
-//				Redundancy:   pulumi.String("primary"),
-//				Type:         pulumi.String("shared_port_vlan"),
-//				ContactEmail: pulumi.String("username@example.com"),
-//				Vlans: pulumi.IntArray{
-//					example1.Vxlan,
+//			exampleInterconnection, err := metal.NewInterconnection(ctx, "exampleInterconnection", &metal.InterconnectionArgs{
+//				Name:             pulumi.String("tf-metal-from-ne"),
+//				ProjectId:        pulumi.String("<metal_project_id>"),
+//				Type:             pulumi.String("shared"),
+//				Redundancy:       pulumi.String("primary"),
+//				Metro:            pulumi.String("FR"),
+//				Speed:            pulumi.String("200Mbps"),
+//				ServiceTokenType: pulumi.String("z_side"),
+//				ContactEmail:     pulumi.String("username@example.com"),
+//				Vrfs: pulumi.StringArray{
+//					example.Vxlan,
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = fabric.NewConnection(ctx, "exampleConnection", &fabric.ConnectionArgs{
-//				Name: pulumi.String("tf-NIMF-metal-2-aws-legacy"),
+//				Name:      pulumi.String("tf-metal-from-ne"),
+//				Type:      pulumi.String(fabric.ConnectionTypeEVPL),
+//				Bandwidth: pulumi.Int(200),
+//				Notifications: fabric.ConnectionNotificationArray{
+//					&fabric.ConnectionNotificationArgs{
+//						Type: pulumi.String(fabric.NotificationsTypeAll),
+//						Emails: pulumi.StringArray{
+//							pulumi.String("username@example.com"),
+//						},
+//					},
+//				},
+//				Order: &fabric.ConnectionOrderArgs{
+//					PurchaseOrderNumber: pulumi.String("1-323292"),
+//				},
+//				Project: &fabric.ConnectionProjectArgs{
+//					ProjectId: pulumi.String("<fabric_project_id>"),
+//				},
+//				ASide: &fabric.ConnectionASideArgs{
+//					AccessPoint: &fabric.ConnectionASideAccessPointArgs{
+//						Type: pulumi.String(fabric.AccessPointTypeVD),
+//						VirtualDevice: &fabric.ConnectionASideAccessPointVirtualDeviceArgs{
+//							Type: pulumi.String("EDGE"),
+//							Uuid: pulumi.Any(exampleEquinixNetworkDevice.Id),
+//						},
+//					},
+//				},
+//				ZSide: &fabric.ConnectionZSideArgs{
+//					ServiceToken: &fabric.ConnectionZSideServiceTokenArgs{
+//						Uuid: exampleInterconnection.ServiceTokens.ApplyT(func(serviceTokens []metal.InterconnectionServiceToken) (*string, error) {
+//							return &serviceTokens[0].Id, nil
+//						}).(pulumi.StringPtrOutput),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### example metal billed metal to fabric port
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric"
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			aSide, err := fabric.GetPorts(ctx, &fabric.GetPortsArgs{
+//				Filter: fabric.GetPortsFilter{
+//					Name: "<name_of_port||port_prefix>",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			example, err := metal.NewInterconnection(ctx, "example", &metal.InterconnectionArgs{
+//				Name:             pulumi.String("tf-metal-2-port"),
+//				ProjectId:        pulumi.String("<metal_project_id>"),
+//				Type:             pulumi.String("shared"),
+//				Redundancy:       pulumi.String("redundant"),
+//				Metro:            pulumi.String("FR"),
+//				Speed:            pulumi.String("1Gbps"),
+//				ServiceTokenType: pulumi.String("a_side"),
+//				ContactEmail:     pulumi.String("username@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = fabric.NewConnection(ctx, "exampleConnection", &fabric.ConnectionArgs{
+//				Name: pulumi.String("tf-metal-2-port"),
 //				Type: pulumi.String(fabric.ConnectionTypeEVPL),
 //				Notifications: fabric.ConnectionNotificationArray{
 //					&fabric.ConnectionNotificationArgs{
-//						Type:   pulumi.String(fabric.NotificationsTypeAll),
-//						Emails: pulumi.StringArray("sername@example.com"),
+//						Type: pulumi.String(fabric.NotificationsTypeAll),
+//						Emails: pulumi.StringArray{
+//							pulumi.String("username@example.com"),
+//						},
 //					},
 //				},
 //				Project: &fabric.ConnectionProjectArgs{
-//					ProjectId: pulumi.Any(fabricProjectId),
+//					ProjectId: pulumi.String("<fabric_project_id>"),
 //				},
-//				Bandwidth: pulumi.Int(200),
+//				Bandwidth: pulumi.Int(100),
 //				Order: &fabric.ConnectionOrderArgs{
 //					PurchaseOrderNumber: pulumi.String("1-323292"),
 //				},
 //				ASide: &fabric.ConnectionASideArgs{
-//					AccessPoint: &fabric.ConnectionASideAccessPointArgs{
-//						Type:              pulumi.String("METAL_NETWORK"),
-//						AuthenticationKey: example.AuthorizationCode,
+//					ServiceToken: &fabric.ConnectionASideServiceTokenArgs{
+//						Uuid: example.ServiceTokens.ApplyT(func(serviceTokens []metal.InterconnectionServiceToken) (*string, error) {
+//							return &serviceTokens[0].Id, nil
+//						}).(pulumi.StringPtrOutput),
 //					},
 //				},
 //				ZSide: &fabric.ConnectionZSideArgs{
 //					AccessPoint: &fabric.ConnectionZSideAccessPointArgs{
-//						Type:              pulumi.String(fabric.AccessPointTypeSP),
-//						AuthenticationKey: pulumi.Any(awsAccountId),
-//						SellerRegion:      pulumi.String("us-west-1"),
-//						Profile: &fabric.ConnectionZSideAccessPointProfileArgs{
-//							Type: pulumi.String(fabric.ProfileTypeL2Profile),
-//							Uuid: pulumi.String(zside.Id),
+//						Type: pulumi.String(fabric.AccessPointTypeColo),
+//						Port: &fabric.ConnectionZSideAccessPointPortArgs{
+//							Uuid: pulumi.String(aSide.Data[0].Uuid),
 //						},
-//						Location: &fabric.ConnectionZSideAccessPointLocationArgs{
-//							MetroCode: pulumi.String(equinix.MetroSiliconValley),
+//						LinkProtocol: &fabric.ConnectionZSideAccessPointLinkProtocolArgs{
+//							Type:    pulumi.String(fabric.AccessPointLinkProtocolTypeDot1q),
+//							VlanTag: pulumi.Int(1234),
 //						},
 //					},
 //				},
@@ -188,50 +350,49 @@ import (
 type Interconnection struct {
 	pulumi.CustomResourceState
 
-	// Fabric Authorization code to configure the Metal-Fabric Integration connection with Cloud Service Provider through Equinix Fabric with the fabric.Connection resource from the [Equinix Developer Portal](https://developer.equinix.com/dev-docs/fabric/getting-started/fabric-v4-apis/connect-metal-to-amazon-web-services).
+	// Only used with Fabric Shared connection. Fabric uses this token to be able to give more detailed information about the Metal end of the network, when viewing resources from within Fabric.
 	AuthorizationCode pulumi.StringOutput `pulumi:"authorizationCode"`
-	// The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
+	// The preferred email used for communication and notifications about the Equinix Fabric interconnection
 	ContactEmail pulumi.StringOutput `pulumi:"contactEmail"`
-	// Description for the connection resource.
+	// Description of the connection resource
 	Description pulumi.StringOutput `pulumi:"description"`
-	// Facility where the connection will be created. Use metro instead; read the facility to metro migration guide
+	// Facility where the connection will be created
 	//
 	// Deprecated: Use metro instead of facility. For more information, read the migration guide.
 	Facility pulumi.StringOutput `pulumi:"facility"`
-	// Metro where the connection will be created.
+	// Metro where the connection will be created
 	Metro pulumi.StringOutput `pulumi:"metro"`
-	// Mode for connections in IBX facilities with the dedicated type - standard or tunnel. Default is standard.
+	// Mode for connections in IBX facilities with the dedicated type - standard or tunnel
 	Mode pulumi.StringOutput `pulumi:"mode"`
 	// Name of the connection resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// ID of the organization where the connection is scoped to.
+	// ID of the organization responsible for the connection. Applicable with type "dedicated"
 	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
-	// List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`). Schema of port is described in documentation of the metal.Interconnection datasource.
+	// List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`)
 	Ports InterconnectionPortArrayOutput `pulumi:"ports"`
-	// ID of the project where the connection is scoped to, must be set for.
+	// ID of the project where the connection is scoped to. Required with type "shared"
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
-	// Connection redundancy - redundant or primary.
+	// Connection redundancy - redundant or primary
 	Redundancy pulumi.StringOutput `pulumi:"redundancy"`
-	// Only used with shared connection. Type of service token to use for the connection, aSide or z_side
+	// Only used with shared connection. Type of service token to use for the connection, a*side or z*side
 	ServiceTokenType pulumi.StringPtrOutput `pulumi:"serviceTokenType"`
-	// List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard). Scehma of serviceToken is described in documentation of the metal.Interconnection datasource.
+	// Only used with shared connection. List of service tokens required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard)
 	ServiceTokens InterconnectionServiceTokenArrayOutput `pulumi:"serviceTokens"`
-	// Connection speed - Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
+	// Connection speed -  Values must be in the format '\n\nMbps' or '\n\nGpbs', for example '100Mbps' or '50Gbps'.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
 	Speed pulumi.StringOutput `pulumi:"speed"`
-	// Status of the connection resource.
+	// Status of the connection resource
 	Status pulumi.StringOutput `pulumi:"status"`
-	// String list of tags.
+	// Tags attached to the connection
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
-	// (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `serviceTokens` instead.
+	// Only used with shared connection. Fabric Token required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard)
 	//
 	// Deprecated: If your organization already has connection service tokens enabled, use `serviceTokens` instead
 	Token pulumi.StringOutput `pulumi:"token"`
-	// Connection type - dedicated or shared.
+	// Connection type - dedicated, shared or shared*port*vlan
 	Type pulumi.StringOutput `pulumi:"type"`
-	// Only used with shared connection. Vlans to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection.
+	// Only used with shared connection. VLANs to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection
 	Vlans pulumi.IntArrayOutput `pulumi:"vlans"`
-	// Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant
-	// connection
+	// Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant connection
 	Vrfs pulumi.StringArrayOutput `pulumi:"vrfs"`
 }
 
@@ -271,98 +432,96 @@ func GetInterconnection(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Interconnection resources.
 type interconnectionState struct {
-	// Fabric Authorization code to configure the Metal-Fabric Integration connection with Cloud Service Provider through Equinix Fabric with the fabric.Connection resource from the [Equinix Developer Portal](https://developer.equinix.com/dev-docs/fabric/getting-started/fabric-v4-apis/connect-metal-to-amazon-web-services).
+	// Only used with Fabric Shared connection. Fabric uses this token to be able to give more detailed information about the Metal end of the network, when viewing resources from within Fabric.
 	AuthorizationCode *string `pulumi:"authorizationCode"`
-	// The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
+	// The preferred email used for communication and notifications about the Equinix Fabric interconnection
 	ContactEmail *string `pulumi:"contactEmail"`
-	// Description for the connection resource.
+	// Description of the connection resource
 	Description *string `pulumi:"description"`
-	// Facility where the connection will be created. Use metro instead; read the facility to metro migration guide
+	// Facility where the connection will be created
 	//
 	// Deprecated: Use metro instead of facility. For more information, read the migration guide.
 	Facility *string `pulumi:"facility"`
-	// Metro where the connection will be created.
+	// Metro where the connection will be created
 	Metro *string `pulumi:"metro"`
-	// Mode for connections in IBX facilities with the dedicated type - standard or tunnel. Default is standard.
+	// Mode for connections in IBX facilities with the dedicated type - standard or tunnel
 	Mode *string `pulumi:"mode"`
 	// Name of the connection resource
 	Name *string `pulumi:"name"`
-	// ID of the organization where the connection is scoped to.
+	// ID of the organization responsible for the connection. Applicable with type "dedicated"
 	OrganizationId *string `pulumi:"organizationId"`
-	// List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`). Schema of port is described in documentation of the metal.Interconnection datasource.
+	// List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`)
 	Ports []InterconnectionPort `pulumi:"ports"`
-	// ID of the project where the connection is scoped to, must be set for.
+	// ID of the project where the connection is scoped to. Required with type "shared"
 	ProjectId *string `pulumi:"projectId"`
-	// Connection redundancy - redundant or primary.
+	// Connection redundancy - redundant or primary
 	Redundancy *string `pulumi:"redundancy"`
-	// Only used with shared connection. Type of service token to use for the connection, aSide or z_side
+	// Only used with shared connection. Type of service token to use for the connection, a*side or z*side
 	ServiceTokenType *string `pulumi:"serviceTokenType"`
-	// List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard). Scehma of serviceToken is described in documentation of the metal.Interconnection datasource.
+	// Only used with shared connection. List of service tokens required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard)
 	ServiceTokens []InterconnectionServiceToken `pulumi:"serviceTokens"`
-	// Connection speed - Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
+	// Connection speed -  Values must be in the format '\n\nMbps' or '\n\nGpbs', for example '100Mbps' or '50Gbps'.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
 	Speed *string `pulumi:"speed"`
-	// Status of the connection resource.
+	// Status of the connection resource
 	Status *string `pulumi:"status"`
-	// String list of tags.
+	// Tags attached to the connection
 	Tags []string `pulumi:"tags"`
-	// (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `serviceTokens` instead.
+	// Only used with shared connection. Fabric Token required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard)
 	//
 	// Deprecated: If your organization already has connection service tokens enabled, use `serviceTokens` instead
 	Token *string `pulumi:"token"`
-	// Connection type - dedicated or shared.
+	// Connection type - dedicated, shared or shared*port*vlan
 	Type *string `pulumi:"type"`
-	// Only used with shared connection. Vlans to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection.
+	// Only used with shared connection. VLANs to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection
 	Vlans []int `pulumi:"vlans"`
-	// Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant
-	// connection
+	// Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant connection
 	Vrfs []string `pulumi:"vrfs"`
 }
 
 type InterconnectionState struct {
-	// Fabric Authorization code to configure the Metal-Fabric Integration connection with Cloud Service Provider through Equinix Fabric with the fabric.Connection resource from the [Equinix Developer Portal](https://developer.equinix.com/dev-docs/fabric/getting-started/fabric-v4-apis/connect-metal-to-amazon-web-services).
+	// Only used with Fabric Shared connection. Fabric uses this token to be able to give more detailed information about the Metal end of the network, when viewing resources from within Fabric.
 	AuthorizationCode pulumi.StringPtrInput
-	// The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
+	// The preferred email used for communication and notifications about the Equinix Fabric interconnection
 	ContactEmail pulumi.StringPtrInput
-	// Description for the connection resource.
+	// Description of the connection resource
 	Description pulumi.StringPtrInput
-	// Facility where the connection will be created. Use metro instead; read the facility to metro migration guide
+	// Facility where the connection will be created
 	//
 	// Deprecated: Use metro instead of facility. For more information, read the migration guide.
 	Facility pulumi.StringPtrInput
-	// Metro where the connection will be created.
+	// Metro where the connection will be created
 	Metro pulumi.StringPtrInput
-	// Mode for connections in IBX facilities with the dedicated type - standard or tunnel. Default is standard.
+	// Mode for connections in IBX facilities with the dedicated type - standard or tunnel
 	Mode pulumi.StringPtrInput
 	// Name of the connection resource
 	Name pulumi.StringPtrInput
-	// ID of the organization where the connection is scoped to.
+	// ID of the organization responsible for the connection. Applicable with type "dedicated"
 	OrganizationId pulumi.StringPtrInput
-	// List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`). Schema of port is described in documentation of the metal.Interconnection datasource.
+	// List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`)
 	Ports InterconnectionPortArrayInput
-	// ID of the project where the connection is scoped to, must be set for.
+	// ID of the project where the connection is scoped to. Required with type "shared"
 	ProjectId pulumi.StringPtrInput
-	// Connection redundancy - redundant or primary.
+	// Connection redundancy - redundant or primary
 	Redundancy pulumi.StringPtrInput
-	// Only used with shared connection. Type of service token to use for the connection, aSide or z_side
+	// Only used with shared connection. Type of service token to use for the connection, a*side or z*side
 	ServiceTokenType pulumi.StringPtrInput
-	// List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard). Scehma of serviceToken is described in documentation of the metal.Interconnection datasource.
+	// Only used with shared connection. List of service tokens required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard)
 	ServiceTokens InterconnectionServiceTokenArrayInput
-	// Connection speed - Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
+	// Connection speed -  Values must be in the format '\n\nMbps' or '\n\nGpbs', for example '100Mbps' or '50Gbps'.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
 	Speed pulumi.StringPtrInput
-	// Status of the connection resource.
+	// Status of the connection resource
 	Status pulumi.StringPtrInput
-	// String list of tags.
+	// Tags attached to the connection
 	Tags pulumi.StringArrayInput
-	// (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `serviceTokens` instead.
+	// Only used with shared connection. Fabric Token required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard)
 	//
 	// Deprecated: If your organization already has connection service tokens enabled, use `serviceTokens` instead
 	Token pulumi.StringPtrInput
-	// Connection type - dedicated or shared.
+	// Connection type - dedicated, shared or shared*port*vlan
 	Type pulumi.StringPtrInput
-	// Only used with shared connection. Vlans to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection.
+	// Only used with shared connection. VLANs to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection
 	Vlans pulumi.IntArrayInput
-	// Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant
-	// connection
+	// Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant connection
 	Vrfs pulumi.StringArrayInput
 }
 
@@ -371,75 +530,73 @@ func (InterconnectionState) ElementType() reflect.Type {
 }
 
 type interconnectionArgs struct {
-	// The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
+	// The preferred email used for communication and notifications about the Equinix Fabric interconnection
 	ContactEmail *string `pulumi:"contactEmail"`
-	// Description for the connection resource.
+	// Description of the connection resource
 	Description *string `pulumi:"description"`
-	// Facility where the connection will be created. Use metro instead; read the facility to metro migration guide
+	// Facility where the connection will be created
 	//
 	// Deprecated: Use metro instead of facility. For more information, read the migration guide.
 	Facility *string `pulumi:"facility"`
-	// Metro where the connection will be created.
+	// Metro where the connection will be created
 	Metro *string `pulumi:"metro"`
-	// Mode for connections in IBX facilities with the dedicated type - standard or tunnel. Default is standard.
+	// Mode for connections in IBX facilities with the dedicated type - standard or tunnel
 	Mode *string `pulumi:"mode"`
 	// Name of the connection resource
 	Name *string `pulumi:"name"`
-	// ID of the organization where the connection is scoped to.
+	// ID of the organization responsible for the connection. Applicable with type "dedicated"
 	OrganizationId *string `pulumi:"organizationId"`
-	// ID of the project where the connection is scoped to, must be set for.
+	// ID of the project where the connection is scoped to. Required with type "shared"
 	ProjectId *string `pulumi:"projectId"`
-	// Connection redundancy - redundant or primary.
+	// Connection redundancy - redundant or primary
 	Redundancy string `pulumi:"redundancy"`
-	// Only used with shared connection. Type of service token to use for the connection, aSide or z_side
+	// Only used with shared connection. Type of service token to use for the connection, a*side or z*side
 	ServiceTokenType *string `pulumi:"serviceTokenType"`
-	// Connection speed - Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
+	// Connection speed -  Values must be in the format '\n\nMbps' or '\n\nGpbs', for example '100Mbps' or '50Gbps'.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
 	Speed *string `pulumi:"speed"`
-	// String list of tags.
+	// Tags attached to the connection
 	Tags []string `pulumi:"tags"`
-	// Connection type - dedicated or shared.
+	// Connection type - dedicated, shared or shared*port*vlan
 	Type string `pulumi:"type"`
-	// Only used with shared connection. Vlans to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection.
+	// Only used with shared connection. VLANs to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection
 	Vlans []int `pulumi:"vlans"`
-	// Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant
-	// connection
+	// Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant connection
 	Vrfs []string `pulumi:"vrfs"`
 }
 
 // The set of arguments for constructing a Interconnection resource.
 type InterconnectionArgs struct {
-	// The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
+	// The preferred email used for communication and notifications about the Equinix Fabric interconnection
 	ContactEmail pulumi.StringPtrInput
-	// Description for the connection resource.
+	// Description of the connection resource
 	Description pulumi.StringPtrInput
-	// Facility where the connection will be created. Use metro instead; read the facility to metro migration guide
+	// Facility where the connection will be created
 	//
 	// Deprecated: Use metro instead of facility. For more information, read the migration guide.
 	Facility pulumi.StringPtrInput
-	// Metro where the connection will be created.
+	// Metro where the connection will be created
 	Metro pulumi.StringPtrInput
-	// Mode for connections in IBX facilities with the dedicated type - standard or tunnel. Default is standard.
+	// Mode for connections in IBX facilities with the dedicated type - standard or tunnel
 	Mode pulumi.StringPtrInput
 	// Name of the connection resource
 	Name pulumi.StringPtrInput
-	// ID of the organization where the connection is scoped to.
+	// ID of the organization responsible for the connection. Applicable with type "dedicated"
 	OrganizationId pulumi.StringPtrInput
-	// ID of the project where the connection is scoped to, must be set for.
+	// ID of the project where the connection is scoped to. Required with type "shared"
 	ProjectId pulumi.StringPtrInput
-	// Connection redundancy - redundant or primary.
+	// Connection redundancy - redundant or primary
 	Redundancy pulumi.StringInput
-	// Only used with shared connection. Type of service token to use for the connection, aSide or z_side
+	// Only used with shared connection. Type of service token to use for the connection, a*side or z*side
 	ServiceTokenType pulumi.StringPtrInput
-	// Connection speed - Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
+	// Connection speed -  Values must be in the format '\n\nMbps' or '\n\nGpbs', for example '100Mbps' or '50Gbps'.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
 	Speed pulumi.StringPtrInput
-	// String list of tags.
+	// Tags attached to the connection
 	Tags pulumi.StringArrayInput
-	// Connection type - dedicated or shared.
+	// Connection type - dedicated, shared or shared*port*vlan
 	Type pulumi.StringInput
-	// Only used with shared connection. Vlans to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection.
+	// Only used with shared connection. VLANs to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection
 	Vlans pulumi.IntArrayInput
-	// Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant
-	// connection
+	// Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant connection
 	Vrfs pulumi.StringArrayInput
 }
 
@@ -530,34 +687,34 @@ func (o InterconnectionOutput) ToInterconnectionOutputWithContext(ctx context.Co
 	return o
 }
 
-// Fabric Authorization code to configure the Metal-Fabric Integration connection with Cloud Service Provider through Equinix Fabric with the fabric.Connection resource from the [Equinix Developer Portal](https://developer.equinix.com/dev-docs/fabric/getting-started/fabric-v4-apis/connect-metal-to-amazon-web-services).
+// Only used with Fabric Shared connection. Fabric uses this token to be able to give more detailed information about the Metal end of the network, when viewing resources from within Fabric.
 func (o InterconnectionOutput) AuthorizationCode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Interconnection) pulumi.StringOutput { return v.AuthorizationCode }).(pulumi.StringOutput)
 }
 
-// The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
+// The preferred email used for communication and notifications about the Equinix Fabric interconnection
 func (o InterconnectionOutput) ContactEmail() pulumi.StringOutput {
 	return o.ApplyT(func(v *Interconnection) pulumi.StringOutput { return v.ContactEmail }).(pulumi.StringOutput)
 }
 
-// Description for the connection resource.
+// Description of the connection resource
 func (o InterconnectionOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Interconnection) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// Facility where the connection will be created. Use metro instead; read the facility to metro migration guide
+// Facility where the connection will be created
 //
 // Deprecated: Use metro instead of facility. For more information, read the migration guide.
 func (o InterconnectionOutput) Facility() pulumi.StringOutput {
 	return o.ApplyT(func(v *Interconnection) pulumi.StringOutput { return v.Facility }).(pulumi.StringOutput)
 }
 
-// Metro where the connection will be created.
+// Metro where the connection will be created
 func (o InterconnectionOutput) Metro() pulumi.StringOutput {
 	return o.ApplyT(func(v *Interconnection) pulumi.StringOutput { return v.Metro }).(pulumi.StringOutput)
 }
 
-// Mode for connections in IBX facilities with the dedicated type - standard or tunnel. Default is standard.
+// Mode for connections in IBX facilities with the dedicated type - standard or tunnel
 func (o InterconnectionOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Interconnection) pulumi.StringOutput { return v.Mode }).(pulumi.StringOutput)
 }
@@ -567,70 +724,69 @@ func (o InterconnectionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Interconnection) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// ID of the organization where the connection is scoped to.
+// ID of the organization responsible for the connection. Applicable with type "dedicated"
 func (o InterconnectionOutput) OrganizationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Interconnection) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
 }
 
-// List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`). Schema of port is described in documentation of the metal.Interconnection datasource.
+// List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`)
 func (o InterconnectionOutput) Ports() InterconnectionPortArrayOutput {
 	return o.ApplyT(func(v *Interconnection) InterconnectionPortArrayOutput { return v.Ports }).(InterconnectionPortArrayOutput)
 }
 
-// ID of the project where the connection is scoped to, must be set for.
+// ID of the project where the connection is scoped to. Required with type "shared"
 func (o InterconnectionOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Interconnection) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// Connection redundancy - redundant or primary.
+// Connection redundancy - redundant or primary
 func (o InterconnectionOutput) Redundancy() pulumi.StringOutput {
 	return o.ApplyT(func(v *Interconnection) pulumi.StringOutput { return v.Redundancy }).(pulumi.StringOutput)
 }
 
-// Only used with shared connection. Type of service token to use for the connection, aSide or z_side
+// Only used with shared connection. Type of service token to use for the connection, a*side or z*side
 func (o InterconnectionOutput) ServiceTokenType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Interconnection) pulumi.StringPtrOutput { return v.ServiceTokenType }).(pulumi.StringPtrOutput)
 }
 
-// List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard). Scehma of serviceToken is described in documentation of the metal.Interconnection datasource.
+// Only used with shared connection. List of service tokens required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard)
 func (o InterconnectionOutput) ServiceTokens() InterconnectionServiceTokenArrayOutput {
 	return o.ApplyT(func(v *Interconnection) InterconnectionServiceTokenArrayOutput { return v.ServiceTokens }).(InterconnectionServiceTokenArrayOutput)
 }
 
-// Connection speed - Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
+// Connection speed -  Values must be in the format '\n\nMbps' or '\n\nGpbs', for example '100Mbps' or '50Gbps'.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
 func (o InterconnectionOutput) Speed() pulumi.StringOutput {
 	return o.ApplyT(func(v *Interconnection) pulumi.StringOutput { return v.Speed }).(pulumi.StringOutput)
 }
 
-// Status of the connection resource.
+// Status of the connection resource
 func (o InterconnectionOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Interconnection) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// String list of tags.
+// Tags attached to the connection
 func (o InterconnectionOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Interconnection) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `serviceTokens` instead.
+// Only used with shared connection. Fabric Token required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard)
 //
 // Deprecated: If your organization already has connection service tokens enabled, use `serviceTokens` instead
 func (o InterconnectionOutput) Token() pulumi.StringOutput {
 	return o.ApplyT(func(v *Interconnection) pulumi.StringOutput { return v.Token }).(pulumi.StringOutput)
 }
 
-// Connection type - dedicated or shared.
+// Connection type - dedicated, shared or shared*port*vlan
 func (o InterconnectionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Interconnection) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// Only used with shared connection. Vlans to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection.
+// Only used with shared connection. VLANs to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection
 func (o InterconnectionOutput) Vlans() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v *Interconnection) pulumi.IntArrayOutput { return v.Vlans }).(pulumi.IntArrayOutput)
 }
 
-// Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant
-// connection
+// Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant connection
 func (o InterconnectionOutput) Vrfs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Interconnection) pulumi.StringArrayOutput { return v.Vrfs }).(pulumi.StringArrayOutput)
 }
