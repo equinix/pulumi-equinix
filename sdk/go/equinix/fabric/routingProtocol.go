@@ -141,6 +141,8 @@ import (
 type RoutingProtocol struct {
 	pulumi.CustomResourceState
 
+	// Enable AS number override
+	AsOverrideEnabled pulumi.BoolOutput `pulumi:"asOverrideEnabled"`
 	// Bidirectional Forwarding Detection
 	Bfd RoutingProtocolBfdOutput `pulumi:"bfd"`
 	// BGP authorization key
@@ -212,6 +214,8 @@ func GetRoutingProtocol(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RoutingProtocol resources.
 type routingProtocolState struct {
+	// Enable AS number override
+	AsOverrideEnabled *bool `pulumi:"asOverrideEnabled"`
 	// Bidirectional Forwarding Detection
 	Bfd *RoutingProtocolBfd `pulumi:"bfd"`
 	// BGP authorization key
@@ -251,6 +255,8 @@ type routingProtocolState struct {
 }
 
 type RoutingProtocolState struct {
+	// Enable AS number override
+	AsOverrideEnabled pulumi.BoolPtrInput
 	// Bidirectional Forwarding Detection
 	Bfd RoutingProtocolBfdPtrInput
 	// BGP authorization key
@@ -294,6 +300,8 @@ func (RoutingProtocolState) ElementType() reflect.Type {
 }
 
 type routingProtocolArgs struct {
+	// Enable AS number override
+	AsOverrideEnabled *bool `pulumi:"asOverrideEnabled"`
 	// Bidirectional Forwarding Detection
 	Bfd *RoutingProtocolBfd `pulumi:"bfd"`
 	// BGP authorization key
@@ -322,6 +330,8 @@ type routingProtocolArgs struct {
 
 // The set of arguments for constructing a RoutingProtocol resource.
 type RoutingProtocolArgs struct {
+	// Enable AS number override
+	AsOverrideEnabled pulumi.BoolPtrInput
 	// Bidirectional Forwarding Detection
 	Bfd RoutingProtocolBfdPtrInput
 	// BGP authorization key
@@ -433,6 +443,11 @@ func (o RoutingProtocolOutput) ToRoutingProtocolOutput() RoutingProtocolOutput {
 
 func (o RoutingProtocolOutput) ToRoutingProtocolOutputWithContext(ctx context.Context) RoutingProtocolOutput {
 	return o
+}
+
+// Enable AS number override
+func (o RoutingProtocolOutput) AsOverrideEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *RoutingProtocol) pulumi.BoolOutput { return v.AsOverrideEnabled }).(pulumi.BoolOutput)
 }
 
 // Bidirectional Forwarding Detection

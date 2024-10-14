@@ -173,14 +173,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="equinix:metal/vrf:Vrf")
 public class Vrf extends com.pulumi.resources.CustomResource {
     /**
-     * Description of the VRF.
+     * Description of the VRF
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Description of the VRF.
+     * @return Description of the VRF
      * 
      */
     public Output<Optional<String>> description() {
@@ -215,14 +215,14 @@ public class Vrf extends com.pulumi.resources.CustomResource {
         return this.localAsn;
     }
     /**
-     * Metro ID or Code where the VRF will be deployed.
+     * Metro ID or Code where the VRF will be deployed
      * 
      */
     @Export(name="metro", refs={String.class}, tree="[0]")
     private Output<String> metro;
 
     /**
-     * @return Metro ID or Code where the VRF will be deployed.
+     * @return Metro ID or Code where the VRF will be deployed
      * 
      */
     public Output<String> metro() {
@@ -243,14 +243,14 @@ public class Vrf extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Project ID where the VRF will be deployed.
+     * Project ID where the VRF will be deployed
      * 
      */
     @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output<String> projectId;
 
     /**
-     * @return Project ID where the VRF will be deployed.
+     * @return Project ID where the VRF will be deployed
      * 
      */
     public Output<String> projectId() {

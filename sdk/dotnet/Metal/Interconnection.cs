@@ -12,10 +12,98 @@ namespace Pulumi.Equinix.Metal
     /// <summary>
     /// Use this resource to request the creation an Interconnection asset to connect with other parties using [Equinix Fabric - software-defined interconnections](https://metal.equinix.com/developers/docs/networking/fabric/).
     /// 
-    /// &gt; Equinix Metal connection with with Service Token A-side / Z-side (service_token_type) is not generally available and may not be enabled yet for your organization.
-    /// 
     /// ## Example Usage
-    /// ### example shared metal fabric connection from fcr
+    /// ### example fabric billed metal from fabric port
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Equinix = Pulumi.Equinix;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var aSide = Equinix.Fabric.GetPorts.Invoke(new()
+    ///     {
+    ///         Filter = new Equinix.Fabric.Inputs.GetPortsFilterInputArgs
+    ///         {
+    ///             Name = "&lt;name_of_port||port_prefix&gt;",
+    ///         },
+    ///     });
+    /// 
+    ///     var example = new Equinix.Metal.Vlan("example", new()
+    ///     {
+    ///         ProjectId = "&lt;metal_project_id&gt;",
+    ///         Metro = "FR",
+    ///     });
+    /// 
+    ///     var exampleInterconnection = new Equinix.Metal.Interconnection("exampleInterconnection", new()
+    ///     {
+    ///         Name = "tf-metal-from-port",
+    ///         ProjectId = "&lt;metal_project_id&gt;",
+    ///         Type = "shared",
+    ///         Redundancy = "primary",
+    ///         Metro = "FR",
+    ///         Speed = "200Mbps",
+    ///         ServiceTokenType = "z_side",
+    ///         ContactEmail = "username@example.com",
+    ///         Vlans = new[]
+    ///         {
+    ///             example.Vxlan,
+    ///         },
+    ///     });
+    /// 
+    ///     var exampleConnection = new Equinix.Fabric.Connection("exampleConnection", new()
+    ///     {
+    ///         Name = "tf-metal-from-port",
+    ///         Type = Equinix.Fabric.ConnectionType.EVPL,
+    ///         Bandwidth = 200,
+    ///         Notifications = new[]
+    ///         {
+    ///             new Equinix.Fabric.Inputs.ConnectionNotificationArgs
+    ///             {
+    ///                 Type = Equinix.Fabric.NotificationsType.All,
+    ///                 Emails = new[]
+    ///                 {
+    ///                     "username@example.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///         Order = new Equinix.Fabric.Inputs.ConnectionOrderArgs
+    ///         {
+    ///             PurchaseOrderNumber = "1-323292",
+    ///         },
+    ///         Project = new Equinix.Fabric.Inputs.ConnectionProjectArgs
+    ///         {
+    ///             ProjectId = "&lt;fabric_project_id&gt;",
+    ///         },
+    ///         ASide = new Equinix.Fabric.Inputs.ConnectionASideArgs
+    ///         {
+    ///             AccessPoint = new Equinix.Fabric.Inputs.ConnectionASideAccessPointArgs
+    ///             {
+    ///                 Type = Equinix.Fabric.AccessPointType.Colo,
+    ///                 Port = new Equinix.Fabric.Inputs.ConnectionASideAccessPointPortArgs
+    ///                 {
+    ///                     Uuid = aSide.Apply(getPortsResult =&gt; getPortsResult.Data[0]?.Uuid),
+    ///                 },
+    ///                 LinkProtocol = new Equinix.Fabric.Inputs.ConnectionASideAccessPointLinkProtocolArgs
+    ///                 {
+    ///                     Type = Equinix.Fabric.AccessPointLinkProtocolType.Dot1q,
+    ///                     VlanTag = 1234,
+    ///                 },
+    ///             },
+    ///         },
+    ///         ZSide = new Equinix.Fabric.Inputs.ConnectionZSideArgs
+    ///         {
+    ///             ServiceToken = new Equinix.Fabric.Inputs.ConnectionZSideServiceTokenArgs
+    ///             {
+    ///                 Uuid = exampleInterconnection.ServiceTokens.Apply(serviceTokens =&gt; serviceTokens[0].Id),
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### example fabric billed metal from fcr
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -26,18 +114,19 @@ namespace Pulumi.Equinix.Metal
     /// {
     ///     var example1 = new Equinix.Metal.Vlan("example1", new()
     ///     {
-    ///         ProjectId = myProjectId,
+    ///         ProjectId = "&lt;metal_project_id&gt;",
     ///         Metro = "SV",
     ///     });
     /// 
     ///     var example = new Equinix.Metal.Interconnection("example", new()
     ///     {
-    ///         Name = "tf-port-to-metal-legacy",
-    ///         ProjectId = myProjectId,
+    ///         Name = "tf-metal-from-fcr",
+    ///         ProjectId = "&lt;metal_project_id&gt;",
     ///         Metro = "SV",
     ///         Redundancy = "primary",
     ///         Type = "shared_port_vlan",
     ///         ContactEmail = "username@example.com",
+    ///         Speed = "200Mbps",
     ///         Vlans = new[]
     ///         {
     ///             example1.Vxlan,
@@ -46,24 +135,23 @@ namespace Pulumi.Equinix.Metal
     /// 
     ///     var exampleConnection = new Equinix.Fabric.Connection("exampleConnection", new()
     ///     {
-    ///         Name = "tf-NIMF-metal-2-aws-legacy",
+    ///         Name = "tf-metal-from-fcr",
     ///         Type = "IP_VC",
+    ///         Bandwidth = 200,
     ///         Notifications = new[]
     ///         {
     ///             new Equinix.Fabric.Inputs.ConnectionNotificationArgs
     ///             {
     ///                 Type = Equinix.Fabric.NotificationsType.All,
-    ///                 Emails = "sername@example.com",
+    ///                 Emails = new[]
+    ///                 {
+    ///                     "username@example.com",
+    ///                 },
     ///             },
     ///         },
     ///         Project = new Equinix.Fabric.Inputs.ConnectionProjectArgs
     ///         {
-    ///             ProjectId = fabricProjectId,
-    ///         },
-    ///         Bandwidth = 200,
-    ///         Order = new Equinix.Fabric.Inputs.ConnectionOrderArgs
-    ///         {
-    ///             PurchaseOrderNumber = "1-323292",
+    ///             ProjectId = "&lt;fabric_project_id&gt;",
     ///         },
     ///         ASide = new Equinix.Fabric.Inputs.ConnectionASideArgs
     ///         {
@@ -72,7 +160,7 @@ namespace Pulumi.Equinix.Metal
     ///                 Type = "CLOUD_ROUTER",
     ///                 Router = new Equinix.Fabric.Inputs.ConnectionASideAccessPointRouterArgs
     ///                 {
-    ///                     Uuid = cloudRouterUuid,
+    ///                     Uuid = exampleEquinixFabricCloudRouter.Id,
     ///                 },
     ///             },
     ///         },
@@ -88,7 +176,7 @@ namespace Pulumi.Equinix.Metal
     /// 
     /// });
     /// ```
-    /// ### example shared metal fabric connection to csp
+    /// ### example fabric billed metal from network edge
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -97,83 +185,154 @@ namespace Pulumi.Equinix.Metal
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var zside = Equinix.Fabric.GetServiceProfiles.Invoke(new()
+    ///     var example = new Equinix.Metal.Vrf("example", new()
     ///     {
-    ///         Filter = new Equinix.Fabric.Inputs.GetServiceProfilesFilterInputArgs
+    ///         Name = "tf-metal-from-ne",
+    ///         Metro = "FR",
+    ///         LocalAsn = 65001,
+    ///         IpRanges = new[]
     ///         {
-    ///             Property = "/name",
-    ///             Operator = "=",
-    ///             Values = new[]
-    ///             {
-    ///                 "AWS Direct Connect",
-    ///             },
+    ///             "10.99.1.0/24",
     ///         },
+    ///         ProjectId = test.Id,
     ///     });
     /// 
-    ///     var example1 = new Equinix.Metal.Vlan("example1", new()
+    ///     var exampleInterconnection = new Equinix.Metal.Interconnection("exampleInterconnection", new()
     ///     {
-    ///         ProjectId = myProjectId,
-    ///         Metro = "SV",
-    ///     });
-    /// 
-    ///     var example = new Equinix.Metal.Interconnection("example", new()
-    ///     {
-    ///         Name = "tf-port-to-metal-legacy",
-    ///         ProjectId = myProjectId,
-    ///         Metro = "SV",
+    ///         Name = "tf-metal-from-ne",
+    ///         ProjectId = "&lt;metal_project_id&gt;",
+    ///         Type = "shared",
     ///         Redundancy = "primary",
-    ///         Type = "shared_port_vlan",
+    ///         Metro = "FR",
+    ///         Speed = "200Mbps",
+    ///         ServiceTokenType = "z_side",
     ///         ContactEmail = "username@example.com",
-    ///         Vlans = new[]
+    ///         Vrfs = new[]
     ///         {
-    ///             example1.Vxlan,
+    ///             example.Vxlan,
     ///         },
     ///     });
     /// 
     ///     var exampleConnection = new Equinix.Fabric.Connection("exampleConnection", new()
     ///     {
-    ///         Name = "tf-NIMF-metal-2-aws-legacy",
+    ///         Name = "tf-metal-from-ne",
+    ///         Type = Equinix.Fabric.ConnectionType.EVPL,
+    ///         Bandwidth = 200,
+    ///         Notifications = new[]
+    ///         {
+    ///             new Equinix.Fabric.Inputs.ConnectionNotificationArgs
+    ///             {
+    ///                 Type = Equinix.Fabric.NotificationsType.All,
+    ///                 Emails = new[]
+    ///                 {
+    ///                     "username@example.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///         Order = new Equinix.Fabric.Inputs.ConnectionOrderArgs
+    ///         {
+    ///             PurchaseOrderNumber = "1-323292",
+    ///         },
+    ///         Project = new Equinix.Fabric.Inputs.ConnectionProjectArgs
+    ///         {
+    ///             ProjectId = "&lt;fabric_project_id&gt;",
+    ///         },
+    ///         ASide = new Equinix.Fabric.Inputs.ConnectionASideArgs
+    ///         {
+    ///             AccessPoint = new Equinix.Fabric.Inputs.ConnectionASideAccessPointArgs
+    ///             {
+    ///                 Type = Equinix.Fabric.AccessPointType.VD,
+    ///                 VirtualDevice = new Equinix.Fabric.Inputs.ConnectionASideAccessPointVirtualDeviceArgs
+    ///                 {
+    ///                     Type = "EDGE",
+    ///                     Uuid = exampleEquinixNetworkDevice.Id,
+    ///                 },
+    ///             },
+    ///         },
+    ///         ZSide = new Equinix.Fabric.Inputs.ConnectionZSideArgs
+    ///         {
+    ///             ServiceToken = new Equinix.Fabric.Inputs.ConnectionZSideServiceTokenArgs
+    ///             {
+    ///                 Uuid = exampleInterconnection.ServiceTokens.Apply(serviceTokens =&gt; serviceTokens[0].Id),
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### example metal billed metal to fabric port
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Equinix = Pulumi.Equinix;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var aSide = Equinix.Fabric.GetPorts.Invoke(new()
+    ///     {
+    ///         Filter = new Equinix.Fabric.Inputs.GetPortsFilterInputArgs
+    ///         {
+    ///             Name = "&lt;name_of_port||port_prefix&gt;",
+    ///         },
+    ///     });
+    /// 
+    ///     var example = new Equinix.Metal.Interconnection("example", new()
+    ///     {
+    ///         Name = "tf-metal-2-port",
+    ///         ProjectId = "&lt;metal_project_id&gt;",
+    ///         Type = "shared",
+    ///         Redundancy = "redundant",
+    ///         Metro = "FR",
+    ///         Speed = "1Gbps",
+    ///         ServiceTokenType = "a_side",
+    ///         ContactEmail = "username@example.com",
+    ///     });
+    /// 
+    ///     var exampleConnection = new Equinix.Fabric.Connection("exampleConnection", new()
+    ///     {
+    ///         Name = "tf-metal-2-port",
     ///         Type = Equinix.Fabric.ConnectionType.EVPL,
     ///         Notifications = new[]
     ///         {
     ///             new Equinix.Fabric.Inputs.ConnectionNotificationArgs
     ///             {
     ///                 Type = Equinix.Fabric.NotificationsType.All,
-    ///                 Emails = "sername@example.com",
+    ///                 Emails = new[]
+    ///                 {
+    ///                     "username@example.com",
+    ///                 },
     ///             },
     ///         },
     ///         Project = new Equinix.Fabric.Inputs.ConnectionProjectArgs
     ///         {
-    ///             ProjectId = fabricProjectId,
+    ///             ProjectId = "&lt;fabric_project_id&gt;",
     ///         },
-    ///         Bandwidth = 200,
+    ///         Bandwidth = 100,
     ///         Order = new Equinix.Fabric.Inputs.ConnectionOrderArgs
     ///         {
     ///             PurchaseOrderNumber = "1-323292",
     ///         },
     ///         ASide = new Equinix.Fabric.Inputs.ConnectionASideArgs
     ///         {
-    ///             AccessPoint = new Equinix.Fabric.Inputs.ConnectionASideAccessPointArgs
+    ///             ServiceToken = new Equinix.Fabric.Inputs.ConnectionASideServiceTokenArgs
     ///             {
-    ///                 Type = "METAL_NETWORK",
-    ///                 AuthenticationKey = example.AuthorizationCode,
+    ///                 Uuid = example.ServiceTokens.Apply(serviceTokens =&gt; serviceTokens[0].Id),
     ///             },
     ///         },
     ///         ZSide = new Equinix.Fabric.Inputs.ConnectionZSideArgs
     ///         {
     ///             AccessPoint = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointArgs
     ///             {
-    ///                 Type = Equinix.Fabric.AccessPointType.SP,
-    ///                 AuthenticationKey = awsAccountId,
-    ///                 SellerRegion = "us-west-1",
-    ///                 Profile = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointProfileArgs
+    ///                 Type = Equinix.Fabric.AccessPointType.Colo,
+    ///                 Port = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointPortArgs
     ///                 {
-    ///                     Type = Equinix.Fabric.ProfileType.L2Profile,
-    ///                     Uuid = zside.Apply(getServiceProfilesResult =&gt; getServiceProfilesResult.Id),
+    ///                     Uuid = aSide.Apply(getPortsResult =&gt; getPortsResult.Data[0]?.Uuid),
     ///                 },
-    ///                 Location = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointLocationArgs
+    ///                 LinkProtocol = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointLinkProtocolArgs
     ///                 {
-    ///                     MetroCode = Equinix.Metro.SiliconValley,
+    ///                     Type = Equinix.Fabric.AccessPointLinkProtocolType.Dot1q,
+    ///                     VlanTag = 1234,
     ///                 },
     ///             },
     ///         },
@@ -186,37 +345,37 @@ namespace Pulumi.Equinix.Metal
     public partial class Interconnection : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Fabric Authorization code to configure the Metal-Fabric Integration connection with Cloud Service Provider through Equinix Fabric with the equinix.fabric.Connection resource from the [Equinix Developer Portal](https://developer.equinix.com/dev-docs/fabric/getting-started/fabric-v4-apis/connect-metal-to-amazon-web-services).
+        /// Only used with Fabric Shared connection. Fabric uses this token to be able to give more detailed information about the Metal end of the network, when viewing resources from within Fabric.
         /// </summary>
         [Output("authorizationCode")]
         public Output<string> AuthorizationCode { get; private set; } = null!;
 
         /// <summary>
-        /// The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
+        /// The preferred email used for communication and notifications about the Equinix Fabric interconnection
         /// </summary>
         [Output("contactEmail")]
         public Output<string> ContactEmail { get; private set; } = null!;
 
         /// <summary>
-        /// Description for the connection resource.
+        /// Description of the connection resource
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Facility where the connection will be created. Use metro instead; read the facility to metro migration guide
+        /// Facility where the connection will be created
         /// </summary>
         [Output("facility")]
         public Output<string> Facility { get; private set; } = null!;
 
         /// <summary>
-        /// Metro where the connection will be created.
+        /// Metro where the connection will be created
         /// </summary>
         [Output("metro")]
         public Output<string> Metro { get; private set; } = null!;
 
         /// <summary>
-        /// Mode for connections in IBX facilities with the dedicated type - standard or tunnel. Default is standard.
+        /// Mode for connections in IBX facilities with the dedicated type - standard or tunnel
         /// </summary>
         [Output("mode")]
         public Output<string> Mode { get; private set; } = null!;
@@ -228,80 +387,79 @@ namespace Pulumi.Equinix.Metal
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// ID of the organization where the connection is scoped to.
+        /// ID of the organization responsible for the connection. Applicable with type "dedicated"
         /// </summary>
         [Output("organizationId")]
         public Output<string> OrganizationId { get; private set; } = null!;
 
         /// <summary>
-        /// List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`). Schema of port is described in documentation of the equinix.metal.Interconnection datasource.
+        /// List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`)
         /// </summary>
         [Output("ports")]
         public Output<ImmutableArray<Outputs.InterconnectionPort>> Ports { get; private set; } = null!;
 
         /// <summary>
-        /// ID of the project where the connection is scoped to, must be set for.
+        /// ID of the project where the connection is scoped to. Required with type "shared"
         /// </summary>
         [Output("projectId")]
         public Output<string?> ProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// Connection redundancy - redundant or primary.
+        /// Connection redundancy - redundant or primary
         /// </summary>
         [Output("redundancy")]
         public Output<string> Redundancy { get; private set; } = null!;
 
         /// <summary>
-        /// Only used with shared connection. Type of service token to use for the connection, a_side or z_side
+        /// Only used with shared connection. Type of service token to use for the connection, a*side or z*side
         /// </summary>
         [Output("serviceTokenType")]
         public Output<string?> ServiceTokenType { get; private set; } = null!;
 
         /// <summary>
-        /// List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the equinix.fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard). Scehma of service_token is described in documentation of the equinix.metal.Interconnection datasource.
+        /// Only used with shared connection. List of service tokens required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard)
         /// </summary>
         [Output("serviceTokens")]
         public Output<ImmutableArray<Outputs.InterconnectionServiceToken>> ServiceTokens { get; private set; } = null!;
 
         /// <summary>
-        /// Connection speed - Values must be in the format '&lt;number&gt;Mbps' or '&lt;number&gt;Gpbs', for example '100Mbps' or '50Gbps'. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
+        /// Connection speed -  Values must be in the format '\n\nMbps' or '\n\nGpbs', for example '100Mbps' or '50Gbps'.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
         /// </summary>
         [Output("speed")]
         public Output<string> Speed { get; private set; } = null!;
 
         /// <summary>
-        /// Status of the connection resource.
+        /// Status of the connection resource
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// String list of tags.
+        /// Tags attached to the connection
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the equinix.fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `service_tokens` instead.
+        /// Only used with shared connection. Fabric Token required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard)
         /// </summary>
         [Output("token")]
         public Output<string> Token { get; private set; } = null!;
 
         /// <summary>
-        /// Connection type - dedicated or shared.
+        /// Connection type - dedicated, shared or shared*port*vlan
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// Only used with shared connection. Vlans to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection.
+        /// Only used with shared connection. VLANs to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection
         /// </summary>
         [Output("vlans")]
         public Output<ImmutableArray<int>> Vlans { get; private set; } = null!;
 
         /// <summary>
-        /// Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant
-        /// connection
+        /// Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant connection
         /// </summary>
         [Output("vrfs")]
         public Output<ImmutableArray<string>> Vrfs { get; private set; } = null!;
@@ -354,31 +512,31 @@ namespace Pulumi.Equinix.Metal
     public sealed class InterconnectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
+        /// The preferred email used for communication and notifications about the Equinix Fabric interconnection
         /// </summary>
         [Input("contactEmail")]
         public Input<string>? ContactEmail { get; set; }
 
         /// <summary>
-        /// Description for the connection resource.
+        /// Description of the connection resource
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Facility where the connection will be created. Use metro instead; read the facility to metro migration guide
+        /// Facility where the connection will be created
         /// </summary>
         [Input("facility")]
         public Input<string>? Facility { get; set; }
 
         /// <summary>
-        /// Metro where the connection will be created.
+        /// Metro where the connection will be created
         /// </summary>
         [Input("metro")]
         public Input<string>? Metro { get; set; }
 
         /// <summary>
-        /// Mode for connections in IBX facilities with the dedicated type - standard or tunnel. Default is standard.
+        /// Mode for connections in IBX facilities with the dedicated type - standard or tunnel
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
@@ -390,31 +548,31 @@ namespace Pulumi.Equinix.Metal
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// ID of the organization where the connection is scoped to.
+        /// ID of the organization responsible for the connection. Applicable with type "dedicated"
         /// </summary>
         [Input("organizationId")]
         public Input<string>? OrganizationId { get; set; }
 
         /// <summary>
-        /// ID of the project where the connection is scoped to, must be set for.
+        /// ID of the project where the connection is scoped to. Required with type "shared"
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// Connection redundancy - redundant or primary.
+        /// Connection redundancy - redundant or primary
         /// </summary>
         [Input("redundancy", required: true)]
         public Input<string> Redundancy { get; set; } = null!;
 
         /// <summary>
-        /// Only used with shared connection. Type of service token to use for the connection, a_side or z_side
+        /// Only used with shared connection. Type of service token to use for the connection, a*side or z*side
         /// </summary>
         [Input("serviceTokenType")]
         public Input<string>? ServiceTokenType { get; set; }
 
         /// <summary>
-        /// Connection speed - Values must be in the format '&lt;number&gt;Mbps' or '&lt;number&gt;Gpbs', for example '100Mbps' or '50Gbps'. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
+        /// Connection speed -  Values must be in the format '\n\nMbps' or '\n\nGpbs', for example '100Mbps' or '50Gbps'.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
         /// </summary>
         [Input("speed")]
         public Input<string>? Speed { get; set; }
@@ -423,7 +581,7 @@ namespace Pulumi.Equinix.Metal
         private InputList<string>? _tags;
 
         /// <summary>
-        /// String list of tags.
+        /// Tags attached to the connection
         /// </summary>
         public InputList<string> Tags
         {
@@ -432,7 +590,7 @@ namespace Pulumi.Equinix.Metal
         }
 
         /// <summary>
-        /// Connection type - dedicated or shared.
+        /// Connection type - dedicated, shared or shared*port*vlan
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -441,7 +599,7 @@ namespace Pulumi.Equinix.Metal
         private InputList<int>? _vlans;
 
         /// <summary>
-        /// Only used with shared connection. Vlans to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection.
+        /// Only used with shared connection. VLANs to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection
         /// </summary>
         public InputList<int> Vlans
         {
@@ -453,8 +611,7 @@ namespace Pulumi.Equinix.Metal
         private InputList<string>? _vrfs;
 
         /// <summary>
-        /// Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant
-        /// connection
+        /// Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant connection
         /// </summary>
         public InputList<string> Vrfs
         {
@@ -471,37 +628,37 @@ namespace Pulumi.Equinix.Metal
     public sealed class InterconnectionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Fabric Authorization code to configure the Metal-Fabric Integration connection with Cloud Service Provider through Equinix Fabric with the equinix.fabric.Connection resource from the [Equinix Developer Portal](https://developer.equinix.com/dev-docs/fabric/getting-started/fabric-v4-apis/connect-metal-to-amazon-web-services).
+        /// Only used with Fabric Shared connection. Fabric uses this token to be able to give more detailed information about the Metal end of the network, when viewing resources from within Fabric.
         /// </summary>
         [Input("authorizationCode")]
         public Input<string>? AuthorizationCode { get; set; }
 
         /// <summary>
-        /// The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
+        /// The preferred email used for communication and notifications about the Equinix Fabric interconnection
         /// </summary>
         [Input("contactEmail")]
         public Input<string>? ContactEmail { get; set; }
 
         /// <summary>
-        /// Description for the connection resource.
+        /// Description of the connection resource
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Facility where the connection will be created. Use metro instead; read the facility to metro migration guide
+        /// Facility where the connection will be created
         /// </summary>
         [Input("facility")]
         public Input<string>? Facility { get; set; }
 
         /// <summary>
-        /// Metro where the connection will be created.
+        /// Metro where the connection will be created
         /// </summary>
         [Input("metro")]
         public Input<string>? Metro { get; set; }
 
         /// <summary>
-        /// Mode for connections in IBX facilities with the dedicated type - standard or tunnel. Default is standard.
+        /// Mode for connections in IBX facilities with the dedicated type - standard or tunnel
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
@@ -513,7 +670,7 @@ namespace Pulumi.Equinix.Metal
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// ID of the organization where the connection is scoped to.
+        /// ID of the organization responsible for the connection. Applicable with type "dedicated"
         /// </summary>
         [Input("organizationId")]
         public Input<string>? OrganizationId { get; set; }
@@ -522,7 +679,7 @@ namespace Pulumi.Equinix.Metal
         private InputList<Inputs.InterconnectionPortGetArgs>? _ports;
 
         /// <summary>
-        /// List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`). Schema of port is described in documentation of the equinix.metal.Interconnection datasource.
+        /// List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`)
         /// </summary>
         public InputList<Inputs.InterconnectionPortGetArgs> Ports
         {
@@ -531,19 +688,19 @@ namespace Pulumi.Equinix.Metal
         }
 
         /// <summary>
-        /// ID of the project where the connection is scoped to, must be set for.
+        /// ID of the project where the connection is scoped to. Required with type "shared"
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// Connection redundancy - redundant or primary.
+        /// Connection redundancy - redundant or primary
         /// </summary>
         [Input("redundancy")]
         public Input<string>? Redundancy { get; set; }
 
         /// <summary>
-        /// Only used with shared connection. Type of service token to use for the connection, a_side or z_side
+        /// Only used with shared connection. Type of service token to use for the connection, a*side or z*side
         /// </summary>
         [Input("serviceTokenType")]
         public Input<string>? ServiceTokenType { get; set; }
@@ -552,7 +709,7 @@ namespace Pulumi.Equinix.Metal
         private InputList<Inputs.InterconnectionServiceTokenGetArgs>? _serviceTokens;
 
         /// <summary>
-        /// List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the equinix.fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard). Scehma of service_token is described in documentation of the equinix.metal.Interconnection datasource.
+        /// Only used with shared connection. List of service tokens required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard)
         /// </summary>
         public InputList<Inputs.InterconnectionServiceTokenGetArgs> ServiceTokens
         {
@@ -561,13 +718,13 @@ namespace Pulumi.Equinix.Metal
         }
 
         /// <summary>
-        /// Connection speed - Values must be in the format '&lt;number&gt;Mbps' or '&lt;number&gt;Gpbs', for example '100Mbps' or '50Gbps'. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
+        /// Connection speed -  Values must be in the format '\n\nMbps' or '\n\nGpbs', for example '100Mbps' or '50Gbps'.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
         /// </summary>
         [Input("speed")]
         public Input<string>? Speed { get; set; }
 
         /// <summary>
-        /// Status of the connection resource.
+        /// Status of the connection resource
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -576,7 +733,7 @@ namespace Pulumi.Equinix.Metal
         private InputList<string>? _tags;
 
         /// <summary>
-        /// String list of tags.
+        /// Tags attached to the connection
         /// </summary>
         public InputList<string> Tags
         {
@@ -585,13 +742,13 @@ namespace Pulumi.Equinix.Metal
         }
 
         /// <summary>
-        /// (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the equinix.fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `service_tokens` instead.
+        /// Only used with shared connection. Fabric Token required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard)
         /// </summary>
         [Input("token")]
         public Input<string>? Token { get; set; }
 
         /// <summary>
-        /// Connection type - dedicated or shared.
+        /// Connection type - dedicated, shared or shared*port*vlan
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -600,7 +757,7 @@ namespace Pulumi.Equinix.Metal
         private InputList<int>? _vlans;
 
         /// <summary>
-        /// Only used with shared connection. Vlans to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection.
+        /// Only used with shared connection. VLANs to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection
         /// </summary>
         public InputList<int> Vlans
         {
@@ -612,8 +769,7 @@ namespace Pulumi.Equinix.Metal
         private InputList<string>? _vrfs;
 
         /// <summary>
-        /// Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant
-        /// connection
+        /// Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant connection
         /// </summary>
         public InputList<string> Vrfs
         {

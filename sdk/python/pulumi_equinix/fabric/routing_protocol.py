@@ -17,6 +17,7 @@ __all__ = ['RoutingProtocolArgs', 'RoutingProtocol']
 class RoutingProtocolArgs:
     def __init__(__self__, *,
                  connection_uuid: pulumi.Input[str],
+                 as_override_enabled: Optional[pulumi.Input[bool]] = None,
                  bfd: Optional[pulumi.Input['RoutingProtocolBfdArgs']] = None,
                  bgp_auth_key: Optional[pulumi.Input[str]] = None,
                  bgp_ipv4: Optional[pulumi.Input['RoutingProtocolBgpIpv4Args']] = None,
@@ -31,6 +32,7 @@ class RoutingProtocolArgs:
         """
         The set of arguments for constructing a RoutingProtocol resource.
         :param pulumi.Input[str] connection_uuid: Connection URI associated with Routing Protocol
+        :param pulumi.Input[bool] as_override_enabled: Enable AS number override
         :param pulumi.Input['RoutingProtocolBfdArgs'] bfd: Bidirectional Forwarding Detection
         :param pulumi.Input[str] bgp_auth_key: BGP authorization key
         :param pulumi.Input['RoutingProtocolBgpIpv4Args'] bgp_ipv4: Routing Protocol BGP IPv4
@@ -44,6 +46,8 @@ class RoutingProtocolArgs:
         :param pulumi.Input[str] uuid: Equinix-assigned routing protocol identifier
         """
         pulumi.set(__self__, "connection_uuid", connection_uuid)
+        if as_override_enabled is not None:
+            pulumi.set(__self__, "as_override_enabled", as_override_enabled)
         if bfd is not None:
             pulumi.set(__self__, "bfd", bfd)
         if bgp_auth_key is not None:
@@ -78,6 +82,18 @@ class RoutingProtocolArgs:
     @connection_uuid.setter
     def connection_uuid(self, value: pulumi.Input[str]):
         pulumi.set(self, "connection_uuid", value)
+
+    @property
+    @pulumi.getter(name="asOverrideEnabled")
+    def as_override_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable AS number override
+        """
+        return pulumi.get(self, "as_override_enabled")
+
+    @as_override_enabled.setter
+    def as_override_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "as_override_enabled", value)
 
     @property
     @pulumi.getter
@@ -215,6 +231,7 @@ class RoutingProtocolArgs:
 @pulumi.input_type
 class _RoutingProtocolState:
     def __init__(__self__, *,
+                 as_override_enabled: Optional[pulumi.Input[bool]] = None,
                  bfd: Optional[pulumi.Input['RoutingProtocolBfdArgs']] = None,
                  bgp_auth_key: Optional[pulumi.Input[str]] = None,
                  bgp_ipv4: Optional[pulumi.Input['RoutingProtocolBgpIpv4Args']] = None,
@@ -235,6 +252,7 @@ class _RoutingProtocolState:
                  uuid: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering RoutingProtocol resources.
+        :param pulumi.Input[bool] as_override_enabled: Enable AS number override
         :param pulumi.Input['RoutingProtocolBfdArgs'] bfd: Bidirectional Forwarding Detection
         :param pulumi.Input[str] bgp_auth_key: BGP authorization key
         :param pulumi.Input['RoutingProtocolBgpIpv4Args'] bgp_ipv4: Routing Protocol BGP IPv4
@@ -254,6 +272,8 @@ class _RoutingProtocolState:
         :param pulumi.Input[str] type: Defines the routing protocol type like BGP or DIRECT
         :param pulumi.Input[str] uuid: Equinix-assigned routing protocol identifier
         """
+        if as_override_enabled is not None:
+            pulumi.set(__self__, "as_override_enabled", as_override_enabled)
         if bfd is not None:
             pulumi.set(__self__, "bfd", bfd)
         if bgp_auth_key is not None:
@@ -290,6 +310,18 @@ class _RoutingProtocolState:
             pulumi.set(__self__, "type", type)
         if uuid is not None:
             pulumi.set(__self__, "uuid", uuid)
+
+    @property
+    @pulumi.getter(name="asOverrideEnabled")
+    def as_override_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable AS number override
+        """
+        return pulumi.get(self, "as_override_enabled")
+
+    @as_override_enabled.setter
+    def as_override_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "as_override_enabled", value)
 
     @property
     @pulumi.getter
@@ -513,6 +545,7 @@ class RoutingProtocol(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 as_override_enabled: Optional[pulumi.Input[bool]] = None,
                  bfd: Optional[pulumi.Input[Union['RoutingProtocolBfdArgs', 'RoutingProtocolBfdArgsDict']]] = None,
                  bgp_auth_key: Optional[pulumi.Input[str]] = None,
                  bgp_ipv4: Optional[pulumi.Input[Union['RoutingProtocolBgpIpv4Args', 'RoutingProtocolBgpIpv4ArgsDict']]] = None,
@@ -602,6 +635,7 @@ class RoutingProtocol(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] as_override_enabled: Enable AS number override
         :param pulumi.Input[Union['RoutingProtocolBfdArgs', 'RoutingProtocolBfdArgsDict']] bfd: Bidirectional Forwarding Detection
         :param pulumi.Input[str] bgp_auth_key: BGP authorization key
         :param pulumi.Input[Union['RoutingProtocolBgpIpv4Args', 'RoutingProtocolBgpIpv4ArgsDict']] bgp_ipv4: Routing Protocol BGP IPv4
@@ -710,6 +744,7 @@ class RoutingProtocol(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 as_override_enabled: Optional[pulumi.Input[bool]] = None,
                  bfd: Optional[pulumi.Input[Union['RoutingProtocolBfdArgs', 'RoutingProtocolBfdArgsDict']]] = None,
                  bgp_auth_key: Optional[pulumi.Input[str]] = None,
                  bgp_ipv4: Optional[pulumi.Input[Union['RoutingProtocolBgpIpv4Args', 'RoutingProtocolBgpIpv4ArgsDict']]] = None,
@@ -731,6 +766,7 @@ class RoutingProtocol(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RoutingProtocolArgs.__new__(RoutingProtocolArgs)
 
+            __props__.__dict__["as_override_enabled"] = as_override_enabled
             __props__.__dict__["bfd"] = bfd
             __props__.__dict__["bgp_auth_key"] = bgp_auth_key
             __props__.__dict__["bgp_ipv4"] = bgp_ipv4
@@ -761,6 +797,7 @@ class RoutingProtocol(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            as_override_enabled: Optional[pulumi.Input[bool]] = None,
             bfd: Optional[pulumi.Input[Union['RoutingProtocolBfdArgs', 'RoutingProtocolBfdArgsDict']]] = None,
             bgp_auth_key: Optional[pulumi.Input[str]] = None,
             bgp_ipv4: Optional[pulumi.Input[Union['RoutingProtocolBgpIpv4Args', 'RoutingProtocolBgpIpv4ArgsDict']]] = None,
@@ -786,6 +823,7 @@ class RoutingProtocol(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] as_override_enabled: Enable AS number override
         :param pulumi.Input[Union['RoutingProtocolBfdArgs', 'RoutingProtocolBfdArgsDict']] bfd: Bidirectional Forwarding Detection
         :param pulumi.Input[str] bgp_auth_key: BGP authorization key
         :param pulumi.Input[Union['RoutingProtocolBgpIpv4Args', 'RoutingProtocolBgpIpv4ArgsDict']] bgp_ipv4: Routing Protocol BGP IPv4
@@ -809,6 +847,7 @@ class RoutingProtocol(pulumi.CustomResource):
 
         __props__ = _RoutingProtocolState.__new__(_RoutingProtocolState)
 
+        __props__.__dict__["as_override_enabled"] = as_override_enabled
         __props__.__dict__["bfd"] = bfd
         __props__.__dict__["bgp_auth_key"] = bgp_auth_key
         __props__.__dict__["bgp_ipv4"] = bgp_ipv4
@@ -828,6 +867,14 @@ class RoutingProtocol(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         __props__.__dict__["uuid"] = uuid
         return RoutingProtocol(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="asOverrideEnabled")
+    def as_override_enabled(self) -> pulumi.Output[bool]:
+        """
+        Enable AS number override
+        """
+        return pulumi.get(self, "as_override_enabled")
 
     @property
     @pulumi.getter
