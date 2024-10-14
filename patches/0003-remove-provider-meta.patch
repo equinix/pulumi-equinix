@@ -6,10 +6,10 @@ Subject: [PATCH] remove provider meta
 Signed-off-by: Oscar Cobles <oscar.cobles@eu.equinix.com>
 
 diff --git a/equinix/provider.go b/equinix/provider.go
-index 4704398..a622712 100644
+index b96780f..4603605 100644
 --- a/equinix/provider.go
 +++ b/equinix/provider.go
-@@ -138,12 +138,6 @@ func Provider() *schema.Provider {
+@@ -149,12 +149,6 @@ func Provider() *schema.Provider {
  			"equinix_metal_bgp_session":          resourceMetalBGPSession(),
  			"equinix_metal_port_vlan_attachment": resourceMetalPortVlanAttachment(),
  		},
@@ -22,7 +22,7 @@ index 4704398..a622712 100644
  	}
  
  	provider.ConfigureContextFunc = func(ctx context.Context, d *schema.ResourceData) (interface{}, diag.Diagnostics) {
-@@ -152,10 +146,6 @@ func Provider() *schema.Provider {
+@@ -163,10 +157,6 @@ func Provider() *schema.Provider {
  	return provider
  }
  
@@ -33,7 +33,7 @@ index 4704398..a622712 100644
  func configureProvider(ctx context.Context, d *schema.ResourceData, p *schema.Provider) (interface{}, diag.Diagnostics) {
  	mrws := d.Get("max_retry_wait_seconds").(int)
  	rt := d.Get("request_timeout").(int)
-@@ -171,11 +161,7 @@ func configureProvider(ctx context.Context, d *schema.ResourceData, p *schema.Pr
+@@ -182,11 +172,7 @@ func configureProvider(ctx context.Context, d *schema.ResourceData, p *schema.Pr
  		MaxRetries:     d.Get("max_retries").(int),
  		MaxRetryWait:   time.Duration(mrws) * time.Second,
  	}
