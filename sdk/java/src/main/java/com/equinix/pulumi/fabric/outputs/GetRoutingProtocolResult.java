@@ -13,6 +13,7 @@ import com.equinix.pulumi.fabric.outputs.GetRoutingProtocolDirectIpv6;
 import com.equinix.pulumi.fabric.outputs.GetRoutingProtocolOperation;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -20,6 +21,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRoutingProtocolResult {
+    /**
+     * @return Enable AS number override
+     * 
+     */
+    private Boolean asOverrideEnabled;
     /**
      * @return Bidirectional Forwarding Detection
      * 
@@ -117,6 +123,13 @@ public final class GetRoutingProtocolResult {
     private String uuid;
 
     private GetRoutingProtocolResult() {}
+    /**
+     * @return Enable AS number override
+     * 
+     */
+    public Boolean asOverrideEnabled() {
+        return this.asOverrideEnabled;
+    }
     /**
      * @return Bidirectional Forwarding Detection
      * 
@@ -260,6 +273,7 @@ public final class GetRoutingProtocolResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Boolean asOverrideEnabled;
         private GetRoutingProtocolBfd bfd;
         private String bgpAuthKey;
         private GetRoutingProtocolBgpIpv4 bgpIpv4;
@@ -282,6 +296,7 @@ public final class GetRoutingProtocolResult {
         public Builder() {}
         public Builder(GetRoutingProtocolResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.asOverrideEnabled = defaults.asOverrideEnabled;
     	      this.bfd = defaults.bfd;
     	      this.bgpAuthKey = defaults.bgpAuthKey;
     	      this.bgpIpv4 = defaults.bgpIpv4;
@@ -303,6 +318,14 @@ public final class GetRoutingProtocolResult {
     	      this.uuid = defaults.uuid;
         }
 
+        @CustomType.Setter
+        public Builder asOverrideEnabled(Boolean asOverrideEnabled) {
+            if (asOverrideEnabled == null) {
+              throw new MissingRequiredPropertyException("GetRoutingProtocolResult", "asOverrideEnabled");
+            }
+            this.asOverrideEnabled = asOverrideEnabled;
+            return this;
+        }
         @CustomType.Setter
         public Builder bfd(GetRoutingProtocolBfd bfd) {
             if (bfd == null) {
@@ -466,6 +489,7 @@ public final class GetRoutingProtocolResult {
         }
         public GetRoutingProtocolResult build() {
             final var _resultValue = new GetRoutingProtocolResult();
+            _resultValue.asOverrideEnabled = asOverrideEnabled;
             _resultValue.bfd = bfd;
             _resultValue.bgpAuthKey = bgpAuthKey;
             _resultValue.bgpIpv4 = bgpIpv4;

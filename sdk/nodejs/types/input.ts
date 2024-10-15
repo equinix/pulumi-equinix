@@ -1459,6 +1459,18 @@ export namespace fabric {
          * Equinix side peering ip
          */
         equinixPeerIp?: pulumi.Input<string>;
+        /**
+         * Inbound Multi Exit Discriminator attribute
+         */
+        inboundMed?: pulumi.Input<number>;
+        /**
+         * AS path prepend count. One of: 0, 1, 3, 5
+         */
+        outboundAsPrependCount?: pulumi.Input<string>;
+        /**
+         * Outbound Multi Exit Discriminator attribute
+         */
+        outboundMed?: pulumi.Input<number>;
     }
 
     export interface RoutingProtocolBgpIpv6 {
@@ -1474,6 +1486,18 @@ export namespace fabric {
          * Equinix side peering ip
          */
         equinixPeerIp?: pulumi.Input<string>;
+        /**
+         * Inbound Multi Exit Discriminator attribute
+         */
+        inboundMed?: pulumi.Input<number>;
+        /**
+         * AS path prepend count. One of: 0, 1, 3, 5
+         */
+        outboundAsPrependCount?: pulumi.Input<string>;
+        /**
+         * Outbound Multi Exit Discriminator attribute
+         */
+        outboundMed?: pulumi.Input<number>;
     }
 
     export interface RoutingProtocolChange {
@@ -2268,18 +2292,9 @@ export namespace metal {
     export interface InterconnectionPort {
         id: pulumi.Input<string>;
         linkStatus: pulumi.Input<string>;
-        /**
-         * Name of the connection resource
-         */
         name: pulumi.Input<string>;
         role: pulumi.Input<string>;
-        /**
-         * Connection speed - Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
-         */
         speed: pulumi.Input<number>;
-        /**
-         * Status of the connection resource.
-         */
         status: pulumi.Input<string>;
         virtualCircuitIds: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -2290,9 +2305,6 @@ export namespace metal {
         maxAllowedSpeed: pulumi.Input<string>;
         role: pulumi.Input<string>;
         state: pulumi.Input<string>;
-        /**
-         * Connection type - dedicated or shared.
-         */
         type: pulumi.Input<string>;
     }
 
@@ -2869,7 +2881,7 @@ export namespace networkedge {
         /**
          * Reference by name to previously provisioned public SSH key
          */
-        keyName: pulumi.Input<string>;
+        keyName?: pulumi.Input<string>;
         /**
          * username associated with given key.
          */
@@ -2880,7 +2892,7 @@ export namespace networkedge {
         /**
          * Reference by name to previously provisioned public SSH key
          */
-        keyName: pulumi.Input<string>;
+        keyName?: pulumi.Input<string>;
         /**
          * username associated with given key.
          */

@@ -15,8 +15,8 @@ namespace Pulumi.Equinix.NetworkEdge.Inputs
         /// <summary>
         /// Reference by name to previously provisioned public SSH key
         /// </summary>
-        [Input("keyName", required: true)]
-        public Input<string> KeyName { get; set; } = null!;
+        [Input("keyName")]
+        public Input<string>? KeyName { get; set; }
 
         /// <summary>
         /// username associated with given key.

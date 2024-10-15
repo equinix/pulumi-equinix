@@ -120,7 +120,7 @@ namespace Pulumi.Equinix.Metal
     public partial class Vrf : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Description of the VRF.
+        /// Description of the VRF
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -138,7 +138,7 @@ namespace Pulumi.Equinix.Metal
         public Output<int> LocalAsn { get; private set; } = null!;
 
         /// <summary>
-        /// Metro ID or Code where the VRF will be deployed.
+        /// Metro ID or Code where the VRF will be deployed
         /// </summary>
         [Output("metro")]
         public Output<string> Metro { get; private set; } = null!;
@@ -150,7 +150,7 @@ namespace Pulumi.Equinix.Metal
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Project ID where the VRF will be deployed.
+        /// Project ID where the VRF will be deployed
         /// </summary>
         [Output("projectId")]
         public Output<string> ProjectId { get; private set; } = null!;
@@ -203,7 +203,7 @@ namespace Pulumi.Equinix.Metal
     public sealed class VrfArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Description of the VRF.
+        /// Description of the VRF
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -227,7 +227,7 @@ namespace Pulumi.Equinix.Metal
         public Input<int>? LocalAsn { get; set; }
 
         /// <summary>
-        /// Metro ID or Code where the VRF will be deployed.
+        /// Metro ID or Code where the VRF will be deployed
         /// </summary>
         [Input("metro", required: true)]
         public Input<string> Metro { get; set; } = null!;
@@ -239,7 +239,7 @@ namespace Pulumi.Equinix.Metal
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Project ID where the VRF will be deployed.
+        /// Project ID where the VRF will be deployed
         /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
@@ -253,7 +253,7 @@ namespace Pulumi.Equinix.Metal
     public sealed class VrfState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Description of the VRF.
+        /// Description of the VRF
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -277,7 +277,7 @@ namespace Pulumi.Equinix.Metal
         public Input<int>? LocalAsn { get; set; }
 
         /// <summary>
-        /// Metro ID or Code where the VRF will be deployed.
+        /// Metro ID or Code where the VRF will be deployed
         /// </summary>
         [Input("metro")]
         public Input<string>? Metro { get; set; }
@@ -289,7 +289,7 @@ namespace Pulumi.Equinix.Metal
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Project ID where the VRF will be deployed.
+        /// Project ID where the VRF will be deployed
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }

@@ -19,14 +19,14 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
     public static final InterconnectionArgs Empty = new InterconnectionArgs();
 
     /**
-     * The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
+     * The preferred email used for communication and notifications about the Equinix Fabric interconnection
      * 
      */
     @Import(name="contactEmail")
     private @Nullable Output<String> contactEmail;
 
     /**
-     * @return The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
+     * @return The preferred email used for communication and notifications about the Equinix Fabric interconnection
      * 
      */
     public Optional<Output<String>> contactEmail() {
@@ -34,14 +34,14 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Description for the connection resource.
+     * Description of the connection resource
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description for the connection resource.
+     * @return Description of the connection resource
      * 
      */
     public Optional<Output<String>> description() {
@@ -49,7 +49,7 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Facility where the connection will be created. Use metro instead; read the facility to metro migration guide
+     * Facility where the connection will be created
      * 
      * @deprecated
      * Use metro instead of facility. For more information, read the migration guide.
@@ -60,7 +60,7 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
     private @Nullable Output<String> facility;
 
     /**
-     * @return Facility where the connection will be created. Use metro instead; read the facility to metro migration guide
+     * @return Facility where the connection will be created
      * 
      * @deprecated
      * Use metro instead of facility. For more information, read the migration guide.
@@ -72,14 +72,14 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Metro where the connection will be created.
+     * Metro where the connection will be created
      * 
      */
     @Import(name="metro")
     private @Nullable Output<String> metro;
 
     /**
-     * @return Metro where the connection will be created.
+     * @return Metro where the connection will be created
      * 
      */
     public Optional<Output<String>> metro() {
@@ -87,14 +87,14 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Mode for connections in IBX facilities with the dedicated type - standard or tunnel. Default is standard.
+     * Mode for connections in IBX facilities with the dedicated type - standard or tunnel
      * 
      */
     @Import(name="mode")
     private @Nullable Output<String> mode;
 
     /**
-     * @return Mode for connections in IBX facilities with the dedicated type - standard or tunnel. Default is standard.
+     * @return Mode for connections in IBX facilities with the dedicated type - standard or tunnel
      * 
      */
     public Optional<Output<String>> mode() {
@@ -117,14 +117,14 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * ID of the organization where the connection is scoped to.
+     * ID of the organization responsible for the connection. Applicable with type &#34;dedicated&#34;
      * 
      */
     @Import(name="organizationId")
     private @Nullable Output<String> organizationId;
 
     /**
-     * @return ID of the organization where the connection is scoped to.
+     * @return ID of the organization responsible for the connection. Applicable with type &#34;dedicated&#34;
      * 
      */
     public Optional<Output<String>> organizationId() {
@@ -132,14 +132,14 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * ID of the project where the connection is scoped to, must be set for.
+     * ID of the project where the connection is scoped to. Required with type &#34;shared&#34;
      * 
      */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
     /**
-     * @return ID of the project where the connection is scoped to, must be set for.
+     * @return ID of the project where the connection is scoped to. Required with type &#34;shared&#34;
      * 
      */
     public Optional<Output<String>> projectId() {
@@ -147,14 +147,14 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Connection redundancy - redundant or primary.
+     * Connection redundancy - redundant or primary
      * 
      */
     @Import(name="redundancy", required=true)
     private Output<String> redundancy;
 
     /**
-     * @return Connection redundancy - redundant or primary.
+     * @return Connection redundancy - redundant or primary
      * 
      */
     public Output<String> redundancy() {
@@ -162,14 +162,14 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Only used with shared connection. Type of service token to use for the connection, a_side or z_side
+     * Only used with shared connection. Type of service token to use for the connection, a*side or z*side
      * 
      */
     @Import(name="serviceTokenType")
     private @Nullable Output<String> serviceTokenType;
 
     /**
-     * @return Only used with shared connection. Type of service token to use for the connection, a_side or z_side
+     * @return Only used with shared connection. Type of service token to use for the connection, a*side or z*side
      * 
      */
     public Optional<Output<String>> serviceTokenType() {
@@ -177,14 +177,14 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Connection speed - Values must be in the format &#39;&lt;number&gt;Mbps&#39; or &#39;&lt;number&gt;Gpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
+     * Connection speed -  Values must be in the format &#39;\n\nMbps&#39; or &#39;\n\nGpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
      * 
      */
     @Import(name="speed")
     private @Nullable Output<String> speed;
 
     /**
-     * @return Connection speed - Values must be in the format &#39;&lt;number&gt;Mbps&#39; or &#39;&lt;number&gt;Gpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
+     * @return Connection speed -  Values must be in the format &#39;\n\nMbps&#39; or &#39;\n\nGpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
      * 
      */
     public Optional<Output<String>> speed() {
@@ -192,14 +192,14 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * String list of tags.
+     * Tags attached to the connection
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return String list of tags.
+     * @return Tags attached to the connection
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -207,14 +207,14 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Connection type - dedicated or shared.
+     * Connection type - dedicated, shared or shared*port*vlan
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return Connection type - dedicated or shared.
+     * @return Connection type - dedicated, shared or shared*port*vlan
      * 
      */
     public Output<String> type() {
@@ -222,14 +222,14 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Only used with shared connection. Vlans to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection.
+     * Only used with shared connection. VLANs to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection
      * 
      */
     @Import(name="vlans")
     private @Nullable Output<List<Integer>> vlans;
 
     /**
-     * @return Only used with shared connection. Vlans to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection.
+     * @return Only used with shared connection. VLANs to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection
      * 
      */
     public Optional<Output<List<Integer>>> vlans() {
@@ -237,16 +237,14 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant
-     * connection
+     * Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant connection
      * 
      */
     @Import(name="vrfs")
     private @Nullable Output<List<String>> vrfs;
 
     /**
-     * @return Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant
-     * connection
+     * @return Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant connection
      * 
      */
     public Optional<Output<List<String>>> vrfs() {
@@ -292,7 +290,7 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param contactEmail The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
+         * @param contactEmail The preferred email used for communication and notifications about the Equinix Fabric interconnection
          * 
          * @return builder
          * 
@@ -303,7 +301,7 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param contactEmail The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
+         * @param contactEmail The preferred email used for communication and notifications about the Equinix Fabric interconnection
          * 
          * @return builder
          * 
@@ -313,7 +311,7 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param description Description for the connection resource.
+         * @param description Description of the connection resource
          * 
          * @return builder
          * 
@@ -324,7 +322,7 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param description Description for the connection resource.
+         * @param description Description of the connection resource
          * 
          * @return builder
          * 
@@ -334,7 +332,7 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param facility Facility where the connection will be created. Use metro instead; read the facility to metro migration guide
+         * @param facility Facility where the connection will be created
          * 
          * @return builder
          * 
@@ -349,7 +347,7 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param facility Facility where the connection will be created. Use metro instead; read the facility to metro migration guide
+         * @param facility Facility where the connection will be created
          * 
          * @return builder
          * 
@@ -363,7 +361,7 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param metro Metro where the connection will be created.
+         * @param metro Metro where the connection will be created
          * 
          * @return builder
          * 
@@ -374,7 +372,7 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param metro Metro where the connection will be created.
+         * @param metro Metro where the connection will be created
          * 
          * @return builder
          * 
@@ -384,7 +382,7 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param mode Mode for connections in IBX facilities with the dedicated type - standard or tunnel. Default is standard.
+         * @param mode Mode for connections in IBX facilities with the dedicated type - standard or tunnel
          * 
          * @return builder
          * 
@@ -395,7 +393,7 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param mode Mode for connections in IBX facilities with the dedicated type - standard or tunnel. Default is standard.
+         * @param mode Mode for connections in IBX facilities with the dedicated type - standard or tunnel
          * 
          * @return builder
          * 
@@ -426,7 +424,7 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param organizationId ID of the organization where the connection is scoped to.
+         * @param organizationId ID of the organization responsible for the connection. Applicable with type &#34;dedicated&#34;
          * 
          * @return builder
          * 
@@ -437,7 +435,7 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param organizationId ID of the organization where the connection is scoped to.
+         * @param organizationId ID of the organization responsible for the connection. Applicable with type &#34;dedicated&#34;
          * 
          * @return builder
          * 
@@ -447,7 +445,7 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param projectId ID of the project where the connection is scoped to, must be set for.
+         * @param projectId ID of the project where the connection is scoped to. Required with type &#34;shared&#34;
          * 
          * @return builder
          * 
@@ -458,7 +456,7 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param projectId ID of the project where the connection is scoped to, must be set for.
+         * @param projectId ID of the project where the connection is scoped to. Required with type &#34;shared&#34;
          * 
          * @return builder
          * 
@@ -468,7 +466,7 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param redundancy Connection redundancy - redundant or primary.
+         * @param redundancy Connection redundancy - redundant or primary
          * 
          * @return builder
          * 
@@ -479,7 +477,7 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param redundancy Connection redundancy - redundant or primary.
+         * @param redundancy Connection redundancy - redundant or primary
          * 
          * @return builder
          * 
@@ -489,7 +487,7 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param serviceTokenType Only used with shared connection. Type of service token to use for the connection, a_side or z_side
+         * @param serviceTokenType Only used with shared connection. Type of service token to use for the connection, a*side or z*side
          * 
          * @return builder
          * 
@@ -500,7 +498,7 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param serviceTokenType Only used with shared connection. Type of service token to use for the connection, a_side or z_side
+         * @param serviceTokenType Only used with shared connection. Type of service token to use for the connection, a*side or z*side
          * 
          * @return builder
          * 
@@ -510,7 +508,7 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param speed Connection speed - Values must be in the format &#39;&lt;number&gt;Mbps&#39; or &#39;&lt;number&gt;Gpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
+         * @param speed Connection speed -  Values must be in the format &#39;\n\nMbps&#39; or &#39;\n\nGpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
          * 
          * @return builder
          * 
@@ -521,7 +519,7 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param speed Connection speed - Values must be in the format &#39;&lt;number&gt;Mbps&#39; or &#39;&lt;number&gt;Gpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
+         * @param speed Connection speed -  Values must be in the format &#39;\n\nMbps&#39; or &#39;\n\nGpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
          * 
          * @return builder
          * 
@@ -531,7 +529,7 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param tags String list of tags.
+         * @param tags Tags attached to the connection
          * 
          * @return builder
          * 
@@ -542,7 +540,7 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param tags String list of tags.
+         * @param tags Tags attached to the connection
          * 
          * @return builder
          * 
@@ -552,7 +550,7 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param tags String list of tags.
+         * @param tags Tags attached to the connection
          * 
          * @return builder
          * 
@@ -562,7 +560,7 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param type Connection type - dedicated or shared.
+         * @param type Connection type - dedicated, shared or shared*port*vlan
          * 
          * @return builder
          * 
@@ -573,7 +571,7 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param type Connection type - dedicated or shared.
+         * @param type Connection type - dedicated, shared or shared*port*vlan
          * 
          * @return builder
          * 
@@ -583,7 +581,7 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param vlans Only used with shared connection. Vlans to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection.
+         * @param vlans Only used with shared connection. VLANs to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection
          * 
          * @return builder
          * 
@@ -594,7 +592,7 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param vlans Only used with shared connection. Vlans to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection.
+         * @param vlans Only used with shared connection. VLANs to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection
          * 
          * @return builder
          * 
@@ -604,7 +602,7 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param vlans Only used with shared connection. Vlans to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection.
+         * @param vlans Only used with shared connection. VLANs to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection
          * 
          * @return builder
          * 
@@ -614,8 +612,7 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param vrfs Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant
-         * connection
+         * @param vrfs Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant connection
          * 
          * @return builder
          * 
@@ -626,8 +623,7 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param vrfs Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant
-         * connection
+         * @param vrfs Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant connection
          * 
          * @return builder
          * 
@@ -637,8 +633,7 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param vrfs Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant
-         * connection
+         * @param vrfs Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant connection
          * 
          * @return builder
          * 

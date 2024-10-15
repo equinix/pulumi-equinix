@@ -18,9 +18,6 @@ namespace Pulumi.Equinix.Metal.Outputs
         public readonly string MaxAllowedSpeed;
         public readonly string Role;
         public readonly string State;
-        /// <summary>
-        /// Connection type - dedicated or shared.
-        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]
