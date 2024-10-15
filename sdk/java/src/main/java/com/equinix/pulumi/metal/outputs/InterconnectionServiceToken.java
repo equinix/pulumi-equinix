@@ -15,10 +15,6 @@ public final class InterconnectionServiceToken {
     private String maxAllowedSpeed;
     private String role;
     private String state;
-    /**
-     * @return Connection type - dedicated or shared.
-     * 
-     */
     private String type;
 
     private InterconnectionServiceToken() {}
@@ -37,10 +33,6 @@ public final class InterconnectionServiceToken {
     public String state() {
         return this.state;
     }
-    /**
-     * @return Connection type - dedicated or shared.
-     * 
-     */
     public String type() {
         return this.type;
     }

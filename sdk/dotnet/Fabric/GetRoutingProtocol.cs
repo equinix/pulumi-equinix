@@ -150,6 +150,10 @@ namespace Pulumi.Equinix.Fabric
     public sealed class GetRoutingProtocolResult
     {
         /// <summary>
+        /// Enable AS number override
+        /// </summary>
+        public readonly bool AsOverrideEnabled;
+        /// <summary>
         /// Bidirectional Forwarding Detection
         /// </summary>
         public readonly Outputs.GetRoutingProtocolBfdResult Bfd;
@@ -228,6 +232,8 @@ namespace Pulumi.Equinix.Fabric
 
         [OutputConstructor]
         private GetRoutingProtocolResult(
+            bool asOverrideEnabled,
+
             Outputs.GetRoutingProtocolBfdResult bfd,
 
             string bgpAuthKey,
@@ -266,6 +272,7 @@ namespace Pulumi.Equinix.Fabric
 
             string uuid)
         {
+            AsOverrideEnabled = asOverrideEnabled;
             Bfd = bfd;
             BgpAuthKey = bgpAuthKey;
             BgpIpv4 = bgpIpv4;

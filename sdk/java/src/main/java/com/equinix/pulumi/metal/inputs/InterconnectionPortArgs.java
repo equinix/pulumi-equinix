@@ -30,17 +30,9 @@ public final class InterconnectionPortArgs extends com.pulumi.resources.Resource
         return this.linkStatus;
     }
 
-    /**
-     * Name of the connection resource
-     * 
-     */
     @Import(name="name", required=true)
     private Output<String> name;
 
-    /**
-     * @return Name of the connection resource
-     * 
-     */
     public Output<String> name() {
         return this.name;
     }
@@ -52,32 +44,16 @@ public final class InterconnectionPortArgs extends com.pulumi.resources.Resource
         return this.role;
     }
 
-    /**
-     * Connection speed - Values must be in the format &#39;&lt;number&gt;Mbps&#39; or &#39;&lt;number&gt;Gpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
-     * 
-     */
     @Import(name="speed", required=true)
     private Output<Integer> speed;
 
-    /**
-     * @return Connection speed - Values must be in the format &#39;&lt;number&gt;Mbps&#39; or &#39;&lt;number&gt;Gpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
-     * 
-     */
     public Output<Integer> speed() {
         return this.speed;
     }
 
-    /**
-     * Status of the connection resource.
-     * 
-     */
     @Import(name="status", required=true)
     private Output<String> status;
 
-    /**
-     * @return Status of the connection resource.
-     * 
-     */
     public Output<String> status() {
         return this.status;
     }
@@ -137,23 +113,11 @@ public final class InterconnectionPortArgs extends com.pulumi.resources.Resource
             return linkStatus(Output.of(linkStatus));
         }
 
-        /**
-         * @param name Name of the connection resource
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name Name of the connection resource
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
@@ -167,44 +131,20 @@ public final class InterconnectionPortArgs extends com.pulumi.resources.Resource
             return role(Output.of(role));
         }
 
-        /**
-         * @param speed Connection speed - Values must be in the format &#39;&lt;number&gt;Mbps&#39; or &#39;&lt;number&gt;Gpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
-         * 
-         * @return builder
-         * 
-         */
         public Builder speed(Output<Integer> speed) {
             $.speed = speed;
             return this;
         }
 
-        /**
-         * @param speed Connection speed - Values must be in the format &#39;&lt;number&gt;Mbps&#39; or &#39;&lt;number&gt;Gpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
-         * 
-         * @return builder
-         * 
-         */
         public Builder speed(Integer speed) {
             return speed(Output.of(speed));
         }
 
-        /**
-         * @param status Status of the connection resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder status(Output<String> status) {
             $.status = status;
             return this;
         }
 
-        /**
-         * @param status Status of the connection resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder status(String status) {
             return status(Output.of(status));
         }

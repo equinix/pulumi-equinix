@@ -77,6 +77,8 @@ type LookupRoutingProtocolArgs struct {
 
 // A collection of values returned by getRoutingProtocol.
 type LookupRoutingProtocolResult struct {
+	// Enable AS number override
+	AsOverrideEnabled bool `pulumi:"asOverrideEnabled"`
 	// Bidirectional Forwarding Detection
 	Bfd GetRoutingProtocolBfd `pulumi:"bfd"`
 	// BGP authorization key
@@ -161,6 +163,11 @@ func (o LookupRoutingProtocolResultOutput) ToLookupRoutingProtocolResultOutput()
 
 func (o LookupRoutingProtocolResultOutput) ToLookupRoutingProtocolResultOutputWithContext(ctx context.Context) LookupRoutingProtocolResultOutput {
 	return o
+}
+
+// Enable AS number override
+func (o LookupRoutingProtocolResultOutput) AsOverrideEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupRoutingProtocolResult) bool { return v.AsOverrideEnabled }).(pulumi.BoolOutput)
 }
 
 // Bidirectional Forwarding Detection
