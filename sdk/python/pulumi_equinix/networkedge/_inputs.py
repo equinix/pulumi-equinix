@@ -1912,26 +1912,15 @@ class DeviceSecondaryDeviceInterfaceArgs:
 @pulumi.input_type
 class DeviceSecondaryDeviceSshKeyArgs:
     def __init__(__self__, *,
-                 key_name: pulumi.Input[str],
-                 username: pulumi.Input[str]):
+                 username: pulumi.Input[str],
+                 key_name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] key_name: Reference by name to previously provisioned public SSH key
         :param pulumi.Input[str] username: username associated with given key.
+        :param pulumi.Input[str] key_name: Reference by name to previously provisioned public SSH key
         """
-        pulumi.set(__self__, "key_name", key_name)
         pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter(name="keyName")
-    def key_name(self) -> pulumi.Input[str]:
-        """
-        Reference by name to previously provisioned public SSH key
-        """
-        return pulumi.get(self, "key_name")
-
-    @key_name.setter
-    def key_name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "key_name", value)
+        if key_name is not None:
+            pulumi.set(__self__, "key_name", key_name)
 
     @property
     @pulumi.getter
@@ -1944,31 +1933,32 @@ class DeviceSecondaryDeviceSshKeyArgs:
     @username.setter
     def username(self, value: pulumi.Input[str]):
         pulumi.set(self, "username", value)
+
+    @property
+    @pulumi.getter(name="keyName")
+    def key_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Reference by name to previously provisioned public SSH key
+        """
+        return pulumi.get(self, "key_name")
+
+    @key_name.setter
+    def key_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_name", value)
 
 
 @pulumi.input_type
 class DeviceSshKeyArgs:
     def __init__(__self__, *,
-                 key_name: pulumi.Input[str],
-                 username: pulumi.Input[str]):
+                 username: pulumi.Input[str],
+                 key_name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] key_name: Reference by name to previously provisioned public SSH key
         :param pulumi.Input[str] username: username associated with given key.
+        :param pulumi.Input[str] key_name: Reference by name to previously provisioned public SSH key
         """
-        pulumi.set(__self__, "key_name", key_name)
         pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter(name="keyName")
-    def key_name(self) -> pulumi.Input[str]:
-        """
-        Reference by name to previously provisioned public SSH key
-        """
-        return pulumi.get(self, "key_name")
-
-    @key_name.setter
-    def key_name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "key_name", value)
+        if key_name is not None:
+            pulumi.set(__self__, "key_name", key_name)
 
     @property
     @pulumi.getter
@@ -1981,5 +1971,17 @@ class DeviceSshKeyArgs:
     @username.setter
     def username(self, value: pulumi.Input[str]):
         pulumi.set(self, "username", value)
+
+    @property
+    @pulumi.getter(name="keyName")
+    def key_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Reference by name to previously provisioned public SSH key
+        """
+        return pulumi.get(self, "key_name")
+
+    @key_name.setter
+    def key_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_name", value)
 
 

@@ -4012,6 +4012,18 @@ export namespace fabric {
          * Equinix side peering ip
          */
         equinixPeerIp: string;
+        /**
+         * Inbound Multi Exit Discriminator attribute
+         */
+        inboundMed: number;
+        /**
+         * AS path prepend count. One of: 0, 1, 3, 5
+         */
+        outboundAsPrependCount: string;
+        /**
+         * Outbound Multi Exit Discriminator attribute
+         */
+        outboundMed: number;
     }
 
     export interface GetRoutingProtocolBgpIpv6 {
@@ -4027,6 +4039,18 @@ export namespace fabric {
          * Equinix side peering ip
          */
         equinixPeerIp: string;
+        /**
+         * Inbound Multi Exit Discriminator attribute
+         */
+        inboundMed: number;
+        /**
+         * AS path prepend count. One of: 0, 1, 3, 5
+         */
+        outboundAsPrependCount: string;
+        /**
+         * Outbound Multi Exit Discriminator attribute
+         */
+        outboundMed: number;
     }
 
     export interface GetRoutingProtocolChange {
@@ -5217,6 +5241,18 @@ export namespace fabric {
          * Equinix side peering ip
          */
         equinixPeerIp: string;
+        /**
+         * Inbound Multi Exit Discriminator attribute
+         */
+        inboundMed: number;
+        /**
+         * AS path prepend count. One of: 0, 1, 3, 5
+         */
+        outboundAsPrependCount: string;
+        /**
+         * Outbound Multi Exit Discriminator attribute
+         */
+        outboundMed: number;
     }
 
     export interface RoutingProtocolBgpIpv6 {
@@ -5232,6 +5268,18 @@ export namespace fabric {
          * Equinix side peering ip
          */
         equinixPeerIp: string;
+        /**
+         * Inbound Multi Exit Discriminator attribute
+         */
+        inboundMed: number;
+        /**
+         * AS path prepend count. One of: 0, 1, 3, 5
+         */
+        outboundAsPrependCount: string;
+        /**
+         * Outbound Multi Exit Discriminator attribute
+         */
+        outboundMed: number;
     }
 
     export interface RoutingProtocolChange {
@@ -6344,18 +6392,9 @@ export namespace metal {
     export interface InterconnectionPort {
         id: string;
         linkStatus: string;
-        /**
-         * Name of the connection resource
-         */
         name: string;
         role: string;
-        /**
-         * Connection speed - Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
-         */
         speed: number;
-        /**
-         * Status of the connection resource.
-         */
         status: string;
         virtualCircuitIds: string[];
     }
@@ -6366,9 +6405,6 @@ export namespace metal {
         maxAllowedSpeed: string;
         role: string;
         state: string;
-        /**
-         * Connection type - dedicated or shared.
-         */
         type: string;
     }
 
@@ -6946,7 +6982,7 @@ export namespace networkedge {
         /**
          * Reference by name to previously provisioned public SSH key
          */
-        keyName: string;
+        keyName?: string;
         /**
          * username associated with given key.
          */
@@ -6957,7 +6993,7 @@ export namespace networkedge {
         /**
          * Reference by name to previously provisioned public SSH key
          */
-        keyName: string;
+        keyName?: string;
         /**
          * username associated with given key.
          */

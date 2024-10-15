@@ -49,17 +49,9 @@ public final class InterconnectionServiceTokenArgs extends com.pulumi.resources.
         return this.state;
     }
 
-    /**
-     * Connection type - dedicated or shared.
-     * 
-     */
     @Import(name="type", required=true)
     private Output<String> type;
 
-    /**
-     * @return Connection type - dedicated or shared.
-     * 
-     */
     public Output<String> type() {
         return this.type;
     }
@@ -138,23 +130,11 @@ public final class InterconnectionServiceTokenArgs extends com.pulumi.resources.
             return state(Output.of(state));
         }
 
-        /**
-         * @param type Connection type - dedicated or shared.
-         * 
-         * @return builder
-         * 
-         */
         public Builder type(Output<String> type) {
             $.type = type;
             return this;
         }
 
-        /**
-         * @param type Connection type - dedicated or shared.
-         * 
-         * @return builder
-         * 
-         */
         public Builder type(String type) {
             return type(Output.of(type));
         }

@@ -127,6 +127,12 @@ namespace Pulumi.Equinix.Fabric
     public partial class RoutingProtocol : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Enable AS number override
+        /// </summary>
+        [Output("asOverrideEnabled")]
+        public Output<bool> AsOverrideEnabled { get; private set; } = null!;
+
+        /// <summary>
         /// Bidirectional Forwarding Detection
         /// </summary>
         [Output("bfd")]
@@ -282,6 +288,12 @@ namespace Pulumi.Equinix.Fabric
     public sealed class RoutingProtocolArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Enable AS number override
+        /// </summary>
+        [Input("asOverrideEnabled")]
+        public Input<bool>? AsOverrideEnabled { get; set; }
+
+        /// <summary>
         /// Bidirectional Forwarding Detection
         /// </summary>
         [Input("bfd")]
@@ -361,6 +373,12 @@ namespace Pulumi.Equinix.Fabric
 
     public sealed class RoutingProtocolState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Enable AS number override
+        /// </summary>
+        [Input("asOverrideEnabled")]
+        public Input<bool>? AsOverrideEnabled { get; set; }
+
         /// <summary>
         /// Bidirectional Forwarding Detection
         /// </summary>

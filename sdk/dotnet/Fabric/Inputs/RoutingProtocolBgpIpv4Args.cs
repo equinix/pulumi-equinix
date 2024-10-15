@@ -30,6 +30,24 @@ namespace Pulumi.Equinix.Fabric.Inputs
         [Input("equinixPeerIp")]
         public Input<string>? EquinixPeerIp { get; set; }
 
+        /// <summary>
+        /// Inbound Multi Exit Discriminator attribute
+        /// </summary>
+        [Input("inboundMed")]
+        public Input<int>? InboundMed { get; set; }
+
+        /// <summary>
+        /// AS path prepend count. One of: 0, 1, 3, 5
+        /// </summary>
+        [Input("outboundAsPrependCount")]
+        public Input<string>? OutboundAsPrependCount { get; set; }
+
+        /// <summary>
+        /// Outbound Multi Exit Discriminator attribute
+        /// </summary>
+        [Input("outboundMed")]
+        public Input<int>? OutboundMed { get; set; }
+
         public RoutingProtocolBgpIpv4Args()
         {
         }

@@ -3069,7 +3069,7 @@ func (o DeviceSecondaryDeviceInterfaceArrayOutput) Index(i pulumi.IntInput) Devi
 
 type DeviceSecondaryDeviceSshKey struct {
 	// Reference by name to previously provisioned public SSH key
-	KeyName string `pulumi:"keyName"`
+	KeyName *string `pulumi:"keyName"`
 	// username associated with given key.
 	Username string `pulumi:"username"`
 }
@@ -3087,7 +3087,7 @@ type DeviceSecondaryDeviceSshKeyInput interface {
 
 type DeviceSecondaryDeviceSshKeyArgs struct {
 	// Reference by name to previously provisioned public SSH key
-	KeyName pulumi.StringInput `pulumi:"keyName"`
+	KeyName pulumi.StringPtrInput `pulumi:"keyName"`
 	// username associated with given key.
 	Username pulumi.StringInput `pulumi:"username"`
 }
@@ -3170,8 +3170,8 @@ func (o DeviceSecondaryDeviceSshKeyOutput) ToDeviceSecondaryDeviceSshKeyPtrOutpu
 }
 
 // Reference by name to previously provisioned public SSH key
-func (o DeviceSecondaryDeviceSshKeyOutput) KeyName() pulumi.StringOutput {
-	return o.ApplyT(func(v DeviceSecondaryDeviceSshKey) string { return v.KeyName }).(pulumi.StringOutput)
+func (o DeviceSecondaryDeviceSshKeyOutput) KeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceSecondaryDeviceSshKey) *string { return v.KeyName }).(pulumi.StringPtrOutput)
 }
 
 // username associated with given key.
@@ -3209,7 +3209,7 @@ func (o DeviceSecondaryDeviceSshKeyPtrOutput) KeyName() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.KeyName
+		return v.KeyName
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3225,7 +3225,7 @@ func (o DeviceSecondaryDeviceSshKeyPtrOutput) Username() pulumi.StringPtrOutput 
 
 type DeviceSshKey struct {
 	// Reference by name to previously provisioned public SSH key
-	KeyName string `pulumi:"keyName"`
+	KeyName *string `pulumi:"keyName"`
 	// username associated with given key.
 	Username string `pulumi:"username"`
 }
@@ -3243,7 +3243,7 @@ type DeviceSshKeyInput interface {
 
 type DeviceSshKeyArgs struct {
 	// Reference by name to previously provisioned public SSH key
-	KeyName pulumi.StringInput `pulumi:"keyName"`
+	KeyName pulumi.StringPtrInput `pulumi:"keyName"`
 	// username associated with given key.
 	Username pulumi.StringInput `pulumi:"username"`
 }
@@ -3326,8 +3326,8 @@ func (o DeviceSshKeyOutput) ToDeviceSshKeyPtrOutputWithContext(ctx context.Conte
 }
 
 // Reference by name to previously provisioned public SSH key
-func (o DeviceSshKeyOutput) KeyName() pulumi.StringOutput {
-	return o.ApplyT(func(v DeviceSshKey) string { return v.KeyName }).(pulumi.StringOutput)
+func (o DeviceSshKeyOutput) KeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceSshKey) *string { return v.KeyName }).(pulumi.StringPtrOutput)
 }
 
 // username associated with given key.
@@ -3365,7 +3365,7 @@ func (o DeviceSshKeyPtrOutput) KeyName() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.KeyName
+		return v.KeyName
 	}).(pulumi.StringPtrOutput)
 }
 
