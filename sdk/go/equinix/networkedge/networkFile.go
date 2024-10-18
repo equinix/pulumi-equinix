@@ -36,15 +36,13 @@ import (
 //			if param := cfg.Get("filepath"); param != "" {
 //				filepath = param
 //			}
-//			invokeFile, err := std.File(ctx, &std.FileArgs{
-//				Input: filepath,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = networkedge.NewNetworkFile(ctx, "test-file", &networkedge.NetworkFileArgs{
-//				FileName:       pulumi.String("fileName.txt"),
-//				Content:        pulumi.String(invokeFile.Result),
+//			_, err := networkedge.NewNetworkFile(ctx, "test-file", &networkedge.NetworkFileArgs{
+//				FileName: pulumi.String("fileName.txt"),
+//				Content: pulumi.String(std.FileOutput(ctx, std.FileOutputArgs{
+//					Input: pulumi.String(filepath),
+//				}, nil).ApplyT(func(invoke std.FileResult) (*string, error) {
+//					return invoke.Result, nil
+//				}).(pulumi.StringPtrOutput)),
 //				MetroCode:      pulumi.String(equinix.MetroSiliconValley),
 //				DeviceTypeCode: pulumi.String("AVIATRIX_EDGE"),
 //				ProcessType:    pulumi.String(networkedge.FileTypeCloudInit),

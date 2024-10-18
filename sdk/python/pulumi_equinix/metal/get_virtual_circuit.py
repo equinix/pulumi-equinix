@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -362,9 +367,6 @@ def get_virtual_circuit(customer_ipv6: Optional[str] = None,
         vlan_id=pulumi.get(__ret__, 'vlan_id'),
         vnid=pulumi.get(__ret__, 'vnid'),
         vrf_id=pulumi.get(__ret__, 'vrf_id'))
-
-
-@_utilities.lift_output_func(get_virtual_circuit)
 def get_virtual_circuit_output(customer_ipv6: Optional[pulumi.Input[Optional[str]]] = None,
                                metal_ipv6: Optional[pulumi.Input[Optional[str]]] = None,
                                subnet_ipv6: Optional[pulumi.Input[Optional[str]]] = None,
@@ -383,4 +385,34 @@ def get_virtual_circuit_output(customer_ipv6: Optional[pulumi.Input[Optional[str
            			 * For a /126 block, it will have four IP addresses, but the first and last IP addresses are not usable. We will default to the first usable IP address for the metal_ip.
     :param str virtual_circuit_id: ID of the virtual circuit to lookup
     """
-    ...
+    __args__ = dict()
+    __args__['customerIpv6'] = customer_ipv6
+    __args__['metalIpv6'] = metal_ipv6
+    __args__['subnetIpv6'] = subnet_ipv6
+    __args__['virtualCircuitId'] = virtual_circuit_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('equinix:metal/getVirtualCircuit:getVirtualCircuit', __args__, opts=opts, typ=GetVirtualCircuitResult)
+    return __ret__.apply(lambda __response__: GetVirtualCircuitResult(
+        connection_id=pulumi.get(__response__, 'connection_id'),
+        customer_ip=pulumi.get(__response__, 'customer_ip'),
+        customer_ipv6=pulumi.get(__response__, 'customer_ipv6'),
+        description=pulumi.get(__response__, 'description'),
+        id=pulumi.get(__response__, 'id'),
+        md5=pulumi.get(__response__, 'md5'),
+        metal_ip=pulumi.get(__response__, 'metal_ip'),
+        metal_ipv6=pulumi.get(__response__, 'metal_ipv6'),
+        name=pulumi.get(__response__, 'name'),
+        nni_vlan=pulumi.get(__response__, 'nni_vlan'),
+        nni_vnid=pulumi.get(__response__, 'nni_vnid'),
+        peer_asn=pulumi.get(__response__, 'peer_asn'),
+        port_id=pulumi.get(__response__, 'port_id'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        speed=pulumi.get(__response__, 'speed'),
+        status=pulumi.get(__response__, 'status'),
+        subnet=pulumi.get(__response__, 'subnet'),
+        subnet_ipv6=pulumi.get(__response__, 'subnet_ipv6'),
+        tags=pulumi.get(__response__, 'tags'),
+        virtual_circuit_id=pulumi.get(__response__, 'virtual_circuit_id'),
+        vlan_id=pulumi.get(__response__, 'vlan_id'),
+        vnid=pulumi.get(__response__, 'vnid'),
+        vrf_id=pulumi.get(__response__, 'vrf_id')))

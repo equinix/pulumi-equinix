@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -148,9 +153,6 @@ def get_account(metro_code: Optional[str] = None,
         project_id=pulumi.get(__ret__, 'project_id'),
         status=pulumi.get(__ret__, 'status'),
         ucm_id=pulumi.get(__ret__, 'ucm_id'))
-
-
-@_utilities.lift_output_func(get_account)
 def get_account_output(metro_code: Optional[pulumi.Input[str]] = None,
                        name: Optional[pulumi.Input[Optional[str]]] = None,
                        project_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -179,4 +181,18 @@ def get_account_output(metro_code: Optional[pulumi.Input[str]] = None,
     :param str project_id: Unique Identifier for the project resource where the account is scoped to.If you leave it out, all the billing accounts under all projects in your organization will be returned and it may return more than one account.
     :param str status: Account status for filtering. Possible values are: `Active`, `Processing`, `Submitted`, `Staged`.
     """
-    ...
+    __args__ = dict()
+    __args__['metroCode'] = metro_code
+    __args__['name'] = name
+    __args__['projectId'] = project_id
+    __args__['status'] = status
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('equinix:networkedge/getAccount:getAccount', __args__, opts=opts, typ=GetAccountResult)
+    return __ret__.apply(lambda __response__: GetAccountResult(
+        id=pulumi.get(__response__, 'id'),
+        metro_code=pulumi.get(__response__, 'metro_code'),
+        name=pulumi.get(__response__, 'name'),
+        number=pulumi.get(__response__, 'number'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        status=pulumi.get(__response__, 'status'),
+        ucm_id=pulumi.get(__response__, 'ucm_id')))

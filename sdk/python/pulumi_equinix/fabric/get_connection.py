@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -335,9 +340,6 @@ def get_connection(uuid: Optional[str] = None,
         type=pulumi.get(__ret__, 'type'),
         uuid=pulumi.get(__ret__, 'uuid'),
         z_side=pulumi.get(__ret__, 'z_side'))
-
-
-@_utilities.lift_output_func(get_connection)
 def get_connection_output(uuid: Optional[pulumi.Input[str]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConnectionResult]:
     """
@@ -374,4 +376,28 @@ def get_connection_output(uuid: Optional[pulumi.Input[str]] = None,
 
     :param str uuid: Equinix-assigned connection identifier
     """
-    ...
+    __args__ = dict()
+    __args__['uuid'] = uuid
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('equinix:fabric/getConnection:getConnection', __args__, opts=opts, typ=GetConnectionResult)
+    return __ret__.apply(lambda __response__: GetConnectionResult(
+        a_side=pulumi.get(__response__, 'a_side'),
+        account=pulumi.get(__response__, 'account'),
+        additional_info=pulumi.get(__response__, 'additional_info'),
+        bandwidth=pulumi.get(__response__, 'bandwidth'),
+        change_log=pulumi.get(__response__, 'change_log'),
+        description=pulumi.get(__response__, 'description'),
+        direction=pulumi.get(__response__, 'direction'),
+        href=pulumi.get(__response__, 'href'),
+        id=pulumi.get(__response__, 'id'),
+        is_remote=pulumi.get(__response__, 'is_remote'),
+        name=pulumi.get(__response__, 'name'),
+        notifications=pulumi.get(__response__, 'notifications'),
+        operation=pulumi.get(__response__, 'operation'),
+        order=pulumi.get(__response__, 'order'),
+        project=pulumi.get(__response__, 'project'),
+        redundancy=pulumi.get(__response__, 'redundancy'),
+        state=pulumi.get(__response__, 'state'),
+        type=pulumi.get(__response__, 'type'),
+        uuid=pulumi.get(__response__, 'uuid'),
+        z_side=pulumi.get(__response__, 'z_side')))

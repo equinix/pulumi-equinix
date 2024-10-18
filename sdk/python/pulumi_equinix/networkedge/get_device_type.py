@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -148,9 +153,6 @@ def get_device_type(category: Optional[str] = None,
         metro_codes=pulumi.get(__ret__, 'metro_codes'),
         name=pulumi.get(__ret__, 'name'),
         vendor=pulumi.get(__ret__, 'vendor'))
-
-
-@_utilities.lift_output_func(get_device_type)
 def get_device_type_output(category: Optional[pulumi.Input[Optional[str]]] = None,
                            metro_codes: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                            name: Optional[pulumi.Input[Optional[str]]] = None,
@@ -179,4 +181,18 @@ def get_device_type_output(category: Optional[pulumi.Input[Optional[str]]] = Non
     :param str name: Device type name.
     :param str vendor: Device type vendor i.e. `Cisco`, `Juniper Networks`, `VERSA Networks`.
     """
-    ...
+    __args__ = dict()
+    __args__['category'] = category
+    __args__['metroCodes'] = metro_codes
+    __args__['name'] = name
+    __args__['vendor'] = vendor
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('equinix:networkedge/getDeviceType:getDeviceType', __args__, opts=opts, typ=GetDeviceTypeResult)
+    return __ret__.apply(lambda __response__: GetDeviceTypeResult(
+        category=pulumi.get(__response__, 'category'),
+        code=pulumi.get(__response__, 'code'),
+        description=pulumi.get(__response__, 'description'),
+        id=pulumi.get(__response__, 'id'),
+        metro_codes=pulumi.get(__response__, 'metro_codes'),
+        name=pulumi.get(__response__, 'name'),
+        vendor=pulumi.get(__response__, 'vendor')))

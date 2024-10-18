@@ -2,7 +2,7 @@ module equinix-metal-spot_market_request
 
 go 1.21
 
-toolchain go1.22.6
+toolchain go1.22.0
 
 require (
 	github.com/equinix/pulumi-equinix/sdk latest

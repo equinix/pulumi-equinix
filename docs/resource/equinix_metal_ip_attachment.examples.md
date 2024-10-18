@@ -61,22 +61,22 @@ func main() {
 		if err != nil {
 			return err
 		}
-		invokeJoin, err := std.Join(ctx, &std.JoinArgs{
-			Separator: "/",
-			Input: []*string{
-				std.Cidrhost(ctx, &std.CidrhostArgs{
-					Input: myblockMetalReservedIpBlock.CidrNotation,
-					Host:  0,
-				}, nil).Result,
-				"32",
-			},
-		}, nil)
-		if err != nil {
-			return err
-		}
 		_, err = metal.NewIpAttachment(ctx, "firstAddressAssignment", &metal.IpAttachmentArgs{
-			DeviceId:     pulumi.Any(mydevice.Id),
-			CidrNotation: pulumi.String(invokeJoin.Result),
+			DeviceId: pulumi.Any(mydevice.Id),
+			CidrNotation: pulumi.String(std.JoinOutput(ctx, std.JoinOutputArgs{
+				Separator: pulumi.String("/"),
+				Input: pulumi.StringArray{
+					std.CidrhostOutput(ctx, std.CidrhostOutputArgs{
+						Input: pulumi.Any(myblockMetalReservedIpBlock.CidrNotation),
+						Host:  pulumi.Int(0),
+					}, nil).ApplyT(func(invoke std.CidrhostResult) (*string, error) {
+						return invoke.Result, nil
+					}).(pulumi.StringPtrOutput),
+					pulumi.String("32"),
+				},
+			}, nil).ApplyT(func(invoke std.JoinResult) (*string, error) {
+				return invoke.Result, nil
+			}).(pulumi.StringPtrOutput)),
 		})
 		if err != nil {
 			return err

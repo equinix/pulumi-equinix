@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -173,9 +178,6 @@ def get_vlan(facility: Optional[str] = None,
         project_id=pulumi.get(__ret__, 'project_id'),
         vlan_id=pulumi.get(__ret__, 'vlan_id'),
         vxlan=pulumi.get(__ret__, 'vxlan'))
-
-
-@_utilities.lift_output_func(get_vlan)
 def get_vlan_output(facility: Optional[pulumi.Input[Optional[str]]] = None,
                     metro: Optional[pulumi.Input[Optional[str]]] = None,
                     project_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -220,4 +222,20 @@ def get_vlan_output(facility: Optional[pulumi.Input[Optional[str]]] = None,
     :param str vlan_id: Metal UUID of the VLAN resource to look up.
     :param int vxlan: vxlan number of the VLAN to look up. Use together with the project_id and metro or facility.
     """
-    ...
+    __args__ = dict()
+    __args__['facility'] = facility
+    __args__['metro'] = metro
+    __args__['projectId'] = project_id
+    __args__['vlanId'] = vlan_id
+    __args__['vxlan'] = vxlan
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('equinix:metal/getVlan:getVlan', __args__, opts=opts, typ=GetVlanResult)
+    return __ret__.apply(lambda __response__: GetVlanResult(
+        assigned_devices_ids=pulumi.get(__response__, 'assigned_devices_ids'),
+        description=pulumi.get(__response__, 'description'),
+        facility=pulumi.get(__response__, 'facility'),
+        id=pulumi.get(__response__, 'id'),
+        metro=pulumi.get(__response__, 'metro'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        vlan_id=pulumi.get(__response__, 'vlan_id'),
+        vxlan=pulumi.get(__response__, 'vxlan')))

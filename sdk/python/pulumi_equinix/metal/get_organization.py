@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -174,9 +179,6 @@ def get_organization(description: Optional[str] = None,
         project_ids=pulumi.get(__ret__, 'project_ids'),
         twitter=pulumi.get(__ret__, 'twitter'),
         website=pulumi.get(__ret__, 'website'))
-
-
-@_utilities.lift_output_func(get_organization)
 def get_organization_output(description: Optional[pulumi.Input[Optional[str]]] = None,
                             name: Optional[pulumi.Input[Optional[str]]] = None,
                             organization_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -201,4 +203,19 @@ def get_organization_output(description: Optional[pulumi.Input[Optional[str]]] =
            
            Exactly one of `name` or `organization_id` must be given.
     """
-    ...
+    __args__ = dict()
+    __args__['description'] = description
+    __args__['name'] = name
+    __args__['organizationId'] = organization_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('equinix:metal/getOrganization:getOrganization', __args__, opts=opts, typ=GetOrganizationResult)
+    return __ret__.apply(lambda __response__: GetOrganizationResult(
+        address=pulumi.get(__response__, 'address'),
+        description=pulumi.get(__response__, 'description'),
+        id=pulumi.get(__response__, 'id'),
+        logo=pulumi.get(__response__, 'logo'),
+        name=pulumi.get(__response__, 'name'),
+        organization_id=pulumi.get(__response__, 'organization_id'),
+        project_ids=pulumi.get(__response__, 'project_ids'),
+        twitter=pulumi.get(__response__, 'twitter'),
+        website=pulumi.get(__response__, 'website')))

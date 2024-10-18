@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -321,9 +326,6 @@ def get_port(uuid: Optional[str] = None,
         type=pulumi.get(__ret__, 'type'),
         used_bandwidth=pulumi.get(__ret__, 'used_bandwidth'),
         uuid=pulumi.get(__ret__, 'uuid'))
-
-
-@_utilities.lift_output_func(get_port)
 def get_port_output(uuid: Optional[pulumi.Input[str]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPortResult]:
     """
@@ -359,4 +361,27 @@ def get_port_output(uuid: Optional[pulumi.Input[str]] = None,
 
     :param str uuid: Equinix-assigned port identifier
     """
-    ...
+    __args__ = dict()
+    __args__['uuid'] = uuid
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('equinix:fabric/getPort:getPort', __args__, opts=opts, typ=GetPortResult)
+    return __ret__.apply(lambda __response__: GetPortResult(
+        account=pulumi.get(__response__, 'account'),
+        available_bandwidth=pulumi.get(__response__, 'available_bandwidth'),
+        bandwidth=pulumi.get(__response__, 'bandwidth'),
+        change_log=pulumi.get(__response__, 'change_log'),
+        description=pulumi.get(__response__, 'description'),
+        device=pulumi.get(__response__, 'device'),
+        encapsulation=pulumi.get(__response__, 'encapsulation'),
+        href=pulumi.get(__response__, 'href'),
+        id=pulumi.get(__response__, 'id'),
+        lag_enabled=pulumi.get(__response__, 'lag_enabled'),
+        location=pulumi.get(__response__, 'location'),
+        name=pulumi.get(__response__, 'name'),
+        operation=pulumi.get(__response__, 'operation'),
+        redundancy=pulumi.get(__response__, 'redundancy'),
+        service_type=pulumi.get(__response__, 'service_type'),
+        state=pulumi.get(__response__, 'state'),
+        type=pulumi.get(__response__, 'type'),
+        used_bandwidth=pulumi.get(__response__, 'used_bandwidth'),
+        uuid=pulumi.get(__response__, 'uuid')))

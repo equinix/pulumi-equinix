@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -116,9 +121,6 @@ def get_ports(filter: Optional[Union['GetPortsFilterArgs', 'GetPortsFilterArgsDi
         data=pulumi.get(__ret__, 'data'),
         filter=pulumi.get(__ret__, 'filter'),
         id=pulumi.get(__ret__, 'id'))
-
-
-@_utilities.lift_output_func(get_ports)
 def get_ports_output(filter: Optional[pulumi.Input[Union['GetPortsFilterArgs', 'GetPortsFilterArgsDict']]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPortsResult]:
     """
@@ -156,4 +158,11 @@ def get_ports_output(filter: Optional[pulumi.Input[Union['GetPortsFilterArgs', '
 
     :param Union['GetPortsFilterArgs', 'GetPortsFilterArgsDict'] filter: name
     """
-    ...
+    __args__ = dict()
+    __args__['filter'] = filter
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('equinix:fabric/getPorts:getPorts', __args__, opts=opts, typ=GetPortsResult)
+    return __ret__.apply(lambda __response__: GetPortsResult(
+        data=pulumi.get(__response__, 'data'),
+        filter=pulumi.get(__response__, 'filter'),
+        id=pulumi.get(__response__, 'id')))
