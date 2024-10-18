@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -155,9 +160,6 @@ def get_service_profiles(and_filters: Optional[bool] = None,
         pagination=pulumi.get(__ret__, 'pagination'),
         sort=pulumi.get(__ret__, 'sort'),
         view_point=pulumi.get(__ret__, 'view_point'))
-
-
-@_utilities.lift_output_func(get_service_profiles)
 def get_service_profiles_output(and_filters: Optional[pulumi.Input[Optional[bool]]] = None,
                                 filter: Optional[pulumi.Input[Union['GetServiceProfilesFilterArgs', 'GetServiceProfilesFilterArgsDict']]] = None,
                                 pagination: Optional[pulumi.Input[Optional[Union['GetServiceProfilesPaginationArgs', 'GetServiceProfilesPaginationArgsDict']]]] = None,
@@ -178,4 +180,19 @@ def get_service_profiles_output(and_filters: Optional[pulumi.Input[Optional[bool
     :param Sequence[Union['GetServiceProfilesSortArgs', 'GetServiceProfilesSortArgsDict']] sort: Filters for the Data Source Search Request
     :param str view_point: flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
     """
-    ...
+    __args__ = dict()
+    __args__['andFilters'] = and_filters
+    __args__['filter'] = filter
+    __args__['pagination'] = pagination
+    __args__['sort'] = sort
+    __args__['viewPoint'] = view_point
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('equinix:fabric/getServiceProfiles:getServiceProfiles', __args__, opts=opts, typ=GetServiceProfilesResult)
+    return __ret__.apply(lambda __response__: GetServiceProfilesResult(
+        and_filters=pulumi.get(__response__, 'and_filters'),
+        data=pulumi.get(__response__, 'data'),
+        filter=pulumi.get(__response__, 'filter'),
+        id=pulumi.get(__response__, 'id'),
+        pagination=pulumi.get(__response__, 'pagination'),
+        sort=pulumi.get(__response__, 'sort'),
+        view_point=pulumi.get(__response__, 'view_point')))

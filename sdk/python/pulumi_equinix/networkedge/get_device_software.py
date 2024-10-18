@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -198,9 +203,6 @@ def get_device_software(device_type: Optional[str] = None,
         status=pulumi.get(__ret__, 'status'),
         version=pulumi.get(__ret__, 'version'),
         version_regex=pulumi.get(__ret__, 'version_regex'))
-
-
-@_utilities.lift_output_func(get_device_software)
 def get_device_software_output(device_type: Optional[pulumi.Input[str]] = None,
                                most_recent: Optional[pulumi.Input[Optional[bool]]] = None,
                                packages: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
@@ -229,4 +231,23 @@ def get_device_software_output(device_type: Optional[pulumi.Input[str]] = None,
     :param bool stable: Boolean value to limit query results to stable versions only.
     :param str version_regex: A regex string to apply on returned versions and filter search results.
     """
-    ...
+    __args__ = dict()
+    __args__['deviceType'] = device_type
+    __args__['mostRecent'] = most_recent
+    __args__['packages'] = packages
+    __args__['stable'] = stable
+    __args__['versionRegex'] = version_regex
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('equinix:networkedge/getDeviceSoftware:getDeviceSoftware', __args__, opts=opts, typ=GetDeviceSoftwareResult)
+    return __ret__.apply(lambda __response__: GetDeviceSoftwareResult(
+        date=pulumi.get(__response__, 'date'),
+        device_type=pulumi.get(__response__, 'device_type'),
+        id=pulumi.get(__response__, 'id'),
+        image_name=pulumi.get(__response__, 'image_name'),
+        most_recent=pulumi.get(__response__, 'most_recent'),
+        packages=pulumi.get(__response__, 'packages'),
+        release_notes_link=pulumi.get(__response__, 'release_notes_link'),
+        stable=pulumi.get(__response__, 'stable'),
+        status=pulumi.get(__response__, 'status'),
+        version=pulumi.get(__response__, 'version'),
+        version_regex=pulumi.get(__response__, 'version_regex')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -120,9 +125,6 @@ def get_metro(capacities: Optional[Sequence[Union['GetMetroCapacityArgs', 'GetMe
         country=pulumi.get(__ret__, 'country'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'))
-
-
-@_utilities.lift_output_func(get_metro)
 def get_metro_output(capacities: Optional[pulumi.Input[Optional[Sequence[Union['GetMetroCapacityArgs', 'GetMetroCapacityArgsDict']]]]] = None,
                      code: Optional[pulumi.Input[str]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMetroResult]:
@@ -143,4 +145,14 @@ def get_metro_output(capacities: Optional[pulumi.Input[Optional[Sequence[Union['
     :param Sequence[Union['GetMetroCapacityArgs', 'GetMetroCapacityArgsDict']] capacities: One or more device plans for which the metro must have capacity.
     :param str code: The metro code to search for.
     """
-    ...
+    __args__ = dict()
+    __args__['capacities'] = capacities
+    __args__['code'] = code
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('equinix:metal/getMetro:getMetro', __args__, opts=opts, typ=GetMetroResult)
+    return __ret__.apply(lambda __response__: GetMetroResult(
+        capacities=pulumi.get(__response__, 'capacities'),
+        code=pulumi.get(__response__, 'code'),
+        country=pulumi.get(__response__, 'country'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name')))

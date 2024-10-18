@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -325,9 +330,6 @@ def get_routing_protocol(connection_uuid: Optional[str] = None,
         state=pulumi.get(__ret__, 'state'),
         type=pulumi.get(__ret__, 'type'),
         uuid=pulumi.get(__ret__, 'uuid'))
-
-
-@_utilities.lift_output_func(get_routing_protocol)
 def get_routing_protocol_output(connection_uuid: Optional[pulumi.Input[str]] = None,
                                 uuid: Optional[pulumi.Input[str]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRoutingProtocolResult]:
@@ -366,4 +368,28 @@ def get_routing_protocol_output(connection_uuid: Optional[pulumi.Input[str]] = N
     :param str connection_uuid: Connection URI associated with Routing Protocol
     :param str uuid: Equinix-assigned routing protocol identifier
     """
-    ...
+    __args__ = dict()
+    __args__['connectionUuid'] = connection_uuid
+    __args__['uuid'] = uuid
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('equinix:fabric/getRoutingProtocol:getRoutingProtocol', __args__, opts=opts, typ=GetRoutingProtocolResult)
+    return __ret__.apply(lambda __response__: GetRoutingProtocolResult(
+        bfd=pulumi.get(__response__, 'bfd'),
+        bgp_auth_key=pulumi.get(__response__, 'bgp_auth_key'),
+        bgp_ipv4=pulumi.get(__response__, 'bgp_ipv4'),
+        bgp_ipv6=pulumi.get(__response__, 'bgp_ipv6'),
+        change_logs=pulumi.get(__response__, 'change_logs'),
+        changes=pulumi.get(__response__, 'changes'),
+        connection_uuid=pulumi.get(__response__, 'connection_uuid'),
+        customer_asn=pulumi.get(__response__, 'customer_asn'),
+        description=pulumi.get(__response__, 'description'),
+        direct_ipv4=pulumi.get(__response__, 'direct_ipv4'),
+        direct_ipv6=pulumi.get(__response__, 'direct_ipv6'),
+        equinix_asn=pulumi.get(__response__, 'equinix_asn'),
+        href=pulumi.get(__response__, 'href'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        operations=pulumi.get(__response__, 'operations'),
+        state=pulumi.get(__response__, 'state'),
+        type=pulumi.get(__response__, 'type'),
+        uuid=pulumi.get(__response__, 'uuid')))
