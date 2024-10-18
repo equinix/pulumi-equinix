@@ -21,10 +21,107 @@ import javax.annotation.Nullable;
 /**
  * Use this resource to request the creation an Interconnection asset to connect with other parties using [Equinix Fabric - software-defined interconnections](https://metal.equinix.com/developers/docs/networking/fabric/).
  * 
- * &gt; Equinix Metal connection with with Service Token A-side / Z-side (service_token_type) is not generally available and may not be enabled yet for your organization.
- * 
  * ## Example Usage
- * ### example shared metal fabric connection from fcr
+ * ### example fabric billed metal from fabric port
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.fabric.FabricFunctions;
+ * import com.pulumi.equinix.fabric.inputs.GetPortsArgs;
+ * import com.pulumi.equinix.fabric.inputs.GetPortsFilterArgs;
+ * import com.pulumi.equinix.metal.Vlan;
+ * import com.pulumi.equinix.metal.VlanArgs;
+ * import com.pulumi.equinix.metal.Interconnection;
+ * import com.pulumi.equinix.metal.InterconnectionArgs;
+ * import com.pulumi.equinix.fabric.Connection;
+ * import com.pulumi.equinix.fabric.ConnectionArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionOrderArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionProjectArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionASideArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointPortArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointLinkProtocolArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionZSideArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionZSideServiceTokenArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var aSide = FabricFunctions.getPorts(GetPortsArgs.builder()
+ *             .filter(GetPortsFilterArgs.builder()
+ *                 .name("<name_of_port||port_prefix>")
+ *                 .build())
+ *             .build());
+ * 
+ *         var example = new Vlan("example", VlanArgs.builder()
+ *             .projectId("<metal_project_id>")
+ *             .metro("FR")
+ *             .build());
+ * 
+ *         var exampleInterconnection = new Interconnection("exampleInterconnection", InterconnectionArgs.builder()
+ *             .name("tf-metal-from-port")
+ *             .projectId("<metal_project_id>")
+ *             .type("shared")
+ *             .redundancy("primary")
+ *             .metro("FR")
+ *             .speed("200Mbps")
+ *             .serviceTokenType("z_side")
+ *             .contactEmail("username}{@literal @}{@code example.com")
+ *             .vlans(example.vxlan())
+ *             .build());
+ * 
+ *         var exampleConnection = new Connection("exampleConnection", ConnectionArgs.builder()
+ *             .name("tf-metal-from-port")
+ *             .type("EVPL_VC")
+ *             .bandwidth("200")
+ *             .notifications(ConnectionNotificationArgs.builder()
+ *                 .type("ALL")
+ *                 .emails("username}{@literal @}{@code example.com")
+ *                 .build())
+ *             .order(ConnectionOrderArgs.builder()
+ *                 .purchaseOrderNumber("1-323292")
+ *                 .build())
+ *             .project(ConnectionProjectArgs.builder()
+ *                 .projectId("<fabric_project_id>")
+ *                 .build())
+ *             .aSide(ConnectionASideArgs.builder()
+ *                 .accessPoint(ConnectionASideAccessPointArgs.builder()
+ *                     .type("COLO")
+ *                     .port(ConnectionASideAccessPointPortArgs.builder()
+ *                         .uuid(aSide.applyValue(getPortsResult -> getPortsResult.data()[0].uuid()))
+ *                         .build())
+ *                     .linkProtocol(ConnectionASideAccessPointLinkProtocolArgs.builder()
+ *                         .type("DOT1Q")
+ *                         .vlanTag(1234)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .zSide(ConnectionZSideArgs.builder()
+ *                 .serviceToken(ConnectionZSideServiceTokenArgs.builder()
+ *                     .uuid(exampleInterconnection.serviceTokens().applyValue(serviceTokens -> serviceTokens[0].id()))
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * ### example fabric billed metal from fcr
  * <pre>
  * {@code
  * package generated_program;
@@ -40,7 +137,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.equinix.fabric.ConnectionArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionProjectArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionOrderArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionASideArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointRouterArgs;
@@ -60,39 +156,37 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var example1 = new Vlan("example1", VlanArgs.builder()
- *             .projectId(myProjectId)
+ *             .projectId("<metal_project_id>")
  *             .metro("SV")
  *             .build());
  * 
  *         var example = new Interconnection("example", InterconnectionArgs.builder()
- *             .name("tf-port-to-metal-legacy")
- *             .projectId(myProjectId)
+ *             .name("tf-metal-from-fcr")
+ *             .projectId("<metal_project_id>")
  *             .metro("SV")
  *             .redundancy("primary")
  *             .type("shared_port_vlan")
  *             .contactEmail("username}{@literal @}{@code example.com")
+ *             .speed("200Mbps")
  *             .vlans(example1.vxlan())
  *             .build());
  * 
  *         var exampleConnection = new Connection("exampleConnection", ConnectionArgs.builder()
- *             .name("tf-NIMF-metal-2-aws-legacy")
+ *             .name("tf-metal-from-fcr")
  *             .type("IP_VC")
+ *             .bandwidth("200")
  *             .notifications(ConnectionNotificationArgs.builder()
  *                 .type("ALL")
- *                 .emails("sername}{@literal @}{@code example.com")
+ *                 .emails("username}{@literal @}{@code example.com")
  *                 .build())
  *             .project(ConnectionProjectArgs.builder()
- *                 .projectId(fabricProjectId)
- *                 .build())
- *             .bandwidth("200")
- *             .order(ConnectionOrderArgs.builder()
- *                 .purchaseOrderNumber("1-323292")
+ *                 .projectId("<fabric_project_id>")
  *                 .build())
  *             .aSide(ConnectionASideArgs.builder()
  *                 .accessPoint(ConnectionASideAccessPointArgs.builder()
  *                     .type("CLOUD_ROUTER")
  *                     .router(ConnectionASideAccessPointRouterArgs.builder()
- *                         .uuid(cloudRouterUuid)
+ *                         .uuid(exampleEquinixFabricCloudRouter.id())
  *                         .build())
  *                     .build())
  *                 .build())
@@ -108,7 +202,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
- * ### example shared metal fabric connection to csp
+ * ### example fabric billed metal from network edge
  * <pre>
  * {@code
  * package generated_program;
@@ -116,24 +210,20 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.equinix.fabric.FabricFunctions;
- * import com.pulumi.equinix.fabric.inputs.GetServiceProfilesArgs;
- * import com.pulumi.equinix.fabric.inputs.GetServiceProfilesFilterArgs;
- * import com.pulumi.equinix.metal.Vlan;
- * import com.pulumi.equinix.metal.VlanArgs;
+ * import com.pulumi.equinix.metal.Vrf;
+ * import com.pulumi.equinix.metal.VrfArgs;
  * import com.pulumi.equinix.metal.Interconnection;
  * import com.pulumi.equinix.metal.InterconnectionArgs;
  * import com.pulumi.equinix.fabric.Connection;
  * import com.pulumi.equinix.fabric.ConnectionArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionProjectArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionOrderArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionProjectArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionASideArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointVirtualDeviceArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionZSideArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointProfileArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointLocationArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionZSideServiceTokenArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -147,60 +237,142 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         final var zside = FabricFunctions.getServiceProfiles(GetServiceProfilesArgs.builder()
- *             .filter(GetServiceProfilesFilterArgs.builder()
- *                 .property("/name")
- *                 .operator("=")
- *                 .values("AWS Direct Connect")
- *                 .build())
+ *         var example = new Vrf("example", VrfArgs.builder()
+ *             .name("tf-metal-from-ne")
+ *             .metro("FR")
+ *             .localAsn("65001")
+ *             .ipRanges("10.99.1.0/24")
+ *             .projectId(test.id())
  *             .build());
  * 
- *         var example1 = new Vlan("example1", VlanArgs.builder()
- *             .projectId(myProjectId)
- *             .metro("SV")
- *             .build());
- * 
- *         var example = new Interconnection("example", InterconnectionArgs.builder()
- *             .name("tf-port-to-metal-legacy")
- *             .projectId(myProjectId)
- *             .metro("SV")
+ *         var exampleInterconnection = new Interconnection("exampleInterconnection", InterconnectionArgs.builder()
+ *             .name("tf-metal-from-ne")
+ *             .projectId("<metal_project_id>")
+ *             .type("shared")
  *             .redundancy("primary")
- *             .type("shared_port_vlan")
+ *             .metro("FR")
+ *             .speed("200Mbps")
+ *             .serviceTokenType("z_side")
  *             .contactEmail("username}{@literal @}{@code example.com")
- *             .vlans(example1.vxlan())
+ *             .vrfs(example.vxlan())
  *             .build());
  * 
  *         var exampleConnection = new Connection("exampleConnection", ConnectionArgs.builder()
- *             .name("tf-NIMF-metal-2-aws-legacy")
+ *             .name("tf-metal-from-ne")
+ *             .type("EVPL_VC")
+ *             .bandwidth("200")
+ *             .notifications(ConnectionNotificationArgs.builder()
+ *                 .type("ALL")
+ *                 .emails("username}{@literal @}{@code example.com")
+ *                 .build())
+ *             .order(ConnectionOrderArgs.builder()
+ *                 .purchaseOrderNumber("1-323292")
+ *                 .build())
+ *             .project(ConnectionProjectArgs.builder()
+ *                 .projectId("<fabric_project_id>")
+ *                 .build())
+ *             .aSide(ConnectionASideArgs.builder()
+ *                 .accessPoint(ConnectionASideAccessPointArgs.builder()
+ *                     .type("VD")
+ *                     .virtualDevice(ConnectionASideAccessPointVirtualDeviceArgs.builder()
+ *                         .type("EDGE")
+ *                         .uuid(exampleEquinixNetworkDevice.id())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .zSide(ConnectionZSideArgs.builder()
+ *                 .serviceToken(ConnectionZSideServiceTokenArgs.builder()
+ *                     .uuid(exampleInterconnection.serviceTokens().applyValue(serviceTokens -> serviceTokens[0].id()))
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * ### example metal billed metal to fabric port
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.fabric.FabricFunctions;
+ * import com.pulumi.equinix.fabric.inputs.GetPortsArgs;
+ * import com.pulumi.equinix.fabric.inputs.GetPortsFilterArgs;
+ * import com.pulumi.equinix.metal.Interconnection;
+ * import com.pulumi.equinix.metal.InterconnectionArgs;
+ * import com.pulumi.equinix.fabric.Connection;
+ * import com.pulumi.equinix.fabric.ConnectionArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionProjectArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionOrderArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionASideArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionASideServiceTokenArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionZSideArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointPortArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointLinkProtocolArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var aSide = FabricFunctions.getPorts(GetPortsArgs.builder()
+ *             .filter(GetPortsFilterArgs.builder()
+ *                 .name("<name_of_port||port_prefix>")
+ *                 .build())
+ *             .build());
+ * 
+ *         var example = new Interconnection("example", InterconnectionArgs.builder()
+ *             .name("tf-metal-2-port")
+ *             .projectId("<metal_project_id>")
+ *             .type("shared")
+ *             .redundancy("redundant")
+ *             .metro("FR")
+ *             .speed("1Gbps")
+ *             .serviceTokenType("a_side")
+ *             .contactEmail("username}{@literal @}{@code example.com")
+ *             .build());
+ * 
+ *         var exampleConnection = new Connection("exampleConnection", ConnectionArgs.builder()
+ *             .name("tf-metal-2-port")
  *             .type("EVPL_VC")
  *             .notifications(ConnectionNotificationArgs.builder()
  *                 .type("ALL")
- *                 .emails("sername}{@literal @}{@code example.com")
+ *                 .emails("username}{@literal @}{@code example.com")
  *                 .build())
  *             .project(ConnectionProjectArgs.builder()
- *                 .projectId(fabricProjectId)
+ *                 .projectId("<fabric_project_id>")
  *                 .build())
- *             .bandwidth("200")
+ *             .bandwidth("100")
  *             .order(ConnectionOrderArgs.builder()
  *                 .purchaseOrderNumber("1-323292")
  *                 .build())
  *             .aSide(ConnectionASideArgs.builder()
- *                 .accessPoint(ConnectionASideAccessPointArgs.builder()
- *                     .type("METAL_NETWORK")
- *                     .authenticationKey(example.authorizationCode())
+ *                 .serviceToken(ConnectionASideServiceTokenArgs.builder()
+ *                     .uuid(example.serviceTokens().applyValue(serviceTokens -> serviceTokens[0].id()))
  *                     .build())
  *                 .build())
  *             .zSide(ConnectionZSideArgs.builder()
  *                 .accessPoint(ConnectionZSideAccessPointArgs.builder()
- *                     .type("SP")
- *                     .authenticationKey(awsAccountId)
- *                     .sellerRegion("us-west-1")
- *                     .profile(ConnectionZSideAccessPointProfileArgs.builder()
- *                         .type("L2_PROFILE")
- *                         .uuid(zside.applyValue(getServiceProfilesResult -> getServiceProfilesResult.id()))
+ *                     .type("COLO")
+ *                     .port(ConnectionZSideAccessPointPortArgs.builder()
+ *                         .uuid(aSide.applyValue(getPortsResult -> getPortsResult.data()[0].uuid()))
  *                         .build())
- *                     .location(ConnectionZSideAccessPointLocationArgs.builder()
- *                         .metroCode("SV")
+ *                     .linkProtocol(ConnectionZSideAccessPointLinkProtocolArgs.builder()
+ *                         .type("DOT1Q")
+ *                         .vlanTag(1234)
  *                         .build())
  *                     .build())
  *                 .build())
@@ -215,49 +387,49 @@ import javax.annotation.Nullable;
 @ResourceType(type="equinix:metal/interconnection:Interconnection")
 public class Interconnection extends com.pulumi.resources.CustomResource {
     /**
-     * Fabric Authorization code to configure the Metal-Fabric Integration connection with Cloud Service Provider through Equinix Fabric with the equinix.fabric.Connection resource from the [Equinix Developer Portal](https://developer.equinix.com/dev-docs/fabric/getting-started/fabric-v4-apis/connect-metal-to-amazon-web-services).
+     * Only used with Fabric Shared connection. Fabric uses this token to be able to give more detailed information about the Metal end of the network, when viewing resources from within Fabric.
      * 
      */
     @Export(name="authorizationCode", refs={String.class}, tree="[0]")
     private Output<String> authorizationCode;
 
     /**
-     * @return Fabric Authorization code to configure the Metal-Fabric Integration connection with Cloud Service Provider through Equinix Fabric with the equinix.fabric.Connection resource from the [Equinix Developer Portal](https://developer.equinix.com/dev-docs/fabric/getting-started/fabric-v4-apis/connect-metal-to-amazon-web-services).
+     * @return Only used with Fabric Shared connection. Fabric uses this token to be able to give more detailed information about the Metal end of the network, when viewing resources from within Fabric.
      * 
      */
     public Output<String> authorizationCode() {
         return this.authorizationCode;
     }
     /**
-     * The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
+     * The preferred email used for communication and notifications about the Equinix Fabric interconnection
      * 
      */
     @Export(name="contactEmail", refs={String.class}, tree="[0]")
     private Output<String> contactEmail;
 
     /**
-     * @return The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
+     * @return The preferred email used for communication and notifications about the Equinix Fabric interconnection
      * 
      */
     public Output<String> contactEmail() {
         return this.contactEmail;
     }
     /**
-     * Description for the connection resource.
+     * Description of the connection resource
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
-     * @return Description for the connection resource.
+     * @return Description of the connection resource
      * 
      */
     public Output<String> description() {
         return this.description;
     }
     /**
-     * Facility where the connection will be created. Use metro instead; read the facility to metro migration guide
+     * Facility where the connection will be created
      * 
      * @deprecated
      * Use metro instead of facility. For more information, read the migration guide.
@@ -268,35 +440,35 @@ public class Interconnection extends com.pulumi.resources.CustomResource {
     private Output<String> facility;
 
     /**
-     * @return Facility where the connection will be created. Use metro instead; read the facility to metro migration guide
+     * @return Facility where the connection will be created
      * 
      */
     public Output<String> facility() {
         return this.facility;
     }
     /**
-     * Metro where the connection will be created.
+     * Metro where the connection will be created
      * 
      */
     @Export(name="metro", refs={String.class}, tree="[0]")
     private Output<String> metro;
 
     /**
-     * @return Metro where the connection will be created.
+     * @return Metro where the connection will be created
      * 
      */
     public Output<String> metro() {
         return this.metro;
     }
     /**
-     * Mode for connections in IBX facilities with the dedicated type - standard or tunnel. Default is standard.
+     * Mode for connections in IBX facilities with the dedicated type - standard or tunnel
      * 
      */
     @Export(name="mode", refs={String.class}, tree="[0]")
     private Output<String> mode;
 
     /**
-     * @return Mode for connections in IBX facilities with the dedicated type - standard or tunnel. Default is standard.
+     * @return Mode for connections in IBX facilities with the dedicated type - standard or tunnel
      * 
      */
     public Output<String> mode() {
@@ -317,133 +489,133 @@ public class Interconnection extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * ID of the organization where the connection is scoped to.
+     * ID of the organization responsible for the connection. Applicable with type &#34;dedicated&#34;
      * 
      */
     @Export(name="organizationId", refs={String.class}, tree="[0]")
     private Output<String> organizationId;
 
     /**
-     * @return ID of the organization where the connection is scoped to.
+     * @return ID of the organization responsible for the connection. Applicable with type &#34;dedicated&#34;
      * 
      */
     public Output<String> organizationId() {
         return this.organizationId;
     }
     /**
-     * List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`). Schema of port is described in documentation of the equinix.metal.Interconnection datasource.
+     * List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`)
      * 
      */
     @Export(name="ports", refs={List.class,InterconnectionPort.class}, tree="[0,1]")
     private Output<List<InterconnectionPort>> ports;
 
     /**
-     * @return List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`). Schema of port is described in documentation of the equinix.metal.Interconnection datasource.
+     * @return List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`)
      * 
      */
     public Output<List<InterconnectionPort>> ports() {
         return this.ports;
     }
     /**
-     * ID of the project where the connection is scoped to, must be set for.
+     * ID of the project where the connection is scoped to. Required with type &#34;shared&#34;
      * 
      */
     @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> projectId;
 
     /**
-     * @return ID of the project where the connection is scoped to, must be set for.
+     * @return ID of the project where the connection is scoped to. Required with type &#34;shared&#34;
      * 
      */
     public Output<Optional<String>> projectId() {
         return Codegen.optional(this.projectId);
     }
     /**
-     * Connection redundancy - redundant or primary.
+     * Connection redundancy - redundant or primary
      * 
      */
     @Export(name="redundancy", refs={String.class}, tree="[0]")
     private Output<String> redundancy;
 
     /**
-     * @return Connection redundancy - redundant or primary.
+     * @return Connection redundancy - redundant or primary
      * 
      */
     public Output<String> redundancy() {
         return this.redundancy;
     }
     /**
-     * Only used with shared connection. Type of service token to use for the connection, a_side or z_side
+     * Only used with shared connection. Type of service token to use for the connection, a*side or z*side
      * 
      */
     @Export(name="serviceTokenType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> serviceTokenType;
 
     /**
-     * @return Only used with shared connection. Type of service token to use for the connection, a_side or z_side
+     * @return Only used with shared connection. Type of service token to use for the connection, a*side or z*side
      * 
      */
     public Output<Optional<String>> serviceTokenType() {
         return Codegen.optional(this.serviceTokenType);
     }
     /**
-     * List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the equinix.fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard). Scehma of service_token is described in documentation of the equinix.metal.Interconnection datasource.
+     * Only used with shared connection. List of service tokens required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard)
      * 
      */
     @Export(name="serviceTokens", refs={List.class,InterconnectionServiceToken.class}, tree="[0,1]")
     private Output<List<InterconnectionServiceToken>> serviceTokens;
 
     /**
-     * @return List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the equinix.fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard). Scehma of service_token is described in documentation of the equinix.metal.Interconnection datasource.
+     * @return Only used with shared connection. List of service tokens required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard)
      * 
      */
     public Output<List<InterconnectionServiceToken>> serviceTokens() {
         return this.serviceTokens;
     }
     /**
-     * Connection speed - Values must be in the format &#39;&lt;number&gt;Mbps&#39; or &#39;&lt;number&gt;Gpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
+     * Connection speed -  Values must be in the format &#39;\n\nMbps&#39; or &#39;\n\nGpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
      * 
      */
     @Export(name="speed", refs={String.class}, tree="[0]")
     private Output<String> speed;
 
     /**
-     * @return Connection speed - Values must be in the format &#39;&lt;number&gt;Mbps&#39; or &#39;&lt;number&gt;Gpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
+     * @return Connection speed -  Values must be in the format &#39;\n\nMbps&#39; or &#39;\n\nGpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
      * 
      */
     public Output<String> speed() {
         return this.speed;
     }
     /**
-     * Status of the connection resource.
+     * Status of the connection resource
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return Status of the connection resource.
+     * @return Status of the connection resource
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * String list of tags.
+     * Tags attached to the connection
      * 
      */
     @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
-     * @return String list of tags.
+     * @return Tags attached to the connection
      * 
      */
     public Output<Optional<List<String>>> tags() {
         return Codegen.optional(this.tags);
     }
     /**
-     * (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the equinix.fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `service_tokens` instead.
+     * Only used with shared connection. Fabric Token required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard)
      * 
      * @deprecated
      * If your organization already has connection service tokens enabled, use `service_tokens` instead
@@ -454,51 +626,49 @@ public class Interconnection extends com.pulumi.resources.CustomResource {
     private Output<String> token;
 
     /**
-     * @return (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the equinix.fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `service_tokens` instead.
+     * @return Only used with shared connection. Fabric Token required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard)
      * 
      */
     public Output<String> token() {
         return this.token;
     }
     /**
-     * Connection type - dedicated or shared.
+     * Connection type - dedicated, shared or shared*port*vlan
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return Connection type - dedicated or shared.
+     * @return Connection type - dedicated, shared or shared*port*vlan
      * 
      */
     public Output<String> type() {
         return this.type;
     }
     /**
-     * Only used with shared connection. Vlans to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection.
+     * Only used with shared connection. VLANs to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection
      * 
      */
     @Export(name="vlans", refs={List.class,Integer.class}, tree="[0,1]")
     private Output</* @Nullable */ List<Integer>> vlans;
 
     /**
-     * @return Only used with shared connection. Vlans to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection.
+     * @return Only used with shared connection. VLANs to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection
      * 
      */
     public Output<Optional<List<Integer>>> vlans() {
         return Codegen.optional(this.vlans);
     }
     /**
-     * Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant
-     * connection
+     * Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant connection
      * 
      */
     @Export(name="vrfs", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> vrfs;
 
     /**
-     * @return Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant
-     * connection
+     * @return Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant connection
      * 
      */
     public Output<Optional<List<String>>> vrfs() {

@@ -18,14 +18,14 @@ public final class VrfState extends com.pulumi.resources.ResourceArgs {
     public static final VrfState Empty = new VrfState();
 
     /**
-     * Description of the VRF.
+     * Description of the VRF
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of the VRF.
+     * @return Description of the VRF
      * 
      */
     public Optional<Output<String>> description() {
@@ -63,14 +63,14 @@ public final class VrfState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Metro ID or Code where the VRF will be deployed.
+     * Metro ID or Code where the VRF will be deployed
      * 
      */
     @Import(name="metro")
     private @Nullable Output<String> metro;
 
     /**
-     * @return Metro ID or Code where the VRF will be deployed.
+     * @return Metro ID or Code where the VRF will be deployed
      * 
      */
     public Optional<Output<String>> metro() {
@@ -93,14 +93,14 @@ public final class VrfState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Project ID where the VRF will be deployed.
+     * Project ID where the VRF will be deployed
      * 
      */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
     /**
-     * @return Project ID where the VRF will be deployed.
+     * @return Project ID where the VRF will be deployed
      * 
      */
     public Optional<Output<String>> projectId() {
@@ -137,7 +137,7 @@ public final class VrfState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the VRF.
+         * @param description Description of the VRF
          * 
          * @return builder
          * 
@@ -148,7 +148,7 @@ public final class VrfState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the VRF.
+         * @param description Description of the VRF
          * 
          * @return builder
          * 
@@ -210,7 +210,7 @@ public final class VrfState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param metro Metro ID or Code where the VRF will be deployed.
+         * @param metro Metro ID or Code where the VRF will be deployed
          * 
          * @return builder
          * 
@@ -221,7 +221,7 @@ public final class VrfState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param metro Metro ID or Code where the VRF will be deployed.
+         * @param metro Metro ID or Code where the VRF will be deployed
          * 
          * @return builder
          * 
@@ -252,7 +252,7 @@ public final class VrfState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectId Project ID where the VRF will be deployed.
+         * @param projectId Project ID where the VRF will be deployed
          * 
          * @return builder
          * 
@@ -263,7 +263,7 @@ public final class VrfState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectId Project ID where the VRF will be deployed.
+         * @param projectId Project ID where the VRF will be deployed
          * 
          * @return builder
          * 
