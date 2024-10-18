@@ -27,9 +27,6 @@ namespace Pulumi.Equinix.Metal.Inputs
         [Input("state", required: true)]
         public Input<string> State { get; set; } = null!;
 
-        /// <summary>
-        /// Connection type - dedicated or shared.
-        /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 

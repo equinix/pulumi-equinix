@@ -147,17 +147,17 @@ import (
 type Vrf struct {
 	pulumi.CustomResourceState
 
-	// Description of the VRF.
+	// Description of the VRF
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// All IPv4 and IPv6 Ranges that will be available to BGP Peers. IPv4 addresses must be /8 or smaller with a minimum size of /29. IPv6 must be /56 or smaller with a minimum size of /64. Ranges must not overlap other ranges within the VRF.
 	IpRanges pulumi.StringArrayOutput `pulumi:"ipRanges"`
 	// The 4-byte ASN set on the VRF.
 	LocalAsn pulumi.IntOutput `pulumi:"localAsn"`
-	// Metro ID or Code where the VRF will be deployed.
+	// Metro ID or Code where the VRF will be deployed
 	Metro pulumi.StringOutput `pulumi:"metro"`
 	// User-supplied name of the VRF, unique to the project
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Project ID where the VRF will be deployed.
+	// Project ID where the VRF will be deployed
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 }
 
@@ -197,32 +197,32 @@ func GetVrf(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Vrf resources.
 type vrfState struct {
-	// Description of the VRF.
+	// Description of the VRF
 	Description *string `pulumi:"description"`
 	// All IPv4 and IPv6 Ranges that will be available to BGP Peers. IPv4 addresses must be /8 or smaller with a minimum size of /29. IPv6 must be /56 or smaller with a minimum size of /64. Ranges must not overlap other ranges within the VRF.
 	IpRanges []string `pulumi:"ipRanges"`
 	// The 4-byte ASN set on the VRF.
 	LocalAsn *int `pulumi:"localAsn"`
-	// Metro ID or Code where the VRF will be deployed.
+	// Metro ID or Code where the VRF will be deployed
 	Metro *string `pulumi:"metro"`
 	// User-supplied name of the VRF, unique to the project
 	Name *string `pulumi:"name"`
-	// Project ID where the VRF will be deployed.
+	// Project ID where the VRF will be deployed
 	ProjectId *string `pulumi:"projectId"`
 }
 
 type VrfState struct {
-	// Description of the VRF.
+	// Description of the VRF
 	Description pulumi.StringPtrInput
 	// All IPv4 and IPv6 Ranges that will be available to BGP Peers. IPv4 addresses must be /8 or smaller with a minimum size of /29. IPv6 must be /56 or smaller with a minimum size of /64. Ranges must not overlap other ranges within the VRF.
 	IpRanges pulumi.StringArrayInput
 	// The 4-byte ASN set on the VRF.
 	LocalAsn pulumi.IntPtrInput
-	// Metro ID or Code where the VRF will be deployed.
+	// Metro ID or Code where the VRF will be deployed
 	Metro pulumi.StringPtrInput
 	// User-supplied name of the VRF, unique to the project
 	Name pulumi.StringPtrInput
-	// Project ID where the VRF will be deployed.
+	// Project ID where the VRF will be deployed
 	ProjectId pulumi.StringPtrInput
 }
 
@@ -231,33 +231,33 @@ func (VrfState) ElementType() reflect.Type {
 }
 
 type vrfArgs struct {
-	// Description of the VRF.
+	// Description of the VRF
 	Description *string `pulumi:"description"`
 	// All IPv4 and IPv6 Ranges that will be available to BGP Peers. IPv4 addresses must be /8 or smaller with a minimum size of /29. IPv6 must be /56 or smaller with a minimum size of /64. Ranges must not overlap other ranges within the VRF.
 	IpRanges []string `pulumi:"ipRanges"`
 	// The 4-byte ASN set on the VRF.
 	LocalAsn *int `pulumi:"localAsn"`
-	// Metro ID or Code where the VRF will be deployed.
+	// Metro ID or Code where the VRF will be deployed
 	Metro string `pulumi:"metro"`
 	// User-supplied name of the VRF, unique to the project
 	Name *string `pulumi:"name"`
-	// Project ID where the VRF will be deployed.
+	// Project ID where the VRF will be deployed
 	ProjectId string `pulumi:"projectId"`
 }
 
 // The set of arguments for constructing a Vrf resource.
 type VrfArgs struct {
-	// Description of the VRF.
+	// Description of the VRF
 	Description pulumi.StringPtrInput
 	// All IPv4 and IPv6 Ranges that will be available to BGP Peers. IPv4 addresses must be /8 or smaller with a minimum size of /29. IPv6 must be /56 or smaller with a minimum size of /64. Ranges must not overlap other ranges within the VRF.
 	IpRanges pulumi.StringArrayInput
 	// The 4-byte ASN set on the VRF.
 	LocalAsn pulumi.IntPtrInput
-	// Metro ID or Code where the VRF will be deployed.
+	// Metro ID or Code where the VRF will be deployed
 	Metro pulumi.StringInput
 	// User-supplied name of the VRF, unique to the project
 	Name pulumi.StringPtrInput
-	// Project ID where the VRF will be deployed.
+	// Project ID where the VRF will be deployed
 	ProjectId pulumi.StringInput
 }
 
@@ -348,7 +348,7 @@ func (o VrfOutput) ToVrfOutputWithContext(ctx context.Context) VrfOutput {
 	return o
 }
 
-// Description of the VRF.
+// Description of the VRF
 func (o VrfOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Vrf) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -363,7 +363,7 @@ func (o VrfOutput) LocalAsn() pulumi.IntOutput {
 	return o.ApplyT(func(v *Vrf) pulumi.IntOutput { return v.LocalAsn }).(pulumi.IntOutput)
 }
 
-// Metro ID or Code where the VRF will be deployed.
+// Metro ID or Code where the VRF will be deployed
 func (o VrfOutput) Metro() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vrf) pulumi.StringOutput { return v.Metro }).(pulumi.StringOutput)
 }
@@ -373,7 +373,7 @@ func (o VrfOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vrf) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Project ID where the VRF will be deployed.
+// Project ID where the VRF will be deployed
 func (o VrfOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vrf) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
 }

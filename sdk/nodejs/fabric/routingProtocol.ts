@@ -115,6 +115,10 @@ export class RoutingProtocol extends pulumi.CustomResource {
     }
 
     /**
+     * Enable AS number override
+     */
+    public readonly asOverrideEnabled!: pulumi.Output<boolean>;
+    /**
      * Bidirectional Forwarding Detection
      */
     public readonly bfd!: pulumi.Output<outputs.fabric.RoutingProtocolBfd>;
@@ -200,6 +204,7 @@ export class RoutingProtocol extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RoutingProtocolState | undefined;
+            resourceInputs["asOverrideEnabled"] = state ? state.asOverrideEnabled : undefined;
             resourceInputs["bfd"] = state ? state.bfd : undefined;
             resourceInputs["bgpAuthKey"] = state ? state.bgpAuthKey : undefined;
             resourceInputs["bgpIpv4"] = state ? state.bgpIpv4 : undefined;
@@ -223,6 +228,7 @@ export class RoutingProtocol extends pulumi.CustomResource {
             if ((!args || args.connectionUuid === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'connectionUuid'");
             }
+            resourceInputs["asOverrideEnabled"] = args ? args.asOverrideEnabled : undefined;
             resourceInputs["bfd"] = args ? args.bfd : undefined;
             resourceInputs["bgpAuthKey"] = args ? args.bgpAuthKey : undefined;
             resourceInputs["bgpIpv4"] = args ? args.bgpIpv4 : undefined;
@@ -251,6 +257,10 @@ export class RoutingProtocol extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RoutingProtocol resources.
  */
 export interface RoutingProtocolState {
+    /**
+     * Enable AS number override
+     */
+    asOverrideEnabled?: pulumi.Input<boolean>;
     /**
      * Bidirectional Forwarding Detection
      */
@@ -329,6 +339,10 @@ export interface RoutingProtocolState {
  * The set of arguments for constructing a RoutingProtocol resource.
  */
 export interface RoutingProtocolArgs {
+    /**
+     * Enable AS number override
+     */
+    asOverrideEnabled?: pulumi.Input<boolean>;
     /**
      * Bidirectional Forwarding Detection
      */

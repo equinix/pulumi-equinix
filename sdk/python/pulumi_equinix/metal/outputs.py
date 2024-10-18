@@ -383,11 +383,6 @@ class InterconnectionPort(dict):
                  speed: int,
                  status: str,
                  virtual_circuit_ids: Sequence[str]):
-        """
-        :param str name: Name of the connection resource
-        :param int speed: Connection speed - Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
-        :param str status: Status of the connection resource.
-        """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "link_status", link_status)
         pulumi.set(__self__, "name", name)
@@ -409,9 +404,6 @@ class InterconnectionPort(dict):
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        Name of the connection resource
-        """
         return pulumi.get(self, "name")
 
     @property
@@ -422,17 +414,11 @@ class InterconnectionPort(dict):
     @property
     @pulumi.getter
     def speed(self) -> int:
-        """
-        Connection speed - Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
-        """
         return pulumi.get(self, "speed")
 
     @property
     @pulumi.getter
     def status(self) -> str:
-        """
-        Status of the connection resource.
-        """
         return pulumi.get(self, "status")
 
     @property
@@ -469,9 +455,6 @@ class InterconnectionServiceToken(dict):
                  role: str,
                  state: str,
                  type: str):
-        """
-        :param str type: Connection type - dedicated or shared.
-        """
         pulumi.set(__self__, "expires_at", expires_at)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "max_allowed_speed", max_allowed_speed)
@@ -507,9 +490,6 @@ class InterconnectionServiceToken(dict):
     @property
     @pulumi.getter
     def type(self) -> str:
-        """
-        Connection type - dedicated or shared.
-        """
         return pulumi.get(self, "type")
 
 

@@ -7,6 +7,8 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class DeviceSshKey {
@@ -14,7 +16,7 @@ public final class DeviceSshKey {
      * @return Reference by name to previously provisioned public SSH key
      * 
      */
-    private String keyName;
+    private @Nullable String keyName;
     /**
      * @return username associated with given key.
      * 
@@ -26,8 +28,8 @@ public final class DeviceSshKey {
      * @return Reference by name to previously provisioned public SSH key
      * 
      */
-    public String keyName() {
-        return this.keyName;
+    public Optional<String> keyName() {
+        return Optional.ofNullable(this.keyName);
     }
     /**
      * @return username associated with given key.
@@ -46,7 +48,7 @@ public final class DeviceSshKey {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String keyName;
+        private @Nullable String keyName;
         private String username;
         public Builder() {}
         public Builder(DeviceSshKey defaults) {
@@ -56,10 +58,8 @@ public final class DeviceSshKey {
         }
 
         @CustomType.Setter
-        public Builder keyName(String keyName) {
-            if (keyName == null) {
-              throw new MissingRequiredPropertyException("DeviceSshKey", "keyName");
-            }
+        public Builder keyName(@Nullable String keyName) {
+
             this.keyName = keyName;
             return this;
         }

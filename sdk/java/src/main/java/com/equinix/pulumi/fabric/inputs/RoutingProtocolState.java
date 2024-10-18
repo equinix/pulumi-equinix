@@ -13,6 +13,7 @@ import com.equinix.pulumi.fabric.inputs.RoutingProtocolDirectIpv6Args;
 import com.equinix.pulumi.fabric.inputs.RoutingProtocolOperationArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -24,6 +25,21 @@ import javax.annotation.Nullable;
 public final class RoutingProtocolState extends com.pulumi.resources.ResourceArgs {
 
     public static final RoutingProtocolState Empty = new RoutingProtocolState();
+
+    /**
+     * Enable AS number override
+     * 
+     */
+    @Import(name="asOverrideEnabled")
+    private @Nullable Output<Boolean> asOverrideEnabled;
+
+    /**
+     * @return Enable AS number override
+     * 
+     */
+    public Optional<Output<Boolean>> asOverrideEnabled() {
+        return Optional.ofNullable(this.asOverrideEnabled);
+    }
 
     /**
      * Bidirectional Forwarding Detection
@@ -298,6 +314,7 @@ public final class RoutingProtocolState extends com.pulumi.resources.ResourceArg
     private RoutingProtocolState() {}
 
     private RoutingProtocolState(RoutingProtocolState $) {
+        this.asOverrideEnabled = $.asOverrideEnabled;
         this.bfd = $.bfd;
         this.bgpAuthKey = $.bgpAuthKey;
         this.bgpIpv4 = $.bgpIpv4;
@@ -334,6 +351,27 @@ public final class RoutingProtocolState extends com.pulumi.resources.ResourceArg
 
         public Builder(RoutingProtocolState defaults) {
             $ = new RoutingProtocolState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param asOverrideEnabled Enable AS number override
+         * 
+         * @return builder
+         * 
+         */
+        public Builder asOverrideEnabled(@Nullable Output<Boolean> asOverrideEnabled) {
+            $.asOverrideEnabled = asOverrideEnabled;
+            return this;
+        }
+
+        /**
+         * @param asOverrideEnabled Enable AS number override
+         * 
+         * @return builder
+         * 
+         */
+        public Builder asOverrideEnabled(Boolean asOverrideEnabled) {
+            return asOverrideEnabled(Output.of(asOverrideEnabled));
         }
 
         /**

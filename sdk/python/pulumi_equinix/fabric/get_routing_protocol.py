@@ -22,7 +22,10 @@ class GetRoutingProtocolResult:
     """
     A collection of values returned by getRoutingProtocol.
     """
-    def __init__(__self__, bfd=None, bgp_auth_key=None, bgp_ipv4=None, bgp_ipv6=None, change_logs=None, changes=None, connection_uuid=None, customer_asn=None, description=None, direct_ipv4=None, direct_ipv6=None, equinix_asn=None, href=None, id=None, name=None, operations=None, state=None, type=None, uuid=None):
+    def __init__(__self__, as_override_enabled=None, bfd=None, bgp_auth_key=None, bgp_ipv4=None, bgp_ipv6=None, change_logs=None, changes=None, connection_uuid=None, customer_asn=None, description=None, direct_ipv4=None, direct_ipv6=None, equinix_asn=None, href=None, id=None, name=None, operations=None, state=None, type=None, uuid=None):
+        if as_override_enabled and not isinstance(as_override_enabled, bool):
+            raise TypeError("Expected argument 'as_override_enabled' to be a bool")
+        pulumi.set(__self__, "as_override_enabled", as_override_enabled)
         if bfd and not isinstance(bfd, dict):
             raise TypeError("Expected argument 'bfd' to be a dict")
         pulumi.set(__self__, "bfd", bfd)
@@ -80,6 +83,14 @@ class GetRoutingProtocolResult:
         if uuid and not isinstance(uuid, str):
             raise TypeError("Expected argument 'uuid' to be a str")
         pulumi.set(__self__, "uuid", uuid)
+
+    @property
+    @pulumi.getter(name="asOverrideEnabled")
+    def as_override_enabled(self) -> bool:
+        """
+        Enable AS number override
+        """
+        return pulumi.get(self, "as_override_enabled")
 
     @property
     @pulumi.getter
@@ -240,6 +251,7 @@ class AwaitableGetRoutingProtocolResult(GetRoutingProtocolResult):
         if False:
             yield self
         return GetRoutingProtocolResult(
+            as_override_enabled=self.as_override_enabled,
             bfd=self.bfd,
             bgp_auth_key=self.bgp_auth_key,
             bgp_ipv4=self.bgp_ipv4,
@@ -306,6 +318,7 @@ def get_routing_protocol(connection_uuid: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('equinix:fabric/getRoutingProtocol:getRoutingProtocol', __args__, opts=opts, typ=GetRoutingProtocolResult).value
 
     return AwaitableGetRoutingProtocolResult(
+        as_override_enabled=pulumi.get(__ret__, 'as_override_enabled'),
         bfd=pulumi.get(__ret__, 'bfd'),
         bgp_auth_key=pulumi.get(__ret__, 'bgp_auth_key'),
         bgp_ipv4=pulumi.get(__ret__, 'bgp_ipv4'),

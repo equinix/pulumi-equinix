@@ -15,18 +15,9 @@ namespace Pulumi.Equinix.Metal.Outputs
     {
         public readonly string Id;
         public readonly string LinkStatus;
-        /// <summary>
-        /// Name of the connection resource
-        /// </summary>
         public readonly string Name;
         public readonly string Role;
-        /// <summary>
-        /// Connection speed - Values must be in the format '&lt;number&gt;Mbps' or '&lt;number&gt;Gpbs', for example '100Mbps' or '50Gbps'. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
-        /// </summary>
         public readonly int Speed;
-        /// <summary>
-        /// Status of the connection resource.
-        /// </summary>
         public readonly string Status;
         public readonly ImmutableArray<string> VirtualCircuitIds;
 

@@ -4228,17 +4228,29 @@ class RoutingProtocolBgpIpv4Args:
     def __init__(__self__, *,
                  customer_peer_ip: pulumi.Input[str],
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 equinix_peer_ip: Optional[pulumi.Input[str]] = None):
+                 equinix_peer_ip: Optional[pulumi.Input[str]] = None,
+                 inbound_med: Optional[pulumi.Input[int]] = None,
+                 outbound_as_prepend_count: Optional[pulumi.Input[str]] = None,
+                 outbound_med: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] customer_peer_ip: Customer side peering ip
         :param pulumi.Input[bool] enabled: Admin status for the BGP session
         :param pulumi.Input[str] equinix_peer_ip: Equinix side peering ip
+        :param pulumi.Input[int] inbound_med: Inbound Multi Exit Discriminator attribute
+        :param pulumi.Input[str] outbound_as_prepend_count: AS path prepend count. One of: 0, 1, 3, 5
+        :param pulumi.Input[int] outbound_med: Outbound Multi Exit Discriminator attribute
         """
         pulumi.set(__self__, "customer_peer_ip", customer_peer_ip)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if equinix_peer_ip is not None:
             pulumi.set(__self__, "equinix_peer_ip", equinix_peer_ip)
+        if inbound_med is not None:
+            pulumi.set(__self__, "inbound_med", inbound_med)
+        if outbound_as_prepend_count is not None:
+            pulumi.set(__self__, "outbound_as_prepend_count", outbound_as_prepend_count)
+        if outbound_med is not None:
+            pulumi.set(__self__, "outbound_med", outbound_med)
 
     @property
     @pulumi.getter(name="customerPeerIp")
@@ -4275,6 +4287,42 @@ class RoutingProtocolBgpIpv4Args:
     @equinix_peer_ip.setter
     def equinix_peer_ip(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "equinix_peer_ip", value)
+
+    @property
+    @pulumi.getter(name="inboundMed")
+    def inbound_med(self) -> Optional[pulumi.Input[int]]:
+        """
+        Inbound Multi Exit Discriminator attribute
+        """
+        return pulumi.get(self, "inbound_med")
+
+    @inbound_med.setter
+    def inbound_med(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "inbound_med", value)
+
+    @property
+    @pulumi.getter(name="outboundAsPrependCount")
+    def outbound_as_prepend_count(self) -> Optional[pulumi.Input[str]]:
+        """
+        AS path prepend count. One of: 0, 1, 3, 5
+        """
+        return pulumi.get(self, "outbound_as_prepend_count")
+
+    @outbound_as_prepend_count.setter
+    def outbound_as_prepend_count(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "outbound_as_prepend_count", value)
+
+    @property
+    @pulumi.getter(name="outboundMed")
+    def outbound_med(self) -> Optional[pulumi.Input[int]]:
+        """
+        Outbound Multi Exit Discriminator attribute
+        """
+        return pulumi.get(self, "outbound_med")
+
+    @outbound_med.setter
+    def outbound_med(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "outbound_med", value)
 
 
 @pulumi.input_type
@@ -4282,17 +4330,29 @@ class RoutingProtocolBgpIpv6Args:
     def __init__(__self__, *,
                  customer_peer_ip: pulumi.Input[str],
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 equinix_peer_ip: Optional[pulumi.Input[str]] = None):
+                 equinix_peer_ip: Optional[pulumi.Input[str]] = None,
+                 inbound_med: Optional[pulumi.Input[int]] = None,
+                 outbound_as_prepend_count: Optional[pulumi.Input[str]] = None,
+                 outbound_med: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] customer_peer_ip: Customer side peering ip
         :param pulumi.Input[bool] enabled: Admin status for the BGP session
         :param pulumi.Input[str] equinix_peer_ip: Equinix side peering ip
+        :param pulumi.Input[int] inbound_med: Inbound Multi Exit Discriminator attribute
+        :param pulumi.Input[str] outbound_as_prepend_count: AS path prepend count. One of: 0, 1, 3, 5
+        :param pulumi.Input[int] outbound_med: Outbound Multi Exit Discriminator attribute
         """
         pulumi.set(__self__, "customer_peer_ip", customer_peer_ip)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if equinix_peer_ip is not None:
             pulumi.set(__self__, "equinix_peer_ip", equinix_peer_ip)
+        if inbound_med is not None:
+            pulumi.set(__self__, "inbound_med", inbound_med)
+        if outbound_as_prepend_count is not None:
+            pulumi.set(__self__, "outbound_as_prepend_count", outbound_as_prepend_count)
+        if outbound_med is not None:
+            pulumi.set(__self__, "outbound_med", outbound_med)
 
     @property
     @pulumi.getter(name="customerPeerIp")
@@ -4329,6 +4389,42 @@ class RoutingProtocolBgpIpv6Args:
     @equinix_peer_ip.setter
     def equinix_peer_ip(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "equinix_peer_ip", value)
+
+    @property
+    @pulumi.getter(name="inboundMed")
+    def inbound_med(self) -> Optional[pulumi.Input[int]]:
+        """
+        Inbound Multi Exit Discriminator attribute
+        """
+        return pulumi.get(self, "inbound_med")
+
+    @inbound_med.setter
+    def inbound_med(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "inbound_med", value)
+
+    @property
+    @pulumi.getter(name="outboundAsPrependCount")
+    def outbound_as_prepend_count(self) -> Optional[pulumi.Input[str]]:
+        """
+        AS path prepend count. One of: 0, 1, 3, 5
+        """
+        return pulumi.get(self, "outbound_as_prepend_count")
+
+    @outbound_as_prepend_count.setter
+    def outbound_as_prepend_count(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "outbound_as_prepend_count", value)
+
+    @property
+    @pulumi.getter(name="outboundMed")
+    def outbound_med(self) -> Optional[pulumi.Input[int]]:
+        """
+        Outbound Multi Exit Discriminator attribute
+        """
+        return pulumi.get(self, "outbound_med")
+
+    @outbound_med.setter
+    def outbound_med(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "outbound_med", value)
 
 
 @pulumi.input_type

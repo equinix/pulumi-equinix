@@ -16,7 +16,7 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
         /// <summary>
         /// Reference by name to previously provisioned public SSH key
         /// </summary>
-        public readonly string KeyName;
+        public readonly string? KeyName;
         /// <summary>
         /// username associated with given key.
         /// </summary>
@@ -24,7 +24,7 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
 
         [OutputConstructor]
         private DeviceSshKey(
-            string keyName,
+            string? keyName,
 
             string username)
         {

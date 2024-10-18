@@ -18,6 +18,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -181,6 +182,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="equinix:fabric/routingProtocol:RoutingProtocol")
 public class RoutingProtocol extends com.pulumi.resources.CustomResource {
+    /**
+     * Enable AS number override
+     * 
+     */
+    @Export(name="asOverrideEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> asOverrideEnabled;
+
+    /**
+     * @return Enable AS number override
+     * 
+     */
+    public Output<Boolean> asOverrideEnabled() {
+        return this.asOverrideEnabled;
+    }
     /**
      * Bidirectional Forwarding Detection
      * 
