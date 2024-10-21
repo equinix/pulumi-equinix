@@ -6,6 +6,7 @@ package com.equinix.pulumi.fabric.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -28,6 +29,21 @@ public final class RoutingProtocolBgpIpv6 {
      * 
      */
     private @Nullable String equinixPeerIp;
+    /**
+     * @return Inbound Multi Exit Discriminator attribute
+     * 
+     */
+    private @Nullable Integer inboundMed;
+    /**
+     * @return AS path prepend count. One of: 0, 1, 3, 5
+     * 
+     */
+    private @Nullable String outboundAsPrependCount;
+    /**
+     * @return Outbound Multi Exit Discriminator attribute
+     * 
+     */
+    private @Nullable Integer outboundMed;
 
     private RoutingProtocolBgpIpv6() {}
     /**
@@ -51,6 +67,27 @@ public final class RoutingProtocolBgpIpv6 {
     public Optional<String> equinixPeerIp() {
         return Optional.ofNullable(this.equinixPeerIp);
     }
+    /**
+     * @return Inbound Multi Exit Discriminator attribute
+     * 
+     */
+    public Optional<Integer> inboundMed() {
+        return Optional.ofNullable(this.inboundMed);
+    }
+    /**
+     * @return AS path prepend count. One of: 0, 1, 3, 5
+     * 
+     */
+    public Optional<String> outboundAsPrependCount() {
+        return Optional.ofNullable(this.outboundAsPrependCount);
+    }
+    /**
+     * @return Outbound Multi Exit Discriminator attribute
+     * 
+     */
+    public Optional<Integer> outboundMed() {
+        return Optional.ofNullable(this.outboundMed);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -64,12 +101,18 @@ public final class RoutingProtocolBgpIpv6 {
         private String customerPeerIp;
         private @Nullable Boolean enabled;
         private @Nullable String equinixPeerIp;
+        private @Nullable Integer inboundMed;
+        private @Nullable String outboundAsPrependCount;
+        private @Nullable Integer outboundMed;
         public Builder() {}
         public Builder(RoutingProtocolBgpIpv6 defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.customerPeerIp = defaults.customerPeerIp;
     	      this.enabled = defaults.enabled;
     	      this.equinixPeerIp = defaults.equinixPeerIp;
+    	      this.inboundMed = defaults.inboundMed;
+    	      this.outboundAsPrependCount = defaults.outboundAsPrependCount;
+    	      this.outboundMed = defaults.outboundMed;
         }
 
         @CustomType.Setter
@@ -92,11 +135,32 @@ public final class RoutingProtocolBgpIpv6 {
             this.equinixPeerIp = equinixPeerIp;
             return this;
         }
+        @CustomType.Setter
+        public Builder inboundMed(@Nullable Integer inboundMed) {
+
+            this.inboundMed = inboundMed;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder outboundAsPrependCount(@Nullable String outboundAsPrependCount) {
+
+            this.outboundAsPrependCount = outboundAsPrependCount;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder outboundMed(@Nullable Integer outboundMed) {
+
+            this.outboundMed = outboundMed;
+            return this;
+        }
         public RoutingProtocolBgpIpv6 build() {
             final var _resultValue = new RoutingProtocolBgpIpv6();
             _resultValue.customerPeerIp = customerPeerIp;
             _resultValue.enabled = enabled;
             _resultValue.equinixPeerIp = equinixPeerIp;
+            _resultValue.inboundMed = inboundMed;
+            _resultValue.outboundAsPrependCount = outboundAsPrependCount;
+            _resultValue.outboundMed = outboundMed;
             return _resultValue;
         }
     }

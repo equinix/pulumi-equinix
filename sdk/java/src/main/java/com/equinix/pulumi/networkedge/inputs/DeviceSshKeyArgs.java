@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class DeviceSshKeyArgs extends com.pulumi.resources.ResourceArgs {
@@ -18,15 +20,15 @@ public final class DeviceSshKeyArgs extends com.pulumi.resources.ResourceArgs {
      * Reference by name to previously provisioned public SSH key
      * 
      */
-    @Import(name="keyName", required=true)
-    private Output<String> keyName;
+    @Import(name="keyName")
+    private @Nullable Output<String> keyName;
 
     /**
      * @return Reference by name to previously provisioned public SSH key
      * 
      */
-    public Output<String> keyName() {
-        return this.keyName;
+    public Optional<Output<String>> keyName() {
+        return Optional.ofNullable(this.keyName);
     }
 
     /**
@@ -75,7 +77,7 @@ public final class DeviceSshKeyArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder keyName(Output<String> keyName) {
+        public Builder keyName(@Nullable Output<String> keyName) {
             $.keyName = keyName;
             return this;
         }
@@ -112,9 +114,6 @@ public final class DeviceSshKeyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public DeviceSshKeyArgs build() {
-            if ($.keyName == null) {
-                throw new MissingRequiredPropertyException("DeviceSshKeyArgs", "keyName");
-            }
             if ($.username == null) {
                 throw new MissingRequiredPropertyException("DeviceSshKeyArgs", "username");
             }

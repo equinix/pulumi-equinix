@@ -10409,6 +10409,12 @@ type RoutingProtocolBgpIpv4 struct {
 	Enabled *bool `pulumi:"enabled"`
 	// Equinix side peering ip
 	EquinixPeerIp *string `pulumi:"equinixPeerIp"`
+	// Inbound Multi Exit Discriminator attribute
+	InboundMed *int `pulumi:"inboundMed"`
+	// AS path prepend count. One of: 0, 1, 3, 5
+	OutboundAsPrependCount *string `pulumi:"outboundAsPrependCount"`
+	// Outbound Multi Exit Discriminator attribute
+	OutboundMed *int `pulumi:"outboundMed"`
 }
 
 // RoutingProtocolBgpIpv4Input is an input type that accepts RoutingProtocolBgpIpv4Args and RoutingProtocolBgpIpv4Output values.
@@ -10429,6 +10435,12 @@ type RoutingProtocolBgpIpv4Args struct {
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// Equinix side peering ip
 	EquinixPeerIp pulumi.StringPtrInput `pulumi:"equinixPeerIp"`
+	// Inbound Multi Exit Discriminator attribute
+	InboundMed pulumi.IntPtrInput `pulumi:"inboundMed"`
+	// AS path prepend count. One of: 0, 1, 3, 5
+	OutboundAsPrependCount pulumi.StringPtrInput `pulumi:"outboundAsPrependCount"`
+	// Outbound Multi Exit Discriminator attribute
+	OutboundMed pulumi.IntPtrInput `pulumi:"outboundMed"`
 }
 
 func (RoutingProtocolBgpIpv4Args) ElementType() reflect.Type {
@@ -10523,6 +10535,21 @@ func (o RoutingProtocolBgpIpv4Output) EquinixPeerIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RoutingProtocolBgpIpv4) *string { return v.EquinixPeerIp }).(pulumi.StringPtrOutput)
 }
 
+// Inbound Multi Exit Discriminator attribute
+func (o RoutingProtocolBgpIpv4Output) InboundMed() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RoutingProtocolBgpIpv4) *int { return v.InboundMed }).(pulumi.IntPtrOutput)
+}
+
+// AS path prepend count. One of: 0, 1, 3, 5
+func (o RoutingProtocolBgpIpv4Output) OutboundAsPrependCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RoutingProtocolBgpIpv4) *string { return v.OutboundAsPrependCount }).(pulumi.StringPtrOutput)
+}
+
+// Outbound Multi Exit Discriminator attribute
+func (o RoutingProtocolBgpIpv4Output) OutboundMed() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RoutingProtocolBgpIpv4) *int { return v.OutboundMed }).(pulumi.IntPtrOutput)
+}
+
 type RoutingProtocolBgpIpv4PtrOutput struct{ *pulumi.OutputState }
 
 func (RoutingProtocolBgpIpv4PtrOutput) ElementType() reflect.Type {
@@ -10577,6 +10604,36 @@ func (o RoutingProtocolBgpIpv4PtrOutput) EquinixPeerIp() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// Inbound Multi Exit Discriminator attribute
+func (o RoutingProtocolBgpIpv4PtrOutput) InboundMed() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RoutingProtocolBgpIpv4) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InboundMed
+	}).(pulumi.IntPtrOutput)
+}
+
+// AS path prepend count. One of: 0, 1, 3, 5
+func (o RoutingProtocolBgpIpv4PtrOutput) OutboundAsPrependCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RoutingProtocolBgpIpv4) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OutboundAsPrependCount
+	}).(pulumi.StringPtrOutput)
+}
+
+// Outbound Multi Exit Discriminator attribute
+func (o RoutingProtocolBgpIpv4PtrOutput) OutboundMed() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RoutingProtocolBgpIpv4) *int {
+		if v == nil {
+			return nil
+		}
+		return v.OutboundMed
+	}).(pulumi.IntPtrOutput)
+}
+
 type RoutingProtocolBgpIpv6 struct {
 	// Customer side peering ip
 	CustomerPeerIp string `pulumi:"customerPeerIp"`
@@ -10584,6 +10641,12 @@ type RoutingProtocolBgpIpv6 struct {
 	Enabled *bool `pulumi:"enabled"`
 	// Equinix side peering ip
 	EquinixPeerIp *string `pulumi:"equinixPeerIp"`
+	// Inbound Multi Exit Discriminator attribute
+	InboundMed *int `pulumi:"inboundMed"`
+	// AS path prepend count. One of: 0, 1, 3, 5
+	OutboundAsPrependCount *string `pulumi:"outboundAsPrependCount"`
+	// Outbound Multi Exit Discriminator attribute
+	OutboundMed *int `pulumi:"outboundMed"`
 }
 
 // RoutingProtocolBgpIpv6Input is an input type that accepts RoutingProtocolBgpIpv6Args and RoutingProtocolBgpIpv6Output values.
@@ -10604,6 +10667,12 @@ type RoutingProtocolBgpIpv6Args struct {
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// Equinix side peering ip
 	EquinixPeerIp pulumi.StringPtrInput `pulumi:"equinixPeerIp"`
+	// Inbound Multi Exit Discriminator attribute
+	InboundMed pulumi.IntPtrInput `pulumi:"inboundMed"`
+	// AS path prepend count. One of: 0, 1, 3, 5
+	OutboundAsPrependCount pulumi.StringPtrInput `pulumi:"outboundAsPrependCount"`
+	// Outbound Multi Exit Discriminator attribute
+	OutboundMed pulumi.IntPtrInput `pulumi:"outboundMed"`
 }
 
 func (RoutingProtocolBgpIpv6Args) ElementType() reflect.Type {
@@ -10698,6 +10767,21 @@ func (o RoutingProtocolBgpIpv6Output) EquinixPeerIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RoutingProtocolBgpIpv6) *string { return v.EquinixPeerIp }).(pulumi.StringPtrOutput)
 }
 
+// Inbound Multi Exit Discriminator attribute
+func (o RoutingProtocolBgpIpv6Output) InboundMed() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RoutingProtocolBgpIpv6) *int { return v.InboundMed }).(pulumi.IntPtrOutput)
+}
+
+// AS path prepend count. One of: 0, 1, 3, 5
+func (o RoutingProtocolBgpIpv6Output) OutboundAsPrependCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RoutingProtocolBgpIpv6) *string { return v.OutboundAsPrependCount }).(pulumi.StringPtrOutput)
+}
+
+// Outbound Multi Exit Discriminator attribute
+func (o RoutingProtocolBgpIpv6Output) OutboundMed() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RoutingProtocolBgpIpv6) *int { return v.OutboundMed }).(pulumi.IntPtrOutput)
+}
+
 type RoutingProtocolBgpIpv6PtrOutput struct{ *pulumi.OutputState }
 
 func (RoutingProtocolBgpIpv6PtrOutput) ElementType() reflect.Type {
@@ -10750,6 +10834,36 @@ func (o RoutingProtocolBgpIpv6PtrOutput) EquinixPeerIp() pulumi.StringPtrOutput 
 		}
 		return v.EquinixPeerIp
 	}).(pulumi.StringPtrOutput)
+}
+
+// Inbound Multi Exit Discriminator attribute
+func (o RoutingProtocolBgpIpv6PtrOutput) InboundMed() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RoutingProtocolBgpIpv6) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InboundMed
+	}).(pulumi.IntPtrOutput)
+}
+
+// AS path prepend count. One of: 0, 1, 3, 5
+func (o RoutingProtocolBgpIpv6PtrOutput) OutboundAsPrependCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RoutingProtocolBgpIpv6) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OutboundAsPrependCount
+	}).(pulumi.StringPtrOutput)
+}
+
+// Outbound Multi Exit Discriminator attribute
+func (o RoutingProtocolBgpIpv6PtrOutput) OutboundMed() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RoutingProtocolBgpIpv6) *int {
+		if v == nil {
+			return nil
+		}
+		return v.OutboundMed
+	}).(pulumi.IntPtrOutput)
 }
 
 type RoutingProtocolChange struct {
@@ -35799,6 +35913,12 @@ type GetRoutingProtocolBgpIpv4 struct {
 	Enabled *bool `pulumi:"enabled"`
 	// Equinix side peering ip
 	EquinixPeerIp string `pulumi:"equinixPeerIp"`
+	// Inbound Multi Exit Discriminator attribute
+	InboundMed int `pulumi:"inboundMed"`
+	// AS path prepend count. One of: 0, 1, 3, 5
+	OutboundAsPrependCount string `pulumi:"outboundAsPrependCount"`
+	// Outbound Multi Exit Discriminator attribute
+	OutboundMed int `pulumi:"outboundMed"`
 }
 
 // GetRoutingProtocolBgpIpv4Input is an input type that accepts GetRoutingProtocolBgpIpv4Args and GetRoutingProtocolBgpIpv4Output values.
@@ -35819,6 +35939,12 @@ type GetRoutingProtocolBgpIpv4Args struct {
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// Equinix side peering ip
 	EquinixPeerIp pulumi.StringInput `pulumi:"equinixPeerIp"`
+	// Inbound Multi Exit Discriminator attribute
+	InboundMed pulumi.IntInput `pulumi:"inboundMed"`
+	// AS path prepend count. One of: 0, 1, 3, 5
+	OutboundAsPrependCount pulumi.StringInput `pulumi:"outboundAsPrependCount"`
+	// Outbound Multi Exit Discriminator attribute
+	OutboundMed pulumi.IntInput `pulumi:"outboundMed"`
 }
 
 func (GetRoutingProtocolBgpIpv4Args) ElementType() reflect.Type {
@@ -35862,6 +35988,21 @@ func (o GetRoutingProtocolBgpIpv4Output) EquinixPeerIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRoutingProtocolBgpIpv4) string { return v.EquinixPeerIp }).(pulumi.StringOutput)
 }
 
+// Inbound Multi Exit Discriminator attribute
+func (o GetRoutingProtocolBgpIpv4Output) InboundMed() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRoutingProtocolBgpIpv4) int { return v.InboundMed }).(pulumi.IntOutput)
+}
+
+// AS path prepend count. One of: 0, 1, 3, 5
+func (o GetRoutingProtocolBgpIpv4Output) OutboundAsPrependCount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutingProtocolBgpIpv4) string { return v.OutboundAsPrependCount }).(pulumi.StringOutput)
+}
+
+// Outbound Multi Exit Discriminator attribute
+func (o GetRoutingProtocolBgpIpv4Output) OutboundMed() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRoutingProtocolBgpIpv4) int { return v.OutboundMed }).(pulumi.IntOutput)
+}
+
 type GetRoutingProtocolBgpIpv6 struct {
 	// Customer side peering ip
 	CustomerPeerIp string `pulumi:"customerPeerIp"`
@@ -35869,6 +36010,12 @@ type GetRoutingProtocolBgpIpv6 struct {
 	Enabled *bool `pulumi:"enabled"`
 	// Equinix side peering ip
 	EquinixPeerIp string `pulumi:"equinixPeerIp"`
+	// Inbound Multi Exit Discriminator attribute
+	InboundMed int `pulumi:"inboundMed"`
+	// AS path prepend count. One of: 0, 1, 3, 5
+	OutboundAsPrependCount string `pulumi:"outboundAsPrependCount"`
+	// Outbound Multi Exit Discriminator attribute
+	OutboundMed int `pulumi:"outboundMed"`
 }
 
 // GetRoutingProtocolBgpIpv6Input is an input type that accepts GetRoutingProtocolBgpIpv6Args and GetRoutingProtocolBgpIpv6Output values.
@@ -35889,6 +36036,12 @@ type GetRoutingProtocolBgpIpv6Args struct {
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// Equinix side peering ip
 	EquinixPeerIp pulumi.StringInput `pulumi:"equinixPeerIp"`
+	// Inbound Multi Exit Discriminator attribute
+	InboundMed pulumi.IntInput `pulumi:"inboundMed"`
+	// AS path prepend count. One of: 0, 1, 3, 5
+	OutboundAsPrependCount pulumi.StringInput `pulumi:"outboundAsPrependCount"`
+	// Outbound Multi Exit Discriminator attribute
+	OutboundMed pulumi.IntInput `pulumi:"outboundMed"`
 }
 
 func (GetRoutingProtocolBgpIpv6Args) ElementType() reflect.Type {
@@ -35930,6 +36083,21 @@ func (o GetRoutingProtocolBgpIpv6Output) Enabled() pulumi.BoolPtrOutput {
 // Equinix side peering ip
 func (o GetRoutingProtocolBgpIpv6Output) EquinixPeerIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRoutingProtocolBgpIpv6) string { return v.EquinixPeerIp }).(pulumi.StringOutput)
+}
+
+// Inbound Multi Exit Discriminator attribute
+func (o GetRoutingProtocolBgpIpv6Output) InboundMed() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRoutingProtocolBgpIpv6) int { return v.InboundMed }).(pulumi.IntOutput)
+}
+
+// AS path prepend count. One of: 0, 1, 3, 5
+func (o GetRoutingProtocolBgpIpv6Output) OutboundAsPrependCount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutingProtocolBgpIpv6) string { return v.OutboundAsPrependCount }).(pulumi.StringOutput)
+}
+
+// Outbound Multi Exit Discriminator attribute
+func (o GetRoutingProtocolBgpIpv6Output) OutboundMed() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRoutingProtocolBgpIpv6) int { return v.OutboundMed }).(pulumi.IntOutput)
 }
 
 type GetRoutingProtocolChange struct {

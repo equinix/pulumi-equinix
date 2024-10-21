@@ -110,7 +110,7 @@ export class Vrf extends pulumi.CustomResource {
     }
 
     /**
-     * Description of the VRF.
+     * Description of the VRF
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -122,7 +122,7 @@ export class Vrf extends pulumi.CustomResource {
      */
     public readonly localAsn!: pulumi.Output<number>;
     /**
-     * Metro ID or Code where the VRF will be deployed.
+     * Metro ID or Code where the VRF will be deployed
      */
     public readonly metro!: pulumi.Output<string>;
     /**
@@ -130,7 +130,7 @@ export class Vrf extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Project ID where the VRF will be deployed.
+     * Project ID where the VRF will be deployed
      */
     public readonly projectId!: pulumi.Output<string>;
 
@@ -178,7 +178,7 @@ export class Vrf extends pulumi.CustomResource {
  */
 export interface VrfState {
     /**
-     * Description of the VRF.
+     * Description of the VRF
      */
     description?: pulumi.Input<string>;
     /**
@@ -190,7 +190,7 @@ export interface VrfState {
      */
     localAsn?: pulumi.Input<number>;
     /**
-     * Metro ID or Code where the VRF will be deployed.
+     * Metro ID or Code where the VRF will be deployed
      */
     metro?: pulumi.Input<string>;
     /**
@@ -198,7 +198,7 @@ export interface VrfState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Project ID where the VRF will be deployed.
+     * Project ID where the VRF will be deployed
      */
     projectId?: pulumi.Input<string>;
 }
@@ -208,7 +208,7 @@ export interface VrfState {
  */
 export interface VrfArgs {
     /**
-     * Description of the VRF.
+     * Description of the VRF
      */
     description?: pulumi.Input<string>;
     /**
@@ -220,7 +220,7 @@ export interface VrfArgs {
      */
     localAsn?: pulumi.Input<number>;
     /**
-     * Metro ID or Code where the VRF will be deployed.
+     * Metro ID or Code where the VRF will be deployed
      */
     metro: pulumi.Input<string>;
     /**
@@ -228,7 +228,7 @@ export interface VrfArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Project ID where the VRF will be deployed.
+     * Project ID where the VRF will be deployed
      */
     projectId: pulumi.Input<string>;
 }
