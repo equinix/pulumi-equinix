@@ -31,10 +31,13 @@ jobs:
       run: |
         echo "version=$(cat .pulumi-java-gen.version)" >> "$GITHUB_OUTPUT"
     - name: Call upgrade provider action
-      uses: pulumi/pulumi-upgrade-provider-action@v0.0.12
+      uses: equinix-labs/pulumi-upgrade-provider-action@parameterize-go-version
+      #TODO: switch back to upstream when it supports configurable go version
+      #uses: pulumi/pulumi-upgrade-provider-action@v0.0.12
       with:
         kind: provider
         email: noreply@github.com
         username: GitHub
         pr-title-prefix: "feat: "
         target-java-version: ${{ steps.pulumi-java.outputs.version }}
+        go-version-file: provider/go.mod
