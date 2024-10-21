@@ -4,31 +4,64 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from ._enums import *
 
 __all__ = [
     'DeviceBehaviorArgs',
+    'DeviceBehaviorArgsDict',
     'DeviceIpAddressArgs',
+    'DeviceIpAddressArgsDict',
     'DeviceNetworkArgs',
+    'DeviceNetworkArgsDict',
     'DevicePortArgs',
+    'DevicePortArgsDict',
     'DeviceReinstallArgs',
+    'DeviceReinstallArgsDict',
     'GatewayTimeoutsArgs',
+    'GatewayTimeoutsArgsDict',
     'InterconnectionPortArgs',
+    'InterconnectionPortArgsDict',
     'InterconnectionServiceTokenArgs',
+    'InterconnectionServiceTokenArgsDict',
     'OrganizationAddressArgs',
+    'OrganizationAddressArgsDict',
     'ProjectBgpConfigArgs',
+    'ProjectBgpConfigArgsDict',
     'SpotMarketRequestInstanceParametersArgs',
+    'SpotMarketRequestInstanceParametersArgsDict',
     'GetDevicesFilterArgs',
+    'GetDevicesFilterArgsDict',
     'GetDevicesSortArgs',
+    'GetDevicesSortArgsDict',
     'GetFacilityCapacityArgs',
+    'GetFacilityCapacityArgsDict',
     'GetMetroCapacityArgs',
+    'GetMetroCapacityArgsDict',
     'GetPlansFilterArgs',
+    'GetPlansFilterArgsDict',
     'GetPlansSortArgs',
+    'GetPlansSortArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class DeviceBehaviorArgsDict(TypedDict):
+        allow_changes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of attributes that are allowed to change without recreating the instance. Supported attributes: `custom_data`, `user_data`
+        """
+elif False:
+    DeviceBehaviorArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DeviceBehaviorArgs:
@@ -52,6 +85,23 @@ class DeviceBehaviorArgs:
     def allow_changes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "allow_changes", value)
 
+
+if not MYPY:
+    class DeviceIpAddressArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        one of public*ipv4,private*ipv4,public_ipv6
+        """
+        cidr: NotRequired[pulumi.Input[int]]
+        """
+        CIDR suffix for IP block assigned to this device
+        """
+        reservation_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        IDs of reservations to pick the blocks from
+        """
+elif False:
+    DeviceIpAddressArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DeviceIpAddressArgs:
@@ -106,6 +156,31 @@ class DeviceIpAddressArgs:
     def reservation_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "reservation_ids", value)
 
+
+if not MYPY:
+    class DeviceNetworkArgsDict(TypedDict):
+        address: NotRequired[pulumi.Input[str]]
+        """
+        IPv4 or IPv6 address string
+        """
+        cidr: NotRequired[pulumi.Input[int]]
+        """
+        CIDR suffix for IP address block to be assigned, i.e. amount of addresses
+        """
+        family: NotRequired[pulumi.Input[int]]
+        """
+        IP version - "4" or "6"
+        """
+        gateway: NotRequired[pulumi.Input[str]]
+        """
+        Address of router
+        """
+        public: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the address is routable from the Internet
+        """
+elif False:
+    DeviceNetworkArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DeviceNetworkArgs:
@@ -194,6 +269,31 @@ class DeviceNetworkArgs:
         pulumi.set(self, "public", value)
 
 
+if not MYPY:
+    class DevicePortArgsDict(TypedDict):
+        bonded: NotRequired[pulumi.Input[bool]]
+        """
+        Whether this port is part of a bond in bonded network setup
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the device
+        """
+        mac: NotRequired[pulumi.Input[str]]
+        """
+        MAC address assigned to the port
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the port (e.g. eth0, or bond0)
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        One of [private_ipv4, public_ipv4, public_ipv6]
+        """
+elif False:
+    DevicePortArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DevicePortArgs:
     def __init__(__self__, *,
@@ -281,6 +381,23 @@ class DevicePortArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class DeviceReinstallArgsDict(TypedDict):
+        deprovision_fast: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the OS disk should be filled with `00h` bytes before reinstall
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the device should be reinstalled instead of destroyed
+        """
+        preserve_data: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the non-OS disks should be kept or wiped during reinstall
+        """
+elif False:
+    DeviceReinstallArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DeviceReinstallArgs:
     def __init__(__self__, *,
@@ -336,6 +453,15 @@ class DeviceReinstallArgs:
         pulumi.set(self, "preserve_data", value)
 
 
+if not MYPY:
+    class GatewayTimeoutsArgsDict(TypedDict):
+        delete: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+elif False:
+    GatewayTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GatewayTimeoutsArgs:
     def __init__(__self__, *,
@@ -358,6 +484,27 @@ class GatewayTimeoutsArgs:
     def delete(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "delete", value)
 
+
+if not MYPY:
+    class InterconnectionPortArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        link_status: pulumi.Input[str]
+        name: pulumi.Input[str]
+        """
+        Name of the connection resource
+        """
+        role: pulumi.Input[str]
+        speed: pulumi.Input[int]
+        """
+        Connection speed - Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
+        """
+        status: pulumi.Input[str]
+        """
+        Status of the connection resource.
+        """
+        virtual_circuit_ids: pulumi.Input[Sequence[pulumi.Input[str]]]
+elif False:
+    InterconnectionPortArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InterconnectionPortArgs:
@@ -455,6 +602,20 @@ class InterconnectionPortArgs:
         pulumi.set(self, "virtual_circuit_ids", value)
 
 
+if not MYPY:
+    class InterconnectionServiceTokenArgsDict(TypedDict):
+        expires_at: pulumi.Input[str]
+        id: pulumi.Input[str]
+        max_allowed_speed: pulumi.Input[str]
+        role: pulumi.Input[str]
+        state: pulumi.Input[str]
+        type: pulumi.Input[str]
+        """
+        Connection type - dedicated or shared.
+        """
+elif False:
+    InterconnectionServiceTokenArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InterconnectionServiceTokenArgs:
     def __init__(__self__, *,
@@ -531,6 +692,31 @@ class InterconnectionServiceTokenArgs:
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class OrganizationAddressArgsDict(TypedDict):
+        address: pulumi.Input[str]
+        """
+        Postal address.
+        """
+        city: pulumi.Input[str]
+        """
+        City name.
+        """
+        country: pulumi.Input[str]
+        """
+        Two letter country code (ISO 3166-1 alpha-2), e.g. US.
+        """
+        zip_code: pulumi.Input[str]
+        """
+        Zip Code.
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        State name.
+        """
+elif False:
+    OrganizationAddressArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OrganizationAddressArgs:
@@ -614,6 +800,31 @@ class OrganizationAddressArgs:
     def state(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "state", value)
 
+
+if not MYPY:
+    class ProjectBgpConfigArgsDict(TypedDict):
+        asn: pulumi.Input[int]
+        """
+        Autonomous System Number for local BGP deployment.
+        """
+        deployment_type: pulumi.Input[str]
+        """
+        `local` or `global`, the `local` is likely to be usable immediately, the `global` will need to be reviewed by Equinix Metal engineers.
+        """
+        max_prefix: NotRequired[pulumi.Input[int]]
+        """
+        The maximum number of route filters allowed per server.
+        """
+        md5: NotRequired[pulumi.Input[str]]
+        """
+        Password for BGP session in plaintext (not a checksum).
+        """
+        status: NotRequired[pulumi.Input[str]]
+        """
+        status of BGP configuration in the project.
+        """
+elif False:
+    ProjectBgpConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ProjectBgpConfigArgs:
@@ -699,6 +910,30 @@ class ProjectBgpConfigArgs:
     def status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "status", value)
 
+
+if not MYPY:
+    class SpotMarketRequestInstanceParametersArgsDict(TypedDict):
+        billing_cycle: pulumi.Input[str]
+        hostname: pulumi.Input[str]
+        operating_system: pulumi.Input[str]
+        plan: pulumi.Input[str]
+        always_pxe: NotRequired[pulumi.Input[bool]]
+        customdata: NotRequired[pulumi.Input[str]]
+        description: NotRequired[pulumi.Input[str]]
+        features: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        ipxe_script_url: NotRequired[pulumi.Input[str]]
+        locked: NotRequired[pulumi.Input[bool]]
+        """
+        Blocks deletion of the SpotMarketRequest device until the lock is disabled.
+        """
+        project_ssh_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        termination_time: NotRequired[pulumi.Input[str]]
+        termintation_time: NotRequired[pulumi.Input[str]]
+        user_ssh_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        userdata: NotRequired[pulumi.Input[str]]
+elif False:
+    SpotMarketRequestInstanceParametersArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SpotMarketRequestInstanceParametersArgs:
@@ -903,6 +1138,29 @@ class SpotMarketRequestInstanceParametersArgs:
         pulumi.set(self, "userdata", value)
 
 
+if not MYPY:
+    class GetDevicesFilterArgsDict(TypedDict):
+        attribute: str
+        """
+        The attribute used to filter. Filter attributes are case-sensitive
+        """
+        values: Sequence[str]
+        """
+        The filter values. Filter values are case-sensitive. If you specify multiple values for a filter, the values are joined with an OR by default, and the request returns all results that match any of the specified values
+        """
+        all: NotRequired[bool]
+        """
+        If is set to true, the values are joined with an AND, and the requests returns only the results that match all specified values. Default is `false`.
+
+        All fields in the `devices` block defined below can be used as attribute for both `sort` and `filter` blocks.
+        """
+        match_by: NotRequired[str]
+        """
+        The type of comparison to apply. One of: `in` , `re`, `substring`, `less_than`, `less_than_or_equal`, `greater_than`, `greater_than_or_equal`. Default is `in`.
+        """
+elif False:
+    GetDevicesFilterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetDevicesFilterArgs:
     def __init__(__self__, *,
@@ -976,6 +1234,19 @@ class GetDevicesFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
+if not MYPY:
+    class GetDevicesSortArgsDict(TypedDict):
+        attribute: str
+        """
+        The attribute used to sort the results. Sort attributes are case-sensitive
+        """
+        direction: NotRequired[str]
+        """
+        Sort results in ascending or descending order. Strings are sorted in alphabetical order. One of: asc, desc
+        """
+elif False:
+    GetDevicesSortArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetDevicesSortArgs:
     def __init__(__self__, *,
@@ -1013,6 +1284,19 @@ class GetDevicesSortArgs:
     def direction(self, value: Optional[str]):
         pulumi.set(self, "direction", value)
 
+
+if not MYPY:
+    class GetFacilityCapacityArgsDict(TypedDict):
+        plan: str
+        """
+        Device plan that must be available in selected location.
+        """
+        quantity: NotRequired[int]
+        """
+        Minimun number of devices that must be available in selected location. Default is `1`.
+        """
+elif False:
+    GetFacilityCapacityArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetFacilityCapacityArgs:
@@ -1052,6 +1336,19 @@ class GetFacilityCapacityArgs:
         pulumi.set(self, "quantity", value)
 
 
+if not MYPY:
+    class GetMetroCapacityArgsDict(TypedDict):
+        plan: str
+        """
+        Device plan that must be available in selected location.
+        """
+        quantity: NotRequired[int]
+        """
+        Minimum number of devices that must be available in selected location. Default is `1`.
+        """
+elif False:
+    GetMetroCapacityArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetMetroCapacityArgs:
     def __init__(__self__, *,
@@ -1089,6 +1386,29 @@ class GetMetroCapacityArgs:
     def quantity(self, value: Optional[int]):
         pulumi.set(self, "quantity", value)
 
+
+if not MYPY:
+    class GetPlansFilterArgsDict(TypedDict):
+        attribute: str
+        """
+        The attribute used to filter. Filter attributes are case-sensitive
+        """
+        values: Sequence[str]
+        """
+        The filter values. Filter values are case-sensitive. If you specify multiple values for a filter, the values are joined with an OR by default, and the request returns all results that match any of the specified values
+        """
+        all: NotRequired[bool]
+        """
+        If is set to true, the values are joined with an AND, and the requests returns only the results that match all specified values. Default is `false`.
+
+        All fields in the `plans` block defined below can be used as attribute for both `sort` and `filter` blocks.
+        """
+        match_by: NotRequired[str]
+        """
+        The type of comparison to apply. One of: `in` , `re`, `substring`, `less_than`, `less_than_or_equal`, `greater_than`, `greater_than_or_equal`. Default is `in`.
+        """
+elif False:
+    GetPlansFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetPlansFilterArgs:
@@ -1162,6 +1482,19 @@ class GetPlansFilterArgs:
     def match_by(self, value: Optional[str]):
         pulumi.set(self, "match_by", value)
 
+
+if not MYPY:
+    class GetPlansSortArgsDict(TypedDict):
+        attribute: str
+        """
+        The attribute used to sort the results. Sort attributes are case-sensitive
+        """
+        direction: NotRequired[str]
+        """
+        Sort results in ascending or descending order. Strings are sorted in alphabetical order. One of: asc, desc
+        """
+elif False:
+    GetPlansSortArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetPlansSortArgs:

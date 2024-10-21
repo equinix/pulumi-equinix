@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -148,9 +153,6 @@ def get_facility(capacities: Optional[Sequence[Union['GetFacilityCapacityArgs', 
         id=pulumi.get(__ret__, 'id'),
         metro=pulumi.get(__ret__, 'metro'),
         name=pulumi.get(__ret__, 'name'))
-
-
-@_utilities.lift_output_func(get_facility)
 def get_facility_output(capacities: Optional[pulumi.Input[Optional[Sequence[Union['GetFacilityCapacityArgs', 'GetFacilityCapacityArgsDict']]]]] = None,
                         code: Optional[pulumi.Input[str]] = None,
                         features_requireds: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
@@ -175,4 +177,17 @@ def get_facility_output(capacities: Optional[pulumi.Input[Optional[Sequence[Unio
     :param str code: The facility code to search for facilities.
     :param Sequence[str] features_requireds: Set of feature strings that the facility must have. Some possible values are `baremetal`, `ibx`, `storage`, `global_ipv4`, `backend_transfer`, `layer_2`.
     """
-    ...
+    __args__ = dict()
+    __args__['capacities'] = capacities
+    __args__['code'] = code
+    __args__['featuresRequireds'] = features_requireds
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('equinix:metal/getFacility:getFacility', __args__, opts=opts, typ=GetFacilityResult)
+    return __ret__.apply(lambda __response__: GetFacilityResult(
+        capacities=pulumi.get(__response__, 'capacities'),
+        code=pulumi.get(__response__, 'code'),
+        features=pulumi.get(__response__, 'features'),
+        features_requireds=pulumi.get(__response__, 'features_requireds'),
+        id=pulumi.get(__response__, 'id'),
+        metro=pulumi.get(__response__, 'metro'),
+        name=pulumi.get(__response__, 'name')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -357,9 +362,6 @@ def get_service_profile(uuid: Optional[str] = None,
         view_point=pulumi.get(__ret__, 'view_point'),
         virtual_devices=pulumi.get(__ret__, 'virtual_devices'),
         visibility=pulumi.get(__ret__, 'visibility'))
-
-
-@_utilities.lift_output_func(get_service_profile)
 def get_service_profile_output(uuid: Optional[pulumi.Input[str]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceProfileResult]:
     """
@@ -392,4 +394,30 @@ def get_service_profile_output(uuid: Optional[pulumi.Input[str]] = None,
 
     :param str uuid: Equinix assigned service profile identifier
     """
-    ...
+    __args__ = dict()
+    __args__['uuid'] = uuid
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('equinix:fabric/getServiceProfile:getServiceProfile', __args__, opts=opts, typ=GetServiceProfileResult)
+    return __ret__.apply(lambda __response__: GetServiceProfileResult(
+        access_point_type_configs=pulumi.get(__response__, 'access_point_type_configs'),
+        account=pulumi.get(__response__, 'account'),
+        allowed_emails=pulumi.get(__response__, 'allowed_emails'),
+        change_log=pulumi.get(__response__, 'change_log'),
+        custom_fields=pulumi.get(__response__, 'custom_fields'),
+        description=pulumi.get(__response__, 'description'),
+        href=pulumi.get(__response__, 'href'),
+        id=pulumi.get(__response__, 'id'),
+        marketing_info=pulumi.get(__response__, 'marketing_info'),
+        metros=pulumi.get(__response__, 'metros'),
+        name=pulumi.get(__response__, 'name'),
+        notifications=pulumi.get(__response__, 'notifications'),
+        ports=pulumi.get(__response__, 'ports'),
+        project=pulumi.get(__response__, 'project'),
+        self_profile=pulumi.get(__response__, 'self_profile'),
+        state=pulumi.get(__response__, 'state'),
+        tags=pulumi.get(__response__, 'tags'),
+        type=pulumi.get(__response__, 'type'),
+        uuid=pulumi.get(__response__, 'uuid'),
+        view_point=pulumi.get(__response__, 'view_point'),
+        virtual_devices=pulumi.get(__response__, 'virtual_devices'),
+        visibility=pulumi.get(__response__, 'visibility')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -343,9 +348,6 @@ def get_cloud_router(uuid: Optional[str] = None,
         state=pulumi.get(__ret__, 'state'),
         type=pulumi.get(__ret__, 'type'),
         uuid=pulumi.get(__ret__, 'uuid'))
-
-
-@_utilities.lift_output_func(get_cloud_router)
 def get_cloud_router_output(uuid: Optional[pulumi.Input[str]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCloudRouterResult]:
     """
@@ -377,4 +379,29 @@ def get_cloud_router_output(uuid: Optional[pulumi.Input[str]] = None,
 
     :param str uuid: Equinix-assigned Fabric Cloud Router identifier
     """
-    ...
+    __args__ = dict()
+    __args__['uuid'] = uuid
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('equinix:fabric/getCloudRouter:getCloudRouter', __args__, opts=opts, typ=GetCloudRouterResult)
+    return __ret__.apply(lambda __response__: GetCloudRouterResult(
+        accounts=pulumi.get(__response__, 'accounts'),
+        bgp_ipv4_routes_count=pulumi.get(__response__, 'bgp_ipv4_routes_count'),
+        bgp_ipv6_routes_count=pulumi.get(__response__, 'bgp_ipv6_routes_count'),
+        change_logs=pulumi.get(__response__, 'change_logs'),
+        connections_count=pulumi.get(__response__, 'connections_count'),
+        description=pulumi.get(__response__, 'description'),
+        distinct_ipv4_prefixes_count=pulumi.get(__response__, 'distinct_ipv4_prefixes_count'),
+        distinct_ipv6_prefixes_count=pulumi.get(__response__, 'distinct_ipv6_prefixes_count'),
+        equinix_asn=pulumi.get(__response__, 'equinix_asn'),
+        href=pulumi.get(__response__, 'href'),
+        id=pulumi.get(__response__, 'id'),
+        locations=pulumi.get(__response__, 'locations'),
+        marketplace_subscriptions=pulumi.get(__response__, 'marketplace_subscriptions'),
+        name=pulumi.get(__response__, 'name'),
+        notifications=pulumi.get(__response__, 'notifications'),
+        orders=pulumi.get(__response__, 'orders'),
+        packages=pulumi.get(__response__, 'packages'),
+        projects=pulumi.get(__response__, 'projects'),
+        state=pulumi.get(__response__, 'state'),
+        type=pulumi.get(__response__, 'type'),
+        uuid=pulumi.get(__response__, 'uuid')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -139,9 +144,6 @@ def get_networks(filters: Optional[Sequence[Union['GetNetworksFilterArgs', 'GetN
         outer_operator=pulumi.get(__ret__, 'outer_operator'),
         pagination=pulumi.get(__ret__, 'pagination'),
         sorts=pulumi.get(__ret__, 'sorts'))
-
-
-@_utilities.lift_output_func(get_networks)
 def get_networks_output(filters: Optional[pulumi.Input[Sequence[Union['GetNetworksFilterArgs', 'GetNetworksFilterArgsDict']]]] = None,
                         outer_operator: Optional[pulumi.Input[str]] = None,
                         pagination: Optional[pulumi.Input[Optional[Union['GetNetworksPaginationArgs', 'GetNetworksPaginationArgsDict']]]] = None,
@@ -160,4 +162,17 @@ def get_networks_output(filters: Optional[pulumi.Input[Sequence[Union['GetNetwor
     :param Union['GetNetworksPaginationArgs', 'GetNetworksPaginationArgsDict'] pagination: Pagination details for the Data Source Search Request
     :param Sequence[Union['GetNetworksSortArgs', 'GetNetworksSortArgsDict']] sorts: Filters for the Data Source Search Request
     """
-    ...
+    __args__ = dict()
+    __args__['filters'] = filters
+    __args__['outerOperator'] = outer_operator
+    __args__['pagination'] = pagination
+    __args__['sorts'] = sorts
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('equinix:fabric/getNetworks:getNetworks', __args__, opts=opts, typ=GetNetworksResult)
+    return __ret__.apply(lambda __response__: GetNetworksResult(
+        datas=pulumi.get(__response__, 'datas'),
+        filters=pulumi.get(__response__, 'filters'),
+        id=pulumi.get(__response__, 'id'),
+        outer_operator=pulumi.get(__response__, 'outer_operator'),
+        pagination=pulumi.get(__response__, 'pagination'),
+        sorts=pulumi.get(__response__, 'sorts')))

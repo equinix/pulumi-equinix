@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -608,9 +613,6 @@ def get_device(name: Optional[str] = None,
         version=pulumi.get(__ret__, 'version'),
         wan_interface_id=pulumi.get(__ret__, 'wan_interface_id'),
         zone_code=pulumi.get(__ret__, 'zone_code'))
-
-
-@_utilities.lift_output_func(get_device)
 def get_device_output(name: Optional[pulumi.Input[Optional[str]]] = None,
                       uuid: Optional[pulumi.Input[Optional[str]]] = None,
                       valid_status_list: Optional[pulumi.Input[Optional[str]]] = None,
@@ -635,4 +637,56 @@ def get_device_output(name: Optional[pulumi.Input[Optional[str]]] = None,
            
            NOTE: Exactly one of either `uuid` or `name` must be specified.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['uuid'] = uuid
+    __args__['validStatusList'] = valid_status_list
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('equinix:networkedge/getDevice:getDevice', __args__, opts=opts, typ=GetDeviceResult)
+    return __ret__.apply(lambda __response__: GetDeviceResult(
+        account_number=pulumi.get(__response__, 'account_number'),
+        acl_template_id=pulumi.get(__response__, 'acl_template_id'),
+        additional_bandwidth=pulumi.get(__response__, 'additional_bandwidth'),
+        asn=pulumi.get(__response__, 'asn'),
+        byol=pulumi.get(__response__, 'byol'),
+        cluster_details=pulumi.get(__response__, 'cluster_details'),
+        connectivity=pulumi.get(__response__, 'connectivity'),
+        core_count=pulumi.get(__response__, 'core_count'),
+        diverse_device_id=pulumi.get(__response__, 'diverse_device_id'),
+        diverse_device_name=pulumi.get(__response__, 'diverse_device_name'),
+        hostname=pulumi.get(__response__, 'hostname'),
+        ibx=pulumi.get(__response__, 'ibx'),
+        id=pulumi.get(__response__, 'id'),
+        interface_count=pulumi.get(__response__, 'interface_count'),
+        interfaces=pulumi.get(__response__, 'interfaces'),
+        license_file=pulumi.get(__response__, 'license_file'),
+        license_file_id=pulumi.get(__response__, 'license_file_id'),
+        license_status=pulumi.get(__response__, 'license_status'),
+        license_token=pulumi.get(__response__, 'license_token'),
+        metro_code=pulumi.get(__response__, 'metro_code'),
+        mgmt_acl_template_uuid=pulumi.get(__response__, 'mgmt_acl_template_uuid'),
+        name=pulumi.get(__response__, 'name'),
+        notifications=pulumi.get(__response__, 'notifications'),
+        order_reference=pulumi.get(__response__, 'order_reference'),
+        package_code=pulumi.get(__response__, 'package_code'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        purchase_order_number=pulumi.get(__response__, 'purchase_order_number'),
+        redundancy_type=pulumi.get(__response__, 'redundancy_type'),
+        redundant_id=pulumi.get(__response__, 'redundant_id'),
+        region=pulumi.get(__response__, 'region'),
+        secondary_devices=pulumi.get(__response__, 'secondary_devices'),
+        self_managed=pulumi.get(__response__, 'self_managed'),
+        ssh_ip_address=pulumi.get(__response__, 'ssh_ip_address'),
+        ssh_ip_fqdn=pulumi.get(__response__, 'ssh_ip_fqdn'),
+        ssh_keys=pulumi.get(__response__, 'ssh_keys'),
+        status=pulumi.get(__response__, 'status'),
+        term_length=pulumi.get(__response__, 'term_length'),
+        throughput=pulumi.get(__response__, 'throughput'),
+        throughput_unit=pulumi.get(__response__, 'throughput_unit'),
+        type_code=pulumi.get(__response__, 'type_code'),
+        uuid=pulumi.get(__response__, 'uuid'),
+        valid_status_list=pulumi.get(__response__, 'valid_status_list'),
+        vendor_configuration=pulumi.get(__response__, 'vendor_configuration'),
+        version=pulumi.get(__response__, 'version'),
+        wan_interface_id=pulumi.get(__response__, 'wan_interface_id'),
+        zone_code=pulumi.get(__response__, 'zone_code')))
