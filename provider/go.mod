@@ -1,8 +1,8 @@
 module github.com/equinix/pulumi-equinix/provider
 
-go 1.22.0
+go 1.22.6
 
-toolchain go1.22.3
+toolchain go1.22.6
 
 replace (
 	github.com/equinix/terraform-provider-equinix => ../upstream
