@@ -8,15 +8,13 @@ import (
 
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
-		invokeFile, err := std.File(ctx, &std.FileArgs{
-			Input: "/home/terraform/.ssh/id_rsa.pub",
-		}, nil)
-		if err != nil {
-			return err
-		}
 		key1, err := metal.NewSshKey(ctx, "key1", &metal.SshKeyArgs{
-			Name:      pulumi.String("terraform-1"),
-			PublicKey: pulumi.String(invokeFile.Result),
+			Name: pulumi.String("terraform-1"),
+			PublicKey: pulumi.String(std.FileOutput(ctx, std.FileOutputArgs{
+				Input: pulumi.String("/home/terraform/.ssh/id_rsa.pub"),
+			}, nil).ApplyT(func(invoke std.FileResult) (*string, error) {
+				return invoke.Result, nil
+			}).(pulumi.StringPtrOutput)),
 		})
 		if err != nil {
 			return err

@@ -2,8 +2,6 @@ module github.com/equinix/pulumi-equinix/provider
 
 go 1.22.6
 
-toolchain go1.22.6
-
 replace (
 	github.com/equinix/terraform-provider-equinix => ../upstream
 	github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20240520223432-0c0bf0d65f10
@@ -11,10 +9,10 @@ replace (
 
 require (
 	github.com/equinix/terraform-provider-equinix v1.37.0
-	github.com/pulumi/pulumi-terraform-bridge/pf v0.44.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.91.0
-	github.com/pulumi/pulumi/pkg/v3 v3.133.0
-	github.com/pulumi/pulumi/sdk/v3 v3.133.0
+	github.com/pulumi/pulumi-terraform-bridge/pf v0.46.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.93.1
+	github.com/pulumi/pulumi/pkg/v3 v3.136.1
+	github.com/pulumi/pulumi/sdk/v3 v3.136.1
 )
 
 require (
@@ -189,8 +187,7 @@ require (
 	github.com/pulumi/esc v0.10.0 // indirect
 	github.com/pulumi/inflector v0.1.1 // indirect
 	github.com/pulumi/pulumi-java/pkg v0.16.1 // indirect
-	github.com/pulumi/pulumi-terraform-bridge/x/muxer v0.0.8 // indirect
-	github.com/pulumi/pulumi-yaml v1.10.0 // indirect
+	github.com/pulumi/pulumi-yaml v1.10.3 // indirect
 	github.com/pulumi/schema-tools v0.1.2 // indirect
 	github.com/pulumi/terraform-diff-reader v0.0.2 // indirect
 	github.com/rivo/uniseg v0.4.4 // indirect

@@ -9,18 +9,15 @@ import (
 
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
-		zside, err := fabric.GetServiceProfiles(ctx, &fabric.GetServiceProfilesArgs{
-			Filter: fabric.GetServiceProfilesFilter{
-				Property: "/name",
-				Operator: "=",
-				Values: []string{
-					"AWS Direct Connect",
+		zside := fabric.GetServiceProfilesOutput(ctx, fabric.GetServiceProfilesOutputArgs{
+			Filter: &fabric.GetServiceProfilesFilterArgs{
+				Property: pulumi.String("/name"),
+				Operator: pulumi.String("="),
+				Values: pulumi.StringArray{
+					pulumi.String("AWS Direct Connect"),
 				},
 			},
 		}, nil)
-		if err != nil {
-			return err
-		}
 		example1, err := metal.NewVlan(ctx, "example1", &metal.VlanArgs{
 			ProjectId: pulumi.Any(myProjectId),
 			Metro:     pulumi.String("SV"),
@@ -71,7 +68,9 @@ func main() {
 					SellerRegion:      pulumi.String("us-west-1"),
 					Profile: &fabric.ConnectionZSideAccessPointProfileArgs{
 						Type: pulumi.String(fabric.ProfileTypeL2Profile),
-						Uuid: pulumi.String(zside.Id),
+						Uuid: zside.ApplyT(func(zside fabric.GetServiceProfilesResult) (*string, error) {
+							return &zside.Id, nil
+						}).(pulumi.StringPtrOutput),
 					},
 					Location: &fabric.ConnectionZSideAccessPointLocationArgs{
 						MetroCode: pulumi.String(equinix.MetroSiliconValley),
