@@ -67,6 +67,10 @@ export interface GetRoutingProtocolArgs {
  */
 export interface GetRoutingProtocolResult {
     /**
+     * Enable AS number override
+     */
+    readonly asOverrideEnabled: boolean;
+    /**
      * Bidirectional Forwarding Detection
      */
     readonly bfd: outputs.fabric.GetRoutingProtocolBfd;

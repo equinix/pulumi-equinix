@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -62,12 +63,60 @@ public final class RoutingProtocolBgpIpv6Args extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.equinixPeerIp);
     }
 
+    /**
+     * Inbound Multi Exit Discriminator attribute
+     * 
+     */
+    @Import(name="inboundMed")
+    private @Nullable Output<Integer> inboundMed;
+
+    /**
+     * @return Inbound Multi Exit Discriminator attribute
+     * 
+     */
+    public Optional<Output<Integer>> inboundMed() {
+        return Optional.ofNullable(this.inboundMed);
+    }
+
+    /**
+     * AS path prepend count. One of: 0, 1, 3, 5
+     * 
+     */
+    @Import(name="outboundAsPrependCount")
+    private @Nullable Output<String> outboundAsPrependCount;
+
+    /**
+     * @return AS path prepend count. One of: 0, 1, 3, 5
+     * 
+     */
+    public Optional<Output<String>> outboundAsPrependCount() {
+        return Optional.ofNullable(this.outboundAsPrependCount);
+    }
+
+    /**
+     * Outbound Multi Exit Discriminator attribute
+     * 
+     */
+    @Import(name="outboundMed")
+    private @Nullable Output<Integer> outboundMed;
+
+    /**
+     * @return Outbound Multi Exit Discriminator attribute
+     * 
+     */
+    public Optional<Output<Integer>> outboundMed() {
+        return Optional.ofNullable(this.outboundMed);
+    }
+
     private RoutingProtocolBgpIpv6Args() {}
 
     private RoutingProtocolBgpIpv6Args(RoutingProtocolBgpIpv6Args $) {
         this.customerPeerIp = $.customerPeerIp;
         this.enabled = $.enabled;
         this.equinixPeerIp = $.equinixPeerIp;
+        this.inboundMed = $.inboundMed;
+        this.outboundAsPrependCount = $.outboundAsPrependCount;
+        this.outboundMed = $.outboundMed;
     }
 
     public static Builder builder() {
@@ -149,6 +198,69 @@ public final class RoutingProtocolBgpIpv6Args extends com.pulumi.resources.Resou
          */
         public Builder equinixPeerIp(String equinixPeerIp) {
             return equinixPeerIp(Output.of(equinixPeerIp));
+        }
+
+        /**
+         * @param inboundMed Inbound Multi Exit Discriminator attribute
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inboundMed(@Nullable Output<Integer> inboundMed) {
+            $.inboundMed = inboundMed;
+            return this;
+        }
+
+        /**
+         * @param inboundMed Inbound Multi Exit Discriminator attribute
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inboundMed(Integer inboundMed) {
+            return inboundMed(Output.of(inboundMed));
+        }
+
+        /**
+         * @param outboundAsPrependCount AS path prepend count. One of: 0, 1, 3, 5
+         * 
+         * @return builder
+         * 
+         */
+        public Builder outboundAsPrependCount(@Nullable Output<String> outboundAsPrependCount) {
+            $.outboundAsPrependCount = outboundAsPrependCount;
+            return this;
+        }
+
+        /**
+         * @param outboundAsPrependCount AS path prepend count. One of: 0, 1, 3, 5
+         * 
+         * @return builder
+         * 
+         */
+        public Builder outboundAsPrependCount(String outboundAsPrependCount) {
+            return outboundAsPrependCount(Output.of(outboundAsPrependCount));
+        }
+
+        /**
+         * @param outboundMed Outbound Multi Exit Discriminator attribute
+         * 
+         * @return builder
+         * 
+         */
+        public Builder outboundMed(@Nullable Output<Integer> outboundMed) {
+            $.outboundMed = outboundMed;
+            return this;
+        }
+
+        /**
+         * @param outboundMed Outbound Multi Exit Discriminator attribute
+         * 
+         * @return builder
+         * 
+         */
+        public Builder outboundMed(Integer outboundMed) {
+            return outboundMed(Output.of(outboundMed));
         }
 
         public RoutingProtocolBgpIpv6Args build() {

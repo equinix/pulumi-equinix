@@ -25,6 +25,18 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// Equinix side peering ip
         /// </summary>
         public readonly string? EquinixPeerIp;
+        /// <summary>
+        /// Inbound Multi Exit Discriminator attribute
+        /// </summary>
+        public readonly int? InboundMed;
+        /// <summary>
+        /// AS path prepend count. One of: 0, 1, 3, 5
+        /// </summary>
+        public readonly string? OutboundAsPrependCount;
+        /// <summary>
+        /// Outbound Multi Exit Discriminator attribute
+        /// </summary>
+        public readonly int? OutboundMed;
 
         [OutputConstructor]
         private RoutingProtocolBgpIpv4(
@@ -32,11 +44,20 @@ namespace Pulumi.Equinix.Fabric.Outputs
 
             bool? enabled,
 
-            string? equinixPeerIp)
+            string? equinixPeerIp,
+
+            int? inboundMed,
+
+            string? outboundAsPrependCount,
+
+            int? outboundMed)
         {
             CustomerPeerIp = customerPeerIp;
             Enabled = enabled;
             EquinixPeerIp = equinixPeerIp;
+            InboundMed = inboundMed;
+            OutboundAsPrependCount = outboundAsPrependCount;
+            OutboundMed = outboundMed;
         }
     }
 }
