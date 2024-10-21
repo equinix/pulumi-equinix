@@ -149,6 +149,15 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		Resources: map[string]*tfbridge.ResourceInfo{
 			// Equinix Fabric v4
+			"equinix_fabric_connection_route_filter": {
+				Tok: makeEquinixResource(fabricMod, "ConnectionRouteFilter"),
+			},
+			"equinix_fabric_route_filter": {
+				Tok: makeEquinixResource(fabricMod, "RouteFilter"),
+			},
+			"equinix_fabric_route_filter_rule": {
+				Tok: makeEquinixResource(fabricMod, "RouteFilterRule"),
+			},
 			"equinix_fabric_connection": {
 				Tok: makeEquinixResource(fabricMod, "Connection"),
 				Docs: &tfbridge.DocInfo{
@@ -1157,6 +1166,24 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			// Equinix Fabric v4
+			"equinix_fabric_connection_route_filter": {
+				Tok: makeEquinixDataSource(fabricMod, "ConnectionRouteFilter"),
+			},
+			"equinix_fabric_connection_route_filters": {
+				Tok: makeEquinixDataSource(fabricMod, "ConnectionRouteFilters"),
+			},
+			"equinix_fabric_route_filter": {
+				Tok: makeEquinixDataSource(fabricMod, "RouteFilter"),
+			},
+			"equinix_fabric_route_filters": {
+				Tok: makeEquinixDataSource(fabricMod, "RouteFilters"),
+			},
+			"equinix_fabric_route_filter_rule": {
+				Tok: makeEquinixDataSource(fabricMod, "RouteFilterRule"),
+			},
+			"equinix_fabric_route_filter_rules": {
+				Tok: makeEquinixDataSource(fabricMod, "RouteFilterRules"),
+			},
 			"equinix_fabric_connection": {
 				Tok: makeEquinixDataSource(fabricMod, "Connection"),
 				Fields: map[string]*tfbridge.SchemaInfo{
