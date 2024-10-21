@@ -18,24 +18,15 @@ namespace Pulumi.Equinix.Metal.Inputs
         [Input("linkStatus", required: true)]
         public Input<string> LinkStatus { get; set; } = null!;
 
-        /// <summary>
-        /// Name of the connection resource
-        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         [Input("role", required: true)]
         public Input<string> Role { get; set; } = null!;
 
-        /// <summary>
-        /// Connection speed - Values must be in the format '&lt;number&gt;Mbps' or '&lt;number&gt;Gpbs', for example '100Mbps' or '50Gbps'. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
-        /// </summary>
         [Input("speed", required: true)]
         public Input<int> Speed { get; set; } = null!;
 
-        /// <summary>
-        /// Status of the connection resource.
-        /// </summary>
         [Input("status", required: true)]
         public Input<string> Status { get; set; } = null!;
 

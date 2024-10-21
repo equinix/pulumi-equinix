@@ -844,14 +844,11 @@ func (o GatewayTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
 }
 
 type InterconnectionPort struct {
-	Id         string `pulumi:"id"`
-	LinkStatus string `pulumi:"linkStatus"`
-	// Name of the connection resource
-	Name string `pulumi:"name"`
-	Role string `pulumi:"role"`
-	// Connection speed - Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
-	Speed int `pulumi:"speed"`
-	// Status of the connection resource.
+	Id                string   `pulumi:"id"`
+	LinkStatus        string   `pulumi:"linkStatus"`
+	Name              string   `pulumi:"name"`
+	Role              string   `pulumi:"role"`
+	Speed             int      `pulumi:"speed"`
 	Status            string   `pulumi:"status"`
 	VirtualCircuitIds []string `pulumi:"virtualCircuitIds"`
 }
@@ -868,14 +865,11 @@ type InterconnectionPortInput interface {
 }
 
 type InterconnectionPortArgs struct {
-	Id         pulumi.StringInput `pulumi:"id"`
-	LinkStatus pulumi.StringInput `pulumi:"linkStatus"`
-	// Name of the connection resource
-	Name pulumi.StringInput `pulumi:"name"`
-	Role pulumi.StringInput `pulumi:"role"`
-	// Connection speed - Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
-	Speed pulumi.IntInput `pulumi:"speed"`
-	// Status of the connection resource.
+	Id                pulumi.StringInput      `pulumi:"id"`
+	LinkStatus        pulumi.StringInput      `pulumi:"linkStatus"`
+	Name              pulumi.StringInput      `pulumi:"name"`
+	Role              pulumi.StringInput      `pulumi:"role"`
+	Speed             pulumi.IntInput         `pulumi:"speed"`
 	Status            pulumi.StringInput      `pulumi:"status"`
 	VirtualCircuitIds pulumi.StringArrayInput `pulumi:"virtualCircuitIds"`
 }
@@ -939,7 +933,6 @@ func (o InterconnectionPortOutput) LinkStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v InterconnectionPort) string { return v.LinkStatus }).(pulumi.StringOutput)
 }
 
-// Name of the connection resource
 func (o InterconnectionPortOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v InterconnectionPort) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -948,12 +941,10 @@ func (o InterconnectionPortOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v InterconnectionPort) string { return v.Role }).(pulumi.StringOutput)
 }
 
-// Connection speed - Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'. Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
 func (o InterconnectionPortOutput) Speed() pulumi.IntOutput {
 	return o.ApplyT(func(v InterconnectionPort) int { return v.Speed }).(pulumi.IntOutput)
 }
 
-// Status of the connection resource.
 func (o InterconnectionPortOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v InterconnectionPort) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -988,8 +979,7 @@ type InterconnectionServiceToken struct {
 	MaxAllowedSpeed string `pulumi:"maxAllowedSpeed"`
 	Role            string `pulumi:"role"`
 	State           string `pulumi:"state"`
-	// Connection type - dedicated or shared.
-	Type string `pulumi:"type"`
+	Type            string `pulumi:"type"`
 }
 
 // InterconnectionServiceTokenInput is an input type that accepts InterconnectionServiceTokenArgs and InterconnectionServiceTokenOutput values.
@@ -1009,8 +999,7 @@ type InterconnectionServiceTokenArgs struct {
 	MaxAllowedSpeed pulumi.StringInput `pulumi:"maxAllowedSpeed"`
 	Role            pulumi.StringInput `pulumi:"role"`
 	State           pulumi.StringInput `pulumi:"state"`
-	// Connection type - dedicated or shared.
-	Type pulumi.StringInput `pulumi:"type"`
+	Type            pulumi.StringInput `pulumi:"type"`
 }
 
 func (InterconnectionServiceTokenArgs) ElementType() reflect.Type {
@@ -1084,7 +1073,6 @@ func (o InterconnectionServiceTokenOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v InterconnectionServiceToken) string { return v.State }).(pulumi.StringOutput)
 }
 
-// Connection type - dedicated or shared.
 func (o InterconnectionServiceTokenOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v InterconnectionServiceToken) string { return v.Type }).(pulumi.StringOutput)
 }
