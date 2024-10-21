@@ -2944,4 +2944,306 @@ variables:
 ```
 {{% /example %}}
 
+{{% example %}}
+### example Aviatrix Transit Edge
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as equinix from "@equinix-labs/pulumi-equinix";
+import * as equinix from "@pulumi/equinix";
+import * as std from "@pulumi/std";
+
+const config = new pulumi.Config();
+const filepath = config.get("filepath") || "cloudInitFileFolder/TF-AVX-cloud-init-file.txt";
+const sv = equinix.networkedge.getAccountOutput({
+    metroCode: "SV",
+});
+const aviatrixCloudinitFile = new equinix.networkedge.NetworkFile("aviatrixCloudinitFile", {
+    fileName: "TF-AVX-cloud-init-file.txt",
+    content: std.fileOutput({
+        input: filepath,
+    }).apply(invoke => invoke.result),
+    metroCode: sv.apply(sv => sv.metroCode).apply((x) => equinix.index.Metro[x]),
+    deviceTypeCode: "AVIATRIX_TRANSIT_EDGE",
+    processType: equinix.networkedge.FileType.CloudInit,
+    selfManaged: true,
+    byol: true,
+});
+const aviatrixTransitEdgeSingle = new equinix.networkedge.Device("aviatrix-transit-edge-single", {
+    name: "tf-aviatrix",
+    metroCode: sv.apply(sv => sv.metroCode),
+    typeCode: "AVIATRIX_TRANSIT_EDGE",
+    selfManaged: true,
+    byol: true,
+    packageCode: "STD",
+    notifications: ["john@equinix.com"],
+    termLength: 12,
+    accountNumber: sv.apply(sv => sv.number),
+    version: "7.2.a",
+    coreCount: 2,
+    cloudInitFileId: aviatrixCloudinitFile.uuid,
+    aclTemplateId: "c06150ea-b604-4ad1-832a-d63936e9b938",
+});
+```
+```python
+import pulumi
+import pulumi_equinix as equinix
+import pulumi_std as std
+
+config = pulumi.Config()
+filepath = config.get("filepath")
+if filepath is None:
+    filepath = "cloudInitFileFolder/TF-AVX-cloud-init-file.txt"
+sv = equinix.networkedge.get_account_output(metro_code="SV")
+aviatrix_cloudinit_file = equinix.networkedge.NetworkFile("aviatrixCloudinitFile",
+    file_name="TF-AVX-cloud-init-file.txt",
+    content=std.file_output(input=filepath).apply(lambda invoke: invoke.result),
+    metro_code=sv.metro_code.apply(lambda x: equinix.Metro(x)),
+    device_type_code="AVIATRIX_TRANSIT_EDGE",
+    process_type=equinix.networkedge.FileType.CLOUD_INIT,
+    self_managed=True,
+    byol=True)
+aviatrix_transit_edge_single = equinix.networkedge.Device("aviatrix-transit-edge-single",
+    name="tf-aviatrix",
+    metro_code=sv.metro_code,
+    type_code="AVIATRIX_TRANSIT_EDGE",
+    self_managed=True,
+    byol=True,
+    package_code="STD",
+    notifications=["john@equinix.com"],
+    term_length=12,
+    account_number=sv.number,
+    version="7.2.a",
+    core_count=2,
+    cloud_init_file_id=aviatrix_cloudinit_file.uuid,
+    acl_template_id="c06150ea-b604-4ad1-832a-d63936e9b938")
+```
+```go
+package main
+
+import (
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix"
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
+	"github.com/pulumi/pulumi-std/sdk/go/std"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+)
+
+func main() {
+	pulumi.Run(func(ctx *pulumi.Context) error {
+		cfg := config.New(ctx, "")
+		filepath := "cloudInitFileFolder/TF-AVX-cloud-init-file.txt"
+		if param := cfg.Get("filepath"); param != "" {
+			filepath = param
+		}
+		sv, err := networkedge.GetAccount(ctx, &networkedge.GetAccountArgs{
+			MetroCode: "SV",
+		}, nil)
+		if err != nil {
+			return err
+		}
+		invokeFile, err := std.File(ctx, &std.FileArgs{
+			Input: filepath,
+		}, nil)
+		if err != nil {
+			return err
+		}
+		aviatrixCloudinitFile, err := networkedge.NewNetworkFile(ctx, "aviatrixCloudinitFile", &networkedge.NetworkFileArgs{
+			FileName:       pulumi.String("TF-AVX-cloud-init-file.txt"),
+			Content:        pulumi.String(invokeFile.Result),
+			MetroCode:      sv.MetroCode.ApplyT(func(x *string) equinix.Metro { return equinix.Metro(*x) }).(equinix.MetroOutput),
+			DeviceTypeCode: pulumi.String("AVIATRIX_TRANSIT_EDGE"),
+			ProcessType:    pulumi.String(networkedge.FileTypeCloudInit),
+			SelfManaged:    pulumi.Bool(true),
+			Byol:           pulumi.Bool(true),
+		})
+		if err != nil {
+			return err
+		}
+		_, err = networkedge.NewDevice(ctx, "aviatrix-transit-edge-single", &networkedge.DeviceArgs{
+			Name:        pulumi.String("tf-aviatrix"),
+			MetroCode:   pulumi.String(sv.MetroCode),
+			TypeCode:    pulumi.String("AVIATRIX_TRANSIT_EDGE"),
+			SelfManaged: pulumi.Bool(true),
+			Byol:        pulumi.Bool(true),
+			PackageCode: pulumi.String("STD"),
+			Notifications: pulumi.StringArray{
+				pulumi.String("john@equinix.com"),
+			},
+			TermLength:      pulumi.Int(12),
+			AccountNumber:   pulumi.String(sv.Number),
+			Version:         pulumi.String("7.2.a"),
+			CoreCount:       pulumi.Int(2),
+			CloudInitFileId: aviatrixCloudinitFile.Uuid,
+			AclTemplateId:   pulumi.String("c06150ea-b604-4ad1-832a-d63936e9b938"),
+		})
+		if err != nil {
+			return err
+		}
+		return nil
+	})
+}
+```
+```csharp
+using System.Collections.Generic;
+using System.Linq;
+using Pulumi;
+using Equinix = Pulumi.Equinix;
+using Std = Pulumi.Std;
+
+return await Deployment.RunAsync(() => 
+{
+    var config = new Config();
+    var filepath = config.Get("filepath") ?? "cloudInitFileFolder/TF-AVX-cloud-init-file.txt";
+    var sv = Equinix.NetworkEdge.GetAccount.Invoke(new()
+    {
+        MetroCode = "SV",
+    });
+
+    var aviatrixCloudinitFile = new Equinix.NetworkEdge.NetworkFile("aviatrixCloudinitFile", new()
+    {
+        FileName = "TF-AVX-cloud-init-file.txt",
+        Content = Std.File.Invoke(new()
+        {
+            Input = filepath,
+        }).Apply(invoke => invoke.Result),
+        MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode).Apply(System.Enum.Parse<Equinix.Metro>),
+        DeviceTypeCode = "AVIATRIX_TRANSIT_EDGE",
+        ProcessType = Equinix.NetworkEdge.FileType.CloudInit,
+        SelfManaged = true,
+        Byol = true,
+    });
+
+    var aviatrixTransitEdgeSingle = new Equinix.NetworkEdge.Device("aviatrix-transit-edge-single", new()
+    {
+        Name = "tf-aviatrix",
+        MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
+        TypeCode = "AVIATRIX_TRANSIT_EDGE",
+        SelfManaged = true,
+        Byol = true,
+        PackageCode = "STD",
+        Notifications = new[]
+        {
+            "john@equinix.com",
+        },
+        TermLength = 12,
+        AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
+        Version = "7.2.a",
+        CoreCount = 2,
+        CloudInitFileId = aviatrixCloudinitFile.Uuid,
+        AclTemplateId = "c06150ea-b604-4ad1-832a-d63936e9b938",
+    });
+
+});
+```
+```java
+package generated_program;
+
+import com.pulumi.Context;
+import com.pulumi.Pulumi;
+import com.pulumi.core.Output;
+import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
+import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
+import com.pulumi.equinix.networkedge.NetworkFile;
+import com.pulumi.equinix.networkedge.NetworkFileArgs;
+import com.pulumi.equinix.networkedge.Device;
+import com.pulumi.equinix.networkedge.DeviceArgs;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+public class App {
+    public static void main(String[] args) {
+        Pulumi.run(App::stack);
+    }
+
+    public static void stack(Context ctx) {
+        final var config = ctx.config();
+        final var filepath = config.get("filepath").orElse("cloudInitFileFolder/TF-AVX-cloud-init-file.txt");
+        final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
+            .metroCode("SV")
+            .build());
+
+        var aviatrixCloudinitFile = new NetworkFile("aviatrixCloudinitFile", NetworkFileArgs.builder()
+            .fileName("TF-AVX-cloud-init-file.txt")
+            .content(StdFunctions.file(FileArgs.builder()
+                .input(filepath)
+                .build()).result())
+            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+            .deviceTypeCode("AVIATRIX_TRANSIT_EDGE")
+            .processType("CLOUD_INIT")
+            .selfManaged(true)
+            .byol(true)
+            .build());
+
+        var aviatrixTransitEdgeSingle = new Device("aviatrixTransitEdgeSingle", DeviceArgs.builder()
+            .name("tf-aviatrix")
+            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+            .typeCode("AVIATRIX_TRANSIT_EDGE")
+            .selfManaged(true)
+            .byol(true)
+            .packageCode("STD")
+            .notifications("john@equinix.com")
+            .termLength(12)
+            .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
+            .version("7.2.a")
+            .coreCount(2)
+            .cloudInitFileId(aviatrixCloudinitFile.uuid())
+            .aclTemplateId("c06150ea-b604-4ad1-832a-d63936e9b938")
+            .build());
+
+    }
+}
+```
+```yaml
+configuration:
+  filepath:
+    type: string
+    default: cloudInitFileFolder/TF-AVX-cloud-init-file.txt
+resources:
+  aviatrixCloudinitFile:
+    type: equinix:networkedge:NetworkFile
+    name: aviatrix_cloudinit_file
+    properties:
+      fileName: TF-AVX-cloud-init-file.txt
+      content:
+        fn::invoke:
+          Function: std:file
+          Arguments:
+            input: ${filepath}
+          Return: result
+      metroCode: ${sv.metroCode}
+      deviceTypeCode: AVIATRIX_TRANSIT_EDGE
+      processType: CLOUD_INIT
+      selfManaged: true
+      byol: true
+  aviatrix-transit-edge-single:
+    type: equinix:networkedge:Device
+    properties:
+      name: tf-aviatrix
+      metroCode: ${sv.metroCode}
+      typeCode: AVIATRIX_TRANSIT_EDGE
+      selfManaged: true
+      byol: true
+      packageCode: STD
+      notifications:
+        - john@equinix.com
+      termLength: 12
+      accountNumber: ${sv.number}
+      version: 7.2.a
+      coreCount: 2
+      cloudInitFileId: ${aviatrixCloudinitFile.uuid}
+      aclTemplateId: c06150ea-b604-4ad1-832a-d63936e9b938
+variables:
+  # Create self configured single Aviatrix Transit Edge device with cloud init file
+  sv:
+    fn::invoke:
+      Function: equinix:networkedge:getAccount
+      Arguments:
+        metroCode: SV
+```
+{{% /example %}}
+
 
