@@ -22,9 +22,9 @@ class VrfArgs:
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Vrf resource.
-        :param pulumi.Input[str] metro: Metro ID or Code where the VRF will be deployed.
-        :param pulumi.Input[str] project_id: Project ID where the VRF will be deployed.
-        :param pulumi.Input[str] description: Description of the VRF.
+        :param pulumi.Input[str] metro: Metro ID or Code where the VRF will be deployed
+        :param pulumi.Input[str] project_id: Project ID where the VRF will be deployed
+        :param pulumi.Input[str] description: Description of the VRF
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_ranges: All IPv4 and IPv6 Ranges that will be available to BGP Peers. IPv4 addresses must be /8 or smaller with a minimum size of /29. IPv6 must be /56 or smaller with a minimum size of /64. Ranges must not overlap other ranges within the VRF.
         :param pulumi.Input[int] local_asn: The 4-byte ASN set on the VRF.
         :param pulumi.Input[str] name: User-supplied name of the VRF, unique to the project
@@ -44,7 +44,7 @@ class VrfArgs:
     @pulumi.getter
     def metro(self) -> pulumi.Input[str]:
         """
-        Metro ID or Code where the VRF will be deployed.
+        Metro ID or Code where the VRF will be deployed
         """
         return pulumi.get(self, "metro")
 
@@ -56,7 +56,7 @@ class VrfArgs:
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Input[str]:
         """
-        Project ID where the VRF will be deployed.
+        Project ID where the VRF will be deployed
         """
         return pulumi.get(self, "project_id")
 
@@ -68,7 +68,7 @@ class VrfArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the VRF.
+        Description of the VRF
         """
         return pulumi.get(self, "description")
 
@@ -124,12 +124,12 @@ class _VrfState:
                  project_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Vrf resources.
-        :param pulumi.Input[str] description: Description of the VRF.
+        :param pulumi.Input[str] description: Description of the VRF
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_ranges: All IPv4 and IPv6 Ranges that will be available to BGP Peers. IPv4 addresses must be /8 or smaller with a minimum size of /29. IPv6 must be /56 or smaller with a minimum size of /64. Ranges must not overlap other ranges within the VRF.
         :param pulumi.Input[int] local_asn: The 4-byte ASN set on the VRF.
-        :param pulumi.Input[str] metro: Metro ID or Code where the VRF will be deployed.
+        :param pulumi.Input[str] metro: Metro ID or Code where the VRF will be deployed
         :param pulumi.Input[str] name: User-supplied name of the VRF, unique to the project
-        :param pulumi.Input[str] project_id: Project ID where the VRF will be deployed.
+        :param pulumi.Input[str] project_id: Project ID where the VRF will be deployed
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -148,7 +148,7 @@ class _VrfState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the VRF.
+        Description of the VRF
         """
         return pulumi.get(self, "description")
 
@@ -184,7 +184,7 @@ class _VrfState:
     @pulumi.getter
     def metro(self) -> Optional[pulumi.Input[str]]:
         """
-        Metro ID or Code where the VRF will be deployed.
+        Metro ID or Code where the VRF will be deployed
         """
         return pulumi.get(self, "metro")
 
@@ -208,7 +208,7 @@ class _VrfState:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Project ID where the VRF will be deployed.
+        Project ID where the VRF will be deployed
         """
         return pulumi.get(self, "project_id")
 
@@ -303,12 +303,12 @@ class Vrf(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: Description of the VRF.
+        :param pulumi.Input[str] description: Description of the VRF
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_ranges: All IPv4 and IPv6 Ranges that will be available to BGP Peers. IPv4 addresses must be /8 or smaller with a minimum size of /29. IPv6 must be /56 or smaller with a minimum size of /64. Ranges must not overlap other ranges within the VRF.
         :param pulumi.Input[int] local_asn: The 4-byte ASN set on the VRF.
-        :param pulumi.Input[str] metro: Metro ID or Code where the VRF will be deployed.
+        :param pulumi.Input[str] metro: Metro ID or Code where the VRF will be deployed
         :param pulumi.Input[str] name: User-supplied name of the VRF, unique to the project
-        :param pulumi.Input[str] project_id: Project ID where the VRF will be deployed.
+        :param pulumi.Input[str] project_id: Project ID where the VRF will be deployed
         """
         ...
     @overload
@@ -451,12 +451,12 @@ class Vrf(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: Description of the VRF.
+        :param pulumi.Input[str] description: Description of the VRF
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_ranges: All IPv4 and IPv6 Ranges that will be available to BGP Peers. IPv4 addresses must be /8 or smaller with a minimum size of /29. IPv6 must be /56 or smaller with a minimum size of /64. Ranges must not overlap other ranges within the VRF.
         :param pulumi.Input[int] local_asn: The 4-byte ASN set on the VRF.
-        :param pulumi.Input[str] metro: Metro ID or Code where the VRF will be deployed.
+        :param pulumi.Input[str] metro: Metro ID or Code where the VRF will be deployed
         :param pulumi.Input[str] name: User-supplied name of the VRF, unique to the project
-        :param pulumi.Input[str] project_id: Project ID where the VRF will be deployed.
+        :param pulumi.Input[str] project_id: Project ID where the VRF will be deployed
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -474,7 +474,7 @@ class Vrf(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        Description of the VRF.
+        Description of the VRF
         """
         return pulumi.get(self, "description")
 
@@ -498,7 +498,7 @@ class Vrf(pulumi.CustomResource):
     @pulumi.getter
     def metro(self) -> pulumi.Output[str]:
         """
-        Metro ID or Code where the VRF will be deployed.
+        Metro ID or Code where the VRF will be deployed
         """
         return pulumi.get(self, "metro")
 
@@ -514,7 +514,7 @@ class Vrf(pulumi.CustomResource):
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[str]:
         """
-        Project ID where the VRF will be deployed.
+        Project ID where the VRF will be deployed
         """
         return pulumi.get(self, "project_id")
 
