@@ -22,6 +22,12 @@ env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # TODO
   TF_APPEND_USER_AGENT: pulumi
+  # Allow missing or extra mappings due to TF provider
+  # upgrades.  This allows automation to do its job so
+  # that human contributions can be narrowly focused on
+  # adding or removing resource mappings
+  PULUMI_SKIP_MISSING_MAPPING_ERROR: true
+  PULUMI_SKIP_EXTRA_MAPPING_ERROR: true
 jobs:
   build_sdk:
     if: github.event_name == 'repository_dispatch' ||
