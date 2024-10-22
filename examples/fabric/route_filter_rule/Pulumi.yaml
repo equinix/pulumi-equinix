@@ -3,7 +3,7 @@ name: equinix-fabric-route_filter_rule
 runtime: yaml
 resources:
   rfRule:
-    type: equinix:fabricRouteFilterRule
+    type: equinix:fabric:RouteFilterRule
     name: rf_rule
     properties:
       routeFilterId: <route_filter_policy_id>

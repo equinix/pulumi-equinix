@@ -68,6 +68,11 @@ __all__ = [
     'NetworkNotification',
     'NetworkOperation',
     'NetworkProject',
+    'RouteFilterChange',
+    'RouteFilterChangeLog',
+    'RouteFilterProject',
+    'RouteFilterRuleChange',
+    'RouteFilterRuleChangeLog',
     'RoutingProtocolBfd',
     'RoutingProtocolBgpIpv4',
     'RoutingProtocolBgpIpv6',
@@ -139,6 +144,8 @@ __all__ = [
     'GetConnectionOrderResult',
     'GetConnectionProjectResult',
     'GetConnectionRedundancyResult',
+    'GetConnectionRouteFiltersDataResult',
+    'GetConnectionRouteFiltersPaginationResult',
     'GetConnectionZSideResult',
     'GetConnectionZSideAccessPointResult',
     'GetConnectionZSideAccessPointAccountResult',
@@ -238,6 +245,22 @@ __all__ = [
     'GetPortsDatumOperationResult',
     'GetPortsDatumRedundancyResult',
     'GetPortsFilterResult',
+    'GetRouteFilterChangeResult',
+    'GetRouteFilterChangeLogResult',
+    'GetRouteFilterProjectResult',
+    'GetRouteFilterRuleChangeResult',
+    'GetRouteFilterRuleChangeLogResult',
+    'GetRouteFilterRulesDataResult',
+    'GetRouteFilterRulesDataChangeResult',
+    'GetRouteFilterRulesDataChangeLogResult',
+    'GetRouteFilterRulesPaginationResult',
+    'GetRouteFiltersDataResult',
+    'GetRouteFiltersDataChangeResult',
+    'GetRouteFiltersDataChangeLogResult',
+    'GetRouteFiltersDataProjectResult',
+    'GetRouteFiltersFilterResult',
+    'GetRouteFiltersPaginationResult',
+    'GetRouteFiltersSortResult',
     'GetRoutingProtocolBfdResult',
     'GetRoutingProtocolBgpIpv4Result',
     'GetRoutingProtocolBgpIpv6Result',
@@ -4113,6 +4136,519 @@ class NetworkProject(dict):
         Customer project identifier
         """
         return pulumi.get(self, "project_id")
+
+
+@pulumi.output_type
+class RouteFilterChange(dict):
+    def __init__(__self__, *,
+                 href: Optional[str] = None,
+                 type: Optional[str] = None,
+                 uuid: Optional[str] = None):
+        """
+        :param str href: The URI of the previous Route Filter Change
+        :param str type: Type of change. One of [ "BGP_IPv4_PREFIX_FILTER_UPDATE","BGP_IPv4_PREFIX_FILTER_CREATION","BGP_IPv4_PREFIX_FILTER_DELETION","BGP_IPv6_PREFIX_FILTER_UPDATE","BGP_IPv6_PREFIX_FILTER_CREATION","BGP_IPv6_PREFIX_FILTER_DELETION" ]
+        :param str uuid: Unique identifier for the previous change
+        """
+        if href is not None:
+            pulumi.set(__self__, "href", href)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+
+    @property
+    @pulumi.getter
+    def href(self) -> Optional[str]:
+        """
+        The URI of the previous Route Filter Change
+        """
+        return pulumi.get(self, "href")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        Type of change. One of [ "BGP_IPv4_PREFIX_FILTER_UPDATE","BGP_IPv4_PREFIX_FILTER_CREATION","BGP_IPv4_PREFIX_FILTER_DELETION","BGP_IPv6_PREFIX_FILTER_UPDATE","BGP_IPv6_PREFIX_FILTER_CREATION","BGP_IPv6_PREFIX_FILTER_DELETION" ]
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> Optional[str]:
+        """
+        Unique identifier for the previous change
+        """
+        return pulumi.get(self, "uuid")
+
+
+@pulumi.output_type
+class RouteFilterChangeLog(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createdBy":
+            suggest = "created_by"
+        elif key == "createdByEmail":
+            suggest = "created_by_email"
+        elif key == "createdByFullName":
+            suggest = "created_by_full_name"
+        elif key == "createdDateTime":
+            suggest = "created_date_time"
+        elif key == "deletedBy":
+            suggest = "deleted_by"
+        elif key == "deletedByEmail":
+            suggest = "deleted_by_email"
+        elif key == "deletedByFullName":
+            suggest = "deleted_by_full_name"
+        elif key == "deletedDateTime":
+            suggest = "deleted_date_time"
+        elif key == "updatedBy":
+            suggest = "updated_by"
+        elif key == "updatedByEmail":
+            suggest = "updated_by_email"
+        elif key == "updatedByFullName":
+            suggest = "updated_by_full_name"
+        elif key == "updatedDateTime":
+            suggest = "updated_date_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RouteFilterChangeLog. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RouteFilterChangeLog.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RouteFilterChangeLog.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 created_by: Optional[str] = None,
+                 created_by_email: Optional[str] = None,
+                 created_by_full_name: Optional[str] = None,
+                 created_date_time: Optional[str] = None,
+                 deleted_by: Optional[str] = None,
+                 deleted_by_email: Optional[str] = None,
+                 deleted_by_full_name: Optional[str] = None,
+                 deleted_date_time: Optional[str] = None,
+                 updated_by: Optional[str] = None,
+                 updated_by_email: Optional[str] = None,
+                 updated_by_full_name: Optional[str] = None,
+                 updated_date_time: Optional[str] = None):
+        """
+        :param str created_by: Created by User Key
+        :param str created_by_email: Created by User Email Address
+        :param str created_by_full_name: Created by User Full Name
+        :param str created_date_time: Created by Date and Time
+        :param str deleted_by: Deleted by User Key
+        :param str deleted_by_email: Deleted by User Email Address
+        :param str deleted_by_full_name: Deleted by User Full Name
+        :param str deleted_date_time: Deleted by Date and Time
+        :param str updated_by: Updated by User Key
+        :param str updated_by_email: Updated by User Email Address
+        :param str updated_by_full_name: Updated by User Full Name
+        :param str updated_date_time: Updated by Date and Time
+        """
+        if created_by is not None:
+            pulumi.set(__self__, "created_by", created_by)
+        if created_by_email is not None:
+            pulumi.set(__self__, "created_by_email", created_by_email)
+        if created_by_full_name is not None:
+            pulumi.set(__self__, "created_by_full_name", created_by_full_name)
+        if created_date_time is not None:
+            pulumi.set(__self__, "created_date_time", created_date_time)
+        if deleted_by is not None:
+            pulumi.set(__self__, "deleted_by", deleted_by)
+        if deleted_by_email is not None:
+            pulumi.set(__self__, "deleted_by_email", deleted_by_email)
+        if deleted_by_full_name is not None:
+            pulumi.set(__self__, "deleted_by_full_name", deleted_by_full_name)
+        if deleted_date_time is not None:
+            pulumi.set(__self__, "deleted_date_time", deleted_date_time)
+        if updated_by is not None:
+            pulumi.set(__self__, "updated_by", updated_by)
+        if updated_by_email is not None:
+            pulumi.set(__self__, "updated_by_email", updated_by_email)
+        if updated_by_full_name is not None:
+            pulumi.set(__self__, "updated_by_full_name", updated_by_full_name)
+        if updated_date_time is not None:
+            pulumi.set(__self__, "updated_date_time", updated_date_time)
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> Optional[str]:
+        """
+        Created by User Key
+        """
+        return pulumi.get(self, "created_by")
+
+    @property
+    @pulumi.getter(name="createdByEmail")
+    def created_by_email(self) -> Optional[str]:
+        """
+        Created by User Email Address
+        """
+        return pulumi.get(self, "created_by_email")
+
+    @property
+    @pulumi.getter(name="createdByFullName")
+    def created_by_full_name(self) -> Optional[str]:
+        """
+        Created by User Full Name
+        """
+        return pulumi.get(self, "created_by_full_name")
+
+    @property
+    @pulumi.getter(name="createdDateTime")
+    def created_date_time(self) -> Optional[str]:
+        """
+        Created by Date and Time
+        """
+        return pulumi.get(self, "created_date_time")
+
+    @property
+    @pulumi.getter(name="deletedBy")
+    def deleted_by(self) -> Optional[str]:
+        """
+        Deleted by User Key
+        """
+        return pulumi.get(self, "deleted_by")
+
+    @property
+    @pulumi.getter(name="deletedByEmail")
+    def deleted_by_email(self) -> Optional[str]:
+        """
+        Deleted by User Email Address
+        """
+        return pulumi.get(self, "deleted_by_email")
+
+    @property
+    @pulumi.getter(name="deletedByFullName")
+    def deleted_by_full_name(self) -> Optional[str]:
+        """
+        Deleted by User Full Name
+        """
+        return pulumi.get(self, "deleted_by_full_name")
+
+    @property
+    @pulumi.getter(name="deletedDateTime")
+    def deleted_date_time(self) -> Optional[str]:
+        """
+        Deleted by Date and Time
+        """
+        return pulumi.get(self, "deleted_date_time")
+
+    @property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> Optional[str]:
+        """
+        Updated by User Key
+        """
+        return pulumi.get(self, "updated_by")
+
+    @property
+    @pulumi.getter(name="updatedByEmail")
+    def updated_by_email(self) -> Optional[str]:
+        """
+        Updated by User Email Address
+        """
+        return pulumi.get(self, "updated_by_email")
+
+    @property
+    @pulumi.getter(name="updatedByFullName")
+    def updated_by_full_name(self) -> Optional[str]:
+        """
+        Updated by User Full Name
+        """
+        return pulumi.get(self, "updated_by_full_name")
+
+    @property
+    @pulumi.getter(name="updatedDateTime")
+    def updated_date_time(self) -> Optional[str]:
+        """
+        Updated by Date and Time
+        """
+        return pulumi.get(self, "updated_date_time")
+
+
+@pulumi.output_type
+class RouteFilterProject(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "projectId":
+            suggest = "project_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RouteFilterProject. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RouteFilterProject.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RouteFilterProject.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 project_id: str,
+                 href: Optional[str] = None):
+        """
+        :param str project_id: Project id associated with Fabric Project
+        :param str href: URI of the Fabric Project
+        """
+        pulumi.set(__self__, "project_id", project_id)
+        if href is not None:
+            pulumi.set(__self__, "href", href)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        """
+        Project id associated with Fabric Project
+        """
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter
+    def href(self) -> Optional[str]:
+        """
+        URI of the Fabric Project
+        """
+        return pulumi.get(self, "href")
+
+
+@pulumi.output_type
+class RouteFilterRuleChange(dict):
+    def __init__(__self__, *,
+                 href: Optional[str] = None,
+                 type: Optional[str] = None,
+                 uuid: Optional[str] = None):
+        """
+        :param str href: The URI of the previous Route Filter Rule Change
+        :param str type: Type of change. One of [ "BGP_IPv4_PREFIX_FILTER_RULE_UPDATE","BGP_IPv4_PREFIX_FILTER_RULE_CREATION","BGP_IPv4_PREFIX_FILTER_RULE_DELETION","BGP_IPv6_PREFIX_FILTER_RULE_UPDATE","BGP_IPv6_PREFIX_FILTER_RULE_CREATION","BGP_IPv6_PREFIX_FILTER_RULE_DELETION" ]
+        :param str uuid: Unique identifier for the previous change
+        """
+        if href is not None:
+            pulumi.set(__self__, "href", href)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+
+    @property
+    @pulumi.getter
+    def href(self) -> Optional[str]:
+        """
+        The URI of the previous Route Filter Rule Change
+        """
+        return pulumi.get(self, "href")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        Type of change. One of [ "BGP_IPv4_PREFIX_FILTER_RULE_UPDATE","BGP_IPv4_PREFIX_FILTER_RULE_CREATION","BGP_IPv4_PREFIX_FILTER_RULE_DELETION","BGP_IPv6_PREFIX_FILTER_RULE_UPDATE","BGP_IPv6_PREFIX_FILTER_RULE_CREATION","BGP_IPv6_PREFIX_FILTER_RULE_DELETION" ]
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> Optional[str]:
+        """
+        Unique identifier for the previous change
+        """
+        return pulumi.get(self, "uuid")
+
+
+@pulumi.output_type
+class RouteFilterRuleChangeLog(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createdBy":
+            suggest = "created_by"
+        elif key == "createdByEmail":
+            suggest = "created_by_email"
+        elif key == "createdByFullName":
+            suggest = "created_by_full_name"
+        elif key == "createdDateTime":
+            suggest = "created_date_time"
+        elif key == "deletedBy":
+            suggest = "deleted_by"
+        elif key == "deletedByEmail":
+            suggest = "deleted_by_email"
+        elif key == "deletedByFullName":
+            suggest = "deleted_by_full_name"
+        elif key == "deletedDateTime":
+            suggest = "deleted_date_time"
+        elif key == "updatedBy":
+            suggest = "updated_by"
+        elif key == "updatedByEmail":
+            suggest = "updated_by_email"
+        elif key == "updatedByFullName":
+            suggest = "updated_by_full_name"
+        elif key == "updatedDateTime":
+            suggest = "updated_date_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RouteFilterRuleChangeLog. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RouteFilterRuleChangeLog.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RouteFilterRuleChangeLog.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 created_by: Optional[str] = None,
+                 created_by_email: Optional[str] = None,
+                 created_by_full_name: Optional[str] = None,
+                 created_date_time: Optional[str] = None,
+                 deleted_by: Optional[str] = None,
+                 deleted_by_email: Optional[str] = None,
+                 deleted_by_full_name: Optional[str] = None,
+                 deleted_date_time: Optional[str] = None,
+                 updated_by: Optional[str] = None,
+                 updated_by_email: Optional[str] = None,
+                 updated_by_full_name: Optional[str] = None,
+                 updated_date_time: Optional[str] = None):
+        """
+        :param str created_by: Created by User Key
+        :param str created_by_email: Created by User Email Address
+        :param str created_by_full_name: Created by User Full Name
+        :param str created_date_time: Created by Date and Time
+        :param str deleted_by: Deleted by User Key
+        :param str deleted_by_email: Deleted by User Email Address
+        :param str deleted_by_full_name: Deleted by User Full Name
+        :param str deleted_date_time: Deleted by Date and Time
+        :param str updated_by: Updated by User Key
+        :param str updated_by_email: Updated by User Email Address
+        :param str updated_by_full_name: Updated by User Full Name
+        :param str updated_date_time: Updated by Date and Time
+        """
+        if created_by is not None:
+            pulumi.set(__self__, "created_by", created_by)
+        if created_by_email is not None:
+            pulumi.set(__self__, "created_by_email", created_by_email)
+        if created_by_full_name is not None:
+            pulumi.set(__self__, "created_by_full_name", created_by_full_name)
+        if created_date_time is not None:
+            pulumi.set(__self__, "created_date_time", created_date_time)
+        if deleted_by is not None:
+            pulumi.set(__self__, "deleted_by", deleted_by)
+        if deleted_by_email is not None:
+            pulumi.set(__self__, "deleted_by_email", deleted_by_email)
+        if deleted_by_full_name is not None:
+            pulumi.set(__self__, "deleted_by_full_name", deleted_by_full_name)
+        if deleted_date_time is not None:
+            pulumi.set(__self__, "deleted_date_time", deleted_date_time)
+        if updated_by is not None:
+            pulumi.set(__self__, "updated_by", updated_by)
+        if updated_by_email is not None:
+            pulumi.set(__self__, "updated_by_email", updated_by_email)
+        if updated_by_full_name is not None:
+            pulumi.set(__self__, "updated_by_full_name", updated_by_full_name)
+        if updated_date_time is not None:
+            pulumi.set(__self__, "updated_date_time", updated_date_time)
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> Optional[str]:
+        """
+        Created by User Key
+        """
+        return pulumi.get(self, "created_by")
+
+    @property
+    @pulumi.getter(name="createdByEmail")
+    def created_by_email(self) -> Optional[str]:
+        """
+        Created by User Email Address
+        """
+        return pulumi.get(self, "created_by_email")
+
+    @property
+    @pulumi.getter(name="createdByFullName")
+    def created_by_full_name(self) -> Optional[str]:
+        """
+        Created by User Full Name
+        """
+        return pulumi.get(self, "created_by_full_name")
+
+    @property
+    @pulumi.getter(name="createdDateTime")
+    def created_date_time(self) -> Optional[str]:
+        """
+        Created by Date and Time
+        """
+        return pulumi.get(self, "created_date_time")
+
+    @property
+    @pulumi.getter(name="deletedBy")
+    def deleted_by(self) -> Optional[str]:
+        """
+        Deleted by User Key
+        """
+        return pulumi.get(self, "deleted_by")
+
+    @property
+    @pulumi.getter(name="deletedByEmail")
+    def deleted_by_email(self) -> Optional[str]:
+        """
+        Deleted by User Email Address
+        """
+        return pulumi.get(self, "deleted_by_email")
+
+    @property
+    @pulumi.getter(name="deletedByFullName")
+    def deleted_by_full_name(self) -> Optional[str]:
+        """
+        Deleted by User Full Name
+        """
+        return pulumi.get(self, "deleted_by_full_name")
+
+    @property
+    @pulumi.getter(name="deletedDateTime")
+    def deleted_date_time(self) -> Optional[str]:
+        """
+        Deleted by Date and Time
+        """
+        return pulumi.get(self, "deleted_date_time")
+
+    @property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> Optional[str]:
+        """
+        Updated by User Key
+        """
+        return pulumi.get(self, "updated_by")
+
+    @property
+    @pulumi.getter(name="updatedByEmail")
+    def updated_by_email(self) -> Optional[str]:
+        """
+        Updated by User Email Address
+        """
+        return pulumi.get(self, "updated_by_email")
+
+    @property
+    @pulumi.getter(name="updatedByFullName")
+    def updated_by_full_name(self) -> Optional[str]:
+        """
+        Updated by User Full Name
+        """
+        return pulumi.get(self, "updated_by_full_name")
+
+    @property
+    @pulumi.getter(name="updatedDateTime")
+    def updated_date_time(self) -> Optional[str]:
+        """
+        Updated by Date and Time
+        """
+        return pulumi.get(self, "updated_date_time")
 
 
 @pulumi.output_type
@@ -8812,6 +9348,130 @@ class GetConnectionRedundancyResult(dict):
         Connection priority in redundancy group - PRIMARY, SECONDARY
         """
         return pulumi.get(self, "priority")
+
+
+@pulumi.output_type
+class GetConnectionRouteFiltersDataResult(dict):
+    def __init__(__self__, *,
+                 attachment_status: str,
+                 direction: str,
+                 href: str,
+                 type: str,
+                 uuid: str):
+        """
+        :param str attachment_status: Status of the Route Filter Policy attachment lifecycle
+        :param str direction: Direction of the filtering of the attached Route Filter Policy
+        :param str href: URI to the attached Route Filter Policy on the Connection
+        :param str type: Route Filter Type. One of [ "BGP_IPv4_PREFIX_FILTER", "BGP_IPv6_PREFIX_FILTER" ]
+        :param str uuid: Equinix Assigned ID for Route Filter Policy
+        """
+        pulumi.set(__self__, "attachment_status", attachment_status)
+        pulumi.set(__self__, "direction", direction)
+        pulumi.set(__self__, "href", href)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "uuid", uuid)
+
+    @property
+    @pulumi.getter(name="attachmentStatus")
+    def attachment_status(self) -> str:
+        """
+        Status of the Route Filter Policy attachment lifecycle
+        """
+        return pulumi.get(self, "attachment_status")
+
+    @property
+    @pulumi.getter
+    def direction(self) -> str:
+        """
+        Direction of the filtering of the attached Route Filter Policy
+        """
+        return pulumi.get(self, "direction")
+
+    @property
+    @pulumi.getter
+    def href(self) -> str:
+        """
+        URI to the attached Route Filter Policy on the Connection
+        """
+        return pulumi.get(self, "href")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Route Filter Type. One of [ "BGP_IPv4_PREFIX_FILTER", "BGP_IPv6_PREFIX_FILTER" ]
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> str:
+        """
+        Equinix Assigned ID for Route Filter Policy
+        """
+        return pulumi.get(self, "uuid")
+
+
+@pulumi.output_type
+class GetConnectionRouteFiltersPaginationResult(dict):
+    def __init__(__self__, *,
+                 limit: int,
+                 next: str,
+                 offset: int,
+                 previous: str,
+                 total: int):
+        """
+        :param int limit: Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+        :param str next: URL relative to the last item in the response.
+        :param int offset: The page offset for the pagination request. Index of the first element. Default is 0.
+        :param str previous: URL relative to the first item in the response.
+        :param int total: Total number of elements returned.
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "next", next)
+        pulumi.set(__self__, "offset", offset)
+        pulumi.set(__self__, "previous", previous)
+        pulumi.set(__self__, "total", total)
+
+    @property
+    @pulumi.getter
+    def limit(self) -> int:
+        """
+        Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+        """
+        return pulumi.get(self, "limit")
+
+    @property
+    @pulumi.getter
+    def next(self) -> str:
+        """
+        URL relative to the last item in the response.
+        """
+        return pulumi.get(self, "next")
+
+    @property
+    @pulumi.getter
+    def offset(self) -> int:
+        """
+        The page offset for the pagination request. Index of the first element. Default is 0.
+        """
+        return pulumi.get(self, "offset")
+
+    @property
+    @pulumi.getter
+    def previous(self) -> str:
+        """
+        URL relative to the first item in the response.
+        """
+        return pulumi.get(self, "previous")
+
+    @property
+    @pulumi.getter
+    def total(self) -> int:
+        """
+        Total number of elements returned.
+        """
+        return pulumi.get(self, "total")
 
 
 @pulumi.output_type
@@ -14493,6 +15153,1234 @@ class GetPortsFilterResult(dict):
         Query Parameter to Get Ports By Name
         """
         return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetRouteFilterChangeResult(dict):
+    def __init__(__self__, *,
+                 href: str,
+                 type: str,
+                 uuid: str):
+        """
+        :param str href: The URI of the previous Route Filter Change
+        :param str type: Type of change. One of [ "BGP_IPv4_PREFIX_FILTER_UPDATE","BGP_IPv4_PREFIX_FILTER_CREATION","BGP_IPv4_PREFIX_FILTER_DELETION","BGP_IPv6_PREFIX_FILTER_UPDATE","BGP_IPv6_PREFIX_FILTER_CREATION","BGP_IPv6_PREFIX_FILTER_DELETION" ]
+        :param str uuid: Unique identifier for the previous change
+        """
+        pulumi.set(__self__, "href", href)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "uuid", uuid)
+
+    @property
+    @pulumi.getter
+    def href(self) -> str:
+        """
+        The URI of the previous Route Filter Change
+        """
+        return pulumi.get(self, "href")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type of change. One of [ "BGP_IPv4_PREFIX_FILTER_UPDATE","BGP_IPv4_PREFIX_FILTER_CREATION","BGP_IPv4_PREFIX_FILTER_DELETION","BGP_IPv6_PREFIX_FILTER_UPDATE","BGP_IPv6_PREFIX_FILTER_CREATION","BGP_IPv6_PREFIX_FILTER_DELETION" ]
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> str:
+        """
+        Unique identifier for the previous change
+        """
+        return pulumi.get(self, "uuid")
+
+
+@pulumi.output_type
+class GetRouteFilterChangeLogResult(dict):
+    def __init__(__self__, *,
+                 created_by: str,
+                 created_by_email: str,
+                 created_by_full_name: str,
+                 created_date_time: str,
+                 deleted_by: str,
+                 deleted_by_email: str,
+                 deleted_by_full_name: str,
+                 deleted_date_time: str,
+                 updated_by: str,
+                 updated_by_email: str,
+                 updated_by_full_name: str,
+                 updated_date_time: str):
+        """
+        :param str created_by: Created by User Key
+        :param str created_by_email: Created by User Email Address
+        :param str created_by_full_name: Created by User Full Name
+        :param str created_date_time: Created by Date and Time
+        :param str deleted_by: Deleted by User Key
+        :param str deleted_by_email: Deleted by User Email Address
+        :param str deleted_by_full_name: Deleted by User Full Name
+        :param str deleted_date_time: Deleted by Date and Time
+        :param str updated_by: Updated by User Key
+        :param str updated_by_email: Updated by User Email Address
+        :param str updated_by_full_name: Updated by User Full Name
+        :param str updated_date_time: Updated by Date and Time
+        """
+        pulumi.set(__self__, "created_by", created_by)
+        pulumi.set(__self__, "created_by_email", created_by_email)
+        pulumi.set(__self__, "created_by_full_name", created_by_full_name)
+        pulumi.set(__self__, "created_date_time", created_date_time)
+        pulumi.set(__self__, "deleted_by", deleted_by)
+        pulumi.set(__self__, "deleted_by_email", deleted_by_email)
+        pulumi.set(__self__, "deleted_by_full_name", deleted_by_full_name)
+        pulumi.set(__self__, "deleted_date_time", deleted_date_time)
+        pulumi.set(__self__, "updated_by", updated_by)
+        pulumi.set(__self__, "updated_by_email", updated_by_email)
+        pulumi.set(__self__, "updated_by_full_name", updated_by_full_name)
+        pulumi.set(__self__, "updated_date_time", updated_date_time)
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> str:
+        """
+        Created by User Key
+        """
+        return pulumi.get(self, "created_by")
+
+    @property
+    @pulumi.getter(name="createdByEmail")
+    def created_by_email(self) -> str:
+        """
+        Created by User Email Address
+        """
+        return pulumi.get(self, "created_by_email")
+
+    @property
+    @pulumi.getter(name="createdByFullName")
+    def created_by_full_name(self) -> str:
+        """
+        Created by User Full Name
+        """
+        return pulumi.get(self, "created_by_full_name")
+
+    @property
+    @pulumi.getter(name="createdDateTime")
+    def created_date_time(self) -> str:
+        """
+        Created by Date and Time
+        """
+        return pulumi.get(self, "created_date_time")
+
+    @property
+    @pulumi.getter(name="deletedBy")
+    def deleted_by(self) -> str:
+        """
+        Deleted by User Key
+        """
+        return pulumi.get(self, "deleted_by")
+
+    @property
+    @pulumi.getter(name="deletedByEmail")
+    def deleted_by_email(self) -> str:
+        """
+        Deleted by User Email Address
+        """
+        return pulumi.get(self, "deleted_by_email")
+
+    @property
+    @pulumi.getter(name="deletedByFullName")
+    def deleted_by_full_name(self) -> str:
+        """
+        Deleted by User Full Name
+        """
+        return pulumi.get(self, "deleted_by_full_name")
+
+    @property
+    @pulumi.getter(name="deletedDateTime")
+    def deleted_date_time(self) -> str:
+        """
+        Deleted by Date and Time
+        """
+        return pulumi.get(self, "deleted_date_time")
+
+    @property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> str:
+        """
+        Updated by User Key
+        """
+        return pulumi.get(self, "updated_by")
+
+    @property
+    @pulumi.getter(name="updatedByEmail")
+    def updated_by_email(self) -> str:
+        """
+        Updated by User Email Address
+        """
+        return pulumi.get(self, "updated_by_email")
+
+    @property
+    @pulumi.getter(name="updatedByFullName")
+    def updated_by_full_name(self) -> str:
+        """
+        Updated by User Full Name
+        """
+        return pulumi.get(self, "updated_by_full_name")
+
+    @property
+    @pulumi.getter(name="updatedDateTime")
+    def updated_date_time(self) -> str:
+        """
+        Updated by Date and Time
+        """
+        return pulumi.get(self, "updated_date_time")
+
+
+@pulumi.output_type
+class GetRouteFilterProjectResult(dict):
+    def __init__(__self__, *,
+                 href: str,
+                 project_id: str):
+        """
+        :param str href: URI of the Fabric Project
+        :param str project_id: Project id associated with Fabric Project
+        """
+        pulumi.set(__self__, "href", href)
+        pulumi.set(__self__, "project_id", project_id)
+
+    @property
+    @pulumi.getter
+    def href(self) -> str:
+        """
+        URI of the Fabric Project
+        """
+        return pulumi.get(self, "href")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        """
+        Project id associated with Fabric Project
+        """
+        return pulumi.get(self, "project_id")
+
+
+@pulumi.output_type
+class GetRouteFilterRuleChangeResult(dict):
+    def __init__(__self__, *,
+                 href: str,
+                 type: str,
+                 uuid: str):
+        """
+        :param str href: The URI of the previous Route Filter Rule Change
+        :param str type: Type of change. One of [ "BGP_IPv4_PREFIX_FILTER_RULE_UPDATE","BGP_IPv4_PREFIX_FILTER_RULE_CREATION","BGP_IPv4_PREFIX_FILTER_RULE_DELETION","BGP_IPv6_PREFIX_FILTER_RULE_UPDATE","BGP_IPv6_PREFIX_FILTER_RULE_CREATION","BGP_IPv6_PREFIX_FILTER_RULE_DELETION" ]
+        :param str uuid: Unique identifier for the previous change
+        """
+        pulumi.set(__self__, "href", href)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "uuid", uuid)
+
+    @property
+    @pulumi.getter
+    def href(self) -> str:
+        """
+        The URI of the previous Route Filter Rule Change
+        """
+        return pulumi.get(self, "href")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type of change. One of [ "BGP_IPv4_PREFIX_FILTER_RULE_UPDATE","BGP_IPv4_PREFIX_FILTER_RULE_CREATION","BGP_IPv4_PREFIX_FILTER_RULE_DELETION","BGP_IPv6_PREFIX_FILTER_RULE_UPDATE","BGP_IPv6_PREFIX_FILTER_RULE_CREATION","BGP_IPv6_PREFIX_FILTER_RULE_DELETION" ]
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> str:
+        """
+        Unique identifier for the previous change
+        """
+        return pulumi.get(self, "uuid")
+
+
+@pulumi.output_type
+class GetRouteFilterRuleChangeLogResult(dict):
+    def __init__(__self__, *,
+                 created_by: str,
+                 created_by_email: str,
+                 created_by_full_name: str,
+                 created_date_time: str,
+                 deleted_by: str,
+                 deleted_by_email: str,
+                 deleted_by_full_name: str,
+                 deleted_date_time: str,
+                 updated_by: str,
+                 updated_by_email: str,
+                 updated_by_full_name: str,
+                 updated_date_time: str):
+        """
+        :param str created_by: Created by User Key
+        :param str created_by_email: Created by User Email Address
+        :param str created_by_full_name: Created by User Full Name
+        :param str created_date_time: Created by Date and Time
+        :param str deleted_by: Deleted by User Key
+        :param str deleted_by_email: Deleted by User Email Address
+        :param str deleted_by_full_name: Deleted by User Full Name
+        :param str deleted_date_time: Deleted by Date and Time
+        :param str updated_by: Updated by User Key
+        :param str updated_by_email: Updated by User Email Address
+        :param str updated_by_full_name: Updated by User Full Name
+        :param str updated_date_time: Updated by Date and Time
+        """
+        pulumi.set(__self__, "created_by", created_by)
+        pulumi.set(__self__, "created_by_email", created_by_email)
+        pulumi.set(__self__, "created_by_full_name", created_by_full_name)
+        pulumi.set(__self__, "created_date_time", created_date_time)
+        pulumi.set(__self__, "deleted_by", deleted_by)
+        pulumi.set(__self__, "deleted_by_email", deleted_by_email)
+        pulumi.set(__self__, "deleted_by_full_name", deleted_by_full_name)
+        pulumi.set(__self__, "deleted_date_time", deleted_date_time)
+        pulumi.set(__self__, "updated_by", updated_by)
+        pulumi.set(__self__, "updated_by_email", updated_by_email)
+        pulumi.set(__self__, "updated_by_full_name", updated_by_full_name)
+        pulumi.set(__self__, "updated_date_time", updated_date_time)
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> str:
+        """
+        Created by User Key
+        """
+        return pulumi.get(self, "created_by")
+
+    @property
+    @pulumi.getter(name="createdByEmail")
+    def created_by_email(self) -> str:
+        """
+        Created by User Email Address
+        """
+        return pulumi.get(self, "created_by_email")
+
+    @property
+    @pulumi.getter(name="createdByFullName")
+    def created_by_full_name(self) -> str:
+        """
+        Created by User Full Name
+        """
+        return pulumi.get(self, "created_by_full_name")
+
+    @property
+    @pulumi.getter(name="createdDateTime")
+    def created_date_time(self) -> str:
+        """
+        Created by Date and Time
+        """
+        return pulumi.get(self, "created_date_time")
+
+    @property
+    @pulumi.getter(name="deletedBy")
+    def deleted_by(self) -> str:
+        """
+        Deleted by User Key
+        """
+        return pulumi.get(self, "deleted_by")
+
+    @property
+    @pulumi.getter(name="deletedByEmail")
+    def deleted_by_email(self) -> str:
+        """
+        Deleted by User Email Address
+        """
+        return pulumi.get(self, "deleted_by_email")
+
+    @property
+    @pulumi.getter(name="deletedByFullName")
+    def deleted_by_full_name(self) -> str:
+        """
+        Deleted by User Full Name
+        """
+        return pulumi.get(self, "deleted_by_full_name")
+
+    @property
+    @pulumi.getter(name="deletedDateTime")
+    def deleted_date_time(self) -> str:
+        """
+        Deleted by Date and Time
+        """
+        return pulumi.get(self, "deleted_date_time")
+
+    @property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> str:
+        """
+        Updated by User Key
+        """
+        return pulumi.get(self, "updated_by")
+
+    @property
+    @pulumi.getter(name="updatedByEmail")
+    def updated_by_email(self) -> str:
+        """
+        Updated by User Email Address
+        """
+        return pulumi.get(self, "updated_by_email")
+
+    @property
+    @pulumi.getter(name="updatedByFullName")
+    def updated_by_full_name(self) -> str:
+        """
+        Updated by User Full Name
+        """
+        return pulumi.get(self, "updated_by_full_name")
+
+    @property
+    @pulumi.getter(name="updatedDateTime")
+    def updated_date_time(self) -> str:
+        """
+        Updated by Date and Time
+        """
+        return pulumi.get(self, "updated_date_time")
+
+
+@pulumi.output_type
+class GetRouteFilterRulesDataResult(dict):
+    def __init__(__self__, *,
+                 action: str,
+                 change_logs: Sequence['outputs.GetRouteFilterRulesDataChangeLogResult'],
+                 changes: Sequence['outputs.GetRouteFilterRulesDataChangeResult'],
+                 description: str,
+                 href: str,
+                 name: str,
+                 prefix: str,
+                 prefix_match: str,
+                 state: str,
+                 type: str,
+                 uuid: str):
+        """
+        :param str action: Action that will be taken on IP Addresses matching the rule
+        :param Sequence['GetRouteFilterRulesDataChangeArgs'] changes: An object with the details of the previous change applied on the Route Filter
+        :param str description: Optional description to add to the Route Filter you will be creating
+        :param str href: Route filter rules URI
+        :param str name: Name of the Route Filter
+        :param str prefix: IP Address Prefix to Filter on
+        :param str prefix_match: Prefix matching operator. One of [ orlonger, exact ] Default: "orlonger"
+        :param str state: State of the Route Filter Rule in its lifecycle
+        :param str type: Route Filter Type. One of [ BGP_IPv4_PREFIX_FILTER_RULE, BGP_IPv6_PREFIX_FILTER_RULE ]
+        :param str uuid: Equinix Assigned ID for Route Filter Rule to retrieve data for
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "change_logs", change_logs)
+        pulumi.set(__self__, "changes", changes)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "href", href)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "prefix", prefix)
+        pulumi.set(__self__, "prefix_match", prefix_match)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "uuid", uuid)
+
+    @property
+    @pulumi.getter
+    def action(self) -> str:
+        """
+        Action that will be taken on IP Addresses matching the rule
+        """
+        return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter(name="changeLogs")
+    def change_logs(self) -> Sequence['outputs.GetRouteFilterRulesDataChangeLogResult']:
+        return pulumi.get(self, "change_logs")
+
+    @property
+    @pulumi.getter
+    def changes(self) -> Sequence['outputs.GetRouteFilterRulesDataChangeResult']:
+        """
+        An object with the details of the previous change applied on the Route Filter
+        """
+        return pulumi.get(self, "changes")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        Optional description to add to the Route Filter you will be creating
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def href(self) -> str:
+        """
+        Route filter rules URI
+        """
+        return pulumi.get(self, "href")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the Route Filter
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> str:
+        """
+        IP Address Prefix to Filter on
+        """
+        return pulumi.get(self, "prefix")
+
+    @property
+    @pulumi.getter(name="prefixMatch")
+    def prefix_match(self) -> str:
+        """
+        Prefix matching operator. One of [ orlonger, exact ] Default: "orlonger"
+        """
+        return pulumi.get(self, "prefix_match")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        State of the Route Filter Rule in its lifecycle
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Route Filter Type. One of [ BGP_IPv4_PREFIX_FILTER_RULE, BGP_IPv6_PREFIX_FILTER_RULE ]
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> str:
+        """
+        Equinix Assigned ID for Route Filter Rule to retrieve data for
+        """
+        return pulumi.get(self, "uuid")
+
+
+@pulumi.output_type
+class GetRouteFilterRulesDataChangeResult(dict):
+    def __init__(__self__, *,
+                 href: str,
+                 type: str,
+                 uuid: str):
+        """
+        :param str href: The URI of the previous Route Filter Rule Change
+        :param str type: Type of change. One of [ "BGP_IPv4_PREFIX_FILTER_RULE_UPDATE","BGP_IPv4_PREFIX_FILTER_RULE_CREATION","BGP_IPv4_PREFIX_FILTER_RULE_DELETION","BGP_IPv6_PREFIX_FILTER_RULE_UPDATE","BGP_IPv6_PREFIX_FILTER_RULE_CREATION","BGP_IPv6_PREFIX_FILTER_RULE_DELETION" ]
+        :param str uuid: Unique identifier for the previous change
+        """
+        pulumi.set(__self__, "href", href)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "uuid", uuid)
+
+    @property
+    @pulumi.getter
+    def href(self) -> str:
+        """
+        The URI of the previous Route Filter Rule Change
+        """
+        return pulumi.get(self, "href")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type of change. One of [ "BGP_IPv4_PREFIX_FILTER_RULE_UPDATE","BGP_IPv4_PREFIX_FILTER_RULE_CREATION","BGP_IPv4_PREFIX_FILTER_RULE_DELETION","BGP_IPv6_PREFIX_FILTER_RULE_UPDATE","BGP_IPv6_PREFIX_FILTER_RULE_CREATION","BGP_IPv6_PREFIX_FILTER_RULE_DELETION" ]
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> str:
+        """
+        Unique identifier for the previous change
+        """
+        return pulumi.get(self, "uuid")
+
+
+@pulumi.output_type
+class GetRouteFilterRulesDataChangeLogResult(dict):
+    def __init__(__self__, *,
+                 created_by: str,
+                 created_by_email: str,
+                 created_by_full_name: str,
+                 created_date_time: str,
+                 deleted_by: str,
+                 deleted_by_email: str,
+                 deleted_by_full_name: str,
+                 deleted_date_time: str,
+                 updated_by: str,
+                 updated_by_email: str,
+                 updated_by_full_name: str,
+                 updated_date_time: str):
+        """
+        :param str created_by: Created by User Key
+        :param str created_by_email: Created by User Email Address
+        :param str created_by_full_name: Created by User Full Name
+        :param str created_date_time: Created by Date and Time
+        :param str deleted_by: Deleted by User Key
+        :param str deleted_by_email: Deleted by User Email Address
+        :param str deleted_by_full_name: Deleted by User Full Name
+        :param str deleted_date_time: Deleted by Date and Time
+        :param str updated_by: Updated by User Key
+        :param str updated_by_email: Updated by User Email Address
+        :param str updated_by_full_name: Updated by User Full Name
+        :param str updated_date_time: Updated by Date and Time
+        """
+        pulumi.set(__self__, "created_by", created_by)
+        pulumi.set(__self__, "created_by_email", created_by_email)
+        pulumi.set(__self__, "created_by_full_name", created_by_full_name)
+        pulumi.set(__self__, "created_date_time", created_date_time)
+        pulumi.set(__self__, "deleted_by", deleted_by)
+        pulumi.set(__self__, "deleted_by_email", deleted_by_email)
+        pulumi.set(__self__, "deleted_by_full_name", deleted_by_full_name)
+        pulumi.set(__self__, "deleted_date_time", deleted_date_time)
+        pulumi.set(__self__, "updated_by", updated_by)
+        pulumi.set(__self__, "updated_by_email", updated_by_email)
+        pulumi.set(__self__, "updated_by_full_name", updated_by_full_name)
+        pulumi.set(__self__, "updated_date_time", updated_date_time)
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> str:
+        """
+        Created by User Key
+        """
+        return pulumi.get(self, "created_by")
+
+    @property
+    @pulumi.getter(name="createdByEmail")
+    def created_by_email(self) -> str:
+        """
+        Created by User Email Address
+        """
+        return pulumi.get(self, "created_by_email")
+
+    @property
+    @pulumi.getter(name="createdByFullName")
+    def created_by_full_name(self) -> str:
+        """
+        Created by User Full Name
+        """
+        return pulumi.get(self, "created_by_full_name")
+
+    @property
+    @pulumi.getter(name="createdDateTime")
+    def created_date_time(self) -> str:
+        """
+        Created by Date and Time
+        """
+        return pulumi.get(self, "created_date_time")
+
+    @property
+    @pulumi.getter(name="deletedBy")
+    def deleted_by(self) -> str:
+        """
+        Deleted by User Key
+        """
+        return pulumi.get(self, "deleted_by")
+
+    @property
+    @pulumi.getter(name="deletedByEmail")
+    def deleted_by_email(self) -> str:
+        """
+        Deleted by User Email Address
+        """
+        return pulumi.get(self, "deleted_by_email")
+
+    @property
+    @pulumi.getter(name="deletedByFullName")
+    def deleted_by_full_name(self) -> str:
+        """
+        Deleted by User Full Name
+        """
+        return pulumi.get(self, "deleted_by_full_name")
+
+    @property
+    @pulumi.getter(name="deletedDateTime")
+    def deleted_date_time(self) -> str:
+        """
+        Deleted by Date and Time
+        """
+        return pulumi.get(self, "deleted_date_time")
+
+    @property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> str:
+        """
+        Updated by User Key
+        """
+        return pulumi.get(self, "updated_by")
+
+    @property
+    @pulumi.getter(name="updatedByEmail")
+    def updated_by_email(self) -> str:
+        """
+        Updated by User Email Address
+        """
+        return pulumi.get(self, "updated_by_email")
+
+    @property
+    @pulumi.getter(name="updatedByFullName")
+    def updated_by_full_name(self) -> str:
+        """
+        Updated by User Full Name
+        """
+        return pulumi.get(self, "updated_by_full_name")
+
+    @property
+    @pulumi.getter(name="updatedDateTime")
+    def updated_date_time(self) -> str:
+        """
+        Updated by Date and Time
+        """
+        return pulumi.get(self, "updated_date_time")
+
+
+@pulumi.output_type
+class GetRouteFilterRulesPaginationResult(dict):
+    def __init__(__self__, *,
+                 limit: int,
+                 next: str,
+                 offset: int,
+                 previous: str,
+                 total: int):
+        """
+        :param int limit: Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+        :param str next: URL relative to the last item in the response.
+        :param int offset: The page offset for the pagination request. Index of the first element. Default is 0.
+        :param str previous: URL relative to the first item in the response.
+        :param int total: Total number of elements returned.
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "next", next)
+        pulumi.set(__self__, "offset", offset)
+        pulumi.set(__self__, "previous", previous)
+        pulumi.set(__self__, "total", total)
+
+    @property
+    @pulumi.getter
+    def limit(self) -> int:
+        """
+        Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+        """
+        return pulumi.get(self, "limit")
+
+    @property
+    @pulumi.getter
+    def next(self) -> str:
+        """
+        URL relative to the last item in the response.
+        """
+        return pulumi.get(self, "next")
+
+    @property
+    @pulumi.getter
+    def offset(self) -> int:
+        """
+        The page offset for the pagination request. Index of the first element. Default is 0.
+        """
+        return pulumi.get(self, "offset")
+
+    @property
+    @pulumi.getter
+    def previous(self) -> str:
+        """
+        URL relative to the first item in the response.
+        """
+        return pulumi.get(self, "previous")
+
+    @property
+    @pulumi.getter
+    def total(self) -> int:
+        """
+        Total number of elements returned.
+        """
+        return pulumi.get(self, "total")
+
+
+@pulumi.output_type
+class GetRouteFiltersDataResult(dict):
+    def __init__(__self__, *,
+                 change_logs: Sequence['outputs.GetRouteFiltersDataChangeLogResult'],
+                 changes: Sequence['outputs.GetRouteFiltersDataChangeResult'],
+                 connections_count: int,
+                 description: str,
+                 href: str,
+                 name: str,
+                 not_matched_rule_action: str,
+                 projects: Sequence['outputs.GetRouteFiltersDataProjectResult'],
+                 rules_count: int,
+                 state: str,
+                 type: str,
+                 uuid: str):
+        """
+        :param Sequence['GetRouteFiltersDataChangeArgs'] changes: An object with the details of the previous change applied on the Route Filter
+        :param int connections_count: The number of Fabric Connections that this Route Filter is attached to
+        :param str description: Optional description to add to the Route Filter you will be creating
+        :param str href: Route filter URI
+        :param str name: Name of the Route Filter
+        :param str not_matched_rule_action: The action that will be taken on ip ranges that don't match the rules present within the Route Filter
+        :param Sequence['GetRouteFiltersDataProjectArgs'] projects: The Project object that contains project_id and href that is related to the Fabric Project containing connections the Route Filter can be attached to
+        :param int rules_count: The number of Route Filter Rules attached to this Route Filter
+        :param str state: State of the Route Filter in its lifecycle
+        :param str type: Route Filter Type. One of [ "BGP_IPv4_PREFIX_FILTER", "BGP_IPv6_PREFIX_FILTER" ]
+        :param str uuid: Equinix Assigned ID for Route Filter
+        """
+        pulumi.set(__self__, "change_logs", change_logs)
+        pulumi.set(__self__, "changes", changes)
+        pulumi.set(__self__, "connections_count", connections_count)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "href", href)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "not_matched_rule_action", not_matched_rule_action)
+        pulumi.set(__self__, "projects", projects)
+        pulumi.set(__self__, "rules_count", rules_count)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "uuid", uuid)
+
+    @property
+    @pulumi.getter(name="changeLogs")
+    def change_logs(self) -> Sequence['outputs.GetRouteFiltersDataChangeLogResult']:
+        return pulumi.get(self, "change_logs")
+
+    @property
+    @pulumi.getter
+    def changes(self) -> Sequence['outputs.GetRouteFiltersDataChangeResult']:
+        """
+        An object with the details of the previous change applied on the Route Filter
+        """
+        return pulumi.get(self, "changes")
+
+    @property
+    @pulumi.getter(name="connectionsCount")
+    def connections_count(self) -> int:
+        """
+        The number of Fabric Connections that this Route Filter is attached to
+        """
+        return pulumi.get(self, "connections_count")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        Optional description to add to the Route Filter you will be creating
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def href(self) -> str:
+        """
+        Route filter URI
+        """
+        return pulumi.get(self, "href")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the Route Filter
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="notMatchedRuleAction")
+    def not_matched_rule_action(self) -> str:
+        """
+        The action that will be taken on ip ranges that don't match the rules present within the Route Filter
+        """
+        return pulumi.get(self, "not_matched_rule_action")
+
+    @property
+    @pulumi.getter
+    def projects(self) -> Sequence['outputs.GetRouteFiltersDataProjectResult']:
+        """
+        The Project object that contains project_id and href that is related to the Fabric Project containing connections the Route Filter can be attached to
+        """
+        return pulumi.get(self, "projects")
+
+    @property
+    @pulumi.getter(name="rulesCount")
+    def rules_count(self) -> int:
+        """
+        The number of Route Filter Rules attached to this Route Filter
+        """
+        return pulumi.get(self, "rules_count")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        State of the Route Filter in its lifecycle
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Route Filter Type. One of [ "BGP_IPv4_PREFIX_FILTER", "BGP_IPv6_PREFIX_FILTER" ]
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> str:
+        """
+        Equinix Assigned ID for Route Filter
+        """
+        return pulumi.get(self, "uuid")
+
+
+@pulumi.output_type
+class GetRouteFiltersDataChangeResult(dict):
+    def __init__(__self__, *,
+                 href: str,
+                 type: str,
+                 uuid: str):
+        """
+        :param str href: The URI of the previous Route Filter Change
+        :param str type: Type of change. One of [ "BGP_IPv4_PREFIX_FILTER_UPDATE","BGP_IPv4_PREFIX_FILTER_CREATION","BGP_IPv4_PREFIX_FILTER_DELETION","BGP_IPv6_PREFIX_FILTER_UPDATE","BGP_IPv6_PREFIX_FILTER_CREATION","BGP_IPv6_PREFIX_FILTER_DELETION" ]
+        :param str uuid: Unique identifier for the previous change
+        """
+        pulumi.set(__self__, "href", href)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "uuid", uuid)
+
+    @property
+    @pulumi.getter
+    def href(self) -> str:
+        """
+        The URI of the previous Route Filter Change
+        """
+        return pulumi.get(self, "href")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type of change. One of [ "BGP_IPv4_PREFIX_FILTER_UPDATE","BGP_IPv4_PREFIX_FILTER_CREATION","BGP_IPv4_PREFIX_FILTER_DELETION","BGP_IPv6_PREFIX_FILTER_UPDATE","BGP_IPv6_PREFIX_FILTER_CREATION","BGP_IPv6_PREFIX_FILTER_DELETION" ]
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> str:
+        """
+        Unique identifier for the previous change
+        """
+        return pulumi.get(self, "uuid")
+
+
+@pulumi.output_type
+class GetRouteFiltersDataChangeLogResult(dict):
+    def __init__(__self__, *,
+                 created_by: str,
+                 created_by_email: str,
+                 created_by_full_name: str,
+                 created_date_time: str,
+                 deleted_by: str,
+                 deleted_by_email: str,
+                 deleted_by_full_name: str,
+                 deleted_date_time: str,
+                 updated_by: str,
+                 updated_by_email: str,
+                 updated_by_full_name: str,
+                 updated_date_time: str):
+        """
+        :param str created_by: Created by User Key
+        :param str created_by_email: Created by User Email Address
+        :param str created_by_full_name: Created by User Full Name
+        :param str created_date_time: Created by Date and Time
+        :param str deleted_by: Deleted by User Key
+        :param str deleted_by_email: Deleted by User Email Address
+        :param str deleted_by_full_name: Deleted by User Full Name
+        :param str deleted_date_time: Deleted by Date and Time
+        :param str updated_by: Updated by User Key
+        :param str updated_by_email: Updated by User Email Address
+        :param str updated_by_full_name: Updated by User Full Name
+        :param str updated_date_time: Updated by Date and Time
+        """
+        pulumi.set(__self__, "created_by", created_by)
+        pulumi.set(__self__, "created_by_email", created_by_email)
+        pulumi.set(__self__, "created_by_full_name", created_by_full_name)
+        pulumi.set(__self__, "created_date_time", created_date_time)
+        pulumi.set(__self__, "deleted_by", deleted_by)
+        pulumi.set(__self__, "deleted_by_email", deleted_by_email)
+        pulumi.set(__self__, "deleted_by_full_name", deleted_by_full_name)
+        pulumi.set(__self__, "deleted_date_time", deleted_date_time)
+        pulumi.set(__self__, "updated_by", updated_by)
+        pulumi.set(__self__, "updated_by_email", updated_by_email)
+        pulumi.set(__self__, "updated_by_full_name", updated_by_full_name)
+        pulumi.set(__self__, "updated_date_time", updated_date_time)
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> str:
+        """
+        Created by User Key
+        """
+        return pulumi.get(self, "created_by")
+
+    @property
+    @pulumi.getter(name="createdByEmail")
+    def created_by_email(self) -> str:
+        """
+        Created by User Email Address
+        """
+        return pulumi.get(self, "created_by_email")
+
+    @property
+    @pulumi.getter(name="createdByFullName")
+    def created_by_full_name(self) -> str:
+        """
+        Created by User Full Name
+        """
+        return pulumi.get(self, "created_by_full_name")
+
+    @property
+    @pulumi.getter(name="createdDateTime")
+    def created_date_time(self) -> str:
+        """
+        Created by Date and Time
+        """
+        return pulumi.get(self, "created_date_time")
+
+    @property
+    @pulumi.getter(name="deletedBy")
+    def deleted_by(self) -> str:
+        """
+        Deleted by User Key
+        """
+        return pulumi.get(self, "deleted_by")
+
+    @property
+    @pulumi.getter(name="deletedByEmail")
+    def deleted_by_email(self) -> str:
+        """
+        Deleted by User Email Address
+        """
+        return pulumi.get(self, "deleted_by_email")
+
+    @property
+    @pulumi.getter(name="deletedByFullName")
+    def deleted_by_full_name(self) -> str:
+        """
+        Deleted by User Full Name
+        """
+        return pulumi.get(self, "deleted_by_full_name")
+
+    @property
+    @pulumi.getter(name="deletedDateTime")
+    def deleted_date_time(self) -> str:
+        """
+        Deleted by Date and Time
+        """
+        return pulumi.get(self, "deleted_date_time")
+
+    @property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> str:
+        """
+        Updated by User Key
+        """
+        return pulumi.get(self, "updated_by")
+
+    @property
+    @pulumi.getter(name="updatedByEmail")
+    def updated_by_email(self) -> str:
+        """
+        Updated by User Email Address
+        """
+        return pulumi.get(self, "updated_by_email")
+
+    @property
+    @pulumi.getter(name="updatedByFullName")
+    def updated_by_full_name(self) -> str:
+        """
+        Updated by User Full Name
+        """
+        return pulumi.get(self, "updated_by_full_name")
+
+    @property
+    @pulumi.getter(name="updatedDateTime")
+    def updated_date_time(self) -> str:
+        """
+        Updated by Date and Time
+        """
+        return pulumi.get(self, "updated_date_time")
+
+
+@pulumi.output_type
+class GetRouteFiltersDataProjectResult(dict):
+    def __init__(__self__, *,
+                 href: str,
+                 project_id: str):
+        """
+        :param str href: URI of the Fabric Project
+        :param str project_id: Project id associated with Fabric Project
+        """
+        pulumi.set(__self__, "href", href)
+        pulumi.set(__self__, "project_id", project_id)
+
+    @property
+    @pulumi.getter
+    def href(self) -> str:
+        """
+        URI of the Fabric Project
+        """
+        return pulumi.get(self, "href")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        """
+        Project id associated with Fabric Project
+        """
+        return pulumi.get(self, "project_id")
+
+
+@pulumi.output_type
+class GetRouteFiltersFilterResult(dict):
+    def __init__(__self__, *,
+                 operator: str,
+                 property: str,
+                 values: Sequence[str]):
+        """
+        :param str operator: Possible operators to use on the filter property. Can be one of the following: [ "=", "!=", "[NOT] LIKE", "[NOT] IN", "ILIKE" ]
+        :param str property: The API response property which you want to filter your request on. Can be one of the following: "/type", "/name", "/project/projectId", "/uuid", "/state"
+        :param Sequence[str] values: The values that you want to apply the property+operator combination to in order to filter your data search
+        """
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "property", property)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        """
+        Possible operators to use on the filter property. Can be one of the following: [ "=", "!=", "[NOT] LIKE", "[NOT] IN", "ILIKE" ]
+        """
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        The values that you want to apply the property+operator combination to in order to filter your data search
+        """
+        return pulumi.get(self, "values")
+
+    @property
+    @pulumi.getter
+    def property(self) -> str:
+        """
+        The API response property which you want to filter your request on. Can be one of the following: "/type", "/name", "/project/projectId", "/uuid", "/state"
+        """
+        return pulumi.get(self, "property")
+
+
+@pulumi.output_type
+class GetRouteFiltersPaginationResult(dict):
+    def __init__(__self__, *,
+                 limit: int,
+                 next: str,
+                 offset: int,
+                 previous: str,
+                 total: int):
+        """
+        :param int limit: Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+        :param str next: URL relative to the last item in the response.
+        :param int offset: The page offset for the pagination request. Index of the first element. Default is 0.
+        :param str previous: URL relative to the first item in the response.
+        :param int total: Total number of elements returned.
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "next", next)
+        pulumi.set(__self__, "offset", offset)
+        pulumi.set(__self__, "previous", previous)
+        pulumi.set(__self__, "total", total)
+
+    @property
+    @pulumi.getter
+    def limit(self) -> int:
+        """
+        Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+        """
+        return pulumi.get(self, "limit")
+
+    @property
+    @pulumi.getter
+    def next(self) -> str:
+        """
+        URL relative to the last item in the response.
+        """
+        return pulumi.get(self, "next")
+
+    @property
+    @pulumi.getter
+    def offset(self) -> int:
+        """
+        The page offset for the pagination request. Index of the first element. Default is 0.
+        """
+        return pulumi.get(self, "offset")
+
+    @property
+    @pulumi.getter
+    def previous(self) -> str:
+        """
+        URL relative to the first item in the response.
+        """
+        return pulumi.get(self, "previous")
+
+    @property
+    @pulumi.getter
+    def total(self) -> int:
+        """
+        Total number of elements returned.
+        """
+        return pulumi.get(self, "total")
+
+
+@pulumi.output_type
+class GetRouteFiltersSortResult(dict):
+    def __init__(__self__, *,
+                 direction: Optional[str] = None,
+                 property: Optional[str] = None):
+        """
+        :param str direction: The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+        :param str property: The property name to use in sorting. Can be one of the following: [/type, /uuid, /name, /project/projectId, /state, /notMatchedRuleAction, /connectionsCount, /changeLog/createdDateTime, /changeLog/updatedDateTime], Defaults to /changeLog/updatedDateTime
+        """
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+        if property is not None:
+            pulumi.set(__self__, "property", property)
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[str]:
+        """
+        The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+        """
+        return pulumi.get(self, "direction")
+
+    @property
+    @pulumi.getter
+    def property(self) -> Optional[str]:
+        """
+        The property name to use in sorting. Can be one of the following: [/type, /uuid, /name, /project/projectId, /state, /notMatchedRuleAction, /connectionsCount, /changeLog/createdDateTime, /changeLog/updatedDateTime], Defaults to /changeLog/updatedDateTime
+        """
+        return pulumi.get(self, "property")
 
 
 @pulumi.output_type

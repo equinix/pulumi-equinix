@@ -10246,6 +10246,784 @@ func (o NetworkProjectPtrOutput) ProjectId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type RouteFilterChange struct {
+	// The URI of the previous Route Filter Change
+	Href *string `pulumi:"href"`
+	// Type of change. One of [ "BGP_IPv4_PREFIX_FILTER_UPDATE","BGP_IPv4_PREFIX_FILTER_CREATION","BGP_IPv4_PREFIX_FILTER_DELETION","BGP_IPv6_PREFIX_FILTER_UPDATE","BGP_IPv6_PREFIX_FILTER_CREATION","BGP_IPv6_PREFIX_FILTER_DELETION" ]
+	Type *string `pulumi:"type"`
+	// Unique identifier for the previous change
+	Uuid *string `pulumi:"uuid"`
+}
+
+// RouteFilterChangeInput is an input type that accepts RouteFilterChangeArgs and RouteFilterChangeOutput values.
+// You can construct a concrete instance of `RouteFilterChangeInput` via:
+//
+//	RouteFilterChangeArgs{...}
+type RouteFilterChangeInput interface {
+	pulumi.Input
+
+	ToRouteFilterChangeOutput() RouteFilterChangeOutput
+	ToRouteFilterChangeOutputWithContext(context.Context) RouteFilterChangeOutput
+}
+
+type RouteFilterChangeArgs struct {
+	// The URI of the previous Route Filter Change
+	Href pulumi.StringPtrInput `pulumi:"href"`
+	// Type of change. One of [ "BGP_IPv4_PREFIX_FILTER_UPDATE","BGP_IPv4_PREFIX_FILTER_CREATION","BGP_IPv4_PREFIX_FILTER_DELETION","BGP_IPv6_PREFIX_FILTER_UPDATE","BGP_IPv6_PREFIX_FILTER_CREATION","BGP_IPv6_PREFIX_FILTER_DELETION" ]
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Unique identifier for the previous change
+	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+}
+
+func (RouteFilterChangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteFilterChange)(nil)).Elem()
+}
+
+func (i RouteFilterChangeArgs) ToRouteFilterChangeOutput() RouteFilterChangeOutput {
+	return i.ToRouteFilterChangeOutputWithContext(context.Background())
+}
+
+func (i RouteFilterChangeArgs) ToRouteFilterChangeOutputWithContext(ctx context.Context) RouteFilterChangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteFilterChangeOutput)
+}
+
+// RouteFilterChangeArrayInput is an input type that accepts RouteFilterChangeArray and RouteFilterChangeArrayOutput values.
+// You can construct a concrete instance of `RouteFilterChangeArrayInput` via:
+//
+//	RouteFilterChangeArray{ RouteFilterChangeArgs{...} }
+type RouteFilterChangeArrayInput interface {
+	pulumi.Input
+
+	ToRouteFilterChangeArrayOutput() RouteFilterChangeArrayOutput
+	ToRouteFilterChangeArrayOutputWithContext(context.Context) RouteFilterChangeArrayOutput
+}
+
+type RouteFilterChangeArray []RouteFilterChangeInput
+
+func (RouteFilterChangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouteFilterChange)(nil)).Elem()
+}
+
+func (i RouteFilterChangeArray) ToRouteFilterChangeArrayOutput() RouteFilterChangeArrayOutput {
+	return i.ToRouteFilterChangeArrayOutputWithContext(context.Background())
+}
+
+func (i RouteFilterChangeArray) ToRouteFilterChangeArrayOutputWithContext(ctx context.Context) RouteFilterChangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteFilterChangeArrayOutput)
+}
+
+type RouteFilterChangeOutput struct{ *pulumi.OutputState }
+
+func (RouteFilterChangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteFilterChange)(nil)).Elem()
+}
+
+func (o RouteFilterChangeOutput) ToRouteFilterChangeOutput() RouteFilterChangeOutput {
+	return o
+}
+
+func (o RouteFilterChangeOutput) ToRouteFilterChangeOutputWithContext(ctx context.Context) RouteFilterChangeOutput {
+	return o
+}
+
+// The URI of the previous Route Filter Change
+func (o RouteFilterChangeOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteFilterChange) *string { return v.Href }).(pulumi.StringPtrOutput)
+}
+
+// Type of change. One of [ "BGP_IPv4_PREFIX_FILTER_UPDATE","BGP_IPv4_PREFIX_FILTER_CREATION","BGP_IPv4_PREFIX_FILTER_DELETION","BGP_IPv6_PREFIX_FILTER_UPDATE","BGP_IPv6_PREFIX_FILTER_CREATION","BGP_IPv6_PREFIX_FILTER_DELETION" ]
+func (o RouteFilterChangeOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteFilterChange) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier for the previous change
+func (o RouteFilterChangeOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteFilterChange) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+}
+
+type RouteFilterChangeArrayOutput struct{ *pulumi.OutputState }
+
+func (RouteFilterChangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouteFilterChange)(nil)).Elem()
+}
+
+func (o RouteFilterChangeArrayOutput) ToRouteFilterChangeArrayOutput() RouteFilterChangeArrayOutput {
+	return o
+}
+
+func (o RouteFilterChangeArrayOutput) ToRouteFilterChangeArrayOutputWithContext(ctx context.Context) RouteFilterChangeArrayOutput {
+	return o
+}
+
+func (o RouteFilterChangeArrayOutput) Index(i pulumi.IntInput) RouteFilterChangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouteFilterChange {
+		return vs[0].([]RouteFilterChange)[vs[1].(int)]
+	}).(RouteFilterChangeOutput)
+}
+
+type RouteFilterChangeLog struct {
+	// Created by User Key
+	CreatedBy *string `pulumi:"createdBy"`
+	// Created by User Email Address
+	CreatedByEmail *string `pulumi:"createdByEmail"`
+	// Created by User Full Name
+	CreatedByFullName *string `pulumi:"createdByFullName"`
+	// Created by Date and Time
+	CreatedDateTime *string `pulumi:"createdDateTime"`
+	// Deleted by User Key
+	DeletedBy *string `pulumi:"deletedBy"`
+	// Deleted by User Email Address
+	DeletedByEmail *string `pulumi:"deletedByEmail"`
+	// Deleted by User Full Name
+	DeletedByFullName *string `pulumi:"deletedByFullName"`
+	// Deleted by Date and Time
+	DeletedDateTime *string `pulumi:"deletedDateTime"`
+	// Updated by User Key
+	UpdatedBy *string `pulumi:"updatedBy"`
+	// Updated by User Email Address
+	UpdatedByEmail *string `pulumi:"updatedByEmail"`
+	// Updated by User Full Name
+	UpdatedByFullName *string `pulumi:"updatedByFullName"`
+	// Updated by Date and Time
+	UpdatedDateTime *string `pulumi:"updatedDateTime"`
+}
+
+// RouteFilterChangeLogInput is an input type that accepts RouteFilterChangeLogArgs and RouteFilterChangeLogOutput values.
+// You can construct a concrete instance of `RouteFilterChangeLogInput` via:
+//
+//	RouteFilterChangeLogArgs{...}
+type RouteFilterChangeLogInput interface {
+	pulumi.Input
+
+	ToRouteFilterChangeLogOutput() RouteFilterChangeLogOutput
+	ToRouteFilterChangeLogOutputWithContext(context.Context) RouteFilterChangeLogOutput
+}
+
+type RouteFilterChangeLogArgs struct {
+	// Created by User Key
+	CreatedBy pulumi.StringPtrInput `pulumi:"createdBy"`
+	// Created by User Email Address
+	CreatedByEmail pulumi.StringPtrInput `pulumi:"createdByEmail"`
+	// Created by User Full Name
+	CreatedByFullName pulumi.StringPtrInput `pulumi:"createdByFullName"`
+	// Created by Date and Time
+	CreatedDateTime pulumi.StringPtrInput `pulumi:"createdDateTime"`
+	// Deleted by User Key
+	DeletedBy pulumi.StringPtrInput `pulumi:"deletedBy"`
+	// Deleted by User Email Address
+	DeletedByEmail pulumi.StringPtrInput `pulumi:"deletedByEmail"`
+	// Deleted by User Full Name
+	DeletedByFullName pulumi.StringPtrInput `pulumi:"deletedByFullName"`
+	// Deleted by Date and Time
+	DeletedDateTime pulumi.StringPtrInput `pulumi:"deletedDateTime"`
+	// Updated by User Key
+	UpdatedBy pulumi.StringPtrInput `pulumi:"updatedBy"`
+	// Updated by User Email Address
+	UpdatedByEmail pulumi.StringPtrInput `pulumi:"updatedByEmail"`
+	// Updated by User Full Name
+	UpdatedByFullName pulumi.StringPtrInput `pulumi:"updatedByFullName"`
+	// Updated by Date and Time
+	UpdatedDateTime pulumi.StringPtrInput `pulumi:"updatedDateTime"`
+}
+
+func (RouteFilterChangeLogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteFilterChangeLog)(nil)).Elem()
+}
+
+func (i RouteFilterChangeLogArgs) ToRouteFilterChangeLogOutput() RouteFilterChangeLogOutput {
+	return i.ToRouteFilterChangeLogOutputWithContext(context.Background())
+}
+
+func (i RouteFilterChangeLogArgs) ToRouteFilterChangeLogOutputWithContext(ctx context.Context) RouteFilterChangeLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteFilterChangeLogOutput)
+}
+
+// RouteFilterChangeLogArrayInput is an input type that accepts RouteFilterChangeLogArray and RouteFilterChangeLogArrayOutput values.
+// You can construct a concrete instance of `RouteFilterChangeLogArrayInput` via:
+//
+//	RouteFilterChangeLogArray{ RouteFilterChangeLogArgs{...} }
+type RouteFilterChangeLogArrayInput interface {
+	pulumi.Input
+
+	ToRouteFilterChangeLogArrayOutput() RouteFilterChangeLogArrayOutput
+	ToRouteFilterChangeLogArrayOutputWithContext(context.Context) RouteFilterChangeLogArrayOutput
+}
+
+type RouteFilterChangeLogArray []RouteFilterChangeLogInput
+
+func (RouteFilterChangeLogArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouteFilterChangeLog)(nil)).Elem()
+}
+
+func (i RouteFilterChangeLogArray) ToRouteFilterChangeLogArrayOutput() RouteFilterChangeLogArrayOutput {
+	return i.ToRouteFilterChangeLogArrayOutputWithContext(context.Background())
+}
+
+func (i RouteFilterChangeLogArray) ToRouteFilterChangeLogArrayOutputWithContext(ctx context.Context) RouteFilterChangeLogArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteFilterChangeLogArrayOutput)
+}
+
+type RouteFilterChangeLogOutput struct{ *pulumi.OutputState }
+
+func (RouteFilterChangeLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteFilterChangeLog)(nil)).Elem()
+}
+
+func (o RouteFilterChangeLogOutput) ToRouteFilterChangeLogOutput() RouteFilterChangeLogOutput {
+	return o
+}
+
+func (o RouteFilterChangeLogOutput) ToRouteFilterChangeLogOutputWithContext(ctx context.Context) RouteFilterChangeLogOutput {
+	return o
+}
+
+// Created by User Key
+func (o RouteFilterChangeLogOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteFilterChangeLog) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+}
+
+// Created by User Email Address
+func (o RouteFilterChangeLogOutput) CreatedByEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteFilterChangeLog) *string { return v.CreatedByEmail }).(pulumi.StringPtrOutput)
+}
+
+// Created by User Full Name
+func (o RouteFilterChangeLogOutput) CreatedByFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteFilterChangeLog) *string { return v.CreatedByFullName }).(pulumi.StringPtrOutput)
+}
+
+// Created by Date and Time
+func (o RouteFilterChangeLogOutput) CreatedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteFilterChangeLog) *string { return v.CreatedDateTime }).(pulumi.StringPtrOutput)
+}
+
+// Deleted by User Key
+func (o RouteFilterChangeLogOutput) DeletedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteFilterChangeLog) *string { return v.DeletedBy }).(pulumi.StringPtrOutput)
+}
+
+// Deleted by User Email Address
+func (o RouteFilterChangeLogOutput) DeletedByEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteFilterChangeLog) *string { return v.DeletedByEmail }).(pulumi.StringPtrOutput)
+}
+
+// Deleted by User Full Name
+func (o RouteFilterChangeLogOutput) DeletedByFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteFilterChangeLog) *string { return v.DeletedByFullName }).(pulumi.StringPtrOutput)
+}
+
+// Deleted by Date and Time
+func (o RouteFilterChangeLogOutput) DeletedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteFilterChangeLog) *string { return v.DeletedDateTime }).(pulumi.StringPtrOutput)
+}
+
+// Updated by User Key
+func (o RouteFilterChangeLogOutput) UpdatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteFilterChangeLog) *string { return v.UpdatedBy }).(pulumi.StringPtrOutput)
+}
+
+// Updated by User Email Address
+func (o RouteFilterChangeLogOutput) UpdatedByEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteFilterChangeLog) *string { return v.UpdatedByEmail }).(pulumi.StringPtrOutput)
+}
+
+// Updated by User Full Name
+func (o RouteFilterChangeLogOutput) UpdatedByFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteFilterChangeLog) *string { return v.UpdatedByFullName }).(pulumi.StringPtrOutput)
+}
+
+// Updated by Date and Time
+func (o RouteFilterChangeLogOutput) UpdatedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteFilterChangeLog) *string { return v.UpdatedDateTime }).(pulumi.StringPtrOutput)
+}
+
+type RouteFilterChangeLogArrayOutput struct{ *pulumi.OutputState }
+
+func (RouteFilterChangeLogArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouteFilterChangeLog)(nil)).Elem()
+}
+
+func (o RouteFilterChangeLogArrayOutput) ToRouteFilterChangeLogArrayOutput() RouteFilterChangeLogArrayOutput {
+	return o
+}
+
+func (o RouteFilterChangeLogArrayOutput) ToRouteFilterChangeLogArrayOutputWithContext(ctx context.Context) RouteFilterChangeLogArrayOutput {
+	return o
+}
+
+func (o RouteFilterChangeLogArrayOutput) Index(i pulumi.IntInput) RouteFilterChangeLogOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouteFilterChangeLog {
+		return vs[0].([]RouteFilterChangeLog)[vs[1].(int)]
+	}).(RouteFilterChangeLogOutput)
+}
+
+type RouteFilterProject struct {
+	// URI of the Fabric Project
+	Href *string `pulumi:"href"`
+	// Project id associated with Fabric Project
+	ProjectId string `pulumi:"projectId"`
+}
+
+// RouteFilterProjectInput is an input type that accepts RouteFilterProjectArgs and RouteFilterProjectOutput values.
+// You can construct a concrete instance of `RouteFilterProjectInput` via:
+//
+//	RouteFilterProjectArgs{...}
+type RouteFilterProjectInput interface {
+	pulumi.Input
+
+	ToRouteFilterProjectOutput() RouteFilterProjectOutput
+	ToRouteFilterProjectOutputWithContext(context.Context) RouteFilterProjectOutput
+}
+
+type RouteFilterProjectArgs struct {
+	// URI of the Fabric Project
+	Href pulumi.StringPtrInput `pulumi:"href"`
+	// Project id associated with Fabric Project
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+}
+
+func (RouteFilterProjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteFilterProject)(nil)).Elem()
+}
+
+func (i RouteFilterProjectArgs) ToRouteFilterProjectOutput() RouteFilterProjectOutput {
+	return i.ToRouteFilterProjectOutputWithContext(context.Background())
+}
+
+func (i RouteFilterProjectArgs) ToRouteFilterProjectOutputWithContext(ctx context.Context) RouteFilterProjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteFilterProjectOutput)
+}
+
+func (i RouteFilterProjectArgs) ToRouteFilterProjectPtrOutput() RouteFilterProjectPtrOutput {
+	return i.ToRouteFilterProjectPtrOutputWithContext(context.Background())
+}
+
+func (i RouteFilterProjectArgs) ToRouteFilterProjectPtrOutputWithContext(ctx context.Context) RouteFilterProjectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteFilterProjectOutput).ToRouteFilterProjectPtrOutputWithContext(ctx)
+}
+
+// RouteFilterProjectPtrInput is an input type that accepts RouteFilterProjectArgs, RouteFilterProjectPtr and RouteFilterProjectPtrOutput values.
+// You can construct a concrete instance of `RouteFilterProjectPtrInput` via:
+//
+//	        RouteFilterProjectArgs{...}
+//
+//	or:
+//
+//	        nil
+type RouteFilterProjectPtrInput interface {
+	pulumi.Input
+
+	ToRouteFilterProjectPtrOutput() RouteFilterProjectPtrOutput
+	ToRouteFilterProjectPtrOutputWithContext(context.Context) RouteFilterProjectPtrOutput
+}
+
+type routeFilterProjectPtrType RouteFilterProjectArgs
+
+func RouteFilterProjectPtr(v *RouteFilterProjectArgs) RouteFilterProjectPtrInput {
+	return (*routeFilterProjectPtrType)(v)
+}
+
+func (*routeFilterProjectPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouteFilterProject)(nil)).Elem()
+}
+
+func (i *routeFilterProjectPtrType) ToRouteFilterProjectPtrOutput() RouteFilterProjectPtrOutput {
+	return i.ToRouteFilterProjectPtrOutputWithContext(context.Background())
+}
+
+func (i *routeFilterProjectPtrType) ToRouteFilterProjectPtrOutputWithContext(ctx context.Context) RouteFilterProjectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteFilterProjectPtrOutput)
+}
+
+type RouteFilterProjectOutput struct{ *pulumi.OutputState }
+
+func (RouteFilterProjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteFilterProject)(nil)).Elem()
+}
+
+func (o RouteFilterProjectOutput) ToRouteFilterProjectOutput() RouteFilterProjectOutput {
+	return o
+}
+
+func (o RouteFilterProjectOutput) ToRouteFilterProjectOutputWithContext(ctx context.Context) RouteFilterProjectOutput {
+	return o
+}
+
+func (o RouteFilterProjectOutput) ToRouteFilterProjectPtrOutput() RouteFilterProjectPtrOutput {
+	return o.ToRouteFilterProjectPtrOutputWithContext(context.Background())
+}
+
+func (o RouteFilterProjectOutput) ToRouteFilterProjectPtrOutputWithContext(ctx context.Context) RouteFilterProjectPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RouteFilterProject) *RouteFilterProject {
+		return &v
+	}).(RouteFilterProjectPtrOutput)
+}
+
+// URI of the Fabric Project
+func (o RouteFilterProjectOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteFilterProject) *string { return v.Href }).(pulumi.StringPtrOutput)
+}
+
+// Project id associated with Fabric Project
+func (o RouteFilterProjectOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v RouteFilterProject) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+type RouteFilterProjectPtrOutput struct{ *pulumi.OutputState }
+
+func (RouteFilterProjectPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouteFilterProject)(nil)).Elem()
+}
+
+func (o RouteFilterProjectPtrOutput) ToRouteFilterProjectPtrOutput() RouteFilterProjectPtrOutput {
+	return o
+}
+
+func (o RouteFilterProjectPtrOutput) ToRouteFilterProjectPtrOutputWithContext(ctx context.Context) RouteFilterProjectPtrOutput {
+	return o
+}
+
+func (o RouteFilterProjectPtrOutput) Elem() RouteFilterProjectOutput {
+	return o.ApplyT(func(v *RouteFilterProject) RouteFilterProject {
+		if v != nil {
+			return *v
+		}
+		var ret RouteFilterProject
+		return ret
+	}).(RouteFilterProjectOutput)
+}
+
+// URI of the Fabric Project
+func (o RouteFilterProjectPtrOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteFilterProject) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Href
+	}).(pulumi.StringPtrOutput)
+}
+
+// Project id associated with Fabric Project
+func (o RouteFilterProjectPtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteFilterProject) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+type RouteFilterRuleChange struct {
+	// The URI of the previous Route Filter Rule Change
+	Href *string `pulumi:"href"`
+	// Type of change. One of [ "BGP_IPv4_PREFIX_FILTER_RULE_UPDATE","BGP_IPv4_PREFIX_FILTER_RULE_CREATION","BGP_IPv4_PREFIX_FILTER_RULE_DELETION","BGP_IPv6_PREFIX_FILTER_RULE_UPDATE","BGP_IPv6_PREFIX_FILTER_RULE_CREATION","BGP_IPv6_PREFIX_FILTER_RULE_DELETION" ]
+	Type *string `pulumi:"type"`
+	// Unique identifier for the previous change
+	Uuid *string `pulumi:"uuid"`
+}
+
+// RouteFilterRuleChangeInput is an input type that accepts RouteFilterRuleChangeArgs and RouteFilterRuleChangeOutput values.
+// You can construct a concrete instance of `RouteFilterRuleChangeInput` via:
+//
+//	RouteFilterRuleChangeArgs{...}
+type RouteFilterRuleChangeInput interface {
+	pulumi.Input
+
+	ToRouteFilterRuleChangeOutput() RouteFilterRuleChangeOutput
+	ToRouteFilterRuleChangeOutputWithContext(context.Context) RouteFilterRuleChangeOutput
+}
+
+type RouteFilterRuleChangeArgs struct {
+	// The URI of the previous Route Filter Rule Change
+	Href pulumi.StringPtrInput `pulumi:"href"`
+	// Type of change. One of [ "BGP_IPv4_PREFIX_FILTER_RULE_UPDATE","BGP_IPv4_PREFIX_FILTER_RULE_CREATION","BGP_IPv4_PREFIX_FILTER_RULE_DELETION","BGP_IPv6_PREFIX_FILTER_RULE_UPDATE","BGP_IPv6_PREFIX_FILTER_RULE_CREATION","BGP_IPv6_PREFIX_FILTER_RULE_DELETION" ]
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Unique identifier for the previous change
+	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+}
+
+func (RouteFilterRuleChangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteFilterRuleChange)(nil)).Elem()
+}
+
+func (i RouteFilterRuleChangeArgs) ToRouteFilterRuleChangeOutput() RouteFilterRuleChangeOutput {
+	return i.ToRouteFilterRuleChangeOutputWithContext(context.Background())
+}
+
+func (i RouteFilterRuleChangeArgs) ToRouteFilterRuleChangeOutputWithContext(ctx context.Context) RouteFilterRuleChangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteFilterRuleChangeOutput)
+}
+
+// RouteFilterRuleChangeArrayInput is an input type that accepts RouteFilterRuleChangeArray and RouteFilterRuleChangeArrayOutput values.
+// You can construct a concrete instance of `RouteFilterRuleChangeArrayInput` via:
+//
+//	RouteFilterRuleChangeArray{ RouteFilterRuleChangeArgs{...} }
+type RouteFilterRuleChangeArrayInput interface {
+	pulumi.Input
+
+	ToRouteFilterRuleChangeArrayOutput() RouteFilterRuleChangeArrayOutput
+	ToRouteFilterRuleChangeArrayOutputWithContext(context.Context) RouteFilterRuleChangeArrayOutput
+}
+
+type RouteFilterRuleChangeArray []RouteFilterRuleChangeInput
+
+func (RouteFilterRuleChangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouteFilterRuleChange)(nil)).Elem()
+}
+
+func (i RouteFilterRuleChangeArray) ToRouteFilterRuleChangeArrayOutput() RouteFilterRuleChangeArrayOutput {
+	return i.ToRouteFilterRuleChangeArrayOutputWithContext(context.Background())
+}
+
+func (i RouteFilterRuleChangeArray) ToRouteFilterRuleChangeArrayOutputWithContext(ctx context.Context) RouteFilterRuleChangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteFilterRuleChangeArrayOutput)
+}
+
+type RouteFilterRuleChangeOutput struct{ *pulumi.OutputState }
+
+func (RouteFilterRuleChangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteFilterRuleChange)(nil)).Elem()
+}
+
+func (o RouteFilterRuleChangeOutput) ToRouteFilterRuleChangeOutput() RouteFilterRuleChangeOutput {
+	return o
+}
+
+func (o RouteFilterRuleChangeOutput) ToRouteFilterRuleChangeOutputWithContext(ctx context.Context) RouteFilterRuleChangeOutput {
+	return o
+}
+
+// The URI of the previous Route Filter Rule Change
+func (o RouteFilterRuleChangeOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteFilterRuleChange) *string { return v.Href }).(pulumi.StringPtrOutput)
+}
+
+// Type of change. One of [ "BGP_IPv4_PREFIX_FILTER_RULE_UPDATE","BGP_IPv4_PREFIX_FILTER_RULE_CREATION","BGP_IPv4_PREFIX_FILTER_RULE_DELETION","BGP_IPv6_PREFIX_FILTER_RULE_UPDATE","BGP_IPv6_PREFIX_FILTER_RULE_CREATION","BGP_IPv6_PREFIX_FILTER_RULE_DELETION" ]
+func (o RouteFilterRuleChangeOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteFilterRuleChange) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier for the previous change
+func (o RouteFilterRuleChangeOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteFilterRuleChange) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+}
+
+type RouteFilterRuleChangeArrayOutput struct{ *pulumi.OutputState }
+
+func (RouteFilterRuleChangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouteFilterRuleChange)(nil)).Elem()
+}
+
+func (o RouteFilterRuleChangeArrayOutput) ToRouteFilterRuleChangeArrayOutput() RouteFilterRuleChangeArrayOutput {
+	return o
+}
+
+func (o RouteFilterRuleChangeArrayOutput) ToRouteFilterRuleChangeArrayOutputWithContext(ctx context.Context) RouteFilterRuleChangeArrayOutput {
+	return o
+}
+
+func (o RouteFilterRuleChangeArrayOutput) Index(i pulumi.IntInput) RouteFilterRuleChangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouteFilterRuleChange {
+		return vs[0].([]RouteFilterRuleChange)[vs[1].(int)]
+	}).(RouteFilterRuleChangeOutput)
+}
+
+type RouteFilterRuleChangeLog struct {
+	// Created by User Key
+	CreatedBy *string `pulumi:"createdBy"`
+	// Created by User Email Address
+	CreatedByEmail *string `pulumi:"createdByEmail"`
+	// Created by User Full Name
+	CreatedByFullName *string `pulumi:"createdByFullName"`
+	// Created by Date and Time
+	CreatedDateTime *string `pulumi:"createdDateTime"`
+	// Deleted by User Key
+	DeletedBy *string `pulumi:"deletedBy"`
+	// Deleted by User Email Address
+	DeletedByEmail *string `pulumi:"deletedByEmail"`
+	// Deleted by User Full Name
+	DeletedByFullName *string `pulumi:"deletedByFullName"`
+	// Deleted by Date and Time
+	DeletedDateTime *string `pulumi:"deletedDateTime"`
+	// Updated by User Key
+	UpdatedBy *string `pulumi:"updatedBy"`
+	// Updated by User Email Address
+	UpdatedByEmail *string `pulumi:"updatedByEmail"`
+	// Updated by User Full Name
+	UpdatedByFullName *string `pulumi:"updatedByFullName"`
+	// Updated by Date and Time
+	UpdatedDateTime *string `pulumi:"updatedDateTime"`
+}
+
+// RouteFilterRuleChangeLogInput is an input type that accepts RouteFilterRuleChangeLogArgs and RouteFilterRuleChangeLogOutput values.
+// You can construct a concrete instance of `RouteFilterRuleChangeLogInput` via:
+//
+//	RouteFilterRuleChangeLogArgs{...}
+type RouteFilterRuleChangeLogInput interface {
+	pulumi.Input
+
+	ToRouteFilterRuleChangeLogOutput() RouteFilterRuleChangeLogOutput
+	ToRouteFilterRuleChangeLogOutputWithContext(context.Context) RouteFilterRuleChangeLogOutput
+}
+
+type RouteFilterRuleChangeLogArgs struct {
+	// Created by User Key
+	CreatedBy pulumi.StringPtrInput `pulumi:"createdBy"`
+	// Created by User Email Address
+	CreatedByEmail pulumi.StringPtrInput `pulumi:"createdByEmail"`
+	// Created by User Full Name
+	CreatedByFullName pulumi.StringPtrInput `pulumi:"createdByFullName"`
+	// Created by Date and Time
+	CreatedDateTime pulumi.StringPtrInput `pulumi:"createdDateTime"`
+	// Deleted by User Key
+	DeletedBy pulumi.StringPtrInput `pulumi:"deletedBy"`
+	// Deleted by User Email Address
+	DeletedByEmail pulumi.StringPtrInput `pulumi:"deletedByEmail"`
+	// Deleted by User Full Name
+	DeletedByFullName pulumi.StringPtrInput `pulumi:"deletedByFullName"`
+	// Deleted by Date and Time
+	DeletedDateTime pulumi.StringPtrInput `pulumi:"deletedDateTime"`
+	// Updated by User Key
+	UpdatedBy pulumi.StringPtrInput `pulumi:"updatedBy"`
+	// Updated by User Email Address
+	UpdatedByEmail pulumi.StringPtrInput `pulumi:"updatedByEmail"`
+	// Updated by User Full Name
+	UpdatedByFullName pulumi.StringPtrInput `pulumi:"updatedByFullName"`
+	// Updated by Date and Time
+	UpdatedDateTime pulumi.StringPtrInput `pulumi:"updatedDateTime"`
+}
+
+func (RouteFilterRuleChangeLogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteFilterRuleChangeLog)(nil)).Elem()
+}
+
+func (i RouteFilterRuleChangeLogArgs) ToRouteFilterRuleChangeLogOutput() RouteFilterRuleChangeLogOutput {
+	return i.ToRouteFilterRuleChangeLogOutputWithContext(context.Background())
+}
+
+func (i RouteFilterRuleChangeLogArgs) ToRouteFilterRuleChangeLogOutputWithContext(ctx context.Context) RouteFilterRuleChangeLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteFilterRuleChangeLogOutput)
+}
+
+// RouteFilterRuleChangeLogArrayInput is an input type that accepts RouteFilterRuleChangeLogArray and RouteFilterRuleChangeLogArrayOutput values.
+// You can construct a concrete instance of `RouteFilterRuleChangeLogArrayInput` via:
+//
+//	RouteFilterRuleChangeLogArray{ RouteFilterRuleChangeLogArgs{...} }
+type RouteFilterRuleChangeLogArrayInput interface {
+	pulumi.Input
+
+	ToRouteFilterRuleChangeLogArrayOutput() RouteFilterRuleChangeLogArrayOutput
+	ToRouteFilterRuleChangeLogArrayOutputWithContext(context.Context) RouteFilterRuleChangeLogArrayOutput
+}
+
+type RouteFilterRuleChangeLogArray []RouteFilterRuleChangeLogInput
+
+func (RouteFilterRuleChangeLogArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouteFilterRuleChangeLog)(nil)).Elem()
+}
+
+func (i RouteFilterRuleChangeLogArray) ToRouteFilterRuleChangeLogArrayOutput() RouteFilterRuleChangeLogArrayOutput {
+	return i.ToRouteFilterRuleChangeLogArrayOutputWithContext(context.Background())
+}
+
+func (i RouteFilterRuleChangeLogArray) ToRouteFilterRuleChangeLogArrayOutputWithContext(ctx context.Context) RouteFilterRuleChangeLogArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteFilterRuleChangeLogArrayOutput)
+}
+
+type RouteFilterRuleChangeLogOutput struct{ *pulumi.OutputState }
+
+func (RouteFilterRuleChangeLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteFilterRuleChangeLog)(nil)).Elem()
+}
+
+func (o RouteFilterRuleChangeLogOutput) ToRouteFilterRuleChangeLogOutput() RouteFilterRuleChangeLogOutput {
+	return o
+}
+
+func (o RouteFilterRuleChangeLogOutput) ToRouteFilterRuleChangeLogOutputWithContext(ctx context.Context) RouteFilterRuleChangeLogOutput {
+	return o
+}
+
+// Created by User Key
+func (o RouteFilterRuleChangeLogOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteFilterRuleChangeLog) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+}
+
+// Created by User Email Address
+func (o RouteFilterRuleChangeLogOutput) CreatedByEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteFilterRuleChangeLog) *string { return v.CreatedByEmail }).(pulumi.StringPtrOutput)
+}
+
+// Created by User Full Name
+func (o RouteFilterRuleChangeLogOutput) CreatedByFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteFilterRuleChangeLog) *string { return v.CreatedByFullName }).(pulumi.StringPtrOutput)
+}
+
+// Created by Date and Time
+func (o RouteFilterRuleChangeLogOutput) CreatedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteFilterRuleChangeLog) *string { return v.CreatedDateTime }).(pulumi.StringPtrOutput)
+}
+
+// Deleted by User Key
+func (o RouteFilterRuleChangeLogOutput) DeletedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteFilterRuleChangeLog) *string { return v.DeletedBy }).(pulumi.StringPtrOutput)
+}
+
+// Deleted by User Email Address
+func (o RouteFilterRuleChangeLogOutput) DeletedByEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteFilterRuleChangeLog) *string { return v.DeletedByEmail }).(pulumi.StringPtrOutput)
+}
+
+// Deleted by User Full Name
+func (o RouteFilterRuleChangeLogOutput) DeletedByFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteFilterRuleChangeLog) *string { return v.DeletedByFullName }).(pulumi.StringPtrOutput)
+}
+
+// Deleted by Date and Time
+func (o RouteFilterRuleChangeLogOutput) DeletedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteFilterRuleChangeLog) *string { return v.DeletedDateTime }).(pulumi.StringPtrOutput)
+}
+
+// Updated by User Key
+func (o RouteFilterRuleChangeLogOutput) UpdatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteFilterRuleChangeLog) *string { return v.UpdatedBy }).(pulumi.StringPtrOutput)
+}
+
+// Updated by User Email Address
+func (o RouteFilterRuleChangeLogOutput) UpdatedByEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteFilterRuleChangeLog) *string { return v.UpdatedByEmail }).(pulumi.StringPtrOutput)
+}
+
+// Updated by User Full Name
+func (o RouteFilterRuleChangeLogOutput) UpdatedByFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteFilterRuleChangeLog) *string { return v.UpdatedByFullName }).(pulumi.StringPtrOutput)
+}
+
+// Updated by Date and Time
+func (o RouteFilterRuleChangeLogOutput) UpdatedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteFilterRuleChangeLog) *string { return v.UpdatedDateTime }).(pulumi.StringPtrOutput)
+}
+
+type RouteFilterRuleChangeLogArrayOutput struct{ *pulumi.OutputState }
+
+func (RouteFilterRuleChangeLogArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouteFilterRuleChangeLog)(nil)).Elem()
+}
+
+func (o RouteFilterRuleChangeLogArrayOutput) ToRouteFilterRuleChangeLogArrayOutput() RouteFilterRuleChangeLogArrayOutput {
+	return o
+}
+
+func (o RouteFilterRuleChangeLogArrayOutput) ToRouteFilterRuleChangeLogArrayOutputWithContext(ctx context.Context) RouteFilterRuleChangeLogArrayOutput {
+	return o
+}
+
+func (o RouteFilterRuleChangeLogArrayOutput) Index(i pulumi.IntInput) RouteFilterRuleChangeLogOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouteFilterRuleChangeLog {
+		return vs[0].([]RouteFilterRuleChangeLog)[vs[1].(int)]
+	}).(RouteFilterRuleChangeLogOutput)
+}
+
 type RoutingProtocolBfd struct {
 	// Bidirectional Forwarding Detection enablement
 	Enabled bool `pulumi:"enabled"`
@@ -21091,6 +21869,272 @@ func (o GetConnectionRedundancyOutput) Group() pulumi.StringOutput {
 // Connection priority in redundancy group - PRIMARY, SECONDARY
 func (o GetConnectionRedundancyOutput) Priority() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionRedundancy) string { return v.Priority }).(pulumi.StringOutput)
+}
+
+type GetConnectionRouteFiltersData struct {
+	// Status of the Route Filter Policy attachment lifecycle
+	AttachmentStatus string `pulumi:"attachmentStatus"`
+	// Direction of the filtering of the attached Route Filter Policy
+	Direction string `pulumi:"direction"`
+	// URI to the attached Route Filter Policy on the Connection
+	Href string `pulumi:"href"`
+	// Route Filter Type. One of [ "BGP_IPv4_PREFIX_FILTER", "BGP_IPv6_PREFIX_FILTER" ]
+	Type string `pulumi:"type"`
+	// Equinix Assigned ID for Route Filter Policy
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetConnectionRouteFiltersDataInput is an input type that accepts GetConnectionRouteFiltersDataArgs and GetConnectionRouteFiltersDataOutput values.
+// You can construct a concrete instance of `GetConnectionRouteFiltersDataInput` via:
+//
+//	GetConnectionRouteFiltersDataArgs{...}
+type GetConnectionRouteFiltersDataInput interface {
+	pulumi.Input
+
+	ToGetConnectionRouteFiltersDataOutput() GetConnectionRouteFiltersDataOutput
+	ToGetConnectionRouteFiltersDataOutputWithContext(context.Context) GetConnectionRouteFiltersDataOutput
+}
+
+type GetConnectionRouteFiltersDataArgs struct {
+	// Status of the Route Filter Policy attachment lifecycle
+	AttachmentStatus pulumi.StringInput `pulumi:"attachmentStatus"`
+	// Direction of the filtering of the attached Route Filter Policy
+	Direction pulumi.StringInput `pulumi:"direction"`
+	// URI to the attached Route Filter Policy on the Connection
+	Href pulumi.StringInput `pulumi:"href"`
+	// Route Filter Type. One of [ "BGP_IPv4_PREFIX_FILTER", "BGP_IPv6_PREFIX_FILTER" ]
+	Type pulumi.StringInput `pulumi:"type"`
+	// Equinix Assigned ID for Route Filter Policy
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetConnectionRouteFiltersDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionRouteFiltersData)(nil)).Elem()
+}
+
+func (i GetConnectionRouteFiltersDataArgs) ToGetConnectionRouteFiltersDataOutput() GetConnectionRouteFiltersDataOutput {
+	return i.ToGetConnectionRouteFiltersDataOutputWithContext(context.Background())
+}
+
+func (i GetConnectionRouteFiltersDataArgs) ToGetConnectionRouteFiltersDataOutputWithContext(ctx context.Context) GetConnectionRouteFiltersDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionRouteFiltersDataOutput)
+}
+
+// GetConnectionRouteFiltersDataArrayInput is an input type that accepts GetConnectionRouteFiltersDataArray and GetConnectionRouteFiltersDataArrayOutput values.
+// You can construct a concrete instance of `GetConnectionRouteFiltersDataArrayInput` via:
+//
+//	GetConnectionRouteFiltersDataArray{ GetConnectionRouteFiltersDataArgs{...} }
+type GetConnectionRouteFiltersDataArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionRouteFiltersDataArrayOutput() GetConnectionRouteFiltersDataArrayOutput
+	ToGetConnectionRouteFiltersDataArrayOutputWithContext(context.Context) GetConnectionRouteFiltersDataArrayOutput
+}
+
+type GetConnectionRouteFiltersDataArray []GetConnectionRouteFiltersDataInput
+
+func (GetConnectionRouteFiltersDataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionRouteFiltersData)(nil)).Elem()
+}
+
+func (i GetConnectionRouteFiltersDataArray) ToGetConnectionRouteFiltersDataArrayOutput() GetConnectionRouteFiltersDataArrayOutput {
+	return i.ToGetConnectionRouteFiltersDataArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionRouteFiltersDataArray) ToGetConnectionRouteFiltersDataArrayOutputWithContext(ctx context.Context) GetConnectionRouteFiltersDataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionRouteFiltersDataArrayOutput)
+}
+
+type GetConnectionRouteFiltersDataOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionRouteFiltersDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionRouteFiltersData)(nil)).Elem()
+}
+
+func (o GetConnectionRouteFiltersDataOutput) ToGetConnectionRouteFiltersDataOutput() GetConnectionRouteFiltersDataOutput {
+	return o
+}
+
+func (o GetConnectionRouteFiltersDataOutput) ToGetConnectionRouteFiltersDataOutputWithContext(ctx context.Context) GetConnectionRouteFiltersDataOutput {
+	return o
+}
+
+// Status of the Route Filter Policy attachment lifecycle
+func (o GetConnectionRouteFiltersDataOutput) AttachmentStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionRouteFiltersData) string { return v.AttachmentStatus }).(pulumi.StringOutput)
+}
+
+// Direction of the filtering of the attached Route Filter Policy
+func (o GetConnectionRouteFiltersDataOutput) Direction() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionRouteFiltersData) string { return v.Direction }).(pulumi.StringOutput)
+}
+
+// URI to the attached Route Filter Policy on the Connection
+func (o GetConnectionRouteFiltersDataOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionRouteFiltersData) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// Route Filter Type. One of [ "BGP_IPv4_PREFIX_FILTER", "BGP_IPv6_PREFIX_FILTER" ]
+func (o GetConnectionRouteFiltersDataOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionRouteFiltersData) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Equinix Assigned ID for Route Filter Policy
+func (o GetConnectionRouteFiltersDataOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionRouteFiltersData) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type GetConnectionRouteFiltersDataArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionRouteFiltersDataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionRouteFiltersData)(nil)).Elem()
+}
+
+func (o GetConnectionRouteFiltersDataArrayOutput) ToGetConnectionRouteFiltersDataArrayOutput() GetConnectionRouteFiltersDataArrayOutput {
+	return o
+}
+
+func (o GetConnectionRouteFiltersDataArrayOutput) ToGetConnectionRouteFiltersDataArrayOutputWithContext(ctx context.Context) GetConnectionRouteFiltersDataArrayOutput {
+	return o
+}
+
+func (o GetConnectionRouteFiltersDataArrayOutput) Index(i pulumi.IntInput) GetConnectionRouteFiltersDataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionRouteFiltersData {
+		return vs[0].([]GetConnectionRouteFiltersData)[vs[1].(int)]
+	}).(GetConnectionRouteFiltersDataOutput)
+}
+
+type GetConnectionRouteFiltersPagination struct {
+	// Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+	Limit int `pulumi:"limit"`
+	// URL relative to the last item in the response.
+	Next string `pulumi:"next"`
+	// The page offset for the pagination request. Index of the first element. Default is 0.
+	Offset int `pulumi:"offset"`
+	// URL relative to the first item in the response.
+	Previous string `pulumi:"previous"`
+	// Total number of elements returned.
+	Total int `pulumi:"total"`
+}
+
+// GetConnectionRouteFiltersPaginationInput is an input type that accepts GetConnectionRouteFiltersPaginationArgs and GetConnectionRouteFiltersPaginationOutput values.
+// You can construct a concrete instance of `GetConnectionRouteFiltersPaginationInput` via:
+//
+//	GetConnectionRouteFiltersPaginationArgs{...}
+type GetConnectionRouteFiltersPaginationInput interface {
+	pulumi.Input
+
+	ToGetConnectionRouteFiltersPaginationOutput() GetConnectionRouteFiltersPaginationOutput
+	ToGetConnectionRouteFiltersPaginationOutputWithContext(context.Context) GetConnectionRouteFiltersPaginationOutput
+}
+
+type GetConnectionRouteFiltersPaginationArgs struct {
+	// Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+	Limit pulumi.IntInput `pulumi:"limit"`
+	// URL relative to the last item in the response.
+	Next pulumi.StringInput `pulumi:"next"`
+	// The page offset for the pagination request. Index of the first element. Default is 0.
+	Offset pulumi.IntInput `pulumi:"offset"`
+	// URL relative to the first item in the response.
+	Previous pulumi.StringInput `pulumi:"previous"`
+	// Total number of elements returned.
+	Total pulumi.IntInput `pulumi:"total"`
+}
+
+func (GetConnectionRouteFiltersPaginationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionRouteFiltersPagination)(nil)).Elem()
+}
+
+func (i GetConnectionRouteFiltersPaginationArgs) ToGetConnectionRouteFiltersPaginationOutput() GetConnectionRouteFiltersPaginationOutput {
+	return i.ToGetConnectionRouteFiltersPaginationOutputWithContext(context.Background())
+}
+
+func (i GetConnectionRouteFiltersPaginationArgs) ToGetConnectionRouteFiltersPaginationOutputWithContext(ctx context.Context) GetConnectionRouteFiltersPaginationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionRouteFiltersPaginationOutput)
+}
+
+// GetConnectionRouteFiltersPaginationArrayInput is an input type that accepts GetConnectionRouteFiltersPaginationArray and GetConnectionRouteFiltersPaginationArrayOutput values.
+// You can construct a concrete instance of `GetConnectionRouteFiltersPaginationArrayInput` via:
+//
+//	GetConnectionRouteFiltersPaginationArray{ GetConnectionRouteFiltersPaginationArgs{...} }
+type GetConnectionRouteFiltersPaginationArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionRouteFiltersPaginationArrayOutput() GetConnectionRouteFiltersPaginationArrayOutput
+	ToGetConnectionRouteFiltersPaginationArrayOutputWithContext(context.Context) GetConnectionRouteFiltersPaginationArrayOutput
+}
+
+type GetConnectionRouteFiltersPaginationArray []GetConnectionRouteFiltersPaginationInput
+
+func (GetConnectionRouteFiltersPaginationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionRouteFiltersPagination)(nil)).Elem()
+}
+
+func (i GetConnectionRouteFiltersPaginationArray) ToGetConnectionRouteFiltersPaginationArrayOutput() GetConnectionRouteFiltersPaginationArrayOutput {
+	return i.ToGetConnectionRouteFiltersPaginationArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionRouteFiltersPaginationArray) ToGetConnectionRouteFiltersPaginationArrayOutputWithContext(ctx context.Context) GetConnectionRouteFiltersPaginationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionRouteFiltersPaginationArrayOutput)
+}
+
+type GetConnectionRouteFiltersPaginationOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionRouteFiltersPaginationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionRouteFiltersPagination)(nil)).Elem()
+}
+
+func (o GetConnectionRouteFiltersPaginationOutput) ToGetConnectionRouteFiltersPaginationOutput() GetConnectionRouteFiltersPaginationOutput {
+	return o
+}
+
+func (o GetConnectionRouteFiltersPaginationOutput) ToGetConnectionRouteFiltersPaginationOutputWithContext(ctx context.Context) GetConnectionRouteFiltersPaginationOutput {
+	return o
+}
+
+// Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+func (o GetConnectionRouteFiltersPaginationOutput) Limit() pulumi.IntOutput {
+	return o.ApplyT(func(v GetConnectionRouteFiltersPagination) int { return v.Limit }).(pulumi.IntOutput)
+}
+
+// URL relative to the last item in the response.
+func (o GetConnectionRouteFiltersPaginationOutput) Next() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionRouteFiltersPagination) string { return v.Next }).(pulumi.StringOutput)
+}
+
+// The page offset for the pagination request. Index of the first element. Default is 0.
+func (o GetConnectionRouteFiltersPaginationOutput) Offset() pulumi.IntOutput {
+	return o.ApplyT(func(v GetConnectionRouteFiltersPagination) int { return v.Offset }).(pulumi.IntOutput)
+}
+
+// URL relative to the first item in the response.
+func (o GetConnectionRouteFiltersPaginationOutput) Previous() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionRouteFiltersPagination) string { return v.Previous }).(pulumi.StringOutput)
+}
+
+// Total number of elements returned.
+func (o GetConnectionRouteFiltersPaginationOutput) Total() pulumi.IntOutput {
+	return o.ApplyT(func(v GetConnectionRouteFiltersPagination) int { return v.Total }).(pulumi.IntOutput)
+}
+
+type GetConnectionRouteFiltersPaginationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionRouteFiltersPaginationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionRouteFiltersPagination)(nil)).Elem()
+}
+
+func (o GetConnectionRouteFiltersPaginationArrayOutput) ToGetConnectionRouteFiltersPaginationArrayOutput() GetConnectionRouteFiltersPaginationArrayOutput {
+	return o
+}
+
+func (o GetConnectionRouteFiltersPaginationArrayOutput) ToGetConnectionRouteFiltersPaginationArrayOutputWithContext(ctx context.Context) GetConnectionRouteFiltersPaginationArrayOutput {
+	return o
+}
+
+func (o GetConnectionRouteFiltersPaginationArrayOutput) Index(i pulumi.IntInput) GetConnectionRouteFiltersPaginationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionRouteFiltersPagination {
+		return vs[0].([]GetConnectionRouteFiltersPagination)[vs[1].(int)]
+	}).(GetConnectionRouteFiltersPaginationOutput)
 }
 
 type GetConnectionZSide struct {
@@ -35845,6 +36889,2406 @@ func (o GetPortsFilterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPortsFilter) string { return v.Name }).(pulumi.StringOutput)
 }
 
+type GetRouteFilterChange struct {
+	// The URI of the previous Route Filter Change
+	Href string `pulumi:"href"`
+	// Type of change. One of [ "BGP_IPv4_PREFIX_FILTER_UPDATE","BGP_IPv4_PREFIX_FILTER_CREATION","BGP_IPv4_PREFIX_FILTER_DELETION","BGP_IPv6_PREFIX_FILTER_UPDATE","BGP_IPv6_PREFIX_FILTER_CREATION","BGP_IPv6_PREFIX_FILTER_DELETION" ]
+	Type string `pulumi:"type"`
+	// Unique identifier for the previous change
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetRouteFilterChangeInput is an input type that accepts GetRouteFilterChangeArgs and GetRouteFilterChangeOutput values.
+// You can construct a concrete instance of `GetRouteFilterChangeInput` via:
+//
+//	GetRouteFilterChangeArgs{...}
+type GetRouteFilterChangeInput interface {
+	pulumi.Input
+
+	ToGetRouteFilterChangeOutput() GetRouteFilterChangeOutput
+	ToGetRouteFilterChangeOutputWithContext(context.Context) GetRouteFilterChangeOutput
+}
+
+type GetRouteFilterChangeArgs struct {
+	// The URI of the previous Route Filter Change
+	Href pulumi.StringInput `pulumi:"href"`
+	// Type of change. One of [ "BGP_IPv4_PREFIX_FILTER_UPDATE","BGP_IPv4_PREFIX_FILTER_CREATION","BGP_IPv4_PREFIX_FILTER_DELETION","BGP_IPv6_PREFIX_FILTER_UPDATE","BGP_IPv6_PREFIX_FILTER_CREATION","BGP_IPv6_PREFIX_FILTER_DELETION" ]
+	Type pulumi.StringInput `pulumi:"type"`
+	// Unique identifier for the previous change
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetRouteFilterChangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteFilterChange)(nil)).Elem()
+}
+
+func (i GetRouteFilterChangeArgs) ToGetRouteFilterChangeOutput() GetRouteFilterChangeOutput {
+	return i.ToGetRouteFilterChangeOutputWithContext(context.Background())
+}
+
+func (i GetRouteFilterChangeArgs) ToGetRouteFilterChangeOutputWithContext(ctx context.Context) GetRouteFilterChangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteFilterChangeOutput)
+}
+
+// GetRouteFilterChangeArrayInput is an input type that accepts GetRouteFilterChangeArray and GetRouteFilterChangeArrayOutput values.
+// You can construct a concrete instance of `GetRouteFilterChangeArrayInput` via:
+//
+//	GetRouteFilterChangeArray{ GetRouteFilterChangeArgs{...} }
+type GetRouteFilterChangeArrayInput interface {
+	pulumi.Input
+
+	ToGetRouteFilterChangeArrayOutput() GetRouteFilterChangeArrayOutput
+	ToGetRouteFilterChangeArrayOutputWithContext(context.Context) GetRouteFilterChangeArrayOutput
+}
+
+type GetRouteFilterChangeArray []GetRouteFilterChangeInput
+
+func (GetRouteFilterChangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouteFilterChange)(nil)).Elem()
+}
+
+func (i GetRouteFilterChangeArray) ToGetRouteFilterChangeArrayOutput() GetRouteFilterChangeArrayOutput {
+	return i.ToGetRouteFilterChangeArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouteFilterChangeArray) ToGetRouteFilterChangeArrayOutputWithContext(ctx context.Context) GetRouteFilterChangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteFilterChangeArrayOutput)
+}
+
+type GetRouteFilterChangeOutput struct{ *pulumi.OutputState }
+
+func (GetRouteFilterChangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteFilterChange)(nil)).Elem()
+}
+
+func (o GetRouteFilterChangeOutput) ToGetRouteFilterChangeOutput() GetRouteFilterChangeOutput {
+	return o
+}
+
+func (o GetRouteFilterChangeOutput) ToGetRouteFilterChangeOutputWithContext(ctx context.Context) GetRouteFilterChangeOutput {
+	return o
+}
+
+// The URI of the previous Route Filter Change
+func (o GetRouteFilterChangeOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterChange) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// Type of change. One of [ "BGP_IPv4_PREFIX_FILTER_UPDATE","BGP_IPv4_PREFIX_FILTER_CREATION","BGP_IPv4_PREFIX_FILTER_DELETION","BGP_IPv6_PREFIX_FILTER_UPDATE","BGP_IPv6_PREFIX_FILTER_CREATION","BGP_IPv6_PREFIX_FILTER_DELETION" ]
+func (o GetRouteFilterChangeOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterChange) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Unique identifier for the previous change
+func (o GetRouteFilterChangeOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterChange) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type GetRouteFilterChangeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouteFilterChangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouteFilterChange)(nil)).Elem()
+}
+
+func (o GetRouteFilterChangeArrayOutput) ToGetRouteFilterChangeArrayOutput() GetRouteFilterChangeArrayOutput {
+	return o
+}
+
+func (o GetRouteFilterChangeArrayOutput) ToGetRouteFilterChangeArrayOutputWithContext(ctx context.Context) GetRouteFilterChangeArrayOutput {
+	return o
+}
+
+func (o GetRouteFilterChangeArrayOutput) Index(i pulumi.IntInput) GetRouteFilterChangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouteFilterChange {
+		return vs[0].([]GetRouteFilterChange)[vs[1].(int)]
+	}).(GetRouteFilterChangeOutput)
+}
+
+type GetRouteFilterChangeLog struct {
+	// Created by User Key
+	CreatedBy string `pulumi:"createdBy"`
+	// Created by User Email Address
+	CreatedByEmail string `pulumi:"createdByEmail"`
+	// Created by User Full Name
+	CreatedByFullName string `pulumi:"createdByFullName"`
+	// Created by Date and Time
+	CreatedDateTime string `pulumi:"createdDateTime"`
+	// Deleted by User Key
+	DeletedBy string `pulumi:"deletedBy"`
+	// Deleted by User Email Address
+	DeletedByEmail string `pulumi:"deletedByEmail"`
+	// Deleted by User Full Name
+	DeletedByFullName string `pulumi:"deletedByFullName"`
+	// Deleted by Date and Time
+	DeletedDateTime string `pulumi:"deletedDateTime"`
+	// Updated by User Key
+	UpdatedBy string `pulumi:"updatedBy"`
+	// Updated by User Email Address
+	UpdatedByEmail string `pulumi:"updatedByEmail"`
+	// Updated by User Full Name
+	UpdatedByFullName string `pulumi:"updatedByFullName"`
+	// Updated by Date and Time
+	UpdatedDateTime string `pulumi:"updatedDateTime"`
+}
+
+// GetRouteFilterChangeLogInput is an input type that accepts GetRouteFilterChangeLogArgs and GetRouteFilterChangeLogOutput values.
+// You can construct a concrete instance of `GetRouteFilterChangeLogInput` via:
+//
+//	GetRouteFilterChangeLogArgs{...}
+type GetRouteFilterChangeLogInput interface {
+	pulumi.Input
+
+	ToGetRouteFilterChangeLogOutput() GetRouteFilterChangeLogOutput
+	ToGetRouteFilterChangeLogOutputWithContext(context.Context) GetRouteFilterChangeLogOutput
+}
+
+type GetRouteFilterChangeLogArgs struct {
+	// Created by User Key
+	CreatedBy pulumi.StringInput `pulumi:"createdBy"`
+	// Created by User Email Address
+	CreatedByEmail pulumi.StringInput `pulumi:"createdByEmail"`
+	// Created by User Full Name
+	CreatedByFullName pulumi.StringInput `pulumi:"createdByFullName"`
+	// Created by Date and Time
+	CreatedDateTime pulumi.StringInput `pulumi:"createdDateTime"`
+	// Deleted by User Key
+	DeletedBy pulumi.StringInput `pulumi:"deletedBy"`
+	// Deleted by User Email Address
+	DeletedByEmail pulumi.StringInput `pulumi:"deletedByEmail"`
+	// Deleted by User Full Name
+	DeletedByFullName pulumi.StringInput `pulumi:"deletedByFullName"`
+	// Deleted by Date and Time
+	DeletedDateTime pulumi.StringInput `pulumi:"deletedDateTime"`
+	// Updated by User Key
+	UpdatedBy pulumi.StringInput `pulumi:"updatedBy"`
+	// Updated by User Email Address
+	UpdatedByEmail pulumi.StringInput `pulumi:"updatedByEmail"`
+	// Updated by User Full Name
+	UpdatedByFullName pulumi.StringInput `pulumi:"updatedByFullName"`
+	// Updated by Date and Time
+	UpdatedDateTime pulumi.StringInput `pulumi:"updatedDateTime"`
+}
+
+func (GetRouteFilterChangeLogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteFilterChangeLog)(nil)).Elem()
+}
+
+func (i GetRouteFilterChangeLogArgs) ToGetRouteFilterChangeLogOutput() GetRouteFilterChangeLogOutput {
+	return i.ToGetRouteFilterChangeLogOutputWithContext(context.Background())
+}
+
+func (i GetRouteFilterChangeLogArgs) ToGetRouteFilterChangeLogOutputWithContext(ctx context.Context) GetRouteFilterChangeLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteFilterChangeLogOutput)
+}
+
+// GetRouteFilterChangeLogArrayInput is an input type that accepts GetRouteFilterChangeLogArray and GetRouteFilterChangeLogArrayOutput values.
+// You can construct a concrete instance of `GetRouteFilterChangeLogArrayInput` via:
+//
+//	GetRouteFilterChangeLogArray{ GetRouteFilterChangeLogArgs{...} }
+type GetRouteFilterChangeLogArrayInput interface {
+	pulumi.Input
+
+	ToGetRouteFilterChangeLogArrayOutput() GetRouteFilterChangeLogArrayOutput
+	ToGetRouteFilterChangeLogArrayOutputWithContext(context.Context) GetRouteFilterChangeLogArrayOutput
+}
+
+type GetRouteFilterChangeLogArray []GetRouteFilterChangeLogInput
+
+func (GetRouteFilterChangeLogArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouteFilterChangeLog)(nil)).Elem()
+}
+
+func (i GetRouteFilterChangeLogArray) ToGetRouteFilterChangeLogArrayOutput() GetRouteFilterChangeLogArrayOutput {
+	return i.ToGetRouteFilterChangeLogArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouteFilterChangeLogArray) ToGetRouteFilterChangeLogArrayOutputWithContext(ctx context.Context) GetRouteFilterChangeLogArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteFilterChangeLogArrayOutput)
+}
+
+type GetRouteFilterChangeLogOutput struct{ *pulumi.OutputState }
+
+func (GetRouteFilterChangeLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteFilterChangeLog)(nil)).Elem()
+}
+
+func (o GetRouteFilterChangeLogOutput) ToGetRouteFilterChangeLogOutput() GetRouteFilterChangeLogOutput {
+	return o
+}
+
+func (o GetRouteFilterChangeLogOutput) ToGetRouteFilterChangeLogOutputWithContext(ctx context.Context) GetRouteFilterChangeLogOutput {
+	return o
+}
+
+// Created by User Key
+func (o GetRouteFilterChangeLogOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterChangeLog) string { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// Created by User Email Address
+func (o GetRouteFilterChangeLogOutput) CreatedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterChangeLog) string { return v.CreatedByEmail }).(pulumi.StringOutput)
+}
+
+// Created by User Full Name
+func (o GetRouteFilterChangeLogOutput) CreatedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterChangeLog) string { return v.CreatedByFullName }).(pulumi.StringOutput)
+}
+
+// Created by Date and Time
+func (o GetRouteFilterChangeLogOutput) CreatedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterChangeLog) string { return v.CreatedDateTime }).(pulumi.StringOutput)
+}
+
+// Deleted by User Key
+func (o GetRouteFilterChangeLogOutput) DeletedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterChangeLog) string { return v.DeletedBy }).(pulumi.StringOutput)
+}
+
+// Deleted by User Email Address
+func (o GetRouteFilterChangeLogOutput) DeletedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterChangeLog) string { return v.DeletedByEmail }).(pulumi.StringOutput)
+}
+
+// Deleted by User Full Name
+func (o GetRouteFilterChangeLogOutput) DeletedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterChangeLog) string { return v.DeletedByFullName }).(pulumi.StringOutput)
+}
+
+// Deleted by Date and Time
+func (o GetRouteFilterChangeLogOutput) DeletedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterChangeLog) string { return v.DeletedDateTime }).(pulumi.StringOutput)
+}
+
+// Updated by User Key
+func (o GetRouteFilterChangeLogOutput) UpdatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterChangeLog) string { return v.UpdatedBy }).(pulumi.StringOutput)
+}
+
+// Updated by User Email Address
+func (o GetRouteFilterChangeLogOutput) UpdatedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterChangeLog) string { return v.UpdatedByEmail }).(pulumi.StringOutput)
+}
+
+// Updated by User Full Name
+func (o GetRouteFilterChangeLogOutput) UpdatedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterChangeLog) string { return v.UpdatedByFullName }).(pulumi.StringOutput)
+}
+
+// Updated by Date and Time
+func (o GetRouteFilterChangeLogOutput) UpdatedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterChangeLog) string { return v.UpdatedDateTime }).(pulumi.StringOutput)
+}
+
+type GetRouteFilterChangeLogArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouteFilterChangeLogArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouteFilterChangeLog)(nil)).Elem()
+}
+
+func (o GetRouteFilterChangeLogArrayOutput) ToGetRouteFilterChangeLogArrayOutput() GetRouteFilterChangeLogArrayOutput {
+	return o
+}
+
+func (o GetRouteFilterChangeLogArrayOutput) ToGetRouteFilterChangeLogArrayOutputWithContext(ctx context.Context) GetRouteFilterChangeLogArrayOutput {
+	return o
+}
+
+func (o GetRouteFilterChangeLogArrayOutput) Index(i pulumi.IntInput) GetRouteFilterChangeLogOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouteFilterChangeLog {
+		return vs[0].([]GetRouteFilterChangeLog)[vs[1].(int)]
+	}).(GetRouteFilterChangeLogOutput)
+}
+
+type GetRouteFilterProject struct {
+	// URI of the Fabric Project
+	Href string `pulumi:"href"`
+	// Project id associated with Fabric Project
+	ProjectId string `pulumi:"projectId"`
+}
+
+// GetRouteFilterProjectInput is an input type that accepts GetRouteFilterProjectArgs and GetRouteFilterProjectOutput values.
+// You can construct a concrete instance of `GetRouteFilterProjectInput` via:
+//
+//	GetRouteFilterProjectArgs{...}
+type GetRouteFilterProjectInput interface {
+	pulumi.Input
+
+	ToGetRouteFilterProjectOutput() GetRouteFilterProjectOutput
+	ToGetRouteFilterProjectOutputWithContext(context.Context) GetRouteFilterProjectOutput
+}
+
+type GetRouteFilterProjectArgs struct {
+	// URI of the Fabric Project
+	Href pulumi.StringInput `pulumi:"href"`
+	// Project id associated with Fabric Project
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+}
+
+func (GetRouteFilterProjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteFilterProject)(nil)).Elem()
+}
+
+func (i GetRouteFilterProjectArgs) ToGetRouteFilterProjectOutput() GetRouteFilterProjectOutput {
+	return i.ToGetRouteFilterProjectOutputWithContext(context.Background())
+}
+
+func (i GetRouteFilterProjectArgs) ToGetRouteFilterProjectOutputWithContext(ctx context.Context) GetRouteFilterProjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteFilterProjectOutput)
+}
+
+// GetRouteFilterProjectArrayInput is an input type that accepts GetRouteFilterProjectArray and GetRouteFilterProjectArrayOutput values.
+// You can construct a concrete instance of `GetRouteFilterProjectArrayInput` via:
+//
+//	GetRouteFilterProjectArray{ GetRouteFilterProjectArgs{...} }
+type GetRouteFilterProjectArrayInput interface {
+	pulumi.Input
+
+	ToGetRouteFilterProjectArrayOutput() GetRouteFilterProjectArrayOutput
+	ToGetRouteFilterProjectArrayOutputWithContext(context.Context) GetRouteFilterProjectArrayOutput
+}
+
+type GetRouteFilterProjectArray []GetRouteFilterProjectInput
+
+func (GetRouteFilterProjectArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouteFilterProject)(nil)).Elem()
+}
+
+func (i GetRouteFilterProjectArray) ToGetRouteFilterProjectArrayOutput() GetRouteFilterProjectArrayOutput {
+	return i.ToGetRouteFilterProjectArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouteFilterProjectArray) ToGetRouteFilterProjectArrayOutputWithContext(ctx context.Context) GetRouteFilterProjectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteFilterProjectArrayOutput)
+}
+
+type GetRouteFilterProjectOutput struct{ *pulumi.OutputState }
+
+func (GetRouteFilterProjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteFilterProject)(nil)).Elem()
+}
+
+func (o GetRouteFilterProjectOutput) ToGetRouteFilterProjectOutput() GetRouteFilterProjectOutput {
+	return o
+}
+
+func (o GetRouteFilterProjectOutput) ToGetRouteFilterProjectOutputWithContext(ctx context.Context) GetRouteFilterProjectOutput {
+	return o
+}
+
+// URI of the Fabric Project
+func (o GetRouteFilterProjectOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterProject) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// Project id associated with Fabric Project
+func (o GetRouteFilterProjectOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterProject) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+type GetRouteFilterProjectArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouteFilterProjectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouteFilterProject)(nil)).Elem()
+}
+
+func (o GetRouteFilterProjectArrayOutput) ToGetRouteFilterProjectArrayOutput() GetRouteFilterProjectArrayOutput {
+	return o
+}
+
+func (o GetRouteFilterProjectArrayOutput) ToGetRouteFilterProjectArrayOutputWithContext(ctx context.Context) GetRouteFilterProjectArrayOutput {
+	return o
+}
+
+func (o GetRouteFilterProjectArrayOutput) Index(i pulumi.IntInput) GetRouteFilterProjectOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouteFilterProject {
+		return vs[0].([]GetRouteFilterProject)[vs[1].(int)]
+	}).(GetRouteFilterProjectOutput)
+}
+
+type GetRouteFilterRuleChange struct {
+	// The URI of the previous Route Filter Rule Change
+	Href string `pulumi:"href"`
+	// Type of change. One of [ "BGP_IPv4_PREFIX_FILTER_RULE_UPDATE","BGP_IPv4_PREFIX_FILTER_RULE_CREATION","BGP_IPv4_PREFIX_FILTER_RULE_DELETION","BGP_IPv6_PREFIX_FILTER_RULE_UPDATE","BGP_IPv6_PREFIX_FILTER_RULE_CREATION","BGP_IPv6_PREFIX_FILTER_RULE_DELETION" ]
+	Type string `pulumi:"type"`
+	// Unique identifier for the previous change
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetRouteFilterRuleChangeInput is an input type that accepts GetRouteFilterRuleChangeArgs and GetRouteFilterRuleChangeOutput values.
+// You can construct a concrete instance of `GetRouteFilterRuleChangeInput` via:
+//
+//	GetRouteFilterRuleChangeArgs{...}
+type GetRouteFilterRuleChangeInput interface {
+	pulumi.Input
+
+	ToGetRouteFilterRuleChangeOutput() GetRouteFilterRuleChangeOutput
+	ToGetRouteFilterRuleChangeOutputWithContext(context.Context) GetRouteFilterRuleChangeOutput
+}
+
+type GetRouteFilterRuleChangeArgs struct {
+	// The URI of the previous Route Filter Rule Change
+	Href pulumi.StringInput `pulumi:"href"`
+	// Type of change. One of [ "BGP_IPv4_PREFIX_FILTER_RULE_UPDATE","BGP_IPv4_PREFIX_FILTER_RULE_CREATION","BGP_IPv4_PREFIX_FILTER_RULE_DELETION","BGP_IPv6_PREFIX_FILTER_RULE_UPDATE","BGP_IPv6_PREFIX_FILTER_RULE_CREATION","BGP_IPv6_PREFIX_FILTER_RULE_DELETION" ]
+	Type pulumi.StringInput `pulumi:"type"`
+	// Unique identifier for the previous change
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetRouteFilterRuleChangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteFilterRuleChange)(nil)).Elem()
+}
+
+func (i GetRouteFilterRuleChangeArgs) ToGetRouteFilterRuleChangeOutput() GetRouteFilterRuleChangeOutput {
+	return i.ToGetRouteFilterRuleChangeOutputWithContext(context.Background())
+}
+
+func (i GetRouteFilterRuleChangeArgs) ToGetRouteFilterRuleChangeOutputWithContext(ctx context.Context) GetRouteFilterRuleChangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteFilterRuleChangeOutput)
+}
+
+// GetRouteFilterRuleChangeArrayInput is an input type that accepts GetRouteFilterRuleChangeArray and GetRouteFilterRuleChangeArrayOutput values.
+// You can construct a concrete instance of `GetRouteFilterRuleChangeArrayInput` via:
+//
+//	GetRouteFilterRuleChangeArray{ GetRouteFilterRuleChangeArgs{...} }
+type GetRouteFilterRuleChangeArrayInput interface {
+	pulumi.Input
+
+	ToGetRouteFilterRuleChangeArrayOutput() GetRouteFilterRuleChangeArrayOutput
+	ToGetRouteFilterRuleChangeArrayOutputWithContext(context.Context) GetRouteFilterRuleChangeArrayOutput
+}
+
+type GetRouteFilterRuleChangeArray []GetRouteFilterRuleChangeInput
+
+func (GetRouteFilterRuleChangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouteFilterRuleChange)(nil)).Elem()
+}
+
+func (i GetRouteFilterRuleChangeArray) ToGetRouteFilterRuleChangeArrayOutput() GetRouteFilterRuleChangeArrayOutput {
+	return i.ToGetRouteFilterRuleChangeArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouteFilterRuleChangeArray) ToGetRouteFilterRuleChangeArrayOutputWithContext(ctx context.Context) GetRouteFilterRuleChangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteFilterRuleChangeArrayOutput)
+}
+
+type GetRouteFilterRuleChangeOutput struct{ *pulumi.OutputState }
+
+func (GetRouteFilterRuleChangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteFilterRuleChange)(nil)).Elem()
+}
+
+func (o GetRouteFilterRuleChangeOutput) ToGetRouteFilterRuleChangeOutput() GetRouteFilterRuleChangeOutput {
+	return o
+}
+
+func (o GetRouteFilterRuleChangeOutput) ToGetRouteFilterRuleChangeOutputWithContext(ctx context.Context) GetRouteFilterRuleChangeOutput {
+	return o
+}
+
+// The URI of the previous Route Filter Rule Change
+func (o GetRouteFilterRuleChangeOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterRuleChange) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// Type of change. One of [ "BGP_IPv4_PREFIX_FILTER_RULE_UPDATE","BGP_IPv4_PREFIX_FILTER_RULE_CREATION","BGP_IPv4_PREFIX_FILTER_RULE_DELETION","BGP_IPv6_PREFIX_FILTER_RULE_UPDATE","BGP_IPv6_PREFIX_FILTER_RULE_CREATION","BGP_IPv6_PREFIX_FILTER_RULE_DELETION" ]
+func (o GetRouteFilterRuleChangeOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterRuleChange) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Unique identifier for the previous change
+func (o GetRouteFilterRuleChangeOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterRuleChange) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type GetRouteFilterRuleChangeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouteFilterRuleChangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouteFilterRuleChange)(nil)).Elem()
+}
+
+func (o GetRouteFilterRuleChangeArrayOutput) ToGetRouteFilterRuleChangeArrayOutput() GetRouteFilterRuleChangeArrayOutput {
+	return o
+}
+
+func (o GetRouteFilterRuleChangeArrayOutput) ToGetRouteFilterRuleChangeArrayOutputWithContext(ctx context.Context) GetRouteFilterRuleChangeArrayOutput {
+	return o
+}
+
+func (o GetRouteFilterRuleChangeArrayOutput) Index(i pulumi.IntInput) GetRouteFilterRuleChangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouteFilterRuleChange {
+		return vs[0].([]GetRouteFilterRuleChange)[vs[1].(int)]
+	}).(GetRouteFilterRuleChangeOutput)
+}
+
+type GetRouteFilterRuleChangeLog struct {
+	// Created by User Key
+	CreatedBy string `pulumi:"createdBy"`
+	// Created by User Email Address
+	CreatedByEmail string `pulumi:"createdByEmail"`
+	// Created by User Full Name
+	CreatedByFullName string `pulumi:"createdByFullName"`
+	// Created by Date and Time
+	CreatedDateTime string `pulumi:"createdDateTime"`
+	// Deleted by User Key
+	DeletedBy string `pulumi:"deletedBy"`
+	// Deleted by User Email Address
+	DeletedByEmail string `pulumi:"deletedByEmail"`
+	// Deleted by User Full Name
+	DeletedByFullName string `pulumi:"deletedByFullName"`
+	// Deleted by Date and Time
+	DeletedDateTime string `pulumi:"deletedDateTime"`
+	// Updated by User Key
+	UpdatedBy string `pulumi:"updatedBy"`
+	// Updated by User Email Address
+	UpdatedByEmail string `pulumi:"updatedByEmail"`
+	// Updated by User Full Name
+	UpdatedByFullName string `pulumi:"updatedByFullName"`
+	// Updated by Date and Time
+	UpdatedDateTime string `pulumi:"updatedDateTime"`
+}
+
+// GetRouteFilterRuleChangeLogInput is an input type that accepts GetRouteFilterRuleChangeLogArgs and GetRouteFilterRuleChangeLogOutput values.
+// You can construct a concrete instance of `GetRouteFilterRuleChangeLogInput` via:
+//
+//	GetRouteFilterRuleChangeLogArgs{...}
+type GetRouteFilterRuleChangeLogInput interface {
+	pulumi.Input
+
+	ToGetRouteFilterRuleChangeLogOutput() GetRouteFilterRuleChangeLogOutput
+	ToGetRouteFilterRuleChangeLogOutputWithContext(context.Context) GetRouteFilterRuleChangeLogOutput
+}
+
+type GetRouteFilterRuleChangeLogArgs struct {
+	// Created by User Key
+	CreatedBy pulumi.StringInput `pulumi:"createdBy"`
+	// Created by User Email Address
+	CreatedByEmail pulumi.StringInput `pulumi:"createdByEmail"`
+	// Created by User Full Name
+	CreatedByFullName pulumi.StringInput `pulumi:"createdByFullName"`
+	// Created by Date and Time
+	CreatedDateTime pulumi.StringInput `pulumi:"createdDateTime"`
+	// Deleted by User Key
+	DeletedBy pulumi.StringInput `pulumi:"deletedBy"`
+	// Deleted by User Email Address
+	DeletedByEmail pulumi.StringInput `pulumi:"deletedByEmail"`
+	// Deleted by User Full Name
+	DeletedByFullName pulumi.StringInput `pulumi:"deletedByFullName"`
+	// Deleted by Date and Time
+	DeletedDateTime pulumi.StringInput `pulumi:"deletedDateTime"`
+	// Updated by User Key
+	UpdatedBy pulumi.StringInput `pulumi:"updatedBy"`
+	// Updated by User Email Address
+	UpdatedByEmail pulumi.StringInput `pulumi:"updatedByEmail"`
+	// Updated by User Full Name
+	UpdatedByFullName pulumi.StringInput `pulumi:"updatedByFullName"`
+	// Updated by Date and Time
+	UpdatedDateTime pulumi.StringInput `pulumi:"updatedDateTime"`
+}
+
+func (GetRouteFilterRuleChangeLogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteFilterRuleChangeLog)(nil)).Elem()
+}
+
+func (i GetRouteFilterRuleChangeLogArgs) ToGetRouteFilterRuleChangeLogOutput() GetRouteFilterRuleChangeLogOutput {
+	return i.ToGetRouteFilterRuleChangeLogOutputWithContext(context.Background())
+}
+
+func (i GetRouteFilterRuleChangeLogArgs) ToGetRouteFilterRuleChangeLogOutputWithContext(ctx context.Context) GetRouteFilterRuleChangeLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteFilterRuleChangeLogOutput)
+}
+
+// GetRouteFilterRuleChangeLogArrayInput is an input type that accepts GetRouteFilterRuleChangeLogArray and GetRouteFilterRuleChangeLogArrayOutput values.
+// You can construct a concrete instance of `GetRouteFilterRuleChangeLogArrayInput` via:
+//
+//	GetRouteFilterRuleChangeLogArray{ GetRouteFilterRuleChangeLogArgs{...} }
+type GetRouteFilterRuleChangeLogArrayInput interface {
+	pulumi.Input
+
+	ToGetRouteFilterRuleChangeLogArrayOutput() GetRouteFilterRuleChangeLogArrayOutput
+	ToGetRouteFilterRuleChangeLogArrayOutputWithContext(context.Context) GetRouteFilterRuleChangeLogArrayOutput
+}
+
+type GetRouteFilterRuleChangeLogArray []GetRouteFilterRuleChangeLogInput
+
+func (GetRouteFilterRuleChangeLogArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouteFilterRuleChangeLog)(nil)).Elem()
+}
+
+func (i GetRouteFilterRuleChangeLogArray) ToGetRouteFilterRuleChangeLogArrayOutput() GetRouteFilterRuleChangeLogArrayOutput {
+	return i.ToGetRouteFilterRuleChangeLogArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouteFilterRuleChangeLogArray) ToGetRouteFilterRuleChangeLogArrayOutputWithContext(ctx context.Context) GetRouteFilterRuleChangeLogArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteFilterRuleChangeLogArrayOutput)
+}
+
+type GetRouteFilterRuleChangeLogOutput struct{ *pulumi.OutputState }
+
+func (GetRouteFilterRuleChangeLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteFilterRuleChangeLog)(nil)).Elem()
+}
+
+func (o GetRouteFilterRuleChangeLogOutput) ToGetRouteFilterRuleChangeLogOutput() GetRouteFilterRuleChangeLogOutput {
+	return o
+}
+
+func (o GetRouteFilterRuleChangeLogOutput) ToGetRouteFilterRuleChangeLogOutputWithContext(ctx context.Context) GetRouteFilterRuleChangeLogOutput {
+	return o
+}
+
+// Created by User Key
+func (o GetRouteFilterRuleChangeLogOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterRuleChangeLog) string { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// Created by User Email Address
+func (o GetRouteFilterRuleChangeLogOutput) CreatedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterRuleChangeLog) string { return v.CreatedByEmail }).(pulumi.StringOutput)
+}
+
+// Created by User Full Name
+func (o GetRouteFilterRuleChangeLogOutput) CreatedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterRuleChangeLog) string { return v.CreatedByFullName }).(pulumi.StringOutput)
+}
+
+// Created by Date and Time
+func (o GetRouteFilterRuleChangeLogOutput) CreatedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterRuleChangeLog) string { return v.CreatedDateTime }).(pulumi.StringOutput)
+}
+
+// Deleted by User Key
+func (o GetRouteFilterRuleChangeLogOutput) DeletedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterRuleChangeLog) string { return v.DeletedBy }).(pulumi.StringOutput)
+}
+
+// Deleted by User Email Address
+func (o GetRouteFilterRuleChangeLogOutput) DeletedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterRuleChangeLog) string { return v.DeletedByEmail }).(pulumi.StringOutput)
+}
+
+// Deleted by User Full Name
+func (o GetRouteFilterRuleChangeLogOutput) DeletedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterRuleChangeLog) string { return v.DeletedByFullName }).(pulumi.StringOutput)
+}
+
+// Deleted by Date and Time
+func (o GetRouteFilterRuleChangeLogOutput) DeletedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterRuleChangeLog) string { return v.DeletedDateTime }).(pulumi.StringOutput)
+}
+
+// Updated by User Key
+func (o GetRouteFilterRuleChangeLogOutput) UpdatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterRuleChangeLog) string { return v.UpdatedBy }).(pulumi.StringOutput)
+}
+
+// Updated by User Email Address
+func (o GetRouteFilterRuleChangeLogOutput) UpdatedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterRuleChangeLog) string { return v.UpdatedByEmail }).(pulumi.StringOutput)
+}
+
+// Updated by User Full Name
+func (o GetRouteFilterRuleChangeLogOutput) UpdatedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterRuleChangeLog) string { return v.UpdatedByFullName }).(pulumi.StringOutput)
+}
+
+// Updated by Date and Time
+func (o GetRouteFilterRuleChangeLogOutput) UpdatedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterRuleChangeLog) string { return v.UpdatedDateTime }).(pulumi.StringOutput)
+}
+
+type GetRouteFilterRuleChangeLogArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouteFilterRuleChangeLogArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouteFilterRuleChangeLog)(nil)).Elem()
+}
+
+func (o GetRouteFilterRuleChangeLogArrayOutput) ToGetRouteFilterRuleChangeLogArrayOutput() GetRouteFilterRuleChangeLogArrayOutput {
+	return o
+}
+
+func (o GetRouteFilterRuleChangeLogArrayOutput) ToGetRouteFilterRuleChangeLogArrayOutputWithContext(ctx context.Context) GetRouteFilterRuleChangeLogArrayOutput {
+	return o
+}
+
+func (o GetRouteFilterRuleChangeLogArrayOutput) Index(i pulumi.IntInput) GetRouteFilterRuleChangeLogOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouteFilterRuleChangeLog {
+		return vs[0].([]GetRouteFilterRuleChangeLog)[vs[1].(int)]
+	}).(GetRouteFilterRuleChangeLogOutput)
+}
+
+type GetRouteFilterRulesData struct {
+	// Action that will be taken on IP Addresses matching the rule
+	Action     string                             `pulumi:"action"`
+	ChangeLogs []GetRouteFilterRulesDataChangeLog `pulumi:"changeLogs"`
+	// An object with the details of the previous change applied on the Route Filter
+	Changes []GetRouteFilterRulesDataChange `pulumi:"changes"`
+	// Optional description to add to the Route Filter you will be creating
+	Description string `pulumi:"description"`
+	// Route filter rules URI
+	Href string `pulumi:"href"`
+	// Name of the Route Filter
+	Name string `pulumi:"name"`
+	// IP Address Prefix to Filter on
+	Prefix string `pulumi:"prefix"`
+	// Prefix matching operator. One of [ orlonger, exact ] Default: "orlonger"
+	PrefixMatch string `pulumi:"prefixMatch"`
+	// State of the Route Filter Rule in its lifecycle
+	State string `pulumi:"state"`
+	// Route Filter Type. One of [ BGP_IPv4_PREFIX_FILTER_RULE, BGP_IPv6_PREFIX_FILTER_RULE ]
+	Type string `pulumi:"type"`
+	// Equinix Assigned ID for Route Filter Rule to retrieve data for
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetRouteFilterRulesDataInput is an input type that accepts GetRouteFilterRulesDataArgs and GetRouteFilterRulesDataOutput values.
+// You can construct a concrete instance of `GetRouteFilterRulesDataInput` via:
+//
+//	GetRouteFilterRulesDataArgs{...}
+type GetRouteFilterRulesDataInput interface {
+	pulumi.Input
+
+	ToGetRouteFilterRulesDataOutput() GetRouteFilterRulesDataOutput
+	ToGetRouteFilterRulesDataOutputWithContext(context.Context) GetRouteFilterRulesDataOutput
+}
+
+type GetRouteFilterRulesDataArgs struct {
+	// Action that will be taken on IP Addresses matching the rule
+	Action     pulumi.StringInput                         `pulumi:"action"`
+	ChangeLogs GetRouteFilterRulesDataChangeLogArrayInput `pulumi:"changeLogs"`
+	// An object with the details of the previous change applied on the Route Filter
+	Changes GetRouteFilterRulesDataChangeArrayInput `pulumi:"changes"`
+	// Optional description to add to the Route Filter you will be creating
+	Description pulumi.StringInput `pulumi:"description"`
+	// Route filter rules URI
+	Href pulumi.StringInput `pulumi:"href"`
+	// Name of the Route Filter
+	Name pulumi.StringInput `pulumi:"name"`
+	// IP Address Prefix to Filter on
+	Prefix pulumi.StringInput `pulumi:"prefix"`
+	// Prefix matching operator. One of [ orlonger, exact ] Default: "orlonger"
+	PrefixMatch pulumi.StringInput `pulumi:"prefixMatch"`
+	// State of the Route Filter Rule in its lifecycle
+	State pulumi.StringInput `pulumi:"state"`
+	// Route Filter Type. One of [ BGP_IPv4_PREFIX_FILTER_RULE, BGP_IPv6_PREFIX_FILTER_RULE ]
+	Type pulumi.StringInput `pulumi:"type"`
+	// Equinix Assigned ID for Route Filter Rule to retrieve data for
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetRouteFilterRulesDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteFilterRulesData)(nil)).Elem()
+}
+
+func (i GetRouteFilterRulesDataArgs) ToGetRouteFilterRulesDataOutput() GetRouteFilterRulesDataOutput {
+	return i.ToGetRouteFilterRulesDataOutputWithContext(context.Background())
+}
+
+func (i GetRouteFilterRulesDataArgs) ToGetRouteFilterRulesDataOutputWithContext(ctx context.Context) GetRouteFilterRulesDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteFilterRulesDataOutput)
+}
+
+// GetRouteFilterRulesDataArrayInput is an input type that accepts GetRouteFilterRulesDataArray and GetRouteFilterRulesDataArrayOutput values.
+// You can construct a concrete instance of `GetRouteFilterRulesDataArrayInput` via:
+//
+//	GetRouteFilterRulesDataArray{ GetRouteFilterRulesDataArgs{...} }
+type GetRouteFilterRulesDataArrayInput interface {
+	pulumi.Input
+
+	ToGetRouteFilterRulesDataArrayOutput() GetRouteFilterRulesDataArrayOutput
+	ToGetRouteFilterRulesDataArrayOutputWithContext(context.Context) GetRouteFilterRulesDataArrayOutput
+}
+
+type GetRouteFilterRulesDataArray []GetRouteFilterRulesDataInput
+
+func (GetRouteFilterRulesDataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouteFilterRulesData)(nil)).Elem()
+}
+
+func (i GetRouteFilterRulesDataArray) ToGetRouteFilterRulesDataArrayOutput() GetRouteFilterRulesDataArrayOutput {
+	return i.ToGetRouteFilterRulesDataArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouteFilterRulesDataArray) ToGetRouteFilterRulesDataArrayOutputWithContext(ctx context.Context) GetRouteFilterRulesDataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteFilterRulesDataArrayOutput)
+}
+
+type GetRouteFilterRulesDataOutput struct{ *pulumi.OutputState }
+
+func (GetRouteFilterRulesDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteFilterRulesData)(nil)).Elem()
+}
+
+func (o GetRouteFilterRulesDataOutput) ToGetRouteFilterRulesDataOutput() GetRouteFilterRulesDataOutput {
+	return o
+}
+
+func (o GetRouteFilterRulesDataOutput) ToGetRouteFilterRulesDataOutputWithContext(ctx context.Context) GetRouteFilterRulesDataOutput {
+	return o
+}
+
+// Action that will be taken on IP Addresses matching the rule
+func (o GetRouteFilterRulesDataOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterRulesData) string { return v.Action }).(pulumi.StringOutput)
+}
+
+func (o GetRouteFilterRulesDataOutput) ChangeLogs() GetRouteFilterRulesDataChangeLogArrayOutput {
+	return o.ApplyT(func(v GetRouteFilterRulesData) []GetRouteFilterRulesDataChangeLog { return v.ChangeLogs }).(GetRouteFilterRulesDataChangeLogArrayOutput)
+}
+
+// An object with the details of the previous change applied on the Route Filter
+func (o GetRouteFilterRulesDataOutput) Changes() GetRouteFilterRulesDataChangeArrayOutput {
+	return o.ApplyT(func(v GetRouteFilterRulesData) []GetRouteFilterRulesDataChange { return v.Changes }).(GetRouteFilterRulesDataChangeArrayOutput)
+}
+
+// Optional description to add to the Route Filter you will be creating
+func (o GetRouteFilterRulesDataOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterRulesData) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Route filter rules URI
+func (o GetRouteFilterRulesDataOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterRulesData) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// Name of the Route Filter
+func (o GetRouteFilterRulesDataOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterRulesData) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// IP Address Prefix to Filter on
+func (o GetRouteFilterRulesDataOutput) Prefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterRulesData) string { return v.Prefix }).(pulumi.StringOutput)
+}
+
+// Prefix matching operator. One of [ orlonger, exact ] Default: "orlonger"
+func (o GetRouteFilterRulesDataOutput) PrefixMatch() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterRulesData) string { return v.PrefixMatch }).(pulumi.StringOutput)
+}
+
+// State of the Route Filter Rule in its lifecycle
+func (o GetRouteFilterRulesDataOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterRulesData) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Route Filter Type. One of [ BGP_IPv4_PREFIX_FILTER_RULE, BGP_IPv6_PREFIX_FILTER_RULE ]
+func (o GetRouteFilterRulesDataOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterRulesData) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Equinix Assigned ID for Route Filter Rule to retrieve data for
+func (o GetRouteFilterRulesDataOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterRulesData) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type GetRouteFilterRulesDataArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouteFilterRulesDataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouteFilterRulesData)(nil)).Elem()
+}
+
+func (o GetRouteFilterRulesDataArrayOutput) ToGetRouteFilterRulesDataArrayOutput() GetRouteFilterRulesDataArrayOutput {
+	return o
+}
+
+func (o GetRouteFilterRulesDataArrayOutput) ToGetRouteFilterRulesDataArrayOutputWithContext(ctx context.Context) GetRouteFilterRulesDataArrayOutput {
+	return o
+}
+
+func (o GetRouteFilterRulesDataArrayOutput) Index(i pulumi.IntInput) GetRouteFilterRulesDataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouteFilterRulesData {
+		return vs[0].([]GetRouteFilterRulesData)[vs[1].(int)]
+	}).(GetRouteFilterRulesDataOutput)
+}
+
+type GetRouteFilterRulesDataChange struct {
+	// The URI of the previous Route Filter Rule Change
+	Href string `pulumi:"href"`
+	// Type of change. One of [ "BGP_IPv4_PREFIX_FILTER_RULE_UPDATE","BGP_IPv4_PREFIX_FILTER_RULE_CREATION","BGP_IPv4_PREFIX_FILTER_RULE_DELETION","BGP_IPv6_PREFIX_FILTER_RULE_UPDATE","BGP_IPv6_PREFIX_FILTER_RULE_CREATION","BGP_IPv6_PREFIX_FILTER_RULE_DELETION" ]
+	Type string `pulumi:"type"`
+	// Unique identifier for the previous change
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetRouteFilterRulesDataChangeInput is an input type that accepts GetRouteFilterRulesDataChangeArgs and GetRouteFilterRulesDataChangeOutput values.
+// You can construct a concrete instance of `GetRouteFilterRulesDataChangeInput` via:
+//
+//	GetRouteFilterRulesDataChangeArgs{...}
+type GetRouteFilterRulesDataChangeInput interface {
+	pulumi.Input
+
+	ToGetRouteFilterRulesDataChangeOutput() GetRouteFilterRulesDataChangeOutput
+	ToGetRouteFilterRulesDataChangeOutputWithContext(context.Context) GetRouteFilterRulesDataChangeOutput
+}
+
+type GetRouteFilterRulesDataChangeArgs struct {
+	// The URI of the previous Route Filter Rule Change
+	Href pulumi.StringInput `pulumi:"href"`
+	// Type of change. One of [ "BGP_IPv4_PREFIX_FILTER_RULE_UPDATE","BGP_IPv4_PREFIX_FILTER_RULE_CREATION","BGP_IPv4_PREFIX_FILTER_RULE_DELETION","BGP_IPv6_PREFIX_FILTER_RULE_UPDATE","BGP_IPv6_PREFIX_FILTER_RULE_CREATION","BGP_IPv6_PREFIX_FILTER_RULE_DELETION" ]
+	Type pulumi.StringInput `pulumi:"type"`
+	// Unique identifier for the previous change
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetRouteFilterRulesDataChangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteFilterRulesDataChange)(nil)).Elem()
+}
+
+func (i GetRouteFilterRulesDataChangeArgs) ToGetRouteFilterRulesDataChangeOutput() GetRouteFilterRulesDataChangeOutput {
+	return i.ToGetRouteFilterRulesDataChangeOutputWithContext(context.Background())
+}
+
+func (i GetRouteFilterRulesDataChangeArgs) ToGetRouteFilterRulesDataChangeOutputWithContext(ctx context.Context) GetRouteFilterRulesDataChangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteFilterRulesDataChangeOutput)
+}
+
+// GetRouteFilterRulesDataChangeArrayInput is an input type that accepts GetRouteFilterRulesDataChangeArray and GetRouteFilterRulesDataChangeArrayOutput values.
+// You can construct a concrete instance of `GetRouteFilterRulesDataChangeArrayInput` via:
+//
+//	GetRouteFilterRulesDataChangeArray{ GetRouteFilterRulesDataChangeArgs{...} }
+type GetRouteFilterRulesDataChangeArrayInput interface {
+	pulumi.Input
+
+	ToGetRouteFilterRulesDataChangeArrayOutput() GetRouteFilterRulesDataChangeArrayOutput
+	ToGetRouteFilterRulesDataChangeArrayOutputWithContext(context.Context) GetRouteFilterRulesDataChangeArrayOutput
+}
+
+type GetRouteFilterRulesDataChangeArray []GetRouteFilterRulesDataChangeInput
+
+func (GetRouteFilterRulesDataChangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouteFilterRulesDataChange)(nil)).Elem()
+}
+
+func (i GetRouteFilterRulesDataChangeArray) ToGetRouteFilterRulesDataChangeArrayOutput() GetRouteFilterRulesDataChangeArrayOutput {
+	return i.ToGetRouteFilterRulesDataChangeArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouteFilterRulesDataChangeArray) ToGetRouteFilterRulesDataChangeArrayOutputWithContext(ctx context.Context) GetRouteFilterRulesDataChangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteFilterRulesDataChangeArrayOutput)
+}
+
+type GetRouteFilterRulesDataChangeOutput struct{ *pulumi.OutputState }
+
+func (GetRouteFilterRulesDataChangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteFilterRulesDataChange)(nil)).Elem()
+}
+
+func (o GetRouteFilterRulesDataChangeOutput) ToGetRouteFilterRulesDataChangeOutput() GetRouteFilterRulesDataChangeOutput {
+	return o
+}
+
+func (o GetRouteFilterRulesDataChangeOutput) ToGetRouteFilterRulesDataChangeOutputWithContext(ctx context.Context) GetRouteFilterRulesDataChangeOutput {
+	return o
+}
+
+// The URI of the previous Route Filter Rule Change
+func (o GetRouteFilterRulesDataChangeOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterRulesDataChange) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// Type of change. One of [ "BGP_IPv4_PREFIX_FILTER_RULE_UPDATE","BGP_IPv4_PREFIX_FILTER_RULE_CREATION","BGP_IPv4_PREFIX_FILTER_RULE_DELETION","BGP_IPv6_PREFIX_FILTER_RULE_UPDATE","BGP_IPv6_PREFIX_FILTER_RULE_CREATION","BGP_IPv6_PREFIX_FILTER_RULE_DELETION" ]
+func (o GetRouteFilterRulesDataChangeOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterRulesDataChange) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Unique identifier for the previous change
+func (o GetRouteFilterRulesDataChangeOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterRulesDataChange) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type GetRouteFilterRulesDataChangeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouteFilterRulesDataChangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouteFilterRulesDataChange)(nil)).Elem()
+}
+
+func (o GetRouteFilterRulesDataChangeArrayOutput) ToGetRouteFilterRulesDataChangeArrayOutput() GetRouteFilterRulesDataChangeArrayOutput {
+	return o
+}
+
+func (o GetRouteFilterRulesDataChangeArrayOutput) ToGetRouteFilterRulesDataChangeArrayOutputWithContext(ctx context.Context) GetRouteFilterRulesDataChangeArrayOutput {
+	return o
+}
+
+func (o GetRouteFilterRulesDataChangeArrayOutput) Index(i pulumi.IntInput) GetRouteFilterRulesDataChangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouteFilterRulesDataChange {
+		return vs[0].([]GetRouteFilterRulesDataChange)[vs[1].(int)]
+	}).(GetRouteFilterRulesDataChangeOutput)
+}
+
+type GetRouteFilterRulesDataChangeLog struct {
+	// Created by User Key
+	CreatedBy string `pulumi:"createdBy"`
+	// Created by User Email Address
+	CreatedByEmail string `pulumi:"createdByEmail"`
+	// Created by User Full Name
+	CreatedByFullName string `pulumi:"createdByFullName"`
+	// Created by Date and Time
+	CreatedDateTime string `pulumi:"createdDateTime"`
+	// Deleted by User Key
+	DeletedBy string `pulumi:"deletedBy"`
+	// Deleted by User Email Address
+	DeletedByEmail string `pulumi:"deletedByEmail"`
+	// Deleted by User Full Name
+	DeletedByFullName string `pulumi:"deletedByFullName"`
+	// Deleted by Date and Time
+	DeletedDateTime string `pulumi:"deletedDateTime"`
+	// Updated by User Key
+	UpdatedBy string `pulumi:"updatedBy"`
+	// Updated by User Email Address
+	UpdatedByEmail string `pulumi:"updatedByEmail"`
+	// Updated by User Full Name
+	UpdatedByFullName string `pulumi:"updatedByFullName"`
+	// Updated by Date and Time
+	UpdatedDateTime string `pulumi:"updatedDateTime"`
+}
+
+// GetRouteFilterRulesDataChangeLogInput is an input type that accepts GetRouteFilterRulesDataChangeLogArgs and GetRouteFilterRulesDataChangeLogOutput values.
+// You can construct a concrete instance of `GetRouteFilterRulesDataChangeLogInput` via:
+//
+//	GetRouteFilterRulesDataChangeLogArgs{...}
+type GetRouteFilterRulesDataChangeLogInput interface {
+	pulumi.Input
+
+	ToGetRouteFilterRulesDataChangeLogOutput() GetRouteFilterRulesDataChangeLogOutput
+	ToGetRouteFilterRulesDataChangeLogOutputWithContext(context.Context) GetRouteFilterRulesDataChangeLogOutput
+}
+
+type GetRouteFilterRulesDataChangeLogArgs struct {
+	// Created by User Key
+	CreatedBy pulumi.StringInput `pulumi:"createdBy"`
+	// Created by User Email Address
+	CreatedByEmail pulumi.StringInput `pulumi:"createdByEmail"`
+	// Created by User Full Name
+	CreatedByFullName pulumi.StringInput `pulumi:"createdByFullName"`
+	// Created by Date and Time
+	CreatedDateTime pulumi.StringInput `pulumi:"createdDateTime"`
+	// Deleted by User Key
+	DeletedBy pulumi.StringInput `pulumi:"deletedBy"`
+	// Deleted by User Email Address
+	DeletedByEmail pulumi.StringInput `pulumi:"deletedByEmail"`
+	// Deleted by User Full Name
+	DeletedByFullName pulumi.StringInput `pulumi:"deletedByFullName"`
+	// Deleted by Date and Time
+	DeletedDateTime pulumi.StringInput `pulumi:"deletedDateTime"`
+	// Updated by User Key
+	UpdatedBy pulumi.StringInput `pulumi:"updatedBy"`
+	// Updated by User Email Address
+	UpdatedByEmail pulumi.StringInput `pulumi:"updatedByEmail"`
+	// Updated by User Full Name
+	UpdatedByFullName pulumi.StringInput `pulumi:"updatedByFullName"`
+	// Updated by Date and Time
+	UpdatedDateTime pulumi.StringInput `pulumi:"updatedDateTime"`
+}
+
+func (GetRouteFilterRulesDataChangeLogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteFilterRulesDataChangeLog)(nil)).Elem()
+}
+
+func (i GetRouteFilterRulesDataChangeLogArgs) ToGetRouteFilterRulesDataChangeLogOutput() GetRouteFilterRulesDataChangeLogOutput {
+	return i.ToGetRouteFilterRulesDataChangeLogOutputWithContext(context.Background())
+}
+
+func (i GetRouteFilterRulesDataChangeLogArgs) ToGetRouteFilterRulesDataChangeLogOutputWithContext(ctx context.Context) GetRouteFilterRulesDataChangeLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteFilterRulesDataChangeLogOutput)
+}
+
+// GetRouteFilterRulesDataChangeLogArrayInput is an input type that accepts GetRouteFilterRulesDataChangeLogArray and GetRouteFilterRulesDataChangeLogArrayOutput values.
+// You can construct a concrete instance of `GetRouteFilterRulesDataChangeLogArrayInput` via:
+//
+//	GetRouteFilterRulesDataChangeLogArray{ GetRouteFilterRulesDataChangeLogArgs{...} }
+type GetRouteFilterRulesDataChangeLogArrayInput interface {
+	pulumi.Input
+
+	ToGetRouteFilterRulesDataChangeLogArrayOutput() GetRouteFilterRulesDataChangeLogArrayOutput
+	ToGetRouteFilterRulesDataChangeLogArrayOutputWithContext(context.Context) GetRouteFilterRulesDataChangeLogArrayOutput
+}
+
+type GetRouteFilterRulesDataChangeLogArray []GetRouteFilterRulesDataChangeLogInput
+
+func (GetRouteFilterRulesDataChangeLogArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouteFilterRulesDataChangeLog)(nil)).Elem()
+}
+
+func (i GetRouteFilterRulesDataChangeLogArray) ToGetRouteFilterRulesDataChangeLogArrayOutput() GetRouteFilterRulesDataChangeLogArrayOutput {
+	return i.ToGetRouteFilterRulesDataChangeLogArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouteFilterRulesDataChangeLogArray) ToGetRouteFilterRulesDataChangeLogArrayOutputWithContext(ctx context.Context) GetRouteFilterRulesDataChangeLogArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteFilterRulesDataChangeLogArrayOutput)
+}
+
+type GetRouteFilterRulesDataChangeLogOutput struct{ *pulumi.OutputState }
+
+func (GetRouteFilterRulesDataChangeLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteFilterRulesDataChangeLog)(nil)).Elem()
+}
+
+func (o GetRouteFilterRulesDataChangeLogOutput) ToGetRouteFilterRulesDataChangeLogOutput() GetRouteFilterRulesDataChangeLogOutput {
+	return o
+}
+
+func (o GetRouteFilterRulesDataChangeLogOutput) ToGetRouteFilterRulesDataChangeLogOutputWithContext(ctx context.Context) GetRouteFilterRulesDataChangeLogOutput {
+	return o
+}
+
+// Created by User Key
+func (o GetRouteFilterRulesDataChangeLogOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterRulesDataChangeLog) string { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// Created by User Email Address
+func (o GetRouteFilterRulesDataChangeLogOutput) CreatedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterRulesDataChangeLog) string { return v.CreatedByEmail }).(pulumi.StringOutput)
+}
+
+// Created by User Full Name
+func (o GetRouteFilterRulesDataChangeLogOutput) CreatedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterRulesDataChangeLog) string { return v.CreatedByFullName }).(pulumi.StringOutput)
+}
+
+// Created by Date and Time
+func (o GetRouteFilterRulesDataChangeLogOutput) CreatedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterRulesDataChangeLog) string { return v.CreatedDateTime }).(pulumi.StringOutput)
+}
+
+// Deleted by User Key
+func (o GetRouteFilterRulesDataChangeLogOutput) DeletedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterRulesDataChangeLog) string { return v.DeletedBy }).(pulumi.StringOutput)
+}
+
+// Deleted by User Email Address
+func (o GetRouteFilterRulesDataChangeLogOutput) DeletedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterRulesDataChangeLog) string { return v.DeletedByEmail }).(pulumi.StringOutput)
+}
+
+// Deleted by User Full Name
+func (o GetRouteFilterRulesDataChangeLogOutput) DeletedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterRulesDataChangeLog) string { return v.DeletedByFullName }).(pulumi.StringOutput)
+}
+
+// Deleted by Date and Time
+func (o GetRouteFilterRulesDataChangeLogOutput) DeletedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterRulesDataChangeLog) string { return v.DeletedDateTime }).(pulumi.StringOutput)
+}
+
+// Updated by User Key
+func (o GetRouteFilterRulesDataChangeLogOutput) UpdatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterRulesDataChangeLog) string { return v.UpdatedBy }).(pulumi.StringOutput)
+}
+
+// Updated by User Email Address
+func (o GetRouteFilterRulesDataChangeLogOutput) UpdatedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterRulesDataChangeLog) string { return v.UpdatedByEmail }).(pulumi.StringOutput)
+}
+
+// Updated by User Full Name
+func (o GetRouteFilterRulesDataChangeLogOutput) UpdatedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterRulesDataChangeLog) string { return v.UpdatedByFullName }).(pulumi.StringOutput)
+}
+
+// Updated by Date and Time
+func (o GetRouteFilterRulesDataChangeLogOutput) UpdatedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterRulesDataChangeLog) string { return v.UpdatedDateTime }).(pulumi.StringOutput)
+}
+
+type GetRouteFilterRulesDataChangeLogArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouteFilterRulesDataChangeLogArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouteFilterRulesDataChangeLog)(nil)).Elem()
+}
+
+func (o GetRouteFilterRulesDataChangeLogArrayOutput) ToGetRouteFilterRulesDataChangeLogArrayOutput() GetRouteFilterRulesDataChangeLogArrayOutput {
+	return o
+}
+
+func (o GetRouteFilterRulesDataChangeLogArrayOutput) ToGetRouteFilterRulesDataChangeLogArrayOutputWithContext(ctx context.Context) GetRouteFilterRulesDataChangeLogArrayOutput {
+	return o
+}
+
+func (o GetRouteFilterRulesDataChangeLogArrayOutput) Index(i pulumi.IntInput) GetRouteFilterRulesDataChangeLogOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouteFilterRulesDataChangeLog {
+		return vs[0].([]GetRouteFilterRulesDataChangeLog)[vs[1].(int)]
+	}).(GetRouteFilterRulesDataChangeLogOutput)
+}
+
+type GetRouteFilterRulesPagination struct {
+	// Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+	Limit int `pulumi:"limit"`
+	// URL relative to the last item in the response.
+	Next string `pulumi:"next"`
+	// The page offset for the pagination request. Index of the first element. Default is 0.
+	Offset int `pulumi:"offset"`
+	// URL relative to the first item in the response.
+	Previous string `pulumi:"previous"`
+	// Total number of elements returned.
+	Total int `pulumi:"total"`
+}
+
+// GetRouteFilterRulesPaginationInput is an input type that accepts GetRouteFilterRulesPaginationArgs and GetRouteFilterRulesPaginationOutput values.
+// You can construct a concrete instance of `GetRouteFilterRulesPaginationInput` via:
+//
+//	GetRouteFilterRulesPaginationArgs{...}
+type GetRouteFilterRulesPaginationInput interface {
+	pulumi.Input
+
+	ToGetRouteFilterRulesPaginationOutput() GetRouteFilterRulesPaginationOutput
+	ToGetRouteFilterRulesPaginationOutputWithContext(context.Context) GetRouteFilterRulesPaginationOutput
+}
+
+type GetRouteFilterRulesPaginationArgs struct {
+	// Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+	Limit pulumi.IntInput `pulumi:"limit"`
+	// URL relative to the last item in the response.
+	Next pulumi.StringInput `pulumi:"next"`
+	// The page offset for the pagination request. Index of the first element. Default is 0.
+	Offset pulumi.IntInput `pulumi:"offset"`
+	// URL relative to the first item in the response.
+	Previous pulumi.StringInput `pulumi:"previous"`
+	// Total number of elements returned.
+	Total pulumi.IntInput `pulumi:"total"`
+}
+
+func (GetRouteFilterRulesPaginationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteFilterRulesPagination)(nil)).Elem()
+}
+
+func (i GetRouteFilterRulesPaginationArgs) ToGetRouteFilterRulesPaginationOutput() GetRouteFilterRulesPaginationOutput {
+	return i.ToGetRouteFilterRulesPaginationOutputWithContext(context.Background())
+}
+
+func (i GetRouteFilterRulesPaginationArgs) ToGetRouteFilterRulesPaginationOutputWithContext(ctx context.Context) GetRouteFilterRulesPaginationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteFilterRulesPaginationOutput)
+}
+
+// GetRouteFilterRulesPaginationArrayInput is an input type that accepts GetRouteFilterRulesPaginationArray and GetRouteFilterRulesPaginationArrayOutput values.
+// You can construct a concrete instance of `GetRouteFilterRulesPaginationArrayInput` via:
+//
+//	GetRouteFilterRulesPaginationArray{ GetRouteFilterRulesPaginationArgs{...} }
+type GetRouteFilterRulesPaginationArrayInput interface {
+	pulumi.Input
+
+	ToGetRouteFilterRulesPaginationArrayOutput() GetRouteFilterRulesPaginationArrayOutput
+	ToGetRouteFilterRulesPaginationArrayOutputWithContext(context.Context) GetRouteFilterRulesPaginationArrayOutput
+}
+
+type GetRouteFilterRulesPaginationArray []GetRouteFilterRulesPaginationInput
+
+func (GetRouteFilterRulesPaginationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouteFilterRulesPagination)(nil)).Elem()
+}
+
+func (i GetRouteFilterRulesPaginationArray) ToGetRouteFilterRulesPaginationArrayOutput() GetRouteFilterRulesPaginationArrayOutput {
+	return i.ToGetRouteFilterRulesPaginationArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouteFilterRulesPaginationArray) ToGetRouteFilterRulesPaginationArrayOutputWithContext(ctx context.Context) GetRouteFilterRulesPaginationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteFilterRulesPaginationArrayOutput)
+}
+
+type GetRouteFilterRulesPaginationOutput struct{ *pulumi.OutputState }
+
+func (GetRouteFilterRulesPaginationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteFilterRulesPagination)(nil)).Elem()
+}
+
+func (o GetRouteFilterRulesPaginationOutput) ToGetRouteFilterRulesPaginationOutput() GetRouteFilterRulesPaginationOutput {
+	return o
+}
+
+func (o GetRouteFilterRulesPaginationOutput) ToGetRouteFilterRulesPaginationOutputWithContext(ctx context.Context) GetRouteFilterRulesPaginationOutput {
+	return o
+}
+
+// Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+func (o GetRouteFilterRulesPaginationOutput) Limit() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRouteFilterRulesPagination) int { return v.Limit }).(pulumi.IntOutput)
+}
+
+// URL relative to the last item in the response.
+func (o GetRouteFilterRulesPaginationOutput) Next() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterRulesPagination) string { return v.Next }).(pulumi.StringOutput)
+}
+
+// The page offset for the pagination request. Index of the first element. Default is 0.
+func (o GetRouteFilterRulesPaginationOutput) Offset() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRouteFilterRulesPagination) int { return v.Offset }).(pulumi.IntOutput)
+}
+
+// URL relative to the first item in the response.
+func (o GetRouteFilterRulesPaginationOutput) Previous() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterRulesPagination) string { return v.Previous }).(pulumi.StringOutput)
+}
+
+// Total number of elements returned.
+func (o GetRouteFilterRulesPaginationOutput) Total() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRouteFilterRulesPagination) int { return v.Total }).(pulumi.IntOutput)
+}
+
+type GetRouteFilterRulesPaginationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouteFilterRulesPaginationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouteFilterRulesPagination)(nil)).Elem()
+}
+
+func (o GetRouteFilterRulesPaginationArrayOutput) ToGetRouteFilterRulesPaginationArrayOutput() GetRouteFilterRulesPaginationArrayOutput {
+	return o
+}
+
+func (o GetRouteFilterRulesPaginationArrayOutput) ToGetRouteFilterRulesPaginationArrayOutputWithContext(ctx context.Context) GetRouteFilterRulesPaginationArrayOutput {
+	return o
+}
+
+func (o GetRouteFilterRulesPaginationArrayOutput) Index(i pulumi.IntInput) GetRouteFilterRulesPaginationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouteFilterRulesPagination {
+		return vs[0].([]GetRouteFilterRulesPagination)[vs[1].(int)]
+	}).(GetRouteFilterRulesPaginationOutput)
+}
+
+type GetRouteFiltersData struct {
+	ChangeLogs []GetRouteFiltersDataChangeLog `pulumi:"changeLogs"`
+	// An object with the details of the previous change applied on the Route Filter
+	Changes []GetRouteFiltersDataChange `pulumi:"changes"`
+	// The number of Fabric Connections that this Route Filter is attached to
+	ConnectionsCount int `pulumi:"connectionsCount"`
+	// Optional description to add to the Route Filter you will be creating
+	Description string `pulumi:"description"`
+	// Route filter URI
+	Href string `pulumi:"href"`
+	// Name of the Route Filter
+	Name string `pulumi:"name"`
+	// The action that will be taken on ip ranges that don't match the rules present within the Route Filter
+	NotMatchedRuleAction string `pulumi:"notMatchedRuleAction"`
+	// The Project object that contains projectId and href that is related to the Fabric Project containing connections the Route Filter can be attached to
+	Projects []GetRouteFiltersDataProject `pulumi:"projects"`
+	// The number of Route Filter Rules attached to this Route Filter
+	RulesCount int `pulumi:"rulesCount"`
+	// State of the Route Filter in its lifecycle
+	State string `pulumi:"state"`
+	// Route Filter Type. One of [ "BGP_IPv4_PREFIX_FILTER", "BGP_IPv6_PREFIX_FILTER" ]
+	Type string `pulumi:"type"`
+	// Equinix Assigned ID for Route Filter
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetRouteFiltersDataInput is an input type that accepts GetRouteFiltersDataArgs and GetRouteFiltersDataOutput values.
+// You can construct a concrete instance of `GetRouteFiltersDataInput` via:
+//
+//	GetRouteFiltersDataArgs{...}
+type GetRouteFiltersDataInput interface {
+	pulumi.Input
+
+	ToGetRouteFiltersDataOutput() GetRouteFiltersDataOutput
+	ToGetRouteFiltersDataOutputWithContext(context.Context) GetRouteFiltersDataOutput
+}
+
+type GetRouteFiltersDataArgs struct {
+	ChangeLogs GetRouteFiltersDataChangeLogArrayInput `pulumi:"changeLogs"`
+	// An object with the details of the previous change applied on the Route Filter
+	Changes GetRouteFiltersDataChangeArrayInput `pulumi:"changes"`
+	// The number of Fabric Connections that this Route Filter is attached to
+	ConnectionsCount pulumi.IntInput `pulumi:"connectionsCount"`
+	// Optional description to add to the Route Filter you will be creating
+	Description pulumi.StringInput `pulumi:"description"`
+	// Route filter URI
+	Href pulumi.StringInput `pulumi:"href"`
+	// Name of the Route Filter
+	Name pulumi.StringInput `pulumi:"name"`
+	// The action that will be taken on ip ranges that don't match the rules present within the Route Filter
+	NotMatchedRuleAction pulumi.StringInput `pulumi:"notMatchedRuleAction"`
+	// The Project object that contains projectId and href that is related to the Fabric Project containing connections the Route Filter can be attached to
+	Projects GetRouteFiltersDataProjectArrayInput `pulumi:"projects"`
+	// The number of Route Filter Rules attached to this Route Filter
+	RulesCount pulumi.IntInput `pulumi:"rulesCount"`
+	// State of the Route Filter in its lifecycle
+	State pulumi.StringInput `pulumi:"state"`
+	// Route Filter Type. One of [ "BGP_IPv4_PREFIX_FILTER", "BGP_IPv6_PREFIX_FILTER" ]
+	Type pulumi.StringInput `pulumi:"type"`
+	// Equinix Assigned ID for Route Filter
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetRouteFiltersDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteFiltersData)(nil)).Elem()
+}
+
+func (i GetRouteFiltersDataArgs) ToGetRouteFiltersDataOutput() GetRouteFiltersDataOutput {
+	return i.ToGetRouteFiltersDataOutputWithContext(context.Background())
+}
+
+func (i GetRouteFiltersDataArgs) ToGetRouteFiltersDataOutputWithContext(ctx context.Context) GetRouteFiltersDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteFiltersDataOutput)
+}
+
+// GetRouteFiltersDataArrayInput is an input type that accepts GetRouteFiltersDataArray and GetRouteFiltersDataArrayOutput values.
+// You can construct a concrete instance of `GetRouteFiltersDataArrayInput` via:
+//
+//	GetRouteFiltersDataArray{ GetRouteFiltersDataArgs{...} }
+type GetRouteFiltersDataArrayInput interface {
+	pulumi.Input
+
+	ToGetRouteFiltersDataArrayOutput() GetRouteFiltersDataArrayOutput
+	ToGetRouteFiltersDataArrayOutputWithContext(context.Context) GetRouteFiltersDataArrayOutput
+}
+
+type GetRouteFiltersDataArray []GetRouteFiltersDataInput
+
+func (GetRouteFiltersDataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouteFiltersData)(nil)).Elem()
+}
+
+func (i GetRouteFiltersDataArray) ToGetRouteFiltersDataArrayOutput() GetRouteFiltersDataArrayOutput {
+	return i.ToGetRouteFiltersDataArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouteFiltersDataArray) ToGetRouteFiltersDataArrayOutputWithContext(ctx context.Context) GetRouteFiltersDataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteFiltersDataArrayOutput)
+}
+
+type GetRouteFiltersDataOutput struct{ *pulumi.OutputState }
+
+func (GetRouteFiltersDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteFiltersData)(nil)).Elem()
+}
+
+func (o GetRouteFiltersDataOutput) ToGetRouteFiltersDataOutput() GetRouteFiltersDataOutput {
+	return o
+}
+
+func (o GetRouteFiltersDataOutput) ToGetRouteFiltersDataOutputWithContext(ctx context.Context) GetRouteFiltersDataOutput {
+	return o
+}
+
+func (o GetRouteFiltersDataOutput) ChangeLogs() GetRouteFiltersDataChangeLogArrayOutput {
+	return o.ApplyT(func(v GetRouteFiltersData) []GetRouteFiltersDataChangeLog { return v.ChangeLogs }).(GetRouteFiltersDataChangeLogArrayOutput)
+}
+
+// An object with the details of the previous change applied on the Route Filter
+func (o GetRouteFiltersDataOutput) Changes() GetRouteFiltersDataChangeArrayOutput {
+	return o.ApplyT(func(v GetRouteFiltersData) []GetRouteFiltersDataChange { return v.Changes }).(GetRouteFiltersDataChangeArrayOutput)
+}
+
+// The number of Fabric Connections that this Route Filter is attached to
+func (o GetRouteFiltersDataOutput) ConnectionsCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRouteFiltersData) int { return v.ConnectionsCount }).(pulumi.IntOutput)
+}
+
+// Optional description to add to the Route Filter you will be creating
+func (o GetRouteFiltersDataOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFiltersData) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Route filter URI
+func (o GetRouteFiltersDataOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFiltersData) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// Name of the Route Filter
+func (o GetRouteFiltersDataOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFiltersData) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The action that will be taken on ip ranges that don't match the rules present within the Route Filter
+func (o GetRouteFiltersDataOutput) NotMatchedRuleAction() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFiltersData) string { return v.NotMatchedRuleAction }).(pulumi.StringOutput)
+}
+
+// The Project object that contains projectId and href that is related to the Fabric Project containing connections the Route Filter can be attached to
+func (o GetRouteFiltersDataOutput) Projects() GetRouteFiltersDataProjectArrayOutput {
+	return o.ApplyT(func(v GetRouteFiltersData) []GetRouteFiltersDataProject { return v.Projects }).(GetRouteFiltersDataProjectArrayOutput)
+}
+
+// The number of Route Filter Rules attached to this Route Filter
+func (o GetRouteFiltersDataOutput) RulesCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRouteFiltersData) int { return v.RulesCount }).(pulumi.IntOutput)
+}
+
+// State of the Route Filter in its lifecycle
+func (o GetRouteFiltersDataOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFiltersData) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Route Filter Type. One of [ "BGP_IPv4_PREFIX_FILTER", "BGP_IPv6_PREFIX_FILTER" ]
+func (o GetRouteFiltersDataOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFiltersData) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Equinix Assigned ID for Route Filter
+func (o GetRouteFiltersDataOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFiltersData) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type GetRouteFiltersDataArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouteFiltersDataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouteFiltersData)(nil)).Elem()
+}
+
+func (o GetRouteFiltersDataArrayOutput) ToGetRouteFiltersDataArrayOutput() GetRouteFiltersDataArrayOutput {
+	return o
+}
+
+func (o GetRouteFiltersDataArrayOutput) ToGetRouteFiltersDataArrayOutputWithContext(ctx context.Context) GetRouteFiltersDataArrayOutput {
+	return o
+}
+
+func (o GetRouteFiltersDataArrayOutput) Index(i pulumi.IntInput) GetRouteFiltersDataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouteFiltersData {
+		return vs[0].([]GetRouteFiltersData)[vs[1].(int)]
+	}).(GetRouteFiltersDataOutput)
+}
+
+type GetRouteFiltersDataChange struct {
+	// The URI of the previous Route Filter Change
+	Href string `pulumi:"href"`
+	// Type of change. One of [ "BGP_IPv4_PREFIX_FILTER_UPDATE","BGP_IPv4_PREFIX_FILTER_CREATION","BGP_IPv4_PREFIX_FILTER_DELETION","BGP_IPv6_PREFIX_FILTER_UPDATE","BGP_IPv6_PREFIX_FILTER_CREATION","BGP_IPv6_PREFIX_FILTER_DELETION" ]
+	Type string `pulumi:"type"`
+	// Unique identifier for the previous change
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetRouteFiltersDataChangeInput is an input type that accepts GetRouteFiltersDataChangeArgs and GetRouteFiltersDataChangeOutput values.
+// You can construct a concrete instance of `GetRouteFiltersDataChangeInput` via:
+//
+//	GetRouteFiltersDataChangeArgs{...}
+type GetRouteFiltersDataChangeInput interface {
+	pulumi.Input
+
+	ToGetRouteFiltersDataChangeOutput() GetRouteFiltersDataChangeOutput
+	ToGetRouteFiltersDataChangeOutputWithContext(context.Context) GetRouteFiltersDataChangeOutput
+}
+
+type GetRouteFiltersDataChangeArgs struct {
+	// The URI of the previous Route Filter Change
+	Href pulumi.StringInput `pulumi:"href"`
+	// Type of change. One of [ "BGP_IPv4_PREFIX_FILTER_UPDATE","BGP_IPv4_PREFIX_FILTER_CREATION","BGP_IPv4_PREFIX_FILTER_DELETION","BGP_IPv6_PREFIX_FILTER_UPDATE","BGP_IPv6_PREFIX_FILTER_CREATION","BGP_IPv6_PREFIX_FILTER_DELETION" ]
+	Type pulumi.StringInput `pulumi:"type"`
+	// Unique identifier for the previous change
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetRouteFiltersDataChangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteFiltersDataChange)(nil)).Elem()
+}
+
+func (i GetRouteFiltersDataChangeArgs) ToGetRouteFiltersDataChangeOutput() GetRouteFiltersDataChangeOutput {
+	return i.ToGetRouteFiltersDataChangeOutputWithContext(context.Background())
+}
+
+func (i GetRouteFiltersDataChangeArgs) ToGetRouteFiltersDataChangeOutputWithContext(ctx context.Context) GetRouteFiltersDataChangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteFiltersDataChangeOutput)
+}
+
+// GetRouteFiltersDataChangeArrayInput is an input type that accepts GetRouteFiltersDataChangeArray and GetRouteFiltersDataChangeArrayOutput values.
+// You can construct a concrete instance of `GetRouteFiltersDataChangeArrayInput` via:
+//
+//	GetRouteFiltersDataChangeArray{ GetRouteFiltersDataChangeArgs{...} }
+type GetRouteFiltersDataChangeArrayInput interface {
+	pulumi.Input
+
+	ToGetRouteFiltersDataChangeArrayOutput() GetRouteFiltersDataChangeArrayOutput
+	ToGetRouteFiltersDataChangeArrayOutputWithContext(context.Context) GetRouteFiltersDataChangeArrayOutput
+}
+
+type GetRouteFiltersDataChangeArray []GetRouteFiltersDataChangeInput
+
+func (GetRouteFiltersDataChangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouteFiltersDataChange)(nil)).Elem()
+}
+
+func (i GetRouteFiltersDataChangeArray) ToGetRouteFiltersDataChangeArrayOutput() GetRouteFiltersDataChangeArrayOutput {
+	return i.ToGetRouteFiltersDataChangeArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouteFiltersDataChangeArray) ToGetRouteFiltersDataChangeArrayOutputWithContext(ctx context.Context) GetRouteFiltersDataChangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteFiltersDataChangeArrayOutput)
+}
+
+type GetRouteFiltersDataChangeOutput struct{ *pulumi.OutputState }
+
+func (GetRouteFiltersDataChangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteFiltersDataChange)(nil)).Elem()
+}
+
+func (o GetRouteFiltersDataChangeOutput) ToGetRouteFiltersDataChangeOutput() GetRouteFiltersDataChangeOutput {
+	return o
+}
+
+func (o GetRouteFiltersDataChangeOutput) ToGetRouteFiltersDataChangeOutputWithContext(ctx context.Context) GetRouteFiltersDataChangeOutput {
+	return o
+}
+
+// The URI of the previous Route Filter Change
+func (o GetRouteFiltersDataChangeOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFiltersDataChange) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// Type of change. One of [ "BGP_IPv4_PREFIX_FILTER_UPDATE","BGP_IPv4_PREFIX_FILTER_CREATION","BGP_IPv4_PREFIX_FILTER_DELETION","BGP_IPv6_PREFIX_FILTER_UPDATE","BGP_IPv6_PREFIX_FILTER_CREATION","BGP_IPv6_PREFIX_FILTER_DELETION" ]
+func (o GetRouteFiltersDataChangeOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFiltersDataChange) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Unique identifier for the previous change
+func (o GetRouteFiltersDataChangeOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFiltersDataChange) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type GetRouteFiltersDataChangeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouteFiltersDataChangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouteFiltersDataChange)(nil)).Elem()
+}
+
+func (o GetRouteFiltersDataChangeArrayOutput) ToGetRouteFiltersDataChangeArrayOutput() GetRouteFiltersDataChangeArrayOutput {
+	return o
+}
+
+func (o GetRouteFiltersDataChangeArrayOutput) ToGetRouteFiltersDataChangeArrayOutputWithContext(ctx context.Context) GetRouteFiltersDataChangeArrayOutput {
+	return o
+}
+
+func (o GetRouteFiltersDataChangeArrayOutput) Index(i pulumi.IntInput) GetRouteFiltersDataChangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouteFiltersDataChange {
+		return vs[0].([]GetRouteFiltersDataChange)[vs[1].(int)]
+	}).(GetRouteFiltersDataChangeOutput)
+}
+
+type GetRouteFiltersDataChangeLog struct {
+	// Created by User Key
+	CreatedBy string `pulumi:"createdBy"`
+	// Created by User Email Address
+	CreatedByEmail string `pulumi:"createdByEmail"`
+	// Created by User Full Name
+	CreatedByFullName string `pulumi:"createdByFullName"`
+	// Created by Date and Time
+	CreatedDateTime string `pulumi:"createdDateTime"`
+	// Deleted by User Key
+	DeletedBy string `pulumi:"deletedBy"`
+	// Deleted by User Email Address
+	DeletedByEmail string `pulumi:"deletedByEmail"`
+	// Deleted by User Full Name
+	DeletedByFullName string `pulumi:"deletedByFullName"`
+	// Deleted by Date and Time
+	DeletedDateTime string `pulumi:"deletedDateTime"`
+	// Updated by User Key
+	UpdatedBy string `pulumi:"updatedBy"`
+	// Updated by User Email Address
+	UpdatedByEmail string `pulumi:"updatedByEmail"`
+	// Updated by User Full Name
+	UpdatedByFullName string `pulumi:"updatedByFullName"`
+	// Updated by Date and Time
+	UpdatedDateTime string `pulumi:"updatedDateTime"`
+}
+
+// GetRouteFiltersDataChangeLogInput is an input type that accepts GetRouteFiltersDataChangeLogArgs and GetRouteFiltersDataChangeLogOutput values.
+// You can construct a concrete instance of `GetRouteFiltersDataChangeLogInput` via:
+//
+//	GetRouteFiltersDataChangeLogArgs{...}
+type GetRouteFiltersDataChangeLogInput interface {
+	pulumi.Input
+
+	ToGetRouteFiltersDataChangeLogOutput() GetRouteFiltersDataChangeLogOutput
+	ToGetRouteFiltersDataChangeLogOutputWithContext(context.Context) GetRouteFiltersDataChangeLogOutput
+}
+
+type GetRouteFiltersDataChangeLogArgs struct {
+	// Created by User Key
+	CreatedBy pulumi.StringInput `pulumi:"createdBy"`
+	// Created by User Email Address
+	CreatedByEmail pulumi.StringInput `pulumi:"createdByEmail"`
+	// Created by User Full Name
+	CreatedByFullName pulumi.StringInput `pulumi:"createdByFullName"`
+	// Created by Date and Time
+	CreatedDateTime pulumi.StringInput `pulumi:"createdDateTime"`
+	// Deleted by User Key
+	DeletedBy pulumi.StringInput `pulumi:"deletedBy"`
+	// Deleted by User Email Address
+	DeletedByEmail pulumi.StringInput `pulumi:"deletedByEmail"`
+	// Deleted by User Full Name
+	DeletedByFullName pulumi.StringInput `pulumi:"deletedByFullName"`
+	// Deleted by Date and Time
+	DeletedDateTime pulumi.StringInput `pulumi:"deletedDateTime"`
+	// Updated by User Key
+	UpdatedBy pulumi.StringInput `pulumi:"updatedBy"`
+	// Updated by User Email Address
+	UpdatedByEmail pulumi.StringInput `pulumi:"updatedByEmail"`
+	// Updated by User Full Name
+	UpdatedByFullName pulumi.StringInput `pulumi:"updatedByFullName"`
+	// Updated by Date and Time
+	UpdatedDateTime pulumi.StringInput `pulumi:"updatedDateTime"`
+}
+
+func (GetRouteFiltersDataChangeLogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteFiltersDataChangeLog)(nil)).Elem()
+}
+
+func (i GetRouteFiltersDataChangeLogArgs) ToGetRouteFiltersDataChangeLogOutput() GetRouteFiltersDataChangeLogOutput {
+	return i.ToGetRouteFiltersDataChangeLogOutputWithContext(context.Background())
+}
+
+func (i GetRouteFiltersDataChangeLogArgs) ToGetRouteFiltersDataChangeLogOutputWithContext(ctx context.Context) GetRouteFiltersDataChangeLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteFiltersDataChangeLogOutput)
+}
+
+// GetRouteFiltersDataChangeLogArrayInput is an input type that accepts GetRouteFiltersDataChangeLogArray and GetRouteFiltersDataChangeLogArrayOutput values.
+// You can construct a concrete instance of `GetRouteFiltersDataChangeLogArrayInput` via:
+//
+//	GetRouteFiltersDataChangeLogArray{ GetRouteFiltersDataChangeLogArgs{...} }
+type GetRouteFiltersDataChangeLogArrayInput interface {
+	pulumi.Input
+
+	ToGetRouteFiltersDataChangeLogArrayOutput() GetRouteFiltersDataChangeLogArrayOutput
+	ToGetRouteFiltersDataChangeLogArrayOutputWithContext(context.Context) GetRouteFiltersDataChangeLogArrayOutput
+}
+
+type GetRouteFiltersDataChangeLogArray []GetRouteFiltersDataChangeLogInput
+
+func (GetRouteFiltersDataChangeLogArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouteFiltersDataChangeLog)(nil)).Elem()
+}
+
+func (i GetRouteFiltersDataChangeLogArray) ToGetRouteFiltersDataChangeLogArrayOutput() GetRouteFiltersDataChangeLogArrayOutput {
+	return i.ToGetRouteFiltersDataChangeLogArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouteFiltersDataChangeLogArray) ToGetRouteFiltersDataChangeLogArrayOutputWithContext(ctx context.Context) GetRouteFiltersDataChangeLogArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteFiltersDataChangeLogArrayOutput)
+}
+
+type GetRouteFiltersDataChangeLogOutput struct{ *pulumi.OutputState }
+
+func (GetRouteFiltersDataChangeLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteFiltersDataChangeLog)(nil)).Elem()
+}
+
+func (o GetRouteFiltersDataChangeLogOutput) ToGetRouteFiltersDataChangeLogOutput() GetRouteFiltersDataChangeLogOutput {
+	return o
+}
+
+func (o GetRouteFiltersDataChangeLogOutput) ToGetRouteFiltersDataChangeLogOutputWithContext(ctx context.Context) GetRouteFiltersDataChangeLogOutput {
+	return o
+}
+
+// Created by User Key
+func (o GetRouteFiltersDataChangeLogOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFiltersDataChangeLog) string { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// Created by User Email Address
+func (o GetRouteFiltersDataChangeLogOutput) CreatedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFiltersDataChangeLog) string { return v.CreatedByEmail }).(pulumi.StringOutput)
+}
+
+// Created by User Full Name
+func (o GetRouteFiltersDataChangeLogOutput) CreatedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFiltersDataChangeLog) string { return v.CreatedByFullName }).(pulumi.StringOutput)
+}
+
+// Created by Date and Time
+func (o GetRouteFiltersDataChangeLogOutput) CreatedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFiltersDataChangeLog) string { return v.CreatedDateTime }).(pulumi.StringOutput)
+}
+
+// Deleted by User Key
+func (o GetRouteFiltersDataChangeLogOutput) DeletedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFiltersDataChangeLog) string { return v.DeletedBy }).(pulumi.StringOutput)
+}
+
+// Deleted by User Email Address
+func (o GetRouteFiltersDataChangeLogOutput) DeletedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFiltersDataChangeLog) string { return v.DeletedByEmail }).(pulumi.StringOutput)
+}
+
+// Deleted by User Full Name
+func (o GetRouteFiltersDataChangeLogOutput) DeletedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFiltersDataChangeLog) string { return v.DeletedByFullName }).(pulumi.StringOutput)
+}
+
+// Deleted by Date and Time
+func (o GetRouteFiltersDataChangeLogOutput) DeletedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFiltersDataChangeLog) string { return v.DeletedDateTime }).(pulumi.StringOutput)
+}
+
+// Updated by User Key
+func (o GetRouteFiltersDataChangeLogOutput) UpdatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFiltersDataChangeLog) string { return v.UpdatedBy }).(pulumi.StringOutput)
+}
+
+// Updated by User Email Address
+func (o GetRouteFiltersDataChangeLogOutput) UpdatedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFiltersDataChangeLog) string { return v.UpdatedByEmail }).(pulumi.StringOutput)
+}
+
+// Updated by User Full Name
+func (o GetRouteFiltersDataChangeLogOutput) UpdatedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFiltersDataChangeLog) string { return v.UpdatedByFullName }).(pulumi.StringOutput)
+}
+
+// Updated by Date and Time
+func (o GetRouteFiltersDataChangeLogOutput) UpdatedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFiltersDataChangeLog) string { return v.UpdatedDateTime }).(pulumi.StringOutput)
+}
+
+type GetRouteFiltersDataChangeLogArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouteFiltersDataChangeLogArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouteFiltersDataChangeLog)(nil)).Elem()
+}
+
+func (o GetRouteFiltersDataChangeLogArrayOutput) ToGetRouteFiltersDataChangeLogArrayOutput() GetRouteFiltersDataChangeLogArrayOutput {
+	return o
+}
+
+func (o GetRouteFiltersDataChangeLogArrayOutput) ToGetRouteFiltersDataChangeLogArrayOutputWithContext(ctx context.Context) GetRouteFiltersDataChangeLogArrayOutput {
+	return o
+}
+
+func (o GetRouteFiltersDataChangeLogArrayOutput) Index(i pulumi.IntInput) GetRouteFiltersDataChangeLogOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouteFiltersDataChangeLog {
+		return vs[0].([]GetRouteFiltersDataChangeLog)[vs[1].(int)]
+	}).(GetRouteFiltersDataChangeLogOutput)
+}
+
+type GetRouteFiltersDataProject struct {
+	// URI of the Fabric Project
+	Href string `pulumi:"href"`
+	// Project id associated with Fabric Project
+	ProjectId string `pulumi:"projectId"`
+}
+
+// GetRouteFiltersDataProjectInput is an input type that accepts GetRouteFiltersDataProjectArgs and GetRouteFiltersDataProjectOutput values.
+// You can construct a concrete instance of `GetRouteFiltersDataProjectInput` via:
+//
+//	GetRouteFiltersDataProjectArgs{...}
+type GetRouteFiltersDataProjectInput interface {
+	pulumi.Input
+
+	ToGetRouteFiltersDataProjectOutput() GetRouteFiltersDataProjectOutput
+	ToGetRouteFiltersDataProjectOutputWithContext(context.Context) GetRouteFiltersDataProjectOutput
+}
+
+type GetRouteFiltersDataProjectArgs struct {
+	// URI of the Fabric Project
+	Href pulumi.StringInput `pulumi:"href"`
+	// Project id associated with Fabric Project
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+}
+
+func (GetRouteFiltersDataProjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteFiltersDataProject)(nil)).Elem()
+}
+
+func (i GetRouteFiltersDataProjectArgs) ToGetRouteFiltersDataProjectOutput() GetRouteFiltersDataProjectOutput {
+	return i.ToGetRouteFiltersDataProjectOutputWithContext(context.Background())
+}
+
+func (i GetRouteFiltersDataProjectArgs) ToGetRouteFiltersDataProjectOutputWithContext(ctx context.Context) GetRouteFiltersDataProjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteFiltersDataProjectOutput)
+}
+
+// GetRouteFiltersDataProjectArrayInput is an input type that accepts GetRouteFiltersDataProjectArray and GetRouteFiltersDataProjectArrayOutput values.
+// You can construct a concrete instance of `GetRouteFiltersDataProjectArrayInput` via:
+//
+//	GetRouteFiltersDataProjectArray{ GetRouteFiltersDataProjectArgs{...} }
+type GetRouteFiltersDataProjectArrayInput interface {
+	pulumi.Input
+
+	ToGetRouteFiltersDataProjectArrayOutput() GetRouteFiltersDataProjectArrayOutput
+	ToGetRouteFiltersDataProjectArrayOutputWithContext(context.Context) GetRouteFiltersDataProjectArrayOutput
+}
+
+type GetRouteFiltersDataProjectArray []GetRouteFiltersDataProjectInput
+
+func (GetRouteFiltersDataProjectArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouteFiltersDataProject)(nil)).Elem()
+}
+
+func (i GetRouteFiltersDataProjectArray) ToGetRouteFiltersDataProjectArrayOutput() GetRouteFiltersDataProjectArrayOutput {
+	return i.ToGetRouteFiltersDataProjectArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouteFiltersDataProjectArray) ToGetRouteFiltersDataProjectArrayOutputWithContext(ctx context.Context) GetRouteFiltersDataProjectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteFiltersDataProjectArrayOutput)
+}
+
+type GetRouteFiltersDataProjectOutput struct{ *pulumi.OutputState }
+
+func (GetRouteFiltersDataProjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteFiltersDataProject)(nil)).Elem()
+}
+
+func (o GetRouteFiltersDataProjectOutput) ToGetRouteFiltersDataProjectOutput() GetRouteFiltersDataProjectOutput {
+	return o
+}
+
+func (o GetRouteFiltersDataProjectOutput) ToGetRouteFiltersDataProjectOutputWithContext(ctx context.Context) GetRouteFiltersDataProjectOutput {
+	return o
+}
+
+// URI of the Fabric Project
+func (o GetRouteFiltersDataProjectOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFiltersDataProject) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// Project id associated with Fabric Project
+func (o GetRouteFiltersDataProjectOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFiltersDataProject) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+type GetRouteFiltersDataProjectArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouteFiltersDataProjectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouteFiltersDataProject)(nil)).Elem()
+}
+
+func (o GetRouteFiltersDataProjectArrayOutput) ToGetRouteFiltersDataProjectArrayOutput() GetRouteFiltersDataProjectArrayOutput {
+	return o
+}
+
+func (o GetRouteFiltersDataProjectArrayOutput) ToGetRouteFiltersDataProjectArrayOutputWithContext(ctx context.Context) GetRouteFiltersDataProjectArrayOutput {
+	return o
+}
+
+func (o GetRouteFiltersDataProjectArrayOutput) Index(i pulumi.IntInput) GetRouteFiltersDataProjectOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouteFiltersDataProject {
+		return vs[0].([]GetRouteFiltersDataProject)[vs[1].(int)]
+	}).(GetRouteFiltersDataProjectOutput)
+}
+
+type GetRouteFiltersFilter struct {
+	// Possible operators to use on the filter property. Can be one of the following: [ "=", "!=", "[NOT] LIKE", "[NOT] IN", "ILIKE" ]
+	Operator string `pulumi:"operator"`
+	// The API response property which you want to filter your request on. Can be one of the following: "/type", "/name", "/project/projectId", "/uuid", "/state"
+	Property string `pulumi:"property"`
+	// The values that you want to apply the property+operator combination to in order to filter your data search
+	Values []string `pulumi:"values"`
+}
+
+// GetRouteFiltersFilterInput is an input type that accepts GetRouteFiltersFilterArgs and GetRouteFiltersFilterOutput values.
+// You can construct a concrete instance of `GetRouteFiltersFilterInput` via:
+//
+//	GetRouteFiltersFilterArgs{...}
+type GetRouteFiltersFilterInput interface {
+	pulumi.Input
+
+	ToGetRouteFiltersFilterOutput() GetRouteFiltersFilterOutput
+	ToGetRouteFiltersFilterOutputWithContext(context.Context) GetRouteFiltersFilterOutput
+}
+
+type GetRouteFiltersFilterArgs struct {
+	// Possible operators to use on the filter property. Can be one of the following: [ "=", "!=", "[NOT] LIKE", "[NOT] IN", "ILIKE" ]
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// The API response property which you want to filter your request on. Can be one of the following: "/type", "/name", "/project/projectId", "/uuid", "/state"
+	Property pulumi.StringInput `pulumi:"property"`
+	// The values that you want to apply the property+operator combination to in order to filter your data search
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetRouteFiltersFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteFiltersFilter)(nil)).Elem()
+}
+
+func (i GetRouteFiltersFilterArgs) ToGetRouteFiltersFilterOutput() GetRouteFiltersFilterOutput {
+	return i.ToGetRouteFiltersFilterOutputWithContext(context.Background())
+}
+
+func (i GetRouteFiltersFilterArgs) ToGetRouteFiltersFilterOutputWithContext(ctx context.Context) GetRouteFiltersFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteFiltersFilterOutput)
+}
+
+// GetRouteFiltersFilterArrayInput is an input type that accepts GetRouteFiltersFilterArray and GetRouteFiltersFilterArrayOutput values.
+// You can construct a concrete instance of `GetRouteFiltersFilterArrayInput` via:
+//
+//	GetRouteFiltersFilterArray{ GetRouteFiltersFilterArgs{...} }
+type GetRouteFiltersFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetRouteFiltersFilterArrayOutput() GetRouteFiltersFilterArrayOutput
+	ToGetRouteFiltersFilterArrayOutputWithContext(context.Context) GetRouteFiltersFilterArrayOutput
+}
+
+type GetRouteFiltersFilterArray []GetRouteFiltersFilterInput
+
+func (GetRouteFiltersFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouteFiltersFilter)(nil)).Elem()
+}
+
+func (i GetRouteFiltersFilterArray) ToGetRouteFiltersFilterArrayOutput() GetRouteFiltersFilterArrayOutput {
+	return i.ToGetRouteFiltersFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouteFiltersFilterArray) ToGetRouteFiltersFilterArrayOutputWithContext(ctx context.Context) GetRouteFiltersFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteFiltersFilterArrayOutput)
+}
+
+type GetRouteFiltersFilterOutput struct{ *pulumi.OutputState }
+
+func (GetRouteFiltersFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteFiltersFilter)(nil)).Elem()
+}
+
+func (o GetRouteFiltersFilterOutput) ToGetRouteFiltersFilterOutput() GetRouteFiltersFilterOutput {
+	return o
+}
+
+func (o GetRouteFiltersFilterOutput) ToGetRouteFiltersFilterOutputWithContext(ctx context.Context) GetRouteFiltersFilterOutput {
+	return o
+}
+
+// Possible operators to use on the filter property. Can be one of the following: [ "=", "!=", "[NOT] LIKE", "[NOT] IN", "ILIKE" ]
+func (o GetRouteFiltersFilterOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFiltersFilter) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// The API response property which you want to filter your request on. Can be one of the following: "/type", "/name", "/project/projectId", "/uuid", "/state"
+func (o GetRouteFiltersFilterOutput) Property() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFiltersFilter) string { return v.Property }).(pulumi.StringOutput)
+}
+
+// The values that you want to apply the property+operator combination to in order to filter your data search
+func (o GetRouteFiltersFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRouteFiltersFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetRouteFiltersFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouteFiltersFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouteFiltersFilter)(nil)).Elem()
+}
+
+func (o GetRouteFiltersFilterArrayOutput) ToGetRouteFiltersFilterArrayOutput() GetRouteFiltersFilterArrayOutput {
+	return o
+}
+
+func (o GetRouteFiltersFilterArrayOutput) ToGetRouteFiltersFilterArrayOutputWithContext(ctx context.Context) GetRouteFiltersFilterArrayOutput {
+	return o
+}
+
+func (o GetRouteFiltersFilterArrayOutput) Index(i pulumi.IntInput) GetRouteFiltersFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouteFiltersFilter {
+		return vs[0].([]GetRouteFiltersFilter)[vs[1].(int)]
+	}).(GetRouteFiltersFilterOutput)
+}
+
+type GetRouteFiltersPagination struct {
+	// Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+	Limit int `pulumi:"limit"`
+	// URL relative to the last item in the response.
+	Next string `pulumi:"next"`
+	// The page offset for the pagination request. Index of the first element. Default is 0.
+	Offset int `pulumi:"offset"`
+	// URL relative to the first item in the response.
+	Previous string `pulumi:"previous"`
+	// Total number of elements returned.
+	Total int `pulumi:"total"`
+}
+
+// GetRouteFiltersPaginationInput is an input type that accepts GetRouteFiltersPaginationArgs and GetRouteFiltersPaginationOutput values.
+// You can construct a concrete instance of `GetRouteFiltersPaginationInput` via:
+//
+//	GetRouteFiltersPaginationArgs{...}
+type GetRouteFiltersPaginationInput interface {
+	pulumi.Input
+
+	ToGetRouteFiltersPaginationOutput() GetRouteFiltersPaginationOutput
+	ToGetRouteFiltersPaginationOutputWithContext(context.Context) GetRouteFiltersPaginationOutput
+}
+
+type GetRouteFiltersPaginationArgs struct {
+	// Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+	Limit pulumi.IntInput `pulumi:"limit"`
+	// URL relative to the last item in the response.
+	Next pulumi.StringInput `pulumi:"next"`
+	// The page offset for the pagination request. Index of the first element. Default is 0.
+	Offset pulumi.IntInput `pulumi:"offset"`
+	// URL relative to the first item in the response.
+	Previous pulumi.StringInput `pulumi:"previous"`
+	// Total number of elements returned.
+	Total pulumi.IntInput `pulumi:"total"`
+}
+
+func (GetRouteFiltersPaginationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteFiltersPagination)(nil)).Elem()
+}
+
+func (i GetRouteFiltersPaginationArgs) ToGetRouteFiltersPaginationOutput() GetRouteFiltersPaginationOutput {
+	return i.ToGetRouteFiltersPaginationOutputWithContext(context.Background())
+}
+
+func (i GetRouteFiltersPaginationArgs) ToGetRouteFiltersPaginationOutputWithContext(ctx context.Context) GetRouteFiltersPaginationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteFiltersPaginationOutput)
+}
+
+func (i GetRouteFiltersPaginationArgs) ToGetRouteFiltersPaginationPtrOutput() GetRouteFiltersPaginationPtrOutput {
+	return i.ToGetRouteFiltersPaginationPtrOutputWithContext(context.Background())
+}
+
+func (i GetRouteFiltersPaginationArgs) ToGetRouteFiltersPaginationPtrOutputWithContext(ctx context.Context) GetRouteFiltersPaginationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteFiltersPaginationOutput).ToGetRouteFiltersPaginationPtrOutputWithContext(ctx)
+}
+
+// GetRouteFiltersPaginationPtrInput is an input type that accepts GetRouteFiltersPaginationArgs, GetRouteFiltersPaginationPtr and GetRouteFiltersPaginationPtrOutput values.
+// You can construct a concrete instance of `GetRouteFiltersPaginationPtrInput` via:
+//
+//	        GetRouteFiltersPaginationArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetRouteFiltersPaginationPtrInput interface {
+	pulumi.Input
+
+	ToGetRouteFiltersPaginationPtrOutput() GetRouteFiltersPaginationPtrOutput
+	ToGetRouteFiltersPaginationPtrOutputWithContext(context.Context) GetRouteFiltersPaginationPtrOutput
+}
+
+type getRouteFiltersPaginationPtrType GetRouteFiltersPaginationArgs
+
+func GetRouteFiltersPaginationPtr(v *GetRouteFiltersPaginationArgs) GetRouteFiltersPaginationPtrInput {
+	return (*getRouteFiltersPaginationPtrType)(v)
+}
+
+func (*getRouteFiltersPaginationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetRouteFiltersPagination)(nil)).Elem()
+}
+
+func (i *getRouteFiltersPaginationPtrType) ToGetRouteFiltersPaginationPtrOutput() GetRouteFiltersPaginationPtrOutput {
+	return i.ToGetRouteFiltersPaginationPtrOutputWithContext(context.Background())
+}
+
+func (i *getRouteFiltersPaginationPtrType) ToGetRouteFiltersPaginationPtrOutputWithContext(ctx context.Context) GetRouteFiltersPaginationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteFiltersPaginationPtrOutput)
+}
+
+type GetRouteFiltersPaginationOutput struct{ *pulumi.OutputState }
+
+func (GetRouteFiltersPaginationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteFiltersPagination)(nil)).Elem()
+}
+
+func (o GetRouteFiltersPaginationOutput) ToGetRouteFiltersPaginationOutput() GetRouteFiltersPaginationOutput {
+	return o
+}
+
+func (o GetRouteFiltersPaginationOutput) ToGetRouteFiltersPaginationOutputWithContext(ctx context.Context) GetRouteFiltersPaginationOutput {
+	return o
+}
+
+func (o GetRouteFiltersPaginationOutput) ToGetRouteFiltersPaginationPtrOutput() GetRouteFiltersPaginationPtrOutput {
+	return o.ToGetRouteFiltersPaginationPtrOutputWithContext(context.Background())
+}
+
+func (o GetRouteFiltersPaginationOutput) ToGetRouteFiltersPaginationPtrOutputWithContext(ctx context.Context) GetRouteFiltersPaginationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetRouteFiltersPagination) *GetRouteFiltersPagination {
+		return &v
+	}).(GetRouteFiltersPaginationPtrOutput)
+}
+
+// Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+func (o GetRouteFiltersPaginationOutput) Limit() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRouteFiltersPagination) int { return v.Limit }).(pulumi.IntOutput)
+}
+
+// URL relative to the last item in the response.
+func (o GetRouteFiltersPaginationOutput) Next() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFiltersPagination) string { return v.Next }).(pulumi.StringOutput)
+}
+
+// The page offset for the pagination request. Index of the first element. Default is 0.
+func (o GetRouteFiltersPaginationOutput) Offset() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRouteFiltersPagination) int { return v.Offset }).(pulumi.IntOutput)
+}
+
+// URL relative to the first item in the response.
+func (o GetRouteFiltersPaginationOutput) Previous() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFiltersPagination) string { return v.Previous }).(pulumi.StringOutput)
+}
+
+// Total number of elements returned.
+func (o GetRouteFiltersPaginationOutput) Total() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRouteFiltersPagination) int { return v.Total }).(pulumi.IntOutput)
+}
+
+type GetRouteFiltersPaginationPtrOutput struct{ *pulumi.OutputState }
+
+func (GetRouteFiltersPaginationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetRouteFiltersPagination)(nil)).Elem()
+}
+
+func (o GetRouteFiltersPaginationPtrOutput) ToGetRouteFiltersPaginationPtrOutput() GetRouteFiltersPaginationPtrOutput {
+	return o
+}
+
+func (o GetRouteFiltersPaginationPtrOutput) ToGetRouteFiltersPaginationPtrOutputWithContext(ctx context.Context) GetRouteFiltersPaginationPtrOutput {
+	return o
+}
+
+func (o GetRouteFiltersPaginationPtrOutput) Elem() GetRouteFiltersPaginationOutput {
+	return o.ApplyT(func(v *GetRouteFiltersPagination) GetRouteFiltersPagination {
+		if v != nil {
+			return *v
+		}
+		var ret GetRouteFiltersPagination
+		return ret
+	}).(GetRouteFiltersPaginationOutput)
+}
+
+// Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+func (o GetRouteFiltersPaginationPtrOutput) Limit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetRouteFiltersPagination) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Limit
+	}).(pulumi.IntPtrOutput)
+}
+
+// URL relative to the last item in the response.
+func (o GetRouteFiltersPaginationPtrOutput) Next() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetRouteFiltersPagination) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Next
+	}).(pulumi.StringPtrOutput)
+}
+
+// The page offset for the pagination request. Index of the first element. Default is 0.
+func (o GetRouteFiltersPaginationPtrOutput) Offset() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetRouteFiltersPagination) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Offset
+	}).(pulumi.IntPtrOutput)
+}
+
+// URL relative to the first item in the response.
+func (o GetRouteFiltersPaginationPtrOutput) Previous() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetRouteFiltersPagination) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Previous
+	}).(pulumi.StringPtrOutput)
+}
+
+// Total number of elements returned.
+func (o GetRouteFiltersPaginationPtrOutput) Total() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetRouteFiltersPagination) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Total
+	}).(pulumi.IntPtrOutput)
+}
+
+type GetRouteFiltersSort struct {
+	// The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+	Direction *string `pulumi:"direction"`
+	// The property name to use in sorting. Can be one of the following: [/type, /uuid, /name, /project/projectId, /state, /notMatchedRuleAction, /connectionsCount, /changeLog/createdDateTime, /changeLog/updatedDateTime], Defaults to /changeLog/updatedDateTime
+	Property *string `pulumi:"property"`
+}
+
+// GetRouteFiltersSortInput is an input type that accepts GetRouteFiltersSortArgs and GetRouteFiltersSortOutput values.
+// You can construct a concrete instance of `GetRouteFiltersSortInput` via:
+//
+//	GetRouteFiltersSortArgs{...}
+type GetRouteFiltersSortInput interface {
+	pulumi.Input
+
+	ToGetRouteFiltersSortOutput() GetRouteFiltersSortOutput
+	ToGetRouteFiltersSortOutputWithContext(context.Context) GetRouteFiltersSortOutput
+}
+
+type GetRouteFiltersSortArgs struct {
+	// The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	// The property name to use in sorting. Can be one of the following: [/type, /uuid, /name, /project/projectId, /state, /notMatchedRuleAction, /connectionsCount, /changeLog/createdDateTime, /changeLog/updatedDateTime], Defaults to /changeLog/updatedDateTime
+	Property pulumi.StringPtrInput `pulumi:"property"`
+}
+
+func (GetRouteFiltersSortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteFiltersSort)(nil)).Elem()
+}
+
+func (i GetRouteFiltersSortArgs) ToGetRouteFiltersSortOutput() GetRouteFiltersSortOutput {
+	return i.ToGetRouteFiltersSortOutputWithContext(context.Background())
+}
+
+func (i GetRouteFiltersSortArgs) ToGetRouteFiltersSortOutputWithContext(ctx context.Context) GetRouteFiltersSortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteFiltersSortOutput)
+}
+
+// GetRouteFiltersSortArrayInput is an input type that accepts GetRouteFiltersSortArray and GetRouteFiltersSortArrayOutput values.
+// You can construct a concrete instance of `GetRouteFiltersSortArrayInput` via:
+//
+//	GetRouteFiltersSortArray{ GetRouteFiltersSortArgs{...} }
+type GetRouteFiltersSortArrayInput interface {
+	pulumi.Input
+
+	ToGetRouteFiltersSortArrayOutput() GetRouteFiltersSortArrayOutput
+	ToGetRouteFiltersSortArrayOutputWithContext(context.Context) GetRouteFiltersSortArrayOutput
+}
+
+type GetRouteFiltersSortArray []GetRouteFiltersSortInput
+
+func (GetRouteFiltersSortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouteFiltersSort)(nil)).Elem()
+}
+
+func (i GetRouteFiltersSortArray) ToGetRouteFiltersSortArrayOutput() GetRouteFiltersSortArrayOutput {
+	return i.ToGetRouteFiltersSortArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouteFiltersSortArray) ToGetRouteFiltersSortArrayOutputWithContext(ctx context.Context) GetRouteFiltersSortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteFiltersSortArrayOutput)
+}
+
+type GetRouteFiltersSortOutput struct{ *pulumi.OutputState }
+
+func (GetRouteFiltersSortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteFiltersSort)(nil)).Elem()
+}
+
+func (o GetRouteFiltersSortOutput) ToGetRouteFiltersSortOutput() GetRouteFiltersSortOutput {
+	return o
+}
+
+func (o GetRouteFiltersSortOutput) ToGetRouteFiltersSortOutputWithContext(ctx context.Context) GetRouteFiltersSortOutput {
+	return o
+}
+
+// The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+func (o GetRouteFiltersSortOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRouteFiltersSort) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+// The property name to use in sorting. Can be one of the following: [/type, /uuid, /name, /project/projectId, /state, /notMatchedRuleAction, /connectionsCount, /changeLog/createdDateTime, /changeLog/updatedDateTime], Defaults to /changeLog/updatedDateTime
+func (o GetRouteFiltersSortOutput) Property() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRouteFiltersSort) *string { return v.Property }).(pulumi.StringPtrOutput)
+}
+
+type GetRouteFiltersSortArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouteFiltersSortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouteFiltersSort)(nil)).Elem()
+}
+
+func (o GetRouteFiltersSortArrayOutput) ToGetRouteFiltersSortArrayOutput() GetRouteFiltersSortArrayOutput {
+	return o
+}
+
+func (o GetRouteFiltersSortArrayOutput) ToGetRouteFiltersSortArrayOutputWithContext(ctx context.Context) GetRouteFiltersSortArrayOutput {
+	return o
+}
+
+func (o GetRouteFiltersSortArrayOutput) Index(i pulumi.IntInput) GetRouteFiltersSortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouteFiltersSort {
+		return vs[0].([]GetRouteFiltersSort)[vs[1].(int)]
+	}).(GetRouteFiltersSortOutput)
+}
+
 type GetRoutingProtocolBfd struct {
 	// Bidirectional Forwarding Detection enablement
 	Enabled bool `pulumi:"enabled"`
@@ -42546,6 +45990,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkOperationPtrInput)(nil)).Elem(), NetworkOperationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkProjectInput)(nil)).Elem(), NetworkProjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkProjectPtrInput)(nil)).Elem(), NetworkProjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteFilterChangeInput)(nil)).Elem(), RouteFilterChangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteFilterChangeArrayInput)(nil)).Elem(), RouteFilterChangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteFilterChangeLogInput)(nil)).Elem(), RouteFilterChangeLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteFilterChangeLogArrayInput)(nil)).Elem(), RouteFilterChangeLogArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteFilterProjectInput)(nil)).Elem(), RouteFilterProjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteFilterProjectPtrInput)(nil)).Elem(), RouteFilterProjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteFilterRuleChangeInput)(nil)).Elem(), RouteFilterRuleChangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteFilterRuleChangeArrayInput)(nil)).Elem(), RouteFilterRuleChangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteFilterRuleChangeLogInput)(nil)).Elem(), RouteFilterRuleChangeLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteFilterRuleChangeLogArrayInput)(nil)).Elem(), RouteFilterRuleChangeLogArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutingProtocolBfdInput)(nil)).Elem(), RoutingProtocolBfdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutingProtocolBfdPtrInput)(nil)).Elem(), RoutingProtocolBfdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutingProtocolBgpIpv4Input)(nil)).Elem(), RoutingProtocolBgpIpv4Args{})
@@ -42681,6 +46135,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOrderInput)(nil)).Elem(), GetConnectionOrderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionProjectInput)(nil)).Elem(), GetConnectionProjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionRedundancyInput)(nil)).Elem(), GetConnectionRedundancyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionRouteFiltersDataInput)(nil)).Elem(), GetConnectionRouteFiltersDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionRouteFiltersDataArrayInput)(nil)).Elem(), GetConnectionRouteFiltersDataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionRouteFiltersPaginationInput)(nil)).Elem(), GetConnectionRouteFiltersPaginationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionRouteFiltersPaginationArrayInput)(nil)).Elem(), GetConnectionRouteFiltersPaginationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionZSideInput)(nil)).Elem(), GetConnectionZSideArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionZSideAccessPointInput)(nil)).Elem(), GetConnectionZSideAccessPointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionZSideAccessPointPtrInput)(nil)).Elem(), GetConnectionZSideAccessPointArgs{})
@@ -42865,6 +46323,38 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPortsDatumRedundancyInput)(nil)).Elem(), GetPortsDatumRedundancyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPortsDatumRedundancyArrayInput)(nil)).Elem(), GetPortsDatumRedundancyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPortsFilterInput)(nil)).Elem(), GetPortsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteFilterChangeInput)(nil)).Elem(), GetRouteFilterChangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteFilterChangeArrayInput)(nil)).Elem(), GetRouteFilterChangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteFilterChangeLogInput)(nil)).Elem(), GetRouteFilterChangeLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteFilterChangeLogArrayInput)(nil)).Elem(), GetRouteFilterChangeLogArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteFilterProjectInput)(nil)).Elem(), GetRouteFilterProjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteFilterProjectArrayInput)(nil)).Elem(), GetRouteFilterProjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteFilterRuleChangeInput)(nil)).Elem(), GetRouteFilterRuleChangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteFilterRuleChangeArrayInput)(nil)).Elem(), GetRouteFilterRuleChangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteFilterRuleChangeLogInput)(nil)).Elem(), GetRouteFilterRuleChangeLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteFilterRuleChangeLogArrayInput)(nil)).Elem(), GetRouteFilterRuleChangeLogArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteFilterRulesDataInput)(nil)).Elem(), GetRouteFilterRulesDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteFilterRulesDataArrayInput)(nil)).Elem(), GetRouteFilterRulesDataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteFilterRulesDataChangeInput)(nil)).Elem(), GetRouteFilterRulesDataChangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteFilterRulesDataChangeArrayInput)(nil)).Elem(), GetRouteFilterRulesDataChangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteFilterRulesDataChangeLogInput)(nil)).Elem(), GetRouteFilterRulesDataChangeLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteFilterRulesDataChangeLogArrayInput)(nil)).Elem(), GetRouteFilterRulesDataChangeLogArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteFilterRulesPaginationInput)(nil)).Elem(), GetRouteFilterRulesPaginationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteFilterRulesPaginationArrayInput)(nil)).Elem(), GetRouteFilterRulesPaginationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteFiltersDataInput)(nil)).Elem(), GetRouteFiltersDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteFiltersDataArrayInput)(nil)).Elem(), GetRouteFiltersDataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteFiltersDataChangeInput)(nil)).Elem(), GetRouteFiltersDataChangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteFiltersDataChangeArrayInput)(nil)).Elem(), GetRouteFiltersDataChangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteFiltersDataChangeLogInput)(nil)).Elem(), GetRouteFiltersDataChangeLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteFiltersDataChangeLogArrayInput)(nil)).Elem(), GetRouteFiltersDataChangeLogArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteFiltersDataProjectInput)(nil)).Elem(), GetRouteFiltersDataProjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteFiltersDataProjectArrayInput)(nil)).Elem(), GetRouteFiltersDataProjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteFiltersFilterInput)(nil)).Elem(), GetRouteFiltersFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteFiltersFilterArrayInput)(nil)).Elem(), GetRouteFiltersFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteFiltersPaginationInput)(nil)).Elem(), GetRouteFiltersPaginationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteFiltersPaginationPtrInput)(nil)).Elem(), GetRouteFiltersPaginationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteFiltersSortInput)(nil)).Elem(), GetRouteFiltersSortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteFiltersSortArrayInput)(nil)).Elem(), GetRouteFiltersSortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRoutingProtocolBfdInput)(nil)).Elem(), GetRoutingProtocolBfdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRoutingProtocolBgpIpv4Input)(nil)).Elem(), GetRoutingProtocolBgpIpv4Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRoutingProtocolBgpIpv6Input)(nil)).Elem(), GetRoutingProtocolBgpIpv6Args{})
@@ -43057,6 +46547,16 @@ func init() {
 	pulumi.RegisterOutputType(NetworkOperationPtrOutput{})
 	pulumi.RegisterOutputType(NetworkProjectOutput{})
 	pulumi.RegisterOutputType(NetworkProjectPtrOutput{})
+	pulumi.RegisterOutputType(RouteFilterChangeOutput{})
+	pulumi.RegisterOutputType(RouteFilterChangeArrayOutput{})
+	pulumi.RegisterOutputType(RouteFilterChangeLogOutput{})
+	pulumi.RegisterOutputType(RouteFilterChangeLogArrayOutput{})
+	pulumi.RegisterOutputType(RouteFilterProjectOutput{})
+	pulumi.RegisterOutputType(RouteFilterProjectPtrOutput{})
+	pulumi.RegisterOutputType(RouteFilterRuleChangeOutput{})
+	pulumi.RegisterOutputType(RouteFilterRuleChangeArrayOutput{})
+	pulumi.RegisterOutputType(RouteFilterRuleChangeLogOutput{})
+	pulumi.RegisterOutputType(RouteFilterRuleChangeLogArrayOutput{})
 	pulumi.RegisterOutputType(RoutingProtocolBfdOutput{})
 	pulumi.RegisterOutputType(RoutingProtocolBfdPtrOutput{})
 	pulumi.RegisterOutputType(RoutingProtocolBgpIpv4Output{})
@@ -43192,6 +46692,10 @@ func init() {
 	pulumi.RegisterOutputType(GetConnectionOrderOutput{})
 	pulumi.RegisterOutputType(GetConnectionProjectOutput{})
 	pulumi.RegisterOutputType(GetConnectionRedundancyOutput{})
+	pulumi.RegisterOutputType(GetConnectionRouteFiltersDataOutput{})
+	pulumi.RegisterOutputType(GetConnectionRouteFiltersDataArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionRouteFiltersPaginationOutput{})
+	pulumi.RegisterOutputType(GetConnectionRouteFiltersPaginationArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionZSideOutput{})
 	pulumi.RegisterOutputType(GetConnectionZSideAccessPointOutput{})
 	pulumi.RegisterOutputType(GetConnectionZSideAccessPointPtrOutput{})
@@ -43376,6 +46880,38 @@ func init() {
 	pulumi.RegisterOutputType(GetPortsDatumRedundancyOutput{})
 	pulumi.RegisterOutputType(GetPortsDatumRedundancyArrayOutput{})
 	pulumi.RegisterOutputType(GetPortsFilterOutput{})
+	pulumi.RegisterOutputType(GetRouteFilterChangeOutput{})
+	pulumi.RegisterOutputType(GetRouteFilterChangeArrayOutput{})
+	pulumi.RegisterOutputType(GetRouteFilterChangeLogOutput{})
+	pulumi.RegisterOutputType(GetRouteFilterChangeLogArrayOutput{})
+	pulumi.RegisterOutputType(GetRouteFilterProjectOutput{})
+	pulumi.RegisterOutputType(GetRouteFilterProjectArrayOutput{})
+	pulumi.RegisterOutputType(GetRouteFilterRuleChangeOutput{})
+	pulumi.RegisterOutputType(GetRouteFilterRuleChangeArrayOutput{})
+	pulumi.RegisterOutputType(GetRouteFilterRuleChangeLogOutput{})
+	pulumi.RegisterOutputType(GetRouteFilterRuleChangeLogArrayOutput{})
+	pulumi.RegisterOutputType(GetRouteFilterRulesDataOutput{})
+	pulumi.RegisterOutputType(GetRouteFilterRulesDataArrayOutput{})
+	pulumi.RegisterOutputType(GetRouteFilterRulesDataChangeOutput{})
+	pulumi.RegisterOutputType(GetRouteFilterRulesDataChangeArrayOutput{})
+	pulumi.RegisterOutputType(GetRouteFilterRulesDataChangeLogOutput{})
+	pulumi.RegisterOutputType(GetRouteFilterRulesDataChangeLogArrayOutput{})
+	pulumi.RegisterOutputType(GetRouteFilterRulesPaginationOutput{})
+	pulumi.RegisterOutputType(GetRouteFilterRulesPaginationArrayOutput{})
+	pulumi.RegisterOutputType(GetRouteFiltersDataOutput{})
+	pulumi.RegisterOutputType(GetRouteFiltersDataArrayOutput{})
+	pulumi.RegisterOutputType(GetRouteFiltersDataChangeOutput{})
+	pulumi.RegisterOutputType(GetRouteFiltersDataChangeArrayOutput{})
+	pulumi.RegisterOutputType(GetRouteFiltersDataChangeLogOutput{})
+	pulumi.RegisterOutputType(GetRouteFiltersDataChangeLogArrayOutput{})
+	pulumi.RegisterOutputType(GetRouteFiltersDataProjectOutput{})
+	pulumi.RegisterOutputType(GetRouteFiltersDataProjectArrayOutput{})
+	pulumi.RegisterOutputType(GetRouteFiltersFilterOutput{})
+	pulumi.RegisterOutputType(GetRouteFiltersFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetRouteFiltersPaginationOutput{})
+	pulumi.RegisterOutputType(GetRouteFiltersPaginationPtrOutput{})
+	pulumi.RegisterOutputType(GetRouteFiltersSortOutput{})
+	pulumi.RegisterOutputType(GetRouteFiltersSortArrayOutput{})
 	pulumi.RegisterOutputType(GetRoutingProtocolBfdOutput{})
 	pulumi.RegisterOutputType(GetRoutingProtocolBgpIpv4Output{})
 	pulumi.RegisterOutputType(GetRoutingProtocolBgpIpv6Output{})

@@ -10,6 +10,10 @@ import com.equinix.pulumi.fabric.inputs.GetCloudRoutersArgs;
 import com.equinix.pulumi.fabric.inputs.GetCloudRoutersPlainArgs;
 import com.equinix.pulumi.fabric.inputs.GetConnectionArgs;
 import com.equinix.pulumi.fabric.inputs.GetConnectionPlainArgs;
+import com.equinix.pulumi.fabric.inputs.GetConnectionRouteFilterArgs;
+import com.equinix.pulumi.fabric.inputs.GetConnectionRouteFilterPlainArgs;
+import com.equinix.pulumi.fabric.inputs.GetConnectionRouteFiltersArgs;
+import com.equinix.pulumi.fabric.inputs.GetConnectionRouteFiltersPlainArgs;
 import com.equinix.pulumi.fabric.inputs.GetConnectionsArgs;
 import com.equinix.pulumi.fabric.inputs.GetConnectionsPlainArgs;
 import com.equinix.pulumi.fabric.inputs.GetMarketplaceSubscriptionArgs;
@@ -22,6 +26,14 @@ import com.equinix.pulumi.fabric.inputs.GetPortArgs;
 import com.equinix.pulumi.fabric.inputs.GetPortPlainArgs;
 import com.equinix.pulumi.fabric.inputs.GetPortsArgs;
 import com.equinix.pulumi.fabric.inputs.GetPortsPlainArgs;
+import com.equinix.pulumi.fabric.inputs.GetRouteFilterArgs;
+import com.equinix.pulumi.fabric.inputs.GetRouteFilterPlainArgs;
+import com.equinix.pulumi.fabric.inputs.GetRouteFilterRuleArgs;
+import com.equinix.pulumi.fabric.inputs.GetRouteFilterRulePlainArgs;
+import com.equinix.pulumi.fabric.inputs.GetRouteFilterRulesArgs;
+import com.equinix.pulumi.fabric.inputs.GetRouteFilterRulesPlainArgs;
+import com.equinix.pulumi.fabric.inputs.GetRouteFiltersArgs;
+import com.equinix.pulumi.fabric.inputs.GetRouteFiltersPlainArgs;
 import com.equinix.pulumi.fabric.inputs.GetRoutingProtocolArgs;
 import com.equinix.pulumi.fabric.inputs.GetRoutingProtocolPlainArgs;
 import com.equinix.pulumi.fabric.inputs.GetServiceProfileArgs;
@@ -31,12 +43,18 @@ import com.equinix.pulumi.fabric.inputs.GetServiceProfilesPlainArgs;
 import com.equinix.pulumi.fabric.outputs.GetCloudRouterResult;
 import com.equinix.pulumi.fabric.outputs.GetCloudRoutersResult;
 import com.equinix.pulumi.fabric.outputs.GetConnectionResult;
+import com.equinix.pulumi.fabric.outputs.GetConnectionRouteFilterResult;
+import com.equinix.pulumi.fabric.outputs.GetConnectionRouteFiltersResult;
 import com.equinix.pulumi.fabric.outputs.GetConnectionsResult;
 import com.equinix.pulumi.fabric.outputs.GetMarketplaceSubscriptionResult;
 import com.equinix.pulumi.fabric.outputs.GetNetworkResult;
 import com.equinix.pulumi.fabric.outputs.GetNetworksResult;
 import com.equinix.pulumi.fabric.outputs.GetPortResult;
 import com.equinix.pulumi.fabric.outputs.GetPortsResult;
+import com.equinix.pulumi.fabric.outputs.GetRouteFilterResult;
+import com.equinix.pulumi.fabric.outputs.GetRouteFilterRuleResult;
+import com.equinix.pulumi.fabric.outputs.GetRouteFilterRulesResult;
+import com.equinix.pulumi.fabric.outputs.GetRouteFiltersResult;
 import com.equinix.pulumi.fabric.outputs.GetRoutingProtocolResult;
 import com.equinix.pulumi.fabric.outputs.GetServiceProfileResult;
 import com.equinix.pulumi.fabric.outputs.GetServiceProfilesResult;
@@ -558,6 +576,258 @@ public final class FabricFunctions {
      */
     public static CompletableFuture<GetConnectionResult> getConnectionPlain(GetConnectionPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("equinix:fabric/getConnection:getConnection", TypeShape.of(GetConnectionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch route filter policy attachment to a fabric connection
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filter-rules
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetConnectionRouteFilterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var attachedPolicy = FabricFunctions.getConnectionRouteFilter(GetConnectionRouteFilterArgs.builder()
+     *             .connectionId("<connection_uuid>")
+     *             .routeFilterId("<route_filter_uuid>")
+     *             .build());
+     * 
+     *         ctx.export("connectionRouteFilterId", attachedPolicy.applyValue(getConnectionRouteFilterResult -> getConnectionRouteFilterResult.id()));
+     *         ctx.export("connectionRouteFilterConnectionId", attachedPolicy.applyValue(getConnectionRouteFilterResult -> getConnectionRouteFilterResult.connectionId()));
+     *         ctx.export("connectionRouteFilterDirection", attachedPolicy.applyValue(getConnectionRouteFilterResult -> getConnectionRouteFilterResult.direction()));
+     *         ctx.export("connectionRouteFilterType", attachedPolicy.applyValue(getConnectionRouteFilterResult -> getConnectionRouteFilterResult.type()));
+     *         ctx.export("connectionRouteFilterAttachmentStatus", attachedPolicy.applyValue(getConnectionRouteFilterResult -> getConnectionRouteFilterResult.attachmentStatus()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetConnectionRouteFilterResult> getConnectionRouteFilter(GetConnectionRouteFilterArgs args) {
+        return getConnectionRouteFilter(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch route filter policy attachment to a fabric connection
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filter-rules
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetConnectionRouteFilterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var attachedPolicy = FabricFunctions.getConnectionRouteFilter(GetConnectionRouteFilterArgs.builder()
+     *             .connectionId("<connection_uuid>")
+     *             .routeFilterId("<route_filter_uuid>")
+     *             .build());
+     * 
+     *         ctx.export("connectionRouteFilterId", attachedPolicy.applyValue(getConnectionRouteFilterResult -> getConnectionRouteFilterResult.id()));
+     *         ctx.export("connectionRouteFilterConnectionId", attachedPolicy.applyValue(getConnectionRouteFilterResult -> getConnectionRouteFilterResult.connectionId()));
+     *         ctx.export("connectionRouteFilterDirection", attachedPolicy.applyValue(getConnectionRouteFilterResult -> getConnectionRouteFilterResult.direction()));
+     *         ctx.export("connectionRouteFilterType", attachedPolicy.applyValue(getConnectionRouteFilterResult -> getConnectionRouteFilterResult.type()));
+     *         ctx.export("connectionRouteFilterAttachmentStatus", attachedPolicy.applyValue(getConnectionRouteFilterResult -> getConnectionRouteFilterResult.attachmentStatus()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetConnectionRouteFilterResult> getConnectionRouteFilterPlain(GetConnectionRouteFilterPlainArgs args) {
+        return getConnectionRouteFilterPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch route filter policy attachment to a fabric connection
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filter-rules
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetConnectionRouteFilterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var attachedPolicy = FabricFunctions.getConnectionRouteFilter(GetConnectionRouteFilterArgs.builder()
+     *             .connectionId("<connection_uuid>")
+     *             .routeFilterId("<route_filter_uuid>")
+     *             .build());
+     * 
+     *         ctx.export("connectionRouteFilterId", attachedPolicy.applyValue(getConnectionRouteFilterResult -> getConnectionRouteFilterResult.id()));
+     *         ctx.export("connectionRouteFilterConnectionId", attachedPolicy.applyValue(getConnectionRouteFilterResult -> getConnectionRouteFilterResult.connectionId()));
+     *         ctx.export("connectionRouteFilterDirection", attachedPolicy.applyValue(getConnectionRouteFilterResult -> getConnectionRouteFilterResult.direction()));
+     *         ctx.export("connectionRouteFilterType", attachedPolicy.applyValue(getConnectionRouteFilterResult -> getConnectionRouteFilterResult.type()));
+     *         ctx.export("connectionRouteFilterAttachmentStatus", attachedPolicy.applyValue(getConnectionRouteFilterResult -> getConnectionRouteFilterResult.attachmentStatus()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetConnectionRouteFilterResult> getConnectionRouteFilter(GetConnectionRouteFilterArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getConnectionRouteFilter:getConnectionRouteFilter", TypeShape.of(GetConnectionRouteFilterResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch route filter policy attachment to a fabric connection
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filter-rules
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetConnectionRouteFilterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var attachedPolicy = FabricFunctions.getConnectionRouteFilter(GetConnectionRouteFilterArgs.builder()
+     *             .connectionId("<connection_uuid>")
+     *             .routeFilterId("<route_filter_uuid>")
+     *             .build());
+     * 
+     *         ctx.export("connectionRouteFilterId", attachedPolicy.applyValue(getConnectionRouteFilterResult -> getConnectionRouteFilterResult.id()));
+     *         ctx.export("connectionRouteFilterConnectionId", attachedPolicy.applyValue(getConnectionRouteFilterResult -> getConnectionRouteFilterResult.connectionId()));
+     *         ctx.export("connectionRouteFilterDirection", attachedPolicy.applyValue(getConnectionRouteFilterResult -> getConnectionRouteFilterResult.direction()));
+     *         ctx.export("connectionRouteFilterType", attachedPolicy.applyValue(getConnectionRouteFilterResult -> getConnectionRouteFilterResult.type()));
+     *         ctx.export("connectionRouteFilterAttachmentStatus", attachedPolicy.applyValue(getConnectionRouteFilterResult -> getConnectionRouteFilterResult.attachmentStatus()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetConnectionRouteFilterResult> getConnectionRouteFilterPlain(GetConnectionRouteFilterPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("equinix:fabric/getConnectionRouteFilter:getConnectionRouteFilter", TypeShape.of(GetConnectionRouteFilterResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch all route filter policies attached to a fabric connection
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filter-rules
+     * 
+     */
+    public static Output<GetConnectionRouteFiltersResult> getConnectionRouteFilters(GetConnectionRouteFiltersArgs args) {
+        return getConnectionRouteFilters(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch all route filter policies attached to a fabric connection
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filter-rules
+     * 
+     */
+    public static CompletableFuture<GetConnectionRouteFiltersResult> getConnectionRouteFiltersPlain(GetConnectionRouteFiltersPlainArgs args) {
+        return getConnectionRouteFiltersPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch all route filter policies attached to a fabric connection
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filter-rules
+     * 
+     */
+    public static Output<GetConnectionRouteFiltersResult> getConnectionRouteFilters(GetConnectionRouteFiltersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getConnectionRouteFilters:getConnectionRouteFilters", TypeShape.of(GetConnectionRouteFiltersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch all route filter policies attached to a fabric connection
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filter-rules
+     * 
+     */
+    public static CompletableFuture<GetConnectionRouteFiltersResult> getConnectionRouteFiltersPlain(GetConnectionRouteFiltersPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("equinix:fabric/getConnectionRouteFilters:getConnectionRouteFilters", TypeShape.of(GetConnectionRouteFiltersResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID
@@ -1530,6 +1800,934 @@ public final class FabricFunctions {
      */
     public static CompletableFuture<GetPortsResult> getPortsPlain(GetPortsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("equinix:fabric/getPorts:getPorts", TypeShape.of(GetPortsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch route filter for a given UUID
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filters
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteFilterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var rfPolicy = FabricFunctions.getRouteFilter(GetRouteFilterArgs.builder()
+     *             .uuid("<uuid_of_route_filter")
+     *             .build());
+     * 
+     *         ctx.export("id", rfPolicy.applyValue(getRouteFilterResult -> getRouteFilterResult.id()));
+     *         ctx.export("type", rfPolicy.applyValue(getRouteFilterResult -> getRouteFilterResult.type()));
+     *         ctx.export("state", rfPolicy.applyValue(getRouteFilterResult -> getRouteFilterResult.state()));
+     *         ctx.export("notMatchedRulesAction", rfPolicy.applyValue(getRouteFilterResult -> getRouteFilterResult.notMatchedRuleAction()));
+     *         ctx.export("connectionsCount", rfPolicy.applyValue(getRouteFilterResult -> getRouteFilterResult.connectionsCount()));
+     *         ctx.export("rulesCount", rfPolicy.applyValue(getRouteFilterResult -> getRouteFilterResult.rulesCount()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRouteFilterResult> getRouteFilter(GetRouteFilterArgs args) {
+        return getRouteFilter(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch route filter for a given UUID
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filters
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteFilterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var rfPolicy = FabricFunctions.getRouteFilter(GetRouteFilterArgs.builder()
+     *             .uuid("<uuid_of_route_filter")
+     *             .build());
+     * 
+     *         ctx.export("id", rfPolicy.applyValue(getRouteFilterResult -> getRouteFilterResult.id()));
+     *         ctx.export("type", rfPolicy.applyValue(getRouteFilterResult -> getRouteFilterResult.type()));
+     *         ctx.export("state", rfPolicy.applyValue(getRouteFilterResult -> getRouteFilterResult.state()));
+     *         ctx.export("notMatchedRulesAction", rfPolicy.applyValue(getRouteFilterResult -> getRouteFilterResult.notMatchedRuleAction()));
+     *         ctx.export("connectionsCount", rfPolicy.applyValue(getRouteFilterResult -> getRouteFilterResult.connectionsCount()));
+     *         ctx.export("rulesCount", rfPolicy.applyValue(getRouteFilterResult -> getRouteFilterResult.rulesCount()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetRouteFilterResult> getRouteFilterPlain(GetRouteFilterPlainArgs args) {
+        return getRouteFilterPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch route filter for a given UUID
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filters
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteFilterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var rfPolicy = FabricFunctions.getRouteFilter(GetRouteFilterArgs.builder()
+     *             .uuid("<uuid_of_route_filter")
+     *             .build());
+     * 
+     *         ctx.export("id", rfPolicy.applyValue(getRouteFilterResult -> getRouteFilterResult.id()));
+     *         ctx.export("type", rfPolicy.applyValue(getRouteFilterResult -> getRouteFilterResult.type()));
+     *         ctx.export("state", rfPolicy.applyValue(getRouteFilterResult -> getRouteFilterResult.state()));
+     *         ctx.export("notMatchedRulesAction", rfPolicy.applyValue(getRouteFilterResult -> getRouteFilterResult.notMatchedRuleAction()));
+     *         ctx.export("connectionsCount", rfPolicy.applyValue(getRouteFilterResult -> getRouteFilterResult.connectionsCount()));
+     *         ctx.export("rulesCount", rfPolicy.applyValue(getRouteFilterResult -> getRouteFilterResult.rulesCount()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRouteFilterResult> getRouteFilter(GetRouteFilterArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getRouteFilter:getRouteFilter", TypeShape.of(GetRouteFilterResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch route filter for a given UUID
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filters
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteFilterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var rfPolicy = FabricFunctions.getRouteFilter(GetRouteFilterArgs.builder()
+     *             .uuid("<uuid_of_route_filter")
+     *             .build());
+     * 
+     *         ctx.export("id", rfPolicy.applyValue(getRouteFilterResult -> getRouteFilterResult.id()));
+     *         ctx.export("type", rfPolicy.applyValue(getRouteFilterResult -> getRouteFilterResult.type()));
+     *         ctx.export("state", rfPolicy.applyValue(getRouteFilterResult -> getRouteFilterResult.state()));
+     *         ctx.export("notMatchedRulesAction", rfPolicy.applyValue(getRouteFilterResult -> getRouteFilterResult.notMatchedRuleAction()));
+     *         ctx.export("connectionsCount", rfPolicy.applyValue(getRouteFilterResult -> getRouteFilterResult.connectionsCount()));
+     *         ctx.export("rulesCount", rfPolicy.applyValue(getRouteFilterResult -> getRouteFilterResult.rulesCount()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetRouteFilterResult> getRouteFilterPlain(GetRouteFilterPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("equinix:fabric/getRouteFilter:getRouteFilter", TypeShape.of(GetRouteFilterResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch route filter for a given UUID
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filter-rules
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteFilterRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var rfRule = FabricFunctions.getRouteFilterRule(GetRouteFilterRuleArgs.builder()
+     *             .routeFilterId("<route_filter_policy_id>")
+     *             .uuid("<route_filter_rule_uuid>")
+     *             .build());
+     * 
+     *         ctx.export("routeFilterRuleName", rfRule.applyValue(getRouteFilterRuleResult -> getRouteFilterRuleResult.name()));
+     *         ctx.export("routeFilterRuleDescription", rfRule.applyValue(getRouteFilterRuleResult -> getRouteFilterRuleResult.description()));
+     *         ctx.export("routeFilterRulePrefix", rfRule.applyValue(getRouteFilterRuleResult -> getRouteFilterRuleResult.prefix()));
+     *         ctx.export("routeFilterRulePrefixMatch", rfRule.applyValue(getRouteFilterRuleResult -> getRouteFilterRuleResult.prefixMatch()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRouteFilterRuleResult> getRouteFilterRule(GetRouteFilterRuleArgs args) {
+        return getRouteFilterRule(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch route filter for a given UUID
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filter-rules
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteFilterRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var rfRule = FabricFunctions.getRouteFilterRule(GetRouteFilterRuleArgs.builder()
+     *             .routeFilterId("<route_filter_policy_id>")
+     *             .uuid("<route_filter_rule_uuid>")
+     *             .build());
+     * 
+     *         ctx.export("routeFilterRuleName", rfRule.applyValue(getRouteFilterRuleResult -> getRouteFilterRuleResult.name()));
+     *         ctx.export("routeFilterRuleDescription", rfRule.applyValue(getRouteFilterRuleResult -> getRouteFilterRuleResult.description()));
+     *         ctx.export("routeFilterRulePrefix", rfRule.applyValue(getRouteFilterRuleResult -> getRouteFilterRuleResult.prefix()));
+     *         ctx.export("routeFilterRulePrefixMatch", rfRule.applyValue(getRouteFilterRuleResult -> getRouteFilterRuleResult.prefixMatch()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetRouteFilterRuleResult> getRouteFilterRulePlain(GetRouteFilterRulePlainArgs args) {
+        return getRouteFilterRulePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch route filter for a given UUID
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filter-rules
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteFilterRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var rfRule = FabricFunctions.getRouteFilterRule(GetRouteFilterRuleArgs.builder()
+     *             .routeFilterId("<route_filter_policy_id>")
+     *             .uuid("<route_filter_rule_uuid>")
+     *             .build());
+     * 
+     *         ctx.export("routeFilterRuleName", rfRule.applyValue(getRouteFilterRuleResult -> getRouteFilterRuleResult.name()));
+     *         ctx.export("routeFilterRuleDescription", rfRule.applyValue(getRouteFilterRuleResult -> getRouteFilterRuleResult.description()));
+     *         ctx.export("routeFilterRulePrefix", rfRule.applyValue(getRouteFilterRuleResult -> getRouteFilterRuleResult.prefix()));
+     *         ctx.export("routeFilterRulePrefixMatch", rfRule.applyValue(getRouteFilterRuleResult -> getRouteFilterRuleResult.prefixMatch()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRouteFilterRuleResult> getRouteFilterRule(GetRouteFilterRuleArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getRouteFilterRule:getRouteFilterRule", TypeShape.of(GetRouteFilterRuleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch route filter for a given UUID
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filter-rules
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteFilterRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var rfRule = FabricFunctions.getRouteFilterRule(GetRouteFilterRuleArgs.builder()
+     *             .routeFilterId("<route_filter_policy_id>")
+     *             .uuid("<route_filter_rule_uuid>")
+     *             .build());
+     * 
+     *         ctx.export("routeFilterRuleName", rfRule.applyValue(getRouteFilterRuleResult -> getRouteFilterRuleResult.name()));
+     *         ctx.export("routeFilterRuleDescription", rfRule.applyValue(getRouteFilterRuleResult -> getRouteFilterRuleResult.description()));
+     *         ctx.export("routeFilterRulePrefix", rfRule.applyValue(getRouteFilterRuleResult -> getRouteFilterRuleResult.prefix()));
+     *         ctx.export("routeFilterRulePrefixMatch", rfRule.applyValue(getRouteFilterRuleResult -> getRouteFilterRuleResult.prefixMatch()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetRouteFilterRuleResult> getRouteFilterRulePlain(GetRouteFilterRulePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("equinix:fabric/getRouteFilterRule:getRouteFilterRule", TypeShape.of(GetRouteFilterRuleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch route filter for a given search data set
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filter-rules
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteFilterRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var rfRules = FabricFunctions.getRouteFilterRules(GetRouteFilterRulesArgs.builder()
+     *             .routeFilterId("<route_filter_policy_id")
+     *             .limit(100)
+     *             .offset(5)
+     *             .build());
+     * 
+     *         ctx.export("firstRouteFilterRuleName", rfRules.applyValue(getRouteFilterRulesResult -> getRouteFilterRulesResult.datas()[0].name()));
+     *         ctx.export("firstRouteFilterRuleDescription", rfRules.applyValue(getRouteFilterRulesResult -> getRouteFilterRulesResult.datas()[0].description()));
+     *         ctx.export("firstRouteFilterRulePrefix", rfRules.applyValue(getRouteFilterRulesResult -> getRouteFilterRulesResult.datas()[0].prefix()));
+     *         ctx.export("firstRouteFilterRulePrefixMatch", rfRules.applyValue(getRouteFilterRulesResult -> getRouteFilterRulesResult.datas()[0].prefixMatch()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRouteFilterRulesResult> getRouteFilterRules(GetRouteFilterRulesArgs args) {
+        return getRouteFilterRules(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch route filter for a given search data set
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filter-rules
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteFilterRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var rfRules = FabricFunctions.getRouteFilterRules(GetRouteFilterRulesArgs.builder()
+     *             .routeFilterId("<route_filter_policy_id")
+     *             .limit(100)
+     *             .offset(5)
+     *             .build());
+     * 
+     *         ctx.export("firstRouteFilterRuleName", rfRules.applyValue(getRouteFilterRulesResult -> getRouteFilterRulesResult.datas()[0].name()));
+     *         ctx.export("firstRouteFilterRuleDescription", rfRules.applyValue(getRouteFilterRulesResult -> getRouteFilterRulesResult.datas()[0].description()));
+     *         ctx.export("firstRouteFilterRulePrefix", rfRules.applyValue(getRouteFilterRulesResult -> getRouteFilterRulesResult.datas()[0].prefix()));
+     *         ctx.export("firstRouteFilterRulePrefixMatch", rfRules.applyValue(getRouteFilterRulesResult -> getRouteFilterRulesResult.datas()[0].prefixMatch()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetRouteFilterRulesResult> getRouteFilterRulesPlain(GetRouteFilterRulesPlainArgs args) {
+        return getRouteFilterRulesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch route filter for a given search data set
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filter-rules
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteFilterRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var rfRules = FabricFunctions.getRouteFilterRules(GetRouteFilterRulesArgs.builder()
+     *             .routeFilterId("<route_filter_policy_id")
+     *             .limit(100)
+     *             .offset(5)
+     *             .build());
+     * 
+     *         ctx.export("firstRouteFilterRuleName", rfRules.applyValue(getRouteFilterRulesResult -> getRouteFilterRulesResult.datas()[0].name()));
+     *         ctx.export("firstRouteFilterRuleDescription", rfRules.applyValue(getRouteFilterRulesResult -> getRouteFilterRulesResult.datas()[0].description()));
+     *         ctx.export("firstRouteFilterRulePrefix", rfRules.applyValue(getRouteFilterRulesResult -> getRouteFilterRulesResult.datas()[0].prefix()));
+     *         ctx.export("firstRouteFilterRulePrefixMatch", rfRules.applyValue(getRouteFilterRulesResult -> getRouteFilterRulesResult.datas()[0].prefixMatch()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRouteFilterRulesResult> getRouteFilterRules(GetRouteFilterRulesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getRouteFilterRules:getRouteFilterRules", TypeShape.of(GetRouteFilterRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch route filter for a given search data set
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filter-rules
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteFilterRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var rfRules = FabricFunctions.getRouteFilterRules(GetRouteFilterRulesArgs.builder()
+     *             .routeFilterId("<route_filter_policy_id")
+     *             .limit(100)
+     *             .offset(5)
+     *             .build());
+     * 
+     *         ctx.export("firstRouteFilterRuleName", rfRules.applyValue(getRouteFilterRulesResult -> getRouteFilterRulesResult.datas()[0].name()));
+     *         ctx.export("firstRouteFilterRuleDescription", rfRules.applyValue(getRouteFilterRulesResult -> getRouteFilterRulesResult.datas()[0].description()));
+     *         ctx.export("firstRouteFilterRulePrefix", rfRules.applyValue(getRouteFilterRulesResult -> getRouteFilterRulesResult.datas()[0].prefix()));
+     *         ctx.export("firstRouteFilterRulePrefixMatch", rfRules.applyValue(getRouteFilterRulesResult -> getRouteFilterRulesResult.datas()[0].prefixMatch()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetRouteFilterRulesResult> getRouteFilterRulesPlain(GetRouteFilterRulesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("equinix:fabric/getRouteFilterRules:getRouteFilterRules", TypeShape.of(GetRouteFilterRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch route filter for a given search data set
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filters
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteFiltersArgs;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteFiltersPaginationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var rfPolicies = FabricFunctions.getRouteFilters(GetRouteFiltersArgs.builder()
+     *             .filters(            
+     *                 GetRouteFiltersFilterArgs.builder()
+     *                     .property("/type")
+     *                     .operator("=")
+     *                     .values("BGP_IPv4_PREFIX_FILTER")
+     *                     .build(),
+     *                 GetRouteFiltersFilterArgs.builder()
+     *                     .property("/state")
+     *                     .operator("=")
+     *                     .values("PROVISIONED")
+     *                     .build(),
+     *                 GetRouteFiltersFilterArgs.builder()
+     *                     .property("/project/projectId")
+     *                     .operator("=")
+     *                     .values("<project_id>")
+     *                     .build())
+     *             .pagination(GetRouteFiltersPaginationArgs.builder()
+     *                 .offset(0)
+     *                 .limit(5)
+     *                 .total(25)
+     *                 .build())
+     *             .sorts(GetRouteFiltersSortArgs.builder()
+     *                 .direction("ASC")
+     *                 .property("/name")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("firstRfUuid", rfPolicies.applyValue(getRouteFiltersResult -> getRouteFiltersResult.datas()[0].uuid()));
+     *         ctx.export("type", rfPolicies.applyValue(getRouteFiltersResult -> getRouteFiltersResult.datas()[0].type()));
+     *         ctx.export("state", rfPolicies.applyValue(getRouteFiltersResult -> getRouteFiltersResult.datas()[0].state()));
+     *         ctx.export("notMatchedRuleAction", rfPolicies.applyValue(getRouteFiltersResult -> getRouteFiltersResult.datas()[0].notMatchedRuleAction()));
+     *         ctx.export("connectionsCount", rfPolicies.applyValue(getRouteFiltersResult -> getRouteFiltersResult.datas()[0].connectionsCount()));
+     *         ctx.export("rulesCount", rfPolicies.applyValue(getRouteFiltersResult -> getRouteFiltersResult.datas()[0].rulesCount()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRouteFiltersResult> getRouteFilters(GetRouteFiltersArgs args) {
+        return getRouteFilters(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch route filter for a given search data set
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filters
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteFiltersArgs;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteFiltersPaginationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var rfPolicies = FabricFunctions.getRouteFilters(GetRouteFiltersArgs.builder()
+     *             .filters(            
+     *                 GetRouteFiltersFilterArgs.builder()
+     *                     .property("/type")
+     *                     .operator("=")
+     *                     .values("BGP_IPv4_PREFIX_FILTER")
+     *                     .build(),
+     *                 GetRouteFiltersFilterArgs.builder()
+     *                     .property("/state")
+     *                     .operator("=")
+     *                     .values("PROVISIONED")
+     *                     .build(),
+     *                 GetRouteFiltersFilterArgs.builder()
+     *                     .property("/project/projectId")
+     *                     .operator("=")
+     *                     .values("<project_id>")
+     *                     .build())
+     *             .pagination(GetRouteFiltersPaginationArgs.builder()
+     *                 .offset(0)
+     *                 .limit(5)
+     *                 .total(25)
+     *                 .build())
+     *             .sorts(GetRouteFiltersSortArgs.builder()
+     *                 .direction("ASC")
+     *                 .property("/name")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("firstRfUuid", rfPolicies.applyValue(getRouteFiltersResult -> getRouteFiltersResult.datas()[0].uuid()));
+     *         ctx.export("type", rfPolicies.applyValue(getRouteFiltersResult -> getRouteFiltersResult.datas()[0].type()));
+     *         ctx.export("state", rfPolicies.applyValue(getRouteFiltersResult -> getRouteFiltersResult.datas()[0].state()));
+     *         ctx.export("notMatchedRuleAction", rfPolicies.applyValue(getRouteFiltersResult -> getRouteFiltersResult.datas()[0].notMatchedRuleAction()));
+     *         ctx.export("connectionsCount", rfPolicies.applyValue(getRouteFiltersResult -> getRouteFiltersResult.datas()[0].connectionsCount()));
+     *         ctx.export("rulesCount", rfPolicies.applyValue(getRouteFiltersResult -> getRouteFiltersResult.datas()[0].rulesCount()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetRouteFiltersResult> getRouteFiltersPlain(GetRouteFiltersPlainArgs args) {
+        return getRouteFiltersPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch route filter for a given search data set
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filters
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteFiltersArgs;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteFiltersPaginationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var rfPolicies = FabricFunctions.getRouteFilters(GetRouteFiltersArgs.builder()
+     *             .filters(            
+     *                 GetRouteFiltersFilterArgs.builder()
+     *                     .property("/type")
+     *                     .operator("=")
+     *                     .values("BGP_IPv4_PREFIX_FILTER")
+     *                     .build(),
+     *                 GetRouteFiltersFilterArgs.builder()
+     *                     .property("/state")
+     *                     .operator("=")
+     *                     .values("PROVISIONED")
+     *                     .build(),
+     *                 GetRouteFiltersFilterArgs.builder()
+     *                     .property("/project/projectId")
+     *                     .operator("=")
+     *                     .values("<project_id>")
+     *                     .build())
+     *             .pagination(GetRouteFiltersPaginationArgs.builder()
+     *                 .offset(0)
+     *                 .limit(5)
+     *                 .total(25)
+     *                 .build())
+     *             .sorts(GetRouteFiltersSortArgs.builder()
+     *                 .direction("ASC")
+     *                 .property("/name")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("firstRfUuid", rfPolicies.applyValue(getRouteFiltersResult -> getRouteFiltersResult.datas()[0].uuid()));
+     *         ctx.export("type", rfPolicies.applyValue(getRouteFiltersResult -> getRouteFiltersResult.datas()[0].type()));
+     *         ctx.export("state", rfPolicies.applyValue(getRouteFiltersResult -> getRouteFiltersResult.datas()[0].state()));
+     *         ctx.export("notMatchedRuleAction", rfPolicies.applyValue(getRouteFiltersResult -> getRouteFiltersResult.datas()[0].notMatchedRuleAction()));
+     *         ctx.export("connectionsCount", rfPolicies.applyValue(getRouteFiltersResult -> getRouteFiltersResult.datas()[0].connectionsCount()));
+     *         ctx.export("rulesCount", rfPolicies.applyValue(getRouteFiltersResult -> getRouteFiltersResult.datas()[0].rulesCount()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRouteFiltersResult> getRouteFilters(GetRouteFiltersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getRouteFilters:getRouteFilters", TypeShape.of(GetRouteFiltersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch route filter for a given search data set
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filters
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteFiltersArgs;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteFiltersPaginationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var rfPolicies = FabricFunctions.getRouteFilters(GetRouteFiltersArgs.builder()
+     *             .filters(            
+     *                 GetRouteFiltersFilterArgs.builder()
+     *                     .property("/type")
+     *                     .operator("=")
+     *                     .values("BGP_IPv4_PREFIX_FILTER")
+     *                     .build(),
+     *                 GetRouteFiltersFilterArgs.builder()
+     *                     .property("/state")
+     *                     .operator("=")
+     *                     .values("PROVISIONED")
+     *                     .build(),
+     *                 GetRouteFiltersFilterArgs.builder()
+     *                     .property("/project/projectId")
+     *                     .operator("=")
+     *                     .values("<project_id>")
+     *                     .build())
+     *             .pagination(GetRouteFiltersPaginationArgs.builder()
+     *                 .offset(0)
+     *                 .limit(5)
+     *                 .total(25)
+     *                 .build())
+     *             .sorts(GetRouteFiltersSortArgs.builder()
+     *                 .direction("ASC")
+     *                 .property("/name")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("firstRfUuid", rfPolicies.applyValue(getRouteFiltersResult -> getRouteFiltersResult.datas()[0].uuid()));
+     *         ctx.export("type", rfPolicies.applyValue(getRouteFiltersResult -> getRouteFiltersResult.datas()[0].type()));
+     *         ctx.export("state", rfPolicies.applyValue(getRouteFiltersResult -> getRouteFiltersResult.datas()[0].state()));
+     *         ctx.export("notMatchedRuleAction", rfPolicies.applyValue(getRouteFiltersResult -> getRouteFiltersResult.datas()[0].notMatchedRuleAction()));
+     *         ctx.export("connectionsCount", rfPolicies.applyValue(getRouteFiltersResult -> getRouteFiltersResult.datas()[0].connectionsCount()));
+     *         ctx.export("rulesCount", rfPolicies.applyValue(getRouteFiltersResult -> getRouteFiltersResult.datas()[0].rulesCount()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetRouteFiltersResult> getRouteFiltersPlain(GetRouteFiltersPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("equinix:fabric/getRouteFilters:getRouteFilters", TypeShape.of(GetRouteFiltersResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Fabric V4 API compatible data resource that allow user to fetch routing protocol for a given UUID

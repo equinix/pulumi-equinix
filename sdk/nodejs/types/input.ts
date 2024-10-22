@@ -1246,6 +1246,104 @@ export namespace fabric {
         name: pulumi.Input<string>;
     }
 
+    export interface GetRouteFiltersFilter {
+        /**
+         * Possible operators to use on the filter property. Can be one of the following: [ "=", "!=", "[NOT] LIKE", "[NOT] IN", "ILIKE" ]
+         */
+        operator: string;
+        /**
+         * The API response property which you want to filter your request on. Can be one of the following: "/type", "/name", "/project/projectId", "/uuid", "/state"
+         */
+        property: string;
+        /**
+         * The values that you want to apply the property+operator combination to in order to filter your data search
+         */
+        values: string[];
+    }
+
+    export interface GetRouteFiltersFilterArgs {
+        /**
+         * Possible operators to use on the filter property. Can be one of the following: [ "=", "!=", "[NOT] LIKE", "[NOT] IN", "ILIKE" ]
+         */
+        operator: pulumi.Input<string>;
+        /**
+         * The API response property which you want to filter your request on. Can be one of the following: "/type", "/name", "/project/projectId", "/uuid", "/state"
+         */
+        property: pulumi.Input<string>;
+        /**
+         * The values that you want to apply the property+operator combination to in order to filter your data search
+         */
+        values: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface GetRouteFiltersPagination {
+        /**
+         * Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+         */
+        limit?: number;
+        /**
+         * URL relative to the last item in the response.
+         */
+        next?: string;
+        /**
+         * The page offset for the pagination request. Index of the first element. Default is 0.
+         */
+        offset?: number;
+        /**
+         * URL relative to the first item in the response.
+         */
+        previous?: string;
+        /**
+         * Total number of elements returned.
+         */
+        total?: number;
+    }
+
+    export interface GetRouteFiltersPaginationArgs {
+        /**
+         * Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+         */
+        limit?: pulumi.Input<number>;
+        /**
+         * URL relative to the last item in the response.
+         */
+        next?: pulumi.Input<string>;
+        /**
+         * The page offset for the pagination request. Index of the first element. Default is 0.
+         */
+        offset?: pulumi.Input<number>;
+        /**
+         * URL relative to the first item in the response.
+         */
+        previous?: pulumi.Input<string>;
+        /**
+         * Total number of elements returned.
+         */
+        total?: pulumi.Input<number>;
+    }
+
+    export interface GetRouteFiltersSort {
+        /**
+         * The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+         */
+        direction?: string;
+        /**
+         * The property name to use in sorting. Can be one of the following: [/type, /uuid, /name, /project/projectId, /state, /notMatchedRuleAction, /connectionsCount, /changeLog/createdDateTime, /changeLog/updatedDateTime], Defaults to /changeLog/updatedDateTime
+         */
+        property?: string;
+    }
+
+    export interface GetRouteFiltersSortArgs {
+        /**
+         * The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+         */
+        direction?: pulumi.Input<string>;
+        /**
+         * The property name to use in sorting. Can be one of the following: [/type, /uuid, /name, /project/projectId, /state, /notMatchedRuleAction, /connectionsCount, /changeLog/createdDateTime, /changeLog/updatedDateTime], Defaults to /changeLog/updatedDateTime
+         */
+        property?: pulumi.Input<string>;
+    }
+
     export interface GetServiceProfilesFilter {
         /**
          * Operators to use on your filtered field with the values given. One of [=]
@@ -1433,6 +1531,149 @@ export namespace fabric {
          * Customer project identifier
          */
         projectId: pulumi.Input<string>;
+    }
+
+    export interface RouteFilterChange {
+        /**
+         * The URI of the previous Route Filter Change
+         */
+        href?: pulumi.Input<string>;
+        /**
+         * Type of change. One of [ "BGP_IPv4_PREFIX_FILTER_UPDATE","BGP_IPv4_PREFIX_FILTER_CREATION","BGP_IPv4_PREFIX_FILTER_DELETION","BGP_IPv6_PREFIX_FILTER_UPDATE","BGP_IPv6_PREFIX_FILTER_CREATION","BGP_IPv6_PREFIX_FILTER_DELETION" ]
+         */
+        type?: pulumi.Input<string>;
+        /**
+         * Unique identifier for the previous change
+         */
+        uuid?: pulumi.Input<string>;
+    }
+
+    export interface RouteFilterChangeLog {
+        /**
+         * Created by User Key
+         */
+        createdBy?: pulumi.Input<string>;
+        /**
+         * Created by User Email Address
+         */
+        createdByEmail?: pulumi.Input<string>;
+        /**
+         * Created by User Full Name
+         */
+        createdByFullName?: pulumi.Input<string>;
+        /**
+         * Created by Date and Time
+         */
+        createdDateTime?: pulumi.Input<string>;
+        /**
+         * Deleted by User Key
+         */
+        deletedBy?: pulumi.Input<string>;
+        /**
+         * Deleted by User Email Address
+         */
+        deletedByEmail?: pulumi.Input<string>;
+        /**
+         * Deleted by User Full Name
+         */
+        deletedByFullName?: pulumi.Input<string>;
+        /**
+         * Deleted by Date and Time
+         */
+        deletedDateTime?: pulumi.Input<string>;
+        /**
+         * Updated by User Key
+         */
+        updatedBy?: pulumi.Input<string>;
+        /**
+         * Updated by User Email Address
+         */
+        updatedByEmail?: pulumi.Input<string>;
+        /**
+         * Updated by User Full Name
+         */
+        updatedByFullName?: pulumi.Input<string>;
+        /**
+         * Updated by Date and Time
+         */
+        updatedDateTime?: pulumi.Input<string>;
+    }
+
+    export interface RouteFilterProject {
+        /**
+         * URI of the Fabric Project
+         */
+        href?: pulumi.Input<string>;
+        /**
+         * Project id associated with Fabric Project
+         */
+        projectId: pulumi.Input<string>;
+    }
+
+    export interface RouteFilterRuleChange {
+        /**
+         * The URI of the previous Route Filter Rule Change
+         */
+        href?: pulumi.Input<string>;
+        /**
+         * Type of change. One of [ "BGP_IPv4_PREFIX_FILTER_RULE_UPDATE","BGP_IPv4_PREFIX_FILTER_RULE_CREATION","BGP_IPv4_PREFIX_FILTER_RULE_DELETION","BGP_IPv6_PREFIX_FILTER_RULE_UPDATE","BGP_IPv6_PREFIX_FILTER_RULE_CREATION","BGP_IPv6_PREFIX_FILTER_RULE_DELETION" ]
+         */
+        type?: pulumi.Input<string>;
+        /**
+         * Unique identifier for the previous change
+         */
+        uuid?: pulumi.Input<string>;
+    }
+
+    export interface RouteFilterRuleChangeLog {
+        /**
+         * Created by User Key
+         */
+        createdBy?: pulumi.Input<string>;
+        /**
+         * Created by User Email Address
+         */
+        createdByEmail?: pulumi.Input<string>;
+        /**
+         * Created by User Full Name
+         */
+        createdByFullName?: pulumi.Input<string>;
+        /**
+         * Created by Date and Time
+         */
+        createdDateTime?: pulumi.Input<string>;
+        /**
+         * Deleted by User Key
+         */
+        deletedBy?: pulumi.Input<string>;
+        /**
+         * Deleted by User Email Address
+         */
+        deletedByEmail?: pulumi.Input<string>;
+        /**
+         * Deleted by User Full Name
+         */
+        deletedByFullName?: pulumi.Input<string>;
+        /**
+         * Deleted by Date and Time
+         */
+        deletedDateTime?: pulumi.Input<string>;
+        /**
+         * Updated by User Key
+         */
+        updatedBy?: pulumi.Input<string>;
+        /**
+         * Updated by User Email Address
+         */
+        updatedByEmail?: pulumi.Input<string>;
+        /**
+         * Updated by User Full Name
+         */
+        updatedByFullName?: pulumi.Input<string>;
+        /**
+         * Updated by Date and Time
+         */
+        updatedDateTime?: pulumi.Input<string>;
     }
 
     export interface RoutingProtocolBfd {

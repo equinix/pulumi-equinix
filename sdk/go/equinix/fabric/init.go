@@ -25,8 +25,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CloudRouter{}
 	case "equinix:fabric/connection:Connection":
 		r = &Connection{}
+	case "equinix:fabric/connectionRouteFilter:ConnectionRouteFilter":
+		r = &ConnectionRouteFilter{}
 	case "equinix:fabric/network:Network":
 		r = &Network{}
+	case "equinix:fabric/routeFilter:RouteFilter":
+		r = &RouteFilter{}
+	case "equinix:fabric/routeFilterRule:RouteFilterRule":
+		r = &RouteFilterRule{}
 	case "equinix:fabric/routingProtocol:RoutingProtocol":
 		r = &RoutingProtocol{}
 	case "equinix:fabric/serviceProfile:ServiceProfile":
@@ -56,7 +62,22 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"equinix",
+		"fabric/connectionRouteFilter",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"equinix",
 		"fabric/network",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"equinix",
+		"fabric/routeFilter",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"equinix",
+		"fabric/routeFilterRule",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

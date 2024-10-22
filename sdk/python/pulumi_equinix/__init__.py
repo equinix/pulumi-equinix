@@ -45,10 +45,34 @@ _utilities.register(
  },
  {
   "pkg": "equinix",
+  "mod": "fabric/connectionRouteFilter",
+  "fqn": "pulumi_equinix.fabric",
+  "classes": {
+   "equinix:fabric/connectionRouteFilter:ConnectionRouteFilter": "ConnectionRouteFilter"
+  }
+ },
+ {
+  "pkg": "equinix",
   "mod": "fabric/network",
   "fqn": "pulumi_equinix.fabric",
   "classes": {
    "equinix:fabric/network:Network": "Network"
+  }
+ },
+ {
+  "pkg": "equinix",
+  "mod": "fabric/routeFilter",
+  "fqn": "pulumi_equinix.fabric",
+  "classes": {
+   "equinix:fabric/routeFilter:RouteFilter": "RouteFilter"
+  }
+ },
+ {
+  "pkg": "equinix",
+  "mod": "fabric/routeFilterRule",
+  "fqn": "pulumi_equinix.fabric",
+  "classes": {
+   "equinix:fabric/routeFilterRule:RouteFilterRule": "RouteFilterRule"
   }
  },
  {
