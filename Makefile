@@ -64,7 +64,7 @@ bin/pulumi-java-gen: .pulumi-java-gen.version $(PULUMICTL_BIN)
 provider: tfgen install_plugins # build the provider binary
 provider: only_provider
 
-only_provider: $(PULUMICTL_BIN)
+only_provider: build_schema $(PULUMICTL_BIN)
 	(cd provider && go build -o $(WORKING_DIR)/bin/${PROVIDER} -ldflags "-X ${PROJECT}/${VERSION_PATH}=${VERSION} -X github.com/equinix/terraform-provider-equinix/version.ProviderVersion=${VERSION}" ${PROJECT}/${PROVIDER_PATH}/cmd/${PROVIDER})
 
 build_sdks: clean build_nodejs build_python build_go build_dotnet build_java # build all the sdks
