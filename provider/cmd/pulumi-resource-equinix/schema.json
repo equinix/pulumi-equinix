@@ -1917,6 +1917,224 @@
                 "projectId"
             ]
         },
+        "equinix:fabric/RouteFilterChange:RouteFilterChange": {
+            "properties": {
+                "href": {
+                    "type": "string",
+                    "description": "The URI of the previous Route Filter Change\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Type of change. One of [ \"BGP_IPv4_PREFIX_FILTER_UPDATE\",\"BGP_IPv4_PREFIX_FILTER_CREATION\",\"BGP_IPv4_PREFIX_FILTER_DELETION\",\"BGP_IPv6_PREFIX_FILTER_UPDATE\",\"BGP_IPv6_PREFIX_FILTER_CREATION\",\"BGP_IPv6_PREFIX_FILTER_DELETION\" ]\n"
+                },
+                "uuid": {
+                    "type": "string",
+                    "description": "Unique identifier for the previous change\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "href",
+                        "type",
+                        "uuid"
+                    ]
+                }
+            }
+        },
+        "equinix:fabric/RouteFilterChangeLog:RouteFilterChangeLog": {
+            "properties": {
+                "createdBy": {
+                    "type": "string",
+                    "description": "Created by User Key\n"
+                },
+                "createdByEmail": {
+                    "type": "string",
+                    "description": "Created by User Email Address\n"
+                },
+                "createdByFullName": {
+                    "type": "string",
+                    "description": "Created by User Full Name\n"
+                },
+                "createdDateTime": {
+                    "type": "string",
+                    "description": "Created by Date and Time\n"
+                },
+                "deletedBy": {
+                    "type": "string",
+                    "description": "Deleted by User Key\n"
+                },
+                "deletedByEmail": {
+                    "type": "string",
+                    "description": "Deleted by User Email Address\n"
+                },
+                "deletedByFullName": {
+                    "type": "string",
+                    "description": "Deleted by User Full Name\n"
+                },
+                "deletedDateTime": {
+                    "type": "string",
+                    "description": "Deleted by Date and Time\n"
+                },
+                "updatedBy": {
+                    "type": "string",
+                    "description": "Updated by User Key\n"
+                },
+                "updatedByEmail": {
+                    "type": "string",
+                    "description": "Updated by User Email Address\n"
+                },
+                "updatedByFullName": {
+                    "type": "string",
+                    "description": "Updated by User Full Name\n"
+                },
+                "updatedDateTime": {
+                    "type": "string",
+                    "description": "Updated by Date and Time\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "createdBy",
+                        "createdByEmail",
+                        "createdByFullName",
+                        "createdDateTime",
+                        "deletedBy",
+                        "deletedByEmail",
+                        "deletedByFullName",
+                        "deletedDateTime",
+                        "updatedBy",
+                        "updatedByEmail",
+                        "updatedByFullName",
+                        "updatedDateTime"
+                    ]
+                }
+            }
+        },
+        "equinix:fabric/RouteFilterProject:RouteFilterProject": {
+            "properties": {
+                "href": {
+                    "type": "string",
+                    "description": "URI of the Fabric Project\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "Project id associated with Fabric Project\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "projectId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "href",
+                        "projectId"
+                    ]
+                }
+            }
+        },
+        "equinix:fabric/RouteFilterRuleChange:RouteFilterRuleChange": {
+            "properties": {
+                "href": {
+                    "type": "string",
+                    "description": "The URI of the previous Route Filter Rule Change\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Type of change. One of [ \"BGP_IPv4_PREFIX_FILTER_RULE_UPDATE\",\"BGP_IPv4_PREFIX_FILTER_RULE_CREATION\",\"BGP_IPv4_PREFIX_FILTER_RULE_DELETION\",\"BGP_IPv6_PREFIX_FILTER_RULE_UPDATE\",\"BGP_IPv6_PREFIX_FILTER_RULE_CREATION\",\"BGP_IPv6_PREFIX_FILTER_RULE_DELETION\" ]\n"
+                },
+                "uuid": {
+                    "type": "string",
+                    "description": "Unique identifier for the previous change\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "href",
+                        "type",
+                        "uuid"
+                    ]
+                }
+            }
+        },
+        "equinix:fabric/RouteFilterRuleChangeLog:RouteFilterRuleChangeLog": {
+            "properties": {
+                "createdBy": {
+                    "type": "string",
+                    "description": "Created by User Key\n"
+                },
+                "createdByEmail": {
+                    "type": "string",
+                    "description": "Created by User Email Address\n"
+                },
+                "createdByFullName": {
+                    "type": "string",
+                    "description": "Created by User Full Name\n"
+                },
+                "createdDateTime": {
+                    "type": "string",
+                    "description": "Created by Date and Time\n"
+                },
+                "deletedBy": {
+                    "type": "string",
+                    "description": "Deleted by User Key\n"
+                },
+                "deletedByEmail": {
+                    "type": "string",
+                    "description": "Deleted by User Email Address\n"
+                },
+                "deletedByFullName": {
+                    "type": "string",
+                    "description": "Deleted by User Full Name\n"
+                },
+                "deletedDateTime": {
+                    "type": "string",
+                    "description": "Deleted by Date and Time\n"
+                },
+                "updatedBy": {
+                    "type": "string",
+                    "description": "Updated by User Key\n"
+                },
+                "updatedByEmail": {
+                    "type": "string",
+                    "description": "Updated by User Email Address\n"
+                },
+                "updatedByFullName": {
+                    "type": "string",
+                    "description": "Updated by User Full Name\n"
+                },
+                "updatedDateTime": {
+                    "type": "string",
+                    "description": "Updated by Date and Time\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "createdBy",
+                        "createdByEmail",
+                        "createdByFullName",
+                        "createdDateTime",
+                        "deletedBy",
+                        "deletedByEmail",
+                        "deletedByFullName",
+                        "deletedDateTime",
+                        "updatedBy",
+                        "updatedByEmail",
+                        "updatedByFullName",
+                        "updatedDateTime"
+                    ]
+                }
+            }
+        },
         "equinix:fabric/RoutingProtocolBfd:RoutingProtocolBfd": {
             "properties": {
                 "enabled": {
@@ -4384,6 +4602,80 @@
             "required": [
                 "group",
                 "priority"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getConnectionRouteFiltersData:getConnectionRouteFiltersData": {
+            "properties": {
+                "attachmentStatus": {
+                    "type": "string",
+                    "description": "Status of the Route Filter Policy attachment lifecycle\n"
+                },
+                "direction": {
+                    "type": "string",
+                    "description": "Direction of the filtering of the attached Route Filter Policy\n"
+                },
+                "href": {
+                    "type": "string",
+                    "description": "URI to the attached Route Filter Policy on the Connection\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Route Filter Type. One of [ \"BGP_IPv4_PREFIX_FILTER\", \"BGP_IPv6_PREFIX_FILTER\" ]\n"
+                },
+                "uuid": {
+                    "type": "string",
+                    "description": "Equinix Assigned ID for Route Filter Policy\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "attachmentStatus",
+                "direction",
+                "href",
+                "type",
+                "uuid"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getConnectionRouteFiltersPagination:getConnectionRouteFiltersPagination": {
+            "properties": {
+                "limit": {
+                    "type": "integer",
+                    "description": "Number of elements to be requested per page. Number must be between 1 and 100. Default is 20\n"
+                },
+                "next": {
+                    "type": "string",
+                    "description": "URL relative to the last item in the response.\n"
+                },
+                "offset": {
+                    "type": "integer",
+                    "description": "The page offset for the pagination request. Index of the first element. Default is 0.\n"
+                },
+                "previous": {
+                    "type": "string",
+                    "description": "URL relative to the first item in the response.\n"
+                },
+                "total": {
+                    "type": "integer",
+                    "description": "Total number of elements returned.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "limit",
+                "next",
+                "offset",
+                "previous",
+                "total"
             ],
             "language": {
                 "nodejs": {
@@ -7760,6 +8052,710 @@
             "required": [
                 "name"
             ]
+        },
+        "equinix:fabric/getRouteFilterChange:getRouteFilterChange": {
+            "properties": {
+                "href": {
+                    "type": "string",
+                    "description": "The URI of the previous Route Filter Change\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Type of change. One of [ \"BGP_IPv4_PREFIX_FILTER_UPDATE\",\"BGP_IPv4_PREFIX_FILTER_CREATION\",\"BGP_IPv4_PREFIX_FILTER_DELETION\",\"BGP_IPv6_PREFIX_FILTER_UPDATE\",\"BGP_IPv6_PREFIX_FILTER_CREATION\",\"BGP_IPv6_PREFIX_FILTER_DELETION\" ]\n"
+                },
+                "uuid": {
+                    "type": "string",
+                    "description": "Unique identifier for the previous change\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "href",
+                "type",
+                "uuid"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getRouteFilterChangeLog:getRouteFilterChangeLog": {
+            "properties": {
+                "createdBy": {
+                    "type": "string",
+                    "description": "Created by User Key\n"
+                },
+                "createdByEmail": {
+                    "type": "string",
+                    "description": "Created by User Email Address\n"
+                },
+                "createdByFullName": {
+                    "type": "string",
+                    "description": "Created by User Full Name\n"
+                },
+                "createdDateTime": {
+                    "type": "string",
+                    "description": "Created by Date and Time\n"
+                },
+                "deletedBy": {
+                    "type": "string",
+                    "description": "Deleted by User Key\n"
+                },
+                "deletedByEmail": {
+                    "type": "string",
+                    "description": "Deleted by User Email Address\n"
+                },
+                "deletedByFullName": {
+                    "type": "string",
+                    "description": "Deleted by User Full Name\n"
+                },
+                "deletedDateTime": {
+                    "type": "string",
+                    "description": "Deleted by Date and Time\n"
+                },
+                "updatedBy": {
+                    "type": "string",
+                    "description": "Updated by User Key\n"
+                },
+                "updatedByEmail": {
+                    "type": "string",
+                    "description": "Updated by User Email Address\n"
+                },
+                "updatedByFullName": {
+                    "type": "string",
+                    "description": "Updated by User Full Name\n"
+                },
+                "updatedDateTime": {
+                    "type": "string",
+                    "description": "Updated by Date and Time\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "createdBy",
+                "createdByEmail",
+                "createdByFullName",
+                "createdDateTime",
+                "deletedBy",
+                "deletedByEmail",
+                "deletedByFullName",
+                "deletedDateTime",
+                "updatedBy",
+                "updatedByEmail",
+                "updatedByFullName",
+                "updatedDateTime"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getRouteFilterProject:getRouteFilterProject": {
+            "properties": {
+                "href": {
+                    "type": "string",
+                    "description": "URI of the Fabric Project\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "Project id associated with Fabric Project\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "href",
+                "projectId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getRouteFilterRuleChange:getRouteFilterRuleChange": {
+            "properties": {
+                "href": {
+                    "type": "string",
+                    "description": "The URI of the previous Route Filter Rule Change\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Type of change. One of [ \"BGP_IPv4_PREFIX_FILTER_RULE_UPDATE\",\"BGP_IPv4_PREFIX_FILTER_RULE_CREATION\",\"BGP_IPv4_PREFIX_FILTER_RULE_DELETION\",\"BGP_IPv6_PREFIX_FILTER_RULE_UPDATE\",\"BGP_IPv6_PREFIX_FILTER_RULE_CREATION\",\"BGP_IPv6_PREFIX_FILTER_RULE_DELETION\" ]\n"
+                },
+                "uuid": {
+                    "type": "string",
+                    "description": "Unique identifier for the previous change\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "href",
+                "type",
+                "uuid"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getRouteFilterRuleChangeLog:getRouteFilterRuleChangeLog": {
+            "properties": {
+                "createdBy": {
+                    "type": "string",
+                    "description": "Created by User Key\n"
+                },
+                "createdByEmail": {
+                    "type": "string",
+                    "description": "Created by User Email Address\n"
+                },
+                "createdByFullName": {
+                    "type": "string",
+                    "description": "Created by User Full Name\n"
+                },
+                "createdDateTime": {
+                    "type": "string",
+                    "description": "Created by Date and Time\n"
+                },
+                "deletedBy": {
+                    "type": "string",
+                    "description": "Deleted by User Key\n"
+                },
+                "deletedByEmail": {
+                    "type": "string",
+                    "description": "Deleted by User Email Address\n"
+                },
+                "deletedByFullName": {
+                    "type": "string",
+                    "description": "Deleted by User Full Name\n"
+                },
+                "deletedDateTime": {
+                    "type": "string",
+                    "description": "Deleted by Date and Time\n"
+                },
+                "updatedBy": {
+                    "type": "string",
+                    "description": "Updated by User Key\n"
+                },
+                "updatedByEmail": {
+                    "type": "string",
+                    "description": "Updated by User Email Address\n"
+                },
+                "updatedByFullName": {
+                    "type": "string",
+                    "description": "Updated by User Full Name\n"
+                },
+                "updatedDateTime": {
+                    "type": "string",
+                    "description": "Updated by Date and Time\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "createdBy",
+                "createdByEmail",
+                "createdByFullName",
+                "createdDateTime",
+                "deletedBy",
+                "deletedByEmail",
+                "deletedByFullName",
+                "deletedDateTime",
+                "updatedBy",
+                "updatedByEmail",
+                "updatedByFullName",
+                "updatedDateTime"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getRouteFilterRulesData:getRouteFilterRulesData": {
+            "properties": {
+                "action": {
+                    "type": "string",
+                    "description": "Action that will be taken on IP Addresses matching the rule\n"
+                },
+                "changeLogs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/equinix:fabric/getRouteFilterRulesDataChangeLog:getRouteFilterRulesDataChangeLog"
+                    }
+                },
+                "changes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/equinix:fabric/getRouteFilterRulesDataChange:getRouteFilterRulesDataChange"
+                    },
+                    "description": "An object with the details of the previous change applied on the Route Filter\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Optional description to add to the Route Filter you will be creating\n"
+                },
+                "href": {
+                    "type": "string",
+                    "description": "Route filter rules URI\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the Route Filter\n"
+                },
+                "prefix": {
+                    "type": "string",
+                    "description": "IP Address Prefix to Filter on\n"
+                },
+                "prefixMatch": {
+                    "type": "string",
+                    "description": "Prefix matching operator. One of [ orlonger, exact ] Default: \"orlonger\"\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "State of the Route Filter Rule in its lifecycle\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Route Filter Type. One of [ BGP_IPv4_PREFIX_FILTER_RULE, BGP_IPv6_PREFIX_FILTER_RULE ]\n"
+                },
+                "uuid": {
+                    "type": "string",
+                    "description": "Equinix Assigned ID for Route Filter Rule to retrieve data for\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "action",
+                "changes",
+                "changeLogs",
+                "description",
+                "href",
+                "name",
+                "prefix",
+                "prefixMatch",
+                "state",
+                "type",
+                "uuid"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getRouteFilterRulesDataChange:getRouteFilterRulesDataChange": {
+            "properties": {
+                "href": {
+                    "type": "string",
+                    "description": "The URI of the previous Route Filter Rule Change\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Type of change. One of [ \"BGP_IPv4_PREFIX_FILTER_RULE_UPDATE\",\"BGP_IPv4_PREFIX_FILTER_RULE_CREATION\",\"BGP_IPv4_PREFIX_FILTER_RULE_DELETION\",\"BGP_IPv6_PREFIX_FILTER_RULE_UPDATE\",\"BGP_IPv6_PREFIX_FILTER_RULE_CREATION\",\"BGP_IPv6_PREFIX_FILTER_RULE_DELETION\" ]\n"
+                },
+                "uuid": {
+                    "type": "string",
+                    "description": "Unique identifier for the previous change\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "href",
+                "type",
+                "uuid"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getRouteFilterRulesDataChangeLog:getRouteFilterRulesDataChangeLog": {
+            "properties": {
+                "createdBy": {
+                    "type": "string",
+                    "description": "Created by User Key\n"
+                },
+                "createdByEmail": {
+                    "type": "string",
+                    "description": "Created by User Email Address\n"
+                },
+                "createdByFullName": {
+                    "type": "string",
+                    "description": "Created by User Full Name\n"
+                },
+                "createdDateTime": {
+                    "type": "string",
+                    "description": "Created by Date and Time\n"
+                },
+                "deletedBy": {
+                    "type": "string",
+                    "description": "Deleted by User Key\n"
+                },
+                "deletedByEmail": {
+                    "type": "string",
+                    "description": "Deleted by User Email Address\n"
+                },
+                "deletedByFullName": {
+                    "type": "string",
+                    "description": "Deleted by User Full Name\n"
+                },
+                "deletedDateTime": {
+                    "type": "string",
+                    "description": "Deleted by Date and Time\n"
+                },
+                "updatedBy": {
+                    "type": "string",
+                    "description": "Updated by User Key\n"
+                },
+                "updatedByEmail": {
+                    "type": "string",
+                    "description": "Updated by User Email Address\n"
+                },
+                "updatedByFullName": {
+                    "type": "string",
+                    "description": "Updated by User Full Name\n"
+                },
+                "updatedDateTime": {
+                    "type": "string",
+                    "description": "Updated by Date and Time\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "createdBy",
+                "createdByEmail",
+                "createdByFullName",
+                "createdDateTime",
+                "deletedBy",
+                "deletedByEmail",
+                "deletedByFullName",
+                "deletedDateTime",
+                "updatedBy",
+                "updatedByEmail",
+                "updatedByFullName",
+                "updatedDateTime"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getRouteFilterRulesPagination:getRouteFilterRulesPagination": {
+            "properties": {
+                "limit": {
+                    "type": "integer",
+                    "description": "Number of elements to be requested per page. Number must be between 1 and 100. Default is 20\n"
+                },
+                "next": {
+                    "type": "string",
+                    "description": "URL relative to the last item in the response.\n"
+                },
+                "offset": {
+                    "type": "integer",
+                    "description": "The page offset for the pagination request. Index of the first element. Default is 0.\n"
+                },
+                "previous": {
+                    "type": "string",
+                    "description": "URL relative to the first item in the response.\n"
+                },
+                "total": {
+                    "type": "integer",
+                    "description": "Total number of elements returned.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "limit",
+                "next",
+                "offset",
+                "previous",
+                "total"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getRouteFiltersData:getRouteFiltersData": {
+            "properties": {
+                "changeLogs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/equinix:fabric/getRouteFiltersDataChangeLog:getRouteFiltersDataChangeLog"
+                    }
+                },
+                "changes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/equinix:fabric/getRouteFiltersDataChange:getRouteFiltersDataChange"
+                    },
+                    "description": "An object with the details of the previous change applied on the Route Filter\n"
+                },
+                "connectionsCount": {
+                    "type": "integer",
+                    "description": "The number of Fabric Connections that this Route Filter is attached to\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Optional description to add to the Route Filter you will be creating\n"
+                },
+                "href": {
+                    "type": "string",
+                    "description": "Route filter URI\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the Route Filter\n"
+                },
+                "notMatchedRuleAction": {
+                    "type": "string",
+                    "description": "The action that will be taken on ip ranges that don't match the rules present within the Route Filter\n"
+                },
+                "projects": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/equinix:fabric/getRouteFiltersDataProject:getRouteFiltersDataProject"
+                    },
+                    "description": "The Project object that contains project_id and href that is related to the Fabric Project containing connections the Route Filter can be attached to\n"
+                },
+                "rulesCount": {
+                    "type": "integer",
+                    "description": "The number of Route Filter Rules attached to this Route Filter\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "State of the Route Filter in its lifecycle\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Route Filter Type. One of [ \"BGP_IPv4_PREFIX_FILTER\", \"BGP_IPv6_PREFIX_FILTER\" ]\n"
+                },
+                "uuid": {
+                    "type": "string",
+                    "description": "Equinix Assigned ID for Route Filter\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "changes",
+                "changeLogs",
+                "connectionsCount",
+                "description",
+                "href",
+                "name",
+                "notMatchedRuleAction",
+                "projects",
+                "rulesCount",
+                "state",
+                "type",
+                "uuid"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getRouteFiltersDataChange:getRouteFiltersDataChange": {
+            "properties": {
+                "href": {
+                    "type": "string",
+                    "description": "The URI of the previous Route Filter Change\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Type of change. One of [ \"BGP_IPv4_PREFIX_FILTER_UPDATE\",\"BGP_IPv4_PREFIX_FILTER_CREATION\",\"BGP_IPv4_PREFIX_FILTER_DELETION\",\"BGP_IPv6_PREFIX_FILTER_UPDATE\",\"BGP_IPv6_PREFIX_FILTER_CREATION\",\"BGP_IPv6_PREFIX_FILTER_DELETION\" ]\n"
+                },
+                "uuid": {
+                    "type": "string",
+                    "description": "Unique identifier for the previous change\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "href",
+                "type",
+                "uuid"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getRouteFiltersDataChangeLog:getRouteFiltersDataChangeLog": {
+            "properties": {
+                "createdBy": {
+                    "type": "string",
+                    "description": "Created by User Key\n"
+                },
+                "createdByEmail": {
+                    "type": "string",
+                    "description": "Created by User Email Address\n"
+                },
+                "createdByFullName": {
+                    "type": "string",
+                    "description": "Created by User Full Name\n"
+                },
+                "createdDateTime": {
+                    "type": "string",
+                    "description": "Created by Date and Time\n"
+                },
+                "deletedBy": {
+                    "type": "string",
+                    "description": "Deleted by User Key\n"
+                },
+                "deletedByEmail": {
+                    "type": "string",
+                    "description": "Deleted by User Email Address\n"
+                },
+                "deletedByFullName": {
+                    "type": "string",
+                    "description": "Deleted by User Full Name\n"
+                },
+                "deletedDateTime": {
+                    "type": "string",
+                    "description": "Deleted by Date and Time\n"
+                },
+                "updatedBy": {
+                    "type": "string",
+                    "description": "Updated by User Key\n"
+                },
+                "updatedByEmail": {
+                    "type": "string",
+                    "description": "Updated by User Email Address\n"
+                },
+                "updatedByFullName": {
+                    "type": "string",
+                    "description": "Updated by User Full Name\n"
+                },
+                "updatedDateTime": {
+                    "type": "string",
+                    "description": "Updated by Date and Time\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "createdBy",
+                "createdByEmail",
+                "createdByFullName",
+                "createdDateTime",
+                "deletedBy",
+                "deletedByEmail",
+                "deletedByFullName",
+                "deletedDateTime",
+                "updatedBy",
+                "updatedByEmail",
+                "updatedByFullName",
+                "updatedDateTime"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getRouteFiltersDataProject:getRouteFiltersDataProject": {
+            "properties": {
+                "href": {
+                    "type": "string",
+                    "description": "URI of the Fabric Project\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "Project id associated with Fabric Project\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "href",
+                "projectId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getRouteFiltersFilter:getRouteFiltersFilter": {
+            "properties": {
+                "operator": {
+                    "type": "string",
+                    "description": "Possible operators to use on the filter property. Can be one of the following: [ \"=\", \"!=\", \"[NOT] LIKE\", \"[NOT] IN\", \"ILIKE\" ]\n"
+                },
+                "property": {
+                    "type": "string",
+                    "description": "The API response property which you want to filter your request on. Can be one of the following: \"/type\", \"/name\", \"/project/projectId\", \"/uuid\", \"/state\"\n"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The values that you want to apply the property+operator combination to in order to filter your data search\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "operator",
+                "property",
+                "values"
+            ]
+        },
+        "equinix:fabric/getRouteFiltersPagination:getRouteFiltersPagination": {
+            "properties": {
+                "limit": {
+                    "type": "integer",
+                    "description": "Number of elements to be requested per page. Number must be between 1 and 100. Default is 20\n"
+                },
+                "next": {
+                    "type": "string",
+                    "description": "URL relative to the last item in the response.\n"
+                },
+                "offset": {
+                    "type": "integer",
+                    "description": "The page offset for the pagination request. Index of the first element. Default is 0.\n"
+                },
+                "previous": {
+                    "type": "string",
+                    "description": "URL relative to the first item in the response.\n"
+                },
+                "total": {
+                    "type": "integer",
+                    "description": "Total number of elements returned.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "limit",
+                "next",
+                "offset",
+                "previous",
+                "total"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getRouteFiltersSort:getRouteFiltersSort": {
+            "properties": {
+                "direction": {
+                    "type": "string",
+                    "description": "The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC\n"
+                },
+                "property": {
+                    "type": "string",
+                    "description": "The property name to use in sorting. Can be one of the following: [/type, /uuid, /name, /project/projectId, /state, /notMatchedRuleAction, /connectionsCount, /changeLog/createdDateTime, /changeLog/updatedDateTime], Defaults to /changeLog/updatedDateTime\n"
+                }
+            },
+            "type": "object"
         },
         "equinix:fabric/getRoutingProtocolBfd:getRoutingProtocolBfd": {
             "properties": {
@@ -13577,6 +14573,105 @@
                 "type": "object"
             }
         },
+        "equinix:fabric/connectionRouteFilter:ConnectionRouteFilter": {
+            "description": "Fabric V4 API compatible resource allows attachment of Route Filter Polices to Fabric Connections\n\nAdditional Documentation:\n* Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm\n* API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filters\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix-labs/pulumi-equinix\";\n\nconst policyAttachment = new equinix.fabric.ConnectionRouteFilter(\"policyAttachment\", {\n    connectionId: \"\u003cconnection_uuid\u003e\",\n    routeFilterId: \"\u003croute_filter_policy_uuid\u003e\",\n    direction: \"INBOUND\",\n});\nexport const connectionRouteFilterId = policyAttachment.id;\nexport const connectionRouteFilterConnectionId = policyAttachment.connectionId;\nexport const connectionRouteFilterDirection = policyAttachment.direction;\nexport const connectionRouteFilterType = policyAttachment.type;\nexport const connectionRouteFilterAttachmentStatus = policyAttachment.attachmentStatus;\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\npolicy_attachment = equinix.fabric.ConnectionRouteFilter(\"policyAttachment\",\n    connection_id=\"\u003cconnection_uuid\u003e\",\n    route_filter_id=\"\u003croute_filter_policy_uuid\u003e\",\n    direction=\"INBOUND\")\npulumi.export(\"connectionRouteFilterId\", policy_attachment.id)\npulumi.export(\"connectionRouteFilterConnectionId\", policy_attachment.connection_id)\npulumi.export(\"connectionRouteFilterDirection\", policy_attachment.direction)\npulumi.export(\"connectionRouteFilterType\", policy_attachment.type)\npulumi.export(\"connectionRouteFilterAttachmentStatus\", policy_attachment.attachment_status)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var policyAttachment = new Equinix.Fabric.ConnectionRouteFilter(\"policyAttachment\", new()\n    {\n        ConnectionId = \"\u003cconnection_uuid\u003e\",\n        RouteFilterId = \"\u003croute_filter_policy_uuid\u003e\",\n        Direction = \"INBOUND\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"connectionRouteFilterId\"] = policyAttachment.Id,\n        [\"connectionRouteFilterConnectionId\"] = policyAttachment.ConnectionId,\n        [\"connectionRouteFilterDirection\"] = policyAttachment.Direction,\n        [\"connectionRouteFilterType\"] = policyAttachment.Type,\n        [\"connectionRouteFilterAttachmentStatus\"] = policyAttachment.AttachmentStatus,\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tpolicyAttachment, err := fabric.NewConnectionRouteFilter(ctx, \"policyAttachment\", \u0026fabric.ConnectionRouteFilterArgs{\n\t\t\tConnectionId:  pulumi.String(\"\u003cconnection_uuid\u003e\"),\n\t\t\tRouteFilterId: pulumi.String(\"\u003croute_filter_policy_uuid\u003e\"),\n\t\t\tDirection:     pulumi.String(\"INBOUND\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"connectionRouteFilterId\", policyAttachment.ID())\n\t\tctx.Export(\"connectionRouteFilterConnectionId\", policyAttachment.ConnectionId)\n\t\tctx.Export(\"connectionRouteFilterDirection\", policyAttachment.Direction)\n\t\tctx.Export(\"connectionRouteFilterType\", policyAttachment.Type)\n\t\tctx.Export(\"connectionRouteFilterAttachmentStatus\", policyAttachment.AttachmentStatus)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.fabric.ConnectionRouteFilter;\nimport com.pulumi.equinix.fabric.ConnectionRouteFilterArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var policyAttachment = new ConnectionRouteFilter(\"policyAttachment\", ConnectionRouteFilterArgs.builder()\n            .connectionId(\"\u003cconnection_uuid\u003e\")\n            .routeFilterId(\"\u003croute_filter_policy_uuid\u003e\")\n            .direction(\"INBOUND\")\n            .build());\n\n        ctx.export(\"connectionRouteFilterId\", policyAttachment.id());\n        ctx.export(\"connectionRouteFilterConnectionId\", policyAttachment.connectionId());\n        ctx.export(\"connectionRouteFilterDirection\", policyAttachment.direction());\n        ctx.export(\"connectionRouteFilterType\", policyAttachment.type());\n        ctx.export(\"connectionRouteFilterAttachmentStatus\", policyAttachment.attachmentStatus());\n    }\n}\n```\n```yaml\nresources:\n  policyAttachment:\n    type: equinix:fabric:ConnectionRouteFilter\n    properties:\n      connectionId: \u003cconnection_uuid\u003e\n      routeFilterId: \u003croute_filter_policy_uuid\u003e\n      direction: INBOUND\noutputs:\n  connectionRouteFilterId: ${policyAttachment.id}\n  connectionRouteFilterConnectionId: ${policyAttachment.connectionId}\n  connectionRouteFilterDirection: ${policyAttachment.direction}\n  connectionRouteFilterType: ${policyAttachment.type}\n  connectionRouteFilterAttachmentStatus: ${policyAttachment.attachmentStatus}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "properties": {
+                "attachmentStatus": {
+                    "type": "string",
+                    "description": "Status of the Route Filter Policy attachment lifecycle\n"
+                },
+                "connectionId": {
+                    "type": "string",
+                    "description": "Equinix Assigned UUID of the Equinix Connection to attach the Route Filter Policy to\n"
+                },
+                "direction": {
+                    "type": "string",
+                    "description": "Direction of the filtering of the attached Route Filter Policy\n"
+                },
+                "href": {
+                    "type": "string",
+                    "description": "URI to the attached Route Filter Policy on the Connection\n"
+                },
+                "routeFilterId": {
+                    "type": "string",
+                    "description": "Equinix Assigned UUID of the Route Filter Policy to attach to the Equinix Connection\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Route Filter Type. One of [ \"BGP*IPv4*PREFIX*FILTER\", \"BGP*IPv6*PREFIX*FILTER\" ]\n"
+                },
+                "uuid": {
+                    "type": "string",
+                    "description": "Equinix Assigned ID for Route Filter Policy\n"
+                }
+            },
+            "required": [
+                "attachmentStatus",
+                "connectionId",
+                "direction",
+                "href",
+                "routeFilterId",
+                "type",
+                "uuid"
+            ],
+            "inputProperties": {
+                "connectionId": {
+                    "type": "string",
+                    "description": "Equinix Assigned UUID of the Equinix Connection to attach the Route Filter Policy to\n",
+                    "willReplaceOnChanges": true
+                },
+                "direction": {
+                    "type": "string",
+                    "description": "Direction of the filtering of the attached Route Filter Policy\n"
+                },
+                "routeFilterId": {
+                    "type": "string",
+                    "description": "Equinix Assigned UUID of the Route Filter Policy to attach to the Equinix Connection\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "connectionId",
+                "direction",
+                "routeFilterId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ConnectionRouteFilter resources.\n",
+                "properties": {
+                    "attachmentStatus": {
+                        "type": "string",
+                        "description": "Status of the Route Filter Policy attachment lifecycle\n"
+                    },
+                    "connectionId": {
+                        "type": "string",
+                        "description": "Equinix Assigned UUID of the Equinix Connection to attach the Route Filter Policy to\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "direction": {
+                        "type": "string",
+                        "description": "Direction of the filtering of the attached Route Filter Policy\n"
+                    },
+                    "href": {
+                        "type": "string",
+                        "description": "URI to the attached Route Filter Policy on the Connection\n"
+                    },
+                    "routeFilterId": {
+                        "type": "string",
+                        "description": "Equinix Assigned UUID of the Route Filter Policy to attach to the Equinix Connection\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "Route Filter Type. One of [ \"BGP*IPv4*PREFIX*FILTER\", \"BGP*IPv6*PREFIX*FILTER\" ]\n"
+                    },
+                    "uuid": {
+                        "type": "string",
+                        "description": "Equinix Assigned ID for Route Filter Policy\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "equinix:fabric/network:Network": {
             "description": "Fabric V4 API compatible resource allows creation and management of Equinix Fabric Network\n\nAdditional documentation:\n* Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-networks-implement.htm\n* API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-networks\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix-labs/pulumi-equinix\";\n\nconst newNetwork = new equinix.fabric.Network(\"newNetwork\", {\n    notifications: [{\n        emails: [\n            \"example@equinix.com\",\n            \"test1@equinix.com\",\n        ],\n        type: \"ALL\",\n    }],\n    project: {\n        projectId: \"776847000642406\",\n    },\n    scope: \"GLOBAL\",\n    type: \"EVPLAN\",\n});\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nnew_network = equinix.fabric.Network(\"newNetwork\",\n    notifications=[{\n        \"emails\": [\n            \"example@equinix.com\",\n            \"test1@equinix.com\",\n        ],\n        \"type\": \"ALL\",\n    }],\n    project={\n        \"project_id\": \"776847000642406\",\n    },\n    scope=\"GLOBAL\",\n    type=\"EVPLAN\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var newNetwork = new Equinix.Fabric.Network(\"newNetwork\", new()\n    {\n        Notifications = new[]\n        {\n            new Equinix.Fabric.Inputs.NetworkNotificationArgs\n            {\n                Emails = new[]\n                {\n                    \"example@equinix.com\",\n                    \"test1@equinix.com\",\n                },\n                Type = \"ALL\",\n            },\n        },\n        Project = new Equinix.Fabric.Inputs.NetworkProjectArgs\n        {\n            ProjectId = \"776847000642406\",\n        },\n        Scope = \"GLOBAL\",\n        Type = \"EVPLAN\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fabric.NewNetwork(ctx, \"newNetwork\", \u0026fabric.NetworkArgs{\n\t\t\tNotifications: fabric.NetworkNotificationArray{\n\t\t\t\t\u0026fabric.NetworkNotificationArgs{\n\t\t\t\t\tEmails: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"example@equinix.com\"),\n\t\t\t\t\t\tpulumi.String(\"test1@equinix.com\"),\n\t\t\t\t\t},\n\t\t\t\t\tType: pulumi.String(\"ALL\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tProject: \u0026fabric.NetworkProjectArgs{\n\t\t\t\tProjectId: pulumi.String(\"776847000642406\"),\n\t\t\t},\n\t\t\tScope: pulumi.String(\"GLOBAL\"),\n\t\t\tType:  pulumi.String(\"EVPLAN\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.fabric.Network;\nimport com.pulumi.equinix.fabric.NetworkArgs;\nimport com.pulumi.equinix.fabric.inputs.NetworkNotificationArgs;\nimport com.pulumi.equinix.fabric.inputs.NetworkProjectArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var newNetwork = new Network(\"newNetwork\", NetworkArgs.builder()\n            .notifications(NetworkNotificationArgs.builder()\n                .emails(                \n                    \"example@equinix.com\",\n                    \"test1@equinix.com\")\n                .type(\"ALL\")\n                .build())\n            .project(NetworkProjectArgs.builder()\n                .projectId(\"776847000642406\")\n                .build())\n            .scope(\"GLOBAL\")\n            .type(\"EVPLAN\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  newNetwork:\n    type: equinix:fabric:Network\n    properties:\n      notifications:\n        - emails:\n            - example@equinix.com\n            - test1@equinix.com\n          type: ALL\n      project:\n        projectId: '776847000642406'\n      scope: GLOBAL\n      type: EVPLAN\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
@@ -13743,6 +14838,316 @@
                     "uuid": {
                         "type": "string",
                         "description": "Equinix-assigned network identifier\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "equinix:fabric/routeFilter:RouteFilter": {
+            "description": "Fabric V4 API compatible resource allows creation and management of Equinix Fabric Route Filter Policy\n\nAdditional Documentation:\n* Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm\n* API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filters\n\n",
+            "properties": {
+                "changeLogs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/equinix:fabric/RouteFilterChangeLog:RouteFilterChangeLog"
+                    }
+                },
+                "changes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/equinix:fabric/RouteFilterChange:RouteFilterChange"
+                    },
+                    "description": "An object with the details of the previous change applied on the Route Filter\n"
+                },
+                "connectionsCount": {
+                    "type": "integer",
+                    "description": "The number of Fabric Connections that this Route Filter is attached to\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Optional description to add to the Route Filter you will be creating\n"
+                },
+                "href": {
+                    "type": "string",
+                    "description": "Route filter URI\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the Route Filter\n"
+                },
+                "notMatchedRuleAction": {
+                    "type": "string",
+                    "description": "The action that will be taken on ip ranges that don't match the rules present within the Route Filter\n"
+                },
+                "project": {
+                    "$ref": "#/types/equinix:fabric/RouteFilterProject:RouteFilterProject",
+                    "description": "The Project object that contains project_id and href that is related to the Fabric Project containing connections the Route Filter can be attached to\n"
+                },
+                "rulesCount": {
+                    "type": "integer",
+                    "description": "The number of Route Filter Rules attached to this Route Filter\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "State of the Route Filter in its lifecycle\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Route Filter Type. One of [ \"BGP*IPv4*PREFIX*FILTER\", \"BGP*IPv6*PREFIX*FILTER\" ]\n"
+                },
+                "uuid": {
+                    "type": "string",
+                    "description": "Equinix Assigned ID for Route Filter\n"
+                }
+            },
+            "required": [
+                "changes",
+                "changeLogs",
+                "connectionsCount",
+                "description",
+                "href",
+                "name",
+                "notMatchedRuleAction",
+                "project",
+                "rulesCount",
+                "state",
+                "type",
+                "uuid"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "Optional description to add to the Route Filter you will be creating\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the Route Filter\n"
+                },
+                "project": {
+                    "$ref": "#/types/equinix:fabric/RouteFilterProject:RouteFilterProject",
+                    "description": "The Project object that contains project_id and href that is related to the Fabric Project containing connections the Route Filter can be attached to\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Route Filter Type. One of [ \"BGP*IPv4*PREFIX*FILTER\", \"BGP*IPv6*PREFIX*FILTER\" ]\n"
+                }
+            },
+            "requiredInputs": [
+                "project",
+                "type"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering RouteFilter resources.\n",
+                "properties": {
+                    "changeLogs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/equinix:fabric/RouteFilterChangeLog:RouteFilterChangeLog"
+                        }
+                    },
+                    "changes": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/equinix:fabric/RouteFilterChange:RouteFilterChange"
+                        },
+                        "description": "An object with the details of the previous change applied on the Route Filter\n"
+                    },
+                    "connectionsCount": {
+                        "type": "integer",
+                        "description": "The number of Fabric Connections that this Route Filter is attached to\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Optional description to add to the Route Filter you will be creating\n"
+                    },
+                    "href": {
+                        "type": "string",
+                        "description": "Route filter URI\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the Route Filter\n"
+                    },
+                    "notMatchedRuleAction": {
+                        "type": "string",
+                        "description": "The action that will be taken on ip ranges that don't match the rules present within the Route Filter\n"
+                    },
+                    "project": {
+                        "$ref": "#/types/equinix:fabric/RouteFilterProject:RouteFilterProject",
+                        "description": "The Project object that contains project_id and href that is related to the Fabric Project containing connections the Route Filter can be attached to\n"
+                    },
+                    "rulesCount": {
+                        "type": "integer",
+                        "description": "The number of Route Filter Rules attached to this Route Filter\n"
+                    },
+                    "state": {
+                        "type": "string",
+                        "description": "State of the Route Filter in its lifecycle\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "Route Filter Type. One of [ \"BGP*IPv4*PREFIX*FILTER\", \"BGP*IPv6*PREFIX*FILTER\" ]\n"
+                    },
+                    "uuid": {
+                        "type": "string",
+                        "description": "Equinix Assigned ID for Route Filter\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "equinix:fabric/routeFilterRule:RouteFilterRule": {
+            "description": "Fabric V4 API compatible resource allows creation and management of Equinix Fabric Route Filter Rule\n\nAdditional Documentation:\n* Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm\n* API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filter-rules\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix-labs/pulumi-equinix\";\n\nconst rfRule = new equinix.fabric.RouteFilterRule(\"rfRule\", {\n    routeFilterId: \"\u003croute_filter_policy_id\u003e\",\n    prefix: \"192.168.0.0/24\",\n    prefixMatch: \"exact\",\n    description: \"Route Filter Rule for X Purpose\",\n});\nexport const routeFilterRuleId = rfRule.id;\nexport const routeFilterId = rfRule.routeFilterId;\nexport const routeFilterRulePrefix = rfRule.prefix;\nexport const routeFilterRulePrefixMatch = rfRule.prefixMatch;\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nrf_rule = equinix.fabric.RouteFilterRule(\"rfRule\",\n    route_filter_id=\"\u003croute_filter_policy_id\u003e\",\n    prefix=\"192.168.0.0/24\",\n    prefix_match=\"exact\",\n    description=\"Route Filter Rule for X Purpose\")\npulumi.export(\"routeFilterRuleId\", rf_rule.id)\npulumi.export(\"routeFilterId\", rf_rule.route_filter_id)\npulumi.export(\"routeFilterRulePrefix\", rf_rule.prefix)\npulumi.export(\"routeFilterRulePrefixMatch\", rf_rule.prefix_match)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var rfRule = new Equinix.Fabric.RouteFilterRule(\"rfRule\", new()\n    {\n        RouteFilterId = \"\u003croute_filter_policy_id\u003e\",\n        Prefix = \"192.168.0.0/24\",\n        PrefixMatch = \"exact\",\n        Description = \"Route Filter Rule for X Purpose\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"routeFilterRuleId\"] = rfRule.Id,\n        [\"routeFilterId\"] = rfRule.RouteFilterId,\n        [\"routeFilterRulePrefix\"] = rfRule.Prefix,\n        [\"routeFilterRulePrefixMatch\"] = rfRule.PrefixMatch,\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\trfRule, err := fabric.NewRouteFilterRule(ctx, \"rfRule\", \u0026fabric.RouteFilterRuleArgs{\n\t\t\tRouteFilterId: pulumi.String(\"\u003croute_filter_policy_id\u003e\"),\n\t\t\tPrefix:        pulumi.String(\"192.168.0.0/24\"),\n\t\t\tPrefixMatch:   pulumi.String(\"exact\"),\n\t\t\tDescription:   pulumi.String(\"Route Filter Rule for X Purpose\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"routeFilterRuleId\", rfRule.ID())\n\t\tctx.Export(\"routeFilterId\", rfRule.RouteFilterId)\n\t\tctx.Export(\"routeFilterRulePrefix\", rfRule.Prefix)\n\t\tctx.Export(\"routeFilterRulePrefixMatch\", rfRule.PrefixMatch)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.fabric.RouteFilterRule;\nimport com.pulumi.equinix.fabric.RouteFilterRuleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var rfRule = new RouteFilterRule(\"rfRule\", RouteFilterRuleArgs.builder()\n            .routeFilterId(\"\u003croute_filter_policy_id\u003e\")\n            .prefix(\"192.168.0.0/24\")\n            .prefixMatch(\"exact\")\n            .description(\"Route Filter Rule for X Purpose\")\n            .build());\n\n        ctx.export(\"routeFilterRuleId\", rfRule.id());\n        ctx.export(\"routeFilterId\", rfRule.routeFilterId());\n        ctx.export(\"routeFilterRulePrefix\", rfRule.prefix());\n        ctx.export(\"routeFilterRulePrefixMatch\", rfRule.prefixMatch());\n    }\n}\n```\n```yaml\nresources:\n  rfRule:\n    type: equinix:fabric:RouteFilterRule\n    properties:\n      routeFilterId: \u003croute_filter_policy_id\u003e\n      prefix: 192.168.0.0/24\n      prefixMatch: exact\n      description: Route Filter Rule for X Purpose\noutputs:\n  routeFilterRuleId: ${rfRule.id}\n  routeFilterId: ${rfRule.routeFilterId}\n  routeFilterRulePrefix: ${rfRule.prefix}\n  routeFilterRulePrefixMatch: ${rfRule.prefixMatch}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "properties": {
+                "action": {
+                    "type": "string",
+                    "description": "Action that will be taken on IP Addresses matching the rule\n"
+                },
+                "changeLogs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/equinix:fabric/RouteFilterRuleChangeLog:RouteFilterRuleChangeLog"
+                    }
+                },
+                "changes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/equinix:fabric/RouteFilterRuleChange:RouteFilterRuleChange"
+                    },
+                    "description": "An object with the details of the previous change applied on the Route Filter\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Optional description to add to the Route Filter you will be creating\n"
+                },
+                "href": {
+                    "type": "string",
+                    "description": "Route filter rules URI\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the Route Filter\n"
+                },
+                "prefix": {
+                    "type": "string",
+                    "description": "IP Address Prefix to Filter on\n"
+                },
+                "prefixMatch": {
+                    "type": "string",
+                    "description": "Prefix matching operator. One of [ orlonger, exact ] Default: \"orlonger\"\n"
+                },
+                "routeFilterId": {
+                    "type": "string",
+                    "description": "UUID of the Route Filter Policy to apply this Rule to\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "State of the Route Filter Rule in its lifecycle\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Route Filter Type. One of [ BGP*IPv4*PREFIX*FILTER*RULE, BGP*IPv6*PREFIX*FILTER*RULE ]\n"
+                },
+                "uuid": {
+                    "type": "string",
+                    "description": "Equinix Assigned ID for Route Filter Rule\n"
+                }
+            },
+            "required": [
+                "action",
+                "changes",
+                "changeLogs",
+                "description",
+                "href",
+                "name",
+                "prefix",
+                "prefixMatch",
+                "routeFilterId",
+                "state",
+                "type",
+                "uuid"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "Optional description to add to the Route Filter you will be creating\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the Route Filter\n"
+                },
+                "prefix": {
+                    "type": "string",
+                    "description": "IP Address Prefix to Filter on\n"
+                },
+                "prefixMatch": {
+                    "type": "string",
+                    "description": "Prefix matching operator. One of [ orlonger, exact ] Default: \"orlonger\"\n"
+                },
+                "routeFilterId": {
+                    "type": "string",
+                    "description": "UUID of the Route Filter Policy to apply this Rule to\n"
+                }
+            },
+            "requiredInputs": [
+                "prefix",
+                "routeFilterId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering RouteFilterRule resources.\n",
+                "properties": {
+                    "action": {
+                        "type": "string",
+                        "description": "Action that will be taken on IP Addresses matching the rule\n"
+                    },
+                    "changeLogs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/equinix:fabric/RouteFilterRuleChangeLog:RouteFilterRuleChangeLog"
+                        }
+                    },
+                    "changes": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/equinix:fabric/RouteFilterRuleChange:RouteFilterRuleChange"
+                        },
+                        "description": "An object with the details of the previous change applied on the Route Filter\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Optional description to add to the Route Filter you will be creating\n"
+                    },
+                    "href": {
+                        "type": "string",
+                        "description": "Route filter rules URI\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the Route Filter\n"
+                    },
+                    "prefix": {
+                        "type": "string",
+                        "description": "IP Address Prefix to Filter on\n"
+                    },
+                    "prefixMatch": {
+                        "type": "string",
+                        "description": "Prefix matching operator. One of [ orlonger, exact ] Default: \"orlonger\"\n"
+                    },
+                    "routeFilterId": {
+                        "type": "string",
+                        "description": "UUID of the Route Filter Policy to apply this Rule to\n"
+                    },
+                    "state": {
+                        "type": "string",
+                        "description": "State of the Route Filter Rule in its lifecycle\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "Route Filter Type. One of [ BGP*IPv4*PREFIX*FILTER*RULE, BGP*IPv6*PREFIX*FILTER*RULE ]\n"
+                    },
+                    "uuid": {
+                        "type": "string",
+                        "description": "Equinix Assigned ID for Route Filter Rule\n"
                     }
                 },
                 "type": "object"
@@ -19380,6 +20785,125 @@
                 ]
             }
         },
+        "equinix:fabric/getConnectionRouteFilter:getConnectionRouteFilter": {
+            "description": "Fabric V4 API compatible data resource that allow user to fetch route filter policy attachment to a fabric connection\n\nAdditional Documentation:\n* Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm\n* API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filter-rules\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@pulumi/equinix\";\n\nconst attachedPolicy = equinix.fabric.getConnectionRouteFilter({\n    connectionId: \"\u003cconnection_uuid\u003e\",\n    routeFilterId: \"\u003croute_filter_uuid\u003e\",\n});\nexport const connectionRouteFilterId = attachedPolicy.then(attachedPolicy =\u003e attachedPolicy.id);\nexport const connectionRouteFilterConnectionId = attachedPolicy.then(attachedPolicy =\u003e attachedPolicy.connectionId);\nexport const connectionRouteFilterDirection = attachedPolicy.then(attachedPolicy =\u003e attachedPolicy.direction);\nexport const connectionRouteFilterType = attachedPolicy.then(attachedPolicy =\u003e attachedPolicy.type);\nexport const connectionRouteFilterAttachmentStatus = attachedPolicy.then(attachedPolicy =\u003e attachedPolicy.attachmentStatus);\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nattached_policy = equinix.fabric.get_connection_route_filter(connection_id=\"\u003cconnection_uuid\u003e\",\n    route_filter_id=\"\u003croute_filter_uuid\u003e\")\npulumi.export(\"connectionRouteFilterId\", attached_policy.id)\npulumi.export(\"connectionRouteFilterConnectionId\", attached_policy.connection_id)\npulumi.export(\"connectionRouteFilterDirection\", attached_policy.direction)\npulumi.export(\"connectionRouteFilterType\", attached_policy.type)\npulumi.export(\"connectionRouteFilterAttachmentStatus\", attached_policy.attachment_status)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var attachedPolicy = Equinix.Fabric.GetConnectionRouteFilter.Invoke(new()\n    {\n        ConnectionId = \"\u003cconnection_uuid\u003e\",\n        RouteFilterId = \"\u003croute_filter_uuid\u003e\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"connectionRouteFilterId\"] = attachedPolicy.Apply(getConnectionRouteFilterResult =\u003e getConnectionRouteFilterResult.Id),\n        [\"connectionRouteFilterConnectionId\"] = attachedPolicy.Apply(getConnectionRouteFilterResult =\u003e getConnectionRouteFilterResult.ConnectionId),\n        [\"connectionRouteFilterDirection\"] = attachedPolicy.Apply(getConnectionRouteFilterResult =\u003e getConnectionRouteFilterResult.Direction),\n        [\"connectionRouteFilterType\"] = attachedPolicy.Apply(getConnectionRouteFilterResult =\u003e getConnectionRouteFilterResult.Type),\n        [\"connectionRouteFilterAttachmentStatus\"] = attachedPolicy.Apply(getConnectionRouteFilterResult =\u003e getConnectionRouteFilterResult.AttachmentStatus),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tattachedPolicy, err := fabric.LookupConnectionRouteFilter(ctx, \u0026fabric.LookupConnectionRouteFilterArgs{\n\t\t\tConnectionId:  \"\u003cconnection_uuid\u003e\",\n\t\t\tRouteFilterId: \"\u003croute_filter_uuid\u003e\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"connectionRouteFilterId\", attachedPolicy.Id)\n\t\tctx.Export(\"connectionRouteFilterConnectionId\", attachedPolicy.ConnectionId)\n\t\tctx.Export(\"connectionRouteFilterDirection\", attachedPolicy.Direction)\n\t\tctx.Export(\"connectionRouteFilterType\", attachedPolicy.Type)\n\t\tctx.Export(\"connectionRouteFilterAttachmentStatus\", attachedPolicy.AttachmentStatus)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.fabric.FabricFunctions;\nimport com.pulumi.equinix.fabric.inputs.GetConnectionRouteFilterArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var attachedPolicy = FabricFunctions.getConnectionRouteFilter(GetConnectionRouteFilterArgs.builder()\n            .connectionId(\"\u003cconnection_uuid\u003e\")\n            .routeFilterId(\"\u003croute_filter_uuid\u003e\")\n            .build());\n\n        ctx.export(\"connectionRouteFilterId\", attachedPolicy.applyValue(getConnectionRouteFilterResult -\u003e getConnectionRouteFilterResult.id()));\n        ctx.export(\"connectionRouteFilterConnectionId\", attachedPolicy.applyValue(getConnectionRouteFilterResult -\u003e getConnectionRouteFilterResult.connectionId()));\n        ctx.export(\"connectionRouteFilterDirection\", attachedPolicy.applyValue(getConnectionRouteFilterResult -\u003e getConnectionRouteFilterResult.direction()));\n        ctx.export(\"connectionRouteFilterType\", attachedPolicy.applyValue(getConnectionRouteFilterResult -\u003e getConnectionRouteFilterResult.type()));\n        ctx.export(\"connectionRouteFilterAttachmentStatus\", attachedPolicy.applyValue(getConnectionRouteFilterResult -\u003e getConnectionRouteFilterResult.attachmentStatus()));\n    }\n}\n```\n```yaml\nvariables:\n  attachedPolicy:\n    fn::invoke:\n      Function: equinix:fabric:getConnectionRouteFilter\n      Arguments:\n        connectionId: \u003cconnection_uuid\u003e\n        routeFilterId: \u003croute_filter_uuid\u003e\noutputs:\n  connectionRouteFilterId: ${attachedPolicy.id}\n  connectionRouteFilterConnectionId: ${attachedPolicy.connectionId}\n  connectionRouteFilterDirection: ${attachedPolicy.direction}\n  connectionRouteFilterType: ${attachedPolicy.type}\n  connectionRouteFilterAttachmentStatus: ${attachedPolicy.attachmentStatus}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getConnectionRouteFilter.\n",
+                "properties": {
+                    "connectionId": {
+                        "type": "string",
+                        "description": "Equinix Assigned UUID of the Equinix Connection to attach the Route Filter Policy to\n"
+                    },
+                    "routeFilterId": {
+                        "type": "string",
+                        "description": "Equinix Assigned UUID of the Route Filter Policy to attach to the Equinix Connection\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "connectionId",
+                    "routeFilterId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getConnectionRouteFilter.\n",
+                "properties": {
+                    "attachmentStatus": {
+                        "type": "string",
+                        "description": "Status of the Route Filter Policy attachment lifecycle\n"
+                    },
+                    "connectionId": {
+                        "type": "string",
+                        "description": "Equinix Assigned UUID of the Equinix Connection to attach the Route Filter Policy to\n"
+                    },
+                    "direction": {
+                        "type": "string",
+                        "description": "Direction of the filtering of the attached Route Filter Policy\n"
+                    },
+                    "href": {
+                        "type": "string",
+                        "description": "URI to the attached Route Filter Policy on the Connection\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "routeFilterId": {
+                        "type": "string",
+                        "description": "Equinix Assigned UUID of the Route Filter Policy to attach to the Equinix Connection\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "Route Filter Type. One of [ \"BGP*IPv4*PREFIX*FILTER\", \"BGP*IPv6*PREFIX*FILTER\" ]\n"
+                    },
+                    "uuid": {
+                        "type": "string",
+                        "description": "Equinix Assigned ID for Route Filter Policy\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "attachmentStatus",
+                    "connectionId",
+                    "direction",
+                    "href",
+                    "routeFilterId",
+                    "type",
+                    "uuid",
+                    "id"
+                ]
+            }
+        },
+        "equinix:fabric/getConnectionRouteFilters:getConnectionRouteFilters": {
+            "description": "Fabric V4 API compatible data resource that allow user to fetch all route filter policies attached to a fabric connection\n\nAdditional Documentation:\n* Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm\n* API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filter-rules\n\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getConnectionRouteFilters.\n",
+                "properties": {
+                    "connectionId": {
+                        "type": "string",
+                        "description": "Equinix Assigned UUID of the Equinix Connection to attach the Route Filter Policy to\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "connectionId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getConnectionRouteFilters.\n",
+                "properties": {
+                    "connectionId": {
+                        "type": "string",
+                        "description": "Equinix Assigned UUID of the Equinix Connection to attach the Route Filter Policy to\n"
+                    },
+                    "datas": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/equinix:fabric/getConnectionRouteFiltersData:getConnectionRouteFiltersData"
+                        },
+                        "description": "The list of Rules attached to the given Route Filter Policy UUID\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "paginations": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/equinix:fabric/getConnectionRouteFiltersPagination:getConnectionRouteFiltersPagination"
+                        },
+                        "description": "Pagination details for the Data Source Search Request\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "connectionId",
+                    "datas",
+                    "paginations",
+                    "id"
+                ]
+            }
+        },
         "equinix:fabric/getConnections:getConnections": {
             "description": "Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID\n\nAdditional documentation:\n* Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm\n* API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections\n\n",
             "inputs": {
@@ -19869,6 +21393,338 @@
                 "required": [
                     "data",
                     "filter",
+                    "id"
+                ]
+            }
+        },
+        "equinix:fabric/getRouteFilter:getRouteFilter": {
+            "description": "Fabric V4 API compatible data resource that allow user to fetch route filter for a given UUID\n\nAdditional Documentation:\n* Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm\n* API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filters\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@pulumi/equinix\";\n\nconst rfPolicy = equinix.fabric.getRouteFilter({\n    uuid: \"\u003cuuid_of_route_filter\",\n});\nexport const id = rfPolicy.then(rfPolicy =\u003e rfPolicy.id);\nexport const type = rfPolicy.then(rfPolicy =\u003e rfPolicy.type);\nexport const state = rfPolicy.then(rfPolicy =\u003e rfPolicy.state);\nexport const notMatchedRulesAction = rfPolicy.then(rfPolicy =\u003e rfPolicy.notMatchedRuleAction);\nexport const connectionsCount = rfPolicy.then(rfPolicy =\u003e rfPolicy.connectionsCount);\nexport const rulesCount = rfPolicy.then(rfPolicy =\u003e rfPolicy.rulesCount);\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nrf_policy = equinix.fabric.get_route_filter(uuid=\"\u003cuuid_of_route_filter\")\npulumi.export(\"id\", rf_policy.id)\npulumi.export(\"type\", rf_policy.type)\npulumi.export(\"state\", rf_policy.state)\npulumi.export(\"notMatchedRulesAction\", rf_policy.not_matched_rule_action)\npulumi.export(\"connectionsCount\", rf_policy.connections_count)\npulumi.export(\"rulesCount\", rf_policy.rules_count)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var rfPolicy = Equinix.Fabric.GetRouteFilter.Invoke(new()\n    {\n        Uuid = \"\u003cuuid_of_route_filter\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"id\"] = rfPolicy.Apply(getRouteFilterResult =\u003e getRouteFilterResult.Id),\n        [\"type\"] = rfPolicy.Apply(getRouteFilterResult =\u003e getRouteFilterResult.Type),\n        [\"state\"] = rfPolicy.Apply(getRouteFilterResult =\u003e getRouteFilterResult.State),\n        [\"notMatchedRulesAction\"] = rfPolicy.Apply(getRouteFilterResult =\u003e getRouteFilterResult.NotMatchedRuleAction),\n        [\"connectionsCount\"] = rfPolicy.Apply(getRouteFilterResult =\u003e getRouteFilterResult.ConnectionsCount),\n        [\"rulesCount\"] = rfPolicy.Apply(getRouteFilterResult =\u003e getRouteFilterResult.RulesCount),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\trfPolicy, err := fabric.LookupRouteFilter(ctx, \u0026fabric.LookupRouteFilterArgs{\n\t\t\tUuid: \"\u003cuuid_of_route_filter\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"id\", rfPolicy.Id)\n\t\tctx.Export(\"type\", rfPolicy.Type)\n\t\tctx.Export(\"state\", rfPolicy.State)\n\t\tctx.Export(\"notMatchedRulesAction\", rfPolicy.NotMatchedRuleAction)\n\t\tctx.Export(\"connectionsCount\", rfPolicy.ConnectionsCount)\n\t\tctx.Export(\"rulesCount\", rfPolicy.RulesCount)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.fabric.FabricFunctions;\nimport com.pulumi.equinix.fabric.inputs.GetRouteFilterArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var rfPolicy = FabricFunctions.getRouteFilter(GetRouteFilterArgs.builder()\n            .uuid(\"\u003cuuid_of_route_filter\")\n            .build());\n\n        ctx.export(\"id\", rfPolicy.applyValue(getRouteFilterResult -\u003e getRouteFilterResult.id()));\n        ctx.export(\"type\", rfPolicy.applyValue(getRouteFilterResult -\u003e getRouteFilterResult.type()));\n        ctx.export(\"state\", rfPolicy.applyValue(getRouteFilterResult -\u003e getRouteFilterResult.state()));\n        ctx.export(\"notMatchedRulesAction\", rfPolicy.applyValue(getRouteFilterResult -\u003e getRouteFilterResult.notMatchedRuleAction()));\n        ctx.export(\"connectionsCount\", rfPolicy.applyValue(getRouteFilterResult -\u003e getRouteFilterResult.connectionsCount()));\n        ctx.export(\"rulesCount\", rfPolicy.applyValue(getRouteFilterResult -\u003e getRouteFilterResult.rulesCount()));\n    }\n}\n```\n```yaml\nvariables:\n  rfPolicy:\n    fn::invoke:\n      Function: equinix:fabric:getRouteFilter\n      Arguments:\n        uuid: \u003cuuid_of_route_filter\noutputs:\n  id: ${rfPolicy.id}\n  type: ${rfPolicy.type}\n  state: ${rfPolicy.state}\n  notMatchedRulesAction: ${rfPolicy.notMatchedRuleAction}\n  connectionsCount: ${rfPolicy.connectionsCount}\n  rulesCount: ${rfPolicy.rulesCount}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getRouteFilter.\n",
+                "properties": {
+                    "uuid": {
+                        "type": "string",
+                        "description": "Equinix Assigned ID for Route Filter\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "uuid"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getRouteFilter.\n",
+                "properties": {
+                    "changeLogs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/equinix:fabric/getRouteFilterChangeLog:getRouteFilterChangeLog"
+                        }
+                    },
+                    "changes": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/equinix:fabric/getRouteFilterChange:getRouteFilterChange"
+                        },
+                        "description": "An object with the details of the previous change applied on the Route Filter\n"
+                    },
+                    "connectionsCount": {
+                        "type": "integer",
+                        "description": "The number of Fabric Connections that this Route Filter is attached to\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Optional description to add to the Route Filter you will be creating\n"
+                    },
+                    "href": {
+                        "type": "string",
+                        "description": "Route filter URI\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the Route Filter\n"
+                    },
+                    "notMatchedRuleAction": {
+                        "type": "string",
+                        "description": "The action that will be taken on ip ranges that don't match the rules present within the Route Filter\n"
+                    },
+                    "projects": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/equinix:fabric/getRouteFilterProject:getRouteFilterProject"
+                        },
+                        "description": "The Project object that contains project_id and href that is related to the Fabric Project containing connections the Route Filter can be attached to\n"
+                    },
+                    "rulesCount": {
+                        "type": "integer",
+                        "description": "The number of Route Filter Rules attached to this Route Filter\n"
+                    },
+                    "state": {
+                        "type": "string",
+                        "description": "State of the Route Filter in its lifecycle\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "Route Filter Type. One of [ \"BGP*IPv4*PREFIX*FILTER\", \"BGP*IPv6*PREFIX*FILTER\" ]\n"
+                    },
+                    "uuid": {
+                        "type": "string",
+                        "description": "Equinix Assigned ID for Route Filter\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "changes",
+                    "changeLogs",
+                    "connectionsCount",
+                    "description",
+                    "href",
+                    "name",
+                    "notMatchedRuleAction",
+                    "projects",
+                    "rulesCount",
+                    "state",
+                    "type",
+                    "uuid",
+                    "id"
+                ]
+            }
+        },
+        "equinix:fabric/getRouteFilterRule:getRouteFilterRule": {
+            "description": "Fabric V4 API compatible data resource that allow user to fetch route filter for a given UUID\n\nAdditional Documentation:\n* Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm\n* API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filter-rules\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@pulumi/equinix\";\n\nconst rfRule = equinix.fabric.getRouteFilterRule({\n    routeFilterId: \"\u003croute_filter_policy_id\u003e\",\n    uuid: \"\u003croute_filter_rule_uuid\u003e\",\n});\nexport const routeFilterRuleName = rfRule.then(rfRule =\u003e rfRule.name);\nexport const routeFilterRuleDescription = rfRule.then(rfRule =\u003e rfRule.description);\nexport const routeFilterRulePrefix = rfRule.then(rfRule =\u003e rfRule.prefix);\nexport const routeFilterRulePrefixMatch = rfRule.then(rfRule =\u003e rfRule.prefixMatch);\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nrf_rule = equinix.fabric.get_route_filter_rule(route_filter_id=\"\u003croute_filter_policy_id\u003e\",\n    uuid=\"\u003croute_filter_rule_uuid\u003e\")\npulumi.export(\"routeFilterRuleName\", rf_rule.name)\npulumi.export(\"routeFilterRuleDescription\", rf_rule.description)\npulumi.export(\"routeFilterRulePrefix\", rf_rule.prefix)\npulumi.export(\"routeFilterRulePrefixMatch\", rf_rule.prefix_match)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var rfRule = Equinix.Fabric.GetRouteFilterRule.Invoke(new()\n    {\n        RouteFilterId = \"\u003croute_filter_policy_id\u003e\",\n        Uuid = \"\u003croute_filter_rule_uuid\u003e\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"routeFilterRuleName\"] = rfRule.Apply(getRouteFilterRuleResult =\u003e getRouteFilterRuleResult.Name),\n        [\"routeFilterRuleDescription\"] = rfRule.Apply(getRouteFilterRuleResult =\u003e getRouteFilterRuleResult.Description),\n        [\"routeFilterRulePrefix\"] = rfRule.Apply(getRouteFilterRuleResult =\u003e getRouteFilterRuleResult.Prefix),\n        [\"routeFilterRulePrefixMatch\"] = rfRule.Apply(getRouteFilterRuleResult =\u003e getRouteFilterRuleResult.PrefixMatch),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\trfRule, err := fabric.LookupRouteFilterRule(ctx, \u0026fabric.LookupRouteFilterRuleArgs{\n\t\t\tRouteFilterId: \"\u003croute_filter_policy_id\u003e\",\n\t\t\tUuid:          \"\u003croute_filter_rule_uuid\u003e\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"routeFilterRuleName\", rfRule.Name)\n\t\tctx.Export(\"routeFilterRuleDescription\", rfRule.Description)\n\t\tctx.Export(\"routeFilterRulePrefix\", rfRule.Prefix)\n\t\tctx.Export(\"routeFilterRulePrefixMatch\", rfRule.PrefixMatch)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.fabric.FabricFunctions;\nimport com.pulumi.equinix.fabric.inputs.GetRouteFilterRuleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var rfRule = FabricFunctions.getRouteFilterRule(GetRouteFilterRuleArgs.builder()\n            .routeFilterId(\"\u003croute_filter_policy_id\u003e\")\n            .uuid(\"\u003croute_filter_rule_uuid\u003e\")\n            .build());\n\n        ctx.export(\"routeFilterRuleName\", rfRule.applyValue(getRouteFilterRuleResult -\u003e getRouteFilterRuleResult.name()));\n        ctx.export(\"routeFilterRuleDescription\", rfRule.applyValue(getRouteFilterRuleResult -\u003e getRouteFilterRuleResult.description()));\n        ctx.export(\"routeFilterRulePrefix\", rfRule.applyValue(getRouteFilterRuleResult -\u003e getRouteFilterRuleResult.prefix()));\n        ctx.export(\"routeFilterRulePrefixMatch\", rfRule.applyValue(getRouteFilterRuleResult -\u003e getRouteFilterRuleResult.prefixMatch()));\n    }\n}\n```\n```yaml\nvariables:\n  rfRule:\n    fn::invoke:\n      Function: equinix:fabric:getRouteFilterRule\n      Arguments:\n        routeFilterId: \u003croute_filter_policy_id\u003e\n        uuid: \u003croute_filter_rule_uuid\u003e\noutputs:\n  routeFilterRuleName: ${rfRule.name}\n  routeFilterRuleDescription: ${rfRule.description}\n  routeFilterRulePrefix: ${rfRule.prefix}\n  routeFilterRulePrefixMatch: ${rfRule.prefixMatch}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getRouteFilterRule.\n",
+                "properties": {
+                    "routeFilterId": {
+                        "type": "string",
+                        "description": "UUID of the Route Filter Policy the rule is attached to\n"
+                    },
+                    "uuid": {
+                        "type": "string",
+                        "description": "Equinix Assigned ID for Route Filter Rule to retrieve data for\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "routeFilterId",
+                    "uuid"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getRouteFilterRule.\n",
+                "properties": {
+                    "action": {
+                        "type": "string",
+                        "description": "Action that will be taken on IP Addresses matching the rule\n"
+                    },
+                    "changeLogs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/equinix:fabric/getRouteFilterRuleChangeLog:getRouteFilterRuleChangeLog"
+                        }
+                    },
+                    "changes": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/equinix:fabric/getRouteFilterRuleChange:getRouteFilterRuleChange"
+                        },
+                        "description": "An object with the details of the previous change applied on the Route Filter\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Optional description to add to the Route Filter you will be creating\n"
+                    },
+                    "href": {
+                        "type": "string",
+                        "description": "Route filter rules URI\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the Route Filter\n"
+                    },
+                    "prefix": {
+                        "type": "string",
+                        "description": "IP Address Prefix to Filter on\n"
+                    },
+                    "prefixMatch": {
+                        "type": "string",
+                        "description": "Prefix matching operator. One of [ orlonger, exact ] Default: \"orlonger\"\n"
+                    },
+                    "routeFilterId": {
+                        "type": "string",
+                        "description": "UUID of the Route Filter Policy the rule is attached to\n"
+                    },
+                    "state": {
+                        "type": "string",
+                        "description": "State of the Route Filter Rule in its lifecycle\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "Route Filter Type. One of [ BGP*IPv4*PREFIX*FILTER*RULE, BGP*IPv6*PREFIX*FILTER*RULE ]\n"
+                    },
+                    "uuid": {
+                        "type": "string",
+                        "description": "Equinix Assigned ID for Route Filter Rule to retrieve data for\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "action",
+                    "changes",
+                    "changeLogs",
+                    "description",
+                    "href",
+                    "name",
+                    "prefix",
+                    "prefixMatch",
+                    "routeFilterId",
+                    "state",
+                    "type",
+                    "uuid",
+                    "id"
+                ]
+            }
+        },
+        "equinix:fabric/getRouteFilterRules:getRouteFilterRules": {
+            "description": "Fabric V4 API compatible data resource that allow user to fetch route filter for a given search data set\n\nAdditional Documentation:\n* Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm\n* API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filter-rules\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@pulumi/equinix\";\n\nconst rfRules = equinix.fabric.getRouteFilterRules({\n    routeFilterId: \"\u003croute_filter_policy_id\",\n    limit: 100,\n    offset: 5,\n});\nexport const firstRouteFilterRuleName = rfRules.then(rfRules =\u003e rfRules.datas?.[0]?.name);\nexport const firstRouteFilterRuleDescription = rfRules.then(rfRules =\u003e rfRules.datas?.[0]?.description);\nexport const firstRouteFilterRulePrefix = rfRules.then(rfRules =\u003e rfRules.datas?.[0]?.prefix);\nexport const firstRouteFilterRulePrefixMatch = rfRules.then(rfRules =\u003e rfRules.datas?.[0]?.prefixMatch);\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nrf_rules = equinix.fabric.get_route_filter_rules(route_filter_id=\"\u003croute_filter_policy_id\",\n    limit=100,\n    offset=5)\npulumi.export(\"firstRouteFilterRuleName\", rf_rules.datas[0].name)\npulumi.export(\"firstRouteFilterRuleDescription\", rf_rules.datas[0].description)\npulumi.export(\"firstRouteFilterRulePrefix\", rf_rules.datas[0].prefix)\npulumi.export(\"firstRouteFilterRulePrefixMatch\", rf_rules.datas[0].prefix_match)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var rfRules = Equinix.Fabric.GetRouteFilterRules.Invoke(new()\n    {\n        RouteFilterId = \"\u003croute_filter_policy_id\",\n        Limit = 100,\n        Offset = 5,\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"firstRouteFilterRuleName\"] = rfRules.Apply(getRouteFilterRulesResult =\u003e getRouteFilterRulesResult.Datas[0]?.Name),\n        [\"firstRouteFilterRuleDescription\"] = rfRules.Apply(getRouteFilterRulesResult =\u003e getRouteFilterRulesResult.Datas[0]?.Description),\n        [\"firstRouteFilterRulePrefix\"] = rfRules.Apply(getRouteFilterRulesResult =\u003e getRouteFilterRulesResult.Datas[0]?.Prefix),\n        [\"firstRouteFilterRulePrefixMatch\"] = rfRules.Apply(getRouteFilterRulesResult =\u003e getRouteFilterRulesResult.Datas[0]?.PrefixMatch),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\trfRules, err := fabric.GetRouteFilterRules(ctx, \u0026fabric.GetRouteFilterRulesArgs{\n\t\t\tRouteFilterId: \"\u003croute_filter_policy_id\",\n\t\t\tLimit:         pulumi.IntRef(100),\n\t\t\tOffset:        pulumi.IntRef(5),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"firstRouteFilterRuleName\", rfRules.Datas[0].Name)\n\t\tctx.Export(\"firstRouteFilterRuleDescription\", rfRules.Datas[0].Description)\n\t\tctx.Export(\"firstRouteFilterRulePrefix\", rfRules.Datas[0].Prefix)\n\t\tctx.Export(\"firstRouteFilterRulePrefixMatch\", rfRules.Datas[0].PrefixMatch)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.fabric.FabricFunctions;\nimport com.pulumi.equinix.fabric.inputs.GetRouteFilterRulesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var rfRules = FabricFunctions.getRouteFilterRules(GetRouteFilterRulesArgs.builder()\n            .routeFilterId(\"\u003croute_filter_policy_id\")\n            .limit(100)\n            .offset(5)\n            .build());\n\n        ctx.export(\"firstRouteFilterRuleName\", rfRules.applyValue(getRouteFilterRulesResult -\u003e getRouteFilterRulesResult.datas()[0].name()));\n        ctx.export(\"firstRouteFilterRuleDescription\", rfRules.applyValue(getRouteFilterRulesResult -\u003e getRouteFilterRulesResult.datas()[0].description()));\n        ctx.export(\"firstRouteFilterRulePrefix\", rfRules.applyValue(getRouteFilterRulesResult -\u003e getRouteFilterRulesResult.datas()[0].prefix()));\n        ctx.export(\"firstRouteFilterRulePrefixMatch\", rfRules.applyValue(getRouteFilterRulesResult -\u003e getRouteFilterRulesResult.datas()[0].prefixMatch()));\n    }\n}\n```\n```yaml\nvariables:\n  rfRules:\n    fn::invoke:\n      Function: equinix:fabric:getRouteFilterRules\n      Arguments:\n        routeFilterId: \u003croute_filter_policy_id\n        limit: 100\n        offset: 5\noutputs:\n  firstRouteFilterRuleName: ${rfRules.datas[0].name}\n  firstRouteFilterRuleDescription: ${rfRules.datas[0].description}\n  firstRouteFilterRulePrefix: ${rfRules.datas[0].prefix}\n  firstRouteFilterRulePrefixMatch: ${rfRules.datas[0].prefixMatch}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getRouteFilterRules.\n",
+                "properties": {
+                    "limit": {
+                        "type": "integer",
+                        "description": "Number of elements to be requested per page. Number must be between 1 and 100. Default is 20\n"
+                    },
+                    "offset": {
+                        "type": "integer",
+                        "description": "The page offset for the pagination request. Index of the first element. Default is 0.\n"
+                    },
+                    "routeFilterId": {
+                        "type": "string",
+                        "description": "UUID of the Route Filter Policy the rule is attached to\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "routeFilterId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getRouteFilterRules.\n",
+                "properties": {
+                    "datas": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/equinix:fabric/getRouteFilterRulesData:getRouteFilterRulesData"
+                        },
+                        "description": "The list of Rules attached to the given Route Filter Policy UUID\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "limit": {
+                        "type": "integer",
+                        "description": "Number of elements to be requested per page. Number must be between 1 and 100. Default is 20\n"
+                    },
+                    "offset": {
+                        "type": "integer",
+                        "description": "The page offset for the pagination request. Index of the first element. Default is 0.\n"
+                    },
+                    "paginations": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/equinix:fabric/getRouteFilterRulesPagination:getRouteFilterRulesPagination"
+                        },
+                        "description": "Pagination details for the Data Source Search Request\n"
+                    },
+                    "routeFilterId": {
+                        "type": "string",
+                        "description": "UUID of the Route Filter Policy the rule is attached to\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "datas",
+                    "paginations",
+                    "routeFilterId",
+                    "id"
+                ]
+            }
+        },
+        "equinix:fabric/getRouteFilters:getRouteFilters": {
+            "description": "Fabric V4 API compatible data resource that allow user to fetch route filter for a given search data set\n\nAdditional Documentation:\n* Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm\n* API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filters\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@pulumi/equinix\";\n\nconst rfPolicies = equinix.fabric.getRouteFilters({\n    filters: [\n        {\n            property: \"/type\",\n            operator: \"=\",\n            values: [\"BGP_IPv4_PREFIX_FILTER\"],\n        },\n        {\n            property: \"/state\",\n            operator: \"=\",\n            values: [\"PROVISIONED\"],\n        },\n        {\n            property: \"/project/projectId\",\n            operator: \"=\",\n            values: [\"\u003cproject_id\u003e\"],\n        },\n    ],\n    pagination: {\n        offset: 0,\n        limit: 5,\n        total: 25,\n    },\n    sorts: [{\n        direction: \"ASC\",\n        property: \"/name\",\n    }],\n});\nexport const firstRfUuid = rfPolicies.then(rfPolicies =\u003e rfPolicies.datas?.[0]?.uuid);\nexport const type = rfPolicies.then(rfPolicies =\u003e rfPolicies.datas?.[0]?.type);\nexport const state = rfPolicies.then(rfPolicies =\u003e rfPolicies.datas?.[0]?.state);\nexport const notMatchedRuleAction = rfPolicies.then(rfPolicies =\u003e rfPolicies.datas?.[0]?.notMatchedRuleAction);\nexport const connectionsCount = rfPolicies.then(rfPolicies =\u003e rfPolicies.datas?.[0]?.connectionsCount);\nexport const rulesCount = rfPolicies.then(rfPolicies =\u003e rfPolicies.datas?.[0]?.rulesCount);\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nrf_policies = equinix.fabric.get_route_filters(filters=[\n        {\n            \"property\": \"/type\",\n            \"operator\": \"=\",\n            \"values\": [\"BGP_IPv4_PREFIX_FILTER\"],\n        },\n        {\n            \"property\": \"/state\",\n            \"operator\": \"=\",\n            \"values\": [\"PROVISIONED\"],\n        },\n        {\n            \"property\": \"/project/projectId\",\n            \"operator\": \"=\",\n            \"values\": [\"\u003cproject_id\u003e\"],\n        },\n    ],\n    pagination={\n        \"offset\": 0,\n        \"limit\": 5,\n        \"total\": 25,\n    },\n    sorts=[{\n        \"direction\": \"ASC\",\n        \"property\": \"/name\",\n    }])\npulumi.export(\"firstRfUuid\", rf_policies.datas[0].uuid)\npulumi.export(\"type\", rf_policies.datas[0].type)\npulumi.export(\"state\", rf_policies.datas[0].state)\npulumi.export(\"notMatchedRuleAction\", rf_policies.datas[0].not_matched_rule_action)\npulumi.export(\"connectionsCount\", rf_policies.datas[0].connections_count)\npulumi.export(\"rulesCount\", rf_policies.datas[0].rules_count)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var rfPolicies = Equinix.Fabric.GetRouteFilters.Invoke(new()\n    {\n        Filters = new[]\n        {\n            new Equinix.Fabric.Inputs.GetRouteFiltersFilterInputArgs\n            {\n                Property = \"/type\",\n                Operator = \"=\",\n                Values = new[]\n                {\n                    \"BGP_IPv4_PREFIX_FILTER\",\n                },\n            },\n            new Equinix.Fabric.Inputs.GetRouteFiltersFilterInputArgs\n            {\n                Property = \"/state\",\n                Operator = \"=\",\n                Values = new[]\n                {\n                    \"PROVISIONED\",\n                },\n            },\n            new Equinix.Fabric.Inputs.GetRouteFiltersFilterInputArgs\n            {\n                Property = \"/project/projectId\",\n                Operator = \"=\",\n                Values = new[]\n                {\n                    \"\u003cproject_id\u003e\",\n                },\n            },\n        },\n        Pagination = new Equinix.Fabric.Inputs.GetRouteFiltersPaginationInputArgs\n        {\n            Offset = 0,\n            Limit = 5,\n            Total = 25,\n        },\n        Sorts = new[]\n        {\n            new Equinix.Fabric.Inputs.GetRouteFiltersSortInputArgs\n            {\n                Direction = \"ASC\",\n                Property = \"/name\",\n            },\n        },\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"firstRfUuid\"] = rfPolicies.Apply(getRouteFiltersResult =\u003e getRouteFiltersResult.Datas[0]?.Uuid),\n        [\"type\"] = rfPolicies.Apply(getRouteFiltersResult =\u003e getRouteFiltersResult.Datas[0]?.Type),\n        [\"state\"] = rfPolicies.Apply(getRouteFiltersResult =\u003e getRouteFiltersResult.Datas[0]?.State),\n        [\"notMatchedRuleAction\"] = rfPolicies.Apply(getRouteFiltersResult =\u003e getRouteFiltersResult.Datas[0]?.NotMatchedRuleAction),\n        [\"connectionsCount\"] = rfPolicies.Apply(getRouteFiltersResult =\u003e getRouteFiltersResult.Datas[0]?.ConnectionsCount),\n        [\"rulesCount\"] = rfPolicies.Apply(getRouteFiltersResult =\u003e getRouteFiltersResult.Datas[0]?.RulesCount),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\trfPolicies, err := fabric.GetRouteFilters(ctx, \u0026fabric.GetRouteFiltersArgs{\n\t\t\tFilters: []fabric.GetRouteFiltersFilter{\n\t\t\t\t{\n\t\t\t\t\tProperty: \"/type\",\n\t\t\t\t\tOperator: \"=\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"BGP_IPv4_PREFIX_FILTER\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\tProperty: \"/state\",\n\t\t\t\t\tOperator: \"=\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"PROVISIONED\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\tProperty: \"/project/projectId\",\n\t\t\t\t\tOperator: \"=\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"\u003cproject_id\u003e\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tPagination: fabric.GetRouteFiltersPagination{\n\t\t\t\tOffset: 0,\n\t\t\t\tLimit:  5,\n\t\t\t\tTotal:  25,\n\t\t\t},\n\t\t\tSorts: []fabric.GetRouteFiltersSort{\n\t\t\t\t{\n\t\t\t\t\tDirection: pulumi.StringRef(\"ASC\"),\n\t\t\t\t\tProperty:  pulumi.StringRef(\"/name\"),\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"firstRfUuid\", rfPolicies.Datas[0].Uuid)\n\t\tctx.Export(\"type\", rfPolicies.Datas[0].Type)\n\t\tctx.Export(\"state\", rfPolicies.Datas[0].State)\n\t\tctx.Export(\"notMatchedRuleAction\", rfPolicies.Datas[0].NotMatchedRuleAction)\n\t\tctx.Export(\"connectionsCount\", rfPolicies.Datas[0].ConnectionsCount)\n\t\tctx.Export(\"rulesCount\", rfPolicies.Datas[0].RulesCount)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.fabric.FabricFunctions;\nimport com.pulumi.equinix.fabric.inputs.GetRouteFiltersArgs;\nimport com.pulumi.equinix.fabric.inputs.GetRouteFiltersPaginationArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var rfPolicies = FabricFunctions.getRouteFilters(GetRouteFiltersArgs.builder()\n            .filters(            \n                GetRouteFiltersFilterArgs.builder()\n                    .property(\"/type\")\n                    .operator(\"=\")\n                    .values(\"BGP_IPv4_PREFIX_FILTER\")\n                    .build(),\n                GetRouteFiltersFilterArgs.builder()\n                    .property(\"/state\")\n                    .operator(\"=\")\n                    .values(\"PROVISIONED\")\n                    .build(),\n                GetRouteFiltersFilterArgs.builder()\n                    .property(\"/project/projectId\")\n                    .operator(\"=\")\n                    .values(\"\u003cproject_id\u003e\")\n                    .build())\n            .pagination(GetRouteFiltersPaginationArgs.builder()\n                .offset(0)\n                .limit(5)\n                .total(25)\n                .build())\n            .sorts(GetRouteFiltersSortArgs.builder()\n                .direction(\"ASC\")\n                .property(\"/name\")\n                .build())\n            .build());\n\n        ctx.export(\"firstRfUuid\", rfPolicies.applyValue(getRouteFiltersResult -\u003e getRouteFiltersResult.datas()[0].uuid()));\n        ctx.export(\"type\", rfPolicies.applyValue(getRouteFiltersResult -\u003e getRouteFiltersResult.datas()[0].type()));\n        ctx.export(\"state\", rfPolicies.applyValue(getRouteFiltersResult -\u003e getRouteFiltersResult.datas()[0].state()));\n        ctx.export(\"notMatchedRuleAction\", rfPolicies.applyValue(getRouteFiltersResult -\u003e getRouteFiltersResult.datas()[0].notMatchedRuleAction()));\n        ctx.export(\"connectionsCount\", rfPolicies.applyValue(getRouteFiltersResult -\u003e getRouteFiltersResult.datas()[0].connectionsCount()));\n        ctx.export(\"rulesCount\", rfPolicies.applyValue(getRouteFiltersResult -\u003e getRouteFiltersResult.datas()[0].rulesCount()));\n    }\n}\n```\n```yaml\nvariables:\n  rfPolicies:\n    fn::invoke:\n      Function: equinix:fabric:getRouteFilters\n      Arguments:\n        filters:\n          - property: /type\n            operator: =\n            values:\n              - BGP_IPv4_PREFIX_FILTER\n          - property: /state\n            operator: =\n            values:\n              - PROVISIONED\n          - property: /project/projectId\n            operator: =\n            values:\n              - \u003cproject_id\u003e\n        pagination:\n          offset: 0\n          limit: 5\n          total: 25\n        sorts:\n          - direction: ASC\n            property: /name\noutputs:\n  firstRfUuid: ${rfPolicies.datas[0].uuid}\n  type: ${rfPolicies.datas[0].type}\n  state: ${rfPolicies.datas[0].state}\n  notMatchedRuleAction: ${rfPolicies.datas[0].notMatchedRuleAction}\n  connectionsCount: ${rfPolicies.datas[0].connectionsCount}\n  rulesCount: ${rfPolicies.datas[0].rulesCount}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getRouteFilters.\n",
+                "properties": {
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/equinix:fabric/getRouteFiltersFilter:getRouteFiltersFilter"
+                        },
+                        "description": "Filters for the Data Source Search Request. Maximum of 8 total filters.\n"
+                    },
+                    "pagination": {
+                        "$ref": "#/types/equinix:fabric/getRouteFiltersPagination:getRouteFiltersPagination",
+                        "description": "Pagination details for the Data Source Search Request\n"
+                    },
+                    "sorts": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/equinix:fabric/getRouteFiltersSort:getRouteFiltersSort"
+                        },
+                        "description": "Filters for the Data Source Search Request\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "filters"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getRouteFilters.\n",
+                "properties": {
+                    "datas": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/equinix:fabric/getRouteFiltersData:getRouteFiltersData"
+                        },
+                        "description": "List of Route Filters\n"
+                    },
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/equinix:fabric/getRouteFiltersFilter:getRouteFiltersFilter"
+                        },
+                        "description": "Filters for the Data Source Search Request. Maximum of 8 total filters.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "pagination": {
+                        "$ref": "#/types/equinix:fabric/getRouteFiltersPagination:getRouteFiltersPagination",
+                        "description": "Pagination details for the Data Source Search Request\n"
+                    },
+                    "sorts": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/equinix:fabric/getRouteFiltersSort:getRouteFiltersSort"
+                        },
+                        "description": "Filters for the Data Source Search Request\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "datas",
+                    "filters",
                     "id"
                 ]
             }

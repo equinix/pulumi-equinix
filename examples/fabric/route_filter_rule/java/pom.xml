@@ -23,7 +23,11 @@
 					<artifactId>pulumi</artifactId>
 					<version>(,1.0]</version>
 				</dependency>
-				
+				<dependency>
+            		<groupId>com.pulumi</groupId>
+            		<artifactId>equinix</artifactId>
+            		<version>(,1.0)</version>
+        		</dependency>
 			</dependencies>
 
 			<build>

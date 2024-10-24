@@ -15,6 +15,11 @@ export type Connection = import("./connection").Connection;
 export const Connection: typeof import("./connection").Connection = null as any;
 utilities.lazyLoad(exports, ["Connection"], () => require("./connection"));
 
+export { ConnectionRouteFilterArgs, ConnectionRouteFilterState } from "./connectionRouteFilter";
+export type ConnectionRouteFilter = import("./connectionRouteFilter").ConnectionRouteFilter;
+export const ConnectionRouteFilter: typeof import("./connectionRouteFilter").ConnectionRouteFilter = null as any;
+utilities.lazyLoad(exports, ["ConnectionRouteFilter"], () => require("./connectionRouteFilter"));
+
 export { GetCloudRouterArgs, GetCloudRouterResult, GetCloudRouterOutputArgs } from "./getCloudRouter";
 export const getCloudRouter: typeof import("./getCloudRouter").getCloudRouter = null as any;
 export const getCloudRouterOutput: typeof import("./getCloudRouter").getCloudRouterOutput = null as any;
@@ -29,6 +34,16 @@ export { GetConnectionArgs, GetConnectionResult, GetConnectionOutputArgs } from 
 export const getConnection: typeof import("./getConnection").getConnection = null as any;
 export const getConnectionOutput: typeof import("./getConnection").getConnectionOutput = null as any;
 utilities.lazyLoad(exports, ["getConnection","getConnectionOutput"], () => require("./getConnection"));
+
+export { GetConnectionRouteFilterArgs, GetConnectionRouteFilterResult, GetConnectionRouteFilterOutputArgs } from "./getConnectionRouteFilter";
+export const getConnectionRouteFilter: typeof import("./getConnectionRouteFilter").getConnectionRouteFilter = null as any;
+export const getConnectionRouteFilterOutput: typeof import("./getConnectionRouteFilter").getConnectionRouteFilterOutput = null as any;
+utilities.lazyLoad(exports, ["getConnectionRouteFilter","getConnectionRouteFilterOutput"], () => require("./getConnectionRouteFilter"));
+
+export { GetConnectionRouteFiltersArgs, GetConnectionRouteFiltersResult, GetConnectionRouteFiltersOutputArgs } from "./getConnectionRouteFilters";
+export const getConnectionRouteFilters: typeof import("./getConnectionRouteFilters").getConnectionRouteFilters = null as any;
+export const getConnectionRouteFiltersOutput: typeof import("./getConnectionRouteFilters").getConnectionRouteFiltersOutput = null as any;
+utilities.lazyLoad(exports, ["getConnectionRouteFilters","getConnectionRouteFiltersOutput"], () => require("./getConnectionRouteFilters"));
 
 export { GetConnectionsArgs, GetConnectionsResult, GetConnectionsOutputArgs } from "./getConnections";
 export const getConnections: typeof import("./getConnections").getConnections = null as any;
@@ -60,6 +75,26 @@ export const getPorts: typeof import("./getPorts").getPorts = null as any;
 export const getPortsOutput: typeof import("./getPorts").getPortsOutput = null as any;
 utilities.lazyLoad(exports, ["getPorts","getPortsOutput"], () => require("./getPorts"));
 
+export { GetRouteFilterArgs, GetRouteFilterResult, GetRouteFilterOutputArgs } from "./getRouteFilter";
+export const getRouteFilter: typeof import("./getRouteFilter").getRouteFilter = null as any;
+export const getRouteFilterOutput: typeof import("./getRouteFilter").getRouteFilterOutput = null as any;
+utilities.lazyLoad(exports, ["getRouteFilter","getRouteFilterOutput"], () => require("./getRouteFilter"));
+
+export { GetRouteFilterRuleArgs, GetRouteFilterRuleResult, GetRouteFilterRuleOutputArgs } from "./getRouteFilterRule";
+export const getRouteFilterRule: typeof import("./getRouteFilterRule").getRouteFilterRule = null as any;
+export const getRouteFilterRuleOutput: typeof import("./getRouteFilterRule").getRouteFilterRuleOutput = null as any;
+utilities.lazyLoad(exports, ["getRouteFilterRule","getRouteFilterRuleOutput"], () => require("./getRouteFilterRule"));
+
+export { GetRouteFilterRulesArgs, GetRouteFilterRulesResult, GetRouteFilterRulesOutputArgs } from "./getRouteFilterRules";
+export const getRouteFilterRules: typeof import("./getRouteFilterRules").getRouteFilterRules = null as any;
+export const getRouteFilterRulesOutput: typeof import("./getRouteFilterRules").getRouteFilterRulesOutput = null as any;
+utilities.lazyLoad(exports, ["getRouteFilterRules","getRouteFilterRulesOutput"], () => require("./getRouteFilterRules"));
+
+export { GetRouteFiltersArgs, GetRouteFiltersResult, GetRouteFiltersOutputArgs } from "./getRouteFilters";
+export const getRouteFilters: typeof import("./getRouteFilters").getRouteFilters = null as any;
+export const getRouteFiltersOutput: typeof import("./getRouteFilters").getRouteFiltersOutput = null as any;
+utilities.lazyLoad(exports, ["getRouteFilters","getRouteFiltersOutput"], () => require("./getRouteFilters"));
+
 export { GetRoutingProtocolArgs, GetRoutingProtocolResult, GetRoutingProtocolOutputArgs } from "./getRoutingProtocol";
 export const getRoutingProtocol: typeof import("./getRoutingProtocol").getRoutingProtocol = null as any;
 export const getRoutingProtocolOutput: typeof import("./getRoutingProtocol").getRoutingProtocolOutput = null as any;
@@ -79,6 +114,16 @@ export { NetworkArgs, NetworkState } from "./network";
 export type Network = import("./network").Network;
 export const Network: typeof import("./network").Network = null as any;
 utilities.lazyLoad(exports, ["Network"], () => require("./network"));
+
+export { RouteFilterArgs, RouteFilterState } from "./routeFilter";
+export type RouteFilter = import("./routeFilter").RouteFilter;
+export const RouteFilter: typeof import("./routeFilter").RouteFilter = null as any;
+utilities.lazyLoad(exports, ["RouteFilter"], () => require("./routeFilter"));
+
+export { RouteFilterRuleArgs, RouteFilterRuleState } from "./routeFilterRule";
+export type RouteFilterRule = import("./routeFilterRule").RouteFilterRule;
+export const RouteFilterRule: typeof import("./routeFilterRule").RouteFilterRule = null as any;
+utilities.lazyLoad(exports, ["RouteFilterRule"], () => require("./routeFilterRule"));
 
 export { RoutingProtocolArgs, RoutingProtocolState } from "./routingProtocol";
 export type RoutingProtocol = import("./routingProtocol").RoutingProtocol;
@@ -102,8 +147,14 @@ const _module = {
                 return new CloudRouter(name, <any>undefined, { urn })
             case "equinix:fabric/connection:Connection":
                 return new Connection(name, <any>undefined, { urn })
+            case "equinix:fabric/connectionRouteFilter:ConnectionRouteFilter":
+                return new ConnectionRouteFilter(name, <any>undefined, { urn })
             case "equinix:fabric/network:Network":
                 return new Network(name, <any>undefined, { urn })
+            case "equinix:fabric/routeFilter:RouteFilter":
+                return new RouteFilter(name, <any>undefined, { urn })
+            case "equinix:fabric/routeFilterRule:RouteFilterRule":
+                return new RouteFilterRule(name, <any>undefined, { urn })
             case "equinix:fabric/routingProtocol:RoutingProtocol":
                 return new RoutingProtocol(name, <any>undefined, { urn })
             case "equinix:fabric/serviceProfile:ServiceProfile":
@@ -115,6 +166,9 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("equinix", "fabric/cloudRouter", _module)
 pulumi.runtime.registerResourceModule("equinix", "fabric/connection", _module)
+pulumi.runtime.registerResourceModule("equinix", "fabric/connectionRouteFilter", _module)
 pulumi.runtime.registerResourceModule("equinix", "fabric/network", _module)
+pulumi.runtime.registerResourceModule("equinix", "fabric/routeFilter", _module)
+pulumi.runtime.registerResourceModule("equinix", "fabric/routeFilterRule", _module)
 pulumi.runtime.registerResourceModule("equinix", "fabric/routingProtocol", _module)
 pulumi.runtime.registerResourceModule("equinix", "fabric/serviceProfile", _module)

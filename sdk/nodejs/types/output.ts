@@ -1907,6 +1907,52 @@ export namespace fabric {
         priority: string;
     }
 
+    export interface GetConnectionRouteFiltersData {
+        /**
+         * Status of the Route Filter Policy attachment lifecycle
+         */
+        attachmentStatus: string;
+        /**
+         * Direction of the filtering of the attached Route Filter Policy
+         */
+        direction: string;
+        /**
+         * URI to the attached Route Filter Policy on the Connection
+         */
+        href: string;
+        /**
+         * Route Filter Type. One of [ "BGP_IPv4_PREFIX_FILTER", "BGP_IPv6_PREFIX_FILTER" ]
+         */
+        type: string;
+        /**
+         * Equinix Assigned ID for Route Filter Policy
+         */
+        uuid: string;
+    }
+
+    export interface GetConnectionRouteFiltersPagination {
+        /**
+         * Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+         */
+        limit: number;
+        /**
+         * URL relative to the last item in the response.
+         */
+        next: string;
+        /**
+         * The page offset for the pagination request. Index of the first element. Default is 0.
+         */
+        offset: number;
+        /**
+         * URL relative to the first item in the response.
+         */
+        previous: string;
+        /**
+         * Total number of elements returned.
+         */
+        total: number;
+    }
+
     export interface GetConnectionZSide {
         /**
          * Point of access details
@@ -3988,6 +4034,456 @@ export namespace fabric {
         name: string;
     }
 
+    export interface GetRouteFilterChange {
+        /**
+         * The URI of the previous Route Filter Change
+         */
+        href: string;
+        /**
+         * Type of change. One of [ "BGP_IPv4_PREFIX_FILTER_UPDATE","BGP_IPv4_PREFIX_FILTER_CREATION","BGP_IPv4_PREFIX_FILTER_DELETION","BGP_IPv6_PREFIX_FILTER_UPDATE","BGP_IPv6_PREFIX_FILTER_CREATION","BGP_IPv6_PREFIX_FILTER_DELETION" ]
+         */
+        type: string;
+        /**
+         * Unique identifier for the previous change
+         */
+        uuid: string;
+    }
+
+    export interface GetRouteFilterChangeLog {
+        /**
+         * Created by User Key
+         */
+        createdBy: string;
+        /**
+         * Created by User Email Address
+         */
+        createdByEmail: string;
+        /**
+         * Created by User Full Name
+         */
+        createdByFullName: string;
+        /**
+         * Created by Date and Time
+         */
+        createdDateTime: string;
+        /**
+         * Deleted by User Key
+         */
+        deletedBy: string;
+        /**
+         * Deleted by User Email Address
+         */
+        deletedByEmail: string;
+        /**
+         * Deleted by User Full Name
+         */
+        deletedByFullName: string;
+        /**
+         * Deleted by Date and Time
+         */
+        deletedDateTime: string;
+        /**
+         * Updated by User Key
+         */
+        updatedBy: string;
+        /**
+         * Updated by User Email Address
+         */
+        updatedByEmail: string;
+        /**
+         * Updated by User Full Name
+         */
+        updatedByFullName: string;
+        /**
+         * Updated by Date and Time
+         */
+        updatedDateTime: string;
+    }
+
+    export interface GetRouteFilterProject {
+        /**
+         * URI of the Fabric Project
+         */
+        href: string;
+        /**
+         * Project id associated with Fabric Project
+         */
+        projectId: string;
+    }
+
+    export interface GetRouteFilterRuleChange {
+        /**
+         * The URI of the previous Route Filter Rule Change
+         */
+        href: string;
+        /**
+         * Type of change. One of [ "BGP_IPv4_PREFIX_FILTER_RULE_UPDATE","BGP_IPv4_PREFIX_FILTER_RULE_CREATION","BGP_IPv4_PREFIX_FILTER_RULE_DELETION","BGP_IPv6_PREFIX_FILTER_RULE_UPDATE","BGP_IPv6_PREFIX_FILTER_RULE_CREATION","BGP_IPv6_PREFIX_FILTER_RULE_DELETION" ]
+         */
+        type: string;
+        /**
+         * Unique identifier for the previous change
+         */
+        uuid: string;
+    }
+
+    export interface GetRouteFilterRuleChangeLog {
+        /**
+         * Created by User Key
+         */
+        createdBy: string;
+        /**
+         * Created by User Email Address
+         */
+        createdByEmail: string;
+        /**
+         * Created by User Full Name
+         */
+        createdByFullName: string;
+        /**
+         * Created by Date and Time
+         */
+        createdDateTime: string;
+        /**
+         * Deleted by User Key
+         */
+        deletedBy: string;
+        /**
+         * Deleted by User Email Address
+         */
+        deletedByEmail: string;
+        /**
+         * Deleted by User Full Name
+         */
+        deletedByFullName: string;
+        /**
+         * Deleted by Date and Time
+         */
+        deletedDateTime: string;
+        /**
+         * Updated by User Key
+         */
+        updatedBy: string;
+        /**
+         * Updated by User Email Address
+         */
+        updatedByEmail: string;
+        /**
+         * Updated by User Full Name
+         */
+        updatedByFullName: string;
+        /**
+         * Updated by Date and Time
+         */
+        updatedDateTime: string;
+    }
+
+    export interface GetRouteFilterRulesData {
+        /**
+         * Action that will be taken on IP Addresses matching the rule
+         */
+        action: string;
+        changeLogs: outputs.fabric.GetRouteFilterRulesDataChangeLog[];
+        /**
+         * An object with the details of the previous change applied on the Route Filter
+         */
+        changes: outputs.fabric.GetRouteFilterRulesDataChange[];
+        /**
+         * Optional description to add to the Route Filter you will be creating
+         */
+        description: string;
+        /**
+         * Route filter rules URI
+         */
+        href: string;
+        /**
+         * Name of the Route Filter
+         */
+        name: string;
+        /**
+         * IP Address Prefix to Filter on
+         */
+        prefix: string;
+        /**
+         * Prefix matching operator. One of [ orlonger, exact ] Default: "orlonger"
+         */
+        prefixMatch: string;
+        /**
+         * State of the Route Filter Rule in its lifecycle
+         */
+        state: string;
+        /**
+         * Route Filter Type. One of [ BGP_IPv4_PREFIX_FILTER_RULE, BGP_IPv6_PREFIX_FILTER_RULE ]
+         */
+        type: string;
+        /**
+         * Equinix Assigned ID for Route Filter Rule to retrieve data for
+         */
+        uuid: string;
+    }
+
+    export interface GetRouteFilterRulesDataChange {
+        /**
+         * The URI of the previous Route Filter Rule Change
+         */
+        href: string;
+        /**
+         * Type of change. One of [ "BGP_IPv4_PREFIX_FILTER_RULE_UPDATE","BGP_IPv4_PREFIX_FILTER_RULE_CREATION","BGP_IPv4_PREFIX_FILTER_RULE_DELETION","BGP_IPv6_PREFIX_FILTER_RULE_UPDATE","BGP_IPv6_PREFIX_FILTER_RULE_CREATION","BGP_IPv6_PREFIX_FILTER_RULE_DELETION" ]
+         */
+        type: string;
+        /**
+         * Unique identifier for the previous change
+         */
+        uuid: string;
+    }
+
+    export interface GetRouteFilterRulesDataChangeLog {
+        /**
+         * Created by User Key
+         */
+        createdBy: string;
+        /**
+         * Created by User Email Address
+         */
+        createdByEmail: string;
+        /**
+         * Created by User Full Name
+         */
+        createdByFullName: string;
+        /**
+         * Created by Date and Time
+         */
+        createdDateTime: string;
+        /**
+         * Deleted by User Key
+         */
+        deletedBy: string;
+        /**
+         * Deleted by User Email Address
+         */
+        deletedByEmail: string;
+        /**
+         * Deleted by User Full Name
+         */
+        deletedByFullName: string;
+        /**
+         * Deleted by Date and Time
+         */
+        deletedDateTime: string;
+        /**
+         * Updated by User Key
+         */
+        updatedBy: string;
+        /**
+         * Updated by User Email Address
+         */
+        updatedByEmail: string;
+        /**
+         * Updated by User Full Name
+         */
+        updatedByFullName: string;
+        /**
+         * Updated by Date and Time
+         */
+        updatedDateTime: string;
+    }
+
+    export interface GetRouteFilterRulesPagination {
+        /**
+         * Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+         */
+        limit: number;
+        /**
+         * URL relative to the last item in the response.
+         */
+        next: string;
+        /**
+         * The page offset for the pagination request. Index of the first element. Default is 0.
+         */
+        offset: number;
+        /**
+         * URL relative to the first item in the response.
+         */
+        previous: string;
+        /**
+         * Total number of elements returned.
+         */
+        total: number;
+    }
+
+    export interface GetRouteFiltersData {
+        changeLogs: outputs.fabric.GetRouteFiltersDataChangeLog[];
+        /**
+         * An object with the details of the previous change applied on the Route Filter
+         */
+        changes: outputs.fabric.GetRouteFiltersDataChange[];
+        /**
+         * The number of Fabric Connections that this Route Filter is attached to
+         */
+        connectionsCount: number;
+        /**
+         * Optional description to add to the Route Filter you will be creating
+         */
+        description: string;
+        /**
+         * Route filter URI
+         */
+        href: string;
+        /**
+         * Name of the Route Filter
+         */
+        name: string;
+        /**
+         * The action that will be taken on ip ranges that don't match the rules present within the Route Filter
+         */
+        notMatchedRuleAction: string;
+        /**
+         * The Project object that contains projectId and href that is related to the Fabric Project containing connections the Route Filter can be attached to
+         */
+        projects: outputs.fabric.GetRouteFiltersDataProject[];
+        /**
+         * The number of Route Filter Rules attached to this Route Filter
+         */
+        rulesCount: number;
+        /**
+         * State of the Route Filter in its lifecycle
+         */
+        state: string;
+        /**
+         * Route Filter Type. One of [ "BGP_IPv4_PREFIX_FILTER", "BGP_IPv6_PREFIX_FILTER" ]
+         */
+        type: string;
+        /**
+         * Equinix Assigned ID for Route Filter
+         */
+        uuid: string;
+    }
+
+    export interface GetRouteFiltersDataChange {
+        /**
+         * The URI of the previous Route Filter Change
+         */
+        href: string;
+        /**
+         * Type of change. One of [ "BGP_IPv4_PREFIX_FILTER_UPDATE","BGP_IPv4_PREFIX_FILTER_CREATION","BGP_IPv4_PREFIX_FILTER_DELETION","BGP_IPv6_PREFIX_FILTER_UPDATE","BGP_IPv6_PREFIX_FILTER_CREATION","BGP_IPv6_PREFIX_FILTER_DELETION" ]
+         */
+        type: string;
+        /**
+         * Unique identifier for the previous change
+         */
+        uuid: string;
+    }
+
+    export interface GetRouteFiltersDataChangeLog {
+        /**
+         * Created by User Key
+         */
+        createdBy: string;
+        /**
+         * Created by User Email Address
+         */
+        createdByEmail: string;
+        /**
+         * Created by User Full Name
+         */
+        createdByFullName: string;
+        /**
+         * Created by Date and Time
+         */
+        createdDateTime: string;
+        /**
+         * Deleted by User Key
+         */
+        deletedBy: string;
+        /**
+         * Deleted by User Email Address
+         */
+        deletedByEmail: string;
+        /**
+         * Deleted by User Full Name
+         */
+        deletedByFullName: string;
+        /**
+         * Deleted by Date and Time
+         */
+        deletedDateTime: string;
+        /**
+         * Updated by User Key
+         */
+        updatedBy: string;
+        /**
+         * Updated by User Email Address
+         */
+        updatedByEmail: string;
+        /**
+         * Updated by User Full Name
+         */
+        updatedByFullName: string;
+        /**
+         * Updated by Date and Time
+         */
+        updatedDateTime: string;
+    }
+
+    export interface GetRouteFiltersDataProject {
+        /**
+         * URI of the Fabric Project
+         */
+        href: string;
+        /**
+         * Project id associated with Fabric Project
+         */
+        projectId: string;
+    }
+
+    export interface GetRouteFiltersFilter {
+        /**
+         * Possible operators to use on the filter property. Can be one of the following: [ "=", "!=", "[NOT] LIKE", "[NOT] IN", "ILIKE" ]
+         */
+        operator: string;
+        /**
+         * The API response property which you want to filter your request on. Can be one of the following: "/type", "/name", "/project/projectId", "/uuid", "/state"
+         */
+        property: string;
+        /**
+         * The values that you want to apply the property+operator combination to in order to filter your data search
+         */
+        values: string[];
+    }
+
+    export interface GetRouteFiltersPagination {
+        /**
+         * Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+         */
+        limit: number;
+        /**
+         * URL relative to the last item in the response.
+         */
+        next: string;
+        /**
+         * The page offset for the pagination request. Index of the first element. Default is 0.
+         */
+        offset: number;
+        /**
+         * URL relative to the first item in the response.
+         */
+        previous: string;
+        /**
+         * Total number of elements returned.
+         */
+        total: number;
+    }
+
+    export interface GetRouteFiltersSort {
+        /**
+         * The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+         */
+        direction?: string;
+        /**
+         * The property name to use in sorting. Can be one of the following: [/type, /uuid, /name, /project/projectId, /state, /notMatchedRuleAction, /connectionsCount, /changeLog/createdDateTime, /changeLog/updatedDateTime], Defaults to /changeLog/updatedDateTime
+         */
+        property?: string;
+    }
+
     export interface GetRoutingProtocolBfd {
         /**
          * Bidirectional Forwarding Detection enablement
@@ -5215,6 +5711,149 @@ export namespace fabric {
          * Customer project identifier
          */
         projectId: string;
+    }
+
+    export interface RouteFilterChange {
+        /**
+         * The URI of the previous Route Filter Change
+         */
+        href: string;
+        /**
+         * Type of change. One of [ "BGP_IPv4_PREFIX_FILTER_UPDATE","BGP_IPv4_PREFIX_FILTER_CREATION","BGP_IPv4_PREFIX_FILTER_DELETION","BGP_IPv6_PREFIX_FILTER_UPDATE","BGP_IPv6_PREFIX_FILTER_CREATION","BGP_IPv6_PREFIX_FILTER_DELETION" ]
+         */
+        type: string;
+        /**
+         * Unique identifier for the previous change
+         */
+        uuid: string;
+    }
+
+    export interface RouteFilterChangeLog {
+        /**
+         * Created by User Key
+         */
+        createdBy: string;
+        /**
+         * Created by User Email Address
+         */
+        createdByEmail: string;
+        /**
+         * Created by User Full Name
+         */
+        createdByFullName: string;
+        /**
+         * Created by Date and Time
+         */
+        createdDateTime: string;
+        /**
+         * Deleted by User Key
+         */
+        deletedBy: string;
+        /**
+         * Deleted by User Email Address
+         */
+        deletedByEmail: string;
+        /**
+         * Deleted by User Full Name
+         */
+        deletedByFullName: string;
+        /**
+         * Deleted by Date and Time
+         */
+        deletedDateTime: string;
+        /**
+         * Updated by User Key
+         */
+        updatedBy: string;
+        /**
+         * Updated by User Email Address
+         */
+        updatedByEmail: string;
+        /**
+         * Updated by User Full Name
+         */
+        updatedByFullName: string;
+        /**
+         * Updated by Date and Time
+         */
+        updatedDateTime: string;
+    }
+
+    export interface RouteFilterProject {
+        /**
+         * URI of the Fabric Project
+         */
+        href: string;
+        /**
+         * Project id associated with Fabric Project
+         */
+        projectId: string;
+    }
+
+    export interface RouteFilterRuleChange {
+        /**
+         * The URI of the previous Route Filter Rule Change
+         */
+        href: string;
+        /**
+         * Type of change. One of [ "BGP_IPv4_PREFIX_FILTER_RULE_UPDATE","BGP_IPv4_PREFIX_FILTER_RULE_CREATION","BGP_IPv4_PREFIX_FILTER_RULE_DELETION","BGP_IPv6_PREFIX_FILTER_RULE_UPDATE","BGP_IPv6_PREFIX_FILTER_RULE_CREATION","BGP_IPv6_PREFIX_FILTER_RULE_DELETION" ]
+         */
+        type: string;
+        /**
+         * Unique identifier for the previous change
+         */
+        uuid: string;
+    }
+
+    export interface RouteFilterRuleChangeLog {
+        /**
+         * Created by User Key
+         */
+        createdBy: string;
+        /**
+         * Created by User Email Address
+         */
+        createdByEmail: string;
+        /**
+         * Created by User Full Name
+         */
+        createdByFullName: string;
+        /**
+         * Created by Date and Time
+         */
+        createdDateTime: string;
+        /**
+         * Deleted by User Key
+         */
+        deletedBy: string;
+        /**
+         * Deleted by User Email Address
+         */
+        deletedByEmail: string;
+        /**
+         * Deleted by User Full Name
+         */
+        deletedByFullName: string;
+        /**
+         * Deleted by Date and Time
+         */
+        deletedDateTime: string;
+        /**
+         * Updated by User Key
+         */
+        updatedBy: string;
+        /**
+         * Updated by User Email Address
+         */
+        updatedByEmail: string;
+        /**
+         * Updated by User Full Name
+         */
+        updatedByFullName: string;
+        /**
+         * Updated by Date and Time
+         */
+        updatedDateTime: string;
     }
 
     export interface RoutingProtocolBfd {
