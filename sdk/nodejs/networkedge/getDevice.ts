@@ -171,6 +171,10 @@ export interface GetDeviceResult {
     readonly termLength: number;
     readonly throughput: number;
     readonly throughputUnit: string;
+    /**
+     * Throughput Tier (applicable for C8000V, C8000V-SDWAN devices)
+     */
+    readonly tier: number;
     readonly typeCode: string;
     /**
      * Device unique identifier

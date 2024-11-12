@@ -47,6 +47,7 @@ class DeviceArgs:
                  ssh_key: Optional[pulumi.Input['DeviceSshKeyArgs']] = None,
                  throughput: Optional[pulumi.Input[int]] = None,
                  throughput_unit: Optional[pulumi.Input[Union[str, 'ThroughputUnit']]] = None,
+                 tier: Optional[pulumi.Input[int]] = None,
                  vendor_configuration: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  wan_interface_id: Optional[pulumi.Input[str]] = None):
         """
@@ -81,6 +82,7 @@ class DeviceArgs:
         :param pulumi.Input['DeviceSshKeyArgs'] ssh_key: Definition of SSH key that will be provisioned on a device
         :param pulumi.Input[int] throughput: Device license throughput.
         :param pulumi.Input[Union[str, 'ThroughputUnit']] throughput_unit: License throughput unit. One of `Mbps` or `Gbps`.
+        :param pulumi.Input[int] tier: Select bandwidth tier for your own license, i.e., `0` or `1` or `2` or `3`. Tiers applicable only for C8000V Autonomous or C8000V SDWAN (controller) device types. If not provided, tier is defaulted to '2'.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vendor_configuration: Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress)
                * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
         :param pulumi.Input[str] wan_interface_id: device interface id picked for WAN
@@ -137,6 +139,8 @@ class DeviceArgs:
             pulumi.set(__self__, "throughput", throughput)
         if throughput_unit is not None:
             pulumi.set(__self__, "throughput_unit", throughput_unit)
+        if tier is not None:
+            pulumi.set(__self__, "tier", tier)
         if vendor_configuration is not None:
             pulumi.set(__self__, "vendor_configuration", vendor_configuration)
         if wan_interface_id is not None:
@@ -503,6 +507,18 @@ class DeviceArgs:
         pulumi.set(self, "throughput_unit", value)
 
     @property
+    @pulumi.getter
+    def tier(self) -> Optional[pulumi.Input[int]]:
+        """
+        Select bandwidth tier for your own license, i.e., `0` or `1` or `2` or `3`. Tiers applicable only for C8000V Autonomous or C8000V SDWAN (controller) device types. If not provided, tier is defaulted to '2'.
+        """
+        return pulumi.get(self, "tier")
+
+    @tier.setter
+    def tier(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "tier", value)
+
+    @property
     @pulumi.getter(name="vendorConfiguration")
     def vendor_configuration(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -570,6 +586,7 @@ class _DeviceState:
                  term_length: Optional[pulumi.Input[int]] = None,
                  throughput: Optional[pulumi.Input[int]] = None,
                  throughput_unit: Optional[pulumi.Input[Union[str, 'ThroughputUnit']]] = None,
+                 tier: Optional[pulumi.Input[int]] = None,
                  type_code: Optional[pulumi.Input[str]] = None,
                  uuid: Optional[pulumi.Input[str]] = None,
                  vendor_configuration: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -617,6 +634,7 @@ class _DeviceState:
         :param pulumi.Input[int] term_length: Device term length.
         :param pulumi.Input[int] throughput: Device license throughput.
         :param pulumi.Input[Union[str, 'ThroughputUnit']] throughput_unit: License throughput unit. One of `Mbps` or `Gbps`.
+        :param pulumi.Input[int] tier: Select bandwidth tier for your own license, i.e., `0` or `1` or `2` or `3`. Tiers applicable only for C8000V Autonomous or C8000V SDWAN (controller) device types. If not provided, tier is defaulted to '2'.
         :param pulumi.Input[str] type_code: Device type code.
         :param pulumi.Input[str] uuid: Device unique identifier.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vendor_configuration: Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress)
@@ -703,6 +721,8 @@ class _DeviceState:
             pulumi.set(__self__, "throughput", throughput)
         if throughput_unit is not None:
             pulumi.set(__self__, "throughput_unit", throughput_unit)
+        if tier is not None:
+            pulumi.set(__self__, "tier", tier)
         if type_code is not None:
             pulumi.set(__self__, "type_code", type_code)
         if uuid is not None:
@@ -1185,6 +1205,18 @@ class _DeviceState:
         pulumi.set(self, "throughput_unit", value)
 
     @property
+    @pulumi.getter
+    def tier(self) -> Optional[pulumi.Input[int]]:
+        """
+        Select bandwidth tier for your own license, i.e., `0` or `1` or `2` or `3`. Tiers applicable only for C8000V Autonomous or C8000V SDWAN (controller) device types. If not provided, tier is defaulted to '2'.
+        """
+        return pulumi.get(self, "tier")
+
+    @tier.setter
+    def tier(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "tier", value)
+
+    @property
     @pulumi.getter(name="typeCode")
     def type_code(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1291,6 +1323,7 @@ class Device(pulumi.CustomResource):
                  term_length: Optional[pulumi.Input[int]] = None,
                  throughput: Optional[pulumi.Input[int]] = None,
                  throughput_unit: Optional[pulumi.Input[Union[str, 'ThroughputUnit']]] = None,
+                 tier: Optional[pulumi.Input[int]] = None,
                  type_code: Optional[pulumi.Input[str]] = None,
                  vendor_configuration: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  version: Optional[pulumi.Input[str]] = None,
@@ -1702,6 +1735,67 @@ class Device(pulumi.CustomResource):
             cloud_init_file_id=aviatrix_cloudinit_file.uuid,
             acl_template_id="c06150ea-b604-4ad1-832a-d63936e9b938")
         ```
+        ### example c8000v byol with bandwidth throughput
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(metro_code="SV")
+        c8000_v_byol_throughput = equinix.networkedge.Device("c8000v-byol-throughput",
+            name="tf-c8000v-byol",
+            metro_code=sv.metro_code,
+            type_code="C8000V",
+            self_managed=True,
+            byol=True,
+            package_code="VM100",
+            notifications=[
+                "john@equinix.com",
+                "marry@equinix.com",
+                "fred@equinix.com",
+            ],
+            term_length=12,
+            account_number=sv.number,
+            version="17.11.01a",
+            interface_count=10,
+            core_count=2,
+            throughput=100,
+            throughput_unit=equinix.networkedge.ThroughputUnit.MBPS,
+            ssh_key={
+                "username": "test",
+                "key_name": "test-key",
+            },
+            acl_template_id="0bff6e05-f0e7-44cd-804a-25b92b835f8b")
+        ```
+        ### example c8000v byol with bandwidth tier
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(metro_code="SV")
+        c8000_v_byol_tier = equinix.networkedge.Device("c8000v-byol-tier",
+            name="tf-c8000v-byol",
+            metro_code=sv.metro_code,
+            type_code="C8000V",
+            self_managed=True,
+            byol=True,
+            package_code="VM100",
+            notifications=[
+                "john@equinix.com",
+                "marry@equinix.com",
+                "fred@equinix.com",
+            ],
+            term_length=12,
+            account_number=sv.number,
+            version="17.11.01a",
+            interface_count=10,
+            core_count=2,
+            tier=1,
+            ssh_key={
+                "username": "test",
+                "key_name": "test-key",
+            },
+            acl_template_id="0bff6e05-f0e7-44cd-804a-25b92b835f8b")
+        ```
 
         ## Import
 
@@ -1743,6 +1837,7 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[int] term_length: Device term length.
         :param pulumi.Input[int] throughput: Device license throughput.
         :param pulumi.Input[Union[str, 'ThroughputUnit']] throughput_unit: License throughput unit. One of `Mbps` or `Gbps`.
+        :param pulumi.Input[int] tier: Select bandwidth tier for your own license, i.e., `0` or `1` or `2` or `3`. Tiers applicable only for C8000V Autonomous or C8000V SDWAN (controller) device types. If not provided, tier is defaulted to '2'.
         :param pulumi.Input[str] type_code: Device type code.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vendor_configuration: Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress)
                * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
@@ -2161,6 +2256,67 @@ class Device(pulumi.CustomResource):
             cloud_init_file_id=aviatrix_cloudinit_file.uuid,
             acl_template_id="c06150ea-b604-4ad1-832a-d63936e9b938")
         ```
+        ### example c8000v byol with bandwidth throughput
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(metro_code="SV")
+        c8000_v_byol_throughput = equinix.networkedge.Device("c8000v-byol-throughput",
+            name="tf-c8000v-byol",
+            metro_code=sv.metro_code,
+            type_code="C8000V",
+            self_managed=True,
+            byol=True,
+            package_code="VM100",
+            notifications=[
+                "john@equinix.com",
+                "marry@equinix.com",
+                "fred@equinix.com",
+            ],
+            term_length=12,
+            account_number=sv.number,
+            version="17.11.01a",
+            interface_count=10,
+            core_count=2,
+            throughput=100,
+            throughput_unit=equinix.networkedge.ThroughputUnit.MBPS,
+            ssh_key={
+                "username": "test",
+                "key_name": "test-key",
+            },
+            acl_template_id="0bff6e05-f0e7-44cd-804a-25b92b835f8b")
+        ```
+        ### example c8000v byol with bandwidth tier
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(metro_code="SV")
+        c8000_v_byol_tier = equinix.networkedge.Device("c8000v-byol-tier",
+            name="tf-c8000v-byol",
+            metro_code=sv.metro_code,
+            type_code="C8000V",
+            self_managed=True,
+            byol=True,
+            package_code="VM100",
+            notifications=[
+                "john@equinix.com",
+                "marry@equinix.com",
+                "fred@equinix.com",
+            ],
+            term_length=12,
+            account_number=sv.number,
+            version="17.11.01a",
+            interface_count=10,
+            core_count=2,
+            tier=1,
+            ssh_key={
+                "username": "test",
+                "key_name": "test-key",
+            },
+            acl_template_id="0bff6e05-f0e7-44cd-804a-25b92b835f8b")
+        ```
 
         ## Import
 
@@ -2215,6 +2371,7 @@ class Device(pulumi.CustomResource):
                  term_length: Optional[pulumi.Input[int]] = None,
                  throughput: Optional[pulumi.Input[int]] = None,
                  throughput_unit: Optional[pulumi.Input[Union[str, 'ThroughputUnit']]] = None,
+                 tier: Optional[pulumi.Input[int]] = None,
                  type_code: Optional[pulumi.Input[str]] = None,
                  vendor_configuration: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  version: Optional[pulumi.Input[str]] = None,
@@ -2268,6 +2425,7 @@ class Device(pulumi.CustomResource):
             __props__.__dict__["term_length"] = term_length
             __props__.__dict__["throughput"] = throughput
             __props__.__dict__["throughput_unit"] = throughput_unit
+            __props__.__dict__["tier"] = tier
             if type_code is None and not opts.urn:
                 raise TypeError("Missing required property 'type_code'")
             __props__.__dict__["type_code"] = type_code
@@ -2338,6 +2496,7 @@ class Device(pulumi.CustomResource):
             term_length: Optional[pulumi.Input[int]] = None,
             throughput: Optional[pulumi.Input[int]] = None,
             throughput_unit: Optional[pulumi.Input[Union[str, 'ThroughputUnit']]] = None,
+            tier: Optional[pulumi.Input[int]] = None,
             type_code: Optional[pulumi.Input[str]] = None,
             uuid: Optional[pulumi.Input[str]] = None,
             vendor_configuration: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -2390,6 +2549,7 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[int] term_length: Device term length.
         :param pulumi.Input[int] throughput: Device license throughput.
         :param pulumi.Input[Union[str, 'ThroughputUnit']] throughput_unit: License throughput unit. One of `Mbps` or `Gbps`.
+        :param pulumi.Input[int] tier: Select bandwidth tier for your own license, i.e., `0` or `1` or `2` or `3`. Tiers applicable only for C8000V Autonomous or C8000V SDWAN (controller) device types. If not provided, tier is defaulted to '2'.
         :param pulumi.Input[str] type_code: Device type code.
         :param pulumi.Input[str] uuid: Device unique identifier.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vendor_configuration: Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress)
@@ -2441,6 +2601,7 @@ class Device(pulumi.CustomResource):
         __props__.__dict__["term_length"] = term_length
         __props__.__dict__["throughput"] = throughput
         __props__.__dict__["throughput_unit"] = throughput_unit
+        __props__.__dict__["tier"] = tier
         __props__.__dict__["type_code"] = type_code
         __props__.__dict__["uuid"] = uuid
         __props__.__dict__["vendor_configuration"] = vendor_configuration
@@ -2760,6 +2921,14 @@ class Device(pulumi.CustomResource):
         License throughput unit. One of `Mbps` or `Gbps`.
         """
         return pulumi.get(self, "throughput_unit")
+
+    @property
+    @pulumi.getter
+    def tier(self) -> pulumi.Output[int]:
+        """
+        Select bandwidth tier for your own license, i.e., `0` or `1` or `2` or `3`. Tiers applicable only for C8000V Autonomous or C8000V SDWAN (controller) device types. If not provided, tier is defaulted to '2'.
+        """
+        return pulumi.get(self, "tier")
 
     @property
     @pulumi.getter(name="typeCode")
