@@ -244,6 +244,10 @@ namespace Pulumi.Equinix.NetworkEdge
         public readonly int TermLength;
         public readonly int Throughput;
         public readonly string ThroughputUnit;
+        /// <summary>
+        /// Throughput Tier (applicable for C8000V, C8000V-SDWAN devices)
+        /// </summary>
+        public readonly int Tier;
         public readonly string TypeCode;
         /// <summary>
         /// Device unique identifier
@@ -341,6 +345,8 @@ namespace Pulumi.Equinix.NetworkEdge
 
             string throughputUnit,
 
+            int tier,
+
             string typeCode,
 
             string uuid,
@@ -394,6 +400,7 @@ namespace Pulumi.Equinix.NetworkEdge
             TermLength = termLength;
             Throughput = throughput;
             ThroughputUnit = throughputUnit;
+            Tier = tier;
             TypeCode = typeCode;
             Uuid = uuid;
             ValidStatusList = validStatusList;

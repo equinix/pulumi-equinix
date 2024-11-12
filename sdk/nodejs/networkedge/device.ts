@@ -455,6 +455,73 @@ import * as utilities from "../utilities";
  *     aclTemplateId: "c06150ea-b604-4ad1-832a-d63936e9b938",
  * });
  * ```
+ * ### example c8000v byol with bandwidth throughput
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const sv = equinix.networkedge.getAccountOutput({
+ *     metroCode: "SV",
+ * });
+ * const c8000VByolThroughput = new equinix.networkedge.Device("c8000v-byol-throughput", {
+ *     name: "tf-c8000v-byol",
+ *     metroCode: sv.apply(sv => sv.metroCode),
+ *     typeCode: "C8000V",
+ *     selfManaged: true,
+ *     byol: true,
+ *     packageCode: "VM100",
+ *     notifications: [
+ *         "john@equinix.com",
+ *         "marry@equinix.com",
+ *         "fred@equinix.com",
+ *     ],
+ *     termLength: 12,
+ *     accountNumber: sv.apply(sv => sv.number),
+ *     version: "17.11.01a",
+ *     interfaceCount: 10,
+ *     coreCount: 2,
+ *     throughput: 100,
+ *     throughputUnit: equinix.networkedge.ThroughputUnit.Mbps,
+ *     sshKey: {
+ *         username: "test",
+ *         keyName: "test-key",
+ *     },
+ *     aclTemplateId: "0bff6e05-f0e7-44cd-804a-25b92b835f8b",
+ * });
+ * ```
+ * ### example c8000v byol with bandwidth tier
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const sv = equinix.networkedge.getAccountOutput({
+ *     metroCode: "SV",
+ * });
+ * const c8000VByolTier = new equinix.networkedge.Device("c8000v-byol-tier", {
+ *     name: "tf-c8000v-byol",
+ *     metroCode: sv.apply(sv => sv.metroCode),
+ *     typeCode: "C8000V",
+ *     selfManaged: true,
+ *     byol: true,
+ *     packageCode: "VM100",
+ *     notifications: [
+ *         "john@equinix.com",
+ *         "marry@equinix.com",
+ *         "fred@equinix.com",
+ *     ],
+ *     termLength: 12,
+ *     accountNumber: sv.apply(sv => sv.number),
+ *     version: "17.11.01a",
+ *     interfaceCount: 10,
+ *     coreCount: 2,
+ *     tier: 1,
+ *     sshKey: {
+ *         username: "test",
+ *         keyName: "test-key",
+ *     },
+ *     aclTemplateId: "0bff6e05-f0e7-44cd-804a-25b92b835f8b",
+ * });
+ * ```
  *
  * ## Import
  *
@@ -651,6 +718,10 @@ export class Device extends pulumi.CustomResource {
      */
     public readonly throughputUnit!: pulumi.Output<string | undefined>;
     /**
+     * Select bandwidth tier for your own license, i.e., `0` or `1` or `2` or `3`. Tiers applicable only for C8000V Autonomous or C8000V SDWAN (controller) device types. If not provided, tier is defaulted to '2'.
+     */
+    public readonly tier!: pulumi.Output<number>;
+    /**
      * Device type code.
      */
     public readonly typeCode!: pulumi.Output<string>;
@@ -728,6 +799,7 @@ export class Device extends pulumi.CustomResource {
             resourceInputs["termLength"] = state ? state.termLength : undefined;
             resourceInputs["throughput"] = state ? state.throughput : undefined;
             resourceInputs["throughputUnit"] = state ? state.throughputUnit : undefined;
+            resourceInputs["tier"] = state ? state.tier : undefined;
             resourceInputs["typeCode"] = state ? state.typeCode : undefined;
             resourceInputs["uuid"] = state ? state.uuid : undefined;
             resourceInputs["vendorConfiguration"] = state ? state.vendorConfiguration : undefined;
@@ -788,6 +860,7 @@ export class Device extends pulumi.CustomResource {
             resourceInputs["termLength"] = args ? args.termLength : undefined;
             resourceInputs["throughput"] = args ? args.throughput : undefined;
             resourceInputs["throughputUnit"] = args ? args.throughputUnit : undefined;
+            resourceInputs["tier"] = args ? args.tier : undefined;
             resourceInputs["typeCode"] = args ? args.typeCode : undefined;
             resourceInputs["vendorConfiguration"] = args ? args.vendorConfiguration : undefined;
             resourceInputs["version"] = args ? args.version : undefined;
@@ -972,6 +1045,10 @@ export interface DeviceState {
      */
     throughputUnit?: pulumi.Input<string | enums.networkedge.ThroughputUnit>;
     /**
+     * Select bandwidth tier for your own license, i.e., `0` or `1` or `2` or `3`. Tiers applicable only for C8000V Autonomous or C8000V SDWAN (controller) device types. If not provided, tier is defaulted to '2'.
+     */
+    tier?: pulumi.Input<number>;
+    /**
      * Device type code.
      */
     typeCode?: pulumi.Input<string>;
@@ -1114,6 +1191,10 @@ export interface DeviceArgs {
      * License throughput unit. One of `Mbps` or `Gbps`.
      */
     throughputUnit?: pulumi.Input<string | enums.networkedge.ThroughputUnit>;
+    /**
+     * Select bandwidth tier for your own license, i.e., `0` or `1` or `2` or `3`. Tiers applicable only for C8000V Autonomous or C8000V SDWAN (controller) device types. If not provided, tier is defaulted to '2'.
+     */
+    tier?: pulumi.Input<number>;
     /**
      * Device type code.
      */

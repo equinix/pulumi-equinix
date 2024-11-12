@@ -22,7 +22,7 @@ class GetDeviceResult:
     """
     A collection of values returned by getDevice.
     """
-    def __init__(__self__, account_number=None, acl_template_id=None, additional_bandwidth=None, asn=None, byol=None, cluster_details=None, connectivity=None, core_count=None, diverse_device_id=None, diverse_device_name=None, hostname=None, ibx=None, id=None, interface_count=None, interfaces=None, license_file=None, license_file_id=None, license_status=None, license_token=None, metro_code=None, mgmt_acl_template_uuid=None, name=None, notifications=None, order_reference=None, package_code=None, project_id=None, purchase_order_number=None, redundancy_type=None, redundant_id=None, region=None, secondary_devices=None, self_managed=None, ssh_ip_address=None, ssh_ip_fqdn=None, ssh_keys=None, status=None, term_length=None, throughput=None, throughput_unit=None, type_code=None, uuid=None, valid_status_list=None, vendor_configuration=None, version=None, wan_interface_id=None, zone_code=None):
+    def __init__(__self__, account_number=None, acl_template_id=None, additional_bandwidth=None, asn=None, byol=None, cluster_details=None, connectivity=None, core_count=None, diverse_device_id=None, diverse_device_name=None, hostname=None, ibx=None, id=None, interface_count=None, interfaces=None, license_file=None, license_file_id=None, license_status=None, license_token=None, metro_code=None, mgmt_acl_template_uuid=None, name=None, notifications=None, order_reference=None, package_code=None, project_id=None, purchase_order_number=None, redundancy_type=None, redundant_id=None, region=None, secondary_devices=None, self_managed=None, ssh_ip_address=None, ssh_ip_fqdn=None, ssh_keys=None, status=None, term_length=None, throughput=None, throughput_unit=None, tier=None, type_code=None, uuid=None, valid_status_list=None, vendor_configuration=None, version=None, wan_interface_id=None, zone_code=None):
         if account_number and not isinstance(account_number, str):
             raise TypeError("Expected argument 'account_number' to be a str")
         pulumi.set(__self__, "account_number", account_number)
@@ -140,6 +140,9 @@ class GetDeviceResult:
         if throughput_unit and not isinstance(throughput_unit, str):
             raise TypeError("Expected argument 'throughput_unit' to be a str")
         pulumi.set(__self__, "throughput_unit", throughput_unit)
+        if tier and not isinstance(tier, int):
+            raise TypeError("Expected argument 'tier' to be a int")
+        pulumi.set(__self__, "tier", tier)
         if type_code and not isinstance(type_code, str):
             raise TypeError("Expected argument 'type_code' to be a str")
         pulumi.set(__self__, "type_code", type_code)
@@ -432,6 +435,14 @@ class GetDeviceResult:
         return pulumi.get(self, "throughput_unit")
 
     @property
+    @pulumi.getter
+    def tier(self) -> int:
+        """
+        Throughput Tier (applicable for C8000V, C8000V-SDWAN devices)
+        """
+        return pulumi.get(self, "tier")
+
+    @property
     @pulumi.getter(name="typeCode")
     def type_code(self) -> str:
         return pulumi.get(self, "type_code")
@@ -521,6 +532,7 @@ class AwaitableGetDeviceResult(GetDeviceResult):
             term_length=self.term_length,
             throughput=self.throughput,
             throughput_unit=self.throughput_unit,
+            tier=self.tier,
             type_code=self.type_code,
             uuid=self.uuid,
             valid_status_list=self.valid_status_list,
@@ -601,6 +613,7 @@ def get_device(name: Optional[str] = None,
         term_length=pulumi.get(__ret__, 'term_length'),
         throughput=pulumi.get(__ret__, 'throughput'),
         throughput_unit=pulumi.get(__ret__, 'throughput_unit'),
+        tier=pulumi.get(__ret__, 'tier'),
         type_code=pulumi.get(__ret__, 'type_code'),
         uuid=pulumi.get(__ret__, 'uuid'),
         valid_status_list=pulumi.get(__ret__, 'valid_status_list'),
