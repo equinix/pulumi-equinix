@@ -611,6 +611,21 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Select bandwidth tier for your own license, i.e., `0` or `1` or `2` or `3`. Tiers applicable only for C8000V Autonomous or C8000V SDWAN (controller) device types. If not provided, tier is defaulted to &#39;2&#39;.
+     * 
+     */
+    @Import(name="tier")
+    private @Nullable Output<Integer> tier;
+
+    /**
+     * @return Select bandwidth tier for your own license, i.e., `0` or `1` or `2` or `3`. Tiers applicable only for C8000V Autonomous or C8000V SDWAN (controller) device types. If not provided, tier is defaulted to &#39;2&#39;.
+     * 
+     */
+    public Optional<Output<Integer>> tier() {
+        return Optional.ofNullable(this.tier);
+    }
+
+    /**
      * Device type code.
      * 
      */
@@ -641,7 +656,7 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress)
+     * Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress, provisioningKey)
      * * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
      * 
      */
@@ -649,7 +664,7 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Map<String,String>> vendorConfiguration;
 
     /**
-     * @return Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress)
+     * @return Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress, provisioningKey)
      * * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
      * 
      */
@@ -744,6 +759,7 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
         this.termLength = $.termLength;
         this.throughput = $.throughput;
         this.throughputUnit = $.throughputUnit;
+        this.tier = $.tier;
         this.typeCode = $.typeCode;
         this.uuid = $.uuid;
         this.vendorConfiguration = $.vendorConfiguration;
@@ -1630,6 +1646,27 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param tier Select bandwidth tier for your own license, i.e., `0` or `1` or `2` or `3`. Tiers applicable only for C8000V Autonomous or C8000V SDWAN (controller) device types. If not provided, tier is defaulted to &#39;2&#39;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tier(@Nullable Output<Integer> tier) {
+            $.tier = tier;
+            return this;
+        }
+
+        /**
+         * @param tier Select bandwidth tier for your own license, i.e., `0` or `1` or `2` or `3`. Tiers applicable only for C8000V Autonomous or C8000V SDWAN (controller) device types. If not provided, tier is defaulted to &#39;2&#39;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tier(Integer tier) {
+            return tier(Output.of(tier));
+        }
+
+        /**
          * @param typeCode Device type code.
          * 
          * @return builder
@@ -1672,7 +1709,7 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vendorConfiguration Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress)
+         * @param vendorConfiguration Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress, provisioningKey)
          * * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
          * 
          * @return builder
@@ -1684,7 +1721,7 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vendorConfiguration Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress)
+         * @param vendorConfiguration Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress, provisioningKey)
          * * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
          * 
          * @return builder

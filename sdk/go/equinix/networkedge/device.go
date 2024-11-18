@@ -708,6 +708,219 @@ import (
 //	}
 //
 // ```
+// ### example c8000v byol with bandwidth throughput
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			sv, err := networkedge.GetAccount(ctx, &networkedge.GetAccountArgs{
+//				MetroCode: "SV",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networkedge.NewDevice(ctx, "c8000v-byol-throughput", &networkedge.DeviceArgs{
+//				Name:        pulumi.String("tf-c8000v-byol"),
+//				MetroCode:   pulumi.String(sv.MetroCode),
+//				TypeCode:    pulumi.String("C8000V"),
+//				SelfManaged: pulumi.Bool(true),
+//				Byol:        pulumi.Bool(true),
+//				PackageCode: pulumi.String("VM100"),
+//				Notifications: pulumi.StringArray{
+//					pulumi.String("john@equinix.com"),
+//					pulumi.String("marry@equinix.com"),
+//					pulumi.String("fred@equinix.com"),
+//				},
+//				TermLength:     pulumi.Int(12),
+//				AccountNumber:  pulumi.String(sv.Number),
+//				Version:        pulumi.String("17.11.01a"),
+//				InterfaceCount: pulumi.Int(10),
+//				CoreCount:      pulumi.Int(2),
+//				Throughput:     pulumi.Int(100),
+//				ThroughputUnit: pulumi.String(networkedge.ThroughputUnitMbps),
+//				SshKey: &networkedge.DeviceSshKeyArgs{
+//					Username: pulumi.String("test"),
+//					KeyName:  pulumi.String("test-key"),
+//				},
+//				AclTemplateId: pulumi.String("0bff6e05-f0e7-44cd-804a-25b92b835f8b"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### example c8000v byol with bandwidth tier
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			sv, err := networkedge.GetAccount(ctx, &networkedge.GetAccountArgs{
+//				MetroCode: "SV",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networkedge.NewDevice(ctx, "c8000v-byol-tier", &networkedge.DeviceArgs{
+//				Name:        pulumi.String("tf-c8000v-byol"),
+//				MetroCode:   pulumi.String(sv.MetroCode),
+//				TypeCode:    pulumi.String("C8000V"),
+//				SelfManaged: pulumi.Bool(true),
+//				Byol:        pulumi.Bool(true),
+//				PackageCode: pulumi.String("VM100"),
+//				Notifications: pulumi.StringArray{
+//					pulumi.String("john@equinix.com"),
+//					pulumi.String("marry@equinix.com"),
+//					pulumi.String("fred@equinix.com"),
+//				},
+//				TermLength:     pulumi.Int(12),
+//				AccountNumber:  pulumi.String(sv.Number),
+//				Version:        pulumi.String("17.11.01a"),
+//				InterfaceCount: pulumi.Int(10),
+//				CoreCount:      pulumi.Int(2),
+//				Tier:           pulumi.Int(1),
+//				SshKey: &networkedge.DeviceSshKeyArgs{
+//					Username: pulumi.String("test"),
+//					KeyName:  pulumi.String("test-key"),
+//				},
+//				AclTemplateId: pulumi.String("0bff6e05-f0e7-44cd-804a-25b92b835f8b"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### example zscaler appc
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			sv, err := networkedge.GetAccount(ctx, &networkedge.GetAccountArgs{
+//				MetroCode: "SV",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networkedge.NewDevice(ctx, "zscaler-appc-single", &networkedge.DeviceArgs{
+//				Name:         pulumi.String("tf-zscaler-appc"),
+//				ProjectId:    pulumi.String("XXXXXX"),
+//				MetroCode:    pulumi.String(sv.MetroCode),
+//				TypeCode:     pulumi.String("ZSCALER-APPC"),
+//				SelfManaged:  pulumi.Bool(true),
+//				Byol:         pulumi.Bool(true),
+//				Connectivity: pulumi.String("PRIVATE"),
+//				PackageCode:  pulumi.String("STD"),
+//				Notifications: pulumi.StringArray{
+//					pulumi.String("john@equinix.com"),
+//					pulumi.String("marry@equinix.com"),
+//					pulumi.String("fred@equinix.com"),
+//				},
+//				TermLength:     pulumi.Int(12),
+//				AccountNumber:  pulumi.String(sv.Number),
+//				Version:        pulumi.String("23.395.1"),
+//				InterfaceCount: pulumi.Int(1),
+//				CoreCount:      pulumi.Int(4),
+//				VendorConfiguration: pulumi.StringMap{
+//					"provisioningKey": pulumi.String("XXXXXXXXXX"),
+//					"hostname":        pulumi.String("XXXX"),
+//				},
+//				SshKey: &networkedge.DeviceSshKeyArgs{
+//					Username: pulumi.String("test"),
+//					KeyName:  pulumi.String("test-key"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### example zscaler pse
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			sv, err := networkedge.GetAccount(ctx, &networkedge.GetAccountArgs{
+//				MetroCode: "SV",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networkedge.NewDevice(ctx, "zscaler-pse-single", &networkedge.DeviceArgs{
+//				Name:         pulumi.String("tf-zscaler-pse"),
+//				ProjectId:    pulumi.String("XXXXXX"),
+//				MetroCode:    pulumi.String(sv.MetroCode),
+//				TypeCode:     pulumi.String("ZSCALER-PSE"),
+//				SelfManaged:  pulumi.Bool(true),
+//				Byol:         pulumi.Bool(true),
+//				Connectivity: pulumi.String("PRIVATE"),
+//				PackageCode:  pulumi.String("STD"),
+//				Notifications: pulumi.StringArray{
+//					pulumi.String("john@equinix.com"),
+//					pulumi.String("marry@equinix.com"),
+//					pulumi.String("fred@equinix.com"),
+//				},
+//				TermLength:     pulumi.Int(12),
+//				AccountNumber:  pulumi.String(sv.Number),
+//				Version:        pulumi.String("23.395.1"),
+//				InterfaceCount: pulumi.Int(1),
+//				CoreCount:      pulumi.Int(4),
+//				VendorConfiguration: pulumi.StringMap{
+//					"provisioningKey": pulumi.String("XXXXXXXXXX"),
+//					"hostname":        pulumi.String("XXXX"),
+//				},
+//				SshKey: &networkedge.DeviceSshKeyArgs{
+//					Username: pulumi.String("test"),
+//					KeyName:  pulumi.String("test-key"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -799,11 +1012,13 @@ type Device struct {
 	Throughput pulumi.IntPtrOutput `pulumi:"throughput"`
 	// License throughput unit. One of `Mbps` or `Gbps`.
 	ThroughputUnit pulumi.StringPtrOutput `pulumi:"throughputUnit"`
+	// Select bandwidth tier for your own license, i.e., `0` or `1` or `2` or `3`. Tiers applicable only for C8000V Autonomous or C8000V SDWAN (controller) device types. If not provided, tier is defaulted to '2'.
+	Tier pulumi.IntOutput `pulumi:"tier"`
 	// Device type code.
 	TypeCode pulumi.StringOutput `pulumi:"typeCode"`
 	// Device unique identifier.
 	Uuid pulumi.StringOutput `pulumi:"uuid"`
-	// Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress)
+	// Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress, provisioningKey)
 	// * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
 	VendorConfiguration pulumi.StringMapOutput `pulumi:"vendorConfiguration"`
 	// Device software software version.
@@ -946,11 +1161,13 @@ type deviceState struct {
 	Throughput *int `pulumi:"throughput"`
 	// License throughput unit. One of `Mbps` or `Gbps`.
 	ThroughputUnit *string `pulumi:"throughputUnit"`
+	// Select bandwidth tier for your own license, i.e., `0` or `1` or `2` or `3`. Tiers applicable only for C8000V Autonomous or C8000V SDWAN (controller) device types. If not provided, tier is defaulted to '2'.
+	Tier *int `pulumi:"tier"`
 	// Device type code.
 	TypeCode *string `pulumi:"typeCode"`
 	// Device unique identifier.
 	Uuid *string `pulumi:"uuid"`
-	// Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress)
+	// Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress, provisioningKey)
 	// * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
 	VendorConfiguration map[string]string `pulumi:"vendorConfiguration"`
 	// Device software software version.
@@ -1040,11 +1257,13 @@ type DeviceState struct {
 	Throughput pulumi.IntPtrInput
 	// License throughput unit. One of `Mbps` or `Gbps`.
 	ThroughputUnit pulumi.StringPtrInput
+	// Select bandwidth tier for your own license, i.e., `0` or `1` or `2` or `3`. Tiers applicable only for C8000V Autonomous or C8000V SDWAN (controller) device types. If not provided, tier is defaulted to '2'.
+	Tier pulumi.IntPtrInput
 	// Device type code.
 	TypeCode pulumi.StringPtrInput
 	// Device unique identifier.
 	Uuid pulumi.StringPtrInput
-	// Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress)
+	// Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress, provisioningKey)
 	// * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
 	VendorConfiguration pulumi.StringMapInput
 	// Device software software version.
@@ -1116,9 +1335,11 @@ type deviceArgs struct {
 	Throughput *int `pulumi:"throughput"`
 	// License throughput unit. One of `Mbps` or `Gbps`.
 	ThroughputUnit *string `pulumi:"throughputUnit"`
+	// Select bandwidth tier for your own license, i.e., `0` or `1` or `2` or `3`. Tiers applicable only for C8000V Autonomous or C8000V SDWAN (controller) device types. If not provided, tier is defaulted to '2'.
+	Tier *int `pulumi:"tier"`
 	// Device type code.
 	TypeCode string `pulumi:"typeCode"`
-	// Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress)
+	// Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress, provisioningKey)
 	// * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
 	VendorConfiguration map[string]string `pulumi:"vendorConfiguration"`
 	// Device software software version.
@@ -1185,9 +1406,11 @@ type DeviceArgs struct {
 	Throughput pulumi.IntPtrInput
 	// License throughput unit. One of `Mbps` or `Gbps`.
 	ThroughputUnit pulumi.StringPtrInput
+	// Select bandwidth tier for your own license, i.e., `0` or `1` or `2` or `3`. Tiers applicable only for C8000V Autonomous or C8000V SDWAN (controller) device types. If not provided, tier is defaulted to '2'.
+	Tier pulumi.IntPtrInput
 	// Device type code.
 	TypeCode pulumi.StringInput
-	// Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress)
+	// Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress, provisioningKey)
 	// * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
 	VendorConfiguration pulumi.StringMapInput
 	// Device software software version.
@@ -1478,6 +1701,11 @@ func (o DeviceOutput) ThroughputUnit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringPtrOutput { return v.ThroughputUnit }).(pulumi.StringPtrOutput)
 }
 
+// Select bandwidth tier for your own license, i.e., `0` or `1` or `2` or `3`. Tiers applicable only for C8000V Autonomous or C8000V SDWAN (controller) device types. If not provided, tier is defaulted to '2'.
+func (o DeviceOutput) Tier() pulumi.IntOutput {
+	return o.ApplyT(func(v *Device) pulumi.IntOutput { return v.Tier }).(pulumi.IntOutput)
+}
+
 // Device type code.
 func (o DeviceOutput) TypeCode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.TypeCode }).(pulumi.StringOutput)
@@ -1488,7 +1716,7 @@ func (o DeviceOutput) Uuid() pulumi.StringOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.Uuid }).(pulumi.StringOutput)
 }
 
-// Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress)
+// Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress, provisioningKey)
 // * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
 func (o DeviceOutput) VendorConfiguration() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringMapOutput { return v.VendorConfiguration }).(pulumi.StringMapOutput)
