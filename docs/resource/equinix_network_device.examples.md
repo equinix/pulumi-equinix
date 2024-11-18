@@ -3246,4 +3246,1034 @@ variables:
 ```
 {{% /example %}}
 
+{{% example %}}
+### example c8000v byol with bandwidth throughput
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as equinix from "@equinix-labs/pulumi-equinix";
+import * as equinix from "@pulumi/equinix";
+
+const sv = equinix.networkedge.getAccountOutput({
+    metroCode: "SV",
+});
+const c8000VByolThroughput = new equinix.networkedge.Device("c8000v-byol-throughput", {
+    name: "tf-c8000v-byol",
+    metroCode: sv.apply(sv => sv.metroCode),
+    typeCode: "C8000V",
+    selfManaged: true,
+    byol: true,
+    packageCode: "VM100",
+    notifications: [
+        "john@equinix.com",
+        "marry@equinix.com",
+        "fred@equinix.com",
+    ],
+    termLength: 12,
+    accountNumber: sv.apply(sv => sv.number),
+    version: "17.11.01a",
+    interfaceCount: 10,
+    coreCount: 2,
+    throughput: 100,
+    throughputUnit: equinix.networkedge.ThroughputUnit.Mbps,
+    sshKey: {
+        username: "test",
+        keyName: "test-key",
+    },
+    aclTemplateId: "0bff6e05-f0e7-44cd-804a-25b92b835f8b",
+});
+```
+```python
+import pulumi
+import pulumi_equinix as equinix
+
+sv = equinix.networkedge.get_account_output(metro_code="SV")
+c8000_v_byol_throughput = equinix.networkedge.Device("c8000v-byol-throughput",
+    name="tf-c8000v-byol",
+    metro_code=sv.metro_code,
+    type_code="C8000V",
+    self_managed=True,
+    byol=True,
+    package_code="VM100",
+    notifications=[
+        "john@equinix.com",
+        "marry@equinix.com",
+        "fred@equinix.com",
+    ],
+    term_length=12,
+    account_number=sv.number,
+    version="17.11.01a",
+    interface_count=10,
+    core_count=2,
+    throughput=100,
+    throughput_unit=equinix.networkedge.ThroughputUnit.MBPS,
+    ssh_key={
+        "username": "test",
+        "key_name": "test-key",
+    },
+    acl_template_id="0bff6e05-f0e7-44cd-804a-25b92b835f8b")
+```
+```go
+package main
+
+import (
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+)
+
+func main() {
+	pulumi.Run(func(ctx *pulumi.Context) error {
+		sv, err := networkedge.GetAccount(ctx, &networkedge.GetAccountArgs{
+			MetroCode: "SV",
+		}, nil)
+		if err != nil {
+			return err
+		}
+		_, err = networkedge.NewDevice(ctx, "c8000v-byol-throughput", &networkedge.DeviceArgs{
+			Name:        pulumi.String("tf-c8000v-byol"),
+			MetroCode:   pulumi.String(sv.MetroCode),
+			TypeCode:    pulumi.String("C8000V"),
+			SelfManaged: pulumi.Bool(true),
+			Byol:        pulumi.Bool(true),
+			PackageCode: pulumi.String("VM100"),
+			Notifications: pulumi.StringArray{
+				pulumi.String("john@equinix.com"),
+				pulumi.String("marry@equinix.com"),
+				pulumi.String("fred@equinix.com"),
+			},
+			TermLength:     pulumi.Int(12),
+			AccountNumber:  pulumi.String(sv.Number),
+			Version:        pulumi.String("17.11.01a"),
+			InterfaceCount: pulumi.Int(10),
+			CoreCount:      pulumi.Int(2),
+			Throughput:     pulumi.Int(100),
+			ThroughputUnit: pulumi.String(networkedge.ThroughputUnitMbps),
+			SshKey: &networkedge.DeviceSshKeyArgs{
+				Username: pulumi.String("test"),
+				KeyName:  pulumi.String("test-key"),
+			},
+			AclTemplateId: pulumi.String("0bff6e05-f0e7-44cd-804a-25b92b835f8b"),
+		})
+		if err != nil {
+			return err
+		}
+		return nil
+	})
+}
+```
+```csharp
+using System.Collections.Generic;
+using System.Linq;
+using Pulumi;
+using Equinix = Pulumi.Equinix;
+
+return await Deployment.RunAsync(() => 
+{
+    var sv = Equinix.NetworkEdge.GetAccount.Invoke(new()
+    {
+        MetroCode = "SV",
+    });
+
+    var c8000VByolThroughput = new Equinix.NetworkEdge.Device("c8000v-byol-throughput", new()
+    {
+        Name = "tf-c8000v-byol",
+        MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
+        TypeCode = "C8000V",
+        SelfManaged = true,
+        Byol = true,
+        PackageCode = "VM100",
+        Notifications = new[]
+        {
+            "john@equinix.com",
+            "marry@equinix.com",
+            "fred@equinix.com",
+        },
+        TermLength = 12,
+        AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
+        Version = "17.11.01a",
+        InterfaceCount = 10,
+        CoreCount = 2,
+        Throughput = 100,
+        ThroughputUnit = Equinix.NetworkEdge.ThroughputUnit.Mbps,
+        SshKey = new Equinix.NetworkEdge.Inputs.DeviceSshKeyArgs
+        {
+            Username = "test",
+            KeyName = "test-key",
+        },
+        AclTemplateId = "0bff6e05-f0e7-44cd-804a-25b92b835f8b",
+    });
+
+});
+```
+```java
+package generated_program;
+
+import com.pulumi.Context;
+import com.pulumi.Pulumi;
+import com.pulumi.core.Output;
+import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
+import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
+import com.pulumi.equinix.networkedge.Device;
+import com.pulumi.equinix.networkedge.DeviceArgs;
+import com.pulumi.equinix.networkedge.inputs.DeviceSshKeyArgs;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+public class App {
+    public static void main(String[] args) {
+        Pulumi.run(App::stack);
+    }
+
+    public static void stack(Context ctx) {
+        final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
+            .metroCode("SV")
+            .build());
+
+        var c8000VByolThroughput = new Device("c8000VByolThroughput", DeviceArgs.builder()
+            .name("tf-c8000v-byol")
+            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+            .typeCode("C8000V")
+            .selfManaged(true)
+            .byol(true)
+            .packageCode("VM100")
+            .notifications(            
+                "john@equinix.com",
+                "marry@equinix.com",
+                "fred@equinix.com")
+            .termLength(12)
+            .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
+            .version("17.11.01a")
+            .interfaceCount(10)
+            .coreCount(2)
+            .throughput("100")
+            .throughputUnit("Mbps")
+            .sshKey(DeviceSshKeyArgs.builder()
+                .username("test")
+                .keyName("test-key")
+                .build())
+            .aclTemplateId("0bff6e05-f0e7-44cd-804a-25b92b835f8b")
+            .build());
+
+    }
+}
+```
+```yaml
+resources:
+  c8000v-byol-throughput:
+    type: equinix:networkedge:Device
+    properties:
+      name: tf-c8000v-byol
+      metroCode: ${sv.metroCode}
+      typeCode: C8000V
+      selfManaged: true
+      byol: true
+      packageCode: VM100
+      notifications:
+        - john@equinix.com
+        - marry@equinix.com
+        - fred@equinix.com
+      termLength: 12
+      accountNumber: ${sv.number}
+      version: 17.11.01a
+      interfaceCount: 10
+      coreCount: 2
+      throughput: '100'
+      throughputUnit: Mbps
+      sshKey:
+        username: test
+        keyName: test-key
+      aclTemplateId: 0bff6e05-f0e7-44cd-804a-25b92b835f8b
+variables:
+  # Create C8000V BYOL device with numeric bandwidth throughput information
+  sv:
+    fn::invoke:
+      Function: equinix:networkedge:getAccount
+      Arguments:
+        metroCode: SV
+```
+{{% /example %}}
+
+{{% example %}}
+### example c8000v byol with bandwidth tier
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as equinix from "@equinix-labs/pulumi-equinix";
+import * as equinix from "@pulumi/equinix";
+
+const sv = equinix.networkedge.getAccountOutput({
+    metroCode: "SV",
+});
+const c8000VByolTier = new equinix.networkedge.Device("c8000v-byol-tier", {
+    name: "tf-c8000v-byol",
+    metroCode: sv.apply(sv => sv.metroCode),
+    typeCode: "C8000V",
+    selfManaged: true,
+    byol: true,
+    packageCode: "VM100",
+    notifications: [
+        "john@equinix.com",
+        "marry@equinix.com",
+        "fred@equinix.com",
+    ],
+    termLength: 12,
+    accountNumber: sv.apply(sv => sv.number),
+    version: "17.11.01a",
+    interfaceCount: 10,
+    coreCount: 2,
+    tier: 1,
+    sshKey: {
+        username: "test",
+        keyName: "test-key",
+    },
+    aclTemplateId: "0bff6e05-f0e7-44cd-804a-25b92b835f8b",
+});
+```
+```python
+import pulumi
+import pulumi_equinix as equinix
+
+sv = equinix.networkedge.get_account_output(metro_code="SV")
+c8000_v_byol_tier = equinix.networkedge.Device("c8000v-byol-tier",
+    name="tf-c8000v-byol",
+    metro_code=sv.metro_code,
+    type_code="C8000V",
+    self_managed=True,
+    byol=True,
+    package_code="VM100",
+    notifications=[
+        "john@equinix.com",
+        "marry@equinix.com",
+        "fred@equinix.com",
+    ],
+    term_length=12,
+    account_number=sv.number,
+    version="17.11.01a",
+    interface_count=10,
+    core_count=2,
+    tier=1,
+    ssh_key={
+        "username": "test",
+        "key_name": "test-key",
+    },
+    acl_template_id="0bff6e05-f0e7-44cd-804a-25b92b835f8b")
+```
+```go
+package main
+
+import (
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+)
+
+func main() {
+	pulumi.Run(func(ctx *pulumi.Context) error {
+		sv, err := networkedge.GetAccount(ctx, &networkedge.GetAccountArgs{
+			MetroCode: "SV",
+		}, nil)
+		if err != nil {
+			return err
+		}
+		_, err = networkedge.NewDevice(ctx, "c8000v-byol-tier", &networkedge.DeviceArgs{
+			Name:        pulumi.String("tf-c8000v-byol"),
+			MetroCode:   pulumi.String(sv.MetroCode),
+			TypeCode:    pulumi.String("C8000V"),
+			SelfManaged: pulumi.Bool(true),
+			Byol:        pulumi.Bool(true),
+			PackageCode: pulumi.String("VM100"),
+			Notifications: pulumi.StringArray{
+				pulumi.String("john@equinix.com"),
+				pulumi.String("marry@equinix.com"),
+				pulumi.String("fred@equinix.com"),
+			},
+			TermLength:     pulumi.Int(12),
+			AccountNumber:  pulumi.String(sv.Number),
+			Version:        pulumi.String("17.11.01a"),
+			InterfaceCount: pulumi.Int(10),
+			CoreCount:      pulumi.Int(2),
+			Tier:           pulumi.Int(1),
+			SshKey: &networkedge.DeviceSshKeyArgs{
+				Username: pulumi.String("test"),
+				KeyName:  pulumi.String("test-key"),
+			},
+			AclTemplateId: pulumi.String("0bff6e05-f0e7-44cd-804a-25b92b835f8b"),
+		})
+		if err != nil {
+			return err
+		}
+		return nil
+	})
+}
+```
+```csharp
+using System.Collections.Generic;
+using System.Linq;
+using Pulumi;
+using Equinix = Pulumi.Equinix;
+
+return await Deployment.RunAsync(() => 
+{
+    var sv = Equinix.NetworkEdge.GetAccount.Invoke(new()
+    {
+        MetroCode = "SV",
+    });
+
+    var c8000VByolTier = new Equinix.NetworkEdge.Device("c8000v-byol-tier", new()
+    {
+        Name = "tf-c8000v-byol",
+        MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
+        TypeCode = "C8000V",
+        SelfManaged = true,
+        Byol = true,
+        PackageCode = "VM100",
+        Notifications = new[]
+        {
+            "john@equinix.com",
+            "marry@equinix.com",
+            "fred@equinix.com",
+        },
+        TermLength = 12,
+        AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
+        Version = "17.11.01a",
+        InterfaceCount = 10,
+        CoreCount = 2,
+        Tier = 1,
+        SshKey = new Equinix.NetworkEdge.Inputs.DeviceSshKeyArgs
+        {
+            Username = "test",
+            KeyName = "test-key",
+        },
+        AclTemplateId = "0bff6e05-f0e7-44cd-804a-25b92b835f8b",
+    });
+
+});
+```
+```java
+package generated_program;
+
+import com.pulumi.Context;
+import com.pulumi.Pulumi;
+import com.pulumi.core.Output;
+import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
+import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
+import com.pulumi.equinix.networkedge.Device;
+import com.pulumi.equinix.networkedge.DeviceArgs;
+import com.pulumi.equinix.networkedge.inputs.DeviceSshKeyArgs;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+public class App {
+    public static void main(String[] args) {
+        Pulumi.run(App::stack);
+    }
+
+    public static void stack(Context ctx) {
+        final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
+            .metroCode("SV")
+            .build());
+
+        var c8000VByolTier = new Device("c8000VByolTier", DeviceArgs.builder()
+            .name("tf-c8000v-byol")
+            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+            .typeCode("C8000V")
+            .selfManaged(true)
+            .byol(true)
+            .packageCode("VM100")
+            .notifications(            
+                "john@equinix.com",
+                "marry@equinix.com",
+                "fred@equinix.com")
+            .termLength(12)
+            .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
+            .version("17.11.01a")
+            .interfaceCount(10)
+            .coreCount(2)
+            .tier(1)
+            .sshKey(DeviceSshKeyArgs.builder()
+                .username("test")
+                .keyName("test-key")
+                .build())
+            .aclTemplateId("0bff6e05-f0e7-44cd-804a-25b92b835f8b")
+            .build());
+
+    }
+}
+```
+```yaml
+resources:
+  c8000v-byol-tier:
+    type: equinix:networkedge:Device
+    properties:
+      name: tf-c8000v-byol
+      metroCode: ${sv.metroCode}
+      typeCode: C8000V
+      selfManaged: true
+      byol: true
+      packageCode: VM100
+      notifications:
+        - john@equinix.com
+        - marry@equinix.com
+        - fred@equinix.com
+      termLength: 12
+      accountNumber: ${sv.number}
+      version: 17.11.01a
+      interfaceCount: 10
+      coreCount: 2
+      tier: 1
+      sshKey:
+        username: test
+        keyName: test-key
+      aclTemplateId: 0bff6e05-f0e7-44cd-804a-25b92b835f8b
+variables:
+  # Create C8000V BYOL device with bandwidth tier information
+  sv:
+    fn::invoke:
+      Function: equinix:networkedge:getAccount
+      Arguments:
+        metroCode: SV
+```
+{{% /example %}}
+
+{{% example %}}
+### example zscaler appc
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as equinix from "@equinix-labs/pulumi-equinix";
+import * as equinix from "@pulumi/equinix";
+
+const sv = equinix.networkedge.getAccountOutput({
+    metroCode: "SV",
+});
+const zscalerAppcSingle = new equinix.networkedge.Device("zscaler-appc-single", {
+    name: "tf-zscaler-appc",
+    projectId: "XXXXXX",
+    metroCode: sv.apply(sv => sv.metroCode),
+    typeCode: "ZSCALER-APPC",
+    selfManaged: true,
+    byol: true,
+    connectivity: "PRIVATE",
+    packageCode: "STD",
+    notifications: [
+        "john@equinix.com",
+        "marry@equinix.com",
+        "fred@equinix.com",
+    ],
+    termLength: 12,
+    accountNumber: sv.apply(sv => sv.number),
+    version: "23.395.1",
+    interfaceCount: 1,
+    coreCount: 4,
+    vendorConfiguration: {
+        provisioningKey: "XXXXXXXXXX",
+        hostname: "XXXX",
+    },
+    sshKey: {
+        username: "test",
+        keyName: "test-key",
+    },
+});
+```
+```python
+import pulumi
+import pulumi_equinix as equinix
+
+sv = equinix.networkedge.get_account_output(metro_code="SV")
+zscaler_appc_single = equinix.networkedge.Device("zscaler-appc-single",
+    name="tf-zscaler-appc",
+    project_id="XXXXXX",
+    metro_code=sv.metro_code,
+    type_code="ZSCALER-APPC",
+    self_managed=True,
+    byol=True,
+    connectivity="PRIVATE",
+    package_code="STD",
+    notifications=[
+        "john@equinix.com",
+        "marry@equinix.com",
+        "fred@equinix.com",
+    ],
+    term_length=12,
+    account_number=sv.number,
+    version="23.395.1",
+    interface_count=1,
+    core_count=4,
+    vendor_configuration={
+        "provisioningKey": "XXXXXXXXXX",
+        "hostname": "XXXX",
+    },
+    ssh_key={
+        "username": "test",
+        "key_name": "test-key",
+    })
+```
+```go
+package main
+
+import (
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+)
+
+func main() {
+	pulumi.Run(func(ctx *pulumi.Context) error {
+		sv, err := networkedge.GetAccount(ctx, &networkedge.GetAccountArgs{
+			MetroCode: "SV",
+		}, nil)
+		if err != nil {
+			return err
+		}
+		_, err = networkedge.NewDevice(ctx, "zscaler-appc-single", &networkedge.DeviceArgs{
+			Name:         pulumi.String("tf-zscaler-appc"),
+			ProjectId:    pulumi.String("XXXXXX"),
+			MetroCode:    pulumi.String(sv.MetroCode),
+			TypeCode:     pulumi.String("ZSCALER-APPC"),
+			SelfManaged:  pulumi.Bool(true),
+			Byol:         pulumi.Bool(true),
+			Connectivity: pulumi.String("PRIVATE"),
+			PackageCode:  pulumi.String("STD"),
+			Notifications: pulumi.StringArray{
+				pulumi.String("john@equinix.com"),
+				pulumi.String("marry@equinix.com"),
+				pulumi.String("fred@equinix.com"),
+			},
+			TermLength:     pulumi.Int(12),
+			AccountNumber:  pulumi.String(sv.Number),
+			Version:        pulumi.String("23.395.1"),
+			InterfaceCount: pulumi.Int(1),
+			CoreCount:      pulumi.Int(4),
+			VendorConfiguration: pulumi.StringMap{
+				"provisioningKey": pulumi.String("XXXXXXXXXX"),
+				"hostname":        pulumi.String("XXXX"),
+			},
+			SshKey: &networkedge.DeviceSshKeyArgs{
+				Username: pulumi.String("test"),
+				KeyName:  pulumi.String("test-key"),
+			},
+		})
+		if err != nil {
+			return err
+		}
+		return nil
+	})
+}
+```
+```csharp
+using System.Collections.Generic;
+using System.Linq;
+using Pulumi;
+using Equinix = Pulumi.Equinix;
+
+return await Deployment.RunAsync(() => 
+{
+    var sv = Equinix.NetworkEdge.GetAccount.Invoke(new()
+    {
+        MetroCode = "SV",
+    });
+
+    var zscalerAppcSingle = new Equinix.NetworkEdge.Device("zscaler-appc-single", new()
+    {
+        Name = "tf-zscaler-appc",
+        ProjectId = "XXXXXX",
+        MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
+        TypeCode = "ZSCALER-APPC",
+        SelfManaged = true,
+        Byol = true,
+        Connectivity = "PRIVATE",
+        PackageCode = "STD",
+        Notifications = new[]
+        {
+            "john@equinix.com",
+            "marry@equinix.com",
+            "fred@equinix.com",
+        },
+        TermLength = 12,
+        AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
+        Version = "23.395.1",
+        InterfaceCount = 1,
+        CoreCount = 4,
+        VendorConfiguration = 
+        {
+            { "provisioningKey", "XXXXXXXXXX" },
+            { "hostname", "XXXX" },
+        },
+        SshKey = new Equinix.NetworkEdge.Inputs.DeviceSshKeyArgs
+        {
+            Username = "test",
+            KeyName = "test-key",
+        },
+    });
+
+});
+```
+```java
+package generated_program;
+
+import com.pulumi.Context;
+import com.pulumi.Pulumi;
+import com.pulumi.core.Output;
+import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
+import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
+import com.pulumi.equinix.networkedge.Device;
+import com.pulumi.equinix.networkedge.DeviceArgs;
+import com.pulumi.equinix.networkedge.inputs.DeviceSshKeyArgs;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+public class App {
+    public static void main(String[] args) {
+        Pulumi.run(App::stack);
+    }
+
+    public static void stack(Context ctx) {
+        final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
+            .metroCode("SV")
+            .build());
+
+        var zscalerAppcSingle = new Device("zscalerAppcSingle", DeviceArgs.builder()
+            .name("tf-zscaler-appc")
+            .projectId("XXXXXX")
+            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+            .typeCode("ZSCALER-APPC")
+            .selfManaged(true)
+            .byol(true)
+            .connectivity("PRIVATE")
+            .packageCode("STD")
+            .notifications(            
+                "john@equinix.com",
+                "marry@equinix.com",
+                "fred@equinix.com")
+            .termLength(12)
+            .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
+            .version("23.395.1")
+            .interfaceCount(1)
+            .coreCount(4)
+            .vendorConfiguration(Map.ofEntries(
+                Map.entry("provisioningKey", "XXXXXXXXXX"),
+                Map.entry("hostname", "XXXX")
+            ))
+            .sshKey(DeviceSshKeyArgs.builder()
+                .username("test")
+                .keyName("test-key")
+                .build())
+            .build());
+
+    }
+}
+```
+```yaml
+resources:
+  zscaler-appc-single:
+    type: equinix:networkedge:Device
+    properties:
+      name: tf-zscaler-appc
+      projectId: XXXXXX
+      metroCode: ${sv.metroCode}
+      typeCode: ZSCALER-APPC
+      selfManaged: true
+      byol: true
+      connectivity: PRIVATE
+      packageCode: STD
+      notifications:
+        - john@equinix.com
+        - marry@equinix.com
+        - fred@equinix.com
+      termLength: 12
+      accountNumber: ${sv.number}
+      version: 23.395.1
+      interfaceCount: 1
+      coreCount: 4
+      vendorConfiguration:
+        provisioningKey: XXXXXXXXXX
+        hostname: XXXX
+      sshKey:
+        username: test
+        keyName: test-key
+variables:
+  # Create ZSCALER APPC device
+  sv:
+    fn::invoke:
+      Function: equinix:networkedge:getAccount
+      Arguments:
+        metroCode: SV
+```
+{{% /example %}}
+
+{{% example %}}
+### example zscaler pse
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as equinix from "@equinix-labs/pulumi-equinix";
+import * as equinix from "@pulumi/equinix";
+
+const sv = equinix.networkedge.getAccountOutput({
+    metroCode: "SV",
+});
+const zscalerPseSingle = new equinix.networkedge.Device("zscaler-pse-single", {
+    name: "tf-zscaler-pse",
+    projectId: "XXXXXX",
+    metroCode: sv.apply(sv => sv.metroCode),
+    typeCode: "ZSCALER-PSE",
+    selfManaged: true,
+    byol: true,
+    connectivity: "PRIVATE",
+    packageCode: "STD",
+    notifications: [
+        "john@equinix.com",
+        "marry@equinix.com",
+        "fred@equinix.com",
+    ],
+    termLength: 12,
+    accountNumber: sv.apply(sv => sv.number),
+    version: "23.395.1",
+    interfaceCount: 1,
+    coreCount: 4,
+    vendorConfiguration: {
+        provisioningKey: "XXXXXXXXXX",
+        hostname: "XXXX",
+    },
+    sshKey: {
+        username: "test",
+        keyName: "test-key",
+    },
+});
+```
+```python
+import pulumi
+import pulumi_equinix as equinix
+
+sv = equinix.networkedge.get_account_output(metro_code="SV")
+zscaler_pse_single = equinix.networkedge.Device("zscaler-pse-single",
+    name="tf-zscaler-pse",
+    project_id="XXXXXX",
+    metro_code=sv.metro_code,
+    type_code="ZSCALER-PSE",
+    self_managed=True,
+    byol=True,
+    connectivity="PRIVATE",
+    package_code="STD",
+    notifications=[
+        "john@equinix.com",
+        "marry@equinix.com",
+        "fred@equinix.com",
+    ],
+    term_length=12,
+    account_number=sv.number,
+    version="23.395.1",
+    interface_count=1,
+    core_count=4,
+    vendor_configuration={
+        "provisioningKey": "XXXXXXXXXX",
+        "hostname": "XXXX",
+    },
+    ssh_key={
+        "username": "test",
+        "key_name": "test-key",
+    })
+```
+```go
+package main
+
+import (
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+)
+
+func main() {
+	pulumi.Run(func(ctx *pulumi.Context) error {
+		sv, err := networkedge.GetAccount(ctx, &networkedge.GetAccountArgs{
+			MetroCode: "SV",
+		}, nil)
+		if err != nil {
+			return err
+		}
+		_, err = networkedge.NewDevice(ctx, "zscaler-pse-single", &networkedge.DeviceArgs{
+			Name:         pulumi.String("tf-zscaler-pse"),
+			ProjectId:    pulumi.String("XXXXXX"),
+			MetroCode:    pulumi.String(sv.MetroCode),
+			TypeCode:     pulumi.String("ZSCALER-PSE"),
+			SelfManaged:  pulumi.Bool(true),
+			Byol:         pulumi.Bool(true),
+			Connectivity: pulumi.String("PRIVATE"),
+			PackageCode:  pulumi.String("STD"),
+			Notifications: pulumi.StringArray{
+				pulumi.String("john@equinix.com"),
+				pulumi.String("marry@equinix.com"),
+				pulumi.String("fred@equinix.com"),
+			},
+			TermLength:     pulumi.Int(12),
+			AccountNumber:  pulumi.String(sv.Number),
+			Version:        pulumi.String("23.395.1"),
+			InterfaceCount: pulumi.Int(1),
+			CoreCount:      pulumi.Int(4),
+			VendorConfiguration: pulumi.StringMap{
+				"provisioningKey": pulumi.String("XXXXXXXXXX"),
+				"hostname":        pulumi.String("XXXX"),
+			},
+			SshKey: &networkedge.DeviceSshKeyArgs{
+				Username: pulumi.String("test"),
+				KeyName:  pulumi.String("test-key"),
+			},
+		})
+		if err != nil {
+			return err
+		}
+		return nil
+	})
+}
+```
+```csharp
+using System.Collections.Generic;
+using System.Linq;
+using Pulumi;
+using Equinix = Pulumi.Equinix;
+
+return await Deployment.RunAsync(() => 
+{
+    var sv = Equinix.NetworkEdge.GetAccount.Invoke(new()
+    {
+        MetroCode = "SV",
+    });
+
+    var zscalerPseSingle = new Equinix.NetworkEdge.Device("zscaler-pse-single", new()
+    {
+        Name = "tf-zscaler-pse",
+        ProjectId = "XXXXXX",
+        MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
+        TypeCode = "ZSCALER-PSE",
+        SelfManaged = true,
+        Byol = true,
+        Connectivity = "PRIVATE",
+        PackageCode = "STD",
+        Notifications = new[]
+        {
+            "john@equinix.com",
+            "marry@equinix.com",
+            "fred@equinix.com",
+        },
+        TermLength = 12,
+        AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
+        Version = "23.395.1",
+        InterfaceCount = 1,
+        CoreCount = 4,
+        VendorConfiguration = 
+        {
+            { "provisioningKey", "XXXXXXXXXX" },
+            { "hostname", "XXXX" },
+        },
+        SshKey = new Equinix.NetworkEdge.Inputs.DeviceSshKeyArgs
+        {
+            Username = "test",
+            KeyName = "test-key",
+        },
+    });
+
+});
+```
+```java
+package generated_program;
+
+import com.pulumi.Context;
+import com.pulumi.Pulumi;
+import com.pulumi.core.Output;
+import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
+import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
+import com.pulumi.equinix.networkedge.Device;
+import com.pulumi.equinix.networkedge.DeviceArgs;
+import com.pulumi.equinix.networkedge.inputs.DeviceSshKeyArgs;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+public class App {
+    public static void main(String[] args) {
+        Pulumi.run(App::stack);
+    }
+
+    public static void stack(Context ctx) {
+        final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
+            .metroCode("SV")
+            .build());
+
+        var zscalerPseSingle = new Device("zscalerPseSingle", DeviceArgs.builder()
+            .name("tf-zscaler-pse")
+            .projectId("XXXXXX")
+            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+            .typeCode("ZSCALER-PSE")
+            .selfManaged(true)
+            .byol(true)
+            .connectivity("PRIVATE")
+            .packageCode("STD")
+            .notifications(            
+                "john@equinix.com",
+                "marry@equinix.com",
+                "fred@equinix.com")
+            .termLength(12)
+            .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
+            .version("23.395.1")
+            .interfaceCount(1)
+            .coreCount(4)
+            .vendorConfiguration(Map.ofEntries(
+                Map.entry("provisioningKey", "XXXXXXXXXX"),
+                Map.entry("hostname", "XXXX")
+            ))
+            .sshKey(DeviceSshKeyArgs.builder()
+                .username("test")
+                .keyName("test-key")
+                .build())
+            .build());
+
+    }
+}
+```
+```yaml
+resources:
+  zscaler-pse-single:
+    type: equinix:networkedge:Device
+    properties:
+      name: tf-zscaler-pse
+      projectId: XXXXXX
+      metroCode: ${sv.metroCode}
+      typeCode: ZSCALER-PSE
+      selfManaged: true
+      byol: true
+      connectivity: PRIVATE
+      packageCode: STD
+      notifications:
+        - john@equinix.com
+        - marry@equinix.com
+        - fred@equinix.com
+      termLength: 12
+      accountNumber: ${sv.number}
+      version: 23.395.1
+      interfaceCount: 1
+      coreCount: 4
+      vendorConfiguration:
+        provisioningKey: XXXXXXXXXX
+        hostname: XXXX
+      sshKey:
+        username: test
+        keyName: test-key
+variables:
+  # Create ZSCALER APPC device
+  sv:
+    fn::invoke:
+      Function: equinix:networkedge:getAccount
+      Arguments:
+        metroCode: SV
+```
+{{% /example %}}
+
 

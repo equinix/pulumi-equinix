@@ -149,7 +149,9 @@ type LookupDeviceResult struct {
 	TermLength     int    `pulumi:"termLength"`
 	Throughput     int    `pulumi:"throughput"`
 	ThroughputUnit string `pulumi:"throughputUnit"`
-	TypeCode       string `pulumi:"typeCode"`
+	// Throughput Tier (applicable for C8000V, C8000V-SDWAN devices)
+	Tier     int    `pulumi:"tier"`
+	TypeCode string `pulumi:"typeCode"`
 	// Device unique identifier
 	Uuid string `pulumi:"uuid"`
 	// Comma separated list of device states (from see `status` for full list) to be considered valid. Default is 'PROVISIONED'. Case insensitive.
@@ -407,6 +409,11 @@ func (o LookupDeviceResultOutput) Throughput() pulumi.IntOutput {
 
 func (o LookupDeviceResultOutput) ThroughputUnit() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeviceResult) string { return v.ThroughputUnit }).(pulumi.StringOutput)
+}
+
+// Throughput Tier (applicable for C8000V, C8000V-SDWAN devices)
+func (o LookupDeviceResultOutput) Tier() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDeviceResult) int { return v.Tier }).(pulumi.IntOutput)
 }
 
 func (o LookupDeviceResultOutput) TypeCode() pulumi.StringOutput {
