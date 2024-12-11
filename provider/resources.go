@@ -149,6 +149,9 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		Resources: map[string]*tfbridge.ResourceInfo{
 			// Equinix Fabric v4
+			"equinix_fabric_service_token": {
+				Tok: makeEquinixResource(fabricMod, "ServiceToken"),
+			},
 			"equinix_fabric_connection_route_filter": {
 				Tok: makeEquinixResource(fabricMod, "ConnectionRouteFilter"),
 			},
@@ -1166,6 +1169,12 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			// Equinix Fabric v4
+			"equinix_fabric_service_token": {
+				Tok: makeEquinixDataSource(fabricMod, "ServiceToken"),
+			},
+			"equinix_fabric_service_tokens": {
+				Tok: makeEquinixDataSource(fabricMod, "ServiceTokens"),
+			},
 			"equinix_fabric_connection_route_filter": {
 				Tok: makeEquinixDataSource(fabricMod, "ConnectionRouteFilter"),
 			},
