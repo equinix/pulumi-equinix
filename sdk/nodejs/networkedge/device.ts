@@ -455,6 +455,181 @@ import * as utilities from "../utilities";
  *     aclTemplateId: "c06150ea-b604-4ad1-832a-d63936e9b938",
  * });
  * ```
+ * ### example c8000v byol without default password
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const sv = equinix.networkedge.getAccountOutput({
+ *     metroCode: "SV",
+ * });
+ * const c8000VByolWithtoutDefaultPassword = new equinix.networkedge.Device("c8000v-byol-withtout-default-password", {
+ *     name: "tf-c8000v-byol",
+ *     metroCode: sv.apply(sv => sv.metroCode),
+ *     typeCode: "C8000V",
+ *     selfManaged: true,
+ *     byol: true,
+ *     generateDefaultPassword: false,
+ *     packageCode: "VM100",
+ *     notifications: [
+ *         "john@equinix.com",
+ *         "marry@equinix.com",
+ *         "fred@equinix.com",
+ *     ],
+ *     termLength: 12,
+ *     accountNumber: sv.apply(sv => sv.number),
+ *     version: "17.11.01a",
+ *     interfaceCount: 10,
+ *     coreCount: 2,
+ *     tier: 1,
+ *     sshKey: {
+ *         username: "test",
+ *         keyName: "test-key",
+ *     },
+ *     aclTemplateId: "0bff6e05-f0e7-44cd-804a-25b92b835f8b",
+ * });
+ * ```
+ * ### example c8000v byol with bandwidth throughput
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const sv = equinix.networkedge.getAccountOutput({
+ *     metroCode: "SV",
+ * });
+ * const c8000VByolThroughput = new equinix.networkedge.Device("c8000v-byol-throughput", {
+ *     name: "tf-c8000v-byol",
+ *     metroCode: sv.apply(sv => sv.metroCode),
+ *     typeCode: "C8000V",
+ *     selfManaged: true,
+ *     byol: true,
+ *     packageCode: "VM100",
+ *     notifications: [
+ *         "john@equinix.com",
+ *         "marry@equinix.com",
+ *         "fred@equinix.com",
+ *     ],
+ *     termLength: 12,
+ *     accountNumber: sv.apply(sv => sv.number),
+ *     version: "17.11.01a",
+ *     interfaceCount: 10,
+ *     coreCount: 2,
+ *     throughput: 100,
+ *     throughputUnit: equinix.networkedge.ThroughputUnit.Mbps,
+ *     sshKey: {
+ *         username: "test",
+ *         keyName: "test-key",
+ *     },
+ *     aclTemplateId: "0bff6e05-f0e7-44cd-804a-25b92b835f8b",
+ * });
+ * ```
+ * ### example c8000v byol with bandwidth tier
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const sv = equinix.networkedge.getAccountOutput({
+ *     metroCode: "SV",
+ * });
+ * const c8000VByolTier = new equinix.networkedge.Device("c8000v-byol-tier", {
+ *     name: "tf-c8000v-byol",
+ *     metroCode: sv.apply(sv => sv.metroCode),
+ *     typeCode: "C8000V",
+ *     selfManaged: true,
+ *     byol: true,
+ *     packageCode: "VM100",
+ *     notifications: [
+ *         "john@equinix.com",
+ *         "marry@equinix.com",
+ *         "fred@equinix.com",
+ *     ],
+ *     termLength: 12,
+ *     accountNumber: sv.apply(sv => sv.number),
+ *     version: "17.11.01a",
+ *     interfaceCount: 10,
+ *     coreCount: 2,
+ *     tier: 1,
+ *     sshKey: {
+ *         username: "test",
+ *         keyName: "test-key",
+ *     },
+ *     aclTemplateId: "0bff6e05-f0e7-44cd-804a-25b92b835f8b",
+ * });
+ * ```
+ * ### example zscaler appc
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const sv = equinix.networkedge.getAccountOutput({
+ *     metroCode: "SV",
+ * });
+ * const zscalerAppcSingle = new equinix.networkedge.Device("zscaler-appc-single", {
+ *     name: "tf-zscaler-appc",
+ *     projectId: "XXXXXX",
+ *     metroCode: sv.apply(sv => sv.metroCode),
+ *     typeCode: "ZSCALER-APPC",
+ *     selfManaged: true,
+ *     byol: true,
+ *     connectivity: "PRIVATE",
+ *     packageCode: "STD",
+ *     notifications: [
+ *         "john@equinix.com",
+ *         "marry@equinix.com",
+ *         "fred@equinix.com",
+ *     ],
+ *     termLength: 12,
+ *     accountNumber: sv.apply(sv => sv.number),
+ *     version: "23.395.1",
+ *     interfaceCount: 1,
+ *     coreCount: 4,
+ *     vendorConfiguration: {
+ *         provisioningKey: "XXXXXXXXXX",
+ *         hostname: "XXXX",
+ *     },
+ *     sshKey: {
+ *         username: "test",
+ *         keyName: "test-key",
+ *     },
+ * });
+ * ```
+ * ### example zscaler pse
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const sv = equinix.networkedge.getAccountOutput({
+ *     metroCode: "SV",
+ * });
+ * const zscalerPseSingle = new equinix.networkedge.Device("zscaler-pse-single", {
+ *     name: "tf-zscaler-pse",
+ *     projectId: "XXXXXX",
+ *     metroCode: sv.apply(sv => sv.metroCode),
+ *     typeCode: "ZSCALER-PSE",
+ *     selfManaged: true,
+ *     byol: true,
+ *     connectivity: "PRIVATE",
+ *     packageCode: "STD",
+ *     notifications: [
+ *         "john@equinix.com",
+ *         "marry@equinix.com",
+ *         "fred@equinix.com",
+ *     ],
+ *     termLength: 12,
+ *     accountNumber: sv.apply(sv => sv.number),
+ *     version: "23.395.1",
+ *     interfaceCount: 1,
+ *     coreCount: 4,
+ *     vendorConfiguration: {
+ *         provisioningKey: "XXXXXXXXXX",
+ *         hostname: "XXXX",
+ *     },
+ *     sshKey: {
+ *         username: "test",
+ *         keyName: "test-key",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -538,6 +713,11 @@ export class Device extends pulumi.CustomResource {
      * Name of the device with diverse device UUID. This field is returned in device details if the device is created by passing diverse_device_id.
      */
     public /*out*/ readonly diverseDeviceName!: pulumi.Output<string>;
+    /**
+     * Boolean value that determines to create device with or without default password. Use this field to let Equinix know if you want your new device to be create with default admin password.
+     * This field is only meaningful for C8000V Autonomous(single/ha) and Fortinet Firewall devices(single/ha/cluster). If not specified, by default device is created with admin password.
+     */
+    public readonly generateDefaultPassword!: pulumi.Output<boolean | undefined>;
     /**
      * Device hostname prefix.
      */
@@ -651,6 +831,10 @@ export class Device extends pulumi.CustomResource {
      */
     public readonly throughputUnit!: pulumi.Output<string | undefined>;
     /**
+     * Select bandwidth tier for your own license, i.e., `0` or `1` or `2` or `3`. Tiers applicable only for C8000V Autonomous or C8000V SDWAN (controller) device types. If not provided, tier is defaulted to '2'.
+     */
+    public readonly tier!: pulumi.Output<number>;
+    /**
      * Device type code.
      */
     public readonly typeCode!: pulumi.Output<string>;
@@ -659,7 +843,7 @@ export class Device extends pulumi.CustomResource {
      */
     public /*out*/ readonly uuid!: pulumi.Output<string>;
     /**
-     * Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress)
+     * Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress, provisioningKey)
      * * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
      */
     public readonly vendorConfiguration!: pulumi.Output<{[key: string]: string}>;
@@ -700,6 +884,7 @@ export class Device extends pulumi.CustomResource {
             resourceInputs["coreCount"] = state ? state.coreCount : undefined;
             resourceInputs["diverseDeviceId"] = state ? state.diverseDeviceId : undefined;
             resourceInputs["diverseDeviceName"] = state ? state.diverseDeviceName : undefined;
+            resourceInputs["generateDefaultPassword"] = state ? state.generateDefaultPassword : undefined;
             resourceInputs["hostname"] = state ? state.hostname : undefined;
             resourceInputs["ibx"] = state ? state.ibx : undefined;
             resourceInputs["interfaceCount"] = state ? state.interfaceCount : undefined;
@@ -728,6 +913,7 @@ export class Device extends pulumi.CustomResource {
             resourceInputs["termLength"] = state ? state.termLength : undefined;
             resourceInputs["throughput"] = state ? state.throughput : undefined;
             resourceInputs["throughputUnit"] = state ? state.throughputUnit : undefined;
+            resourceInputs["tier"] = state ? state.tier : undefined;
             resourceInputs["typeCode"] = state ? state.typeCode : undefined;
             resourceInputs["uuid"] = state ? state.uuid : undefined;
             resourceInputs["vendorConfiguration"] = state ? state.vendorConfiguration : undefined;
@@ -769,6 +955,7 @@ export class Device extends pulumi.CustomResource {
             resourceInputs["connectivity"] = args ? args.connectivity : undefined;
             resourceInputs["coreCount"] = args ? args.coreCount : undefined;
             resourceInputs["diverseDeviceId"] = args ? args.diverseDeviceId : undefined;
+            resourceInputs["generateDefaultPassword"] = args ? args.generateDefaultPassword : undefined;
             resourceInputs["hostname"] = args ? args.hostname : undefined;
             resourceInputs["interfaceCount"] = args ? args.interfaceCount : undefined;
             resourceInputs["licenseFile"] = args ? args.licenseFile : undefined;
@@ -788,6 +975,7 @@ export class Device extends pulumi.CustomResource {
             resourceInputs["termLength"] = args ? args.termLength : undefined;
             resourceInputs["throughput"] = args ? args.throughput : undefined;
             resourceInputs["throughputUnit"] = args ? args.throughputUnit : undefined;
+            resourceInputs["tier"] = args ? args.tier : undefined;
             resourceInputs["typeCode"] = args ? args.typeCode : undefined;
             resourceInputs["vendorConfiguration"] = args ? args.vendorConfiguration : undefined;
             resourceInputs["version"] = args ? args.version : undefined;
@@ -859,6 +1047,11 @@ export interface DeviceState {
      * Name of the device with diverse device UUID. This field is returned in device details if the device is created by passing diverse_device_id.
      */
     diverseDeviceName?: pulumi.Input<string>;
+    /**
+     * Boolean value that determines to create device with or without default password. Use this field to let Equinix know if you want your new device to be create with default admin password.
+     * This field is only meaningful for C8000V Autonomous(single/ha) and Fortinet Firewall devices(single/ha/cluster). If not specified, by default device is created with admin password.
+     */
+    generateDefaultPassword?: pulumi.Input<boolean>;
     /**
      * Device hostname prefix.
      */
@@ -972,6 +1165,10 @@ export interface DeviceState {
      */
     throughputUnit?: pulumi.Input<string | enums.networkedge.ThroughputUnit>;
     /**
+     * Select bandwidth tier for your own license, i.e., `0` or `1` or `2` or `3`. Tiers applicable only for C8000V Autonomous or C8000V SDWAN (controller) device types. If not provided, tier is defaulted to '2'.
+     */
+    tier?: pulumi.Input<number>;
+    /**
      * Device type code.
      */
     typeCode?: pulumi.Input<string>;
@@ -980,7 +1177,7 @@ export interface DeviceState {
      */
     uuid?: pulumi.Input<string>;
     /**
-     * Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress)
+     * Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress, provisioningKey)
      * * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
      */
     vendorConfiguration?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -1038,6 +1235,11 @@ export interface DeviceArgs {
      * Unique ID of an existing device. Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual device. This field is only meaningful for single devices.
      */
     diverseDeviceId?: pulumi.Input<string>;
+    /**
+     * Boolean value that determines to create device with or without default password. Use this field to let Equinix know if you want your new device to be create with default admin password.
+     * This field is only meaningful for C8000V Autonomous(single/ha) and Fortinet Firewall devices(single/ha/cluster). If not specified, by default device is created with admin password.
+     */
+    generateDefaultPassword?: pulumi.Input<boolean>;
     /**
      * Device hostname prefix.
      */
@@ -1115,11 +1317,15 @@ export interface DeviceArgs {
      */
     throughputUnit?: pulumi.Input<string | enums.networkedge.ThroughputUnit>;
     /**
+     * Select bandwidth tier for your own license, i.e., `0` or `1` or `2` or `3`. Tiers applicable only for C8000V Autonomous or C8000V SDWAN (controller) device types. If not provided, tier is defaulted to '2'.
+     */
+    tier?: pulumi.Input<number>;
+    /**
      * Device type code.
      */
     typeCode: pulumi.Input<string>;
     /**
-     * Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress)
+     * Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress, provisioningKey)
      * * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
      */
     vendorConfiguration?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;

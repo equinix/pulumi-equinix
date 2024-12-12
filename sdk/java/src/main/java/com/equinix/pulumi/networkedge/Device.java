@@ -750,6 +750,306 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * ### example c8000v byol without default password
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
+ * import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
+ * import com.pulumi.equinix.networkedge.Device;
+ * import com.pulumi.equinix.networkedge.DeviceArgs;
+ * import com.pulumi.equinix.networkedge.inputs.DeviceSshKeyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
+ *             .metroCode("SV")
+ *             .build());
+ * 
+ *         var c8000VByolWithtoutDefaultPassword = new Device("c8000VByolWithtoutDefaultPassword", DeviceArgs.builder()
+ *             .name("tf-c8000v-byol")
+ *             .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+ *             .typeCode("C8000V")
+ *             .selfManaged(true)
+ *             .byol(true)
+ *             .generateDefaultPassword(false)
+ *             .packageCode("VM100")
+ *             .notifications(            
+ *                 "john}{@literal @}{@code equinix.com",
+ *                 "marry}{@literal @}{@code equinix.com",
+ *                 "fred}{@literal @}{@code equinix.com")
+ *             .termLength(12)
+ *             .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
+ *             .version("17.11.01a")
+ *             .interfaceCount(10)
+ *             .coreCount(2)
+ *             .tier(1)
+ *             .sshKey(DeviceSshKeyArgs.builder()
+ *                 .username("test")
+ *                 .keyName("test-key")
+ *                 .build())
+ *             .aclTemplateId("0bff6e05-f0e7-44cd-804a-25b92b835f8b")
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * ### example c8000v byol with bandwidth throughput
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
+ * import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
+ * import com.pulumi.equinix.networkedge.Device;
+ * import com.pulumi.equinix.networkedge.DeviceArgs;
+ * import com.pulumi.equinix.networkedge.inputs.DeviceSshKeyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
+ *             .metroCode("SV")
+ *             .build());
+ * 
+ *         var c8000VByolThroughput = new Device("c8000VByolThroughput", DeviceArgs.builder()
+ *             .name("tf-c8000v-byol")
+ *             .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+ *             .typeCode("C8000V")
+ *             .selfManaged(true)
+ *             .byol(true)
+ *             .packageCode("VM100")
+ *             .notifications(            
+ *                 "john}{@literal @}{@code equinix.com",
+ *                 "marry}{@literal @}{@code equinix.com",
+ *                 "fred}{@literal @}{@code equinix.com")
+ *             .termLength(12)
+ *             .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
+ *             .version("17.11.01a")
+ *             .interfaceCount(10)
+ *             .coreCount(2)
+ *             .throughput("100")
+ *             .throughputUnit("Mbps")
+ *             .sshKey(DeviceSshKeyArgs.builder()
+ *                 .username("test")
+ *                 .keyName("test-key")
+ *                 .build())
+ *             .aclTemplateId("0bff6e05-f0e7-44cd-804a-25b92b835f8b")
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * ### example c8000v byol with bandwidth tier
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
+ * import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
+ * import com.pulumi.equinix.networkedge.Device;
+ * import com.pulumi.equinix.networkedge.DeviceArgs;
+ * import com.pulumi.equinix.networkedge.inputs.DeviceSshKeyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
+ *             .metroCode("SV")
+ *             .build());
+ * 
+ *         var c8000VByolTier = new Device("c8000VByolTier", DeviceArgs.builder()
+ *             .name("tf-c8000v-byol")
+ *             .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+ *             .typeCode("C8000V")
+ *             .selfManaged(true)
+ *             .byol(true)
+ *             .packageCode("VM100")
+ *             .notifications(            
+ *                 "john}{@literal @}{@code equinix.com",
+ *                 "marry}{@literal @}{@code equinix.com",
+ *                 "fred}{@literal @}{@code equinix.com")
+ *             .termLength(12)
+ *             .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
+ *             .version("17.11.01a")
+ *             .interfaceCount(10)
+ *             .coreCount(2)
+ *             .tier(1)
+ *             .sshKey(DeviceSshKeyArgs.builder()
+ *                 .username("test")
+ *                 .keyName("test-key")
+ *                 .build())
+ *             .aclTemplateId("0bff6e05-f0e7-44cd-804a-25b92b835f8b")
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * ### example zscaler appc
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
+ * import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
+ * import com.pulumi.equinix.networkedge.Device;
+ * import com.pulumi.equinix.networkedge.DeviceArgs;
+ * import com.pulumi.equinix.networkedge.inputs.DeviceSshKeyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
+ *             .metroCode("SV")
+ *             .build());
+ * 
+ *         var zscalerAppcSingle = new Device("zscalerAppcSingle", DeviceArgs.builder()
+ *             .name("tf-zscaler-appc")
+ *             .projectId("XXXXXX")
+ *             .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+ *             .typeCode("ZSCALER-APPC")
+ *             .selfManaged(true)
+ *             .byol(true)
+ *             .connectivity("PRIVATE")
+ *             .packageCode("STD")
+ *             .notifications(            
+ *                 "john}{@literal @}{@code equinix.com",
+ *                 "marry}{@literal @}{@code equinix.com",
+ *                 "fred}{@literal @}{@code equinix.com")
+ *             .termLength(12)
+ *             .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
+ *             .version("23.395.1")
+ *             .interfaceCount(1)
+ *             .coreCount(4)
+ *             .vendorConfiguration(Map.ofEntries(
+ *                 Map.entry("provisioningKey", "XXXXXXXXXX"),
+ *                 Map.entry("hostname", "XXXX")
+ *             ))
+ *             .sshKey(DeviceSshKeyArgs.builder()
+ *                 .username("test")
+ *                 .keyName("test-key")
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * ### example zscaler pse
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
+ * import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
+ * import com.pulumi.equinix.networkedge.Device;
+ * import com.pulumi.equinix.networkedge.DeviceArgs;
+ * import com.pulumi.equinix.networkedge.inputs.DeviceSshKeyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
+ *             .metroCode("SV")
+ *             .build());
+ * 
+ *         var zscalerPseSingle = new Device("zscalerPseSingle", DeviceArgs.builder()
+ *             .name("tf-zscaler-pse")
+ *             .projectId("XXXXXX")
+ *             .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+ *             .typeCode("ZSCALER-PSE")
+ *             .selfManaged(true)
+ *             .byol(true)
+ *             .connectivity("PRIVATE")
+ *             .packageCode("STD")
+ *             .notifications(            
+ *                 "john}{@literal @}{@code equinix.com",
+ *                 "marry}{@literal @}{@code equinix.com",
+ *                 "fred}{@literal @}{@code equinix.com")
+ *             .termLength(12)
+ *             .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
+ *             .version("23.395.1")
+ *             .interfaceCount(1)
+ *             .coreCount(4)
+ *             .vendorConfiguration(Map.ofEntries(
+ *                 Map.entry("provisioningKey", "XXXXXXXXXX"),
+ *                 Map.entry("hostname", "XXXX")
+ *             ))
+ *             .sshKey(DeviceSshKeyArgs.builder()
+ *                 .username("test")
+ *                 .keyName("test-key")
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -917,6 +1217,22 @@ public class Device extends com.pulumi.resources.CustomResource {
      */
     public Output<String> diverseDeviceName() {
         return this.diverseDeviceName;
+    }
+    /**
+     * Boolean value that determines to create device with or without default password. Use this field to let Equinix know if you want your new device to be create with default admin password.
+     * This field is only meaningful for C8000V Autonomous(single/ha) and Fortinet Firewall devices(single/ha/cluster). If not specified, by default device is created with admin password.
+     * 
+     */
+    @Export(name="generateDefaultPassword", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> generateDefaultPassword;
+
+    /**
+     * @return Boolean value that determines to create device with or without default password. Use this field to let Equinix know if you want your new device to be create with default admin password.
+     * This field is only meaningful for C8000V Autonomous(single/ha) and Fortinet Firewall devices(single/ha/cluster). If not specified, by default device is created with admin password.
+     * 
+     */
+    public Output<Optional<Boolean>> generateDefaultPassword() {
+        return Codegen.optional(this.generateDefaultPassword);
     }
     /**
      * Device hostname prefix.
@@ -1311,6 +1627,20 @@ public class Device extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.throughputUnit);
     }
     /**
+     * Select bandwidth tier for your own license, i.e., `0` or `1` or `2` or `3`. Tiers applicable only for C8000V Autonomous or C8000V SDWAN (controller) device types. If not provided, tier is defaulted to &#39;2&#39;.
+     * 
+     */
+    @Export(name="tier", refs={Integer.class}, tree="[0]")
+    private Output<Integer> tier;
+
+    /**
+     * @return Select bandwidth tier for your own license, i.e., `0` or `1` or `2` or `3`. Tiers applicable only for C8000V Autonomous or C8000V SDWAN (controller) device types. If not provided, tier is defaulted to &#39;2&#39;.
+     * 
+     */
+    public Output<Integer> tier() {
+        return this.tier;
+    }
+    /**
      * Device type code.
      * 
      */
@@ -1339,7 +1669,7 @@ public class Device extends com.pulumi.resources.CustomResource {
         return this.uuid;
     }
     /**
-     * Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress)
+     * Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress, provisioningKey)
      * * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
      * 
      */
@@ -1347,7 +1677,7 @@ public class Device extends com.pulumi.resources.CustomResource {
     private Output<Map<String,String>> vendorConfiguration;
 
     /**
-     * @return Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress)
+     * @return Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress, provisioningKey)
      * * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
      * 
      */

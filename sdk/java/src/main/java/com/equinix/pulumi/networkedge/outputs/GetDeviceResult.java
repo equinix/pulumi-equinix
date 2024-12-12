@@ -149,6 +149,11 @@ public final class GetDeviceResult {
     private Integer termLength;
     private Integer throughput;
     private String throughputUnit;
+    /**
+     * @return Throughput Tier (applicable for C8000V, C8000V-SDWAN devices)
+     * 
+     */
+    private Integer tier;
     private String typeCode;
     /**
      * @return Device unique identifier
@@ -377,6 +382,13 @@ public final class GetDeviceResult {
     public String throughputUnit() {
         return this.throughputUnit;
     }
+    /**
+     * @return Throughput Tier (applicable for C8000V, C8000V-SDWAN devices)
+     * 
+     */
+    public Integer tier() {
+        return this.tier;
+    }
     public String typeCode() {
         return this.typeCode;
     }
@@ -459,6 +471,7 @@ public final class GetDeviceResult {
         private Integer termLength;
         private Integer throughput;
         private String throughputUnit;
+        private Integer tier;
         private String typeCode;
         private String uuid;
         private @Nullable String validStatusList;
@@ -508,6 +521,7 @@ public final class GetDeviceResult {
     	      this.termLength = defaults.termLength;
     	      this.throughput = defaults.throughput;
     	      this.throughputUnit = defaults.throughputUnit;
+    	      this.tier = defaults.tier;
     	      this.typeCode = defaults.typeCode;
     	      this.uuid = defaults.uuid;
     	      this.validStatusList = defaults.validStatusList;
@@ -845,6 +859,14 @@ public final class GetDeviceResult {
             return this;
         }
         @CustomType.Setter
+        public Builder tier(Integer tier) {
+            if (tier == null) {
+              throw new MissingRequiredPropertyException("GetDeviceResult", "tier");
+            }
+            this.tier = tier;
+            return this;
+        }
+        @CustomType.Setter
         public Builder typeCode(String typeCode) {
             if (typeCode == null) {
               throw new MissingRequiredPropertyException("GetDeviceResult", "typeCode");
@@ -939,6 +961,7 @@ public final class GetDeviceResult {
             _resultValue.termLength = termLength;
             _resultValue.throughput = throughput;
             _resultValue.throughputUnit = throughputUnit;
+            _resultValue.tier = tier;
             _resultValue.typeCode = typeCode;
             _resultValue.uuid = uuid;
             _resultValue.validStatusList = validStatusList;

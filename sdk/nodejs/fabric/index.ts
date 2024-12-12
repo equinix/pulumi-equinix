@@ -110,6 +110,16 @@ export const getServiceProfiles: typeof import("./getServiceProfiles").getServic
 export const getServiceProfilesOutput: typeof import("./getServiceProfiles").getServiceProfilesOutput = null as any;
 utilities.lazyLoad(exports, ["getServiceProfiles","getServiceProfilesOutput"], () => require("./getServiceProfiles"));
 
+export { GetServiceTokenArgs, GetServiceTokenResult, GetServiceTokenOutputArgs } from "./getServiceToken";
+export const getServiceToken: typeof import("./getServiceToken").getServiceToken = null as any;
+export const getServiceTokenOutput: typeof import("./getServiceToken").getServiceTokenOutput = null as any;
+utilities.lazyLoad(exports, ["getServiceToken","getServiceTokenOutput"], () => require("./getServiceToken"));
+
+export { GetServiceTokensArgs, GetServiceTokensResult, GetServiceTokensOutputArgs } from "./getServiceTokens";
+export const getServiceTokens: typeof import("./getServiceTokens").getServiceTokens = null as any;
+export const getServiceTokensOutput: typeof import("./getServiceTokens").getServiceTokensOutput = null as any;
+utilities.lazyLoad(exports, ["getServiceTokens","getServiceTokensOutput"], () => require("./getServiceTokens"));
+
 export { NetworkArgs, NetworkState } from "./network";
 export type Network = import("./network").Network;
 export const Network: typeof import("./network").Network = null as any;
@@ -135,6 +145,11 @@ export type ServiceProfile = import("./serviceProfile").ServiceProfile;
 export const ServiceProfile: typeof import("./serviceProfile").ServiceProfile = null as any;
 utilities.lazyLoad(exports, ["ServiceProfile"], () => require("./serviceProfile"));
 
+export { ServiceTokenArgs, ServiceTokenState } from "./serviceToken";
+export type ServiceToken = import("./serviceToken").ServiceToken;
+export const ServiceToken: typeof import("./serviceToken").ServiceToken = null as any;
+utilities.lazyLoad(exports, ["ServiceToken"], () => require("./serviceToken"));
+
 
 // Export enums:
 export * from "../types/enums/fabric";
@@ -159,6 +174,8 @@ const _module = {
                 return new RoutingProtocol(name, <any>undefined, { urn })
             case "equinix:fabric/serviceProfile:ServiceProfile":
                 return new ServiceProfile(name, <any>undefined, { urn })
+            case "equinix:fabric/serviceToken:ServiceToken":
+                return new ServiceToken(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -172,3 +189,4 @@ pulumi.runtime.registerResourceModule("equinix", "fabric/routeFilter", _module)
 pulumi.runtime.registerResourceModule("equinix", "fabric/routeFilterRule", _module)
 pulumi.runtime.registerResourceModule("equinix", "fabric/routingProtocol", _module)
 pulumi.runtime.registerResourceModule("equinix", "fabric/serviceProfile", _module)
+pulumi.runtime.registerResourceModule("equinix", "fabric/serviceToken", _module)
