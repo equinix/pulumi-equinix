@@ -39,7 +39,7 @@ jobs:
       with:
         version: v1.55.2
         working-directory: provider
-        args: --skip-dirs "/usr/local/go|/upstream|/go/pkg"
+        args: --timeout=30m --skip-dirs "/usr/local/go|/upstream|/go/pkg"
     - if: failure() && github.event_name == 'push'
       name: Notify Slack
       uses: 8398a7/action-slack@v3
