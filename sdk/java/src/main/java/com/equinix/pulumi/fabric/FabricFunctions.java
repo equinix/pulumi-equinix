@@ -40,6 +40,10 @@ import com.equinix.pulumi.fabric.inputs.GetServiceProfileArgs;
 import com.equinix.pulumi.fabric.inputs.GetServiceProfilePlainArgs;
 import com.equinix.pulumi.fabric.inputs.GetServiceProfilesArgs;
 import com.equinix.pulumi.fabric.inputs.GetServiceProfilesPlainArgs;
+import com.equinix.pulumi.fabric.inputs.GetServiceTokenArgs;
+import com.equinix.pulumi.fabric.inputs.GetServiceTokenPlainArgs;
+import com.equinix.pulumi.fabric.inputs.GetServiceTokensArgs;
+import com.equinix.pulumi.fabric.inputs.GetServiceTokensPlainArgs;
 import com.equinix.pulumi.fabric.outputs.GetCloudRouterResult;
 import com.equinix.pulumi.fabric.outputs.GetCloudRoutersResult;
 import com.equinix.pulumi.fabric.outputs.GetConnectionResult;
@@ -58,6 +62,8 @@ import com.equinix.pulumi.fabric.outputs.GetRouteFiltersResult;
 import com.equinix.pulumi.fabric.outputs.GetRoutingProtocolResult;
 import com.equinix.pulumi.fabric.outputs.GetServiceProfileResult;
 import com.equinix.pulumi.fabric.outputs.GetServiceProfilesResult;
+import com.equinix.pulumi.fabric.outputs.GetServiceTokenResult;
+import com.equinix.pulumi.fabric.outputs.GetServiceTokensResult;
 import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
@@ -3244,5 +3250,265 @@ public final class FabricFunctions {
      */
     public static CompletableFuture<GetServiceProfilesResult> getServiceProfilesPlain(GetServiceProfilesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("equinix:fabric/getServiceProfiles:getServiceProfiles", TypeShape.of(GetServiceProfilesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch service token for a given UUID
+     * 
+     * Additional documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/service%20tokens/Fabric-Service-Tokens.htm
+     * * API: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/ConnectUsingServiceToken.htm
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetServiceTokenArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var service-token = FabricFunctions.getServiceToken(GetServiceTokenArgs.builder()
+     *             .uuid("<uuid_of_service_token>")
+     *             .build());
+     * 
+     *         ctx.export("id", service_token.id());
+     *         ctx.export("type", service_token.type());
+     *         ctx.export("expirationDateTime", service_token.expirationDateTime());
+     *         ctx.export("supportedBandwidths", service_token.serviceTokenConnections()[0].supportedBandwidths());
+     *         ctx.export("virtualDeviceType", service_token.serviceTokenConnections()[0].zSides()[0].accessPointSelectors()[0].virtualDevice().type());
+     *         ctx.export("virtualDeviceUuid", service_token.serviceTokenConnections()[0].zSides()[0].accessPointSelectors()[0].virtualDevice().uuid());
+     *         ctx.export("interfaceType", service_token.serviceTokenConnections()[0].zSides()[0].accessPointSelectors()[0].interface().type());
+     *         ctx.export("interfaceUuid", service_token.serviceTokenConnections()[0].zSides()[0].accessPointSelectors()[0].interface().id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetServiceTokenResult> getServiceToken(GetServiceTokenArgs args) {
+        return getServiceToken(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch service token for a given UUID
+     * 
+     * Additional documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/service%20tokens/Fabric-Service-Tokens.htm
+     * * API: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/ConnectUsingServiceToken.htm
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetServiceTokenArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var service-token = FabricFunctions.getServiceToken(GetServiceTokenArgs.builder()
+     *             .uuid("<uuid_of_service_token>")
+     *             .build());
+     * 
+     *         ctx.export("id", service_token.id());
+     *         ctx.export("type", service_token.type());
+     *         ctx.export("expirationDateTime", service_token.expirationDateTime());
+     *         ctx.export("supportedBandwidths", service_token.serviceTokenConnections()[0].supportedBandwidths());
+     *         ctx.export("virtualDeviceType", service_token.serviceTokenConnections()[0].zSides()[0].accessPointSelectors()[0].virtualDevice().type());
+     *         ctx.export("virtualDeviceUuid", service_token.serviceTokenConnections()[0].zSides()[0].accessPointSelectors()[0].virtualDevice().uuid());
+     *         ctx.export("interfaceType", service_token.serviceTokenConnections()[0].zSides()[0].accessPointSelectors()[0].interface().type());
+     *         ctx.export("interfaceUuid", service_token.serviceTokenConnections()[0].zSides()[0].accessPointSelectors()[0].interface().id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetServiceTokenResult> getServiceTokenPlain(GetServiceTokenPlainArgs args) {
+        return getServiceTokenPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch service token for a given UUID
+     * 
+     * Additional documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/service%20tokens/Fabric-Service-Tokens.htm
+     * * API: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/ConnectUsingServiceToken.htm
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetServiceTokenArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var service-token = FabricFunctions.getServiceToken(GetServiceTokenArgs.builder()
+     *             .uuid("<uuid_of_service_token>")
+     *             .build());
+     * 
+     *         ctx.export("id", service_token.id());
+     *         ctx.export("type", service_token.type());
+     *         ctx.export("expirationDateTime", service_token.expirationDateTime());
+     *         ctx.export("supportedBandwidths", service_token.serviceTokenConnections()[0].supportedBandwidths());
+     *         ctx.export("virtualDeviceType", service_token.serviceTokenConnections()[0].zSides()[0].accessPointSelectors()[0].virtualDevice().type());
+     *         ctx.export("virtualDeviceUuid", service_token.serviceTokenConnections()[0].zSides()[0].accessPointSelectors()[0].virtualDevice().uuid());
+     *         ctx.export("interfaceType", service_token.serviceTokenConnections()[0].zSides()[0].accessPointSelectors()[0].interface().type());
+     *         ctx.export("interfaceUuid", service_token.serviceTokenConnections()[0].zSides()[0].accessPointSelectors()[0].interface().id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetServiceTokenResult> getServiceToken(GetServiceTokenArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getServiceToken:getServiceToken", TypeShape.of(GetServiceTokenResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch service token for a given UUID
+     * 
+     * Additional documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/service%20tokens/Fabric-Service-Tokens.htm
+     * * API: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/ConnectUsingServiceToken.htm
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetServiceTokenArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var service-token = FabricFunctions.getServiceToken(GetServiceTokenArgs.builder()
+     *             .uuid("<uuid_of_service_token>")
+     *             .build());
+     * 
+     *         ctx.export("id", service_token.id());
+     *         ctx.export("type", service_token.type());
+     *         ctx.export("expirationDateTime", service_token.expirationDateTime());
+     *         ctx.export("supportedBandwidths", service_token.serviceTokenConnections()[0].supportedBandwidths());
+     *         ctx.export("virtualDeviceType", service_token.serviceTokenConnections()[0].zSides()[0].accessPointSelectors()[0].virtualDevice().type());
+     *         ctx.export("virtualDeviceUuid", service_token.serviceTokenConnections()[0].zSides()[0].accessPointSelectors()[0].virtualDevice().uuid());
+     *         ctx.export("interfaceType", service_token.serviceTokenConnections()[0].zSides()[0].accessPointSelectors()[0].interface().type());
+     *         ctx.export("interfaceUuid", service_token.serviceTokenConnections()[0].zSides()[0].accessPointSelectors()[0].interface().id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetServiceTokenResult> getServiceTokenPlain(GetServiceTokenPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("equinix:fabric/getServiceToken:getServiceToken", TypeShape.of(GetServiceTokenResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch service token for a given search data set
+     * 
+     * Additional documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/service%20tokens/Fabric-Service-Tokens.htm
+     * * API: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/ConnectUsingServiceToken.htm
+     * 
+     */
+    public static Output<GetServiceTokensResult> getServiceTokens(GetServiceTokensArgs args) {
+        return getServiceTokens(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch service token for a given search data set
+     * 
+     * Additional documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/service%20tokens/Fabric-Service-Tokens.htm
+     * * API: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/ConnectUsingServiceToken.htm
+     * 
+     */
+    public static CompletableFuture<GetServiceTokensResult> getServiceTokensPlain(GetServiceTokensPlainArgs args) {
+        return getServiceTokensPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch service token for a given search data set
+     * 
+     * Additional documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/service%20tokens/Fabric-Service-Tokens.htm
+     * * API: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/ConnectUsingServiceToken.htm
+     * 
+     */
+    public static Output<GetServiceTokensResult> getServiceTokens(GetServiceTokensArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getServiceTokens:getServiceTokens", TypeShape.of(GetServiceTokensResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch service token for a given search data set
+     * 
+     * Additional documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/service%20tokens/Fabric-Service-Tokens.htm
+     * * API: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/ConnectUsingServiceToken.htm
+     * 
+     */
+    public static CompletableFuture<GetServiceTokensResult> getServiceTokensPlain(GetServiceTokensPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("equinix:fabric/getServiceTokens:getServiceTokens", TypeShape.of(GetServiceTokensResult.class), args, Utilities.withVersion(options));
     }
 }

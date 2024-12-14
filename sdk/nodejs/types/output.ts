@@ -5598,6 +5598,1189 @@ export namespace fabric {
         property?: string;
     }
 
+    export interface GetServiceTokenAccount {
+        /**
+         * Legal name of the accountholder.
+         */
+        accountName: string;
+        /**
+         * Equinix-assigned account number.
+         */
+        accountNumber: number;
+        /**
+         * Equinix-assigned ID of the subscriber's parent organization.
+         */
+        globalCustId: string;
+        /**
+         * Equinix-assigned ID of the subscriber's parent organization.
+         */
+        globalOrgId: string;
+        /**
+         * Equinix-assigned name of the subscriber's parent organization.
+         */
+        globalOrganizationName: string;
+        /**
+         * Equinix-assigned ID of the subscriber's organization.
+         */
+        orgId: number;
+        /**
+         * Equinix-assigned name of the subscriber's organization.
+         */
+        organizationName: string;
+        /**
+         * Enterprise datastore id
+         */
+        ucmId: string;
+    }
+
+    export interface GetServiceTokenChangeLog {
+        /**
+         * Created by User Key
+         */
+        createdBy: string;
+        /**
+         * Created by User Email Address
+         */
+        createdByEmail: string;
+        /**
+         * Created by User Full Name
+         */
+        createdByFullName: string;
+        /**
+         * Created by Date and Time
+         */
+        createdDateTime: string;
+        /**
+         * Deleted by User Key
+         */
+        deletedBy: string;
+        /**
+         * Deleted by User Email Address
+         */
+        deletedByEmail: string;
+        /**
+         * Deleted by User Full Name
+         */
+        deletedByFullName: string;
+        /**
+         * Deleted by Date and Time
+         */
+        deletedDateTime: string;
+        /**
+         * Updated by User Key
+         */
+        updatedBy: string;
+        /**
+         * Updated by User Email Address
+         */
+        updatedByEmail: string;
+        /**
+         * Updated by User Full Name
+         */
+        updatedByFullName: string;
+        /**
+         * Updated by Date and Time
+         */
+        updatedDateTime: string;
+    }
+
+    export interface GetServiceTokenNotification {
+        /**
+         * Array of contact emails
+         */
+        emails: string[];
+        /**
+         * Send interval
+         */
+        sendInterval?: string;
+        /**
+         * Notification Type - ALL,CONNECTION_APPROVAL,SALES_REP_NOTIFICATIONS, NOTIFICATIONS
+         */
+        type: string;
+    }
+
+    export interface GetServiceTokenProject {
+        /**
+         * Unique Resource URL
+         */
+        href: string;
+        /**
+         * Project Id
+         */
+        projectId: string;
+    }
+
+    export interface GetServiceTokenServiceTokenConnection {
+        /**
+         * A-Side Connection link protocol,virtual device or network configuration
+         */
+        aSides: outputs.fabric.GetServiceTokenServiceTokenConnectionASide[];
+        /**
+         * Allow custom bandwidth value
+         */
+        allowCustomBandwidth: boolean;
+        /**
+         * Authorization to connect remotely
+         */
+        allowRemoteConnection: boolean;
+        /**
+         * Connection bandwidth limit in Mbps
+         */
+        bandwidthLimit: number;
+        /**
+         * List of permitted bandwidths'; For Port-based Service Tokens, the maximum allowable bandwidth is 50 Gbps, while for Virtual Device-based Service Tokens, it is limited to 10 Gbps
+         */
+        supportedBandwidths: number[];
+        /**
+         * Type of Connection supported by Service Token you will create; EVPL_VC, EVPLAN_VC, EPLAN_VC, IPWAN_VC
+         */
+        type: string;
+        /**
+         * Equinix-assigned connection identifier
+         */
+        uuid: string;
+        /**
+         * Z-Side Connection link protocol,virtual device or network configuration
+         */
+        zSides: outputs.fabric.GetServiceTokenServiceTokenConnectionZSide[];
+    }
+
+    export interface GetServiceTokenServiceTokenConnectionASide {
+        /**
+         * List of criteria for selecting network access points with optimal efficiency, security, compatibility, and availability
+         */
+        accessPointSelectors: outputs.fabric.GetServiceTokenServiceTokenConnectionASideAccessPointSelector[];
+    }
+
+    export interface GetServiceTokenServiceTokenConnectionASideAccessPointSelector {
+        /**
+         * Virtual Device Interface Configuration
+         */
+        interface: outputs.fabric.GetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterface;
+        /**
+         * Link protocol Configuration
+         */
+        linkProtocol: outputs.fabric.GetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocol;
+        /**
+         * Network Configuration
+         */
+        network: outputs.fabric.GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetwork;
+        /**
+         * Port Configuration
+         */
+        port: outputs.fabric.GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPort;
+        /**
+         * Type of Access point; COLO, VD, NETWORK
+         */
+        type: string;
+        /**
+         * Virtual Device Configuration
+         */
+        virtualDevice?: outputs.fabric.GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevice;
+    }
+
+    export interface GetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterface {
+        /**
+         * id
+         */
+        id: number;
+        /**
+         * Interface type
+         */
+        type: string;
+        /**
+         * Equinix-assigned interface identifier
+         */
+        uuid: string;
+    }
+
+    export interface GetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocol {
+        /**
+         * Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
+         */
+        type: string;
+        /**
+         * Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+         */
+        vlanCTag: number;
+        /**
+         * Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+         */
+        vlanSTag: number;
+        /**
+         * Vlan Tag information, vlanTag value specified for DOT1Q connections
+         */
+        vlanTag: number;
+    }
+
+    export interface GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetwork {
+        /**
+         * Unique Resource Identifier
+         */
+        href: string;
+        /**
+         * Location
+         */
+        locations: outputs.fabric.GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocation[];
+        /**
+         * Network Name
+         */
+        name: string;
+        /**
+         * Scope of Network
+         */
+        scope: string;
+        /**
+         * Type of Network
+         */
+        type: string;
+        /**
+         * Equinix-assigned Network identifier
+         */
+        uuid: string;
+    }
+
+    export interface GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocation {
+        /**
+         * IBX Code
+         */
+        ibx: string;
+        /**
+         * Access point metro code
+         */
+        metroCode: string;
+        /**
+         * Access point metro name
+         */
+        metroName: string;
+        /**
+         * Access point region
+         */
+        region: string;
+    }
+
+    export interface GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPort {
+        /**
+         * Account Name
+         */
+        accountName: string;
+        /**
+         * Port Bandwidth
+         */
+        bandwidth: number;
+        /**
+         * Customer virtual port Id
+         */
+        cvpId: number;
+        /**
+         * Port Encapsulation
+         */
+        encapsulationProtocolType: string;
+        /**
+         * Unique Resource Identifier
+         */
+        href: string;
+        /**
+         * Port Location
+         */
+        locations: outputs.fabric.GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocation[];
+        /**
+         * Port Name
+         */
+        portName: string;
+        /**
+         * Port Priority
+         */
+        priority: string;
+        /**
+         * Type of Port
+         */
+        type: string;
+        /**
+         * Equinix-assigned Port identifier
+         */
+        uuid: string;
+    }
+
+    export interface GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocation {
+        /**
+         * IBX Code
+         */
+        ibx: string;
+        /**
+         * Access point metro code
+         */
+        metroCode: string;
+        /**
+         * Access point metro name
+         */
+        metroName: string;
+        /**
+         * Access point region
+         */
+        region: string;
+    }
+
+    export interface GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevice {
+        /**
+         * Virtual Device Cluster Information
+         */
+        cluster: string;
+        /**
+         * Unique Resource Identifier
+         */
+        href: string;
+        /**
+         * Customer-assigned Virtual Device Name
+         */
+        name: string;
+        /**
+         * Virtual Device type
+         */
+        type: string;
+        /**
+         * Equinix-assigned Virtual Device identifier
+         */
+        uuid: string;
+    }
+
+    export interface GetServiceTokenServiceTokenConnectionZSide {
+        /**
+         * List of criteria for selecting network access points with optimal efficiency, security, compatibility, and availability
+         */
+        accessPointSelectors: outputs.fabric.GetServiceTokenServiceTokenConnectionZSideAccessPointSelector[];
+    }
+
+    export interface GetServiceTokenServiceTokenConnectionZSideAccessPointSelector {
+        /**
+         * Virtual Device Interface Configuration
+         */
+        interface: outputs.fabric.GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterface;
+        /**
+         * Link protocol Configuration
+         */
+        linkProtocol: outputs.fabric.GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocol;
+        /**
+         * Network Configuration
+         */
+        network: outputs.fabric.GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetwork;
+        /**
+         * Port Configuration
+         */
+        port: outputs.fabric.GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort;
+        /**
+         * Type of Access point; COLO, VD, NETWORK
+         */
+        type: string;
+        /**
+         * Virtual Device Configuration
+         */
+        virtualDevice?: outputs.fabric.GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevice;
+    }
+
+    export interface GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterface {
+        /**
+         * id
+         */
+        id: number;
+        /**
+         * Interface type
+         */
+        type: string;
+        /**
+         * Equinix-assigned interface identifier
+         */
+        uuid: string;
+    }
+
+    export interface GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocol {
+        /**
+         * Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
+         */
+        type: string;
+        /**
+         * Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+         */
+        vlanCTag: number;
+        /**
+         * Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+         */
+        vlanSTag: number;
+        /**
+         * Vlan Tag information, vlanTag value specified for DOT1Q connections
+         */
+        vlanTag: number;
+    }
+
+    export interface GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetwork {
+        /**
+         * Unique Resource Identifier
+         */
+        href: string;
+        /**
+         * Location
+         */
+        locations: outputs.fabric.GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocation[];
+        /**
+         * Network Name
+         */
+        name: string;
+        /**
+         * Scope of Network
+         */
+        scope: string;
+        /**
+         * Type of Network
+         */
+        type: string;
+        /**
+         * Equinix-assigned Network identifier
+         */
+        uuid: string;
+    }
+
+    export interface GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocation {
+        /**
+         * IBX Code
+         */
+        ibx: string;
+        /**
+         * Access point metro code
+         */
+        metroCode: string;
+        /**
+         * Access point metro name
+         */
+        metroName: string;
+        /**
+         * Access point region
+         */
+        region: string;
+    }
+
+    export interface GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort {
+        /**
+         * Account Name
+         */
+        accountName: string;
+        /**
+         * Port Bandwidth
+         */
+        bandwidth: number;
+        /**
+         * Customer virtual port Id
+         */
+        cvpId: number;
+        /**
+         * Port Encapsulation
+         */
+        encapsulationProtocolType: string;
+        /**
+         * Unique Resource Identifier
+         */
+        href: string;
+        /**
+         * Port Location
+         */
+        locations: outputs.fabric.GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocation[];
+        /**
+         * Port Name
+         */
+        portName: string;
+        /**
+         * Port Priority
+         */
+        priority: string;
+        /**
+         * Type of Port
+         */
+        type: string;
+        /**
+         * Equinix-assigned Port identifier
+         */
+        uuid: string;
+    }
+
+    export interface GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocation {
+        /**
+         * IBX Code
+         */
+        ibx: string;
+        /**
+         * Access point metro code
+         */
+        metroCode: string;
+        /**
+         * Access point metro name
+         */
+        metroName: string;
+        /**
+         * Access point region
+         */
+        region: string;
+    }
+
+    export interface GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevice {
+        /**
+         * Virtual Device Cluster Information
+         */
+        cluster: string;
+        /**
+         * Unique Resource Identifier
+         */
+        href: string;
+        /**
+         * Customer-assigned Virtual Device Name
+         */
+        name: string;
+        /**
+         * Virtual Device type
+         */
+        type: string;
+        /**
+         * Equinix-assigned Virtual Device identifier
+         */
+        uuid: string;
+    }
+
+    export interface GetServiceTokensData {
+        /**
+         * Customer account information that is associated with this service token
+         */
+        accounts: outputs.fabric.GetServiceTokensDataAccount[];
+        /**
+         * Captures connection lifecycle change information
+         */
+        changeLogs: outputs.fabric.GetServiceTokensDataChangeLog[];
+        /**
+         * Optional Description to the Service Token you will be creating
+         */
+        description: string;
+        /**
+         * Expiration date and time of the service token; 2020-11-06T07:00:00Z
+         */
+        expirationDateTime: string;
+        /**
+         * An absolute URL that is the subject of the link's context.
+         */
+        href: string;
+        /**
+         * Information about token side; ASIDE, ZSIDE
+         */
+        issuerSide: string;
+        /**
+         * Name of the Service Token
+         */
+        name: string;
+        /**
+         * Preferences for notifications on Service Token configuration or status changes
+         */
+        notifications: outputs.fabric.GetServiceTokensDataNotification[];
+        /**
+         * Project information
+         */
+        projects: outputs.fabric.GetServiceTokensDataProject[];
+        /**
+         * Service Token Connection Type Information
+         */
+        serviceTokenConnections: outputs.fabric.GetServiceTokensDataServiceTokenConnection[];
+        /**
+         * Service token state; ACTIVE, INACTIVE, EXPIRED, DELETED
+         */
+        state: string;
+        /**
+         * Service Token Type; VC_TOKEN,EPL_TOKEN
+         */
+        type: string;
+        /**
+         * Equinix-assigned service token identifier
+         */
+        uuid: string;
+    }
+
+    export interface GetServiceTokensDataAccount {
+        /**
+         * Legal name of the accountholder.
+         */
+        accountName: string;
+        /**
+         * Equinix-assigned account number.
+         */
+        accountNumber: number;
+        /**
+         * Equinix-assigned ID of the subscriber's parent organization.
+         */
+        globalCustId: string;
+        /**
+         * Equinix-assigned ID of the subscriber's parent organization.
+         */
+        globalOrgId: string;
+        /**
+         * Equinix-assigned name of the subscriber's parent organization.
+         */
+        globalOrganizationName: string;
+        /**
+         * Equinix-assigned ID of the subscriber's organization.
+         */
+        orgId: number;
+        /**
+         * Equinix-assigned name of the subscriber's organization.
+         */
+        organizationName: string;
+        /**
+         * Enterprise datastore id
+         */
+        ucmId: string;
+    }
+
+    export interface GetServiceTokensDataChangeLog {
+        /**
+         * Created by User Key
+         */
+        createdBy: string;
+        /**
+         * Created by User Email Address
+         */
+        createdByEmail: string;
+        /**
+         * Created by User Full Name
+         */
+        createdByFullName: string;
+        /**
+         * Created by Date and Time
+         */
+        createdDateTime: string;
+        /**
+         * Deleted by User Key
+         */
+        deletedBy: string;
+        /**
+         * Deleted by User Email Address
+         */
+        deletedByEmail: string;
+        /**
+         * Deleted by User Full Name
+         */
+        deletedByFullName: string;
+        /**
+         * Deleted by Date and Time
+         */
+        deletedDateTime: string;
+        /**
+         * Updated by User Key
+         */
+        updatedBy: string;
+        /**
+         * Updated by User Email Address
+         */
+        updatedByEmail: string;
+        /**
+         * Updated by User Full Name
+         */
+        updatedByFullName: string;
+        /**
+         * Updated by Date and Time
+         */
+        updatedDateTime: string;
+    }
+
+    export interface GetServiceTokensDataNotification {
+        /**
+         * Array of contact emails
+         */
+        emails: string[];
+        /**
+         * Send interval
+         */
+        sendInterval?: string;
+        /**
+         * Notification Type - ALL,CONNECTION_APPROVAL,SALES_REP_NOTIFICATIONS, NOTIFICATIONS
+         */
+        type: string;
+    }
+
+    export interface GetServiceTokensDataProject {
+        /**
+         * Unique Resource URL
+         */
+        href: string;
+        /**
+         * Project Id
+         */
+        projectId: string;
+    }
+
+    export interface GetServiceTokensDataServiceTokenConnection {
+        /**
+         * A-Side Connection link protocol,virtual device or network configuration
+         */
+        aSides: outputs.fabric.GetServiceTokensDataServiceTokenConnectionASide[];
+        /**
+         * Allow custom bandwidth value
+         */
+        allowCustomBandwidth: boolean;
+        /**
+         * Authorization to connect remotely
+         */
+        allowRemoteConnection: boolean;
+        /**
+         * Connection bandwidth limit in Mbps
+         */
+        bandwidthLimit: number;
+        /**
+         * List of permitted bandwidths'; For Port-based Service Tokens, the maximum allowable bandwidth is 50 Gbps, while for Virtual Device-based Service Tokens, it is limited to 10 Gbps
+         */
+        supportedBandwidths: number[];
+        /**
+         * Type of Connection supported by Service Token you will create; EVPL_VC, EVPLAN_VC, EPLAN_VC, IPWAN_VC
+         */
+        type: string;
+        /**
+         * Equinix-assigned connection identifier
+         */
+        uuid: string;
+        /**
+         * Z-Side Connection link protocol,virtual device or network configuration
+         */
+        zSides: outputs.fabric.GetServiceTokensDataServiceTokenConnectionZSide[];
+    }
+
+    export interface GetServiceTokensDataServiceTokenConnectionASide {
+        /**
+         * List of criteria for selecting network access points with optimal efficiency, security, compatibility, and availability
+         */
+        accessPointSelectors: outputs.fabric.GetServiceTokensDataServiceTokenConnectionASideAccessPointSelector[];
+    }
+
+    export interface GetServiceTokensDataServiceTokenConnectionASideAccessPointSelector {
+        /**
+         * Virtual Device Interface Configuration
+         */
+        interface: outputs.fabric.GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterface;
+        /**
+         * Link protocol Configuration
+         */
+        linkProtocol: outputs.fabric.GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocol;
+        /**
+         * Network Configuration
+         */
+        network: outputs.fabric.GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetwork;
+        /**
+         * Port Configuration
+         */
+        port: outputs.fabric.GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPort;
+        /**
+         * Type of Access point; COLO, VD, NETWORK
+         */
+        type: string;
+        /**
+         * Virtual Device Configuration
+         */
+        virtualDevice?: outputs.fabric.GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevice;
+    }
+
+    export interface GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterface {
+        /**
+         * id
+         */
+        id: number;
+        /**
+         * Interface type
+         */
+        type: string;
+        /**
+         * Equinix-assigned interface identifier
+         */
+        uuid: string;
+    }
+
+    export interface GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocol {
+        /**
+         * Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
+         */
+        type: string;
+        /**
+         * Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+         */
+        vlanCTag: number;
+        /**
+         * Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+         */
+        vlanSTag: number;
+        /**
+         * Vlan Tag information, vlanTag value specified for DOT1Q connections
+         */
+        vlanTag: number;
+    }
+
+    export interface GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetwork {
+        /**
+         * Unique Resource Identifier
+         */
+        href: string;
+        /**
+         * Location
+         */
+        locations: outputs.fabric.GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocation[];
+        /**
+         * Network Name
+         */
+        name: string;
+        /**
+         * Scope of Network
+         */
+        scope: string;
+        /**
+         * Type of Network
+         */
+        type: string;
+        /**
+         * Equinix-assigned Network identifier
+         */
+        uuid: string;
+    }
+
+    export interface GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocation {
+        /**
+         * IBX Code
+         */
+        ibx: string;
+        /**
+         * Access point metro code
+         */
+        metroCode: string;
+        /**
+         * Access point metro name
+         */
+        metroName: string;
+        /**
+         * Access point region
+         */
+        region: string;
+    }
+
+    export interface GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPort {
+        /**
+         * Account Name
+         */
+        accountName: string;
+        /**
+         * Port Bandwidth
+         */
+        bandwidth: number;
+        /**
+         * Customer virtual port Id
+         */
+        cvpId: number;
+        /**
+         * Port Encapsulation
+         */
+        encapsulationProtocolType: string;
+        /**
+         * Unique Resource Identifier
+         */
+        href: string;
+        /**
+         * Port Location
+         */
+        locations: outputs.fabric.GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocation[];
+        /**
+         * Port Name
+         */
+        portName: string;
+        /**
+         * Port Priority
+         */
+        priority: string;
+        /**
+         * Type of Port
+         */
+        type: string;
+        /**
+         * Equinix-assigned Port identifier
+         */
+        uuid: string;
+    }
+
+    export interface GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocation {
+        /**
+         * IBX Code
+         */
+        ibx: string;
+        /**
+         * Access point metro code
+         */
+        metroCode: string;
+        /**
+         * Access point metro name
+         */
+        metroName: string;
+        /**
+         * Access point region
+         */
+        region: string;
+    }
+
+    export interface GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevice {
+        /**
+         * Virtual Device Cluster Information
+         */
+        cluster: string;
+        /**
+         * Unique Resource Identifier
+         */
+        href: string;
+        /**
+         * Customer-assigned Virtual Device Name
+         */
+        name: string;
+        /**
+         * Virtual Device type
+         */
+        type: string;
+        /**
+         * Equinix-assigned Virtual Device identifier
+         */
+        uuid: string;
+    }
+
+    export interface GetServiceTokensDataServiceTokenConnectionZSide {
+        /**
+         * List of criteria for selecting network access points with optimal efficiency, security, compatibility, and availability
+         */
+        accessPointSelectors: outputs.fabric.GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelector[];
+    }
+
+    export interface GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelector {
+        /**
+         * Virtual Device Interface Configuration
+         */
+        interface: outputs.fabric.GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterface;
+        /**
+         * Link protocol Configuration
+         */
+        linkProtocol: outputs.fabric.GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocol;
+        /**
+         * Network Configuration
+         */
+        network: outputs.fabric.GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetwork;
+        /**
+         * Port Configuration
+         */
+        port: outputs.fabric.GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPort;
+        /**
+         * Type of Access point; COLO, VD, NETWORK
+         */
+        type: string;
+        /**
+         * Virtual Device Configuration
+         */
+        virtualDevice?: outputs.fabric.GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevice;
+    }
+
+    export interface GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterface {
+        /**
+         * id
+         */
+        id: number;
+        /**
+         * Interface type
+         */
+        type: string;
+        /**
+         * Equinix-assigned interface identifier
+         */
+        uuid: string;
+    }
+
+    export interface GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocol {
+        /**
+         * Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
+         */
+        type: string;
+        /**
+         * Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+         */
+        vlanCTag: number;
+        /**
+         * Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+         */
+        vlanSTag: number;
+        /**
+         * Vlan Tag information, vlanTag value specified for DOT1Q connections
+         */
+        vlanTag: number;
+    }
+
+    export interface GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetwork {
+        /**
+         * Unique Resource Identifier
+         */
+        href: string;
+        /**
+         * Location
+         */
+        locations: outputs.fabric.GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocation[];
+        /**
+         * Network Name
+         */
+        name: string;
+        /**
+         * Scope of Network
+         */
+        scope: string;
+        /**
+         * Type of Network
+         */
+        type: string;
+        /**
+         * Equinix-assigned Network identifier
+         */
+        uuid: string;
+    }
+
+    export interface GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocation {
+        /**
+         * IBX Code
+         */
+        ibx: string;
+        /**
+         * Access point metro code
+         */
+        metroCode: string;
+        /**
+         * Access point metro name
+         */
+        metroName: string;
+        /**
+         * Access point region
+         */
+        region: string;
+    }
+
+    export interface GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPort {
+        /**
+         * Account Name
+         */
+        accountName: string;
+        /**
+         * Port Bandwidth
+         */
+        bandwidth: number;
+        /**
+         * Customer virtual port Id
+         */
+        cvpId: number;
+        /**
+         * Port Encapsulation
+         */
+        encapsulationProtocolType: string;
+        /**
+         * Unique Resource Identifier
+         */
+        href: string;
+        /**
+         * Port Location
+         */
+        locations: outputs.fabric.GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocation[];
+        /**
+         * Port Name
+         */
+        portName: string;
+        /**
+         * Port Priority
+         */
+        priority: string;
+        /**
+         * Type of Port
+         */
+        type: string;
+        /**
+         * Equinix-assigned Port identifier
+         */
+        uuid: string;
+    }
+
+    export interface GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocation {
+        /**
+         * IBX Code
+         */
+        ibx: string;
+        /**
+         * Access point metro code
+         */
+        metroCode: string;
+        /**
+         * Access point metro name
+         */
+        metroName: string;
+        /**
+         * Access point region
+         */
+        region: string;
+    }
+
+    export interface GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevice {
+        /**
+         * Virtual Device Cluster Information
+         */
+        cluster: string;
+        /**
+         * Unique Resource Identifier
+         */
+        href: string;
+        /**
+         * Customer-assigned Virtual Device Name
+         */
+        name: string;
+        /**
+         * Virtual Device type
+         */
+        type: string;
+        /**
+         * Equinix-assigned Virtual Device identifier
+         */
+        uuid: string;
+    }
+
+    export interface GetServiceTokensFilter {
+        /**
+         * Possible operators to use on the filter property. Can be one of the following: [ "=", "!=", "[NOT] LIKE", "[NOT] IN", "ILIKE" ]
+         */
+        operator: string;
+        /**
+         * The API response property which you want to filter your request on. Can be one of the following: "/type", "/name", "/project/projectId", "/uuid", "/state"
+         */
+        property: string;
+        /**
+         * The values that you want to apply the property+operator combination to in order to filter your data search
+         */
+        values: string[];
+    }
+
+    export interface GetServiceTokensPagination {
+        /**
+         * Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+         */
+        limit: number;
+        /**
+         * URL relative to the last item in the response.
+         */
+        next: string;
+        /**
+         * The page offset for the pagination request. Index of the first element. Default is 0.
+         */
+        offset: number;
+        /**
+         * URL relative to the first item in the response.
+         */
+        previous: string;
+        /**
+         * Total number of elements returned.
+         */
+        total: number;
+    }
+
     export interface NetworkChange {
         /**
          * Absolute URL that returns the details of the given change.
@@ -6444,6 +7627,551 @@ export namespace fabric {
          * Access point region
          */
         region: string;
+    }
+
+    export interface ServiceTokenAccount {
+        /**
+         * Legal name of the accountholder.
+         */
+        accountName: string;
+        /**
+         * Equinix-assigned account number.
+         */
+        accountNumber: number;
+        /**
+         * Equinix-assigned ID of the subscriber's parent organization.
+         */
+        globalCustId: string;
+        /**
+         * Equinix-assigned ID of the subscriber's parent organization.
+         */
+        globalOrgId: string;
+        /**
+         * Equinix-assigned name of the subscriber's parent organization.
+         */
+        globalOrganizationName: string;
+        /**
+         * Equinix-assigned ID of the subscriber's organization.
+         */
+        orgId: number;
+        /**
+         * Equinix-assigned name of the subscriber's organization.
+         */
+        organizationName: string;
+        /**
+         * Enterprise datastore id
+         */
+        ucmId: string;
+    }
+
+    export interface ServiceTokenChangeLog {
+        /**
+         * Created by User Key
+         */
+        createdBy: string;
+        /**
+         * Created by User Email Address
+         */
+        createdByEmail: string;
+        /**
+         * Created by User Full Name
+         */
+        createdByFullName: string;
+        /**
+         * Created by Date and Time
+         */
+        createdDateTime: string;
+        /**
+         * Deleted by User Key
+         */
+        deletedBy: string;
+        /**
+         * Deleted by User Email Address
+         */
+        deletedByEmail: string;
+        /**
+         * Deleted by User Full Name
+         */
+        deletedByFullName: string;
+        /**
+         * Deleted by Date and Time
+         */
+        deletedDateTime: string;
+        /**
+         * Updated by User Key
+         */
+        updatedBy: string;
+        /**
+         * Updated by User Email Address
+         */
+        updatedByEmail: string;
+        /**
+         * Updated by User Full Name
+         */
+        updatedByFullName: string;
+        /**
+         * Updated by Date and Time
+         */
+        updatedDateTime: string;
+    }
+
+    export interface ServiceTokenNotification {
+        /**
+         * Array of contact emails
+         */
+        emails: string[];
+        /**
+         * Send interval
+         */
+        sendInterval?: string;
+        /**
+         * Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
+         */
+        type: string;
+    }
+
+    export interface ServiceTokenProject {
+        /**
+         * Unique Resource URL
+         */
+        href: string;
+        /**
+         * Project Id
+         */
+        projectId: string;
+    }
+
+    export interface ServiceTokenServiceTokenConnection {
+        /**
+         * A-Side Connection link protocol,virtual device or network configuration
+         */
+        aSides: outputs.fabric.ServiceTokenServiceTokenConnectionASide[];
+        /**
+         * Allow custom bandwidth value
+         */
+        allowCustomBandwidth: boolean;
+        /**
+         * Authorization to connect remotely
+         */
+        allowRemoteConnection: boolean;
+        /**
+         * Connection bandwidth limit in Mbps
+         */
+        bandwidthLimit: number;
+        /**
+         * List of permitted bandwidths'; For Port-based Service Tokens, the maximum allowable bandwidth is 50 Gbps, while for Virtual Device-based Service Tokens, it is limited to 10 Gbps
+         */
+        supportedBandwidths: number[];
+        /**
+         * Type of Connection supported by Service Token you will create; EVPL*VC, EVPLAN*VC, EPLAN*VC, IPWAN*VC
+         */
+        type: string;
+        /**
+         * Equinix-assigned connection identifier
+         */
+        uuid: string;
+        /**
+         * Z-Side Connection link protocol,virtual device or network configuration
+         */
+        zSides: outputs.fabric.ServiceTokenServiceTokenConnectionZSide[];
+    }
+
+    export interface ServiceTokenServiceTokenConnectionASide {
+        /**
+         * List of criteria for selecting network access points with optimal efficiency, security, compatibility, and availability
+         */
+        accessPointSelectors: outputs.fabric.ServiceTokenServiceTokenConnectionASideAccessPointSelector[];
+    }
+
+    export interface ServiceTokenServiceTokenConnectionASideAccessPointSelector {
+        /**
+         * Virtual Device Interface Configuration
+         */
+        interface: outputs.fabric.ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterface;
+        /**
+         * Link protocol Configuration
+         */
+        linkProtocol: outputs.fabric.ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocol;
+        /**
+         * Network Configuration
+         */
+        network: outputs.fabric.ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetwork;
+        /**
+         * Port Configuration
+         */
+        port: outputs.fabric.ServiceTokenServiceTokenConnectionASideAccessPointSelectorPort;
+        /**
+         * Type of Access point; COLO, VD, NETWORK
+         */
+        type: string;
+        /**
+         * Virtual Device Configuration
+         */
+        virtualDevice?: outputs.fabric.ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevice;
+    }
+
+    export interface ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterface {
+        /**
+         * id
+         */
+        id: number;
+        /**
+         * Interface type
+         */
+        type: string;
+        /**
+         * Equinix-assigned interface identifier
+         */
+        uuid: string;
+    }
+
+    export interface ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocol {
+        /**
+         * Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
+         */
+        type: string;
+        /**
+         * Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+         */
+        vlanCTag: number;
+        /**
+         * Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+         */
+        vlanSTag: number;
+        /**
+         * Vlan Tag information, vlanTag value specified for DOT1Q connections
+         */
+        vlanTag: number;
+    }
+
+    export interface ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetwork {
+        /**
+         * Unique Resource Identifier
+         */
+        href: string;
+        /**
+         * Location
+         */
+        locations: outputs.fabric.ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocation[];
+        /**
+         * Network Name
+         */
+        name: string;
+        /**
+         * Scope of Network
+         */
+        scope: string;
+        /**
+         * Type of Network
+         */
+        type: string;
+        /**
+         * Equinix-assigned Network identifier
+         */
+        uuid: string;
+    }
+
+    export interface ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocation {
+        /**
+         * IBX Code
+         */
+        ibx: string;
+        /**
+         * Access point metro code
+         */
+        metroCode: string;
+        /**
+         * Access point metro name
+         */
+        metroName: string;
+        /**
+         * Access point region
+         */
+        region: string;
+    }
+
+    export interface ServiceTokenServiceTokenConnectionASideAccessPointSelectorPort {
+        /**
+         * Account Name
+         */
+        accountName: string;
+        /**
+         * Port Bandwidth
+         */
+        bandwidth: number;
+        /**
+         * Customer virtual port Id
+         */
+        cvpId: number;
+        /**
+         * Port Encapsulation
+         */
+        encapsulationProtocolType: string;
+        /**
+         * Unique Resource Identifier
+         */
+        href: string;
+        /**
+         * Port Location
+         */
+        locations: outputs.fabric.ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocation[];
+        /**
+         * Port Name
+         */
+        portName: string;
+        /**
+         * Port Priority
+         */
+        priority: string;
+        /**
+         * Type of Port
+         */
+        type: string;
+        /**
+         * Equinix-assigned Port identifier
+         */
+        uuid: string;
+    }
+
+    export interface ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocation {
+        /**
+         * IBX Code
+         */
+        ibx: string;
+        /**
+         * Access point metro code
+         */
+        metroCode: string;
+        /**
+         * Access point metro name
+         */
+        metroName: string;
+        /**
+         * Access point region
+         */
+        region: string;
+    }
+
+    export interface ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevice {
+        /**
+         * Virtual Device Cluster Information
+         */
+        cluster: string;
+        /**
+         * Unique Resource Identifier
+         */
+        href: string;
+        /**
+         * Customer-assigned Virtual Device Name
+         */
+        name: string;
+        /**
+         * Virtual Device type
+         */
+        type: string;
+        /**
+         * Equinix-assigned Virtual Device identifier
+         */
+        uuid: string;
+    }
+
+    export interface ServiceTokenServiceTokenConnectionZSide {
+        /**
+         * List of criteria for selecting network access points with optimal efficiency, security, compatibility, and availability
+         */
+        accessPointSelectors: outputs.fabric.ServiceTokenServiceTokenConnectionZSideAccessPointSelector[];
+    }
+
+    export interface ServiceTokenServiceTokenConnectionZSideAccessPointSelector {
+        /**
+         * Virtual Device Interface Configuration
+         */
+        interface: outputs.fabric.ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterface;
+        /**
+         * Link protocol Configuration
+         */
+        linkProtocol: outputs.fabric.ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocol;
+        /**
+         * Network Configuration
+         */
+        network: outputs.fabric.ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetwork;
+        /**
+         * Port Configuration
+         */
+        port: outputs.fabric.ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort;
+        /**
+         * Type of Access point; COLO, VD, NETWORK
+         */
+        type: string;
+        /**
+         * Virtual Device Configuration
+         */
+        virtualDevice?: outputs.fabric.ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevice;
+    }
+
+    export interface ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterface {
+        /**
+         * id
+         */
+        id: number;
+        /**
+         * Interface type
+         */
+        type: string;
+        /**
+         * Equinix-assigned interface identifier
+         */
+        uuid: string;
+    }
+
+    export interface ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocol {
+        /**
+         * Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
+         */
+        type: string;
+        /**
+         * Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+         */
+        vlanCTag: number;
+        /**
+         * Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+         */
+        vlanSTag: number;
+        /**
+         * Vlan Tag information, vlanTag value specified for DOT1Q connections
+         */
+        vlanTag: number;
+    }
+
+    export interface ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetwork {
+        /**
+         * Unique Resource Identifier
+         */
+        href: string;
+        /**
+         * Location
+         */
+        locations: outputs.fabric.ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocation[];
+        /**
+         * Network Name
+         */
+        name: string;
+        /**
+         * Scope of Network
+         */
+        scope: string;
+        /**
+         * Type of Network
+         */
+        type: string;
+        /**
+         * Equinix-assigned Network identifier
+         */
+        uuid: string;
+    }
+
+    export interface ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocation {
+        /**
+         * IBX Code
+         */
+        ibx: string;
+        /**
+         * Access point metro code
+         */
+        metroCode: string;
+        /**
+         * Access point metro name
+         */
+        metroName: string;
+        /**
+         * Access point region
+         */
+        region: string;
+    }
+
+    export interface ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort {
+        /**
+         * Account Name
+         */
+        accountName: string;
+        /**
+         * Port Bandwidth
+         */
+        bandwidth: number;
+        /**
+         * Customer virtual port Id
+         */
+        cvpId: number;
+        /**
+         * Port Encapsulation
+         */
+        encapsulationProtocolType: string;
+        /**
+         * Unique Resource Identifier
+         */
+        href: string;
+        /**
+         * Port Location
+         */
+        locations: outputs.fabric.ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocation[];
+        /**
+         * Port Name
+         */
+        portName: string;
+        /**
+         * Port Priority
+         */
+        priority: string;
+        /**
+         * Type of Port
+         */
+        type: string;
+        /**
+         * Equinix-assigned Port identifier
+         */
+        uuid: string;
+    }
+
+    export interface ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocation {
+        /**
+         * IBX Code
+         */
+        ibx: string;
+        /**
+         * Access point metro code
+         */
+        metroCode: string;
+        /**
+         * Access point metro name
+         */
+        metroName: string;
+        /**
+         * Access point region
+         */
+        region: string;
+    }
+
+    export interface ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevice {
+        /**
+         * Virtual Device Cluster Information
+         */
+        cluster: string;
+        /**
+         * Unique Resource Identifier
+         */
+        href: string;
+        /**
+         * Customer-assigned Virtual Device Name
+         */
+        name: string;
+        /**
+         * Virtual Device type
+         */
+        type: string;
+        /**
+         * Equinix-assigned Virtual Device identifier
+         */
+        uuid: string;
     }
 
 }

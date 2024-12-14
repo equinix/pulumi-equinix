@@ -1441,6 +1441,357 @@ resources:
 {{% /example %}}
 
 {{% example %}}
+### example port to alibaba
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as equinix from "@equinix-labs/pulumi-equinix";
+
+const port2Alibaba = new equinix.fabric.Connection("port2alibaba", {
+    name: "ConnectionName",
+    type: equinix.fabric.ConnectionType.EVPL,
+    notifications: [{
+        type: equinix.fabric.NotificationsType.All,
+        emails: [
+            "example@equinix.com",
+            "test1@equinix.com",
+        ],
+    }],
+    bandwidth: 50,
+    redundancy: {
+        priority: "PRIMARY",
+    },
+    order: {
+        purchaseOrderNumber: "1-323929",
+    },
+    aSide: {
+        accessPoint: {
+            type: equinix.fabric.AccessPointType.Colo,
+            port: {
+                uuid: "<aside_port_uuid>",
+            },
+            linkProtocol: {
+                type: equinix.fabric.AccessPointLinkProtocolType.Dot1q,
+                vlanTag: 2019,
+            },
+        },
+    },
+    zSide: {
+        accessPoint: {
+            type: equinix.fabric.AccessPointType.SP,
+            authenticationKey: "<alibaba_account_id>",
+            sellerRegion: "us-west-1",
+            profile: {
+                type: equinix.fabric.ProfileType.L2Profile,
+                uuid: "<service_profile_uuid>",
+            },
+            location: {
+                metroCode: equinix.index.Metro.SiliconValley,
+            },
+        },
+    },
+});
+```
+```python
+import pulumi
+import pulumi_equinix as equinix
+
+port2_alibaba = equinix.fabric.Connection("port2alibaba",
+    name="ConnectionName",
+    type=equinix.fabric.ConnectionType.EVPL,
+    notifications=[{
+        "type": equinix.fabric.NotificationsType.ALL,
+        "emails": [
+            "example@equinix.com",
+            "test1@equinix.com",
+        ],
+    }],
+    bandwidth=50,
+    redundancy={
+        "priority": "PRIMARY",
+    },
+    order={
+        "purchase_order_number": "1-323929",
+    },
+    a_side={
+        "access_point": {
+            "type": equinix.fabric.AccessPointType.COLO,
+            "port": {
+                "uuid": "<aside_port_uuid>",
+            },
+            "link_protocol": {
+                "type": equinix.fabric.AccessPointLinkProtocolType.DOT1Q,
+                "vlan_tag": 2019,
+            },
+        },
+    },
+    z_side={
+        "access_point": {
+            "type": equinix.fabric.AccessPointType.SP,
+            "authentication_key": "<alibaba_account_id>",
+            "seller_region": "us-west-1",
+            "profile": {
+                "type": equinix.fabric.ProfileType.L2_PROFILE,
+                "uuid": "<service_profile_uuid>",
+            },
+            "location": {
+                "metro_code": equinix.Metro.SILICON_VALLEY,
+            },
+        },
+    })
+```
+```go
+package main
+
+import (
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix"
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+)
+
+func main() {
+	pulumi.Run(func(ctx *pulumi.Context) error {
+		_, err := fabric.NewConnection(ctx, "port2alibaba", &fabric.ConnectionArgs{
+			Name: pulumi.String("ConnectionName"),
+			Type: pulumi.String(fabric.ConnectionTypeEVPL),
+			Notifications: fabric.ConnectionNotificationArray{
+				&fabric.ConnectionNotificationArgs{
+					Type: pulumi.String(fabric.NotificationsTypeAll),
+					Emails: pulumi.StringArray{
+						pulumi.String("example@equinix.com"),
+						pulumi.String("test1@equinix.com"),
+					},
+				},
+			},
+			Bandwidth: pulumi.Int(50),
+			Redundancy: &fabric.ConnectionRedundancyArgs{
+				Priority: pulumi.String("PRIMARY"),
+			},
+			Order: &fabric.ConnectionOrderArgs{
+				PurchaseOrderNumber: pulumi.String("1-323929"),
+			},
+			ASide: &fabric.ConnectionASideArgs{
+				AccessPoint: &fabric.ConnectionASideAccessPointArgs{
+					Type: pulumi.String(fabric.AccessPointTypeColo),
+					Port: &fabric.ConnectionASideAccessPointPortArgs{
+						Uuid: pulumi.String("<aside_port_uuid>"),
+					},
+					LinkProtocol: &fabric.ConnectionASideAccessPointLinkProtocolArgs{
+						Type:    pulumi.String(fabric.AccessPointLinkProtocolTypeDot1q),
+						VlanTag: pulumi.Int(2019),
+					},
+				},
+			},
+			ZSide: &fabric.ConnectionZSideArgs{
+				AccessPoint: &fabric.ConnectionZSideAccessPointArgs{
+					Type:              pulumi.String(fabric.AccessPointTypeSP),
+					AuthenticationKey: pulumi.String("<alibaba_account_id>"),
+					SellerRegion:      pulumi.String("us-west-1"),
+					Profile: &fabric.ConnectionZSideAccessPointProfileArgs{
+						Type: pulumi.String(fabric.ProfileTypeL2Profile),
+						Uuid: pulumi.String("<service_profile_uuid>"),
+					},
+					Location: &fabric.ConnectionZSideAccessPointLocationArgs{
+						MetroCode: pulumi.String(equinix.MetroSiliconValley),
+					},
+				},
+			},
+		})
+		if err != nil {
+			return err
+		}
+		return nil
+	})
+}
+```
+```csharp
+using System.Collections.Generic;
+using System.Linq;
+using Pulumi;
+using Equinix = Pulumi.Equinix;
+
+return await Deployment.RunAsync(() => 
+{
+    var port2Alibaba = new Equinix.Fabric.Connection("port2alibaba", new()
+    {
+        Name = "ConnectionName",
+        Type = Equinix.Fabric.ConnectionType.EVPL,
+        Notifications = new[]
+        {
+            new Equinix.Fabric.Inputs.ConnectionNotificationArgs
+            {
+                Type = Equinix.Fabric.NotificationsType.All,
+                Emails = new[]
+                {
+                    "example@equinix.com",
+                    "test1@equinix.com",
+                },
+            },
+        },
+        Bandwidth = 50,
+        Redundancy = new Equinix.Fabric.Inputs.ConnectionRedundancyArgs
+        {
+            Priority = "PRIMARY",
+        },
+        Order = new Equinix.Fabric.Inputs.ConnectionOrderArgs
+        {
+            PurchaseOrderNumber = "1-323929",
+        },
+        ASide = new Equinix.Fabric.Inputs.ConnectionASideArgs
+        {
+            AccessPoint = new Equinix.Fabric.Inputs.ConnectionASideAccessPointArgs
+            {
+                Type = Equinix.Fabric.AccessPointType.Colo,
+                Port = new Equinix.Fabric.Inputs.ConnectionASideAccessPointPortArgs
+                {
+                    Uuid = "<aside_port_uuid>",
+                },
+                LinkProtocol = new Equinix.Fabric.Inputs.ConnectionASideAccessPointLinkProtocolArgs
+                {
+                    Type = Equinix.Fabric.AccessPointLinkProtocolType.Dot1q,
+                    VlanTag = 2019,
+                },
+            },
+        },
+        ZSide = new Equinix.Fabric.Inputs.ConnectionZSideArgs
+        {
+            AccessPoint = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointArgs
+            {
+                Type = Equinix.Fabric.AccessPointType.SP,
+                AuthenticationKey = "<alibaba_account_id>",
+                SellerRegion = "us-west-1",
+                Profile = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointProfileArgs
+                {
+                    Type = Equinix.Fabric.ProfileType.L2Profile,
+                    Uuid = "<service_profile_uuid>",
+                },
+                Location = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointLocationArgs
+                {
+                    MetroCode = Equinix.Metro.SiliconValley,
+                },
+            },
+        },
+    });
+
+});
+```
+```java
+package generated_program;
+
+import com.pulumi.Context;
+import com.pulumi.Pulumi;
+import com.pulumi.core.Output;
+import com.pulumi.equinix.fabric.Connection;
+import com.pulumi.equinix.fabric.ConnectionArgs;
+import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
+import com.pulumi.equinix.fabric.inputs.ConnectionRedundancyArgs;
+import com.pulumi.equinix.fabric.inputs.ConnectionOrderArgs;
+import com.pulumi.equinix.fabric.inputs.ConnectionASideArgs;
+import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointArgs;
+import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointPortArgs;
+import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointLinkProtocolArgs;
+import com.pulumi.equinix.fabric.inputs.ConnectionZSideArgs;
+import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointArgs;
+import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointProfileArgs;
+import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointLocationArgs;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+public class App {
+    public static void main(String[] args) {
+        Pulumi.run(App::stack);
+    }
+
+    public static void stack(Context ctx) {
+        var port2Alibaba = new Connection("port2Alibaba", ConnectionArgs.builder()
+            .name("ConnectionName")
+            .type("EVPL_VC")
+            .notifications(ConnectionNotificationArgs.builder()
+                .type("ALL")
+                .emails(                
+                    "example@equinix.com",
+                    "test1@equinix.com")
+                .build())
+            .bandwidth(50)
+            .redundancy(ConnectionRedundancyArgs.builder()
+                .priority("PRIMARY")
+                .build())
+            .order(ConnectionOrderArgs.builder()
+                .purchaseOrderNumber("1-323929")
+                .build())
+            .aSide(ConnectionASideArgs.builder()
+                .accessPoint(ConnectionASideAccessPointArgs.builder()
+                    .type("COLO")
+                    .port(ConnectionASideAccessPointPortArgs.builder()
+                        .uuid("<aside_port_uuid>")
+                        .build())
+                    .linkProtocol(ConnectionASideAccessPointLinkProtocolArgs.builder()
+                        .type("DOT1Q")
+                        .vlanTag("2019")
+                        .build())
+                    .build())
+                .build())
+            .zSide(ConnectionZSideArgs.builder()
+                .accessPoint(ConnectionZSideAccessPointArgs.builder()
+                    .type("SP")
+                    .authenticationKey("<alibaba_account_id>")
+                    .sellerRegion("us-west-1")
+                    .profile(ConnectionZSideAccessPointProfileArgs.builder()
+                        .type("L2_PROFILE")
+                        .uuid("<service_profile_uuid>")
+                        .build())
+                    .location(ConnectionZSideAccessPointLocationArgs.builder()
+                        .metroCode("SV")
+                        .build())
+                    .build())
+                .build())
+            .build());
+
+    }
+}
+```
+```yaml
+resources:
+  port2alibaba:
+    type: equinix:fabric:Connection
+    properties:
+      name: ConnectionName
+      type: EVPL_VC
+      notifications:
+        - type: ALL
+          emails:
+            - example@equinix.com
+            - test1@equinix.com
+      bandwidth: 50
+      redundancy:
+        priority: PRIMARY
+      order:
+        purchaseOrderNumber: 1-323929
+      aSide:
+        accessPoint:
+          type: COLO
+          port:
+            uuid: <aside_port_uuid>
+          linkProtocol:
+            type: DOT1Q
+            vlanTag: '2019'
+      zSide:
+        accessPoint:
+          type: SP
+          authenticationKey: <alibaba_account_id>
+          sellerRegion: us-west-1
+          profile:
+            type: L2_PROFILE
+            uuid: <service_profile_uuid>
+          location:
+            metroCode: SV
+```
+{{% /example %}}
+
+{{% example %}}
 ### example port to aws
 ```typescript
 import * as pulumi from "@pulumi/pulumi";

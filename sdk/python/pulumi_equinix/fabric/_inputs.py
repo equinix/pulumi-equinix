@@ -98,6 +98,29 @@ __all__ = [
     'ServiceProfileProjectArgs',
     'ServiceProfileVirtualDeviceArgs',
     'ServiceProfileVirtualDeviceLocationArgs',
+    'ServiceTokenAccountArgs',
+    'ServiceTokenChangeLogArgs',
+    'ServiceTokenNotificationArgs',
+    'ServiceTokenProjectArgs',
+    'ServiceTokenServiceTokenConnectionArgs',
+    'ServiceTokenServiceTokenConnectionASideArgs',
+    'ServiceTokenServiceTokenConnectionASideAccessPointSelectorArgs',
+    'ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceArgs',
+    'ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolArgs',
+    'ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkArgs',
+    'ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArgs',
+    'ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortArgs',
+    'ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArgs',
+    'ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs',
+    'ServiceTokenServiceTokenConnectionZSideArgs',
+    'ServiceTokenServiceTokenConnectionZSideAccessPointSelectorArgs',
+    'ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceArgs',
+    'ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolArgs',
+    'ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkArgs',
+    'ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArgs',
+    'ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortArgs',
+    'ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArgs',
+    'ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs',
     'GetCloudRoutersFilterArgs',
     'GetCloudRoutersPaginationArgs',
     'GetCloudRoutersSortArgs',
@@ -114,6 +137,8 @@ __all__ = [
     'GetServiceProfilesFilterArgs',
     'GetServiceProfilesPaginationArgs',
     'GetServiceProfilesSortArgs',
+    'GetServiceTokensFilterArgs',
+    'GetServiceTokensPaginationArgs',
 ]
 
 @pulumi.input_type
@@ -6956,6 +6981,2060 @@ class ServiceProfileVirtualDeviceLocationArgs:
 
 
 @pulumi.input_type
+class ServiceTokenAccountArgs:
+    def __init__(__self__, *,
+                 account_name: Optional[pulumi.Input[str]] = None,
+                 account_number: Optional[pulumi.Input[int]] = None,
+                 global_cust_id: Optional[pulumi.Input[str]] = None,
+                 global_org_id: Optional[pulumi.Input[str]] = None,
+                 global_organization_name: Optional[pulumi.Input[str]] = None,
+                 org_id: Optional[pulumi.Input[int]] = None,
+                 organization_name: Optional[pulumi.Input[str]] = None,
+                 ucm_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] account_name: Legal name of the accountholder.
+        :param pulumi.Input[int] account_number: Equinix-assigned account number.
+        :param pulumi.Input[str] global_cust_id: Equinix-assigned ID of the subscriber's parent organization.
+        :param pulumi.Input[str] global_org_id: Equinix-assigned ID of the subscriber's parent organization.
+        :param pulumi.Input[str] global_organization_name: Equinix-assigned name of the subscriber's parent organization.
+        :param pulumi.Input[int] org_id: Equinix-assigned ID of the subscriber's organization.
+        :param pulumi.Input[str] organization_name: Equinix-assigned name of the subscriber's organization.
+        :param pulumi.Input[str] ucm_id: Enterprise datastore id
+        """
+        if account_name is not None:
+            pulumi.set(__self__, "account_name", account_name)
+        if account_number is not None:
+            pulumi.set(__self__, "account_number", account_number)
+        if global_cust_id is not None:
+            pulumi.set(__self__, "global_cust_id", global_cust_id)
+        if global_org_id is not None:
+            pulumi.set(__self__, "global_org_id", global_org_id)
+        if global_organization_name is not None:
+            pulumi.set(__self__, "global_organization_name", global_organization_name)
+        if org_id is not None:
+            pulumi.set(__self__, "org_id", org_id)
+        if organization_name is not None:
+            pulumi.set(__self__, "organization_name", organization_name)
+        if ucm_id is not None:
+            pulumi.set(__self__, "ucm_id", ucm_id)
+
+    @property
+    @pulumi.getter(name="accountName")
+    def account_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Legal name of the accountholder.
+        """
+        return pulumi.get(self, "account_name")
+
+    @account_name.setter
+    def account_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_name", value)
+
+    @property
+    @pulumi.getter(name="accountNumber")
+    def account_number(self) -> Optional[pulumi.Input[int]]:
+        """
+        Equinix-assigned account number.
+        """
+        return pulumi.get(self, "account_number")
+
+    @account_number.setter
+    def account_number(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "account_number", value)
+
+    @property
+    @pulumi.getter(name="globalCustId")
+    def global_cust_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Equinix-assigned ID of the subscriber's parent organization.
+        """
+        return pulumi.get(self, "global_cust_id")
+
+    @global_cust_id.setter
+    def global_cust_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "global_cust_id", value)
+
+    @property
+    @pulumi.getter(name="globalOrgId")
+    def global_org_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Equinix-assigned ID of the subscriber's parent organization.
+        """
+        return pulumi.get(self, "global_org_id")
+
+    @global_org_id.setter
+    def global_org_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "global_org_id", value)
+
+    @property
+    @pulumi.getter(name="globalOrganizationName")
+    def global_organization_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Equinix-assigned name of the subscriber's parent organization.
+        """
+        return pulumi.get(self, "global_organization_name")
+
+    @global_organization_name.setter
+    def global_organization_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "global_organization_name", value)
+
+    @property
+    @pulumi.getter(name="orgId")
+    def org_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        Equinix-assigned ID of the subscriber's organization.
+        """
+        return pulumi.get(self, "org_id")
+
+    @org_id.setter
+    def org_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "org_id", value)
+
+    @property
+    @pulumi.getter(name="organizationName")
+    def organization_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Equinix-assigned name of the subscriber's organization.
+        """
+        return pulumi.get(self, "organization_name")
+
+    @organization_name.setter
+    def organization_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "organization_name", value)
+
+    @property
+    @pulumi.getter(name="ucmId")
+    def ucm_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Enterprise datastore id
+        """
+        return pulumi.get(self, "ucm_id")
+
+    @ucm_id.setter
+    def ucm_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ucm_id", value)
+
+
+@pulumi.input_type
+class ServiceTokenChangeLogArgs:
+    def __init__(__self__, *,
+                 created_by: Optional[pulumi.Input[str]] = None,
+                 created_by_email: Optional[pulumi.Input[str]] = None,
+                 created_by_full_name: Optional[pulumi.Input[str]] = None,
+                 created_date_time: Optional[pulumi.Input[str]] = None,
+                 deleted_by: Optional[pulumi.Input[str]] = None,
+                 deleted_by_email: Optional[pulumi.Input[str]] = None,
+                 deleted_by_full_name: Optional[pulumi.Input[str]] = None,
+                 deleted_date_time: Optional[pulumi.Input[str]] = None,
+                 updated_by: Optional[pulumi.Input[str]] = None,
+                 updated_by_email: Optional[pulumi.Input[str]] = None,
+                 updated_by_full_name: Optional[pulumi.Input[str]] = None,
+                 updated_date_time: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] created_by: Created by User Key
+        :param pulumi.Input[str] created_by_email: Created by User Email Address
+        :param pulumi.Input[str] created_by_full_name: Created by User Full Name
+        :param pulumi.Input[str] created_date_time: Created by Date and Time
+        :param pulumi.Input[str] deleted_by: Deleted by User Key
+        :param pulumi.Input[str] deleted_by_email: Deleted by User Email Address
+        :param pulumi.Input[str] deleted_by_full_name: Deleted by User Full Name
+        :param pulumi.Input[str] deleted_date_time: Deleted by Date and Time
+        :param pulumi.Input[str] updated_by: Updated by User Key
+        :param pulumi.Input[str] updated_by_email: Updated by User Email Address
+        :param pulumi.Input[str] updated_by_full_name: Updated by User Full Name
+        :param pulumi.Input[str] updated_date_time: Updated by Date and Time
+        """
+        if created_by is not None:
+            pulumi.set(__self__, "created_by", created_by)
+        if created_by_email is not None:
+            pulumi.set(__self__, "created_by_email", created_by_email)
+        if created_by_full_name is not None:
+            pulumi.set(__self__, "created_by_full_name", created_by_full_name)
+        if created_date_time is not None:
+            pulumi.set(__self__, "created_date_time", created_date_time)
+        if deleted_by is not None:
+            pulumi.set(__self__, "deleted_by", deleted_by)
+        if deleted_by_email is not None:
+            pulumi.set(__self__, "deleted_by_email", deleted_by_email)
+        if deleted_by_full_name is not None:
+            pulumi.set(__self__, "deleted_by_full_name", deleted_by_full_name)
+        if deleted_date_time is not None:
+            pulumi.set(__self__, "deleted_date_time", deleted_date_time)
+        if updated_by is not None:
+            pulumi.set(__self__, "updated_by", updated_by)
+        if updated_by_email is not None:
+            pulumi.set(__self__, "updated_by_email", updated_by_email)
+        if updated_by_full_name is not None:
+            pulumi.set(__self__, "updated_by_full_name", updated_by_full_name)
+        if updated_date_time is not None:
+            pulumi.set(__self__, "updated_date_time", updated_date_time)
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> Optional[pulumi.Input[str]]:
+        """
+        Created by User Key
+        """
+        return pulumi.get(self, "created_by")
+
+    @created_by.setter
+    def created_by(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_by", value)
+
+    @property
+    @pulumi.getter(name="createdByEmail")
+    def created_by_email(self) -> Optional[pulumi.Input[str]]:
+        """
+        Created by User Email Address
+        """
+        return pulumi.get(self, "created_by_email")
+
+    @created_by_email.setter
+    def created_by_email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_by_email", value)
+
+    @property
+    @pulumi.getter(name="createdByFullName")
+    def created_by_full_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Created by User Full Name
+        """
+        return pulumi.get(self, "created_by_full_name")
+
+    @created_by_full_name.setter
+    def created_by_full_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_by_full_name", value)
+
+    @property
+    @pulumi.getter(name="createdDateTime")
+    def created_date_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Created by Date and Time
+        """
+        return pulumi.get(self, "created_date_time")
+
+    @created_date_time.setter
+    def created_date_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_date_time", value)
+
+    @property
+    @pulumi.getter(name="deletedBy")
+    def deleted_by(self) -> Optional[pulumi.Input[str]]:
+        """
+        Deleted by User Key
+        """
+        return pulumi.get(self, "deleted_by")
+
+    @deleted_by.setter
+    def deleted_by(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deleted_by", value)
+
+    @property
+    @pulumi.getter(name="deletedByEmail")
+    def deleted_by_email(self) -> Optional[pulumi.Input[str]]:
+        """
+        Deleted by User Email Address
+        """
+        return pulumi.get(self, "deleted_by_email")
+
+    @deleted_by_email.setter
+    def deleted_by_email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deleted_by_email", value)
+
+    @property
+    @pulumi.getter(name="deletedByFullName")
+    def deleted_by_full_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Deleted by User Full Name
+        """
+        return pulumi.get(self, "deleted_by_full_name")
+
+    @deleted_by_full_name.setter
+    def deleted_by_full_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deleted_by_full_name", value)
+
+    @property
+    @pulumi.getter(name="deletedDateTime")
+    def deleted_date_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Deleted by Date and Time
+        """
+        return pulumi.get(self, "deleted_date_time")
+
+    @deleted_date_time.setter
+    def deleted_date_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deleted_date_time", value)
+
+    @property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> Optional[pulumi.Input[str]]:
+        """
+        Updated by User Key
+        """
+        return pulumi.get(self, "updated_by")
+
+    @updated_by.setter
+    def updated_by(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated_by", value)
+
+    @property
+    @pulumi.getter(name="updatedByEmail")
+    def updated_by_email(self) -> Optional[pulumi.Input[str]]:
+        """
+        Updated by User Email Address
+        """
+        return pulumi.get(self, "updated_by_email")
+
+    @updated_by_email.setter
+    def updated_by_email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated_by_email", value)
+
+    @property
+    @pulumi.getter(name="updatedByFullName")
+    def updated_by_full_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Updated by User Full Name
+        """
+        return pulumi.get(self, "updated_by_full_name")
+
+    @updated_by_full_name.setter
+    def updated_by_full_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated_by_full_name", value)
+
+    @property
+    @pulumi.getter(name="updatedDateTime")
+    def updated_date_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Updated by Date and Time
+        """
+        return pulumi.get(self, "updated_date_time")
+
+    @updated_date_time.setter
+    def updated_date_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated_date_time", value)
+
+
+@pulumi.input_type
+class ServiceTokenNotificationArgs:
+    def __init__(__self__, *,
+                 emails: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 type: pulumi.Input[str],
+                 send_interval: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] emails: Array of contact emails
+        :param pulumi.Input[str] type: Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
+        :param pulumi.Input[str] send_interval: Send interval
+        """
+        pulumi.set(__self__, "emails", emails)
+        pulumi.set(__self__, "type", type)
+        if send_interval is not None:
+            pulumi.set(__self__, "send_interval", send_interval)
+
+    @property
+    @pulumi.getter
+    def emails(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Array of contact emails
+        """
+        return pulumi.get(self, "emails")
+
+    @emails.setter
+    def emails(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "emails", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="sendInterval")
+    def send_interval(self) -> Optional[pulumi.Input[str]]:
+        """
+        Send interval
+        """
+        return pulumi.get(self, "send_interval")
+
+    @send_interval.setter
+    def send_interval(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "send_interval", value)
+
+
+@pulumi.input_type
+class ServiceTokenProjectArgs:
+    def __init__(__self__, *,
+                 href: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] href: Unique Resource URL
+        :param pulumi.Input[str] project_id: Project Id
+        """
+        if href is not None:
+            pulumi.set(__self__, "href", href)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
+
+    @property
+    @pulumi.getter
+    def href(self) -> Optional[pulumi.Input[str]]:
+        """
+        Unique Resource URL
+        """
+        return pulumi.get(self, "href")
+
+    @href.setter
+    def href(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "href", value)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Project Id
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_id", value)
+
+
+@pulumi.input_type
+class ServiceTokenServiceTokenConnectionArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 a_sides: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTokenServiceTokenConnectionASideArgs']]]] = None,
+                 allow_custom_bandwidth: Optional[pulumi.Input[bool]] = None,
+                 allow_remote_connection: Optional[pulumi.Input[bool]] = None,
+                 bandwidth_limit: Optional[pulumi.Input[int]] = None,
+                 supported_bandwidths: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 uuid: Optional[pulumi.Input[str]] = None,
+                 z_sides: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTokenServiceTokenConnectionZSideArgs']]]] = None):
+        """
+        :param pulumi.Input[str] type: Type of Connection supported by Service Token you will create; EVPL*VC, EVPLAN*VC, EPLAN*VC, IPWAN*VC
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceTokenServiceTokenConnectionASideArgs']]] a_sides: A-Side Connection link protocol,virtual device or network configuration
+        :param pulumi.Input[bool] allow_custom_bandwidth: Allow custom bandwidth value
+        :param pulumi.Input[bool] allow_remote_connection: Authorization to connect remotely
+        :param pulumi.Input[int] bandwidth_limit: Connection bandwidth limit in Mbps
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] supported_bandwidths: List of permitted bandwidths'; For Port-based Service Tokens, the maximum allowable bandwidth is 50 Gbps, while for Virtual Device-based Service Tokens, it is limited to 10 Gbps
+        :param pulumi.Input[str] uuid: Equinix-assigned connection identifier
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceTokenServiceTokenConnectionZSideArgs']]] z_sides: Z-Side Connection link protocol,virtual device or network configuration
+        """
+        pulumi.set(__self__, "type", type)
+        if a_sides is not None:
+            pulumi.set(__self__, "a_sides", a_sides)
+        if allow_custom_bandwidth is not None:
+            pulumi.set(__self__, "allow_custom_bandwidth", allow_custom_bandwidth)
+        if allow_remote_connection is not None:
+            pulumi.set(__self__, "allow_remote_connection", allow_remote_connection)
+        if bandwidth_limit is not None:
+            pulumi.set(__self__, "bandwidth_limit", bandwidth_limit)
+        if supported_bandwidths is not None:
+            pulumi.set(__self__, "supported_bandwidths", supported_bandwidths)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+        if z_sides is not None:
+            pulumi.set(__self__, "z_sides", z_sides)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        Type of Connection supported by Service Token you will create; EVPL*VC, EVPLAN*VC, EPLAN*VC, IPWAN*VC
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="aSides")
+    def a_sides(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTokenServiceTokenConnectionASideArgs']]]]:
+        """
+        A-Side Connection link protocol,virtual device or network configuration
+        """
+        return pulumi.get(self, "a_sides")
+
+    @a_sides.setter
+    def a_sides(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTokenServiceTokenConnectionASideArgs']]]]):
+        pulumi.set(self, "a_sides", value)
+
+    @property
+    @pulumi.getter(name="allowCustomBandwidth")
+    def allow_custom_bandwidth(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allow custom bandwidth value
+        """
+        return pulumi.get(self, "allow_custom_bandwidth")
+
+    @allow_custom_bandwidth.setter
+    def allow_custom_bandwidth(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_custom_bandwidth", value)
+
+    @property
+    @pulumi.getter(name="allowRemoteConnection")
+    def allow_remote_connection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Authorization to connect remotely
+        """
+        return pulumi.get(self, "allow_remote_connection")
+
+    @allow_remote_connection.setter
+    def allow_remote_connection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_remote_connection", value)
+
+    @property
+    @pulumi.getter(name="bandwidthLimit")
+    def bandwidth_limit(self) -> Optional[pulumi.Input[int]]:
+        """
+        Connection bandwidth limit in Mbps
+        """
+        return pulumi.get(self, "bandwidth_limit")
+
+    @bandwidth_limit.setter
+    def bandwidth_limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "bandwidth_limit", value)
+
+    @property
+    @pulumi.getter(name="supportedBandwidths")
+    def supported_bandwidths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
+        """
+        List of permitted bandwidths'; For Port-based Service Tokens, the maximum allowable bandwidth is 50 Gbps, while for Virtual Device-based Service Tokens, it is limited to 10 Gbps
+        """
+        return pulumi.get(self, "supported_bandwidths")
+
+    @supported_bandwidths.setter
+    def supported_bandwidths(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
+        pulumi.set(self, "supported_bandwidths", value)
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> Optional[pulumi.Input[str]]:
+        """
+        Equinix-assigned connection identifier
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "uuid", value)
+
+    @property
+    @pulumi.getter(name="zSides")
+    def z_sides(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTokenServiceTokenConnectionZSideArgs']]]]:
+        """
+        Z-Side Connection link protocol,virtual device or network configuration
+        """
+        return pulumi.get(self, "z_sides")
+
+    @z_sides.setter
+    def z_sides(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTokenServiceTokenConnectionZSideArgs']]]]):
+        pulumi.set(self, "z_sides", value)
+
+
+@pulumi.input_type
+class ServiceTokenServiceTokenConnectionASideArgs:
+    def __init__(__self__, *,
+                 access_point_selectors: pulumi.Input[Sequence[pulumi.Input['ServiceTokenServiceTokenConnectionASideAccessPointSelectorArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceTokenServiceTokenConnectionASideAccessPointSelectorArgs']]] access_point_selectors: List of criteria for selecting network access points with optimal efficiency, security, compatibility, and availability
+        """
+        pulumi.set(__self__, "access_point_selectors", access_point_selectors)
+
+    @property
+    @pulumi.getter(name="accessPointSelectors")
+    def access_point_selectors(self) -> pulumi.Input[Sequence[pulumi.Input['ServiceTokenServiceTokenConnectionASideAccessPointSelectorArgs']]]:
+        """
+        List of criteria for selecting network access points with optimal efficiency, security, compatibility, and availability
+        """
+        return pulumi.get(self, "access_point_selectors")
+
+    @access_point_selectors.setter
+    def access_point_selectors(self, value: pulumi.Input[Sequence[pulumi.Input['ServiceTokenServiceTokenConnectionASideAccessPointSelectorArgs']]]):
+        pulumi.set(self, "access_point_selectors", value)
+
+
+@pulumi.input_type
+class ServiceTokenServiceTokenConnectionASideAccessPointSelectorArgs:
+    def __init__(__self__, *,
+                 interface: Optional[pulumi.Input['ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceArgs']] = None,
+                 link_protocol: Optional[pulumi.Input['ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolArgs']] = None,
+                 network: Optional[pulumi.Input['ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkArgs']] = None,
+                 port: Optional[pulumi.Input['ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortArgs']] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 virtual_device: Optional[pulumi.Input['ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs']] = None):
+        """
+        :param pulumi.Input['ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceArgs'] interface: Virtual Device Interface Configuration
+        :param pulumi.Input['ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolArgs'] link_protocol: Link protocol Configuration
+        :param pulumi.Input['ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkArgs'] network: Network Configuration
+        :param pulumi.Input['ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortArgs'] port: Port Configuration
+        :param pulumi.Input[str] type: Type of Access point; COLO, VD, NETWORK
+        :param pulumi.Input['ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs'] virtual_device: Virtual Device Configuration
+        """
+        if interface is not None:
+            pulumi.set(__self__, "interface", interface)
+        if link_protocol is not None:
+            pulumi.set(__self__, "link_protocol", link_protocol)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if virtual_device is not None:
+            pulumi.set(__self__, "virtual_device", virtual_device)
+
+    @property
+    @pulumi.getter
+    def interface(self) -> Optional[pulumi.Input['ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceArgs']]:
+        """
+        Virtual Device Interface Configuration
+        """
+        return pulumi.get(self, "interface")
+
+    @interface.setter
+    def interface(self, value: Optional[pulumi.Input['ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceArgs']]):
+        pulumi.set(self, "interface", value)
+
+    @property
+    @pulumi.getter(name="linkProtocol")
+    def link_protocol(self) -> Optional[pulumi.Input['ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolArgs']]:
+        """
+        Link protocol Configuration
+        """
+        return pulumi.get(self, "link_protocol")
+
+    @link_protocol.setter
+    def link_protocol(self, value: Optional[pulumi.Input['ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolArgs']]):
+        pulumi.set(self, "link_protocol", value)
+
+    @property
+    @pulumi.getter
+    def network(self) -> Optional[pulumi.Input['ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkArgs']]:
+        """
+        Network Configuration
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: Optional[pulumi.Input['ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkArgs']]):
+        pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input['ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortArgs']]:
+        """
+        Port Configuration
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input['ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortArgs']]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type of Access point; COLO, VD, NETWORK
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="virtualDevice")
+    def virtual_device(self) -> Optional[pulumi.Input['ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs']]:
+        """
+        Virtual Device Configuration
+        """
+        return pulumi.get(self, "virtual_device")
+
+    @virtual_device.setter
+    def virtual_device(self, value: Optional[pulumi.Input['ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs']]):
+        pulumi.set(self, "virtual_device", value)
+
+
+@pulumi.input_type
+class ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 id: Optional[pulumi.Input[int]] = None,
+                 uuid: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] type: Interface type
+        :param pulumi.Input[int] id: id
+        :param pulumi.Input[str] uuid: Equinix-assigned interface identifier
+        """
+        pulumi.set(__self__, "type", type)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        Interface type
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[int]]:
+        """
+        id
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> Optional[pulumi.Input[str]]:
+        """
+        Equinix-assigned interface identifier
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "uuid", value)
+
+
+@pulumi.input_type
+class ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolArgs:
+    def __init__(__self__, *,
+                 type: Optional[pulumi.Input[str]] = None,
+                 vlan_c_tag: Optional[pulumi.Input[int]] = None,
+                 vlan_s_tag: Optional[pulumi.Input[int]] = None,
+                 vlan_tag: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] type: Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
+        :param pulumi.Input[int] vlan_c_tag: Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+        :param pulumi.Input[int] vlan_s_tag: Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+        :param pulumi.Input[int] vlan_tag: Vlan Tag information, vlanTag value specified for DOT1Q connections
+        """
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if vlan_c_tag is not None:
+            pulumi.set(__self__, "vlan_c_tag", vlan_c_tag)
+        if vlan_s_tag is not None:
+            pulumi.set(__self__, "vlan_s_tag", vlan_s_tag)
+        if vlan_tag is not None:
+            pulumi.set(__self__, "vlan_tag", vlan_tag)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="vlanCTag")
+    def vlan_c_tag(self) -> Optional[pulumi.Input[int]]:
+        """
+        Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+        """
+        return pulumi.get(self, "vlan_c_tag")
+
+    @vlan_c_tag.setter
+    def vlan_c_tag(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "vlan_c_tag", value)
+
+    @property
+    @pulumi.getter(name="vlanSTag")
+    def vlan_s_tag(self) -> Optional[pulumi.Input[int]]:
+        """
+        Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+        """
+        return pulumi.get(self, "vlan_s_tag")
+
+    @vlan_s_tag.setter
+    def vlan_s_tag(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "vlan_s_tag", value)
+
+    @property
+    @pulumi.getter(name="vlanTag")
+    def vlan_tag(self) -> Optional[pulumi.Input[int]]:
+        """
+        Vlan Tag information, vlanTag value specified for DOT1Q connections
+        """
+        return pulumi.get(self, "vlan_tag")
+
+    @vlan_tag.setter
+    def vlan_tag(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "vlan_tag", value)
+
+
+@pulumi.input_type
+class ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkArgs:
+    def __init__(__self__, *,
+                 href: Optional[pulumi.Input[str]] = None,
+                 locations: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArgs']]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 scope: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 uuid: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] href: Unique Resource Identifier
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArgs']]] locations: Location
+        :param pulumi.Input[str] name: Network Name
+        :param pulumi.Input[str] scope: Scope of Network
+        :param pulumi.Input[str] type: Type of Network
+        :param pulumi.Input[str] uuid: Equinix-assigned Network identifier
+        """
+        if href is not None:
+            pulumi.set(__self__, "href", href)
+        if locations is not None:
+            pulumi.set(__self__, "locations", locations)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if scope is not None:
+            pulumi.set(__self__, "scope", scope)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+
+    @property
+    @pulumi.getter
+    def href(self) -> Optional[pulumi.Input[str]]:
+        """
+        Unique Resource Identifier
+        """
+        return pulumi.get(self, "href")
+
+    @href.setter
+    def href(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "href", value)
+
+    @property
+    @pulumi.getter
+    def locations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArgs']]]]:
+        """
+        Location
+        """
+        return pulumi.get(self, "locations")
+
+    @locations.setter
+    def locations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArgs']]]]):
+        pulumi.set(self, "locations", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Network Name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def scope(self) -> Optional[pulumi.Input[str]]:
+        """
+        Scope of Network
+        """
+        return pulumi.get(self, "scope")
+
+    @scope.setter
+    def scope(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scope", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type of Network
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> Optional[pulumi.Input[str]]:
+        """
+        Equinix-assigned Network identifier
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "uuid", value)
+
+
+@pulumi.input_type
+class ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArgs:
+    def __init__(__self__, *,
+                 ibx: Optional[pulumi.Input[str]] = None,
+                 metro_code: Optional[pulumi.Input[str]] = None,
+                 metro_name: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] ibx: IBX Code
+        :param pulumi.Input[str] metro_code: Access point metro code
+        :param pulumi.Input[str] metro_name: Access point metro name
+        :param pulumi.Input[str] region: Access point region
+        """
+        if ibx is not None:
+            pulumi.set(__self__, "ibx", ibx)
+        if metro_code is not None:
+            pulumi.set(__self__, "metro_code", metro_code)
+        if metro_name is not None:
+            pulumi.set(__self__, "metro_name", metro_name)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter
+    def ibx(self) -> Optional[pulumi.Input[str]]:
+        """
+        IBX Code
+        """
+        return pulumi.get(self, "ibx")
+
+    @ibx.setter
+    def ibx(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ibx", value)
+
+    @property
+    @pulumi.getter(name="metroCode")
+    def metro_code(self) -> Optional[pulumi.Input[str]]:
+        """
+        Access point metro code
+        """
+        return pulumi.get(self, "metro_code")
+
+    @metro_code.setter
+    def metro_code(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metro_code", value)
+
+    @property
+    @pulumi.getter(name="metroName")
+    def metro_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Access point metro name
+        """
+        return pulumi.get(self, "metro_name")
+
+    @metro_name.setter
+    def metro_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metro_name", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        Access point region
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+
+@pulumi.input_type
+class ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortArgs:
+    def __init__(__self__, *,
+                 uuid: pulumi.Input[str],
+                 account_name: Optional[pulumi.Input[str]] = None,
+                 bandwidth: Optional[pulumi.Input[int]] = None,
+                 cvp_id: Optional[pulumi.Input[int]] = None,
+                 encapsulation_protocol_type: Optional[pulumi.Input[str]] = None,
+                 href: Optional[pulumi.Input[str]] = None,
+                 locations: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArgs']]]] = None,
+                 port_name: Optional[pulumi.Input[str]] = None,
+                 priority: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] uuid: Equinix-assigned Port identifier
+        :param pulumi.Input[str] account_name: Account Name
+        :param pulumi.Input[int] bandwidth: Port Bandwidth
+        :param pulumi.Input[int] cvp_id: Customer virtual port Id
+        :param pulumi.Input[str] encapsulation_protocol_type: Port Encapsulation
+        :param pulumi.Input[str] href: Unique Resource Identifier
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArgs']]] locations: Port Location
+        :param pulumi.Input[str] port_name: Port Name
+        :param pulumi.Input[str] priority: Port Priority
+        :param pulumi.Input[str] type: Type of Port
+        """
+        pulumi.set(__self__, "uuid", uuid)
+        if account_name is not None:
+            pulumi.set(__self__, "account_name", account_name)
+        if bandwidth is not None:
+            pulumi.set(__self__, "bandwidth", bandwidth)
+        if cvp_id is not None:
+            pulumi.set(__self__, "cvp_id", cvp_id)
+        if encapsulation_protocol_type is not None:
+            pulumi.set(__self__, "encapsulation_protocol_type", encapsulation_protocol_type)
+        if href is not None:
+            pulumi.set(__self__, "href", href)
+        if locations is not None:
+            pulumi.set(__self__, "locations", locations)
+        if port_name is not None:
+            pulumi.set(__self__, "port_name", port_name)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> pulumi.Input[str]:
+        """
+        Equinix-assigned Port identifier
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: pulumi.Input[str]):
+        pulumi.set(self, "uuid", value)
+
+    @property
+    @pulumi.getter(name="accountName")
+    def account_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Account Name
+        """
+        return pulumi.get(self, "account_name")
+
+    @account_name.setter
+    def account_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_name", value)
+
+    @property
+    @pulumi.getter
+    def bandwidth(self) -> Optional[pulumi.Input[int]]:
+        """
+        Port Bandwidth
+        """
+        return pulumi.get(self, "bandwidth")
+
+    @bandwidth.setter
+    def bandwidth(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "bandwidth", value)
+
+    @property
+    @pulumi.getter(name="cvpId")
+    def cvp_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        Customer virtual port Id
+        """
+        return pulumi.get(self, "cvp_id")
+
+    @cvp_id.setter
+    def cvp_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "cvp_id", value)
+
+    @property
+    @pulumi.getter(name="encapsulationProtocolType")
+    def encapsulation_protocol_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Port Encapsulation
+        """
+        return pulumi.get(self, "encapsulation_protocol_type")
+
+    @encapsulation_protocol_type.setter
+    def encapsulation_protocol_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "encapsulation_protocol_type", value)
+
+    @property
+    @pulumi.getter
+    def href(self) -> Optional[pulumi.Input[str]]:
+        """
+        Unique Resource Identifier
+        """
+        return pulumi.get(self, "href")
+
+    @href.setter
+    def href(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "href", value)
+
+    @property
+    @pulumi.getter
+    def locations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArgs']]]]:
+        """
+        Port Location
+        """
+        return pulumi.get(self, "locations")
+
+    @locations.setter
+    def locations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArgs']]]]):
+        pulumi.set(self, "locations", value)
+
+    @property
+    @pulumi.getter(name="portName")
+    def port_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Port Name
+        """
+        return pulumi.get(self, "port_name")
+
+    @port_name.setter
+    def port_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "port_name", value)
+
+    @property
+    @pulumi.getter
+    def priority(self) -> Optional[pulumi.Input[str]]:
+        """
+        Port Priority
+        """
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "priority", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type of Port
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArgs:
+    def __init__(__self__, *,
+                 ibx: Optional[pulumi.Input[str]] = None,
+                 metro_code: Optional[pulumi.Input[str]] = None,
+                 metro_name: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] ibx: IBX Code
+        :param pulumi.Input[str] metro_code: Access point metro code
+        :param pulumi.Input[str] metro_name: Access point metro name
+        :param pulumi.Input[str] region: Access point region
+        """
+        if ibx is not None:
+            pulumi.set(__self__, "ibx", ibx)
+        if metro_code is not None:
+            pulumi.set(__self__, "metro_code", metro_code)
+        if metro_name is not None:
+            pulumi.set(__self__, "metro_name", metro_name)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter
+    def ibx(self) -> Optional[pulumi.Input[str]]:
+        """
+        IBX Code
+        """
+        return pulumi.get(self, "ibx")
+
+    @ibx.setter
+    def ibx(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ibx", value)
+
+    @property
+    @pulumi.getter(name="metroCode")
+    def metro_code(self) -> Optional[pulumi.Input[str]]:
+        """
+        Access point metro code
+        """
+        return pulumi.get(self, "metro_code")
+
+    @metro_code.setter
+    def metro_code(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metro_code", value)
+
+    @property
+    @pulumi.getter(name="metroName")
+    def metro_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Access point metro name
+        """
+        return pulumi.get(self, "metro_name")
+
+    @metro_name.setter
+    def metro_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metro_name", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        Access point region
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+
+@pulumi.input_type
+class ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs:
+    def __init__(__self__, *,
+                 uuid: pulumi.Input[str],
+                 cluster: Optional[pulumi.Input[str]] = None,
+                 href: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] uuid: Equinix-assigned Virtual Device identifier
+        :param pulumi.Input[str] cluster: Virtual Device Cluster Information
+        :param pulumi.Input[str] href: Unique Resource Identifier
+        :param pulumi.Input[str] name: Customer-assigned Virtual Device Name
+        :param pulumi.Input[str] type: Virtual Device type
+        """
+        pulumi.set(__self__, "uuid", uuid)
+        if cluster is not None:
+            pulumi.set(__self__, "cluster", cluster)
+        if href is not None:
+            pulumi.set(__self__, "href", href)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> pulumi.Input[str]:
+        """
+        Equinix-assigned Virtual Device identifier
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: pulumi.Input[str]):
+        pulumi.set(self, "uuid", value)
+
+    @property
+    @pulumi.getter
+    def cluster(self) -> Optional[pulumi.Input[str]]:
+        """
+        Virtual Device Cluster Information
+        """
+        return pulumi.get(self, "cluster")
+
+    @cluster.setter
+    def cluster(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster", value)
+
+    @property
+    @pulumi.getter
+    def href(self) -> Optional[pulumi.Input[str]]:
+        """
+        Unique Resource Identifier
+        """
+        return pulumi.get(self, "href")
+
+    @href.setter
+    def href(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "href", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Customer-assigned Virtual Device Name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Virtual Device type
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class ServiceTokenServiceTokenConnectionZSideArgs:
+    def __init__(__self__, *,
+                 access_point_selectors: pulumi.Input[Sequence[pulumi.Input['ServiceTokenServiceTokenConnectionZSideAccessPointSelectorArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceTokenServiceTokenConnectionZSideAccessPointSelectorArgs']]] access_point_selectors: List of criteria for selecting network access points with optimal efficiency, security, compatibility, and availability
+        """
+        pulumi.set(__self__, "access_point_selectors", access_point_selectors)
+
+    @property
+    @pulumi.getter(name="accessPointSelectors")
+    def access_point_selectors(self) -> pulumi.Input[Sequence[pulumi.Input['ServiceTokenServiceTokenConnectionZSideAccessPointSelectorArgs']]]:
+        """
+        List of criteria for selecting network access points with optimal efficiency, security, compatibility, and availability
+        """
+        return pulumi.get(self, "access_point_selectors")
+
+    @access_point_selectors.setter
+    def access_point_selectors(self, value: pulumi.Input[Sequence[pulumi.Input['ServiceTokenServiceTokenConnectionZSideAccessPointSelectorArgs']]]):
+        pulumi.set(self, "access_point_selectors", value)
+
+
+@pulumi.input_type
+class ServiceTokenServiceTokenConnectionZSideAccessPointSelectorArgs:
+    def __init__(__self__, *,
+                 interface: Optional[pulumi.Input['ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceArgs']] = None,
+                 link_protocol: Optional[pulumi.Input['ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolArgs']] = None,
+                 network: Optional[pulumi.Input['ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkArgs']] = None,
+                 port: Optional[pulumi.Input['ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortArgs']] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 virtual_device: Optional[pulumi.Input['ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs']] = None):
+        """
+        :param pulumi.Input['ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceArgs'] interface: Virtual Device Interface Configuration
+        :param pulumi.Input['ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolArgs'] link_protocol: Link protocol Configuration
+        :param pulumi.Input['ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkArgs'] network: Network Configuration
+        :param pulumi.Input['ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortArgs'] port: Port Configuration
+        :param pulumi.Input[str] type: Type of Access point; COLO, VD, NETWORK
+        :param pulumi.Input['ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs'] virtual_device: Virtual Device Configuration
+        """
+        if interface is not None:
+            pulumi.set(__self__, "interface", interface)
+        if link_protocol is not None:
+            pulumi.set(__self__, "link_protocol", link_protocol)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if virtual_device is not None:
+            pulumi.set(__self__, "virtual_device", virtual_device)
+
+    @property
+    @pulumi.getter
+    def interface(self) -> Optional[pulumi.Input['ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceArgs']]:
+        """
+        Virtual Device Interface Configuration
+        """
+        return pulumi.get(self, "interface")
+
+    @interface.setter
+    def interface(self, value: Optional[pulumi.Input['ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceArgs']]):
+        pulumi.set(self, "interface", value)
+
+    @property
+    @pulumi.getter(name="linkProtocol")
+    def link_protocol(self) -> Optional[pulumi.Input['ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolArgs']]:
+        """
+        Link protocol Configuration
+        """
+        return pulumi.get(self, "link_protocol")
+
+    @link_protocol.setter
+    def link_protocol(self, value: Optional[pulumi.Input['ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolArgs']]):
+        pulumi.set(self, "link_protocol", value)
+
+    @property
+    @pulumi.getter
+    def network(self) -> Optional[pulumi.Input['ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkArgs']]:
+        """
+        Network Configuration
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: Optional[pulumi.Input['ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkArgs']]):
+        pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input['ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortArgs']]:
+        """
+        Port Configuration
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input['ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortArgs']]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type of Access point; COLO, VD, NETWORK
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="virtualDevice")
+    def virtual_device(self) -> Optional[pulumi.Input['ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs']]:
+        """
+        Virtual Device Configuration
+        """
+        return pulumi.get(self, "virtual_device")
+
+    @virtual_device.setter
+    def virtual_device(self, value: Optional[pulumi.Input['ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs']]):
+        pulumi.set(self, "virtual_device", value)
+
+
+@pulumi.input_type
+class ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 id: Optional[pulumi.Input[int]] = None,
+                 uuid: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] type: Interface type
+        :param pulumi.Input[int] id: id
+        :param pulumi.Input[str] uuid: Equinix-assigned interface identifier
+        """
+        pulumi.set(__self__, "type", type)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        Interface type
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[int]]:
+        """
+        id
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> Optional[pulumi.Input[str]]:
+        """
+        Equinix-assigned interface identifier
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "uuid", value)
+
+
+@pulumi.input_type
+class ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolArgs:
+    def __init__(__self__, *,
+                 type: Optional[pulumi.Input[str]] = None,
+                 vlan_c_tag: Optional[pulumi.Input[int]] = None,
+                 vlan_s_tag: Optional[pulumi.Input[int]] = None,
+                 vlan_tag: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] type: Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
+        :param pulumi.Input[int] vlan_c_tag: Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+        :param pulumi.Input[int] vlan_s_tag: Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+        :param pulumi.Input[int] vlan_tag: Vlan Tag information, vlanTag value specified for DOT1Q connections
+        """
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if vlan_c_tag is not None:
+            pulumi.set(__self__, "vlan_c_tag", vlan_c_tag)
+        if vlan_s_tag is not None:
+            pulumi.set(__self__, "vlan_s_tag", vlan_s_tag)
+        if vlan_tag is not None:
+            pulumi.set(__self__, "vlan_tag", vlan_tag)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="vlanCTag")
+    def vlan_c_tag(self) -> Optional[pulumi.Input[int]]:
+        """
+        Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+        """
+        return pulumi.get(self, "vlan_c_tag")
+
+    @vlan_c_tag.setter
+    def vlan_c_tag(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "vlan_c_tag", value)
+
+    @property
+    @pulumi.getter(name="vlanSTag")
+    def vlan_s_tag(self) -> Optional[pulumi.Input[int]]:
+        """
+        Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+        """
+        return pulumi.get(self, "vlan_s_tag")
+
+    @vlan_s_tag.setter
+    def vlan_s_tag(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "vlan_s_tag", value)
+
+    @property
+    @pulumi.getter(name="vlanTag")
+    def vlan_tag(self) -> Optional[pulumi.Input[int]]:
+        """
+        Vlan Tag information, vlanTag value specified for DOT1Q connections
+        """
+        return pulumi.get(self, "vlan_tag")
+
+    @vlan_tag.setter
+    def vlan_tag(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "vlan_tag", value)
+
+
+@pulumi.input_type
+class ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkArgs:
+    def __init__(__self__, *,
+                 href: Optional[pulumi.Input[str]] = None,
+                 locations: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArgs']]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 scope: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 uuid: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] href: Unique Resource Identifier
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArgs']]] locations: Location
+        :param pulumi.Input[str] name: Network Name
+        :param pulumi.Input[str] scope: Scope of Network
+        :param pulumi.Input[str] type: Type of Network
+        :param pulumi.Input[str] uuid: Equinix-assigned Network identifier
+        """
+        if href is not None:
+            pulumi.set(__self__, "href", href)
+        if locations is not None:
+            pulumi.set(__self__, "locations", locations)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if scope is not None:
+            pulumi.set(__self__, "scope", scope)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+
+    @property
+    @pulumi.getter
+    def href(self) -> Optional[pulumi.Input[str]]:
+        """
+        Unique Resource Identifier
+        """
+        return pulumi.get(self, "href")
+
+    @href.setter
+    def href(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "href", value)
+
+    @property
+    @pulumi.getter
+    def locations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArgs']]]]:
+        """
+        Location
+        """
+        return pulumi.get(self, "locations")
+
+    @locations.setter
+    def locations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArgs']]]]):
+        pulumi.set(self, "locations", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Network Name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def scope(self) -> Optional[pulumi.Input[str]]:
+        """
+        Scope of Network
+        """
+        return pulumi.get(self, "scope")
+
+    @scope.setter
+    def scope(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scope", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type of Network
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> Optional[pulumi.Input[str]]:
+        """
+        Equinix-assigned Network identifier
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "uuid", value)
+
+
+@pulumi.input_type
+class ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArgs:
+    def __init__(__self__, *,
+                 ibx: Optional[pulumi.Input[str]] = None,
+                 metro_code: Optional[pulumi.Input[str]] = None,
+                 metro_name: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] ibx: IBX Code
+        :param pulumi.Input[str] metro_code: Access point metro code
+        :param pulumi.Input[str] metro_name: Access point metro name
+        :param pulumi.Input[str] region: Access point region
+        """
+        if ibx is not None:
+            pulumi.set(__self__, "ibx", ibx)
+        if metro_code is not None:
+            pulumi.set(__self__, "metro_code", metro_code)
+        if metro_name is not None:
+            pulumi.set(__self__, "metro_name", metro_name)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter
+    def ibx(self) -> Optional[pulumi.Input[str]]:
+        """
+        IBX Code
+        """
+        return pulumi.get(self, "ibx")
+
+    @ibx.setter
+    def ibx(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ibx", value)
+
+    @property
+    @pulumi.getter(name="metroCode")
+    def metro_code(self) -> Optional[pulumi.Input[str]]:
+        """
+        Access point metro code
+        """
+        return pulumi.get(self, "metro_code")
+
+    @metro_code.setter
+    def metro_code(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metro_code", value)
+
+    @property
+    @pulumi.getter(name="metroName")
+    def metro_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Access point metro name
+        """
+        return pulumi.get(self, "metro_name")
+
+    @metro_name.setter
+    def metro_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metro_name", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        Access point region
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+
+@pulumi.input_type
+class ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortArgs:
+    def __init__(__self__, *,
+                 uuid: pulumi.Input[str],
+                 account_name: Optional[pulumi.Input[str]] = None,
+                 bandwidth: Optional[pulumi.Input[int]] = None,
+                 cvp_id: Optional[pulumi.Input[int]] = None,
+                 encapsulation_protocol_type: Optional[pulumi.Input[str]] = None,
+                 href: Optional[pulumi.Input[str]] = None,
+                 locations: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArgs']]]] = None,
+                 port_name: Optional[pulumi.Input[str]] = None,
+                 priority: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] uuid: Equinix-assigned Port identifier
+        :param pulumi.Input[str] account_name: Account Name
+        :param pulumi.Input[int] bandwidth: Port Bandwidth
+        :param pulumi.Input[int] cvp_id: Customer virtual port Id
+        :param pulumi.Input[str] encapsulation_protocol_type: Port Encapsulation
+        :param pulumi.Input[str] href: Unique Resource Identifier
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArgs']]] locations: Port Location
+        :param pulumi.Input[str] port_name: Port Name
+        :param pulumi.Input[str] priority: Port Priority
+        :param pulumi.Input[str] type: Type of Port
+        """
+        pulumi.set(__self__, "uuid", uuid)
+        if account_name is not None:
+            pulumi.set(__self__, "account_name", account_name)
+        if bandwidth is not None:
+            pulumi.set(__self__, "bandwidth", bandwidth)
+        if cvp_id is not None:
+            pulumi.set(__self__, "cvp_id", cvp_id)
+        if encapsulation_protocol_type is not None:
+            pulumi.set(__self__, "encapsulation_protocol_type", encapsulation_protocol_type)
+        if href is not None:
+            pulumi.set(__self__, "href", href)
+        if locations is not None:
+            pulumi.set(__self__, "locations", locations)
+        if port_name is not None:
+            pulumi.set(__self__, "port_name", port_name)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> pulumi.Input[str]:
+        """
+        Equinix-assigned Port identifier
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: pulumi.Input[str]):
+        pulumi.set(self, "uuid", value)
+
+    @property
+    @pulumi.getter(name="accountName")
+    def account_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Account Name
+        """
+        return pulumi.get(self, "account_name")
+
+    @account_name.setter
+    def account_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_name", value)
+
+    @property
+    @pulumi.getter
+    def bandwidth(self) -> Optional[pulumi.Input[int]]:
+        """
+        Port Bandwidth
+        """
+        return pulumi.get(self, "bandwidth")
+
+    @bandwidth.setter
+    def bandwidth(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "bandwidth", value)
+
+    @property
+    @pulumi.getter(name="cvpId")
+    def cvp_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        Customer virtual port Id
+        """
+        return pulumi.get(self, "cvp_id")
+
+    @cvp_id.setter
+    def cvp_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "cvp_id", value)
+
+    @property
+    @pulumi.getter(name="encapsulationProtocolType")
+    def encapsulation_protocol_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Port Encapsulation
+        """
+        return pulumi.get(self, "encapsulation_protocol_type")
+
+    @encapsulation_protocol_type.setter
+    def encapsulation_protocol_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "encapsulation_protocol_type", value)
+
+    @property
+    @pulumi.getter
+    def href(self) -> Optional[pulumi.Input[str]]:
+        """
+        Unique Resource Identifier
+        """
+        return pulumi.get(self, "href")
+
+    @href.setter
+    def href(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "href", value)
+
+    @property
+    @pulumi.getter
+    def locations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArgs']]]]:
+        """
+        Port Location
+        """
+        return pulumi.get(self, "locations")
+
+    @locations.setter
+    def locations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArgs']]]]):
+        pulumi.set(self, "locations", value)
+
+    @property
+    @pulumi.getter(name="portName")
+    def port_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Port Name
+        """
+        return pulumi.get(self, "port_name")
+
+    @port_name.setter
+    def port_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "port_name", value)
+
+    @property
+    @pulumi.getter
+    def priority(self) -> Optional[pulumi.Input[str]]:
+        """
+        Port Priority
+        """
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "priority", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type of Port
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArgs:
+    def __init__(__self__, *,
+                 ibx: Optional[pulumi.Input[str]] = None,
+                 metro_code: Optional[pulumi.Input[str]] = None,
+                 metro_name: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] ibx: IBX Code
+        :param pulumi.Input[str] metro_code: Access point metro code
+        :param pulumi.Input[str] metro_name: Access point metro name
+        :param pulumi.Input[str] region: Access point region
+        """
+        if ibx is not None:
+            pulumi.set(__self__, "ibx", ibx)
+        if metro_code is not None:
+            pulumi.set(__self__, "metro_code", metro_code)
+        if metro_name is not None:
+            pulumi.set(__self__, "metro_name", metro_name)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter
+    def ibx(self) -> Optional[pulumi.Input[str]]:
+        """
+        IBX Code
+        """
+        return pulumi.get(self, "ibx")
+
+    @ibx.setter
+    def ibx(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ibx", value)
+
+    @property
+    @pulumi.getter(name="metroCode")
+    def metro_code(self) -> Optional[pulumi.Input[str]]:
+        """
+        Access point metro code
+        """
+        return pulumi.get(self, "metro_code")
+
+    @metro_code.setter
+    def metro_code(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metro_code", value)
+
+    @property
+    @pulumi.getter(name="metroName")
+    def metro_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Access point metro name
+        """
+        return pulumi.get(self, "metro_name")
+
+    @metro_name.setter
+    def metro_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metro_name", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        Access point region
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+
+@pulumi.input_type
+class ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs:
+    def __init__(__self__, *,
+                 uuid: pulumi.Input[str],
+                 cluster: Optional[pulumi.Input[str]] = None,
+                 href: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] uuid: Equinix-assigned Virtual Device identifier
+        :param pulumi.Input[str] cluster: Virtual Device Cluster Information
+        :param pulumi.Input[str] href: Unique Resource Identifier
+        :param pulumi.Input[str] name: Customer-assigned Virtual Device Name
+        :param pulumi.Input[str] type: Virtual Device type
+        """
+        pulumi.set(__self__, "uuid", uuid)
+        if cluster is not None:
+            pulumi.set(__self__, "cluster", cluster)
+        if href is not None:
+            pulumi.set(__self__, "href", href)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> pulumi.Input[str]:
+        """
+        Equinix-assigned Virtual Device identifier
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: pulumi.Input[str]):
+        pulumi.set(self, "uuid", value)
+
+    @property
+    @pulumi.getter
+    def cluster(self) -> Optional[pulumi.Input[str]]:
+        """
+        Virtual Device Cluster Information
+        """
+        return pulumi.get(self, "cluster")
+
+    @cluster.setter
+    def cluster(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster", value)
+
+    @property
+    @pulumi.getter
+    def href(self) -> Optional[pulumi.Input[str]]:
+        """
+        Unique Resource Identifier
+        """
+        return pulumi.get(self, "href")
+
+    @href.setter
+    def href(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "href", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Customer-assigned Virtual Device Name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Virtual Device type
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
 class GetCloudRoutersFilterArgs:
     def __init__(__self__, *,
                  operator: str,
@@ -7716,5 +9795,139 @@ class GetServiceProfilesSortArgs:
     @property.setter
     def property(self, value: Optional[str]):
         pulumi.set(self, "property", value)
+
+
+@pulumi.input_type
+class GetServiceTokensFilterArgs:
+    def __init__(__self__, *,
+                 operator: str,
+                 property: str,
+                 values: Sequence[str]):
+        """
+        :param str operator: Possible operators to use on the filter property. Can be one of the following: [ "=", "!=", "[NOT] LIKE", "[NOT] IN", "ILIKE" ]
+        :param str property: The API response property which you want to filter your request on. Can be one of the following: "/type", "/name", "/project/projectId", "/uuid", "/state"
+        :param Sequence[str] values: The values that you want to apply the property+operator combination to in order to filter your data search
+        """
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "property", property)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        """
+        Possible operators to use on the filter property. Can be one of the following: [ "=", "!=", "[NOT] LIKE", "[NOT] IN", "ILIKE" ]
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: str):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        The values that you want to apply the property+operator combination to in order to filter your data search
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[str]):
+        pulumi.set(self, "values", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> str:
+        """
+        The API response property which you want to filter your request on. Can be one of the following: "/type", "/name", "/project/projectId", "/uuid", "/state"
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: str):
+        pulumi.set(self, "property", value)
+
+
+@pulumi.input_type
+class GetServiceTokensPaginationArgs:
+    def __init__(__self__, *,
+                 limit: int,
+                 next: str,
+                 offset: int,
+                 previous: str,
+                 total: int):
+        """
+        :param int limit: Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+        :param str next: URL relative to the last item in the response.
+        :param int offset: The page offset for the pagination request. Index of the first element. Default is 0.
+        :param str previous: URL relative to the first item in the response.
+        :param int total: Total number of elements returned.
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "next", next)
+        pulumi.set(__self__, "offset", offset)
+        pulumi.set(__self__, "previous", previous)
+        pulumi.set(__self__, "total", total)
+
+    @property
+    @pulumi.getter
+    def limit(self) -> int:
+        """
+        Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+        """
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: int):
+        pulumi.set(self, "limit", value)
+
+    @property
+    @pulumi.getter
+    def next(self) -> str:
+        """
+        URL relative to the last item in the response.
+        """
+        return pulumi.get(self, "next")
+
+    @next.setter
+    def next(self, value: str):
+        pulumi.set(self, "next", value)
+
+    @property
+    @pulumi.getter
+    def offset(self) -> int:
+        """
+        The page offset for the pagination request. Index of the first element. Default is 0.
+        """
+        return pulumi.get(self, "offset")
+
+    @offset.setter
+    def offset(self, value: int):
+        pulumi.set(self, "offset", value)
+
+    @property
+    @pulumi.getter
+    def previous(self) -> str:
+        """
+        URL relative to the first item in the response.
+        """
+        return pulumi.get(self, "previous")
+
+    @previous.setter
+    def previous(self, value: str):
+        pulumi.set(self, "previous", value)
+
+    @property
+    @pulumi.getter
+    def total(self) -> int:
+        """
+        Total number of elements returned.
+        """
+        return pulumi.get(self, "total")
+
+    @total.setter
+    def total(self, value: int):
+        pulumi.set(self, "total", value)
 
 

@@ -2,7 +2,7 @@ module equinix-network-file
 
 go 1.21
 
-toolchain go1.22.6
+toolchain go1.23.3
 
 require (
 	github.com/equinix/pulumi-equinix/sdk latest

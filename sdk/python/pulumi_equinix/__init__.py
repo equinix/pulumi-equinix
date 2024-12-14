@@ -93,6 +93,14 @@ _utilities.register(
  },
  {
   "pkg": "equinix",
+  "mod": "fabric/serviceToken",
+  "fqn": "pulumi_equinix.fabric",
+  "classes": {
+   "equinix:fabric/serviceToken:ServiceToken": "ServiceToken"
+  }
+ },
+ {
+  "pkg": "equinix",
   "mod": "metal/bgpSession",
   "fqn": "pulumi_equinix.metal",
   "classes": {

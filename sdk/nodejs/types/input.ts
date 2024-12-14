@@ -1418,6 +1418,82 @@ export namespace fabric {
         property?: pulumi.Input<string>;
     }
 
+    export interface GetServiceTokensFilter {
+        /**
+         * Possible operators to use on the filter property. Can be one of the following: [ "=", "!=", "[NOT] LIKE", "[NOT] IN", "ILIKE" ]
+         */
+        operator: string;
+        /**
+         * The API response property which you want to filter your request on. Can be one of the following: "/type", "/name", "/project/projectId", "/uuid", "/state"
+         */
+        property: string;
+        /**
+         * The values that you want to apply the property+operator combination to in order to filter your data search
+         */
+        values: string[];
+    }
+
+    export interface GetServiceTokensFilterArgs {
+        /**
+         * Possible operators to use on the filter property. Can be one of the following: [ "=", "!=", "[NOT] LIKE", "[NOT] IN", "ILIKE" ]
+         */
+        operator: pulumi.Input<string>;
+        /**
+         * The API response property which you want to filter your request on. Can be one of the following: "/type", "/name", "/project/projectId", "/uuid", "/state"
+         */
+        property: pulumi.Input<string>;
+        /**
+         * The values that you want to apply the property+operator combination to in order to filter your data search
+         */
+        values: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface GetServiceTokensPagination {
+        /**
+         * Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+         */
+        limit?: number;
+        /**
+         * URL relative to the last item in the response.
+         */
+        next?: string;
+        /**
+         * The page offset for the pagination request. Index of the first element. Default is 0.
+         */
+        offset?: number;
+        /**
+         * URL relative to the first item in the response.
+         */
+        previous?: string;
+        /**
+         * Total number of elements returned.
+         */
+        total?: number;
+    }
+
+    export interface GetServiceTokensPaginationArgs {
+        /**
+         * Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+         */
+        limit?: pulumi.Input<number>;
+        /**
+         * URL relative to the last item in the response.
+         */
+        next?: pulumi.Input<string>;
+        /**
+         * The page offset for the pagination request. Index of the first element. Default is 0.
+         */
+        offset?: pulumi.Input<number>;
+        /**
+         * URL relative to the first item in the response.
+         */
+        previous?: pulumi.Input<string>;
+        /**
+         * Total number of elements returned.
+         */
+        total?: pulumi.Input<number>;
+    }
+
     export interface NetworkChange {
         /**
          * Absolute URL that returns the details of the given change.
@@ -2264,6 +2340,551 @@ export namespace fabric {
          * Access point region
          */
         region?: pulumi.Input<string>;
+    }
+
+    export interface ServiceTokenAccount {
+        /**
+         * Legal name of the accountholder.
+         */
+        accountName?: pulumi.Input<string>;
+        /**
+         * Equinix-assigned account number.
+         */
+        accountNumber?: pulumi.Input<number>;
+        /**
+         * Equinix-assigned ID of the subscriber's parent organization.
+         */
+        globalCustId?: pulumi.Input<string>;
+        /**
+         * Equinix-assigned ID of the subscriber's parent organization.
+         */
+        globalOrgId?: pulumi.Input<string>;
+        /**
+         * Equinix-assigned name of the subscriber's parent organization.
+         */
+        globalOrganizationName?: pulumi.Input<string>;
+        /**
+         * Equinix-assigned ID of the subscriber's organization.
+         */
+        orgId?: pulumi.Input<number>;
+        /**
+         * Equinix-assigned name of the subscriber's organization.
+         */
+        organizationName?: pulumi.Input<string>;
+        /**
+         * Enterprise datastore id
+         */
+        ucmId?: pulumi.Input<string>;
+    }
+
+    export interface ServiceTokenChangeLog {
+        /**
+         * Created by User Key
+         */
+        createdBy?: pulumi.Input<string>;
+        /**
+         * Created by User Email Address
+         */
+        createdByEmail?: pulumi.Input<string>;
+        /**
+         * Created by User Full Name
+         */
+        createdByFullName?: pulumi.Input<string>;
+        /**
+         * Created by Date and Time
+         */
+        createdDateTime?: pulumi.Input<string>;
+        /**
+         * Deleted by User Key
+         */
+        deletedBy?: pulumi.Input<string>;
+        /**
+         * Deleted by User Email Address
+         */
+        deletedByEmail?: pulumi.Input<string>;
+        /**
+         * Deleted by User Full Name
+         */
+        deletedByFullName?: pulumi.Input<string>;
+        /**
+         * Deleted by Date and Time
+         */
+        deletedDateTime?: pulumi.Input<string>;
+        /**
+         * Updated by User Key
+         */
+        updatedBy?: pulumi.Input<string>;
+        /**
+         * Updated by User Email Address
+         */
+        updatedByEmail?: pulumi.Input<string>;
+        /**
+         * Updated by User Full Name
+         */
+        updatedByFullName?: pulumi.Input<string>;
+        /**
+         * Updated by Date and Time
+         */
+        updatedDateTime?: pulumi.Input<string>;
+    }
+
+    export interface ServiceTokenNotification {
+        /**
+         * Array of contact emails
+         */
+        emails: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Send interval
+         */
+        sendInterval?: pulumi.Input<string>;
+        /**
+         * Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
+         */
+        type: pulumi.Input<string>;
+    }
+
+    export interface ServiceTokenProject {
+        /**
+         * Unique Resource URL
+         */
+        href?: pulumi.Input<string>;
+        /**
+         * Project Id
+         */
+        projectId?: pulumi.Input<string>;
+    }
+
+    export interface ServiceTokenServiceTokenConnection {
+        /**
+         * A-Side Connection link protocol,virtual device or network configuration
+         */
+        aSides?: pulumi.Input<pulumi.Input<inputs.fabric.ServiceTokenServiceTokenConnectionASide>[]>;
+        /**
+         * Allow custom bandwidth value
+         */
+        allowCustomBandwidth?: pulumi.Input<boolean>;
+        /**
+         * Authorization to connect remotely
+         */
+        allowRemoteConnection?: pulumi.Input<boolean>;
+        /**
+         * Connection bandwidth limit in Mbps
+         */
+        bandwidthLimit?: pulumi.Input<number>;
+        /**
+         * List of permitted bandwidths'; For Port-based Service Tokens, the maximum allowable bandwidth is 50 Gbps, while for Virtual Device-based Service Tokens, it is limited to 10 Gbps
+         */
+        supportedBandwidths?: pulumi.Input<pulumi.Input<number>[]>;
+        /**
+         * Type of Connection supported by Service Token you will create; EVPL*VC, EVPLAN*VC, EPLAN*VC, IPWAN*VC
+         */
+        type: pulumi.Input<string>;
+        /**
+         * Equinix-assigned connection identifier
+         */
+        uuid?: pulumi.Input<string>;
+        /**
+         * Z-Side Connection link protocol,virtual device or network configuration
+         */
+        zSides?: pulumi.Input<pulumi.Input<inputs.fabric.ServiceTokenServiceTokenConnectionZSide>[]>;
+    }
+
+    export interface ServiceTokenServiceTokenConnectionASide {
+        /**
+         * List of criteria for selecting network access points with optimal efficiency, security, compatibility, and availability
+         */
+        accessPointSelectors: pulumi.Input<pulumi.Input<inputs.fabric.ServiceTokenServiceTokenConnectionASideAccessPointSelector>[]>;
+    }
+
+    export interface ServiceTokenServiceTokenConnectionASideAccessPointSelector {
+        /**
+         * Virtual Device Interface Configuration
+         */
+        interface?: pulumi.Input<inputs.fabric.ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterface>;
+        /**
+         * Link protocol Configuration
+         */
+        linkProtocol?: pulumi.Input<inputs.fabric.ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocol>;
+        /**
+         * Network Configuration
+         */
+        network?: pulumi.Input<inputs.fabric.ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetwork>;
+        /**
+         * Port Configuration
+         */
+        port?: pulumi.Input<inputs.fabric.ServiceTokenServiceTokenConnectionASideAccessPointSelectorPort>;
+        /**
+         * Type of Access point; COLO, VD, NETWORK
+         */
+        type?: pulumi.Input<string>;
+        /**
+         * Virtual Device Configuration
+         */
+        virtualDevice?: pulumi.Input<inputs.fabric.ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevice>;
+    }
+
+    export interface ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterface {
+        /**
+         * id
+         */
+        id?: pulumi.Input<number>;
+        /**
+         * Interface type
+         */
+        type: pulumi.Input<string>;
+        /**
+         * Equinix-assigned interface identifier
+         */
+        uuid?: pulumi.Input<string>;
+    }
+
+    export interface ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocol {
+        /**
+         * Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
+         */
+        type?: pulumi.Input<string>;
+        /**
+         * Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+         */
+        vlanCTag?: pulumi.Input<number>;
+        /**
+         * Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+         */
+        vlanSTag?: pulumi.Input<number>;
+        /**
+         * Vlan Tag information, vlanTag value specified for DOT1Q connections
+         */
+        vlanTag?: pulumi.Input<number>;
+    }
+
+    export interface ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetwork {
+        /**
+         * Unique Resource Identifier
+         */
+        href?: pulumi.Input<string>;
+        /**
+         * Location
+         */
+        locations?: pulumi.Input<pulumi.Input<inputs.fabric.ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocation>[]>;
+        /**
+         * Network Name
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * Scope of Network
+         */
+        scope?: pulumi.Input<string>;
+        /**
+         * Type of Network
+         */
+        type?: pulumi.Input<string>;
+        /**
+         * Equinix-assigned Network identifier
+         */
+        uuid?: pulumi.Input<string>;
+    }
+
+    export interface ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocation {
+        /**
+         * IBX Code
+         */
+        ibx?: pulumi.Input<string>;
+        /**
+         * Access point metro code
+         */
+        metroCode?: pulumi.Input<string>;
+        /**
+         * Access point metro name
+         */
+        metroName?: pulumi.Input<string>;
+        /**
+         * Access point region
+         */
+        region?: pulumi.Input<string>;
+    }
+
+    export interface ServiceTokenServiceTokenConnectionASideAccessPointSelectorPort {
+        /**
+         * Account Name
+         */
+        accountName?: pulumi.Input<string>;
+        /**
+         * Port Bandwidth
+         */
+        bandwidth?: pulumi.Input<number>;
+        /**
+         * Customer virtual port Id
+         */
+        cvpId?: pulumi.Input<number>;
+        /**
+         * Port Encapsulation
+         */
+        encapsulationProtocolType?: pulumi.Input<string>;
+        /**
+         * Unique Resource Identifier
+         */
+        href?: pulumi.Input<string>;
+        /**
+         * Port Location
+         */
+        locations?: pulumi.Input<pulumi.Input<inputs.fabric.ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocation>[]>;
+        /**
+         * Port Name
+         */
+        portName?: pulumi.Input<string>;
+        /**
+         * Port Priority
+         */
+        priority?: pulumi.Input<string>;
+        /**
+         * Type of Port
+         */
+        type?: pulumi.Input<string>;
+        /**
+         * Equinix-assigned Port identifier
+         */
+        uuid: pulumi.Input<string>;
+    }
+
+    export interface ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocation {
+        /**
+         * IBX Code
+         */
+        ibx?: pulumi.Input<string>;
+        /**
+         * Access point metro code
+         */
+        metroCode?: pulumi.Input<string>;
+        /**
+         * Access point metro name
+         */
+        metroName?: pulumi.Input<string>;
+        /**
+         * Access point region
+         */
+        region?: pulumi.Input<string>;
+    }
+
+    export interface ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevice {
+        /**
+         * Virtual Device Cluster Information
+         */
+        cluster?: pulumi.Input<string>;
+        /**
+         * Unique Resource Identifier
+         */
+        href?: pulumi.Input<string>;
+        /**
+         * Customer-assigned Virtual Device Name
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * Virtual Device type
+         */
+        type?: pulumi.Input<string>;
+        /**
+         * Equinix-assigned Virtual Device identifier
+         */
+        uuid: pulumi.Input<string>;
+    }
+
+    export interface ServiceTokenServiceTokenConnectionZSide {
+        /**
+         * List of criteria for selecting network access points with optimal efficiency, security, compatibility, and availability
+         */
+        accessPointSelectors: pulumi.Input<pulumi.Input<inputs.fabric.ServiceTokenServiceTokenConnectionZSideAccessPointSelector>[]>;
+    }
+
+    export interface ServiceTokenServiceTokenConnectionZSideAccessPointSelector {
+        /**
+         * Virtual Device Interface Configuration
+         */
+        interface?: pulumi.Input<inputs.fabric.ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterface>;
+        /**
+         * Link protocol Configuration
+         */
+        linkProtocol?: pulumi.Input<inputs.fabric.ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocol>;
+        /**
+         * Network Configuration
+         */
+        network?: pulumi.Input<inputs.fabric.ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetwork>;
+        /**
+         * Port Configuration
+         */
+        port?: pulumi.Input<inputs.fabric.ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort>;
+        /**
+         * Type of Access point; COLO, VD, NETWORK
+         */
+        type?: pulumi.Input<string>;
+        /**
+         * Virtual Device Configuration
+         */
+        virtualDevice?: pulumi.Input<inputs.fabric.ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevice>;
+    }
+
+    export interface ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterface {
+        /**
+         * id
+         */
+        id?: pulumi.Input<number>;
+        /**
+         * Interface type
+         */
+        type: pulumi.Input<string>;
+        /**
+         * Equinix-assigned interface identifier
+         */
+        uuid?: pulumi.Input<string>;
+    }
+
+    export interface ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocol {
+        /**
+         * Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
+         */
+        type?: pulumi.Input<string>;
+        /**
+         * Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+         */
+        vlanCTag?: pulumi.Input<number>;
+        /**
+         * Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+         */
+        vlanSTag?: pulumi.Input<number>;
+        /**
+         * Vlan Tag information, vlanTag value specified for DOT1Q connections
+         */
+        vlanTag?: pulumi.Input<number>;
+    }
+
+    export interface ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetwork {
+        /**
+         * Unique Resource Identifier
+         */
+        href?: pulumi.Input<string>;
+        /**
+         * Location
+         */
+        locations?: pulumi.Input<pulumi.Input<inputs.fabric.ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocation>[]>;
+        /**
+         * Network Name
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * Scope of Network
+         */
+        scope?: pulumi.Input<string>;
+        /**
+         * Type of Network
+         */
+        type?: pulumi.Input<string>;
+        /**
+         * Equinix-assigned Network identifier
+         */
+        uuid?: pulumi.Input<string>;
+    }
+
+    export interface ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocation {
+        /**
+         * IBX Code
+         */
+        ibx?: pulumi.Input<string>;
+        /**
+         * Access point metro code
+         */
+        metroCode?: pulumi.Input<string>;
+        /**
+         * Access point metro name
+         */
+        metroName?: pulumi.Input<string>;
+        /**
+         * Access point region
+         */
+        region?: pulumi.Input<string>;
+    }
+
+    export interface ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort {
+        /**
+         * Account Name
+         */
+        accountName?: pulumi.Input<string>;
+        /**
+         * Port Bandwidth
+         */
+        bandwidth?: pulumi.Input<number>;
+        /**
+         * Customer virtual port Id
+         */
+        cvpId?: pulumi.Input<number>;
+        /**
+         * Port Encapsulation
+         */
+        encapsulationProtocolType?: pulumi.Input<string>;
+        /**
+         * Unique Resource Identifier
+         */
+        href?: pulumi.Input<string>;
+        /**
+         * Port Location
+         */
+        locations?: pulumi.Input<pulumi.Input<inputs.fabric.ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocation>[]>;
+        /**
+         * Port Name
+         */
+        portName?: pulumi.Input<string>;
+        /**
+         * Port Priority
+         */
+        priority?: pulumi.Input<string>;
+        /**
+         * Type of Port
+         */
+        type?: pulumi.Input<string>;
+        /**
+         * Equinix-assigned Port identifier
+         */
+        uuid: pulumi.Input<string>;
+    }
+
+    export interface ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocation {
+        /**
+         * IBX Code
+         */
+        ibx?: pulumi.Input<string>;
+        /**
+         * Access point metro code
+         */
+        metroCode?: pulumi.Input<string>;
+        /**
+         * Access point metro name
+         */
+        metroName?: pulumi.Input<string>;
+        /**
+         * Access point region
+         */
+        region?: pulumi.Input<string>;
+    }
+
+    export interface ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevice {
+        /**
+         * Virtual Device Cluster Information
+         */
+        cluster?: pulumi.Input<string>;
+        /**
+         * Unique Resource Identifier
+         */
+        href?: pulumi.Input<string>;
+        /**
+         * Customer-assigned Virtual Device Name
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * Virtual Device type
+         */
+        type?: pulumi.Input<string>;
+        /**
+         * Equinix-assigned Virtual Device identifier
+         */
+        uuid: pulumi.Input<string>;
     }
 }
 

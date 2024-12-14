@@ -37,6 +37,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RoutingProtocol{}
 	case "equinix:fabric/serviceProfile:ServiceProfile":
 		r = &ServiceProfile{}
+	case "equinix:fabric/serviceToken:ServiceToken":
+		r = &ServiceToken{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -88,6 +90,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"equinix",
 		"fabric/serviceProfile",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"equinix",
+		"fabric/serviceToken",
 		&module{version},
 	)
 }

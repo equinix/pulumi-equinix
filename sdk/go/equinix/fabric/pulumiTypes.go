@@ -15512,6 +15512,4079 @@ func (o ServiceProfileVirtualDeviceLocationPtrOutput) Region() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+type ServiceTokenAccount struct {
+	// Legal name of the accountholder.
+	AccountName *string `pulumi:"accountName"`
+	// Equinix-assigned account number.
+	AccountNumber *int `pulumi:"accountNumber"`
+	// Equinix-assigned ID of the subscriber's parent organization.
+	GlobalCustId *string `pulumi:"globalCustId"`
+	// Equinix-assigned ID of the subscriber's parent organization.
+	GlobalOrgId *string `pulumi:"globalOrgId"`
+	// Equinix-assigned name of the subscriber's parent organization.
+	GlobalOrganizationName *string `pulumi:"globalOrganizationName"`
+	// Equinix-assigned ID of the subscriber's organization.
+	OrgId *int `pulumi:"orgId"`
+	// Equinix-assigned name of the subscriber's organization.
+	OrganizationName *string `pulumi:"organizationName"`
+	// Enterprise datastore id
+	UcmId *string `pulumi:"ucmId"`
+}
+
+// ServiceTokenAccountInput is an input type that accepts ServiceTokenAccountArgs and ServiceTokenAccountOutput values.
+// You can construct a concrete instance of `ServiceTokenAccountInput` via:
+//
+//	ServiceTokenAccountArgs{...}
+type ServiceTokenAccountInput interface {
+	pulumi.Input
+
+	ToServiceTokenAccountOutput() ServiceTokenAccountOutput
+	ToServiceTokenAccountOutputWithContext(context.Context) ServiceTokenAccountOutput
+}
+
+type ServiceTokenAccountArgs struct {
+	// Legal name of the accountholder.
+	AccountName pulumi.StringPtrInput `pulumi:"accountName"`
+	// Equinix-assigned account number.
+	AccountNumber pulumi.IntPtrInput `pulumi:"accountNumber"`
+	// Equinix-assigned ID of the subscriber's parent organization.
+	GlobalCustId pulumi.StringPtrInput `pulumi:"globalCustId"`
+	// Equinix-assigned ID of the subscriber's parent organization.
+	GlobalOrgId pulumi.StringPtrInput `pulumi:"globalOrgId"`
+	// Equinix-assigned name of the subscriber's parent organization.
+	GlobalOrganizationName pulumi.StringPtrInput `pulumi:"globalOrganizationName"`
+	// Equinix-assigned ID of the subscriber's organization.
+	OrgId pulumi.IntPtrInput `pulumi:"orgId"`
+	// Equinix-assigned name of the subscriber's organization.
+	OrganizationName pulumi.StringPtrInput `pulumi:"organizationName"`
+	// Enterprise datastore id
+	UcmId pulumi.StringPtrInput `pulumi:"ucmId"`
+}
+
+func (ServiceTokenAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTokenAccount)(nil)).Elem()
+}
+
+func (i ServiceTokenAccountArgs) ToServiceTokenAccountOutput() ServiceTokenAccountOutput {
+	return i.ToServiceTokenAccountOutputWithContext(context.Background())
+}
+
+func (i ServiceTokenAccountArgs) ToServiceTokenAccountOutputWithContext(ctx context.Context) ServiceTokenAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTokenAccountOutput)
+}
+
+// ServiceTokenAccountArrayInput is an input type that accepts ServiceTokenAccountArray and ServiceTokenAccountArrayOutput values.
+// You can construct a concrete instance of `ServiceTokenAccountArrayInput` via:
+//
+//	ServiceTokenAccountArray{ ServiceTokenAccountArgs{...} }
+type ServiceTokenAccountArrayInput interface {
+	pulumi.Input
+
+	ToServiceTokenAccountArrayOutput() ServiceTokenAccountArrayOutput
+	ToServiceTokenAccountArrayOutputWithContext(context.Context) ServiceTokenAccountArrayOutput
+}
+
+type ServiceTokenAccountArray []ServiceTokenAccountInput
+
+func (ServiceTokenAccountArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceTokenAccount)(nil)).Elem()
+}
+
+func (i ServiceTokenAccountArray) ToServiceTokenAccountArrayOutput() ServiceTokenAccountArrayOutput {
+	return i.ToServiceTokenAccountArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceTokenAccountArray) ToServiceTokenAccountArrayOutputWithContext(ctx context.Context) ServiceTokenAccountArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTokenAccountArrayOutput)
+}
+
+type ServiceTokenAccountOutput struct{ *pulumi.OutputState }
+
+func (ServiceTokenAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTokenAccount)(nil)).Elem()
+}
+
+func (o ServiceTokenAccountOutput) ToServiceTokenAccountOutput() ServiceTokenAccountOutput {
+	return o
+}
+
+func (o ServiceTokenAccountOutput) ToServiceTokenAccountOutputWithContext(ctx context.Context) ServiceTokenAccountOutput {
+	return o
+}
+
+// Legal name of the accountholder.
+func (o ServiceTokenAccountOutput) AccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenAccount) *string { return v.AccountName }).(pulumi.StringPtrOutput)
+}
+
+// Equinix-assigned account number.
+func (o ServiceTokenAccountOutput) AccountNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceTokenAccount) *int { return v.AccountNumber }).(pulumi.IntPtrOutput)
+}
+
+// Equinix-assigned ID of the subscriber's parent organization.
+func (o ServiceTokenAccountOutput) GlobalCustId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenAccount) *string { return v.GlobalCustId }).(pulumi.StringPtrOutput)
+}
+
+// Equinix-assigned ID of the subscriber's parent organization.
+func (o ServiceTokenAccountOutput) GlobalOrgId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenAccount) *string { return v.GlobalOrgId }).(pulumi.StringPtrOutput)
+}
+
+// Equinix-assigned name of the subscriber's parent organization.
+func (o ServiceTokenAccountOutput) GlobalOrganizationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenAccount) *string { return v.GlobalOrganizationName }).(pulumi.StringPtrOutput)
+}
+
+// Equinix-assigned ID of the subscriber's organization.
+func (o ServiceTokenAccountOutput) OrgId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceTokenAccount) *int { return v.OrgId }).(pulumi.IntPtrOutput)
+}
+
+// Equinix-assigned name of the subscriber's organization.
+func (o ServiceTokenAccountOutput) OrganizationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenAccount) *string { return v.OrganizationName }).(pulumi.StringPtrOutput)
+}
+
+// Enterprise datastore id
+func (o ServiceTokenAccountOutput) UcmId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenAccount) *string { return v.UcmId }).(pulumi.StringPtrOutput)
+}
+
+type ServiceTokenAccountArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceTokenAccountArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceTokenAccount)(nil)).Elem()
+}
+
+func (o ServiceTokenAccountArrayOutput) ToServiceTokenAccountArrayOutput() ServiceTokenAccountArrayOutput {
+	return o
+}
+
+func (o ServiceTokenAccountArrayOutput) ToServiceTokenAccountArrayOutputWithContext(ctx context.Context) ServiceTokenAccountArrayOutput {
+	return o
+}
+
+func (o ServiceTokenAccountArrayOutput) Index(i pulumi.IntInput) ServiceTokenAccountOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceTokenAccount {
+		return vs[0].([]ServiceTokenAccount)[vs[1].(int)]
+	}).(ServiceTokenAccountOutput)
+}
+
+type ServiceTokenChangeLog struct {
+	// Created by User Key
+	CreatedBy *string `pulumi:"createdBy"`
+	// Created by User Email Address
+	CreatedByEmail *string `pulumi:"createdByEmail"`
+	// Created by User Full Name
+	CreatedByFullName *string `pulumi:"createdByFullName"`
+	// Created by Date and Time
+	CreatedDateTime *string `pulumi:"createdDateTime"`
+	// Deleted by User Key
+	DeletedBy *string `pulumi:"deletedBy"`
+	// Deleted by User Email Address
+	DeletedByEmail *string `pulumi:"deletedByEmail"`
+	// Deleted by User Full Name
+	DeletedByFullName *string `pulumi:"deletedByFullName"`
+	// Deleted by Date and Time
+	DeletedDateTime *string `pulumi:"deletedDateTime"`
+	// Updated by User Key
+	UpdatedBy *string `pulumi:"updatedBy"`
+	// Updated by User Email Address
+	UpdatedByEmail *string `pulumi:"updatedByEmail"`
+	// Updated by User Full Name
+	UpdatedByFullName *string `pulumi:"updatedByFullName"`
+	// Updated by Date and Time
+	UpdatedDateTime *string `pulumi:"updatedDateTime"`
+}
+
+// ServiceTokenChangeLogInput is an input type that accepts ServiceTokenChangeLogArgs and ServiceTokenChangeLogOutput values.
+// You can construct a concrete instance of `ServiceTokenChangeLogInput` via:
+//
+//	ServiceTokenChangeLogArgs{...}
+type ServiceTokenChangeLogInput interface {
+	pulumi.Input
+
+	ToServiceTokenChangeLogOutput() ServiceTokenChangeLogOutput
+	ToServiceTokenChangeLogOutputWithContext(context.Context) ServiceTokenChangeLogOutput
+}
+
+type ServiceTokenChangeLogArgs struct {
+	// Created by User Key
+	CreatedBy pulumi.StringPtrInput `pulumi:"createdBy"`
+	// Created by User Email Address
+	CreatedByEmail pulumi.StringPtrInput `pulumi:"createdByEmail"`
+	// Created by User Full Name
+	CreatedByFullName pulumi.StringPtrInput `pulumi:"createdByFullName"`
+	// Created by Date and Time
+	CreatedDateTime pulumi.StringPtrInput `pulumi:"createdDateTime"`
+	// Deleted by User Key
+	DeletedBy pulumi.StringPtrInput `pulumi:"deletedBy"`
+	// Deleted by User Email Address
+	DeletedByEmail pulumi.StringPtrInput `pulumi:"deletedByEmail"`
+	// Deleted by User Full Name
+	DeletedByFullName pulumi.StringPtrInput `pulumi:"deletedByFullName"`
+	// Deleted by Date and Time
+	DeletedDateTime pulumi.StringPtrInput `pulumi:"deletedDateTime"`
+	// Updated by User Key
+	UpdatedBy pulumi.StringPtrInput `pulumi:"updatedBy"`
+	// Updated by User Email Address
+	UpdatedByEmail pulumi.StringPtrInput `pulumi:"updatedByEmail"`
+	// Updated by User Full Name
+	UpdatedByFullName pulumi.StringPtrInput `pulumi:"updatedByFullName"`
+	// Updated by Date and Time
+	UpdatedDateTime pulumi.StringPtrInput `pulumi:"updatedDateTime"`
+}
+
+func (ServiceTokenChangeLogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTokenChangeLog)(nil)).Elem()
+}
+
+func (i ServiceTokenChangeLogArgs) ToServiceTokenChangeLogOutput() ServiceTokenChangeLogOutput {
+	return i.ToServiceTokenChangeLogOutputWithContext(context.Background())
+}
+
+func (i ServiceTokenChangeLogArgs) ToServiceTokenChangeLogOutputWithContext(ctx context.Context) ServiceTokenChangeLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTokenChangeLogOutput)
+}
+
+// ServiceTokenChangeLogArrayInput is an input type that accepts ServiceTokenChangeLogArray and ServiceTokenChangeLogArrayOutput values.
+// You can construct a concrete instance of `ServiceTokenChangeLogArrayInput` via:
+//
+//	ServiceTokenChangeLogArray{ ServiceTokenChangeLogArgs{...} }
+type ServiceTokenChangeLogArrayInput interface {
+	pulumi.Input
+
+	ToServiceTokenChangeLogArrayOutput() ServiceTokenChangeLogArrayOutput
+	ToServiceTokenChangeLogArrayOutputWithContext(context.Context) ServiceTokenChangeLogArrayOutput
+}
+
+type ServiceTokenChangeLogArray []ServiceTokenChangeLogInput
+
+func (ServiceTokenChangeLogArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceTokenChangeLog)(nil)).Elem()
+}
+
+func (i ServiceTokenChangeLogArray) ToServiceTokenChangeLogArrayOutput() ServiceTokenChangeLogArrayOutput {
+	return i.ToServiceTokenChangeLogArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceTokenChangeLogArray) ToServiceTokenChangeLogArrayOutputWithContext(ctx context.Context) ServiceTokenChangeLogArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTokenChangeLogArrayOutput)
+}
+
+type ServiceTokenChangeLogOutput struct{ *pulumi.OutputState }
+
+func (ServiceTokenChangeLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTokenChangeLog)(nil)).Elem()
+}
+
+func (o ServiceTokenChangeLogOutput) ToServiceTokenChangeLogOutput() ServiceTokenChangeLogOutput {
+	return o
+}
+
+func (o ServiceTokenChangeLogOutput) ToServiceTokenChangeLogOutputWithContext(ctx context.Context) ServiceTokenChangeLogOutput {
+	return o
+}
+
+// Created by User Key
+func (o ServiceTokenChangeLogOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenChangeLog) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+}
+
+// Created by User Email Address
+func (o ServiceTokenChangeLogOutput) CreatedByEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenChangeLog) *string { return v.CreatedByEmail }).(pulumi.StringPtrOutput)
+}
+
+// Created by User Full Name
+func (o ServiceTokenChangeLogOutput) CreatedByFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenChangeLog) *string { return v.CreatedByFullName }).(pulumi.StringPtrOutput)
+}
+
+// Created by Date and Time
+func (o ServiceTokenChangeLogOutput) CreatedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenChangeLog) *string { return v.CreatedDateTime }).(pulumi.StringPtrOutput)
+}
+
+// Deleted by User Key
+func (o ServiceTokenChangeLogOutput) DeletedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenChangeLog) *string { return v.DeletedBy }).(pulumi.StringPtrOutput)
+}
+
+// Deleted by User Email Address
+func (o ServiceTokenChangeLogOutput) DeletedByEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenChangeLog) *string { return v.DeletedByEmail }).(pulumi.StringPtrOutput)
+}
+
+// Deleted by User Full Name
+func (o ServiceTokenChangeLogOutput) DeletedByFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenChangeLog) *string { return v.DeletedByFullName }).(pulumi.StringPtrOutput)
+}
+
+// Deleted by Date and Time
+func (o ServiceTokenChangeLogOutput) DeletedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenChangeLog) *string { return v.DeletedDateTime }).(pulumi.StringPtrOutput)
+}
+
+// Updated by User Key
+func (o ServiceTokenChangeLogOutput) UpdatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenChangeLog) *string { return v.UpdatedBy }).(pulumi.StringPtrOutput)
+}
+
+// Updated by User Email Address
+func (o ServiceTokenChangeLogOutput) UpdatedByEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenChangeLog) *string { return v.UpdatedByEmail }).(pulumi.StringPtrOutput)
+}
+
+// Updated by User Full Name
+func (o ServiceTokenChangeLogOutput) UpdatedByFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenChangeLog) *string { return v.UpdatedByFullName }).(pulumi.StringPtrOutput)
+}
+
+// Updated by Date and Time
+func (o ServiceTokenChangeLogOutput) UpdatedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenChangeLog) *string { return v.UpdatedDateTime }).(pulumi.StringPtrOutput)
+}
+
+type ServiceTokenChangeLogArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceTokenChangeLogArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceTokenChangeLog)(nil)).Elem()
+}
+
+func (o ServiceTokenChangeLogArrayOutput) ToServiceTokenChangeLogArrayOutput() ServiceTokenChangeLogArrayOutput {
+	return o
+}
+
+func (o ServiceTokenChangeLogArrayOutput) ToServiceTokenChangeLogArrayOutputWithContext(ctx context.Context) ServiceTokenChangeLogArrayOutput {
+	return o
+}
+
+func (o ServiceTokenChangeLogArrayOutput) Index(i pulumi.IntInput) ServiceTokenChangeLogOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceTokenChangeLog {
+		return vs[0].([]ServiceTokenChangeLog)[vs[1].(int)]
+	}).(ServiceTokenChangeLogOutput)
+}
+
+type ServiceTokenNotification struct {
+	// Array of contact emails
+	Emails []string `pulumi:"emails"`
+	// Send interval
+	SendInterval *string `pulumi:"sendInterval"`
+	// Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
+	Type string `pulumi:"type"`
+}
+
+// ServiceTokenNotificationInput is an input type that accepts ServiceTokenNotificationArgs and ServiceTokenNotificationOutput values.
+// You can construct a concrete instance of `ServiceTokenNotificationInput` via:
+//
+//	ServiceTokenNotificationArgs{...}
+type ServiceTokenNotificationInput interface {
+	pulumi.Input
+
+	ToServiceTokenNotificationOutput() ServiceTokenNotificationOutput
+	ToServiceTokenNotificationOutputWithContext(context.Context) ServiceTokenNotificationOutput
+}
+
+type ServiceTokenNotificationArgs struct {
+	// Array of contact emails
+	Emails pulumi.StringArrayInput `pulumi:"emails"`
+	// Send interval
+	SendInterval pulumi.StringPtrInput `pulumi:"sendInterval"`
+	// Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (ServiceTokenNotificationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTokenNotification)(nil)).Elem()
+}
+
+func (i ServiceTokenNotificationArgs) ToServiceTokenNotificationOutput() ServiceTokenNotificationOutput {
+	return i.ToServiceTokenNotificationOutputWithContext(context.Background())
+}
+
+func (i ServiceTokenNotificationArgs) ToServiceTokenNotificationOutputWithContext(ctx context.Context) ServiceTokenNotificationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTokenNotificationOutput)
+}
+
+// ServiceTokenNotificationArrayInput is an input type that accepts ServiceTokenNotificationArray and ServiceTokenNotificationArrayOutput values.
+// You can construct a concrete instance of `ServiceTokenNotificationArrayInput` via:
+//
+//	ServiceTokenNotificationArray{ ServiceTokenNotificationArgs{...} }
+type ServiceTokenNotificationArrayInput interface {
+	pulumi.Input
+
+	ToServiceTokenNotificationArrayOutput() ServiceTokenNotificationArrayOutput
+	ToServiceTokenNotificationArrayOutputWithContext(context.Context) ServiceTokenNotificationArrayOutput
+}
+
+type ServiceTokenNotificationArray []ServiceTokenNotificationInput
+
+func (ServiceTokenNotificationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceTokenNotification)(nil)).Elem()
+}
+
+func (i ServiceTokenNotificationArray) ToServiceTokenNotificationArrayOutput() ServiceTokenNotificationArrayOutput {
+	return i.ToServiceTokenNotificationArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceTokenNotificationArray) ToServiceTokenNotificationArrayOutputWithContext(ctx context.Context) ServiceTokenNotificationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTokenNotificationArrayOutput)
+}
+
+type ServiceTokenNotificationOutput struct{ *pulumi.OutputState }
+
+func (ServiceTokenNotificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTokenNotification)(nil)).Elem()
+}
+
+func (o ServiceTokenNotificationOutput) ToServiceTokenNotificationOutput() ServiceTokenNotificationOutput {
+	return o
+}
+
+func (o ServiceTokenNotificationOutput) ToServiceTokenNotificationOutputWithContext(ctx context.Context) ServiceTokenNotificationOutput {
+	return o
+}
+
+// Array of contact emails
+func (o ServiceTokenNotificationOutput) Emails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServiceTokenNotification) []string { return v.Emails }).(pulumi.StringArrayOutput)
+}
+
+// Send interval
+func (o ServiceTokenNotificationOutput) SendInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenNotification) *string { return v.SendInterval }).(pulumi.StringPtrOutput)
+}
+
+// Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
+func (o ServiceTokenNotificationOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceTokenNotification) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ServiceTokenNotificationArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceTokenNotificationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceTokenNotification)(nil)).Elem()
+}
+
+func (o ServiceTokenNotificationArrayOutput) ToServiceTokenNotificationArrayOutput() ServiceTokenNotificationArrayOutput {
+	return o
+}
+
+func (o ServiceTokenNotificationArrayOutput) ToServiceTokenNotificationArrayOutputWithContext(ctx context.Context) ServiceTokenNotificationArrayOutput {
+	return o
+}
+
+func (o ServiceTokenNotificationArrayOutput) Index(i pulumi.IntInput) ServiceTokenNotificationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceTokenNotification {
+		return vs[0].([]ServiceTokenNotification)[vs[1].(int)]
+	}).(ServiceTokenNotificationOutput)
+}
+
+type ServiceTokenProject struct {
+	// Unique Resource URL
+	Href *string `pulumi:"href"`
+	// Project Id
+	ProjectId *string `pulumi:"projectId"`
+}
+
+// ServiceTokenProjectInput is an input type that accepts ServiceTokenProjectArgs and ServiceTokenProjectOutput values.
+// You can construct a concrete instance of `ServiceTokenProjectInput` via:
+//
+//	ServiceTokenProjectArgs{...}
+type ServiceTokenProjectInput interface {
+	pulumi.Input
+
+	ToServiceTokenProjectOutput() ServiceTokenProjectOutput
+	ToServiceTokenProjectOutputWithContext(context.Context) ServiceTokenProjectOutput
+}
+
+type ServiceTokenProjectArgs struct {
+	// Unique Resource URL
+	Href pulumi.StringPtrInput `pulumi:"href"`
+	// Project Id
+	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+}
+
+func (ServiceTokenProjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTokenProject)(nil)).Elem()
+}
+
+func (i ServiceTokenProjectArgs) ToServiceTokenProjectOutput() ServiceTokenProjectOutput {
+	return i.ToServiceTokenProjectOutputWithContext(context.Background())
+}
+
+func (i ServiceTokenProjectArgs) ToServiceTokenProjectOutputWithContext(ctx context.Context) ServiceTokenProjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTokenProjectOutput)
+}
+
+func (i ServiceTokenProjectArgs) ToServiceTokenProjectPtrOutput() ServiceTokenProjectPtrOutput {
+	return i.ToServiceTokenProjectPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceTokenProjectArgs) ToServiceTokenProjectPtrOutputWithContext(ctx context.Context) ServiceTokenProjectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTokenProjectOutput).ToServiceTokenProjectPtrOutputWithContext(ctx)
+}
+
+// ServiceTokenProjectPtrInput is an input type that accepts ServiceTokenProjectArgs, ServiceTokenProjectPtr and ServiceTokenProjectPtrOutput values.
+// You can construct a concrete instance of `ServiceTokenProjectPtrInput` via:
+//
+//	        ServiceTokenProjectArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceTokenProjectPtrInput interface {
+	pulumi.Input
+
+	ToServiceTokenProjectPtrOutput() ServiceTokenProjectPtrOutput
+	ToServiceTokenProjectPtrOutputWithContext(context.Context) ServiceTokenProjectPtrOutput
+}
+
+type serviceTokenProjectPtrType ServiceTokenProjectArgs
+
+func ServiceTokenProjectPtr(v *ServiceTokenProjectArgs) ServiceTokenProjectPtrInput {
+	return (*serviceTokenProjectPtrType)(v)
+}
+
+func (*serviceTokenProjectPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTokenProject)(nil)).Elem()
+}
+
+func (i *serviceTokenProjectPtrType) ToServiceTokenProjectPtrOutput() ServiceTokenProjectPtrOutput {
+	return i.ToServiceTokenProjectPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceTokenProjectPtrType) ToServiceTokenProjectPtrOutputWithContext(ctx context.Context) ServiceTokenProjectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTokenProjectPtrOutput)
+}
+
+type ServiceTokenProjectOutput struct{ *pulumi.OutputState }
+
+func (ServiceTokenProjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTokenProject)(nil)).Elem()
+}
+
+func (o ServiceTokenProjectOutput) ToServiceTokenProjectOutput() ServiceTokenProjectOutput {
+	return o
+}
+
+func (o ServiceTokenProjectOutput) ToServiceTokenProjectOutputWithContext(ctx context.Context) ServiceTokenProjectOutput {
+	return o
+}
+
+func (o ServiceTokenProjectOutput) ToServiceTokenProjectPtrOutput() ServiceTokenProjectPtrOutput {
+	return o.ToServiceTokenProjectPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceTokenProjectOutput) ToServiceTokenProjectPtrOutputWithContext(ctx context.Context) ServiceTokenProjectPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTokenProject) *ServiceTokenProject {
+		return &v
+	}).(ServiceTokenProjectPtrOutput)
+}
+
+// Unique Resource URL
+func (o ServiceTokenProjectOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenProject) *string { return v.Href }).(pulumi.StringPtrOutput)
+}
+
+// Project Id
+func (o ServiceTokenProjectOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenProject) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+}
+
+type ServiceTokenProjectPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceTokenProjectPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTokenProject)(nil)).Elem()
+}
+
+func (o ServiceTokenProjectPtrOutput) ToServiceTokenProjectPtrOutput() ServiceTokenProjectPtrOutput {
+	return o
+}
+
+func (o ServiceTokenProjectPtrOutput) ToServiceTokenProjectPtrOutputWithContext(ctx context.Context) ServiceTokenProjectPtrOutput {
+	return o
+}
+
+func (o ServiceTokenProjectPtrOutput) Elem() ServiceTokenProjectOutput {
+	return o.ApplyT(func(v *ServiceTokenProject) ServiceTokenProject {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceTokenProject
+		return ret
+	}).(ServiceTokenProjectOutput)
+}
+
+// Unique Resource URL
+func (o ServiceTokenProjectPtrOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTokenProject) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Href
+	}).(pulumi.StringPtrOutput)
+}
+
+// Project Id
+func (o ServiceTokenProjectPtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTokenProject) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceTokenServiceTokenConnection struct {
+	// A-Side Connection link protocol,virtual device or network configuration
+	ASides []ServiceTokenServiceTokenConnectionASide `pulumi:"aSides"`
+	// Allow custom bandwidth value
+	AllowCustomBandwidth *bool `pulumi:"allowCustomBandwidth"`
+	// Authorization to connect remotely
+	AllowRemoteConnection *bool `pulumi:"allowRemoteConnection"`
+	// Connection bandwidth limit in Mbps
+	BandwidthLimit *int `pulumi:"bandwidthLimit"`
+	// List of permitted bandwidths'; For Port-based Service Tokens, the maximum allowable bandwidth is 50 Gbps, while for Virtual Device-based Service Tokens, it is limited to 10 Gbps
+	SupportedBandwidths []int `pulumi:"supportedBandwidths"`
+	// Type of Connection supported by Service Token you will create; EVPL*VC, EVPLAN*VC, EPLAN*VC, IPWAN*VC
+	Type string `pulumi:"type"`
+	// Equinix-assigned connection identifier
+	Uuid *string `pulumi:"uuid"`
+	// Z-Side Connection link protocol,virtual device or network configuration
+	ZSides []ServiceTokenServiceTokenConnectionZSide `pulumi:"zSides"`
+}
+
+// ServiceTokenServiceTokenConnectionInput is an input type that accepts ServiceTokenServiceTokenConnectionArgs and ServiceTokenServiceTokenConnectionOutput values.
+// You can construct a concrete instance of `ServiceTokenServiceTokenConnectionInput` via:
+//
+//	ServiceTokenServiceTokenConnectionArgs{...}
+type ServiceTokenServiceTokenConnectionInput interface {
+	pulumi.Input
+
+	ToServiceTokenServiceTokenConnectionOutput() ServiceTokenServiceTokenConnectionOutput
+	ToServiceTokenServiceTokenConnectionOutputWithContext(context.Context) ServiceTokenServiceTokenConnectionOutput
+}
+
+type ServiceTokenServiceTokenConnectionArgs struct {
+	// A-Side Connection link protocol,virtual device or network configuration
+	ASides ServiceTokenServiceTokenConnectionASideArrayInput `pulumi:"aSides"`
+	// Allow custom bandwidth value
+	AllowCustomBandwidth pulumi.BoolPtrInput `pulumi:"allowCustomBandwidth"`
+	// Authorization to connect remotely
+	AllowRemoteConnection pulumi.BoolPtrInput `pulumi:"allowRemoteConnection"`
+	// Connection bandwidth limit in Mbps
+	BandwidthLimit pulumi.IntPtrInput `pulumi:"bandwidthLimit"`
+	// List of permitted bandwidths'; For Port-based Service Tokens, the maximum allowable bandwidth is 50 Gbps, while for Virtual Device-based Service Tokens, it is limited to 10 Gbps
+	SupportedBandwidths pulumi.IntArrayInput `pulumi:"supportedBandwidths"`
+	// Type of Connection supported by Service Token you will create; EVPL*VC, EVPLAN*VC, EPLAN*VC, IPWAN*VC
+	Type pulumi.StringInput `pulumi:"type"`
+	// Equinix-assigned connection identifier
+	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+	// Z-Side Connection link protocol,virtual device or network configuration
+	ZSides ServiceTokenServiceTokenConnectionZSideArrayInput `pulumi:"zSides"`
+}
+
+func (ServiceTokenServiceTokenConnectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTokenServiceTokenConnection)(nil)).Elem()
+}
+
+func (i ServiceTokenServiceTokenConnectionArgs) ToServiceTokenServiceTokenConnectionOutput() ServiceTokenServiceTokenConnectionOutput {
+	return i.ToServiceTokenServiceTokenConnectionOutputWithContext(context.Background())
+}
+
+func (i ServiceTokenServiceTokenConnectionArgs) ToServiceTokenServiceTokenConnectionOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTokenServiceTokenConnectionOutput)
+}
+
+// ServiceTokenServiceTokenConnectionArrayInput is an input type that accepts ServiceTokenServiceTokenConnectionArray and ServiceTokenServiceTokenConnectionArrayOutput values.
+// You can construct a concrete instance of `ServiceTokenServiceTokenConnectionArrayInput` via:
+//
+//	ServiceTokenServiceTokenConnectionArray{ ServiceTokenServiceTokenConnectionArgs{...} }
+type ServiceTokenServiceTokenConnectionArrayInput interface {
+	pulumi.Input
+
+	ToServiceTokenServiceTokenConnectionArrayOutput() ServiceTokenServiceTokenConnectionArrayOutput
+	ToServiceTokenServiceTokenConnectionArrayOutputWithContext(context.Context) ServiceTokenServiceTokenConnectionArrayOutput
+}
+
+type ServiceTokenServiceTokenConnectionArray []ServiceTokenServiceTokenConnectionInput
+
+func (ServiceTokenServiceTokenConnectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceTokenServiceTokenConnection)(nil)).Elem()
+}
+
+func (i ServiceTokenServiceTokenConnectionArray) ToServiceTokenServiceTokenConnectionArrayOutput() ServiceTokenServiceTokenConnectionArrayOutput {
+	return i.ToServiceTokenServiceTokenConnectionArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceTokenServiceTokenConnectionArray) ToServiceTokenServiceTokenConnectionArrayOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTokenServiceTokenConnectionArrayOutput)
+}
+
+type ServiceTokenServiceTokenConnectionOutput struct{ *pulumi.OutputState }
+
+func (ServiceTokenServiceTokenConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTokenServiceTokenConnection)(nil)).Elem()
+}
+
+func (o ServiceTokenServiceTokenConnectionOutput) ToServiceTokenServiceTokenConnectionOutput() ServiceTokenServiceTokenConnectionOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionOutput) ToServiceTokenServiceTokenConnectionOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionOutput {
+	return o
+}
+
+// A-Side Connection link protocol,virtual device or network configuration
+func (o ServiceTokenServiceTokenConnectionOutput) ASides() ServiceTokenServiceTokenConnectionASideArrayOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnection) []ServiceTokenServiceTokenConnectionASide { return v.ASides }).(ServiceTokenServiceTokenConnectionASideArrayOutput)
+}
+
+// Allow custom bandwidth value
+func (o ServiceTokenServiceTokenConnectionOutput) AllowCustomBandwidth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnection) *bool { return v.AllowCustomBandwidth }).(pulumi.BoolPtrOutput)
+}
+
+// Authorization to connect remotely
+func (o ServiceTokenServiceTokenConnectionOutput) AllowRemoteConnection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnection) *bool { return v.AllowRemoteConnection }).(pulumi.BoolPtrOutput)
+}
+
+// Connection bandwidth limit in Mbps
+func (o ServiceTokenServiceTokenConnectionOutput) BandwidthLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnection) *int { return v.BandwidthLimit }).(pulumi.IntPtrOutput)
+}
+
+// List of permitted bandwidths'; For Port-based Service Tokens, the maximum allowable bandwidth is 50 Gbps, while for Virtual Device-based Service Tokens, it is limited to 10 Gbps
+func (o ServiceTokenServiceTokenConnectionOutput) SupportedBandwidths() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnection) []int { return v.SupportedBandwidths }).(pulumi.IntArrayOutput)
+}
+
+// Type of Connection supported by Service Token you will create; EVPL*VC, EVPLAN*VC, EPLAN*VC, IPWAN*VC
+func (o ServiceTokenServiceTokenConnectionOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnection) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Equinix-assigned connection identifier
+func (o ServiceTokenServiceTokenConnectionOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnection) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+}
+
+// Z-Side Connection link protocol,virtual device or network configuration
+func (o ServiceTokenServiceTokenConnectionOutput) ZSides() ServiceTokenServiceTokenConnectionZSideArrayOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnection) []ServiceTokenServiceTokenConnectionZSide { return v.ZSides }).(ServiceTokenServiceTokenConnectionZSideArrayOutput)
+}
+
+type ServiceTokenServiceTokenConnectionArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceTokenServiceTokenConnectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceTokenServiceTokenConnection)(nil)).Elem()
+}
+
+func (o ServiceTokenServiceTokenConnectionArrayOutput) ToServiceTokenServiceTokenConnectionArrayOutput() ServiceTokenServiceTokenConnectionArrayOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionArrayOutput) ToServiceTokenServiceTokenConnectionArrayOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionArrayOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionArrayOutput) Index(i pulumi.IntInput) ServiceTokenServiceTokenConnectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceTokenServiceTokenConnection {
+		return vs[0].([]ServiceTokenServiceTokenConnection)[vs[1].(int)]
+	}).(ServiceTokenServiceTokenConnectionOutput)
+}
+
+type ServiceTokenServiceTokenConnectionASide struct {
+	// List of criteria for selecting network access points with optimal efficiency, security, compatibility, and availability
+	AccessPointSelectors []ServiceTokenServiceTokenConnectionASideAccessPointSelector `pulumi:"accessPointSelectors"`
+}
+
+// ServiceTokenServiceTokenConnectionASideInput is an input type that accepts ServiceTokenServiceTokenConnectionASideArgs and ServiceTokenServiceTokenConnectionASideOutput values.
+// You can construct a concrete instance of `ServiceTokenServiceTokenConnectionASideInput` via:
+//
+//	ServiceTokenServiceTokenConnectionASideArgs{...}
+type ServiceTokenServiceTokenConnectionASideInput interface {
+	pulumi.Input
+
+	ToServiceTokenServiceTokenConnectionASideOutput() ServiceTokenServiceTokenConnectionASideOutput
+	ToServiceTokenServiceTokenConnectionASideOutputWithContext(context.Context) ServiceTokenServiceTokenConnectionASideOutput
+}
+
+type ServiceTokenServiceTokenConnectionASideArgs struct {
+	// List of criteria for selecting network access points with optimal efficiency, security, compatibility, and availability
+	AccessPointSelectors ServiceTokenServiceTokenConnectionASideAccessPointSelectorArrayInput `pulumi:"accessPointSelectors"`
+}
+
+func (ServiceTokenServiceTokenConnectionASideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTokenServiceTokenConnectionASide)(nil)).Elem()
+}
+
+func (i ServiceTokenServiceTokenConnectionASideArgs) ToServiceTokenServiceTokenConnectionASideOutput() ServiceTokenServiceTokenConnectionASideOutput {
+	return i.ToServiceTokenServiceTokenConnectionASideOutputWithContext(context.Background())
+}
+
+func (i ServiceTokenServiceTokenConnectionASideArgs) ToServiceTokenServiceTokenConnectionASideOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionASideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTokenServiceTokenConnectionASideOutput)
+}
+
+// ServiceTokenServiceTokenConnectionASideArrayInput is an input type that accepts ServiceTokenServiceTokenConnectionASideArray and ServiceTokenServiceTokenConnectionASideArrayOutput values.
+// You can construct a concrete instance of `ServiceTokenServiceTokenConnectionASideArrayInput` via:
+//
+//	ServiceTokenServiceTokenConnectionASideArray{ ServiceTokenServiceTokenConnectionASideArgs{...} }
+type ServiceTokenServiceTokenConnectionASideArrayInput interface {
+	pulumi.Input
+
+	ToServiceTokenServiceTokenConnectionASideArrayOutput() ServiceTokenServiceTokenConnectionASideArrayOutput
+	ToServiceTokenServiceTokenConnectionASideArrayOutputWithContext(context.Context) ServiceTokenServiceTokenConnectionASideArrayOutput
+}
+
+type ServiceTokenServiceTokenConnectionASideArray []ServiceTokenServiceTokenConnectionASideInput
+
+func (ServiceTokenServiceTokenConnectionASideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceTokenServiceTokenConnectionASide)(nil)).Elem()
+}
+
+func (i ServiceTokenServiceTokenConnectionASideArray) ToServiceTokenServiceTokenConnectionASideArrayOutput() ServiceTokenServiceTokenConnectionASideArrayOutput {
+	return i.ToServiceTokenServiceTokenConnectionASideArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceTokenServiceTokenConnectionASideArray) ToServiceTokenServiceTokenConnectionASideArrayOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionASideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTokenServiceTokenConnectionASideArrayOutput)
+}
+
+type ServiceTokenServiceTokenConnectionASideOutput struct{ *pulumi.OutputState }
+
+func (ServiceTokenServiceTokenConnectionASideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTokenServiceTokenConnectionASide)(nil)).Elem()
+}
+
+func (o ServiceTokenServiceTokenConnectionASideOutput) ToServiceTokenServiceTokenConnectionASideOutput() ServiceTokenServiceTokenConnectionASideOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionASideOutput) ToServiceTokenServiceTokenConnectionASideOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionASideOutput {
+	return o
+}
+
+// List of criteria for selecting network access points with optimal efficiency, security, compatibility, and availability
+func (o ServiceTokenServiceTokenConnectionASideOutput) AccessPointSelectors() ServiceTokenServiceTokenConnectionASideAccessPointSelectorArrayOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionASide) []ServiceTokenServiceTokenConnectionASideAccessPointSelector {
+		return v.AccessPointSelectors
+	}).(ServiceTokenServiceTokenConnectionASideAccessPointSelectorArrayOutput)
+}
+
+type ServiceTokenServiceTokenConnectionASideArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceTokenServiceTokenConnectionASideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceTokenServiceTokenConnectionASide)(nil)).Elem()
+}
+
+func (o ServiceTokenServiceTokenConnectionASideArrayOutput) ToServiceTokenServiceTokenConnectionASideArrayOutput() ServiceTokenServiceTokenConnectionASideArrayOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionASideArrayOutput) ToServiceTokenServiceTokenConnectionASideArrayOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionASideArrayOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionASideArrayOutput) Index(i pulumi.IntInput) ServiceTokenServiceTokenConnectionASideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceTokenServiceTokenConnectionASide {
+		return vs[0].([]ServiceTokenServiceTokenConnectionASide)[vs[1].(int)]
+	}).(ServiceTokenServiceTokenConnectionASideOutput)
+}
+
+type ServiceTokenServiceTokenConnectionASideAccessPointSelector struct {
+	// Virtual Device Interface Configuration
+	Interface *ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterface `pulumi:"interface"`
+	// Link protocol Configuration
+	LinkProtocol *ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocol `pulumi:"linkProtocol"`
+	// Network Configuration
+	Network *ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetwork `pulumi:"network"`
+	// Port Configuration
+	Port *ServiceTokenServiceTokenConnectionASideAccessPointSelectorPort `pulumi:"port"`
+	// Type of Access point; COLO, VD, NETWORK
+	Type *string `pulumi:"type"`
+	// Virtual Device Configuration
+	VirtualDevice *ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevice `pulumi:"virtualDevice"`
+}
+
+// ServiceTokenServiceTokenConnectionASideAccessPointSelectorInput is an input type that accepts ServiceTokenServiceTokenConnectionASideAccessPointSelectorArgs and ServiceTokenServiceTokenConnectionASideAccessPointSelectorOutput values.
+// You can construct a concrete instance of `ServiceTokenServiceTokenConnectionASideAccessPointSelectorInput` via:
+//
+//	ServiceTokenServiceTokenConnectionASideAccessPointSelectorArgs{...}
+type ServiceTokenServiceTokenConnectionASideAccessPointSelectorInput interface {
+	pulumi.Input
+
+	ToServiceTokenServiceTokenConnectionASideAccessPointSelectorOutput() ServiceTokenServiceTokenConnectionASideAccessPointSelectorOutput
+	ToServiceTokenServiceTokenConnectionASideAccessPointSelectorOutputWithContext(context.Context) ServiceTokenServiceTokenConnectionASideAccessPointSelectorOutput
+}
+
+type ServiceTokenServiceTokenConnectionASideAccessPointSelectorArgs struct {
+	// Virtual Device Interface Configuration
+	Interface ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfacePtrInput `pulumi:"interface"`
+	// Link protocol Configuration
+	LinkProtocol ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolPtrInput `pulumi:"linkProtocol"`
+	// Network Configuration
+	Network ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkPtrInput `pulumi:"network"`
+	// Port Configuration
+	Port ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortPtrInput `pulumi:"port"`
+	// Type of Access point; COLO, VD, NETWORK
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Virtual Device Configuration
+	VirtualDevice ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrInput `pulumi:"virtualDevice"`
+}
+
+func (ServiceTokenServiceTokenConnectionASideAccessPointSelectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTokenServiceTokenConnectionASideAccessPointSelector)(nil)).Elem()
+}
+
+func (i ServiceTokenServiceTokenConnectionASideAccessPointSelectorArgs) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorOutput() ServiceTokenServiceTokenConnectionASideAccessPointSelectorOutput {
+	return i.ToServiceTokenServiceTokenConnectionASideAccessPointSelectorOutputWithContext(context.Background())
+}
+
+func (i ServiceTokenServiceTokenConnectionASideAccessPointSelectorArgs) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionASideAccessPointSelectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTokenServiceTokenConnectionASideAccessPointSelectorOutput)
+}
+
+// ServiceTokenServiceTokenConnectionASideAccessPointSelectorArrayInput is an input type that accepts ServiceTokenServiceTokenConnectionASideAccessPointSelectorArray and ServiceTokenServiceTokenConnectionASideAccessPointSelectorArrayOutput values.
+// You can construct a concrete instance of `ServiceTokenServiceTokenConnectionASideAccessPointSelectorArrayInput` via:
+//
+//	ServiceTokenServiceTokenConnectionASideAccessPointSelectorArray{ ServiceTokenServiceTokenConnectionASideAccessPointSelectorArgs{...} }
+type ServiceTokenServiceTokenConnectionASideAccessPointSelectorArrayInput interface {
+	pulumi.Input
+
+	ToServiceTokenServiceTokenConnectionASideAccessPointSelectorArrayOutput() ServiceTokenServiceTokenConnectionASideAccessPointSelectorArrayOutput
+	ToServiceTokenServiceTokenConnectionASideAccessPointSelectorArrayOutputWithContext(context.Context) ServiceTokenServiceTokenConnectionASideAccessPointSelectorArrayOutput
+}
+
+type ServiceTokenServiceTokenConnectionASideAccessPointSelectorArray []ServiceTokenServiceTokenConnectionASideAccessPointSelectorInput
+
+func (ServiceTokenServiceTokenConnectionASideAccessPointSelectorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceTokenServiceTokenConnectionASideAccessPointSelector)(nil)).Elem()
+}
+
+func (i ServiceTokenServiceTokenConnectionASideAccessPointSelectorArray) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorArrayOutput() ServiceTokenServiceTokenConnectionASideAccessPointSelectorArrayOutput {
+	return i.ToServiceTokenServiceTokenConnectionASideAccessPointSelectorArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceTokenServiceTokenConnectionASideAccessPointSelectorArray) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorArrayOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionASideAccessPointSelectorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTokenServiceTokenConnectionASideAccessPointSelectorArrayOutput)
+}
+
+type ServiceTokenServiceTokenConnectionASideAccessPointSelectorOutput struct{ *pulumi.OutputState }
+
+func (ServiceTokenServiceTokenConnectionASideAccessPointSelectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTokenServiceTokenConnectionASideAccessPointSelector)(nil)).Elem()
+}
+
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorOutput) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorOutput() ServiceTokenServiceTokenConnectionASideAccessPointSelectorOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorOutput) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionASideAccessPointSelectorOutput {
+	return o
+}
+
+// Virtual Device Interface Configuration
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorOutput) Interface() ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfacePtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionASideAccessPointSelector) *ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterface {
+		return v.Interface
+	}).(ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfacePtrOutput)
+}
+
+// Link protocol Configuration
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorOutput) LinkProtocol() ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionASideAccessPointSelector) *ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocol {
+		return v.LinkProtocol
+	}).(ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolPtrOutput)
+}
+
+// Network Configuration
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorOutput) Network() ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionASideAccessPointSelector) *ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetwork {
+		return v.Network
+	}).(ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkPtrOutput)
+}
+
+// Port Configuration
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorOutput) Port() ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionASideAccessPointSelector) *ServiceTokenServiceTokenConnectionASideAccessPointSelectorPort {
+		return v.Port
+	}).(ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortPtrOutput)
+}
+
+// Type of Access point; COLO, VD, NETWORK
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionASideAccessPointSelector) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// Virtual Device Configuration
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorOutput) VirtualDevice() ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionASideAccessPointSelector) *ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevice {
+		return v.VirtualDevice
+	}).(ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput)
+}
+
+type ServiceTokenServiceTokenConnectionASideAccessPointSelectorArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceTokenServiceTokenConnectionASideAccessPointSelectorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceTokenServiceTokenConnectionASideAccessPointSelector)(nil)).Elem()
+}
+
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorArrayOutput) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorArrayOutput() ServiceTokenServiceTokenConnectionASideAccessPointSelectorArrayOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorArrayOutput) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorArrayOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionASideAccessPointSelectorArrayOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorArrayOutput) Index(i pulumi.IntInput) ServiceTokenServiceTokenConnectionASideAccessPointSelectorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceTokenServiceTokenConnectionASideAccessPointSelector {
+		return vs[0].([]ServiceTokenServiceTokenConnectionASideAccessPointSelector)[vs[1].(int)]
+	}).(ServiceTokenServiceTokenConnectionASideAccessPointSelectorOutput)
+}
+
+type ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterface struct {
+	// id
+	Id *int `pulumi:"id"`
+	// Interface type
+	Type string `pulumi:"type"`
+	// Equinix-assigned interface identifier
+	Uuid *string `pulumi:"uuid"`
+}
+
+// ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceInput is an input type that accepts ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceArgs and ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceOutput values.
+// You can construct a concrete instance of `ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceInput` via:
+//
+//	ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceArgs{...}
+type ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceInput interface {
+	pulumi.Input
+
+	ToServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceOutput() ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceOutput
+	ToServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceOutputWithContext(context.Context) ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceOutput
+}
+
+type ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceArgs struct {
+	// id
+	Id pulumi.IntPtrInput `pulumi:"id"`
+	// Interface type
+	Type pulumi.StringInput `pulumi:"type"`
+	// Equinix-assigned interface identifier
+	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+}
+
+func (ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterface)(nil)).Elem()
+}
+
+func (i ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceArgs) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceOutput() ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceOutput {
+	return i.ToServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceOutputWithContext(context.Background())
+}
+
+func (i ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceArgs) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceOutput)
+}
+
+func (i ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceArgs) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfacePtrOutput() ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfacePtrOutput {
+	return i.ToServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfacePtrOutputWithContext(context.Background())
+}
+
+func (i ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceArgs) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfacePtrOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceOutput).ToServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfacePtrOutputWithContext(ctx)
+}
+
+// ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfacePtrInput is an input type that accepts ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceArgs, ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfacePtr and ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfacePtrOutput values.
+// You can construct a concrete instance of `ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfacePtrInput` via:
+//
+//	        ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfacePtrInput interface {
+	pulumi.Input
+
+	ToServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfacePtrOutput() ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfacePtrOutput
+	ToServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfacePtrOutputWithContext(context.Context) ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfacePtrOutput
+}
+
+type serviceTokenServiceTokenConnectionASideAccessPointSelectorInterfacePtrType ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceArgs
+
+func ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfacePtr(v *ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceArgs) ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfacePtrInput {
+	return (*serviceTokenServiceTokenConnectionASideAccessPointSelectorInterfacePtrType)(v)
+}
+
+func (*serviceTokenServiceTokenConnectionASideAccessPointSelectorInterfacePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterface)(nil)).Elem()
+}
+
+func (i *serviceTokenServiceTokenConnectionASideAccessPointSelectorInterfacePtrType) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfacePtrOutput() ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfacePtrOutput {
+	return i.ToServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfacePtrOutputWithContext(context.Background())
+}
+
+func (i *serviceTokenServiceTokenConnectionASideAccessPointSelectorInterfacePtrType) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfacePtrOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfacePtrOutput)
+}
+
+type ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceOutput struct{ *pulumi.OutputState }
+
+func (ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterface)(nil)).Elem()
+}
+
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceOutput) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceOutput() ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceOutput) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceOutput) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfacePtrOutput() ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfacePtrOutput {
+	return o.ToServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfacePtrOutputWithContext(context.Background())
+}
+
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceOutput) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfacePtrOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfacePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterface) *ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterface {
+		return &v
+	}).(ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfacePtrOutput)
+}
+
+// id
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceOutput) Id() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterface) *int { return v.Id }).(pulumi.IntPtrOutput)
+}
+
+// Interface type
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterface) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Equinix-assigned interface identifier
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterface) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+}
+
+type ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfacePtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfacePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterface)(nil)).Elem()
+}
+
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfacePtrOutput) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfacePtrOutput() ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfacePtrOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfacePtrOutput) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfacePtrOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfacePtrOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfacePtrOutput) Elem() ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterface) ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterface {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterface
+		return ret
+	}).(ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceOutput)
+}
+
+// id
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfacePtrOutput) Id() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterface) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.IntPtrOutput)
+}
+
+// Interface type
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfacePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterface) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Equinix-assigned interface identifier
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfacePtrOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterface) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uuid
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocol struct {
+	// Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
+	Type *string `pulumi:"type"`
+	// Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+	VlanCTag *int `pulumi:"vlanCTag"`
+	// Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+	VlanSTag *int `pulumi:"vlanSTag"`
+	// Vlan Tag information, vlanTag value specified for DOT1Q connections
+	VlanTag *int `pulumi:"vlanTag"`
+}
+
+// ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolInput is an input type that accepts ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolArgs and ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput values.
+// You can construct a concrete instance of `ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolInput` via:
+//
+//	ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolArgs{...}
+type ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolInput interface {
+	pulumi.Input
+
+	ToServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput() ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput
+	ToServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutputWithContext(context.Context) ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput
+}
+
+type ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolArgs struct {
+	// Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+	VlanCTag pulumi.IntPtrInput `pulumi:"vlanCTag"`
+	// Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+	VlanSTag pulumi.IntPtrInput `pulumi:"vlanSTag"`
+	// Vlan Tag information, vlanTag value specified for DOT1Q connections
+	VlanTag pulumi.IntPtrInput `pulumi:"vlanTag"`
+}
+
+func (ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocol)(nil)).Elem()
+}
+
+func (i ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolArgs) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput() ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput {
+	return i.ToServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutputWithContext(context.Background())
+}
+
+func (i ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolArgs) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput)
+}
+
+func (i ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolArgs) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolPtrOutput() ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolPtrOutput {
+	return i.ToServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolArgs) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolPtrOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput).ToServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolPtrOutputWithContext(ctx)
+}
+
+// ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolPtrInput is an input type that accepts ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolArgs, ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolPtr and ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolPtrOutput values.
+// You can construct a concrete instance of `ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolPtrInput` via:
+//
+//	        ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolPtrInput interface {
+	pulumi.Input
+
+	ToServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolPtrOutput() ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolPtrOutput
+	ToServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolPtrOutputWithContext(context.Context) ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolPtrOutput
+}
+
+type serviceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolPtrType ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolArgs
+
+func ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolPtr(v *ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolArgs) ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolPtrInput {
+	return (*serviceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolPtrType)(v)
+}
+
+func (*serviceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocol)(nil)).Elem()
+}
+
+func (i *serviceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolPtrType) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolPtrOutput() ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolPtrOutput {
+	return i.ToServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolPtrType) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolPtrOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolPtrOutput)
+}
+
+type ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput struct{ *pulumi.OutputState }
+
+func (ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocol)(nil)).Elem()
+}
+
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput() ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolPtrOutput() ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolPtrOutput {
+	return o.ToServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolPtrOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocol) *ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocol {
+		return &v
+	}).(ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolPtrOutput)
+}
+
+// Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocol) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput) VlanCTag() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocol) *int { return v.VlanCTag }).(pulumi.IntPtrOutput)
+}
+
+// Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput) VlanSTag() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocol) *int { return v.VlanSTag }).(pulumi.IntPtrOutput)
+}
+
+// Vlan Tag information, vlanTag value specified for DOT1Q connections
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput) VlanTag() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocol) *int { return v.VlanTag }).(pulumi.IntPtrOutput)
+}
+
+type ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocol)(nil)).Elem()
+}
+
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolPtrOutput) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolPtrOutput() ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolPtrOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolPtrOutput) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolPtrOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolPtrOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolPtrOutput) Elem() ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocol) ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocol {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocol
+		return ret
+	}).(ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput)
+}
+
+// Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocol) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolPtrOutput) VlanCTag() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocol) *int {
+		if v == nil {
+			return nil
+		}
+		return v.VlanCTag
+	}).(pulumi.IntPtrOutput)
+}
+
+// Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolPtrOutput) VlanSTag() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocol) *int {
+		if v == nil {
+			return nil
+		}
+		return v.VlanSTag
+	}).(pulumi.IntPtrOutput)
+}
+
+// Vlan Tag information, vlanTag value specified for DOT1Q connections
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolPtrOutput) VlanTag() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocol) *int {
+		if v == nil {
+			return nil
+		}
+		return v.VlanTag
+	}).(pulumi.IntPtrOutput)
+}
+
+type ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetwork struct {
+	// Unique Resource Identifier
+	Href *string `pulumi:"href"`
+	// Location
+	Locations []ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocation `pulumi:"locations"`
+	// Network Name
+	Name *string `pulumi:"name"`
+	// Scope of Network
+	Scope *string `pulumi:"scope"`
+	// Type of Network
+	Type *string `pulumi:"type"`
+	// Equinix-assigned Network identifier
+	Uuid *string `pulumi:"uuid"`
+}
+
+// ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkInput is an input type that accepts ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkArgs and ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkOutput values.
+// You can construct a concrete instance of `ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkInput` via:
+//
+//	ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkArgs{...}
+type ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkInput interface {
+	pulumi.Input
+
+	ToServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkOutput() ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkOutput
+	ToServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkOutputWithContext(context.Context) ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkOutput
+}
+
+type ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkArgs struct {
+	// Unique Resource Identifier
+	Href pulumi.StringPtrInput `pulumi:"href"`
+	// Location
+	Locations ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayInput `pulumi:"locations"`
+	// Network Name
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Scope of Network
+	Scope pulumi.StringPtrInput `pulumi:"scope"`
+	// Type of Network
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Equinix-assigned Network identifier
+	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+}
+
+func (ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetwork)(nil)).Elem()
+}
+
+func (i ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkArgs) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkOutput() ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkOutput {
+	return i.ToServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkOutputWithContext(context.Background())
+}
+
+func (i ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkArgs) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkOutput)
+}
+
+func (i ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkArgs) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkPtrOutput() ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkPtrOutput {
+	return i.ToServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkArgs) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkPtrOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkOutput).ToServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkPtrOutputWithContext(ctx)
+}
+
+// ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkPtrInput is an input type that accepts ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkArgs, ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkPtr and ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkPtrOutput values.
+// You can construct a concrete instance of `ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkPtrInput` via:
+//
+//	        ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkPtrInput interface {
+	pulumi.Input
+
+	ToServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkPtrOutput() ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkPtrOutput
+	ToServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkPtrOutputWithContext(context.Context) ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkPtrOutput
+}
+
+type serviceTokenServiceTokenConnectionASideAccessPointSelectorNetworkPtrType ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkArgs
+
+func ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkPtr(v *ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkArgs) ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkPtrInput {
+	return (*serviceTokenServiceTokenConnectionASideAccessPointSelectorNetworkPtrType)(v)
+}
+
+func (*serviceTokenServiceTokenConnectionASideAccessPointSelectorNetworkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetwork)(nil)).Elem()
+}
+
+func (i *serviceTokenServiceTokenConnectionASideAccessPointSelectorNetworkPtrType) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkPtrOutput() ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkPtrOutput {
+	return i.ToServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceTokenServiceTokenConnectionASideAccessPointSelectorNetworkPtrType) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkPtrOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkPtrOutput)
+}
+
+type ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkOutput struct{ *pulumi.OutputState }
+
+func (ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetwork)(nil)).Elem()
+}
+
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkOutput) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkOutput() ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkOutput) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkOutput) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkPtrOutput() ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkPtrOutput {
+	return o.ToServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkOutput) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkPtrOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetwork) *ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetwork {
+		return &v
+	}).(ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkPtrOutput)
+}
+
+// Unique Resource Identifier
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetwork) *string { return v.Href }).(pulumi.StringPtrOutput)
+}
+
+// Location
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkOutput) Locations() ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetwork) []ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocation {
+		return v.Locations
+	}).(ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput)
+}
+
+// Network Name
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetwork) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Scope of Network
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetwork) *string { return v.Scope }).(pulumi.StringPtrOutput)
+}
+
+// Type of Network
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetwork) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// Equinix-assigned Network identifier
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetwork) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+}
+
+type ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetwork)(nil)).Elem()
+}
+
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkPtrOutput) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkPtrOutput() ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkPtrOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkPtrOutput) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkPtrOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkPtrOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkPtrOutput) Elem() ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetwork) ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetwork {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetwork
+		return ret
+	}).(ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkOutput)
+}
+
+// Unique Resource Identifier
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkPtrOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Href
+	}).(pulumi.StringPtrOutput)
+}
+
+// Location
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkPtrOutput) Locations() ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetwork) []ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocation {
+		if v == nil {
+			return nil
+		}
+		return v.Locations
+	}).(ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput)
+}
+
+// Network Name
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Scope of Network
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkPtrOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Scope
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of Network
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Equinix-assigned Network identifier
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkPtrOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uuid
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocation struct {
+	// IBX Code
+	Ibx *string `pulumi:"ibx"`
+	// Access point metro code
+	MetroCode *string `pulumi:"metroCode"`
+	// Access point metro name
+	MetroName *string `pulumi:"metroName"`
+	// Access point region
+	Region *string `pulumi:"region"`
+}
+
+// ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationInput is an input type that accepts ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArgs and ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput values.
+// You can construct a concrete instance of `ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationInput` via:
+//
+//	ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArgs{...}
+type ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationInput interface {
+	pulumi.Input
+
+	ToServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput() ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput
+	ToServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutputWithContext(context.Context) ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput
+}
+
+type ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArgs struct {
+	// IBX Code
+	Ibx pulumi.StringPtrInput `pulumi:"ibx"`
+	// Access point metro code
+	MetroCode pulumi.StringPtrInput `pulumi:"metroCode"`
+	// Access point metro name
+	MetroName pulumi.StringPtrInput `pulumi:"metroName"`
+	// Access point region
+	Region pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocation)(nil)).Elem()
+}
+
+func (i ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArgs) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput() ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput {
+	return i.ToServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutputWithContext(context.Background())
+}
+
+func (i ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArgs) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput)
+}
+
+// ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayInput is an input type that accepts ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArray and ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput values.
+// You can construct a concrete instance of `ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayInput` via:
+//
+//	ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArray{ ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArgs{...} }
+type ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayInput interface {
+	pulumi.Input
+
+	ToServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput() ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput
+	ToServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutputWithContext(context.Context) ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput
+}
+
+type ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArray []ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationInput
+
+func (ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocation)(nil)).Elem()
+}
+
+func (i ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArray) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput() ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput {
+	return i.ToServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArray) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput)
+}
+
+type ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput struct{ *pulumi.OutputState }
+
+func (ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocation)(nil)).Elem()
+}
+
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput() ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput {
+	return o
+}
+
+// IBX Code
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput) Ibx() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocation) *string {
+		return v.Ibx
+	}).(pulumi.StringPtrOutput)
+}
+
+// Access point metro code
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput) MetroCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocation) *string {
+		return v.MetroCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Access point metro name
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput) MetroName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocation) *string {
+		return v.MetroName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Access point region
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocation) *string {
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocation)(nil)).Elem()
+}
+
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput() ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput) Index(i pulumi.IntInput) ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocation {
+		return vs[0].([]ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocation)[vs[1].(int)]
+	}).(ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput)
+}
+
+type ServiceTokenServiceTokenConnectionASideAccessPointSelectorPort struct {
+	// Account Name
+	AccountName *string `pulumi:"accountName"`
+	// Port Bandwidth
+	Bandwidth *int `pulumi:"bandwidth"`
+	// Customer virtual port Id
+	CvpId *int `pulumi:"cvpId"`
+	// Port Encapsulation
+	EncapsulationProtocolType *string `pulumi:"encapsulationProtocolType"`
+	// Unique Resource Identifier
+	Href *string `pulumi:"href"`
+	// Port Location
+	Locations []ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocation `pulumi:"locations"`
+	// Port Name
+	PortName *string `pulumi:"portName"`
+	// Port Priority
+	Priority *string `pulumi:"priority"`
+	// Type of Port
+	Type *string `pulumi:"type"`
+	// Equinix-assigned Port identifier
+	Uuid string `pulumi:"uuid"`
+}
+
+// ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortInput is an input type that accepts ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortArgs and ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutput values.
+// You can construct a concrete instance of `ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortInput` via:
+//
+//	ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortArgs{...}
+type ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortInput interface {
+	pulumi.Input
+
+	ToServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutput() ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutput
+	ToServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutputWithContext(context.Context) ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutput
+}
+
+type ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortArgs struct {
+	// Account Name
+	AccountName pulumi.StringPtrInput `pulumi:"accountName"`
+	// Port Bandwidth
+	Bandwidth pulumi.IntPtrInput `pulumi:"bandwidth"`
+	// Customer virtual port Id
+	CvpId pulumi.IntPtrInput `pulumi:"cvpId"`
+	// Port Encapsulation
+	EncapsulationProtocolType pulumi.StringPtrInput `pulumi:"encapsulationProtocolType"`
+	// Unique Resource Identifier
+	Href pulumi.StringPtrInput `pulumi:"href"`
+	// Port Location
+	Locations ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArrayInput `pulumi:"locations"`
+	// Port Name
+	PortName pulumi.StringPtrInput `pulumi:"portName"`
+	// Port Priority
+	Priority pulumi.StringPtrInput `pulumi:"priority"`
+	// Type of Port
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Equinix-assigned Port identifier
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTokenServiceTokenConnectionASideAccessPointSelectorPort)(nil)).Elem()
+}
+
+func (i ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortArgs) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutput() ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutput {
+	return i.ToServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutputWithContext(context.Background())
+}
+
+func (i ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortArgs) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutput)
+}
+
+func (i ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortArgs) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorPortPtrOutput() ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortPtrOutput {
+	return i.ToServiceTokenServiceTokenConnectionASideAccessPointSelectorPortPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortArgs) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorPortPtrOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutput).ToServiceTokenServiceTokenConnectionASideAccessPointSelectorPortPtrOutputWithContext(ctx)
+}
+
+// ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortPtrInput is an input type that accepts ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortArgs, ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortPtr and ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortPtrOutput values.
+// You can construct a concrete instance of `ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortPtrInput` via:
+//
+//	        ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortPtrInput interface {
+	pulumi.Input
+
+	ToServiceTokenServiceTokenConnectionASideAccessPointSelectorPortPtrOutput() ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortPtrOutput
+	ToServiceTokenServiceTokenConnectionASideAccessPointSelectorPortPtrOutputWithContext(context.Context) ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortPtrOutput
+}
+
+type serviceTokenServiceTokenConnectionASideAccessPointSelectorPortPtrType ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortArgs
+
+func ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortPtr(v *ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortArgs) ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortPtrInput {
+	return (*serviceTokenServiceTokenConnectionASideAccessPointSelectorPortPtrType)(v)
+}
+
+func (*serviceTokenServiceTokenConnectionASideAccessPointSelectorPortPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTokenServiceTokenConnectionASideAccessPointSelectorPort)(nil)).Elem()
+}
+
+func (i *serviceTokenServiceTokenConnectionASideAccessPointSelectorPortPtrType) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorPortPtrOutput() ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortPtrOutput {
+	return i.ToServiceTokenServiceTokenConnectionASideAccessPointSelectorPortPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceTokenServiceTokenConnectionASideAccessPointSelectorPortPtrType) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorPortPtrOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortPtrOutput)
+}
+
+type ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutput struct{ *pulumi.OutputState }
+
+func (ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTokenServiceTokenConnectionASideAccessPointSelectorPort)(nil)).Elem()
+}
+
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutput) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutput() ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutput) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutput) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorPortPtrOutput() ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortPtrOutput {
+	return o.ToServiceTokenServiceTokenConnectionASideAccessPointSelectorPortPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutput) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorPortPtrOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTokenServiceTokenConnectionASideAccessPointSelectorPort) *ServiceTokenServiceTokenConnectionASideAccessPointSelectorPort {
+		return &v
+	}).(ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortPtrOutput)
+}
+
+// Account Name
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutput) AccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionASideAccessPointSelectorPort) *string { return v.AccountName }).(pulumi.StringPtrOutput)
+}
+
+// Port Bandwidth
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutput) Bandwidth() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionASideAccessPointSelectorPort) *int { return v.Bandwidth }).(pulumi.IntPtrOutput)
+}
+
+// Customer virtual port Id
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutput) CvpId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionASideAccessPointSelectorPort) *int { return v.CvpId }).(pulumi.IntPtrOutput)
+}
+
+// Port Encapsulation
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutput) EncapsulationProtocolType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionASideAccessPointSelectorPort) *string {
+		return v.EncapsulationProtocolType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique Resource Identifier
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionASideAccessPointSelectorPort) *string { return v.Href }).(pulumi.StringPtrOutput)
+}
+
+// Port Location
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutput) Locations() ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionASideAccessPointSelectorPort) []ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocation {
+		return v.Locations
+	}).(ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput)
+}
+
+// Port Name
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutput) PortName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionASideAccessPointSelectorPort) *string { return v.PortName }).(pulumi.StringPtrOutput)
+}
+
+// Port Priority
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutput) Priority() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionASideAccessPointSelectorPort) *string { return v.Priority }).(pulumi.StringPtrOutput)
+}
+
+// Type of Port
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionASideAccessPointSelectorPort) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// Equinix-assigned Port identifier
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionASideAccessPointSelectorPort) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTokenServiceTokenConnectionASideAccessPointSelectorPort)(nil)).Elem()
+}
+
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortPtrOutput) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorPortPtrOutput() ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortPtrOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortPtrOutput) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorPortPtrOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortPtrOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortPtrOutput) Elem() ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionASideAccessPointSelectorPort) ServiceTokenServiceTokenConnectionASideAccessPointSelectorPort {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceTokenServiceTokenConnectionASideAccessPointSelectorPort
+		return ret
+	}).(ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutput)
+}
+
+// Account Name
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortPtrOutput) AccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionASideAccessPointSelectorPort) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccountName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Port Bandwidth
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortPtrOutput) Bandwidth() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionASideAccessPointSelectorPort) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Bandwidth
+	}).(pulumi.IntPtrOutput)
+}
+
+// Customer virtual port Id
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortPtrOutput) CvpId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionASideAccessPointSelectorPort) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CvpId
+	}).(pulumi.IntPtrOutput)
+}
+
+// Port Encapsulation
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortPtrOutput) EncapsulationProtocolType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionASideAccessPointSelectorPort) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EncapsulationProtocolType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique Resource Identifier
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortPtrOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionASideAccessPointSelectorPort) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Href
+	}).(pulumi.StringPtrOutput)
+}
+
+// Port Location
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortPtrOutput) Locations() ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionASideAccessPointSelectorPort) []ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocation {
+		if v == nil {
+			return nil
+		}
+		return v.Locations
+	}).(ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput)
+}
+
+// Port Name
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortPtrOutput) PortName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionASideAccessPointSelectorPort) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PortName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Port Priority
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortPtrOutput) Priority() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionASideAccessPointSelectorPort) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Priority
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of Port
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionASideAccessPointSelectorPort) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Equinix-assigned Port identifier
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortPtrOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionASideAccessPointSelectorPort) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uuid
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocation struct {
+	// IBX Code
+	Ibx *string `pulumi:"ibx"`
+	// Access point metro code
+	MetroCode *string `pulumi:"metroCode"`
+	// Access point metro name
+	MetroName *string `pulumi:"metroName"`
+	// Access point region
+	Region *string `pulumi:"region"`
+}
+
+// ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationInput is an input type that accepts ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArgs and ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationOutput values.
+// You can construct a concrete instance of `ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationInput` via:
+//
+//	ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArgs{...}
+type ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationInput interface {
+	pulumi.Input
+
+	ToServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationOutput() ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationOutput
+	ToServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationOutputWithContext(context.Context) ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationOutput
+}
+
+type ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArgs struct {
+	// IBX Code
+	Ibx pulumi.StringPtrInput `pulumi:"ibx"`
+	// Access point metro code
+	MetroCode pulumi.StringPtrInput `pulumi:"metroCode"`
+	// Access point metro name
+	MetroName pulumi.StringPtrInput `pulumi:"metroName"`
+	// Access point region
+	Region pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocation)(nil)).Elem()
+}
+
+func (i ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArgs) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationOutput() ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationOutput {
+	return i.ToServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationOutputWithContext(context.Background())
+}
+
+func (i ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArgs) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationOutput)
+}
+
+// ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArrayInput is an input type that accepts ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArray and ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput values.
+// You can construct a concrete instance of `ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArrayInput` via:
+//
+//	ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArray{ ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArgs{...} }
+type ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArrayInput interface {
+	pulumi.Input
+
+	ToServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput() ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput
+	ToServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutputWithContext(context.Context) ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput
+}
+
+type ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArray []ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationInput
+
+func (ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocation)(nil)).Elem()
+}
+
+func (i ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArray) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput() ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput {
+	return i.ToServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArray) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput)
+}
+
+type ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationOutput struct{ *pulumi.OutputState }
+
+func (ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocation)(nil)).Elem()
+}
+
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationOutput) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationOutput() ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationOutput) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationOutput {
+	return o
+}
+
+// IBX Code
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationOutput) Ibx() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocation) *string { return v.Ibx }).(pulumi.StringPtrOutput)
+}
+
+// Access point metro code
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationOutput) MetroCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocation) *string {
+		return v.MetroCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Access point metro name
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationOutput) MetroName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocation) *string {
+		return v.MetroName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Access point region
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocation) *string {
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocation)(nil)).Elem()
+}
+
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput() ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput) Index(i pulumi.IntInput) ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocation {
+		return vs[0].([]ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocation)[vs[1].(int)]
+	}).(ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationOutput)
+}
+
+type ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevice struct {
+	// Virtual Device Cluster Information
+	Cluster *string `pulumi:"cluster"`
+	// Unique Resource Identifier
+	Href *string `pulumi:"href"`
+	// Customer-assigned Virtual Device Name
+	Name *string `pulumi:"name"`
+	// Virtual Device type
+	Type *string `pulumi:"type"`
+	// Equinix-assigned Virtual Device identifier
+	Uuid string `pulumi:"uuid"`
+}
+
+// ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceInput is an input type that accepts ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs and ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput values.
+// You can construct a concrete instance of `ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceInput` via:
+//
+//	ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs{...}
+type ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceInput interface {
+	pulumi.Input
+
+	ToServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput() ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput
+	ToServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutputWithContext(context.Context) ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput
+}
+
+type ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs struct {
+	// Virtual Device Cluster Information
+	Cluster pulumi.StringPtrInput `pulumi:"cluster"`
+	// Unique Resource Identifier
+	Href pulumi.StringPtrInput `pulumi:"href"`
+	// Customer-assigned Virtual Device Name
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Virtual Device type
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Equinix-assigned Virtual Device identifier
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevice)(nil)).Elem()
+}
+
+func (i ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput() ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput {
+	return i.ToServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutputWithContext(context.Background())
+}
+
+func (i ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput)
+}
+
+func (i ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput() ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput {
+	return i.ToServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutputWithContext(context.Background())
+}
+
+func (i ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput).ToServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutputWithContext(ctx)
+}
+
+// ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrInput is an input type that accepts ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs, ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtr and ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput values.
+// You can construct a concrete instance of `ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrInput` via:
+//
+//	        ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrInput interface {
+	pulumi.Input
+
+	ToServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput() ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput
+	ToServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutputWithContext(context.Context) ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput
+}
+
+type serviceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrType ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs
+
+func ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtr(v *ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs) ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrInput {
+	return (*serviceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrType)(v)
+}
+
+func (*serviceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevice)(nil)).Elem()
+}
+
+func (i *serviceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrType) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput() ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput {
+	return i.ToServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutputWithContext(context.Background())
+}
+
+func (i *serviceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrType) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput)
+}
+
+type ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput struct{ *pulumi.OutputState }
+
+func (ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevice)(nil)).Elem()
+}
+
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput() ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput() ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput {
+	return o.ToServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutputWithContext(context.Background())
+}
+
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevice) *ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevice {
+		return &v
+	}).(ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput)
+}
+
+// Virtual Device Cluster Information
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput) Cluster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevice) *string {
+		return v.Cluster
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique Resource Identifier
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevice) *string { return v.Href }).(pulumi.StringPtrOutput)
+}
+
+// Customer-assigned Virtual Device Name
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevice) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Virtual Device type
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevice) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// Equinix-assigned Virtual Device identifier
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevice) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevice)(nil)).Elem()
+}
+
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput() ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput) ToServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput) Elem() ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevice) ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevice {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevice
+		return ret
+	}).(ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput)
+}
+
+// Virtual Device Cluster Information
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput) Cluster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevice) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Cluster
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique Resource Identifier
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevice) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Href
+	}).(pulumi.StringPtrOutput)
+}
+
+// Customer-assigned Virtual Device Name
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevice) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Virtual Device type
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevice) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Equinix-assigned Virtual Device identifier
+func (o ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevice) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uuid
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceTokenServiceTokenConnectionZSide struct {
+	// List of criteria for selecting network access points with optimal efficiency, security, compatibility, and availability
+	AccessPointSelectors []ServiceTokenServiceTokenConnectionZSideAccessPointSelector `pulumi:"accessPointSelectors"`
+}
+
+// ServiceTokenServiceTokenConnectionZSideInput is an input type that accepts ServiceTokenServiceTokenConnectionZSideArgs and ServiceTokenServiceTokenConnectionZSideOutput values.
+// You can construct a concrete instance of `ServiceTokenServiceTokenConnectionZSideInput` via:
+//
+//	ServiceTokenServiceTokenConnectionZSideArgs{...}
+type ServiceTokenServiceTokenConnectionZSideInput interface {
+	pulumi.Input
+
+	ToServiceTokenServiceTokenConnectionZSideOutput() ServiceTokenServiceTokenConnectionZSideOutput
+	ToServiceTokenServiceTokenConnectionZSideOutputWithContext(context.Context) ServiceTokenServiceTokenConnectionZSideOutput
+}
+
+type ServiceTokenServiceTokenConnectionZSideArgs struct {
+	// List of criteria for selecting network access points with optimal efficiency, security, compatibility, and availability
+	AccessPointSelectors ServiceTokenServiceTokenConnectionZSideAccessPointSelectorArrayInput `pulumi:"accessPointSelectors"`
+}
+
+func (ServiceTokenServiceTokenConnectionZSideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTokenServiceTokenConnectionZSide)(nil)).Elem()
+}
+
+func (i ServiceTokenServiceTokenConnectionZSideArgs) ToServiceTokenServiceTokenConnectionZSideOutput() ServiceTokenServiceTokenConnectionZSideOutput {
+	return i.ToServiceTokenServiceTokenConnectionZSideOutputWithContext(context.Background())
+}
+
+func (i ServiceTokenServiceTokenConnectionZSideArgs) ToServiceTokenServiceTokenConnectionZSideOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionZSideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTokenServiceTokenConnectionZSideOutput)
+}
+
+// ServiceTokenServiceTokenConnectionZSideArrayInput is an input type that accepts ServiceTokenServiceTokenConnectionZSideArray and ServiceTokenServiceTokenConnectionZSideArrayOutput values.
+// You can construct a concrete instance of `ServiceTokenServiceTokenConnectionZSideArrayInput` via:
+//
+//	ServiceTokenServiceTokenConnectionZSideArray{ ServiceTokenServiceTokenConnectionZSideArgs{...} }
+type ServiceTokenServiceTokenConnectionZSideArrayInput interface {
+	pulumi.Input
+
+	ToServiceTokenServiceTokenConnectionZSideArrayOutput() ServiceTokenServiceTokenConnectionZSideArrayOutput
+	ToServiceTokenServiceTokenConnectionZSideArrayOutputWithContext(context.Context) ServiceTokenServiceTokenConnectionZSideArrayOutput
+}
+
+type ServiceTokenServiceTokenConnectionZSideArray []ServiceTokenServiceTokenConnectionZSideInput
+
+func (ServiceTokenServiceTokenConnectionZSideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceTokenServiceTokenConnectionZSide)(nil)).Elem()
+}
+
+func (i ServiceTokenServiceTokenConnectionZSideArray) ToServiceTokenServiceTokenConnectionZSideArrayOutput() ServiceTokenServiceTokenConnectionZSideArrayOutput {
+	return i.ToServiceTokenServiceTokenConnectionZSideArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceTokenServiceTokenConnectionZSideArray) ToServiceTokenServiceTokenConnectionZSideArrayOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionZSideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTokenServiceTokenConnectionZSideArrayOutput)
+}
+
+type ServiceTokenServiceTokenConnectionZSideOutput struct{ *pulumi.OutputState }
+
+func (ServiceTokenServiceTokenConnectionZSideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTokenServiceTokenConnectionZSide)(nil)).Elem()
+}
+
+func (o ServiceTokenServiceTokenConnectionZSideOutput) ToServiceTokenServiceTokenConnectionZSideOutput() ServiceTokenServiceTokenConnectionZSideOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionZSideOutput) ToServiceTokenServiceTokenConnectionZSideOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionZSideOutput {
+	return o
+}
+
+// List of criteria for selecting network access points with optimal efficiency, security, compatibility, and availability
+func (o ServiceTokenServiceTokenConnectionZSideOutput) AccessPointSelectors() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorArrayOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionZSide) []ServiceTokenServiceTokenConnectionZSideAccessPointSelector {
+		return v.AccessPointSelectors
+	}).(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorArrayOutput)
+}
+
+type ServiceTokenServiceTokenConnectionZSideArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceTokenServiceTokenConnectionZSideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceTokenServiceTokenConnectionZSide)(nil)).Elem()
+}
+
+func (o ServiceTokenServiceTokenConnectionZSideArrayOutput) ToServiceTokenServiceTokenConnectionZSideArrayOutput() ServiceTokenServiceTokenConnectionZSideArrayOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionZSideArrayOutput) ToServiceTokenServiceTokenConnectionZSideArrayOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionZSideArrayOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionZSideArrayOutput) Index(i pulumi.IntInput) ServiceTokenServiceTokenConnectionZSideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceTokenServiceTokenConnectionZSide {
+		return vs[0].([]ServiceTokenServiceTokenConnectionZSide)[vs[1].(int)]
+	}).(ServiceTokenServiceTokenConnectionZSideOutput)
+}
+
+type ServiceTokenServiceTokenConnectionZSideAccessPointSelector struct {
+	// Virtual Device Interface Configuration
+	Interface *ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterface `pulumi:"interface"`
+	// Link protocol Configuration
+	LinkProtocol *ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocol `pulumi:"linkProtocol"`
+	// Network Configuration
+	Network *ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetwork `pulumi:"network"`
+	// Port Configuration
+	Port *ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort `pulumi:"port"`
+	// Type of Access point; COLO, VD, NETWORK
+	Type *string `pulumi:"type"`
+	// Virtual Device Configuration
+	VirtualDevice *ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevice `pulumi:"virtualDevice"`
+}
+
+// ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInput is an input type that accepts ServiceTokenServiceTokenConnectionZSideAccessPointSelectorArgs and ServiceTokenServiceTokenConnectionZSideAccessPointSelectorOutput values.
+// You can construct a concrete instance of `ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInput` via:
+//
+//	ServiceTokenServiceTokenConnectionZSideAccessPointSelectorArgs{...}
+type ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInput interface {
+	pulumi.Input
+
+	ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorOutput() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorOutput
+	ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorOutputWithContext(context.Context) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorOutput
+}
+
+type ServiceTokenServiceTokenConnectionZSideAccessPointSelectorArgs struct {
+	// Virtual Device Interface Configuration
+	Interface ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfacePtrInput `pulumi:"interface"`
+	// Link protocol Configuration
+	LinkProtocol ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrInput `pulumi:"linkProtocol"`
+	// Network Configuration
+	Network ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkPtrInput `pulumi:"network"`
+	// Port Configuration
+	Port ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortPtrInput `pulumi:"port"`
+	// Type of Access point; COLO, VD, NETWORK
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Virtual Device Configuration
+	VirtualDevice ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrInput `pulumi:"virtualDevice"`
+}
+
+func (ServiceTokenServiceTokenConnectionZSideAccessPointSelectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTokenServiceTokenConnectionZSideAccessPointSelector)(nil)).Elem()
+}
+
+func (i ServiceTokenServiceTokenConnectionZSideAccessPointSelectorArgs) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorOutput() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorOutput {
+	return i.ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorOutputWithContext(context.Background())
+}
+
+func (i ServiceTokenServiceTokenConnectionZSideAccessPointSelectorArgs) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorOutput)
+}
+
+// ServiceTokenServiceTokenConnectionZSideAccessPointSelectorArrayInput is an input type that accepts ServiceTokenServiceTokenConnectionZSideAccessPointSelectorArray and ServiceTokenServiceTokenConnectionZSideAccessPointSelectorArrayOutput values.
+// You can construct a concrete instance of `ServiceTokenServiceTokenConnectionZSideAccessPointSelectorArrayInput` via:
+//
+//	ServiceTokenServiceTokenConnectionZSideAccessPointSelectorArray{ ServiceTokenServiceTokenConnectionZSideAccessPointSelectorArgs{...} }
+type ServiceTokenServiceTokenConnectionZSideAccessPointSelectorArrayInput interface {
+	pulumi.Input
+
+	ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorArrayOutput() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorArrayOutput
+	ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorArrayOutputWithContext(context.Context) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorArrayOutput
+}
+
+type ServiceTokenServiceTokenConnectionZSideAccessPointSelectorArray []ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInput
+
+func (ServiceTokenServiceTokenConnectionZSideAccessPointSelectorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceTokenServiceTokenConnectionZSideAccessPointSelector)(nil)).Elem()
+}
+
+func (i ServiceTokenServiceTokenConnectionZSideAccessPointSelectorArray) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorArrayOutput() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorArrayOutput {
+	return i.ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceTokenServiceTokenConnectionZSideAccessPointSelectorArray) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorArrayOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorArrayOutput)
+}
+
+type ServiceTokenServiceTokenConnectionZSideAccessPointSelectorOutput struct{ *pulumi.OutputState }
+
+func (ServiceTokenServiceTokenConnectionZSideAccessPointSelectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTokenServiceTokenConnectionZSideAccessPointSelector)(nil)).Elem()
+}
+
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorOutput) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorOutput() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorOutput) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorOutput {
+	return o
+}
+
+// Virtual Device Interface Configuration
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorOutput) Interface() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionZSideAccessPointSelector) *ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterface {
+		return v.Interface
+	}).(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutput)
+}
+
+// Link protocol Configuration
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorOutput) LinkProtocol() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionZSideAccessPointSelector) *ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocol {
+		return v.LinkProtocol
+	}).(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput)
+}
+
+// Network Configuration
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorOutput) Network() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionZSideAccessPointSelector) *ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetwork {
+		return v.Network
+	}).(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkPtrOutput)
+}
+
+// Port Configuration
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorOutput) Port() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionZSideAccessPointSelector) *ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort {
+		return v.Port
+	}).(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput)
+}
+
+// Type of Access point; COLO, VD, NETWORK
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionZSideAccessPointSelector) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// Virtual Device Configuration
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorOutput) VirtualDevice() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionZSideAccessPointSelector) *ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevice {
+		return v.VirtualDevice
+	}).(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput)
+}
+
+type ServiceTokenServiceTokenConnectionZSideAccessPointSelectorArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceTokenServiceTokenConnectionZSideAccessPointSelectorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceTokenServiceTokenConnectionZSideAccessPointSelector)(nil)).Elem()
+}
+
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorArrayOutput) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorArrayOutput() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorArrayOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorArrayOutput) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorArrayOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorArrayOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorArrayOutput) Index(i pulumi.IntInput) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceTokenServiceTokenConnectionZSideAccessPointSelector {
+		return vs[0].([]ServiceTokenServiceTokenConnectionZSideAccessPointSelector)[vs[1].(int)]
+	}).(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorOutput)
+}
+
+type ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterface struct {
+	// id
+	Id *int `pulumi:"id"`
+	// Interface type
+	Type string `pulumi:"type"`
+	// Equinix-assigned interface identifier
+	Uuid *string `pulumi:"uuid"`
+}
+
+// ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceInput is an input type that accepts ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceArgs and ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput values.
+// You can construct a concrete instance of `ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceInput` via:
+//
+//	ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceArgs{...}
+type ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceInput interface {
+	pulumi.Input
+
+	ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput
+	ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceOutputWithContext(context.Context) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput
+}
+
+type ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceArgs struct {
+	// id
+	Id pulumi.IntPtrInput `pulumi:"id"`
+	// Interface type
+	Type pulumi.StringInput `pulumi:"type"`
+	// Equinix-assigned interface identifier
+	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+}
+
+func (ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterface)(nil)).Elem()
+}
+
+func (i ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceArgs) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput {
+	return i.ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceOutputWithContext(context.Background())
+}
+
+func (i ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceArgs) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput)
+}
+
+func (i ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceArgs) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutput() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutput {
+	return i.ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutputWithContext(context.Background())
+}
+
+func (i ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceArgs) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput).ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutputWithContext(ctx)
+}
+
+// ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfacePtrInput is an input type that accepts ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceArgs, ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfacePtr and ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutput values.
+// You can construct a concrete instance of `ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfacePtrInput` via:
+//
+//	        ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfacePtrInput interface {
+	pulumi.Input
+
+	ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutput() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutput
+	ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutputWithContext(context.Context) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutput
+}
+
+type serviceTokenServiceTokenConnectionZSideAccessPointSelectorInterfacePtrType ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceArgs
+
+func ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfacePtr(v *ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceArgs) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfacePtrInput {
+	return (*serviceTokenServiceTokenConnectionZSideAccessPointSelectorInterfacePtrType)(v)
+}
+
+func (*serviceTokenServiceTokenConnectionZSideAccessPointSelectorInterfacePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterface)(nil)).Elem()
+}
+
+func (i *serviceTokenServiceTokenConnectionZSideAccessPointSelectorInterfacePtrType) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutput() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutput {
+	return i.ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutputWithContext(context.Background())
+}
+
+func (i *serviceTokenServiceTokenConnectionZSideAccessPointSelectorInterfacePtrType) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutput)
+}
+
+type ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput struct{ *pulumi.OutputState }
+
+func (ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterface)(nil)).Elem()
+}
+
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutput() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutput {
+	return o.ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutputWithContext(context.Background())
+}
+
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterface) *ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterface {
+		return &v
+	}).(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutput)
+}
+
+// id
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput) Id() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterface) *int { return v.Id }).(pulumi.IntPtrOutput)
+}
+
+// Interface type
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterface) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Equinix-assigned interface identifier
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterface) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+}
+
+type ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterface)(nil)).Elem()
+}
+
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutput) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutput() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutput) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutput) Elem() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterface) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterface {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterface
+		return ret
+	}).(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput)
+}
+
+// id
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutput) Id() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterface) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.IntPtrOutput)
+}
+
+// Interface type
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterface) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Equinix-assigned interface identifier
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterface) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uuid
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocol struct {
+	// Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
+	Type *string `pulumi:"type"`
+	// Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+	VlanCTag *int `pulumi:"vlanCTag"`
+	// Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+	VlanSTag *int `pulumi:"vlanSTag"`
+	// Vlan Tag information, vlanTag value specified for DOT1Q connections
+	VlanTag *int `pulumi:"vlanTag"`
+}
+
+// ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolInput is an input type that accepts ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolArgs and ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput values.
+// You can construct a concrete instance of `ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolInput` via:
+//
+//	ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolArgs{...}
+type ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolInput interface {
+	pulumi.Input
+
+	ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput
+	ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutputWithContext(context.Context) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput
+}
+
+type ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolArgs struct {
+	// Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+	VlanCTag pulumi.IntPtrInput `pulumi:"vlanCTag"`
+	// Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+	VlanSTag pulumi.IntPtrInput `pulumi:"vlanSTag"`
+	// Vlan Tag information, vlanTag value specified for DOT1Q connections
+	VlanTag pulumi.IntPtrInput `pulumi:"vlanTag"`
+}
+
+func (ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocol)(nil)).Elem()
+}
+
+func (i ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolArgs) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput {
+	return i.ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutputWithContext(context.Background())
+}
+
+func (i ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolArgs) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput)
+}
+
+func (i ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolArgs) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput {
+	return i.ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolArgs) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput).ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutputWithContext(ctx)
+}
+
+// ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrInput is an input type that accepts ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolArgs, ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtr and ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput values.
+// You can construct a concrete instance of `ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrInput` via:
+//
+//	        ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrInput interface {
+	pulumi.Input
+
+	ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput
+	ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutputWithContext(context.Context) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput
+}
+
+type serviceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrType ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolArgs
+
+func ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtr(v *ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolArgs) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrInput {
+	return (*serviceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrType)(v)
+}
+
+func (*serviceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocol)(nil)).Elem()
+}
+
+func (i *serviceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrType) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput {
+	return i.ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrType) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput)
+}
+
+type ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput struct{ *pulumi.OutputState }
+
+func (ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocol)(nil)).Elem()
+}
+
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput {
+	return o.ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocol) *ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocol {
+		return &v
+	}).(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput)
+}
+
+// Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocol) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput) VlanCTag() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocol) *int { return v.VlanCTag }).(pulumi.IntPtrOutput)
+}
+
+// Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput) VlanSTag() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocol) *int { return v.VlanSTag }).(pulumi.IntPtrOutput)
+}
+
+// Vlan Tag information, vlanTag value specified for DOT1Q connections
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput) VlanTag() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocol) *int { return v.VlanTag }).(pulumi.IntPtrOutput)
+}
+
+type ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocol)(nil)).Elem()
+}
+
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput) Elem() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocol) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocol {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocol
+		return ret
+	}).(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput)
+}
+
+// Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocol) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput) VlanCTag() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocol) *int {
+		if v == nil {
+			return nil
+		}
+		return v.VlanCTag
+	}).(pulumi.IntPtrOutput)
+}
+
+// Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput) VlanSTag() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocol) *int {
+		if v == nil {
+			return nil
+		}
+		return v.VlanSTag
+	}).(pulumi.IntPtrOutput)
+}
+
+// Vlan Tag information, vlanTag value specified for DOT1Q connections
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput) VlanTag() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocol) *int {
+		if v == nil {
+			return nil
+		}
+		return v.VlanTag
+	}).(pulumi.IntPtrOutput)
+}
+
+type ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetwork struct {
+	// Unique Resource Identifier
+	Href *string `pulumi:"href"`
+	// Location
+	Locations []ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocation `pulumi:"locations"`
+	// Network Name
+	Name *string `pulumi:"name"`
+	// Scope of Network
+	Scope *string `pulumi:"scope"`
+	// Type of Network
+	Type *string `pulumi:"type"`
+	// Equinix-assigned Network identifier
+	Uuid *string `pulumi:"uuid"`
+}
+
+// ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkInput is an input type that accepts ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkArgs and ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkOutput values.
+// You can construct a concrete instance of `ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkInput` via:
+//
+//	ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkArgs{...}
+type ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkInput interface {
+	pulumi.Input
+
+	ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkOutput() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkOutput
+	ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkOutputWithContext(context.Context) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkOutput
+}
+
+type ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkArgs struct {
+	// Unique Resource Identifier
+	Href pulumi.StringPtrInput `pulumi:"href"`
+	// Location
+	Locations ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayInput `pulumi:"locations"`
+	// Network Name
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Scope of Network
+	Scope pulumi.StringPtrInput `pulumi:"scope"`
+	// Type of Network
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Equinix-assigned Network identifier
+	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+}
+
+func (ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetwork)(nil)).Elem()
+}
+
+func (i ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkArgs) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkOutput() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkOutput {
+	return i.ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkOutputWithContext(context.Background())
+}
+
+func (i ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkArgs) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkOutput)
+}
+
+func (i ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkArgs) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkPtrOutput() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkPtrOutput {
+	return i.ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkArgs) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkPtrOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkOutput).ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkPtrOutputWithContext(ctx)
+}
+
+// ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkPtrInput is an input type that accepts ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkArgs, ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkPtr and ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkPtrOutput values.
+// You can construct a concrete instance of `ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkPtrInput` via:
+//
+//	        ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkPtrInput interface {
+	pulumi.Input
+
+	ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkPtrOutput() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkPtrOutput
+	ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkPtrOutputWithContext(context.Context) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkPtrOutput
+}
+
+type serviceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkPtrType ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkArgs
+
+func ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkPtr(v *ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkArgs) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkPtrInput {
+	return (*serviceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkPtrType)(v)
+}
+
+func (*serviceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetwork)(nil)).Elem()
+}
+
+func (i *serviceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkPtrType) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkPtrOutput() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkPtrOutput {
+	return i.ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkPtrType) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkPtrOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkPtrOutput)
+}
+
+type ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkOutput struct{ *pulumi.OutputState }
+
+func (ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetwork)(nil)).Elem()
+}
+
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkOutput) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkOutput() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkOutput) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkOutput) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkPtrOutput() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkPtrOutput {
+	return o.ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkOutput) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkPtrOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetwork) *ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetwork {
+		return &v
+	}).(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkPtrOutput)
+}
+
+// Unique Resource Identifier
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetwork) *string { return v.Href }).(pulumi.StringPtrOutput)
+}
+
+// Location
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkOutput) Locations() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetwork) []ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocation {
+		return v.Locations
+	}).(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput)
+}
+
+// Network Name
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetwork) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Scope of Network
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetwork) *string { return v.Scope }).(pulumi.StringPtrOutput)
+}
+
+// Type of Network
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetwork) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// Equinix-assigned Network identifier
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetwork) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+}
+
+type ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetwork)(nil)).Elem()
+}
+
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkPtrOutput) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkPtrOutput() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkPtrOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkPtrOutput) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkPtrOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkPtrOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkPtrOutput) Elem() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetwork) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetwork {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetwork
+		return ret
+	}).(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkOutput)
+}
+
+// Unique Resource Identifier
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkPtrOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Href
+	}).(pulumi.StringPtrOutput)
+}
+
+// Location
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkPtrOutput) Locations() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetwork) []ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocation {
+		if v == nil {
+			return nil
+		}
+		return v.Locations
+	}).(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput)
+}
+
+// Network Name
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Scope of Network
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkPtrOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Scope
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of Network
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Equinix-assigned Network identifier
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkPtrOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uuid
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocation struct {
+	// IBX Code
+	Ibx *string `pulumi:"ibx"`
+	// Access point metro code
+	MetroCode *string `pulumi:"metroCode"`
+	// Access point metro name
+	MetroName *string `pulumi:"metroName"`
+	// Access point region
+	Region *string `pulumi:"region"`
+}
+
+// ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationInput is an input type that accepts ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArgs and ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput values.
+// You can construct a concrete instance of `ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationInput` via:
+//
+//	ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArgs{...}
+type ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationInput interface {
+	pulumi.Input
+
+	ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput
+	ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutputWithContext(context.Context) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput
+}
+
+type ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArgs struct {
+	// IBX Code
+	Ibx pulumi.StringPtrInput `pulumi:"ibx"`
+	// Access point metro code
+	MetroCode pulumi.StringPtrInput `pulumi:"metroCode"`
+	// Access point metro name
+	MetroName pulumi.StringPtrInput `pulumi:"metroName"`
+	// Access point region
+	Region pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocation)(nil)).Elem()
+}
+
+func (i ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArgs) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput {
+	return i.ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutputWithContext(context.Background())
+}
+
+func (i ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArgs) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput)
+}
+
+// ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayInput is an input type that accepts ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArray and ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput values.
+// You can construct a concrete instance of `ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayInput` via:
+//
+//	ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArray{ ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArgs{...} }
+type ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayInput interface {
+	pulumi.Input
+
+	ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput
+	ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutputWithContext(context.Context) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput
+}
+
+type ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArray []ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationInput
+
+func (ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocation)(nil)).Elem()
+}
+
+func (i ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArray) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput {
+	return i.ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArray) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput)
+}
+
+type ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput struct{ *pulumi.OutputState }
+
+func (ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocation)(nil)).Elem()
+}
+
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput {
+	return o
+}
+
+// IBX Code
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput) Ibx() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocation) *string {
+		return v.Ibx
+	}).(pulumi.StringPtrOutput)
+}
+
+// Access point metro code
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput) MetroCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocation) *string {
+		return v.MetroCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Access point metro name
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput) MetroName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocation) *string {
+		return v.MetroName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Access point region
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocation) *string {
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocation)(nil)).Elem()
+}
+
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput) Index(i pulumi.IntInput) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocation {
+		return vs[0].([]ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocation)[vs[1].(int)]
+	}).(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput)
+}
+
+type ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort struct {
+	// Account Name
+	AccountName *string `pulumi:"accountName"`
+	// Port Bandwidth
+	Bandwidth *int `pulumi:"bandwidth"`
+	// Customer virtual port Id
+	CvpId *int `pulumi:"cvpId"`
+	// Port Encapsulation
+	EncapsulationProtocolType *string `pulumi:"encapsulationProtocolType"`
+	// Unique Resource Identifier
+	Href *string `pulumi:"href"`
+	// Port Location
+	Locations []ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocation `pulumi:"locations"`
+	// Port Name
+	PortName *string `pulumi:"portName"`
+	// Port Priority
+	Priority *string `pulumi:"priority"`
+	// Type of Port
+	Type *string `pulumi:"type"`
+	// Equinix-assigned Port identifier
+	Uuid string `pulumi:"uuid"`
+}
+
+// ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortInput is an input type that accepts ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortArgs and ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutput values.
+// You can construct a concrete instance of `ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortInput` via:
+//
+//	ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortArgs{...}
+type ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortInput interface {
+	pulumi.Input
+
+	ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutput() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutput
+	ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutputWithContext(context.Context) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutput
+}
+
+type ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortArgs struct {
+	// Account Name
+	AccountName pulumi.StringPtrInput `pulumi:"accountName"`
+	// Port Bandwidth
+	Bandwidth pulumi.IntPtrInput `pulumi:"bandwidth"`
+	// Customer virtual port Id
+	CvpId pulumi.IntPtrInput `pulumi:"cvpId"`
+	// Port Encapsulation
+	EncapsulationProtocolType pulumi.StringPtrInput `pulumi:"encapsulationProtocolType"`
+	// Unique Resource Identifier
+	Href pulumi.StringPtrInput `pulumi:"href"`
+	// Port Location
+	Locations ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayInput `pulumi:"locations"`
+	// Port Name
+	PortName pulumi.StringPtrInput `pulumi:"portName"`
+	// Port Priority
+	Priority pulumi.StringPtrInput `pulumi:"priority"`
+	// Type of Port
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Equinix-assigned Port identifier
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort)(nil)).Elem()
+}
+
+func (i ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortArgs) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutput() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutput {
+	return i.ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutputWithContext(context.Background())
+}
+
+func (i ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortArgs) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutput)
+}
+
+func (i ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortArgs) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput {
+	return i.ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortArgs) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortPtrOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutput).ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortPtrOutputWithContext(ctx)
+}
+
+// ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortPtrInput is an input type that accepts ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortArgs, ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortPtr and ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput values.
+// You can construct a concrete instance of `ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortPtrInput` via:
+//
+//	        ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortPtrInput interface {
+	pulumi.Input
+
+	ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput
+	ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortPtrOutputWithContext(context.Context) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput
+}
+
+type serviceTokenServiceTokenConnectionZSideAccessPointSelectorPortPtrType ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortArgs
+
+func ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortPtr(v *ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortArgs) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortPtrInput {
+	return (*serviceTokenServiceTokenConnectionZSideAccessPointSelectorPortPtrType)(v)
+}
+
+func (*serviceTokenServiceTokenConnectionZSideAccessPointSelectorPortPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort)(nil)).Elem()
+}
+
+func (i *serviceTokenServiceTokenConnectionZSideAccessPointSelectorPortPtrType) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput {
+	return i.ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceTokenServiceTokenConnectionZSideAccessPointSelectorPortPtrType) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortPtrOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput)
+}
+
+type ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutput struct{ *pulumi.OutputState }
+
+func (ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort)(nil)).Elem()
+}
+
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutput) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutput() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutput) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutput) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput {
+	return o.ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutput) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortPtrOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort) *ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort {
+		return &v
+	}).(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput)
+}
+
+// Account Name
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutput) AccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort) *string { return v.AccountName }).(pulumi.StringPtrOutput)
+}
+
+// Port Bandwidth
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutput) Bandwidth() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort) *int { return v.Bandwidth }).(pulumi.IntPtrOutput)
+}
+
+// Customer virtual port Id
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutput) CvpId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort) *int { return v.CvpId }).(pulumi.IntPtrOutput)
+}
+
+// Port Encapsulation
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutput) EncapsulationProtocolType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort) *string {
+		return v.EncapsulationProtocolType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique Resource Identifier
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort) *string { return v.Href }).(pulumi.StringPtrOutput)
+}
+
+// Port Location
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutput) Locations() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort) []ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocation {
+		return v.Locations
+	}).(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput)
+}
+
+// Port Name
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutput) PortName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort) *string { return v.PortName }).(pulumi.StringPtrOutput)
+}
+
+// Port Priority
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutput) Priority() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort) *string { return v.Priority }).(pulumi.StringPtrOutput)
+}
+
+// Type of Port
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// Equinix-assigned Port identifier
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort)(nil)).Elem()
+}
+
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortPtrOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput) Elem() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort
+		return ret
+	}).(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutput)
+}
+
+// Account Name
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput) AccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccountName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Port Bandwidth
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput) Bandwidth() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Bandwidth
+	}).(pulumi.IntPtrOutput)
+}
+
+// Customer virtual port Id
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput) CvpId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CvpId
+	}).(pulumi.IntPtrOutput)
+}
+
+// Port Encapsulation
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput) EncapsulationProtocolType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EncapsulationProtocolType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique Resource Identifier
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Href
+	}).(pulumi.StringPtrOutput)
+}
+
+// Port Location
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput) Locations() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort) []ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocation {
+		if v == nil {
+			return nil
+		}
+		return v.Locations
+	}).(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput)
+}
+
+// Port Name
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput) PortName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PortName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Port Priority
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput) Priority() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Priority
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of Port
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Equinix-assigned Port identifier
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uuid
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocation struct {
+	// IBX Code
+	Ibx *string `pulumi:"ibx"`
+	// Access point metro code
+	MetroCode *string `pulumi:"metroCode"`
+	// Access point metro name
+	MetroName *string `pulumi:"metroName"`
+	// Access point region
+	Region *string `pulumi:"region"`
+}
+
+// ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationInput is an input type that accepts ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArgs and ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput values.
+// You can construct a concrete instance of `ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationInput` via:
+//
+//	ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArgs{...}
+type ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationInput interface {
+	pulumi.Input
+
+	ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput
+	ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationOutputWithContext(context.Context) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput
+}
+
+type ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArgs struct {
+	// IBX Code
+	Ibx pulumi.StringPtrInput `pulumi:"ibx"`
+	// Access point metro code
+	MetroCode pulumi.StringPtrInput `pulumi:"metroCode"`
+	// Access point metro name
+	MetroName pulumi.StringPtrInput `pulumi:"metroName"`
+	// Access point region
+	Region pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocation)(nil)).Elem()
+}
+
+func (i ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArgs) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput {
+	return i.ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationOutputWithContext(context.Background())
+}
+
+func (i ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArgs) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput)
+}
+
+// ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayInput is an input type that accepts ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArray and ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput values.
+// You can construct a concrete instance of `ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayInput` via:
+//
+//	ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArray{ ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArgs{...} }
+type ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayInput interface {
+	pulumi.Input
+
+	ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput
+	ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutputWithContext(context.Context) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput
+}
+
+type ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArray []ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationInput
+
+func (ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocation)(nil)).Elem()
+}
+
+func (i ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArray) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput {
+	return i.ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArray) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput)
+}
+
+type ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput struct{ *pulumi.OutputState }
+
+func (ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocation)(nil)).Elem()
+}
+
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput {
+	return o
+}
+
+// IBX Code
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput) Ibx() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocation) *string { return v.Ibx }).(pulumi.StringPtrOutput)
+}
+
+// Access point metro code
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput) MetroCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocation) *string {
+		return v.MetroCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Access point metro name
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput) MetroName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocation) *string {
+		return v.MetroName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Access point region
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocation) *string {
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocation)(nil)).Elem()
+}
+
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput) Index(i pulumi.IntInput) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocation {
+		return vs[0].([]ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocation)[vs[1].(int)]
+	}).(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput)
+}
+
+type ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevice struct {
+	// Virtual Device Cluster Information
+	Cluster *string `pulumi:"cluster"`
+	// Unique Resource Identifier
+	Href *string `pulumi:"href"`
+	// Customer-assigned Virtual Device Name
+	Name *string `pulumi:"name"`
+	// Virtual Device type
+	Type *string `pulumi:"type"`
+	// Equinix-assigned Virtual Device identifier
+	Uuid string `pulumi:"uuid"`
+}
+
+// ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceInput is an input type that accepts ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs and ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput values.
+// You can construct a concrete instance of `ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceInput` via:
+//
+//	ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs{...}
+type ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceInput interface {
+	pulumi.Input
+
+	ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput
+	ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutputWithContext(context.Context) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput
+}
+
+type ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs struct {
+	// Virtual Device Cluster Information
+	Cluster pulumi.StringPtrInput `pulumi:"cluster"`
+	// Unique Resource Identifier
+	Href pulumi.StringPtrInput `pulumi:"href"`
+	// Customer-assigned Virtual Device Name
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Virtual Device type
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Equinix-assigned Virtual Device identifier
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevice)(nil)).Elem()
+}
+
+func (i ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput {
+	return i.ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutputWithContext(context.Background())
+}
+
+func (i ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput)
+}
+
+func (i ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput {
+	return i.ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutputWithContext(context.Background())
+}
+
+func (i ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput).ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutputWithContext(ctx)
+}
+
+// ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrInput is an input type that accepts ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs, ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtr and ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput values.
+// You can construct a concrete instance of `ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrInput` via:
+//
+//	        ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrInput interface {
+	pulumi.Input
+
+	ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput
+	ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutputWithContext(context.Context) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput
+}
+
+type serviceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrType ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs
+
+func ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtr(v *ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrInput {
+	return (*serviceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrType)(v)
+}
+
+func (*serviceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevice)(nil)).Elem()
+}
+
+func (i *serviceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrType) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput {
+	return i.ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutputWithContext(context.Background())
+}
+
+func (i *serviceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrType) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput)
+}
+
+type ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput struct{ *pulumi.OutputState }
+
+func (ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevice)(nil)).Elem()
+}
+
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput {
+	return o.ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutputWithContext(context.Background())
+}
+
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevice) *ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevice {
+		return &v
+	}).(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput)
+}
+
+// Virtual Device Cluster Information
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput) Cluster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevice) *string {
+		return v.Cluster
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique Resource Identifier
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevice) *string { return v.Href }).(pulumi.StringPtrOutput)
+}
+
+// Customer-assigned Virtual Device Name
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevice) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Virtual Device type
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevice) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// Equinix-assigned Virtual Device identifier
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevice) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevice)(nil)).Elem()
+}
+
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput) ToServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutputWithContext(ctx context.Context) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput {
+	return o
+}
+
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput) Elem() ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevice) ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevice {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevice
+		return ret
+	}).(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput)
+}
+
+// Virtual Device Cluster Information
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput) Cluster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevice) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Cluster
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique Resource Identifier
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevice) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Href
+	}).(pulumi.StringPtrOutput)
+}
+
+// Customer-assigned Virtual Device Name
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevice) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Virtual Device type
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevice) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Equinix-assigned Virtual Device identifier
+func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevice) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uuid
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetCloudRouterAccount struct {
 	// Account Number
 	AccountNumber int `pulumi:"accountNumber"`
@@ -45879,6 +49952,6583 @@ func (o GetServiceProfilesSortArrayOutput) Index(i pulumi.IntInput) GetServicePr
 	}).(GetServiceProfilesSortOutput)
 }
 
+type GetServiceTokenAccount struct {
+	// Legal name of the accountholder.
+	AccountName string `pulumi:"accountName"`
+	// Equinix-assigned account number.
+	AccountNumber int `pulumi:"accountNumber"`
+	// Equinix-assigned ID of the subscriber's parent organization.
+	GlobalCustId string `pulumi:"globalCustId"`
+	// Equinix-assigned ID of the subscriber's parent organization.
+	GlobalOrgId string `pulumi:"globalOrgId"`
+	// Equinix-assigned name of the subscriber's parent organization.
+	GlobalOrganizationName string `pulumi:"globalOrganizationName"`
+	// Equinix-assigned ID of the subscriber's organization.
+	OrgId int `pulumi:"orgId"`
+	// Equinix-assigned name of the subscriber's organization.
+	OrganizationName string `pulumi:"organizationName"`
+	// Enterprise datastore id
+	UcmId string `pulumi:"ucmId"`
+}
+
+// GetServiceTokenAccountInput is an input type that accepts GetServiceTokenAccountArgs and GetServiceTokenAccountOutput values.
+// You can construct a concrete instance of `GetServiceTokenAccountInput` via:
+//
+//	GetServiceTokenAccountArgs{...}
+type GetServiceTokenAccountInput interface {
+	pulumi.Input
+
+	ToGetServiceTokenAccountOutput() GetServiceTokenAccountOutput
+	ToGetServiceTokenAccountOutputWithContext(context.Context) GetServiceTokenAccountOutput
+}
+
+type GetServiceTokenAccountArgs struct {
+	// Legal name of the accountholder.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// Equinix-assigned account number.
+	AccountNumber pulumi.IntInput `pulumi:"accountNumber"`
+	// Equinix-assigned ID of the subscriber's parent organization.
+	GlobalCustId pulumi.StringInput `pulumi:"globalCustId"`
+	// Equinix-assigned ID of the subscriber's parent organization.
+	GlobalOrgId pulumi.StringInput `pulumi:"globalOrgId"`
+	// Equinix-assigned name of the subscriber's parent organization.
+	GlobalOrganizationName pulumi.StringInput `pulumi:"globalOrganizationName"`
+	// Equinix-assigned ID of the subscriber's organization.
+	OrgId pulumi.IntInput `pulumi:"orgId"`
+	// Equinix-assigned name of the subscriber's organization.
+	OrganizationName pulumi.StringInput `pulumi:"organizationName"`
+	// Enterprise datastore id
+	UcmId pulumi.StringInput `pulumi:"ucmId"`
+}
+
+func (GetServiceTokenAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokenAccount)(nil)).Elem()
+}
+
+func (i GetServiceTokenAccountArgs) ToGetServiceTokenAccountOutput() GetServiceTokenAccountOutput {
+	return i.ToGetServiceTokenAccountOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokenAccountArgs) ToGetServiceTokenAccountOutputWithContext(ctx context.Context) GetServiceTokenAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokenAccountOutput)
+}
+
+// GetServiceTokenAccountArrayInput is an input type that accepts GetServiceTokenAccountArray and GetServiceTokenAccountArrayOutput values.
+// You can construct a concrete instance of `GetServiceTokenAccountArrayInput` via:
+//
+//	GetServiceTokenAccountArray{ GetServiceTokenAccountArgs{...} }
+type GetServiceTokenAccountArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTokenAccountArrayOutput() GetServiceTokenAccountArrayOutput
+	ToGetServiceTokenAccountArrayOutputWithContext(context.Context) GetServiceTokenAccountArrayOutput
+}
+
+type GetServiceTokenAccountArray []GetServiceTokenAccountInput
+
+func (GetServiceTokenAccountArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTokenAccount)(nil)).Elem()
+}
+
+func (i GetServiceTokenAccountArray) ToGetServiceTokenAccountArrayOutput() GetServiceTokenAccountArrayOutput {
+	return i.ToGetServiceTokenAccountArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokenAccountArray) ToGetServiceTokenAccountArrayOutputWithContext(ctx context.Context) GetServiceTokenAccountArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokenAccountArrayOutput)
+}
+
+type GetServiceTokenAccountOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokenAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokenAccount)(nil)).Elem()
+}
+
+func (o GetServiceTokenAccountOutput) ToGetServiceTokenAccountOutput() GetServiceTokenAccountOutput {
+	return o
+}
+
+func (o GetServiceTokenAccountOutput) ToGetServiceTokenAccountOutputWithContext(ctx context.Context) GetServiceTokenAccountOutput {
+	return o
+}
+
+// Legal name of the accountholder.
+func (o GetServiceTokenAccountOutput) AccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenAccount) string { return v.AccountName }).(pulumi.StringOutput)
+}
+
+// Equinix-assigned account number.
+func (o GetServiceTokenAccountOutput) AccountNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTokenAccount) int { return v.AccountNumber }).(pulumi.IntOutput)
+}
+
+// Equinix-assigned ID of the subscriber's parent organization.
+func (o GetServiceTokenAccountOutput) GlobalCustId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenAccount) string { return v.GlobalCustId }).(pulumi.StringOutput)
+}
+
+// Equinix-assigned ID of the subscriber's parent organization.
+func (o GetServiceTokenAccountOutput) GlobalOrgId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenAccount) string { return v.GlobalOrgId }).(pulumi.StringOutput)
+}
+
+// Equinix-assigned name of the subscriber's parent organization.
+func (o GetServiceTokenAccountOutput) GlobalOrganizationName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenAccount) string { return v.GlobalOrganizationName }).(pulumi.StringOutput)
+}
+
+// Equinix-assigned ID of the subscriber's organization.
+func (o GetServiceTokenAccountOutput) OrgId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTokenAccount) int { return v.OrgId }).(pulumi.IntOutput)
+}
+
+// Equinix-assigned name of the subscriber's organization.
+func (o GetServiceTokenAccountOutput) OrganizationName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenAccount) string { return v.OrganizationName }).(pulumi.StringOutput)
+}
+
+// Enterprise datastore id
+func (o GetServiceTokenAccountOutput) UcmId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenAccount) string { return v.UcmId }).(pulumi.StringOutput)
+}
+
+type GetServiceTokenAccountArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokenAccountArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTokenAccount)(nil)).Elem()
+}
+
+func (o GetServiceTokenAccountArrayOutput) ToGetServiceTokenAccountArrayOutput() GetServiceTokenAccountArrayOutput {
+	return o
+}
+
+func (o GetServiceTokenAccountArrayOutput) ToGetServiceTokenAccountArrayOutputWithContext(ctx context.Context) GetServiceTokenAccountArrayOutput {
+	return o
+}
+
+func (o GetServiceTokenAccountArrayOutput) Index(i pulumi.IntInput) GetServiceTokenAccountOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTokenAccount {
+		return vs[0].([]GetServiceTokenAccount)[vs[1].(int)]
+	}).(GetServiceTokenAccountOutput)
+}
+
+type GetServiceTokenChangeLog struct {
+	// Created by User Key
+	CreatedBy string `pulumi:"createdBy"`
+	// Created by User Email Address
+	CreatedByEmail string `pulumi:"createdByEmail"`
+	// Created by User Full Name
+	CreatedByFullName string `pulumi:"createdByFullName"`
+	// Created by Date and Time
+	CreatedDateTime string `pulumi:"createdDateTime"`
+	// Deleted by User Key
+	DeletedBy string `pulumi:"deletedBy"`
+	// Deleted by User Email Address
+	DeletedByEmail string `pulumi:"deletedByEmail"`
+	// Deleted by User Full Name
+	DeletedByFullName string `pulumi:"deletedByFullName"`
+	// Deleted by Date and Time
+	DeletedDateTime string `pulumi:"deletedDateTime"`
+	// Updated by User Key
+	UpdatedBy string `pulumi:"updatedBy"`
+	// Updated by User Email Address
+	UpdatedByEmail string `pulumi:"updatedByEmail"`
+	// Updated by User Full Name
+	UpdatedByFullName string `pulumi:"updatedByFullName"`
+	// Updated by Date and Time
+	UpdatedDateTime string `pulumi:"updatedDateTime"`
+}
+
+// GetServiceTokenChangeLogInput is an input type that accepts GetServiceTokenChangeLogArgs and GetServiceTokenChangeLogOutput values.
+// You can construct a concrete instance of `GetServiceTokenChangeLogInput` via:
+//
+//	GetServiceTokenChangeLogArgs{...}
+type GetServiceTokenChangeLogInput interface {
+	pulumi.Input
+
+	ToGetServiceTokenChangeLogOutput() GetServiceTokenChangeLogOutput
+	ToGetServiceTokenChangeLogOutputWithContext(context.Context) GetServiceTokenChangeLogOutput
+}
+
+type GetServiceTokenChangeLogArgs struct {
+	// Created by User Key
+	CreatedBy pulumi.StringInput `pulumi:"createdBy"`
+	// Created by User Email Address
+	CreatedByEmail pulumi.StringInput `pulumi:"createdByEmail"`
+	// Created by User Full Name
+	CreatedByFullName pulumi.StringInput `pulumi:"createdByFullName"`
+	// Created by Date and Time
+	CreatedDateTime pulumi.StringInput `pulumi:"createdDateTime"`
+	// Deleted by User Key
+	DeletedBy pulumi.StringInput `pulumi:"deletedBy"`
+	// Deleted by User Email Address
+	DeletedByEmail pulumi.StringInput `pulumi:"deletedByEmail"`
+	// Deleted by User Full Name
+	DeletedByFullName pulumi.StringInput `pulumi:"deletedByFullName"`
+	// Deleted by Date and Time
+	DeletedDateTime pulumi.StringInput `pulumi:"deletedDateTime"`
+	// Updated by User Key
+	UpdatedBy pulumi.StringInput `pulumi:"updatedBy"`
+	// Updated by User Email Address
+	UpdatedByEmail pulumi.StringInput `pulumi:"updatedByEmail"`
+	// Updated by User Full Name
+	UpdatedByFullName pulumi.StringInput `pulumi:"updatedByFullName"`
+	// Updated by Date and Time
+	UpdatedDateTime pulumi.StringInput `pulumi:"updatedDateTime"`
+}
+
+func (GetServiceTokenChangeLogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokenChangeLog)(nil)).Elem()
+}
+
+func (i GetServiceTokenChangeLogArgs) ToGetServiceTokenChangeLogOutput() GetServiceTokenChangeLogOutput {
+	return i.ToGetServiceTokenChangeLogOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokenChangeLogArgs) ToGetServiceTokenChangeLogOutputWithContext(ctx context.Context) GetServiceTokenChangeLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokenChangeLogOutput)
+}
+
+// GetServiceTokenChangeLogArrayInput is an input type that accepts GetServiceTokenChangeLogArray and GetServiceTokenChangeLogArrayOutput values.
+// You can construct a concrete instance of `GetServiceTokenChangeLogArrayInput` via:
+//
+//	GetServiceTokenChangeLogArray{ GetServiceTokenChangeLogArgs{...} }
+type GetServiceTokenChangeLogArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTokenChangeLogArrayOutput() GetServiceTokenChangeLogArrayOutput
+	ToGetServiceTokenChangeLogArrayOutputWithContext(context.Context) GetServiceTokenChangeLogArrayOutput
+}
+
+type GetServiceTokenChangeLogArray []GetServiceTokenChangeLogInput
+
+func (GetServiceTokenChangeLogArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTokenChangeLog)(nil)).Elem()
+}
+
+func (i GetServiceTokenChangeLogArray) ToGetServiceTokenChangeLogArrayOutput() GetServiceTokenChangeLogArrayOutput {
+	return i.ToGetServiceTokenChangeLogArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokenChangeLogArray) ToGetServiceTokenChangeLogArrayOutputWithContext(ctx context.Context) GetServiceTokenChangeLogArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokenChangeLogArrayOutput)
+}
+
+type GetServiceTokenChangeLogOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokenChangeLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokenChangeLog)(nil)).Elem()
+}
+
+func (o GetServiceTokenChangeLogOutput) ToGetServiceTokenChangeLogOutput() GetServiceTokenChangeLogOutput {
+	return o
+}
+
+func (o GetServiceTokenChangeLogOutput) ToGetServiceTokenChangeLogOutputWithContext(ctx context.Context) GetServiceTokenChangeLogOutput {
+	return o
+}
+
+// Created by User Key
+func (o GetServiceTokenChangeLogOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenChangeLog) string { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// Created by User Email Address
+func (o GetServiceTokenChangeLogOutput) CreatedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenChangeLog) string { return v.CreatedByEmail }).(pulumi.StringOutput)
+}
+
+// Created by User Full Name
+func (o GetServiceTokenChangeLogOutput) CreatedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenChangeLog) string { return v.CreatedByFullName }).(pulumi.StringOutput)
+}
+
+// Created by Date and Time
+func (o GetServiceTokenChangeLogOutput) CreatedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenChangeLog) string { return v.CreatedDateTime }).(pulumi.StringOutput)
+}
+
+// Deleted by User Key
+func (o GetServiceTokenChangeLogOutput) DeletedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenChangeLog) string { return v.DeletedBy }).(pulumi.StringOutput)
+}
+
+// Deleted by User Email Address
+func (o GetServiceTokenChangeLogOutput) DeletedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenChangeLog) string { return v.DeletedByEmail }).(pulumi.StringOutput)
+}
+
+// Deleted by User Full Name
+func (o GetServiceTokenChangeLogOutput) DeletedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenChangeLog) string { return v.DeletedByFullName }).(pulumi.StringOutput)
+}
+
+// Deleted by Date and Time
+func (o GetServiceTokenChangeLogOutput) DeletedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenChangeLog) string { return v.DeletedDateTime }).(pulumi.StringOutput)
+}
+
+// Updated by User Key
+func (o GetServiceTokenChangeLogOutput) UpdatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenChangeLog) string { return v.UpdatedBy }).(pulumi.StringOutput)
+}
+
+// Updated by User Email Address
+func (o GetServiceTokenChangeLogOutput) UpdatedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenChangeLog) string { return v.UpdatedByEmail }).(pulumi.StringOutput)
+}
+
+// Updated by User Full Name
+func (o GetServiceTokenChangeLogOutput) UpdatedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenChangeLog) string { return v.UpdatedByFullName }).(pulumi.StringOutput)
+}
+
+// Updated by Date and Time
+func (o GetServiceTokenChangeLogOutput) UpdatedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenChangeLog) string { return v.UpdatedDateTime }).(pulumi.StringOutput)
+}
+
+type GetServiceTokenChangeLogArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokenChangeLogArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTokenChangeLog)(nil)).Elem()
+}
+
+func (o GetServiceTokenChangeLogArrayOutput) ToGetServiceTokenChangeLogArrayOutput() GetServiceTokenChangeLogArrayOutput {
+	return o
+}
+
+func (o GetServiceTokenChangeLogArrayOutput) ToGetServiceTokenChangeLogArrayOutputWithContext(ctx context.Context) GetServiceTokenChangeLogArrayOutput {
+	return o
+}
+
+func (o GetServiceTokenChangeLogArrayOutput) Index(i pulumi.IntInput) GetServiceTokenChangeLogOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTokenChangeLog {
+		return vs[0].([]GetServiceTokenChangeLog)[vs[1].(int)]
+	}).(GetServiceTokenChangeLogOutput)
+}
+
+type GetServiceTokenNotification struct {
+	// Array of contact emails
+	Emails []string `pulumi:"emails"`
+	// Send interval
+	SendInterval *string `pulumi:"sendInterval"`
+	// Notification Type - ALL,CONNECTION_APPROVAL,SALES_REP_NOTIFICATIONS, NOTIFICATIONS
+	Type string `pulumi:"type"`
+}
+
+// GetServiceTokenNotificationInput is an input type that accepts GetServiceTokenNotificationArgs and GetServiceTokenNotificationOutput values.
+// You can construct a concrete instance of `GetServiceTokenNotificationInput` via:
+//
+//	GetServiceTokenNotificationArgs{...}
+type GetServiceTokenNotificationInput interface {
+	pulumi.Input
+
+	ToGetServiceTokenNotificationOutput() GetServiceTokenNotificationOutput
+	ToGetServiceTokenNotificationOutputWithContext(context.Context) GetServiceTokenNotificationOutput
+}
+
+type GetServiceTokenNotificationArgs struct {
+	// Array of contact emails
+	Emails pulumi.StringArrayInput `pulumi:"emails"`
+	// Send interval
+	SendInterval pulumi.StringPtrInput `pulumi:"sendInterval"`
+	// Notification Type - ALL,CONNECTION_APPROVAL,SALES_REP_NOTIFICATIONS, NOTIFICATIONS
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetServiceTokenNotificationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokenNotification)(nil)).Elem()
+}
+
+func (i GetServiceTokenNotificationArgs) ToGetServiceTokenNotificationOutput() GetServiceTokenNotificationOutput {
+	return i.ToGetServiceTokenNotificationOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokenNotificationArgs) ToGetServiceTokenNotificationOutputWithContext(ctx context.Context) GetServiceTokenNotificationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokenNotificationOutput)
+}
+
+// GetServiceTokenNotificationArrayInput is an input type that accepts GetServiceTokenNotificationArray and GetServiceTokenNotificationArrayOutput values.
+// You can construct a concrete instance of `GetServiceTokenNotificationArrayInput` via:
+//
+//	GetServiceTokenNotificationArray{ GetServiceTokenNotificationArgs{...} }
+type GetServiceTokenNotificationArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTokenNotificationArrayOutput() GetServiceTokenNotificationArrayOutput
+	ToGetServiceTokenNotificationArrayOutputWithContext(context.Context) GetServiceTokenNotificationArrayOutput
+}
+
+type GetServiceTokenNotificationArray []GetServiceTokenNotificationInput
+
+func (GetServiceTokenNotificationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTokenNotification)(nil)).Elem()
+}
+
+func (i GetServiceTokenNotificationArray) ToGetServiceTokenNotificationArrayOutput() GetServiceTokenNotificationArrayOutput {
+	return i.ToGetServiceTokenNotificationArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokenNotificationArray) ToGetServiceTokenNotificationArrayOutputWithContext(ctx context.Context) GetServiceTokenNotificationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokenNotificationArrayOutput)
+}
+
+type GetServiceTokenNotificationOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokenNotificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokenNotification)(nil)).Elem()
+}
+
+func (o GetServiceTokenNotificationOutput) ToGetServiceTokenNotificationOutput() GetServiceTokenNotificationOutput {
+	return o
+}
+
+func (o GetServiceTokenNotificationOutput) ToGetServiceTokenNotificationOutputWithContext(ctx context.Context) GetServiceTokenNotificationOutput {
+	return o
+}
+
+// Array of contact emails
+func (o GetServiceTokenNotificationOutput) Emails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServiceTokenNotification) []string { return v.Emails }).(pulumi.StringArrayOutput)
+}
+
+// Send interval
+func (o GetServiceTokenNotificationOutput) SendInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceTokenNotification) *string { return v.SendInterval }).(pulumi.StringPtrOutput)
+}
+
+// Notification Type - ALL,CONNECTION_APPROVAL,SALES_REP_NOTIFICATIONS, NOTIFICATIONS
+func (o GetServiceTokenNotificationOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenNotification) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetServiceTokenNotificationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokenNotificationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTokenNotification)(nil)).Elem()
+}
+
+func (o GetServiceTokenNotificationArrayOutput) ToGetServiceTokenNotificationArrayOutput() GetServiceTokenNotificationArrayOutput {
+	return o
+}
+
+func (o GetServiceTokenNotificationArrayOutput) ToGetServiceTokenNotificationArrayOutputWithContext(ctx context.Context) GetServiceTokenNotificationArrayOutput {
+	return o
+}
+
+func (o GetServiceTokenNotificationArrayOutput) Index(i pulumi.IntInput) GetServiceTokenNotificationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTokenNotification {
+		return vs[0].([]GetServiceTokenNotification)[vs[1].(int)]
+	}).(GetServiceTokenNotificationOutput)
+}
+
+type GetServiceTokenProject struct {
+	// Unique Resource URL
+	Href string `pulumi:"href"`
+	// Project Id
+	ProjectId string `pulumi:"projectId"`
+}
+
+// GetServiceTokenProjectInput is an input type that accepts GetServiceTokenProjectArgs and GetServiceTokenProjectOutput values.
+// You can construct a concrete instance of `GetServiceTokenProjectInput` via:
+//
+//	GetServiceTokenProjectArgs{...}
+type GetServiceTokenProjectInput interface {
+	pulumi.Input
+
+	ToGetServiceTokenProjectOutput() GetServiceTokenProjectOutput
+	ToGetServiceTokenProjectOutputWithContext(context.Context) GetServiceTokenProjectOutput
+}
+
+type GetServiceTokenProjectArgs struct {
+	// Unique Resource URL
+	Href pulumi.StringInput `pulumi:"href"`
+	// Project Id
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+}
+
+func (GetServiceTokenProjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokenProject)(nil)).Elem()
+}
+
+func (i GetServiceTokenProjectArgs) ToGetServiceTokenProjectOutput() GetServiceTokenProjectOutput {
+	return i.ToGetServiceTokenProjectOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokenProjectArgs) ToGetServiceTokenProjectOutputWithContext(ctx context.Context) GetServiceTokenProjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokenProjectOutput)
+}
+
+// GetServiceTokenProjectArrayInput is an input type that accepts GetServiceTokenProjectArray and GetServiceTokenProjectArrayOutput values.
+// You can construct a concrete instance of `GetServiceTokenProjectArrayInput` via:
+//
+//	GetServiceTokenProjectArray{ GetServiceTokenProjectArgs{...} }
+type GetServiceTokenProjectArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTokenProjectArrayOutput() GetServiceTokenProjectArrayOutput
+	ToGetServiceTokenProjectArrayOutputWithContext(context.Context) GetServiceTokenProjectArrayOutput
+}
+
+type GetServiceTokenProjectArray []GetServiceTokenProjectInput
+
+func (GetServiceTokenProjectArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTokenProject)(nil)).Elem()
+}
+
+func (i GetServiceTokenProjectArray) ToGetServiceTokenProjectArrayOutput() GetServiceTokenProjectArrayOutput {
+	return i.ToGetServiceTokenProjectArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokenProjectArray) ToGetServiceTokenProjectArrayOutputWithContext(ctx context.Context) GetServiceTokenProjectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokenProjectArrayOutput)
+}
+
+type GetServiceTokenProjectOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokenProjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokenProject)(nil)).Elem()
+}
+
+func (o GetServiceTokenProjectOutput) ToGetServiceTokenProjectOutput() GetServiceTokenProjectOutput {
+	return o
+}
+
+func (o GetServiceTokenProjectOutput) ToGetServiceTokenProjectOutputWithContext(ctx context.Context) GetServiceTokenProjectOutput {
+	return o
+}
+
+// Unique Resource URL
+func (o GetServiceTokenProjectOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenProject) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// Project Id
+func (o GetServiceTokenProjectOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenProject) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+type GetServiceTokenProjectArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokenProjectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTokenProject)(nil)).Elem()
+}
+
+func (o GetServiceTokenProjectArrayOutput) ToGetServiceTokenProjectArrayOutput() GetServiceTokenProjectArrayOutput {
+	return o
+}
+
+func (o GetServiceTokenProjectArrayOutput) ToGetServiceTokenProjectArrayOutputWithContext(ctx context.Context) GetServiceTokenProjectArrayOutput {
+	return o
+}
+
+func (o GetServiceTokenProjectArrayOutput) Index(i pulumi.IntInput) GetServiceTokenProjectOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTokenProject {
+		return vs[0].([]GetServiceTokenProject)[vs[1].(int)]
+	}).(GetServiceTokenProjectOutput)
+}
+
+type GetServiceTokenServiceTokenConnection struct {
+	// A-Side Connection link protocol,virtual device or network configuration
+	ASides []GetServiceTokenServiceTokenConnectionASide `pulumi:"aSides"`
+	// Allow custom bandwidth value
+	AllowCustomBandwidth bool `pulumi:"allowCustomBandwidth"`
+	// Authorization to connect remotely
+	AllowRemoteConnection bool `pulumi:"allowRemoteConnection"`
+	// Connection bandwidth limit in Mbps
+	BandwidthLimit int `pulumi:"bandwidthLimit"`
+	// List of permitted bandwidths'; For Port-based Service Tokens, the maximum allowable bandwidth is 50 Gbps, while for Virtual Device-based Service Tokens, it is limited to 10 Gbps
+	SupportedBandwidths []int `pulumi:"supportedBandwidths"`
+	// Type of Connection supported by Service Token you will create; EVPL_VC, EVPLAN_VC, EPLAN_VC, IPWAN_VC
+	Type string `pulumi:"type"`
+	// Equinix-assigned connection identifier
+	Uuid string `pulumi:"uuid"`
+	// Z-Side Connection link protocol,virtual device or network configuration
+	ZSides []GetServiceTokenServiceTokenConnectionZSide `pulumi:"zSides"`
+}
+
+// GetServiceTokenServiceTokenConnectionInput is an input type that accepts GetServiceTokenServiceTokenConnectionArgs and GetServiceTokenServiceTokenConnectionOutput values.
+// You can construct a concrete instance of `GetServiceTokenServiceTokenConnectionInput` via:
+//
+//	GetServiceTokenServiceTokenConnectionArgs{...}
+type GetServiceTokenServiceTokenConnectionInput interface {
+	pulumi.Input
+
+	ToGetServiceTokenServiceTokenConnectionOutput() GetServiceTokenServiceTokenConnectionOutput
+	ToGetServiceTokenServiceTokenConnectionOutputWithContext(context.Context) GetServiceTokenServiceTokenConnectionOutput
+}
+
+type GetServiceTokenServiceTokenConnectionArgs struct {
+	// A-Side Connection link protocol,virtual device or network configuration
+	ASides GetServiceTokenServiceTokenConnectionASideArrayInput `pulumi:"aSides"`
+	// Allow custom bandwidth value
+	AllowCustomBandwidth pulumi.BoolInput `pulumi:"allowCustomBandwidth"`
+	// Authorization to connect remotely
+	AllowRemoteConnection pulumi.BoolInput `pulumi:"allowRemoteConnection"`
+	// Connection bandwidth limit in Mbps
+	BandwidthLimit pulumi.IntInput `pulumi:"bandwidthLimit"`
+	// List of permitted bandwidths'; For Port-based Service Tokens, the maximum allowable bandwidth is 50 Gbps, while for Virtual Device-based Service Tokens, it is limited to 10 Gbps
+	SupportedBandwidths pulumi.IntArrayInput `pulumi:"supportedBandwidths"`
+	// Type of Connection supported by Service Token you will create; EVPL_VC, EVPLAN_VC, EPLAN_VC, IPWAN_VC
+	Type pulumi.StringInput `pulumi:"type"`
+	// Equinix-assigned connection identifier
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+	// Z-Side Connection link protocol,virtual device or network configuration
+	ZSides GetServiceTokenServiceTokenConnectionZSideArrayInput `pulumi:"zSides"`
+}
+
+func (GetServiceTokenServiceTokenConnectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokenServiceTokenConnection)(nil)).Elem()
+}
+
+func (i GetServiceTokenServiceTokenConnectionArgs) ToGetServiceTokenServiceTokenConnectionOutput() GetServiceTokenServiceTokenConnectionOutput {
+	return i.ToGetServiceTokenServiceTokenConnectionOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokenServiceTokenConnectionArgs) ToGetServiceTokenServiceTokenConnectionOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokenServiceTokenConnectionOutput)
+}
+
+// GetServiceTokenServiceTokenConnectionArrayInput is an input type that accepts GetServiceTokenServiceTokenConnectionArray and GetServiceTokenServiceTokenConnectionArrayOutput values.
+// You can construct a concrete instance of `GetServiceTokenServiceTokenConnectionArrayInput` via:
+//
+//	GetServiceTokenServiceTokenConnectionArray{ GetServiceTokenServiceTokenConnectionArgs{...} }
+type GetServiceTokenServiceTokenConnectionArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTokenServiceTokenConnectionArrayOutput() GetServiceTokenServiceTokenConnectionArrayOutput
+	ToGetServiceTokenServiceTokenConnectionArrayOutputWithContext(context.Context) GetServiceTokenServiceTokenConnectionArrayOutput
+}
+
+type GetServiceTokenServiceTokenConnectionArray []GetServiceTokenServiceTokenConnectionInput
+
+func (GetServiceTokenServiceTokenConnectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTokenServiceTokenConnection)(nil)).Elem()
+}
+
+func (i GetServiceTokenServiceTokenConnectionArray) ToGetServiceTokenServiceTokenConnectionArrayOutput() GetServiceTokenServiceTokenConnectionArrayOutput {
+	return i.ToGetServiceTokenServiceTokenConnectionArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokenServiceTokenConnectionArray) ToGetServiceTokenServiceTokenConnectionArrayOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokenServiceTokenConnectionArrayOutput)
+}
+
+type GetServiceTokenServiceTokenConnectionOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokenServiceTokenConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokenServiceTokenConnection)(nil)).Elem()
+}
+
+func (o GetServiceTokenServiceTokenConnectionOutput) ToGetServiceTokenServiceTokenConnectionOutput() GetServiceTokenServiceTokenConnectionOutput {
+	return o
+}
+
+func (o GetServiceTokenServiceTokenConnectionOutput) ToGetServiceTokenServiceTokenConnectionOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionOutput {
+	return o
+}
+
+// A-Side Connection link protocol,virtual device or network configuration
+func (o GetServiceTokenServiceTokenConnectionOutput) ASides() GetServiceTokenServiceTokenConnectionASideArrayOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnection) []GetServiceTokenServiceTokenConnectionASide {
+		return v.ASides
+	}).(GetServiceTokenServiceTokenConnectionASideArrayOutput)
+}
+
+// Allow custom bandwidth value
+func (o GetServiceTokenServiceTokenConnectionOutput) AllowCustomBandwidth() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnection) bool { return v.AllowCustomBandwidth }).(pulumi.BoolOutput)
+}
+
+// Authorization to connect remotely
+func (o GetServiceTokenServiceTokenConnectionOutput) AllowRemoteConnection() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnection) bool { return v.AllowRemoteConnection }).(pulumi.BoolOutput)
+}
+
+// Connection bandwidth limit in Mbps
+func (o GetServiceTokenServiceTokenConnectionOutput) BandwidthLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnection) int { return v.BandwidthLimit }).(pulumi.IntOutput)
+}
+
+// List of permitted bandwidths'; For Port-based Service Tokens, the maximum allowable bandwidth is 50 Gbps, while for Virtual Device-based Service Tokens, it is limited to 10 Gbps
+func (o GetServiceTokenServiceTokenConnectionOutput) SupportedBandwidths() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnection) []int { return v.SupportedBandwidths }).(pulumi.IntArrayOutput)
+}
+
+// Type of Connection supported by Service Token you will create; EVPL_VC, EVPLAN_VC, EPLAN_VC, IPWAN_VC
+func (o GetServiceTokenServiceTokenConnectionOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnection) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Equinix-assigned connection identifier
+func (o GetServiceTokenServiceTokenConnectionOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnection) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+// Z-Side Connection link protocol,virtual device or network configuration
+func (o GetServiceTokenServiceTokenConnectionOutput) ZSides() GetServiceTokenServiceTokenConnectionZSideArrayOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnection) []GetServiceTokenServiceTokenConnectionZSide {
+		return v.ZSides
+	}).(GetServiceTokenServiceTokenConnectionZSideArrayOutput)
+}
+
+type GetServiceTokenServiceTokenConnectionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokenServiceTokenConnectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTokenServiceTokenConnection)(nil)).Elem()
+}
+
+func (o GetServiceTokenServiceTokenConnectionArrayOutput) ToGetServiceTokenServiceTokenConnectionArrayOutput() GetServiceTokenServiceTokenConnectionArrayOutput {
+	return o
+}
+
+func (o GetServiceTokenServiceTokenConnectionArrayOutput) ToGetServiceTokenServiceTokenConnectionArrayOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionArrayOutput {
+	return o
+}
+
+func (o GetServiceTokenServiceTokenConnectionArrayOutput) Index(i pulumi.IntInput) GetServiceTokenServiceTokenConnectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTokenServiceTokenConnection {
+		return vs[0].([]GetServiceTokenServiceTokenConnection)[vs[1].(int)]
+	}).(GetServiceTokenServiceTokenConnectionOutput)
+}
+
+type GetServiceTokenServiceTokenConnectionASide struct {
+	// List of criteria for selecting network access points with optimal efficiency, security, compatibility, and availability
+	AccessPointSelectors []GetServiceTokenServiceTokenConnectionASideAccessPointSelector `pulumi:"accessPointSelectors"`
+}
+
+// GetServiceTokenServiceTokenConnectionASideInput is an input type that accepts GetServiceTokenServiceTokenConnectionASideArgs and GetServiceTokenServiceTokenConnectionASideOutput values.
+// You can construct a concrete instance of `GetServiceTokenServiceTokenConnectionASideInput` via:
+//
+//	GetServiceTokenServiceTokenConnectionASideArgs{...}
+type GetServiceTokenServiceTokenConnectionASideInput interface {
+	pulumi.Input
+
+	ToGetServiceTokenServiceTokenConnectionASideOutput() GetServiceTokenServiceTokenConnectionASideOutput
+	ToGetServiceTokenServiceTokenConnectionASideOutputWithContext(context.Context) GetServiceTokenServiceTokenConnectionASideOutput
+}
+
+type GetServiceTokenServiceTokenConnectionASideArgs struct {
+	// List of criteria for selecting network access points with optimal efficiency, security, compatibility, and availability
+	AccessPointSelectors GetServiceTokenServiceTokenConnectionASideAccessPointSelectorArrayInput `pulumi:"accessPointSelectors"`
+}
+
+func (GetServiceTokenServiceTokenConnectionASideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokenServiceTokenConnectionASide)(nil)).Elem()
+}
+
+func (i GetServiceTokenServiceTokenConnectionASideArgs) ToGetServiceTokenServiceTokenConnectionASideOutput() GetServiceTokenServiceTokenConnectionASideOutput {
+	return i.ToGetServiceTokenServiceTokenConnectionASideOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokenServiceTokenConnectionASideArgs) ToGetServiceTokenServiceTokenConnectionASideOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionASideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokenServiceTokenConnectionASideOutput)
+}
+
+// GetServiceTokenServiceTokenConnectionASideArrayInput is an input type that accepts GetServiceTokenServiceTokenConnectionASideArray and GetServiceTokenServiceTokenConnectionASideArrayOutput values.
+// You can construct a concrete instance of `GetServiceTokenServiceTokenConnectionASideArrayInput` via:
+//
+//	GetServiceTokenServiceTokenConnectionASideArray{ GetServiceTokenServiceTokenConnectionASideArgs{...} }
+type GetServiceTokenServiceTokenConnectionASideArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTokenServiceTokenConnectionASideArrayOutput() GetServiceTokenServiceTokenConnectionASideArrayOutput
+	ToGetServiceTokenServiceTokenConnectionASideArrayOutputWithContext(context.Context) GetServiceTokenServiceTokenConnectionASideArrayOutput
+}
+
+type GetServiceTokenServiceTokenConnectionASideArray []GetServiceTokenServiceTokenConnectionASideInput
+
+func (GetServiceTokenServiceTokenConnectionASideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTokenServiceTokenConnectionASide)(nil)).Elem()
+}
+
+func (i GetServiceTokenServiceTokenConnectionASideArray) ToGetServiceTokenServiceTokenConnectionASideArrayOutput() GetServiceTokenServiceTokenConnectionASideArrayOutput {
+	return i.ToGetServiceTokenServiceTokenConnectionASideArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokenServiceTokenConnectionASideArray) ToGetServiceTokenServiceTokenConnectionASideArrayOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionASideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokenServiceTokenConnectionASideArrayOutput)
+}
+
+type GetServiceTokenServiceTokenConnectionASideOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokenServiceTokenConnectionASideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokenServiceTokenConnectionASide)(nil)).Elem()
+}
+
+func (o GetServiceTokenServiceTokenConnectionASideOutput) ToGetServiceTokenServiceTokenConnectionASideOutput() GetServiceTokenServiceTokenConnectionASideOutput {
+	return o
+}
+
+func (o GetServiceTokenServiceTokenConnectionASideOutput) ToGetServiceTokenServiceTokenConnectionASideOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionASideOutput {
+	return o
+}
+
+// List of criteria for selecting network access points with optimal efficiency, security, compatibility, and availability
+func (o GetServiceTokenServiceTokenConnectionASideOutput) AccessPointSelectors() GetServiceTokenServiceTokenConnectionASideAccessPointSelectorArrayOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionASide) []GetServiceTokenServiceTokenConnectionASideAccessPointSelector {
+		return v.AccessPointSelectors
+	}).(GetServiceTokenServiceTokenConnectionASideAccessPointSelectorArrayOutput)
+}
+
+type GetServiceTokenServiceTokenConnectionASideArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokenServiceTokenConnectionASideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTokenServiceTokenConnectionASide)(nil)).Elem()
+}
+
+func (o GetServiceTokenServiceTokenConnectionASideArrayOutput) ToGetServiceTokenServiceTokenConnectionASideArrayOutput() GetServiceTokenServiceTokenConnectionASideArrayOutput {
+	return o
+}
+
+func (o GetServiceTokenServiceTokenConnectionASideArrayOutput) ToGetServiceTokenServiceTokenConnectionASideArrayOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionASideArrayOutput {
+	return o
+}
+
+func (o GetServiceTokenServiceTokenConnectionASideArrayOutput) Index(i pulumi.IntInput) GetServiceTokenServiceTokenConnectionASideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTokenServiceTokenConnectionASide {
+		return vs[0].([]GetServiceTokenServiceTokenConnectionASide)[vs[1].(int)]
+	}).(GetServiceTokenServiceTokenConnectionASideOutput)
+}
+
+type GetServiceTokenServiceTokenConnectionASideAccessPointSelector struct {
+	// Virtual Device Interface Configuration
+	Interface GetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterface `pulumi:"interface"`
+	// Link protocol Configuration
+	LinkProtocol GetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocol `pulumi:"linkProtocol"`
+	// Network Configuration
+	Network GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetwork `pulumi:"network"`
+	// Port Configuration
+	Port GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPort `pulumi:"port"`
+	// Type of Access point; COLO, VD, NETWORK
+	Type string `pulumi:"type"`
+	// Virtual Device Configuration
+	VirtualDevice *GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevice `pulumi:"virtualDevice"`
+}
+
+// GetServiceTokenServiceTokenConnectionASideAccessPointSelectorInput is an input type that accepts GetServiceTokenServiceTokenConnectionASideAccessPointSelectorArgs and GetServiceTokenServiceTokenConnectionASideAccessPointSelectorOutput values.
+// You can construct a concrete instance of `GetServiceTokenServiceTokenConnectionASideAccessPointSelectorInput` via:
+//
+//	GetServiceTokenServiceTokenConnectionASideAccessPointSelectorArgs{...}
+type GetServiceTokenServiceTokenConnectionASideAccessPointSelectorInput interface {
+	pulumi.Input
+
+	ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorOutput() GetServiceTokenServiceTokenConnectionASideAccessPointSelectorOutput
+	ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorOutputWithContext(context.Context) GetServiceTokenServiceTokenConnectionASideAccessPointSelectorOutput
+}
+
+type GetServiceTokenServiceTokenConnectionASideAccessPointSelectorArgs struct {
+	// Virtual Device Interface Configuration
+	Interface GetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceInput `pulumi:"interface"`
+	// Link protocol Configuration
+	LinkProtocol GetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolInput `pulumi:"linkProtocol"`
+	// Network Configuration
+	Network GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkInput `pulumi:"network"`
+	// Port Configuration
+	Port GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortInput `pulumi:"port"`
+	// Type of Access point; COLO, VD, NETWORK
+	Type pulumi.StringInput `pulumi:"type"`
+	// Virtual Device Configuration
+	VirtualDevice GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrInput `pulumi:"virtualDevice"`
+}
+
+func (GetServiceTokenServiceTokenConnectionASideAccessPointSelectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokenServiceTokenConnectionASideAccessPointSelector)(nil)).Elem()
+}
+
+func (i GetServiceTokenServiceTokenConnectionASideAccessPointSelectorArgs) ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorOutput() GetServiceTokenServiceTokenConnectionASideAccessPointSelectorOutput {
+	return i.ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokenServiceTokenConnectionASideAccessPointSelectorArgs) ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionASideAccessPointSelectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokenServiceTokenConnectionASideAccessPointSelectorOutput)
+}
+
+// GetServiceTokenServiceTokenConnectionASideAccessPointSelectorArrayInput is an input type that accepts GetServiceTokenServiceTokenConnectionASideAccessPointSelectorArray and GetServiceTokenServiceTokenConnectionASideAccessPointSelectorArrayOutput values.
+// You can construct a concrete instance of `GetServiceTokenServiceTokenConnectionASideAccessPointSelectorArrayInput` via:
+//
+//	GetServiceTokenServiceTokenConnectionASideAccessPointSelectorArray{ GetServiceTokenServiceTokenConnectionASideAccessPointSelectorArgs{...} }
+type GetServiceTokenServiceTokenConnectionASideAccessPointSelectorArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorArrayOutput() GetServiceTokenServiceTokenConnectionASideAccessPointSelectorArrayOutput
+	ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorArrayOutputWithContext(context.Context) GetServiceTokenServiceTokenConnectionASideAccessPointSelectorArrayOutput
+}
+
+type GetServiceTokenServiceTokenConnectionASideAccessPointSelectorArray []GetServiceTokenServiceTokenConnectionASideAccessPointSelectorInput
+
+func (GetServiceTokenServiceTokenConnectionASideAccessPointSelectorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTokenServiceTokenConnectionASideAccessPointSelector)(nil)).Elem()
+}
+
+func (i GetServiceTokenServiceTokenConnectionASideAccessPointSelectorArray) ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorArrayOutput() GetServiceTokenServiceTokenConnectionASideAccessPointSelectorArrayOutput {
+	return i.ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokenServiceTokenConnectionASideAccessPointSelectorArray) ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorArrayOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionASideAccessPointSelectorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokenServiceTokenConnectionASideAccessPointSelectorArrayOutput)
+}
+
+type GetServiceTokenServiceTokenConnectionASideAccessPointSelectorOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokenServiceTokenConnectionASideAccessPointSelectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokenServiceTokenConnectionASideAccessPointSelector)(nil)).Elem()
+}
+
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorOutput) ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorOutput() GetServiceTokenServiceTokenConnectionASideAccessPointSelectorOutput {
+	return o
+}
+
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorOutput) ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionASideAccessPointSelectorOutput {
+	return o
+}
+
+// Virtual Device Interface Configuration
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorOutput) Interface() GetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionASideAccessPointSelector) GetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterface {
+		return v.Interface
+	}).(GetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceOutput)
+}
+
+// Link protocol Configuration
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorOutput) LinkProtocol() GetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionASideAccessPointSelector) GetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocol {
+		return v.LinkProtocol
+	}).(GetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput)
+}
+
+// Network Configuration
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorOutput) Network() GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionASideAccessPointSelector) GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetwork {
+		return v.Network
+	}).(GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkOutput)
+}
+
+// Port Configuration
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorOutput) Port() GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionASideAccessPointSelector) GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPort {
+		return v.Port
+	}).(GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutput)
+}
+
+// Type of Access point; COLO, VD, NETWORK
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionASideAccessPointSelector) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Virtual Device Configuration
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorOutput) VirtualDevice() GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionASideAccessPointSelector) *GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevice {
+		return v.VirtualDevice
+	}).(GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput)
+}
+
+type GetServiceTokenServiceTokenConnectionASideAccessPointSelectorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokenServiceTokenConnectionASideAccessPointSelectorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTokenServiceTokenConnectionASideAccessPointSelector)(nil)).Elem()
+}
+
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorArrayOutput) ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorArrayOutput() GetServiceTokenServiceTokenConnectionASideAccessPointSelectorArrayOutput {
+	return o
+}
+
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorArrayOutput) ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorArrayOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionASideAccessPointSelectorArrayOutput {
+	return o
+}
+
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorArrayOutput) Index(i pulumi.IntInput) GetServiceTokenServiceTokenConnectionASideAccessPointSelectorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTokenServiceTokenConnectionASideAccessPointSelector {
+		return vs[0].([]GetServiceTokenServiceTokenConnectionASideAccessPointSelector)[vs[1].(int)]
+	}).(GetServiceTokenServiceTokenConnectionASideAccessPointSelectorOutput)
+}
+
+type GetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterface struct {
+	// id
+	Id int `pulumi:"id"`
+	// Interface type
+	Type string `pulumi:"type"`
+	// Equinix-assigned interface identifier
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceInput is an input type that accepts GetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceArgs and GetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceOutput values.
+// You can construct a concrete instance of `GetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceInput` via:
+//
+//	GetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceArgs{...}
+type GetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceInput interface {
+	pulumi.Input
+
+	ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceOutput() GetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceOutput
+	ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceOutputWithContext(context.Context) GetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceOutput
+}
+
+type GetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceArgs struct {
+	// id
+	Id pulumi.IntInput `pulumi:"id"`
+	// Interface type
+	Type pulumi.StringInput `pulumi:"type"`
+	// Equinix-assigned interface identifier
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterface)(nil)).Elem()
+}
+
+func (i GetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceArgs) ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceOutput() GetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceOutput {
+	return i.ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceArgs) ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceOutput)
+}
+
+type GetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterface)(nil)).Elem()
+}
+
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceOutput) ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceOutput() GetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceOutput {
+	return o
+}
+
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceOutput) ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceOutput {
+	return o
+}
+
+// id
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterface) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// Interface type
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterface) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Equinix-assigned interface identifier
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterface) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type GetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocol struct {
+	// Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
+	Type string `pulumi:"type"`
+	// Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+	VlanCTag int `pulumi:"vlanCTag"`
+	// Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+	VlanSTag int `pulumi:"vlanSTag"`
+	// Vlan Tag information, vlanTag value specified for DOT1Q connections
+	VlanTag int `pulumi:"vlanTag"`
+}
+
+// GetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolInput is an input type that accepts GetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolArgs and GetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput values.
+// You can construct a concrete instance of `GetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolInput` via:
+//
+//	GetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolArgs{...}
+type GetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolInput interface {
+	pulumi.Input
+
+	ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput() GetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput
+	ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutputWithContext(context.Context) GetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput
+}
+
+type GetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolArgs struct {
+	// Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
+	Type pulumi.StringInput `pulumi:"type"`
+	// Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+	VlanCTag pulumi.IntInput `pulumi:"vlanCTag"`
+	// Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+	VlanSTag pulumi.IntInput `pulumi:"vlanSTag"`
+	// Vlan Tag information, vlanTag value specified for DOT1Q connections
+	VlanTag pulumi.IntInput `pulumi:"vlanTag"`
+}
+
+func (GetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocol)(nil)).Elem()
+}
+
+func (i GetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolArgs) ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput() GetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput {
+	return i.ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolArgs) ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput)
+}
+
+type GetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocol)(nil)).Elem()
+}
+
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput) ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput() GetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput {
+	return o
+}
+
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput) ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput {
+	return o
+}
+
+// Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocol) string {
+		return v.Type
+	}).(pulumi.StringOutput)
+}
+
+// Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput) VlanCTag() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocol) int {
+		return v.VlanCTag
+	}).(pulumi.IntOutput)
+}
+
+// Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput) VlanSTag() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocol) int {
+		return v.VlanSTag
+	}).(pulumi.IntOutput)
+}
+
+// Vlan Tag information, vlanTag value specified for DOT1Q connections
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput) VlanTag() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocol) int {
+		return v.VlanTag
+	}).(pulumi.IntOutput)
+}
+
+type GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetwork struct {
+	// Unique Resource Identifier
+	Href string `pulumi:"href"`
+	// Location
+	Locations []GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocation `pulumi:"locations"`
+	// Network Name
+	Name string `pulumi:"name"`
+	// Scope of Network
+	Scope string `pulumi:"scope"`
+	// Type of Network
+	Type string `pulumi:"type"`
+	// Equinix-assigned Network identifier
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkInput is an input type that accepts GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkArgs and GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkOutput values.
+// You can construct a concrete instance of `GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkInput` via:
+//
+//	GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkArgs{...}
+type GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkInput interface {
+	pulumi.Input
+
+	ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkOutput() GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkOutput
+	ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkOutputWithContext(context.Context) GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkOutput
+}
+
+type GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkArgs struct {
+	// Unique Resource Identifier
+	Href pulumi.StringInput `pulumi:"href"`
+	// Location
+	Locations GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayInput `pulumi:"locations"`
+	// Network Name
+	Name pulumi.StringInput `pulumi:"name"`
+	// Scope of Network
+	Scope pulumi.StringInput `pulumi:"scope"`
+	// Type of Network
+	Type pulumi.StringInput `pulumi:"type"`
+	// Equinix-assigned Network identifier
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetwork)(nil)).Elem()
+}
+
+func (i GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkArgs) ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkOutput() GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkOutput {
+	return i.ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkArgs) ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkOutput)
+}
+
+type GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetwork)(nil)).Elem()
+}
+
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkOutput) ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkOutput() GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkOutput {
+	return o
+}
+
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkOutput) ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkOutput {
+	return o
+}
+
+// Unique Resource Identifier
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetwork) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// Location
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkOutput) Locations() GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetwork) []GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocation {
+		return v.Locations
+	}).(GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput)
+}
+
+// Network Name
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetwork) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Scope of Network
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkOutput) Scope() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetwork) string { return v.Scope }).(pulumi.StringOutput)
+}
+
+// Type of Network
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetwork) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Equinix-assigned Network identifier
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetwork) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocation struct {
+	// IBX Code
+	Ibx string `pulumi:"ibx"`
+	// Access point metro code
+	MetroCode string `pulumi:"metroCode"`
+	// Access point metro name
+	MetroName string `pulumi:"metroName"`
+	// Access point region
+	Region string `pulumi:"region"`
+}
+
+// GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationInput is an input type that accepts GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArgs and GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput values.
+// You can construct a concrete instance of `GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationInput` via:
+//
+//	GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArgs{...}
+type GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationInput interface {
+	pulumi.Input
+
+	ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput() GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput
+	ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutputWithContext(context.Context) GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput
+}
+
+type GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArgs struct {
+	// IBX Code
+	Ibx pulumi.StringInput `pulumi:"ibx"`
+	// Access point metro code
+	MetroCode pulumi.StringInput `pulumi:"metroCode"`
+	// Access point metro name
+	MetroName pulumi.StringInput `pulumi:"metroName"`
+	// Access point region
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocation)(nil)).Elem()
+}
+
+func (i GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArgs) ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput() GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput {
+	return i.ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArgs) ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput)
+}
+
+// GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayInput is an input type that accepts GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArray and GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput values.
+// You can construct a concrete instance of `GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayInput` via:
+//
+//	GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArray{ GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArgs{...} }
+type GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput() GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput
+	ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutputWithContext(context.Context) GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput
+}
+
+type GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArray []GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationInput
+
+func (GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocation)(nil)).Elem()
+}
+
+func (i GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArray) ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput() GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput {
+	return i.ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArray) ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput)
+}
+
+type GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocation)(nil)).Elem()
+}
+
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput) ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput() GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput {
+	return o
+}
+
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput) ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput {
+	return o
+}
+
+// IBX Code
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput) Ibx() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocation) string {
+		return v.Ibx
+	}).(pulumi.StringOutput)
+}
+
+// Access point metro code
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput) MetroCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocation) string {
+		return v.MetroCode
+	}).(pulumi.StringOutput)
+}
+
+// Access point metro name
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput) MetroName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocation) string {
+		return v.MetroName
+	}).(pulumi.StringOutput)
+}
+
+// Access point region
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocation) string {
+		return v.Region
+	}).(pulumi.StringOutput)
+}
+
+type GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocation)(nil)).Elem()
+}
+
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput) ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput() GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput {
+	return o
+}
+
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput) ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput {
+	return o
+}
+
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput) Index(i pulumi.IntInput) GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocation {
+		return vs[0].([]GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocation)[vs[1].(int)]
+	}).(GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput)
+}
+
+type GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPort struct {
+	// Account Name
+	AccountName string `pulumi:"accountName"`
+	// Port Bandwidth
+	Bandwidth int `pulumi:"bandwidth"`
+	// Customer virtual port Id
+	CvpId int `pulumi:"cvpId"`
+	// Port Encapsulation
+	EncapsulationProtocolType string `pulumi:"encapsulationProtocolType"`
+	// Unique Resource Identifier
+	Href string `pulumi:"href"`
+	// Port Location
+	Locations []GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocation `pulumi:"locations"`
+	// Port Name
+	PortName string `pulumi:"portName"`
+	// Port Priority
+	Priority string `pulumi:"priority"`
+	// Type of Port
+	Type string `pulumi:"type"`
+	// Equinix-assigned Port identifier
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortInput is an input type that accepts GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortArgs and GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutput values.
+// You can construct a concrete instance of `GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortInput` via:
+//
+//	GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortArgs{...}
+type GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortInput interface {
+	pulumi.Input
+
+	ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutput() GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutput
+	ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutputWithContext(context.Context) GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutput
+}
+
+type GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortArgs struct {
+	// Account Name
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// Port Bandwidth
+	Bandwidth pulumi.IntInput `pulumi:"bandwidth"`
+	// Customer virtual port Id
+	CvpId pulumi.IntInput `pulumi:"cvpId"`
+	// Port Encapsulation
+	EncapsulationProtocolType pulumi.StringInput `pulumi:"encapsulationProtocolType"`
+	// Unique Resource Identifier
+	Href pulumi.StringInput `pulumi:"href"`
+	// Port Location
+	Locations GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArrayInput `pulumi:"locations"`
+	// Port Name
+	PortName pulumi.StringInput `pulumi:"portName"`
+	// Port Priority
+	Priority pulumi.StringInput `pulumi:"priority"`
+	// Type of Port
+	Type pulumi.StringInput `pulumi:"type"`
+	// Equinix-assigned Port identifier
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPort)(nil)).Elem()
+}
+
+func (i GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortArgs) ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutput() GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutput {
+	return i.ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortArgs) ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutput)
+}
+
+type GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPort)(nil)).Elem()
+}
+
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutput) ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutput() GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutput {
+	return o
+}
+
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutput) ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutput {
+	return o
+}
+
+// Account Name
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutput) AccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPort) string { return v.AccountName }).(pulumi.StringOutput)
+}
+
+// Port Bandwidth
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutput) Bandwidth() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPort) int { return v.Bandwidth }).(pulumi.IntOutput)
+}
+
+// Customer virtual port Id
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutput) CvpId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPort) int { return v.CvpId }).(pulumi.IntOutput)
+}
+
+// Port Encapsulation
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutput) EncapsulationProtocolType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPort) string {
+		return v.EncapsulationProtocolType
+	}).(pulumi.StringOutput)
+}
+
+// Unique Resource Identifier
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPort) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// Port Location
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutput) Locations() GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPort) []GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocation {
+		return v.Locations
+	}).(GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput)
+}
+
+// Port Name
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutput) PortName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPort) string { return v.PortName }).(pulumi.StringOutput)
+}
+
+// Port Priority
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutput) Priority() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPort) string { return v.Priority }).(pulumi.StringOutput)
+}
+
+// Type of Port
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPort) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Equinix-assigned Port identifier
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPort) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocation struct {
+	// IBX Code
+	Ibx string `pulumi:"ibx"`
+	// Access point metro code
+	MetroCode string `pulumi:"metroCode"`
+	// Access point metro name
+	MetroName string `pulumi:"metroName"`
+	// Access point region
+	Region string `pulumi:"region"`
+}
+
+// GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationInput is an input type that accepts GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArgs and GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationOutput values.
+// You can construct a concrete instance of `GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationInput` via:
+//
+//	GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArgs{...}
+type GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationInput interface {
+	pulumi.Input
+
+	ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationOutput() GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationOutput
+	ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationOutputWithContext(context.Context) GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationOutput
+}
+
+type GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArgs struct {
+	// IBX Code
+	Ibx pulumi.StringInput `pulumi:"ibx"`
+	// Access point metro code
+	MetroCode pulumi.StringInput `pulumi:"metroCode"`
+	// Access point metro name
+	MetroName pulumi.StringInput `pulumi:"metroName"`
+	// Access point region
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocation)(nil)).Elem()
+}
+
+func (i GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArgs) ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationOutput() GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationOutput {
+	return i.ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArgs) ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationOutput)
+}
+
+// GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArrayInput is an input type that accepts GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArray and GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput values.
+// You can construct a concrete instance of `GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArrayInput` via:
+//
+//	GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArray{ GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArgs{...} }
+type GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput() GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput
+	ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutputWithContext(context.Context) GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput
+}
+
+type GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArray []GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationInput
+
+func (GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocation)(nil)).Elem()
+}
+
+func (i GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArray) ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput() GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput {
+	return i.ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArray) ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput)
+}
+
+type GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocation)(nil)).Elem()
+}
+
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationOutput) ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationOutput() GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationOutput {
+	return o
+}
+
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationOutput) ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationOutput {
+	return o
+}
+
+// IBX Code
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationOutput) Ibx() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocation) string { return v.Ibx }).(pulumi.StringOutput)
+}
+
+// Access point metro code
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationOutput) MetroCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocation) string {
+		return v.MetroCode
+	}).(pulumi.StringOutput)
+}
+
+// Access point metro name
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationOutput) MetroName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocation) string {
+		return v.MetroName
+	}).(pulumi.StringOutput)
+}
+
+// Access point region
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocation) string {
+		return v.Region
+	}).(pulumi.StringOutput)
+}
+
+type GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocation)(nil)).Elem()
+}
+
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput) ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput() GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput {
+	return o
+}
+
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput) ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput {
+	return o
+}
+
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput) Index(i pulumi.IntInput) GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocation {
+		return vs[0].([]GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocation)[vs[1].(int)]
+	}).(GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationOutput)
+}
+
+type GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevice struct {
+	// Virtual Device Cluster Information
+	Cluster string `pulumi:"cluster"`
+	// Unique Resource Identifier
+	Href string `pulumi:"href"`
+	// Customer-assigned Virtual Device Name
+	Name string `pulumi:"name"`
+	// Virtual Device type
+	Type string `pulumi:"type"`
+	// Equinix-assigned Virtual Device identifier
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceInput is an input type that accepts GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs and GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput values.
+// You can construct a concrete instance of `GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceInput` via:
+//
+//	GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs{...}
+type GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceInput interface {
+	pulumi.Input
+
+	ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput() GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput
+	ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutputWithContext(context.Context) GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput
+}
+
+type GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs struct {
+	// Virtual Device Cluster Information
+	Cluster pulumi.StringInput `pulumi:"cluster"`
+	// Unique Resource Identifier
+	Href pulumi.StringInput `pulumi:"href"`
+	// Customer-assigned Virtual Device Name
+	Name pulumi.StringInput `pulumi:"name"`
+	// Virtual Device type
+	Type pulumi.StringInput `pulumi:"type"`
+	// Equinix-assigned Virtual Device identifier
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevice)(nil)).Elem()
+}
+
+func (i GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs) ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput() GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput {
+	return i.ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs) ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput)
+}
+
+func (i GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs) ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput() GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput {
+	return i.ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs) ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput).ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutputWithContext(ctx)
+}
+
+// GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrInput is an input type that accepts GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs, GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtr and GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput values.
+// You can construct a concrete instance of `GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrInput` via:
+//
+//	        GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrInput interface {
+	pulumi.Input
+
+	ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput() GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput
+	ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutputWithContext(context.Context) GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput
+}
+
+type getServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrType GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs
+
+func GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtr(v *GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs) GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrInput {
+	return (*getServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrType)(v)
+}
+
+func (*getServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevice)(nil)).Elem()
+}
+
+func (i *getServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrType) ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput() GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput {
+	return i.ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutputWithContext(context.Background())
+}
+
+func (i *getServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrType) ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput)
+}
+
+type GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevice)(nil)).Elem()
+}
+
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput) ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput() GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput {
+	return o
+}
+
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput) ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput {
+	return o
+}
+
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput) ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput() GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput {
+	return o.ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutputWithContext(context.Background())
+}
+
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput) ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevice) *GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevice {
+		return &v
+	}).(GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput)
+}
+
+// Virtual Device Cluster Information
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput) Cluster() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevice) string {
+		return v.Cluster
+	}).(pulumi.StringOutput)
+}
+
+// Unique Resource Identifier
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevice) string {
+		return v.Href
+	}).(pulumi.StringOutput)
+}
+
+// Customer-assigned Virtual Device Name
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevice) string {
+		return v.Name
+	}).(pulumi.StringOutput)
+}
+
+// Virtual Device type
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevice) string {
+		return v.Type
+	}).(pulumi.StringOutput)
+}
+
+// Equinix-assigned Virtual Device identifier
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevice) string {
+		return v.Uuid
+	}).(pulumi.StringOutput)
+}
+
+type GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevice)(nil)).Elem()
+}
+
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput) ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput() GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput {
+	return o
+}
+
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput) ToGetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput {
+	return o
+}
+
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput) Elem() GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput {
+	return o.ApplyT(func(v *GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevice) GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevice {
+		if v != nil {
+			return *v
+		}
+		var ret GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevice
+		return ret
+	}).(GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput)
+}
+
+// Virtual Device Cluster Information
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput) Cluster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevice) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Cluster
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique Resource Identifier
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevice) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Href
+	}).(pulumi.StringPtrOutput)
+}
+
+// Customer-assigned Virtual Device Name
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevice) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Virtual Device type
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevice) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Equinix-assigned Virtual Device identifier
+func (o GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevice) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uuid
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetServiceTokenServiceTokenConnectionZSide struct {
+	// List of criteria for selecting network access points with optimal efficiency, security, compatibility, and availability
+	AccessPointSelectors []GetServiceTokenServiceTokenConnectionZSideAccessPointSelector `pulumi:"accessPointSelectors"`
+}
+
+// GetServiceTokenServiceTokenConnectionZSideInput is an input type that accepts GetServiceTokenServiceTokenConnectionZSideArgs and GetServiceTokenServiceTokenConnectionZSideOutput values.
+// You can construct a concrete instance of `GetServiceTokenServiceTokenConnectionZSideInput` via:
+//
+//	GetServiceTokenServiceTokenConnectionZSideArgs{...}
+type GetServiceTokenServiceTokenConnectionZSideInput interface {
+	pulumi.Input
+
+	ToGetServiceTokenServiceTokenConnectionZSideOutput() GetServiceTokenServiceTokenConnectionZSideOutput
+	ToGetServiceTokenServiceTokenConnectionZSideOutputWithContext(context.Context) GetServiceTokenServiceTokenConnectionZSideOutput
+}
+
+type GetServiceTokenServiceTokenConnectionZSideArgs struct {
+	// List of criteria for selecting network access points with optimal efficiency, security, compatibility, and availability
+	AccessPointSelectors GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorArrayInput `pulumi:"accessPointSelectors"`
+}
+
+func (GetServiceTokenServiceTokenConnectionZSideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokenServiceTokenConnectionZSide)(nil)).Elem()
+}
+
+func (i GetServiceTokenServiceTokenConnectionZSideArgs) ToGetServiceTokenServiceTokenConnectionZSideOutput() GetServiceTokenServiceTokenConnectionZSideOutput {
+	return i.ToGetServiceTokenServiceTokenConnectionZSideOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokenServiceTokenConnectionZSideArgs) ToGetServiceTokenServiceTokenConnectionZSideOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionZSideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokenServiceTokenConnectionZSideOutput)
+}
+
+// GetServiceTokenServiceTokenConnectionZSideArrayInput is an input type that accepts GetServiceTokenServiceTokenConnectionZSideArray and GetServiceTokenServiceTokenConnectionZSideArrayOutput values.
+// You can construct a concrete instance of `GetServiceTokenServiceTokenConnectionZSideArrayInput` via:
+//
+//	GetServiceTokenServiceTokenConnectionZSideArray{ GetServiceTokenServiceTokenConnectionZSideArgs{...} }
+type GetServiceTokenServiceTokenConnectionZSideArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTokenServiceTokenConnectionZSideArrayOutput() GetServiceTokenServiceTokenConnectionZSideArrayOutput
+	ToGetServiceTokenServiceTokenConnectionZSideArrayOutputWithContext(context.Context) GetServiceTokenServiceTokenConnectionZSideArrayOutput
+}
+
+type GetServiceTokenServiceTokenConnectionZSideArray []GetServiceTokenServiceTokenConnectionZSideInput
+
+func (GetServiceTokenServiceTokenConnectionZSideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTokenServiceTokenConnectionZSide)(nil)).Elem()
+}
+
+func (i GetServiceTokenServiceTokenConnectionZSideArray) ToGetServiceTokenServiceTokenConnectionZSideArrayOutput() GetServiceTokenServiceTokenConnectionZSideArrayOutput {
+	return i.ToGetServiceTokenServiceTokenConnectionZSideArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokenServiceTokenConnectionZSideArray) ToGetServiceTokenServiceTokenConnectionZSideArrayOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionZSideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokenServiceTokenConnectionZSideArrayOutput)
+}
+
+type GetServiceTokenServiceTokenConnectionZSideOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokenServiceTokenConnectionZSideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokenServiceTokenConnectionZSide)(nil)).Elem()
+}
+
+func (o GetServiceTokenServiceTokenConnectionZSideOutput) ToGetServiceTokenServiceTokenConnectionZSideOutput() GetServiceTokenServiceTokenConnectionZSideOutput {
+	return o
+}
+
+func (o GetServiceTokenServiceTokenConnectionZSideOutput) ToGetServiceTokenServiceTokenConnectionZSideOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionZSideOutput {
+	return o
+}
+
+// List of criteria for selecting network access points with optimal efficiency, security, compatibility, and availability
+func (o GetServiceTokenServiceTokenConnectionZSideOutput) AccessPointSelectors() GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorArrayOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionZSide) []GetServiceTokenServiceTokenConnectionZSideAccessPointSelector {
+		return v.AccessPointSelectors
+	}).(GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorArrayOutput)
+}
+
+type GetServiceTokenServiceTokenConnectionZSideArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokenServiceTokenConnectionZSideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTokenServiceTokenConnectionZSide)(nil)).Elem()
+}
+
+func (o GetServiceTokenServiceTokenConnectionZSideArrayOutput) ToGetServiceTokenServiceTokenConnectionZSideArrayOutput() GetServiceTokenServiceTokenConnectionZSideArrayOutput {
+	return o
+}
+
+func (o GetServiceTokenServiceTokenConnectionZSideArrayOutput) ToGetServiceTokenServiceTokenConnectionZSideArrayOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionZSideArrayOutput {
+	return o
+}
+
+func (o GetServiceTokenServiceTokenConnectionZSideArrayOutput) Index(i pulumi.IntInput) GetServiceTokenServiceTokenConnectionZSideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTokenServiceTokenConnectionZSide {
+		return vs[0].([]GetServiceTokenServiceTokenConnectionZSide)[vs[1].(int)]
+	}).(GetServiceTokenServiceTokenConnectionZSideOutput)
+}
+
+type GetServiceTokenServiceTokenConnectionZSideAccessPointSelector struct {
+	// Virtual Device Interface Configuration
+	Interface GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterface `pulumi:"interface"`
+	// Link protocol Configuration
+	LinkProtocol GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocol `pulumi:"linkProtocol"`
+	// Network Configuration
+	Network GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetwork `pulumi:"network"`
+	// Port Configuration
+	Port GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort `pulumi:"port"`
+	// Type of Access point; COLO, VD, NETWORK
+	Type string `pulumi:"type"`
+	// Virtual Device Configuration
+	VirtualDevice *GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevice `pulumi:"virtualDevice"`
+}
+
+// GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInput is an input type that accepts GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorArgs and GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorOutput values.
+// You can construct a concrete instance of `GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInput` via:
+//
+//	GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorArgs{...}
+type GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInput interface {
+	pulumi.Input
+
+	ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorOutput() GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorOutput
+	ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorOutputWithContext(context.Context) GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorOutput
+}
+
+type GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorArgs struct {
+	// Virtual Device Interface Configuration
+	Interface GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceInput `pulumi:"interface"`
+	// Link protocol Configuration
+	LinkProtocol GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolInput `pulumi:"linkProtocol"`
+	// Network Configuration
+	Network GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkInput `pulumi:"network"`
+	// Port Configuration
+	Port GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortInput `pulumi:"port"`
+	// Type of Access point; COLO, VD, NETWORK
+	Type pulumi.StringInput `pulumi:"type"`
+	// Virtual Device Configuration
+	VirtualDevice GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrInput `pulumi:"virtualDevice"`
+}
+
+func (GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokenServiceTokenConnectionZSideAccessPointSelector)(nil)).Elem()
+}
+
+func (i GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorArgs) ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorOutput() GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorOutput {
+	return i.ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorArgs) ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorOutput)
+}
+
+// GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorArrayInput is an input type that accepts GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorArray and GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorArrayOutput values.
+// You can construct a concrete instance of `GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorArrayInput` via:
+//
+//	GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorArray{ GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorArgs{...} }
+type GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorArrayOutput() GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorArrayOutput
+	ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorArrayOutputWithContext(context.Context) GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorArrayOutput
+}
+
+type GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorArray []GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInput
+
+func (GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTokenServiceTokenConnectionZSideAccessPointSelector)(nil)).Elem()
+}
+
+func (i GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorArray) ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorArrayOutput() GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorArrayOutput {
+	return i.ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorArray) ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorArrayOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorArrayOutput)
+}
+
+type GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokenServiceTokenConnectionZSideAccessPointSelector)(nil)).Elem()
+}
+
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorOutput) ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorOutput() GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorOutput {
+	return o
+}
+
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorOutput) ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorOutput {
+	return o
+}
+
+// Virtual Device Interface Configuration
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorOutput) Interface() GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionZSideAccessPointSelector) GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterface {
+		return v.Interface
+	}).(GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput)
+}
+
+// Link protocol Configuration
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorOutput) LinkProtocol() GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionZSideAccessPointSelector) GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocol {
+		return v.LinkProtocol
+	}).(GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput)
+}
+
+// Network Configuration
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorOutput) Network() GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionZSideAccessPointSelector) GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetwork {
+		return v.Network
+	}).(GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkOutput)
+}
+
+// Port Configuration
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorOutput) Port() GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionZSideAccessPointSelector) GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort {
+		return v.Port
+	}).(GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutput)
+}
+
+// Type of Access point; COLO, VD, NETWORK
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionZSideAccessPointSelector) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Virtual Device Configuration
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorOutput) VirtualDevice() GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionZSideAccessPointSelector) *GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevice {
+		return v.VirtualDevice
+	}).(GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput)
+}
+
+type GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTokenServiceTokenConnectionZSideAccessPointSelector)(nil)).Elem()
+}
+
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorArrayOutput) ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorArrayOutput() GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorArrayOutput {
+	return o
+}
+
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorArrayOutput) ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorArrayOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorArrayOutput {
+	return o
+}
+
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorArrayOutput) Index(i pulumi.IntInput) GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTokenServiceTokenConnectionZSideAccessPointSelector {
+		return vs[0].([]GetServiceTokenServiceTokenConnectionZSideAccessPointSelector)[vs[1].(int)]
+	}).(GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorOutput)
+}
+
+type GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterface struct {
+	// id
+	Id int `pulumi:"id"`
+	// Interface type
+	Type string `pulumi:"type"`
+	// Equinix-assigned interface identifier
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceInput is an input type that accepts GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceArgs and GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput values.
+// You can construct a concrete instance of `GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceInput` via:
+//
+//	GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceArgs{...}
+type GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceInput interface {
+	pulumi.Input
+
+	ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput() GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput
+	ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceOutputWithContext(context.Context) GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput
+}
+
+type GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceArgs struct {
+	// id
+	Id pulumi.IntInput `pulumi:"id"`
+	// Interface type
+	Type pulumi.StringInput `pulumi:"type"`
+	// Equinix-assigned interface identifier
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterface)(nil)).Elem()
+}
+
+func (i GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceArgs) ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput() GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput {
+	return i.ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceArgs) ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput)
+}
+
+type GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterface)(nil)).Elem()
+}
+
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput) ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput() GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput {
+	return o
+}
+
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput) ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput {
+	return o
+}
+
+// id
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterface) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// Interface type
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterface) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Equinix-assigned interface identifier
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterface) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocol struct {
+	// Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
+	Type string `pulumi:"type"`
+	// Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+	VlanCTag int `pulumi:"vlanCTag"`
+	// Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+	VlanSTag int `pulumi:"vlanSTag"`
+	// Vlan Tag information, vlanTag value specified for DOT1Q connections
+	VlanTag int `pulumi:"vlanTag"`
+}
+
+// GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolInput is an input type that accepts GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolArgs and GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput values.
+// You can construct a concrete instance of `GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolInput` via:
+//
+//	GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolArgs{...}
+type GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolInput interface {
+	pulumi.Input
+
+	ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput() GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput
+	ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutputWithContext(context.Context) GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput
+}
+
+type GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolArgs struct {
+	// Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
+	Type pulumi.StringInput `pulumi:"type"`
+	// Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+	VlanCTag pulumi.IntInput `pulumi:"vlanCTag"`
+	// Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+	VlanSTag pulumi.IntInput `pulumi:"vlanSTag"`
+	// Vlan Tag information, vlanTag value specified for DOT1Q connections
+	VlanTag pulumi.IntInput `pulumi:"vlanTag"`
+}
+
+func (GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocol)(nil)).Elem()
+}
+
+func (i GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolArgs) ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput() GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput {
+	return i.ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolArgs) ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput)
+}
+
+type GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocol)(nil)).Elem()
+}
+
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput) ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput() GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput {
+	return o
+}
+
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput) ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput {
+	return o
+}
+
+// Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocol) string {
+		return v.Type
+	}).(pulumi.StringOutput)
+}
+
+// Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput) VlanCTag() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocol) int {
+		return v.VlanCTag
+	}).(pulumi.IntOutput)
+}
+
+// Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput) VlanSTag() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocol) int {
+		return v.VlanSTag
+	}).(pulumi.IntOutput)
+}
+
+// Vlan Tag information, vlanTag value specified for DOT1Q connections
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput) VlanTag() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocol) int {
+		return v.VlanTag
+	}).(pulumi.IntOutput)
+}
+
+type GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetwork struct {
+	// Unique Resource Identifier
+	Href string `pulumi:"href"`
+	// Location
+	Locations []GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocation `pulumi:"locations"`
+	// Network Name
+	Name string `pulumi:"name"`
+	// Scope of Network
+	Scope string `pulumi:"scope"`
+	// Type of Network
+	Type string `pulumi:"type"`
+	// Equinix-assigned Network identifier
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkInput is an input type that accepts GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkArgs and GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkOutput values.
+// You can construct a concrete instance of `GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkInput` via:
+//
+//	GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkArgs{...}
+type GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkInput interface {
+	pulumi.Input
+
+	ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkOutput() GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkOutput
+	ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkOutputWithContext(context.Context) GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkOutput
+}
+
+type GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkArgs struct {
+	// Unique Resource Identifier
+	Href pulumi.StringInput `pulumi:"href"`
+	// Location
+	Locations GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayInput `pulumi:"locations"`
+	// Network Name
+	Name pulumi.StringInput `pulumi:"name"`
+	// Scope of Network
+	Scope pulumi.StringInput `pulumi:"scope"`
+	// Type of Network
+	Type pulumi.StringInput `pulumi:"type"`
+	// Equinix-assigned Network identifier
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetwork)(nil)).Elem()
+}
+
+func (i GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkArgs) ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkOutput() GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkOutput {
+	return i.ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkArgs) ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkOutput)
+}
+
+type GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetwork)(nil)).Elem()
+}
+
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkOutput) ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkOutput() GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkOutput {
+	return o
+}
+
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkOutput) ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkOutput {
+	return o
+}
+
+// Unique Resource Identifier
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetwork) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// Location
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkOutput) Locations() GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetwork) []GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocation {
+		return v.Locations
+	}).(GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput)
+}
+
+// Network Name
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetwork) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Scope of Network
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkOutput) Scope() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetwork) string { return v.Scope }).(pulumi.StringOutput)
+}
+
+// Type of Network
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetwork) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Equinix-assigned Network identifier
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetwork) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocation struct {
+	// IBX Code
+	Ibx string `pulumi:"ibx"`
+	// Access point metro code
+	MetroCode string `pulumi:"metroCode"`
+	// Access point metro name
+	MetroName string `pulumi:"metroName"`
+	// Access point region
+	Region string `pulumi:"region"`
+}
+
+// GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationInput is an input type that accepts GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArgs and GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput values.
+// You can construct a concrete instance of `GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationInput` via:
+//
+//	GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArgs{...}
+type GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationInput interface {
+	pulumi.Input
+
+	ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput() GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput
+	ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutputWithContext(context.Context) GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput
+}
+
+type GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArgs struct {
+	// IBX Code
+	Ibx pulumi.StringInput `pulumi:"ibx"`
+	// Access point metro code
+	MetroCode pulumi.StringInput `pulumi:"metroCode"`
+	// Access point metro name
+	MetroName pulumi.StringInput `pulumi:"metroName"`
+	// Access point region
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocation)(nil)).Elem()
+}
+
+func (i GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArgs) ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput() GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput {
+	return i.ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArgs) ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput)
+}
+
+// GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayInput is an input type that accepts GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArray and GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput values.
+// You can construct a concrete instance of `GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayInput` via:
+//
+//	GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArray{ GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArgs{...} }
+type GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput() GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput
+	ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutputWithContext(context.Context) GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput
+}
+
+type GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArray []GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationInput
+
+func (GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocation)(nil)).Elem()
+}
+
+func (i GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArray) ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput() GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput {
+	return i.ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArray) ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput)
+}
+
+type GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocation)(nil)).Elem()
+}
+
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput) ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput() GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput {
+	return o
+}
+
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput) ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput {
+	return o
+}
+
+// IBX Code
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput) Ibx() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocation) string {
+		return v.Ibx
+	}).(pulumi.StringOutput)
+}
+
+// Access point metro code
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput) MetroCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocation) string {
+		return v.MetroCode
+	}).(pulumi.StringOutput)
+}
+
+// Access point metro name
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput) MetroName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocation) string {
+		return v.MetroName
+	}).(pulumi.StringOutput)
+}
+
+// Access point region
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocation) string {
+		return v.Region
+	}).(pulumi.StringOutput)
+}
+
+type GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocation)(nil)).Elem()
+}
+
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput) ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput() GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput {
+	return o
+}
+
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput) ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput {
+	return o
+}
+
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput) Index(i pulumi.IntInput) GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocation {
+		return vs[0].([]GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocation)[vs[1].(int)]
+	}).(GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput)
+}
+
+type GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort struct {
+	// Account Name
+	AccountName string `pulumi:"accountName"`
+	// Port Bandwidth
+	Bandwidth int `pulumi:"bandwidth"`
+	// Customer virtual port Id
+	CvpId int `pulumi:"cvpId"`
+	// Port Encapsulation
+	EncapsulationProtocolType string `pulumi:"encapsulationProtocolType"`
+	// Unique Resource Identifier
+	Href string `pulumi:"href"`
+	// Port Location
+	Locations []GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocation `pulumi:"locations"`
+	// Port Name
+	PortName string `pulumi:"portName"`
+	// Port Priority
+	Priority string `pulumi:"priority"`
+	// Type of Port
+	Type string `pulumi:"type"`
+	// Equinix-assigned Port identifier
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortInput is an input type that accepts GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortArgs and GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutput values.
+// You can construct a concrete instance of `GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortInput` via:
+//
+//	GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortArgs{...}
+type GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortInput interface {
+	pulumi.Input
+
+	ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutput() GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutput
+	ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutputWithContext(context.Context) GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutput
+}
+
+type GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortArgs struct {
+	// Account Name
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// Port Bandwidth
+	Bandwidth pulumi.IntInput `pulumi:"bandwidth"`
+	// Customer virtual port Id
+	CvpId pulumi.IntInput `pulumi:"cvpId"`
+	// Port Encapsulation
+	EncapsulationProtocolType pulumi.StringInput `pulumi:"encapsulationProtocolType"`
+	// Unique Resource Identifier
+	Href pulumi.StringInput `pulumi:"href"`
+	// Port Location
+	Locations GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayInput `pulumi:"locations"`
+	// Port Name
+	PortName pulumi.StringInput `pulumi:"portName"`
+	// Port Priority
+	Priority pulumi.StringInput `pulumi:"priority"`
+	// Type of Port
+	Type pulumi.StringInput `pulumi:"type"`
+	// Equinix-assigned Port identifier
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort)(nil)).Elem()
+}
+
+func (i GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortArgs) ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutput() GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutput {
+	return i.ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortArgs) ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutput)
+}
+
+type GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort)(nil)).Elem()
+}
+
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutput) ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutput() GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutput {
+	return o
+}
+
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutput) ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutput {
+	return o
+}
+
+// Account Name
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutput) AccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort) string { return v.AccountName }).(pulumi.StringOutput)
+}
+
+// Port Bandwidth
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutput) Bandwidth() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort) int { return v.Bandwidth }).(pulumi.IntOutput)
+}
+
+// Customer virtual port Id
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutput) CvpId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort) int { return v.CvpId }).(pulumi.IntOutput)
+}
+
+// Port Encapsulation
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutput) EncapsulationProtocolType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort) string {
+		return v.EncapsulationProtocolType
+	}).(pulumi.StringOutput)
+}
+
+// Unique Resource Identifier
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// Port Location
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutput) Locations() GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort) []GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocation {
+		return v.Locations
+	}).(GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput)
+}
+
+// Port Name
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutput) PortName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort) string { return v.PortName }).(pulumi.StringOutput)
+}
+
+// Port Priority
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutput) Priority() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort) string { return v.Priority }).(pulumi.StringOutput)
+}
+
+// Type of Port
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Equinix-assigned Port identifier
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocation struct {
+	// IBX Code
+	Ibx string `pulumi:"ibx"`
+	// Access point metro code
+	MetroCode string `pulumi:"metroCode"`
+	// Access point metro name
+	MetroName string `pulumi:"metroName"`
+	// Access point region
+	Region string `pulumi:"region"`
+}
+
+// GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationInput is an input type that accepts GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArgs and GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput values.
+// You can construct a concrete instance of `GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationInput` via:
+//
+//	GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArgs{...}
+type GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationInput interface {
+	pulumi.Input
+
+	ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput() GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput
+	ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationOutputWithContext(context.Context) GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput
+}
+
+type GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArgs struct {
+	// IBX Code
+	Ibx pulumi.StringInput `pulumi:"ibx"`
+	// Access point metro code
+	MetroCode pulumi.StringInput `pulumi:"metroCode"`
+	// Access point metro name
+	MetroName pulumi.StringInput `pulumi:"metroName"`
+	// Access point region
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocation)(nil)).Elem()
+}
+
+func (i GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArgs) ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput() GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput {
+	return i.ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArgs) ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput)
+}
+
+// GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayInput is an input type that accepts GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArray and GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput values.
+// You can construct a concrete instance of `GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayInput` via:
+//
+//	GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArray{ GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArgs{...} }
+type GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput() GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput
+	ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutputWithContext(context.Context) GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput
+}
+
+type GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArray []GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationInput
+
+func (GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocation)(nil)).Elem()
+}
+
+func (i GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArray) ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput() GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput {
+	return i.ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArray) ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput)
+}
+
+type GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocation)(nil)).Elem()
+}
+
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput) ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput() GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput {
+	return o
+}
+
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput) ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput {
+	return o
+}
+
+// IBX Code
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput) Ibx() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocation) string { return v.Ibx }).(pulumi.StringOutput)
+}
+
+// Access point metro code
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput) MetroCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocation) string {
+		return v.MetroCode
+	}).(pulumi.StringOutput)
+}
+
+// Access point metro name
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput) MetroName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocation) string {
+		return v.MetroName
+	}).(pulumi.StringOutput)
+}
+
+// Access point region
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocation) string {
+		return v.Region
+	}).(pulumi.StringOutput)
+}
+
+type GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocation)(nil)).Elem()
+}
+
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput) ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput() GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput {
+	return o
+}
+
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput) ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput {
+	return o
+}
+
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput) Index(i pulumi.IntInput) GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocation {
+		return vs[0].([]GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocation)[vs[1].(int)]
+	}).(GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput)
+}
+
+type GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevice struct {
+	// Virtual Device Cluster Information
+	Cluster string `pulumi:"cluster"`
+	// Unique Resource Identifier
+	Href string `pulumi:"href"`
+	// Customer-assigned Virtual Device Name
+	Name string `pulumi:"name"`
+	// Virtual Device type
+	Type string `pulumi:"type"`
+	// Equinix-assigned Virtual Device identifier
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceInput is an input type that accepts GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs and GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput values.
+// You can construct a concrete instance of `GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceInput` via:
+//
+//	GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs{...}
+type GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceInput interface {
+	pulumi.Input
+
+	ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput() GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput
+	ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutputWithContext(context.Context) GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput
+}
+
+type GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs struct {
+	// Virtual Device Cluster Information
+	Cluster pulumi.StringInput `pulumi:"cluster"`
+	// Unique Resource Identifier
+	Href pulumi.StringInput `pulumi:"href"`
+	// Customer-assigned Virtual Device Name
+	Name pulumi.StringInput `pulumi:"name"`
+	// Virtual Device type
+	Type pulumi.StringInput `pulumi:"type"`
+	// Equinix-assigned Virtual Device identifier
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevice)(nil)).Elem()
+}
+
+func (i GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs) ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput() GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput {
+	return i.ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs) ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput)
+}
+
+func (i GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs) ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput() GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput {
+	return i.ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs) ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput).ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutputWithContext(ctx)
+}
+
+// GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrInput is an input type that accepts GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs, GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtr and GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput values.
+// You can construct a concrete instance of `GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrInput` via:
+//
+//	        GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrInput interface {
+	pulumi.Input
+
+	ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput() GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput
+	ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutputWithContext(context.Context) GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput
+}
+
+type getServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrType GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs
+
+func GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtr(v *GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs) GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrInput {
+	return (*getServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrType)(v)
+}
+
+func (*getServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevice)(nil)).Elem()
+}
+
+func (i *getServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrType) ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput() GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput {
+	return i.ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutputWithContext(context.Background())
+}
+
+func (i *getServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrType) ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput)
+}
+
+type GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevice)(nil)).Elem()
+}
+
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput) ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput() GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput {
+	return o
+}
+
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput) ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput {
+	return o
+}
+
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput) ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput() GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput {
+	return o.ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutputWithContext(context.Background())
+}
+
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput) ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevice) *GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevice {
+		return &v
+	}).(GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput)
+}
+
+// Virtual Device Cluster Information
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput) Cluster() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevice) string {
+		return v.Cluster
+	}).(pulumi.StringOutput)
+}
+
+// Unique Resource Identifier
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevice) string {
+		return v.Href
+	}).(pulumi.StringOutput)
+}
+
+// Customer-assigned Virtual Device Name
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevice) string {
+		return v.Name
+	}).(pulumi.StringOutput)
+}
+
+// Virtual Device type
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevice) string {
+		return v.Type
+	}).(pulumi.StringOutput)
+}
+
+// Equinix-assigned Virtual Device identifier
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevice) string {
+		return v.Uuid
+	}).(pulumi.StringOutput)
+}
+
+type GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevice)(nil)).Elem()
+}
+
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput) ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput() GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput {
+	return o
+}
+
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput) ToGetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutputWithContext(ctx context.Context) GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput {
+	return o
+}
+
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput) Elem() GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput {
+	return o.ApplyT(func(v *GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevice) GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevice {
+		if v != nil {
+			return *v
+		}
+		var ret GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevice
+		return ret
+	}).(GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput)
+}
+
+// Virtual Device Cluster Information
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput) Cluster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevice) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Cluster
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique Resource Identifier
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevice) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Href
+	}).(pulumi.StringPtrOutput)
+}
+
+// Customer-assigned Virtual Device Name
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevice) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Virtual Device type
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevice) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Equinix-assigned Virtual Device identifier
+func (o GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevice) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uuid
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetServiceTokensData struct {
+	// Customer account information that is associated with this service token
+	Accounts []GetServiceTokensDataAccount `pulumi:"accounts"`
+	// Captures connection lifecycle change information
+	ChangeLogs []GetServiceTokensDataChangeLog `pulumi:"changeLogs"`
+	// Optional Description to the Service Token you will be creating
+	Description string `pulumi:"description"`
+	// Expiration date and time of the service token; 2020-11-06T07:00:00Z
+	ExpirationDateTime string `pulumi:"expirationDateTime"`
+	// An absolute URL that is the subject of the link's context.
+	Href string `pulumi:"href"`
+	// Information about token side; ASIDE, ZSIDE
+	IssuerSide string `pulumi:"issuerSide"`
+	// Name of the Service Token
+	Name string `pulumi:"name"`
+	// Preferences for notifications on Service Token configuration or status changes
+	Notifications []GetServiceTokensDataNotification `pulumi:"notifications"`
+	// Project information
+	Projects []GetServiceTokensDataProject `pulumi:"projects"`
+	// Service Token Connection Type Information
+	ServiceTokenConnections []GetServiceTokensDataServiceTokenConnection `pulumi:"serviceTokenConnections"`
+	// Service token state; ACTIVE, INACTIVE, EXPIRED, DELETED
+	State string `pulumi:"state"`
+	// Service Token Type; VC_TOKEN,EPL_TOKEN
+	Type string `pulumi:"type"`
+	// Equinix-assigned service token identifier
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetServiceTokensDataInput is an input type that accepts GetServiceTokensDataArgs and GetServiceTokensDataOutput values.
+// You can construct a concrete instance of `GetServiceTokensDataInput` via:
+//
+//	GetServiceTokensDataArgs{...}
+type GetServiceTokensDataInput interface {
+	pulumi.Input
+
+	ToGetServiceTokensDataOutput() GetServiceTokensDataOutput
+	ToGetServiceTokensDataOutputWithContext(context.Context) GetServiceTokensDataOutput
+}
+
+type GetServiceTokensDataArgs struct {
+	// Customer account information that is associated with this service token
+	Accounts GetServiceTokensDataAccountArrayInput `pulumi:"accounts"`
+	// Captures connection lifecycle change information
+	ChangeLogs GetServiceTokensDataChangeLogArrayInput `pulumi:"changeLogs"`
+	// Optional Description to the Service Token you will be creating
+	Description pulumi.StringInput `pulumi:"description"`
+	// Expiration date and time of the service token; 2020-11-06T07:00:00Z
+	ExpirationDateTime pulumi.StringInput `pulumi:"expirationDateTime"`
+	// An absolute URL that is the subject of the link's context.
+	Href pulumi.StringInput `pulumi:"href"`
+	// Information about token side; ASIDE, ZSIDE
+	IssuerSide pulumi.StringInput `pulumi:"issuerSide"`
+	// Name of the Service Token
+	Name pulumi.StringInput `pulumi:"name"`
+	// Preferences for notifications on Service Token configuration or status changes
+	Notifications GetServiceTokensDataNotificationArrayInput `pulumi:"notifications"`
+	// Project information
+	Projects GetServiceTokensDataProjectArrayInput `pulumi:"projects"`
+	// Service Token Connection Type Information
+	ServiceTokenConnections GetServiceTokensDataServiceTokenConnectionArrayInput `pulumi:"serviceTokenConnections"`
+	// Service token state; ACTIVE, INACTIVE, EXPIRED, DELETED
+	State pulumi.StringInput `pulumi:"state"`
+	// Service Token Type; VC_TOKEN,EPL_TOKEN
+	Type pulumi.StringInput `pulumi:"type"`
+	// Equinix-assigned service token identifier
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetServiceTokensDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokensData)(nil)).Elem()
+}
+
+func (i GetServiceTokensDataArgs) ToGetServiceTokensDataOutput() GetServiceTokensDataOutput {
+	return i.ToGetServiceTokensDataOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokensDataArgs) ToGetServiceTokensDataOutputWithContext(ctx context.Context) GetServiceTokensDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataOutput)
+}
+
+// GetServiceTokensDataArrayInput is an input type that accepts GetServiceTokensDataArray and GetServiceTokensDataArrayOutput values.
+// You can construct a concrete instance of `GetServiceTokensDataArrayInput` via:
+//
+//	GetServiceTokensDataArray{ GetServiceTokensDataArgs{...} }
+type GetServiceTokensDataArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTokensDataArrayOutput() GetServiceTokensDataArrayOutput
+	ToGetServiceTokensDataArrayOutputWithContext(context.Context) GetServiceTokensDataArrayOutput
+}
+
+type GetServiceTokensDataArray []GetServiceTokensDataInput
+
+func (GetServiceTokensDataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTokensData)(nil)).Elem()
+}
+
+func (i GetServiceTokensDataArray) ToGetServiceTokensDataArrayOutput() GetServiceTokensDataArrayOutput {
+	return i.ToGetServiceTokensDataArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokensDataArray) ToGetServiceTokensDataArrayOutputWithContext(ctx context.Context) GetServiceTokensDataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataArrayOutput)
+}
+
+type GetServiceTokensDataOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokensDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokensData)(nil)).Elem()
+}
+
+func (o GetServiceTokensDataOutput) ToGetServiceTokensDataOutput() GetServiceTokensDataOutput {
+	return o
+}
+
+func (o GetServiceTokensDataOutput) ToGetServiceTokensDataOutputWithContext(ctx context.Context) GetServiceTokensDataOutput {
+	return o
+}
+
+// Customer account information that is associated with this service token
+func (o GetServiceTokensDataOutput) Accounts() GetServiceTokensDataAccountArrayOutput {
+	return o.ApplyT(func(v GetServiceTokensData) []GetServiceTokensDataAccount { return v.Accounts }).(GetServiceTokensDataAccountArrayOutput)
+}
+
+// Captures connection lifecycle change information
+func (o GetServiceTokensDataOutput) ChangeLogs() GetServiceTokensDataChangeLogArrayOutput {
+	return o.ApplyT(func(v GetServiceTokensData) []GetServiceTokensDataChangeLog { return v.ChangeLogs }).(GetServiceTokensDataChangeLogArrayOutput)
+}
+
+// Optional Description to the Service Token you will be creating
+func (o GetServiceTokensDataOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensData) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Expiration date and time of the service token; 2020-11-06T07:00:00Z
+func (o GetServiceTokensDataOutput) ExpirationDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensData) string { return v.ExpirationDateTime }).(pulumi.StringOutput)
+}
+
+// An absolute URL that is the subject of the link's context.
+func (o GetServiceTokensDataOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensData) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// Information about token side; ASIDE, ZSIDE
+func (o GetServiceTokensDataOutput) IssuerSide() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensData) string { return v.IssuerSide }).(pulumi.StringOutput)
+}
+
+// Name of the Service Token
+func (o GetServiceTokensDataOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensData) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Preferences for notifications on Service Token configuration or status changes
+func (o GetServiceTokensDataOutput) Notifications() GetServiceTokensDataNotificationArrayOutput {
+	return o.ApplyT(func(v GetServiceTokensData) []GetServiceTokensDataNotification { return v.Notifications }).(GetServiceTokensDataNotificationArrayOutput)
+}
+
+// Project information
+func (o GetServiceTokensDataOutput) Projects() GetServiceTokensDataProjectArrayOutput {
+	return o.ApplyT(func(v GetServiceTokensData) []GetServiceTokensDataProject { return v.Projects }).(GetServiceTokensDataProjectArrayOutput)
+}
+
+// Service Token Connection Type Information
+func (o GetServiceTokensDataOutput) ServiceTokenConnections() GetServiceTokensDataServiceTokenConnectionArrayOutput {
+	return o.ApplyT(func(v GetServiceTokensData) []GetServiceTokensDataServiceTokenConnection {
+		return v.ServiceTokenConnections
+	}).(GetServiceTokensDataServiceTokenConnectionArrayOutput)
+}
+
+// Service token state; ACTIVE, INACTIVE, EXPIRED, DELETED
+func (o GetServiceTokensDataOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensData) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Service Token Type; VC_TOKEN,EPL_TOKEN
+func (o GetServiceTokensDataOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensData) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Equinix-assigned service token identifier
+func (o GetServiceTokensDataOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensData) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type GetServiceTokensDataArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokensDataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTokensData)(nil)).Elem()
+}
+
+func (o GetServiceTokensDataArrayOutput) ToGetServiceTokensDataArrayOutput() GetServiceTokensDataArrayOutput {
+	return o
+}
+
+func (o GetServiceTokensDataArrayOutput) ToGetServiceTokensDataArrayOutputWithContext(ctx context.Context) GetServiceTokensDataArrayOutput {
+	return o
+}
+
+func (o GetServiceTokensDataArrayOutput) Index(i pulumi.IntInput) GetServiceTokensDataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTokensData {
+		return vs[0].([]GetServiceTokensData)[vs[1].(int)]
+	}).(GetServiceTokensDataOutput)
+}
+
+type GetServiceTokensDataAccount struct {
+	// Legal name of the accountholder.
+	AccountName string `pulumi:"accountName"`
+	// Equinix-assigned account number.
+	AccountNumber int `pulumi:"accountNumber"`
+	// Equinix-assigned ID of the subscriber's parent organization.
+	GlobalCustId string `pulumi:"globalCustId"`
+	// Equinix-assigned ID of the subscriber's parent organization.
+	GlobalOrgId string `pulumi:"globalOrgId"`
+	// Equinix-assigned name of the subscriber's parent organization.
+	GlobalOrganizationName string `pulumi:"globalOrganizationName"`
+	// Equinix-assigned ID of the subscriber's organization.
+	OrgId int `pulumi:"orgId"`
+	// Equinix-assigned name of the subscriber's organization.
+	OrganizationName string `pulumi:"organizationName"`
+	// Enterprise datastore id
+	UcmId string `pulumi:"ucmId"`
+}
+
+// GetServiceTokensDataAccountInput is an input type that accepts GetServiceTokensDataAccountArgs and GetServiceTokensDataAccountOutput values.
+// You can construct a concrete instance of `GetServiceTokensDataAccountInput` via:
+//
+//	GetServiceTokensDataAccountArgs{...}
+type GetServiceTokensDataAccountInput interface {
+	pulumi.Input
+
+	ToGetServiceTokensDataAccountOutput() GetServiceTokensDataAccountOutput
+	ToGetServiceTokensDataAccountOutputWithContext(context.Context) GetServiceTokensDataAccountOutput
+}
+
+type GetServiceTokensDataAccountArgs struct {
+	// Legal name of the accountholder.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// Equinix-assigned account number.
+	AccountNumber pulumi.IntInput `pulumi:"accountNumber"`
+	// Equinix-assigned ID of the subscriber's parent organization.
+	GlobalCustId pulumi.StringInput `pulumi:"globalCustId"`
+	// Equinix-assigned ID of the subscriber's parent organization.
+	GlobalOrgId pulumi.StringInput `pulumi:"globalOrgId"`
+	// Equinix-assigned name of the subscriber's parent organization.
+	GlobalOrganizationName pulumi.StringInput `pulumi:"globalOrganizationName"`
+	// Equinix-assigned ID of the subscriber's organization.
+	OrgId pulumi.IntInput `pulumi:"orgId"`
+	// Equinix-assigned name of the subscriber's organization.
+	OrganizationName pulumi.StringInput `pulumi:"organizationName"`
+	// Enterprise datastore id
+	UcmId pulumi.StringInput `pulumi:"ucmId"`
+}
+
+func (GetServiceTokensDataAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokensDataAccount)(nil)).Elem()
+}
+
+func (i GetServiceTokensDataAccountArgs) ToGetServiceTokensDataAccountOutput() GetServiceTokensDataAccountOutput {
+	return i.ToGetServiceTokensDataAccountOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokensDataAccountArgs) ToGetServiceTokensDataAccountOutputWithContext(ctx context.Context) GetServiceTokensDataAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataAccountOutput)
+}
+
+// GetServiceTokensDataAccountArrayInput is an input type that accepts GetServiceTokensDataAccountArray and GetServiceTokensDataAccountArrayOutput values.
+// You can construct a concrete instance of `GetServiceTokensDataAccountArrayInput` via:
+//
+//	GetServiceTokensDataAccountArray{ GetServiceTokensDataAccountArgs{...} }
+type GetServiceTokensDataAccountArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTokensDataAccountArrayOutput() GetServiceTokensDataAccountArrayOutput
+	ToGetServiceTokensDataAccountArrayOutputWithContext(context.Context) GetServiceTokensDataAccountArrayOutput
+}
+
+type GetServiceTokensDataAccountArray []GetServiceTokensDataAccountInput
+
+func (GetServiceTokensDataAccountArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTokensDataAccount)(nil)).Elem()
+}
+
+func (i GetServiceTokensDataAccountArray) ToGetServiceTokensDataAccountArrayOutput() GetServiceTokensDataAccountArrayOutput {
+	return i.ToGetServiceTokensDataAccountArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokensDataAccountArray) ToGetServiceTokensDataAccountArrayOutputWithContext(ctx context.Context) GetServiceTokensDataAccountArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataAccountArrayOutput)
+}
+
+type GetServiceTokensDataAccountOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokensDataAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokensDataAccount)(nil)).Elem()
+}
+
+func (o GetServiceTokensDataAccountOutput) ToGetServiceTokensDataAccountOutput() GetServiceTokensDataAccountOutput {
+	return o
+}
+
+func (o GetServiceTokensDataAccountOutput) ToGetServiceTokensDataAccountOutputWithContext(ctx context.Context) GetServiceTokensDataAccountOutput {
+	return o
+}
+
+// Legal name of the accountholder.
+func (o GetServiceTokensDataAccountOutput) AccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataAccount) string { return v.AccountName }).(pulumi.StringOutput)
+}
+
+// Equinix-assigned account number.
+func (o GetServiceTokensDataAccountOutput) AccountNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTokensDataAccount) int { return v.AccountNumber }).(pulumi.IntOutput)
+}
+
+// Equinix-assigned ID of the subscriber's parent organization.
+func (o GetServiceTokensDataAccountOutput) GlobalCustId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataAccount) string { return v.GlobalCustId }).(pulumi.StringOutput)
+}
+
+// Equinix-assigned ID of the subscriber's parent organization.
+func (o GetServiceTokensDataAccountOutput) GlobalOrgId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataAccount) string { return v.GlobalOrgId }).(pulumi.StringOutput)
+}
+
+// Equinix-assigned name of the subscriber's parent organization.
+func (o GetServiceTokensDataAccountOutput) GlobalOrganizationName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataAccount) string { return v.GlobalOrganizationName }).(pulumi.StringOutput)
+}
+
+// Equinix-assigned ID of the subscriber's organization.
+func (o GetServiceTokensDataAccountOutput) OrgId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTokensDataAccount) int { return v.OrgId }).(pulumi.IntOutput)
+}
+
+// Equinix-assigned name of the subscriber's organization.
+func (o GetServiceTokensDataAccountOutput) OrganizationName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataAccount) string { return v.OrganizationName }).(pulumi.StringOutput)
+}
+
+// Enterprise datastore id
+func (o GetServiceTokensDataAccountOutput) UcmId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataAccount) string { return v.UcmId }).(pulumi.StringOutput)
+}
+
+type GetServiceTokensDataAccountArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokensDataAccountArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTokensDataAccount)(nil)).Elem()
+}
+
+func (o GetServiceTokensDataAccountArrayOutput) ToGetServiceTokensDataAccountArrayOutput() GetServiceTokensDataAccountArrayOutput {
+	return o
+}
+
+func (o GetServiceTokensDataAccountArrayOutput) ToGetServiceTokensDataAccountArrayOutputWithContext(ctx context.Context) GetServiceTokensDataAccountArrayOutput {
+	return o
+}
+
+func (o GetServiceTokensDataAccountArrayOutput) Index(i pulumi.IntInput) GetServiceTokensDataAccountOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTokensDataAccount {
+		return vs[0].([]GetServiceTokensDataAccount)[vs[1].(int)]
+	}).(GetServiceTokensDataAccountOutput)
+}
+
+type GetServiceTokensDataChangeLog struct {
+	// Created by User Key
+	CreatedBy string `pulumi:"createdBy"`
+	// Created by User Email Address
+	CreatedByEmail string `pulumi:"createdByEmail"`
+	// Created by User Full Name
+	CreatedByFullName string `pulumi:"createdByFullName"`
+	// Created by Date and Time
+	CreatedDateTime string `pulumi:"createdDateTime"`
+	// Deleted by User Key
+	DeletedBy string `pulumi:"deletedBy"`
+	// Deleted by User Email Address
+	DeletedByEmail string `pulumi:"deletedByEmail"`
+	// Deleted by User Full Name
+	DeletedByFullName string `pulumi:"deletedByFullName"`
+	// Deleted by Date and Time
+	DeletedDateTime string `pulumi:"deletedDateTime"`
+	// Updated by User Key
+	UpdatedBy string `pulumi:"updatedBy"`
+	// Updated by User Email Address
+	UpdatedByEmail string `pulumi:"updatedByEmail"`
+	// Updated by User Full Name
+	UpdatedByFullName string `pulumi:"updatedByFullName"`
+	// Updated by Date and Time
+	UpdatedDateTime string `pulumi:"updatedDateTime"`
+}
+
+// GetServiceTokensDataChangeLogInput is an input type that accepts GetServiceTokensDataChangeLogArgs and GetServiceTokensDataChangeLogOutput values.
+// You can construct a concrete instance of `GetServiceTokensDataChangeLogInput` via:
+//
+//	GetServiceTokensDataChangeLogArgs{...}
+type GetServiceTokensDataChangeLogInput interface {
+	pulumi.Input
+
+	ToGetServiceTokensDataChangeLogOutput() GetServiceTokensDataChangeLogOutput
+	ToGetServiceTokensDataChangeLogOutputWithContext(context.Context) GetServiceTokensDataChangeLogOutput
+}
+
+type GetServiceTokensDataChangeLogArgs struct {
+	// Created by User Key
+	CreatedBy pulumi.StringInput `pulumi:"createdBy"`
+	// Created by User Email Address
+	CreatedByEmail pulumi.StringInput `pulumi:"createdByEmail"`
+	// Created by User Full Name
+	CreatedByFullName pulumi.StringInput `pulumi:"createdByFullName"`
+	// Created by Date and Time
+	CreatedDateTime pulumi.StringInput `pulumi:"createdDateTime"`
+	// Deleted by User Key
+	DeletedBy pulumi.StringInput `pulumi:"deletedBy"`
+	// Deleted by User Email Address
+	DeletedByEmail pulumi.StringInput `pulumi:"deletedByEmail"`
+	// Deleted by User Full Name
+	DeletedByFullName pulumi.StringInput `pulumi:"deletedByFullName"`
+	// Deleted by Date and Time
+	DeletedDateTime pulumi.StringInput `pulumi:"deletedDateTime"`
+	// Updated by User Key
+	UpdatedBy pulumi.StringInput `pulumi:"updatedBy"`
+	// Updated by User Email Address
+	UpdatedByEmail pulumi.StringInput `pulumi:"updatedByEmail"`
+	// Updated by User Full Name
+	UpdatedByFullName pulumi.StringInput `pulumi:"updatedByFullName"`
+	// Updated by Date and Time
+	UpdatedDateTime pulumi.StringInput `pulumi:"updatedDateTime"`
+}
+
+func (GetServiceTokensDataChangeLogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokensDataChangeLog)(nil)).Elem()
+}
+
+func (i GetServiceTokensDataChangeLogArgs) ToGetServiceTokensDataChangeLogOutput() GetServiceTokensDataChangeLogOutput {
+	return i.ToGetServiceTokensDataChangeLogOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokensDataChangeLogArgs) ToGetServiceTokensDataChangeLogOutputWithContext(ctx context.Context) GetServiceTokensDataChangeLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataChangeLogOutput)
+}
+
+// GetServiceTokensDataChangeLogArrayInput is an input type that accepts GetServiceTokensDataChangeLogArray and GetServiceTokensDataChangeLogArrayOutput values.
+// You can construct a concrete instance of `GetServiceTokensDataChangeLogArrayInput` via:
+//
+//	GetServiceTokensDataChangeLogArray{ GetServiceTokensDataChangeLogArgs{...} }
+type GetServiceTokensDataChangeLogArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTokensDataChangeLogArrayOutput() GetServiceTokensDataChangeLogArrayOutput
+	ToGetServiceTokensDataChangeLogArrayOutputWithContext(context.Context) GetServiceTokensDataChangeLogArrayOutput
+}
+
+type GetServiceTokensDataChangeLogArray []GetServiceTokensDataChangeLogInput
+
+func (GetServiceTokensDataChangeLogArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTokensDataChangeLog)(nil)).Elem()
+}
+
+func (i GetServiceTokensDataChangeLogArray) ToGetServiceTokensDataChangeLogArrayOutput() GetServiceTokensDataChangeLogArrayOutput {
+	return i.ToGetServiceTokensDataChangeLogArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokensDataChangeLogArray) ToGetServiceTokensDataChangeLogArrayOutputWithContext(ctx context.Context) GetServiceTokensDataChangeLogArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataChangeLogArrayOutput)
+}
+
+type GetServiceTokensDataChangeLogOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokensDataChangeLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokensDataChangeLog)(nil)).Elem()
+}
+
+func (o GetServiceTokensDataChangeLogOutput) ToGetServiceTokensDataChangeLogOutput() GetServiceTokensDataChangeLogOutput {
+	return o
+}
+
+func (o GetServiceTokensDataChangeLogOutput) ToGetServiceTokensDataChangeLogOutputWithContext(ctx context.Context) GetServiceTokensDataChangeLogOutput {
+	return o
+}
+
+// Created by User Key
+func (o GetServiceTokensDataChangeLogOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataChangeLog) string { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// Created by User Email Address
+func (o GetServiceTokensDataChangeLogOutput) CreatedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataChangeLog) string { return v.CreatedByEmail }).(pulumi.StringOutput)
+}
+
+// Created by User Full Name
+func (o GetServiceTokensDataChangeLogOutput) CreatedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataChangeLog) string { return v.CreatedByFullName }).(pulumi.StringOutput)
+}
+
+// Created by Date and Time
+func (o GetServiceTokensDataChangeLogOutput) CreatedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataChangeLog) string { return v.CreatedDateTime }).(pulumi.StringOutput)
+}
+
+// Deleted by User Key
+func (o GetServiceTokensDataChangeLogOutput) DeletedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataChangeLog) string { return v.DeletedBy }).(pulumi.StringOutput)
+}
+
+// Deleted by User Email Address
+func (o GetServiceTokensDataChangeLogOutput) DeletedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataChangeLog) string { return v.DeletedByEmail }).(pulumi.StringOutput)
+}
+
+// Deleted by User Full Name
+func (o GetServiceTokensDataChangeLogOutput) DeletedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataChangeLog) string { return v.DeletedByFullName }).(pulumi.StringOutput)
+}
+
+// Deleted by Date and Time
+func (o GetServiceTokensDataChangeLogOutput) DeletedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataChangeLog) string { return v.DeletedDateTime }).(pulumi.StringOutput)
+}
+
+// Updated by User Key
+func (o GetServiceTokensDataChangeLogOutput) UpdatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataChangeLog) string { return v.UpdatedBy }).(pulumi.StringOutput)
+}
+
+// Updated by User Email Address
+func (o GetServiceTokensDataChangeLogOutput) UpdatedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataChangeLog) string { return v.UpdatedByEmail }).(pulumi.StringOutput)
+}
+
+// Updated by User Full Name
+func (o GetServiceTokensDataChangeLogOutput) UpdatedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataChangeLog) string { return v.UpdatedByFullName }).(pulumi.StringOutput)
+}
+
+// Updated by Date and Time
+func (o GetServiceTokensDataChangeLogOutput) UpdatedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataChangeLog) string { return v.UpdatedDateTime }).(pulumi.StringOutput)
+}
+
+type GetServiceTokensDataChangeLogArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokensDataChangeLogArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTokensDataChangeLog)(nil)).Elem()
+}
+
+func (o GetServiceTokensDataChangeLogArrayOutput) ToGetServiceTokensDataChangeLogArrayOutput() GetServiceTokensDataChangeLogArrayOutput {
+	return o
+}
+
+func (o GetServiceTokensDataChangeLogArrayOutput) ToGetServiceTokensDataChangeLogArrayOutputWithContext(ctx context.Context) GetServiceTokensDataChangeLogArrayOutput {
+	return o
+}
+
+func (o GetServiceTokensDataChangeLogArrayOutput) Index(i pulumi.IntInput) GetServiceTokensDataChangeLogOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTokensDataChangeLog {
+		return vs[0].([]GetServiceTokensDataChangeLog)[vs[1].(int)]
+	}).(GetServiceTokensDataChangeLogOutput)
+}
+
+type GetServiceTokensDataNotification struct {
+	// Array of contact emails
+	Emails []string `pulumi:"emails"`
+	// Send interval
+	SendInterval *string `pulumi:"sendInterval"`
+	// Notification Type - ALL,CONNECTION_APPROVAL,SALES_REP_NOTIFICATIONS, NOTIFICATIONS
+	Type string `pulumi:"type"`
+}
+
+// GetServiceTokensDataNotificationInput is an input type that accepts GetServiceTokensDataNotificationArgs and GetServiceTokensDataNotificationOutput values.
+// You can construct a concrete instance of `GetServiceTokensDataNotificationInput` via:
+//
+//	GetServiceTokensDataNotificationArgs{...}
+type GetServiceTokensDataNotificationInput interface {
+	pulumi.Input
+
+	ToGetServiceTokensDataNotificationOutput() GetServiceTokensDataNotificationOutput
+	ToGetServiceTokensDataNotificationOutputWithContext(context.Context) GetServiceTokensDataNotificationOutput
+}
+
+type GetServiceTokensDataNotificationArgs struct {
+	// Array of contact emails
+	Emails pulumi.StringArrayInput `pulumi:"emails"`
+	// Send interval
+	SendInterval pulumi.StringPtrInput `pulumi:"sendInterval"`
+	// Notification Type - ALL,CONNECTION_APPROVAL,SALES_REP_NOTIFICATIONS, NOTIFICATIONS
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetServiceTokensDataNotificationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokensDataNotification)(nil)).Elem()
+}
+
+func (i GetServiceTokensDataNotificationArgs) ToGetServiceTokensDataNotificationOutput() GetServiceTokensDataNotificationOutput {
+	return i.ToGetServiceTokensDataNotificationOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokensDataNotificationArgs) ToGetServiceTokensDataNotificationOutputWithContext(ctx context.Context) GetServiceTokensDataNotificationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataNotificationOutput)
+}
+
+// GetServiceTokensDataNotificationArrayInput is an input type that accepts GetServiceTokensDataNotificationArray and GetServiceTokensDataNotificationArrayOutput values.
+// You can construct a concrete instance of `GetServiceTokensDataNotificationArrayInput` via:
+//
+//	GetServiceTokensDataNotificationArray{ GetServiceTokensDataNotificationArgs{...} }
+type GetServiceTokensDataNotificationArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTokensDataNotificationArrayOutput() GetServiceTokensDataNotificationArrayOutput
+	ToGetServiceTokensDataNotificationArrayOutputWithContext(context.Context) GetServiceTokensDataNotificationArrayOutput
+}
+
+type GetServiceTokensDataNotificationArray []GetServiceTokensDataNotificationInput
+
+func (GetServiceTokensDataNotificationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTokensDataNotification)(nil)).Elem()
+}
+
+func (i GetServiceTokensDataNotificationArray) ToGetServiceTokensDataNotificationArrayOutput() GetServiceTokensDataNotificationArrayOutput {
+	return i.ToGetServiceTokensDataNotificationArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokensDataNotificationArray) ToGetServiceTokensDataNotificationArrayOutputWithContext(ctx context.Context) GetServiceTokensDataNotificationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataNotificationArrayOutput)
+}
+
+type GetServiceTokensDataNotificationOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokensDataNotificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokensDataNotification)(nil)).Elem()
+}
+
+func (o GetServiceTokensDataNotificationOutput) ToGetServiceTokensDataNotificationOutput() GetServiceTokensDataNotificationOutput {
+	return o
+}
+
+func (o GetServiceTokensDataNotificationOutput) ToGetServiceTokensDataNotificationOutputWithContext(ctx context.Context) GetServiceTokensDataNotificationOutput {
+	return o
+}
+
+// Array of contact emails
+func (o GetServiceTokensDataNotificationOutput) Emails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServiceTokensDataNotification) []string { return v.Emails }).(pulumi.StringArrayOutput)
+}
+
+// Send interval
+func (o GetServiceTokensDataNotificationOutput) SendInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceTokensDataNotification) *string { return v.SendInterval }).(pulumi.StringPtrOutput)
+}
+
+// Notification Type - ALL,CONNECTION_APPROVAL,SALES_REP_NOTIFICATIONS, NOTIFICATIONS
+func (o GetServiceTokensDataNotificationOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataNotification) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetServiceTokensDataNotificationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokensDataNotificationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTokensDataNotification)(nil)).Elem()
+}
+
+func (o GetServiceTokensDataNotificationArrayOutput) ToGetServiceTokensDataNotificationArrayOutput() GetServiceTokensDataNotificationArrayOutput {
+	return o
+}
+
+func (o GetServiceTokensDataNotificationArrayOutput) ToGetServiceTokensDataNotificationArrayOutputWithContext(ctx context.Context) GetServiceTokensDataNotificationArrayOutput {
+	return o
+}
+
+func (o GetServiceTokensDataNotificationArrayOutput) Index(i pulumi.IntInput) GetServiceTokensDataNotificationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTokensDataNotification {
+		return vs[0].([]GetServiceTokensDataNotification)[vs[1].(int)]
+	}).(GetServiceTokensDataNotificationOutput)
+}
+
+type GetServiceTokensDataProject struct {
+	// Unique Resource URL
+	Href string `pulumi:"href"`
+	// Project Id
+	ProjectId string `pulumi:"projectId"`
+}
+
+// GetServiceTokensDataProjectInput is an input type that accepts GetServiceTokensDataProjectArgs and GetServiceTokensDataProjectOutput values.
+// You can construct a concrete instance of `GetServiceTokensDataProjectInput` via:
+//
+//	GetServiceTokensDataProjectArgs{...}
+type GetServiceTokensDataProjectInput interface {
+	pulumi.Input
+
+	ToGetServiceTokensDataProjectOutput() GetServiceTokensDataProjectOutput
+	ToGetServiceTokensDataProjectOutputWithContext(context.Context) GetServiceTokensDataProjectOutput
+}
+
+type GetServiceTokensDataProjectArgs struct {
+	// Unique Resource URL
+	Href pulumi.StringInput `pulumi:"href"`
+	// Project Id
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+}
+
+func (GetServiceTokensDataProjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokensDataProject)(nil)).Elem()
+}
+
+func (i GetServiceTokensDataProjectArgs) ToGetServiceTokensDataProjectOutput() GetServiceTokensDataProjectOutput {
+	return i.ToGetServiceTokensDataProjectOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokensDataProjectArgs) ToGetServiceTokensDataProjectOutputWithContext(ctx context.Context) GetServiceTokensDataProjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataProjectOutput)
+}
+
+// GetServiceTokensDataProjectArrayInput is an input type that accepts GetServiceTokensDataProjectArray and GetServiceTokensDataProjectArrayOutput values.
+// You can construct a concrete instance of `GetServiceTokensDataProjectArrayInput` via:
+//
+//	GetServiceTokensDataProjectArray{ GetServiceTokensDataProjectArgs{...} }
+type GetServiceTokensDataProjectArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTokensDataProjectArrayOutput() GetServiceTokensDataProjectArrayOutput
+	ToGetServiceTokensDataProjectArrayOutputWithContext(context.Context) GetServiceTokensDataProjectArrayOutput
+}
+
+type GetServiceTokensDataProjectArray []GetServiceTokensDataProjectInput
+
+func (GetServiceTokensDataProjectArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTokensDataProject)(nil)).Elem()
+}
+
+func (i GetServiceTokensDataProjectArray) ToGetServiceTokensDataProjectArrayOutput() GetServiceTokensDataProjectArrayOutput {
+	return i.ToGetServiceTokensDataProjectArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokensDataProjectArray) ToGetServiceTokensDataProjectArrayOutputWithContext(ctx context.Context) GetServiceTokensDataProjectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataProjectArrayOutput)
+}
+
+type GetServiceTokensDataProjectOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokensDataProjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokensDataProject)(nil)).Elem()
+}
+
+func (o GetServiceTokensDataProjectOutput) ToGetServiceTokensDataProjectOutput() GetServiceTokensDataProjectOutput {
+	return o
+}
+
+func (o GetServiceTokensDataProjectOutput) ToGetServiceTokensDataProjectOutputWithContext(ctx context.Context) GetServiceTokensDataProjectOutput {
+	return o
+}
+
+// Unique Resource URL
+func (o GetServiceTokensDataProjectOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataProject) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// Project Id
+func (o GetServiceTokensDataProjectOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataProject) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+type GetServiceTokensDataProjectArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokensDataProjectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTokensDataProject)(nil)).Elem()
+}
+
+func (o GetServiceTokensDataProjectArrayOutput) ToGetServiceTokensDataProjectArrayOutput() GetServiceTokensDataProjectArrayOutput {
+	return o
+}
+
+func (o GetServiceTokensDataProjectArrayOutput) ToGetServiceTokensDataProjectArrayOutputWithContext(ctx context.Context) GetServiceTokensDataProjectArrayOutput {
+	return o
+}
+
+func (o GetServiceTokensDataProjectArrayOutput) Index(i pulumi.IntInput) GetServiceTokensDataProjectOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTokensDataProject {
+		return vs[0].([]GetServiceTokensDataProject)[vs[1].(int)]
+	}).(GetServiceTokensDataProjectOutput)
+}
+
+type GetServiceTokensDataServiceTokenConnection struct {
+	// A-Side Connection link protocol,virtual device or network configuration
+	ASides []GetServiceTokensDataServiceTokenConnectionASide `pulumi:"aSides"`
+	// Allow custom bandwidth value
+	AllowCustomBandwidth bool `pulumi:"allowCustomBandwidth"`
+	// Authorization to connect remotely
+	AllowRemoteConnection bool `pulumi:"allowRemoteConnection"`
+	// Connection bandwidth limit in Mbps
+	BandwidthLimit int `pulumi:"bandwidthLimit"`
+	// List of permitted bandwidths'; For Port-based Service Tokens, the maximum allowable bandwidth is 50 Gbps, while for Virtual Device-based Service Tokens, it is limited to 10 Gbps
+	SupportedBandwidths []int `pulumi:"supportedBandwidths"`
+	// Type of Connection supported by Service Token you will create; EVPL_VC, EVPLAN_VC, EPLAN_VC, IPWAN_VC
+	Type string `pulumi:"type"`
+	// Equinix-assigned connection identifier
+	Uuid string `pulumi:"uuid"`
+	// Z-Side Connection link protocol,virtual device or network configuration
+	ZSides []GetServiceTokensDataServiceTokenConnectionZSide `pulumi:"zSides"`
+}
+
+// GetServiceTokensDataServiceTokenConnectionInput is an input type that accepts GetServiceTokensDataServiceTokenConnectionArgs and GetServiceTokensDataServiceTokenConnectionOutput values.
+// You can construct a concrete instance of `GetServiceTokensDataServiceTokenConnectionInput` via:
+//
+//	GetServiceTokensDataServiceTokenConnectionArgs{...}
+type GetServiceTokensDataServiceTokenConnectionInput interface {
+	pulumi.Input
+
+	ToGetServiceTokensDataServiceTokenConnectionOutput() GetServiceTokensDataServiceTokenConnectionOutput
+	ToGetServiceTokensDataServiceTokenConnectionOutputWithContext(context.Context) GetServiceTokensDataServiceTokenConnectionOutput
+}
+
+type GetServiceTokensDataServiceTokenConnectionArgs struct {
+	// A-Side Connection link protocol,virtual device or network configuration
+	ASides GetServiceTokensDataServiceTokenConnectionASideArrayInput `pulumi:"aSides"`
+	// Allow custom bandwidth value
+	AllowCustomBandwidth pulumi.BoolInput `pulumi:"allowCustomBandwidth"`
+	// Authorization to connect remotely
+	AllowRemoteConnection pulumi.BoolInput `pulumi:"allowRemoteConnection"`
+	// Connection bandwidth limit in Mbps
+	BandwidthLimit pulumi.IntInput `pulumi:"bandwidthLimit"`
+	// List of permitted bandwidths'; For Port-based Service Tokens, the maximum allowable bandwidth is 50 Gbps, while for Virtual Device-based Service Tokens, it is limited to 10 Gbps
+	SupportedBandwidths pulumi.IntArrayInput `pulumi:"supportedBandwidths"`
+	// Type of Connection supported by Service Token you will create; EVPL_VC, EVPLAN_VC, EPLAN_VC, IPWAN_VC
+	Type pulumi.StringInput `pulumi:"type"`
+	// Equinix-assigned connection identifier
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+	// Z-Side Connection link protocol,virtual device or network configuration
+	ZSides GetServiceTokensDataServiceTokenConnectionZSideArrayInput `pulumi:"zSides"`
+}
+
+func (GetServiceTokensDataServiceTokenConnectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnection)(nil)).Elem()
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionArgs) ToGetServiceTokensDataServiceTokenConnectionOutput() GetServiceTokensDataServiceTokenConnectionOutput {
+	return i.ToGetServiceTokensDataServiceTokenConnectionOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionArgs) ToGetServiceTokensDataServiceTokenConnectionOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionOutput)
+}
+
+// GetServiceTokensDataServiceTokenConnectionArrayInput is an input type that accepts GetServiceTokensDataServiceTokenConnectionArray and GetServiceTokensDataServiceTokenConnectionArrayOutput values.
+// You can construct a concrete instance of `GetServiceTokensDataServiceTokenConnectionArrayInput` via:
+//
+//	GetServiceTokensDataServiceTokenConnectionArray{ GetServiceTokensDataServiceTokenConnectionArgs{...} }
+type GetServiceTokensDataServiceTokenConnectionArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTokensDataServiceTokenConnectionArrayOutput() GetServiceTokensDataServiceTokenConnectionArrayOutput
+	ToGetServiceTokensDataServiceTokenConnectionArrayOutputWithContext(context.Context) GetServiceTokensDataServiceTokenConnectionArrayOutput
+}
+
+type GetServiceTokensDataServiceTokenConnectionArray []GetServiceTokensDataServiceTokenConnectionInput
+
+func (GetServiceTokensDataServiceTokenConnectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTokensDataServiceTokenConnection)(nil)).Elem()
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionArray) ToGetServiceTokensDataServiceTokenConnectionArrayOutput() GetServiceTokensDataServiceTokenConnectionArrayOutput {
+	return i.ToGetServiceTokensDataServiceTokenConnectionArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionArray) ToGetServiceTokensDataServiceTokenConnectionArrayOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionArrayOutput)
+}
+
+type GetServiceTokensDataServiceTokenConnectionOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokensDataServiceTokenConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnection)(nil)).Elem()
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionOutput) ToGetServiceTokensDataServiceTokenConnectionOutput() GetServiceTokensDataServiceTokenConnectionOutput {
+	return o
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionOutput) ToGetServiceTokensDataServiceTokenConnectionOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionOutput {
+	return o
+}
+
+// A-Side Connection link protocol,virtual device or network configuration
+func (o GetServiceTokensDataServiceTokenConnectionOutput) ASides() GetServiceTokensDataServiceTokenConnectionASideArrayOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnection) []GetServiceTokensDataServiceTokenConnectionASide {
+		return v.ASides
+	}).(GetServiceTokensDataServiceTokenConnectionASideArrayOutput)
+}
+
+// Allow custom bandwidth value
+func (o GetServiceTokensDataServiceTokenConnectionOutput) AllowCustomBandwidth() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnection) bool { return v.AllowCustomBandwidth }).(pulumi.BoolOutput)
+}
+
+// Authorization to connect remotely
+func (o GetServiceTokensDataServiceTokenConnectionOutput) AllowRemoteConnection() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnection) bool { return v.AllowRemoteConnection }).(pulumi.BoolOutput)
+}
+
+// Connection bandwidth limit in Mbps
+func (o GetServiceTokensDataServiceTokenConnectionOutput) BandwidthLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnection) int { return v.BandwidthLimit }).(pulumi.IntOutput)
+}
+
+// List of permitted bandwidths'; For Port-based Service Tokens, the maximum allowable bandwidth is 50 Gbps, while for Virtual Device-based Service Tokens, it is limited to 10 Gbps
+func (o GetServiceTokensDataServiceTokenConnectionOutput) SupportedBandwidths() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnection) []int { return v.SupportedBandwidths }).(pulumi.IntArrayOutput)
+}
+
+// Type of Connection supported by Service Token you will create; EVPL_VC, EVPLAN_VC, EPLAN_VC, IPWAN_VC
+func (o GetServiceTokensDataServiceTokenConnectionOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnection) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Equinix-assigned connection identifier
+func (o GetServiceTokensDataServiceTokenConnectionOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnection) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+// Z-Side Connection link protocol,virtual device or network configuration
+func (o GetServiceTokensDataServiceTokenConnectionOutput) ZSides() GetServiceTokensDataServiceTokenConnectionZSideArrayOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnection) []GetServiceTokensDataServiceTokenConnectionZSide {
+		return v.ZSides
+	}).(GetServiceTokensDataServiceTokenConnectionZSideArrayOutput)
+}
+
+type GetServiceTokensDataServiceTokenConnectionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokensDataServiceTokenConnectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTokensDataServiceTokenConnection)(nil)).Elem()
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionArrayOutput) ToGetServiceTokensDataServiceTokenConnectionArrayOutput() GetServiceTokensDataServiceTokenConnectionArrayOutput {
+	return o
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionArrayOutput) ToGetServiceTokensDataServiceTokenConnectionArrayOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionArrayOutput {
+	return o
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionArrayOutput) Index(i pulumi.IntInput) GetServiceTokensDataServiceTokenConnectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTokensDataServiceTokenConnection {
+		return vs[0].([]GetServiceTokensDataServiceTokenConnection)[vs[1].(int)]
+	}).(GetServiceTokensDataServiceTokenConnectionOutput)
+}
+
+type GetServiceTokensDataServiceTokenConnectionASide struct {
+	// List of criteria for selecting network access points with optimal efficiency, security, compatibility, and availability
+	AccessPointSelectors []GetServiceTokensDataServiceTokenConnectionASideAccessPointSelector `pulumi:"accessPointSelectors"`
+}
+
+// GetServiceTokensDataServiceTokenConnectionASideInput is an input type that accepts GetServiceTokensDataServiceTokenConnectionASideArgs and GetServiceTokensDataServiceTokenConnectionASideOutput values.
+// You can construct a concrete instance of `GetServiceTokensDataServiceTokenConnectionASideInput` via:
+//
+//	GetServiceTokensDataServiceTokenConnectionASideArgs{...}
+type GetServiceTokensDataServiceTokenConnectionASideInput interface {
+	pulumi.Input
+
+	ToGetServiceTokensDataServiceTokenConnectionASideOutput() GetServiceTokensDataServiceTokenConnectionASideOutput
+	ToGetServiceTokensDataServiceTokenConnectionASideOutputWithContext(context.Context) GetServiceTokensDataServiceTokenConnectionASideOutput
+}
+
+type GetServiceTokensDataServiceTokenConnectionASideArgs struct {
+	// List of criteria for selecting network access points with optimal efficiency, security, compatibility, and availability
+	AccessPointSelectors GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorArrayInput `pulumi:"accessPointSelectors"`
+}
+
+func (GetServiceTokensDataServiceTokenConnectionASideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionASide)(nil)).Elem()
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionASideArgs) ToGetServiceTokensDataServiceTokenConnectionASideOutput() GetServiceTokensDataServiceTokenConnectionASideOutput {
+	return i.ToGetServiceTokensDataServiceTokenConnectionASideOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionASideArgs) ToGetServiceTokensDataServiceTokenConnectionASideOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionASideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionASideOutput)
+}
+
+// GetServiceTokensDataServiceTokenConnectionASideArrayInput is an input type that accepts GetServiceTokensDataServiceTokenConnectionASideArray and GetServiceTokensDataServiceTokenConnectionASideArrayOutput values.
+// You can construct a concrete instance of `GetServiceTokensDataServiceTokenConnectionASideArrayInput` via:
+//
+//	GetServiceTokensDataServiceTokenConnectionASideArray{ GetServiceTokensDataServiceTokenConnectionASideArgs{...} }
+type GetServiceTokensDataServiceTokenConnectionASideArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTokensDataServiceTokenConnectionASideArrayOutput() GetServiceTokensDataServiceTokenConnectionASideArrayOutput
+	ToGetServiceTokensDataServiceTokenConnectionASideArrayOutputWithContext(context.Context) GetServiceTokensDataServiceTokenConnectionASideArrayOutput
+}
+
+type GetServiceTokensDataServiceTokenConnectionASideArray []GetServiceTokensDataServiceTokenConnectionASideInput
+
+func (GetServiceTokensDataServiceTokenConnectionASideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTokensDataServiceTokenConnectionASide)(nil)).Elem()
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionASideArray) ToGetServiceTokensDataServiceTokenConnectionASideArrayOutput() GetServiceTokensDataServiceTokenConnectionASideArrayOutput {
+	return i.ToGetServiceTokensDataServiceTokenConnectionASideArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionASideArray) ToGetServiceTokensDataServiceTokenConnectionASideArrayOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionASideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionASideArrayOutput)
+}
+
+type GetServiceTokensDataServiceTokenConnectionASideOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokensDataServiceTokenConnectionASideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionASide)(nil)).Elem()
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionASideOutput) ToGetServiceTokensDataServiceTokenConnectionASideOutput() GetServiceTokensDataServiceTokenConnectionASideOutput {
+	return o
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionASideOutput) ToGetServiceTokensDataServiceTokenConnectionASideOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionASideOutput {
+	return o
+}
+
+// List of criteria for selecting network access points with optimal efficiency, security, compatibility, and availability
+func (o GetServiceTokensDataServiceTokenConnectionASideOutput) AccessPointSelectors() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorArrayOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASide) []GetServiceTokensDataServiceTokenConnectionASideAccessPointSelector {
+		return v.AccessPointSelectors
+	}).(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorArrayOutput)
+}
+
+type GetServiceTokensDataServiceTokenConnectionASideArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokensDataServiceTokenConnectionASideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTokensDataServiceTokenConnectionASide)(nil)).Elem()
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionASideArrayOutput) ToGetServiceTokensDataServiceTokenConnectionASideArrayOutput() GetServiceTokensDataServiceTokenConnectionASideArrayOutput {
+	return o
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionASideArrayOutput) ToGetServiceTokensDataServiceTokenConnectionASideArrayOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionASideArrayOutput {
+	return o
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionASideArrayOutput) Index(i pulumi.IntInput) GetServiceTokensDataServiceTokenConnectionASideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTokensDataServiceTokenConnectionASide {
+		return vs[0].([]GetServiceTokensDataServiceTokenConnectionASide)[vs[1].(int)]
+	}).(GetServiceTokensDataServiceTokenConnectionASideOutput)
+}
+
+type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelector struct {
+	// Virtual Device Interface Configuration
+	Interface GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterface `pulumi:"interface"`
+	// Link protocol Configuration
+	LinkProtocol GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocol `pulumi:"linkProtocol"`
+	// Network Configuration
+	Network GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetwork `pulumi:"network"`
+	// Port Configuration
+	Port GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPort `pulumi:"port"`
+	// Type of Access point; COLO, VD, NETWORK
+	Type string `pulumi:"type"`
+	// Virtual Device Configuration
+	VirtualDevice *GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevice `pulumi:"virtualDevice"`
+}
+
+// GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInput is an input type that accepts GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorArgs and GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorOutput values.
+// You can construct a concrete instance of `GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInput` via:
+//
+//	GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorArgs{...}
+type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInput interface {
+	pulumi.Input
+
+	ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorOutput
+	ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorOutputWithContext(context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorOutput
+}
+
+type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorArgs struct {
+	// Virtual Device Interface Configuration
+	Interface GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterfaceInput `pulumi:"interface"`
+	// Link protocol Configuration
+	LinkProtocol GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocolInput `pulumi:"linkProtocol"`
+	// Network Configuration
+	Network GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkInput `pulumi:"network"`
+	// Port Configuration
+	Port GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortInput `pulumi:"port"`
+	// Type of Access point; COLO, VD, NETWORK
+	Type pulumi.StringInput `pulumi:"type"`
+	// Virtual Device Configuration
+	VirtualDevice GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrInput `pulumi:"virtualDevice"`
+}
+
+func (GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionASideAccessPointSelector)(nil)).Elem()
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorArgs) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorOutput {
+	return i.ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorArgs) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorOutput)
+}
+
+// GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorArrayInput is an input type that accepts GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorArray and GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorArrayOutput values.
+// You can construct a concrete instance of `GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorArrayInput` via:
+//
+//	GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorArray{ GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorArgs{...} }
+type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorArrayOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorArrayOutput
+	ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorArrayOutputWithContext(context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorArrayOutput
+}
+
+type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorArray []GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInput
+
+func (GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTokensDataServiceTokenConnectionASideAccessPointSelector)(nil)).Elem()
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorArray) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorArrayOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorArrayOutput {
+	return i.ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorArray) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorArrayOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorArrayOutput)
+}
+
+type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionASideAccessPointSelector)(nil)).Elem()
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorOutput) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorOutput {
+	return o
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorOutput) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorOutput {
+	return o
+}
+
+// Virtual Device Interface Configuration
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorOutput) Interface() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterfaceOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelector) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterface {
+		return v.Interface
+	}).(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterfaceOutput)
+}
+
+// Link protocol Configuration
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorOutput) LinkProtocol() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelector) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocol {
+		return v.LinkProtocol
+	}).(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput)
+}
+
+// Network Configuration
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorOutput) Network() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelector) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetwork {
+		return v.Network
+	}).(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkOutput)
+}
+
+// Port Configuration
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorOutput) Port() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelector) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPort {
+		return v.Port
+	}).(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutput)
+}
+
+// Type of Access point; COLO, VD, NETWORK
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelector) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Virtual Device Configuration
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorOutput) VirtualDevice() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelector) *GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevice {
+		return v.VirtualDevice
+	}).(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput)
+}
+
+type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTokensDataServiceTokenConnectionASideAccessPointSelector)(nil)).Elem()
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorArrayOutput) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorArrayOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorArrayOutput {
+	return o
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorArrayOutput) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorArrayOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorArrayOutput {
+	return o
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorArrayOutput) Index(i pulumi.IntInput) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelector {
+		return vs[0].([]GetServiceTokensDataServiceTokenConnectionASideAccessPointSelector)[vs[1].(int)]
+	}).(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorOutput)
+}
+
+type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterface struct {
+	// id
+	Id int `pulumi:"id"`
+	// Interface type
+	Type string `pulumi:"type"`
+	// Equinix-assigned interface identifier
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterfaceInput is an input type that accepts GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterfaceArgs and GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterfaceOutput values.
+// You can construct a concrete instance of `GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterfaceInput` via:
+//
+//	GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterfaceArgs{...}
+type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterfaceInput interface {
+	pulumi.Input
+
+	ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterfaceOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterfaceOutput
+	ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterfaceOutputWithContext(context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterfaceOutput
+}
+
+type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterfaceArgs struct {
+	// id
+	Id pulumi.IntInput `pulumi:"id"`
+	// Interface type
+	Type pulumi.StringInput `pulumi:"type"`
+	// Equinix-assigned interface identifier
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterfaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterface)(nil)).Elem()
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterfaceArgs) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterfaceOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterfaceOutput {
+	return i.ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterfaceOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterfaceArgs) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterfaceOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterfaceOutput)
+}
+
+type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterfaceOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterface)(nil)).Elem()
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterfaceOutput) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterfaceOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterfaceOutput {
+	return o
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterfaceOutput) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterfaceOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterfaceOutput {
+	return o
+}
+
+// id
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterfaceOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterface) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// Interface type
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterfaceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterface) string {
+		return v.Type
+	}).(pulumi.StringOutput)
+}
+
+// Equinix-assigned interface identifier
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterfaceOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterface) string {
+		return v.Uuid
+	}).(pulumi.StringOutput)
+}
+
+type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocol struct {
+	// Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
+	Type string `pulumi:"type"`
+	// Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+	VlanCTag int `pulumi:"vlanCTag"`
+	// Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+	VlanSTag int `pulumi:"vlanSTag"`
+	// Vlan Tag information, vlanTag value specified for DOT1Q connections
+	VlanTag int `pulumi:"vlanTag"`
+}
+
+// GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocolInput is an input type that accepts GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocolArgs and GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput values.
+// You can construct a concrete instance of `GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocolInput` via:
+//
+//	GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocolArgs{...}
+type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocolInput interface {
+	pulumi.Input
+
+	ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput
+	ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutputWithContext(context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput
+}
+
+type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocolArgs struct {
+	// Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
+	Type pulumi.StringInput `pulumi:"type"`
+	// Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+	VlanCTag pulumi.IntInput `pulumi:"vlanCTag"`
+	// Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+	VlanSTag pulumi.IntInput `pulumi:"vlanSTag"`
+	// Vlan Tag information, vlanTag value specified for DOT1Q connections
+	VlanTag pulumi.IntInput `pulumi:"vlanTag"`
+}
+
+func (GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocol)(nil)).Elem()
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocolArgs) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput {
+	return i.ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocolArgs) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput)
+}
+
+type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocol)(nil)).Elem()
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput {
+	return o
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput {
+	return o
+}
+
+// Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocol) string {
+		return v.Type
+	}).(pulumi.StringOutput)
+}
+
+// Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput) VlanCTag() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocol) int {
+		return v.VlanCTag
+	}).(pulumi.IntOutput)
+}
+
+// Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput) VlanSTag() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocol) int {
+		return v.VlanSTag
+	}).(pulumi.IntOutput)
+}
+
+// Vlan Tag information, vlanTag value specified for DOT1Q connections
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput) VlanTag() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocol) int {
+		return v.VlanTag
+	}).(pulumi.IntOutput)
+}
+
+type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetwork struct {
+	// Unique Resource Identifier
+	Href string `pulumi:"href"`
+	// Location
+	Locations []GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocation `pulumi:"locations"`
+	// Network Name
+	Name string `pulumi:"name"`
+	// Scope of Network
+	Scope string `pulumi:"scope"`
+	// Type of Network
+	Type string `pulumi:"type"`
+	// Equinix-assigned Network identifier
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkInput is an input type that accepts GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkArgs and GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkOutput values.
+// You can construct a concrete instance of `GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkInput` via:
+//
+//	GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkArgs{...}
+type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkInput interface {
+	pulumi.Input
+
+	ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkOutput
+	ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkOutputWithContext(context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkOutput
+}
+
+type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkArgs struct {
+	// Unique Resource Identifier
+	Href pulumi.StringInput `pulumi:"href"`
+	// Location
+	Locations GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayInput `pulumi:"locations"`
+	// Network Name
+	Name pulumi.StringInput `pulumi:"name"`
+	// Scope of Network
+	Scope pulumi.StringInput `pulumi:"scope"`
+	// Type of Network
+	Type pulumi.StringInput `pulumi:"type"`
+	// Equinix-assigned Network identifier
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetwork)(nil)).Elem()
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkArgs) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkOutput {
+	return i.ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkArgs) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkOutput)
+}
+
+type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetwork)(nil)).Elem()
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkOutput) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkOutput {
+	return o
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkOutput) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkOutput {
+	return o
+}
+
+// Unique Resource Identifier
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetwork) string {
+		return v.Href
+	}).(pulumi.StringOutput)
+}
+
+// Location
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkOutput) Locations() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetwork) []GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocation {
+		return v.Locations
+	}).(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput)
+}
+
+// Network Name
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetwork) string {
+		return v.Name
+	}).(pulumi.StringOutput)
+}
+
+// Scope of Network
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkOutput) Scope() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetwork) string {
+		return v.Scope
+	}).(pulumi.StringOutput)
+}
+
+// Type of Network
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetwork) string {
+		return v.Type
+	}).(pulumi.StringOutput)
+}
+
+// Equinix-assigned Network identifier
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetwork) string {
+		return v.Uuid
+	}).(pulumi.StringOutput)
+}
+
+type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocation struct {
+	// IBX Code
+	Ibx string `pulumi:"ibx"`
+	// Access point metro code
+	MetroCode string `pulumi:"metroCode"`
+	// Access point metro name
+	MetroName string `pulumi:"metroName"`
+	// Access point region
+	Region string `pulumi:"region"`
+}
+
+// GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationInput is an input type that accepts GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArgs and GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput values.
+// You can construct a concrete instance of `GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationInput` via:
+//
+//	GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArgs{...}
+type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationInput interface {
+	pulumi.Input
+
+	ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput
+	ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutputWithContext(context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput
+}
+
+type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArgs struct {
+	// IBX Code
+	Ibx pulumi.StringInput `pulumi:"ibx"`
+	// Access point metro code
+	MetroCode pulumi.StringInput `pulumi:"metroCode"`
+	// Access point metro name
+	MetroName pulumi.StringInput `pulumi:"metroName"`
+	// Access point region
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocation)(nil)).Elem()
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArgs) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput {
+	return i.ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArgs) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput)
+}
+
+// GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayInput is an input type that accepts GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArray and GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput values.
+// You can construct a concrete instance of `GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayInput` via:
+//
+//	GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArray{ GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArgs{...} }
+type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput
+	ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutputWithContext(context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput
+}
+
+type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArray []GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationInput
+
+func (GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocation)(nil)).Elem()
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArray) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput {
+	return i.ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArray) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput)
+}
+
+type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocation)(nil)).Elem()
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput {
+	return o
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput {
+	return o
+}
+
+// IBX Code
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput) Ibx() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocation) string {
+		return v.Ibx
+	}).(pulumi.StringOutput)
+}
+
+// Access point metro code
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput) MetroCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocation) string {
+		return v.MetroCode
+	}).(pulumi.StringOutput)
+}
+
+// Access point metro name
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput) MetroName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocation) string {
+		return v.MetroName
+	}).(pulumi.StringOutput)
+}
+
+// Access point region
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocation) string {
+		return v.Region
+	}).(pulumi.StringOutput)
+}
+
+type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocation)(nil)).Elem()
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput {
+	return o
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput {
+	return o
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput) Index(i pulumi.IntInput) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocation {
+		return vs[0].([]GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocation)[vs[1].(int)]
+	}).(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput)
+}
+
+type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPort struct {
+	// Account Name
+	AccountName string `pulumi:"accountName"`
+	// Port Bandwidth
+	Bandwidth int `pulumi:"bandwidth"`
+	// Customer virtual port Id
+	CvpId int `pulumi:"cvpId"`
+	// Port Encapsulation
+	EncapsulationProtocolType string `pulumi:"encapsulationProtocolType"`
+	// Unique Resource Identifier
+	Href string `pulumi:"href"`
+	// Port Location
+	Locations []GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocation `pulumi:"locations"`
+	// Port Name
+	PortName string `pulumi:"portName"`
+	// Port Priority
+	Priority string `pulumi:"priority"`
+	// Type of Port
+	Type string `pulumi:"type"`
+	// Equinix-assigned Port identifier
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortInput is an input type that accepts GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortArgs and GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutput values.
+// You can construct a concrete instance of `GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortInput` via:
+//
+//	GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortArgs{...}
+type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortInput interface {
+	pulumi.Input
+
+	ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutput
+	ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutputWithContext(context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutput
+}
+
+type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortArgs struct {
+	// Account Name
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// Port Bandwidth
+	Bandwidth pulumi.IntInput `pulumi:"bandwidth"`
+	// Customer virtual port Id
+	CvpId pulumi.IntInput `pulumi:"cvpId"`
+	// Port Encapsulation
+	EncapsulationProtocolType pulumi.StringInput `pulumi:"encapsulationProtocolType"`
+	// Unique Resource Identifier
+	Href pulumi.StringInput `pulumi:"href"`
+	// Port Location
+	Locations GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArrayInput `pulumi:"locations"`
+	// Port Name
+	PortName pulumi.StringInput `pulumi:"portName"`
+	// Port Priority
+	Priority pulumi.StringInput `pulumi:"priority"`
+	// Type of Port
+	Type pulumi.StringInput `pulumi:"type"`
+	// Equinix-assigned Port identifier
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPort)(nil)).Elem()
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortArgs) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutput {
+	return i.ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortArgs) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutput)
+}
+
+type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPort)(nil)).Elem()
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutput) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutput {
+	return o
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutput) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutput {
+	return o
+}
+
+// Account Name
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutput) AccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPort) string {
+		return v.AccountName
+	}).(pulumi.StringOutput)
+}
+
+// Port Bandwidth
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutput) Bandwidth() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPort) int { return v.Bandwidth }).(pulumi.IntOutput)
+}
+
+// Customer virtual port Id
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutput) CvpId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPort) int { return v.CvpId }).(pulumi.IntOutput)
+}
+
+// Port Encapsulation
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutput) EncapsulationProtocolType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPort) string {
+		return v.EncapsulationProtocolType
+	}).(pulumi.StringOutput)
+}
+
+// Unique Resource Identifier
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPort) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// Port Location
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutput) Locations() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPort) []GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocation {
+		return v.Locations
+	}).(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput)
+}
+
+// Port Name
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutput) PortName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPort) string {
+		return v.PortName
+	}).(pulumi.StringOutput)
+}
+
+// Port Priority
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutput) Priority() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPort) string {
+		return v.Priority
+	}).(pulumi.StringOutput)
+}
+
+// Type of Port
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPort) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Equinix-assigned Port identifier
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPort) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocation struct {
+	// IBX Code
+	Ibx string `pulumi:"ibx"`
+	// Access point metro code
+	MetroCode string `pulumi:"metroCode"`
+	// Access point metro name
+	MetroName string `pulumi:"metroName"`
+	// Access point region
+	Region string `pulumi:"region"`
+}
+
+// GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationInput is an input type that accepts GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArgs and GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationOutput values.
+// You can construct a concrete instance of `GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationInput` via:
+//
+//	GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArgs{...}
+type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationInput interface {
+	pulumi.Input
+
+	ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationOutput
+	ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationOutputWithContext(context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationOutput
+}
+
+type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArgs struct {
+	// IBX Code
+	Ibx pulumi.StringInput `pulumi:"ibx"`
+	// Access point metro code
+	MetroCode pulumi.StringInput `pulumi:"metroCode"`
+	// Access point metro name
+	MetroName pulumi.StringInput `pulumi:"metroName"`
+	// Access point region
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocation)(nil)).Elem()
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArgs) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationOutput {
+	return i.ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArgs) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationOutput)
+}
+
+// GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArrayInput is an input type that accepts GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArray and GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput values.
+// You can construct a concrete instance of `GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArrayInput` via:
+//
+//	GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArray{ GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArgs{...} }
+type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput
+	ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutputWithContext(context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput
+}
+
+type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArray []GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationInput
+
+func (GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocation)(nil)).Elem()
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArray) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput {
+	return i.ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArray) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput)
+}
+
+type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocation)(nil)).Elem()
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationOutput) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationOutput {
+	return o
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationOutput) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationOutput {
+	return o
+}
+
+// IBX Code
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationOutput) Ibx() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocation) string {
+		return v.Ibx
+	}).(pulumi.StringOutput)
+}
+
+// Access point metro code
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationOutput) MetroCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocation) string {
+		return v.MetroCode
+	}).(pulumi.StringOutput)
+}
+
+// Access point metro name
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationOutput) MetroName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocation) string {
+		return v.MetroName
+	}).(pulumi.StringOutput)
+}
+
+// Access point region
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocation) string {
+		return v.Region
+	}).(pulumi.StringOutput)
+}
+
+type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocation)(nil)).Elem()
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput {
+	return o
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput {
+	return o
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput) Index(i pulumi.IntInput) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocation {
+		return vs[0].([]GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocation)[vs[1].(int)]
+	}).(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationOutput)
+}
+
+type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevice struct {
+	// Virtual Device Cluster Information
+	Cluster string `pulumi:"cluster"`
+	// Unique Resource Identifier
+	Href string `pulumi:"href"`
+	// Customer-assigned Virtual Device Name
+	Name string `pulumi:"name"`
+	// Virtual Device type
+	Type string `pulumi:"type"`
+	// Equinix-assigned Virtual Device identifier
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceInput is an input type that accepts GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs and GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput values.
+// You can construct a concrete instance of `GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceInput` via:
+//
+//	GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs{...}
+type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceInput interface {
+	pulumi.Input
+
+	ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput
+	ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutputWithContext(context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput
+}
+
+type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs struct {
+	// Virtual Device Cluster Information
+	Cluster pulumi.StringInput `pulumi:"cluster"`
+	// Unique Resource Identifier
+	Href pulumi.StringInput `pulumi:"href"`
+	// Customer-assigned Virtual Device Name
+	Name pulumi.StringInput `pulumi:"name"`
+	// Virtual Device type
+	Type pulumi.StringInput `pulumi:"type"`
+	// Equinix-assigned Virtual Device identifier
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevice)(nil)).Elem()
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput {
+	return i.ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput)
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput {
+	return i.ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput).ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutputWithContext(ctx)
+}
+
+// GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrInput is an input type that accepts GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs, GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtr and GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput values.
+// You can construct a concrete instance of `GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrInput` via:
+//
+//	        GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrInput interface {
+	pulumi.Input
+
+	ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput
+	ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutputWithContext(context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput
+}
+
+type getServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrType GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs
+
+func GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtr(v *GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrInput {
+	return (*getServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrType)(v)
+}
+
+func (*getServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevice)(nil)).Elem()
+}
+
+func (i *getServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrType) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput {
+	return i.ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutputWithContext(context.Background())
+}
+
+func (i *getServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrType) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput)
+}
+
+type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevice)(nil)).Elem()
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput {
+	return o
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput {
+	return o
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput {
+	return o.ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutputWithContext(context.Background())
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevice) *GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevice {
+		return &v
+	}).(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput)
+}
+
+// Virtual Device Cluster Information
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput) Cluster() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevice) string {
+		return v.Cluster
+	}).(pulumi.StringOutput)
+}
+
+// Unique Resource Identifier
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevice) string {
+		return v.Href
+	}).(pulumi.StringOutput)
+}
+
+// Customer-assigned Virtual Device Name
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevice) string {
+		return v.Name
+	}).(pulumi.StringOutput)
+}
+
+// Virtual Device type
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevice) string {
+		return v.Type
+	}).(pulumi.StringOutput)
+}
+
+// Equinix-assigned Virtual Device identifier
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevice) string {
+		return v.Uuid
+	}).(pulumi.StringOutput)
+}
+
+type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevice)(nil)).Elem()
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput {
+	return o
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput {
+	return o
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput) Elem() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput {
+	return o.ApplyT(func(v *GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevice) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevice {
+		if v != nil {
+			return *v
+		}
+		var ret GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevice
+		return ret
+	}).(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput)
+}
+
+// Virtual Device Cluster Information
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput) Cluster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevice) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Cluster
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique Resource Identifier
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevice) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Href
+	}).(pulumi.StringPtrOutput)
+}
+
+// Customer-assigned Virtual Device Name
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevice) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Virtual Device type
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevice) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Equinix-assigned Virtual Device identifier
+func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevice) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uuid
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetServiceTokensDataServiceTokenConnectionZSide struct {
+	// List of criteria for selecting network access points with optimal efficiency, security, compatibility, and availability
+	AccessPointSelectors []GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelector `pulumi:"accessPointSelectors"`
+}
+
+// GetServiceTokensDataServiceTokenConnectionZSideInput is an input type that accepts GetServiceTokensDataServiceTokenConnectionZSideArgs and GetServiceTokensDataServiceTokenConnectionZSideOutput values.
+// You can construct a concrete instance of `GetServiceTokensDataServiceTokenConnectionZSideInput` via:
+//
+//	GetServiceTokensDataServiceTokenConnectionZSideArgs{...}
+type GetServiceTokensDataServiceTokenConnectionZSideInput interface {
+	pulumi.Input
+
+	ToGetServiceTokensDataServiceTokenConnectionZSideOutput() GetServiceTokensDataServiceTokenConnectionZSideOutput
+	ToGetServiceTokensDataServiceTokenConnectionZSideOutputWithContext(context.Context) GetServiceTokensDataServiceTokenConnectionZSideOutput
+}
+
+type GetServiceTokensDataServiceTokenConnectionZSideArgs struct {
+	// List of criteria for selecting network access points with optimal efficiency, security, compatibility, and availability
+	AccessPointSelectors GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArrayInput `pulumi:"accessPointSelectors"`
+}
+
+func (GetServiceTokensDataServiceTokenConnectionZSideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSide)(nil)).Elem()
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionZSideArgs) ToGetServiceTokensDataServiceTokenConnectionZSideOutput() GetServiceTokensDataServiceTokenConnectionZSideOutput {
+	return i.ToGetServiceTokensDataServiceTokenConnectionZSideOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionZSideArgs) ToGetServiceTokensDataServiceTokenConnectionZSideOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionZSideOutput)
+}
+
+// GetServiceTokensDataServiceTokenConnectionZSideArrayInput is an input type that accepts GetServiceTokensDataServiceTokenConnectionZSideArray and GetServiceTokensDataServiceTokenConnectionZSideArrayOutput values.
+// You can construct a concrete instance of `GetServiceTokensDataServiceTokenConnectionZSideArrayInput` via:
+//
+//	GetServiceTokensDataServiceTokenConnectionZSideArray{ GetServiceTokensDataServiceTokenConnectionZSideArgs{...} }
+type GetServiceTokensDataServiceTokenConnectionZSideArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTokensDataServiceTokenConnectionZSideArrayOutput() GetServiceTokensDataServiceTokenConnectionZSideArrayOutput
+	ToGetServiceTokensDataServiceTokenConnectionZSideArrayOutputWithContext(context.Context) GetServiceTokensDataServiceTokenConnectionZSideArrayOutput
+}
+
+type GetServiceTokensDataServiceTokenConnectionZSideArray []GetServiceTokensDataServiceTokenConnectionZSideInput
+
+func (GetServiceTokensDataServiceTokenConnectionZSideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTokensDataServiceTokenConnectionZSide)(nil)).Elem()
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionZSideArray) ToGetServiceTokensDataServiceTokenConnectionZSideArrayOutput() GetServiceTokensDataServiceTokenConnectionZSideArrayOutput {
+	return i.ToGetServiceTokensDataServiceTokenConnectionZSideArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionZSideArray) ToGetServiceTokensDataServiceTokenConnectionZSideArrayOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionZSideArrayOutput)
+}
+
+type GetServiceTokensDataServiceTokenConnectionZSideOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokensDataServiceTokenConnectionZSideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSide)(nil)).Elem()
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionZSideOutput) ToGetServiceTokensDataServiceTokenConnectionZSideOutput() GetServiceTokensDataServiceTokenConnectionZSideOutput {
+	return o
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionZSideOutput) ToGetServiceTokensDataServiceTokenConnectionZSideOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideOutput {
+	return o
+}
+
+// List of criteria for selecting network access points with optimal efficiency, security, compatibility, and availability
+func (o GetServiceTokensDataServiceTokenConnectionZSideOutput) AccessPointSelectors() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArrayOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSide) []GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelector {
+		return v.AccessPointSelectors
+	}).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArrayOutput)
+}
+
+type GetServiceTokensDataServiceTokenConnectionZSideArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokensDataServiceTokenConnectionZSideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTokensDataServiceTokenConnectionZSide)(nil)).Elem()
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionZSideArrayOutput) ToGetServiceTokensDataServiceTokenConnectionZSideArrayOutput() GetServiceTokensDataServiceTokenConnectionZSideArrayOutput {
+	return o
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionZSideArrayOutput) ToGetServiceTokensDataServiceTokenConnectionZSideArrayOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideArrayOutput {
+	return o
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionZSideArrayOutput) Index(i pulumi.IntInput) GetServiceTokensDataServiceTokenConnectionZSideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTokensDataServiceTokenConnectionZSide {
+		return vs[0].([]GetServiceTokensDataServiceTokenConnectionZSide)[vs[1].(int)]
+	}).(GetServiceTokensDataServiceTokenConnectionZSideOutput)
+}
+
+type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelector struct {
+	// Virtual Device Interface Configuration
+	Interface GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterface `pulumi:"interface"`
+	// Link protocol Configuration
+	LinkProtocol GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocol `pulumi:"linkProtocol"`
+	// Network Configuration
+	Network GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetwork `pulumi:"network"`
+	// Port Configuration
+	Port GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPort `pulumi:"port"`
+	// Type of Access point; COLO, VD, NETWORK
+	Type string `pulumi:"type"`
+	// Virtual Device Configuration
+	VirtualDevice *GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevice `pulumi:"virtualDevice"`
+}
+
+// GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInput is an input type that accepts GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArgs and GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorOutput values.
+// You can construct a concrete instance of `GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInput` via:
+//
+//	GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArgs{...}
+type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInput interface {
+	pulumi.Input
+
+	ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorOutput
+	ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorOutputWithContext(context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorOutput
+}
+
+type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArgs struct {
+	// Virtual Device Interface Configuration
+	Interface GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceInput `pulumi:"interface"`
+	// Link protocol Configuration
+	LinkProtocol GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolInput `pulumi:"linkProtocol"`
+	// Network Configuration
+	Network GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkInput `pulumi:"network"`
+	// Port Configuration
+	Port GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortInput `pulumi:"port"`
+	// Type of Access point; COLO, VD, NETWORK
+	Type pulumi.StringInput `pulumi:"type"`
+	// Virtual Device Configuration
+	VirtualDevice GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrInput `pulumi:"virtualDevice"`
+}
+
+func (GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelector)(nil)).Elem()
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArgs) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorOutput {
+	return i.ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArgs) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorOutput)
+}
+
+// GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArrayInput is an input type that accepts GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArray and GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArrayOutput values.
+// You can construct a concrete instance of `GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArrayInput` via:
+//
+//	GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArray{ GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArgs{...} }
+type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArrayOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArrayOutput
+	ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArrayOutputWithContext(context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArrayOutput
+}
+
+type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArray []GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInput
+
+func (GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelector)(nil)).Elem()
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArray) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArrayOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArrayOutput {
+	return i.ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArray) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArrayOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArrayOutput)
+}
+
+type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelector)(nil)).Elem()
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorOutput {
+	return o
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorOutput {
+	return o
+}
+
+// Virtual Device Interface Configuration
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorOutput) Interface() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelector) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterface {
+		return v.Interface
+	}).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput)
+}
+
+// Link protocol Configuration
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorOutput) LinkProtocol() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelector) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocol {
+		return v.LinkProtocol
+	}).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput)
+}
+
+// Network Configuration
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorOutput) Network() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelector) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetwork {
+		return v.Network
+	}).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkOutput)
+}
+
+// Port Configuration
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorOutput) Port() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelector) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPort {
+		return v.Port
+	}).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutput)
+}
+
+// Type of Access point; COLO, VD, NETWORK
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelector) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Virtual Device Configuration
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorOutput) VirtualDevice() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelector) *GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevice {
+		return v.VirtualDevice
+	}).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput)
+}
+
+type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelector)(nil)).Elem()
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArrayOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArrayOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArrayOutput {
+	return o
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArrayOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArrayOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArrayOutput {
+	return o
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArrayOutput) Index(i pulumi.IntInput) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelector {
+		return vs[0].([]GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelector)[vs[1].(int)]
+	}).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorOutput)
+}
+
+type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterface struct {
+	// id
+	Id int `pulumi:"id"`
+	// Interface type
+	Type string `pulumi:"type"`
+	// Equinix-assigned interface identifier
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceInput is an input type that accepts GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceArgs and GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput values.
+// You can construct a concrete instance of `GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceInput` via:
+//
+//	GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceArgs{...}
+type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceInput interface {
+	pulumi.Input
+
+	ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput
+	ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceOutputWithContext(context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput
+}
+
+type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceArgs struct {
+	// id
+	Id pulumi.IntInput `pulumi:"id"`
+	// Interface type
+	Type pulumi.StringInput `pulumi:"type"`
+	// Equinix-assigned interface identifier
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterface)(nil)).Elem()
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceArgs) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput {
+	return i.ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceArgs) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput)
+}
+
+type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterface)(nil)).Elem()
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput {
+	return o
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput {
+	return o
+}
+
+// id
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterface) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// Interface type
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterface) string {
+		return v.Type
+	}).(pulumi.StringOutput)
+}
+
+// Equinix-assigned interface identifier
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterface) string {
+		return v.Uuid
+	}).(pulumi.StringOutput)
+}
+
+type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocol struct {
+	// Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
+	Type string `pulumi:"type"`
+	// Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+	VlanCTag int `pulumi:"vlanCTag"`
+	// Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+	VlanSTag int `pulumi:"vlanSTag"`
+	// Vlan Tag information, vlanTag value specified for DOT1Q connections
+	VlanTag int `pulumi:"vlanTag"`
+}
+
+// GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolInput is an input type that accepts GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolArgs and GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput values.
+// You can construct a concrete instance of `GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolInput` via:
+//
+//	GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolArgs{...}
+type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolInput interface {
+	pulumi.Input
+
+	ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput
+	ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutputWithContext(context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput
+}
+
+type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolArgs struct {
+	// Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
+	Type pulumi.StringInput `pulumi:"type"`
+	// Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+	VlanCTag pulumi.IntInput `pulumi:"vlanCTag"`
+	// Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+	VlanSTag pulumi.IntInput `pulumi:"vlanSTag"`
+	// Vlan Tag information, vlanTag value specified for DOT1Q connections
+	VlanTag pulumi.IntInput `pulumi:"vlanTag"`
+}
+
+func (GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocol)(nil)).Elem()
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolArgs) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput {
+	return i.ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolArgs) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput)
+}
+
+type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocol)(nil)).Elem()
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput {
+	return o
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput {
+	return o
+}
+
+// Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocol) string {
+		return v.Type
+	}).(pulumi.StringOutput)
+}
+
+// Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput) VlanCTag() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocol) int {
+		return v.VlanCTag
+	}).(pulumi.IntOutput)
+}
+
+// Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput) VlanSTag() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocol) int {
+		return v.VlanSTag
+	}).(pulumi.IntOutput)
+}
+
+// Vlan Tag information, vlanTag value specified for DOT1Q connections
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput) VlanTag() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocol) int {
+		return v.VlanTag
+	}).(pulumi.IntOutput)
+}
+
+type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetwork struct {
+	// Unique Resource Identifier
+	Href string `pulumi:"href"`
+	// Location
+	Locations []GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocation `pulumi:"locations"`
+	// Network Name
+	Name string `pulumi:"name"`
+	// Scope of Network
+	Scope string `pulumi:"scope"`
+	// Type of Network
+	Type string `pulumi:"type"`
+	// Equinix-assigned Network identifier
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkInput is an input type that accepts GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkArgs and GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkOutput values.
+// You can construct a concrete instance of `GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkInput` via:
+//
+//	GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkArgs{...}
+type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkInput interface {
+	pulumi.Input
+
+	ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkOutput
+	ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkOutputWithContext(context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkOutput
+}
+
+type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkArgs struct {
+	// Unique Resource Identifier
+	Href pulumi.StringInput `pulumi:"href"`
+	// Location
+	Locations GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayInput `pulumi:"locations"`
+	// Network Name
+	Name pulumi.StringInput `pulumi:"name"`
+	// Scope of Network
+	Scope pulumi.StringInput `pulumi:"scope"`
+	// Type of Network
+	Type pulumi.StringInput `pulumi:"type"`
+	// Equinix-assigned Network identifier
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetwork)(nil)).Elem()
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkArgs) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkOutput {
+	return i.ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkArgs) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkOutput)
+}
+
+type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetwork)(nil)).Elem()
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkOutput {
+	return o
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkOutput {
+	return o
+}
+
+// Unique Resource Identifier
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetwork) string {
+		return v.Href
+	}).(pulumi.StringOutput)
+}
+
+// Location
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkOutput) Locations() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetwork) []GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocation {
+		return v.Locations
+	}).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput)
+}
+
+// Network Name
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetwork) string {
+		return v.Name
+	}).(pulumi.StringOutput)
+}
+
+// Scope of Network
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkOutput) Scope() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetwork) string {
+		return v.Scope
+	}).(pulumi.StringOutput)
+}
+
+// Type of Network
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetwork) string {
+		return v.Type
+	}).(pulumi.StringOutput)
+}
+
+// Equinix-assigned Network identifier
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetwork) string {
+		return v.Uuid
+	}).(pulumi.StringOutput)
+}
+
+type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocation struct {
+	// IBX Code
+	Ibx string `pulumi:"ibx"`
+	// Access point metro code
+	MetroCode string `pulumi:"metroCode"`
+	// Access point metro name
+	MetroName string `pulumi:"metroName"`
+	// Access point region
+	Region string `pulumi:"region"`
+}
+
+// GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationInput is an input type that accepts GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArgs and GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput values.
+// You can construct a concrete instance of `GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationInput` via:
+//
+//	GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArgs{...}
+type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationInput interface {
+	pulumi.Input
+
+	ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput
+	ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutputWithContext(context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput
+}
+
+type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArgs struct {
+	// IBX Code
+	Ibx pulumi.StringInput `pulumi:"ibx"`
+	// Access point metro code
+	MetroCode pulumi.StringInput `pulumi:"metroCode"`
+	// Access point metro name
+	MetroName pulumi.StringInput `pulumi:"metroName"`
+	// Access point region
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocation)(nil)).Elem()
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArgs) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput {
+	return i.ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArgs) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput)
+}
+
+// GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayInput is an input type that accepts GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArray and GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput values.
+// You can construct a concrete instance of `GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayInput` via:
+//
+//	GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArray{ GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArgs{...} }
+type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput
+	ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutputWithContext(context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput
+}
+
+type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArray []GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationInput
+
+func (GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocation)(nil)).Elem()
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArray) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput {
+	return i.ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArray) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput)
+}
+
+type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocation)(nil)).Elem()
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput {
+	return o
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput {
+	return o
+}
+
+// IBX Code
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput) Ibx() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocation) string {
+		return v.Ibx
+	}).(pulumi.StringOutput)
+}
+
+// Access point metro code
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput) MetroCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocation) string {
+		return v.MetroCode
+	}).(pulumi.StringOutput)
+}
+
+// Access point metro name
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput) MetroName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocation) string {
+		return v.MetroName
+	}).(pulumi.StringOutput)
+}
+
+// Access point region
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocation) string {
+		return v.Region
+	}).(pulumi.StringOutput)
+}
+
+type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocation)(nil)).Elem()
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput {
+	return o
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput {
+	return o
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput) Index(i pulumi.IntInput) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocation {
+		return vs[0].([]GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocation)[vs[1].(int)]
+	}).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput)
+}
+
+type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPort struct {
+	// Account Name
+	AccountName string `pulumi:"accountName"`
+	// Port Bandwidth
+	Bandwidth int `pulumi:"bandwidth"`
+	// Customer virtual port Id
+	CvpId int `pulumi:"cvpId"`
+	// Port Encapsulation
+	EncapsulationProtocolType string `pulumi:"encapsulationProtocolType"`
+	// Unique Resource Identifier
+	Href string `pulumi:"href"`
+	// Port Location
+	Locations []GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocation `pulumi:"locations"`
+	// Port Name
+	PortName string `pulumi:"portName"`
+	// Port Priority
+	Priority string `pulumi:"priority"`
+	// Type of Port
+	Type string `pulumi:"type"`
+	// Equinix-assigned Port identifier
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortInput is an input type that accepts GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortArgs and GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutput values.
+// You can construct a concrete instance of `GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortInput` via:
+//
+//	GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortArgs{...}
+type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortInput interface {
+	pulumi.Input
+
+	ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutput
+	ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutputWithContext(context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutput
+}
+
+type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortArgs struct {
+	// Account Name
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// Port Bandwidth
+	Bandwidth pulumi.IntInput `pulumi:"bandwidth"`
+	// Customer virtual port Id
+	CvpId pulumi.IntInput `pulumi:"cvpId"`
+	// Port Encapsulation
+	EncapsulationProtocolType pulumi.StringInput `pulumi:"encapsulationProtocolType"`
+	// Unique Resource Identifier
+	Href pulumi.StringInput `pulumi:"href"`
+	// Port Location
+	Locations GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayInput `pulumi:"locations"`
+	// Port Name
+	PortName pulumi.StringInput `pulumi:"portName"`
+	// Port Priority
+	Priority pulumi.StringInput `pulumi:"priority"`
+	// Type of Port
+	Type pulumi.StringInput `pulumi:"type"`
+	// Equinix-assigned Port identifier
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPort)(nil)).Elem()
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortArgs) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutput {
+	return i.ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortArgs) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutput)
+}
+
+type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPort)(nil)).Elem()
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutput {
+	return o
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutput {
+	return o
+}
+
+// Account Name
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutput) AccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPort) string {
+		return v.AccountName
+	}).(pulumi.StringOutput)
+}
+
+// Port Bandwidth
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutput) Bandwidth() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPort) int { return v.Bandwidth }).(pulumi.IntOutput)
+}
+
+// Customer virtual port Id
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutput) CvpId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPort) int { return v.CvpId }).(pulumi.IntOutput)
+}
+
+// Port Encapsulation
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutput) EncapsulationProtocolType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPort) string {
+		return v.EncapsulationProtocolType
+	}).(pulumi.StringOutput)
+}
+
+// Unique Resource Identifier
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPort) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// Port Location
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutput) Locations() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPort) []GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocation {
+		return v.Locations
+	}).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput)
+}
+
+// Port Name
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutput) PortName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPort) string {
+		return v.PortName
+	}).(pulumi.StringOutput)
+}
+
+// Port Priority
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutput) Priority() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPort) string {
+		return v.Priority
+	}).(pulumi.StringOutput)
+}
+
+// Type of Port
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPort) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Equinix-assigned Port identifier
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPort) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocation struct {
+	// IBX Code
+	Ibx string `pulumi:"ibx"`
+	// Access point metro code
+	MetroCode string `pulumi:"metroCode"`
+	// Access point metro name
+	MetroName string `pulumi:"metroName"`
+	// Access point region
+	Region string `pulumi:"region"`
+}
+
+// GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationInput is an input type that accepts GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArgs and GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput values.
+// You can construct a concrete instance of `GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationInput` via:
+//
+//	GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArgs{...}
+type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationInput interface {
+	pulumi.Input
+
+	ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput
+	ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationOutputWithContext(context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput
+}
+
+type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArgs struct {
+	// IBX Code
+	Ibx pulumi.StringInput `pulumi:"ibx"`
+	// Access point metro code
+	MetroCode pulumi.StringInput `pulumi:"metroCode"`
+	// Access point metro name
+	MetroName pulumi.StringInput `pulumi:"metroName"`
+	// Access point region
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocation)(nil)).Elem()
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArgs) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput {
+	return i.ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArgs) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput)
+}
+
+// GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayInput is an input type that accepts GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArray and GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput values.
+// You can construct a concrete instance of `GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayInput` via:
+//
+//	GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArray{ GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArgs{...} }
+type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput
+	ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutputWithContext(context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput
+}
+
+type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArray []GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationInput
+
+func (GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocation)(nil)).Elem()
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArray) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput {
+	return i.ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArray) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput)
+}
+
+type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocation)(nil)).Elem()
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput {
+	return o
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput {
+	return o
+}
+
+// IBX Code
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput) Ibx() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocation) string {
+		return v.Ibx
+	}).(pulumi.StringOutput)
+}
+
+// Access point metro code
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput) MetroCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocation) string {
+		return v.MetroCode
+	}).(pulumi.StringOutput)
+}
+
+// Access point metro name
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput) MetroName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocation) string {
+		return v.MetroName
+	}).(pulumi.StringOutput)
+}
+
+// Access point region
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocation) string {
+		return v.Region
+	}).(pulumi.StringOutput)
+}
+
+type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocation)(nil)).Elem()
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput {
+	return o
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput {
+	return o
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput) Index(i pulumi.IntInput) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocation {
+		return vs[0].([]GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocation)[vs[1].(int)]
+	}).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput)
+}
+
+type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevice struct {
+	// Virtual Device Cluster Information
+	Cluster string `pulumi:"cluster"`
+	// Unique Resource Identifier
+	Href string `pulumi:"href"`
+	// Customer-assigned Virtual Device Name
+	Name string `pulumi:"name"`
+	// Virtual Device type
+	Type string `pulumi:"type"`
+	// Equinix-assigned Virtual Device identifier
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceInput is an input type that accepts GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs and GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput values.
+// You can construct a concrete instance of `GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceInput` via:
+//
+//	GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs{...}
+type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceInput interface {
+	pulumi.Input
+
+	ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput
+	ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutputWithContext(context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput
+}
+
+type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs struct {
+	// Virtual Device Cluster Information
+	Cluster pulumi.StringInput `pulumi:"cluster"`
+	// Unique Resource Identifier
+	Href pulumi.StringInput `pulumi:"href"`
+	// Customer-assigned Virtual Device Name
+	Name pulumi.StringInput `pulumi:"name"`
+	// Virtual Device type
+	Type pulumi.StringInput `pulumi:"type"`
+	// Equinix-assigned Virtual Device identifier
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevice)(nil)).Elem()
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput {
+	return i.ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput)
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput {
+	return i.ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput).ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutputWithContext(ctx)
+}
+
+// GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrInput is an input type that accepts GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs, GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtr and GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput values.
+// You can construct a concrete instance of `GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrInput` via:
+//
+//	        GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrInput interface {
+	pulumi.Input
+
+	ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput
+	ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutputWithContext(context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput
+}
+
+type getServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrType GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs
+
+func GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtr(v *GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrInput {
+	return (*getServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrType)(v)
+}
+
+func (*getServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevice)(nil)).Elem()
+}
+
+func (i *getServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrType) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput {
+	return i.ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutputWithContext(context.Background())
+}
+
+func (i *getServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrType) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput)
+}
+
+type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevice)(nil)).Elem()
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput {
+	return o
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput {
+	return o
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput {
+	return o.ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutputWithContext(context.Background())
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevice) *GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevice {
+		return &v
+	}).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput)
+}
+
+// Virtual Device Cluster Information
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput) Cluster() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevice) string {
+		return v.Cluster
+	}).(pulumi.StringOutput)
+}
+
+// Unique Resource Identifier
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevice) string {
+		return v.Href
+	}).(pulumi.StringOutput)
+}
+
+// Customer-assigned Virtual Device Name
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevice) string {
+		return v.Name
+	}).(pulumi.StringOutput)
+}
+
+// Virtual Device type
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevice) string {
+		return v.Type
+	}).(pulumi.StringOutput)
+}
+
+// Equinix-assigned Virtual Device identifier
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevice) string {
+		return v.Uuid
+	}).(pulumi.StringOutput)
+}
+
+type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevice)(nil)).Elem()
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput {
+	return o
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput {
+	return o
+}
+
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput) Elem() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput {
+	return o.ApplyT(func(v *GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevice) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevice {
+		if v != nil {
+			return *v
+		}
+		var ret GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevice
+		return ret
+	}).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput)
+}
+
+// Virtual Device Cluster Information
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput) Cluster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevice) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Cluster
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique Resource Identifier
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevice) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Href
+	}).(pulumi.StringPtrOutput)
+}
+
+// Customer-assigned Virtual Device Name
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevice) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Virtual Device type
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevice) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Equinix-assigned Virtual Device identifier
+func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevice) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uuid
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetServiceTokensFilter struct {
+	// Possible operators to use on the filter property. Can be one of the following: [ "=", "!=", "[NOT] LIKE", "[NOT] IN", "ILIKE" ]
+	Operator string `pulumi:"operator"`
+	// The API response property which you want to filter your request on. Can be one of the following: "/type", "/name", "/project/projectId", "/uuid", "/state"
+	Property string `pulumi:"property"`
+	// The values that you want to apply the property+operator combination to in order to filter your data search
+	Values []string `pulumi:"values"`
+}
+
+// GetServiceTokensFilterInput is an input type that accepts GetServiceTokensFilterArgs and GetServiceTokensFilterOutput values.
+// You can construct a concrete instance of `GetServiceTokensFilterInput` via:
+//
+//	GetServiceTokensFilterArgs{...}
+type GetServiceTokensFilterInput interface {
+	pulumi.Input
+
+	ToGetServiceTokensFilterOutput() GetServiceTokensFilterOutput
+	ToGetServiceTokensFilterOutputWithContext(context.Context) GetServiceTokensFilterOutput
+}
+
+type GetServiceTokensFilterArgs struct {
+	// Possible operators to use on the filter property. Can be one of the following: [ "=", "!=", "[NOT] LIKE", "[NOT] IN", "ILIKE" ]
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// The API response property which you want to filter your request on. Can be one of the following: "/type", "/name", "/project/projectId", "/uuid", "/state"
+	Property pulumi.StringInput `pulumi:"property"`
+	// The values that you want to apply the property+operator combination to in order to filter your data search
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetServiceTokensFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokensFilter)(nil)).Elem()
+}
+
+func (i GetServiceTokensFilterArgs) ToGetServiceTokensFilterOutput() GetServiceTokensFilterOutput {
+	return i.ToGetServiceTokensFilterOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokensFilterArgs) ToGetServiceTokensFilterOutputWithContext(ctx context.Context) GetServiceTokensFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensFilterOutput)
+}
+
+// GetServiceTokensFilterArrayInput is an input type that accepts GetServiceTokensFilterArray and GetServiceTokensFilterArrayOutput values.
+// You can construct a concrete instance of `GetServiceTokensFilterArrayInput` via:
+//
+//	GetServiceTokensFilterArray{ GetServiceTokensFilterArgs{...} }
+type GetServiceTokensFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTokensFilterArrayOutput() GetServiceTokensFilterArrayOutput
+	ToGetServiceTokensFilterArrayOutputWithContext(context.Context) GetServiceTokensFilterArrayOutput
+}
+
+type GetServiceTokensFilterArray []GetServiceTokensFilterInput
+
+func (GetServiceTokensFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTokensFilter)(nil)).Elem()
+}
+
+func (i GetServiceTokensFilterArray) ToGetServiceTokensFilterArrayOutput() GetServiceTokensFilterArrayOutput {
+	return i.ToGetServiceTokensFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokensFilterArray) ToGetServiceTokensFilterArrayOutputWithContext(ctx context.Context) GetServiceTokensFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensFilterArrayOutput)
+}
+
+type GetServiceTokensFilterOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokensFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokensFilter)(nil)).Elem()
+}
+
+func (o GetServiceTokensFilterOutput) ToGetServiceTokensFilterOutput() GetServiceTokensFilterOutput {
+	return o
+}
+
+func (o GetServiceTokensFilterOutput) ToGetServiceTokensFilterOutputWithContext(ctx context.Context) GetServiceTokensFilterOutput {
+	return o
+}
+
+// Possible operators to use on the filter property. Can be one of the following: [ "=", "!=", "[NOT] LIKE", "[NOT] IN", "ILIKE" ]
+func (o GetServiceTokensFilterOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensFilter) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// The API response property which you want to filter your request on. Can be one of the following: "/type", "/name", "/project/projectId", "/uuid", "/state"
+func (o GetServiceTokensFilterOutput) Property() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensFilter) string { return v.Property }).(pulumi.StringOutput)
+}
+
+// The values that you want to apply the property+operator combination to in order to filter your data search
+func (o GetServiceTokensFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServiceTokensFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetServiceTokensFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokensFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTokensFilter)(nil)).Elem()
+}
+
+func (o GetServiceTokensFilterArrayOutput) ToGetServiceTokensFilterArrayOutput() GetServiceTokensFilterArrayOutput {
+	return o
+}
+
+func (o GetServiceTokensFilterArrayOutput) ToGetServiceTokensFilterArrayOutputWithContext(ctx context.Context) GetServiceTokensFilterArrayOutput {
+	return o
+}
+
+func (o GetServiceTokensFilterArrayOutput) Index(i pulumi.IntInput) GetServiceTokensFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTokensFilter {
+		return vs[0].([]GetServiceTokensFilter)[vs[1].(int)]
+	}).(GetServiceTokensFilterOutput)
+}
+
+type GetServiceTokensPagination struct {
+	// Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+	Limit int `pulumi:"limit"`
+	// URL relative to the last item in the response.
+	Next string `pulumi:"next"`
+	// The page offset for the pagination request. Index of the first element. Default is 0.
+	Offset int `pulumi:"offset"`
+	// URL relative to the first item in the response.
+	Previous string `pulumi:"previous"`
+	// Total number of elements returned.
+	Total int `pulumi:"total"`
+}
+
+// GetServiceTokensPaginationInput is an input type that accepts GetServiceTokensPaginationArgs and GetServiceTokensPaginationOutput values.
+// You can construct a concrete instance of `GetServiceTokensPaginationInput` via:
+//
+//	GetServiceTokensPaginationArgs{...}
+type GetServiceTokensPaginationInput interface {
+	pulumi.Input
+
+	ToGetServiceTokensPaginationOutput() GetServiceTokensPaginationOutput
+	ToGetServiceTokensPaginationOutputWithContext(context.Context) GetServiceTokensPaginationOutput
+}
+
+type GetServiceTokensPaginationArgs struct {
+	// Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+	Limit pulumi.IntInput `pulumi:"limit"`
+	// URL relative to the last item in the response.
+	Next pulumi.StringInput `pulumi:"next"`
+	// The page offset for the pagination request. Index of the first element. Default is 0.
+	Offset pulumi.IntInput `pulumi:"offset"`
+	// URL relative to the first item in the response.
+	Previous pulumi.StringInput `pulumi:"previous"`
+	// Total number of elements returned.
+	Total pulumi.IntInput `pulumi:"total"`
+}
+
+func (GetServiceTokensPaginationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokensPagination)(nil)).Elem()
+}
+
+func (i GetServiceTokensPaginationArgs) ToGetServiceTokensPaginationOutput() GetServiceTokensPaginationOutput {
+	return i.ToGetServiceTokensPaginationOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokensPaginationArgs) ToGetServiceTokensPaginationOutputWithContext(ctx context.Context) GetServiceTokensPaginationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensPaginationOutput)
+}
+
+func (i GetServiceTokensPaginationArgs) ToGetServiceTokensPaginationPtrOutput() GetServiceTokensPaginationPtrOutput {
+	return i.ToGetServiceTokensPaginationPtrOutputWithContext(context.Background())
+}
+
+func (i GetServiceTokensPaginationArgs) ToGetServiceTokensPaginationPtrOutputWithContext(ctx context.Context) GetServiceTokensPaginationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensPaginationOutput).ToGetServiceTokensPaginationPtrOutputWithContext(ctx)
+}
+
+// GetServiceTokensPaginationPtrInput is an input type that accepts GetServiceTokensPaginationArgs, GetServiceTokensPaginationPtr and GetServiceTokensPaginationPtrOutput values.
+// You can construct a concrete instance of `GetServiceTokensPaginationPtrInput` via:
+//
+//	        GetServiceTokensPaginationArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetServiceTokensPaginationPtrInput interface {
+	pulumi.Input
+
+	ToGetServiceTokensPaginationPtrOutput() GetServiceTokensPaginationPtrOutput
+	ToGetServiceTokensPaginationPtrOutputWithContext(context.Context) GetServiceTokensPaginationPtrOutput
+}
+
+type getServiceTokensPaginationPtrType GetServiceTokensPaginationArgs
+
+func GetServiceTokensPaginationPtr(v *GetServiceTokensPaginationArgs) GetServiceTokensPaginationPtrInput {
+	return (*getServiceTokensPaginationPtrType)(v)
+}
+
+func (*getServiceTokensPaginationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServiceTokensPagination)(nil)).Elem()
+}
+
+func (i *getServiceTokensPaginationPtrType) ToGetServiceTokensPaginationPtrOutput() GetServiceTokensPaginationPtrOutput {
+	return i.ToGetServiceTokensPaginationPtrOutputWithContext(context.Background())
+}
+
+func (i *getServiceTokensPaginationPtrType) ToGetServiceTokensPaginationPtrOutputWithContext(ctx context.Context) GetServiceTokensPaginationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensPaginationPtrOutput)
+}
+
+type GetServiceTokensPaginationOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokensPaginationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTokensPagination)(nil)).Elem()
+}
+
+func (o GetServiceTokensPaginationOutput) ToGetServiceTokensPaginationOutput() GetServiceTokensPaginationOutput {
+	return o
+}
+
+func (o GetServiceTokensPaginationOutput) ToGetServiceTokensPaginationOutputWithContext(ctx context.Context) GetServiceTokensPaginationOutput {
+	return o
+}
+
+func (o GetServiceTokensPaginationOutput) ToGetServiceTokensPaginationPtrOutput() GetServiceTokensPaginationPtrOutput {
+	return o.ToGetServiceTokensPaginationPtrOutputWithContext(context.Background())
+}
+
+func (o GetServiceTokensPaginationOutput) ToGetServiceTokensPaginationPtrOutputWithContext(ctx context.Context) GetServiceTokensPaginationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetServiceTokensPagination) *GetServiceTokensPagination {
+		return &v
+	}).(GetServiceTokensPaginationPtrOutput)
+}
+
+// Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+func (o GetServiceTokensPaginationOutput) Limit() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTokensPagination) int { return v.Limit }).(pulumi.IntOutput)
+}
+
+// URL relative to the last item in the response.
+func (o GetServiceTokensPaginationOutput) Next() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensPagination) string { return v.Next }).(pulumi.StringOutput)
+}
+
+// The page offset for the pagination request. Index of the first element. Default is 0.
+func (o GetServiceTokensPaginationOutput) Offset() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTokensPagination) int { return v.Offset }).(pulumi.IntOutput)
+}
+
+// URL relative to the first item in the response.
+func (o GetServiceTokensPaginationOutput) Previous() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTokensPagination) string { return v.Previous }).(pulumi.StringOutput)
+}
+
+// Total number of elements returned.
+func (o GetServiceTokensPaginationOutput) Total() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTokensPagination) int { return v.Total }).(pulumi.IntOutput)
+}
+
+type GetServiceTokensPaginationPtrOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTokensPaginationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServiceTokensPagination)(nil)).Elem()
+}
+
+func (o GetServiceTokensPaginationPtrOutput) ToGetServiceTokensPaginationPtrOutput() GetServiceTokensPaginationPtrOutput {
+	return o
+}
+
+func (o GetServiceTokensPaginationPtrOutput) ToGetServiceTokensPaginationPtrOutputWithContext(ctx context.Context) GetServiceTokensPaginationPtrOutput {
+	return o
+}
+
+func (o GetServiceTokensPaginationPtrOutput) Elem() GetServiceTokensPaginationOutput {
+	return o.ApplyT(func(v *GetServiceTokensPagination) GetServiceTokensPagination {
+		if v != nil {
+			return *v
+		}
+		var ret GetServiceTokensPagination
+		return ret
+	}).(GetServiceTokensPaginationOutput)
+}
+
+// Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+func (o GetServiceTokensPaginationPtrOutput) Limit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetServiceTokensPagination) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Limit
+	}).(pulumi.IntPtrOutput)
+}
+
+// URL relative to the last item in the response.
+func (o GetServiceTokensPaginationPtrOutput) Next() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceTokensPagination) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Next
+	}).(pulumi.StringPtrOutput)
+}
+
+// The page offset for the pagination request. Index of the first element. Default is 0.
+func (o GetServiceTokensPaginationPtrOutput) Offset() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetServiceTokensPagination) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Offset
+	}).(pulumi.IntPtrOutput)
+}
+
+// URL relative to the first item in the response.
+func (o GetServiceTokensPaginationPtrOutput) Previous() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceTokensPagination) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Previous
+	}).(pulumi.StringPtrOutput)
+}
+
+// Total number of elements returned.
+func (o GetServiceTokensPaginationPtrOutput) Total() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetServiceTokensPagination) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Total
+	}).(pulumi.IntPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudRouterAccountInput)(nil)).Elem(), CloudRouterAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudRouterAccountPtrInput)(nil)).Elem(), CloudRouterAccountArgs{})
@@ -46052,6 +56702,52 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceProfileVirtualDeviceArrayInput)(nil)).Elem(), ServiceProfileVirtualDeviceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceProfileVirtualDeviceLocationInput)(nil)).Elem(), ServiceProfileVirtualDeviceLocationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceProfileVirtualDeviceLocationPtrInput)(nil)).Elem(), ServiceProfileVirtualDeviceLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenAccountInput)(nil)).Elem(), ServiceTokenAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenAccountArrayInput)(nil)).Elem(), ServiceTokenAccountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenChangeLogInput)(nil)).Elem(), ServiceTokenChangeLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenChangeLogArrayInput)(nil)).Elem(), ServiceTokenChangeLogArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenNotificationInput)(nil)).Elem(), ServiceTokenNotificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenNotificationArrayInput)(nil)).Elem(), ServiceTokenNotificationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenProjectInput)(nil)).Elem(), ServiceTokenProjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenProjectPtrInput)(nil)).Elem(), ServiceTokenProjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenServiceTokenConnectionInput)(nil)).Elem(), ServiceTokenServiceTokenConnectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenServiceTokenConnectionArrayInput)(nil)).Elem(), ServiceTokenServiceTokenConnectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenServiceTokenConnectionASideInput)(nil)).Elem(), ServiceTokenServiceTokenConnectionASideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenServiceTokenConnectionASideArrayInput)(nil)).Elem(), ServiceTokenServiceTokenConnectionASideArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenServiceTokenConnectionASideAccessPointSelectorInput)(nil)).Elem(), ServiceTokenServiceTokenConnectionASideAccessPointSelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenServiceTokenConnectionASideAccessPointSelectorArrayInput)(nil)).Elem(), ServiceTokenServiceTokenConnectionASideAccessPointSelectorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceInput)(nil)).Elem(), ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfacePtrInput)(nil)).Elem(), ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolInput)(nil)).Elem(), ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolPtrInput)(nil)).Elem(), ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkInput)(nil)).Elem(), ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkPtrInput)(nil)).Elem(), ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationInput)(nil)).Elem(), ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayInput)(nil)).Elem(), ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortInput)(nil)).Elem(), ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortPtrInput)(nil)).Elem(), ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationInput)(nil)).Elem(), ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArrayInput)(nil)).Elem(), ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceInput)(nil)).Elem(), ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrInput)(nil)).Elem(), ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenServiceTokenConnectionZSideInput)(nil)).Elem(), ServiceTokenServiceTokenConnectionZSideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenServiceTokenConnectionZSideArrayInput)(nil)).Elem(), ServiceTokenServiceTokenConnectionZSideArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInput)(nil)).Elem(), ServiceTokenServiceTokenConnectionZSideAccessPointSelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenServiceTokenConnectionZSideAccessPointSelectorArrayInput)(nil)).Elem(), ServiceTokenServiceTokenConnectionZSideAccessPointSelectorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceInput)(nil)).Elem(), ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfacePtrInput)(nil)).Elem(), ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolInput)(nil)).Elem(), ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrInput)(nil)).Elem(), ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkInput)(nil)).Elem(), ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkPtrInput)(nil)).Elem(), ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationInput)(nil)).Elem(), ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayInput)(nil)).Elem(), ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortInput)(nil)).Elem(), ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortPtrInput)(nil)).Elem(), ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationInput)(nil)).Elem(), ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayInput)(nil)).Elem(), ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceInput)(nil)).Elem(), ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrInput)(nil)).Elem(), ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudRouterAccountInput)(nil)).Elem(), GetCloudRouterAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudRouterAccountArrayInput)(nil)).Elem(), GetCloudRouterAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudRouterChangeLogInput)(nil)).Elem(), GetCloudRouterChangeLogArgs{})
@@ -46437,6 +57133,88 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesPaginationPtrInput)(nil)).Elem(), GetServiceProfilesPaginationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesSortInput)(nil)).Elem(), GetServiceProfilesSortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesSortArrayInput)(nil)).Elem(), GetServiceProfilesSortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokenAccountInput)(nil)).Elem(), GetServiceTokenAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokenAccountArrayInput)(nil)).Elem(), GetServiceTokenAccountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokenChangeLogInput)(nil)).Elem(), GetServiceTokenChangeLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokenChangeLogArrayInput)(nil)).Elem(), GetServiceTokenChangeLogArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokenNotificationInput)(nil)).Elem(), GetServiceTokenNotificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokenNotificationArrayInput)(nil)).Elem(), GetServiceTokenNotificationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokenProjectInput)(nil)).Elem(), GetServiceTokenProjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokenProjectArrayInput)(nil)).Elem(), GetServiceTokenProjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokenServiceTokenConnectionInput)(nil)).Elem(), GetServiceTokenServiceTokenConnectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokenServiceTokenConnectionArrayInput)(nil)).Elem(), GetServiceTokenServiceTokenConnectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokenServiceTokenConnectionASideInput)(nil)).Elem(), GetServiceTokenServiceTokenConnectionASideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokenServiceTokenConnectionASideArrayInput)(nil)).Elem(), GetServiceTokenServiceTokenConnectionASideArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokenServiceTokenConnectionASideAccessPointSelectorInput)(nil)).Elem(), GetServiceTokenServiceTokenConnectionASideAccessPointSelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokenServiceTokenConnectionASideAccessPointSelectorArrayInput)(nil)).Elem(), GetServiceTokenServiceTokenConnectionASideAccessPointSelectorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceInput)(nil)).Elem(), GetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolInput)(nil)).Elem(), GetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkInput)(nil)).Elem(), GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationInput)(nil)).Elem(), GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayInput)(nil)).Elem(), GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortInput)(nil)).Elem(), GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationInput)(nil)).Elem(), GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArrayInput)(nil)).Elem(), GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceInput)(nil)).Elem(), GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrInput)(nil)).Elem(), GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokenServiceTokenConnectionZSideInput)(nil)).Elem(), GetServiceTokenServiceTokenConnectionZSideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokenServiceTokenConnectionZSideArrayInput)(nil)).Elem(), GetServiceTokenServiceTokenConnectionZSideArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInput)(nil)).Elem(), GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorArrayInput)(nil)).Elem(), GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceInput)(nil)).Elem(), GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolInput)(nil)).Elem(), GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkInput)(nil)).Elem(), GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationInput)(nil)).Elem(), GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayInput)(nil)).Elem(), GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortInput)(nil)).Elem(), GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationInput)(nil)).Elem(), GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayInput)(nil)).Elem(), GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceInput)(nil)).Elem(), GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrInput)(nil)).Elem(), GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataInput)(nil)).Elem(), GetServiceTokensDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataArrayInput)(nil)).Elem(), GetServiceTokensDataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataAccountInput)(nil)).Elem(), GetServiceTokensDataAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataAccountArrayInput)(nil)).Elem(), GetServiceTokensDataAccountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataChangeLogInput)(nil)).Elem(), GetServiceTokensDataChangeLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataChangeLogArrayInput)(nil)).Elem(), GetServiceTokensDataChangeLogArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataNotificationInput)(nil)).Elem(), GetServiceTokensDataNotificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataNotificationArrayInput)(nil)).Elem(), GetServiceTokensDataNotificationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataProjectInput)(nil)).Elem(), GetServiceTokensDataProjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataProjectArrayInput)(nil)).Elem(), GetServiceTokensDataProjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionInput)(nil)).Elem(), GetServiceTokensDataServiceTokenConnectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionArrayInput)(nil)).Elem(), GetServiceTokensDataServiceTokenConnectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionASideInput)(nil)).Elem(), GetServiceTokensDataServiceTokenConnectionASideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionASideArrayInput)(nil)).Elem(), GetServiceTokensDataServiceTokenConnectionASideArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInput)(nil)).Elem(), GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorArrayInput)(nil)).Elem(), GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterfaceInput)(nil)).Elem(), GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocolInput)(nil)).Elem(), GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkInput)(nil)).Elem(), GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationInput)(nil)).Elem(), GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayInput)(nil)).Elem(), GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortInput)(nil)).Elem(), GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationInput)(nil)).Elem(), GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArrayInput)(nil)).Elem(), GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceInput)(nil)).Elem(), GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrInput)(nil)).Elem(), GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideInput)(nil)).Elem(), GetServiceTokensDataServiceTokenConnectionZSideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideArrayInput)(nil)).Elem(), GetServiceTokensDataServiceTokenConnectionZSideArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInput)(nil)).Elem(), GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArrayInput)(nil)).Elem(), GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceInput)(nil)).Elem(), GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolInput)(nil)).Elem(), GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkInput)(nil)).Elem(), GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationInput)(nil)).Elem(), GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayInput)(nil)).Elem(), GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortInput)(nil)).Elem(), GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationInput)(nil)).Elem(), GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayInput)(nil)).Elem(), GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceInput)(nil)).Elem(), GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrInput)(nil)).Elem(), GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensFilterInput)(nil)).Elem(), GetServiceTokensFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensFilterArrayInput)(nil)).Elem(), GetServiceTokensFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensPaginationInput)(nil)).Elem(), GetServiceTokensPaginationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensPaginationPtrInput)(nil)).Elem(), GetServiceTokensPaginationArgs{})
 	pulumi.RegisterOutputType(CloudRouterAccountOutput{})
 	pulumi.RegisterOutputType(CloudRouterAccountPtrOutput{})
 	pulumi.RegisterOutputType(CloudRouterChangeLogOutput{})
@@ -46609,6 +57387,52 @@ func init() {
 	pulumi.RegisterOutputType(ServiceProfileVirtualDeviceArrayOutput{})
 	pulumi.RegisterOutputType(ServiceProfileVirtualDeviceLocationOutput{})
 	pulumi.RegisterOutputType(ServiceProfileVirtualDeviceLocationPtrOutput{})
+	pulumi.RegisterOutputType(ServiceTokenAccountOutput{})
+	pulumi.RegisterOutputType(ServiceTokenAccountArrayOutput{})
+	pulumi.RegisterOutputType(ServiceTokenChangeLogOutput{})
+	pulumi.RegisterOutputType(ServiceTokenChangeLogArrayOutput{})
+	pulumi.RegisterOutputType(ServiceTokenNotificationOutput{})
+	pulumi.RegisterOutputType(ServiceTokenNotificationArrayOutput{})
+	pulumi.RegisterOutputType(ServiceTokenProjectOutput{})
+	pulumi.RegisterOutputType(ServiceTokenProjectPtrOutput{})
+	pulumi.RegisterOutputType(ServiceTokenServiceTokenConnectionOutput{})
+	pulumi.RegisterOutputType(ServiceTokenServiceTokenConnectionArrayOutput{})
+	pulumi.RegisterOutputType(ServiceTokenServiceTokenConnectionASideOutput{})
+	pulumi.RegisterOutputType(ServiceTokenServiceTokenConnectionASideArrayOutput{})
+	pulumi.RegisterOutputType(ServiceTokenServiceTokenConnectionASideAccessPointSelectorOutput{})
+	pulumi.RegisterOutputType(ServiceTokenServiceTokenConnectionASideAccessPointSelectorArrayOutput{})
+	pulumi.RegisterOutputType(ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceOutput{})
+	pulumi.RegisterOutputType(ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfacePtrOutput{})
+	pulumi.RegisterOutputType(ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput{})
+	pulumi.RegisterOutputType(ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolPtrOutput{})
+	pulumi.RegisterOutputType(ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkOutput{})
+	pulumi.RegisterOutputType(ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkPtrOutput{})
+	pulumi.RegisterOutputType(ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput{})
+	pulumi.RegisterOutputType(ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput{})
+	pulumi.RegisterOutputType(ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutput{})
+	pulumi.RegisterOutputType(ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortPtrOutput{})
+	pulumi.RegisterOutputType(ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationOutput{})
+	pulumi.RegisterOutputType(ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput{})
+	pulumi.RegisterOutputType(ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput{})
+	pulumi.RegisterOutputType(ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput{})
+	pulumi.RegisterOutputType(ServiceTokenServiceTokenConnectionZSideOutput{})
+	pulumi.RegisterOutputType(ServiceTokenServiceTokenConnectionZSideArrayOutput{})
+	pulumi.RegisterOutputType(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorOutput{})
+	pulumi.RegisterOutputType(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorArrayOutput{})
+	pulumi.RegisterOutputType(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput{})
+	pulumi.RegisterOutputType(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutput{})
+	pulumi.RegisterOutputType(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput{})
+	pulumi.RegisterOutputType(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput{})
+	pulumi.RegisterOutputType(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkOutput{})
+	pulumi.RegisterOutputType(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkPtrOutput{})
+	pulumi.RegisterOutputType(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput{})
+	pulumi.RegisterOutputType(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput{})
+	pulumi.RegisterOutputType(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutput{})
+	pulumi.RegisterOutputType(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput{})
+	pulumi.RegisterOutputType(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput{})
+	pulumi.RegisterOutputType(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput{})
+	pulumi.RegisterOutputType(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput{})
+	pulumi.RegisterOutputType(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput{})
 	pulumi.RegisterOutputType(GetCloudRouterAccountOutput{})
 	pulumi.RegisterOutputType(GetCloudRouterAccountArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudRouterChangeLogOutput{})
@@ -46994,4 +57818,86 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceProfilesPaginationPtrOutput{})
 	pulumi.RegisterOutputType(GetServiceProfilesSortOutput{})
 	pulumi.RegisterOutputType(GetServiceProfilesSortArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTokenAccountOutput{})
+	pulumi.RegisterOutputType(GetServiceTokenAccountArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTokenChangeLogOutput{})
+	pulumi.RegisterOutputType(GetServiceTokenChangeLogArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTokenNotificationOutput{})
+	pulumi.RegisterOutputType(GetServiceTokenNotificationArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTokenProjectOutput{})
+	pulumi.RegisterOutputType(GetServiceTokenProjectArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTokenServiceTokenConnectionOutput{})
+	pulumi.RegisterOutputType(GetServiceTokenServiceTokenConnectionArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTokenServiceTokenConnectionASideOutput{})
+	pulumi.RegisterOutputType(GetServiceTokenServiceTokenConnectionASideArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTokenServiceTokenConnectionASideAccessPointSelectorOutput{})
+	pulumi.RegisterOutputType(GetServiceTokenServiceTokenConnectionASideAccessPointSelectorArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceOutput{})
+	pulumi.RegisterOutputType(GetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput{})
+	pulumi.RegisterOutputType(GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkOutput{})
+	pulumi.RegisterOutputType(GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput{})
+	pulumi.RegisterOutputType(GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortOutput{})
+	pulumi.RegisterOutputType(GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationOutput{})
+	pulumi.RegisterOutputType(GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput{})
+	pulumi.RegisterOutputType(GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput{})
+	pulumi.RegisterOutputType(GetServiceTokenServiceTokenConnectionZSideOutput{})
+	pulumi.RegisterOutputType(GetServiceTokenServiceTokenConnectionZSideArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorOutput{})
+	pulumi.RegisterOutputType(GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput{})
+	pulumi.RegisterOutputType(GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput{})
+	pulumi.RegisterOutputType(GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkOutput{})
+	pulumi.RegisterOutputType(GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput{})
+	pulumi.RegisterOutputType(GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortOutput{})
+	pulumi.RegisterOutputType(GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput{})
+	pulumi.RegisterOutputType(GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput{})
+	pulumi.RegisterOutputType(GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput{})
+	pulumi.RegisterOutputType(GetServiceTokensDataOutput{})
+	pulumi.RegisterOutputType(GetServiceTokensDataArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTokensDataAccountOutput{})
+	pulumi.RegisterOutputType(GetServiceTokensDataAccountArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTokensDataChangeLogOutput{})
+	pulumi.RegisterOutputType(GetServiceTokensDataChangeLogArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTokensDataNotificationOutput{})
+	pulumi.RegisterOutputType(GetServiceTokensDataNotificationArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTokensDataProjectOutput{})
+	pulumi.RegisterOutputType(GetServiceTokensDataProjectArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTokensDataServiceTokenConnectionOutput{})
+	pulumi.RegisterOutputType(GetServiceTokensDataServiceTokenConnectionArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTokensDataServiceTokenConnectionASideOutput{})
+	pulumi.RegisterOutputType(GetServiceTokensDataServiceTokenConnectionASideArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorOutput{})
+	pulumi.RegisterOutputType(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterfaceOutput{})
+	pulumi.RegisterOutputType(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput{})
+	pulumi.RegisterOutputType(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkOutput{})
+	pulumi.RegisterOutputType(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput{})
+	pulumi.RegisterOutputType(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutput{})
+	pulumi.RegisterOutputType(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationOutput{})
+	pulumi.RegisterOutputType(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput{})
+	pulumi.RegisterOutputType(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput{})
+	pulumi.RegisterOutputType(GetServiceTokensDataServiceTokenConnectionZSideOutput{})
+	pulumi.RegisterOutputType(GetServiceTokensDataServiceTokenConnectionZSideArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorOutput{})
+	pulumi.RegisterOutputType(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput{})
+	pulumi.RegisterOutputType(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput{})
+	pulumi.RegisterOutputType(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkOutput{})
+	pulumi.RegisterOutputType(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput{})
+	pulumi.RegisterOutputType(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutput{})
+	pulumi.RegisterOutputType(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput{})
+	pulumi.RegisterOutputType(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput{})
+	pulumi.RegisterOutputType(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput{})
+	pulumi.RegisterOutputType(GetServiceTokensFilterOutput{})
+	pulumi.RegisterOutputType(GetServiceTokensFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTokensPaginationOutput{})
+	pulumi.RegisterOutputType(GetServiceTokensPaginationPtrOutput{})
 }

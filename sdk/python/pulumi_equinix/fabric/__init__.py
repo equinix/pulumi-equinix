@@ -27,10 +27,13 @@ from .get_route_filters import *
 from .get_routing_protocol import *
 from .get_service_profile import *
 from .get_service_profiles import *
+from .get_service_token import *
+from .get_service_tokens import *
 from .network import *
 from .route_filter import *
 from .route_filter_rule import *
 from .routing_protocol import *
 from .service_profile import *
+from .service_token import *
 from ._inputs import *
 from . import outputs
