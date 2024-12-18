@@ -2,7 +2,7 @@ module equinix-metal-user_api_key
 
 go 1.21
 
-toolchain go1.23.3
+toolchain go1.23.4
 
 require (
 	github.com/equinix/pulumi-equinix/sdk latest
