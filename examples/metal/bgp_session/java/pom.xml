@@ -26,11 +26,11 @@
 				<dependency>
             		<groupId>com.pulumi</groupId>
             		<artifactId>equinix</artifactId>
-            		<version>(,1.0)</version>
+            		<version>0.20.0</version>
         		</dependency><dependency>
             		<groupId>com.pulumi</groupId>
             		<artifactId>null</artifactId>
-            		<version>0.0.8</version>
+            		<version>0.0.9</version>
         		</dependency>
 			</dependencies>
 
