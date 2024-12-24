@@ -145,6 +145,66 @@ namespace Pulumi.Equinix.Fabric
     /// });
     /// ```
     /// 
+    /// Zside Network Service Token
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Equinix = Pulumi.Equinix;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var test = new Equinix.Fabric.ServiceToken("test", new()
+    ///     {
+    ///         Description = "Zside Network Service Token",
+    ///         ExpirationDateTime = "2025-01-18T06:43:49.986Z",
+    ///         Notifications = new[]
+    ///         {
+    ///             new Equinix.Fabric.Inputs.ServiceTokenNotificationArgs
+    ///             {
+    ///                 Emails = new[]
+    ///                 {
+    ///                     "example@equinix.com",
+    ///                 },
+    ///                 Type = "ALL",
+    ///             },
+    ///         },
+    ///         ServiceTokenConnections = new[]
+    ///         {
+    ///             new Equinix.Fabric.Inputs.ServiceTokenServiceTokenConnectionArgs
+    ///             {
+    ///                 SupportedBandwidths = new[]
+    ///                 {
+    ///                     50,
+    ///                     200,
+    ///                     10000,
+    ///                 },
+    ///                 Type = "EVPL_VC",
+    ///                 ZSides = new[]
+    ///                 {
+    ///                     new Equinix.Fabric.Inputs.ServiceTokenServiceTokenConnectionZSideArgs
+    ///                     {
+    ///                         AccessPointSelectors = new[]
+    ///                         {
+    ///                             new Equinix.Fabric.Inputs.ServiceTokenServiceTokenConnectionZSideAccessPointSelectorArgs
+    ///                             {
+    ///                                 Network = new Equinix.Fabric.Inputs.ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkArgs
+    ///                                 {
+    ///                                     Uuid = "&lt;network_uuid&gt;",
+    ///                                 },
+    ///                                 Type = "NETWORK",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Type = "VC_TOKEN",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// Zside Virtual Device Service Token
     /// ```csharp
     /// using System.Collections.Generic;

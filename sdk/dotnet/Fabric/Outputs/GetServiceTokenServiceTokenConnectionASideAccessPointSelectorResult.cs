@@ -16,11 +16,11 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// <summary>
         /// Virtual Device Interface Configuration
         /// </summary>
-        public readonly Outputs.GetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceResult Interface;
+        public readonly Outputs.GetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceResult? Interface;
         /// <summary>
         /// Link protocol Configuration
         /// </summary>
-        public readonly Outputs.GetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolResult LinkProtocol;
+        public readonly Outputs.GetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolResult? LinkProtocol;
         /// <summary>
         /// Network Configuration
         /// </summary>
@@ -28,7 +28,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// <summary>
         /// Port Configuration
         /// </summary>
-        public readonly Outputs.GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortResult Port;
+        public readonly Outputs.GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortResult? Port;
         /// <summary>
         /// Type of Access point; COLO, VD, NETWORK
         /// </summary>
@@ -40,13 +40,13 @@ namespace Pulumi.Equinix.Fabric.Outputs
 
         [OutputConstructor]
         private GetServiceTokenServiceTokenConnectionASideAccessPointSelectorResult(
-            Outputs.GetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceResult @interface,
+            Outputs.GetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceResult? @interface,
 
-            Outputs.GetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolResult linkProtocol,
+            Outputs.GetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolResult? linkProtocol,
 
             Outputs.GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkResult network,
 
-            Outputs.GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortResult port,
+            Outputs.GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortResult? port,
 
             string type,
 

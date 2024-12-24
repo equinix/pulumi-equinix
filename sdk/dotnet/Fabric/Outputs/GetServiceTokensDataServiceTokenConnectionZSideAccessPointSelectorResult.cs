@@ -16,11 +16,11 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// <summary>
         /// Virtual Device Interface Configuration
         /// </summary>
-        public readonly Outputs.GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceResult Interface;
+        public readonly Outputs.GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceResult? Interface;
         /// <summary>
         /// Link protocol Configuration
         /// </summary>
-        public readonly Outputs.GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolResult LinkProtocol;
+        public readonly Outputs.GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolResult? LinkProtocol;
         /// <summary>
         /// Network Configuration
         /// </summary>
@@ -28,7 +28,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// <summary>
         /// Port Configuration
         /// </summary>
-        public readonly Outputs.GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortResult Port;
+        public readonly Outputs.GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortResult? Port;
         /// <summary>
         /// Type of Access point; COLO, VD, NETWORK
         /// </summary>
@@ -40,13 +40,13 @@ namespace Pulumi.Equinix.Fabric.Outputs
 
         [OutputConstructor]
         private GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorResult(
-            Outputs.GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceResult @interface,
+            Outputs.GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceResult? @interface,
 
-            Outputs.GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolResult linkProtocol,
+            Outputs.GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolResult? linkProtocol,
 
             Outputs.GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkResult network,
 
-            Outputs.GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortResult port,
+            Outputs.GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortResult? port,
 
             string type,
 
