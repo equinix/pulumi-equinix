@@ -7727,20 +7727,21 @@ class ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocol(dic
 @pulumi.output_type
 class ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetwork(dict):
     def __init__(__self__, *,
+                 uuid: str,
                  href: Optional[str] = None,
                  locations: Optional[Sequence['outputs.ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocation']] = None,
                  name: Optional[str] = None,
                  scope: Optional[str] = None,
-                 type: Optional[str] = None,
-                 uuid: Optional[str] = None):
+                 type: Optional[str] = None):
         """
+        :param str uuid: Equinix-assigned Network identifier
         :param str href: Unique Resource Identifier
         :param Sequence['ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArgs'] locations: Location
         :param str name: Network Name
         :param str scope: Scope of Network
         :param str type: Type of Network
-        :param str uuid: Equinix-assigned Network identifier
         """
+        pulumi.set(__self__, "uuid", uuid)
         if href is not None:
             pulumi.set(__self__, "href", href)
         if locations is not None:
@@ -7751,8 +7752,14 @@ class ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetwork(dict):
             pulumi.set(__self__, "scope", scope)
         if type is not None:
             pulumi.set(__self__, "type", type)
-        if uuid is not None:
-            pulumi.set(__self__, "uuid", uuid)
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> str:
+        """
+        Equinix-assigned Network identifier
+        """
+        return pulumi.get(self, "uuid")
 
     @property
     @pulumi.getter
@@ -7793,14 +7800,6 @@ class ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetwork(dict):
         Type of Network
         """
         return pulumi.get(self, "type")
-
-    @property
-    @pulumi.getter
-    def uuid(self) -> Optional[str]:
-        """
-        Equinix-assigned Network identifier
-        """
-        return pulumi.get(self, "uuid")
 
 
 @pulumi.output_type
@@ -8420,20 +8419,21 @@ class ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocol(dic
 @pulumi.output_type
 class ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetwork(dict):
     def __init__(__self__, *,
+                 uuid: str,
                  href: Optional[str] = None,
                  locations: Optional[Sequence['outputs.ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocation']] = None,
                  name: Optional[str] = None,
                  scope: Optional[str] = None,
-                 type: Optional[str] = None,
-                 uuid: Optional[str] = None):
+                 type: Optional[str] = None):
         """
+        :param str uuid: Equinix-assigned Network identifier
         :param str href: Unique Resource Identifier
         :param Sequence['ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArgs'] locations: Location
         :param str name: Network Name
         :param str scope: Scope of Network
         :param str type: Type of Network
-        :param str uuid: Equinix-assigned Network identifier
         """
+        pulumi.set(__self__, "uuid", uuid)
         if href is not None:
             pulumi.set(__self__, "href", href)
         if locations is not None:
@@ -8444,8 +8444,14 @@ class ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetwork(dict):
             pulumi.set(__self__, "scope", scope)
         if type is not None:
             pulumi.set(__self__, "type", type)
-        if uuid is not None:
-            pulumi.set(__self__, "uuid", uuid)
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> str:
+        """
+        Equinix-assigned Network identifier
+        """
+        return pulumi.get(self, "uuid")
 
     @property
     @pulumi.getter
@@ -8486,14 +8492,6 @@ class ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetwork(dict):
         Type of Network
         """
         return pulumi.get(self, "type")
-
-    @property
-    @pulumi.getter
-    def uuid(self) -> Optional[str]:
-        """
-        Equinix-assigned Network identifier
-        """
-        return pulumi.get(self, "uuid")
 
 
 @pulumi.output_type
@@ -21928,43 +21926,30 @@ class GetServiceTokenServiceTokenConnectionASideResult(dict):
 @pulumi.output_type
 class GetServiceTokenServiceTokenConnectionASideAccessPointSelectorResult(dict):
     def __init__(__self__, *,
-                 interface: 'outputs.GetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceResult',
-                 link_protocol: 'outputs.GetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolResult',
                  network: 'outputs.GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkResult',
-                 port: 'outputs.GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortResult',
                  type: str,
+                 interface: Optional['outputs.GetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceResult'] = None,
+                 link_protocol: Optional['outputs.GetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolResult'] = None,
+                 port: Optional['outputs.GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortResult'] = None,
                  virtual_device: Optional['outputs.GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceResult'] = None):
         """
+        :param 'GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkArgs' network: Network Configuration
+        :param str type: Type of Access point; COLO, VD, NETWORK
         :param 'GetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceArgs' interface: Virtual Device Interface Configuration
         :param 'GetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolArgs' link_protocol: Link protocol Configuration
-        :param 'GetServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkArgs' network: Network Configuration
         :param 'GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortArgs' port: Port Configuration
-        :param str type: Type of Access point; COLO, VD, NETWORK
         :param 'GetServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs' virtual_device: Virtual Device Configuration
         """
-        pulumi.set(__self__, "interface", interface)
-        pulumi.set(__self__, "link_protocol", link_protocol)
         pulumi.set(__self__, "network", network)
-        pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "type", type)
+        if interface is not None:
+            pulumi.set(__self__, "interface", interface)
+        if link_protocol is not None:
+            pulumi.set(__self__, "link_protocol", link_protocol)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
         if virtual_device is not None:
             pulumi.set(__self__, "virtual_device", virtual_device)
-
-    @property
-    @pulumi.getter
-    def interface(self) -> 'outputs.GetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceResult':
-        """
-        Virtual Device Interface Configuration
-        """
-        return pulumi.get(self, "interface")
-
-    @property
-    @pulumi.getter(name="linkProtocol")
-    def link_protocol(self) -> 'outputs.GetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolResult':
-        """
-        Link protocol Configuration
-        """
-        return pulumi.get(self, "link_protocol")
 
     @property
     @pulumi.getter
@@ -21976,19 +21961,35 @@ class GetServiceTokenServiceTokenConnectionASideAccessPointSelectorResult(dict):
 
     @property
     @pulumi.getter
-    def port(self) -> 'outputs.GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortResult':
-        """
-        Port Configuration
-        """
-        return pulumi.get(self, "port")
-
-    @property
-    @pulumi.getter
     def type(self) -> str:
         """
         Type of Access point; COLO, VD, NETWORK
         """
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def interface(self) -> Optional['outputs.GetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceResult']:
+        """
+        Virtual Device Interface Configuration
+        """
+        return pulumi.get(self, "interface")
+
+    @property
+    @pulumi.getter(name="linkProtocol")
+    def link_protocol(self) -> Optional['outputs.GetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolResult']:
+        """
+        Link protocol Configuration
+        """
+        return pulumi.get(self, "link_protocol")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional['outputs.GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPortResult']:
+        """
+        Port Configuration
+        """
+        return pulumi.get(self, "port")
 
     @property
     @pulumi.getter(name="virtualDevice")
@@ -22465,43 +22466,30 @@ class GetServiceTokenServiceTokenConnectionZSideResult(dict):
 @pulumi.output_type
 class GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorResult(dict):
     def __init__(__self__, *,
-                 interface: 'outputs.GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceResult',
-                 link_protocol: 'outputs.GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolResult',
                  network: 'outputs.GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkResult',
-                 port: 'outputs.GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortResult',
                  type: str,
+                 interface: Optional['outputs.GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceResult'] = None,
+                 link_protocol: Optional['outputs.GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolResult'] = None,
+                 port: Optional['outputs.GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortResult'] = None,
                  virtual_device: Optional['outputs.GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceResult'] = None):
         """
+        :param 'GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkArgs' network: Network Configuration
+        :param str type: Type of Access point; COLO, VD, NETWORK
         :param 'GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceArgs' interface: Virtual Device Interface Configuration
         :param 'GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolArgs' link_protocol: Link protocol Configuration
-        :param 'GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkArgs' network: Network Configuration
         :param 'GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortArgs' port: Port Configuration
-        :param str type: Type of Access point; COLO, VD, NETWORK
         :param 'GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs' virtual_device: Virtual Device Configuration
         """
-        pulumi.set(__self__, "interface", interface)
-        pulumi.set(__self__, "link_protocol", link_protocol)
         pulumi.set(__self__, "network", network)
-        pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "type", type)
+        if interface is not None:
+            pulumi.set(__self__, "interface", interface)
+        if link_protocol is not None:
+            pulumi.set(__self__, "link_protocol", link_protocol)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
         if virtual_device is not None:
             pulumi.set(__self__, "virtual_device", virtual_device)
-
-    @property
-    @pulumi.getter
-    def interface(self) -> 'outputs.GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceResult':
-        """
-        Virtual Device Interface Configuration
-        """
-        return pulumi.get(self, "interface")
-
-    @property
-    @pulumi.getter(name="linkProtocol")
-    def link_protocol(self) -> 'outputs.GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolResult':
-        """
-        Link protocol Configuration
-        """
-        return pulumi.get(self, "link_protocol")
 
     @property
     @pulumi.getter
@@ -22513,19 +22501,35 @@ class GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorResult(dict):
 
     @property
     @pulumi.getter
-    def port(self) -> 'outputs.GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortResult':
-        """
-        Port Configuration
-        """
-        return pulumi.get(self, "port")
-
-    @property
-    @pulumi.getter
     def type(self) -> str:
         """
         Type of Access point; COLO, VD, NETWORK
         """
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def interface(self) -> Optional['outputs.GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceResult']:
+        """
+        Virtual Device Interface Configuration
+        """
+        return pulumi.get(self, "interface")
+
+    @property
+    @pulumi.getter(name="linkProtocol")
+    def link_protocol(self) -> Optional['outputs.GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolResult']:
+        """
+        Link protocol Configuration
+        """
+        return pulumi.get(self, "link_protocol")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional['outputs.GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortResult']:
+        """
+        Port Configuration
+        """
+        return pulumi.get(self, "port")
 
     @property
     @pulumi.getter(name="virtualDevice")
@@ -23551,43 +23555,30 @@ class GetServiceTokensDataServiceTokenConnectionASideResult(dict):
 @pulumi.output_type
 class GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorResult(dict):
     def __init__(__self__, *,
-                 interface: 'outputs.GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterfaceResult',
-                 link_protocol: 'outputs.GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocolResult',
                  network: 'outputs.GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkResult',
-                 port: 'outputs.GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortResult',
                  type: str,
+                 interface: Optional['outputs.GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterfaceResult'] = None,
+                 link_protocol: Optional['outputs.GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocolResult'] = None,
+                 port: Optional['outputs.GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortResult'] = None,
                  virtual_device: Optional['outputs.GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceResult'] = None):
         """
+        :param 'GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkArgs' network: Network Configuration
+        :param str type: Type of Access point; COLO, VD, NETWORK
         :param 'GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterfaceArgs' interface: Virtual Device Interface Configuration
         :param 'GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocolArgs' link_protocol: Link protocol Configuration
-        :param 'GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkArgs' network: Network Configuration
         :param 'GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortArgs' port: Port Configuration
-        :param str type: Type of Access point; COLO, VD, NETWORK
         :param 'GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs' virtual_device: Virtual Device Configuration
         """
-        pulumi.set(__self__, "interface", interface)
-        pulumi.set(__self__, "link_protocol", link_protocol)
         pulumi.set(__self__, "network", network)
-        pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "type", type)
+        if interface is not None:
+            pulumi.set(__self__, "interface", interface)
+        if link_protocol is not None:
+            pulumi.set(__self__, "link_protocol", link_protocol)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
         if virtual_device is not None:
             pulumi.set(__self__, "virtual_device", virtual_device)
-
-    @property
-    @pulumi.getter
-    def interface(self) -> 'outputs.GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterfaceResult':
-        """
-        Virtual Device Interface Configuration
-        """
-        return pulumi.get(self, "interface")
-
-    @property
-    @pulumi.getter(name="linkProtocol")
-    def link_protocol(self) -> 'outputs.GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocolResult':
-        """
-        Link protocol Configuration
-        """
-        return pulumi.get(self, "link_protocol")
 
     @property
     @pulumi.getter
@@ -23599,19 +23590,35 @@ class GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorResult(d
 
     @property
     @pulumi.getter
-    def port(self) -> 'outputs.GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortResult':
-        """
-        Port Configuration
-        """
-        return pulumi.get(self, "port")
-
-    @property
-    @pulumi.getter
     def type(self) -> str:
         """
         Type of Access point; COLO, VD, NETWORK
         """
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def interface(self) -> Optional['outputs.GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterfaceResult']:
+        """
+        Virtual Device Interface Configuration
+        """
+        return pulumi.get(self, "interface")
+
+    @property
+    @pulumi.getter(name="linkProtocol")
+    def link_protocol(self) -> Optional['outputs.GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocolResult']:
+        """
+        Link protocol Configuration
+        """
+        return pulumi.get(self, "link_protocol")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional['outputs.GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortResult']:
+        """
+        Port Configuration
+        """
+        return pulumi.get(self, "port")
 
     @property
     @pulumi.getter(name="virtualDevice")
@@ -24088,43 +24095,30 @@ class GetServiceTokensDataServiceTokenConnectionZSideResult(dict):
 @pulumi.output_type
 class GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorResult(dict):
     def __init__(__self__, *,
-                 interface: 'outputs.GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceResult',
-                 link_protocol: 'outputs.GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolResult',
                  network: 'outputs.GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkResult',
-                 port: 'outputs.GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortResult',
                  type: str,
+                 interface: Optional['outputs.GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceResult'] = None,
+                 link_protocol: Optional['outputs.GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolResult'] = None,
+                 port: Optional['outputs.GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortResult'] = None,
                  virtual_device: Optional['outputs.GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceResult'] = None):
         """
+        :param 'GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkArgs' network: Network Configuration
+        :param str type: Type of Access point; COLO, VD, NETWORK
         :param 'GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceArgs' interface: Virtual Device Interface Configuration
         :param 'GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolArgs' link_protocol: Link protocol Configuration
-        :param 'GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkArgs' network: Network Configuration
         :param 'GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortArgs' port: Port Configuration
-        :param str type: Type of Access point; COLO, VD, NETWORK
         :param 'GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs' virtual_device: Virtual Device Configuration
         """
-        pulumi.set(__self__, "interface", interface)
-        pulumi.set(__self__, "link_protocol", link_protocol)
         pulumi.set(__self__, "network", network)
-        pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "type", type)
+        if interface is not None:
+            pulumi.set(__self__, "interface", interface)
+        if link_protocol is not None:
+            pulumi.set(__self__, "link_protocol", link_protocol)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
         if virtual_device is not None:
             pulumi.set(__self__, "virtual_device", virtual_device)
-
-    @property
-    @pulumi.getter
-    def interface(self) -> 'outputs.GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceResult':
-        """
-        Virtual Device Interface Configuration
-        """
-        return pulumi.get(self, "interface")
-
-    @property
-    @pulumi.getter(name="linkProtocol")
-    def link_protocol(self) -> 'outputs.GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolResult':
-        """
-        Link protocol Configuration
-        """
-        return pulumi.get(self, "link_protocol")
 
     @property
     @pulumi.getter
@@ -24136,19 +24130,35 @@ class GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorResult(d
 
     @property
     @pulumi.getter
-    def port(self) -> 'outputs.GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortResult':
-        """
-        Port Configuration
-        """
-        return pulumi.get(self, "port")
-
-    @property
-    @pulumi.getter
     def type(self) -> str:
         """
         Type of Access point; COLO, VD, NETWORK
         """
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def interface(self) -> Optional['outputs.GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceResult']:
+        """
+        Virtual Device Interface Configuration
+        """
+        return pulumi.get(self, "interface")
+
+    @property
+    @pulumi.getter(name="linkProtocol")
+    def link_protocol(self) -> Optional['outputs.GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolResult']:
+        """
+        Link protocol Configuration
+        """
+        return pulumi.get(self, "link_protocol")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional['outputs.GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortResult']:
+        """
+        Port Configuration
+        """
+        return pulumi.get(self, "port")
 
     @property
     @pulumi.getter(name="virtualDevice")

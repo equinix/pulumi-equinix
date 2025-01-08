@@ -36,7 +36,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// <summary>
         /// Equinix-assigned Network identifier
         /// </summary>
-        public readonly string? Uuid;
+        public readonly string Uuid;
 
         [OutputConstructor]
         private ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetwork(
@@ -50,7 +50,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
 
             string? type,
 
-            string? uuid)
+            string uuid)
         {
             Href = href;
             Locations = locations;
