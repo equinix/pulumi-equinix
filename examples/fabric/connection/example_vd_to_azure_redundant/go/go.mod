@@ -2,7 +2,7 @@ module equinix-fabric-connection-example_vd_to_azure_redundant
 
 go 1.21
 
-toolchain go1.23.3
+toolchain go1.23.5
 
 require (
 	github.com/equinix/pulumi-equinix/sdk latest
