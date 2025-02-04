@@ -2581,7 +2581,7 @@ export namespace fabric {
         /**
          * Equinix-assigned Network identifier
          */
-        uuid?: pulumi.Input<string>;
+        uuid: pulumi.Input<string>;
     }
 
     export interface ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocation {
@@ -2780,7 +2780,7 @@ export namespace fabric {
         /**
          * Equinix-assigned Network identifier
          */
-        uuid?: pulumi.Input<string>;
+        uuid: pulumi.Input<string>;
     }
 
     export interface ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocation {
