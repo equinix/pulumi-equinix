@@ -306,7 +306,7 @@ generate_examples_and_docs() {
             rm "$PULUMI_DIR"/typescript/package.json.bak
             ## go
             sed -i.bak "s|github.com/equinix/pulumi-equinix/sdk [^ ]*|github.com/equinix/pulumi-equinix/sdk $GOLANG_VERSION|g" "$PULUMI_DIR/go/go.mod"
-            rm "$PULUMI_DIR"/go/go.sum "$PULUMI_DIR"/go/go.mod.bak
+            rm "$PULUMI_DIR"/go/go.mod.bak
 
             # Read each source file
             TS_SRC=$(cat "$PULUMI_DIR/typescript/index.ts")
