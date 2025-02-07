@@ -3,6 +3,8 @@
 {
   "name": "TFProvider",
   "build": {
-      "dockerfile": "Dockerfile"
-  }
+      "dockerfile": "Dockerfile",
+      "options": ["--platform=linux/amd64" ]
+  },
+  "runArgs": ["--platform=linux/amd64" ]
 }
