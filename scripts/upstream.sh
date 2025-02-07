@@ -150,7 +150,6 @@ apply_patches() {
   # Iterating over the patches folder in sorted order,
   # apply the patch using a 3-way merge strategy. This mirrors the default behavior of 'git merge'
   cd upstream
-  git update-index --refresh
   for patch in ../patches/*.patch; do
     if ! git apply --3way "${patch}" --allow-empty; then
       err_failed_to_apply "$(basename "${patch}")"
