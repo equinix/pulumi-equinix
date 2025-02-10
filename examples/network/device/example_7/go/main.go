@@ -7,13 +7,10 @@ import (
 
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
-		sv, err := networkedge.GetAccount(ctx, &networkedge.GetAccountArgs{
-			Name:      pulumi.StringRef("account-name"),
-			MetroCode: "SV",
+		sv := networkedge.GetAccountOutput(ctx, networkedge.GetAccountOutputArgs{
+			Name:      pulumi.String("account-name"),
+			MetroCode: pulumi.String("SV"),
 		}, nil)
-		if err != nil {
-			return err
-		}
 		testPublicKey, err := networkedge.NewSshKey(ctx, "testPublicKey", &networkedge.SshKeyArgs{
 			Name:      pulumi.String("key-name"),
 			PublicKey: pulumi.String("ssh-dss key-value"),
@@ -23,8 +20,10 @@ func main() {
 			return err
 		}
 		_, err = networkedge.NewDevice(ctx, "bluecatBddsHa", &networkedge.DeviceArgs{
-			Name:         pulumi.String("tf-bluecat-bdds-p"),
-			MetroCode:    pulumi.String(sv.MetroCode),
+			Name: pulumi.String("tf-bluecat-bdds-p"),
+			MetroCode: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+				return &sv.MetroCode, nil
+			}).(pulumi.StringPtrOutput)),
 			TypeCode:     pulumi.String("BLUECAT"),
 			SelfManaged:  pulumi.Bool(true),
 			Connectivity: pulumi.String("PRIVATE"),
@@ -33,10 +32,12 @@ func main() {
 			Notifications: pulumi.StringArray{
 				pulumi.String("test@equinix.com"),
 			},
-			AccountNumber: pulumi.String(sv.Number),
-			Version:       pulumi.String("9.6.0"),
-			CoreCount:     pulumi.Int(2),
-			TermLength:    pulumi.Int(12),
+			AccountNumber: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+				return &sv.Number, nil
+			}).(pulumi.StringPtrOutput)),
+			Version:    pulumi.String("9.6.0"),
+			CoreCount:  pulumi.Int(2),
+			TermLength: pulumi.Int(12),
 			VendorConfiguration: pulumi.StringMap{
 				"hostname":        pulumi.String("test"),
 				"privateAddress":  pulumi.String("x.x.x.x"),
@@ -50,12 +51,16 @@ func main() {
 				KeyName:  testPublicKey.Name,
 			},
 			SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
-				Name:      pulumi.String("tf-bluecat-bdds-s"),
-				MetroCode: pulumi.String(sv.MetroCode),
+				Name: pulumi.String("tf-bluecat-bdds-s"),
+				MetroCode: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+					return &sv.MetroCode, nil
+				}).(pulumi.StringPtrOutput),
 				Notifications: pulumi.StringArray{
 					pulumi.String("test@eq.com"),
 				},
-				AccountNumber: pulumi.String(sv.Number),
+				AccountNumber: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+					return &sv.Number, nil
+				}).(pulumi.StringPtrOutput),
 				VendorConfiguration: pulumi.StringMap{
 					"hostname":        pulumi.String("test"),
 					"privateAddress":  pulumi.String("x.x.x.x"),
