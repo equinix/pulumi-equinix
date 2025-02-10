@@ -8,7 +8,8 @@ RUN apt-get update && \
     apt-get install -y xz-utils && \
     apt-get install -y make && \
     apt-get install -y gcc && \
-    apt-get install -y git
+    apt-get install -y git && \
+    apt-get install -y gh
 
 # Install bridged provider prerequisites
 # See README.md
