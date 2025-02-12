@@ -15,22 +15,19 @@ func main() {
 		if param := cfg.Get("filepath"); param != "" {
 			filepath = param
 		}
-		sv, err := networkedge.GetAccount(ctx, &networkedge.GetAccountArgs{
-			MetroCode: "SV",
+		sv := networkedge.GetAccountOutput(ctx, networkedge.GetAccountOutputArgs{
+			MetroCode: pulumi.String("SV"),
 		}, nil)
-		if err != nil {
-			return err
-		}
-		invokeFile, err := std.File(ctx, &std.FileArgs{
-			Input: filepath,
-		}, nil)
-		if err != nil {
-			return err
-		}
 		aviatrixCloudinitFile, err := networkedge.NewNetworkFile(ctx, "aviatrixCloudinitFile", &networkedge.NetworkFileArgs{
-			FileName:       pulumi.String("TF-AVX-cloud-init-file.txt"),
-			Content:        pulumi.String(invokeFile.Result),
-			MetroCode:      sv.MetroCode.ApplyT(func(x *string) equinix.Metro { return equinix.Metro(*x) }).(equinix.MetroOutput),
+			FileName: pulumi.String("TF-AVX-cloud-init-file.txt"),
+			Content: pulumi.String(std.FileOutput(ctx, std.FileOutputArgs{
+				Input: pulumi.String(filepath),
+			}, nil).ApplyT(func(invoke std.FileResult) (*string, error) {
+				return invoke.Result, nil
+			}).(pulumi.StringPtrOutput)),
+			MetroCode: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+				return &sv.MetroCode, nil
+			}).(pulumi.StringPtrOutput).ApplyT(func(x *string) equinix.Metro { return equinix.Metro(*x) }).(equinix.MetroOutput),
 			DeviceTypeCode: pulumi.String("AVIATRIX_TRANSIT_EDGE"),
 			ProcessType:    pulumi.String(networkedge.FileTypeCloudInit),
 			SelfManaged:    pulumi.Bool(true),
@@ -40,8 +37,10 @@ func main() {
 			return err
 		}
 		_, err = networkedge.NewDevice(ctx, "aviatrix-transit-edge-single", &networkedge.DeviceArgs{
-			Name:        pulumi.String("tf-aviatrix"),
-			MetroCode:   pulumi.String(sv.MetroCode),
+			Name: pulumi.String("tf-aviatrix"),
+			MetroCode: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+				return &sv.MetroCode, nil
+			}).(pulumi.StringPtrOutput)),
 			TypeCode:    pulumi.String("AVIATRIX_TRANSIT_EDGE"),
 			SelfManaged: pulumi.Bool(true),
 			Byol:        pulumi.Bool(true),
@@ -49,8 +48,10 @@ func main() {
 			Notifications: pulumi.StringArray{
 				pulumi.String("john@equinix.com"),
 			},
-			TermLength:      pulumi.Int(12),
-			AccountNumber:   pulumi.String(sv.Number),
+			TermLength: pulumi.Int(12),
+			AccountNumber: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+				return &sv.Number, nil
+			}).(pulumi.StringPtrOutput)),
 			Version:         pulumi.String("7.2.a"),
 			CoreCount:       pulumi.Int(2),
 			CloudInitFileId: aviatrixCloudinitFile.Uuid,

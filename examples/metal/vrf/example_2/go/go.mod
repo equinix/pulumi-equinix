@@ -2,7 +2,7 @@ module equinix-metal-vrf-example_2
 
 go 1.21
 
-toolchain go1.23.3
+toolchain go1.21.3
 
 require (
 	github.com/equinix/pulumi-equinix/sdk latest

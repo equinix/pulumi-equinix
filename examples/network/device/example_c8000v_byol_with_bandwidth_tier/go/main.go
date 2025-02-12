@@ -7,15 +7,14 @@ import (
 
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
-		sv, err := networkedge.GetAccount(ctx, &networkedge.GetAccountArgs{
-			MetroCode: "SV",
+		sv := networkedge.GetAccountOutput(ctx, networkedge.GetAccountOutputArgs{
+			MetroCode: pulumi.String("SV"),
 		}, nil)
-		if err != nil {
-			return err
-		}
-		_, err = networkedge.NewDevice(ctx, "c8000v-byol-tier", &networkedge.DeviceArgs{
-			Name:        pulumi.String("tf-c8000v-byol"),
-			MetroCode:   pulumi.String(sv.MetroCode),
+		_, err := networkedge.NewDevice(ctx, "c8000v-byol-tier", &networkedge.DeviceArgs{
+			Name: pulumi.String("tf-c8000v-byol"),
+			MetroCode: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+				return &sv.MetroCode, nil
+			}).(pulumi.StringPtrOutput)),
 			TypeCode:    pulumi.String("C8000V"),
 			SelfManaged: pulumi.Bool(true),
 			Byol:        pulumi.Bool(true),
@@ -25,8 +24,10 @@ func main() {
 				pulumi.String("marry@equinix.com"),
 				pulumi.String("fred@equinix.com"),
 			},
-			TermLength:     pulumi.Int(12),
-			AccountNumber:  pulumi.String(sv.Number),
+			TermLength: pulumi.Int(12),
+			AccountNumber: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+				return &sv.Number, nil
+			}).(pulumi.StringPtrOutput)),
 			Version:        pulumi.String("17.11.01a"),
 			InterfaceCount: pulumi.Int(10),
 			CoreCount:      pulumi.Int(2),
