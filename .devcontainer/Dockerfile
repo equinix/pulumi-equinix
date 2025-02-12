@@ -8,7 +8,9 @@ RUN apt-get update && \
     apt-get install -y xz-utils && \
     apt-get install -y make && \
     apt-get install -y gcc && \
-    apt-get install -y git
+    apt-get install -y git && \
+    apt-get install -y gh && \
+    apt-get install -y zip
 
 # Install bridged provider prerequisites
 # See README.md
@@ -30,13 +32,13 @@ RUN mkdir -p $GOPATH/bin && \
 ENV PATH=$PATH:$GOPATH/bin
 
 # Install pulumictl
-ARG PULUMICTL_VERSION=v0.0.32
+ARG PULUMICTL_VERSION=v0.0.46
 RUN rm -rf /usr/local/bin/pulumictl && \
     wget -O pulumictl.${PULUMICTL_VERSION}.tar.gz https://github.com/pulumi/pulumictl/releases/download/${PULUMICTL_VERSION}/pulumictl-${PULUMICTL_VERSION}-linux-amd64.tar.gz && \
     tar -C /usr/local/bin -xzf pulumictl.${PULUMICTL_VERSION}.tar.gz
 
 # Install nodejs
-ARG NODEJS_VERSION=v16.16.0
+ARG NODEJS_VERSION=v22.13.1
 ARG NODEJS_PKG=node-${NODEJS_VERSION}-linux-x64
 ARG NODEJS_TARBALL=${NODEJS_PKG}.tar.xz
 RUN rm -rf /usr/local/node && \
@@ -66,3 +68,15 @@ RUN apt-get update && \
 # Install Pulumi
 RUN curl -fsSL https://get.pulumi.com | sh
 ENV PATH=$PATH:/root/.pulumi/bin
+
+# Install upgrade-provider
+RUN go install github.com/pulumi/upgrade-provider@main
+
+# Install sdkman
+RUN curl -s "https://get.sdkman.io" | bash
+
+# Install gradle
+SHELL ["/bin/bash", "-c"]
+RUN source "$HOME/.sdkman/bin/sdkman-init.sh" && \
+    sdk install java && \
+    sdk install gradle

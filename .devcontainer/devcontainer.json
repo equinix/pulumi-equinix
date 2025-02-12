@@ -3,6 +3,11 @@
 {
   "name": "TFProvider",
   "build": {
-      "dockerfile": "Dockerfile"
-  }
+      "dockerfile": "Dockerfile",
+      "options": ["--platform=linux/amd64" ]
+  },
+  "runArgs": ["--platform=linux/amd64" ],
+  "mounts": [
+    "type=bind,source=${localEnv:HOME}/.ssh,target=/root/.ssh,readonly"
+  ]
 }
