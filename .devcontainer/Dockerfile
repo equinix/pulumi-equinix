@@ -9,7 +9,8 @@ RUN apt-get update && \
     apt-get install -y make && \
     apt-get install -y gcc && \
     apt-get install -y git && \
-    apt-get install -y gh
+    apt-get install -y gh && \
+    apt-get install -y zip
 
 # Install bridged provider prerequisites
 # See README.md
@@ -70,3 +71,12 @@ ENV PATH=$PATH:/root/.pulumi/bin
 
 # Install upgrade-provider
 RUN go install github.com/pulumi/upgrade-provider@main
+
+# Install sdkman
+RUN curl -s "https://get.sdkman.io" | bash
+
+# Install gradle
+SHELL ["/bin/bash", "-c"]
+RUN source "$HOME/.sdkman/bin/sdkman-init.sh" && \
+    sdk install java && \
+    sdk install gradle
