@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -179,9 +184,6 @@ def get_hardware_reservation(device_id: Optional[str] = None,
         short_id=pulumi.get(__ret__, 'short_id'),
         spare=pulumi.get(__ret__, 'spare'),
         switch_uuid=pulumi.get(__ret__, 'switch_uuid'))
-
-
-@_utilities.lift_output_func(get_hardware_reservation)
 def get_hardware_reservation_output(device_id: Optional[pulumi.Input[Optional[str]]] = None,
                                     id: Optional[pulumi.Input[Optional[str]]] = None,
                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHardwareReservationResult]:
@@ -204,4 +206,18 @@ def get_hardware_reservation_output(device_id: Optional[pulumi.Input[Optional[st
     :param str device_id: UUID of device occupying the reservation.
     :param str id: ID of the hardware reservation.
     """
-    ...
+    __args__ = dict()
+    __args__['deviceId'] = device_id
+    __args__['id'] = id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('equinix:metal/getHardwareReservation:getHardwareReservation', __args__, opts=opts, typ=GetHardwareReservationResult)
+    return __ret__.apply(lambda __response__: GetHardwareReservationResult(
+        device_id=pulumi.get(__response__, 'device_id'),
+        facility=pulumi.get(__response__, 'facility'),
+        id=pulumi.get(__response__, 'id'),
+        plan=pulumi.get(__response__, 'plan'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        provisionable=pulumi.get(__response__, 'provisionable'),
+        short_id=pulumi.get(__response__, 'short_id'),
+        spare=pulumi.get(__response__, 'spare'),
+        switch_uuid=pulumi.get(__response__, 'switch_uuid')))

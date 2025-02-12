@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -186,9 +191,6 @@ def get_spot_market_request(request_id: Optional[str] = None,
         plan=pulumi.get(__ret__, 'plan'),
         project_id=pulumi.get(__ret__, 'project_id'),
         request_id=pulumi.get(__ret__, 'request_id'))
-
-
-@_utilities.lift_output_func(get_spot_market_request)
 def get_spot_market_request_output(request_id: Optional[pulumi.Input[str]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSpotMarketRequestResult]:
     """
@@ -196,4 +198,19 @@ def get_spot_market_request_output(request_id: Optional[pulumi.Input[str]] = Non
 
     :param str request_id: The id of the Spot Market Request.
     """
-    ...
+    __args__ = dict()
+    __args__['requestId'] = request_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('equinix:metal/getSpotMarketRequest:getSpotMarketRequest', __args__, opts=opts, typ=GetSpotMarketRequestResult)
+    return __ret__.apply(lambda __response__: GetSpotMarketRequestResult(
+        device_ids=pulumi.get(__response__, 'device_ids'),
+        devices_max=pulumi.get(__response__, 'devices_max'),
+        devices_min=pulumi.get(__response__, 'devices_min'),
+        end_at=pulumi.get(__response__, 'end_at'),
+        facilities=pulumi.get(__response__, 'facilities'),
+        id=pulumi.get(__response__, 'id'),
+        max_bid_price=pulumi.get(__response__, 'max_bid_price'),
+        metro=pulumi.get(__response__, 'metro'),
+        plan=pulumi.get(__response__, 'plan'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        request_id=pulumi.get(__response__, 'request_id')))

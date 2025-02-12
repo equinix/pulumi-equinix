@@ -4,142 +4,285 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from .. import _enums as _root_enums
 from ._enums import *
 
 __all__ = [
     'CloudRouterAccountArgs',
+    'CloudRouterAccountArgsDict',
     'CloudRouterChangeLogArgs',
+    'CloudRouterChangeLogArgsDict',
     'CloudRouterLocationArgs',
+    'CloudRouterLocationArgsDict',
     'CloudRouterMarketplaceSubscriptionArgs',
+    'CloudRouterMarketplaceSubscriptionArgsDict',
     'CloudRouterNotificationArgs',
+    'CloudRouterNotificationArgsDict',
     'CloudRouterOrderArgs',
+    'CloudRouterOrderArgsDict',
     'CloudRouterPackageArgs',
+    'CloudRouterPackageArgsDict',
     'CloudRouterProjectArgs',
+    'CloudRouterProjectArgsDict',
     'ConnectionASideArgs',
+    'ConnectionASideArgsDict',
     'ConnectionASideAccessPointArgs',
+    'ConnectionASideAccessPointArgsDict',
     'ConnectionASideAccessPointAccountArgs',
+    'ConnectionASideAccessPointAccountArgsDict',
     'ConnectionASideAccessPointGatewayArgs',
+    'ConnectionASideAccessPointGatewayArgsDict',
     'ConnectionASideAccessPointInterfaceArgs',
+    'ConnectionASideAccessPointInterfaceArgsDict',
     'ConnectionASideAccessPointLinkProtocolArgs',
+    'ConnectionASideAccessPointLinkProtocolArgsDict',
     'ConnectionASideAccessPointLocationArgs',
+    'ConnectionASideAccessPointLocationArgsDict',
     'ConnectionASideAccessPointNetworkArgs',
+    'ConnectionASideAccessPointNetworkArgsDict',
     'ConnectionASideAccessPointPortArgs',
+    'ConnectionASideAccessPointPortArgsDict',
     'ConnectionASideAccessPointPortRedundancyArgs',
+    'ConnectionASideAccessPointPortRedundancyArgsDict',
     'ConnectionASideAccessPointProfileArgs',
+    'ConnectionASideAccessPointProfileArgsDict',
     'ConnectionASideAccessPointProfileAccessPointTypeConfigArgs',
+    'ConnectionASideAccessPointProfileAccessPointTypeConfigArgsDict',
     'ConnectionASideAccessPointRouterArgs',
+    'ConnectionASideAccessPointRouterArgsDict',
     'ConnectionASideAccessPointVirtualDeviceArgs',
+    'ConnectionASideAccessPointVirtualDeviceArgsDict',
     'ConnectionASideAdditionalInfoArgs',
+    'ConnectionASideAdditionalInfoArgsDict',
     'ConnectionASideServiceTokenArgs',
+    'ConnectionASideServiceTokenArgsDict',
     'ConnectionAccountArgs',
+    'ConnectionAccountArgsDict',
     'ConnectionChangeLogArgs',
+    'ConnectionChangeLogArgsDict',
     'ConnectionNotificationArgs',
+    'ConnectionNotificationArgsDict',
     'ConnectionOperationArgs',
+    'ConnectionOperationArgsDict',
     'ConnectionOperationErrorArgs',
+    'ConnectionOperationErrorArgsDict',
     'ConnectionOperationErrorAdditionalInfoArgs',
+    'ConnectionOperationErrorAdditionalInfoArgsDict',
     'ConnectionOrderArgs',
+    'ConnectionOrderArgsDict',
     'ConnectionProjectArgs',
+    'ConnectionProjectArgsDict',
     'ConnectionRedundancyArgs',
+    'ConnectionRedundancyArgsDict',
     'ConnectionZSideArgs',
+    'ConnectionZSideArgsDict',
     'ConnectionZSideAccessPointArgs',
+    'ConnectionZSideAccessPointArgsDict',
     'ConnectionZSideAccessPointAccountArgs',
+    'ConnectionZSideAccessPointAccountArgsDict',
     'ConnectionZSideAccessPointGatewayArgs',
+    'ConnectionZSideAccessPointGatewayArgsDict',
     'ConnectionZSideAccessPointInterfaceArgs',
+    'ConnectionZSideAccessPointInterfaceArgsDict',
     'ConnectionZSideAccessPointLinkProtocolArgs',
+    'ConnectionZSideAccessPointLinkProtocolArgsDict',
     'ConnectionZSideAccessPointLocationArgs',
+    'ConnectionZSideAccessPointLocationArgsDict',
     'ConnectionZSideAccessPointNetworkArgs',
+    'ConnectionZSideAccessPointNetworkArgsDict',
     'ConnectionZSideAccessPointPortArgs',
+    'ConnectionZSideAccessPointPortArgsDict',
     'ConnectionZSideAccessPointPortRedundancyArgs',
+    'ConnectionZSideAccessPointPortRedundancyArgsDict',
     'ConnectionZSideAccessPointProfileArgs',
+    'ConnectionZSideAccessPointProfileArgsDict',
     'ConnectionZSideAccessPointProfileAccessPointTypeConfigArgs',
+    'ConnectionZSideAccessPointProfileAccessPointTypeConfigArgsDict',
     'ConnectionZSideAccessPointRouterArgs',
+    'ConnectionZSideAccessPointRouterArgsDict',
     'ConnectionZSideAccessPointVirtualDeviceArgs',
+    'ConnectionZSideAccessPointVirtualDeviceArgsDict',
     'ConnectionZSideAdditionalInfoArgs',
+    'ConnectionZSideAdditionalInfoArgsDict',
     'ConnectionZSideServiceTokenArgs',
+    'ConnectionZSideServiceTokenArgsDict',
     'NetworkChangeArgs',
+    'NetworkChangeArgsDict',
     'NetworkChangeLogArgs',
+    'NetworkChangeLogArgsDict',
     'NetworkLocationArgs',
+    'NetworkLocationArgsDict',
     'NetworkNotificationArgs',
+    'NetworkNotificationArgsDict',
     'NetworkOperationArgs',
+    'NetworkOperationArgsDict',
     'NetworkProjectArgs',
+    'NetworkProjectArgsDict',
     'RouteFilterChangeArgs',
+    'RouteFilterChangeArgsDict',
     'RouteFilterChangeLogArgs',
+    'RouteFilterChangeLogArgsDict',
     'RouteFilterProjectArgs',
+    'RouteFilterProjectArgsDict',
     'RouteFilterRuleChangeArgs',
+    'RouteFilterRuleChangeArgsDict',
     'RouteFilterRuleChangeLogArgs',
+    'RouteFilterRuleChangeLogArgsDict',
     'RoutingProtocolBfdArgs',
+    'RoutingProtocolBfdArgsDict',
     'RoutingProtocolBgpIpv4Args',
+    'RoutingProtocolBgpIpv4ArgsDict',
     'RoutingProtocolBgpIpv6Args',
+    'RoutingProtocolBgpIpv6ArgsDict',
     'RoutingProtocolChangeArgs',
+    'RoutingProtocolChangeArgsDict',
     'RoutingProtocolChangeLogArgs',
+    'RoutingProtocolChangeLogArgsDict',
     'RoutingProtocolDirectIpv4Args',
+    'RoutingProtocolDirectIpv4ArgsDict',
     'RoutingProtocolDirectIpv6Args',
+    'RoutingProtocolDirectIpv6ArgsDict',
     'RoutingProtocolOperationArgs',
+    'RoutingProtocolOperationArgsDict',
     'RoutingProtocolOperationErrorArgs',
+    'RoutingProtocolOperationErrorArgsDict',
     'RoutingProtocolOperationErrorAdditionalInfoArgs',
+    'RoutingProtocolOperationErrorAdditionalInfoArgsDict',
     'ServiceProfileAccessPointTypeConfigArgs',
+    'ServiceProfileAccessPointTypeConfigArgsDict',
     'ServiceProfileAccessPointTypeConfigApiConfigArgs',
+    'ServiceProfileAccessPointTypeConfigApiConfigArgsDict',
     'ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs',
+    'ServiceProfileAccessPointTypeConfigAuthenticationKeyArgsDict',
     'ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs',
+    'ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgsDict',
     'ServiceProfileAccountArgs',
+    'ServiceProfileAccountArgsDict',
     'ServiceProfileChangeLogArgs',
+    'ServiceProfileChangeLogArgsDict',
     'ServiceProfileCustomFieldArgs',
+    'ServiceProfileCustomFieldArgsDict',
     'ServiceProfileMarketingInfoArgs',
+    'ServiceProfileMarketingInfoArgsDict',
     'ServiceProfileMarketingInfoProcessStepArgs',
+    'ServiceProfileMarketingInfoProcessStepArgsDict',
     'ServiceProfileMetroArgs',
+    'ServiceProfileMetroArgsDict',
     'ServiceProfileNotificationArgs',
+    'ServiceProfileNotificationArgsDict',
     'ServiceProfilePortArgs',
+    'ServiceProfilePortArgsDict',
     'ServiceProfilePortLocationArgs',
+    'ServiceProfilePortLocationArgsDict',
     'ServiceProfileProjectArgs',
+    'ServiceProfileProjectArgsDict',
     'ServiceProfileVirtualDeviceArgs',
+    'ServiceProfileVirtualDeviceArgsDict',
     'ServiceProfileVirtualDeviceLocationArgs',
+    'ServiceProfileVirtualDeviceLocationArgsDict',
     'ServiceTokenAccountArgs',
+    'ServiceTokenAccountArgsDict',
     'ServiceTokenChangeLogArgs',
+    'ServiceTokenChangeLogArgsDict',
     'ServiceTokenNotificationArgs',
+    'ServiceTokenNotificationArgsDict',
     'ServiceTokenProjectArgs',
+    'ServiceTokenProjectArgsDict',
     'ServiceTokenServiceTokenConnectionArgs',
+    'ServiceTokenServiceTokenConnectionArgsDict',
     'ServiceTokenServiceTokenConnectionASideArgs',
+    'ServiceTokenServiceTokenConnectionASideArgsDict',
     'ServiceTokenServiceTokenConnectionASideAccessPointSelectorArgs',
+    'ServiceTokenServiceTokenConnectionASideAccessPointSelectorArgsDict',
     'ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceArgs',
+    'ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceArgsDict',
     'ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolArgs',
+    'ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolArgsDict',
     'ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkArgs',
+    'ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkArgsDict',
     'ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArgs',
+    'ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArgsDict',
     'ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortArgs',
+    'ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortArgsDict',
     'ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArgs',
+    'ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArgsDict',
     'ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs',
+    'ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgsDict',
     'ServiceTokenServiceTokenConnectionZSideArgs',
+    'ServiceTokenServiceTokenConnectionZSideArgsDict',
     'ServiceTokenServiceTokenConnectionZSideAccessPointSelectorArgs',
+    'ServiceTokenServiceTokenConnectionZSideAccessPointSelectorArgsDict',
     'ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceArgs',
+    'ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceArgsDict',
     'ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolArgs',
+    'ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolArgsDict',
     'ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkArgs',
+    'ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkArgsDict',
     'ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArgs',
+    'ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArgsDict',
     'ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortArgs',
+    'ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortArgsDict',
     'ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArgs',
+    'ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArgsDict',
     'ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs',
+    'ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgsDict',
     'GetCloudRoutersFilterArgs',
+    'GetCloudRoutersFilterArgsDict',
     'GetCloudRoutersPaginationArgs',
+    'GetCloudRoutersPaginationArgsDict',
     'GetCloudRoutersSortArgs',
+    'GetCloudRoutersSortArgsDict',
     'GetConnectionsFilterArgs',
+    'GetConnectionsFilterArgsDict',
     'GetConnectionsPaginationArgs',
+    'GetConnectionsPaginationArgsDict',
     'GetConnectionsSortArgs',
+    'GetConnectionsSortArgsDict',
     'GetNetworksFilterArgs',
+    'GetNetworksFilterArgsDict',
     'GetNetworksPaginationArgs',
+    'GetNetworksPaginationArgsDict',
     'GetNetworksSortArgs',
+    'GetNetworksSortArgsDict',
     'GetPortsFilterArgs',
+    'GetPortsFilterArgsDict',
     'GetRouteFiltersFilterArgs',
+    'GetRouteFiltersFilterArgsDict',
     'GetRouteFiltersPaginationArgs',
+    'GetRouteFiltersPaginationArgsDict',
     'GetRouteFiltersSortArgs',
+    'GetRouteFiltersSortArgsDict',
     'GetServiceProfilesFilterArgs',
+    'GetServiceProfilesFilterArgsDict',
     'GetServiceProfilesPaginationArgs',
+    'GetServiceProfilesPaginationArgsDict',
     'GetServiceProfilesSortArgs',
+    'GetServiceProfilesSortArgsDict',
     'GetServiceTokensFilterArgs',
+    'GetServiceTokensFilterArgsDict',
     'GetServiceTokensPaginationArgs',
+    'GetServiceTokensPaginationArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class CloudRouterAccountArgsDict(TypedDict):
+        account_number: pulumi.Input[int]
+        """
+        Account Number
+        """
+elif False:
+    CloudRouterAccountArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CloudRouterAccountArgs:
@@ -162,6 +305,59 @@ class CloudRouterAccountArgs:
     def account_number(self, value: pulumi.Input[int]):
         pulumi.set(self, "account_number", value)
 
+
+if not MYPY:
+    class CloudRouterChangeLogArgsDict(TypedDict):
+        created_by: NotRequired[pulumi.Input[str]]
+        """
+        Created by User Key
+        """
+        created_by_email: NotRequired[pulumi.Input[str]]
+        """
+        Created by User Email Address
+        """
+        created_by_full_name: NotRequired[pulumi.Input[str]]
+        """
+        Created by User Full Name
+        """
+        created_date_time: NotRequired[pulumi.Input[str]]
+        """
+        Created by Date and Time
+        """
+        deleted_by: NotRequired[pulumi.Input[str]]
+        """
+        Deleted by User Key
+        """
+        deleted_by_email: NotRequired[pulumi.Input[str]]
+        """
+        Deleted by User Email Address
+        """
+        deleted_by_full_name: NotRequired[pulumi.Input[str]]
+        """
+        Deleted by User Full Name
+        """
+        deleted_date_time: NotRequired[pulumi.Input[str]]
+        """
+        Deleted by Date and Time
+        """
+        updated_by: NotRequired[pulumi.Input[str]]
+        """
+        Updated by User Key
+        """
+        updated_by_email: NotRequired[pulumi.Input[str]]
+        """
+        Updated by User Email Address
+        """
+        updated_by_full_name: NotRequired[pulumi.Input[str]]
+        """
+        Updated by User Full Name
+        """
+        updated_date_time: NotRequired[pulumi.Input[str]]
+        """
+        Updated by Date and Time
+        """
+elif False:
+    CloudRouterChangeLogArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CloudRouterChangeLogArgs:
@@ -362,6 +558,27 @@ class CloudRouterChangeLogArgs:
         pulumi.set(self, "updated_date_time", value)
 
 
+if not MYPY:
+    class CloudRouterLocationArgsDict(TypedDict):
+        ibx: NotRequired[pulumi.Input[str]]
+        """
+        IBX Code
+        """
+        metro_code: NotRequired[pulumi.Input[str]]
+        """
+        Access point metro code
+        """
+        metro_name: NotRequired[pulumi.Input[str]]
+        """
+        Access point metro name
+        """
+        region: NotRequired[pulumi.Input[str]]
+        """
+        Access point region
+        """
+elif False:
+    CloudRouterLocationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CloudRouterLocationArgs:
     def __init__(__self__, *,
@@ -433,6 +650,19 @@ class CloudRouterLocationArgs:
         pulumi.set(self, "region", value)
 
 
+if not MYPY:
+    class CloudRouterMarketplaceSubscriptionArgsDict(TypedDict):
+        uuid: pulumi.Input[str]
+        """
+        Equinix-assigned Marketplace Subscription identifier
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Marketplace Subscription type like; AWS*MARKETPLACE*SUBSCRIPTION
+        """
+elif False:
+    CloudRouterMarketplaceSubscriptionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CloudRouterMarketplaceSubscriptionArgs:
     def __init__(__self__, *,
@@ -470,6 +700,23 @@ class CloudRouterMarketplaceSubscriptionArgs:
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class CloudRouterNotificationArgsDict(TypedDict):
+        emails: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        Array of contact emails
+        """
+        type: pulumi.Input[str]
+        """
+        Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
+        """
+        send_interval: NotRequired[pulumi.Input[str]]
+        """
+        Send interval
+        """
+elif False:
+    CloudRouterNotificationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CloudRouterNotificationArgs:
@@ -523,6 +770,27 @@ class CloudRouterNotificationArgs:
     def send_interval(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "send_interval", value)
 
+
+if not MYPY:
+    class CloudRouterOrderArgsDict(TypedDict):
+        billing_tier: NotRequired[pulumi.Input[str]]
+        """
+        Billing tier for connection bandwidth
+        """
+        order_id: NotRequired[pulumi.Input[str]]
+        """
+        Order Identification
+        """
+        order_number: NotRequired[pulumi.Input[str]]
+        """
+        Order Reference Number
+        """
+        purchase_order_number: NotRequired[pulumi.Input[str]]
+        """
+        Purchase order number
+        """
+elif False:
+    CloudRouterOrderArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CloudRouterOrderArgs:
@@ -595,6 +863,15 @@ class CloudRouterOrderArgs:
         pulumi.set(self, "purchase_order_number", value)
 
 
+if not MYPY:
+    class CloudRouterPackageArgsDict(TypedDict):
+        code: pulumi.Input[str]
+        """
+        Fabric Cloud Router package code
+        """
+elif False:
+    CloudRouterPackageArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CloudRouterPackageArgs:
     def __init__(__self__, *,
@@ -616,6 +893,19 @@ class CloudRouterPackageArgs:
     def code(self, value: pulumi.Input[str]):
         pulumi.set(self, "code", value)
 
+
+if not MYPY:
+    class CloudRouterProjectArgsDict(TypedDict):
+        href: NotRequired[pulumi.Input[str]]
+        """
+        Unique Resource URL
+        """
+        project_id: NotRequired[pulumi.Input[str]]
+        """
+        Project Id
+        """
+elif False:
+    CloudRouterProjectArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CloudRouterProjectArgs:
@@ -655,6 +945,23 @@ class CloudRouterProjectArgs:
     def project_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project_id", value)
 
+
+if not MYPY:
+    class ConnectionASideArgsDict(TypedDict):
+        access_point: NotRequired[pulumi.Input['ConnectionASideAccessPointArgsDict']]
+        """
+        Point of access details
+        """
+        additional_info: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectionASideAdditionalInfoArgsDict']]]]
+        """
+        Connection side additional information
+        """
+        service_token: NotRequired[pulumi.Input['ConnectionASideServiceTokenArgsDict']]
+        """
+        For service token based connections, Service tokens authorize users to access protected resources and services. Resource owners can distribute the tokens to trusted partners and vendors, allowing selected third parties to work directly with Equinix network assets
+        """
+elif False:
+    ConnectionASideArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionASideArgs:
@@ -710,6 +1017,71 @@ class ConnectionASideArgs:
     def service_token(self, value: Optional[pulumi.Input['ConnectionASideServiceTokenArgs']]):
         pulumi.set(self, "service_token", value)
 
+
+if not MYPY:
+    class ConnectionASideAccessPointArgsDict(TypedDict):
+        account: NotRequired[pulumi.Input['ConnectionASideAccessPointAccountArgsDict']]
+        """
+        Account
+        """
+        authentication_key: NotRequired[pulumi.Input[str]]
+        """
+        Authentication key for provider based connections or Metal-Fabric Integration connections
+        """
+        gateway: NotRequired[pulumi.Input['ConnectionASideAccessPointGatewayArgsDict']]
+        """
+        **Deprecated** `gateway` Use `router` attribute instead
+        """
+        interface: NotRequired[pulumi.Input['ConnectionASideAccessPointInterfaceArgsDict']]
+        """
+        Virtual device interface
+        """
+        link_protocol: NotRequired[pulumi.Input['ConnectionASideAccessPointLinkProtocolArgsDict']]
+        """
+        Connection link protocol
+        """
+        location: NotRequired[pulumi.Input['ConnectionASideAccessPointLocationArgsDict']]
+        """
+        Access point location
+        """
+        network: NotRequired[pulumi.Input['ConnectionASideAccessPointNetworkArgsDict']]
+        """
+        network access point information
+        """
+        peering_type: NotRequired[pulumi.Input[Union[str, 'AccessPointPeeringType']]]
+        """
+        Peering Type- PRIVATE,MICROSOFT,PUBLIC, MANUAL
+        """
+        port: NotRequired[pulumi.Input['ConnectionASideAccessPointPortArgsDict']]
+        """
+        Port access point information
+        """
+        profile: NotRequired[pulumi.Input['ConnectionASideAccessPointProfileArgsDict']]
+        """
+        Service Profile
+        """
+        provider_connection_id: NotRequired[pulumi.Input[str]]
+        """
+        Provider assigned Connection Id
+        """
+        router: NotRequired[pulumi.Input['ConnectionASideAccessPointRouterArgsDict']]
+        """
+        Cloud Router access point information that replaces `gateway`
+        """
+        seller_region: NotRequired[pulumi.Input[str]]
+        """
+        Access point seller region
+        """
+        type: NotRequired[pulumi.Input[Union[str, 'AccessPointType']]]
+        """
+        Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD*ROUTER, NETWORK, METAL*NETWORK
+        """
+        virtual_device: NotRequired[pulumi.Input['ConnectionASideAccessPointVirtualDeviceArgsDict']]
+        """
+        Virtual device
+        """
+elif False:
+    ConnectionASideAccessPointArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionASideAccessPointArgs:
@@ -962,6 +1334,43 @@ class ConnectionASideAccessPointArgs:
         pulumi.set(self, "virtual_device", value)
 
 
+if not MYPY:
+    class ConnectionASideAccessPointAccountArgsDict(TypedDict):
+        account_name: NotRequired[pulumi.Input[str]]
+        """
+        Legal name of the accountholder.
+        """
+        account_number: NotRequired[pulumi.Input[int]]
+        """
+        Equinix-assigned account number.
+        """
+        global_cust_id: NotRequired[pulumi.Input[str]]
+        """
+        Equinix-assigned ID of the subscriber's parent organization.
+        """
+        global_org_id: NotRequired[pulumi.Input[str]]
+        """
+        Equinix-assigned ID of the subscriber's parent organization.
+        """
+        global_organization_name: NotRequired[pulumi.Input[str]]
+        """
+        Equinix-assigned name of the subscriber's parent organization.
+        """
+        org_id: NotRequired[pulumi.Input[int]]
+        """
+        Equinix-assigned ID of the subscriber's organization.
+        """
+        organization_name: NotRequired[pulumi.Input[str]]
+        """
+        Equinix-assigned name of the subscriber's organization.
+        """
+        ucm_id: NotRequired[pulumi.Input[str]]
+        """
+        Enterprise datastore id
+        """
+elif False:
+    ConnectionASideAccessPointAccountArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConnectionASideAccessPointAccountArgs:
     def __init__(__self__, *,
@@ -1097,6 +1506,19 @@ class ConnectionASideAccessPointAccountArgs:
         pulumi.set(self, "ucm_id", value)
 
 
+if not MYPY:
+    class ConnectionASideAccessPointGatewayArgsDict(TypedDict):
+        href: NotRequired[pulumi.Input[str]]
+        """
+        Unique Resource Identifier
+        """
+        uuid: NotRequired[pulumi.Input[str]]
+        """
+        Equinix-assigned virtual gateway identifier
+        """
+elif False:
+    ConnectionASideAccessPointGatewayArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConnectionASideAccessPointGatewayArgs:
     def __init__(__self__, *,
@@ -1135,6 +1557,23 @@ class ConnectionASideAccessPointGatewayArgs:
     def uuid(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "uuid", value)
 
+
+if not MYPY:
+    class ConnectionASideAccessPointInterfaceArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[int]]
+        """
+        id
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Interface type
+        """
+        uuid: NotRequired[pulumi.Input[str]]
+        """
+        Equinix-assigned interface identifier
+        """
+elif False:
+    ConnectionASideAccessPointInterfaceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionASideAccessPointInterfaceArgs:
@@ -1190,6 +1629,27 @@ class ConnectionASideAccessPointInterfaceArgs:
     def uuid(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "uuid", value)
 
+
+if not MYPY:
+    class ConnectionASideAccessPointLinkProtocolArgsDict(TypedDict):
+        type: NotRequired[pulumi.Input[Union[str, 'AccessPointLinkProtocolType']]]
+        """
+        Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
+        """
+        vlan_c_tag: NotRequired[pulumi.Input[int]]
+        """
+        Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+        """
+        vlan_s_tag: NotRequired[pulumi.Input[int]]
+        """
+        Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+        """
+        vlan_tag: NotRequired[pulumi.Input[int]]
+        """
+        Vlan Tag information, vlanTag value specified for DOT1Q connections
+        """
+elif False:
+    ConnectionASideAccessPointLinkProtocolArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionASideAccessPointLinkProtocolArgs:
@@ -1262,6 +1722,27 @@ class ConnectionASideAccessPointLinkProtocolArgs:
         pulumi.set(self, "vlan_tag", value)
 
 
+if not MYPY:
+    class ConnectionASideAccessPointLocationArgsDict(TypedDict):
+        ibx: NotRequired[pulumi.Input[str]]
+        """
+        IBX Code
+        """
+        metro_code: NotRequired[pulumi.Input[Union[str, '_root_enums.Metro']]]
+        """
+        Access point metro code
+        """
+        metro_name: NotRequired[pulumi.Input[str]]
+        """
+        Access point metro name
+        """
+        region: NotRequired[pulumi.Input[str]]
+        """
+        Access point region
+        """
+elif False:
+    ConnectionASideAccessPointLocationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConnectionASideAccessPointLocationArgs:
     def __init__(__self__, *,
@@ -1333,6 +1814,19 @@ class ConnectionASideAccessPointLocationArgs:
         pulumi.set(self, "region", value)
 
 
+if not MYPY:
+    class ConnectionASideAccessPointNetworkArgsDict(TypedDict):
+        href: NotRequired[pulumi.Input[str]]
+        """
+        Unique Resource Identifier
+        """
+        uuid: NotRequired[pulumi.Input[str]]
+        """
+        Equinix-assigned Network identifier
+        """
+elif False:
+    ConnectionASideAccessPointNetworkArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConnectionASideAccessPointNetworkArgs:
     def __init__(__self__, *,
@@ -1371,6 +1865,27 @@ class ConnectionASideAccessPointNetworkArgs:
     def uuid(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "uuid", value)
 
+
+if not MYPY:
+    class ConnectionASideAccessPointPortArgsDict(TypedDict):
+        href: NotRequired[pulumi.Input[str]]
+        """
+        Unique Resource Identifier
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Port name
+        """
+        redundancy: NotRequired[pulumi.Input['ConnectionASideAccessPointPortRedundancyArgsDict']]
+        """
+        Redundancy Information
+        """
+        uuid: NotRequired[pulumi.Input[str]]
+        """
+        Equinix-assigned Port identifier
+        """
+elif False:
+    ConnectionASideAccessPointPortArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionASideAccessPointPortArgs:
@@ -1443,6 +1958,23 @@ class ConnectionASideAccessPointPortArgs:
         pulumi.set(self, "uuid", value)
 
 
+if not MYPY:
+    class ConnectionASideAccessPointPortRedundancyArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Access point redundancy
+        """
+        group: NotRequired[pulumi.Input[str]]
+        """
+        Port redundancy group
+        """
+        priority: NotRequired[pulumi.Input[str]]
+        """
+        Priority type-Primary or Secondary
+        """
+elif False:
+    ConnectionASideAccessPointPortRedundancyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConnectionASideAccessPointPortRedundancyArgs:
     def __init__(__self__, *,
@@ -1497,6 +2029,35 @@ class ConnectionASideAccessPointPortRedundancyArgs:
     def priority(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "priority", value)
 
+
+if not MYPY:
+    class ConnectionASideAccessPointProfileArgsDict(TypedDict):
+        type: pulumi.Input[Union[str, 'ProfileType']]
+        """
+        Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
+        """
+        uuid: pulumi.Input[str]
+        """
+        Equinix assigned service profile identifier
+        """
+        access_point_type_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectionASideAccessPointProfileAccessPointTypeConfigArgsDict']]]]
+        """
+        Access point config information
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        User-provided service description
+        """
+        href: NotRequired[pulumi.Input[str]]
+        """
+        Service Profile URI response attribute
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Customer-assigned service profile name
+        """
+elif False:
+    ConnectionASideAccessPointProfileArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionASideAccessPointProfileArgs:
@@ -1599,6 +2160,19 @@ class ConnectionASideAccessPointProfileArgs:
         pulumi.set(self, "name", value)
 
 
+if not MYPY:
+    class ConnectionASideAccessPointProfileAccessPointTypeConfigArgsDict(TypedDict):
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Type of access point type config - VD, COLO
+        """
+        uuid: NotRequired[pulumi.Input[str]]
+        """
+        Equinix-assigned access point type config identifier
+        """
+elif False:
+    ConnectionASideAccessPointProfileAccessPointTypeConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConnectionASideAccessPointProfileAccessPointTypeConfigArgs:
     def __init__(__self__, *,
@@ -1638,6 +2212,19 @@ class ConnectionASideAccessPointProfileAccessPointTypeConfigArgs:
         pulumi.set(self, "uuid", value)
 
 
+if not MYPY:
+    class ConnectionASideAccessPointRouterArgsDict(TypedDict):
+        href: NotRequired[pulumi.Input[str]]
+        """
+        Unique Resource Identifier
+        """
+        uuid: NotRequired[pulumi.Input[str]]
+        """
+        Equinix-assigned virtual gateway identifier
+        """
+elif False:
+    ConnectionASideAccessPointRouterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConnectionASideAccessPointRouterArgs:
     def __init__(__self__, *,
@@ -1676,6 +2263,27 @@ class ConnectionASideAccessPointRouterArgs:
     def uuid(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "uuid", value)
 
+
+if not MYPY:
+    class ConnectionASideAccessPointVirtualDeviceArgsDict(TypedDict):
+        href: NotRequired[pulumi.Input[str]]
+        """
+        Unique Resource Identifier
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Customer-assigned Virtual Device Name
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Virtual Device type
+        """
+        uuid: NotRequired[pulumi.Input[str]]
+        """
+        Equinix-assigned Virtual Device identifier
+        """
+elif False:
+    ConnectionASideAccessPointVirtualDeviceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionASideAccessPointVirtualDeviceArgs:
@@ -1748,6 +2356,19 @@ class ConnectionASideAccessPointVirtualDeviceArgs:
         pulumi.set(self, "uuid", value)
 
 
+if not MYPY:
+    class ConnectionASideAdditionalInfoArgsDict(TypedDict):
+        key: NotRequired[pulumi.Input[str]]
+        """
+        Additional information key
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        Additional information value
+        """
+elif False:
+    ConnectionASideAdditionalInfoArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConnectionASideAdditionalInfoArgs:
     def __init__(__self__, *,
@@ -1786,6 +2407,27 @@ class ConnectionASideAdditionalInfoArgs:
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class ConnectionASideServiceTokenArgsDict(TypedDict):
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Service token description
+        """
+        href: NotRequired[pulumi.Input[str]]
+        """
+        An absolute URL that is the subject of the link's context
+        """
+        type: NotRequired[pulumi.Input[Union[str, 'ServiceTokenType']]]
+        """
+        Token type - VC_TOKEN
+        """
+        uuid: NotRequired[pulumi.Input[str]]
+        """
+        Equinix-assigned service token identifier
+        """
+elif False:
+    ConnectionASideServiceTokenArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionASideServiceTokenArgs:
@@ -1857,6 +2499,43 @@ class ConnectionASideServiceTokenArgs:
     def uuid(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "uuid", value)
 
+
+if not MYPY:
+    class ConnectionAccountArgsDict(TypedDict):
+        account_name: NotRequired[pulumi.Input[str]]
+        """
+        Legal name of the accountholder.
+        """
+        account_number: NotRequired[pulumi.Input[int]]
+        """
+        Equinix-assigned account number.
+        """
+        global_cust_id: NotRequired[pulumi.Input[str]]
+        """
+        Equinix-assigned ID of the subscriber's parent organization.
+        """
+        global_org_id: NotRequired[pulumi.Input[str]]
+        """
+        Equinix-assigned ID of the subscriber's parent organization.
+        """
+        global_organization_name: NotRequired[pulumi.Input[str]]
+        """
+        Equinix-assigned name of the subscriber's parent organization.
+        """
+        org_id: NotRequired[pulumi.Input[int]]
+        """
+        Equinix-assigned ID of the subscriber's organization.
+        """
+        organization_name: NotRequired[pulumi.Input[str]]
+        """
+        Equinix-assigned name of the subscriber's organization.
+        """
+        ucm_id: NotRequired[pulumi.Input[str]]
+        """
+        Enterprise datastore id
+        """
+elif False:
+    ConnectionAccountArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionAccountArgs:
@@ -1992,6 +2671,59 @@ class ConnectionAccountArgs:
     def ucm_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ucm_id", value)
 
+
+if not MYPY:
+    class ConnectionChangeLogArgsDict(TypedDict):
+        created_by: NotRequired[pulumi.Input[str]]
+        """
+        Created by User Key
+        """
+        created_by_email: NotRequired[pulumi.Input[str]]
+        """
+        Created by User Email Address
+        """
+        created_by_full_name: NotRequired[pulumi.Input[str]]
+        """
+        Created by User Full Name
+        """
+        created_date_time: NotRequired[pulumi.Input[str]]
+        """
+        Created by Date and Time
+        """
+        deleted_by: NotRequired[pulumi.Input[str]]
+        """
+        Deleted by User Key
+        """
+        deleted_by_email: NotRequired[pulumi.Input[str]]
+        """
+        Deleted by User Email Address
+        """
+        deleted_by_full_name: NotRequired[pulumi.Input[str]]
+        """
+        Deleted by User Full Name
+        """
+        deleted_date_time: NotRequired[pulumi.Input[str]]
+        """
+        Deleted by Date and Time
+        """
+        updated_by: NotRequired[pulumi.Input[str]]
+        """
+        Updated by User Key
+        """
+        updated_by_email: NotRequired[pulumi.Input[str]]
+        """
+        Updated by User Email Address
+        """
+        updated_by_full_name: NotRequired[pulumi.Input[str]]
+        """
+        Updated by User Full Name
+        """
+        updated_date_time: NotRequired[pulumi.Input[str]]
+        """
+        Updated by Date and Time
+        """
+elif False:
+    ConnectionChangeLogArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionChangeLogArgs:
@@ -2192,6 +2924,23 @@ class ConnectionChangeLogArgs:
         pulumi.set(self, "updated_date_time", value)
 
 
+if not MYPY:
+    class ConnectionNotificationArgsDict(TypedDict):
+        emails: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        Array of contact emails
+        """
+        type: pulumi.Input[Union[str, 'NotificationsType']]
+        """
+        Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
+        """
+        send_interval: NotRequired[pulumi.Input[str]]
+        """
+        Send interval
+        """
+elif False:
+    ConnectionNotificationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConnectionNotificationArgs:
     def __init__(__self__, *,
@@ -2244,6 +2993,23 @@ class ConnectionNotificationArgs:
     def send_interval(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "send_interval", value)
 
+
+if not MYPY:
+    class ConnectionOperationArgsDict(TypedDict):
+        equinix_status: NotRequired[pulumi.Input[str]]
+        """
+        Connection status
+        """
+        errors: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectionOperationErrorArgsDict']]]]
+        """
+        Errors occurred
+        """
+        provider_status: NotRequired[pulumi.Input[str]]
+        """
+        Connection provider readiness status
+        """
+elif False:
+    ConnectionOperationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionOperationArgs:
@@ -2299,6 +3065,35 @@ class ConnectionOperationArgs:
     def provider_status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "provider_status", value)
 
+
+if not MYPY:
+    class ConnectionOperationErrorArgsDict(TypedDict):
+        additional_info: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectionOperationErrorAdditionalInfoArgsDict']]]]
+        """
+        Pricing error additional Info
+        """
+        correlation_id: NotRequired[pulumi.Input[str]]
+        """
+        CorrelationId
+        """
+        details: NotRequired[pulumi.Input[str]]
+        """
+        Details
+        """
+        error_code: NotRequired[pulumi.Input[str]]
+        """
+        Error  code
+        """
+        error_message: NotRequired[pulumi.Input[str]]
+        """
+        Error Message
+        """
+        help: NotRequired[pulumi.Input[str]]
+        """
+        Help
+        """
+elif False:
+    ConnectionOperationErrorArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionOperationErrorArgs:
@@ -2403,6 +3198,19 @@ class ConnectionOperationErrorArgs:
         pulumi.set(self, "help", value)
 
 
+if not MYPY:
+    class ConnectionOperationErrorAdditionalInfoArgsDict(TypedDict):
+        property: NotRequired[pulumi.Input[str]]
+        """
+        Property at which the error potentially occurred
+        """
+        reason: NotRequired[pulumi.Input[str]]
+        """
+        Reason for the error
+        """
+elif False:
+    ConnectionOperationErrorAdditionalInfoArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConnectionOperationErrorAdditionalInfoArgs:
     def __init__(__self__, *,
@@ -2441,6 +3249,27 @@ class ConnectionOperationErrorAdditionalInfoArgs:
     def property(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "property", value)
 
+
+if not MYPY:
+    class ConnectionOrderArgsDict(TypedDict):
+        billing_tier: NotRequired[pulumi.Input[str]]
+        """
+        Billing tier for connection bandwidth
+        """
+        order_id: NotRequired[pulumi.Input[str]]
+        """
+        Order Identification
+        """
+        order_number: NotRequired[pulumi.Input[str]]
+        """
+        Order Reference Number
+        """
+        purchase_order_number: NotRequired[pulumi.Input[str]]
+        """
+        Purchase order number
+        """
+elif False:
+    ConnectionOrderArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionOrderArgs:
@@ -2513,6 +3342,19 @@ class ConnectionOrderArgs:
         pulumi.set(self, "purchase_order_number", value)
 
 
+if not MYPY:
+    class ConnectionProjectArgsDict(TypedDict):
+        href: NotRequired[pulumi.Input[str]]
+        """
+        Unique Resource URL
+        """
+        project_id: NotRequired[pulumi.Input[str]]
+        """
+        Project Id
+        """
+elif False:
+    ConnectionProjectArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConnectionProjectArgs:
     def __init__(__self__, *,
@@ -2552,6 +3394,19 @@ class ConnectionProjectArgs:
         pulumi.set(self, "project_id", value)
 
 
+if not MYPY:
+    class ConnectionRedundancyArgsDict(TypedDict):
+        group: NotRequired[pulumi.Input[str]]
+        """
+        Redundancy group identifier (Use the redundancy.0.group UUID of primary connection; e.g. one(equinix*fabric*connection.primary*port*connection.redundancy).group or equinix*fabric*connection.primary*port*connection.redundancy.0.group)
+        """
+        priority: NotRequired[pulumi.Input[str]]
+        """
+        Connection priority in redundancy group - PRIMARY, SECONDARY
+        """
+elif False:
+    ConnectionRedundancyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConnectionRedundancyArgs:
     def __init__(__self__, *,
@@ -2590,6 +3445,23 @@ class ConnectionRedundancyArgs:
     def priority(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "priority", value)
 
+
+if not MYPY:
+    class ConnectionZSideArgsDict(TypedDict):
+        access_point: NotRequired[pulumi.Input['ConnectionZSideAccessPointArgsDict']]
+        """
+        Point of access details
+        """
+        additional_info: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectionZSideAdditionalInfoArgsDict']]]]
+        """
+        Connection side additional information
+        """
+        service_token: NotRequired[pulumi.Input['ConnectionZSideServiceTokenArgsDict']]
+        """
+        For service token based connections, Service tokens authorize users to access protected resources and services. Resource owners can distribute the tokens to trusted partners and vendors, allowing selected third parties to work directly with Equinix network assets
+        """
+elif False:
+    ConnectionZSideArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionZSideArgs:
@@ -2645,6 +3517,71 @@ class ConnectionZSideArgs:
     def service_token(self, value: Optional[pulumi.Input['ConnectionZSideServiceTokenArgs']]):
         pulumi.set(self, "service_token", value)
 
+
+if not MYPY:
+    class ConnectionZSideAccessPointArgsDict(TypedDict):
+        account: NotRequired[pulumi.Input['ConnectionZSideAccessPointAccountArgsDict']]
+        """
+        Account
+        """
+        authentication_key: NotRequired[pulumi.Input[str]]
+        """
+        Authentication key for provider based connections or Metal-Fabric Integration connections
+        """
+        gateway: NotRequired[pulumi.Input['ConnectionZSideAccessPointGatewayArgsDict']]
+        """
+        **Deprecated** `gateway` Use `router` attribute instead
+        """
+        interface: NotRequired[pulumi.Input['ConnectionZSideAccessPointInterfaceArgsDict']]
+        """
+        Virtual device interface
+        """
+        link_protocol: NotRequired[pulumi.Input['ConnectionZSideAccessPointLinkProtocolArgsDict']]
+        """
+        Connection link protocol
+        """
+        location: NotRequired[pulumi.Input['ConnectionZSideAccessPointLocationArgsDict']]
+        """
+        Access point location
+        """
+        network: NotRequired[pulumi.Input['ConnectionZSideAccessPointNetworkArgsDict']]
+        """
+        network access point information
+        """
+        peering_type: NotRequired[pulumi.Input[Union[str, 'AccessPointPeeringType']]]
+        """
+        Peering Type- PRIVATE,MICROSOFT,PUBLIC, MANUAL
+        """
+        port: NotRequired[pulumi.Input['ConnectionZSideAccessPointPortArgsDict']]
+        """
+        Port access point information
+        """
+        profile: NotRequired[pulumi.Input['ConnectionZSideAccessPointProfileArgsDict']]
+        """
+        Service Profile
+        """
+        provider_connection_id: NotRequired[pulumi.Input[str]]
+        """
+        Provider assigned Connection Id
+        """
+        router: NotRequired[pulumi.Input['ConnectionZSideAccessPointRouterArgsDict']]
+        """
+        Cloud Router access point information that replaces `gateway`
+        """
+        seller_region: NotRequired[pulumi.Input[str]]
+        """
+        Access point seller region
+        """
+        type: NotRequired[pulumi.Input[Union[str, 'AccessPointType']]]
+        """
+        Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD*ROUTER, NETWORK, METAL*NETWORK
+        """
+        virtual_device: NotRequired[pulumi.Input['ConnectionZSideAccessPointVirtualDeviceArgsDict']]
+        """
+        Virtual device
+        """
+elif False:
+    ConnectionZSideAccessPointArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionZSideAccessPointArgs:
@@ -2897,6 +3834,43 @@ class ConnectionZSideAccessPointArgs:
         pulumi.set(self, "virtual_device", value)
 
 
+if not MYPY:
+    class ConnectionZSideAccessPointAccountArgsDict(TypedDict):
+        account_name: NotRequired[pulumi.Input[str]]
+        """
+        Legal name of the accountholder.
+        """
+        account_number: NotRequired[pulumi.Input[int]]
+        """
+        Equinix-assigned account number.
+        """
+        global_cust_id: NotRequired[pulumi.Input[str]]
+        """
+        Equinix-assigned ID of the subscriber's parent organization.
+        """
+        global_org_id: NotRequired[pulumi.Input[str]]
+        """
+        Equinix-assigned ID of the subscriber's parent organization.
+        """
+        global_organization_name: NotRequired[pulumi.Input[str]]
+        """
+        Equinix-assigned name of the subscriber's parent organization.
+        """
+        org_id: NotRequired[pulumi.Input[int]]
+        """
+        Equinix-assigned ID of the subscriber's organization.
+        """
+        organization_name: NotRequired[pulumi.Input[str]]
+        """
+        Equinix-assigned name of the subscriber's organization.
+        """
+        ucm_id: NotRequired[pulumi.Input[str]]
+        """
+        Enterprise datastore id
+        """
+elif False:
+    ConnectionZSideAccessPointAccountArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConnectionZSideAccessPointAccountArgs:
     def __init__(__self__, *,
@@ -3032,6 +4006,19 @@ class ConnectionZSideAccessPointAccountArgs:
         pulumi.set(self, "ucm_id", value)
 
 
+if not MYPY:
+    class ConnectionZSideAccessPointGatewayArgsDict(TypedDict):
+        href: NotRequired[pulumi.Input[str]]
+        """
+        Unique Resource Identifier
+        """
+        uuid: NotRequired[pulumi.Input[str]]
+        """
+        Equinix-assigned virtual gateway identifier
+        """
+elif False:
+    ConnectionZSideAccessPointGatewayArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConnectionZSideAccessPointGatewayArgs:
     def __init__(__self__, *,
@@ -3070,6 +4057,23 @@ class ConnectionZSideAccessPointGatewayArgs:
     def uuid(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "uuid", value)
 
+
+if not MYPY:
+    class ConnectionZSideAccessPointInterfaceArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[int]]
+        """
+        id
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Interface type
+        """
+        uuid: NotRequired[pulumi.Input[str]]
+        """
+        Equinix-assigned interface identifier
+        """
+elif False:
+    ConnectionZSideAccessPointInterfaceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionZSideAccessPointInterfaceArgs:
@@ -3125,6 +4129,27 @@ class ConnectionZSideAccessPointInterfaceArgs:
     def uuid(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "uuid", value)
 
+
+if not MYPY:
+    class ConnectionZSideAccessPointLinkProtocolArgsDict(TypedDict):
+        type: NotRequired[pulumi.Input[Union[str, 'AccessPointLinkProtocolType']]]
+        """
+        Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
+        """
+        vlan_c_tag: NotRequired[pulumi.Input[int]]
+        """
+        Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+        """
+        vlan_s_tag: NotRequired[pulumi.Input[int]]
+        """
+        Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+        """
+        vlan_tag: NotRequired[pulumi.Input[int]]
+        """
+        Vlan Tag information, vlanTag value specified for DOT1Q connections
+        """
+elif False:
+    ConnectionZSideAccessPointLinkProtocolArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionZSideAccessPointLinkProtocolArgs:
@@ -3197,6 +4222,27 @@ class ConnectionZSideAccessPointLinkProtocolArgs:
         pulumi.set(self, "vlan_tag", value)
 
 
+if not MYPY:
+    class ConnectionZSideAccessPointLocationArgsDict(TypedDict):
+        ibx: NotRequired[pulumi.Input[str]]
+        """
+        IBX Code
+        """
+        metro_code: NotRequired[pulumi.Input[Union[str, '_root_enums.Metro']]]
+        """
+        Access point metro code
+        """
+        metro_name: NotRequired[pulumi.Input[str]]
+        """
+        Access point metro name
+        """
+        region: NotRequired[pulumi.Input[str]]
+        """
+        Access point region
+        """
+elif False:
+    ConnectionZSideAccessPointLocationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConnectionZSideAccessPointLocationArgs:
     def __init__(__self__, *,
@@ -3268,6 +4314,19 @@ class ConnectionZSideAccessPointLocationArgs:
         pulumi.set(self, "region", value)
 
 
+if not MYPY:
+    class ConnectionZSideAccessPointNetworkArgsDict(TypedDict):
+        href: NotRequired[pulumi.Input[str]]
+        """
+        Unique Resource Identifier
+        """
+        uuid: NotRequired[pulumi.Input[str]]
+        """
+        Equinix-assigned Network identifier
+        """
+elif False:
+    ConnectionZSideAccessPointNetworkArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConnectionZSideAccessPointNetworkArgs:
     def __init__(__self__, *,
@@ -3306,6 +4365,27 @@ class ConnectionZSideAccessPointNetworkArgs:
     def uuid(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "uuid", value)
 
+
+if not MYPY:
+    class ConnectionZSideAccessPointPortArgsDict(TypedDict):
+        href: NotRequired[pulumi.Input[str]]
+        """
+        Unique Resource Identifier
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Port name
+        """
+        redundancy: NotRequired[pulumi.Input['ConnectionZSideAccessPointPortRedundancyArgsDict']]
+        """
+        Redundancy Information
+        """
+        uuid: NotRequired[pulumi.Input[str]]
+        """
+        Equinix-assigned Port identifier
+        """
+elif False:
+    ConnectionZSideAccessPointPortArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionZSideAccessPointPortArgs:
@@ -3378,6 +4458,23 @@ class ConnectionZSideAccessPointPortArgs:
         pulumi.set(self, "uuid", value)
 
 
+if not MYPY:
+    class ConnectionZSideAccessPointPortRedundancyArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Access point redundancy
+        """
+        group: NotRequired[pulumi.Input[str]]
+        """
+        Port redundancy group
+        """
+        priority: NotRequired[pulumi.Input[str]]
+        """
+        Priority type-Primary or Secondary
+        """
+elif False:
+    ConnectionZSideAccessPointPortRedundancyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConnectionZSideAccessPointPortRedundancyArgs:
     def __init__(__self__, *,
@@ -3432,6 +4529,35 @@ class ConnectionZSideAccessPointPortRedundancyArgs:
     def priority(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "priority", value)
 
+
+if not MYPY:
+    class ConnectionZSideAccessPointProfileArgsDict(TypedDict):
+        type: pulumi.Input[Union[str, 'ProfileType']]
+        """
+        Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
+        """
+        uuid: pulumi.Input[str]
+        """
+        Equinix assigned service profile identifier
+        """
+        access_point_type_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectionZSideAccessPointProfileAccessPointTypeConfigArgsDict']]]]
+        """
+        Access point config information
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        User-provided service description
+        """
+        href: NotRequired[pulumi.Input[str]]
+        """
+        Service Profile URI response attribute
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Customer-assigned service profile name
+        """
+elif False:
+    ConnectionZSideAccessPointProfileArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionZSideAccessPointProfileArgs:
@@ -3534,6 +4660,19 @@ class ConnectionZSideAccessPointProfileArgs:
         pulumi.set(self, "name", value)
 
 
+if not MYPY:
+    class ConnectionZSideAccessPointProfileAccessPointTypeConfigArgsDict(TypedDict):
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Type of access point type config - VD, COLO
+        """
+        uuid: NotRequired[pulumi.Input[str]]
+        """
+        Equinix-assigned access point type config identifier
+        """
+elif False:
+    ConnectionZSideAccessPointProfileAccessPointTypeConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConnectionZSideAccessPointProfileAccessPointTypeConfigArgs:
     def __init__(__self__, *,
@@ -3573,6 +4712,19 @@ class ConnectionZSideAccessPointProfileAccessPointTypeConfigArgs:
         pulumi.set(self, "uuid", value)
 
 
+if not MYPY:
+    class ConnectionZSideAccessPointRouterArgsDict(TypedDict):
+        href: NotRequired[pulumi.Input[str]]
+        """
+        Unique Resource Identifier
+        """
+        uuid: NotRequired[pulumi.Input[str]]
+        """
+        Equinix-assigned virtual gateway identifier
+        """
+elif False:
+    ConnectionZSideAccessPointRouterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConnectionZSideAccessPointRouterArgs:
     def __init__(__self__, *,
@@ -3611,6 +4763,27 @@ class ConnectionZSideAccessPointRouterArgs:
     def uuid(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "uuid", value)
 
+
+if not MYPY:
+    class ConnectionZSideAccessPointVirtualDeviceArgsDict(TypedDict):
+        href: NotRequired[pulumi.Input[str]]
+        """
+        Unique Resource Identifier
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Customer-assigned Virtual Device Name
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Virtual Device type
+        """
+        uuid: NotRequired[pulumi.Input[str]]
+        """
+        Equinix-assigned Virtual Device identifier
+        """
+elif False:
+    ConnectionZSideAccessPointVirtualDeviceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionZSideAccessPointVirtualDeviceArgs:
@@ -3683,6 +4856,19 @@ class ConnectionZSideAccessPointVirtualDeviceArgs:
         pulumi.set(self, "uuid", value)
 
 
+if not MYPY:
+    class ConnectionZSideAdditionalInfoArgsDict(TypedDict):
+        key: NotRequired[pulumi.Input[str]]
+        """
+        Additional information key
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        Additional information value
+        """
+elif False:
+    ConnectionZSideAdditionalInfoArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConnectionZSideAdditionalInfoArgs:
     def __init__(__self__, *,
@@ -3721,6 +4907,27 @@ class ConnectionZSideAdditionalInfoArgs:
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class ConnectionZSideServiceTokenArgsDict(TypedDict):
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Service token description
+        """
+        href: NotRequired[pulumi.Input[str]]
+        """
+        An absolute URL that is the subject of the link's context
+        """
+        type: NotRequired[pulumi.Input[Union[str, 'ServiceTokenType']]]
+        """
+        Token type - VC_TOKEN
+        """
+        uuid: NotRequired[pulumi.Input[str]]
+        """
+        Equinix-assigned service token identifier
+        """
+elif False:
+    ConnectionZSideServiceTokenArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionZSideServiceTokenArgs:
@@ -3793,6 +5000,24 @@ class ConnectionZSideServiceTokenArgs:
         pulumi.set(self, "uuid", value)
 
 
+if not MYPY:
+    class NetworkChangeArgsDict(TypedDict):
+        href: NotRequired[pulumi.Input[str]]
+        """
+        Absolute URL that returns the details of the given change.
+        Example: https://api.equinix.com/fabric/v4/networks/92dc376a-a932-43aa-a6a2-c806dedbd784
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Asset instance change request type.: NETWORK_CREATION, NETWORK_UPDATE, NETWORK_DELETION
+        """
+        uuid: NotRequired[pulumi.Input[str]]
+        """
+        Asset change request identifier.
+        """
+elif False:
+    NetworkChangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class NetworkChangeArgs:
     def __init__(__self__, *,
@@ -3849,6 +5074,59 @@ class NetworkChangeArgs:
     def uuid(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "uuid", value)
 
+
+if not MYPY:
+    class NetworkChangeLogArgsDict(TypedDict):
+        created_by: NotRequired[pulumi.Input[str]]
+        """
+        Created by User Key
+        """
+        created_by_email: NotRequired[pulumi.Input[str]]
+        """
+        Created by User Email Address
+        """
+        created_by_full_name: NotRequired[pulumi.Input[str]]
+        """
+        Created by User Full Name
+        """
+        created_date_time: NotRequired[pulumi.Input[str]]
+        """
+        Created by Date and Time
+        """
+        deleted_by: NotRequired[pulumi.Input[str]]
+        """
+        Deleted by User Key
+        """
+        deleted_by_email: NotRequired[pulumi.Input[str]]
+        """
+        Deleted by User Email Address
+        """
+        deleted_by_full_name: NotRequired[pulumi.Input[str]]
+        """
+        Deleted by User Full Name
+        """
+        deleted_date_time: NotRequired[pulumi.Input[str]]
+        """
+        Deleted by Date and Time
+        """
+        updated_by: NotRequired[pulumi.Input[str]]
+        """
+        Updated by User Key
+        """
+        updated_by_email: NotRequired[pulumi.Input[str]]
+        """
+        Updated by User Email Address
+        """
+        updated_by_full_name: NotRequired[pulumi.Input[str]]
+        """
+        Updated by User Full Name
+        """
+        updated_date_time: NotRequired[pulumi.Input[str]]
+        """
+        Updated by Date and Time
+        """
+elif False:
+    NetworkChangeLogArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class NetworkChangeLogArgs:
@@ -4049,6 +5327,27 @@ class NetworkChangeLogArgs:
         pulumi.set(self, "updated_date_time", value)
 
 
+if not MYPY:
+    class NetworkLocationArgsDict(TypedDict):
+        ibx: NotRequired[pulumi.Input[str]]
+        """
+        IBX Code
+        """
+        metro_code: NotRequired[pulumi.Input[str]]
+        """
+        Access point metro code
+        """
+        metro_name: NotRequired[pulumi.Input[str]]
+        """
+        Access point metro name
+        """
+        region: NotRequired[pulumi.Input[str]]
+        """
+        Access point region
+        """
+elif False:
+    NetworkLocationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class NetworkLocationArgs:
     def __init__(__self__, *,
@@ -4120,6 +5419,23 @@ class NetworkLocationArgs:
         pulumi.set(self, "region", value)
 
 
+if not MYPY:
+    class NetworkNotificationArgsDict(TypedDict):
+        emails: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        Array of contact emails
+        """
+        type: pulumi.Input[str]
+        """
+        Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
+        """
+        send_interval: NotRequired[pulumi.Input[str]]
+        """
+        Send interval
+        """
+elif False:
+    NetworkNotificationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class NetworkNotificationArgs:
     def __init__(__self__, *,
@@ -4173,6 +5489,15 @@ class NetworkNotificationArgs:
         pulumi.set(self, "send_interval", value)
 
 
+if not MYPY:
+    class NetworkOperationArgsDict(TypedDict):
+        equinix_status: NotRequired[pulumi.Input[str]]
+        """
+        Progress towards provisioning a given asset.
+        """
+elif False:
+    NetworkOperationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class NetworkOperationArgs:
     def __init__(__self__, *,
@@ -4196,6 +5521,15 @@ class NetworkOperationArgs:
         pulumi.set(self, "equinix_status", value)
 
 
+if not MYPY:
+    class NetworkProjectArgsDict(TypedDict):
+        project_id: pulumi.Input[str]
+        """
+        Customer project identifier
+        """
+elif False:
+    NetworkProjectArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class NetworkProjectArgs:
     def __init__(__self__, *,
@@ -4217,6 +5551,23 @@ class NetworkProjectArgs:
     def project_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "project_id", value)
 
+
+if not MYPY:
+    class RouteFilterChangeArgsDict(TypedDict):
+        href: NotRequired[pulumi.Input[str]]
+        """
+        The URI of the previous Route Filter Change
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Type of change. One of [ "BGP_IPv4_PREFIX_FILTER_UPDATE","BGP_IPv4_PREFIX_FILTER_CREATION","BGP_IPv4_PREFIX_FILTER_DELETION","BGP_IPv6_PREFIX_FILTER_UPDATE","BGP_IPv6_PREFIX_FILTER_CREATION","BGP_IPv6_PREFIX_FILTER_DELETION" ]
+        """
+        uuid: NotRequired[pulumi.Input[str]]
+        """
+        Unique identifier for the previous change
+        """
+elif False:
+    RouteFilterChangeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RouteFilterChangeArgs:
@@ -4272,6 +5623,59 @@ class RouteFilterChangeArgs:
     def uuid(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "uuid", value)
 
+
+if not MYPY:
+    class RouteFilterChangeLogArgsDict(TypedDict):
+        created_by: NotRequired[pulumi.Input[str]]
+        """
+        Created by User Key
+        """
+        created_by_email: NotRequired[pulumi.Input[str]]
+        """
+        Created by User Email Address
+        """
+        created_by_full_name: NotRequired[pulumi.Input[str]]
+        """
+        Created by User Full Name
+        """
+        created_date_time: NotRequired[pulumi.Input[str]]
+        """
+        Created by Date and Time
+        """
+        deleted_by: NotRequired[pulumi.Input[str]]
+        """
+        Deleted by User Key
+        """
+        deleted_by_email: NotRequired[pulumi.Input[str]]
+        """
+        Deleted by User Email Address
+        """
+        deleted_by_full_name: NotRequired[pulumi.Input[str]]
+        """
+        Deleted by User Full Name
+        """
+        deleted_date_time: NotRequired[pulumi.Input[str]]
+        """
+        Deleted by Date and Time
+        """
+        updated_by: NotRequired[pulumi.Input[str]]
+        """
+        Updated by User Key
+        """
+        updated_by_email: NotRequired[pulumi.Input[str]]
+        """
+        Updated by User Email Address
+        """
+        updated_by_full_name: NotRequired[pulumi.Input[str]]
+        """
+        Updated by User Full Name
+        """
+        updated_date_time: NotRequired[pulumi.Input[str]]
+        """
+        Updated by Date and Time
+        """
+elif False:
+    RouteFilterChangeLogArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RouteFilterChangeLogArgs:
@@ -4472,6 +5876,19 @@ class RouteFilterChangeLogArgs:
         pulumi.set(self, "updated_date_time", value)
 
 
+if not MYPY:
+    class RouteFilterProjectArgsDict(TypedDict):
+        project_id: pulumi.Input[str]
+        """
+        Project id associated with Fabric Project
+        """
+        href: NotRequired[pulumi.Input[str]]
+        """
+        URI of the Fabric Project
+        """
+elif False:
+    RouteFilterProjectArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RouteFilterProjectArgs:
     def __init__(__self__, *,
@@ -4509,6 +5926,23 @@ class RouteFilterProjectArgs:
     def href(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "href", value)
 
+
+if not MYPY:
+    class RouteFilterRuleChangeArgsDict(TypedDict):
+        href: NotRequired[pulumi.Input[str]]
+        """
+        The URI of the previous Route Filter Rule Change
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Type of change. One of [ "BGP_IPv4_PREFIX_FILTER_RULE_UPDATE","BGP_IPv4_PREFIX_FILTER_RULE_CREATION","BGP_IPv4_PREFIX_FILTER_RULE_DELETION","BGP_IPv6_PREFIX_FILTER_RULE_UPDATE","BGP_IPv6_PREFIX_FILTER_RULE_CREATION","BGP_IPv6_PREFIX_FILTER_RULE_DELETION" ]
+        """
+        uuid: NotRequired[pulumi.Input[str]]
+        """
+        Unique identifier for the previous change
+        """
+elif False:
+    RouteFilterRuleChangeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RouteFilterRuleChangeArgs:
@@ -4564,6 +5998,59 @@ class RouteFilterRuleChangeArgs:
     def uuid(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "uuid", value)
 
+
+if not MYPY:
+    class RouteFilterRuleChangeLogArgsDict(TypedDict):
+        created_by: NotRequired[pulumi.Input[str]]
+        """
+        Created by User Key
+        """
+        created_by_email: NotRequired[pulumi.Input[str]]
+        """
+        Created by User Email Address
+        """
+        created_by_full_name: NotRequired[pulumi.Input[str]]
+        """
+        Created by User Full Name
+        """
+        created_date_time: NotRequired[pulumi.Input[str]]
+        """
+        Created by Date and Time
+        """
+        deleted_by: NotRequired[pulumi.Input[str]]
+        """
+        Deleted by User Key
+        """
+        deleted_by_email: NotRequired[pulumi.Input[str]]
+        """
+        Deleted by User Email Address
+        """
+        deleted_by_full_name: NotRequired[pulumi.Input[str]]
+        """
+        Deleted by User Full Name
+        """
+        deleted_date_time: NotRequired[pulumi.Input[str]]
+        """
+        Deleted by Date and Time
+        """
+        updated_by: NotRequired[pulumi.Input[str]]
+        """
+        Updated by User Key
+        """
+        updated_by_email: NotRequired[pulumi.Input[str]]
+        """
+        Updated by User Email Address
+        """
+        updated_by_full_name: NotRequired[pulumi.Input[str]]
+        """
+        Updated by User Full Name
+        """
+        updated_date_time: NotRequired[pulumi.Input[str]]
+        """
+        Updated by Date and Time
+        """
+elif False:
+    RouteFilterRuleChangeLogArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RouteFilterRuleChangeLogArgs:
@@ -4764,6 +6251,19 @@ class RouteFilterRuleChangeLogArgs:
         pulumi.set(self, "updated_date_time", value)
 
 
+if not MYPY:
+    class RoutingProtocolBfdArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Bidirectional Forwarding Detection enablement
+        """
+        interval: NotRequired[pulumi.Input[str]]
+        """
+        Interval range between the received BFD control packets
+        """
+elif False:
+    RoutingProtocolBfdArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RoutingProtocolBfdArgs:
     def __init__(__self__, *,
@@ -4801,6 +6301,35 @@ class RoutingProtocolBfdArgs:
     def interval(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "interval", value)
 
+
+if not MYPY:
+    class RoutingProtocolBgpIpv4ArgsDict(TypedDict):
+        customer_peer_ip: pulumi.Input[str]
+        """
+        Customer side peering ip
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Admin status for the BGP session
+        """
+        equinix_peer_ip: NotRequired[pulumi.Input[str]]
+        """
+        Equinix side peering ip
+        """
+        inbound_med: NotRequired[pulumi.Input[int]]
+        """
+        Inbound Multi Exit Discriminator attribute
+        """
+        outbound_as_prepend_count: NotRequired[pulumi.Input[str]]
+        """
+        AS path prepend count. One of: 0, 1, 3, 5
+        """
+        outbound_med: NotRequired[pulumi.Input[int]]
+        """
+        Outbound Multi Exit Discriminator attribute
+        """
+elif False:
+    RoutingProtocolBgpIpv4ArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RoutingProtocolBgpIpv4Args:
@@ -4904,6 +6433,35 @@ class RoutingProtocolBgpIpv4Args:
         pulumi.set(self, "outbound_med", value)
 
 
+if not MYPY:
+    class RoutingProtocolBgpIpv6ArgsDict(TypedDict):
+        customer_peer_ip: pulumi.Input[str]
+        """
+        Customer side peering ip
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Admin status for the BGP session
+        """
+        equinix_peer_ip: NotRequired[pulumi.Input[str]]
+        """
+        Equinix side peering ip
+        """
+        inbound_med: NotRequired[pulumi.Input[int]]
+        """
+        Inbound Multi Exit Discriminator attribute
+        """
+        outbound_as_prepend_count: NotRequired[pulumi.Input[str]]
+        """
+        AS path prepend count. One of: 0, 1, 3, 5
+        """
+        outbound_med: NotRequired[pulumi.Input[int]]
+        """
+        Outbound Multi Exit Discriminator attribute
+        """
+elif False:
+    RoutingProtocolBgpIpv6ArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RoutingProtocolBgpIpv6Args:
     def __init__(__self__, *,
@@ -5006,6 +6564,23 @@ class RoutingProtocolBgpIpv6Args:
         pulumi.set(self, "outbound_med", value)
 
 
+if not MYPY:
+    class RoutingProtocolChangeArgsDict(TypedDict):
+        href: NotRequired[pulumi.Input[str]]
+        """
+        Routing Protocol Change URI
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Type of change
+        """
+        uuid: NotRequired[pulumi.Input[str]]
+        """
+        Uniquely identifies a change
+        """
+elif False:
+    RoutingProtocolChangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RoutingProtocolChangeArgs:
     def __init__(__self__, *,
@@ -5060,6 +6635,59 @@ class RoutingProtocolChangeArgs:
     def uuid(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "uuid", value)
 
+
+if not MYPY:
+    class RoutingProtocolChangeLogArgsDict(TypedDict):
+        created_by: NotRequired[pulumi.Input[str]]
+        """
+        Created by User Key
+        """
+        created_by_email: NotRequired[pulumi.Input[str]]
+        """
+        Created by User Email Address
+        """
+        created_by_full_name: NotRequired[pulumi.Input[str]]
+        """
+        Created by User Full Name
+        """
+        created_date_time: NotRequired[pulumi.Input[str]]
+        """
+        Created by Date and Time
+        """
+        deleted_by: NotRequired[pulumi.Input[str]]
+        """
+        Deleted by User Key
+        """
+        deleted_by_email: NotRequired[pulumi.Input[str]]
+        """
+        Deleted by User Email Address
+        """
+        deleted_by_full_name: NotRequired[pulumi.Input[str]]
+        """
+        Deleted by User Full Name
+        """
+        deleted_date_time: NotRequired[pulumi.Input[str]]
+        """
+        Deleted by Date and Time
+        """
+        updated_by: NotRequired[pulumi.Input[str]]
+        """
+        Updated by User Key
+        """
+        updated_by_email: NotRequired[pulumi.Input[str]]
+        """
+        Updated by User Email Address
+        """
+        updated_by_full_name: NotRequired[pulumi.Input[str]]
+        """
+        Updated by User Full Name
+        """
+        updated_date_time: NotRequired[pulumi.Input[str]]
+        """
+        Updated by Date and Time
+        """
+elif False:
+    RoutingProtocolChangeLogArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RoutingProtocolChangeLogArgs:
@@ -5260,6 +6888,15 @@ class RoutingProtocolChangeLogArgs:
         pulumi.set(self, "updated_date_time", value)
 
 
+if not MYPY:
+    class RoutingProtocolDirectIpv4ArgsDict(TypedDict):
+        equinix_iface_ip: pulumi.Input[str]
+        """
+        Equinix side Interface IP address
+        """
+elif False:
+    RoutingProtocolDirectIpv4ArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RoutingProtocolDirectIpv4Args:
     def __init__(__self__, *,
@@ -5281,6 +6918,15 @@ class RoutingProtocolDirectIpv4Args:
     def equinix_iface_ip(self, value: pulumi.Input[str]):
         pulumi.set(self, "equinix_iface_ip", value)
 
+
+if not MYPY:
+    class RoutingProtocolDirectIpv6ArgsDict(TypedDict):
+        equinix_iface_ip: NotRequired[pulumi.Input[str]]
+        """
+        Equinix side Interface IP address
+        """
+elif False:
+    RoutingProtocolDirectIpv6ArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RoutingProtocolDirectIpv6Args:
@@ -5305,6 +6951,15 @@ class RoutingProtocolDirectIpv6Args:
         pulumi.set(self, "equinix_iface_ip", value)
 
 
+if not MYPY:
+    class RoutingProtocolOperationArgsDict(TypedDict):
+        errors: NotRequired[pulumi.Input[Sequence[pulumi.Input['RoutingProtocolOperationErrorArgsDict']]]]
+        """
+        Errors occurred
+        """
+elif False:
+    RoutingProtocolOperationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RoutingProtocolOperationArgs:
     def __init__(__self__, *,
@@ -5327,6 +6982,35 @@ class RoutingProtocolOperationArgs:
     def errors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RoutingProtocolOperationErrorArgs']]]]):
         pulumi.set(self, "errors", value)
 
+
+if not MYPY:
+    class RoutingProtocolOperationErrorArgsDict(TypedDict):
+        additional_infos: NotRequired[pulumi.Input[Sequence[pulumi.Input['RoutingProtocolOperationErrorAdditionalInfoArgsDict']]]]
+        """
+        Pricing error additional Info
+        """
+        correlation_id: NotRequired[pulumi.Input[str]]
+        """
+        CorrelationId
+        """
+        details: NotRequired[pulumi.Input[str]]
+        """
+        Details
+        """
+        error_code: NotRequired[pulumi.Input[str]]
+        """
+        Error  code
+        """
+        error_message: NotRequired[pulumi.Input[str]]
+        """
+        Error Message
+        """
+        help: NotRequired[pulumi.Input[str]]
+        """
+        Help
+        """
+elif False:
+    RoutingProtocolOperationErrorArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RoutingProtocolOperationErrorArgs:
@@ -5431,6 +7115,19 @@ class RoutingProtocolOperationErrorArgs:
         pulumi.set(self, "help", value)
 
 
+if not MYPY:
+    class RoutingProtocolOperationErrorAdditionalInfoArgsDict(TypedDict):
+        property: NotRequired[pulumi.Input[str]]
+        """
+        Property at which the error potentially occurred
+        """
+        reason: NotRequired[pulumi.Input[str]]
+        """
+        Reason for the error
+        """
+elif False:
+    RoutingProtocolOperationErrorAdditionalInfoArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RoutingProtocolOperationErrorAdditionalInfoArgs:
     def __init__(__self__, *,
@@ -5469,6 +7166,67 @@ class RoutingProtocolOperationErrorAdditionalInfoArgs:
     def property(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "property", value)
 
+
+if not MYPY:
+    class ServiceProfileAccessPointTypeConfigArgsDict(TypedDict):
+        type: pulumi.Input[Union[str, 'ProfileAccessPointType']]
+        """
+        Type of access point type config - VD, COLO
+        """
+        allow_bandwidth_auto_approval: NotRequired[pulumi.Input[bool]]
+        """
+        Setting to enable or disable the ability of the buyer to change connection bandwidth without approval of the seller
+        """
+        allow_bandwidth_upgrade: NotRequired[pulumi.Input[bool]]
+        """
+        Availability of a bandwidth upgrade. The default is false
+        """
+        allow_custom_bandwidth: NotRequired[pulumi.Input[bool]]
+        """
+        Setting to enable or disable the ability of the buyer to customize the bandwidth
+        """
+        allow_remote_connections: NotRequired[pulumi.Input[bool]]
+        """
+        Setting to allow or prohibit remote connections to the service profile
+        """
+        api_config: NotRequired[pulumi.Input['ServiceProfileAccessPointTypeConfigApiConfigArgsDict']]
+        """
+        Api configuration details
+        """
+        authentication_key: NotRequired[pulumi.Input['ServiceProfileAccessPointTypeConfigAuthenticationKeyArgsDict']]
+        """
+        Authentication key details
+        """
+        bandwidth_alert_threshold: NotRequired[pulumi.Input[float]]
+        """
+        Percentage of port bandwidth at which an allocation alert is generated
+        """
+        connection_label: NotRequired[pulumi.Input[str]]
+        """
+        Custom name for Connection
+        """
+        connection_redundancy_required: NotRequired[pulumi.Input[bool]]
+        """
+        Mandate redundant connections
+        """
+        enable_auto_generate_service_key: NotRequired[pulumi.Input[bool]]
+        """
+        Enable auto generate service key
+        """
+        link_protocol_config: NotRequired[pulumi.Input['ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgsDict']]
+        """
+        Link protocol configuration details
+        """
+        supported_bandwidths: NotRequired[pulumi.Input[Sequence[pulumi.Input[int]]]]
+        """
+        Supported bandwidths
+        """
+        uuid: NotRequired[pulumi.Input[str]]
+        """
+        Colo/Port Uuid
+        """
+elif False:
+    ServiceProfileAccessPointTypeConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceProfileAccessPointTypeConfigArgs:
@@ -5700,6 +7458,39 @@ class ServiceProfileAccessPointTypeConfigArgs:
         pulumi.set(self, "uuid", value)
 
 
+if not MYPY:
+    class ServiceProfileAccessPointTypeConfigApiConfigArgsDict(TypedDict):
+        allow_over_subscription: NotRequired[pulumi.Input[bool]]
+        """
+        Setting showing that oversubscription support is available (true) or not (false). The default is false
+        """
+        api_available: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates if it's possible to establish connections based on the given service profile using the Equinix Fabric API.
+        """
+        bandwidth_from_api: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates if the connection bandwidth can be obtained directly from the cloud service provider.
+        """
+        equinix_managed_port: NotRequired[pulumi.Input[bool]]
+        """
+        Setting indicating that the port is managed by Equinix (true) or not (false)
+        """
+        equinix_managed_vlan: NotRequired[pulumi.Input[bool]]
+        """
+        Setting indicating that the VLAN is managed by Equinix (true) or not (false)
+        """
+        integration_id: NotRequired[pulumi.Input[str]]
+        """
+        A unique identifier issued during onboarding and used to integrate the customer's service profile with the Equinix Fabric API.
+        """
+        over_subscription_limit: NotRequired[pulumi.Input[int]]
+        """
+        Port bandwidth multiplier that determines the total bandwidth that can be allocated to users creating connections to your services. For example, a 10 Gbps port combined with an overSubscriptionLimit parameter value of 10 allows your subscribers to create connections with a total bandwidth of 100 Gbps.
+        """
+elif False:
+    ServiceProfileAccessPointTypeConfigApiConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServiceProfileAccessPointTypeConfigApiConfigArgs:
     def __init__(__self__, *,
@@ -5819,6 +7610,23 @@ class ServiceProfileAccessPointTypeConfigApiConfigArgs:
         pulumi.set(self, "over_subscription_limit", value)
 
 
+if not MYPY:
+    class ServiceProfileAccessPointTypeConfigAuthenticationKeyArgsDict(TypedDict):
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Description of authorization key
+        """
+        label: NotRequired[pulumi.Input[str]]
+        """
+        Name of the parameter that must be provided to authorize the connection.
+        """
+        required: NotRequired[pulumi.Input[bool]]
+        """
+        Requirement to configure an authentication key.
+        """
+elif False:
+    ServiceProfileAccessPointTypeConfigAuthenticationKeyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs:
     def __init__(__self__, *,
@@ -5874,6 +7682,23 @@ class ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs:
         pulumi.set(self, "required", value)
 
 
+if not MYPY:
+    class ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgsDict(TypedDict):
+        encapsulation: NotRequired[pulumi.Input[str]]
+        """
+        Data frames encapsulation standard.UNTAGGED - Untagged encapsulation for EPL connections. DOT1Q - DOT1Q encapsulation standard. QINQ - QINQ encapsulation standard.
+        """
+        encapsulation_strategy: NotRequired[pulumi.Input[str]]
+        """
+        Additional tagging information required by the seller profile.
+        """
+        reuse_vlan_s_tag: NotRequired[pulumi.Input[bool]]
+        """
+        Automatically accept subsequent DOT1Q to QINQ connections that use the same authentication key. These connections will have the same VLAN S-tag assigned as the initial connection.
+        """
+elif False:
+    ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs:
     def __init__(__self__, *,
@@ -5928,6 +7753,43 @@ class ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs:
     def reuse_vlan_s_tag(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "reuse_vlan_s_tag", value)
 
+
+if not MYPY:
+    class ServiceProfileAccountArgsDict(TypedDict):
+        account_name: NotRequired[pulumi.Input[str]]
+        """
+        Legal name of the accountholder.
+        """
+        account_number: NotRequired[pulumi.Input[int]]
+        """
+        Equinix-assigned account number.
+        """
+        global_cust_id: NotRequired[pulumi.Input[str]]
+        """
+        Equinix-assigned ID of the subscriber's parent organization.
+        """
+        global_org_id: NotRequired[pulumi.Input[str]]
+        """
+        Equinix-assigned ID of the subscriber's parent organization.
+        """
+        global_organization_name: NotRequired[pulumi.Input[str]]
+        """
+        Equinix-assigned name of the subscriber's parent organization.
+        """
+        org_id: NotRequired[pulumi.Input[int]]
+        """
+        Equinix-assigned ID of the subscriber's organization.
+        """
+        organization_name: NotRequired[pulumi.Input[str]]
+        """
+        Equinix-assigned name of the subscriber's organization.
+        """
+        ucm_id: NotRequired[pulumi.Input[str]]
+        """
+        Enterprise datastore id
+        """
+elif False:
+    ServiceProfileAccountArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceProfileAccountArgs:
@@ -6063,6 +7925,59 @@ class ServiceProfileAccountArgs:
     def ucm_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ucm_id", value)
 
+
+if not MYPY:
+    class ServiceProfileChangeLogArgsDict(TypedDict):
+        created_by: NotRequired[pulumi.Input[str]]
+        """
+        Created by User Key
+        """
+        created_by_email: NotRequired[pulumi.Input[str]]
+        """
+        Created by User Email Address
+        """
+        created_by_full_name: NotRequired[pulumi.Input[str]]
+        """
+        Created by User Full Name
+        """
+        created_date_time: NotRequired[pulumi.Input[str]]
+        """
+        Created by Date and Time
+        """
+        deleted_by: NotRequired[pulumi.Input[str]]
+        """
+        Deleted by User Key
+        """
+        deleted_by_email: NotRequired[pulumi.Input[str]]
+        """
+        Deleted by User Email Address
+        """
+        deleted_by_full_name: NotRequired[pulumi.Input[str]]
+        """
+        Deleted by User Full Name
+        """
+        deleted_date_time: NotRequired[pulumi.Input[str]]
+        """
+        Deleted by Date and Time
+        """
+        updated_by: NotRequired[pulumi.Input[str]]
+        """
+        Updated by User Key
+        """
+        updated_by_email: NotRequired[pulumi.Input[str]]
+        """
+        Updated by User Email Address
+        """
+        updated_by_full_name: NotRequired[pulumi.Input[str]]
+        """
+        Updated by User Full Name
+        """
+        updated_date_time: NotRequired[pulumi.Input[str]]
+        """
+        Updated by Date and Time
+        """
+elif False:
+    ServiceProfileChangeLogArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceProfileChangeLogArgs:
@@ -6263,6 +8178,35 @@ class ServiceProfileChangeLogArgs:
         pulumi.set(self, "updated_date_time", value)
 
 
+if not MYPY:
+    class ServiceProfileCustomFieldArgsDict(TypedDict):
+        data_type: pulumi.Input[str]
+        """
+        Data type
+        """
+        label: pulumi.Input[str]
+        """
+        Label
+        """
+        required: pulumi.Input[bool]
+        """
+        Required field
+        """
+        capture_in_email: NotRequired[pulumi.Input[bool]]
+        """
+        Required field
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Description
+        """
+        options: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Options
+        """
+elif False:
+    ServiceProfileCustomFieldArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServiceProfileCustomFieldArgs:
     def __init__(__self__, *,
@@ -6363,6 +8307,23 @@ class ServiceProfileCustomFieldArgs:
         pulumi.set(self, "options", value)
 
 
+if not MYPY:
+    class ServiceProfileMarketingInfoArgsDict(TypedDict):
+        logo: NotRequired[pulumi.Input[str]]
+        """
+        Logo
+        """
+        process_steps: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceProfileMarketingInfoProcessStepArgsDict']]]]
+        """
+        Process Step
+        """
+        promotion: NotRequired[pulumi.Input[bool]]
+        """
+        Promotion
+        """
+elif False:
+    ServiceProfileMarketingInfoArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServiceProfileMarketingInfoArgs:
     def __init__(__self__, *,
@@ -6418,6 +8379,23 @@ class ServiceProfileMarketingInfoArgs:
         pulumi.set(self, "promotion", value)
 
 
+if not MYPY:
+    class ServiceProfileMarketingInfoProcessStepArgsDict(TypedDict):
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Description
+        """
+        sub_title: NotRequired[pulumi.Input[str]]
+        """
+        Sub Title
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        Title
+        """
+elif False:
+    ServiceProfileMarketingInfoProcessStepArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServiceProfileMarketingInfoProcessStepArgs:
     def __init__(__self__, *,
@@ -6472,6 +8450,35 @@ class ServiceProfileMarketingInfoProcessStepArgs:
     def title(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "title", value)
 
+
+if not MYPY:
+    class ServiceProfileMetroArgsDict(TypedDict):
+        code: NotRequired[pulumi.Input[str]]
+        """
+        Metro Code - Example SV
+        """
+        display_name: NotRequired[pulumi.Input[str]]
+        """
+        Display Name
+        """
+        ibxs: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        IBX- Equinix International Business Exchange list
+        """
+        in_trail: NotRequired[pulumi.Input[bool]]
+        """
+        In Trail
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Metro Name
+        """
+        seller_regions: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Seller Regions
+        """
+elif False:
+    ServiceProfileMetroArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceProfileMetroArgs:
@@ -6576,6 +8583,23 @@ class ServiceProfileMetroArgs:
         pulumi.set(self, "seller_regions", value)
 
 
+if not MYPY:
+    class ServiceProfileNotificationArgsDict(TypedDict):
+        emails: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        Array of contact emails
+        """
+        type: pulumi.Input[Union[str, 'NotificationsType']]
+        """
+        Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
+        """
+        send_interval: NotRequired[pulumi.Input[str]]
+        """
+        Send interval
+        """
+elif False:
+    ServiceProfileNotificationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServiceProfileNotificationArgs:
     def __init__(__self__, *,
@@ -6628,6 +8652,35 @@ class ServiceProfileNotificationArgs:
     def send_interval(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "send_interval", value)
 
+
+if not MYPY:
+    class ServiceProfilePortArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Colo/Port Type
+        """
+        uuid: pulumi.Input[str]
+        """
+        Colo/Port Uuid
+        """
+        cross_connect_id: NotRequired[pulumi.Input[str]]
+        """
+        Cross Connect Id
+        """
+        location: NotRequired[pulumi.Input['ServiceProfilePortLocationArgsDict']]
+        """
+        Colo/Port Location
+        """
+        seller_region: NotRequired[pulumi.Input[str]]
+        """
+        Seller Region
+        """
+        seller_region_description: NotRequired[pulumi.Input[str]]
+        """
+        Seller Region details
+        """
+elif False:
+    ServiceProfilePortArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceProfilePortArgs:
@@ -6730,6 +8783,27 @@ class ServiceProfilePortArgs:
         pulumi.set(self, "seller_region_description", value)
 
 
+if not MYPY:
+    class ServiceProfilePortLocationArgsDict(TypedDict):
+        ibx: NotRequired[pulumi.Input[str]]
+        """
+        IBX Code
+        """
+        metro_code: NotRequired[pulumi.Input[str]]
+        """
+        Access point metro code
+        """
+        metro_name: NotRequired[pulumi.Input[str]]
+        """
+        Access point metro name
+        """
+        region: NotRequired[pulumi.Input[str]]
+        """
+        Access point region
+        """
+elif False:
+    ServiceProfilePortLocationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServiceProfilePortLocationArgs:
     def __init__(__self__, *,
@@ -6801,6 +8875,19 @@ class ServiceProfilePortLocationArgs:
         pulumi.set(self, "region", value)
 
 
+if not MYPY:
+    class ServiceProfileProjectArgsDict(TypedDict):
+        href: NotRequired[pulumi.Input[str]]
+        """
+        Unique Resource URL
+        """
+        project_id: NotRequired[pulumi.Input[str]]
+        """
+        Project Id
+        """
+elif False:
+    ServiceProfileProjectArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServiceProfileProjectArgs:
     def __init__(__self__, *,
@@ -6839,6 +8926,27 @@ class ServiceProfileProjectArgs:
     def project_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project_id", value)
 
+
+if not MYPY:
+    class ServiceProfileVirtualDeviceArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Virtual Device Type
+        """
+        uuid: pulumi.Input[str]
+        """
+        Virtual Device Uuid
+        """
+        interface_uuid: NotRequired[pulumi.Input[str]]
+        """
+        Device Interface Uuid
+        """
+        location: NotRequired[pulumi.Input['ServiceProfileVirtualDeviceLocationArgsDict']]
+        """
+        Device Location
+        """
+elif False:
+    ServiceProfileVirtualDeviceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceProfileVirtualDeviceArgs:
@@ -6908,6 +9016,27 @@ class ServiceProfileVirtualDeviceArgs:
     def location(self, value: Optional[pulumi.Input['ServiceProfileVirtualDeviceLocationArgs']]):
         pulumi.set(self, "location", value)
 
+
+if not MYPY:
+    class ServiceProfileVirtualDeviceLocationArgsDict(TypedDict):
+        ibx: NotRequired[pulumi.Input[str]]
+        """
+        IBX Code
+        """
+        metro_code: NotRequired[pulumi.Input[str]]
+        """
+        Access point metro code
+        """
+        metro_name: NotRequired[pulumi.Input[str]]
+        """
+        Access point metro name
+        """
+        region: NotRequired[pulumi.Input[str]]
+        """
+        Access point region
+        """
+elif False:
+    ServiceProfileVirtualDeviceLocationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceProfileVirtualDeviceLocationArgs:
@@ -6979,6 +9108,43 @@ class ServiceProfileVirtualDeviceLocationArgs:
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
 
+
+if not MYPY:
+    class ServiceTokenAccountArgsDict(TypedDict):
+        account_name: NotRequired[pulumi.Input[str]]
+        """
+        Legal name of the accountholder.
+        """
+        account_number: NotRequired[pulumi.Input[int]]
+        """
+        Equinix-assigned account number.
+        """
+        global_cust_id: NotRequired[pulumi.Input[str]]
+        """
+        Equinix-assigned ID of the subscriber's parent organization.
+        """
+        global_org_id: NotRequired[pulumi.Input[str]]
+        """
+        Equinix-assigned ID of the subscriber's parent organization.
+        """
+        global_organization_name: NotRequired[pulumi.Input[str]]
+        """
+        Equinix-assigned name of the subscriber's parent organization.
+        """
+        org_id: NotRequired[pulumi.Input[int]]
+        """
+        Equinix-assigned ID of the subscriber's organization.
+        """
+        organization_name: NotRequired[pulumi.Input[str]]
+        """
+        Equinix-assigned name of the subscriber's organization.
+        """
+        ucm_id: NotRequired[pulumi.Input[str]]
+        """
+        Enterprise datastore id
+        """
+elif False:
+    ServiceTokenAccountArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceTokenAccountArgs:
@@ -7114,6 +9280,59 @@ class ServiceTokenAccountArgs:
     def ucm_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ucm_id", value)
 
+
+if not MYPY:
+    class ServiceTokenChangeLogArgsDict(TypedDict):
+        created_by: NotRequired[pulumi.Input[str]]
+        """
+        Created by User Key
+        """
+        created_by_email: NotRequired[pulumi.Input[str]]
+        """
+        Created by User Email Address
+        """
+        created_by_full_name: NotRequired[pulumi.Input[str]]
+        """
+        Created by User Full Name
+        """
+        created_date_time: NotRequired[pulumi.Input[str]]
+        """
+        Created by Date and Time
+        """
+        deleted_by: NotRequired[pulumi.Input[str]]
+        """
+        Deleted by User Key
+        """
+        deleted_by_email: NotRequired[pulumi.Input[str]]
+        """
+        Deleted by User Email Address
+        """
+        deleted_by_full_name: NotRequired[pulumi.Input[str]]
+        """
+        Deleted by User Full Name
+        """
+        deleted_date_time: NotRequired[pulumi.Input[str]]
+        """
+        Deleted by Date and Time
+        """
+        updated_by: NotRequired[pulumi.Input[str]]
+        """
+        Updated by User Key
+        """
+        updated_by_email: NotRequired[pulumi.Input[str]]
+        """
+        Updated by User Email Address
+        """
+        updated_by_full_name: NotRequired[pulumi.Input[str]]
+        """
+        Updated by User Full Name
+        """
+        updated_date_time: NotRequired[pulumi.Input[str]]
+        """
+        Updated by Date and Time
+        """
+elif False:
+    ServiceTokenChangeLogArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceTokenChangeLogArgs:
@@ -7314,6 +9533,23 @@ class ServiceTokenChangeLogArgs:
         pulumi.set(self, "updated_date_time", value)
 
 
+if not MYPY:
+    class ServiceTokenNotificationArgsDict(TypedDict):
+        emails: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        Array of contact emails
+        """
+        type: pulumi.Input[str]
+        """
+        Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
+        """
+        send_interval: NotRequired[pulumi.Input[str]]
+        """
+        Send interval
+        """
+elif False:
+    ServiceTokenNotificationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServiceTokenNotificationArgs:
     def __init__(__self__, *,
@@ -7367,6 +9603,19 @@ class ServiceTokenNotificationArgs:
         pulumi.set(self, "send_interval", value)
 
 
+if not MYPY:
+    class ServiceTokenProjectArgsDict(TypedDict):
+        href: NotRequired[pulumi.Input[str]]
+        """
+        Unique Resource URL
+        """
+        project_id: NotRequired[pulumi.Input[str]]
+        """
+        Project Id
+        """
+elif False:
+    ServiceTokenProjectArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServiceTokenProjectArgs:
     def __init__(__self__, *,
@@ -7405,6 +9654,43 @@ class ServiceTokenProjectArgs:
     def project_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project_id", value)
 
+
+if not MYPY:
+    class ServiceTokenServiceTokenConnectionArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Type of Connection supported by Service Token you will create; EVPL*VC, EVPLAN*VC, EPLAN*VC, IPWAN*VC
+        """
+        a_sides: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceTokenServiceTokenConnectionASideArgsDict']]]]
+        """
+        A-Side Connection link protocol,virtual device or network configuration
+        """
+        allow_custom_bandwidth: NotRequired[pulumi.Input[bool]]
+        """
+        Allow custom bandwidth value
+        """
+        allow_remote_connection: NotRequired[pulumi.Input[bool]]
+        """
+        Authorization to connect remotely
+        """
+        bandwidth_limit: NotRequired[pulumi.Input[int]]
+        """
+        Connection bandwidth limit in Mbps
+        """
+        supported_bandwidths: NotRequired[pulumi.Input[Sequence[pulumi.Input[int]]]]
+        """
+        List of permitted bandwidths'; For Port-based Service Tokens, the maximum allowable bandwidth is 50 Gbps, while for Virtual Device-based Service Tokens, it is limited to 10 Gbps
+        """
+        uuid: NotRequired[pulumi.Input[str]]
+        """
+        Equinix-assigned connection identifier
+        """
+        z_sides: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceTokenServiceTokenConnectionZSideArgsDict']]]]
+        """
+        Z-Side Connection link protocol,virtual device or network configuration
+        """
+elif False:
+    ServiceTokenServiceTokenConnectionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceTokenServiceTokenConnectionArgs:
@@ -7540,6 +9826,15 @@ class ServiceTokenServiceTokenConnectionArgs:
         pulumi.set(self, "z_sides", value)
 
 
+if not MYPY:
+    class ServiceTokenServiceTokenConnectionASideArgsDict(TypedDict):
+        access_point_selectors: pulumi.Input[Sequence[pulumi.Input['ServiceTokenServiceTokenConnectionASideAccessPointSelectorArgsDict']]]
+        """
+        List of criteria for selecting network access points with optimal efficiency, security, compatibility, and availability
+        """
+elif False:
+    ServiceTokenServiceTokenConnectionASideArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServiceTokenServiceTokenConnectionASideArgs:
     def __init__(__self__, *,
@@ -7561,6 +9856,35 @@ class ServiceTokenServiceTokenConnectionASideArgs:
     def access_point_selectors(self, value: pulumi.Input[Sequence[pulumi.Input['ServiceTokenServiceTokenConnectionASideAccessPointSelectorArgs']]]):
         pulumi.set(self, "access_point_selectors", value)
 
+
+if not MYPY:
+    class ServiceTokenServiceTokenConnectionASideAccessPointSelectorArgsDict(TypedDict):
+        interface: NotRequired[pulumi.Input['ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceArgsDict']]
+        """
+        Virtual Device Interface Configuration
+        """
+        link_protocol: NotRequired[pulumi.Input['ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolArgsDict']]
+        """
+        Link protocol Configuration
+        """
+        network: NotRequired[pulumi.Input['ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkArgsDict']]
+        """
+        Network Configuration
+        """
+        port: NotRequired[pulumi.Input['ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortArgsDict']]
+        """
+        Port Configuration
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Type of Access point; COLO, VD, NETWORK
+        """
+        virtual_device: NotRequired[pulumi.Input['ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgsDict']]
+        """
+        Virtual Device Configuration
+        """
+elif False:
+    ServiceTokenServiceTokenConnectionASideAccessPointSelectorArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceTokenServiceTokenConnectionASideAccessPointSelectorArgs:
@@ -7665,6 +9989,23 @@ class ServiceTokenServiceTokenConnectionASideAccessPointSelectorArgs:
         pulumi.set(self, "virtual_device", value)
 
 
+if not MYPY:
+    class ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Interface type
+        """
+        id: NotRequired[pulumi.Input[int]]
+        """
+        id
+        """
+        uuid: NotRequired[pulumi.Input[str]]
+        """
+        Equinix-assigned interface identifier
+        """
+elif False:
+    ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceArgs:
     def __init__(__self__, *,
@@ -7718,6 +10059,27 @@ class ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterfaceArgs:
     def uuid(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "uuid", value)
 
+
+if not MYPY:
+    class ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolArgsDict(TypedDict):
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
+        """
+        vlan_c_tag: NotRequired[pulumi.Input[int]]
+        """
+        Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+        """
+        vlan_s_tag: NotRequired[pulumi.Input[int]]
+        """
+        Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+        """
+        vlan_tag: NotRequired[pulumi.Input[int]]
+        """
+        Vlan Tag information, vlanTag value specified for DOT1Q connections
+        """
+elif False:
+    ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolArgs:
@@ -7789,6 +10151,35 @@ class ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolArgs
     def vlan_tag(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "vlan_tag", value)
 
+
+if not MYPY:
+    class ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkArgsDict(TypedDict):
+        href: NotRequired[pulumi.Input[str]]
+        """
+        Unique Resource Identifier
+        """
+        locations: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArgsDict']]]]
+        """
+        Location
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Network Name
+        """
+        scope: NotRequired[pulumi.Input[str]]
+        """
+        Scope of Network
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Type of Network
+        """
+        uuid: NotRequired[pulumi.Input[str]]
+        """
+        Equinix-assigned Network identifier
+        """
+elif False:
+    ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkArgs:
@@ -7893,6 +10284,27 @@ class ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkArgs:
         pulumi.set(self, "uuid", value)
 
 
+if not MYPY:
+    class ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArgsDict(TypedDict):
+        ibx: NotRequired[pulumi.Input[str]]
+        """
+        IBX Code
+        """
+        metro_code: NotRequired[pulumi.Input[str]]
+        """
+        Access point metro code
+        """
+        metro_name: NotRequired[pulumi.Input[str]]
+        """
+        Access point metro name
+        """
+        region: NotRequired[pulumi.Input[str]]
+        """
+        Access point region
+        """
+elif False:
+    ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArgs:
     def __init__(__self__, *,
@@ -7963,6 +10375,51 @@ class ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationA
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
 
+
+if not MYPY:
+    class ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortArgsDict(TypedDict):
+        uuid: pulumi.Input[str]
+        """
+        Equinix-assigned Port identifier
+        """
+        account_name: NotRequired[pulumi.Input[str]]
+        """
+        Account Name
+        """
+        bandwidth: NotRequired[pulumi.Input[int]]
+        """
+        Port Bandwidth
+        """
+        cvp_id: NotRequired[pulumi.Input[int]]
+        """
+        Customer virtual port Id
+        """
+        encapsulation_protocol_type: NotRequired[pulumi.Input[str]]
+        """
+        Port Encapsulation
+        """
+        href: NotRequired[pulumi.Input[str]]
+        """
+        Unique Resource Identifier
+        """
+        locations: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArgsDict']]]]
+        """
+        Port Location
+        """
+        port_name: NotRequired[pulumi.Input[str]]
+        """
+        Port Name
+        """
+        priority: NotRequired[pulumi.Input[str]]
+        """
+        Port Priority
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Type of Port
+        """
+elif False:
+    ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortArgs:
@@ -8130,6 +10587,27 @@ class ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArgsDict(TypedDict):
+        ibx: NotRequired[pulumi.Input[str]]
+        """
+        IBX Code
+        """
+        metro_code: NotRequired[pulumi.Input[str]]
+        """
+        Access point metro code
+        """
+        metro_name: NotRequired[pulumi.Input[str]]
+        """
+        Access point metro name
+        """
+        region: NotRequired[pulumi.Input[str]]
+        """
+        Access point region
+        """
+elif False:
+    ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArgs:
     def __init__(__self__, *,
@@ -8200,6 +10678,31 @@ class ServiceTokenServiceTokenConnectionASideAccessPointSelectorPortLocationArgs
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
 
+
+if not MYPY:
+    class ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgsDict(TypedDict):
+        uuid: pulumi.Input[str]
+        """
+        Equinix-assigned Virtual Device identifier
+        """
+        cluster: NotRequired[pulumi.Input[str]]
+        """
+        Virtual Device Cluster Information
+        """
+        href: NotRequired[pulumi.Input[str]]
+        """
+        Unique Resource Identifier
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Customer-assigned Virtual Device Name
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Virtual Device type
+        """
+elif False:
+    ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs:
@@ -8287,6 +10790,15 @@ class ServiceTokenServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArg
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class ServiceTokenServiceTokenConnectionZSideArgsDict(TypedDict):
+        access_point_selectors: pulumi.Input[Sequence[pulumi.Input['ServiceTokenServiceTokenConnectionZSideAccessPointSelectorArgsDict']]]
+        """
+        List of criteria for selecting network access points with optimal efficiency, security, compatibility, and availability
+        """
+elif False:
+    ServiceTokenServiceTokenConnectionZSideArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServiceTokenServiceTokenConnectionZSideArgs:
     def __init__(__self__, *,
@@ -8308,6 +10820,35 @@ class ServiceTokenServiceTokenConnectionZSideArgs:
     def access_point_selectors(self, value: pulumi.Input[Sequence[pulumi.Input['ServiceTokenServiceTokenConnectionZSideAccessPointSelectorArgs']]]):
         pulumi.set(self, "access_point_selectors", value)
 
+
+if not MYPY:
+    class ServiceTokenServiceTokenConnectionZSideAccessPointSelectorArgsDict(TypedDict):
+        interface: NotRequired[pulumi.Input['ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceArgsDict']]
+        """
+        Virtual Device Interface Configuration
+        """
+        link_protocol: NotRequired[pulumi.Input['ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolArgsDict']]
+        """
+        Link protocol Configuration
+        """
+        network: NotRequired[pulumi.Input['ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkArgsDict']]
+        """
+        Network Configuration
+        """
+        port: NotRequired[pulumi.Input['ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortArgsDict']]
+        """
+        Port Configuration
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Type of Access point; COLO, VD, NETWORK
+        """
+        virtual_device: NotRequired[pulumi.Input['ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgsDict']]
+        """
+        Virtual Device Configuration
+        """
+elif False:
+    ServiceTokenServiceTokenConnectionZSideAccessPointSelectorArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceTokenServiceTokenConnectionZSideAccessPointSelectorArgs:
@@ -8412,6 +10953,23 @@ class ServiceTokenServiceTokenConnectionZSideAccessPointSelectorArgs:
         pulumi.set(self, "virtual_device", value)
 
 
+if not MYPY:
+    class ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Interface type
+        """
+        id: NotRequired[pulumi.Input[int]]
+        """
+        id
+        """
+        uuid: NotRequired[pulumi.Input[str]]
+        """
+        Equinix-assigned interface identifier
+        """
+elif False:
+    ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceArgs:
     def __init__(__self__, *,
@@ -8465,6 +11023,27 @@ class ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterfaceArgs:
     def uuid(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "uuid", value)
 
+
+if not MYPY:
+    class ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolArgsDict(TypedDict):
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
+        """
+        vlan_c_tag: NotRequired[pulumi.Input[int]]
+        """
+        Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+        """
+        vlan_s_tag: NotRequired[pulumi.Input[int]]
+        """
+        Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+        """
+        vlan_tag: NotRequired[pulumi.Input[int]]
+        """
+        Vlan Tag information, vlanTag value specified for DOT1Q connections
+        """
+elif False:
+    ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolArgs:
@@ -8536,6 +11115,35 @@ class ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolArgs
     def vlan_tag(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "vlan_tag", value)
 
+
+if not MYPY:
+    class ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkArgsDict(TypedDict):
+        href: NotRequired[pulumi.Input[str]]
+        """
+        Unique Resource Identifier
+        """
+        locations: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArgsDict']]]]
+        """
+        Location
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Network Name
+        """
+        scope: NotRequired[pulumi.Input[str]]
+        """
+        Scope of Network
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Type of Network
+        """
+        uuid: NotRequired[pulumi.Input[str]]
+        """
+        Equinix-assigned Network identifier
+        """
+elif False:
+    ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkArgs:
@@ -8640,6 +11248,27 @@ class ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkArgs:
         pulumi.set(self, "uuid", value)
 
 
+if not MYPY:
+    class ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArgsDict(TypedDict):
+        ibx: NotRequired[pulumi.Input[str]]
+        """
+        IBX Code
+        """
+        metro_code: NotRequired[pulumi.Input[str]]
+        """
+        Access point metro code
+        """
+        metro_name: NotRequired[pulumi.Input[str]]
+        """
+        Access point metro name
+        """
+        region: NotRequired[pulumi.Input[str]]
+        """
+        Access point region
+        """
+elif False:
+    ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArgs:
     def __init__(__self__, *,
@@ -8710,6 +11339,51 @@ class ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationA
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
 
+
+if not MYPY:
+    class ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortArgsDict(TypedDict):
+        uuid: pulumi.Input[str]
+        """
+        Equinix-assigned Port identifier
+        """
+        account_name: NotRequired[pulumi.Input[str]]
+        """
+        Account Name
+        """
+        bandwidth: NotRequired[pulumi.Input[int]]
+        """
+        Port Bandwidth
+        """
+        cvp_id: NotRequired[pulumi.Input[int]]
+        """
+        Customer virtual port Id
+        """
+        encapsulation_protocol_type: NotRequired[pulumi.Input[str]]
+        """
+        Port Encapsulation
+        """
+        href: NotRequired[pulumi.Input[str]]
+        """
+        Unique Resource Identifier
+        """
+        locations: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArgsDict']]]]
+        """
+        Port Location
+        """
+        port_name: NotRequired[pulumi.Input[str]]
+        """
+        Port Name
+        """
+        priority: NotRequired[pulumi.Input[str]]
+        """
+        Port Priority
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Type of Port
+        """
+elif False:
+    ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortArgs:
@@ -8877,6 +11551,27 @@ class ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArgsDict(TypedDict):
+        ibx: NotRequired[pulumi.Input[str]]
+        """
+        IBX Code
+        """
+        metro_code: NotRequired[pulumi.Input[str]]
+        """
+        Access point metro code
+        """
+        metro_name: NotRequired[pulumi.Input[str]]
+        """
+        Access point metro name
+        """
+        region: NotRequired[pulumi.Input[str]]
+        """
+        Access point region
+        """
+elif False:
+    ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArgs:
     def __init__(__self__, *,
@@ -8947,6 +11642,31 @@ class ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArgs
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
 
+
+if not MYPY:
+    class ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgsDict(TypedDict):
+        uuid: pulumi.Input[str]
+        """
+        Equinix-assigned Virtual Device identifier
+        """
+        cluster: NotRequired[pulumi.Input[str]]
+        """
+        Virtual Device Cluster Information
+        """
+        href: NotRequired[pulumi.Input[str]]
+        """
+        Unique Resource Identifier
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Customer-assigned Virtual Device Name
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Virtual Device type
+        """
+elif False:
+    ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs:
@@ -9034,6 +11754,27 @@ class ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArg
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class GetCloudRoutersFilterArgsDict(TypedDict):
+        operator: str
+        """
+        Possible operators to use on the filter property. Can be one of the following: [= - equal, != - not equal, > - greater than, >= - greater than or equal to, < - less than, <= - less than or equal to, [NOT] BETWEEN - (not) between, [NOT] LIKE - (not) like, [NOT] IN - (not) in
+        """
+        property: str
+        """
+        The API response property which you want to filter your request on. Can be one of the following: "/project/projectId", "/name", "/uuid", "/state", "/location/metroCode", "/location/metroName", "/package/code", "/*"
+        """
+        values: Sequence[str]
+        """
+        The values that you want to apply the property+operator combination to in order to filter your data search
+        """
+        or_: NotRequired[bool]
+        """
+        Boolean flag indicating whether this filter is included in the OR group. There can only be one OR group and it can have a maximum of 3 filters. The OR group only counts as 1 of the 8 possible filters
+        """
+elif False:
+    GetCloudRoutersFilterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetCloudRoutersFilterArgs:
     def __init__(__self__, *,
@@ -9102,6 +11843,19 @@ class GetCloudRoutersFilterArgs:
         pulumi.set(self, "property", value)
 
 
+if not MYPY:
+    class GetCloudRoutersPaginationArgsDict(TypedDict):
+        limit: NotRequired[int]
+        """
+        Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+        """
+        offset: NotRequired[int]
+        """
+        The page offset for the pagination request. Index of the first element. Default is 0.
+        """
+elif False:
+    GetCloudRoutersPaginationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetCloudRoutersPaginationArgs:
     def __init__(__self__, *,
@@ -9141,6 +11895,19 @@ class GetCloudRoutersPaginationArgs:
         pulumi.set(self, "offset", value)
 
 
+if not MYPY:
+    class GetCloudRoutersSortArgsDict(TypedDict):
+        direction: NotRequired[str]
+        """
+        The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+        """
+        property: NotRequired[str]
+        """
+        The property name to use in sorting. Can be one of the following: [/name, /uuid, /state, /location/metroCode, /location/metroName, /package/code, /changeLog/createdDateTime, /changeLog/updatedDateTime], Defaults to /changeLog/updatedDateTime
+        """
+elif False:
+    GetCloudRoutersSortArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetCloudRoutersSortArgs:
     def __init__(__self__, *,
@@ -9179,6 +11946,27 @@ class GetCloudRoutersSortArgs:
     def property(self, value: Optional[str]):
         pulumi.set(self, "property", value)
 
+
+if not MYPY:
+    class GetConnectionsFilterArgsDict(TypedDict):
+        operator: str
+        """
+        Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, IN, NOT IN, IS NOT NULL, IS NULL]
+        """
+        property: str
+        """
+        Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /change/status /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid *]
+        """
+        values: Sequence[str]
+        """
+        The values that you want to apply the property+operator combination to in order to filter your data search
+        """
+        group: NotRequired[str]
+        """
+        Optional custom id parameter to assign this filter to an inner AND or OR group. Group id must be prefixed with AND_ or OR_. Ensure intended grouped elements have the same given id. Ungrouped filters will be placed in the filter list group by themselves.
+        """
+elif False:
+    GetConnectionsFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetConnectionsFilterArgs:
@@ -9248,6 +12036,19 @@ class GetConnectionsFilterArgs:
         pulumi.set(self, "property", value)
 
 
+if not MYPY:
+    class GetConnectionsPaginationArgsDict(TypedDict):
+        limit: NotRequired[int]
+        """
+        Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+        """
+        offset: NotRequired[int]
+        """
+        The page offset for the pagination request. Index of the first element. Default is 0.
+        """
+elif False:
+    GetConnectionsPaginationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetConnectionsPaginationArgs:
     def __init__(__self__, *,
@@ -9287,6 +12088,19 @@ class GetConnectionsPaginationArgs:
         pulumi.set(self, "offset", value)
 
 
+if not MYPY:
+    class GetConnectionsSortArgsDict(TypedDict):
+        direction: NotRequired[str]
+        """
+        The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+        """
+        property: NotRequired[str]
+        """
+        The property name to use in sorting. One of [/name /direction /aSide/accessPoint/name /aSide/accessPoint/type /aSide/accessPoint/account/accountName /aSide/accessPoint/location/metroName /aSide/accessPoint/location/metroCode /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/name /zSide/accessPoint/type /zSide/accessPoint/account/accountName /zSide/accessPoint/location/metroName /zSide/accessPoint/location/metroCode /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/authenticationKey /bandwidth /geoScope /uuid /changeLog/createdDateTime /changeLog/updatedDateTime /operation/equinixStatus /operation/providerStatus /redundancy/priority]. Defaults to /changeLog/updatedDateTime
+        """
+elif False:
+    GetConnectionsSortArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetConnectionsSortArgs:
     def __init__(__self__, *,
@@ -9325,6 +12139,27 @@ class GetConnectionsSortArgs:
     def property(self, value: Optional[str]):
         pulumi.set(self, "property", value)
 
+
+if not MYPY:
+    class GetNetworksFilterArgsDict(TypedDict):
+        operator: str
+        """
+        Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, ILIKE, NOT ILIKE, IN, NOT IN]
+        """
+        property: str
+        """
+        Possible field names to use on filters. One of [/name /uuid /scope /type /operation/equinixStatus /location/region /project/projectId /account/globalCustId /account/orgId /deletedDate /_*]
+        """
+        values: Sequence[str]
+        """
+        The values that you want to apply the property+operator combination to in order to filter your data search
+        """
+        group: NotRequired[str]
+        """
+        Optional custom id parameter to assign this filter to an inner AND or OR group. Group id must be prefixed with AND_ or OR_. Ensure intended grouped elements have the same given id. Ungrouped filters will be placed in the filter list group by themselves.
+        """
+elif False:
+    GetNetworksFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetNetworksFilterArgs:
@@ -9394,6 +12229,19 @@ class GetNetworksFilterArgs:
         pulumi.set(self, "property", value)
 
 
+if not MYPY:
+    class GetNetworksPaginationArgsDict(TypedDict):
+        limit: NotRequired[int]
+        """
+        Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+        """
+        offset: NotRequired[int]
+        """
+        The page offset for the pagination request. Index of the first element. Default is 0.
+        """
+elif False:
+    GetNetworksPaginationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetNetworksPaginationArgs:
     def __init__(__self__, *,
@@ -9432,6 +12280,19 @@ class GetNetworksPaginationArgs:
     def offset(self, value: Optional[int]):
         pulumi.set(self, "offset", value)
 
+
+if not MYPY:
+    class GetNetworksSortArgsDict(TypedDict):
+        direction: NotRequired[str]
+        """
+        The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+        """
+        property: NotRequired[str]
+        """
+        The property name to use in sorting. One of [/name /uuid /scope /operation/equinixStatus /location/region /changeLog/createdDateTime /changeLog/updatedDateTime]. Defaults to /changeLog/updatedDateTime
+        """
+elif False:
+    GetNetworksSortArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetNetworksSortArgs:
@@ -9472,6 +12333,15 @@ class GetNetworksSortArgs:
         pulumi.set(self, "property", value)
 
 
+if not MYPY:
+    class GetPortsFilterArgsDict(TypedDict):
+        name: str
+        """
+        Query Parameter to Get Ports By Name
+        """
+elif False:
+    GetPortsFilterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetPortsFilterArgs:
     def __init__(__self__, *,
@@ -9493,6 +12363,23 @@ class GetPortsFilterArgs:
     def name(self, value: str):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class GetRouteFiltersFilterArgsDict(TypedDict):
+        operator: str
+        """
+        Possible operators to use on the filter property. Can be one of the following: [ "=", "!=", "[NOT] LIKE", "[NOT] IN", "ILIKE" ]
+        """
+        property: str
+        """
+        The API response property which you want to filter your request on. Can be one of the following: "/type", "/name", "/project/projectId", "/uuid", "/state"
+        """
+        values: Sequence[str]
+        """
+        The values that you want to apply the property+operator combination to in order to filter your data search
+        """
+elif False:
+    GetRouteFiltersFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetRouteFiltersFilterArgs:
@@ -9545,6 +12432,31 @@ class GetRouteFiltersFilterArgs:
     def property(self, value: str):
         pulumi.set(self, "property", value)
 
+
+if not MYPY:
+    class GetRouteFiltersPaginationArgsDict(TypedDict):
+        limit: int
+        """
+        Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+        """
+        next: str
+        """
+        URL relative to the last item in the response.
+        """
+        offset: int
+        """
+        The page offset for the pagination request. Index of the first element. Default is 0.
+        """
+        previous: str
+        """
+        URL relative to the first item in the response.
+        """
+        total: int
+        """
+        Total number of elements returned.
+        """
+elif False:
+    GetRouteFiltersPaginationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetRouteFiltersPaginationArgs:
@@ -9628,6 +12540,19 @@ class GetRouteFiltersPaginationArgs:
         pulumi.set(self, "total", value)
 
 
+if not MYPY:
+    class GetRouteFiltersSortArgsDict(TypedDict):
+        direction: NotRequired[str]
+        """
+        The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+        """
+        property: NotRequired[str]
+        """
+        The property name to use in sorting. Can be one of the following: [/type, /uuid, /name, /project/projectId, /state, /notMatchedRuleAction, /connectionsCount, /changeLog/createdDateTime, /changeLog/updatedDateTime], Defaults to /changeLog/updatedDateTime
+        """
+elif False:
+    GetRouteFiltersSortArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetRouteFiltersSortArgs:
     def __init__(__self__, *,
@@ -9666,6 +12591,23 @@ class GetRouteFiltersSortArgs:
     def property(self, value: Optional[str]):
         pulumi.set(self, "property", value)
 
+
+if not MYPY:
+    class GetServiceProfilesFilterArgsDict(TypedDict):
+        operator: str
+        """
+        Operators to use on your filtered field with the values given. One of [=]
+        """
+        property: str
+        """
+        Property to apply operator and values to. One of [/name /uuid /state /metros/code /visibility /type /project/projectId]
+        """
+        values: Sequence[str]
+        """
+        The values that you want to apply the property+operator combination to in order to filter your data search
+        """
+elif False:
+    GetServiceProfilesFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetServiceProfilesFilterArgs:
@@ -9719,6 +12661,19 @@ class GetServiceProfilesFilterArgs:
         pulumi.set(self, "property", value)
 
 
+if not MYPY:
+    class GetServiceProfilesPaginationArgsDict(TypedDict):
+        limit: NotRequired[int]
+        """
+        Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+        """
+        offset: NotRequired[int]
+        """
+        The page offset for the pagination request. Index of the first element. Default is 0.
+        """
+elif False:
+    GetServiceProfilesPaginationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetServiceProfilesPaginationArgs:
     def __init__(__self__, *,
@@ -9758,6 +12713,19 @@ class GetServiceProfilesPaginationArgs:
         pulumi.set(self, "offset", value)
 
 
+if not MYPY:
+    class GetServiceProfilesSortArgsDict(TypedDict):
+        direction: NotRequired[str]
+        """
+        The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+        """
+        property: NotRequired[str]
+        """
+        The property name to use in sorting. One of [/name /uuid /state /location/metroCode /location/metroName /package/code /changeLog/createdDateTime /changeLog/updatedDateTime]. Defaults to /changeLog/updatedDateTime
+        """
+elif False:
+    GetServiceProfilesSortArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetServiceProfilesSortArgs:
     def __init__(__self__, *,
@@ -9796,6 +12764,23 @@ class GetServiceProfilesSortArgs:
     def property(self, value: Optional[str]):
         pulumi.set(self, "property", value)
 
+
+if not MYPY:
+    class GetServiceTokensFilterArgsDict(TypedDict):
+        operator: str
+        """
+        Possible operators to use on the filter property. Can be one of the following: [ "=", "!=", "[NOT] LIKE", "[NOT] IN", "ILIKE" ]
+        """
+        property: str
+        """
+        The API response property which you want to filter your request on. Can be one of the following: "/type", "/name", "/project/projectId", "/uuid", "/state"
+        """
+        values: Sequence[str]
+        """
+        The values that you want to apply the property+operator combination to in order to filter your data search
+        """
+elif False:
+    GetServiceTokensFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetServiceTokensFilterArgs:
@@ -9848,6 +12833,31 @@ class GetServiceTokensFilterArgs:
     def property(self, value: str):
         pulumi.set(self, "property", value)
 
+
+if not MYPY:
+    class GetServiceTokensPaginationArgsDict(TypedDict):
+        limit: int
+        """
+        Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+        """
+        next: str
+        """
+        URL relative to the last item in the response.
+        """
+        offset: int
+        """
+        The page offset for the pagination request. Index of the first element. Default is 0.
+        """
+        previous: str
+        """
+        URL relative to the first item in the response.
+        """
+        total: int
+        """
+        Total number of elements returned.
+        """
+elif False:
+    GetServiceTokensPaginationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetServiceTokensPaginationArgs:

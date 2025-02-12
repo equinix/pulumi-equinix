@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -150,9 +155,6 @@ def get_route_filter_rules(limit: Optional[int] = None,
         offset=pulumi.get(__ret__, 'offset'),
         paginations=pulumi.get(__ret__, 'paginations'),
         route_filter_id=pulumi.get(__ret__, 'route_filter_id'))
-
-
-@_utilities.lift_output_func(get_route_filter_rules)
 def get_route_filter_rules_output(limit: Optional[pulumi.Input[Optional[int]]] = None,
                                   offset: Optional[pulumi.Input[Optional[int]]] = None,
                                   route_filter_id: Optional[pulumi.Input[str]] = None,
@@ -184,4 +186,16 @@ def get_route_filter_rules_output(limit: Optional[pulumi.Input[Optional[int]]] =
     :param int offset: The page offset for the pagination request. Index of the first element. Default is 0.
     :param str route_filter_id: UUID of the Route Filter Policy the rule is attached to
     """
-    ...
+    __args__ = dict()
+    __args__['limit'] = limit
+    __args__['offset'] = offset
+    __args__['routeFilterId'] = route_filter_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('equinix:fabric/getRouteFilterRules:getRouteFilterRules', __args__, opts=opts, typ=GetRouteFilterRulesResult)
+    return __ret__.apply(lambda __response__: GetRouteFilterRulesResult(
+        datas=pulumi.get(__response__, 'datas'),
+        id=pulumi.get(__response__, 'id'),
+        limit=pulumi.get(__response__, 'limit'),
+        offset=pulumi.get(__response__, 'offset'),
+        paginations=pulumi.get(__response__, 'paginations'),
+        route_filter_id=pulumi.get(__response__, 'route_filter_id')))

@@ -30,14 +30,11 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			aSide, err := fabric.GetPorts(ctx, &fabric.GetPortsArgs{
-//				Filter: fabric.GetPortsFilter{
-//					Name: "<name_of_port||port_prefix>",
+//			aSide := fabric.GetPortsOutput(ctx, fabric.GetPortsOutputArgs{
+//				Filter: &fabric.GetPortsFilterArgs{
+//					Name: pulumi.String("<name_of_port||port_prefix>"),
 //				},
 //			}, nil)
-//			if err != nil {
-//				return err
-//			}
 //			example, err := metal.NewVlan(ctx, "example", &metal.VlanArgs{
 //				ProjectId: pulumi.String("<metal_project_id>"),
 //				Metro:     pulumi.String("FR"),
@@ -83,7 +80,9 @@ import (
 //					AccessPoint: &fabric.ConnectionASideAccessPointArgs{
 //						Type: pulumi.String(fabric.AccessPointTypeColo),
 //						Port: &fabric.ConnectionASideAccessPointPortArgs{
-//							Uuid: pulumi.String(aSide.Data[0].Uuid),
+//							Uuid: aSide.ApplyT(func(aSide fabric.GetPortsResult) (*string, error) {
+//								return &aSide.Data[0].Uuid, nil
+//							}).(pulumi.StringPtrOutput),
 //						},
 //						LinkProtocol: &fabric.ConnectionASideAccessPointLinkProtocolArgs{
 //							Type:    pulumi.String(fabric.AccessPointLinkProtocolTypeDot1q),
@@ -280,14 +279,11 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			aSide, err := fabric.GetPorts(ctx, &fabric.GetPortsArgs{
-//				Filter: fabric.GetPortsFilter{
-//					Name: "<name_of_port||port_prefix>",
+//			aSide := fabric.GetPortsOutput(ctx, fabric.GetPortsOutputArgs{
+//				Filter: &fabric.GetPortsFilterArgs{
+//					Name: pulumi.String("<name_of_port||port_prefix>"),
 //				},
 //			}, nil)
-//			if err != nil {
-//				return err
-//			}
 //			example, err := metal.NewInterconnection(ctx, "example", &metal.InterconnectionArgs{
 //				Name:             pulumi.String("tf-metal-2-port"),
 //				ProjectId:        pulumi.String("<metal_project_id>"),
@@ -330,7 +326,9 @@ import (
 //					AccessPoint: &fabric.ConnectionZSideAccessPointArgs{
 //						Type: pulumi.String(fabric.AccessPointTypeColo),
 //						Port: &fabric.ConnectionZSideAccessPointPortArgs{
-//							Uuid: pulumi.String(aSide.Data[0].Uuid),
+//							Uuid: aSide.ApplyT(func(aSide fabric.GetPortsResult) (*string, error) {
+//								return &aSide.Data[0].Uuid, nil
+//							}).(pulumi.StringPtrOutput),
 //						},
 //						LinkProtocol: &fabric.ConnectionZSideAccessPointLinkProtocolArgs{
 //							Type:    pulumi.String(fabric.AccessPointLinkProtocolTypeDot1q),

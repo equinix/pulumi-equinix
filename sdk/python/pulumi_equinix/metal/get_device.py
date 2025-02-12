@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -393,9 +398,6 @@ def get_device(device_id: Optional[str] = None,
         state=pulumi.get(__ret__, 'state'),
         storage=pulumi.get(__ret__, 'storage'),
         tags=pulumi.get(__ret__, 'tags'))
-
-
-@_utilities.lift_output_func(get_device)
 def get_device_output(device_id: Optional[pulumi.Input[Optional[str]]] = None,
                       hostname: Optional[pulumi.Input[Optional[str]]] = None,
                       project_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -431,4 +433,35 @@ def get_device_output(device_id: Optional[pulumi.Input[Optional[str]]] = None,
     :param str hostname: The device name
     :param str project_id: The id of the project in which the devices exists
     """
-    ...
+    __args__ = dict()
+    __args__['deviceId'] = device_id
+    __args__['hostname'] = hostname
+    __args__['projectId'] = project_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('equinix:metal/getDevice:getDevice', __args__, opts=opts, typ=GetDeviceResult)
+    return __ret__.apply(lambda __response__: GetDeviceResult(
+        access_private_ipv4=pulumi.get(__response__, 'access_private_ipv4'),
+        access_public_ipv4=pulumi.get(__response__, 'access_public_ipv4'),
+        access_public_ipv6=pulumi.get(__response__, 'access_public_ipv6'),
+        always_pxe=pulumi.get(__response__, 'always_pxe'),
+        billing_cycle=pulumi.get(__response__, 'billing_cycle'),
+        description=pulumi.get(__response__, 'description'),
+        device_id=pulumi.get(__response__, 'device_id'),
+        facility=pulumi.get(__response__, 'facility'),
+        hardware_reservation_id=pulumi.get(__response__, 'hardware_reservation_id'),
+        hostname=pulumi.get(__response__, 'hostname'),
+        id=pulumi.get(__response__, 'id'),
+        ipxe_script_url=pulumi.get(__response__, 'ipxe_script_url'),
+        metro=pulumi.get(__response__, 'metro'),
+        network_type=pulumi.get(__response__, 'network_type'),
+        networks=pulumi.get(__response__, 'networks'),
+        operating_system=pulumi.get(__response__, 'operating_system'),
+        plan=pulumi.get(__response__, 'plan'),
+        ports=pulumi.get(__response__, 'ports'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        root_password=pulumi.get(__response__, 'root_password'),
+        sos_hostname=pulumi.get(__response__, 'sos_hostname'),
+        ssh_key_ids=pulumi.get(__response__, 'ssh_key_ids'),
+        state=pulumi.get(__response__, 'state'),
+        storage=pulumi.get(__response__, 'storage'),
+        tags=pulumi.get(__response__, 'tags')))
