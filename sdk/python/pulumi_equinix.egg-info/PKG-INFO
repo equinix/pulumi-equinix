@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: pulumi-equinix
-Version: 0.20.1a1739387917+dirty
+Version: 0.20.1a1739389957+dirty
 Summary: A Pulumi package for creating and managing equinix cloud resources.
 Home-page: https://deploy.equinix.com/
 License: Apache-2.0
