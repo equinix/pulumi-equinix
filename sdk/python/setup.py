@@ -8,7 +8,7 @@ from setuptools.command.install import install
 from subprocess import check_call
 
 
-VERSION = "0.0.0"
+VERSION = "0.20.1a1739387917+dirty"
 def readme():
     try:
         with open('README.md', encoding='utf-8') as f:
@@ -39,6 +39,7 @@ setup(name='pulumi_equinix',
       install_requires=[
           'parver>=0.2.1',
           'pulumi>=3.0.0,<4.0.0',
-          'semver>=2.8.1'
+          'semver>=2.8.1',
+          'typing-extensions>=4.11,<5; python_version < "3.11"'
       ],
       zip_safe=False)
