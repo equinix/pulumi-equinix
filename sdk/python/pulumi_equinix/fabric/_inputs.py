@@ -7793,20 +7793,21 @@ class ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolArgs
 @pulumi.input_type
 class ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkArgs:
     def __init__(__self__, *,
+                 uuid: pulumi.Input[str],
                  href: Optional[pulumi.Input[str]] = None,
                  locations: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  scope: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None,
-                 uuid: Optional[pulumi.Input[str]] = None):
+                 type: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] uuid: Equinix-assigned Network identifier
         :param pulumi.Input[str] href: Unique Resource Identifier
         :param pulumi.Input[Sequence[pulumi.Input['ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArgs']]] locations: Location
         :param pulumi.Input[str] name: Network Name
         :param pulumi.Input[str] scope: Scope of Network
         :param pulumi.Input[str] type: Type of Network
-        :param pulumi.Input[str] uuid: Equinix-assigned Network identifier
         """
+        pulumi.set(__self__, "uuid", uuid)
         if href is not None:
             pulumi.set(__self__, "href", href)
         if locations is not None:
@@ -7817,8 +7818,18 @@ class ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkArgs:
             pulumi.set(__self__, "scope", scope)
         if type is not None:
             pulumi.set(__self__, "type", type)
-        if uuid is not None:
-            pulumi.set(__self__, "uuid", uuid)
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> pulumi.Input[str]:
+        """
+        Equinix-assigned Network identifier
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: pulumi.Input[str]):
+        pulumi.set(self, "uuid", value)
 
     @property
     @pulumi.getter
@@ -7879,18 +7890,6 @@ class ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkArgs:
     @type.setter
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
-
-    @property
-    @pulumi.getter
-    def uuid(self) -> Optional[pulumi.Input[str]]:
-        """
-        Equinix-assigned Network identifier
-        """
-        return pulumi.get(self, "uuid")
-
-    @uuid.setter
-    def uuid(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "uuid", value)
 
 
 @pulumi.input_type
@@ -8540,20 +8539,21 @@ class ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolArgs
 @pulumi.input_type
 class ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkArgs:
     def __init__(__self__, *,
+                 uuid: pulumi.Input[str],
                  href: Optional[pulumi.Input[str]] = None,
                  locations: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  scope: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None,
-                 uuid: Optional[pulumi.Input[str]] = None):
+                 type: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] uuid: Equinix-assigned Network identifier
         :param pulumi.Input[str] href: Unique Resource Identifier
         :param pulumi.Input[Sequence[pulumi.Input['ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArgs']]] locations: Location
         :param pulumi.Input[str] name: Network Name
         :param pulumi.Input[str] scope: Scope of Network
         :param pulumi.Input[str] type: Type of Network
-        :param pulumi.Input[str] uuid: Equinix-assigned Network identifier
         """
+        pulumi.set(__self__, "uuid", uuid)
         if href is not None:
             pulumi.set(__self__, "href", href)
         if locations is not None:
@@ -8564,8 +8564,18 @@ class ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkArgs:
             pulumi.set(__self__, "scope", scope)
         if type is not None:
             pulumi.set(__self__, "type", type)
-        if uuid is not None:
-            pulumi.set(__self__, "uuid", uuid)
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> pulumi.Input[str]:
+        """
+        Equinix-assigned Network identifier
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: pulumi.Input[str]):
+        pulumi.set(self, "uuid", value)
 
     @property
     @pulumi.getter
@@ -8626,18 +8636,6 @@ class ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkArgs:
     @type.setter
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
-
-    @property
-    @pulumi.getter
-    def uuid(self) -> Optional[pulumi.Input[str]]:
-        """
-        Equinix-assigned Network identifier
-        """
-        return pulumi.get(self, "uuid")
-
-    @uuid.setter
-    def uuid(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "uuid", value)
 
 
 @pulumi.input_type

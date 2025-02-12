@@ -2,7 +2,7 @@ module equinix-metal-port_vlan_attachment-example_1
 
 go 1.21
 
-toolchain go1.23.3
+toolchain go1.23.5
 
 require (
 	github.com/equinix/pulumi-equinix/sdk latest

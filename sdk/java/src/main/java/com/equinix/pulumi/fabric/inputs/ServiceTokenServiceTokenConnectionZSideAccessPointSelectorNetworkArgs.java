@@ -6,6 +6,7 @@ package com.equinix.pulumi.fabric.inputs;
 import com.equinix.pulumi.fabric.inputs.ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -96,15 +97,15 @@ public final class ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNet
      * Equinix-assigned Network identifier
      * 
      */
-    @Import(name="uuid")
-    private @Nullable Output<String> uuid;
+    @Import(name="uuid", required=true)
+    private Output<String> uuid;
 
     /**
      * @return Equinix-assigned Network identifier
      * 
      */
-    public Optional<Output<String>> uuid() {
-        return Optional.ofNullable(this.uuid);
+    public Output<String> uuid() {
+        return this.uuid;
     }
 
     private ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkArgs() {}
@@ -257,7 +258,7 @@ public final class ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNet
          * @return builder
          * 
          */
-        public Builder uuid(@Nullable Output<String> uuid) {
+        public Builder uuid(Output<String> uuid) {
             $.uuid = uuid;
             return this;
         }
@@ -273,6 +274,9 @@ public final class ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNet
         }
 
         public ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkArgs build() {
+            if ($.uuid == null) {
+                throw new MissingRequiredPropertyException("ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkArgs", "uuid");
+            }
             return $;
         }
     }

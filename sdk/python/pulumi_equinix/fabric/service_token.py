@@ -439,6 +439,37 @@ class ServiceToken(pulumi.CustomResource):
             type="VC_TOKEN")
         ```
 
+        Zside Network Service Token
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        test = equinix.fabric.ServiceToken("test",
+            description="Zside Network Service Token",
+            expiration_date_time="2025-01-18T06:43:49.986Z",
+            notifications=[{
+                "emails": ["example@equinix.com"],
+                "type": "ALL",
+            }],
+            service_token_connections=[{
+                "supported_bandwidths": [
+                    50,
+                    200,
+                    10000,
+                ],
+                "type": "EVPL_VC",
+                "z_sides": [{
+                    "access_point_selectors": [{
+                        "network": {
+                            "uuid": "<network_uuid>",
+                        },
+                        "type": "NETWORK",
+                    }],
+                }],
+            }],
+            type="VC_TOKEN")
+        ```
+
         Zside Virtual Device Service Token
         ```python
         import pulumi
@@ -565,6 +596,37 @@ class ServiceToken(pulumi.CustomResource):
                             "uuid": "<port_uuid>",
                         },
                         "type": "COLO",
+                    }],
+                }],
+            }],
+            type="VC_TOKEN")
+        ```
+
+        Zside Network Service Token
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        test = equinix.fabric.ServiceToken("test",
+            description="Zside Network Service Token",
+            expiration_date_time="2025-01-18T06:43:49.986Z",
+            notifications=[{
+                "emails": ["example@equinix.com"],
+                "type": "ALL",
+            }],
+            service_token_connections=[{
+                "supported_bandwidths": [
+                    50,
+                    200,
+                    10000,
+                ],
+                "type": "EVPL_VC",
+                "z_sides": [{
+                    "access_point_selectors": [{
+                        "network": {
+                            "uuid": "<network_uuid>",
+                        },
+                        "type": "NETWORK",
                     }],
                 }],
             }],

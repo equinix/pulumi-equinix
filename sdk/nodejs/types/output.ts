@@ -5756,11 +5756,11 @@ export namespace fabric {
         /**
          * Virtual Device Interface Configuration
          */
-        interface: outputs.fabric.GetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterface;
+        interface?: outputs.fabric.GetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterface;
         /**
          * Link protocol Configuration
          */
-        linkProtocol: outputs.fabric.GetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocol;
+        linkProtocol?: outputs.fabric.GetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocol;
         /**
          * Network Configuration
          */
@@ -5768,7 +5768,7 @@ export namespace fabric {
         /**
          * Port Configuration
          */
-        port: outputs.fabric.GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPort;
+        port?: outputs.fabric.GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPort;
         /**
          * Type of Access point; COLO, VD, NETWORK
          */
@@ -5955,11 +5955,11 @@ export namespace fabric {
         /**
          * Virtual Device Interface Configuration
          */
-        interface: outputs.fabric.GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterface;
+        interface?: outputs.fabric.GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterface;
         /**
          * Link protocol Configuration
          */
-        linkProtocol: outputs.fabric.GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocol;
+        linkProtocol?: outputs.fabric.GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocol;
         /**
          * Network Configuration
          */
@@ -5967,7 +5967,7 @@ export namespace fabric {
         /**
          * Port Configuration
          */
-        port: outputs.fabric.GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort;
+        port?: outputs.fabric.GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort;
         /**
          * Type of Access point; COLO, VD, NETWORK
          */
@@ -6356,11 +6356,11 @@ export namespace fabric {
         /**
          * Virtual Device Interface Configuration
          */
-        interface: outputs.fabric.GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterface;
+        interface?: outputs.fabric.GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterface;
         /**
          * Link protocol Configuration
          */
-        linkProtocol: outputs.fabric.GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocol;
+        linkProtocol?: outputs.fabric.GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocol;
         /**
          * Network Configuration
          */
@@ -6368,7 +6368,7 @@ export namespace fabric {
         /**
          * Port Configuration
          */
-        port: outputs.fabric.GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPort;
+        port?: outputs.fabric.GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPort;
         /**
          * Type of Access point; COLO, VD, NETWORK
          */
@@ -6555,11 +6555,11 @@ export namespace fabric {
         /**
          * Virtual Device Interface Configuration
          */
-        interface: outputs.fabric.GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterface;
+        interface?: outputs.fabric.GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterface;
         /**
          * Link protocol Configuration
          */
-        linkProtocol: outputs.fabric.GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocol;
+        linkProtocol?: outputs.fabric.GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocol;
         /**
          * Network Configuration
          */
@@ -6567,7 +6567,7 @@ export namespace fabric {
         /**
          * Port Configuration
          */
-        port: outputs.fabric.GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPort;
+        port?: outputs.fabric.GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPort;
         /**
          * Type of Access point; COLO, VD, NETWORK
          */
@@ -7787,11 +7787,11 @@ export namespace fabric {
         /**
          * Virtual Device Interface Configuration
          */
-        interface: outputs.fabric.ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterface;
+        interface?: outputs.fabric.ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterface;
         /**
          * Link protocol Configuration
          */
-        linkProtocol: outputs.fabric.ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocol;
+        linkProtocol?: outputs.fabric.ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocol;
         /**
          * Network Configuration
          */
@@ -7799,7 +7799,7 @@ export namespace fabric {
         /**
          * Port Configuration
          */
-        port: outputs.fabric.ServiceTokenServiceTokenConnectionASideAccessPointSelectorPort;
+        port?: outputs.fabric.ServiceTokenServiceTokenConnectionASideAccessPointSelectorPort;
         /**
          * Type of Access point; COLO, VD, NETWORK
          */
@@ -7986,11 +7986,11 @@ export namespace fabric {
         /**
          * Virtual Device Interface Configuration
          */
-        interface: outputs.fabric.ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterface;
+        interface?: outputs.fabric.ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterface;
         /**
          * Link protocol Configuration
          */
-        linkProtocol: outputs.fabric.ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocol;
+        linkProtocol?: outputs.fabric.ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocol;
         /**
          * Network Configuration
          */
@@ -7998,7 +7998,7 @@ export namespace fabric {
         /**
          * Port Configuration
          */
-        port: outputs.fabric.ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort;
+        port?: outputs.fabric.ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort;
         /**
          * Type of Access point; COLO, VD, NETWORK
          */

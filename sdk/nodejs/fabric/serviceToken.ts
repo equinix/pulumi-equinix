@@ -90,6 +90,38 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * Zside Network Service Token
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const test = new equinix.fabric.ServiceToken("test", {
+ *     description: "Zside Network Service Token",
+ *     expirationDateTime: "2025-01-18T06:43:49.986Z",
+ *     notifications: [{
+ *         emails: ["example@equinix.com"],
+ *         type: "ALL",
+ *     }],
+ *     serviceTokenConnections: [{
+ *         supportedBandwidths: [
+ *             50,
+ *             200,
+ *             10000,
+ *         ],
+ *         type: "EVPL_VC",
+ *         zSides: [{
+ *             accessPointSelectors: [{
+ *                 network: {
+ *                     uuid: "<network_uuid>",
+ *                 },
+ *                 type: "NETWORK",
+ *             }],
+ *         }],
+ *     }],
+ *     type: "VC_TOKEN",
+ * });
+ * ```
+ *
  * Zside Virtual Device Service Token
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -21,12 +21,12 @@ public final class GetServiceTokensDataServiceTokenConnectionASideAccessPointSel
      * @return Virtual Device Interface Configuration
      * 
      */
-    private GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterface interface_;
+    private @Nullable GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterface interface_;
     /**
      * @return Link protocol Configuration
      * 
      */
-    private GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocol linkProtocol;
+    private @Nullable GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocol linkProtocol;
     /**
      * @return Network Configuration
      * 
@@ -36,7 +36,7 @@ public final class GetServiceTokensDataServiceTokenConnectionASideAccessPointSel
      * @return Port Configuration
      * 
      */
-    private GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPort port;
+    private @Nullable GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPort port;
     /**
      * @return Type of Access point; COLO, VD, NETWORK
      * 
@@ -53,15 +53,15 @@ public final class GetServiceTokensDataServiceTokenConnectionASideAccessPointSel
      * @return Virtual Device Interface Configuration
      * 
      */
-    public GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterface interface_() {
-        return this.interface_;
+    public Optional<GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterface> interface_() {
+        return Optional.ofNullable(this.interface_);
     }
     /**
      * @return Link protocol Configuration
      * 
      */
-    public GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocol linkProtocol() {
-        return this.linkProtocol;
+    public Optional<GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocol> linkProtocol() {
+        return Optional.ofNullable(this.linkProtocol);
     }
     /**
      * @return Network Configuration
@@ -74,8 +74,8 @@ public final class GetServiceTokensDataServiceTokenConnectionASideAccessPointSel
      * @return Port Configuration
      * 
      */
-    public GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPort port() {
-        return this.port;
+    public Optional<GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPort> port() {
+        return Optional.ofNullable(this.port);
     }
     /**
      * @return Type of Access point; COLO, VD, NETWORK
@@ -101,10 +101,10 @@ public final class GetServiceTokensDataServiceTokenConnectionASideAccessPointSel
     }
     @CustomType.Builder
     public static final class Builder {
-        private GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterface interface_;
-        private GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocol linkProtocol;
+        private @Nullable GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterface interface_;
+        private @Nullable GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocol linkProtocol;
         private GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetwork network;
-        private GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPort port;
+        private @Nullable GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPort port;
         private String type;
         private @Nullable GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevice virtualDevice;
         public Builder() {}
@@ -119,18 +119,14 @@ public final class GetServiceTokensDataServiceTokenConnectionASideAccessPointSel
         }
 
         @CustomType.Setter("interface")
-        public Builder interface_(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterface interface_) {
-            if (interface_ == null) {
-              throw new MissingRequiredPropertyException("GetServiceTokensDataServiceTokenConnectionASideAccessPointSelector", "interface_");
-            }
+        public Builder interface_(@Nullable GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterface interface_) {
+
             this.interface_ = interface_;
             return this;
         }
         @CustomType.Setter
-        public Builder linkProtocol(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocol linkProtocol) {
-            if (linkProtocol == null) {
-              throw new MissingRequiredPropertyException("GetServiceTokensDataServiceTokenConnectionASideAccessPointSelector", "linkProtocol");
-            }
+        public Builder linkProtocol(@Nullable GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocol linkProtocol) {
+
             this.linkProtocol = linkProtocol;
             return this;
         }
@@ -143,10 +139,8 @@ public final class GetServiceTokensDataServiceTokenConnectionASideAccessPointSel
             return this;
         }
         @CustomType.Setter
-        public Builder port(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPort port) {
-            if (port == null) {
-              throw new MissingRequiredPropertyException("GetServiceTokensDataServiceTokenConnectionASideAccessPointSelector", "port");
-            }
+        public Builder port(@Nullable GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPort port) {
+
             this.port = port;
             return this;
         }
