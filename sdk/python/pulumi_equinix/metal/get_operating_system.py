@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -139,9 +144,6 @@ def get_operating_system(distro: Optional[str] = None,
         provisionable_on=pulumi.get(__ret__, 'provisionable_on'),
         slug=pulumi.get(__ret__, 'slug'),
         version=pulumi.get(__ret__, 'version'))
-
-
-@_utilities.lift_output_func(get_operating_system)
 def get_operating_system_output(distro: Optional[pulumi.Input[Optional[str]]] = None,
                                 name: Optional[pulumi.Input[Optional[str]]] = None,
                                 provisionable_on: Optional[pulumi.Input[Optional[str]]] = None,
@@ -174,4 +176,17 @@ def get_operating_system_output(distro: Optional[pulumi.Input[Optional[str]]] = 
     :param str provisionable_on: Plan name.
     :param str version: Version of the distribution.
     """
-    ...
+    __args__ = dict()
+    __args__['distro'] = distro
+    __args__['name'] = name
+    __args__['provisionableOn'] = provisionable_on
+    __args__['version'] = version
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('equinix:metal/getOperatingSystem:getOperatingSystem', __args__, opts=opts, typ=GetOperatingSystemResult)
+    return __ret__.apply(lambda __response__: GetOperatingSystemResult(
+        distro=pulumi.get(__response__, 'distro'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        provisionable_on=pulumi.get(__response__, 'provisionable_on'),
+        slug=pulumi.get(__response__, 'slug'),
+        version=pulumi.get(__response__, 'version')))

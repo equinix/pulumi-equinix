@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -103,9 +108,6 @@ def get_connection_route_filters(connection_id: Optional[str] = None,
         datas=pulumi.get(__ret__, 'datas'),
         id=pulumi.get(__ret__, 'id'),
         paginations=pulumi.get(__ret__, 'paginations'))
-
-
-@_utilities.lift_output_func(get_connection_route_filters)
 def get_connection_route_filters_output(connection_id: Optional[pulumi.Input[str]] = None,
                                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConnectionRouteFiltersResult]:
     """
@@ -118,4 +120,12 @@ def get_connection_route_filters_output(connection_id: Optional[pulumi.Input[str
 
     :param str connection_id: Equinix Assigned UUID of the Equinix Connection to attach the Route Filter Policy to
     """
-    ...
+    __args__ = dict()
+    __args__['connectionId'] = connection_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('equinix:fabric/getConnectionRouteFilters:getConnectionRouteFilters', __args__, opts=opts, typ=GetConnectionRouteFiltersResult)
+    return __ret__.apply(lambda __response__: GetConnectionRouteFiltersResult(
+        connection_id=pulumi.get(__response__, 'connection_id'),
+        datas=pulumi.get(__response__, 'datas'),
+        id=pulumi.get(__response__, 'id'),
+        paginations=pulumi.get(__response__, 'paginations')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -163,9 +168,6 @@ def get_route_filters(filters: Optional[Sequence[Union['GetRouteFiltersFilterArg
         id=pulumi.get(__ret__, 'id'),
         pagination=pulumi.get(__ret__, 'pagination'),
         sorts=pulumi.get(__ret__, 'sorts'))
-
-
-@_utilities.lift_output_func(get_route_filters)
 def get_route_filters_output(filters: Optional[pulumi.Input[Sequence[Union['GetRouteFiltersFilterArgs', 'GetRouteFiltersFilterArgsDict']]]] = None,
                              pagination: Optional[pulumi.Input[Optional[Union['GetRouteFiltersPaginationArgs', 'GetRouteFiltersPaginationArgsDict']]]] = None,
                              sorts: Optional[pulumi.Input[Optional[Sequence[Union['GetRouteFiltersSortArgs', 'GetRouteFiltersSortArgsDict']]]]] = None,
@@ -222,4 +224,15 @@ def get_route_filters_output(filters: Optional[pulumi.Input[Sequence[Union['GetR
     :param Union['GetRouteFiltersPaginationArgs', 'GetRouteFiltersPaginationArgsDict'] pagination: Pagination details for the Data Source Search Request
     :param Sequence[Union['GetRouteFiltersSortArgs', 'GetRouteFiltersSortArgsDict']] sorts: Filters for the Data Source Search Request
     """
-    ...
+    __args__ = dict()
+    __args__['filters'] = filters
+    __args__['pagination'] = pagination
+    __args__['sorts'] = sorts
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('equinix:fabric/getRouteFilters:getRouteFilters', __args__, opts=opts, typ=GetRouteFiltersResult)
+    return __ret__.apply(lambda __response__: GetRouteFiltersResult(
+        datas=pulumi.get(__response__, 'datas'),
+        filters=pulumi.get(__response__, 'filters'),
+        id=pulumi.get(__response__, 'id'),
+        pagination=pulumi.get(__response__, 'pagination'),
+        sorts=pulumi.get(__response__, 'sorts')))

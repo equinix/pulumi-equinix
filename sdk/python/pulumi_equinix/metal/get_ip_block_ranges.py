@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -163,9 +168,6 @@ def get_ip_block_ranges(facility: Optional[str] = None,
         private_ipv4s=pulumi.get(__ret__, 'private_ipv4s'),
         project_id=pulumi.get(__ret__, 'project_id'),
         public_ipv4s=pulumi.get(__ret__, 'public_ipv4s'))
-
-
-@_utilities.lift_output_func(get_ip_block_ranges)
 def get_ip_block_ranges_output(facility: Optional[pulumi.Input[Optional[str]]] = None,
                                metro: Optional[pulumi.Input[Optional[str]]] = None,
                                project_id: Optional[pulumi.Input[str]] = None,
@@ -193,4 +195,18 @@ def get_ip_block_ranges_output(facility: Optional[pulumi.Input[Optional[str]]] =
     :param str metro: Metro code filtering the IP blocks. Global IPv4 blocks will be listed anyway. If you omit this and facility, all the block from the project will be listed.
     :param str project_id: ID of the project from which to list the blocks.
     """
-    ...
+    __args__ = dict()
+    __args__['facility'] = facility
+    __args__['metro'] = metro
+    __args__['projectId'] = project_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('equinix:metal/getIpBlockRanges:getIpBlockRanges', __args__, opts=opts, typ=GetIpBlockRangesResult)
+    return __ret__.apply(lambda __response__: GetIpBlockRangesResult(
+        facility=pulumi.get(__response__, 'facility'),
+        global_ipv4s=pulumi.get(__response__, 'global_ipv4s'),
+        id=pulumi.get(__response__, 'id'),
+        ipv6s=pulumi.get(__response__, 'ipv6s'),
+        metro=pulumi.get(__response__, 'metro'),
+        private_ipv4s=pulumi.get(__response__, 'private_ipv4s'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        public_ipv4s=pulumi.get(__response__, 'public_ipv4s')))

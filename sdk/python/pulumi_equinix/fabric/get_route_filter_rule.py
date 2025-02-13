@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -234,9 +239,6 @@ def get_route_filter_rule(route_filter_id: Optional[str] = None,
         state=pulumi.get(__ret__, 'state'),
         type=pulumi.get(__ret__, 'type'),
         uuid=pulumi.get(__ret__, 'uuid'))
-
-
-@_utilities.lift_output_func(get_route_filter_rule)
 def get_route_filter_rule_output(route_filter_id: Optional[pulumi.Input[str]] = None,
                                  uuid: Optional[pulumi.Input[str]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRouteFilterRuleResult]:
@@ -265,4 +267,22 @@ def get_route_filter_rule_output(route_filter_id: Optional[pulumi.Input[str]] = 
     :param str route_filter_id: UUID of the Route Filter Policy the rule is attached to
     :param str uuid: Equinix Assigned ID for Route Filter Rule to retrieve data for
     """
-    ...
+    __args__ = dict()
+    __args__['routeFilterId'] = route_filter_id
+    __args__['uuid'] = uuid
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('equinix:fabric/getRouteFilterRule:getRouteFilterRule', __args__, opts=opts, typ=GetRouteFilterRuleResult)
+    return __ret__.apply(lambda __response__: GetRouteFilterRuleResult(
+        action=pulumi.get(__response__, 'action'),
+        change_logs=pulumi.get(__response__, 'change_logs'),
+        changes=pulumi.get(__response__, 'changes'),
+        description=pulumi.get(__response__, 'description'),
+        href=pulumi.get(__response__, 'href'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        prefix=pulumi.get(__response__, 'prefix'),
+        prefix_match=pulumi.get(__response__, 'prefix_match'),
+        route_filter_id=pulumi.get(__response__, 'route_filter_id'),
+        state=pulumi.get(__response__, 'state'),
+        type=pulumi.get(__response__, 'type'),
+        uuid=pulumi.get(__response__, 'uuid')))

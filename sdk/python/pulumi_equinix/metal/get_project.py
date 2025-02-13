@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -181,9 +186,6 @@ def get_project(name: Optional[str] = None,
         project_id=pulumi.get(__ret__, 'project_id'),
         updated=pulumi.get(__ret__, 'updated'),
         user_ids=pulumi.get(__ret__, 'user_ids'))
-
-
-@_utilities.lift_output_func(get_project)
 def get_project_output(name: Optional[pulumi.Input[Optional[str]]] = None,
                        project_id: Optional[pulumi.Input[Optional[str]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectResult]:
@@ -204,4 +206,19 @@ def get_project_output(name: Optional[pulumi.Input[Optional[str]]] = None,
     :param str name: The name which is used to look up the project.
     :param str project_id: The UUID by which to look up the project.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['projectId'] = project_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('equinix:metal/getProject:getProject', __args__, opts=opts, typ=GetProjectResult)
+    return __ret__.apply(lambda __response__: GetProjectResult(
+        backend_transfer=pulumi.get(__response__, 'backend_transfer'),
+        bgp_config=pulumi.get(__response__, 'bgp_config'),
+        created=pulumi.get(__response__, 'created'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        organization_id=pulumi.get(__response__, 'organization_id'),
+        payment_method_id=pulumi.get(__response__, 'payment_method_id'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        updated=pulumi.get(__response__, 'updated'),
+        user_ids=pulumi.get(__response__, 'user_ids')))

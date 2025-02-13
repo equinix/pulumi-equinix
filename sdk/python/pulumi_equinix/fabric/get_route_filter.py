@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -232,9 +237,6 @@ def get_route_filter(uuid: Optional[str] = None,
         state=pulumi.get(__ret__, 'state'),
         type=pulumi.get(__ret__, 'type'),
         uuid=pulumi.get(__ret__, 'uuid'))
-
-
-@_utilities.lift_output_func(get_route_filter)
 def get_route_filter_output(uuid: Optional[pulumi.Input[str]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRouteFilterResult]:
     """
@@ -262,4 +264,21 @@ def get_route_filter_output(uuid: Optional[pulumi.Input[str]] = None,
 
     :param str uuid: Equinix Assigned ID for Route Filter
     """
-    ...
+    __args__ = dict()
+    __args__['uuid'] = uuid
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('equinix:fabric/getRouteFilter:getRouteFilter', __args__, opts=opts, typ=GetRouteFilterResult)
+    return __ret__.apply(lambda __response__: GetRouteFilterResult(
+        change_logs=pulumi.get(__response__, 'change_logs'),
+        changes=pulumi.get(__response__, 'changes'),
+        connections_count=pulumi.get(__response__, 'connections_count'),
+        description=pulumi.get(__response__, 'description'),
+        href=pulumi.get(__response__, 'href'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        not_matched_rule_action=pulumi.get(__response__, 'not_matched_rule_action'),
+        projects=pulumi.get(__response__, 'projects'),
+        rules_count=pulumi.get(__response__, 'rules_count'),
+        state=pulumi.get(__response__, 'state'),
+        type=pulumi.get(__response__, 'type'),
+        uuid=pulumi.get(__response__, 'uuid')))

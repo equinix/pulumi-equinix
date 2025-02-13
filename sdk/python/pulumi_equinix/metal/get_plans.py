@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -93,9 +98,6 @@ def get_plans(filters: Optional[Sequence[Union['GetPlansFilterArgs', 'GetPlansFi
         id=pulumi.get(__ret__, 'id'),
         plans=pulumi.get(__ret__, 'plans'),
         sorts=pulumi.get(__ret__, 'sorts'))
-
-
-@_utilities.lift_output_func(get_plans)
 def get_plans_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetPlansFilterArgs', 'GetPlansFilterArgsDict']]]]] = None,
                      sorts: Optional[pulumi.Input[Optional[Sequence[Union['GetPlansSortArgs', 'GetPlansSortArgsDict']]]]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPlansResult]:
@@ -105,4 +107,13 @@ def get_plans_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['Get
     :param Sequence[Union['GetPlansFilterArgs', 'GetPlansFilterArgsDict']] filters: One or more attribute/values pairs to filter off of
     :param Sequence[Union['GetPlansSortArgs', 'GetPlansSortArgsDict']] sorts: One or more attribute/direction pairs on which to sort results. If multiple sorts are provided, they will be applied in order
     """
-    ...
+    __args__ = dict()
+    __args__['filters'] = filters
+    __args__['sorts'] = sorts
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('equinix:metal/getPlans:getPlans', __args__, opts=opts, typ=GetPlansResult)
+    return __ret__.apply(lambda __response__: GetPlansResult(
+        filters=pulumi.get(__response__, 'filters'),
+        id=pulumi.get(__response__, 'id'),
+        plans=pulumi.get(__response__, 'plans'),
+        sorts=pulumi.get(__response__, 'sorts')))

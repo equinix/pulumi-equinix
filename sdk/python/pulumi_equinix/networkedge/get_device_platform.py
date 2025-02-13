@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -171,9 +176,6 @@ def get_device_platform(core_count: Optional[int] = None,
         memory=pulumi.get(__ret__, 'memory'),
         memory_unit=pulumi.get(__ret__, 'memory_unit'),
         packages=pulumi.get(__ret__, 'packages'))
-
-
-@_utilities.lift_output_func(get_device_platform)
 def get_device_platform_output(core_count: Optional[pulumi.Input[Optional[int]]] = None,
                                device_type: Optional[pulumi.Input[str]] = None,
                                flavor: Optional[pulumi.Input[Optional[str]]] = None,
@@ -203,4 +205,22 @@ def get_device_platform_output(core_count: Optional[pulumi.Input[Optional[int]]]
     :param Sequence[str] management_types: List of device management types to limit platform search results. Supported values are: `EQUINIX-CONFIGURED`, `SELF-CONFIGURED`.
     :param Sequence[str] packages: List of software package codes to limit platform search results.
     """
-    ...
+    __args__ = dict()
+    __args__['coreCount'] = core_count
+    __args__['deviceType'] = device_type
+    __args__['flavor'] = flavor
+    __args__['licenseOptions'] = license_options
+    __args__['managementTypes'] = management_types
+    __args__['packages'] = packages
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('equinix:networkedge/getDevicePlatform:getDevicePlatform', __args__, opts=opts, typ=GetDevicePlatformResult)
+    return __ret__.apply(lambda __response__: GetDevicePlatformResult(
+        core_count=pulumi.get(__response__, 'core_count'),
+        device_type=pulumi.get(__response__, 'device_type'),
+        flavor=pulumi.get(__response__, 'flavor'),
+        id=pulumi.get(__response__, 'id'),
+        license_options=pulumi.get(__response__, 'license_options'),
+        management_types=pulumi.get(__response__, 'management_types'),
+        memory=pulumi.get(__response__, 'memory'),
+        memory_unit=pulumi.get(__response__, 'memory_unit'),
+        packages=pulumi.get(__response__, 'packages')))

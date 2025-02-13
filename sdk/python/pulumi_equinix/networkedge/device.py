@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._enums import *
@@ -1636,11 +1641,11 @@ class Device(pulumi.CustomResource):
                 "account_number": sv.number,
                 "vendor_configuration": {
                     "hostname": "test",
-                    "private_address": "x.x.x.x",
-                    "private_cidr_mask": "24",
-                    "private_gateway": "x.x.x.x",
-                    "license_key": "xxxxx-xxxxx-xxxxx-xxxxx-xxxxx",
-                    "license_id": "xxxxxxxxxxxxxxx",
+                    "privateAddress": "x.x.x.x",
+                    "privateCidrMask": "24",
+                    "privateGateway": "x.x.x.x",
+                    "licenseKey": "xxxxx-xxxxx-xxxxx-xxxxx-xxxxx",
+                    "licenseId": "xxxxxxxxxxxxxxx",
                 },
             })
         ```
@@ -2258,11 +2263,11 @@ class Device(pulumi.CustomResource):
                 "account_number": sv.number,
                 "vendor_configuration": {
                     "hostname": "test",
-                    "private_address": "x.x.x.x",
-                    "private_cidr_mask": "24",
-                    "private_gateway": "x.x.x.x",
-                    "license_key": "xxxxx-xxxxx-xxxxx-xxxxx-xxxxx",
-                    "license_id": "xxxxxxxxxxxxxxx",
+                    "privateAddress": "x.x.x.x",
+                    "privateCidrMask": "24",
+                    "privateGateway": "x.x.x.x",
+                    "licenseKey": "xxxxx-xxxxx-xxxxx-xxxxx-xxxxx",
+                    "licenseId": "xxxxxxxxxxxxxxx",
                 },
             })
         ```
