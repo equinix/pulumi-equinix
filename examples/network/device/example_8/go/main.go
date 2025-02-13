@@ -9,23 +9,20 @@ import (
 
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
-		sv, err := networkedge.GetAccount(ctx, &networkedge.GetAccountArgs{
-			Name:      pulumi.StringRef("account-name"),
-			MetroCode: "SV",
+		sv := networkedge.GetAccountOutput(ctx, networkedge.GetAccountOutputArgs{
+			Name:      pulumi.String("account-name"),
+			MetroCode: pulumi.String("SV"),
 		}, nil)
-		if err != nil {
-			return err
-		}
-		invokeFile, err := std.File(ctx, &std.FileArgs{
-			Input: filepath,
-		}, nil)
-		if err != nil {
-			return err
-		}
 		bluecatEdgeServicePointCloudinitPrimaryFile, err := networkedge.NewNetworkFile(ctx, "bluecatEdgeServicePointCloudinitPrimaryFile", &networkedge.NetworkFileArgs{
-			FileName:       pulumi.String("TF-BLUECAT-ESP-cloud-init-file.txt"),
-			Content:        pulumi.String(invokeFile.Result),
-			MetroCode:      sv.MetroCode.ApplyT(func(x *string) equinix.Metro { return equinix.Metro(*x) }).(equinix.MetroOutput),
+			FileName: pulumi.String("TF-BLUECAT-ESP-cloud-init-file.txt"),
+			Content: pulumi.String(std.FileOutput(ctx, std.FileOutputArgs{
+				Input: pulumi.Any(filepath),
+			}, nil).ApplyT(func(invoke std.FileResult) (*string, error) {
+				return invoke.Result, nil
+			}).(pulumi.StringPtrOutput)),
+			MetroCode: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+				return &sv.MetroCode, nil
+			}).(pulumi.StringPtrOutput).ApplyT(func(x *string) equinix.Metro { return equinix.Metro(*x) }).(equinix.MetroOutput),
 			DeviceTypeCode: pulumi.String("BLUECAT-EDGE-SERVICE-POINT"),
 			ProcessType:    pulumi.String(networkedge.FileTypeCloudInit),
 			SelfManaged:    pulumi.Bool(true),
@@ -34,16 +31,16 @@ func main() {
 		if err != nil {
 			return err
 		}
-		invokeFile1, err := std.File(ctx, &std.FileArgs{
-			Input: filepath,
-		}, nil)
-		if err != nil {
-			return err
-		}
 		bluecatEdgeServicePointCloudinitSecondaryFile, err := networkedge.NewNetworkFile(ctx, "bluecatEdgeServicePointCloudinitSecondaryFile", &networkedge.NetworkFileArgs{
-			FileName:       pulumi.String("TF-BLUECAT-ESP-cloud-init-file.txt"),
-			Content:        pulumi.String(invokeFile1.Result),
-			MetroCode:      sv.MetroCode.ApplyT(func(x *string) equinix.Metro { return equinix.Metro(*x) }).(equinix.MetroOutput),
+			FileName: pulumi.String("TF-BLUECAT-ESP-cloud-init-file.txt"),
+			Content: pulumi.String(std.FileOutput(ctx, std.FileOutputArgs{
+				Input: pulumi.Any(filepath),
+			}, nil).ApplyT(func(invoke std.FileResult) (*string, error) {
+				return invoke.Result, nil
+			}).(pulumi.StringPtrOutput)),
+			MetroCode: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+				return &sv.MetroCode, nil
+			}).(pulumi.StringPtrOutput).ApplyT(func(x *string) equinix.Metro { return equinix.Metro(*x) }).(equinix.MetroOutput),
 			DeviceTypeCode: pulumi.String("BLUECAT-EDGE-SERVICE-POINT"),
 			ProcessType:    pulumi.String(networkedge.FileTypeCloudInit),
 			SelfManaged:    pulumi.Bool(true),
@@ -53,8 +50,10 @@ func main() {
 			return err
 		}
 		_, err = networkedge.NewDevice(ctx, "bluecatEdgeServicePointHa", &networkedge.DeviceArgs{
-			Name:         pulumi.String("tf-bluecat-edge-service-point-p"),
-			MetroCode:    pulumi.String(sv.MetroCode),
+			Name: pulumi.String("tf-bluecat-edge-service-point-p"),
+			MetroCode: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+				return &sv.MetroCode, nil
+			}).(pulumi.StringPtrOutput)),
 			TypeCode:     pulumi.String("BLUECAT-EDGE-SERVICE-POINT"),
 			SelfManaged:  pulumi.Bool(true),
 			Connectivity: pulumi.String("PRIVATE"),
@@ -63,18 +62,24 @@ func main() {
 			Notifications: pulumi.StringArray{
 				pulumi.String("test@equinix.com"),
 			},
-			AccountNumber:   pulumi.String(sv.Number),
+			AccountNumber: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+				return &sv.Number, nil
+			}).(pulumi.StringPtrOutput)),
 			CloudInitFileId: bluecatEdgeServicePointCloudinitPrimaryFile.Uuid,
 			Version:         pulumi.String("4.6.3"),
 			CoreCount:       pulumi.Int(4),
 			TermLength:      pulumi.Int(12),
 			SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
-				Name:      pulumi.String("tf-bluecat-edge-service-point-s"),
-				MetroCode: pulumi.String(sv.MetroCode),
+				Name: pulumi.String("tf-bluecat-edge-service-point-s"),
+				MetroCode: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+					return &sv.MetroCode, nil
+				}).(pulumi.StringPtrOutput),
 				Notifications: pulumi.StringArray{
 					pulumi.String("test@eq.com"),
 				},
-				AccountNumber:   pulumi.String(sv.Number),
+				AccountNumber: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+					return &sv.Number, nil
+				}).(pulumi.StringPtrOutput),
 				CloudInitFileId: bluecatEdgeServicePointCloudinitSecondaryFile.Uuid,
 			},
 		})
