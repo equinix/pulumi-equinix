@@ -4,29 +4,68 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from ._enums import *
 
 __all__ = [
     'AclTemplateDeviceDetailArgs',
+    'AclTemplateDeviceDetailArgsDict',
     'AclTemplateInboundRuleArgs',
+    'AclTemplateInboundRuleArgsDict',
     'DeviceClusterDetailsArgs',
+    'DeviceClusterDetailsArgsDict',
     'DeviceClusterDetailsNode0Args',
+    'DeviceClusterDetailsNode0ArgsDict',
     'DeviceClusterDetailsNode0VendorConfigurationArgs',
+    'DeviceClusterDetailsNode0VendorConfigurationArgsDict',
     'DeviceClusterDetailsNode1Args',
+    'DeviceClusterDetailsNode1ArgsDict',
     'DeviceClusterDetailsNode1VendorConfigurationArgs',
+    'DeviceClusterDetailsNode1VendorConfigurationArgsDict',
     'DeviceInterfaceArgs',
+    'DeviceInterfaceArgsDict',
     'DeviceLinkDeviceArgs',
+    'DeviceLinkDeviceArgsDict',
     'DeviceLinkLinkArgs',
+    'DeviceLinkLinkArgsDict',
     'DeviceLinkMetroLinkArgs',
+    'DeviceLinkMetroLinkArgsDict',
     'DeviceSecondaryDeviceArgs',
+    'DeviceSecondaryDeviceArgsDict',
     'DeviceSecondaryDeviceInterfaceArgs',
+    'DeviceSecondaryDeviceInterfaceArgsDict',
     'DeviceSecondaryDeviceSshKeyArgs',
+    'DeviceSecondaryDeviceSshKeyArgsDict',
     'DeviceSshKeyArgs',
+    'DeviceSshKeyArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class AclTemplateDeviceDetailArgsDict(TypedDict):
+        acl_status: NotRequired[pulumi.Input[str]]
+        """
+        Device ACL provisioning status where template was applied. One of `PROVISIONING`, `PROVISIONED`.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        ACL template name.
+        """
+        uuid: NotRequired[pulumi.Input[str]]
+        """
+        Device uuid.
+        """
+elif False:
+    AclTemplateDeviceDetailArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AclTemplateDeviceDetailArgs:
@@ -82,6 +121,43 @@ class AclTemplateDeviceDetailArgs:
     def uuid(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "uuid", value)
 
+
+if not MYPY:
+    class AclTemplateInboundRuleArgsDict(TypedDict):
+        dst_port: pulumi.Input[str]
+        """
+        Inbound traffic destination ports. Allowed values are a comma separated list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
+        """
+        protocol: pulumi.Input[Union[str, 'AclRuleProtocolType']]
+        """
+        Inbound traffic protocol. One of `IP`, `TCP`, `UDP`.
+        """
+        src_port: pulumi.Input[str]
+        """
+        Inbound traffic source ports. Allowed values are a comma separated list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Inbound rule description, up to 200 characters.
+        """
+        sequence_number: NotRequired[pulumi.Input[int]]
+        """
+        Inbound rule sequence number
+        """
+        source_type: NotRequired[pulumi.Input[str]]
+        """
+        Type of traffic source used in a given inbound rule
+        """
+        subnet: NotRequired[pulumi.Input[str]]
+        """
+        Inbound traffic source IP subnet in CIDR format.
+        """
+        subnets: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Inbound traffic source IP subnets in CIDR format.
+        """
+elif False:
+    AclTemplateInboundRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AclTemplateInboundRuleArgs:
@@ -223,6 +299,31 @@ class AclTemplateInboundRuleArgs:
         pulumi.set(self, "subnets", value)
 
 
+if not MYPY:
+    class DeviceClusterDetailsArgsDict(TypedDict):
+        cluster_name: pulumi.Input[str]
+        """
+        The name of the cluster device
+        """
+        node0: pulumi.Input['DeviceClusterDetailsNode0ArgsDict']
+        """
+        An object that has `node0` configuration. See Cluster Details - Nodes below for more details.
+        """
+        node1: pulumi.Input['DeviceClusterDetailsNode1ArgsDict']
+        """
+        An object that has `node1` configuration. See Cluster Details - Nodes below for more details.
+        """
+        cluster_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the cluster.
+        """
+        num_of_nodes: NotRequired[pulumi.Input[int]]
+        """
+        The number of nodes in the cluster.
+        """
+elif False:
+    DeviceClusterDetailsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DeviceClusterDetailsArgs:
     def __init__(__self__, *,
@@ -306,6 +407,31 @@ class DeviceClusterDetailsArgs:
     def num_of_nodes(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "num_of_nodes", value)
 
+
+if not MYPY:
+    class DeviceClusterDetailsNode0ArgsDict(TypedDict):
+        license_file_id: NotRequired[pulumi.Input[str]]
+        """
+        License file id. This is necessary for Fortinet and Juniper clusters.
+        """
+        license_token: NotRequired[pulumi.Input[str]]
+        """
+        License token. This is necessary for Palo Alto clusters.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Device name.
+        """
+        uuid: NotRequired[pulumi.Input[str]]
+        """
+        Device unique identifier.
+        """
+        vendor_configuration: NotRequired[pulumi.Input['DeviceClusterDetailsNode0VendorConfigurationArgsDict']]
+        """
+        An object that has fields relevant to the vendor of the cluster device. See Cluster Details - Nodes - Vendor Configuration below for more details.
+        """
+elif False:
+    DeviceClusterDetailsNode0ArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DeviceClusterDetailsNode0Args:
@@ -393,6 +519,63 @@ class DeviceClusterDetailsNode0Args:
     def vendor_configuration(self, value: Optional[pulumi.Input['DeviceClusterDetailsNode0VendorConfigurationArgs']]):
         pulumi.set(self, "vendor_configuration", value)
 
+
+if not MYPY:
+    class DeviceClusterDetailsNode0VendorConfigurationArgsDict(TypedDict):
+        activation_key: NotRequired[pulumi.Input[str]]
+        """
+        Activation key. This is required for Velocloud clusters.
+        """
+        admin_password: NotRequired[pulumi.Input[str]]
+        """
+        The administrative password of the device. You can use it to log in to the console. This field is not available for all device types.
+        """
+        controller1: NotRequired[pulumi.Input[str]]
+        """
+        System IP Address. Mandatory for the Fortinet SDWAN cluster device.
+        """
+        controller_fqdn: NotRequired[pulumi.Input[str]]
+        """
+        Controller fqdn. This is required for Velocloud clusters.
+        """
+        hostname: NotRequired[pulumi.Input[str]]
+        """
+        Hostname. This is necessary for Palo Alto, Juniper, and Fortinet clusters.
+        """
+        license_id: NotRequired[pulumi.Input[str]]
+        """
+        License id. This field is relevant only for the BlueCat DNS and DHCP Server
+        """
+        license_key: NotRequired[pulumi.Input[str]]
+        """
+        License key. This field is relevant only for the BlueCat DNS and DHCP Server
+        """
+        panorama_auth_key: NotRequired[pulumi.Input[str]]
+        """
+        Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
+        """
+        panorama_ip_address: NotRequired[pulumi.Input[str]]
+        """
+        Panorama Server IP Address. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
+        """
+        private_address: NotRequired[pulumi.Input[str]]
+        """
+        Private address. This field is relevant only for the BlueCat DNS and DHCP Server
+        """
+        private_cidr_mask: NotRequired[pulumi.Input[str]]
+        """
+        Private CIDR Mask. This field is relevant only for the BlueCat DNS and DHCP Server
+        """
+        private_gateway: NotRequired[pulumi.Input[str]]
+        """
+        Private gateway. This field is relevant only for the BlueCat DNS and DHCP Server
+        """
+        root_password: NotRequired[pulumi.Input[str]]
+        """
+        The CLI password of the device. This field is relevant only for the Velocloud SDWAN cluster.
+        """
+elif False:
+    DeviceClusterDetailsNode0VendorConfigurationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DeviceClusterDetailsNode0VendorConfigurationArgs:
@@ -609,6 +792,31 @@ class DeviceClusterDetailsNode0VendorConfigurationArgs:
         pulumi.set(self, "root_password", value)
 
 
+if not MYPY:
+    class DeviceClusterDetailsNode1ArgsDict(TypedDict):
+        license_file_id: NotRequired[pulumi.Input[str]]
+        """
+        License file id. This is necessary for Fortinet and Juniper clusters.
+        """
+        license_token: NotRequired[pulumi.Input[str]]
+        """
+        License token. This is necessary for Palo Alto clusters.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Device name.
+        """
+        uuid: NotRequired[pulumi.Input[str]]
+        """
+        Device unique identifier.
+        """
+        vendor_configuration: NotRequired[pulumi.Input['DeviceClusterDetailsNode1VendorConfigurationArgsDict']]
+        """
+        An object that has fields relevant to the vendor of the cluster device. See Cluster Details - Nodes - Vendor Configuration below for more details.
+        """
+elif False:
+    DeviceClusterDetailsNode1ArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DeviceClusterDetailsNode1Args:
     def __init__(__self__, *,
@@ -695,6 +903,63 @@ class DeviceClusterDetailsNode1Args:
     def vendor_configuration(self, value: Optional[pulumi.Input['DeviceClusterDetailsNode1VendorConfigurationArgs']]):
         pulumi.set(self, "vendor_configuration", value)
 
+
+if not MYPY:
+    class DeviceClusterDetailsNode1VendorConfigurationArgsDict(TypedDict):
+        activation_key: NotRequired[pulumi.Input[str]]
+        """
+        Activation key. This is required for Velocloud clusters.
+        """
+        admin_password: NotRequired[pulumi.Input[str]]
+        """
+        The administrative password of the device. You can use it to log in to the console. This field is not available for all device types.
+        """
+        controller1: NotRequired[pulumi.Input[str]]
+        """
+        System IP Address. Mandatory for the Fortinet SDWAN cluster device.
+        """
+        controller_fqdn: NotRequired[pulumi.Input[str]]
+        """
+        Controller fqdn. This is required for Velocloud clusters.
+        """
+        hostname: NotRequired[pulumi.Input[str]]
+        """
+        Hostname. This is necessary for Palo Alto, Juniper, and Fortinet clusters.
+        """
+        license_id: NotRequired[pulumi.Input[str]]
+        """
+        License id. This field is relevant only for the BlueCat DNS and DHCP Server
+        """
+        license_key: NotRequired[pulumi.Input[str]]
+        """
+        License key. This field is relevant only for the BlueCat DNS and DHCP Server
+        """
+        panorama_auth_key: NotRequired[pulumi.Input[str]]
+        """
+        Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
+        """
+        panorama_ip_address: NotRequired[pulumi.Input[str]]
+        """
+        Panorama Server IP Address. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
+        """
+        private_address: NotRequired[pulumi.Input[str]]
+        """
+        Private address. This field is relevant only for the BlueCat DNS and DHCP Server
+        """
+        private_cidr_mask: NotRequired[pulumi.Input[str]]
+        """
+        Private CIDR Mask. This field is relevant only for the BlueCat DNS and DHCP Server
+        """
+        private_gateway: NotRequired[pulumi.Input[str]]
+        """
+        Private gateway. This field is relevant only for the BlueCat DNS and DHCP Server
+        """
+        root_password: NotRequired[pulumi.Input[str]]
+        """
+        The CLI password of the device. This field is relevant only for the Velocloud SDWAN cluster.
+        """
+elif False:
+    DeviceClusterDetailsNode1VendorConfigurationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DeviceClusterDetailsNode1VendorConfigurationArgs:
@@ -911,6 +1176,43 @@ class DeviceClusterDetailsNode1VendorConfigurationArgs:
         pulumi.set(self, "root_password", value)
 
 
+if not MYPY:
+    class DeviceInterfaceArgsDict(TypedDict):
+        assigned_type: NotRequired[pulumi.Input[str]]
+        """
+        interface management type (Equinix Managed or empty).
+        """
+        id: NotRequired[pulumi.Input[int]]
+        """
+        interface identifier.
+        """
+        ip_address: NotRequired[pulumi.Input[str]]
+        """
+        interface IP address.
+        """
+        mac_address: NotRequired[pulumi.Input[str]]
+        """
+        interface MAC address.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Device name.
+        """
+        operational_status: NotRequired[pulumi.Input[str]]
+        """
+        interface operational status. One of `up`, `down`.
+        """
+        status: NotRequired[pulumi.Input[str]]
+        """
+        interface status. One of `AVAILABLE`, `RESERVED`, `ASSIGNED`.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        interface type.
+        """
+elif False:
+    DeviceInterfaceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DeviceInterfaceArgs:
     def __init__(__self__, *,
@@ -1046,6 +1348,31 @@ class DeviceInterfaceArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class DeviceLinkDeviceArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        Device identifier.
+        """
+        asn: NotRequired[pulumi.Input[int]]
+        """
+        Device ASN number. Not required for self configured devices.
+        """
+        interface_id: NotRequired[pulumi.Input[int]]
+        """
+        Device network interface identifier to use for device link connection.
+        """
+        ip_address: NotRequired[pulumi.Input[str]]
+        """
+        IP address from device link subnet that was assigned to the device
+        """
+        status: NotRequired[pulumi.Input[str]]
+        """
+        device link provisioning status on a given device. One of `PROVISIONING`, `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
+        """
+elif False:
+    DeviceLinkDeviceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DeviceLinkDeviceArgs:
     def __init__(__self__, *,
@@ -1131,6 +1458,39 @@ class DeviceLinkDeviceArgs:
     def status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "status", value)
 
+
+if not MYPY:
+    class DeviceLinkLinkArgsDict(TypedDict):
+        account_number: pulumi.Input[str]
+        """
+        billing account number to be used for connection charges
+        """
+        dst_metro_code: pulumi.Input[str]
+        """
+        connection destination metro code.
+        """
+        src_metro_code: pulumi.Input[str]
+        """
+        connection source metro code.
+        """
+        throughput: pulumi.Input[str]
+        """
+        connection throughput.
+        """
+        throughput_unit: pulumi.Input[str]
+        """
+        connection throughput unit (Mbps or Gbps).
+        """
+        dst_zone_code: NotRequired[pulumi.Input[str]]
+        """
+        connection destination zone code is not required.
+        """
+        src_zone_code: NotRequired[pulumi.Input[str]]
+        """
+        connection source zone code is not required.
+        """
+elif False:
+    DeviceLinkLinkArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DeviceLinkLinkArgs:
@@ -1254,6 +1614,27 @@ class DeviceLinkLinkArgs:
         pulumi.set(self, "src_zone_code", value)
 
 
+if not MYPY:
+    class DeviceLinkMetroLinkArgsDict(TypedDict):
+        account_number: pulumi.Input[str]
+        """
+        billing account number to be used for connection charges
+        """
+        metro_code: pulumi.Input[str]
+        """
+        connection metro code.
+        """
+        throughput: pulumi.Input[str]
+        """
+        connection throughput.
+        """
+        throughput_unit: pulumi.Input[str]
+        """
+        connection throughput unit (Mbps or Gbps).
+        """
+elif False:
+    DeviceLinkMetroLinkArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DeviceLinkMetroLinkArgs:
     def __init__(__self__, *,
@@ -1320,6 +1701,124 @@ class DeviceLinkMetroLinkArgs:
     def throughput_unit(self, value: pulumi.Input[str]):
         pulumi.set(self, "throughput_unit", value)
 
+
+if not MYPY:
+    class DeviceSecondaryDeviceArgsDict(TypedDict):
+        account_number: pulumi.Input[str]
+        """
+        Billing account number for secondary device.
+        """
+        metro_code: pulumi.Input[str]
+        """
+        Metro location of a secondary device.
+        """
+        name: pulumi.Input[str]
+        """
+        Secondary device name.
+        """
+        notifications: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        List of email addresses that will receive notifications about secondary device.
+        """
+        acl_template_id: NotRequired[pulumi.Input[str]]
+        """
+        Identifier of a WAN interface ACL template that will be applied on a secondary device.
+        """
+        additional_bandwidth: NotRequired[pulumi.Input[int]]
+        """
+        Additional Internet bandwidth, in Mbps, for a secondary device.
+        """
+        asn: NotRequired[pulumi.Input[int]]
+        """
+        (Autonomous System Number) Unique identifier for a network on the internet.
+        """
+        cloud_init_file_id: NotRequired[pulumi.Input[str]]
+        """
+        Identifier of a cloud init file that will be applied on a secondary device.
+        """
+        hostname: NotRequired[pulumi.Input[str]]
+        """
+        Secondary device hostname.
+        """
+        ibx: NotRequired[pulumi.Input[str]]
+        """
+        Device location Equinix Business Exchange name.
+        """
+        interfaces: NotRequired[pulumi.Input[Sequence[pulumi.Input['DeviceSecondaryDeviceInterfaceArgsDict']]]]
+        """
+        List of device interfaces. See Interface Attribute below for more details.
+        """
+        license_file: NotRequired[pulumi.Input[str]]
+        """
+        Path to the license file that will be uploaded and applied on a secondary device. Applicable for some device types in BYOL licensing mode.
+        """
+        license_file_id: NotRequired[pulumi.Input[str]]
+        """
+        Identifier of a license file that will be applied on a secondary device.
+        """
+        license_status: NotRequired[pulumi.Input[str]]
+        """
+        Device license registration status. Possible values are `APPLYING_LICENSE`, `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
+        """
+        license_token: NotRequired[pulumi.Input[str]]
+        """
+        License Token can be provided for some device types o the device.
+        """
+        mgmt_acl_template_uuid: NotRequired[pulumi.Input[str]]
+        """
+        Identifier of an MGMT interface ACL template that will be applied on a secondary device.
+        * `ssh-key` - (Optional) Up to one definition of SSH key that will be provisioned on a secondary device.
+        """
+        project_id: NotRequired[pulumi.Input[str]]
+        """
+        Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
+        """
+        redundancy_type: NotRequired[pulumi.Input[str]]
+        """
+        Device redundancy type applicable for HA devices, either primary or secondary.
+        """
+        redundant_id: NotRequired[pulumi.Input[str]]
+        """
+        Unique identifier for a redundant device applicable for HA devices.
+        """
+        region: NotRequired[pulumi.Input[str]]
+        """
+        Device location region.
+        """
+        ssh_ip_address: NotRequired[pulumi.Input[str]]
+        """
+        IP address of SSH enabled interface on the device.
+        """
+        ssh_ip_fqdn: NotRequired[pulumi.Input[str]]
+        """
+        FQDN of SSH enabled interface on the device.
+        """
+        ssh_key: NotRequired[pulumi.Input['DeviceSecondaryDeviceSshKeyArgsDict']]
+        """
+        Definition of SSH key that will be provisioned on a device
+        """
+        status: NotRequired[pulumi.Input[str]]
+        """
+        interface status. One of `AVAILABLE`, `RESERVED`, `ASSIGNED`.
+        """
+        uuid: NotRequired[pulumi.Input[str]]
+        """
+        Device unique identifier.
+        """
+        vendor_configuration: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`, `panoramaAuthKey`, `panoramaIpAddress`.
+        """
+        wan_interface_id: NotRequired[pulumi.Input[str]]
+        """
+        device interface id picked for WAN
+        """
+        zone_code: NotRequired[pulumi.Input[str]]
+        """
+        Device location zone code.
+        """
+elif False:
+    DeviceSecondaryDeviceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DeviceSecondaryDeviceArgs:
@@ -1774,6 +2273,43 @@ class DeviceSecondaryDeviceArgs:
         pulumi.set(self, "zone_code", value)
 
 
+if not MYPY:
+    class DeviceSecondaryDeviceInterfaceArgsDict(TypedDict):
+        assigned_type: NotRequired[pulumi.Input[str]]
+        """
+        interface management type (Equinix Managed or empty).
+        """
+        id: NotRequired[pulumi.Input[int]]
+        """
+        interface identifier.
+        """
+        ip_address: NotRequired[pulumi.Input[str]]
+        """
+        interface IP address.
+        """
+        mac_address: NotRequired[pulumi.Input[str]]
+        """
+        interface MAC address.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Device name.
+        """
+        operational_status: NotRequired[pulumi.Input[str]]
+        """
+        interface operational status. One of `up`, `down`.
+        """
+        status: NotRequired[pulumi.Input[str]]
+        """
+        interface status. One of `AVAILABLE`, `RESERVED`, `ASSIGNED`.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        interface type.
+        """
+elif False:
+    DeviceSecondaryDeviceInterfaceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DeviceSecondaryDeviceInterfaceArgs:
     def __init__(__self__, *,
@@ -1909,6 +2445,19 @@ class DeviceSecondaryDeviceInterfaceArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class DeviceSecondaryDeviceSshKeyArgsDict(TypedDict):
+        username: pulumi.Input[str]
+        """
+        username associated with given key.
+        """
+        key_name: NotRequired[pulumi.Input[str]]
+        """
+        Reference by name to previously provisioned public SSH key
+        """
+elif False:
+    DeviceSecondaryDeviceSshKeyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DeviceSecondaryDeviceSshKeyArgs:
     def __init__(__self__, *,
@@ -1946,6 +2495,19 @@ class DeviceSecondaryDeviceSshKeyArgs:
     def key_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "key_name", value)
 
+
+if not MYPY:
+    class DeviceSshKeyArgsDict(TypedDict):
+        username: pulumi.Input[str]
+        """
+        username associated with given key.
+        """
+        key_name: NotRequired[pulumi.Input[str]]
+        """
+        Reference by name to previously provisioned public SSH key
+        """
+elif False:
+    DeviceSshKeyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DeviceSshKeyArgs:

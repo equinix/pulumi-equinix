@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -172,9 +177,6 @@ def get_devices(filters: Optional[Sequence[Union['GetDevicesFilterArgs', 'GetDev
         project_id=pulumi.get(__ret__, 'project_id'),
         search=pulumi.get(__ret__, 'search'),
         sorts=pulumi.get(__ret__, 'sorts'))
-
-
-@_utilities.lift_output_func(get_devices)
 def get_devices_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetDevicesFilterArgs', 'GetDevicesFilterArgsDict']]]]] = None,
                        organization_id: Optional[pulumi.Input[Optional[str]]] = None,
                        project_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -227,4 +229,19 @@ def get_devices_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['G
     :param str project_id: ID of project containing the devices. Exactly one of `project_id` and `organization_id` must be set.
     :param str search: Search string to filter devices by hostname, description, short_id, reservation short_id, tags, plan name, plan slug, facility code, facility name, operating system name, operating system slug, IP addresses.
     """
-    ...
+    __args__ = dict()
+    __args__['filters'] = filters
+    __args__['organizationId'] = organization_id
+    __args__['projectId'] = project_id
+    __args__['search'] = search
+    __args__['sorts'] = sorts
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('equinix:metal/getDevices:getDevices', __args__, opts=opts, typ=GetDevicesResult)
+    return __ret__.apply(lambda __response__: GetDevicesResult(
+        devices=pulumi.get(__response__, 'devices'),
+        filters=pulumi.get(__response__, 'filters'),
+        id=pulumi.get(__response__, 'id'),
+        organization_id=pulumi.get(__response__, 'organization_id'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        search=pulumi.get(__response__, 'search'),
+        sorts=pulumi.get(__response__, 'sorts')))

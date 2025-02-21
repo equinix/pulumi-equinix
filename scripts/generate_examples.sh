@@ -303,10 +303,11 @@ generate_examples_and_docs() {
             rm "$PULUMI_DIR"/python/requirements.txt.bak
             ## typescript
             sed -i.bak "s|$VERSION|<1.0.0|g" $PULUMI_DIR/typescript/package.json
-            rm "$PULUMI_DIR"/typescript/package.json.bak
+            rm -f "$PULUMI_DIR"/typescript/package.json.bak
             ## go
             sed -i.bak "s|github.com/equinix/pulumi-equinix/sdk [^ ]*|github.com/equinix/pulumi-equinix/sdk $GOLANG_VERSION|g" "$PULUMI_DIR/go/go.mod"
-            rm "$PULUMI_DIR"/go/go.sum "$PULUMI_DIR"/go/go.mod.bak
+            rm -f "$PULUMI_DIR"/go/go.sum
+            rm "$PULUMI_DIR"/go/go.mod.bak
 
             # Read each source file
             TS_SRC=$(cat "$PULUMI_DIR/typescript/index.ts")

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -160,9 +165,6 @@ def get_gateway(gateway_id: Optional[str] = None,
         state=pulumi.get(__ret__, 'state'),
         vlan_id=pulumi.get(__ret__, 'vlan_id'),
         vrf_id=pulumi.get(__ret__, 'vrf_id'))
-
-
-@_utilities.lift_output_func(get_gateway)
 def get_gateway_output(gateway_id: Optional[pulumi.Input[str]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGatewayResult]:
     """
@@ -187,4 +189,16 @@ def get_gateway_output(gateway_id: Optional[pulumi.Input[str]] = None,
 
     :param str gateway_id: UUID of the metal gateway resource to retrieve.
     """
-    ...
+    __args__ = dict()
+    __args__['gatewayId'] = gateway_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('equinix:metal/getGateway:getGateway', __args__, opts=opts, typ=GetGatewayResult)
+    return __ret__.apply(lambda __response__: GetGatewayResult(
+        gateway_id=pulumi.get(__response__, 'gateway_id'),
+        id=pulumi.get(__response__, 'id'),
+        ip_reservation_id=pulumi.get(__response__, 'ip_reservation_id'),
+        private_ipv4_subnet_size=pulumi.get(__response__, 'private_ipv4_subnet_size'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        state=pulumi.get(__response__, 'state'),
+        vlan_id=pulumi.get(__response__, 'vlan_id'),
+        vrf_id=pulumi.get(__response__, 'vrf_id')))

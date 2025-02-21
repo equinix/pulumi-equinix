@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -250,9 +255,6 @@ def get_service_token(uuid: Optional[str] = None,
         state=pulumi.get(__ret__, 'state'),
         type=pulumi.get(__ret__, 'type'),
         uuid=pulumi.get(__ret__, 'uuid'))
-
-
-@_utilities.lift_output_func(get_service_token)
 def get_service_token_output(uuid: Optional[pulumi.Input[str]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceTokenResult]:
     """
@@ -282,4 +284,22 @@ def get_service_token_output(uuid: Optional[pulumi.Input[str]] = None,
 
     :param str uuid: Equinix-assigned service token identifier
     """
-    ...
+    __args__ = dict()
+    __args__['uuid'] = uuid
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('equinix:fabric/getServiceToken:getServiceToken', __args__, opts=opts, typ=GetServiceTokenResult)
+    return __ret__.apply(lambda __response__: GetServiceTokenResult(
+        accounts=pulumi.get(__response__, 'accounts'),
+        change_logs=pulumi.get(__response__, 'change_logs'),
+        description=pulumi.get(__response__, 'description'),
+        expiration_date_time=pulumi.get(__response__, 'expiration_date_time'),
+        href=pulumi.get(__response__, 'href'),
+        id=pulumi.get(__response__, 'id'),
+        issuer_side=pulumi.get(__response__, 'issuer_side'),
+        name=pulumi.get(__response__, 'name'),
+        notifications=pulumi.get(__response__, 'notifications'),
+        projects=pulumi.get(__response__, 'projects'),
+        service_token_connections=pulumi.get(__response__, 'service_token_connections'),
+        state=pulumi.get(__response__, 'state'),
+        type=pulumi.get(__response__, 'type'),
+        uuid=pulumi.get(__response__, 'uuid')))

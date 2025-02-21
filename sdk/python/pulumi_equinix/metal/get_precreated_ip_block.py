@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -253,9 +258,6 @@ def get_precreated_ip_block(address_family: Optional[int] = None,
         quantity=pulumi.get(__ret__, 'quantity'),
         type=pulumi.get(__ret__, 'type'),
         vrf_id=pulumi.get(__ret__, 'vrf_id'))
-
-
-@_utilities.lift_output_func(get_precreated_ip_block)
 def get_precreated_ip_block_output(address_family: Optional[pulumi.Input[int]] = None,
                                    facility: Optional[pulumi.Input[Optional[str]]] = None,
                                    global_: Optional[pulumi.Input[Optional[bool]]] = None,
@@ -280,4 +282,31 @@ def get_precreated_ip_block_output(address_family: Optional[pulumi.Input[int]] =
     :param str project_id: ID of the project where the searched block should be.
     :param bool public: Whether to look for public or private block.
     """
-    ...
+    __args__ = dict()
+    __args__['addressFamily'] = address_family
+    __args__['facility'] = facility
+    __args__['global'] = global_
+    __args__['metro'] = metro
+    __args__['projectId'] = project_id
+    __args__['public'] = public
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('equinix:metal/getPrecreatedIpBlock:getPrecreatedIpBlock', __args__, opts=opts, typ=GetPrecreatedIpBlockResult)
+    return __ret__.apply(lambda __response__: GetPrecreatedIpBlockResult(
+        address=pulumi.get(__response__, 'address'),
+        address_family=pulumi.get(__response__, 'address_family'),
+        cidr=pulumi.get(__response__, 'cidr'),
+        cidr_notation=pulumi.get(__response__, 'cidr_notation'),
+        facility=pulumi.get(__response__, 'facility'),
+        gateway=pulumi.get(__response__, 'gateway'),
+        global_=pulumi.get(__response__, 'global_'),
+        id=pulumi.get(__response__, 'id'),
+        manageable=pulumi.get(__response__, 'manageable'),
+        management=pulumi.get(__response__, 'management'),
+        metro=pulumi.get(__response__, 'metro'),
+        netmask=pulumi.get(__response__, 'netmask'),
+        network=pulumi.get(__response__, 'network'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        public=pulumi.get(__response__, 'public'),
+        quantity=pulumi.get(__response__, 'quantity'),
+        type=pulumi.get(__response__, 'type'),
+        vrf_id=pulumi.get(__response__, 'vrf_id')))

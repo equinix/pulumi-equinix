@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -172,9 +177,6 @@ def get_connection_route_filter(connection_id: Optional[str] = None,
         route_filter_id=pulumi.get(__ret__, 'route_filter_id'),
         type=pulumi.get(__ret__, 'type'),
         uuid=pulumi.get(__ret__, 'uuid'))
-
-
-@_utilities.lift_output_func(get_connection_route_filter)
 def get_connection_route_filter_output(connection_id: Optional[pulumi.Input[str]] = None,
                                        route_filter_id: Optional[pulumi.Input[str]] = None,
                                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConnectionRouteFilterResult]:
@@ -204,4 +206,17 @@ def get_connection_route_filter_output(connection_id: Optional[pulumi.Input[str]
     :param str connection_id: Equinix Assigned UUID of the Equinix Connection to attach the Route Filter Policy to
     :param str route_filter_id: Equinix Assigned UUID of the Route Filter Policy to attach to the Equinix Connection
     """
-    ...
+    __args__ = dict()
+    __args__['connectionId'] = connection_id
+    __args__['routeFilterId'] = route_filter_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('equinix:fabric/getConnectionRouteFilter:getConnectionRouteFilter', __args__, opts=opts, typ=GetConnectionRouteFilterResult)
+    return __ret__.apply(lambda __response__: GetConnectionRouteFilterResult(
+        attachment_status=pulumi.get(__response__, 'attachment_status'),
+        connection_id=pulumi.get(__response__, 'connection_id'),
+        direction=pulumi.get(__response__, 'direction'),
+        href=pulumi.get(__response__, 'href'),
+        id=pulumi.get(__response__, 'id'),
+        route_filter_id=pulumi.get(__response__, 'route_filter_id'),
+        type=pulumi.get(__response__, 'type'),
+        uuid=pulumi.get(__response__, 'uuid')))
