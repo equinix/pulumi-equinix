@@ -29,6 +29,10 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// Purchase order number
         /// </summary>
         public readonly string PurchaseOrderNumber;
+        /// <summary>
+        /// Term length in months; valid values are 1, 12, 24, 36 where 1 is the default value (for on-demand case)
+        /// </summary>
+        public readonly int? TermLength;
 
         [OutputConstructor]
         private GetCloudRoutersDataOrderResult(
@@ -38,12 +42,15 @@ namespace Pulumi.Equinix.Fabric.Outputs
 
             string orderNumber,
 
-            string purchaseOrderNumber)
+            string purchaseOrderNumber,
+
+            int? termLength)
         {
             BillingTier = billingTier;
             OrderId = orderId;
             OrderNumber = orderNumber;
             PurchaseOrderNumber = purchaseOrderNumber;
+            TermLength = termLength;
         }
     }
 }

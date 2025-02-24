@@ -27,16 +27,10 @@ class GetCloudRouterResult:
     """
     A collection of values returned by getCloudRouter.
     """
-    def __init__(__self__, accounts=None, bgp_ipv4_routes_count=None, bgp_ipv6_routes_count=None, change_logs=None, connections_count=None, description=None, distinct_ipv4_prefixes_count=None, distinct_ipv6_prefixes_count=None, equinix_asn=None, href=None, id=None, locations=None, marketplace_subscriptions=None, name=None, notifications=None, orders=None, packages=None, projects=None, state=None, type=None, uuid=None):
+    def __init__(__self__, accounts=None, change_logs=None, connections_count=None, description=None, equinix_asn=None, href=None, id=None, locations=None, marketplace_subscriptions=None, name=None, notifications=None, orders=None, packages=None, projects=None, state=None, type=None, uuid=None):
         if accounts and not isinstance(accounts, list):
             raise TypeError("Expected argument 'accounts' to be a list")
         pulumi.set(__self__, "accounts", accounts)
-        if bgp_ipv4_routes_count and not isinstance(bgp_ipv4_routes_count, int):
-            raise TypeError("Expected argument 'bgp_ipv4_routes_count' to be a int")
-        pulumi.set(__self__, "bgp_ipv4_routes_count", bgp_ipv4_routes_count)
-        if bgp_ipv6_routes_count and not isinstance(bgp_ipv6_routes_count, int):
-            raise TypeError("Expected argument 'bgp_ipv6_routes_count' to be a int")
-        pulumi.set(__self__, "bgp_ipv6_routes_count", bgp_ipv6_routes_count)
         if change_logs and not isinstance(change_logs, list):
             raise TypeError("Expected argument 'change_logs' to be a list")
         pulumi.set(__self__, "change_logs", change_logs)
@@ -46,12 +40,6 @@ class GetCloudRouterResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
-        if distinct_ipv4_prefixes_count and not isinstance(distinct_ipv4_prefixes_count, int):
-            raise TypeError("Expected argument 'distinct_ipv4_prefixes_count' to be a int")
-        pulumi.set(__self__, "distinct_ipv4_prefixes_count", distinct_ipv4_prefixes_count)
-        if distinct_ipv6_prefixes_count and not isinstance(distinct_ipv6_prefixes_count, int):
-            raise TypeError("Expected argument 'distinct_ipv6_prefixes_count' to be a int")
-        pulumi.set(__self__, "distinct_ipv6_prefixes_count", distinct_ipv6_prefixes_count)
         if equinix_asn and not isinstance(equinix_asn, int):
             raise TypeError("Expected argument 'equinix_asn' to be a int")
         pulumi.set(__self__, "equinix_asn", equinix_asn)
@@ -101,22 +89,6 @@ class GetCloudRouterResult:
         return pulumi.get(self, "accounts")
 
     @property
-    @pulumi.getter(name="bgpIpv4RoutesCount")
-    def bgp_ipv4_routes_count(self) -> int:
-        """
-        Number of IPv4 BGP routes in use (including non-distinct prefixes)
-        """
-        return pulumi.get(self, "bgp_ipv4_routes_count")
-
-    @property
-    @pulumi.getter(name="bgpIpv6RoutesCount")
-    def bgp_ipv6_routes_count(self) -> int:
-        """
-        Number of IPv6 BGP routes in use (including non-distinct prefixes)
-        """
-        return pulumi.get(self, "bgp_ipv6_routes_count")
-
-    @property
     @pulumi.getter(name="changeLogs")
     def change_logs(self) -> Sequence['outputs.GetCloudRouterChangeLogResult']:
         """
@@ -139,22 +111,6 @@ class GetCloudRouterResult:
         Customer-provided Fabric Cloud Router description
         """
         return pulumi.get(self, "description")
-
-    @property
-    @pulumi.getter(name="distinctIpv4PrefixesCount")
-    def distinct_ipv4_prefixes_count(self) -> int:
-        """
-        Number of distinct IPv4 routes
-        """
-        return pulumi.get(self, "distinct_ipv4_prefixes_count")
-
-    @property
-    @pulumi.getter(name="distinctIpv6PrefixesCount")
-    def distinct_ipv6_prefixes_count(self) -> int:
-        """
-        Number of distinct IPv6 routes
-        """
-        return pulumi.get(self, "distinct_ipv6_prefixes_count")
 
     @property
     @pulumi.getter(name="equinixAsn")
@@ -268,13 +224,9 @@ class AwaitableGetCloudRouterResult(GetCloudRouterResult):
             yield self
         return GetCloudRouterResult(
             accounts=self.accounts,
-            bgp_ipv4_routes_count=self.bgp_ipv4_routes_count,
-            bgp_ipv6_routes_count=self.bgp_ipv6_routes_count,
             change_logs=self.change_logs,
             connections_count=self.connections_count,
             description=self.description,
-            distinct_ipv4_prefixes_count=self.distinct_ipv4_prefixes_count,
-            distinct_ipv6_prefixes_count=self.distinct_ipv6_prefixes_count,
             equinix_asn=self.equinix_asn,
             href=self.href,
             id=self.id,
@@ -328,13 +280,9 @@ def get_cloud_router(uuid: Optional[str] = None,
 
     return AwaitableGetCloudRouterResult(
         accounts=pulumi.get(__ret__, 'accounts'),
-        bgp_ipv4_routes_count=pulumi.get(__ret__, 'bgp_ipv4_routes_count'),
-        bgp_ipv6_routes_count=pulumi.get(__ret__, 'bgp_ipv6_routes_count'),
         change_logs=pulumi.get(__ret__, 'change_logs'),
         connections_count=pulumi.get(__ret__, 'connections_count'),
         description=pulumi.get(__ret__, 'description'),
-        distinct_ipv4_prefixes_count=pulumi.get(__ret__, 'distinct_ipv4_prefixes_count'),
-        distinct_ipv6_prefixes_count=pulumi.get(__ret__, 'distinct_ipv6_prefixes_count'),
         equinix_asn=pulumi.get(__ret__, 'equinix_asn'),
         href=pulumi.get(__ret__, 'href'),
         id=pulumi.get(__ret__, 'id'),
@@ -385,13 +333,9 @@ def get_cloud_router_output(uuid: Optional[pulumi.Input[str]] = None,
     __ret__ = pulumi.runtime.invoke_output('equinix:fabric/getCloudRouter:getCloudRouter', __args__, opts=opts, typ=GetCloudRouterResult)
     return __ret__.apply(lambda __response__: GetCloudRouterResult(
         accounts=pulumi.get(__response__, 'accounts'),
-        bgp_ipv4_routes_count=pulumi.get(__response__, 'bgp_ipv4_routes_count'),
-        bgp_ipv6_routes_count=pulumi.get(__response__, 'bgp_ipv6_routes_count'),
         change_logs=pulumi.get(__response__, 'change_logs'),
         connections_count=pulumi.get(__response__, 'connections_count'),
         description=pulumi.get(__response__, 'description'),
-        distinct_ipv4_prefixes_count=pulumi.get(__response__, 'distinct_ipv4_prefixes_count'),
-        distinct_ipv6_prefixes_count=pulumi.get(__response__, 'distinct_ipv6_prefixes_count'),
         equinix_asn=pulumi.get(__response__, 'equinix_asn'),
         href=pulumi.get(__response__, 'href'),
         id=pulumi.get(__response__, 'id'),

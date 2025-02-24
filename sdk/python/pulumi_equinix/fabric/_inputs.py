@@ -789,6 +789,10 @@ if not MYPY:
         """
         Purchase order number
         """
+        term_length: NotRequired[pulumi.Input[int]]
+        """
+        Term length in months; valid values are 1, 12, 24, 36 where 1 is the default value (for on-demand case)
+        """
 elif False:
     CloudRouterOrderArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -798,12 +802,14 @@ class CloudRouterOrderArgs:
                  billing_tier: Optional[pulumi.Input[str]] = None,
                  order_id: Optional[pulumi.Input[str]] = None,
                  order_number: Optional[pulumi.Input[str]] = None,
-                 purchase_order_number: Optional[pulumi.Input[str]] = None):
+                 purchase_order_number: Optional[pulumi.Input[str]] = None,
+                 term_length: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] billing_tier: Billing tier for connection bandwidth
         :param pulumi.Input[str] order_id: Order Identification
         :param pulumi.Input[str] order_number: Order Reference Number
         :param pulumi.Input[str] purchase_order_number: Purchase order number
+        :param pulumi.Input[int] term_length: Term length in months; valid values are 1, 12, 24, 36 where 1 is the default value (for on-demand case)
         """
         if billing_tier is not None:
             pulumi.set(__self__, "billing_tier", billing_tier)
@@ -813,6 +819,8 @@ class CloudRouterOrderArgs:
             pulumi.set(__self__, "order_number", order_number)
         if purchase_order_number is not None:
             pulumi.set(__self__, "purchase_order_number", purchase_order_number)
+        if term_length is not None:
+            pulumi.set(__self__, "term_length", term_length)
 
     @property
     @pulumi.getter(name="billingTier")
@@ -861,6 +869,18 @@ class CloudRouterOrderArgs:
     @purchase_order_number.setter
     def purchase_order_number(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "purchase_order_number", value)
+
+    @property
+    @pulumi.getter(name="termLength")
+    def term_length(self) -> Optional[pulumi.Input[int]]:
+        """
+        Term length in months; valid values are 1, 12, 24, 36 where 1 is the default value (for on-demand case)
+        """
+        return pulumi.get(self, "term_length")
+
+    @term_length.setter
+    def term_length(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "term_length", value)
 
 
 if not MYPY:
@@ -3268,6 +3288,10 @@ if not MYPY:
         """
         Purchase order number
         """
+        term_length: NotRequired[pulumi.Input[int]]
+        """
+        Term length in months; valid values are 1, 12, 24, 36 where 1 is the default value (for on-demand case)
+        """
 elif False:
     ConnectionOrderArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -3277,12 +3301,14 @@ class ConnectionOrderArgs:
                  billing_tier: Optional[pulumi.Input[str]] = None,
                  order_id: Optional[pulumi.Input[str]] = None,
                  order_number: Optional[pulumi.Input[str]] = None,
-                 purchase_order_number: Optional[pulumi.Input[str]] = None):
+                 purchase_order_number: Optional[pulumi.Input[str]] = None,
+                 term_length: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] billing_tier: Billing tier for connection bandwidth
         :param pulumi.Input[str] order_id: Order Identification
         :param pulumi.Input[str] order_number: Order Reference Number
         :param pulumi.Input[str] purchase_order_number: Purchase order number
+        :param pulumi.Input[int] term_length: Term length in months; valid values are 1, 12, 24, 36 where 1 is the default value (for on-demand case)
         """
         if billing_tier is not None:
             pulumi.set(__self__, "billing_tier", billing_tier)
@@ -3292,6 +3318,8 @@ class ConnectionOrderArgs:
             pulumi.set(__self__, "order_number", order_number)
         if purchase_order_number is not None:
             pulumi.set(__self__, "purchase_order_number", purchase_order_number)
+        if term_length is not None:
+            pulumi.set(__self__, "term_length", term_length)
 
     @property
     @pulumi.getter(name="billingTier")
@@ -3340,6 +3368,18 @@ class ConnectionOrderArgs:
     @purchase_order_number.setter
     def purchase_order_number(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "purchase_order_number", value)
+
+    @property
+    @pulumi.getter(name="termLength")
+    def term_length(self) -> Optional[pulumi.Input[int]]:
+        """
+        Term length in months; valid values are 1, 12, 24, 36 where 1 is the default value (for on-demand case)
+        """
+        return pulumi.get(self, "term_length")
+
+    @term_length.setter
+    def term_length(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "term_length", value)
 
 
 if not MYPY:
@@ -9657,10 +9697,6 @@ class ServiceTokenProjectArgs:
 
 if not MYPY:
     class ServiceTokenServiceTokenConnectionArgsDict(TypedDict):
-        type: pulumi.Input[str]
-        """
-        Type of Connection supported by Service Token you will create; EVPL*VC, EVPLAN*VC, EPLAN*VC, IPWAN*VC
-        """
         a_sides: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceTokenServiceTokenConnectionASideArgsDict']]]]
         """
         A-Side Connection link protocol,virtual device or network configuration
@@ -9681,6 +9717,10 @@ if not MYPY:
         """
         List of permitted bandwidths'; For Port-based Service Tokens, the maximum allowable bandwidth is 50 Gbps, while for Virtual Device-based Service Tokens, it is limited to 10 Gbps
         """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Type of Connection supported by Service Token you will create; EVPL*VC, EVPLAN*VC, EPLAN*VC, IPWAN*VC
+        """
         uuid: NotRequired[pulumi.Input[str]]
         """
         Equinix-assigned connection identifier
@@ -9695,25 +9735,24 @@ elif False:
 @pulumi.input_type
 class ServiceTokenServiceTokenConnectionArgs:
     def __init__(__self__, *,
-                 type: pulumi.Input[str],
                  a_sides: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTokenServiceTokenConnectionASideArgs']]]] = None,
                  allow_custom_bandwidth: Optional[pulumi.Input[bool]] = None,
                  allow_remote_connection: Optional[pulumi.Input[bool]] = None,
                  bandwidth_limit: Optional[pulumi.Input[int]] = None,
                  supported_bandwidths: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
                  uuid: Optional[pulumi.Input[str]] = None,
                  z_sides: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTokenServiceTokenConnectionZSideArgs']]]] = None):
         """
-        :param pulumi.Input[str] type: Type of Connection supported by Service Token you will create; EVPL*VC, EVPLAN*VC, EPLAN*VC, IPWAN*VC
         :param pulumi.Input[Sequence[pulumi.Input['ServiceTokenServiceTokenConnectionASideArgs']]] a_sides: A-Side Connection link protocol,virtual device or network configuration
         :param pulumi.Input[bool] allow_custom_bandwidth: Allow custom bandwidth value
         :param pulumi.Input[bool] allow_remote_connection: Authorization to connect remotely
         :param pulumi.Input[int] bandwidth_limit: Connection bandwidth limit in Mbps
         :param pulumi.Input[Sequence[pulumi.Input[int]]] supported_bandwidths: List of permitted bandwidths'; For Port-based Service Tokens, the maximum allowable bandwidth is 50 Gbps, while for Virtual Device-based Service Tokens, it is limited to 10 Gbps
+        :param pulumi.Input[str] type: Type of Connection supported by Service Token you will create; EVPL*VC, EVPLAN*VC, EPLAN*VC, IPWAN*VC
         :param pulumi.Input[str] uuid: Equinix-assigned connection identifier
         :param pulumi.Input[Sequence[pulumi.Input['ServiceTokenServiceTokenConnectionZSideArgs']]] z_sides: Z-Side Connection link protocol,virtual device or network configuration
         """
-        pulumi.set(__self__, "type", type)
         if a_sides is not None:
             pulumi.set(__self__, "a_sides", a_sides)
         if allow_custom_bandwidth is not None:
@@ -9724,22 +9763,12 @@ class ServiceTokenServiceTokenConnectionArgs:
             pulumi.set(__self__, "bandwidth_limit", bandwidth_limit)
         if supported_bandwidths is not None:
             pulumi.set(__self__, "supported_bandwidths", supported_bandwidths)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
         if uuid is not None:
             pulumi.set(__self__, "uuid", uuid)
         if z_sides is not None:
             pulumi.set(__self__, "z_sides", z_sides)
-
-    @property
-    @pulumi.getter
-    def type(self) -> pulumi.Input[str]:
-        """
-        Type of Connection supported by Service Token you will create; EVPL*VC, EVPLAN*VC, EPLAN*VC, IPWAN*VC
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: pulumi.Input[str]):
-        pulumi.set(self, "type", value)
 
     @property
     @pulumi.getter(name="aSides")
@@ -9800,6 +9829,18 @@ class ServiceTokenServiceTokenConnectionArgs:
     @supported_bandwidths.setter
     def supported_bandwidths(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
         pulumi.set(self, "supported_bandwidths", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type of Connection supported by Service Token you will create; EVPL*VC, EVPLAN*VC, EPLAN*VC, IPWAN*VC
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
 
     @property
     @pulumi.getter
@@ -10154,6 +10195,10 @@ class ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolArgs
 
 if not MYPY:
     class ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkArgsDict(TypedDict):
+        uuid: pulumi.Input[str]
+        """
+        Equinix-assigned Network identifier
+        """
         href: NotRequired[pulumi.Input[str]]
         """
         Unique Resource Identifier
@@ -10174,30 +10219,27 @@ if not MYPY:
         """
         Type of Network
         """
-        uuid: NotRequired[pulumi.Input[str]]
-        """
-        Equinix-assigned Network identifier
-        """
 elif False:
     ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkArgs:
     def __init__(__self__, *,
+                 uuid: pulumi.Input[str],
                  href: Optional[pulumi.Input[str]] = None,
                  locations: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  scope: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None,
-                 uuid: Optional[pulumi.Input[str]] = None):
+                 type: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] uuid: Equinix-assigned Network identifier
         :param pulumi.Input[str] href: Unique Resource Identifier
         :param pulumi.Input[Sequence[pulumi.Input['ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocationArgs']]] locations: Location
         :param pulumi.Input[str] name: Network Name
         :param pulumi.Input[str] scope: Scope of Network
         :param pulumi.Input[str] type: Type of Network
-        :param pulumi.Input[str] uuid: Equinix-assigned Network identifier
         """
+        pulumi.set(__self__, "uuid", uuid)
         if href is not None:
             pulumi.set(__self__, "href", href)
         if locations is not None:
@@ -10208,8 +10250,18 @@ class ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkArgs:
             pulumi.set(__self__, "scope", scope)
         if type is not None:
             pulumi.set(__self__, "type", type)
-        if uuid is not None:
-            pulumi.set(__self__, "uuid", uuid)
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> pulumi.Input[str]:
+        """
+        Equinix-assigned Network identifier
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: pulumi.Input[str]):
+        pulumi.set(self, "uuid", value)
 
     @property
     @pulumi.getter
@@ -10270,18 +10322,6 @@ class ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkArgs:
     @type.setter
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
-
-    @property
-    @pulumi.getter
-    def uuid(self) -> Optional[pulumi.Input[str]]:
-        """
-        Equinix-assigned Network identifier
-        """
-        return pulumi.get(self, "uuid")
-
-    @uuid.setter
-    def uuid(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "uuid", value)
 
 
 if not MYPY:
@@ -11118,6 +11158,10 @@ class ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocolArgs
 
 if not MYPY:
     class ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkArgsDict(TypedDict):
+        uuid: pulumi.Input[str]
+        """
+        Equinix-assigned Network identifier
+        """
         href: NotRequired[pulumi.Input[str]]
         """
         Unique Resource Identifier
@@ -11138,30 +11182,27 @@ if not MYPY:
         """
         Type of Network
         """
-        uuid: NotRequired[pulumi.Input[str]]
-        """
-        Equinix-assigned Network identifier
-        """
 elif False:
     ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkArgs:
     def __init__(__self__, *,
+                 uuid: pulumi.Input[str],
                  href: Optional[pulumi.Input[str]] = None,
                  locations: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  scope: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None,
-                 uuid: Optional[pulumi.Input[str]] = None):
+                 type: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] uuid: Equinix-assigned Network identifier
         :param pulumi.Input[str] href: Unique Resource Identifier
         :param pulumi.Input[Sequence[pulumi.Input['ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArgs']]] locations: Location
         :param pulumi.Input[str] name: Network Name
         :param pulumi.Input[str] scope: Scope of Network
         :param pulumi.Input[str] type: Type of Network
-        :param pulumi.Input[str] uuid: Equinix-assigned Network identifier
         """
+        pulumi.set(__self__, "uuid", uuid)
         if href is not None:
             pulumi.set(__self__, "href", href)
         if locations is not None:
@@ -11172,8 +11213,18 @@ class ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkArgs:
             pulumi.set(__self__, "scope", scope)
         if type is not None:
             pulumi.set(__self__, "type", type)
-        if uuid is not None:
-            pulumi.set(__self__, "uuid", uuid)
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> pulumi.Input[str]:
+        """
+        Equinix-assigned Network identifier
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: pulumi.Input[str]):
+        pulumi.set(self, "uuid", value)
 
     @property
     @pulumi.getter
@@ -11234,18 +11285,6 @@ class ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkArgs:
     @type.setter
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
-
-    @property
-    @pulumi.getter
-    def uuid(self) -> Optional[pulumi.Input[str]]:
-        """
-        Equinix-assigned Network identifier
-        """
-        return pulumi.get(self, "uuid")
-
-    @uuid.setter
-    def uuid(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "uuid", value)
 
 
 if not MYPY:

@@ -114,14 +114,6 @@ export class CloudRouter extends pulumi.CustomResource {
      */
     public readonly account!: pulumi.Output<outputs.fabric.CloudRouterAccount>;
     /**
-     * Number of IPv4 BGP routes in use (including non-distinct prefixes)
-     */
-    public /*out*/ readonly bgpIpv4RoutesCount!: pulumi.Output<number>;
-    /**
-     * Number of IPv6 BGP routes in use (including non-distinct prefixes)
-     */
-    public /*out*/ readonly bgpIpv6RoutesCount!: pulumi.Output<number>;
-    /**
      * Captures Fabric Cloud Router lifecycle change information
      */
     public /*out*/ readonly changeLogs!: pulumi.Output<outputs.fabric.CloudRouterChangeLog[]>;
@@ -133,14 +125,6 @@ export class CloudRouter extends pulumi.CustomResource {
      * Customer-provided Fabric Cloud Router description
      */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * Number of distinct IPv4 routes
-     */
-    public /*out*/ readonly distinctIpv4PrefixesCount!: pulumi.Output<number>;
-    /**
-     * Number of distinct IPv6 routes
-     */
-    public /*out*/ readonly distinctIpv6PrefixesCount!: pulumi.Output<number>;
     /**
      * Equinix ASN
      */
@@ -204,13 +188,9 @@ export class CloudRouter extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as CloudRouterState | undefined;
             resourceInputs["account"] = state ? state.account : undefined;
-            resourceInputs["bgpIpv4RoutesCount"] = state ? state.bgpIpv4RoutesCount : undefined;
-            resourceInputs["bgpIpv6RoutesCount"] = state ? state.bgpIpv6RoutesCount : undefined;
             resourceInputs["changeLogs"] = state ? state.changeLogs : undefined;
             resourceInputs["connectionsCount"] = state ? state.connectionsCount : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["distinctIpv4PrefixesCount"] = state ? state.distinctIpv4PrefixesCount : undefined;
-            resourceInputs["distinctIpv6PrefixesCount"] = state ? state.distinctIpv6PrefixesCount : undefined;
             resourceInputs["equinixAsn"] = state ? state.equinixAsn : undefined;
             resourceInputs["href"] = state ? state.href : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
@@ -252,12 +232,8 @@ export class CloudRouter extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["uuid"] = args ? args.uuid : undefined;
-            resourceInputs["bgpIpv4RoutesCount"] = undefined /*out*/;
-            resourceInputs["bgpIpv6RoutesCount"] = undefined /*out*/;
             resourceInputs["changeLogs"] = undefined /*out*/;
             resourceInputs["connectionsCount"] = undefined /*out*/;
-            resourceInputs["distinctIpv4PrefixesCount"] = undefined /*out*/;
-            resourceInputs["distinctIpv6PrefixesCount"] = undefined /*out*/;
             resourceInputs["equinixAsn"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         }
@@ -275,14 +251,6 @@ export interface CloudRouterState {
      */
     account?: pulumi.Input<inputs.fabric.CloudRouterAccount>;
     /**
-     * Number of IPv4 BGP routes in use (including non-distinct prefixes)
-     */
-    bgpIpv4RoutesCount?: pulumi.Input<number>;
-    /**
-     * Number of IPv6 BGP routes in use (including non-distinct prefixes)
-     */
-    bgpIpv6RoutesCount?: pulumi.Input<number>;
-    /**
      * Captures Fabric Cloud Router lifecycle change information
      */
     changeLogs?: pulumi.Input<pulumi.Input<inputs.fabric.CloudRouterChangeLog>[]>;
@@ -294,14 +262,6 @@ export interface CloudRouterState {
      * Customer-provided Fabric Cloud Router description
      */
     description?: pulumi.Input<string>;
-    /**
-     * Number of distinct IPv4 routes
-     */
-    distinctIpv4PrefixesCount?: pulumi.Input<number>;
-    /**
-     * Number of distinct IPv6 routes
-     */
-    distinctIpv6PrefixesCount?: pulumi.Input<number>;
     /**
      * Equinix ASN
      */

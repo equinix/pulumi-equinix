@@ -151,6 +151,63 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * Zside Network Service Token
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.fabric.ServiceToken;
+ * import com.pulumi.equinix.fabric.ServiceTokenArgs;
+ * import com.pulumi.equinix.fabric.inputs.ServiceTokenNotificationArgs;
+ * import com.pulumi.equinix.fabric.inputs.ServiceTokenServiceTokenConnectionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var test = new ServiceToken("test", ServiceTokenArgs.builder()
+ *             .description("Zside Network Service Token")
+ *             .expirationDateTime("2025-01-18T06:43:49.986Z")
+ *             .notifications(ServiceTokenNotificationArgs.builder()
+ *                 .emails("example}{@literal @}{@code equinix.com")
+ *                 .type("ALL")
+ *                 .build())
+ *             .serviceTokenConnections(ServiceTokenServiceTokenConnectionArgs.builder()
+ *                 .supportedBandwidths(                
+ *                     50,
+ *                     200,
+ *                     10000)
+ *                 .type("EVPL_VC")
+ *                 .zSides(ServiceTokenServiceTokenConnectionZSideArgs.builder()
+ *                     .accessPointSelectors(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorArgs.builder()
+ *                         .network(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkArgs.builder()
+ *                             .uuid("<network_uuid>")
+ *                             .build())
+ *                         .type("NETWORK")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .type("VC_TOKEN")
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * Zside Virtual Device Service Token
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

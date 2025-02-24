@@ -5,8 +5,11 @@ package com.equinix.pulumi.fabric.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetCloudRoutersDataOrder {
@@ -30,6 +33,11 @@ public final class GetCloudRoutersDataOrder {
      * 
      */
     private String purchaseOrderNumber;
+    /**
+     * @return Term length in months; valid values are 1, 12, 24, 36 where 1 is the default value (for on-demand case)
+     * 
+     */
+    private @Nullable Integer termLength;
 
     private GetCloudRoutersDataOrder() {}
     /**
@@ -60,6 +68,13 @@ public final class GetCloudRoutersDataOrder {
     public String purchaseOrderNumber() {
         return this.purchaseOrderNumber;
     }
+    /**
+     * @return Term length in months; valid values are 1, 12, 24, 36 where 1 is the default value (for on-demand case)
+     * 
+     */
+    public Optional<Integer> termLength() {
+        return Optional.ofNullable(this.termLength);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -74,6 +89,7 @@ public final class GetCloudRoutersDataOrder {
         private String orderId;
         private String orderNumber;
         private String purchaseOrderNumber;
+        private @Nullable Integer termLength;
         public Builder() {}
         public Builder(GetCloudRoutersDataOrder defaults) {
     	      Objects.requireNonNull(defaults);
@@ -81,6 +97,7 @@ public final class GetCloudRoutersDataOrder {
     	      this.orderId = defaults.orderId;
     	      this.orderNumber = defaults.orderNumber;
     	      this.purchaseOrderNumber = defaults.purchaseOrderNumber;
+    	      this.termLength = defaults.termLength;
         }
 
         @CustomType.Setter
@@ -115,12 +132,19 @@ public final class GetCloudRoutersDataOrder {
             this.purchaseOrderNumber = purchaseOrderNumber;
             return this;
         }
+        @CustomType.Setter
+        public Builder termLength(@Nullable Integer termLength) {
+
+            this.termLength = termLength;
+            return this;
+        }
         public GetCloudRoutersDataOrder build() {
             final var _resultValue = new GetCloudRoutersDataOrder();
             _resultValue.billingTier = billingTier;
             _resultValue.orderId = orderId;
             _resultValue.orderNumber = orderNumber;
             _resultValue.purchaseOrderNumber = purchaseOrderNumber;
+            _resultValue.termLength = termLength;
             return _resultValue;
         }
     }

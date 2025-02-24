@@ -127,6 +127,10 @@ export namespace fabric {
          * Purchase order number
          */
         purchaseOrderNumber?: pulumi.Input<string>;
+        /**
+         * Term length in months; valid values are 1, 12, 24, 36 where 1 is the default value (for on-demand case)
+         */
+        termLength?: pulumi.Input<number>;
     }
 
     export interface CloudRouterPackage {
@@ -640,6 +644,10 @@ export namespace fabric {
          * Purchase order number
          */
         purchaseOrderNumber?: pulumi.Input<string>;
+        /**
+         * Term length in months; valid values are 1, 12, 24, 36 where 1 is the default value (for on-demand case)
+         */
+        termLength?: pulumi.Input<number>;
     }
 
     export interface ConnectionProject {
@@ -2478,7 +2486,7 @@ export namespace fabric {
         /**
          * Type of Connection supported by Service Token you will create; EVPL*VC, EVPLAN*VC, EPLAN*VC, IPWAN*VC
          */
-        type: pulumi.Input<string>;
+        type?: pulumi.Input<string>;
         /**
          * Equinix-assigned connection identifier
          */
@@ -2581,7 +2589,7 @@ export namespace fabric {
         /**
          * Equinix-assigned Network identifier
          */
-        uuid?: pulumi.Input<string>;
+        uuid: pulumi.Input<string>;
     }
 
     export interface ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocation {
@@ -2780,7 +2788,7 @@ export namespace fabric {
         /**
          * Equinix-assigned Network identifier
          */
-        uuid?: pulumi.Input<string>;
+        uuid: pulumi.Input<string>;
     }
 
     export interface ServiceTokenServiceTokenConnectionZSideAccessPointSelectorNetworkLocation {

@@ -72,20 +72,12 @@ type LookupCloudRouterArgs struct {
 type LookupCloudRouterResult struct {
 	// Customer account information that is associated with this Fabric Cloud Router
 	Accounts []GetCloudRouterAccount `pulumi:"accounts"`
-	// Number of IPv4 BGP routes in use (including non-distinct prefixes)
-	BgpIpv4RoutesCount int `pulumi:"bgpIpv4RoutesCount"`
-	// Number of IPv6 BGP routes in use (including non-distinct prefixes)
-	BgpIpv6RoutesCount int `pulumi:"bgpIpv6RoutesCount"`
 	// Captures Fabric Cloud Router lifecycle change information
 	ChangeLogs []GetCloudRouterChangeLog `pulumi:"changeLogs"`
 	// Number of connections associated with this Fabric Cloud Router instance
 	ConnectionsCount int `pulumi:"connectionsCount"`
 	// Customer-provided Fabric Cloud Router description
 	Description string `pulumi:"description"`
-	// Number of distinct IPv4 routes
-	DistinctIpv4PrefixesCount int `pulumi:"distinctIpv4PrefixesCount"`
-	// Number of distinct IPv6 routes
-	DistinctIpv6PrefixesCount int `pulumi:"distinctIpv6PrefixesCount"`
 	// Equinix ASN
 	EquinixAsn int `pulumi:"equinixAsn"`
 	// Fabric Cloud Router URI information
@@ -163,16 +155,6 @@ func (o LookupCloudRouterResultOutput) Accounts() GetCloudRouterAccountArrayOutp
 	return o.ApplyT(func(v LookupCloudRouterResult) []GetCloudRouterAccount { return v.Accounts }).(GetCloudRouterAccountArrayOutput)
 }
 
-// Number of IPv4 BGP routes in use (including non-distinct prefixes)
-func (o LookupCloudRouterResultOutput) BgpIpv4RoutesCount() pulumi.IntOutput {
-	return o.ApplyT(func(v LookupCloudRouterResult) int { return v.BgpIpv4RoutesCount }).(pulumi.IntOutput)
-}
-
-// Number of IPv6 BGP routes in use (including non-distinct prefixes)
-func (o LookupCloudRouterResultOutput) BgpIpv6RoutesCount() pulumi.IntOutput {
-	return o.ApplyT(func(v LookupCloudRouterResult) int { return v.BgpIpv6RoutesCount }).(pulumi.IntOutput)
-}
-
 // Captures Fabric Cloud Router lifecycle change information
 func (o LookupCloudRouterResultOutput) ChangeLogs() GetCloudRouterChangeLogArrayOutput {
 	return o.ApplyT(func(v LookupCloudRouterResult) []GetCloudRouterChangeLog { return v.ChangeLogs }).(GetCloudRouterChangeLogArrayOutput)
@@ -186,16 +168,6 @@ func (o LookupCloudRouterResultOutput) ConnectionsCount() pulumi.IntOutput {
 // Customer-provided Fabric Cloud Router description
 func (o LookupCloudRouterResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloudRouterResult) string { return v.Description }).(pulumi.StringOutput)
-}
-
-// Number of distinct IPv4 routes
-func (o LookupCloudRouterResultOutput) DistinctIpv4PrefixesCount() pulumi.IntOutput {
-	return o.ApplyT(func(v LookupCloudRouterResult) int { return v.DistinctIpv4PrefixesCount }).(pulumi.IntOutput)
-}
-
-// Number of distinct IPv6 routes
-func (o LookupCloudRouterResultOutput) DistinctIpv6PrefixesCount() pulumi.IntOutput {
-	return o.ApplyT(func(v LookupCloudRouterResult) int { return v.DistinctIpv6PrefixesCount }).(pulumi.IntOutput)
 }
 
 // Equinix ASN

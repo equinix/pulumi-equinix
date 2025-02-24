@@ -26,16 +26,6 @@ public final class GetCloudRoutersData {
      */
     private List<GetCloudRoutersDataAccount> accounts;
     /**
-     * @return Number of IPv4 BGP routes in use (including non-distinct prefixes)
-     * 
-     */
-    private Integer bgpIpv4RoutesCount;
-    /**
-     * @return Number of IPv6 BGP routes in use (including non-distinct prefixes)
-     * 
-     */
-    private Integer bgpIpv6RoutesCount;
-    /**
      * @return Captures Fabric Cloud Router lifecycle change information
      * 
      */
@@ -50,16 +40,6 @@ public final class GetCloudRoutersData {
      * 
      */
     private String description;
-    /**
-     * @return Number of distinct IPv4 routes
-     * 
-     */
-    private Integer distinctIpv4PrefixesCount;
-    /**
-     * @return Number of distinct IPv6 routes
-     * 
-     */
-    private Integer distinctIpv6PrefixesCount;
     /**
      * @return Equinix ASN
      * 
@@ -130,20 +110,6 @@ public final class GetCloudRoutersData {
         return this.accounts;
     }
     /**
-     * @return Number of IPv4 BGP routes in use (including non-distinct prefixes)
-     * 
-     */
-    public Integer bgpIpv4RoutesCount() {
-        return this.bgpIpv4RoutesCount;
-    }
-    /**
-     * @return Number of IPv6 BGP routes in use (including non-distinct prefixes)
-     * 
-     */
-    public Integer bgpIpv6RoutesCount() {
-        return this.bgpIpv6RoutesCount;
-    }
-    /**
      * @return Captures Fabric Cloud Router lifecycle change information
      * 
      */
@@ -163,20 +129,6 @@ public final class GetCloudRoutersData {
      */
     public String description() {
         return this.description;
-    }
-    /**
-     * @return Number of distinct IPv4 routes
-     * 
-     */
-    public Integer distinctIpv4PrefixesCount() {
-        return this.distinctIpv4PrefixesCount;
-    }
-    /**
-     * @return Number of distinct IPv6 routes
-     * 
-     */
-    public Integer distinctIpv6PrefixesCount() {
-        return this.distinctIpv6PrefixesCount;
     }
     /**
      * @return Equinix ASN
@@ -273,13 +225,9 @@ public final class GetCloudRoutersData {
     @CustomType.Builder
     public static final class Builder {
         private List<GetCloudRoutersDataAccount> accounts;
-        private Integer bgpIpv4RoutesCount;
-        private Integer bgpIpv6RoutesCount;
         private List<GetCloudRoutersDataChangeLog> changeLogs;
         private Integer connectionsCount;
         private String description;
-        private Integer distinctIpv4PrefixesCount;
-        private Integer distinctIpv6PrefixesCount;
         private Integer equinixAsn;
         private String href;
         private List<GetCloudRoutersDataLocation> locations;
@@ -296,13 +244,9 @@ public final class GetCloudRoutersData {
         public Builder(GetCloudRoutersData defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accounts = defaults.accounts;
-    	      this.bgpIpv4RoutesCount = defaults.bgpIpv4RoutesCount;
-    	      this.bgpIpv6RoutesCount = defaults.bgpIpv6RoutesCount;
     	      this.changeLogs = defaults.changeLogs;
     	      this.connectionsCount = defaults.connectionsCount;
     	      this.description = defaults.description;
-    	      this.distinctIpv4PrefixesCount = defaults.distinctIpv4PrefixesCount;
-    	      this.distinctIpv6PrefixesCount = defaults.distinctIpv6PrefixesCount;
     	      this.equinixAsn = defaults.equinixAsn;
     	      this.href = defaults.href;
     	      this.locations = defaults.locations;
@@ -329,22 +273,6 @@ public final class GetCloudRoutersData {
             return accounts(List.of(accounts));
         }
         @CustomType.Setter
-        public Builder bgpIpv4RoutesCount(Integer bgpIpv4RoutesCount) {
-            if (bgpIpv4RoutesCount == null) {
-              throw new MissingRequiredPropertyException("GetCloudRoutersData", "bgpIpv4RoutesCount");
-            }
-            this.bgpIpv4RoutesCount = bgpIpv4RoutesCount;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder bgpIpv6RoutesCount(Integer bgpIpv6RoutesCount) {
-            if (bgpIpv6RoutesCount == null) {
-              throw new MissingRequiredPropertyException("GetCloudRoutersData", "bgpIpv6RoutesCount");
-            }
-            this.bgpIpv6RoutesCount = bgpIpv6RoutesCount;
-            return this;
-        }
-        @CustomType.Setter
         public Builder changeLogs(List<GetCloudRoutersDataChangeLog> changeLogs) {
             if (changeLogs == null) {
               throw new MissingRequiredPropertyException("GetCloudRoutersData", "changeLogs");
@@ -369,22 +297,6 @@ public final class GetCloudRoutersData {
               throw new MissingRequiredPropertyException("GetCloudRoutersData", "description");
             }
             this.description = description;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder distinctIpv4PrefixesCount(Integer distinctIpv4PrefixesCount) {
-            if (distinctIpv4PrefixesCount == null) {
-              throw new MissingRequiredPropertyException("GetCloudRoutersData", "distinctIpv4PrefixesCount");
-            }
-            this.distinctIpv4PrefixesCount = distinctIpv4PrefixesCount;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder distinctIpv6PrefixesCount(Integer distinctIpv6PrefixesCount) {
-            if (distinctIpv6PrefixesCount == null) {
-              throw new MissingRequiredPropertyException("GetCloudRoutersData", "distinctIpv6PrefixesCount");
-            }
-            this.distinctIpv6PrefixesCount = distinctIpv6PrefixesCount;
             return this;
         }
         @CustomType.Setter
@@ -504,13 +416,9 @@ public final class GetCloudRoutersData {
         public GetCloudRoutersData build() {
             final var _resultValue = new GetCloudRoutersData();
             _resultValue.accounts = accounts;
-            _resultValue.bgpIpv4RoutesCount = bgpIpv4RoutesCount;
-            _resultValue.bgpIpv6RoutesCount = bgpIpv6RoutesCount;
             _resultValue.changeLogs = changeLogs;
             _resultValue.connectionsCount = connectionsCount;
             _resultValue.description = description;
-            _resultValue.distinctIpv4PrefixesCount = distinctIpv4PrefixesCount;
-            _resultValue.distinctIpv6PrefixesCount = distinctIpv6PrefixesCount;
             _resultValue.equinixAsn = equinixAsn;
             _resultValue.href = href;
             _resultValue.locations = locations;

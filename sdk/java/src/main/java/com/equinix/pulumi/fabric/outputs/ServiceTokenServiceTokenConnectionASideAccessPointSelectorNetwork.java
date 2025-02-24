@@ -5,6 +5,7 @@ package com.equinix.pulumi.fabric.outputs;
 
 import com.equinix.pulumi.fabric.outputs.ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetworkLocation;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -42,7 +43,7 @@ public final class ServiceTokenServiceTokenConnectionASideAccessPointSelectorNet
      * @return Equinix-assigned Network identifier
      * 
      */
-    private @Nullable String uuid;
+    private String uuid;
 
     private ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetwork() {}
     /**
@@ -84,8 +85,8 @@ public final class ServiceTokenServiceTokenConnectionASideAccessPointSelectorNet
      * @return Equinix-assigned Network identifier
      * 
      */
-    public Optional<String> uuid() {
-        return Optional.ofNullable(this.uuid);
+    public String uuid() {
+        return this.uuid;
     }
 
     public static Builder builder() {
@@ -102,7 +103,7 @@ public final class ServiceTokenServiceTokenConnectionASideAccessPointSelectorNet
         private @Nullable String name;
         private @Nullable String scope;
         private @Nullable String type;
-        private @Nullable String uuid;
+        private String uuid;
         public Builder() {}
         public Builder(ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetwork defaults) {
     	      Objects.requireNonNull(defaults);
@@ -148,8 +149,10 @@ public final class ServiceTokenServiceTokenConnectionASideAccessPointSelectorNet
             return this;
         }
         @CustomType.Setter
-        public Builder uuid(@Nullable String uuid) {
-
+        public Builder uuid(String uuid) {
+            if (uuid == null) {
+              throw new MissingRequiredPropertyException("ServiceTokenServiceTokenConnectionASideAccessPointSelectorNetwork", "uuid");
+            }
             this.uuid = uuid;
             return this;
         }

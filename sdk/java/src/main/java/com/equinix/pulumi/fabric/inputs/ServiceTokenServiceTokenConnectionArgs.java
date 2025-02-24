@@ -7,7 +7,6 @@ import com.equinix.pulumi.fabric.inputs.ServiceTokenServiceTokenConnectionASideA
 import com.equinix.pulumi.fabric.inputs.ServiceTokenServiceTokenConnectionZSideArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -100,15 +99,15 @@ public final class ServiceTokenServiceTokenConnectionArgs extends com.pulumi.res
      * Type of Connection supported by Service Token you will create; EVPL*VC, EVPLAN*VC, EPLAN*VC, IPWAN*VC
      * 
      */
-    @Import(name="type", required=true)
-    private Output<String> type;
+    @Import(name="type")
+    private @Nullable Output<String> type;
 
     /**
      * @return Type of Connection supported by Service Token you will create; EVPL*VC, EVPLAN*VC, EPLAN*VC, IPWAN*VC
      * 
      */
-    public Output<String> type() {
-        return this.type;
+    public Optional<Output<String>> type() {
+        return Optional.ofNullable(this.type);
     }
 
     /**
@@ -303,7 +302,7 @@ public final class ServiceTokenServiceTokenConnectionArgs extends com.pulumi.res
          * @return builder
          * 
          */
-        public Builder type(Output<String> type) {
+        public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
@@ -371,9 +370,6 @@ public final class ServiceTokenServiceTokenConnectionArgs extends com.pulumi.res
         }
 
         public ServiceTokenServiceTokenConnectionArgs build() {
-            if ($.type == null) {
-                throw new MissingRequiredPropertyException("ServiceTokenServiceTokenConnectionArgs", "type");
-            }
             return $;
         }
     }

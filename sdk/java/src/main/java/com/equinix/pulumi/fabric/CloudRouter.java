@@ -170,34 +170,6 @@ public class CloudRouter extends com.pulumi.resources.CustomResource {
         return this.account;
     }
     /**
-     * Number of IPv4 BGP routes in use (including non-distinct prefixes)
-     * 
-     */
-    @Export(name="bgpIpv4RoutesCount", refs={Integer.class}, tree="[0]")
-    private Output<Integer> bgpIpv4RoutesCount;
-
-    /**
-     * @return Number of IPv4 BGP routes in use (including non-distinct prefixes)
-     * 
-     */
-    public Output<Integer> bgpIpv4RoutesCount() {
-        return this.bgpIpv4RoutesCount;
-    }
-    /**
-     * Number of IPv6 BGP routes in use (including non-distinct prefixes)
-     * 
-     */
-    @Export(name="bgpIpv6RoutesCount", refs={Integer.class}, tree="[0]")
-    private Output<Integer> bgpIpv6RoutesCount;
-
-    /**
-     * @return Number of IPv6 BGP routes in use (including non-distinct prefixes)
-     * 
-     */
-    public Output<Integer> bgpIpv6RoutesCount() {
-        return this.bgpIpv6RoutesCount;
-    }
-    /**
      * Captures Fabric Cloud Router lifecycle change information
      * 
      */
@@ -238,34 +210,6 @@ public class CloudRouter extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
-    }
-    /**
-     * Number of distinct IPv4 routes
-     * 
-     */
-    @Export(name="distinctIpv4PrefixesCount", refs={Integer.class}, tree="[0]")
-    private Output<Integer> distinctIpv4PrefixesCount;
-
-    /**
-     * @return Number of distinct IPv4 routes
-     * 
-     */
-    public Output<Integer> distinctIpv4PrefixesCount() {
-        return this.distinctIpv4PrefixesCount;
-    }
-    /**
-     * Number of distinct IPv6 routes
-     * 
-     */
-    @Export(name="distinctIpv6PrefixesCount", refs={Integer.class}, tree="[0]")
-    private Output<Integer> distinctIpv6PrefixesCount;
-
-    /**
-     * @return Number of distinct IPv6 routes
-     * 
-     */
-    public Output<Integer> distinctIpv6PrefixesCount() {
-        return this.distinctIpv6PrefixesCount;
     }
     /**
      * Equinix ASN
