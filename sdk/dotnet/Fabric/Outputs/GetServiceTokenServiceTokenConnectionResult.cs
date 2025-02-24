@@ -36,7 +36,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// <summary>
         /// Type of Connection supported by Service Token you will create; EVPL_VC, EVPLAN_VC, EPLAN_VC, IPWAN_VC
         /// </summary>
-        public readonly string Type;
+        public readonly string? Type;
         /// <summary>
         /// Equinix-assigned connection identifier
         /// </summary>
@@ -58,7 +58,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
 
             ImmutableArray<int> supportedBandwidths,
 
-            string type,
+            string? type,
 
             string uuid,
 

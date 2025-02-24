@@ -41,36 +41,6 @@ public final class CloudRouterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Number of IPv4 BGP routes in use (including non-distinct prefixes)
-     * 
-     */
-    @Import(name="bgpIpv4RoutesCount")
-    private @Nullable Output<Integer> bgpIpv4RoutesCount;
-
-    /**
-     * @return Number of IPv4 BGP routes in use (including non-distinct prefixes)
-     * 
-     */
-    public Optional<Output<Integer>> bgpIpv4RoutesCount() {
-        return Optional.ofNullable(this.bgpIpv4RoutesCount);
-    }
-
-    /**
-     * Number of IPv6 BGP routes in use (including non-distinct prefixes)
-     * 
-     */
-    @Import(name="bgpIpv6RoutesCount")
-    private @Nullable Output<Integer> bgpIpv6RoutesCount;
-
-    /**
-     * @return Number of IPv6 BGP routes in use (including non-distinct prefixes)
-     * 
-     */
-    public Optional<Output<Integer>> bgpIpv6RoutesCount() {
-        return Optional.ofNullable(this.bgpIpv6RoutesCount);
-    }
-
-    /**
      * Captures Fabric Cloud Router lifecycle change information
      * 
      */
@@ -113,36 +83,6 @@ public final class CloudRouterState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
-    }
-
-    /**
-     * Number of distinct IPv4 routes
-     * 
-     */
-    @Import(name="distinctIpv4PrefixesCount")
-    private @Nullable Output<Integer> distinctIpv4PrefixesCount;
-
-    /**
-     * @return Number of distinct IPv4 routes
-     * 
-     */
-    public Optional<Output<Integer>> distinctIpv4PrefixesCount() {
-        return Optional.ofNullable(this.distinctIpv4PrefixesCount);
-    }
-
-    /**
-     * Number of distinct IPv6 routes
-     * 
-     */
-    @Import(name="distinctIpv6PrefixesCount")
-    private @Nullable Output<Integer> distinctIpv6PrefixesCount;
-
-    /**
-     * @return Number of distinct IPv6 routes
-     * 
-     */
-    public Optional<Output<Integer>> distinctIpv6PrefixesCount() {
-        return Optional.ofNullable(this.distinctIpv6PrefixesCount);
     }
 
     /**
@@ -329,13 +269,9 @@ public final class CloudRouterState extends com.pulumi.resources.ResourceArgs {
 
     private CloudRouterState(CloudRouterState $) {
         this.account = $.account;
-        this.bgpIpv4RoutesCount = $.bgpIpv4RoutesCount;
-        this.bgpIpv6RoutesCount = $.bgpIpv6RoutesCount;
         this.changeLogs = $.changeLogs;
         this.connectionsCount = $.connectionsCount;
         this.description = $.description;
-        this.distinctIpv4PrefixesCount = $.distinctIpv4PrefixesCount;
-        this.distinctIpv6PrefixesCount = $.distinctIpv6PrefixesCount;
         this.equinixAsn = $.equinixAsn;
         this.href = $.href;
         this.location = $.location;
@@ -387,48 +323,6 @@ public final class CloudRouterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder account(CloudRouterAccountArgs account) {
             return account(Output.of(account));
-        }
-
-        /**
-         * @param bgpIpv4RoutesCount Number of IPv4 BGP routes in use (including non-distinct prefixes)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder bgpIpv4RoutesCount(@Nullable Output<Integer> bgpIpv4RoutesCount) {
-            $.bgpIpv4RoutesCount = bgpIpv4RoutesCount;
-            return this;
-        }
-
-        /**
-         * @param bgpIpv4RoutesCount Number of IPv4 BGP routes in use (including non-distinct prefixes)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder bgpIpv4RoutesCount(Integer bgpIpv4RoutesCount) {
-            return bgpIpv4RoutesCount(Output.of(bgpIpv4RoutesCount));
-        }
-
-        /**
-         * @param bgpIpv6RoutesCount Number of IPv6 BGP routes in use (including non-distinct prefixes)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder bgpIpv6RoutesCount(@Nullable Output<Integer> bgpIpv6RoutesCount) {
-            $.bgpIpv6RoutesCount = bgpIpv6RoutesCount;
-            return this;
-        }
-
-        /**
-         * @param bgpIpv6RoutesCount Number of IPv6 BGP routes in use (including non-distinct prefixes)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder bgpIpv6RoutesCount(Integer bgpIpv6RoutesCount) {
-            return bgpIpv6RoutesCount(Output.of(bgpIpv6RoutesCount));
         }
 
         /**
@@ -502,48 +396,6 @@ public final class CloudRouterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
-        }
-
-        /**
-         * @param distinctIpv4PrefixesCount Number of distinct IPv4 routes
-         * 
-         * @return builder
-         * 
-         */
-        public Builder distinctIpv4PrefixesCount(@Nullable Output<Integer> distinctIpv4PrefixesCount) {
-            $.distinctIpv4PrefixesCount = distinctIpv4PrefixesCount;
-            return this;
-        }
-
-        /**
-         * @param distinctIpv4PrefixesCount Number of distinct IPv4 routes
-         * 
-         * @return builder
-         * 
-         */
-        public Builder distinctIpv4PrefixesCount(Integer distinctIpv4PrefixesCount) {
-            return distinctIpv4PrefixesCount(Output.of(distinctIpv4PrefixesCount));
-        }
-
-        /**
-         * @param distinctIpv6PrefixesCount Number of distinct IPv6 routes
-         * 
-         * @return builder
-         * 
-         */
-        public Builder distinctIpv6PrefixesCount(@Nullable Output<Integer> distinctIpv6PrefixesCount) {
-            $.distinctIpv6PrefixesCount = distinctIpv6PrefixesCount;
-            return this;
-        }
-
-        /**
-         * @param distinctIpv6PrefixesCount Number of distinct IPv6 routes
-         * 
-         * @return builder
-         * 
-         */
-        public Builder distinctIpv6PrefixesCount(Integer distinctIpv6PrefixesCount) {
-            return distinctIpv6PrefixesCount(Output.of(distinctIpv6PrefixesCount));
         }
 
         /**

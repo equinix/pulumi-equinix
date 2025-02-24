@@ -36,6 +36,12 @@ namespace Pulumi.Equinix.Fabric.Inputs
         [Input("purchaseOrderNumber")]
         public Input<string>? PurchaseOrderNumber { get; set; }
 
+        /// <summary>
+        /// Term length in months; valid values are 1, 12, 24, 36 where 1 is the default value (for on-demand case)
+        /// </summary>
+        [Input("termLength")]
+        public Input<int>? TermLength { get; set; }
+
         public CloudRouterOrderGetArgs()
         {
         }

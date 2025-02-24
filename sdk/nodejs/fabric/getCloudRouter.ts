@@ -61,14 +61,6 @@ export interface GetCloudRouterResult {
      */
     readonly accounts: outputs.fabric.GetCloudRouterAccount[];
     /**
-     * Number of IPv4 BGP routes in use (including non-distinct prefixes)
-     */
-    readonly bgpIpv4RoutesCount: number;
-    /**
-     * Number of IPv6 BGP routes in use (including non-distinct prefixes)
-     */
-    readonly bgpIpv6RoutesCount: number;
-    /**
      * Captures Fabric Cloud Router lifecycle change information
      */
     readonly changeLogs: outputs.fabric.GetCloudRouterChangeLog[];
@@ -80,14 +72,6 @@ export interface GetCloudRouterResult {
      * Customer-provided Fabric Cloud Router description
      */
     readonly description: string;
-    /**
-     * Number of distinct IPv4 routes
-     */
-    readonly distinctIpv4PrefixesCount: number;
-    /**
-     * Number of distinct IPv6 routes
-     */
-    readonly distinctIpv6PrefixesCount: number;
     /**
      * Equinix ASN
      */

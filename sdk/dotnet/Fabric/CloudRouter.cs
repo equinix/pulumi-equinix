@@ -127,18 +127,6 @@ namespace Pulumi.Equinix.Fabric
         public Output<Outputs.CloudRouterAccount> Account { get; private set; } = null!;
 
         /// <summary>
-        /// Number of IPv4 BGP routes in use (including non-distinct prefixes)
-        /// </summary>
-        [Output("bgpIpv4RoutesCount")]
-        public Output<int> BgpIpv4RoutesCount { get; private set; } = null!;
-
-        /// <summary>
-        /// Number of IPv6 BGP routes in use (including non-distinct prefixes)
-        /// </summary>
-        [Output("bgpIpv6RoutesCount")]
-        public Output<int> BgpIpv6RoutesCount { get; private set; } = null!;
-
-        /// <summary>
         /// Captures Fabric Cloud Router lifecycle change information
         /// </summary>
         [Output("changeLogs")]
@@ -155,18 +143,6 @@ namespace Pulumi.Equinix.Fabric
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
-
-        /// <summary>
-        /// Number of distinct IPv4 routes
-        /// </summary>
-        [Output("distinctIpv4PrefixesCount")]
-        public Output<int> DistinctIpv4PrefixesCount { get; private set; } = null!;
-
-        /// <summary>
-        /// Number of distinct IPv6 routes
-        /// </summary>
-        [Output("distinctIpv6PrefixesCount")]
-        public Output<int> DistinctIpv6PrefixesCount { get; private set; } = null!;
 
         /// <summary>
         /// Equinix ASN
@@ -379,18 +355,6 @@ namespace Pulumi.Equinix.Fabric
         [Input("account")]
         public Input<Inputs.CloudRouterAccountGetArgs>? Account { get; set; }
 
-        /// <summary>
-        /// Number of IPv4 BGP routes in use (including non-distinct prefixes)
-        /// </summary>
-        [Input("bgpIpv4RoutesCount")]
-        public Input<int>? BgpIpv4RoutesCount { get; set; }
-
-        /// <summary>
-        /// Number of IPv6 BGP routes in use (including non-distinct prefixes)
-        /// </summary>
-        [Input("bgpIpv6RoutesCount")]
-        public Input<int>? BgpIpv6RoutesCount { get; set; }
-
         [Input("changeLogs")]
         private InputList<Inputs.CloudRouterChangeLogGetArgs>? _changeLogs;
 
@@ -414,18 +378,6 @@ namespace Pulumi.Equinix.Fabric
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
-
-        /// <summary>
-        /// Number of distinct IPv4 routes
-        /// </summary>
-        [Input("distinctIpv4PrefixesCount")]
-        public Input<int>? DistinctIpv4PrefixesCount { get; set; }
-
-        /// <summary>
-        /// Number of distinct IPv6 routes
-        /// </summary>
-        [Input("distinctIpv6PrefixesCount")]
-        public Input<int>? DistinctIpv6PrefixesCount { get; set; }
 
         /// <summary>
         /// Equinix ASN

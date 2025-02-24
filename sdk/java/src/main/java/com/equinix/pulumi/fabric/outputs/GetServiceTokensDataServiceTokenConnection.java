@@ -12,6 +12,8 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServiceTokensDataServiceTokenConnection {
@@ -44,7 +46,7 @@ public final class GetServiceTokensDataServiceTokenConnection {
      * @return Type of Connection supported by Service Token you will create; EVPL_VC, EVPLAN_VC, EPLAN_VC, IPWAN_VC
      * 
      */
-    private String type;
+    private @Nullable String type;
     /**
      * @return Equinix-assigned connection identifier
      * 
@@ -96,8 +98,8 @@ public final class GetServiceTokensDataServiceTokenConnection {
      * @return Type of Connection supported by Service Token you will create; EVPL_VC, EVPLAN_VC, EPLAN_VC, IPWAN_VC
      * 
      */
-    public String type() {
-        return this.type;
+    public Optional<String> type() {
+        return Optional.ofNullable(this.type);
     }
     /**
      * @return Equinix-assigned connection identifier
@@ -128,7 +130,7 @@ public final class GetServiceTokensDataServiceTokenConnection {
         private Boolean allowRemoteConnection;
         private Integer bandwidthLimit;
         private List<Integer> supportedBandwidths;
-        private String type;
+        private @Nullable String type;
         private String uuid;
         private List<GetServiceTokensDataServiceTokenConnectionZSide> zSides;
         public Builder() {}
@@ -191,10 +193,8 @@ public final class GetServiceTokensDataServiceTokenConnection {
             return supportedBandwidths(List.of(supportedBandwidths));
         }
         @CustomType.Setter
-        public Builder type(String type) {
-            if (type == null) {
-              throw new MissingRequiredPropertyException("GetServiceTokensDataServiceTokenConnection", "type");
-            }
+        public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }

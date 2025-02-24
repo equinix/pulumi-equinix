@@ -6,7 +6,6 @@ package com.equinix.pulumi.fabric.outputs;
 import com.equinix.pulumi.fabric.outputs.ServiceTokenServiceTokenConnectionASide;
 import com.equinix.pulumi.fabric.outputs.ServiceTokenServiceTokenConnectionZSide;
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -46,7 +45,7 @@ public final class ServiceTokenServiceTokenConnection {
      * @return Type of Connection supported by Service Token you will create; EVPL*VC, EVPLAN*VC, EPLAN*VC, IPWAN*VC
      * 
      */
-    private String type;
+    private @Nullable String type;
     /**
      * @return Equinix-assigned connection identifier
      * 
@@ -98,8 +97,8 @@ public final class ServiceTokenServiceTokenConnection {
      * @return Type of Connection supported by Service Token you will create; EVPL*VC, EVPLAN*VC, EPLAN*VC, IPWAN*VC
      * 
      */
-    public String type() {
-        return this.type;
+    public Optional<String> type() {
+        return Optional.ofNullable(this.type);
     }
     /**
      * @return Equinix-assigned connection identifier
@@ -130,7 +129,7 @@ public final class ServiceTokenServiceTokenConnection {
         private @Nullable Boolean allowRemoteConnection;
         private @Nullable Integer bandwidthLimit;
         private @Nullable List<Integer> supportedBandwidths;
-        private String type;
+        private @Nullable String type;
         private @Nullable String uuid;
         private @Nullable List<ServiceTokenServiceTokenConnectionZSide> zSides;
         public Builder() {}
@@ -183,10 +182,8 @@ public final class ServiceTokenServiceTokenConnection {
             return supportedBandwidths(List.of(supportedBandwidths));
         }
         @CustomType.Setter
-        public Builder type(String type) {
-            if (type == null) {
-              throw new MissingRequiredPropertyException("ServiceTokenServiceTokenConnection", "type");
-            }
+        public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }

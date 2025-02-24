@@ -5,6 +5,7 @@ package com.equinix.pulumi.fabric.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -75,6 +76,21 @@ public final class CloudRouterOrderArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.purchaseOrderNumber);
     }
 
+    /**
+     * Term length in months; valid values are 1, 12, 24, 36 where 1 is the default value (for on-demand case)
+     * 
+     */
+    @Import(name="termLength")
+    private @Nullable Output<Integer> termLength;
+
+    /**
+     * @return Term length in months; valid values are 1, 12, 24, 36 where 1 is the default value (for on-demand case)
+     * 
+     */
+    public Optional<Output<Integer>> termLength() {
+        return Optional.ofNullable(this.termLength);
+    }
+
     private CloudRouterOrderArgs() {}
 
     private CloudRouterOrderArgs(CloudRouterOrderArgs $) {
@@ -82,6 +98,7 @@ public final class CloudRouterOrderArgs extends com.pulumi.resources.ResourceArg
         this.orderId = $.orderId;
         this.orderNumber = $.orderNumber;
         this.purchaseOrderNumber = $.purchaseOrderNumber;
+        this.termLength = $.termLength;
     }
 
     public static Builder builder() {
@@ -184,6 +201,27 @@ public final class CloudRouterOrderArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder purchaseOrderNumber(String purchaseOrderNumber) {
             return purchaseOrderNumber(Output.of(purchaseOrderNumber));
+        }
+
+        /**
+         * @param termLength Term length in months; valid values are 1, 12, 24, 36 where 1 is the default value (for on-demand case)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder termLength(@Nullable Output<Integer> termLength) {
+            $.termLength = termLength;
+            return this;
+        }
+
+        /**
+         * @param termLength Term length in months; valid values are 1, 12, 24, 36 where 1 is the default value (for on-demand case)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder termLength(Integer termLength) {
+            return termLength(Output.of(termLength));
         }
 
         public CloudRouterOrderArgs build() {

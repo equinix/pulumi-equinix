@@ -127,6 +127,10 @@ export namespace fabric {
          * Purchase order number
          */
         purchaseOrderNumber: string;
+        /**
+         * Term length in months; valid values are 1, 12, 24, 36 where 1 is the default value (for on-demand case)
+         */
+        termLength?: number;
     }
 
     export interface CloudRouterPackage {
@@ -640,6 +644,10 @@ export namespace fabric {
          * Purchase order number
          */
         purchaseOrderNumber: string;
+        /**
+         * Term length in months; valid values are 1, 12, 24, 36 where 1 is the default value (for on-demand case)
+         */
+        termLength?: number;
     }
 
     export interface ConnectionProject {
@@ -1106,6 +1114,10 @@ export namespace fabric {
          * Purchase order number
          */
         purchaseOrderNumber: string;
+        /**
+         * Term length in months; valid values are 1, 12, 24, 36 where 1 is the default value (for on-demand case)
+         */
+        termLength?: number;
     }
 
     export interface GetCloudRouterPackage {
@@ -1132,14 +1144,6 @@ export namespace fabric {
          */
         accounts: outputs.fabric.GetCloudRoutersDataAccount[];
         /**
-         * Number of IPv4 BGP routes in use (including non-distinct prefixes)
-         */
-        bgpIpv4RoutesCount: number;
-        /**
-         * Number of IPv6 BGP routes in use (including non-distinct prefixes)
-         */
-        bgpIpv6RoutesCount: number;
-        /**
          * Captures Fabric Cloud Router lifecycle change information
          */
         changeLogs: outputs.fabric.GetCloudRoutersDataChangeLog[];
@@ -1151,14 +1155,6 @@ export namespace fabric {
          * Customer-provided Fabric Cloud Router description
          */
         description: string;
-        /**
-         * Number of distinct IPv4 routes
-         */
-        distinctIpv4PrefixesCount: number;
-        /**
-         * Number of distinct IPv6 routes
-         */
-        distinctIpv6PrefixesCount: number;
         /**
          * Equinix ASN
          */
@@ -1329,6 +1325,10 @@ export namespace fabric {
          * Purchase order number
          */
         purchaseOrderNumber: string;
+        /**
+         * Term length in months; valid values are 1, 12, 24, 36 where 1 is the default value (for on-demand case)
+         */
+        termLength?: number;
     }
 
     export interface GetCloudRoutersDataPackage {
@@ -1883,6 +1883,10 @@ export namespace fabric {
          * Purchase order number
          */
         purchaseOrderNumber: string;
+        /**
+         * Term length in months; valid values are 1, 12, 24, 36 where 1 is the default value (for on-demand case)
+         */
+        termLength?: number;
     }
 
     export interface GetConnectionProject {
@@ -2847,6 +2851,10 @@ export namespace fabric {
          * Purchase order number
          */
         purchaseOrderNumber: string;
+        /**
+         * Term length in months; valid values are 1, 12, 24, 36 where 1 is the default value (for on-demand case)
+         */
+        termLength?: number;
     }
 
     export interface GetConnectionsDataProject {
@@ -5734,7 +5742,7 @@ export namespace fabric {
         /**
          * Type of Connection supported by Service Token you will create; EVPL_VC, EVPLAN_VC, EPLAN_VC, IPWAN_VC
          */
-        type: string;
+        type?: string;
         /**
          * Equinix-assigned connection identifier
          */
@@ -5756,11 +5764,11 @@ export namespace fabric {
         /**
          * Virtual Device Interface Configuration
          */
-        interface: outputs.fabric.GetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterface;
+        interface?: outputs.fabric.GetServiceTokenServiceTokenConnectionASideAccessPointSelectorInterface;
         /**
          * Link protocol Configuration
          */
-        linkProtocol: outputs.fabric.GetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocol;
+        linkProtocol?: outputs.fabric.GetServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocol;
         /**
          * Network Configuration
          */
@@ -5768,7 +5776,7 @@ export namespace fabric {
         /**
          * Port Configuration
          */
-        port: outputs.fabric.GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPort;
+        port?: outputs.fabric.GetServiceTokenServiceTokenConnectionASideAccessPointSelectorPort;
         /**
          * Type of Access point; COLO, VD, NETWORK
          */
@@ -5955,11 +5963,11 @@ export namespace fabric {
         /**
          * Virtual Device Interface Configuration
          */
-        interface: outputs.fabric.GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterface;
+        interface?: outputs.fabric.GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterface;
         /**
          * Link protocol Configuration
          */
-        linkProtocol: outputs.fabric.GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocol;
+        linkProtocol?: outputs.fabric.GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocol;
         /**
          * Network Configuration
          */
@@ -5967,7 +5975,7 @@ export namespace fabric {
         /**
          * Port Configuration
          */
-        port: outputs.fabric.GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort;
+        port?: outputs.fabric.GetServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort;
         /**
          * Type of Access point; COLO, VD, NETWORK
          */
@@ -6334,7 +6342,7 @@ export namespace fabric {
         /**
          * Type of Connection supported by Service Token you will create; EVPL_VC, EVPLAN_VC, EPLAN_VC, IPWAN_VC
          */
-        type: string;
+        type?: string;
         /**
          * Equinix-assigned connection identifier
          */
@@ -6356,11 +6364,11 @@ export namespace fabric {
         /**
          * Virtual Device Interface Configuration
          */
-        interface: outputs.fabric.GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterface;
+        interface?: outputs.fabric.GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorInterface;
         /**
          * Link protocol Configuration
          */
-        linkProtocol: outputs.fabric.GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocol;
+        linkProtocol?: outputs.fabric.GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocol;
         /**
          * Network Configuration
          */
@@ -6368,7 +6376,7 @@ export namespace fabric {
         /**
          * Port Configuration
          */
-        port: outputs.fabric.GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPort;
+        port?: outputs.fabric.GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPort;
         /**
          * Type of Access point; COLO, VD, NETWORK
          */
@@ -6555,11 +6563,11 @@ export namespace fabric {
         /**
          * Virtual Device Interface Configuration
          */
-        interface: outputs.fabric.GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterface;
+        interface?: outputs.fabric.GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterface;
         /**
          * Link protocol Configuration
          */
-        linkProtocol: outputs.fabric.GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocol;
+        linkProtocol?: outputs.fabric.GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocol;
         /**
          * Network Configuration
          */
@@ -6567,7 +6575,7 @@ export namespace fabric {
         /**
          * Port Configuration
          */
-        port: outputs.fabric.GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPort;
+        port?: outputs.fabric.GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPort;
         /**
          * Type of Access point; COLO, VD, NETWORK
          */
@@ -7765,7 +7773,7 @@ export namespace fabric {
         /**
          * Type of Connection supported by Service Token you will create; EVPL*VC, EVPLAN*VC, EPLAN*VC, IPWAN*VC
          */
-        type: string;
+        type?: string;
         /**
          * Equinix-assigned connection identifier
          */
@@ -7787,11 +7795,11 @@ export namespace fabric {
         /**
          * Virtual Device Interface Configuration
          */
-        interface: outputs.fabric.ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterface;
+        interface?: outputs.fabric.ServiceTokenServiceTokenConnectionASideAccessPointSelectorInterface;
         /**
          * Link protocol Configuration
          */
-        linkProtocol: outputs.fabric.ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocol;
+        linkProtocol?: outputs.fabric.ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocol;
         /**
          * Network Configuration
          */
@@ -7799,7 +7807,7 @@ export namespace fabric {
         /**
          * Port Configuration
          */
-        port: outputs.fabric.ServiceTokenServiceTokenConnectionASideAccessPointSelectorPort;
+        port?: outputs.fabric.ServiceTokenServiceTokenConnectionASideAccessPointSelectorPort;
         /**
          * Type of Access point; COLO, VD, NETWORK
          */
@@ -7986,11 +7994,11 @@ export namespace fabric {
         /**
          * Virtual Device Interface Configuration
          */
-        interface: outputs.fabric.ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterface;
+        interface?: outputs.fabric.ServiceTokenServiceTokenConnectionZSideAccessPointSelectorInterface;
         /**
          * Link protocol Configuration
          */
-        linkProtocol: outputs.fabric.ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocol;
+        linkProtocol?: outputs.fabric.ServiceTokenServiceTokenConnectionZSideAccessPointSelectorLinkProtocol;
         /**
          * Network Configuration
          */
@@ -7998,7 +8006,7 @@ export namespace fabric {
         /**
          * Port Configuration
          */
-        port: outputs.fabric.ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort;
+        port?: outputs.fabric.ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort;
         /**
          * Type of Access point; COLO, VD, NETWORK
          */

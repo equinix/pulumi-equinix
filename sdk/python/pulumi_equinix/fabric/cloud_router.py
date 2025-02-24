@@ -217,13 +217,9 @@ class CloudRouterArgs:
 class _CloudRouterState:
     def __init__(__self__, *,
                  account: Optional[pulumi.Input['CloudRouterAccountArgs']] = None,
-                 bgp_ipv4_routes_count: Optional[pulumi.Input[int]] = None,
-                 bgp_ipv6_routes_count: Optional[pulumi.Input[int]] = None,
                  change_logs: Optional[pulumi.Input[Sequence[pulumi.Input['CloudRouterChangeLogArgs']]]] = None,
                  connections_count: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 distinct_ipv4_prefixes_count: Optional[pulumi.Input[int]] = None,
-                 distinct_ipv6_prefixes_count: Optional[pulumi.Input[int]] = None,
                  equinix_asn: Optional[pulumi.Input[int]] = None,
                  href: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input['CloudRouterLocationArgs']] = None,
@@ -239,13 +235,9 @@ class _CloudRouterState:
         """
         Input properties used for looking up and filtering CloudRouter resources.
         :param pulumi.Input['CloudRouterAccountArgs'] account: Customer account information that is associated with this Fabric Cloud Router
-        :param pulumi.Input[int] bgp_ipv4_routes_count: Number of IPv4 BGP routes in use (including non-distinct prefixes)
-        :param pulumi.Input[int] bgp_ipv6_routes_count: Number of IPv6 BGP routes in use (including non-distinct prefixes)
         :param pulumi.Input[Sequence[pulumi.Input['CloudRouterChangeLogArgs']]] change_logs: Captures Fabric Cloud Router lifecycle change information
         :param pulumi.Input[int] connections_count: Number of connections associated with this Fabric Cloud Router instance
         :param pulumi.Input[str] description: Customer-provided Fabric Cloud Router description
-        :param pulumi.Input[int] distinct_ipv4_prefixes_count: Number of distinct IPv4 routes
-        :param pulumi.Input[int] distinct_ipv6_prefixes_count: Number of distinct IPv6 routes
         :param pulumi.Input[int] equinix_asn: Equinix ASN
         :param pulumi.Input[str] href: Fabric Cloud Router URI information
         :param pulumi.Input['CloudRouterLocationArgs'] location: Fabric Cloud Router location
@@ -261,20 +253,12 @@ class _CloudRouterState:
         """
         if account is not None:
             pulumi.set(__self__, "account", account)
-        if bgp_ipv4_routes_count is not None:
-            pulumi.set(__self__, "bgp_ipv4_routes_count", bgp_ipv4_routes_count)
-        if bgp_ipv6_routes_count is not None:
-            pulumi.set(__self__, "bgp_ipv6_routes_count", bgp_ipv6_routes_count)
         if change_logs is not None:
             pulumi.set(__self__, "change_logs", change_logs)
         if connections_count is not None:
             pulumi.set(__self__, "connections_count", connections_count)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if distinct_ipv4_prefixes_count is not None:
-            pulumi.set(__self__, "distinct_ipv4_prefixes_count", distinct_ipv4_prefixes_count)
-        if distinct_ipv6_prefixes_count is not None:
-            pulumi.set(__self__, "distinct_ipv6_prefixes_count", distinct_ipv6_prefixes_count)
         if equinix_asn is not None:
             pulumi.set(__self__, "equinix_asn", equinix_asn)
         if href is not None:
@@ -313,30 +297,6 @@ class _CloudRouterState:
         pulumi.set(self, "account", value)
 
     @property
-    @pulumi.getter(name="bgpIpv4RoutesCount")
-    def bgp_ipv4_routes_count(self) -> Optional[pulumi.Input[int]]:
-        """
-        Number of IPv4 BGP routes in use (including non-distinct prefixes)
-        """
-        return pulumi.get(self, "bgp_ipv4_routes_count")
-
-    @bgp_ipv4_routes_count.setter
-    def bgp_ipv4_routes_count(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "bgp_ipv4_routes_count", value)
-
-    @property
-    @pulumi.getter(name="bgpIpv6RoutesCount")
-    def bgp_ipv6_routes_count(self) -> Optional[pulumi.Input[int]]:
-        """
-        Number of IPv6 BGP routes in use (including non-distinct prefixes)
-        """
-        return pulumi.get(self, "bgp_ipv6_routes_count")
-
-    @bgp_ipv6_routes_count.setter
-    def bgp_ipv6_routes_count(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "bgp_ipv6_routes_count", value)
-
-    @property
     @pulumi.getter(name="changeLogs")
     def change_logs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CloudRouterChangeLogArgs']]]]:
         """
@@ -371,30 +331,6 @@ class _CloudRouterState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter(name="distinctIpv4PrefixesCount")
-    def distinct_ipv4_prefixes_count(self) -> Optional[pulumi.Input[int]]:
-        """
-        Number of distinct IPv4 routes
-        """
-        return pulumi.get(self, "distinct_ipv4_prefixes_count")
-
-    @distinct_ipv4_prefixes_count.setter
-    def distinct_ipv4_prefixes_count(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "distinct_ipv4_prefixes_count", value)
-
-    @property
-    @pulumi.getter(name="distinctIpv6PrefixesCount")
-    def distinct_ipv6_prefixes_count(self) -> Optional[pulumi.Input[int]]:
-        """
-        Number of distinct IPv6 routes
-        """
-        return pulumi.get(self, "distinct_ipv6_prefixes_count")
-
-    @distinct_ipv6_prefixes_count.setter
-    def distinct_ipv6_prefixes_count(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "distinct_ipv6_prefixes_count", value)
 
     @property
     @pulumi.getter(name="equinixAsn")
@@ -782,12 +718,8 @@ class CloudRouter(pulumi.CustomResource):
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
             __props__.__dict__["uuid"] = uuid
-            __props__.__dict__["bgp_ipv4_routes_count"] = None
-            __props__.__dict__["bgp_ipv6_routes_count"] = None
             __props__.__dict__["change_logs"] = None
             __props__.__dict__["connections_count"] = None
-            __props__.__dict__["distinct_ipv4_prefixes_count"] = None
-            __props__.__dict__["distinct_ipv6_prefixes_count"] = None
             __props__.__dict__["equinix_asn"] = None
             __props__.__dict__["state"] = None
         super(CloudRouter, __self__).__init__(
@@ -801,13 +733,9 @@ class CloudRouter(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account: Optional[pulumi.Input[Union['CloudRouterAccountArgs', 'CloudRouterAccountArgsDict']]] = None,
-            bgp_ipv4_routes_count: Optional[pulumi.Input[int]] = None,
-            bgp_ipv6_routes_count: Optional[pulumi.Input[int]] = None,
             change_logs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CloudRouterChangeLogArgs', 'CloudRouterChangeLogArgsDict']]]]] = None,
             connections_count: Optional[pulumi.Input[int]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            distinct_ipv4_prefixes_count: Optional[pulumi.Input[int]] = None,
-            distinct_ipv6_prefixes_count: Optional[pulumi.Input[int]] = None,
             equinix_asn: Optional[pulumi.Input[int]] = None,
             href: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[Union['CloudRouterLocationArgs', 'CloudRouterLocationArgsDict']]] = None,
@@ -828,13 +756,9 @@ class CloudRouter(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['CloudRouterAccountArgs', 'CloudRouterAccountArgsDict']] account: Customer account information that is associated with this Fabric Cloud Router
-        :param pulumi.Input[int] bgp_ipv4_routes_count: Number of IPv4 BGP routes in use (including non-distinct prefixes)
-        :param pulumi.Input[int] bgp_ipv6_routes_count: Number of IPv6 BGP routes in use (including non-distinct prefixes)
         :param pulumi.Input[Sequence[pulumi.Input[Union['CloudRouterChangeLogArgs', 'CloudRouterChangeLogArgsDict']]]] change_logs: Captures Fabric Cloud Router lifecycle change information
         :param pulumi.Input[int] connections_count: Number of connections associated with this Fabric Cloud Router instance
         :param pulumi.Input[str] description: Customer-provided Fabric Cloud Router description
-        :param pulumi.Input[int] distinct_ipv4_prefixes_count: Number of distinct IPv4 routes
-        :param pulumi.Input[int] distinct_ipv6_prefixes_count: Number of distinct IPv6 routes
         :param pulumi.Input[int] equinix_asn: Equinix ASN
         :param pulumi.Input[str] href: Fabric Cloud Router URI information
         :param pulumi.Input[Union['CloudRouterLocationArgs', 'CloudRouterLocationArgsDict']] location: Fabric Cloud Router location
@@ -853,13 +777,9 @@ class CloudRouter(pulumi.CustomResource):
         __props__ = _CloudRouterState.__new__(_CloudRouterState)
 
         __props__.__dict__["account"] = account
-        __props__.__dict__["bgp_ipv4_routes_count"] = bgp_ipv4_routes_count
-        __props__.__dict__["bgp_ipv6_routes_count"] = bgp_ipv6_routes_count
         __props__.__dict__["change_logs"] = change_logs
         __props__.__dict__["connections_count"] = connections_count
         __props__.__dict__["description"] = description
-        __props__.__dict__["distinct_ipv4_prefixes_count"] = distinct_ipv4_prefixes_count
-        __props__.__dict__["distinct_ipv6_prefixes_count"] = distinct_ipv6_prefixes_count
         __props__.__dict__["equinix_asn"] = equinix_asn
         __props__.__dict__["href"] = href
         __props__.__dict__["location"] = location
@@ -881,22 +801,6 @@ class CloudRouter(pulumi.CustomResource):
         Customer account information that is associated with this Fabric Cloud Router
         """
         return pulumi.get(self, "account")
-
-    @property
-    @pulumi.getter(name="bgpIpv4RoutesCount")
-    def bgp_ipv4_routes_count(self) -> pulumi.Output[int]:
-        """
-        Number of IPv4 BGP routes in use (including non-distinct prefixes)
-        """
-        return pulumi.get(self, "bgp_ipv4_routes_count")
-
-    @property
-    @pulumi.getter(name="bgpIpv6RoutesCount")
-    def bgp_ipv6_routes_count(self) -> pulumi.Output[int]:
-        """
-        Number of IPv6 BGP routes in use (including non-distinct prefixes)
-        """
-        return pulumi.get(self, "bgp_ipv6_routes_count")
 
     @property
     @pulumi.getter(name="changeLogs")
@@ -921,22 +825,6 @@ class CloudRouter(pulumi.CustomResource):
         Customer-provided Fabric Cloud Router description
         """
         return pulumi.get(self, "description")
-
-    @property
-    @pulumi.getter(name="distinctIpv4PrefixesCount")
-    def distinct_ipv4_prefixes_count(self) -> pulumi.Output[int]:
-        """
-        Number of distinct IPv4 routes
-        """
-        return pulumi.get(self, "distinct_ipv4_prefixes_count")
-
-    @property
-    @pulumi.getter(name="distinctIpv6PrefixesCount")
-    def distinct_ipv6_prefixes_count(self) -> pulumi.Output[int]:
-        """
-        Number of distinct IPv6 routes
-        """
-        return pulumi.get(self, "distinct_ipv6_prefixes_count")
 
     @property
     @pulumi.getter(name="equinixAsn")

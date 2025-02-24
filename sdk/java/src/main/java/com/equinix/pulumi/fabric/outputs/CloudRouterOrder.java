@@ -4,6 +4,7 @@
 package com.equinix.pulumi.fabric.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -31,6 +32,11 @@ public final class CloudRouterOrder {
      * 
      */
     private @Nullable String purchaseOrderNumber;
+    /**
+     * @return Term length in months; valid values are 1, 12, 24, 36 where 1 is the default value (for on-demand case)
+     * 
+     */
+    private @Nullable Integer termLength;
 
     private CloudRouterOrder() {}
     /**
@@ -61,6 +67,13 @@ public final class CloudRouterOrder {
     public Optional<String> purchaseOrderNumber() {
         return Optional.ofNullable(this.purchaseOrderNumber);
     }
+    /**
+     * @return Term length in months; valid values are 1, 12, 24, 36 where 1 is the default value (for on-demand case)
+     * 
+     */
+    public Optional<Integer> termLength() {
+        return Optional.ofNullable(this.termLength);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -75,6 +88,7 @@ public final class CloudRouterOrder {
         private @Nullable String orderId;
         private @Nullable String orderNumber;
         private @Nullable String purchaseOrderNumber;
+        private @Nullable Integer termLength;
         public Builder() {}
         public Builder(CloudRouterOrder defaults) {
     	      Objects.requireNonNull(defaults);
@@ -82,6 +96,7 @@ public final class CloudRouterOrder {
     	      this.orderId = defaults.orderId;
     	      this.orderNumber = defaults.orderNumber;
     	      this.purchaseOrderNumber = defaults.purchaseOrderNumber;
+    	      this.termLength = defaults.termLength;
         }
 
         @CustomType.Setter
@@ -108,12 +123,19 @@ public final class CloudRouterOrder {
             this.purchaseOrderNumber = purchaseOrderNumber;
             return this;
         }
+        @CustomType.Setter
+        public Builder termLength(@Nullable Integer termLength) {
+
+            this.termLength = termLength;
+            return this;
+        }
         public CloudRouterOrder build() {
             final var _resultValue = new CloudRouterOrder();
             _resultValue.billingTier = billingTier;
             _resultValue.orderId = orderId;
             _resultValue.orderNumber = orderNumber;
             _resultValue.purchaseOrderNumber = purchaseOrderNumber;
+            _resultValue.termLength = termLength;
             return _resultValue;
         }
     }

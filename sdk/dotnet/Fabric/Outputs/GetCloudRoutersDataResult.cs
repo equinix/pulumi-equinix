@@ -18,14 +18,6 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetCloudRoutersDataAccountResult> Accounts;
         /// <summary>
-        /// Number of IPv4 BGP routes in use (including non-distinct prefixes)
-        /// </summary>
-        public readonly int BgpIpv4RoutesCount;
-        /// <summary>
-        /// Number of IPv6 BGP routes in use (including non-distinct prefixes)
-        /// </summary>
-        public readonly int BgpIpv6RoutesCount;
-        /// <summary>
         /// Captures Fabric Cloud Router lifecycle change information
         /// </summary>
         public readonly ImmutableArray<Outputs.GetCloudRoutersDataChangeLogResult> ChangeLogs;
@@ -37,14 +29,6 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// Customer-provided Fabric Cloud Router description
         /// </summary>
         public readonly string Description;
-        /// <summary>
-        /// Number of distinct IPv4 routes
-        /// </summary>
-        public readonly int DistinctIpv4PrefixesCount;
-        /// <summary>
-        /// Number of distinct IPv6 routes
-        /// </summary>
-        public readonly int DistinctIpv6PrefixesCount;
         /// <summary>
         /// Equinix ASN
         /// </summary>
@@ -98,19 +82,11 @@ namespace Pulumi.Equinix.Fabric.Outputs
         private GetCloudRoutersDataResult(
             ImmutableArray<Outputs.GetCloudRoutersDataAccountResult> accounts,
 
-            int bgpIpv4RoutesCount,
-
-            int bgpIpv6RoutesCount,
-
             ImmutableArray<Outputs.GetCloudRoutersDataChangeLogResult> changeLogs,
 
             int connectionsCount,
 
             string description,
-
-            int distinctIpv4PrefixesCount,
-
-            int distinctIpv6PrefixesCount,
 
             int equinixAsn,
 
@@ -137,13 +113,9 @@ namespace Pulumi.Equinix.Fabric.Outputs
             string uuid)
         {
             Accounts = accounts;
-            BgpIpv4RoutesCount = bgpIpv4RoutesCount;
-            BgpIpv6RoutesCount = bgpIpv6RoutesCount;
             ChangeLogs = changeLogs;
             ConnectionsCount = connectionsCount;
             Description = description;
-            DistinctIpv4PrefixesCount = distinctIpv4PrefixesCount;
-            DistinctIpv6PrefixesCount = distinctIpv6PrefixesCount;
             EquinixAsn = equinixAsn;
             Href = href;
             Locations = locations;

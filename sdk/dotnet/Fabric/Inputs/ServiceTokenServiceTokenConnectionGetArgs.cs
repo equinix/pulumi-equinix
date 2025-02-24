@@ -57,8 +57,8 @@ namespace Pulumi.Equinix.Fabric.Inputs
         /// <summary>
         /// Type of Connection supported by Service Token you will create; EVPL*VC, EVPLAN*VC, EPLAN*VC, IPWAN*VC
         /// </summary>
-        [Input("type", required: true)]
-        public Input<string> Type { get; set; } = null!;
+        [Input("type")]
+        public Input<string>? Type { get; set; }
 
         /// <summary>
         /// Equinix-assigned connection identifier
