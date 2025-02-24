@@ -2,7 +2,7 @@ module equinix-metal-bgp_session
 
 go 1.22
 
-toolchain go1.23.3
+toolchain go1.23.6
 
 require (
 	github.com/equinix/pulumi-equinix/sdk latest

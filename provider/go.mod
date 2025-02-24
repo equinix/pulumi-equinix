@@ -53,7 +53,7 @@ require (
 	github.com/djherbis/times v1.5.0 // indirect
 	github.com/edsrzf/mmap-go v1.1.0 // indirect
 	github.com/emirpasic/gods v1.18.1 // indirect
-	github.com/equinix/equinix-sdk-go v0.46.0 // indirect
+	github.com/equinix/equinix-sdk-go v0.49.0 // indirect
 	github.com/equinix/ne-go v1.19.0 // indirect
 	github.com/equinix/oauth2-go v1.0.0 // indirect
 	github.com/equinix/rest-go v1.3.0 // indirect
@@ -98,12 +98,12 @@ require (
 	github.com/hashicorp/terraform-exec v0.22.0 // indirect
 	github.com/hashicorp/terraform-json v0.24.0 // indirect
 	github.com/hashicorp/terraform-plugin-framework v1.13.0 // indirect
-	github.com/hashicorp/terraform-plugin-framework-timeouts v0.4.1 // indirect
-	github.com/hashicorp/terraform-plugin-framework-validators v0.15.0 // indirect
+	github.com/hashicorp/terraform-plugin-framework-timeouts v0.5.0 // indirect
+	github.com/hashicorp/terraform-plugin-framework-validators v0.16.0 // indirect
 	github.com/hashicorp/terraform-plugin-go v0.26.0 // indirect
 	github.com/hashicorp/terraform-plugin-log v0.9.0 // indirect
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.35.0 // indirect
-	github.com/hashicorp/terraform-plugin-testing v1.10.0 // indirect
+	github.com/hashicorp/terraform-plugin-testing v1.11.0 // indirect
 	github.com/hashicorp/terraform-registry-address v0.2.4 // indirect
 	github.com/hashicorp/terraform-svchost v0.1.1 // indirect
 	github.com/hashicorp/yamux v0.1.1 // indirect
@@ -192,7 +192,7 @@ require (
 	golang.org/x/exp v0.0.0-20240719175910-8a7402abbf56 // indirect
 	golang.org/x/mod v0.22.0 // indirect
 	golang.org/x/net v0.34.0 // indirect
-	golang.org/x/oauth2 v0.23.0 // indirect
+	golang.org/x/oauth2 v0.26.0 // indirect
 	golang.org/x/sync v0.11.0 // indirect
 	golang.org/x/sys v0.30.0 // indirect
 	golang.org/x/term v0.29.0 // indirect
@@ -206,6 +206,7 @@ require (
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20241015192408-796eee8c2d53 // indirect
 	google.golang.org/grpc v1.69.4 // indirect
 	google.golang.org/protobuf v1.36.3 // indirect
+	gopkg.in/validator.v2 v2.0.1 // indirect
 	gopkg.in/warnings.v0 v0.1.2 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	lukechampine.com/frand v1.4.2 // indirect

@@ -2,7 +2,7 @@ module equinix-network-device_link
 
 go 1.21
 
-toolchain go1.23.3
+toolchain go1.23.6
 
 require (
 	github.com/equinix/pulumi-equinix/sdk latest
