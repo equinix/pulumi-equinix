@@ -3290,6 +3290,108 @@ export namespace fabric {
         enabled: boolean;
     }
 
+    export interface GetMetroConnectedMetro {
+        avgLatency: number;
+        code: string;
+        href: string;
+        remoteVcBandwidthMax: number;
+    }
+
+    export interface GetMetroGeoCoordinates {
+        /**
+         * Latitude of the Metro
+         */
+        latitude: number;
+        /**
+         * Longitude of the Metro
+         */
+        longitude: number;
+    }
+
+    export interface GetMetrosData {
+        /**
+         * Code assigned to an Equinix IBX data center in a specified metropolitan area
+         */
+        code: string;
+        /**
+         * Arrays of objects containing latency data for the specified metro
+         */
+        connectedMetros: outputs.fabric.GetMetrosDataConnectedMetro[];
+        /**
+         * Autonomous system number (ASN) for a specified Fabric metro. The ASN is a unique identifier that carries the network routing protocol and exchanges that data with other internal systems via border gateway protocol.
+         */
+        equinixAsn: number;
+        /**
+         * Geographic location data of Fabric Metro
+         */
+        geoCoordinates: outputs.fabric.GetMetrosDataGeoCoordinates;
+        /**
+         * List of supported geographic boundaries of a Fabric Metro. Example values: CANADA, CONUS.
+         */
+        geoScopes: string[];
+        /**
+         * The canonical URL at which the resource resides
+         */
+        href: string;
+        /**
+         * This field holds Max Connection speed within the metro.
+         */
+        localVcBandwidthMax: number;
+        /**
+         * Name of the region in which the data center is located
+         */
+        name: string;
+        /**
+         * Board geographical area in which the data center is located
+         */
+        region: string;
+        /**
+         * Indicator of a fabric metro
+         */
+        type: string;
+    }
+
+    export interface GetMetrosDataConnectedMetro {
+        avgLatency: number;
+        code: string;
+        href: string;
+        remoteVcBandwidthMax: number;
+    }
+
+    export interface GetMetrosDataGeoCoordinates {
+        /**
+         * Latitude of the Metro
+         */
+        latitude: number;
+        /**
+         * Longitude of the Metro
+         */
+        longitude: number;
+    }
+
+    export interface GetMetrosPagination {
+        /**
+         * Maximum number of search results returned per page.
+         */
+        limit?: number;
+        /**
+         * URL relative to the next item in the response.
+         */
+        next: string;
+        /**
+         * Index of the first item returned in the response.
+         */
+        offset?: number;
+        /**
+         * URL relative to the previous item in the response.
+         */
+        previous: string;
+        /**
+         * The total number of metro returned
+         */
+        total: number;
+    }
+
     export interface GetNetworkChange {
         /**
          * Absolute URL that returns the details of the given change.
@@ -6789,6 +6891,188 @@ export namespace fabric {
         total: number;
     }
 
+    export interface GetStreamChangeLog {
+        /**
+         * User name of creator of the stream resource
+         */
+        createdBy: string;
+        /**
+         * Email of creator of the stream resource
+         */
+        createdByEmail: string;
+        /**
+         * Legal name of creator of the stream resource
+         */
+        createdByFullName: string;
+        /**
+         * Creation time of the stream resource
+         */
+        createdDateTime: string;
+        /**
+         * User name of deleter of the stream resource
+         */
+        deletedBy: string;
+        /**
+         * Email of deleter of the stream resource
+         */
+        deletedByEmail: string;
+        /**
+         * Legal name of deleter of the stream resource
+         */
+        deletedByFullName: string;
+        /**
+         * Deletion time of the stream resource
+         */
+        deletedDateTime: string;
+        /**
+         * User name of last updater of the stream resource
+         */
+        updatedBy: string;
+        /**
+         * Email of last updater of the stream resource
+         */
+        updatedByEmail: string;
+        /**
+         * Legal name of last updater of the stream resource
+         */
+        updatedByFullName: string;
+        /**
+         * Last update time of the stream resource
+         */
+        updatedDateTime: string;
+    }
+
+    export interface GetStreamProject {
+        /**
+         * Equinix Subscriber-assigned project ID
+         */
+        projectId: string;
+    }
+
+    export interface GetStreamsData {
+        /**
+         * Count of the streaming assets attached to the stream resource
+         */
+        assetsCount: number;
+        /**
+         * Details of the last change on the stream resource
+         */
+        changeLog: outputs.fabric.GetStreamsDataChangeLog;
+        /**
+         * Customer-provided description of the stream resource
+         */
+        description: string;
+        /**
+         * Equinix auto generated URI to the stream resource in Equinix Portal
+         */
+        href: string;
+        /**
+         * Customer-provided name of the stream resource
+         */
+        name: string;
+        /**
+         * Equinix Project attribute object
+         */
+        project: outputs.fabric.GetStreamsDataProject;
+        /**
+         * Value representing provisioning status for the stream resource
+         */
+        state: string;
+        /**
+         * Count of the client subscriptions on the stream resource
+         */
+        streamSubscriptionsCount: number;
+        /**
+         * Equinix defined Streaming Type
+         */
+        type: string;
+        /**
+         * Equinix-assigned unique id for the stream resource
+         */
+        uuid: string;
+    }
+
+    export interface GetStreamsDataChangeLog {
+        /**
+         * User name of creator of the stream resource
+         */
+        createdBy: string;
+        /**
+         * Email of creator of the stream resource
+         */
+        createdByEmail: string;
+        /**
+         * Legal name of creator of the stream resource
+         */
+        createdByFullName: string;
+        /**
+         * Creation time of the stream resource
+         */
+        createdDateTime: string;
+        /**
+         * User name of deleter of the stream resource
+         */
+        deletedBy: string;
+        /**
+         * Email of deleter of the stream resource
+         */
+        deletedByEmail: string;
+        /**
+         * Legal name of deleter of the stream resource
+         */
+        deletedByFullName: string;
+        /**
+         * Deletion time of the stream resource
+         */
+        deletedDateTime: string;
+        /**
+         * User name of last updater of the stream resource
+         */
+        updatedBy: string;
+        /**
+         * Email of last updater of the stream resource
+         */
+        updatedByEmail: string;
+        /**
+         * Legal name of last updater of the stream resource
+         */
+        updatedByFullName: string;
+        /**
+         * Last update time of the stream resource
+         */
+        updatedDateTime: string;
+    }
+
+    export interface GetStreamsDataProject {
+        /**
+         * Equinix Subscriber-assigned project ID
+         */
+        projectId: string;
+    }
+
+    export interface GetStreamsPagination {
+        /**
+         * Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+         */
+        limit: number;
+        /**
+         * The URL relative to the next item in the response
+         */
+        next: string;
+        /**
+         * Index of the first item returned in the response. The default is 0
+         */
+        offset: number;
+        /**
+         * The URL relative to the previous item in the response
+         */
+        previous: string;
+        /**
+         * The total number of streams available to the user making the request
+         */
+        total: number;
+    }
+
     export interface NetworkChange {
         /**
          * Absolute URL that returns the details of the given change.
@@ -8180,6 +8464,83 @@ export namespace fabric {
          * Equinix-assigned Virtual Device identifier
          */
         uuid: string;
+    }
+
+    export interface StreamChangeLog {
+        /**
+         * User name of creator of the stream resource
+         */
+        createdBy: string;
+        /**
+         * Email of creator of the stream resource
+         */
+        createdByEmail: string;
+        /**
+         * Legal name of creator of the stream resource
+         */
+        createdByFullName: string;
+        /**
+         * Creation time of the stream resource
+         */
+        createdDateTime: string;
+        /**
+         * User name of deleter of the stream resource
+         */
+        deletedBy: string;
+        /**
+         * Email of deleter of the stream resource
+         */
+        deletedByEmail: string;
+        /**
+         * Legal name of deleter of the stream resource
+         */
+        deletedByFullName: string;
+        /**
+         * Deletion time of the stream resource
+         */
+        deletedDateTime: string;
+        /**
+         * User name of last updater of the stream resource
+         */
+        updatedBy: string;
+        /**
+         * Email of last updater of the stream resource
+         */
+        updatedByEmail: string;
+        /**
+         * Legal name of last updater of the stream resource
+         */
+        updatedByFullName: string;
+        /**
+         * Last update time of the stream resource
+         */
+        updatedDateTime: string;
+    }
+
+    export interface StreamProject {
+        /**
+         * Equinix Subscriber-assigned project ID
+         */
+        projectId: string;
+    }
+
+    export interface StreamTimeouts {
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+         */
+        create?: string;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+         */
+        delete?: string;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+         */
+        read?: string;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+         */
+        update?: string;
     }
 
 }

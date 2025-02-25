@@ -19623,6 +19623,683 @@ func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceP
 	}).(pulumi.StringPtrOutput)
 }
 
+type StreamChangeLog struct {
+	// User name of creator of the stream resource
+	CreatedBy *string `pulumi:"createdBy"`
+	// Email of creator of the stream resource
+	CreatedByEmail *string `pulumi:"createdByEmail"`
+	// Legal name of creator of the stream resource
+	CreatedByFullName *string `pulumi:"createdByFullName"`
+	// Creation time of the stream resource
+	CreatedDateTime *string `pulumi:"createdDateTime"`
+	// User name of deleter of the stream resource
+	DeletedBy *string `pulumi:"deletedBy"`
+	// Email of deleter of the stream resource
+	DeletedByEmail *string `pulumi:"deletedByEmail"`
+	// Legal name of deleter of the stream resource
+	DeletedByFullName *string `pulumi:"deletedByFullName"`
+	// Deletion time of the stream resource
+	DeletedDateTime *string `pulumi:"deletedDateTime"`
+	// User name of last updater of the stream resource
+	UpdatedBy *string `pulumi:"updatedBy"`
+	// Email of last updater of the stream resource
+	UpdatedByEmail *string `pulumi:"updatedByEmail"`
+	// Legal name of last updater of the stream resource
+	UpdatedByFullName *string `pulumi:"updatedByFullName"`
+	// Last update time of the stream resource
+	UpdatedDateTime *string `pulumi:"updatedDateTime"`
+}
+
+// StreamChangeLogInput is an input type that accepts StreamChangeLogArgs and StreamChangeLogOutput values.
+// You can construct a concrete instance of `StreamChangeLogInput` via:
+//
+//	StreamChangeLogArgs{...}
+type StreamChangeLogInput interface {
+	pulumi.Input
+
+	ToStreamChangeLogOutput() StreamChangeLogOutput
+	ToStreamChangeLogOutputWithContext(context.Context) StreamChangeLogOutput
+}
+
+type StreamChangeLogArgs struct {
+	// User name of creator of the stream resource
+	CreatedBy pulumi.StringPtrInput `pulumi:"createdBy"`
+	// Email of creator of the stream resource
+	CreatedByEmail pulumi.StringPtrInput `pulumi:"createdByEmail"`
+	// Legal name of creator of the stream resource
+	CreatedByFullName pulumi.StringPtrInput `pulumi:"createdByFullName"`
+	// Creation time of the stream resource
+	CreatedDateTime pulumi.StringPtrInput `pulumi:"createdDateTime"`
+	// User name of deleter of the stream resource
+	DeletedBy pulumi.StringPtrInput `pulumi:"deletedBy"`
+	// Email of deleter of the stream resource
+	DeletedByEmail pulumi.StringPtrInput `pulumi:"deletedByEmail"`
+	// Legal name of deleter of the stream resource
+	DeletedByFullName pulumi.StringPtrInput `pulumi:"deletedByFullName"`
+	// Deletion time of the stream resource
+	DeletedDateTime pulumi.StringPtrInput `pulumi:"deletedDateTime"`
+	// User name of last updater of the stream resource
+	UpdatedBy pulumi.StringPtrInput `pulumi:"updatedBy"`
+	// Email of last updater of the stream resource
+	UpdatedByEmail pulumi.StringPtrInput `pulumi:"updatedByEmail"`
+	// Legal name of last updater of the stream resource
+	UpdatedByFullName pulumi.StringPtrInput `pulumi:"updatedByFullName"`
+	// Last update time of the stream resource
+	UpdatedDateTime pulumi.StringPtrInput `pulumi:"updatedDateTime"`
+}
+
+func (StreamChangeLogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamChangeLog)(nil)).Elem()
+}
+
+func (i StreamChangeLogArgs) ToStreamChangeLogOutput() StreamChangeLogOutput {
+	return i.ToStreamChangeLogOutputWithContext(context.Background())
+}
+
+func (i StreamChangeLogArgs) ToStreamChangeLogOutputWithContext(ctx context.Context) StreamChangeLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamChangeLogOutput)
+}
+
+func (i StreamChangeLogArgs) ToStreamChangeLogPtrOutput() StreamChangeLogPtrOutput {
+	return i.ToStreamChangeLogPtrOutputWithContext(context.Background())
+}
+
+func (i StreamChangeLogArgs) ToStreamChangeLogPtrOutputWithContext(ctx context.Context) StreamChangeLogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamChangeLogOutput).ToStreamChangeLogPtrOutputWithContext(ctx)
+}
+
+// StreamChangeLogPtrInput is an input type that accepts StreamChangeLogArgs, StreamChangeLogPtr and StreamChangeLogPtrOutput values.
+// You can construct a concrete instance of `StreamChangeLogPtrInput` via:
+//
+//	        StreamChangeLogArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamChangeLogPtrInput interface {
+	pulumi.Input
+
+	ToStreamChangeLogPtrOutput() StreamChangeLogPtrOutput
+	ToStreamChangeLogPtrOutputWithContext(context.Context) StreamChangeLogPtrOutput
+}
+
+type streamChangeLogPtrType StreamChangeLogArgs
+
+func StreamChangeLogPtr(v *StreamChangeLogArgs) StreamChangeLogPtrInput {
+	return (*streamChangeLogPtrType)(v)
+}
+
+func (*streamChangeLogPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamChangeLog)(nil)).Elem()
+}
+
+func (i *streamChangeLogPtrType) ToStreamChangeLogPtrOutput() StreamChangeLogPtrOutput {
+	return i.ToStreamChangeLogPtrOutputWithContext(context.Background())
+}
+
+func (i *streamChangeLogPtrType) ToStreamChangeLogPtrOutputWithContext(ctx context.Context) StreamChangeLogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamChangeLogPtrOutput)
+}
+
+type StreamChangeLogOutput struct{ *pulumi.OutputState }
+
+func (StreamChangeLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamChangeLog)(nil)).Elem()
+}
+
+func (o StreamChangeLogOutput) ToStreamChangeLogOutput() StreamChangeLogOutput {
+	return o
+}
+
+func (o StreamChangeLogOutput) ToStreamChangeLogOutputWithContext(ctx context.Context) StreamChangeLogOutput {
+	return o
+}
+
+func (o StreamChangeLogOutput) ToStreamChangeLogPtrOutput() StreamChangeLogPtrOutput {
+	return o.ToStreamChangeLogPtrOutputWithContext(context.Background())
+}
+
+func (o StreamChangeLogOutput) ToStreamChangeLogPtrOutputWithContext(ctx context.Context) StreamChangeLogPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamChangeLog) *StreamChangeLog {
+		return &v
+	}).(StreamChangeLogPtrOutput)
+}
+
+// User name of creator of the stream resource
+func (o StreamChangeLogOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamChangeLog) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+}
+
+// Email of creator of the stream resource
+func (o StreamChangeLogOutput) CreatedByEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamChangeLog) *string { return v.CreatedByEmail }).(pulumi.StringPtrOutput)
+}
+
+// Legal name of creator of the stream resource
+func (o StreamChangeLogOutput) CreatedByFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamChangeLog) *string { return v.CreatedByFullName }).(pulumi.StringPtrOutput)
+}
+
+// Creation time of the stream resource
+func (o StreamChangeLogOutput) CreatedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamChangeLog) *string { return v.CreatedDateTime }).(pulumi.StringPtrOutput)
+}
+
+// User name of deleter of the stream resource
+func (o StreamChangeLogOutput) DeletedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamChangeLog) *string { return v.DeletedBy }).(pulumi.StringPtrOutput)
+}
+
+// Email of deleter of the stream resource
+func (o StreamChangeLogOutput) DeletedByEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamChangeLog) *string { return v.DeletedByEmail }).(pulumi.StringPtrOutput)
+}
+
+// Legal name of deleter of the stream resource
+func (o StreamChangeLogOutput) DeletedByFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamChangeLog) *string { return v.DeletedByFullName }).(pulumi.StringPtrOutput)
+}
+
+// Deletion time of the stream resource
+func (o StreamChangeLogOutput) DeletedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamChangeLog) *string { return v.DeletedDateTime }).(pulumi.StringPtrOutput)
+}
+
+// User name of last updater of the stream resource
+func (o StreamChangeLogOutput) UpdatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamChangeLog) *string { return v.UpdatedBy }).(pulumi.StringPtrOutput)
+}
+
+// Email of last updater of the stream resource
+func (o StreamChangeLogOutput) UpdatedByEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamChangeLog) *string { return v.UpdatedByEmail }).(pulumi.StringPtrOutput)
+}
+
+// Legal name of last updater of the stream resource
+func (o StreamChangeLogOutput) UpdatedByFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamChangeLog) *string { return v.UpdatedByFullName }).(pulumi.StringPtrOutput)
+}
+
+// Last update time of the stream resource
+func (o StreamChangeLogOutput) UpdatedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamChangeLog) *string { return v.UpdatedDateTime }).(pulumi.StringPtrOutput)
+}
+
+type StreamChangeLogPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamChangeLogPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamChangeLog)(nil)).Elem()
+}
+
+func (o StreamChangeLogPtrOutput) ToStreamChangeLogPtrOutput() StreamChangeLogPtrOutput {
+	return o
+}
+
+func (o StreamChangeLogPtrOutput) ToStreamChangeLogPtrOutputWithContext(ctx context.Context) StreamChangeLogPtrOutput {
+	return o
+}
+
+func (o StreamChangeLogPtrOutput) Elem() StreamChangeLogOutput {
+	return o.ApplyT(func(v *StreamChangeLog) StreamChangeLog {
+		if v != nil {
+			return *v
+		}
+		var ret StreamChangeLog
+		return ret
+	}).(StreamChangeLogOutput)
+}
+
+// User name of creator of the stream resource
+func (o StreamChangeLogPtrOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedBy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Email of creator of the stream resource
+func (o StreamChangeLogPtrOutput) CreatedByEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedByEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+// Legal name of creator of the stream resource
+func (o StreamChangeLogPtrOutput) CreatedByFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedByFullName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Creation time of the stream resource
+func (o StreamChangeLogPtrOutput) CreatedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedDateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// User name of deleter of the stream resource
+func (o StreamChangeLogPtrOutput) DeletedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeletedBy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Email of deleter of the stream resource
+func (o StreamChangeLogPtrOutput) DeletedByEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeletedByEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+// Legal name of deleter of the stream resource
+func (o StreamChangeLogPtrOutput) DeletedByFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeletedByFullName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Deletion time of the stream resource
+func (o StreamChangeLogPtrOutput) DeletedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeletedDateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// User name of last updater of the stream resource
+func (o StreamChangeLogPtrOutput) UpdatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedBy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Email of last updater of the stream resource
+func (o StreamChangeLogPtrOutput) UpdatedByEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedByEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+// Legal name of last updater of the stream resource
+func (o StreamChangeLogPtrOutput) UpdatedByFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedByFullName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Last update time of the stream resource
+func (o StreamChangeLogPtrOutput) UpdatedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedDateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+type StreamProject struct {
+	// Equinix Subscriber-assigned project ID
+	ProjectId string `pulumi:"projectId"`
+}
+
+// StreamProjectInput is an input type that accepts StreamProjectArgs and StreamProjectOutput values.
+// You can construct a concrete instance of `StreamProjectInput` via:
+//
+//	StreamProjectArgs{...}
+type StreamProjectInput interface {
+	pulumi.Input
+
+	ToStreamProjectOutput() StreamProjectOutput
+	ToStreamProjectOutputWithContext(context.Context) StreamProjectOutput
+}
+
+type StreamProjectArgs struct {
+	// Equinix Subscriber-assigned project ID
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+}
+
+func (StreamProjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamProject)(nil)).Elem()
+}
+
+func (i StreamProjectArgs) ToStreamProjectOutput() StreamProjectOutput {
+	return i.ToStreamProjectOutputWithContext(context.Background())
+}
+
+func (i StreamProjectArgs) ToStreamProjectOutputWithContext(ctx context.Context) StreamProjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamProjectOutput)
+}
+
+func (i StreamProjectArgs) ToStreamProjectPtrOutput() StreamProjectPtrOutput {
+	return i.ToStreamProjectPtrOutputWithContext(context.Background())
+}
+
+func (i StreamProjectArgs) ToStreamProjectPtrOutputWithContext(ctx context.Context) StreamProjectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamProjectOutput).ToStreamProjectPtrOutputWithContext(ctx)
+}
+
+// StreamProjectPtrInput is an input type that accepts StreamProjectArgs, StreamProjectPtr and StreamProjectPtrOutput values.
+// You can construct a concrete instance of `StreamProjectPtrInput` via:
+//
+//	        StreamProjectArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamProjectPtrInput interface {
+	pulumi.Input
+
+	ToStreamProjectPtrOutput() StreamProjectPtrOutput
+	ToStreamProjectPtrOutputWithContext(context.Context) StreamProjectPtrOutput
+}
+
+type streamProjectPtrType StreamProjectArgs
+
+func StreamProjectPtr(v *StreamProjectArgs) StreamProjectPtrInput {
+	return (*streamProjectPtrType)(v)
+}
+
+func (*streamProjectPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamProject)(nil)).Elem()
+}
+
+func (i *streamProjectPtrType) ToStreamProjectPtrOutput() StreamProjectPtrOutput {
+	return i.ToStreamProjectPtrOutputWithContext(context.Background())
+}
+
+func (i *streamProjectPtrType) ToStreamProjectPtrOutputWithContext(ctx context.Context) StreamProjectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamProjectPtrOutput)
+}
+
+type StreamProjectOutput struct{ *pulumi.OutputState }
+
+func (StreamProjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamProject)(nil)).Elem()
+}
+
+func (o StreamProjectOutput) ToStreamProjectOutput() StreamProjectOutput {
+	return o
+}
+
+func (o StreamProjectOutput) ToStreamProjectOutputWithContext(ctx context.Context) StreamProjectOutput {
+	return o
+}
+
+func (o StreamProjectOutput) ToStreamProjectPtrOutput() StreamProjectPtrOutput {
+	return o.ToStreamProjectPtrOutputWithContext(context.Background())
+}
+
+func (o StreamProjectOutput) ToStreamProjectPtrOutputWithContext(ctx context.Context) StreamProjectPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamProject) *StreamProject {
+		return &v
+	}).(StreamProjectPtrOutput)
+}
+
+// Equinix Subscriber-assigned project ID
+func (o StreamProjectOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamProject) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+type StreamProjectPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamProjectPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamProject)(nil)).Elem()
+}
+
+func (o StreamProjectPtrOutput) ToStreamProjectPtrOutput() StreamProjectPtrOutput {
+	return o
+}
+
+func (o StreamProjectPtrOutput) ToStreamProjectPtrOutputWithContext(ctx context.Context) StreamProjectPtrOutput {
+	return o
+}
+
+func (o StreamProjectPtrOutput) Elem() StreamProjectOutput {
+	return o.ApplyT(func(v *StreamProject) StreamProject {
+		if v != nil {
+			return *v
+		}
+		var ret StreamProject
+		return ret
+	}).(StreamProjectOutput)
+}
+
+// Equinix Subscriber-assigned project ID
+func (o StreamProjectPtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamProject) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+type StreamTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// StreamTimeoutsInput is an input type that accepts StreamTimeoutsArgs and StreamTimeoutsOutput values.
+// You can construct a concrete instance of `StreamTimeoutsInput` via:
+//
+//	StreamTimeoutsArgs{...}
+type StreamTimeoutsInput interface {
+	pulumi.Input
+
+	ToStreamTimeoutsOutput() StreamTimeoutsOutput
+	ToStreamTimeoutsOutputWithContext(context.Context) StreamTimeoutsOutput
+}
+
+type StreamTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (StreamTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamTimeouts)(nil)).Elem()
+}
+
+func (i StreamTimeoutsArgs) ToStreamTimeoutsOutput() StreamTimeoutsOutput {
+	return i.ToStreamTimeoutsOutputWithContext(context.Background())
+}
+
+func (i StreamTimeoutsArgs) ToStreamTimeoutsOutputWithContext(ctx context.Context) StreamTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamTimeoutsOutput)
+}
+
+func (i StreamTimeoutsArgs) ToStreamTimeoutsPtrOutput() StreamTimeoutsPtrOutput {
+	return i.ToStreamTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i StreamTimeoutsArgs) ToStreamTimeoutsPtrOutputWithContext(ctx context.Context) StreamTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamTimeoutsOutput).ToStreamTimeoutsPtrOutputWithContext(ctx)
+}
+
+// StreamTimeoutsPtrInput is an input type that accepts StreamTimeoutsArgs, StreamTimeoutsPtr and StreamTimeoutsPtrOutput values.
+// You can construct a concrete instance of `StreamTimeoutsPtrInput` via:
+//
+//	        StreamTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToStreamTimeoutsPtrOutput() StreamTimeoutsPtrOutput
+	ToStreamTimeoutsPtrOutputWithContext(context.Context) StreamTimeoutsPtrOutput
+}
+
+type streamTimeoutsPtrType StreamTimeoutsArgs
+
+func StreamTimeoutsPtr(v *StreamTimeoutsArgs) StreamTimeoutsPtrInput {
+	return (*streamTimeoutsPtrType)(v)
+}
+
+func (*streamTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamTimeouts)(nil)).Elem()
+}
+
+func (i *streamTimeoutsPtrType) ToStreamTimeoutsPtrOutput() StreamTimeoutsPtrOutput {
+	return i.ToStreamTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *streamTimeoutsPtrType) ToStreamTimeoutsPtrOutputWithContext(ctx context.Context) StreamTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamTimeoutsPtrOutput)
+}
+
+type StreamTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (StreamTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamTimeouts)(nil)).Elem()
+}
+
+func (o StreamTimeoutsOutput) ToStreamTimeoutsOutput() StreamTimeoutsOutput {
+	return o
+}
+
+func (o StreamTimeoutsOutput) ToStreamTimeoutsOutputWithContext(ctx context.Context) StreamTimeoutsOutput {
+	return o
+}
+
+func (o StreamTimeoutsOutput) ToStreamTimeoutsPtrOutput() StreamTimeoutsPtrOutput {
+	return o.ToStreamTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o StreamTimeoutsOutput) ToStreamTimeoutsPtrOutputWithContext(ctx context.Context) StreamTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamTimeouts) *StreamTimeouts {
+		return &v
+	}).(StreamTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o StreamTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o StreamTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o StreamTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o StreamTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type StreamTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamTimeouts)(nil)).Elem()
+}
+
+func (o StreamTimeoutsPtrOutput) ToStreamTimeoutsPtrOutput() StreamTimeoutsPtrOutput {
+	return o
+}
+
+func (o StreamTimeoutsPtrOutput) ToStreamTimeoutsPtrOutputWithContext(ctx context.Context) StreamTimeoutsPtrOutput {
+	return o
+}
+
+func (o StreamTimeoutsPtrOutput) Elem() StreamTimeoutsOutput {
+	return o.ApplyT(func(v *StreamTimeouts) StreamTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret StreamTimeouts
+		return ret
+	}).(StreamTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o StreamTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o StreamTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o StreamTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o StreamTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetCloudRouterAccount struct {
 	// Account Number
 	AccountNumber int `pulumi:"accountNumber"`
@@ -37032,6 +37709,618 @@ func (o GetMarketplaceSubscriptionTrialOutput) ToGetMarketplaceSubscriptionTrial
 // Marketplace Subscription Trial Enabled
 func (o GetMarketplaceSubscriptionTrialOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetMarketplaceSubscriptionTrial) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetMetroConnectedMetro struct {
+	AvgLatency           float64 `pulumi:"avgLatency"`
+	Code                 string  `pulumi:"code"`
+	Href                 string  `pulumi:"href"`
+	RemoteVcBandwidthMax int     `pulumi:"remoteVcBandwidthMax"`
+}
+
+// GetMetroConnectedMetroInput is an input type that accepts GetMetroConnectedMetroArgs and GetMetroConnectedMetroOutput values.
+// You can construct a concrete instance of `GetMetroConnectedMetroInput` via:
+//
+//	GetMetroConnectedMetroArgs{...}
+type GetMetroConnectedMetroInput interface {
+	pulumi.Input
+
+	ToGetMetroConnectedMetroOutput() GetMetroConnectedMetroOutput
+	ToGetMetroConnectedMetroOutputWithContext(context.Context) GetMetroConnectedMetroOutput
+}
+
+type GetMetroConnectedMetroArgs struct {
+	AvgLatency           pulumi.Float64Input `pulumi:"avgLatency"`
+	Code                 pulumi.StringInput  `pulumi:"code"`
+	Href                 pulumi.StringInput  `pulumi:"href"`
+	RemoteVcBandwidthMax pulumi.IntInput     `pulumi:"remoteVcBandwidthMax"`
+}
+
+func (GetMetroConnectedMetroArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetroConnectedMetro)(nil)).Elem()
+}
+
+func (i GetMetroConnectedMetroArgs) ToGetMetroConnectedMetroOutput() GetMetroConnectedMetroOutput {
+	return i.ToGetMetroConnectedMetroOutputWithContext(context.Background())
+}
+
+func (i GetMetroConnectedMetroArgs) ToGetMetroConnectedMetroOutputWithContext(ctx context.Context) GetMetroConnectedMetroOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetroConnectedMetroOutput)
+}
+
+// GetMetroConnectedMetroArrayInput is an input type that accepts GetMetroConnectedMetroArray and GetMetroConnectedMetroArrayOutput values.
+// You can construct a concrete instance of `GetMetroConnectedMetroArrayInput` via:
+//
+//	GetMetroConnectedMetroArray{ GetMetroConnectedMetroArgs{...} }
+type GetMetroConnectedMetroArrayInput interface {
+	pulumi.Input
+
+	ToGetMetroConnectedMetroArrayOutput() GetMetroConnectedMetroArrayOutput
+	ToGetMetroConnectedMetroArrayOutputWithContext(context.Context) GetMetroConnectedMetroArrayOutput
+}
+
+type GetMetroConnectedMetroArray []GetMetroConnectedMetroInput
+
+func (GetMetroConnectedMetroArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetroConnectedMetro)(nil)).Elem()
+}
+
+func (i GetMetroConnectedMetroArray) ToGetMetroConnectedMetroArrayOutput() GetMetroConnectedMetroArrayOutput {
+	return i.ToGetMetroConnectedMetroArrayOutputWithContext(context.Background())
+}
+
+func (i GetMetroConnectedMetroArray) ToGetMetroConnectedMetroArrayOutputWithContext(ctx context.Context) GetMetroConnectedMetroArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetroConnectedMetroArrayOutput)
+}
+
+type GetMetroConnectedMetroOutput struct{ *pulumi.OutputState }
+
+func (GetMetroConnectedMetroOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetroConnectedMetro)(nil)).Elem()
+}
+
+func (o GetMetroConnectedMetroOutput) ToGetMetroConnectedMetroOutput() GetMetroConnectedMetroOutput {
+	return o
+}
+
+func (o GetMetroConnectedMetroOutput) ToGetMetroConnectedMetroOutputWithContext(ctx context.Context) GetMetroConnectedMetroOutput {
+	return o
+}
+
+func (o GetMetroConnectedMetroOutput) AvgLatency() pulumi.Float64Output {
+	return o.ApplyT(func(v GetMetroConnectedMetro) float64 { return v.AvgLatency }).(pulumi.Float64Output)
+}
+
+func (o GetMetroConnectedMetroOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetroConnectedMetro) string { return v.Code }).(pulumi.StringOutput)
+}
+
+func (o GetMetroConnectedMetroOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetroConnectedMetro) string { return v.Href }).(pulumi.StringOutput)
+}
+
+func (o GetMetroConnectedMetroOutput) RemoteVcBandwidthMax() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMetroConnectedMetro) int { return v.RemoteVcBandwidthMax }).(pulumi.IntOutput)
+}
+
+type GetMetroConnectedMetroArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMetroConnectedMetroArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetroConnectedMetro)(nil)).Elem()
+}
+
+func (o GetMetroConnectedMetroArrayOutput) ToGetMetroConnectedMetroArrayOutput() GetMetroConnectedMetroArrayOutput {
+	return o
+}
+
+func (o GetMetroConnectedMetroArrayOutput) ToGetMetroConnectedMetroArrayOutputWithContext(ctx context.Context) GetMetroConnectedMetroArrayOutput {
+	return o
+}
+
+func (o GetMetroConnectedMetroArrayOutput) Index(i pulumi.IntInput) GetMetroConnectedMetroOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMetroConnectedMetro {
+		return vs[0].([]GetMetroConnectedMetro)[vs[1].(int)]
+	}).(GetMetroConnectedMetroOutput)
+}
+
+type GetMetroGeoCoordinates struct {
+	// Latitude of the Metro
+	Latitude float64 `pulumi:"latitude"`
+	// Longitude of the Metro
+	Longitude float64 `pulumi:"longitude"`
+}
+
+// GetMetroGeoCoordinatesInput is an input type that accepts GetMetroGeoCoordinatesArgs and GetMetroGeoCoordinatesOutput values.
+// You can construct a concrete instance of `GetMetroGeoCoordinatesInput` via:
+//
+//	GetMetroGeoCoordinatesArgs{...}
+type GetMetroGeoCoordinatesInput interface {
+	pulumi.Input
+
+	ToGetMetroGeoCoordinatesOutput() GetMetroGeoCoordinatesOutput
+	ToGetMetroGeoCoordinatesOutputWithContext(context.Context) GetMetroGeoCoordinatesOutput
+}
+
+type GetMetroGeoCoordinatesArgs struct {
+	// Latitude of the Metro
+	Latitude pulumi.Float64Input `pulumi:"latitude"`
+	// Longitude of the Metro
+	Longitude pulumi.Float64Input `pulumi:"longitude"`
+}
+
+func (GetMetroGeoCoordinatesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetroGeoCoordinates)(nil)).Elem()
+}
+
+func (i GetMetroGeoCoordinatesArgs) ToGetMetroGeoCoordinatesOutput() GetMetroGeoCoordinatesOutput {
+	return i.ToGetMetroGeoCoordinatesOutputWithContext(context.Background())
+}
+
+func (i GetMetroGeoCoordinatesArgs) ToGetMetroGeoCoordinatesOutputWithContext(ctx context.Context) GetMetroGeoCoordinatesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetroGeoCoordinatesOutput)
+}
+
+type GetMetroGeoCoordinatesOutput struct{ *pulumi.OutputState }
+
+func (GetMetroGeoCoordinatesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetroGeoCoordinates)(nil)).Elem()
+}
+
+func (o GetMetroGeoCoordinatesOutput) ToGetMetroGeoCoordinatesOutput() GetMetroGeoCoordinatesOutput {
+	return o
+}
+
+func (o GetMetroGeoCoordinatesOutput) ToGetMetroGeoCoordinatesOutputWithContext(ctx context.Context) GetMetroGeoCoordinatesOutput {
+	return o
+}
+
+// Latitude of the Metro
+func (o GetMetroGeoCoordinatesOutput) Latitude() pulumi.Float64Output {
+	return o.ApplyT(func(v GetMetroGeoCoordinates) float64 { return v.Latitude }).(pulumi.Float64Output)
+}
+
+// Longitude of the Metro
+func (o GetMetroGeoCoordinatesOutput) Longitude() pulumi.Float64Output {
+	return o.ApplyT(func(v GetMetroGeoCoordinates) float64 { return v.Longitude }).(pulumi.Float64Output)
+}
+
+type GetMetrosData struct {
+	// Code assigned to an Equinix IBX data center in a specified metropolitan area
+	Code string `pulumi:"code"`
+	// Arrays of objects containing latency data for the specified metro
+	ConnectedMetros []GetMetrosDataConnectedMetro `pulumi:"connectedMetros"`
+	// Autonomous system number (ASN) for a specified Fabric metro. The ASN is a unique identifier that carries the network routing protocol and exchanges that data with other internal systems via border gateway protocol.
+	EquinixAsn int `pulumi:"equinixAsn"`
+	// Geographic location data of Fabric Metro
+	GeoCoordinates GetMetrosDataGeoCoordinates `pulumi:"geoCoordinates"`
+	// List of supported geographic boundaries of a Fabric Metro. Example values: CANADA, CONUS.
+	GeoScopes []string `pulumi:"geoScopes"`
+	// The canonical URL at which the resource resides
+	Href string `pulumi:"href"`
+	// This field holds Max Connection speed within the metro.
+	LocalVcBandwidthMax int `pulumi:"localVcBandwidthMax"`
+	// Name of the region in which the data center is located
+	Name string `pulumi:"name"`
+	// Board geographical area in which the data center is located
+	Region string `pulumi:"region"`
+	// Indicator of a fabric metro
+	Type string `pulumi:"type"`
+}
+
+// GetMetrosDataInput is an input type that accepts GetMetrosDataArgs and GetMetrosDataOutput values.
+// You can construct a concrete instance of `GetMetrosDataInput` via:
+//
+//	GetMetrosDataArgs{...}
+type GetMetrosDataInput interface {
+	pulumi.Input
+
+	ToGetMetrosDataOutput() GetMetrosDataOutput
+	ToGetMetrosDataOutputWithContext(context.Context) GetMetrosDataOutput
+}
+
+type GetMetrosDataArgs struct {
+	// Code assigned to an Equinix IBX data center in a specified metropolitan area
+	Code pulumi.StringInput `pulumi:"code"`
+	// Arrays of objects containing latency data for the specified metro
+	ConnectedMetros GetMetrosDataConnectedMetroArrayInput `pulumi:"connectedMetros"`
+	// Autonomous system number (ASN) for a specified Fabric metro. The ASN is a unique identifier that carries the network routing protocol and exchanges that data with other internal systems via border gateway protocol.
+	EquinixAsn pulumi.IntInput `pulumi:"equinixAsn"`
+	// Geographic location data of Fabric Metro
+	GeoCoordinates GetMetrosDataGeoCoordinatesInput `pulumi:"geoCoordinates"`
+	// List of supported geographic boundaries of a Fabric Metro. Example values: CANADA, CONUS.
+	GeoScopes pulumi.StringArrayInput `pulumi:"geoScopes"`
+	// The canonical URL at which the resource resides
+	Href pulumi.StringInput `pulumi:"href"`
+	// This field holds Max Connection speed within the metro.
+	LocalVcBandwidthMax pulumi.IntInput `pulumi:"localVcBandwidthMax"`
+	// Name of the region in which the data center is located
+	Name pulumi.StringInput `pulumi:"name"`
+	// Board geographical area in which the data center is located
+	Region pulumi.StringInput `pulumi:"region"`
+	// Indicator of a fabric metro
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetMetrosDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetrosData)(nil)).Elem()
+}
+
+func (i GetMetrosDataArgs) ToGetMetrosDataOutput() GetMetrosDataOutput {
+	return i.ToGetMetrosDataOutputWithContext(context.Background())
+}
+
+func (i GetMetrosDataArgs) ToGetMetrosDataOutputWithContext(ctx context.Context) GetMetrosDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetrosDataOutput)
+}
+
+// GetMetrosDataArrayInput is an input type that accepts GetMetrosDataArray and GetMetrosDataArrayOutput values.
+// You can construct a concrete instance of `GetMetrosDataArrayInput` via:
+//
+//	GetMetrosDataArray{ GetMetrosDataArgs{...} }
+type GetMetrosDataArrayInput interface {
+	pulumi.Input
+
+	ToGetMetrosDataArrayOutput() GetMetrosDataArrayOutput
+	ToGetMetrosDataArrayOutputWithContext(context.Context) GetMetrosDataArrayOutput
+}
+
+type GetMetrosDataArray []GetMetrosDataInput
+
+func (GetMetrosDataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetrosData)(nil)).Elem()
+}
+
+func (i GetMetrosDataArray) ToGetMetrosDataArrayOutput() GetMetrosDataArrayOutput {
+	return i.ToGetMetrosDataArrayOutputWithContext(context.Background())
+}
+
+func (i GetMetrosDataArray) ToGetMetrosDataArrayOutputWithContext(ctx context.Context) GetMetrosDataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetrosDataArrayOutput)
+}
+
+type GetMetrosDataOutput struct{ *pulumi.OutputState }
+
+func (GetMetrosDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetrosData)(nil)).Elem()
+}
+
+func (o GetMetrosDataOutput) ToGetMetrosDataOutput() GetMetrosDataOutput {
+	return o
+}
+
+func (o GetMetrosDataOutput) ToGetMetrosDataOutputWithContext(ctx context.Context) GetMetrosDataOutput {
+	return o
+}
+
+// Code assigned to an Equinix IBX data center in a specified metropolitan area
+func (o GetMetrosDataOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetrosData) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// Arrays of objects containing latency data for the specified metro
+func (o GetMetrosDataOutput) ConnectedMetros() GetMetrosDataConnectedMetroArrayOutput {
+	return o.ApplyT(func(v GetMetrosData) []GetMetrosDataConnectedMetro { return v.ConnectedMetros }).(GetMetrosDataConnectedMetroArrayOutput)
+}
+
+// Autonomous system number (ASN) for a specified Fabric metro. The ASN is a unique identifier that carries the network routing protocol and exchanges that data with other internal systems via border gateway protocol.
+func (o GetMetrosDataOutput) EquinixAsn() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMetrosData) int { return v.EquinixAsn }).(pulumi.IntOutput)
+}
+
+// Geographic location data of Fabric Metro
+func (o GetMetrosDataOutput) GeoCoordinates() GetMetrosDataGeoCoordinatesOutput {
+	return o.ApplyT(func(v GetMetrosData) GetMetrosDataGeoCoordinates { return v.GeoCoordinates }).(GetMetrosDataGeoCoordinatesOutput)
+}
+
+// List of supported geographic boundaries of a Fabric Metro. Example values: CANADA, CONUS.
+func (o GetMetrosDataOutput) GeoScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetMetrosData) []string { return v.GeoScopes }).(pulumi.StringArrayOutput)
+}
+
+// The canonical URL at which the resource resides
+func (o GetMetrosDataOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetrosData) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// This field holds Max Connection speed within the metro.
+func (o GetMetrosDataOutput) LocalVcBandwidthMax() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMetrosData) int { return v.LocalVcBandwidthMax }).(pulumi.IntOutput)
+}
+
+// Name of the region in which the data center is located
+func (o GetMetrosDataOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetrosData) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Board geographical area in which the data center is located
+func (o GetMetrosDataOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetrosData) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// Indicator of a fabric metro
+func (o GetMetrosDataOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetrosData) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetMetrosDataArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMetrosDataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetrosData)(nil)).Elem()
+}
+
+func (o GetMetrosDataArrayOutput) ToGetMetrosDataArrayOutput() GetMetrosDataArrayOutput {
+	return o
+}
+
+func (o GetMetrosDataArrayOutput) ToGetMetrosDataArrayOutputWithContext(ctx context.Context) GetMetrosDataArrayOutput {
+	return o
+}
+
+func (o GetMetrosDataArrayOutput) Index(i pulumi.IntInput) GetMetrosDataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMetrosData {
+		return vs[0].([]GetMetrosData)[vs[1].(int)]
+	}).(GetMetrosDataOutput)
+}
+
+type GetMetrosDataConnectedMetro struct {
+	AvgLatency           float64 `pulumi:"avgLatency"`
+	Code                 string  `pulumi:"code"`
+	Href                 string  `pulumi:"href"`
+	RemoteVcBandwidthMax int     `pulumi:"remoteVcBandwidthMax"`
+}
+
+// GetMetrosDataConnectedMetroInput is an input type that accepts GetMetrosDataConnectedMetroArgs and GetMetrosDataConnectedMetroOutput values.
+// You can construct a concrete instance of `GetMetrosDataConnectedMetroInput` via:
+//
+//	GetMetrosDataConnectedMetroArgs{...}
+type GetMetrosDataConnectedMetroInput interface {
+	pulumi.Input
+
+	ToGetMetrosDataConnectedMetroOutput() GetMetrosDataConnectedMetroOutput
+	ToGetMetrosDataConnectedMetroOutputWithContext(context.Context) GetMetrosDataConnectedMetroOutput
+}
+
+type GetMetrosDataConnectedMetroArgs struct {
+	AvgLatency           pulumi.Float64Input `pulumi:"avgLatency"`
+	Code                 pulumi.StringInput  `pulumi:"code"`
+	Href                 pulumi.StringInput  `pulumi:"href"`
+	RemoteVcBandwidthMax pulumi.IntInput     `pulumi:"remoteVcBandwidthMax"`
+}
+
+func (GetMetrosDataConnectedMetroArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetrosDataConnectedMetro)(nil)).Elem()
+}
+
+func (i GetMetrosDataConnectedMetroArgs) ToGetMetrosDataConnectedMetroOutput() GetMetrosDataConnectedMetroOutput {
+	return i.ToGetMetrosDataConnectedMetroOutputWithContext(context.Background())
+}
+
+func (i GetMetrosDataConnectedMetroArgs) ToGetMetrosDataConnectedMetroOutputWithContext(ctx context.Context) GetMetrosDataConnectedMetroOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetrosDataConnectedMetroOutput)
+}
+
+// GetMetrosDataConnectedMetroArrayInput is an input type that accepts GetMetrosDataConnectedMetroArray and GetMetrosDataConnectedMetroArrayOutput values.
+// You can construct a concrete instance of `GetMetrosDataConnectedMetroArrayInput` via:
+//
+//	GetMetrosDataConnectedMetroArray{ GetMetrosDataConnectedMetroArgs{...} }
+type GetMetrosDataConnectedMetroArrayInput interface {
+	pulumi.Input
+
+	ToGetMetrosDataConnectedMetroArrayOutput() GetMetrosDataConnectedMetroArrayOutput
+	ToGetMetrosDataConnectedMetroArrayOutputWithContext(context.Context) GetMetrosDataConnectedMetroArrayOutput
+}
+
+type GetMetrosDataConnectedMetroArray []GetMetrosDataConnectedMetroInput
+
+func (GetMetrosDataConnectedMetroArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetrosDataConnectedMetro)(nil)).Elem()
+}
+
+func (i GetMetrosDataConnectedMetroArray) ToGetMetrosDataConnectedMetroArrayOutput() GetMetrosDataConnectedMetroArrayOutput {
+	return i.ToGetMetrosDataConnectedMetroArrayOutputWithContext(context.Background())
+}
+
+func (i GetMetrosDataConnectedMetroArray) ToGetMetrosDataConnectedMetroArrayOutputWithContext(ctx context.Context) GetMetrosDataConnectedMetroArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetrosDataConnectedMetroArrayOutput)
+}
+
+type GetMetrosDataConnectedMetroOutput struct{ *pulumi.OutputState }
+
+func (GetMetrosDataConnectedMetroOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetrosDataConnectedMetro)(nil)).Elem()
+}
+
+func (o GetMetrosDataConnectedMetroOutput) ToGetMetrosDataConnectedMetroOutput() GetMetrosDataConnectedMetroOutput {
+	return o
+}
+
+func (o GetMetrosDataConnectedMetroOutput) ToGetMetrosDataConnectedMetroOutputWithContext(ctx context.Context) GetMetrosDataConnectedMetroOutput {
+	return o
+}
+
+func (o GetMetrosDataConnectedMetroOutput) AvgLatency() pulumi.Float64Output {
+	return o.ApplyT(func(v GetMetrosDataConnectedMetro) float64 { return v.AvgLatency }).(pulumi.Float64Output)
+}
+
+func (o GetMetrosDataConnectedMetroOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetrosDataConnectedMetro) string { return v.Code }).(pulumi.StringOutput)
+}
+
+func (o GetMetrosDataConnectedMetroOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetrosDataConnectedMetro) string { return v.Href }).(pulumi.StringOutput)
+}
+
+func (o GetMetrosDataConnectedMetroOutput) RemoteVcBandwidthMax() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMetrosDataConnectedMetro) int { return v.RemoteVcBandwidthMax }).(pulumi.IntOutput)
+}
+
+type GetMetrosDataConnectedMetroArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMetrosDataConnectedMetroArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetrosDataConnectedMetro)(nil)).Elem()
+}
+
+func (o GetMetrosDataConnectedMetroArrayOutput) ToGetMetrosDataConnectedMetroArrayOutput() GetMetrosDataConnectedMetroArrayOutput {
+	return o
+}
+
+func (o GetMetrosDataConnectedMetroArrayOutput) ToGetMetrosDataConnectedMetroArrayOutputWithContext(ctx context.Context) GetMetrosDataConnectedMetroArrayOutput {
+	return o
+}
+
+func (o GetMetrosDataConnectedMetroArrayOutput) Index(i pulumi.IntInput) GetMetrosDataConnectedMetroOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMetrosDataConnectedMetro {
+		return vs[0].([]GetMetrosDataConnectedMetro)[vs[1].(int)]
+	}).(GetMetrosDataConnectedMetroOutput)
+}
+
+type GetMetrosDataGeoCoordinates struct {
+	// Latitude of the Metro
+	Latitude float64 `pulumi:"latitude"`
+	// Longitude of the Metro
+	Longitude float64 `pulumi:"longitude"`
+}
+
+// GetMetrosDataGeoCoordinatesInput is an input type that accepts GetMetrosDataGeoCoordinatesArgs and GetMetrosDataGeoCoordinatesOutput values.
+// You can construct a concrete instance of `GetMetrosDataGeoCoordinatesInput` via:
+//
+//	GetMetrosDataGeoCoordinatesArgs{...}
+type GetMetrosDataGeoCoordinatesInput interface {
+	pulumi.Input
+
+	ToGetMetrosDataGeoCoordinatesOutput() GetMetrosDataGeoCoordinatesOutput
+	ToGetMetrosDataGeoCoordinatesOutputWithContext(context.Context) GetMetrosDataGeoCoordinatesOutput
+}
+
+type GetMetrosDataGeoCoordinatesArgs struct {
+	// Latitude of the Metro
+	Latitude pulumi.Float64Input `pulumi:"latitude"`
+	// Longitude of the Metro
+	Longitude pulumi.Float64Input `pulumi:"longitude"`
+}
+
+func (GetMetrosDataGeoCoordinatesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetrosDataGeoCoordinates)(nil)).Elem()
+}
+
+func (i GetMetrosDataGeoCoordinatesArgs) ToGetMetrosDataGeoCoordinatesOutput() GetMetrosDataGeoCoordinatesOutput {
+	return i.ToGetMetrosDataGeoCoordinatesOutputWithContext(context.Background())
+}
+
+func (i GetMetrosDataGeoCoordinatesArgs) ToGetMetrosDataGeoCoordinatesOutputWithContext(ctx context.Context) GetMetrosDataGeoCoordinatesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetrosDataGeoCoordinatesOutput)
+}
+
+type GetMetrosDataGeoCoordinatesOutput struct{ *pulumi.OutputState }
+
+func (GetMetrosDataGeoCoordinatesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetrosDataGeoCoordinates)(nil)).Elem()
+}
+
+func (o GetMetrosDataGeoCoordinatesOutput) ToGetMetrosDataGeoCoordinatesOutput() GetMetrosDataGeoCoordinatesOutput {
+	return o
+}
+
+func (o GetMetrosDataGeoCoordinatesOutput) ToGetMetrosDataGeoCoordinatesOutputWithContext(ctx context.Context) GetMetrosDataGeoCoordinatesOutput {
+	return o
+}
+
+// Latitude of the Metro
+func (o GetMetrosDataGeoCoordinatesOutput) Latitude() pulumi.Float64Output {
+	return o.ApplyT(func(v GetMetrosDataGeoCoordinates) float64 { return v.Latitude }).(pulumi.Float64Output)
+}
+
+// Longitude of the Metro
+func (o GetMetrosDataGeoCoordinatesOutput) Longitude() pulumi.Float64Output {
+	return o.ApplyT(func(v GetMetrosDataGeoCoordinates) float64 { return v.Longitude }).(pulumi.Float64Output)
+}
+
+type GetMetrosPagination struct {
+	// Maximum number of search results returned per page.
+	Limit *float64 `pulumi:"limit"`
+	// URL relative to the next item in the response.
+	Next string `pulumi:"next"`
+	// Index of the first item returned in the response.
+	Offset *float64 `pulumi:"offset"`
+	// URL relative to the previous item in the response.
+	Previous string `pulumi:"previous"`
+	// The total number of metro returned
+	Total float64 `pulumi:"total"`
+}
+
+// GetMetrosPaginationInput is an input type that accepts GetMetrosPaginationArgs and GetMetrosPaginationOutput values.
+// You can construct a concrete instance of `GetMetrosPaginationInput` via:
+//
+//	GetMetrosPaginationArgs{...}
+type GetMetrosPaginationInput interface {
+	pulumi.Input
+
+	ToGetMetrosPaginationOutput() GetMetrosPaginationOutput
+	ToGetMetrosPaginationOutputWithContext(context.Context) GetMetrosPaginationOutput
+}
+
+type GetMetrosPaginationArgs struct {
+	// Maximum number of search results returned per page.
+	Limit pulumi.Float64PtrInput `pulumi:"limit"`
+	// URL relative to the next item in the response.
+	Next pulumi.StringInput `pulumi:"next"`
+	// Index of the first item returned in the response.
+	Offset pulumi.Float64PtrInput `pulumi:"offset"`
+	// URL relative to the previous item in the response.
+	Previous pulumi.StringInput `pulumi:"previous"`
+	// The total number of metro returned
+	Total pulumi.Float64Input `pulumi:"total"`
+}
+
+func (GetMetrosPaginationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetrosPagination)(nil)).Elem()
+}
+
+func (i GetMetrosPaginationArgs) ToGetMetrosPaginationOutput() GetMetrosPaginationOutput {
+	return i.ToGetMetrosPaginationOutputWithContext(context.Background())
+}
+
+func (i GetMetrosPaginationArgs) ToGetMetrosPaginationOutputWithContext(ctx context.Context) GetMetrosPaginationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetrosPaginationOutput)
+}
+
+type GetMetrosPaginationOutput struct{ *pulumi.OutputState }
+
+func (GetMetrosPaginationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetrosPagination)(nil)).Elem()
+}
+
+func (o GetMetrosPaginationOutput) ToGetMetrosPaginationOutput() GetMetrosPaginationOutput {
+	return o
+}
+
+func (o GetMetrosPaginationOutput) ToGetMetrosPaginationOutputWithContext(ctx context.Context) GetMetrosPaginationOutput {
+	return o
+}
+
+// Maximum number of search results returned per page.
+func (o GetMetrosPaginationOutput) Limit() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetMetrosPagination) *float64 { return v.Limit }).(pulumi.Float64PtrOutput)
+}
+
+// URL relative to the next item in the response.
+func (o GetMetrosPaginationOutput) Next() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetrosPagination) string { return v.Next }).(pulumi.StringOutput)
+}
+
+// Index of the first item returned in the response.
+func (o GetMetrosPaginationOutput) Offset() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetMetrosPagination) *float64 { return v.Offset }).(pulumi.Float64PtrOutput)
+}
+
+// URL relative to the previous item in the response.
+func (o GetMetrosPaginationOutput) Previous() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetrosPagination) string { return v.Previous }).(pulumi.StringOutput)
+}
+
+// The total number of metro returned
+func (o GetMetrosPaginationOutput) Total() pulumi.Float64Output {
+	return o.ApplyT(func(v GetMetrosPagination) float64 { return v.Total }).(pulumi.Float64Output)
 }
 
 type GetNetworkChange struct {
@@ -58147,6 +59436,678 @@ func (o GetServiceTokensPaginationPtrOutput) Total() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type GetStreamChangeLog struct {
+	// User name of creator of the stream resource
+	CreatedBy string `pulumi:"createdBy"`
+	// Email of creator of the stream resource
+	CreatedByEmail string `pulumi:"createdByEmail"`
+	// Legal name of creator of the stream resource
+	CreatedByFullName string `pulumi:"createdByFullName"`
+	// Creation time of the stream resource
+	CreatedDateTime string `pulumi:"createdDateTime"`
+	// User name of deleter of the stream resource
+	DeletedBy string `pulumi:"deletedBy"`
+	// Email of deleter of the stream resource
+	DeletedByEmail string `pulumi:"deletedByEmail"`
+	// Legal name of deleter of the stream resource
+	DeletedByFullName string `pulumi:"deletedByFullName"`
+	// Deletion time of the stream resource
+	DeletedDateTime string `pulumi:"deletedDateTime"`
+	// User name of last updater of the stream resource
+	UpdatedBy string `pulumi:"updatedBy"`
+	// Email of last updater of the stream resource
+	UpdatedByEmail string `pulumi:"updatedByEmail"`
+	// Legal name of last updater of the stream resource
+	UpdatedByFullName string `pulumi:"updatedByFullName"`
+	// Last update time of the stream resource
+	UpdatedDateTime string `pulumi:"updatedDateTime"`
+}
+
+// GetStreamChangeLogInput is an input type that accepts GetStreamChangeLogArgs and GetStreamChangeLogOutput values.
+// You can construct a concrete instance of `GetStreamChangeLogInput` via:
+//
+//	GetStreamChangeLogArgs{...}
+type GetStreamChangeLogInput interface {
+	pulumi.Input
+
+	ToGetStreamChangeLogOutput() GetStreamChangeLogOutput
+	ToGetStreamChangeLogOutputWithContext(context.Context) GetStreamChangeLogOutput
+}
+
+type GetStreamChangeLogArgs struct {
+	// User name of creator of the stream resource
+	CreatedBy pulumi.StringInput `pulumi:"createdBy"`
+	// Email of creator of the stream resource
+	CreatedByEmail pulumi.StringInput `pulumi:"createdByEmail"`
+	// Legal name of creator of the stream resource
+	CreatedByFullName pulumi.StringInput `pulumi:"createdByFullName"`
+	// Creation time of the stream resource
+	CreatedDateTime pulumi.StringInput `pulumi:"createdDateTime"`
+	// User name of deleter of the stream resource
+	DeletedBy pulumi.StringInput `pulumi:"deletedBy"`
+	// Email of deleter of the stream resource
+	DeletedByEmail pulumi.StringInput `pulumi:"deletedByEmail"`
+	// Legal name of deleter of the stream resource
+	DeletedByFullName pulumi.StringInput `pulumi:"deletedByFullName"`
+	// Deletion time of the stream resource
+	DeletedDateTime pulumi.StringInput `pulumi:"deletedDateTime"`
+	// User name of last updater of the stream resource
+	UpdatedBy pulumi.StringInput `pulumi:"updatedBy"`
+	// Email of last updater of the stream resource
+	UpdatedByEmail pulumi.StringInput `pulumi:"updatedByEmail"`
+	// Legal name of last updater of the stream resource
+	UpdatedByFullName pulumi.StringInput `pulumi:"updatedByFullName"`
+	// Last update time of the stream resource
+	UpdatedDateTime pulumi.StringInput `pulumi:"updatedDateTime"`
+}
+
+func (GetStreamChangeLogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamChangeLog)(nil)).Elem()
+}
+
+func (i GetStreamChangeLogArgs) ToGetStreamChangeLogOutput() GetStreamChangeLogOutput {
+	return i.ToGetStreamChangeLogOutputWithContext(context.Background())
+}
+
+func (i GetStreamChangeLogArgs) ToGetStreamChangeLogOutputWithContext(ctx context.Context) GetStreamChangeLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStreamChangeLogOutput)
+}
+
+type GetStreamChangeLogOutput struct{ *pulumi.OutputState }
+
+func (GetStreamChangeLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamChangeLog)(nil)).Elem()
+}
+
+func (o GetStreamChangeLogOutput) ToGetStreamChangeLogOutput() GetStreamChangeLogOutput {
+	return o
+}
+
+func (o GetStreamChangeLogOutput) ToGetStreamChangeLogOutputWithContext(ctx context.Context) GetStreamChangeLogOutput {
+	return o
+}
+
+// User name of creator of the stream resource
+func (o GetStreamChangeLogOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamChangeLog) string { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// Email of creator of the stream resource
+func (o GetStreamChangeLogOutput) CreatedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamChangeLog) string { return v.CreatedByEmail }).(pulumi.StringOutput)
+}
+
+// Legal name of creator of the stream resource
+func (o GetStreamChangeLogOutput) CreatedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamChangeLog) string { return v.CreatedByFullName }).(pulumi.StringOutput)
+}
+
+// Creation time of the stream resource
+func (o GetStreamChangeLogOutput) CreatedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamChangeLog) string { return v.CreatedDateTime }).(pulumi.StringOutput)
+}
+
+// User name of deleter of the stream resource
+func (o GetStreamChangeLogOutput) DeletedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamChangeLog) string { return v.DeletedBy }).(pulumi.StringOutput)
+}
+
+// Email of deleter of the stream resource
+func (o GetStreamChangeLogOutput) DeletedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamChangeLog) string { return v.DeletedByEmail }).(pulumi.StringOutput)
+}
+
+// Legal name of deleter of the stream resource
+func (o GetStreamChangeLogOutput) DeletedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamChangeLog) string { return v.DeletedByFullName }).(pulumi.StringOutput)
+}
+
+// Deletion time of the stream resource
+func (o GetStreamChangeLogOutput) DeletedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamChangeLog) string { return v.DeletedDateTime }).(pulumi.StringOutput)
+}
+
+// User name of last updater of the stream resource
+func (o GetStreamChangeLogOutput) UpdatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamChangeLog) string { return v.UpdatedBy }).(pulumi.StringOutput)
+}
+
+// Email of last updater of the stream resource
+func (o GetStreamChangeLogOutput) UpdatedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamChangeLog) string { return v.UpdatedByEmail }).(pulumi.StringOutput)
+}
+
+// Legal name of last updater of the stream resource
+func (o GetStreamChangeLogOutput) UpdatedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamChangeLog) string { return v.UpdatedByFullName }).(pulumi.StringOutput)
+}
+
+// Last update time of the stream resource
+func (o GetStreamChangeLogOutput) UpdatedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamChangeLog) string { return v.UpdatedDateTime }).(pulumi.StringOutput)
+}
+
+type GetStreamProject struct {
+	// Equinix Subscriber-assigned project ID
+	ProjectId string `pulumi:"projectId"`
+}
+
+// GetStreamProjectInput is an input type that accepts GetStreamProjectArgs and GetStreamProjectOutput values.
+// You can construct a concrete instance of `GetStreamProjectInput` via:
+//
+//	GetStreamProjectArgs{...}
+type GetStreamProjectInput interface {
+	pulumi.Input
+
+	ToGetStreamProjectOutput() GetStreamProjectOutput
+	ToGetStreamProjectOutputWithContext(context.Context) GetStreamProjectOutput
+}
+
+type GetStreamProjectArgs struct {
+	// Equinix Subscriber-assigned project ID
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+}
+
+func (GetStreamProjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamProject)(nil)).Elem()
+}
+
+func (i GetStreamProjectArgs) ToGetStreamProjectOutput() GetStreamProjectOutput {
+	return i.ToGetStreamProjectOutputWithContext(context.Background())
+}
+
+func (i GetStreamProjectArgs) ToGetStreamProjectOutputWithContext(ctx context.Context) GetStreamProjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStreamProjectOutput)
+}
+
+type GetStreamProjectOutput struct{ *pulumi.OutputState }
+
+func (GetStreamProjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamProject)(nil)).Elem()
+}
+
+func (o GetStreamProjectOutput) ToGetStreamProjectOutput() GetStreamProjectOutput {
+	return o
+}
+
+func (o GetStreamProjectOutput) ToGetStreamProjectOutputWithContext(ctx context.Context) GetStreamProjectOutput {
+	return o
+}
+
+// Equinix Subscriber-assigned project ID
+func (o GetStreamProjectOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamProject) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+type GetStreamsData struct {
+	// Count of the streaming assets attached to the stream resource
+	AssetsCount float64 `pulumi:"assetsCount"`
+	// Details of the last change on the stream resource
+	ChangeLog GetStreamsDataChangeLog `pulumi:"changeLog"`
+	// Customer-provided description of the stream resource
+	Description string `pulumi:"description"`
+	// Equinix auto generated URI to the stream resource in Equinix Portal
+	Href string `pulumi:"href"`
+	// Customer-provided name of the stream resource
+	Name string `pulumi:"name"`
+	// Equinix Project attribute object
+	Project GetStreamsDataProject `pulumi:"project"`
+	// Value representing provisioning status for the stream resource
+	State string `pulumi:"state"`
+	// Count of the client subscriptions on the stream resource
+	StreamSubscriptionsCount float64 `pulumi:"streamSubscriptionsCount"`
+	// Equinix defined Streaming Type
+	Type string `pulumi:"type"`
+	// Equinix-assigned unique id for the stream resource
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetStreamsDataInput is an input type that accepts GetStreamsDataArgs and GetStreamsDataOutput values.
+// You can construct a concrete instance of `GetStreamsDataInput` via:
+//
+//	GetStreamsDataArgs{...}
+type GetStreamsDataInput interface {
+	pulumi.Input
+
+	ToGetStreamsDataOutput() GetStreamsDataOutput
+	ToGetStreamsDataOutputWithContext(context.Context) GetStreamsDataOutput
+}
+
+type GetStreamsDataArgs struct {
+	// Count of the streaming assets attached to the stream resource
+	AssetsCount pulumi.Float64Input `pulumi:"assetsCount"`
+	// Details of the last change on the stream resource
+	ChangeLog GetStreamsDataChangeLogInput `pulumi:"changeLog"`
+	// Customer-provided description of the stream resource
+	Description pulumi.StringInput `pulumi:"description"`
+	// Equinix auto generated URI to the stream resource in Equinix Portal
+	Href pulumi.StringInput `pulumi:"href"`
+	// Customer-provided name of the stream resource
+	Name pulumi.StringInput `pulumi:"name"`
+	// Equinix Project attribute object
+	Project GetStreamsDataProjectInput `pulumi:"project"`
+	// Value representing provisioning status for the stream resource
+	State pulumi.StringInput `pulumi:"state"`
+	// Count of the client subscriptions on the stream resource
+	StreamSubscriptionsCount pulumi.Float64Input `pulumi:"streamSubscriptionsCount"`
+	// Equinix defined Streaming Type
+	Type pulumi.StringInput `pulumi:"type"`
+	// Equinix-assigned unique id for the stream resource
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetStreamsDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamsData)(nil)).Elem()
+}
+
+func (i GetStreamsDataArgs) ToGetStreamsDataOutput() GetStreamsDataOutput {
+	return i.ToGetStreamsDataOutputWithContext(context.Background())
+}
+
+func (i GetStreamsDataArgs) ToGetStreamsDataOutputWithContext(ctx context.Context) GetStreamsDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStreamsDataOutput)
+}
+
+// GetStreamsDataArrayInput is an input type that accepts GetStreamsDataArray and GetStreamsDataArrayOutput values.
+// You can construct a concrete instance of `GetStreamsDataArrayInput` via:
+//
+//	GetStreamsDataArray{ GetStreamsDataArgs{...} }
+type GetStreamsDataArrayInput interface {
+	pulumi.Input
+
+	ToGetStreamsDataArrayOutput() GetStreamsDataArrayOutput
+	ToGetStreamsDataArrayOutputWithContext(context.Context) GetStreamsDataArrayOutput
+}
+
+type GetStreamsDataArray []GetStreamsDataInput
+
+func (GetStreamsDataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetStreamsData)(nil)).Elem()
+}
+
+func (i GetStreamsDataArray) ToGetStreamsDataArrayOutput() GetStreamsDataArrayOutput {
+	return i.ToGetStreamsDataArrayOutputWithContext(context.Background())
+}
+
+func (i GetStreamsDataArray) ToGetStreamsDataArrayOutputWithContext(ctx context.Context) GetStreamsDataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStreamsDataArrayOutput)
+}
+
+type GetStreamsDataOutput struct{ *pulumi.OutputState }
+
+func (GetStreamsDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamsData)(nil)).Elem()
+}
+
+func (o GetStreamsDataOutput) ToGetStreamsDataOutput() GetStreamsDataOutput {
+	return o
+}
+
+func (o GetStreamsDataOutput) ToGetStreamsDataOutputWithContext(ctx context.Context) GetStreamsDataOutput {
+	return o
+}
+
+// Count of the streaming assets attached to the stream resource
+func (o GetStreamsDataOutput) AssetsCount() pulumi.Float64Output {
+	return o.ApplyT(func(v GetStreamsData) float64 { return v.AssetsCount }).(pulumi.Float64Output)
+}
+
+// Details of the last change on the stream resource
+func (o GetStreamsDataOutput) ChangeLog() GetStreamsDataChangeLogOutput {
+	return o.ApplyT(func(v GetStreamsData) GetStreamsDataChangeLog { return v.ChangeLog }).(GetStreamsDataChangeLogOutput)
+}
+
+// Customer-provided description of the stream resource
+func (o GetStreamsDataOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamsData) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Equinix auto generated URI to the stream resource in Equinix Portal
+func (o GetStreamsDataOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamsData) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// Customer-provided name of the stream resource
+func (o GetStreamsDataOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamsData) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Equinix Project attribute object
+func (o GetStreamsDataOutput) Project() GetStreamsDataProjectOutput {
+	return o.ApplyT(func(v GetStreamsData) GetStreamsDataProject { return v.Project }).(GetStreamsDataProjectOutput)
+}
+
+// Value representing provisioning status for the stream resource
+func (o GetStreamsDataOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamsData) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Count of the client subscriptions on the stream resource
+func (o GetStreamsDataOutput) StreamSubscriptionsCount() pulumi.Float64Output {
+	return o.ApplyT(func(v GetStreamsData) float64 { return v.StreamSubscriptionsCount }).(pulumi.Float64Output)
+}
+
+// Equinix defined Streaming Type
+func (o GetStreamsDataOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamsData) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Equinix-assigned unique id for the stream resource
+func (o GetStreamsDataOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamsData) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type GetStreamsDataArrayOutput struct{ *pulumi.OutputState }
+
+func (GetStreamsDataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetStreamsData)(nil)).Elem()
+}
+
+func (o GetStreamsDataArrayOutput) ToGetStreamsDataArrayOutput() GetStreamsDataArrayOutput {
+	return o
+}
+
+func (o GetStreamsDataArrayOutput) ToGetStreamsDataArrayOutputWithContext(ctx context.Context) GetStreamsDataArrayOutput {
+	return o
+}
+
+func (o GetStreamsDataArrayOutput) Index(i pulumi.IntInput) GetStreamsDataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetStreamsData {
+		return vs[0].([]GetStreamsData)[vs[1].(int)]
+	}).(GetStreamsDataOutput)
+}
+
+type GetStreamsDataChangeLog struct {
+	// User name of creator of the stream resource
+	CreatedBy string `pulumi:"createdBy"`
+	// Email of creator of the stream resource
+	CreatedByEmail string `pulumi:"createdByEmail"`
+	// Legal name of creator of the stream resource
+	CreatedByFullName string `pulumi:"createdByFullName"`
+	// Creation time of the stream resource
+	CreatedDateTime string `pulumi:"createdDateTime"`
+	// User name of deleter of the stream resource
+	DeletedBy string `pulumi:"deletedBy"`
+	// Email of deleter of the stream resource
+	DeletedByEmail string `pulumi:"deletedByEmail"`
+	// Legal name of deleter of the stream resource
+	DeletedByFullName string `pulumi:"deletedByFullName"`
+	// Deletion time of the stream resource
+	DeletedDateTime string `pulumi:"deletedDateTime"`
+	// User name of last updater of the stream resource
+	UpdatedBy string `pulumi:"updatedBy"`
+	// Email of last updater of the stream resource
+	UpdatedByEmail string `pulumi:"updatedByEmail"`
+	// Legal name of last updater of the stream resource
+	UpdatedByFullName string `pulumi:"updatedByFullName"`
+	// Last update time of the stream resource
+	UpdatedDateTime string `pulumi:"updatedDateTime"`
+}
+
+// GetStreamsDataChangeLogInput is an input type that accepts GetStreamsDataChangeLogArgs and GetStreamsDataChangeLogOutput values.
+// You can construct a concrete instance of `GetStreamsDataChangeLogInput` via:
+//
+//	GetStreamsDataChangeLogArgs{...}
+type GetStreamsDataChangeLogInput interface {
+	pulumi.Input
+
+	ToGetStreamsDataChangeLogOutput() GetStreamsDataChangeLogOutput
+	ToGetStreamsDataChangeLogOutputWithContext(context.Context) GetStreamsDataChangeLogOutput
+}
+
+type GetStreamsDataChangeLogArgs struct {
+	// User name of creator of the stream resource
+	CreatedBy pulumi.StringInput `pulumi:"createdBy"`
+	// Email of creator of the stream resource
+	CreatedByEmail pulumi.StringInput `pulumi:"createdByEmail"`
+	// Legal name of creator of the stream resource
+	CreatedByFullName pulumi.StringInput `pulumi:"createdByFullName"`
+	// Creation time of the stream resource
+	CreatedDateTime pulumi.StringInput `pulumi:"createdDateTime"`
+	// User name of deleter of the stream resource
+	DeletedBy pulumi.StringInput `pulumi:"deletedBy"`
+	// Email of deleter of the stream resource
+	DeletedByEmail pulumi.StringInput `pulumi:"deletedByEmail"`
+	// Legal name of deleter of the stream resource
+	DeletedByFullName pulumi.StringInput `pulumi:"deletedByFullName"`
+	// Deletion time of the stream resource
+	DeletedDateTime pulumi.StringInput `pulumi:"deletedDateTime"`
+	// User name of last updater of the stream resource
+	UpdatedBy pulumi.StringInput `pulumi:"updatedBy"`
+	// Email of last updater of the stream resource
+	UpdatedByEmail pulumi.StringInput `pulumi:"updatedByEmail"`
+	// Legal name of last updater of the stream resource
+	UpdatedByFullName pulumi.StringInput `pulumi:"updatedByFullName"`
+	// Last update time of the stream resource
+	UpdatedDateTime pulumi.StringInput `pulumi:"updatedDateTime"`
+}
+
+func (GetStreamsDataChangeLogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamsDataChangeLog)(nil)).Elem()
+}
+
+func (i GetStreamsDataChangeLogArgs) ToGetStreamsDataChangeLogOutput() GetStreamsDataChangeLogOutput {
+	return i.ToGetStreamsDataChangeLogOutputWithContext(context.Background())
+}
+
+func (i GetStreamsDataChangeLogArgs) ToGetStreamsDataChangeLogOutputWithContext(ctx context.Context) GetStreamsDataChangeLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStreamsDataChangeLogOutput)
+}
+
+type GetStreamsDataChangeLogOutput struct{ *pulumi.OutputState }
+
+func (GetStreamsDataChangeLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamsDataChangeLog)(nil)).Elem()
+}
+
+func (o GetStreamsDataChangeLogOutput) ToGetStreamsDataChangeLogOutput() GetStreamsDataChangeLogOutput {
+	return o
+}
+
+func (o GetStreamsDataChangeLogOutput) ToGetStreamsDataChangeLogOutputWithContext(ctx context.Context) GetStreamsDataChangeLogOutput {
+	return o
+}
+
+// User name of creator of the stream resource
+func (o GetStreamsDataChangeLogOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamsDataChangeLog) string { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// Email of creator of the stream resource
+func (o GetStreamsDataChangeLogOutput) CreatedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamsDataChangeLog) string { return v.CreatedByEmail }).(pulumi.StringOutput)
+}
+
+// Legal name of creator of the stream resource
+func (o GetStreamsDataChangeLogOutput) CreatedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamsDataChangeLog) string { return v.CreatedByFullName }).(pulumi.StringOutput)
+}
+
+// Creation time of the stream resource
+func (o GetStreamsDataChangeLogOutput) CreatedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamsDataChangeLog) string { return v.CreatedDateTime }).(pulumi.StringOutput)
+}
+
+// User name of deleter of the stream resource
+func (o GetStreamsDataChangeLogOutput) DeletedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamsDataChangeLog) string { return v.DeletedBy }).(pulumi.StringOutput)
+}
+
+// Email of deleter of the stream resource
+func (o GetStreamsDataChangeLogOutput) DeletedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamsDataChangeLog) string { return v.DeletedByEmail }).(pulumi.StringOutput)
+}
+
+// Legal name of deleter of the stream resource
+func (o GetStreamsDataChangeLogOutput) DeletedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamsDataChangeLog) string { return v.DeletedByFullName }).(pulumi.StringOutput)
+}
+
+// Deletion time of the stream resource
+func (o GetStreamsDataChangeLogOutput) DeletedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamsDataChangeLog) string { return v.DeletedDateTime }).(pulumi.StringOutput)
+}
+
+// User name of last updater of the stream resource
+func (o GetStreamsDataChangeLogOutput) UpdatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamsDataChangeLog) string { return v.UpdatedBy }).(pulumi.StringOutput)
+}
+
+// Email of last updater of the stream resource
+func (o GetStreamsDataChangeLogOutput) UpdatedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamsDataChangeLog) string { return v.UpdatedByEmail }).(pulumi.StringOutput)
+}
+
+// Legal name of last updater of the stream resource
+func (o GetStreamsDataChangeLogOutput) UpdatedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamsDataChangeLog) string { return v.UpdatedByFullName }).(pulumi.StringOutput)
+}
+
+// Last update time of the stream resource
+func (o GetStreamsDataChangeLogOutput) UpdatedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamsDataChangeLog) string { return v.UpdatedDateTime }).(pulumi.StringOutput)
+}
+
+type GetStreamsDataProject struct {
+	// Equinix Subscriber-assigned project ID
+	ProjectId string `pulumi:"projectId"`
+}
+
+// GetStreamsDataProjectInput is an input type that accepts GetStreamsDataProjectArgs and GetStreamsDataProjectOutput values.
+// You can construct a concrete instance of `GetStreamsDataProjectInput` via:
+//
+//	GetStreamsDataProjectArgs{...}
+type GetStreamsDataProjectInput interface {
+	pulumi.Input
+
+	ToGetStreamsDataProjectOutput() GetStreamsDataProjectOutput
+	ToGetStreamsDataProjectOutputWithContext(context.Context) GetStreamsDataProjectOutput
+}
+
+type GetStreamsDataProjectArgs struct {
+	// Equinix Subscriber-assigned project ID
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+}
+
+func (GetStreamsDataProjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamsDataProject)(nil)).Elem()
+}
+
+func (i GetStreamsDataProjectArgs) ToGetStreamsDataProjectOutput() GetStreamsDataProjectOutput {
+	return i.ToGetStreamsDataProjectOutputWithContext(context.Background())
+}
+
+func (i GetStreamsDataProjectArgs) ToGetStreamsDataProjectOutputWithContext(ctx context.Context) GetStreamsDataProjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStreamsDataProjectOutput)
+}
+
+type GetStreamsDataProjectOutput struct{ *pulumi.OutputState }
+
+func (GetStreamsDataProjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamsDataProject)(nil)).Elem()
+}
+
+func (o GetStreamsDataProjectOutput) ToGetStreamsDataProjectOutput() GetStreamsDataProjectOutput {
+	return o
+}
+
+func (o GetStreamsDataProjectOutput) ToGetStreamsDataProjectOutputWithContext(ctx context.Context) GetStreamsDataProjectOutput {
+	return o
+}
+
+// Equinix Subscriber-assigned project ID
+func (o GetStreamsDataProjectOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamsDataProject) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+type GetStreamsPagination struct {
+	// Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+	Limit float64 `pulumi:"limit"`
+	// The URL relative to the next item in the response
+	Next string `pulumi:"next"`
+	// Index of the first item returned in the response. The default is 0
+	Offset float64 `pulumi:"offset"`
+	// The URL relative to the previous item in the response
+	Previous string `pulumi:"previous"`
+	// The total number of streams available to the user making the request
+	Total float64 `pulumi:"total"`
+}
+
+// GetStreamsPaginationInput is an input type that accepts GetStreamsPaginationArgs and GetStreamsPaginationOutput values.
+// You can construct a concrete instance of `GetStreamsPaginationInput` via:
+//
+//	GetStreamsPaginationArgs{...}
+type GetStreamsPaginationInput interface {
+	pulumi.Input
+
+	ToGetStreamsPaginationOutput() GetStreamsPaginationOutput
+	ToGetStreamsPaginationOutputWithContext(context.Context) GetStreamsPaginationOutput
+}
+
+type GetStreamsPaginationArgs struct {
+	// Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+	Limit pulumi.Float64Input `pulumi:"limit"`
+	// The URL relative to the next item in the response
+	Next pulumi.StringInput `pulumi:"next"`
+	// Index of the first item returned in the response. The default is 0
+	Offset pulumi.Float64Input `pulumi:"offset"`
+	// The URL relative to the previous item in the response
+	Previous pulumi.StringInput `pulumi:"previous"`
+	// The total number of streams available to the user making the request
+	Total pulumi.Float64Input `pulumi:"total"`
+}
+
+func (GetStreamsPaginationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamsPagination)(nil)).Elem()
+}
+
+func (i GetStreamsPaginationArgs) ToGetStreamsPaginationOutput() GetStreamsPaginationOutput {
+	return i.ToGetStreamsPaginationOutputWithContext(context.Background())
+}
+
+func (i GetStreamsPaginationArgs) ToGetStreamsPaginationOutputWithContext(ctx context.Context) GetStreamsPaginationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStreamsPaginationOutput)
+}
+
+type GetStreamsPaginationOutput struct{ *pulumi.OutputState }
+
+func (GetStreamsPaginationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamsPagination)(nil)).Elem()
+}
+
+func (o GetStreamsPaginationOutput) ToGetStreamsPaginationOutput() GetStreamsPaginationOutput {
+	return o
+}
+
+func (o GetStreamsPaginationOutput) ToGetStreamsPaginationOutputWithContext(ctx context.Context) GetStreamsPaginationOutput {
+	return o
+}
+
+// Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+func (o GetStreamsPaginationOutput) Limit() pulumi.Float64Output {
+	return o.ApplyT(func(v GetStreamsPagination) float64 { return v.Limit }).(pulumi.Float64Output)
+}
+
+// The URL relative to the next item in the response
+func (o GetStreamsPaginationOutput) Next() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamsPagination) string { return v.Next }).(pulumi.StringOutput)
+}
+
+// Index of the first item returned in the response. The default is 0
+func (o GetStreamsPaginationOutput) Offset() pulumi.Float64Output {
+	return o.ApplyT(func(v GetStreamsPagination) float64 { return v.Offset }).(pulumi.Float64Output)
+}
+
+// The URL relative to the previous item in the response
+func (o GetStreamsPaginationOutput) Previous() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamsPagination) string { return v.Previous }).(pulumi.StringOutput)
+}
+
+// The total number of streams available to the user making the request
+func (o GetStreamsPaginationOutput) Total() pulumi.Float64Output {
+	return o.ApplyT(func(v GetStreamsPagination) float64 { return v.Total }).(pulumi.Float64Output)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudRouterAccountInput)(nil)).Elem(), CloudRouterAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudRouterAccountPtrInput)(nil)).Elem(), CloudRouterAccountArgs{})
@@ -58366,6 +60327,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayInput)(nil)).Elem(), ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceInput)(nil)).Elem(), ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrInput)(nil)).Elem(), ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamChangeLogInput)(nil)).Elem(), StreamChangeLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamChangeLogPtrInput)(nil)).Elem(), StreamChangeLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamProjectInput)(nil)).Elem(), StreamProjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamProjectPtrInput)(nil)).Elem(), StreamProjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamTimeoutsInput)(nil)).Elem(), StreamTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamTimeoutsPtrInput)(nil)).Elem(), StreamTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudRouterAccountInput)(nil)).Elem(), GetCloudRouterAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudRouterAccountArrayInput)(nil)).Elem(), GetCloudRouterAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudRouterChangeLogInput)(nil)).Elem(), GetCloudRouterChangeLogArgs{})
@@ -58581,6 +60548,15 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMarketplaceSubscriptionEntitlementAssetPackageInput)(nil)).Elem(), GetMarketplaceSubscriptionEntitlementAssetPackageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMarketplaceSubscriptionEntitlementAssetPackageArrayInput)(nil)).Elem(), GetMarketplaceSubscriptionEntitlementAssetPackageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMarketplaceSubscriptionTrialInput)(nil)).Elem(), GetMarketplaceSubscriptionTrialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetroConnectedMetroInput)(nil)).Elem(), GetMetroConnectedMetroArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetroConnectedMetroArrayInput)(nil)).Elem(), GetMetroConnectedMetroArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetroGeoCoordinatesInput)(nil)).Elem(), GetMetroGeoCoordinatesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetrosDataInput)(nil)).Elem(), GetMetrosDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetrosDataArrayInput)(nil)).Elem(), GetMetrosDataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetrosDataConnectedMetroInput)(nil)).Elem(), GetMetrosDataConnectedMetroArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetrosDataConnectedMetroArrayInput)(nil)).Elem(), GetMetrosDataConnectedMetroArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetrosDataGeoCoordinatesInput)(nil)).Elem(), GetMetrosDataGeoCoordinatesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetrosPaginationInput)(nil)).Elem(), GetMetrosPaginationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkChangeInput)(nil)).Elem(), GetNetworkChangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkChangeLogInput)(nil)).Elem(), GetNetworkChangeLogArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkLocationInput)(nil)).Elem(), GetNetworkLocationArgs{})
@@ -58845,6 +60821,13 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensFilterArrayInput)(nil)).Elem(), GetServiceTokensFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensPaginationInput)(nil)).Elem(), GetServiceTokensPaginationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensPaginationPtrInput)(nil)).Elem(), GetServiceTokensPaginationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamChangeLogInput)(nil)).Elem(), GetStreamChangeLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamProjectInput)(nil)).Elem(), GetStreamProjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamsDataInput)(nil)).Elem(), GetStreamsDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamsDataArrayInput)(nil)).Elem(), GetStreamsDataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamsDataChangeLogInput)(nil)).Elem(), GetStreamsDataChangeLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamsDataProjectInput)(nil)).Elem(), GetStreamsDataProjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamsPaginationInput)(nil)).Elem(), GetStreamsPaginationArgs{})
 	pulumi.RegisterOutputType(CloudRouterAccountOutput{})
 	pulumi.RegisterOutputType(CloudRouterAccountPtrOutput{})
 	pulumi.RegisterOutputType(CloudRouterChangeLogOutput{})
@@ -59063,6 +61046,12 @@ func init() {
 	pulumi.RegisterOutputType(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput{})
 	pulumi.RegisterOutputType(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput{})
 	pulumi.RegisterOutputType(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput{})
+	pulumi.RegisterOutputType(StreamChangeLogOutput{})
+	pulumi.RegisterOutputType(StreamChangeLogPtrOutput{})
+	pulumi.RegisterOutputType(StreamProjectOutput{})
+	pulumi.RegisterOutputType(StreamProjectPtrOutput{})
+	pulumi.RegisterOutputType(StreamTimeoutsOutput{})
+	pulumi.RegisterOutputType(StreamTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(GetCloudRouterAccountOutput{})
 	pulumi.RegisterOutputType(GetCloudRouterAccountArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudRouterChangeLogOutput{})
@@ -59278,6 +61267,15 @@ func init() {
 	pulumi.RegisterOutputType(GetMarketplaceSubscriptionEntitlementAssetPackageOutput{})
 	pulumi.RegisterOutputType(GetMarketplaceSubscriptionEntitlementAssetPackageArrayOutput{})
 	pulumi.RegisterOutputType(GetMarketplaceSubscriptionTrialOutput{})
+	pulumi.RegisterOutputType(GetMetroConnectedMetroOutput{})
+	pulumi.RegisterOutputType(GetMetroConnectedMetroArrayOutput{})
+	pulumi.RegisterOutputType(GetMetroGeoCoordinatesOutput{})
+	pulumi.RegisterOutputType(GetMetrosDataOutput{})
+	pulumi.RegisterOutputType(GetMetrosDataArrayOutput{})
+	pulumi.RegisterOutputType(GetMetrosDataConnectedMetroOutput{})
+	pulumi.RegisterOutputType(GetMetrosDataConnectedMetroArrayOutput{})
+	pulumi.RegisterOutputType(GetMetrosDataGeoCoordinatesOutput{})
+	pulumi.RegisterOutputType(GetMetrosPaginationOutput{})
 	pulumi.RegisterOutputType(GetNetworkChangeOutput{})
 	pulumi.RegisterOutputType(GetNetworkChangeLogOutput{})
 	pulumi.RegisterOutputType(GetNetworkLocationOutput{})
@@ -59542,4 +61540,11 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceTokensFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceTokensPaginationOutput{})
 	pulumi.RegisterOutputType(GetServiceTokensPaginationPtrOutput{})
+	pulumi.RegisterOutputType(GetStreamChangeLogOutput{})
+	pulumi.RegisterOutputType(GetStreamProjectOutput{})
+	pulumi.RegisterOutputType(GetStreamsDataOutput{})
+	pulumi.RegisterOutputType(GetStreamsDataArrayOutput{})
+	pulumi.RegisterOutputType(GetStreamsDataChangeLogOutput{})
+	pulumi.RegisterOutputType(GetStreamsDataProjectOutput{})
+	pulumi.RegisterOutputType(GetStreamsPaginationOutput{})
 }

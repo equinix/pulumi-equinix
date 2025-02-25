@@ -3883,6 +3883,110 @@
                 }
             }
         },
+        "equinix:fabric/StreamChangeLog:StreamChangeLog": {
+            "properties": {
+                "createdBy": {
+                    "type": "string",
+                    "description": "User name of creator of the stream resource\n"
+                },
+                "createdByEmail": {
+                    "type": "string",
+                    "description": "Email of creator of the stream resource\n"
+                },
+                "createdByFullName": {
+                    "type": "string",
+                    "description": "Legal name of creator of the stream resource\n"
+                },
+                "createdDateTime": {
+                    "type": "string",
+                    "description": "Creation time of the stream resource\n"
+                },
+                "deletedBy": {
+                    "type": "string",
+                    "description": "User name of deleter of the stream resource\n"
+                },
+                "deletedByEmail": {
+                    "type": "string",
+                    "description": "Email of deleter of the stream resource\n"
+                },
+                "deletedByFullName": {
+                    "type": "string",
+                    "description": "Legal name of deleter of the stream resource\n"
+                },
+                "deletedDateTime": {
+                    "type": "string",
+                    "description": "Deletion time of the stream resource\n"
+                },
+                "updatedBy": {
+                    "type": "string",
+                    "description": "User name of last updater of the stream resource\n"
+                },
+                "updatedByEmail": {
+                    "type": "string",
+                    "description": "Email of last updater of the stream resource\n"
+                },
+                "updatedByFullName": {
+                    "type": "string",
+                    "description": "Legal name of last updater of the stream resource\n"
+                },
+                "updatedDateTime": {
+                    "type": "string",
+                    "description": "Last update time of the stream resource\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "createdBy",
+                        "createdByEmail",
+                        "createdByFullName",
+                        "createdDateTime",
+                        "deletedBy",
+                        "deletedByEmail",
+                        "deletedByFullName",
+                        "deletedDateTime",
+                        "updatedBy",
+                        "updatedByEmail",
+                        "updatedByFullName",
+                        "updatedDateTime"
+                    ]
+                }
+            }
+        },
+        "equinix:fabric/StreamProject:StreamProject": {
+            "properties": {
+                "projectId": {
+                    "type": "string",
+                    "description": "Equinix Subscriber-assigned project ID\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "projectId"
+            ]
+        },
+        "equinix:fabric/StreamTimeouts:StreamTimeouts": {
+            "properties": {
+                "create": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                },
+                "delete": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.\n"
+                },
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.\n"
+                },
+                "update": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                }
+            },
+            "type": "object"
+        },
         "equinix:fabric/accessPointLinkProtocolType:AccessPointLinkProtocolType": {
             "type": "string",
             "enum": [
@@ -7689,6 +7793,209 @@
             "type": "object",
             "required": [
                 "enabled"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getMetroConnectedMetro:getMetroConnectedMetro": {
+            "properties": {
+                "avgLatency": {
+                    "type": "number"
+                },
+                "code": {
+                    "type": "string"
+                },
+                "href": {
+                    "type": "string"
+                },
+                "remoteVcBandwidthMax": {
+                    "type": "integer"
+                }
+            },
+            "type": "object",
+            "required": [
+                "avgLatency",
+                "code",
+                "href",
+                "remoteVcBandwidthMax"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getMetroGeoCoordinates:getMetroGeoCoordinates": {
+            "properties": {
+                "latitude": {
+                    "type": "number",
+                    "description": "Latitude of the Metro\n"
+                },
+                "longitude": {
+                    "type": "number",
+                    "description": "Longitude of the Metro\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "latitude",
+                "longitude"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getMetrosData:getMetrosData": {
+            "properties": {
+                "code": {
+                    "type": "string",
+                    "description": "Code assigned to an Equinix IBX data center in a specified metropolitan area\n"
+                },
+                "connectedMetros": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/equinix:fabric/getMetrosDataConnectedMetro:getMetrosDataConnectedMetro"
+                    },
+                    "description": "Arrays of objects containing latency data for the specified metro\n"
+                },
+                "equinixAsn": {
+                    "type": "integer",
+                    "description": "Autonomous system number (ASN) for a specified Fabric metro. The ASN is a unique identifier that carries the network routing protocol and exchanges that data with other internal systems via border gateway protocol.\n"
+                },
+                "geoCoordinates": {
+                    "$ref": "#/types/equinix:fabric/getMetrosDataGeoCoordinates:getMetrosDataGeoCoordinates",
+                    "description": "Geographic location data of Fabric Metro\n"
+                },
+                "geoScopes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of supported geographic boundaries of a Fabric Metro. Example values: CANADA, CONUS.\n"
+                },
+                "href": {
+                    "type": "string",
+                    "description": "The canonical URL at which the resource resides\n"
+                },
+                "localVcBandwidthMax": {
+                    "type": "integer",
+                    "description": "This field holds Max Connection speed within the metro.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the region in which the data center is located\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "Board geographical area in which the data center is located\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Indicator of a fabric metro\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "code",
+                "connectedMetros",
+                "equinixAsn",
+                "geoCoordinates",
+                "geoScopes",
+                "href",
+                "localVcBandwidthMax",
+                "name",
+                "region",
+                "type"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getMetrosDataConnectedMetro:getMetrosDataConnectedMetro": {
+            "properties": {
+                "avgLatency": {
+                    "type": "number"
+                },
+                "code": {
+                    "type": "string"
+                },
+                "href": {
+                    "type": "string"
+                },
+                "remoteVcBandwidthMax": {
+                    "type": "integer"
+                }
+            },
+            "type": "object",
+            "required": [
+                "avgLatency",
+                "code",
+                "href",
+                "remoteVcBandwidthMax"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getMetrosDataGeoCoordinates:getMetrosDataGeoCoordinates": {
+            "properties": {
+                "latitude": {
+                    "type": "number",
+                    "description": "Latitude of the Metro\n"
+                },
+                "longitude": {
+                    "type": "number",
+                    "description": "Longitude of the Metro\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "latitude",
+                "longitude"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getMetrosPagination:getMetrosPagination": {
+            "properties": {
+                "limit": {
+                    "type": "number",
+                    "description": "Maximum number of search results returned per page.\n"
+                },
+                "next": {
+                    "type": "string",
+                    "description": "URL relative to the next item in the response.\n"
+                },
+                "offset": {
+                    "type": "number",
+                    "description": "Index of the first item returned in the response.\n"
+                },
+                "previous": {
+                    "type": "string",
+                    "description": "URL relative to the previous item in the response.\n"
+                },
+                "total": {
+                    "type": "number",
+                    "description": "The total number of metro returned\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "next",
+                "previous",
+                "total"
             ],
             "language": {
                 "nodejs": {
@@ -13202,6 +13509,283 @@
                 "total": {
                     "type": "integer",
                     "description": "Total number of elements returned.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "limit",
+                "next",
+                "offset",
+                "previous",
+                "total"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getStreamChangeLog:getStreamChangeLog": {
+            "properties": {
+                "createdBy": {
+                    "type": "string",
+                    "description": "User name of creator of the stream resource\n"
+                },
+                "createdByEmail": {
+                    "type": "string",
+                    "description": "Email of creator of the stream resource\n"
+                },
+                "createdByFullName": {
+                    "type": "string",
+                    "description": "Legal name of creator of the stream resource\n"
+                },
+                "createdDateTime": {
+                    "type": "string",
+                    "description": "Creation time of the stream resource\n"
+                },
+                "deletedBy": {
+                    "type": "string",
+                    "description": "User name of deleter of the stream resource\n"
+                },
+                "deletedByEmail": {
+                    "type": "string",
+                    "description": "Email of deleter of the stream resource\n"
+                },
+                "deletedByFullName": {
+                    "type": "string",
+                    "description": "Legal name of deleter of the stream resource\n"
+                },
+                "deletedDateTime": {
+                    "type": "string",
+                    "description": "Deletion time of the stream resource\n"
+                },
+                "updatedBy": {
+                    "type": "string",
+                    "description": "User name of last updater of the stream resource\n"
+                },
+                "updatedByEmail": {
+                    "type": "string",
+                    "description": "Email of last updater of the stream resource\n"
+                },
+                "updatedByFullName": {
+                    "type": "string",
+                    "description": "Legal name of last updater of the stream resource\n"
+                },
+                "updatedDateTime": {
+                    "type": "string",
+                    "description": "Last update time of the stream resource\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "createdBy",
+                "createdByEmail",
+                "createdByFullName",
+                "createdDateTime",
+                "deletedBy",
+                "deletedByEmail",
+                "deletedByFullName",
+                "deletedDateTime",
+                "updatedBy",
+                "updatedByEmail",
+                "updatedByFullName",
+                "updatedDateTime"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getStreamProject:getStreamProject": {
+            "properties": {
+                "projectId": {
+                    "type": "string",
+                    "description": "Equinix Subscriber-assigned project ID\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "projectId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getStreamsData:getStreamsData": {
+            "properties": {
+                "assetsCount": {
+                    "type": "number",
+                    "description": "Count of the streaming assets attached to the stream resource\n"
+                },
+                "changeLog": {
+                    "$ref": "#/types/equinix:fabric/getStreamsDataChangeLog:getStreamsDataChangeLog",
+                    "description": "Details of the last change on the stream resource\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Customer-provided description of the stream resource\n"
+                },
+                "href": {
+                    "type": "string",
+                    "description": "Equinix auto generated URI to the stream resource in Equinix Portal\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Customer-provided name of the stream resource\n"
+                },
+                "project": {
+                    "$ref": "#/types/equinix:fabric/getStreamsDataProject:getStreamsDataProject",
+                    "description": "Equinix Project attribute object\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "Value representing provisioning status for the stream resource\n"
+                },
+                "streamSubscriptionsCount": {
+                    "type": "number",
+                    "description": "Count of the client subscriptions on the stream resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Equinix defined Streaming Type\n"
+                },
+                "uuid": {
+                    "type": "string",
+                    "description": "Equinix-assigned unique id for the stream resource\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "assetsCount",
+                "changeLog",
+                "description",
+                "href",
+                "name",
+                "project",
+                "state",
+                "streamSubscriptionsCount",
+                "type",
+                "uuid"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getStreamsDataChangeLog:getStreamsDataChangeLog": {
+            "properties": {
+                "createdBy": {
+                    "type": "string",
+                    "description": "User name of creator of the stream resource\n"
+                },
+                "createdByEmail": {
+                    "type": "string",
+                    "description": "Email of creator of the stream resource\n"
+                },
+                "createdByFullName": {
+                    "type": "string",
+                    "description": "Legal name of creator of the stream resource\n"
+                },
+                "createdDateTime": {
+                    "type": "string",
+                    "description": "Creation time of the stream resource\n"
+                },
+                "deletedBy": {
+                    "type": "string",
+                    "description": "User name of deleter of the stream resource\n"
+                },
+                "deletedByEmail": {
+                    "type": "string",
+                    "description": "Email of deleter of the stream resource\n"
+                },
+                "deletedByFullName": {
+                    "type": "string",
+                    "description": "Legal name of deleter of the stream resource\n"
+                },
+                "deletedDateTime": {
+                    "type": "string",
+                    "description": "Deletion time of the stream resource\n"
+                },
+                "updatedBy": {
+                    "type": "string",
+                    "description": "User name of last updater of the stream resource\n"
+                },
+                "updatedByEmail": {
+                    "type": "string",
+                    "description": "Email of last updater of the stream resource\n"
+                },
+                "updatedByFullName": {
+                    "type": "string",
+                    "description": "Legal name of last updater of the stream resource\n"
+                },
+                "updatedDateTime": {
+                    "type": "string",
+                    "description": "Last update time of the stream resource\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "createdBy",
+                "createdByEmail",
+                "createdByFullName",
+                "createdDateTime",
+                "deletedBy",
+                "deletedByEmail",
+                "deletedByFullName",
+                "deletedDateTime",
+                "updatedBy",
+                "updatedByEmail",
+                "updatedByFullName",
+                "updatedDateTime"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getStreamsDataProject:getStreamsDataProject": {
+            "properties": {
+                "projectId": {
+                    "type": "string",
+                    "description": "Equinix Subscriber-assigned project ID\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "projectId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getStreamsPagination:getStreamsPagination": {
+            "properties": {
+                "limit": {
+                    "type": "number",
+                    "description": "Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20\n"
+                },
+                "next": {
+                    "type": "string",
+                    "description": "The URL relative to the next item in the response\n"
+                },
+                "offset": {
+                    "type": "number",
+                    "description": "Index of the first item returned in the response. The default is 0\n"
+                },
+                "previous": {
+                    "type": "string",
+                    "description": "The URL relative to the previous item in the response\n"
+                },
+                "total": {
+                    "type": "number",
+                    "description": "The total number of streams available to the user making the request\n"
                 }
             },
             "type": "object",
@@ -18780,6 +19364,140 @@
                 "type": "object"
             }
         },
+        "equinix:fabric/stream:Stream": {
+            "description": "Fabric V4 API compatible resource allows creation and management of Equinix Fabric Stream\n\nAdditional Documentation:\n* Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm\n* API: https://developer.equinix.com/catalog/fabricv4#tag/Streams\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.fabric.Stream;\nimport com.pulumi.equinix.fabric.StreamArgs;\nimport com.pulumi.equinix.fabric.inputs.StreamProjectArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var newStream = new Stream(\"newStream\", StreamArgs.builder()\n            .type(\"TELEMETRY_STREAM\")\n            .description(\"\u003cdescription_of_stream_resource\u003e\")\n            .project(StreamProjectArgs.builder()\n                .project_id(\"\u003cdestination_project_id_for_stream\")\n                .build())\n            .build());\n\n        ctx.export(\"streamState\", newStream.state());\n    }\n}\n```\n```yaml\nresources:\n  newStream:\n    type: equinix:fabric:Stream\n    properties:\n      type: TELEMETRY_STREAM\n      description: \u003cdescription_of_stream_resource\u003e\n      project:\n        project_id: \u003cdestination_project_id_for_stream\noutputs:\n  streamState: ${newStream.state}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "properties": {
+                "assetsCount": {
+                    "type": "number",
+                    "description": "Count of the streaming assets attached to the stream resource\n"
+                },
+                "changeLog": {
+                    "$ref": "#/types/equinix:fabric/StreamChangeLog:StreamChangeLog",
+                    "description": "Details of the last change on the stream resource\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Customer-provided description of the stream resource\n"
+                },
+                "href": {
+                    "type": "string",
+                    "description": "Equinix auto generated URI to the stream resource in Equinix Portal\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Customer-provided name of the stream resource\n"
+                },
+                "project": {
+                    "$ref": "#/types/equinix:fabric/StreamProject:StreamProject",
+                    "description": "Equinix Project attribute object\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "Value representing provisioning status for the stream resource\n"
+                },
+                "streamSubscriptionsCount": {
+                    "type": "number",
+                    "description": "Count of the client subscriptions on the stream resource\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/equinix:fabric/StreamTimeouts:StreamTimeouts"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Equinix defined Streaming Type\n"
+                },
+                "uuid": {
+                    "type": "string",
+                    "description": "Equinix-assigned unique id for the stream resource\n"
+                }
+            },
+            "required": [
+                "assetsCount",
+                "changeLog",
+                "description",
+                "href",
+                "name",
+                "project",
+                "state",
+                "streamSubscriptionsCount",
+                "type",
+                "uuid"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "Customer-provided description of the stream resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Customer-provided name of the stream resource\n"
+                },
+                "project": {
+                    "$ref": "#/types/equinix:fabric/StreamProject:StreamProject",
+                    "description": "Equinix Project attribute object\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/equinix:fabric/StreamTimeouts:StreamTimeouts"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Equinix defined Streaming Type\n"
+                }
+            },
+            "requiredInputs": [
+                "description",
+                "type"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Stream resources.\n",
+                "properties": {
+                    "assetsCount": {
+                        "type": "number",
+                        "description": "Count of the streaming assets attached to the stream resource\n"
+                    },
+                    "changeLog": {
+                        "$ref": "#/types/equinix:fabric/StreamChangeLog:StreamChangeLog",
+                        "description": "Details of the last change on the stream resource\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Customer-provided description of the stream resource\n"
+                    },
+                    "href": {
+                        "type": "string",
+                        "description": "Equinix auto generated URI to the stream resource in Equinix Portal\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Customer-provided name of the stream resource\n"
+                    },
+                    "project": {
+                        "$ref": "#/types/equinix:fabric/StreamProject:StreamProject",
+                        "description": "Equinix Project attribute object\n"
+                    },
+                    "state": {
+                        "type": "string",
+                        "description": "Value representing provisioning status for the stream resource\n"
+                    },
+                    "streamSubscriptionsCount": {
+                        "type": "number",
+                        "description": "Count of the client subscriptions on the stream resource\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/equinix:fabric/StreamTimeouts:StreamTimeouts"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "Equinix defined Streaming Type\n"
+                    },
+                    "uuid": {
+                        "type": "string",
+                        "description": "Equinix-assigned unique id for the stream resource\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "equinix:metal/bgpSession:BgpSession": {
             "description": "Provides a resource to manage BGP sessions in Equinix Metal Host. Refer to [Equinix Metal BGP documentation](https://metal.equinix.com/developers/docs/networking/local-global-bgp/) for more details.\n\nYou need to have BGP config enabled in your project.\n\nBGP session must be linked to a device running [BIRD](https://bird.network.cz) or other BGP routing daemon which will control route advertisements via the session to Equinix Metal's upstream routers.\n\n{{% examples %}}\n## Example Usage\n\n{{% example %}}\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as _null from \"@pulumi/null\";\nimport * as equinix from \"@equinix-labs/pulumi-equinix\";\n\nconst bgpPassword = \"955dB0b81Ef\";\nconst projectId = \"\u003cUUID_of_your_project\u003e\";\nconst addr = new equinix.metal.ReservedIpBlock(\"addr\", {\n    projectId: projectId,\n    metro: \"ny\",\n    quantity: 1,\n});\nconst interfaceLo0 = pulumi.interpolate`auto lo:0\niface lo:0 inet static\n   address ${addr.address}\n   netmask ${addr.netmask}\n`;\nconst test = new equinix.metal.Device(\"test\", {\n    hostname: \"terraform-test-bgp-sesh\",\n    plan: equinix.metal.Plan.C3SmallX86,\n    metro: \"ny\",\n    operatingSystem: equinix.metal.OperatingSystem.Ubuntu20_04,\n    billingCycle: equinix.metal.BillingCycle.Hourly,\n    projectId: projectId,\n});\nconst birdConf = pulumi.all([addr.address, addr.cidr, test.network, test.network]).apply(([address, cidr, testNetwork, testNetwork1]) =\u003e `filter equinix_metal_bgp {\n    if net = ${address}/${cidr} then accept;\n}\nrouter id ${testNetwork[2].address};\nprotocol direct {\n    interface \"lo\";\n}\nprotocol kernel {\n    scan time 10;\n    persist;\n    import all;\n    export all;\n}\nprotocol device {\n    scan time 10;\n}\nprotocol bgp {\n    export filter equinix_metal_bgp;\n    local as 65000;\n    neighbor ${testNetwork1[2].gateway} as 65530;\n    password \"${bgpPassword}\";\n}\n`);\nconst testBgpSession = new equinix.metal.BgpSession(\"testBgpSession\", {\n    deviceId: test.id,\n    addressFamily: \"ipv4\",\n});\nconst configureBird = new _null.Resource(\"configureBird\", {triggers: {\n    bird_conf: birdConf,\n    \"interface\": interfaceLo0,\n}});\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\nimport pulumi_null as null\n\nbgp_password = \"955dB0b81Ef\"\nproject_id = \"\u003cUUID_of_your_project\u003e\"\naddr = equinix.metal.ReservedIpBlock(\"addr\",\n    project_id=project_id,\n    metro=\"ny\",\n    quantity=1)\ninterface_lo0 = pulumi.Output.all(\n    address=addr.address,\n    netmask=addr.netmask\n).apply(lambda resolved_outputs: f\"\"\"auto lo:0\niface lo:0 inet static\n   address {resolved_outputs['address']}\n   netmask {resolved_outputs['netmask']}\n\"\"\")\n\ntest = equinix.metal.Device(\"test\",\n    hostname=\"terraform-test-bgp-sesh\",\n    plan=equinix.metal.Plan.C3_SMALL_X86,\n    metro=\"ny\",\n    operating_system=equinix.metal.OperatingSystem.UBUNTU20_04,\n    billing_cycle=equinix.metal.BillingCycle.HOURLY,\n    project_id=project_id)\nbird_conf = pulumi.Output.all(\n    address=addr.address,\n    cidr=addr.cidr,\n    testNetwork=test.network,\n    testNetwork1=test.network\n).apply(lambda resolved_outputs: f\"\"\"filter equinix_metal_bgp {{\n    if net = {resolved_outputs['address']}/{resolved_outputs['cidr']} then accept;\n}}\nrouter id {test_network[2].address};\nprotocol direct {{\n    interface \"lo\";\n}}\nprotocol kernel {{\n    scan time 10;\n    persist;\n    import all;\n    export all;\n}}\nprotocol device {{\n    scan time 10;\n}}\nprotocol bgp {{\n    export filter equinix_metal_bgp;\n    local as 65000;\n    neighbor {test_network1[2].gateway} as 65530;\n    password \"{bgp_password}\";\n}}\n\"\"\")\n\ntest_bgp_session = equinix.metal.BgpSession(\"testBgpSession\",\n    device_id=test.id,\n    address_family=\"ipv4\")\nconfigure_bird = null.Resource(\"configureBird\", triggers={\n    \"bird_conf\": bird_conf,\n    \"interface\": interface_lo0,\n})\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi-null/sdk/go/null\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tbgpPassword := \"955dB0b81Ef\"\n\t\tprojectId := \"\u003cUUID_of_your_project\u003e\"\n\t\taddr, err := metal.NewReservedIpBlock(ctx, \"addr\", \u0026metal.ReservedIpBlockArgs{\n\t\t\tProjectId: pulumi.String(projectId),\n\t\t\tMetro:     pulumi.String(\"ny\"),\n\t\t\tQuantity:  pulumi.Int(1),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tinterfaceLo0 := pulumi.All(addr.Address, addr.Netmask).ApplyT(func(_args []interface{}) (string, error) {\n\t\t\taddress := _args[0].(string)\n\t\t\tnetmask := _args[1].(string)\n\t\t\treturn fmt.Sprintf(\"auto lo:0\\niface lo:0 inet static\\n   address %v\\n   netmask %v\\n\", address, netmask), nil\n\t\t}).(pulumi.StringOutput)\n\t\ttest, err := metal.NewDevice(ctx, \"test\", \u0026metal.DeviceArgs{\n\t\t\tHostname:        pulumi.String(\"terraform-test-bgp-sesh\"),\n\t\t\tPlan:            pulumi.String(metal.PlanC3SmallX86),\n\t\t\tMetro:           pulumi.String(\"ny\"),\n\t\t\tOperatingSystem: pulumi.String(metal.OperatingSystem_Ubuntu20_04),\n\t\t\tBillingCycle:    pulumi.String(metal.BillingCycleHourly),\n\t\t\tProjectId:       pulumi.String(projectId),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tbirdConf := pulumi.All(addr.Address, addr.Cidr, test.Network, test.Network).ApplyT(func(_args []interface{}) (string, error) {\n\t\t\taddress := _args[0].(string)\n\t\t\tcidr := _args[1].(int)\n\t\t\ttestNetwork := _args[2].([]metal.DeviceNetwork)\n\t\t\ttestNetwork1 := _args[3].([]metal.DeviceNetwork)\n\t\t\treturn fmt.Sprintf(`filter equinix_metal_bgp {\n    if net = %v/%v then accept;\n}\nrouter id %v;\nprotocol direct {\n    interface \"lo\";\n}\nprotocol kernel {\n    scan time 10;\n    persist;\n    import all;\n    export all;\n}\nprotocol device {\n    scan time 10;\n}\nprotocol bgp {\n    export filter equinix_metal_bgp;\n    local as 65000;\n    neighbor %v as 65530;\n    password \"%v\";\n}\n`, address, cidr, testNetwork[2].Address, testNetwork1[2].Gateway, bgpPassword), nil\n\t\t}).(pulumi.StringOutput)\n\t\t_, err = metal.NewBgpSession(ctx, \"testBgpSession\", \u0026metal.BgpSessionArgs{\n\t\t\tDeviceId:      test.ID(),\n\t\t\tAddressFamily: pulumi.String(\"ipv4\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = null.NewResource(ctx, \"configureBird\", \u0026null.ResourceArgs{\n\t\t\tTriggers: pulumi.StringMap{\n\t\t\t\t\"bird_conf\": pulumi.String(birdConf),\n\t\t\t\t\"interface\": pulumi.String(interfaceLo0),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\nusing Null = Pulumi.Null;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var bgpPassword = \"955dB0b81Ef\";\n\n    var projectId = \"\u003cUUID_of_your_project\u003e\";\n\n    var addr = new Equinix.Metal.ReservedIpBlock(\"addr\", new()\n    {\n        ProjectId = projectId,\n        Metro = \"ny\",\n        Quantity = 1,\n    });\n\n    var interfaceLo0 = Output.Tuple(addr.Address, addr.Netmask).Apply(values =\u003e\n    {\n        var address = values.Item1;\n        var netmask = values.Item2;\n        return @$\"auto lo:0\niface lo:0 inet static\n   address {address}\n   netmask {netmask}\n\";\n    });\n\n    var test = new Equinix.Metal.Device(\"test\", new()\n    {\n        Hostname = \"terraform-test-bgp-sesh\",\n        Plan = Equinix.Metal.Plan.C3SmallX86,\n        Metro = \"ny\",\n        OperatingSystem = Equinix.Metal.OperatingSystem.Ubuntu20_04,\n        BillingCycle = Equinix.Metal.BillingCycle.Hourly,\n        ProjectId = projectId,\n    });\n\n    var birdConf = Output.Tuple(addr.Address, addr.Cidr, test.Network, test.Network).Apply(values =\u003e\n    {\n        var address = values.Item1;\n        var cidr = values.Item2;\n        var testNetwork = values.Item3;\n        var testNetwork1 = values.Item4;\n        return @$\"filter equinix_metal_bgp {{\n    if net = {address}/{cidr} then accept;\n}}\nrouter id {testNetwork[2].Address};\nprotocol direct {{\n    interface \"\"lo\"\";\n}}\nprotocol kernel {{\n    scan time 10;\n    persist;\n    import all;\n    export all;\n}}\nprotocol device {{\n    scan time 10;\n}}\nprotocol bgp {{\n    export filter equinix_metal_bgp;\n    local as 65000;\n    neighbor {testNetwork1[2].Gateway} as 65530;\n    password \"\"{bgpPassword}\"\";\n}}\n\";\n    });\n\n    var testBgpSession = new Equinix.Metal.BgpSession(\"testBgpSession\", new()\n    {\n        DeviceId = test.Id,\n        AddressFamily = \"ipv4\",\n    });\n\n    var configureBird = new Null.Resource(\"configureBird\", new()\n    {\n        Triggers = \n        {\n            { \"bird_conf\", birdConf },\n            { \"interface\", interfaceLo0 },\n        },\n    });\n\n});\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.ReservedIpBlock;\nimport com.pulumi.equinix.metal.ReservedIpBlockArgs;\nimport com.pulumi.equinix.metal.Device;\nimport com.pulumi.equinix.metal.DeviceArgs;\nimport com.pulumi.equinix.metal.BgpSession;\nimport com.pulumi.equinix.metal.BgpSessionArgs;\nimport com.pulumi.null.Resource;\nimport com.pulumi.null.ResourceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var bgpPassword = \"955dB0b81Ef\";\n\n        final var projectId = \"\u003cUUID_of_your_project\u003e\";\n\n        var addr = new ReservedIpBlock(\"addr\", ReservedIpBlockArgs.builder()\n            .projectId(projectId)\n            .metro(\"ny\")\n            .quantity(1)\n            .build());\n\n        final var interfaceLo0 = Output.tuple(addr.address(), addr.netmask()).applyValue(values -\u003e {\n            var address = values.t1;\n            var netmask = values.t2;\n            return \"\"\"\nauto lo:0\niface lo:0 inet static\n   address %s\n   netmask %s\n\", address,netmask);\n        });\n\n        var test = new Device(\"test\", DeviceArgs.builder()\n            .hostname(\"terraform-test-bgp-sesh\")\n            .plan(\"c3.small.x86\")\n            .metro(\"ny\")\n            .operatingSystem(\"ubuntu_20_04\")\n            .billingCycle(\"hourly\")\n            .projectId(projectId)\n            .build());\n\n        final var birdConf = Output.tuple(addr.address(), addr.cidr(), test.network(), test.network()).applyValue(values -\u003e {\n            var address = values.t1;\n            var cidr = values.t2;\n            var testNetwork = values.t3;\n            var testNetwork1 = values.t4;\n            return \"\"\"\nfilter equinix_metal_bgp {\n    if net = %s/%s then accept;\n}\nrouter id %s;\nprotocol direct {\n    interface \"lo\";\n}\nprotocol kernel {\n    scan time 10;\n    persist;\n    import all;\n    export all;\n}\nprotocol device {\n    scan time 10;\n}\nprotocol bgp {\n    export filter equinix_metal_bgp;\n    local as 65000;\n    neighbor %s as 65530;\n    password \"%s\";\n}\n\", address,cidr,testNetwork[2].address(),testNetwork1[2].gateway(),bgpPassword);\n        });\n\n        var testBgpSession = new BgpSession(\"testBgpSession\", BgpSessionArgs.builder()\n            .deviceId(test.id())\n            .addressFamily(\"ipv4\")\n            .build());\n\n        var configureBird = new Resource(\"configureBird\", ResourceArgs.builder()\n            .triggers(Map.ofEntries(\n                Map.entry(\"bird_conf\", birdConf),\n                Map.entry(\"interface\", interfaceLo0)\n            ))\n            .build());\n\n    }\n}\n```\n```yaml\n  # you need to enable BGP config for the project. If you decide to create new\n  # project, you can use the bgp_config section to enable BGP.\n  # resource \"equinix_metal_project\" \"test\" {\n  #   name = \"testpro\"\n  #   bgp_config {\n  #      deployment_type = \"local\"\n  #      md5 = local.bgp_password\n  #      asn = 65000\n  #   }\n  # }\n  addr:\n    type: equinix:metal:ReservedIpBlock\n    properties:\n      projectId: ${projectId}\n      metro: ny\n      quantity: 1\n  test:\n    type: equinix:metal:Device\n    properties:\n      hostname: terraform-test-bgp-sesh\n      plan: c3.small.x86\n      metro: ny\n      operatingSystem: ubuntu_20_04\n      billingCycle: hourly\n      projectId: ${projectId}\n  testBgpSession:\n    type: equinix:metal:BgpSession\n    name: test\n    properties:\n      deviceId: ${test.id}\n      addressFamily: ipv4\n  configureBird:\n    type: null:Resource\n    name: configure_bird\n    properties:\n      triggers:\n        bird_conf: ${birdConf}\n        interface: ${interfaceLo0}\nvariables:\n  bgpPassword: 955dB0b81Ef\n  projectId: \u003cUUID_of_your_project\u003e\n  interfaceLo0: |\n    auto lo:0\n    iface lo:0 inet static\n       address ${addr.address}\n       netmask ${addr.netmask}\n  birdConf: |\n    filter equinix_metal_bgp {\n        if net = ${addr.address}/${addr.cidr} then accept;\n    }\n    router id ${test.network[2].address};\n    protocol direct {\n        interface \"lo\";\n    }\n    protocol kernel {\n        scan time 10;\n        persist;\n        import all;\n        export all;\n    }\n    protocol device {\n        scan time 10;\n    }\n    protocol bgp {\n        export filter equinix_metal_bgp;\n        local as 65000;\n        neighbor ${test.network[2].gateway} as 65530;\n        password \"${bgpPassword}\";\n    }\n```\n{{% /example %}}\n\n{{% /examples %}}",
             "properties": {
@@ -24045,6 +24763,146 @@
                 ]
             }
         },
+        "equinix:fabric/getMetro:getMetro": {
+            "description": "## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@pulumi/equinix\";\n\nconst metro = equinix.fabric.getMetro({\n    metroCode: \"\u003cmetro_code\u003e\",\n});\nexport const id = metro.then(metro =\u003e metro.id);\nexport const type = metro.then(metro =\u003e metro.type);\nexport const metroCode = metro.then(metro =\u003e metro.metroCode);\nexport const region = metro.then(metro =\u003e metro.region);\nexport const name = metro.then(metro =\u003e metro.name);\nexport const equinixAsn = metro.then(metro =\u003e metro.equinixAsn);\nexport const localVcBandwidthMax = metro.then(metro =\u003e metro.localVcBandwidthMax);\nexport const geoCoordinates = metro.then(metro =\u003e metro.geoCoordinates);\nexport const connectedMetros = metro.then(metro =\u003e metro.connectedMetros);\nexport const geoScopes = metro.then(metro =\u003e metro.geoScopes);\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nmetro = equinix.fabric.get_metro(metro_code=\"\u003cmetro_code\u003e\")\npulumi.export(\"id\", metro.id)\npulumi.export(\"type\", metro.type)\npulumi.export(\"metroCode\", metro.metro_code)\npulumi.export(\"region\", metro.region)\npulumi.export(\"name\", metro.name)\npulumi.export(\"equinixAsn\", metro.equinix_asn)\npulumi.export(\"localVcBandwidthMax\", metro.local_vc_bandwidth_max)\npulumi.export(\"geoCoordinates\", metro.geo_coordinates)\npulumi.export(\"connectedMetros\", metro.connected_metros)\npulumi.export(\"geoScopes\", metro.geo_scopes)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var metro = Equinix.Fabric.GetMetro.Invoke(new()\n    {\n        MetroCode = \"\u003cmetro_code\u003e\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"id\"] = metro.Apply(getMetroResult =\u003e getMetroResult.Id),\n        [\"type\"] = metro.Apply(getMetroResult =\u003e getMetroResult.Type),\n        [\"metroCode\"] = metro.Apply(getMetroResult =\u003e getMetroResult.MetroCode),\n        [\"region\"] = metro.Apply(getMetroResult =\u003e getMetroResult.Region),\n        [\"name\"] = metro.Apply(getMetroResult =\u003e getMetroResult.Name),\n        [\"equinixAsn\"] = metro.Apply(getMetroResult =\u003e getMetroResult.EquinixAsn),\n        [\"localVcBandwidthMax\"] = metro.Apply(getMetroResult =\u003e getMetroResult.LocalVcBandwidthMax),\n        [\"geoCoordinates\"] = metro.Apply(getMetroResult =\u003e getMetroResult.GeoCoordinates),\n        [\"connectedMetros\"] = metro.Apply(getMetroResult =\u003e getMetroResult.ConnectedMetros),\n        [\"geoScopes\"] = metro.Apply(getMetroResult =\u003e getMetroResult.GeoScopes),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmetro, err := fabric.GetMetro(ctx, \u0026fabric.GetMetroArgs{\n\t\t\tMetroCode: \"\u003cmetro_code\u003e\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"id\", metro.Id)\n\t\tctx.Export(\"type\", metro.Type)\n\t\tctx.Export(\"metroCode\", metro.MetroCode)\n\t\tctx.Export(\"region\", metro.Region)\n\t\tctx.Export(\"name\", metro.Name)\n\t\tctx.Export(\"equinixAsn\", metro.EquinixAsn)\n\t\tctx.Export(\"localVcBandwidthMax\", metro.LocalVcBandwidthMax)\n\t\tctx.Export(\"geoCoordinates\", metro.GeoCoordinates)\n\t\tctx.Export(\"connectedMetros\", metro.ConnectedMetros)\n\t\tctx.Export(\"geoScopes\", metro.GeoScopes)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.fabric.FabricFunctions;\nimport com.pulumi.equinix.fabric.inputs.GetMetroArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var metro = FabricFunctions.getMetro(GetMetroArgs.builder()\n            .metroCode(\"\u003cmetro_code\u003e\")\n            .build());\n\n        ctx.export(\"id\", metro.applyValue(getMetroResult -\u003e getMetroResult.id()));\n        ctx.export(\"type\", metro.applyValue(getMetroResult -\u003e getMetroResult.type()));\n        ctx.export(\"metroCode\", metro.applyValue(getMetroResult -\u003e getMetroResult.metroCode()));\n        ctx.export(\"region\", metro.applyValue(getMetroResult -\u003e getMetroResult.region()));\n        ctx.export(\"name\", metro.applyValue(getMetroResult -\u003e getMetroResult.name()));\n        ctx.export(\"equinixAsn\", metro.applyValue(getMetroResult -\u003e getMetroResult.equinixAsn()));\n        ctx.export(\"localVcBandwidthMax\", metro.applyValue(getMetroResult -\u003e getMetroResult.localVcBandwidthMax()));\n        ctx.export(\"geoCoordinates\", metro.applyValue(getMetroResult -\u003e getMetroResult.geoCoordinates()));\n        ctx.export(\"connectedMetros\", metro.applyValue(getMetroResult -\u003e getMetroResult.connectedMetros()));\n        ctx.export(\"geoScopes\", metro.applyValue(getMetroResult -\u003e getMetroResult.geoScopes()));\n    }\n}\n```\n```yaml\nvariables:\n  metro:\n    fn::invoke:\n      Function: equinix:fabric:getMetro\n      Arguments:\n        metroCode: \u003cmetro_code\u003e\noutputs:\n  id: ${metro.id}\n  type: ${metro.type}\n  metroCode: ${metro.metroCode}\n  region: ${metro.region}\n  name: ${metro.name}\n  equinixAsn: ${metro.equinixAsn}\n  localVcBandwidthMax: ${metro.localVcBandwidthMax}\n  geoCoordinates: ${metro.geoCoordinates}\n  connectedMetros: ${metro.connectedMetros}\n  geoScopes: ${metro.geoScopes}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getMetro.\n",
+                "properties": {
+                    "metroCode": {
+                        "type": "string",
+                        "description": "The metro code this data source should retrieve\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "metroCode"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getMetro.\n",
+                "properties": {
+                    "code": {
+                        "type": "string",
+                        "description": "Code assigned to an Equinix IBX data center in a specified metropolitan area\n"
+                    },
+                    "connectedMetros": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/equinix:fabric/getMetroConnectedMetro:getMetroConnectedMetro"
+                        },
+                        "description": "Arrays of objects containing latency data for the specified metro\n"
+                    },
+                    "equinixAsn": {
+                        "type": "integer",
+                        "description": "Autonomous system number (ASN) for a specified Fabric metro. The ASN is a unique identifier that carries the network routing protocol and exchanges that data with other internal systems via border gateway protocol.\n"
+                    },
+                    "geoCoordinates": {
+                        "$ref": "#/types/equinix:fabric/getMetroGeoCoordinates:getMetroGeoCoordinates",
+                        "description": "Geographic location data of Fabric Metro\n"
+                    },
+                    "geoScopes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of supported geographic boundaries of a Fabric Metro. Example values: CANADA, CONUS.\n"
+                    },
+                    "href": {
+                        "type": "string",
+                        "description": "The canonical URL at which the resource resides\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier of the resource\n"
+                    },
+                    "localVcBandwidthMax": {
+                        "type": "integer",
+                        "description": "This field holds Max Connection speed within the metro.\n"
+                    },
+                    "metroCode": {
+                        "type": "string",
+                        "description": "The metro code this data source should retrieve\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the region in which the data center is located\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "Board geographical area in which the data center is located\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "Indicator of a fabric metro\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "code",
+                    "connectedMetros",
+                    "equinixAsn",
+                    "geoCoordinates",
+                    "geoScopes",
+                    "href",
+                    "id",
+                    "localVcBandwidthMax",
+                    "metroCode",
+                    "name",
+                    "region",
+                    "type"
+                ]
+            }
+        },
+        "equinix:fabric/getMetros:getMetros": {
+            "description": "## Example Usage\n\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getMetros.\n",
+                "properties": {
+                    "pagination": {
+                        "$ref": "#/types/equinix:fabric/getMetrosPagination:getMetrosPagination",
+                        "description": "Pagination details for the returned metro list\n"
+                    },
+                    "presence": {
+                        "type": "string",
+                        "description": "User On Boarded Metros based on Fabric resource availability\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "pagination"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getMetros.\n",
+                "properties": {
+                    "datas": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/equinix:fabric/getMetrosData:getMetrosData"
+                        },
+                        "description": "Returned list of metro objects\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier of the resource\n"
+                    },
+                    "pagination": {
+                        "$ref": "#/types/equinix:fabric/getMetrosPagination:getMetrosPagination",
+                        "description": "Pagination details for the returned metro list\n"
+                    },
+                    "presence": {
+                        "type": "string",
+                        "description": "User On Boarded Metros based on Fabric resource availability\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "datas",
+                    "id",
+                    "pagination"
+                ]
+            }
+        },
         "equinix:fabric/getNetwork:getNetwork": {
             "description": "Fabric V4 API compatible data resource that allow user to fetch Fabric Network for a given UUID\n\nAdditional documentation:\n* Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-networks-implement.htm\n* API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-networks\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@pulumi/equinix\";\n\nconst networkDataName = equinix.fabric.getNetwork({\n    uuid: \"\u003cuuid_of_network\u003e\",\n});\nexport const id = networkDataName.then(networkDataName =\u003e networkDataName.id);\nexport const name = networkDataName.then(networkDataName =\u003e networkDataName.name);\nexport const scope = networkDataName.then(networkDataName =\u003e networkDataName.scope);\nexport const type = networkDataName.then(networkDataName =\u003e networkDataName.type);\nexport const region = networkDataName.then(networkDataName =\u003e networkDataName.locations?.[0]?.region);\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nnetwork_data_name = equinix.fabric.get_network(uuid=\"\u003cuuid_of_network\u003e\")\npulumi.export(\"id\", network_data_name.id)\npulumi.export(\"name\", network_data_name.name)\npulumi.export(\"scope\", network_data_name.scope)\npulumi.export(\"type\", network_data_name.type)\npulumi.export(\"region\", network_data_name.locations[0].region)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var networkDataName = Equinix.Fabric.GetNetwork.Invoke(new()\n    {\n        Uuid = \"\u003cuuid_of_network\u003e\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"id\"] = networkDataName.Apply(getNetworkResult =\u003e getNetworkResult.Id),\n        [\"name\"] = networkDataName.Apply(getNetworkResult =\u003e getNetworkResult.Name),\n        [\"scope\"] = networkDataName.Apply(getNetworkResult =\u003e getNetworkResult.Scope),\n        [\"type\"] = networkDataName.Apply(getNetworkResult =\u003e getNetworkResult.Type),\n        [\"region\"] = networkDataName.Apply(getNetworkResult =\u003e getNetworkResult.Locations[0]?.Region),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tnetworkDataName, err := fabric.LookupNetwork(ctx, \u0026fabric.LookupNetworkArgs{\n\t\t\tUuid: \"\u003cuuid_of_network\u003e\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"id\", networkDataName.Id)\n\t\tctx.Export(\"name\", networkDataName.Name)\n\t\tctx.Export(\"scope\", networkDataName.Scope)\n\t\tctx.Export(\"type\", networkDataName.Type)\n\t\tctx.Export(\"region\", networkDataName.Locations[0].Region)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.fabric.FabricFunctions;\nimport com.pulumi.equinix.fabric.inputs.GetNetworkArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var networkDataName = FabricFunctions.getNetwork(GetNetworkArgs.builder()\n            .uuid(\"\u003cuuid_of_network\u003e\")\n            .build());\n\n        ctx.export(\"id\", networkDataName.applyValue(getNetworkResult -\u003e getNetworkResult.id()));\n        ctx.export(\"name\", networkDataName.applyValue(getNetworkResult -\u003e getNetworkResult.name()));\n        ctx.export(\"scope\", networkDataName.applyValue(getNetworkResult -\u003e getNetworkResult.scope()));\n        ctx.export(\"type\", networkDataName.applyValue(getNetworkResult -\u003e getNetworkResult.type()));\n        ctx.export(\"region\", networkDataName.applyValue(getNetworkResult -\u003e getNetworkResult.locations()[0].region()));\n    }\n}\n```\n```yaml\nvariables:\n  networkDataName:\n    fn::invoke:\n      Function: equinix:fabric:getNetwork\n      Arguments:\n        uuid: \u003cuuid_of_network\u003e\noutputs:\n  id: ${networkDataName.id}\n  name: ${networkDataName.name}\n  scope: ${networkDataName.scope}\n  type: ${networkDataName.type}\n  region: ${networkDataName.locations[0].region}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
@@ -25256,6 +26114,132 @@
                     "datas",
                     "filters",
                     "id"
+                ]
+            }
+        },
+        "equinix:fabric/getStream:getStream": {
+            "description": "Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Stream by UUID\n\nAdditional Documentation:\n* Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm\n* API: https://developer.equinix.com/catalog/fabricv4#tag/Streams\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@pulumi/equinix\";\n\nconst dataStream = equinix.fabric.getStream({\n    streamId: \"\u003cuuid_of_stream\u003e\",\n});\nexport const streamState = dataStream.then(dataStream =\u003e dataStream.state);\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\ndata_stream = equinix.fabric.get_stream(stream_id=\"\u003cuuid_of_stream\u003e\")\npulumi.export(\"streamState\", data_stream.state)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var dataStream = Equinix.Fabric.GetStream.Invoke(new()\n    {\n        StreamId = \"\u003cuuid_of_stream\u003e\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"streamState\"] = dataStream.Apply(getStreamResult =\u003e getStreamResult.State),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tdataStream, err := fabric.LookupStream(ctx, \u0026fabric.LookupStreamArgs{\n\t\t\tStreamId: \"\u003cuuid_of_stream\u003e\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"streamState\", dataStream.State)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.fabric.FabricFunctions;\nimport com.pulumi.equinix.fabric.inputs.GetStreamArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var dataStream = FabricFunctions.getStream(GetStreamArgs.builder()\n            .streamId(\"\u003cuuid_of_stream\u003e\")\n            .build());\n\n        ctx.export(\"streamState\", dataStream.applyValue(getStreamResult -\u003e getStreamResult.state()));\n    }\n}\n```\n```yaml\nvariables:\n  dataStream:\n    fn::invoke:\n      Function: equinix:fabric:getStream\n      Arguments:\n        streamId: \u003cuuid_of_stream\u003e\noutputs:\n  streamState: ${dataStream.state}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getStream.\n",
+                "properties": {
+                    "streamId": {
+                        "type": "string",
+                        "description": "The uuid of the stream this data source should retrieve\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "streamId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getStream.\n",
+                "properties": {
+                    "assetsCount": {
+                        "type": "number",
+                        "description": "Count of the streaming assets attached to the stream resource\n"
+                    },
+                    "changeLog": {
+                        "$ref": "#/types/equinix:fabric/getStreamChangeLog:getStreamChangeLog",
+                        "description": "Details of the last change on the stream resource\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Customer-provided description of the stream resource\n"
+                    },
+                    "href": {
+                        "type": "string",
+                        "description": "Equinix auto generated URI to the stream resource in Equinix Portal\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier of the resource\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Customer-provided name of the stream resource\n"
+                    },
+                    "project": {
+                        "$ref": "#/types/equinix:fabric/getStreamProject:getStreamProject",
+                        "description": "Equinix Project attribute object\n"
+                    },
+                    "state": {
+                        "type": "string",
+                        "description": "Value representing provisioning status for the stream resource\n"
+                    },
+                    "streamId": {
+                        "type": "string",
+                        "description": "The uuid of the stream this data source should retrieve\n"
+                    },
+                    "streamSubscriptionsCount": {
+                        "type": "number",
+                        "description": "Count of the client subscriptions on the stream resource\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "Equinix defined Streaming Type\n"
+                    },
+                    "uuid": {
+                        "type": "string",
+                        "description": "Equinix-assigned unique id for the stream resource\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "assetsCount",
+                    "changeLog",
+                    "description",
+                    "href",
+                    "id",
+                    "name",
+                    "project",
+                    "state",
+                    "streamId",
+                    "streamSubscriptionsCount",
+                    "type",
+                    "uuid"
+                ]
+            }
+        },
+        "equinix:fabric/getStreams:getStreams": {
+            "description": "Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Streams with pagination details\n\nAdditional Documentation:\n* Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm\n* API: https://developer.equinix.com/catalog/fabricv4#tag/Streams\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@pulumi/equinix\";\n\nconst dataStreams = equinix.fabric.getStreams({\n    pagination: {\n        limit: 2,\n        offset: 1,\n    },\n});\nexport const numberOfReturnedStreams = dataStreams.then(dataStreams =\u003e dataStreams.datas).length;\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\ndata_streams = equinix.fabric.get_streams(pagination={\n    \"limit\": 2,\n    \"offset\": 1,\n})\npulumi.export(\"numberOfReturnedStreams\", len(data_streams.datas))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var dataStreams = Equinix.Fabric.GetStreams.Invoke(new()\n    {\n        Pagination = new Equinix.Fabric.Inputs.GetStreamsPaginationInputArgs\n        {\n            Limit = 2,\n            Offset = 1,\n        },\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"numberOfReturnedStreams\"] = dataStreams.Apply(getStreamsResult =\u003e getStreamsResult.Datas).Length,\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tdataStreams, err := fabric.GetStreams(ctx, \u0026fabric.GetStreamsArgs{\n\t\t\tPagination: fabric.GetStreamsPagination{\n\t\t\t\tLimit:  2,\n\t\t\t\tOffset: 1,\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"numberOfReturnedStreams\", pulumi.Int(len(dataStreams.Datas)))\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.fabric.FabricFunctions;\nimport com.pulumi.equinix.fabric.inputs.GetStreamsArgs;\nimport com.pulumi.equinix.fabric.inputs.GetStreamsPaginationArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var dataStreams = FabricFunctions.getStreams(GetStreamsArgs.builder()\n            .pagination(GetStreamsPaginationArgs.builder()\n                .limit(2)\n                .offset(1)\n                .build())\n            .build());\n\n        ctx.export(\"numberOfReturnedStreams\", dataStreams.applyValue(getStreamsResult -\u003e getStreamsResult.datas()).length());\n    }\n}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getStreams.\n",
+                "properties": {
+                    "pagination": {
+                        "$ref": "#/types/equinix:fabric/getStreamsPagination:getStreamsPagination",
+                        "description": "Pagination details for the returned streams list\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "pagination"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getStreams.\n",
+                "properties": {
+                    "datas": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/equinix:fabric/getStreamsData:getStreamsData"
+                        },
+                        "description": "Returned list of stream objects\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier of the resource\n"
+                    },
+                    "pagination": {
+                        "$ref": "#/types/equinix:fabric/getStreamsPagination:getStreamsPagination",
+                        "description": "Pagination details for the returned streams list\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "datas",
+                    "id",
+                    "pagination"
                 ]
             }
         },

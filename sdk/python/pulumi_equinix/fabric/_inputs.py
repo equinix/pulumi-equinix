@@ -235,6 +235,12 @@ __all__ = [
     'ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArgsDict',
     'ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs',
     'ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgsDict',
+    'StreamChangeLogArgs',
+    'StreamChangeLogArgsDict',
+    'StreamProjectArgs',
+    'StreamProjectArgsDict',
+    'StreamTimeoutsArgs',
+    'StreamTimeoutsArgsDict',
     'GetCloudRoutersFilterArgs',
     'GetCloudRoutersFilterArgsDict',
     'GetCloudRoutersPaginationArgs',
@@ -247,6 +253,8 @@ __all__ = [
     'GetConnectionsPaginationArgsDict',
     'GetConnectionsSortArgs',
     'GetConnectionsSortArgsDict',
+    'GetMetrosPaginationArgs',
+    'GetMetrosPaginationArgsDict',
     'GetNetworksFilterArgs',
     'GetNetworksFilterArgsDict',
     'GetNetworksPaginationArgs',
@@ -271,6 +279,8 @@ __all__ = [
     'GetServiceTokensFilterArgsDict',
     'GetServiceTokensPaginationArgs',
     'GetServiceTokensPaginationArgsDict',
+    'GetStreamsPaginationArgs',
+    'GetStreamsPaginationArgsDict',
 ]
 
 MYPY = False
@@ -11794,6 +11804,381 @@ class ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArg
 
 
 if not MYPY:
+    class StreamChangeLogArgsDict(TypedDict):
+        created_by: NotRequired[pulumi.Input[str]]
+        """
+        User name of creator of the stream resource
+        """
+        created_by_email: NotRequired[pulumi.Input[str]]
+        """
+        Email of creator of the stream resource
+        """
+        created_by_full_name: NotRequired[pulumi.Input[str]]
+        """
+        Legal name of creator of the stream resource
+        """
+        created_date_time: NotRequired[pulumi.Input[str]]
+        """
+        Creation time of the stream resource
+        """
+        deleted_by: NotRequired[pulumi.Input[str]]
+        """
+        User name of deleter of the stream resource
+        """
+        deleted_by_email: NotRequired[pulumi.Input[str]]
+        """
+        Email of deleter of the stream resource
+        """
+        deleted_by_full_name: NotRequired[pulumi.Input[str]]
+        """
+        Legal name of deleter of the stream resource
+        """
+        deleted_date_time: NotRequired[pulumi.Input[str]]
+        """
+        Deletion time of the stream resource
+        """
+        updated_by: NotRequired[pulumi.Input[str]]
+        """
+        User name of last updater of the stream resource
+        """
+        updated_by_email: NotRequired[pulumi.Input[str]]
+        """
+        Email of last updater of the stream resource
+        """
+        updated_by_full_name: NotRequired[pulumi.Input[str]]
+        """
+        Legal name of last updater of the stream resource
+        """
+        updated_date_time: NotRequired[pulumi.Input[str]]
+        """
+        Last update time of the stream resource
+        """
+elif False:
+    StreamChangeLogArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class StreamChangeLogArgs:
+    def __init__(__self__, *,
+                 created_by: Optional[pulumi.Input[str]] = None,
+                 created_by_email: Optional[pulumi.Input[str]] = None,
+                 created_by_full_name: Optional[pulumi.Input[str]] = None,
+                 created_date_time: Optional[pulumi.Input[str]] = None,
+                 deleted_by: Optional[pulumi.Input[str]] = None,
+                 deleted_by_email: Optional[pulumi.Input[str]] = None,
+                 deleted_by_full_name: Optional[pulumi.Input[str]] = None,
+                 deleted_date_time: Optional[pulumi.Input[str]] = None,
+                 updated_by: Optional[pulumi.Input[str]] = None,
+                 updated_by_email: Optional[pulumi.Input[str]] = None,
+                 updated_by_full_name: Optional[pulumi.Input[str]] = None,
+                 updated_date_time: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] created_by: User name of creator of the stream resource
+        :param pulumi.Input[str] created_by_email: Email of creator of the stream resource
+        :param pulumi.Input[str] created_by_full_name: Legal name of creator of the stream resource
+        :param pulumi.Input[str] created_date_time: Creation time of the stream resource
+        :param pulumi.Input[str] deleted_by: User name of deleter of the stream resource
+        :param pulumi.Input[str] deleted_by_email: Email of deleter of the stream resource
+        :param pulumi.Input[str] deleted_by_full_name: Legal name of deleter of the stream resource
+        :param pulumi.Input[str] deleted_date_time: Deletion time of the stream resource
+        :param pulumi.Input[str] updated_by: User name of last updater of the stream resource
+        :param pulumi.Input[str] updated_by_email: Email of last updater of the stream resource
+        :param pulumi.Input[str] updated_by_full_name: Legal name of last updater of the stream resource
+        :param pulumi.Input[str] updated_date_time: Last update time of the stream resource
+        """
+        if created_by is not None:
+            pulumi.set(__self__, "created_by", created_by)
+        if created_by_email is not None:
+            pulumi.set(__self__, "created_by_email", created_by_email)
+        if created_by_full_name is not None:
+            pulumi.set(__self__, "created_by_full_name", created_by_full_name)
+        if created_date_time is not None:
+            pulumi.set(__self__, "created_date_time", created_date_time)
+        if deleted_by is not None:
+            pulumi.set(__self__, "deleted_by", deleted_by)
+        if deleted_by_email is not None:
+            pulumi.set(__self__, "deleted_by_email", deleted_by_email)
+        if deleted_by_full_name is not None:
+            pulumi.set(__self__, "deleted_by_full_name", deleted_by_full_name)
+        if deleted_date_time is not None:
+            pulumi.set(__self__, "deleted_date_time", deleted_date_time)
+        if updated_by is not None:
+            pulumi.set(__self__, "updated_by", updated_by)
+        if updated_by_email is not None:
+            pulumi.set(__self__, "updated_by_email", updated_by_email)
+        if updated_by_full_name is not None:
+            pulumi.set(__self__, "updated_by_full_name", updated_by_full_name)
+        if updated_date_time is not None:
+            pulumi.set(__self__, "updated_date_time", updated_date_time)
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> Optional[pulumi.Input[str]]:
+        """
+        User name of creator of the stream resource
+        """
+        return pulumi.get(self, "created_by")
+
+    @created_by.setter
+    def created_by(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_by", value)
+
+    @property
+    @pulumi.getter(name="createdByEmail")
+    def created_by_email(self) -> Optional[pulumi.Input[str]]:
+        """
+        Email of creator of the stream resource
+        """
+        return pulumi.get(self, "created_by_email")
+
+    @created_by_email.setter
+    def created_by_email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_by_email", value)
+
+    @property
+    @pulumi.getter(name="createdByFullName")
+    def created_by_full_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Legal name of creator of the stream resource
+        """
+        return pulumi.get(self, "created_by_full_name")
+
+    @created_by_full_name.setter
+    def created_by_full_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_by_full_name", value)
+
+    @property
+    @pulumi.getter(name="createdDateTime")
+    def created_date_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Creation time of the stream resource
+        """
+        return pulumi.get(self, "created_date_time")
+
+    @created_date_time.setter
+    def created_date_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_date_time", value)
+
+    @property
+    @pulumi.getter(name="deletedBy")
+    def deleted_by(self) -> Optional[pulumi.Input[str]]:
+        """
+        User name of deleter of the stream resource
+        """
+        return pulumi.get(self, "deleted_by")
+
+    @deleted_by.setter
+    def deleted_by(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deleted_by", value)
+
+    @property
+    @pulumi.getter(name="deletedByEmail")
+    def deleted_by_email(self) -> Optional[pulumi.Input[str]]:
+        """
+        Email of deleter of the stream resource
+        """
+        return pulumi.get(self, "deleted_by_email")
+
+    @deleted_by_email.setter
+    def deleted_by_email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deleted_by_email", value)
+
+    @property
+    @pulumi.getter(name="deletedByFullName")
+    def deleted_by_full_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Legal name of deleter of the stream resource
+        """
+        return pulumi.get(self, "deleted_by_full_name")
+
+    @deleted_by_full_name.setter
+    def deleted_by_full_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deleted_by_full_name", value)
+
+    @property
+    @pulumi.getter(name="deletedDateTime")
+    def deleted_date_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Deletion time of the stream resource
+        """
+        return pulumi.get(self, "deleted_date_time")
+
+    @deleted_date_time.setter
+    def deleted_date_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deleted_date_time", value)
+
+    @property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> Optional[pulumi.Input[str]]:
+        """
+        User name of last updater of the stream resource
+        """
+        return pulumi.get(self, "updated_by")
+
+    @updated_by.setter
+    def updated_by(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated_by", value)
+
+    @property
+    @pulumi.getter(name="updatedByEmail")
+    def updated_by_email(self) -> Optional[pulumi.Input[str]]:
+        """
+        Email of last updater of the stream resource
+        """
+        return pulumi.get(self, "updated_by_email")
+
+    @updated_by_email.setter
+    def updated_by_email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated_by_email", value)
+
+    @property
+    @pulumi.getter(name="updatedByFullName")
+    def updated_by_full_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Legal name of last updater of the stream resource
+        """
+        return pulumi.get(self, "updated_by_full_name")
+
+    @updated_by_full_name.setter
+    def updated_by_full_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated_by_full_name", value)
+
+    @property
+    @pulumi.getter(name="updatedDateTime")
+    def updated_date_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Last update time of the stream resource
+        """
+        return pulumi.get(self, "updated_date_time")
+
+    @updated_date_time.setter
+    def updated_date_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated_date_time", value)
+
+
+if not MYPY:
+    class StreamProjectArgsDict(TypedDict):
+        project_id: pulumi.Input[str]
+        """
+        Equinix Subscriber-assigned project ID
+        """
+elif False:
+    StreamProjectArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class StreamProjectArgs:
+    def __init__(__self__, *,
+                 project_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] project_id: Equinix Subscriber-assigned project ID
+        """
+        pulumi.set(__self__, "project_id", project_id)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Input[str]:
+        """
+        Equinix Subscriber-assigned project ID
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project_id", value)
+
+
+if not MYPY:
+    class StreamTimeoutsArgsDict(TypedDict):
+        create: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        delete: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        read: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        update: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+elif False:
+    StreamTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class StreamTimeoutsArgs:
+    def __init__(__self__, *,
+                 create: Optional[pulumi.Input[str]] = None,
+                 delete: Optional[pulumi.Input[str]] = None,
+                 read: Optional[pulumi.Input[str]] = None,
+                 update: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param pulumi.Input[str] delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param pulumi.Input[str] read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param pulumi.Input[str] update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @property
+    @pulumi.getter
+    def create(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @create.setter
+    def create(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create", value)
+
+    @property
+    @pulumi.getter
+    def delete(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @delete.setter
+    def delete(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "delete", value)
+
+    @property
+    @pulumi.getter
+    def read(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "read", value)
+
+    @property
+    @pulumi.getter
+    def update(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+    @update.setter
+    def update(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "update", value)
+
+
+if not MYPY:
     class GetCloudRoutersFilterArgsDict(TypedDict):
         operator: str
         """
@@ -12177,6 +12562,115 @@ class GetConnectionsSortArgs:
     @property.setter
     def property(self, value: Optional[str]):
         pulumi.set(self, "property", value)
+
+
+if not MYPY:
+    class GetMetrosPaginationArgsDict(TypedDict):
+        next: str
+        """
+        URL relative to the next item in the response.
+        """
+        previous: str
+        """
+        URL relative to the previous item in the response.
+        """
+        total: float
+        """
+        The total number of metro returned
+        """
+        limit: NotRequired[float]
+        """
+        Maximum number of search results returned per page.
+        """
+        offset: NotRequired[float]
+        """
+        Index of the first item returned in the response.
+        """
+elif False:
+    GetMetrosPaginationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetMetrosPaginationArgs:
+    def __init__(__self__, *,
+                 next: str,
+                 previous: str,
+                 total: float,
+                 limit: Optional[float] = None,
+                 offset: Optional[float] = None):
+        """
+        :param str next: URL relative to the next item in the response.
+        :param str previous: URL relative to the previous item in the response.
+        :param float total: The total number of metro returned
+        :param float limit: Maximum number of search results returned per page.
+        :param float offset: Index of the first item returned in the response.
+        """
+        pulumi.set(__self__, "next", next)
+        pulumi.set(__self__, "previous", previous)
+        pulumi.set(__self__, "total", total)
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if offset is not None:
+            pulumi.set(__self__, "offset", offset)
+
+    @property
+    @pulumi.getter
+    def next(self) -> str:
+        """
+        URL relative to the next item in the response.
+        """
+        return pulumi.get(self, "next")
+
+    @next.setter
+    def next(self, value: str):
+        pulumi.set(self, "next", value)
+
+    @property
+    @pulumi.getter
+    def previous(self) -> str:
+        """
+        URL relative to the previous item in the response.
+        """
+        return pulumi.get(self, "previous")
+
+    @previous.setter
+    def previous(self, value: str):
+        pulumi.set(self, "previous", value)
+
+    @property
+    @pulumi.getter
+    def total(self) -> float:
+        """
+        The total number of metro returned
+        """
+        return pulumi.get(self, "total")
+
+    @total.setter
+    def total(self, value: float):
+        pulumi.set(self, "total", value)
+
+    @property
+    @pulumi.getter
+    def limit(self) -> Optional[float]:
+        """
+        Maximum number of search results returned per page.
+        """
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: Optional[float]):
+        pulumi.set(self, "limit", value)
+
+    @property
+    @pulumi.getter
+    def offset(self) -> Optional[float]:
+        """
+        Index of the first item returned in the response.
+        """
+        return pulumi.get(self, "offset")
+
+    @offset.setter
+    def offset(self, value: Optional[float]):
+        pulumi.set(self, "offset", value)
 
 
 if not MYPY:
@@ -12977,6 +13471,113 @@ class GetServiceTokensPaginationArgs:
 
     @total.setter
     def total(self, value: int):
+        pulumi.set(self, "total", value)
+
+
+if not MYPY:
+    class GetStreamsPaginationArgsDict(TypedDict):
+        limit: float
+        """
+        Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+        """
+        next: str
+        """
+        The URL relative to the next item in the response
+        """
+        offset: float
+        """
+        Index of the first item returned in the response. The default is 0
+        """
+        previous: str
+        """
+        The URL relative to the previous item in the response
+        """
+        total: float
+        """
+        The total number of streams available to the user making the request
+        """
+elif False:
+    GetStreamsPaginationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetStreamsPaginationArgs:
+    def __init__(__self__, *,
+                 limit: float,
+                 next: str,
+                 offset: float,
+                 previous: str,
+                 total: float):
+        """
+        :param float limit: Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+        :param str next: The URL relative to the next item in the response
+        :param float offset: Index of the first item returned in the response. The default is 0
+        :param str previous: The URL relative to the previous item in the response
+        :param float total: The total number of streams available to the user making the request
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "next", next)
+        pulumi.set(__self__, "offset", offset)
+        pulumi.set(__self__, "previous", previous)
+        pulumi.set(__self__, "total", total)
+
+    @property
+    @pulumi.getter
+    def limit(self) -> float:
+        """
+        Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+        """
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: float):
+        pulumi.set(self, "limit", value)
+
+    @property
+    @pulumi.getter
+    def next(self) -> str:
+        """
+        The URL relative to the next item in the response
+        """
+        return pulumi.get(self, "next")
+
+    @next.setter
+    def next(self, value: str):
+        pulumi.set(self, "next", value)
+
+    @property
+    @pulumi.getter
+    def offset(self) -> float:
+        """
+        Index of the first item returned in the response. The default is 0
+        """
+        return pulumi.get(self, "offset")
+
+    @offset.setter
+    def offset(self, value: float):
+        pulumi.set(self, "offset", value)
+
+    @property
+    @pulumi.getter
+    def previous(self) -> str:
+        """
+        The URL relative to the previous item in the response
+        """
+        return pulumi.get(self, "previous")
+
+    @previous.setter
+    def previous(self, value: str):
+        pulumi.set(self, "previous", value)
+
+    @property
+    @pulumi.getter
+    def total(self) -> float:
+        """
+        The total number of streams available to the user making the request
+        """
+        return pulumi.get(self, "total")
+
+    @total.setter
+    def total(self, value: float):
         pulumi.set(self, "total", value)
 
 
