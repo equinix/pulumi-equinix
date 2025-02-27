@@ -37,11 +37,11 @@ variables:
   # in two different metro locations
   dc:
     fn::invoke:
-      Function: equinix:networkedge:getAccount
-      Arguments:
+      function: equinix:networkedge:getAccount
+      arguments:
         metroCode: DC
   sv:
     fn::invoke:
-      Function: equinix:networkedge:getAccount
-      Arguments:
+      function: equinix:networkedge:getAccount
+      arguments:
         metroCode: SV

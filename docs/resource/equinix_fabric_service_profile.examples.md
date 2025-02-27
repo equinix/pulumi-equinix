@@ -234,7 +234,7 @@ public class App {
                 .allowBandwidthAutoApproval(false)
                 .connectionRedundancyRequired(false)
                 .connectionLabel("Service Profile Tag1")
-                .bandwidthAlertThreshold(10)
+                .bandwidthAlertThreshold(10.0)
                 .supportedBandwidths(                
                     100,
                     500)

@@ -16,22 +16,22 @@
 				<mainClass>generated_program.App</mainClass>
 				<mainArgs/>
 			</properties>
-
+			
 			<dependencies>
 				<dependency>
 					<groupId>com.pulumi</groupId>
 					<artifactId>pulumi</artifactId>
-					<version>(,1.0]</version>
+					<version>1.0.0</version>
 				</dependency>
 				<dependency>
-            		<groupId>com.pulumi</groupId>
-            		<artifactId>equinix</artifactId>
-            		<version>(,1.0)</version>
-        		</dependency><dependency>
-            		<groupId>com.pulumi</groupId>
-            		<artifactId>std</artifactId>
-            		<version>2.2.0</version>
-        		</dependency>
+					<groupId>com.pulumi</groupId>
+					<artifactId>equinix</artifactId>
+					<version>(,1.0)</version>
+				</dependency><dependency>
+					<groupId>com.pulumi</groupId>
+					<artifactId>std</artifactId>
+					<version>1.7.3</version>
+				</dependency>
 			</dependencies>
 
 			<build>

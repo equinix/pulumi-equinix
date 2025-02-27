@@ -32,13 +32,13 @@ public class App {
 
         var testVlan = new Vlan("testVlan", VlanArgs.builder()
             .projectId(projectId)
-            .metro(test.applyValue(getInterconnectionResult -> getInterconnectionResult.metro()))
+            .metro(test.applyValue(_test -> _test.metro()))
             .build());
 
         var testVirtualCircuit = new VirtualCircuit("testVirtualCircuit", VirtualCircuitArgs.builder()
             .connectionId(connId)
             .projectId(projectId)
-            .portId(test.applyValue(getInterconnectionResult -> getInterconnectionResult.ports()[0].id()))
+            .portId(test.applyValue(_test -> _test.ports()[0].id()))
             .vlanId(testVlan.id())
             .nniVlan(1056)
             .build());

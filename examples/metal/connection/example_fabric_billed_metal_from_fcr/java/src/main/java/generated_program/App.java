@@ -48,7 +48,7 @@ public class App {
         var exampleConnection = new Connection("exampleConnection", ConnectionArgs.builder()
             .name("tf-metal-from-fcr")
             .type("IP_VC")
-            .bandwidth("200")
+            .bandwidth(200)
             .notifications(ConnectionNotificationArgs.builder()
                 .type("ALL")
                 .emails("username@example.com")

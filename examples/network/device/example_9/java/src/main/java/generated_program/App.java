@@ -32,7 +32,7 @@ public class App {
 
         var panwCluster = new Device("panwCluster", DeviceArgs.builder()
             .name("tf-panw")
-            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+            .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
             .typeCode("PA-VM")
             .selfManaged(true)
             .byol(true)
@@ -42,7 +42,7 @@ public class App {
                 "marry@equinix.com",
                 "fred@equinix.com")
             .termLength(12)
-            .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
+            .accountNumber(sv.applyValue(_sv -> _sv.number()))
             .version("11.1.3")
             .interfaceCount(10)
             .coreCount(2)

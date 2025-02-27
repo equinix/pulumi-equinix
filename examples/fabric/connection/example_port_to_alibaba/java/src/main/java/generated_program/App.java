@@ -53,7 +53,7 @@ public class App {
                         .build())
                     .linkProtocol(ConnectionASideAccessPointLinkProtocolArgs.builder()
                         .type("DOT1Q")
-                        .vlanTag("2019")
+                        .vlanTag(2019)
                         .build())
                     .build())
                 .build())

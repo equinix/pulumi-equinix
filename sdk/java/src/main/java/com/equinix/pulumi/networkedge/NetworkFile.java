@@ -28,6 +28,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.equinix.networkedge.NetworkFile;
  * import com.pulumi.equinix.networkedge.NetworkFileArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FileArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -47,7 +49,7 @@ import javax.annotation.Nullable;
  *             .fileName("fileName.txt")
  *             .content(StdFunctions.file(FileArgs.builder()
  *                 .input(filepath)
- *                 .build()).result())
+ *                 .build()).applyValue(_invoke -> _invoke.result()))
  *             .metroCode("SV")
  *             .deviceTypeCode("AVIATRIX_EDGE")
  *             .processType("CLOUD_INIT")

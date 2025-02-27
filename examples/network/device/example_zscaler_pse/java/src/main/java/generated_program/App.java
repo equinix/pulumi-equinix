@@ -28,7 +28,7 @@ public class App {
         var zscalerPseSingle = new Device("zscalerPseSingle", DeviceArgs.builder()
             .name("tf-zscaler-pse")
             .projectId("XXXXXX")
-            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+            .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
             .typeCode("ZSCALER-PSE")
             .selfManaged(true)
             .byol(true)
@@ -39,7 +39,7 @@ public class App {
                 "marry@equinix.com",
                 "fred@equinix.com")
             .termLength(12)
-            .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
+            .accountNumber(sv.applyValue(_sv -> _sv.number()))
             .version("23.395.1")
             .interfaceCount(1)
             .coreCount(4)

@@ -49,7 +49,7 @@ public class App {
                         .build())
                     .linkProtocol(ConnectionASideAccessPointLinkProtocolArgs.builder()
                         .type("QINQ")
-                        .vlanSTag("1976")
+                        .vlanSTag(1976)
                         .build())
                     .build())
                 .build())

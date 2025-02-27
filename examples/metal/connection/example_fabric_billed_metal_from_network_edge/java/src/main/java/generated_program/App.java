@@ -33,7 +33,7 @@ public class App {
         var example = new Vrf("example", VrfArgs.builder()
             .name("tf-metal-from-ne")
             .metro("FR")
-            .localAsn("65001")
+            .localAsn(65001)
             .ipRanges("10.99.1.0/24")
             .projectId(test.id())
             .build());
@@ -53,7 +53,7 @@ public class App {
         var exampleConnection = new Connection("exampleConnection", ConnectionArgs.builder()
             .name("tf-metal-from-ne")
             .type("EVPL_VC")
-            .bandwidth("200")
+            .bandwidth(200)
             .notifications(ConnectionNotificationArgs.builder()
                 .type("ALL")
                 .emails("username@example.com")
@@ -75,7 +75,7 @@ public class App {
                 .build())
             .zSide(ConnectionZSideArgs.builder()
                 .serviceToken(ConnectionZSideServiceTokenArgs.builder()
-                    .uuid(exampleInterconnection.serviceTokens().applyValue(serviceTokens -> serviceTokens[0].id()))
+                    .uuid(exampleInterconnection.serviceTokens().applyValue(_serviceTokens -> _serviceTokens[0].id()))
                     .build())
                 .build())
             .build());

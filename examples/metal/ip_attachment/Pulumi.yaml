@@ -17,15 +17,15 @@ resources:
       deviceId: ${mydevice.id}
       cidrNotation:
         fn::invoke:
-          Function: std:join
-          Arguments:
+          function: std:join
+          arguments:
             separator: /
             input:
               - fn::invoke:
-                  Function: std:cidrhost
-                  Arguments:
+                  function: std:cidrhost
+                  arguments:
                     input: ${myblockMetalReservedIpBlock.cidrNotation}
                     host: 0
-                  Return: result
+                  return: result
               - '32'
-          Return: result
+          return: result

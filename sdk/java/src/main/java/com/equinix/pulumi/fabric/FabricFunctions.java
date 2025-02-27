@@ -18,6 +18,10 @@ import com.equinix.pulumi.fabric.inputs.GetConnectionsArgs;
 import com.equinix.pulumi.fabric.inputs.GetConnectionsPlainArgs;
 import com.equinix.pulumi.fabric.inputs.GetMarketplaceSubscriptionArgs;
 import com.equinix.pulumi.fabric.inputs.GetMarketplaceSubscriptionPlainArgs;
+import com.equinix.pulumi.fabric.inputs.GetMetroArgs;
+import com.equinix.pulumi.fabric.inputs.GetMetroPlainArgs;
+import com.equinix.pulumi.fabric.inputs.GetMetrosArgs;
+import com.equinix.pulumi.fabric.inputs.GetMetrosPlainArgs;
 import com.equinix.pulumi.fabric.inputs.GetNetworkArgs;
 import com.equinix.pulumi.fabric.inputs.GetNetworkPlainArgs;
 import com.equinix.pulumi.fabric.inputs.GetNetworksArgs;
@@ -44,6 +48,10 @@ import com.equinix.pulumi.fabric.inputs.GetServiceTokenArgs;
 import com.equinix.pulumi.fabric.inputs.GetServiceTokenPlainArgs;
 import com.equinix.pulumi.fabric.inputs.GetServiceTokensArgs;
 import com.equinix.pulumi.fabric.inputs.GetServiceTokensPlainArgs;
+import com.equinix.pulumi.fabric.inputs.GetStreamArgs;
+import com.equinix.pulumi.fabric.inputs.GetStreamPlainArgs;
+import com.equinix.pulumi.fabric.inputs.GetStreamsArgs;
+import com.equinix.pulumi.fabric.inputs.GetStreamsPlainArgs;
 import com.equinix.pulumi.fabric.outputs.GetCloudRouterResult;
 import com.equinix.pulumi.fabric.outputs.GetCloudRoutersResult;
 import com.equinix.pulumi.fabric.outputs.GetConnectionResult;
@@ -51,6 +59,8 @@ import com.equinix.pulumi.fabric.outputs.GetConnectionRouteFilterResult;
 import com.equinix.pulumi.fabric.outputs.GetConnectionRouteFiltersResult;
 import com.equinix.pulumi.fabric.outputs.GetConnectionsResult;
 import com.equinix.pulumi.fabric.outputs.GetMarketplaceSubscriptionResult;
+import com.equinix.pulumi.fabric.outputs.GetMetroResult;
+import com.equinix.pulumi.fabric.outputs.GetMetrosResult;
 import com.equinix.pulumi.fabric.outputs.GetNetworkResult;
 import com.equinix.pulumi.fabric.outputs.GetNetworksResult;
 import com.equinix.pulumi.fabric.outputs.GetPortResult;
@@ -64,6 +74,8 @@ import com.equinix.pulumi.fabric.outputs.GetServiceProfileResult;
 import com.equinix.pulumi.fabric.outputs.GetServiceProfilesResult;
 import com.equinix.pulumi.fabric.outputs.GetServiceTokenResult;
 import com.equinix.pulumi.fabric.outputs.GetServiceTokensResult;
+import com.equinix.pulumi.fabric.outputs.GetStreamResult;
+import com.equinix.pulumi.fabric.outputs.GetStreamsResult;
 import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
@@ -1066,6 +1078,234 @@ public final class FabricFunctions {
      */
     public static CompletableFuture<GetMarketplaceSubscriptionResult> getMarketplaceSubscriptionPlain(GetMarketplaceSubscriptionPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("equinix:fabric/getMarketplaceSubscription:getMarketplaceSubscription", TypeShape.of(GetMarketplaceSubscriptionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetMetroArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var metro = FabricFunctions.getMetro(GetMetroArgs.builder()
+     *             .metroCode("<metro_code>")
+     *             .build());
+     * 
+     *         ctx.export("id", metro.applyValue(getMetroResult -> getMetroResult.id()));
+     *         ctx.export("type", metro.applyValue(getMetroResult -> getMetroResult.type()));
+     *         ctx.export("metroCode", metro.applyValue(getMetroResult -> getMetroResult.metroCode()));
+     *         ctx.export("region", metro.applyValue(getMetroResult -> getMetroResult.region()));
+     *         ctx.export("name", metro.applyValue(getMetroResult -> getMetroResult.name()));
+     *         ctx.export("equinixAsn", metro.applyValue(getMetroResult -> getMetroResult.equinixAsn()));
+     *         ctx.export("localVcBandwidthMax", metro.applyValue(getMetroResult -> getMetroResult.localVcBandwidthMax()));
+     *         ctx.export("geoCoordinates", metro.applyValue(getMetroResult -> getMetroResult.geoCoordinates()));
+     *         ctx.export("connectedMetros", metro.applyValue(getMetroResult -> getMetroResult.connectedMetros()));
+     *         ctx.export("geoScopes", metro.applyValue(getMetroResult -> getMetroResult.geoScopes()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetMetroResult> getMetro(GetMetroArgs args) {
+        return getMetro(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetMetroArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var metro = FabricFunctions.getMetro(GetMetroArgs.builder()
+     *             .metroCode("<metro_code>")
+     *             .build());
+     * 
+     *         ctx.export("id", metro.applyValue(getMetroResult -> getMetroResult.id()));
+     *         ctx.export("type", metro.applyValue(getMetroResult -> getMetroResult.type()));
+     *         ctx.export("metroCode", metro.applyValue(getMetroResult -> getMetroResult.metroCode()));
+     *         ctx.export("region", metro.applyValue(getMetroResult -> getMetroResult.region()));
+     *         ctx.export("name", metro.applyValue(getMetroResult -> getMetroResult.name()));
+     *         ctx.export("equinixAsn", metro.applyValue(getMetroResult -> getMetroResult.equinixAsn()));
+     *         ctx.export("localVcBandwidthMax", metro.applyValue(getMetroResult -> getMetroResult.localVcBandwidthMax()));
+     *         ctx.export("geoCoordinates", metro.applyValue(getMetroResult -> getMetroResult.geoCoordinates()));
+     *         ctx.export("connectedMetros", metro.applyValue(getMetroResult -> getMetroResult.connectedMetros()));
+     *         ctx.export("geoScopes", metro.applyValue(getMetroResult -> getMetroResult.geoScopes()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetMetroResult> getMetroPlain(GetMetroPlainArgs args) {
+        return getMetroPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetMetroArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var metro = FabricFunctions.getMetro(GetMetroArgs.builder()
+     *             .metroCode("<metro_code>")
+     *             .build());
+     * 
+     *         ctx.export("id", metro.applyValue(getMetroResult -> getMetroResult.id()));
+     *         ctx.export("type", metro.applyValue(getMetroResult -> getMetroResult.type()));
+     *         ctx.export("metroCode", metro.applyValue(getMetroResult -> getMetroResult.metroCode()));
+     *         ctx.export("region", metro.applyValue(getMetroResult -> getMetroResult.region()));
+     *         ctx.export("name", metro.applyValue(getMetroResult -> getMetroResult.name()));
+     *         ctx.export("equinixAsn", metro.applyValue(getMetroResult -> getMetroResult.equinixAsn()));
+     *         ctx.export("localVcBandwidthMax", metro.applyValue(getMetroResult -> getMetroResult.localVcBandwidthMax()));
+     *         ctx.export("geoCoordinates", metro.applyValue(getMetroResult -> getMetroResult.geoCoordinates()));
+     *         ctx.export("connectedMetros", metro.applyValue(getMetroResult -> getMetroResult.connectedMetros()));
+     *         ctx.export("geoScopes", metro.applyValue(getMetroResult -> getMetroResult.geoScopes()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetMetroResult> getMetro(GetMetroArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getMetro:getMetro", TypeShape.of(GetMetroResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetMetroArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var metro = FabricFunctions.getMetro(GetMetroArgs.builder()
+     *             .metroCode("<metro_code>")
+     *             .build());
+     * 
+     *         ctx.export("id", metro.applyValue(getMetroResult -> getMetroResult.id()));
+     *         ctx.export("type", metro.applyValue(getMetroResult -> getMetroResult.type()));
+     *         ctx.export("metroCode", metro.applyValue(getMetroResult -> getMetroResult.metroCode()));
+     *         ctx.export("region", metro.applyValue(getMetroResult -> getMetroResult.region()));
+     *         ctx.export("name", metro.applyValue(getMetroResult -> getMetroResult.name()));
+     *         ctx.export("equinixAsn", metro.applyValue(getMetroResult -> getMetroResult.equinixAsn()));
+     *         ctx.export("localVcBandwidthMax", metro.applyValue(getMetroResult -> getMetroResult.localVcBandwidthMax()));
+     *         ctx.export("geoCoordinates", metro.applyValue(getMetroResult -> getMetroResult.geoCoordinates()));
+     *         ctx.export("connectedMetros", metro.applyValue(getMetroResult -> getMetroResult.connectedMetros()));
+     *         ctx.export("geoScopes", metro.applyValue(getMetroResult -> getMetroResult.geoScopes()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetMetroResult> getMetroPlain(GetMetroPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("equinix:fabric/getMetro:getMetro", TypeShape.of(GetMetroResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetMetrosResult> getMetros(GetMetrosArgs args) {
+        return getMetros(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetMetrosResult> getMetrosPlain(GetMetrosPlainArgs args) {
+        return getMetrosPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetMetrosResult> getMetros(GetMetrosArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getMetros:getMetros", TypeShape.of(GetMetrosResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetMetrosResult> getMetrosPlain(GetMetrosPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("equinix:fabric/getMetros:getMetros", TypeShape.of(GetMetrosResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Fabric Network for a given UUID
@@ -3510,5 +3750,397 @@ public final class FabricFunctions {
      */
     public static CompletableFuture<GetServiceTokensResult> getServiceTokensPlain(GetServiceTokensPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("equinix:fabric/getServiceTokens:getServiceTokens", TypeShape.of(GetServiceTokensResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Stream by UUID
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Streams
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dataStream = FabricFunctions.getStream(GetStreamArgs.builder()
+     *             .streamId("<uuid_of_stream>")
+     *             .build());
+     * 
+     *         ctx.export("streamState", dataStream.applyValue(getStreamResult -> getStreamResult.state()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetStreamResult> getStream(GetStreamArgs args) {
+        return getStream(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Stream by UUID
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Streams
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dataStream = FabricFunctions.getStream(GetStreamArgs.builder()
+     *             .streamId("<uuid_of_stream>")
+     *             .build());
+     * 
+     *         ctx.export("streamState", dataStream.applyValue(getStreamResult -> getStreamResult.state()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetStreamResult> getStreamPlain(GetStreamPlainArgs args) {
+        return getStreamPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Stream by UUID
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Streams
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dataStream = FabricFunctions.getStream(GetStreamArgs.builder()
+     *             .streamId("<uuid_of_stream>")
+     *             .build());
+     * 
+     *         ctx.export("streamState", dataStream.applyValue(getStreamResult -> getStreamResult.state()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetStreamResult> getStream(GetStreamArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getStream:getStream", TypeShape.of(GetStreamResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Stream by UUID
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Streams
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dataStream = FabricFunctions.getStream(GetStreamArgs.builder()
+     *             .streamId("<uuid_of_stream>")
+     *             .build());
+     * 
+     *         ctx.export("streamState", dataStream.applyValue(getStreamResult -> getStreamResult.state()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetStreamResult> getStreamPlain(GetStreamPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("equinix:fabric/getStream:getStream", TypeShape.of(GetStreamResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Streams with pagination details
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Streams
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamsArgs;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamsPaginationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dataStreams = FabricFunctions.getStreams(GetStreamsArgs.builder()
+     *             .pagination(GetStreamsPaginationArgs.builder()
+     *                 .limit(2)
+     *                 .offset(1)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("numberOfReturnedStreams", dataStreams.applyValue(getStreamsResult -> getStreamsResult.datas()).length());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetStreamsResult> getStreams(GetStreamsArgs args) {
+        return getStreams(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Streams with pagination details
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Streams
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamsArgs;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamsPaginationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dataStreams = FabricFunctions.getStreams(GetStreamsArgs.builder()
+     *             .pagination(GetStreamsPaginationArgs.builder()
+     *                 .limit(2)
+     *                 .offset(1)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("numberOfReturnedStreams", dataStreams.applyValue(getStreamsResult -> getStreamsResult.datas()).length());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetStreamsResult> getStreamsPlain(GetStreamsPlainArgs args) {
+        return getStreamsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Streams with pagination details
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Streams
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamsArgs;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamsPaginationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dataStreams = FabricFunctions.getStreams(GetStreamsArgs.builder()
+     *             .pagination(GetStreamsPaginationArgs.builder()
+     *                 .limit(2)
+     *                 .offset(1)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("numberOfReturnedStreams", dataStreams.applyValue(getStreamsResult -> getStreamsResult.datas()).length());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetStreamsResult> getStreams(GetStreamsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getStreams:getStreams", TypeShape.of(GetStreamsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Streams with pagination details
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Streams
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamsArgs;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamsPaginationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dataStreams = FabricFunctions.getStreams(GetStreamsArgs.builder()
+     *             .pagination(GetStreamsPaginationArgs.builder()
+     *                 .limit(2)
+     *                 .offset(1)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("numberOfReturnedStreams", dataStreams.applyValue(getStreamsResult -> getStreamsResult.datas()).length());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetStreamsResult> getStreamsPlain(GetStreamsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("equinix:fabric/getStreams:getStreams", TypeShape.of(GetStreamsResult.class), args, Utilities.withVersion(options));
     }
 }

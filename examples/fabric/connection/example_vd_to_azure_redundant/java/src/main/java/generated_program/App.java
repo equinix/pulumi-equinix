@@ -79,7 +79,7 @@ public class App {
             .type("EVPL_VC")
             .redundancy(ConnectionRedundancyArgs.builder()
                 .priority("SECONDARY")
-                .group(vd2AzurePrimary.redundancy().applyValue(redundancy -> redundancy.group()))
+                .group(vd2AzurePrimary.redundancy().applyValue(_redundancy -> _redundancy.group()))
                 .build())
             .notifications(ConnectionNotificationArgs.builder()
                 .type("ALL")

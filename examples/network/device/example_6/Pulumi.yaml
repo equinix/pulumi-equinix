@@ -44,7 +44,7 @@ variables:
   # Create self configured redundant Arista router with DSA key
   sv:
     fn::invoke:
-      Function: equinix:networkedge:getAccount
-      Arguments:
+      function: equinix:networkedge:getAccount
+      arguments:
         name: account-name
         metroCode: SV

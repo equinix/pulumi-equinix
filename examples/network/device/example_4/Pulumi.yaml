@@ -29,7 +29,7 @@ variables:
   # Create self configured single Catalyst 8000V (Autonomous Mode) router with license token
   sv:
     fn::invoke:
-      Function: equinix:networkedge:getAccount
-      Arguments:
+      function: equinix:networkedge:getAccount
+      arguments:
         name: account-name
         metroCode: SV

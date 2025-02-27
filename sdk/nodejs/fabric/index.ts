@@ -55,6 +55,16 @@ export const getMarketplaceSubscription: typeof import("./getMarketplaceSubscrip
 export const getMarketplaceSubscriptionOutput: typeof import("./getMarketplaceSubscription").getMarketplaceSubscriptionOutput = null as any;
 utilities.lazyLoad(exports, ["getMarketplaceSubscription","getMarketplaceSubscriptionOutput"], () => require("./getMarketplaceSubscription"));
 
+export { GetMetroArgs, GetMetroResult, GetMetroOutputArgs } from "./getMetro";
+export const getMetro: typeof import("./getMetro").getMetro = null as any;
+export const getMetroOutput: typeof import("./getMetro").getMetroOutput = null as any;
+utilities.lazyLoad(exports, ["getMetro","getMetroOutput"], () => require("./getMetro"));
+
+export { GetMetrosArgs, GetMetrosResult, GetMetrosOutputArgs } from "./getMetros";
+export const getMetros: typeof import("./getMetros").getMetros = null as any;
+export const getMetrosOutput: typeof import("./getMetros").getMetrosOutput = null as any;
+utilities.lazyLoad(exports, ["getMetros","getMetrosOutput"], () => require("./getMetros"));
+
 export { GetNetworkArgs, GetNetworkResult, GetNetworkOutputArgs } from "./getNetwork";
 export const getNetwork: typeof import("./getNetwork").getNetwork = null as any;
 export const getNetworkOutput: typeof import("./getNetwork").getNetworkOutput = null as any;
@@ -120,6 +130,16 @@ export const getServiceTokens: typeof import("./getServiceTokens").getServiceTok
 export const getServiceTokensOutput: typeof import("./getServiceTokens").getServiceTokensOutput = null as any;
 utilities.lazyLoad(exports, ["getServiceTokens","getServiceTokensOutput"], () => require("./getServiceTokens"));
 
+export { GetStreamArgs, GetStreamResult, GetStreamOutputArgs } from "./getStream";
+export const getStream: typeof import("./getStream").getStream = null as any;
+export const getStreamOutput: typeof import("./getStream").getStreamOutput = null as any;
+utilities.lazyLoad(exports, ["getStream","getStreamOutput"], () => require("./getStream"));
+
+export { GetStreamsArgs, GetStreamsResult, GetStreamsOutputArgs } from "./getStreams";
+export const getStreams: typeof import("./getStreams").getStreams = null as any;
+export const getStreamsOutput: typeof import("./getStreams").getStreamsOutput = null as any;
+utilities.lazyLoad(exports, ["getStreams","getStreamsOutput"], () => require("./getStreams"));
+
 export { NetworkArgs, NetworkState } from "./network";
 export type Network = import("./network").Network;
 export const Network: typeof import("./network").Network = null as any;
@@ -150,6 +170,11 @@ export type ServiceToken = import("./serviceToken").ServiceToken;
 export const ServiceToken: typeof import("./serviceToken").ServiceToken = null as any;
 utilities.lazyLoad(exports, ["ServiceToken"], () => require("./serviceToken"));
 
+export { StreamArgs, StreamState } from "./stream";
+export type Stream = import("./stream").Stream;
+export const Stream: typeof import("./stream").Stream = null as any;
+utilities.lazyLoad(exports, ["Stream"], () => require("./stream"));
+
 
 // Export enums:
 export * from "../types/enums/fabric";
@@ -176,6 +201,8 @@ const _module = {
                 return new ServiceProfile(name, <any>undefined, { urn })
             case "equinix:fabric/serviceToken:ServiceToken":
                 return new ServiceToken(name, <any>undefined, { urn })
+            case "equinix:fabric/stream:Stream":
+                return new Stream(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -190,3 +217,4 @@ pulumi.runtime.registerResourceModule("equinix", "fabric/routeFilterRule", _modu
 pulumi.runtime.registerResourceModule("equinix", "fabric/routingProtocol", _module)
 pulumi.runtime.registerResourceModule("equinix", "fabric/serviceProfile", _module)
 pulumi.runtime.registerResourceModule("equinix", "fabric/serviceToken", _module)
+pulumi.runtime.registerResourceModule("equinix", "fabric/stream", _module)

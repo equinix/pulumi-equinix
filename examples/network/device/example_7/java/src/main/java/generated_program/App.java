@@ -37,14 +37,14 @@ public class App {
 
         var bluecatBddsHa = new Device("bluecatBddsHa", DeviceArgs.builder()
             .name("tf-bluecat-bdds-p")
-            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+            .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
             .typeCode("BLUECAT")
             .selfManaged(true)
             .connectivity("PRIVATE")
             .byol(true)
             .packageCode("STD")
             .notifications("test@equinix.com")
-            .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
+            .accountNumber(sv.applyValue(_sv -> _sv.number()))
             .version("9.6.0")
             .coreCount(2)
             .termLength(12)
@@ -62,9 +62,9 @@ public class App {
                 .build())
             .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
                 .name("tf-bluecat-bdds-s")
-                .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+                .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
                 .notifications("test@eq.com")
-                .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
+                .accountNumber(sv.applyValue(_sv -> _sv.number()))
                 .vendorConfiguration(Map.ofEntries(
                     Map.entry("hostname", "test"),
                     Map.entry("privateAddress", "x.x.x.x"),
