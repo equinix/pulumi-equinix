@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  *             .name("tf-csr1000v-p")
  *             .throughput(500)
  *             .throughputUnit("Mbps")
- *             .metroCode(dc.applyValue(getAccountResult -> getAccountResult.metroCode()))
+ *             .metroCode(dc.applyValue(_dc -> _dc.metroCode()))
  *             .typeCode("CSR1000V")
  *             .selfManaged(false)
  *             .connectivity("INTERNET-ACCESS")
@@ -86,17 +86,17 @@ import javax.annotation.Nullable;
  *                 "fred}{@literal @}{@code equinix.com")
  *             .hostname("csr1000v-p")
  *             .termLength(12)
- *             .accountNumber(dc.applyValue(getAccountResult -> getAccountResult.number()))
+ *             .accountNumber(dc.applyValue(_dc -> _dc.number()))
  *             .version("16.09.05")
  *             .coreCount(2)
  *             .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
  *                 .name("tf-csr1000v-s")
- *                 .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+ *                 .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
  *                 .hostname("csr1000v-s")
  *                 .notifications(                
  *                     "john}{@literal @}{@code equinix.com",
  *                     "marry}{@literal @}{@code equinix.com")
- *                 .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
+ *                 .accountNumber(sv.applyValue(_sv -> _sv.number()))
  *                 .build())
  *             .build());
  * 
@@ -141,7 +141,7 @@ import javax.annotation.Nullable;
  * 
  *         var panwCluster = new Device("panwCluster", DeviceArgs.builder()
  *             .name("tf-panw")
- *             .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+ *             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
  *             .typeCode("PA-VM")
  *             .selfManaged(true)
  *             .byol(true)
@@ -151,7 +151,7 @@ import javax.annotation.Nullable;
  *                 "marry}{@literal @}{@code equinix.com",
  *                 "fred}{@literal @}{@code equinix.com")
  *             .termLength(12)
- *             .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
+ *             .accountNumber(sv.applyValue(_sv -> _sv.number()))
  *             .version("10.1.3")
  *             .interfaceCount(10)
  *             .coreCount(2)
@@ -193,6 +193,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
  * import com.pulumi.equinix.networkedge.NetworkFile;
  * import com.pulumi.equinix.networkedge.NetworkFileArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FileArgs;
  * import com.pulumi.equinix.networkedge.Device;
  * import com.pulumi.equinix.networkedge.DeviceArgs;
  * import java.util.List;
@@ -218,8 +220,8 @@ import javax.annotation.Nullable;
  *             .fileName("TF-AVX-cloud-init-file.txt")
  *             .content(StdFunctions.file(FileArgs.builder()
  *                 .input(filepath)
- *                 .build()).result())
- *             .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+ *                 .build()).applyValue(_invoke -> _invoke.result()))
+ *             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
  *             .deviceTypeCode("AVIATRIX_EDGE")
  *             .processType("CLOUD_INIT")
  *             .selfManaged(true)
@@ -228,14 +230,14 @@ import javax.annotation.Nullable;
  * 
  *         var aviatrixSingle = new Device("aviatrixSingle", DeviceArgs.builder()
  *             .name("tf-aviatrix")
- *             .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+ *             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
  *             .typeCode("AVIATRIX_EDGE")
  *             .selfManaged(true)
  *             .byol(true)
  *             .packageCode("STD")
  *             .notifications("john}{@literal @}{@code equinix.com")
  *             .termLength(12)
- *             .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
+ *             .accountNumber(sv.applyValue(_sv -> _sv.number()))
  *             .version("6.9")
  *             .coreCount(2)
  *             .cloudInitFileId(aviatrixCloudinitFile.uuid())
@@ -279,14 +281,14 @@ import javax.annotation.Nullable;
  * 
  *         var c8KvSingle = new Device("c8KvSingle", DeviceArgs.builder()
  *             .name("tf-c8kv")
- *             .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+ *             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
  *             .typeCode("C8000V")
  *             .selfManaged(true)
  *             .byol(true)
  *             .packageCode("network-essentials")
  *             .notifications("test}{@literal @}{@code equinix.com")
  *             .hostname("C8KV")
- *             .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
+ *             .accountNumber(sv.applyValue(_sv -> _sv.number()))
  *             .version("17.06.01a")
  *             .coreCount(2)
  *             .termLength(12)
@@ -336,14 +338,14 @@ import javax.annotation.Nullable;
  * 
  *         var vsrxSingle = new Device("vsrxSingle", DeviceArgs.builder()
  *             .name("tf-c8kv-sdwan")
- *             .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+ *             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
  *             .typeCode("VSRX")
  *             .selfManaged(true)
  *             .byol(true)
  *             .packageCode("STD")
  *             .notifications("test}{@literal @}{@code equinix.com")
  *             .hostname("VSRX")
- *             .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
+ *             .accountNumber(sv.applyValue(_sv -> _sv.number()))
  *             .version("23.2R1.13")
  *             .coreCount(2)
  *             .termLength(12)
@@ -403,7 +405,7 @@ import javax.annotation.Nullable;
  * 
  *         var aristaHa = new Device("aristaHa", DeviceArgs.builder()
  *             .name("tf-arista-p")
- *             .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+ *             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
  *             .typeCode("ARISTA-ROUTER")
  *             .selfManaged(true)
  *             .connectivity("PRIVATE")
@@ -411,7 +413,7 @@ import javax.annotation.Nullable;
  *             .packageCode("CloudEOS")
  *             .notifications("test}{@literal @}{@code equinix.com")
  *             .hostname("arista-p")
- *             .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
+ *             .accountNumber(sv.applyValue(_sv -> _sv.number()))
  *             .version("4.29.0")
  *             .coreCount(4)
  *             .termLength(12)
@@ -423,10 +425,10 @@ import javax.annotation.Nullable;
  *             .aclTemplateId("c637a17b-7a6a-4486-924b-30e6c36904b0")
  *             .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
  *                 .name("tf-arista-s")
- *                 .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+ *                 .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
  *                 .hostname("arista-s")
  *                 .notifications("test}{@literal @}{@code eq.com")
- *                 .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
+ *                 .accountNumber(sv.applyValue(_sv -> _sv.number()))
  *                 .aclTemplateId("fee5e2c0-6198-4ce6-9cbd-bbe6c1dbe138")
  *                 .build())
  *             .build());
@@ -477,14 +479,14 @@ import javax.annotation.Nullable;
  * 
  *         var bluecatBddsHa = new Device("bluecatBddsHa", DeviceArgs.builder()
  *             .name("tf-bluecat-bdds-p")
- *             .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+ *             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
  *             .typeCode("BLUECAT")
  *             .selfManaged(true)
  *             .connectivity("PRIVATE")
  *             .byol(true)
  *             .packageCode("STD")
  *             .notifications("test}{@literal @}{@code equinix.com")
- *             .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
+ *             .accountNumber(sv.applyValue(_sv -> _sv.number()))
  *             .version("9.6.0")
  *             .coreCount(2)
  *             .termLength(12)
@@ -502,9 +504,9 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
  *                 .name("tf-bluecat-bdds-s")
- *                 .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+ *                 .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
  *                 .notifications("test}{@literal @}{@code eq.com")
- *                 .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
+ *                 .accountNumber(sv.applyValue(_sv -> _sv.number()))
  *                 .vendorConfiguration(Map.ofEntries(
  *                     Map.entry("hostname", "test"),
  *                     Map.entry("privateAddress", "x.x.x.x"),
@@ -532,6 +534,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
  * import com.pulumi.equinix.networkedge.NetworkFile;
  * import com.pulumi.equinix.networkedge.NetworkFileArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FileArgs;
  * import com.pulumi.equinix.networkedge.Device;
  * import com.pulumi.equinix.networkedge.DeviceArgs;
  * import com.pulumi.equinix.networkedge.inputs.DeviceSecondaryDeviceArgs;
@@ -557,8 +561,8 @@ import javax.annotation.Nullable;
  *             .fileName("TF-BLUECAT-ESP-cloud-init-file.txt")
  *             .content(StdFunctions.file(FileArgs.builder()
  *                 .input(filepath)
- *                 .build()).result())
- *             .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+ *                 .build()).applyValue(_invoke -> _invoke.result()))
+ *             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
  *             .deviceTypeCode("BLUECAT-EDGE-SERVICE-POINT")
  *             .processType("CLOUD_INIT")
  *             .selfManaged(true)
@@ -569,8 +573,8 @@ import javax.annotation.Nullable;
  *             .fileName("TF-BLUECAT-ESP-cloud-init-file.txt")
  *             .content(StdFunctions.file(FileArgs.builder()
  *                 .input(filepath)
- *                 .build()).result())
- *             .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+ *                 .build()).applyValue(_invoke -> _invoke.result()))
+ *             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
  *             .deviceTypeCode("BLUECAT-EDGE-SERVICE-POINT")
  *             .processType("CLOUD_INIT")
  *             .selfManaged(true)
@@ -579,23 +583,23 @@ import javax.annotation.Nullable;
  * 
  *         var bluecatEdgeServicePointHa = new Device("bluecatEdgeServicePointHa", DeviceArgs.builder()
  *             .name("tf-bluecat-edge-service-point-p")
- *             .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+ *             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
  *             .typeCode("BLUECAT-EDGE-SERVICE-POINT")
  *             .selfManaged(true)
  *             .connectivity("PRIVATE")
  *             .byol(true)
  *             .packageCode("STD")
  *             .notifications("test}{@literal @}{@code equinix.com")
- *             .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
+ *             .accountNumber(sv.applyValue(_sv -> _sv.number()))
  *             .cloudInitFileId(bluecatEdgeServicePointCloudinitPrimaryFile.uuid())
  *             .version("4.6.3")
  *             .coreCount(4)
  *             .termLength(12)
  *             .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
  *                 .name("tf-bluecat-edge-service-point-s")
- *                 .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+ *                 .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
  *                 .notifications("test}{@literal @}{@code eq.com")
- *                 .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
+ *                 .accountNumber(sv.applyValue(_sv -> _sv.number()))
  *                 .cloudInitFileId(bluecatEdgeServicePointCloudinitSecondaryFile.uuid())
  *                 .build())
  *             .build());
@@ -641,7 +645,7 @@ import javax.annotation.Nullable;
  * 
  *         var panwCluster = new Device("panwCluster", DeviceArgs.builder()
  *             .name("tf-panw")
- *             .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+ *             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
  *             .typeCode("PA-VM")
  *             .selfManaged(true)
  *             .byol(true)
@@ -651,7 +655,7 @@ import javax.annotation.Nullable;
  *                 "marry}{@literal @}{@code equinix.com",
  *                 "fred}{@literal @}{@code equinix.com")
  *             .termLength(12)
- *             .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
+ *             .accountNumber(sv.applyValue(_sv -> _sv.number()))
  *             .version("11.1.3")
  *             .interfaceCount(10)
  *             .coreCount(2)
@@ -697,6 +701,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
  * import com.pulumi.equinix.networkedge.NetworkFile;
  * import com.pulumi.equinix.networkedge.NetworkFileArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FileArgs;
  * import com.pulumi.equinix.networkedge.Device;
  * import com.pulumi.equinix.networkedge.DeviceArgs;
  * import java.util.List;
@@ -722,8 +728,8 @@ import javax.annotation.Nullable;
  *             .fileName("TF-AVX-cloud-init-file.txt")
  *             .content(StdFunctions.file(FileArgs.builder()
  *                 .input(filepath)
- *                 .build()).result())
- *             .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+ *                 .build()).applyValue(_invoke -> _invoke.result()))
+ *             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
  *             .deviceTypeCode("AVIATRIX_TRANSIT_EDGE")
  *             .processType("CLOUD_INIT")
  *             .selfManaged(true)
@@ -732,14 +738,14 @@ import javax.annotation.Nullable;
  * 
  *         var aviatrixTransitEdgeSingle = new Device("aviatrixTransitEdgeSingle", DeviceArgs.builder()
  *             .name("tf-aviatrix")
- *             .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+ *             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
  *             .typeCode("AVIATRIX_TRANSIT_EDGE")
  *             .selfManaged(true)
  *             .byol(true)
  *             .packageCode("STD")
  *             .notifications("john}{@literal @}{@code equinix.com")
  *             .termLength(12)
- *             .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
+ *             .accountNumber(sv.applyValue(_sv -> _sv.number()))
  *             .version("7.2.a")
  *             .coreCount(2)
  *             .cloudInitFileId(aviatrixCloudinitFile.uuid())
@@ -782,7 +788,7 @@ import javax.annotation.Nullable;
  * 
  *         var c8000VByolWithtoutDefaultPassword = new Device("c8000VByolWithtoutDefaultPassword", DeviceArgs.builder()
  *             .name("tf-c8000v-byol")
- *             .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+ *             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
  *             .typeCode("C8000V")
  *             .selfManaged(true)
  *             .byol(true)
@@ -793,7 +799,7 @@ import javax.annotation.Nullable;
  *                 "marry}{@literal @}{@code equinix.com",
  *                 "fred}{@literal @}{@code equinix.com")
  *             .termLength(12)
- *             .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
+ *             .accountNumber(sv.applyValue(_sv -> _sv.number()))
  *             .version("17.11.01a")
  *             .interfaceCount(10)
  *             .coreCount(2)
@@ -841,7 +847,7 @@ import javax.annotation.Nullable;
  * 
  *         var c8000VByolThroughput = new Device("c8000VByolThroughput", DeviceArgs.builder()
  *             .name("tf-c8000v-byol")
- *             .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+ *             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
  *             .typeCode("C8000V")
  *             .selfManaged(true)
  *             .byol(true)
@@ -851,11 +857,11 @@ import javax.annotation.Nullable;
  *                 "marry}{@literal @}{@code equinix.com",
  *                 "fred}{@literal @}{@code equinix.com")
  *             .termLength(12)
- *             .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
+ *             .accountNumber(sv.applyValue(_sv -> _sv.number()))
  *             .version("17.11.01a")
  *             .interfaceCount(10)
  *             .coreCount(2)
- *             .throughput("100")
+ *             .throughput(100)
  *             .throughputUnit("Mbps")
  *             .sshKey(DeviceSshKeyArgs.builder()
  *                 .username("test")
@@ -900,7 +906,7 @@ import javax.annotation.Nullable;
  * 
  *         var c8000VByolTier = new Device("c8000VByolTier", DeviceArgs.builder()
  *             .name("tf-c8000v-byol")
- *             .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+ *             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
  *             .typeCode("C8000V")
  *             .selfManaged(true)
  *             .byol(true)
@@ -910,7 +916,7 @@ import javax.annotation.Nullable;
  *                 "marry}{@literal @}{@code equinix.com",
  *                 "fred}{@literal @}{@code equinix.com")
  *             .termLength(12)
- *             .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
+ *             .accountNumber(sv.applyValue(_sv -> _sv.number()))
  *             .version("17.11.01a")
  *             .interfaceCount(10)
  *             .coreCount(2)
@@ -959,7 +965,7 @@ import javax.annotation.Nullable;
  *         var zscalerAppcSingle = new Device("zscalerAppcSingle", DeviceArgs.builder()
  *             .name("tf-zscaler-appc")
  *             .projectId("XXXXXX")
- *             .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+ *             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
  *             .typeCode("ZSCALER-APPC")
  *             .selfManaged(true)
  *             .byol(true)
@@ -970,7 +976,7 @@ import javax.annotation.Nullable;
  *                 "marry}{@literal @}{@code equinix.com",
  *                 "fred}{@literal @}{@code equinix.com")
  *             .termLength(12)
- *             .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
+ *             .accountNumber(sv.applyValue(_sv -> _sv.number()))
  *             .version("23.395.1")
  *             .interfaceCount(1)
  *             .coreCount(4)
@@ -1021,7 +1027,7 @@ import javax.annotation.Nullable;
  *         var zscalerPseSingle = new Device("zscalerPseSingle", DeviceArgs.builder()
  *             .name("tf-zscaler-pse")
  *             .projectId("XXXXXX")
- *             .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+ *             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
  *             .typeCode("ZSCALER-PSE")
  *             .selfManaged(true)
  *             .byol(true)
@@ -1032,7 +1038,7 @@ import javax.annotation.Nullable;
  *                 "marry}{@literal @}{@code equinix.com",
  *                 "fred}{@literal @}{@code equinix.com")
  *             .termLength(12)
- *             .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
+ *             .accountNumber(sv.applyValue(_sv -> _sv.number()))
  *             .version("23.395.1")
  *             .interfaceCount(1)
  *             .coreCount(4)

@@ -1158,6 +1158,52 @@ export namespace fabric {
         property?: pulumi.Input<string>;
     }
 
+    export interface GetMetrosPagination {
+        /**
+         * Maximum number of search results returned per page.
+         */
+        limit?: number;
+        /**
+         * URL relative to the next item in the response.
+         */
+        next?: string;
+        /**
+         * Index of the first item returned in the response.
+         */
+        offset?: number;
+        /**
+         * URL relative to the previous item in the response.
+         */
+        previous?: string;
+        /**
+         * The total number of metro returned
+         */
+        total?: number;
+    }
+
+    export interface GetMetrosPaginationArgs {
+        /**
+         * Maximum number of search results returned per page.
+         */
+        limit?: pulumi.Input<number>;
+        /**
+         * URL relative to the next item in the response.
+         */
+        next?: pulumi.Input<string>;
+        /**
+         * Index of the first item returned in the response.
+         */
+        offset?: pulumi.Input<number>;
+        /**
+         * URL relative to the previous item in the response.
+         */
+        previous?: pulumi.Input<string>;
+        /**
+         * The total number of metro returned
+         */
+        total?: pulumi.Input<number>;
+    }
+
     export interface GetNetworksFilter {
         /**
          * Optional custom id parameter to assign this filter to an inner AND or OR group. Group id must be prefixed with AND_ or OR_. Ensure intended grouped elements have the same given id. Ungrouped filters will be placed in the filter list group by themselves.
@@ -1498,6 +1544,52 @@ export namespace fabric {
         previous?: pulumi.Input<string>;
         /**
          * Total number of elements returned.
+         */
+        total?: pulumi.Input<number>;
+    }
+
+    export interface GetStreamsPagination {
+        /**
+         * Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+         */
+        limit?: number;
+        /**
+         * The URL relative to the next item in the response
+         */
+        next?: string;
+        /**
+         * Index of the first item returned in the response. The default is 0
+         */
+        offset?: number;
+        /**
+         * The URL relative to the previous item in the response
+         */
+        previous?: string;
+        /**
+         * The total number of streams available to the user making the request
+         */
+        total?: number;
+    }
+
+    export interface GetStreamsPaginationArgs {
+        /**
+         * Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+         */
+        limit?: pulumi.Input<number>;
+        /**
+         * The URL relative to the next item in the response
+         */
+        next?: pulumi.Input<string>;
+        /**
+         * Index of the first item returned in the response. The default is 0
+         */
+        offset?: pulumi.Input<number>;
+        /**
+         * The URL relative to the previous item in the response
+         */
+        previous?: pulumi.Input<string>;
+        /**
+         * The total number of streams available to the user making the request
          */
         total?: pulumi.Input<number>;
     }
@@ -2893,6 +2985,83 @@ export namespace fabric {
          * Equinix-assigned Virtual Device identifier
          */
         uuid: pulumi.Input<string>;
+    }
+
+    export interface StreamChangeLog {
+        /**
+         * User name of creator of the stream resource
+         */
+        createdBy?: pulumi.Input<string>;
+        /**
+         * Email of creator of the stream resource
+         */
+        createdByEmail?: pulumi.Input<string>;
+        /**
+         * Legal name of creator of the stream resource
+         */
+        createdByFullName?: pulumi.Input<string>;
+        /**
+         * Creation time of the stream resource
+         */
+        createdDateTime?: pulumi.Input<string>;
+        /**
+         * User name of deleter of the stream resource
+         */
+        deletedBy?: pulumi.Input<string>;
+        /**
+         * Email of deleter of the stream resource
+         */
+        deletedByEmail?: pulumi.Input<string>;
+        /**
+         * Legal name of deleter of the stream resource
+         */
+        deletedByFullName?: pulumi.Input<string>;
+        /**
+         * Deletion time of the stream resource
+         */
+        deletedDateTime?: pulumi.Input<string>;
+        /**
+         * User name of last updater of the stream resource
+         */
+        updatedBy?: pulumi.Input<string>;
+        /**
+         * Email of last updater of the stream resource
+         */
+        updatedByEmail?: pulumi.Input<string>;
+        /**
+         * Legal name of last updater of the stream resource
+         */
+        updatedByFullName?: pulumi.Input<string>;
+        /**
+         * Last update time of the stream resource
+         */
+        updatedDateTime?: pulumi.Input<string>;
+    }
+
+    export interface StreamProject {
+        /**
+         * Equinix Subscriber-assigned project ID
+         */
+        projectId: pulumi.Input<string>;
+    }
+
+    export interface StreamTimeouts {
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+         */
+        create?: pulumi.Input<string>;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+         */
+        delete?: pulumi.Input<string>;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+         */
+        read?: pulumi.Input<string>;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+         */
+        update?: pulumi.Input<string>;
     }
 }
 

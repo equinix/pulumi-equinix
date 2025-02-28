@@ -44,6 +44,6 @@ variables:
   # with Panorama Server IP and Panorama Auth Key in vendor Configuration
   sv:
     fn::invoke:
-      Function: equinix:networkedge:getAccount
-      Arguments:
+      function: equinix:networkedge:getAccount
+      arguments:
         metroCode: SV

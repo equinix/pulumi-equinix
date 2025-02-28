@@ -30,6 +30,6 @@ variables:
   # Create C8000V BYOL device with bandwidth tier information
   sv:
     fn::invoke:
-      Function: equinix:networkedge:getAccount
-      Arguments:
+      function: equinix:networkedge:getAccount
+      arguments:
         metroCode: SV

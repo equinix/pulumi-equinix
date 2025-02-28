@@ -12,10 +12,10 @@ resources:
       fileName: fileName.txt
       content:
         fn::invoke:
-          Function: std:file
-          Arguments:
+          function: std:file
+          arguments:
             input: ${filepath}
-          Return: result
+          return: result
       metroCode: SV
       deviceTypeCode: AVIATRIX_EDGE
       processType: CLOUD_INIT

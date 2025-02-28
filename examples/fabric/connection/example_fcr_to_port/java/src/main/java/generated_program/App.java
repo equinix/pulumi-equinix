@@ -57,7 +57,7 @@ public class App {
                         .build())
                     .linkProtocol(ConnectionZSideAccessPointLinkProtocolArgs.builder()
                         .type("DOT1Q")
-                        .vlanTag("2711")
+                        .vlanTag(2711)
                         .build())
                     .location(ConnectionZSideAccessPointLocationArgs.builder()
                         .metroCode("SV")

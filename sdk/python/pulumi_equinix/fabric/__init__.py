@@ -16,6 +16,8 @@ from .get_connection_route_filter import *
 from .get_connection_route_filters import *
 from .get_connections import *
 from .get_marketplace_subscription import *
+from .get_metro import *
+from .get_metros import *
 from .get_network import *
 from .get_networks import *
 from .get_port import *
@@ -29,11 +31,14 @@ from .get_service_profile import *
 from .get_service_profiles import *
 from .get_service_token import *
 from .get_service_tokens import *
+from .get_stream import *
+from .get_streams import *
 from .network import *
 from .route_filter import *
 from .route_filter_rule import *
 from .routing_protocol import *
 from .service_profile import *
 from .service_token import *
+from .stream import *
 from ._inputs import *
 from . import outputs

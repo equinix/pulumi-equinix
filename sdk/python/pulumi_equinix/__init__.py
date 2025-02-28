@@ -101,6 +101,14 @@ _utilities.register(
  },
  {
   "pkg": "equinix",
+  "mod": "fabric/stream",
+  "fqn": "pulumi_equinix.fabric",
+  "classes": {
+   "equinix:fabric/stream:Stream": "Stream"
+  }
+ },
+ {
+  "pkg": "equinix",
   "mod": "metal/bgpSession",
   "fqn": "pulumi_equinix.metal",
   "classes": {

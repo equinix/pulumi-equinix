@@ -131,6 +131,9 @@ import com.pulumi.equinix.metal.ReservedIpBlock;
 import com.pulumi.equinix.metal.ReservedIpBlockArgs;
 import com.pulumi.equinix.metal.IpAttachment;
 import com.pulumi.equinix.metal.IpAttachmentArgs;
+import com.pulumi.std.StdFunctions;
+import com.pulumi.std.inputs.CidrhostArgs;
+import com.pulumi.std.inputs.JoinArgs;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
@@ -158,9 +161,9 @@ public class App {
                     StdFunctions.cidrhost(CidrhostArgs.builder()
                         .input(myblockMetalReservedIpBlock.cidrNotation())
                         .host(0)
-                        .build()).result(),
+                        .build()).applyValue(_invoke -> _invoke.result()),
                     "32")
-                .build()).result())
+                .build()).applyValue(_invoke -> _invoke.result()))
             .build());
 
     }
@@ -183,17 +186,17 @@ resources:
       deviceId: ${mydevice.id}
       cidrNotation:
         fn::invoke:
-          Function: std:join
-          Arguments:
+          function: std:join
+          arguments:
             separator: /
             input:
               - fn::invoke:
-                  Function: std:cidrhost
-                  Arguments:
+                  function: std:cidrhost
+                  arguments:
                     input: ${myblockMetalReservedIpBlock.cidrNotation}
                     host: 0
-                  Return: result
+                  return: result
               - '32'
-          Return: result
+          return: result
 ```
 {{% /example %}}

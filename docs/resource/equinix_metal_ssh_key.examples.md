@@ -122,6 +122,8 @@ import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
 import com.pulumi.equinix.metal.SshKey;
 import com.pulumi.equinix.metal.SshKeyArgs;
+import com.pulumi.std.StdFunctions;
+import com.pulumi.std.inputs.FileArgs;
 import com.pulumi.equinix.metal.Device;
 import com.pulumi.equinix.metal.DeviceArgs;
 import com.pulumi.resources.CustomResourceOptions;
@@ -142,7 +144,7 @@ public class App {
             .name("terraform-1")
             .publicKey(StdFunctions.file(FileArgs.builder()
                 .input("/home/terraform/.ssh/id_rsa.pub")
-                .build()).result())
+                .build()).applyValue(_invoke -> _invoke.result()))
             .build());
 
         var test = new Device("test", DeviceArgs.builder()
@@ -168,10 +170,10 @@ resources:
       name: terraform-1
       publicKey:
         fn::invoke:
-          Function: std:file
-          Arguments:
+          function: std:file
+          arguments:
             input: /home/terraform/.ssh/id_rsa.pub
-          Return: result
+          return: result
   # Create new device with "key1" included. The device resource "depends_on" the
   # key, in order to make sure the key is created before the device.
   test:
@@ -184,7 +186,7 @@ resources:
       billingCycle: hourly
       projectId: ${projectId}
     options:
-      dependson:
+      dependsOn:
         - ${key1}
 ```
 {{% /example %}}

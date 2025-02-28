@@ -27,7 +27,7 @@ public class App {
 
         var c8000VByolTier = new Device("c8000VByolTier", DeviceArgs.builder()
             .name("tf-c8000v-byol")
-            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+            .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
             .typeCode("C8000V")
             .selfManaged(true)
             .byol(true)
@@ -37,7 +37,7 @@ public class App {
                 "marry@equinix.com",
                 "fred@equinix.com")
             .termLength(12)
-            .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
+            .accountNumber(sv.applyValue(_sv -> _sv.number()))
             .version("17.11.01a")
             .interfaceCount(10)
             .coreCount(2)

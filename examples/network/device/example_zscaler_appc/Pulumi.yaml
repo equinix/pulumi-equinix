@@ -32,6 +32,6 @@ variables:
   # Create ZSCALER APPC device
   sv:
     fn::invoke:
-      Function: equinix:networkedge:getAccount
-      Arguments:
+      function: equinix:networkedge:getAccount
+      arguments:
         metroCode: SV

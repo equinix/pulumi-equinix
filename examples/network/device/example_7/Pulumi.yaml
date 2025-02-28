@@ -53,7 +53,7 @@ variables:
   # Create self configured redundant BlueCat DNS and DHCP Server
   sv:
     fn::invoke:
-      Function: equinix:networkedge:getAccount
-      Arguments:
+      function: equinix:networkedge:getAccount
+      arguments:
         name: account-name
         metroCode: SV

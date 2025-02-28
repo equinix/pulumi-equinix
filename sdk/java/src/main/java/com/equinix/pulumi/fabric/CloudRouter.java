@@ -83,7 +83,7 @@ import javax.annotation.Nullable;
  *                 .projectId("776847000642406")
  *                 .build())
  *             .account(CloudRouterAccountArgs.builder()
- *                 .accountNumber("203612")
+ *                 .accountNumber(203612)
  *                 .build())
  *             .build());
  * 

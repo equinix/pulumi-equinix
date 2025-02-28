@@ -50,7 +50,7 @@ resources:
 variables:
   aSide:
     fn::invoke:
-      Function: equinix:fabric:getPorts
-      Arguments:
+      function: equinix:fabric:getPorts
+      arguments:
         filter:
           name: <name_of_port||port_prefix>

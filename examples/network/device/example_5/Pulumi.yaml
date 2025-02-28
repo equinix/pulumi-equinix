@@ -30,7 +30,7 @@ variables:
   # Create self configured single VSRX device with BYOL License
   sv:
     fn::invoke:
-      Function: equinix:networkedge:getAccount
-      Arguments:
+      function: equinix:networkedge:getAccount
+      arguments:
         name: account-name
         metroCode: SV
