@@ -33,7 +33,7 @@ public class App {
             .name("tf-csr1000v-p")
             .throughput(500)
             .throughputUnit("Mbps")
-            .metroCode(dc.applyValue(_dc -> _dc.metroCode()))
+            .metroCode(dc.applyValue(getAccountResult -> getAccountResult.metroCode()))
             .typeCode("CSR1000V")
             .selfManaged(false)
             .connectivity("INTERNET-ACCESS")
@@ -45,17 +45,17 @@ public class App {
                 "fred@equinix.com")
             .hostname("csr1000v-p")
             .termLength(12)
-            .accountNumber(dc.applyValue(_dc -> _dc.number()))
+            .accountNumber(dc.applyValue(getAccountResult -> getAccountResult.number()))
             .version("16.09.05")
             .coreCount(2)
             .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
                 .name("tf-csr1000v-s")
-                .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+                .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
                 .hostname("csr1000v-s")
                 .notifications(                
                     "john@equinix.com",
                     "marry@equinix.com")
-                .accountNumber(sv.applyValue(_sv -> _sv.number()))
+                .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
                 .build())
             .build());
 

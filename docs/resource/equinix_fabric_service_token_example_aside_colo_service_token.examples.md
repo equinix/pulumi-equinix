@@ -215,7 +215,7 @@ public class App {
                             .build())
                         .linkProtocol(ServiceTokenServiceTokenConnectionASideAccessPointSelectorLinkProtocolArgs.builder()
                             .type("DOT1Q")
-                            .vlanTag(2987)
+                            .vlanTag("2987")
                             .build())
                         .build())
                     .build())

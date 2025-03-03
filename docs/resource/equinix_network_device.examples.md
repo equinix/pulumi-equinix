@@ -236,7 +236,7 @@ public class App {
             .name("tf-csr1000v-p")
             .throughput(500)
             .throughputUnit("Mbps")
-            .metroCode(dc.applyValue(_dc -> _dc.metroCode()))
+            .metroCode(dc.applyValue(getAccountResult -> getAccountResult.metroCode()))
             .typeCode("CSR1000V")
             .selfManaged(false)
             .connectivity("INTERNET-ACCESS")
@@ -248,17 +248,17 @@ public class App {
                 "fred@equinix.com")
             .hostname("csr1000v-p")
             .termLength(12)
-            .accountNumber(dc.applyValue(_dc -> _dc.number()))
+            .accountNumber(dc.applyValue(getAccountResult -> getAccountResult.number()))
             .version("16.09.05")
             .coreCount(2)
             .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
                 .name("tf-csr1000v-s")
-                .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+                .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
                 .hostname("csr1000v-s")
                 .notifications(                
                     "john@equinix.com",
                     "marry@equinix.com")
-                .accountNumber(sv.applyValue(_sv -> _sv.number()))
+                .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
                 .build())
             .build());
 
@@ -302,13 +302,13 @@ variables:
   # in two different metro locations
   dc:
     fn::invoke:
-      function: equinix:networkedge:getAccount
-      arguments:
+      Function: equinix:networkedge:getAccount
+      Arguments:
         metroCode: DC
   sv:
     fn::invoke:
-      function: equinix:networkedge:getAccount
-      arguments:
+      Function: equinix:networkedge:getAccount
+      Arguments:
         metroCode: SV
 ```
 {{% /example %}}
@@ -564,7 +564,7 @@ public class App {
 
         var panwCluster = new Device("panwCluster", DeviceArgs.builder()
             .name("tf-panw")
-            .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
             .typeCode("PA-VM")
             .selfManaged(true)
             .byol(true)
@@ -574,7 +574,7 @@ public class App {
                 "marry@equinix.com",
                 "fred@equinix.com")
             .termLength(12)
-            .accountNumber(sv.applyValue(_sv -> _sv.number()))
+            .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
             .version("10.1.3")
             .interfaceCount(10)
             .coreCount(2)
@@ -642,8 +642,8 @@ variables:
   # Create self configured PANW cluster with BYOL license
   sv:
     fn::invoke:
-      function: equinix:networkedge:getAccount
-      arguments:
+      Function: equinix:networkedge:getAccount
+      Arguments:
         metroCode: SV
 ```
 {{% /example %}}
@@ -850,8 +850,6 @@ import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
 import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
 import com.pulumi.equinix.networkedge.NetworkFile;
 import com.pulumi.equinix.networkedge.NetworkFileArgs;
-import com.pulumi.std.StdFunctions;
-import com.pulumi.std.inputs.FileArgs;
 import com.pulumi.equinix.networkedge.Device;
 import com.pulumi.equinix.networkedge.DeviceArgs;
 import java.util.List;
@@ -877,8 +875,8 @@ public class App {
             .fileName("TF-AVX-cloud-init-file.txt")
             .content(StdFunctions.file(FileArgs.builder()
                 .input(filepath)
-                .build()).applyValue(_invoke -> _invoke.result()))
-            .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+                .build()).result())
+            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
             .deviceTypeCode("AVIATRIX_EDGE")
             .processType("CLOUD_INIT")
             .selfManaged(true)
@@ -887,14 +885,14 @@ public class App {
 
         var aviatrixSingle = new Device("aviatrixSingle", DeviceArgs.builder()
             .name("tf-aviatrix")
-            .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
             .typeCode("AVIATRIX_EDGE")
             .selfManaged(true)
             .byol(true)
             .packageCode("STD")
             .notifications("john@equinix.com")
             .termLength(12)
-            .accountNumber(sv.applyValue(_sv -> _sv.number()))
+            .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
             .version("6.9")
             .coreCount(2)
             .cloudInitFileId(aviatrixCloudinitFile.uuid())
@@ -917,10 +915,10 @@ resources:
       fileName: TF-AVX-cloud-init-file.txt
       content:
         fn::invoke:
-          function: std:file
-          arguments:
+          Function: std:file
+          Arguments:
             input: ${filepath}
-          return: result
+          Return: result
       metroCode: ${sv.metroCode}
       deviceTypeCode: AVIATRIX_EDGE
       processType: CLOUD_INIT
@@ -948,8 +946,8 @@ variables:
   # Create self configured single Aviatrix device with cloud init file
   sv:
     fn::invoke:
-      function: equinix:networkedge:getAccount
-      arguments:
+      Function: equinix:networkedge:getAccount
+      Arguments:
         metroCode: SV
 ```
 {{% /example %}}
@@ -1136,14 +1134,14 @@ public class App {
 
         var c8KvSingle = new Device("c8KvSingle", DeviceArgs.builder()
             .name("tf-c8kv")
-            .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
             .typeCode("C8000V")
             .selfManaged(true)
             .byol(true)
             .packageCode("network-essentials")
             .notifications("test@equinix.com")
             .hostname("C8KV")
-            .accountNumber(sv.applyValue(_sv -> _sv.number()))
+            .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
             .version("17.06.01a")
             .coreCount(2)
             .termLength(12)
@@ -1188,8 +1186,8 @@ variables:
   # Create self configured single Catalyst 8000V (Autonomous Mode) router with license token
   sv:
     fn::invoke:
-      function: equinix:networkedge:getAccount
-      arguments:
+      Function: equinix:networkedge:getAccount
+      Arguments:
         name: account-name
         metroCode: SV
 ```
@@ -1381,14 +1379,14 @@ public class App {
 
         var vsrxSingle = new Device("vsrxSingle", DeviceArgs.builder()
             .name("tf-c8kv-sdwan")
-            .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
             .typeCode("VSRX")
             .selfManaged(true)
             .byol(true)
             .packageCode("STD")
             .notifications("test@equinix.com")
             .hostname("VSRX")
-            .accountNumber(sv.applyValue(_sv -> _sv.number()))
+            .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
             .version("23.2R1.13")
             .coreCount(2)
             .termLength(12)
@@ -1435,8 +1433,8 @@ variables:
   # Create self configured single VSRX device with BYOL License
   sv:
     fn::invoke:
-      function: equinix:networkedge:getAccount
-      arguments:
+      Function: equinix:networkedge:getAccount
+      Arguments:
         name: account-name
         metroCode: SV
 ```
@@ -1699,7 +1697,7 @@ public class App {
 
         var aristaHa = new Device("aristaHa", DeviceArgs.builder()
             .name("tf-arista-p")
-            .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
             .typeCode("ARISTA-ROUTER")
             .selfManaged(true)
             .connectivity("PRIVATE")
@@ -1707,7 +1705,7 @@ public class App {
             .packageCode("CloudEOS")
             .notifications("test@equinix.com")
             .hostname("arista-p")
-            .accountNumber(sv.applyValue(_sv -> _sv.number()))
+            .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
             .version("4.29.0")
             .coreCount(4)
             .termLength(12)
@@ -1719,10 +1717,10 @@ public class App {
             .aclTemplateId("c637a17b-7a6a-4486-924b-30e6c36904b0")
             .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
                 .name("tf-arista-s")
-                .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+                .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
                 .hostname("arista-s")
                 .notifications("test@eq.com")
-                .accountNumber(sv.applyValue(_sv -> _sv.number()))
+                .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
                 .aclTemplateId("fee5e2c0-6198-4ce6-9cbd-bbe6c1dbe138")
                 .build())
             .build());
@@ -1774,8 +1772,8 @@ variables:
   # Create self configured redundant Arista router with DSA key
   sv:
     fn::invoke:
-      function: equinix:networkedge:getAccount
-      arguments:
+      Function: equinix:networkedge:getAccount
+      Arguments:
         name: account-name
         metroCode: SV
 ```
@@ -2084,14 +2082,14 @@ public class App {
 
         var bluecatBddsHa = new Device("bluecatBddsHa", DeviceArgs.builder()
             .name("tf-bluecat-bdds-p")
-            .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
             .typeCode("BLUECAT")
             .selfManaged(true)
             .connectivity("PRIVATE")
             .byol(true)
             .packageCode("STD")
             .notifications("test@equinix.com")
-            .accountNumber(sv.applyValue(_sv -> _sv.number()))
+            .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
             .version("9.6.0")
             .coreCount(2)
             .termLength(12)
@@ -2109,9 +2107,9 @@ public class App {
                 .build())
             .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
                 .name("tf-bluecat-bdds-s")
-                .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+                .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
                 .notifications("test@eq.com")
-                .accountNumber(sv.applyValue(_sv -> _sv.number()))
+                .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
                 .vendorConfiguration(Map.ofEntries(
                     Map.entry("hostname", "test"),
                     Map.entry("privateAddress", "x.x.x.x"),
@@ -2179,8 +2177,8 @@ variables:
   # Create self configured redundant BlueCat DNS and DHCP Server
   sv:
     fn::invoke:
-      function: equinix:networkedge:getAccount
-      arguments:
+      Function: equinix:networkedge:getAccount
+      Arguments:
         name: account-name
         metroCode: SV
 ```
@@ -2467,8 +2465,6 @@ import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
 import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
 import com.pulumi.equinix.networkedge.NetworkFile;
 import com.pulumi.equinix.networkedge.NetworkFileArgs;
-import com.pulumi.std.StdFunctions;
-import com.pulumi.std.inputs.FileArgs;
 import com.pulumi.equinix.networkedge.Device;
 import com.pulumi.equinix.networkedge.DeviceArgs;
 import com.pulumi.equinix.networkedge.inputs.DeviceSecondaryDeviceArgs;
@@ -2494,8 +2490,8 @@ public class App {
             .fileName("TF-BLUECAT-ESP-cloud-init-file.txt")
             .content(StdFunctions.file(FileArgs.builder()
                 .input(filepath)
-                .build()).applyValue(_invoke -> _invoke.result()))
-            .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+                .build()).result())
+            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
             .deviceTypeCode("BLUECAT-EDGE-SERVICE-POINT")
             .processType("CLOUD_INIT")
             .selfManaged(true)
@@ -2506,8 +2502,8 @@ public class App {
             .fileName("TF-BLUECAT-ESP-cloud-init-file.txt")
             .content(StdFunctions.file(FileArgs.builder()
                 .input(filepath)
-                .build()).applyValue(_invoke -> _invoke.result()))
-            .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+                .build()).result())
+            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
             .deviceTypeCode("BLUECAT-EDGE-SERVICE-POINT")
             .processType("CLOUD_INIT")
             .selfManaged(true)
@@ -2516,23 +2512,23 @@ public class App {
 
         var bluecatEdgeServicePointHa = new Device("bluecatEdgeServicePointHa", DeviceArgs.builder()
             .name("tf-bluecat-edge-service-point-p")
-            .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
             .typeCode("BLUECAT-EDGE-SERVICE-POINT")
             .selfManaged(true)
             .connectivity("PRIVATE")
             .byol(true)
             .packageCode("STD")
             .notifications("test@equinix.com")
-            .accountNumber(sv.applyValue(_sv -> _sv.number()))
+            .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
             .cloudInitFileId(bluecatEdgeServicePointCloudinitPrimaryFile.uuid())
             .version("4.6.3")
             .coreCount(4)
             .termLength(12)
             .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
                 .name("tf-bluecat-edge-service-point-s")
-                .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+                .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
                 .notifications("test@eq.com")
-                .accountNumber(sv.applyValue(_sv -> _sv.number()))
+                .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
                 .cloudInitFileId(bluecatEdgeServicePointCloudinitSecondaryFile.uuid())
                 .build())
             .build());
@@ -2549,10 +2545,10 @@ resources:
       fileName: TF-BLUECAT-ESP-cloud-init-file.txt
       content:
         fn::invoke:
-          function: std:file
-          arguments:
+          Function: std:file
+          Arguments:
             input: ${filepath}
-          return: result
+          Return: result
       metroCode: ${sv.metroCode}
       deviceTypeCode: BLUECAT-EDGE-SERVICE-POINT
       processType: CLOUD_INIT
@@ -2565,10 +2561,10 @@ resources:
       fileName: TF-BLUECAT-ESP-cloud-init-file.txt
       content:
         fn::invoke:
-          function: std:file
-          arguments:
+          Function: std:file
+          Arguments:
             input: ${filepath}
-          return: result
+          Return: result
       metroCode: ${sv.metroCode}
       deviceTypeCode: BLUECAT-EDGE-SERVICE-POINT
       processType: CLOUD_INIT
@@ -2603,8 +2599,8 @@ variables:
   # Create self configured redundant BlueCat Edge Service Point
   sv:
     fn::invoke:
-      function: equinix:networkedge:getAccount
-      arguments:
+      Function: equinix:networkedge:getAccount
+      Arguments:
         name: account-name
         metroCode: SV
 ```
@@ -2877,7 +2873,7 @@ public class App {
 
         var panwCluster = new Device("panwCluster", DeviceArgs.builder()
             .name("tf-panw")
-            .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
             .typeCode("PA-VM")
             .selfManaged(true)
             .byol(true)
@@ -2887,7 +2883,7 @@ public class App {
                 "marry@equinix.com",
                 "fred@equinix.com")
             .termLength(12)
-            .accountNumber(sv.applyValue(_sv -> _sv.number()))
+            .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
             .version("11.1.3")
             .interfaceCount(10)
             .coreCount(2)
@@ -2964,8 +2960,8 @@ variables:
   # with Panorama Server IP and Panorama Auth Key in vendor Configuration
   sv:
     fn::invoke:
-      function: equinix:networkedge:getAccount
-      arguments:
+      Function: equinix:networkedge:getAccount
+      Arguments:
         metroCode: SV
 ```
 {{% /example %}}
@@ -3172,8 +3168,6 @@ import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
 import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
 import com.pulumi.equinix.networkedge.NetworkFile;
 import com.pulumi.equinix.networkedge.NetworkFileArgs;
-import com.pulumi.std.StdFunctions;
-import com.pulumi.std.inputs.FileArgs;
 import com.pulumi.equinix.networkedge.Device;
 import com.pulumi.equinix.networkedge.DeviceArgs;
 import java.util.List;
@@ -3199,8 +3193,8 @@ public class App {
             .fileName("TF-AVX-cloud-init-file.txt")
             .content(StdFunctions.file(FileArgs.builder()
                 .input(filepath)
-                .build()).applyValue(_invoke -> _invoke.result()))
-            .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+                .build()).result())
+            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
             .deviceTypeCode("AVIATRIX_TRANSIT_EDGE")
             .processType("CLOUD_INIT")
             .selfManaged(true)
@@ -3209,14 +3203,14 @@ public class App {
 
         var aviatrixTransitEdgeSingle = new Device("aviatrixTransitEdgeSingle", DeviceArgs.builder()
             .name("tf-aviatrix")
-            .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
             .typeCode("AVIATRIX_TRANSIT_EDGE")
             .selfManaged(true)
             .byol(true)
             .packageCode("STD")
             .notifications("john@equinix.com")
             .termLength(12)
-            .accountNumber(sv.applyValue(_sv -> _sv.number()))
+            .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
             .version("7.2.a")
             .coreCount(2)
             .cloudInitFileId(aviatrixCloudinitFile.uuid())
@@ -3239,10 +3233,10 @@ resources:
       fileName: TF-AVX-cloud-init-file.txt
       content:
         fn::invoke:
-          function: std:file
-          arguments:
+          Function: std:file
+          Arguments:
             input: ${filepath}
-          return: result
+          Return: result
       metroCode: ${sv.metroCode}
       deviceTypeCode: AVIATRIX_TRANSIT_EDGE
       processType: CLOUD_INIT
@@ -3269,8 +3263,8 @@ variables:
   # Create self configured single Aviatrix Transit Edge device with cloud init file
   sv:
     fn::invoke:
-      function: equinix:networkedge:getAccount
-      arguments:
+      Function: equinix:networkedge:getAccount
+      Arguments:
         metroCode: SV
 ```
 {{% /example %}}
@@ -3464,7 +3458,7 @@ public class App {
 
         var c8000VByolWithtoutDefaultPassword = new Device("c8000VByolWithtoutDefaultPassword", DeviceArgs.builder()
             .name("tf-c8000v-byol")
-            .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
             .typeCode("C8000V")
             .selfManaged(true)
             .byol(true)
@@ -3475,7 +3469,7 @@ public class App {
                 "marry@equinix.com",
                 "fred@equinix.com")
             .termLength(12)
-            .accountNumber(sv.applyValue(_sv -> _sv.number()))
+            .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
             .version("17.11.01a")
             .interfaceCount(10)
             .coreCount(2)
@@ -3520,8 +3514,8 @@ variables:
   # Create C8000V BYOL device with bandwidth tier information
   sv:
     fn::invoke:
-      function: equinix:networkedge:getAccount
-      arguments:
+      Function: equinix:networkedge:getAccount
+      Arguments:
         metroCode: SV
 ```
 {{% /example %}}
@@ -3715,7 +3709,7 @@ public class App {
 
         var c8000VByolThroughput = new Device("c8000VByolThroughput", DeviceArgs.builder()
             .name("tf-c8000v-byol")
-            .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
             .typeCode("C8000V")
             .selfManaged(true)
             .byol(true)
@@ -3725,11 +3719,11 @@ public class App {
                 "marry@equinix.com",
                 "fred@equinix.com")
             .termLength(12)
-            .accountNumber(sv.applyValue(_sv -> _sv.number()))
+            .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
             .version("17.11.01a")
             .interfaceCount(10)
             .coreCount(2)
-            .throughput(100)
+            .throughput("100")
             .throughputUnit("Mbps")
             .sshKey(DeviceSshKeyArgs.builder()
                 .username("test")
@@ -3771,8 +3765,8 @@ variables:
   # Create C8000V BYOL device with numeric bandwidth throughput information
   sv:
     fn::invoke:
-      function: equinix:networkedge:getAccount
-      arguments:
+      Function: equinix:networkedge:getAccount
+      Arguments:
         metroCode: SV
 ```
 {{% /example %}}
@@ -3962,7 +3956,7 @@ public class App {
 
         var c8000VByolTier = new Device("c8000VByolTier", DeviceArgs.builder()
             .name("tf-c8000v-byol")
-            .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
             .typeCode("C8000V")
             .selfManaged(true)
             .byol(true)
@@ -3972,7 +3966,7 @@ public class App {
                 "marry@equinix.com",
                 "fred@equinix.com")
             .termLength(12)
-            .accountNumber(sv.applyValue(_sv -> _sv.number()))
+            .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
             .version("17.11.01a")
             .interfaceCount(10)
             .coreCount(2)
@@ -4016,8 +4010,8 @@ variables:
   # Create C8000V BYOL device with bandwidth tier information
   sv:
     fn::invoke:
-      function: equinix:networkedge:getAccount
-      arguments:
+      Function: equinix:networkedge:getAccount
+      Arguments:
         metroCode: SV
 ```
 {{% /example %}}
@@ -4225,7 +4219,7 @@ public class App {
         var zscalerAppcSingle = new Device("zscalerAppcSingle", DeviceArgs.builder()
             .name("tf-zscaler-appc")
             .projectId("XXXXXX")
-            .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
             .typeCode("ZSCALER-APPC")
             .selfManaged(true)
             .byol(true)
@@ -4236,7 +4230,7 @@ public class App {
                 "marry@equinix.com",
                 "fred@equinix.com")
             .termLength(12)
-            .accountNumber(sv.applyValue(_sv -> _sv.number()))
+            .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
             .version("23.395.1")
             .interfaceCount(1)
             .coreCount(4)
@@ -4285,8 +4279,8 @@ variables:
   # Create ZSCALER APPC device
   sv:
     fn::invoke:
-      function: equinix:networkedge:getAccount
-      arguments:
+      Function: equinix:networkedge:getAccount
+      Arguments:
         metroCode: SV
 ```
 {{% /example %}}
@@ -4494,7 +4488,7 @@ public class App {
         var zscalerPseSingle = new Device("zscalerPseSingle", DeviceArgs.builder()
             .name("tf-zscaler-pse")
             .projectId("XXXXXX")
-            .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
             .typeCode("ZSCALER-PSE")
             .selfManaged(true)
             .byol(true)
@@ -4505,7 +4499,7 @@ public class App {
                 "marry@equinix.com",
                 "fred@equinix.com")
             .termLength(12)
-            .accountNumber(sv.applyValue(_sv -> _sv.number()))
+            .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
             .version("23.395.1")
             .interfaceCount(1)
             .coreCount(4)
@@ -4554,8 +4548,8 @@ variables:
   # Create ZSCALER APPC device
   sv:
     fn::invoke:
-      function: equinix:networkedge:getAccount
-      arguments:
+      Function: equinix:networkedge:getAccount
+      Arguments:
         metroCode: SV
 ```
 {{% /example %}}

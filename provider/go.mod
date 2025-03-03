@@ -1,8 +1,8 @@
 module github.com/equinix/pulumi-equinix/provider
 
-go 1.23
+go 1.23.0
 
-toolchain go1.23.3
+toolchain go1.23.6
 
 replace (
 	github.com/equinix/terraform-provider-equinix => ../upstream
@@ -53,7 +53,7 @@ require (
 	github.com/djherbis/times v1.5.0 // indirect
 	github.com/edsrzf/mmap-go v1.1.0 // indirect
 	github.com/emirpasic/gods v1.18.1 // indirect
-	github.com/equinix/equinix-sdk-go v0.49.0 // indirect
+	github.com/equinix/equinix-sdk-go v0.49.1 // indirect
 	github.com/equinix/ne-go v1.19.0 // indirect
 	github.com/equinix/oauth2-go v1.0.0 // indirect
 	github.com/equinix/rest-go v1.3.0 // indirect

@@ -9,10 +9,10 @@ resources:
       fileName: TF-BLUECAT-ESP-cloud-init-file.txt
       content:
         fn::invoke:
-          function: std:file
-          arguments:
+          Function: std:file
+          Arguments:
             input: ${filepath}
-          return: result
+          Return: result
       metroCode: ${sv.metroCode}
       deviceTypeCode: BLUECAT-EDGE-SERVICE-POINT
       processType: CLOUD_INIT
@@ -25,10 +25,10 @@ resources:
       fileName: TF-BLUECAT-ESP-cloud-init-file.txt
       content:
         fn::invoke:
-          function: std:file
-          arguments:
+          Function: std:file
+          Arguments:
             input: ${filepath}
-          return: result
+          Return: result
       metroCode: ${sv.metroCode}
       deviceTypeCode: BLUECAT-EDGE-SERVICE-POINT
       processType: CLOUD_INIT
@@ -63,7 +63,7 @@ variables:
   # Create self configured redundant BlueCat Edge Service Point
   sv:
     fn::invoke:
-      function: equinix:networkedge:getAccount
-      arguments:
+      Function: equinix:networkedge:getAccount
+      Arguments:
         name: account-name
         metroCode: SV
