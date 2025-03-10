@@ -47,6 +47,11 @@ public final class DeviceClusterDetailsNode0VendorConfiguration {
      */
     private @Nullable String licenseKey;
     /**
+     * @return Management Type. This field is relevant only for Cisco FTD Firewall devices
+     * 
+     */
+    private @Nullable String managementType;
+    /**
      * @return Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
      * 
      */
@@ -128,6 +133,13 @@ public final class DeviceClusterDetailsNode0VendorConfiguration {
         return Optional.ofNullable(this.licenseKey);
     }
     /**
+     * @return Management Type. This field is relevant only for Cisco FTD Firewall devices
+     * 
+     */
+    public Optional<String> managementType() {
+        return Optional.ofNullable(this.managementType);
+    }
+    /**
      * @return Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
      * 
      */
@@ -186,6 +198,7 @@ public final class DeviceClusterDetailsNode0VendorConfiguration {
         private @Nullable String hostname;
         private @Nullable String licenseId;
         private @Nullable String licenseKey;
+        private @Nullable String managementType;
         private @Nullable String panoramaAuthKey;
         private @Nullable String panoramaIpAddress;
         private @Nullable String privateAddress;
@@ -202,6 +215,7 @@ public final class DeviceClusterDetailsNode0VendorConfiguration {
     	      this.hostname = defaults.hostname;
     	      this.licenseId = defaults.licenseId;
     	      this.licenseKey = defaults.licenseKey;
+    	      this.managementType = defaults.managementType;
     	      this.panoramaAuthKey = defaults.panoramaAuthKey;
     	      this.panoramaIpAddress = defaults.panoramaIpAddress;
     	      this.privateAddress = defaults.privateAddress;
@@ -253,6 +267,12 @@ public final class DeviceClusterDetailsNode0VendorConfiguration {
             return this;
         }
         @CustomType.Setter
+        public Builder managementType(@Nullable String managementType) {
+
+            this.managementType = managementType;
+            return this;
+        }
+        @CustomType.Setter
         public Builder panoramaAuthKey(@Nullable String panoramaAuthKey) {
 
             this.panoramaAuthKey = panoramaAuthKey;
@@ -297,6 +317,7 @@ public final class DeviceClusterDetailsNode0VendorConfiguration {
             _resultValue.hostname = hostname;
             _resultValue.licenseId = licenseId;
             _resultValue.licenseKey = licenseKey;
+            _resultValue.managementType = managementType;
             _resultValue.panoramaAuthKey = panoramaAuthKey;
             _resultValue.panoramaIpAddress = panoramaIpAddress;
             _resultValue.privateAddress = privateAddress;

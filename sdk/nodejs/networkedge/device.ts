@@ -128,7 +128,7 @@ import * as utilities from "../utilities";
  *         input: filepath,
  *     }).apply(invoke => invoke.result),
  *     metroCode: sv.apply(sv => sv.metroCode).apply((x) => equinix.index.Metro[x]),
- *     deviceTypeCode: "AVIATRIX_EDGE",
+ *     deviceTypeCode: "AVIATRIX_EDGE_10",
  *     processType: equinix.networkedge.FileType.CloudInit,
  *     selfManaged: true,
  *     byol: true,
@@ -136,7 +136,7 @@ import * as utilities from "../utilities";
  * const aviatrixSingle = new equinix.networkedge.Device("aviatrixSingle", {
  *     name: "tf-aviatrix",
  *     metroCode: sv.apply(sv => sv.metroCode),
- *     typeCode: "AVIATRIX_EDGE",
+ *     typeCode: "AVIATRIX_EDGE_10",
  *     selfManaged: true,
  *     byol: true,
  *     packageCode: "STD",
@@ -455,6 +455,51 @@ import * as utilities from "../utilities";
  *     aclTemplateId: "c06150ea-b604-4ad1-832a-d63936e9b938",
  * });
  * ```
+ * ### example aruba edgeconnect ha device
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const sv = equinix.networkedge.getAccountOutput({
+ *     metroCode: "SV",
+ * });
+ * const aRUBAEDGECONNECTAM = new equinix.networkedge.Device("ARUBA-EDGECONNECT-AM", {
+ *     name: "TF_Aruba_Edge_Connect",
+ *     projectId: "XXXXX",
+ *     metroCode: sv.apply(sv => sv.metroCode),
+ *     typeCode: "EDGECONNECT-SDWAN",
+ *     selfManaged: true,
+ *     byol: true,
+ *     packageCode: "EC-V",
+ *     notifications: ["test@eq.com"],
+ *     accountNumber: sv.apply(sv => sv.number),
+ *     version: "9.4.2.3",
+ *     coreCount: 2,
+ *     termLength: 1,
+ *     additionalBandwidth: 50,
+ *     interfaceCount: 32,
+ *     aclTemplateId: "XXXXXXX",
+ *     vendorConfiguration: {
+ *         accountKey: "xxxxx",
+ *         accountName: "xxxx",
+ *         applianceTag: "tests",
+ *         hostname: "test",
+ *     },
+ *     secondaryDevice: {
+ *         name: "TF_CHECKPOINT",
+ *         metroCode: sv.apply(sv => sv.metroCode),
+ *         accountNumber: sv.apply(sv => sv.number),
+ *         aclTemplateId: "XXXXXXX",
+ *         notifications: ["test@eq.com"],
+ *         vendorConfiguration: {
+ *             accountKey: "xxxxx",
+ *             accountName: "xxxx",
+ *             applianceTag: "test",
+ *             hostname: "test",
+ *         },
+ *     },
+ * });
+ * ```
  * ### example c8000v byol without default password
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -554,6 +599,193 @@ import * as utilities from "../utilities";
  *         keyName: "test-key",
  *     },
  *     aclTemplateId: "0bff6e05-f0e7-44cd-804a-25b92b835f8b",
+ * });
+ * ```
+ * ### example checkpoint single device
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const sv = equinix.networkedge.getAccountOutput({
+ *     metroCode: "SV",
+ * });
+ * const cHECKPOINTSV = new equinix.networkedge.Device("CHECKPOINT-SV", {
+ *     name: "TF_CHECKPOINT",
+ *     projectId: "XXXX",
+ *     metroCode: sv.apply(sv => sv.metroCode),
+ *     typeCode: "CGUARD",
+ *     selfManaged: true,
+ *     byol: true,
+ *     packageCode: "STD",
+ *     notifications: ["test@eq.com"],
+ *     accountNumber: sv.apply(sv => sv.number),
+ *     version: "R81.20",
+ *     hostname: "test",
+ *     coreCount: 2,
+ *     termLength: 1,
+ *     additionalBandwidth: 5,
+ *     aclTemplateId: "XXXXXXX",
+ *     sshKey: {
+ *         username: "XXXXX",
+ *         keyName: "XXXXXX",
+ *     },
+ * });
+ * ```
+ * ### example cisco ftd cluster znpd
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const sv = equinix.networkedge.getAccountOutput({
+ *     metroCode: "SV",
+ * });
+ * const ciscoFTDSV = new equinix.networkedge.Device("cisco-FTD-SV", {
+ *     name: "TF_Cisco_NGFW_CLUSTER_ZNPD",
+ *     projectId: "XXXXXXX",
+ *     metroCode: sv.apply(sv => sv.metroCode),
+ *     typeCode: "Cisco_NGFW",
+ *     selfManaged: true,
+ *     connectivity: "PRIVATE",
+ *     byol: true,
+ *     packageCode: "FTDv10",
+ *     notifications: ["test@eq.com"],
+ *     accountNumber: sv.apply(sv => sv.number),
+ *     version: "7.0.4-55",
+ *     hostname: "test",
+ *     coreCount: 4,
+ *     termLength: 1,
+ *     interfaceCount: 10,
+ *     clusterDetails: {
+ *         clusterName: "tf-ftd-cluster",
+ *         node0: {
+ *             vendorConfiguration: {
+ *                 hostname: "test",
+ *                 activationKey: "XXXXX",
+ *                 controller1: "X.X.X.X",
+ *                 managementType: "FMC",
+ *             },
+ *         },
+ *         node1: {
+ *             vendorConfiguration: {
+ *                 hostname: "test",
+ *                 managementType: "FMC",
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
+ * ### example fortigate sdwan single device
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const sv = equinix.networkedge.getAccountOutput({
+ *     metroCode: "SV",
+ * });
+ * const fTNTSDWANSV = new equinix.networkedge.Device("FTNT-SDWAN-SV", {
+ *     name: "TF_FTNT-SDWAN",
+ *     projectId: "XXXXXXXXXX",
+ *     metroCode: sv.apply(sv => sv.metroCode),
+ *     typeCode: "FG-SDWAN",
+ *     selfManaged: true,
+ *     byol: true,
+ *     packageCode: "VM02",
+ *     notifications: ["test@eq.com"],
+ *     accountNumber: sv.apply(sv => sv.number),
+ *     version: "7.0.14",
+ *     hostname: "test",
+ *     coreCount: 2,
+ *     termLength: 1,
+ *     additionalBandwidth: 50,
+ *     aclTemplateId: "XXXXXXXX",
+ *     vendorConfiguration: {
+ *         adminPassword: "XXXXX",
+ *         controller1: "X.X.X.X",
+ *     },
+ * });
+ * ```
+ * ### example versa sdwan ha device
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const sv = equinix.networkedge.getAccountOutput({
+ *     metroCode: "SV",
+ * });
+ * const fTNTSDWANSV = new equinix.networkedge.Device("FTNT-SDWAN-SV", {
+ *     name: "TF_VERSA-SDWAN",
+ *     projectId: "XXXXXXXXX",
+ *     metroCode: sv.apply(sv => sv.metroCode),
+ *     typeCode: "VERSA_SDWAN",
+ *     selfManaged: true,
+ *     byol: true,
+ *     packageCode: "FLEX_VNF_2",
+ *     notifications: ["test@eq.com"],
+ *     accountNumber: sv.apply(sv => sv.number),
+ *     version: "21.2.3",
+ *     coreCount: 2,
+ *     termLength: 1,
+ *     additionalBandwidth: 50,
+ *     aclTemplateId: "XXXXXXXXX",
+ *     vendorConfiguration: {
+ *         controller1: "X.X.X.X",
+ *         controller2: "X.X.X.X",
+ *         localId: "test@test.com",
+ *         remoteId: "test@test.com",
+ *         serialNumber: "4",
+ *     },
+ *     secondaryDevice: {
+ *         name: "Praveena_TF_VERSA",
+ *         metroCode: sv.apply(sv => sv.metroCode),
+ *         accountNumber: sv.apply(sv => sv.number),
+ *         aclTemplateId: "XXXXXXXX",
+ *         notifications: ["test@eq.com"],
+ *         vendorConfiguration: {
+ *             controller1: "X.X.X.X",
+ *             controller2: "X.X.X.X",
+ *             localId: "test@test.com",
+ *             remoteId: "test@test.com",
+ *             serialNumber: "4",
+ *         },
+ *     },
+ * });
+ * ```
+ * ### example vyos router ha device
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const sv = equinix.networkedge.getAccountOutput({
+ *     metroCode: "SV",
+ * });
+ * const vYOSAM = new equinix.networkedge.Device("VYOS-AM", {
+ *     name: "TF_VYOS",
+ *     projectId: "XXXXXXX",
+ *     metroCode: sv.apply(sv => sv.metroCode),
+ *     typeCode: "VYOS-ROUTER",
+ *     selfManaged: true,
+ *     byol: false,
+ *     packageCode: "STD",
+ *     notifications: ["test@eq.com"],
+ *     accountNumber: sv.apply(sv => sv.number),
+ *     version: "1.4.1-2501",
+ *     hostname: "test",
+ *     coreCount: 2,
+ *     termLength: 1,
+ *     additionalBandwidth: 50,
+ *     aclTemplateId: "XXXXXXXX",
+ *     sshKey: {
+ *         username: "test",
+ *         keyName: "xxxxxxxx",
+ *     },
+ *     secondaryDevice: {
+ *         name: "TF_CHECKPOINT",
+ *         metroCode: sv.apply(sv => sv.metroCode),
+ *         accountNumber: sv.apply(sv => sv.number),
+ *         hostname: "test",
+ *         aclTemplateId: "XXXXXXXXXXX",
+ *         notifications: ["test@eq.com"],
+ *     },
  * });
  * ```
  * ### example zscaler appc

@@ -3550,6 +3550,10 @@ export namespace networkedge {
          */
         licenseKey?: pulumi.Input<string>;
         /**
+         * Management Type. This field is relevant only for Cisco FTD Firewall devices
+         */
+        managementType?: pulumi.Input<string>;
+        /**
          * Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
          */
         panoramaAuthKey?: pulumi.Input<string>;
@@ -3627,6 +3631,10 @@ export namespace networkedge {
          * License key. This field is relevant only for the BlueCat DNS and DHCP Server
          */
         licenseKey?: pulumi.Input<string>;
+        /**
+         * Management Type. This field is relevant only for Cisco FTD Firewall devices
+         */
+        managementType?: pulumi.Input<string>;
         /**
          * Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
          */
