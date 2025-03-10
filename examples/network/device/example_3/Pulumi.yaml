@@ -13,12 +13,12 @@ resources:
       fileName: TF-AVX-cloud-init-file.txt
       content:
         fn::invoke:
-          function: std:file
-          arguments:
+          Function: std:file
+          Arguments:
             input: ${filepath}
-          return: result
+          Return: result
       metroCode: ${sv.metroCode}
-      deviceTypeCode: AVIATRIX_EDGE
+      deviceTypeCode: AVIATRIX_EDGE_10
       processType: CLOUD_INIT
       selfManaged: true
       byol: true
@@ -28,7 +28,7 @@ resources:
     properties:
       name: tf-aviatrix
       metroCode: ${sv.metroCode}
-      typeCode: AVIATRIX_EDGE
+      typeCode: AVIATRIX_EDGE_10
       selfManaged: true
       byol: true
       packageCode: STD
@@ -44,6 +44,6 @@ variables:
   # Create self configured single Aviatrix device with cloud init file
   sv:
     fn::invoke:
-      function: equinix:networkedge:getAccount
-      arguments:
+      Function: equinix:networkedge:getAccount
+      Arguments:
         metroCode: SV

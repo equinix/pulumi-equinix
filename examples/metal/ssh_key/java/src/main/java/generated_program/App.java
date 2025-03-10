@@ -5,8 +5,6 @@ import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
 import com.pulumi.equinix.metal.SshKey;
 import com.pulumi.equinix.metal.SshKeyArgs;
-import com.pulumi.std.StdFunctions;
-import com.pulumi.std.inputs.FileArgs;
 import com.pulumi.equinix.metal.Device;
 import com.pulumi.equinix.metal.DeviceArgs;
 import com.pulumi.resources.CustomResourceOptions;
@@ -27,7 +25,7 @@ public class App {
             .name("terraform-1")
             .publicKey(StdFunctions.file(FileArgs.builder()
                 .input("/home/terraform/.ssh/id_rsa.pub")
-                .build()).applyValue(_invoke -> _invoke.result()))
+                .build()).result())
             .build());
 
         var test = new Device("test", DeviceArgs.builder()

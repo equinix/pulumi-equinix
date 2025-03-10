@@ -7,8 +7,6 @@ import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
 import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
 import com.pulumi.equinix.networkedge.NetworkFile;
 import com.pulumi.equinix.networkedge.NetworkFileArgs;
-import com.pulumi.std.StdFunctions;
-import com.pulumi.std.inputs.FileArgs;
 import com.pulumi.equinix.networkedge.Device;
 import com.pulumi.equinix.networkedge.DeviceArgs;
 import com.pulumi.equinix.networkedge.inputs.DeviceSecondaryDeviceArgs;
@@ -34,8 +32,8 @@ public class App {
             .fileName("TF-BLUECAT-ESP-cloud-init-file.txt")
             .content(StdFunctions.file(FileArgs.builder()
                 .input(filepath)
-                .build()).applyValue(_invoke -> _invoke.result()))
-            .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+                .build()).result())
+            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
             .deviceTypeCode("BLUECAT-EDGE-SERVICE-POINT")
             .processType("CLOUD_INIT")
             .selfManaged(true)
@@ -46,8 +44,8 @@ public class App {
             .fileName("TF-BLUECAT-ESP-cloud-init-file.txt")
             .content(StdFunctions.file(FileArgs.builder()
                 .input(filepath)
-                .build()).applyValue(_invoke -> _invoke.result()))
-            .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+                .build()).result())
+            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
             .deviceTypeCode("BLUECAT-EDGE-SERVICE-POINT")
             .processType("CLOUD_INIT")
             .selfManaged(true)
@@ -56,23 +54,23 @@ public class App {
 
         var bluecatEdgeServicePointHa = new Device("bluecatEdgeServicePointHa", DeviceArgs.builder()
             .name("tf-bluecat-edge-service-point-p")
-            .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
             .typeCode("BLUECAT-EDGE-SERVICE-POINT")
             .selfManaged(true)
             .connectivity("PRIVATE")
             .byol(true)
             .packageCode("STD")
             .notifications("test@equinix.com")
-            .accountNumber(sv.applyValue(_sv -> _sv.number()))
+            .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
             .cloudInitFileId(bluecatEdgeServicePointCloudinitPrimaryFile.uuid())
             .version("4.6.3")
             .coreCount(4)
             .termLength(12)
             .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
                 .name("tf-bluecat-edge-service-point-s")
-                .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+                .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
                 .notifications("test@eq.com")
-                .accountNumber(sv.applyValue(_sv -> _sv.number()))
+                .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
                 .cloudInitFileId(bluecatEdgeServicePointCloudinitSecondaryFile.uuid())
                 .build())
             .build());

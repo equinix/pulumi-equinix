@@ -20,6 +20,6 @@ resources:
 variables:
   example:
     fn::invoke:
-      function: equinix:metal:getInterconnection
-      arguments:
+      Function: equinix:metal:getInterconnection
+      Arguments:
         connectionId: ${metalDedicatedConnectionId}

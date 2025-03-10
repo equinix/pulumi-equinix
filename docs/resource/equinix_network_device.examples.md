@@ -236,7 +236,7 @@ public class App {
             .name("tf-csr1000v-p")
             .throughput(500)
             .throughputUnit("Mbps")
-            .metroCode(dc.applyValue(_dc -> _dc.metroCode()))
+            .metroCode(dc.applyValue(getAccountResult -> getAccountResult.metroCode()))
             .typeCode("CSR1000V")
             .selfManaged(false)
             .connectivity("INTERNET-ACCESS")
@@ -248,17 +248,17 @@ public class App {
                 "fred@equinix.com")
             .hostname("csr1000v-p")
             .termLength(12)
-            .accountNumber(dc.applyValue(_dc -> _dc.number()))
+            .accountNumber(dc.applyValue(getAccountResult -> getAccountResult.number()))
             .version("16.09.05")
             .coreCount(2)
             .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
                 .name("tf-csr1000v-s")
-                .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+                .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
                 .hostname("csr1000v-s")
                 .notifications(                
                     "john@equinix.com",
                     "marry@equinix.com")
-                .accountNumber(sv.applyValue(_sv -> _sv.number()))
+                .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
                 .build())
             .build());
 
@@ -302,13 +302,13 @@ variables:
   # in two different metro locations
   dc:
     fn::invoke:
-      function: equinix:networkedge:getAccount
-      arguments:
+      Function: equinix:networkedge:getAccount
+      Arguments:
         metroCode: DC
   sv:
     fn::invoke:
-      function: equinix:networkedge:getAccount
-      arguments:
+      Function: equinix:networkedge:getAccount
+      Arguments:
         metroCode: SV
 ```
 {{% /example %}}
@@ -564,7 +564,7 @@ public class App {
 
         var panwCluster = new Device("panwCluster", DeviceArgs.builder()
             .name("tf-panw")
-            .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
             .typeCode("PA-VM")
             .selfManaged(true)
             .byol(true)
@@ -574,7 +574,7 @@ public class App {
                 "marry@equinix.com",
                 "fred@equinix.com")
             .termLength(12)
-            .accountNumber(sv.applyValue(_sv -> _sv.number()))
+            .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
             .version("10.1.3")
             .interfaceCount(10)
             .coreCount(2)
@@ -642,8 +642,8 @@ variables:
   # Create self configured PANW cluster with BYOL license
   sv:
     fn::invoke:
-      function: equinix:networkedge:getAccount
-      arguments:
+      Function: equinix:networkedge:getAccount
+      Arguments:
         metroCode: SV
 ```
 {{% /example %}}
@@ -667,7 +667,7 @@ const aviatrixCloudinitFile = new equinix.networkedge.NetworkFile("aviatrixCloud
         input: filepath,
     }).apply(invoke => invoke.result),
     metroCode: sv.apply(sv => sv.metroCode).apply((x) => equinix.index.Metro[x]),
-    deviceTypeCode: "AVIATRIX_EDGE",
+    deviceTypeCode: "AVIATRIX_EDGE_10",
     processType: equinix.networkedge.FileType.CloudInit,
     selfManaged: true,
     byol: true,
@@ -675,7 +675,7 @@ const aviatrixCloudinitFile = new equinix.networkedge.NetworkFile("aviatrixCloud
 const aviatrixSingle = new equinix.networkedge.Device("aviatrixSingle", {
     name: "tf-aviatrix",
     metroCode: sv.apply(sv => sv.metroCode),
-    typeCode: "AVIATRIX_EDGE",
+    typeCode: "AVIATRIX_EDGE_10",
     selfManaged: true,
     byol: true,
     packageCode: "STD",
@@ -702,14 +702,14 @@ aviatrix_cloudinit_file = equinix.networkedge.NetworkFile("aviatrixCloudinitFile
     file_name="TF-AVX-cloud-init-file.txt",
     content=std.file_output(input=filepath).apply(lambda invoke: invoke.result),
     metro_code=sv.metro_code.apply(lambda x: equinix.Metro(x)),
-    device_type_code="AVIATRIX_EDGE",
+    device_type_code="AVIATRIX_EDGE_10",
     process_type=equinix.networkedge.FileType.CLOUD_INIT,
     self_managed=True,
     byol=True)
 aviatrix_single = equinix.networkedge.Device("aviatrixSingle",
     name="tf-aviatrix",
     metro_code=sv.metro_code,
-    type_code="AVIATRIX_EDGE",
+    type_code="AVIATRIX_EDGE_10",
     self_managed=True,
     byol=True,
     package_code="STD",
@@ -752,7 +752,7 @@ func main() {
 			MetroCode: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
 				return &sv.MetroCode, nil
 			}).(pulumi.StringPtrOutput).ApplyT(func(x *string) equinix.Metro { return equinix.Metro(*x) }).(equinix.MetroOutput),
-			DeviceTypeCode: pulumi.String("AVIATRIX_EDGE"),
+			DeviceTypeCode: pulumi.String("AVIATRIX_EDGE_10"),
 			ProcessType:    pulumi.String(networkedge.FileTypeCloudInit),
 			SelfManaged:    pulumi.Bool(true),
 			Byol:           pulumi.Bool(true),
@@ -765,7 +765,7 @@ func main() {
 			MetroCode: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
 				return &sv.MetroCode, nil
 			}).(pulumi.StringPtrOutput)),
-			TypeCode:    pulumi.String("AVIATRIX_EDGE"),
+			TypeCode:    pulumi.String("AVIATRIX_EDGE_10"),
 			SelfManaged: pulumi.Bool(true),
 			Byol:        pulumi.Bool(true),
 			PackageCode: pulumi.String("STD"),
@@ -812,7 +812,7 @@ return await Deployment.RunAsync(() =>
             Input = filepath,
         }).Apply(invoke => invoke.Result),
         MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode).Apply(System.Enum.Parse<Equinix.Metro>),
-        DeviceTypeCode = "AVIATRIX_EDGE",
+        DeviceTypeCode = "AVIATRIX_EDGE_10",
         ProcessType = Equinix.NetworkEdge.FileType.CloudInit,
         SelfManaged = true,
         Byol = true,
@@ -822,7 +822,7 @@ return await Deployment.RunAsync(() =>
     {
         Name = "tf-aviatrix",
         MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
-        TypeCode = "AVIATRIX_EDGE",
+        TypeCode = "AVIATRIX_EDGE_10",
         SelfManaged = true,
         Byol = true,
         PackageCode = "STD",
@@ -850,8 +850,6 @@ import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
 import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
 import com.pulumi.equinix.networkedge.NetworkFile;
 import com.pulumi.equinix.networkedge.NetworkFileArgs;
-import com.pulumi.std.StdFunctions;
-import com.pulumi.std.inputs.FileArgs;
 import com.pulumi.equinix.networkedge.Device;
 import com.pulumi.equinix.networkedge.DeviceArgs;
 import java.util.List;
@@ -877,9 +875,9 @@ public class App {
             .fileName("TF-AVX-cloud-init-file.txt")
             .content(StdFunctions.file(FileArgs.builder()
                 .input(filepath)
-                .build()).applyValue(_invoke -> _invoke.result()))
-            .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
-            .deviceTypeCode("AVIATRIX_EDGE")
+                .build()).result())
+            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+            .deviceTypeCode("AVIATRIX_EDGE_10")
             .processType("CLOUD_INIT")
             .selfManaged(true)
             .byol(true)
@@ -887,14 +885,14 @@ public class App {
 
         var aviatrixSingle = new Device("aviatrixSingle", DeviceArgs.builder()
             .name("tf-aviatrix")
-            .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
-            .typeCode("AVIATRIX_EDGE")
+            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+            .typeCode("AVIATRIX_EDGE_10")
             .selfManaged(true)
             .byol(true)
             .packageCode("STD")
             .notifications("john@equinix.com")
             .termLength(12)
-            .accountNumber(sv.applyValue(_sv -> _sv.number()))
+            .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
             .version("6.9")
             .coreCount(2)
             .cloudInitFileId(aviatrixCloudinitFile.uuid())
@@ -917,12 +915,12 @@ resources:
       fileName: TF-AVX-cloud-init-file.txt
       content:
         fn::invoke:
-          function: std:file
-          arguments:
+          Function: std:file
+          Arguments:
             input: ${filepath}
-          return: result
+          Return: result
       metroCode: ${sv.metroCode}
-      deviceTypeCode: AVIATRIX_EDGE
+      deviceTypeCode: AVIATRIX_EDGE_10
       processType: CLOUD_INIT
       selfManaged: true
       byol: true
@@ -932,7 +930,7 @@ resources:
     properties:
       name: tf-aviatrix
       metroCode: ${sv.metroCode}
-      typeCode: AVIATRIX_EDGE
+      typeCode: AVIATRIX_EDGE_10
       selfManaged: true
       byol: true
       packageCode: STD
@@ -948,8 +946,8 @@ variables:
   # Create self configured single Aviatrix device with cloud init file
   sv:
     fn::invoke:
-      function: equinix:networkedge:getAccount
-      arguments:
+      Function: equinix:networkedge:getAccount
+      Arguments:
         metroCode: SV
 ```
 {{% /example %}}
@@ -1136,14 +1134,14 @@ public class App {
 
         var c8KvSingle = new Device("c8KvSingle", DeviceArgs.builder()
             .name("tf-c8kv")
-            .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
             .typeCode("C8000V")
             .selfManaged(true)
             .byol(true)
             .packageCode("network-essentials")
             .notifications("test@equinix.com")
             .hostname("C8KV")
-            .accountNumber(sv.applyValue(_sv -> _sv.number()))
+            .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
             .version("17.06.01a")
             .coreCount(2)
             .termLength(12)
@@ -1188,8 +1186,8 @@ variables:
   # Create self configured single Catalyst 8000V (Autonomous Mode) router with license token
   sv:
     fn::invoke:
-      function: equinix:networkedge:getAccount
-      arguments:
+      Function: equinix:networkedge:getAccount
+      Arguments:
         name: account-name
         metroCode: SV
 ```
@@ -1381,14 +1379,14 @@ public class App {
 
         var vsrxSingle = new Device("vsrxSingle", DeviceArgs.builder()
             .name("tf-c8kv-sdwan")
-            .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
             .typeCode("VSRX")
             .selfManaged(true)
             .byol(true)
             .packageCode("STD")
             .notifications("test@equinix.com")
             .hostname("VSRX")
-            .accountNumber(sv.applyValue(_sv -> _sv.number()))
+            .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
             .version("23.2R1.13")
             .coreCount(2)
             .termLength(12)
@@ -1435,8 +1433,8 @@ variables:
   # Create self configured single VSRX device with BYOL License
   sv:
     fn::invoke:
-      function: equinix:networkedge:getAccount
-      arguments:
+      Function: equinix:networkedge:getAccount
+      Arguments:
         name: account-name
         metroCode: SV
 ```
@@ -1699,7 +1697,7 @@ public class App {
 
         var aristaHa = new Device("aristaHa", DeviceArgs.builder()
             .name("tf-arista-p")
-            .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
             .typeCode("ARISTA-ROUTER")
             .selfManaged(true)
             .connectivity("PRIVATE")
@@ -1707,7 +1705,7 @@ public class App {
             .packageCode("CloudEOS")
             .notifications("test@equinix.com")
             .hostname("arista-p")
-            .accountNumber(sv.applyValue(_sv -> _sv.number()))
+            .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
             .version("4.29.0")
             .coreCount(4)
             .termLength(12)
@@ -1719,10 +1717,10 @@ public class App {
             .aclTemplateId("c637a17b-7a6a-4486-924b-30e6c36904b0")
             .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
                 .name("tf-arista-s")
-                .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+                .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
                 .hostname("arista-s")
                 .notifications("test@eq.com")
-                .accountNumber(sv.applyValue(_sv -> _sv.number()))
+                .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
                 .aclTemplateId("fee5e2c0-6198-4ce6-9cbd-bbe6c1dbe138")
                 .build())
             .build());
@@ -1774,8 +1772,8 @@ variables:
   # Create self configured redundant Arista router with DSA key
   sv:
     fn::invoke:
-      function: equinix:networkedge:getAccount
-      arguments:
+      Function: equinix:networkedge:getAccount
+      Arguments:
         name: account-name
         metroCode: SV
 ```
@@ -2084,14 +2082,14 @@ public class App {
 
         var bluecatBddsHa = new Device("bluecatBddsHa", DeviceArgs.builder()
             .name("tf-bluecat-bdds-p")
-            .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
             .typeCode("BLUECAT")
             .selfManaged(true)
             .connectivity("PRIVATE")
             .byol(true)
             .packageCode("STD")
             .notifications("test@equinix.com")
-            .accountNumber(sv.applyValue(_sv -> _sv.number()))
+            .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
             .version("9.6.0")
             .coreCount(2)
             .termLength(12)
@@ -2109,9 +2107,9 @@ public class App {
                 .build())
             .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
                 .name("tf-bluecat-bdds-s")
-                .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+                .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
                 .notifications("test@eq.com")
-                .accountNumber(sv.applyValue(_sv -> _sv.number()))
+                .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
                 .vendorConfiguration(Map.ofEntries(
                     Map.entry("hostname", "test"),
                     Map.entry("privateAddress", "x.x.x.x"),
@@ -2179,8 +2177,8 @@ variables:
   # Create self configured redundant BlueCat DNS and DHCP Server
   sv:
     fn::invoke:
-      function: equinix:networkedge:getAccount
-      arguments:
+      Function: equinix:networkedge:getAccount
+      Arguments:
         name: account-name
         metroCode: SV
 ```
@@ -2467,8 +2465,6 @@ import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
 import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
 import com.pulumi.equinix.networkedge.NetworkFile;
 import com.pulumi.equinix.networkedge.NetworkFileArgs;
-import com.pulumi.std.StdFunctions;
-import com.pulumi.std.inputs.FileArgs;
 import com.pulumi.equinix.networkedge.Device;
 import com.pulumi.equinix.networkedge.DeviceArgs;
 import com.pulumi.equinix.networkedge.inputs.DeviceSecondaryDeviceArgs;
@@ -2494,8 +2490,8 @@ public class App {
             .fileName("TF-BLUECAT-ESP-cloud-init-file.txt")
             .content(StdFunctions.file(FileArgs.builder()
                 .input(filepath)
-                .build()).applyValue(_invoke -> _invoke.result()))
-            .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+                .build()).result())
+            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
             .deviceTypeCode("BLUECAT-EDGE-SERVICE-POINT")
             .processType("CLOUD_INIT")
             .selfManaged(true)
@@ -2506,8 +2502,8 @@ public class App {
             .fileName("TF-BLUECAT-ESP-cloud-init-file.txt")
             .content(StdFunctions.file(FileArgs.builder()
                 .input(filepath)
-                .build()).applyValue(_invoke -> _invoke.result()))
-            .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+                .build()).result())
+            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
             .deviceTypeCode("BLUECAT-EDGE-SERVICE-POINT")
             .processType("CLOUD_INIT")
             .selfManaged(true)
@@ -2516,23 +2512,23 @@ public class App {
 
         var bluecatEdgeServicePointHa = new Device("bluecatEdgeServicePointHa", DeviceArgs.builder()
             .name("tf-bluecat-edge-service-point-p")
-            .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
             .typeCode("BLUECAT-EDGE-SERVICE-POINT")
             .selfManaged(true)
             .connectivity("PRIVATE")
             .byol(true)
             .packageCode("STD")
             .notifications("test@equinix.com")
-            .accountNumber(sv.applyValue(_sv -> _sv.number()))
+            .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
             .cloudInitFileId(bluecatEdgeServicePointCloudinitPrimaryFile.uuid())
             .version("4.6.3")
             .coreCount(4)
             .termLength(12)
             .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
                 .name("tf-bluecat-edge-service-point-s")
-                .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+                .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
                 .notifications("test@eq.com")
-                .accountNumber(sv.applyValue(_sv -> _sv.number()))
+                .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
                 .cloudInitFileId(bluecatEdgeServicePointCloudinitSecondaryFile.uuid())
                 .build())
             .build());
@@ -2549,10 +2545,10 @@ resources:
       fileName: TF-BLUECAT-ESP-cloud-init-file.txt
       content:
         fn::invoke:
-          function: std:file
-          arguments:
+          Function: std:file
+          Arguments:
             input: ${filepath}
-          return: result
+          Return: result
       metroCode: ${sv.metroCode}
       deviceTypeCode: BLUECAT-EDGE-SERVICE-POINT
       processType: CLOUD_INIT
@@ -2565,10 +2561,10 @@ resources:
       fileName: TF-BLUECAT-ESP-cloud-init-file.txt
       content:
         fn::invoke:
-          function: std:file
-          arguments:
+          Function: std:file
+          Arguments:
             input: ${filepath}
-          return: result
+          Return: result
       metroCode: ${sv.metroCode}
       deviceTypeCode: BLUECAT-EDGE-SERVICE-POINT
       processType: CLOUD_INIT
@@ -2603,8 +2599,8 @@ variables:
   # Create self configured redundant BlueCat Edge Service Point
   sv:
     fn::invoke:
-      function: equinix:networkedge:getAccount
-      arguments:
+      Function: equinix:networkedge:getAccount
+      Arguments:
         name: account-name
         metroCode: SV
 ```
@@ -2877,7 +2873,7 @@ public class App {
 
         var panwCluster = new Device("panwCluster", DeviceArgs.builder()
             .name("tf-panw")
-            .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
             .typeCode("PA-VM")
             .selfManaged(true)
             .byol(true)
@@ -2887,7 +2883,7 @@ public class App {
                 "marry@equinix.com",
                 "fred@equinix.com")
             .termLength(12)
-            .accountNumber(sv.applyValue(_sv -> _sv.number()))
+            .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
             .version("11.1.3")
             .interfaceCount(10)
             .coreCount(2)
@@ -2964,8 +2960,8 @@ variables:
   # with Panorama Server IP and Panorama Auth Key in vendor Configuration
   sv:
     fn::invoke:
-      function: equinix:networkedge:getAccount
-      arguments:
+      Function: equinix:networkedge:getAccount
+      Arguments:
         metroCode: SV
 ```
 {{% /example %}}
@@ -3172,8 +3168,6 @@ import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
 import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
 import com.pulumi.equinix.networkedge.NetworkFile;
 import com.pulumi.equinix.networkedge.NetworkFileArgs;
-import com.pulumi.std.StdFunctions;
-import com.pulumi.std.inputs.FileArgs;
 import com.pulumi.equinix.networkedge.Device;
 import com.pulumi.equinix.networkedge.DeviceArgs;
 import java.util.List;
@@ -3199,8 +3193,8 @@ public class App {
             .fileName("TF-AVX-cloud-init-file.txt")
             .content(StdFunctions.file(FileArgs.builder()
                 .input(filepath)
-                .build()).applyValue(_invoke -> _invoke.result()))
-            .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+                .build()).result())
+            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
             .deviceTypeCode("AVIATRIX_TRANSIT_EDGE")
             .processType("CLOUD_INIT")
             .selfManaged(true)
@@ -3209,14 +3203,14 @@ public class App {
 
         var aviatrixTransitEdgeSingle = new Device("aviatrixTransitEdgeSingle", DeviceArgs.builder()
             .name("tf-aviatrix")
-            .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
             .typeCode("AVIATRIX_TRANSIT_EDGE")
             .selfManaged(true)
             .byol(true)
             .packageCode("STD")
             .notifications("john@equinix.com")
             .termLength(12)
-            .accountNumber(sv.applyValue(_sv -> _sv.number()))
+            .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
             .version("7.2.a")
             .coreCount(2)
             .cloudInitFileId(aviatrixCloudinitFile.uuid())
@@ -3239,10 +3233,10 @@ resources:
       fileName: TF-AVX-cloud-init-file.txt
       content:
         fn::invoke:
-          function: std:file
-          arguments:
+          Function: std:file
+          Arguments:
             input: ${filepath}
-          return: result
+          Return: result
       metroCode: ${sv.metroCode}
       deviceTypeCode: AVIATRIX_TRANSIT_EDGE
       processType: CLOUD_INIT
@@ -3269,8 +3263,342 @@ variables:
   # Create self configured single Aviatrix Transit Edge device with cloud init file
   sv:
     fn::invoke:
-      function: equinix:networkedge:getAccount
-      arguments:
+      Function: equinix:networkedge:getAccount
+      Arguments:
+        metroCode: SV
+```
+{{% /example %}}
+
+{{% example %}}
+### example aruba edgeconnect ha device
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as equinix from "@equinix-labs/pulumi-equinix";
+import * as equinix from "@pulumi/equinix";
+
+const sv = equinix.networkedge.getAccountOutput({
+    metroCode: "SV",
+});
+const aRUBAEDGECONNECTAM = new equinix.networkedge.Device("ARUBA-EDGECONNECT-AM", {
+    name: "TF_Aruba_Edge_Connect",
+    projectId: "XXXXX",
+    metroCode: sv.apply(sv => sv.metroCode),
+    typeCode: "EDGECONNECT-SDWAN",
+    selfManaged: true,
+    byol: true,
+    packageCode: "EC-V",
+    notifications: ["test@eq.com"],
+    accountNumber: sv.apply(sv => sv.number),
+    version: "9.4.2.3",
+    coreCount: 2,
+    termLength: 1,
+    additionalBandwidth: 50,
+    interfaceCount: 32,
+    aclTemplateId: "XXXXXXX",
+    vendorConfiguration: {
+        accountKey: "xxxxx",
+        accountName: "xxxx",
+        applianceTag: "tests",
+        hostname: "test",
+    },
+    secondaryDevice: {
+        name: "TF_CHECKPOINT",
+        metroCode: sv.apply(sv => sv.metroCode),
+        accountNumber: sv.apply(sv => sv.number),
+        aclTemplateId: "XXXXXXX",
+        notifications: ["test@eq.com"],
+        vendorConfiguration: {
+            accountKey: "xxxxx",
+            accountName: "xxxx",
+            applianceTag: "test",
+            hostname: "test",
+        },
+    },
+});
+```
+```python
+import pulumi
+import pulumi_equinix as equinix
+
+sv = equinix.networkedge.get_account_output(metro_code="SV")
+a_rubaedgeconnectam = equinix.networkedge.Device("ARUBA-EDGECONNECT-AM",
+    name="TF_Aruba_Edge_Connect",
+    project_id="XXXXX",
+    metro_code=sv.metro_code,
+    type_code="EDGECONNECT-SDWAN",
+    self_managed=True,
+    byol=True,
+    package_code="EC-V",
+    notifications=["test@eq.com"],
+    account_number=sv.number,
+    version="9.4.2.3",
+    core_count=2,
+    term_length=1,
+    additional_bandwidth=50,
+    interface_count=32,
+    acl_template_id="XXXXXXX",
+    vendor_configuration={
+        "accountKey": "xxxxx",
+        "accountName": "xxxx",
+        "applianceTag": "tests",
+        "hostname": "test",
+    },
+    secondary_device={
+        "name": "TF_CHECKPOINT",
+        "metro_code": sv.metro_code,
+        "account_number": sv.number,
+        "acl_template_id": "XXXXXXX",
+        "notifications": ["test@eq.com"],
+        "vendor_configuration": {
+            "accountKey": "xxxxx",
+            "accountName": "xxxx",
+            "applianceTag": "test",
+            "hostname": "test",
+        },
+    })
+```
+```go
+package main
+
+import (
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+)
+
+func main() {
+	pulumi.Run(func(ctx *pulumi.Context) error {
+		sv := networkedge.GetAccountOutput(ctx, networkedge.GetAccountOutputArgs{
+			MetroCode: pulumi.String("SV"),
+		}, nil)
+		_, err := networkedge.NewDevice(ctx, "ARUBA-EDGECONNECT-AM", &networkedge.DeviceArgs{
+			Name:      pulumi.String("TF_Aruba_Edge_Connect"),
+			ProjectId: pulumi.String("XXXXX"),
+			MetroCode: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+				return &sv.MetroCode, nil
+			}).(pulumi.StringPtrOutput)),
+			TypeCode:    pulumi.String("EDGECONNECT-SDWAN"),
+			SelfManaged: pulumi.Bool(true),
+			Byol:        pulumi.Bool(true),
+			PackageCode: pulumi.String("EC-V"),
+			Notifications: pulumi.StringArray{
+				pulumi.String("test@eq.com"),
+			},
+			AccountNumber: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+				return &sv.Number, nil
+			}).(pulumi.StringPtrOutput)),
+			Version:             pulumi.String("9.4.2.3"),
+			CoreCount:           pulumi.Int(2),
+			TermLength:          pulumi.Int(1),
+			AdditionalBandwidth: pulumi.Int(50),
+			InterfaceCount:      pulumi.Int(32),
+			AclTemplateId:       pulumi.String("XXXXXXX"),
+			VendorConfiguration: pulumi.StringMap{
+				"accountKey":   pulumi.String("xxxxx"),
+				"accountName":  pulumi.String("xxxx"),
+				"applianceTag": pulumi.String("tests"),
+				"hostname":     pulumi.String("test"),
+			},
+			SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
+				Name: pulumi.String("TF_CHECKPOINT"),
+				MetroCode: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+					return &sv.MetroCode, nil
+				}).(pulumi.StringPtrOutput),
+				AccountNumber: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+					return &sv.Number, nil
+				}).(pulumi.StringPtrOutput),
+				AclTemplateId: pulumi.String("XXXXXXX"),
+				Notifications: pulumi.StringArray{
+					pulumi.String("test@eq.com"),
+				},
+				VendorConfiguration: pulumi.StringMap{
+					"accountKey":   pulumi.String("xxxxx"),
+					"accountName":  pulumi.String("xxxx"),
+					"applianceTag": pulumi.String("test"),
+					"hostname":     pulumi.String("test"),
+				},
+			},
+		})
+		if err != nil {
+			return err
+		}
+		return nil
+	})
+}
+```
+```csharp
+using System.Collections.Generic;
+using System.Linq;
+using Pulumi;
+using Equinix = Pulumi.Equinix;
+
+return await Deployment.RunAsync(() => 
+{
+    var sv = Equinix.NetworkEdge.GetAccount.Invoke(new()
+    {
+        MetroCode = "SV",
+    });
+
+    var aRUBAEDGECONNECTAM = new Equinix.NetworkEdge.Device("ARUBA-EDGECONNECT-AM", new()
+    {
+        Name = "TF_Aruba_Edge_Connect",
+        ProjectId = "XXXXX",
+        MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
+        TypeCode = "EDGECONNECT-SDWAN",
+        SelfManaged = true,
+        Byol = true,
+        PackageCode = "EC-V",
+        Notifications = new[]
+        {
+            "test@eq.com",
+        },
+        AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
+        Version = "9.4.2.3",
+        CoreCount = 2,
+        TermLength = 1,
+        AdditionalBandwidth = 50,
+        InterfaceCount = 32,
+        AclTemplateId = "XXXXXXX",
+        VendorConfiguration = 
+        {
+            { "accountKey", "xxxxx" },
+            { "accountName", "xxxx" },
+            { "applianceTag", "tests" },
+            { "hostname", "test" },
+        },
+        SecondaryDevice = new Equinix.NetworkEdge.Inputs.DeviceSecondaryDeviceArgs
+        {
+            Name = "TF_CHECKPOINT",
+            MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
+            AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
+            AclTemplateId = "XXXXXXX",
+            Notifications = new[]
+            {
+                "test@eq.com",
+            },
+            VendorConfiguration = 
+            {
+                { "accountKey", "xxxxx" },
+                { "accountName", "xxxx" },
+                { "applianceTag", "test" },
+                { "hostname", "test" },
+            },
+        },
+    });
+
+});
+```
+```java
+package generated_program;
+
+import com.pulumi.Context;
+import com.pulumi.Pulumi;
+import com.pulumi.core.Output;
+import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
+import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
+import com.pulumi.equinix.networkedge.Device;
+import com.pulumi.equinix.networkedge.DeviceArgs;
+import com.pulumi.equinix.networkedge.inputs.DeviceSecondaryDeviceArgs;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+public class App {
+    public static void main(String[] args) {
+        Pulumi.run(App::stack);
+    }
+
+    public static void stack(Context ctx) {
+        final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
+            .metroCode("SV")
+            .build());
+
+        var aRUBAEDGECONNECTAM = new Device("aRUBAEDGECONNECTAM", DeviceArgs.builder()
+            .name("TF_Aruba_Edge_Connect")
+            .projectId("XXXXX")
+            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+            .typeCode("EDGECONNECT-SDWAN")
+            .selfManaged(true)
+            .byol(true)
+            .packageCode("EC-V")
+            .notifications("test@eq.com")
+            .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
+            .version("9.4.2.3")
+            .coreCount(2)
+            .termLength(1)
+            .additionalBandwidth(50)
+            .interfaceCount(32)
+            .aclTemplateId("XXXXXXX")
+            .vendorConfiguration(Map.ofEntries(
+                Map.entry("accountKey", "xxxxx"),
+                Map.entry("accountName", "xxxx"),
+                Map.entry("applianceTag", "tests"),
+                Map.entry("hostname", "test")
+            ))
+            .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
+                .name("TF_CHECKPOINT")
+                .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+                .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
+                .aclTemplateId("XXXXXXX")
+                .notifications("test@eq.com")
+                .vendorConfiguration(Map.ofEntries(
+                    Map.entry("accountKey", "xxxxx"),
+                    Map.entry("accountName", "xxxx"),
+                    Map.entry("applianceTag", "test"),
+                    Map.entry("hostname", "test")
+                ))
+                .build())
+            .build());
+
+    }
+}
+```
+```yaml
+resources:
+  ARUBA-EDGECONNECT-AM:
+    type: equinix:networkedge:Device
+    properties:
+      name: TF_Aruba_Edge_Connect
+      projectId: XXXXX
+      metroCode: ${sv.metroCode}
+      typeCode: EDGECONNECT-SDWAN
+      selfManaged: true
+      byol: true
+      packageCode: EC-V
+      notifications:
+        - test@eq.com
+      accountNumber: ${sv.number}
+      version: 9.4.2.3
+      coreCount: 2
+      termLength: 1
+      additionalBandwidth: 50
+      interfaceCount: 32
+      aclTemplateId: XXXXXXX
+      vendorConfiguration:
+        accountKey: xxxxx
+        accountName: xxxx
+        applianceTag: tests
+        hostname: test
+      secondaryDevice:
+        name: TF_CHECKPOINT
+        metroCode: ${sv.metroCode}
+        accountNumber: ${sv.number}
+        aclTemplateId: XXXXXXX
+        notifications:
+          - test@eq.com
+        vendorConfiguration:
+          accountKey: xxxxx
+          accountName: xxxx
+          applianceTag: test
+          hostname: test
+variables:
+  # Create Aruba Edgeconnect SDWAN HA device
+  sv:
+    fn::invoke:
+      Function: equinix:networkedge:getAccount
+      Arguments:
         metroCode: SV
 ```
 {{% /example %}}
@@ -3464,7 +3792,7 @@ public class App {
 
         var c8000VByolWithtoutDefaultPassword = new Device("c8000VByolWithtoutDefaultPassword", DeviceArgs.builder()
             .name("tf-c8000v-byol")
-            .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
             .typeCode("C8000V")
             .selfManaged(true)
             .byol(true)
@@ -3475,7 +3803,7 @@ public class App {
                 "marry@equinix.com",
                 "fred@equinix.com")
             .termLength(12)
-            .accountNumber(sv.applyValue(_sv -> _sv.number()))
+            .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
             .version("17.11.01a")
             .interfaceCount(10)
             .coreCount(2)
@@ -3520,8 +3848,8 @@ variables:
   # Create C8000V BYOL device with bandwidth tier information
   sv:
     fn::invoke:
-      function: equinix:networkedge:getAccount
-      arguments:
+      Function: equinix:networkedge:getAccount
+      Arguments:
         metroCode: SV
 ```
 {{% /example %}}
@@ -3715,7 +4043,7 @@ public class App {
 
         var c8000VByolThroughput = new Device("c8000VByolThroughput", DeviceArgs.builder()
             .name("tf-c8000v-byol")
-            .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
             .typeCode("C8000V")
             .selfManaged(true)
             .byol(true)
@@ -3725,11 +4053,11 @@ public class App {
                 "marry@equinix.com",
                 "fred@equinix.com")
             .termLength(12)
-            .accountNumber(sv.applyValue(_sv -> _sv.number()))
+            .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
             .version("17.11.01a")
             .interfaceCount(10)
             .coreCount(2)
-            .throughput(100)
+            .throughput("100")
             .throughputUnit("Mbps")
             .sshKey(DeviceSshKeyArgs.builder()
                 .username("test")
@@ -3771,8 +4099,8 @@ variables:
   # Create C8000V BYOL device with numeric bandwidth throughput information
   sv:
     fn::invoke:
-      function: equinix:networkedge:getAccount
-      arguments:
+      Function: equinix:networkedge:getAccount
+      Arguments:
         metroCode: SV
 ```
 {{% /example %}}
@@ -3962,7 +4290,7 @@ public class App {
 
         var c8000VByolTier = new Device("c8000VByolTier", DeviceArgs.builder()
             .name("tf-c8000v-byol")
-            .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
             .typeCode("C8000V")
             .selfManaged(true)
             .byol(true)
@@ -3972,7 +4300,7 @@ public class App {
                 "marry@equinix.com",
                 "fred@equinix.com")
             .termLength(12)
-            .accountNumber(sv.applyValue(_sv -> _sv.number()))
+            .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
             .version("17.11.01a")
             .interfaceCount(10)
             .coreCount(2)
@@ -4016,8 +4344,1425 @@ variables:
   # Create C8000V BYOL device with bandwidth tier information
   sv:
     fn::invoke:
-      function: equinix:networkedge:getAccount
-      arguments:
+      Function: equinix:networkedge:getAccount
+      Arguments:
+        metroCode: SV
+```
+{{% /example %}}
+
+{{% example %}}
+### example checkpoint single device
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as equinix from "@equinix-labs/pulumi-equinix";
+import * as equinix from "@pulumi/equinix";
+
+const sv = equinix.networkedge.getAccountOutput({
+    metroCode: "SV",
+});
+const cHECKPOINTSV = new equinix.networkedge.Device("CHECKPOINT-SV", {
+    name: "TF_CHECKPOINT",
+    projectId: "XXXX",
+    metroCode: sv.apply(sv => sv.metroCode),
+    typeCode: "CGUARD",
+    selfManaged: true,
+    byol: true,
+    packageCode: "STD",
+    notifications: ["test@eq.com"],
+    accountNumber: sv.apply(sv => sv.number),
+    version: "R81.20",
+    hostname: "test",
+    coreCount: 2,
+    termLength: 1,
+    additionalBandwidth: 5,
+    aclTemplateId: "XXXXXXX",
+    sshKey: {
+        username: "XXXXX",
+        keyName: "XXXXXX",
+    },
+});
+```
+```python
+import pulumi
+import pulumi_equinix as equinix
+
+sv = equinix.networkedge.get_account_output(metro_code="SV")
+c_heckpointsv = equinix.networkedge.Device("CHECKPOINT-SV",
+    name="TF_CHECKPOINT",
+    project_id="XXXX",
+    metro_code=sv.metro_code,
+    type_code="CGUARD",
+    self_managed=True,
+    byol=True,
+    package_code="STD",
+    notifications=["test@eq.com"],
+    account_number=sv.number,
+    version="R81.20",
+    hostname="test",
+    core_count=2,
+    term_length=1,
+    additional_bandwidth=5,
+    acl_template_id="XXXXXXX",
+    ssh_key={
+        "username": "XXXXX",
+        "key_name": "XXXXXX",
+    })
+```
+```go
+package main
+
+import (
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+)
+
+func main() {
+	pulumi.Run(func(ctx *pulumi.Context) error {
+		sv := networkedge.GetAccountOutput(ctx, networkedge.GetAccountOutputArgs{
+			MetroCode: pulumi.String("SV"),
+		}, nil)
+		_, err := networkedge.NewDevice(ctx, "CHECKPOINT-SV", &networkedge.DeviceArgs{
+			Name:      pulumi.String("TF_CHECKPOINT"),
+			ProjectId: pulumi.String("XXXX"),
+			MetroCode: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+				return &sv.MetroCode, nil
+			}).(pulumi.StringPtrOutput)),
+			TypeCode:    pulumi.String("CGUARD"),
+			SelfManaged: pulumi.Bool(true),
+			Byol:        pulumi.Bool(true),
+			PackageCode: pulumi.String("STD"),
+			Notifications: pulumi.StringArray{
+				pulumi.String("test@eq.com"),
+			},
+			AccountNumber: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+				return &sv.Number, nil
+			}).(pulumi.StringPtrOutput)),
+			Version:             pulumi.String("R81.20"),
+			Hostname:            pulumi.String("test"),
+			CoreCount:           pulumi.Int(2),
+			TermLength:          pulumi.Int(1),
+			AdditionalBandwidth: pulumi.Int(5),
+			AclTemplateId:       pulumi.String("XXXXXXX"),
+			SshKey: &networkedge.DeviceSshKeyArgs{
+				Username: pulumi.String("XXXXX"),
+				KeyName:  pulumi.String("XXXXXX"),
+			},
+		})
+		if err != nil {
+			return err
+		}
+		return nil
+	})
+}
+```
+```csharp
+using System.Collections.Generic;
+using System.Linq;
+using Pulumi;
+using Equinix = Pulumi.Equinix;
+
+return await Deployment.RunAsync(() => 
+{
+    var sv = Equinix.NetworkEdge.GetAccount.Invoke(new()
+    {
+        MetroCode = "SV",
+    });
+
+    var cHECKPOINTSV = new Equinix.NetworkEdge.Device("CHECKPOINT-SV", new()
+    {
+        Name = "TF_CHECKPOINT",
+        ProjectId = "XXXX",
+        MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
+        TypeCode = "CGUARD",
+        SelfManaged = true,
+        Byol = true,
+        PackageCode = "STD",
+        Notifications = new[]
+        {
+            "test@eq.com",
+        },
+        AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
+        Version = "R81.20",
+        Hostname = "test",
+        CoreCount = 2,
+        TermLength = 1,
+        AdditionalBandwidth = 5,
+        AclTemplateId = "XXXXXXX",
+        SshKey = new Equinix.NetworkEdge.Inputs.DeviceSshKeyArgs
+        {
+            Username = "XXXXX",
+            KeyName = "XXXXXX",
+        },
+    });
+
+});
+```
+```java
+package generated_program;
+
+import com.pulumi.Context;
+import com.pulumi.Pulumi;
+import com.pulumi.core.Output;
+import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
+import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
+import com.pulumi.equinix.networkedge.Device;
+import com.pulumi.equinix.networkedge.DeviceArgs;
+import com.pulumi.equinix.networkedge.inputs.DeviceSshKeyArgs;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+public class App {
+    public static void main(String[] args) {
+        Pulumi.run(App::stack);
+    }
+
+    public static void stack(Context ctx) {
+        final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
+            .metroCode("SV")
+            .build());
+
+        var cHECKPOINTSV = new Device("cHECKPOINTSV", DeviceArgs.builder()
+            .name("TF_CHECKPOINT")
+            .projectId("XXXX")
+            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+            .typeCode("CGUARD")
+            .selfManaged(true)
+            .byol(true)
+            .packageCode("STD")
+            .notifications("test@eq.com")
+            .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
+            .version("R81.20")
+            .hostname("test")
+            .coreCount(2)
+            .termLength(1)
+            .additionalBandwidth(5)
+            .aclTemplateId("XXXXXXX")
+            .sshKey(DeviceSshKeyArgs.builder()
+                .username("XXXXX")
+                .keyName("XXXXXX")
+                .build())
+            .build());
+
+    }
+}
+```
+```yaml
+resources:
+  CHECKPOINT-SV:
+    type: equinix:networkedge:Device
+    properties:
+      name: TF_CHECKPOINT
+      projectId: XXXX
+      metroCode: ${sv.metroCode}
+      typeCode: CGUARD
+      selfManaged: true
+      byol: true
+      packageCode: STD
+      notifications:
+        - test@eq.com
+      accountNumber: ${sv.number}
+      version: R81.20
+      hostname: test
+      coreCount: 2
+      termLength: 1
+      additionalBandwidth: 5
+      aclTemplateId: XXXXXXX
+      sshKey:
+        username: XXXXX
+        keyName: XXXXXX
+variables:
+  # Create Checkpoint single device
+  sv:
+    fn::invoke:
+      Function: equinix:networkedge:getAccount
+      Arguments:
+        metroCode: SV
+```
+{{% /example %}}
+
+{{% example %}}
+### example cisco ftd cluster znpd
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as equinix from "@equinix-labs/pulumi-equinix";
+import * as equinix from "@pulumi/equinix";
+
+const sv = equinix.networkedge.getAccountOutput({
+    metroCode: "SV",
+});
+const ciscoFTDSV = new equinix.networkedge.Device("cisco-FTD-SV", {
+    name: "TF_Cisco_NGFW_CLUSTER_ZNPD",
+    projectId: "XXXXXXX",
+    metroCode: sv.apply(sv => sv.metroCode),
+    typeCode: "Cisco_NGFW",
+    selfManaged: true,
+    connectivity: "PRIVATE",
+    byol: true,
+    packageCode: "FTDv10",
+    notifications: ["test@eq.com"],
+    accountNumber: sv.apply(sv => sv.number),
+    version: "7.0.4-55",
+    hostname: "test",
+    coreCount: 4,
+    termLength: 1,
+    interfaceCount: 10,
+    clusterDetails: {
+        clusterName: "tf-ftd-cluster",
+        node0: {
+            vendorConfiguration: {
+                hostname: "test",
+                activationKey: "XXXXX",
+                controller1: "X.X.X.X",
+                managementType: "FMC",
+            },
+        },
+        node1: {
+            vendorConfiguration: {
+                hostname: "test",
+                managementType: "FMC",
+            },
+        },
+    },
+});
+```
+```python
+import pulumi
+import pulumi_equinix as equinix
+
+sv = equinix.networkedge.get_account_output(metro_code="SV")
+cisco_ftdsv = equinix.networkedge.Device("cisco-FTD-SV",
+    name="TF_Cisco_NGFW_CLUSTER_ZNPD",
+    project_id="XXXXXXX",
+    metro_code=sv.metro_code,
+    type_code="Cisco_NGFW",
+    self_managed=True,
+    connectivity="PRIVATE",
+    byol=True,
+    package_code="FTDv10",
+    notifications=["test@eq.com"],
+    account_number=sv.number,
+    version="7.0.4-55",
+    hostname="test",
+    core_count=4,
+    term_length=1,
+    interface_count=10,
+    cluster_details={
+        "cluster_name": "tf-ftd-cluster",
+        "node0": {
+            "vendor_configuration": {
+                "hostname": "test",
+                "activation_key": "XXXXX",
+                "controller1": "X.X.X.X",
+                "management_type": "FMC",
+            },
+        },
+        "node1": {
+            "vendor_configuration": {
+                "hostname": "test",
+                "management_type": "FMC",
+            },
+        },
+    })
+```
+```go
+package main
+
+import (
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+)
+
+func main() {
+	pulumi.Run(func(ctx *pulumi.Context) error {
+		sv := networkedge.GetAccountOutput(ctx, networkedge.GetAccountOutputArgs{
+			MetroCode: pulumi.String("SV"),
+		}, nil)
+		_, err := networkedge.NewDevice(ctx, "cisco-FTD-SV", &networkedge.DeviceArgs{
+			Name:      pulumi.String("TF_Cisco_NGFW_CLUSTER_ZNPD"),
+			ProjectId: pulumi.String("XXXXXXX"),
+			MetroCode: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+				return &sv.MetroCode, nil
+			}).(pulumi.StringPtrOutput)),
+			TypeCode:     pulumi.String("Cisco_NGFW"),
+			SelfManaged:  pulumi.Bool(true),
+			Connectivity: pulumi.String("PRIVATE"),
+			Byol:         pulumi.Bool(true),
+			PackageCode:  pulumi.String("FTDv10"),
+			Notifications: pulumi.StringArray{
+				pulumi.String("test@eq.com"),
+			},
+			AccountNumber: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+				return &sv.Number, nil
+			}).(pulumi.StringPtrOutput)),
+			Version:        pulumi.String("7.0.4-55"),
+			Hostname:       pulumi.String("test"),
+			CoreCount:      pulumi.Int(4),
+			TermLength:     pulumi.Int(1),
+			InterfaceCount: pulumi.Int(10),
+			ClusterDetails: &networkedge.DeviceClusterDetailsArgs{
+				ClusterName: pulumi.String("tf-ftd-cluster"),
+				Node0: &networkedge.DeviceClusterDetailsNode0Args{
+					VendorConfiguration: &networkedge.DeviceClusterDetailsNode0VendorConfigurationArgs{
+						Hostname:       pulumi.String("test"),
+						ActivationKey:  pulumi.String("XXXXX"),
+						Controller1:    pulumi.String("X.X.X.X"),
+						ManagementType: pulumi.String("FMC"),
+					},
+				},
+				Node1: &networkedge.DeviceClusterDetailsNode1Args{
+					VendorConfiguration: &networkedge.DeviceClusterDetailsNode1VendorConfigurationArgs{
+						Hostname:       pulumi.String("test"),
+						ManagementType: pulumi.String("FMC"),
+					},
+				},
+			},
+		})
+		if err != nil {
+			return err
+		}
+		return nil
+	})
+}
+```
+```csharp
+using System.Collections.Generic;
+using System.Linq;
+using Pulumi;
+using Equinix = Pulumi.Equinix;
+
+return await Deployment.RunAsync(() => 
+{
+    var sv = Equinix.NetworkEdge.GetAccount.Invoke(new()
+    {
+        MetroCode = "SV",
+    });
+
+    var ciscoFTDSV = new Equinix.NetworkEdge.Device("cisco-FTD-SV", new()
+    {
+        Name = "TF_Cisco_NGFW_CLUSTER_ZNPD",
+        ProjectId = "XXXXXXX",
+        MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
+        TypeCode = "Cisco_NGFW",
+        SelfManaged = true,
+        Connectivity = "PRIVATE",
+        Byol = true,
+        PackageCode = "FTDv10",
+        Notifications = new[]
+        {
+            "test@eq.com",
+        },
+        AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
+        Version = "7.0.4-55",
+        Hostname = "test",
+        CoreCount = 4,
+        TermLength = 1,
+        InterfaceCount = 10,
+        ClusterDetails = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsArgs
+        {
+            ClusterName = "tf-ftd-cluster",
+            Node0 = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsNode0Args
+            {
+                VendorConfiguration = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsNode0VendorConfigurationArgs
+                {
+                    Hostname = "test",
+                    ActivationKey = "XXXXX",
+                    Controller1 = "X.X.X.X",
+                    ManagementType = "FMC",
+                },
+            },
+            Node1 = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsNode1Args
+            {
+                VendorConfiguration = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsNode1VendorConfigurationArgs
+                {
+                    Hostname = "test",
+                    ManagementType = "FMC",
+                },
+            },
+        },
+    });
+
+});
+```
+```java
+package generated_program;
+
+import com.pulumi.Context;
+import com.pulumi.Pulumi;
+import com.pulumi.core.Output;
+import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
+import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
+import com.pulumi.equinix.networkedge.Device;
+import com.pulumi.equinix.networkedge.DeviceArgs;
+import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsArgs;
+import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsNode0Args;
+import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsNode0VendorConfigurationArgs;
+import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsNode1Args;
+import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsNode1VendorConfigurationArgs;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+public class App {
+    public static void main(String[] args) {
+        Pulumi.run(App::stack);
+    }
+
+    public static void stack(Context ctx) {
+        final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
+            .metroCode("SV")
+            .build());
+
+        var ciscoFTDSV = new Device("ciscoFTDSV", DeviceArgs.builder()
+            .name("TF_Cisco_NGFW_CLUSTER_ZNPD")
+            .projectId("XXXXXXX")
+            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+            .typeCode("Cisco_NGFW")
+            .selfManaged(true)
+            .connectivity("PRIVATE")
+            .byol(true)
+            .packageCode("FTDv10")
+            .notifications("test@eq.com")
+            .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
+            .version("7.0.4-55")
+            .hostname("test")
+            .coreCount(4)
+            .termLength(1)
+            .interfaceCount(10)
+            .clusterDetails(DeviceClusterDetailsArgs.builder()
+                .clusterName("tf-ftd-cluster")
+                .node0(DeviceClusterDetailsNode0Args.builder()
+                    .vendorConfiguration(DeviceClusterDetailsNode0VendorConfigurationArgs.builder()
+                        .hostname("test")
+                        .activationKey("XXXXX")
+                        .controller1("X.X.X.X")
+                        .managementType("FMC")
+                        .build())
+                    .build())
+                .node1(DeviceClusterDetailsNode1Args.builder()
+                    .vendorConfiguration(DeviceClusterDetailsNode1VendorConfigurationArgs.builder()
+                        .hostname("test")
+                        .managementType("FMC")
+                        .build())
+                    .build())
+                .build())
+            .build());
+
+    }
+}
+```
+```yaml
+resources:
+  cisco-FTD-SV:
+    type: equinix:networkedge:Device
+    name: Cisco-FTD-SV
+    properties:
+      name: TF_Cisco_NGFW_CLUSTER_ZNPD
+      projectId: XXXXXXX
+      metroCode: ${sv.metroCode}
+      typeCode: Cisco_NGFW
+      selfManaged: true
+      connectivity: PRIVATE
+      byol: true
+      packageCode: FTDv10
+      notifications:
+        - test@eq.com
+      accountNumber: ${sv.number}
+      version: 7.0.4-55
+      hostname: test
+      coreCount: 4
+      termLength: 1
+      interfaceCount: 10
+      clusterDetails:
+        clusterName: tf-ftd-cluster
+        node0:
+          vendorConfiguration:
+            hostname: test
+            activationKey: XXXXX
+            controller1: X.X.X.X
+            managementType: FMC
+        node1:
+          vendorConfiguration:
+            hostname: test
+            managementType: FMC
+variables:
+  # Create Cisco FTD Cluster with Connectivity- PRIVATE
+  sv:
+    fn::invoke:
+      Function: equinix:networkedge:getAccount
+      Arguments:
+        metroCode: SV
+```
+{{% /example %}}
+
+{{% example %}}
+### example fortigate sdwan single device
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as equinix from "@equinix-labs/pulumi-equinix";
+import * as equinix from "@pulumi/equinix";
+
+const sv = equinix.networkedge.getAccountOutput({
+    metroCode: "SV",
+});
+const fTNTSDWANSV = new equinix.networkedge.Device("FTNT-SDWAN-SV", {
+    name: "TF_FTNT-SDWAN",
+    projectId: "XXXXXXXXXX",
+    metroCode: sv.apply(sv => sv.metroCode),
+    typeCode: "FG-SDWAN",
+    selfManaged: true,
+    byol: true,
+    packageCode: "VM02",
+    notifications: ["test@eq.com"],
+    accountNumber: sv.apply(sv => sv.number),
+    version: "7.0.14",
+    hostname: "test",
+    coreCount: 2,
+    termLength: 1,
+    additionalBandwidth: 50,
+    aclTemplateId: "XXXXXXXX",
+    vendorConfiguration: {
+        adminPassword: "XXXXX",
+        controller1: "X.X.X.X",
+    },
+});
+```
+```python
+import pulumi
+import pulumi_equinix as equinix
+
+sv = equinix.networkedge.get_account_output(metro_code="SV")
+f_tntsdwansv = equinix.networkedge.Device("FTNT-SDWAN-SV",
+    name="TF_FTNT-SDWAN",
+    project_id="XXXXXXXXXX",
+    metro_code=sv.metro_code,
+    type_code="FG-SDWAN",
+    self_managed=True,
+    byol=True,
+    package_code="VM02",
+    notifications=["test@eq.com"],
+    account_number=sv.number,
+    version="7.0.14",
+    hostname="test",
+    core_count=2,
+    term_length=1,
+    additional_bandwidth=50,
+    acl_template_id="XXXXXXXX",
+    vendor_configuration={
+        "adminPassword": "XXXXX",
+        "controller1": "X.X.X.X",
+    })
+```
+```go
+package main
+
+import (
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+)
+
+func main() {
+	pulumi.Run(func(ctx *pulumi.Context) error {
+		sv := networkedge.GetAccountOutput(ctx, networkedge.GetAccountOutputArgs{
+			MetroCode: pulumi.String("SV"),
+		}, nil)
+		_, err := networkedge.NewDevice(ctx, "FTNT-SDWAN-SV", &networkedge.DeviceArgs{
+			Name:      pulumi.String("TF_FTNT-SDWAN"),
+			ProjectId: pulumi.String("XXXXXXXXXX"),
+			MetroCode: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+				return &sv.MetroCode, nil
+			}).(pulumi.StringPtrOutput)),
+			TypeCode:    pulumi.String("FG-SDWAN"),
+			SelfManaged: pulumi.Bool(true),
+			Byol:        pulumi.Bool(true),
+			PackageCode: pulumi.String("VM02"),
+			Notifications: pulumi.StringArray{
+				pulumi.String("test@eq.com"),
+			},
+			AccountNumber: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+				return &sv.Number, nil
+			}).(pulumi.StringPtrOutput)),
+			Version:             pulumi.String("7.0.14"),
+			Hostname:            pulumi.String("test"),
+			CoreCount:           pulumi.Int(2),
+			TermLength:          pulumi.Int(1),
+			AdditionalBandwidth: pulumi.Int(50),
+			AclTemplateId:       pulumi.String("XXXXXXXX"),
+			VendorConfiguration: pulumi.StringMap{
+				"adminPassword": pulumi.String("XXXXX"),
+				"controller1":   pulumi.String("X.X.X.X"),
+			},
+		})
+		if err != nil {
+			return err
+		}
+		return nil
+	})
+}
+```
+```csharp
+using System.Collections.Generic;
+using System.Linq;
+using Pulumi;
+using Equinix = Pulumi.Equinix;
+
+return await Deployment.RunAsync(() => 
+{
+    var sv = Equinix.NetworkEdge.GetAccount.Invoke(new()
+    {
+        MetroCode = "SV",
+    });
+
+    var fTNTSDWANSV = new Equinix.NetworkEdge.Device("FTNT-SDWAN-SV", new()
+    {
+        Name = "TF_FTNT-SDWAN",
+        ProjectId = "XXXXXXXXXX",
+        MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
+        TypeCode = "FG-SDWAN",
+        SelfManaged = true,
+        Byol = true,
+        PackageCode = "VM02",
+        Notifications = new[]
+        {
+            "test@eq.com",
+        },
+        AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
+        Version = "7.0.14",
+        Hostname = "test",
+        CoreCount = 2,
+        TermLength = 1,
+        AdditionalBandwidth = 50,
+        AclTemplateId = "XXXXXXXX",
+        VendorConfiguration = 
+        {
+            { "adminPassword", "XXXXX" },
+            { "controller1", "X.X.X.X" },
+        },
+    });
+
+});
+```
+```java
+package generated_program;
+
+import com.pulumi.Context;
+import com.pulumi.Pulumi;
+import com.pulumi.core.Output;
+import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
+import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
+import com.pulumi.equinix.networkedge.Device;
+import com.pulumi.equinix.networkedge.DeviceArgs;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+public class App {
+    public static void main(String[] args) {
+        Pulumi.run(App::stack);
+    }
+
+    public static void stack(Context ctx) {
+        final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
+            .metroCode("SV")
+            .build());
+
+        var fTNTSDWANSV = new Device("fTNTSDWANSV", DeviceArgs.builder()
+            .name("TF_FTNT-SDWAN")
+            .projectId("XXXXXXXXXX")
+            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+            .typeCode("FG-SDWAN")
+            .selfManaged(true)
+            .byol(true)
+            .packageCode("VM02")
+            .notifications("test@eq.com")
+            .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
+            .version("7.0.14")
+            .hostname("test")
+            .coreCount(2)
+            .termLength(1)
+            .additionalBandwidth(50)
+            .aclTemplateId("XXXXXXXX")
+            .vendorConfiguration(Map.ofEntries(
+                Map.entry("adminPassword", "XXXXX"),
+                Map.entry("controller1", "X.X.X.X")
+            ))
+            .build());
+
+    }
+}
+```
+```yaml
+resources:
+  FTNT-SDWAN-SV:
+    type: equinix:networkedge:Device
+    properties:
+      name: TF_FTNT-SDWAN
+      projectId: XXXXXXXXXX
+      metroCode: ${sv.metroCode}
+      typeCode: FG-SDWAN
+      selfManaged: true
+      byol: true
+      packageCode: VM02
+      notifications:
+        - test@eq.com
+      accountNumber: ${sv.number}
+      version: 7.0.14
+      hostname: test
+      coreCount: 2
+      termLength: 1
+      additionalBandwidth: 50
+      aclTemplateId: XXXXXXXX
+      vendorConfiguration:
+        adminPassword: XXXXX
+        controller1: X.X.X.X
+variables:
+  # Create Fortinet SDWAN single device
+  sv:
+    fn::invoke:
+      Function: equinix:networkedge:getAccount
+      Arguments:
+        metroCode: SV
+```
+{{% /example %}}
+
+{{% example %}}
+### example versa sdwan ha device
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as equinix from "@equinix-labs/pulumi-equinix";
+import * as equinix from "@pulumi/equinix";
+
+const sv = equinix.networkedge.getAccountOutput({
+    metroCode: "SV",
+});
+const fTNTSDWANSV = new equinix.networkedge.Device("FTNT-SDWAN-SV", {
+    name: "TF_VERSA-SDWAN",
+    projectId: "XXXXXXXXX",
+    metroCode: sv.apply(sv => sv.metroCode),
+    typeCode: "VERSA_SDWAN",
+    selfManaged: true,
+    byol: true,
+    packageCode: "FLEX_VNF_2",
+    notifications: ["test@eq.com"],
+    accountNumber: sv.apply(sv => sv.number),
+    version: "21.2.3",
+    coreCount: 2,
+    termLength: 1,
+    additionalBandwidth: 50,
+    aclTemplateId: "XXXXXXXXX",
+    vendorConfiguration: {
+        controller1: "X.X.X.X",
+        controller2: "X.X.X.X",
+        localId: "test@test.com",
+        remoteId: "test@test.com",
+        serialNumber: "4",
+    },
+    secondaryDevice: {
+        name: "Praveena_TF_VERSA",
+        metroCode: sv.apply(sv => sv.metroCode),
+        accountNumber: sv.apply(sv => sv.number),
+        aclTemplateId: "XXXXXXXX",
+        notifications: ["test@eq.com"],
+        vendorConfiguration: {
+            controller1: "X.X.X.X",
+            controller2: "X.X.X.X",
+            localId: "test@test.com",
+            remoteId: "test@test.com",
+            serialNumber: "4",
+        },
+    },
+});
+```
+```python
+import pulumi
+import pulumi_equinix as equinix
+
+sv = equinix.networkedge.get_account_output(metro_code="SV")
+f_tntsdwansv = equinix.networkedge.Device("FTNT-SDWAN-SV",
+    name="TF_VERSA-SDWAN",
+    project_id="XXXXXXXXX",
+    metro_code=sv.metro_code,
+    type_code="VERSA_SDWAN",
+    self_managed=True,
+    byol=True,
+    package_code="FLEX_VNF_2",
+    notifications=["test@eq.com"],
+    account_number=sv.number,
+    version="21.2.3",
+    core_count=2,
+    term_length=1,
+    additional_bandwidth=50,
+    acl_template_id="XXXXXXXXX",
+    vendor_configuration={
+        "controller1": "X.X.X.X",
+        "controller2": "X.X.X.X",
+        "localId": "test@test.com",
+        "remoteId": "test@test.com",
+        "serialNumber": "4",
+    },
+    secondary_device={
+        "name": "Praveena_TF_VERSA",
+        "metro_code": sv.metro_code,
+        "account_number": sv.number,
+        "acl_template_id": "XXXXXXXX",
+        "notifications": ["test@eq.com"],
+        "vendor_configuration": {
+            "controller1": "X.X.X.X",
+            "controller2": "X.X.X.X",
+            "localId": "test@test.com",
+            "remoteId": "test@test.com",
+            "serialNumber": "4",
+        },
+    })
+```
+```go
+package main
+
+import (
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+)
+
+func main() {
+	pulumi.Run(func(ctx *pulumi.Context) error {
+		sv := networkedge.GetAccountOutput(ctx, networkedge.GetAccountOutputArgs{
+			MetroCode: pulumi.String("SV"),
+		}, nil)
+		_, err := networkedge.NewDevice(ctx, "FTNT-SDWAN-SV", &networkedge.DeviceArgs{
+			Name:      pulumi.String("TF_VERSA-SDWAN"),
+			ProjectId: pulumi.String("XXXXXXXXX"),
+			MetroCode: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+				return &sv.MetroCode, nil
+			}).(pulumi.StringPtrOutput)),
+			TypeCode:    pulumi.String("VERSA_SDWAN"),
+			SelfManaged: pulumi.Bool(true),
+			Byol:        pulumi.Bool(true),
+			PackageCode: pulumi.String("FLEX_VNF_2"),
+			Notifications: pulumi.StringArray{
+				pulumi.String("test@eq.com"),
+			},
+			AccountNumber: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+				return &sv.Number, nil
+			}).(pulumi.StringPtrOutput)),
+			Version:             pulumi.String("21.2.3"),
+			CoreCount:           pulumi.Int(2),
+			TermLength:          pulumi.Int(1),
+			AdditionalBandwidth: pulumi.Int(50),
+			AclTemplateId:       pulumi.String("XXXXXXXXX"),
+			VendorConfiguration: pulumi.StringMap{
+				"controller1":  pulumi.String("X.X.X.X"),
+				"controller2":  pulumi.String("X.X.X.X"),
+				"localId":      pulumi.String("test@test.com"),
+				"remoteId":     pulumi.String("test@test.com"),
+				"serialNumber": pulumi.String("4"),
+			},
+			SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
+				Name: pulumi.String("Praveena_TF_VERSA"),
+				MetroCode: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+					return &sv.MetroCode, nil
+				}).(pulumi.StringPtrOutput),
+				AccountNumber: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+					return &sv.Number, nil
+				}).(pulumi.StringPtrOutput),
+				AclTemplateId: pulumi.String("XXXXXXXX"),
+				Notifications: pulumi.StringArray{
+					pulumi.String("test@eq.com"),
+				},
+				VendorConfiguration: pulumi.StringMap{
+					"controller1":  pulumi.String("X.X.X.X"),
+					"controller2":  pulumi.String("X.X.X.X"),
+					"localId":      pulumi.String("test@test.com"),
+					"remoteId":     pulumi.String("test@test.com"),
+					"serialNumber": pulumi.String("4"),
+				},
+			},
+		})
+		if err != nil {
+			return err
+		}
+		return nil
+	})
+}
+```
+```csharp
+using System.Collections.Generic;
+using System.Linq;
+using Pulumi;
+using Equinix = Pulumi.Equinix;
+
+return await Deployment.RunAsync(() => 
+{
+    var sv = Equinix.NetworkEdge.GetAccount.Invoke(new()
+    {
+        MetroCode = "SV",
+    });
+
+    var fTNTSDWANSV = new Equinix.NetworkEdge.Device("FTNT-SDWAN-SV", new()
+    {
+        Name = "TF_VERSA-SDWAN",
+        ProjectId = "XXXXXXXXX",
+        MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
+        TypeCode = "VERSA_SDWAN",
+        SelfManaged = true,
+        Byol = true,
+        PackageCode = "FLEX_VNF_2",
+        Notifications = new[]
+        {
+            "test@eq.com",
+        },
+        AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
+        Version = "21.2.3",
+        CoreCount = 2,
+        TermLength = 1,
+        AdditionalBandwidth = 50,
+        AclTemplateId = "XXXXXXXXX",
+        VendorConfiguration = 
+        {
+            { "controller1", "X.X.X.X" },
+            { "controller2", "X.X.X.X" },
+            { "localId", "test@test.com" },
+            { "remoteId", "test@test.com" },
+            { "serialNumber", "4" },
+        },
+        SecondaryDevice = new Equinix.NetworkEdge.Inputs.DeviceSecondaryDeviceArgs
+        {
+            Name = "Praveena_TF_VERSA",
+            MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
+            AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
+            AclTemplateId = "XXXXXXXX",
+            Notifications = new[]
+            {
+                "test@eq.com",
+            },
+            VendorConfiguration = 
+            {
+                { "controller1", "X.X.X.X" },
+                { "controller2", "X.X.X.X" },
+                { "localId", "test@test.com" },
+                { "remoteId", "test@test.com" },
+                { "serialNumber", "4" },
+            },
+        },
+    });
+
+});
+```
+```java
+package generated_program;
+
+import com.pulumi.Context;
+import com.pulumi.Pulumi;
+import com.pulumi.core.Output;
+import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
+import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
+import com.pulumi.equinix.networkedge.Device;
+import com.pulumi.equinix.networkedge.DeviceArgs;
+import com.pulumi.equinix.networkedge.inputs.DeviceSecondaryDeviceArgs;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+public class App {
+    public static void main(String[] args) {
+        Pulumi.run(App::stack);
+    }
+
+    public static void stack(Context ctx) {
+        final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
+            .metroCode("SV")
+            .build());
+
+        var fTNTSDWANSV = new Device("fTNTSDWANSV", DeviceArgs.builder()
+            .name("TF_VERSA-SDWAN")
+            .projectId("XXXXXXXXX")
+            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+            .typeCode("VERSA_SDWAN")
+            .selfManaged(true)
+            .byol(true)
+            .packageCode("FLEX_VNF_2")
+            .notifications("test@eq.com")
+            .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
+            .version("21.2.3")
+            .coreCount(2)
+            .termLength(1)
+            .additionalBandwidth(50)
+            .aclTemplateId("XXXXXXXXX")
+            .vendorConfiguration(Map.ofEntries(
+                Map.entry("controller1", "X.X.X.X"),
+                Map.entry("controller2", "X.X.X.X"),
+                Map.entry("localId", "test@test.com"),
+                Map.entry("remoteId", "test@test.com"),
+                Map.entry("serialNumber", "4")
+            ))
+            .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
+                .name("Praveena_TF_VERSA")
+                .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+                .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
+                .aclTemplateId("XXXXXXXX")
+                .notifications("test@eq.com")
+                .vendorConfiguration(Map.ofEntries(
+                    Map.entry("controller1", "X.X.X.X"),
+                    Map.entry("controller2", "X.X.X.X"),
+                    Map.entry("localId", "test@test.com"),
+                    Map.entry("remoteId", "test@test.com"),
+                    Map.entry("serialNumber", "4")
+                ))
+                .build())
+            .build());
+
+    }
+}
+```
+```yaml
+resources:
+  FTNT-SDWAN-SV:
+    type: equinix:networkedge:Device
+    properties:
+      name: TF_VERSA-SDWAN
+      projectId: XXXXXXXXX
+      metroCode: ${sv.metroCode}
+      typeCode: VERSA_SDWAN
+      selfManaged: true
+      byol: true
+      packageCode: FLEX_VNF_2
+      notifications:
+        - test@eq.com
+      accountNumber: ${sv.number}
+      version: 21.2.3
+      coreCount: 2
+      termLength: 1
+      additionalBandwidth: 50
+      aclTemplateId: XXXXXXXXX
+      vendorConfiguration:
+        controller1: X.X.X.X
+        controller2: X.X.X.X
+        localId: test@test.com
+        remoteId: test@test.com
+        serialNumber: '4'
+      secondaryDevice:
+        name: Praveena_TF_VERSA
+        metroCode: ${sv.metroCode}
+        accountNumber: ${sv.number}
+        aclTemplateId: XXXXXXXX
+        notifications:
+          - test@eq.com
+        vendorConfiguration:
+          controller1: X.X.X.X
+          controller2: X.X.X.X
+          localId: test@test.com
+          remoteId: test@test.com
+          serialNumber: '4'
+variables:
+  # Create Fortinet SDWAN single device
+  sv:
+    fn::invoke:
+      Function: equinix:networkedge:getAccount
+      Arguments:
+        metroCode: SV
+```
+{{% /example %}}
+
+{{% example %}}
+### example vyos router ha device
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as equinix from "@equinix-labs/pulumi-equinix";
+import * as equinix from "@pulumi/equinix";
+
+const sv = equinix.networkedge.getAccountOutput({
+    metroCode: "SV",
+});
+const vYOSAM = new equinix.networkedge.Device("VYOS-AM", {
+    name: "TF_VYOS",
+    projectId: "XXXXXXX",
+    metroCode: sv.apply(sv => sv.metroCode),
+    typeCode: "VYOS-ROUTER",
+    selfManaged: true,
+    byol: false,
+    packageCode: "STD",
+    notifications: ["test@eq.com"],
+    accountNumber: sv.apply(sv => sv.number),
+    version: "1.4.1-2501",
+    hostname: "test",
+    coreCount: 2,
+    termLength: 1,
+    additionalBandwidth: 50,
+    aclTemplateId: "XXXXXXXX",
+    sshKey: {
+        username: "test",
+        keyName: "xxxxxxxx",
+    },
+    secondaryDevice: {
+        name: "TF_CHECKPOINT",
+        metroCode: sv.apply(sv => sv.metroCode),
+        accountNumber: sv.apply(sv => sv.number),
+        hostname: "test",
+        aclTemplateId: "XXXXXXXXXXX",
+        notifications: ["test@eq.com"],
+    },
+});
+```
+```python
+import pulumi
+import pulumi_equinix as equinix
+
+sv = equinix.networkedge.get_account_output(metro_code="SV")
+v_yosam = equinix.networkedge.Device("VYOS-AM",
+    name="TF_VYOS",
+    project_id="XXXXXXX",
+    metro_code=sv.metro_code,
+    type_code="VYOS-ROUTER",
+    self_managed=True,
+    byol=False,
+    package_code="STD",
+    notifications=["test@eq.com"],
+    account_number=sv.number,
+    version="1.4.1-2501",
+    hostname="test",
+    core_count=2,
+    term_length=1,
+    additional_bandwidth=50,
+    acl_template_id="XXXXXXXX",
+    ssh_key={
+        "username": "test",
+        "key_name": "xxxxxxxx",
+    },
+    secondary_device={
+        "name": "TF_CHECKPOINT",
+        "metro_code": sv.metro_code,
+        "account_number": sv.number,
+        "hostname": "test",
+        "acl_template_id": "XXXXXXXXXXX",
+        "notifications": ["test@eq.com"],
+    })
+```
+```go
+package main
+
+import (
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+)
+
+func main() {
+	pulumi.Run(func(ctx *pulumi.Context) error {
+		sv := networkedge.GetAccountOutput(ctx, networkedge.GetAccountOutputArgs{
+			MetroCode: pulumi.String("SV"),
+		}, nil)
+		_, err := networkedge.NewDevice(ctx, "VYOS-AM", &networkedge.DeviceArgs{
+			Name:      pulumi.String("TF_VYOS"),
+			ProjectId: pulumi.String("XXXXXXX"),
+			MetroCode: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+				return &sv.MetroCode, nil
+			}).(pulumi.StringPtrOutput)),
+			TypeCode:    pulumi.String("VYOS-ROUTER"),
+			SelfManaged: pulumi.Bool(true),
+			Byol:        pulumi.Bool(false),
+			PackageCode: pulumi.String("STD"),
+			Notifications: pulumi.StringArray{
+				pulumi.String("test@eq.com"),
+			},
+			AccountNumber: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+				return &sv.Number, nil
+			}).(pulumi.StringPtrOutput)),
+			Version:             pulumi.String("1.4.1-2501"),
+			Hostname:            pulumi.String("test"),
+			CoreCount:           pulumi.Int(2),
+			TermLength:          pulumi.Int(1),
+			AdditionalBandwidth: pulumi.Int(50),
+			AclTemplateId:       pulumi.String("XXXXXXXX"),
+			SshKey: &networkedge.DeviceSshKeyArgs{
+				Username: pulumi.String("test"),
+				KeyName:  pulumi.String("xxxxxxxx"),
+			},
+			SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
+				Name: pulumi.String("TF_CHECKPOINT"),
+				MetroCode: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+					return &sv.MetroCode, nil
+				}).(pulumi.StringPtrOutput),
+				AccountNumber: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+					return &sv.Number, nil
+				}).(pulumi.StringPtrOutput),
+				Hostname:      pulumi.String("test"),
+				AclTemplateId: pulumi.String("XXXXXXXXXXX"),
+				Notifications: pulumi.StringArray{
+					pulumi.String("test@eq.com"),
+				},
+			},
+		})
+		if err != nil {
+			return err
+		}
+		return nil
+	})
+}
+```
+```csharp
+using System.Collections.Generic;
+using System.Linq;
+using Pulumi;
+using Equinix = Pulumi.Equinix;
+
+return await Deployment.RunAsync(() => 
+{
+    var sv = Equinix.NetworkEdge.GetAccount.Invoke(new()
+    {
+        MetroCode = "SV",
+    });
+
+    var vYOSAM = new Equinix.NetworkEdge.Device("VYOS-AM", new()
+    {
+        Name = "TF_VYOS",
+        ProjectId = "XXXXXXX",
+        MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
+        TypeCode = "VYOS-ROUTER",
+        SelfManaged = true,
+        Byol = false,
+        PackageCode = "STD",
+        Notifications = new[]
+        {
+            "test@eq.com",
+        },
+        AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
+        Version = "1.4.1-2501",
+        Hostname = "test",
+        CoreCount = 2,
+        TermLength = 1,
+        AdditionalBandwidth = 50,
+        AclTemplateId = "XXXXXXXX",
+        SshKey = new Equinix.NetworkEdge.Inputs.DeviceSshKeyArgs
+        {
+            Username = "test",
+            KeyName = "xxxxxxxx",
+        },
+        SecondaryDevice = new Equinix.NetworkEdge.Inputs.DeviceSecondaryDeviceArgs
+        {
+            Name = "TF_CHECKPOINT",
+            MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
+            AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
+            Hostname = "test",
+            AclTemplateId = "XXXXXXXXXXX",
+            Notifications = new[]
+            {
+                "test@eq.com",
+            },
+        },
+    });
+
+});
+```
+```java
+package generated_program;
+
+import com.pulumi.Context;
+import com.pulumi.Pulumi;
+import com.pulumi.core.Output;
+import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
+import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
+import com.pulumi.equinix.networkedge.Device;
+import com.pulumi.equinix.networkedge.DeviceArgs;
+import com.pulumi.equinix.networkedge.inputs.DeviceSshKeyArgs;
+import com.pulumi.equinix.networkedge.inputs.DeviceSecondaryDeviceArgs;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+public class App {
+    public static void main(String[] args) {
+        Pulumi.run(App::stack);
+    }
+
+    public static void stack(Context ctx) {
+        final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
+            .metroCode("SV")
+            .build());
+
+        var vYOSAM = new Device("vYOSAM", DeviceArgs.builder()
+            .name("TF_VYOS")
+            .projectId("XXXXXXX")
+            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+            .typeCode("VYOS-ROUTER")
+            .selfManaged(true)
+            .byol(false)
+            .packageCode("STD")
+            .notifications("test@eq.com")
+            .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
+            .version("1.4.1-2501")
+            .hostname("test")
+            .coreCount(2)
+            .termLength(1)
+            .additionalBandwidth(50)
+            .aclTemplateId("XXXXXXXX")
+            .sshKey(DeviceSshKeyArgs.builder()
+                .username("test")
+                .keyName("xxxxxxxx")
+                .build())
+            .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
+                .name("TF_CHECKPOINT")
+                .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+                .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
+                .hostname("test")
+                .aclTemplateId("XXXXXXXXXXX")
+                .notifications("test@eq.com")
+                .build())
+            .build());
+
+    }
+}
+```
+```yaml
+resources:
+  VYOS-AM:
+    type: equinix:networkedge:Device
+    properties:
+      name: TF_VYOS
+      projectId: XXXXXXX
+      metroCode: ${sv.metroCode}
+      typeCode: VYOS-ROUTER
+      selfManaged: true
+      byol: false
+      packageCode: STD
+      notifications:
+        - test@eq.com
+      accountNumber: ${sv.number}
+      version: 1.4.1-2501
+      hostname: test
+      coreCount: 2
+      termLength: 1
+      additionalBandwidth: 50
+      aclTemplateId: XXXXXXXX
+      sshKey:
+        username: test
+        keyName: xxxxxxxx
+      secondaryDevice:
+        name: TF_CHECKPOINT
+        metroCode: ${sv.metroCode}
+        accountNumber: ${sv.number}
+        hostname: test
+        aclTemplateId: XXXXXXXXXXX
+        notifications:
+          - test@eq.com
+variables:
+  # Create VYos Router HA device
+  sv:
+    fn::invoke:
+      Function: equinix:networkedge:getAccount
+      Arguments:
         metroCode: SV
 ```
 {{% /example %}}
@@ -4225,7 +5970,7 @@ public class App {
         var zscalerAppcSingle = new Device("zscalerAppcSingle", DeviceArgs.builder()
             .name("tf-zscaler-appc")
             .projectId("XXXXXX")
-            .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
             .typeCode("ZSCALER-APPC")
             .selfManaged(true)
             .byol(true)
@@ -4236,7 +5981,7 @@ public class App {
                 "marry@equinix.com",
                 "fred@equinix.com")
             .termLength(12)
-            .accountNumber(sv.applyValue(_sv -> _sv.number()))
+            .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
             .version("23.395.1")
             .interfaceCount(1)
             .coreCount(4)
@@ -4285,8 +6030,8 @@ variables:
   # Create ZSCALER APPC device
   sv:
     fn::invoke:
-      function: equinix:networkedge:getAccount
-      arguments:
+      Function: equinix:networkedge:getAccount
+      Arguments:
         metroCode: SV
 ```
 {{% /example %}}
@@ -4494,7 +6239,7 @@ public class App {
         var zscalerPseSingle = new Device("zscalerPseSingle", DeviceArgs.builder()
             .name("tf-zscaler-pse")
             .projectId("XXXXXX")
-            .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
             .typeCode("ZSCALER-PSE")
             .selfManaged(true)
             .byol(true)
@@ -4505,7 +6250,7 @@ public class App {
                 "marry@equinix.com",
                 "fred@equinix.com")
             .termLength(12)
-            .accountNumber(sv.applyValue(_sv -> _sv.number()))
+            .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
             .version("23.395.1")
             .interfaceCount(1)
             .coreCount(4)
@@ -4554,8 +6299,8 @@ variables:
   # Create ZSCALER APPC device
   sv:
     fn::invoke:
-      function: equinix:networkedge:getAccount
-      arguments:
+      Function: equinix:networkedge:getAccount
+      Arguments:
         metroCode: SV
 ```
 {{% /example %}}

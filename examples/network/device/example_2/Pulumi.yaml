@@ -39,6 +39,6 @@ variables:
   # Create self configured PANW cluster with BYOL license
   sv:
     fn::invoke:
-      function: equinix:networkedge:getAccount
-      arguments:
+      Function: equinix:networkedge:getAccount
+      Arguments:
         metroCode: SV
