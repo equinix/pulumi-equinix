@@ -84,6 +84,43 @@ namespace Pulumi.Equinix.Fabric
         /// </summary>
         public static Output<GetRouteFilterRulesResult> Invoke(GetRouteFilterRulesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRouteFilterRulesResult>("equinix:fabric/getRouteFilterRules:getRouteFilterRules", args ?? new GetRouteFilterRulesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Fabric V4 API compatible data resource that allow user to fetch route filter for a given search data set
+        /// 
+        /// Additional Documentation:
+        /// * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
+        /// * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filter-rules
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var rfRules = Equinix.Fabric.GetRouteFilterRules.Invoke(new()
+        ///     {
+        ///         RouteFilterId = "&lt;route_filter_policy_id",
+        ///         Limit = 100,
+        ///         Offset = 5,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstRouteFilterRuleName"] = rfRules.Apply(getRouteFilterRulesResult =&gt; getRouteFilterRulesResult.Datas[0]?.Name),
+        ///         ["firstRouteFilterRuleDescription"] = rfRules.Apply(getRouteFilterRulesResult =&gt; getRouteFilterRulesResult.Datas[0]?.Description),
+        ///         ["firstRouteFilterRulePrefix"] = rfRules.Apply(getRouteFilterRulesResult =&gt; getRouteFilterRulesResult.Datas[0]?.Prefix),
+        ///         ["firstRouteFilterRulePrefixMatch"] = rfRules.Apply(getRouteFilterRulesResult =&gt; getRouteFilterRulesResult.Datas[0]?.PrefixMatch),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetRouteFilterRulesResult> Invoke(GetRouteFilterRulesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRouteFilterRulesResult>("equinix:fabric/getRouteFilterRules:getRouteFilterRules", args ?? new GetRouteFilterRulesInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -85,7 +85,7 @@ export interface GetStreamsResult {
  * export const numberOfReturnedStreams = dataStreams.then(dataStreams => dataStreams.datas).length;
  * ```
  */
-export function getStreamsOutput(args: GetStreamsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStreamsResult> {
+export function getStreamsOutput(args: GetStreamsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetStreamsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("equinix:fabric/getStreams:getStreams", {
         "pagination": args.pagination,

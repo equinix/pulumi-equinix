@@ -327,7 +327,7 @@ def get_port(uuid: Optional[str] = None,
         used_bandwidth=pulumi.get(__ret__, 'used_bandwidth'),
         uuid=pulumi.get(__ret__, 'uuid'))
 def get_port_output(uuid: Optional[pulumi.Input[str]] = None,
-                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPortResult]:
+                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPortResult]:
     """
     Fabric V4 API compatible data resource that allow user to fetch port by uuid
 
@@ -363,7 +363,7 @@ def get_port_output(uuid: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['uuid'] = uuid
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('equinix:fabric/getPort:getPort', __args__, opts=opts, typ=GetPortResult)
     return __ret__.apply(lambda __response__: GetPortResult(
         account=pulumi.get(__response__, 'account'),

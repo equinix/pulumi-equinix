@@ -74,6 +74,38 @@ namespace Pulumi.Equinix.Fabric
         /// </summary>
         public static Output<GetMarketplaceSubscriptionResult> Invoke(GetMarketplaceSubscriptionInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMarketplaceSubscriptionResult>("equinix:fabric/getMarketplaceSubscription:getMarketplaceSubscription", args ?? new GetMarketplaceSubscriptionInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Fabric V4 API compatible data resource that allow user to fetch Marketplace Subscription detail for a given UUID
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var subscription_test = Equinix.Fabric.GetMarketplaceSubscription.Invoke(new()
+        ///     {
+        ///         Uuid = "&lt;uuid_of_marketplace_subscription&gt;",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["id"] = subscription_test.Apply(subscription_test =&gt; subscription_test.Apply(getMarketplaceSubscriptionResult =&gt; getMarketplaceSubscriptionResult.Id)),
+        ///         ["status"] = subscription_test.Apply(subscription_test =&gt; subscription_test.Apply(getMarketplaceSubscriptionResult =&gt; getMarketplaceSubscriptionResult.Status)),
+        ///         ["marketplace"] = subscription_test.Apply(subscription_test =&gt; subscription_test.Apply(getMarketplaceSubscriptionResult =&gt; getMarketplaceSubscriptionResult.Marketplace)),
+        ///         ["offerType"] = subscription_test.Apply(subscription_test =&gt; subscription_test.Apply(getMarketplaceSubscriptionResult =&gt; getMarketplaceSubscriptionResult.OfferType)),
+        ///         ["isAutoRenew"] = subscription_test.Apply(subscription_test =&gt; subscription_test.Apply(getMarketplaceSubscriptionResult =&gt; getMarketplaceSubscriptionResult.IsAutoRenew)),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetMarketplaceSubscriptionResult> Invoke(GetMarketplaceSubscriptionInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetMarketplaceSubscriptionResult>("equinix:fabric/getMarketplaceSubscription:getMarketplaceSubscription", args ?? new GetMarketplaceSubscriptionInvokeArgs(), options.WithDefaults());
     }
 
 

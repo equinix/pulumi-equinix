@@ -157,7 +157,7 @@ def get_device_type_output(category: Optional[pulumi.Input[Optional[str]]] = Non
                            metro_codes: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                            name: Optional[pulumi.Input[Optional[str]]] = None,
                            vendor: Optional[pulumi.Input[Optional[str]]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDeviceTypeResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDeviceTypeResult]:
     """
     Use this data source to get Equinix Network Edge device type details. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
 
@@ -186,7 +186,7 @@ def get_device_type_output(category: Optional[pulumi.Input[Optional[str]]] = Non
     __args__['metroCodes'] = metro_codes
     __args__['name'] = name
     __args__['vendor'] = vendor
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('equinix:networkedge/getDeviceType:getDeviceType', __args__, opts=opts, typ=GetDeviceTypeResult)
     return __ret__.apply(lambda __response__: GetDeviceTypeResult(
         category=pulumi.get(__response__, 'category'),

@@ -69,21 +69,11 @@ type GetPrecreatedIpBlockResult struct {
 }
 
 func GetPrecreatedIpBlockOutput(ctx *pulumi.Context, args GetPrecreatedIpBlockOutputArgs, opts ...pulumi.InvokeOption) GetPrecreatedIpBlockResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetPrecreatedIpBlockResultOutput, error) {
 			args := v.(GetPrecreatedIpBlockArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetPrecreatedIpBlockResult
-			secret, err := ctx.InvokePackageRaw("equinix:metal/getPrecreatedIpBlock:getPrecreatedIpBlock", args, &rv, "", opts...)
-			if err != nil {
-				return GetPrecreatedIpBlockResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetPrecreatedIpBlockResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetPrecreatedIpBlockResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("equinix:metal/getPrecreatedIpBlock:getPrecreatedIpBlock", args, GetPrecreatedIpBlockResultOutput{}, options).(GetPrecreatedIpBlockResultOutput), nil
 		}).(GetPrecreatedIpBlockResultOutput)
 }
 

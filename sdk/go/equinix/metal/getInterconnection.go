@@ -107,21 +107,11 @@ type LookupInterconnectionResult struct {
 }
 
 func LookupInterconnectionOutput(ctx *pulumi.Context, args LookupInterconnectionOutputArgs, opts ...pulumi.InvokeOption) LookupInterconnectionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupInterconnectionResultOutput, error) {
 			args := v.(LookupInterconnectionArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupInterconnectionResult
-			secret, err := ctx.InvokePackageRaw("equinix:metal/getInterconnection:getInterconnection", args, &rv, "", opts...)
-			if err != nil {
-				return LookupInterconnectionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupInterconnectionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupInterconnectionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("equinix:metal/getInterconnection:getInterconnection", args, LookupInterconnectionResultOutput{}, options).(LookupInterconnectionResultOutput), nil
 		}).(LookupInterconnectionResultOutput)
 }
 

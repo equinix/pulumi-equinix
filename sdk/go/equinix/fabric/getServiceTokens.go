@@ -47,21 +47,11 @@ type GetServiceTokensResult struct {
 }
 
 func GetServiceTokensOutput(ctx *pulumi.Context, args GetServiceTokensOutputArgs, opts ...pulumi.InvokeOption) GetServiceTokensResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetServiceTokensResultOutput, error) {
 			args := v.(GetServiceTokensArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetServiceTokensResult
-			secret, err := ctx.InvokePackageRaw("equinix:fabric/getServiceTokens:getServiceTokens", args, &rv, "", opts...)
-			if err != nil {
-				return GetServiceTokensResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetServiceTokensResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetServiceTokensResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("equinix:fabric/getServiceTokens:getServiceTokens", args, GetServiceTokensResultOutput{}, options).(GetServiceTokensResultOutput), nil
 		}).(GetServiceTokensResultOutput)
 }
 

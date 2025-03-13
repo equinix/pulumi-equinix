@@ -85,21 +85,11 @@ type GetRouteFilterRulesResult struct {
 }
 
 func GetRouteFilterRulesOutput(ctx *pulumi.Context, args GetRouteFilterRulesOutputArgs, opts ...pulumi.InvokeOption) GetRouteFilterRulesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetRouteFilterRulesResultOutput, error) {
 			args := v.(GetRouteFilterRulesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetRouteFilterRulesResult
-			secret, err := ctx.InvokePackageRaw("equinix:fabric/getRouteFilterRules:getRouteFilterRules", args, &rv, "", opts...)
-			if err != nil {
-				return GetRouteFilterRulesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetRouteFilterRulesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetRouteFilterRulesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("equinix:fabric/getRouteFilterRules:getRouteFilterRules", args, GetRouteFilterRulesResultOutput{}, options).(GetRouteFilterRulesResultOutput), nil
 		}).(GetRouteFilterRulesResultOutput)
 }
 

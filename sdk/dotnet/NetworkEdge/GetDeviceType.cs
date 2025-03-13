@@ -70,6 +70,36 @@ namespace Pulumi.Equinix.NetworkEdge
         /// </summary>
         public static Output<GetDeviceTypeResult> Invoke(GetDeviceTypeInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDeviceTypeResult>("equinix:networkedge/getDeviceType:getDeviceType", args ?? new GetDeviceTypeInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get Equinix Network Edge device type details. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ciscoRouter = Equinix.NetworkEdge.GetDeviceType.Invoke(new()
+        ///     {
+        ///         Category = "Router",
+        ///         MetroCodes = new[]
+        ///         {
+        ///             "DC",
+        ///             "SV",
+        ///         },
+        ///         Vendor = "Cisco",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDeviceTypeResult> Invoke(GetDeviceTypeInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDeviceTypeResult>("equinix:networkedge/getDeviceType:getDeviceType", args ?? new GetDeviceTypeInvokeArgs(), options.WithDefaults());
     }
 
 

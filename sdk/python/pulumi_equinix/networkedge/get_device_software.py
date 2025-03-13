@@ -208,7 +208,7 @@ def get_device_software_output(device_type: Optional[pulumi.Input[str]] = None,
                                packages: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                stable: Optional[pulumi.Input[Optional[bool]]] = None,
                                version_regex: Optional[pulumi.Input[Optional[str]]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDeviceSoftwareResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDeviceSoftwareResult]:
     """
     Use this data source to get Equinix Network Edge device software details for a given device type. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
 
@@ -237,7 +237,7 @@ def get_device_software_output(device_type: Optional[pulumi.Input[str]] = None,
     __args__['packages'] = packages
     __args__['stable'] = stable
     __args__['versionRegex'] = version_regex
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('equinix:networkedge/getDeviceSoftware:getDeviceSoftware', __args__, opts=opts, typ=GetDeviceSoftwareResult)
     return __ret__.apply(lambda __response__: GetDeviceSoftwareResult(
         date=pulumi.get(__response__, 'date'),

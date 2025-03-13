@@ -126,7 +126,7 @@ export interface GetRouteFilterResult {
  * export const rulesCount = rfPolicy.then(rfPolicy => rfPolicy.rulesCount);
  * ```
  */
-export function getRouteFilterOutput(args: GetRouteFilterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRouteFilterResult> {
+export function getRouteFilterOutput(args: GetRouteFilterOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRouteFilterResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("equinix:fabric/getRouteFilter:getRouteFilter", {
         "uuid": args.uuid,

@@ -42,7 +42,7 @@ export interface GetPlansResult {
     readonly plans: outputs.metal.GetPlansPlan[];
     readonly sorts?: outputs.metal.GetPlansSort[];
 }
-export function getPlansOutput(args?: GetPlansOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPlansResult> {
+export function getPlansOutput(args?: GetPlansOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPlansResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("equinix:metal/getPlans:getPlans", {

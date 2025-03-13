@@ -101,7 +101,7 @@ export interface GetDevicePlatformResult {
  * });
  * ```
  */
-export function getDevicePlatformOutput(args: GetDevicePlatformOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDevicePlatformResult> {
+export function getDevicePlatformOutput(args: GetDevicePlatformOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDevicePlatformResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("equinix:networkedge/getDevicePlatform:getDevicePlatform", {
         "coreCount": args.coreCount,

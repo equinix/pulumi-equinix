@@ -80,21 +80,11 @@ type GetDeviceTypeResult struct {
 }
 
 func GetDeviceTypeOutput(ctx *pulumi.Context, args GetDeviceTypeOutputArgs, opts ...pulumi.InvokeOption) GetDeviceTypeResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetDeviceTypeResultOutput, error) {
 			args := v.(GetDeviceTypeArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetDeviceTypeResult
-			secret, err := ctx.InvokePackageRaw("equinix:networkedge/getDeviceType:getDeviceType", args, &rv, "", opts...)
-			if err != nil {
-				return GetDeviceTypeResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetDeviceTypeResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetDeviceTypeResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("equinix:networkedge/getDeviceType:getDeviceType", args, GetDeviceTypeResultOutput{}, options).(GetDeviceTypeResultOutput), nil
 		}).(GetDeviceTypeResultOutput)
 }
 

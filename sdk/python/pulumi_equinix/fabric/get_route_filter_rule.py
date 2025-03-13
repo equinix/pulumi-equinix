@@ -241,7 +241,7 @@ def get_route_filter_rule(route_filter_id: Optional[str] = None,
         uuid=pulumi.get(__ret__, 'uuid'))
 def get_route_filter_rule_output(route_filter_id: Optional[pulumi.Input[str]] = None,
                                  uuid: Optional[pulumi.Input[str]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRouteFilterRuleResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRouteFilterRuleResult]:
     """
     Fabric V4 API compatible data resource that allow user to fetch route filter for a given UUID
 
@@ -270,7 +270,7 @@ def get_route_filter_rule_output(route_filter_id: Optional[pulumi.Input[str]] = 
     __args__ = dict()
     __args__['routeFilterId'] = route_filter_id
     __args__['uuid'] = uuid
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('equinix:fabric/getRouteFilterRule:getRouteFilterRule', __args__, opts=opts, typ=GetRouteFilterRuleResult)
     return __ret__.apply(lambda __response__: GetRouteFilterRuleResult(
         action=pulumi.get(__response__, 'action'),

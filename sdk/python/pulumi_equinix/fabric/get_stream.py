@@ -28,8 +28,8 @@ class GetStreamResult:
     A collection of values returned by getStream.
     """
     def __init__(__self__, assets_count=None, change_log=None, description=None, href=None, id=None, name=None, project=None, state=None, stream_id=None, stream_subscriptions_count=None, type=None, uuid=None):
-        if assets_count and not isinstance(assets_count, float):
-            raise TypeError("Expected argument 'assets_count' to be a float")
+        if assets_count and not isinstance(assets_count, int):
+            raise TypeError("Expected argument 'assets_count' to be a int")
         pulumi.set(__self__, "assets_count", assets_count)
         if change_log and not isinstance(change_log, dict):
             raise TypeError("Expected argument 'change_log' to be a dict")
@@ -55,8 +55,8 @@ class GetStreamResult:
         if stream_id and not isinstance(stream_id, str):
             raise TypeError("Expected argument 'stream_id' to be a str")
         pulumi.set(__self__, "stream_id", stream_id)
-        if stream_subscriptions_count and not isinstance(stream_subscriptions_count, float):
-            raise TypeError("Expected argument 'stream_subscriptions_count' to be a float")
+        if stream_subscriptions_count and not isinstance(stream_subscriptions_count, int):
+            raise TypeError("Expected argument 'stream_subscriptions_count' to be a int")
         pulumi.set(__self__, "stream_subscriptions_count", stream_subscriptions_count)
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
@@ -67,7 +67,7 @@ class GetStreamResult:
 
     @property
     @pulumi.getter(name="assetsCount")
-    def assets_count(self) -> float:
+    def assets_count(self) -> int:
         """
         Count of the streaming assets attached to the stream resource
         """
@@ -139,7 +139,7 @@ class GetStreamResult:
 
     @property
     @pulumi.getter(name="streamSubscriptionsCount")
-    def stream_subscriptions_count(self) -> float:
+    def stream_subscriptions_count(self) -> int:
         """
         Count of the client subscriptions on the stream resource
         """
@@ -223,7 +223,7 @@ def get_stream(stream_id: Optional[str] = None,
         type=pulumi.get(__ret__, 'type'),
         uuid=pulumi.get(__ret__, 'uuid'))
 def get_stream_output(stream_id: Optional[pulumi.Input[str]] = None,
-                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetStreamResult]:
+                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetStreamResult]:
     """
     Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Stream by UUID
 
@@ -246,7 +246,7 @@ def get_stream_output(stream_id: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['streamId'] = stream_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('equinix:fabric/getStream:getStream', __args__, opts=opts, typ=GetStreamResult)
     return __ret__.apply(lambda __response__: GetStreamResult(
         assets_count=pulumi.get(__response__, 'assets_count'),

@@ -87,7 +87,7 @@ export interface GetVrfResult {
  * });
  * ```
  */
-export function getVrfOutput(args: GetVrfOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVrfResult> {
+export function getVrfOutput(args: GetVrfOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVrfResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("equinix:metal/getVrf:getVrf", {
         "vrfId": args.vrfId,

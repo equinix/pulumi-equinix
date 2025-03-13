@@ -80,6 +80,41 @@ namespace Pulumi.Equinix.Fabric
         /// </summary>
         public static Output<GetMetroResult> Invoke(GetMetroInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMetroResult>("equinix:fabric/getMetro:getMetro", args ?? new GetMetroInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var metro = Equinix.Fabric.GetMetro.Invoke(new()
+        ///     {
+        ///         MetroCode = "&lt;metro_code&gt;",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["id"] = metro.Apply(getMetroResult =&gt; getMetroResult.Id),
+        ///         ["type"] = metro.Apply(getMetroResult =&gt; getMetroResult.Type),
+        ///         ["metroCode"] = metro.Apply(getMetroResult =&gt; getMetroResult.MetroCode),
+        ///         ["region"] = metro.Apply(getMetroResult =&gt; getMetroResult.Region),
+        ///         ["name"] = metro.Apply(getMetroResult =&gt; getMetroResult.Name),
+        ///         ["equinixAsn"] = metro.Apply(getMetroResult =&gt; getMetroResult.EquinixAsn),
+        ///         ["localVcBandwidthMax"] = metro.Apply(getMetroResult =&gt; getMetroResult.LocalVcBandwidthMax),
+        ///         ["geoCoordinates"] = metro.Apply(getMetroResult =&gt; getMetroResult.GeoCoordinates),
+        ///         ["connectedMetros"] = metro.Apply(getMetroResult =&gt; getMetroResult.ConnectedMetros),
+        ///         ["geoScopes"] = metro.Apply(getMetroResult =&gt; getMetroResult.GeoScopes),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetMetroResult> Invoke(GetMetroInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetMetroResult>("equinix:fabric/getMetro:getMetro", args ?? new GetMetroInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -371,7 +371,7 @@ def get_virtual_circuit_output(customer_ipv6: Optional[pulumi.Input[Optional[str
                                metal_ipv6: Optional[pulumi.Input[Optional[str]]] = None,
                                subnet_ipv6: Optional[pulumi.Input[Optional[str]]] = None,
                                virtual_circuit_id: Optional[pulumi.Input[str]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVirtualCircuitResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVirtualCircuitResult]:
     """
     Use this data source to retrieve a virtual circuit resource from [Equinix Fabric - software-defined interconnections](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/)
 
@@ -390,7 +390,7 @@ def get_virtual_circuit_output(customer_ipv6: Optional[pulumi.Input[Optional[str
     __args__['metalIpv6'] = metal_ipv6
     __args__['subnetIpv6'] = subnet_ipv6
     __args__['virtualCircuitId'] = virtual_circuit_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('equinix:metal/getVirtualCircuit:getVirtualCircuit', __args__, opts=opts, typ=GetVirtualCircuitResult)
     return __ret__.apply(lambda __response__: GetVirtualCircuitResult(
         connection_id=pulumi.get(__response__, 'connection_id'),

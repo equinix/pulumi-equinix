@@ -170,6 +170,86 @@ namespace Pulumi.Equinix.Fabric
         /// </summary>
         public static Output<GetRouteFiltersResult> Invoke(GetRouteFiltersInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRouteFiltersResult>("equinix:fabric/getRouteFilters:getRouteFilters", args ?? new GetRouteFiltersInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Fabric V4 API compatible data resource that allow user to fetch route filter for a given search data set
+        /// 
+        /// Additional Documentation:
+        /// * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
+        /// * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filters
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var rfPolicies = Equinix.Fabric.GetRouteFilters.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new Equinix.Fabric.Inputs.GetRouteFiltersFilterInputArgs
+        ///             {
+        ///                 Property = "/type",
+        ///                 Operator = "=",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "BGP_IPv4_PREFIX_FILTER",
+        ///                 },
+        ///             },
+        ///             new Equinix.Fabric.Inputs.GetRouteFiltersFilterInputArgs
+        ///             {
+        ///                 Property = "/state",
+        ///                 Operator = "=",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "PROVISIONED",
+        ///                 },
+        ///             },
+        ///             new Equinix.Fabric.Inputs.GetRouteFiltersFilterInputArgs
+        ///             {
+        ///                 Property = "/project/projectId",
+        ///                 Operator = "=",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "&lt;project_id&gt;",
+        ///                 },
+        ///             },
+        ///         },
+        ///         Pagination = new Equinix.Fabric.Inputs.GetRouteFiltersPaginationInputArgs
+        ///         {
+        ///             Offset = 0,
+        ///             Limit = 5,
+        ///             Total = 25,
+        ///         },
+        ///         Sorts = new[]
+        ///         {
+        ///             new Equinix.Fabric.Inputs.GetRouteFiltersSortInputArgs
+        ///             {
+        ///                 Direction = "ASC",
+        ///                 Property = "/name",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstRfUuid"] = rfPolicies.Apply(getRouteFiltersResult =&gt; getRouteFiltersResult.Datas[0]?.Uuid),
+        ///         ["type"] = rfPolicies.Apply(getRouteFiltersResult =&gt; getRouteFiltersResult.Datas[0]?.Type),
+        ///         ["state"] = rfPolicies.Apply(getRouteFiltersResult =&gt; getRouteFiltersResult.Datas[0]?.State),
+        ///         ["notMatchedRuleAction"] = rfPolicies.Apply(getRouteFiltersResult =&gt; getRouteFiltersResult.Datas[0]?.NotMatchedRuleAction),
+        ///         ["connectionsCount"] = rfPolicies.Apply(getRouteFiltersResult =&gt; getRouteFiltersResult.Datas[0]?.ConnectionsCount),
+        ///         ["rulesCount"] = rfPolicies.Apply(getRouteFiltersResult =&gt; getRouteFiltersResult.Datas[0]?.RulesCount),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetRouteFiltersResult> Invoke(GetRouteFiltersInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRouteFiltersResult>("equinix:fabric/getRouteFilters:getRouteFilters", args ?? new GetRouteFiltersInvokeArgs(), options.WithDefaults());
     }
 
 

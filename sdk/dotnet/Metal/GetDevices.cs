@@ -158,6 +158,80 @@ namespace Pulumi.Equinix.Metal
         /// </summary>
         public static Output<GetDevicesResult> Invoke(GetDevicesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDevicesResult>("equinix:metal/getDevices:getDevices", args ?? new GetDevicesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The datasource can be used to find a list of devices which meet filter criteria.
+        /// 
+        /// If you need to fetch a single device by ID or by project ID and hostname, use the equinix.metal.Device datasource.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Equinix.Metal.GetDevices.Invoke(new()
+        ///     {
+        ///         ProjectId = local.Project_id,
+        ///         Filters = new[]
+        ///         {
+        ///             new Equinix.Metal.Inputs.GetDevicesFilterInputArgs
+        ///             {
+        ///                 Attribute = "plan",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "c3.small.x86",
+        ///                 },
+        ///             },
+        ///             new Equinix.Metal.Inputs.GetDevicesFilterInputArgs
+        ///             {
+        ///                 Attribute = "metro",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "da",
+        ///                     "sv",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["devices"] = example.Apply(getDevicesResult =&gt; getDevicesResult.Devices),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Equinix.Metal.GetDevices.Invoke(new()
+        ///     {
+        ///         Search = "database",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["devices"] = example.Apply(getDevicesResult =&gt; getDevicesResult.Devices),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ## search vs filter
+        /// 
+        /// The difference between `search` and `filter` is that `search` is an API parameter, interpreted by the Equinix Metal service. The "filter" arguments will reduce the API list (or search) results by applying client-side filtering, within this provider.
+        /// </summary>
+        public static Output<GetDevicesResult> Invoke(GetDevicesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDevicesResult>("equinix:metal/getDevices:getDevices", args ?? new GetDevicesInvokeArgs(), options.WithDefaults());
     }
 
 

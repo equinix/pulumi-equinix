@@ -122,7 +122,7 @@ def get_ports(filter: Optional[Union['GetPortsFilterArgs', 'GetPortsFilterArgsDi
         filter=pulumi.get(__ret__, 'filter'),
         id=pulumi.get(__ret__, 'id'))
 def get_ports_output(filter: Optional[pulumi.Input[Union['GetPortsFilterArgs', 'GetPortsFilterArgsDict']]] = None,
-                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPortsResult]:
+                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPortsResult]:
     """
     Fabric V4 API compatible data resource that allow user to fetch port by name
 
@@ -160,7 +160,7 @@ def get_ports_output(filter: Optional[pulumi.Input[Union['GetPortsFilterArgs', '
     """
     __args__ = dict()
     __args__['filter'] = filter
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('equinix:fabric/getPorts:getPorts', __args__, opts=opts, typ=GetPortsResult)
     return __ret__.apply(lambda __response__: GetPortsResult(
         data=pulumi.get(__response__, 'data'),

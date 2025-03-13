@@ -89,21 +89,11 @@ type GetHardwareReservationResult struct {
 }
 
 func GetHardwareReservationOutput(ctx *pulumi.Context, args GetHardwareReservationOutputArgs, opts ...pulumi.InvokeOption) GetHardwareReservationResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetHardwareReservationResultOutput, error) {
 			args := v.(GetHardwareReservationArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetHardwareReservationResult
-			secret, err := ctx.InvokePackageRaw("equinix:metal/getHardwareReservation:getHardwareReservation", args, &rv, "", opts...)
-			if err != nil {
-				return GetHardwareReservationResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetHardwareReservationResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetHardwareReservationResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("equinix:metal/getHardwareReservation:getHardwareReservation", args, GetHardwareReservationResultOutput{}, options).(GetHardwareReservationResultOutput), nil
 		}).(GetHardwareReservationResultOutput)
 }
 

@@ -260,7 +260,7 @@ def get_reserved_ip_block(id: Optional[str] = None,
 def get_reserved_ip_block_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                                  ip_address: Optional[pulumi.Input[Optional[str]]] = None,
                                  project_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetReservedIpBlockResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetReservedIpBlockResult]:
     """
     Use this data source to find IP address blocks in Equinix Metal. You can use IP address or a block ID for lookup.
 
@@ -279,7 +279,7 @@ def get_reserved_ip_block_output(id: Optional[pulumi.Input[Optional[str]]] = Non
     __args__['id'] = id
     __args__['ipAddress'] = ip_address
     __args__['projectId'] = project_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('equinix:metal/getReservedIpBlock:getReservedIpBlock', __args__, opts=opts, typ=GetReservedIpBlockResult)
     return __ret__.apply(lambda __response__: GetReservedIpBlockResult(
         address=pulumi.get(__response__, 'address'),

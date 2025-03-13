@@ -70,6 +70,36 @@ namespace Pulumi.Equinix.NetworkEdge
         /// </summary>
         public static Output<GetDeviceSoftwareResult> Invoke(GetDeviceSoftwareInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDeviceSoftwareResult>("equinix:networkedge/getDeviceSoftware:getDeviceSoftware", args ?? new GetDeviceSoftwareInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get Equinix Network Edge device software details for a given device type. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var csrLatest1609 = Equinix.NetworkEdge.GetDeviceSoftware.Invoke(new()
+        ///     {
+        ///         DeviceType = "CSR1000V",
+        ///         MostRecent = true,
+        ///         Packages = new[]
+        ///         {
+        ///             "IPBASE",
+        ///         },
+        ///         VersionRegex = "^16.09.+",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDeviceSoftwareResult> Invoke(GetDeviceSoftwareInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDeviceSoftwareResult>("equinix:networkedge/getDeviceSoftware:getDeviceSoftware", args ?? new GetDeviceSoftwareInvokeArgs(), options.WithDefaults());
     }
 
 

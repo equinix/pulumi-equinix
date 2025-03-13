@@ -96,7 +96,7 @@ export interface GetProjectResult {
  * export const usersOfTerraformFun = tfProject1.then(tfProject1 => tfProject1.userIds);
  * ```
  */
-export function getProjectOutput(args?: GetProjectOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectResult> {
+export function getProjectOutput(args?: GetProjectOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProjectResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("equinix:metal/getProject:getProject", {

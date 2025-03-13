@@ -5,7 +5,7 @@ package com.equinix.pulumi.fabric.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Double;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -21,13 +21,13 @@ public final class GetMetrosPagination extends com.pulumi.resources.InvokeArgs {
      * 
      */
     @Import(name="limit")
-    private @Nullable Double limit;
+    private @Nullable Integer limit;
 
     /**
      * @return Maximum number of search results returned per page.
      * 
      */
-    public Optional<Double> limit() {
+    public Optional<Integer> limit() {
         return Optional.ofNullable(this.limit);
     }
 
@@ -51,13 +51,13 @@ public final class GetMetrosPagination extends com.pulumi.resources.InvokeArgs {
      * 
      */
     @Import(name="offset")
-    private @Nullable Double offset;
+    private @Nullable Integer offset;
 
     /**
      * @return Index of the first item returned in the response.
      * 
      */
-    public Optional<Double> offset() {
+    public Optional<Integer> offset() {
         return Optional.ofNullable(this.offset);
     }
 
@@ -81,13 +81,13 @@ public final class GetMetrosPagination extends com.pulumi.resources.InvokeArgs {
      * 
      */
     @Import(name="total", required=true)
-    private Double total;
+    private Integer total;
 
     /**
      * @return The total number of metro returned
      * 
      */
-    public Double total() {
+    public Integer total() {
         return this.total;
     }
 
@@ -125,7 +125,7 @@ public final class GetMetrosPagination extends com.pulumi.resources.InvokeArgs {
          * @return builder
          * 
          */
-        public Builder limit(@Nullable Double limit) {
+        public Builder limit(@Nullable Integer limit) {
             $.limit = limit;
             return this;
         }
@@ -147,7 +147,7 @@ public final class GetMetrosPagination extends com.pulumi.resources.InvokeArgs {
          * @return builder
          * 
          */
-        public Builder offset(@Nullable Double offset) {
+        public Builder offset(@Nullable Integer offset) {
             $.offset = offset;
             return this;
         }
@@ -169,7 +169,7 @@ public final class GetMetrosPagination extends com.pulumi.resources.InvokeArgs {
          * @return builder
          * 
          */
-        public Builder total(Double total) {
+        public Builder total(Integer total) {
             $.total = total;
             return this;
         }

@@ -169,7 +169,7 @@ export interface GetPortResult {
  * export const deviceRedundancyPriority = portDataName.then(portDataName => portDataName.device?.redundancies?.[0]?.priority);
  * ```
  */
-export function getPortOutput(args: GetPortOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPortResult> {
+export function getPortOutput(args: GetPortOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPortResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("equinix:fabric/getPort:getPort", {
         "uuid": args.uuid,

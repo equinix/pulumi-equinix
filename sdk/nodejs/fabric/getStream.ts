@@ -115,7 +115,7 @@ export interface GetStreamResult {
  * export const streamState = dataStream.then(dataStream => dataStream.state);
  * ```
  */
-export function getStreamOutput(args: GetStreamOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStreamResult> {
+export function getStreamOutput(args: GetStreamOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetStreamResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("equinix:fabric/getStream:getStream", {
         "streamId": args.streamId,

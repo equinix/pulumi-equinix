@@ -78,7 +78,7 @@ export interface GetReservedIpBlockResult {
  *
  * See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
  */
-export function getReservedIpBlockOutput(args?: GetReservedIpBlockOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReservedIpBlockResult> {
+export function getReservedIpBlockOutput(args?: GetReservedIpBlockOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetReservedIpBlockResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("equinix:metal/getReservedIpBlock:getReservedIpBlock", {

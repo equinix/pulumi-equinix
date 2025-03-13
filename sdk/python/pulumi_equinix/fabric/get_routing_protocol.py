@@ -345,7 +345,7 @@ def get_routing_protocol(connection_uuid: Optional[str] = None,
         uuid=pulumi.get(__ret__, 'uuid'))
 def get_routing_protocol_output(connection_uuid: Optional[pulumi.Input[str]] = None,
                                 uuid: Optional[pulumi.Input[str]] = None,
-                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRoutingProtocolResult]:
+                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRoutingProtocolResult]:
     """
     Fabric V4 API compatible data resource that allow user to fetch routing protocol for a given UUID
 
@@ -384,7 +384,7 @@ def get_routing_protocol_output(connection_uuid: Optional[pulumi.Input[str]] = N
     __args__ = dict()
     __args__['connectionUuid'] = connection_uuid
     __args__['uuid'] = uuid
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('equinix:fabric/getRoutingProtocol:getRoutingProtocol', __args__, opts=opts, typ=GetRoutingProtocolResult)
     return __ret__.apply(lambda __response__: GetRoutingProtocolResult(
         as_override_enabled=pulumi.get(__response__, 'as_override_enabled'),

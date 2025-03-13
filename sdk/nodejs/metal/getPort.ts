@@ -137,7 +137,7 @@ export interface GetPortResult {
  * });
  * ```
  */
-export function getPortOutput(args?: GetPortOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPortResult> {
+export function getPortOutput(args?: GetPortOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPortResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("equinix:metal/getPort:getPort", {

@@ -15718,15 +15718,15 @@ class GetMetrosPaginationResult(dict):
     def __init__(__self__, *,
                  next: str,
                  previous: str,
-                 total: float,
-                 limit: Optional[float] = None,
-                 offset: Optional[float] = None):
+                 total: int,
+                 limit: Optional[int] = None,
+                 offset: Optional[int] = None):
         """
         :param str next: URL relative to the next item in the response.
         :param str previous: URL relative to the previous item in the response.
-        :param float total: The total number of metro returned
-        :param float limit: Maximum number of search results returned per page.
-        :param float offset: Index of the first item returned in the response.
+        :param int total: The total number of metro returned
+        :param int limit: Maximum number of search results returned per page.
+        :param int offset: Index of the first item returned in the response.
         """
         pulumi.set(__self__, "next", next)
         pulumi.set(__self__, "previous", previous)
@@ -15754,7 +15754,7 @@ class GetMetrosPaginationResult(dict):
 
     @property
     @pulumi.getter
-    def total(self) -> float:
+    def total(self) -> int:
         """
         The total number of metro returned
         """
@@ -15762,7 +15762,7 @@ class GetMetrosPaginationResult(dict):
 
     @property
     @pulumi.getter
-    def limit(self) -> Optional[float]:
+    def limit(self) -> Optional[int]:
         """
         Maximum number of search results returned per page.
         """
@@ -15770,7 +15770,7 @@ class GetMetrosPaginationResult(dict):
 
     @property
     @pulumi.getter
-    def offset(self) -> Optional[float]:
+    def offset(self) -> Optional[int]:
         """
         Index of the first item returned in the response.
         """
@@ -25516,25 +25516,25 @@ class GetStreamProjectResult(dict):
 @pulumi.output_type
 class GetStreamsDataResult(dict):
     def __init__(__self__, *,
-                 assets_count: float,
+                 assets_count: int,
                  change_log: 'outputs.GetStreamsDataChangeLogResult',
                  description: str,
                  href: str,
                  name: str,
                  project: 'outputs.GetStreamsDataProjectResult',
                  state: str,
-                 stream_subscriptions_count: float,
+                 stream_subscriptions_count: int,
                  type: str,
                  uuid: str):
         """
-        :param float assets_count: Count of the streaming assets attached to the stream resource
+        :param int assets_count: Count of the streaming assets attached to the stream resource
         :param 'GetStreamsDataChangeLogArgs' change_log: Details of the last change on the stream resource
         :param str description: Customer-provided description of the stream resource
         :param str href: Equinix auto generated URI to the stream resource in Equinix Portal
         :param str name: Customer-provided name of the stream resource
         :param 'GetStreamsDataProjectArgs' project: Equinix Project attribute object
         :param str state: Value representing provisioning status for the stream resource
-        :param float stream_subscriptions_count: Count of the client subscriptions on the stream resource
+        :param int stream_subscriptions_count: Count of the client subscriptions on the stream resource
         :param str type: Equinix defined Streaming Type
         :param str uuid: Equinix-assigned unique id for the stream resource
         """
@@ -25551,7 +25551,7 @@ class GetStreamsDataResult(dict):
 
     @property
     @pulumi.getter(name="assetsCount")
-    def assets_count(self) -> float:
+    def assets_count(self) -> int:
         """
         Count of the streaming assets attached to the stream resource
         """
@@ -25607,7 +25607,7 @@ class GetStreamsDataResult(dict):
 
     @property
     @pulumi.getter(name="streamSubscriptionsCount")
-    def stream_subscriptions_count(self) -> float:
+    def stream_subscriptions_count(self) -> int:
         """
         Count of the client subscriptions on the stream resource
         """
@@ -25790,17 +25790,17 @@ class GetStreamsDataProjectResult(dict):
 @pulumi.output_type
 class GetStreamsPaginationResult(dict):
     def __init__(__self__, *,
-                 limit: float,
+                 limit: int,
                  next: str,
-                 offset: float,
+                 offset: int,
                  previous: str,
-                 total: float):
+                 total: int):
         """
-        :param float limit: Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+        :param int limit: Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
         :param str next: The URL relative to the next item in the response
-        :param float offset: Index of the first item returned in the response. The default is 0
+        :param int offset: Index of the first item returned in the response. The default is 0
         :param str previous: The URL relative to the previous item in the response
-        :param float total: The total number of streams available to the user making the request
+        :param int total: The total number of streams available to the user making the request
         """
         pulumi.set(__self__, "limit", limit)
         pulumi.set(__self__, "next", next)
@@ -25810,7 +25810,7 @@ class GetStreamsPaginationResult(dict):
 
     @property
     @pulumi.getter
-    def limit(self) -> float:
+    def limit(self) -> int:
         """
         Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
         """
@@ -25826,7 +25826,7 @@ class GetStreamsPaginationResult(dict):
 
     @property
     @pulumi.getter
-    def offset(self) -> float:
+    def offset(self) -> int:
         """
         Index of the first item returned in the response. The default is 0
         """
@@ -25842,7 +25842,7 @@ class GetStreamsPaginationResult(dict):
 
     @property
     @pulumi.getter
-    def total(self) -> float:
+    def total(self) -> int:
         """
         The total number of streams available to the user making the request
         """

@@ -39,21 +39,11 @@ type GetPlansResult struct {
 }
 
 func GetPlansOutput(ctx *pulumi.Context, args GetPlansOutputArgs, opts ...pulumi.InvokeOption) GetPlansResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetPlansResultOutput, error) {
 			args := v.(GetPlansArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetPlansResult
-			secret, err := ctx.InvokePackageRaw("equinix:metal/getPlans:getPlans", args, &rv, "", opts...)
-			if err != nil {
-				return GetPlansResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetPlansResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetPlansResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("equinix:metal/getPlans:getPlans", args, GetPlansResultOutput{}, options).(GetPlansResultOutput), nil
 		}).(GetPlansResultOutput)
 }
 

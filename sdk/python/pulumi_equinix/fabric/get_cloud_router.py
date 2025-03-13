@@ -297,7 +297,7 @@ def get_cloud_router(uuid: Optional[str] = None,
         type=pulumi.get(__ret__, 'type'),
         uuid=pulumi.get(__ret__, 'uuid'))
 def get_cloud_router_output(uuid: Optional[pulumi.Input[str]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCloudRouterResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCloudRouterResult]:
     """
     Fabric V4 API compatible data resource that allow user to fetch Fabric Cloud Router for a given UUID
 
@@ -329,7 +329,7 @@ def get_cloud_router_output(uuid: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['uuid'] = uuid
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('equinix:fabric/getCloudRouter:getCloudRouter', __args__, opts=opts, typ=GetCloudRouterResult)
     return __ret__.apply(lambda __response__: GetCloudRouterResult(
         accounts=pulumi.get(__response__, 'accounts'),

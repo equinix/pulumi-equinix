@@ -111,7 +111,7 @@ export interface GetRouteFilterRulesResult {
  * export const firstRouteFilterRulePrefixMatch = rfRules.then(rfRules => rfRules.datas?.[0]?.prefixMatch);
  * ```
  */
-export function getRouteFilterRulesOutput(args: GetRouteFilterRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRouteFilterRulesResult> {
+export function getRouteFilterRulesOutput(args: GetRouteFilterRulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRouteFilterRulesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("equinix:fabric/getRouteFilterRules:getRouteFilterRules", {
         "limit": args.limit,

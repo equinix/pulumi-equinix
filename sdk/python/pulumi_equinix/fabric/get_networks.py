@@ -148,7 +148,7 @@ def get_networks_output(filters: Optional[pulumi.Input[Sequence[Union['GetNetwor
                         outer_operator: Optional[pulumi.Input[str]] = None,
                         pagination: Optional[pulumi.Input[Optional[Union['GetNetworksPaginationArgs', 'GetNetworksPaginationArgsDict']]]] = None,
                         sorts: Optional[pulumi.Input[Optional[Sequence[Union['GetNetworksSortArgs', 'GetNetworksSortArgsDict']]]]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetworksResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNetworksResult]:
     """
     Fabric V4 API compatible data resource that allow user to fetch Fabric Network for a given UUID
 
@@ -167,7 +167,7 @@ def get_networks_output(filters: Optional[pulumi.Input[Sequence[Union['GetNetwor
     __args__['outerOperator'] = outer_operator
     __args__['pagination'] = pagination
     __args__['sorts'] = sorts
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('equinix:fabric/getNetworks:getNetworks', __args__, opts=opts, typ=GetNetworksResult)
     return __ret__.apply(lambda __response__: GetNetworksResult(
         datas=pulumi.get(__response__, 'datas'),

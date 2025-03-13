@@ -62,7 +62,7 @@ type LookupStreamArgs struct {
 // A collection of values returned by getStream.
 type LookupStreamResult struct {
 	// Count of the streaming assets attached to the stream resource
-	AssetsCount float64 `pulumi:"assetsCount"`
+	AssetsCount int `pulumi:"assetsCount"`
 	// Details of the last change on the stream resource
 	ChangeLog GetStreamChangeLog `pulumi:"changeLog"`
 	// Customer-provided description of the stream resource
@@ -80,7 +80,7 @@ type LookupStreamResult struct {
 	// The uuid of the stream this data source should retrieve
 	StreamId string `pulumi:"streamId"`
 	// Count of the client subscriptions on the stream resource
-	StreamSubscriptionsCount float64 `pulumi:"streamSubscriptionsCount"`
+	StreamSubscriptionsCount int `pulumi:"streamSubscriptionsCount"`
 	// Equinix defined Streaming Type
 	Type string `pulumi:"type"`
 	// Equinix-assigned unique id for the stream resource
@@ -88,21 +88,11 @@ type LookupStreamResult struct {
 }
 
 func LookupStreamOutput(ctx *pulumi.Context, args LookupStreamOutputArgs, opts ...pulumi.InvokeOption) LookupStreamResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupStreamResultOutput, error) {
 			args := v.(LookupStreamArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupStreamResult
-			secret, err := ctx.InvokePackageRaw("equinix:fabric/getStream:getStream", args, &rv, "", opts...)
-			if err != nil {
-				return LookupStreamResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupStreamResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupStreamResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("equinix:fabric/getStream:getStream", args, LookupStreamResultOutput{}, options).(LookupStreamResultOutput), nil
 		}).(LookupStreamResultOutput)
 }
 
@@ -132,8 +122,8 @@ func (o LookupStreamResultOutput) ToLookupStreamResultOutputWithContext(ctx cont
 }
 
 // Count of the streaming assets attached to the stream resource
-func (o LookupStreamResultOutput) AssetsCount() pulumi.Float64Output {
-	return o.ApplyT(func(v LookupStreamResult) float64 { return v.AssetsCount }).(pulumi.Float64Output)
+func (o LookupStreamResultOutput) AssetsCount() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupStreamResult) int { return v.AssetsCount }).(pulumi.IntOutput)
 }
 
 // Details of the last change on the stream resource
@@ -177,8 +167,8 @@ func (o LookupStreamResultOutput) StreamId() pulumi.StringOutput {
 }
 
 // Count of the client subscriptions on the stream resource
-func (o LookupStreamResultOutput) StreamSubscriptionsCount() pulumi.Float64Output {
-	return o.ApplyT(func(v LookupStreamResult) float64 { return v.StreamSubscriptionsCount }).(pulumi.Float64Output)
+func (o LookupStreamResultOutput) StreamSubscriptionsCount() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupStreamResult) int { return v.StreamSubscriptionsCount }).(pulumi.IntOutput)
 }
 
 // Equinix defined Streaming Type

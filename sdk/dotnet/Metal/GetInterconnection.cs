@@ -62,6 +62,32 @@ namespace Pulumi.Equinix.Metal
         /// </summary>
         public static Output<GetInterconnectionResult> Invoke(GetInterconnectionInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInterconnectionResult>("equinix:metal/getInterconnection:getInterconnection", args ?? new GetInterconnectionInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to retrieve a [connection resource](https://metal.equinix.com/developers/docs/networking/fabric/)
+        /// 
+        /// &gt; Equinix Metal connection with with Service Token A-side / Z-side (service_token_type) is not generally available and may not be enabled yet for your organization.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Equinix.Metal.GetInterconnection.Invoke(new()
+        ///     {
+        ///         ConnectionId = "4347e805-eb46-4699-9eb9-5c116e6a017d",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetInterconnectionResult> Invoke(GetInterconnectionInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetInterconnectionResult>("equinix:metal/getInterconnection:getInterconnection", args ?? new GetInterconnectionInvokeArgs(), options.WithDefaults());
     }
 
 

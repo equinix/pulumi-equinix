@@ -256,7 +256,7 @@ def get_service_token(uuid: Optional[str] = None,
         type=pulumi.get(__ret__, 'type'),
         uuid=pulumi.get(__ret__, 'uuid'))
 def get_service_token_output(uuid: Optional[pulumi.Input[str]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceTokenResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServiceTokenResult]:
     """
     Fabric V4 API compatible data resource that allow user to fetch service token for a given UUID
 
@@ -286,7 +286,7 @@ def get_service_token_output(uuid: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['uuid'] = uuid
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('equinix:fabric/getServiceToken:getServiceToken', __args__, opts=opts, typ=GetServiceTokenResult)
     return __ret__.apply(lambda __response__: GetServiceTokenResult(
         accounts=pulumi.get(__response__, 'accounts'),

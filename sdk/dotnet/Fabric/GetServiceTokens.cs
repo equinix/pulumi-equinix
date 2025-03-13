@@ -30,6 +30,16 @@ namespace Pulumi.Equinix.Fabric
         /// </summary>
         public static Output<GetServiceTokensResult> Invoke(GetServiceTokensInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceTokensResult>("equinix:fabric/getServiceTokens:getServiceTokens", args ?? new GetServiceTokensInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Fabric V4 API compatible data resource that allow user to fetch service token for a given search data set
+        /// 
+        /// Additional documentation:
+        /// * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/service%20tokens/Fabric-Service-Tokens.htm
+        /// * API: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/ConnectUsingServiceToken.htm
+        /// </summary>
+        public static Output<GetServiceTokensResult> Invoke(GetServiceTokensInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetServiceTokensResult>("equinix:fabric/getServiceTokens:getServiceTokens", args ?? new GetServiceTokensInvokeArgs(), options.WithDefaults());
     }
 
 

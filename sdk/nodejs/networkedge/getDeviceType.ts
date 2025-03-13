@@ -96,7 +96,7 @@ export interface GetDeviceTypeResult {
  * });
  * ```
  */
-export function getDeviceTypeOutput(args?: GetDeviceTypeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDeviceTypeResult> {
+export function getDeviceTypeOutput(args?: GetDeviceTypeOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDeviceTypeResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("equinix:networkedge/getDeviceType:getDeviceType", {

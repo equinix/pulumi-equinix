@@ -66,6 +66,34 @@ namespace Pulumi.Equinix.Metal
         /// </summary>
         public static Output<GetMetroResult> Invoke(GetMetroInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMetroResult>("equinix:metal/getMetro:getMetro", args ?? new GetMetroInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides an Equinix Metal metro datasource.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var sv = Equinix.Metal.GetMetro.Invoke(new()
+        ///     {
+        ///         Code = "sv",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["id"] = sv.Apply(getMetroResult =&gt; getMetroResult.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetMetroResult> Invoke(GetMetroInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetMetroResult>("equinix:metal/getMetro:getMetro", args ?? new GetMetroInvokeArgs(), options.WithDefaults());
     }
 
 

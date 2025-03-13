@@ -64,7 +64,7 @@ export interface GetServiceTokensResult {
  * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/service%20tokens/Fabric-Service-Tokens.htm
  * * API: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/ConnectUsingServiceToken.htm
  */
-export function getServiceTokensOutput(args: GetServiceTokensOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceTokensResult> {
+export function getServiceTokensOutput(args: GetServiceTokensOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServiceTokensResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("equinix:fabric/getServiceTokens:getServiceTokens", {
         "filters": args.filters,

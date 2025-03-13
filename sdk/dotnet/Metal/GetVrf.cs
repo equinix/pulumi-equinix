@@ -62,6 +62,32 @@ namespace Pulumi.Equinix.Metal
         /// </summary>
         public static Output<GetVrfResult> Invoke(GetVrfInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVrfResult>("equinix:metal/getVrf:getVrf", args ?? new GetVrfInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to retrieve a VRF resource.
+        /// 
+        /// See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleVrf = Equinix.Metal.GetVrf.Invoke(new()
+        ///     {
+        ///         VrfId = "48630899-9ff2-4ce6-a93f-50ff4ebcdf6e",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetVrfResult> Invoke(GetVrfInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetVrfResult>("equinix:metal/getVrf:getVrf", args ?? new GetVrfInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -60,6 +60,31 @@ namespace Pulumi.Equinix.Metal
         /// </summary>
         public static Output<GetProjectSshKeyResult> Invoke(GetProjectSshKeyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectSshKeyResult>("equinix:metal/getProjectSshKey:getProjectSshKey", args ?? new GetProjectSshKeyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this datasource to retrieve attributes of a Project SSH Key API resource.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myKey = Equinix.Metal.GetProjectSshKey.Invoke(new()
+        ///     {
+        ///         Search = "username@hostname",
+        ///         ProjectId = local.Project_id,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetProjectSshKeyResult> Invoke(GetProjectSshKeyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetProjectSshKeyResult>("equinix:metal/getProjectSshKey:getProjectSshKey", args ?? new GetProjectSshKeyInvokeArgs(), options.WithDefaults());
     }
 
 

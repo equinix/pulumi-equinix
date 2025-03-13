@@ -148,7 +148,7 @@ def get_operating_system_output(distro: Optional[pulumi.Input[Optional[str]]] = 
                                 name: Optional[pulumi.Input[Optional[str]]] = None,
                                 provisionable_on: Optional[pulumi.Input[Optional[str]]] = None,
                                 version: Optional[pulumi.Input[Optional[str]]] = None,
-                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOperatingSystemResult]:
+                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOperatingSystemResult]:
     """
     Use this data source to get Equinix Metal Operating System image.
 
@@ -181,7 +181,7 @@ def get_operating_system_output(distro: Optional[pulumi.Input[Optional[str]]] = 
     __args__['name'] = name
     __args__['provisionableOn'] = provisionable_on
     __args__['version'] = version
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('equinix:metal/getOperatingSystem:getOperatingSystem', __args__, opts=opts, typ=GetOperatingSystemResult)
     return __ret__.apply(lambda __response__: GetOperatingSystemResult(
         distro=pulumi.get(__response__, 'distro'),

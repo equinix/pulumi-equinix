@@ -82,7 +82,7 @@ export interface GetConnectionsResult {
  * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm
  * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections
  */
-export function getConnectionsOutput(args: GetConnectionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectionsResult> {
+export function getConnectionsOutput(args: GetConnectionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetConnectionsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("equinix:fabric/getConnections:getConnections", {
         "filters": args.filters,

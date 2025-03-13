@@ -84,6 +84,43 @@ namespace Pulumi.Equinix.Fabric
         /// </summary>
         public static Output<GetConnectionRouteFilterResult> Invoke(GetConnectionRouteFilterInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetConnectionRouteFilterResult>("equinix:fabric/getConnectionRouteFilter:getConnectionRouteFilter", args ?? new GetConnectionRouteFilterInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Fabric V4 API compatible data resource that allow user to fetch route filter policy attachment to a fabric connection
+        /// 
+        /// Additional Documentation:
+        /// * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
+        /// * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filter-rules
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var attachedPolicy = Equinix.Fabric.GetConnectionRouteFilter.Invoke(new()
+        ///     {
+        ///         ConnectionId = "&lt;connection_uuid&gt;",
+        ///         RouteFilterId = "&lt;route_filter_uuid&gt;",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["connectionRouteFilterId"] = attachedPolicy.Apply(getConnectionRouteFilterResult =&gt; getConnectionRouteFilterResult.Id),
+        ///         ["connectionRouteFilterConnectionId"] = attachedPolicy.Apply(getConnectionRouteFilterResult =&gt; getConnectionRouteFilterResult.ConnectionId),
+        ///         ["connectionRouteFilterDirection"] = attachedPolicy.Apply(getConnectionRouteFilterResult =&gt; getConnectionRouteFilterResult.Direction),
+        ///         ["connectionRouteFilterType"] = attachedPolicy.Apply(getConnectionRouteFilterResult =&gt; getConnectionRouteFilterResult.Type),
+        ///         ["connectionRouteFilterAttachmentStatus"] = attachedPolicy.Apply(getConnectionRouteFilterResult =&gt; getConnectionRouteFilterResult.AttachmentStatus),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetConnectionRouteFilterResult> Invoke(GetConnectionRouteFilterInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetConnectionRouteFilterResult>("equinix:fabric/getConnectionRouteFilter:getConnectionRouteFilter", args ?? new GetConnectionRouteFilterInvokeArgs(), options.WithDefaults());
     }
 
 

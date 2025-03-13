@@ -114,7 +114,7 @@ def get_service_tokens(filters: Optional[Sequence[Union['GetServiceTokensFilterA
         pagination=pulumi.get(__ret__, 'pagination'))
 def get_service_tokens_output(filters: Optional[pulumi.Input[Sequence[Union['GetServiceTokensFilterArgs', 'GetServiceTokensFilterArgsDict']]]] = None,
                               pagination: Optional[pulumi.Input[Optional[Union['GetServiceTokensPaginationArgs', 'GetServiceTokensPaginationArgsDict']]]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceTokensResult]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServiceTokensResult]:
     """
     Fabric V4 API compatible data resource that allow user to fetch service token for a given search data set
 
@@ -129,7 +129,7 @@ def get_service_tokens_output(filters: Optional[pulumi.Input[Sequence[Union['Get
     __args__ = dict()
     __args__['filters'] = filters
     __args__['pagination'] = pagination
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('equinix:fabric/getServiceTokens:getServiceTokens', __args__, opts=opts, typ=GetServiceTokensResult)
     return __ret__.apply(lambda __response__: GetServiceTokensResult(
         datas=pulumi.get(__response__, 'datas'),

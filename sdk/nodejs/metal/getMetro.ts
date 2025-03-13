@@ -78,7 +78,7 @@ export interface GetMetroResult {
  * export const id = sv.then(sv => sv.id);
  * ```
  */
-export function getMetroOutput(args: GetMetroOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMetroResult> {
+export function getMetroOutput(args: GetMetroOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMetroResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("equinix:metal/getMetro:getMetro", {
         "capacities": args.capacities,

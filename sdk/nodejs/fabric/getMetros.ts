@@ -56,7 +56,7 @@ export interface GetMetrosResult {
 /**
  * ## Example Usage
  */
-export function getMetrosOutput(args: GetMetrosOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMetrosResult> {
+export function getMetrosOutput(args: GetMetrosOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMetrosResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("equinix:fabric/getMetros:getMetros", {
         "pagination": args.pagination,

@@ -401,7 +401,7 @@ def get_device(device_id: Optional[str] = None,
 def get_device_output(device_id: Optional[pulumi.Input[Optional[str]]] = None,
                       hostname: Optional[pulumi.Input[Optional[str]]] = None,
                       project_id: Optional[pulumi.Input[Optional[str]]] = None,
-                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDeviceResult]:
+                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDeviceResult]:
     """
     The datasource can be used to fetch a single device.
 
@@ -437,7 +437,7 @@ def get_device_output(device_id: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['deviceId'] = device_id
     __args__['hostname'] = hostname
     __args__['projectId'] = project_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('equinix:metal/getDevice:getDevice', __args__, opts=opts, typ=GetDeviceResult)
     return __ret__.apply(lambda __response__: GetDeviceResult(
         access_private_ipv4=pulumi.get(__response__, 'access_private_ipv4'),

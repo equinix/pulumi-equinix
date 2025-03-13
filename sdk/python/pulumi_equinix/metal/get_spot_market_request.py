@@ -192,7 +192,7 @@ def get_spot_market_request(request_id: Optional[str] = None,
         project_id=pulumi.get(__ret__, 'project_id'),
         request_id=pulumi.get(__ret__, 'request_id'))
 def get_spot_market_request_output(request_id: Optional[pulumi.Input[str]] = None,
-                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSpotMarketRequestResult]:
+                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSpotMarketRequestResult]:
     """
     Use this data source to access information about an existing resource.
 
@@ -200,7 +200,7 @@ def get_spot_market_request_output(request_id: Optional[pulumi.Input[str]] = Non
     """
     __args__ = dict()
     __args__['requestId'] = request_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('equinix:metal/getSpotMarketRequest:getSpotMarketRequest', __args__, opts=opts, typ=GetSpotMarketRequestResult)
     return __ret__.apply(lambda __response__: GetSpotMarketRequestResult(
         device_ids=pulumi.get(__response__, 'device_ids'),

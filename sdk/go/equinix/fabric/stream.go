@@ -22,7 +22,7 @@ type Stream struct {
 	pulumi.CustomResourceState
 
 	// Count of the streaming assets attached to the stream resource
-	AssetsCount pulumi.Float64Output `pulumi:"assetsCount"`
+	AssetsCount pulumi.IntOutput `pulumi:"assetsCount"`
 	// Details of the last change on the stream resource
 	ChangeLog StreamChangeLogOutput `pulumi:"changeLog"`
 	// Customer-provided description of the stream resource
@@ -36,7 +36,7 @@ type Stream struct {
 	// Value representing provisioning status for the stream resource
 	State pulumi.StringOutput `pulumi:"state"`
 	// Count of the client subscriptions on the stream resource
-	StreamSubscriptionsCount pulumi.Float64Output    `pulumi:"streamSubscriptionsCount"`
+	StreamSubscriptionsCount pulumi.IntOutput        `pulumi:"streamSubscriptionsCount"`
 	Timeouts                 StreamTimeoutsPtrOutput `pulumi:"timeouts"`
 	// Equinix defined Streaming Type
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -81,7 +81,7 @@ func GetStream(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Stream resources.
 type streamState struct {
 	// Count of the streaming assets attached to the stream resource
-	AssetsCount *float64 `pulumi:"assetsCount"`
+	AssetsCount *int `pulumi:"assetsCount"`
 	// Details of the last change on the stream resource
 	ChangeLog *StreamChangeLog `pulumi:"changeLog"`
 	// Customer-provided description of the stream resource
@@ -95,7 +95,7 @@ type streamState struct {
 	// Value representing provisioning status for the stream resource
 	State *string `pulumi:"state"`
 	// Count of the client subscriptions on the stream resource
-	StreamSubscriptionsCount *float64        `pulumi:"streamSubscriptionsCount"`
+	StreamSubscriptionsCount *int            `pulumi:"streamSubscriptionsCount"`
 	Timeouts                 *StreamTimeouts `pulumi:"timeouts"`
 	// Equinix defined Streaming Type
 	Type *string `pulumi:"type"`
@@ -105,7 +105,7 @@ type streamState struct {
 
 type StreamState struct {
 	// Count of the streaming assets attached to the stream resource
-	AssetsCount pulumi.Float64PtrInput
+	AssetsCount pulumi.IntPtrInput
 	// Details of the last change on the stream resource
 	ChangeLog StreamChangeLogPtrInput
 	// Customer-provided description of the stream resource
@@ -119,7 +119,7 @@ type StreamState struct {
 	// Value representing provisioning status for the stream resource
 	State pulumi.StringPtrInput
 	// Count of the client subscriptions on the stream resource
-	StreamSubscriptionsCount pulumi.Float64PtrInput
+	StreamSubscriptionsCount pulumi.IntPtrInput
 	Timeouts                 StreamTimeoutsPtrInput
 	// Equinix defined Streaming Type
 	Type pulumi.StringPtrInput
@@ -244,8 +244,8 @@ func (o StreamOutput) ToStreamOutputWithContext(ctx context.Context) StreamOutpu
 }
 
 // Count of the streaming assets attached to the stream resource
-func (o StreamOutput) AssetsCount() pulumi.Float64Output {
-	return o.ApplyT(func(v *Stream) pulumi.Float64Output { return v.AssetsCount }).(pulumi.Float64Output)
+func (o StreamOutput) AssetsCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *Stream) pulumi.IntOutput { return v.AssetsCount }).(pulumi.IntOutput)
 }
 
 // Details of the last change on the stream resource
@@ -279,8 +279,8 @@ func (o StreamOutput) State() pulumi.StringOutput {
 }
 
 // Count of the client subscriptions on the stream resource
-func (o StreamOutput) StreamSubscriptionsCount() pulumi.Float64Output {
-	return o.ApplyT(func(v *Stream) pulumi.Float64Output { return v.StreamSubscriptionsCount }).(pulumi.Float64Output)
+func (o StreamOutput) StreamSubscriptionsCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *Stream) pulumi.IntOutput { return v.StreamSubscriptionsCount }).(pulumi.IntOutput)
 }
 
 func (o StreamOutput) Timeouts() StreamTimeoutsPtrOutput {

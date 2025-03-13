@@ -70,6 +70,36 @@ namespace Pulumi.Equinix.Metal
         /// </summary>
         public static Output<GetFacilityResult> Invoke(GetFacilityInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFacilityResult>("equinix:metal/getFacility:getFacility", args ?? new GetFacilityInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// &gt; **Deprecated** Use `equinix.metal.getMetro` instead. For more information, refer to the facility to metro migration guide.
+        /// 
+        /// Provides an Equinix Metal facility datasource.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ny5 = Equinix.Metal.GetFacility.Invoke(new()
+        ///     {
+        ///         Code = "ny5",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["id"] = ny5.Apply(getFacilityResult =&gt; getFacilityResult.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetFacilityResult> Invoke(GetFacilityInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetFacilityResult>("equinix:metal/getFacility:getFacility", args ?? new GetFacilityInvokeArgs(), options.WithDefaults());
     }
 
 

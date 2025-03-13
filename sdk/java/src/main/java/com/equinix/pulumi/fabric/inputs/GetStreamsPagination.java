@@ -5,7 +5,7 @@ package com.equinix.pulumi.fabric.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Double;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 
@@ -19,13 +19,13 @@ public final class GetStreamsPagination extends com.pulumi.resources.InvokeArgs 
      * 
      */
     @Import(name="limit", required=true)
-    private Double limit;
+    private Integer limit;
 
     /**
      * @return Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
      * 
      */
-    public Double limit() {
+    public Integer limit() {
         return this.limit;
     }
 
@@ -49,13 +49,13 @@ public final class GetStreamsPagination extends com.pulumi.resources.InvokeArgs 
      * 
      */
     @Import(name="offset", required=true)
-    private Double offset;
+    private Integer offset;
 
     /**
      * @return Index of the first item returned in the response. The default is 0
      * 
      */
-    public Double offset() {
+    public Integer offset() {
         return this.offset;
     }
 
@@ -79,13 +79,13 @@ public final class GetStreamsPagination extends com.pulumi.resources.InvokeArgs 
      * 
      */
     @Import(name="total", required=true)
-    private Double total;
+    private Integer total;
 
     /**
      * @return The total number of streams available to the user making the request
      * 
      */
-    public Double total() {
+    public Integer total() {
         return this.total;
     }
 
@@ -123,7 +123,7 @@ public final class GetStreamsPagination extends com.pulumi.resources.InvokeArgs 
          * @return builder
          * 
          */
-        public Builder limit(Double limit) {
+        public Builder limit(Integer limit) {
             $.limit = limit;
             return this;
         }
@@ -145,7 +145,7 @@ public final class GetStreamsPagination extends com.pulumi.resources.InvokeArgs 
          * @return builder
          * 
          */
-        public Builder offset(Double offset) {
+        public Builder offset(Integer offset) {
             $.offset = offset;
             return this;
         }
@@ -167,7 +167,7 @@ public final class GetStreamsPagination extends com.pulumi.resources.InvokeArgs 
          * @return builder
          * 
          */
-        public Builder total(Double total) {
+        public Builder total(Integer total) {
             $.total = total;
             return this;
         }

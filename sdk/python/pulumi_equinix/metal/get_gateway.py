@@ -166,7 +166,7 @@ def get_gateway(gateway_id: Optional[str] = None,
         vlan_id=pulumi.get(__ret__, 'vlan_id'),
         vrf_id=pulumi.get(__ret__, 'vrf_id'))
 def get_gateway_output(gateway_id: Optional[pulumi.Input[str]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGatewayResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGatewayResult]:
     """
     Use this datasource to retrieve Metal Gateway resources in Equinix Metal.
 
@@ -191,7 +191,7 @@ def get_gateway_output(gateway_id: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['gatewayId'] = gateway_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('equinix:metal/getGateway:getGateway', __args__, opts=opts, typ=GetGatewayResult)
     return __ret__.apply(lambda __response__: GetGatewayResult(
         gateway_id=pulumi.get(__response__, 'gateway_id'),

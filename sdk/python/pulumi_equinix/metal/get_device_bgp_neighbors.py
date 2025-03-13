@@ -103,7 +103,7 @@ def get_device_bgp_neighbors(device_id: Optional[str] = None,
         device_id=pulumi.get(__ret__, 'device_id'),
         id=pulumi.get(__ret__, 'id'))
 def get_device_bgp_neighbors_output(device_id: Optional[pulumi.Input[str]] = None,
-                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDeviceBgpNeighborsResult]:
+                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDeviceBgpNeighborsResult]:
     """
     Use this datasource to retrieve list of BGP neighbors of a device in the Equinix Metal host.
 
@@ -126,7 +126,7 @@ def get_device_bgp_neighbors_output(device_id: Optional[pulumi.Input[str]] = Non
     """
     __args__ = dict()
     __args__['deviceId'] = device_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('equinix:metal/getDeviceBgpNeighbors:getDeviceBgpNeighbors', __args__, opts=opts, typ=GetDeviceBgpNeighborsResult)
     return __ret__.apply(lambda __response__: GetDeviceBgpNeighborsResult(
         bgp_neighbors=pulumi.get(__response__, 'bgp_neighbors'),

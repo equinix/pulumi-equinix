@@ -86,21 +86,11 @@ type GetOperatingSystemResult struct {
 }
 
 func GetOperatingSystemOutput(ctx *pulumi.Context, args GetOperatingSystemOutputArgs, opts ...pulumi.InvokeOption) GetOperatingSystemResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetOperatingSystemResultOutput, error) {
 			args := v.(GetOperatingSystemArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetOperatingSystemResult
-			secret, err := ctx.InvokePackageRaw("equinix:metal/getOperatingSystem:getOperatingSystem", args, &rv, "", opts...)
-			if err != nil {
-				return GetOperatingSystemResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetOperatingSystemResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetOperatingSystemResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("equinix:metal/getOperatingSystem:getOperatingSystem", args, GetOperatingSystemResultOutput{}, options).(GetOperatingSystemResultOutput), nil
 		}).(GetOperatingSystemResultOutput)
 }
 

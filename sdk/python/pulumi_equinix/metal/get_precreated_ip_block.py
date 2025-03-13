@@ -264,7 +264,7 @@ def get_precreated_ip_block_output(address_family: Optional[pulumi.Input[int]] =
                                    metro: Optional[pulumi.Input[Optional[str]]] = None,
                                    project_id: Optional[pulumi.Input[str]] = None,
                                    public: Optional[pulumi.Input[bool]] = None,
-                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPrecreatedIpBlockResult]:
+                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPrecreatedIpBlockResult]:
     """
     Use this data source to get CIDR expression for precreated (management) IPv6 and IPv4 blocks in Equinix Metal. You can then use the cidrsubnet TF builtin function to derive subnets.
 
@@ -289,7 +289,7 @@ def get_precreated_ip_block_output(address_family: Optional[pulumi.Input[int]] =
     __args__['metro'] = metro
     __args__['projectId'] = project_id
     __args__['public'] = public
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('equinix:metal/getPrecreatedIpBlock:getPrecreatedIpBlock', __args__, opts=opts, typ=GetPrecreatedIpBlockResult)
     return __ret__.apply(lambda __response__: GetPrecreatedIpBlockResult(
         address=pulumi.get(__response__, 'address'),

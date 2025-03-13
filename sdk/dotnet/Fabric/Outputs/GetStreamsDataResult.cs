@@ -16,7 +16,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// <summary>
         /// Count of the streaming assets attached to the stream resource
         /// </summary>
-        public readonly double AssetsCount;
+        public readonly int AssetsCount;
         /// <summary>
         /// Details of the last change on the stream resource
         /// </summary>
@@ -44,7 +44,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// <summary>
         /// Count of the client subscriptions on the stream resource
         /// </summary>
-        public readonly double StreamSubscriptionsCount;
+        public readonly int StreamSubscriptionsCount;
         /// <summary>
         /// Equinix defined Streaming Type
         /// </summary>
@@ -56,7 +56,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
 
         [OutputConstructor]
         private GetStreamsDataResult(
-            double assetsCount,
+            int assetsCount,
 
             Outputs.GetStreamsDataChangeLogResult changeLog,
 
@@ -70,7 +70,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
 
             string state,
 
-            double streamSubscriptionsCount,
+            int streamSubscriptionsCount,
 
             string type,
 

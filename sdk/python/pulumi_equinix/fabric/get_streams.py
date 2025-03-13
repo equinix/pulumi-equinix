@@ -110,7 +110,7 @@ def get_streams(pagination: Optional[Union['GetStreamsPaginationArgs', 'GetStrea
         id=pulumi.get(__ret__, 'id'),
         pagination=pulumi.get(__ret__, 'pagination'))
 def get_streams_output(pagination: Optional[pulumi.Input[Union['GetStreamsPaginationArgs', 'GetStreamsPaginationArgsDict']]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetStreamsResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetStreamsResult]:
     """
     Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Streams with pagination details
 
@@ -136,7 +136,7 @@ def get_streams_output(pagination: Optional[pulumi.Input[Union['GetStreamsPagina
     """
     __args__ = dict()
     __args__['pagination'] = pagination
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('equinix:fabric/getStreams:getStreams', __args__, opts=opts, typ=GetStreamsResult)
     return __ret__.apply(lambda __response__: GetStreamsResult(
         datas=pulumi.get(__response__, 'datas'),

@@ -153,7 +153,7 @@ export interface GetCloudRouterResult {
  * export const type = cloudRouterDataName.then(cloudRouterDataName => cloudRouterDataName.type);
  * ```
  */
-export function getCloudRouterOutput(args: GetCloudRouterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCloudRouterResult> {
+export function getCloudRouterOutput(args: GetCloudRouterOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCloudRouterResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("equinix:fabric/getCloudRouter:getCloudRouter", {
         "uuid": args.uuid,

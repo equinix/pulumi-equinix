@@ -74,6 +74,38 @@ namespace Pulumi.Equinix.Metal
         /// </summary>
         public static Output<GetDeviceBgpNeighborsResult> Invoke(GetDeviceBgpNeighborsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDeviceBgpNeighborsResult>("equinix:metal/getDeviceBgpNeighbors:getDeviceBgpNeighbors", args ?? new GetDeviceBgpNeighborsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this datasource to retrieve list of BGP neighbors of a device in the Equinix Metal host.
+        /// 
+        /// To have any BGP neighbors listed, the device must be in BGP-enabled project and have a BGP session assigned.
+        /// 
+        /// To learn more about using BGP in Equinix Metal, see the equinix.metal.BgpSession resource documentation.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var test = Equinix.Metal.GetDeviceBgpNeighbors.Invoke(new()
+        ///     {
+        ///         DeviceId = "4c641195-25e5-4c3c-b2b7-4cd7a42c7b40",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["bgpNeighborsListing"] = test.Apply(getDeviceBgpNeighborsResult =&gt; getDeviceBgpNeighborsResult.BgpNeighbors),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDeviceBgpNeighborsResult> Invoke(GetDeviceBgpNeighborsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDeviceBgpNeighborsResult>("equinix:metal/getDeviceBgpNeighbors:getDeviceBgpNeighbors", args ?? new GetDeviceBgpNeighborsInvokeArgs(), options.WithDefaults());
     }
 
 

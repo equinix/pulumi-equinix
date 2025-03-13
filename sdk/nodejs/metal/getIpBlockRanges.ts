@@ -104,7 +104,7 @@ export interface GetIpBlockRangesResult {
  * export const out = test;
  * ```
  */
-export function getIpBlockRangesOutput(args: GetIpBlockRangesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpBlockRangesResult> {
+export function getIpBlockRangesOutput(args: GetIpBlockRangesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIpBlockRangesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("equinix:metal/getIpBlockRanges:getIpBlockRanges", {
         "facility": args.facility,

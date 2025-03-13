@@ -64,6 +64,33 @@ namespace Pulumi.Equinix.Metal
         /// </summary>
         public static Output<GetSpotMarketPriceResult> Invoke(GetSpotMarketPriceInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSpotMarketPriceResult>("equinix:metal/getSpotMarketPrice:getSpotMarketPrice", args ?? new GetSpotMarketPriceInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get Equinix Metal Spot Market Price for a plan.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Lookup by metro:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Equinix.Metal.GetSpotMarketPrice.Invoke(new()
+        ///     {
+        ///         Metro = "sv",
+        ///         Plan = "c3.small.x86",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetSpotMarketPriceResult> Invoke(GetSpotMarketPriceInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSpotMarketPriceResult>("equinix:metal/getSpotMarketPrice:getSpotMarketPrice", args ?? new GetSpotMarketPriceInvokeArgs(), options.WithDefaults());
     }
 
 

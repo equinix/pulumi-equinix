@@ -64,21 +64,11 @@ type LookupReservedIpBlockResult struct {
 }
 
 func LookupReservedIpBlockOutput(ctx *pulumi.Context, args LookupReservedIpBlockOutputArgs, opts ...pulumi.InvokeOption) LookupReservedIpBlockResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupReservedIpBlockResultOutput, error) {
 			args := v.(LookupReservedIpBlockArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupReservedIpBlockResult
-			secret, err := ctx.InvokePackageRaw("equinix:metal/getReservedIpBlock:getReservedIpBlock", args, &rv, "", opts...)
-			if err != nil {
-				return LookupReservedIpBlockResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupReservedIpBlockResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupReservedIpBlockResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("equinix:metal/getReservedIpBlock:getReservedIpBlock", args, LookupReservedIpBlockResultOutput{}, options).(LookupReservedIpBlockResultOutput), nil
 		}).(LookupReservedIpBlockResultOutput)
 }
 

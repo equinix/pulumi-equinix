@@ -22,6 +22,12 @@ namespace Pulumi.Equinix.Fabric
         /// </summary>
         public static Output<GetMetrosResult> Invoke(GetMetrosInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMetrosResult>("equinix:fabric/getMetros:getMetros", args ?? new GetMetrosInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// ## Example Usage
+        /// </summary>
+        public static Output<GetMetrosResult> Invoke(GetMetrosInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetMetrosResult>("equinix:fabric/getMetros:getMetros", args ?? new GetMetrosInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -23,6 +23,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class NetworkedgeFunctions {
@@ -165,6 +166,53 @@ public final class NetworkedgeFunctions {
      * 
      */
     public static Output<GetAccountResult> getAccount(GetAccountArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:networkedge/getAccount:getAccount", TypeShape.of(GetAccountResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get number and identifier of Equinix Network Edge billing account in a given metro location.
+     * 
+     * Billing account reference is required to create Network Edge virtual device in corresponding metro location.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
+     * import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dc = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
+     *             .metroCode("DC")
+     *             .status("Active")
+     *             .projectId("a86d7112-d740-4758-9c9c-31e66373746b")
+     *             .build());
+     * 
+     *         ctx.export("number", dc.applyValue(getAccountResult -> getAccountResult.number()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAccountResult> getAccount(GetAccountArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("equinix:networkedge/getAccount:getAccount", TypeShape.of(GetAccountResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -487,6 +535,52 @@ public final class NetworkedgeFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetDeviceResult> getDevice(GetDeviceArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("equinix:networkedge/getDevice:getDevice", TypeShape.of(GetDeviceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get Equinix Network Edge device details.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
+     * import com.pulumi.equinix.networkedge.inputs.GetDeviceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byUuid = NetworkedgeFunctions.getDevice(GetDeviceArgs.builder()
+     *             .uuid("f0b5c553-cdeb-4bc3-95b8-23db9ccfd5ee")
+     *             .build());
+     * 
+     *         final var byName = NetworkedgeFunctions.getDevice(GetDeviceArgs.builder()
+     *             .name("Arcus-Gateway-A1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetDeviceResult> getDevicePlain(GetDevicePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("equinix:networkedge/getDevice:getDevice", TypeShape.of(GetDeviceResult.class), args, Utilities.withVersion(options));
     }
@@ -620,6 +714,50 @@ public final class NetworkedgeFunctions {
      * 
      */
     public static Output<GetDevicePlatformResult> getDevicePlatform(GetDevicePlatformArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:networkedge/getDevicePlatform:getDevicePlatform", TypeShape.of(GetDevicePlatformResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get Equinix Network Edge device platform configuration details for a given device type. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
+     * import com.pulumi.equinix.networkedge.inputs.GetDevicePlatformArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var csrLarge = NetworkedgeFunctions.getDevicePlatform(GetDevicePlatformArgs.builder()
+     *             .deviceType("CSR1000V")
+     *             .flavor("large")
+     *             .packages("IPBASE")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDevicePlatformResult> getDevicePlatform(GetDevicePlatformArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("equinix:networkedge/getDevicePlatform:getDevicePlatform", TypeShape.of(GetDevicePlatformResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -799,6 +937,51 @@ public final class NetworkedgeFunctions {
      * 
      */
     public static Output<GetDeviceSoftwareResult> getDeviceSoftware(GetDeviceSoftwareArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:networkedge/getDeviceSoftware:getDeviceSoftware", TypeShape.of(GetDeviceSoftwareResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get Equinix Network Edge device software details for a given device type. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
+     * import com.pulumi.equinix.networkedge.inputs.GetDeviceSoftwareArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var csrLatest1609 = NetworkedgeFunctions.getDeviceSoftware(GetDeviceSoftwareArgs.builder()
+     *             .deviceType("CSR1000V")
+     *             .mostRecent(true)
+     *             .packages("IPBASE")
+     *             .versionRegex("^16.09.+")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDeviceSoftwareResult> getDeviceSoftware(GetDeviceSoftwareArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("equinix:networkedge/getDeviceSoftware:getDeviceSoftware", TypeShape.of(GetDeviceSoftwareResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1074,6 +1257,52 @@ public final class NetworkedgeFunctions {
      * 
      */
     public static Output<GetDeviceTypeResult> getDeviceType(GetDeviceTypeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:networkedge/getDeviceType:getDeviceType", TypeShape.of(GetDeviceTypeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get Equinix Network Edge device type details. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
+     * import com.pulumi.equinix.networkedge.inputs.GetDeviceTypeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ciscoRouter = NetworkedgeFunctions.getDeviceType(GetDeviceTypeArgs.builder()
+     *             .category("Router")
+     *             .metroCodes(            
+     *                 "DC",
+     *                 "SV")
+     *             .vendor("Cisco")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDeviceTypeResult> getDeviceType(GetDeviceTypeArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("equinix:networkedge/getDeviceType:getDeviceType", TypeShape.of(GetDeviceTypeResult.class), args, Utilities.withVersion(options));
     }
     /**

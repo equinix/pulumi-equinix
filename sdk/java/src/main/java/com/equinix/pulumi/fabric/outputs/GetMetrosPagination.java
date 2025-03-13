@@ -5,7 +5,7 @@ package com.equinix.pulumi.fabric.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Double;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,7 +17,7 @@ public final class GetMetrosPagination {
      * @return Maximum number of search results returned per page.
      * 
      */
-    private @Nullable Double limit;
+    private @Nullable Integer limit;
     /**
      * @return URL relative to the next item in the response.
      * 
@@ -27,7 +27,7 @@ public final class GetMetrosPagination {
      * @return Index of the first item returned in the response.
      * 
      */
-    private @Nullable Double offset;
+    private @Nullable Integer offset;
     /**
      * @return URL relative to the previous item in the response.
      * 
@@ -37,14 +37,14 @@ public final class GetMetrosPagination {
      * @return The total number of metro returned
      * 
      */
-    private Double total;
+    private Integer total;
 
     private GetMetrosPagination() {}
     /**
      * @return Maximum number of search results returned per page.
      * 
      */
-    public Optional<Double> limit() {
+    public Optional<Integer> limit() {
         return Optional.ofNullable(this.limit);
     }
     /**
@@ -58,7 +58,7 @@ public final class GetMetrosPagination {
      * @return Index of the first item returned in the response.
      * 
      */
-    public Optional<Double> offset() {
+    public Optional<Integer> offset() {
         return Optional.ofNullable(this.offset);
     }
     /**
@@ -72,7 +72,7 @@ public final class GetMetrosPagination {
      * @return The total number of metro returned
      * 
      */
-    public Double total() {
+    public Integer total() {
         return this.total;
     }
 
@@ -85,11 +85,11 @@ public final class GetMetrosPagination {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Double limit;
+        private @Nullable Integer limit;
         private String next;
-        private @Nullable Double offset;
+        private @Nullable Integer offset;
         private String previous;
-        private Double total;
+        private Integer total;
         public Builder() {}
         public Builder(GetMetrosPagination defaults) {
     	      Objects.requireNonNull(defaults);
@@ -101,7 +101,7 @@ public final class GetMetrosPagination {
         }
 
         @CustomType.Setter
-        public Builder limit(@Nullable Double limit) {
+        public Builder limit(@Nullable Integer limit) {
 
             this.limit = limit;
             return this;
@@ -115,7 +115,7 @@ public final class GetMetrosPagination {
             return this;
         }
         @CustomType.Setter
-        public Builder offset(@Nullable Double offset) {
+        public Builder offset(@Nullable Integer offset) {
 
             this.offset = offset;
             return this;
@@ -129,7 +129,7 @@ public final class GetMetrosPagination {
             return this;
         }
         @CustomType.Setter
-        public Builder total(Double total) {
+        public Builder total(Integer total) {
             if (total == null) {
               throw new MissingRequiredPropertyException("GetMetrosPagination", "total");
             }

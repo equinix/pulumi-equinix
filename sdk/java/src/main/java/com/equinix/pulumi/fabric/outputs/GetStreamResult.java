@@ -7,7 +7,7 @@ import com.equinix.pulumi.fabric.outputs.GetStreamChangeLog;
 import com.equinix.pulumi.fabric.outputs.GetStreamProject;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Double;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 
@@ -17,7 +17,7 @@ public final class GetStreamResult {
      * @return Count of the streaming assets attached to the stream resource
      * 
      */
-    private Double assetsCount;
+    private Integer assetsCount;
     /**
      * @return Details of the last change on the stream resource
      * 
@@ -62,7 +62,7 @@ public final class GetStreamResult {
      * @return Count of the client subscriptions on the stream resource
      * 
      */
-    private Double streamSubscriptionsCount;
+    private Integer streamSubscriptionsCount;
     /**
      * @return Equinix defined Streaming Type
      * 
@@ -79,7 +79,7 @@ public final class GetStreamResult {
      * @return Count of the streaming assets attached to the stream resource
      * 
      */
-    public Double assetsCount() {
+    public Integer assetsCount() {
         return this.assetsCount;
     }
     /**
@@ -142,7 +142,7 @@ public final class GetStreamResult {
      * @return Count of the client subscriptions on the stream resource
      * 
      */
-    public Double streamSubscriptionsCount() {
+    public Integer streamSubscriptionsCount() {
         return this.streamSubscriptionsCount;
     }
     /**
@@ -169,7 +169,7 @@ public final class GetStreamResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Double assetsCount;
+        private Integer assetsCount;
         private GetStreamChangeLog changeLog;
         private String description;
         private String href;
@@ -178,7 +178,7 @@ public final class GetStreamResult {
         private GetStreamProject project;
         private String state;
         private String streamId;
-        private Double streamSubscriptionsCount;
+        private Integer streamSubscriptionsCount;
         private String type;
         private String uuid;
         public Builder() {}
@@ -199,7 +199,7 @@ public final class GetStreamResult {
         }
 
         @CustomType.Setter
-        public Builder assetsCount(Double assetsCount) {
+        public Builder assetsCount(Integer assetsCount) {
             if (assetsCount == null) {
               throw new MissingRequiredPropertyException("GetStreamResult", "assetsCount");
             }
@@ -271,7 +271,7 @@ public final class GetStreamResult {
             return this;
         }
         @CustomType.Setter
-        public Builder streamSubscriptionsCount(Double streamSubscriptionsCount) {
+        public Builder streamSubscriptionsCount(Integer streamSubscriptionsCount) {
             if (streamSubscriptionsCount == null) {
               throw new MissingRequiredPropertyException("GetStreamResult", "streamSubscriptionsCount");
             }

@@ -148,7 +148,7 @@ def get_connections_output(filters: Optional[pulumi.Input[Sequence[Union['GetCon
                            outer_operator: Optional[pulumi.Input[str]] = None,
                            pagination: Optional[pulumi.Input[Optional[Union['GetConnectionsPaginationArgs', 'GetConnectionsPaginationArgsDict']]]] = None,
                            sorts: Optional[pulumi.Input[Optional[Sequence[Union['GetConnectionsSortArgs', 'GetConnectionsSortArgsDict']]]]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConnectionsResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConnectionsResult]:
     """
     Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID
 
@@ -167,7 +167,7 @@ def get_connections_output(filters: Optional[pulumi.Input[Sequence[Union['GetCon
     __args__['outerOperator'] = outer_operator
     __args__['pagination'] = pagination
     __args__['sorts'] = sorts
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('equinix:fabric/getConnections:getConnections', __args__, opts=opts, typ=GetConnectionsResult)
     return __ret__.apply(lambda __response__: GetConnectionsResult(
         datas=pulumi.get(__response__, 'datas'),

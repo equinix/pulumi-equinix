@@ -238,7 +238,7 @@ def get_route_filter(uuid: Optional[str] = None,
         type=pulumi.get(__ret__, 'type'),
         uuid=pulumi.get(__ret__, 'uuid'))
 def get_route_filter_output(uuid: Optional[pulumi.Input[str]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRouteFilterResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRouteFilterResult]:
     """
     Fabric V4 API compatible data resource that allow user to fetch route filter for a given UUID
 
@@ -266,7 +266,7 @@ def get_route_filter_output(uuid: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['uuid'] = uuid
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('equinix:fabric/getRouteFilter:getRouteFilter', __args__, opts=opts, typ=GetRouteFilterResult)
     return __ret__.apply(lambda __response__: GetRouteFilterResult(
         change_logs=pulumi.get(__response__, 'change_logs'),

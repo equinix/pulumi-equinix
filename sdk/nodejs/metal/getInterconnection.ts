@@ -147,7 +147,7 @@ export interface GetInterconnectionResult {
  * });
  * ```
  */
-export function getInterconnectionOutput(args: GetInterconnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInterconnectionResult> {
+export function getInterconnectionOutput(args: GetInterconnectionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInterconnectionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("equinix:metal/getInterconnection:getInterconnection", {
         "connectionId": args.connectionId,

@@ -186,7 +186,7 @@ def get_project_ssh_key(id: Optional[str] = None,
 def get_project_ssh_key_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                                project_id: Optional[pulumi.Input[str]] = None,
                                search: Optional[pulumi.Input[Optional[str]]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectSshKeyResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectSshKeyResult]:
     """
     Use this datasource to retrieve attributes of a Project SSH Key API resource.
 
@@ -211,7 +211,7 @@ def get_project_ssh_key_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['id'] = id
     __args__['projectId'] = project_id
     __args__['search'] = search
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('equinix:metal/getProjectSshKey:getProjectSshKey', __args__, opts=opts, typ=GetProjectSshKeyResult)
     return __ret__.apply(lambda __response__: GetProjectSshKeyResult(
         created=pulumi.get(__response__, 'created'),

@@ -629,7 +629,7 @@ def get_device(name: Optional[str] = None,
 def get_device_output(name: Optional[pulumi.Input[Optional[str]]] = None,
                       uuid: Optional[pulumi.Input[Optional[str]]] = None,
                       valid_status_list: Optional[pulumi.Input[Optional[str]]] = None,
-                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDeviceResult]:
+                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDeviceResult]:
     """
     Use this data source to get Equinix Network Edge device details.
 
@@ -654,7 +654,7 @@ def get_device_output(name: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['name'] = name
     __args__['uuid'] = uuid
     __args__['validStatusList'] = valid_status_list
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('equinix:networkedge/getDevice:getDevice', __args__, opts=opts, typ=GetDeviceResult)
     return __ret__.apply(lambda __response__: GetDeviceResult(
         account_number=pulumi.get(__response__, 'account_number'),

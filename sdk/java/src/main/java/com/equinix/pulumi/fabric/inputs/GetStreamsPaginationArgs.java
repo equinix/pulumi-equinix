@@ -6,7 +6,7 @@ package com.equinix.pulumi.fabric.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Double;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 
@@ -20,13 +20,13 @@ public final class GetStreamsPaginationArgs extends com.pulumi.resources.Resourc
      * 
      */
     @Import(name="limit", required=true)
-    private Output<Double> limit;
+    private Output<Integer> limit;
 
     /**
      * @return Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
      * 
      */
-    public Output<Double> limit() {
+    public Output<Integer> limit() {
         return this.limit;
     }
 
@@ -50,13 +50,13 @@ public final class GetStreamsPaginationArgs extends com.pulumi.resources.Resourc
      * 
      */
     @Import(name="offset", required=true)
-    private Output<Double> offset;
+    private Output<Integer> offset;
 
     /**
      * @return Index of the first item returned in the response. The default is 0
      * 
      */
-    public Output<Double> offset() {
+    public Output<Integer> offset() {
         return this.offset;
     }
 
@@ -80,13 +80,13 @@ public final class GetStreamsPaginationArgs extends com.pulumi.resources.Resourc
      * 
      */
     @Import(name="total", required=true)
-    private Output<Double> total;
+    private Output<Integer> total;
 
     /**
      * @return The total number of streams available to the user making the request
      * 
      */
-    public Output<Double> total() {
+    public Output<Integer> total() {
         return this.total;
     }
 
@@ -124,7 +124,7 @@ public final class GetStreamsPaginationArgs extends com.pulumi.resources.Resourc
          * @return builder
          * 
          */
-        public Builder limit(Output<Double> limit) {
+        public Builder limit(Output<Integer> limit) {
             $.limit = limit;
             return this;
         }
@@ -135,7 +135,7 @@ public final class GetStreamsPaginationArgs extends com.pulumi.resources.Resourc
          * @return builder
          * 
          */
-        public Builder limit(Double limit) {
+        public Builder limit(Integer limit) {
             return limit(Output.of(limit));
         }
 
@@ -166,7 +166,7 @@ public final class GetStreamsPaginationArgs extends com.pulumi.resources.Resourc
          * @return builder
          * 
          */
-        public Builder offset(Output<Double> offset) {
+        public Builder offset(Output<Integer> offset) {
             $.offset = offset;
             return this;
         }
@@ -177,7 +177,7 @@ public final class GetStreamsPaginationArgs extends com.pulumi.resources.Resourc
          * @return builder
          * 
          */
-        public Builder offset(Double offset) {
+        public Builder offset(Integer offset) {
             return offset(Output.of(offset));
         }
 
@@ -208,7 +208,7 @@ public final class GetStreamsPaginationArgs extends com.pulumi.resources.Resourc
          * @return builder
          * 
          */
-        public Builder total(Output<Double> total) {
+        public Builder total(Output<Integer> total) {
             $.total = total;
             return this;
         }
@@ -219,7 +219,7 @@ public final class GetStreamsPaginationArgs extends com.pulumi.resources.Resourc
          * @return builder
          * 
          */
-        public Builder total(Double total) {
+        public Builder total(Integer total) {
             return total(Output.of(total));
         }
 

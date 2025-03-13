@@ -156,7 +156,7 @@ def get_facility(capacities: Optional[Sequence[Union['GetFacilityCapacityArgs', 
 def get_facility_output(capacities: Optional[pulumi.Input[Optional[Sequence[Union['GetFacilityCapacityArgs', 'GetFacilityCapacityArgsDict']]]]] = None,
                         code: Optional[pulumi.Input[str]] = None,
                         features_requireds: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFacilityResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFacilityResult]:
     """
     > **Deprecated** Use `metal_get_metro` instead. For more information, refer to the facility to metro migration guide.
 
@@ -181,7 +181,7 @@ def get_facility_output(capacities: Optional[pulumi.Input[Optional[Sequence[Unio
     __args__['capacities'] = capacities
     __args__['code'] = code
     __args__['featuresRequireds'] = features_requireds
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('equinix:metal/getFacility:getFacility', __args__, opts=opts, typ=GetFacilityResult)
     return __ret__.apply(lambda __response__: GetFacilityResult(
         capacities=pulumi.get(__response__, 'capacities'),

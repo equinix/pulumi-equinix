@@ -182,7 +182,7 @@ def get_device_platform_output(core_count: Optional[pulumi.Input[Optional[int]]]
                                license_options: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                management_types: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                packages: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDevicePlatformResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDevicePlatformResult]:
     """
     Use this data source to get Equinix Network Edge device platform configuration details for a given device type. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
 
@@ -212,7 +212,7 @@ def get_device_platform_output(core_count: Optional[pulumi.Input[Optional[int]]]
     __args__['licenseOptions'] = license_options
     __args__['managementTypes'] = management_types
     __args__['packages'] = packages
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('equinix:networkedge/getDevicePlatform:getDevicePlatform', __args__, opts=opts, typ=GetDevicePlatformResult)
     return __ret__.apply(lambda __response__: GetDevicePlatformResult(
         core_count=pulumi.get(__response__, 'core_count'),

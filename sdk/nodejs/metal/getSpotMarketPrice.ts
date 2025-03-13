@@ -86,7 +86,7 @@ export interface GetSpotMarketPriceResult {
  * });
  * ```
  */
-export function getSpotMarketPriceOutput(args: GetSpotMarketPriceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSpotMarketPriceResult> {
+export function getSpotMarketPriceOutput(args: GetSpotMarketPriceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSpotMarketPriceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("equinix:metal/getSpotMarketPrice:getSpotMarketPrice", {
         "facility": args.facility,

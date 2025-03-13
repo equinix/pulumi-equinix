@@ -346,7 +346,7 @@ def get_interconnection(connection_id: Optional[str] = None,
         vlans=pulumi.get(__ret__, 'vlans'),
         vrfs=pulumi.get(__ret__, 'vrfs'))
 def get_interconnection_output(connection_id: Optional[pulumi.Input[str]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInterconnectionResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInterconnectionResult]:
     """
     Use this data source to retrieve a [connection resource](https://metal.equinix.com/developers/docs/networking/fabric/)
 
@@ -366,7 +366,7 @@ def get_interconnection_output(connection_id: Optional[pulumi.Input[str]] = None
     """
     __args__ = dict()
     __args__['connectionId'] = connection_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('equinix:metal/getInterconnection:getInterconnection', __args__, opts=opts, typ=GetInterconnectionResult)
     return __ret__.apply(lambda __response__: GetInterconnectionResult(
         authorization_code=pulumi.get(__response__, 'authorization_code'),

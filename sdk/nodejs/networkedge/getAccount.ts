@@ -95,7 +95,7 @@ export interface GetAccountResult {
  * export const number = dc.then(dc => dc.number);
  * ```
  */
-export function getAccountOutput(args: GetAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountResult> {
+export function getAccountOutput(args: GetAccountOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("equinix:networkedge/getAccount:getAccount", {
         "metroCode": args.metroCode,

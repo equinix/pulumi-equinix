@@ -180,7 +180,7 @@ export interface GetRoutingProtocolResult {
  * export const customerAsn = routingProtocolDataName.then(routingProtocolDataName => routingProtocolDataName.customerAsn);
  * ```
  */
-export function getRoutingProtocolOutput(args: GetRoutingProtocolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRoutingProtocolResult> {
+export function getRoutingProtocolOutput(args: GetRoutingProtocolOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRoutingProtocolResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("equinix:fabric/getRoutingProtocol:getRoutingProtocol", {
         "connectionUuid": args.connectionUuid,

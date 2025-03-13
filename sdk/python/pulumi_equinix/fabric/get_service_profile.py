@@ -363,7 +363,7 @@ def get_service_profile(uuid: Optional[str] = None,
         virtual_devices=pulumi.get(__ret__, 'virtual_devices'),
         visibility=pulumi.get(__ret__, 'visibility'))
 def get_service_profile_output(uuid: Optional[pulumi.Input[str]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceProfileResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServiceProfileResult]:
     """
     Fabric V4 API compatible data resource that allow user to fetch Service Profile by UUID filter criteria
 
@@ -396,7 +396,7 @@ def get_service_profile_output(uuid: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['uuid'] = uuid
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('equinix:fabric/getServiceProfile:getServiceProfile', __args__, opts=opts, typ=GetServiceProfileResult)
     return __ret__.apply(lambda __response__: GetServiceProfileResult(
         access_point_type_configs=pulumi.get(__response__, 'access_point_type_configs'),
