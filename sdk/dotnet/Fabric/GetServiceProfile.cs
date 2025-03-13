@@ -94,6 +94,48 @@ namespace Pulumi.Equinix.Fabric
         /// </summary>
         public static Output<GetServiceProfileResult> Invoke(GetServiceProfileInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceProfileResult>("equinix:fabric/getServiceProfile:getServiceProfile", args ?? new GetServiceProfileInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Fabric V4 API compatible data resource that allow user to fetch Service Profile by UUID filter criteria
+        /// 
+        /// Additional documentation:
+        /// * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm
+        /// * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var serviceProfileDataName = Equinix.Fabric.GetServiceProfile.Invoke(new()
+        ///     {
+        ///         Uuid = "&lt;uuid_of_service_profile&gt;",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["id"] = serviceProfileDataName.Apply(getServiceProfileResult =&gt; getServiceProfileResult.Id),
+        ///         ["name"] = serviceProfileDataName.Apply(getServiceProfileResult =&gt; getServiceProfileResult.Name),
+        ///         ["type"] = serviceProfileDataName.Apply(getServiceProfileResult =&gt; getServiceProfileResult.Type),
+        ///         ["visibility"] = serviceProfileDataName.Apply(getServiceProfileResult =&gt; getServiceProfileResult.Visibility),
+        ///         ["orgName"] = serviceProfileDataName.Apply(getServiceProfileResult =&gt; getServiceProfileResult.Account?.OrganizationName),
+        ///         ["accessPointTypeConfigsType"] = serviceProfileDataName.Apply(getServiceProfileResult =&gt; getServiceProfileResult.AccessPointTypeConfigs[0]?.Type),
+        ///         ["allowRemoteConnections"] = serviceProfileDataName.Apply(getServiceProfileResult =&gt; getServiceProfileResult.AccessPointTypeConfigs[0]?.AllowRemoteConnections),
+        ///         ["supportedBandwidth0"] = serviceProfileDataName.Apply(getServiceProfileResult =&gt; getServiceProfileResult.AccessPointTypeConfigs[0]?.SupportedBandwidths[0]),
+        ///         ["supportedBandwidth1"] = serviceProfileDataName.Apply(getServiceProfileResult =&gt; getServiceProfileResult.AccessPointTypeConfigs[0]?.SupportedBandwidths[1]),
+        ///         ["redundandyRequired"] = serviceProfileDataName.Apply(getServiceProfileResult =&gt; getServiceProfileResult.AccessPointTypeConfigs[0]?.ConnectionRedundancyRequired),
+        ///         ["allowOverSubscription"] = serviceProfileDataName.Apply(getServiceProfileResult =&gt; getServiceProfileResult.AccessPointTypeConfigs[0]?.ApiConfig?.AllowOverSubscription),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetServiceProfileResult> Invoke(GetServiceProfileInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetServiceProfileResult>("equinix:fabric/getServiceProfile:getServiceProfile", args ?? new GetServiceProfileInvokeArgs(), options.WithDefaults());
     }
 
 

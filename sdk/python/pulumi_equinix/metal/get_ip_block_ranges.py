@@ -171,7 +171,7 @@ def get_ip_block_ranges(facility: Optional[str] = None,
 def get_ip_block_ranges_output(facility: Optional[pulumi.Input[Optional[str]]] = None,
                                metro: Optional[pulumi.Input[Optional[str]]] = None,
                                project_id: Optional[pulumi.Input[str]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIpBlockRangesResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIpBlockRangesResult]:
     """
     Use this datasource to get CIDR expressions for allocated IP blocks of all the types in a project, optionally filtered by facility or metro.
 
@@ -199,7 +199,7 @@ def get_ip_block_ranges_output(facility: Optional[pulumi.Input[Optional[str]]] =
     __args__['facility'] = facility
     __args__['metro'] = metro
     __args__['projectId'] = project_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('equinix:metal/getIpBlockRanges:getIpBlockRanges', __args__, opts=opts, typ=GetIpBlockRangesResult)
     return __ret__.apply(lambda __response__: GetIpBlockRangesResult(
         facility=pulumi.get(__response__, 'facility'),

@@ -127,7 +127,7 @@ def get_metro(capacities: Optional[Sequence[Union['GetMetroCapacityArgs', 'GetMe
         name=pulumi.get(__ret__, 'name'))
 def get_metro_output(capacities: Optional[pulumi.Input[Optional[Sequence[Union['GetMetroCapacityArgs', 'GetMetroCapacityArgsDict']]]]] = None,
                      code: Optional[pulumi.Input[str]] = None,
-                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMetroResult]:
+                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMetroResult]:
     """
     Provides an Equinix Metal metro datasource.
 
@@ -148,7 +148,7 @@ def get_metro_output(capacities: Optional[pulumi.Input[Optional[Sequence[Union['
     __args__ = dict()
     __args__['capacities'] = capacities
     __args__['code'] = code
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('equinix:metal/getMetro:getMetro', __args__, opts=opts, typ=GetMetroResult)
     return __ret__.apply(lambda __response__: GetMetroResult(
         capacities=pulumi.get(__response__, 'capacities'),

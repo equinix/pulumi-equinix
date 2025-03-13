@@ -12574,15 +12574,15 @@ if not MYPY:
         """
         URL relative to the previous item in the response.
         """
-        total: float
+        total: int
         """
         The total number of metro returned
         """
-        limit: NotRequired[float]
+        limit: NotRequired[int]
         """
         Maximum number of search results returned per page.
         """
-        offset: NotRequired[float]
+        offset: NotRequired[int]
         """
         Index of the first item returned in the response.
         """
@@ -12594,15 +12594,15 @@ class GetMetrosPaginationArgs:
     def __init__(__self__, *,
                  next: str,
                  previous: str,
-                 total: float,
-                 limit: Optional[float] = None,
-                 offset: Optional[float] = None):
+                 total: int,
+                 limit: Optional[int] = None,
+                 offset: Optional[int] = None):
         """
         :param str next: URL relative to the next item in the response.
         :param str previous: URL relative to the previous item in the response.
-        :param float total: The total number of metro returned
-        :param float limit: Maximum number of search results returned per page.
-        :param float offset: Index of the first item returned in the response.
+        :param int total: The total number of metro returned
+        :param int limit: Maximum number of search results returned per page.
+        :param int offset: Index of the first item returned in the response.
         """
         pulumi.set(__self__, "next", next)
         pulumi.set(__self__, "previous", previous)
@@ -12638,38 +12638,38 @@ class GetMetrosPaginationArgs:
 
     @property
     @pulumi.getter
-    def total(self) -> float:
+    def total(self) -> int:
         """
         The total number of metro returned
         """
         return pulumi.get(self, "total")
 
     @total.setter
-    def total(self, value: float):
+    def total(self, value: int):
         pulumi.set(self, "total", value)
 
     @property
     @pulumi.getter
-    def limit(self) -> Optional[float]:
+    def limit(self) -> Optional[int]:
         """
         Maximum number of search results returned per page.
         """
         return pulumi.get(self, "limit")
 
     @limit.setter
-    def limit(self, value: Optional[float]):
+    def limit(self, value: Optional[int]):
         pulumi.set(self, "limit", value)
 
     @property
     @pulumi.getter
-    def offset(self) -> Optional[float]:
+    def offset(self) -> Optional[int]:
         """
         Index of the first item returned in the response.
         """
         return pulumi.get(self, "offset")
 
     @offset.setter
-    def offset(self, value: Optional[float]):
+    def offset(self, value: Optional[int]):
         pulumi.set(self, "offset", value)
 
 
@@ -13476,7 +13476,7 @@ class GetServiceTokensPaginationArgs:
 
 if not MYPY:
     class GetStreamsPaginationArgsDict(TypedDict):
-        limit: float
+        limit: int
         """
         Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
         """
@@ -13484,7 +13484,7 @@ if not MYPY:
         """
         The URL relative to the next item in the response
         """
-        offset: float
+        offset: int
         """
         Index of the first item returned in the response. The default is 0
         """
@@ -13492,7 +13492,7 @@ if not MYPY:
         """
         The URL relative to the previous item in the response
         """
-        total: float
+        total: int
         """
         The total number of streams available to the user making the request
         """
@@ -13502,17 +13502,17 @@ elif False:
 @pulumi.input_type
 class GetStreamsPaginationArgs:
     def __init__(__self__, *,
-                 limit: float,
+                 limit: int,
                  next: str,
-                 offset: float,
+                 offset: int,
                  previous: str,
-                 total: float):
+                 total: int):
         """
-        :param float limit: Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+        :param int limit: Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
         :param str next: The URL relative to the next item in the response
-        :param float offset: Index of the first item returned in the response. The default is 0
+        :param int offset: Index of the first item returned in the response. The default is 0
         :param str previous: The URL relative to the previous item in the response
-        :param float total: The total number of streams available to the user making the request
+        :param int total: The total number of streams available to the user making the request
         """
         pulumi.set(__self__, "limit", limit)
         pulumi.set(__self__, "next", next)
@@ -13522,14 +13522,14 @@ class GetStreamsPaginationArgs:
 
     @property
     @pulumi.getter
-    def limit(self) -> float:
+    def limit(self) -> int:
         """
         Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
         """
         return pulumi.get(self, "limit")
 
     @limit.setter
-    def limit(self, value: float):
+    def limit(self, value: int):
         pulumi.set(self, "limit", value)
 
     @property
@@ -13546,14 +13546,14 @@ class GetStreamsPaginationArgs:
 
     @property
     @pulumi.getter
-    def offset(self) -> float:
+    def offset(self) -> int:
         """
         Index of the first item returned in the response. The default is 0
         """
         return pulumi.get(self, "offset")
 
     @offset.setter
-    def offset(self, value: float):
+    def offset(self, value: int):
         pulumi.set(self, "offset", value)
 
     @property
@@ -13570,14 +13570,14 @@ class GetStreamsPaginationArgs:
 
     @property
     @pulumi.getter
-    def total(self) -> float:
+    def total(self) -> int:
         """
         The total number of streams available to the user making the request
         """
         return pulumi.get(self, "total")
 
     @total.setter
-    def total(self, value: float):
+    def total(self, value: int):
         pulumi.set(self, "total", value)
 
 

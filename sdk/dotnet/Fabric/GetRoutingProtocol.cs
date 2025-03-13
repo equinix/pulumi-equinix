@@ -102,6 +102,52 @@ namespace Pulumi.Equinix.Fabric
         /// </summary>
         public static Output<GetRoutingProtocolResult> Invoke(GetRoutingProtocolInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRoutingProtocolResult>("equinix:fabric/getRoutingProtocol:getRoutingProtocol", args ?? new GetRoutingProtocolInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Fabric V4 API compatible data resource that allow user to fetch routing protocol for a given UUID
+        /// 
+        /// API documentation can be found here - https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
+        /// 
+        /// Additional documentation:
+        /// * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/connections/FCR-connect-azureQC.htm#ConfigureRoutingDetailsintheFabricPortal
+        /// * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var routingProtocolDataName = Equinix.Fabric.GetRoutingProtocol.Invoke(new()
+        ///     {
+        ///         ConnectionUuid = "&lt;uuid_of_connection_routing_protocol_is_applied_to&gt;",
+        ///         Uuid = "&lt;uuid_of_routing_protocol&gt;",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["id"] = routingProtocolDataName.Apply(getRoutingProtocolResult =&gt; getRoutingProtocolResult.Id),
+        ///         ["name"] = routingProtocolDataName.Apply(getRoutingProtocolResult =&gt; getRoutingProtocolResult.Name),
+        ///         ["type"] = routingProtocolDataName.Apply(getRoutingProtocolResult =&gt; getRoutingProtocolResult.Type),
+        ///         ["directIpv4"] = routingProtocolDataName.Apply(getRoutingProtocolResult =&gt; getRoutingProtocolResult.DirectIpv4?.EquinixIfaceIp),
+        ///         ["directIpv6"] = routingProtocolDataName.Apply(getRoutingProtocolResult =&gt; getRoutingProtocolResult.DirectIpv6?.EquinixIfaceIp),
+        ///         ["bgpIpv4CustomerPeerIp"] = routingProtocolDataName.Apply(getRoutingProtocolResult =&gt; getRoutingProtocolResult.BgpIpv4?.CustomerPeerIp),
+        ///         ["bgpIpv4EquinixPeerIp"] = routingProtocolDataName.Apply(getRoutingProtocolResult =&gt; getRoutingProtocolResult.BgpIpv4?.EquinixPeerIp),
+        ///         ["bgpIpv4Enabled"] = routingProtocolDataName.Apply(getRoutingProtocolResult =&gt; getRoutingProtocolResult.BgpIpv4?.Enabled),
+        ///         ["bgpIpv6CustomerPeerIp"] = routingProtocolDataName.Apply(getRoutingProtocolResult =&gt; getRoutingProtocolResult.BgpIpv6?.CustomerPeerIp),
+        ///         ["bgpIpv6EquinixPeerIp"] = routingProtocolDataName.Apply(getRoutingProtocolResult =&gt; getRoutingProtocolResult.BgpIpv6?.EquinixPeerIp),
+        ///         ["bgpIpv6Enabled"] = routingProtocolDataName.Apply(getRoutingProtocolResult =&gt; getRoutingProtocolResult.BgpIpv6?.Enabled),
+        ///         ["customerAsn"] = routingProtocolDataName.Apply(getRoutingProtocolResult =&gt; getRoutingProtocolResult.CustomerAsn),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetRoutingProtocolResult> Invoke(GetRoutingProtocolInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRoutingProtocolResult>("equinix:fabric/getRoutingProtocol:getRoutingProtocol", args ?? new GetRoutingProtocolInvokeArgs(), options.WithDefaults());
     }
 
 

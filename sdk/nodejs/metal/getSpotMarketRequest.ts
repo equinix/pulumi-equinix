@@ -69,7 +69,7 @@ export interface GetSpotMarketRequestResult {
     readonly projectId: string;
     readonly requestId: string;
 }
-export function getSpotMarketRequestOutput(args: GetSpotMarketRequestOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSpotMarketRequestResult> {
+export function getSpotMarketRequestOutput(args: GetSpotMarketRequestOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSpotMarketRequestResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("equinix:metal/getSpotMarketRequest:getSpotMarketRequest", {
         "requestId": args.requestId,

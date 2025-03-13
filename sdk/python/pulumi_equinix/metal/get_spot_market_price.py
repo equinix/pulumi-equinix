@@ -129,7 +129,7 @@ def get_spot_market_price(facility: Optional[str] = None,
 def get_spot_market_price_output(facility: Optional[pulumi.Input[Optional[str]]] = None,
                                  metro: Optional[pulumi.Input[Optional[str]]] = None,
                                  plan: Optional[pulumi.Input[str]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSpotMarketPriceResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSpotMarketPriceResult]:
     """
     Use this data source to get Equinix Metal Spot Market Price for a plan.
 
@@ -154,7 +154,7 @@ def get_spot_market_price_output(facility: Optional[pulumi.Input[Optional[str]]]
     __args__['facility'] = facility
     __args__['metro'] = metro
     __args__['plan'] = plan
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('equinix:metal/getSpotMarketPrice:getSpotMarketPrice', __args__, opts=opts, typ=GetSpotMarketPriceResult)
     return __ret__.apply(lambda __response__: GetSpotMarketPriceResult(
         facility=pulumi.get(__response__, 'facility'),

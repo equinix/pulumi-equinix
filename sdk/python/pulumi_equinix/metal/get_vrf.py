@@ -164,7 +164,7 @@ def get_vrf(vrf_id: Optional[str] = None,
         project_id=pulumi.get(__ret__, 'project_id'),
         vrf_id=pulumi.get(__ret__, 'vrf_id'))
 def get_vrf_output(vrf_id: Optional[pulumi.Input[str]] = None,
-                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVrfResult]:
+                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVrfResult]:
     """
     Use this data source to retrieve a VRF resource.
 
@@ -184,7 +184,7 @@ def get_vrf_output(vrf_id: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['vrfId'] = vrf_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('equinix:metal/getVrf:getVrf', __args__, opts=opts, typ=GetVrfResult)
     return __ret__.apply(lambda __response__: GetVrfResult(
         description=pulumi.get(__response__, 'description'),

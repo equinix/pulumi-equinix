@@ -186,7 +186,7 @@ def get_hardware_reservation(device_id: Optional[str] = None,
         switch_uuid=pulumi.get(__ret__, 'switch_uuid'))
 def get_hardware_reservation_output(device_id: Optional[pulumi.Input[Optional[str]]] = None,
                                     id: Optional[pulumi.Input[Optional[str]]] = None,
-                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHardwareReservationResult]:
+                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHardwareReservationResult]:
     """
     Use this data source to retrieve a [hardware reservation resource from Equinix Metal](https://metal.equinix.com/developers/docs/deploy/reserved/).
 
@@ -209,7 +209,7 @@ def get_hardware_reservation_output(device_id: Optional[pulumi.Input[Optional[st
     __args__ = dict()
     __args__['deviceId'] = device_id
     __args__['id'] = id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('equinix:metal/getHardwareReservation:getHardwareReservation', __args__, opts=opts, typ=GetHardwareReservationResult)
     return __ret__.apply(lambda __response__: GetHardwareReservationResult(
         device_id=pulumi.get(__response__, 'device_id'),

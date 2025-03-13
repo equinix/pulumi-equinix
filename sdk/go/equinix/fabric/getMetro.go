@@ -91,21 +91,11 @@ type GetMetroResult struct {
 }
 
 func GetMetroOutput(ctx *pulumi.Context, args GetMetroOutputArgs, opts ...pulumi.InvokeOption) GetMetroResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetMetroResultOutput, error) {
 			args := v.(GetMetroArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetMetroResult
-			secret, err := ctx.InvokePackageRaw("equinix:fabric/getMetro:getMetro", args, &rv, "", opts...)
-			if err != nil {
-				return GetMetroResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetMetroResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetMetroResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("equinix:fabric/getMetro:getMetro", args, GetMetroResultOutput{}, options).(GetMetroResultOutput), nil
 		}).(GetMetroResultOutput)
 }
 

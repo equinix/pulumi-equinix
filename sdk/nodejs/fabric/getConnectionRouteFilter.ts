@@ -111,7 +111,7 @@ export interface GetConnectionRouteFilterResult {
  * export const connectionRouteFilterAttachmentStatus = attachedPolicy.then(attachedPolicy => attachedPolicy.attachmentStatus);
  * ```
  */
-export function getConnectionRouteFilterOutput(args: GetConnectionRouteFilterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectionRouteFilterResult> {
+export function getConnectionRouteFilterOutput(args: GetConnectionRouteFilterOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetConnectionRouteFilterResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("equinix:fabric/getConnectionRouteFilter:getConnectionRouteFilter", {
         "connectionId": args.connectionId,

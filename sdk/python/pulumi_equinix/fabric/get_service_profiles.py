@@ -165,7 +165,7 @@ def get_service_profiles_output(and_filters: Optional[pulumi.Input[Optional[bool
                                 pagination: Optional[pulumi.Input[Optional[Union['GetServiceProfilesPaginationArgs', 'GetServiceProfilesPaginationArgsDict']]]] = None,
                                 sort: Optional[pulumi.Input[Optional[Sequence[Union['GetServiceProfilesSortArgs', 'GetServiceProfilesSortArgsDict']]]]] = None,
                                 view_point: Optional[pulumi.Input[Optional[str]]] = None,
-                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceProfilesResult]:
+                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServiceProfilesResult]:
     """
     Fabric V4 API compatible data resource that allow user to fetch Service Profile by name filter criteria
 
@@ -186,7 +186,7 @@ def get_service_profiles_output(and_filters: Optional[pulumi.Input[Optional[bool
     __args__['pagination'] = pagination
     __args__['sort'] = sort
     __args__['viewPoint'] = view_point
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('equinix:fabric/getServiceProfiles:getServiceProfiles', __args__, opts=opts, typ=GetServiceProfilesResult)
     return __ret__.apply(lambda __response__: GetServiceProfilesResult(
         and_filters=pulumi.get(__response__, 'and_filters'),

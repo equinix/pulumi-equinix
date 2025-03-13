@@ -102,7 +102,7 @@ export interface GetOperatingSystemResult {
  * });
  * ```
  */
-export function getOperatingSystemOutput(args?: GetOperatingSystemOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOperatingSystemResult> {
+export function getOperatingSystemOutput(args?: GetOperatingSystemOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOperatingSystemResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("equinix:metal/getOperatingSystem:getOperatingSystem", {

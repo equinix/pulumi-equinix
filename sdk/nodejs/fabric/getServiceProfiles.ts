@@ -91,7 +91,7 @@ export interface GetServiceProfilesResult {
  * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm
  * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles
  */
-export function getServiceProfilesOutput(args: GetServiceProfilesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceProfilesResult> {
+export function getServiceProfilesOutput(args: GetServiceProfilesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServiceProfilesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("equinix:fabric/getServiceProfiles:getServiceProfiles", {
         "andFilters": args.andFilters,

@@ -341,7 +341,7 @@ def get_connection(uuid: Optional[str] = None,
         uuid=pulumi.get(__ret__, 'uuid'),
         z_side=pulumi.get(__ret__, 'z_side'))
 def get_connection_output(uuid: Optional[pulumi.Input[str]] = None,
-                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConnectionResult]:
+                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConnectionResult]:
     """
     Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID
 
@@ -378,7 +378,7 @@ def get_connection_output(uuid: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['uuid'] = uuid
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('equinix:fabric/getConnection:getConnection', __args__, opts=opts, typ=GetConnectionResult)
     return __ret__.apply(lambda __response__: GetConnectionResult(
         a_side=pulumi.get(__response__, 'a_side'),

@@ -68,6 +68,35 @@ namespace Pulumi.Equinix.NetworkEdge
         /// </summary>
         public static Output<GetDeviceResult> Invoke(GetDeviceInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDeviceResult>("equinix:networkedge/getDevice:getDevice", args ?? new GetDeviceInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get Equinix Network Edge device details.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var byUuid = Equinix.NetworkEdge.GetDevice.Invoke(new()
+        ///     {
+        ///         Uuid = "f0b5c553-cdeb-4bc3-95b8-23db9ccfd5ee",
+        ///     });
+        /// 
+        ///     var byName = Equinix.NetworkEdge.GetDevice.Invoke(new()
+        ///     {
+        ///         Name = "Arcus-Gateway-A1",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDeviceResult> Invoke(GetDeviceInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDeviceResult>("equinix:networkedge/getDevice:getDevice", args ?? new GetDeviceInvokeArgs(), options.WithDefaults());
     }
 
 

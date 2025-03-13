@@ -80,6 +80,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class FabricFunctions {
@@ -304,6 +305,62 @@ public final class FabricFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetCloudRouterResult> getCloudRouter(GetCloudRouterArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getCloudRouter:getCloudRouter", TypeShape.of(GetCloudRouterResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Fabric Cloud Router for a given UUID
+     * 
+     * Additional documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-intro.htm#HowItWorks
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetCloudRouterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var cloudRouterDataName = FabricFunctions.getCloudRouter(GetCloudRouterArgs.builder()
+     *             .uuid("<uuid_of_cloud_router>")
+     *             .build());
+     * 
+     *         ctx.export("id", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.id()));
+     *         ctx.export("name", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.name()));
+     *         ctx.export("accountNumber", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.accounts()[0].accountNumber()));
+     *         ctx.export("equinixAsn", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.equinixAsn()));
+     *         ctx.export("metroCode", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.locations()[0].metroCode()));
+     *         ctx.export("metroName", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.locations()[0].metroName()));
+     *         ctx.export("region", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.locations()[0].region()));
+     *         ctx.export("packageCode", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.packages()[0].code()));
+     *         ctx.export("projectId", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.projects()[0].projectId()));
+     *         ctx.export("type", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.type()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetCloudRouterResult> getCloudRouterPlain(GetCloudRouterPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("equinix:fabric/getCloudRouter:getCloudRouter", TypeShape.of(GetCloudRouterResult.class), args, Utilities.withVersion(options));
     }
@@ -338,6 +395,17 @@ public final class FabricFunctions {
      * 
      */
     public static Output<GetCloudRoutersResult> getCloudRouters(GetCloudRoutersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getCloudRouters:getCloudRouters", TypeShape.of(GetCloudRoutersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Fabric Cloud Routers matching custom search criteria
+     * 
+     * Additional documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-intro.htm#HowItWorks
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers
+     * 
+     */
+    public static Output<GetCloudRoutersResult> getCloudRouters(GetCloudRoutersArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("equinix:fabric/getCloudRouters:getCloudRouters", TypeShape.of(GetCloudRoutersResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -532,6 +600,67 @@ public final class FabricFunctions {
      * 
      */
     public static Output<GetConnectionResult> getConnection(GetConnectionArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getConnection:getConnection", TypeShape.of(GetConnectionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID
+     * 
+     * Additional documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetConnectionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var connectionDataName = FabricFunctions.getConnection(GetConnectionArgs.builder()
+     *             .uuid("<uuid_of_connection>")
+     *             .build());
+     * 
+     *         ctx.export("id", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.id()));
+     *         ctx.export("name", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.bandwidth()));
+     *         ctx.export("accountNumber", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.account().accountNumber()));
+     *         ctx.export("bandwidth", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.bandwidth()));
+     *         ctx.export("projectId", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.project().projectId()));
+     *         ctx.export("redundancyGroup", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.redundancy().group()));
+     *         ctx.export("redundancyPriority", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.redundancy().priority()));
+     *         ctx.export("state", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.state()));
+     *         ctx.export("type", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.type()));
+     *         ctx.export("accessPointType", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.aSide().accessPoint().type()));
+     *         ctx.export("accessPointLinkProtocolType", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.aSide().accessPoint().linkProtocol().type()));
+     *         ctx.export("accessPointLinkProtocolVlanTag", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.aSide().accessPoint().linkProtocol().vlanTag()));
+     *         ctx.export("accessPointLinkProtocolVlanCTag", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.aSide().accessPoint().linkProtocol().vlanCTag()));
+     *         ctx.export("accessPointLinkProtocolVlanSTag", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.aSide().accessPoint().linkProtocol().vlanSTag()));
+     *         ctx.export("accessPointProviderConnectionId", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.aSide().accessPoint().providerConnectionId()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetConnectionResult> getConnection(GetConnectionArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("equinix:fabric/getConnection:getConnection", TypeShape.of(GetConnectionResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -800,6 +929,58 @@ public final class FabricFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetConnectionRouteFilterResult> getConnectionRouteFilter(GetConnectionRouteFilterArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getConnectionRouteFilter:getConnectionRouteFilter", TypeShape.of(GetConnectionRouteFilterResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch route filter policy attachment to a fabric connection
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filter-rules
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetConnectionRouteFilterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var attachedPolicy = FabricFunctions.getConnectionRouteFilter(GetConnectionRouteFilterArgs.builder()
+     *             .connectionId("<connection_uuid>")
+     *             .routeFilterId("<route_filter_uuid>")
+     *             .build());
+     * 
+     *         ctx.export("connectionRouteFilterId", attachedPolicy.applyValue(getConnectionRouteFilterResult -> getConnectionRouteFilterResult.id()));
+     *         ctx.export("connectionRouteFilterConnectionId", attachedPolicy.applyValue(getConnectionRouteFilterResult -> getConnectionRouteFilterResult.connectionId()));
+     *         ctx.export("connectionRouteFilterDirection", attachedPolicy.applyValue(getConnectionRouteFilterResult -> getConnectionRouteFilterResult.direction()));
+     *         ctx.export("connectionRouteFilterType", attachedPolicy.applyValue(getConnectionRouteFilterResult -> getConnectionRouteFilterResult.type()));
+     *         ctx.export("connectionRouteFilterAttachmentStatus", attachedPolicy.applyValue(getConnectionRouteFilterResult -> getConnectionRouteFilterResult.attachmentStatus()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetConnectionRouteFilterResult> getConnectionRouteFilterPlain(GetConnectionRouteFilterPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("equinix:fabric/getConnectionRouteFilter:getConnectionRouteFilter", TypeShape.of(GetConnectionRouteFilterResult.class), args, Utilities.withVersion(options));
     }
@@ -844,6 +1025,17 @@ public final class FabricFunctions {
      * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filter-rules
      * 
      */
+    public static Output<GetConnectionRouteFiltersResult> getConnectionRouteFilters(GetConnectionRouteFiltersArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getConnectionRouteFilters:getConnectionRouteFilters", TypeShape.of(GetConnectionRouteFiltersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch all route filter policies attached to a fabric connection
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filter-rules
+     * 
+     */
     public static CompletableFuture<GetConnectionRouteFiltersResult> getConnectionRouteFiltersPlain(GetConnectionRouteFiltersPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("equinix:fabric/getConnectionRouteFilters:getConnectionRouteFilters", TypeShape.of(GetConnectionRouteFiltersResult.class), args, Utilities.withVersion(options));
     }
@@ -878,6 +1070,17 @@ public final class FabricFunctions {
      * 
      */
     public static Output<GetConnectionsResult> getConnections(GetConnectionsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getConnections:getConnections", TypeShape.of(GetConnectionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID
+     * 
+     * Additional documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections
+     * 
+     */
+    public static Output<GetConnectionsResult> getConnections(GetConnectionsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("equinix:fabric/getConnections:getConnections", TypeShape.of(GetConnectionsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1030,6 +1233,53 @@ public final class FabricFunctions {
      * 
      */
     public static Output<GetMarketplaceSubscriptionResult> getMarketplaceSubscription(GetMarketplaceSubscriptionArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getMarketplaceSubscription:getMarketplaceSubscription", TypeShape.of(GetMarketplaceSubscriptionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Marketplace Subscription detail for a given UUID
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetMarketplaceSubscriptionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var subscription-test = FabricFunctions.getMarketplaceSubscription(GetMarketplaceSubscriptionArgs.builder()
+     *             .uuid("<uuid_of_marketplace_subscription>")
+     *             .build());
+     * 
+     *         ctx.export("id", subscription_test.id());
+     *         ctx.export("status", subscription_test.status());
+     *         ctx.export("marketplace", subscription_test.marketplace());
+     *         ctx.export("offerType", subscription_test.offerType());
+     *         ctx.export("isAutoRenew", subscription_test.isAutoRenew());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetMarketplaceSubscriptionResult> getMarketplaceSubscription(GetMarketplaceSubscriptionArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("equinix:fabric/getMarketplaceSubscription:getMarketplaceSubscription", TypeShape.of(GetMarketplaceSubscriptionResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1276,6 +1526,56 @@ public final class FabricFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetMetroResult> getMetro(GetMetroArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getMetro:getMetro", TypeShape.of(GetMetroResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetMetroArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var metro = FabricFunctions.getMetro(GetMetroArgs.builder()
+     *             .metroCode("<metro_code>")
+     *             .build());
+     * 
+     *         ctx.export("id", metro.applyValue(getMetroResult -> getMetroResult.id()));
+     *         ctx.export("type", metro.applyValue(getMetroResult -> getMetroResult.type()));
+     *         ctx.export("metroCode", metro.applyValue(getMetroResult -> getMetroResult.metroCode()));
+     *         ctx.export("region", metro.applyValue(getMetroResult -> getMetroResult.region()));
+     *         ctx.export("name", metro.applyValue(getMetroResult -> getMetroResult.name()));
+     *         ctx.export("equinixAsn", metro.applyValue(getMetroResult -> getMetroResult.equinixAsn()));
+     *         ctx.export("localVcBandwidthMax", metro.applyValue(getMetroResult -> getMetroResult.localVcBandwidthMax()));
+     *         ctx.export("geoCoordinates", metro.applyValue(getMetroResult -> getMetroResult.geoCoordinates()));
+     *         ctx.export("connectedMetros", metro.applyValue(getMetroResult -> getMetroResult.connectedMetros()));
+     *         ctx.export("geoScopes", metro.applyValue(getMetroResult -> getMetroResult.geoScopes()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetMetroResult> getMetroPlain(GetMetroPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("equinix:fabric/getMetro:getMetro", TypeShape.of(GetMetroResult.class), args, Utilities.withVersion(options));
     }
@@ -1298,6 +1598,13 @@ public final class FabricFunctions {
      * 
      */
     public static Output<GetMetrosResult> getMetros(GetMetrosArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getMetros:getMetros", TypeShape.of(GetMetrosResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetMetrosResult> getMetros(GetMetrosArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("equinix:fabric/getMetros:getMetros", TypeShape.of(GetMetrosResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1508,6 +1815,57 @@ public final class FabricFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetNetworkResult> getNetwork(GetNetworkArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getNetwork:getNetwork", TypeShape.of(GetNetworkResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Fabric Network for a given UUID
+     * 
+     * Additional documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-networks-implement.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-networks
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetNetworkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var networkDataName = FabricFunctions.getNetwork(GetNetworkArgs.builder()
+     *             .uuid("<uuid_of_network>")
+     *             .build());
+     * 
+     *         ctx.export("id", networkDataName.applyValue(getNetworkResult -> getNetworkResult.id()));
+     *         ctx.export("name", networkDataName.applyValue(getNetworkResult -> getNetworkResult.name()));
+     *         ctx.export("scope", networkDataName.applyValue(getNetworkResult -> getNetworkResult.scope()));
+     *         ctx.export("type", networkDataName.applyValue(getNetworkResult -> getNetworkResult.type()));
+     *         ctx.export("region", networkDataName.applyValue(getNetworkResult -> getNetworkResult.locations()[0].region()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetNetworkResult> getNetworkPlain(GetNetworkPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("equinix:fabric/getNetwork:getNetwork", TypeShape.of(GetNetworkResult.class), args, Utilities.withVersion(options));
     }
@@ -1542,6 +1900,17 @@ public final class FabricFunctions {
      * 
      */
     public static Output<GetNetworksResult> getNetworks(GetNetworksArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getNetworks:getNetworks", TypeShape.of(GetNetworksResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Fabric Network for a given UUID
+     * 
+     * Additional documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-networks-implement.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-networks
+     * 
+     */
+    public static Output<GetNetworksResult> getNetworks(GetNetworksArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("equinix:fabric/getNetworks:getNetworks", TypeShape.of(GetNetworksResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1733,6 +2102,66 @@ public final class FabricFunctions {
      * 
      */
     public static Output<GetPortResult> getPort(GetPortArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getPort:getPort", TypeShape.of(GetPortResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch port by uuid
+     * 
+     * Additional documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-ports-implement.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#ports
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetPortArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var portDataName = FabricFunctions.getPort(GetPortArgs.builder()
+     *             .uuid("<uuid_of_port>")
+     *             .build());
+     * 
+     *         ctx.export("id", portDataName.applyValue(getPortResult -> getPortResult.id()));
+     *         ctx.export("name", portDataName.applyValue(getPortResult -> getPortResult.name()));
+     *         ctx.export("state", portDataName.applyValue(getPortResult -> getPortResult.state()));
+     *         ctx.export("accountName", portDataName.applyValue(getPortResult -> getPortResult.account().accountName()));
+     *         ctx.export("type", portDataName.applyValue(getPortResult -> getPortResult.type()));
+     *         ctx.export("bandwidth", portDataName.applyValue(getPortResult -> getPortResult.bandwidth()));
+     *         ctx.export("usedBandwidth", portDataName.applyValue(getPortResult -> getPortResult.usedBandwidth()));
+     *         ctx.export("encapsulationType", portDataName.applyValue(getPortResult -> getPortResult.encapsulation().type()));
+     *         ctx.export("ibx", portDataName.applyValue(getPortResult -> getPortResult.location().ibx()));
+     *         ctx.export("metroCode", portDataName.applyValue(getPortResult -> getPortResult.location().metroCode()));
+     *         ctx.export("metroName", portDataName.applyValue(getPortResult -> getPortResult.location().metroName()));
+     *         ctx.export("region", portDataName.applyValue(getPortResult -> getPortResult.location().region()));
+     *         ctx.export("deviceRedundancyEnabled", portDataName.applyValue(getPortResult -> getPortResult.device().redundancies()[0].enabled()));
+     *         ctx.export("deviceRedundancyPriority", portDataName.applyValue(getPortResult -> getPortResult.device().redundancies()[0].priority()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetPortResult> getPort(GetPortArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("equinix:fabric/getPort:getPort", TypeShape.of(GetPortResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -2044,6 +2473,69 @@ public final class FabricFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetPortsResult> getPorts(GetPortsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getPorts:getPorts", TypeShape.of(GetPortsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch port by name
+     * 
+     * Additional documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-ports-implement.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#ports
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetPortsArgs;
+     * import com.pulumi.equinix.fabric.inputs.GetPortsFilterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var portsDataName = FabricFunctions.getPorts(GetPortsArgs.builder()
+     *             .filter(GetPortsFilterArgs.builder()
+     *                 .name("<name_of_port||port_prefix>")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("id", data.equinix_fabric_port().ports_data_name().data()[0].id());
+     *         ctx.export("name", data.equinix_fabric_port().ports_data_name().data()[0].name());
+     *         ctx.export("state", data.equinix_fabric_port().ports_data_name().data()[0].state());
+     *         ctx.export("accountName", data.equinix_fabric_port().ports_data_name().data()[0].account()[0].account_name());
+     *         ctx.export("type", data.equinix_fabric_port().ports_data_name().data()[0].type());
+     *         ctx.export("bandwidth", data.equinix_fabric_port().ports_data_name().data()[0].bandwidth());
+     *         ctx.export("usedBandwidth", data.equinix_fabric_port().ports_data_name().data()[0].used_bandwidth());
+     *         ctx.export("encapsulationType", data.equinix_fabric_port().ports_data_name().data()[0].encapsulation()[0].type());
+     *         ctx.export("ibx", data.equinix_fabric_port().ports_data_name().data()[0].location()[0].ibx());
+     *         ctx.export("metroCode", data.equinix_fabric_port().ports_data_name().data()[0].location()[0].metro_code());
+     *         ctx.export("metroName", data.equinix_fabric_port().ports_data_name().data()[0].location()[0].metro_name());
+     *         ctx.export("region", data.equinix_fabric_port().ports_data_name().data()[0].location()[0].region());
+     *         ctx.export("deviceRedundancyEnabled", data.equinix_fabric_port().ports_data_name().data()[0].device()[0].redundancy()[0].enabled());
+     *         ctx.export("deviceRedundancyPriority", data.equinix_fabric_port().ports_data_name().data()[0].device()[0].redundancy()[0].priority());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetPortsResult> getPortsPlain(GetPortsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("equinix:fabric/getPorts:getPorts", TypeShape.of(GetPortsResult.class), args, Utilities.withVersion(options));
     }
@@ -2201,6 +2693,58 @@ public final class FabricFunctions {
      * 
      */
     public static Output<GetRouteFilterResult> getRouteFilter(GetRouteFilterArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getRouteFilter:getRouteFilter", TypeShape.of(GetRouteFilterResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch route filter for a given UUID
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filters
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteFilterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var rfPolicy = FabricFunctions.getRouteFilter(GetRouteFilterArgs.builder()
+     *             .uuid("<uuid_of_route_filter")
+     *             .build());
+     * 
+     *         ctx.export("id", rfPolicy.applyValue(getRouteFilterResult -> getRouteFilterResult.id()));
+     *         ctx.export("type", rfPolicy.applyValue(getRouteFilterResult -> getRouteFilterResult.type()));
+     *         ctx.export("state", rfPolicy.applyValue(getRouteFilterResult -> getRouteFilterResult.state()));
+     *         ctx.export("notMatchedRulesAction", rfPolicy.applyValue(getRouteFilterResult -> getRouteFilterResult.notMatchedRuleAction()));
+     *         ctx.export("connectionsCount", rfPolicy.applyValue(getRouteFilterResult -> getRouteFilterResult.connectionsCount()));
+     *         ctx.export("rulesCount", rfPolicy.applyValue(getRouteFilterResult -> getRouteFilterResult.rulesCount()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRouteFilterResult> getRouteFilter(GetRouteFilterArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("equinix:fabric/getRouteFilter:getRouteFilter", TypeShape.of(GetRouteFilterResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -2456,6 +3000,57 @@ public final class FabricFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetRouteFilterRuleResult> getRouteFilterRule(GetRouteFilterRuleArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getRouteFilterRule:getRouteFilterRule", TypeShape.of(GetRouteFilterRuleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch route filter for a given UUID
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filter-rules
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteFilterRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var rfRule = FabricFunctions.getRouteFilterRule(GetRouteFilterRuleArgs.builder()
+     *             .routeFilterId("<route_filter_policy_id>")
+     *             .uuid("<route_filter_rule_uuid>")
+     *             .build());
+     * 
+     *         ctx.export("routeFilterRuleName", rfRule.applyValue(getRouteFilterRuleResult -> getRouteFilterRuleResult.name()));
+     *         ctx.export("routeFilterRuleDescription", rfRule.applyValue(getRouteFilterRuleResult -> getRouteFilterRuleResult.description()));
+     *         ctx.export("routeFilterRulePrefix", rfRule.applyValue(getRouteFilterRuleResult -> getRouteFilterRuleResult.prefix()));
+     *         ctx.export("routeFilterRulePrefixMatch", rfRule.applyValue(getRouteFilterRuleResult -> getRouteFilterRuleResult.prefixMatch()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetRouteFilterRuleResult> getRouteFilterRulePlain(GetRouteFilterRulePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("equinix:fabric/getRouteFilterRule:getRouteFilterRule", TypeShape.of(GetRouteFilterRuleResult.class), args, Utilities.withVersion(options));
     }
@@ -2613,6 +3208,58 @@ public final class FabricFunctions {
      * 
      */
     public static Output<GetRouteFilterRulesResult> getRouteFilterRules(GetRouteFilterRulesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getRouteFilterRules:getRouteFilterRules", TypeShape.of(GetRouteFilterRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch route filter for a given search data set
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filter-rules
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteFilterRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var rfRules = FabricFunctions.getRouteFilterRules(GetRouteFilterRulesArgs.builder()
+     *             .routeFilterId("<route_filter_policy_id")
+     *             .limit(100)
+     *             .offset(5)
+     *             .build());
+     * 
+     *         ctx.export("firstRouteFilterRuleName", rfRules.applyValue(getRouteFilterRulesResult -> getRouteFilterRulesResult.datas()[0].name()));
+     *         ctx.export("firstRouteFilterRuleDescription", rfRules.applyValue(getRouteFilterRulesResult -> getRouteFilterRulesResult.datas()[0].description()));
+     *         ctx.export("firstRouteFilterRulePrefix", rfRules.applyValue(getRouteFilterRulesResult -> getRouteFilterRulesResult.datas()[0].prefix()));
+     *         ctx.export("firstRouteFilterRulePrefixMatch", rfRules.applyValue(getRouteFilterRulesResult -> getRouteFilterRulesResult.datas()[0].prefixMatch()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRouteFilterRulesResult> getRouteFilterRules(GetRouteFilterRulesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("equinix:fabric/getRouteFilterRules:getRouteFilterRules", TypeShape.of(GetRouteFilterRulesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -2972,6 +3619,83 @@ public final class FabricFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetRouteFiltersResult> getRouteFilters(GetRouteFiltersArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getRouteFilters:getRouteFilters", TypeShape.of(GetRouteFiltersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch route filter for a given search data set
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filters
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteFiltersArgs;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteFiltersPaginationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var rfPolicies = FabricFunctions.getRouteFilters(GetRouteFiltersArgs.builder()
+     *             .filters(            
+     *                 GetRouteFiltersFilterArgs.builder()
+     *                     .property("/type")
+     *                     .operator("=")
+     *                     .values("BGP_IPv4_PREFIX_FILTER")
+     *                     .build(),
+     *                 GetRouteFiltersFilterArgs.builder()
+     *                     .property("/state")
+     *                     .operator("=")
+     *                     .values("PROVISIONED")
+     *                     .build(),
+     *                 GetRouteFiltersFilterArgs.builder()
+     *                     .property("/project/projectId")
+     *                     .operator("=")
+     *                     .values("<project_id>")
+     *                     .build())
+     *             .pagination(GetRouteFiltersPaginationArgs.builder()
+     *                 .offset(0)
+     *                 .limit(5)
+     *                 .total(25)
+     *                 .build())
+     *             .sorts(GetRouteFiltersSortArgs.builder()
+     *                 .direction("ASC")
+     *                 .property("/name")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("firstRfUuid", rfPolicies.applyValue(getRouteFiltersResult -> getRouteFiltersResult.datas()[0].uuid()));
+     *         ctx.export("type", rfPolicies.applyValue(getRouteFiltersResult -> getRouteFiltersResult.datas()[0].type()));
+     *         ctx.export("state", rfPolicies.applyValue(getRouteFiltersResult -> getRouteFiltersResult.datas()[0].state()));
+     *         ctx.export("notMatchedRuleAction", rfPolicies.applyValue(getRouteFiltersResult -> getRouteFiltersResult.datas()[0].notMatchedRuleAction()));
+     *         ctx.export("connectionsCount", rfPolicies.applyValue(getRouteFiltersResult -> getRouteFiltersResult.datas()[0].connectionsCount()));
+     *         ctx.export("rulesCount", rfPolicies.applyValue(getRouteFiltersResult -> getRouteFiltersResult.datas()[0].rulesCount()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetRouteFiltersResult> getRouteFiltersPlain(GetRouteFiltersPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("equinix:fabric/getRouteFilters:getRouteFilters", TypeShape.of(GetRouteFiltersResult.class), args, Utilities.withVersion(options));
     }
@@ -3156,6 +3880,67 @@ public final class FabricFunctions {
      * 
      */
     public static Output<GetRoutingProtocolResult> getRoutingProtocol(GetRoutingProtocolArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getRoutingProtocol:getRoutingProtocol", TypeShape.of(GetRoutingProtocolResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch routing protocol for a given UUID
+     * 
+     * API documentation can be found here - https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
+     * 
+     * Additional documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/connections/FCR-connect-azureQC.htm#ConfigureRoutingDetailsintheFabricPortal
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetRoutingProtocolArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var routingProtocolDataName = FabricFunctions.getRoutingProtocol(GetRoutingProtocolArgs.builder()
+     *             .connectionUuid("<uuid_of_connection_routing_protocol_is_applied_to>")
+     *             .uuid("<uuid_of_routing_protocol>")
+     *             .build());
+     * 
+     *         ctx.export("id", routingProtocolDataName.applyValue(getRoutingProtocolResult -> getRoutingProtocolResult.id()));
+     *         ctx.export("name", routingProtocolDataName.applyValue(getRoutingProtocolResult -> getRoutingProtocolResult.name()));
+     *         ctx.export("type", routingProtocolDataName.applyValue(getRoutingProtocolResult -> getRoutingProtocolResult.type()));
+     *         ctx.export("directIpv4", routingProtocolDataName.applyValue(getRoutingProtocolResult -> getRoutingProtocolResult.directIpv4().equinixIfaceIp()));
+     *         ctx.export("directIpv6", routingProtocolDataName.applyValue(getRoutingProtocolResult -> getRoutingProtocolResult.directIpv6().equinixIfaceIp()));
+     *         ctx.export("bgpIpv4CustomerPeerIp", routingProtocolDataName.applyValue(getRoutingProtocolResult -> getRoutingProtocolResult.bgpIpv4().customerPeerIp()));
+     *         ctx.export("bgpIpv4EquinixPeerIp", routingProtocolDataName.applyValue(getRoutingProtocolResult -> getRoutingProtocolResult.bgpIpv4().equinixPeerIp()));
+     *         ctx.export("bgpIpv4Enabled", routingProtocolDataName.applyValue(getRoutingProtocolResult -> getRoutingProtocolResult.bgpIpv4().enabled()));
+     *         ctx.export("bgpIpv6CustomerPeerIp", routingProtocolDataName.applyValue(getRoutingProtocolResult -> getRoutingProtocolResult.bgpIpv6().customerPeerIp()));
+     *         ctx.export("bgpIpv6EquinixPeerIp", routingProtocolDataName.applyValue(getRoutingProtocolResult -> getRoutingProtocolResult.bgpIpv6().equinixPeerIp()));
+     *         ctx.export("bgpIpv6Enabled", routingProtocolDataName.applyValue(getRoutingProtocolResult -> getRoutingProtocolResult.bgpIpv6().enabled()));
+     *         ctx.export("customerAsn", routingProtocolDataName.applyValue(getRoutingProtocolResult -> getRoutingProtocolResult.customerAsn()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRoutingProtocolResult> getRoutingProtocol(GetRoutingProtocolArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("equinix:fabric/getRoutingProtocol:getRoutingProtocol", TypeShape.of(GetRoutingProtocolResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -3444,6 +4229,63 @@ public final class FabricFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetServiceProfileResult> getServiceProfile(GetServiceProfileArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getServiceProfile:getServiceProfile", TypeShape.of(GetServiceProfileResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Service Profile by UUID filter criteria
+     * 
+     * Additional documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetServiceProfileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var serviceProfileDataName = FabricFunctions.getServiceProfile(GetServiceProfileArgs.builder()
+     *             .uuid("<uuid_of_service_profile>")
+     *             .build());
+     * 
+     *         ctx.export("id", serviceProfileDataName.applyValue(getServiceProfileResult -> getServiceProfileResult.id()));
+     *         ctx.export("name", serviceProfileDataName.applyValue(getServiceProfileResult -> getServiceProfileResult.name()));
+     *         ctx.export("type", serviceProfileDataName.applyValue(getServiceProfileResult -> getServiceProfileResult.type()));
+     *         ctx.export("visibility", serviceProfileDataName.applyValue(getServiceProfileResult -> getServiceProfileResult.visibility()));
+     *         ctx.export("orgName", serviceProfileDataName.applyValue(getServiceProfileResult -> getServiceProfileResult.account().organizationName()));
+     *         ctx.export("accessPointTypeConfigsType", serviceProfileDataName.applyValue(getServiceProfileResult -> getServiceProfileResult.accessPointTypeConfigs()[0].type()));
+     *         ctx.export("allowRemoteConnections", serviceProfileDataName.applyValue(getServiceProfileResult -> getServiceProfileResult.accessPointTypeConfigs()[0].allowRemoteConnections()));
+     *         ctx.export("supportedBandwidth0", serviceProfileDataName.applyValue(getServiceProfileResult -> getServiceProfileResult.accessPointTypeConfigs()[0].supportedBandwidths()[0]));
+     *         ctx.export("supportedBandwidth1", serviceProfileDataName.applyValue(getServiceProfileResult -> getServiceProfileResult.accessPointTypeConfigs()[0].supportedBandwidths()[1]));
+     *         ctx.export("redundandyRequired", serviceProfileDataName.applyValue(getServiceProfileResult -> getServiceProfileResult.accessPointTypeConfigs()[0].connectionRedundancyRequired()));
+     *         ctx.export("allowOverSubscription", serviceProfileDataName.applyValue(getServiceProfileResult -> getServiceProfileResult.accessPointTypeConfigs()[0].apiConfig().allowOverSubscription()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetServiceProfileResult> getServiceProfilePlain(GetServiceProfilePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("equinix:fabric/getServiceProfile:getServiceProfile", TypeShape.of(GetServiceProfileResult.class), args, Utilities.withVersion(options));
     }
@@ -3478,6 +4320,17 @@ public final class FabricFunctions {
      * 
      */
     public static Output<GetServiceProfilesResult> getServiceProfiles(GetServiceProfilesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getServiceProfiles:getServiceProfiles", TypeShape.of(GetServiceProfilesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Service Profile by name filter criteria
+     * 
+     * Additional documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm
+     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles
+     * 
+     */
+    public static Output<GetServiceProfilesResult> getServiceProfiles(GetServiceProfilesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("equinix:fabric/getServiceProfiles:getServiceProfiles", TypeShape.of(GetServiceProfilesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -3704,6 +4557,60 @@ public final class FabricFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetServiceTokenResult> getServiceToken(GetServiceTokenArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getServiceToken:getServiceToken", TypeShape.of(GetServiceTokenResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch service token for a given UUID
+     * 
+     * Additional documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/service%20tokens/Fabric-Service-Tokens.htm
+     * * API: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/ConnectUsingServiceToken.htm
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetServiceTokenArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var service-token = FabricFunctions.getServiceToken(GetServiceTokenArgs.builder()
+     *             .uuid("<uuid_of_service_token>")
+     *             .build());
+     * 
+     *         ctx.export("id", service_token.id());
+     *         ctx.export("type", service_token.type());
+     *         ctx.export("expirationDateTime", service_token.expirationDateTime());
+     *         ctx.export("supportedBandwidths", service_token.serviceTokenConnections()[0].supportedBandwidths());
+     *         ctx.export("virtualDeviceType", service_token.serviceTokenConnections()[0].zSides()[0].accessPointSelectors()[0].virtualDevice().type());
+     *         ctx.export("virtualDeviceUuid", service_token.serviceTokenConnections()[0].zSides()[0].accessPointSelectors()[0].virtualDevice().uuid());
+     *         ctx.export("interfaceType", service_token.serviceTokenConnections()[0].zSides()[0].accessPointSelectors()[0].interface().type());
+     *         ctx.export("interfaceUuid", service_token.serviceTokenConnections()[0].zSides()[0].accessPointSelectors()[0].interface().id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetServiceTokenResult> getServiceTokenPlain(GetServiceTokenPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("equinix:fabric/getServiceToken:getServiceToken", TypeShape.of(GetServiceTokenResult.class), args, Utilities.withVersion(options));
     }
@@ -3738,6 +4645,17 @@ public final class FabricFunctions {
      * 
      */
     public static Output<GetServiceTokensResult> getServiceTokens(GetServiceTokensArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getServiceTokens:getServiceTokens", TypeShape.of(GetServiceTokensResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch service token for a given search data set
+     * 
+     * Additional documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/service%20tokens/Fabric-Service-Tokens.htm
+     * * API: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/ConnectUsingServiceToken.htm
+     * 
+     */
+    public static Output<GetServiceTokensResult> getServiceTokens(GetServiceTokensArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("equinix:fabric/getServiceTokens:getServiceTokens", TypeShape.of(GetServiceTokensResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -3890,6 +4808,53 @@ public final class FabricFunctions {
      * 
      */
     public static Output<GetStreamResult> getStream(GetStreamArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getStream:getStream", TypeShape.of(GetStreamResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Stream by UUID
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Streams
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dataStream = FabricFunctions.getStream(GetStreamArgs.builder()
+     *             .streamId("<uuid_of_stream>")
+     *             .build());
+     * 
+     *         ctx.export("streamState", dataStream.applyValue(getStreamResult -> getStreamResult.state()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetStreamResult> getStream(GetStreamArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("equinix:fabric/getStream:getStream", TypeShape.of(GetStreamResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -4090,6 +5055,57 @@ public final class FabricFunctions {
      * 
      */
     public static Output<GetStreamsResult> getStreams(GetStreamsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getStreams:getStreams", TypeShape.of(GetStreamsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Streams with pagination details
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Streams
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamsArgs;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamsPaginationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dataStreams = FabricFunctions.getStreams(GetStreamsArgs.builder()
+     *             .pagination(GetStreamsPaginationArgs.builder()
+     *                 .limit(2)
+     *                 .offset(1)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("numberOfReturnedStreams", dataStreams.applyValue(getStreamsResult -> getStreamsResult.datas()).length());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetStreamsResult> getStreams(GetStreamsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("equinix:fabric/getStreams:getStreams", TypeShape.of(GetStreamsResult.class), args, Utilities.withVersion(options));
     }
     /**

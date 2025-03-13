@@ -99,21 +99,11 @@ type LookupServiceTokenResult struct {
 }
 
 func LookupServiceTokenOutput(ctx *pulumi.Context, args LookupServiceTokenOutputArgs, opts ...pulumi.InvokeOption) LookupServiceTokenResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupServiceTokenResultOutput, error) {
 			args := v.(LookupServiceTokenArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupServiceTokenResult
-			secret, err := ctx.InvokePackageRaw("equinix:fabric/getServiceToken:getServiceToken", args, &rv, "", opts...)
-			if err != nil {
-				return LookupServiceTokenResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupServiceTokenResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupServiceTokenResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("equinix:fabric/getServiceToken:getServiceToken", args, LookupServiceTokenResultOutput{}, options).(LookupServiceTokenResultOutput), nil
 		}).(LookupServiceTokenResultOutput)
 }
 

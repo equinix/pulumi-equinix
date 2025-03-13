@@ -16,7 +16,7 @@ namespace Pulumi.Equinix.Fabric.Inputs
         /// Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
         /// </summary>
         [Input("limit", required: true)]
-        public Input<double> Limit { get; set; } = null!;
+        public Input<int> Limit { get; set; } = null!;
 
         /// <summary>
         /// The URL relative to the next item in the response
@@ -28,7 +28,7 @@ namespace Pulumi.Equinix.Fabric.Inputs
         /// Index of the first item returned in the response. The default is 0
         /// </summary>
         [Input("offset", required: true)]
-        public Input<double> Offset { get; set; } = null!;
+        public Input<int> Offset { get; set; } = null!;
 
         /// <summary>
         /// The URL relative to the previous item in the response
@@ -40,7 +40,7 @@ namespace Pulumi.Equinix.Fabric.Inputs
         /// The total number of streams available to the user making the request
         /// </summary>
         [Input("total", required: true)]
-        public Input<double> Total { get; set; } = null!;
+        public Input<int> Total { get; set; } = null!;
 
         public GetStreamsPaginationInputArgs()
         {

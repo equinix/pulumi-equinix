@@ -85,21 +85,11 @@ type GetIpBlockRangesResult struct {
 }
 
 func GetIpBlockRangesOutput(ctx *pulumi.Context, args GetIpBlockRangesOutputArgs, opts ...pulumi.InvokeOption) GetIpBlockRangesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetIpBlockRangesResultOutput, error) {
 			args := v.(GetIpBlockRangesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetIpBlockRangesResult
-			secret, err := ctx.InvokePackageRaw("equinix:metal/getIpBlockRanges:getIpBlockRanges", args, &rv, "", opts...)
-			if err != nil {
-				return GetIpBlockRangesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetIpBlockRangesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetIpBlockRangesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("equinix:metal/getIpBlockRanges:getIpBlockRanges", args, GetIpBlockRangesResultOutput{}, options).(GetIpBlockRangesResultOutput), nil
 		}).(GetIpBlockRangesResultOutput)
 }
 

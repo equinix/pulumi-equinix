@@ -73,7 +73,7 @@ export interface GetCloudRoutersResult {
  * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-intro.htm#HowItWorks
  * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers
  */
-export function getCloudRoutersOutput(args: GetCloudRoutersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCloudRoutersResult> {
+export function getCloudRoutersOutput(args: GetCloudRoutersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCloudRoutersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("equinix:fabric/getCloudRouters:getCloudRouters", {
         "filters": args.filters,

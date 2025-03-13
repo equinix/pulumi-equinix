@@ -38237,15 +38237,15 @@ func (o GetMetrosDataGeoCoordinatesOutput) Longitude() pulumi.Float64Output {
 
 type GetMetrosPagination struct {
 	// Maximum number of search results returned per page.
-	Limit *float64 `pulumi:"limit"`
+	Limit *int `pulumi:"limit"`
 	// URL relative to the next item in the response.
 	Next string `pulumi:"next"`
 	// Index of the first item returned in the response.
-	Offset *float64 `pulumi:"offset"`
+	Offset *int `pulumi:"offset"`
 	// URL relative to the previous item in the response.
 	Previous string `pulumi:"previous"`
 	// The total number of metro returned
-	Total float64 `pulumi:"total"`
+	Total int `pulumi:"total"`
 }
 
 // GetMetrosPaginationInput is an input type that accepts GetMetrosPaginationArgs and GetMetrosPaginationOutput values.
@@ -38261,15 +38261,15 @@ type GetMetrosPaginationInput interface {
 
 type GetMetrosPaginationArgs struct {
 	// Maximum number of search results returned per page.
-	Limit pulumi.Float64PtrInput `pulumi:"limit"`
+	Limit pulumi.IntPtrInput `pulumi:"limit"`
 	// URL relative to the next item in the response.
 	Next pulumi.StringInput `pulumi:"next"`
 	// Index of the first item returned in the response.
-	Offset pulumi.Float64PtrInput `pulumi:"offset"`
+	Offset pulumi.IntPtrInput `pulumi:"offset"`
 	// URL relative to the previous item in the response.
 	Previous pulumi.StringInput `pulumi:"previous"`
 	// The total number of metro returned
-	Total pulumi.Float64Input `pulumi:"total"`
+	Total pulumi.IntInput `pulumi:"total"`
 }
 
 func (GetMetrosPaginationArgs) ElementType() reflect.Type {
@@ -38299,8 +38299,8 @@ func (o GetMetrosPaginationOutput) ToGetMetrosPaginationOutputWithContext(ctx co
 }
 
 // Maximum number of search results returned per page.
-func (o GetMetrosPaginationOutput) Limit() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v GetMetrosPagination) *float64 { return v.Limit }).(pulumi.Float64PtrOutput)
+func (o GetMetrosPaginationOutput) Limit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetMetrosPagination) *int { return v.Limit }).(pulumi.IntPtrOutput)
 }
 
 // URL relative to the next item in the response.
@@ -38309,8 +38309,8 @@ func (o GetMetrosPaginationOutput) Next() pulumi.StringOutput {
 }
 
 // Index of the first item returned in the response.
-func (o GetMetrosPaginationOutput) Offset() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v GetMetrosPagination) *float64 { return v.Offset }).(pulumi.Float64PtrOutput)
+func (o GetMetrosPaginationOutput) Offset() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetMetrosPagination) *int { return v.Offset }).(pulumi.IntPtrOutput)
 }
 
 // URL relative to the previous item in the response.
@@ -38319,8 +38319,8 @@ func (o GetMetrosPaginationOutput) Previous() pulumi.StringOutput {
 }
 
 // The total number of metro returned
-func (o GetMetrosPaginationOutput) Total() pulumi.Float64Output {
-	return o.ApplyT(func(v GetMetrosPagination) float64 { return v.Total }).(pulumi.Float64Output)
+func (o GetMetrosPaginationOutput) Total() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMetrosPagination) int { return v.Total }).(pulumi.IntOutput)
 }
 
 type GetNetworkChange struct {
@@ -59641,7 +59641,7 @@ func (o GetStreamProjectOutput) ProjectId() pulumi.StringOutput {
 
 type GetStreamsData struct {
 	// Count of the streaming assets attached to the stream resource
-	AssetsCount float64 `pulumi:"assetsCount"`
+	AssetsCount int `pulumi:"assetsCount"`
 	// Details of the last change on the stream resource
 	ChangeLog GetStreamsDataChangeLog `pulumi:"changeLog"`
 	// Customer-provided description of the stream resource
@@ -59655,7 +59655,7 @@ type GetStreamsData struct {
 	// Value representing provisioning status for the stream resource
 	State string `pulumi:"state"`
 	// Count of the client subscriptions on the stream resource
-	StreamSubscriptionsCount float64 `pulumi:"streamSubscriptionsCount"`
+	StreamSubscriptionsCount int `pulumi:"streamSubscriptionsCount"`
 	// Equinix defined Streaming Type
 	Type string `pulumi:"type"`
 	// Equinix-assigned unique id for the stream resource
@@ -59675,7 +59675,7 @@ type GetStreamsDataInput interface {
 
 type GetStreamsDataArgs struct {
 	// Count of the streaming assets attached to the stream resource
-	AssetsCount pulumi.Float64Input `pulumi:"assetsCount"`
+	AssetsCount pulumi.IntInput `pulumi:"assetsCount"`
 	// Details of the last change on the stream resource
 	ChangeLog GetStreamsDataChangeLogInput `pulumi:"changeLog"`
 	// Customer-provided description of the stream resource
@@ -59689,7 +59689,7 @@ type GetStreamsDataArgs struct {
 	// Value representing provisioning status for the stream resource
 	State pulumi.StringInput `pulumi:"state"`
 	// Count of the client subscriptions on the stream resource
-	StreamSubscriptionsCount pulumi.Float64Input `pulumi:"streamSubscriptionsCount"`
+	StreamSubscriptionsCount pulumi.IntInput `pulumi:"streamSubscriptionsCount"`
 	// Equinix defined Streaming Type
 	Type pulumi.StringInput `pulumi:"type"`
 	// Equinix-assigned unique id for the stream resource
@@ -59748,8 +59748,8 @@ func (o GetStreamsDataOutput) ToGetStreamsDataOutputWithContext(ctx context.Cont
 }
 
 // Count of the streaming assets attached to the stream resource
-func (o GetStreamsDataOutput) AssetsCount() pulumi.Float64Output {
-	return o.ApplyT(func(v GetStreamsData) float64 { return v.AssetsCount }).(pulumi.Float64Output)
+func (o GetStreamsDataOutput) AssetsCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetStreamsData) int { return v.AssetsCount }).(pulumi.IntOutput)
 }
 
 // Details of the last change on the stream resource
@@ -59783,8 +59783,8 @@ func (o GetStreamsDataOutput) State() pulumi.StringOutput {
 }
 
 // Count of the client subscriptions on the stream resource
-func (o GetStreamsDataOutput) StreamSubscriptionsCount() pulumi.Float64Output {
-	return o.ApplyT(func(v GetStreamsData) float64 { return v.StreamSubscriptionsCount }).(pulumi.Float64Output)
+func (o GetStreamsDataOutput) StreamSubscriptionsCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetStreamsData) int { return v.StreamSubscriptionsCount }).(pulumi.IntOutput)
 }
 
 // Equinix defined Streaming Type
@@ -60022,15 +60022,15 @@ func (o GetStreamsDataProjectOutput) ProjectId() pulumi.StringOutput {
 
 type GetStreamsPagination struct {
 	// Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
-	Limit float64 `pulumi:"limit"`
+	Limit int `pulumi:"limit"`
 	// The URL relative to the next item in the response
 	Next string `pulumi:"next"`
 	// Index of the first item returned in the response. The default is 0
-	Offset float64 `pulumi:"offset"`
+	Offset int `pulumi:"offset"`
 	// The URL relative to the previous item in the response
 	Previous string `pulumi:"previous"`
 	// The total number of streams available to the user making the request
-	Total float64 `pulumi:"total"`
+	Total int `pulumi:"total"`
 }
 
 // GetStreamsPaginationInput is an input type that accepts GetStreamsPaginationArgs and GetStreamsPaginationOutput values.
@@ -60046,15 +60046,15 @@ type GetStreamsPaginationInput interface {
 
 type GetStreamsPaginationArgs struct {
 	// Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
-	Limit pulumi.Float64Input `pulumi:"limit"`
+	Limit pulumi.IntInput `pulumi:"limit"`
 	// The URL relative to the next item in the response
 	Next pulumi.StringInput `pulumi:"next"`
 	// Index of the first item returned in the response. The default is 0
-	Offset pulumi.Float64Input `pulumi:"offset"`
+	Offset pulumi.IntInput `pulumi:"offset"`
 	// The URL relative to the previous item in the response
 	Previous pulumi.StringInput `pulumi:"previous"`
 	// The total number of streams available to the user making the request
-	Total pulumi.Float64Input `pulumi:"total"`
+	Total pulumi.IntInput `pulumi:"total"`
 }
 
 func (GetStreamsPaginationArgs) ElementType() reflect.Type {
@@ -60084,8 +60084,8 @@ func (o GetStreamsPaginationOutput) ToGetStreamsPaginationOutputWithContext(ctx 
 }
 
 // Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
-func (o GetStreamsPaginationOutput) Limit() pulumi.Float64Output {
-	return o.ApplyT(func(v GetStreamsPagination) float64 { return v.Limit }).(pulumi.Float64Output)
+func (o GetStreamsPaginationOutput) Limit() pulumi.IntOutput {
+	return o.ApplyT(func(v GetStreamsPagination) int { return v.Limit }).(pulumi.IntOutput)
 }
 
 // The URL relative to the next item in the response
@@ -60094,8 +60094,8 @@ func (o GetStreamsPaginationOutput) Next() pulumi.StringOutput {
 }
 
 // Index of the first item returned in the response. The default is 0
-func (o GetStreamsPaginationOutput) Offset() pulumi.Float64Output {
-	return o.ApplyT(func(v GetStreamsPagination) float64 { return v.Offset }).(pulumi.Float64Output)
+func (o GetStreamsPaginationOutput) Offset() pulumi.IntOutput {
+	return o.ApplyT(func(v GetStreamsPagination) int { return v.Offset }).(pulumi.IntOutput)
 }
 
 // The URL relative to the previous item in the response
@@ -60104,8 +60104,8 @@ func (o GetStreamsPaginationOutput) Previous() pulumi.StringOutput {
 }
 
 // The total number of streams available to the user making the request
-func (o GetStreamsPaginationOutput) Total() pulumi.Float64Output {
-	return o.ApplyT(func(v GetStreamsPagination) float64 { return v.Total }).(pulumi.Float64Output)
+func (o GetStreamsPaginationOutput) Total() pulumi.IntOutput {
+	return o.ApplyT(func(v GetStreamsPagination) int { return v.Total }).(pulumi.IntOutput)
 }
 
 func init() {

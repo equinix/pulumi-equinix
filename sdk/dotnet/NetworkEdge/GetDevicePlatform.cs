@@ -68,6 +68,35 @@ namespace Pulumi.Equinix.NetworkEdge
         /// </summary>
         public static Output<GetDevicePlatformResult> Invoke(GetDevicePlatformInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDevicePlatformResult>("equinix:networkedge/getDevicePlatform:getDevicePlatform", args ?? new GetDevicePlatformInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get Equinix Network Edge device platform configuration details for a given device type. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var csrLarge = Equinix.NetworkEdge.GetDevicePlatform.Invoke(new()
+        ///     {
+        ///         DeviceType = "CSR1000V",
+        ///         Flavor = "large",
+        ///         Packages = new[]
+        ///         {
+        ///             "IPBASE",
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDevicePlatformResult> Invoke(GetDevicePlatformInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDevicePlatformResult>("equinix:networkedge/getDevicePlatform:getDevicePlatform", args ?? new GetDevicePlatformInvokeArgs(), options.WithDefaults());
     }
 
 

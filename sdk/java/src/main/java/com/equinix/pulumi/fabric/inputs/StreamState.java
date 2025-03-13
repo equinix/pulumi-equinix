@@ -8,7 +8,7 @@ import com.equinix.pulumi.fabric.inputs.StreamProjectArgs;
 import com.equinix.pulumi.fabric.inputs.StreamTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Double;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -24,13 +24,13 @@ public final class StreamState extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="assetsCount")
-    private @Nullable Output<Double> assetsCount;
+    private @Nullable Output<Integer> assetsCount;
 
     /**
      * @return Count of the streaming assets attached to the stream resource
      * 
      */
-    public Optional<Output<Double>> assetsCount() {
+    public Optional<Output<Integer>> assetsCount() {
         return Optional.ofNullable(this.assetsCount);
     }
 
@@ -129,13 +129,13 @@ public final class StreamState extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="streamSubscriptionsCount")
-    private @Nullable Output<Double> streamSubscriptionsCount;
+    private @Nullable Output<Integer> streamSubscriptionsCount;
 
     /**
      * @return Count of the client subscriptions on the stream resource
      * 
      */
-    public Optional<Output<Double>> streamSubscriptionsCount() {
+    public Optional<Output<Integer>> streamSubscriptionsCount() {
         return Optional.ofNullable(this.streamSubscriptionsCount);
     }
 
@@ -216,7 +216,7 @@ public final class StreamState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder assetsCount(@Nullable Output<Double> assetsCount) {
+        public Builder assetsCount(@Nullable Output<Integer> assetsCount) {
             $.assetsCount = assetsCount;
             return this;
         }
@@ -227,7 +227,7 @@ public final class StreamState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder assetsCount(Double assetsCount) {
+        public Builder assetsCount(Integer assetsCount) {
             return assetsCount(Output.of(assetsCount));
         }
 
@@ -363,7 +363,7 @@ public final class StreamState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder streamSubscriptionsCount(@Nullable Output<Double> streamSubscriptionsCount) {
+        public Builder streamSubscriptionsCount(@Nullable Output<Integer> streamSubscriptionsCount) {
             $.streamSubscriptionsCount = streamSubscriptionsCount;
             return this;
         }
@@ -374,7 +374,7 @@ public final class StreamState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder streamSubscriptionsCount(Double streamSubscriptionsCount) {
+        public Builder streamSubscriptionsCount(Integer streamSubscriptionsCount) {
             return streamSubscriptionsCount(Output.of(streamSubscriptionsCount));
         }
 

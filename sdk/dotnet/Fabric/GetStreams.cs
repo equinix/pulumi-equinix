@@ -82,6 +82,42 @@ namespace Pulumi.Equinix.Fabric
         /// </summary>
         public static Output<GetStreamsResult> Invoke(GetStreamsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetStreamsResult>("equinix:fabric/getStreams:getStreams", args ?? new GetStreamsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Streams with pagination details
+        /// 
+        /// Additional Documentation:
+        /// * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
+        /// * API: https://developer.equinix.com/catalog/fabricv4#tag/Streams
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var dataStreams = Equinix.Fabric.GetStreams.Invoke(new()
+        ///     {
+        ///         Pagination = new Equinix.Fabric.Inputs.GetStreamsPaginationInputArgs
+        ///         {
+        ///             Limit = 2,
+        ///             Offset = 1,
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["numberOfReturnedStreams"] = dataStreams.Apply(getStreamsResult =&gt; getStreamsResult.Datas).Length,
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetStreamsResult> Invoke(GetStreamsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetStreamsResult>("equinix:fabric/getStreams:getStreams", args ?? new GetStreamsInvokeArgs(), options.WithDefaults());
     }
 
 

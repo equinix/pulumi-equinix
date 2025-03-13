@@ -34,6 +34,18 @@ namespace Pulumi.Equinix.Metal
         /// </summary>
         public static Output<GetPrecreatedIpBlockResult> Invoke(GetPrecreatedIpBlockInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPrecreatedIpBlockResult>("equinix:metal/getPrecreatedIpBlock:getPrecreatedIpBlock", args ?? new GetPrecreatedIpBlockInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get CIDR expression for precreated (management) IPv6 and IPv4 blocks in Equinix Metal. You can then use the cidrsubnet TF builtin function to derive subnets.
+        /// 
+        /// &gt; For backward compatibility, this data source will also return reserved (elastic) IP blocks.
+        /// 
+        /// &gt; Precreated (management) IP blocks for a metro will not be available until first device is created in that metro.
+        /// 
+        /// &gt; Public IPv4 blocks auto-assigned (management) to a device cannot be retrieved. If you need that information, consider using the equinix.metal.Device data source instead.
+        /// </summary>
+        public static Output<GetPrecreatedIpBlockResult> Invoke(GetPrecreatedIpBlockInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetPrecreatedIpBlockResult>("equinix:metal/getPrecreatedIpBlock:getPrecreatedIpBlock", args ?? new GetPrecreatedIpBlockInvokeArgs(), options.WithDefaults());
     }
 
 

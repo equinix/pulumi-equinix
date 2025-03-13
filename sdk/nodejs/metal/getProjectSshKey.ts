@@ -101,7 +101,7 @@ export interface GetProjectSshKeyResult {
  * });
  * ```
  */
-export function getProjectSshKeyOutput(args: GetProjectSshKeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectSshKeyResult> {
+export function getProjectSshKeyOutput(args: GetProjectSshKeyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProjectSshKeyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("equinix:metal/getProjectSshKey:getProjectSshKey", {
         "id": args.id,

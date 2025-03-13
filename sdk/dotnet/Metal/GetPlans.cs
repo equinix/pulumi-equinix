@@ -16,6 +16,9 @@ namespace Pulumi.Equinix.Metal
 
         public static Output<GetPlansResult> Invoke(GetPlansInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPlansResult>("equinix:metal/getPlans:getPlans", args ?? new GetPlansInvokeArgs(), options.WithDefaults());
+
+        public static Output<GetPlansResult> Invoke(GetPlansInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetPlansResult>("equinix:metal/getPlans:getPlans", args ?? new GetPlansInvokeArgs(), options.WithDefaults());
     }
 
 

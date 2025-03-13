@@ -226,7 +226,7 @@ def get_metro(metro_code: Optional[str] = None,
         region=pulumi.get(__ret__, 'region'),
         type=pulumi.get(__ret__, 'type'))
 def get_metro_output(metro_code: Optional[pulumi.Input[str]] = None,
-                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMetroResult]:
+                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMetroResult]:
     """
     ## Example Usage
 
@@ -252,7 +252,7 @@ def get_metro_output(metro_code: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['metroCode'] = metro_code
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('equinix:fabric/getMetro:getMetro', __args__, opts=opts, typ=GetMetroResult)
     return __ret__.apply(lambda __response__: GetMetroResult(
         code=pulumi.get(__response__, 'code'),

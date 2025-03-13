@@ -182,7 +182,7 @@ def get_devices_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['G
                        project_id: Optional[pulumi.Input[Optional[str]]] = None,
                        search: Optional[pulumi.Input[Optional[str]]] = None,
                        sorts: Optional[pulumi.Input[Optional[Sequence[Union['GetDevicesSortArgs', 'GetDevicesSortArgsDict']]]]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDevicesResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDevicesResult]:
     """
     The datasource can be used to find a list of devices which meet filter criteria.
 
@@ -235,7 +235,7 @@ def get_devices_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['G
     __args__['projectId'] = project_id
     __args__['search'] = search
     __args__['sorts'] = sorts
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('equinix:metal/getDevices:getDevices', __args__, opts=opts, typ=GetDevicesResult)
     return __ret__.apply(lambda __response__: GetDevicesResult(
         devices=pulumi.get(__response__, 'devices'),

@@ -23,7 +23,7 @@ namespace Pulumi.Equinix.Fabric
         /// Count of the streaming assets attached to the stream resource
         /// </summary>
         [Output("assetsCount")]
-        public Output<double> AssetsCount { get; private set; } = null!;
+        public Output<int> AssetsCount { get; private set; } = null!;
 
         /// <summary>
         /// Details of the last change on the stream resource
@@ -65,7 +65,7 @@ namespace Pulumi.Equinix.Fabric
         /// Count of the client subscriptions on the stream resource
         /// </summary>
         [Output("streamSubscriptionsCount")]
-        public Output<double> StreamSubscriptionsCount { get; private set; } = null!;
+        public Output<int> StreamSubscriptionsCount { get; private set; } = null!;
 
         [Output("timeouts")]
         public Output<Outputs.StreamTimeouts?> Timeouts { get; private set; } = null!;
@@ -168,7 +168,7 @@ namespace Pulumi.Equinix.Fabric
         /// Count of the streaming assets attached to the stream resource
         /// </summary>
         [Input("assetsCount")]
-        public Input<double>? AssetsCount { get; set; }
+        public Input<int>? AssetsCount { get; set; }
 
         /// <summary>
         /// Details of the last change on the stream resource
@@ -210,7 +210,7 @@ namespace Pulumi.Equinix.Fabric
         /// Count of the client subscriptions on the stream resource
         /// </summary>
         [Input("streamSubscriptionsCount")]
-        public Input<double>? StreamSubscriptionsCount { get; set; }
+        public Input<int>? StreamSubscriptionsCount { get; set; }
 
         [Input("timeouts")]
         public Input<Inputs.StreamTimeoutsGetArgs>? Timeouts { get; set; }

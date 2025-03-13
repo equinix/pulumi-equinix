@@ -157,7 +157,7 @@ export interface GetRouteFiltersResult {
  * export const rulesCount = rfPolicies.then(rfPolicies => rfPolicies.datas?.[0]?.rulesCount);
  * ```
  */
-export function getRouteFiltersOutput(args: GetRouteFiltersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRouteFiltersResult> {
+export function getRouteFiltersOutput(args: GetRouteFiltersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRouteFiltersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("equinix:fabric/getRouteFilters:getRouteFilters", {
         "filters": args.filters,

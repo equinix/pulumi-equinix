@@ -82,6 +82,42 @@ namespace Pulumi.Equinix.Metal
         /// </summary>
         public static Output<GetOperatingSystemResult> Invoke(GetOperatingSystemInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOperatingSystemResult>("equinix:metal/getOperatingSystem:getOperatingSystem", args ?? new GetOperatingSystemInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get Equinix Metal Operating System image.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Equinix.Metal.GetOperatingSystem.Invoke(new()
+        ///     {
+        ///         Distro = "ubuntu",
+        ///         Version = "20.04",
+        ///         ProvisionableOn = "c3.medium.x86",
+        ///     });
+        /// 
+        ///     var server = new Equinix.Metal.Device("server", new()
+        ///     {
+        ///         Hostname = "tf.ubuntu",
+        ///         Plan = Equinix.Metal.Plan.C3MediumX86,
+        ///         Metro = "ny",
+        ///         OperatingSystem = example.Apply(getOperatingSystemResult =&gt; getOperatingSystemResult.Id).Apply(System.Enum.Parse&lt;Equinix.Metal.OperatingSystem&gt;),
+        ///         BillingCycle = Equinix.Metal.BillingCycle.Hourly,
+        ///         ProjectId = local.Project_id,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetOperatingSystemResult> Invoke(GetOperatingSystemInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetOperatingSystemResult>("equinix:metal/getOperatingSystem:getOperatingSystem", args ?? new GetOperatingSystemInvokeArgs(), options.WithDefaults());
     }
 
 

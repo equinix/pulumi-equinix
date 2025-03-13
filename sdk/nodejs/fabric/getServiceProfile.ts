@@ -175,7 +175,7 @@ export interface GetServiceProfileResult {
  * export const allowOverSubscription = serviceProfileDataName.then(serviceProfileDataName => serviceProfileDataName.accessPointTypeConfigs?.[0]?.apiConfig?.allowOverSubscription);
  * ```
  */
-export function getServiceProfileOutput(args: GetServiceProfileOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceProfileResult> {
+export function getServiceProfileOutput(args: GetServiceProfileOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServiceProfileResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("equinix:fabric/getServiceProfile:getServiceProfile", {
         "uuid": args.uuid,

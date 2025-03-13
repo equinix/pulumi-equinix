@@ -131,7 +131,7 @@ def get_cloud_routers(filters: Optional[Sequence[Union['GetCloudRoutersFilterArg
 def get_cloud_routers_output(filters: Optional[pulumi.Input[Sequence[Union['GetCloudRoutersFilterArgs', 'GetCloudRoutersFilterArgsDict']]]] = None,
                              pagination: Optional[pulumi.Input[Optional[Union['GetCloudRoutersPaginationArgs', 'GetCloudRoutersPaginationArgsDict']]]] = None,
                              sort: Optional[pulumi.Input[Optional[Union['GetCloudRoutersSortArgs', 'GetCloudRoutersSortArgsDict']]]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCloudRoutersResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCloudRoutersResult]:
     """
     Fabric V4 API compatible data resource that allow user to fetch Fabric Cloud Routers matching custom search criteria
 
@@ -148,7 +148,7 @@ def get_cloud_routers_output(filters: Optional[pulumi.Input[Sequence[Union['GetC
     __args__['filters'] = filters
     __args__['pagination'] = pagination
     __args__['sort'] = sort
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('equinix:fabric/getCloudRouters:getCloudRouters', __args__, opts=opts, typ=GetCloudRoutersResult)
     return __ret__.apply(lambda __response__: GetCloudRoutersResult(
         datas=pulumi.get(__response__, 'datas'),

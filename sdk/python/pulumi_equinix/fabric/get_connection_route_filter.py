@@ -179,7 +179,7 @@ def get_connection_route_filter(connection_id: Optional[str] = None,
         uuid=pulumi.get(__ret__, 'uuid'))
 def get_connection_route_filter_output(connection_id: Optional[pulumi.Input[str]] = None,
                                        route_filter_id: Optional[pulumi.Input[str]] = None,
-                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConnectionRouteFilterResult]:
+                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConnectionRouteFilterResult]:
     """
     Fabric V4 API compatible data resource that allow user to fetch route filter policy attachment to a fabric connection
 
@@ -209,7 +209,7 @@ def get_connection_route_filter_output(connection_id: Optional[pulumi.Input[str]
     __args__ = dict()
     __args__['connectionId'] = connection_id
     __args__['routeFilterId'] = route_filter_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('equinix:fabric/getConnectionRouteFilter:getConnectionRouteFilter', __args__, opts=opts, typ=GetConnectionRouteFilterResult)
     return __ret__.apply(lambda __response__: GetConnectionRouteFilterResult(
         attachment_status=pulumi.get(__response__, 'attachment_status'),

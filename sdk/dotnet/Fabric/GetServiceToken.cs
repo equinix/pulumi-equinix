@@ -88,6 +88,45 @@ namespace Pulumi.Equinix.Fabric
         /// </summary>
         public static Output<GetServiceTokenResult> Invoke(GetServiceTokenInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceTokenResult>("equinix:fabric/getServiceToken:getServiceToken", args ?? new GetServiceTokenInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Fabric V4 API compatible data resource that allow user to fetch service token for a given UUID
+        /// 
+        /// Additional documentation:
+        /// * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/service%20tokens/Fabric-Service-Tokens.htm
+        /// * API: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/ConnectUsingServiceToken.htm
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var service_token = Equinix.Fabric.GetServiceToken.Invoke(new()
+        ///     {
+        ///         Uuid = "&lt;uuid_of_service_token&gt;",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["id"] = service_token.Apply(service_token =&gt; service_token.Apply(getServiceTokenResult =&gt; getServiceTokenResult.Id)),
+        ///         ["type"] = service_token.Apply(service_token =&gt; service_token.Apply(getServiceTokenResult =&gt; getServiceTokenResult.Type)),
+        ///         ["expirationDateTime"] = service_token.Apply(service_token =&gt; service_token.Apply(getServiceTokenResult =&gt; getServiceTokenResult.ExpirationDateTime)),
+        ///         ["supportedBandwidths"] = service_token.Apply(service_token =&gt; service_token.Apply(getServiceTokenResult =&gt; getServiceTokenResult.ServiceTokenConnections[0]?.SupportedBandwidths)),
+        ///         ["virtualDeviceType"] = service_token.Apply(service_token =&gt; service_token.Apply(getServiceTokenResult =&gt; getServiceTokenResult.ServiceTokenConnections[0]?.ZSides[0]?.AccessPointSelectors[0]?.VirtualDevice?.Type)),
+        ///         ["virtualDeviceUuid"] = service_token.Apply(service_token =&gt; service_token.Apply(getServiceTokenResult =&gt; getServiceTokenResult.ServiceTokenConnections[0]?.ZSides[0]?.AccessPointSelectors[0]?.VirtualDevice?.Uuid)),
+        ///         ["interfaceType"] = service_token.Apply(service_token =&gt; service_token.Apply(getServiceTokenResult =&gt; getServiceTokenResult.ServiceTokenConnections[0]?.ZSides[0]?.AccessPointSelectors[0]?.Interface?.Type)),
+        ///         ["interfaceUuid"] = service_token.Apply(service_token =&gt; service_token.Apply(getServiceTokenResult =&gt; getServiceTokenResult.ServiceTokenConnections[0]?.ZSides[0]?.AccessPointSelectors[0]?.Interface?.Id)),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetServiceTokenResult> Invoke(GetServiceTokenInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetServiceTokenResult>("equinix:fabric/getServiceToken:getServiceToken", args ?? new GetServiceTokenInvokeArgs(), options.WithDefaults());
     }
 
 
