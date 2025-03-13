@@ -9348,6 +9348,10 @@ export namespace networkedge {
          */
         licenseKey?: string;
         /**
+         * Management Type. This field is relevant only for Cisco FTD Firewall devices
+         */
+        managementType?: string;
+        /**
          * Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
          */
         panoramaAuthKey?: string;
@@ -9425,6 +9429,10 @@ export namespace networkedge {
          * License key. This field is relevant only for the BlueCat DNS and DHCP Server
          */
         licenseKey?: string;
+        /**
+         * Management Type. This field is relevant only for Cisco FTD Firewall devices
+         */
+        managementType?: string;
         /**
          * Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
          */

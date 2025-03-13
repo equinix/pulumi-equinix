@@ -13,7 +13,7 @@ const testFile = new equinix.networkedge.NetworkFile("test-file", {
         input: filepath,
     }).apply(invoke => invoke.result),
     metroCode: equinix.index.Metro.SiliconValley,
-    deviceTypeCode: "AVIATRIX_EDGE",
+    deviceTypeCode: "AVIATRIX_EDGE_10",
     processType: equinix.networkedge.FileType.CloudInit,
     selfManaged: true,
     byol: true,
@@ -32,7 +32,7 @@ test_file = equinix.networkedge.NetworkFile("test-file",
     file_name="fileName.txt",
     content=std.file_output(input=filepath).apply(lambda invoke: invoke.result),
     metro_code=equinix.Metro.SILICON_VALLEY,
-    device_type_code="AVIATRIX_EDGE",
+    device_type_code="AVIATRIX_EDGE_10",
     process_type=equinix.networkedge.FileType.CLOUD_INIT,
     self_managed=True,
     byol=True)
@@ -63,7 +63,7 @@ func main() {
 				return invoke.Result, nil
 			}).(pulumi.StringPtrOutput)),
 			MetroCode:      pulumi.String(equinix.MetroSiliconValley),
-			DeviceTypeCode: pulumi.String("AVIATRIX_EDGE"),
+			DeviceTypeCode: pulumi.String("AVIATRIX_EDGE_10"),
 			ProcessType:    pulumi.String(networkedge.FileTypeCloudInit),
 			SelfManaged:    pulumi.Bool(true),
 			Byol:           pulumi.Bool(true),
@@ -94,7 +94,7 @@ return await Deployment.RunAsync(() =>
             Input = filepath,
         }).Apply(invoke => invoke.Result),
         MetroCode = Equinix.Metro.SiliconValley,
-        DeviceTypeCode = "AVIATRIX_EDGE",
+        DeviceTypeCode = "AVIATRIX_EDGE_10",
         ProcessType = Equinix.NetworkEdge.FileType.CloudInit,
         SelfManaged = true,
         Byol = true,
@@ -110,8 +110,6 @@ import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
 import com.pulumi.equinix.networkedge.NetworkFile;
 import com.pulumi.equinix.networkedge.NetworkFileArgs;
-import com.pulumi.std.StdFunctions;
-import com.pulumi.std.inputs.FileArgs;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
@@ -131,9 +129,9 @@ public class App {
             .fileName("fileName.txt")
             .content(StdFunctions.file(FileArgs.builder()
                 .input(filepath)
-                .build()).applyValue(_invoke -> _invoke.result()))
+                .build()).result())
             .metroCode("SV")
-            .deviceTypeCode("AVIATRIX_EDGE")
+            .deviceTypeCode("AVIATRIX_EDGE_10")
             .processType("CLOUD_INIT")
             .selfManaged(true)
             .byol(true)
@@ -154,12 +152,12 @@ resources:
       fileName: fileName.txt
       content:
         fn::invoke:
-          function: std:file
-          arguments:
+          Function: std:file
+          Arguments:
             input: ${filepath}
-          return: result
+          Return: result
       metroCode: SV
-      deviceTypeCode: AVIATRIX_EDGE
+      deviceTypeCode: AVIATRIX_EDGE_10
       processType: CLOUD_INIT
       selfManaged: true
       byol: true

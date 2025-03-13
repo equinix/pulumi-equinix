@@ -30,6 +30,6 @@ variables:
   # Create C8000V BYOL device with numeric bandwidth throughput information
   sv:
     fn::invoke:
-      function: equinix:networkedge:getAccount
-      arguments:
+      Function: equinix:networkedge:getAccount
+      Arguments:
         metroCode: SV

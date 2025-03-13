@@ -148,13 +148,13 @@ public class App {
 
         var testVlan = new Vlan("testVlan", VlanArgs.builder()
             .projectId(projectId)
-            .metro(test.applyValue(_test -> _test.metro()))
+            .metro(test.applyValue(getInterconnectionResult -> getInterconnectionResult.metro()))
             .build());
 
         var testVirtualCircuit = new VirtualCircuit("testVirtualCircuit", VirtualCircuitArgs.builder()
             .connectionId(connId)
             .projectId(projectId)
-            .portId(test.applyValue(_test -> _test.ports()[0].id()))
+            .portId(test.applyValue(getInterconnectionResult -> getInterconnectionResult.ports()[0].id()))
             .vlanId(testVlan.id())
             .nniVlan(1056)
             .build());
@@ -184,8 +184,8 @@ variables:
   connId: 73f12f29-3e19-43a0-8e90-ae81580db1e0
   test:
     fn::invoke:
-      function: equinix:metal:getInterconnection
-      arguments:
+      Function: equinix:metal:getInterconnection
+      Arguments:
         connectionId: ${connId}
 ```
 {{% /example %}}

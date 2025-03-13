@@ -539,7 +539,7 @@ resources:
         enabled: true
       customerAsn: 4532
     options:
-      dependsOn:
+      dependson:
         - ${direct}
 ```
 {{% /example %}}

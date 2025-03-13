@@ -26,7 +26,7 @@ public class App {
             .billingCycle("hourly")
             .projectId(projectId)
             .ipxeScriptUrl("https://rawgit.com/cloudnativelabs/pxe/master/packet/coreos-stable-metal.ipxe")
-            .alwaysPxe(false)
+            .alwaysPxe("false")
             .userData(example.rendered())
             .build());
 

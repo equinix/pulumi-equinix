@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *             .description("VRF with ASN 65000 and a pool of address space that includes 192.168.100.0/25")
  *             .name("example-vrf")
  *             .metro("da")
- *             .localAsn(65000)
+ *             .localAsn("65000")
  *             .ipRanges(            
  *                 "192.168.100.0/25",
  *                 "192.168.200.0/25")

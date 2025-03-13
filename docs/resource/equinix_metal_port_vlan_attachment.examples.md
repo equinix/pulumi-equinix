@@ -550,7 +550,7 @@ resources:
       portName: eth1
       native: true
     options:
-      dependsOn:
+      dependson:
         - ${test1PortVlanAttachment}
 ```
 {{% /example %}}

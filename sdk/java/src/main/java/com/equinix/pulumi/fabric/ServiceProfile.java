@@ -82,7 +82,7 @@ import javax.annotation.Nullable;
  *                 .allowBandwidthAutoApproval(false)
  *                 .connectionRedundancyRequired(false)
  *                 .connectionLabel("Service Profile Tag1")
- *                 .bandwidthAlertThreshold(10.0)
+ *                 .bandwidthAlertThreshold(10)
  *                 .supportedBandwidths(                
  *                     100,
  *                     500)

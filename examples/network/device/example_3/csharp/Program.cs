@@ -21,7 +21,7 @@ return await Deployment.RunAsync(() =>
             Input = filepath,
         }).Apply(invoke => invoke.Result),
         MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode).Apply(System.Enum.Parse<Equinix.Metro>),
-        DeviceTypeCode = "AVIATRIX_EDGE",
+        DeviceTypeCode = "AVIATRIX_EDGE_10",
         ProcessType = Equinix.NetworkEdge.FileType.CloudInit,
         SelfManaged = true,
         Byol = true,
@@ -31,7 +31,7 @@ return await Deployment.RunAsync(() =>
     {
         Name = "tf-aviatrix",
         MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
-        TypeCode = "AVIATRIX_EDGE",
+        TypeCode = "AVIATRIX_EDGE_10",
         SelfManaged = true,
         Byol = true,
         PackageCode = "STD",

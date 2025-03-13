@@ -350,7 +350,7 @@ public class App {
         var exampleConnection = new Connection("exampleConnection", ConnectionArgs.builder()
             .name("tf-metal-from-port")
             .type("EVPL_VC")
-            .bandwidth(200)
+            .bandwidth("200")
             .notifications(ConnectionNotificationArgs.builder()
                 .type("ALL")
                 .emails("username@example.com")
@@ -365,7 +365,7 @@ public class App {
                 .accessPoint(ConnectionASideAccessPointArgs.builder()
                     .type("COLO")
                     .port(ConnectionASideAccessPointPortArgs.builder()
-                        .uuid(aSide.applyValue(_aSide -> _aSide.data()[0].uuid()))
+                        .uuid(aSide.applyValue(getPortsResult -> getPortsResult.data()[0].uuid()))
                         .build())
                     .linkProtocol(ConnectionASideAccessPointLinkProtocolArgs.builder()
                         .type("DOT1Q")
@@ -375,7 +375,7 @@ public class App {
                 .build())
             .zSide(ConnectionZSideArgs.builder()
                 .serviceToken(ConnectionZSideServiceTokenArgs.builder()
-                    .uuid(exampleInterconnection.serviceTokens().applyValue(_serviceTokens -> _serviceTokens[0].id()))
+                    .uuid(exampleInterconnection.serviceTokens().applyValue(serviceTokens -> serviceTokens[0].id()))
                     .build())
                 .build())
             .build());
@@ -433,8 +433,8 @@ resources:
 variables:
   aSide:
     fn::invoke:
-      function: equinix:fabric:getPorts
-      arguments:
+      Function: equinix:fabric:getPorts
+      Arguments:
         filter:
           name: <name_of_port||port_prefix>
 ```
@@ -722,7 +722,7 @@ public class App {
         var exampleConnection = new Connection("exampleConnection", ConnectionArgs.builder()
             .name("tf-metal-from-fcr")
             .type("IP_VC")
-            .bandwidth(200)
+            .bandwidth("200")
             .notifications(ConnectionNotificationArgs.builder()
                 .type("ALL")
                 .emails("username@example.com")
@@ -1096,7 +1096,7 @@ public class App {
         var example = new Vrf("example", VrfArgs.builder()
             .name("tf-metal-from-ne")
             .metro("FR")
-            .localAsn(65001)
+            .localAsn("65001")
             .ipRanges("10.99.1.0/24")
             .projectId(test.id())
             .build());
@@ -1116,7 +1116,7 @@ public class App {
         var exampleConnection = new Connection("exampleConnection", ConnectionArgs.builder()
             .name("tf-metal-from-ne")
             .type("EVPL_VC")
-            .bandwidth(200)
+            .bandwidth("200")
             .notifications(ConnectionNotificationArgs.builder()
                 .type("ALL")
                 .emails("username@example.com")
@@ -1138,7 +1138,7 @@ public class App {
                 .build())
             .zSide(ConnectionZSideArgs.builder()
                 .serviceToken(ConnectionZSideServiceTokenArgs.builder()
-                    .uuid(exampleInterconnection.serviceTokens().applyValue(_serviceTokens -> _serviceTokens[0].id()))
+                    .uuid(exampleInterconnection.serviceTokens().applyValue(serviceTokens -> serviceTokens[0].id()))
                     .build())
                 .build())
             .build());
@@ -1518,20 +1518,20 @@ public class App {
             .project(ConnectionProjectArgs.builder()
                 .projectId("<fabric_project_id>")
                 .build())
-            .bandwidth(100)
+            .bandwidth("100")
             .order(ConnectionOrderArgs.builder()
                 .purchaseOrderNumber("1-323292")
                 .build())
             .aSide(ConnectionASideArgs.builder()
                 .serviceToken(ConnectionASideServiceTokenArgs.builder()
-                    .uuid(example.serviceTokens().applyValue(_serviceTokens -> _serviceTokens[0].id()))
+                    .uuid(example.serviceTokens().applyValue(serviceTokens -> serviceTokens[0].id()))
                     .build())
                 .build())
             .zSide(ConnectionZSideArgs.builder()
                 .accessPoint(ConnectionZSideAccessPointArgs.builder()
                     .type("COLO")
                     .port(ConnectionZSideAccessPointPortArgs.builder()
-                        .uuid(aSide.applyValue(_aSide -> _aSide.data()[0].uuid()))
+                        .uuid(aSide.applyValue(getPortsResult -> getPortsResult.data()[0].uuid()))
                         .build())
                     .linkProtocol(ConnectionZSideAccessPointLinkProtocolArgs.builder()
                         .type("DOT1Q")
@@ -1586,8 +1586,8 @@ resources:
 variables:
   aSide:
     fn::invoke:
-      function: equinix:fabric:getPorts
-      arguments:
+      Function: equinix:fabric:getPorts
+      Arguments:
         filter:
           name: <name_of_port||port_prefix>
 ```

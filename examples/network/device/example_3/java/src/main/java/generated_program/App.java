@@ -7,8 +7,6 @@ import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
 import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
 import com.pulumi.equinix.networkedge.NetworkFile;
 import com.pulumi.equinix.networkedge.NetworkFileArgs;
-import com.pulumi.std.StdFunctions;
-import com.pulumi.std.inputs.FileArgs;
 import com.pulumi.equinix.networkedge.Device;
 import com.pulumi.equinix.networkedge.DeviceArgs;
 import java.util.List;
@@ -34,9 +32,9 @@ public class App {
             .fileName("TF-AVX-cloud-init-file.txt")
             .content(StdFunctions.file(FileArgs.builder()
                 .input(filepath)
-                .build()).applyValue(_invoke -> _invoke.result()))
-            .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
-            .deviceTypeCode("AVIATRIX_EDGE")
+                .build()).result())
+            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+            .deviceTypeCode("AVIATRIX_EDGE_10")
             .processType("CLOUD_INIT")
             .selfManaged(true)
             .byol(true)
@@ -44,14 +42,14 @@ public class App {
 
         var aviatrixSingle = new Device("aviatrixSingle", DeviceArgs.builder()
             .name("tf-aviatrix")
-            .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
-            .typeCode("AVIATRIX_EDGE")
+            .metroCode(sv.applyValue(getAccountResult -> getAccountResult.metroCode()))
+            .typeCode("AVIATRIX_EDGE_10")
             .selfManaged(true)
             .byol(true)
             .packageCode("STD")
             .notifications("john@equinix.com")
             .termLength(12)
-            .accountNumber(sv.applyValue(_sv -> _sv.number()))
+            .accountNumber(sv.applyValue(getAccountResult -> getAccountResult.number()))
             .version("6.9")
             .coreCount(2)
             .cloudInitFileId(aviatrixCloudinitFile.uuid())
