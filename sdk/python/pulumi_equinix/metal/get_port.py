@@ -263,7 +263,7 @@ def get_port(device_id: Optional[str] = None,
 def get_port_output(device_id: Optional[pulumi.Input[Optional[str]]] = None,
                     name: Optional[pulumi.Input[Optional[str]]] = None,
                     port_id: Optional[pulumi.Input[Optional[str]]] = None,
-                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPortResult]:
+                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPortResult]:
     """
     Use this data source to read ports of existing devices. You can read port by either its UUID, or by a device UUID and port name.
 
@@ -296,7 +296,7 @@ def get_port_output(device_id: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['deviceId'] = device_id
     __args__['name'] = name
     __args__['portId'] = port_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('equinix:metal/getPort:getPort', __args__, opts=opts, typ=GetPortResult)
     return __ret__.apply(lambda __response__: GetPortResult(
         bond_id=pulumi.get(__response__, 'bond_id'),

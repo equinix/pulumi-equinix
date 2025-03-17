@@ -121,7 +121,7 @@ export interface GetMetroResult {
  * export const geoScopes = metro.then(metro => metro.geoScopes);
  * ```
  */
-export function getMetroOutput(args: GetMetroOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMetroResult> {
+export function getMetroOutput(args: GetMetroOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMetroResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("equinix:fabric/getMetro:getMetro", {
         "metroCode": args.metroCode,

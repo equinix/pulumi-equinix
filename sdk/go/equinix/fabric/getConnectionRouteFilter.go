@@ -87,21 +87,11 @@ type LookupConnectionRouteFilterResult struct {
 }
 
 func LookupConnectionRouteFilterOutput(ctx *pulumi.Context, args LookupConnectionRouteFilterOutputArgs, opts ...pulumi.InvokeOption) LookupConnectionRouteFilterResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupConnectionRouteFilterResultOutput, error) {
 			args := v.(LookupConnectionRouteFilterArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupConnectionRouteFilterResult
-			secret, err := ctx.InvokePackageRaw("equinix:fabric/getConnectionRouteFilter:getConnectionRouteFilter", args, &rv, "", opts...)
-			if err != nil {
-				return LookupConnectionRouteFilterResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupConnectionRouteFilterResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupConnectionRouteFilterResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("equinix:fabric/getConnectionRouteFilter:getConnectionRouteFilter", args, LookupConnectionRouteFilterResultOutput{}, options).(LookupConnectionRouteFilterResultOutput), nil
 		}).(LookupConnectionRouteFilterResultOutput)
 }
 

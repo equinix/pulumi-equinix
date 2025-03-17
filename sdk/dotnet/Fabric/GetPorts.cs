@@ -106,6 +106,54 @@ namespace Pulumi.Equinix.Fabric
         /// </summary>
         public static Output<GetPortsResult> Invoke(GetPortsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPortsResult>("equinix:fabric/getPorts:getPorts", args ?? new GetPortsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Fabric V4 API compatible data resource that allow user to fetch port by name
+        /// 
+        /// Additional documentation:
+        /// * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-ports-implement.htm
+        /// * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#ports
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var portsDataName = Equinix.Fabric.GetPorts.Invoke(new()
+        ///     {
+        ///         Filter = new Equinix.Fabric.Inputs.GetPortsFilterInputArgs
+        ///         {
+        ///             Name = "&lt;name_of_port||port_prefix&gt;",
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["id"] = data.Equinix_fabric_port.Ports_data_name.Data[0].Id,
+        ///         ["name"] = data.Equinix_fabric_port.Ports_data_name.Data[0].Name,
+        ///         ["state"] = data.Equinix_fabric_port.Ports_data_name.Data[0].State,
+        ///         ["accountName"] = data.Equinix_fabric_port.Ports_data_name.Data[0].Account[0].Account_name,
+        ///         ["type"] = data.Equinix_fabric_port.Ports_data_name.Data[0].Type,
+        ///         ["bandwidth"] = data.Equinix_fabric_port.Ports_data_name.Data[0].Bandwidth,
+        ///         ["usedBandwidth"] = data.Equinix_fabric_port.Ports_data_name.Data[0].Used_bandwidth,
+        ///         ["encapsulationType"] = data.Equinix_fabric_port.Ports_data_name.Data[0].Encapsulation[0].Type,
+        ///         ["ibx"] = data.Equinix_fabric_port.Ports_data_name.Data[0].Location[0].Ibx,
+        ///         ["metroCode"] = data.Equinix_fabric_port.Ports_data_name.Data[0].Location[0].Metro_code,
+        ///         ["metroName"] = data.Equinix_fabric_port.Ports_data_name.Data[0].Location[0].Metro_name,
+        ///         ["region"] = data.Equinix_fabric_port.Ports_data_name.Data[0].Location[0].Region,
+        ///         ["deviceRedundancyEnabled"] = data.Equinix_fabric_port.Ports_data_name.Data[0].Device[0].Redundancy[0].Enabled,
+        ///         ["deviceRedundancyPriority"] = data.Equinix_fabric_port.Ports_data_name.Data[0].Device[0].Redundancy[0].Priority,
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetPortsResult> Invoke(GetPortsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetPortsResult>("equinix:fabric/getPorts:getPorts", args ?? new GetPortsInvokeArgs(), options.WithDefaults());
     }
 
 

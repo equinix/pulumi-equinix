@@ -16,7 +16,7 @@ namespace Pulumi.Equinix.Fabric.Inputs
         /// Maximum number of search results returned per page.
         /// </summary>
         [Input("limit")]
-        public double? Limit { get; set; }
+        public int? Limit { get; set; }
 
         /// <summary>
         /// URL relative to the next item in the response.
@@ -28,7 +28,7 @@ namespace Pulumi.Equinix.Fabric.Inputs
         /// Index of the first item returned in the response.
         /// </summary>
         [Input("offset")]
-        public double? Offset { get; set; }
+        public int? Offset { get; set; }
 
         /// <summary>
         /// URL relative to the previous item in the response.
@@ -40,7 +40,7 @@ namespace Pulumi.Equinix.Fabric.Inputs
         /// The total number of metro returned
         /// </summary>
         [Input("total", required: true)]
-        public double Total { get; set; }
+        public int Total { get; set; }
 
         public GetMetrosPaginationArgs()
         {

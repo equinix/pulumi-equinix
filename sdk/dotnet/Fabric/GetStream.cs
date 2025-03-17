@@ -74,6 +74,38 @@ namespace Pulumi.Equinix.Fabric
         /// </summary>
         public static Output<GetStreamResult> Invoke(GetStreamInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetStreamResult>("equinix:fabric/getStream:getStream", args ?? new GetStreamInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Stream by UUID
+        /// 
+        /// Additional Documentation:
+        /// * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
+        /// * API: https://developer.equinix.com/catalog/fabricv4#tag/Streams
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var dataStream = Equinix.Fabric.GetStream.Invoke(new()
+        ///     {
+        ///         StreamId = "&lt;uuid_of_stream&gt;",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["streamState"] = dataStream.Apply(getStreamResult =&gt; getStreamResult.State),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetStreamResult> Invoke(GetStreamInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetStreamResult>("equinix:fabric/getStream:getStream", args ?? new GetStreamInvokeArgs(), options.WithDefaults());
     }
 
 
@@ -112,7 +144,7 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Count of the streaming assets attached to the stream resource
         /// </summary>
-        public readonly double AssetsCount;
+        public readonly int AssetsCount;
         /// <summary>
         /// Details of the last change on the stream resource
         /// </summary>
@@ -148,7 +180,7 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Count of the client subscriptions on the stream resource
         /// </summary>
-        public readonly double StreamSubscriptionsCount;
+        public readonly int StreamSubscriptionsCount;
         /// <summary>
         /// Equinix defined Streaming Type
         /// </summary>
@@ -160,7 +192,7 @@ namespace Pulumi.Equinix.Fabric
 
         [OutputConstructor]
         private GetStreamResult(
-            double assetsCount,
+            int assetsCount,
 
             Outputs.GetStreamChangeLogResult changeLog,
 
@@ -178,7 +210,7 @@ namespace Pulumi.Equinix.Fabric
 
             string streamId,
 
-            double streamSubscriptionsCount,
+            int streamSubscriptionsCount,
 
             string type,
 

@@ -116,6 +116,59 @@ namespace Pulumi.Equinix.Metal
         /// </summary>
         public static Output<GetDeviceResult> Invoke(GetDeviceInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDeviceResult>("equinix:metal/getDevice:getDevice", args ?? new GetDeviceInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The datasource can be used to fetch a single device.
+        /// 
+        /// If you need to fetch a list of devices which meet filter criteria, you can use the equinix.metal.getDevices datasource.
+        /// 
+        /// &gt; **Note:** All arguments including the `root_password` and `user_data` will be stored in the raw state as plain-text. Read more about sensitive data in state.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var test = Equinix.Metal.GetDevice.Invoke(new()
+        ///     {
+        ///         ProjectId = local.Project_id,
+        ///         Hostname = "mydevice",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["id"] = test.Apply(getDeviceResult =&gt; getDeviceResult.Id),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var test = Equinix.Metal.GetDevice.Invoke(new()
+        ///     {
+        ///         DeviceId = "4c641195-25e5-4c3c-b2b7-4cd7a42c7b40",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["ipv4"] = test.Apply(getDeviceResult =&gt; getDeviceResult.AccessPublicIpv4),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDeviceResult> Invoke(GetDeviceInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDeviceResult>("equinix:metal/getDevice:getDevice", args ?? new GetDeviceInvokeArgs(), options.WithDefaults());
     }
 
 

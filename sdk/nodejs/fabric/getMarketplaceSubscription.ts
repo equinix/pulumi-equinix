@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
  *
- * const subscription-test = equinix.fabric.getMarketplaceSubscription({
+ * const subscription_test = equinix.fabric.getMarketplaceSubscription({
  *     uuid: "<uuid_of_marketplace_subscription>",
  * });
  * export const id = subscription_test.then(subscription_test => subscription_test.id);
@@ -93,7 +93,7 @@ export interface GetMarketplaceSubscriptionResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
  *
- * const subscription-test = equinix.fabric.getMarketplaceSubscription({
+ * const subscription_test = equinix.fabric.getMarketplaceSubscription({
  *     uuid: "<uuid_of_marketplace_subscription>",
  * });
  * export const id = subscription_test.then(subscription_test => subscription_test.id);
@@ -103,7 +103,7 @@ export interface GetMarketplaceSubscriptionResult {
  * export const isAutoRenew = subscription_test.then(subscription_test => subscription_test.isAutoRenew);
  * ```
  */
-export function getMarketplaceSubscriptionOutput(args: GetMarketplaceSubscriptionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMarketplaceSubscriptionResult> {
+export function getMarketplaceSubscriptionOutput(args: GetMarketplaceSubscriptionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMarketplaceSubscriptionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("equinix:fabric/getMarketplaceSubscription:getMarketplaceSubscription", {
         "uuid": args.uuid,

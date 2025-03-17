@@ -116,6 +116,59 @@ namespace Pulumi.Equinix.Metal
         /// </summary>
         public static Output<GetVlanResult> Invoke(GetVlanInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVlanResult>("equinix:metal/getVlan:getVlan", args ?? new GetVlanInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides an Equinix Metal Virtual Network datasource. VLANs data sources can be searched by VLAN UUID, or project UUID and vxlan number.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Fetch a vlan by ID:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foovlan = new Equinix.Metal.Vlan("foovlan", new()
+        ///     {
+        ///         ProjectId = local.Project_id,
+        ///         Metro = "sv",
+        ///         Vxlan = 5,
+        ///     });
+        /// 
+        ///     var dsvlan = Equinix.Metal.GetVlan.Invoke(new()
+        ///     {
+        ///         VlanId = foovlan.Id,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// Fetch a vlan by project ID, vxlan and metro
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var dsvlan = Equinix.Metal.GetVlan.Invoke(new()
+        ///     {
+        ///         ProjectId = local.Project_id,
+        ///         Vxlan = 5,
+        ///         Metro = "sv",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetVlanResult> Invoke(GetVlanInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetVlanResult>("equinix:metal/getVlan:getVlan", args ?? new GetVlanInvokeArgs(), options.WithDefaults());
     }
 
 

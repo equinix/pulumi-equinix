@@ -82,6 +82,42 @@ namespace Pulumi.Equinix.Fabric
         /// </summary>
         public static Output<GetNetworkResult> Invoke(GetNetworkInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNetworkResult>("equinix:fabric/getNetwork:getNetwork", args ?? new GetNetworkInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Fabric V4 API compatible data resource that allow user to fetch Fabric Network for a given UUID
+        /// 
+        /// Additional documentation:
+        /// * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-networks-implement.htm
+        /// * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-networks
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var networkDataName = Equinix.Fabric.GetNetwork.Invoke(new()
+        ///     {
+        ///         Uuid = "&lt;uuid_of_network&gt;",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["id"] = networkDataName.Apply(getNetworkResult =&gt; getNetworkResult.Id),
+        ///         ["name"] = networkDataName.Apply(getNetworkResult =&gt; getNetworkResult.Name),
+        ///         ["scope"] = networkDataName.Apply(getNetworkResult =&gt; getNetworkResult.Scope),
+        ///         ["type"] = networkDataName.Apply(getNetworkResult =&gt; getNetworkResult.Type),
+        ///         ["region"] = networkDataName.Apply(getNetworkResult =&gt; getNetworkResult.Locations[0]?.Region),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetNetworkResult> Invoke(GetNetworkInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetNetworkResult>("equinix:fabric/getNetwork:getNetwork", args ?? new GetNetworkInvokeArgs(), options.WithDefaults());
     }
 
 

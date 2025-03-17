@@ -171,7 +171,7 @@ def get_route_filters(filters: Optional[Sequence[Union['GetRouteFiltersFilterArg
 def get_route_filters_output(filters: Optional[pulumi.Input[Sequence[Union['GetRouteFiltersFilterArgs', 'GetRouteFiltersFilterArgsDict']]]] = None,
                              pagination: Optional[pulumi.Input[Optional[Union['GetRouteFiltersPaginationArgs', 'GetRouteFiltersPaginationArgsDict']]]] = None,
                              sorts: Optional[pulumi.Input[Optional[Sequence[Union['GetRouteFiltersSortArgs', 'GetRouteFiltersSortArgsDict']]]]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRouteFiltersResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRouteFiltersResult]:
     """
     Fabric V4 API compatible data resource that allow user to fetch route filter for a given search data set
 
@@ -228,7 +228,7 @@ def get_route_filters_output(filters: Optional[pulumi.Input[Sequence[Union['GetR
     __args__['filters'] = filters
     __args__['pagination'] = pagination
     __args__['sorts'] = sorts
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('equinix:fabric/getRouteFilters:getRouteFilters', __args__, opts=opts, typ=GetRouteFiltersResult)
     return __ret__.apply(lambda __response__: GetRouteFiltersResult(
         datas=pulumi.get(__response__, 'datas'),

@@ -16,7 +16,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// <summary>
         /// Maximum number of search results returned per page.
         /// </summary>
-        public readonly double? Limit;
+        public readonly int? Limit;
         /// <summary>
         /// URL relative to the next item in the response.
         /// </summary>
@@ -24,7 +24,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// <summary>
         /// Index of the first item returned in the response.
         /// </summary>
-        public readonly double? Offset;
+        public readonly int? Offset;
         /// <summary>
         /// URL relative to the previous item in the response.
         /// </summary>
@@ -32,19 +32,19 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// <summary>
         /// The total number of metro returned
         /// </summary>
-        public readonly double Total;
+        public readonly int Total;
 
         [OutputConstructor]
         private GetMetrosPaginationResult(
-            double? limit,
+            int? limit,
 
             string next,
 
-            double? offset,
+            int? offset,
 
             string previous,
 
-            double total)
+            int total)
         {
             Limit = limit;
             Next = next;

@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
  *
- * const service-token = equinix.fabric.getServiceToken({
+ * const service_token = equinix.fabric.getServiceToken({
  *     uuid: "<uuid_of_service_token>",
  * });
  * export const id = service_token.then(service_token => service_token.id);
@@ -124,7 +124,7 @@ export interface GetServiceTokenResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
  *
- * const service-token = equinix.fabric.getServiceToken({
+ * const service_token = equinix.fabric.getServiceToken({
  *     uuid: "<uuid_of_service_token>",
  * });
  * export const id = service_token.then(service_token => service_token.id);
@@ -137,7 +137,7 @@ export interface GetServiceTokenResult {
  * export const interfaceUuid = service_token.then(service_token => service_token.serviceTokenConnections?.[0]?.zSides?.[0]?.accessPointSelectors?.[0]?.["interface"]?.id);
  * ```
  */
-export function getServiceTokenOutput(args: GetServiceTokenOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceTokenResult> {
+export function getServiceTokenOutput(args: GetServiceTokenOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServiceTokenResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("equinix:fabric/getServiceToken:getServiceToken", {
         "uuid": args.uuid,

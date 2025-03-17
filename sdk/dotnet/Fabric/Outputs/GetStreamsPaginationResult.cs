@@ -16,7 +16,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// <summary>
         /// Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
         /// </summary>
-        public readonly double Limit;
+        public readonly int Limit;
         /// <summary>
         /// The URL relative to the next item in the response
         /// </summary>
@@ -24,7 +24,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// <summary>
         /// Index of the first item returned in the response. The default is 0
         /// </summary>
-        public readonly double Offset;
+        public readonly int Offset;
         /// <summary>
         /// The URL relative to the previous item in the response
         /// </summary>
@@ -32,19 +32,19 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// <summary>
         /// The total number of streams available to the user making the request
         /// </summary>
-        public readonly double Total;
+        public readonly int Total;
 
         [OutputConstructor]
         private GetStreamsPaginationResult(
-            double limit,
+            int limit,
 
             string next,
 
-            double offset,
+            int offset,
 
             string previous,
 
-            double total)
+            int total)
         {
             Limit = limit;
             Next = next;

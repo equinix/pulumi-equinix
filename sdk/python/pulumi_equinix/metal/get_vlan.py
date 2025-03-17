@@ -183,7 +183,7 @@ def get_vlan_output(facility: Optional[pulumi.Input[Optional[str]]] = None,
                     project_id: Optional[pulumi.Input[Optional[str]]] = None,
                     vlan_id: Optional[pulumi.Input[Optional[str]]] = None,
                     vxlan: Optional[pulumi.Input[Optional[int]]] = None,
-                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVlanResult]:
+                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVlanResult]:
     """
     Provides an Equinix Metal Virtual Network datasource. VLANs data sources can be searched by VLAN UUID, or project UUID and vxlan number.
 
@@ -228,7 +228,7 @@ def get_vlan_output(facility: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['projectId'] = project_id
     __args__['vlanId'] = vlan_id
     __args__['vxlan'] = vxlan
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('equinix:metal/getVlan:getVlan', __args__, opts=opts, typ=GetVlanResult)
     return __ret__.apply(lambda __response__: GetVlanResult(
         assigned_devices_ids=pulumi.get(__response__, 'assigned_devices_ids'),

@@ -74,6 +74,38 @@ namespace Pulumi.Equinix.NetworkEdge
         /// </summary>
         public static Output<GetAccountResult> Invoke(GetAccountInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountResult>("equinix:networkedge/getAccount:getAccount", args ?? new GetAccountInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get number and identifier of Equinix Network Edge billing account in a given metro location.
+        /// 
+        /// Billing account reference is required to create Network Edge virtual device in corresponding metro location.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var dc = Equinix.NetworkEdge.GetAccount.Invoke(new()
+        ///     {
+        ///         MetroCode = "DC",
+        ///         Status = "Active",
+        ///         ProjectId = "a86d7112-d740-4758-9c9c-31e66373746b",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["number"] = dc.Apply(getAccountResult =&gt; getAccountResult.Number),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAccountResult> Invoke(GetAccountInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAccountResult>("equinix:networkedge/getAccount:getAccount", args ?? new GetAccountInvokeArgs(), options.WithDefaults());
     }
 
 

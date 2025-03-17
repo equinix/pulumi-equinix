@@ -109,7 +109,7 @@ export interface GetDeviceSoftwareResult {
  * });
  * ```
  */
-export function getDeviceSoftwareOutput(args: GetDeviceSoftwareOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDeviceSoftwareResult> {
+export function getDeviceSoftwareOutput(args: GetDeviceSoftwareOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDeviceSoftwareResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("equinix:networkedge/getDeviceSoftware:getDeviceSoftware", {
         "deviceType": args.deviceType,

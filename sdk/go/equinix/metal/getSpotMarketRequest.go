@@ -55,21 +55,11 @@ type LookupSpotMarketRequestResult struct {
 }
 
 func LookupSpotMarketRequestOutput(ctx *pulumi.Context, args LookupSpotMarketRequestOutputArgs, opts ...pulumi.InvokeOption) LookupSpotMarketRequestResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupSpotMarketRequestResultOutput, error) {
 			args := v.(LookupSpotMarketRequestArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupSpotMarketRequestResult
-			secret, err := ctx.InvokePackageRaw("equinix:metal/getSpotMarketRequest:getSpotMarketRequest", args, &rv, "", opts...)
-			if err != nil {
-				return LookupSpotMarketRequestResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupSpotMarketRequestResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupSpotMarketRequestResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("equinix:metal/getSpotMarketRequest:getSpotMarketRequest", args, LookupSpotMarketRequestResultOutput{}, options).(LookupSpotMarketRequestResultOutput), nil
 		}).(LookupSpotMarketRequestResultOutput)
 }
 

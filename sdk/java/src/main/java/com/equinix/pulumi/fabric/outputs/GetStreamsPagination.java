@@ -5,7 +5,7 @@ package com.equinix.pulumi.fabric.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Double;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 
@@ -15,7 +15,7 @@ public final class GetStreamsPagination {
      * @return Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
      * 
      */
-    private Double limit;
+    private Integer limit;
     /**
      * @return The URL relative to the next item in the response
      * 
@@ -25,7 +25,7 @@ public final class GetStreamsPagination {
      * @return Index of the first item returned in the response. The default is 0
      * 
      */
-    private Double offset;
+    private Integer offset;
     /**
      * @return The URL relative to the previous item in the response
      * 
@@ -35,14 +35,14 @@ public final class GetStreamsPagination {
      * @return The total number of streams available to the user making the request
      * 
      */
-    private Double total;
+    private Integer total;
 
     private GetStreamsPagination() {}
     /**
      * @return Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
      * 
      */
-    public Double limit() {
+    public Integer limit() {
         return this.limit;
     }
     /**
@@ -56,7 +56,7 @@ public final class GetStreamsPagination {
      * @return Index of the first item returned in the response. The default is 0
      * 
      */
-    public Double offset() {
+    public Integer offset() {
         return this.offset;
     }
     /**
@@ -70,7 +70,7 @@ public final class GetStreamsPagination {
      * @return The total number of streams available to the user making the request
      * 
      */
-    public Double total() {
+    public Integer total() {
         return this.total;
     }
 
@@ -83,11 +83,11 @@ public final class GetStreamsPagination {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Double limit;
+        private Integer limit;
         private String next;
-        private Double offset;
+        private Integer offset;
         private String previous;
-        private Double total;
+        private Integer total;
         public Builder() {}
         public Builder(GetStreamsPagination defaults) {
     	      Objects.requireNonNull(defaults);
@@ -99,7 +99,7 @@ public final class GetStreamsPagination {
         }
 
         @CustomType.Setter
-        public Builder limit(Double limit) {
+        public Builder limit(Integer limit) {
             if (limit == null) {
               throw new MissingRequiredPropertyException("GetStreamsPagination", "limit");
             }
@@ -115,7 +115,7 @@ public final class GetStreamsPagination {
             return this;
         }
         @CustomType.Setter
-        public Builder offset(Double offset) {
+        public Builder offset(Integer offset) {
             if (offset == null) {
               throw new MissingRequiredPropertyException("GetStreamsPagination", "offset");
             }
@@ -131,7 +131,7 @@ public final class GetStreamsPagination {
             return this;
         }
         @CustomType.Setter
-        public Builder total(Double total) {
+        public Builder total(Integer total) {
             if (total == null) {
               throw new MissingRequiredPropertyException("GetStreamsPagination", "total");
             }

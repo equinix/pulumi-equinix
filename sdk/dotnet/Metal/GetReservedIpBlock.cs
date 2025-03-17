@@ -30,6 +30,16 @@ namespace Pulumi.Equinix.Metal
         /// </summary>
         public static Output<GetReservedIpBlockResult> Invoke(GetReservedIpBlockInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetReservedIpBlockResult>("equinix:metal/getReservedIpBlock:getReservedIpBlock", args ?? new GetReservedIpBlockInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to find IP address blocks in Equinix Metal. You can use IP address or a block ID for lookup.
+        /// 
+        /// &gt; For backward compatibility, this data source can be also used for precreated (management) IP blocks.
+        /// 
+        /// See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
+        /// </summary>
+        public static Output<GetReservedIpBlockResult> Invoke(GetReservedIpBlockInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetReservedIpBlockResult>("equinix:metal/getReservedIpBlock:getReservedIpBlock", args ?? new GetReservedIpBlockInvokeArgs(), options.WithDefaults());
     }
 
 

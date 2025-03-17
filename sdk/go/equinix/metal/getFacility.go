@@ -77,21 +77,11 @@ type GetFacilityResult struct {
 }
 
 func GetFacilityOutput(ctx *pulumi.Context, args GetFacilityOutputArgs, opts ...pulumi.InvokeOption) GetFacilityResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetFacilityResultOutput, error) {
 			args := v.(GetFacilityArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetFacilityResult
-			secret, err := ctx.InvokePackageRaw("equinix:metal/getFacility:getFacility", args, &rv, "", opts...)
-			if err != nil {
-				return GetFacilityResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetFacilityResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetFacilityResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("equinix:metal/getFacility:getFacility", args, GetFacilityResultOutput{}, options).(GetFacilityResultOutput), nil
 		}).(GetFacilityResultOutput)
 }
 

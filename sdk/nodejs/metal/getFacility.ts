@@ -92,7 +92,7 @@ export interface GetFacilityResult {
  * export const id = ny5.then(ny5 => ny5.id);
  * ```
  */
-export function getFacilityOutput(args: GetFacilityOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFacilityResult> {
+export function getFacilityOutput(args: GetFacilityOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFacilityResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("equinix:metal/getFacility:getFacility", {
         "capacities": args.capacities,

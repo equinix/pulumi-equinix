@@ -76,7 +76,7 @@ export interface GetDeviceBgpNeighborsResult {
  * export const bgpNeighborsListing = test.then(test => test.bgpNeighbors);
  * ```
  */
-export function getDeviceBgpNeighborsOutput(args: GetDeviceBgpNeighborsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDeviceBgpNeighborsResult> {
+export function getDeviceBgpNeighborsOutput(args: GetDeviceBgpNeighborsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDeviceBgpNeighborsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("equinix:metal/getDeviceBgpNeighbors:getDeviceBgpNeighbors", {
         "deviceId": args.deviceId,

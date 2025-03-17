@@ -100,7 +100,7 @@ def get_plans(filters: Optional[Sequence[Union['GetPlansFilterArgs', 'GetPlansFi
         sorts=pulumi.get(__ret__, 'sorts'))
 def get_plans_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetPlansFilterArgs', 'GetPlansFilterArgsDict']]]]] = None,
                      sorts: Optional[pulumi.Input[Optional[Sequence[Union['GetPlansSortArgs', 'GetPlansSortArgsDict']]]]] = None,
-                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPlansResult]:
+                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPlansResult]:
     """
     Use this data source to access information about an existing resource.
 
@@ -110,7 +110,7 @@ def get_plans_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['Get
     __args__ = dict()
     __args__['filters'] = filters
     __args__['sorts'] = sorts
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('equinix:metal/getPlans:getPlans', __args__, opts=opts, typ=GetPlansResult)
     return __ret__.apply(lambda __response__: GetPlansResult(
         filters=pulumi.get(__response__, 'filters'),

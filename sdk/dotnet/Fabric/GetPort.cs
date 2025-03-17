@@ -100,6 +100,51 @@ namespace Pulumi.Equinix.Fabric
         /// </summary>
         public static Output<GetPortResult> Invoke(GetPortInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPortResult>("equinix:fabric/getPort:getPort", args ?? new GetPortInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Fabric V4 API compatible data resource that allow user to fetch port by uuid
+        /// 
+        /// Additional documentation:
+        /// * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-ports-implement.htm
+        /// * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#ports
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var portDataName = Equinix.Fabric.GetPort.Invoke(new()
+        ///     {
+        ///         Uuid = "&lt;uuid_of_port&gt;",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["id"] = portDataName.Apply(getPortResult =&gt; getPortResult.Id),
+        ///         ["name"] = portDataName.Apply(getPortResult =&gt; getPortResult.Name),
+        ///         ["state"] = portDataName.Apply(getPortResult =&gt; getPortResult.State),
+        ///         ["accountName"] = portDataName.Apply(getPortResult =&gt; getPortResult.Account?.AccountName),
+        ///         ["type"] = portDataName.Apply(getPortResult =&gt; getPortResult.Type),
+        ///         ["bandwidth"] = portDataName.Apply(getPortResult =&gt; getPortResult.Bandwidth),
+        ///         ["usedBandwidth"] = portDataName.Apply(getPortResult =&gt; getPortResult.UsedBandwidth),
+        ///         ["encapsulationType"] = portDataName.Apply(getPortResult =&gt; getPortResult.Encapsulation?.Type),
+        ///         ["ibx"] = portDataName.Apply(getPortResult =&gt; getPortResult.Location?.Ibx),
+        ///         ["metroCode"] = portDataName.Apply(getPortResult =&gt; getPortResult.Location?.MetroCode),
+        ///         ["metroName"] = portDataName.Apply(getPortResult =&gt; getPortResult.Location?.MetroName),
+        ///         ["region"] = portDataName.Apply(getPortResult =&gt; getPortResult.Location?.Region),
+        ///         ["deviceRedundancyEnabled"] = portDataName.Apply(getPortResult =&gt; getPortResult.Device?.Redundancies[0]?.Enabled),
+        ///         ["deviceRedundancyPriority"] = portDataName.Apply(getPortResult =&gt; getPortResult.Device?.Redundancies[0]?.Priority),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetPortResult> Invoke(GetPortInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetPortResult>("equinix:fabric/getPort:getPort", args ?? new GetPortInvokeArgs(), options.WithDefaults());
     }
 
 

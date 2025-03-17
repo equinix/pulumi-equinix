@@ -103,27 +103,27 @@ class StreamArgs:
 @pulumi.input_type
 class _StreamState:
     def __init__(__self__, *,
-                 assets_count: Optional[pulumi.Input[float]] = None,
+                 assets_count: Optional[pulumi.Input[int]] = None,
                  change_log: Optional[pulumi.Input['StreamChangeLogArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  href: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input['StreamProjectArgs']] = None,
                  state: Optional[pulumi.Input[str]] = None,
-                 stream_subscriptions_count: Optional[pulumi.Input[float]] = None,
+                 stream_subscriptions_count: Optional[pulumi.Input[int]] = None,
                  timeouts: Optional[pulumi.Input['StreamTimeoutsArgs']] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  uuid: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Stream resources.
-        :param pulumi.Input[float] assets_count: Count of the streaming assets attached to the stream resource
+        :param pulumi.Input[int] assets_count: Count of the streaming assets attached to the stream resource
         :param pulumi.Input['StreamChangeLogArgs'] change_log: Details of the last change on the stream resource
         :param pulumi.Input[str] description: Customer-provided description of the stream resource
         :param pulumi.Input[str] href: Equinix auto generated URI to the stream resource in Equinix Portal
         :param pulumi.Input[str] name: Customer-provided name of the stream resource
         :param pulumi.Input['StreamProjectArgs'] project: Equinix Project attribute object
         :param pulumi.Input[str] state: Value representing provisioning status for the stream resource
-        :param pulumi.Input[float] stream_subscriptions_count: Count of the client subscriptions on the stream resource
+        :param pulumi.Input[int] stream_subscriptions_count: Count of the client subscriptions on the stream resource
         :param pulumi.Input[str] type: Equinix defined Streaming Type
         :param pulumi.Input[str] uuid: Equinix-assigned unique id for the stream resource
         """
@@ -152,14 +152,14 @@ class _StreamState:
 
     @property
     @pulumi.getter(name="assetsCount")
-    def assets_count(self) -> Optional[pulumi.Input[float]]:
+    def assets_count(self) -> Optional[pulumi.Input[int]]:
         """
         Count of the streaming assets attached to the stream resource
         """
         return pulumi.get(self, "assets_count")
 
     @assets_count.setter
-    def assets_count(self, value: Optional[pulumi.Input[float]]):
+    def assets_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "assets_count", value)
 
     @property
@@ -236,14 +236,14 @@ class _StreamState:
 
     @property
     @pulumi.getter(name="streamSubscriptionsCount")
-    def stream_subscriptions_count(self) -> Optional[pulumi.Input[float]]:
+    def stream_subscriptions_count(self) -> Optional[pulumi.Input[int]]:
         """
         Count of the client subscriptions on the stream resource
         """
         return pulumi.get(self, "stream_subscriptions_count")
 
     @stream_subscriptions_count.setter
-    def stream_subscriptions_count(self, value: Optional[pulumi.Input[float]]):
+    def stream_subscriptions_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "stream_subscriptions_count", value)
 
     @property
@@ -372,14 +372,14 @@ class Stream(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            assets_count: Optional[pulumi.Input[float]] = None,
+            assets_count: Optional[pulumi.Input[int]] = None,
             change_log: Optional[pulumi.Input[Union['StreamChangeLogArgs', 'StreamChangeLogArgsDict']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             href: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[Union['StreamProjectArgs', 'StreamProjectArgsDict']]] = None,
             state: Optional[pulumi.Input[str]] = None,
-            stream_subscriptions_count: Optional[pulumi.Input[float]] = None,
+            stream_subscriptions_count: Optional[pulumi.Input[int]] = None,
             timeouts: Optional[pulumi.Input[Union['StreamTimeoutsArgs', 'StreamTimeoutsArgsDict']]] = None,
             type: Optional[pulumi.Input[str]] = None,
             uuid: Optional[pulumi.Input[str]] = None) -> 'Stream':
@@ -390,14 +390,14 @@ class Stream(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] assets_count: Count of the streaming assets attached to the stream resource
+        :param pulumi.Input[int] assets_count: Count of the streaming assets attached to the stream resource
         :param pulumi.Input[Union['StreamChangeLogArgs', 'StreamChangeLogArgsDict']] change_log: Details of the last change on the stream resource
         :param pulumi.Input[str] description: Customer-provided description of the stream resource
         :param pulumi.Input[str] href: Equinix auto generated URI to the stream resource in Equinix Portal
         :param pulumi.Input[str] name: Customer-provided name of the stream resource
         :param pulumi.Input[Union['StreamProjectArgs', 'StreamProjectArgsDict']] project: Equinix Project attribute object
         :param pulumi.Input[str] state: Value representing provisioning status for the stream resource
-        :param pulumi.Input[float] stream_subscriptions_count: Count of the client subscriptions on the stream resource
+        :param pulumi.Input[int] stream_subscriptions_count: Count of the client subscriptions on the stream resource
         :param pulumi.Input[str] type: Equinix defined Streaming Type
         :param pulumi.Input[str] uuid: Equinix-assigned unique id for the stream resource
         """
@@ -420,7 +420,7 @@ class Stream(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="assetsCount")
-    def assets_count(self) -> pulumi.Output[float]:
+    def assets_count(self) -> pulumi.Output[int]:
         """
         Count of the streaming assets attached to the stream resource
         """
@@ -476,7 +476,7 @@ class Stream(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="streamSubscriptionsCount")
-    def stream_subscriptions_count(self) -> pulumi.Output[float]:
+    def stream_subscriptions_count(self) -> pulumi.Output[int]:
         """
         Count of the client subscriptions on the stream resource
         """

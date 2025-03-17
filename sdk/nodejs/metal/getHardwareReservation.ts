@@ -108,7 +108,7 @@ export interface GetHardwareReservationResult {
  * });
  * ```
  */
-export function getHardwareReservationOutput(args?: GetHardwareReservationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHardwareReservationResult> {
+export function getHardwareReservationOutput(args?: GetHardwareReservationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHardwareReservationResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("equinix:metal/getHardwareReservation:getHardwareReservation", {

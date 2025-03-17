@@ -158,7 +158,7 @@ def get_route_filter_rules(limit: Optional[int] = None,
 def get_route_filter_rules_output(limit: Optional[pulumi.Input[Optional[int]]] = None,
                                   offset: Optional[pulumi.Input[Optional[int]]] = None,
                                   route_filter_id: Optional[pulumi.Input[str]] = None,
-                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRouteFilterRulesResult]:
+                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRouteFilterRulesResult]:
     """
     Fabric V4 API compatible data resource that allow user to fetch route filter for a given search data set
 
@@ -190,7 +190,7 @@ def get_route_filter_rules_output(limit: Optional[pulumi.Input[Optional[int]]] =
     __args__['limit'] = limit
     __args__['offset'] = offset
     __args__['routeFilterId'] = route_filter_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('equinix:fabric/getRouteFilterRules:getRouteFilterRules', __args__, opts=opts, typ=GetRouteFilterRulesResult)
     return __ret__.apply(lambda __response__: GetRouteFilterRulesResult(
         datas=pulumi.get(__response__, 'datas'),

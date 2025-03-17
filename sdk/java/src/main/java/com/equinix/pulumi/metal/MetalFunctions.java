@@ -74,6 +74,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class MetalFunctions {
@@ -566,6 +567,88 @@ public final class MetalFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetDeviceResult> getDevice(GetDeviceArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("equinix:metal/getDevice:getDevice", TypeShape.of(GetDeviceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The datasource can be used to fetch a single device.
+     * 
+     * If you need to fetch a list of devices which meet filter criteria, you can use the equinix.metal.getDevices datasource.
+     * 
+     * &gt; **Note:** All arguments including the `root_password` and `user_data` will be stored in the raw state as plain-text. Read more about sensitive data in state.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetDeviceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = MetalFunctions.getDevice(GetDeviceArgs.builder()
+     *             .projectId(local.project_id())
+     *             .hostname("mydevice")
+     *             .build());
+     * 
+     *         ctx.export("id", test.applyValue(getDeviceResult -> getDeviceResult.id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetDeviceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = MetalFunctions.getDevice(GetDeviceArgs.builder()
+     *             .deviceId("4c641195-25e5-4c3c-b2b7-4cd7a42c7b40")
+     *             .build());
+     * 
+     *         ctx.export("ipv4", test.applyValue(getDeviceResult -> getDeviceResult.accessPublicIpv4()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetDeviceResult> getDevicePlain(GetDevicePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("equinix:metal/getDevice:getDevice", TypeShape.of(GetDeviceResult.class), args, Utilities.withVersion(options));
     }
@@ -708,6 +791,53 @@ public final class MetalFunctions {
      * 
      */
     public static Output<GetDeviceBgpNeighborsResult> getDeviceBgpNeighbors(GetDeviceBgpNeighborsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:metal/getDeviceBgpNeighbors:getDeviceBgpNeighbors", TypeShape.of(GetDeviceBgpNeighborsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this datasource to retrieve list of BGP neighbors of a device in the Equinix Metal host.
+     * 
+     * To have any BGP neighbors listed, the device must be in BGP-enabled project and have a BGP session assigned.
+     * 
+     * To learn more about using BGP in Equinix Metal, see the equinix.metal.BgpSession resource documentation.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetDeviceBgpNeighborsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = MetalFunctions.getDeviceBgpNeighbors(GetDeviceBgpNeighborsArgs.builder()
+     *             .deviceId("4c641195-25e5-4c3c-b2b7-4cd7a42c7b40")
+     *             .build());
+     * 
+     *         ctx.export("bgpNeighborsListing", test.applyValue(getDeviceBgpNeighborsResult -> getDeviceBgpNeighborsResult.bgpNeighbors()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDeviceBgpNeighborsResult> getDeviceBgpNeighbors(GetDeviceBgpNeighborsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("equinix:metal/getDeviceBgpNeighbors:getDeviceBgpNeighbors", TypeShape.of(GetDeviceBgpNeighborsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1318,6 +1448,100 @@ public final class MetalFunctions {
      * The difference between `search` and `filter` is that `search` is an API parameter, interpreted by the Equinix Metal service. The &#34;filter&#34; arguments will reduce the API list (or search) results by applying client-side filtering, within this provider.
      * 
      */
+    public static Output<GetDevicesResult> getDevices(GetDevicesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("equinix:metal/getDevices:getDevices", TypeShape.of(GetDevicesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The datasource can be used to find a list of devices which meet filter criteria.
+     * 
+     * If you need to fetch a single device by ID or by project ID and hostname, use the equinix.metal.Device datasource.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetDevicesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MetalFunctions.getDevices(GetDevicesArgs.builder()
+     *             .projectId(local.project_id())
+     *             .filters(            
+     *                 GetDevicesFilterArgs.builder()
+     *                     .attribute("plan")
+     *                     .values("c3.small.x86")
+     *                     .build(),
+     *                 GetDevicesFilterArgs.builder()
+     *                     .attribute("metro")
+     *                     .values(                    
+     *                         "da",
+     *                         "sv")
+     *                     .build())
+     *             .build());
+     * 
+     *         ctx.export("devices", example.applyValue(getDevicesResult -> getDevicesResult.devices()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetDevicesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MetalFunctions.getDevices(GetDevicesArgs.builder()
+     *             .search("database")
+     *             .build());
+     * 
+     *         ctx.export("devices", example.applyValue(getDevicesResult -> getDevicesResult.devices()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## search vs filter
+     * 
+     * The difference between `search` and `filter` is that `search` is an API parameter, interpreted by the Equinix Metal service. The &#34;filter&#34; arguments will reduce the API list (or search) results by applying client-side filtering, within this provider.
+     * 
+     */
     public static CompletableFuture<GetDevicesResult> getDevicesPlain(GetDevicesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("equinix:metal/getDevices:getDevices", TypeShape.of(GetDevicesResult.class), args, Utilities.withVersion(options));
     }
@@ -1454,6 +1678,51 @@ public final class MetalFunctions {
      * 
      */
     public static Output<GetFacilityResult> getFacility(GetFacilityArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:metal/getFacility:getFacility", TypeShape.of(GetFacilityResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * &gt; **Deprecated** Use `equinix.metal.getMetro` instead. For more information, refer to the facility to metro migration guide.
+     * 
+     * Provides an Equinix Metal facility datasource.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetFacilityArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ny5 = MetalFunctions.getFacility(GetFacilityArgs.builder()
+     *             .code("ny5")
+     *             .build());
+     * 
+     *         ctx.export("id", ny5.applyValue(getFacilityResult -> getFacilityResult.id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetFacilityResult> getFacility(GetFacilityArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("equinix:metal/getFacility:getFacility", TypeShape.of(GetFacilityResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1658,6 +1927,59 @@ public final class MetalFunctions {
      * 
      */
     public static Output<GetGatewayResult> getGateway(GetGatewayArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:metal/getGateway:getGateway", TypeShape.of(GetGatewayResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this datasource to retrieve Metal Gateway resources in Equinix Metal.
+     * 
+     * See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.Vlan;
+     * import com.pulumi.equinix.metal.VlanArgs;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetGatewayArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Create Metal Gateway for a VLAN with a private IPv4 block with 8 IP addresses
+     *         var testVlan = new Vlan("testVlan", VlanArgs.builder()
+     *             .description("test VLAN in SV")
+     *             .metro("sv")
+     *             .projectId(local.project_id())
+     *             .build());
+     * 
+     *         final var testGateway = MetalFunctions.getGateway(GetGatewayArgs.builder()
+     *             .gatewayId(local.gateway_id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetGatewayResult> getGateway(GetGatewayArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("equinix:metal/getGateway:getGateway", TypeShape.of(GetGatewayResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1998,6 +2320,54 @@ public final class MetalFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetHardwareReservationResult> getHardwareReservation(GetHardwareReservationArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("equinix:metal/getHardwareReservation:getHardwareReservation", TypeShape.of(GetHardwareReservationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve a [hardware reservation resource from Equinix Metal](https://metal.equinix.com/developers/docs/deploy/reserved/).
+     * 
+     * You can look up hardware reservation by its ID or by ID of device which occupies it.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetHardwareReservationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MetalFunctions.getHardwareReservation(GetHardwareReservationArgs.builder()
+     *             .id("4347e805-eb46-4699-9eb9-5c116e6a0172")
+     *             .build());
+     * 
+     *         final var exampleByDeviceId = MetalFunctions.getHardwareReservation(GetHardwareReservationArgs.builder()
+     *             .deviceId("ff85aa58-c106-4624-8f1c-7c64554047ea")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetHardwareReservationResult> getHardwareReservationPlain(GetHardwareReservationPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("equinix:metal/getHardwareReservation:getHardwareReservation", TypeShape.of(GetHardwareReservationResult.class), args, Utilities.withVersion(options));
     }
@@ -2131,6 +2501,50 @@ public final class MetalFunctions {
      * 
      */
     public static Output<GetInterconnectionResult> getInterconnection(GetInterconnectionArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:metal/getInterconnection:getInterconnection", TypeShape.of(GetInterconnectionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve a [connection resource](https://metal.equinix.com/developers/docs/networking/fabric/)
+     * 
+     * &gt; Equinix Metal connection with with Service Token A-side / Z-side (service_token_type) is not generally available and may not be enabled yet for your organization.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetInterconnectionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MetalFunctions.getInterconnection(GetInterconnectionArgs.builder()
+     *             .connectionId("4347e805-eb46-4699-9eb9-5c116e6a017d")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetInterconnectionResult> getInterconnection(GetInterconnectionArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("equinix:metal/getInterconnection:getInterconnection", TypeShape.of(GetInterconnectionResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -2370,6 +2784,55 @@ public final class MetalFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetIpBlockRangesResult> getIpBlockRanges(GetIpBlockRangesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("equinix:metal/getIpBlockRanges:getIpBlockRanges", TypeShape.of(GetIpBlockRangesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this datasource to get CIDR expressions for allocated IP blocks of all the types in a project, optionally filtered by facility or metro.
+     * 
+     * There are four types of IP blocks in Equinix: equinix_metal_global IPv4, public IPv4, private IPv4 and IPv6. Both global and public IPv4 are routable from the Internet. Public IPv4 blocks are allocated in a facility or metro, and addresses from it can only be assigned to devices in that location. Addresses from Global IPv4 block can be assigned to a device in any metro.
+     * 
+     * The datasource has 4 list attributes: `global_ipv4`, `public_ipv4`, `private_ipv4` and `ipv6`, each listing CIDR notation (`&lt;network&gt;/&lt;mask&gt;`) of respective blocks from the project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetIpBlockRangesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var projectId = "<UUID_of_your_project>";
+     * 
+     *         final var test = MetalFunctions.getIpBlockRanges(GetIpBlockRangesArgs.builder()
+     *             .projectId(projectId)
+     *             .build());
+     * 
+     *         ctx.export("out", test.applyValue(getIpBlockRangesResult -> getIpBlockRangesResult));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetIpBlockRangesResult> getIpBlockRangesPlain(GetIpBlockRangesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("equinix:metal/getIpBlockRanges:getIpBlockRanges", TypeShape.of(GetIpBlockRangesResult.class), args, Utilities.withVersion(options));
     }
@@ -2500,6 +2963,49 @@ public final class MetalFunctions {
      * 
      */
     public static Output<GetMetroResult> getMetro(GetMetroArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:metal/getMetro:getMetro", TypeShape.of(GetMetroResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides an Equinix Metal metro datasource.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetMetroArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sv = MetalFunctions.getMetro(GetMetroArgs.builder()
+     *             .code("sv")
+     *             .build());
+     * 
+     *         ctx.export("id", sv.applyValue(getMetroResult -> getMetroResult.id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetMetroResult> getMetro(GetMetroArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("equinix:metal/getMetro:getMetro", TypeShape.of(GetMetroResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -2872,6 +3378,61 @@ public final class MetalFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetOperatingSystemResult> getOperatingSystem(GetOperatingSystemArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("equinix:metal/getOperatingSystem:getOperatingSystem", TypeShape.of(GetOperatingSystemResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get Equinix Metal Operating System image.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetOperatingSystemArgs;
+     * import com.pulumi.equinix.metal.Device;
+     * import com.pulumi.equinix.metal.DeviceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MetalFunctions.getOperatingSystem(GetOperatingSystemArgs.builder()
+     *             .distro("ubuntu")
+     *             .version("20.04")
+     *             .provisionableOn("c3.medium.x86")
+     *             .build());
+     * 
+     *         var server = new Device("server", DeviceArgs.builder()
+     *             .hostname("tf.ubuntu")
+     *             .plan("c3.medium.x86")
+     *             .metro("ny")
+     *             .operatingSystem(example.applyValue(getOperatingSystemResult -> getOperatingSystemResult.id()))
+     *             .billingCycle("hourly")
+     *             .projectId(local.project_id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetOperatingSystemResult> getOperatingSystemPlain(GetOperatingSystemPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("equinix:metal/getOperatingSystem:getOperatingSystem", TypeShape.of(GetOperatingSystemResult.class), args, Utilities.withVersion(options));
     }
@@ -3130,6 +3691,49 @@ public final class MetalFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetOrganizationResult> getOrganization(GetOrganizationArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("equinix:metal/getOrganization:getOrganization", TypeShape.of(GetOrganizationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides an Equinix Metal organization datasource.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetOrganizationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = MetalFunctions.getOrganization(GetOrganizationArgs.builder()
+     *             .organizationId(local.org_id())
+     *             .build());
+     * 
+     *         ctx.export("projectsInTheOrg", test.applyValue(getOrganizationResult -> getOrganizationResult.projectIds()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetOrganizationResult> getOrganizationPlain(GetOrganizationPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("equinix:metal/getOrganization:getOrganization", TypeShape.of(GetOrganizationResult.class), args, Utilities.withVersion(options));
     }
@@ -3146,6 +3750,9 @@ public final class MetalFunctions {
         return getPlansPlain(args, InvokeOptions.Empty);
     }
     public static Output<GetPlansResult> getPlans(GetPlansArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:metal/getPlans:getPlans", TypeShape.of(GetPlansResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetPlansResult> getPlans(GetPlansArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("equinix:metal/getPlans:getPlans", TypeShape.of(GetPlansResult.class), args, Utilities.withVersion(options));
     }
     public static CompletableFuture<GetPlansResult> getPlansPlain(GetPlansPlainArgs args, InvokeOptions options) {
@@ -3496,6 +4103,64 @@ public final class MetalFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetPortResult> getPort(GetPortArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("equinix:metal/getPort:getPort", TypeShape.of(GetPortResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to read ports of existing devices. You can read port by either its UUID, or by a device UUID and port name.
+     * 
+     * ## Example Usage
+     * 
+     * Create a device and read it&#39;s eth0 port to the datasource.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.Device;
+     * import com.pulumi.equinix.metal.DeviceArgs;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetPortArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var projectId = "<UUID_of_your_project>";
+     * 
+     *         var testDevice = new Device("testDevice", DeviceArgs.builder()
+     *             .hostname("tfacc-test-device-port")
+     *             .plan("c3.medium.x86")
+     *             .metro("sv")
+     *             .operatingSystem("ubuntu_20_04")
+     *             .billingCycle("hourly")
+     *             .projectId(projectId)
+     *             .build());
+     * 
+     *         final var testPort = MetalFunctions.getPort(GetPortArgs.builder()
+     *             .deviceId(testDevice.id())
+     *             .name("eth0")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetPortResult> getPortPlain(GetPortPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("equinix:metal/getPort:getPort", TypeShape.of(GetPortResult.class), args, Utilities.withVersion(options));
     }
@@ -3536,6 +4201,19 @@ public final class MetalFunctions {
      * 
      */
     public static Output<GetPrecreatedIpBlockResult> getPrecreatedIpBlock(GetPrecreatedIpBlockArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:metal/getPrecreatedIpBlock:getPrecreatedIpBlock", TypeShape.of(GetPrecreatedIpBlockResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get CIDR expression for precreated (management) IPv6 and IPv4 blocks in Equinix Metal. You can then use the cidrsubnet TF builtin function to derive subnets.
+     * 
+     * &gt; For backward compatibility, this data source will also return reserved (elastic) IP blocks.
+     * 
+     * &gt; Precreated (management) IP blocks for a metro will not be available until first device is created in that metro.
+     * 
+     * &gt; Public IPv4 blocks auto-assigned (management) to a device cannot be retrieved. If you need that information, consider using the equinix.metal.Device data source instead.
+     * 
+     */
+    public static Output<GetPrecreatedIpBlockResult> getPrecreatedIpBlock(GetPrecreatedIpBlockArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("equinix:metal/getPrecreatedIpBlock:getPrecreatedIpBlock", TypeShape.of(GetPrecreatedIpBlockResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -3806,6 +4484,49 @@ public final class MetalFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetProjectResult> getProject(GetProjectArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("equinix:metal/getProject:getProject", TypeShape.of(GetProjectResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this datasource to retrieve attributes of the Project API resource.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetProjectArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var tfProject1 = MetalFunctions.getProject(GetProjectArgs.builder()
+     *             .name("Terraform Fun")
+     *             .build());
+     * 
+     *         ctx.export("usersOfTerraformFun", tfProject1.applyValue(getProjectResult -> getProjectResult.userIds()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetProjectResult> getProjectPlain(GetProjectPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("equinix:metal/getProject:getProject", TypeShape.of(GetProjectResult.class), args, Utilities.withVersion(options));
     }
@@ -3978,6 +4699,49 @@ public final class MetalFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetProjectSshKeyResult> getProjectSshKey(GetProjectSshKeyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("equinix:metal/getProjectSshKey:getProjectSshKey", TypeShape.of(GetProjectSshKeyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this datasource to retrieve attributes of a Project SSH Key API resource.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetProjectSshKeyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
+     *         Pulumi.run(App::stack);
+     *     }}{@code
+     * 
+     *     public static void stack(Context ctx) }{{@code
+     *         final var myKey = MetalFunctions.getProjectSshKey(GetProjectSshKeyArgs.builder()
+     *             .search("username}{@literal @}{@code hostname")
+     *             .projectId(local.project_id())
+     *             .build());
+     * 
+     *     }}{@code
+     * }}{@code
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetProjectSshKeyResult> getProjectSshKeyPlain(GetProjectSshKeyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("equinix:metal/getProjectSshKey:getProjectSshKey", TypeShape.of(GetProjectSshKeyResult.class), args, Utilities.withVersion(options));
     }
@@ -4034,6 +4798,17 @@ public final class MetalFunctions {
      * 
      */
     public static Output<GetReservedIpBlockResult> getReservedIpBlock(GetReservedIpBlockArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:metal/getReservedIpBlock:getReservedIpBlock", TypeShape.of(GetReservedIpBlockResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to find IP address blocks in Equinix Metal. You can use IP address or a block ID for lookup.
+     * 
+     * &gt; For backward compatibility, this data source can be also used for precreated (management) IP blocks.
+     * 
+     * See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
+     * 
+     */
+    public static Output<GetReservedIpBlockResult> getReservedIpBlock(GetReservedIpBlockArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("equinix:metal/getReservedIpBlock:getReservedIpBlock", TypeShape.of(GetReservedIpBlockResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -4224,6 +4999,51 @@ public final class MetalFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetSpotMarketPriceResult> getSpotMarketPrice(GetSpotMarketPriceArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("equinix:metal/getSpotMarketPrice:getSpotMarketPrice", TypeShape.of(GetSpotMarketPriceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get Equinix Metal Spot Market Price for a plan.
+     * 
+     * ## Example Usage
+     * 
+     * Lookup by metro:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetSpotMarketPriceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MetalFunctions.getSpotMarketPrice(GetSpotMarketPriceArgs.builder()
+     *             .metro("sv")
+     *             .plan("c3.small.x86")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetSpotMarketPriceResult> getSpotMarketPricePlain(GetSpotMarketPricePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("equinix:metal/getSpotMarketPrice:getSpotMarketPrice", TypeShape.of(GetSpotMarketPriceResult.class), args, Utilities.withVersion(options));
     }
@@ -4234,6 +5054,9 @@ public final class MetalFunctions {
         return getSpotMarketRequestPlain(args, InvokeOptions.Empty);
     }
     public static Output<GetSpotMarketRequestResult> getSpotMarketRequest(GetSpotMarketRequestArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:metal/getSpotMarketRequest:getSpotMarketRequest", TypeShape.of(GetSpotMarketRequestResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetSpotMarketRequestResult> getSpotMarketRequest(GetSpotMarketRequestArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("equinix:metal/getSpotMarketRequest:getSpotMarketRequest", TypeShape.of(GetSpotMarketRequestResult.class), args, Utilities.withVersion(options));
     }
     public static CompletableFuture<GetSpotMarketRequestResult> getSpotMarketRequestPlain(GetSpotMarketRequestPlainArgs args, InvokeOptions options) {
@@ -4264,6 +5087,15 @@ public final class MetalFunctions {
      * 
      */
     public static Output<GetVirtualCircuitResult> getVirtualCircuit(GetVirtualCircuitArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:metal/getVirtualCircuit:getVirtualCircuit", TypeShape.of(GetVirtualCircuitResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve a virtual circuit resource from [Equinix Fabric - software-defined interconnections](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/)
+     * 
+     * See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
+     * 
+     */
+    public static Output<GetVirtualCircuitResult> getVirtualCircuit(GetVirtualCircuitArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("equinix:metal/getVirtualCircuit:getVirtualCircuit", TypeShape.of(GetVirtualCircuitResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -4806,6 +5638,95 @@ public final class MetalFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetVlanResult> getVlan(GetVlanArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("equinix:metal/getVlan:getVlan", TypeShape.of(GetVlanResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides an Equinix Metal Virtual Network datasource. VLANs data sources can be searched by VLAN UUID, or project UUID and vxlan number.
+     * 
+     * ## Example Usage
+     * 
+     * Fetch a vlan by ID:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.Vlan;
+     * import com.pulumi.equinix.metal.VlanArgs;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetVlanArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var foovlan = new Vlan("foovlan", VlanArgs.builder()
+     *             .projectId(local.project_id())
+     *             .metro("sv")
+     *             .vxlan(5)
+     *             .build());
+     * 
+     *         final var dsvlan = MetalFunctions.getVlan(GetVlanArgs.builder()
+     *             .vlanId(foovlan.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Fetch a vlan by project ID, vxlan and metro
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetVlanArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dsvlan = MetalFunctions.getVlan(GetVlanArgs.builder()
+     *             .projectId(local.project_id())
+     *             .vxlan(5)
+     *             .metro("sv")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetVlanResult> getVlanPlain(GetVlanPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("equinix:metal/getVlan:getVlan", TypeShape.of(GetVlanResult.class), args, Utilities.withVersion(options));
     }
@@ -4939,6 +5860,50 @@ public final class MetalFunctions {
      * 
      */
     public static Output<GetVrfResult> getVrf(GetVrfArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:metal/getVrf:getVrf", TypeShape.of(GetVrfResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve a VRF resource.
+     * 
+     * See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetVrfArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleVrf = MetalFunctions.getVrf(GetVrfArgs.builder()
+     *             .vrfId("48630899-9ff2-4ce6-a93f-50ff4ebcdf6e")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetVrfResult> getVrf(GetVrfArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("equinix:metal/getVrf:getVrf", TypeShape.of(GetVrfResult.class), args, Utilities.withVersion(options));
     }
     /**

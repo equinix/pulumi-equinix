@@ -6,7 +6,7 @@ package com.equinix.pulumi.fabric.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Double;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -22,13 +22,13 @@ public final class GetMetrosPaginationArgs extends com.pulumi.resources.Resource
      * 
      */
     @Import(name="limit")
-    private @Nullable Output<Double> limit;
+    private @Nullable Output<Integer> limit;
 
     /**
      * @return Maximum number of search results returned per page.
      * 
      */
-    public Optional<Output<Double>> limit() {
+    public Optional<Output<Integer>> limit() {
         return Optional.ofNullable(this.limit);
     }
 
@@ -52,13 +52,13 @@ public final class GetMetrosPaginationArgs extends com.pulumi.resources.Resource
      * 
      */
     @Import(name="offset")
-    private @Nullable Output<Double> offset;
+    private @Nullable Output<Integer> offset;
 
     /**
      * @return Index of the first item returned in the response.
      * 
      */
-    public Optional<Output<Double>> offset() {
+    public Optional<Output<Integer>> offset() {
         return Optional.ofNullable(this.offset);
     }
 
@@ -82,13 +82,13 @@ public final class GetMetrosPaginationArgs extends com.pulumi.resources.Resource
      * 
      */
     @Import(name="total", required=true)
-    private Output<Double> total;
+    private Output<Integer> total;
 
     /**
      * @return The total number of metro returned
      * 
      */
-    public Output<Double> total() {
+    public Output<Integer> total() {
         return this.total;
     }
 
@@ -126,7 +126,7 @@ public final class GetMetrosPaginationArgs extends com.pulumi.resources.Resource
          * @return builder
          * 
          */
-        public Builder limit(@Nullable Output<Double> limit) {
+        public Builder limit(@Nullable Output<Integer> limit) {
             $.limit = limit;
             return this;
         }
@@ -137,7 +137,7 @@ public final class GetMetrosPaginationArgs extends com.pulumi.resources.Resource
          * @return builder
          * 
          */
-        public Builder limit(Double limit) {
+        public Builder limit(Integer limit) {
             return limit(Output.of(limit));
         }
 
@@ -168,7 +168,7 @@ public final class GetMetrosPaginationArgs extends com.pulumi.resources.Resource
          * @return builder
          * 
          */
-        public Builder offset(@Nullable Output<Double> offset) {
+        public Builder offset(@Nullable Output<Integer> offset) {
             $.offset = offset;
             return this;
         }
@@ -179,7 +179,7 @@ public final class GetMetrosPaginationArgs extends com.pulumi.resources.Resource
          * @return builder
          * 
          */
-        public Builder offset(Double offset) {
+        public Builder offset(Integer offset) {
             return offset(Output.of(offset));
         }
 
@@ -210,7 +210,7 @@ public final class GetMetrosPaginationArgs extends com.pulumi.resources.Resource
          * @return builder
          * 
          */
-        public Builder total(Output<Double> total) {
+        public Builder total(Output<Integer> total) {
             $.total = total;
             return this;
         }
@@ -221,7 +221,7 @@ public final class GetMetrosPaginationArgs extends com.pulumi.resources.Resource
          * @return builder
          * 
          */
-        public Builder total(Double total) {
+        public Builder total(Integer total) {
             return total(Output.of(total));
         }
 

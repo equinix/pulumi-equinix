@@ -110,7 +110,7 @@ def get_metros(pagination: Optional[Union['GetMetrosPaginationArgs', 'GetMetrosP
         presence=pulumi.get(__ret__, 'presence'))
 def get_metros_output(pagination: Optional[pulumi.Input[Union['GetMetrosPaginationArgs', 'GetMetrosPaginationArgsDict']]] = None,
                       presence: Optional[pulumi.Input[Optional[str]]] = None,
-                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMetrosResult]:
+                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMetrosResult]:
     """
     ## Example Usage
 
@@ -121,7 +121,7 @@ def get_metros_output(pagination: Optional[pulumi.Input[Union['GetMetrosPaginati
     __args__ = dict()
     __args__['pagination'] = pagination
     __args__['presence'] = presence
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('equinix:fabric/getMetros:getMetros', __args__, opts=opts, typ=GetMetrosResult)
     return __ret__.apply(lambda __response__: GetMetrosResult(
         datas=pulumi.get(__response__, 'datas'),

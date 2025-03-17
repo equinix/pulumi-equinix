@@ -16,6 +16,9 @@ namespace Pulumi.Equinix.Metal
 
         public static Output<GetSpotMarketRequestResult> Invoke(GetSpotMarketRequestInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSpotMarketRequestResult>("equinix:metal/getSpotMarketRequest:getSpotMarketRequest", args ?? new GetSpotMarketRequestInvokeArgs(), options.WithDefaults());
+
+        public static Output<GetSpotMarketRequestResult> Invoke(GetSpotMarketRequestInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSpotMarketRequestResult>("equinix:metal/getSpotMarketRequest:getSpotMarketRequest", args ?? new GetSpotMarketRequestInvokeArgs(), options.WithDefaults());
     }
 
 

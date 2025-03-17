@@ -78,6 +78,40 @@ namespace Pulumi.Equinix.Metal
         /// </summary>
         public static Output<GetGatewayResult> Invoke(GetGatewayInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGatewayResult>("equinix:metal/getGateway:getGateway", args ?? new GetGatewayInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this datasource to retrieve Metal Gateway resources in Equinix Metal.
+        /// 
+        /// See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Create Metal Gateway for a VLAN with a private IPv4 block with 8 IP addresses
+        ///     var testVlan = new Equinix.Metal.Vlan("testVlan", new()
+        ///     {
+        ///         Description = "test VLAN in SV",
+        ///         Metro = "sv",
+        ///         ProjectId = local.Project_id,
+        ///     });
+        /// 
+        ///     var testGateway = Equinix.Metal.GetGateway.Invoke(new()
+        ///     {
+        ///         GatewayId = local.Gateway_id,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetGatewayResult> Invoke(GetGatewayInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetGatewayResult>("equinix:metal/getGateway:getGateway", args ?? new GetGatewayInvokeArgs(), options.WithDefaults());
     }
 
 

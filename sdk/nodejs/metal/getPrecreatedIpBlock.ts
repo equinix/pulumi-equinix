@@ -93,7 +93,7 @@ export interface GetPrecreatedIpBlockResult {
  *
  * > Public IPv4 blocks auto-assigned (management) to a device cannot be retrieved. If you need that information, consider using the equinix.metal.Device data source instead.
  */
-export function getPrecreatedIpBlockOutput(args: GetPrecreatedIpBlockOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrecreatedIpBlockResult> {
+export function getPrecreatedIpBlockOutput(args: GetPrecreatedIpBlockOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPrecreatedIpBlockResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("equinix:metal/getPrecreatedIpBlock:getPrecreatedIpBlock", {
         "addressFamily": args.addressFamily,

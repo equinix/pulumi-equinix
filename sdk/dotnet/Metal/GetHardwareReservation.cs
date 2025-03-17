@@ -72,6 +72,37 @@ namespace Pulumi.Equinix.Metal
         /// </summary>
         public static Output<GetHardwareReservationResult> Invoke(GetHardwareReservationInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHardwareReservationResult>("equinix:metal/getHardwareReservation:getHardwareReservation", args ?? new GetHardwareReservationInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to retrieve a [hardware reservation resource from Equinix Metal](https://metal.equinix.com/developers/docs/deploy/reserved/).
+        /// 
+        /// You can look up hardware reservation by its ID or by ID of device which occupies it.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Equinix.Metal.GetHardwareReservation.Invoke(new()
+        ///     {
+        ///         Id = "4347e805-eb46-4699-9eb9-5c116e6a0172",
+        ///     });
+        /// 
+        ///     var exampleByDeviceId = Equinix.Metal.GetHardwareReservation.Invoke(new()
+        ///     {
+        ///         DeviceId = "ff85aa58-c106-4624-8f1c-7c64554047ea",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetHardwareReservationResult> Invoke(GetHardwareReservationInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetHardwareReservationResult>("equinix:metal/getHardwareReservation:getHardwareReservation", args ?? new GetHardwareReservationInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -88,6 +88,45 @@ namespace Pulumi.Equinix.Metal
         /// </summary>
         public static Output<GetPortResult> Invoke(GetPortInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPortResult>("equinix:metal/getPort:getPort", args ?? new GetPortInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to read ports of existing devices. You can read port by either its UUID, or by a device UUID and port name.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Create a device and read it's eth0 port to the datasource.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var projectId = "&lt;UUID_of_your_project&gt;";
+        /// 
+        ///     var testDevice = new Equinix.Metal.Device("testDevice", new()
+        ///     {
+        ///         Hostname = "tfacc-test-device-port",
+        ///         Plan = Equinix.Metal.Plan.C3MediumX86,
+        ///         Metro = "sv",
+        ///         OperatingSystem = Equinix.Metal.OperatingSystem.Ubuntu20_04,
+        ///         BillingCycle = Equinix.Metal.BillingCycle.Hourly,
+        ///         ProjectId = projectId,
+        ///     });
+        /// 
+        ///     var testPort = Equinix.Metal.GetPort.Invoke(new()
+        ///     {
+        ///         DeviceId = testDevice.Id,
+        ///         Name = "eth0",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetPortResult> Invoke(GetPortInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetPortResult>("equinix:metal/getPort:getPort", args ?? new GetPortInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -59,7 +59,7 @@ export interface GetConnectionRouteFiltersResult {
  * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
  * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filter-rules
  */
-export function getConnectionRouteFiltersOutput(args: GetConnectionRouteFiltersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectionRouteFiltersResult> {
+export function getConnectionRouteFiltersOutput(args: GetConnectionRouteFiltersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetConnectionRouteFiltersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("equinix:fabric/getConnectionRouteFilters:getConnectionRouteFilters", {
         "connectionId": args.connectionId,
