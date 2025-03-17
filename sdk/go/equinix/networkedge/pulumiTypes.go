@@ -743,6 +743,8 @@ type DeviceClusterDetailsNode0VendorConfiguration struct {
 	LicenseId *string `pulumi:"licenseId"`
 	// License key. This field is relevant only for the BlueCat DNS and DHCP Server
 	LicenseKey *string `pulumi:"licenseKey"`
+	// Management Type. This field is relevant only for Cisco FTD Firewall devices
+	ManagementType *string `pulumi:"managementType"`
 	// Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
 	PanoramaAuthKey *string `pulumi:"panoramaAuthKey"`
 	// Panorama Server IP Address. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
@@ -783,6 +785,8 @@ type DeviceClusterDetailsNode0VendorConfigurationArgs struct {
 	LicenseId pulumi.StringPtrInput `pulumi:"licenseId"`
 	// License key. This field is relevant only for the BlueCat DNS and DHCP Server
 	LicenseKey pulumi.StringPtrInput `pulumi:"licenseKey"`
+	// Management Type. This field is relevant only for Cisco FTD Firewall devices
+	ManagementType pulumi.StringPtrInput `pulumi:"managementType"`
 	// Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
 	PanoramaAuthKey pulumi.StringPtrInput `pulumi:"panoramaAuthKey"`
 	// Panorama Server IP Address. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
@@ -909,6 +913,11 @@ func (o DeviceClusterDetailsNode0VendorConfigurationOutput) LicenseKey() pulumi.
 	return o.ApplyT(func(v DeviceClusterDetailsNode0VendorConfiguration) *string { return v.LicenseKey }).(pulumi.StringPtrOutput)
 }
 
+// Management Type. This field is relevant only for Cisco FTD Firewall devices
+func (o DeviceClusterDetailsNode0VendorConfigurationOutput) ManagementType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceClusterDetailsNode0VendorConfiguration) *string { return v.ManagementType }).(pulumi.StringPtrOutput)
+}
+
 // Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
 func (o DeviceClusterDetailsNode0VendorConfigurationOutput) PanoramaAuthKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceClusterDetailsNode0VendorConfiguration) *string { return v.PanoramaAuthKey }).(pulumi.StringPtrOutput)
@@ -1030,6 +1039,16 @@ func (o DeviceClusterDetailsNode0VendorConfigurationPtrOutput) LicenseKey() pulu
 			return nil
 		}
 		return v.LicenseKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Management Type. This field is relevant only for Cisco FTD Firewall devices
+func (o DeviceClusterDetailsNode0VendorConfigurationPtrOutput) ManagementType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceClusterDetailsNode0VendorConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ManagementType
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1323,6 +1342,8 @@ type DeviceClusterDetailsNode1VendorConfiguration struct {
 	LicenseId *string `pulumi:"licenseId"`
 	// License key. This field is relevant only for the BlueCat DNS and DHCP Server
 	LicenseKey *string `pulumi:"licenseKey"`
+	// Management Type. This field is relevant only for Cisco FTD Firewall devices
+	ManagementType *string `pulumi:"managementType"`
 	// Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
 	PanoramaAuthKey *string `pulumi:"panoramaAuthKey"`
 	// Panorama Server IP Address. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
@@ -1363,6 +1384,8 @@ type DeviceClusterDetailsNode1VendorConfigurationArgs struct {
 	LicenseId pulumi.StringPtrInput `pulumi:"licenseId"`
 	// License key. This field is relevant only for the BlueCat DNS and DHCP Server
 	LicenseKey pulumi.StringPtrInput `pulumi:"licenseKey"`
+	// Management Type. This field is relevant only for Cisco FTD Firewall devices
+	ManagementType pulumi.StringPtrInput `pulumi:"managementType"`
 	// Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
 	PanoramaAuthKey pulumi.StringPtrInput `pulumi:"panoramaAuthKey"`
 	// Panorama Server IP Address. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
@@ -1489,6 +1512,11 @@ func (o DeviceClusterDetailsNode1VendorConfigurationOutput) LicenseKey() pulumi.
 	return o.ApplyT(func(v DeviceClusterDetailsNode1VendorConfiguration) *string { return v.LicenseKey }).(pulumi.StringPtrOutput)
 }
 
+// Management Type. This field is relevant only for Cisco FTD Firewall devices
+func (o DeviceClusterDetailsNode1VendorConfigurationOutput) ManagementType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceClusterDetailsNode1VendorConfiguration) *string { return v.ManagementType }).(pulumi.StringPtrOutput)
+}
+
 // Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
 func (o DeviceClusterDetailsNode1VendorConfigurationOutput) PanoramaAuthKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceClusterDetailsNode1VendorConfiguration) *string { return v.PanoramaAuthKey }).(pulumi.StringPtrOutput)
@@ -1610,6 +1638,16 @@ func (o DeviceClusterDetailsNode1VendorConfigurationPtrOutput) LicenseKey() pulu
 			return nil
 		}
 		return v.LicenseKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Management Type. This field is relevant only for Cisco FTD Firewall devices
+func (o DeviceClusterDetailsNode1VendorConfigurationPtrOutput) ManagementType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceClusterDetailsNode1VendorConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ManagementType
 	}).(pulumi.StringPtrOutput)
 }
 

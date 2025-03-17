@@ -1482,14 +1482,14 @@ class Device(pulumi.CustomResource):
             file_name="TF-AVX-cloud-init-file.txt",
             content=std.file_output(input=filepath).apply(lambda invoke: invoke.result),
             metro_code=sv.metro_code.apply(lambda x: equinix.Metro(x)),
-            device_type_code="AVIATRIX_EDGE",
+            device_type_code="AVIATRIX_EDGE_10",
             process_type=equinix.networkedge.FileType.CLOUD_INIT,
             self_managed=True,
             byol=True)
         aviatrix_single = equinix.networkedge.Device("aviatrixSingle",
             name="tf-aviatrix",
             metro_code=sv.metro_code,
-            type_code="AVIATRIX_EDGE",
+            type_code="AVIATRIX_EDGE_10",
             self_managed=True,
             byol=True,
             package_code="STD",
@@ -1777,6 +1777,48 @@ class Device(pulumi.CustomResource):
             cloud_init_file_id=aviatrix_cloudinit_file.uuid,
             acl_template_id="c06150ea-b604-4ad1-832a-d63936e9b938")
         ```
+        ### example aruba edgeconnect ha device
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(metro_code="SV")
+        a_rubaedgeconnectam = equinix.networkedge.Device("ARUBA-EDGECONNECT-AM",
+            name="TF_Aruba_Edge_Connect",
+            project_id="XXXXX",
+            metro_code=sv.metro_code,
+            type_code="EDGECONNECT-SDWAN",
+            self_managed=True,
+            byol=True,
+            package_code="EC-V",
+            notifications=["test@eq.com"],
+            account_number=sv.number,
+            version="9.4.2.3",
+            core_count=2,
+            term_length=1,
+            additional_bandwidth=50,
+            interface_count=32,
+            acl_template_id="XXXXXXX",
+            vendor_configuration={
+                "accountKey": "xxxxx",
+                "accountName": "xxxx",
+                "applianceTag": "tests",
+                "hostname": "test",
+            },
+            secondary_device={
+                "name": "TF_CHECKPOINT",
+                "metro_code": sv.metro_code,
+                "account_number": sv.number,
+                "acl_template_id": "XXXXXXX",
+                "notifications": ["test@eq.com"],
+                "vendor_configuration": {
+                    "accountKey": "xxxxx",
+                    "accountName": "xxxx",
+                    "applianceTag": "test",
+                    "hostname": "test",
+                },
+            })
+        ```
         ### example c8000v byol without default password
         ```python
         import pulumi
@@ -1868,6 +1910,178 @@ class Device(pulumi.CustomResource):
                 "key_name": "test-key",
             },
             acl_template_id="0bff6e05-f0e7-44cd-804a-25b92b835f8b")
+        ```
+        ### example checkpoint single device
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(metro_code="SV")
+        c_heckpointsv = equinix.networkedge.Device("CHECKPOINT-SV",
+            name="TF_CHECKPOINT",
+            project_id="XXXX",
+            metro_code=sv.metro_code,
+            type_code="CGUARD",
+            self_managed=True,
+            byol=True,
+            package_code="STD",
+            notifications=["test@eq.com"],
+            account_number=sv.number,
+            version="R81.20",
+            hostname="test",
+            core_count=2,
+            term_length=1,
+            additional_bandwidth=5,
+            acl_template_id="XXXXXXX",
+            ssh_key={
+                "username": "XXXXX",
+                "key_name": "XXXXXX",
+            })
+        ```
+        ### example cisco ftd cluster znpd
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(metro_code="SV")
+        cisco_ftdsv = equinix.networkedge.Device("cisco-FTD-SV",
+            name="TF_Cisco_NGFW_CLUSTER_ZNPD",
+            project_id="XXXXXXX",
+            metro_code=sv.metro_code,
+            type_code="Cisco_NGFW",
+            self_managed=True,
+            connectivity="PRIVATE",
+            byol=True,
+            package_code="FTDv10",
+            notifications=["test@eq.com"],
+            account_number=sv.number,
+            version="7.0.4-55",
+            hostname="test",
+            core_count=4,
+            term_length=1,
+            interface_count=10,
+            cluster_details={
+                "cluster_name": "tf-ftd-cluster",
+                "node0": {
+                    "vendor_configuration": {
+                        "hostname": "test",
+                        "activation_key": "XXXXX",
+                        "controller1": "X.X.X.X",
+                        "management_type": "FMC",
+                    },
+                },
+                "node1": {
+                    "vendor_configuration": {
+                        "hostname": "test",
+                        "management_type": "FMC",
+                    },
+                },
+            })
+        ```
+        ### example fortigate sdwan single device
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(metro_code="SV")
+        f_tntsdwansv = equinix.networkedge.Device("FTNT-SDWAN-SV",
+            name="TF_FTNT-SDWAN",
+            project_id="XXXXXXXXXX",
+            metro_code=sv.metro_code,
+            type_code="FG-SDWAN",
+            self_managed=True,
+            byol=True,
+            package_code="VM02",
+            notifications=["test@eq.com"],
+            account_number=sv.number,
+            version="7.0.14",
+            hostname="test",
+            core_count=2,
+            term_length=1,
+            additional_bandwidth=50,
+            acl_template_id="XXXXXXXX",
+            vendor_configuration={
+                "adminPassword": "XXXXX",
+                "controller1": "X.X.X.X",
+            })
+        ```
+        ### example versa sdwan ha device
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(metro_code="SV")
+        f_tntsdwansv = equinix.networkedge.Device("FTNT-SDWAN-SV",
+            name="TF_VERSA-SDWAN",
+            project_id="XXXXXXXXX",
+            metro_code=sv.metro_code,
+            type_code="VERSA_SDWAN",
+            self_managed=True,
+            byol=True,
+            package_code="FLEX_VNF_2",
+            notifications=["test@eq.com"],
+            account_number=sv.number,
+            version="21.2.3",
+            core_count=2,
+            term_length=1,
+            additional_bandwidth=50,
+            acl_template_id="XXXXXXXXX",
+            vendor_configuration={
+                "controller1": "X.X.X.X",
+                "controller2": "X.X.X.X",
+                "localId": "test@test.com",
+                "remoteId": "test@test.com",
+                "serialNumber": "4",
+            },
+            secondary_device={
+                "name": "Praveena_TF_VERSA",
+                "metro_code": sv.metro_code,
+                "account_number": sv.number,
+                "acl_template_id": "XXXXXXXX",
+                "notifications": ["test@eq.com"],
+                "vendor_configuration": {
+                    "controller1": "X.X.X.X",
+                    "controller2": "X.X.X.X",
+                    "localId": "test@test.com",
+                    "remoteId": "test@test.com",
+                    "serialNumber": "4",
+                },
+            })
+        ```
+        ### example vyos router ha device
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(metro_code="SV")
+        v_yosam = equinix.networkedge.Device("VYOS-AM",
+            name="TF_VYOS",
+            project_id="XXXXXXX",
+            metro_code=sv.metro_code,
+            type_code="VYOS-ROUTER",
+            self_managed=True,
+            byol=False,
+            package_code="STD",
+            notifications=["test@eq.com"],
+            account_number=sv.number,
+            version="1.4.1-2501",
+            hostname="test",
+            core_count=2,
+            term_length=1,
+            additional_bandwidth=50,
+            acl_template_id="XXXXXXXX",
+            ssh_key={
+                "username": "test",
+                "key_name": "xxxxxxxx",
+            },
+            secondary_device={
+                "name": "TF_CHECKPOINT",
+                "metro_code": sv.metro_code,
+                "account_number": sv.number,
+                "hostname": "test",
+                "acl_template_id": "XXXXXXXXXXX",
+                "notifications": ["test@eq.com"],
+            })
         ```
         ### example zscaler appc
         ```python
@@ -2104,14 +2318,14 @@ class Device(pulumi.CustomResource):
             file_name="TF-AVX-cloud-init-file.txt",
             content=std.file_output(input=filepath).apply(lambda invoke: invoke.result),
             metro_code=sv.metro_code.apply(lambda x: equinix.Metro(x)),
-            device_type_code="AVIATRIX_EDGE",
+            device_type_code="AVIATRIX_EDGE_10",
             process_type=equinix.networkedge.FileType.CLOUD_INIT,
             self_managed=True,
             byol=True)
         aviatrix_single = equinix.networkedge.Device("aviatrixSingle",
             name="tf-aviatrix",
             metro_code=sv.metro_code,
-            type_code="AVIATRIX_EDGE",
+            type_code="AVIATRIX_EDGE_10",
             self_managed=True,
             byol=True,
             package_code="STD",
@@ -2399,6 +2613,48 @@ class Device(pulumi.CustomResource):
             cloud_init_file_id=aviatrix_cloudinit_file.uuid,
             acl_template_id="c06150ea-b604-4ad1-832a-d63936e9b938")
         ```
+        ### example aruba edgeconnect ha device
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(metro_code="SV")
+        a_rubaedgeconnectam = equinix.networkedge.Device("ARUBA-EDGECONNECT-AM",
+            name="TF_Aruba_Edge_Connect",
+            project_id="XXXXX",
+            metro_code=sv.metro_code,
+            type_code="EDGECONNECT-SDWAN",
+            self_managed=True,
+            byol=True,
+            package_code="EC-V",
+            notifications=["test@eq.com"],
+            account_number=sv.number,
+            version="9.4.2.3",
+            core_count=2,
+            term_length=1,
+            additional_bandwidth=50,
+            interface_count=32,
+            acl_template_id="XXXXXXX",
+            vendor_configuration={
+                "accountKey": "xxxxx",
+                "accountName": "xxxx",
+                "applianceTag": "tests",
+                "hostname": "test",
+            },
+            secondary_device={
+                "name": "TF_CHECKPOINT",
+                "metro_code": sv.metro_code,
+                "account_number": sv.number,
+                "acl_template_id": "XXXXXXX",
+                "notifications": ["test@eq.com"],
+                "vendor_configuration": {
+                    "accountKey": "xxxxx",
+                    "accountName": "xxxx",
+                    "applianceTag": "test",
+                    "hostname": "test",
+                },
+            })
+        ```
         ### example c8000v byol without default password
         ```python
         import pulumi
@@ -2490,6 +2746,178 @@ class Device(pulumi.CustomResource):
                 "key_name": "test-key",
             },
             acl_template_id="0bff6e05-f0e7-44cd-804a-25b92b835f8b")
+        ```
+        ### example checkpoint single device
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(metro_code="SV")
+        c_heckpointsv = equinix.networkedge.Device("CHECKPOINT-SV",
+            name="TF_CHECKPOINT",
+            project_id="XXXX",
+            metro_code=sv.metro_code,
+            type_code="CGUARD",
+            self_managed=True,
+            byol=True,
+            package_code="STD",
+            notifications=["test@eq.com"],
+            account_number=sv.number,
+            version="R81.20",
+            hostname="test",
+            core_count=2,
+            term_length=1,
+            additional_bandwidth=5,
+            acl_template_id="XXXXXXX",
+            ssh_key={
+                "username": "XXXXX",
+                "key_name": "XXXXXX",
+            })
+        ```
+        ### example cisco ftd cluster znpd
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(metro_code="SV")
+        cisco_ftdsv = equinix.networkedge.Device("cisco-FTD-SV",
+            name="TF_Cisco_NGFW_CLUSTER_ZNPD",
+            project_id="XXXXXXX",
+            metro_code=sv.metro_code,
+            type_code="Cisco_NGFW",
+            self_managed=True,
+            connectivity="PRIVATE",
+            byol=True,
+            package_code="FTDv10",
+            notifications=["test@eq.com"],
+            account_number=sv.number,
+            version="7.0.4-55",
+            hostname="test",
+            core_count=4,
+            term_length=1,
+            interface_count=10,
+            cluster_details={
+                "cluster_name": "tf-ftd-cluster",
+                "node0": {
+                    "vendor_configuration": {
+                        "hostname": "test",
+                        "activation_key": "XXXXX",
+                        "controller1": "X.X.X.X",
+                        "management_type": "FMC",
+                    },
+                },
+                "node1": {
+                    "vendor_configuration": {
+                        "hostname": "test",
+                        "management_type": "FMC",
+                    },
+                },
+            })
+        ```
+        ### example fortigate sdwan single device
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(metro_code="SV")
+        f_tntsdwansv = equinix.networkedge.Device("FTNT-SDWAN-SV",
+            name="TF_FTNT-SDWAN",
+            project_id="XXXXXXXXXX",
+            metro_code=sv.metro_code,
+            type_code="FG-SDWAN",
+            self_managed=True,
+            byol=True,
+            package_code="VM02",
+            notifications=["test@eq.com"],
+            account_number=sv.number,
+            version="7.0.14",
+            hostname="test",
+            core_count=2,
+            term_length=1,
+            additional_bandwidth=50,
+            acl_template_id="XXXXXXXX",
+            vendor_configuration={
+                "adminPassword": "XXXXX",
+                "controller1": "X.X.X.X",
+            })
+        ```
+        ### example versa sdwan ha device
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(metro_code="SV")
+        f_tntsdwansv = equinix.networkedge.Device("FTNT-SDWAN-SV",
+            name="TF_VERSA-SDWAN",
+            project_id="XXXXXXXXX",
+            metro_code=sv.metro_code,
+            type_code="VERSA_SDWAN",
+            self_managed=True,
+            byol=True,
+            package_code="FLEX_VNF_2",
+            notifications=["test@eq.com"],
+            account_number=sv.number,
+            version="21.2.3",
+            core_count=2,
+            term_length=1,
+            additional_bandwidth=50,
+            acl_template_id="XXXXXXXXX",
+            vendor_configuration={
+                "controller1": "X.X.X.X",
+                "controller2": "X.X.X.X",
+                "localId": "test@test.com",
+                "remoteId": "test@test.com",
+                "serialNumber": "4",
+            },
+            secondary_device={
+                "name": "Praveena_TF_VERSA",
+                "metro_code": sv.metro_code,
+                "account_number": sv.number,
+                "acl_template_id": "XXXXXXXX",
+                "notifications": ["test@eq.com"],
+                "vendor_configuration": {
+                    "controller1": "X.X.X.X",
+                    "controller2": "X.X.X.X",
+                    "localId": "test@test.com",
+                    "remoteId": "test@test.com",
+                    "serialNumber": "4",
+                },
+            })
+        ```
+        ### example vyos router ha device
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(metro_code="SV")
+        v_yosam = equinix.networkedge.Device("VYOS-AM",
+            name="TF_VYOS",
+            project_id="XXXXXXX",
+            metro_code=sv.metro_code,
+            type_code="VYOS-ROUTER",
+            self_managed=True,
+            byol=False,
+            package_code="STD",
+            notifications=["test@eq.com"],
+            account_number=sv.number,
+            version="1.4.1-2501",
+            hostname="test",
+            core_count=2,
+            term_length=1,
+            additional_bandwidth=50,
+            acl_template_id="XXXXXXXX",
+            ssh_key={
+                "username": "test",
+                "key_name": "xxxxxxxx",
+            },
+            secondary_device={
+                "name": "TF_CHECKPOINT",
+                "metro_code": sv.metro_code,
+                "account_number": sv.number,
+                "hostname": "test",
+                "acl_template_id": "XXXXXXXXXXX",
+                "notifications": ["test@eq.com"],
+            })
         ```
         ### example zscaler appc
         ```python

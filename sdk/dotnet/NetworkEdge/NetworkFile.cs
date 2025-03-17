@@ -32,7 +32,7 @@ namespace Pulumi.Equinix.NetworkEdge
     ///             Input = filepath,
     ///         }).Apply(invoke =&gt; invoke.Result),
     ///         MetroCode = Equinix.Metro.SiliconValley,
-    ///         DeviceTypeCode = "AVIATRIX_EDGE",
+    ///         DeviceTypeCode = "AVIATRIX_EDGE_10",
     ///         ProcessType = Equinix.NetworkEdge.FileType.CloudInit,
     ///         SelfManaged = true,
     ///         Byol = true,
