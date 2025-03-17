@@ -168,7 +168,7 @@ namespace Pulumi.Equinix.NetworkEdge
     ///             Input = filepath,
     ///         }).Apply(invoke =&gt; invoke.Result),
     ///         MetroCode = sv.Apply(getAccountResult =&gt; getAccountResult.MetroCode).Apply(System.Enum.Parse&lt;Equinix.Metro&gt;),
-    ///         DeviceTypeCode = "AVIATRIX_EDGE",
+    ///         DeviceTypeCode = "AVIATRIX_EDGE_10",
     ///         ProcessType = Equinix.NetworkEdge.FileType.CloudInit,
     ///         SelfManaged = true,
     ///         Byol = true,
@@ -178,7 +178,7 @@ namespace Pulumi.Equinix.NetworkEdge
     ///     {
     ///         Name = "tf-aviatrix",
     ///         MetroCode = sv.Apply(getAccountResult =&gt; getAccountResult.MetroCode),
-    ///         TypeCode = "AVIATRIX_EDGE",
+    ///         TypeCode = "AVIATRIX_EDGE_10",
     ///         SelfManaged = true,
     ///         Byol = true,
     ///         PackageCode = "STD",
@@ -621,6 +621,69 @@ namespace Pulumi.Equinix.NetworkEdge
     /// 
     /// });
     /// ```
+    /// ### example aruba edgeconnect ha device
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Equinix = Pulumi.Equinix;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var sv = Equinix.NetworkEdge.GetAccount.Invoke(new()
+    ///     {
+    ///         MetroCode = "SV",
+    ///     });
+    /// 
+    ///     var aRUBAEDGECONNECTAM = new Equinix.NetworkEdge.Device("ARUBA-EDGECONNECT-AM", new()
+    ///     {
+    ///         Name = "TF_Aruba_Edge_Connect",
+    ///         ProjectId = "XXXXX",
+    ///         MetroCode = sv.Apply(getAccountResult =&gt; getAccountResult.MetroCode),
+    ///         TypeCode = "EDGECONNECT-SDWAN",
+    ///         SelfManaged = true,
+    ///         Byol = true,
+    ///         PackageCode = "EC-V",
+    ///         Notifications = new[]
+    ///         {
+    ///             "test@eq.com",
+    ///         },
+    ///         AccountNumber = sv.Apply(getAccountResult =&gt; getAccountResult.Number),
+    ///         Version = "9.4.2.3",
+    ///         CoreCount = 2,
+    ///         TermLength = 1,
+    ///         AdditionalBandwidth = 50,
+    ///         InterfaceCount = 32,
+    ///         AclTemplateId = "XXXXXXX",
+    ///         VendorConfiguration = 
+    ///         {
+    ///             { "accountKey", "xxxxx" },
+    ///             { "accountName", "xxxx" },
+    ///             { "applianceTag", "tests" },
+    ///             { "hostname", "test" },
+    ///         },
+    ///         SecondaryDevice = new Equinix.NetworkEdge.Inputs.DeviceSecondaryDeviceArgs
+    ///         {
+    ///             Name = "TF_CHECKPOINT",
+    ///             MetroCode = sv.Apply(getAccountResult =&gt; getAccountResult.MetroCode),
+    ///             AccountNumber = sv.Apply(getAccountResult =&gt; getAccountResult.Number),
+    ///             AclTemplateId = "XXXXXXX",
+    ///             Notifications = new[]
+    ///             {
+    ///                 "test@eq.com",
+    ///             },
+    ///             VendorConfiguration = 
+    ///             {
+    ///                 { "accountKey", "xxxxx" },
+    ///                 { "accountName", "xxxx" },
+    ///                 { "applianceTag", "test" },
+    ///                 { "hostname", "test" },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### example c8000v byol without default password
     /// ```csharp
     /// using System.Collections.Generic;
@@ -751,6 +814,271 @@ namespace Pulumi.Equinix.NetworkEdge
     ///             KeyName = "test-key",
     ///         },
     ///         AclTemplateId = "0bff6e05-f0e7-44cd-804a-25b92b835f8b",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### example checkpoint single device
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Equinix = Pulumi.Equinix;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var sv = Equinix.NetworkEdge.GetAccount.Invoke(new()
+    ///     {
+    ///         MetroCode = "SV",
+    ///     });
+    /// 
+    ///     var cHECKPOINTSV = new Equinix.NetworkEdge.Device("CHECKPOINT-SV", new()
+    ///     {
+    ///         Name = "TF_CHECKPOINT",
+    ///         ProjectId = "XXXX",
+    ///         MetroCode = sv.Apply(getAccountResult =&gt; getAccountResult.MetroCode),
+    ///         TypeCode = "CGUARD",
+    ///         SelfManaged = true,
+    ///         Byol = true,
+    ///         PackageCode = "STD",
+    ///         Notifications = new[]
+    ///         {
+    ///             "test@eq.com",
+    ///         },
+    ///         AccountNumber = sv.Apply(getAccountResult =&gt; getAccountResult.Number),
+    ///         Version = "R81.20",
+    ///         Hostname = "test",
+    ///         CoreCount = 2,
+    ///         TermLength = 1,
+    ///         AdditionalBandwidth = 5,
+    ///         AclTemplateId = "XXXXXXX",
+    ///         SshKey = new Equinix.NetworkEdge.Inputs.DeviceSshKeyArgs
+    ///         {
+    ///             Username = "XXXXX",
+    ///             KeyName = "XXXXXX",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### example cisco ftd cluster znpd
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Equinix = Pulumi.Equinix;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var sv = Equinix.NetworkEdge.GetAccount.Invoke(new()
+    ///     {
+    ///         MetroCode = "SV",
+    ///     });
+    /// 
+    ///     var ciscoFTDSV = new Equinix.NetworkEdge.Device("cisco-FTD-SV", new()
+    ///     {
+    ///         Name = "TF_Cisco_NGFW_CLUSTER_ZNPD",
+    ///         ProjectId = "XXXXXXX",
+    ///         MetroCode = sv.Apply(getAccountResult =&gt; getAccountResult.MetroCode),
+    ///         TypeCode = "Cisco_NGFW",
+    ///         SelfManaged = true,
+    ///         Connectivity = "PRIVATE",
+    ///         Byol = true,
+    ///         PackageCode = "FTDv10",
+    ///         Notifications = new[]
+    ///         {
+    ///             "test@eq.com",
+    ///         },
+    ///         AccountNumber = sv.Apply(getAccountResult =&gt; getAccountResult.Number),
+    ///         Version = "7.0.4-55",
+    ///         Hostname = "test",
+    ///         CoreCount = 4,
+    ///         TermLength = 1,
+    ///         InterfaceCount = 10,
+    ///         ClusterDetails = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsArgs
+    ///         {
+    ///             ClusterName = "tf-ftd-cluster",
+    ///             Node0 = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsNode0Args
+    ///             {
+    ///                 VendorConfiguration = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsNode0VendorConfigurationArgs
+    ///                 {
+    ///                     Hostname = "test",
+    ///                     ActivationKey = "XXXXX",
+    ///                     Controller1 = "X.X.X.X",
+    ///                     ManagementType = "FMC",
+    ///                 },
+    ///             },
+    ///             Node1 = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsNode1Args
+    ///             {
+    ///                 VendorConfiguration = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsNode1VendorConfigurationArgs
+    ///                 {
+    ///                     Hostname = "test",
+    ///                     ManagementType = "FMC",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### example fortigate sdwan single device
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Equinix = Pulumi.Equinix;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var sv = Equinix.NetworkEdge.GetAccount.Invoke(new()
+    ///     {
+    ///         MetroCode = "SV",
+    ///     });
+    /// 
+    ///     var fTNTSDWANSV = new Equinix.NetworkEdge.Device("FTNT-SDWAN-SV", new()
+    ///     {
+    ///         Name = "TF_FTNT-SDWAN",
+    ///         ProjectId = "XXXXXXXXXX",
+    ///         MetroCode = sv.Apply(getAccountResult =&gt; getAccountResult.MetroCode),
+    ///         TypeCode = "FG-SDWAN",
+    ///         SelfManaged = true,
+    ///         Byol = true,
+    ///         PackageCode = "VM02",
+    ///         Notifications = new[]
+    ///         {
+    ///             "test@eq.com",
+    ///         },
+    ///         AccountNumber = sv.Apply(getAccountResult =&gt; getAccountResult.Number),
+    ///         Version = "7.0.14",
+    ///         Hostname = "test",
+    ///         CoreCount = 2,
+    ///         TermLength = 1,
+    ///         AdditionalBandwidth = 50,
+    ///         AclTemplateId = "XXXXXXXX",
+    ///         VendorConfiguration = 
+    ///         {
+    ///             { "adminPassword", "XXXXX" },
+    ///             { "controller1", "X.X.X.X" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### example versa sdwan ha device
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Equinix = Pulumi.Equinix;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var sv = Equinix.NetworkEdge.GetAccount.Invoke(new()
+    ///     {
+    ///         MetroCode = "SV",
+    ///     });
+    /// 
+    ///     var fTNTSDWANSV = new Equinix.NetworkEdge.Device("FTNT-SDWAN-SV", new()
+    ///     {
+    ///         Name = "TF_VERSA-SDWAN",
+    ///         ProjectId = "XXXXXXXXX",
+    ///         MetroCode = sv.Apply(getAccountResult =&gt; getAccountResult.MetroCode),
+    ///         TypeCode = "VERSA_SDWAN",
+    ///         SelfManaged = true,
+    ///         Byol = true,
+    ///         PackageCode = "FLEX_VNF_2",
+    ///         Notifications = new[]
+    ///         {
+    ///             "test@eq.com",
+    ///         },
+    ///         AccountNumber = sv.Apply(getAccountResult =&gt; getAccountResult.Number),
+    ///         Version = "21.2.3",
+    ///         CoreCount = 2,
+    ///         TermLength = 1,
+    ///         AdditionalBandwidth = 50,
+    ///         AclTemplateId = "XXXXXXXXX",
+    ///         VendorConfiguration = 
+    ///         {
+    ///             { "controller1", "X.X.X.X" },
+    ///             { "controller2", "X.X.X.X" },
+    ///             { "localId", "test@test.com" },
+    ///             { "remoteId", "test@test.com" },
+    ///             { "serialNumber", "4" },
+    ///         },
+    ///         SecondaryDevice = new Equinix.NetworkEdge.Inputs.DeviceSecondaryDeviceArgs
+    ///         {
+    ///             Name = "Praveena_TF_VERSA",
+    ///             MetroCode = sv.Apply(getAccountResult =&gt; getAccountResult.MetroCode),
+    ///             AccountNumber = sv.Apply(getAccountResult =&gt; getAccountResult.Number),
+    ///             AclTemplateId = "XXXXXXXX",
+    ///             Notifications = new[]
+    ///             {
+    ///                 "test@eq.com",
+    ///             },
+    ///             VendorConfiguration = 
+    ///             {
+    ///                 { "controller1", "X.X.X.X" },
+    ///                 { "controller2", "X.X.X.X" },
+    ///                 { "localId", "test@test.com" },
+    ///                 { "remoteId", "test@test.com" },
+    ///                 { "serialNumber", "4" },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### example vyos router ha device
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Equinix = Pulumi.Equinix;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var sv = Equinix.NetworkEdge.GetAccount.Invoke(new()
+    ///     {
+    ///         MetroCode = "SV",
+    ///     });
+    /// 
+    ///     var vYOSAM = new Equinix.NetworkEdge.Device("VYOS-AM", new()
+    ///     {
+    ///         Name = "TF_VYOS",
+    ///         ProjectId = "XXXXXXX",
+    ///         MetroCode = sv.Apply(getAccountResult =&gt; getAccountResult.MetroCode),
+    ///         TypeCode = "VYOS-ROUTER",
+    ///         SelfManaged = true,
+    ///         Byol = false,
+    ///         PackageCode = "STD",
+    ///         Notifications = new[]
+    ///         {
+    ///             "test@eq.com",
+    ///         },
+    ///         AccountNumber = sv.Apply(getAccountResult =&gt; getAccountResult.Number),
+    ///         Version = "1.4.1-2501",
+    ///         Hostname = "test",
+    ///         CoreCount = 2,
+    ///         TermLength = 1,
+    ///         AdditionalBandwidth = 50,
+    ///         AclTemplateId = "XXXXXXXX",
+    ///         SshKey = new Equinix.NetworkEdge.Inputs.DeviceSshKeyArgs
+    ///         {
+    ///             Username = "test",
+    ///             KeyName = "xxxxxxxx",
+    ///         },
+    ///         SecondaryDevice = new Equinix.NetworkEdge.Inputs.DeviceSecondaryDeviceArgs
+    ///         {
+    ///             Name = "TF_CHECKPOINT",
+    ///             MetroCode = sv.Apply(getAccountResult =&gt; getAccountResult.MetroCode),
+    ///             AccountNumber = sv.Apply(getAccountResult =&gt; getAccountResult.Number),
+    ///             Hostname = "test",
+    ///             AclTemplateId = "XXXXXXXXXXX",
+    ///             Notifications = new[]
+    ///             {
+    ///                 "test@eq.com",
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });

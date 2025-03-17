@@ -42,6 +42,10 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
         /// </summary>
         public readonly string? LicenseKey;
         /// <summary>
+        /// Management Type. This field is relevant only for Cisco FTD Firewall devices
+        /// </summary>
+        public readonly string? ManagementType;
+        /// <summary>
         /// Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
         /// </summary>
         public readonly string? PanoramaAuthKey;
@@ -82,6 +86,8 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
 
             string? licenseKey,
 
+            string? managementType,
+
             string? panoramaAuthKey,
 
             string? panoramaIpAddress,
@@ -101,6 +107,7 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
             Hostname = hostname;
             LicenseId = licenseId;
             LicenseKey = licenseKey;
+            ManagementType = managementType;
             PanoramaAuthKey = panoramaAuthKey;
             PanoramaIpAddress = panoramaIpAddress;
             PrivateAddress = privateAddress;
