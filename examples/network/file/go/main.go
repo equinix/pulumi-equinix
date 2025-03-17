@@ -23,7 +23,7 @@ func main() {
 				return invoke.Result, nil
 			}).(pulumi.StringPtrOutput)),
 			MetroCode:      pulumi.String(equinix.MetroSiliconValley),
-			DeviceTypeCode: pulumi.String("AVIATRIX_EDGE"),
+			DeviceTypeCode: pulumi.String("AVIATRIX_EDGE_10"),
 			ProcessType:    pulumi.String(networkedge.FileTypeCloudInit),
 			SelfManaged:    pulumi.Bool(true),
 			Byol:           pulumi.Bool(true),

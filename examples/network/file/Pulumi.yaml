@@ -17,7 +17,7 @@ resources:
             input: ${filepath}
           return: result
       metroCode: SV
-      deviceTypeCode: AVIATRIX_EDGE
+      deviceTypeCode: AVIATRIX_EDGE_10
       processType: CLOUD_INIT
       selfManaged: true
       byol: true
