@@ -313,7 +313,7 @@ class NetworkFile(pulumi.CustomResource):
             file_name="fileName.txt",
             content=std.file_output(input=filepath).apply(lambda invoke: invoke.result),
             metro_code=equinix.Metro.SILICON_VALLEY,
-            device_type_code="AVIATRIX_EDGE",
+            device_type_code="AVIATRIX_EDGE_10",
             process_type=equinix.networkedge.FileType.CLOUD_INIT,
             self_managed=True,
             byol=True)
@@ -362,7 +362,7 @@ class NetworkFile(pulumi.CustomResource):
             file_name="fileName.txt",
             content=std.file_output(input=filepath).apply(lambda invoke: invoke.result),
             metro_code=equinix.Metro.SILICON_VALLEY,
-            device_type_code="AVIATRIX_EDGE",
+            device_type_code="AVIATRIX_EDGE_10",
             process_type=equinix.networkedge.FileType.CLOUD_INIT,
             self_managed=True,
             byol=True)

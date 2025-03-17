@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *         input: filepath,
  *     }).apply(invoke => invoke.result),
  *     metroCode: equinix.index.Metro.SiliconValley,
- *     deviceTypeCode: "AVIATRIX_EDGE",
+ *     deviceTypeCode: "AVIATRIX_EDGE_10",
  *     processType: equinix.networkedge.FileType.CloudInit,
  *     selfManaged: true,
  *     byol: true,

@@ -417,6 +417,8 @@ class DeviceClusterDetailsNode0VendorConfiguration(dict):
             suggest = "license_id"
         elif key == "licenseKey":
             suggest = "license_key"
+        elif key == "managementType":
+            suggest = "management_type"
         elif key == "panoramaAuthKey":
             suggest = "panorama_auth_key"
         elif key == "panoramaIpAddress":
@@ -449,6 +451,7 @@ class DeviceClusterDetailsNode0VendorConfiguration(dict):
                  hostname: Optional[str] = None,
                  license_id: Optional[str] = None,
                  license_key: Optional[str] = None,
+                 management_type: Optional[str] = None,
                  panorama_auth_key: Optional[str] = None,
                  panorama_ip_address: Optional[str] = None,
                  private_address: Optional[str] = None,
@@ -463,6 +466,7 @@ class DeviceClusterDetailsNode0VendorConfiguration(dict):
         :param str hostname: Hostname. This is necessary for Palo Alto, Juniper, and Fortinet clusters.
         :param str license_id: License id. This field is relevant only for the BlueCat DNS and DHCP Server
         :param str license_key: License key. This field is relevant only for the BlueCat DNS and DHCP Server
+        :param str management_type: Management Type. This field is relevant only for Cisco FTD Firewall devices
         :param str panorama_auth_key: Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
         :param str panorama_ip_address: Panorama Server IP Address. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
         :param str private_address: Private address. This field is relevant only for the BlueCat DNS and DHCP Server
@@ -484,6 +488,8 @@ class DeviceClusterDetailsNode0VendorConfiguration(dict):
             pulumi.set(__self__, "license_id", license_id)
         if license_key is not None:
             pulumi.set(__self__, "license_key", license_key)
+        if management_type is not None:
+            pulumi.set(__self__, "management_type", management_type)
         if panorama_auth_key is not None:
             pulumi.set(__self__, "panorama_auth_key", panorama_auth_key)
         if panorama_ip_address is not None:
@@ -552,6 +558,14 @@ class DeviceClusterDetailsNode0VendorConfiguration(dict):
         License key. This field is relevant only for the BlueCat DNS and DHCP Server
         """
         return pulumi.get(self, "license_key")
+
+    @property
+    @pulumi.getter(name="managementType")
+    def management_type(self) -> Optional[str]:
+        """
+        Management Type. This field is relevant only for Cisco FTD Firewall devices
+        """
+        return pulumi.get(self, "management_type")
 
     @property
     @pulumi.getter(name="panoramaAuthKey")
@@ -705,6 +719,8 @@ class DeviceClusterDetailsNode1VendorConfiguration(dict):
             suggest = "license_id"
         elif key == "licenseKey":
             suggest = "license_key"
+        elif key == "managementType":
+            suggest = "management_type"
         elif key == "panoramaAuthKey":
             suggest = "panorama_auth_key"
         elif key == "panoramaIpAddress":
@@ -737,6 +753,7 @@ class DeviceClusterDetailsNode1VendorConfiguration(dict):
                  hostname: Optional[str] = None,
                  license_id: Optional[str] = None,
                  license_key: Optional[str] = None,
+                 management_type: Optional[str] = None,
                  panorama_auth_key: Optional[str] = None,
                  panorama_ip_address: Optional[str] = None,
                  private_address: Optional[str] = None,
@@ -751,6 +768,7 @@ class DeviceClusterDetailsNode1VendorConfiguration(dict):
         :param str hostname: Hostname. This is necessary for Palo Alto, Juniper, and Fortinet clusters.
         :param str license_id: License id. This field is relevant only for the BlueCat DNS and DHCP Server
         :param str license_key: License key. This field is relevant only for the BlueCat DNS and DHCP Server
+        :param str management_type: Management Type. This field is relevant only for Cisco FTD Firewall devices
         :param str panorama_auth_key: Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
         :param str panorama_ip_address: Panorama Server IP Address. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
         :param str private_address: Private address. This field is relevant only for the BlueCat DNS and DHCP Server
@@ -772,6 +790,8 @@ class DeviceClusterDetailsNode1VendorConfiguration(dict):
             pulumi.set(__self__, "license_id", license_id)
         if license_key is not None:
             pulumi.set(__self__, "license_key", license_key)
+        if management_type is not None:
+            pulumi.set(__self__, "management_type", management_type)
         if panorama_auth_key is not None:
             pulumi.set(__self__, "panorama_auth_key", panorama_auth_key)
         if panorama_ip_address is not None:
@@ -840,6 +860,14 @@ class DeviceClusterDetailsNode1VendorConfiguration(dict):
         License key. This field is relevant only for the BlueCat DNS and DHCP Server
         """
         return pulumi.get(self, "license_key")
+
+    @property
+    @pulumi.getter(name="managementType")
+    def management_type(self) -> Optional[str]:
+        """
+        Management Type. This field is relevant only for Cisco FTD Firewall devices
+        """
+        return pulumi.get(self, "management_type")
 
     @property
     @pulumi.getter(name="panoramaAuthKey")

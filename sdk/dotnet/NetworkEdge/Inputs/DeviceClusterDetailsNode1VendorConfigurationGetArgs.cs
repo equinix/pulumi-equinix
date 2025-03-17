@@ -94,6 +94,12 @@ namespace Pulumi.Equinix.NetworkEdge.Inputs
             }
         }
 
+        /// <summary>
+        /// Management Type. This field is relevant only for Cisco FTD Firewall devices
+        /// </summary>
+        [Input("managementType")]
+        public Input<string>? ManagementType { get; set; }
+
         [Input("panoramaAuthKey")]
         private Input<string>? _panoramaAuthKey;
 

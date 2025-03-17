@@ -14,7 +14,7 @@ const aviatrixCloudinitFile = new equinix.networkedge.NetworkFile("aviatrixCloud
         input: filepath,
     }).apply(invoke => invoke.result),
     metroCode: sv.apply(sv => sv.metroCode).apply((x) => equinix.index.Metro[x]),
-    deviceTypeCode: "AVIATRIX_EDGE",
+    deviceTypeCode: "AVIATRIX_EDGE_10",
     processType: equinix.networkedge.FileType.CloudInit,
     selfManaged: true,
     byol: true,
@@ -22,7 +22,7 @@ const aviatrixCloudinitFile = new equinix.networkedge.NetworkFile("aviatrixCloud
 const aviatrixSingle = new equinix.networkedge.Device("aviatrixSingle", {
     name: "tf-aviatrix",
     metroCode: sv.apply(sv => sv.metroCode),
-    typeCode: "AVIATRIX_EDGE",
+    typeCode: "AVIATRIX_EDGE_10",
     selfManaged: true,
     byol: true,
     packageCode: "STD",

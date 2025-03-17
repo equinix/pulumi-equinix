@@ -222,7 +222,7 @@ import javax.annotation.Nullable;
  *                 .input(filepath)
  *                 .build()).applyValue(_invoke -> _invoke.result()))
  *             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
- *             .deviceTypeCode("AVIATRIX_EDGE")
+ *             .deviceTypeCode("AVIATRIX_EDGE_10")
  *             .processType("CLOUD_INIT")
  *             .selfManaged(true)
  *             .byol(true)
@@ -231,7 +231,7 @@ import javax.annotation.Nullable;
  *         var aviatrixSingle = new Device("aviatrixSingle", DeviceArgs.builder()
  *             .name("tf-aviatrix")
  *             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
- *             .typeCode("AVIATRIX_EDGE")
+ *             .typeCode("AVIATRIX_EDGE_10")
  *             .selfManaged(true)
  *             .byol(true)
  *             .packageCode("STD")
@@ -756,6 +756,77 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * ### example aruba edgeconnect ha device
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
+ * import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
+ * import com.pulumi.equinix.networkedge.Device;
+ * import com.pulumi.equinix.networkedge.DeviceArgs;
+ * import com.pulumi.equinix.networkedge.inputs.DeviceSecondaryDeviceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
+ *             .metroCode("SV")
+ *             .build());
+ * 
+ *         var aRUBAEDGECONNECTAM = new Device("aRUBAEDGECONNECTAM", DeviceArgs.builder()
+ *             .name("TF_Aruba_Edge_Connect")
+ *             .projectId("XXXXX")
+ *             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+ *             .typeCode("EDGECONNECT-SDWAN")
+ *             .selfManaged(true)
+ *             .byol(true)
+ *             .packageCode("EC-V")
+ *             .notifications("test}{@literal @}{@code eq.com")
+ *             .accountNumber(sv.applyValue(_sv -> _sv.number()))
+ *             .version("9.4.2.3")
+ *             .coreCount(2)
+ *             .termLength(1)
+ *             .additionalBandwidth(50)
+ *             .interfaceCount(32)
+ *             .aclTemplateId("XXXXXXX")
+ *             .vendorConfiguration(Map.ofEntries(
+ *                 Map.entry("accountKey", "xxxxx"),
+ *                 Map.entry("accountName", "xxxx"),
+ *                 Map.entry("applianceTag", "tests"),
+ *                 Map.entry("hostname", "test")
+ *             ))
+ *             .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
+ *                 .name("TF_CHECKPOINT")
+ *                 .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+ *                 .accountNumber(sv.applyValue(_sv -> _sv.number()))
+ *                 .aclTemplateId("XXXXXXX")
+ *                 .notifications("test}{@literal @}{@code eq.com")
+ *                 .vendorConfiguration(Map.ofEntries(
+ *                     Map.entry("accountKey", "xxxxx"),
+ *                     Map.entry("accountName", "xxxx"),
+ *                     Map.entry("applianceTag", "test"),
+ *                     Map.entry("hostname", "test")
+ *                 ))
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
  * ### example c8000v byol without default password
  * <pre>
  * {@code
@@ -926,6 +997,327 @@ import javax.annotation.Nullable;
  *                 .keyName("test-key")
  *                 .build())
  *             .aclTemplateId("0bff6e05-f0e7-44cd-804a-25b92b835f8b")
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * ### example checkpoint single device
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
+ * import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
+ * import com.pulumi.equinix.networkedge.Device;
+ * import com.pulumi.equinix.networkedge.DeviceArgs;
+ * import com.pulumi.equinix.networkedge.inputs.DeviceSshKeyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
+ *             .metroCode("SV")
+ *             .build());
+ * 
+ *         var cHECKPOINTSV = new Device("cHECKPOINTSV", DeviceArgs.builder()
+ *             .name("TF_CHECKPOINT")
+ *             .projectId("XXXX")
+ *             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+ *             .typeCode("CGUARD")
+ *             .selfManaged(true)
+ *             .byol(true)
+ *             .packageCode("STD")
+ *             .notifications("test}{@literal @}{@code eq.com")
+ *             .accountNumber(sv.applyValue(_sv -> _sv.number()))
+ *             .version("R81.20")
+ *             .hostname("test")
+ *             .coreCount(2)
+ *             .termLength(1)
+ *             .additionalBandwidth(5)
+ *             .aclTemplateId("XXXXXXX")
+ *             .sshKey(DeviceSshKeyArgs.builder()
+ *                 .username("XXXXX")
+ *                 .keyName("XXXXXX")
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * ### example cisco ftd cluster znpd
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
+ * import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
+ * import com.pulumi.equinix.networkedge.Device;
+ * import com.pulumi.equinix.networkedge.DeviceArgs;
+ * import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsArgs;
+ * import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsNode0Args;
+ * import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsNode0VendorConfigurationArgs;
+ * import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsNode1Args;
+ * import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsNode1VendorConfigurationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
+ *             .metroCode("SV")
+ *             .build());
+ * 
+ *         var ciscoFTDSV = new Device("ciscoFTDSV", DeviceArgs.builder()
+ *             .name("TF_Cisco_NGFW_CLUSTER_ZNPD")
+ *             .projectId("XXXXXXX")
+ *             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+ *             .typeCode("Cisco_NGFW")
+ *             .selfManaged(true)
+ *             .connectivity("PRIVATE")
+ *             .byol(true)
+ *             .packageCode("FTDv10")
+ *             .notifications("test}{@literal @}{@code eq.com")
+ *             .accountNumber(sv.applyValue(_sv -> _sv.number()))
+ *             .version("7.0.4-55")
+ *             .hostname("test")
+ *             .coreCount(4)
+ *             .termLength(1)
+ *             .interfaceCount(10)
+ *             .clusterDetails(DeviceClusterDetailsArgs.builder()
+ *                 .clusterName("tf-ftd-cluster")
+ *                 .node0(DeviceClusterDetailsNode0Args.builder()
+ *                     .vendorConfiguration(DeviceClusterDetailsNode0VendorConfigurationArgs.builder()
+ *                         .hostname("test")
+ *                         .activationKey("XXXXX")
+ *                         .controller1("X.X.X.X")
+ *                         .managementType("FMC")
+ *                         .build())
+ *                     .build())
+ *                 .node1(DeviceClusterDetailsNode1Args.builder()
+ *                     .vendorConfiguration(DeviceClusterDetailsNode1VendorConfigurationArgs.builder()
+ *                         .hostname("test")
+ *                         .managementType("FMC")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * ### example fortigate sdwan single device
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
+ * import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
+ * import com.pulumi.equinix.networkedge.Device;
+ * import com.pulumi.equinix.networkedge.DeviceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
+ *             .metroCode("SV")
+ *             .build());
+ * 
+ *         var fTNTSDWANSV = new Device("fTNTSDWANSV", DeviceArgs.builder()
+ *             .name("TF_FTNT-SDWAN")
+ *             .projectId("XXXXXXXXXX")
+ *             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+ *             .typeCode("FG-SDWAN")
+ *             .selfManaged(true)
+ *             .byol(true)
+ *             .packageCode("VM02")
+ *             .notifications("test}{@literal @}{@code eq.com")
+ *             .accountNumber(sv.applyValue(_sv -> _sv.number()))
+ *             .version("7.0.14")
+ *             .hostname("test")
+ *             .coreCount(2)
+ *             .termLength(1)
+ *             .additionalBandwidth(50)
+ *             .aclTemplateId("XXXXXXXX")
+ *             .vendorConfiguration(Map.ofEntries(
+ *                 Map.entry("adminPassword", "XXXXX"),
+ *                 Map.entry("controller1", "X.X.X.X")
+ *             ))
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * ### example versa sdwan ha device
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
+ * import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
+ * import com.pulumi.equinix.networkedge.Device;
+ * import com.pulumi.equinix.networkedge.DeviceArgs;
+ * import com.pulumi.equinix.networkedge.inputs.DeviceSecondaryDeviceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
+ *             .metroCode("SV")
+ *             .build());
+ * 
+ *         var fTNTSDWANSV = new Device("fTNTSDWANSV", DeviceArgs.builder()
+ *             .name("TF_VERSA-SDWAN")
+ *             .projectId("XXXXXXXXX")
+ *             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+ *             .typeCode("VERSA_SDWAN")
+ *             .selfManaged(true)
+ *             .byol(true)
+ *             .packageCode("FLEX_VNF_2")
+ *             .notifications("test}{@literal @}{@code eq.com")
+ *             .accountNumber(sv.applyValue(_sv -> _sv.number()))
+ *             .version("21.2.3")
+ *             .coreCount(2)
+ *             .termLength(1)
+ *             .additionalBandwidth(50)
+ *             .aclTemplateId("XXXXXXXXX")
+ *             .vendorConfiguration(Map.ofEntries(
+ *                 Map.entry("controller1", "X.X.X.X"),
+ *                 Map.entry("controller2", "X.X.X.X"),
+ *                 Map.entry("localId", "test}{@literal @}{@code test.com"),
+ *                 Map.entry("remoteId", "test}{@literal @}{@code test.com"),
+ *                 Map.entry("serialNumber", "4")
+ *             ))
+ *             .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
+ *                 .name("Praveena_TF_VERSA")
+ *                 .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+ *                 .accountNumber(sv.applyValue(_sv -> _sv.number()))
+ *                 .aclTemplateId("XXXXXXXX")
+ *                 .notifications("test}{@literal @}{@code eq.com")
+ *                 .vendorConfiguration(Map.ofEntries(
+ *                     Map.entry("controller1", "X.X.X.X"),
+ *                     Map.entry("controller2", "X.X.X.X"),
+ *                     Map.entry("localId", "test}{@literal @}{@code test.com"),
+ *                     Map.entry("remoteId", "test}{@literal @}{@code test.com"),
+ *                     Map.entry("serialNumber", "4")
+ *                 ))
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * ### example vyos router ha device
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
+ * import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
+ * import com.pulumi.equinix.networkedge.Device;
+ * import com.pulumi.equinix.networkedge.DeviceArgs;
+ * import com.pulumi.equinix.networkedge.inputs.DeviceSshKeyArgs;
+ * import com.pulumi.equinix.networkedge.inputs.DeviceSecondaryDeviceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
+ *             .metroCode("SV")
+ *             .build());
+ * 
+ *         var vYOSAM = new Device("vYOSAM", DeviceArgs.builder()
+ *             .name("TF_VYOS")
+ *             .projectId("XXXXXXX")
+ *             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+ *             .typeCode("VYOS-ROUTER")
+ *             .selfManaged(true)
+ *             .byol(false)
+ *             .packageCode("STD")
+ *             .notifications("test}{@literal @}{@code eq.com")
+ *             .accountNumber(sv.applyValue(_sv -> _sv.number()))
+ *             .version("1.4.1-2501")
+ *             .hostname("test")
+ *             .coreCount(2)
+ *             .termLength(1)
+ *             .additionalBandwidth(50)
+ *             .aclTemplateId("XXXXXXXX")
+ *             .sshKey(DeviceSshKeyArgs.builder()
+ *                 .username("test")
+ *                 .keyName("xxxxxxxx")
+ *                 .build())
+ *             .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
+ *                 .name("TF_CHECKPOINT")
+ *                 .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+ *                 .accountNumber(sv.applyValue(_sv -> _sv.number()))
+ *                 .hostname("test")
+ *                 .aclTemplateId("XXXXXXXXXXX")
+ *                 .notifications("test}{@literal @}{@code eq.com")
+ *                 .build())
  *             .build());
  * 
  *     }}{@code

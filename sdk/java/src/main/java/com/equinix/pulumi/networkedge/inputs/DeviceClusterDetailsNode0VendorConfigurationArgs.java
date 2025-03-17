@@ -121,6 +121,21 @@ public final class DeviceClusterDetailsNode0VendorConfigurationArgs extends com.
     }
 
     /**
+     * Management Type. This field is relevant only for Cisco FTD Firewall devices
+     * 
+     */
+    @Import(name="managementType")
+    private @Nullable Output<String> managementType;
+
+    /**
+     * @return Management Type. This field is relevant only for Cisco FTD Firewall devices
+     * 
+     */
+    public Optional<Output<String>> managementType() {
+        return Optional.ofNullable(this.managementType);
+    }
+
+    /**
      * Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
      * 
      */
@@ -220,6 +235,7 @@ public final class DeviceClusterDetailsNode0VendorConfigurationArgs extends com.
         this.hostname = $.hostname;
         this.licenseId = $.licenseId;
         this.licenseKey = $.licenseKey;
+        this.managementType = $.managementType;
         this.panoramaAuthKey = $.panoramaAuthKey;
         this.panoramaIpAddress = $.panoramaIpAddress;
         this.privateAddress = $.privateAddress;
@@ -391,6 +407,27 @@ public final class DeviceClusterDetailsNode0VendorConfigurationArgs extends com.
          */
         public Builder licenseKey(String licenseKey) {
             return licenseKey(Output.of(licenseKey));
+        }
+
+        /**
+         * @param managementType Management Type. This field is relevant only for Cisco FTD Firewall devices
+         * 
+         * @return builder
+         * 
+         */
+        public Builder managementType(@Nullable Output<String> managementType) {
+            $.managementType = managementType;
+            return this;
+        }
+
+        /**
+         * @param managementType Management Type. This field is relevant only for Cisco FTD Firewall devices
+         * 
+         * @return builder
+         * 
+         */
+        public Builder managementType(String managementType) {
+            return managementType(Output.of(managementType));
         }
 
         /**
