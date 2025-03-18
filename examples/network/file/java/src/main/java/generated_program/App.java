@@ -28,7 +28,7 @@ public class App {
                 .input(filepath)
                 .build()).applyValue(_invoke -> _invoke.result()))
             .metroCode("SV")
-            .deviceTypeCode("AVIATRIX_EDGE")
+            .deviceTypeCode("AVIATRIX_EDGE_10")
             .processType("CLOUD_INIT")
             .selfManaged(true)
             .byol(true)

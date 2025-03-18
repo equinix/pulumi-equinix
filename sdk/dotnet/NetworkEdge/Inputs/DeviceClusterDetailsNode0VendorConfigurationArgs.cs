@@ -57,10 +57,22 @@ namespace Pulumi.Equinix.NetworkEdge.Inputs
         public Input<string>? ControllerFqdn { get; set; }
 
         /// <summary>
+        /// Gateway IP. This field is relevant only for the Infoblox devices.
+        /// </summary>
+        [Input("gatewayIp")]
+        public Input<string>? GatewayIp { get; set; }
+
+        /// <summary>
         /// Hostname. This is necessary for Palo Alto, Juniper, and Fortinet clusters.
         /// </summary>
         [Input("hostname")]
         public Input<string>? Hostname { get; set; }
+
+        /// <summary>
+        /// IP Address. This field is relevant only for the Infoblox devices.
+        /// </summary>
+        [Input("ipAddress")]
+        public Input<string>? IpAddress { get; set; }
 
         [Input("licenseId")]
         private Input<string>? _licenseId;
@@ -93,6 +105,12 @@ namespace Pulumi.Equinix.NetworkEdge.Inputs
                 _licenseKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        /// <summary>
+        /// Management Type. This field is relevant only for Cisco FTD Firewall devices
+        /// </summary>
+        [Input("managementType")]
+        public Input<string>? ManagementType { get; set; }
 
         [Input("panoramaAuthKey")]
         private Input<string>? _panoramaAuthKey;
@@ -149,6 +167,12 @@ namespace Pulumi.Equinix.NetworkEdge.Inputs
                 _rootPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        /// <summary>
+        /// Subnet Mask IP. This field is relevant only for the Infoblox devices.
+        /// </summary>
+        [Input("subnetMaskIp")]
+        public Input<string>? SubnetMaskIp { get; set; }
 
         public DeviceClusterDetailsNode0VendorConfigurationArgs()
         {

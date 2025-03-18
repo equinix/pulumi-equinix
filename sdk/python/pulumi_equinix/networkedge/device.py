@@ -91,7 +91,7 @@ class DeviceArgs:
         :param pulumi.Input[int] throughput: Device license throughput.
         :param pulumi.Input[Union[str, 'ThroughputUnit']] throughput_unit: License throughput unit. One of `Mbps` or `Gbps`.
         :param pulumi.Input[int] tier: Select bandwidth tier for your own license, i.e., `0` or `1` or `2` or `3`. Tiers applicable only for C8000V Autonomous or C8000V SDWAN (controller) device types. If not provided, tier is defaulted to '2'.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vendor_configuration: Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress, provisioningKey)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vendor_configuration: Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress, provisioningKey, ipAddress(applicable for infoblox only), subnetMaskIp(applicable for infoblox only), gatewayIp(applicable for infoblox only))
                * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
         :param pulumi.Input[str] wan_interface_id: device interface id picked for WAN
         """
@@ -545,7 +545,7 @@ class DeviceArgs:
     @pulumi.getter(name="vendorConfiguration")
     def vendor_configuration(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress, provisioningKey)
+        Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress, provisioningKey, ipAddress(applicable for infoblox only), subnetMaskIp(applicable for infoblox only), gatewayIp(applicable for infoblox only))
         * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
         """
         return pulumi.get(self, "vendor_configuration")
@@ -663,7 +663,7 @@ class _DeviceState:
         :param pulumi.Input[int] tier: Select bandwidth tier for your own license, i.e., `0` or `1` or `2` or `3`. Tiers applicable only for C8000V Autonomous or C8000V SDWAN (controller) device types. If not provided, tier is defaulted to '2'.
         :param pulumi.Input[str] type_code: Device type code.
         :param pulumi.Input[str] uuid: Device unique identifier.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vendor_configuration: Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress, provisioningKey)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vendor_configuration: Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress, provisioningKey, ipAddress(applicable for infoblox only), subnetMaskIp(applicable for infoblox only), gatewayIp(applicable for infoblox only))
                * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
         :param pulumi.Input[str] version: Device software software version.
         :param pulumi.Input[str] wan_interface_id: device interface id picked for WAN
@@ -1285,7 +1285,7 @@ class _DeviceState:
     @pulumi.getter(name="vendorConfiguration")
     def vendor_configuration(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress, provisioningKey)
+        Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress, provisioningKey, ipAddress(applicable for infoblox only), subnetMaskIp(applicable for infoblox only), gatewayIp(applicable for infoblox only))
         * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
         """
         return pulumi.get(self, "vendor_configuration")
@@ -1482,14 +1482,14 @@ class Device(pulumi.CustomResource):
             file_name="TF-AVX-cloud-init-file.txt",
             content=std.file_output(input=filepath).apply(lambda invoke: invoke.result),
             metro_code=sv.metro_code.apply(lambda x: equinix.Metro(x)),
-            device_type_code="AVIATRIX_EDGE",
+            device_type_code="AVIATRIX_EDGE_10",
             process_type=equinix.networkedge.FileType.CLOUD_INIT,
             self_managed=True,
             byol=True)
         aviatrix_single = equinix.networkedge.Device("aviatrixSingle",
             name="tf-aviatrix",
             metro_code=sv.metro_code,
-            type_code="AVIATRIX_EDGE",
+            type_code="AVIATRIX_EDGE_10",
             self_managed=True,
             byol=True,
             package_code="STD",
@@ -1777,6 +1777,48 @@ class Device(pulumi.CustomResource):
             cloud_init_file_id=aviatrix_cloudinit_file.uuid,
             acl_template_id="c06150ea-b604-4ad1-832a-d63936e9b938")
         ```
+        ### example aruba edgeconnect ha device
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(metro_code="SV")
+        a_rubaedgeconnectam = equinix.networkedge.Device("ARUBA-EDGECONNECT-AM",
+            name="TF_Aruba_Edge_Connect",
+            project_id="XXXXX",
+            metro_code=sv.metro_code,
+            type_code="EDGECONNECT-SDWAN",
+            self_managed=True,
+            byol=True,
+            package_code="EC-V",
+            notifications=["test@eq.com"],
+            account_number=sv.number,
+            version="9.4.2.3",
+            core_count=2,
+            term_length=1,
+            additional_bandwidth=50,
+            interface_count=32,
+            acl_template_id="XXXXXXX",
+            vendor_configuration={
+                "accountKey": "xxxxx",
+                "accountName": "xxxx",
+                "applianceTag": "tests",
+                "hostname": "test",
+            },
+            secondary_device={
+                "name": "TF_CHECKPOINT",
+                "metro_code": sv.metro_code,
+                "account_number": sv.number,
+                "acl_template_id": "XXXXXXX",
+                "notifications": ["test@eq.com"],
+                "vendor_configuration": {
+                    "accountKey": "xxxxx",
+                    "accountName": "xxxx",
+                    "applianceTag": "test",
+                    "hostname": "test",
+                },
+            })
+        ```
         ### example c8000v byol without default password
         ```python
         import pulumi
@@ -1868,6 +1910,290 @@ class Device(pulumi.CustomResource):
                 "key_name": "test-key",
             },
             acl_template_id="0bff6e05-f0e7-44cd-804a-25b92b835f8b")
+        ```
+        ### example checkpoint single device
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(metro_code="SV")
+        c_heckpointsv = equinix.networkedge.Device("CHECKPOINT-SV",
+            name="TF_CHECKPOINT",
+            project_id="XXXX",
+            metro_code=sv.metro_code,
+            type_code="CGUARD",
+            self_managed=True,
+            byol=True,
+            package_code="STD",
+            notifications=["test@eq.com"],
+            account_number=sv.number,
+            version="R81.20",
+            hostname="test",
+            core_count=2,
+            term_length=1,
+            additional_bandwidth=5,
+            acl_template_id="XXXXXXX",
+            ssh_key={
+                "username": "XXXXX",
+                "key_name": "XXXXXX",
+            })
+        ```
+        ### example cisco ftd cluster znpd
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(metro_code="SV")
+        cisco_ftdsv = equinix.networkedge.Device("cisco-FTD-SV",
+            name="TF_Cisco_NGFW_CLUSTER_ZNPD",
+            project_id="XXXXXXX",
+            metro_code=sv.metro_code,
+            type_code="Cisco_NGFW",
+            self_managed=True,
+            connectivity="PRIVATE",
+            byol=True,
+            package_code="FTDv10",
+            notifications=["test@eq.com"],
+            account_number=sv.number,
+            version="7.0.4-55",
+            hostname="test",
+            core_count=4,
+            term_length=1,
+            interface_count=10,
+            cluster_details={
+                "cluster_name": "tf-ftd-cluster",
+                "node0": {
+                    "vendor_configuration": {
+                        "hostname": "test",
+                        "activation_key": "XXXXX",
+                        "controller1": "X.X.X.X",
+                        "management_type": "FMC",
+                    },
+                },
+                "node1": {
+                    "vendor_configuration": {
+                        "hostname": "test",
+                        "management_type": "FMC",
+                    },
+                },
+            })
+        ```
+        ### example fortigate sdwan single device
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(metro_code="SV")
+        f_tntsdwansv = equinix.networkedge.Device("FTNT-SDWAN-SV",
+            name="TF_FTNT-SDWAN",
+            project_id="XXXXXXXXXX",
+            metro_code=sv.metro_code,
+            type_code="FG-SDWAN",
+            self_managed=True,
+            byol=True,
+            package_code="VM02",
+            notifications=["test@eq.com"],
+            account_number=sv.number,
+            version="7.0.14",
+            hostname="test",
+            core_count=2,
+            term_length=1,
+            additional_bandwidth=50,
+            acl_template_id="XXXXXXXX",
+            vendor_configuration={
+                "adminPassword": "XXXXX",
+                "controller1": "X.X.X.X",
+            })
+        ```
+        ### example infoblox cluster device
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(metro_code="SV")
+        i_nfobloxsv = equinix.networkedge.Device("INFOBLOX-SV",
+            name="TF_INFOBLOX",
+            project_id="XXXXXXXXXX",
+            metro_code=sv.metro_code,
+            type_code="INFOBLOX-GRID-MEMBER",
+            self_managed=True,
+            byol=True,
+            package_code="STD",
+            notifications=["test@eq.com"],
+            account_number=sv.number,
+            version="9.0.5",
+            hostname="test",
+            connectivity="PRIVATE",
+            core_count=8,
+            term_length=1,
+            cluster_details={
+                "cluster_name": "tf-infoblox-cluster",
+                "node0": {
+                    "vendor_configuration": {
+                        "admin_password": "Welcome@1",
+                        "ip_address": "192.168.1.35",
+                        "subnet_mask_ip": "255.255.255.0",
+                        "gateway_ip": "192.168.1.1",
+                        "hostname": "test",
+                    },
+                },
+                "node1": {
+                    "vendor_configuration": {
+                        "admin_password": "Welcome@1",
+                        "ip_address": "192.168.1.35",
+                        "subnet_mask_ip": "255.255.255.0",
+                        "gateway_ip": "192.168.1.1",
+                        "hostname": "test",
+                    },
+                },
+            })
+        ```
+        ### example infoblox ha device
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(metro_code="SV")
+        i_nfobloxsv = equinix.networkedge.Device("INFOBLOX-SV",
+            name="TF_INFOBLOX",
+            project_id="XXXXXXXXXX",
+            metro_code=sv.metro_code,
+            type_code="INFOBLOX-GRID-MEMBER",
+            self_managed=True,
+            connectivity="PRIVATE",
+            byol=True,
+            package_code="STD",
+            notifications=["test@eq.com"],
+            account_number=sv.number,
+            version="9.0.5",
+            hostname="test",
+            core_count=8,
+            term_length=1,
+            vendor_configuration={
+                "adminPassword": "X.X.X.X",
+                "ipAddress": "X.X.X.X",
+                "subnetMaskIp": "X.X.X.X",
+                "gatewayIp": "X.X.X.X",
+            },
+            secondary_device={
+                "name": "TF_INFOBLOX-Sec",
+                "metro_code": sv.metro_code,
+                "account_number": sv.number,
+                "notifications": ["test@eq.com"],
+                "hostname": "test",
+                "vendor_configuration": {
+                    "adminPassword": "X.X.X.X",
+                    "ipAddress": "X.X.X.X",
+                    "subnetMaskIp": "X.X.X.X",
+                    "gatewayIp": "X.X.X.X",
+                },
+            })
+        ```
+        ### example infoblox single device
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(metro_code="SV")
+        i_nfobloxsv = equinix.networkedge.Device("INFOBLOX-SV",
+            name="TF_INFOBLOX",
+            project_id="XXXXXXXXXX",
+            metro_code=sv.metro_code,
+            type_code="INFOBLOX-GRID-MEMBER",
+            self_managed=True,
+            byol=True,
+            connectivity="PRIVATE",
+            package_code="STD",
+            notifications=["test@eq.com"],
+            account_number=sv.number,
+            version="9.0.5",
+            hostname="test",
+            core_count=8,
+            term_length=1,
+            vendor_configuration={
+                "adminPassword": "X.X.X.X",
+                "ipAddress": "X.X.X.X",
+                "subnetMaskIp": "X.X.X.X",
+                "gatewayIp": "X.X.X.X",
+            })
+        ```
+        ### example versa sdwan ha device
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(metro_code="SV")
+        f_tntsdwansv = equinix.networkedge.Device("FTNT-SDWAN-SV",
+            name="TF_VERSA-SDWAN",
+            project_id="XXXXXXXXX",
+            metro_code=sv.metro_code,
+            type_code="VERSA_SDWAN",
+            self_managed=True,
+            byol=True,
+            package_code="FLEX_VNF_2",
+            notifications=["test@eq.com"],
+            account_number=sv.number,
+            version="21.2.3",
+            core_count=2,
+            term_length=1,
+            additional_bandwidth=50,
+            acl_template_id="XXXXXXXXX",
+            vendor_configuration={
+                "controller1": "X.X.X.X",
+                "controller2": "X.X.X.X",
+                "localId": "test@test.com",
+                "remoteId": "test@test.com",
+                "serialNumber": "4",
+            },
+            secondary_device={
+                "name": "Praveena_TF_VERSA",
+                "metro_code": sv.metro_code,
+                "account_number": sv.number,
+                "acl_template_id": "XXXXXXXX",
+                "notifications": ["test@eq.com"],
+                "vendor_configuration": {
+                    "controller1": "X.X.X.X",
+                    "controller2": "X.X.X.X",
+                    "localId": "test@test.com",
+                    "remoteId": "test@test.com",
+                    "serialNumber": "4",
+                },
+            })
+        ```
+        ### example vyos router ha device
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(metro_code="SV")
+        v_yosam = equinix.networkedge.Device("VYOS-AM",
+            name="TF_VYOS",
+            project_id="XXXXXXX",
+            metro_code=sv.metro_code,
+            type_code="VYOS-ROUTER",
+            self_managed=True,
+            byol=False,
+            package_code="STD",
+            notifications=["test@eq.com"],
+            account_number=sv.number,
+            version="1.4.1-2501",
+            hostname="test",
+            core_count=2,
+            term_length=1,
+            additional_bandwidth=50,
+            acl_template_id="XXXXXXXX",
+            ssh_key={
+                "username": "test",
+                "key_name": "xxxxxxxx",
+            },
+            secondary_device={
+                "name": "TF_CHECKPOINT",
+                "metro_code": sv.metro_code,
+                "account_number": sv.number,
+                "hostname": "test",
+                "acl_template_id": "XXXXXXXXXXX",
+                "notifications": ["test@eq.com"],
+            })
         ```
         ### example zscaler appc
         ```python
@@ -1982,7 +2308,7 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[Union[str, 'ThroughputUnit']] throughput_unit: License throughput unit. One of `Mbps` or `Gbps`.
         :param pulumi.Input[int] tier: Select bandwidth tier for your own license, i.e., `0` or `1` or `2` or `3`. Tiers applicable only for C8000V Autonomous or C8000V SDWAN (controller) device types. If not provided, tier is defaulted to '2'.
         :param pulumi.Input[str] type_code: Device type code.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vendor_configuration: Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress, provisioningKey)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vendor_configuration: Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress, provisioningKey, ipAddress(applicable for infoblox only), subnetMaskIp(applicable for infoblox only), gatewayIp(applicable for infoblox only))
                * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
         :param pulumi.Input[str] version: Device software software version.
         :param pulumi.Input[str] wan_interface_id: device interface id picked for WAN
@@ -2104,14 +2430,14 @@ class Device(pulumi.CustomResource):
             file_name="TF-AVX-cloud-init-file.txt",
             content=std.file_output(input=filepath).apply(lambda invoke: invoke.result),
             metro_code=sv.metro_code.apply(lambda x: equinix.Metro(x)),
-            device_type_code="AVIATRIX_EDGE",
+            device_type_code="AVIATRIX_EDGE_10",
             process_type=equinix.networkedge.FileType.CLOUD_INIT,
             self_managed=True,
             byol=True)
         aviatrix_single = equinix.networkedge.Device("aviatrixSingle",
             name="tf-aviatrix",
             metro_code=sv.metro_code,
-            type_code="AVIATRIX_EDGE",
+            type_code="AVIATRIX_EDGE_10",
             self_managed=True,
             byol=True,
             package_code="STD",
@@ -2399,6 +2725,48 @@ class Device(pulumi.CustomResource):
             cloud_init_file_id=aviatrix_cloudinit_file.uuid,
             acl_template_id="c06150ea-b604-4ad1-832a-d63936e9b938")
         ```
+        ### example aruba edgeconnect ha device
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(metro_code="SV")
+        a_rubaedgeconnectam = equinix.networkedge.Device("ARUBA-EDGECONNECT-AM",
+            name="TF_Aruba_Edge_Connect",
+            project_id="XXXXX",
+            metro_code=sv.metro_code,
+            type_code="EDGECONNECT-SDWAN",
+            self_managed=True,
+            byol=True,
+            package_code="EC-V",
+            notifications=["test@eq.com"],
+            account_number=sv.number,
+            version="9.4.2.3",
+            core_count=2,
+            term_length=1,
+            additional_bandwidth=50,
+            interface_count=32,
+            acl_template_id="XXXXXXX",
+            vendor_configuration={
+                "accountKey": "xxxxx",
+                "accountName": "xxxx",
+                "applianceTag": "tests",
+                "hostname": "test",
+            },
+            secondary_device={
+                "name": "TF_CHECKPOINT",
+                "metro_code": sv.metro_code,
+                "account_number": sv.number,
+                "acl_template_id": "XXXXXXX",
+                "notifications": ["test@eq.com"],
+                "vendor_configuration": {
+                    "accountKey": "xxxxx",
+                    "accountName": "xxxx",
+                    "applianceTag": "test",
+                    "hostname": "test",
+                },
+            })
+        ```
         ### example c8000v byol without default password
         ```python
         import pulumi
@@ -2490,6 +2858,290 @@ class Device(pulumi.CustomResource):
                 "key_name": "test-key",
             },
             acl_template_id="0bff6e05-f0e7-44cd-804a-25b92b835f8b")
+        ```
+        ### example checkpoint single device
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(metro_code="SV")
+        c_heckpointsv = equinix.networkedge.Device("CHECKPOINT-SV",
+            name="TF_CHECKPOINT",
+            project_id="XXXX",
+            metro_code=sv.metro_code,
+            type_code="CGUARD",
+            self_managed=True,
+            byol=True,
+            package_code="STD",
+            notifications=["test@eq.com"],
+            account_number=sv.number,
+            version="R81.20",
+            hostname="test",
+            core_count=2,
+            term_length=1,
+            additional_bandwidth=5,
+            acl_template_id="XXXXXXX",
+            ssh_key={
+                "username": "XXXXX",
+                "key_name": "XXXXXX",
+            })
+        ```
+        ### example cisco ftd cluster znpd
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(metro_code="SV")
+        cisco_ftdsv = equinix.networkedge.Device("cisco-FTD-SV",
+            name="TF_Cisco_NGFW_CLUSTER_ZNPD",
+            project_id="XXXXXXX",
+            metro_code=sv.metro_code,
+            type_code="Cisco_NGFW",
+            self_managed=True,
+            connectivity="PRIVATE",
+            byol=True,
+            package_code="FTDv10",
+            notifications=["test@eq.com"],
+            account_number=sv.number,
+            version="7.0.4-55",
+            hostname="test",
+            core_count=4,
+            term_length=1,
+            interface_count=10,
+            cluster_details={
+                "cluster_name": "tf-ftd-cluster",
+                "node0": {
+                    "vendor_configuration": {
+                        "hostname": "test",
+                        "activation_key": "XXXXX",
+                        "controller1": "X.X.X.X",
+                        "management_type": "FMC",
+                    },
+                },
+                "node1": {
+                    "vendor_configuration": {
+                        "hostname": "test",
+                        "management_type": "FMC",
+                    },
+                },
+            })
+        ```
+        ### example fortigate sdwan single device
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(metro_code="SV")
+        f_tntsdwansv = equinix.networkedge.Device("FTNT-SDWAN-SV",
+            name="TF_FTNT-SDWAN",
+            project_id="XXXXXXXXXX",
+            metro_code=sv.metro_code,
+            type_code="FG-SDWAN",
+            self_managed=True,
+            byol=True,
+            package_code="VM02",
+            notifications=["test@eq.com"],
+            account_number=sv.number,
+            version="7.0.14",
+            hostname="test",
+            core_count=2,
+            term_length=1,
+            additional_bandwidth=50,
+            acl_template_id="XXXXXXXX",
+            vendor_configuration={
+                "adminPassword": "XXXXX",
+                "controller1": "X.X.X.X",
+            })
+        ```
+        ### example infoblox cluster device
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(metro_code="SV")
+        i_nfobloxsv = equinix.networkedge.Device("INFOBLOX-SV",
+            name="TF_INFOBLOX",
+            project_id="XXXXXXXXXX",
+            metro_code=sv.metro_code,
+            type_code="INFOBLOX-GRID-MEMBER",
+            self_managed=True,
+            byol=True,
+            package_code="STD",
+            notifications=["test@eq.com"],
+            account_number=sv.number,
+            version="9.0.5",
+            hostname="test",
+            connectivity="PRIVATE",
+            core_count=8,
+            term_length=1,
+            cluster_details={
+                "cluster_name": "tf-infoblox-cluster",
+                "node0": {
+                    "vendor_configuration": {
+                        "admin_password": "Welcome@1",
+                        "ip_address": "192.168.1.35",
+                        "subnet_mask_ip": "255.255.255.0",
+                        "gateway_ip": "192.168.1.1",
+                        "hostname": "test",
+                    },
+                },
+                "node1": {
+                    "vendor_configuration": {
+                        "admin_password": "Welcome@1",
+                        "ip_address": "192.168.1.35",
+                        "subnet_mask_ip": "255.255.255.0",
+                        "gateway_ip": "192.168.1.1",
+                        "hostname": "test",
+                    },
+                },
+            })
+        ```
+        ### example infoblox ha device
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(metro_code="SV")
+        i_nfobloxsv = equinix.networkedge.Device("INFOBLOX-SV",
+            name="TF_INFOBLOX",
+            project_id="XXXXXXXXXX",
+            metro_code=sv.metro_code,
+            type_code="INFOBLOX-GRID-MEMBER",
+            self_managed=True,
+            connectivity="PRIVATE",
+            byol=True,
+            package_code="STD",
+            notifications=["test@eq.com"],
+            account_number=sv.number,
+            version="9.0.5",
+            hostname="test",
+            core_count=8,
+            term_length=1,
+            vendor_configuration={
+                "adminPassword": "X.X.X.X",
+                "ipAddress": "X.X.X.X",
+                "subnetMaskIp": "X.X.X.X",
+                "gatewayIp": "X.X.X.X",
+            },
+            secondary_device={
+                "name": "TF_INFOBLOX-Sec",
+                "metro_code": sv.metro_code,
+                "account_number": sv.number,
+                "notifications": ["test@eq.com"],
+                "hostname": "test",
+                "vendor_configuration": {
+                    "adminPassword": "X.X.X.X",
+                    "ipAddress": "X.X.X.X",
+                    "subnetMaskIp": "X.X.X.X",
+                    "gatewayIp": "X.X.X.X",
+                },
+            })
+        ```
+        ### example infoblox single device
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(metro_code="SV")
+        i_nfobloxsv = equinix.networkedge.Device("INFOBLOX-SV",
+            name="TF_INFOBLOX",
+            project_id="XXXXXXXXXX",
+            metro_code=sv.metro_code,
+            type_code="INFOBLOX-GRID-MEMBER",
+            self_managed=True,
+            byol=True,
+            connectivity="PRIVATE",
+            package_code="STD",
+            notifications=["test@eq.com"],
+            account_number=sv.number,
+            version="9.0.5",
+            hostname="test",
+            core_count=8,
+            term_length=1,
+            vendor_configuration={
+                "adminPassword": "X.X.X.X",
+                "ipAddress": "X.X.X.X",
+                "subnetMaskIp": "X.X.X.X",
+                "gatewayIp": "X.X.X.X",
+            })
+        ```
+        ### example versa sdwan ha device
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(metro_code="SV")
+        f_tntsdwansv = equinix.networkedge.Device("FTNT-SDWAN-SV",
+            name="TF_VERSA-SDWAN",
+            project_id="XXXXXXXXX",
+            metro_code=sv.metro_code,
+            type_code="VERSA_SDWAN",
+            self_managed=True,
+            byol=True,
+            package_code="FLEX_VNF_2",
+            notifications=["test@eq.com"],
+            account_number=sv.number,
+            version="21.2.3",
+            core_count=2,
+            term_length=1,
+            additional_bandwidth=50,
+            acl_template_id="XXXXXXXXX",
+            vendor_configuration={
+                "controller1": "X.X.X.X",
+                "controller2": "X.X.X.X",
+                "localId": "test@test.com",
+                "remoteId": "test@test.com",
+                "serialNumber": "4",
+            },
+            secondary_device={
+                "name": "Praveena_TF_VERSA",
+                "metro_code": sv.metro_code,
+                "account_number": sv.number,
+                "acl_template_id": "XXXXXXXX",
+                "notifications": ["test@eq.com"],
+                "vendor_configuration": {
+                    "controller1": "X.X.X.X",
+                    "controller2": "X.X.X.X",
+                    "localId": "test@test.com",
+                    "remoteId": "test@test.com",
+                    "serialNumber": "4",
+                },
+            })
+        ```
+        ### example vyos router ha device
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(metro_code="SV")
+        v_yosam = equinix.networkedge.Device("VYOS-AM",
+            name="TF_VYOS",
+            project_id="XXXXXXX",
+            metro_code=sv.metro_code,
+            type_code="VYOS-ROUTER",
+            self_managed=True,
+            byol=False,
+            package_code="STD",
+            notifications=["test@eq.com"],
+            account_number=sv.number,
+            version="1.4.1-2501",
+            hostname="test",
+            core_count=2,
+            term_length=1,
+            additional_bandwidth=50,
+            acl_template_id="XXXXXXXX",
+            ssh_key={
+                "username": "test",
+                "key_name": "xxxxxxxx",
+            },
+            secondary_device={
+                "name": "TF_CHECKPOINT",
+                "metro_code": sv.metro_code,
+                "account_number": sv.number,
+                "hostname": "test",
+                "acl_template_id": "XXXXXXXXXXX",
+                "notifications": ["test@eq.com"],
+            })
         ```
         ### example zscaler appc
         ```python
@@ -2799,7 +3451,7 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[int] tier: Select bandwidth tier for your own license, i.e., `0` or `1` or `2` or `3`. Tiers applicable only for C8000V Autonomous or C8000V SDWAN (controller) device types. If not provided, tier is defaulted to '2'.
         :param pulumi.Input[str] type_code: Device type code.
         :param pulumi.Input[str] uuid: Device unique identifier.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vendor_configuration: Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress, provisioningKey)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vendor_configuration: Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress, provisioningKey, ipAddress(applicable for infoblox only), subnetMaskIp(applicable for infoblox only), gatewayIp(applicable for infoblox only))
                * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
         :param pulumi.Input[str] version: Device software software version.
         :param pulumi.Input[str] wan_interface_id: device interface id picked for WAN
@@ -3207,7 +3859,7 @@ class Device(pulumi.CustomResource):
     @pulumi.getter(name="vendorConfiguration")
     def vendor_configuration(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress, provisioningKey)
+        Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress, provisioningKey, ipAddress(applicable for infoblox only), subnetMaskIp(applicable for infoblox only), gatewayIp(applicable for infoblox only))
         * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
         """
         return pulumi.get(self, "vendor_configuration")

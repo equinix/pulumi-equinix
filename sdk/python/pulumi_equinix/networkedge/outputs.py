@@ -413,10 +413,16 @@ class DeviceClusterDetailsNode0VendorConfiguration(dict):
             suggest = "admin_password"
         elif key == "controllerFqdn":
             suggest = "controller_fqdn"
+        elif key == "gatewayIp":
+            suggest = "gateway_ip"
+        elif key == "ipAddress":
+            suggest = "ip_address"
         elif key == "licenseId":
             suggest = "license_id"
         elif key == "licenseKey":
             suggest = "license_key"
+        elif key == "managementType":
+            suggest = "management_type"
         elif key == "panoramaAuthKey":
             suggest = "panorama_auth_key"
         elif key == "panoramaIpAddress":
@@ -429,6 +435,8 @@ class DeviceClusterDetailsNode0VendorConfiguration(dict):
             suggest = "private_gateway"
         elif key == "rootPassword":
             suggest = "root_password"
+        elif key == "subnetMaskIp":
+            suggest = "subnet_mask_ip"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in DeviceClusterDetailsNode0VendorConfiguration. Access the value via the '{suggest}' property getter instead.")
@@ -446,29 +454,37 @@ class DeviceClusterDetailsNode0VendorConfiguration(dict):
                  admin_password: Optional[str] = None,
                  controller1: Optional[str] = None,
                  controller_fqdn: Optional[str] = None,
+                 gateway_ip: Optional[str] = None,
                  hostname: Optional[str] = None,
+                 ip_address: Optional[str] = None,
                  license_id: Optional[str] = None,
                  license_key: Optional[str] = None,
+                 management_type: Optional[str] = None,
                  panorama_auth_key: Optional[str] = None,
                  panorama_ip_address: Optional[str] = None,
                  private_address: Optional[str] = None,
                  private_cidr_mask: Optional[str] = None,
                  private_gateway: Optional[str] = None,
-                 root_password: Optional[str] = None):
+                 root_password: Optional[str] = None,
+                 subnet_mask_ip: Optional[str] = None):
         """
         :param str activation_key: Activation key. This is required for Velocloud clusters.
         :param str admin_password: The administrative password of the device. You can use it to log in to the console. This field is not available for all device types.
         :param str controller1: System IP Address. Mandatory for the Fortinet SDWAN cluster device.
         :param str controller_fqdn: Controller fqdn. This is required for Velocloud clusters.
+        :param str gateway_ip: Gateway IP. This field is relevant only for the Infoblox devices.
         :param str hostname: Hostname. This is necessary for Palo Alto, Juniper, and Fortinet clusters.
+        :param str ip_address: IP Address. This field is relevant only for the Infoblox devices.
         :param str license_id: License id. This field is relevant only for the BlueCat DNS and DHCP Server
         :param str license_key: License key. This field is relevant only for the BlueCat DNS and DHCP Server
+        :param str management_type: Management Type. This field is relevant only for Cisco FTD Firewall devices
         :param str panorama_auth_key: Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
         :param str panorama_ip_address: Panorama Server IP Address. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
         :param str private_address: Private address. This field is relevant only for the BlueCat DNS and DHCP Server
         :param str private_cidr_mask: Private CIDR Mask. This field is relevant only for the BlueCat DNS and DHCP Server
         :param str private_gateway: Private gateway. This field is relevant only for the BlueCat DNS and DHCP Server
         :param str root_password: The CLI password of the device. This field is relevant only for the Velocloud SDWAN cluster.
+        :param str subnet_mask_ip: Subnet Mask IP. This field is relevant only for the Infoblox devices.
         """
         if activation_key is not None:
             pulumi.set(__self__, "activation_key", activation_key)
@@ -478,12 +494,18 @@ class DeviceClusterDetailsNode0VendorConfiguration(dict):
             pulumi.set(__self__, "controller1", controller1)
         if controller_fqdn is not None:
             pulumi.set(__self__, "controller_fqdn", controller_fqdn)
+        if gateway_ip is not None:
+            pulumi.set(__self__, "gateway_ip", gateway_ip)
         if hostname is not None:
             pulumi.set(__self__, "hostname", hostname)
+        if ip_address is not None:
+            pulumi.set(__self__, "ip_address", ip_address)
         if license_id is not None:
             pulumi.set(__self__, "license_id", license_id)
         if license_key is not None:
             pulumi.set(__self__, "license_key", license_key)
+        if management_type is not None:
+            pulumi.set(__self__, "management_type", management_type)
         if panorama_auth_key is not None:
             pulumi.set(__self__, "panorama_auth_key", panorama_auth_key)
         if panorama_ip_address is not None:
@@ -496,6 +518,8 @@ class DeviceClusterDetailsNode0VendorConfiguration(dict):
             pulumi.set(__self__, "private_gateway", private_gateway)
         if root_password is not None:
             pulumi.set(__self__, "root_password", root_password)
+        if subnet_mask_ip is not None:
+            pulumi.set(__self__, "subnet_mask_ip", subnet_mask_ip)
 
     @property
     @pulumi.getter(name="activationKey")
@@ -530,12 +554,28 @@ class DeviceClusterDetailsNode0VendorConfiguration(dict):
         return pulumi.get(self, "controller_fqdn")
 
     @property
+    @pulumi.getter(name="gatewayIp")
+    def gateway_ip(self) -> Optional[str]:
+        """
+        Gateway IP. This field is relevant only for the Infoblox devices.
+        """
+        return pulumi.get(self, "gateway_ip")
+
+    @property
     @pulumi.getter
     def hostname(self) -> Optional[str]:
         """
         Hostname. This is necessary for Palo Alto, Juniper, and Fortinet clusters.
         """
         return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> Optional[str]:
+        """
+        IP Address. This field is relevant only for the Infoblox devices.
+        """
+        return pulumi.get(self, "ip_address")
 
     @property
     @pulumi.getter(name="licenseId")
@@ -552,6 +592,14 @@ class DeviceClusterDetailsNode0VendorConfiguration(dict):
         License key. This field is relevant only for the BlueCat DNS and DHCP Server
         """
         return pulumi.get(self, "license_key")
+
+    @property
+    @pulumi.getter(name="managementType")
+    def management_type(self) -> Optional[str]:
+        """
+        Management Type. This field is relevant only for Cisco FTD Firewall devices
+        """
+        return pulumi.get(self, "management_type")
 
     @property
     @pulumi.getter(name="panoramaAuthKey")
@@ -600,6 +648,14 @@ class DeviceClusterDetailsNode0VendorConfiguration(dict):
         The CLI password of the device. This field is relevant only for the Velocloud SDWAN cluster.
         """
         return pulumi.get(self, "root_password")
+
+    @property
+    @pulumi.getter(name="subnetMaskIp")
+    def subnet_mask_ip(self) -> Optional[str]:
+        """
+        Subnet Mask IP. This field is relevant only for the Infoblox devices.
+        """
+        return pulumi.get(self, "subnet_mask_ip")
 
 
 @pulumi.output_type
@@ -701,10 +757,16 @@ class DeviceClusterDetailsNode1VendorConfiguration(dict):
             suggest = "admin_password"
         elif key == "controllerFqdn":
             suggest = "controller_fqdn"
+        elif key == "gatewayIp":
+            suggest = "gateway_ip"
+        elif key == "ipAddress":
+            suggest = "ip_address"
         elif key == "licenseId":
             suggest = "license_id"
         elif key == "licenseKey":
             suggest = "license_key"
+        elif key == "managementType":
+            suggest = "management_type"
         elif key == "panoramaAuthKey":
             suggest = "panorama_auth_key"
         elif key == "panoramaIpAddress":
@@ -717,6 +779,8 @@ class DeviceClusterDetailsNode1VendorConfiguration(dict):
             suggest = "private_gateway"
         elif key == "rootPassword":
             suggest = "root_password"
+        elif key == "subnetMaskIp":
+            suggest = "subnet_mask_ip"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in DeviceClusterDetailsNode1VendorConfiguration. Access the value via the '{suggest}' property getter instead.")
@@ -734,29 +798,37 @@ class DeviceClusterDetailsNode1VendorConfiguration(dict):
                  admin_password: Optional[str] = None,
                  controller1: Optional[str] = None,
                  controller_fqdn: Optional[str] = None,
+                 gateway_ip: Optional[str] = None,
                  hostname: Optional[str] = None,
+                 ip_address: Optional[str] = None,
                  license_id: Optional[str] = None,
                  license_key: Optional[str] = None,
+                 management_type: Optional[str] = None,
                  panorama_auth_key: Optional[str] = None,
                  panorama_ip_address: Optional[str] = None,
                  private_address: Optional[str] = None,
                  private_cidr_mask: Optional[str] = None,
                  private_gateway: Optional[str] = None,
-                 root_password: Optional[str] = None):
+                 root_password: Optional[str] = None,
+                 subnet_mask_ip: Optional[str] = None):
         """
         :param str activation_key: Activation key. This is required for Velocloud clusters.
         :param str admin_password: The administrative password of the device. You can use it to log in to the console. This field is not available for all device types.
         :param str controller1: System IP Address. Mandatory for the Fortinet SDWAN cluster device.
         :param str controller_fqdn: Controller fqdn. This is required for Velocloud clusters.
+        :param str gateway_ip: Gateway IP. This field is relevant only for the Infoblox devices.
         :param str hostname: Hostname. This is necessary for Palo Alto, Juniper, and Fortinet clusters.
+        :param str ip_address: IP Address. This field is relevant only for the Infoblox devices.
         :param str license_id: License id. This field is relevant only for the BlueCat DNS and DHCP Server
         :param str license_key: License key. This field is relevant only for the BlueCat DNS and DHCP Server
+        :param str management_type: Management Type. This field is relevant only for Cisco FTD Firewall devices
         :param str panorama_auth_key: Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
         :param str panorama_ip_address: Panorama Server IP Address. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
         :param str private_address: Private address. This field is relevant only for the BlueCat DNS and DHCP Server
         :param str private_cidr_mask: Private CIDR Mask. This field is relevant only for the BlueCat DNS and DHCP Server
         :param str private_gateway: Private gateway. This field is relevant only for the BlueCat DNS and DHCP Server
         :param str root_password: The CLI password of the device. This field is relevant only for the Velocloud SDWAN cluster.
+        :param str subnet_mask_ip: Subnet Mask IP. This field is relevant only for the Infoblox devices.
         """
         if activation_key is not None:
             pulumi.set(__self__, "activation_key", activation_key)
@@ -766,12 +838,18 @@ class DeviceClusterDetailsNode1VendorConfiguration(dict):
             pulumi.set(__self__, "controller1", controller1)
         if controller_fqdn is not None:
             pulumi.set(__self__, "controller_fqdn", controller_fqdn)
+        if gateway_ip is not None:
+            pulumi.set(__self__, "gateway_ip", gateway_ip)
         if hostname is not None:
             pulumi.set(__self__, "hostname", hostname)
+        if ip_address is not None:
+            pulumi.set(__self__, "ip_address", ip_address)
         if license_id is not None:
             pulumi.set(__self__, "license_id", license_id)
         if license_key is not None:
             pulumi.set(__self__, "license_key", license_key)
+        if management_type is not None:
+            pulumi.set(__self__, "management_type", management_type)
         if panorama_auth_key is not None:
             pulumi.set(__self__, "panorama_auth_key", panorama_auth_key)
         if panorama_ip_address is not None:
@@ -784,6 +862,8 @@ class DeviceClusterDetailsNode1VendorConfiguration(dict):
             pulumi.set(__self__, "private_gateway", private_gateway)
         if root_password is not None:
             pulumi.set(__self__, "root_password", root_password)
+        if subnet_mask_ip is not None:
+            pulumi.set(__self__, "subnet_mask_ip", subnet_mask_ip)
 
     @property
     @pulumi.getter(name="activationKey")
@@ -818,12 +898,28 @@ class DeviceClusterDetailsNode1VendorConfiguration(dict):
         return pulumi.get(self, "controller_fqdn")
 
     @property
+    @pulumi.getter(name="gatewayIp")
+    def gateway_ip(self) -> Optional[str]:
+        """
+        Gateway IP. This field is relevant only for the Infoblox devices.
+        """
+        return pulumi.get(self, "gateway_ip")
+
+    @property
     @pulumi.getter
     def hostname(self) -> Optional[str]:
         """
         Hostname. This is necessary for Palo Alto, Juniper, and Fortinet clusters.
         """
         return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> Optional[str]:
+        """
+        IP Address. This field is relevant only for the Infoblox devices.
+        """
+        return pulumi.get(self, "ip_address")
 
     @property
     @pulumi.getter(name="licenseId")
@@ -840,6 +936,14 @@ class DeviceClusterDetailsNode1VendorConfiguration(dict):
         License key. This field is relevant only for the BlueCat DNS and DHCP Server
         """
         return pulumi.get(self, "license_key")
+
+    @property
+    @pulumi.getter(name="managementType")
+    def management_type(self) -> Optional[str]:
+        """
+        Management Type. This field is relevant only for Cisco FTD Firewall devices
+        """
+        return pulumi.get(self, "management_type")
 
     @property
     @pulumi.getter(name="panoramaAuthKey")
@@ -888,6 +992,14 @@ class DeviceClusterDetailsNode1VendorConfiguration(dict):
         The CLI password of the device. This field is relevant only for the Velocloud SDWAN cluster.
         """
         return pulumi.get(self, "root_password")
+
+    @property
+    @pulumi.getter(name="subnetMaskIp")
+    def subnet_mask_ip(self) -> Optional[str]:
+        """
+        Subnet Mask IP. This field is relevant only for the Infoblox devices.
+        """
+        return pulumi.get(self, "subnet_mask_ip")
 
 
 @pulumi.output_type
@@ -1399,7 +1511,7 @@ class DeviceSecondaryDevice(dict):
         :param 'DeviceSecondaryDeviceSshKeyArgs' ssh_key: Definition of SSH key that will be provisioned on a device
         :param str status: interface status. One of `AVAILABLE`, `RESERVED`, `ASSIGNED`.
         :param str uuid: Device unique identifier.
-        :param Mapping[str, str] vendor_configuration: Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`, `panoramaAuthKey`, `panoramaIpAddress`.
+        :param Mapping[str, str] vendor_configuration: Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`, `panoramaAuthKey`, `panoramaIpAddress`, `ipAddress`, `subnetMaskIp`, `gatewayIp`.
         :param str wan_interface_id: device interface id picked for WAN
         :param str zone_code: Device location zone code.
         """
@@ -1661,7 +1773,7 @@ class DeviceSecondaryDevice(dict):
     @pulumi.getter(name="vendorConfiguration")
     def vendor_configuration(self) -> Optional[Mapping[str, str]]:
         """
-        Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`, `panoramaAuthKey`, `panoramaIpAddress`.
+        Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`, `panoramaAuthKey`, `panoramaIpAddress`, `ipAddress`, `subnetMaskIp`, `gatewayIp`.
         """
         return pulumi.get(self, "vendor_configuration")
 

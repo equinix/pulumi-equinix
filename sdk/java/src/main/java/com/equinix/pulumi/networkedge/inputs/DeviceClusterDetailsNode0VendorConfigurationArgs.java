@@ -76,6 +76,21 @@ public final class DeviceClusterDetailsNode0VendorConfigurationArgs extends com.
     }
 
     /**
+     * Gateway IP. This field is relevant only for the Infoblox devices.
+     * 
+     */
+    @Import(name="gatewayIp")
+    private @Nullable Output<String> gatewayIp;
+
+    /**
+     * @return Gateway IP. This field is relevant only for the Infoblox devices.
+     * 
+     */
+    public Optional<Output<String>> gatewayIp() {
+        return Optional.ofNullable(this.gatewayIp);
+    }
+
+    /**
      * Hostname. This is necessary for Palo Alto, Juniper, and Fortinet clusters.
      * 
      */
@@ -88,6 +103,21 @@ public final class DeviceClusterDetailsNode0VendorConfigurationArgs extends com.
      */
     public Optional<Output<String>> hostname() {
         return Optional.ofNullable(this.hostname);
+    }
+
+    /**
+     * IP Address. This field is relevant only for the Infoblox devices.
+     * 
+     */
+    @Import(name="ipAddress")
+    private @Nullable Output<String> ipAddress;
+
+    /**
+     * @return IP Address. This field is relevant only for the Infoblox devices.
+     * 
+     */
+    public Optional<Output<String>> ipAddress() {
+        return Optional.ofNullable(this.ipAddress);
     }
 
     /**
@@ -118,6 +148,21 @@ public final class DeviceClusterDetailsNode0VendorConfigurationArgs extends com.
      */
     public Optional<Output<String>> licenseKey() {
         return Optional.ofNullable(this.licenseKey);
+    }
+
+    /**
+     * Management Type. This field is relevant only for Cisco FTD Firewall devices
+     * 
+     */
+    @Import(name="managementType")
+    private @Nullable Output<String> managementType;
+
+    /**
+     * @return Management Type. This field is relevant only for Cisco FTD Firewall devices
+     * 
+     */
+    public Optional<Output<String>> managementType() {
+        return Optional.ofNullable(this.managementType);
     }
 
     /**
@@ -210,6 +255,21 @@ public final class DeviceClusterDetailsNode0VendorConfigurationArgs extends com.
         return Optional.ofNullable(this.rootPassword);
     }
 
+    /**
+     * Subnet Mask IP. This field is relevant only for the Infoblox devices.
+     * 
+     */
+    @Import(name="subnetMaskIp")
+    private @Nullable Output<String> subnetMaskIp;
+
+    /**
+     * @return Subnet Mask IP. This field is relevant only for the Infoblox devices.
+     * 
+     */
+    public Optional<Output<String>> subnetMaskIp() {
+        return Optional.ofNullable(this.subnetMaskIp);
+    }
+
     private DeviceClusterDetailsNode0VendorConfigurationArgs() {}
 
     private DeviceClusterDetailsNode0VendorConfigurationArgs(DeviceClusterDetailsNode0VendorConfigurationArgs $) {
@@ -217,15 +277,19 @@ public final class DeviceClusterDetailsNode0VendorConfigurationArgs extends com.
         this.adminPassword = $.adminPassword;
         this.controller1 = $.controller1;
         this.controllerFqdn = $.controllerFqdn;
+        this.gatewayIp = $.gatewayIp;
         this.hostname = $.hostname;
+        this.ipAddress = $.ipAddress;
         this.licenseId = $.licenseId;
         this.licenseKey = $.licenseKey;
+        this.managementType = $.managementType;
         this.panoramaAuthKey = $.panoramaAuthKey;
         this.panoramaIpAddress = $.panoramaIpAddress;
         this.privateAddress = $.privateAddress;
         this.privateCidrMask = $.privateCidrMask;
         this.privateGateway = $.privateGateway;
         this.rootPassword = $.rootPassword;
+        this.subnetMaskIp = $.subnetMaskIp;
     }
 
     public static Builder builder() {
@@ -331,6 +395,27 @@ public final class DeviceClusterDetailsNode0VendorConfigurationArgs extends com.
         }
 
         /**
+         * @param gatewayIp Gateway IP. This field is relevant only for the Infoblox devices.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gatewayIp(@Nullable Output<String> gatewayIp) {
+            $.gatewayIp = gatewayIp;
+            return this;
+        }
+
+        /**
+         * @param gatewayIp Gateway IP. This field is relevant only for the Infoblox devices.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gatewayIp(String gatewayIp) {
+            return gatewayIp(Output.of(gatewayIp));
+        }
+
+        /**
          * @param hostname Hostname. This is necessary for Palo Alto, Juniper, and Fortinet clusters.
          * 
          * @return builder
@@ -349,6 +434,27 @@ public final class DeviceClusterDetailsNode0VendorConfigurationArgs extends com.
          */
         public Builder hostname(String hostname) {
             return hostname(Output.of(hostname));
+        }
+
+        /**
+         * @param ipAddress IP Address. This field is relevant only for the Infoblox devices.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipAddress(@Nullable Output<String> ipAddress) {
+            $.ipAddress = ipAddress;
+            return this;
+        }
+
+        /**
+         * @param ipAddress IP Address. This field is relevant only for the Infoblox devices.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipAddress(String ipAddress) {
+            return ipAddress(Output.of(ipAddress));
         }
 
         /**
@@ -391,6 +497,27 @@ public final class DeviceClusterDetailsNode0VendorConfigurationArgs extends com.
          */
         public Builder licenseKey(String licenseKey) {
             return licenseKey(Output.of(licenseKey));
+        }
+
+        /**
+         * @param managementType Management Type. This field is relevant only for Cisco FTD Firewall devices
+         * 
+         * @return builder
+         * 
+         */
+        public Builder managementType(@Nullable Output<String> managementType) {
+            $.managementType = managementType;
+            return this;
+        }
+
+        /**
+         * @param managementType Management Type. This field is relevant only for Cisco FTD Firewall devices
+         * 
+         * @return builder
+         * 
+         */
+        public Builder managementType(String managementType) {
+            return managementType(Output.of(managementType));
         }
 
         /**
@@ -517,6 +644,27 @@ public final class DeviceClusterDetailsNode0VendorConfigurationArgs extends com.
          */
         public Builder rootPassword(String rootPassword) {
             return rootPassword(Output.of(rootPassword));
+        }
+
+        /**
+         * @param subnetMaskIp Subnet Mask IP. This field is relevant only for the Infoblox devices.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subnetMaskIp(@Nullable Output<String> subnetMaskIp) {
+            $.subnetMaskIp = subnetMaskIp;
+            return this;
+        }
+
+        /**
+         * @param subnetMaskIp Subnet Mask IP. This field is relevant only for the Infoblox devices.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subnetMaskIp(String subnetMaskIp) {
+            return subnetMaskIp(Output.of(subnetMaskIp));
         }
 
         public DeviceClusterDetailsNode0VendorConfigurationArgs build() {

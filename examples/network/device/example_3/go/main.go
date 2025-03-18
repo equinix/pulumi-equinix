@@ -28,7 +28,7 @@ func main() {
 			MetroCode: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
 				return &sv.MetroCode, nil
 			}).(pulumi.StringPtrOutput).ApplyT(func(x *string) equinix.Metro { return equinix.Metro(*x) }).(equinix.MetroOutput),
-			DeviceTypeCode: pulumi.String("AVIATRIX_EDGE"),
+			DeviceTypeCode: pulumi.String("AVIATRIX_EDGE_10"),
 			ProcessType:    pulumi.String(networkedge.FileTypeCloudInit),
 			SelfManaged:    pulumi.Bool(true),
 			Byol:           pulumi.Bool(true),
@@ -41,7 +41,7 @@ func main() {
 			MetroCode: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
 				return &sv.MetroCode, nil
 			}).(pulumi.StringPtrOutput)),
-			TypeCode:    pulumi.String("AVIATRIX_EDGE"),
+			TypeCode:    pulumi.String("AVIATRIX_EDGE_10"),
 			SelfManaged: pulumi.Bool(true),
 			Byol:        pulumi.Bool(true),
 			PackageCode: pulumi.String("STD"),
