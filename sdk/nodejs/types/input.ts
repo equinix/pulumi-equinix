@@ -3538,9 +3538,17 @@ export namespace networkedge {
          */
         controllerFqdn?: pulumi.Input<string>;
         /**
+         * Gateway IP. This field is relevant only for the Infoblox devices.
+         */
+        gatewayIp?: pulumi.Input<string>;
+        /**
          * Hostname. This is necessary for Palo Alto, Juniper, and Fortinet clusters.
          */
         hostname?: pulumi.Input<string>;
+        /**
+         * IP Address. This field is relevant only for the Infoblox devices.
+         */
+        ipAddress?: pulumi.Input<string>;
         /**
          * License id. This field is relevant only for the BlueCat DNS and DHCP Server
          */
@@ -3549,6 +3557,10 @@ export namespace networkedge {
          * License key. This field is relevant only for the BlueCat DNS and DHCP Server
          */
         licenseKey?: pulumi.Input<string>;
+        /**
+         * Management Type. This field is relevant only for Cisco FTD Firewall devices
+         */
+        managementType?: pulumi.Input<string>;
         /**
          * Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
          */
@@ -3573,6 +3585,10 @@ export namespace networkedge {
          * The CLI password of the device. This field is relevant only for the Velocloud SDWAN cluster.
          */
         rootPassword?: pulumi.Input<string>;
+        /**
+         * Subnet Mask IP. This field is relevant only for the Infoblox devices.
+         */
+        subnetMaskIp?: pulumi.Input<string>;
     }
 
     export interface DeviceClusterDetailsNode1 {
@@ -3616,9 +3632,17 @@ export namespace networkedge {
          */
         controllerFqdn?: pulumi.Input<string>;
         /**
+         * Gateway IP. This field is relevant only for the Infoblox devices.
+         */
+        gatewayIp?: pulumi.Input<string>;
+        /**
          * Hostname. This is necessary for Palo Alto, Juniper, and Fortinet clusters.
          */
         hostname?: pulumi.Input<string>;
+        /**
+         * IP Address. This field is relevant only for the Infoblox devices.
+         */
+        ipAddress?: pulumi.Input<string>;
         /**
          * License id. This field is relevant only for the BlueCat DNS and DHCP Server
          */
@@ -3627,6 +3651,10 @@ export namespace networkedge {
          * License key. This field is relevant only for the BlueCat DNS and DHCP Server
          */
         licenseKey?: pulumi.Input<string>;
+        /**
+         * Management Type. This field is relevant only for Cisco FTD Firewall devices
+         */
+        managementType?: pulumi.Input<string>;
         /**
          * Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
          */
@@ -3651,6 +3679,10 @@ export namespace networkedge {
          * The CLI password of the device. This field is relevant only for the Velocloud SDWAN cluster.
          */
         rootPassword?: pulumi.Input<string>;
+        /**
+         * Subnet Mask IP. This field is relevant only for the Infoblox devices.
+         */
+        subnetMaskIp?: pulumi.Input<string>;
     }
 
     export interface DeviceInterface {
@@ -3868,7 +3900,7 @@ export namespace networkedge {
          */
         uuid?: pulumi.Input<string>;
         /**
-         * Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`, `panoramaAuthKey`, `panoramaIpAddress`.
+         * Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`, `panoramaAuthKey`, `panoramaIpAddress`, `ipAddress`, `subnetMaskIp`, `gatewayIp`.
          */
         vendorConfiguration?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**

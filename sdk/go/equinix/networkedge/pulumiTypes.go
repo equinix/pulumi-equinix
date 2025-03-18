@@ -737,12 +737,18 @@ type DeviceClusterDetailsNode0VendorConfiguration struct {
 	Controller1 *string `pulumi:"controller1"`
 	// Controller fqdn. This is required for Velocloud clusters.
 	ControllerFqdn *string `pulumi:"controllerFqdn"`
+	// Gateway IP. This field is relevant only for the Infoblox devices.
+	GatewayIp *string `pulumi:"gatewayIp"`
 	// Hostname. This is necessary for Palo Alto, Juniper, and Fortinet clusters.
 	Hostname *string `pulumi:"hostname"`
+	// IP Address. This field is relevant only for the Infoblox devices.
+	IpAddress *string `pulumi:"ipAddress"`
 	// License id. This field is relevant only for the BlueCat DNS and DHCP Server
 	LicenseId *string `pulumi:"licenseId"`
 	// License key. This field is relevant only for the BlueCat DNS and DHCP Server
 	LicenseKey *string `pulumi:"licenseKey"`
+	// Management Type. This field is relevant only for Cisco FTD Firewall devices
+	ManagementType *string `pulumi:"managementType"`
 	// Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
 	PanoramaAuthKey *string `pulumi:"panoramaAuthKey"`
 	// Panorama Server IP Address. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
@@ -755,6 +761,8 @@ type DeviceClusterDetailsNode0VendorConfiguration struct {
 	PrivateGateway *string `pulumi:"privateGateway"`
 	// The CLI password of the device. This field is relevant only for the Velocloud SDWAN cluster.
 	RootPassword *string `pulumi:"rootPassword"`
+	// Subnet Mask IP. This field is relevant only for the Infoblox devices.
+	SubnetMaskIp *string `pulumi:"subnetMaskIp"`
 }
 
 // DeviceClusterDetailsNode0VendorConfigurationInput is an input type that accepts DeviceClusterDetailsNode0VendorConfigurationArgs and DeviceClusterDetailsNode0VendorConfigurationOutput values.
@@ -777,12 +785,18 @@ type DeviceClusterDetailsNode0VendorConfigurationArgs struct {
 	Controller1 pulumi.StringPtrInput `pulumi:"controller1"`
 	// Controller fqdn. This is required for Velocloud clusters.
 	ControllerFqdn pulumi.StringPtrInput `pulumi:"controllerFqdn"`
+	// Gateway IP. This field is relevant only for the Infoblox devices.
+	GatewayIp pulumi.StringPtrInput `pulumi:"gatewayIp"`
 	// Hostname. This is necessary for Palo Alto, Juniper, and Fortinet clusters.
 	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
+	// IP Address. This field is relevant only for the Infoblox devices.
+	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
 	// License id. This field is relevant only for the BlueCat DNS and DHCP Server
 	LicenseId pulumi.StringPtrInput `pulumi:"licenseId"`
 	// License key. This field is relevant only for the BlueCat DNS and DHCP Server
 	LicenseKey pulumi.StringPtrInput `pulumi:"licenseKey"`
+	// Management Type. This field is relevant only for Cisco FTD Firewall devices
+	ManagementType pulumi.StringPtrInput `pulumi:"managementType"`
 	// Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
 	PanoramaAuthKey pulumi.StringPtrInput `pulumi:"panoramaAuthKey"`
 	// Panorama Server IP Address. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
@@ -795,6 +809,8 @@ type DeviceClusterDetailsNode0VendorConfigurationArgs struct {
 	PrivateGateway pulumi.StringPtrInput `pulumi:"privateGateway"`
 	// The CLI password of the device. This field is relevant only for the Velocloud SDWAN cluster.
 	RootPassword pulumi.StringPtrInput `pulumi:"rootPassword"`
+	// Subnet Mask IP. This field is relevant only for the Infoblox devices.
+	SubnetMaskIp pulumi.StringPtrInput `pulumi:"subnetMaskIp"`
 }
 
 func (DeviceClusterDetailsNode0VendorConfigurationArgs) ElementType() reflect.Type {
@@ -894,9 +910,19 @@ func (o DeviceClusterDetailsNode0VendorConfigurationOutput) ControllerFqdn() pul
 	return o.ApplyT(func(v DeviceClusterDetailsNode0VendorConfiguration) *string { return v.ControllerFqdn }).(pulumi.StringPtrOutput)
 }
 
+// Gateway IP. This field is relevant only for the Infoblox devices.
+func (o DeviceClusterDetailsNode0VendorConfigurationOutput) GatewayIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceClusterDetailsNode0VendorConfiguration) *string { return v.GatewayIp }).(pulumi.StringPtrOutput)
+}
+
 // Hostname. This is necessary for Palo Alto, Juniper, and Fortinet clusters.
 func (o DeviceClusterDetailsNode0VendorConfigurationOutput) Hostname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceClusterDetailsNode0VendorConfiguration) *string { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// IP Address. This field is relevant only for the Infoblox devices.
+func (o DeviceClusterDetailsNode0VendorConfigurationOutput) IpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceClusterDetailsNode0VendorConfiguration) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
 }
 
 // License id. This field is relevant only for the BlueCat DNS and DHCP Server
@@ -907,6 +933,11 @@ func (o DeviceClusterDetailsNode0VendorConfigurationOutput) LicenseId() pulumi.S
 // License key. This field is relevant only for the BlueCat DNS and DHCP Server
 func (o DeviceClusterDetailsNode0VendorConfigurationOutput) LicenseKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceClusterDetailsNode0VendorConfiguration) *string { return v.LicenseKey }).(pulumi.StringPtrOutput)
+}
+
+// Management Type. This field is relevant only for Cisco FTD Firewall devices
+func (o DeviceClusterDetailsNode0VendorConfigurationOutput) ManagementType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceClusterDetailsNode0VendorConfiguration) *string { return v.ManagementType }).(pulumi.StringPtrOutput)
 }
 
 // Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
@@ -937,6 +968,11 @@ func (o DeviceClusterDetailsNode0VendorConfigurationOutput) PrivateGateway() pul
 // The CLI password of the device. This field is relevant only for the Velocloud SDWAN cluster.
 func (o DeviceClusterDetailsNode0VendorConfigurationOutput) RootPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceClusterDetailsNode0VendorConfiguration) *string { return v.RootPassword }).(pulumi.StringPtrOutput)
+}
+
+// Subnet Mask IP. This field is relevant only for the Infoblox devices.
+func (o DeviceClusterDetailsNode0VendorConfigurationOutput) SubnetMaskIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceClusterDetailsNode0VendorConfiguration) *string { return v.SubnetMaskIp }).(pulumi.StringPtrOutput)
 }
 
 type DeviceClusterDetailsNode0VendorConfigurationPtrOutput struct{ *pulumi.OutputState }
@@ -1003,6 +1039,16 @@ func (o DeviceClusterDetailsNode0VendorConfigurationPtrOutput) ControllerFqdn() 
 	}).(pulumi.StringPtrOutput)
 }
 
+// Gateway IP. This field is relevant only for the Infoblox devices.
+func (o DeviceClusterDetailsNode0VendorConfigurationPtrOutput) GatewayIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceClusterDetailsNode0VendorConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GatewayIp
+	}).(pulumi.StringPtrOutput)
+}
+
 // Hostname. This is necessary for Palo Alto, Juniper, and Fortinet clusters.
 func (o DeviceClusterDetailsNode0VendorConfigurationPtrOutput) Hostname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeviceClusterDetailsNode0VendorConfiguration) *string {
@@ -1010,6 +1056,16 @@ func (o DeviceClusterDetailsNode0VendorConfigurationPtrOutput) Hostname() pulumi
 			return nil
 		}
 		return v.Hostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// IP Address. This field is relevant only for the Infoblox devices.
+func (o DeviceClusterDetailsNode0VendorConfigurationPtrOutput) IpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceClusterDetailsNode0VendorConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IpAddress
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1030,6 +1086,16 @@ func (o DeviceClusterDetailsNode0VendorConfigurationPtrOutput) LicenseKey() pulu
 			return nil
 		}
 		return v.LicenseKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Management Type. This field is relevant only for Cisco FTD Firewall devices
+func (o DeviceClusterDetailsNode0VendorConfigurationPtrOutput) ManagementType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceClusterDetailsNode0VendorConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ManagementType
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1090,6 +1156,16 @@ func (o DeviceClusterDetailsNode0VendorConfigurationPtrOutput) RootPassword() pu
 			return nil
 		}
 		return v.RootPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// Subnet Mask IP. This field is relevant only for the Infoblox devices.
+func (o DeviceClusterDetailsNode0VendorConfigurationPtrOutput) SubnetMaskIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceClusterDetailsNode0VendorConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SubnetMaskIp
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1317,12 +1393,18 @@ type DeviceClusterDetailsNode1VendorConfiguration struct {
 	Controller1 *string `pulumi:"controller1"`
 	// Controller fqdn. This is required for Velocloud clusters.
 	ControllerFqdn *string `pulumi:"controllerFqdn"`
+	// Gateway IP. This field is relevant only for the Infoblox devices.
+	GatewayIp *string `pulumi:"gatewayIp"`
 	// Hostname. This is necessary for Palo Alto, Juniper, and Fortinet clusters.
 	Hostname *string `pulumi:"hostname"`
+	// IP Address. This field is relevant only for the Infoblox devices.
+	IpAddress *string `pulumi:"ipAddress"`
 	// License id. This field is relevant only for the BlueCat DNS and DHCP Server
 	LicenseId *string `pulumi:"licenseId"`
 	// License key. This field is relevant only for the BlueCat DNS and DHCP Server
 	LicenseKey *string `pulumi:"licenseKey"`
+	// Management Type. This field is relevant only for Cisco FTD Firewall devices
+	ManagementType *string `pulumi:"managementType"`
 	// Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
 	PanoramaAuthKey *string `pulumi:"panoramaAuthKey"`
 	// Panorama Server IP Address. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
@@ -1335,6 +1417,8 @@ type DeviceClusterDetailsNode1VendorConfiguration struct {
 	PrivateGateway *string `pulumi:"privateGateway"`
 	// The CLI password of the device. This field is relevant only for the Velocloud SDWAN cluster.
 	RootPassword *string `pulumi:"rootPassword"`
+	// Subnet Mask IP. This field is relevant only for the Infoblox devices.
+	SubnetMaskIp *string `pulumi:"subnetMaskIp"`
 }
 
 // DeviceClusterDetailsNode1VendorConfigurationInput is an input type that accepts DeviceClusterDetailsNode1VendorConfigurationArgs and DeviceClusterDetailsNode1VendorConfigurationOutput values.
@@ -1357,12 +1441,18 @@ type DeviceClusterDetailsNode1VendorConfigurationArgs struct {
 	Controller1 pulumi.StringPtrInput `pulumi:"controller1"`
 	// Controller fqdn. This is required for Velocloud clusters.
 	ControllerFqdn pulumi.StringPtrInput `pulumi:"controllerFqdn"`
+	// Gateway IP. This field is relevant only for the Infoblox devices.
+	GatewayIp pulumi.StringPtrInput `pulumi:"gatewayIp"`
 	// Hostname. This is necessary for Palo Alto, Juniper, and Fortinet clusters.
 	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
+	// IP Address. This field is relevant only for the Infoblox devices.
+	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
 	// License id. This field is relevant only for the BlueCat DNS and DHCP Server
 	LicenseId pulumi.StringPtrInput `pulumi:"licenseId"`
 	// License key. This field is relevant only for the BlueCat DNS and DHCP Server
 	LicenseKey pulumi.StringPtrInput `pulumi:"licenseKey"`
+	// Management Type. This field is relevant only for Cisco FTD Firewall devices
+	ManagementType pulumi.StringPtrInput `pulumi:"managementType"`
 	// Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
 	PanoramaAuthKey pulumi.StringPtrInput `pulumi:"panoramaAuthKey"`
 	// Panorama Server IP Address. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
@@ -1375,6 +1465,8 @@ type DeviceClusterDetailsNode1VendorConfigurationArgs struct {
 	PrivateGateway pulumi.StringPtrInput `pulumi:"privateGateway"`
 	// The CLI password of the device. This field is relevant only for the Velocloud SDWAN cluster.
 	RootPassword pulumi.StringPtrInput `pulumi:"rootPassword"`
+	// Subnet Mask IP. This field is relevant only for the Infoblox devices.
+	SubnetMaskIp pulumi.StringPtrInput `pulumi:"subnetMaskIp"`
 }
 
 func (DeviceClusterDetailsNode1VendorConfigurationArgs) ElementType() reflect.Type {
@@ -1474,9 +1566,19 @@ func (o DeviceClusterDetailsNode1VendorConfigurationOutput) ControllerFqdn() pul
 	return o.ApplyT(func(v DeviceClusterDetailsNode1VendorConfiguration) *string { return v.ControllerFqdn }).(pulumi.StringPtrOutput)
 }
 
+// Gateway IP. This field is relevant only for the Infoblox devices.
+func (o DeviceClusterDetailsNode1VendorConfigurationOutput) GatewayIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceClusterDetailsNode1VendorConfiguration) *string { return v.GatewayIp }).(pulumi.StringPtrOutput)
+}
+
 // Hostname. This is necessary for Palo Alto, Juniper, and Fortinet clusters.
 func (o DeviceClusterDetailsNode1VendorConfigurationOutput) Hostname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceClusterDetailsNode1VendorConfiguration) *string { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// IP Address. This field is relevant only for the Infoblox devices.
+func (o DeviceClusterDetailsNode1VendorConfigurationOutput) IpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceClusterDetailsNode1VendorConfiguration) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
 }
 
 // License id. This field is relevant only for the BlueCat DNS and DHCP Server
@@ -1487,6 +1589,11 @@ func (o DeviceClusterDetailsNode1VendorConfigurationOutput) LicenseId() pulumi.S
 // License key. This field is relevant only for the BlueCat DNS and DHCP Server
 func (o DeviceClusterDetailsNode1VendorConfigurationOutput) LicenseKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceClusterDetailsNode1VendorConfiguration) *string { return v.LicenseKey }).(pulumi.StringPtrOutput)
+}
+
+// Management Type. This field is relevant only for Cisco FTD Firewall devices
+func (o DeviceClusterDetailsNode1VendorConfigurationOutput) ManagementType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceClusterDetailsNode1VendorConfiguration) *string { return v.ManagementType }).(pulumi.StringPtrOutput)
 }
 
 // Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
@@ -1517,6 +1624,11 @@ func (o DeviceClusterDetailsNode1VendorConfigurationOutput) PrivateGateway() pul
 // The CLI password of the device. This field is relevant only for the Velocloud SDWAN cluster.
 func (o DeviceClusterDetailsNode1VendorConfigurationOutput) RootPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceClusterDetailsNode1VendorConfiguration) *string { return v.RootPassword }).(pulumi.StringPtrOutput)
+}
+
+// Subnet Mask IP. This field is relevant only for the Infoblox devices.
+func (o DeviceClusterDetailsNode1VendorConfigurationOutput) SubnetMaskIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceClusterDetailsNode1VendorConfiguration) *string { return v.SubnetMaskIp }).(pulumi.StringPtrOutput)
 }
 
 type DeviceClusterDetailsNode1VendorConfigurationPtrOutput struct{ *pulumi.OutputState }
@@ -1583,6 +1695,16 @@ func (o DeviceClusterDetailsNode1VendorConfigurationPtrOutput) ControllerFqdn() 
 	}).(pulumi.StringPtrOutput)
 }
 
+// Gateway IP. This field is relevant only for the Infoblox devices.
+func (o DeviceClusterDetailsNode1VendorConfigurationPtrOutput) GatewayIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceClusterDetailsNode1VendorConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GatewayIp
+	}).(pulumi.StringPtrOutput)
+}
+
 // Hostname. This is necessary for Palo Alto, Juniper, and Fortinet clusters.
 func (o DeviceClusterDetailsNode1VendorConfigurationPtrOutput) Hostname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeviceClusterDetailsNode1VendorConfiguration) *string {
@@ -1590,6 +1712,16 @@ func (o DeviceClusterDetailsNode1VendorConfigurationPtrOutput) Hostname() pulumi
 			return nil
 		}
 		return v.Hostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// IP Address. This field is relevant only for the Infoblox devices.
+func (o DeviceClusterDetailsNode1VendorConfigurationPtrOutput) IpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceClusterDetailsNode1VendorConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IpAddress
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1610,6 +1742,16 @@ func (o DeviceClusterDetailsNode1VendorConfigurationPtrOutput) LicenseKey() pulu
 			return nil
 		}
 		return v.LicenseKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Management Type. This field is relevant only for Cisco FTD Firewall devices
+func (o DeviceClusterDetailsNode1VendorConfigurationPtrOutput) ManagementType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceClusterDetailsNode1VendorConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ManagementType
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1670,6 +1812,16 @@ func (o DeviceClusterDetailsNode1VendorConfigurationPtrOutput) RootPassword() pu
 			return nil
 		}
 		return v.RootPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// Subnet Mask IP. This field is relevant only for the Infoblox devices.
+func (o DeviceClusterDetailsNode1VendorConfigurationPtrOutput) SubnetMaskIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceClusterDetailsNode1VendorConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SubnetMaskIp
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2305,7 +2457,7 @@ type DeviceSecondaryDevice struct {
 	Status *string `pulumi:"status"`
 	// Device unique identifier.
 	Uuid *string `pulumi:"uuid"`
-	// Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`, `panoramaAuthKey`, `panoramaIpAddress`.
+	// Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`, `panoramaAuthKey`, `panoramaIpAddress`, `ipAddress`, `subnetMaskIp`, `gatewayIp`.
 	VendorConfiguration map[string]string `pulumi:"vendorConfiguration"`
 	// device interface id picked for WAN
 	WanInterfaceId *string `pulumi:"wanInterfaceId"`
@@ -2376,7 +2528,7 @@ type DeviceSecondaryDeviceArgs struct {
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// Device unique identifier.
 	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
-	// Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`, `panoramaAuthKey`, `panoramaIpAddress`.
+	// Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`, `panoramaAuthKey`, `panoramaIpAddress`, `ipAddress`, `subnetMaskIp`, `gatewayIp`.
 	VendorConfiguration pulumi.StringMapInput `pulumi:"vendorConfiguration"`
 	// device interface id picked for WAN
 	WanInterfaceId pulumi.StringPtrInput `pulumi:"wanInterfaceId"`
@@ -2587,7 +2739,7 @@ func (o DeviceSecondaryDeviceOutput) Uuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceSecondaryDevice) *string { return v.Uuid }).(pulumi.StringPtrOutput)
 }
 
-// Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`, `panoramaAuthKey`, `panoramaIpAddress`.
+// Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`, `panoramaAuthKey`, `panoramaIpAddress`, `ipAddress`, `subnetMaskIp`, `gatewayIp`.
 func (o DeviceSecondaryDeviceOutput) VendorConfiguration() pulumi.StringMapOutput {
 	return o.ApplyT(func(v DeviceSecondaryDevice) map[string]string { return v.VendorConfiguration }).(pulumi.StringMapOutput)
 }
@@ -2877,7 +3029,7 @@ func (o DeviceSecondaryDevicePtrOutput) Uuid() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`, `panoramaAuthKey`, `panoramaIpAddress`.
+// Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`, `panoramaAuthKey`, `panoramaIpAddress`, `ipAddress`, `subnetMaskIp`, `gatewayIp`.
 func (o DeviceSecondaryDevicePtrOutput) VendorConfiguration() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *DeviceSecondaryDevice) map[string]string {
 		if v == nil {
