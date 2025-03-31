@@ -30,9 +30,17 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
         /// </summary>
         public readonly string? ControllerFqdn;
         /// <summary>
+        /// Gateway IP. This field is relevant only for the Infoblox devices.
+        /// </summary>
+        public readonly string? GatewayIp;
+        /// <summary>
         /// Hostname. This is necessary for Palo Alto, Juniper, and Fortinet clusters.
         /// </summary>
         public readonly string? Hostname;
+        /// <summary>
+        /// IP Address. This field is relevant only for the Infoblox devices.
+        /// </summary>
+        public readonly string? IpAddress;
         /// <summary>
         /// License id. This field is relevant only for the BlueCat DNS and DHCP Server
         /// </summary>
@@ -41,6 +49,10 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
         /// License key. This field is relevant only for the BlueCat DNS and DHCP Server
         /// </summary>
         public readonly string? LicenseKey;
+        /// <summary>
+        /// Management Type. This field is relevant only for Cisco FTD Firewall devices
+        /// </summary>
+        public readonly string? ManagementType;
         /// <summary>
         /// Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
         /// </summary>
@@ -65,6 +77,10 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
         /// The CLI password of the device. This field is relevant only for the Velocloud SDWAN cluster.
         /// </summary>
         public readonly string? RootPassword;
+        /// <summary>
+        /// Subnet Mask IP. This field is relevant only for the Infoblox devices.
+        /// </summary>
+        public readonly string? SubnetMaskIp;
 
         [OutputConstructor]
         private DeviceClusterDetailsNode1VendorConfiguration(
@@ -76,11 +92,17 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
 
             string? controllerFqdn,
 
+            string? gatewayIp,
+
             string? hostname,
+
+            string? ipAddress,
 
             string? licenseId,
 
             string? licenseKey,
+
+            string? managementType,
 
             string? panoramaAuthKey,
 
@@ -92,21 +114,27 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
 
             string? privateGateway,
 
-            string? rootPassword)
+            string? rootPassword,
+
+            string? subnetMaskIp)
         {
             ActivationKey = activationKey;
             AdminPassword = adminPassword;
             Controller1 = controller1;
             ControllerFqdn = controllerFqdn;
+            GatewayIp = gatewayIp;
             Hostname = hostname;
+            IpAddress = ipAddress;
             LicenseId = licenseId;
             LicenseKey = licenseKey;
+            ManagementType = managementType;
             PanoramaAuthKey = panoramaAuthKey;
             PanoramaIpAddress = panoramaIpAddress;
             PrivateAddress = privateAddress;
             PrivateCidrMask = privateCidrMask;
             PrivateGateway = privateGateway;
             RootPassword = rootPassword;
+            SubnetMaskIp = subnetMaskIp;
         }
     }
 }

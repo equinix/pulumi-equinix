@@ -399,14 +399,14 @@ public final class DeviceSecondaryDeviceArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`, `panoramaAuthKey`, `panoramaIpAddress`.
+     * Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`, `panoramaAuthKey`, `panoramaIpAddress`, `ipAddress`, `subnetMaskIp`, `gatewayIp`.
      * 
      */
     @Import(name="vendorConfiguration")
     private @Nullable Output<Map<String,String>> vendorConfiguration;
 
     /**
-     * @return Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`, `panoramaAuthKey`, `panoramaIpAddress`.
+     * @return Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`, `panoramaAuthKey`, `panoramaIpAddress`, `ipAddress`, `subnetMaskIp`, `gatewayIp`.
      * 
      */
     public Optional<Output<Map<String,String>>> vendorConfiguration() {
@@ -1042,7 +1042,7 @@ public final class DeviceSecondaryDeviceArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param vendorConfiguration Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`, `panoramaAuthKey`, `panoramaIpAddress`.
+         * @param vendorConfiguration Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`, `panoramaAuthKey`, `panoramaIpAddress`, `ipAddress`, `subnetMaskIp`, `gatewayIp`.
          * 
          * @return builder
          * 
@@ -1053,7 +1053,7 @@ public final class DeviceSecondaryDeviceArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param vendorConfiguration Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`, `panoramaAuthKey`, `panoramaIpAddress`.
+         * @param vendorConfiguration Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`, `panoramaAuthKey`, `panoramaIpAddress`, `ipAddress`, `subnetMaskIp`, `gatewayIp`.
          * 
          * @return builder
          * 
