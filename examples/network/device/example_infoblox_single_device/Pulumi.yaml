@@ -17,11 +17,10 @@ resources:
         - test@eq.com
       accountNumber: ${sv.number}
       version: 9.0.5
-      hostname: test
       coreCount: 8
       termLength: 1
       vendorConfiguration:
-        adminPassword: X.X.X.X
+        adminPassword: xxxxxx
         ipAddress: X.X.X.X
         subnetMaskIp: X.X.X.X
         gatewayIp: X.X.X.X

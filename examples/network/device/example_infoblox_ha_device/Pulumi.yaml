@@ -17,7 +17,6 @@ resources:
         - test@eq.com
       accountNumber: ${sv.number}
       version: 9.0.5
-      hostname: test
       coreCount: 8
       termLength: 1
       vendorConfiguration:
@@ -31,7 +30,6 @@ resources:
         accountNumber: ${sv.number}
         notifications:
           - test@eq.com
-        hostname: test
         vendorConfiguration:
           adminPassword: X.X.X.X
           ipAddress: X.X.X.X

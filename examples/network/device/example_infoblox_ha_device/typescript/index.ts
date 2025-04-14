@@ -17,7 +17,6 @@ const iNFOBLOXSV = new equinix.networkedge.Device("INFOBLOX-SV", {
     notifications: ["test@eq.com"],
     accountNumber: sv.apply(sv => sv.number),
     version: "9.0.5",
-    hostname: "test",
     coreCount: 8,
     termLength: 1,
     vendorConfiguration: {
@@ -31,7 +30,6 @@ const iNFOBLOXSV = new equinix.networkedge.Device("INFOBLOX-SV", {
         metroCode: sv.apply(sv => sv.metroCode),
         accountNumber: sv.apply(sv => sv.number),
         notifications: ["test@eq.com"],
-        hostname: "test",
         vendorConfiguration: {
             adminPassword: "X.X.X.X",
             ipAddress: "X.X.X.X",

@@ -25,7 +25,6 @@ return await Deployment.RunAsync(() =>
         },
         AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
         Version = "9.0.5",
-        Hostname = "test",
         Connectivity = "PRIVATE",
         CoreCount = 8,
         TermLength = 1,
@@ -36,22 +35,20 @@ return await Deployment.RunAsync(() =>
             {
                 VendorConfiguration = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsNode0VendorConfigurationArgs
                 {
-                    AdminPassword = "Welcome@1",
-                    IpAddress = "192.168.1.35",
-                    SubnetMaskIp = "255.255.255.0",
-                    GatewayIp = "192.168.1.1",
-                    Hostname = "test",
+                    AdminPassword = "xxxxxxx",
+                    IpAddress = "X.X.X.X",
+                    SubnetMaskIp = "X.X.X.X",
+                    GatewayIp = "X.X.X.X",
                 },
             },
             Node1 = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsNode1Args
             {
                 VendorConfiguration = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsNode1VendorConfigurationArgs
                 {
-                    AdminPassword = "Welcome@1",
-                    IpAddress = "192.168.1.35",
-                    SubnetMaskIp = "255.255.255.0",
-                    GatewayIp = "192.168.1.1",
-                    Hostname = "test",
+                    AdminPassword = "xxxxxxx",
+                    IpAddress = "X.X.X.X",
+                    SubnetMaskIp = "X.X.X.X",
+                    GatewayIp = "X.X.X.X",
                 },
             },
         },

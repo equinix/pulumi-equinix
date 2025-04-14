@@ -5161,7 +5161,6 @@ const iNFOBLOXSV = new equinix.networkedge.Device("INFOBLOX-SV", {
     notifications: ["test@eq.com"],
     accountNumber: sv.apply(sv => sv.number),
     version: "9.0.5",
-    hostname: "test",
     connectivity: "PRIVATE",
     coreCount: 8,
     termLength: 1,
@@ -5169,20 +5168,18 @@ const iNFOBLOXSV = new equinix.networkedge.Device("INFOBLOX-SV", {
         clusterName: "tf-infoblox-cluster",
         node0: {
             vendorConfiguration: {
-                adminPassword: "Welcome@1",
-                ipAddress: "192.168.1.35",
-                subnetMaskIp: "255.255.255.0",
-                gatewayIp: "192.168.1.1",
-                hostname: "test",
+                adminPassword: "xxxxxxx",
+                ipAddress: "X.X.X.X",
+                subnetMaskIp: "X.X.X.X",
+                gatewayIp: "X.X.X.X",
             },
         },
         node1: {
             vendorConfiguration: {
-                adminPassword: "Welcome@1",
-                ipAddress: "192.168.1.35",
-                subnetMaskIp: "255.255.255.0",
-                gatewayIp: "192.168.1.1",
-                hostname: "test",
+                adminPassword: "xxxxxxx",
+                ipAddress: "X.X.X.X",
+                subnetMaskIp: "X.X.X.X",
+                gatewayIp: "X.X.X.X",
             },
         },
     },
@@ -5204,7 +5201,6 @@ i_nfobloxsv = equinix.networkedge.Device("INFOBLOX-SV",
     notifications=["test@eq.com"],
     account_number=sv.number,
     version="9.0.5",
-    hostname="test",
     connectivity="PRIVATE",
     core_count=8,
     term_length=1,
@@ -5212,20 +5208,18 @@ i_nfobloxsv = equinix.networkedge.Device("INFOBLOX-SV",
         "cluster_name": "tf-infoblox-cluster",
         "node0": {
             "vendor_configuration": {
-                "admin_password": "Welcome@1",
-                "ip_address": "192.168.1.35",
-                "subnet_mask_ip": "255.255.255.0",
-                "gateway_ip": "192.168.1.1",
-                "hostname": "test",
+                "admin_password": "xxxxxxx",
+                "ip_address": "X.X.X.X",
+                "subnet_mask_ip": "X.X.X.X",
+                "gateway_ip": "X.X.X.X",
             },
         },
         "node1": {
             "vendor_configuration": {
-                "admin_password": "Welcome@1",
-                "ip_address": "192.168.1.35",
-                "subnet_mask_ip": "255.255.255.0",
-                "gateway_ip": "192.168.1.1",
-                "hostname": "test",
+                "admin_password": "xxxxxxx",
+                "ip_address": "X.X.X.X",
+                "subnet_mask_ip": "X.X.X.X",
+                "gateway_ip": "X.X.X.X",
             },
         },
     })
@@ -5260,7 +5254,6 @@ func main() {
 				return &sv.Number, nil
 			}).(pulumi.StringPtrOutput)),
 			Version:      pulumi.String("9.0.5"),
-			Hostname:     pulumi.String("test"),
 			Connectivity: pulumi.String("PRIVATE"),
 			CoreCount:    pulumi.Int(8),
 			TermLength:   pulumi.Int(1),
@@ -5268,20 +5261,18 @@ func main() {
 				ClusterName: pulumi.String("tf-infoblox-cluster"),
 				Node0: &networkedge.DeviceClusterDetailsNode0Args{
 					VendorConfiguration: &networkedge.DeviceClusterDetailsNode0VendorConfigurationArgs{
-						AdminPassword: pulumi.String("Welcome@1"),
-						IpAddress:     pulumi.String("192.168.1.35"),
-						SubnetMaskIp:  pulumi.String("255.255.255.0"),
-						GatewayIp:     pulumi.String("192.168.1.1"),
-						Hostname:      pulumi.String("test"),
+						AdminPassword: pulumi.String("xxxxxxx"),
+						IpAddress:     pulumi.String("X.X.X.X"),
+						SubnetMaskIp:  pulumi.String("X.X.X.X"),
+						GatewayIp:     pulumi.String("X.X.X.X"),
 					},
 				},
 				Node1: &networkedge.DeviceClusterDetailsNode1Args{
 					VendorConfiguration: &networkedge.DeviceClusterDetailsNode1VendorConfigurationArgs{
-						AdminPassword: pulumi.String("Welcome@1"),
-						IpAddress:     pulumi.String("192.168.1.35"),
-						SubnetMaskIp:  pulumi.String("255.255.255.0"),
-						GatewayIp:     pulumi.String("192.168.1.1"),
-						Hostname:      pulumi.String("test"),
+						AdminPassword: pulumi.String("xxxxxxx"),
+						IpAddress:     pulumi.String("X.X.X.X"),
+						SubnetMaskIp:  pulumi.String("X.X.X.X"),
+						GatewayIp:     pulumi.String("X.X.X.X"),
 					},
 				},
 			},
@@ -5321,7 +5312,6 @@ return await Deployment.RunAsync(() =>
         },
         AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
         Version = "9.0.5",
-        Hostname = "test",
         Connectivity = "PRIVATE",
         CoreCount = 8,
         TermLength = 1,
@@ -5332,22 +5322,20 @@ return await Deployment.RunAsync(() =>
             {
                 VendorConfiguration = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsNode0VendorConfigurationArgs
                 {
-                    AdminPassword = "Welcome@1",
-                    IpAddress = "192.168.1.35",
-                    SubnetMaskIp = "255.255.255.0",
-                    GatewayIp = "192.168.1.1",
-                    Hostname = "test",
+                    AdminPassword = "xxxxxxx",
+                    IpAddress = "X.X.X.X",
+                    SubnetMaskIp = "X.X.X.X",
+                    GatewayIp = "X.X.X.X",
                 },
             },
             Node1 = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsNode1Args
             {
                 VendorConfiguration = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsNode1VendorConfigurationArgs
                 {
-                    AdminPassword = "Welcome@1",
-                    IpAddress = "192.168.1.35",
-                    SubnetMaskIp = "255.255.255.0",
-                    GatewayIp = "192.168.1.1",
-                    Hostname = "test",
+                    AdminPassword = "xxxxxxx",
+                    IpAddress = "X.X.X.X",
+                    SubnetMaskIp = "X.X.X.X",
+                    GatewayIp = "X.X.X.X",
                 },
             },
         },
@@ -5398,7 +5386,6 @@ public class App {
             .notifications("test@eq.com")
             .accountNumber(sv.applyValue(_sv -> _sv.number()))
             .version("9.0.5")
-            .hostname("test")
             .connectivity("PRIVATE")
             .coreCount(8)
             .termLength(1)
@@ -5406,20 +5393,18 @@ public class App {
                 .clusterName("tf-infoblox-cluster")
                 .node0(DeviceClusterDetailsNode0Args.builder()
                     .vendorConfiguration(DeviceClusterDetailsNode0VendorConfigurationArgs.builder()
-                        .adminPassword("Welcome@1")
-                        .ipAddress("192.168.1.35")
-                        .subnetMaskIp("255.255.255.0")
-                        .gatewayIp("192.168.1.1")
-                        .hostname("test")
+                        .adminPassword("xxxxxxx")
+                        .ipAddress("X.X.X.X")
+                        .subnetMaskIp("X.X.X.X")
+                        .gatewayIp("X.X.X.X")
                         .build())
                     .build())
                 .node1(DeviceClusterDetailsNode1Args.builder()
                     .vendorConfiguration(DeviceClusterDetailsNode1VendorConfigurationArgs.builder()
-                        .adminPassword("Welcome@1")
-                        .ipAddress("192.168.1.35")
-                        .subnetMaskIp("255.255.255.0")
-                        .gatewayIp("192.168.1.1")
-                        .hostname("test")
+                        .adminPassword("xxxxxxx")
+                        .ipAddress("X.X.X.X")
+                        .subnetMaskIp("X.X.X.X")
+                        .gatewayIp("X.X.X.X")
                         .build())
                     .build())
                 .build())
@@ -5444,7 +5429,6 @@ resources:
         - test@eq.com
       accountNumber: ${sv.number}
       version: 9.0.5
-      hostname: test
       connectivity: PRIVATE
       coreCount: 8
       termLength: 1
@@ -5452,18 +5436,16 @@ resources:
         clusterName: tf-infoblox-cluster
         node0:
           vendorConfiguration:
-            adminPassword: Welcome@1
-            ipAddress: 192.168.1.35
-            subnetMaskIp: 255.255.255.0
-            gatewayIp: 192.168.1.1
-            hostname: test
+            adminPassword: xxxxxxx
+            ipAddress: X.X.X.X
+            subnetMaskIp: X.X.X.X
+            gatewayIp: X.X.X.X
         node1:
           vendorConfiguration:
-            adminPassword: Welcome@1
-            ipAddress: 192.168.1.35
-            subnetMaskIp: 255.255.255.0
-            gatewayIp: 192.168.1.1
-            hostname: test
+            adminPassword: xxxxxxx
+            ipAddress: X.X.X.X
+            subnetMaskIp: X.X.X.X
+            gatewayIp: X.X.X.X
 variables:
   # Create Infoblox Grid Member HA device
   sv:
@@ -5496,7 +5478,6 @@ const iNFOBLOXSV = new equinix.networkedge.Device("INFOBLOX-SV", {
     notifications: ["test@eq.com"],
     accountNumber: sv.apply(sv => sv.number),
     version: "9.0.5",
-    hostname: "test",
     coreCount: 8,
     termLength: 1,
     vendorConfiguration: {
@@ -5510,7 +5491,6 @@ const iNFOBLOXSV = new equinix.networkedge.Device("INFOBLOX-SV", {
         metroCode: sv.apply(sv => sv.metroCode),
         accountNumber: sv.apply(sv => sv.number),
         notifications: ["test@eq.com"],
-        hostname: "test",
         vendorConfiguration: {
             adminPassword: "X.X.X.X",
             ipAddress: "X.X.X.X",
@@ -5537,7 +5517,6 @@ i_nfobloxsv = equinix.networkedge.Device("INFOBLOX-SV",
     notifications=["test@eq.com"],
     account_number=sv.number,
     version="9.0.5",
-    hostname="test",
     core_count=8,
     term_length=1,
     vendor_configuration={
@@ -5551,7 +5530,6 @@ i_nfobloxsv = equinix.networkedge.Device("INFOBLOX-SV",
         "metro_code": sv.metro_code,
         "account_number": sv.number,
         "notifications": ["test@eq.com"],
-        "hostname": "test",
         "vendor_configuration": {
             "adminPassword": "X.X.X.X",
             "ipAddress": "X.X.X.X",
@@ -5591,7 +5569,6 @@ func main() {
 				return &sv.Number, nil
 			}).(pulumi.StringPtrOutput)),
 			Version:    pulumi.String("9.0.5"),
-			Hostname:   pulumi.String("test"),
 			CoreCount:  pulumi.Int(8),
 			TermLength: pulumi.Int(1),
 			VendorConfiguration: pulumi.StringMap{
@@ -5611,7 +5588,6 @@ func main() {
 				Notifications: pulumi.StringArray{
 					pulumi.String("test@eq.com"),
 				},
-				Hostname: pulumi.String("test"),
 				VendorConfiguration: pulumi.StringMap{
 					"adminPassword": pulumi.String("X.X.X.X"),
 					"ipAddress":     pulumi.String("X.X.X.X"),
@@ -5656,7 +5632,6 @@ return await Deployment.RunAsync(() =>
         },
         AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
         Version = "9.0.5",
-        Hostname = "test",
         CoreCount = 8,
         TermLength = 1,
         VendorConfiguration = 
@@ -5675,7 +5650,6 @@ return await Deployment.RunAsync(() =>
             {
                 "test@eq.com",
             },
-            Hostname = "test",
             VendorConfiguration = 
             {
                 { "adminPassword", "X.X.X.X" },
@@ -5728,7 +5702,6 @@ public class App {
             .notifications("test@eq.com")
             .accountNumber(sv.applyValue(_sv -> _sv.number()))
             .version("9.0.5")
-            .hostname("test")
             .coreCount(8)
             .termLength(1)
             .vendorConfiguration(Map.ofEntries(
@@ -5742,7 +5715,6 @@ public class App {
                 .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
                 .accountNumber(sv.applyValue(_sv -> _sv.number()))
                 .notifications("test@eq.com")
-                .hostname("test")
                 .vendorConfiguration(Map.ofEntries(
                     Map.entry("adminPassword", "X.X.X.X"),
                     Map.entry("ipAddress", "X.X.X.X"),
@@ -5772,7 +5744,6 @@ resources:
         - test@eq.com
       accountNumber: ${sv.number}
       version: 9.0.5
-      hostname: test
       coreCount: 8
       termLength: 1
       vendorConfiguration:
@@ -5786,7 +5757,6 @@ resources:
         accountNumber: ${sv.number}
         notifications:
           - test@eq.com
-        hostname: test
         vendorConfiguration:
           adminPassword: X.X.X.X
           ipAddress: X.X.X.X
@@ -5824,11 +5794,10 @@ const iNFOBLOXSV = new equinix.networkedge.Device("INFOBLOX-SV", {
     notifications: ["test@eq.com"],
     accountNumber: sv.apply(sv => sv.number),
     version: "9.0.5",
-    hostname: "test",
     coreCount: 8,
     termLength: 1,
     vendorConfiguration: {
-        adminPassword: "X.X.X.X",
+        adminPassword: "xxxxxx",
         ipAddress: "X.X.X.X",
         subnetMaskIp: "X.X.X.X",
         gatewayIp: "X.X.X.X",
@@ -5852,11 +5821,10 @@ i_nfobloxsv = equinix.networkedge.Device("INFOBLOX-SV",
     notifications=["test@eq.com"],
     account_number=sv.number,
     version="9.0.5",
-    hostname="test",
     core_count=8,
     term_length=1,
     vendor_configuration={
-        "adminPassword": "X.X.X.X",
+        "adminPassword": "xxxxxx",
         "ipAddress": "X.X.X.X",
         "subnetMaskIp": "X.X.X.X",
         "gatewayIp": "X.X.X.X",
@@ -5893,11 +5861,10 @@ func main() {
 				return &sv.Number, nil
 			}).(pulumi.StringPtrOutput)),
 			Version:    pulumi.String("9.0.5"),
-			Hostname:   pulumi.String("test"),
 			CoreCount:  pulumi.Int(8),
 			TermLength: pulumi.Int(1),
 			VendorConfiguration: pulumi.StringMap{
-				"adminPassword": pulumi.String("X.X.X.X"),
+				"adminPassword": pulumi.String("xxxxxx"),
 				"ipAddress":     pulumi.String("X.X.X.X"),
 				"subnetMaskIp":  pulumi.String("X.X.X.X"),
 				"gatewayIp":     pulumi.String("X.X.X.X"),
@@ -5939,12 +5906,11 @@ return await Deployment.RunAsync(() =>
         },
         AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
         Version = "9.0.5",
-        Hostname = "test",
         CoreCount = 8,
         TermLength = 1,
         VendorConfiguration = 
         {
-            { "adminPassword", "X.X.X.X" },
+            { "adminPassword", "xxxxxx" },
             { "ipAddress", "X.X.X.X" },
             { "subnetMaskIp", "X.X.X.X" },
             { "gatewayIp", "X.X.X.X" },
@@ -5992,11 +5958,10 @@ public class App {
             .notifications("test@eq.com")
             .accountNumber(sv.applyValue(_sv -> _sv.number()))
             .version("9.0.5")
-            .hostname("test")
             .coreCount(8)
             .termLength(1)
             .vendorConfiguration(Map.ofEntries(
-                Map.entry("adminPassword", "X.X.X.X"),
+                Map.entry("adminPassword", "xxxxxx"),
                 Map.entry("ipAddress", "X.X.X.X"),
                 Map.entry("subnetMaskIp", "X.X.X.X"),
                 Map.entry("gatewayIp", "X.X.X.X")
@@ -6023,11 +5988,10 @@ resources:
         - test@eq.com
       accountNumber: ${sv.number}
       version: 9.0.5
-      hostname: test
       coreCount: 8
       termLength: 1
       vendorConfiguration:
-        adminPassword: X.X.X.X
+        adminPassword: xxxxxx
         ipAddress: X.X.X.X
         subnetMaskIp: X.X.X.X
         gatewayIp: X.X.X.X

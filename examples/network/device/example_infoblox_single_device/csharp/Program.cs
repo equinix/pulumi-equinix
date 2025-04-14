@@ -26,12 +26,11 @@ return await Deployment.RunAsync(() =>
         },
         AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
         Version = "9.0.5",
-        Hostname = "test",
         CoreCount = 8,
         TermLength = 1,
         VendorConfiguration = 
         {
-            { "adminPassword", "X.X.X.X" },
+            { "adminPassword", "xxxxxx" },
             { "ipAddress", "X.X.X.X" },
             { "subnetMaskIp", "X.X.X.X" },
             { "gatewayIp", "X.X.X.X" },
