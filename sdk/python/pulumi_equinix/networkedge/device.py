@@ -2022,7 +2022,6 @@ class Device(pulumi.CustomResource):
             notifications=["test@eq.com"],
             account_number=sv.number,
             version="9.0.5",
-            hostname="test",
             connectivity="PRIVATE",
             core_count=8,
             term_length=1,
@@ -2030,20 +2029,18 @@ class Device(pulumi.CustomResource):
                 "cluster_name": "tf-infoblox-cluster",
                 "node0": {
                     "vendor_configuration": {
-                        "admin_password": "Welcome@1",
-                        "ip_address": "192.168.1.35",
-                        "subnet_mask_ip": "255.255.255.0",
-                        "gateway_ip": "192.168.1.1",
-                        "hostname": "test",
+                        "admin_password": "xxxxxxx",
+                        "ip_address": "X.X.X.X",
+                        "subnet_mask_ip": "X.X.X.X",
+                        "gateway_ip": "X.X.X.X",
                     },
                 },
                 "node1": {
                     "vendor_configuration": {
-                        "admin_password": "Welcome@1",
-                        "ip_address": "192.168.1.35",
-                        "subnet_mask_ip": "255.255.255.0",
-                        "gateway_ip": "192.168.1.1",
-                        "hostname": "test",
+                        "admin_password": "xxxxxxx",
+                        "ip_address": "X.X.X.X",
+                        "subnet_mask_ip": "X.X.X.X",
+                        "gateway_ip": "X.X.X.X",
                     },
                 },
             })
@@ -2066,7 +2063,6 @@ class Device(pulumi.CustomResource):
             notifications=["test@eq.com"],
             account_number=sv.number,
             version="9.0.5",
-            hostname="test",
             core_count=8,
             term_length=1,
             vendor_configuration={
@@ -2080,7 +2076,6 @@ class Device(pulumi.CustomResource):
                 "metro_code": sv.metro_code,
                 "account_number": sv.number,
                 "notifications": ["test@eq.com"],
-                "hostname": "test",
                 "vendor_configuration": {
                     "adminPassword": "X.X.X.X",
                     "ipAddress": "X.X.X.X",
@@ -2107,11 +2102,10 @@ class Device(pulumi.CustomResource):
             notifications=["test@eq.com"],
             account_number=sv.number,
             version="9.0.5",
-            hostname="test",
             core_count=8,
             term_length=1,
             vendor_configuration={
-                "adminPassword": "X.X.X.X",
+                "adminPassword": "xxxxxx",
                 "ipAddress": "X.X.X.X",
                 "subnetMaskIp": "X.X.X.X",
                 "gatewayIp": "X.X.X.X",
@@ -2970,7 +2964,6 @@ class Device(pulumi.CustomResource):
             notifications=["test@eq.com"],
             account_number=sv.number,
             version="9.0.5",
-            hostname="test",
             connectivity="PRIVATE",
             core_count=8,
             term_length=1,
@@ -2978,20 +2971,18 @@ class Device(pulumi.CustomResource):
                 "cluster_name": "tf-infoblox-cluster",
                 "node0": {
                     "vendor_configuration": {
-                        "admin_password": "Welcome@1",
-                        "ip_address": "192.168.1.35",
-                        "subnet_mask_ip": "255.255.255.0",
-                        "gateway_ip": "192.168.1.1",
-                        "hostname": "test",
+                        "admin_password": "xxxxxxx",
+                        "ip_address": "X.X.X.X",
+                        "subnet_mask_ip": "X.X.X.X",
+                        "gateway_ip": "X.X.X.X",
                     },
                 },
                 "node1": {
                     "vendor_configuration": {
-                        "admin_password": "Welcome@1",
-                        "ip_address": "192.168.1.35",
-                        "subnet_mask_ip": "255.255.255.0",
-                        "gateway_ip": "192.168.1.1",
-                        "hostname": "test",
+                        "admin_password": "xxxxxxx",
+                        "ip_address": "X.X.X.X",
+                        "subnet_mask_ip": "X.X.X.X",
+                        "gateway_ip": "X.X.X.X",
                     },
                 },
             })
@@ -3014,7 +3005,6 @@ class Device(pulumi.CustomResource):
             notifications=["test@eq.com"],
             account_number=sv.number,
             version="9.0.5",
-            hostname="test",
             core_count=8,
             term_length=1,
             vendor_configuration={
@@ -3028,7 +3018,6 @@ class Device(pulumi.CustomResource):
                 "metro_code": sv.metro_code,
                 "account_number": sv.number,
                 "notifications": ["test@eq.com"],
-                "hostname": "test",
                 "vendor_configuration": {
                     "adminPassword": "X.X.X.X",
                     "ipAddress": "X.X.X.X",
@@ -3055,11 +3044,10 @@ class Device(pulumi.CustomResource):
             notifications=["test@eq.com"],
             account_number=sv.number,
             version="9.0.5",
-            hostname="test",
             core_count=8,
             term_length=1,
             vendor_configuration={
-                "adminPassword": "X.X.X.X",
+                "adminPassword": "xxxxxx",
                 "ipAddress": "X.X.X.X",
                 "subnetMaskIp": "X.X.X.X",
                 "gatewayIp": "X.X.X.X",

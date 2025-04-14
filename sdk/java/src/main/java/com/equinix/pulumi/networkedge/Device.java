@@ -1232,7 +1232,6 @@ import javax.annotation.Nullable;
  *             .notifications("test}{@literal @}{@code eq.com")
  *             .accountNumber(sv.applyValue(_sv -> _sv.number()))
  *             .version("9.0.5")
- *             .hostname("test")
  *             .connectivity("PRIVATE")
  *             .coreCount(8)
  *             .termLength(1)
@@ -1240,20 +1239,18 @@ import javax.annotation.Nullable;
  *                 .clusterName("tf-infoblox-cluster")
  *                 .node0(DeviceClusterDetailsNode0Args.builder()
  *                     .vendorConfiguration(DeviceClusterDetailsNode0VendorConfigurationArgs.builder()
- *                         .adminPassword("Welcome}{@literal @}{@code 1")
- *                         .ipAddress("192.168.1.35")
- *                         .subnetMaskIp("255.255.255.0")
- *                         .gatewayIp("192.168.1.1")
- *                         .hostname("test")
+ *                         .adminPassword("xxxxxxx")
+ *                         .ipAddress("X.X.X.X")
+ *                         .subnetMaskIp("X.X.X.X")
+ *                         .gatewayIp("X.X.X.X")
  *                         .build())
  *                     .build())
  *                 .node1(DeviceClusterDetailsNode1Args.builder()
  *                     .vendorConfiguration(DeviceClusterDetailsNode1VendorConfigurationArgs.builder()
- *                         .adminPassword("Welcome}{@literal @}{@code 1")
- *                         .ipAddress("192.168.1.35")
- *                         .subnetMaskIp("255.255.255.0")
- *                         .gatewayIp("192.168.1.1")
- *                         .hostname("test")
+ *                         .adminPassword("xxxxxxx")
+ *                         .ipAddress("X.X.X.X")
+ *                         .subnetMaskIp("X.X.X.X")
+ *                         .gatewayIp("X.X.X.X")
  *                         .build())
  *                     .build())
  *                 .build())
@@ -1305,7 +1302,6 @@ import javax.annotation.Nullable;
  *             .notifications("test}{@literal @}{@code eq.com")
  *             .accountNumber(sv.applyValue(_sv -> _sv.number()))
  *             .version("9.0.5")
- *             .hostname("test")
  *             .coreCount(8)
  *             .termLength(1)
  *             .vendorConfiguration(Map.ofEntries(
@@ -1319,7 +1315,6 @@ import javax.annotation.Nullable;
  *                 .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
  *                 .accountNumber(sv.applyValue(_sv -> _sv.number()))
  *                 .notifications("test}{@literal @}{@code eq.com")
- *                 .hostname("test")
  *                 .vendorConfiguration(Map.ofEntries(
  *                     Map.entry("adminPassword", "X.X.X.X"),
  *                     Map.entry("ipAddress", "X.X.X.X"),
@@ -1374,11 +1369,10 @@ import javax.annotation.Nullable;
  *             .notifications("test}{@literal @}{@code eq.com")
  *             .accountNumber(sv.applyValue(_sv -> _sv.number()))
  *             .version("9.0.5")
- *             .hostname("test")
  *             .coreCount(8)
  *             .termLength(1)
  *             .vendorConfiguration(Map.ofEntries(
- *                 Map.entry("adminPassword", "X.X.X.X"),
+ *                 Map.entry("adminPassword", "xxxxxx"),
  *                 Map.entry("ipAddress", "X.X.X.X"),
  *                 Map.entry("subnetMaskIp", "X.X.X.X"),
  *                 Map.entry("gatewayIp", "X.X.X.X")
