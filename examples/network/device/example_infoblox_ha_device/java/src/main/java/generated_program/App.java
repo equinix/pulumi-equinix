@@ -37,7 +37,6 @@ public class App {
             .notifications("test@eq.com")
             .accountNumber(sv.applyValue(_sv -> _sv.number()))
             .version("9.0.5")
-            .hostname("test")
             .coreCount(8)
             .termLength(1)
             .vendorConfiguration(Map.ofEntries(
@@ -51,7 +50,6 @@ public class App {
                 .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
                 .accountNumber(sv.applyValue(_sv -> _sv.number()))
                 .notifications("test@eq.com")
-                .hostname("test")
                 .vendorConfiguration(Map.ofEntries(
                     Map.entry("adminPassword", "X.X.X.X"),
                     Map.entry("ipAddress", "X.X.X.X"),

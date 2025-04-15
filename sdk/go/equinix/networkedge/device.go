@@ -1160,7 +1160,6 @@ import (
 //					return &sv.Number, nil
 //				}).(pulumi.StringPtrOutput)),
 //				Version:      pulumi.String("9.0.5"),
-//				Hostname:     pulumi.String("test"),
 //				Connectivity: pulumi.String("PRIVATE"),
 //				CoreCount:    pulumi.Int(8),
 //				TermLength:   pulumi.Int(1),
@@ -1168,20 +1167,18 @@ import (
 //					ClusterName: pulumi.String("tf-infoblox-cluster"),
 //					Node0: &networkedge.DeviceClusterDetailsNode0Args{
 //						VendorConfiguration: &networkedge.DeviceClusterDetailsNode0VendorConfigurationArgs{
-//							AdminPassword: pulumi.String("Welcome@1"),
-//							IpAddress:     pulumi.String("192.168.1.35"),
-//							SubnetMaskIp:  pulumi.String("255.255.255.0"),
-//							GatewayIp:     pulumi.String("192.168.1.1"),
-//							Hostname:      pulumi.String("test"),
+//							AdminPassword: pulumi.String("xxxxxxx"),
+//							IpAddress:     pulumi.String("X.X.X.X"),
+//							SubnetMaskIp:  pulumi.String("X.X.X.X"),
+//							GatewayIp:     pulumi.String("X.X.X.X"),
 //						},
 //					},
 //					Node1: &networkedge.DeviceClusterDetailsNode1Args{
 //						VendorConfiguration: &networkedge.DeviceClusterDetailsNode1VendorConfigurationArgs{
-//							AdminPassword: pulumi.String("Welcome@1"),
-//							IpAddress:     pulumi.String("192.168.1.35"),
-//							SubnetMaskIp:  pulumi.String("255.255.255.0"),
-//							GatewayIp:     pulumi.String("192.168.1.1"),
-//							Hostname:      pulumi.String("test"),
+//							AdminPassword: pulumi.String("xxxxxxx"),
+//							IpAddress:     pulumi.String("X.X.X.X"),
+//							SubnetMaskIp:  pulumi.String("X.X.X.X"),
+//							GatewayIp:     pulumi.String("X.X.X.X"),
 //						},
 //					},
 //				},
@@ -1228,7 +1225,6 @@ import (
 //					return &sv.Number, nil
 //				}).(pulumi.StringPtrOutput)),
 //				Version:    pulumi.String("9.0.5"),
-//				Hostname:   pulumi.String("test"),
 //				CoreCount:  pulumi.Int(8),
 //				TermLength: pulumi.Int(1),
 //				VendorConfiguration: pulumi.StringMap{
@@ -1248,7 +1244,6 @@ import (
 //					Notifications: pulumi.StringArray{
 //						pulumi.String("test@eq.com"),
 //					},
-//					Hostname: pulumi.String("test"),
 //					VendorConfiguration: pulumi.StringMap{
 //						"adminPassword": pulumi.String("X.X.X.X"),
 //						"ipAddress":     pulumi.String("X.X.X.X"),
@@ -1299,11 +1294,10 @@ import (
 //					return &sv.Number, nil
 //				}).(pulumi.StringPtrOutput)),
 //				Version:    pulumi.String("9.0.5"),
-//				Hostname:   pulumi.String("test"),
 //				CoreCount:  pulumi.Int(8),
 //				TermLength: pulumi.Int(1),
 //				VendorConfiguration: pulumi.StringMap{
-//					"adminPassword": pulumi.String("X.X.X.X"),
+//					"adminPassword": pulumi.String("xxxxxx"),
 //					"ipAddress":     pulumi.String("X.X.X.X"),
 //					"subnetMaskIp":  pulumi.String("X.X.X.X"),
 //					"gatewayIp":     pulumi.String("X.X.X.X"),

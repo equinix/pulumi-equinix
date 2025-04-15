@@ -26,7 +26,6 @@ return await Deployment.RunAsync(() =>
         },
         AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
         Version = "9.0.5",
-        Hostname = "test",
         CoreCount = 8,
         TermLength = 1,
         VendorConfiguration = 
@@ -45,7 +44,6 @@ return await Deployment.RunAsync(() =>
             {
                 "test@eq.com",
             },
-            Hostname = "test",
             VendorConfiguration = 
             {
                 { "adminPassword", "X.X.X.X" },

@@ -28,11 +28,10 @@ func main() {
 				return &sv.Number, nil
 			}).(pulumi.StringPtrOutput)),
 			Version:    pulumi.String("9.0.5"),
-			Hostname:   pulumi.String("test"),
 			CoreCount:  pulumi.Int(8),
 			TermLength: pulumi.Int(1),
 			VendorConfiguration: pulumi.StringMap{
-				"adminPassword": pulumi.String("X.X.X.X"),
+				"adminPassword": pulumi.String("xxxxxx"),
 				"ipAddress":     pulumi.String("X.X.X.X"),
 				"subnetMaskIp":  pulumi.String("X.X.X.X"),
 				"gatewayIp":     pulumi.String("X.X.X.X"),

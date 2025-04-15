@@ -28,7 +28,6 @@ func main() {
 				return &sv.Number, nil
 			}).(pulumi.StringPtrOutput)),
 			Version:    pulumi.String("9.0.5"),
-			Hostname:   pulumi.String("test"),
 			CoreCount:  pulumi.Int(8),
 			TermLength: pulumi.Int(1),
 			VendorConfiguration: pulumi.StringMap{
@@ -48,7 +47,6 @@ func main() {
 				Notifications: pulumi.StringArray{
 					pulumi.String("test@eq.com"),
 				},
-				Hostname: pulumi.String("test"),
 				VendorConfiguration: pulumi.StringMap{
 					"adminPassword": pulumi.String("X.X.X.X"),
 					"ipAddress":     pulumi.String("X.X.X.X"),

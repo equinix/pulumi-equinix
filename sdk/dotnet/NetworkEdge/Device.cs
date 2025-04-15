@@ -993,7 +993,6 @@ namespace Pulumi.Equinix.NetworkEdge
     ///         },
     ///         AccountNumber = sv.Apply(getAccountResult =&gt; getAccountResult.Number),
     ///         Version = "9.0.5",
-    ///         Hostname = "test",
     ///         Connectivity = "PRIVATE",
     ///         CoreCount = 8,
     ///         TermLength = 1,
@@ -1004,22 +1003,20 @@ namespace Pulumi.Equinix.NetworkEdge
     ///             {
     ///                 VendorConfiguration = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsNode0VendorConfigurationArgs
     ///                 {
-    ///                     AdminPassword = "Welcome@1",
-    ///                     IpAddress = "192.168.1.35",
-    ///                     SubnetMaskIp = "255.255.255.0",
-    ///                     GatewayIp = "192.168.1.1",
-    ///                     Hostname = "test",
+    ///                     AdminPassword = "xxxxxxx",
+    ///                     IpAddress = "X.X.X.X",
+    ///                     SubnetMaskIp = "X.X.X.X",
+    ///                     GatewayIp = "X.X.X.X",
     ///                 },
     ///             },
     ///             Node1 = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsNode1Args
     ///             {
     ///                 VendorConfiguration = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsNode1VendorConfigurationArgs
     ///                 {
-    ///                     AdminPassword = "Welcome@1",
-    ///                     IpAddress = "192.168.1.35",
-    ///                     SubnetMaskIp = "255.255.255.0",
-    ///                     GatewayIp = "192.168.1.1",
-    ///                     Hostname = "test",
+    ///                     AdminPassword = "xxxxxxx",
+    ///                     IpAddress = "X.X.X.X",
+    ///                     SubnetMaskIp = "X.X.X.X",
+    ///                     GatewayIp = "X.X.X.X",
     ///                 },
     ///             },
     ///         },
@@ -1057,7 +1054,6 @@ namespace Pulumi.Equinix.NetworkEdge
     ///         },
     ///         AccountNumber = sv.Apply(getAccountResult =&gt; getAccountResult.Number),
     ///         Version = "9.0.5",
-    ///         Hostname = "test",
     ///         CoreCount = 8,
     ///         TermLength = 1,
     ///         VendorConfiguration = 
@@ -1076,7 +1072,6 @@ namespace Pulumi.Equinix.NetworkEdge
     ///             {
     ///                 "test@eq.com",
     ///             },
-    ///             Hostname = "test",
     ///             VendorConfiguration = 
     ///             {
     ///                 { "adminPassword", "X.X.X.X" },
@@ -1119,12 +1114,11 @@ namespace Pulumi.Equinix.NetworkEdge
     ///         },
     ///         AccountNumber = sv.Apply(getAccountResult =&gt; getAccountResult.Number),
     ///         Version = "9.0.5",
-    ///         Hostname = "test",
     ///         CoreCount = 8,
     ///         TermLength = 1,
     ///         VendorConfiguration = 
     ///         {
-    ///             { "adminPassword", "X.X.X.X" },
+    ///             { "adminPassword", "xxxxxx" },
     ///             { "ipAddress", "X.X.X.X" },
     ///             { "subnetMaskIp", "X.X.X.X" },
     ///             { "gatewayIp", "X.X.X.X" },

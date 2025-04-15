@@ -36,11 +36,10 @@ public class App {
             .notifications("test@eq.com")
             .accountNumber(sv.applyValue(_sv -> _sv.number()))
             .version("9.0.5")
-            .hostname("test")
             .coreCount(8)
             .termLength(1)
             .vendorConfiguration(Map.ofEntries(
-                Map.entry("adminPassword", "X.X.X.X"),
+                Map.entry("adminPassword", "xxxxxx"),
                 Map.entry("ipAddress", "X.X.X.X"),
                 Map.entry("subnetMaskIp", "X.X.X.X"),
                 Map.entry("gatewayIp", "X.X.X.X")

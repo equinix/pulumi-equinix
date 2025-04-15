@@ -10,11 +10,6 @@ resources:
       description: <description>
       streamId: <stream_id>
       enabled: true
-      filters:
-        - property: /type
-          operator: LIKE
-          values:
-            - equinix.fabric.connection%
       eventSelector:
         includes:
           - equinix.fabric.connection.*
@@ -54,7 +49,6 @@ resources:
         type: PAGERDUTY
         host: <pager_duty_host
         settings:
-          transformAlerts: true
           changeUri: <pager_duty_change_uri>
           alertUri: <pager_duty_alert_uri>
         credential:
