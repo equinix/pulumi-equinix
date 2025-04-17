@@ -15,6 +15,11 @@ export type Connection = import("./connection").Connection;
 export const Connection: typeof import("./connection").Connection = null as any;
 utilities.lazyLoad(exports, ["Connection"], () => require("./connection"));
 
+export { ConnectionRouteAggregationArgs, ConnectionRouteAggregationState } from "./connectionRouteAggregation";
+export type ConnectionRouteAggregation = import("./connectionRouteAggregation").ConnectionRouteAggregation;
+export const ConnectionRouteAggregation: typeof import("./connectionRouteAggregation").ConnectionRouteAggregation = null as any;
+utilities.lazyLoad(exports, ["ConnectionRouteAggregation"], () => require("./connectionRouteAggregation"));
+
 export { ConnectionRouteFilterArgs, ConnectionRouteFilterState } from "./connectionRouteFilter";
 export type ConnectionRouteFilter = import("./connectionRouteFilter").ConnectionRouteFilter;
 export const ConnectionRouteFilter: typeof import("./connectionRouteFilter").ConnectionRouteFilter = null as any;
@@ -34,6 +39,16 @@ export { GetConnectionArgs, GetConnectionResult, GetConnectionOutputArgs } from 
 export const getConnection: typeof import("./getConnection").getConnection = null as any;
 export const getConnectionOutput: typeof import("./getConnection").getConnectionOutput = null as any;
 utilities.lazyLoad(exports, ["getConnection","getConnectionOutput"], () => require("./getConnection"));
+
+export { GetConnectionRouteAggregationArgs, GetConnectionRouteAggregationResult, GetConnectionRouteAggregationOutputArgs } from "./getConnectionRouteAggregation";
+export const getConnectionRouteAggregation: typeof import("./getConnectionRouteAggregation").getConnectionRouteAggregation = null as any;
+export const getConnectionRouteAggregationOutput: typeof import("./getConnectionRouteAggregation").getConnectionRouteAggregationOutput = null as any;
+utilities.lazyLoad(exports, ["getConnectionRouteAggregation","getConnectionRouteAggregationOutput"], () => require("./getConnectionRouteAggregation"));
+
+export { GetConnectionRouteAggregationsArgs, GetConnectionRouteAggregationsResult, GetConnectionRouteAggregationsOutputArgs } from "./getConnectionRouteAggregations";
+export const getConnectionRouteAggregations: typeof import("./getConnectionRouteAggregations").getConnectionRouteAggregations = null as any;
+export const getConnectionRouteAggregationsOutput: typeof import("./getConnectionRouteAggregations").getConnectionRouteAggregationsOutput = null as any;
+utilities.lazyLoad(exports, ["getConnectionRouteAggregations","getConnectionRouteAggregationsOutput"], () => require("./getConnectionRouteAggregations"));
 
 export { GetConnectionRouteFilterArgs, GetConnectionRouteFilterResult, GetConnectionRouteFilterOutputArgs } from "./getConnectionRouteFilter";
 export const getConnectionRouteFilter: typeof import("./getConnectionRouteFilter").getConnectionRouteFilter = null as any;
@@ -85,6 +100,36 @@ export const getPorts: typeof import("./getPorts").getPorts = null as any;
 export const getPortsOutput: typeof import("./getPorts").getPortsOutput = null as any;
 utilities.lazyLoad(exports, ["getPorts","getPortsOutput"], () => require("./getPorts"));
 
+export { GetPrecisionTimeServiceArgs, GetPrecisionTimeServiceResult, GetPrecisionTimeServiceOutputArgs } from "./getPrecisionTimeService";
+export const getPrecisionTimeService: typeof import("./getPrecisionTimeService").getPrecisionTimeService = null as any;
+export const getPrecisionTimeServiceOutput: typeof import("./getPrecisionTimeService").getPrecisionTimeServiceOutput = null as any;
+utilities.lazyLoad(exports, ["getPrecisionTimeService","getPrecisionTimeServiceOutput"], () => require("./getPrecisionTimeService"));
+
+export { GetPrecisionTimeServicesArgs, GetPrecisionTimeServicesResult, GetPrecisionTimeServicesOutputArgs } from "./getPrecisionTimeServices";
+export const getPrecisionTimeServices: typeof import("./getPrecisionTimeServices").getPrecisionTimeServices = null as any;
+export const getPrecisionTimeServicesOutput: typeof import("./getPrecisionTimeServices").getPrecisionTimeServicesOutput = null as any;
+utilities.lazyLoad(exports, ["getPrecisionTimeServices","getPrecisionTimeServicesOutput"], () => require("./getPrecisionTimeServices"));
+
+export { GetRouteAggregationArgs, GetRouteAggregationResult, GetRouteAggregationOutputArgs } from "./getRouteAggregation";
+export const getRouteAggregation: typeof import("./getRouteAggregation").getRouteAggregation = null as any;
+export const getRouteAggregationOutput: typeof import("./getRouteAggregation").getRouteAggregationOutput = null as any;
+utilities.lazyLoad(exports, ["getRouteAggregation","getRouteAggregationOutput"], () => require("./getRouteAggregation"));
+
+export { GetRouteAggregationRuleArgs, GetRouteAggregationRuleResult, GetRouteAggregationRuleOutputArgs } from "./getRouteAggregationRule";
+export const getRouteAggregationRule: typeof import("./getRouteAggregationRule").getRouteAggregationRule = null as any;
+export const getRouteAggregationRuleOutput: typeof import("./getRouteAggregationRule").getRouteAggregationRuleOutput = null as any;
+utilities.lazyLoad(exports, ["getRouteAggregationRule","getRouteAggregationRuleOutput"], () => require("./getRouteAggregationRule"));
+
+export { GetRouteAggregationRulesArgs, GetRouteAggregationRulesResult, GetRouteAggregationRulesOutputArgs } from "./getRouteAggregationRules";
+export const getRouteAggregationRules: typeof import("./getRouteAggregationRules").getRouteAggregationRules = null as any;
+export const getRouteAggregationRulesOutput: typeof import("./getRouteAggregationRules").getRouteAggregationRulesOutput = null as any;
+utilities.lazyLoad(exports, ["getRouteAggregationRules","getRouteAggregationRulesOutput"], () => require("./getRouteAggregationRules"));
+
+export { GetRouteAggregationsArgs, GetRouteAggregationsResult, GetRouteAggregationsOutputArgs } from "./getRouteAggregations";
+export const getRouteAggregations: typeof import("./getRouteAggregations").getRouteAggregations = null as any;
+export const getRouteAggregationsOutput: typeof import("./getRouteAggregations").getRouteAggregationsOutput = null as any;
+utilities.lazyLoad(exports, ["getRouteAggregations","getRouteAggregationsOutput"], () => require("./getRouteAggregations"));
+
 export { GetRouteFilterArgs, GetRouteFilterResult, GetRouteFilterOutputArgs } from "./getRouteFilter";
 export const getRouteFilter: typeof import("./getRouteFilter").getRouteFilter = null as any;
 export const getRouteFilterOutput: typeof import("./getRouteFilter").getRouteFilterOutput = null as any;
@@ -135,6 +180,26 @@ export const getStream: typeof import("./getStream").getStream = null as any;
 export const getStreamOutput: typeof import("./getStream").getStreamOutput = null as any;
 utilities.lazyLoad(exports, ["getStream","getStreamOutput"], () => require("./getStream"));
 
+export { GetStreamAttachmentArgs, GetStreamAttachmentResult, GetStreamAttachmentOutputArgs } from "./getStreamAttachment";
+export const getStreamAttachment: typeof import("./getStreamAttachment").getStreamAttachment = null as any;
+export const getStreamAttachmentOutput: typeof import("./getStreamAttachment").getStreamAttachmentOutput = null as any;
+utilities.lazyLoad(exports, ["getStreamAttachment","getStreamAttachmentOutput"], () => require("./getStreamAttachment"));
+
+export { GetStreamAttachmentsArgs, GetStreamAttachmentsResult, GetStreamAttachmentsOutputArgs } from "./getStreamAttachments";
+export const getStreamAttachments: typeof import("./getStreamAttachments").getStreamAttachments = null as any;
+export const getStreamAttachmentsOutput: typeof import("./getStreamAttachments").getStreamAttachmentsOutput = null as any;
+utilities.lazyLoad(exports, ["getStreamAttachments","getStreamAttachmentsOutput"], () => require("./getStreamAttachments"));
+
+export { GetStreamSubscriptionArgs, GetStreamSubscriptionResult, GetStreamSubscriptionOutputArgs } from "./getStreamSubscription";
+export const getStreamSubscription: typeof import("./getStreamSubscription").getStreamSubscription = null as any;
+export const getStreamSubscriptionOutput: typeof import("./getStreamSubscription").getStreamSubscriptionOutput = null as any;
+utilities.lazyLoad(exports, ["getStreamSubscription","getStreamSubscriptionOutput"], () => require("./getStreamSubscription"));
+
+export { GetStreamSubscriptionsArgs, GetStreamSubscriptionsResult, GetStreamSubscriptionsOutputArgs } from "./getStreamSubscriptions";
+export const getStreamSubscriptions: typeof import("./getStreamSubscriptions").getStreamSubscriptions = null as any;
+export const getStreamSubscriptionsOutput: typeof import("./getStreamSubscriptions").getStreamSubscriptionsOutput = null as any;
+utilities.lazyLoad(exports, ["getStreamSubscriptions","getStreamSubscriptionsOutput"], () => require("./getStreamSubscriptions"));
+
 export { GetStreamsArgs, GetStreamsResult, GetStreamsOutputArgs } from "./getStreams";
 export const getStreams: typeof import("./getStreams").getStreams = null as any;
 export const getStreamsOutput: typeof import("./getStreams").getStreamsOutput = null as any;
@@ -144,6 +209,21 @@ export { NetworkArgs, NetworkState } from "./network";
 export type Network = import("./network").Network;
 export const Network: typeof import("./network").Network = null as any;
 utilities.lazyLoad(exports, ["Network"], () => require("./network"));
+
+export { PrecisionTimeServiceArgs, PrecisionTimeServiceState } from "./precisionTimeService";
+export type PrecisionTimeService = import("./precisionTimeService").PrecisionTimeService;
+export const PrecisionTimeService: typeof import("./precisionTimeService").PrecisionTimeService = null as any;
+utilities.lazyLoad(exports, ["PrecisionTimeService"], () => require("./precisionTimeService"));
+
+export { RouteAggregationArgs, RouteAggregationState } from "./routeAggregation";
+export type RouteAggregation = import("./routeAggregation").RouteAggregation;
+export const RouteAggregation: typeof import("./routeAggregation").RouteAggregation = null as any;
+utilities.lazyLoad(exports, ["RouteAggregation"], () => require("./routeAggregation"));
+
+export { RouteAggregationRuleArgs, RouteAggregationRuleState } from "./routeAggregationRule";
+export type RouteAggregationRule = import("./routeAggregationRule").RouteAggregationRule;
+export const RouteAggregationRule: typeof import("./routeAggregationRule").RouteAggregationRule = null as any;
+utilities.lazyLoad(exports, ["RouteAggregationRule"], () => require("./routeAggregationRule"));
 
 export { RouteFilterArgs, RouteFilterState } from "./routeFilter";
 export type RouteFilter = import("./routeFilter").RouteFilter;
@@ -175,6 +255,16 @@ export type Stream = import("./stream").Stream;
 export const Stream: typeof import("./stream").Stream = null as any;
 utilities.lazyLoad(exports, ["Stream"], () => require("./stream"));
 
+export { StreamAttachmentArgs, StreamAttachmentState } from "./streamAttachment";
+export type StreamAttachment = import("./streamAttachment").StreamAttachment;
+export const StreamAttachment: typeof import("./streamAttachment").StreamAttachment = null as any;
+utilities.lazyLoad(exports, ["StreamAttachment"], () => require("./streamAttachment"));
+
+export { StreamSubscriptionArgs, StreamSubscriptionState } from "./streamSubscription";
+export type StreamSubscription = import("./streamSubscription").StreamSubscription;
+export const StreamSubscription: typeof import("./streamSubscription").StreamSubscription = null as any;
+utilities.lazyLoad(exports, ["StreamSubscription"], () => require("./streamSubscription"));
+
 
 // Export enums:
 export * from "../types/enums/fabric";
@@ -187,10 +277,18 @@ const _module = {
                 return new CloudRouter(name, <any>undefined, { urn })
             case "equinix:fabric/connection:Connection":
                 return new Connection(name, <any>undefined, { urn })
+            case "equinix:fabric/connectionRouteAggregation:ConnectionRouteAggregation":
+                return new ConnectionRouteAggregation(name, <any>undefined, { urn })
             case "equinix:fabric/connectionRouteFilter:ConnectionRouteFilter":
                 return new ConnectionRouteFilter(name, <any>undefined, { urn })
             case "equinix:fabric/network:Network":
                 return new Network(name, <any>undefined, { urn })
+            case "equinix:fabric/precisionTimeService:PrecisionTimeService":
+                return new PrecisionTimeService(name, <any>undefined, { urn })
+            case "equinix:fabric/routeAggregation:RouteAggregation":
+                return new RouteAggregation(name, <any>undefined, { urn })
+            case "equinix:fabric/routeAggregationRule:RouteAggregationRule":
+                return new RouteAggregationRule(name, <any>undefined, { urn })
             case "equinix:fabric/routeFilter:RouteFilter":
                 return new RouteFilter(name, <any>undefined, { urn })
             case "equinix:fabric/routeFilterRule:RouteFilterRule":
@@ -203,6 +301,10 @@ const _module = {
                 return new ServiceToken(name, <any>undefined, { urn })
             case "equinix:fabric/stream:Stream":
                 return new Stream(name, <any>undefined, { urn })
+            case "equinix:fabric/streamAttachment:StreamAttachment":
+                return new StreamAttachment(name, <any>undefined, { urn })
+            case "equinix:fabric/streamSubscription:StreamSubscription":
+                return new StreamSubscription(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -210,11 +312,17 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("equinix", "fabric/cloudRouter", _module)
 pulumi.runtime.registerResourceModule("equinix", "fabric/connection", _module)
+pulumi.runtime.registerResourceModule("equinix", "fabric/connectionRouteAggregation", _module)
 pulumi.runtime.registerResourceModule("equinix", "fabric/connectionRouteFilter", _module)
 pulumi.runtime.registerResourceModule("equinix", "fabric/network", _module)
+pulumi.runtime.registerResourceModule("equinix", "fabric/precisionTimeService", _module)
+pulumi.runtime.registerResourceModule("equinix", "fabric/routeAggregation", _module)
+pulumi.runtime.registerResourceModule("equinix", "fabric/routeAggregationRule", _module)
 pulumi.runtime.registerResourceModule("equinix", "fabric/routeFilter", _module)
 pulumi.runtime.registerResourceModule("equinix", "fabric/routeFilterRule", _module)
 pulumi.runtime.registerResourceModule("equinix", "fabric/routingProtocol", _module)
 pulumi.runtime.registerResourceModule("equinix", "fabric/serviceProfile", _module)
 pulumi.runtime.registerResourceModule("equinix", "fabric/serviceToken", _module)
 pulumi.runtime.registerResourceModule("equinix", "fabric/stream", _module)
+pulumi.runtime.registerResourceModule("equinix", "fabric/streamAttachment", _module)
+pulumi.runtime.registerResourceModule("equinix", "fabric/streamSubscription", _module)

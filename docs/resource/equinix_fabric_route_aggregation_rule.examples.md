@@ -83,7 +83,7 @@ public class App {
 ```yaml
 resources:
   raRule:
-    type: equinix:FabricRouteAggregationRule
+    type: equinix:fabricRouteAggregationRule
     name: ra_rule
     properties:
       routeAggregationId: <route_aggregation_id>

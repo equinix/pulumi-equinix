@@ -88,7 +88,7 @@ public class App {
 ```yaml
 resources:
   ptp:
-    type: equinix:FabricPrecisionTimeService
+    type: equinix:fabricPrecisionTimeService
     properties:
       type: PTP
       name: tf_acc_eptptp_PFCR
